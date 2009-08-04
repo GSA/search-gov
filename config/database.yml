@@ -1,0 +1,23 @@
+development:
+  adapter: mysql
+  database: usasearch_development
+  username: root
+  encoding: utf8
+
+test: &TEST
+  adapter: mysql
+  database: usasearch_test
+  username: root
+  encoding: utf8
+
+production:
+  adapter: mysql
+  database: usasearch_production
+  username: root
+  password: m86nwmw6uc
+  encoding: utf8
+  pool: 2
+  timeout: 5000
+
+cucumber:
+  <<: *TEST
