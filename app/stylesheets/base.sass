@@ -1,10 +1,16 @@
-@import compass/utilities/links.sass
+!site_background_color= #003466
 
 body
-  :font-size 100%
+  :background-color= !site_background_color
+  :color white
 
-a
-  +hover-link
+a, a:visited, a:hover
+  :text-decoration none
+  :font-weight bold
+  :color white
+
+a:hover
+  :text-decoration underline
 
 .loud
   :font-weight bold
@@ -18,3 +24,15 @@ h2
 
 .header
   :text-align right
+  :margin
+    :bottom 0.2em
+    :top 0
+
+.main
+  :background-color white
+
+.footer
+  :text-align center
+
+.splash-logo
+  :margin-top 2em

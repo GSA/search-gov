@@ -12,12 +12,30 @@
 
   %body
     .container
-      .span-13
-        = link_to(image_tag('USASearch_large.gif', :alt=>"USASearch Home", :width => 147, :height => 42), home_page_path)
-      .span-11.last.header
+      .span-24.header
         = link_to "USA.gov", "http://usa.gov"
         |
         = link_to "GobiernoUSA.gov", "http://GobiernoUSA.gov"
-      %hr
-      /= show_flash_messages
-      = yield
+        |
+        = link_to "Email USA.gov", "http://www.usa.gov/questions"
+      .span-24.main
+        /= show_flash_messages
+        = yield
+      .span-14.prepend-5.append-5.footer
+        = link_to "Home","http://www.usa.gov/index.shtml"
+        |
+        = link_to "About Us","http://www.usa.gov/About.shtml"
+        |
+        = link_to "Contact Us","http://www.usa.gov/Contact_Us.shtml"
+        |
+        = link_to "Contact Government","http://www.usa.gov/Contact/Elected.shtml"
+        |
+        = link_to "FAQs","http://www.usa.gov/Contact/Faq.shtml"
+        |
+        = link_to "Website Policies","http://www.usa.gov/About/Important_Notices.shtml"
+        |
+        = link_to "Privacy","http://www.usa.gov/About/Privacy_Security.shtml"
+        |
+        = link_to "Suggest-A-Link","http://www.usa.gov/feedback/SuggestLinkForm.jsp"
+        |
+        = link_to "Link to Us","http://www.usa.gov/About/FirstGov_Logos.shtml"
