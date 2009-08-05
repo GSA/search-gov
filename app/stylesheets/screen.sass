@@ -1,43 +1,15 @@
-// This import applies a global reset to any page that imports this stylesheet.
-@import blueprint/reset.sass
+@import blueprint/screen.sass
 // To configure blueprint, edit the base.sass file.
 @import base.sass
-// Import all the default blueprint modules so that we can access their mixins.
-@import compass/utilities.sass
-@import blueprint.sass
 // Import the non-default scaffolding module.
 @import blueprint/modules/scaffolding.sass
-@import blueprint/modules/fancy_type.sass
 
-// To generate css equivalent to the blueprint css but with your configuration applied, uncomment:
-+blueprint
+@import blueprint/modules/liquid.sass
++blueprint-liquid-grid
 
-//Recommended Blueprint configuration with scoping and semantic layout:
-body.bp
-  +blueprint-typography
-  +blueprint-utilities
-  +blueprint-debug
-  +blueprint-interaction
-  +fancy-type
-  // Remove the scaffolding when you're ready to start doing visual design.
-  // Or leave it in if you're happy with how blueprint looks out-of-the-box
++blueprint-typography
+
+body
   +blueprint-scaffolding
-form.bp
-  +blueprint-form
-
-// Page layout can be done using mixins applied to your semantic classes and IDs:
-body.three-col
-  #container
+  .container
     +container
-  #header, #footer
-    +column(!blueprint_grid_columns)
-  #sidebar
-    // One third of the grid columns, rounding down. With 24 cols, this is 8.
-    !sidebar_columns = floor(!blueprint_grid_columns / 3)
-    +column(!sidebar_columns)
-  #content
-    // Two thirds of the grid columns, rounding up.
-    // With 24 cols, this is 16.
-    !content_columns = ceil(2 * !blueprint_grid_columns / 3)
-    // true means it's the last column in the row
-    +column(!content_columns, true)
