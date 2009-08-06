@@ -1,8 +1,23 @@
 Feature: Homepage
   In order to use the USASearch.gov website
   As a viewer
-  I want to see a well-designed page
+  I want to see a well-designed homepage with a search box
 
-  Scenario: Visiting the home page
+  Scenario: A typical popular search from the home page
     Given I am on the homepage
-    Then I should see "USASearch"
+    When I fill in "queryterm" with "social security"
+    And I submit the search form
+    Then I should be on the search page
+    And I should see "results for social security"
+    And I should see 8 search results
+
+  Scenario: A nonsense search from the home page
+    Given I am on the homepage
+    When I fill in "queryterm" with "kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I press "Search"
+    Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
+
+  Scenario: Doing a blank search from the home page
+    Given I am on the homepage
+    When I press "Search"
+    Then I should see "Please enter search term(s)"

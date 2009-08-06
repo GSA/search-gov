@@ -1,2 +1,5 @@
-.span-8.prepend-8.append-8.splash-logo
+.span-8.prepend-8.append-8.homepage
   = link_to(image_tag('USASearch_large.gif', :alt=>"USASearch Home", :width => 545, :height => 119), home_page_path)
+  - form_tag(searches_path, :method => :get, :id=>"search_form") do
+    = text_field :search, :queryterm, :size=>50, :name=>"queryterm"
+    = image_submit_tag "search.gif", :id => "search_button"
