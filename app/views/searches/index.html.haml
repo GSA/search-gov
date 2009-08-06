@@ -1,9 +1,8 @@
-.span-24.main
-  .span-6.prepend-1.append-2
-    = link_to(image_tag('USASearch_medium.gif', :alt=>"USASearch Home", :width => 201, :height => 44), home_page_path)
+.span-3.prepend-1.append-1
+  = link_to(image_tag('USASearch_medium.gif', :alt=>"USASearch Home", :width => 201, :height => 44), home_page_path)
+.span-18
+  = render :partial => "shared/search"
   - if (@search.results.size > 0)
-    .span-15
-      %p= "#{@search.results.size} results found for '#{@search.queryterm}'"
+    %p= "#{@search.results.size} results found for '#{@search.queryterm}'"
   - else
-    .span-15.noresults
-      %p= "Sorry, no results found for '#{@search.queryterm}'. Try entering fewer or broader query terms."
+    %p.noresults= "Sorry, no results found for '#{@search.queryterm}'. Try entering fewer or broader query terms."

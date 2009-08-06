@@ -21,11 +21,22 @@ a:hover
     :top 0
 
 .main
+  a, a:visited
+    :font-weight normal
+    :text-decoration underline
+    :color= !site_theme_color
+  a:hover
+    :color #990000
+  :padding
+    :top 2em
+    :bottom 2em
   :background-color white
   p
     :color black
     :font-weight bold
-    
+  form
+    :margin-bottom 2em
+
 .footer
   :text-align center
 
@@ -33,9 +44,3 @@ a:hover
   :margin
     :top 2em
     :bottom 2em
-  a, a:visited
-    :font-weight normal
-    :text-decoration underline
-    :color= !site_theme_color
-  a:hover
-    :color #990000
