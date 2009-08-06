@@ -1,13 +1,15 @@
-!site_background_color= #003466
+!site_theme_color= #003366
 
 body
-  :background-color= !site_background_color
+  :background-color= !site_theme_color
   :color white
 
 a, a:visited, a:hover
   :text-decoration none
   :font-weight bold
   :color white
+  img
+    :border-style none
 
 a:hover
   :text-decoration underline
@@ -28,3 +30,9 @@ a:hover
   :margin
     :top 2em
     :bottom 2em
+  a, a:visited
+    :font-weight normal
+    :text-decoration underline
+    :color= !site_theme_color
+  a:hover
+    :color #990000

@@ -5,17 +5,19 @@ class Search
   def initialize(options = {})
     options ||= {}
     self.queryterm = options[:queryterm] || ''
-    self.page = [options[:page].to_i, 1].max
-    @per_page = 10
+    #self.page = [options[:page].to_i, 1].max
+    #@per_page = 10
   end
 
   def run
     begin
       #Google::GwebSearch.options[:key] = "some key"
       Google::GwebSearch.options[:rsz] = "large"
+      #set language/logger?
       response = Google::GwebSearch.search(self.queryterm)
       self.results = response.results
       RAILS_DEFAULT_LOGGER.debug "got #{self.results.size} results for #{self.queryterm}"
+      #RAILS_DEFAULT_LOGGER.debug response.details
     rescue RuntimeError => e
       RAILS_DEFAULT_LOGGER.warn "Search failed: #{e}"
       return false
