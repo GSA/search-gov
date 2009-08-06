@@ -3,6 +3,7 @@
 .span-18
   = render :partial => "shared/search"
   - if (@search.results.size > 0)
-    %p= "#{@search.results.size} results found for '#{@search.queryterm}'"
+    %p= "Results 1-#{@search.results.size} of about #{number_with_delimiter(@search.total)} for '#{@search.queryterm}'"
+    %hr
   - else
     %p.noresults= "Sorry, no results found for '#{@search.queryterm}'. Try entering fewer or broader query terms."

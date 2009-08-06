@@ -18,11 +18,19 @@ describe Search do
   end
 
   describe "when searching with valid queries" do
-    it "should find 8 results based on query" do
-      search = Search.new(@valid_options)
-      search.run
-      search.results.size.should == 8
+    before do
+      @search = Search.new(@valid_options)
+      @search.run
     end
+
+    it "should find results based on query" do
+      @search.results.size.should > 0
+    end
+
+    it "should have a total at least as large as the first set of results" do
+      @search.total.should >= @search.results.size
+    end
+
   end
 
   describe "when searching with invalid queries" do
@@ -62,7 +70,6 @@ describe Search do
       search.results.per_page.should == default_per_page
     end
 
-    it "should have a total"
 
   end
 end

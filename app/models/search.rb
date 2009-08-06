@@ -1,6 +1,6 @@
 class Search
   require 'google/gweb_search'
-  attr_accessor :queryterm, :results, :page
+  attr_accessor :queryterm, :results, :page, :total
 
   def initialize(options = {})
     options ||= {}
@@ -13,11 +13,13 @@ class Search
     begin
       #Google::GwebSearch.options[:key] = "some key"
       Google::GwebSearch.options[:rsz] = "large"
+      Google::GwebSearch.options[:hl] = "en"
       #set language/logger?
       response = Google::GwebSearch.search(self.queryterm)
       self.results = response.results
+      json = JSON.parse(response.json)
+      self.total = json["responseData"]["cursor"]["estimatedResultCount"].to_i
       RAILS_DEFAULT_LOGGER.debug "got #{self.results.size} results for #{self.queryterm}"
-      #RAILS_DEFAULT_LOGGER.debug response.details
     rescue RuntimeError => e
       RAILS_DEFAULT_LOGGER.warn "Search failed: #{e}"
       return false
