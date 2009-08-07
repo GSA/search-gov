@@ -5,9 +5,11 @@
   - if (@search.results.size > 0)
     %p= "Results #{@search.startrecord}-#{@search.endrecord} of about #{number_with_delimiter(@search.total)} for '#{@search.queryterm}'"
     %hr
-    %ul
-      - @search.results.each do |result|
-        %li= "#{result['title']} ; #{result['content']} ; #{result['url']}"
+    - @search.results.each do |result|
+      %div.searchresult
+        %h2= link_to "#{result['title']}" , "#{result['url']}"
+        %h3= "#{result['content']}"
+        %h3= link_to "#{result['url']}" , "#{result['url']}"
   - elsif (@search.queryterm.empty?)
     %p.noresults= "Please enter search term(s)"
   - else
