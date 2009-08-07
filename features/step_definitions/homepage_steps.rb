@@ -1,5 +1,5 @@
 Then /^I should see (\d+) search results$/ do |num_results|
-  pending
+  response.body.should =~ /searchresult#{num_results}/
 end
 
 When /^I submit the search form$/ do
