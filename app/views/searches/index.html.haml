@@ -5,5 +5,7 @@
   - if (@search.results.size > 0)
     %p= "Results #{@search.startrecord}-#{@search.endrecord} of about #{number_with_delimiter(@search.total)} for '#{@search.queryterm}'"
     %hr
+  - elsif (@search.queryterm.empty?)
+    %p.noresults= "Please enter search term(s)"
   - else
     %p.noresults= "Sorry, no results found for '#{@search.queryterm}'. Try entering fewer or broader query terms."
