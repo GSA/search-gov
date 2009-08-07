@@ -3,7 +3,7 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 describe Search do
 
   before do
-    @valid_options = {:queryterm => 'social security'}
+    @valid_options = {:queryterm => 'social security', :page => 3}
   end
 
   describe "when new" do
@@ -50,13 +50,14 @@ describe Search do
 
   describe "when paginating" do
 
-    default_per_page = 10
+    default_per_page = 8
+    default_page = 0
 
-    it "should default to page 1 if no valid page number was specified" do
+    it "should default to page 0 if no valid page number was specified" do
       options_without_page = @valid_options.reject{|k,v| k == :page}
-      Search.new(options_without_page).page.should == 1
-      Search.new(@valid_options.merge(:page => '')).page.should == 1
-      Search.new(@valid_options.merge(:page => 'string')).page.should == 1
+      Search.new(options_without_page).page.should == default_page
+      Search.new(@valid_options.merge(:page => '')).page.should == default_page
+      Search.new(@valid_options.merge(:page => 'string')).page.should == default_page
     end
 
     it "should set the page number" do
@@ -64,12 +65,18 @@ describe Search do
       search.page.should == 2
     end
 
-    it "should default to 10 results per page" do
-      search = Search.new
+    it "should default to 8 results per page" do
+      search = Search.new(@valid_options)
       search.run
-      search.results.per_page.should == default_per_page
+      search.results.size.should == default_per_page
     end
 
-
+    it "should set startrecord/endrecord" do
+      page = 7
+      search = Search.new(@valid_options.merge(:page => page))
+      search.run
+      search.startrecord.should == default_per_page * page + 1
+      search.endrecord.should == search.startrecord + search.results.size - 1
+    end
   end
 end

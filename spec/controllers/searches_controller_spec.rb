@@ -11,8 +11,16 @@ describe SearchesController do
 
   describe "when showing a new search" do
     before do
-      get :index, :queryterm => "social security"
+      get :index, :queryterm => "social security", :page => 4
       @search = assigns[:search]
+    end
+
+    it "should set the queryterm in the Search model" do
+      @search.queryterm.should == "social security"
+    end
+
+    it "should set the start page in the Search model" do
+      @search.page.should == 4
     end
 
     it "should load results for a keyword query" do

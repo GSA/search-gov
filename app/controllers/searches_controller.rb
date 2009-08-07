@@ -11,9 +11,8 @@ class SearchesController < ApplicationController
 
   def set_search_options
     @search_options = {
-      #:page => params[:page],
+      :page => params[:page],
       :queryterm => params["queryterm"]
     }
-    RAILS_DEFAULT_LOGGER.debug "got #{@search_options[:queryterm]} for search term"
   end
 end
