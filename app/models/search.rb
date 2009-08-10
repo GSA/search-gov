@@ -16,6 +16,8 @@ class Search
       Google::GwebSearch.options[:rsz] = "large"
       Google::GwebSearch.options[:hl] = "en"
       Google::GwebSearch.options[:start] = startindex
+      Google::GwebSearch.options[:cx] ||= '012983105564958037848:xhukbbvbwi0'
+
       response = Google::GwebSearch.search(self.queryterm)
       # FIXME: GWebSearch fails when start > 56 so I'm hardcoding total to 64
       # Presumably this will go away when we use GOOG's search API and/or Bing
