@@ -17,7 +17,7 @@ class Search
       Google::GwebSearch.options[:hl] = "en"
       Google::GwebSearch.options[:start] = startindex
       response = Google::GwebSearch.search(self.queryterm)
-      self.results = response.results
+      self.results = WillPaginate::Collection.create(self.page+1, @per_page, 80) { |pager| pager.replace(response.results) }
       json = JSON.parse(response.json)
       self.total = json["responseData"]["cursor"]["estimatedResultCount"].to_i
       self.startrecord = startindex + 1

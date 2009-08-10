@@ -19,8 +19,8 @@ describe SearchesController do
       @search.queryterm.should == "social security"
     end
 
-    it "should set the start page in the Search model" do
-      @search.page.should == 4
+    it "should offset the start page in the Search model by one" do
+      @search.page.should == 3
     end
 
     it "should load results for a keyword query" do
