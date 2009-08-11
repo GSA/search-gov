@@ -18,11 +18,11 @@ namespace :deploy do
   end
 end
 
-#before "deploy:symlink", "install_gems"
-#
-#desc "Installs gems as specified in environment.rb"
-#task :install_gems do
-#  rake = fetch(:rake, 'rake')
-#  rails_env = fetch(:rails_env, 'production')
-#  run "cd #{release_path}; sudo #{rake} RAILS_ENV=#{rails_env} gems:install"
-#end
+before "deploy:symlink", "install_gems"
+
+desc "Installs gems as specified in environment.rb"
+task :install_gems do
+  rake = fetch(:rake, 'rake')
+  rails_env = fetch(:rails_env, 'production')
+  run "cd #{release_path}; sudo #{rake} RAILS_ENV=#{rails_env} gems:install"
+end
