@@ -16,7 +16,7 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem "haml", :version => '2.2.2'
-  #config.gem "valda-gweb_search"
+  config.gem "valda-gweb_search", :lib => 'gweb_search', :source => 'http://gems.github.com', :version => '>= 1.0.0'
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
