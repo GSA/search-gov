@@ -1,14 +1,14 @@
-#default_run_options[:pty] = true
 set :application, "usasearch"
 set :user,        "xcet_admin"
 set :repository,  "git@github.com:loren/#{application}.git"
 set :use_sudo,    false
 set :deploy_to,   "/home/xcet_admin/#{application}"
 set :scm,         "git"
+set :domain,      "209.251.180.31"
 
 after :deploy, 'deploy:cleanup'
 
-role :web, "209.251.180.31"
+server domain, :app, :web, :db, :primary => true
 
 
 namespace :deploy do
