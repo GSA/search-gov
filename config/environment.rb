@@ -17,26 +17,11 @@ Rails::Initializer.run do |config|
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem "haml", :version => '2.2.2'
   config.gem "json", :version => '>= 1.1.7'
-
   config.gem "valda-gweb_search", :lib => 'google/gweb_search', :source => 'http://gems.github.com', :version => '>= 1.0.0'
-  # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
-  # config.gem "sqlite3-ruby", :lib => "sqlite3"
-  # config.gem "aws-s3", :lib => "aws/s3"
   config.gem 'mislav-will_paginate', :version => '~> 2.3.11', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem "chriseppstein-compass", :lib => 'compass', :source => 'http://gems.github.com', :version => '>= 0.8.9'
-
-  # Only load the plugins named here, in the order given (default is alphabetical).
-  # :all can be used as a placeholder for all plugins not explicitly named
-  # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
-
-  # Activate observers that should always be running
-  # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'UTC'
-
-  # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-  # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
-  # config.i18n.default_locale = :de
 end
