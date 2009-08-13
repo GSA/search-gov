@@ -1,16 +1,16 @@
 Feature: Homepage
-  In order to use the USASearch.gov website
-  As a viewer
-  I want to see a well-designed homepage with a search box
+  In order to get government-related information
+  As a site visitor
+  I want to be able to search for information
 
   Scenario: A typical popular search from the home page
     Given I am on the homepage
     When I fill in "query" with "social security"
     And I submit the search form
     Then I should be on the search page
-    And I should see "Results 1-8"
+    And I should see "Results 1-10"
     And I should see "social security"
-    And I should see 8 search results
+    And I should see 10 search results
     And I should see "Next »"
 
   Scenario: A nonsense search from the home page

@@ -26,12 +26,16 @@ describe Search do
 
   describe "using different search indexes" do
 
-    it "should default to GWebSearch" do
-      Search.new(@valid_options).engine.should be_instance_of Gweb
+    it "should default to Bing" do
+      Search.new(@valid_options).engine.should be_instance_of Bing
     end
 
     it "should be settable to GSS" do
       Search.new(@valid_options.merge(:engine => "gss")).engine.should be_instance_of Gss
+    end
+
+    it "should be settable to Gweb" do
+      Search.new(@valid_options.merge(:engine => "gweb")).engine.should be_instance_of Gweb
     end
 
     it "should run the appropriate search engine" do

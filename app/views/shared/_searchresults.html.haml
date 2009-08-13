@@ -7,8 +7,6 @@
       %h3 #{result['content']}
       %h3= display_result_links(result)
   = will_paginate(search.results)
-- elsif (@search.query.empty?)
-  %p.noresults= "Please enter search term(s)"
 - elsif (@search.error_message)
   %p.noresults #{@search.error_message}
 - else

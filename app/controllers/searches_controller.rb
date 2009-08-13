@@ -6,8 +6,7 @@ class SearchesController < ApplicationController
     @search.run
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
-      @page_title = "Search results for #{@affiliate.name}: #{@search.query}"
-      
+      @page_title = "Search results for #{@affiliate.name}: #{@search.query}"      
       render :action => "affiliate_index", :layout => "affiliate"
     end
   end
