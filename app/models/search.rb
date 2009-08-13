@@ -1,6 +1,8 @@
 class Search
   require 'google/gweb_search'
-  attr_accessor :queryterm, :results, :page, :total, :startrecord, :endrecord
+  attr_accessor :queryterm, :results, :page, :total, :startrecord, :endrecord, :error_message
+  TOO_LONG = "That is too long a word. Try using a shorter word."
+  MAX_QUERYTERM_LENGTH = 1000
 
   def initialize(options = {})
     options ||= {}
@@ -10,14 +12,16 @@ class Search
   end
 
   def run
-    begin
-      startindex = self.page * @per_page
-      Google::GwebSearch.logger = RAILS_DEFAULT_LOGGER
-      Google::GwebSearch.options[:rsz] = "large"
-      Google::GwebSearch.options[:hl] = "en"
-      Google::GwebSearch.options[:start] = startindex
-      Google::GwebSearch.options[:cx] ||= '012983105564958037848:xhukbbvbwi0'
+    self.results = []
+    self.error_message = TOO_LONG and return false if self.queryterm.length > MAX_QUERYTERM_LENGTH
+    startindex = self.page * @per_page
+    Google::GwebSearch.logger = RAILS_DEFAULT_LOGGER
+    Google::GwebSearch.options[:rsz] = "large"
+    Google::GwebSearch.options[:hl] = "en"
+    Google::GwebSearch.options[:start] = startindex
+    Google::GwebSearch.options[:cx] ||= '012983105564958037848:xhukbbvbwi0'
 
+    begin
       response = Google::GwebSearch.search(self.queryterm)
       # FIXME: GWebSearch fails when start > 56 so I'm hardcoding total to 64
       # Presumably this will go away when we use GOOG's search API and/or Bing
@@ -26,7 +30,7 @@ class Search
       self.total = json["responseData"]["cursor"]["estimatedResultCount"].to_i
       self.startrecord = startindex + 1
       self.endrecord = self.startrecord + self.results.size - 1
-    rescue RuntimeError => e
+    rescue Google::GwebSearch::RequestError => e
       RAILS_DEFAULT_LOGGER.warn "Search failed: #{e}"
       return false
     end

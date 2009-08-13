@@ -28,7 +28,7 @@ task :install_gems do
   run "cd #{release_path}; sudo #{rake} RAILS_ENV=#{rails_env} gems:install"
 end
 
-desc "Make releases directory writable (+x) to workaround overly restrictive default umask"
+desc "Make releases directory readable/writable (+rx) to workaround overly restrictive default umask"
 task :fix_permissions do
-  run "cd #{release_path}; sudo chmod -R a+x ."
+  run "cd #{release_path}; sudo chmod -R a+rx ."
 end

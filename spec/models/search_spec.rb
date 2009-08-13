@@ -33,18 +33,38 @@ describe Search do
 
   end
 
-  describe "when searching with invalid queries" do
+  describe "when searching with nonsense queries" do
     before do
       @search = Search.new(@valid_options.merge(:queryterm => 'kjdfgkljdhfgkldjshfglkjdsfhg'))
     end
 
-    it "should not raise an exception when searching for invalid data" do
+    it "should return true when searching" do
       @search.run.should be_true
     end
 
-    it "should have 0 results for invalid search" do
+    it "should have 0 results" do
       @search.run
       @search.results.size.should == 0
+    end
+  end
+
+  describe "when searching with really long queries" do
+    before do
+      @search = Search.new(@valid_options.merge(:queryterm => "X"*10000))
+    end
+
+    it "should return false when searching" do
+      @search.run.should be_false
+    end
+
+    it "should have 0 results" do
+      @search.run
+      @search.results.size.should == 0
+    end
+
+    it "should set error message" do
+      @search.run
+      @search.error_message.should_not be_nil       
     end
   end
 

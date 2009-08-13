@@ -24,3 +24,15 @@ Feature: Homepage
     When I submit the search form
     Then I should be on the search page
     And I should see "Please enter search term(s)"
+
+  Scenario: A unicode search from the home page
+    Given I am on the homepage
+    When I fill in "queryterm" with "البيت الأبيض"
+    And I submit the search form
+    Then I should see "White House"
+
+  Scenario: A really long search from the home page
+    Given I am on the homepage
+    When I fill in "queryterm" with a 10000 character string
+    And I submit the search form
+    Then I should see "That is too long a word. Try using a shorter word."
