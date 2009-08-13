@@ -12,7 +12,7 @@ class SearchesController < ApplicationController
   def set_search_options
     @search_options = {
       :page => (params[:page].to_i - 1),
-      :queryterm => params["queryterm"]
+      :query => params["query"]
     }
   end
 end

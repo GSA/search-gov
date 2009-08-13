@@ -3,20 +3,20 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe SearchesController do
 
   describe "when showing index" do
-    it "should have a restful route" do
-      searches_path.should == '/searches'
+    it "should have a route" do
+      search_path.should == '/search'
     end
 
   end
 
   describe "when showing a new search" do
     before do
-      get :index, :queryterm => "social security", :page => 4
+      get :index, :query => "social security", :page => 4
       @search = assigns[:search]
     end
 
-    it "should set the queryterm in the Search model" do
-      @search.queryterm.should == "social security"
+    it "should set the query in the Search model" do
+      @search.query.should == "social security"
     end
 
     it "should offset the start page in the Search model by one" do
@@ -27,6 +27,14 @@ describe SearchesController do
       @search.should_not be_nil
       @search.results.should_not be_nil
     end
+  end
+
+  context "when handling a legacy affiliate search request" do
+    it "should return results for legacy affiliate search requests" do
+      get :index, :affiliate=>"osdpd.noaa.gov", "v:project".to_sym => "firstgov", :query => "selden"
+      assigns[:search].results.should_not be_nil
+    end
+
   end
 
 end

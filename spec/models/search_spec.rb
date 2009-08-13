@@ -3,13 +3,13 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 describe Search do
 
   before do
-    @valid_options = {:queryterm => 'social security', :page => 3}
+    @valid_options = {:query => 'social security', :page => 3}
   end
 
   describe "when new" do
-    it "should have a queryterm" do
+    it "should have a query" do
       search = Search.new(@valid_options)
-      search.queryterm.should == 'social security'
+      search.query.should == 'social security'
     end
 
     it "should not require a query" do
@@ -35,7 +35,7 @@ describe Search do
 
   describe "when searching with nonsense queries" do
     before do
-      @search = Search.new(@valid_options.merge(:queryterm => 'kjdfgkljdhfgkldjshfglkjdsfhg'))
+      @search = Search.new(@valid_options.merge(:query => 'kjdfgkljdhfgkldjshfglkjdsfhg'))
     end
 
     it "should return true when searching" do
@@ -50,7 +50,7 @@ describe Search do
 
   describe "when searching with really long queries" do
     before do
-      @search = Search.new(@valid_options.merge(:queryterm => "X"*10000))
+      @search = Search.new(@valid_options.merge(:query => "X"*10000))
     end
 
     it "should return false when searching" do
@@ -64,7 +64,7 @@ describe Search do
 
     it "should set error message" do
       @search.run
-      @search.error_message.should_not be_nil       
+      @search.error_message.should_not be_nil
     end
   end
 

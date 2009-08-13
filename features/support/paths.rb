@@ -5,7 +5,7 @@ module NavigationHelpers
     when /the homepage/
       root_path
     when /the search page/
-      searches_path
+      search_path
 
     # Add more mappings here.
     # Here is a more fancy example:

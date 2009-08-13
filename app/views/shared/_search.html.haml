@@ -1,4 +1,4 @@
-- form_tag(searches_path, :method => :get, :id=>"search_form") do
-  = text_field :search, :queryterm, :size=>50, :name=>"queryterm"
+- form_tag(search_path, :method => :get, :id=>"search_form") do
+  = text_field :search, :query, :size=>50, :name=>"query"
   = image_submit_tag "search.gif", :id => "search_button", :align=>"top"
   = link_to "Online Tutorial", "http://www.usa.gov/About/tutorials/index.shtml"

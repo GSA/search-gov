@@ -3,7 +3,7 @@
 .span-18
   = render :partial => "shared/search"
   - if (@search && @search.results.size > 0)
-    %p= "Results #{@search.startrecord}-#{@search.endrecord} of about #{number_with_delimiter(@search.total)} for '#{@search.queryterm}'"
+    %p= "Results #{@search.startrecord}-#{@search.endrecord} of about #{number_with_delimiter(@search.total)} for '#{@search.query}'"
     %hr
     - @search.results.each_with_index do |result, index|
       %div.searchresult{:id => "searchresult#{index+1}"}
@@ -11,9 +11,9 @@
         %h3 #{result['content']}
         %h3= display_result_links(result)
     = will_paginate(@search.results)
-  - elsif (@search.queryterm.empty?)
+  - elsif (@search.query.empty?)
     %p.noresults= "Please enter search term(s)"
   - elsif (@search.error_message)
     %p.noresults #{@search.error_message}
   - else
-    %p.noresults= "Sorry, no results found for '#{@search.queryterm}'. Try entering fewer or broader query terms."
+    %p.noresults= "Sorry, no results found for '#{@search.query}'. Try entering fewer or broader query terms."
