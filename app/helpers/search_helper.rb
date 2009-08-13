@@ -1,6 +1,7 @@
 module SearchHelper
   def display_result_links (result)
-    html = link_to("#{result['unescapedUrl']}" , "#{h result['unescapedUrl']}")
+    url = shorten_url "#{result['unescapedUrl']}"
+    html = link_to(url , "#{h result['unescapedUrl']}")
     html << " - "
     html << link_to("Cached" , "#{result['cacheUrl']}")
     html
@@ -8,5 +9,14 @@ module SearchHelper
 
   def display_result_title (result)
     link_to "#{result['title']}" , "#{h result['unescapedUrl']}"
+  end
+
+  private
+  def shorten_url (url)
+    return url if url.length <=30 or url.count('/') < 4
+    arr = url.split('/')
+    host= arr[0]+"//"+arr[2]
+    doc = arr.last.split('?').first
+    [host,"...",doc].join('/')
   end
 end
