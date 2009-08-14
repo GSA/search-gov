@@ -26,11 +26,11 @@ class Gss < AbstractEngine
       logger.debug "Response body: #{res.body}"
       doc = Hpricot.parse(res.body)
       results_array = (doc/:r).collect do |r|
-        {'title' => r.search("/t").first.children.first,
-         'unescapedUrl'=> r.search("/ue").first.children.first,
-         'content'=> r.search("/s").first.children.first,
-         'cacheUrl'=> r.search("/has/c").first["CID"]
-        }
+        unescapedUrl = r.search("/ue").first.children.first
+        cacheUrl = API_URL+"?q="+ ["cache", r.search("/has/c").first["CID"], unescapedUrl].join(':')
+        title = r.search("/t").first.children.first
+        content = r.search("/s").first.children.first
+        {'title' => title, 'unescapedUrl'=> unescapedUrl, 'content'=> content, 'cacheUrl'=> cacheUrl}
       end
       self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, 64) { |pager| pager.replace(results_array) }
 
