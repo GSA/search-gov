@@ -11,7 +11,7 @@ describe SearchesController do
 
   describe "when showing a new search" do
     before do
-      get :index, :query => "social security", :page => 4
+      get :index, :query => "social security", :page => 4, :engine => "gss"
       @search = assigns[:search]
     end
 
@@ -27,6 +27,10 @@ describe SearchesController do
       @search.should_not be_nil
       @search.results.should_not be_nil
     end
+
+    it "should set the search engine" do
+      @search.engine.class.to_s.downcase.should == "gss"
+    end
   end
 
   context "when handling a legacy affiliate search request" do
@@ -34,7 +38,6 @@ describe SearchesController do
       get :index, :affiliate=>"osdpd.noaa.gov", "v:project".to_sym => "firstgov", :query => "selden"
       assigns[:search].results.should_not be_nil
     end
-
   end
 
 end

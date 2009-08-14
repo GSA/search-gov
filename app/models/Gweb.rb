@@ -20,9 +20,10 @@ class Gweb < AbstractEngine
       self.total = json["responseData"]["cursor"]["estimatedResultCount"].to_i
       self.startrecord = startindex + 1
       self.endrecord = self.startrecord + self.results.size - 1
+      # FIXME: rescue all errors, like network errors
     rescue Google::GwebSearch::RequestError => e
       RAILS_DEFAULT_LOGGER.warn "Search failed: #{e}"
-      return false
+      false
     end
     true
   end

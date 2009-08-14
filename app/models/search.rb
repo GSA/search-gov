@@ -8,7 +8,7 @@ class Search
     options ||= {}
     self.query = options[:query] || ''
     self.page = [options[:page].to_i, 0].max
-    klass = options[:engine] || Gweb
+    klass = ENGINES[options[:engine].to_sym] rescue Gweb
     self.engine = klass.new(:query => self.query, :page => self.page)
   end
 

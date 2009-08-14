@@ -17,22 +17,6 @@ describe Search do
     end
   end
 
-  describe "when searching with valid queries" do
-    before do
-      @search = Search.new(@valid_options)
-      @search.run
-    end
-
-    it "should find results based on query" do
-      @search.results.size.should > 0
-    end
-
-    it "should have a total at least as large as the first set of results" do
-      @search.total.should >= @search.results.size
-    end
-
-  end
-
   describe "when searching with nonsense queries" do
     before do
       @search = Search.new(@valid_options.merge(:query => 'kjdfgkljdhfgkldjshfglkjdsfhg'))
@@ -74,21 +58,37 @@ describe Search do
       Search.new(@valid_options).engine.should be_instance_of Gweb
     end
 
-    xit "should be settable to GSS" do
-      Search.new(@valid_options.merge(:engine => Search::ENGINES[:gss])).engine.should be_instance_of Gss
+    it "should be settable to GSS" do
+      Search.new(@valid_options.merge(:engine => "gss")).engine.should be_instance_of Gss
     end
-    #
-    #it "should run the appropriate search engine" do
-    #  [ Search::GWEB_SEARCH,  Search::GSS_SEARCH ].each do |engine|
-    #    search = Search.new(@valid_options.merge(:engine => engine))
-    #    engine.should_receive(:new).once.and_return(
-    #    search.stub!(:engine).and_return(engine)
-    #    engine.should_receive(:run).once
-    #    search.run
-    #  end
-    #
-    #end
 
+    it "should run the appropriate search engine" do
+      Search::ENGINES.each do | sym, klass |
+        engine = klass.new(@valid_options)
+        klass.stub!(:new).and_return(engine)
+        klass.should_receive(:new).once.and_return(engine)
+        Search.new(@valid_options.merge(:engine => sym.to_s))
+      end
+    end
+
+    Search::ENGINES.each do | sym, klass |
+
+      describe "when searching with valid queries on #{klass.name}" do
+        before do
+          @search = Search.new(@valid_options.merge(:engine => sym.to_s))
+          @search.run
+        end
+
+        it "should find results based on query" do
+          @search.results.size.should > 0
+        end
+
+        it "should have a total at least as large as the first set of results" do
+          @search.total.should >= @search.results.size
+        end
+
+      end
+    end
 
   end
 
@@ -96,7 +96,7 @@ describe Search do
     default_page = 0
 
     it "should default to page 0 if no valid page number was specified" do
-      options_without_page = @valid_options.reject{|k,v| k == :page}
+      options_without_page = @valid_options.reject{|k, v| k == :page}
       Search.new(options_without_page).page.should == default_page
       Search.new(@valid_options.merge(:page => '')).page.should == default_page
       Search.new(@valid_options.merge(:page => 'string')).page.should == default_page
