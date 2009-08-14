@@ -20,6 +20,7 @@ Rails::Initializer.run do |config|
   config.gem "valda-gweb_search", :lib => 'google/gweb_search', :source => 'http://gems.github.com', :version => '>= 1.0.0'
   config.gem 'mislav-will_paginate', :version => '~> 2.3.11', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem "chriseppstein-compass", :lib => 'compass', :source => 'http://gems.github.com', :version => '>= 0.8.9'
+  config.gem "hpricot"
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.

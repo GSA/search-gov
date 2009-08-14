@@ -3,13 +3,13 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 describe Search do
 
   before do
-    @valid_options = {:query => 'social security', :page => 3}
+    @valid_options = {:query => 'government', :page => 3}
   end
 
   describe "when new" do
     it "should have a query" do
       search = Search.new(@valid_options)
-      search.query.should == 'social security'
+      search.query.should == 'government'
     end
 
     it "should not require a query" do
@@ -68,9 +68,31 @@ describe Search do
     end
   end
 
-  describe "when paginating" do
+  describe "using different search indexes" do
 
-    default_per_page = 8
+    it "should default to GWebSearch" do
+      Search.new(@valid_options).engine.should be_instance_of Gweb
+    end
+
+    xit "should be settable to GSS" do
+      Search.new(@valid_options.merge(:engine => Search::ENGINES[:gss])).engine.should be_instance_of Gss
+    end
+    #
+    #it "should run the appropriate search engine" do
+    #  [ Search::GWEB_SEARCH,  Search::GSS_SEARCH ].each do |engine|
+    #    search = Search.new(@valid_options.merge(:engine => engine))
+    #    engine.should_receive(:new).once.and_return(
+    #    search.stub!(:engine).and_return(engine)
+    #    engine.should_receive(:run).once
+    #    search.run
+    #  end
+    #
+    #end
+
+
+  end
+
+  describe "when paginating" do
     default_page = 0
 
     it "should default to page 0 if no valid page number was specified" do
@@ -85,17 +107,17 @@ describe Search do
       search.page.should == 2
     end
 
-    it "should default to 8 results per page" do
+    it "should use the underlying engine's results per page" do
       search = Search.new(@valid_options)
       search.run
-      search.results.size.should == default_per_page
+      search.results.size.should == search.per_page
     end
 
     it "should set startrecord/endrecord" do
       page = 7
       search = Search.new(@valid_options.merge(:page => page))
       search.run
-      search.startrecord.should == default_per_page * page + 1
+      search.startrecord.should == search.per_page * page + 1
       search.endrecord.should == search.startrecord + search.results.size - 1
     end
   end

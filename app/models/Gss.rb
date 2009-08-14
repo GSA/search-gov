@@ -1,0 +1,3 @@
+class Gss
+
+end
