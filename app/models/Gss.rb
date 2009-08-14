@@ -27,14 +27,15 @@ class Gss < AbstractEngine
       doc = Hpricot.parse(res.body)
       results_array = (doc/:r).collect do |r|
         unescapedUrl = r.search("/ue").first.children.first
-        cacheUrl = API_URL+"?q="+ ["cache", r.search("/has/c").first["CID"], unescapedUrl].join(':')
+        cacheUrl = API_URL+"?q="+ ["cache", r.search("/has/c").first["CID"], unescapedUrl].join(':') rescue ""
         title = r.search("/t").first.children.first
         content = r.search("/s").first.children.first
         {'title' => title, 'unescapedUrl'=> unescapedUrl, 'content'=> content, 'cacheUrl'=> cacheUrl}
       end
-      self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, 64) { |pager| pager.replace(results_array) }
 
       self.total = (doc/:m).first.children.first.raw_string.to_i
+      pagination_total = [ DEFAULT_PER_PAGE * 20 , self.total ].min
+      self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(results_array) }
       self.startrecord = startindex + 1
       self.endrecord = self.startrecord + self.results.size - 1
     rescue RequestError => e

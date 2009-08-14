@@ -13,11 +13,11 @@ class Gweb < AbstractEngine
 
     begin
       response = Google::GwebSearch.search(@query)
-      # FIXME: GWebSearch fails when start > 56 so I'm hardcoding total to 64
-      # Presumably this will go away when we use GOOG's search API and/or Bing
-      self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, 64) { |pager| pager.replace(response.results) }
       json = JSON.parse(response.json)
       self.total = json["responseData"]["cursor"]["estimatedResultCount"].to_i
+      # FIXME: GWebSearch fails when start > 56 so I'm hardcoding total to 64
+      pagination_total = [ 64 , self.total ].min
+      self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(response.results) }
       self.startrecord = startindex + 1
       self.endrecord = self.startrecord + self.results.size - 1
       # FIXME: rescue all errors, like network errors

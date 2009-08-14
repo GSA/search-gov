@@ -2,8 +2,10 @@ module SearchHelper
   def display_result_links (result)
     url = shorten_url "#{result['unescapedUrl']}"
     html = link_to(url , "#{h result['unescapedUrl']}")
-    html << " - "
-    html << link_to("Cached" , "#{result['cacheUrl']}")
+    unless result['cacheUrl'].blank?
+      html << " - "
+      html << link_to("Cached" , "#{result['cacheUrl']}")
+    end 
     html
   end
 
