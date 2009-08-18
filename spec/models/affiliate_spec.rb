@@ -9,6 +9,8 @@ describe Affiliate do
     }
   end
 
+  should_validate_presence_of :name
+
   it "should create a new instance given valid attributes" do
     Affiliate.create!(@valid_attributes)
   end
