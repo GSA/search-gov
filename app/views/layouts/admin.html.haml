@@ -1,0 +1,15 @@
+!!!strict
+%html{html_attrs('en-us')}
+  %head
+    %title USASearch Admin
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
+    = javascript_include_tag :defaults
+    = active_scaffold_includes
+
+  %body
+    .container
+      .span-24.header
+        %h2 USASearch Admin
+      .span-24.main
+        /= show_flash_messages
+        = yield
