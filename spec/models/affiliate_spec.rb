@@ -1,0 +1,15 @@
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+
+describe Affiliate do
+  before(:each) do
+    @valid_attributes = {
+      :name => "someaffiliate.gov",
+      :header => "<table><tr><td>html layout from 1998</td></tr></table>",
+      :footer => "<center>gasp</center>"
+    }
+  end
+
+  it "should create a new instance given valid attributes" do
+    Affiliate.create!(@valid_attributes)
+  end
+end

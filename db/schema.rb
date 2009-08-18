@@ -9,6 +9,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20090818003200) do
+
+  create_table "affiliates", :force => true do |t|
+    t.string   "name",       :null => false
+    t.text     "domains"
+    t.text     "header"
+    t.text     "footer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
 
 end
