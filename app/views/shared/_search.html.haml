@@ -1,4 +1,5 @@
 - form_tag(search_path, :method => :get, :id=>"search_form") do
   = text_field :search, :query, :size=>50, :name=>"query"
+  = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
   = image_submit_tag "search.gif", :id => "search_button", :align=>"top"
   = link_to "Online Tutorial", "http://www.usa.gov/About/tutorials/index.shtml"
