@@ -1,54 +1,26 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe Search do
+  fixtures :affiliates
 
   before do
-    @valid_options = {:query => 'government', :page => 3}
+    @affiliate = affiliates(:basic_affiliate)
+    @valid_options = {:query => 'government', :page => 3, :affiliate => @affiliate}
   end
 
   describe "when new" do
-    it "should have a query" do
+    it "should have a settable query" do
       search = Search.new(@valid_options)
       search.query.should == 'government'
     end
 
-    it "should not require a query" do
+    it "should have a settable affiliate" do
+      search = Search.new(@valid_options)
+      search.affiliate.should == @affiliate
+    end
+
+    it "should not require a query or affiliate" do
       lambda { Search.new }.should_not raise_error(ArgumentError)
-    end
-  end
-
-  describe "when searching with nonsense queries" do
-    before do
-      @search = Search.new(@valid_options.merge(:query => 'kjdfgkljdhfgkldjshfglkjdsfhg'))
-    end
-
-    it "should return true when searching" do
-      @search.run.should be_true
-    end
-
-    it "should have 0 results" do
-      @search.run
-      @search.results.size.should == 0
-    end
-  end
-
-  describe "when searching with really long queries" do
-    before do
-      @search = Search.new(@valid_options.merge(:query => "X"*10000))
-    end
-
-    it "should return false when searching" do
-      @search.run.should be_false
-    end
-
-    it "should have 0 results" do
-      @search.run
-      @search.results.size.should == 0
-    end
-
-    it "should set error message" do
-      @search.run
-      @search.error_message.should_not be_nil
     end
   end
 
@@ -66,7 +38,7 @@ describe Search do
       Search::ENGINES.each do | sym, klass |
         engine = klass.new(@valid_options)
         klass.stub!(:new).and_return(engine)
-        klass.should_receive(:new).once.and_return(engine)
+        klass.should_receive(:new).once.with(@valid_options).and_return(engine)
         Search.new(@valid_options.merge(:engine => sym.to_s))
       end
     end
@@ -88,8 +60,42 @@ describe Search do
         end
 
       end
-    end
 
+      describe "when searching with really long queries" do
+        before do
+          @search = Search.new(@valid_options.merge(:engine => sym.to_s, :query => "X"*10000))
+        end
+
+        it "should return false when searching" do
+          @search.run.should be_false
+        end
+
+        it "should have 0 results" do
+          @search.run
+          @search.results.size.should == 0
+        end
+
+        it "should set error message" do
+          @search.run
+          @search.error_message.should_not be_nil
+        end
+      end
+
+      describe "when searching with nonsense queries" do
+        before do
+          @search = Search.new(@valid_options.merge(:engine => sym.to_s, :query => 'kjdfgkljdhfgkldjshfglkjdsfhg'))
+        end
+
+        it "should return true when searching" do
+          @search.run.should be_true
+        end
+
+        it "should have 0 results" do
+          @search.run
+          @search.results.size.should == 0
+        end
+      end
+    end
   end
 
   describe "when paginating" do

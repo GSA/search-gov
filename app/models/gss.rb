@@ -7,14 +7,18 @@ class Gss < AbstractEngine
   def run
     logger = RAILS_DEFAULT_LOGGER
     startindex = @page * DEFAULT_PER_PAGE
+    q = @query
+    if @affiliate && !@affiliate.domains.blank?
+      q = "#{q} #{@affiliate.domain_list}"
+    end
     opts = {:start => startindex,
             :num => DEFAULT_PER_PAGE,
-            :q => @query,
+            :q =>  q,
             :client => "google-csbe",
             :output => "xml_no_dtd",
             :cx => "009969014417352305501:4bohptsvhei"
     }
-
+    logger.debug "debugger opts: #{opts.inspect}"
     request_url = prepare_url(opts)
     logger.debug "Request URL: #{request_url}"
     begin
@@ -26,15 +30,15 @@ class Gss < AbstractEngine
       logger.debug "Response body: #{res.body}"
       doc = Hpricot.parse(res.body)
       results_array = (doc/:r).collect do |r|
-        unescapedUrl = r.search("/ue").first.children.first
-        cacheUrl = API_URL+"?q="+ ["cache", r.search("/has/c").first["CID"], unescapedUrl].join(':') rescue ""
+        unescaped_url = r.search("/ue").first.children.first
+        cache_url = API_URL+"?q="+ ["cache", r.search("/has/c").first["CID"], unescaped_url].join(':') rescue ""
         title = r.search("/t").first.children.first
         content = r.search("/s").first.children.first
-        {'title' => title, 'unescapedUrl'=> unescapedUrl, 'content'=> content, 'cacheUrl'=> cacheUrl}
+        {'title' => title, 'unescapedUrl'=> unescaped_url, 'content'=> content, 'cacheUrl'=> cache_url}
       end
 
-      self.total = (doc/:m).first.children.first.raw_string.to_i
-      pagination_total = [ DEFAULT_PER_PAGE * 20 , self.total ].min
+      self.total = (doc/:m).first.children.first.raw_string.to_i rescue 0
+      pagination_total = [ DEFAULT_PER_PAGE * 20, self.total ].min
       self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(results_array) }
       self.startrecord = startindex + 1
       self.endrecord = self.startrecord + self.results.size - 1
@@ -49,12 +53,8 @@ class Gss < AbstractEngine
 
   def prepare_url(opts)
     qs = []
-    opts.each {|k, v|
-      next unless v
-      v = v.join(',') if v.is_a? Array
-      qs << "#{k}=#{URI.encode(v.to_s)}"
-    }
-    "#{API_URL}?#{qs.join('&')}"
+    opts.each {|k, v| qs << "#{k}=#{URI.encode(v.to_s)}" if v }
+    "#{API_URL}?#{qs.sort.join('&')}"
   end
 end
 
