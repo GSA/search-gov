@@ -14,6 +14,8 @@ class Gss < AbstractEngine
     opts = {:start => startindex,
             :num => DEFAULT_PER_PAGE,
             :q =>  q,
+            :ie => "utf8",
+            :oe => "utf8",
             :client => "google-csbe",
             :output => "xml_no_dtd",
             :cx => "009969014417352305501:4bohptsvhei"
@@ -33,6 +35,7 @@ class Gss < AbstractEngine
         unescaped_url = r.search("/ue").first.children.first
         cache_url = API_URL+"?q="+ ["cache", r.search("/has/c").first["CID"], unescaped_url].join(':') rescue ""
         title = r.search("/t").first.children.first
+        logger.debug "title: #{title}"
         content = r.search("/s").first.children.first
         {'title' => title, 'unescapedUrl'=> unescaped_url, 'content'=> content, 'cacheUrl'=> cache_url}
       end
