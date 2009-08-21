@@ -2,14 +2,7 @@
 .maincontent
   = render :partial => "shared/search"
   - if (@search && @search.results.size > 0)
-    %p= "Results #{@search.startrecord}-#{@search.endrecord} of about #{number_with_delimiter(@search.total)} for '#{@search.query}'"
-    %hr
-    - @search.results.each_with_index do |result, index|
-      %div.searchresult{:id => "searchresult#{index+1}"}
-        %h2= display_result_title(result)
-        %h3 #{result['content']}
-        %h3= display_result_links(result)
-    = will_paginate(@search.results)
+    = render :partial => "shared/searchresults", :locals => { :search => @search }
   - elsif (@search.query.empty?)
     %p.noresults= "Please enter search term(s)"
   - elsif (@search.error_message)
