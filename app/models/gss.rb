@@ -18,16 +18,16 @@ class Gss < AbstractEngine
             :output => "xml_no_dtd",
             :cx => "009969014417352305501:4bohptsvhei"
     }
-    logger.debug "debugger opts: #{opts.inspect}"
+    #logger.debug "debugger opts: #{opts.inspect}"
     request_url = prepare_url(opts)
-    logger.debug "Request URL: #{request_url}"
+    #logger.debug "Request URL: #{request_url}"
     begin
       res = Net::HTTP.get_response(URI::parse(request_url))
-      logger.debug "HTTP status: #{res.code} #{res.message}"
+      #logger.debug "HTTP status: #{res.code} #{res.message}"
       unless res.kind_of? Net::HTTPSuccess
         raise RequestError, "HTTP Response: #{res.code} #{res.message}"
       end
-      logger.debug "Response body: #{res.body}"
+      #logger.debug "Response body: #{res.body}"
       doc = Hpricot.parse(res.body)
       results_array = (doc/:r).collect do |r|
         unescaped_url = r.search("/ue").first.children.first
@@ -43,7 +43,7 @@ class Gss < AbstractEngine
       self.startrecord = startindex + 1
       self.endrecord = self.startrecord + self.results.size - 1
     rescue RequestError => e
-      RAILS_DEFAULT_LOGGER.warn "Search failed: #{e}"
+      logger.warn "Search failed: #{e}"
       false
     end
     true

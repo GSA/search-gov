@@ -5,7 +5,7 @@ class Gweb < AbstractEngine
   def run
     startindex = @page * DEFAULT_PER_PAGE
 
-    Google::GwebSearch.logger = RAILS_DEFAULT_LOGGER
+    #Google::GwebSearch.logger = RAILS_DEFAULT_LOGGER
     Google::GwebSearch.options[:rsz] = "large"
     Google::GwebSearch.options[:hl] = "en"
     Google::GwebSearch.options[:start] = startindex
