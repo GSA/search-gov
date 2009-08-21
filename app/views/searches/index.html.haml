@@ -2,11 +2,4 @@
   = link_to(image_tag('USAsearch_medium.gif', :alt=>"USASearch Home", :width => 201, :height => 44), home_page_path)
 .span-18
   = render :partial => "shared/search"
-  - if (@search && @search.results.size > 0)
-    = render :partial => "shared/searchresults", :locals => { :search => @search }
-  - elsif (@search.query.empty?)
-    %p.noresults= "Please enter search term(s)"
-  - elsif (@search.error_message)
-    %p.noresults #{@search.error_message}
-  - else
-    %p.noresults= "Sorry, no results found for '#{@search.query}'. Try entering fewer or broader query terms."
+  = render :partial => "shared/searchresults", :locals => { :search => @search }
