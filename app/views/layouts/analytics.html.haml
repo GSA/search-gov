@@ -1,0 +1,21 @@
+!!!strict
+%html{html_attrs('en-us')}
+  %head
+    %title USASearch Analytics
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
+    = stylesheet_link_tag 'compiled/analytics.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
+    /[if IE]
+      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+
+  %body
+    .container
+      .span-13
+        = link_to(image_tag('USAsearch_medium.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), home_page_path)
+        %h1.alt Analytics
+      .span-11.last.header
+        = link_to "USAsearch.gov", home_page_path
+        |
+        = link_to "Affiliate Admin", admin_affiliates_path
+      %hr
+      = yield

@@ -1,0 +1,47 @@
+@import compass/reset.sass
+@import blueprint.sass
+@import blueprint/modules/scaffolding.sass
+@import blueprint/modules/fancy_type.sass
+@import compass/utilities/links.sass
++blueprint
++blueprint-scaffolding
++fancy-type
+!site_base_color= "lavender"
+
+body
+  :font-size 100%
+
+a
+  +hover-link
+
+.loud
+  :font-weight bold
+
+h1
+  :font-size 1.5em
+  :margin-bottom 0.5em
+  &.alt
+    :font-size 1.6em
+    :display inline
+    :vertical-align 40%
+
+h2
+  :font-size 1.25em
+  :margin-bottom 0.2em
+  :padding-left 0.2em
+  :background-color= !site_base_color
+
+h3
+  :font-size 1.1em
+  :background-color lightgray
+  :padding-bottom 0.2em
+  :margin-bottom 0.1em
+  :padding-left 0.2em
+
+td
+  :padding-top 0
+  :padding-bottom 0
+
+.header
+  :text-align right
+  :margin-top 0.5em

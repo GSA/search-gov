@@ -4,5 +4,6 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :affiliates, :active_scaffold => true
   end
   map.root :controller => "home"
+  map.analytics_home_page '/analytics', :controller => "analytics/home"
   map.home_page '/', :controller => "home"
 end

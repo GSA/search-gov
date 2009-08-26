@@ -6,6 +6,8 @@ module NavigationHelpers
       root_path
     when /the search page/
       search_path
+    when /the analytics homepage/
+      analytics_home_page_path
 
     # Add more mappings here.
     # Here is a more fancy example:
