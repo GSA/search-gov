@@ -18,7 +18,7 @@
   %h2 Last 7 days
 .span-12
   %h3 Most Popular
-  - if @yesterday_popular_terms
+  - if @trailing_week_popular_terms
     %table
       - @trailing_week_popular_terms.each_pair do |query, times|
         %tr
@@ -33,7 +33,7 @@
   %h2 Last 30 days
 .span-12
   %h3 Most Popular
-  - if @yesterday_popular_terms
+  - if @trailing_month_popular_terms
     %table
       - @trailing_month_popular_terms.each_pair do |query, times|
         %tr
