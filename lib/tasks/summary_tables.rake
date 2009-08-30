@@ -21,10 +21,10 @@ namespace :usasearch do
       sql = "drop table if exists temp_window_counts"
       ActiveRecord::Base.connection.execute(sql)
 
-      sql = "delete from query_accelerations where day = #{day.to_s(:number).to_i}" 
+      day = ENV["DATE"].to_date rescue Date.yesterday
+      sql = "delete from query_accelerations where day = #{day.to_s(:number).to_i}"
       ActiveRecord::Base.connection.execute(sql)
 
-      day = ENV["DATE"].to_date rescue Date.yesterday
       puts "Calculating proportions..."
       sql = "create temporary table proportions(query varchar(100), times int, uips int, proportion float) select query, sum(times) as times, count( ipaddr) as uips, count( ipaddr)/sum(times) proportion from daily_query_ip_stats  group by query having times > 10"
       ActiveRecord::Base.connection.execute(sql)
