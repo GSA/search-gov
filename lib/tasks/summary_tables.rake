@@ -7,7 +7,7 @@ namespace :usasearch do
       puts "Creating daily query IP stats..."
       sql = "truncate daily_query_ip_stats"
       ActiveRecord::Base.connection.execute(sql)
-      sql = "insert ignore into daily_query_ip_stats (query, ipaddr, day, times) select query, ipaddr, date(timestamp) day, count(*) from queries where affiliate = 'usasearch.gov' and query not in ( 'cheesewiz' ,'clusty' ,' ', '1', 'test') group by day,query, ipaddr"
+      sql = "insert ignore into daily_query_ip_stats (query, ipaddr, day, times) select lower(query), ipaddr, date(timestamp) day, count(*) from queries where affiliate = 'usasearch.gov' and query not in ( 'cheesewiz' ,'clusty' ,' ', '1', 'test') group by day,query, ipaddr"
       ActiveRecord::Base.connection.execute(sql)
     end
 
@@ -47,28 +47,25 @@ namespace :usasearch do
       score_clause = "(((t1.count-t2.count)/t2.count) + ((t1.count-t3.count)/t3.count) * 0.5 + ((t1.count-t4.count)/t4.count) * 0.3 + ((t2.count-t3.count)/t3.count) * 0.5 + ((t3.count-t4.count)/t4.count) * 0.5) as score "
       from_clause = "from temp_window_counts as t1, temp_window_counts as t2, temp_window_counts as t3, temp_window_counts as t4 where t1.query = t2.query and t1.query = t3.query and t1.query = t4.query and t1.period = 1 and t2.period = 2 and t3.period=3 and t4.period = 4 and t1.count > 50"
 
-      [7, 30, 1].each do |window_size|
+      [30, 7, 1].each do |window_size|
         targetdate = day
-        #make temp table of N day counts
         puts "Creating #{window_size}-day windows..."
         sql = "create table temp_window_counts (query varchar(100), period int, count int)"
         puts sql
         ActiveRecord::Base.connection.execute(sql)
-        4.times do |i|
-          idx = i + 1
-          sql = "insert into temp_window_counts (period, query, count) select #{idx}, query, sum(times) from daily_query_stats where day between #{(targetdate - window_size.days).to_s(:number).to_i} and #{targetdate.to_s(:number).to_i} group by query"
+        4.times do |idx|
+          sql = "insert into temp_window_counts (period, query, count) select #{idx + 1}, query, sum(times) from daily_query_stats where day between #{(targetdate - window_size.days).to_s(:number).to_i} and #{targetdate.to_s(:number).to_i} group by query"
           puts sql
           ActiveRecord::Base.connection.execute(sql)
-          targetdate = targetdate - window_size.days
+          targetdate -= window_size.days
         end
 
-        # compute accelerations
         puts "Inserting into query_calculations..."
         sql = "insert into query_accelerations (query, day, window_size, score) select t1.query,  #{day.to_s(:number).to_i}, #{window_size}, #{score_clause} #{from_clause}"
         puts sql
         ActiveRecord::Base.connection.execute(sql)
 
-        sql = "drop table temp_window_counts"
+        sql = "drop table if exists temp_window_counts"
         ActiveRecord::Base.connection.execute(sql)
       end
     end
