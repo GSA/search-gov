@@ -19,6 +19,7 @@ namespace :usasearch do
     task :compute => :environment do
       #raise "Usage: rake usasearch:query_accelerations:compute [DATE=20090830]"
       day = ENV["DATE"].to_date rescue Date.yesterday
+      puts "Calculating proportions..."
       sql = "create temporary table proportions(query varchar(100), times int, uips int, proportion float) select query, sum(times) as times, count( ipaddr) as uips, count( ipaddr)/sum(times) proportion from daily_query_ip_stats  group by query having times > 10"
       ActiveRecord::Base.connection.execute(sql)
 
@@ -28,16 +29,21 @@ namespace :usasearch do
       [1, 7, 30].each do |window_size|
         targetdate = day
         #make temp table of N day counts
+        puts "Creating #{window_size}-day windows..."
         sql = "create table temp_window_counts (query varchar(100), period int, count int)"
+        puts sql
         ActiveRecord::Base.connection.execute(sql)
         4.times do |idx|
           sql = "insert into temp_window_counts (period, query, count) select #{idx}, query, sum(times) from daily_query_stats where day between date_sub(#{targetdate}, interval #{window_size} day) and #{targetdate} group by query"
+          puts sql
           ActiveRecord::Base.connection.execute(sql)
           targetdate = targetdate - window_size.days
         end
 
         # compute accelerations
+        puts "Inserting into query_calculations..."
         sql = "insert into query_accelerations (query, day, window_size, score) select t1.query,  #{day}, #{window_size}, #{score_clause} #{from_clause}"
+        puts sql
         ActiveRecord::Base.connection.execute(sql)
 
         sql = "drop table temp_window_counts"
