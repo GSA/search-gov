@@ -28,7 +28,7 @@ namespace :usasearch do
       [1, 7, 30].each do |window_size|
         targetdate = day
         #make temp table of N day counts
-        sql = "create temporary table temp_window_counts (query varchar(100), period int, count int)"
+        sql = "create table temp_window_counts (query varchar(100), period int, count int)"
         ActiveRecord::Base.connection.execute(sql)
         4.times do |idx|
           sql = "insert into temp_window_counts (period, query, count) select #{idx}, query, sum(times) from daily_query_stats where day between date_sub(#{targetdate}, interval #{window_size} day) and #{targetdate} group by query"
