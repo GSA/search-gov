@@ -33,7 +33,8 @@ namespace :usasearch do
         sql = "create table temp_window_counts (query varchar(100), period int, count int)"
         puts sql
         ActiveRecord::Base.connection.execute(sql)
-        4.times do |idx|
+        4.times do |i|
+          idx = i + 1
           sql = "insert into temp_window_counts (period, query, count) select #{idx}, query, sum(times) from daily_query_stats where day between date_sub(#{targetdate}, interval #{window_size} day) and #{targetdate} group by query"
           puts sql
           ActiveRecord::Base.connection.execute(sql)
