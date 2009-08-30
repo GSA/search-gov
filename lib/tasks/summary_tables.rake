@@ -18,7 +18,10 @@ namespace :usasearch do
     desc "compute 1,7, and 30-day query_accelerations for given YYYYMMDD date (defaults to yesterday)"
     task :compute => :environment do
       #raise "Usage: rake usasearch:query_accelerations:compute [DATE=20090830]"
-      sql = "drop table temp_window_counts"
+      sql = "drop table if exists temp_window_counts"
+      ActiveRecord::Base.connection.execute(sql)
+
+      sql = "delete from query_accelerations where day = #{day.to_s(:number).to_i}" 
       ActiveRecord::Base.connection.execute(sql)
 
       day = ENV["DATE"].to_date rescue Date.yesterday
