@@ -2,12 +2,29 @@ namespace :usasearch do
   namespace :daily_query_ip_stats do
 
     desc "initial population of daily_query_ip_stats from queries table. Destroys existing data in daily_query_ip_stats table."
-    task :populate_daily_query_ip_stats => :environment do
-      #raise "Usage: rake usasearch:daily_query_ip_stats:populate_daily_query_ip_stats"
+    task :populate => :environment do
+      #raise "Usage: rake usasearch:daily_query_ip_stats:populate"
       puts "Creating daily query IP stats..."
       sql = "truncate daily_query_ip_stats"
       ActiveRecord::Base.connection.execute(sql)
       sql = "insert ignore into daily_query_ip_stats (query, ipaddr, day, times) select query, ipaddr, date(timestamp) day, count(*) from queries where affiliate = 'usasearch.gov' and query not in ( 'cheesewiz' ,'clusty' ,' ', '1', 'test') group by day,query, ipaddr"
+      ActiveRecord::Base.connection.execute(sql)
+    end
+
+  end
+
+  namespace :daily_query_stats do
+
+    desc "initial population of daily_query_stats from queries & daily_queries_ip_stats table. Destroys existing data in daily_query_stats table."
+    task :populate => :environment do
+      #raise "Usage: rake usasearch:daily_query_stats:populate"
+      puts "Creating daily query stats..."
+      sql = "truncate daily_query_stats"
+      ActiveRecord::Base.connection.execute(sql)
+
+      calculate_proportions
+
+      sql = "insert into daily_query_stats (query, day,times) select d.query, d.day, count(*) from daily_query_ip_stats  d, proportions p where d.query = p.query and p.proportion > .10 group by d.query, d.day"
       ActiveRecord::Base.connection.execute(sql)
     end
 
@@ -25,9 +42,7 @@ namespace :usasearch do
       sql = "delete from query_accelerations where day = #{day.to_s(:number).to_i}"
       ActiveRecord::Base.connection.execute(sql)
 
-      puts "Calculating proportions..."
-      sql = "create temporary table proportions(query varchar(100), times int, uips int, proportion float) select query, sum(times) as times, count( ipaddr) as uips, count( ipaddr)/sum(times) proportion from daily_query_ip_stats  group by query having times > 10"
-      ActiveRecord::Base.connection.execute(sql)
+      calculate_proportions
 
       score_clause = "(((t1.count-t2.count)/t2.count) + ((t1.count-t3.count)/t3.count) * 0.5 + ((t1.count-t4.count)/t4.count) * 0.3 + ((t2.count-t3.count)/t3.count) * 0.5 + ((t3.count-t4.count)/t4.count) * 0.5) as score "
       from_clause = "from temp_window_counts as t1, temp_window_counts as t2, temp_window_counts as t3, temp_window_counts as t4 where t1.query = t2.query and t1.query = t3.query and t1.query = t4.query and t1.period = 1 and t2.period = 2 and t3.period=3 and t4.period = 4 and t1.count > 50"
@@ -57,5 +72,14 @@ namespace :usasearch do
         ActiveRecord::Base.connection.execute(sql)
       end
     end
+  end
+
+  private
+  def calculate_proportions
+    puts "Calculating proportions..."
+    sql = "create temporary table proportions(query varchar(100), times int, uips int, proportion float) select query, sum(times) as times, count( ipaddr) as uips, count( ipaddr)/sum(times) proportion from daily_query_ip_stats  group by query having times > 10"
+    ActiveRecord::Base.connection.execute(sql)
+    sql = "alter table proportions add index qp (query, proportion)"
+    ActiveRecord::Base.connection.execute(sql)
   end
 end
