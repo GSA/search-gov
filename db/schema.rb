@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090830131735) do
+ActiveRecord::Schema.define(:version => 20090830141034) do
 
   create_table "affiliates", :force => true do |t|
     t.string   "name",       :null => false
@@ -23,20 +23,29 @@ ActiveRecord::Schema.define(:version => 20090830131735) do
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
 
   create_table "daily_query_ip_stats", :force => true do |t|
-    t.date    "day",    :null => false
-    t.string  "query",  :null => false
-    t.string  "ipaddr", :null => false
-    t.integer "times",  :null => false
+    t.date    "day",                   :null => false
+    t.string  "query",  :limit => 100, :null => false
+    t.string  "ipaddr", :limit => 100, :null => false
+    t.integer "times",                 :null => false
   end
 
   add_index "daily_query_ip_stats", ["day", "query", "ipaddr"], :name => "index_daily_query_ip_stats_on_day_and_query_and_ipaddr", :unique => true
 
   create_table "daily_query_stats", :force => true do |t|
-    t.date    "day",   :null => false
-    t.string  "query", :null => false
-    t.integer "times", :null => false
+    t.date    "day",                  :null => false
+    t.string  "query", :limit => 100, :null => false
+    t.integer "times",                :null => false
   end
 
   add_index "daily_query_stats", ["day", "query"], :name => "index_daily_query_stats_on_day_and_query", :unique => true
+
+  create_table "query_accelerations", :force => true do |t|
+    t.date    "day",                        :null => false
+    t.integer "window_size",                :null => false
+    t.string  "query",       :limit => 100, :null => false
+    t.float   "score",                      :null => false
+  end
+
+  add_index "query_accelerations", ["day", "window_size", "score"], :name => "index_query_accelerations_on_day_and_window_size_and_score"
 
 end
