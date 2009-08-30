@@ -1,8 +1,8 @@
 namespace :usasearch do
   require 'webster'
   desc "truncates and creates sample data in daily_query_stats table for the last DAYS days"
-  task :populate_query_data => :environment do
-    raise "Usage: rake usasearch:populate_query_data DAYS=30 WORDCOUNT=1000" unless ENV["DAYS"] and ENV["WORDCOUNT"]
+  task :create_dummy_daily_query_stats_data => :environment do
+    raise "Usage: rake usasearch:create_dummy_daily_query_stats_data DAYS=30 WORDCOUNT=1000" unless ENV["DAYS"] and ENV["WORDCOUNT"]
     DailyQueryStat.delete_all
     days = ENV["DAYS"].to_i
     wordcount = ENV["WORDCOUNT"].to_i
