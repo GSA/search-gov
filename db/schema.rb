@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090830141034) do
+ActiveRecord::Schema.define(:version => 20090830150517) do
 
   create_table "affiliates", :force => true do |t|
     t.string   "name",       :null => false
@@ -25,11 +25,11 @@ ActiveRecord::Schema.define(:version => 20090830141034) do
   create_table "daily_query_ip_stats", :force => true do |t|
     t.date    "day",                   :null => false
     t.string  "query",  :limit => 100, :null => false
-    t.string  "ipaddr", :limit => 100, :null => false
+    t.string  "ipaddr", :limit => 17,  :null => false
     t.integer "times",                 :null => false
   end
 
-  add_index "daily_query_ip_stats", ["day", "query", "ipaddr"], :name => "index_daily_query_ip_stats_on_day_and_query_and_ipaddr", :unique => true
+  add_index "daily_query_ip_stats", ["query"], :name => "index_daily_query_ip_stats_on_query"
 
   create_table "daily_query_stats", :force => true do |t|
     t.date    "day",                  :null => false
