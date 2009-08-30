@@ -1,5 +1,8 @@
 namespace :usasearch do
   namespace :daily_query_ip_stats do
+    insert_sql = "insert ignore into daily_query_ip_stats (query, ipaddr, day, times) select lower(query), ipaddr, date(timestamp) day, count(*) from queries "
+    where_clause = "where affiliate = 'usasearch.gov' and query not in ( 'cheesewiz' ,'clusty' ,' ', '1', 'test')"
+    group_by = "group by day,query, ipaddr"
 
     desc "initial population of daily_query_ip_stats from queries table. Destroys existing data in daily_query_ip_stats table."
     task :populate => :environment do
@@ -7,13 +10,27 @@ namespace :usasearch do
       puts "Creating daily query IP stats..."
       sql = "truncate daily_query_ip_stats"
       ActiveRecord::Base.connection.execute(sql)
-      sql = "insert ignore into daily_query_ip_stats (query, ipaddr, day, times) select lower(query), ipaddr, date(timestamp) day, count(*) from queries where affiliate = 'usasearch.gov' and query not in ( 'cheesewiz' ,'clusty' ,' ', '1', 'test') group by day,query, ipaddr"
+      sql = "#{insert_sql} #{where_clause} #{group_by}"
+      puts sql
+      ActiveRecord::Base.connection.execute(sql)
+    end
+
+    desc "compute daily_query_ip_stats from queries table for given YYYYMMDD date (defaults to yesterday)"
+    task :compute => :environment do
+      #raise "Usage: rake usasearch:daily_query_ip_stats:compute [DATE=20090830]"
+      day = ENV["DATE"].to_date rescue Date.yesterday
+      puts "Creating daily query IP stats for #{day}..."
+      sql = "#{insert_sql} #{where_clause} and date(timestamp) = #{day.to_s(:number).to_i} #{group_by}"
+      puts sql
       ActiveRecord::Base.connection.execute(sql)
     end
 
   end
 
   namespace :daily_query_stats do
+    insert_sql = "insert into daily_query_stats (query, day,times) select d.query, d.day, count(*) from daily_query_ip_stats  d, proportions p"
+    where_clause = "where d.query = p.query and p.proportion > .10"
+    group_by = "group by d.query, d.day"
 
     desc "initial population of daily_query_stats from queries & daily_queries_ip_stats table. Destroys existing data in daily_query_stats table."
     task :populate => :environment do
@@ -24,7 +41,21 @@ namespace :usasearch do
 
       calculate_proportions
 
-      sql = "insert into daily_query_stats (query, day,times) select d.query, d.day, count(*) from daily_query_ip_stats  d, proportions p where d.query = p.query and p.proportion > .10 group by d.query, d.day"
+      sql = "#{insert_sql} #{where_clause} #{group_by}"
+      puts sql
+      ActiveRecord::Base.connection.execute(sql)
+    end
+
+    desc "compute daily_query_stats from queries & daily_queries_ip_stats table for given YYYYMMDD date (defaults to yesterday)"
+    task :compute => :environment do
+      #raise "Usage: rake usasearch:daily_query_stats:compute [DATE=20090830]"
+      day = ENV["DATE"].to_date rescue Date.yesterday
+      puts "Creating daily query stats for day #{day}..."
+
+      calculate_proportions
+
+      sql = "#{insert_sql} #{where_clause} and d.day = #{day.to_s(:number).to_i} #{group_by}"
+      puts sql
       ActiveRecord::Base.connection.execute(sql)
     end
 
