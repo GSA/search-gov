@@ -12,4 +12,14 @@ describe Analytics::HomeController do
     assigns[:trailing_month_popular_terms].should == "month"
   end
 
+  it "should assign biggest movers for daily, weekly, and monthly windows" do
+    QueryAcceleration.should_receive(:biggest_movers_over_window).with(1).and_return("ydaybm")
+    QueryAcceleration.should_receive(:biggest_movers_over_window).with(7).and_return("weekbm")
+    QueryAcceleration.should_receive(:biggest_movers_over_window).with(30).and_return("monthbm")
+    get :index
+    assigns[:yesterday_biggest_movers].should == "ydaybm"
+    assigns[:weekly_biggest_movers].should == "weekbm"
+    assigns[:monthly_biggest_movers].should == "monthbm"
+  end
+
 end

@@ -3,18 +3,18 @@
 .span-12
   =display_most_popular(@yesterday_popular_terms)
 .span-12.last
-  %h3 Biggest Movers
+  =display_biggest_movers(@yesterday_biggest_movers)
 
 .span-24
   %h2 Last 7 days
 .span-12
   =display_most_popular(@trailing_week_popular_terms)
 .span-12.last
-  %h3 Biggest Movers
+  =display_biggest_movers(@weekly_biggest_movers)
 
 .span-24
   %h2 Last 30 days
 .span-12
   =display_most_popular(@trailing_month_popular_terms)
 .span-12.last
-  %h3 Biggest Movers
+  =display_biggest_movers(@monthly_biggest_movers)
