@@ -88,9 +88,9 @@ namespace :usasearch do
       calculate_proportions
 
       score_clause = "(((t1.count-t2.count)/t2.count) + ((t1.count-t3.count)/t3.count) * 0.5 + ((t1.count-t4.count)/t4.count) * 0.3 + ((t2.count-t3.count)/t3.count) * 0.5 + ((t3.count-t4.count)/t4.count) * 0.5) as score "
-      from_clause = "from temp_window_counts as t1, temp_window_counts as t2, temp_window_counts as t3, temp_window_counts as t4 where t1.query = t2.query and t1.query = t3.query and t1.query = t4.query and t1.period = 1 and t2.period = 2 and t3.period=3 and t4.period = 4 and t1.count > #{NUM_QUERIES_PER_WINDOW[window_size]} having score > 1.0"
 
       [30, 7, 1].each do |window_size|
+        from_clause = "from temp_window_counts as t1, temp_window_counts as t2, temp_window_counts as t3, temp_window_counts as t4 where t1.query = t2.query and t1.query = t3.query and t1.query = t4.query and t1.period = 1 and t2.period = 2 and t3.period=3 and t4.period = 4 and t1.count > #{NUM_QUERIES_PER_WINDOW[window_size]} having score > 1.0"
         targetdate = day
         puts "Creating #{window_size}-day windows..."
         sql = "create table temp_window_counts (query varchar(100), period int, count int)"
