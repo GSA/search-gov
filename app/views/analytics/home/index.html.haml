@@ -1,45 +1,20 @@
 .span-24
   %h2 Yesterday
 .span-12
-  %h3 Most Popular
-  - if @yesterday_popular_terms
-    %table
-      - @yesterday_popular_terms.each_pair do |query, times|
-        %tr
-          %td= query
-          %td= times
-  - else
-    %p.alt Query data unavailable
-
+  =display_most_popular(@yesterday_popular_terms)
 .span-12.last
   %h3 Biggest Movers
 
 .span-24
   %h2 Last 7 days
 .span-12
-  %h3 Most Popular
-  - if @trailing_week_popular_terms
-    %table
-      - @trailing_week_popular_terms.each_pair do |query, times|
-        %tr
-          %td= query
-          %td= times
-  - else
-    %p.alt Query data unavailable
+  =display_most_popular(@trailing_week_popular_terms)
 .span-12.last
   %h3 Biggest Movers
 
 .span-24
   %h2 Last 30 days
 .span-12
-  %h3 Most Popular
-  - if @trailing_month_popular_terms
-    %table
-      - @trailing_month_popular_terms.each_pair do |query, times|
-        %tr
-          %td= query
-          %td= times
-  - else
-    %p.alt Query data unavailable
+  =display_most_popular(@trailing_month_popular_terms)
 .span-12.last
   %h3 Biggest Movers
