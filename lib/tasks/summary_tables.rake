@@ -20,7 +20,12 @@ namespace :usasearch do
       #raise "Usage: rake usasearch:daily_query_ip_stats:compute [DATE=20090830]"
       day = ENV["DATE"].to_date rescue Date.yesterday
       puts "Creating daily query IP stats for #{day}..."
-      sql = "#{insert_sql} #{where_clause} and date(timestamp) = #{day.to_s(:number).to_i} #{group_by}"
+
+      yyyymmdd = day.to_s(:number).to_i
+      sql = "delete from daily_query_ip_stats where day = #{yyyymmdd}"
+      ActiveRecord::Base.connection.execute(sql)
+
+      sql = "#{insert_sql} #{where_clause} and date(timestamp) = #{yyyymmdd} #{group_by}"
       puts sql
       ActiveRecord::Base.connection.execute(sql)
     end
@@ -52,9 +57,13 @@ namespace :usasearch do
       day = ENV["DATE"].to_date rescue Date.yesterday
       puts "Creating daily query stats for day #{day}..."
 
+      yyyymmdd = day.to_s(:number).to_i
+      sql = "delete from daily_query_stats where day = #{yyyymmdd}"
+      ActiveRecord::Base.connection.execute(sql)
+
       calculate_proportions
 
-      sql = "#{insert_sql} #{where_clause} and d.day = #{day.to_s(:number).to_i} #{group_by}"
+      sql = "#{insert_sql} #{where_clause} and d.day = #{yyyymmdd} #{group_by}"
       puts sql
       ActiveRecord::Base.connection.execute(sql)
     end
@@ -70,7 +79,9 @@ namespace :usasearch do
       ActiveRecord::Base.connection.execute(sql)
 
       day = ENV["DATE"].to_date rescue Date.yesterday
-      sql = "delete from query_accelerations where day = #{day.to_s(:number).to_i}"
+      yyyymmdd = day.to_s(:number).to_i
+
+      sql = "delete from query_accelerations where day = #{yyyymmdd}"
       ActiveRecord::Base.connection.execute(sql)
 
       calculate_proportions
@@ -92,7 +103,7 @@ namespace :usasearch do
         end
 
         puts "Inserting into query_calculations..."
-        sql = "insert into query_accelerations (query, day, window_size, score) select t1.query,  #{day.to_s(:number).to_i}, #{window_size}, #{score_clause} #{from_clause}"
+        sql = "insert into query_accelerations (query, day, window_size, score) select t1.query,  #{yyyymmdd}, #{window_size}, #{score_clause} #{from_clause}"
         puts sql
         ActiveRecord::Base.connection.execute(sql)
 
