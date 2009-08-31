@@ -71,6 +71,7 @@ namespace :usasearch do
   end
 
   namespace :query_accelerations do
+    NUM_QUERIES_PER_WINDOW = { 1 => 7, 7=>20, 30 => 50}
 
     desc "compute 1,7, and 30-day query_accelerations for given YYYYMMDD date (defaults to yesterday)"
     task :compute => :environment do
@@ -87,7 +88,7 @@ namespace :usasearch do
       calculate_proportions
 
       score_clause = "(((t1.count-t2.count)/t2.count) + ((t1.count-t3.count)/t3.count) * 0.5 + ((t1.count-t4.count)/t4.count) * 0.3 + ((t2.count-t3.count)/t3.count) * 0.5 + ((t3.count-t4.count)/t4.count) * 0.5) as score "
-      from_clause = "from temp_window_counts as t1, temp_window_counts as t2, temp_window_counts as t3, temp_window_counts as t4 where t1.query = t2.query and t1.query = t3.query and t1.query = t4.query and t1.period = 1 and t2.period = 2 and t3.period=3 and t4.period = 4 and t1.count > 50"
+      from_clause = "from temp_window_counts as t1, temp_window_counts as t2, temp_window_counts as t3, temp_window_counts as t4 where t1.query = t2.query and t1.query = t3.query and t1.query = t4.query and t1.period = 1 and t2.period = 2 and t3.period=3 and t4.period = 4 and t1.count > #{NUM_QUERIES_PER_WINDOW[window_size]} having score > 1.0"
 
       [30, 7, 1].each do |window_size|
         targetdate = day
