@@ -60,8 +60,8 @@ describe DailyQueryStat do
 
       it "should rank biggest movers based on search popularity and the number of days parameter" do
         yday = DailyQueryStat.biggest_mover_popularity_over_window(1)
-        yday.first[:query].should == "yday least popular highest score"
-        yday.last[:query].should == "yday most popular lowest score"
+        yday.first[:query].should == "yday most popular lowest score"
+        yday.last[:query].should == "yday least popular highest score"
       end
     end
 
