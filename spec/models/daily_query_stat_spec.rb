@@ -48,4 +48,32 @@ describe DailyQueryStat do
     end
   end
 
+  describe '#biggest_mover_popularity_over_window' do
+    context "when the table is populated" do
+      before do
+        day = Date.yesterday.to_date
+        DailyQueryStat.create!(:day => day, :query => "yday least popular highest score", :times => 1 )
+        DailyQueryStat.create!(:day => day, :query => "yday most popular lowest score", :times => 4 )
+        QueryAcceleration.create!(:day => day, :query => "yday least popular highest score", :window_size => 1, :score => 2.0)
+        QueryAcceleration.create!(:day => day, :query => "yday most popular lowest score", :window_size => 1, :score => 1.0)
+      end
+
+      it "should rank biggest movers based on search popularity and the number of days parameter" do
+        yday = DailyQueryStat.biggest_mover_popularity_over_window(1)
+        yday.first[:query].should == "yday least popular highest score"
+        yday.last[:query].should == "yday most popular lowest score"
+      end
+    end
+
+    context "when the table has no data for the time period specified" do
+      before do
+        DailyQueryStat.delete_all
+      end
+
+      it "should return nil" do
+        DailyQueryStat.biggest_mover_popularity_over_window(1).should be_nil
+      end
+    end
+  end
+
 end

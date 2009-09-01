@@ -22,7 +22,7 @@ module Analytics::HomeHelper
       rows = ""
       query_accelerations.each do |qa|
         cells = content_tag(:td, qa.query, :style=>"text-align:left")
-        cells << content_tag(:td, qa.score, :style=>"text-align:right")
+        cells << content_tag(:td, qa.sum_times, :style=>"text-align:right")
         rows << content_tag(:tr, cells)
       end
       html << content_tag(:table, rows)
