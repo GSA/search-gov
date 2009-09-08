@@ -9,6 +9,7 @@ namespace :usasearch do
       #raise "Usage: rake usasearch:daily_query_ip_stats:populate"
       puts "Creating daily query IP stats..."
       sql = "truncate daily_query_ip_stats"
+      puts sql
       ActiveRecord::Base.connection.execute(sql)
       sql = "#{insert_sql} #{where_clause} #{group_by}"
       puts sql
@@ -23,6 +24,7 @@ namespace :usasearch do
 
       yyyymmdd = day.to_s(:number).to_i
       sql = "delete from daily_query_ip_stats where day = #{yyyymmdd}"
+      puts sql
       ActiveRecord::Base.connection.execute(sql)
 
       sql = "#{insert_sql} #{where_clause} and date(timestamp) = #{yyyymmdd} #{group_by}"
@@ -42,6 +44,7 @@ namespace :usasearch do
       #raise "Usage: rake usasearch:daily_query_stats:populate"
       puts "Creating daily query stats..."
       sql = "truncate daily_query_stats"
+      puts sql
       ActiveRecord::Base.connection.execute(sql)
 
       calculate_proportions
@@ -59,6 +62,7 @@ namespace :usasearch do
 
       yyyymmdd = day.to_s(:number).to_i
       sql = "delete from daily_query_stats where day = #{yyyymmdd}"
+      puts sql
       ActiveRecord::Base.connection.execute(sql)
 
       calculate_proportions
@@ -77,12 +81,14 @@ namespace :usasearch do
     task :compute => :environment do
       #raise "Usage: rake usasearch:query_accelerations:compute [DATE=20090830]"
       sql = "drop table if exists temp_window_counts"
+      puts sql
       ActiveRecord::Base.connection.execute(sql)
 
       day = ENV["DATE"].to_date rescue Date.yesterday
       yyyymmdd = day.to_s(:number).to_i
 
       sql = "delete from query_accelerations where day = #{yyyymmdd}"
+      puts sql
       ActiveRecord::Base.connection.execute(sql)
 
       calculate_proportions
@@ -109,6 +115,7 @@ namespace :usasearch do
         ActiveRecord::Base.connection.execute(sql)
 
         sql = "drop table if exists temp_window_counts"
+        puts sql
         ActiveRecord::Base.connection.execute(sql)
       end
     end
@@ -118,8 +125,10 @@ namespace :usasearch do
   def calculate_proportions
     puts "Calculating proportions..."
     sql = "create temporary table proportions(query varchar(100), times int, uips int, proportion float) select query, sum(times) as times, count( ipaddr) as uips, count( ipaddr)/sum(times) proportion from daily_query_ip_stats  group by query having times > 10"
+    puts sql
     ActiveRecord::Base.connection.execute(sql)
     sql = "alter table proportions add index qp (query, proportion)"
+    puts sql
     ActiveRecord::Base.connection.execute(sql)
   end
 end
