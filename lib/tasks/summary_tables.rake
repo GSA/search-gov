@@ -109,6 +109,13 @@ namespace :usasearch do
           targetdate -= window_size.days
         end
 
+        puts "Backfilling any missing query terms with a count of 1"
+        2.upto(4) do |idx|
+          sql = "insert into temp_window_counts (period, query, count) select #{idx}, t1.query, 1 from temp_window_counts as t1 where t1.period = 1 and t1.count > #{NUM_QUERIES_PER_WINDOW[window_size]} and t1.query not in (select t2.query from temp_window_counts as t2 where period=#{idx})"
+          puts sql
+          ActiveRecord::Base.connection.execute(sql)          
+        end
+
         puts "Inserting into query_calculations..."
         sql = "insert into query_accelerations (query, day, window_size, score) select t1.query,  #{yyyymmdd}, #{window_size}, #{score_clause} #{from_clause}"
         puts sql
