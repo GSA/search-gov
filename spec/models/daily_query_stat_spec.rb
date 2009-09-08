@@ -21,18 +21,18 @@ describe DailyQueryStat do
   describe '#popular_terms_over_days' do
     context "when the table is populated" do
       before do
-        DailyQueryStat.create!(:day => 2.days.ago.to_date, :query => "two days ago most popular", :times => 9 )
-        DailyQueryStat.create!(:day => 2.days.ago.to_date, :query => "yday most popular", :times => 2 )
-        DailyQueryStat.create!(:day => 1.days.ago.to_date, :query => "two days ago most popular", :times => 1 )
-        DailyQueryStat.create!(:day => 1.days.ago.to_date, :query => "yday most popular", :times => 4 )
+        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "older most popular", :times => 9 )
+        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "recent day most popular", :times => 2 )
+        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "older most popular", :times => 1 )
+        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "recent day most popular", :times => 4 )
       end
 
       it "should calculate popularity sums based on the number of days parameter" do
         yday = DailyQueryStat.popular_terms_over_days(1)
-        yday.first[0].should == "yday most popular"
+        yday.first[0].should == "recent day most popular"
         yday.first[1].should == 4
         twodaysago = DailyQueryStat.popular_terms_over_days(2)
-        twodaysago.first[0].should == "two days ago most popular"
+        twodaysago.first[0].should == "older most popular"
         twodaysago.first[1].should == 10
       end
     end
@@ -51,17 +51,17 @@ describe DailyQueryStat do
   describe '#biggest_mover_popularity_over_window' do
     context "when the table is populated" do
       before do
-        day = Date.yesterday.to_date
-        DailyQueryStat.create!(:day => day, :query => "yday least popular highest score", :times => 1 )
-        DailyQueryStat.create!(:day => day, :query => "yday most popular lowest score", :times => 4 )
-        QueryAcceleration.create!(:day => day, :query => "yday least popular highest score", :window_size => 1, :score => 2.0)
-        QueryAcceleration.create!(:day => day, :query => "yday most popular lowest score", :window_size => 1, :score => 1.0)
+        day = 3.days.ago
+        DailyQueryStat.create!(:day => day, :query => "most recent day least popular highest score", :times => 1 )
+        DailyQueryStat.create!(:day => day, :query => "most recent day most popular lowest score", :times => 4 )
+        QueryAcceleration.create!(:day => day, :query => "most recent day least popular highest score", :window_size => 1, :score => 2.0)
+        QueryAcceleration.create!(:day => day, :query => "most recent day most popular lowest score", :window_size => 1, :score => 1.0)
       end
 
-      it "should rank biggest movers based on search popularity and the number of days parameter" do
-        yday = DailyQueryStat.biggest_mover_popularity_over_window(1)
-        yday.first[:query].should == "yday most popular lowest score"
-        yday.last[:query].should == "yday least popular highest score"
+      it "should rank biggest movers for the most recent data available based on search popularity and the number of days parameter" do
+        movers = DailyQueryStat.biggest_mover_popularity_over_window(1)
+        movers.first[:query].should == "most recent day most popular lowest score"
+        movers.last[:query].should == "most recent day least popular highest score"
       end
     end
 
@@ -73,6 +73,13 @@ describe DailyQueryStat do
       it "should return nil" do
         DailyQueryStat.biggest_mover_popularity_over_window(1).should be_nil
       end
+    end
+  end
+
+  describe "#most_recent_populated_date" do
+    it "should return the most recent date entered into the table" do
+      DailyQueryStat.should_receive(:maximum).with(:day)
+      DailyQueryStat.most_recent_populated_date
     end
   end
 

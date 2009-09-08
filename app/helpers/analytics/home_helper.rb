@@ -32,4 +32,8 @@ module Analytics::HomeHelper
 
     html
   end
+
+  def display_most_recent_date_available(day)
+    day.nil? ? "Query data currently unavailable" : "Data for #{day.to_s(:long)}"
+  end
 end

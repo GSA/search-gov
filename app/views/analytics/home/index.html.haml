@@ -1,20 +1,20 @@
 .span-24
-  %h2 Yesterday
-.span-12
-  =display_most_popular(@yesterday_popular_terms)
-.span-12.last
-  =display_biggest_movers(@yesterday_biggest_movers)
+  %h2= display_most_recent_date_available(@most_recent_day)
+.span-12{:id=>"dqs1"}
+  =display_most_popular(@most_recent_day_popular_terms)
+.span-12.last{:id=>"qas1"}
+  =display_biggest_movers(@most_recent_day_biggest_movers)
 
 .span-24
-  %h2 Last 7 days
-.span-12
+  %h2 Prior 7 days
+.span-12{:id=>"dqs7"}
   =display_most_popular(@trailing_week_popular_terms)
-.span-12.last
+.span-12.last{:id=>"qas7"}
   =display_biggest_movers(@weekly_biggest_movers)
 
 .span-24
-  %h2 Last 30 days
-.span-12
+  %h2 Prior 30 days
+.span-12{:id=>"dqs30"}
   =display_most_popular(@trailing_month_popular_terms)
-.span-12.last
+.span-12.last{:id=>"qas30"}
   =display_biggest_movers(@monthly_biggest_movers)
