@@ -1,4 +1,8 @@
 .span-24
+  %form
+    Show up to
+    = select_tag("num_results_select", options_for_select( [10, 50, 100, 500, 1000], @num_results), { :onchange => 'location = "/analytics/?num_results="+this.options[this.selectedIndex].value;' } )
+    results per section
   %h2= display_most_recent_date_available(@most_recent_day)
 .span-12{:id=>"dqs1"}
   =display_most_popular(@most_recent_day_popular_terms)

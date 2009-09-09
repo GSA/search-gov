@@ -6,8 +6,8 @@ class QueryAcceleration < ActiveRecord::Base
   validates_uniqueness_of :query, :scope => [:day, :window_size]
   RESULTS_SIZE = 10
 
-  def self.biggest_movers_over_window(window_size)
-    results = QueryAcceleration.find_all_by_day_and_window_size(Date.yesterday.to_date, window_size, :order => "score desc", :limit => RESULTS_SIZE)
+  def self.biggest_movers_over_window(window_size, num_results = RESULTS_SIZE)
+    results = QueryAcceleration.find_all_by_day_and_window_size(Date.yesterday.to_date, window_size, :order => "score desc", :limit => num_results)
     results.empty? ? nil : results
   end
 

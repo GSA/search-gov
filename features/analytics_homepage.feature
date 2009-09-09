@@ -5,7 +5,7 @@ Feature: Analytics Homepage
     and biggest mover queries. Each of these is broken down into different timeframes (1 day, 7 day, and 30 day).
 
   Scenario: Viewing the homepage
-    Given there is analytics data from "20090801" thru "20090901"
+    Given there is analytics data from "20090831" thru "20090901"
     When I am on the analytics homepage
     Then I should see "Data for September  1, 2009"
     And in "dqs1" I should not see "Query data unavailable"

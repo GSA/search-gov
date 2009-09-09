@@ -37,6 +37,10 @@ describe QueryAcceleration do
         QueryAcceleration.biggest_movers_over_window(7).last.score.should == -7.0
       end
 
+      it "should use the num_results parameter to determine result set size" do
+        QueryAcceleration.biggest_movers_over_window(7, 1).size.should == 1
+      end
+
     end
 
     context "when the table has no data for the time period specified" do

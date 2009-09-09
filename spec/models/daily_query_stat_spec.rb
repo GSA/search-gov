@@ -35,6 +35,10 @@ describe DailyQueryStat do
         twodaysago.first[0].should == "older most popular"
         twodaysago.first[1].should == 10
       end
+
+      it "should use the num_results parameter to determine result set size" do
+        DailyQueryStat.popular_terms_over_days(1,1).size.should == 1
+      end
     end
 
     context "when the table has no data for the time period specified" do
@@ -62,6 +66,10 @@ describe DailyQueryStat do
         movers = DailyQueryStat.biggest_mover_popularity_over_window(1)
         movers.first[:query].should == "most recent day most popular lowest score"
         movers.last[:query].should == "most recent day least popular highest score"
+      end
+
+      it "should use the num_results parameter to determine result set size" do
+        DailyQueryStat.biggest_mover_popularity_over_window(1,1).size.should == 1
       end
     end
 
