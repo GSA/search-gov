@@ -3,11 +3,14 @@ module Analytics::HomeHelper
     html = content_tag(:h3, "Most Popular")
     if pairs
       rows = ""
+      count = 1
       pairs.each_pair do |query, times|
         query_link = link_to(query, query_timeline_path(query))
-        cells = content_tag(:td, query_link, :style=>"text-align:left")
+        query_item = "#{count}. #{query_link}"
+        cells = content_tag(:td, query_item, :style=>"text-align:left")
         cells << content_tag(:td, times, :style=>"text-align:right")
         rows << content_tag(:tr, cells)
+        count += 1
       end
       html << content_tag(:table, rows)
     else
@@ -21,9 +24,10 @@ module Analytics::HomeHelper
     html = content_tag(:h3, "Biggest Movers")
     if query_accelerations
       rows = ""
-      query_accelerations.each do |qa|
+      query_accelerations.each_with_index do |qa, count|
         query_link = link_to(qa.query, query_timeline_path(qa.query))
-        cells = content_tag(:td, query_link, :style=>"text-align:left")
+        query_item = "#{count + 1}. #{query_link}"
+        cells = content_tag(:td, query_item, :style=>"text-align:left")
         cells << content_tag(:td, qa.sum_times, :style=>"text-align:right")
         rows << content_tag(:tr, cells)
       end
