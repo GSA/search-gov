@@ -5,5 +5,6 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.root :controller => "home"
   map.analytics_home_page '/analytics', :controller => "analytics/home"
+  map.query_timeline '/analytics/timeline/:query', :controller => 'analytics/timeline', :action => 'show'#, :requirements => {:method => :get}
   map.home_page '/', :controller => "home"
 end

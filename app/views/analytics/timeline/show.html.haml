@@ -1,0 +1,3 @@
+%center
+  - annotated_timeline_for(@dates, :width => 900, :height => 300) do |atl|
+    - atl.add_line(@query, @series, :value => :y)

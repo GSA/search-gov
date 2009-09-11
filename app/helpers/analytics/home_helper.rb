@@ -4,7 +4,8 @@ module Analytics::HomeHelper
     if pairs
       rows = ""
       pairs.each_pair do |query, times|
-        cells = content_tag(:td, query, :style=>"text-align:left")
+        query_link = link_to(query, query_timeline_path(query))
+        cells = content_tag(:td, query_link, :style=>"text-align:left")
         cells << content_tag(:td, times, :style=>"text-align:right")
         rows << content_tag(:tr, cells)
       end
@@ -21,7 +22,8 @@ module Analytics::HomeHelper
     if query_accelerations
       rows = ""
       query_accelerations.each do |qa|
-        cells = content_tag(:td, qa.query, :style=>"text-align:left")
+        query_link = link_to(qa.query, query_timeline_path(qa.query))
+        cells = content_tag(:td, query_link, :style=>"text-align:left")
         cells << content_tag(:td, qa.sum_times, :style=>"text-align:right")
         rows << content_tag(:tr, cells)
       end

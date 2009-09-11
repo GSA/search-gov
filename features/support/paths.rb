@@ -8,6 +8,8 @@ module NavigationHelpers
       search_path
     when /the analytics homepage/
       analytics_home_page_path
+    when /the timeline page for "([^\"]*)"$/
+      query_timeline_path($1)
 
     # Add more mappings here.
     # Here is a more fancy example:
