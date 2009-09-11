@@ -9,3 +9,4 @@ Feature: Timeline for query
     Then I should see "aaaf"
     When I follow "aaaf"
     Then I should be on the timeline page for "aaaf"
+    And I should see "Interest over time for 'aaaf'"
