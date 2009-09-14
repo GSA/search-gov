@@ -113,7 +113,7 @@ namespace :usasearch do
         2.upto(4) do |idx|
           sql = "insert into temp_window_counts (period, query, count) select #{idx}, t1.query, 1 from temp_window_counts as t1 where t1.period = 1 and t1.count > #{NUM_QUERIES_PER_WINDOW[window_size]} and t1.query not in (select t2.query from temp_window_counts as t2 where period=#{idx})"
           puts sql
-          ActiveRecord::Base.connection.execute(sql)          
+          ActiveRecord::Base.connection.execute(sql)
         end
 
         puts "Inserting into query_calculations..."
@@ -131,7 +131,7 @@ namespace :usasearch do
   private
   def calculate_proportions
     puts "Calculating proportions..."
-    sql = "create temporary table proportions(query varchar(100), times int, uips int, proportion float) select query, sum(times) as times, count( ipaddr) as uips, count( ipaddr)/sum(times) proportion from daily_query_ip_stats  group by query having times > 10"
+    sql = "create temporary table proportions(query varchar(100), times int, uips int, proportion float) select query, sum(times) as times, count( distinct ipaddr) as uips, count( distinct ipaddr)/sum(times) proportion from daily_query_ip_stats  group by query having times > 10"
     puts sql
     ActiveRecord::Base.connection.execute(sql)
     sql = "alter table proportions add index qp (query, proportion)"
