@@ -191,7 +191,6 @@ describe "summary_tables rake tasks" do
           @rake[@task_name].invoke
           DailyQueryStat.find_by_query('some search term').should be_nil
         end
-
       end
 
       context "when the proportion of requesting IP's to total requests is 0.10 or less" do
@@ -248,6 +247,77 @@ describe "summary_tables rake tasks" do
           DailyQueryStat.find_by_day(Date.today).should be_nil
           DailyQueryStat.find_by_day(Date.tomorrow).should be_nil
           DailyQueryStat.find_by_day(Date.yesterday).should_not be_nil
+        end
+      end
+    end
+
+    describe "usasearch:query_accelerations:compute" do
+      before do
+        @task_name = "usasearch:query_accelerations:compute"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when accelerating DailyQueryStats data exists for prior 4 days thru today" do
+        before do
+          DailyQueryStat.delete_all
+          QueryAcceleration.delete_all
+          start_day = Date.today.to_date
+          day = start_day
+          times = 10000000
+          4.times do
+            DailyQueryStat.create!(:day => day, :times => times, :query => @valid_attributes[:query])
+            times /= 100
+            day -= 1.day
+          end
+          day = start_day - 1.week
+          times = 100
+          3.times do
+            DailyQueryStat.create!(:day => day, :times => times, :query => @valid_attributes[:query])
+            times /= 10
+            day -= 1.week
+          end
+          day = start_day - 2.months
+          times = 10
+          2.times do
+            DailyQueryStat.create!(:day => day, :times => times, :query => @valid_attributes[:query])
+            times /= 10
+            day -= 1.month
+          end
+        end
+
+        it "should populate query_accelerations from DailyQueryStats table for a given day" do
+          @rake[@task_name].invoke(Date.today.to_s(:number))
+          QueryAcceleration.find_by_day(Date.yesterday).should be_nil
+          QueryAcceleration.find_by_day(Date.tomorrow).should be_nil
+          QueryAcceleration.find_by_day_and_query_and_window_size(Date.today, @valid_attributes[:query], 1).score.should == 308198
+          QueryAcceleration.find_by_day_and_query_and_window_size(Date.today, @valid_attributes[:query], 7).score.should == 3581310
+          QueryAcceleration.find_by_day_and_query_and_window_size(Date.today, @valid_attributes[:query], 30).score.should == 13636500
+        end
+
+        it "should default to yesterday" do
+          @rake[@task_name].invoke
+          QueryAcceleration.find_by_day(Date.today).should be_nil
+          QueryAcceleration.find_by_day(Date.tomorrow).should be_nil
+          QueryAcceleration.find_by_day(Date.yesterday).should_not be_nil
+        end
+      end
+
+      context "when accelerating DailyQueryStats data exists for prior 4 days thru today with a day missing for one of the counts" do
+        before do
+          DailyQueryStat.delete_all
+          QueryAcceleration.delete_all
+          # no queries came in for the term 4 days ago
+          DailyQueryStat.create!(:day => 3.days.ago.to_date, :times => 10, :query => @valid_attributes[:query])
+          DailyQueryStat.create!(:day => 2.days.ago.to_date, :times => 100, :query => @valid_attributes[:query])
+          DailyQueryStat.create!(:day => 1.day.ago.to_date, :times => 1000, :query => @valid_attributes[:query])
+        end
+
+        it "should still populate query_accelerations for that 1-day window" do
+          @rake[@task_name].invoke
+          QueryAcceleration.find_by_day_and_query_and_window_size(Date.yesterday, @valid_attributes[:query], 1).should_not be_nil
         end
       end
     end

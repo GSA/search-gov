@@ -59,13 +59,13 @@ namespace :usasearch do
     @min_num_queries_per_window = { 1 => 7, 7=>20, 30 => 50}
 
     desc "compute 1,7, and 30-day query_accelerations for given YYYYMMDD date (defaults to yesterday)"
-    task :compute => :environment do
-      #raise "Usage: rake usasearch:query_accelerations:compute [DATE=20090830]"
+    task :compute, :day, :needs => :environment do |t, args|
+      #raise "Usage: rake usasearch:query_accelerations:compute [YYYYMMDD]"
+      args.with_defaults(:day => Date.yesterday.to_s(:number))
+      day = args.day.to_date
+      yyyymmdd = args.day.to_i
       sql = "drop table if exists temp_window_counts"
       ActiveRecord::Base.connection.execute(sql)
-
-      day = ENV["DATE"].to_date rescue Date.yesterday
-      yyyymmdd = day.to_s(:number).to_i
 
       sql = "delete from query_accelerations where day = #{yyyymmdd}"
       ActiveRecord::Base.connection.execute(sql)
@@ -75,6 +75,9 @@ namespace :usasearch do
       score_clause = "(((t1.count-t2.count)/t2.count) + ((t1.count-t3.count)/t3.count) * 0.5 + ((t1.count-t4.count)/t4.count) * 0.3 + ((t2.count-t3.count)/t3.count) * 0.5 + ((t3.count-t4.count)/t4.count) * 0.5) as score "
 
       [30, 7, 1].each do |window_size|
+        sql = "drop table if exists temp_window_counts"
+        ActiveRecord::Base.connection.execute(sql)
+
         from_clause = "from temp_window_counts as t1, temp_window_counts as t2, temp_window_counts as t3, temp_window_counts as t4 where t1.query = t2.query and t1.query = t3.query and t1.query = t4.query and t1.period = 1 and t2.period = 2 and t3.period=3 and t4.period = 4 and t1.count > #{@min_num_queries_per_window[window_size]} having score > 1.0"
         targetdate = day
         sql = "create table temp_window_counts (query varchar(100), period int, count int)"
@@ -91,9 +94,6 @@ namespace :usasearch do
         end
 
         sql = "insert into query_accelerations (query, day, window_size, score) select t1.query,  #{yyyymmdd}, #{window_size}, #{score_clause} #{from_clause}"
-        ActiveRecord::Base.connection.execute(sql)
-
-        sql = "drop table if exists temp_window_counts"
         ActiveRecord::Base.connection.execute(sql)
       end
     end
