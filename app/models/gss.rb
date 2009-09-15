@@ -22,7 +22,7 @@ class Gss < AbstractEngine
     }
     #logger.debug "debugger opts: #{opts.inspect}"
     request_url = prepare_url(opts)
-    #logger.debug "Request URL: #{request_url}"
+    logger.debug "Request URL: #{request_url}"
     begin
       res = Net::HTTP.get_response(URI::parse(request_url))
       #logger.debug "HTTP status: #{res.code} #{res.message}"
@@ -45,6 +45,8 @@ class Gss < AbstractEngine
       self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(results_array) }
       self.startrecord = startindex + 1
       self.endrecord = self.startrecord + self.results.size - 1
+    rescue SocketError, Errno::ECONNREFUSED => e
+      logger.warn "Error connecting to server: #{e}"
     rescue RequestError => e
       logger.warn "Search failed: #{e}"
       false

@@ -26,7 +26,8 @@ class Gweb < AbstractEngine
       self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(response.results) }
       self.startrecord = startindex + 1
       self.endrecord = self.startrecord + self.results.size - 1
-      # FIXME: rescue all errors, like network errors
+    rescue SocketError, Errno::ECONNREFUSED => e
+      RAILS_DEFAULT_LOGGER.warn "Error connecting to server: #{e}"
     rescue Google::GwebSearch::RequestError => e
       RAILS_DEFAULT_LOGGER.warn "Search failed: #{e}"
       false
