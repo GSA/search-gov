@@ -1,23 +1,31 @@
-.span-24
-  %form
-    Show up to
-    = select_tag("num_results_select", options_for_select( [10, 50, 100, 500, 1000], @num_results), { :onchange => 'location = "/analytics/?num_results="+this.options[this.selectedIndex].value;' } )
-    results per section
-  %h2= display_most_recent_date_available(@most_recent_day)
+.span-24.headertitle
+  .span-20
+    %h2= display_most_recent_date_available(@most_recent_day)
+  .span-4.last
+    %form
+      = display_select_for_window(1, @num_results1)
 .span-12{:id=>"dqs1"}
   =display_most_popular(@most_recent_day_popular_terms)
 .span-12.last{:id=>"qas1"}
   =display_biggest_movers(@most_recent_day_biggest_movers)
 
-.span-24
-  %h2 Prior 7 days
+.span-24.headertitle
+  .span-20
+    %h2 Prior 7 days
+  .span-4.last
+    %form
+      = display_select_for_window(7, @num_results7)
 .span-12{:id=>"dqs7"}
   =display_most_popular(@trailing_week_popular_terms)
 .span-12.last{:id=>"qas7"}
   =display_biggest_movers(@weekly_biggest_movers)
 
-.span-24
-  %h2 Prior 30 days
+.span-24.headertitle
+  .span-20
+    %h2 Prior 30 days
+  .span-4.last
+    %form
+      = display_select_for_window(30, @num_results30)
 .span-12{:id=>"dqs30"}
   =display_most_popular(@trailing_month_popular_terms)
 .span-12.last{:id=>"qas30"}

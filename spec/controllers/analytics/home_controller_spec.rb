@@ -21,6 +21,7 @@ describe Analytics::HomeController do
     assigns[:weekly_biggest_movers].should == "weekbm"
     assigns[:monthly_biggest_movers].should == "monthbm"
   end
+
   context "when analytics data available" do
     fixtures :daily_query_stats
     it "should assign the most recent day" do
@@ -31,15 +32,35 @@ describe Analytics::HomeController do
 
   it "should set a value for the number of results to show per section" do
     get :index
-    assigns[:num_results].should_not be_nil
+    assigns[:num_results1].should_not be_nil
+    assigns[:num_results7].should_not be_nil
+    assigns[:num_results30].should_not be_nil
   end
 
-  context "the number of results is set by the user" do
+  context "the number of results for the daily window is set by the user" do
     before do
-      get :index, :num_results=> "20"
+      get :index, :num_results1=> "20"
     end
     it "should use the param as the number of results to show per section" do
-      assigns[:num_results].should == 20
+      assigns[:num_results1].should == 20
+    end
+  end
+
+  context "the number of results for the weekly window is set by the user" do
+    before do
+      get :index, :num_results7=> "20"
+    end
+    it "should use the param as the number of results to show per section" do
+      assigns[:num_results7].should == 20
+    end
+  end
+
+  context "the number of results for the monthly window is set by the user" do
+    before do
+      get :index, :num_results30=> "20"
+    end
+    it "should use the param as the number of results to show per section" do
+      assigns[:num_results30].should == 20
     end
   end
 

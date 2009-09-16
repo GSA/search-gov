@@ -42,4 +42,9 @@ module Analytics::HomeHelper
   def display_most_recent_date_available(day)
     day.nil? ? "Query data currently unavailable" : "Data for #{day.to_s(:long)}"
   end
+
+  def display_select_for_window(window, num_results)
+    options = [10, 50, 100, 500, 1000].collect{ |x| ["Show #{x} results",x] }
+    select_tag("num_results_select#{window}", options_for_select( options, num_results), { :onchange => "location = '/analytics/?num_results#{window}='+this.options[this.selectedIndex].value;"})
+  end
 end
