@@ -74,6 +74,18 @@ describe "summary_tables rake tasks" do
         end
       end
 
+      context "when searches are from 192.107.175.226, 74.52.58.146 , 208.110.142.80 , or 66.231.180.169" do
+        before do
+          @ips= ["192.107.175.226", "74.52.58.146" , "208.110.142.80" , "66.231.180.169"]
+          @ips.each {|ip| Query.create!(@valid_attributes.merge(:ipaddr=>ip))}
+        end
+
+        it "should ignore them" do
+          @rake[@task_name].invoke
+          @ips.each {|ip| DailyQueryIpStat.find_by_ipaddr(ip).should be_nil}
+        end
+      end
+
       context "when searches are not from usasearch.gov affiliate" do
         before do
           Query.create!(@valid_attributes.merge(:affiliate => "ignore me", :query=>"ignore me"))

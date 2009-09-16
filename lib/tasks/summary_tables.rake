@@ -1,7 +1,7 @@
 namespace :usasearch do
   namespace :daily_query_ip_stats do
     insert_sql = "insert ignore into daily_query_ip_stats (query, ipaddr, day, times) select lower(query), ipaddr, date(timestamp) day, count(*) from queries "
-    where_clause = "where affiliate = 'usasearch.gov' and query not in ( 'enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', 'test')"
+    where_clause = "where affiliate = 'usasearch.gov' and query not in ( 'enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', 'test') and ipaddr not in ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') "
     group_by = "group by day,query, ipaddr"
 
     desc "initial population of daily_query_ip_stats from queries table. Destroys existing data in daily_query_ip_stats table."
