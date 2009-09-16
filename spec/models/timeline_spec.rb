@@ -49,5 +49,17 @@ describe Timeline do
         timeline.dates.last.should == Date.yesterday
       end
     end
+
+    context "when data does extend forward to the most recently populated date" do
+      before do
+        DailyQueryStat.create!(:day => 1.day.ago.to_date, :query => "foo", :times => 1 )
+      end
+      it "should not append the data with zeros" do
+        timeline = Timeline.new("foo")
+        size= timeline.dates.size
+        timeline.dates[size-1].should > timeline.dates[size-2]
+        timeline.series[timeline.dates.index(Date.yesterday)].y.should == 1
+      end
+    end
   end
 end

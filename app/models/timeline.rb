@@ -6,7 +6,7 @@ class Timeline
     results = DailyQueryStat.find_all_by_query(query, :order => "day", :select=>"day, times")
     return if results.empty?
     date_marker = results.first.day
-    pad_with_zeroes_from_to(Date.new(2009,1,1), date_marker)
+    pad_with_zeroes_from_to(Date.new(2009,1,1), date_marker - 1.day)
     results.each do |dqs|
       while (dqs.day != date_marker)
         @series << Datum.new(:y => 0)
