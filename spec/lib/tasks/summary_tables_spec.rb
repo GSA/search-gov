@@ -62,9 +62,9 @@ describe "summary_tables rake tasks" do
         end
       end
 
-      context "when searches are 'cheesewiz' ,'clusty' ,' ', '1', or 'test'" do
+      context "when searches are 'enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', or 'test'" do
         before do
-          @terms= ['cheesewiz', 'clusty', ' ', '1', 'test']
+          @terms= ['enter keywords', 'cheesewiz', 'clusty', ' ', '1', 'test']
           @terms.each {|term| Query.create!(@valid_attributes.merge(:query=>term))}
         end
 
