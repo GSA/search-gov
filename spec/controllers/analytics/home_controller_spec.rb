@@ -63,5 +63,4 @@ describe Analytics::HomeController do
       assigns[:num_results30].should == 20
     end
   end
-
 end

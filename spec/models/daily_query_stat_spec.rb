@@ -9,6 +9,7 @@ describe DailyQueryStat do
       :times => 314
     }
   end
+
   describe 'validations on create' do
     should_validate_presence_of(:day, :query, :times)
     should_validate_uniqueness_of :query, :scope => :day
@@ -21,6 +22,7 @@ describe DailyQueryStat do
   describe '#popular_terms_over_days' do
     context "when the table is populated" do
       before do
+        DailyQueryStat.delete_all
         DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "older most popular", :times => 9 )
         DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "recent day most popular", :times => 2 )
         DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "older most popular", :times => 1 )
@@ -55,6 +57,7 @@ describe DailyQueryStat do
   describe '#biggest_mover_popularity_over_window' do
     context "when the table is populated" do
       before do
+        DailyQueryStat.delete_all
         day = 3.days.ago
         DailyQueryStat.create!(:day => day, :query => "most recent day least popular highest score", :times => 1 )
         DailyQueryStat.create!(:day => day, :query => "most recent day most popular lowest score", :times => 4 )
