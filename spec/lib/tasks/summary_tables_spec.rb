@@ -76,7 +76,7 @@ describe "summary_tables rake tasks" do
 
       context "when searches are from 192.107.175.226, 74.52.58.146 , 208.110.142.80 , or 66.231.180.169" do
         before do
-          @ips= ["192.107.175.226", "74.52.58.146" , "208.110.142.80" , "66.231.180.169"]
+          @ips= ["192.107.175.226", "74.52.58.146", "208.110.142.80", "66.231.180.169"]
           @ips.each {|ip| Query.create!(@valid_attributes.merge(:ipaddr=>ip))}
         end
 
@@ -330,6 +330,32 @@ describe "summary_tables rake tasks" do
         it "should still populate query_accelerations for that 1-day window" do
           @rake[@task_name].invoke
           QueryAcceleration.find_by_day_and_query_and_window_size(Date.yesterday, @valid_attributes[:query], 1).should_not be_nil
+        end
+      end
+    end
+
+    describe "usasearch:query_accelerations:populate" do
+      before do
+        @task_name = "usasearch:query_accelerations:populate"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when there is data in the daily_query_stats table" do
+        before do
+          QueryAcceleration.delete_all
+          DailyQueryStat.delete_all
+          DailyQueryStat.create!(:day => 3.days.ago.to_date, :times => 10, :query => @valid_attributes[:query])
+          DailyQueryStat.create!(:day => 2.days.ago.to_date, :times => 100, :query => @valid_attributes[:query])
+          DailyQueryStat.create!(:day => 1.day.ago.to_date, :times => 1000, :query => @valid_attributes[:query])
+        end
+
+        it "should call compute_query_accelerations_for once for every day that daily_query_stats data exists" do
+          QueryAcceleration.count.should == 0
+          @rake[@task_name].invoke
+          QueryAcceleration.count.should == 7 # 3 for daily, 2 for weekly, 2 for monthly
         end
       end
     end
