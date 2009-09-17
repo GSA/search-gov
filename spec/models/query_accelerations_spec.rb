@@ -20,7 +20,7 @@ describe QueryAcceleration do
     end
   end
 
-  describe '#biggest_movers_over_window' do
+  describe '#highest_scorers_over_window' do
     context "when the table is populated" do
       before do
         [1, 7, 30].each do |window_size|
@@ -33,12 +33,12 @@ describe QueryAcceleration do
       end
 
       it "should find and sort biggest movers based on the day and window size parameter" do
-        QueryAcceleration.biggest_movers_over_window(7).first.score.should == 7.0
-        QueryAcceleration.biggest_movers_over_window(7).last.score.should == -7.0
+        QueryAcceleration.highest_scorers_over_window(7).first.score.should == 7.0
+        QueryAcceleration.highest_scorers_over_window(7).last.score.should == -7.0
       end
 
       it "should use the num_results parameter to determine result set size" do
-        QueryAcceleration.biggest_movers_over_window(7, 1).size.should == 1
+        QueryAcceleration.highest_scorers_over_window(7, 1).size.should == 1
       end
 
     end
@@ -49,7 +49,7 @@ describe QueryAcceleration do
       end
 
       it "should return nil" do
-        QueryAcceleration.biggest_movers_over_window(1).should be_nil
+        QueryAcceleration.highest_scorers_over_window(1).should be_nil
       end
     end
   end
