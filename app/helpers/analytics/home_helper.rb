@@ -5,10 +5,9 @@ module Analytics::HomeHelper
       rows = ""
       count = 1
       pairs.each_pair do |query, times|
-        query_link = link_to(query, query_timeline_path(query))
-        query_item = "#{count}. #{query_link}"
-        cells = content_tag(:td, query_item, :style=>"text-align:left")
-        cells << content_tag(:td, times, :style=>"text-align:right")
+        query_link = link_to(times, query_timeline_path(query), :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'])
+        cells = content_tag(:td, "#{count}. #{query}", :style=>"text-align:left")
+        cells << content_tag(:td, query_link, :style=>"text-align:right")
         rows << content_tag(:tr, cells)
         count += 1
       end
@@ -25,10 +24,9 @@ module Analytics::HomeHelper
     if query_accelerations
       rows = ""
       query_accelerations.each_with_index do |qa, count|
-        query_link = link_to(qa.query, query_timeline_path(qa.query))
-        query_item = "#{count + 1}. #{query_link}"
-        cells = content_tag(:td, query_item, :style=>"text-align:left")
-        cells << content_tag(:td, qa.sum_times, :style=>"text-align:right")
+        query_link = link_to(qa.sum_times, query_timeline_path(qa.query), :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'])
+        cells = content_tag(:td, "#{count+1}. #{qa.query}", :style=>"text-align:left")
+        cells << content_tag(:td, query_link, :style=>"text-align:right")
         rows << content_tag(:tr, cells)
       end
       html << content_tag(:table, rows)
