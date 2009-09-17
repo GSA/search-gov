@@ -1,6 +1,6 @@
 .span-24.headertitle
   .span-20
-    %h2= display_most_recent_date_available(@most_recent_day)
+    %h2= display_most_recent_date_available(@day_being_shown)
   .span-4.last
     %form
       = display_select_for_window(1, @num_results1)

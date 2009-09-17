@@ -7,6 +7,7 @@ Given /^there are no query accelerations stats$/ do
 end
 
 Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
+  DailyQueryStat.delete_all
   startdate, enddate = sd.to_date, ed.to_date
   wordcount = 5
   words = []

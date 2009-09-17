@@ -19,7 +19,7 @@ describe DailyQueryStat do
     end
   end
 
-  describe '#popular_terms_over_days' do
+  describe '#most_popular_terms' do
     context "when the table is populated" do
       before do
         DailyQueryStat.delete_all
@@ -29,17 +29,17 @@ describe DailyQueryStat do
         DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "recent day most popular", :times => 4 )
       end
 
-      it "should calculate popularity sums based on the number of days parameter" do
-        yday = DailyQueryStat.popular_terms_over_days(1)
+      it "should calculate popularity sums based on the target date and number of days parameter" do
+        yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1)
         yday.first[0].should == "recent day most popular"
         yday.first[1].should == 4
-        twodaysago = DailyQueryStat.popular_terms_over_days(2)
+        twodaysago = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 2)
         twodaysago.first[0].should == "older most popular"
         twodaysago.first[1].should == 10
       end
 
       it "should use the num_results parameter to determine result set size" do
-        DailyQueryStat.popular_terms_over_days(1,1).size.should == 1
+        DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1,1).size.should == 1
       end
     end
 
@@ -49,12 +49,12 @@ describe DailyQueryStat do
       end
 
       it "should return nil" do
-        DailyQueryStat.popular_terms_over_days(1).should be_nil
+        DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1).should be_nil
       end
     end
   end
 
-  describe '#biggest_mover_popularity_over_window' do
+  describe '#biggest_movers' do
     context "when the table is populated" do
       before do
         DailyQueryStat.delete_all
@@ -65,14 +65,14 @@ describe DailyQueryStat do
         QueryAcceleration.create!(:day => day, :query => "most recent day most popular lowest score", :window_size => 1, :score => 1.0)
       end
 
-      it "should rank biggest movers for the most recent data available based on search popularity and the number of days parameter" do
-        movers = DailyQueryStat.biggest_mover_popularity_over_window(1)
+      it "should rank biggest movers for the most recent data available based on search popularity and the target date and number of days parameter" do
+        movers = DailyQueryStat.biggest_movers(DailyQueryStat.most_recent_populated_date, 1)
         movers.first[:query].should == "most recent day most popular lowest score"
         movers.last[:query].should == "most recent day least popular highest score"
       end
 
       it "should use the num_results parameter to determine result set size" do
-        DailyQueryStat.biggest_mover_popularity_over_window(1,1).size.should == 1
+        DailyQueryStat.biggest_movers(DailyQueryStat.most_recent_populated_date, 1,1).size.should == 1
       end
     end
 
@@ -82,7 +82,7 @@ describe DailyQueryStat do
       end
 
       it "should return nil" do
-        DailyQueryStat.biggest_mover_popularity_over_window(1).should be_nil
+        DailyQueryStat.biggest_movers(DailyQueryStat.most_recent_populated_date, 1).should be_nil
       end
     end
   end

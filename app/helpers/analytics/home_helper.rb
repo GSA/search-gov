@@ -40,7 +40,13 @@ module Analytics::HomeHelper
   end
 
   def display_most_recent_date_available(day)
-    day.nil? ? "Query data currently unavailable" : "Data for #{day.to_s(:long)}"
+    return "Query data currently unavailable" if day.nil?
+    html = "Data for #{day.to_s(:long)}"
+    firstdate = DailyQueryStat.minimum(:day)
+    first = [firstdate.year,(firstdate.month.to_i - 1),firstdate.day].join(',')
+    lastdate = DailyQueryStat.maximum(:day)
+    last = [lastdate.year,(lastdate.month.to_i - 1),lastdate.day].join(',')
+    html<< calendar_date_select_tag("pop_up_hidden", "", :hidden => true, :buttons => false, :onchange => "location = '/analytics/?day='+$F(this);", :valid_date_check => "date <= (new Date(#{last})).stripTime() && date >= (new Date(#{first})).stripTime()")
   end
 
   def display_select_for_window(window, num_results)
