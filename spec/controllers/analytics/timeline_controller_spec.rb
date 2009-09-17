@@ -5,14 +5,14 @@ describe Analytics::TimelineController do
   describe "#show" do
 
     describe "- route generation" do
-      it "should map { :controller => 'analytics/timeline', :action => 'show', :query=>'foo' } to /analytics/timeline/foo" do
-        route_for(:controller => "analytics/timeline", :action => "show", :query=>"foo").should == "/analytics/timeline/foo"
+      it "should map { :controller => 'analytics/timeline', :action => 'show', :query=>'foo.com 9/11' } to /analytics/timeline/foo.com%209%2F11" do
+        route_for(:controller => "analytics/timeline", :action => "show", :query=>"foo.com 9/11").should == "/analytics/timeline/foo.com%209%2F11"
       end
     end
 
     describe "- route recognition" do
-      it "should generate params { :controller => 'analytics/timeline', :action => 'show', :query=>'foo'  } from GET /analytics/timeline/foo" do
-        params_from(:get, "/analytics/timeline/foo").should == { :controller => 'analytics/timeline', :action => 'show', :query=>'foo'  }
+      it "should generate params { :controller => 'analytics/timeline', :action => 'show', :query=>'foo.com 9/11'  } from GET /analytics/timeline/foo.com%209%2F11" do
+        params_from(:get, "/analytics/timeline/foo.com%209%2F11").should == { :controller => 'analytics/timeline', :action => 'show', :query=>'foo.com 9/11'  }
       end
     end
 
