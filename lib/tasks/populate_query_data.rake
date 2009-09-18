@@ -1,5 +1,5 @@
 namespace :usasearch do
-  require 'webster'
+  #require 'webster'
   desc "truncates and creates sample data in daily_query_stats&query_acceleration tables for the last DAYS days across WORDCOUNT different words"
   task :create_dummy_analytics_data => :environment do
     raise "Usage: rake usasearch:create_dummy_analytics_data DAYS=30 WORDCOUNT=1000" unless ENV["DAYS"] and ENV["WORDCOUNT"]

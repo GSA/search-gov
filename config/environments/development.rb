@@ -1,5 +1,5 @@
 # Settings specified here will take precedence over those in config/environment.rb
-#config.gem "dancroak-webster", :source => 'http://gems.github.com'
+config.gem 'dancroak-webster', :lib=> 'webster', :source => 'http://gems.github.com'
 
 # In the development environment your application's code is reloaded on
 # every request.  This slows down response time but is perfect for development
