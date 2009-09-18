@@ -21,3 +21,9 @@ Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
     end
   end
 end
+
+Given /^the following DailyQueryStats exist for yesterday:$/ do |table|
+  table.hashes.each do |hash|
+    DailyQueryStat.create(:day => Date.yesterday, :query => hash["query"], :times => hash["times"])
+  end
+end

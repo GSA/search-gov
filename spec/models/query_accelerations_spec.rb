@@ -20,38 +20,4 @@ describe QueryAcceleration do
     end
   end
 
-  describe '#highest_scorers_over_window' do
-    context "when the table is populated" do
-      before do
-        [1, 7, 30].each do |window_size|
-          4.times do |idx|
-            daysago = idx + 1
-            QueryAcceleration.create!(:day => daysago.days.ago.to_date, :query => "high score window_size=#{window_size} days ago= #{daysago}", :window_size => window_size, :score => window_size * daysago)
-            QueryAcceleration.create!(:day => daysago.days.ago.to_date, :query => "low score window_size=#{window_size} days ago= #{daysago}", :window_size => window_size, :score => -window_size * daysago)
-          end
-        end
-      end
-
-      it "should find and sort biggest movers based on the day and window size parameter" do
-        QueryAcceleration.highest_scorers_over_window(7).first.score.should == 7.0
-        QueryAcceleration.highest_scorers_over_window(7).last.score.should == -7.0
-      end
-
-      it "should use the num_results parameter to determine result set size" do
-        QueryAcceleration.highest_scorers_over_window(7, 1).size.should == 1
-      end
-
-    end
-
-    context "when the table has no data for the time period specified" do
-      before do
-        QueryAcceleration.delete_all
-      end
-
-      it "should return nil" do
-        QueryAcceleration.highest_scorers_over_window(1).should be_nil
-      end
-    end
-  end
-
 end

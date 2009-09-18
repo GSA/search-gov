@@ -4,9 +4,17 @@ Feature: Timeline for query
   I want to view a chart of the number of queries per day over time
 
   Scenario: Viewing a chart for a given term
-    Given there is analytics data from "20090831" thru "20090901"
+    Given the following DailyQueryStats exist for yesterday:
+    | query                       | times |
+    | cenobitic                   | 100   |
+    | oxaluria                    | 90    |
+    | finochio                    | 80    |
+    | burmannia                   | 40    |
     And I am on the analytics homepage
-    Then I should see "aaaf"
-    When I follow "aaaf"
-    Then I should be on the timeline page for "aaaf"
-    And I should see "Interest over time for 'aaaf'"
+    Then I should see "cenobitic"
+    And I should see "oxaluria"
+    And I should see "finochio"
+    And I should see "burmannia"
+    When I follow "100"
+    Then I should be on the timeline page for "cenobitic"
+    And I should see "Interest over time for 'cenobitic'"
