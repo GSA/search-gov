@@ -47,8 +47,8 @@ module Analytics::HomeHelper
     html<< calendar_date_select_tag("pop_up_hidden", "", :hidden => true, :buttons => false, :onchange => "location = '/analytics/?day='+$F(this);", :valid_date_check => "date <= (new Date(#{last})).stripTime() && date >= (new Date(#{first})).stripTime()")
   end
 
-  def display_select_for_window(window, num_results)
+  def display_select_for_window(window, num_results, day)
     options = [10, 50, 100, 500, 1000].collect{ |x| ["Show #{x} results",x] }
-    select_tag("num_results_select#{window}", options_for_select( options, num_results), { :onchange => "location = '/analytics/?num_results#{window}='+this.options[this.selectedIndex].value;"})
+    select_tag("num_results_select#{window}", options_for_select( options, num_results), { :onchange => "location = '/analytics/?day=#{day}&num_results#{window}='+this.options[this.selectedIndex].value;"})
   end
 end

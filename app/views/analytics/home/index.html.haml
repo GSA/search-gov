@@ -3,7 +3,7 @@
     %h2= display_most_recent_date_available(@day_being_shown)
   .span-4.last
     %form
-      = display_select_for_window(1, @num_results1)
+      = display_select_for_window(1, @num_results1, @day_being_shown)
 .span-12{:id=>"dqs1"}
   =display_most_popular(@most_recent_day_popular_terms)
 .span-12.last{:id=>"qas1"}
@@ -14,7 +14,7 @@
     %h2 Prior 7 days
   .span-4.last
     %form
-      = display_select_for_window(7, @num_results7)
+      = display_select_for_window(7, @num_results7, @day_being_shown)
 .span-12{:id=>"dqs7"}
   =display_most_popular(@trailing_week_popular_terms)
 .span-12.last{:id=>"qas7"}
@@ -25,7 +25,7 @@
     %h2 Prior 30 days
   .span-4.last
     %form
-      = display_select_for_window(30, @num_results30)
+      = display_select_for_window(30, @num_results30, @day_being_shown)
 .span-12{:id=>"dqs30"}
   =display_most_popular(@trailing_month_popular_terms)
 .span-12.last{:id=>"qas30"}
