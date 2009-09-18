@@ -6,7 +6,7 @@ module Analytics::HomeHelper
       count = 1
       pairs.each_pair do |query, times|
         query_link = link_to(query, query_timeline_path(query))
-        popup_query_link = link_to(image_tag("open_new_window.png", :alt => "Open chart in new window", :size => "16x16"), query_timeline_path(query), :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'])
+        popup_query_link = link_to(image_tag("open_new_window.png", :alt => "Open chart in new window", :size => "8x8"), query_timeline_path(query), :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'])
         cells = content_tag(:td, "#{count}. #{query_link} #{popup_query_link}", :style=>"text-align:left")
         cells << content_tag(:td, times, :style=>"text-align:right")
         rows << content_tag(:tr, cells)
@@ -26,7 +26,7 @@ module Analytics::HomeHelper
       rows = ""
       query_accelerations.each_with_index do |qa, count|
         query_link = link_to(qa.query, query_timeline_path(qa.query))
-        popup_query_link = link_to(image_tag("open_new_window.png", :alt => "Open chart in new window", :size => "16x16"), query_timeline_path(qa.query), :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'])
+        popup_query_link = link_to(image_tag("open_new_window.png", :alt => "Open chart in new window", :size => "8x8"), query_timeline_path(qa.query), :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'])
         cells = content_tag(:td, "#{count+1}. #{query_link} #{popup_query_link}", :style=>"text-align:left")
         cells << content_tag(:td, qa.sum_times, :style=>"text-align:right")
         rows << content_tag(:tr, cells)
