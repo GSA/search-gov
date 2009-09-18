@@ -15,6 +15,6 @@ Feature: Timeline for query
     And I should see "oxaluria"
     And I should see "finochio"
     And I should see "burmannia"
-    When I follow "100"
+    When I follow "cenobitic"
     Then I should be on the timeline page for "cenobitic"
     And I should see "Interest over time for 'cenobitic'"
