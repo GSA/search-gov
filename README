@@ -1,4 +1,48 @@
 == USASearch Info
 
-A bunch of gems are needed for this project, moreso for testing.
-I'll list these out to make it easier for someone else to get their dev environment spooled up.
+= Ruby
+You will need Ruby 1.8.7. Verify that your path points to the correct version of Ruby:
+lappy:usasearch loren$ ruby -v
+ruby 1.8.7 (2009-06-12 patchlevel 174) [i686-darwin10]
+lappy:usasearch loren$ which ruby
+/opt/local/bin/ruby
+
+You will need to install rubygems 1.3.5 or later:
+lappy:usasearch loren$ gem -v
+1.3.5
+lappy:usasearch loren$ which gem
+/opt/local/bin/gem
+
+= Gems
+You should be able to get all the gems needed for this project like this:
+sudo rake gems:install
+sudo rake gems:install RAILS_ENV=test
+
+= Database
+The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.0.85), accessible from user 'root' with no password.
+Create and setup your development and test databases:
+rake db:create
+rake db:create RAILS_ENV=test
+rake db:schema:load
+rake db:test:prepare
+
+= Tests
+Make sure the unit tests and functional tests run:
+rake spec
+
+Make sure the integration tests run
+script/cucumber
+
+= Analytics
+If you are looking at the analytics functionality, it helps to have some sample data in there. This will populate your
+development database with a month's worth of data for 100 query terms:
+rake usasearch:create_dummy_analytics_data DAYS=30 WORDCOUNT=100
+
+= Running it
+Fire up a server and try it all out:
+script/server
+
+Go to:
+http://127.0.0.1:3000
+http://127.0.0.1:3000/analytics
+http://127.0.0.1:3000/admin/affiliates
