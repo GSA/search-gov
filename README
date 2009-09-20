@@ -46,3 +46,30 @@ Go to:
 http://127.0.0.1:3000
 http://127.0.0.1:3000/analytics
 http://127.0.0.1:3000/admin/affiliates
+
+= Contributing Code
+1) Pick the next story off the top of the queue on Tracker and make sure you understand the intent behind it. Click the "Start" button so nobody else starts working on it.
+2) Make sure you have the latest code:
+git pull
+3) Write acceptance tests in rspec and/or cucumber that will specify whether the feature is implemented properly or not.
+4) Write the minimal amount of code needed to make those tests pass
+5) Run regression tests to make sure all prior functionality still passes tests
+rake spec
+script/cucumber
+6) Check in code to your local git repo (use 'git status' and 'git add' until everything is staged):
+git commit
+7) Push code up to the origin
+git push
+8) Problems doing the push? Someone else may have checked in code since your last pull, so
+git pull
+rake spec
+script/cucumber
+git push
+9) Mark story as "Finished" on Tracker. This means you are done testing/coding.
+10) Deploy to demo
+cap deploy
+
+If you have migrations, then do this instead:
+cap deploy:migrations
+11) Mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment
+12) Goto Step 1
