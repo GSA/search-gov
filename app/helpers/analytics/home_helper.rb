@@ -1,9 +1,13 @@
 module Analytics::HomeHelper
   def display_most_popular(pairs)
-    html = content_tag(:h3, "Most Popular")
-    if pairs
-      rows = ""
-      count = 1
+    cells = content_tag(:th, "Most Frequent Queries")
+    cells << content_tag(:th, "Frequency", :style=>"text-align:right")
+    rows = content_tag(:tr, cells)
+    count = 1
+    if pairs.nil?
+      cells = content_tag(:td, "Query data unavailable", :class=>"alt")
+      rows << content_tag(:tr, cells)
+    else
       pairs.each_pair do |query, times|
         query_link = link_to(query, query_timeline_path(query))
         popup_query_link = link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"), query_timeline_path(query), :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'], :title => "Open graph in new window")
@@ -12,18 +16,18 @@ module Analytics::HomeHelper
         rows << content_tag(:tr, cells)
         count += 1
       end
-      html << content_tag(:table, rows)
-    else
-      html << content_tag(:p, "Query data unavailable", :class=>"alt")
     end
-
-    html
+    content_tag(:table, rows)
   end
 
   def display_biggest_movers(query_accelerations)
-    html = content_tag(:h3, "Biggest Movers")
-    if query_accelerations
-      rows = ""
+    cells = content_tag(:th, "Accelerating Queries")
+    cells << content_tag(:th, "Frequency", :style=>"text-align:right")
+    rows = content_tag(:tr, cells)
+    if query_accelerations.nil?
+      cells = content_tag(:td, "Query data unavailable", :class=>"alt")
+      rows << content_tag(:tr, cells)
+    else
       query_accelerations.each_with_index do |qa, count|
         query_link = link_to(qa.query, query_timeline_path(qa.query))
         popup_query_link = link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"), query_timeline_path(qa.query), :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'], :title => "Open graph in new window")
@@ -31,12 +35,8 @@ module Analytics::HomeHelper
         cells << content_tag(:td, qa.sum_times, :style=>"text-align:right")
         rows << content_tag(:tr, cells)
       end
-      html << content_tag(:table, rows)
-    else
-      html << content_tag(:p, "Query data unavailable", :class=>"alt")
     end
-
-    html
+    content_tag(:table, rows)
   end
 
   def display_most_recent_date_available(day)
