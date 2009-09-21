@@ -3,3 +3,6 @@
   = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
   = image_submit_tag "search.gif", :id => "search_button", :align=>"top"
   = link_to "Online Tutorial", "http://www.usa.gov/About/tutorials/index.shtml"
+
+:javascript
+  document.all.search_query.focus();
