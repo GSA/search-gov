@@ -1,0 +1,18 @@
+%h1 Frequently Asked Questions about Analytics
+
+%h2 WHAT ARE THE CHARACTERISTICS OF THIS DATA?
+%p These statistics are extracted from the query logs of the search engine hosted at USASearch.gov. |
+The collection begins on January 1, 2009 and is current up to the current date. |
+The logs also contain queries from some of the USASearch affiliates, but these queries are omitted from this view. |
+There are on average XXX queries per day in this collection, with weekend days receiving approximately half the |
+traffic of weekdays. |
+
+%h2 WHAT DO THE NUMBERS MEAN?
+%dl
+  %dt Most Popular Queries
+  %dd The most frequent queries are shown in this column for the indicated time period (the selected day, the 7 days prior to the selected day, and the 30 days prior to the selected day), with a few caveats. If the same query was issued from the same IP address during same day, it only gets a count of 1.  The reason for this is that often a given user will repeat the same query multiple times.  Because the volume of queries is relatively small for this kind of analysis, it is important to prevent the activity of one user to have a significant effect on the results. The other caveat is that if a large proportion (> 10%) of requests for a given query come from a single IP address, we eliminate that query from the tool.  These kinds of requests seem to reflect unnatural activity.  Only a small percent of queries are eliminated on this basis.
+  %dt Accelerating Queries
+  %dd The intention is to provide an early warning of query terms that appear to be increasing in importance.  Currently the calculation is based on the frequency of the query in the current time period versus the prior three time periods.  (So when computing the score for Prior 30 days, the total count for the current 30 days is compared against the count for 31-60 days ago, 61-90 days ago, and 91-120 days ago).  If the trend is accelerating according to this formula, the query term is shown. Queries are shown in order of their frequency rather than in order of their score according to the formula, so the most rapidly accelerating term is not necessarily the first query in the list. Currently the calculation does not take into account the baseline frequency of the query.  That is, if the term tends to increase to the current frequency on a regular basis across time, that trend is not taken into account.  This problem will be addressed in an upcoming version of the tool.
+
+%h2 FUTURE ADDITIONS
+%p There is a long tail of queries that are not reflected in numbers like these.  If 10 different people describe the same concept in 10 different ways, the tool does not reflect that.  Tools to group related query terms together are under development. The calculation for query term acceleration will be improved to take into account the baseline (typical) frequency of that query.
