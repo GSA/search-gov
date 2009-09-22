@@ -32,3 +32,5 @@ config.gem "rspec-rails",      :lib => false
 config.gem "remarkable_rails", :lib => false
 config.gem "webrat",           :lib => false
 config.gem "nokogiri",         :lib => false
+config.gem "cucumber",         :lib => false
+config.gem "rcov",             :lib => false
