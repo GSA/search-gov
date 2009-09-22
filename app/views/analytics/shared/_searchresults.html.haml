@@ -1,0 +1,12 @@
+- if (@search_results.size > 0)
+  %p= "Results for '#{@search_query_term}'"
+  %table
+    %tr
+      %th Query term
+      %th{:style=>"text-align: right"} Frequency
+    - @search_results.each_pair do |query, count|
+      %tr
+        %td= query
+        %td{:style=>"text-align: right"}= count
+- else
+  %p.noresults= "Sorry, no results found for '#{@search_query_term}'."

@@ -19,6 +19,40 @@ describe DailyQueryStat do
     end
   end
 
+  describe '#most_popular_terms_like' do
+    before do
+      DailyQueryStat.delete_all
+      DailyQueryStat.create!(:day => Date.yesterday, :query => "social security", :times => 2 )
+      DailyQueryStat.create!(:day => Date.today, :query => "social security", :times => 2 )
+
+      DailyQueryStat.create!(:day => Date.yesterday, :query => "social securities", :times => 1 )
+      DailyQueryStat.create!(:day => Date.yesterday, :query => "not a match", :times => 1 )
+    end
+
+    it "should show exact matches for search query term grouped on term and sorted by decreasing sum of frequency counts" do
+      results = DailyQueryStat.most_popular_terms_like("social security")
+      results.size.should == 1
+      results_array = results.to_a
+      results_array[0][0].should == "social security"
+      results_array[0][1].should == 4
+    end
+
+    it "should show match initial substrings for search query term" do
+      results = DailyQueryStat.most_popular_terms_like("social sec")
+      results.size.should == 2
+      results_array = results.to_a
+      results_array[0][0].should == "social security"
+      results_array[0][1].should == 4
+      results_array[1][0].should == "social securities"
+      results_array[1][1].should == 1
+    end
+
+    it "should return empty results when there is no match" do
+      results = DailyQueryStat.most_popular_terms_like("foobar")
+      results.should be_empty
+    end
+  end
+
   describe '#most_popular_terms' do
     context "when the table is populated" do
       before do
@@ -39,7 +73,7 @@ describe DailyQueryStat do
       end
 
       it "should use the num_results parameter to determine result set size" do
-        DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1,1).size.should == 1
+        DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1, 1).size.should == 1
       end
     end
 
@@ -72,7 +106,7 @@ describe DailyQueryStat do
       end
 
       it "should use the num_results parameter to determine result set size" do
-        DailyQueryStat.biggest_movers(DailyQueryStat.most_recent_populated_date, 1,1).size.should == 1
+        DailyQueryStat.biggest_movers(DailyQueryStat.most_recent_populated_date, 1, 1).size.should == 1
       end
     end
 

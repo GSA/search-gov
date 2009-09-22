@@ -28,3 +28,18 @@ Feature: Analytics Homepage
     Then in "qas1" I should see "Query data unavailable"
     And in "qas7" I should see "Query data unavailable"
     And in "qas30" I should see "Query data unavailable"
+
+  Scenario: Searching for a query term
+    Given the following DailyQueryStats exist for yesterday:
+    | query                       | times |
+    | cenobitic                   | 100   |
+    | cenolitic                   | 90    |
+    | finochio                    | 80    |
+    | burmannia                   | 40    |
+    And I am on the analytics homepage
+    When I fill in "query" with "ceno"
+    And I press "Search"
+    Then I should be on the analytics query search results page
+    And I should see "Results for 'ceno'"
+    And I should see "cenobitic"
+    And I should see "cenolitic"

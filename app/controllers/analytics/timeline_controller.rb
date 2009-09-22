@@ -1,6 +1,4 @@
-class Analytics::TimelineController < ApplicationController
-  layout "analytics"
-
+class Analytics::TimelineController < Analytics::AnalyticsController
   def show
     @query = params["query"]
     timeline = Timeline.new(@query)

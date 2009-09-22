@@ -6,6 +6,8 @@ module NavigationHelpers
       root_path
     when /the search page/
       search_path
+    when /the analytics query search results page/
+      analytics_query_search_path
     when /the FAQ page/
       analytics_faq_path
     when /the analytics homepage/

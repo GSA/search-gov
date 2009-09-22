@@ -1,6 +1,4 @@
-class Analytics::HomeController < ApplicationController
-  layout "analytics"
-
+class Analytics::HomeController < Analytics::AnalyticsController
   def index
     @num_results1 = (request["num_results1"] || "10").to_i
     @num_results7 = (request["num_results7"] || "10").to_i

@@ -1,6 +1,4 @@
-class Analytics::FaqController < ApplicationController
-  layout "analytics"
-
+class Analytics::FaqController < Analytics::AnalyticsController
   def index
   end
 end

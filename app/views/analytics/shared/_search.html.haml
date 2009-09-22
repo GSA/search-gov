@@ -1,0 +1,7 @@
+- form_tag(analytics_query_search_path, :method => :get, :id=>"query_search_form") do
+  = label :search, "Search for query term"
+  = text_field :search, :query, :size=>50, :name=>"query"
+  = submit_tag "Search"
+
+:javascript
+  document.all.search_query.focus();
