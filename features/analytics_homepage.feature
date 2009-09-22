@@ -29,7 +29,7 @@ Feature: Analytics Homepage
     And in "qas7" I should see "Query data unavailable"
     And in "qas30" I should see "Query data unavailable"
 
-  Scenario: Searching for a query term
+  Scenario: Searching for a query term that starts with a given string
     Given the following DailyQueryStats exist for yesterday:
     | query                       | times |
     | cenobitic                   | 100   |
@@ -38,8 +38,25 @@ Feature: Analytics Homepage
     | burmannia                   | 40    |
     And I am on the analytics homepage
     When I fill in "query" with "ceno"
+    And I choose "Starts with"
     And I press "Search"
     Then I should be on the analytics query search results page
-    And I should see "Results for 'ceno'"
+    And I should see "Results starting with 'ceno'"
+    And I should see "cenobitic"
+    And I should see "cenolitic"
+
+  Scenario: Searching for a query term that contains a given string
+    Given the following DailyQueryStats exist for yesterday:
+    | query                       | times |
+    | cenobitic                   | 100   |
+    | cenolitic                   | 90    |
+    | finochio                    | 80    |
+    | burmannia                   | 40    |
+    And I am on the analytics homepage
+    When I fill in "query" with "itic"
+    And I choose "Contains"
+    And I press "Search"
+    Then I should be on the analytics query search results page
+    And I should see "Results containing 'itic'"
     And I should see "cenobitic"
     And I should see "cenolitic"

@@ -30,7 +30,7 @@ describe DailyQueryStat do
     end
 
     it "should show exact matches for search query term grouped on term and sorted by decreasing sum of frequency counts" do
-      results = DailyQueryStat.most_popular_terms_like("social security")
+      results = DailyQueryStat.most_popular_terms_like("social security", true)
       results.size.should == 1
       results_array = results.to_a
       results_array[0][0].should == "social security"
@@ -38,7 +38,7 @@ describe DailyQueryStat do
     end
 
     it "should show match initial substrings for search query term" do
-      results = DailyQueryStat.most_popular_terms_like("social sec")
+      results = DailyQueryStat.most_popular_terms_like("social sec", true)
       results.size.should == 2
       results_array = results.to_a
       results_array[0][0].should == "social security"
@@ -47,8 +47,16 @@ describe DailyQueryStat do
       results_array[1][1].should == 1
     end
 
+    it "should show match any substring for search query term" do
+      results = DailyQueryStat.most_popular_terms_like("urity", false)
+      results.size.should == 1
+      results_array = results.to_a
+      results_array[0][0].should == "social security"
+      results_array[0][1].should == 4
+    end
+
     it "should return empty results when there is no match" do
-      results = DailyQueryStat.most_popular_terms_like("foobar")
+      results = DailyQueryStat.most_popular_terms_like("foobar", true)
       results.should be_empty
     end
   end

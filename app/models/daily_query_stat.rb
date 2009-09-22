@@ -5,10 +5,11 @@ class DailyQueryStat < ActiveRecord::Base
   validates_uniqueness_of :query, :scope => :day
   RESULTS_SIZE = 10
 
-  def self.most_popular_terms_like(query)
+  def self.most_popular_terms_like(query, use_starts_with_instead_of_contains)
+    contains = use_starts_with_instead_of_contains ? '' : '%'
     results = DailyQueryStat.sum(:times,
                                  :group => :query,
-                                 :conditions => ["query LIKE ?", "#{query}%"],
+                                 :conditions => ["query LIKE ?", "#{contains}#{query}%"],
                                  :order => "sum_times desc")
   end
 

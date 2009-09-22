@@ -2,6 +2,10 @@
   = label :search, "Search for query term"
   = text_field :search, :query, :size=>50, :name=>"query"
   = submit_tag "Search"
+  = label :search, "Starts with"
+  = radio_button(:search, "search_type", "starts_with", :checked=> true, :id=> "Starts with", :name => "search_type")
+  = label :search, "Contains"
+  = radio_button(:search, "search_type", "contains", :id=> "Contains", :name => "search_type")
 
 :javascript
   document.all.search_query.focus();
