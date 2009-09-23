@@ -16,7 +16,7 @@ namespace :usasearch do
       puts "Working on #{day.to_date}..."
       words.each do |word|
         times = rand(1000)
-        DailyQueryStat.create(:day => day, :query => word, :times => times)
+        DailyQueryStat.create(:day => day, :query => word, :times => times) rescue nil
         [1, 7, 30].each { |window_size| QueryAcceleration.create(:day => day, :query => word, :window_size => window_size, :score => rand(100) ) }
       end
     end
