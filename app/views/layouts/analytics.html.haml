@@ -15,12 +15,14 @@
     .container
       .span-13
         = link_to(image_tag('USAsearch_medium.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), analytics_home_page_path)
-        %h1.alt Analytics
+        %h1.alt= link_to("Analytics",analytics_home_page_path)
       .span-11.last.header
         = link_to "USAsearch.gov", home_page_path
         |
         = link_to "Affiliate Admin", admin_affiliates_path
         |
         = link_to "FAQ", analytics_faq_path
+      .span-24
+        = link_to("Home",analytics_home_page_path)
       %hr
       = yield
