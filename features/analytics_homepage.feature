@@ -61,12 +61,6 @@ Feature: Analytics Homepage
     And I should see "cenobitic"
     And I should see "cenolitic"
 
-  Scenario: Doing a blank search from the home page
-    Given I am on the analytics homepage
-    And I press "Search"
-    Then I should be on the analytics query search results page
-    And I should see "Please enter search term(s)"
-
   Scenario: Viewing queries that are part of query groups (i.e., semantic sets)
     Given the following DailyQueryStats exist for yesterday:
     | query                       | times   |

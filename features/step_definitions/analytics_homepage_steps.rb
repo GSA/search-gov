@@ -23,7 +23,17 @@ Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
 end
 
 Given /^the following DailyQueryStats exist for yesterday:$/ do |table|
+  DailyQueryStat.delete_all
   table.hashes.each do |hash|
     DailyQueryStat.create(:day => Date.yesterday, :query => hash["query"], :times => hash["times"])
+  end
+end
+
+
+Given /^the following query groups exist:$/ do |table|
+  table.hashes.each do |hash|
+    qg = QueryGroup.find_or_create_by_name(:name => hash["group"])
+    gqs = hash["queries"].split(",").collect{|query| GroupedQuery.find_or_create_by_query(:query=> query.strip)}
+    qg.grouped_queries << gqs
   end
 end

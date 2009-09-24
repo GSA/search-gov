@@ -7,9 +7,9 @@
     %form
       = display_select_for_window(1, @num_results1, @day_being_shown)
 .span-12{:id=>"dqs1"}
-  =display_most_popular(@most_recent_day_popular_terms)
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_terms , :content_name => "dqs1", :heading => "Most Frequent Queries"}
 .span-12.last{:id=>"qas1"}
-  =display_biggest_movers(@most_recent_day_biggest_movers)
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_biggest_movers , :content_name => "qas1", :heading => "Accelerating Queries"}
 
 .span-24.headertitle
   .span-20
@@ -18,9 +18,9 @@
     %form
       = display_select_for_window(7, @num_results7, @day_being_shown)
 .span-12{:id=>"dqs7"}
-  =display_most_popular(@trailing_week_popular_terms)
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "Most Frequent Queries"}
 .span-12.last{:id=>"qas7"}
-  =display_biggest_movers(@weekly_biggest_movers)
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @weekly_biggest_movers , :content_name => "qas7", :heading => "Accelerating Queries"}
 
 .span-24.headertitle
   .span-20
@@ -29,6 +29,6 @@
     %form
       = display_select_for_window(30, @num_results30, @day_being_shown)
 .span-12{:id=>"dqs30"}
-  =display_most_popular(@trailing_month_popular_terms)
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Most Frequent Queries"}
 .span-12.last{:id=>"qas30"}
-  =display_biggest_movers(@monthly_biggest_movers)
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @monthly_biggest_movers , :content_name => "qas30", :heading => "Accelerating Queries"}

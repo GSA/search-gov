@@ -1,0 +1,23 @@
+%table
+  %tr
+    %th #{heading}
+    %th{:style=>"text-align:right"} Frequency
+  - if query_counts.nil?
+    %tr
+      %td.alt Query data unavailable
+  - else
+    - query_counts.each_with_index do |query_count, idx|
+      %tr
+        %td
+          = "#{idx+1}."
+          = query_chart_link(query_count)
+          = open_close_toggle_icon(content_name,"#{idx}") unless query_count.children.empty?
+        %td{:style => "text-align: right"}= query_count.times
+      %tr{:id => "#{content_name}item#{idx}", :style => "display:none"}
+        %td{:colspan=>2}
+          %table
+            - query_count.children.each do |kid|
+              %tr
+                %td= query_chart_link(kid)
+                %td{:style => "text-align: right"}= kid.times
+

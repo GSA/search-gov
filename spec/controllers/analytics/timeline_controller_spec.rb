@@ -19,8 +19,8 @@ describe Analytics::TimelineController do
         params_from(:get, "/analytics/timeline/foo.com%209%2F11").should == { :controller => 'analytics/timeline', :action => 'show', :query=>'foo.com 9/11'  }
       end
 
-      it "should generate params { :controller => 'analytics/timeline', :action => 'show', :query=>'9/11'  } from GET /analytics/timeline/9%2F11" do
-        params_from(:get, "/analytics/timeline/9%2F11").should == { :controller => 'analytics/timeline', :action => 'show', :query=>'9/11'  }
+      it "should generate params { :controller => 'analytics/timeline', :action => 'show', :query=>'9/11', :grouped=>'1'  } from GET /analytics/timeline/9%2F11?grouped=1" do
+        params_from(:get, "/analytics/timeline/9%2F11?grouped=1").should == { :controller => 'analytics/timeline', :action => 'show', :query=>'9/11', :grouped=>'1' }
       end
     end
 
@@ -39,6 +39,23 @@ describe Analytics::TimelineController do
 
       it "should assign the query term" do
         assigns[:query].should_not be_nil
+      end
+    end
+
+    context "when query group passed in" do
+      before do
+        DailyQueryStat.delete_all
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10 )
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1 )
+        qg = QueryGroup.create!(:name=>"foo")
+        qg.grouped_queries << GroupedQuery.create!(:query=>"query1")
+        qg.grouped_queries << GroupedQuery.create!(:query=>"query2")
+      end
+
+      it "should use the query group to create the timeline" do
+        timeline = Timeline.new("foo","1")
+        Timeline.should_receive(:new).with("foo", "1").and_return(timeline)
+        get :show, :query=>"foo", :grouped=>1
       end
     end
 
