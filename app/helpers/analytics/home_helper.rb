@@ -9,7 +9,7 @@ module Analytics::HomeHelper
     html = link_to(query_count.query, make_query_timeline_path(query_count))
     html << " "
     html << link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"),
-                    query_timeline_path(query_count.query),
+                    make_query_timeline_path(query_count),
                     :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'],
                     :title => "Open graph in new window")
     html
