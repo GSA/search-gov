@@ -1,12 +1,19 @@
 @import compass/reset.sass
+@import compass/utilities/links.sass
 @import blueprint.sass
 @import blueprint/modules/scaffolding.sass
 @import blueprint/modules/fancy_type.sass
-@import compass/utilities/links.sass
+@import blueprint/modules/liquid.sass
 +blueprint
 +blueprint-scaffolding
++blueprint-liquid-grid
 +fancy-type
 !site_base_color= "lavender"
+
+.container
+  :width 99%
+  .span-8
+    :margin-right 3px
 
 body
   :font-size 100%

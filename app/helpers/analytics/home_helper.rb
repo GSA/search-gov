@@ -30,7 +30,7 @@ module Analytics::HomeHelper
   def display_select_for_window(window, num_results, day)
     options = [10, 50, 100, 500, 1000].collect{ |x| ["Show #{x} results", x] }
     select_tag("num_results_select#{window}", options_for_select( options, num_results), {
-      :onchange => "location = '/analytics/?day=#{day}&num_results#{window}='+this.options[this.selectedIndex].value;"})
+      :onchange => "location = '/analytics/?day=#{day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
   end
 
   private

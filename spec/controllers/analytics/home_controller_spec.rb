@@ -43,35 +43,25 @@ describe Analytics::HomeController do
 
   it "should set a value for the number of results to show per section" do
     get :index
-    assigns[:num_results1].should_not be_nil
-    assigns[:num_results7].should_not be_nil
-    assigns[:num_results30].should_not be_nil
+    assigns[:num_results_qas].should_not be_nil
+    assigns[:num_results_dqs].should_not be_nil
   end
 
-  context "when the number of results for the daily window is set by the user" do
+  context "when the number of results for the most popular queries is set by the user" do
     before do
-      get :index, :num_results1=> "20"
+      get :index, :num_results_dqs=> "20"
     end
     it "should use the param as the number of results to show per section" do
-      assigns[:num_results1].should == 20
-    end
-  end
-
-  context "when the number of results for the weekly window is set by the user" do
-    before do
-      get :index, :num_results7=> "20"
-    end
-    it "should use the param as the number of results to show per section" do
-      assigns[:num_results7].should == 20
+      assigns[:num_results_dqs].should == 20
     end
   end
 
-  context "when the number of results for the monthly window is set by the user" do
+  context "when the number of results for the accelerating queries is set by the user" do
     before do
-      get :index, :num_results30=> "20"
+      get :index, :num_results_qas=> "20"
     end
     it "should use the param as the number of results to show per section" do
-      assigns[:num_results30].should == 20
+      assigns[:num_results_qas].should == 20
     end
   end
 end

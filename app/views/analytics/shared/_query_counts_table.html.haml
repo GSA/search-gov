@@ -1,14 +1,15 @@
 %table
   %tr
-    %th #{heading}
+    %th Query
+    %th.alt #{heading}
     %th{:style=>"text-align:right"} Frequency
   - if query_counts.nil?
     %tr
-      %td.alt Query data unavailable
+      %td{:colspan=>3}.alt Query data unavailable
   - else
     - query_counts.each_with_index do |query_count, idx|
       %tr
-        %td
+        %td{:colspan=>2}
           = "#{idx+1}."
           = query_chart_link(query_count)
           = open_close_toggle_icon(content_name,"#{idx}") unless query_count.children.empty?
