@@ -1,3 +1,8 @@
 %h2="Interest over time for '#{h @query}'"
 - annotated_timeline_for(@dates, :width => 940, :height => 300) do |atl|
   - atl.add_line(@query, @series, :value => :y)
+
+- if @query_group
+  %dl
+    %dt= link_to @query_group.name, admin_query_groups_path
+    %dd= @query_group.grouped_queries.collect {|gq| link_to h(gq.query), admin_grouped_queries_path }.join(', ')

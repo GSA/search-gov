@@ -57,6 +57,11 @@ describe Analytics::TimelineController do
         Timeline.should_receive(:new).with("foo", "1").and_return(timeline)
         get :show, :query=>"foo", :grouped=>1
       end
+
+      it "should assign the query group" do
+        get :show, :query=>"foo", :grouped=>1
+        assigns[:query_group].name.should == "foo"        
+      end
     end
 
   end
