@@ -60,3 +60,33 @@ Feature: Analytics Homepage
     And I should see "Results containing 'itic'"
     And I should see "cenobitic"
     And I should see "cenolitic"
+
+  Scenario: Doing a blank search from the home page
+    Given I am on the analytics homepage
+    And I press "Search"
+    Then I should be on the analytics query search results page
+    And I should see "Please enter search term(s)"
+
+  Scenario: Viewing queries that are part of query groups (i.e., semantic sets)
+    Given the following DailyQueryStats exist for yesterday:
+    | query                       | times   |
+    | obama                       | 10000   |
+    | health care bill            |  1000   |
+    | health care reform          |   100   |
+    | obama health care           |    10   |
+    | president                   |     1   |
+    And the following query groups exist:
+    | group      | queries                                                 |
+    | POTUS      | obama, president, obama health care                     |
+    | hcreform   | health care bill, health care reform, obama health care |
+    When I am on the analytics homepage
+    Then in "dqs1" I should see "hcreform"
+    And in "dqs1" I should see "1110"
+    And in "dqs1" I should see "POTUS"
+    And in "dqs1" I should see "10011"
+
+  Scenario: Doing a blank search from the home page
+    Given I am on the analytics homepage
+    And I press "Search"
+    Then I should be on the analytics query search results page
+    And I should see "Please enter search term(s)"

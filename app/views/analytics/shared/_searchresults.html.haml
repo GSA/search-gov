@@ -10,5 +10,7 @@
           =link_to(query, query_timeline_path(query))
           =link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"), query_timeline_path(query), :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'], :title => "Open graph in new window")
         %td{:style=>"text-align: right"}= count
+- elsif (@search_query_term.blank?)
+  %p.noresults= "Please enter search term(s)"
 - else
   %p.noresults= "Sorry, no results found for '#{@search_query_term}'."
