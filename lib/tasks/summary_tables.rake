@@ -90,7 +90,7 @@ namespace :usasearch do
     calculate_proportions
 
     score_clause = "(((t1.count-t2.count)/t2.count) + ((t1.count-t3.count)/t3.count) * 0.5 + ((t1.count-t4.count)/t4.count) * 0.3 + ((t2.count-t3.count)/t3.count) * 0.5 + ((t3.count-t4.count)/t4.count) * 0.5) as score "
-    minimum_score_threshold = 3.0
+    minimum_score_threshold = 1.0
     [30, 7, 1].each do |window_size|
       sql = "drop table if exists temp_window_counts"
       ActiveRecord::Base.connection.execute(sql)
