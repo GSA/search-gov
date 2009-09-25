@@ -23,8 +23,9 @@ class DailyQueryStat < ActiveRecord::Base
     return nil if results.empty?
     qcs=[]
     qgcounts = {}
+    grouped_queries_hash = GroupedQuery.grouped_queries_hash
     results.each_pair do |query, times|
-      grouped_query = GroupedQuery.find_by_query(query, :include=> :query_groups)
+      grouped_query = grouped_queries_hash[query]
       if (grouped_query)
         grouped_query.query_groups.each do |query_group|
           qgcounts[query_group.name] = QueryCount.new(query_group.name, 0) if qgcounts[query_group.name].nil?
@@ -46,8 +47,9 @@ class DailyQueryStat < ActiveRecord::Base
     return nil if results.empty?
     qcs=[]
     qgcounts = {}
+    grouped_queries_hash = GroupedQuery.grouped_queries_hash
     results.each do |res|
-      grouped_query = GroupedQuery.find_by_query(res.query, :include=> :query_groups)
+      grouped_query = grouped_queries_hash[res.query]
       if (grouped_query)
         grouped_query.query_groups.each do |query_group|
           qgcounts[query_group.name] = QueryCount.new(query_group.name, 0) if qgcounts[query_group.name].nil?
@@ -74,4 +76,5 @@ class DailyQueryStat < ActiveRecord::Base
     results.each_pair { |day, times| dqs << DailyQueryStat.new(:day=> day, :times => times) }
     dqs
   end
+
 end
