@@ -1,8 +1,8 @@
 %table
   %tr
-    %th Query
-    %th.alt #{heading}
-    %th{:style=>"text-align:right"} Frequency
+    %th.alt Query
+    %th{:style=>"text-align:center"} #{heading}
+    %th.alt{:style=>"text-align:right"} Frequency
   - if query_counts.nil?
     %tr
       %td{:colspan=>3}.alt Query data unavailable

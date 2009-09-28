@@ -11,11 +11,11 @@
       = display_select_for_window("qas", @num_results_qas, @day_being_shown)
 
 .span-8{:id=>"qas1"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_biggest_movers , :content_name => "qas1", :heading => "1 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_biggest_movers , :content_name => "qas1", :heading => "Previous 1 Day"}
 .span-8{:id=>"qas7"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @weekly_biggest_movers , :content_name => "qas7", :heading => "7 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @weekly_biggest_movers , :content_name => "qas7", :heading => "Previous 7 Day"}
 .span-8.last{:id=>"qas30"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @monthly_biggest_movers , :content_name => "qas30", :heading => "30 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @monthly_biggest_movers , :content_name => "qas30", :heading => "Previous 30 Day"}
 
 .span-24.headertitle
   .span-21
@@ -24,8 +24,8 @@
     %form
       = display_select_for_window("dqs", @num_results_dqs, @day_being_shown)
 .span-8{:id=>"dqs1"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_terms , :content_name => "dqs1", :heading => "1 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_terms , :content_name => "dqs1", :heading => "Previous 1 Day"}
 .span-8{:id=>"dqs7"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "7 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "Previous 7 Day"}
 .span-8.last{:id=>"dqs30"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "30 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Previous 30 Day"}
