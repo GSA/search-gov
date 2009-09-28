@@ -17,7 +17,8 @@ module Analytics::HomeHelper
 
   def display_most_recent_date_available(day)
     return "Query data currently unavailable" if day.nil?
-    html = "Data for #{day.to_s(:long)}"
+    current_day = content_tag(:span,day.to_s(:long), :class=>"highlight")
+    html = "Data for #{current_day}"
     firstdate = DailyQueryStat.minimum(:day)
     first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',')
     lastdate = DailyQueryStat.maximum(:day)
