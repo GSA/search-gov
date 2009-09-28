@@ -15,8 +15,9 @@
     .container
       .span-13
         = link_to(image_tag('USAsearch_medium.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), analytics_home_page_path)
-        %h1.alt= link_to("Analytics",analytics_home_page_path)
-        %h1.alt2 Beta
+        %h1
+          %span.alt= link_to("Analytics",analytics_home_page_path)
+          %span.beta Beta
       .span-11.last.header
         = link_to "Query Groups Admin", admin_query_groups_path
         |
