@@ -24,8 +24,8 @@
     %form
       = display_select_for_window("dqs", @num_results_dqs, @day_being_shown)
 .span-8{:id=>"dqs1"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_terms , :content_name => "dqs1", :heading => "Previous 1 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_terms , :content_name => "dqs1", :heading => "Previous Day"}
 .span-8{:id=>"dqs7"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "Previous 7 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "Previous 7 Days"}
 .span-8.last{:id=>"dqs30"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Previous 30 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Previous 30 Days"}
