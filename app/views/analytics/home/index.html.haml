@@ -11,11 +11,11 @@
       = display_select_for_window("qas", @num_results_qas, @day_being_shown)
 
 .span-8{:id=>"qas1"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_biggest_movers , :content_name => "qas1", :heading => "Previous 1 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_biggest_movers , :content_name => "qas1", :heading => "Previous Day"}
 .span-8{:id=>"qas7"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @weekly_biggest_movers , :content_name => "qas7", :heading => "Previous 7 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @weekly_biggest_movers , :content_name => "qas7", :heading => "Previous 7 Days"}
 .span-8.last{:id=>"qas30"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @monthly_biggest_movers , :content_name => "qas30", :heading => "Previous 30 Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @monthly_biggest_movers , :content_name => "qas30", :heading => "Previous 30 Days"}
 
 .span-24.headertitle
   .span-21
