@@ -21,12 +21,12 @@ class Timeline
       @dates << dqs.day
       date_marker += 1.day
     end
-    pad_with_zeroes_from_to(date_marker - 1.day, DailyQueryStat.most_recent_populated_date)
+    pad_with_zeroes_from_to(date_marker, DailyQueryStat.most_recent_populated_date)
   end
 
   private
   def pad_with_zeroes_from_to(from_date, to_date)
-    return unless to_date > from_date
+    return unless to_date >= from_date
     from_date.upto(to_date) do |day|
       @series << Datum.new(:y => 0)
       @dates << day

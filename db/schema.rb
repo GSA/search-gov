@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090924004347) do
+ActiveRecord::Schema.define(:version => 20090929171657) do
 
   create_table "affiliates", :force => true do |t|
     t.string   "name",       :null => false
@@ -55,18 +55,29 @@ ActiveRecord::Schema.define(:version => 20090924004347) do
 
   add_index "grouped_queries_query_groups", ["query_group_id", "grouped_query_id"], :name => "joinindex", :unique => true
 
+  create_table "moving_queries", :force => true do |t|
+    t.date    "day",                        :null => false
+    t.integer "window_size",                :null => false
+    t.integer "times",                      :null => false
+    t.string  "query",       :limit => 100, :null => false
+    t.float   "mean",                       :null => false
+    t.float   "std_dev",                    :null => false
+  end
+
+  add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
+
   create_table "queries", :id => false, :force => true do |t|
-    t.string   "ipaddr",    :limit => 17
-    t.string   "query",     :limit => 100
-    t.string   "affiliate", :limit => 32
-    t.integer  "epoch"
-    t.string   "wday",      :limit => 3
-    t.string   "month",     :limit => 3
-    t.integer  "day"
-    t.time     "time_col"
-    t.string   "tz",        :limit => 5
-    t.integer  "year"
-    t.datetime "timestamp",                :null => false
+    t.string    "ipaddr",    :limit => 17
+    t.string    "query",     :limit => 100
+    t.string    "affiliate", :limit => 32
+    t.integer   "epoch"
+    t.string    "wday",      :limit => 3
+    t.string    "month",     :limit => 3
+    t.integer   "day"
+    t.time      "time_col"
+    t.string    "tz",        :limit => 5
+    t.integer   "year"
+    t.timestamp "timestamp",                :null => false
   end
 
   add_index "queries", ["query"], :name => "queryindex"
@@ -94,7 +105,5 @@ ActiveRecord::Schema.define(:version => 20090924004347) do
     t.integer "period"
     t.integer "count"
   end
-
-  add_index "temp_window_counts", ["period"], :name => "period"
 
 end

@@ -48,23 +48,20 @@ namespace :usasearch do
       sql = "#{insert_sql} #{where_clause} and d.day = #{yyyymmdd} #{group_by}"
       ActiveRecord::Base.connection.execute(sql)
     end
-
   end
 
-  namespace :query_accelerations do
-    @min_num_queries_per_window = { 1 => 7, 7=>20, 30 => 50}
-
-    desc "initial population of query_accelerations from every date available in daily_queries_stats table. Replaces existing data in query_accelerations table."
+  namespace :moving_queries do
+    desc "initial population of moving_queries data using every date available in daily_queries_stats table. Replaces any existing data in moving_queries table."
     task :populate => :environment do
       min = DailyQueryStat.minimum(:day)
       max = DailyQueryStat.maximum(:day)
-      min.upto(max) {|day| compute_query_accelerations_for(day.to_s(:number)) }
+      min.upto(max) {|day| MovingQuery.compute_for(day.to_s(:number)) }
     end
 
-    desc "compute 1,7, and 30-day query_accelerations for given YYYYMMDD date (defaults to yesterday)"
+    desc "compute moving queries for 1-, 7-, and 30-day windows for a given YYYYMMDD date (defaults to yesterday)"
     task :compute, :day, :needs => :environment do |t, args|
       args.with_defaults(:day => Date.yesterday.to_s(:number))
-      compute_query_accelerations_for(args.day)
+      MovingQuery.compute_for(args.day)
     end
   end
 

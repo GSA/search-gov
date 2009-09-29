@@ -19,6 +19,28 @@ describe DailyQueryStat do
     end
   end
 
+  describe "#reversed_backfilled_series_since_2009_for" do
+    before do
+      DailyQueryStat.delete_all
+      DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed")
+      DailyQueryStat.create!(:day => 2.days.ago.to_date, :times => 1, :query => "outlier")
+      @ary = DailyQueryStat.reversed_backfilled_series_since_2009_for("outlier")
+    end
+
+    it "should return an array of query counts in reverse day order for a given query" do
+      @ary[1].should == 1
+    end
+
+    it "should return an array of query counts for every day since Jan 1 2009 thru yesterday, filling in zeros where there is no data for a given day" do
+      @ary[0].should == 0
+      num_days = 1 + (Date.yesterday - Date.new(2009,1,1)).to_i
+      @ary.size.should == num_days
+      all_but_two = num_days - 2
+      target = Array.new(all_but_two).fill(0)
+      @ary[2,all_but_two].should == target
+    end
+  end
+
   describe '#most_popular_terms_like' do
     before do
       DailyQueryStat.delete_all
@@ -107,65 +129,6 @@ describe DailyQueryStat do
 
       it "should roll up grouped queries into a single QueryCount with children" do
         yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1)
-        yday.size.should == 1
-        yday.first.query.should == "my query group"
-        yday.first.times.should == 11
-        kids = yday.first.children
-        kids.should_not be_nil
-        kids.first.query.should == "query1"
-        kids.first.times.should == 10
-        kids.last.query.should == "query2"
-        kids.last.times.should == 1
-      end
-    end
-  end
-
-  describe '#biggest_movers' do
-    context "when the table is populated" do
-      before do
-        DailyQueryStat.delete_all
-        day = 3.days.ago
-        DailyQueryStat.create!(:day => day, :query => "most recent day least popular highest score", :times => 1 )
-        DailyQueryStat.create!(:day => day, :query => "most recent day most popular lowest score", :times => 4 )
-        QueryAcceleration.create!(:day => day, :query => "most recent day least popular highest score", :window_size => 1, :score => 2.0)
-        QueryAcceleration.create!(:day => day, :query => "most recent day most popular lowest score", :window_size => 1, :score => 1.0)
-      end
-
-      it "should rank biggest movers for the most recent data available based on search popularity and the target date and number of days parameter" do
-        movers = DailyQueryStat.biggest_movers(DailyQueryStat.most_recent_populated_date, 1)
-        movers.first.query.should == "most recent day most popular lowest score"
-        movers.last.query.should == "most recent day least popular highest score"
-      end
-
-      it "should use the num_results parameter to determine result set size" do
-        DailyQueryStat.biggest_movers(DailyQueryStat.most_recent_populated_date, 1, 1).size.should == 1
-      end
-    end
-
-    context "when the table has no data for the time period specified" do
-      before do
-        DailyQueryStat.delete_all
-      end
-
-      it "should return nil" do
-        DailyQueryStat.biggest_movers(DailyQueryStat.most_recent_populated_date, 1).should be_nil
-      end
-    end
-
-    context "when there are query groups and grouped queries in the data" do
-      before do
-        DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10 )
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1 )
-        QueryAcceleration.create!(:day => Date.yesterday, :query => "query1", :window_size => 1, :score => 2.0)
-        QueryAcceleration.create!(:day => Date.yesterday, :query => "query2", :window_size => 1, :score => 1.0)
-        qg = QueryGroup.create!(:name=>"my query group")
-        qg.grouped_queries << GroupedQuery.create!(:query=>"query1")
-        qg.grouped_queries << GroupedQuery.create!(:query=>"query2")
-      end
-
-      it "should roll up grouped queries into a single QueryCount with children" do
-        yday = DailyQueryStat.biggest_movers(DailyQueryStat.most_recent_populated_date, 1)
         yday.size.should == 1
         yday.first.query.should == "my query group"
         yday.first.times.should == 11

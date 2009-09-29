@@ -15,9 +15,9 @@ describe Analytics::HomeController do
 
   it "should assign biggest movers on the target day for daily, weekly, and monthly windows" do
     yday = Date.yesterday.to_date
-    DailyQueryStat.should_receive(:biggest_movers).with(yday, 1, 10).and_return("ydaybm")
-    DailyQueryStat.should_receive(:biggest_movers).with(yday, 7, 10).and_return("weekbm")
-    DailyQueryStat.should_receive(:biggest_movers).with(yday, 30, 10).and_return("monthbm")
+    MovingQuery.should_receive(:biggest_movers).with(yday, 1, 10).and_return("ydaybm")
+    MovingQuery.should_receive(:biggest_movers).with(yday, 7, 10).and_return("weekbm")
+    MovingQuery.should_receive(:biggest_movers).with(yday, 30, 10).and_return("monthbm")
     get :index, :day => yday
     assigns[:most_recent_day_biggest_movers].should == "ydaybm"
     assigns[:weekly_biggest_movers].should == "weekbm"

@@ -3,7 +3,7 @@ Given /^there are no daily query stats$/ do
 end
 
 Given /^there are no query accelerations stats$/ do
-  QueryAcceleration.delete_all
+  MovingQuery.delete_all
 end
 
 Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
@@ -17,7 +17,7 @@ Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
     words.each do |word|
       times = rand(1000)
       DailyQueryStat.create(:day => day, :query => word, :times => times)
-      [1, 7, 30].each { |window_size| QueryAcceleration.create(:day => day, :query => word, :window_size => window_size, :score => window_size * times) }
+      [1, 7, 30].each { |window_size| MovingQuery.create(:day => day, :query => word, :window_size => window_size, :times => window_size * times, :mean => 1.0, :std_dev => 0.001) }
     end
   end
 end

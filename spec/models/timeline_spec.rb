@@ -8,12 +8,15 @@ describe Timeline do
 
     context "when there are no searches for a term on a given day" do
       before do
-        [9, 11, 12, 15].each {|x| DailyQueryStat.create!(:day => x.days.ago.to_date, :query => "foo", :times => 1 )}
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "most recent query", :times => 1 )
+        [2, 9, 11, 12, 15].each {|x| DailyQueryStat.create!(:day => x.days.ago.to_date, :query => "foo", :times => 1 )}
       end
 
-      it "should fill in missing dates and zero them out" do
+      it "should fill in missing dates from Jan 1 2009 and zero them out" do
         timeline = Timeline.new("foo")
-        [10, 13, 14].each { |x| timeline.series[timeline.dates.index(x.days.ago.to_date)].y.should == 0 }
+        num_days = 1 + (Date.yesterday - Date.new(2009, 1, 1)).to_i
+        timeline.series.size.should == num_days
+        [1, 3, 10, 13, 14].each { |x| timeline.series[timeline.dates.index(x.days.ago.to_date)].y.should == 0 }
       end
     end
 
