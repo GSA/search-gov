@@ -18,14 +18,14 @@ class MovingQuery < ActiveRecord::Base
     transaction do
       delete_all(["day = ?", yyyymmdd])
       [1, 7, 30].each do |window_size|
-        window_candidates = get_window_candidates(window_size, yyyymmdd)
-        window_candidates.each_pair do |query, sum_times|
+        get_window_candidates(window_size, yyyymmdd).each_pair do |query, sum_times|
           reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]
           if reversed_backfilled_yearlong_series.nil?
             reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)
             reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series
           end
           window_sums = sum_by_window_except_last(reversed_backfilled_yearlong_series, window_size)
+          next if window_sums.empty?
           mean = window_sums.sum / window_sums.length.to_f
           sum_of_squares = window_sums.inject(0) { |acc, i| acc + (i - mean) ** 2 }
           std_dev = Math.sqrt(sum_of_squares / window_sums.length.to_f)
@@ -39,7 +39,7 @@ class MovingQuery < ActiveRecord::Base
 
   def self.biggest_movers(end_date, window_size, num_results = RESULTS_SIZE)
     return nil if end_date.nil?
-    results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=>"times DESC")[0,num_results]
+    results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=>"times DESC")[0, num_results]
     return nil if results.empty?
     qcs=[]
     qgcounts = {}
