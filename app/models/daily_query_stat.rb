@@ -13,9 +13,12 @@ class DailyQueryStat < ActiveRecord::Base
                                  :order => "sum_times desc")
   end
 
-  def self.reversed_backfilled_series_since_2009_for(query)
+  def self.reversed_backfilled_series_since_2009_for(query, up_to_day = Date.yesterday.to_date)
     timeline = Timeline.new(query)
-    ary = timeline.series.map { |datum| datum.y}
+    ary = []
+    timeline.dates.each_with_index do |day, idx|
+      ary << timeline.series[idx].y if day <= up_to_day
+    end
     ary.reverse
   end
 

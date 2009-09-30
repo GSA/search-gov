@@ -20,24 +20,41 @@ describe DailyQueryStat do
   end
 
   describe "#reversed_backfilled_series_since_2009_for" do
-    before do
-      DailyQueryStat.delete_all
-      DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed")
-      DailyQueryStat.create!(:day => 2.days.ago.to_date, :times => 1, :query => "outlier")
-      @ary = DailyQueryStat.reversed_backfilled_series_since_2009_for("outlier")
+    context "when no target date is passed in" do
+      before do
+        DailyQueryStat.delete_all
+        DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed")
+        DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 1, :query => "outlier")
+        @ary = DailyQueryStat.reversed_backfilled_series_since_2009_for("outlier")
+      end
+
+      it "should return an array of query counts in reverse day order for a given query" do
+        @ary[1].should == 1
+      end
+
+      it "should return an array of query counts for every day since Jan 1 2009 thru yesterday, filling in zeros where there is no data for a given day" do
+        @ary[0].should == 0
+        num_days = 1 + (Date.yesterday - Date.new(2009, 1, 1)).to_i
+        @ary.size.should == num_days
+        all_but_two = num_days - 2
+        target = Array.new(all_but_two).fill(0)
+        @ary[2, all_but_two].should == target
+      end
     end
 
-    it "should return an array of query counts in reverse day order for a given query" do
-      @ary[1].should == 1
-    end
+    context "when a target date is passed in" do
+      before do
+        DailyQueryStat.delete_all
+        @day = Date.new(2009, 7, 21).to_date
+        DailyQueryStat.create!(:day => @day, :times => 1, :query => "outlier")
+        @ary = DailyQueryStat.reversed_backfilled_series_since_2009_for("outlier", @day)
+      end
 
-    it "should return an array of query counts for every day since Jan 1 2009 thru yesterday, filling in zeros where there is no data for a given day" do
-      @ary[0].should == 0
-      num_days = 1 + (Date.yesterday - Date.new(2009,1,1)).to_i
-      @ary.size.should == num_days
-      all_but_two = num_days - 2
-      target = Array.new(all_but_two).fill(0)
-      @ary[2,all_but_two].should == target
+      it "should return an array of query counts for every day since Jan 1 2009 thru the target date" do
+        @ary[0].should == 1
+        num_days = 1 + (@day - Date.new(2009, 1, 1)).to_i
+        @ary.size.should == num_days
+      end
     end
   end
 

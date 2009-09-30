@@ -22,17 +22,15 @@ class MovingQuery < ActiveRecord::Base
         window_candidates.each_pair do |query, sum_times|
           reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]
           if reversed_backfilled_yearlong_series.nil?
-            reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query)
+            reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)
             reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series
           end
           window_sums = sum_by_window_except_last(reversed_backfilled_yearlong_series, window_size)
           mean = window_sums.sum / window_sums.length.to_f
           sum_of_squares = window_sums.inject(0) { |acc, i| acc + (i - mean) ** 2 }
-          variance = 1 / window_sums.length.to_f * sum_of_squares
-          std_dev = Math.sqrt(variance)
+          std_dev = Math.sqrt(sum_of_squares / window_sums.length.to_f)
           moving_query = new(:query=> query, :day => yyyymmdd, :window_size => window_size,
                              :times => sum_times, :mean => mean, :std_dev => std_dev)
-          puts "potential MQ: #{moving_query.inspect}, #{moving_query.passes_minimum_thresholds?}" if window_size==1                         
           moving_query.save if moving_query.passes_minimum_thresholds?
         end
       end
@@ -67,7 +65,7 @@ class MovingQuery < ActiveRecord::Base
   def self.sum_by_window_except_last(ary, window_size)
     return ary if window_size == 1
     windows = ary.in_groups_of(window_size)
-    windows = windows[0, (windows.size) - 1] # oldest window might not have complete data
+    windows = windows[0, (windows.size) - 1] if windows.last.include?nil
     windows.collect {|window| window.sum }
   end
 
