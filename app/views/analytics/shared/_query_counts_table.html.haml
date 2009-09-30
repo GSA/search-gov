@@ -5,7 +5,7 @@
     %th.alt{:style=>"text-align:right"} Frequency
   - if query_counts.nil?
     %tr
-      %td{:colspan=>3}.alt Query data unavailable
+      %td.alt{:colspan=>3} Query data unavailable
   - else
     - query_counts.each_with_index do |query_count, idx|
       %tr
