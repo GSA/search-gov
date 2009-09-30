@@ -32,6 +32,7 @@ class MovingQuery < ActiveRecord::Base
           std_dev = Math.sqrt(variance)
           moving_query = new(:query=> query, :day => yyyymmdd, :window_size => window_size,
                              :times => sum_times, :mean => mean, :std_dev => std_dev)
+          puts "potential MQ: #{moving_query.inspect}, #{moving_query.passes_minimum_thresholds?}" if window_size==1                         
           moving_query.save if moving_query.passes_minimum_thresholds?
         end
       end

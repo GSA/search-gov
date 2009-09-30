@@ -74,42 +74,4 @@ namespace :usasearch do
     sql = "alter table proportions add index qp (query, proportion)"
     ActiveRecord::Base.connection.execute(sql)
   end
-
-  def compute_query_accelerations_for(someday)
-    day = someday.to_date
-    yyyymmdd = someday.to_i
-    sql = "drop table if exists temp_window_counts"
-    ActiveRecord::Base.connection.execute(sql)
-
-    sql = "delete from query_accelerations where day = #{yyyymmdd}"
-    ActiveRecord::Base.connection.execute(sql)
-
-    calculate_proportions
-
-    score_clause = "(((t1.count-t2.count)/t2.count) + ((t1.count-t3.count)/t3.count) * 0.5 + ((t1.count-t4.count)/t4.count) * 0.3 + ((t2.count-t3.count)/t3.count) * 0.5 + ((t3.count-t4.count)/t4.count) * 0.5) as score "
-    minimum_score_threshold = 1.0
-    [30, 7, 1].each do |window_size|
-      sql = "drop table if exists temp_window_counts"
-      ActiveRecord::Base.connection.execute(sql)
-
-      from_clause = "from temp_window_counts as t1, temp_window_counts as t2, temp_window_counts as t3, temp_window_counts as t4 where t1.query = t2.query and t1.query = t3.query and t1.query = t4.query and t1.period = 1 and t2.period = 2 and t3.period=3 and t4.period = 4 and t1.count > #{@min_num_queries_per_window[window_size]} having score > #{minimum_score_threshold}"
-      targetdate = day
-      sql = "create table temp_window_counts (query varchar(100), period int, count int)"
-      ActiveRecord::Base.connection.execute(sql)
-      4.times do |idx|
-        sql = "insert into temp_window_counts (period, query, count) select #{idx + 1}, query, sum(times) from daily_query_stats where day between #{(targetdate - window_size.days).to_s(:number).to_i} and #{targetdate.to_s(:number).to_i} group by query"
-        ActiveRecord::Base.connection.execute(sql)
-        targetdate -= window_size.days
-      end
-
-      2.upto(4) do |idx|
-        sql = "insert into temp_window_counts (period, query, count) select #{idx}, t1.query, 1 from temp_window_counts as t1 where t1.period = 1 and t1.count > #{@min_num_queries_per_window[window_size]} and t1.query not in (select t2.query from temp_window_counts as t2 where period=#{idx})"
-        ActiveRecord::Base.connection.execute(sql)
-      end
-
-      sql = "insert into query_accelerations (query, day, window_size, score) select t1.query,  #{yyyymmdd}, #{window_size}, #{score_clause} #{from_clause}"
-      ActiveRecord::Base.connection.execute(sql)
-    end
-
-  end
 end
