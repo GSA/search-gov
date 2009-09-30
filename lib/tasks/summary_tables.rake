@@ -55,7 +55,9 @@ namespace :usasearch do
     task :populate => :environment do
       min = DailyQueryStat.minimum(:day)
       max = DailyQueryStat.maximum(:day)
-      min.upto(max) {|day| MovingQuery.compute_for(day.to_s(:number)) }
+      days = []
+      min.upto(max) {|day| days << day.to_s(:number) }
+      days.reverse.each { |day| MovingQuery.compute_for(day) }
     end
 
     desc "compute moving queries for 1-, 7-, and 30-day windows for a given YYYYMMDD date (defaults to yesterday)"
