@@ -8,26 +8,26 @@ Feature: Analytics Homepage
     Given there is analytics data from "20090831" thru "20090901"
     When I am on the analytics homepage
     Then I should see "Data for September  1, 2009"
-    And in "dqs1" I should not see "Query data unavailable"
-    And in "dqs7" I should not see "Query data unavailable"
-    And in "dqs30" I should not see "Query data unavailable"
-    And in "qas1" I should not see "Query data unavailable"
-    And in "qas7" I should not see "Query data unavailable"
-    And in "qas30" I should not see "Query data unavailable"
+    And in "dqs1" I should not see "No queries matched"
+    And in "dqs7" I should not see "No queries matched"
+    And in "dqs30" I should not see "No queries matched"
+    And in "qas1" I should not see "No queries matched"
+    And in "qas7" I should not see "No queries matched"
+    And in "qas30" I should not see "No queries matched"
 
   Scenario: No daily query stats available for any time period
     Given there are no daily query stats
     When I am on the analytics homepage
-    Then in "dqs1" I should see "Query data unavailable"
-    And in "dqs7" I should see "Query data unavailable"
-    And in "dqs30" I should see "Query data unavailable"
+    Then in "dqs1" I should see "No queries matched"
+    And in "dqs7" I should see "No queries matched"
+    And in "dqs30" I should see "No queries matched"
 
   Scenario: No query accelerations (biggest movers) available for any time period
     Given there are no query accelerations stats
     When I am on the analytics homepage
-    Then in "qas1" I should see "Query data unavailable"
-    And in "qas7" I should see "Query data unavailable"
-    And in "qas30" I should see "Query data unavailable"
+    Then in "qas1" I should see "No queries matched"
+    And in "qas7" I should see "No queries matched"
+    And in "qas30" I should see "No queries matched"
 
   Scenario: Searching for a query term that starts with a given string
     Given the following DailyQueryStats exist for yesterday:

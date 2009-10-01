@@ -25,7 +25,8 @@ class MovingQuery < ActiveRecord::Base
             reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series
           end
           window_sums = sum_by_window_except_last(reversed_backfilled_yearlong_series, window_size)
-          next if window_sums.empty?
+          next if window_sums.length < 2
+          next if window_sums[0] <= window_sums[1]
           mean = window_sums.sum / window_sums.length.to_f
           sum_of_squares = window_sums.inject(0) { |acc, i| acc + (i - mean) ** 2 }
           std_dev = Math.sqrt(sum_of_squares / window_sums.length.to_f)
