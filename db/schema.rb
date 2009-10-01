@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090930030530) do
+ActiveRecord::Schema.define(:version => 20091001185128) do
 
   create_table "affiliates", :force => true do |t|
     t.string   "name",       :null => false
@@ -67,30 +67,21 @@ ActiveRecord::Schema.define(:version => 20090930030530) do
   add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
 
   create_table "queries", :id => false, :force => true do |t|
-    t.string    "ipaddr",    :limit => 17
-    t.string    "query",     :limit => 100
-    t.string    "affiliate", :limit => 32
-    t.integer   "epoch"
-    t.string    "wday",      :limit => 3
-    t.string    "month",     :limit => 3
-    t.integer   "day"
-    t.time      "time_col"
-    t.string    "tz",        :limit => 5
-    t.integer   "year"
-    t.timestamp "timestamp",                :null => false
+    t.string   "ipaddr",    :limit => 17
+    t.string   "query",     :limit => 100
+    t.string   "affiliate", :limit => 32
+    t.integer  "epoch"
+    t.string   "wday",      :limit => 3
+    t.string   "month",     :limit => 3
+    t.integer  "day"
+    t.time     "time_col"
+    t.string   "tz",        :limit => 5
+    t.integer  "year"
+    t.datetime "timestamp",                :null => false
   end
 
   add_index "queries", ["query"], :name => "queryindex"
   add_index "queries", ["timestamp"], :name => "timestamp"
-
-  create_table "query_accelerations", :force => true do |t|
-    t.date    "day",                        :null => false
-    t.integer "window_size",                :null => false
-    t.string  "query",       :limit => 100, :null => false
-    t.float   "score",                      :null => false
-  end
-
-  add_index "query_accelerations", ["day", "window_size", "score"], :name => "index_query_accelerations_on_day_and_window_size_and_score"
 
   create_table "query_groups", :force => true do |t|
     t.string   "name",       :null => false
@@ -99,11 +90,5 @@ ActiveRecord::Schema.define(:version => 20090930030530) do
   end
 
   add_index "query_groups", ["name"], :name => "index_query_groups_on_name", :unique => true
-
-  create_table "temp_window_counts", :id => false, :force => true do |t|
-    t.string  "query",  :limit => 100
-    t.integer "period"
-    t.integer "count"
-  end
 
 end
