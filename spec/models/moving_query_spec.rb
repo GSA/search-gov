@@ -126,6 +126,22 @@ describe MovingQuery do
       end
     end
 
+    context "when there are grouped queries in the data that do not belong to a query group" do
+      before do
+        MovingQuery.delete_all
+        @day = Date.new(2009, 7, 21).to_date
+        MovingQuery.create!(:query=> "query1", :day => @day, :window_size => 1, :times => 16, :mean => 11.9, :std_dev => 1.0)
+        GroupedQuery.create!(:query=>"query1")
+      end
+
+      it "should treat the grouped queries as regular queries" do
+        yday = MovingQuery.biggest_movers(@day, 1)
+        yday.size.should == 1
+        yday.first.query.should == "query1"
+        yday.first.times.should == 16
+      end
+    end
+
     context "when there are query groups and grouped queries in the data" do
       before do
         MovingQuery.delete_all

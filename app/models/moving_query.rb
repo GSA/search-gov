@@ -47,7 +47,7 @@ class MovingQuery < ActiveRecord::Base
     grouped_queries_hash = GroupedQuery.grouped_queries_hash
     results.each do |res|
       grouped_query = grouped_queries_hash[res.query]
-      if (grouped_query)
+      if (grouped_query && !grouped_query.query_groups.empty?)
         grouped_query.query_groups.each do |query_group|
           qgcounts[query_group.name] = QueryCount.new(query_group.name, 0) if qgcounts[query_group.name].nil?
           qgcounts[query_group.name].times += res.times.to_i
@@ -59,7 +59,6 @@ class MovingQuery < ActiveRecord::Base
     end
     qcs += qgcounts.values
     qcs.sort_by {|qc| qc.times}.reverse
-
   end
 
   private
