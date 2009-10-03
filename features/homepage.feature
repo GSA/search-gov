@@ -29,7 +29,7 @@ Feature: Homepage
     Given I am on the homepage
     When I fill in "query" with "البيت الأبيض"
     And I submit the search form
-    Then I should see "White House"
+    Then I should see "البيت الأبيض"
 
   Scenario: A really long search from the home page
     Given I am on the homepage

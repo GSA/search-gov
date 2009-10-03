@@ -40,7 +40,7 @@ class MovingQuery < ActiveRecord::Base
 
   def self.biggest_movers(end_date, window_size, num_results = RESULTS_SIZE)
     return nil if end_date.nil?
-    results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=>"times DESC")[0, num_results]
+    results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=>"times DESC")
     return nil if results.empty?
     qcs=[]
     qgcounts = {}
@@ -58,7 +58,7 @@ class MovingQuery < ActiveRecord::Base
       end
     end
     qcs += qgcounts.values
-    qcs.sort_by {|qc| qc.times}.reverse
+    qcs.sort_by {|qc| qc.times}.reverse[0, num_results]
   end
 
   private
