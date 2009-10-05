@@ -7,10 +7,10 @@ class DailyQueryStat < ActiveRecord::Base
 
   def self.most_popular_terms_like(query, use_starts_with_instead_of_contains)
     contains = use_starts_with_instead_of_contains ? '' : '%'
-    results = DailyQueryStat.sum(:times,
-                                 :group => :query,
-                                 :conditions => ["query LIKE ?", "#{contains}#{query}%"],
-                                 :order => "sum_times desc")
+    DailyQueryStat.sum(:times,
+                       :group => :query,
+                       :conditions => ["query LIKE ?", "#{contains}#{query}%"],
+                       :order => "sum_times desc")
   end
 
   def self.reversed_backfilled_series_since_2009_for(query, up_to_day = Date.yesterday.to_date)

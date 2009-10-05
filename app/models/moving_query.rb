@@ -71,10 +71,10 @@ class MovingQuery < ActiveRecord::Base
 
   def self.get_window_candidates(window_size, yyyymmdd)
     start_date = yyyymmdd.to_date - window_size.days + 1.day
-    candidates = DailyQueryStat.sum(:times,
-                                    :group=>:query,
-                                    :conditions=>["day BETWEEN ? AND ?", start_date, yyyymmdd],
-                                    :having => "sum_times > #{MIN_NUM_QUERIES_PER_WINDOW[window_size]}")
+    DailyQueryStat.sum(:times,
+                       :group=>:query,
+                       :conditions=>["day BETWEEN ? AND ?", start_date, yyyymmdd],
+                       :having => "sum_times > #{MIN_NUM_QUERIES_PER_WINDOW[window_size]}")
   end
 
 end
