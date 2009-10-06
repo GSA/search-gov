@@ -1,6 +1,6 @@
 - form_tag(analytics_query_search_path, :method => :get, :id=>"query_search_form") do
   = label :search, "Search for query term"
-  = text_field :search, :query, :size=>50, :name=>"query"
+  = text_field_with_auto_complete :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}, {:url=> {:controller => "/searches", :action => "auto_complete_for_search_query"}, :method=> :get}
   = submit_tag "Search", :id=>"search_button", :onClick=>"document.getElementById('busy').style.display='block'"
   = label :search, "Contains"
   = radio_button(:search, "search_type", "contains", :id=> "Contains", :name => "search_type")

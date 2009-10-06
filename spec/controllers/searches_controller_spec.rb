@@ -4,6 +4,13 @@ describe SearchesController do
   fixtures :affiliates
   integrate_views
 
+  describe "#auto_complete_for_search_query" do
+    it "should use query param to find terms starting with that param" do
+      DailyQueryStat.should_receive(:find).with(:all, :conditions => ["query LIKE ?", "foo%"], :order => 'query ASC', :limit => 15, :select=>"distinct(query) as query")
+      get :auto_complete_for_search_query, :query=>"foo"
+    end
+  end
+
   describe "when showing index" do
     it "should have a route" do
       search_path.should == '/search'
