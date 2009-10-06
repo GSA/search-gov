@@ -100,6 +100,7 @@ describe MovingQuery do
     context "when the table is populated" do
       before do
         MovingQuery.delete_all
+        MovingQuery.create!(:query=> "earliest data", :day => Date.new(2009,1,1), :window_size => 1, :times => 16, :mean => 11.9, :std_dev => 1.0)
         @day = Date.new(2009, 7, 21).to_date
         MovingQuery.create!(:query=> "anomaly", :day => @day, :window_size => 1, :times => 16, :mean => 11.9, :std_dev => 1.0)
         MovingQuery.create!(:query=> "bigger anomaly", :day => @day, :window_size => 1, :times => 18, :mean => 11.9, :std_dev => 1.0)
@@ -121,14 +122,28 @@ describe MovingQuery do
         MovingQuery.delete_all
       end
 
-      it "should return nil" do
-        MovingQuery.biggest_movers(Date.today.to_date, 1).should be_nil
+      it "should return an error string that no queries matched" do
+        MovingQuery.biggest_movers(Date.today.to_date, 1).should == "No queries matched"
+      end
+    end
+
+    context "when there is insufficient data for the time period and window size specified" do
+      before do
+        MovingQuery.delete_all
+        MovingQuery.create!(:query=> "earliest data in table", :day => Date.new(2009,1,1).to_date, :window_size => 30, :times => 160, :mean => 11.9, :std_dev => 1.0)
+        @day = Date.new(2009, 5, 21).to_date
+        MovingQuery.create!(:query=> "anomaly but computed with fewer than 7 data points", :day => @day, :window_size => 30, :times => 160, :mean => 11.9, :std_dev => 1.0)
+      end
+
+      it "should return an error string that there is not enough historical data" do
+        MovingQuery.biggest_movers(@day, 30).should == "Not enough historic data to compute accelerations"
       end
     end
 
     context "when there are grouped queries in the data that do not belong to a query group" do
       before do
         MovingQuery.delete_all
+        MovingQuery.create!(:query=> "earliest data in table", :day => Date.new(2009,1,1).to_date, :window_size => 30, :times => 160, :mean => 11.9, :std_dev => 1.0)
         @day = Date.new(2009, 7, 21).to_date
         MovingQuery.create!(:query=> "query1", :day => @day, :window_size => 1, :times => 16, :mean => 11.9, :std_dev => 1.0)
         GroupedQuery.create!(:query=>"query1")
@@ -145,6 +160,7 @@ describe MovingQuery do
     context "when there are query groups and grouped queries in the data" do
       before do
         MovingQuery.delete_all
+        MovingQuery.create!(:query=> "earliest data in table", :day => Date.new(2009,1,1).to_date, :window_size => 30, :times => 160, :mean => 11.9, :std_dev => 1.0)
         @day = Date.new(2009, 7, 21).to_date
         MovingQuery.create!(:query=> "query1", :day => @day, :window_size => 1, :times => 16, :mean => 11.9, :std_dev => 1.0)
         MovingQuery.create!(:query=> "query2", :day => @day, :window_size => 1, :times => 18, :mean => 11.9, :std_dev => 1.0)

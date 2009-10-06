@@ -7,6 +7,9 @@ class MovingQuery < ActiveRecord::Base
   MIN_NUM_QUERIES_PER_WINDOW = { 1 => 15, 7 => 25, 30 => 45}
   MULTIPLES_OF_STD_DEV_PER_WINDOW = { 1 => 4, 7 => 3, 30 => 2}
   RESULTS_SIZE = 10
+  NO_QUERIES_MATCHED = "No queries matched"
+  INSUFFICIENT_DATA = "Not enough historic data to compute accelerations"
+  MIN_ACCELERATION_PERIODS_REQUIRED = 7
 
   def passes_minimum_thresholds?
     self.times > MIN_NUM_QUERIES_PER_WINDOW[self.window_size] &&
@@ -39,9 +42,10 @@ class MovingQuery < ActiveRecord::Base
   end
 
   def self.biggest_movers(end_date, window_size, num_results = RESULTS_SIZE)
-    return nil if end_date.nil?
+    return NO_QUERIES_MATCHED if end_date.nil?
     results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=>"times DESC")
-    return nil if results.empty?
+    return NO_QUERIES_MATCHED if results.empty?
+    return INSUFFICIENT_DATA if insufficient_data?(end_date, window_size)
     qcs=[]
     qgcounts = {}
     grouped_queries_hash = GroupedQuery.grouped_queries_hash
@@ -75,6 +79,11 @@ class MovingQuery < ActiveRecord::Base
                        :group=>:query,
                        :conditions=>["day BETWEEN ? AND ?", start_date, yyyymmdd],
                        :having => "sum_times > #{MIN_NUM_QUERIES_PER_WINDOW[window_size]}")
+  end
+
+  def self.insufficient_data?(day, window_size)
+    available_periods = (day - minimum(:day)) / window_size
+    available_periods < MIN_ACCELERATION_PERIODS_REQUIRED
   end
 
 end

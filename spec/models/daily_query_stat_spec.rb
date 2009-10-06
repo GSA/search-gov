@@ -129,8 +129,8 @@ describe DailyQueryStat do
         DailyQueryStat.delete_all
       end
 
-      it "should return nil" do
-        DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1).should be_nil
+      it "should return an error string that no queries matched" do
+        DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1).should == "Not enough historic data to compute most popular"
       end
     end
 

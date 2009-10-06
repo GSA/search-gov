@@ -18,9 +18,9 @@ Feature: Analytics Homepage
   Scenario: No daily query stats available for any time period
     Given there are no daily query stats
     When I am on the analytics homepage
-    Then in "dqs1" I should see "No queries matched"
-    And in "dqs7" I should see "No queries matched"
-    And in "dqs30" I should see "No queries matched"
+    Then in "dqs1" I should see "Not enough historic data"
+    And in "dqs7" I should see "Not enough historic data"
+    And in "dqs30" I should see "Not enough historic data"
 
   Scenario: No query accelerations (biggest movers) available for any time period
     Given there are no query accelerations stats

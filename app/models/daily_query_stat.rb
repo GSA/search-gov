@@ -4,6 +4,7 @@ class DailyQueryStat < ActiveRecord::Base
   validates_presence_of :times
   validates_uniqueness_of :query, :scope => :day
   RESULTS_SIZE = 10
+  INSUFFICIENT_DATA = "Not enough historic data to compute most popular"
 
   def self.most_popular_terms_like(query, use_starts_with_instead_of_contains)
     contains = use_starts_with_instead_of_contains ? '' : '%'
@@ -23,13 +24,13 @@ class DailyQueryStat < ActiveRecord::Base
   end
 
   def self.most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE)
-    return nil if end_date.nil?
+    return INSUFFICIENT_DATA if end_date.nil?
     start_date = end_date - days_back.days + 1.day
     results = DailyQueryStat.sum(:times,
                                  :group => :query,
                                  :conditions => ['day between ? AND ?', start_date, end_date],
                                  :order => "sum_times desc")
-    return nil if results.empty?
+    return INSUFFICIENT_DATA if results.empty?
     qcs=[]
     qgcounts = {}
     grouped_queries_hash = GroupedQuery.grouped_queries_hash
