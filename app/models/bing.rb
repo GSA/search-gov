@@ -10,7 +10,7 @@ class Bing < AbstractEngine
       options[:site] = ["gov", "mil"]
     end
     bing = RBing.new("A4C32FAE6F3DB386FC32ED1C4F3024742ED30906")
-    q = "#{@query}"
+    q = @query
 
     begin
       response = bing.web(q, options)

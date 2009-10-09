@@ -1,4 +1,5 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
+require 'ostruct'
 
 describe SearchHelper do
   describe "#display_result_links" do
@@ -23,4 +24,68 @@ describe SearchHelper do
     end
   end
 
+  describe "#display_deep_links_for(result,query)" do
+    before do
+      deep_links=[]
+      8.times {|idx| deep_links << OpenStruct.new(:title=>"title #{idx}", :url => "url #{idx}")}
+      @result = {"title"=>"my title", "deepLinks"=>deep_links, "cacheUrl"=>"cached", "content"=>"Some content", "unescapedUrl"=>"http://www.gsa.gov/someurl"}
+      @query = "some query"
+    end
+
+    context "when there are no deep links" do
+      before do
+        @result['deepLinks']=nil
+      end
+      it "should return nil" do
+        helper.display_deep_links_for(@result, @query).should be_nil
+      end
+    end
+
+    context "when there are deep links" do
+      it "should render deep links in two columns" do
+        html = helper.display_deep_links_for(@result, @query)
+        html.should match("<tr><td><a href=\"url 0\">title 0</a></td><td><a href=\"url 1\">title 1</a></td></tr><tr><td><a href=\"url 2\">title 2</a></td><td><a href=\"url 3\">title 3</a></td></tr><tr><td><a href=\"url 4\">title 4</a></td><td><a href=\"url 5\">title 5</a></td></tr><tr><td><a href=\"url 6\">title 6</a></td><td><a href=\"url 7\">title 7</a></td></tr>")
+      end
+    end
+
+    context "when there are more than 8 deep links" do
+      before do
+        @result['deepLinks'] << OpenStruct.new(:title=>"ninth title", :url => "ninth url")
+      end
+
+      it "should show a maximum of 8 deep links" do
+        html = helper.display_deep_links_for(@result, @query)
+        html.should_not match(/ninth/)
+      end
+    end
+
+    context "when there are an odd number of deep links" do
+      before do
+        @result['deepLinks']= @result['deepLinks'].slice(0..-2)
+      end
+
+      it "should have an empty last spot" do
+        html = helper.display_deep_links_for(@result, @query)
+        html.should match("<tr><td><a href=\"url 6\">title 6</a></td><td></td></tr>")
+      end
+    end
+
+    context "when query term has no site: filter" do
+      it "should show a more results link" do
+        html = helper.display_deep_links_for(@result, @query)
+        html.should match("Show more results from www.gsa.gov</a>")
+      end
+    end
+
+    context "when query term has a site: filter" do
+      before do
+        @query = "site:www.gsa.gov #{@query}"
+      end
+
+      it "should not show a more results link" do
+        html = helper.display_deep_links_for(@result, @query)
+        html.should_not match("Show more results")
+      end
+    end
+  end
 end
