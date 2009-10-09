@@ -16,22 +16,22 @@ describe Bing do
     end
 
     context "when affiliate has no domains specified" do
-      it "should use just query string" do
-        @rbing.should_receive(:web).with("government",{})
+      it "should use just query string and mil&gov domain filters" do
+        @rbing.should_receive(:web).with("government",{:site=>["gov","mil"]})
         Bing.new(:query => "government", :affiliate => Affiliate.new, :page => 0).run rescue nil
       end
     end
 
     context "when affiliate is nil" do
-      it "should use just query string" do
-        @rbing.should_receive(:web).with("government",{})
+      it "should use just query string and mil&gov domain filters" do
+        @rbing.should_receive(:web).with("government",{:site=>["gov","mil"]})
         Bing.new(:query => "government", :affiliate => nil, :page => 0).run rescue nil
       end
     end
 
     context "when page offset is specified" do
       it "should specify the offset in the query to Bing" do
-        @rbing.should_receive(:web).with("government",{:offset => 30})
+        @rbing.should_receive(:web).with("government",{:offset => 30,:site=>["gov","mil"]})
         Bing.new(:query => "government", :affiliate => nil, :page => 3).run rescue nil
       end
     end
