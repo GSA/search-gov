@@ -12,6 +12,30 @@ describe SearchHelper do
     end
   end
 
+  describe "#highlight_except(str, except)" do
+    context "when str does not contain any words from except string" do
+      before do
+        @str = "some title string"
+        @except = "foo"
+      end
+
+      it "should return str with all words highlighted" do
+        helper.highlight_except(@str, @except).should == "<strong>some</strong> <strong>title</strong> <strong>string</strong>"
+      end
+    end
+
+    context "when str contains words from except string regardless of case" do
+      before do
+        @str = "some title string With words"
+      end
+
+      it "should return str with all words highlighted except the group of words contained in the except string" do
+        @except = "title with"
+        helper.highlight_except(@str, @except).should == "<strong>some</strong> title <strong>string</strong> With <strong>words</strong>"
+      end
+    end
+  end
+
   describe "#shorten_url" do
     context "when URL is more than 30 chars long and has at least one sublevel specified" do
       before do
@@ -20,6 +44,16 @@ describe SearchHelper do
 
       it "should replace everything between the hostname and the document with ellipses and remove params" do
         helper.send(:shorten_url, @url).should == "http://www.foo.com/.../XXXX.html"
+      end
+    end
+
+    context "when URL is more than 30 chars long and does not have at least one sublevel specified" do
+      before do
+        @url = "http://www.mass.gov/?pageID=trepressrelease&L=4&L0=Home&L1=Media+%26+Publications&L2=Treasury+Press+Releases&L3=2006&sid=Ctre&b=pressrelease&f=2006_032706&csid=Ctre"
+      end
+
+      it "should truncate to 30 chars with ellipses" do
+        helper.send(:shorten_url, @url).should == "http://www.mass.gov/?pageID=tr..."        
       end
     end
   end

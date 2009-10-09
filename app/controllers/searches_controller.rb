@@ -20,7 +20,7 @@ class SearchesController < ApplicationController
   private
 
   def set_search_options
-    affiliate = Affiliate.find_by_name(params["affiliate"]) rescue nil
+    affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
     @search_options = {
       :page => (params[:page].to_i - 1),
       :query => params["query"],

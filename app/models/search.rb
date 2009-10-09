@@ -1,5 +1,5 @@
 class Search
-  ENGINES = {:gweb => Gweb, :gss => Gss, :bing=> Bing}
+  ENGINES = {:bing=> Bing}
   attr_accessor :query, :page, :error_message, :engine, :affiliate
   TOO_LONG = "That is too long a word. Try using a shorter word."
   EMPTY_QUERY= "Please enter search term(s)"
@@ -20,25 +20,10 @@ class Search
     self.engine.run
   end
 
-  def total
-    self.engine.total
-  end
-
-  def startrecord
-    self.engine.startrecord
-  end
-
-  def endrecord
-    self.engine.endrecord
-  end
-
-  def results
-    self.engine.results || []
-  end
-
   def per_page
     self.engine.class::DEFAULT_PER_PAGE
   end
 
+  %w{total startrecord endrecord results related_search}.each {|fn| class_eval "def #{fn}; self.engine.#{fn}; end" }
 end
 

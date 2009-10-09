@@ -22,8 +22,6 @@ Rails::Initializer.run do |config|
   config.gem "chriseppstein-compass", :lib => 'compass', :source => 'http://gems.github.com', :version => '>= 0.8.9'
   config.gem "hpricot"
   config.gem "calendar_date_select"
-  config.gem "httparty"
-  config.gem "mikedemers-rbing", :lib => 'rbing', :source => 'http://gems.github.com', :version => '>= 1.0.1'
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.

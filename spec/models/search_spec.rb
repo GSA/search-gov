@@ -30,14 +30,6 @@ describe Search do
       Search.new(@valid_options).engine.should be_instance_of Bing
     end
 
-    it "should be settable to GSS" do
-      Search.new(@valid_options.merge(:engine => "gss")).engine.should be_instance_of Gss
-    end
-
-    it "should be settable to Gweb" do
-      Search.new(@valid_options.merge(:engine => "gweb")).engine.should be_instance_of Gweb
-    end
-
     it "should run the appropriate search engine" do
       Search::ENGINES.each do | sym, klass |
         engine = klass.new(@valid_options)
@@ -61,6 +53,12 @@ describe Search do
 
         it "should have a total at least as large as the first set of results" do
           @search.total.should >= @search.results.size
+        end
+
+        it "should have a related searches array" do
+          @search.related_search.size.should > 0
+          @search.related_search.first.title.should_not be_nil
+          @search.related_search.first.url.should_not be_nil
         end
 
       end

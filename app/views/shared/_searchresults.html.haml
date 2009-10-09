@@ -1,7 +1,6 @@
 - if (@search && @search.results.size > 0)
-  %p= "Results #{search.startrecord}-#{search.endrecord} of about #{number_with_delimiter(search.total)} for '#{search.query}'"
-  %hr
-  - search.results.each_with_index do |result, index|
+  %p= "Results #{@search.startrecord}-#{@search.endrecord} of about #{number_with_delimiter(@search.total)} for '#{@search.query}'"
+  - @search.results.each_with_index do |result, index|
     %div.searchresult{:id => "searchresult#{index+1}"}
       %h2= display_result_title(result)
       %h3 #{result['content']}

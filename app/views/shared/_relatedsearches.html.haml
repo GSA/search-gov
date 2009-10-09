@@ -1,0 +1,5 @@
+- if (@search && @search.related_search.size > 0)
+  %h3.alt= "Related searches"
+  %ul{:id => "relatedsearch"}
+    - @search.related_search.each do |result|
+      %li= link_to(highlight_except(result.title, @search.query), result.url)

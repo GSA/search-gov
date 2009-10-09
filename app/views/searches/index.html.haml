@@ -1,5 +1,6 @@
-.span-3.prepend-1.append-1
+#sidebar
   = link_to(image_tag('USAsearch_medium.gif', :alt=>"USASearch Home", :width => 201, :height => 44), home_page_path)
-.span-18
+  = render :partial => "shared/relatedsearches"
+#results
   = render :partial => "shared/search"
   = render :partial => "shared/searchresults", :locals => { :search => @search }

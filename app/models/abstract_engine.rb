@@ -1,7 +1,7 @@
 class AbstractEngine
-  attr_accessor :total, :results, :startrecord, :endrecord
+  attr_accessor :total, :results, :startrecord, :endrecord, :related_search
 
   def initialize(options)
-    @query, @page, @affiliate = options[:query], options[:page], options[:affiliate]
+    @query, @page, @affiliate, @results, @related_search = options[:query], options[:page], options[:affiliate], [], []
   end
 end

@@ -20,7 +20,7 @@ describe SearchesController do
 
   describe "when showing a new search" do
     before do
-      get :index, :query => "social security", :page => 4, :engine => "gss"
+      get :index, :query => "social security", :page => 4, :engine => "bing"
       @search = assigns[:search]
     end
 
@@ -40,7 +40,7 @@ describe SearchesController do
     end
 
     it "should set the search engine" do
-      @search.engine.class.to_s.downcase.should == "gss"
+      @search.engine.class.to_s.downcase.should == "bing"
     end
   end
 

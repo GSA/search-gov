@@ -2,28 +2,36 @@ class Bing < AbstractEngine
   DEFAULT_PER_PAGE = 10
 
   def run
-    options = {}
-    options[:offset] = @page * DEFAULT_PER_PAGE if @page > 0
+    offset = @page > 0 ? @page * DEFAULT_PER_PAGE : 0
     if @affiliate && !@affiliate.domains.blank?
-      options[:site] = @affiliate.domains.split("\n")
+      sites = @affiliate.domains.split("\n")
     else
-      options[:site] = ["gov", "mil"]
+      sites = ["gov", "mil"]
     end
-    bing = RBing.new("A4C32FAE6F3DB386FC32ED1C4F3024742ED30906")
-    q = @query
+    sites_str = sites.collect {|site| "site:#{site}"}.join(" OR ")
+    sites_clause = "(#{sites_str})"
+    q = "#{@query.strip} #{sites_clause}"
 
     begin
-      response = bing.web(q, options)
+      uri = URI.parse("http://api.search.live.net/json.aspx?web.offset=#{offset}&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Web+RelatedSearch&query=#{URI.escape(q)}")
+      resp = Net::HTTP.get_response(uri)
+      json = JSON.parse(resp.body)
+      response = ResponseData.new(json['SearchResponse'])
+
       self.total = response.web.total
       pagination_total = [DEFAULT_PER_PAGE * 20, self.total ].min
-      results_array = self.total > 0 ? response.web.results.collect do |r|
-        {'title' => r.title,
-         'unescapedUrl'=> r.url,
-         'content'=> (r.description rescue ""),
-         'cacheUrl'=> (r.CacheUrl rescue ""),
-         'deepLinks' => r["DeepLinks"]
-        }
-      end : []
+      results_array= []
+      if self.total > 0
+        results_array = response.web.results.collect do |r|
+          {'title' => r.title,
+           'unescapedUrl'=> r.url,
+           'content'=> (r.description rescue ""),
+           'cacheUrl'=> (r.CacheUrl rescue ""),
+           'deepLinks' => r["DeepLinks"]
+          }
+        end
+        self.related_search = response.related_search.results rescue []
+      end
       self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(results_array) }
       self.startrecord = @page * DEFAULT_PER_PAGE + 1
       self.endrecord = self.startrecord + self.results.size - 1
@@ -33,4 +41,34 @@ class Bing < AbstractEngine
     end
     true
   end
+
+  class ResponseData < Hash
+    private
+    def initialize(data={})
+      data.each_pair {|k, v| self[k.to_s] = deep_parse(v) }
+    end
+
+    def deep_parse(data)
+      case data
+        when Hash
+          self.class.new(data)
+        when Array
+          data.map {|v| deep_parse(v) }
+        else
+          data
+      end
+    end
+
+    def method_missing(*args)
+      name = args[0].to_s
+      return self[name] if has_key? name
+      camelname = name.split('_').map {|w| "#{w[0, 1].upcase}#{w[1..-1]}" }.join("")
+      if has_key? camelname
+        self[camelname]
+      else
+        super *args
+      end
+    end
+  end
+
 end

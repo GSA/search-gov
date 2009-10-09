@@ -2,37 +2,41 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 describe Bing do
 
   describe "#run" do
-    before do
-      @rbing = mock('rbing')
-      RBing.stub(:new).and_return(@rbing)
-    end
-
     context "when affiliate has domains specified" do
       it "should use domains in query to Bing" do
         affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
-        @rbing.should_receive(:web).with("government",{:site=>["foo.com","bar.com"]})
-        Bing.new(:query => "government", :affiliate => affiliate, :page => 0).run rescue nil
+        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        bing = Bing.new(:query => "government", :affiliate => affiliate, :page => 0)
+        URI.should_receive(:parse).with("http://api.search.live.net/json.aspx?web.offset=0&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Web+RelatedSearch&query=government%20(site:foo.com%20OR%20site:bar.com)").and_return(uriresult)
+        bing.run
       end
     end
 
     context "when affiliate has no domains specified" do
       it "should use just query string and mil&gov domain filters" do
-        @rbing.should_receive(:web).with("government",{:site=>["gov","mil"]})
-        Bing.new(:query => "government", :affiliate => Affiliate.new, :page => 0).run rescue nil
+        affiliate = Affiliate.new
+        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        bing = Bing.new(:query => "government", :affiliate => affiliate, :page => 0)
+        URI.should_receive(:parse).with("http://api.search.live.net/json.aspx?web.offset=0&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Web+RelatedSearch&query=government%20(site:gov%20OR%20site:mil)").and_return(uriresult)
+        bing.run
       end
     end
 
     context "when affiliate is nil" do
       it "should use just query string and mil&gov domain filters" do
-        @rbing.should_receive(:web).with("government",{:site=>["gov","mil"]})
-        Bing.new(:query => "government", :affiliate => nil, :page => 0).run rescue nil
+        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        bing = Bing.new(:query => "government", :affiliate => nil, :page => 0)
+        URI.should_receive(:parse).with("http://api.search.live.net/json.aspx?web.offset=0&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Web+RelatedSearch&query=government%20(site:gov%20OR%20site:mil)").and_return(uriresult)
+        bing.run
       end
     end
 
     context "when page offset is specified" do
       it "should specify the offset in the query to Bing" do
-        @rbing.should_receive(:web).with("government",{:offset => 30,:site=>["gov","mil"]})
-        Bing.new(:query => "government", :affiliate => nil, :page => 3).run rescue nil
+        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        bing = Bing.new(:query => "government", :affiliate => nil, :page => 7)
+        URI.should_receive(:parse).with("http://api.search.live.net/json.aspx?web.offset=70&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Web+RelatedSearch&query=government%20(site:gov%20OR%20site:mil)").and_return(uriresult)
+        bing.run
       end
     end
   end

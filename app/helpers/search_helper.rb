@@ -31,12 +31,21 @@ module SearchHelper
     link_to "#{result['title']}", "#{h result['unescapedUrl']}"
   end
 
+  def highlight_except(str, exclude)
+    ex_ary = exclude.downcase.split(' ')
+    str.split(' ').map { |token| (ex_ary.include?token.downcase) ? token : "<strong>#{token}</strong>" }.join(" ")
+  end
+
   private
   def shorten_url (url)
-    return url if url.length <=30 or url.count('/') < 4
-    arr = url.split('/')
-    host= arr[0]+"//"+arr[2]
-    doc = arr.last.split('?').first
-    [host, "...", doc].join('/')
+    return url if url.length <=30
+    if url.count('/') >= 4
+      arr = url.split('/')
+      host= arr[0]+"//"+arr[2]
+      doc = arr.last.split('?').first
+      [host, "...", doc].join('/')
+    else
+      url[0, 30]+"..."
+    end
   end
 end
