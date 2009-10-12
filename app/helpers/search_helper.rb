@@ -36,6 +36,11 @@ module SearchHelper
     str.split(' ').map { |token| (ex_ary.include?token.downcase) ? token : "<strong>#{token}</strong>" }.join(" ")
   end
 
+  def shunt_from_bing_to_usasearch(bingurl)
+    query = CGI::unescape(bingurl.split("?q=").last)
+    search_path(:query=> query)
+  end
+
   private
   def shorten_url (url)
     return url if url.length <=30

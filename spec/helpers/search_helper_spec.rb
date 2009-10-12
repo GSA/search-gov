@@ -12,6 +12,14 @@ describe SearchHelper do
     end
   end
 
+  describe "#shunt_from_bing_to_usasearch" do
+    it "should replace Bing search URL with USASearch search URL" do
+      bingurl = "http://www.bing.com/search?q=Womans+Health"
+      usasearchurl = "/search?query=Womans+Health"
+      helper.shunt_from_bing_to_usasearch(bingurl).should == usasearchurl
+    end
+  end
+
   describe "#highlight_except(str, except)" do
     context "when str does not contain any words from except string" do
       before do
@@ -53,7 +61,7 @@ describe SearchHelper do
       end
 
       it "should truncate to 30 chars with ellipses" do
-        helper.send(:shorten_url, @url).should == "http://www.mass.gov/?pageID=tr..."        
+        helper.send(:shorten_url, @url).should == "http://www.mass.gov/?pageID=tr..."
       end
     end
   end
