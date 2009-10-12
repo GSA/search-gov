@@ -2,7 +2,6 @@
   = text_field_with_auto_complete :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2}
   = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
   = image_submit_tag "search.gif", :id => "search_button", :align=>"top"
-  = link_to "Online Tutorial", "http://www.usa.gov/About/tutorials/index.shtml"
 
 :javascript
   document.all.search_query.focus();
