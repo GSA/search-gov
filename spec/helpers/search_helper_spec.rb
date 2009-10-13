@@ -112,13 +112,6 @@ describe SearchHelper do
       end
     end
 
-    context "when query term has no site: filter" do
-      it "should show a more results link" do
-        html = helper.display_deep_links_for(@result, @query)
-        html.should match("Show more results from www.gsa.gov</a>")
-      end
-    end
-
     context "when query term has a site: filter" do
       before do
         @query = "site:www.gsa.gov #{@query}"

@@ -17,13 +17,6 @@ module SearchHelper
       row << content_tag(:td, row_pair[1].nil? ? "" : link_to(row_pair[1].title, row_pair[1].url))
       rows << content_tag(:tr, row)
     end
-    hostname_from_url = result['unescapedUrl'].split("/")[2]
-    site_query = "site:#{hostname_from_url}"
-    if !query.match(site_query)
-      more_results_path = search_path(:query=> "#{site_query} #{query}")
-      more_results_link = link_to "Show more results from #{hostname_from_url}", more_results_path, :class=>"more_results"
-      rows << content_tag(:tr, content_tag(:td, more_results_link, :colspan=>2))
-    end
     content_tag(:table, rows, :class=>"deep_links")
   end
 
