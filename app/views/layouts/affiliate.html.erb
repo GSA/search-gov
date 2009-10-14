@@ -36,14 +36,35 @@
   div.searchresult > h3 > a, a:visited, a:hover {
     color: #008000;
   }
-  div.pagination { margin-left: 200px; }
+  div.pagination {
+    margin-left: 200px;
+    margin-bottom: 1em
+  }
   div.pagination  > a, a:visited {
     color: #2200CC;
   }
 
 .disabled { color: white; }
-.maincontent { margin: 15px 0 0 300px; }
 .footer { margin-top: 2em; }
+
+  #sidebar {
+    width: 250px       ;
+    display: inline    ;
+    padding-left: 50px ;
+    float: left        ;
+    overflow: hidden   ;
+  }
+  #results {
+    display: block     ;
+    overflow: hidden   ;
+    padding-right: 5em ;
+  }
+
+ul#relatedsearch { padding-left: 1em }
+ul#relatedsearch li { font-size: 1.1em; list-style: none; }
+ul#relatedsearch li  a, a:visited {text-decoration: none;}
+ul#relatedsearch li  a:hover {text-decoration: underline}
+
 
 </style>
 </head>

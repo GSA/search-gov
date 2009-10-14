@@ -1,6 +1,8 @@
 = @affiliate.header
-.maincontent
+#sidebar
+  = render :partial => "shared/relatedsearches"
+#results
   = render :partial => "shared/search"
   = render :partial => "shared/searchresults", :locals => { :search => @search }
-
+  = render :partial => "shared/footer_search"
 .footer= @affiliate.footer
