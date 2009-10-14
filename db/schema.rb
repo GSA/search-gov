@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091001185128) do
+ActiveRecord::Schema.define(:version => 20091015181123) do
 
   create_table "affiliates", :force => true do |t|
     t.string   "name",       :null => false
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(:version => 20091001185128) do
 
   add_index "grouped_queries_query_groups", ["query_group_id", "grouped_query_id"], :name => "joinindex", :unique => true
 
+  create_table "log_files", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "log_files", ["name"], :name => "index_log_files_on_name", :unique => true
+
   create_table "moving_queries", :force => true do |t|
     t.date    "day",                        :null => false
     t.integer "window_size",                :null => false
@@ -70,13 +78,6 @@ ActiveRecord::Schema.define(:version => 20091001185128) do
     t.string   "ipaddr",    :limit => 17
     t.string   "query",     :limit => 100
     t.string   "affiliate", :limit => 32
-    t.integer  "epoch"
-    t.string   "wday",      :limit => 3
-    t.string   "month",     :limit => 3
-    t.integer  "day"
-    t.time     "time_col"
-    t.string   "tz",        :limit => 5
-    t.integer  "year"
     t.datetime "timestamp",                :null => false
   end
 

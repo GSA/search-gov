@@ -13,4 +13,8 @@ describe Query do
     Query.create!(@valid_attributes)
   end
 
+  should_validate_presence_of :ipaddr
+  should_validate_presence_of :affiliate
+  should_validate_presence_of :timestamp
+
 end

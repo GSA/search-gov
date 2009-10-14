@@ -156,7 +156,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Mon Sep 21 22:45:31 -0700 2009 with 
+      Generated on Thu Oct 15 16:33:50 -0400 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -174,8 +174,8 @@
     <td class='heading'> Total coverage </td> <td class='heading'> Code coverage
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
     href='app-models-daily_query_stat_rb.html'> app/models/daily_query_stat.rb
-    </a> </td> <td class='lines_total'> <tt> 29 </tt> </td> <td
-    class='lines_code'> <tt> 26 </tt> </td> <td> <table cellspacing='0'
+    </a> </td> <td class='lines_total'> <tt> 66 </tt> </td> <td
+    class='lines_code'> <tt> 60 </tt> </td> <td> <table cellspacing='0'
     align='right' cellpadding='0'> <tr> <td> <tt class='coverage_total'> 100.0%
     </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
     width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
@@ -192,40 +192,85 @@
     name="line4"></a> 4 validates_presence_of :times </span><span
     class="marked0"><a name="line5"></a> 5 validates_uniqueness_of :query,
     :scope =&gt; :day </span><span class="marked1"><a name="line6"></a> 6
-    RESULTS_SIZE = 10 </span><span class="inferred0"><a name="line7"></a> 7
-    </span><span class="marked1"><a name="line8"></a> 8 def
-    self.most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE)
-    </span><span class="marked0"><a name="line9"></a> 9 return nil if
-    end_date.nil? </span><span class="marked1"><a name="line10"></a>10
-    start_date = end_date - days_back.days + 1.day </span><span
-    class="marked0"><a name="line11"></a>11 results = DailyQueryStat.sum(:times,
+    RESULTS_SIZE = 10 </span><span class="marked0"><a name="line7"></a> 7
+    INSUFFICIENT_DATA = &quot;Not enough historic data to compute most
+    popular&quot; </span><span class="inferred1"><a name="line8"></a> 8
+    </span><span class="marked0"><a name="line9"></a> 9 def
+    self.most_popular_terms_like(query, use_starts_with_instead_of_contains)
+    </span><span class="marked1"><a name="line10"></a>10 contains =
+    use_starts_with_instead_of_contains ? '' : '%' </span><span
+    class="marked0"><a name="line11"></a>11 DailyQueryStat.sum(:times,
     </span><span class="inferred1"><a name="line12"></a>12 :group =&gt; :query,
     </span><span class="inferred0"><a name="line13"></a>13 :conditions =&gt;
-    ['day between ? AND ?', start_date, end_date], </span><span
+    [&quot;query LIKE ?&quot;, &quot;#{contains}#{query}%&quot;], </span><span
     class="inferred1"><a name="line14"></a>14 :order =&gt; &quot;sum_times
-    desc&quot;, </span><span class="inferred0"><a name="line15"></a>15 :limit
-    =&gt; num_results) </span><span class="marked1"><a name="line16"></a>16
-    results.empty? ? nil : results </span><span class="inferred0"><a
-    name="line17"></a>17 end </span><span class="inferred1"><a
-    name="line18"></a>18 </span><span class="marked0"><a name="line19"></a>19
-    def self.biggest_movers(end_date, window_size, num_results = RESULTS_SIZE)
-    </span><span class="marked1"><a name="line20"></a>20 return nil if
-    end_date.nil? </span><span class="marked0"><a name="line21"></a>21
-    start_date = end_date - window_size.days + 1.day </span><span
-    class="marked1"><a name="line22"></a>22 results =
-    DailyQueryStat.find_by_sql(&quot;SELECT * FROM query_accelerations qa,
-    (SELECT sum(times) AS sum_times, query AS query FROM daily_query_stats WHERE
-    (day between '#{start_date}' AND '#{end_date}') GROUP BY query ) as dqs
-    WHERE (qa.day = '#{end_date}' AND qa.window_size = #{window_size} and
-    qa.query=dqs.query) ORDER BY score DESC LIMIT 1000&quot;).sort_by {|dqs|
-    dqs[:sum_times].to_i}.reverse[0,num_results] </span><span class="marked0"><a
-    name="line23"></a>23 results.empty? ? nil : results </span><span
+    desc&quot;) </span><span class="inferred0"><a name="line15"></a>15 end
+    </span><span class="inferred1"><a name="line16"></a>16 </span><span
+    class="marked0"><a name="line17"></a>17 def
+    self.reversed_backfilled_series_since_2009_for(query, up_to_day =
+    Date.yesterday.to_date) </span><span class="marked1"><a name="line18"></a>18
+    timeline = Timeline.new(query) </span><span class="marked0"><a
+    name="line19"></a>19 ary = [] </span><span class="marked1"><a
+    name="line20"></a>20 timeline.dates.each_with_index do |day, idx|
+    </span><span class="marked0"><a name="line21"></a>21 ary &lt;&lt;
+    timeline.series[idx].y if day &lt;= up_to_day </span><span
+    class="inferred1"><a name="line22"></a>22 end </span><span
+    class="marked0"><a name="line23"></a>23 ary.reverse </span><span
     class="inferred1"><a name="line24"></a>24 end </span><span
     class="inferred0"><a name="line25"></a>25 </span><span class="marked1"><a
-    name="line26"></a>26 def self.most_recent_populated_date </span><span
-    class="marked0"><a name="line27"></a>27 maximum(:day) </span><span
-    class="inferred1"><a name="line28"></a>28 end </span><span
-    class="inferred0"><a name="line29"></a>29 end </span></pre>
+    name="line26"></a>26 def self.most_popular_terms(end_date, days_back,
+    num_results = RESULTS_SIZE) </span><span class="marked0"><a
+    name="line27"></a>27 return INSUFFICIENT_DATA if end_date.nil? </span><span
+    class="marked1"><a name="line28"></a>28 start_date = end_date -
+    days_back.days + 1.day </span><span class="marked0"><a name="line29"></a>29
+    results = DailyQueryStat.sum(:times, </span><span class="inferred1"><a
+    name="line30"></a>30 :group =&gt; :query, </span><span class="inferred0"><a
+    name="line31"></a>31 :conditions =&gt; ['day between ? AND ?', start_date,
+    end_date], </span><span class="inferred1"><a name="line32"></a>32 :order
+    =&gt; &quot;sum_times desc&quot;) </span><span class="marked0"><a
+    name="line33"></a>33 return INSUFFICIENT_DATA if results.empty? </span><span
+    class="marked1"><a name="line34"></a>34 qcs=[] </span><span
+    class="marked0"><a name="line35"></a>35 qgcounts = {} </span><span
+    class="marked1"><a name="line36"></a>36 grouped_queries_hash =
+    GroupedQuery.grouped_queries_hash </span><span class="marked0"><a
+    name="line37"></a>37 results.each_pair do |query, times| </span><span
+    class="marked1"><a name="line38"></a>38 grouped_query =
+    grouped_queries_hash[query] </span><span class="marked0"><a
+    name="line39"></a>39 if (grouped_query) </span><span class="marked1"><a
+    name="line40"></a>40 grouped_query.query_groups.each do |query_group|
+    </span><span class="marked0"><a name="line41"></a>41
+    qgcounts[query_group.name] = QueryCount.new(query_group.name, 0) if
+    qgcounts[query_group.name].nil? </span><span class="marked1"><a
+    name="line42"></a>42 qgcounts[query_group.name].times += times.to_i
+    </span><span class="marked0"><a name="line43"></a>43
+    qgcounts[query_group.name].children &lt;&lt; QueryCount.new(query, times)
+    </span><span class="inferred1"><a name="line44"></a>44 end </span><span
+    class="inferred0"><a name="line45"></a>45 else </span><span
+    class="marked1"><a name="line46"></a>46 qcs &lt;&lt; QueryCount.new(query,
+    times) </span><span class="inferred0"><a name="line47"></a>47 end
+    </span><span class="inferred1"><a name="line48"></a>48 end </span><span
+    class="marked0"><a name="line49"></a>49 qcs += qgcounts.values </span><span
+    class="marked1"><a name="line50"></a>50 qcs.sort_by {|qc|
+    qc.times}.reverse[0, num_results] </span><span class="inferred0"><a
+    name="line51"></a>51 end </span><span class="inferred1"><a
+    name="line52"></a>52 </span><span class="marked0"><a name="line53"></a>53
+    def self.most_recent_populated_date </span><span class="marked1"><a
+    name="line54"></a>54 maximum(:day) </span><span class="inferred0"><a
+    name="line55"></a>55 end </span><span class="inferred1"><a
+    name="line56"></a>56 </span><span class="marked0"><a name="line57"></a>57
+    def self.collect_query_group_named(name) </span><span class="marked1"><a
+    name="line58"></a>58 qg = QueryGroup.find_by_name(name) </span><span
+    class="marked0"><a name="line59"></a>59 queries = qg.grouped_queries.collect
+    {|gq| &quot;'#{gq.query}'&quot;}.join(',') </span><span class="marked1"><a
+    name="line60"></a>60 results = DailyQueryStat.sum(:times, :group =&gt; :day,
+    :conditions =&gt; &quot;query in (#{queries})&quot;, :order =&gt;
+    &quot;day&quot;) </span><span class="marked0"><a name="line61"></a>61 dqs=[]
+    </span><span class="marked1"><a name="line62"></a>62 results.each_pair {
+    |day, times| dqs &lt;&lt; DailyQueryStat.new(:day=&gt; day, :times =&gt;
+    times) } </span><span class="marked0"><a name="line63"></a>63 dqs
+    </span><span class="inferred1"><a name="line64"></a>64 end </span><span
+    class="inferred0"><a name="line65"></a>65 </span><span class="inferred1"><a
+    name="line66"></a>66 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

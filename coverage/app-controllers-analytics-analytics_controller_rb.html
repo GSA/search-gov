@@ -2,7 +2,8 @@
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
     <title>
-      app/models/gweb.rb - C0 code coverage information
+      app/controllers/analytics/analytics_controller.rb - C0 code coverage
+      information
     </title>
     <style type='text/css'>
       body { background-color: rgb(240, 240, 245); }
@@ -156,7 +157,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Mon Sep 21 22:45:32 -0700 2009 with 
+      Generated on Thu Oct 15 16:33:49 -0400 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -173,46 +174,22 @@
     class='heading'> Total lines </td> <td class='heading'> Lines of code </td>
     <td class='heading'> Total coverage </td> <td class='heading'> Code coverage
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
-    href='app-models-gweb_rb.html'> app/models/gweb.rb </a> </td> <td
-    class='lines_total'> <tt> 50 </tt> </td> <td class='lines_code'> <tt> 44
-    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
-    <td> <tt class='coverage_total'> 92.0% </tt> &nbsp; </td> <td> <table
+    href='app-controllers-analytics-analytics_controller_rb.html'>
+    app/controllers/analytics/analytics_controller.rb </a> </td> <td
+    class='lines_total'> <tt> 3 </tt> </td> <td class='lines_code'> <tt> 3 </tt>
+    </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr> <td>
+    <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
     class='percent_graph' cellspacing='0' width='100' cellpadding='0'> <tr> <td
-    class='covered' width='92' /> <td class='uncovered' width='8' /> </tr>
+    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
     </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
-    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 90.9%
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
     </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
-    width='100' cellpadding='0'> <tr> <td class='covered' width='91' /> <td
-    class='uncovered' width='9' /> </tr> </table> </td> </tr> </table> </td>
-    </tr> </tbody> </table><pre><span class="marked1"><a name="line1"></a> 1
-    class Gweb &lt; AbstractEngine </span><span class="marked0"><a
-    name="line2"></a> 2 require 'google/gweb_search' </span><span
-    class="marked1"><a name="line3"></a> 3 DEFAULT_PER_PAGE = 8 </span><span
-    class="inferred0"><a name="line4"></a> 4 </span><span class="marked1"><a
-    name="line5"></a> 5 def run </span><span class="marked0"><a
-    name="line6"></a> 6 startindex = @page * DEFAULT_PER_PAGE </span><span
-    class="inferred1"><a name="line7"></a> 7 </span><span class="inferred0"><a
-    name="line8"></a> 8 #Google::GwebSearch.logger = RAILS_DEFAULT_LOGGER
-    </span><span class="marked1"><a name="line9"></a> 9
-    Google::GwebSearch.options[:rsz] = &quot;large&quot; </span><span
-    class="marked0"><a name="line10"></a>10 Google::GwebSearch.options[:hl] =
-    &quot;en&quot; </span><span class="marked1"><a name="line11"></a>11
-    Google::GwebSearch.options[:start] = startindex </span><span
-    class="marked0"><a name="line12"></a>12 cx =
-    '012983105564958037848:xhukbbvbwi0' </span><span class="marked1"><a
-    name="line13"></a>13 q = @query </span><span class="marked0"><a
-    name="line14"></a>14 if @affiliate &amp;&amp; !@affiliate.domains.blank?
-    </span><span class="marked1"><a name="line15"></a>15 cx = nil </span><span
-    class="marked0"><a name="line16"></a>16 q = &quot;#{q}
-    #{@affiliate.domain_list}&quot; </span><span class="inferred1"><a
-    name="line17"></a>17 end </span><span class="marked0"><a
-    name="line18"></a>18 Google::GwebSearch.options[:cx] = cx </span><span
-    class="inferred1"><a name="line19"></a>19 </span><span class="marked0"><a
-    name="line20"></a>20 begin </span><span class="marked1"><a
-    name="line21"></a>21 response = Google::GwebSearch.search(q) </span><span
-    class="marked0"><a name="line22"></a>22 json = JSON.parse(response.json)
-    </span><span class="marked1"><a name="line23"></a>23 self.total =
-    json[&quot;responseData&quot;][&quot;cursor&quot;][&quot;estimatedResultCount&quot;].to_i </span><span class="inferred0"><a name="line24"></a>24 # FIXME: GWebSearch fails when start &gt; 56 so I'm hardcoding total to 64 </span><span class="marked1"><a name="line25"></a>25 pagination_total = [ 64, self.total ].min </span><span class="marked0"><a name="line26"></a>26 self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(response.results) } </span><span class="marked1"><a name="line27"></a>27 self.startrecord = startindex + 1 </span><span class="marked0"><a name="line28"></a>28 self.endrecord = self.startrecord + self.results.size - 1 </span><span class="inferred1"><a name="line29"></a>29 rescue SocketError, Errno::ECONNREFUSED =&gt; e </span><span class="marked0"><a name="line30"></a>30 RAILS_DEFAULT_LOGGER.warn &quot;Error connecting to server: #{e}&quot; </span><span class="uncovered1"><a name="line31"></a>31 rescue Google::GwebSearch::RequestError =&gt; e </span><span class="uncovered0"><a name="line32"></a>32 RAILS_DEFAULT_LOGGER.warn &quot;Search failed: #{e}&quot; </span><span class="uncovered1"><a name="line33"></a>33 false </span><span class="uncovered0"><a name="line34"></a>34 end </span><span class="marked1"><a name="line35"></a>35 true </span><span class="inferred0"><a name="line36"></a>36 end </span><span class="inferred1"><a name="line37"></a>37 end </span><span class="inferred0"><a name="line38"></a>38 </span><span class="marked1"><a name="line39"></a>39 module Google </span><span class="marked0"><a name="line40"></a>40 module GwebSearch </span><span class="marked1"><a name="line41"></a>41 class &lt;&lt; self </span><span class="marked0"><a name="line42"></a>42 private </span><span class="marked1"><a name="line43"></a>43 def prepare_url(opts) </span><span class="marked0"><a name="line44"></a>44 qs = [] </span><span class="marked1"><a name="line45"></a>45 opts.each {|k, v| qs &lt;&lt; &quot;#{k}=#{URI.encode(v.to_s)}&quot; if v } </span><span class="marked0"><a name="line46"></a>46 &quot;#{API_URL}?#{qs.sort.join('&amp;')}&quot; </span><span class="inferred1"><a name="line47"></a>47 end </span><span class="inferred0"><a name="line48"></a>48 end </span><span class="inferred1"><a name="line49"></a>49 end </span><span class="inferred0"><a name="line50"></a>50 end </span></pre>
+    width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
+    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> </tbody> </table><pre><span class="marked1"><a name="line1"></a>1
+    class Analytics::AnalyticsController &lt; ApplicationController </span><span
+    class="marked0"><a name="line2"></a>2 layout &quot;analytics&quot;
+    </span><span class="inferred1"><a name="line3"></a>3 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

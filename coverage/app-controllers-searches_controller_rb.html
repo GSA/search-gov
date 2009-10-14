@@ -156,7 +156,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Mon Sep 21 22:45:31 -0700 2009 with 
+      Generated on Thu Oct 15 16:33:50 -0400 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -175,7 +175,7 @@
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
     href='app-controllers-searches_controller_rb.html'>
     app/controllers/searches_controller.rb </a> </td> <td class='lines_total'>
-    <tt> 26 </tt> </td> <td class='lines_code'> <tt> 22 </tt> </td> <td> <table
+    <tt> 31 </tt> </td> <td class='lines_code'> <tt> 27 </tt> </td> <td> <table
     cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
     class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
     class='percent_graph' cellspacing='0' width='100' cellpadding='0'> <tr> <td
@@ -185,37 +185,48 @@
     </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
     width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
     class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
-    </tr> </tbody> </table><pre><span class="marked1"><a name="line1"></a> 1
+    </tr> </tbody> </table><pre><span class="marked0"><a name="line1"></a> 1
     class SearchesController &lt; ApplicationController </span><span
-    class="marked0"><a name="line2"></a> 2 before_filter :set_search_options
-    </span><span class="inferred1"><a name="line3"></a> 3 </span><span
-    class="marked0"><a name="line4"></a> 4 def index </span><span
-    class="marked1"><a name="line5"></a> 5 @search = Search.new(@search_options)
-    </span><span class="marked0"><a name="line6"></a> 6 @search.run </span><span
-    class="marked1"><a name="line7"></a> 7 if @search_options[:affiliate]
-    </span><span class="marked0"><a name="line8"></a> 8 @affiliate =
-    @search_options[:affiliate] </span><span class="marked1"><a
+    class="marked1"><a name="line2"></a> 2 before_filter :set_search_options
+    </span><span class="inferred0"><a name="line3"></a> 3 </span><span
+    class="marked1"><a name="line4"></a> 4 def index </span><span
+    class="marked0"><a name="line5"></a> 5 @search = Search.new(@search_options)
+    </span><span class="marked1"><a name="line6"></a> 6 @search.run </span><span
+    class="marked0"><a name="line7"></a> 7 if @search_options[:affiliate]
+    </span><span class="marked1"><a name="line8"></a> 8 @affiliate =
+    @search_options[:affiliate] </span><span class="marked0"><a
     name="line9"></a> 9 @page_title = &quot;Search results for
-    #{@affiliate.name}: #{@search.query}&quot; </span><span class="inferred0"><a
-    name="line10"></a>10 </span><span class="marked1"><a name="line11"></a>11
-    render :action =&gt; &quot;affiliate_index&quot;, :layout =&gt;
-    &quot;affiliate&quot; </span><span class="inferred0"><a name="line12"></a>12
-    end </span><span class="inferred1"><a name="line13"></a>13 end </span><span
-    class="inferred0"><a name="line14"></a>14 </span><span class="marked1"><a
-    name="line15"></a>15 private </span><span class="inferred0"><a
-    name="line16"></a>16 </span><span class="marked1"><a name="line17"></a>17
-    def set_search_options </span><span class="marked0"><a name="line18"></a>18
-    affiliate = Affiliate.find_by_name(params[&quot;affiliate&quot;]) rescue nil
-    </span><span class="marked1"><a name="line19"></a>19 @search_options = {
-    </span><span class="marked0"><a name="line20"></a>20 :page =&gt;
-    (params[:page].to_i - 1), </span><span class="marked1"><a
-    name="line21"></a>21 :query =&gt; params[&quot;query&quot;], </span><span
-    class="inferred0"><a name="line22"></a>22 :affiliate =&gt; affiliate,
-    </span><span class="marked1"><a name="line23"></a>23 :engine =&gt;
+    #{@affiliate.name}: #{@search.query}&quot; </span><span class="marked1"><a
+    name="line10"></a>10 render :action =&gt; &quot;affiliate_index&quot;,
+    :layout =&gt; &quot;affiliate&quot; </span><span class="inferred0"><a
+    name="line11"></a>11 end </span><span class="inferred1"><a
+    name="line12"></a>12 end </span><span class="inferred0"><a
+    name="line13"></a>13 </span><span class="marked1"><a name="line14"></a>14
+    def auto_complete_for_search_query </span><span class="marked0"><a
+    name="line15"></a>15 conditions = ['query LIKE ?', params['query'] + '%' ]
+    </span><span class="marked1"><a name="line16"></a>16 @auto_complete_options
+    = DailyQueryStat.find(:all, :conditions =&gt; conditions, :order =&gt;
+    'query ASC', :limit =&gt; 15, :select=&gt;&quot;distinct(query) as
+    query&quot;) </span><span class="marked0"><a name="line17"></a>17 render
+    :inline =&gt; &quot;&lt;%= auto_complete_result(@auto_complete_options,
+    'query', '#{params['query'].gsub(&quot;'&quot;,&quot;&amp;quot;&quot;)}')
+    %&gt;&quot; </span><span class="inferred1"><a name="line18"></a>18 end
+    </span><span class="inferred0"><a name="line19"></a>19 </span><span
+    class="marked1"><a name="line20"></a>20 private </span><span
+    class="inferred0"><a name="line21"></a>21 </span><span class="marked1"><a
+    name="line22"></a>22 def set_search_options </span><span class="marked0"><a
+    name="line23"></a>23 affiliate = params[&quot;affiliate&quot;] ?
+    Affiliate.find_by_name(params[&quot;affiliate&quot;]) : nil </span><span
+    class="marked1"><a name="line24"></a>24 @search_options = { </span><span
+    class="marked0"><a name="line25"></a>25 :page =&gt; (params[:page].to_i -
+    1), </span><span class="marked1"><a name="line26"></a>26 :query =&gt;
+    params[&quot;query&quot;], </span><span class="inferred0"><a
+    name="line27"></a>27 :affiliate =&gt; affiliate, </span><span
+    class="marked1"><a name="line28"></a>28 :engine =&gt;
     params[&quot;engine&quot;] </span><span class="inferred0"><a
-    name="line24"></a>24 } </span><span class="inferred1"><a
-    name="line25"></a>25 end </span><span class="inferred0"><a
-    name="line26"></a>26 end </span></pre>
+    name="line29"></a>29 } </span><span class="inferred1"><a
+    name="line30"></a>30 end </span><span class="inferred0"><a
+    name="line31"></a>31 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

@@ -156,7 +156,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Mon Sep 21 22:45:31 -0700 2009 with 
+      Generated on Thu Oct 15 16:33:50 -0400 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -175,7 +175,7 @@
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
     href='app-helpers-analytics-home_helper_rb.html'>
     app/helpers/analytics/home_helper.rb </a> </td> <td class='lines_total'>
-    <tt> 56 </tt> </td> <td class='lines_code'> <tt> 53 </tt> </td> <td> <table
+    <tt> 41 </tt> </td> <td class='lines_code'> <tt> 37 </tt> </td> <td> <table
     cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
     class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
     class='percent_graph' cellspacing='0' width='100' cellpadding='0'> <tr> <td
@@ -187,26 +187,31 @@
     class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
     </tr> </tbody> </table><pre><span class="marked1"><a name="line1"></a> 1
     module Analytics::HomeHelper </span><span class="marked0"><a
-    name="line2"></a> 2 def display_most_popular(pairs) </span><span
-    class="marked1"><a name="line3"></a> 3 cells = content_tag(:th, &quot;Most
-    Frequent Queries&quot;) </span><span class="marked0"><a name="line4"></a> 4
-    cells &lt;&lt; content_tag(:th, &quot;Frequency&quot;,
-    :style=&gt;&quot;text-align:right&quot;) </span><span class="marked1"><a
-    name="line5"></a> 5 rows = content_tag(:tr, cells) </span><span
-    class="marked0"><a name="line6"></a> 6 count = 1 </span><span
-    class="marked1"><a name="line7"></a> 7 if pairs.nil? </span><span
-    class="marked0"><a name="line8"></a> 8 cells = content_tag(:td, &quot;Query
-    data unavailable&quot;, :class=&gt;&quot;alt&quot;) </span><span
-    class="marked1"><a name="line9"></a> 9 rows &lt;&lt; content_tag(:tr, cells)
-    </span><span class="inferred0"><a name="line10"></a>10 else </span><span
-    class="marked1"><a name="line11"></a>11 pairs.each_pair do |query, times|
-    </span><span class="marked0"><a name="line12"></a>12 query_link =
-    link_to(query, query_timeline_path(query)) </span><span class="marked1"><a
-    name="line13"></a>13 popup_query_link =
+    name="line2"></a> 2 def open_close_toggle_icon(name, id) </span><span
+    class="marked1"><a name="line3"></a> 3
+    link_to(image_tag(&quot;item_closed.png&quot;, :alt =&gt; &quot;Click to
+    open/close&quot;, :size =&gt; &quot;16x16&quot;, :id =&gt;
+    &quot;#{name}toggle#{id}&quot;), </span><span class="inferred0"><a
+    name="line4"></a> 4 &quot;javascript:void(0)&quot;, {:title =&gt;
+    &quot;Click to open/close&quot;, </span><span class="inferred1"><a
+    name="line5"></a> 5 :onClick=&gt;&quot;new Effect.toggle('#{name}item#{id}',
+    'blind', {duration: 0.5,beforeStart:function(){ image =
+    document.getElementById('#{name}toggle#{id}'); image.src = (
+    image.src.match('opened') ) ? '/images/item_closed.png' :
+    '/images/item_opened.png'; }})&quot;}) </span><span class="inferred0"><a
+    name="line6"></a> 6 end </span><span class="inferred1"><a name="line7"></a>
+    7 </span><span class="marked0"><a name="line8"></a> 8 def
+    query_chart_link(query_count) </span><span class="marked1"><a
+    name="line9"></a> 9 html = link_to(query_count.query,
+    make_query_timeline_path(query_count)) </span><span class="marked0"><a
+    name="line10"></a>10 html &lt;&lt; &quot; &quot; </span><span
+    class="marked1"><a name="line11"></a>11 html &lt;&lt;
     link_to(image_tag(&quot;open_new_window.png&quot;, :alt =&gt; &quot;Open
-    graph in new window&quot;, :size =&gt; &quot;8x8&quot;),
-    query_timeline_path(query), :popup=&gt;['_blank',
-    'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'], :title =&gt; &quot;Open graph in new window&quot;) </span><span class="marked0"><a name="line14"></a>14 cells = content_tag(:td, &quot;#{count}. #{query_link} #{popup_query_link}&quot;, :style=&gt;&quot;text-align:left&quot;) </span><span class="marked1"><a name="line15"></a>15 cells &lt;&lt; content_tag(:td, times, :style=&gt;&quot;text-align:right&quot;) </span><span class="marked0"><a name="line16"></a>16 rows &lt;&lt; content_tag(:tr, cells) </span><span class="marked1"><a name="line17"></a>17 count += 1 </span><span class="inferred0"><a name="line18"></a>18 end </span><span class="inferred1"><a name="line19"></a>19 end </span><span class="marked0"><a name="line20"></a>20 content_tag(:table, rows) </span><span class="inferred1"><a name="line21"></a>21 end </span><span class="inferred0"><a name="line22"></a>22 </span><span class="marked1"><a name="line23"></a>23 def display_biggest_movers(query_accelerations) </span><span class="marked0"><a name="line24"></a>24 cells = content_tag(:th, &quot;Accelerating Queries&quot;) </span><span class="marked1"><a name="line25"></a>25 cells &lt;&lt; content_tag(:th, &quot;Frequency&quot;, :style=&gt;&quot;text-align:right&quot;) </span><span class="marked0"><a name="line26"></a>26 rows = content_tag(:tr, cells) </span><span class="marked1"><a name="line27"></a>27 if query_accelerations.nil? </span><span class="marked0"><a name="line28"></a>28 cells = content_tag(:td, &quot;Query data unavailable&quot;, :class=&gt;&quot;alt&quot;) </span><span class="marked1"><a name="line29"></a>29 rows &lt;&lt; content_tag(:tr, cells) </span><span class="inferred0"><a name="line30"></a>30 else </span><span class="marked1"><a name="line31"></a>31 query_accelerations.each_with_index do |qa, count| </span><span class="marked0"><a name="line32"></a>32 query_link = link_to(qa.query, query_timeline_path(qa.query)) </span><span class="marked1"><a name="line33"></a>33 popup_query_link = link_to(image_tag(&quot;open_new_window.png&quot;, :alt =&gt; &quot;Open graph in new window&quot;, :size =&gt; &quot;8x8&quot;), query_timeline_path(qa.query), :popup=&gt;['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'], :title =&gt; &quot;Open graph in new window&quot;) </span><span class="marked0"><a name="line34"></a>34 cells = content_tag(:td, &quot;#{count+1}. #{query_link} #{popup_query_link}&quot;, :style=&gt;&quot;text-align:left&quot;) </span><span class="marked1"><a name="line35"></a>35 cells &lt;&lt; content_tag(:td, qa.sum_times, :style=&gt;&quot;text-align:right&quot;) </span><span class="marked0"><a name="line36"></a>36 rows &lt;&lt; content_tag(:tr, cells) </span><span class="inferred1"><a name="line37"></a>37 end </span><span class="inferred0"><a name="line38"></a>38 end </span><span class="marked1"><a name="line39"></a>39 content_tag(:table, rows) </span><span class="inferred0"><a name="line40"></a>40 end </span><span class="inferred1"><a name="line41"></a>41 </span><span class="marked0"><a name="line42"></a>42 def display_most_recent_date_available(day) </span><span class="marked1"><a name="line43"></a>43 return &quot;Query data currently unavailable&quot; if day.nil? </span><span class="marked0"><a name="line44"></a>44 html = &quot;Data for #{day.to_s(:long)}&quot; </span><span class="marked1"><a name="line45"></a>45 firstdate = DailyQueryStat.minimum(:day) </span><span class="marked0"><a name="line46"></a>46 first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',') </span><span class="marked1"><a name="line47"></a>47 lastdate = DailyQueryStat.maximum(:day) </span><span class="marked0"><a name="line48"></a>48 last = [lastdate.year, (lastdate.month.to_i - 1), lastdate.day].join(',') </span><span class="marked1"><a name="line49"></a>49 html&lt;&lt; calendar_date_select_tag(&quot;pop_up_hidden&quot;, &quot;&quot;, :hidden =&gt; true, :image=&gt;&quot;change_date.png&quot;, :buttons =&gt; false, :onchange =&gt; &quot;location = '/analytics/?day='+$F(this);&quot;, :valid_date_check =&gt; &quot;date &lt;= (new Date(#{last})).stripTime() &amp;&amp; date &gt;= (new Date(#{first})).stripTime()&quot;) </span><span class="inferred0"><a name="line50"></a>50 end </span><span class="inferred1"><a name="line51"></a>51 </span><span class="marked0"><a name="line52"></a>52 def display_select_for_window(window, num_results, day) </span><span class="marked1"><a name="line53"></a>53 options = [10, 50, 100, 500, 1000].collect{ |x| [&quot;Show #{x} results&quot;, x] } </span><span class="marked0"><a name="line54"></a>54 select_tag(&quot;num_results_select#{window}&quot;, options_for_select( options, num_results), { :onchange =&gt; &quot;location = '/analytics/?day=#{day}&amp;num_results#{window}='+this.options[this.selectedIndex].value;&quot;}) </span><span class="inferred1"><a name="line55"></a>55 end </span><span class="inferred0"><a name="line56"></a>56 end </span></pre>
+    graph in new window&quot;, :size =&gt; &quot;8x8&quot;), </span><span
+    class="marked0"><a name="line12"></a>12
+    make_query_timeline_path(query_count), </span><span class="inferred1"><a
+    name="line13"></a>13 :popup=&gt;['_blank',
+    'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'], </span><span class="marked0"><a name="line14"></a>14 :title =&gt; &quot;Open graph in new window&quot;) </span><span class="marked1"><a name="line15"></a>15 html </span><span class="inferred0"><a name="line16"></a>16 end </span><span class="inferred1"><a name="line17"></a>17 </span><span class="marked0"><a name="line18"></a>18 def display_most_recent_date_available(day) </span><span class="marked1"><a name="line19"></a>19 return &quot;Query data currently unavailable&quot; if day.nil? </span><span class="marked0"><a name="line20"></a>20 current_day = content_tag(:span,day.to_s(:long), :class=&gt;&quot;highlight&quot;) </span><span class="marked1"><a name="line21"></a>21 html = &quot;Data for #{current_day}&quot; </span><span class="marked0"><a name="line22"></a>22 firstdate = DailyQueryStat.minimum(:day) </span><span class="marked1"><a name="line23"></a>23 first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',') </span><span class="marked0"><a name="line24"></a>24 lastdate = DailyQueryStat.maximum(:day) </span><span class="marked1"><a name="line25"></a>25 last = [lastdate.year, (lastdate.month.to_i - 1), lastdate.day].join(',') </span><span class="marked0"><a name="line26"></a>26 html&lt;&lt; calendar_date_select_tag(&quot;pop_up_hidden&quot;, &quot;&quot;, :hidden =&gt; true, :image=&gt;&quot;change_date.png&quot;, :buttons =&gt; false, </span><span class="inferred1"><a name="line27"></a>27 :onchange =&gt; &quot;location = '/analytics/?day='+$F(this);&quot;, </span><span class="marked0"><a name="line28"></a>28 :valid_date_check =&gt; &quot;date &lt;= (new Date(#{last})).stripTime() &amp;&amp; date &gt;= (new Date(#{first})).stripTime()&quot;) </span><span class="inferred1"><a name="line29"></a>29 end </span><span class="inferred0"><a name="line30"></a>30 </span><span class="marked1"><a name="line31"></a>31 def display_select_for_window(window, num_results, day) </span><span class="marked0"><a name="line32"></a>32 options = [10, 50, 100, 500, 1000].collect{ |x| [&quot;Show #{x} results&quot;, x] } </span><span class="marked1"><a name="line33"></a>33 select_tag(&quot;num_results_select#{window}&quot;, options_for_select( options, num_results), { </span><span class="marked0"><a name="line34"></a>34 :onchange =&gt; &quot;location = '/analytics/?day=#{day}&amp;num_results_#{window}='+this.options[this.selectedIndex].value;&quot;}) </span><span class="inferred1"><a name="line35"></a>35 end </span><span class="inferred0"><a name="line36"></a>36 </span><span class="marked1"><a name="line37"></a>37 private </span><span class="marked0"><a name="line38"></a>38 def make_query_timeline_path(query_count) </span><span class="marked1"><a name="line39"></a>39 query_count.children.empty? ? query_timeline_path(query_count.query) : query_timeline_path(query_count.query, :grouped =&gt; 1) </span><span class="inferred0"><a name="line40"></a>40 end </span><span class="inferred1"><a name="line41"></a>41 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

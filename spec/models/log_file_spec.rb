@@ -1,0 +1,205 @@
+require "#{File.dirname(__FILE__)}/../spec_helper"
+describe LogFile do
+  fixtures :log_files
+
+  should_validate_presence_of :name
+  should_validate_uniqueness_of :name
+
+  describe "#process(logfilename)" do
+    it "should check to see if the file has already been processed" do
+      filename = "/tmp/foo"
+      File.open(filename, "w+") {|file| file.write("hello")}
+      LogFile.should_receive(:find_by_name).with(filename).and_return(true)
+      LogFile.process(filename)
+      FileUtils.rm filename
+    end
+
+    context "when the log file has not already been processed" do
+      before do
+        raw_entries = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:26 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.54 - - [08/Oct/2009:02:02:27 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.55 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @log_entries = raw_entries.split("\n")
+        @logfile = "/tmp/2009-09-18-cf26.log"
+        file = File.new(@logfile, "w+")
+        @log_entries.each {|log_entry| file.puts(log_entry) }
+        file.close
+      end
+
+      it "should open the file with the given parameter name" do
+        File.should_receive(:open).with(@logfile)
+        LogFile.process(@logfile)
+      end
+
+      it "should parse each line in the file" do
+        LogFile.should_receive(:parse_line).exactly(@log_entries.size).times
+        LogFile.process(@logfile)
+      end
+
+      it "should mark the file as processed" do
+        LogFile.should_receive(:create!).with(:name=>@logfile)
+        LogFile.process(@logfile)
+      end
+
+      context "when there is an error in parsing a log entry in the file" do
+        before do
+          file = File.open(@logfile, "w+") {|file| file.puts("nonsense line")}
+        end
+
+        it "should skip the line and proceed" do
+          LogFile.process(@logfile)
+        end
+      end
+
+      after do
+        FileUtils.rm(@logfile)
+      end
+    end
+
+    context "when file has already been processed" do
+      before do
+        @logfile = "some log file"
+        LogFile.create(:name => @logfile)
+      end
+
+      it "should not load log entries from file" do
+        LogFile.should_not_receive(:parse_line)
+        LogFile.process(@logfile)
+      end
+    end
+
+  end
+
+  describe "#parse_line(log_entry)" do
+    context "when log entry is well-formed" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+
+      it "should create a Query record with the necessary parameters" do
+        Query.should_receive(:create!).with(:query=>"delinquent delivery plus&more",
+                                            :affiliate => "acqnet.gov_far_current",
+                                            :ipaddr => "143.81.248.53",
+                                            :timestamp => @timestamp_utc)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+
+    context "when log entry contains query with apostrophe" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=car%27s&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+
+      it "should create a Query record with the apostrophe in the query" do
+        Query.should_receive(:create!).with(:query=>"car's",
+                                            :affiliate => "acqnet.gov_far_current",
+                                            :ipaddr => "143.81.248.53",
+                                            :timestamp => @timestamp_utc)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+
+    context "when log entry contains leading or traling spaces" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=%20car%20&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+
+      it "should create a Query record with the leading and trailing spaces trimmed" do
+        Query.should_receive(:create!).with(:query=>"car",
+                                            :affiliate => "acqnet.gov_far_current",
+                                            :ipaddr => "143.81.248.53",
+                                            :timestamp => @timestamp_utc)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+
+    context "when query is nil (e.g., '&y=12&query=&x=12')" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+      it "should create a Query record with a blank string for the query" do
+        Query.should_receive(:create!).with(:query => "",
+                                            :affiliate => "acqnet.gov_far_current",
+                                            :ipaddr => "143.81.248.53",
+                                            :timestamp => @timestamp_utc)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+
+    context "when request contains 'noquery' parameter" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=foo&affiliate=acqnet.gov_far_current&noquery=&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+      it "should not create a Query record" do
+        Query.should_not_receive(:create!)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+
+    context "when query param is not present" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+
+      it "should not create a Query record" do
+        Query.should_not_receive(:create!)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+
+    context "when affiliate param is not present" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+
+      it "should create a Query record with affiliate = usasearch.gov" do
+        Query.should_receive(:create!).with(:query => "delinquent delivery",
+                                            :affiliate => "usasearch.gov",
+                                            :ipaddr => "143.81.248.53",
+                                            :timestamp => @timestamp_utc)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+
+    context "when log entry contains lots of URL encoded characters" do
+      before do
+        @log_entry = <<'EOF'
+155.82.73.253 - - [30/Jan/2009:13:49:50 -0600] "GET /search?v%3Asources=firstgov-search-select&sitelimit=www.usace.army.mil&Submit=Go&v%3Aproject=firstgov&query=d%27kc%22z%27gj%27%22%2A%2A5%2A%28%28%28%3B-%2A%60%29&input-form=simple-firstgov HTTP/1.1" 200 60322 "-" "w3af.sourceforge.net" cf29.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("30/Jan/2009 13:49:50 -0600").utc
+      end
+
+      it "should create a Query record with the necessary parameters" do
+        Query.should_receive(:create!).with(:query=>"d'kc\"z'gj'\"**5*(((;-*`)",
+                                            :affiliate => "usasearch.gov",
+                                            :ipaddr => "155.82.73.253",
+                                            :timestamp => @timestamp_utc)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+
+  end
+end

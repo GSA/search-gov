@@ -2,7 +2,7 @@
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
     <title>
-      app/models/affiliate.rb - C0 code coverage information
+      app/models/grouped_query.rb - C0 code coverage information
     </title>
     <style type='text/css'>
       body { background-color: rgb(240, 240, 245); }
@@ -173,29 +173,36 @@
     class='heading'> Total lines </td> <td class='heading'> Lines of code </td>
     <td class='heading'> Total coverage </td> <td class='heading'> Code coverage
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
-    href='app-models-affiliate_rb.html'> app/models/affiliate.rb </a> </td> <td
-    class='lines_total'> <tt> 9 </tt> </td> <td class='lines_code'> <tt> 8 </tt>
-    </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr> <td>
-    <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    href='app-models-grouped_query_rb.html'> app/models/grouped_query.rb </a>
+    </td> <td class='lines_total'> <tt> 16 </tt> </td> <td class='lines_code'>
+    <tt> 14 </tt> </td> <td> <table cellspacing='0' align='right'
+    cellpadding='0'> <tr> <td> <tt class='coverage_total'> 81.2% </tt> &nbsp;
+    </td> <td> <table class='percent_graph' cellspacing='0' width='100'
+    cellpadding='0'> <tr> <td class='covered' width='81' /> <td
+    class='uncovered' width='19' /> </tr> </table> </td> </tr> </table> </td>
+    <td> <table cellspacing='0' align='right' cellpadding='0'> <tr> <td> <tt
+    class='coverage_code'> 78.6% </tt> &nbsp; </td> <td> <table
     class='percent_graph' cellspacing='0' width='100' cellpadding='0'> <tr> <td
-    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
-    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
-    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
-    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
-    width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
-    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
-    </tr> </tbody> </table><pre><span class="marked1"><a name="line1"></a>1
-    class Affiliate &lt; ActiveRecord::Base </span><span class="marked0"><a
-    name="line2"></a>2 validates_presence_of :name </span><span
-    class="marked1"><a name="line3"></a>3 validates_uniqueness_of :name
-    </span><span class="inferred0"><a name="line4"></a>4 </span><span
-    class="marked1"><a name="line5"></a>5 def domain_list </span><span
-    class="marked0"><a name="line6"></a>6 return &quot;&quot; if
-    self.domains.blank? </span><span class="marked1"><a name="line7"></a>7
-    self.domains.split(&quot;\n&quot;).collect { |name|
-    &quot;site:#{name.strip}&quot;}.join(&quot; OR &quot;) </span><span
-    class="inferred0"><a name="line8"></a>8 end </span><span
-    class="inferred1"><a name="line9"></a>9 end </span></pre>
+    class='covered' width='79' /> <td class='uncovered' width='21' /> </tr>
+    </table> </td> </tr> </table> </td> </tr> </tbody> </table><pre><span
+    class="marked1"><a name="line1"></a> 1 class GroupedQuery &lt;
+    ActiveRecord::Base </span><span class="marked0"><a name="line2"></a> 2
+    validates_presence_of :query </span><span class="marked1"><a
+    name="line3"></a> 3 validates_uniqueness_of :query </span><span
+    class="marked0"><a name="line4"></a> 4 has_and_belongs_to_many :query_groups
+    </span><span class="inferred1"><a name="line5"></a> 5 </span><span
+    class="marked0"><a name="line6"></a> 6 def self.grouped_queries_hash
+    </span><span class="marked1"><a name="line7"></a> 7 all(:include=&gt;
+    :query_groups).inject({}) do |result, element| </span><span
+    class="marked0"><a name="line8"></a> 8 result[element.query] = element
+    </span><span class="marked1"><a name="line9"></a> 9 result </span><span
+    class="inferred0"><a name="line10"></a>10 end </span><span
+    class="inferred1"><a name="line11"></a>11 end </span><span
+    class="inferred0"><a name="line12"></a>12 </span><span class="marked1"><a
+    name="line13"></a>13 def to_label </span><span class="uncovered0"><a
+    name="line14"></a>14 query </span><span class="uncovered1"><a
+    name="line15"></a>15 end </span><span class="uncovered0"><a
+    name="line16"></a>16 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

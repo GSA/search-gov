@@ -2,7 +2,7 @@
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
     <title>
-      app/models/affiliate.rb - C0 code coverage information
+      app/models/query_count.rb - C0 code coverage information
     </title>
     <style type='text/css'>
       body { background-color: rgb(240, 240, 245); }
@@ -156,7 +156,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Thu Oct 15 16:33:50 -0400 2009 with 
+      Generated on Thu Oct 15 16:33:51 -0400 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -173,10 +173,10 @@
     class='heading'> Total lines </td> <td class='heading'> Lines of code </td>
     <td class='heading'> Total coverage </td> <td class='heading'> Code coverage
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
-    href='app-models-affiliate_rb.html'> app/models/affiliate.rb </a> </td> <td
-    class='lines_total'> <tt> 9 </tt> </td> <td class='lines_code'> <tt> 8 </tt>
-    </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr> <td>
-    <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    href='app-models-query_count_rb.html'> app/models/query_count.rb </a> </td>
+    <td class='lines_total'> <tt> 9 </tt> </td> <td class='lines_code'> <tt> 8
+    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
+    <td> <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
     class='percent_graph' cellspacing='0' width='100' cellpadding='0'> <tr> <td
     class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
     </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
@@ -185,17 +185,14 @@
     width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
     class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
     </tr> </tbody> </table><pre><span class="marked1"><a name="line1"></a>1
-    class Affiliate &lt; ActiveRecord::Base </span><span class="marked0"><a
-    name="line2"></a>2 validates_presence_of :name </span><span
-    class="marked1"><a name="line3"></a>3 validates_uniqueness_of :name
-    </span><span class="inferred0"><a name="line4"></a>4 </span><span
-    class="marked1"><a name="line5"></a>5 def domain_list </span><span
-    class="marked0"><a name="line6"></a>6 return &quot;&quot; if
-    self.domains.blank? </span><span class="marked1"><a name="line7"></a>7
-    self.domains.split(&quot;\n&quot;).collect { |name|
-    &quot;site:#{name.strip}&quot;}.join(&quot; OR &quot;) </span><span
-    class="inferred0"><a name="line8"></a>8 end </span><span
-    class="inferred1"><a name="line9"></a>9 end </span></pre>
+    class QueryCount </span><span class="marked0"><a name="line2"></a>2
+    attr_accessor :query, :times, :children </span><span class="inferred1"><a
+    name="line3"></a>3 </span><span class="marked0"><a name="line4"></a>4 def
+    initialize(query, times) </span><span class="marked1"><a name="line5"></a>5
+    self.query = query </span><span class="marked0"><a name="line6"></a>6
+    self.times = times.to_i </span><span class="marked1"><a name="line7"></a>7
+    self.children = [] </span><span class="inferred0"><a name="line8"></a>8 end
+    </span><span class="inferred1"><a name="line9"></a>9 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

@@ -156,7 +156,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Mon Sep 21 22:45:32 -0700 2009 with 
+      Generated on Thu Oct 15 16:33:51 -0400 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -174,8 +174,8 @@
     <td class='heading'> Total coverage </td> <td class='heading'> Code coverage
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
     href='lib-tasks-summary_tables_rake.html'> lib/tasks/summary_tables.rake
-    </a> </td> <td class='lines_total'> <tt> 118 </tt> </td> <td
-    class='lines_code'> <tt> 99 </tt> </td> <td> <table cellspacing='0'
+    </a> </td> <td class='lines_total'> <tt> 79 </tt> </td> <td
+    class='lines_code'> <tt> 70 </tt> </td> <td> <table cellspacing='0'
     align='right' cellpadding='0'> <tr> <td> <tt class='coverage_total'> 100.0%
     </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
     width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
@@ -202,172 +202,109 @@
     class="marked1"><a name="line8"></a> 8 task :populate =&gt; :environment do
     </span><span class="marked0"><a name="line9"></a> 9 sql = &quot;truncate
     daily_query_ip_stats&quot; </span><span class="marked1"><a
-    name="line10"></a> 10 ActiveRecord::Base.connection.execute(sql)
-    </span><span class="marked0"><a name="line11"></a> 11 sql =
-    &quot;#{insert_sql} #{where_clause} #{group_by}&quot; </span><span
-    class="marked1"><a name="line12"></a> 12
-    ActiveRecord::Base.connection.execute(sql) </span><span class="inferred0"><a
-    name="line13"></a> 13 end </span><span class="inferred1"><a
-    name="line14"></a> 14 </span><span class="marked0"><a name="line15"></a> 15
-    desc &quot;compute daily_query_ip_stats from queries table for given
-    YYYYMMDD date (defaults to yesterday)&quot; </span><span class="marked1"><a
-    name="line16"></a> 16 task :compute, :day, :needs =&gt; :environment do |t,
-    args| </span><span class="marked0"><a name="line17"></a> 17
-    args.with_defaults(:day =&gt; Date.yesterday.to_s(:number)) </span><span
-    class="marked1"><a name="line18"></a> 18 yyyymmdd = args.day.to_i
-    </span><span class="marked0"><a name="line19"></a> 19 sql = &quot;delete
-    from daily_query_ip_stats where day = #{yyyymmdd}&quot; </span><span
-    class="marked1"><a name="line20"></a> 20
+    name="line10"></a>10 ActiveRecord::Base.connection.execute(sql) </span><span
+    class="marked0"><a name="line11"></a>11 sql = &quot;#{insert_sql}
+    #{where_clause} #{group_by}&quot; </span><span class="marked1"><a
+    name="line12"></a>12 ActiveRecord::Base.connection.execute(sql) </span><span
+    class="inferred0"><a name="line13"></a>13 end </span><span
+    class="inferred1"><a name="line14"></a>14 </span><span class="marked0"><a
+    name="line15"></a>15 desc &quot;compute daily_query_ip_stats from queries
+    table for given YYYYMMDD date (defaults to yesterday)&quot; </span><span
+    class="marked1"><a name="line16"></a>16 task :compute, :day, :needs =&gt;
+    :environment do |t, args| </span><span class="marked0"><a
+    name="line17"></a>17 args.with_defaults(:day =&gt;
+    Date.yesterday.to_s(:number)) </span><span class="marked1"><a
+    name="line18"></a>18 yyyymmdd = args.day.to_i </span><span
+    class="marked0"><a name="line19"></a>19 sql = &quot;delete from
+    daily_query_ip_stats where day = #{yyyymmdd}&quot; </span><span
+    class="marked1"><a name="line20"></a>20
     ActiveRecord::Base.connection.execute(sql) </span><span class="marked0"><a
-    name="line21"></a> 21 sql = &quot;#{insert_sql} #{where_clause} and
+    name="line21"></a>21 sql = &quot;#{insert_sql} #{where_clause} and
     date(timestamp) = #{yyyymmdd} #{group_by}&quot; </span><span
-    class="marked1"><a name="line22"></a> 22
+    class="marked1"><a name="line22"></a>22
     ActiveRecord::Base.connection.execute(sql) </span><span class="inferred0"><a
-    name="line23"></a> 23 end </span><span class="inferred1"><a
-    name="line24"></a> 24 </span><span class="inferred0"><a name="line25"></a>
-    25 end </span><span class="inferred1"><a name="line26"></a> 26 </span><span
-    class="marked0"><a name="line27"></a> 27 namespace :daily_query_stats do
-    </span><span class="marked1"><a name="line28"></a> 28 insert_sql =
+    name="line23"></a>23 end </span><span class="inferred1"><a
+    name="line24"></a>24 </span><span class="inferred0"><a name="line25"></a>25
+    end </span><span class="inferred1"><a name="line26"></a>26 </span><span
+    class="marked0"><a name="line27"></a>27 namespace :daily_query_stats do
+    </span><span class="marked1"><a name="line28"></a>28 insert_sql =
     &quot;insert into daily_query_stats (query, day,times) select d.query,
     d.day, count(*) from daily_query_ip_stats d, proportions p&quot;
-    </span><span class="marked0"><a name="line29"></a> 29 where_clause =
+    </span><span class="marked0"><a name="line29"></a>29 where_clause =
     &quot;where d.query = p.query and p.proportion &gt; .10&quot; </span><span
-    class="marked1"><a name="line30"></a> 30 group_by = &quot;group by d.query,
-    d.day&quot; </span><span class="inferred0"><a name="line31"></a> 31
-    </span><span class="marked1"><a name="line32"></a> 32 desc &quot;initial
+    class="marked1"><a name="line30"></a>30 group_by = &quot;group by d.query,
+    d.day&quot; </span><span class="inferred0"><a name="line31"></a>31
+    </span><span class="marked1"><a name="line32"></a>32 desc &quot;initial
     population of daily_query_stats from queries &amp; daily_queries_ip_stats
     table. Destroys existing data in daily_query_stats table.&quot; </span><span
-    class="marked0"><a name="line33"></a> 33 task :populate =&gt; :environment
-    do </span><span class="marked1"><a name="line34"></a> 34 sql =
-    &quot;truncate daily_query_stats&quot; </span><span class="marked0"><a
-    name="line35"></a> 35 ActiveRecord::Base.connection.execute(sql)
-    </span><span class="marked1"><a name="line36"></a> 36 calculate_proportions
-    </span><span class="marked0"><a name="line37"></a> 37 sql =
-    &quot;#{insert_sql} #{where_clause} #{group_by}&quot; </span><span
-    class="marked1"><a name="line38"></a> 38
+    class="marked0"><a name="line33"></a>33 task :populate =&gt; :environment do
+    </span><span class="marked1"><a name="line34"></a>34 sql = &quot;truncate
+    daily_query_stats&quot; </span><span class="marked0"><a name="line35"></a>35
+    ActiveRecord::Base.connection.execute(sql) </span><span class="marked1"><a
+    name="line36"></a>36 calculate_proportions </span><span class="marked0"><a
+    name="line37"></a>37 sql = &quot;#{insert_sql} #{where_clause}
+    #{group_by}&quot; </span><span class="marked1"><a name="line38"></a>38
     ActiveRecord::Base.connection.execute(sql) </span><span class="inferred0"><a
-    name="line39"></a> 39 end </span><span class="inferred1"><a
-    name="line40"></a> 40 </span><span class="marked0"><a name="line41"></a> 41
+    name="line39"></a>39 end </span><span class="inferred1"><a
+    name="line40"></a>40 </span><span class="marked0"><a name="line41"></a>41
     desc &quot;compute daily_query_stats from queries &amp;
     daily_queries_ip_stats table for given YYYYMMDD date (defaults to
-    yesterday)&quot; </span><span class="marked1"><a name="line42"></a> 42 task
+    yesterday)&quot; </span><span class="marked1"><a name="line42"></a>42 task
     :compute, :day, :needs =&gt; :environment do |t, args| </span><span
-    class="marked0"><a name="line43"></a> 43 args.with_defaults(:day =&gt;
+    class="marked0"><a name="line43"></a>43 args.with_defaults(:day =&gt;
     Date.yesterday.to_s(:number)) </span><span class="marked1"><a
-    name="line44"></a> 44 yyyymmdd = args.day.to_i </span><span
-    class="marked0"><a name="line45"></a> 45 sql = &quot;delete from
+    name="line44"></a>44 yyyymmdd = args.day.to_i </span><span
+    class="marked0"><a name="line45"></a>45 sql = &quot;delete from
     daily_query_stats where day = #{yyyymmdd}&quot; </span><span
-    class="marked1"><a name="line46"></a> 46
+    class="marked1"><a name="line46"></a>46
     ActiveRecord::Base.connection.execute(sql) </span><span class="marked0"><a
-    name="line47"></a> 47 calculate_proportions </span><span class="marked1"><a
-    name="line48"></a> 48 sql = &quot;#{insert_sql} #{where_clause} and d.day =
+    name="line47"></a>47 calculate_proportions </span><span class="marked1"><a
+    name="line48"></a>48 sql = &quot;#{insert_sql} #{where_clause} and d.day =
     #{yyyymmdd} #{group_by}&quot; </span><span class="marked0"><a
-    name="line49"></a> 49 ActiveRecord::Base.connection.execute(sql)
-    </span><span class="inferred1"><a name="line50"></a> 50 end </span><span
-    class="inferred0"><a name="line51"></a> 51 </span><span class="inferred1"><a
-    name="line52"></a> 52 end </span><span class="inferred0"><a
-    name="line53"></a> 53 </span><span class="marked1"><a name="line54"></a> 54
-    namespace :query_accelerations do </span><span class="marked0"><a
-    name="line55"></a> 55 @min_num_queries_per_window = { 1 =&gt; 7, 7=&gt;20,
-    30 =&gt; 50} </span><span class="inferred1"><a name="line56"></a> 56
-    </span><span class="marked0"><a name="line57"></a> 57 desc &quot;initial
-    population of query_accelerations from every date available in
-    daily_queries_stats table. Replaces existing data in query_accelerations
-    table.&quot; </span><span class="marked1"><a name="line58"></a> 58 task
-    :populate =&gt; :environment do </span><span class="marked0"><a
-    name="line59"></a> 59 min = DailyQueryStat.minimum(:day) </span><span
-    class="marked1"><a name="line60"></a> 60 max = DailyQueryStat.maximum(:day)
-    </span><span class="marked0"><a name="line61"></a> 61 min.upto(max) {|day|
-    compute_query_accelerations_for(day.to_s(:number)) } </span><span
-    class="inferred1"><a name="line62"></a> 62 end </span><span
-    class="inferred0"><a name="line63"></a> 63 </span><span class="marked1"><a
-    name="line64"></a> 64 desc &quot;compute 1,7, and 30-day query_accelerations
-    for given YYYYMMDD date (defaults to yesterday)&quot; </span><span
-    class="marked0"><a name="line65"></a> 65 task :compute, :day, :needs =&gt;
-    :environment do |t, args| </span><span class="marked1"><a name="line66"></a>
-    66 args.with_defaults(:day =&gt; Date.yesterday.to_s(:number)) </span><span
-    class="marked0"><a name="line67"></a> 67
-    compute_query_accelerations_for(args.day) </span><span class="inferred1"><a
-    name="line68"></a> 68 end </span><span class="inferred0"><a
-    name="line69"></a> 69 end </span><span class="inferred1"><a
-    name="line70"></a> 70 </span><span class="marked0"><a name="line71"></a> 71
-    private </span><span class="marked1"><a name="line72"></a> 72 def
-    calculate_proportions </span><span class="marked0"><a name="line73"></a> 73
-    sql = &quot;drop table if exists proportions&quot; </span><span
-    class="marked1"><a name="line74"></a> 74
-    ActiveRecord::Base.connection.execute(sql) </span><span class="marked0"><a
-    name="line75"></a> 75 sql = &quot;create temporary table proportions(query
+    name="line49"></a>49 ActiveRecord::Base.connection.execute(sql) </span><span
+    class="inferred1"><a name="line50"></a>50 end </span><span
+    class="inferred0"><a name="line51"></a>51 end </span><span
+    class="inferred1"><a name="line52"></a>52 </span><span class="marked0"><a
+    name="line53"></a>53 namespace :moving_queries do </span><span
+    class="marked1"><a name="line54"></a>54 desc &quot;initial population of
+    moving_queries data using every date available in daily_queries_stats table.
+    Replaces any existing data in moving_queries table.&quot; </span><span
+    class="marked0"><a name="line55"></a>55 task :populate =&gt; :environment do
+    </span><span class="marked1"><a name="line56"></a>56 min =
+    DailyQueryStat.minimum(:day) </span><span class="marked0"><a
+    name="line57"></a>57 max = DailyQueryStat.maximum(:day) </span><span
+    class="marked1"><a name="line58"></a>58 days = [] </span><span
+    class="marked0"><a name="line59"></a>59 min.upto(max) {|day| days &lt;&lt;
+    day.to_s(:number) } </span><span class="marked1"><a name="line60"></a>60
+    days.reverse.each { |day| MovingQuery.compute_for(day) } </span><span
+    class="inferred0"><a name="line61"></a>61 end </span><span
+    class="inferred1"><a name="line62"></a>62 </span><span class="marked0"><a
+    name="line63"></a>63 desc &quot;compute moving queries for 1-, 7-, and
+    30-day windows for a given YYYYMMDD date (defaults to yesterday)&quot;
+    </span><span class="marked1"><a name="line64"></a>64 task :compute, :day,
+    :needs =&gt; :environment do |t, args| </span><span class="marked0"><a
+    name="line65"></a>65 args.with_defaults(:day =&gt;
+    Date.yesterday.to_s(:number)) </span><span class="marked1"><a
+    name="line66"></a>66 MovingQuery.compute_for(args.day) </span><span
+    class="inferred0"><a name="line67"></a>67 end </span><span
+    class="inferred1"><a name="line68"></a>68 end </span><span
+    class="inferred0"><a name="line69"></a>69 </span><span class="marked1"><a
+    name="line70"></a>70 private </span><span class="marked0"><a
+    name="line71"></a>71 def calculate_proportions </span><span
+    class="marked1"><a name="line72"></a>72 sql = &quot;drop table if exists
+    proportions&quot; </span><span class="marked0"><a name="line73"></a>73
+    ActiveRecord::Base.connection.execute(sql) </span><span class="marked1"><a
+    name="line74"></a>74 sql = &quot;create temporary table proportions(query
     varchar(100), times int, uips int, proportion float) select query,
     sum(times) as times, count( distinct ipaddr) as uips, count( distinct
     ipaddr)/sum(times) proportion from daily_query_ip_stats group by query
-    having times &gt; 10&quot; </span><span class="marked1"><a
-    name="line76"></a> 76 ActiveRecord::Base.connection.execute(sql)
-    </span><span class="marked0"><a name="line77"></a> 77 sql = &quot;alter
-    table proportions add index qp (query, proportion)&quot; </span><span
-    class="marked1"><a name="line78"></a> 78
-    ActiveRecord::Base.connection.execute(sql) </span><span class="inferred0"><a
-    name="line79"></a> 79 end </span><span class="inferred1"><a
-    name="line80"></a> 80 </span><span class="marked0"><a name="line81"></a> 81
-    def compute_query_accelerations_for(someday) </span><span class="marked1"><a
-    name="line82"></a> 82 day = someday.to_date </span><span class="marked0"><a
-    name="line83"></a> 83 yyyymmdd = someday.to_i </span><span
-    class="marked1"><a name="line84"></a> 84 sql = &quot;drop table if exists
-    temp_window_counts&quot; </span><span class="marked0"><a name="line85"></a>
-    85 ActiveRecord::Base.connection.execute(sql) </span><span
-    class="inferred1"><a name="line86"></a> 86 </span><span class="marked0"><a
-    name="line87"></a> 87 sql = &quot;delete from query_accelerations where day
-    = #{yyyymmdd}&quot; </span><span class="marked1"><a name="line88"></a> 88
-    ActiveRecord::Base.connection.execute(sql) </span><span class="inferred0"><a
-    name="line89"></a> 89 </span><span class="marked1"><a name="line90"></a> 90
-    calculate_proportions </span><span class="inferred0"><a name="line91"></a>
-    91 </span><span class="marked1"><a name="line92"></a> 92 score_clause =
-    &quot;(((t1.count-t2.count)/t2.count) + ((t1.count-t3.count)/t3.count) * 0.5
-    + ((t1.count-t4.count)/t4.count) * 0.3 + ((t2.count-t3.count)/t3.count) *
-    0.5 + ((t3.count-t4.count)/t4.count) * 0.5) as score &quot; </span><span
-    class="marked0"><a name="line93"></a> 93 minimum_score_threshold = 3.0
-    </span><span class="marked1"><a name="line94"></a> 94 [30, 7, 1].each do
-    |window_size| </span><span class="marked0"><a name="line95"></a> 95 sql =
-    &quot;drop table if exists temp_window_counts&quot; </span><span
-    class="marked1"><a name="line96"></a> 96
-    ActiveRecord::Base.connection.execute(sql) </span><span class="inferred0"><a
-    name="line97"></a> 97 </span><span class="marked1"><a name="line98"></a> 98
-    from_clause = &quot;from temp_window_counts as t1, temp_window_counts as t2,
-    temp_window_counts as t3, temp_window_counts as t4 where t1.query = t2.query
-    and t1.query = t3.query and t1.query = t4.query and t1.period = 1 and
-    t2.period = 2 and t3.period=3 and t4.period = 4 and t1.count &gt;
-    #{@min_num_queries_per_window[window_size]} having score &gt;
-    #{minimum_score_threshold}&quot; </span><span class="marked0"><a
-    name="line99"></a> 99 targetdate = day </span><span class="marked1"><a
-    name="line100"></a>100 sql = &quot;create table temp_window_counts (query
-    varchar(100), period int, count int)&quot; </span><span class="marked0"><a
-    name="line101"></a>101 ActiveRecord::Base.connection.execute(sql)
-    </span><span class="marked1"><a name="line102"></a>102 4.times do |idx|
-    </span><span class="marked0"><a name="line103"></a>103 sql = &quot;insert
-    into temp_window_counts (period, query, count) select #{idx + 1}, query,
-    sum(times) from daily_query_stats where day between #{(targetdate -
-    window_size.days).to_s(:number).to_i} and #{targetdate.to_s(:number).to_i}
-    group by query&quot; </span><span class="marked1"><a name="line104"></a>104
-    ActiveRecord::Base.connection.execute(sql) </span><span class="marked0"><a
-    name="line105"></a>105 targetdate -= window_size.days </span><span
-    class="inferred1"><a name="line106"></a>106 end </span><span
-    class="inferred0"><a name="line107"></a>107 </span><span class="marked1"><a
-    name="line108"></a>108 2.upto(4) do |idx| </span><span class="marked0"><a
-    name="line109"></a>109 sql = &quot;insert into temp_window_counts (period,
-    query, count) select #{idx}, t1.query, 1 from temp_window_counts as t1 where
-    t1.period = 1 and t1.count &gt; #{@min_num_queries_per_window[window_size]}
-    and t1.query not in (select t2.query from temp_window_counts as t2 where
-    period=#{idx})&quot; </span><span class="marked1"><a name="line110"></a>110
-    ActiveRecord::Base.connection.execute(sql) </span><span class="inferred0"><a
-    name="line111"></a>111 end </span><span class="inferred1"><a
-    name="line112"></a>112 </span><span class="marked0"><a
-    name="line113"></a>113 sql = &quot;insert into query_accelerations (query,
-    day, window_size, score) select t1.query, #{yyyymmdd}, #{window_size},
-    #{score_clause} #{from_clause}&quot; </span><span class="marked1"><a
-    name="line114"></a>114 ActiveRecord::Base.connection.execute(sql)
-    </span><span class="inferred0"><a name="line115"></a>115 end </span><span
-    class="inferred1"><a name="line116"></a>116 </span><span
-    class="inferred0"><a name="line117"></a>117 end </span><span
-    class="inferred1"><a name="line118"></a>118 end </span></pre>
+    having times &gt; 10&quot; </span><span class="marked0"><a
+    name="line75"></a>75 ActiveRecord::Base.connection.execute(sql) </span><span
+    class="marked1"><a name="line76"></a>76 sql = &quot;alter table proportions
+    add index qp (query, proportion)&quot; </span><span class="marked0"><a
+    name="line77"></a>77 ActiveRecord::Base.connection.execute(sql) </span><span
+    class="inferred1"><a name="line78"></a>78 end </span><span
+    class="inferred0"><a name="line79"></a>79 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>
