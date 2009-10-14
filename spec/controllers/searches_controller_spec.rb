@@ -9,6 +9,12 @@ describe SearchesController do
       DailyQueryStat.should_receive(:find).with(:all, :conditions => ["query LIKE ?", "foo%"], :order => 'query ASC', :limit => 15, :select=>"distinct(query) as query")
       get :auto_complete_for_search_query, :query=>"foo"
     end
+
+    it "should not completely melt down when an apostrophe is present" do
+      lambda {get :auto_complete_for_search_query, :query=>"foo's"}.should_not raise_error
+    end
+
+
   end
 
   describe "when showing index" do
