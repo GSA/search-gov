@@ -39,7 +39,7 @@ EOF
       end
 
       it "should mark the file as processed" do
-        LogFile.should_receive(:create!).with(:name=>@logfile)
+        LogFile.should_receive(:create!).with(:name=>"2009-09-18-cf26.log")
         LogFile.process(@logfile)
       end
 
