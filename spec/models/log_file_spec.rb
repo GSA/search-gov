@@ -9,7 +9,7 @@ describe LogFile do
     it "should check to see if the file has already been processed" do
       filename = "/tmp/foo"
       File.open(filename, "w+") {|file| file.write("hello")}
-      LogFile.should_receive(:find_by_name).with(filename).and_return(true)
+      LogFile.should_receive(:find_by_name).with("foo").and_return(true)
       LogFile.process(filename)
       FileUtils.rm filename
     end

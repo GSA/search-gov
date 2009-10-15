@@ -11,7 +11,7 @@ class LogFile < ActiveRecord::Base
       end
       LogFile.create!(:name=>File.basename(filepath))
       RAILS_DEFAULT_LOGGER.warn("File #{filepath} has #{failures.size} errors: #{failures.inspect}") if failures.size > 0
-    end unless LogFile.find_by_name(filepath)
+    end unless LogFile.find_by_name(File.basename(filepath))
   end
 
   def self.parse_line(log_entry)
