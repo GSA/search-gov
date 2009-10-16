@@ -53,12 +53,13 @@ describe "query_log rake tasks" do
         context "when the destination directory does not yet exist" do
           before do
             @destination_root = "/tmp"
-            FileUtils.rm_r("#{@destination_root}/2009-09")
+            FileUtils.rm_r("#{@destination_root}/2009-09") if File.directory?("#{@destination_root}/2009-09")
           end
 
           it "should create the directory" do
-            FileUtils.should_receive(:mkdir).with("#{@destination_root}/2009-09")
+            File.directory?("#{@destination_root}/2009-09").should be_false
             @rake[@task_name].invoke(@logdir, @destination_root)
+            File.directory?("#{@destination_root}/2009-09").should be_true
           end
 
           it "should copy each log file to the destination directory based on year-month" do
