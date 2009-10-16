@@ -90,6 +90,23 @@ EOF
       end
     end
 
+    context "when log entry query string begins with affiliate parameter" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?affiliate=parseme&input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+
+      it "should create a Query record with the necessary parameters" do
+        Query.should_receive(:create!).with(:query=>"delinquent delivery",
+                                            :affiliate => "parseme",
+                                            :ipaddr => "143.81.248.53",
+                                            :timestamp => @timestamp_utc)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+
     context "when log entry contains query with apostrophe" do
       before do
         @log_entry = <<'EOF'

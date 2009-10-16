@@ -18,7 +18,9 @@ class LogFile < ActiveRecord::Base
     log = Apache::Log::Combined.parse log_entry
     datetime = log.time
     ipaddr = log.remote_ip
-    parsed_log = CGI.parse(log.path)
+    return unless log.path.include?('?')
+    query_string = log.path.split('?')[1]
+    parsed_log = CGI.parse(query_string)
     query = parsed_log["query"][0]
     affiliate = parsed_log["affiliate"][0] || "usasearch.gov"
     return if query.nil?
