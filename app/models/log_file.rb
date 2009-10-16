@@ -22,7 +22,7 @@ class LogFile < ActiveRecord::Base
     query_string = log.path.split('?')[1]
     parsed_log = CGI.parse(query_string)
     query = parsed_log["query"][0]
-    affiliate = parsed_log["affiliate"][0] || "usasearch.gov"
+    affiliate = parsed_log["affiliate"][0].blank? ? "usasearch.gov" : parsed_log["affiliate"][0] 
     return if query.nil?
     noquery = parsed_log["noquery"][0]
     Query.create!(:query => query.strip, :affiliate => affiliate, :ipaddr => ipaddr, :timestamp => datetime) if noquery.nil?
