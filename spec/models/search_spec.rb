@@ -24,7 +24,7 @@ describe Search do
     end
   end
 
-  describe "using different search indexes" do
+  context "when using different search indexes" do
 
     it "should default to Bing" do
       Search.new(@valid_options).engine.should be_instance_of Bing
@@ -41,7 +41,7 @@ describe Search do
 
     Search::ENGINES.each do | sym, klass |
 
-      describe "when searching with valid queries on #{klass.name}" do
+      context "when searching with valid queries on #{klass.name}" do
         before do
           @search = Search.new(@valid_options.merge(:engine => sym.to_s))
           @search.run
@@ -63,7 +63,7 @@ describe Search do
 
       end
 
-      describe "when searching with really long queries" do
+      context "when searching with really long queries" do
         before do
           @search = Search.new(@valid_options.merge(:engine => sym.to_s, :query => "X"*10000))
         end
@@ -83,7 +83,7 @@ describe Search do
         end
       end
 
-      describe "when searching with nonsense queries" do
+      context "when searching with nonsense queries" do
         before do
           @search = Search.new(@valid_options.merge(:engine => sym.to_s, :query => 'kjdfgkljdhfgkldjshfglkjdsfhg'))
         end
@@ -97,10 +97,21 @@ describe Search do
           @search.results.size.should == 0
         end
       end
+
+      context "when searching for misspelled terms" do
+        before do
+          @search = Search.new(@valid_options.merge(:engine => sym.to_s, :query => 'Mispeling words is a common ocurrence'))
+          @search.run
+        end
+
+        it "should have spelling suggestions" do
+          @search.spelling_suggestion.should_not be_nil
+        end
+      end
     end
   end
 
-  describe "when paginating" do
+  context "when paginating" do
     default_page = 0
 
     it "should default to page 0 if no valid page number was specified" do

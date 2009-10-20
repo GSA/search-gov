@@ -1,3 +1,4 @@
+= spelling_suggestion(@search.spelling_suggestion, @affiliate) if (@search)
 - if (@search && @search.results.size > 0)
   %p= "Results #{@search.startrecord}-#{@search.endrecord} of about #{number_with_delimiter(@search.total)} for '#{@search.query}'"
   - @search.results.each_with_index do |result, index|

@@ -34,6 +34,15 @@ module SearchHelper
     search_path(:query=> query)
   end
 
+  def spelling_suggestion(spelling_suggestion, affiliate)
+    if (spelling_suggestion)
+      opts = {:query=> spelling_suggestion}
+      opts.merge!(:affiliate => affiliate.name) if affiliate
+      content_tag(:h3, "Did you mean: #{link_to(spelling_suggestion, search_path(opts))}")
+    end
+  end
+
+
   private
   def shorten_url (url)
     return url if url.length <=30

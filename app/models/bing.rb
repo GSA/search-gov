@@ -1,5 +1,8 @@
 class Bing < AbstractEngine
   DEFAULT_PER_PAGE = 10
+  JSON_SITE="http://api.search.live.net/json.aspx"
+  APP_ID="A4C32FAE6F3DB386FC32ED1C4F3024742ED30906"
+  SOURCES = %w{Spell Web RelatedSearch}.join('+')
 
   def run
     offset = @page > 0 ? @page * DEFAULT_PER_PAGE : 0
@@ -13,12 +16,13 @@ class Bing < AbstractEngine
     q = "#{@query.strip} #{sites_clause}"
 
     begin
-      uri = URI.parse("http://api.search.live.net/json.aspx?web.offset=#{offset}&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Web+RelatedSearch&query=#{URI.escape(q)}")
+      uri = URI.parse("#{JSON_SITE}?web.offset=#{offset}&AppId=#{APP_ID}&sources=#{SOURCES}&query=#{URI.escape(q)}")
       resp = Net::HTTP.get_response(uri)
       json = JSON.parse(resp.body)
       response = ResponseData.new(json['SearchResponse'])
 
       self.total = response.web.total
+      self.spelling_suggestion = response.spell.results.first.value rescue nil
       pagination_total = [DEFAULT_PER_PAGE * 20, self.total ].min
       results_array= []
       if self.total > 0
