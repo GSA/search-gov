@@ -1,3 +1,4 @@
-class Admin::AdminController < ApplicationController
+class Admin::AdminController < ActionController::Base
+  helper :all
   layout "admin"
 end

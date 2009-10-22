@@ -13,7 +13,8 @@ class Bing < AbstractEngine
     end
     sites_str = sites.collect {|site| "site:#{site}"}.join(" OR ")
     sites_clause = "(#{sites_str})"
-    q = "#{@query.strip} #{sites_clause}"
+    language_clause = I18n.locale.to_s == "en" ? "" : "language:#{I18n.locale}"
+    q = "#{@query.strip} #{sites_clause} #{language_clause}".strip
 
     begin
       uri = URI.parse("#{JSON_SITE}?web.offset=#{offset}&AppId=#{APP_ID}&sources=#{SOURCES}&query=#{URI.escape(q)}")

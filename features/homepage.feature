@@ -11,7 +11,7 @@ Feature: Homepage
     And I should see "Results 1-10"
     And I should see "social security"
     And I should see 10 search results
-    And I should see "Next »"
+    And I should see "Next"
 
   Scenario: A nonsense search from the home page
     Given I am on the homepage

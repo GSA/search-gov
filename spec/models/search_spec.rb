@@ -100,7 +100,7 @@ describe Search do
 
       context "when searching for misspelled terms" do
         before do
-          @search = Search.new(@valid_options.merge(:engine => sym.to_s, :query => 'Mispeling words is a common ocurrence'))
+          @search = Search.new(@valid_options.merge(:engine => sym.to_s, :query => 'Mispeling words is a common ocurence'))
           @search.run
         end
 

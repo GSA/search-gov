@@ -7,4 +7,17 @@ describe HomeController do
     assigns[:search].should_not be_nil
   end
 
+  context "when no locale is specified" do
+    it "should use default locale" do
+      get :index
+      I18n.locale.should == I18n.default_locale
+    end
+  end
+
+  context "when locale is specified" do
+    it "should assign a locale" do
+      get :index, :locale=> "es"
+      I18n.locale.should == "es"
+    end
+  end
 end

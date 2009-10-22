@@ -4,12 +4,12 @@ module SearchHelper
     html = link_to("#{h url}", "#{h result['unescapedUrl']}")
     unless result['cacheUrl'].blank?
       html << " - "
-      html << link_to("Cached", "#{result['cacheUrl']}")
+      html << link_to((t :cached), "#{result['cacheUrl']}")
     end
     html
   end
 
-  def display_deep_links_for(result, query)
+  def display_deep_links_for(result)
     return if result["deepLinks"].nil?
     rows = []
     result["deepLinks"].in_groups_of(2)[0, 4].each do |row_pair|
@@ -38,10 +38,14 @@ module SearchHelper
     if (spelling_suggestion)
       opts = {:query=> spelling_suggestion}
       opts.merge!(:affiliate => affiliate.name) if affiliate
-      content_tag(:h3, "Did you mean: #{link_to(spelling_suggestion, search_path(opts))}")
+      content_tag(:h3, "#{t :did_you_mean}: #{link_to(spelling_suggestion, search_path(opts))}")
     end
   end
 
+  def results_summary(a,b,total,q)
+    summary = t :results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => q
+    content_tag(:p, summary)
+  end
 
   private
   def shorten_url (url)
