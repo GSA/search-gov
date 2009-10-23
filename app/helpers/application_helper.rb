@@ -32,6 +32,8 @@ module ApplicationHelper
     ]
   }
 
+  BACKGROUND_COLORS = { :en => "#003366", :es => "#A40000" }
+
   def header_links
     iterate_links(HEADER_LINKS[I18n.locale.to_sym])
   end
@@ -42,6 +44,10 @@ module ApplicationHelper
 
   def other_locale_str
     I18n.locale.to_s == "en" ? "es" : "en"
+  end
+
+  def locale_dependent_background_color
+    BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]
   end
 
   private
