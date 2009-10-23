@@ -22,5 +22,5 @@ class Search
     self.engine.class::DEFAULT_PER_PAGE
   end
 
-  %w{total startrecord endrecord results related_search spelling_suggestion}.each {|fn| class_eval "def #{fn}; self.engine.#{fn}; end" }
+  %w{total startrecord endrecord results related_search spelling_suggestion images}.each {|fn| class_eval "def #{fn}; self.engine.#{fn}; end" }
 end

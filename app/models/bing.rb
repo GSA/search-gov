@@ -1,8 +1,13 @@
-class Bing < AbstractEngine
+class Bing
+  attr_accessor :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :images
   DEFAULT_PER_PAGE = 10
   JSON_SITE="http://api.search.live.net/json.aspx"
   APP_ID="A4C32FAE6F3DB386FC32ED1C4F3024742ED30906"
-  SOURCES = %w{Spell Web RelatedSearch}.join('+')
+  SOURCES = %w{Spell Web RelatedSearch Image}.join('+')
+
+  def initialize(options)
+    @query, @page, @affiliate, @results, @related_search, @images = options[:query], options[:page], options[:affiliate], [], [], []
+  end
 
   def run
     offset = @page > 0 ? @page * DEFAULT_PER_PAGE : 0
@@ -41,6 +46,9 @@ class Bing < AbstractEngine
       self.results = WillPaginate::Collection.create(@page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(results_array) }
       self.startrecord = @page * DEFAULT_PER_PAGE + 1
       self.endrecord = self.startrecord + self.results.size - 1
+      if response.image.total > 0
+        self.images = response.image.results
+      end
     rescue SocketError, Errno::ECONNREFUSED => e
       RAILS_DEFAULT_LOGGER.warn "Error connecting to server: #{e}"
       false
