@@ -1,6 +1,6 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 describe Bing do
-  common_search = "http://api.search.live.net/json.aspx?web.offset=0&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Web+RelatedSearch&query=government%20"
+  common_search = "http://api.search.live.net/json.aspx?web.offset=0&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Web+RelatedSearch&Options=EnableHighlighting&query=government%20"
   describe "#run" do
     context "when non-English locale is specified" do
       before do
@@ -15,7 +15,7 @@ describe Bing do
       end
 
       after do
-        I18n.locale = I18n.default_locale        
+        I18n.locale = I18n.default_locale
       end
     end
 

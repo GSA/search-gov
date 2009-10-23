@@ -17,9 +17,10 @@ class Bing < AbstractEngine
     q = "#{@query.strip} #{sites_clause} #{language_clause}".strip
 
     begin
-      uri = URI.parse("#{JSON_SITE}?web.offset=#{offset}&AppId=#{APP_ID}&sources=#{SOURCES}&query=#{URI.escape(q)}")
+      uri = URI.parse("#{JSON_SITE}?web.offset=#{offset}&AppId=#{APP_ID}&sources=#{SOURCES}&Options=EnableHighlighting&query=#{URI.escape(q)}")
       resp = Net::HTTP.get_response(uri)
-      json = JSON.parse(resp.body)
+      body = translate_bing_highlights(resp.body)
+      json = JSON.parse(body)
       response = ResponseData.new(json['SearchResponse'])
 
       self.total = response.web.total
@@ -74,6 +75,11 @@ class Bing < AbstractEngine
         super *args
       end
     end
+  end
+
+  private
+  def translate_bing_highlights(body)
+    body.gsub(/\xEE\x80\x80/,'<strong>').gsub(/\xEE\x80\x81/,'</strong>')
   end
 
 end

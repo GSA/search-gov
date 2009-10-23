@@ -20,30 +20,6 @@ describe SearchHelper do
     end
   end
 
-  describe "#highlight_except(str, except)" do
-    context "when str does not contain any words from except string" do
-      before do
-        @str = "some title string"
-        @except = "foo"
-      end
-
-      it "should return str with all words highlighted" do
-        helper.highlight_except(@str, @except).should == "<strong>some</strong> <strong>title</strong> <strong>string</strong>"
-      end
-    end
-
-    context "when str contains words from except string regardless of case" do
-      before do
-        @str = "some title string With words"
-      end
-
-      it "should return str with all words highlighted except the group of words contained in the except string" do
-        @except = "title with"
-        helper.highlight_except(@str, @except).should == "<strong>some</strong> title <strong>string</strong> With <strong>words</strong>"
-      end
-    end
-  end
-
   describe "#shorten_url" do
     context "when URL is more than 30 chars long and has at least one sublevel specified" do
       before do

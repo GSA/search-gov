@@ -24,11 +24,6 @@ module SearchHelper
     link_to "#{result['title']}", "#{h result['unescapedUrl']}"
   end
 
-  def highlight_except(str, exclude)
-    ex_ary = exclude.downcase.split(' ')
-    str.split(' ').map { |token| (ex_ary.include?token.downcase) ? token : "<strong>#{token}</strong>" }.join(" ")
-  end
-
   def shunt_from_bing_to_usasearch(bingurl)
     query = CGI::unescape(bingurl.split("?q=").last)
     search_path(:query=> query)
