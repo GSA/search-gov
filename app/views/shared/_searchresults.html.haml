@@ -1,8 +1,10 @@
 = spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
 - if (search && !(search.results.empty? || search.images.empty?))
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)
-  - search.images[0,4].each do |image_result|
-    = link_to(image_tag(image_result.thumbnail.url, :size => "#{image_result.thumbnail.width}X#{image_result.thumbnail.height}"), image_result.media_url)
+  - unless search.images.empty?
+    %div{:id => "image_results"}
+      - search.images[0,5].each do |image_result|
+        = link_to(image_tag(image_result.thumbnail.url, :size => "#{image_result.thumbnail.width}X#{image_result.thumbnail.height}"), image_result.media_url)
   - search.results.each_with_index do |search_result, index|
     %div.searchresult{:id => "searchresult#{index+1}"}
       %h2= display_result_title(search_result)
