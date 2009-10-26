@@ -2,7 +2,6 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe SearchesController do
   fixtures :affiliates
-  integrate_views
 
   describe "#auto_complete_for_search_query" do
     it "should use query param to find terms starting with that param" do
@@ -51,6 +50,7 @@ describe SearchesController do
   end
 
   context "when handling a valid affiliate search request" do
+    integrate_views
     before do
       @affiliate = affiliates(:power_affiliate)
       get :index, :affiliate=>@affiliate.name, :query => "weather"
