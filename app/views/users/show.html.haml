@@ -1,0 +1,9 @@
+.span-7.contentcard
+  %h2
+    Account Profile
+    =link_to "Edit your profile", edit_account_path
+  %dl
+    %dt Email:
+    %dd= h @user.email
+    %dt Time Zone:
+    %dd= h @user.time_zone

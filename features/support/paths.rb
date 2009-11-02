@@ -14,6 +14,12 @@ module NavigationHelpers
       analytics_home_page_path
     when /the timeline page for "([^\"]*)"$/
       query_timeline_path($1)
+    when /the affiliate admin home page/
+      admin_affiliates_path
+    when /the login page/
+      new_user_session_path
+    when /the password reset page/
+      password_resets_path
 
     # Add more mappings here.
     # Here is a more fancy example:

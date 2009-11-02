@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091015181123) do
+ActiveRecord::Schema.define(:version => 20091030151924) do
 
   create_table "affiliates", :force => true do |t|
     t.string   "name",       :null => false
@@ -75,10 +75,10 @@ ActiveRecord::Schema.define(:version => 20091015181123) do
   add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
 
   create_table "queries", :id => false, :force => true do |t|
-    t.string   "ipaddr",    :limit => 17
-    t.string   "query",     :limit => 100
-    t.string   "affiliate", :limit => 32
-    t.datetime "timestamp",                :null => false
+    t.string    "ipaddr",    :limit => 17
+    t.string    "query",     :limit => 100
+    t.string    "affiliate", :limit => 32
+    t.timestamp "timestamp",                :null => false
   end
 
   add_index "queries", ["query"], :name => "queryindex"
@@ -91,5 +91,36 @@ ActiveRecord::Schema.define(:version => 20091015181123) do
   end
 
   add_index "query_groups", ["name"], :name => "index_query_groups_on_name", :unique => true
+
+  create_table "sessions", :force => true do |t|
+    t.string   "session_id", :null => false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
+  add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "users", :force => true do |t|
+    t.string   "email",                                                        :null => false
+    t.string   "perishable_token"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token"
+    t.integer  "login_count",        :default => 0,                            :null => false
+    t.string   "time_zone",          :default => "Eastern Time (US & Canada)", :null => false
+    t.boolean  "is_affiliate_admin", :default => false,                        :null => false
+    t.datetime "last_request_at"
+    t.datetime "last_login_at"
+    t.datetime "current_login_at"
+    t.string   "last_login_ip"
+    t.string   "current_login_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
 
 end

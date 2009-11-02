@@ -1,0 +1,16 @@
+.span-15
+  - form_for @user, :url => password_reset_path, :html => {:class=>"bordered", :method => :put} do |f|
+    %h1
+      Change My Password
+    = f.error_messages(:header_message => nil, :class => "error")
+    %dl
+      %dt
+        = f.label :password
+      %dd
+        = f.password_field :password, :class => "text"
+      %dt
+        = f.label :password_confirmation
+      %dd
+        = f.password_field :password_confirmation, :class => "text"
+
+    = f.submit "Update my password and log me in"

@@ -1,0 +1,9 @@
+%dl
+  %dt= form.label :email
+  %dd= form.text_field :email, :class => "text"
+  %dt= form.label :time_zone
+  %dd= form.time_zone_select('time_zone', ActiveSupport::TimeZone.us_zones)
+  %dt= form.label :password, form.object.new_record? ? nil : "Change password"
+  %dd= form.password_field :password, :class => "text"
+  %dt= form.label :password_confirmation
+  %dd= form.password_field :password_confirmation, :class => "text"

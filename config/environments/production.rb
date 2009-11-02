@@ -23,6 +23,8 @@ config.log_level = :debug
 
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
+# Sent in emails to users
+APP_URL = "searchdemo.usa.gov"
 
 # Enable threaded mode
 # config.threadsafe!

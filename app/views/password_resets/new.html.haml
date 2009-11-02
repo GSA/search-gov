@@ -1,0 +1,10 @@
+.span-15
+  - form_tag password_resets_path, :class=>"bordered"  do
+    %h1
+      Forgot Password #{link_to "(log in)", new_user_session_path, :class => "small"}
+    %p
+      Enter the email address you used to register. Instructions to reset your password will be emailed to you:
+    %label
+      Email:
+    = text_field_tag "email"
+    = submit_tag "Reset my password"

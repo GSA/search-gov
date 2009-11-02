@@ -22,6 +22,9 @@ config.action_controller.allow_forgery_protection    = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 
+# Sent in emails to users
+APP_URL = "localhost:3000"
+
 # Use SQL instead of Active Record's schema dumper when creating the test database.
 # This is necessary if your schema can't be completely dumped by the schema dumper,
 # like if you have constraints or database-specific column types
@@ -34,3 +37,4 @@ config.gem "webrat",           :lib => false
 config.gem "nokogiri",         :lib => false
 config.gem "cucumber",         :lib => false, :version => '>= 0.4.2'
 config.gem "rcov",             :lib => false
+config.gem 'bmabey-email_spec', :lib => 'email_spec'

@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def show_flash_messages
+    unless (flash.nil? or flash.empty?)
+      html = content_tag(:div, flash.collect{ |key, msg| content_tag(:div, msg, :class => key) }, :id => 'flash-message', :class => 'flash-message')
+      html << content_tag(:script, "setTimeout(\"new Effect.Fade('flash-message');\",5000)", :type => 'text/javascript')
+      html
+    end
+  end
+
   HEADER_LINKS = {
     :en => [
       ["USA.gov", "http://usa.gov"],
