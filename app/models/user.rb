@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
-  
+  attr_protected :is_affiliate_admin
+
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
     c.perishable_token_valid_for 1.hour

@@ -18,5 +18,11 @@ describe User do
     it "should create a new instance given valid attributes" do
       User.create!(@valid_attributes)
     end
+
+  end
+
+  describe "when saving/updating" do
+    it { should allow_mass_assignment_of(:crypted_password, :email) }
+    it { should_not allow_mass_assignment_of(:is_affiliate_admin) }
   end
 end

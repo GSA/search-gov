@@ -6,7 +6,7 @@ describe UsersController do
   context "when logged in" do
     before do
       activate_authlogic
-      UserSession.create(:email=> users("affiliate_admin").email, :password => "admin")
+      UserSession.create(:email=> users("non_affiliate_admin").email, :password => "admin")
     end
 
     describe "do GET on show" do
@@ -43,6 +43,12 @@ describe UsersController do
       it "should render edit on failure" do
         post :update, :user => {:email => "changed@foo.com", :time_zone => "UTC", :password=>"not", :password_confirmation => "the same"}
         response.should render_template(:edit)
+      end
+
+      it "should not allow a user to promote themselves to affiliate admin privileges" do
+        users("non_affiliate_admin").is_affiliate_admin.should be_false
+        post :update, :user => {:email => "changed@foo.com", :is_affiliate_admin => true}
+        User.find_by_email("changed@foo.com").is_affiliate_admin.should be_false
       end
     end
   end
