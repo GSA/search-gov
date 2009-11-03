@@ -33,7 +33,6 @@ class PasswordResetsController < ApplicationController
     render :action => :new
   end
 
-
   private
 
   def load_user_using_perishable_token
@@ -42,7 +41,7 @@ class PasswordResetsController < ApplicationController
       flash[:notice] = "We're sorry, but we could not locate your account. " +
         "If you are having issues, try copying and pasting the URL " +
         "from your email into your browser."
-      redirect_to root_url
+      redirect_to home_page
     end
   end
 end

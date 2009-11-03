@@ -156,7 +156,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Mon Nov 02 01:32:43 -0800 2009 with 
+      Generated on Tue Nov 03 11:55:37 -0800 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -185,30 +185,30 @@
     </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
     width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
     class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
-    </tr> </tbody> </table><pre><span class="marked0"><a name="line1"></a> 1
+    </tr> </tbody> </table><pre><span class="marked1"><a name="line1"></a> 1
     class UsersController &lt; ApplicationController </span><span
-    class="marked1"><a name="line2"></a> 2 layout &quot;admin&quot; </span><span
-    class="marked0"><a name="line3"></a> 3 before_filter :require_user
-    </span><span class="inferred1"><a name="line4"></a> 4 </span><span
-    class="marked0"><a name="line5"></a> 5 def show </span><span
-    class="marked1"><a name="line6"></a> 6 @user = @current_user </span><span
-    class="inferred0"><a name="line7"></a> 7 end </span><span
-    class="inferred1"><a name="line8"></a> 8 </span><span class="marked0"><a
-    name="line9"></a> 9 def edit </span><span class="marked1"><a
-    name="line10"></a>10 @user = @current_user </span><span class="inferred0"><a
-    name="line11"></a>11 end </span><span class="inferred1"><a
-    name="line12"></a>12 </span><span class="marked0"><a name="line13"></a>13
-    def update </span><span class="marked1"><a name="line14"></a>14 @user =
+    class="marked0"><a name="line2"></a> 2 layout &quot;admin&quot; </span><span
+    class="marked1"><a name="line3"></a> 3 before_filter :require_user
+    </span><span class="inferred0"><a name="line4"></a> 4 </span><span
+    class="marked1"><a name="line5"></a> 5 def show </span><span
+    class="marked0"><a name="line6"></a> 6 @user = @current_user </span><span
+    class="inferred1"><a name="line7"></a> 7 end </span><span
+    class="inferred0"><a name="line8"></a> 8 </span><span class="marked1"><a
+    name="line9"></a> 9 def edit </span><span class="marked0"><a
+    name="line10"></a>10 @user = @current_user </span><span class="inferred1"><a
+    name="line11"></a>11 end </span><span class="inferred0"><a
+    name="line12"></a>12 </span><span class="marked1"><a name="line13"></a>13
+    def update </span><span class="marked0"><a name="line14"></a>14 @user =
     @current_user # makes our views &quot;cleaner&quot; and more consistent
-    </span><span class="marked0"><a name="line15"></a>15 if
-    @user.update_attributes(params[:user]) </span><span class="marked1"><a
+    </span><span class="marked1"><a name="line15"></a>15 if
+    @user.update_attributes(params[:user]) </span><span class="marked0"><a
     name="line16"></a>16 flash[:success] = &quot;Account updated!&quot;
-    </span><span class="marked0"><a name="line17"></a>17 redirect_to account_url
-    </span><span class="inferred1"><a name="line18"></a>18 else </span><span
-    class="marked0"><a name="line19"></a>19 render :action =&gt; :edit
-    </span><span class="inferred1"><a name="line20"></a>20 end </span><span
-    class="inferred0"><a name="line21"></a>21 end </span><span
-    class="inferred1"><a name="line22"></a>22 end </span></pre>
+    </span><span class="marked1"><a name="line17"></a>17 redirect_to account_url
+    </span><span class="inferred0"><a name="line18"></a>18 else </span><span
+    class="marked1"><a name="line19"></a>19 render :action =&gt; :edit
+    </span><span class="inferred0"><a name="line20"></a>20 end </span><span
+    class="inferred1"><a name="line21"></a>21 end </span><span
+    class="inferred0"><a name="line22"></a>22 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

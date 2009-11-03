@@ -20,6 +20,8 @@ module NavigationHelpers
       new_user_session_path
     when /the password reset page/
       password_resets_path
+    when /the user account page/
+      account_path
 
     # Add more mappings here.
     # Here is a more fancy example:
