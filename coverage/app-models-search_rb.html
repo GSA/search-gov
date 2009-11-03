@@ -156,7 +156,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Thu Oct 15 16:33:51 -0400 2009 with 
+      Generated on Mon Nov 02 01:32:45 -0800 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -174,7 +174,7 @@
     <td class='heading'> Total coverage </td> <td class='heading'> Code coverage
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
     href='app-models-search_rb.html'> app/models/search.rb </a> </td> <td
-    class='lines_total'> <tt> 29 </tt> </td> <td class='lines_code'> <tt> 24
+    class='lines_total'> <tt> 26 </tt> </td> <td class='lines_code'> <tt> 22
     </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
     <td> <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
     class='percent_graph' cellspacing='0' width='100' cellpadding='0'> <tr> <td
@@ -184,42 +184,40 @@
     </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
     width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
     class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
-    </tr> </tbody> </table><pre><span class="marked1"><a name="line1"></a> 1
-    class Search </span><span class="marked0"><a name="line2"></a> 2 ENGINES =
-    {:bing=&gt; Bing} </span><span class="marked1"><a name="line3"></a> 3
+    </tr> </tbody> </table><pre><span class="marked0"><a name="line1"></a> 1
+    class Search </span><span class="marked1"><a name="line2"></a> 2 ENGINES =
+    {:bing=&gt; Bing} </span><span class="marked0"><a name="line3"></a> 3
     attr_accessor :query, :page, :error_message, :engine, :affiliate
-    </span><span class="marked0"><a name="line4"></a> 4 TOO_LONG = &quot;That is
-    too long a word. Try using a shorter word.&quot; </span><span
-    class="marked1"><a name="line5"></a> 5 EMPTY_QUERY= &quot;Please enter
-    search term(s)&quot; </span><span class="marked0"><a name="line6"></a> 6
-    MAX_QUERYTERM_LENGTH = 1000 </span><span class="inferred1"><a
-    name="line7"></a> 7 </span><span class="marked0"><a name="line8"></a> 8 def
-    initialize(options = {}) </span><span class="marked1"><a name="line9"></a> 9
-    options ||= {} </span><span class="marked0"><a name="line10"></a>10
-    self.query = options[:query] || '' </span><span class="marked1"><a
-    name="line11"></a>11 self.affiliate = options[:affiliate] </span><span
-    class="marked0"><a name="line12"></a>12 self.page = [options[:page].to_i,
-    0].max </span><span class="marked1"><a name="line13"></a>13 klass =
-    ENGINES[options[:engine].to_sym] rescue Bing </span><span class="marked0"><a
-    name="line14"></a>14 self.engine = klass.new(:query =&gt; self.query, :page
+    </span><span class="marked1"><a name="line4"></a> 4 MAX_QUERYTERM_LENGTH =
+    1000 </span><span class="inferred0"><a name="line5"></a> 5 </span><span
+    class="marked1"><a name="line6"></a> 6 def initialize(options = {})
+    </span><span class="marked0"><a name="line7"></a> 7 options ||= {}
+    </span><span class="marked1"><a name="line8"></a> 8 self.query =
+    options[:query] || '' </span><span class="marked0"><a name="line9"></a> 9
+    self.affiliate = options[:affiliate] </span><span class="marked1"><a
+    name="line10"></a>10 self.page = [options[:page].to_i, 0].max </span><span
+    class="marked0"><a name="line11"></a>11 klass =
+    ENGINES[options[:engine].to_sym] rescue Bing </span><span class="marked1"><a
+    name="line12"></a>12 self.engine = klass.new(:query =&gt; self.query, :page
     =&gt; self.page, :affiliate =&gt; self.affiliate) </span><span
-    class="inferred1"><a name="line15"></a>15 end </span><span
-    class="inferred0"><a name="line16"></a>16 </span><span class="marked1"><a
-    name="line17"></a>17 def run </span><span class="marked0"><a
-    name="line18"></a>18 self.error_message = TOO_LONG and return false if
-    self.query.length &gt; MAX_QUERYTERM_LENGTH </span><span class="marked1"><a
-    name="line19"></a>19 self.error_message = EMPTY_QUERY and return false if
-    self.query.blank? </span><span class="marked0"><a name="line20"></a>20
-    self.engine.run </span><span class="inferred1"><a name="line21"></a>21 end
-    </span><span class="inferred0"><a name="line22"></a>22 </span><span
-    class="marked1"><a name="line23"></a>23 def per_page </span><span
-    class="marked0"><a name="line24"></a>24 self.engine.class::DEFAULT_PER_PAGE
-    </span><span class="inferred1"><a name="line25"></a>25 end </span><span
-    class="inferred0"><a name="line26"></a>26 </span><span class="marked1"><a
-    name="line27"></a>27 %w{total startrecord endrecord results
-    related_search}.each {|fn| class_eval &quot;def #{fn}; self.engine.#{fn};
-    end&quot; } </span><span class="inferred0"><a name="line28"></a>28 end
-    </span><span class="inferred1"><a name="line29"></a>29 </span></pre>
+    class="inferred0"><a name="line13"></a>13 end </span><span
+    class="inferred1"><a name="line14"></a>14 </span><span class="marked0"><a
+    name="line15"></a>15 def run </span><span class="marked1"><a
+    name="line16"></a>16 self.error_message = (I18n.translate :too_long) and
+    return false if self.query.length &gt; MAX_QUERYTERM_LENGTH </span><span
+    class="marked0"><a name="line17"></a>17 self.error_message = (I18n.translate
+    :empty_query) and return false if self.query.blank? </span><span
+    class="marked1"><a name="line18"></a>18 self.engine.run </span><span
+    class="inferred0"><a name="line19"></a>19 end </span><span
+    class="inferred1"><a name="line20"></a>20 </span><span class="marked0"><a
+    name="line21"></a>21 def per_page </span><span class="marked1"><a
+    name="line22"></a>22 self.engine.class::DEFAULT_PER_PAGE </span><span
+    class="inferred0"><a name="line23"></a>23 end </span><span
+    class="inferred1"><a name="line24"></a>24 </span><span class="marked0"><a
+    name="line25"></a>25 %w{total startrecord endrecord results related_search
+    spelling_suggestion images}.each {|fn| class_eval &quot;def #{fn};
+    self.engine.#{fn}; end&quot; } </span><span class="inferred1"><a
+    name="line26"></a>26 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

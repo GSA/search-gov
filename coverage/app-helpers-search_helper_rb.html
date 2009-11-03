@@ -156,7 +156,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Thu Oct 15 16:33:50 -0400 2009 with 
+      Generated on Mon Nov 02 01:32:44 -0800 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -174,8 +174,8 @@
     <td class='heading'> Total coverage </td> <td class='heading'> Code coverage
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
     href='app-helpers-search_helper_rb.html'> app/helpers/search_helper.rb </a>
-    </td> <td class='lines_total'> <tt> 49 </tt> </td> <td class='lines_code'>
-    <tt> 44 </tt> </td> <td> <table cellspacing='0' align='right'
+    </td> <td class='lines_total'> <tt> 57 </tt> </td> <td class='lines_code'>
+    <tt> 51 </tt> </td> <td> <table cellspacing='0' align='right'
     cellpadding='0'> <tr> <td> <tt class='coverage_total'> 100.0% </tt> &nbsp;
     </td> <td> <table class='percent_graph' cellspacing='0' width='100'
     cellpadding='0'> <tr> <td class='covered' width='100' /> <td
@@ -193,13 +193,13 @@
     result['unescapedUrl']}&quot;) </span><span class="marked1"><a
     name="line5"></a> 5 unless result['cacheUrl'].blank? </span><span
     class="marked0"><a name="line6"></a> 6 html &lt;&lt; &quot; - &quot;
-    </span><span class="marked1"><a name="line7"></a> 7 html &lt;&lt;
-    link_to(&quot;Cached&quot;, &quot;#{result['cacheUrl']}&quot;) </span><span
+    </span><span class="marked1"><a name="line7"></a> 7 html &lt;&lt; link_to((t
+    :cached), &quot;#{result['cacheUrl']}&quot;) </span><span
     class="inferred0"><a name="line8"></a> 8 end </span><span class="marked1"><a
     name="line9"></a> 9 html </span><span class="inferred0"><a
     name="line10"></a>10 end </span><span class="inferred1"><a
     name="line11"></a>11 </span><span class="marked0"><a name="line12"></a>12
-    def display_deep_links_for(result, query) </span><span class="marked1"><a
+    def display_deep_links_for(result) </span><span class="marked1"><a
     name="line13"></a>13 return if result[&quot;deepLinks&quot;].nil?
     </span><span class="marked0"><a name="line14"></a>14 rows = [] </span><span
     class="marked1"><a name="line15"></a>15
@@ -220,33 +220,43 @@
     result['unescapedUrl']}&quot; </span><span class="inferred1"><a
     name="line25"></a>25 end </span><span class="inferred0"><a
     name="line26"></a>26 </span><span class="marked1"><a name="line27"></a>27
-    def highlight_except(str, exclude) </span><span class="marked0"><a
-    name="line28"></a>28 ex_ary = exclude.downcase.split(' ') </span><span
-    class="marked1"><a name="line29"></a>29 str.split(' ').map { |token|
-    (ex_ary.include?token.downcase) ? token :
-    &quot;&lt;strong&gt;#{token}&lt;/strong&gt;&quot; }.join(&quot; &quot;)
+    def shunt_from_bing_to_usasearch(bingurl) </span><span class="marked0"><a
+    name="line28"></a>28 query =
+    CGI::unescape(bingurl.split(&quot;?q=&quot;).last) </span><span
+    class="marked1"><a name="line29"></a>29 search_path(:query=&gt; query)
     </span><span class="inferred0"><a name="line30"></a>30 end </span><span
     class="inferred1"><a name="line31"></a>31 </span><span class="marked0"><a
-    name="line32"></a>32 def shunt_from_bing_to_usasearch(bingurl) </span><span
-    class="marked1"><a name="line33"></a>33 query =
-    CGI::unescape(bingurl.split(&quot;?q=&quot;).last) </span><span
-    class="marked0"><a name="line34"></a>34 search_path(:query=&gt; query)
-    </span><span class="inferred1"><a name="line35"></a>35 end </span><span
-    class="inferred0"><a name="line36"></a>36 </span><span class="marked1"><a
-    name="line37"></a>37 private </span><span class="marked0"><a
-    name="line38"></a>38 def shorten_url (url) </span><span class="marked1"><a
-    name="line39"></a>39 return url if url.length &lt;=30 </span><span
-    class="marked0"><a name="line40"></a>40 if url.count('/') &gt;= 4
-    </span><span class="marked1"><a name="line41"></a>41 arr = url.split('/')
-    </span><span class="marked0"><a name="line42"></a>42 host=
+    name="line32"></a>32 def spelling_suggestion(spelling_suggestion, affiliate)
+    </span><span class="marked1"><a name="line33"></a>33 if
+    (spelling_suggestion) </span><span class="marked0"><a name="line34"></a>34
+    opts = {:query=&gt; spelling_suggestion} </span><span class="marked1"><a
+    name="line35"></a>35 opts.merge!(:affiliate =&gt; affiliate.name) if
+    affiliate </span><span class="marked0"><a name="line36"></a>36
+    content_tag(:h3, &quot;#{t :did_you_mean}: #{link_to(spelling_suggestion,
+    search_path(opts))}&quot;) </span><span class="inferred1"><a
+    name="line37"></a>37 end </span><span class="inferred0"><a
+    name="line38"></a>38 end </span><span class="inferred1"><a
+    name="line39"></a>39 </span><span class="marked0"><a name="line40"></a>40
+    def results_summary(a,b,total,q) </span><span class="marked1"><a
+    name="line41"></a>41 summary = t :results_summary, :from =&gt; a, :to =&gt;
+    b, :total =&gt; number_with_delimiter(total), :query =&gt; q </span><span
+    class="marked0"><a name="line42"></a>42 content_tag(:p, summary)
+    </span><span class="inferred1"><a name="line43"></a>43 end </span><span
+    class="inferred0"><a name="line44"></a>44 </span><span class="marked1"><a
+    name="line45"></a>45 private </span><span class="marked0"><a
+    name="line46"></a>46 def shorten_url (url) </span><span class="marked1"><a
+    name="line47"></a>47 return url if url.length &lt;=30 </span><span
+    class="marked0"><a name="line48"></a>48 if url.count('/') &gt;= 4
+    </span><span class="marked1"><a name="line49"></a>49 arr = url.split('/')
+    </span><span class="marked0"><a name="line50"></a>50 host=
     arr[0]+&quot;//&quot;+arr[2] </span><span class="marked1"><a
-    name="line43"></a>43 doc = arr.last.split('?').first </span><span
-    class="marked0"><a name="line44"></a>44 [host, &quot;...&quot;,
-    doc].join('/') </span><span class="inferred1"><a name="line45"></a>45 else
-    </span><span class="marked0"><a name="line46"></a>46 url[0,
-    30]+&quot;...&quot; </span><span class="inferred1"><a name="line47"></a>47
-    end </span><span class="inferred0"><a name="line48"></a>48 end </span><span
-    class="inferred1"><a name="line49"></a>49 end </span></pre>
+    name="line51"></a>51 doc = arr.last.split('?').first </span><span
+    class="marked0"><a name="line52"></a>52 [host, &quot;...&quot;,
+    doc].join('/') </span><span class="inferred1"><a name="line53"></a>53 else
+    </span><span class="marked0"><a name="line54"></a>54 url[0,
+    30]+&quot;...&quot; </span><span class="inferred1"><a name="line55"></a>55
+    end </span><span class="inferred0"><a name="line56"></a>56 end </span><span
+    class="inferred1"><a name="line57"></a>57 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

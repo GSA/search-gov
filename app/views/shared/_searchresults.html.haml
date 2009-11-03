@@ -1,16 +1,16 @@
 = spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
 - if (search && !(search.results.empty? || search.images.empty?))
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)
-  - unless search.images.empty?
-    %div{:id => "image_results"}
-      - search.images[0,5].each do |image_result|
-        = link_to(image_tag(image_result.thumbnail.url, :size => "#{image_result.thumbnail.width}X#{image_result.thumbnail.height}"), image_result.media_url)
   - search.results.each_with_index do |search_result, index|
     %div.searchresult{:id => "searchresult#{index+1}"}
       %h2= display_result_title(search_result)
       %h3 #{search_result['content']}
       %h3= display_result_links(search_result)
       = display_deep_links_for(search_result)
+  - unless search.images.empty?
+    %div{:id => "image_results"}
+      - search.images[0,5].each do |image_result|
+        = link_to(image_tag(image_result.thumbnail.url, :size => "#{image_result.thumbnail.width}X#{image_result.thumbnail.height}"), image_result.media_url)
   = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
 - elsif (search.error_message)
   %p.noresults #{search.error_message}

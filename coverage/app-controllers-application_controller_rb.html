@@ -156,7 +156,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Thu Oct 15 16:33:50 -0400 2009 with 
+      Generated on Mon Nov 02 01:32:41 -0800 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -175,31 +175,74 @@
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
     href='app-controllers-application_controller_rb.html'>
     app/controllers/application_controller.rb </a> </td> <td
-    class='lines_total'> <tt> 10 </tt> </td> <td class='lines_code'> <tt> 4
+    class='lines_total'> <tt> 53 </tt> </td> <td class='lines_code'> <tt> 43
     </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
-    <td> <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
+    <td> <tt class='coverage_total'> 90.6% </tt> &nbsp; </td> <td> <table
     class='percent_graph' cellspacing='0' width='100' cellpadding='0'> <tr> <td
-    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
+    class='covered' width='91' /> <td class='uncovered' width='9' /> </tr>
     </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
-    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
+    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 88.4%
     </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
-    width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
-    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
-    </tr> </tbody> </table><pre><span class="inferred1"><a name="line1"></a> 1 #
-    Filters added to this controller apply to all controllers in the
-    application. </span><span class="inferred0"><a name="line2"></a> 2 #
-    Likewise, all the methods added will be available for all controllers.
-    </span><span class="inferred1"><a name="line3"></a> 3 </span><span
-    class="marked0"><a name="line4"></a> 4 class ApplicationController &lt;
-    ActionController::Base </span><span class="marked1"><a name="line5"></a> 5
-    helper :all # include all helpers, all the time </span><span
-    class="marked0"><a name="line6"></a> 6 protect_from_forgery # See
-    ActionController::RequestForgeryProtection for details </span><span
-    class="inferred1"><a name="line7"></a> 7 </span><span class="inferred0"><a
-    name="line8"></a> 8 # Scrub sensitive parameters from your log </span><span
-    class="inferred1"><a name="line9"></a> 9 # filter_parameter_logging
-    :password </span><span class="inferred0"><a name="line10"></a>10 end
-    </span></pre>
+    width='100' cellpadding='0'> <tr> <td class='covered' width='88' /> <td
+    class='uncovered' width='12' /> </tr> </table> </td> </tr> </table> </td>
+    </tr> </tbody> </table><pre><span class="marked0"><a name="line1"></a> 1
+    class ApplicationController &lt; ActionController::Base </span><span
+    class="marked1"><a name="line2"></a> 2 before_filter :set_locale
+    </span><span class="marked0"><a name="line3"></a> 3 helper :all </span><span
+    class="marked1"><a name="line4"></a> 4 helper_method :current_user_session,
+    :current_user </span><span class="marked0"><a name="line5"></a> 5
+    filter_parameter_logging :password, :password_confirmation </span><span
+    class="inferred1"><a name="line6"></a> 6 </span><span class="marked0"><a
+    name="line7"></a> 7 protect_from_forgery </span><span class="inferred1"><a
+    name="line8"></a> 8 </span><span class="marked0"><a name="line9"></a> 9
+    private </span><span class="marked1"><a name="line10"></a>10 def set_locale
+    </span><span class="marked0"><a name="line11"></a>11 I18n.locale =
+    params[:locale] || I18n.default_locale </span><span class="inferred1"><a
+    name="line12"></a>12 end </span><span class="inferred0"><a
+    name="line13"></a>13 </span><span class="marked1"><a name="line14"></a>14
+    def default_url_options(options={}) </span><span class="marked0"><a
+    name="line15"></a>15 { :locale =&gt; I18n.locale } </span><span
+    class="inferred1"><a name="line16"></a>16 end </span><span
+    class="inferred0"><a name="line17"></a>17 </span><span class="marked1"><a
+    name="line18"></a>18 def current_user_session </span><span
+    class="marked0"><a name="line19"></a>19 return @current_user_session if
+    defined?(@current_user_session) </span><span class="marked1"><a
+    name="line20"></a>20 @current_user_session = UserSession.find </span><span
+    class="inferred0"><a name="line21"></a>21 end </span><span
+    class="inferred1"><a name="line22"></a>22 </span><span class="marked0"><a
+    name="line23"></a>23 def current_user </span><span class="marked1"><a
+    name="line24"></a>24 return @current_user if defined?(@current_user)
+    </span><span class="marked0"><a name="line25"></a>25 @current_user =
+    current_user_session &amp;&amp; current_user_session.user </span><span
+    class="inferred1"><a name="line26"></a>26 end </span><span
+    class="inferred0"><a name="line27"></a>27 </span><span class="marked1"><a
+    name="line28"></a>28 def require_user </span><span class="marked0"><a
+    name="line29"></a>29 unless current_user </span><span class="marked1"><a
+    name="line30"></a>30 store_location </span><span class="marked0"><a
+    name="line31"></a>31 redirect_to new_user_session_url </span><span
+    class="marked1"><a name="line32"></a>32 return false </span><span
+    class="inferred0"><a name="line33"></a>33 end </span><span
+    class="inferred1"><a name="line34"></a>34 end </span><span
+    class="inferred0"><a name="line35"></a>35 </span><span class="marked1"><a
+    name="line36"></a>36 def require_no_user </span><span class="marked0"><a
+    name="line37"></a>37 if current_user </span><span class="uncovered1"><a
+    name="line38"></a>38 store_location </span><span class="uncovered0"><a
+    name="line39"></a>39 redirect_to account_url </span><span
+    class="uncovered1"><a name="line40"></a>40 return false </span><span
+    class="uncovered0"><a name="line41"></a>41 end </span><span
+    class="uncovered1"><a name="line42"></a>42 end </span><span
+    class="inferred0"><a name="line43"></a>43 </span><span class="marked1"><a
+    name="line44"></a>44 def store_location </span><span class="marked0"><a
+    name="line45"></a>45 session[:return_to] = request.request_uri </span><span
+    class="inferred1"><a name="line46"></a>46 end </span><span
+    class="inferred0"><a name="line47"></a>47 </span><span class="marked1"><a
+    name="line48"></a>48 def redirect_back_or_default(default) </span><span
+    class="marked0"><a name="line49"></a>49 redirect_to(session[:return_to] ||
+    default) </span><span class="marked1"><a name="line50"></a>50
+    session[:return_to] = nil </span><span class="inferred0"><a
+    name="line51"></a>51 end </span><span class="inferred1"><a
+    name="line52"></a>52 </span><span class="inferred0"><a name="line53"></a>53
+    end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

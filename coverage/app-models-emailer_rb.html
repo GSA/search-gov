@@ -2,7 +2,7 @@
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
     <title>
-      app/models/log_file.rb - C0 code coverage information
+      app/models/emailer.rb - C0 code coverage information
     </title>
     <style type='text/css'>
       body { background-color: rgb(240, 240, 245); }
@@ -173,8 +173,8 @@
     class='heading'> Total lines </td> <td class='heading'> Lines of code </td>
     <td class='heading'> Total coverage </td> <td class='heading'> Code coverage
     </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
-    href='app-models-log_file_rb.html'> app/models/log_file.rb </a> </td> <td
-    class='lines_total'> <tt> 30 </tt> </td> <td class='lines_code'> <tt> 28
+    href='app-models-emailer_rb.html'> app/models/emailer.rb </a> </td> <td
+    class='lines_total'> <tt> 20 </tt> </td> <td class='lines_code'> <tt> 16
     </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
     <td> <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
     class='percent_graph' cellspacing='0' width='100' cellpadding='0'> <tr> <td
@@ -185,46 +185,30 @@
     width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
     class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
     </tr> </tbody> </table><pre><span class="marked0"><a name="line1"></a> 1
-    class LogFile &lt; ActiveRecord::Base </span><span class="marked1"><a
-    name="line2"></a> 2 validates_presence_of :name </span><span
-    class="marked0"><a name="line3"></a> 3 validates_uniqueness_of :name
-    </span><span class="inferred1"><a name="line4"></a> 4 </span><span
-    class="marked0"><a name="line5"></a> 5 def self.process(filepath)
-    </span><span class="marked1"><a name="line6"></a> 6
-    RAILS_DEFAULT_LOGGER.info(&quot;Processing file #{filepath}&quot;)
-    </span><span class="marked0"><a name="line7"></a> 7 File.open(filepath) do
-    |file| </span><span class="marked1"><a name="line8"></a> 8 failures = []
-    </span><span class="marked0"><a name="line9"></a> 9 while log_entry =
-    file.gets </span><span class="marked1"><a name="line10"></a>10
-    parse_line(log_entry) rescue failures &lt;&lt; log_entry </span><span
-    class="inferred0"><a name="line11"></a>11 end </span><span
-    class="marked1"><a name="line12"></a>12
-    LogFile.create!(:name=&gt;File.basename(filepath)) </span><span
-    class="marked0"><a name="line13"></a>13 RAILS_DEFAULT_LOGGER.warn(&quot;File
-    #{filepath} has #{failures.size} errors: #{failures.inspect}&quot;) if
-    failures.size &gt; 0 </span><span class="marked1"><a name="line14"></a>14
-    end unless LogFile.find_by_name(File.basename(filepath)) </span><span
-    class="inferred0"><a name="line15"></a>15 end </span><span
-    class="inferred1"><a name="line16"></a>16 </span><span class="marked0"><a
-    name="line17"></a>17 def self.parse_line(log_entry) </span><span
-    class="marked1"><a name="line18"></a>18 log = Apache::Log::Combined.parse
-    log_entry </span><span class="marked0"><a name="line19"></a>19 datetime =
-    log.time </span><span class="marked1"><a name="line20"></a>20 ipaddr =
-    log.remote_ip </span><span class="marked0"><a name="line21"></a>21 return
-    unless log.path.include?('?') </span><span class="marked1"><a
-    name="line22"></a>22 query_string = log.path.split('?')[1] </span><span
-    class="marked0"><a name="line23"></a>23 parsed_log = CGI.parse(query_string)
-    </span><span class="marked1"><a name="line24"></a>24 query =
-    parsed_log[&quot;query&quot;][0] </span><span class="marked0"><a
-    name="line25"></a>25 affiliate = parsed_log[&quot;affiliate&quot;][0].blank?
-    ? &quot;usasearch.gov&quot; : parsed_log[&quot;affiliate&quot;][0]
-    </span><span class="marked1"><a name="line26"></a>26 return if query.nil?
-    </span><span class="marked0"><a name="line27"></a>27 noquery =
-    parsed_log[&quot;noquery&quot;][0] </span><span class="marked1"><a
-    name="line28"></a>28 Query.create!(:query =&gt; query.strip, :affiliate
-    =&gt; affiliate, :ipaddr =&gt; ipaddr, :timestamp =&gt; datetime) if
-    noquery.nil? </span><span class="inferred0"><a name="line29"></a>29 end
-    </span><span class="inferred1"><a name="line30"></a>30 end </span></pre>
+    class Emailer &lt; ActionMailer::Base </span><span class="marked1"><a
+    name="line2"></a> 2 default_url_options[:host] = APP_URL </span><span
+    class="inferred0"><a name="line3"></a> 3 </span><span class="marked1"><a
+    name="line4"></a> 4 def password_reset_instructions(user) </span><span
+    class="marked0"><a name="line5"></a> 5 setup_email(user.email) </span><span
+    class="inferred1"><a name="line6"></a> 6 </span><span class="marked0"><a
+    name="line7"></a> 7 @subject += &quot;Password Reset Instructions&quot;
+    </span><span class="marked1"><a name="line8"></a> 8
+    body(:edit_password_reset_url =&gt;
+    edit_password_reset_url(user.perishable_token)) </span><span
+    class="inferred0"><a name="line9"></a> 9 end </span><span
+    class="inferred1"><a name="line10"></a>10 </span><span class="marked0"><a
+    name="line11"></a>11 private </span><span class="marked1"><a
+    name="line12"></a>12 def setup_email(recipients) </span><span
+    class="marked0"><a name="line13"></a>13 @recipients = recipients
+    </span><span class="marked1"><a name="line14"></a>14 @from =
+    &quot;noreply@usasearch.gov&quot; </span><span class="marked0"><a
+    name="line15"></a>15 @subject = &quot;[USASearch] &quot; </span><span
+    class="marked1"><a name="line16"></a>16 @sent_on = Time.now </span><span
+    class="marked0"><a name="line17"></a>17 @headers['Content-Type'] =
+    &quot;text/plain; charset=utf-8; format=flowed&quot; </span><span
+    class="inferred1"><a name="line18"></a>18 end </span><span
+    class="inferred0"><a name="line19"></a>19 </span><span class="inferred1"><a
+    name="line20"></a>20 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>

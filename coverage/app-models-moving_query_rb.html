@@ -156,7 +156,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Thu Oct 15 16:33:51 -0400 2009 with 
+      Generated on Mon Nov 02 01:32:45 -0800 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -185,133 +185,133 @@
     class='percent_graph' cellspacing='0' width='100' cellpadding='0'> <tr> <td
     class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
     </table> </td> </tr> </table> </td> </tr> </tbody> </table><pre><span
-    class="marked1"><a name="line1"></a> 1 class MovingQuery &lt;
-    ActiveRecord::Base </span><span class="marked0"><a name="line2"></a> 2
-    validates_presence_of :day </span><span class="marked1"><a name="line3"></a>
-    3 validates_presence_of :query </span><span class="marked0"><a
+    class="marked0"><a name="line1"></a> 1 class MovingQuery &lt;
+    ActiveRecord::Base </span><span class="marked1"><a name="line2"></a> 2
+    validates_presence_of :day </span><span class="marked0"><a name="line3"></a>
+    3 validates_presence_of :query </span><span class="marked1"><a
     name="line4"></a> 4 validates_presence_of :window_size </span><span
-    class="marked1"><a name="line5"></a> 5 validates_presence_of :times
-    </span><span class="marked0"><a name="line6"></a> 6 validates_uniqueness_of
-    :query, :scope =&gt; [:day, :window_size] </span><span class="marked1"><a
+    class="marked0"><a name="line5"></a> 5 validates_presence_of :times
+    </span><span class="marked1"><a name="line6"></a> 6 validates_uniqueness_of
+    :query, :scope =&gt; [:day, :window_size] </span><span class="marked0"><a
     name="line7"></a> 7 MIN_NUM_QUERIES_PER_WINDOW = { 1 =&gt; 15, 7 =&gt; 25,
-    30 =&gt; 45} </span><span class="marked0"><a name="line8"></a> 8
+    30 =&gt; 45} </span><span class="marked1"><a name="line8"></a> 8
     MULTIPLES_OF_STD_DEV_PER_WINDOW = { 1 =&gt; 4, 7 =&gt; 3, 30 =&gt; 2}
-    </span><span class="marked1"><a name="line9"></a> 9 RESULTS_SIZE = 10
-    </span><span class="marked0"><a name="line10"></a>10 NO_QUERIES_MATCHED =
-    &quot;No queries matched&quot; </span><span class="marked1"><a
+    </span><span class="marked0"><a name="line9"></a> 9 RESULTS_SIZE = 10
+    </span><span class="marked1"><a name="line10"></a>10 NO_QUERIES_MATCHED =
+    &quot;No queries matched&quot; </span><span class="marked0"><a
     name="line11"></a>11 INSUFFICIENT_DATA = &quot;Not enough historic data to
-    compute accelerations&quot; </span><span class="marked0"><a
+    compute accelerations&quot; </span><span class="marked1"><a
     name="line12"></a>12 MIN_ACCELERATION_PERIODS_REQUIRED = 7 </span><span
-    class="inferred1"><a name="line13"></a>13 </span><span class="marked0"><a
+    class="inferred0"><a name="line13"></a>13 </span><span class="marked1"><a
     name="line14"></a>14 def passes_minimum_thresholds? </span><span
-    class="marked1"><a name="line15"></a>15 self.times &gt;
+    class="marked0"><a name="line15"></a>15 self.times &gt;
     MIN_NUM_QUERIES_PER_WINDOW[self.window_size] &amp;&amp; </span><span
-    class="marked0"><a name="line16"></a>16 self.times &gt; (self.mean +
+    class="marked1"><a name="line16"></a>16 self.times &gt; (self.mean +
     (MULTIPLES_OF_STD_DEV_PER_WINDOW[self.window_size] * self.std_dev))
-    </span><span class="inferred1"><a name="line17"></a>17 end </span><span
-    class="inferred0"><a name="line18"></a>18 </span><span class="marked1"><a
+    </span><span class="inferred0"><a name="line17"></a>17 end </span><span
+    class="inferred1"><a name="line18"></a>18 </span><span class="marked0"><a
     name="line19"></a>19 def self.compute_for(yyyymmdd) </span><span
-    class="marked0"><a name="line20"></a>20
+    class="marked1"><a name="line20"></a>20
     reversed_backfilled_yearlong_series_hash = {} </span><span
-    class="marked1"><a name="line21"></a>21 transaction do </span><span
-    class="marked0"><a name="line22"></a>22 delete_all([&quot;day = ?&quot;,
-    yyyymmdd]) </span><span class="marked1"><a name="line23"></a>23 [1, 7,
-    30].each do |window_size| </span><span class="marked0"><a
+    class="marked0"><a name="line21"></a>21 transaction do </span><span
+    class="marked1"><a name="line22"></a>22 delete_all([&quot;day = ?&quot;,
+    yyyymmdd]) </span><span class="marked0"><a name="line23"></a>23 [1, 7,
+    30].each do |window_size| </span><span class="marked1"><a
     name="line24"></a>24 get_window_candidates(window_size, yyyymmdd).each_pair
-    do |query, sum_times| </span><span class="marked1"><a name="line25"></a>25
+    do |query, sum_times| </span><span class="marked0"><a name="line25"></a>25
     reversed_backfilled_yearlong_series =
     reversed_backfilled_yearlong_series_hash[query] </span><span
-    class="marked0"><a name="line26"></a>26 if
-    reversed_backfilled_yearlong_series.nil? </span><span class="marked1"><a
+    class="marked1"><a name="line26"></a>26 if
+    reversed_backfilled_yearlong_series.nil? </span><span class="marked0"><a
     name="line27"></a>27 reversed_backfilled_yearlong_series =
     DailyQueryStat.reversed_backfilled_series_since_2009_for(query,
-    yyyymmdd.to_date) </span><span class="marked0"><a name="line28"></a>28
+    yyyymmdd.to_date) </span><span class="marked1"><a name="line28"></a>28
     reversed_backfilled_yearlong_series_hash[query] =
-    reversed_backfilled_yearlong_series </span><span class="inferred1"><a
-    name="line29"></a>29 end </span><span class="marked0"><a
+    reversed_backfilled_yearlong_series </span><span class="inferred0"><a
+    name="line29"></a>29 end </span><span class="marked1"><a
     name="line30"></a>30 window_sums =
     sum_by_window_except_last(reversed_backfilled_yearlong_series, window_size)
-    </span><span class="marked1"><a name="line31"></a>31 next if
-    window_sums.length &lt; 2 </span><span class="marked0"><a
+    </span><span class="marked0"><a name="line31"></a>31 next if
+    window_sums.length &lt; 2 </span><span class="marked1"><a
     name="line32"></a>32 next if window_sums[0] &lt;= window_sums[1]
-    </span><span class="marked1"><a name="line33"></a>33 mean = window_sums.sum
-    / window_sums.length.to_f </span><span class="marked0"><a
+    </span><span class="marked0"><a name="line33"></a>33 mean = window_sums.sum
+    / window_sums.length.to_f </span><span class="marked1"><a
     name="line34"></a>34 sum_of_squares = window_sums.inject(0) { |acc, i| acc +
-    (i - mean) ** 2 } </span><span class="marked1"><a name="line35"></a>35
+    (i - mean) ** 2 } </span><span class="marked0"><a name="line35"></a>35
     std_dev = Math.sqrt(sum_of_squares / window_sums.length.to_f) </span><span
-    class="marked0"><a name="line36"></a>36 moving_query = new(:query=&gt;
+    class="marked1"><a name="line36"></a>36 moving_query = new(:query=&gt;
     query, :day =&gt; yyyymmdd, :window_size =&gt; window_size, </span><span
-    class="marked1"><a name="line37"></a>37 :times =&gt; sum_times, :mean =&gt;
-    mean, :std_dev =&gt; std_dev) </span><span class="marked0"><a
+    class="marked0"><a name="line37"></a>37 :times =&gt; sum_times, :mean =&gt;
+    mean, :std_dev =&gt; std_dev) </span><span class="marked1"><a
     name="line38"></a>38 moving_query.save if
-    moving_query.passes_minimum_thresholds? </span><span class="inferred1"><a
-    name="line39"></a>39 end </span><span class="inferred0"><a
-    name="line40"></a>40 end </span><span class="inferred1"><a
-    name="line41"></a>41 end </span><span class="inferred0"><a
-    name="line42"></a>42 end </span><span class="inferred1"><a
-    name="line43"></a>43 </span><span class="marked0"><a name="line44"></a>44
+    moving_query.passes_minimum_thresholds? </span><span class="inferred0"><a
+    name="line39"></a>39 end </span><span class="inferred1"><a
+    name="line40"></a>40 end </span><span class="inferred0"><a
+    name="line41"></a>41 end </span><span class="inferred1"><a
+    name="line42"></a>42 end </span><span class="inferred0"><a
+    name="line43"></a>43 </span><span class="marked1"><a name="line44"></a>44
     def self.biggest_movers(end_date, window_size, num_results = RESULTS_SIZE)
-    </span><span class="marked1"><a name="line45"></a>45 return
-    NO_QUERIES_MATCHED if end_date.nil? </span><span class="marked0"><a
+    </span><span class="marked0"><a name="line45"></a>45 return
+    NO_QUERIES_MATCHED if end_date.nil? </span><span class="marked1"><a
     name="line46"></a>46 results=
     find_all_by_day_and_window_size(end_date.to_date, window_size,
-    :order=&gt;&quot;times DESC&quot;) </span><span class="marked1"><a
+    :order=&gt;&quot;times DESC&quot;) </span><span class="marked0"><a
     name="line47"></a>47 return NO_QUERIES_MATCHED if results.empty?
-    </span><span class="marked0"><a name="line48"></a>48 return
+    </span><span class="marked1"><a name="line48"></a>48 return
     INSUFFICIENT_DATA if insufficient_data?(end_date, window_size) </span><span
-    class="marked1"><a name="line49"></a>49 qcs=[] </span><span
-    class="marked0"><a name="line50"></a>50 qgcounts = {} </span><span
-    class="marked1"><a name="line51"></a>51 grouped_queries_hash =
-    GroupedQuery.grouped_queries_hash </span><span class="marked0"><a
-    name="line52"></a>52 results.each do |res| </span><span class="marked1"><a
+    class="marked0"><a name="line49"></a>49 qcs=[] </span><span
+    class="marked1"><a name="line50"></a>50 qgcounts = {} </span><span
+    class="marked0"><a name="line51"></a>51 grouped_queries_hash =
+    GroupedQuery.grouped_queries_hash </span><span class="marked1"><a
+    name="line52"></a>52 results.each do |res| </span><span class="marked0"><a
     name="line53"></a>53 grouped_query = grouped_queries_hash[res.query]
-    </span><span class="marked0"><a name="line54"></a>54 if (grouped_query
+    </span><span class="marked1"><a name="line54"></a>54 if (grouped_query
     &amp;&amp; !grouped_query.query_groups.empty?) </span><span
-    class="marked1"><a name="line55"></a>55 grouped_query.query_groups.each do
-    |query_group| </span><span class="marked0"><a name="line56"></a>56
+    class="marked0"><a name="line55"></a>55 grouped_query.query_groups.each do
+    |query_group| </span><span class="marked1"><a name="line56"></a>56
     qgcounts[query_group.name] = QueryCount.new(query_group.name, 0) if
-    qgcounts[query_group.name].nil? </span><span class="marked1"><a
+    qgcounts[query_group.name].nil? </span><span class="marked0"><a
     name="line57"></a>57 qgcounts[query_group.name].times += res.times.to_i
-    </span><span class="marked0"><a name="line58"></a>58
+    </span><span class="marked1"><a name="line58"></a>58
     qgcounts[query_group.name].children &lt;&lt; QueryCount.new(res.query,
-    res.times) </span><span class="inferred1"><a name="line59"></a>59 end
-    </span><span class="inferred0"><a name="line60"></a>60 else </span><span
-    class="marked1"><a name="line61"></a>61 qcs &lt;&lt;
-    QueryCount.new(res.query, res.times) </span><span class="inferred0"><a
-    name="line62"></a>62 end </span><span class="inferred1"><a
-    name="line63"></a>63 end </span><span class="marked0"><a
-    name="line64"></a>64 qcs += qgcounts.values </span><span class="marked1"><a
+    res.times) </span><span class="inferred0"><a name="line59"></a>59 end
+    </span><span class="inferred1"><a name="line60"></a>60 else </span><span
+    class="marked0"><a name="line61"></a>61 qcs &lt;&lt;
+    QueryCount.new(res.query, res.times) </span><span class="inferred1"><a
+    name="line62"></a>62 end </span><span class="inferred0"><a
+    name="line63"></a>63 end </span><span class="marked1"><a
+    name="line64"></a>64 qcs += qgcounts.values </span><span class="marked0"><a
     name="line65"></a>65 qcs.sort_by {|qc| qc.times}.reverse[0, num_results]
-    </span><span class="inferred0"><a name="line66"></a>66 end </span><span
-    class="inferred1"><a name="line67"></a>67 </span><span class="marked0"><a
-    name="line68"></a>68 private </span><span class="marked1"><a
+    </span><span class="inferred1"><a name="line66"></a>66 end </span><span
+    class="inferred0"><a name="line67"></a>67 </span><span class="marked1"><a
+    name="line68"></a>68 private </span><span class="marked0"><a
     name="line69"></a>69 def self.sum_by_window_except_last(ary, window_size)
-    </span><span class="marked0"><a name="line70"></a>70 return ary if
-    window_size == 1 </span><span class="marked1"><a name="line71"></a>71
-    windows = ary.in_groups_of(window_size) </span><span class="marked0"><a
+    </span><span class="marked1"><a name="line70"></a>70 return ary if
+    window_size == 1 </span><span class="marked0"><a name="line71"></a>71
+    windows = ary.in_groups_of(window_size) </span><span class="marked1"><a
     name="line72"></a>72 windows = windows[0, (windows.size) - 1] if
-    windows.last.include?nil </span><span class="marked1"><a
+    windows.last.include?nil </span><span class="marked0"><a
     name="line73"></a>73 windows.collect {|window| window.sum } </span><span
-    class="inferred0"><a name="line74"></a>74 end </span><span
-    class="inferred1"><a name="line75"></a>75 </span><span class="marked0"><a
+    class="inferred1"><a name="line74"></a>74 end </span><span
+    class="inferred0"><a name="line75"></a>75 </span><span class="marked1"><a
     name="line76"></a>76 def self.get_window_candidates(window_size, yyyymmdd)
-    </span><span class="marked1"><a name="line77"></a>77 start_date =
-    yyyymmdd.to_date - window_size.days + 1.day </span><span class="marked0"><a
+    </span><span class="marked0"><a name="line77"></a>77 start_date =
+    yyyymmdd.to_date - window_size.days + 1.day </span><span class="marked1"><a
     name="line78"></a>78 DailyQueryStat.sum(:times, </span><span
-    class="inferred1"><a name="line79"></a>79 :group=&gt;:query, </span><span
-    class="inferred0"><a name="line80"></a>80 :conditions=&gt;[&quot;day BETWEEN
-    ? AND ?&quot;, start_date, yyyymmdd], </span><span class="inferred1"><a
+    class="inferred0"><a name="line79"></a>79 :group=&gt;:query, </span><span
+    class="inferred1"><a name="line80"></a>80 :conditions=&gt;[&quot;day BETWEEN
+    ? AND ?&quot;, start_date, yyyymmdd], </span><span class="inferred0"><a
     name="line81"></a>81 :having =&gt; &quot;sum_times &gt;
     #{MIN_NUM_QUERIES_PER_WINDOW[window_size]}&quot;) </span><span
-    class="inferred0"><a name="line82"></a>82 end </span><span
-    class="inferred1"><a name="line83"></a>83 </span><span class="marked0"><a
+    class="inferred1"><a name="line82"></a>82 end </span><span
+    class="inferred0"><a name="line83"></a>83 </span><span class="marked1"><a
     name="line84"></a>84 def self.insufficient_data?(day, window_size)
-    </span><span class="marked1"><a name="line85"></a>85 available_periods =
-    (day - minimum(:day)) / window_size </span><span class="marked0"><a
+    </span><span class="marked0"><a name="line85"></a>85 available_periods =
+    (day - minimum(:day)) / window_size </span><span class="marked1"><a
     name="line86"></a>86 available_periods &lt;
-    MIN_ACCELERATION_PERIODS_REQUIRED </span><span class="inferred1"><a
-    name="line87"></a>87 end </span><span class="inferred0"><a
-    name="line88"></a>88 </span><span class="inferred1"><a name="line89"></a>89
+    MIN_ACCELERATION_PERIODS_REQUIRED </span><span class="inferred0"><a
+    name="line87"></a>87 end </span><span class="inferred1"><a
+    name="line88"></a>88 </span><span class="inferred0"><a name="line89"></a>89
     end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov

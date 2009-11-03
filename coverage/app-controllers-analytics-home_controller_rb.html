@@ -157,7 +157,7 @@
       C0 code coverage information
     </h3>
     <p>
-      Generated on Thu Oct 15 16:33:50 -0400 2009 with 
+      Generated on Mon Nov 02 01:32:41 -0800 2009 with 
       <a href='http://eigenclass.org/hiki/rcov'>
         rcov 0.8.1.2
       </a>
@@ -186,33 +186,33 @@
     </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
     width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
     class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
-    </tr> </tbody> </table><pre><span class="marked0"><a name="line1"></a> 1
+    </tr> </tbody> </table><pre><span class="marked1"><a name="line1"></a> 1
     class Analytics::HomeController &lt; Analytics::AnalyticsController
-    </span><span class="marked1"><a name="line2"></a> 2 def index </span><span
-    class="marked0"><a name="line3"></a> 3 @num_results_qas =
+    </span><span class="marked0"><a name="line2"></a> 2 def index </span><span
+    class="marked1"><a name="line3"></a> 3 @num_results_qas =
     (request[&quot;num_results_qas&quot;] || &quot;10&quot;).to_i </span><span
-    class="marked1"><a name="line4"></a> 4 @num_results_dqs =
+    class="marked0"><a name="line4"></a> 4 @num_results_dqs =
     (request[&quot;num_results_dqs&quot;] || &quot;10&quot;).to_i </span><span
-    class="marked0"><a name="line5"></a> 5 @day_being_shown =
+    class="marked1"><a name="line5"></a> 5 @day_being_shown =
     request[&quot;day&quot;].nil? ? DailyQueryStat.most_recent_populated_date :
-    request[&quot;day&quot;].to_date </span><span class="marked1"><a
+    request[&quot;day&quot;].to_date </span><span class="marked0"><a
     name="line6"></a> 6 @most_recent_day_popular_terms =
     DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs)
-    </span><span class="marked0"><a name="line7"></a> 7
+    </span><span class="marked1"><a name="line7"></a> 7
     @trailing_week_popular_terms =
     DailyQueryStat.most_popular_terms(@day_being_shown, 7, @num_results_dqs)
-    </span><span class="marked1"><a name="line8"></a> 8
+    </span><span class="marked0"><a name="line8"></a> 8
     @trailing_month_popular_terms =
     DailyQueryStat.most_popular_terms(@day_being_shown, 30, @num_results_dqs)
-    </span><span class="marked0"><a name="line9"></a> 9
+    </span><span class="marked1"><a name="line9"></a> 9
     @most_recent_day_biggest_movers =
     MovingQuery.biggest_movers(@day_being_shown, 1, @num_results_qas)
-    </span><span class="marked1"><a name="line10"></a>10 @weekly_biggest_movers
+    </span><span class="marked0"><a name="line10"></a>10 @weekly_biggest_movers
     = MovingQuery.biggest_movers(@day_being_shown, 7, @num_results_qas)
-    </span><span class="marked0"><a name="line11"></a>11 @monthly_biggest_movers
+    </span><span class="marked1"><a name="line11"></a>11 @monthly_biggest_movers
     = MovingQuery.biggest_movers(@day_being_shown, 30, @num_results_qas)
-    </span><span class="inferred1"><a name="line12"></a>12 end </span><span
-    class="inferred0"><a name="line13"></a>13 end </span></pre>
+    </span><span class="inferred0"><a name="line12"></a>12 end </span><span
+    class="inferred1"><a name="line13"></a>13 end </span></pre>
     <hr />
     <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
     code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>
