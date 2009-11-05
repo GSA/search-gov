@@ -6,6 +6,8 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search', :controller => "searches"
   map.namespace(:admin) do |admin|
     admin.resources :affiliates, :active_scaffold => true
+  end
+  map.namespace(:analytics) do |admin|
     admin.resources :query_groups, :active_scaffold => true
     admin.resources :grouped_queries, :active_scaffold => true
   end
