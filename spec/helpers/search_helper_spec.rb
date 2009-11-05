@@ -13,10 +13,17 @@ describe SearchHelper do
   end
 
   describe "#shunt_from_bing_to_usasearch" do
+    fixtures :affiliates
+    before do
+      @bingurl = "http://www.bing.com/search?q=Womans+Health"
+    end
+
     it "should replace Bing search URL with USASearch search URL" do
-      bingurl = "http://www.bing.com/search?q=Womans+Health"
-      usasearchurl = "query=Womans+Health"
-      helper.shunt_from_bing_to_usasearch(bingurl).should contain(usasearchurl)
+      helper.shunt_from_bing_to_usasearch(@bingurl, nil).should contain("query=Womans+Health")
+    end
+
+    it "should propagate affiliate parameter in URL" do
+      helper.shunt_from_bing_to_usasearch(@bingurl, affiliates(:basic_affiliate)).should contain("affiliate=#{affiliates(:basic_affiliate).name}")
     end
   end
 

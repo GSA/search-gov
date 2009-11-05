@@ -2,6 +2,6 @@
   %h3.alt= t :related_searches
   %ul{:id => "relatedsearch"}
     - @search.related_search.each do |result|
-      %li= link_to(result.title, shunt_from_bing_to_usasearch(result.url))
+      %li= link_to(result.title, shunt_from_bing_to_usasearch(result.url, @affiliate ))
 - else
   &nbsp

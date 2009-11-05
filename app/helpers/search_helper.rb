@@ -24,9 +24,11 @@ module SearchHelper
     link_to "#{result['title']}", "#{h result['unescapedUrl']}"
   end
 
-  def shunt_from_bing_to_usasearch(bingurl)
+  def shunt_from_bing_to_usasearch(bingurl, affiliate)
     query = CGI::unescape(bingurl.split("?q=").last)
-    search_path(:query=> query)
+    opts = {:query=> query}
+    opts.merge!(:affiliate => affiliate.name) if affiliate
+    search_path(opts)
   end
 
   def spelling_suggestion(spelling_suggestion, affiliate)
