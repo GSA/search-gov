@@ -25,7 +25,7 @@ describe SearchesController do
 
   describe "when showing a new search" do
     before do
-      get :index, :query => "social security", :page => 4, :engine => "bing"
+      get :index, :query => "social security", :page => 4
       @search = assigns[:search]
     end
 
@@ -44,9 +44,6 @@ describe SearchesController do
       @search.results.should_not be_nil
     end
 
-    it "should set the search engine" do
-      @search.engine.class.to_s.downcase.should == "bing"
-    end
   end
 
   context "when handling a valid affiliate search request" do
