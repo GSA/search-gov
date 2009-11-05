@@ -6,6 +6,8 @@ module NavigationHelpers
       root_path
     when /the search page/
       search_path
+    when /^(.*)'s search page$/
+      search_path(:affiliate => $1)
     when /the analytics query search results page/
       analytics_query_search_path
     when /the FAQ page/
@@ -22,6 +24,8 @@ module NavigationHelpers
       password_resets_path
     when /the user account page/
       account_path
+    when /the affiliate list page/
+      affiliates_path
 
     # Add more mappings here.
     # Here is a more fancy example:

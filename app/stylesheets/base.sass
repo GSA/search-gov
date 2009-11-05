@@ -1,3 +1,5 @@
+@import compass/utilities/tables.sass
+
 !site_theme_color= #003366
 
 body
@@ -84,6 +86,17 @@ table.deep_links
       :text-decoration none
       &.more_results
         :color= #454545
+
+table.tabular_data
+  color: black
+  border-collapse: collapse
+  +alternating-rows-and-columns(white, lightgray, white)
+  +outer-table-borders(2px, darkgray)
+  th
+    background-color: darkgray
+    letter-spacing: 2px
+    text-transform: uppercase
+    padding: 6px 6px 6px 12px
 
 #sidebar
   :width 250px

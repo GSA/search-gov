@@ -1,0 +1,9 @@
+.span-11.prepend-3
+  %h2 USASearch affiliates
+  %h3 Choose your affiliate domain from the list below and click on the link
+  %table.tabular_data
+    %tr
+      %th Affiliate
+    - @affiliates.each_with_index do |affiliate, idx|
+      %tr{:class=>(idx.odd? ? "odd" : "even")}
+        %td= link_to((h affiliate.name), search_path(:affiliate=> affiliate.name))
