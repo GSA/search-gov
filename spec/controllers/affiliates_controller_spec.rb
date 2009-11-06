@@ -4,11 +4,10 @@ describe AffiliatesController do
   fixtures :affiliates
 
   describe "#index" do
-    it "should assign a list of affiliates" do
-      affiliates = Affiliate.all
-      Affiliate.should_receive(:all).once.and_return(affiliates)
+    it "should assign a list of affiliaate objects and headings" do
       get :index
-      assigns[:affiliates].should == affiliates
+      assigns[:objects].should_not be_nil
+      assigns[:headings].should_not be_nil
     end
   end
 end

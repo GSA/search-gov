@@ -1,0 +1,22 @@
+<table width="100%" class='sortableTable' cellpadding="0" cellspacing="0">
+  <thead>
+    <%= table_header %>
+  </thead>
+  <tbody>
+	<%if @objects.size == 0%>
+  	  <tr><td colspan='<%= @headings.size %>'>No items in the list</td></tr>
+	<%else
+	    @objects.each do |object|
+	        klass = cycle('odd', 'even')
+        %>
+	    <tr id='<%=dom_id(object)%>' class='<%= klass %>'>
+         <% @headings.each do |heading| %>
+             <td>
+               <%= link_to_if(heading[1]=="name", object.instance_eval(heading[1]), search_path(:affiliate=>object.instance_eval(heading[1]))) %>
+             </td>
+         <% end %>
+  		</tr>
+	<%  end
+	 end%>
+	</tbody>
+</table>

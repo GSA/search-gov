@@ -1,9 +1,4 @@
 .span-11.prepend-3
-  %h2 USASearch affiliates
-  %h3 Choose your affiliate domain from the list below and click on the link
-  %table.tabular_data
-    %tr
-      %th Affiliate
-    - @affiliates.each_with_index do |affiliate, idx|
-      %tr{:class=>(idx.odd? ? "odd" : "even")}
-        %td= link_to((h affiliate.name), search_path(:affiliate=> affiliate.name))
+  = link_to(image_tag( "USAsearch_large_#{I18n.locale}.gif" , :alt=>"USASearch Home"), home_page_path(:locale => I18n.locale))
+  %h3 Find your USASearch affiliate domain in the list below and click on the link
+  = sortable_table(:search => false, :partial => "affiliates/affiliates_table")

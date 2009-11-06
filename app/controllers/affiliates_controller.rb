@@ -1,5 +1,7 @@
 class AffiliatesController < ApplicationController
+  sortable_table Affiliate, :display_columns => ['name', 'contact_email', 'contact_name'], :default_sort => ['name', 'ASC'], :per_page => 500
+
   def index
-    @affiliates = Affiliate.all
+    get_sorted_objects(params)
   end
 end

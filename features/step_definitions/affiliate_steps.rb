@@ -1,5 +1,5 @@
 Given /^the following Affiliates exist:$/ do |table|
   table.hashes.each do |hash|
-    Affiliate.create(:name => hash["name"], :domains => hash["domains"], :header => hash["header"], :footer => hash["footer"])
+    Affiliate.create(:name => hash["name"], :contact_email => hash["contact_email"], :contact_name => hash["contact_name"])
   end
 end
