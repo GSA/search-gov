@@ -1,5 +1,5 @@
 = spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
-- if (search && !(search.results.empty? || search.images.empty?))
+- if (search && !search.results.empty?)
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)
   - search.results.each_with_index do |search_result, index|
     %div.searchresult{:id => "searchresult#{index+1}"}
