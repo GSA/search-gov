@@ -4,4 +4,4 @@
 #results
   = render :partial => "shared/search"
   = render :partial => "shared/searchresults", :locals => { :search => @search }
-  = render :partial => "shared/footer_search" unless @search.results.size < 5
+  = render :partial => "shared/footer_search", :locals => { :search => @search }
