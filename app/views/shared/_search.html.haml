@@ -1,9 +1,9 @@
 - form_tag(search_path, :method => :get, :id=>"search_form") do
-  = text_field_with_auto_complete :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2}
+  = text_field_with_auto_complete :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ form.submit }"}
   = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
   = hidden_field_tag :locale, I18n.locale
   = submit_tag(t :search, :id => "search_button")
   = link_to((t :search_in), home_page_path(:locale => other_locale_str))
 
 :javascript
-  document.all.search_query.focus();
+  document.getElementById("search_query").focus();
