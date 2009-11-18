@@ -1,15 +1,13 @@
+set :stages, %w(staging production)
+set :default_stage, "staging"
+require 'capistrano/ext/multistage'
+
 set :application, "usasearch"
-set :user,        "xcet_admin"
+set :scm,         "git"
 set :repository,  "git@github.com:loren/#{application}.git"
 set :use_sudo,    false
-set :deploy_to,   "/home/xcet_admin/#{application}"
-set :scm,         "git"
-set :domain,      "209.251.180.31"
 
 after :deploy, 'deploy:cleanup'
-
-server domain, :app, :web, :db, :primary => true
-
 
 namespace :deploy do
   desc "Restart Application"
