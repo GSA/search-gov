@@ -8,6 +8,7 @@ set :repository,  "git@github.com:loren/#{application}.git"
 set :use_sudo,    false
 
 after :deploy, 'deploy:cleanup'
+after "deploy:finalize_update", "deploy:migrate"
 
 namespace :deploy do
   desc "Restart Application"
