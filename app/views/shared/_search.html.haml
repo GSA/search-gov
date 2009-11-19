@@ -3,7 +3,7 @@
   = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
   = hidden_field_tag :locale, I18n.locale
   = submit_tag(t :search, :id => "search_button")
-  = link_to((t :search_in), home_page_path(:locale => other_locale_str))
+  = link_to((t :search_in), home_page_path(:locale => other_locale_str)) if @affiliate.nil?
 
 :javascript
   document.getElementById("search_query").focus();

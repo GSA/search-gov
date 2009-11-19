@@ -25,7 +25,7 @@ config.logger = Logger.new("#{RAILS_ROOT}/log/#{ENV['RAILS_ENV']}.log", 50, 1048
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
 # Sent in emails to users
-APP_URL = "searchdemo.usa.gov"
+APP_URL = "betasearch.usa.gov"
 
 # Enable threaded mode
 # config.threadsafe!
