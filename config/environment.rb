@@ -22,6 +22,7 @@ Rails::Initializer.run do |config|
   config.gem "calendar_date_select", :version => '>= 1.15'
   config.gem "bcrypt-ruby", :lib => "bcrypt", :version => '>= 2.1.1'
   config.gem "authlogic", :version => '>= 2.1.1'
+  config.gem 'schoefmax-multi_db', :lib => 'multi_db', :source => 'http://gems.github.com'
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
