@@ -10,7 +10,7 @@ test: &TEST
   username: root
   encoding: utf8
 
-production: &PROD
+production:
   adapter: mysql
   database: usasearch_production
   username: root
@@ -20,7 +20,13 @@ production: &PROD
   timeout: 5000
 
 production_database_slave:
-  <<: *PROD
+  adapter: mysql
+  database: usasearch_production
+  username: root
+  password: usa.gov
+  encoding: utf8
+  pool: 5
+  timeout: 5000
 
 cucumber:
   <<: *TEST
