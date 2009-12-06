@@ -29,6 +29,7 @@ class DailyQueryStat < ActiveRecord::Base
     results = DailyQueryStat.sum(:times,
                                  :group => :query,
                                  :conditions => ['day between ? AND ?', start_date, end_date],
+                                 :limit => 10,
                                  :order => "sum_times desc")
     return INSUFFICIENT_DATA if results.empty?
     qcs=[]
