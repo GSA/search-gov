@@ -68,7 +68,7 @@ Feature: Analytics Homepage
     | health care bill            |  1000   |
     | health care reform          |   100   |
     | obama health care           |    10   |
-    | president                   |     1   |
+    | president                   |     4   |
     And the following query groups exist:
     | group      | queries                                                 |
     | POTUS      | obama, president, obama health care                     |
@@ -77,7 +77,7 @@ Feature: Analytics Homepage
     Then in "dqs1" I should see "hcreform"
     And in "dqs1" I should see "1110"
     And in "dqs1" I should see "POTUS"
-    And in "dqs1" I should see "10011"
+    And in "dqs1" I should see "10014"
 
   Scenario: Doing a blank search from the home page
     Given I am on the analytics homepage

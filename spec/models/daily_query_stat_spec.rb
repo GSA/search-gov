@@ -137,8 +137,8 @@ describe DailyQueryStat do
     context "when there are query groups and grouped queries in the data" do
       before do
         DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10 )
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1 )
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 100 )
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 10 )
         qg = QueryGroup.create!(:name=>"my query group")
         qg.grouped_queries << GroupedQuery.create!(:query=>"query1")
         qg.grouped_queries << GroupedQuery.create!(:query=>"query2")
@@ -148,13 +148,13 @@ describe DailyQueryStat do
         yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1)
         yday.size.should == 1
         yday.first.query.should == "my query group"
-        yday.first.times.should == 11
+        yday.first.times.should == 110
         kids = yday.first.children
         kids.should_not be_nil
         kids.first.query.should == "query1"
-        kids.first.times.should == 10
+        kids.first.times.should == 100
         kids.last.query.should == "query2"
-        kids.last.times.should == 1
+        kids.last.times.should == 10
       end
     end
   end
