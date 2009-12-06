@@ -1,4 +1,6 @@
 class Analytics::HomeController < Analytics::AnalyticsController
+  caches_page :index
+  
   def index
     @num_results_qas = (request["num_results_qas"] || "10").to_i
     @num_results_dqs = (request["num_results_dqs"] || "10").to_i
