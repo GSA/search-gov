@@ -61,7 +61,7 @@ Feature: Analytics Homepage
     And I should see "cenobitic"
     And I should see "cenolitic"
 
-  Scenario: Viewing queries that are part of query groups (i.e., semantic sets)
+  Scenario: Viewing queries with at least 4 queries per day that are part of query groups (i.e., semantic sets)
     Given the following DailyQueryStats exist for yesterday:
     | query                       | times   |
     | obama                       | 10000   |
@@ -69,9 +69,10 @@ Feature: Analytics Homepage
     | health care reform          |   100   |
     | obama health care           |    10   |
     | president                   |     4   |
+    | ignore me                   |     1   |
     And the following query groups exist:
     | group      | queries                                                 |
-    | POTUS      | obama, president, obama health care                     |
+    | POTUS      | obama, president, obama health care, ignore me          |
     | hcreform   | health care bill, health care reform, obama health care |
     When I am on the analytics homepage
     Then in "dqs1" I should see "hcreform"
