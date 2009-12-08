@@ -7,7 +7,7 @@ set :scm,         "git"
 set :repository,  "git@github.com:loren/#{application}.git"
 set :use_sudo,    false
 
-after :deploy, "deploy:migrate"
+before "deploy:restart", "deploy:migrate"
 after :deploy, 'deploy:cleanup'
 
 namespace :deploy do
