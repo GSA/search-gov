@@ -18,6 +18,8 @@ module NavigationHelpers
       query_timeline_path($1)
     when /the affiliate admin home page/
       admin_affiliates_path
+    when /the affiliate admin broadcast page/
+      new_admin_affiliate_broadcast_path
     when /the login page/
       new_user_session_path
     when /the password reset page/

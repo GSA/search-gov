@@ -1,233 +1,669 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>
-      app/models/search.rb - C0 code coverage information
-    </title>
-    <style type='text/css'>
-      body { background-color: rgb(240, 240, 245); }
-    </style>
-    <style type='text/css'>
-      span.cross-ref-title { font-size: 140%; } span.cross-ref a {
-      text-decoration: none; } span.cross-ref { background-color:#f3f7fa;
-      border: 1px dashed #333; margin: 1em; padding: 0.5em; overflow: hidden; }
-      a.crossref-toggle { text-decoration: none; } span.marked0 {
-      background-color: rgb(185, 210, 200); display: block; } span.marked1 {
-      background-color: rgb(190, 215, 205); display: block; } span.inferred0 {
-      background-color: rgb(175, 200, 200); display: block; } span.inferred1 {
-      background-color: rgb(180, 205, 205); display: block; } span.uncovered0 {
-      background-color: rgb(225, 110, 110); display: block; } span.uncovered1 {
-      background-color: rgb(235, 120, 120); display: block; } span.overview {
-      border-bottom: 8px solid black; } div.overview { border-bottom: 8px solid
-      black; } body { font-family: verdana, arial, helvetica; } div.footer {
-      font-size: 68%; margin-top: 1.5em; } h1, h2, h3, h4, h5, h6 {
-      margin-bottom: 0.5em; } h5 { margin-top: 0.5em; } .hidden { display: none;
-      } div.separator { height: 10px; } /* Commented out for better readability,
-      esp. on IE */ /* table tr td, table tr th { font-size: 68%; } td.value
-      table tr td { font-size: 11px; } */ table.percent_graph { height: 12px;
-      border: #808080 1px solid; empty-cells: show; } table.percent_graph
-      td.covered { height: 10px; background: #00f000; } table.percent_graph
-      td.uncovered { height: 10px; background: #e00000; } table.percent_graph
-      td.NA { height: 10px; background: #eaeaea; } table.report {
-      border-collapse: collapse; width: 100%; } table.report td.heading {
-      background: #dcecff; border: #d0d0d0 1px solid; font-weight: bold;
-      text-align: center; } table.report td.heading:hover { background: #c0ffc0;
-      } table.report td.text { border: #d0d0d0 1px solid; } table.report
-      td.value, table.report td.lines_total, table.report td.lines_code {
-      text-align: right; border: #d0d0d0 1px solid; } table.report tr.light {
-      background-color: rgb(240, 240, 245); } table.report tr.dark {
-      background-color: rgb(230, 230, 235); } 
-    </style>
-    <script type='text/javascript'>
-       // <![CDATA[ function toggleCode( id ) { if ( document.getElementById )
-      elem = document.getElementById( id ); else if ( document.all ) elem =
-      eval( "document.all." + id ); else return false; elemStyle = elem.style;
-      if ( elemStyle.display != "block" ) { elemStyle.display = "block" } else {
-      elemStyle.display = "none" } return true; } // Make cross-references
-      hidden by default document.writeln( "<style
-      type=\"text/css\">span.cross-ref { display: none }</style>" ) // ]]> 
-    </script>
-    <style type='text/css'>
-      span.run0 { background-color: rgb(178, 204, 255); display: block; }
-      span.run1 { background-color: rgb(178, 206, 255); display: block; }
-      span.run2 { background-color: rgb(178, 209, 255); display: block; }
-      span.run3 { background-color: rgb(178, 211, 255); display: block; }
-      span.run4 { background-color: rgb(178, 214, 255); display: block; }
-      span.run5 { background-color: rgb(178, 218, 255); display: block; }
-      span.run6 { background-color: rgb(178, 220, 255); display: block; }
-      span.run7 { background-color: rgb(178, 223, 255); display: block; }
-      span.run8 { background-color: rgb(178, 225, 255); display: block; }
-      span.run9 { background-color: rgb(178, 228, 255); display: block; }
-      span.run10 { background-color: rgb(178, 232, 255); display: block; }
-      span.run11 { background-color: rgb(178, 234, 255); display: block; }
-      span.run12 { background-color: rgb(178, 237, 255); display: block; }
-      span.run13 { background-color: rgb(178, 239, 255); display: block; }
-      span.run14 { background-color: rgb(178, 242, 255); display: block; }
-      span.run15 { background-color: rgb(178, 246, 255); display: block; }
-      span.run16 { background-color: rgb(178, 248, 255); display: block; }
-      span.run17 { background-color: rgb(178, 251, 255); display: block; }
-      span.run18 { background-color: rgb(178, 253, 255); display: block; }
-      span.run19 { background-color: rgb(178, 255, 253); display: block; }
-      span.run20 { background-color: rgb(178, 255, 249); display: block; }
-      span.run21 { background-color: rgb(178, 255, 247); display: block; }
-      span.run22 { background-color: rgb(178, 255, 244); display: block; }
-      span.run23 { background-color: rgb(178, 255, 242); display: block; }
-      span.run24 { background-color: rgb(178, 255, 239); display: block; }
-      span.run25 { background-color: rgb(178, 255, 235); display: block; }
-      span.run26 { background-color: rgb(178, 255, 233); display: block; }
-      span.run27 { background-color: rgb(178, 255, 230); display: block; }
-      span.run28 { background-color: rgb(178, 255, 228); display: block; }
-      span.run29 { background-color: rgb(178, 255, 225); display: block; }
-      span.run30 { background-color: rgb(178, 255, 221); display: block; }
-      span.run31 { background-color: rgb(178, 255, 219); display: block; }
-      span.run32 { background-color: rgb(178, 255, 216); display: block; }
-      span.run33 { background-color: rgb(178, 255, 214); display: block; }
-      span.run34 { background-color: rgb(178, 255, 211); display: block; }
-      span.run35 { background-color: rgb(178, 255, 207); display: block; }
-      span.run36 { background-color: rgb(178, 255, 205); display: block; }
-      span.run37 { background-color: rgb(178, 255, 202); display: block; }
-      span.run38 { background-color: rgb(178, 255, 200); display: block; }
-      span.run39 { background-color: rgb(178, 255, 197); display: block; }
-      span.run40 { background-color: rgb(178, 255, 193); display: block; }
-      span.run41 { background-color: rgb(178, 255, 191); display: block; }
-      span.run42 { background-color: rgb(178, 255, 188); display: block; }
-      span.run43 { background-color: rgb(178, 255, 186); display: block; }
-      span.run44 { background-color: rgb(178, 255, 183); display: block; }
-      span.run45 { background-color: rgb(178, 255, 179); display: block; }
-      span.run46 { background-color: rgb(179, 255, 178); display: block; }
-      span.run47 { background-color: rgb(182, 255, 178); display: block; }
-      span.run48 { background-color: rgb(184, 255, 178); display: block; }
-      span.run49 { background-color: rgb(187, 255, 178); display: block; }
-      span.run50 { background-color: rgb(191, 255, 178); display: block; }
-      span.run51 { background-color: rgb(193, 255, 178); display: block; }
-      span.run52 { background-color: rgb(196, 255, 178); display: block; }
-      span.run53 { background-color: rgb(198, 255, 178); display: block; }
-      span.run54 { background-color: rgb(201, 255, 178); display: block; }
-      span.run55 { background-color: rgb(205, 255, 178); display: block; }
-      span.run56 { background-color: rgb(207, 255, 178); display: block; }
-      span.run57 { background-color: rgb(210, 255, 178); display: block; }
-      span.run58 { background-color: rgb(212, 255, 178); display: block; }
-      span.run59 { background-color: rgb(215, 255, 178); display: block; }
-      span.run60 { background-color: rgb(219, 255, 178); display: block; }
-      span.run61 { background-color: rgb(221, 255, 178); display: block; }
-      span.run62 { background-color: rgb(224, 255, 178); display: block; }
-      span.run63 { background-color: rgb(226, 255, 178); display: block; }
-      span.run64 { background-color: rgb(229, 255, 178); display: block; }
-      span.run65 { background-color: rgb(233, 255, 178); display: block; }
-      span.run66 { background-color: rgb(235, 255, 178); display: block; }
-      span.run67 { background-color: rgb(238, 255, 178); display: block; }
-      span.run68 { background-color: rgb(240, 255, 178); display: block; }
-      span.run69 { background-color: rgb(243, 255, 178); display: block; }
-      span.run70 { background-color: rgb(247, 255, 178); display: block; }
-      span.run71 { background-color: rgb(249, 255, 178); display: block; }
-      span.run72 { background-color: rgb(252, 255, 178); display: block; }
-      span.run73 { background-color: rgb(255, 255, 178); display: block; }
-      span.run74 { background-color: rgb(255, 252, 178); display: block; }
-      span.run75 { background-color: rgb(255, 248, 178); display: block; }
-      span.run76 { background-color: rgb(255, 246, 178); display: block; }
-      span.run77 { background-color: rgb(255, 243, 178); display: block; }
-      span.run78 { background-color: rgb(255, 240, 178); display: block; }
-      span.run79 { background-color: rgb(255, 238, 178); display: block; }
-      span.run80 { background-color: rgb(255, 234, 178); display: block; }
-      span.run81 { background-color: rgb(255, 232, 178); display: block; }
-      span.run82 { background-color: rgb(255, 229, 178); display: block; }
-      span.run83 { background-color: rgb(255, 226, 178); display: block; }
-      span.run84 { background-color: rgb(255, 224, 178); display: block; }
-      span.run85 { background-color: rgb(255, 220, 178); display: block; }
-      span.run86 { background-color: rgb(255, 218, 178); display: block; }
-      span.run87 { background-color: rgb(255, 215, 178); display: block; }
-      span.run88 { background-color: rgb(255, 212, 178); display: block; }
-      span.run89 { background-color: rgb(255, 210, 178); display: block; }
-      span.run90 { background-color: rgb(255, 206, 178); display: block; }
-      span.run91 { background-color: rgb(255, 204, 178); display: block; }
-      span.run92 { background-color: rgb(255, 201, 178); display: block; }
-      span.run93 { background-color: rgb(255, 198, 178); display: block; }
-      span.run94 { background-color: rgb(255, 196, 178); display: block; }
-      span.run95 { background-color: rgb(255, 192, 178); display: block; }
-      span.run96 { background-color: rgb(255, 189, 178); display: block; }
-      span.run97 { background-color: rgb(255, 187, 178); display: block; }
-      span.run98 { background-color: rgb(255, 184, 178); display: block; }
-      span.run99 { background-color: rgb(255, 182, 178); display: block; }
-      span.run100 { background-color: rgb(255, 178, 178); display: block; } 
-    </style>
+    <title>app/models/search.rb</title>
+    <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="print.css" media="print" rel="stylesheet" type="text/css" />
+    
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <script type="text/javascript" src="rcov.js"></script>
   </head>
   <body>
-    <h3>
-      C0 code coverage information
-    </h3>
-    <p>
-      Generated on Tue Nov 03 11:55:38 -0800 2009 with 
-      <a href='http://eigenclass.org/hiki/rcov'>
-        rcov 0.8.1.2
-      </a>
-    </p>
-    <hr />
-    <pre><span class='marked0'>Code reported as executed by Ruby looks like
-    this... </span><span class='marked1'>and this: this line is also marked as
-    covered. </span><span class='inferred0'>Lines considered as run by rcov, but
-    not reported by Ruby, look like this, </span><span class='inferred1'>and
-    this: these lines were inferred by rcov (using simple heuristics).
-    </span><span class='uncovered0'>Finally, here&apos;s a line marked as not
-    executed. </span></pre> 
-    <table class='report'> <thead> <tr> <td class='heading'> Name </td> <td
-    class='heading'> Total lines </td> <td class='heading'> Lines of code </td>
-    <td class='heading'> Total coverage </td> <td class='heading'> Code coverage
-    </td> </tr> </thead> <tbody> <tr class='light'> <td> <a
-    href='app-models-search_rb.html'> app/models/search.rb </a> </td> <td
-    class='lines_total'> <tt> 26 </tt> </td> <td class='lines_code'> <tt> 22
-    </tt> </td> <td> <table cellspacing='0' align='right' cellpadding='0'> <tr>
-    <td> <tt class='coverage_total'> 100.0% </tt> &nbsp; </td> <td> <table
-    class='percent_graph' cellspacing='0' width='100' cellpadding='0'> <tr> <td
-    class='covered' width='100' /> <td class='uncovered' width='0' /> </tr>
-    </table> </td> </tr> </table> </td> <td> <table cellspacing='0'
-    align='right' cellpadding='0'> <tr> <td> <tt class='coverage_code'> 100.0%
-    </tt> &nbsp; </td> <td> <table class='percent_graph' cellspacing='0'
-    width='100' cellpadding='0'> <tr> <td class='covered' width='100' /> <td
-    class='uncovered' width='0' /> </tr> </table> </td> </tr> </table> </td>
-    </tr> </tbody> </table><pre><span class="marked1"><a name="line1"></a> 1
-    class Search </span><span class="marked0"><a name="line2"></a> 2 ENGINES =
-    {:bing=&gt; Bing} </span><span class="marked1"><a name="line3"></a> 3
-    attr_accessor :query, :page, :error_message, :engine, :affiliate
-    </span><span class="marked0"><a name="line4"></a> 4 MAX_QUERYTERM_LENGTH =
-    1000 </span><span class="inferred1"><a name="line5"></a> 5 </span><span
-    class="marked0"><a name="line6"></a> 6 def initialize(options = {})
-    </span><span class="marked1"><a name="line7"></a> 7 options ||= {}
-    </span><span class="marked0"><a name="line8"></a> 8 self.query =
-    options[:query] || '' </span><span class="marked1"><a name="line9"></a> 9
-    self.affiliate = options[:affiliate] </span><span class="marked0"><a
-    name="line10"></a>10 self.page = [options[:page].to_i, 0].max </span><span
-    class="marked1"><a name="line11"></a>11 klass =
-    ENGINES[options[:engine].to_sym] rescue Bing </span><span class="marked0"><a
-    name="line12"></a>12 self.engine = klass.new(:query =&gt; self.query, :page
-    =&gt; self.page, :affiliate =&gt; self.affiliate) </span><span
-    class="inferred1"><a name="line13"></a>13 end </span><span
-    class="inferred0"><a name="line14"></a>14 </span><span class="marked1"><a
-    name="line15"></a>15 def run </span><span class="marked0"><a
-    name="line16"></a>16 self.error_message = (I18n.translate :too_long) and
-    return false if self.query.length &gt; MAX_QUERYTERM_LENGTH </span><span
-    class="marked1"><a name="line17"></a>17 self.error_message = (I18n.translate
-    :empty_query) and return false if self.query.blank? </span><span
-    class="marked0"><a name="line18"></a>18 self.engine.run </span><span
-    class="inferred1"><a name="line19"></a>19 end </span><span
-    class="inferred0"><a name="line20"></a>20 </span><span class="marked1"><a
-    name="line21"></a>21 def per_page </span><span class="marked0"><a
-    name="line22"></a>22 self.engine.class::DEFAULT_PER_PAGE </span><span
-    class="inferred1"><a name="line23"></a>23 end </span><span
-    class="inferred0"><a name="line24"></a>24 </span><span class="marked1"><a
-    name="line25"></a>25 %w{total startrecord endrecord results related_search
-    spelling_suggestion images}.each {|fn| class_eval &quot;def #{fn};
-    self.engine.#{fn}; end&quot; } </span><span class="inferred0"><a
-    name="line26"></a>26 end </span></pre>
-    <hr />
-    <p> Generated using the <a href='http://eigenclass.org/hiki.rb?rcov'> rcov
-    code coverage analysis tool for Ruby </a> version 0.8.1.2. </p>
-    <p>
-      <a href='http://validator.w3.org/check/referer'>
-        <img src='http://www.w3.org/Icons/valid-xhtml10' height='31' alt='Valid XHTML 1.0!' width='88' />
-      </a>
-      <a href='http://jigsaw.w3.org/css-validator/check/referer'>
-        <img src='http://jigsaw.w3.org/css-validator/images/vcss' alt='Valid CSS!' style='border:0;width:88px;height:31px' />
-      </a>
-    </p>
+    <h1>Usasearch C0 Coverage Information - RCov</h1>
+    <h2>app/models/search.rb</h2>
+
+    
+
+    <div class="report_table_wrapper">
+      <table class='report' id='report_table'>
+        <thead>
+          <tr>
+            <th class="left_align">Name</th>
+            <th class="right_align">Total Lines</th>
+            <th class="right_align">Lines of Code</th>
+            <th class="left_align">Total Coverage</th>
+            <th class="left_align">Code Coverage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="left_align"><a href="app-models-search_rb.html">app/models/search.rb</a></td>
+            <td class='right_align'><tt>101</tt></td>
+            <td class='right_align'><tt>91</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+          <div class="percent_graph">
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
+          </div></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+          <div class="percent_graph">
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
+          </div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <h3>Key</h3>
+    
+    <div class="key"><pre><span class='marked'>Code reported as executed by Ruby looks like this...</span><span class='marked1'>and this: this line is also marked as covered.</span><span class='inferred'>Lines considered as run by rcov, but not reported by Ruby, look like this,</span><span class='inferred1'>and this: these lines were inferred by rcov (using simple heuristics).</span><span class='uncovered'>Finally, here's a line marked as not executed.</span></pre></div>
+
+    <h3>Coverage Details</h3>
+
+    <table class="details">
+      <tbody>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line1">1</a> class Search</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line2">2</a>   attr_accessor :query, :page, :error_message, :affiliate, :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :images</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>   MAX_QUERYTERM_LENGTH = 1000</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>   DEFAULT_PER_PAGE = 10</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>   JSON_SITE=&quot;http://api.search.live.net/json.aspx&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>   APP_ID=&quot;A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>   SOURCES = %w{Spell Web RelatedSearch Image}.join('+')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>   def initialize(options = {})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>     options ||= {}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     self.query = options[:query] || ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     self.affiliate = options[:affiliate]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>     self.page = [options[:page].to_i, 0].max</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>     self.results, self.related_search, self.images = [], [], []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line15">15</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line16">16</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>   def run</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>     self.error_message = (I18n.translate :too_long) and return false if self.query.length &gt; MAX_QUERYTERM_LENGTH</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>     self.error_message = (I18n.translate :empty_query) and return false if self.query.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>     offset = self.page &gt; 0 ? self.page * DEFAULT_PER_PAGE : 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>     if self.affiliate &amp;&amp; !self.affiliate.domains.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       sites = self.affiliate.domains.split(&quot;\n&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>       sites = [&quot;gov&quot;, &quot;mil&quot;]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line25">25</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>     sites_str = sites.collect {|site| &quot;site:#{site}&quot;}.join(&quot; OR &quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>     sites_clause = &quot;(#{sites_str})&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>     language_clause = I18n.locale.to_s == &quot;en&quot; ? &quot;&quot; : &quot;language:#{I18n.locale}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>     q = &quot;#{self.query.strip} #{sites_clause} #{language_clause}&quot;.strip</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line30">30</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>     begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>       uri = URI.parse(&quot;#{JSON_SITE}?web.offset=#{offset}&amp;AppId=#{APP_ID}&amp;sources=#{SOURCES}&amp;Options=EnableHighlighting&amp;query=#{URI.escape(q)}&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>       resp = Net::HTTP.get_response(uri)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>       body = translate_bing_highlights(resp.body)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>       json = JSON.parse(body)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>       response = ResponseData.new(json['SearchResponse'])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line37">37</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>       self.total = response.web.total</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>       self.spelling_suggestion = response.spell.results.first.value rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>       pagination_total = [DEFAULT_PER_PAGE * 20, self.total ].min</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>       results_array= []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>       if self.total &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>         results_array = response.web.results.collect do |r|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>           {'title' =&gt; r.title,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>            'unescapedUrl'=&gt; r.url,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line46">46</a>            'content'=&gt; (r.description rescue &quot;&quot;),</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>            'cacheUrl'=&gt; (r.CacheUrl rescue &quot;&quot;),</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line48">48</a>            'deepLinks' =&gt; r[&quot;DeepLinks&quot;]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>           }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line50">50</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>         self.related_search = response.related_search.results rescue []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>       self.results = WillPaginate::Collection.create(self.page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(results_array) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line54">54</a>       self.startrecord = self.page * DEFAULT_PER_PAGE + 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>       self.endrecord = self.startrecord + self.results.size - 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>       if response.image.total &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>         self.images = response.image.results</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line58">58</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line59">59</a>     rescue SocketError, Errno::ECONNREFUSED =&gt; e</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>       RAILS_DEFAULT_LOGGER.warn &quot;Error connecting to server: #{e}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line61">61</a>       false</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line62">62</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>     true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line64">64</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line66">66</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line67">67</a>   class ResponseData &lt; Hash</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>     private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>     def initialize(data={})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line70">70</a>       data.each_pair {|k, v| self[k.to_s] = deep_parse(v) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line71">71</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line72">72</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line73">73</a>     def deep_parse(data)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line74">74</a>       case data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line75">75</a>         when Hash</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line76">76</a>           self.class.new(data)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>         when Array</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line78">78</a>           data.map {|v| deep_parse(v) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line79">79</a>         else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line80">80</a>           data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line81">81</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line82">82</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line83">83</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line84">84</a>     def method_missing(*args)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line85">85</a>       name = args[0].to_s</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line86">86</a>       return self[name] if has_key? name</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line87">87</a>       camelname = name.split('_').map {|w| &quot;#{w[0, 1].upcase}#{w[1..-1]}&quot; }.join(&quot;&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line88">88</a>       if has_key? camelname</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line89">89</a>         self[camelname]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line90">90</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line91">91</a>         super *args</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line92">92</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line93">93</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line94">94</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line95">95</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line96">96</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line97">97</a>   def translate_bing_highlights(body)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line98">98</a>     body.gsub(/\xEE\x80\x80/,'&lt;strong&gt;').gsub(/\xEE\x80\x81/,'&lt;/strong&gt;')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line99">99</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line100">100</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line101">101</a> end</pre></td>
+          </tr>
+        
+      </tbody>
+    </table>
+
+    <p>Generated on Tue Dec 08 16:56:03 -0800 2009 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+
   </body>
 </html>
