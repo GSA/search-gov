@@ -57,6 +57,10 @@ module ApplicationHelper
   def locale_dependent_background_color
     BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]
   end
+  
+  def its_beta
+    content_tag(:span, "BETA", :class => "beta")
+  end
 
   private
 
