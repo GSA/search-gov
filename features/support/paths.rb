@@ -26,7 +26,7 @@ module NavigationHelpers
       password_resets_path
     when /the user account page/
       account_path
-    when /the affiliate list page/
+    when /the affiliate welcome page/
       affiliates_path
 
     # Add more mappings here.
