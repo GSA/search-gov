@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091208191125) do
+ActiveRecord::Schema.define(:version => 20091210011500) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -32,6 +32,14 @@ ActiveRecord::Schema.define(:version => 20091208191125) do
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
+
+  create_table "block_words", :force => true do |t|
+    t.string   "word",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "block_words", ["word"], :name => "index_block_words_on_word"
 
   create_table "daily_query_ip_stats", :force => true do |t|
     t.date    "day",                   :null => false

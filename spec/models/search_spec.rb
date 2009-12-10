@@ -188,5 +188,23 @@ describe Search do
     end
   end
 
+  describe "#filter_block_words(related_search_array)" do
+    context "when block words exist" do
+      BlockWord.delete_all
+      BlockWord.create(:word=>"Antichrist")
+      BlockWord.create(:word=>"MuSlIM")
+    end
+
+    it "should filter related searches containing block words" do
+      related_searches = [{"Title"=>"<strong>Michelle</strong> Obama", "Url"=>"http://www.bing.com/search?q=Michelle+Obama"}, {"Title"=>"Obama <strong>Pledge</strong> <strong>of</strong> <strong>Allegiance</strong>", "Url"=>"http://www.bing.com/search?q=Obama+Pledge+of+Allegiance"}, {"Title"=>"Obama <strong>Muslim</strong>", "Url"=>"http://www.bing.com/search?q=Obama+Muslim"}, {"Title"=>"<strong>History</strong> <strong>Barack</strong> Obama", "Url"=>"http://www.bing.com/search?q=History+Barack+Obama"}, {"Title"=>"Obama <strong>Antichrist</strong>", "Url"=>"http://www.bing.com/search?q=Obama+Antichrist"}, {"Title"=>"Obama <strong>Family</strong>", "Url"=>"http://www.bing.com/search?q=Obama+Family"}, {"Title"=>"Obama <strong>Girl</strong>", "Url"=>"http://www.bing.com/search?q=Obama+Girl"}, {"Title"=>"Obama <strong>Mama</strong>", "Url"=>"http://www.bing.com/search?q=Obama+Mama"}]
+      related_searches.detect {|rs| rs["Title"] =~ /Antichrist/}.should_not be_nil
+      related_searches.detect {|rs| rs["Title"] =~ /Muslim/}.should_not be_nil
+      search = Search.new
+      filtered_related_searches = search.send(:filter_block_words, related_searches)
+      filtered_related_searches.detect {|rs| rs["Title"] =~ /Antichrist/}.should be_nil
+      filtered_related_searches.detect {|rs| rs["Title"] =~ /Muslim/}.should be_nil
+      filtered_related_searches.size.should == related_searches.size - 2
+    end
+  end
 
 end
