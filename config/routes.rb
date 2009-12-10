@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search', :controller => "searches"
   map.namespace(:admin) do |admin|
     admin.resources :affiliates, :active_scaffold => true
+    admin.resources :block_words, :active_scaffold => true
     admin.resources :affiliate_broadcasts, :only => [:new, :create]
   end
   map.namespace(:analytics) do |admin|
