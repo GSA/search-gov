@@ -6,5 +6,5 @@ Below you'll see the affiliates we have associated with your email address (<%= 
 Follow the link next to the affiliate name to preview the look and feel for that affiliate.
 
 <%- @affiliate_ids.each do | aff_name| %>
-  <%= "#{aff_name}: #{search_url(:affiliate=> aff_name)}" -%>
+  <%= "#{aff_name}: #{search_url(:affiliate=> aff_name)}&query=gov" -%>
 <% end %>

@@ -6,8 +6,8 @@
       %h2= display_result_title(search_result)
       %h3 #{search_result['content']}
       %h3= display_result_links(search_result)
-      = display_deep_links_for(search_result)
-  - unless search.images.empty?
+      = display_deep_links_for(search_result) unless @affiliate
+  - unless search.images.empty? or @affiliate
     %div{:id => "image_results"}
       - search.images[0,5].each do |image_result|
         = link_to(image_tag(image_result.thumbnail.url, :size => "#{image_result.thumbnail.width}X#{image_result.thumbnail.height}"), image_result.media_url)
