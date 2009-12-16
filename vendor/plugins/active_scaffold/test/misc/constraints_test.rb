@@ -7,6 +7,7 @@ module ModelStubs
     def self.table_name
       to_s.split('::').last.underscore.pluralize
     end
+    self.store_full_sti_class = false
   end
 
   ##
@@ -56,7 +57,7 @@ module ModelStubs
   class OtherService < ModelStub
     set_table_name 'services'
     has_many :other_subscriptions, :class_name => 'ModelStubs::OtherSubscription', :foreign_key => 'service_id'
-    has_many :other_users, :through => :subscriptions # :class_name and :foreign_key are ignored for :through
+    has_many :other_users, :through => :other_subscriptions # :class_name and :foreign_key are ignored for :through
   end
 
   class OtherSubscription < ModelStub
@@ -68,6 +69,14 @@ module ModelStubs
   class OtherRole < ModelStub
     set_table_name 'roles'
     has_and_belongs_to_many :other_users, :class_name => 'ModelStubs::OtherUser', :foreign_key => 'role_id', :association_foreign_key => 'user_id', :join_table => 'roles_users'
+  end
+
+  class PrimaryKeyUser < ModelStub
+    has_many :locations, :class_name => 'PrimaryKeyLocation', :foreign_key => :username, :primary_key => :name
+  end
+
+  class PrimaryKeyLocation < ModelStub
+    belongs_to :user, :class_name => 'PrimaryKeyUser', :foreign_key => :username, :primary_key => :name
   end
 end
 
@@ -164,6 +173,13 @@ class ConstraintsTest < Test::Unit::TestCase
     assert_constraint_condition({'foo' => 'bar'}, ['users.foo = ?', 'bar'], 'normal column-based constraint')
   end
 
+  def test_constraint_conditions_for_associations_with_primary_key_option
+    @test_object.active_scaffold_config = config_for('primary_key_location')
+    #user = ModelStubs::PrimaryKeyUser.new(:id => 1, :name => 'User Name')
+    ModelStubs::PrimaryKeyUser.expects(:find).with(1).returns(stub(:id => 1, :name => 'User Name'))
+    assert_constraint_condition({'user' => 1}, ['primary_key_locations.username = ?', 'User Name'], 'association with primary-key constraint')
+  end
+
   protected
 
   def assert_constraint_condition(constraint, condition, message = nil)
@@ -171,7 +187,7 @@ class ConstraintsTest < Test::Unit::TestCase
     assert_equal condition, @test_object.send(:conditions_from_constraints), message
   end
 
-  def config_for(klass)
-    ActiveScaffold::Config::Core.new("model_stubs/#{klass.to_s.underscore.downcase}")
+  def config_for(klass, namespace = nil)
+    super(klass, "model_stubs/")
   end
 end

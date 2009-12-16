@@ -128,6 +128,10 @@ module ActiveScaffold
         link_to_function link_text, "e = #{options[:of]}; e.toggle(); this.innerHTML = (e.style.display == 'none') ? '#{as_(:show)}' : '#{as_(:hide)}'", :class => 'visibility-toggle'
       end
 
+      def skip_action_link(link)
+        (link.security_method_set? or controller.respond_to? link.security_method) and !controller.send(link.security_method)
+      end
+
       def render_action_link(link, url_options)
         url_options = url_options.clone
         url_options[:action] = link.action
@@ -157,7 +161,7 @@ module ActiveScaffold
         html_options[:position] = link.position if link.position and link.inline?
         html_options[:class] += ' action' if link.inline?
         html_options[:popup] = true if link.popup?
-        html_options[:id] = action_link_id("#{url_options[:parent_controller] + '_' if url_options[:parent_controller]}" + url_options[:action],url_options[:id] || url_options[:parent_id])
+        html_options[:id] = action_link_id("#{id_from_controller(url_options[:controller]) + '-' if url_options[:parent_controller]}" + "#{url_options[:associations].to_s + '-' if url_options[:associations]}" + url_options[:action],url_options[:id] || url_options[:parent_id])
 
         if link.dhtml_confirm?
           html_options[:class] += ' action' if !link.inline?

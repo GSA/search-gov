@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
-  attr_protected :is_affiliate_admin
+  attr_protected :is_affiliate, :is_affiliate_admin
+  has_many :affiliates
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
@@ -13,4 +14,5 @@ class User < ActiveRecord::Base
     reset_perishable_token!
     Emailer.deliver_password_reset_instructions(self)
   end
+
 end

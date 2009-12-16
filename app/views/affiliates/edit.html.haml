@@ -1,0 +1,14 @@
+.span-15
+  - form_for @affiliate, :html => {:class=>"bordered"} do |f|
+    %h1 Edit Affiliate
+    = f.error_messages(:header_message => nil, :class => "error")
+    %dl
+      %dt= f.label :name
+      %dd= f.text_field :name, :class => "text"
+      %dt= f.label :domains
+      %dd= f.text_area :domains, :class => "text"
+      %dt= f.label :header, "Header"
+      %dd= f.text_area :header
+      %dt= f.label :footer, "Footer"
+      %dd= f.text_area :footer
+    = f.submit "Update affiliate"

@@ -147,15 +147,16 @@ module ActiveScaffold
       options.assert_valid_keys :sorting, :per_page, :page, :count_includes
 
       full_includes = (active_scaffold_joins.blank? ? nil : active_scaffold_joins)
+      search_conditions = all_conditions
       options[:per_page] ||= 999999999
       options[:page] ||= 1
-      options[:count_includes] ||= full_includes
+      options[:count_includes] ||= full_includes unless search_conditions.nil?
 
       klass = active_scaffold_config.model
 
       # create a general-use options array that's compatible with Rails finders
-      finder_options = { :order => build_order_clause(options[:sorting]),
-                         :conditions => all_conditions,
+      finder_options = { :order => options[:sorting].try(:clause),
+                         :conditions => search_conditions,
                          :joins => joins_for_finder,
                          :include => options[:count_includes]}
                          
@@ -163,6 +164,10 @@ module ActiveScaffold
 
       # NOTE: we must use :include in the count query, because some conditions may reference other tables
       count = klass.count(finder_options.reject{|k,v| [:select, :order].include? k})
+
+      # Converts count to an integer if ActiveRecord returned an OrderedHash
+      # that happens when finder_options contains a :group key
+      count = count.length if count.is_a? ActiveSupport::OrderedHash
 
       finder_options.merge! :include => full_includes
 
@@ -192,30 +197,8 @@ module ActiveScaffold
       end + active_scaffold_habtm_joins
     end
     
-    # TODO: this should reside on the model, not the controller
     def merge_conditions(*conditions)
       active_scaffold_config.model.merge_conditions(*conditions)
-    end
-
-    # accepts a DataStructure::Sorting object and builds an order-by clause
-    # TODO: this should reside on the model, not the controller
-    def build_order_clause(sorting)
-      return nil if sorting.nil? or sorting.sorts_by_method?
-
-      # unless the sorting is by method, create the sql string
-      order = []
-      sorting.each do |clause|
-        sort_column, sort_direction = clause
-        sql = sort_column.sort[:sql]
-        next if sql.nil? or sql.empty?
-
-        order << "#{sql} #{sort_direction}"
-      end
-
-      order = order.join(', ')
-      order = nil if order.empty?
-
-      order
     end
 
     # TODO: this should reside on the column, not the controller

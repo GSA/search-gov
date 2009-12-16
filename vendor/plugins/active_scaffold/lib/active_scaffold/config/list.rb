@@ -11,7 +11,7 @@ module ActiveScaffold::Config
       
       # originates here
       @sorting = ActiveScaffold::DataStructures::Sorting.new(@core.columns)
-      @sorting.add @core.model.primary_key, 'ASC'
+      @sorting.set_default_sorting(@core.model)
 
       # inherit from global scope
       @empty_field_text = self.class.empty_field_text
@@ -62,7 +62,7 @@ module ActiveScaffold::Config
     # the label for this List action. used for the header.
     attr_writer :label
     def label
-      @label ? as_(@label, :count => :many) : @core.label(:count => :many)
+      @label ? as_(@label, :count => 2) : @core.label(:count => 2)
     end
 
     attr_writer :no_entries_message

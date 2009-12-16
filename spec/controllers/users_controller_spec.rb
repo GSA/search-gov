@@ -30,8 +30,10 @@ describe UsersController do
       end
 
       it "should update the user record" do
-        post :update, :user => {:email => "changed@foo.com", :time_zone => "UTC"}
-        User.find_by_email("changed@foo.com").time_zone.should == "UTC"
+        post :update, :user => {:email => "changed@foo.com", :time_zone => "FOO", :contact_name => "BAR"}
+        user = User.find_by_email("changed@foo.com")
+        user.time_zone.should == "FOO"
+        user.contact_name.should == "BAR"
       end
 
       it "should redirect to account page on success with flash message" do
@@ -49,6 +51,12 @@ describe UsersController do
         users("non_affiliate_admin").is_affiliate_admin.should be_false
         post :update, :user => {:email => "changed@foo.com", :is_affiliate_admin => true}
         User.find_by_email("changed@foo.com").is_affiliate_admin.should be_false
+      end
+
+      it "should not allow a user to promote themselves to affiliate" do
+        users("non_affiliate_admin").is_affiliate.should be_false
+        post :update, :user => {:email => "changed@foo.com", :is_affiliate => true}
+        User.find_by_email("changed@foo.com").is_affiliate.should be_false
       end
     end
   end

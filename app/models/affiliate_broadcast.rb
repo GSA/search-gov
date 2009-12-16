@@ -7,12 +7,8 @@ class AffiliateBroadcast < ActiveRecord::Base
   private
 
   def broadcast
-    done = {}
-    Affiliate.all.each do |affiliate|
-      next if affiliate.contact_email.blank? or done[affiliate.contact_email]
-      done[affiliate.contact_email] = true
-      affiliate_ids = Affiliate.find_all_by_contact_email(affiliate.contact_email).collect{|a| a.name}
-      AffiliateEmailer.deliver_email(affiliate, self.subject, self.body, affiliate_ids)
+    User.find_all_by_is_affiliate(true).each do |affiliate_user|
+      AffiliateEmailer.deliver_email(affiliate_user, self.subject, self.body)
     end
   end
 end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091210011500) do
+ActiveRecord::Schema.define(:version => 20091215192012) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -29,9 +29,11 @@ ActiveRecord::Schema.define(:version => 20091210011500) do
     t.datetime "updated_at"
     t.string   "contact_name"
     t.string   "contact_email"
+    t.integer  "user_id"
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
+  add_index "affiliates", ["user_id"], :name => "index_affiliates_on_user_id"
 
   create_table "block_words", :force => true do |t|
     t.string   "word",       :null => false
@@ -137,6 +139,8 @@ ActiveRecord::Schema.define(:version => 20091210011500) do
     t.string   "current_login_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "contact_name"
+    t.boolean  "is_affiliate",       :default => false,                        :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

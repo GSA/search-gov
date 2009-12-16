@@ -50,6 +50,19 @@ module ApplicationHelper
     iterate_links(FOOTER_LINKS[I18n.locale.to_sym])
   end
 
+  def basic_header_navigation_for(cur_user)
+    elements = []
+    if cur_user
+      elements << cur_user.email
+      elements << link_to("My Account", account_path)
+      elements << link_to("Logout", user_session_path, :method => :delete)
+      elements << link_to("FAQ", affiliates_path) if cur_user.is_affiliate?
+      elements << link_to("Affiliates", admin_affiliates_path) if cur_user.is_affiliate_admin?
+    end
+    elements << link_to("USAsearch.gov", home_page_path)
+    elements.join(" | ")
+  end
+
   def other_locale_str
     I18n.locale.to_s == "en" ? "es" : "en"
   end

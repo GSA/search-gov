@@ -6,6 +6,7 @@ module ActiveScaffold
       # It does not do any rendering. It only decides which method is responsible for rendering.
       def active_scaffold_input_for(column, scope = nil)
         options = active_scaffold_input_options(column, scope)
+        options = javascript_for_update_column(column, scope, options)
         # first, check if the dev has created an override for this specific field
         if override_form_field?(column)
           send(override_form_field(column), @record, options[:name])
@@ -33,10 +34,11 @@ module ActiveScaffold
                 options[:maxlength] = column.column.limit
                 options[:size] ||= ActionView::Helpers::InstanceTag::DEFAULT_FIELD_OPTIONS["size"]
               end
+              options.update(:value => format_number_value(@record.send(column.name), column.options)) if column.column.number?
               input(:record, column.name, options.merge(column.options))
             end
           end
-        end.to_s + javascript_for_update_column(column, scope, options)
+        end
       end
 
       alias form_column active_scaffold_input_for
@@ -61,16 +63,19 @@ module ActiveScaffold
 
       def javascript_for_update_column(column, scope, options)
         if column.options.is_a?(Hash) && column.options[:update_column]
-          url_params = {:action => 'render_field', :id => params[:id]}
+          form_action = :create
+          form_action = :update if params[:action] == 'edit'
+          url_params = {:action => 'render_field', :id => params[:id], :column => column.name, :update_column => column.options[:update_column]}
+          url_params[:eid] = params[:eid] if params[:eid]
           url_params[:controller] = controller.class.active_scaffold_controller_for(@record.class).controller_path if scope
-
-          parameters = "column=#{column.name}"
-          parameters << "&eid=#{params[:eid]}" if params[:eid]
-          parameters << "&scope=#{scope}" if scope
-          javascript_tag("$(#{options[:id].to_json}).observe('change', function(event) { new Ajax.Request(#{url_for(url_params).to_json}, {parameters: '#{parameters}&value=' + this.value, method: 'get'}); });")
-        else
-          ''
+          url_params[:scope] = params[:scope] if scope
+          ajax_options = {:method => :get, 
+                          :url => url_for(url_params), :with => "'value=' + this.value",
+                          :after => "$('#{loading_indicator_id(:action => :render_field, :id => params[:id])}').style.visibility = 'visible'; Form.disable('#{element_form_id(:action => form_action)}');",
+                          :complete => "$('#{loading_indicator_id(:action => :render_field, :id => params[:id])}').style.visibility = 'hidden'; Form.enable('#{element_form_id(:action => form_action)}');"}
+          options[:onchange] = "#{remote_function(ajax_options)};#{options[:onchange]}"
         end
+        options
       end
 
       ##
@@ -91,9 +96,10 @@ module ActiveScaffold
         # For backwards compatibility, to add method options is needed to set a html_options hash
         # in other case all column.options will be added as html options
         if column.options[:html_options]
-          html_options.update(column.options[:html_options])
+          html_options.update(column.options[:html_options] || {})
           options.update(column.options)
         else
+          Rails.logger.warn "ActiveScaffold: Setting html options directly in a hash is deprecated for :select form_ui. Set the html options hash under html_options key, such as config.columns[:column_name].options = {:html_options => {...}, ...}"
           html_options.update(column.options)
         end
         select(:record, method, select_options.uniq, options, html_options)
@@ -136,9 +142,18 @@ module ActiveScaffold
             html_options.update(column.options[:html_options] || {})
             options.update(column.options)
           else
+            Rails.logger.warn "ActiveScaffold: Setting the options array directly is deprecated for :select form_ui. Set the options array in a hash under options key, such as config.columns[:column_name].options = {:options => [...], ...}"
             options_for_select = column.options
           end
           select(:record, column.name, options_for_select, options, html_options)
+        end
+      end
+
+      def active_scaffold_input_radio(column, html_options)
+        html_options.update(column.options[:html_options] || {})
+        column.options[:options].inject('') do |html, (text, value)|
+          value ||= text
+          html << content_tag(:label, radio_button(:record, column.name, value, html_options.merge(:id => html_options[:id] + '-' + value)) + text)
         end
       end
 
@@ -178,9 +193,9 @@ module ActiveScaffold
       end
 
       def active_scaffold_input_textarea(column, options)
-        text_area(:record, column.name, options.merge(:cols => column.options[:cols], :rows => column.options[:rows]))
+        text_area(:record, column.name, options.merge(:cols => column.options[:cols], :rows => column.options[:rows], :size => column.options[:size]))
       end
-
+      
       def active_scaffold_input_virtual(column, options)
         options = active_scaffold_input_text_options(options)
         text_field :record, column.name, options.merge(column.options)
@@ -196,7 +211,7 @@ module ActiveScaffold
         select_options << [as_(:true), true]
         select_options << [as_(:false), false]
 
-        select_tag(options[:name], options_for_select(select_options, @record.send(column.name)))
+        select_tag(options[:name], options_for_select(select_options, @record.send(column.name)), options)
       end
 
       def onsubmit
@@ -272,7 +287,7 @@ module ActiveScaffold
       def column_renders_as(column)
         if column.is_a? ActiveScaffold::DataStructures::ActionColumns
           return :subsection
-        elsif column.active_record_class.locking_column.to_s == column.name.to_s
+        elsif column.active_record_class.locking_column.to_s == column.name.to_s or column.form_ui == :hidden
           return :hidden
         elsif column.association.nil? or column.form_ui or !active_scaffold_config_for(column.association.klass).actions.include?(:subform)
           return :field

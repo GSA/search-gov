@@ -3,10 +3,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :user_session
   map.resources :password_resets
-  map.resources :affiliates, :only => [:index]
+  map.resources :affiliates, :only => [:index, :update, :edit]
   map.search '/search', :controller => "searches"
   map.namespace(:admin) do |admin|
     admin.resources :affiliates, :active_scaffold => true
+    admin.resources :users, :active_scaffold => true
     admin.resources :block_words, :active_scaffold => true
     admin.resources :affiliate_broadcasts, :only => [:new, :create]
   end

@@ -40,7 +40,7 @@ module ActiveScaffold::Actions
           if successful?
             render :action => 'on_update.js'
           else
-            render :action => 'form_messages_on_update.js'
+            render :action => 'form_messages_on_save.js'
           end
         end
       else # just a regular post
@@ -94,7 +94,9 @@ module ActiveScaffold::Actions
     def do_update_column
       @record = active_scaffold_config.model.find(params[:id])
       if @record.authorized_for?(:action => :update, :column => params[:column])
-        params[:value] ||= @record.column_for_attribute(params[:column]).default unless @record.column_for_attribute(params[:column]).null
+        column = active_scaffold_config.columns[params[:column].to_sym]
+        params[:value] ||= @record.column_for_attribute(params[:column]).default unless @record.column_for_attribute(params[:column]).nil? || @record.column_for_attribute(params[:column]).null
+        params[:value] = column_value_from_param_value(@record, column, params[:value]) unless column.nil?
         @record.send("#{params[:column]}=", params[:value])
         @record.save
       end

@@ -15,6 +15,10 @@
   .span-8,.span-11,.span-13,.span-21,.span-3
     :margin 0
 
+p+p
+  :text-indent 0
+  :margin-top 0
+
 table.querycounts
   :padding-right .75em
 div.span-8.last table.querycounts
@@ -105,6 +109,11 @@ form.bordered
     :list-style none
   input.text
     :width inherit
+  dl dd
+    textarea
+      :width 100%
+    input.text
+      :width 50%
 
 .contentcard
   :border 1px solid #ccc
@@ -130,7 +139,24 @@ form.bordered
     :margin-bottom 0
     :padding 0 1em
     :background-color gainsboro
-
+  table
+    :margin 0.5em 0 0.5em 0
+    
 .success
   :margin 0
   :padding 0.25em 1em
+
+.faq
+  :color #333333
+  h1
+    :font-size 2.0em
+    :font-weight bold
+  h2
+    :color #2200cc
+    :font-weight bold
+    :font-size 1.3em
+    :padding 0
+  p
+    :color #333333
+    :font-size 1.0em
+    :margin-bottom 1em

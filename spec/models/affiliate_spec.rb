@@ -1,19 +1,19 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Affiliate do
-  fixtures :affiliates
+  fixtures :users, :affiliates
   before(:each) do
     @valid_attributes = {
       :name => "someaffiliate.gov",
-      :contact_name => "Some Person",
-      :contact_email => "some.person@someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
-      :footer => "<center>gasp</center>"
+      :footer => "<center>gasp</center>",
+      :user => users(:affiliate_manager)
     }
   end
 
   should_validate_presence_of :name
   should_validate_uniqueness_of :name
+  should_belong_to :user  
 
   it "should create a new instance given valid attributes" do
     Affiliate.create!(@valid_attributes)
