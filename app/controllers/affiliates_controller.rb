@@ -20,10 +20,11 @@ class AffiliatesController < ApplicationController
   end
 
   def push_content_for
-    @affiliate.update_attributes(:has_staged_content=> false,
-                                 :domains => @affiliate.staged_domains,
-                                 :header => @affiliate.staged_header,
-                                 :footer => @affiliate.staged_footer)
+    @affiliate.update_attributes(
+      :has_staged_content=> false,
+      :domains => @affiliate.staged_domains,
+      :header => @affiliate.staged_header,
+      :footer => @affiliate.staged_footer)
     flash[:success] = "Staged content is now visible"
     redirect_to account_path
   end
