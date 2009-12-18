@@ -5,10 +5,10 @@
     %dl
       %dt= f.label :name
       %dd= f.text_field :name, :class => "text"
-      %dt= f.label :domains
-      %dd= f.text_area :domains, :class => "text"
-      %dt= f.label :header, "Header"
-      %dd= f.text_area :header
-      %dt= f.label :footer, "Footer"
-      %dd= f.text_area :footer
-    = f.submit "Update affiliate"
+      %dt= f.label :staged_domains, "Domains"
+      %dd= f.text_area :staged_domains, :class => "text"
+      %dt= f.label :staged_header, "Header"
+      %dd= f.text_area :staged_header
+      %dt= f.label :staged_footer, "Footer"
+      %dd= f.text_area :staged_footer
+    = f.submit "Save for preview"

@@ -17,15 +17,31 @@ Feature: Affiliate clients
     Then I should see "multi1"
     And I should see "multi2"
     And I should see "FAQ"
-    When I follow "Edit"
+
+  Scenario: Staging changes to an affiliate's look and feel
+    Given the following Affiliates exist:
+    | name             | contact_email         | contact_name        |
+    | aff.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the user account page
+    And I follow "Edit"
     And I fill in "Name" with "newname"
     And I fill in "Header" with "My header"
     And I fill in "Footer" with "My footer"
     And I fill in "Domains" with "foo.com bar.com"
-    And I press "Update affiliate"
-    Then I should see "Updated your affiliate successfully."
+    And I press "Save for preview"
+    Then I should see "Staged changes to your affiliate successfully."
     And I should be on the user account page
     And I should see "newname"
-    When I follow "View sample"
+    When I follow "View staged"
     Then I should see "My header"
-    And I should see "My header"
+    And I should see "My footer"
+    When I go to the user account page
+    And I press "Push Changes"
+    Then I should be on the user account page
+    And I should see "Staged content is now visible"
+    And I should not see "Push Changes"
+    And I should not see "View staged"
+    When I follow "View current"
+    Then I should see "My header"
+    And I should see "My footer"

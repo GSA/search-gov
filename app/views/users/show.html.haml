@@ -11,7 +11,7 @@
     %dd= h @user.time_zone
 - if @user.is_affiliate?
   .span-24
-    .span-6.contentcard
+    .span-10.contentcard
       %h2 Affiliates
       %table
         - @user.affiliates.each do |affiliate|
@@ -20,4 +20,9 @@
             %td
               = link_to "Edit", edit_affiliate_path(affiliate)
               |
-              = link_to "View sample", search_url(:affiliate=> affiliate.name, :query=>"gov")
+              = link_to "View current", search_url(:affiliate=> affiliate.name, :query=>"gov")
+              - if affiliate.has_staged_content?
+                |
+                = link_to "View staged", search_url(:affiliate=> affiliate.name, :query=>"gov", :staged => 1)
+                |
+                = button_to "Push Changes", push_content_for_affiliate_path(affiliate)

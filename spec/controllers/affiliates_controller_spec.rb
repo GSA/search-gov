@@ -29,6 +29,17 @@ describe AffiliatesController do
         response.should redirect_to(home_page_path)
       end
     end
+
+    context "when logged in as an affiliate manager who doesn't own the affiliate being edited" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+      end
+
+      it "should redirect to home page" do
+        get :edit, :id => affiliates(:another_affiliate).id
+        response.should redirect_to(home_page_path)
+      end
+    end
   end
 
   describe "do POST on #update" do
@@ -56,7 +67,7 @@ describe AffiliatesController do
       it "should redirect to account page on success with flash message" do
         post :update, :id => @affiliate.id, :affiliate=> {:name=>"NEWNAME", :header=>"FOO", :footer=>"BAR", :domains=>"BLAT"}
         response.should redirect_to(account_path)
-        flash[:success].should == "Updated your affiliate successfully."
+        flash[:success].should_not be_nil
       end
 
       it "should render edit on failure" do

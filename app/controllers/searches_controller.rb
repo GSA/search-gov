@@ -21,6 +21,11 @@ class SearchesController < ApplicationController
 
   def set_search_options
     affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
+    if affiliate && params["staged"]
+      affiliate.domains = affiliate.staged_domains
+      affiliate.header = affiliate.staged_header
+      affiliate.footer = affiliate.staged_footer
+    end
     @search_options = {
       :page => (params[:page].to_i - 1),
       :query => params["query"],

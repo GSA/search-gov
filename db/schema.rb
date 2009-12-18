@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091215192012) do
+ActiveRecord::Schema.define(:version => 20091218221303) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20091215192012) do
   add_index "affiliate_broadcasts", ["user_id"], :name => "index_affiliate_broadcasts_on_user_id"
 
   create_table "affiliates", :force => true do |t|
-    t.string   "name",          :null => false
+    t.string   "name",                                  :null => false
     t.text     "domains"
     t.text     "header"
     t.text     "footer"
@@ -30,6 +30,10 @@ ActiveRecord::Schema.define(:version => 20091215192012) do
     t.string   "contact_name"
     t.string   "contact_email"
     t.integer  "user_id"
+    t.string   "staged_domains"
+    t.string   "staged_header"
+    t.string   "staged_footer"
+    t.boolean  "has_staged_content", :default => false, :null => false
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
