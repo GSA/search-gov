@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091218235406) do
+ActiveRecord::Schema.define(:version => 20091219000213) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(:version => 20091218235406) do
     t.string   "contact_name"
     t.string   "contact_email"
     t.integer  "user_id"
-    t.string   "staged_domains"
-    t.string   "staged_header"
-    t.string   "staged_footer"
+    t.text     "staged_domains"
+    t.text     "staged_header"
+    t.text     "staged_footer"
     t.boolean  "has_staged_content", :default => false, :null => false
   end
 
