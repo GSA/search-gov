@@ -9,7 +9,7 @@
     %dd= h @user.contact_name
     %dt Time Zone:
     %dd= h @user.time_zone
-- if @user.is_affiliate?
+- if @user.is_affiliate? and !@user.affiliates.empty?
   .span-24
     .span-10.contentcard
       %h2 Affiliates

@@ -15,4 +15,8 @@ class User < ActiveRecord::Base
     Emailer.deliver_password_reset_instructions(self)
   end
 
+  def to_label
+    contact_name
+  end
+
 end
