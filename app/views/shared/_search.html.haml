@@ -1,6 +1,6 @@
 - form_tag(search_path, :method => :get, :id=>"search_form") do
   = its_beta
-  - if @affiliate
+  - if @affiliate or I18n.locale.to_s != "en"
     = text_field :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}
   - else
     = text_field_with_auto_complete :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ form.submit }"}

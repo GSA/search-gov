@@ -35,7 +35,7 @@ module SearchHelper
     if (spelling_suggestion)
       opts = {:query=> spelling_suggestion}
       opts.merge!(:affiliate => affiliate.name) if affiliate
-      content_tag(:h3, "#{t :did_you_mean}: #{link_to(spelling_suggestion, search_path(opts))}")
+      content_tag(:h4, "#{t :did_you_mean}: #{link_to(spelling_suggestion, search_path(opts))}")
     end
   end
 
