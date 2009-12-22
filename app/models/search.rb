@@ -36,7 +36,7 @@ class Search
       json = JSON.parse(body)
       response = ResponseData.new(json['SearchResponse'])
 
-      self.total = response.web.total
+      self.total = response.web.total rescue 0
       self.spelling_suggestion = response.spell.results.first.value rescue nil
       pagination_total = [DEFAULT_PER_PAGE * 20, self.total ].min
       results_array= []
@@ -55,7 +55,8 @@ class Search
       self.results = WillPaginate::Collection.create(self.page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(results_array) }
       self.startrecord = self.page * DEFAULT_PER_PAGE + 1
       self.endrecord = self.startrecord + self.results.size - 1
-      if response.image.total > 0
+      num_images = response.image.total rescue 0
+      if num_images > 0
         self.images = response.image.results
       end
     rescue SocketError, Errno::ECONNREFUSED => e

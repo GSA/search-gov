@@ -126,6 +126,21 @@ describe Search do
       end
     end
 
+    context "when searching with 'adult' queries" do
+      before do
+        @search = Search.new(@valid_options.merge(:query => 'clitoris'))
+      end
+
+      it "should return true when searching" do
+        @search.run.should be_true
+      end
+
+      it "should have 0 results" do
+        @search.run
+        @search.results.size.should == 0
+      end
+    end
+
     context "when searching for misspelled terms" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'casa blanka'))
