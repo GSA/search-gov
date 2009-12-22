@@ -1,5 +1,5 @@
 class Search
-  attr_accessor :query, :page, :error_message, :affiliate, :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :images
+  attr_accessor :query, :page, :error_message, :affiliate, :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :images, :boosted_sites
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PER_PAGE = 10
   JSON_SITE="http://api.search.live.net/json.aspx"
@@ -11,7 +11,7 @@ class Search
     self.query = options[:query] || ''
     self.affiliate = options[:affiliate]
     self.page = [options[:page].to_i, 0].max
-    self.results, self.related_search, self.images = [], [], []
+    self.results, self.related_search, self.images, self.boosted_sites = [], [], [], []
   end
 
   def run
@@ -26,7 +26,8 @@ class Search
     sites_str = sites.collect {|site| "site:#{site}"}.join(" OR ")
     sites_clause = "(#{sites_str})"
     language_clause = I18n.locale.to_s == "en" ? "" : "language:#{I18n.locale}"
-    q = "#{self.query.strip} #{sites_clause} #{language_clause}".strip
+    cleaned_query = self.query.strip
+    q = "#{cleaned_query} #{sites_clause} #{language_clause}".strip
 
     begin
       uri = URI.parse("#{JSON_SITE}?web.offset=#{offset}&AppId=#{APP_ID}&sources=#{SOURCES}&Options=EnableHighlighting&query=#{URI.escape(q)}")
@@ -61,6 +62,7 @@ class Search
       RAILS_DEFAULT_LOGGER.warn "Error connecting to server: #{e}"
       false
     end
+    self.boosted_sites = self.affiliate.boosted_sites_for(cleaned_query) unless self.affiliate.nil?
     true
 
   end

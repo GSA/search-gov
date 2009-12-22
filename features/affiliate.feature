@@ -45,3 +45,20 @@ Feature: Affiliate clients
     When I follow "View current"
     Then I should see "My header"
     And I should see "My footer"
+
+  Scenario: Site visitor sees boosted results in affiliate search
+    Given the following Affiliates exist:
+    | name             | contact_email         | contact_name        |
+    | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following Boosted Sites exist for the affiliate "aff.gov"
+    | title               | url                     | description                               |
+    | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
+    | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
+    | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
+    When I go to aff.gov's search page
+    And I fill in "query" with "emergency"
+    And I submit the search form
+    Then I should see "Our Emergency Page" within "#boosted"
+    And I should see "FAQ Emergency Page" within "#boosted"
+    And I should not see "Our Tourism Page" within "#boosted"
+

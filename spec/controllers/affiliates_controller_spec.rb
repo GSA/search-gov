@@ -32,7 +32,7 @@ describe AffiliatesController do
 
     context "when logged in as an affiliate manager who doesn't own the affiliate being edited" do
       before do
-        UserSession.create(users(:affiliate_admin))
+        UserSession.create(users(:affiliate_manager))
       end
 
       it "should redirect to home page" do

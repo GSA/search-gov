@@ -36,11 +36,7 @@ class AffiliatesController < ApplicationController
       redirect_to home_page_url
       return false
     end
-    @affiliate = @current_user.affiliates.find params[:id]
-    unless @affiliate
-      redirect_to home_page_url
-      return false
-    end
+    @affiliate = @current_user.affiliates.find params[:id] rescue redirect_to home_page_url and return false
   end
 
 end

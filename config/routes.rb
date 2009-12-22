@@ -9,6 +9,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :affiliates, :active_scaffold => true
     admin.resources :users, :active_scaffold => true
     admin.resources :block_words, :active_scaffold => true
+    admin.resources :boosted_sites, :active_scaffold => true
     admin.resources :affiliate_broadcasts, :only => [:new, :create]
   end
   map.namespace(:analytics) do |admin|

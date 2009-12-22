@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091221202159) do
+ActiveRecord::Schema.define(:version => 20091221232552) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(:version => 20091221202159) do
   end
 
   add_index "block_words", ["word"], :name => "index_block_words_on_word"
+
+  create_table "boosted_sites", :force => true do |t|
+    t.integer  "affiliate_id", :null => false
+    t.string   "title",        :null => false
+    t.string   "url",          :null => false
+    t.string   "description",  :null => false
+    t.datetime "created_at"
+  end
+
+  add_index "boosted_sites", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"
 
   create_table "daily_query_ip_stats", :force => true do |t|
     t.date    "day",                   :null => false
