@@ -3,7 +3,9 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :user_session
   map.resources :password_resets
-  map.resources :affiliates, :member => { :push_content_for => :post }
+  map.resources :affiliates, :member => { :push_content_for => :post } do |affiliate|
+    affiliate.resource :boosted_sites_upload, :only => [:create, :new]
+  end
   map.search '/search', :controller => "searches"
   map.namespace(:admin) do |admin|
     admin.resources :affiliates, :active_scaffold => true

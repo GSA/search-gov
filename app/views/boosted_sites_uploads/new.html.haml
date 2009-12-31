@@ -1,0 +1,40 @@
+.span-24
+  %h1 Boosted Results
+  %p This feature allows you to cause special listings to appear more prominently in search results. |
+    Simply upload an XML document containing the title, url, and description of the results you want boosted, as shown in the example below. |
+.span-18.append-3
+  %pre
+    :preserve
+    :escaped
+      <xml>
+        <entries>
+          <entry>
+            <title>This is a listing about Texas</title>
+            <url>http://some.url</url>
+            <description>This is the description of the listing</description>
+          </entry>
+          <entry>
+            <title>Some other listing about hurricanes</title>
+            <url>http://some.other.url</url>
+            <description>Another description for another listing</description>
+          </entry>
+        </entries>
+      </xml>
+
+.span-10
+  - form_tag affiliate_boosted_sites_upload_path(@affiliate), :multipart => true, :class=> "bordered" do
+    %h1="Upload boosted sites for #{@affiliate.name}"
+    = file_field_tag 'xmlfile', :accept => 'text/xml'
+    = submit_tag "Upload"
+
+.span-23.contentcard
+  %h2="Current Boosted Sites for #{@affiliate.name}"
+  - if @affiliate.boosted_sites.empty?
+    %p.alt= "Affiliate #{@affiliate.name} has no boosted sites"
+  - else
+    %table
+      - @affiliate.boosted_sites.each do |boosted_site|
+        %tr
+          %td= boosted_site.title
+          %td= boosted_site.url
+          %td= boosted_site.description

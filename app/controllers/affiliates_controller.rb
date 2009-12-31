@@ -1,5 +1,4 @@
-class AffiliatesController < ApplicationController
-  layout "account"
+class AffiliatesController < AffiliateAuthController
   before_filter :require_affiliate, :except=> [:index]
 
   def index
@@ -27,16 +26,6 @@ class AffiliatesController < ApplicationController
       :footer => @affiliate.staged_footer)
     flash[:success] = "Staged content is now visible"
     redirect_to account_path
-  end
-
-  private
-  def require_affiliate
-    return false if require_user == false
-    unless current_user.is_affiliate?
-      redirect_to home_page_url
-      return false
-    end
-    @affiliate = @current_user.affiliates.find params[:id] rescue redirect_to home_page_url and return false
   end
 
 end

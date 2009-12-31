@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-search_rb.html">app/models/search.rb</a></td>
-            <td class='right_align'><tt>115</tt></td>
-            <td class='right_align'><tt>103</tt></td>
+            <td class='right_align'><tt>116</tt></td>
+            <td class='right_align'><tt>104</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -285,7 +285,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>       self.total = response.web.total</pre></td>
+            <td><pre><a name="line39">39</a>       self.total = response.web.total rescue 0</pre></td>
           </tr>
         
           
@@ -399,355 +399,361 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>       if response.image.total &gt; 0</pre></td>
+            <td><pre><a name="line58">58</a>       num_images = response.image.total rescue 0</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>         self.images = response.image.results</pre></td>
+            <td><pre><a name="line59">59</a>       if num_images &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>         self.images = response.image.results</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a>       end</pre></td>
+            <td><pre><a name="line61">61</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line61">61</a>     rescue SocketError, Errno::ECONNREFUSED =&gt; e</pre></td>
+            <td><pre><a name="line62">62</a>     rescue SocketError, Errno::ECONNREFUSED =&gt; e</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>       RAILS_DEFAULT_LOGGER.warn &quot;Error connecting to server: #{e}&quot;</pre></td>
+            <td><pre><a name="line63">63</a>       RAILS_DEFAULT_LOGGER.warn &quot;Error connecting to server: #{e}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>       false</pre></td>
+            <td><pre><a name="line64">64</a>       false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a>     end</pre></td>
+            <td><pre><a name="line65">65</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>     self.boosted_sites = self.affiliate.boosted_sites_for(cleaned_query) unless self.affiliate.nil?</pre></td>
+            <td><pre><a name="line66">66</a>     self.boosted_sites = self.affiliate.boosted_sites_for(cleaned_query) unless self.affiliate.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>     true</pre></td>
+            <td><pre><a name="line67">67</a>     true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line67">67</a> </pre></td>
+            <td><pre><a name="line68">68</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line68">68</a>   end</pre></td>
+            <td><pre><a name="line69">69</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a> </pre></td>
+            <td><pre><a name="line70">70</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>   class ResponseData &lt; Hash</pre></td>
+            <td><pre><a name="line71">71</a>   class ResponseData &lt; Hash</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line71">71</a>     private</pre></td>
+            <td><pre><a name="line72">72</a>     private</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>     def initialize(data={})</pre></td>
+            <td><pre><a name="line73">73</a>     def initialize(data={})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>       data.each_pair {|k, v| self[k.to_s] = deep_parse(v) }</pre></td>
+            <td><pre><a name="line74">74</a>       data.each_pair {|k, v| self[k.to_s] = deep_parse(v) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a>     end</pre></td>
+            <td><pre><a name="line75">75</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line75">75</a> </pre></td>
+            <td><pre><a name="line76">76</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line76">76</a>     def deep_parse(data)</pre></td>
+            <td><pre><a name="line77">77</a>     def deep_parse(data)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line77">77</a>       case data</pre></td>
+            <td><pre><a name="line78">78</a>       case data</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line78">78</a>         when Hash</pre></td>
+            <td><pre><a name="line79">79</a>         when Hash</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>           self.class.new(data)</pre></td>
+            <td><pre><a name="line80">80</a>           self.class.new(data)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>         when Array</pre></td>
+            <td><pre><a name="line81">81</a>         when Array</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>           data.map {|v| deep_parse(v) }</pre></td>
+            <td><pre><a name="line82">82</a>           data.map {|v| deep_parse(v) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line82">82</a>         else</pre></td>
+            <td><pre><a name="line83">83</a>         else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>           data</pre></td>
+            <td><pre><a name="line84">84</a>           data</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line84">84</a>       end</pre></td>
+            <td><pre><a name="line85">85</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line85">85</a>     end</pre></td>
+            <td><pre><a name="line86">86</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line86">86</a> </pre></td>
+            <td><pre><a name="line87">87</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line87">87</a>     def method_missing(*args)</pre></td>
+            <td><pre><a name="line88">88</a>     def method_missing(*args)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>       name = args[0].to_s</pre></td>
+            <td><pre><a name="line89">89</a>       name = args[0].to_s</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line89">89</a>       return self[name] if has_key? name</pre></td>
+            <td><pre><a name="line90">90</a>       return self[name] if has_key? name</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line90">90</a>       camelname = name.split('_').map {|w| &quot;#{w[0, 1].upcase}#{w[1..-1]}&quot; }.join(&quot;&quot;)</pre></td>
+            <td><pre><a name="line91">91</a>       camelname = name.split('_').map {|w| &quot;#{w[0, 1].upcase}#{w[1..-1]}&quot; }.join(&quot;&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line91">91</a>       if has_key? camelname</pre></td>
+            <td><pre><a name="line92">92</a>       if has_key? camelname</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line92">92</a>         self[camelname]</pre></td>
+            <td><pre><a name="line93">93</a>         self[camelname]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line93">93</a>       else</pre></td>
+            <td><pre><a name="line94">94</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line94">94</a>         super *args</pre></td>
+            <td><pre><a name="line95">95</a>         super *args</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line95">95</a>       end</pre></td>
+            <td><pre><a name="line96">96</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line96">96</a>     end</pre></td>
+            <td><pre><a name="line97">97</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line97">97</a>   end</pre></td>
+            <td><pre><a name="line98">98</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line98">98</a> </pre></td>
+            <td><pre><a name="line99">99</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line99">99</a>   private</pre></td>
+            <td><pre><a name="line100">100</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line100">100</a>   def translate_bing_highlights(body)</pre></td>
+            <td><pre><a name="line101">101</a>   def translate_bing_highlights(body)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line101">101</a>     body.gsub(/\xEE\x80\x80/, '&lt;strong&gt;').gsub(/\xEE\x80\x81/, '&lt;/strong&gt;')</pre></td>
+            <td><pre><a name="line102">102</a>     body.gsub(/\xEE\x80\x80/, '&lt;strong&gt;').gsub(/\xEE\x80\x81/, '&lt;/strong&gt;')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line102">102</a>   end</pre></td>
+            <td><pre><a name="line103">103</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line103">103</a> </pre></td>
+            <td><pre><a name="line104">104</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line104">104</a>   def filter_block_words(related_search_array)</pre></td>
+            <td><pre><a name="line105">105</a>   def filter_block_words(related_search_array)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line105">105</a>     block_words = BlockWord.all</pre></td>
+            <td><pre><a name="line106">106</a>     block_words = BlockWord.all</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line106">106</a>     related_search_array.reject do |rs|</pre></td>
+            <td><pre><a name="line107">107</a>     related_search_array.reject do |rs|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line107">107</a>       block_word_match?(rs, block_words)</pre></td>
+            <td><pre><a name="line108">108</a>       block_word_match?(rs, block_words)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line108">108</a>     end</pre></td>
+            <td><pre><a name="line109">109</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line109">109</a>   end</pre></td>
+            <td><pre><a name="line110">110</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line110">110</a> </pre></td>
+            <td><pre><a name="line111">111</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line111">111</a>   def block_word_match?(rs, block_words)</pre></td>
+            <td><pre><a name="line112">112</a>   def block_word_match?(rs, block_words)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line112">112</a>     block_words.detect { |bw| rs[&quot;Title&quot;] =~ /#{bw.word}/i }</pre></td>
+            <td><pre><a name="line113">113</a>     block_words.detect { |bw| rs[&quot;Title&quot;] =~ /#{bw.word}/i }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line113">113</a>   end</pre></td>
+            <td><pre><a name="line114">114</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line114">114</a> </pre></td>
+            <td><pre><a name="line115">115</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line115">115</a> end</pre></td>
+            <td><pre><a name="line116">116</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Dec 21 17:41:12 -0800 2009 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Fri Jan 01 13:17:16 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

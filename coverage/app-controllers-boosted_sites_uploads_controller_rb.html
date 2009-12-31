@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/searches_controller.rb</title>
+    <title>app/controllers/boosted_sites_uploads_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/searches_controller.rb</h2>
+    <h2>app/controllers/boosted_sites_uploads_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-searches_controller_rb.html">app/controllers/searches_controller.rb</a></td>
-            <td class='right_align'><tt>36</tt></td>
-            <td class='right_align'><tt>32</tt></td>
+            <td class="left_align"><a href="app-controllers-boosted_sites_uploads_controller_rb.html">app/controllers/boosted_sites_uploads_controller.rb</a></td>
+            <td class='right_align'><tt>29</tt></td>
+            <td class='right_align'><tt>26</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,13 +57,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class SearchesController &lt; ApplicationController</pre></td>
+            <td><pre><a name="line1">1</a> class BoostedSitesUploadsController &lt; AffiliateAuthController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   before_filter :set_search_options</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :require_affiliate</pre></td>
           </tr>
         
           
@@ -75,199 +75,157 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   def index</pre></td>
+            <td><pre><a name="line4">4</a>   def new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     @search = Search.new(@search_options)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>     @search.run</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>     if @search_options[:affiliate]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line8">8</a>       @affiliate = @search_options[:affiliate]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>       @page_title = &quot;#{t :search_results_for} #{@affiliate.name}: #{@search.query}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>       render :action =&gt; &quot;affiliate_index&quot;, :layout =&gt; &quot;affiliate&quot;</pre></td>
+            <td><pre><a name="line5">5</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a>     end</pre></td>
+            <td><pre><a name="line6">6</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>   def create</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     require 'rexml/document'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>     file = params[:xmlfile]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>     doc=REXML::Document.new(file.read)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>       BoostedSite.transaction do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>         BoostedSite.delete_all(&quot;affiliate_id = #{@affiliate.id}&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>         doc.root.each_element('//entry') do |entry|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>           BoostedSite.create( :url =&gt; entry.elements[&quot;url&quot;].first.to_s,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>                               :title =&gt; entry.elements[&quot;title&quot;].first.to_s,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>                               :description =&gt; entry.elements[&quot;description&quot;].first.to_s,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a>   end</pre></td>
+            <td><pre><a name="line18">18</a>                               :affiliate =&gt; @affiliate )</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a> </pre></td>
+            <td><pre><a name="line19">19</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>   def auto_complete_for_search_query</pre></td>
+            <td><pre><a name="line20">20</a>         flash[:success] = &quot;Boosted sites uploaded successfully for #{@affiliate.name}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     conditions = ['query LIKE ?', params['query'] + '%' ]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>     @auto_complete_options = DailyQueryStat.find(:all, :conditions =&gt; conditions, :order =&gt; 'query ASC', :limit =&gt; 15, :select=&gt;&quot;distinct(query) as query&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>     render :inline =&gt; &quot;&lt;%= auto_complete_result(@auto_complete_options, 'query', '#{params['query'].gsub(&quot;'&quot;,&quot;&amp;quot;&quot;)}') %&gt;&quot;</pre></td>
+            <td><pre><a name="line21">21</a>         redirect_to account_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>   end</pre></td>
+            <td><pre><a name="line22">22</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a> </pre></td>
+            <td><pre><a name="line23">23</a>     rescue</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>   private</pre></td>
+            <td><pre><a name="line24">24</a>       flash[:error] = &quot;Your XML document could not be processed. Please check the format and try again.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       render :action =&gt; 'new'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>   def set_search_options</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>     affiliate = params[&quot;affiliate&quot;] ? Affiliate.find_by_name(params[&quot;affiliate&quot;]) : nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>     if affiliate &amp;&amp; params[&quot;staged&quot;]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>       affiliate.domains = affiliate.staged_domains</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>       affiliate.header = affiliate.staged_header</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>       affiliate.footer = affiliate.staged_footer</pre></td>
+            <td><pre><a name="line26">26</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>     @search_options = {</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>       :page =&gt; (params[:page].to_i - 1),</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>       :query =&gt; params[&quot;query&quot;],</pre></td>
+            <td><pre><a name="line27">27</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>       :affiliate =&gt; affiliate,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>       :engine =&gt; params[&quot;engine&quot;]</pre></td>
+            <td><pre><a name="line28">28</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>     }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line35">35</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line36">36</a> end</pre></td>
+            <td><pre><a name="line29">29</a> end</pre></td>
           </tr>
         
       </tbody>

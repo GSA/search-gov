@@ -1,4 +1,4 @@
-.span-12.contentcard
+.span-16.contentcard
   %h2
     Account Profile
     =link_to "Edit your profile", edit_account_path
@@ -10,19 +10,20 @@
     %dt Time Zone:
     %dd= h @user.time_zone
 - if @user.is_affiliate? and !@user.affiliates.empty?
-  .span-24
-    .span-10.contentcard
-      %h2 Affiliates
-      %table
-        - @user.affiliates.each do |affiliate|
-          %tr
-            %td= h affiliate.name
-            %td
-              = link_to "Edit", edit_affiliate_path(affiliate)
+  .span-16.contentcard
+    %h2 Affiliates
+    %table
+      - @user.affiliates.each do |affiliate|
+        %tr
+          %td= h affiliate.name
+          %td
+            = link_to "Edit", edit_affiliate_path(affiliate)
+            |
+            = link_to "View current", search_url(:affiliate=> affiliate.name, :query=>"gov")
+            - if affiliate.has_staged_content?
               |
-              = link_to "View current", search_url(:affiliate=> affiliate.name, :query=>"gov")
-              - if affiliate.has_staged_content?
-                |
-                = link_to "View staged", search_url(:affiliate=> affiliate.name, :query=>"gov", :staged => 1)
-                |
-                = button_to "Push Changes", push_content_for_affiliate_path(affiliate)
+              = link_to "View staged", search_url(:affiliate=> affiliate.name, :query=>"gov", :staged => 1)
+              |
+              = button_to "Push Changes", push_content_for_affiliate_path(affiliate)
+            |
+            = link_to "Boosted sites", new_affiliate_boosted_sites_upload_path(affiliate)
