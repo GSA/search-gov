@@ -4,84 +4,74 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta name="robots" content="noindex,nofollow"/>
 <title><%= @page_title %></title>
-<%= javascript_include_tag :defaults %>
 
 <style type="text/css">
-  body {
-    font: 0.8em Arial, Helvetica, Sans-Serif;
-    margin: 0;
-    padding: 0;
-    font-size: small;
-  }
+body {
+font: 0.8em Arial, Helvetica, Sans-Serif;
+margin: 0;
+padding: 0;
+font-size: small;
+}
 
-  img {
-    border: 0px;
-  }
+img {
+border: 0px;
+}
 
-  div.searchresult {
-    margin-bottom: 1em;
-  }
-  div.searchresult > h2 {
-    font-size: 125%;
-    font-weight: normal;
-    margin: 0;
-  }
-  div.searchresult  > h2 > a, a:visited {
-    color: #2200CC;
-  }
-  div.searchresult > h2 > a:hover {
-    color: #900;
-  }
-  div.searchresult > h3 {
-    font-size: 1.0em;
-    font-weight: normal;
-    margin: 0;
-  }
-  div.searchresult > h3 > a, a:visited, a:hover {
-    color: #008000;
-  }
-  div.pagination {
-    margin-left: 200px;
-    margin-bottom: 1em
-  }
-  div.pagination  > a, a:visited {
-    color: #2200CC;
-  }
-span.beta > a, a:visited {
-    text-decoration: underline;
-    font-weight: bold;
-    color: red;
-    font-style: italic;
-  }
+div.searchresult {
+margin-bottom: 1em;
+}
+div.searchresult  h2 {
+font-size: 125%;
+font-weight: normal;
+margin: 0;
+}
+div.searchresult   h2  a, a:visited {
+color: #2200CC;
+}
+div.searchresult  h2  a:hover {
+color: #900;
+}
+div.searchresult  h3 {
+font-size: 1.0em;
+font-weight: normal;
+margin: 0;
+}
+div.searchresult  h3  a, a:visited, a:hover {
+color: #008000;
+}
+
+div.pagination {
+margin-left: 200px;
+margin-bottom: 1em
+}
+div.pagination   a, a:visited {
+color: #2200CC;
+}
+
+span.beta a, a:visited {
+text-decoration: underline;
+font-weight: bold;
+color: red;
+font-style: italic;
+}
 
 .disabled { color: white; }
 .footer { margin-top: 2em; }
 
-  #sidebar {
-    width: 250px       ;
-    display: inline    ;
-    padding-left: 50px ;
-    float: left        ;
-    overflow: hidden   ;
-  }
-  #results {
-    display: block     ;
-    overflow: hidden   ;
-    padding-right: 5em ;
-    padding-top:   1em ;
-  }
-  #boosted {
-    border: 1px lightgray solid;
-    margin-top: 1em;
-    padding: 1em 0.5em 0 1.0em;
-    background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px;
-  }
+div.results {
+display: block     ;
+overflow: hidden   ;
+padding-left: 20em ;
+padding-right: 5em ;
+padding-top:   1em ;
+}
 
-ul#relatedsearch { padding-left: 1em }
-ul#relatedsearch li { font-size: 1.1em; list-style: none; }
-ul#relatedsearch li  a, a:visited {text-decoration: none;}
-ul#relatedsearch li  a:hover {text-decoration: underline}
-
+#boosted {
+border: 1px lightgray solid;
+margin-top: 1em;
+padding: 1em 0.5em 0 1.0em;
+background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px;
+}
 
 </style>
 </head>
