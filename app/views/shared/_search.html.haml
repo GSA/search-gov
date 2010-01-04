@@ -3,7 +3,7 @@
   - if @affiliate or I18n.locale.to_s != "en"
     = text_field :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}
   - else
-    = text_field_with_auto_complete :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ form.submit }", :frequency => 0.0 }
+    = text_field_with_auto_complete :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ form.submit }", :frequency => 0.1 }
   = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
   = hidden_field_tag :locale, I18n.locale
   = submit_tag(t :search, :id => "search_button")
