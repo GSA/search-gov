@@ -87,7 +87,7 @@ Feature: Affiliate clients
     Then I should see "New results about Texas"
     And I should see "New results about hurricanes"
 
-  Scenario: Uploading invalid booster XML document as a logged in affiliate
+  Scenario: Uploading invalid booster XML document (plaintext) as a logged in affiliate
     Given the following Affiliates exist:
     | name             | contact_email         | contact_name        |
     | aff.gov          | aff@bar.gov           | John Bar            |
@@ -98,6 +98,22 @@ Feature: Affiliate clients
     And I press "Upload"
     And I follow "Boosted sites"
     And I attach the file at "features/support/invalid_boosted_sites.txt" to "xmlfile"
+    And I press "Upload"
+    Then I should see "This is a listing about Texas"
+    And I should see "Some other listing about hurricanes"
+    And I should see "Your XML document could not be processed. Please check the format and try again."
+
+  Scenario: Uploading invalid booster XML document (malformed) as a logged in affiliate
+    Given the following Affiliates exist:
+    | name             | contact_email         | contact_name        |
+    | aff.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the user account page
+    And I follow "Boosted sites"
+    And I attach the file at "features/support/boosted_sites.xml" to "xmlfile"
+    And I press "Upload"
+    And I follow "Boosted sites"
+    And I attach the file at "features/support/invalid_boosted_sites.xml" to "xmlfile"
     And I press "Upload"
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"

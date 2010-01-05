@@ -7,8 +7,8 @@ class BoostedSitesUploadsController < AffiliateAuthController
   def create
     require 'rexml/document'
     file = params[:xmlfile]
-    doc=REXML::Document.new(file.read)
     begin
+      doc=REXML::Document.new(file.read)
       BoostedSite.transaction do
         BoostedSite.delete_all("affiliate_id = #{@affiliate.id}")
         doc.root.each_element('//entry') do |entry|
