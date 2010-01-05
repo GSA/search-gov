@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
-  attr_protected :is_affiliate, :is_affiliate_admin
+  attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
   has_many :affiliates
 
   acts_as_authentic do |c|

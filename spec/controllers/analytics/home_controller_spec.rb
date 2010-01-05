@@ -10,6 +10,18 @@ describe Analytics::HomeController do
     end
   end
 
+  context "when logged in as a non-analyst user" do
+    before do
+      activate_authlogic
+      UserSession.create(:email=> users("non_affiliate_admin").email, :password => "admin")
+    end
+
+    it "should redirect to the usasearch home page" do
+      get :index
+      response.should redirect_to(home_page_url)
+    end
+  end
+
   context "when logged in as an analyst" do
     before do
       activate_authlogic

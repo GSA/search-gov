@@ -27,5 +27,6 @@ describe User do
     it { should allow_mass_assignment_of(:crypted_password, :email) }
     it { should_not allow_mass_assignment_of(:is_affiliate_admin) }
     it { should_not allow_mass_assignment_of(:is_affiliate) }
+    it { should_not allow_mass_assignment_of(:is_analyst) }
   end
 end
