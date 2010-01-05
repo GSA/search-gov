@@ -1,5 +1,4 @@
 class Admin::AffiliateBroadcastsController < Admin::AdminController
-  before_filter :require_affiliate_admin
 
   def new
     @affiliate_broadcast = AffiliateBroadcast.new

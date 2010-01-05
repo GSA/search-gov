@@ -4,7 +4,8 @@ Feature: Timeline for query
   I want to view a chart of the number of queries per day over time
 
   Scenario: Viewing a chart for a given term
-    Given the following DailyQueryStats exist for yesterday:
+    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And the following DailyQueryStats exist for yesterday:
     | query                       | times |
     | cenobitic                   | 100   |
     | oxaluria                    | 90    |

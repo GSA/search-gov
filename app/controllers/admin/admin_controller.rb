@@ -1,5 +1,6 @@
 class Admin::AdminController < ApplicationController
   layout "admin"
+  before_filter :require_affiliate_admin
 
   private
 
@@ -11,4 +12,7 @@ class Admin::AdminController < ApplicationController
     end
   end
 
+  def default_url_options(options={})
+    {}
+  end
 end
