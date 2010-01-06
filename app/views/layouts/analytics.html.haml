@@ -14,16 +14,9 @@
 
   %body
     .container
-      .span-13
+      .span-11
         = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), analytics_home_page_path)
-        %h1
-          %span.alt= link_to("Analytics",analytics_home_page_path)
-          %span.beta Beta
-      .span-11.last.header
-        = link_to "Query Groups Admin", analytics_query_groups_path
-        |
-        = link_to "FAQ", analytics_faq_path
-        |
-        = link_to("Home",analytics_home_page_path)
+        %h1.alt= link_to("Analytics",analytics_home_page_path)
+      .span-13.last.header= analytics_header_navigation_for current_user
       %hr
       = yield

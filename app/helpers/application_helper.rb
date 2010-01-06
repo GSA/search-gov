@@ -63,6 +63,19 @@ module ApplicationHelper
     elements.join(" | ")
   end
 
+  def analytics_header_navigation_for(cur_user)
+    elements = []
+    if cur_user
+      elements << cur_user.email
+      elements << link_to("My Account", account_path)
+      elements << link_to("Logout", user_session_path, :method => :delete)
+      elements << link_to("FAQ", analytics_faq_path)
+      elements << link_to("Query Groups Admin", analytics_query_groups_path) if cur_user.is_affiliate_admin?
+    end
+    elements << link_to("USAsearch.gov", home_page_path)
+    elements.join(" | ")
+  end
+
   def other_locale_str
     I18n.locale.to_s == "en" ? "es" : "en"
   end
