@@ -13,14 +13,16 @@ describe SearchesController do
       lambda {get :auto_complete_for_search_query, :query=>"foo's"}.should_not raise_error
     end
 
-
+    it "should filter block words from suggestions" do
+      BlockWord.should_receive(:filter).once
+      get :auto_complete_for_search_query, :query=>"foo"
+    end
   end
 
   describe "when showing index" do
     it "should have a route with a locale" do
       search_path.should == '/search?locale=en'
     end
-
   end
 
   describe "when showing a new search" do

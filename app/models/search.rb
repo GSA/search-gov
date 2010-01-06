@@ -50,7 +50,7 @@ class Search
           }
         end
         self.related_search = response.related_search.results rescue []
-        self.related_search = filter_block_words(self.related_search)
+        self.related_search = BlockWord.filter(self.related_search, "Title")
       end
       self.results = WillPaginate::Collection.create(self.page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(results_array) }
       self.startrecord = self.page * DEFAULT_PER_PAGE + 1
@@ -100,17 +100,6 @@ class Search
   private
   def translate_bing_highlights(body)
     body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
-  end
-
-  def filter_block_words(related_search_array)
-    block_words = BlockWord.all
-    related_search_array.reject do |rs|
-      block_word_match?(rs, block_words)
-    end
-  end
-
-  def block_word_match?(rs, block_words)
-    block_words.detect { |bw| rs["Title"] =~ /#{bw.word}/i }
   end
 
 end
