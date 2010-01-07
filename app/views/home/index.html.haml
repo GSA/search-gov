@@ -1,3 +1,18 @@
 .prepend-6.span-15.append-3.homepage
   = link_to(image_tag( "USAsearch_large_#{I18n.locale}.gif" , :alt=>"USASearch Home"), home_page_path(:locale => I18n.locale))
   = render :partial => "shared/search"
+
+  %h2
+    Announcing
+    =link_to "Search.USA.gov", home_page_path
+    Services (Beta)
+  %p
+    The
+    =link_to "USA.gov website", "http://www.usa.gov"
+    has the goal of making it easy for the public to find U.S. government information and services on the web. Over the next several months, the
+    =link_to "USA.gov", "http://www.usa.gov"
+    Search team will be experimenting with changes to this interface. As such, we would like your feedback on how to improve your search for government information.  If you have questions or comments, feel free to send them via Contact Us (below link).
+  %br
+  %p
+    =link_to "USA.gov", "http://www.usa.gov"
+    Search Team

@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-search_rb.html">app/models/search.rb</a></td>
-            <td class='right_align'><tt>116</tt></td>
-            <td class='right_align'><tt>104</tt></td>
+            <td class='right_align'><tt>105</tt></td>
+            <td class='right_align'><tt>95</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -369,7 +369,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>         self.related_search = filter_block_words(self.related_search)</pre></td>
+            <td><pre><a name="line53">53</a>         self.related_search = BlockWord.filter(self.related_search, &quot;Title&quot;)</pre></td>
           </tr>
         
           
@@ -680,80 +680,14 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line105">105</a>   def filter_block_words(related_search_array)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line106">106</a>     block_words = BlockWord.all</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line107">107</a>     related_search_array.reject do |rs|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line108">108</a>       block_word_match?(rs, block_words)</pre></td>
-          </tr>
-        
-          
-          
           <tr class="inferred">
-            <td><pre><a name="line109">109</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line110">110</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line111">111</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line112">112</a>   def block_word_match?(rs, block_words)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line113">113</a>     block_words.detect { |bw| rs[&quot;Title&quot;] =~ /#{bw.word}/i }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line114">114</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line115">115</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line116">116</a> end</pre></td>
+            <td><pre><a name="line105">105</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Jan 05 14:57:15 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Jan 07 12:47:22 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>83</tt></td>
-            <td class='right_align'><tt>72</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>81.93%</tt></div>
+            <td class='right_align'><tt>96</tt></td>
+            <td class='right_align'><tt>84</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>84.38%</tt></div>
+          <div class="percent_graph">
+            <div class="covered" style="width:84px"></div>
+            <div class="uncovered" style="width:16px"></div>
+          </div></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>82.14%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:82px"></div>
             <div class="uncovered" style="width:18px"></div>
-          </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>79.17%</tt></div>
-          <div class="percent_graph">
-            <div class="covered" style="width:79px"></div>
-            <div class="uncovered" style="width:21px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -447,115 +447,193 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>   def other_locale_str</pre></td>
+            <td><pre><a name="line66">66</a>   def analytics_header_navigation_for(cur_user)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>     I18n.locale.to_s == &quot;en&quot; ? &quot;es&quot; : &quot;en&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line68">68</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line69">69</a> </pre></td>
+            <td><pre><a name="line67">67</a>     elements = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>   def locale_dependent_background_color</pre></td>
+            <td><pre><a name="line68">68</a>     if cur_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line71">71</a>     BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line72">72</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line73">73</a> </pre></td>
+            <td><pre><a name="line69">69</a>       elements &lt;&lt; cur_user.email</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>   def its_beta</pre></td>
+            <td><pre><a name="line70">70</a>       elements &lt;&lt; link_to(&quot;My Account&quot;, account_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line75">75</a>     content_tag(:span, link_to(&quot;BETA&quot;,affiliates_path), :class =&gt; &quot;beta&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line76">76</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line77">77</a> </pre></td>
+            <td><pre><a name="line71">71</a>       elements &lt;&lt; link_to(&quot;Logout&quot;, user_session_path, :method =&gt; :delete)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line78">78</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line79">79</a> </pre></td>
+            <td><pre><a name="line72">72</a>       elements &lt;&lt; link_to(&quot;FAQ&quot;, analytics_faq_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line73">73</a>       elements &lt;&lt; link_to(&quot;Query Groups Admin&quot;, analytics_query_groups_path) if cur_user.is_affiliate_admin?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line74">74</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>     links.collect {|link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+            <td><pre><a name="line75">75</a>     elements &lt;&lt; link_to(&quot;USAsearch.gov&quot;, home_page_path)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line76">76</a>     elements.join(&quot; | &quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line82">82</a>   end</pre></td>
+            <td><pre><a name="line77">77</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line83">83</a> end</pre></td>
+            <td><pre><a name="line78">78</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line79">79</a>   def other_locale_str</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line80">80</a>     I18n.locale.to_s == &quot;en&quot; ? &quot;es&quot; : &quot;en&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line81">81</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line82">82</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line83">83</a>   def locale_dependent_background_color</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line84">84</a>     BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line85">85</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line86">86</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line87">87</a>   def its_beta</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line88">88</a>     content_tag(:span, link_to(&quot;BETA&quot;,affiliates_path), :class =&gt; &quot;beta&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line89">89</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line90">90</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line91">91</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line92">92</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line93">93</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line94">94</a>     links.collect {|link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line95">95</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line96">96</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Jan 05 14:57:15 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Jan 07 12:47:21 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

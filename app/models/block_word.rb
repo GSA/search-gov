@@ -3,6 +3,7 @@ class BlockWord < ActiveRecord::Base
   validates_uniqueness_of :word
 
   def self.filter(results, key)
-    results.reject { |rs| all.detect { |bw| rs[key] =~ /#{bw.word}\b/i } } unless results.nil?
+    block_words = all
+    results.reject { |rs| block_words.detect { |bw| rs[key] =~ /#{bw.word}\b/i } } unless results.nil?
   end
 end
