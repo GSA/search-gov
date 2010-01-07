@@ -8,6 +8,7 @@ class CatcherTest < Test::Unit::TestCase
     super
     reset_config
     HoptoadNotifier.sender = CollectingSender.new
+    define_constant('RAILS_ROOT', '/path/to/rails/root')
   end
 
   def ignore(exception_class)
@@ -38,12 +39,23 @@ class CatcherTest < Test::Unit::TestCase
   end
 
   def assert_sent_request_info_for(request)
-    params = request.params.to_hash
+    params = request.parameters.to_hash
     assert_sent_hash params, '/notice/request/params'
     assert_sent_element params['controller'], '/notice/request/component'
     assert_sent_element params['action'], '/notice/request/action'
-    assert_sent_element request.url, '/notice/request/url'
+    assert_sent_element url_from_request(request), '/notice/request/url'
     assert_sent_hash request.env, '/notice/request/cgi-data'
+  end
+
+  def url_from_request(request)
+    url = "#{request.protocol}#{request.host}"
+
+    unless [80, 443].include?(request.port)
+      url << ":#{request.port}"
+    end
+
+    url << request.request_uri
+    url
   end
 
   def sender
@@ -79,13 +91,15 @@ class CatcherTest < Test::Unit::TestCase
         opts[:request].env["HTTP_USER_AGENT"] = opts[:user_agent]
       end
     end
+    if opts[:port]
+      opts[:request].port = opts[:port]
+    end
     klass.consider_all_requests_local = opts[:all_local]
     klass.local                       = opts[:local]
     controller = klass.new
     controller.stubs(:rescue_action_in_public_without_hoptoad)
     opts[:request].query_parameters = opts[:request].query_parameters.merge(opts[:params] || {})
-    opts[:request].session.clear
-    opts[:request].session.merge!(opts[:session] || {})
+    opts[:request].session = ActionController::TestSession.new(opts[:session] || {})
     controller.process(opts[:request], opts[:response])
     controller
   end
@@ -192,14 +206,26 @@ class CatcherTest < Test::Unit::TestCase
   end
 
   should "send request data for manual notification" do
-    params = { 'controller' => "users", 'action' => "create" }
+    params = { 'controller' => "hoptoad_test", 'action' => "index" }
     controller = process_action_with_manual_notification(:params => params)
     assert_sent_request_info_for controller.request
   end
 
+  should "send request data for manual notification with non-standard port" do
+    params = { 'controller' => "hoptoad_test", 'action' => "index" }
+    controller = process_action_with_manual_notification(:params => params, :port => 81)
+    assert_sent_request_info_for controller.request
+  end
+
   should "send request data for automatic notification" do
-    params = { 'controller' => "users", 'action' => "create" }
+    params = { 'controller' => "hoptoad_test", 'action' => "index" }
     controller = process_action_with_automatic_notification(:params => params)
+    assert_sent_request_info_for controller.request
+  end
+
+  should "send request data for automatic notification with non-standard port" do
+    params = { 'controller' => "hoptoad_test", 'action' => "index" }
+    controller = process_action_with_automatic_notification(:params => params, :port => 81)
     assert_sent_request_info_for controller.request
   end
 
@@ -252,6 +278,37 @@ class CatcherTest < Test::Unit::TestCase
       assert_no_match /text\/css/, @response.body
       assert_no_match /text\/javascript/, @response.body
     end
+  end
+
+  should "call session.to_hash if available" do
+    hash_data = {:key => :value}
+
+    session = ActionController::TestSession.new
+    ActionController::TestSession.stubs(:new).returns(session)
+    session.stubs(:to_hash).returns(hash_data)
+
+    process_action_with_automatic_notification
+    assert_received(session, :to_hash)
+    assert_received(session, :data) { |expect| expect.never }
+    assert_caught_and_sent
+  end
+
+  should "call session.data if session.to_hash is undefined" do
+    hash_data = {:key => :value}
+
+    session = ActionController::TestSession.new
+    ActionController::TestSession.stubs(:new).returns(session)
+    session.stubs(:data).returns(hash_data)
+    if session.respond_to?(:to_hash)
+      class << session
+        undef to_hash
+      end
+    end
+
+    process_action_with_automatic_notification
+    assert_received(session, :to_hash) { |expect| expect.never }
+    assert_received(session, :data) { |expect| expect.at_least_once }
+    assert_caught_and_sent
   end
 
 end

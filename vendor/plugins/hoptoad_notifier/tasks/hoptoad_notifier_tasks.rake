@@ -5,7 +5,8 @@ namespace :hoptoad do
     HoptoadTasks.deploy(:rails_env      => ENV['TO'], 
                         :scm_revision   => ENV['REVISION'],
                         :scm_repository => ENV['REPO'],
-                        :local_username => ENV['USER'])
+                        :local_username => ENV['USER'],
+                        :api_key        => ENV['API_KEY'])
   end
 
   task :log_stdout do
@@ -73,6 +74,10 @@ namespace :hoptoad do
         Object.const_get(exception_name)
       rescue
         Object.const_set(exception_name, Class.new(Exception))
+      end
+
+      def logger
+        nil
       end
     end
 

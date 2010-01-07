@@ -11,7 +11,7 @@ require 'hoptoad_notifier/backtrace'
 # Plugin for applications to automatically post errors to the Hoptoad of their choice.
 module HoptoadNotifier
 
-  VERSION = "2.0.3"
+  VERSION = "2.0.18"
   API_VERSION = "2.0"
   LOG_PREFIX = "** [Hoptoad] "
 
@@ -127,12 +127,23 @@ module HoptoadNotifier
     end
 
     def build_notice_for(exception, opts = {})
+      exception = unwrap_exception(exception)
       if exception.respond_to?(:to_hash)
         opts = opts.merge(exception)
       else
         opts = opts.merge(:exception => exception)
       end
       Notice.new(configuration.merge(opts))
+    end
+
+    def unwrap_exception(exception)
+      if exception.respond_to?(:original_exception)
+        exception.original_exception
+      elsif exception.respond_to?(:continued_exception)
+        exception.continued_exception
+      else
+        exception
+      end
     end
   end
 end
