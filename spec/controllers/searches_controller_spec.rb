@@ -9,8 +9,14 @@ describe SearchesController do
       get :auto_complete_for_search_query, :query=>"foo"
     end
 
-    it "should not completely melt down when an apostrophe is present" do
+    it "should not completely melt down when strange characters are present" do
+      lambda {get :auto_complete_for_search_query, :query=>"foo\\"}.should_not raise_error
       lambda {get :auto_complete_for_search_query, :query=>"foo's"}.should_not raise_error
+    end
+
+    it "should return empty result if no search param present" do
+      get :auto_complete_for_search_query
+      response.body.should == " "      
     end
 
     it "should filter block words from suggestions" do

@@ -12,10 +12,12 @@ class SearchesController < ApplicationController
   end
 
   def auto_complete_for_search_query
-    conditions = ['query LIKE ?', params['query'] + '%' ]
+    return unless params['query']
+    sanitized_query = params['query'].gsub('\\', '')
+    conditions = ['query LIKE ?', sanitized_query + '%' ]
     results = DailyQueryStat.find(:all, :conditions => conditions, :order => 'query ASC', :limit => 15, :select=>"distinct(query) as query")
     @auto_complete_options = BlockWord.filter(results, "query")
-    render :inline => "<%= auto_complete_result(@auto_complete_options, 'query', '#{params['query'].gsub("'", "&quot;")}') %>"
+    render :inline => "<%= auto_complete_result(@auto_complete_options, 'query', '#{sanitized_query.gsub("'", "&quot;")}') %>"
   end
 
   private
