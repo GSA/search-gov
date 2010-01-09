@@ -7,6 +7,7 @@ require 'spec/rails'
 require 'remarkable_rails'
 require "authlogic/test_case"
 require 'webrat'
+require 'sunspot/spec/extension'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.

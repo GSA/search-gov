@@ -11,7 +11,7 @@ class Search
     self.query = options[:query] || ''
     self.affiliate = options[:affiliate]
     self.page = [options[:page].to_i, 0].max
-    self.results, self.related_search, self.images, self.boosted_sites = [], [], [], []
+    self.results, self.related_search, self.images, self.boosted_sites = [], [], [], nil
   end
 
   def run
@@ -63,7 +63,7 @@ class Search
       RAILS_DEFAULT_LOGGER.warn "Error connecting to server: #{e}"
       false
     end
-    self.boosted_sites = self.affiliate.boosted_sites_for(cleaned_query) unless self.affiliate.nil?
+    self.boosted_sites = BoostedSite.search_for(self.affiliate, cleaned_query) unless self.affiliate.nil?
     true
 
   end

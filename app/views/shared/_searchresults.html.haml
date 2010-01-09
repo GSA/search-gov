@@ -1,11 +1,12 @@
 = spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
-- if (search && !search.boosted_sites.empty?)
+- if (search && search.boosted_sites && search.boosted_sites.total > 0)
   #boosted
-    - search.boosted_sites.each_with_index do |boosted_site, index|
+    - search.boosted_sites.hits.each_with_index do |hit, index|
+      - boosted_site_url = hit.instance.url
       %div.searchresult{:id => "boostedresult#{index+1}"}
-        %h2= link_to((h boosted_site.title), boosted_site.url)
-        %h3= h boosted_site.description
-        %h3= link_to((h boosted_site.url), boosted_site.url)
+        %h2= link_to(highlight_hit(hit, :title), boosted_site_url)
+        %h3= highlight_hit(hit, :description)
+        %h3= link_to((h boosted_site_url), boosted_site_url)
 - if (search && !search.results.empty?)
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)
   - search.results.each_with_index do |search_result, index|

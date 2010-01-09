@@ -85,7 +85,12 @@ module ApplicationHelper
   end
 
   def its_beta
-    content_tag(:span, link_to("BETA",affiliates_path), :class => "beta")
+    content_tag(:span, link_to("BETA", affiliates_path), :class => "beta")
+  end
+
+  def highlight_hit(hit, sym)
+    return hit.highlights(sym).first.format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlights(sym).first.nil?  
+    hit.instance.send(sym)
   end
 
   private

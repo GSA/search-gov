@@ -10,7 +10,7 @@ class BoostedSitesUploadsController < AffiliateAuthController
     begin
       doc=REXML::Document.new(file.read)
       BoostedSite.transaction do
-        BoostedSite.delete_all("affiliate_id = #{@affiliate.id}")
+        BoostedSite.destroy_all("affiliate_id = #{@affiliate.id}")
         doc.root.each_element('//entry') do |entry|
           BoostedSite.create( :url => entry.elements["url"].first.to_s,
                               :title => entry.elements["title"].first.to_s,

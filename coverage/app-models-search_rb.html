@@ -135,7 +135,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>     self.results, self.related_search, self.images, self.boosted_sites = [], [], [], []</pre></td>
+            <td><pre><a name="line14">14</a>     self.results, self.related_search, self.images, self.boosted_sites = [], [], [], nil</pre></td>
           </tr>
         
           
@@ -447,7 +447,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>     self.boosted_sites = self.affiliate.boosted_sites_for(cleaned_query) unless self.affiliate.nil?</pre></td>
+            <td><pre><a name="line66">66</a>     self.boosted_sites = BoostedSite.search_for(self.affiliate, cleaned_query) unless self.affiliate.nil?</pre></td>
           </tr>
         
           
@@ -687,7 +687,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Fri Jan 08 12:43:47 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Wed Jan 13 08:07:38 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
