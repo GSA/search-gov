@@ -12,7 +12,7 @@ class SearchesController < ApplicationController
   end
 
   def auto_complete_for_search_query
-    return unless params['query']
+    render :inline => "" and return unless params['query']
     sanitized_query = params['query'].gsub('\\', '')
     conditions = ['query LIKE ?', sanitized_query + '%' ]
     results = DailyQueryStat.find(:all, :conditions => conditions, :order => 'query ASC', :limit => 15, :select=>"distinct(query) as query")

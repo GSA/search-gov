@@ -16,7 +16,7 @@ describe SearchesController do
 
     it "should return empty result if no search param present" do
       get :auto_complete_for_search_query
-      response.body.should == " "      
+      response.body.should be_blank      
     end
 
     it "should filter block words from suggestions" do
