@@ -46,21 +46,39 @@ Feature: Affiliate clients
     Then I should see "My header"
     And I should see "My footer"
 
-  Scenario: Site visitor sees boosted results in affiliate search
+  Scenario: Site visitor sees relevant boosted results for given affiliate search
     Given the following Affiliates exist:
     | name             | contact_email         | contact_name        |
     | aff.gov          | aff@bar.gov           | John Bar            |
+    | bar.gov          | aff@bar.gov           | John Bar            |
     And the following Boosted Sites exist for the affiliate "aff.gov"
     | title               | url                     | description                               |
     | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
     | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
     | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
+    And the following Boosted Sites exist for the affiliate "bar.gov"
+    | title               | url                     | description                               |
+    | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
+    | Pelosi misspelling  | http://www.bar.gov/pel  | Synonyms file test works                  |
+    | all about agencies  | http://www.bar.gov/pel  | Stemming works                            |
     When I go to aff.gov's search page
     And I fill in "query" with "emergency"
     And I submit the search form
     Then I should see "Our Emergency Page" within "#boosted"
     And I should see "FAQ Emergency Page" within "#boosted"
     And I should not see "Our Tourism Page" within "#boosted"
+    And I should not see "Bar Emergency Page" within "#boosted"
+
+    When I go to bar.gov's search page
+    And I fill in "query" with "Peloci"
+    And I submit the search form
+    Then I should see "Synonyms file test works" within "#boosted"
+
+    When I go to bar.gov's search page
+    And I fill in "query" with "agency"
+    And I submit the search form
+    Then I should see "Stemming works" within "#boosted"
+
 
   Scenario: Uploading valid booster XML document as a logged in affiliate
     Given the following Affiliates exist:

@@ -23,8 +23,8 @@ Rails::Initializer.run do |config|
   config.gem "bcrypt-ruby", :lib => "bcrypt", :version => '>= 2.1.1'
   config.gem "authlogic", :version => '>= 2.1.1'
   config.gem 'schoefmax-multi_db', :lib => 'multi_db', :source => 'http://gems.github.com'
-  config.gem 'sunspot', :lib => 'sunspot'
-  config.gem 'sunspot_rails', :lib => 'sunspot/rails'
+  config.gem 'sunspot', :lib => 'sunspot', :version=> '0.10.9'
+  config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version=> '0.11.5'
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'Eastern Time (US & Canada)'
