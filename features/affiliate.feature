@@ -90,7 +90,7 @@ Feature: Affiliate clients
     Then I should see "aff.gov has no boosted sites"
     And I should see "Upload boosted sites for aff.gov"
 
-    When I attach the file at "features/support/boosted_sites.xml" to "xmlfile"
+    When I attach the file "features/support/boosted_sites.xml" to "xmlfile"
     And I press "Upload"
     Then I should see "Boosted sites uploaded successfully for aff.gov"
 
@@ -99,7 +99,7 @@ Feature: Affiliate clients
     And I should see "Some other listing about hurricanes"
     And I should see "Upload boosted sites for aff.gov"
 
-    When I attach the file at "features/support/new_boosted_sites.xml" to "xmlfile"
+    When I attach the file "features/support/new_boosted_sites.xml" to "xmlfile"
     And I press "Upload"
     And I follow "Boosted sites"
     Then I should see "New results about Texas"
@@ -112,10 +112,10 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Boosted sites"
-    And I attach the file at "features/support/boosted_sites.xml" to "xmlfile"
+    And I attach the file "features/support/boosted_sites.xml" to "xmlfile"
     And I press "Upload"
     And I follow "Boosted sites"
-    And I attach the file at "features/support/invalid_boosted_sites.txt" to "xmlfile"
+    And I attach the file "features/support/invalid_boosted_sites.txt" to "xmlfile"
     And I press "Upload"
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"
@@ -128,10 +128,10 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Boosted sites"
-    And I attach the file at "features/support/boosted_sites.xml" to "xmlfile"
+    And I attach the file "features/support/boosted_sites.xml" to "xmlfile"
     And I press "Upload"
     And I follow "Boosted sites"
-    And I attach the file at "features/support/invalid_boosted_sites.xml" to "xmlfile"
+    And I attach the file "features/support/invalid_boosted_sites.xml" to "xmlfile"
     And I press "Upload"
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"

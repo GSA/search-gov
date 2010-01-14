@@ -40,6 +40,7 @@ rake sunspot:solr:reindex
 You should be able to get all the rest of the gems needed for this project like this:
 sudo rake gems:install
 sudo rake gems:install RAILS_ENV=test
+sudo rake gems:install RAILS_ENV=cucumber
 
 = Database
 The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.0.85), accessible from user 'root' with no password.

@@ -29,14 +29,9 @@ module NavigationHelpers
     when /the affiliate welcome page/
       affiliates_path
 
-    # Add more mappings here.
-    # Here is a more fancy example:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
-
     else
-      raise "Can't find mapping from \"#{page_name}\" to a path in #{__FILE__}"
+      raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+        "Now, go and add a mapping in #{__FILE__}"
     end
   end
 end
