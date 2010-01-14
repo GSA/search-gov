@@ -7,14 +7,37 @@ ruby 1.8.7 (2009-06-12 patchlevel 174) [i686-darwin10]
 lappy:usasearch loren$ which ruby
 /opt/local/bin/ruby
 
-You will need to install rubygems 1.3.5 or later:
+You will need to install rubygems 1.3.5 or later and set up your gem sources:
 lappy:usasearch loren$ gem -v
 1.3.5
 lappy:usasearch loren$ which gem
 /opt/local/bin/gem
+lappy:usasearch loren$ more ~/.gemrc
+---
+gem: --no-ri --no-rdoc
+:benchmark: false
+:backtrace: false
+:update_sources: true
+:verbose: true
+:bulk_threshold: 1000
+:sources:
+- http://gems.github.com
+- http://gems.rubyforge.org/
+- http://gemcutter.org
+
+= Solr
+We're using Solr for fulltext search. You might need to install these gems separately due to a Catch-22 with
+the Rake gem installer.
+sudo gem install sunspot sunspot_rails
+
+You can start/stop/reindex Solr like this:
+rake sunspot:solr:start
+rake sunspot:solr:stop
+rake sunspot:solr:run
+rake sunspot:solr:reindex
 
 = Gems
-You should be able to get all the gems needed for this project like this:
+You should be able to get all the rest of the gems needed for this project like this:
 sudo rake gems:install
 sudo rake gems:install RAILS_ENV=test
 
@@ -30,7 +53,8 @@ rake db:test:prepare
 Make sure the unit tests and functional tests run:
 rake spec
 
-Make sure the integration tests run
+Make sure the integration tests run. These require a Solr server to be spun up.
+rake sunspot:solr:start RAILS_ENV=test
 script/cucumber
 
 = Code Coverage
@@ -79,8 +103,5 @@ git push
 9) Mark story as "Finished" on Tracker. This means you are done testing/coding.
 10) Deploy to demo
 cap deploy
-
-If you have migrations, then do this instead:
-cap deploy:migrations
 11) Mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment
 12) Goto Step 1
