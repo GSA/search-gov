@@ -10,6 +10,22 @@ describe Search do
   end
 
   describe "#run" do
+    context "when JSON cannot be parsed for some reason" do
+      before do
+        JSON.should_receive(:parse).once.and_raise(JSON::ParserError)
+        @search = Search.new(@valid_options)
+      end
+
+      it "should return false when searching" do
+        @search.run.should be_false
+      end
+
+      it "should log a warning" do
+        RAILS_DEFAULT_LOGGER.should_receive(:warn)
+        @search.run
+      end
+    end
+
     context "when non-English locale is specified" do
       before do
         I18n.locale = :es

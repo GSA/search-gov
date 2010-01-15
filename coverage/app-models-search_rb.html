@@ -423,19 +423,19 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line62">62</a>     rescue SocketError, Errno::ECONNREFUSED =&gt; e</pre></td>
+            <td><pre><a name="line62">62</a>     rescue SocketError, Errno::ECONNREFUSED, JSON::ParserError =&gt; e</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>       RAILS_DEFAULT_LOGGER.warn &quot;Error connecting to server: #{e}&quot;</pre></td>
+            <td><pre><a name="line63">63</a>       RAILS_DEFAULT_LOGGER.warn &quot;Error getting search results from Bing server: #{e}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a>       false</pre></td>
+            <td><pre><a name="line64">64</a>       return false</pre></td>
           </tr>
         
           
@@ -687,7 +687,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Wed Jan 13 08:07:38 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Fri Jan 15 14:02:23 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

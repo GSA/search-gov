@@ -59,9 +59,9 @@ class Search
       if num_images > 0
         self.images = response.image.results
       end
-    rescue SocketError, Errno::ECONNREFUSED => e
-      RAILS_DEFAULT_LOGGER.warn "Error connecting to server: #{e}"
-      false
+    rescue SocketError, Errno::ECONNREFUSED, JSON::ParserError => e
+      RAILS_DEFAULT_LOGGER.warn "Error getting search results from Bing server: #{e}"
+      return false
     end
     self.boosted_sites = BoostedSite.search_for(self.affiliate, cleaned_query) unless self.affiliate.nil?
     true
