@@ -14,9 +14,20 @@ describe SearchesController do
       lambda {get :auto_complete_for_search_query, :query=>"foo's"}.should_not raise_error
     end
 
+    context "when suggestions contain apostrophes" do
+      before do
+        DailyQueryStat.create(:query=>"oba'ma",:times=>1, :day=>Date.today)
+      end
+
+      it "should handle highlighting apostrophe in suggestions" do
+        get :auto_complete_for_search_query, :query=>"oba'"
+        response.body.should == "<ul><li><strong class=\"highlight\">oba'</strong>ma</li></ul>"
+      end
+    end
+
     it "should return empty result if no search param present" do
       get :auto_complete_for_search_query
-      response.body.should be_blank      
+      response.body.should be_blank
     end
 
     it "should filter block words from suggestions" do

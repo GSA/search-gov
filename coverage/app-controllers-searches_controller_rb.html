@@ -171,7 +171,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>     render :inline =&gt; &quot;&lt;%= auto_complete_result(@auto_complete_options, 'query', '#{sanitized_query.gsub(&quot;'&quot;, &quot;&amp;quot;&quot;)}') %&gt;&quot;</pre></td>
+            <td><pre><a name="line20">20</a>     render :inline =&gt; &quot;&lt;%= auto_complete_result(@auto_complete_options, 'query', '#{sanitized_query.gsub(&quot;'&quot;, &quot;\\\\'&quot;)}') %&gt;&quot;</pre></td>
           </tr>
         
           
@@ -291,7 +291,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Fri Jan 15 14:02:23 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Fri Jan 15 15:05:19 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
