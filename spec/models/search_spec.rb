@@ -1,7 +1,6 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe Search do
-  common_search = "http://api.search.live.net/json.aspx?web.offset=30&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Web+RelatedSearch+Image&Options=EnableHighlighting&query=government%20"
   fixtures :affiliates
 
   before do
@@ -34,7 +33,7 @@ describe Search do
       it "should pass a language filter to Bing" do
         uriresult = URI::parse("http://127.0.0.1:64000/noop")
         search = Search.new(@valid_options)
-        URI.should_receive(:parse).with("#{common_search}(site:gov%20OR%20site:mil)%20language:es").and_return(uriresult)
+        URI.should_receive(:parse).with(/%20language:es/).and_return(uriresult)
         search.run
       end
 
@@ -43,30 +42,40 @@ describe Search do
       end
     end
 
-    context "when affiliate has domains specified" do
-      it "should use domains in query to Bing" do
+    context "when affiliate has domains specified and user does not specify site: in search" do
+      it "should use affiliate domains in query to Bing without passing ScopeID" do
         affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
         uriresult = URI::parse("http://127.0.0.1:64000/noop")
         search = Search.new(@valid_options.merge(:affiliate => affiliate))
-        URI.should_receive(:parse).with("#{common_search}(site:foo.com%20OR%20site:bar.com)").and_return(uriresult)
+        URI.should_receive(:parse).with(/query=government%20\(site:foo\.com%20OR%20site:bar\.com\)$/).and_return(uriresult)
+        search.run
+      end
+    end
+
+    context "when affiliate has domains specified but user specifies site: in search" do
+      it "should override affiliate domains in query to Bing and use ScopeID" do
+        affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
+        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        search = Search.new(@valid_options.merge(:affiliate => affiliate, :query=>"government site:blat.gov"))
+        URI.should_receive(:parse).with(/query=government%20site:blat\.gov%20scopeid:usagovall$/).and_return(uriresult)
         search.run
       end
     end
 
     context "when affiliate has no domains specified" do
-      it "should use just query string and mil&gov domain filters" do
+      it "should use just query string and ScopeID" do
         uriresult = URI::parse("http://127.0.0.1:64000/noop")
         search = Search.new(@valid_options.merge(:affiliate => Affiliate.new))
-        URI.should_receive(:parse).with("#{common_search}(site:gov%20OR%20site:mil)").and_return(uriresult)
+        URI.should_receive(:parse).with(/query=government%20scopeid:usagovall$/).and_return(uriresult)
         search.run
       end
     end
 
     context "when affiliate is nil" do
-      it "should use just query string and mil&gov domain filters" do
+      it "should use just query string and ScopeID" do
         uriresult = URI::parse("http://127.0.0.1:64000/noop")
         search = Search.new(@valid_options.merge(:affiliate => nil))
-        URI.should_receive(:parse).with("#{common_search}(site:gov%20OR%20site:mil)").and_return(uriresult)
+        URI.should_receive(:parse).with(/query=government%20scopeid:usagovall$/).and_return(uriresult)
         search.run
       end
     end
@@ -75,7 +84,7 @@ describe Search do
       it "should specify the offset in the query to Bing" do
         uriresult = URI::parse("http://127.0.0.1:64000/noop")
         search = Search.new(@valid_options.merge(:page => 7))
-        URI.should_receive(:parse).with("#{common_search.sub("offset=30", "offset=70")}(site:gov%20OR%20site:mil)").and_return(uriresult)
+        URI.should_receive(:parse).with(/web\.offset=70/).and_return(uriresult)
         search.run
       end
     end
@@ -98,11 +107,6 @@ describe Search do
         @search.related_search.size.should > 0
         @search.related_search.first.title.should_not be_nil
         @search.related_search.first.url.should_not be_nil
-      end
-
-      it "should have an array of images" do
-        @search.images.should_not be_empty
-        @search.images.first.thumbnail.should_not be_nil
       end
 
     end
