@@ -49,7 +49,9 @@ class LogFile < ActiveRecord::Base
       url = parsed_log["url"][0]
       if !url.nil?
         serp_position = parsed_log["rrank"][0].to_i
-        property_used = nil
+        source = parsed_log["rsource"][0]
+        project = parsed_log["v:project"][0]
+        affiliate = parsed_log["affiliate"][0].blank? ? "usasearch.gov" : parsed_log["affiliate"][0] 
         referrer = log.referer
         if referrer
           referrer_query_string = referrer.split('?')[1]
@@ -58,7 +60,7 @@ class LogFile < ActiveRecord::Base
             query = parsed_referrer['query'][0]
           end
         end
-        Click.create!(:query => query, :queried_at => queried_at, :url => url, :serp_position => serp_position, :property_used => property_used)
+        Click.create!(:query => query, :queried_at => queried_at, :url => url, :serp_position => serp_position, :source => source, :project => project, :affiliate => affiliate)
       end
     end
   end

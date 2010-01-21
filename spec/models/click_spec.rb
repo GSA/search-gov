@@ -5,8 +5,10 @@ describe Click do
       :query => "barack obama",
       :queried_at => Time.now,
       :url => 'http://www.whitehouse.gov/',
-      :serp_position => 1,
-      :property_used => nil
+      :serp_position => 0,
+      :source => 'firstgov',
+      :project => 'firstgov-autos',
+      :affiliate => 'usasearch.gov'
     }
   end
 

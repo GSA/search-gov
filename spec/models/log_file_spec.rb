@@ -279,7 +279,7 @@ EOF
     end
   end
 
-  describe "#parse_line_for_clicks(log_entry)" do
+  describe "#parse_line_for_click(log_entry)" do
     context "when log entry is well-formed" do
       before do
         @log_entry = <<'EOF'
@@ -293,7 +293,9 @@ EOF
                                             :queried_at => @timestamp_utc,
                                             :url => 'http://www.cdc.gov/OralHealth/publications/factsheets/amalgam.htm',
                                             :serp_position => 0,
-                                            :property_used => nil)
+                                            :source => 'firstgov-msn',
+                                            :project => 'firstgov',
+                                            :affiliate => 'usasearch.gov')
         LogFile.parse_line_for_click(@log_entry)
       end
     end
@@ -311,10 +313,12 @@ EOF
                                              :queried_at => @timestamp_utc,
                                              :url => 'http://www.cdc.gov/OralHealth/publications/factsheets/amalgam.htm',
                                              :serp_position => 0,
-                                             :property_used => nil)
-         LogFile.parse_line_for_click(@log_entry)
-       end
-     end
-     
+                                             :source => 'firstgov-msn',
+                                             :project => 'firstgov',
+                                             :affiliate => 'usasearch.gov')
+        LogFile.parse_line_for_click(@log_entry)
+      end
+    end
+        
   end
 end

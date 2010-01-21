@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100120201026) do
+ActiveRecord::Schema.define(:version => 20100121191454) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -60,9 +60,11 @@ ActiveRecord::Schema.define(:version => 20100120201026) do
     t.datetime "queried_at"
     t.string   "url"
     t.integer  "serp_position"
-    t.string   "property_used"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "source"
+    t.string   "affiliate"
+    t.string   "project"
   end
 
   create_table "daily_query_ip_stats", :force => true do |t|
