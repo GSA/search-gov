@@ -4,6 +4,6 @@ class BlockWord < ActiveRecord::Base
 
   def self.filter(results, key)
     block_words = all
-    results.reject { |rs| block_words.detect { |bw| rs[key] =~ /#{bw.word}\b/i } } unless results.nil?
+    results.reject { |rs| block_words.detect { |bw| rs[key].gsub(/<\/?[^>]*>/, '') =~ /#{bw.word}\b/i } } unless results.nil?
   end
 end
