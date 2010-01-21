@@ -27,4 +27,39 @@ class LogFile < ActiveRecord::Base
     noquery = parsed_log["noquery"][0]
     Query.create!(:query => query.strip, :affiliate => affiliate, :ipaddr => ipaddr, :timestamp => datetime) if noquery.nil?
   end
+
+  def self.process_clicks(filepath)
+    RAILS_DEFAULT_LOGGER.info("Processing file for clicks: #{filepath}")
+    File.open(filepath) do |file|
+      failures = []
+      while log_entry = file.gets
+        parse_line_for_click(log_entry) rescue failures << log_entry
+      end
+      RAILS_DEFAULT_LOGGER.warn("File #{filepath} has #{failures.size} errors: #{failures.inspect}") if failures.size > 0
+    end
+  end
+  
+  def self.parse_line_for_click(log_entry)
+    log = Apache::Log::Combined.parse log_entry
+    queried_at = log.time
+    ip_address = log.remote_ip
+    if log.path.include?('?')
+      query_string = log.path.split('?')[1]
+      parsed_log = CGI.parse(query_string)
+      url = parsed_log["url"][0]
+      if !url.nil?
+        serp_position = parsed_log["rrank"][0].to_i
+        property_used = nil
+        referrer = log.referer
+        if referrer
+          referrer_query_string = referrer.split('?')[1]
+          if referrer_query_string
+            parsed_referrer = CGI.parse(referrer_query_string)
+            query = parsed_referrer['query'][0]
+          end
+        end
+        Click.create!(:query => query, :queried_at => queried_at, :url => url, :serp_position => serp_position, :property_used => property_used)
+      end
+    end
+  end
 end

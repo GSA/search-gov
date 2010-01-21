@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100105214058) do
+ActiveRecord::Schema.define(:version => 20100120201026) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(:version => 20100105214058) do
   end
 
   add_index "boosted_sites", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"
+
+  create_table "clicks", :force => true do |t|
+    t.string   "query"
+    t.datetime "queried_at"
+    t.string   "url"
+    t.integer  "serp_position"
+    t.string   "property_used"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "daily_query_ip_stats", :force => true do |t|
     t.date    "day",                   :null => false
@@ -108,10 +118,10 @@ ActiveRecord::Schema.define(:version => 20100105214058) do
   add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
 
   create_table "queries", :id => false, :force => true do |t|
-    t.string    "ipaddr",    :limit => 17
-    t.string    "query",     :limit => 100
-    t.string    "affiliate", :limit => 32
-    t.timestamp "timestamp",                :null => false
+    t.string   "ipaddr",    :limit => 17
+    t.string   "query",     :limit => 100
+    t.string   "affiliate", :limit => 32
+    t.datetime "timestamp",                :null => false
   end
 
   add_index "queries", ["query"], :name => "queryindex"
