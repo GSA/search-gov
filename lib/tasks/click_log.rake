@@ -7,6 +7,11 @@ namespace :usasearch do
       Dir.glob("#{args.log_dir_name}/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-*.log") do |file|
         LogFile.process_clicks(file)
       end
+    end
+    
+    desc "Clean the clicks table"
+    task :clean, :needs => :environment do |t, args|
+      Click.delete_all
     end  
   end
 end

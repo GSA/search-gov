@@ -283,7 +283,7 @@ EOF
     context "when log entry is well-formed" do
       before do
         @log_entry = <<'EOF'
-            98.233.40.157 - - [15/Jan/2010:12:25:46 -0500] "GET /search?v%3aproject=firstgov&v%3afile=viv_1148%4026%3aPbExcn&v%3astate=root%7croot&opener=full-window&url=http%3a%2f%2fwww.cdc.gov%2fOralHealth%2fpublications%2ffactsheets%2famalgam.htm&rid=Ndoc6&v%3aframe=redirect&rsource=firstgov-msn&v%3astate=%28root%29%7croot&rrank=0&h=f53cb84476a16a540e4d31f7fff81444& HTTP/1.1" 302 269 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Asources=firstgov-search-select&v%3Aproject=firstgov&query=amalgam&x=0&y=0" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_2; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.49 Safari/532.5" cf26.clusty.com usasearch.gov
+            98.233.40.157 - - [15/Jan/2010:12:25:46 -0500] "GET /search?v%3aproject=firstgov&v%3afile=viv_1148%4026%3aPbExcn&v%3astate=root%7croot&opener=full-window&url=http%3a%2f%2fwww.cdc.com%2fOralHealth%2fpublications%2ffactsheets%2famalgam.htm&rid=Ndoc6&v%3aframe=redirect&rsource=firstgov-msn&v%3astate=%28root%29%7croot&rrank=0&h=f53cb84476a16a540e4d31f7fff81444& HTTP/1.1" 302 269 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Asources=firstgov-search-select&v%3Aproject=firstgov&query=amalgam&x=0&y=0" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_2; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.49 Safari/532.5" cf26.clusty.com usasearch.gov
 EOF
         @timestamp_utc = Time.parse("15/Jan/2010 12:25:46 -0500").utc
       end
@@ -291,11 +291,13 @@ EOF
       it "should create a Click record with the necessary parameters" do
         Click.should_receive(:create!).with(:query=> "amalgam",
                                             :queried_at => @timestamp_utc,
-                                            :url => 'http://www.cdc.gov/OralHealth/publications/factsheets/amalgam.htm',
+                                            :url => 'http://www.cdc.com/OralHealth/publications/factsheets/amalgam.htm',
                                             :serp_position => 0,
                                             :source => 'firstgov-msn',
                                             :project => 'firstgov',
-                                            :affiliate => 'usasearch.gov')
+                                            :affiliate => 'usasearch.gov',
+                                            :host => 'www.cdc.com',
+                                            :tld => 'com')
         LogFile.parse_line_for_click(@log_entry)
       end
     end
@@ -303,7 +305,7 @@ EOF
     context "when affiliate is set" do
       before do
         @log_entry =<<'EOF'
-        98.233.40.157 - - [15/Jan/2010:12:25:46 -0500] "GET /search?v%3aproject=firstgov&v%3afile=viv_1148%4026%3aPbExcn&v%3astate=root%7croot&opener=full-window&url=http%3a%2f%2fwww.cdc.gov%2fOralHealth%2fpublications%2ffactsheets%2famalgam.htm&rid=Ndoc6&v%3aframe=redirect&rsource=firstgov-msn&v%3astate=%28root%29%7croot&rrank=0&h=f53cb84476a16a540e4d31f7fff81444&affiliate=test.affiliate.gov HTTP/1.1" 302 269 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Asources=firstgov-search-select&v%3Aproject=firstgov&query=amalgam&x=0&y=0" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_2; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.49 Safari/532.5" cf26.clusty.com usasearch.gov
+        98.233.40.157 - - [15/Jan/2010:12:25:46 -0500] "GET /search?v%3aproject=firstgov&v%3afile=viv_1148%4026%3aPbExcn&v%3astate=root%7croot&opener=full-window&url=http%3a%2f%2fwww.cdc.com%2fOralHealth%2fpublications%2ffactsheets%2famalgam.htm&rid=Ndoc6&v%3aframe=redirect&rsource=firstgov-msn&v%3astate=%28root%29%7croot&rrank=0&h=f53cb84476a16a540e4d31f7fff81444&affiliate=test.affiliate.gov HTTP/1.1" 302 269 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Asources=firstgov-search-select&v%3Aproject=firstgov&query=amalgam&x=0&y=0" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_2; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.49 Safari/532.5" cf26.clusty.com usasearch.gov
 EOF
         @timestamp_utc = Time.parse("15/Jan/2010 12:25:46 -0500").utc
       end
@@ -311,11 +313,13 @@ EOF
       it "should create a Click record with affiliate set to the affiliate value (test.affiliate.gov)" do
         Click.should_receive(:create!).with(:query=> "amalgam",
                                             :queried_at => @timestamp_utc,
-                                            :url => 'http://www.cdc.gov/OralHealth/publications/factsheets/amalgam.htm',
+                                            :url => 'http://www.cdc.com/OralHealth/publications/factsheets/amalgam.htm',
                                             :serp_position => 0,
                                             :source => 'firstgov-msn',
                                             :project => 'firstgov',
-                                            :affiliate => 'test.affiliate.gov')
+                                            :affiliate => 'test.affiliate.gov',
+                                            :host => 'www.cdc.com',
+                                            :tld => 'com')
         LogFile.parse_line_for_click(@log_entry)
       end
     end
@@ -323,7 +327,7 @@ EOF
     context "when referrer is blank" do
       before do
         @log_entry = <<'EOF'
-        98.233.40.157 - - [15/Jan/2010:12:25:46 -0500] "GET /search?v%3aproject=firstgov&v%3afile=viv_1148%4026%3aPbExcn&v%3astate=root%7croot&opener=full-window&url=http%3a%2f%2fwww.cdc.gov%2fOralHealth%2fpublications%2ffactsheets%2famalgam.htm&rid=Ndoc6&v%3aframe=redirect&rsource=firstgov-msn&v%3astate=%28root%29%7croot&rrank=0&h=f53cb84476a16a540e4d31f7fff81444& HTTP/1.1" 302 269 "-" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_2; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.49 Safari/532.5" cf26.clusty.com usasearch.gov
+        98.233.40.157 - - [15/Jan/2010:12:25:46 -0500] "GET /search?v%3aproject=firstgov&v%3afile=viv_1148%4026%3aPbExcn&v%3astate=root%7croot&opener=full-window&url=http%3a%2f%2fwww.cdc.com%2fOralHealth%2fpublications%2ffactsheets%2famalgam.htm&rid=Ndoc6&v%3aframe=redirect&rsource=firstgov-msn&v%3astate=%28root%29%7croot&rrank=0&h=f53cb84476a16a540e4d31f7fff81444& HTTP/1.1" 302 269 "-" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_2; en-US) AppleWebKit/532.5 (KHTML, like Gecko) Chrome/4.0.249.49 Safari/532.5" cf26.clusty.com usasearch.gov
 EOF
         @timestamp_utc = Time.parse("15/Jan/2010 12:25:46 -0500").utc
       end
@@ -331,14 +335,15 @@ EOF
       it "should create a Click record with a null query" do
          Click.should_receive(:create!).with(:query => nil,
                                              :queried_at => @timestamp_utc,
-                                             :url => 'http://www.cdc.gov/OralHealth/publications/factsheets/amalgam.htm',
+                                             :url => 'http://www.cdc.com/OralHealth/publications/factsheets/amalgam.htm',
                                              :serp_position => 0,
                                              :source => 'firstgov-msn',
                                              :project => 'firstgov',
-                                             :affiliate => 'usasearch.gov')
+                                             :affiliate => 'usasearch.gov',
+                                             :host => 'www.cdc.com',
+                                             :tld => 'com')
         LogFile.parse_line_for_click(@log_entry)
       end
     end
-        
   end
 end

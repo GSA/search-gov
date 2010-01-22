@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100121191454) do
+ActiveRecord::Schema.define(:version => 20100122190015) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -65,7 +65,11 @@ ActiveRecord::Schema.define(:version => 20100121191454) do
     t.string   "source"
     t.string   "affiliate"
     t.string   "project"
+    t.string   "host"
+    t.string   "tld"
   end
+
+  add_index "clicks", ["host"], :name => "index_clicks_on_host"
 
   create_table "daily_query_ip_stats", :force => true do |t|
     t.date    "day",                   :null => false
