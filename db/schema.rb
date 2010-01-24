@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100122191430) do
+ActiveRecord::Schema.define(:version => 20100124180513) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -62,14 +62,19 @@ ActiveRecord::Schema.define(:version => 20100122191430) do
     t.integer  "serp_position"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "source"
-    t.string   "affiliate"
-    t.string   "project"
-    t.string   "host"
-    t.string   "tld"
+    t.string   "source",        :limit => 100
+    t.string   "affiliate",     :limit => 50
+    t.string   "project",       :limit => 50
+    t.string   "host",          :limit => 100
+    t.string   "tld",           :limit => 10
   end
 
+  add_index "clicks", ["affiliate"], :name => "index_clicks_on_affiliate"
   add_index "clicks", ["host"], :name => "index_clicks_on_host"
+  add_index "clicks", ["project"], :name => "index_clicks_on_project"
+  add_index "clicks", ["queried_at"], :name => "index_clicks_on_queried_at"
+  add_index "clicks", ["serp_position"], :name => "index_clicks_on_serp_position"
+  add_index "clicks", ["source"], :name => "index_clicks_on_source"
   add_index "clicks", ["tld"], :name => "index_clicks_on_tld"
 
   create_table "daily_query_ip_stats", :force => true do |t|
