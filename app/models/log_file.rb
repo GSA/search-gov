@@ -63,7 +63,9 @@ class LogFile < ActiveRecord::Base
               if referrer_query_string
                 parsed_referrer = CGI.parse(referrer_query_string)
                 query = parsed_referrer['query'][0]
-                affiliate = parsed_referrer["affiliate"][0].blank? ? "usasearch.gov" : parsed_referrer["affiliate"][0]
+                if affiliate.blank? || affiliate == 'usasearch.gov'
+                  affiliate = parsed_referrer["affiliate"][0].blank? ? "usasearch.gov" : parsed_referrer["affiliate"][0]
+                end
               end
             end
             Click.create!(:query => query, :queried_at => queried_at, :url => url, :serp_position => serp_position, :source => source, :project => project, :affiliate => affiliate, :host => host, :tld => tld)
