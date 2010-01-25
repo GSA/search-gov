@@ -31,7 +31,7 @@ describe Search do
       end
 
       it "should pass a language filter to Bing" do
-        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options)
         URI.should_receive(:parse).with(/%20language:es/).and_return(uriresult)
         search.run
@@ -45,7 +45,7 @@ describe Search do
     context "when affiliate has domains specified and user does not specify site: in search" do
       it "should use affiliate domains in query to Bing without passing ScopeID" do
         affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
-        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => affiliate))
         URI.should_receive(:parse).with(/query=government%20\(site:foo\.com%20OR%20site:bar\.com\)$/).and_return(uriresult)
         search.run
@@ -55,7 +55,7 @@ describe Search do
     context "when affiliate has domains specified but user specifies site: in search" do
       it "should override affiliate domains in query to Bing and use ScopeID" do
         affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
-        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => affiliate, :query=>"government site:blat.gov"))
         URI.should_receive(:parse).with(/query=government%20site:blat\.gov%20scopeid:usagovall$/).and_return(uriresult)
         search.run
@@ -64,7 +64,7 @@ describe Search do
 
     context "when affiliate has no domains specified" do
       it "should use just query string and ScopeID" do
-        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => Affiliate.new))
         URI.should_receive(:parse).with(/query=government%20scopeid:usagovall$/).and_return(uriresult)
         search.run
@@ -73,7 +73,7 @@ describe Search do
 
     context "when affiliate is nil" do
       it "should use just query string and ScopeID" do
-        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => nil))
         URI.should_receive(:parse).with(/query=government%20scopeid:usagovall$/).and_return(uriresult)
         search.run
@@ -82,7 +82,7 @@ describe Search do
 
     context "when page offset is specified" do
       it "should specify the offset in the query to Bing" do
-        uriresult = URI::parse("http://127.0.0.1:64000/noop")
+        uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:page => 7))
         URI.should_receive(:parse).with(/web\.offset=70/).and_return(uriresult)
         search.run
