@@ -57,7 +57,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:results).and_return @search_results
       @search.stub!(:boosted_sites).and_return nil
     end
-
+    
     context "when there are fewer than five results" do
       before do
         4.times { @search_results << @search_result }
