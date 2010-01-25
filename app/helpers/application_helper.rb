@@ -51,7 +51,7 @@ module ApplicationHelper
   end
   
   def render_webtrends_code
-    if params[:locale] == 'es'
+    if I18n.locale == ':es'
       render :partial => 'shared/webtrends_spanish'
     else
       render :partial => 'shared/webtrends_english'
