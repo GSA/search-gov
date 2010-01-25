@@ -49,7 +49,15 @@ module ApplicationHelper
   def footer_links
     iterate_links(FOOTER_LINKS[I18n.locale.to_sym])
   end
-
+  
+  def render_webtrends_code
+    if params[:locale] == 'es'
+      render :partial => 'shared/webtrends_spanish'
+    else
+      render :partial => 'shared/webtrends_english'
+    end
+  end
+  
   def basic_header_navigation_for(cur_user)
     elements = []
     if cur_user
