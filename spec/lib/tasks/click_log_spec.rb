@@ -48,5 +48,29 @@ describe "click_log rake tasks" do
         end
       end
     end
+
+    describe "usasearch:click_log:clean" do
+      before do
+        Click.create!(:query => "barack obama",
+                      :queried_at => Time.now,
+                      :url => 'http://www.whitehouse.gov/',
+                      :serp_position => 0,
+                      :source => 'firstgov',
+                      :project => 'firstgov-autos',
+                      :affiliate => 'usasearch.gov' )
+        @task_name = "usasearch:click_log:clean"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      it "should remove all clicks from database" do
+        Click.count.should > 0
+        @rake[@task_name].invoke
+        Click.count.should be_zero
+      end
+
+    end
   end
 end
