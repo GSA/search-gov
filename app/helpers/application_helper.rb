@@ -49,7 +49,7 @@ module ApplicationHelper
   def footer_links
     iterate_links(FOOTER_LINKS[I18n.locale.to_sym])
   end
-  
+
   def render_webtrends_code
     if params[:locale] == 'es'
       render :partial => 'shared/webtrends_spanish'
@@ -57,16 +57,19 @@ module ApplicationHelper
       render :partial => 'shared/webtrends_english'
     end
   end
-  
+
   def basic_header_navigation_for(cur_user)
     elements = []
     if cur_user
       elements << cur_user.email
       elements << link_to("My Account", account_path)
       elements << link_to("Logout", user_session_path, :method => :delete)
-      elements << link_to("FAQ", affiliates_path) if cur_user.is_affiliate?
       elements << link_to("Users", admin_users_path) if cur_user.is_affiliate_admin?
+    else
+      elements << link_to("Login", new_user_session_path)
+      elements << link_to("Register", new_account_path)      
     end
+    elements << link_to("FAQ", faq_affiliates_path)
     elements << link_to("USAsearch.gov", home_page_path)
     elements.join(" | ")
   end
@@ -97,7 +100,7 @@ module ApplicationHelper
   end
 
   def highlight_hit(hit, sym)
-    return hit.highlights(sym).first.format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlights(sym).first.nil?  
+    return hit.highlights(sym).first.format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlights(sym).first.nil?
     hit.instance.send(sym)
   end
 

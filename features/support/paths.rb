@@ -26,6 +26,8 @@ module NavigationHelpers
       password_resets_path
     when /the user account page/
       account_path
+    when /the new user page/
+      new_account_path
     when /the affiliate welcome page/
       affiliates_path
 

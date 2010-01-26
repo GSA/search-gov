@@ -1,7 +1,10 @@
 class AffiliatesController < AffiliateAuthController
-  before_filter :require_affiliate, :except=> [:index]
+  before_filter :require_affiliate, :except=> [:index, :faq]
 
   def index
+  end
+
+  def faq
   end
 
   def edit

@@ -6,6 +6,13 @@ affiliate_admin:
   is_affiliate_admin: true
   is_affiliate: false
   contact_name: Affiliate Administrator
+  phone: 301-123-4567
+  address: 123 Penn Ave
+  address2: Ste 100
+  city: Reston
+  state: VA
+  zip: 20022
+  organization_name: Agency
 
 non_affiliate_admin:
   email: non_affiliate_admin@fixtures.org
@@ -15,6 +22,13 @@ non_affiliate_admin:
   is_affiliate_admin: false
   is_affiliate: false
   contact_name: Not An Affiliate
+  phone: 301-123-4567
+  address: 123 Penn Ave
+  address2: Ste 100
+  city: Reston
+  state: VA
+  zip: 20022
+  organization_name: Agency
 
 affiliate_manager:
   email: affiliate_manager@fixtures.org
@@ -24,6 +38,13 @@ affiliate_manager:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Affiliate Manager
+  phone: 301-123-4567
+  address: 123 Penn Ave
+  address2: Ste 100
+  city: Reston
+  state: VA
+  zip: 20022
+  organization_name: Agency
 
 another_affiliate_manager:
   email: another_affiliate_manager@fixtures.org
@@ -33,6 +54,13 @@ another_affiliate_manager:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: Another Manager
+  phone: 301-123-4567
+  address: 123 Penn Ave
+  address2: Ste 100
+  city: Reston
+  state: VA
+  zip: 20022
+  organization_name: Agency
 
 analyst:
   email: analyst@fixtures.org
@@ -41,3 +69,10 @@ analyst:
   persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
   is_analyst: true
   contact_name: Some Analyst
+  phone: 301-123-4567
+  address: 123 Penn Ave
+  address2: Ste 100
+  city: Reston
+  state: VA
+  zip: 20022
+  organization_name: Agency

@@ -9,6 +9,20 @@
     %dd= h @user.contact_name
     %dt Time Zone:
     %dd= h @user.time_zone
+    %dt Organization Name:
+    %dd= h @user.organization_name
+    %dt Address:
+    %dd= h @user.address
+    %dt Address Line 2:
+    %dd= h @user.address2
+    %dt City:
+    %dd= h @user.city
+    %dt State:
+    %dd= h @user.state
+    %dt Zip:
+    %dd= h @user.zip
+    %dt Phone:
+    %dd= h @user.phone
 - if @user.is_affiliate? and !@user.affiliates.empty?
   .span-16.contentcard
     %h2 Affiliates

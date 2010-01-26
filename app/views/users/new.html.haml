@@ -1,0 +1,7 @@
+.span-15
+  - form_for @user, :url => account_path, :html => {:class=>"bordered"} do |f|
+    %h1
+      Sign up #{link_to "(log in)", new_user_session_path, :class => "small"}
+    = f.error_messages(:header_message => nil, :class => "error")
+    = render :partial => "form", :object => f
+    = f.submit "Register"

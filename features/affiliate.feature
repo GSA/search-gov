@@ -5,7 +5,10 @@ Feature: Affiliate clients
 
   Scenario: Visiting the affiliate welcome/list page as a un-authenticated Affiliate
     When I go to the affiliate welcome page
-    Then I should see "FAQs"
+    Then I should see "What it is"
+    And I should see "How it works"
+    When I follow "Register now"
+    Then I should see "Sign up"
 
   Scenario: Visiting the account page as a logged-in affiliate
     Given the following Affiliates exist:

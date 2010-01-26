@@ -1,7 +1,7 @@
 .span-15
   - form_for @user_session, :url => user_session_path, :html => {:class=>"bordered"}  do |f|
     %h1
-      Login
+      Login #{link_to "(register)", new_user_path, :class => "small"}
     = f.error_messages(:header_message => nil, :class => "error")
     %dl
       %dt
