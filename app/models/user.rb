@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /\.gov$/i, :message => "must end in '.gov'", :on => :create
   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
   has_many :affiliates
+  after_create :ping_admin
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
@@ -25,6 +26,11 @@ class User < ActiveRecord::Base
 
   def to_label
     contact_name
+  end
+
+  private
+  def ping_admin
+    Emailer.deliver_new_user_to_admin(self)
   end
 
 end

@@ -41,12 +41,24 @@ describe User do
       u.valid?.should be_false
     end
 
+    it "should send the admins a notification email about the new user" do
+      Emailer.should_receive(:deliver_new_user_to_admin).with(an_instance_of(User))
+      User.create!(@valid_attributes)
+    end
+
   end
 
-  describe "when saving/updating" do
+  context "when saving/updating" do
     it { should allow_mass_assignment_of(:crypted_password, :email) }
     it { should_not allow_mass_assignment_of(:is_affiliate_admin) }
     it { should_not allow_mass_assignment_of(:is_affiliate) }
     it { should_not allow_mass_assignment_of(:is_analyst) }
+  end
+
+  describe "#to_label" do
+    it "should return the user's contact name" do
+      u = users(:affiliate_admin)
+      u.to_label.should == u.contact_name
+    end
   end
 end

@@ -14,4 +14,11 @@ describe GroupedQuery do
   it "should create a new instance given valid attributes" do
     GroupedQuery.create!(@valid_attributes)
   end
+
+  describe "#to_label" do
+    it "should return the query for the grouped query" do
+      gq = grouped_queries(:query1)
+      gq.to_label.should == gq.query
+    end
+  end
 end
