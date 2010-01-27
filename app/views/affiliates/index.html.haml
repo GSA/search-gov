@@ -10,5 +10,11 @@
     %li Configure your search affiliate domains (e.g., "your-agency.gov", "news.your-agency.gov")
     %li Add the USA.gov search box to your sites
 %hr
-%center
-  %h1= link_to("Register now", new_user_path, :title => "Register")
+.prepend-1.span-23.last
+  %h2 Is USA.gov Search a solution for you?
+  %ul
+    %li Want a vetted search solution that you can customize with your own look and feel?
+    %li Need editorial control to display your own results more prominently?
+    %li Looking for analytics on what your visitors are searching for?
+.prepend-10.last
+  %h1= link_to(image_tag('register_now.png', :alt=>"Register Now"), new_user_path, :title => "Register Now")

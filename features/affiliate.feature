@@ -10,7 +10,7 @@ Feature: Affiliate clients
     When I follow "Register now"
     Then I should see "Sign up"
 
-  Scenario: Visiting the account page as a logged-in affiliate
+  Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
     | name             | contact_email         | contact_name        |
     | multi1           | two@bar.gov           | Two Bar             |

@@ -1,3 +1,24 @@
+- if @user.is_affiliate?
+  .span-16.contentcard
+    %h2 Affiliates
+    -if @user.affiliates.empty?
+      %p.alt You currently have no affiliates. You will be able to add one soon.
+    -else
+      %table
+        - @user.affiliates.each do |affiliate|
+          %tr
+            %td= h affiliate.name
+            %td
+              = link_to "Edit", edit_affiliate_path(affiliate)
+              |
+              = link_to "View current", search_url(:affiliate=> affiliate.name, :query=>"gov")
+              - if affiliate.has_staged_content?
+                |
+                = link_to "View staged", search_url(:affiliate=> affiliate.name, :query=>"gov", :staged => 1)
+                |
+                = button_to "Push Changes", push_content_for_affiliate_path(affiliate)
+              |
+              = link_to "Boosted sites", new_affiliate_boosted_sites_upload_path(affiliate)
 .span-16.contentcard
   %h2
     Account Profile
@@ -23,21 +44,3 @@
     %dd= h @user.zip
     %dt Phone:
     %dd= h @user.phone
-- if @user.is_affiliate? and !@user.affiliates.empty?
-  .span-16.contentcard
-    %h2 Affiliates
-    %table
-      - @user.affiliates.each do |affiliate|
-        %tr
-          %td= h affiliate.name
-          %td
-            = link_to "Edit", edit_affiliate_path(affiliate)
-            |
-            = link_to "View current", search_url(:affiliate=> affiliate.name, :query=>"gov")
-            - if affiliate.has_staged_content?
-              |
-              = link_to "View staged", search_url(:affiliate=> affiliate.name, :query=>"gov", :staged => 1)
-              |
-              = button_to "Push Changes", push_content_for_affiliate_path(affiliate)
-            |
-            = link_to "Boosted sites", new_affiliate_boosted_sites_upload_path(affiliate)

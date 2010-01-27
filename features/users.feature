@@ -7,6 +7,13 @@ Feature: Users
     And I should see "Email"
     And I should see "Contact Name"
     And I should see "Time Zone"
+    And I should see "Phone"
+    And I should see "Organization Name"
+    And I should see "Address"
+    And I should see "Address Line 2"
+    And I should see "City"
+    And I should see "State"
+    And I should see "Zip"
 
   Scenario: Registering as a new affiliate user
     Given I am on the new user page
@@ -26,6 +33,7 @@ Feature: Users
     And I press "Register"
     Then I should be on the user account page
     And I should see "Thank you for registering for USA.gov Search Services"
+    And I should see "You currently have no affiliates"
 
   Scenario: Failing registration as a new affiliate user
     Given I am on the new user page
