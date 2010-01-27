@@ -21,6 +21,7 @@ Feature: Affiliate Administration
     | single           | one@foo.gov           | One Foo             |
     | multi1           | two@bar.gov           | Two Bar             |
     | multi2           | two@bar.gov           | Two Bar             |
+    And a clear email queue
     When I go to the affiliate admin broadcast page
     And I fill in "Subject" with "some title"
     And I fill in "Body" with "This is the email body"

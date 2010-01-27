@@ -46,6 +46,11 @@ describe User do
       User.create!(@valid_attributes)
     end
 
+    it "should send the user a welcome email" do
+      Emailer.should_receive(:deliver_welcome_to_new_user).with(an_instance_of(User))
+      User.create!(@valid_attributes)
+    end
+
   end
 
   context "when saving/updating" do

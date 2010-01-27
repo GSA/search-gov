@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
   has_many :affiliates
   after_create :ping_admin
+  after_create :welcome_user
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
@@ -31,6 +32,10 @@ class User < ActiveRecord::Base
   private
   def ping_admin
     Emailer.deliver_new_user_to_admin(self)
+  end
+
+  def welcome_user
+    Emailer.deliver_welcome_to_new_user(self)
   end
 
 end

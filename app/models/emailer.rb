@@ -14,6 +14,12 @@ class Emailer < ActionMailer::Base
     body(:user => user)
   end
 
+  def welcome_to_new_user(user)
+    setup_email(user.email)
+    @subject += "Welcome to USA Search Services"
+    body(:user => user)
+  end
+
   private
   def setup_email(recipients)
     @recipients = recipients
