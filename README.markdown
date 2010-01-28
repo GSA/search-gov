@@ -1,0 +1,147 @@
+# USASearch Info
+
+## Ruby
+
+You will need Ruby 1.8.7. Verify that your path points to the correct version of Ruby:
+
+    lappy:usasearch loren$ ruby -v
+    ruby 1.8.7 (2009-06-12 patchlevel 174) [i686-darwin10]
+    lappy:usasearch loren$ which ruby
+    /opt/local/bin/ruby
+
+You will need to install rubygems 1.3.5 or later and set up your gem sources:
+
+    lappy:usasearch loren$ gem -v
+    1.3.5
+    lappy:usasearch loren$ which gem
+    /opt/local/bin/gem
+    lappy:usasearch loren$ more ~/.gemrc
+    ---
+    gem: --no-ri --no-rdoc
+    :benchmark: false
+    :backtrace: false
+    :update_sources: true
+    :verbose: true
+    :bulk_threshold: 1000
+    :sources:
+    - http://gems.github.com
+    - http://gems.rubyforge.org/
+    - http://gemcutter.org
+
+## Solr
+
+We're using Solr for fulltext search. You might need to install these gems separately due to a Catch-22 with the Rake gem installer.
+
+    sudo gem install sunspot sunspot_rails
+
+You can start/stop/reindex Solr like this:
+
+    rake sunspot:solr:start
+    rake sunspot:solr:stop
+    rake sunspot:solr:run
+    rake sunspot:solr:reindex
+
+## Gems
+
+You should be able to get all the rest of the gems needed for this project like this:
+
+    sudo rake gems:install
+    sudo rake gems:install RAILS_ENV=test
+    sudo rake gems:install RAILS_ENV=cucumber
+
+# Database
+
+The database.yml file assumes you have a local database server up and running (preferably MySQL >= 5.0.85), accessible from user 'root' with no password.
+
+Create and setup your development and test databases:
+
+    rake db:create
+    rake db:create RAILS_ENV=test
+    rake db:schema:load
+    rake db:test:prepare
+
+# Tests
+
+Make sure the unit tests and functional tests run:
+
+    rake spec
+
+Make sure the integration tests run. These require a Solr server to be spun up.
+
+    rake sunspot:solr:start RAILS_ENV=test
+    script/cucumber
+
+# Code Coverage
+
+We track test coverage of the codebase over time, to help identify areas where we could write better tests and to see when poorly tested code got introduced.
+
+To show the coverage on the existing codebase, do this:
+
+    rake rcov:all
+
+Then to view the report, open `coverage/index.html` in your favorite browser.
+
+You can click around on the files that have < 100% coverage to see what lines weren't exercised.
+
+Make sure you commit any changes to the coverage directory back to git.
+
+# Analytics
+
+If you are looking at the analytics functionality, it helps to have some sample data in there. This will populate your
+development database with a month's worth of data for 100 query terms:
+
+    rake usasearch:create_dummy_analytics_data DAYS=30 WORDCOUNT=100
+
+# Running it
+
+Fire up a server and try it all out:
+
+    script/server
+
+Go to:
+
+* http://127.0.0.1:3000
+* http://127.0.0.1:3000/analytics
+* http://127.0.0.1:3000/admin/affiliates
+
+# Contributing Code
+
+1. Pick the next story off the top of the queue on Tracker and make sure you understand the intent behind it. Click the "Start" button so nobody else starts working on it.
+
+2. Make sure you have the latest code:
+
+        git pull
+
+3. Write acceptance tests in rspec and/or cucumber that will specify whether the feature is implemented properly or not.
+
+4. Write the minimal amount of code needed to make those tests pass
+
+5. Run regression tests to make sure all prior functionality still passes tests
+
+        rake spec
+        script/cucumber
+
+6. Check in code to your local git repo (use `git status` and `git add` until everything is staged):
+
+        git commit
+
+7. Push code up to the origin
+
+        git push
+
+8. Problems doing the push? Someone else may have checked in code since your last pull, so
+
+        git pull
+        rake spec
+        script/cucumber
+        git push
+
+9. Mark story as "Finished" on Tracker. This means you are done testing/coding.
+
+10. Deploy to demo
+
+        cap deploy
+
+11. Mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment
+
+12. Goto Step 1
