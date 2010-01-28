@@ -53,29 +53,29 @@ describe Search do
     end
 
     context "when affiliate has domains specified but user specifies site: in search" do
-      it "should override affiliate domains in query to Bing and use ScopeID" do
+      it "should override affiliate domains in query to Bing and use ScopeID/gov/mil combo" do
         affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => affiliate, :query=>"government site:blat.gov"))
-        URI.should_receive(:parse).with(/query=government%20site:blat\.gov%20scopeid:usagovall$/).and_return(uriresult)
+        URI.should_receive(:parse).with(/query=government%20site:blat\.gov%20\(scopeid:usagovall%20OR%20site:\.gov%20OR%20site:\.mil\)$/).and_return(uriresult)
         search.run
       end
     end
 
     context "when affiliate has no domains specified" do
-      it "should use just query string and ScopeID" do
+      it "should use just query string and ScopeID/gov/mil combo" do
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => Affiliate.new))
-        URI.should_receive(:parse).with(/query=government%20scopeid:usagovall$/).and_return(uriresult)
+        URI.should_receive(:parse).with(/query=government%20\(scopeid:usagovall%20OR%20site:\.gov%20OR%20site:\.mil\)$/).and_return(uriresult)
         search.run
       end
     end
 
     context "when affiliate is nil" do
-      it "should use just query string and ScopeID" do
+      it "should use just query string and ScopeID/gov/mil combo" do
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => nil))
-        URI.should_receive(:parse).with(/query=government%20scopeid:usagovall$/).and_return(uriresult)
+        URI.should_receive(:parse).with(/query=government%20\(scopeid:usagovall%20OR%20site:\.gov%20OR%20site:\.mil\)$/).and_return(uriresult)
         search.run
       end
     end

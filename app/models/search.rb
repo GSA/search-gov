@@ -18,18 +18,15 @@ class Search
     self.error_message = (I18n.translate :too_long) and return false if self.query.length > MAX_QUERYTERM_LENGTH
     self.error_message = (I18n.translate :empty_query) and return false if self.query.blank?
     offset = self.page > 0 ? self.page * DEFAULT_PER_PAGE : 0
-    sites_clause = ''
-    scopeid_clause = ''
     if self.affiliate && !self.affiliate.domains.blank? && !self.query.match(/site:/)
-      sites = self.affiliate.domains.split("\n")
-      sites_str = sites.collect {|site| "site:#{site}"}.join(" OR ")
-      sites_clause = "(#{sites_str})"
+      sites_str = self.affiliate.domains.split("\n").collect {|site| "site:#{site}"}.join(" OR ")
+      scope_clause = "(#{sites_str})"
     else
-      scopeid_clause="scopeid:usagovall"
+      scope_clause = "(scopeid:usagovall OR site:.gov OR site:.mil)"
     end
     language_clause = I18n.locale.to_s == "en" ? "" : "language:#{I18n.locale}"
     cleaned_query = self.query.strip
-    q = "#{cleaned_query} #{sites_clause} #{language_clause} #{scopeid_clause}".strip.squeeze(' ')
+    q = "#{cleaned_query} #{scope_clause} #{language_clause}".strip.squeeze(' ')
 
     begin
       uri = URI.parse("#{JSON_SITE}?web.offset=#{offset}&AppId=#{APP_ID}&sources=#{SOURCES}&Options=EnableHighlighting&query=#{URI.escape(q)}")
