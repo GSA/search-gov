@@ -36,7 +36,7 @@ class Search
       response = ResponseData.new(json['SearchResponse'])
 
       self.total = response.web.total rescue 0
-      self.spelling_suggestion = response.spell.results.first.value rescue nil
+      self.spelling_suggestion = response.spell.results.first.value.split(/ \(scopeid:usagovall/).first rescue nil
       pagination_total = [DEFAULT_PER_PAGE * 20, self.total ].min
       results_array= []
       if self.total > 0
