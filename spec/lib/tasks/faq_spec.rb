@@ -20,14 +20,13 @@ describe "faq rake tasks" do
         @rake[@task_name].prerequisites.should include("environment")
       end
       
-=begin
       context "when not given an xml file" do
         it "should print out an error message" do
           RAILS_DEFAULT_LOGGER.should_receive(:error)
           @rake[@task_name].invoke
         end
       end
-=end
+
       context "when given an xml file" do
         before do
           @tmp_dir = "/tmp/mydir"
