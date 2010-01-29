@@ -10,12 +10,16 @@ namespace :usasearch do
       else
         doc = REXML::Document.new(File.new(args.faq_file_name))
         Faq.delete_all
+        counter = 0
         doc.root.elements.each('Row') do |row|
-          items = row.elements.to_a('Item')
-          Faq.create(:url => items[0].text,
-                     :question => items[1].text,
-                     :answer => items[2].text,
-                     :ranking => items[3].text.to_i)
+          if counter > 0
+            items = row.elements.to_a('Item')
+            Faq.create(:url => items[0].text,
+                       :question => items[1].text,
+                       :answer => items[2].text,
+                       :ranking => items[3].text.to_i)
+          end
+          counter += 1
         end
       end
     end

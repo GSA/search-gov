@@ -34,12 +34,18 @@ describe "faq rake tasks" do
           @tmp_faq = <<'EOF'
           <?xml version="1.0" encoding="utf-8"?>
           <Report>
-            <Field>XML Content Feed</Field>
+          <Field>XML Content Feed</Field>
             <Row>
-              <Item>http://www.someurl.com/ananswer.html</Item>
-              <Item>Is this a question?</Item>
-              <Item>Yes, it is.</Item>
-              <Item>1234</Item>
+              <Item>Link to Content</Item>
+              <Item>Question</Item>
+              <Item>Answer</Item>
+              <Item>Aproximate Ranking</Item>
+            </Row>
+            <Row>
+              <Item>http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/std_adp.php?p_faqid=32</Item>
+              <Item>&lt;p&gt;Authenticating Documents: Status Request&lt;/p&gt;</Item>
+              <Item>&lt;p&gt;The authentication of documents by the &lt;rn:answer_xref answer_id="203" contents="Office of Authentications" /&gt;&amp;nbsp;at the &lt;rn:answer_xref answer_id="4391" contents="United States Department of State (DOS)" /&gt;&amp;nbsp;takes approximately&amp;nbsp;five busines</Item>
+              <Item>3248</Item>
             </Row>
           </Report>
 EOF
@@ -53,19 +59,27 @@ EOF
           @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
         end
         
-        it "should create a Faq entry for each 'Row' in the file" do
+        it "should create a Faq entry for each 'Row' in the file, except the first line" do
           Faq.should_receive(:create).exactly(1).times
           @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
         end
         
         it "should assign the proper values to the proper fields" do
-          Faq.should_receive(:create).with( :url => 'http://www.someurl.com/ananswer.html',
-                                            :question => 'Is this a question?',
-                                            :answer => 'Yes, it is.',
-                                            :ranking => 1234)
+          Faq.should_receive(:create).with( :url => 'http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/std_adp.php?p_faqid=32',
+                                            :question => '<p>Authenticating Documents: Status Request</p>',
+                                            :answer => '<p>The authentication of documents by the <rn:answer_xref answer_id="203" contents="Office of Authentications" />&nbsp;at the <rn:answer_xref answer_id="4391" contents="United States Department of State (DOS)" />&nbsp;takes approximately&nbsp;five busines',
+                                            :ranking => 3248)
           @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
         end
-
+        
+        it "should skip the first line" do
+          Faq.should_not_receive(:create).with(:url => 'Link to Content',
+                                               :question => 'Question',
+                                               :answer => 'Answer',
+                                               :ranking => 'Approximate Ranking')
+          @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
+        end
+        
         after do
           FileUtils.rm_r(@tmp_dir)
         end
