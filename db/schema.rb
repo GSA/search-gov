@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100126150542) do
+ActiveRecord::Schema.define(:version => 20100128125151) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -94,6 +94,15 @@ ActiveRecord::Schema.define(:version => 20100126150542) do
 
   add_index "daily_query_stats", ["day", "query"], :name => "index_daily_query_stats_on_day_and_query", :unique => true
   add_index "daily_query_stats", ["query", "day"], :name => "index_daily_query_stats_on_query_and_day"
+
+  create_table "faqs", :force => true do |t|
+    t.string   "url"
+    t.text     "question"
+    t.text     "answer"
+    t.integer  "ranking"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "grouped_queries", :force => true do |t|
     t.string   "query",      :null => false
