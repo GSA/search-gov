@@ -1,6 +1,6 @@
 .span-15
   - form_for @affiliate, :html => {:class=>"bordered"} do |f|
-    %h1 Edit Affiliate
+    %h1 New Affiliate
     = f.error_messages(:header_message => nil, :class => "error")
     = render :partial => "form", :object => f
-    = f.submit "Save for preview"
+    = f.submit "Create"

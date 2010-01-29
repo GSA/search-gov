@@ -1,8 +1,9 @@
 - if @user.is_affiliate?
   .span-16.contentcard
-    %h2 Affiliates
+    %h2 Affiliates #{link_to "(new)", new_affiliate_path, :class => "small"}
     -if @user.affiliates.empty?
-      %p.alt You currently have no affiliates. You will be able to add one soon.
+      %p.alt You currently have no affiliates.
+      %p= link_to "Add Affiliate", new_affiliate_path
     -else
       %table
         - @user.affiliates.each do |affiliate|
@@ -19,6 +20,9 @@
                 = button_to "Push Changes", push_content_for_affiliate_path(affiliate)
               |
               = link_to "Boosted sites", new_affiliate_boosted_sites_upload_path(affiliate)
+              |
+              = button_to "Delete Affiliate", affiliate_path(affiliate), :title => "Delete this affiliate", :confirm => "You are about to delete this affiliate. Are you sure?", :method => :delete
+
 .span-16.contentcard
   %h2
     Account Profile

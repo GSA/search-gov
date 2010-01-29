@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20100128125151) do
     t.text     "staged_header"
     t.text     "staged_footer"
     t.boolean  "has_staged_content", :default => false, :null => false
+    t.string   "website"
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true

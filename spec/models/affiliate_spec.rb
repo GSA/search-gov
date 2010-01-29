@@ -5,6 +5,8 @@ describe Affiliate do
   before(:each) do
     @valid_attributes = {
       :name => "someaffiliate.gov",
+      :domains => "someaffiliate.gov",
+      :website => "http://www.someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
       :footer => "<center>gasp</center>",
       :user => users(:affiliate_manager)

@@ -21,6 +21,42 @@ Feature: Affiliate clients
     And I should see "multi2"
     And I should see "FAQ"
 
+  Scenario: Adding a new affiliate
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the user account page
+    And I follow "Add Affiliate"
+    And I fill in the following:
+    | Name                  | agency.gov                 |
+    | Website               | www.agency.gov             |
+    | Domains               | agency.gov                 |
+    | Header                | My header                  |
+    | Footer                | My footer                  |
+    And I press "Create"
+    Then I should be on the user account page
+    And I should see "Affiliate successfully created"
+    And I should see "agency.gov"
+
+  Scenario: Adding an affiliate with problems
+    Given the following Affiliates exist:
+    | name             | contact_email         | contact_name        |
+    | aff.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the user account page
+    And I follow "new"
+    And I fill in "name" with "aff.gov"
+    And I press "Create"
+    Then I should see "Name has already been taken"    
+
+  Scenario: Deleting an affiliate
+    Given the following Affiliates exist:
+    | name             | contact_email         | contact_name        |
+    | aff.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the user account page
+    And I press "Delete Affiliate"
+    Then I should be on the user account page
+    And I should see "Affiliate deleted"
+
   Scenario: Staging changes to an affiliate's look and feel
     Given the following Affiliates exist:
     | name             | contact_email         | contact_name        |
@@ -28,10 +64,12 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Edit"
-    And I fill in "Name" with "newname"
-    And I fill in "Header" with "My header"
-    And I fill in "Footer" with "My footer"
-    And I fill in "Domains" with "foo.com bar.com"
+    And I fill in the following:
+    | Name                  | newname                    |
+    | Website               | www.agencysite.gov         |
+    | Domains               | agency.gov                 |
+    | Header                | My header                  |
+    | Footer                | My footer                  |
     And I press "Save for preview"
     Then I should see "Staged changes to your affiliate successfully."
     And I should be on the user account page
