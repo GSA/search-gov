@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100126150542) do
+ActiveRecord::Schema.define(:version => 20100129060051) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20100126150542) do
     t.text     "staged_header"
     t.text     "staged_footer"
     t.boolean  "has_staged_content", :default => false, :null => false
+    t.string   "website"
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true

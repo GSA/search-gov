@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-boosted_sites_uploads_controller_rb.html">app/controllers/boosted_sites_uploads_controller.rb</a></td>
-            <td class='right_align'><tt>29</tt></td>
-            <td class='right_align'><tt>26</tt></td>
+            <td class='right_align'><tt>30</tt></td>
+            <td class='right_align'><tt>27</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -68,170 +68,176 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   def new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>   end</pre></td>
+            <td><pre><a name="line3">3</a>   before_filter :setup_affiliate</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> </pre></td>
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   def create</pre></td>
+            <td><pre><a name="line5">5</a>   def new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     require 'rexml/document'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>     file = params[:xmlfile]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>     begin</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>       doc=REXML::Document.new(file.read)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>       BoostedSite.transaction do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>         BoostedSite.destroy_all(&quot;affiliate_id = #{@affiliate.id}&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>         doc.root.each_element('//entry') do |entry|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>           BoostedSite.create( :url =&gt; entry.elements[&quot;url&quot;].first.to_s,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>                               :title =&gt; entry.elements[&quot;title&quot;].first.to_s,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>                               :description =&gt; entry.elements[&quot;description&quot;].first.to_s,</pre></td>
+            <td><pre><a name="line6">6</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>                               :affiliate =&gt; @affiliate )</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a>         end</pre></td>
+            <td><pre><a name="line7">7</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>         flash[:success] = &quot;Boosted sites uploaded successfully for #{@affiliate.name}&quot;</pre></td>
+            <td><pre><a name="line8">8</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>         redirect_to account_path</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line22">22</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line23">23</a>     rescue</pre></td>
+            <td><pre><a name="line9">9</a>     require 'rexml/document'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>       flash[:error] = &quot;Your XML document could not be processed. Please check the format and try again.&quot;</pre></td>
+            <td><pre><a name="line10">10</a>     file = params[:xmlfile]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>       render :action =&gt; 'new'</pre></td>
+            <td><pre><a name="line11">11</a>     begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>       doc=REXML::Document.new(file.read)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>       BoostedSite.transaction do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>         BoostedSite.destroy_all(&quot;affiliate_id = #{@affiliate.id}&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>         doc.root.each_element('//entry') do |entry|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>           BoostedSite.create( :url =&gt; entry.elements[&quot;url&quot;].first.to_s,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>                               :title =&gt; entry.elements[&quot;title&quot;].first.to_s,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>                               :description =&gt; entry.elements[&quot;description&quot;].first.to_s,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>     end</pre></td>
+            <td><pre><a name="line19">19</a>                               :affiliate =&gt; @affiliate )</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>   end</pre></td>
+            <td><pre><a name="line20">20</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>         flash[:success] = &quot;Boosted sites uploaded successfully for #{@affiliate.name}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>         redirect_to account_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a> </pre></td>
+            <td><pre><a name="line23">23</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a> end</pre></td>
+            <td><pre><a name="line24">24</a>     rescue</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       flash[:error] = &quot;Your XML document could not be processed. Please check the format and try again.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>       render :action =&gt; 'new'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line27">27</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line28">28</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line29">29</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line30">30</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Jan 27 06:48:07 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Jan 28 23:12:21 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

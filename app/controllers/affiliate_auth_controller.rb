@@ -8,6 +8,9 @@ class AffiliateAuthController < ApplicationController
       redirect_to home_page_url
       return false
     end
+  end
+  
+  def setup_affiliate
     @affiliate = @current_user.affiliates.find(params[:id] || params[:affiliate_id]) rescue redirect_to(home_page_url) and return false
   end
 

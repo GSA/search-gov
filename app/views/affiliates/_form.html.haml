@@ -1,0 +1,11 @@
+%dl
+  %dt= form.label :name
+  %dd= form.text_field :name, :class => "text"
+  %dt= form.label :website
+  %dd= form.text_field :website, :class => "text"
+  %dt= form.label :staged_domains, "Domains"
+  %dd= form.text_area :staged_domains, :class => "text"
+  %dt= form.label :staged_header, "Header"
+  %dd= form.text_area :staged_header
+  %dt= form.label :staged_footer, "Footer"
+  %dd= form.text_area :staged_footer

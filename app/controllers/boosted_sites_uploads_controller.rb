@@ -1,5 +1,6 @@
 class BoostedSitesUploadsController < AffiliateAuthController
   before_filter :require_affiliate
+  before_filter :setup_affiliate
 
   def new
   end
