@@ -1,0 +1,52 @@
+body, html, div, span, img, p, h1, h2, h3 {
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+body {
+    width: 320px;
+    background: #c5ccd3;
+    font-family: "Helvetica";
+    font-size: 17px;
+    font-weight: normal;
+    word-wrap: break-word;
+    padding-bottom: 17px;
+}
+
+h1 {
+    padding: 0 10px 0 10px;
+    font-size: 17px;
+    color: #4c566c;
+}
+
+div.group {
+    background: #fff;
+    -webkit-border-radius: 8px;
+    border: solid 1px ##B9BFC5;
+    width: 300px;
+    margin: 17px 10px 17px 10px;
+}
+
+div.row {
+    border-bottom: solid 1px #d8d8d8;
+    padding: 17px 10px 17px 10px;
+}
+
+div.row h2, div.row h3 {
+    font-size: 17px;
+}
+
+div.row h3 {
+    font-weight: normal;
+}
+
+div.group > div.row:last-child {
+    border: none;
+}
+
+input {
+    width: 268px;
+    height: 30px;
+}

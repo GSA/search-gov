@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery
 
+  has_mobile_fu
+
   private
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
