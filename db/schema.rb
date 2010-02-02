@@ -9,7 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(:version => 20100129060051) do
+=======
+ActiveRecord::Schema.define(:version => 20100202025510) do
+>>>>>>> Spotlight functionality
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -166,6 +170,24 @@ ActiveRecord::Schema.define(:version => 20100129060051) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "spotlight_keywords", :force => true do |t|
+    t.integer  "spotlight_id", :null => false
+    t.string   "name",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spotlight_keywords", ["spotlight_id"], :name => "index_spotlight_keywords_on_spotlight_id"
+
+  create_table "spotlights", :force => true do |t|
+    t.string   "title",                        :null => false
+    t.string   "notes"
+    t.text     "html",                         :null => false
+    t.boolean  "is_active",  :default => true, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                                                        :null => false

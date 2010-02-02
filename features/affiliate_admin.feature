@@ -5,7 +5,6 @@ Feature: Affiliate Administration
 
   Scenario: Visiting the affiliate admin home page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And "affiliate_admin@fixtures.org" is an affiliate administrator
     When I go to the affiliate admin home page
     Then I should see "Affiliates"
     And I should see "affiliate_admin@fixtures.org"

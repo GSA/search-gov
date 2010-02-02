@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2008 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the sample templates definitions file. It makes the "templates"
+ * command completely customizable.
+ *
+ * See FCKConfig.TemplatesXmlPath in the configuration file.
+-->
+<Templates imagesBasePath="fck_template/images/">
+	<Template title="Image left (with high title)" image="template1.gif">
+		<Html>
+			<![CDATA[
+<table class="spotlight" border="0">
+<tbody>
+<tr>
+<td colspan="2"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
+</tr>
+<tr>
+<td rowspan="2"><img style="float: right;" src="http://www.webweaver.nu/clipart/img/nature/dogs/dalmation.jpg" alt="Photo of barney" /></td>
+<td>
+<ul>
+<li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
+<li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
+<li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td>Presidential Pets:       <a href="http://www.whitehouse.gov/president/holiday/historicalpets1/">1860-1921</a> <a href="http://www.whitehouse.gov/president/holiday/historicalpets2/">1921-1945</a> <a href="http://www.whitehouse.gov/president/holiday/historicalpets3/">1959-2000</a></td>
+</tr>
+</tbody>
+</table>
+			]]>
+		</Html>
+	</Template>
+</Templates>

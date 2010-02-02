@@ -1,5 +1,5 @@
 class Search
-  attr_accessor :query, :page, :error_message, :affiliate, :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :boosted_sites, :faqs
+  attr_accessor :query, :page, :error_message, :affiliate, :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :boosted_sites, :spotlight, :faqs
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PER_PAGE = 10
   JSON_SITE="http://api.search.live.net/json.aspx"
@@ -58,8 +58,12 @@ class Search
       RAILS_DEFAULT_LOGGER.warn "Error getting search results from Bing server: #{e}"
       return false
     end
-    self.boosted_sites = BoostedSite.search_for(self.affiliate, cleaned_query) unless self.affiliate.nil?
-    self.faqs = Faq.search_for(cleaned_query) if self.affiliate.nil?
+    if self.affiliate.nil?
+      self.spotlight = Spotlight.search_for(cleaned_query) 
+      self.faqs = Faq.search_for(cleaned_query) 
+    else
+      self.boosted_sites = BoostedSite.search_for(self.affiliate, cleaned_query) 
+    end
     true
 
   end

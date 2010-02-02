@@ -217,6 +217,31 @@ describe Search do
       end
     end
 
+    context "when a spotlight is set up for something relevant to the search term" do
+      fixtures :spotlights
+      before do
+        @spotty = spotlights(:time)
+      end
+
+      it "should assign the Spotlight" do
+        @search = Search.new(@valid_options.merge(:query => 'walk time', :affiliate=> nil))
+        Spotlight.should_receive(:search_for).with('walk time').and_return(@spotty)
+        @search.run
+        @search.spotlight.should == @spotty
+      end
+    end
+
+    context "when no relevant spotlight exists for the search term" do
+      fixtures :spotlights
+
+      it "should assign a nil Spotlight" do
+        @search = Search.new(@valid_options.merge(:query => 'nothing here', :affiliate=> nil))
+        Spotlight.should_receive(:search_for).with('nothing here').and_return(nil)
+        @search.run
+        @search.spotlight.should be_nil
+      end
+    end
+
     context "when paginating" do
       default_page = 0
 

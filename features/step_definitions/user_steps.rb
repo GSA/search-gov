@@ -5,7 +5,3 @@ Given /^I am logged in with email "([^\"]*)" and password "([^\"]*)"$/ do |email
   fill_in "Password", :with => password
   click_button
 end
-
-Given /^"([^\"]*)" is an affiliate administrator$/ do |email|
-  User.find_by_email(email).update_attribute(:is_affiliate_admin, true)
-end
