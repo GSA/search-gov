@@ -1,0 +1,12 @@
+= spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
+- if (search && !search.results.empty?)
+  = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+  = results_summary(search.startrecord, search.endrecord, search.total, search.query)
+  - search.results.each_with_index do |search_result, index|
+    %h3= display_result_title(search_result)
+    %h3 #{search_result['content']}
+  = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+- elsif (search.error_message)
+  %p.noresults #{search.error_message}
+- else
+  %p.noresults= t :no_results_for, :query => search.query

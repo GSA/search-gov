@@ -1,0 +1,15 @@
+= spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
+- if (search && !search.results.empty?)
+  %h1= results_summary(search.startrecord, search.endrecord, search.total, search.query)
+  .group
+    - search.results.each_with_index do |search_result, index|
+      .row
+        %h2= display_result_title(search_result)
+        %h3= search_result['content']
+  .group
+    .row
+      %h2{:style => "text-align: center;"}= will_paginate search.results, :page_links => false, :previous_label => "", :next_label => "Next Page"
+- elsif (search.error_message)
+  %p.noresults #{search.error_message}
+- else
+  %p.noresults= t :no_results_for, :query => search.query

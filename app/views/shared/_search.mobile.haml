@@ -1,0 +1,10 @@
+- form_tag(search_path, :method => :get, :id=>"search_form") do
+  = its_beta if @affiliate
+  .group
+    .row
+      = text_field :search, :query, {:size=>20, :name=>"query", :placeholder => "Search"}
+      = hidden_field_tag :locale, I18n.locale
+    .row{:style => "text-align: center"}
+      = image_tag("binglogo.gif")
+:javascript
+  document.getElementById("search_query").focus();

@@ -39,10 +39,10 @@ module SearchHelper
     end
   end
 
-  def results_summary(a,b,total,q)
+  def results_summary(a,b,total,q, *hide_image)
     summary = t :results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => q
     p_sum = content_tag(:p, summary)
-    logo = image_tag("binglogo.gif", :style=>"float:right")
+    logo = hide_image ? "" : image_tag("binglogo.gif", :style=>"float:right")
     container = content_tag(:div, logo + p_sum)
   end
 
@@ -59,3 +59,4 @@ module SearchHelper
     end
   end
 end
+
