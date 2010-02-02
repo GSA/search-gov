@@ -8,12 +8,14 @@
         %h3= highlight_hit(hit, :description)
         %h3= link_to((h boosted_site_url), boosted_site_url)
 - if (search && search.faqs && search.faqs.total > 0)
-  #faq
+  #faqs
     %h3= "FAQs"
-    %ul
-      - search.faqs.hits.each_with_index do |hit, index|
-        - faq_url = hit.instance.url
-        %li{:id => "result#{index+1}"}= link_to(hit.instance.question, faq_url)
+    - search.faqs.hits.each_with_index do |hit, index|
+      - faq_url = hit.instance.url
+      %div.searchresult{:id => "faqresult#{index+1}"}
+        %h2= link_to(highlight_hit(hit, :question), faq_url)
+        %h3= highlight_hit(hit, :answer)
+        %h3= link_to((h faq_url), faq_url)
   %br
 - if (search && !search.results.empty?)
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)

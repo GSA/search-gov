@@ -9,7 +9,9 @@ class Faq < ActiveRecord::Base
   
   def self.search_for(query)
     Faq.search do
-      keywords query, :highlight=>false
+      keywords query do
+        highlight :question, :answer, { :fragment_size => 255, :max_snippets => 1, :merge_continuous_fragments => true }
+      end
       paginate :page => 1, :per_page => 3
     end rescue nil
   end
