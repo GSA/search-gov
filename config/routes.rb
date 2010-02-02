@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :block_words, :active_scaffold => true
     admin.resources :boosted_sites, :active_scaffold => true
     admin.resources :affiliate_broadcasts, :only => [:new, :create]
+    admin.resources :faqs, :active_scaffold => true
   end
   map.namespace(:analytics) do |admin|
     admin.resources :query_groups, :active_scaffold => true

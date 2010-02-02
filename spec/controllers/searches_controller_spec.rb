@@ -99,7 +99,6 @@ describe SearchesController do
       @search.should_not be_nil
       @search.results.should_not be_nil
     end
-
   end
 
   context "when handling a valid affiliate search request" do
@@ -121,6 +120,15 @@ describe SearchesController do
     it "should render the footer in the response" do
       response.body.should match(/#{@affiliate.footer}/)
     end
+    
+    before do
+      @search = assigns[:search]
+    end
+    
+    it "should not search for FAQs" do
+      @search.faqs.should be_nil
+      response.body.should_not match(/faqresults/)
+    end
 
   end
 
@@ -133,4 +141,20 @@ describe SearchesController do
     should_render_template 'searches/index.html.haml', :layout => 'application'
 
   end
+  
+  context "when handling a request that has FAQ results" do
+    integrate_views
+    before do
+      get :index, :query => 'uspto'
+      @search = assigns[:search]
+    end
+
+    should_render_template 'searches/index.html.haml', :layout => 'application'
+    
+    it "should search for FAQ results" do
+      @search.should_not be_nil
+      @search.faqs.should_not be_nil
+    end
+  end
+  
 end

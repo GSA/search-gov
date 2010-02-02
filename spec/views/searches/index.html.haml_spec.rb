@@ -12,6 +12,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:spelling_suggestion).and_return "You misspelled everything"
       @search.stub!(:results).and_return []
       @search.stub!(:boosted_sites).and_return nil
+      @search.stub!(:faqs).and_return nil
       @search.stub!(:error_message).and_return "Ignore me"
     end
 
@@ -27,6 +28,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:spelling_suggestion).and_return nil
       @search.stub!(:results).and_return []
       @search.stub!(:boosted_sites).and_return nil
+      @search.stub!(:faqs).and_return nil
       @search.stub!(:error_message).and_return "Enter some search terms"
     end
 
@@ -56,6 +58,7 @@ describe "searches/index.html.haml" do
       @search_results.stub!(:total_pages).and_return 1
       @search.stub!(:results).and_return @search_results
       @search.stub!(:boosted_sites).and_return nil
+      @search.stub!(:faqs).and_return nil
     end
     
     context "when there are fewer than five results" do
@@ -81,5 +84,6 @@ describe "searches/index.html.haml" do
         response.should have_selector("#footer_search_form")
       end
     end
+    
   end
 end

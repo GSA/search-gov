@@ -78,6 +78,22 @@ describe Search do
         URI.should_receive(:parse).with(/query=government%20\(scopeid:usagovall%20OR%20site:\.gov%20OR%20site:\.mil\)$/).and_return(uriresult)
         search.run
       end
+      
+      it "should search for FAQs" do
+        uriresult = URI::parse("http://localhost:3000/")
+        search = Search.new(@valid_options.merge(:affiliate => nil))
+        Faq.should_receive(:search_for).with('government')
+        search.run
+      end
+    end
+    
+    context "when affiliate is not nil" do
+      it "should not search for FAQs" do
+        uriresult = URI::parse("http://localhost:3000/")
+        search = Search.new(@valid_options)
+        Faq.should_not_receive(:search_for)
+        search.run
+      end
     end
 
     context "when page offset is specified" do
