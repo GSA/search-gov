@@ -6,9 +6,9 @@ Feature: Analytics Homepage
 
   Scenario: Viewing the homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And there is analytics data from "20090831" thru "20090901"
+    And there is analytics data from "20090831" thru "20090911"
     When I am on the analytics homepage
-    Then I should see "Data for September 1, 2009"
+    Then I should see "Data for September 11, 2009"
     And in "dqs1" I should not see "No queries matched"
     And in "dqs7" I should not see "No queries matched"
     And in "dqs30" I should not see "No queries matched"
