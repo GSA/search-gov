@@ -85,6 +85,13 @@ describe Search do
         Faq.should_receive(:search_for).with('government')
         search.run
       end
+      
+      it "should search for GovForms" do
+        uriresult = URI::parse('http://localhost:3000/')
+        search = Search.new(@valid_options.merge(:affiliate => nil))
+        GovForm.should_receive(:search_for).with('government')
+        search.run
+      end
     end
 
     context "when affiliate is not nil" do
@@ -92,6 +99,13 @@ describe Search do
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options)
         Faq.should_not_receive(:search_for)
+        search.run
+      end
+      
+      it "should not search for GovForms" do
+        uriresult = URI::parse('http://localhost:3000/')
+        search = Search.new(@valid_options)
+        GovForm.should_not_receive(:search_for)
         search.run
       end
     end

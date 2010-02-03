@@ -127,7 +127,12 @@ describe SearchesController do
     
     it "should not search for FAQs" do
       @search.faqs.should be_nil
-      response.body.should_not match(/faqresults/)
+      response.body.should_not match(/faqs/)
+    end
+    
+    it "should not search for GovForms" do
+      @search.gov_forms.should be_nil
+      response.body.should_not match(/gov_forms/)
     end
 
   end
@@ -154,6 +159,21 @@ describe SearchesController do
     it "should search for FAQ results" do
       @search.should_not be_nil
       @search.faqs.should_not be_nil
+    end
+  end
+  
+  context "when handling a request that has GovForm results" do
+    integrate_views
+    before do
+      get :index, :query => 'shell egg'
+      @search = assigns[:search]
+    end
+    
+    should_render_template 'searches/index.html.haml', :layout => 'application'
+    
+    it "should search for GovForm results" do
+      @search.should_not be_nil
+      @search.gov_forms.should_not be_nil
     end
   end
   

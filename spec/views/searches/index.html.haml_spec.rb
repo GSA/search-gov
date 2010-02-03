@@ -13,6 +13,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:results).and_return []
       @search.stub!(:boosted_sites).and_return nil
       @search.stub!(:faqs).and_return nil
+      @search.stub!(:gov_forms).and_return nil
       @search.stub!(:spotlight).and_return nil
       @search.stub!(:error_message).and_return "Ignore me"
     end
@@ -30,6 +31,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:results).and_return []
       @search.stub!(:boosted_sites).and_return nil
       @search.stub!(:faqs).and_return nil
+      @search.stub!(:gov_forms).and_return nil
       @search.stub!(:spotlight).and_return nil
       @search.stub!(:error_message).and_return "Enter some search terms"
     end
@@ -62,6 +64,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:spotlight).and_return nil
       @search.stub!(:boosted_sites).and_return nil
       @search.stub!(:faqs).and_return nil
+      @search.stub!(:gov_forms).and_return nil
     end
 
     context "when there are fewer than five results" do

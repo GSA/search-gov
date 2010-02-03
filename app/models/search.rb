@@ -1,5 +1,5 @@
 class Search
-  attr_accessor :query, :page, :error_message, :affiliate, :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :boosted_sites, :spotlight, :faqs
+  attr_accessor :query, :page, :error_message, :affiliate, :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :boosted_sites, :spotlight, :faqs, :gov_forms
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PER_PAGE = 10
   JSON_SITE="http://api.search.live.net/json.aspx"
@@ -11,7 +11,7 @@ class Search
     self.query = options[:query] || ''
     self.affiliate = options[:affiliate]
     self.page = [options[:page].to_i, 0].max
-    self.results, self.related_search, self.boosted_sites, self.faqs = [], [], nil, nil
+    self.results, self.related_search, self.boosted_sites, self.faqs, self.gov_forms = [], [], nil, nil, nil
   end
 
   def run
@@ -60,7 +60,8 @@ class Search
     end
     if self.affiliate.nil?
       self.spotlight = Spotlight.search_for(cleaned_query) 
-      self.faqs = Faq.search_for(cleaned_query) 
+      self.faqs = Faq.search_for(cleaned_query)
+      self.gov_forms = GovForm.search_for(cleaned_query) 
     else
       self.boosted_sites = BoostedSite.search_for(self.affiliate, cleaned_query) 
     end
