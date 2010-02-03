@@ -16,7 +16,6 @@
       - faq_url = hit.instance.url
       %div.searchresult{:id => "faqresult#{index+1}"}
         %h2= link_to(highlight_hit(hit, :question), faq_url)
-        %h3= highlight_hit(hit, :answer)
         %h3= link_to((h faq_url), faq_url)
   %br
 - if (search && !search.results.empty?)

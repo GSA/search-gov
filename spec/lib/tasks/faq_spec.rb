@@ -64,9 +64,9 @@ EOF
           @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
         end
         
-        it "should assign the proper values to the proper fields" do
+        it "should assign the proper values to the proper fields, including stripping HTML from the question field" do
           Faq.should_receive(:create).with( :url => 'http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/std_adp.php?p_faqid=32',
-                                            :question => '<p>Authenticating Documents: Status Request</p>',
+                                            :question => 'Authenticating Documents: Status Request',
                                             :answer => '<p>The authentication of documents by the <rn:answer_xref answer_id="203" contents="Office of Authentications" />&nbsp;at the <rn:answer_xref answer_id="4391" contents="United States Department of State (DOS)" />&nbsp;takes approximately&nbsp;five busines',
                                             :ranking => 3248)
           @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
