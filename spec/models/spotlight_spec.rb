@@ -23,21 +23,30 @@ describe Spotlight do
   end
 
   describe "#search_for" do
+    integrate_sunspot
+
+    before do
+      @spotty = spotlights(:time)
+    end
+
     context "when a relevant spotlight is active" do
+      before do
+        Spotlight.reindex
+      end
+
       it "should return a Spotlight" do
-        Spotlight.search_for("time").should_not be_nil
+        Spotlight.search_for("time").should == @spotty
       end
     end
 
     context "when an otherwise relevant spotlight is inactive" do
       before do
-        @spotty = Spotlight.create!(@valid_attributes.merge(:is_active=> false))
-        %w{foo bar blat baz}.each { |keyword| SpotlightKeyword.create(:name=> keyword.strip, :spotlight => @spotty) }
         @spotty.update_attribute(:is_active, false)
+        Spotlight.reindex
       end
 
       it "should return nil" do
-        Spotlight.search_for("foo").should be_nil
+        Spotlight.search_for("time").should be_nil
       end
     end
   end
