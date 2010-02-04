@@ -18,6 +18,8 @@ module NavigationHelpers
       query_timeline_path($1)
     when /the affiliate admin home page/
       admin_affiliates_path
+    when /the admin home page/
+      admin_home_page_path      
     when /the spotlights admin homepage/
       admin_spotlights_path
     when /the affiliate admin broadcast page/

@@ -1,12 +1,15 @@
-Feature: Affiliate Administration
-  In order to see who is using USASearch as an Affiliate and manage their accounts
-  As an administrator
-  I want to see relevant information for all Affiliates
-
-  Scenario: Visiting the affiliate admin home page as an admin
+Feature:  Administration
+  Scenario: Visiting the admin home page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the affiliate admin home page
+    When I go to the admin home page
+    Then I should see "Users"
     Then I should see "Affiliates"
+    Then I should see "Affiliate Broadcast"
+    Then I should see "Blocked Words"
+    Then I should see "Boosted Sites"
+    Then I should see "Spotlights"
+    Then I should see "FAQs"
+    Then I should see "Query Grouping"
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
     And I should see "Logout"

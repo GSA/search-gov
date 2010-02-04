@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :affiliate_broadcasts, :only => [:new, :create]
     admin.resources :faqs, :active_scaffold => true
   end
+  map.admin_home_page '/admin', :controller => "admin/home"
   map.namespace(:analytics) do |admin|
     admin.resources :query_groups, :active_scaffold => true
     admin.resources :grouped_queries, :active_scaffold => true

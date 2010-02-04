@@ -5,8 +5,7 @@ Feature: Affiliate clients
 
   Scenario: Visiting the affiliate welcome/list page as a un-authenticated Affiliate
     When I go to the affiliate welcome page
-    Then I should see "What it is"
-    And I should see "How it works"
+    Then I should see "Who are we?"
     When I follow "Register now"
     Then I should see "Sign up"
 
@@ -26,11 +25,11 @@ Feature: Affiliate clients
     When I go to the user account page
     And I follow "Add Affiliate"
     And I fill in the following:
-    | Name                  | agency.gov                 |
-    | Website               | www.agency.gov             |
-    | Domains               | agency.gov                 |
-    | Header                | My header                  |
-    | Footer                | My footer                  |
+    | Name of new site search                                               | www.agency.gov             |
+    | Your Website URL (www.example.gov)                                    | www.agency.gov             |
+    | Domains (one per line)                                                | agency.gov                 |
+    | Enter HTML to customize the top of your search page                   | My header                  |
+    | Enter HTML to customize the bottom of your search page                | My footer                  |
     And I press "Create"
     Then I should be on the user account page
     And I should see "Affiliate successfully created"
@@ -45,7 +44,7 @@ Feature: Affiliate clients
     And I follow "new"
     And I fill in "name" with "aff.gov"
     And I press "Create"
-    Then I should see "Name has already been taken"    
+    Then I should see "Name has already been taken"
 
   Scenario: Deleting an affiliate
     Given the following Affiliates exist:
@@ -65,11 +64,11 @@ Feature: Affiliate clients
     When I go to the user account page
     And I follow "Edit"
     And I fill in the following:
-    | Name                  | newname                    |
-    | Website               | www.agencysite.gov         |
-    | Domains               | agency.gov                 |
-    | Header                | My header                  |
-    | Footer                | My footer                  |
+    | Name of new site search                                               | newname                    |
+    | Your Website URL (www.example.gov)                                    | www.agency.gov             |
+    | Domains (one per line)                                                | agency.gov                 |
+    | Enter HTML to customize the top of your search page                   | My header                  |
+    | Enter HTML to customize the bottom of your search page                | My footer                  |
     And I press "Save for preview"
     Then I should see "Staged changes to your affiliate successfully."
     And I should be on the user account page
