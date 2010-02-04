@@ -5,7 +5,7 @@ describe Search do
 
   before do
     @affiliate = affiliates(:basic_affiliate)
-    @valid_options = {:query => 'government', :page => 3, :affiliate => @affiliate}
+    @valid_options = {:query => 'government', :page => 3, :affiliate => @affiliate }
   end
 
   describe "#run" do
@@ -36,7 +36,16 @@ describe Search do
         URI.should_receive(:parse).with(/%20language:es/).and_return(uriresult)
         search.run
       end
-
+      
+      it "should not search for Spotlights, GovForms or FAQs" do
+        uriresult = URI::parse('http://localhost:3000/')
+        search = Search.new(@valid_options.merge(:affiliate => nil))
+        Spotlight.should_not_receive(:search_for)
+        GovForm.should_not_receive(:search_for)
+        Faq.should_not_receive(:search_for)
+        search.run
+      end
+      
       after do
         I18n.locale = I18n.default_locale
       end
