@@ -1,0 +1,23 @@
+h1 {
+    font-size: 1em;
+    color: #4c566c;
+}
+
+div.group {
+    width: 100%;
+    margin: 17px 10px 17px 10px;
+}
+
+div.row {
+    width: 100%;
+    border-bottom: solid 1px #a0a0a0;
+    padding: 5px 10px 5px 10px;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+div.group > div.row:last-child {
+    border: none;
+}

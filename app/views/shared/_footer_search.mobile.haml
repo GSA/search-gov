@@ -1,5 +1,7 @@
-- unless search.results.size < 5
-  - form_tag(search_path, :method => :get, :id=>"footer_search_form") do
-    = text_field :search, :query, :size=>20, :name=>"query"
-    = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
-    = submit_tag(t :search, :id => "footer_search_button")
+- form_tag(search_path, :method => :get, :id=>"search_form") do
+  .group
+    .row.center
+      = text_field :search, :query, {:name=>"query", :placeholder => "Search"}
+      - unless (is_device?("iphone") || is_device?("ipod")) then
+        = submit_tag(t :search, :id => "search_button")
+      = hidden_field_tag :locale, I18n.locale

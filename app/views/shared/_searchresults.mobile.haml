@@ -1,11 +1,15 @@
 = spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
 - if (search && !search.results.empty?)
-  = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
-  = results_summary(search.startrecord, search.endrecord, search.total, search.query)
-  - search.results.each_with_index do |search_result, index|
-    %h3= display_result_title(search_result)
-    %h3 #{search_result['content']}
-  = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+  %h1= results_summary(search.startrecord, search.endrecord, search.total, search.query)
+  .group
+    - search.results.each_with_index do |search_result, index|
+      .row
+        %h2= display_result_title(search_result)
+        %h3= search_result['content']
+        %h3= display_result_links(search_result)
+  .group
+    .row.center
+      = will_paginate search.results, :page_links => false, :previous_label => "", :next_label => "Next Page"
 - elsif (search.error_message)
   %p.noresults #{search.error_message}
 - else

@@ -1,10 +1,16 @@
+.group
+  .row.center
+    %img{:src => "/m/i/logo.gif"}
 - form_tag(search_path, :method => :get, :id=>"search_form") do
   = its_beta if @affiliate
   .group
-    .row
-      = text_field :search, :query, {:size=>20, :name=>"query", :placeholder => "Search"}
+    .row.center
+      = text_field :search, :query, {:name=>"query", :placeholder => "Search"}
+      - unless (is_device?("iphone") || is_device?("ipod")) then
+        = submit_tag(t :search, :id => "search_button")
       = hidden_field_tag :locale, I18n.locale
-    .row{:style => "text-align: center"}
+    .row.center
       = image_tag("binglogo.gif")
-:javascript
-  document.getElementById("search_query").focus();
+- if js_enabled_mobile_device?
+  :javascript
+    document.getElementById("search_query").focus();

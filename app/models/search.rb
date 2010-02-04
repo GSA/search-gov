@@ -1,5 +1,5 @@
 class Search
-  attr_accessor :query, :page, :error_message, :affiliate, :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :boosted_sites, :spotlight, :faqs, :gov_forms
+  attr_accessor :query, :page, :error_message, :affiliate, :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :boosted_sites, :spotlight, :faqs, :gov_forms, :results_per_page
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PER_PAGE = 10
   JSON_SITE="http://api.search.live.net/json.aspx"
@@ -11,13 +11,14 @@ class Search
     self.query = options[:query] || ''
     self.affiliate = options[:affiliate]
     self.page = [options[:page].to_i, 0].max
+    self.results_per_page = options[:results_per_page] or DEFAULT_PER_PAGE
     self.results, self.related_search, self.boosted_sites, self.faqs, self.gov_forms = [], [], nil, nil, nil
   end
 
   def run
     self.error_message = (I18n.translate :too_long) and return false if self.query.length > MAX_QUERYTERM_LENGTH
     self.error_message = (I18n.translate :empty_query) and return false if self.query.blank?
-    offset = self.page > 0 ? self.page * DEFAULT_PER_PAGE : 0
+    offset = self.page > 0 ? self.page * self.results_per_page : 0
     if self.affiliate && !self.affiliate.domains.blank? && !self.query.match(/site:/)
       sites_str = self.affiliate.domains.split("\n").collect {|site| "site:#{site}"}.join(" OR ")
       scope_clause = "(#{sites_str})"
@@ -29,7 +30,7 @@ class Search
     q = "#{cleaned_query} #{scope_clause} #{language_clause}".strip.squeeze(' ')
 
     begin
-      uri = URI.parse("#{JSON_SITE}?web.offset=#{offset}&AppId=#{APP_ID}&sources=#{SOURCES}&Options=EnableHighlighting&query=#{URI.escape(q)}")
+      uri = URI.parse("#{JSON_SITE}?web.offset=#{offset}&web.count=#{self.results_per_page}&AppId=#{APP_ID}&sources=#{SOURCES}&Options=EnableHighlighting&query=#{URI.escape(q)}")
       resp = Net::HTTP.get_response(uri)
       body = translate_bing_highlights(resp.body)
       json = JSON.parse(body)
@@ -37,7 +38,7 @@ class Search
 
       self.total = response.web.total rescue 0
       self.spelling_suggestion = response.spell.results.first.value.split(/ \(scopeid/).first.gsub(/<\/?[^>]*>/, '') rescue nil
-      pagination_total = [DEFAULT_PER_PAGE * 20, self.total ].min
+      pagination_total = [self.results_per_page * 20, self.total ].min
       results_array= []
       if self.total > 0
         results_array = response.web.results.collect do |r|
@@ -51,8 +52,8 @@ class Search
         self.related_search = response.related_search.results rescue []
         self.related_search = BlockWord.filter(self.related_search, "Title")
       end
-      self.results = WillPaginate::Collection.create(self.page+1, DEFAULT_PER_PAGE, pagination_total) { |pager| pager.replace(results_array) }
-      self.startrecord = self.page * DEFAULT_PER_PAGE + 1
+      self.results = WillPaginate::Collection.create(self.page+1, self.results_per_page, pagination_total) { |pager| pager.replace(results_array) }
+      self.startrecord = self.page * self.results_per_page + 1
       self.endrecord = self.startrecord + self.results.size - 1
     rescue SocketError, Errno::ECONNREFUSED, JSON::ParserError => e
       RAILS_DEFAULT_LOGGER.warn "Error getting search results from Bing server: #{e}"

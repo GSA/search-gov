@@ -1,7 +1,3 @@
 = render :partial => "shared/search"
-- if is_device? "iphone"
-  = render :partial => "shared/searchresults.iphone", :locals => { :search => @search }
-- else
-  = render :partial => "shared/searchresults", :locals => { :search => @search }
-- if not is_device? "iphone"
-  = render :partial => "shared/footer_search", :locals => { :search => @search }
+= render :partial => "shared/searchresults", :locals => { :search => @search }
+= render :partial => "shared/footer_search", :locals => { :search => @search }
