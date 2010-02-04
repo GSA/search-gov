@@ -60,9 +60,11 @@ class Search
       return false
     end
     if self.affiliate.nil?
-      self.spotlight = Spotlight.search_for(cleaned_query) 
-      self.faqs = Faq.search_for(cleaned_query)
-      self.gov_forms = GovForm.search_for(cleaned_query) 
+      if I18n.locale.to_s == 'en'
+        self.spotlight = Spotlight.search_for(cleaned_query) 
+        self.faqs = Faq.search_for(cleaned_query)
+        self.gov_forms = GovForm.search_for(cleaned_query) 
+      end
     else
       self.boosted_sites = BoostedSite.search_for(self.affiliate, cleaned_query) 
     end
