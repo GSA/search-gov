@@ -1,11 +1,11 @@
 %dl
-  %dt= form.label :name
+  %dt= form.label :name, "Name of new site search"
   %dd= form.text_field :name, :class => "text"
-  %dt= form.label :website
+  %dt= form.label :website, "Your Website URL (www.example.gov)"
   %dd= form.text_field :website, :class => "text"
-  %dt= form.label :staged_domains, "Domains"
+  %dt= form.label :staged_domains, "Domains (one per line)"
   %dd= form.text_area :staged_domains, :class => "text"
-  %dt= form.label :staged_header, "Header"
+  %dt= form.label :staged_header, "Enter HTML to customize the top of your search page"
   %dd= form.text_area :staged_header
-  %dt= form.label :staged_footer, "Footer"
+  %dt= form.label :staged_footer, "Enter HTML to customize the bottom of your search page"
   %dd= form.text_area :staged_footer

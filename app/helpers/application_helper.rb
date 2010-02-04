@@ -67,9 +67,10 @@ module ApplicationHelper
       elements << link_to("Users", admin_users_path) if cur_user.is_affiliate_admin?
     else
       elements << link_to("Login", new_user_session_path)
-      elements << link_to("Register", new_account_path)      
+      elements << link_to("Register", new_account_path)
     end
-    elements << link_to("FAQ", faq_affiliates_path)
+    elements << mail_to("support@searchusa.zendesk.com", "Contact Us")
+    elements << link_to("FAQ", "http://searchusa.zendesk.com/")
     elements << link_to("USAsearch.gov", home_page_path)
     elements.join(" | ")
   end

@@ -92,3 +92,10 @@ Feature: Analytics Homepage
     And I press "Search"
     Then I should be on the analytics query search results page
     And I should see "Please enter search term(s)"
+
+  Scenario: Visiting the FAQ page
+    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And I am on the analytics homepage
+    When I follow "FAQ"
+    Then I should be on the FAQ page
+    And I should see "Frequently Asked Questions about Analytics"
