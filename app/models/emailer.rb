@@ -23,7 +23,7 @@ class Emailer < ActionMailer::Base
   private
   def setup_email(recipients)
     @recipients = recipients
-    @from       = "noreply@usasearch.gov"
+    @from       = "support@searchusa.zendesk.com"
     @subject    = "[USASearch] "
     @sent_on    = Time.now
     @headers['Content-Type'] = "text/plain; charset=utf-8; format=flowed"

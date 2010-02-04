@@ -7,15 +7,15 @@
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
-    = javascript_include_tag :defaults, "builder", "scriptaculous", "fckeditor/fckeditor"
+    = javascript_include_tag :defaults, "fckeditor/fckeditor"
     = active_scaffold_includes
 
   %body
     .container
-      .span-13
-        = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), home_page_path)
-        %h1.alt Admin
-      .span-11.last.header
+      .span-8
+        = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), admin_home_page_path)
+        %h1.alt=link_to("Admin Center",admin_home_page_path)
+      .span-16.last.header
         = basic_header_navigation_for current_user
       .span-24.main
         %hr
