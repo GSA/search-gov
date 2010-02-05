@@ -11,7 +11,7 @@ class Search
     self.query = options[:query] || ''
     self.affiliate = options[:affiliate]
     self.page = [options[:page].to_i, 0].max
-    self.results_per_page = options[:results_per_page] or DEFAULT_PER_PAGE
+    self.results_per_page = options[:results_per_page] || DEFAULT_PER_PAGE
     self.results, self.related_search, self.boosted_sites, self.faqs, self.gov_forms = [], [], nil, nil, nil
   end
 
