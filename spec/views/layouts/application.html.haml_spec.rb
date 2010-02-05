@@ -5,10 +5,14 @@ describe "layouts/application.html.haml" do
     @english_webtrends_tag = 'webtrends_english'
     @spanish_webtrends_tag = 'webtrends_spanish'
   end
+
+  def render_page
+    render "home/index.html.haml", :layout=> "application"
+  end
   
   context "when page is displayed" do
     it "should should show webtrends javascript" do
-      render
+      render_page
       response.should contain(@english_webtrends_tag)
     end
   end
@@ -19,7 +23,7 @@ describe "layouts/application.html.haml" do
     end
     
     it "should show the English version of the webtrends javascript" do
-      render
+      render_page
       response.should contain(@english_webtrends_tag)
     end  
   end
@@ -30,7 +34,7 @@ describe "layouts/application.html.haml" do
     end
     
     it "should show the Spanish version of the webtrends javascript" do
-      render
+      render_page
       response.should contain(@spanish_webtrends_tag)
     end
   end

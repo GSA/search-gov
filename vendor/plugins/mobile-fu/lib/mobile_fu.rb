@@ -10,7 +10,7 @@ module ActionController
                           'samsung|sanyo|sharp|telit|tsm|mobile|mini|windows ce|smartphone|' +
                           '240x320|320x320|mobileexplorer|j2me|sgh|portable|sprint|vodafone|' +
                           'docomo|kddi|softbank|pdxgw|j-phone|astel|minimo|plucker|netfront|' +
-                          'xiino|mot-v|mot-e|portalmmm|sagem|sie-s|sie-m|android|ipod'
+                          'xiino|mot-v|mot-e|portalmmm|sagem|sie-s|sie-m|android|ipod|opwv-sdk'
     
     def self.included(base)
       base.extend(ClassMethods)
@@ -56,7 +56,7 @@ module ActionController
         @@is_device
       end
     end
-    
+
     module InstanceMethods
       
       # Forces the request format to be :mobile
@@ -70,8 +70,13 @@ module ActionController
       # the user has opted to use either the 'Standard' view or 'Mobile' view.
       
       def set_mobile_format
+        mobile_mode = request.params[:mobile_mode]
+        if not mobile_mode.nil? then
+          session[:mobile_view] = mobile_mode == "true"
+        end
+
+        request.format = session[:mobile_view] ? :mobile : :html
         if is_mobile_device?
-          request.format = session[:mobile_view] == false ? :html : :mobile
           session[:mobile_view] = true if session[:mobile_view].nil?
         end
       end
@@ -103,3 +108,4 @@ module ActionController
 end
 
 ActionController::Base.send(:include, ActionController::MobileFu)
+

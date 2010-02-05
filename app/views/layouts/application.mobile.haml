@@ -7,5 +7,10 @@
     - if is_device? 'iphone'
       %meta{:name => "viewport", :content => "initial-scale = 1.0, user-scalable = no"}
       %meta{:name => "apple-touch-fullscreen", :content => "YES"}
+    - else
+      %meta{:name => "MobileOptimized", :content => "175"}
   %body
     = yield
+    .group
+      .row.center
+        = link_to_mobile_mode("Full Site", false)

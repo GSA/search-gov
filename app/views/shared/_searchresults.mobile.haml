@@ -1,12 +1,16 @@
 = spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
 - if (search && !search.results.empty?)
-  %h1= results_summary(search.startrecord, search.endrecord, search.total, search.query)
+  %h1= results_summary(search.startrecord, search.endrecord, search.total, search.query, false)
+  %hr
   .group
     - search.results.each_with_index do |search_result, index|
-      .row
-        %h2= display_result_title(search_result)
-        %h3= search_result['content']
-        %h3= display_result_links(search_result)
+      .row{:id => "searchresult#{index+1}"}
+        .title= display_result_title(search_result)
+        .content= search_result['content']
+        .links= display_result_links(search_result, false)
+      - unless index == search.results.length - 1 then
+        %hr
+  %hr
   .group
     .row.center
       = will_paginate search.results, :page_links => false, :previous_label => "", :next_label => "Next Page"

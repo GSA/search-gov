@@ -15,7 +15,12 @@ body {
     padding-bottom: 17px;
 }
 
+hr {
+    display: none;
+}
+
 h1 {
+    text-shadow: 0 1px 0px rgba(255, 255, 255, 0.5);
     padding: 0 10px 0 10px;
     font-size: 17px;
     color: #4c566c;
@@ -34,7 +39,7 @@ div.row {
     padding: 17px 10px 17px 10px;
 }
 
-div.row h2, div.row h3 {
+div.row .summary, div.row .links {
     font-size: 17px;
 }
 

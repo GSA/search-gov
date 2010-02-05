@@ -1,5 +1,9 @@
 module SearchHelper
-  def display_result_links (result)
+  def display_result_links (result, link = true)
+    if false == link then
+      return shorten_url(result['unescapedUrl'])
+    end
+
     url = shorten_url "#{result['unescapedUrl']}"
     html = link_to("#{h url}", "#{h result['unescapedUrl']}")
     unless result['cacheUrl'].blank?

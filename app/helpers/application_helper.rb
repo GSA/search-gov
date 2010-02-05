@@ -8,6 +8,15 @@ module ApplicationHelper
     end
   end
 
+  def url_for_mobile_mode(new_mobile_mode)
+    new_params = request.params.update({:mobile_mode => new_mobile_mode.to_s})
+    url_for({:controller => params[:controller], :action => params[:action], :params => new_params})
+  end
+
+  def link_to_mobile_mode(text, new_mobile_mode)
+    link_to(text, url_for_mobile_mode(new_mobile_mode))
+  end
+
   HEADER_LINKS = {
     :en => [
       ["USA.gov", "http://usa.gov"],
@@ -49,7 +58,7 @@ module ApplicationHelper
   end
 
   def footer_links
-    iterate_links(FOOTER_LINKS[I18n.locale.to_sym])
+    iterate_links(FOOTER_LINKS[I18n.locale.to_sym] << ["Mobile", url_for_mobile_mode(true)])
   end
 
   def render_webtrends_code
