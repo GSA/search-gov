@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :spotlights, :active_scaffold => true
     admin.resources :affiliate_broadcasts, :only => [:new, :create]
     admin.resources :faqs, :active_scaffold => true
+    admin.resources :gov_forms, :active_scaffold => true
   end
   map.admin_home_page '/admin', :controller => "admin/home"
   map.namespace(:analytics) do |admin|

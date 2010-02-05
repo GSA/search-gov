@@ -45,6 +45,10 @@ module SearchHelper
     logo = show_logo ? image_tag("binglogo.gif", :style=>"float:right") : ""
     container = content_tag(:div, logo + p_sum)
   end
+  
+  def gov_form_description(description)
+    return description.size > 250 ? "#{description[0,250]}..." : description
+  end
 
   private
   def shorten_url (url)

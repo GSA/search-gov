@@ -5,3 +5,9 @@
       %li= link_to(result.title, shunt_from_bing_to_usasearch(result.url, @affiliate ))
 - else
   &nbsp
+- if (@search && @search.gov_forms && @search.gov_forms.total > 0)
+  %h3.alt= t :government_forms
+  %ul{:id => "gov_forms"}
+    - @search.gov_forms.hits.each_with_index do |hit, index|
+      %li= link_to( highlight_hit(hit, :name), hit.instance.url)
+  %p= "Source: #{ link_to('Forms.gov', 'http://www.forms.gov') }"
