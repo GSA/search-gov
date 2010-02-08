@@ -127,12 +127,12 @@ describe SearchesController do
     
     it "should not search for FAQs" do
       @search.faqs.should be_nil
-      response.body.should_not match(/faqs/)
+      response.body.should_not match(/realted_faqs/)
     end
     
     it "should not search for GovForms" do
       @search.gov_forms.should be_nil
-      response.body.should_not match(/gov_forms/)
+      response.body.should_not match(/related_gov_forms/)
     end
 
   end
@@ -174,6 +174,22 @@ describe SearchesController do
     it "should search for GovForm results" do
       @search.should_not be_nil
       @search.gov_forms.should_not be_nil
+    end
+  end
+  
+  context "when handling a request with an index parameter" do
+    integrate_views
+    before do
+      get :index, :query => 'tax forms', :index => 'faqs'
+      @search = assigns[:search]
+    end
+    
+    should_render_template 'searches/index.html.haml', :layout => 'application'
+    
+    it "should search the specific index and populate the results" do
+      @search.should_not be_nil
+      @search.results.should_not be_nil
+      @search.faqs.should be_nil
     end
   end
   

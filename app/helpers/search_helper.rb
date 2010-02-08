@@ -4,7 +4,7 @@ module SearchHelper
     html = link_to("#{h url}", "#{h result['unescapedUrl']}")
     unless result['cacheUrl'].blank?
       html << " - "
-      html << link_to((t :cached), "#{result['cacheUrl']}")
+      html << link_to((t :cached), "#{result['cacheUrl']}", :class => 'cache_link')
     end
     html
   end
@@ -44,10 +44,6 @@ module SearchHelper
     p_sum = content_tag(:p, summary)
     logo = show_logo ? image_tag("binglogo.gif", :style=>"float:right") : ""
     container = content_tag(:div, logo + p_sum)
-  end
-  
-  def gov_form_description(description)
-    return description.size > 250 ? "#{description[0,250]}..." : description
   end
 
   private

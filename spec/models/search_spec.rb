@@ -264,6 +264,39 @@ describe Search do
         end
       end
     end
+    
+    context "when an index parameter is specified" do   
+      context "when the 'faqs' index is specified" do
+        before do
+          @search = Search.new(@valid_options.merge(:query => 'government', :index => 'faqs', :page => 0))
+        end
+      
+        it "should search the FAQs records" do
+          Faq.should_receive(:search_for)
+          @search.run
+          @search.faqs.should be_nil
+          @search.results.should_not be_nil
+        end
+        
+        it "should not search Bing" do
+          Search.should_not_receive(:search_bing)
+          @search.run
+        end
+      end
+      
+      context "when the 'gov_forms' index is specified" do
+        before do
+          @search = Search.new(@valid_options.merge(:query => 'government', :index => 'gov_forms', :page => 0))
+        end
+        
+        it "should search the GovForm records" do
+          GovForm.should_receive(:search_for)
+          @search.run
+          @search.gov_forms.should be_nil
+          @search.results.should_not be_nil
+        end
+      end
+    end
 
     context "when paginating" do
       default_page = 0

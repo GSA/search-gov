@@ -65,6 +65,8 @@ a:hover
     :margin 0 0 0.3em 0
     a, a:visited, a:hover
       :color= #008000
+    a.cache_link, a.cache_link:visited, a.cache_link:hover
+      :color= gray
 .current
   :color black
 .pagination
@@ -107,8 +109,10 @@ ul#relatedsearch
     a:hover
       :text-decoration underline
 
-ul#gov_forms
+ul#related_faqs
   :padding-left 0
+  :list-style-type disc
+  :color gray
   li
     :font-size 1.1em
     a, a:visited
@@ -116,13 +120,22 @@ ul#gov_forms
     a:hover
       :text-decoration underline
 
-#faqs
-  :color black
-  :border 1px lightgray solid
-  :margin-top 1em
-  :padding 1em 0.5em 0 1.0em
-  :background #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
+ul#related_gov_forms
+  :padding-left 0
+  :list-style-type disc
+  :color gray
+  li
+    :font-size 1.1em
+    a, a:visited
+      :text-decoration none
+    a:hover
+      :text-decoration underline
 
+.more_results
+  a, a:visited, a:hover
+    :color gray
+    :text-decoration none
+  
 #spotlight
   :color black
   :border 1px lightgray solid

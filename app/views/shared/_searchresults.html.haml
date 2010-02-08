@@ -9,14 +9,6 @@
         %h3= link_to((h boosted_site_url), boosted_site_url)
 - if (search && search.spotlight)
   #spotlight=search.spotlight.html
-- if (search && search.faqs && search.faqs.total > 0)
-  #faqs
-    %h3= "FAQs"
-    - search.faqs.hits.each_with_index do |hit, index|
-      - faq_url = hit.instance.url
-      %div.searchresult{:id => "faqresult#{index+1}"}
-        %h2= link_to(highlight_hit(hit, :question), faq_url)
-        %h3= link_to((h faq_url), faq_url)
 - if (search && !search.results.empty?)
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)
   - search.results.each_with_index do |search_result, index|
