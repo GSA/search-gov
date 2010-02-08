@@ -53,6 +53,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:startrecord).and_return 1
       @search.stub!(:endrecord).and_return "don't care"
       @search.stub!(:total).and_return "don't care"
+      @search.stub!(:page).and_return 0
       @search_result = {'title' => "some title",
                        'unescapedUrl'=> "http://www.foo.com/url",
                        'content'=> "This is a sample result",
