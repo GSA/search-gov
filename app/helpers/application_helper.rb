@@ -1,3 +1,4 @@
+# -*- coding: iso-8859-1 -*-
 module ApplicationHelper
   def show_flash_messages
     unless (flash.nil? or flash.empty?)
@@ -30,7 +31,8 @@ module ApplicationHelper
       ["Website Policies", "http://www.usa.gov/About/Important_Notices.shtml" ],
       ["Privacy", "http://www.usa.gov/About/Privacy_Security.shtml" ],
       ["Suggest-A-Link", "http://www.usa.gov/feedback/SuggestLinkForm.jsp" ],
-      ["Link to Us", "http://www.usa.gov/About/FirstGov_Logos.shtml"]
+      ["Link to Us", "http://www.usa.gov/About/FirstGov_Logos.shtml"],
+      ["Accessibility", "/docs/accessibility"]
     ],
     :es => [
       ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
