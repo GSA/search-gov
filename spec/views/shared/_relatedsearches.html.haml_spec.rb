@@ -40,7 +40,7 @@ describe "shared/_relatedsearches.html.haml" do
     
     it "should display related search results" do
       render :locals => { :search => @search }
-      response.should have_tag('h3', :text => 'Related searches')
+      response.should have_tag('h3', :text => 'Related Searches')
       response.should have_tag('ul', :id => 'relatedsearch')
     end
     

@@ -7,10 +7,11 @@
         %h2= link_to(highlight_hit(hit, :title), boosted_site_url)
         %h3= highlight_hit(hit, :description)
         %h3= link_to((h boosted_site_url), boosted_site_url)
+- if (search && !search.results.empty?)
+  = results_summary(search.startrecord, search.endrecord, search.total, search.query)
 - if (search && search.spotlight)
   #spotlight=search.spotlight.html
 - if (search && !search.results.empty?)
-  = results_summary(search.startrecord, search.endrecord, search.total, search.query)
   - search.results.each_with_index do |search_result, index|
     %div.searchresult{:id => "searchresult#{index+1}"}
       %h2= display_result_title(search_result)
