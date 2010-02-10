@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-boosted_sites_uploads_controller_rb.html">app/controllers/boosted_sites_uploads_controller.rb</a></td>
-            <td class='right_align'><tt>30</tt></td>
-            <td class='right_align'><tt>27</tt></td>
+            <td class='right_align'><tt>31</tt></td>
+            <td class='right_align'><tt>28</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -201,43 +201,49 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>       flash[:error] = &quot;Your XML document could not be processed. Please check the format and try again.&quot;</pre></td>
+            <td><pre><a name="line25">25</a>       RAILS_DEFAULT_LOGGER.warn &quot;Possible problem in processing : #{$!}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>       render :action =&gt; 'new'</pre></td>
+            <td><pre><a name="line26">26</a>       flash[:error] = &quot;Your XML document could not be processed. Please check the format and try again.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       render :action =&gt; 'new'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>     end</pre></td>
+            <td><pre><a name="line28">28</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>   end</pre></td>
+            <td><pre><a name="line29">29</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a> </pre></td>
+            <td><pre><a name="line30">30</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a> end</pre></td>
+            <td><pre><a name="line31">31</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Feb 08 07:19:42 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Feb 11 08:10:17 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

@@ -106,6 +106,7 @@ describe SearchesController do
     before do
       @affiliate = affiliates(:power_affiliate)
       get :index, :affiliate=>@affiliate.name, :query => "weather"
+      @search = assigns[:search]
     end
 
     should_assign_to :affiliate
@@ -120,16 +121,12 @@ describe SearchesController do
     it "should render the footer in the response" do
       response.body.should match(/#{@affiliate.footer}/)
     end
-    
-    before do
-      @search = assigns[:search]
-    end
-    
+
     it "should not search for FAQs" do
       @search.faqs.should be_nil
-      response.body.should_not match(/realted_faqs/)
+      response.body.should_not match(/related_faqs/)
     end
-    
+
     it "should not search for GovForms" do
       @search.gov_forms.should be_nil
       response.body.should_not match(/related_gov_forms/)
@@ -146,35 +143,29 @@ describe SearchesController do
     should_render_template 'searches/index.html.haml', :layout => 'application'
 
   end
-  
+
   context "when handling a request that has FAQ results" do
-    integrate_views
     before do
       get :index, :query => 'uspto'
       @search = assigns[:search]
     end
 
-    should_render_template 'searches/index.html.haml', :layout => 'application'
-    
     it "should search for FAQ results" do
       @search.should_not be_nil
       @search.faqs.should_not be_nil
     end
   end
-  
+
   context "when handling a request that has GovForm results" do
-    integrate_views
     before do
       get :index, :query => 'shell egg'
       @search = assigns[:search]
     end
-    
-    should_render_template 'searches/index.html.haml', :layout => 'application'
-    
+
     it "should search for GovForm results" do
       @search.should_not be_nil
       @search.gov_forms.should_not be_nil
     end
   end
-  
+
 end

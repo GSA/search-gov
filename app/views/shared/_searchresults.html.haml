@@ -1,5 +1,5 @@
-= spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
-- if (search && search.boosted_sites && search.boosted_sites.total > 0)
+= spelling_suggestion(search.spelling_suggestion, @affiliate)
+- if (search.boosted_sites && search.boosted_sites.total > 0)
   #boosted
     - search.boosted_sites.hits.each_with_index do |hit, index|
       - boosted_site_url = hit.instance.url
@@ -7,15 +7,15 @@
         %h2= link_to(highlight_hit(hit, :title), boosted_site_url)
         %h3= highlight_hit(hit, :description)
         %h3= link_to((h boosted_site_url), boosted_site_url)
-- if (search && !search.results.empty?)
-  = results_summary(search.startrecord, search.endrecord, search.total, search.query)
-- if (search && search.spotlight)
+- if (!search.results.empty?)
+  = results_summary(search.startrecord, search.endrecord, search.total, h(search.query))
+- if (search.spotlight)
   #spotlight=search.spotlight.html
-- if (search && !search.results.empty?)
+- if (!search.results.empty?)
   - search.results.each_with_index do |search_result, index|
     %div.searchresult{:id => "searchresult#{index+1}"}
       %h2= display_result_title(search_result)
-      %h3 #{search_result['content']}
+      %h3= display_result_description(search_result)
       %h3= display_result_links(search_result)
       - if @affiliate == nil && index == 0 && search.page == 0
         = display_deep_links_for(search_result)
@@ -23,4 +23,4 @@
 - elsif (search.error_message)
   %p.noresults #{search.error_message}
 - else
-  %p.noresults= t :no_results_for, :query => search.query
+  %p.noresults= t :no_results_for, :query => h(search.query)

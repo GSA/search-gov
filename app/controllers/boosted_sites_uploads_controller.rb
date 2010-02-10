@@ -22,6 +22,7 @@ class BoostedSitesUploadsController < AffiliateAuthController
         redirect_to account_path
       end
     rescue
+      RAILS_DEFAULT_LOGGER.warn "Possible problem in processing : #{$!}"
       flash[:error] = "Your XML document could not be processed. Please check the format and try again."
       render :action => 'new'
     end

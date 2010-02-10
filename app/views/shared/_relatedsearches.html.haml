@@ -2,11 +2,11 @@
   %h3.alt= t :related_searches
   %ul{:id => "relatedsearch"}
     - @search.related_search.each do |result|
-      %li= link_to(result.title, shunt_from_bing_to_usasearch(result.url, @affiliate ))
+      %li= link_to(translate_bing_highlights(h(result.title)), shunt_from_bing_to_usasearch(result.url, @affiliate ))
 - else
   &nbsp
 - if (@search && @search.faqs && @search.faqs.total > 0)
-  %h3.alt= t :related_faqs_header  
+  %h3.alt= t :related_faqs_header
   %ul{:id => "related_faqs"}
     - @search.faqs.hits.each_with_index do |hit, index|
       %li= link_to( highlight_hit(hit, :question), hit.instance.url)

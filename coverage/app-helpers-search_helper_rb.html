@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-search_helper_rb.html">app/helpers/search_helper.rb</a></td>
-            <td class='right_align'><tt>66</tt></td>
-            <td class='right_align'><tt>58</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>96.97%</tt></div>
+            <td class='right_align'><tt>74</tt></td>
+            <td class='right_align'><tt>64</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:97px"></div>
-            <div class="uncovered" style="width:3px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>96.55%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:97px"></div>
-            <div class="uncovered" style="width:3px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -63,139 +63,139 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   def display_result_links (result)</pre></td>
+            <td><pre><a name="line2">2</a>   def display_result_links (result, link = true)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     url = shorten_url &quot;#{result['unescapedUrl']}&quot;</pre></td>
+            <td><pre><a name="line3">3</a>     if false == link then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     html = link_to(&quot;#{h url}&quot;, &quot;#{h result['unescapedUrl']}&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>     unless result['cacheUrl'].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>       html &lt;&lt; &quot; - &quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>       html &lt;&lt; link_to((t :cached), &quot;#{result['cacheUrl']}&quot;)</pre></td>
+            <td><pre><a name="line4">4</a>       return shorten_url(result['unescapedUrl'])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>     html</pre></td>
+            <td><pre><a name="line5">5</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a>   end</pre></td>
+            <td><pre><a name="line6">6</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>     url = shorten_url &quot;#{result['unescapedUrl']}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     html = link_to(&quot;#{h url}&quot;, &quot;#{h result['unescapedUrl']}&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>     unless result['cacheUrl'].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>       html &lt;&lt; &quot; - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>       html &lt;&lt; link_to((t :cached), &quot;#{h result['cacheUrl']}&quot;, :class =&gt; 'cache_link')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a> </pre></td>
+            <td><pre><a name="line12">12</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>   def display_deep_links_for(result)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>     return if result[&quot;deepLinks&quot;].nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>     rows = []</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>     result[&quot;deepLinks&quot;].in_groups_of(2)[0, 4].each do |row_pair|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>       row = content_tag(:td, row_pair[0].nil? ? &quot;&quot; : link_to(row_pair[0].title, row_pair[0].url))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>       row &lt;&lt; content_tag(:td, row_pair[1].nil? ? &quot;&quot; : link_to(row_pair[1].title, row_pair[1].url))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>       rows &lt;&lt; content_tag(:tr, row)</pre></td>
+            <td><pre><a name="line13">13</a>     html</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>     content_tag(:table, rows, :class=&gt;&quot;deep_links&quot;)</pre></td>
+            <td><pre><a name="line14">14</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   end</pre></td>
+            <td><pre><a name="line15">15</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>   def display_deep_links_for(result)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>     return if result[&quot;deepLinks&quot;].nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>     rows = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>     result[&quot;deepLinks&quot;].in_groups_of(2)[0, 4].each do |row_pair|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       row = content_tag(:td, row_pair[0].nil? ? &quot;&quot; : link_to((h row_pair[0].title), row_pair[0].url))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       row &lt;&lt; content_tag(:td, row_pair[1].nil? ? &quot;&quot; : link_to((h row_pair[1].title), row_pair[1].url))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       rows &lt;&lt; content_tag(:tr, row)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a> </pre></td>
+            <td><pre><a name="line23">23</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>   def display_result_title (result)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>     link_to &quot;#{result['title']}&quot;, &quot;#{h result['unescapedUrl']}&quot;</pre></td>
+            <td><pre><a name="line24">24</a>     content_tag(:table, rows, :class=&gt;&quot;deep_links&quot;)</pre></td>
           </tr>
         
           
@@ -213,247 +213,295 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>   def shunt_from_bing_to_usasearch(bingurl, affiliate)</pre></td>
+            <td><pre><a name="line27">27</a>   def display_result_title (result)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>     query = CGI::unescape(bingurl.split(&quot;?q=&quot;).last)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>     opts = {:query=&gt; query}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>     opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>     search_path(opts)</pre></td>
+            <td><pre><a name="line28">28</a>     link_to &quot;#{translate_bing_highlights(h(result['title']))}&quot;, &quot;#{h result['unescapedUrl']}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>   end</pre></td>
+            <td><pre><a name="line29">29</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a> </pre></td>
+            <td><pre><a name="line30">30</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>   def spelling_suggestion(spelling_suggestion, affiliate)</pre></td>
+            <td><pre><a name="line31">31</a>   def display_result_description (result)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>     if (spelling_suggestion)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>       opts = {:query=&gt; spelling_suggestion}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>       opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>       content_tag(:h4, &quot;#{t :did_you_mean}: #{link_to(spelling_suggestion, search_path(opts))}&quot;)</pre></td>
+            <td><pre><a name="line32">32</a>     translate_bing_highlights(h(result['content']))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>     end</pre></td>
+            <td><pre><a name="line33">33</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>   end</pre></td>
+            <td><pre><a name="line34">34</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>   def translate_bing_highlights(body)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>     body.gsub(/\xEE\x80\x80/, '&lt;strong&gt;').gsub(/\xEE\x80\x81/, '&lt;/strong&gt;')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>   def results_summary(a, b, total, q, show_logo = true)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>     summary = t :results_summary, :from =&gt; a, :to =&gt; b, :total =&gt; number_with_delimiter(total), :query =&gt; q</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>     p_sum = content_tag(:p, summary)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>     logo = show_logo ? image_tag(&quot;binglogo.gif&quot;, :style=&gt;&quot;float:right&quot;) : &quot;&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>     container = content_tag(:div, logo + p_sum)</pre></td>
+            <td><pre><a name="line37">37</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>   end</pre></td>
+            <td><pre><a name="line38">38</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>   def shunt_from_bing_to_usasearch(bingurl, affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>     query = CGI::unescape(bingurl.split(&quot;?q=&quot;).last)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>     opts = {:query=&gt; query}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>     opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>     search_path(opts)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>   def gov_form_description(description)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line50">50</a>     return description.size &gt; 250 ? &quot;#{description[0,250]}...&quot; : description</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line51">51</a>   end</pre></td>
+            <td><pre><a name="line44">44</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a> </pre></td>
+            <td><pre><a name="line45">45</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>   private</pre></td>
+            <td><pre><a name="line46">46</a>   def spelling_suggestion(spelling_suggestion, affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>   def shorten_url (url)</pre></td>
+            <td><pre><a name="line47">47</a>     if (spelling_suggestion)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>     return url if url.length &lt;=30</pre></td>
+            <td><pre><a name="line48">48</a>       opts = {:query=&gt; spelling_suggestion}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>     if url.count('/') &gt;= 4</pre></td>
+            <td><pre><a name="line49">49</a>       opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>       arr = url.split('/')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line58">58</a>       host= arr[0]+&quot;//&quot;+arr[2]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line59">59</a>       doc = arr.last.split('?').first</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>       [host, &quot;...&quot;, doc].join('/')</pre></td>
+            <td><pre><a name="line50">50</a>       content_tag(:h4, &quot;#{t :did_you_mean}: #{link_to(spelling_suggestion, search_path(opts))}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line61">61</a>     else</pre></td>
+            <td><pre><a name="line51">51</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line53">53</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>       url[0, 30]+&quot;...&quot;</pre></td>
+            <td><pre><a name="line54">54</a>   def results_summary(a, b, total, q, show_logo = true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>     summary = t :results_summary, :from =&gt; a, :to =&gt; b, :total =&gt; number_with_delimiter(total), :query =&gt; q</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>     p_sum = content_tag(:p, summary)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>     logo = show_logo ? image_tag(&quot;binglogo.gif&quot;, :style=&gt;&quot;float:right&quot;) : &quot;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>     container = content_tag(:div, logo + p_sum)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line63">63</a>     end</pre></td>
+            <td><pre><a name="line59">59</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a>   end</pre></td>
+            <td><pre><a name="line60">60</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line61">61</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line62">62</a>   def shorten_url (url)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>     return url if url.length &lt;=30</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>     if url.count('/') &gt;= 4</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>       arr = url.split('/')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line66">66</a>       host= arr[0]+&quot;//&quot;+arr[2]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line67">67</a>       doc = arr.last.split('?').first</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>       [host, &quot;...&quot;, doc].join('/')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a> end</pre></td>
+            <td><pre><a name="line69">69</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line70">70</a>       url[0, 30]+&quot;...&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line66">66</a> </pre></td>
+            <td><pre><a name="line71">71</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line72">72</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line73">73</a> end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line74">74</a> </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Feb 08 07:19:42 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Feb 11 08:10:17 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

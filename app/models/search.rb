@@ -32,8 +32,7 @@ class Search
     begin
       uri = URI.parse("#{JSON_SITE}?web.offset=#{offset}&web.count=#{self.results_per_page}&AppId=#{APP_ID}&sources=#{SOURCES}&Options=EnableHighlighting&query=#{URI.escape(q)}")
       resp = Net::HTTP.get_response(uri)
-      body = translate_bing_highlights(resp.body)
-      json = JSON.parse(body)
+      json = JSON.parse(resp.body)
       response = ResponseData.new(json['SearchResponse'])
 
       self.total = response.web.total rescue 0
@@ -61,12 +60,12 @@ class Search
     end
     if self.affiliate.nil?
       if I18n.locale.to_s == 'en'
-        self.spotlight = Spotlight.search_for(cleaned_query) 
+        self.spotlight = Spotlight.search_for(cleaned_query)
         self.faqs = Faq.search_for(cleaned_query)
-        self.gov_forms = GovForm.search_for(cleaned_query) 
+        self.gov_forms = GovForm.search_for(cleaned_query)
       end
     else
-      self.boosted_sites = BoostedSite.search_for(self.affiliate, cleaned_query) 
+      self.boosted_sites = BoostedSite.search_for(self.affiliate, cleaned_query)
     end
     true
 
@@ -99,11 +98,6 @@ class Search
         super *args
       end
     end
-  end
-
-  private
-  def translate_bing_highlights(body)
-    body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
   end
 
 end

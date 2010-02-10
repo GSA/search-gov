@@ -34,7 +34,6 @@ class SearchesController < ApplicationController
       :page => (params[:page].to_i - 1),
       :query => params["query"],
       :affiliate => affiliate,
-      :index => params['index'],
       :results_per_page => (in_mobile_view? and (is_device?("iphone") ? 10 : 3))
     }
   end

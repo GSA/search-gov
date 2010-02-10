@@ -8,7 +8,7 @@ module SearchHelper
     html = link_to("#{h url}", "#{h result['unescapedUrl']}")
     unless result['cacheUrl'].blank?
       html << " - "
-      html << link_to((t :cached), "#{result['cacheUrl']}", :class => 'cache_link')
+      html << link_to((t :cached), "#{h result['cacheUrl']}", :class => 'cache_link')
     end
     html
   end
@@ -17,15 +17,23 @@ module SearchHelper
     return if result["deepLinks"].nil?
     rows = []
     result["deepLinks"].in_groups_of(2)[0, 4].each do |row_pair|
-      row = content_tag(:td, row_pair[0].nil? ? "" : link_to(row_pair[0].title, row_pair[0].url))
-      row << content_tag(:td, row_pair[1].nil? ? "" : link_to(row_pair[1].title, row_pair[1].url))
+      row = content_tag(:td, row_pair[0].nil? ? "" : link_to((h row_pair[0].title), row_pair[0].url))
+      row << content_tag(:td, row_pair[1].nil? ? "" : link_to((h row_pair[1].title), row_pair[1].url))
       rows << content_tag(:tr, row)
     end
     content_tag(:table, rows, :class=>"deep_links")
   end
 
   def display_result_title (result)
-    link_to "#{result['title']}", "#{h result['unescapedUrl']}"
+    link_to "#{translate_bing_highlights(h(result['title']))}", "#{h result['unescapedUrl']}"
+  end
+
+  def display_result_description (result)
+    translate_bing_highlights(h(result['content']))
+  end
+
+  def translate_bing_highlights(body)
+    body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
   end
 
   def shunt_from_bing_to_usasearch(bingurl, affiliate)

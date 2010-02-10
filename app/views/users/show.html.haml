@@ -10,7 +10,7 @@
       %table
         - @user.affiliates.each do |affiliate|
           %tr
-            %td= h affiliate.name
+            %td&= affiliate.name
             %td
               = link_to "Edit", edit_affiliate_path(affiliate)
               |
@@ -31,22 +31,22 @@
     =link_to "Edit your profile", edit_account_path
   %dl
     %dt Email:
-    %dd= h @user.email
+    %dd&= @user.email
     %dt Contact Name:
-    %dd= h @user.contact_name
+    %dd&= @user.contact_name
     %dt Time Zone:
-    %dd= h @user.time_zone
+    %dd&= @user.time_zone
     %dt Organization Name:
-    %dd= h @user.organization_name
+    %dd&= @user.organization_name
     %dt Address:
-    %dd= h @user.address
+    %dd&= @user.address
     %dt Address Line 2:
-    %dd= h @user.address2
+    %dd&= @user.address2
     %dt City:
-    %dd= h @user.city
+    %dd&= @user.city
     %dt State:
-    %dd= h @user.state
+    %dd&= @user.state
     %dt Zip:
-    %dd= h @user.zip
+    %dd&= @user.zip
     %dt Phone:
-    %dd= h @user.phone
+    %dd&= @user.phone
