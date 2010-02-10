@@ -177,20 +177,4 @@ describe SearchesController do
     end
   end
   
-  context "when handling a request with an index parameter" do
-    integrate_views
-    before do
-      get :index, :query => 'tax forms', :index => 'faqs'
-      @search = assigns[:search]
-    end
-    
-    should_render_template 'searches/index.html.haml', :layout => 'application'
-    
-    it "should search the specific index and populate the results" do
-      @search.should_not be_nil
-      @search.results.should_not be_nil
-      @search.faqs.should be_nil
-    end
-  end
-  
 end
