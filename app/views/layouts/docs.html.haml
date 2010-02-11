@@ -11,12 +11,33 @@
     = javascript_include_tag :defaults
     %style{:type => "text/css", :media => "screen"}
       :plain
+        .main {
+          font-size:1.2em;
+        }
+        h1, h2 {
+          font-family: Georgia, "Times New Roman", serif;
+        }
+        h1 {
+          font-size: 2.0em;
+        }
+        h2 {
+          font-size: 1.5em;
+        }
         .main p + p {
           margin-top: 1.0em;
           text-indent: 0;
         }
+        table, td {
+          border: solid 1px lightgray;
+        }
         table {
-          color: #666;
+          margin: 1em 0 0 0;
+          border-spacing: 0;
+          border-collapse: collapse;
+        }
+        td {
+          margin: 0;
+          border: solid 1px lightgray;
         }
 
   %body{:style=>"background-color: #{locale_dependent_background_color}"}

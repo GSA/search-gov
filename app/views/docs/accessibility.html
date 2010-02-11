@@ -1,7 +1,7 @@
 <h1>Accessibility</h1>
 
 <p>The Search.USA.gov website is being updated frequently to make it as
-accessible as possible.  If you use special adaptive equipment to
+accessible as possible.  If you use special assistive technology to
 access the Web and encounter problems when using our site, please let
 us know. Write to:
 <a href="mailto:support@searchusa.zendesk.com">support@searchusa.zendesk.com</a>
@@ -10,13 +10,13 @@ format. It would be helpful if you can be as specific as possible when
 describing the information you seek.</p>
 
 <p>In addition, the Search.USA.gov site is also routinely reviewed for
-alignment with the latest Web Accessibility Initiative Guidelines for
-W3C. The <a href="http://www.W3.org/WAI/">Web Accessibility Initiative Guidelines</a>
+alignment with the latest Web Content Accessibility Guidelines (WCAG) 
+from the W3C Web Accessibility Initiative. The <a href="http://www.w3.org/TR/WCAG10/">Web Content Accessibility Guidelines (WCAG)</a>
 define how browsers, media players, and other "user agents" support
 people with disabilities and work assistive technologies.</p>
 
 <p>If you need help accessing a PDF document, Adobe&reg; offers conversion
-tools at its <a href="http://www.adobe.com/accessibility/">Accessibly Resource Center</a>.</p>
+tools at its <a href="http://www.adobe.com/accessibility/">Accessibility Resource Center</a>.</p>
 
 <p>For help with other Microsoft&reg; products, visit their <a href="http://www.microsoft.com/enable/">accessibility
 page</a>.</p>
@@ -30,105 +30,119 @@ Federal electronic information products, visit the
 
 <h1>Accessibility Check List</h1>
 
-<p><em>Section 1194.22: Web-based Internet Information and Applications</em></p>
+<h2>Section 1194.22: Web-based Internet Information and Applications</h2>
 
-<p>The following is a preliminary accessibility assessment of end-user
-facing pages of <a href="http://search.usa.gov/">search.usa.gov</a>.For more
-information about government accessibility standards see <a href="http://www.section508.gov/">Secition 508</a>.</p>
+<p>The following are the results of our first accessibility review of <a href="http://search.usa.gov/">search.usa.gov</a>.  For more
+information about government accessibility standards see <a href="http://www.section508.gov/">Section 508</a>.</p>
 
 <table>
 <tr>
-<th>Rule</th>
-<th>Name</th>
-<th>Support</th>
-<th>Comments</th>
+<th>Criteria</th>
+<th>Supporting Features</th>
+<th>Remarks and explanations</th>
 </tr>
 <tr>
-<td>(a)</td>
-<td>Text equivalent of non-text items</td>
-<td>Supported</td>
-<td>Images on the site contain 'alt tags,' which aid users who listen to the content of the site by using a screen reader, rather than reading the site.</td>
+<td>(a) Text equivalent of non-text items</td>
+<td>Supports</td>
+<td>Images on the site contain 'alt text'.</td>
 </tr>
 <tr>
-<td>(b)</td>
-<td>Provide synchronized alternatives for media</td>
+<td>(b) Provide synchronized alternatives for media</td>
 <td>Not Applicable</td>
 <td>The site is primarily text based.</td>
 </tr>
 <tr>
-<td>(c)</td>
-<td>Information should not be conveyed only with color</td>
-<td>Supported</td>
+<td>(c) Information should not be conveyed only with color</td>
+<td>Supports</td>
 <td>All information that is conveyed with color in the default end
 user display is also conveyed through markup.</td>
 </tr>
 <tr>
-<td>(d)</td>
-<td>Documents must be readable without style sheets</td>
-<td>Supported</td>
-<td>The search and results screens are readable without a style
-sheet.</td>
+<td>(d) Documents must be readable without style sheets</td>
+<td>Supports</td>
+<td>The search and results screens are readable without a style sheet.</td>
 </tr>
 <tr>
-<td>(e)</td>
-<td>Redundant text link for server-side image maps</td>
+<td>(e) Redundant text link for server-side image maps</td>
 <td>Not Applicable</td>
 <td>Image maps are not used.</td>
 </tr>
 <tr>
-<td>(f)</td>
-<td>Client side images maps should be used</td>
+<td>(f) Client side images maps should be used</td>
 <td>Not Applicable</td>
 <td>Image maps are not used.</td>
 </tr><tr>
-<td>(g)</td>
-<td>Identify table headers</td>
-<td>Supported</td>
+<td>(g) Identify table headers</td>
+<td>Supports</td>
 <td>Tables are used sparingly to organize deep links in search results page.  There are no headers.</td>
 </tr><tr>
-<td>(h)</td>
-<td>Markup shall be used to associate data cells and header cells for data tables that have two or more logical levels of row or column headers.</td>
+<td>(h) Markup shall be used to associate data cells and header cells for data tables that have two or more logical levels of row or column headers.</td>
 <td>Not Applicable</td>
 <td>Tables are used sparingly.</td>
 </tr><tr>
-<td>(i)</td>
-<td>Properly title frames</td>
+<td>(i) Properly title frames</td>
 <td>Not Applicable</td>
 <td>Frames are not used.</td>
 </tr><tr>
-<td>(j)</td>
-<td>Avoid causing pages to flicker</td>
-<td>Supported</td>
-<td>The site does not use the <code>&lt;blink&gt;</code> tag or flickering animation.</td>
+<td>(j) Avoid causing pages to flicker</td>
+<td>Supports</td>
+<td>The site does not use text effects or animation.</td>
 </tr><tr>
-<td>(k)</td>
-<td>As a last resort provide a text-only page</td>
-<td>Supported</td>
+<td>(k) As a last resort provide a text-only page</td>
+<td>Not Applicable</td>
 <td>The search and results screens are primarily text-only site.</td>
 </tr><tr>
-<td>(l)</td>
-<td>Ensure scripts are accessible</td>
-<td>Not Supported </td>
-<td>There are several features on Search.USA.gov that rely on JavaScript.  When possible we will provide accessible alternatives to JavaScript dependent features.</td>
+<td>(l) Ensure scripts are accessible</td>
+<td>Supports</td>
+<td>The search functions continue to work when JavaScript is disabled.</td>
 </tr><tr>
-<td>(m)</td>
-<td>Ensure embedded files are accessible</td>
+<td>(m) Ensure embedded files are accessible</td>
 <td>Not Applicable</td>
 <td>Files are not embedded.</td>
 </tr><tr>
-<td>(n)</td>
-<td>Ensure electronic forms are accessible</td>
-<td>Supported</td>
+<td>(n) Ensure electronic forms are accessible</td>
+<td>Supports</td>
 <td>The search forms have the appropriate labels in order to make them navigable.</td>
 </tr><tr>
-<td>(o)</td>
-<td>Provide a method for skipping repetitive links</td>
-<td>Supported </td>
+<td>(o) Provide a method for skipping repetitive links</td>
+<td>Supports </td>
 <td>There is no repetitive navigation.</td>
 </tr><tr>
-<td>(p)</td>
-<td>Ensure user control over timed responses</td>
+<td>(p) Ensure user control over timed responses</td>
 <td>Not Applicable</td>
 <td> </td>
 </tr>
 </table>
+
+<h2>Section 1194.31 Functional Performance Criteria – Detail</h2>
+
+<table>
+<tr>
+<th>Criteria</th>
+<th>Supporting Features</th>
+<th>Remarks and explanations</th>
+</tr><tr>
+<td>(a) At least one mode of operation and information retrieval that does not require user vision shall be provided, or support for Assistive Technology used by people who are blind or visually impaired shall be provided.</td>
+<td>Supports</td>
+<td>Supported through Assistive Technology</td>      
+</tr><tr>
+<td>(b) At least one mode of operation and information retrieval that does not require visual acuity greater than 20/70 shall be provided in audio and enlarged print output working together or independently, or support for Assistive Technology used by people who are visually impaired shall be provided.      </td>
+<td>Supports</td>
+<td>Most of the interface elements can be changed through the browser's accessibility options</td>       
+</tr><tr>
+<td>(c) At least one mode of operation and information retrieval that does not require user hearing shall be provided, or support for Assistive Technology used by people who are deaf or hard of hearing shall be provided  </td>
+<td>Not Applicable </td>
+<td>No audio features. </td>         
+</tr><tr>
+<td>(d) Where audio information is important for the use of a product, at least one mode of operation and information retrieval shall be provided in an enhanced auditory fashion, or support for assistive hearing devices shall be provided.</td>
+<td>Not Applicable </td>
+<td>No audio features. </td>         
+</tr><tr>
+<td>(e) At least one mode of operation and information retrieval that does not require user speech shall be provided, or support for Assistive Technology used by people with disabilities shall be provided.        </td>
+<td>Not Applicable </td>
+<td>No audio features.</td>      
+</tr><tr>
+<td>(f) At least one mode of operation and information retrieval that does not require fine motor control or simultaneous actions and that is operable with limited reach and strength shall be provided.     </td>
+<td>Supports</td>
+<td>Only basic typing skills required.</td>      
+</table>     
