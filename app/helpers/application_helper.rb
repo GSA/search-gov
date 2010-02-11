@@ -58,7 +58,7 @@ module ApplicationHelper
   end
 
   def footer_links
-    iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone << ["Mobile", url_for_mobile_mode(true)])
+    iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone)
   end
 
   def render_webtrends_code
