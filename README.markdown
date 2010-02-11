@@ -32,7 +32,7 @@ You will need to install rubygems 1.3.5 or later and set up your gem sources:
 
 We're using Solr for fulltext search. You might need to install these gems separately due to a Catch-22 with the Rake gem installer.
 
-    sudo gem install sunspot sunspot_rails hoptoad
+    sudo gem install sunspot sunspot_rails hoptoad_notifier
 
 You can start/stop/reindex Solr like this:
 
