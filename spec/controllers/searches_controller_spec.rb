@@ -75,7 +75,7 @@ describe SearchesController do
 
   describe "when showing index" do
     it "should have a route with a locale" do
-      search_path.should == '/search?locale=en'
+      search_path.should =~ /search\?locale\=en/
     end
   end
 
