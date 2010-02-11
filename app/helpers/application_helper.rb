@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def url_for_mobile_mode(new_mobile_mode)
-    new_params = request.params.update({:mobile_mode => new_mobile_mode.to_s})
+    new_params = request.params.update({:mobile => new_mobile_mode.to_s})
     url_for({:controller => params[:controller], :action => params[:action], :params => new_params})
   end
 

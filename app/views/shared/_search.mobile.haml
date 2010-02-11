@@ -6,9 +6,9 @@
   .group
     .row.center
       = text_field :search, :query, {:name=>"query", :placeholder => "Search"}
-      - unless (is_device?("iphone") || is_device?("ipod")) then
-        = submit_tag(t :search, :id => "search_button")
+      = submit_tag(t :search, :id => "search_button")
       = hidden_field_tag :locale, I18n.locale
+      = hidden_field_tag :mobile, params[:mobile]
     .row.center
       = image_tag("binglogo.gif")
 - if js_enabled_mobile_device?
