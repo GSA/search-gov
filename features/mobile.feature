@@ -6,10 +6,6 @@ Feature: Mobile Search
   Background:
     Given I am using a mobile device
 
-  Scenario: Visiting the home page from a mobile device
-    Given I am on the homepage
-    Then I should see "Full Site"
-
   Scenario: A search on the mobile home page
     Given I am on the homepage
     When I fill in "query" with "social security"
