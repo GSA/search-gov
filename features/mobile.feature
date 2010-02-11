@@ -5,8 +5,8 @@ Feature: Mobile Search
 
   Scenario: Visiting the home page from a mobile device
     Given I am using a mobile device
-    Given I am on the homepage
-    Then I should see "mobile"
+    Given I am on the homepagess
+    Then I should see "Full Site"
 
   Scenario: A search on the mobile home page
     Given I am using a mobile device
@@ -47,9 +47,3 @@ Feature: Mobile Search
     And I submit the search form
     Then I should see "That is too long a word. Try using a shorter word."
 
-  Scenario: Visiting the homepage as a Spanish speaker
-    Given I am using a mobile device
-    Given I am on the homepage
-    And I follow "Busque en español"
-    Then I should see "Contáctenos"
-    And I should see "Sugiera un enlace"

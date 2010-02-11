@@ -71,14 +71,14 @@ module ActionController
       
       def set_mobile_format
         mobile_mode = request.params[:mobile_mode]
-        if not mobile_mode.nil? then
+        if not mobile_mode.nil?
           session[:mobile_view] = mobile_mode == "true"
         end
 
-        request.format = session[:mobile_view] ? :mobile : :html
         if is_mobile_device?
           session[:mobile_view] = true if session[:mobile_view].nil?
         end
+        request.format = session[:mobile_view] ? :mobile : :html
       end
       
       # Returns either true or false depending on whether or not the format of the
