@@ -32,7 +32,7 @@ You will need to install rubygems 1.3.5 or later and set up your gem sources:
 
 We're using Solr for fulltext search. You might need to install these gems separately due to a Catch-22 with the Rake gem installer.
 
-    sudo gem install sunspot sunspot_rails
+    sudo gem install sunspot sunspot_rails hoptoad
 
 You can start/stop/reindex Solr like this:
 
@@ -106,7 +106,7 @@ Go to:
 
 # Contributing Code
 
-1. Pick the next story off the top of the queue on Tracker and make sure you understand the intent behind it. Click the "Start" button so nobody else starts working on it.
+1. Pick the next story off the top of the queue on Tracker and make sure you understand the intent behind it. Click the "Start" button so nobody else starts working on it. But before you click "Start", do you have a firm idea of what you will need to do in order to clck "Finished"?
 
 2. Make sure you have the latest code:
 
@@ -142,6 +142,6 @@ Go to:
 
         cap deploy
 
-11. Mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment
+11. Mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment. Add an acceptance test in the story comments so someone else can easily verify what you have done.
 
 12. Goto Step 1
