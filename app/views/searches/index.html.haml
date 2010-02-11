@@ -5,5 +5,3 @@
   = render :partial => "shared/search"
   = render :partial => "shared/searchresults", :locals => { :search => @search }
   = render :partial => "shared/footer_search", :locals => { :search => @search }
-- if is_mobile_device?
-  = mobile_mode_link("Mobile Site", true)
