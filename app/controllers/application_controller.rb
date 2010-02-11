@@ -8,9 +8,24 @@ class ApplicationController < ActionController::Base
 
   has_mobile_fu
 
+  AVAILABLE_LOCALES = [:en, :es]
+
   private
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = determine_locale_from_param(params[:locale]) || I18n.default_locale
+  end
+
+  def determine_locale_from_param (locale_param)
+    return nil if locale_param.nil? || locale_param.match(/^\w{2}$/).nil? || !locale_exists?(locale_param)
+    locale_param.to_sym
+  end
+
+  def locale_exists? (locale)
+    available_locales.include?(locale.to_sym)
+  end
+
+  def available_locales
+    AVAILABLE_LOCALES
   end
 
   def default_url_options(options={})

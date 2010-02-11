@@ -14,10 +14,40 @@ describe HomeController do
     end
   end
 
-  context "when locale is specified" do
+  context "when valid locale is specified" do
     it "should assign a locale" do
       get :index, :locale=> "es"
-      I18n.locale.should == "es"
+      I18n.locale.should == :es
     end
   end
+
+  context "when locale is specified" do
+    context "that is invalid" do
+      before do
+        get :index, :locale=> "hp:webinspect..file*test"
+      end
+      it "should set locale to :en" do
+        I18n.locale.should == :en
+      end
+    end
+
+    context "that is malicious" do
+      before do
+        get :index, :locale=> "\0"
+      end
+      it "should set locale to :en" do
+        I18n.locale.should == :en
+      end
+    end
+
+    context "that is erroneous" do
+      before do
+        get :index, :locale=> "fr"
+      end
+      it "should set locale to :en" do
+        I18n.locale.should == :en
+      end
+    end
+  end
+
 end

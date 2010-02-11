@@ -33,3 +33,9 @@ desc "Make releases directory readable/writable (+rx) to workaround overly restr
 task :fix_permissions do
   run "cd #{release_path}; sudo chmod -R a+rx ."
 end
+
+Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
+  $: << File.join(vendored_notifier, 'lib')
+end
+
+require 'hoptoad_notifier/capistrano'
