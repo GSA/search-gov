@@ -7,6 +7,7 @@
         %h2= link_to(highlight_hit(hit, :title), boosted_site_url)
         %h3= highlight_hit(hit, :description)
         %h3= link_to((h boosted_site_url), boosted_site_url)
+%a{:name => "content"}
 - if (!search.results.empty?)
   = results_summary(search.startrecord, search.endrecord, search.total, h(search.query))
 - if (search.spotlight)
