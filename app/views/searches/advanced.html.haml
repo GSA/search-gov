@@ -1,0 +1,113 @@
+- form_tag(search_path, :method => :get, id=> 'advanced-firstgov', :class => 'advanced', :name=> 'advanced-firstgov', :target => '_parent') do
+  %input{ :name => "input-form", :type => "hidden", :value => "advanced-firstgov" }
+  #advanced-form-intro
+    %strong
+      Use the options on this page to create a very specific search.
+  .elements
+    %div
+      %strong
+        Show results with
+    .element
+      .query-label
+        %span.query-label
+          %label{ :for => "query-lbl" }
+            All of these words
+      .input
+        %input#query-lbl{ :name => "query", :size => "40" }
+        %select#query-limit-lbl{ :name => "query-limit", :title => "on what part of page" }
+          %option{ :selected => "", :value => "" }
+            any part of the page
+          %option{ :value => "intitle:" }
+            in the title of the page
+    .element
+      .query-label
+        %span.query-label
+          %label{ :for => "query-quote-lbl" }
+            This exact phrase
+      .input
+        %input#query-quote-lbl{ :name => "query-quote", :size => "40" }
+        %select#query-quote-limit-lbl{ :name => "query-quote-limit", :title => "on what part of page" }
+          %option{ :value => "" }
+            any part of the page
+          %option{ :selected => "", :value => "intitle:" }
+            in the title of the page
+    .element
+      .query-label
+        %span.query-label
+          %label{ :for => "query-or-lbl" }
+            Any of these words
+      .input
+        %input#query-or-lbl{ :name => "query-or", :size => "40" }
+        %select#query-or-limit-lbl{ :name => "query-or-limit", :title => "on what part of page" }
+          %option{ :selected => "", :value => "" }
+            any part of the page
+          %option{ :value => "intitle:" }
+            in the title of the page
+    .element
+      .query-label
+        %span.query-label
+          %label{ :for => "query-not-lbl" }
+            None of these words
+      .input
+        %input#query-not-lbl{ :name => "query-not", :size => "40" }
+        %select#query-not-limit-lbl{ :name => "query-not-limit", :title => "on what part of page" }
+          %option{ :selected => "", :value => "" }
+            any part of the page
+          %option{ :value => "intitle:" }
+            in the title of the page
+    .element
+      .label
+        %span.label
+          %label{ :for => "filetype-lbl" }
+            File Type
+      .input
+        %select#filetype-lbl{ :name => "filetype" }
+          %option{ :value => nil }
+            All
+          %option{ :value => "pdf" }
+            Adobe PDF
+          %option{ :value => "xls" }
+            Microsoft Excel
+          %option{ :value => "ppt" }
+            Microsoft PowerPoint
+          %option{ :value => "doc" }
+            Microsoft Word
+          %option{ :value => "txt" }
+            Text
+    .element
+      .label
+        %span.label
+          %label{ :for => "sitelimit-lbl" }
+            Limit to these sites
+      .input
+        %input#sitelimit-lbl{ :name => "sitelimit", :size => "50" }
+        %div
+          Enter URL(s) separated by spaces e.g. whitehouse.gov omb.gov
+    .element
+      .label
+        %span.label
+          %label{ :for => "siteexclude-lbl" }
+            Exclude these sites
+      .input
+        %input#siteexclude-lbl{ :name => "siteexclude", :size => "50" }
+        %div
+          Enter URL(s) separated by spaces e.g. whitehouse.gov omb.gov
+    .element
+      .label
+        %span.label
+          %label{ :for => "per-page-lbl" }
+            Results per Page
+      .input
+        %select#per-page-lbl{ :name => "per-page" }
+          %option{ :selected => "", :value => "10" }
+            10
+          %option{ :value => "20" }
+            20
+          %option{ :value => "30" }
+            30
+          %option{ :value => "40" }
+            40
+          %option{ :value => "50" }
+            50
+  .submit
+    %input{ :src => "/images/search.gif", :type => "image", :value => "Search the Government", :alt => "Search the Government" }

@@ -2,19 +2,63 @@ class Search
   attr_accessor :query, :page, :error_message, :affiliate, :total, :results, :startrecord, :endrecord, :related_search, :spelling_suggestion, :boosted_sites, :spotlight, :faqs, :gov_forms, :results_per_page
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PER_PAGE = 10
+  MAX_PER_PAGE = 50
   JSON_SITE="http://api.search.live.net/json.aspx"
   APP_ID="A4C32FAE6F3DB386FC32ED1C4F3024742ED30906"
   SOURCES = %w{Spell Web RelatedSearch}.join('+')
 
   def initialize(options = {})
     options ||= {}
-    self.query = options[:query] || ''
+    self.query = build_query(options)
     self.affiliate = options[:affiliate]
     self.page = [options[:page].to_i, 0].max
     self.results_per_page = options[:results_per_page] || DEFAULT_PER_PAGE
+    self.results_per_page = self.results_per_page.to_i unless self.results_per_page.is_a?(Integer)
+    if self.results_per_page > MAX_PER_PAGE
+      self.results_per_page = MAX_PER_PAGE
+    end
     self.results, self.related_search, self.boosted_sites, self.faqs, self.gov_forms = [], [], nil, nil, nil
   end
-
+  
+  def build_query(options)
+    query = ''
+    if !options[:query].nil? && !options[:query].empty?
+      query += limit_field(options[:query_limit], options[:query])
+    end
+    
+    if !options[:query_quote].nil? && !options[:query_quote].empty?
+      query += ' '
+      query += limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"")
+    end
+    
+    if !options[:query_or].nil? && !options[:query_or].empty?
+      query_or = options[:query_or].split.join(' OR ')
+      query += ' ' + limit_field(options[:query_or_limit], query_or)
+    end
+    
+    if !options[:query_not].nil? && !options[:query_not].empty?
+      query_not = '-' + options[:query_not].split.join(' -')
+      query += ' ' + limit_field(options[:query_not_limit], query_not)
+    end
+   
+    query += " filetype:#{options[:file_type]}" unless options[:file_type].nil? || options[:file_type].empty? || options[:file_type].downcase == 'all'
+    query += " #{options[:site_limits].split.collect { |site| 'site:' + site}.join(' OR ')}" unless options[:site_limits].nil? || options[:site_limits].empty?
+    query += " #{options[:site_excludes].split.collect { |site| '-site:' + site}.join(' ')}" unless options[:site_excludes].nil? || options[:site_excludes].empty?
+    return query.strip
+  end
+  
+  def limit_field(field_name, query)
+    if field_name.nil?
+      query
+    else
+      if field_name.empty?
+        query
+      else
+        "#{field_name}(#{query})"
+      end
+    end
+  end
+  
   def run
     self.error_message = (I18n.translate :too_long) and return false if self.query.length > MAX_QUERYTERM_LENGTH
     self.error_message = (I18n.translate :empty_query) and return false if self.query.blank?

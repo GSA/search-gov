@@ -9,6 +9,7 @@
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
   = submit_tag(t :search, :id => "search_button")
+  = link_to((t :advanced_search), advanced_search_path)
   = link_to((t :search_in), home_page_path(:locale => other_locale_str)) if @affiliate.nil?
 
 :javascript

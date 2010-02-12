@@ -20,6 +20,9 @@ class SearchesController < ApplicationController
     @auto_complete_options = BlockWord.filter(results, "query")
     render :inline => "<%= auto_complete_result(@auto_complete_options, 'query', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
   end
+  
+  def advanced
+  end
 
   private
 
@@ -32,9 +35,20 @@ class SearchesController < ApplicationController
     end
     @search_options = {
       :page => (params[:page].to_i - 1),
-      :query => params["query"],
+      :query => params["query"] || nil,
+      :query_limit => params["query-limit"] || nil,
+      :query_quote => params["query-quote"] || nil,
+      :query_quote_limit => params["query-quote-limit"] || nil,
+      :query_or => params["query-or"] || nil,
+      :query_or_limit => params["query-or-limit"] || nil,
+      :query_not => params["query-not"] || nil,
+      :query_not_limit => params["query-not-limit"] || nil,
+      :file_type => params["filetype"] || nil, 
+      :site_limits => params["sitelimit"] || nil,
+      :site_excludes => params["siteexclude"] || nil,
+      :filter => params["filter"] || nil,
       :affiliate => affiliate,
-      :results_per_page => (in_mobile_view? and (is_device?("iphone") ? 10 : 3))
+      :results_per_page => in_mobile_view? ? (is_device?("iphone") ? 10 : 3) : (params["per-page"].nil? ? nil : (params["per-page"].empty? ? nil : params["per-page"].to_i))  
     }
   end
 end
