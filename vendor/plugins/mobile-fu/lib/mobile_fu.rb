@@ -73,9 +73,8 @@ module ActionController
         # is using a mobile device
         if is_mobile_device?
           request.params[:mobile] = "true"
+          request.format = request.params[:mobile] == "true" ? :mobile : :html
         end
-
-#        request.format = request.params[:mobile] == "true" ? :mobile : :html
       end
 
       # Returns either true or false depending on whether or not the format of the
