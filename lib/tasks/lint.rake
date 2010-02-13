@@ -20,7 +20,7 @@ namespace :usasearch do
         File.open(fname, 'w') do |f|
           f.write res.body
           f.close
-          system "/opt/local/bin/xmllint --html --noout #{fname} 2>&1"
+          system "xmllint --html --noout #{fname} 2>&1"
         end
         count+=1
       end
