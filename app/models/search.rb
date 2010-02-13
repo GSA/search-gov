@@ -31,7 +31,11 @@ class Search
 
     begin
       uri = URI.parse("#{JSON_SITE}?web.offset=#{offset}&web.count=#{self.results_per_page}&AppId=#{APP_ID}&sources=#{SOURCES}&Options=EnableHighlighting&query=#{URI.escape(q)}")
-      resp = Net::HTTP.get_response(uri)
+      http = Net::HTTP.new(uri.host, uri.port)
+      req = Net::HTTP::Get.new(uri.request_uri)
+      req["User-Agent"] = "USASearch"
+      req["Client-IP"] = "209.251.180.16"
+      resp = http.request(req)
       json = JSON.parse(resp.body)
       response = ResponseData.new(json['SearchResponse'])
 

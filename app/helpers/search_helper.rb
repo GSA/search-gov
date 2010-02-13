@@ -47,7 +47,8 @@ module SearchHelper
     if (spelling_suggestion)
       opts = {:query=> spelling_suggestion}
       opts.merge!(:affiliate => affiliate.name) if affiliate
-      content_tag(:h4, "#{t :did_you_mean}: #{link_to(spelling_suggestion, search_path(opts))}")
+      suggestion = translate_bing_highlights(h(spelling_suggestion))
+      content_tag(:h4, "#{t :did_you_mean}: #{link_to(suggestion, search_path(opts))}")
     end
   end
 

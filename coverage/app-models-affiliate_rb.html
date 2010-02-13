@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-affiliate_rb.html">app/models/affiliate.rb</a></td>
-            <td class='right_align'><tt>6</tt></td>
-            <td class='right_align'><tt>6</tt></td>
+            <td class='right_align'><tt>8</tt></td>
+            <td class='right_align'><tt>8</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,25 +75,37 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   belongs_to :user</pre></td>
+            <td><pre><a name="line4">4</a>   validates_length_of :name, :within=&gt; (3..33)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   has_many :boosted_sites</pre></td>
+            <td><pre><a name="line5">5</a>   validates_format_of :name, :with=&gt; /^[\w.-]+$/i </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>   belongs_to :user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>   has_many :boosted_sites</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> end</pre></td>
+            <td><pre><a name="line8">8</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Feb 11 08:10:17 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Fri Feb 12 19:24:40 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
