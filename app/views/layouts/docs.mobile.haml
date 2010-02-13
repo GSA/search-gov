@@ -10,7 +10,12 @@
     - else
       %meta{:name => "MobileOptimized", :content => "175"}
   %body
-    = yield
+    .group
+      .row.center
+        = link_to image_tag("/m/i/logo.gif"), :controller => "home"
+    .group
+      .row
+        = yield
     .group
       .row.center
         = link_to_mobile_mode("Full Site", "override")

@@ -15,7 +15,7 @@
         = header_links
       .prepend-1.span-22.append-1.main.docs
         .span-4.append-3{:style => "margin: 0 -8px 0 8px;"}
-          = link_to(image_tag( "USAsearch_medium_#{I18n.locale}.gif" , :alt=>"USASearch Home"), home_page_path(:locale => I18n.locale))
+          = link_to(image_tag( "USAsearch_medium_#{I18n.locale}.gif" , :alt=>"USASearch Home"), home_page_path(:locale => I18n.locale, :m => params[:m] || "false"))
         .span-16.last
           = yield
       .prepend-1.span-22.append-1.footer

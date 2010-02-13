@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def url_for_mobile_mode(new_mobile_mode)
-    new_params = request.params.update({:mobile => new_mobile_mode.to_s})
+    new_params = request.params.update({:m => new_mobile_mode.to_s})
     url_for({:controller => params[:controller], :action => params[:action], :params => new_params})
   end
 
@@ -58,7 +58,7 @@ module ApplicationHelper
   end
 
   def footer_links
-    iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone)
+    iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone << ["Mobile", url_for_mobile_mode("true")])
   end
 
   def render_webtrends_code

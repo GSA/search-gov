@@ -71,9 +71,22 @@ module ActionController
       def set_mobile_format
         # coming into the site, the mobile mode should be set automatically if the user
         # is using a mobile device
+        # UNLESS they override it -JPC
+        initial_mobile_param = request.params[:m]
         if is_mobile_device?
-          request.params[:mobile] = "true"
-          request.format = request.params[:mobile] == "true" ? :mobile : :html
+          if initial_mobile_param != "override"
+            request.params[:m] = "true"
+          end
+        end
+
+        # we're doing this without session vars now -JPC
+        mobile_param = request.params[:m]
+        if request.format == "text/html"
+          if mobile_param.nil? then
+            request.format = :html
+          else
+            request.format = mobile_param == "true" ? :mobile : :html
+          end
         end
       end
 

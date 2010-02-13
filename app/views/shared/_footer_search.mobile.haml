@@ -4,6 +4,6 @@
       = text_field :search, :query, {:name=>"query", :placeholder => "Search"}
       = submit_tag(t :search, :id => "search_button")
       = hidden_field_tag :locale, I18n.locale
-      = hidden_field_tag :mobile, params[:mobile]
+      = hidden_field_tag :m, params[:m]
     .row.center
       = image_tag("binglogo.gif")
