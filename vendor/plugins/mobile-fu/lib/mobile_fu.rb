@@ -81,12 +81,8 @@ module ActionController
 
         # we're doing this without session vars now -JPC
         mobile_param = request.params[:m]
-        if request.format == "text/html"
-          if mobile_param.nil? then
-            request.format = :html
-          else
-            request.format = mobile_param == "true" ? :mobile : :html
-          end
+        if not mobile_param.nil?
+          request.format = mobile_param == "true" ? :mobile : :html
         end
       end
 
