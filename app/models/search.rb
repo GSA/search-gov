@@ -58,7 +58,7 @@ class Search
       self.results = WillPaginate::Collection.create(self.page+1, self.results_per_page, pagination_total) { |pager| pager.replace(results_array) }
       self.startrecord = self.page * self.results_per_page + 1
       self.endrecord = self.startrecord + self.results.size - 1
-    rescue SocketError, Errno::ECONNREFUSED, JSON::ParserError => e
+    rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, JSON::ParserError => e
       RAILS_DEFAULT_LOGGER.warn "Error getting search results from Bing server: #{e}"
       return false
     end
