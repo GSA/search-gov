@@ -85,24 +85,59 @@ You can click around on the files that have < 100% coverage to see what lines we
 
 Make sure you commit any changes to the coverage directory back to git.
 
-# Analytics
-
-If you are looking at the analytics functionality, it helps to have some sample data in there. This will populate your
-development database with a month's worth of data for 100 query terms:
-
-    rake usasearch:create_dummy_analytics_data DAYS=30 WORDCOUNT=100
-
 # Running it
 
 Fire up a server and try it all out:
 
     script/server
 
-Go to:
+# Main areas of functionality
 
-* http://127.0.0.1:3000
-* http://127.0.0.1:3000/analytics
-* http://127.0.0.1:3000/admin/affiliates
+## Search
+
+<http://127.0.0.1:3000>
+
+You should be able to type in 'taxes' and get search results.
+
+Now populate your Faqs and Forms tables with files you can download from Github here:
+<https://github.com/loren/usasearch/downloads>
+
+    rake usasearch:gov_form:load[form_file_name]
+    rake usasearch:faq:load[faq_file_name]
+
+Now re-run your search for taxes and you should see more content.
+
+## Affiliate accounts
+Get yourself a user account
+
+<http://127.0.0.1:3000/account>
+
+Create an affiliate for yourself called 'foo', and put in a simple header/footer like H1's or something.
+Re-run your 'taxes' search and add '&affiliate=foo' to the HTTP request.
+
+## Analytics
+If you are looking at the analytics functionality, it helps to have some sample data in there. This will populate your
+development database with a month's worth of data for 100 query terms:
+
+    rake usasearch:create_dummy_analytics_data DAYS=30 WORDCOUNT=100
+
+Give your user account priveleges to access analytics (and admin while you are at it). Here's how with script/console:
+
+    user = User.last
+    user.update_attribute(:is_analyst, true)
+    user.update_attribute(:is_affiliate_admin, true)
+
+Check it out here:
+
+<http://127.0.0.1:3000/analytics>
+
+## Admin
+Your user account should have admin priveleges set. Now go here and poke around.
+
+<http://127.0.0.1:3000/admin>
+
+Create a Spotlight (hint: use the template to get started). For keywords, put in 'taxes'.
+Now re-run that taxes search again and you should see content above the search results.
 
 # Contributing Code
 
