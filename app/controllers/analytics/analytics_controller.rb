@@ -1,4 +1,4 @@
-class Analytics::AnalyticsController < ApplicationController
+class Analytics::AnalyticsController < SslController
   helper :all
   layout "analytics"
   before_filter :require_analyst

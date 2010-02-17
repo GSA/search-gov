@@ -1,4 +1,4 @@
-class Admin::AdminController < ApplicationController
+class Admin::AdminController < SslController
   layout "admin"
   before_filter :require_affiliate_admin
 

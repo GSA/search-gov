@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include SslRequirement
+  skip_before_filter :ensure_proper_protocol unless Rails.env.production?
   before_filter :set_locale
   helper :all
   helper_method :current_user_session, :current_user
