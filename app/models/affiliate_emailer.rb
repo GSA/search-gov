@@ -3,7 +3,7 @@ class AffiliateEmailer < ActionMailer::Base
 
   def email(affiliate_user, subject, body)
     @recipients = affiliate_user.email
-    @from = "support@searchusa.zendesk.com"
+    @from = "noreply@usasearch.gov"
     @subject = subject
     @sent_on = Time.now
     @headers['Content-Type'] = "text/plain; charset=utf-8; format=flowed"
