@@ -8,7 +8,7 @@ ActionController::Routing::Routes.draw do |map|
     affiliate.resource :boosted_sites_upload, :only => [:create, :new]
   end
   map.search '/search', :controller => "searches"
-  map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get 
+  map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get
   map.namespace(:admin) do |admin|
     admin.resources :affiliates, :active_scaffold => true
     admin.resources :users, :active_scaffold => true
@@ -34,5 +34,6 @@ ActionController::Routing::Routes.draw do |map|
                     :requirements => { :action => /auto_complete_for_\S+/ },
                     :conditions => { :method => :get }
 
-  map.docs "/docs/:doc", :controller => "docs", :action => "show_doc"
+  # handle static content
+  map.connect '*path', :controller => 'docs', :action => 'show'
 end

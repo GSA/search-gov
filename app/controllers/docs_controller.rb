@@ -1,6 +1,5 @@
 class DocsController < ApplicationController
-  def show_doc
-    doc = request.path.split('/').last
-    render "#{doc}.html"
+  def show
+    render :action => params[:path].join('/')
   end
 end

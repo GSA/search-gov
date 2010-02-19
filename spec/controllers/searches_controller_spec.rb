@@ -5,7 +5,7 @@ describe SearchesController do
 
   describe "#auto_complete_for_search_query" do
     it "should use query param to find terms starting with that param" do
-      DailyQueryStat.create(:query=>"Lorem ipsum dolor sit amet",:times=>1, :day=>Date.today)
+      DailyQueryStat.create(:query=>"Lorem ipsum dolor sit amet", :times=>1, :day=>Date.today)
       get :auto_complete_for_search_query, :query=>"lorem"
       response.body.should match(/lorem/i)
     end
@@ -17,7 +17,7 @@ describe SearchesController do
 
     context "when suggestions contain apostrophes" do
       before do
-        DailyQueryStat.create(:query=>"oba'ma",:times=>1, :day=>Date.today)
+        DailyQueryStat.create(:query=>"oba'ma", :times=>1, :day=>Date.today)
       end
 
       it "should handle highlighting apostrophe in suggestions" do
