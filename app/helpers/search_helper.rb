@@ -22,7 +22,8 @@ module SearchHelper
   end
 
   def thumbnail_link(result)
-    link_to URI.parse(result["Url"]).host, result["MediaUrl"], :rel => "no-follow"
+    link = URI.parse(result["Url"]).host rescue shorten_url(result["Url"])
+    link_to link, result["MediaUrl"], :rel => "no-follow"
   end
 
   def display_result_links (result, link = true)
@@ -74,7 +75,8 @@ module SearchHelper
       opts = {:query=> spelling_suggestion}
       opts.merge!(:affiliate => affiliate.name) if affiliate
       suggestion = translate_bing_highlights(h(spelling_suggestion))
-      content_tag(:h4, "#{t :did_you_mean}: #{link_to(suggestion, search_path(opts))}")
+      url = image_search? ? image_search_path(opts): search_path(opts)
+      content_tag(:h4, "#{t :did_you_mean}: #{link_to(suggestion, url)}")
     end
   end
 

@@ -50,4 +50,4 @@ Feature: Homepage
     Then I should be on the search page
     When I follow "Images" within "#search_form"
     Then I should be on the image search page
-    And I should see 10 image results
+    And I should see 30 image results

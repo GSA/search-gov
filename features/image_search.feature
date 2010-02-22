@@ -2,7 +2,7 @@ Feature: Image search
   In order to get government-related images
   As a site visitor
   I want to search for images
-  
+
   Scenario: Image search
     Given I am on the homepage
     When I follow "Images" within "#search_form"
@@ -10,7 +10,7 @@ Feature: Image search
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the image search page
-    And I should see 10 image results
+    And I should see 30 image results
     And I should see "Next"
 
   Scenario: A nonsense search
@@ -42,7 +42,7 @@ Feature: Image search
     And I follow "Busque en español"
     Then I should see "Contáctenos"
     And I should see "Sugiera un enlace"
-    
+
   Scenario: Switching to web search
     Given I am on the image search page
     When I fill in "query" with "White House"

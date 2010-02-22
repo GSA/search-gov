@@ -28,14 +28,14 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>124</tt></td>
-            <td class='right_align'><tt>107</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>87.90%</tt></div>
+            <td class='right_align'><tt>128</tt></td>
+            <td class='right_align'><tt>110</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>88.28%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:88px"></div>
             <div class="uncovered" style="width:12px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>85.98%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>86.36%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:86px"></div>
             <div class="uncovered" style="width:14px"></div>
@@ -687,13 +687,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line106">106</a>   def locale_dependent_background_color</pre></td>
+            <td><pre><a name="line106">106</a>   def english_locale?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line107">107</a>     BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]</pre></td>
+            <td><pre><a name="line107">107</a>     I18n.locale.to_s == &quot;en&quot;</pre></td>
           </tr>
         
           
@@ -711,13 +711,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line110">110</a>   def its_beta</pre></td>
+            <td><pre><a name="line110">110</a>   def locale_dependent_background_color</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line111">111</a>     content_tag(:span, link_to(&quot;BETA&quot;, affiliates_path), :class =&gt; &quot;beta&quot;)</pre></td>
+            <td><pre><a name="line111">111</a>     BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]</pre></td>
           </tr>
         
           
@@ -735,73 +735,97 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line114">114</a>   def highlight_hit(hit, sym)</pre></td>
+            <td><pre><a name="line114">114</a>   def its_beta</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line115">115</a>     return hit.highlights(sym).first.format { |phrase| &quot;&lt;strong&gt;#{h phrase}&lt;/strong&gt;&quot; } unless hit.highlights(sym).first.nil?</pre></td>
+            <td><pre><a name="line115">115</a>     content_tag(:span, link_to(&quot;BETA&quot;, affiliates_path), :class =&gt; &quot;beta&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line116">116</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line117">117</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line116">116</a>     hit.instance.send(sym)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line117">117</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line118">118</a> </pre></td>
+            <td><pre><a name="line118">118</a>   def highlight_hit(hit, sym)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line119">119</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line120">120</a> </pre></td>
+            <td><pre><a name="line119">119</a>     return hit.highlights(sym).first.format { |phrase| &quot;&lt;strong&gt;#{h phrase}&lt;/strong&gt;&quot; } unless hit.highlights(sym).first.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line121">121</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line120">120</a>     hit.instance.send(sym)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line121">121</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line122">122</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line122">122</a>     links.collect {|link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+            <td><pre><a name="line123">123</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line123">123</a>   end</pre></td>
+            <td><pre><a name="line124">124</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line125">125</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line126">126</a>     links.collect {|link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line124">124</a> end</pre></td>
+            <td><pre><a name="line127">127</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line128">128</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Feb 19 13:36:51 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Mon Feb 22 15:33:41 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

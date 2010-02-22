@@ -1,12 +1,12 @@
 class ImageSearch < Search
-  SOURCES = "Spell+Image+RelatedSearch"
+  SOURCES = "Spell+Image"
 
   def hits(response)
     response.image.total rescue 0
   end
 
   def process_results(response)
-    processed = response.image.results.collect do |result|
+    response.image.results.collect do |result|
       {
         "title" => result.title,
         "Width" => result.width,
@@ -22,7 +22,6 @@ class ImageSearch < Search
           "Width" => result.thumbnail.width,
           "Height" => result.thumbnail.height,
           "ContentType" => result.thumbnail.contentType
-
         }
       }
     end
@@ -39,4 +38,9 @@ class ImageSearch < Search
     ]
     "#{JSON_SITE}?" + params.join('&')
   end
+
+  protected
+  def populate_additional_results
+  end  
+
 end

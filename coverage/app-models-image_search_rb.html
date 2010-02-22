@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/password_resets_controller.rb</title>
+    <title>app/models/image_search.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/password_resets_controller.rb</h2>
+    <h2>app/models/image_search.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-password_resets_controller_rb.html">app/controllers/password_resets_controller.rb</a></td>
-            <td class='right_align'><tt>42</tt></td>
-            <td class='right_align'><tt>36</tt></td>
+            <td class="left_align"><a href="app-models-image_search_rb.html">app/models/image_search.rb</a></td>
+            <td class='right_align'><tt>46</tt></td>
+            <td class='right_align'><tt>41</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,253 +57,277 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class PasswordResetsController &lt; SslController</pre></td>
+            <td><pre><a name="line1">1</a> class ImageSearch &lt; Search</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   layout &quot;account&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line3">3</a>   before_filter :require_no_user</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :load_user_using_perishable_token, :only =&gt; [:edit, :update]</pre></td>
+            <td><pre><a name="line2">2</a>   SOURCES = &quot;Spell+Image&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a> </pre></td>
+            <td><pre><a name="line3">3</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   def edit</pre></td>
+            <td><pre><a name="line4">4</a>   def hits(response)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     render</pre></td>
+            <td><pre><a name="line5">5</a>     response.image.total rescue 0</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>   end</pre></td>
+            <td><pre><a name="line6">6</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a> </pre></td>
+            <td><pre><a name="line7">7</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   def update</pre></td>
+            <td><pre><a name="line8">8</a>   def process_results(response)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     @user.password = params[:user][:password]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>     @user.password_confirmation = params[:user][:password_confirmation]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>     if @user.save</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>       flash[:notice] = &quot;Password successfully updated&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>       redirect_to account_url</pre></td>
+            <td><pre><a name="line9">9</a>     response.image.results.collect do |result|</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>     else</pre></td>
+            <td><pre><a name="line10">10</a>       {</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       render :action =&gt; :edit</pre></td>
+            <td><pre><a name="line11">11</a>         &quot;title&quot; =&gt; result.title,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>         &quot;Width&quot; =&gt; result.width,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>         &quot;Height&quot; =&gt; result.height,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>         &quot;FileSize&quot; =&gt; result.fileSize,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>         &quot;ContentType&quot; =&gt; result.contentType,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>         &quot;Url&quot; =&gt; result.Url,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>         &quot;DisplayUrl&quot; =&gt; result.displayUrl,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>         &quot;MediaUrl&quot; =&gt; result.mediaUrl,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>     end</pre></td>
+            <td><pre><a name="line19">19</a>         &quot;Thumbnail&quot; =&gt; {</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>           &quot;Url&quot; =&gt; result.thumbnail.url,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>           &quot;FileSize&quot; =&gt; result.thumbnail.fileSize,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>           &quot;Width&quot; =&gt; result.thumbnail.width,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>           &quot;Height&quot; =&gt; result.thumbnail.height,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>           &quot;ContentType&quot; =&gt; result.thumbnail.contentType</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>   end</pre></td>
+            <td><pre><a name="line25">25</a>         }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>       }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>   def new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>     render</pre></td>
+            <td><pre><a name="line27">27</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a>   end</pre></td>
+            <td><pre><a name="line28">28</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a> </pre></td>
+            <td><pre><a name="line29">29</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>   def create</pre></td>
+            <td><pre><a name="line30">30</a>   def bing_query(query_string, offset, count)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>     @user = User.find_by_email(params[:email])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>     if @user</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>       @user.deliver_password_reset_instructions!</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>       flash.now[:notice] = &quot;Instructions to reset your password have been emailed to you. Please check your email.&quot;</pre></td>
+            <td><pre><a name="line31">31</a>     params = [</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>       flash.now[:notice] = &quot;No user was found with that email address&quot;</pre></td>
+            <td><pre><a name="line32">32</a>       &quot;image.offset=#{offset}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>     render :action =&gt; :new</pre></td>
+            <td><pre><a name="line33">33</a>       &quot;image.count=#{count}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>   end</pre></td>
+            <td><pre><a name="line34">34</a>       &quot;AppId=#{APP_ID}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>   private</pre></td>
+            <td><pre><a name="line35">35</a>       &quot;sources=#{SOURCES}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a> </pre></td>
+            <td><pre><a name="line36">36</a>       &quot;Options=EnableHighlighting&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>   def load_user_using_perishable_token</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>     @user = User.find_using_perishable_token(params[:id])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>     redirect_to home_page_path unless @user</pre></td>
+            <td><pre><a name="line37">37</a>       &quot;query=#{URI.escape(query_string)}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   end</pre></td>
+            <td><pre><a name="line38">38</a>     ]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>     &quot;#{JSON_SITE}?&quot; + params.join('&amp;')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a> end</pre></td>
+            <td><pre><a name="line40">40</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line41">41</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>   protected</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>   def populate_additional_results</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>   end  </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line45">45</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a> end</pre></td>
           </tr>
         
       </tbody>
