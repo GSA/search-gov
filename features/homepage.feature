@@ -42,3 +42,12 @@ Feature: Homepage
     And I follow "Busque en español"
     Then I should see "Contáctenos"
     And I should see "Sugiera un enlace"
+
+  Scenario: Switching to image search
+    Given I am on the search page
+    When I fill in "query" with "White House"
+    And I press "Search"
+    Then I should be on the search page
+    When I follow "Images" within "#search_form"
+    Then I should be on the image search page
+    And I should see 10 image results

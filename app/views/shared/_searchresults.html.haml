@@ -1,27 +1,23 @@
+- result_partial = result_partial_for(search)
 = spelling_suggestion(search.spelling_suggestion, @affiliate)
 - if (search.boosted_sites && search.boosted_sites.total > 0)
   #boosted
     - search.boosted_sites.hits.each_with_index do |hit, index|
       - boosted_site_url = hit.instance.url
       %div.searchresult{:id => "boostedresult#{index+1}"}
-        %h2= link_to(highlight_hit(hit, :title), boosted_site_url)
+        %h2= link_to highlight_hit(hit, :title), boosted_site_url
         %h3= highlight_hit(hit, :description)
-        %h3= link_to((h boosted_site_url), boosted_site_url)
+        %h3= link_to boosted_site_url, boosted_site_url
 %a{:name => "content"}
-- if (!search.results.empty?)
+- if search.results.present?
   = results_summary(search.startrecord, search.endrecord, search.total, h(search.query))
-- if (search.spotlight)
-  #spotlight=search.spotlight.html
-- if (!search.results.empty?)
-  - search.results.each_with_index do |search_result, index|
-    %div.searchresult{:id => "searchresult#{index+1}"}
-      %h2= display_result_title(search_result)
-      %h3= display_result_description(search_result)
-      %h3= display_result_links(search_result)
-      - if @affiliate == nil && index == 0 && search.page == 0
-        = display_deep_links_for(search_result)
+  - if search.spotlight
+    #spotlight
+      = search.spotlight.html
+  - search.results.each_with_index do |result, index|
+    = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => index
   = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
-- elsif (search.error_message)
+- elsif search.error_message
   %p.noresults #{search.error_message}
 - else
   %p.noresults= t :no_results_for, :query => h(search.query)

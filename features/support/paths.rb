@@ -6,6 +6,8 @@ module NavigationHelpers
       root_path
     when /the search page/
       search_path
+    when /the image search page/
+      image_search_path
     when /^(.*)'s search page$/
       search_path(:affiliate => $1)
     when /the analytics query search results page/
@@ -19,7 +21,7 @@ module NavigationHelpers
     when /the affiliate admin home page/
       admin_affiliates_path
     when /the admin home page/
-      admin_home_page_path      
+      admin_home_page_path
     when /the spotlights admin homepage/
       admin_spotlights_path
     when /the affiliate admin broadcast page/

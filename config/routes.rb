@@ -9,6 +9,8 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.search '/search', :controller => "searches"
   map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get
+  map.image_search "/search/images", :controller => "image_searches", :action => "index"
+  map.resources :image_searches
   map.namespace(:admin) do |admin|
     admin.resources :affiliates, :active_scaffold => true
     admin.resources :users, :active_scaffold => true

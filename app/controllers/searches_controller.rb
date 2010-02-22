@@ -5,13 +5,10 @@ class SearchesController < ApplicationController
   def index
     @search = Search.new(@search_options)
     @search.run
-    if @search_options[:affiliate]
-      @affiliate = @search_options[:affiliate]
-      @page_title = "#{t :search_results_for} #{@affiliate.name}: #{@search.query}"
-      render :action => "affiliate_index", :layout => "affiliate"
-    end
+    handle_affiliate_search
   end
 
+  # TODO This could be cleaned up into search.rb
   def auto_complete_for_search_query
     render :inline => "" and return unless params['query']
     sanitized_query = params['query'].gsub('\\', '')
@@ -22,11 +19,17 @@ class SearchesController < ApplicationController
     render :inline => "<%= auto_complete_result(@auto_complete_options, 'query', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
   end
 
-  def advanced
-  end
-
   private
 
+  def handle_affiliate_search
+    if @search_options[:affiliate]
+      @affiliate = @search_options[:affiliate]
+      @page_title = "#{t :search_results_for} #{@affiliate.name}: #{@search.query}"
+      render :action => "affiliate_index", :layout => "affiliate"
+    end
+  end
+
+  # TODO This could be cleaned up into search.rb
   def set_search_options
     affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
     if affiliate && params["staged"]
@@ -36,18 +39,18 @@ class SearchesController < ApplicationController
     end
     @search_options = {
       :page => (params[:page].to_i - 1),
-      :query => params["query"] || nil,
-      :query_limit => params["query-limit"] || nil,
-      :query_quote => params["query-quote"] || nil,
-      :query_quote_limit => params["query-quote-limit"] || nil,
-      :query_or => params["query-or"] || nil,
-      :query_or_limit => params["query-or-limit"] || nil,
-      :query_not => params["query-not"] || nil,
-      :query_not_limit => params["query-not-limit"] || nil,
-      :file_type => params["filetype"] || nil,
-      :site_limits => params["sitelimit"] || nil,
-      :site_excludes => params["siteexclude"] || nil,
-      :filter => params["filter"] || nil,
+      :query => params["query"],
+      :query_limit => params["query-limit"],
+      :query_quote => params["query-quote"],
+      :query_quote_limit => params["query-quote-limit"],
+      :query_or => params["query-or"],
+      :query_or_limit => params["query-or-limit"],
+      :query_not => params["query-not"],
+      :query_not_limit => params["query-not-limit"],
+      :file_type => params["filetype"],
+      :site_limits => params["sitelimit"],
+      :site_excludes => params["siteexclude"],
+      :filter => params["filter"],
       :affiliate => affiliate,
       :results_per_page => in_mobile_view? ? (is_device?("iphone") ? 10 : 3) : (params["per-page"].nil? ? nil : (params["per-page"].empty? ? nil : params["per-page"].to_i))
     }

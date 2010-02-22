@@ -39,3 +39,4 @@ config.gem "cucumber",         :lib => false, :version => '>= 0.6.1'
 config.gem "cucumber-rails",   :lib => false
 config.gem "rcov",             :lib => false
 config.gem 'email_spec',       :lib => 'email_spec'
+config.gem "fakeweb",          :lib => false

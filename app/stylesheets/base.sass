@@ -1,6 +1,8 @@
 @import compass/utilities/tables.sass
 
 !site_theme_color= #003366
+!red = #990000
+!link = #2200CC
 
 body
   :background-color= !site_theme_color
@@ -25,9 +27,9 @@ a:hover
   a, a:visited
     :font-weight normal
     :text-decoration underline
-    :color= #2200CC
+    :color = !link
   a:hover
-    :color #990000
+    :color = !red
   :padding
     :top 2em
     :bottom 2em
@@ -52,26 +54,8 @@ a:hover
     :top 2em
     :bottom 2em
 
-.searchresult
-  :margin-bottom 0.75em
-  h2
-    :font-size 1.4em
-    :margin 0
-    a, a:visited, a:hover
-      :color= #2200CC
-  h3
-    :font-size 1.1em
-    :margin 0 0 0.3em 0
-    a, a:visited, a:hover
-      :color= #008000
-    a.cache_link, a.cache_link:visited, a.cache_link:hover
-      :color= gray
 .current
   :color black
-.pagination
-  :margin-left 10em
-  :margin-bottom 1em
-  :font-size 1.2em
 
 div.auto_complete ul li
   :color black
@@ -95,7 +79,7 @@ table.deep_links
   :overflow hidden
 
 #results
-  :width 650px
+  :width auto
   :display block
   :overflow hidden
 
@@ -137,7 +121,7 @@ ul#related_gov_forms
   a, a:visited, a:hover
     :color gray
     :text-decoration none
-  
+
 #spotlight
   :color black
   :border 1px lightgray solid
