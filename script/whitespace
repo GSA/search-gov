@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+# script/whitespace
+#
+# Strips whitespace from any files modified in git
+# Also:
+# - converts tabs to spaces
+# - ensures a single newline at the end
+class WhitespaceProcessor
+  def self.process(code)
+    result = []
+    code.each do |line|
+      line.gsub!(/(\s+)$/, "\n")
+      line.gsub!(/\t/, '  ')
+      result << line
+    end
+
+    while result.last =~ /^$/
+      result.pop
+    end
+
+    unless result.last =~ /\n$/
+      result << "\n"
+    end
+
+    code = result.join
+    code.gsub!(/\A\n*/, '')
+    code
+  end
+end
+
+puts "* Stripping whitespace from modified files."
+`git status`.split("\n").each do |line|
+  next unless line =~ /^#\tmodified:/
+  line = line.split(/[\t\s]+/).last
+  puts "  processing #{line}..."
+  code = File.read(line)
+  File.open(line, 'w+') { |f| f << (WhitespaceProcessor.process(code)) }
+end
+puts "* DONE"
