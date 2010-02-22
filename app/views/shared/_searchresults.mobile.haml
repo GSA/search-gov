@@ -1,5 +1,5 @@
 = spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
-- if (search && !search.results.empty?)
+- if search.results.present?
   %h1= results_summary(search.startrecord, search.endrecord, search.total, search.query, false)
   %hr
   .group
@@ -15,7 +15,7 @@
   .group
     .row.center
       = will_paginate search.results, :page_links => false, :previous_label => "", :next_label => "Next Page"
-- elsif (search.error_message)
+- elsif search.error_message
   %p.noresults #{search.error_message}
 - else
-  %p.noresults= t :no_results_for, :query => search.query
+  = no_results_for search.query

@@ -20,4 +20,4 @@
 - elsif search.error_message
   %p.noresults #{search.error_message}
 - else
-  %p.noresults= t :no_results_for, :query => h(search.query)
+  = no_results_for search.query

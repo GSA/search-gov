@@ -93,6 +93,10 @@ module SearchHelper
     controller.controller_name == "image_searches"
   end
 
+  def no_results_for(query)
+    content_tag(:p, (t :no_results_for, :query => h(query)), :class=>"noresults")
+  end
+
   private
   def shorten_url (url)
     return url if url.length <=30
