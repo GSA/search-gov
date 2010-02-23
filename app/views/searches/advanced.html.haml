@@ -1,7 +1,8 @@
 #advanced-header
   = link_to image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
 - form_tag(search_path, :method => :get, :id => 'advanced-firstgov', :class => 'advanced', :name=> 'advanced-firstgov', :target => '_parent') do
-  = hidden_field_tag 'input-form', 'advanced-firstgov'
+  = hidden_field_tag 'input-form', 'advanced'
+  = hidden_field_tag 'locale', I18n.locale unless (I18n.locale == I18n.default_locale)
   #advanced-form-intro
     %strong= t :advanced_search_instruction
   .elements
