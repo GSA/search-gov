@@ -82,7 +82,7 @@ module ApplicationHelper
     end
     elements << mail_to("support@searchusa.zendesk.com", "Contact Us")
     elements << link_to("FAQ", "http://searchusa.zendesk.com/")
-    elements << link_to("USAsearch.gov", home_page_path)
+    elements << link_to("search.usa.gov", home_page_path)
     elements.join(" | ")
   end
 
