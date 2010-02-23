@@ -1,9 +1,10 @@
 - path = @search.is_a?(ImageSearch) ? image_search_path : search_path
 - form_tag(path, :method => :get, :id => "search_form") do
-  - search_params = {:query => params[:query], :locale => params[:locale]}
-  %ul.navigation
-    %li.first= link_to_unless web_search?, t(:government_web), search_path(search_params)
-    %li= link_to_unless image_search?, t(:images), image_search_path(search_params)
+  - if @affiliate.nil?
+    - search_params = {:query => params[:query], :locale => params[:locale]}
+    %ul.navigation
+      %li.first= link_to_unless web_search?, t(:government_web), search_path(search_params)
+      %li= link_to_unless image_search?, t(:images), image_search_path(search_params)
   - if @affiliate or not english_locale? or @search.is_a?(ImageSearch)
     = text_field :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}
   - else
@@ -14,9 +15,10 @@
   = hidden_field_tag :filter, @search.filter_setting unless @search.nil? || @search.filter_setting.nil?
   = hidden_field_tag :fedstates, @search.scope_id unless @search.nil? || @search.scope_id.nil?
   = submit_tag(t :search, :id => "search_button")
-  = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil ))) unless @affiliate
-  = " | " unless @affiliate
-  = link_to(t(:search_in), home_page_path(:locale => other_locale_str)) unless @affiliate
+  - if @affiliate.nil?
+    = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil ))) unless @affiliate
+    |
+    = link_to(t(:search_in), home_page_path(:locale => other_locale_str))
 
 :javascript
   document.getElementById("search_query").focus();
