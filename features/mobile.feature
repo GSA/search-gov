@@ -41,3 +41,7 @@ Feature: Mobile Search
     Then I should be on the search page
     And I should see "social security"
     And I should see 3 search results
+
+  Scenario: An advanced search on the mobile home page
+    When I am on the advanced search page
+    Then I should see "Use the options on this page to create a very specific search"

@@ -73,13 +73,13 @@ describe SearchesController do
     end
   end
 
-  describe "when showing index" do
+  context "when showing index" do
     it "should have a route with a locale" do
       search_path.should =~ /search\?locale\=en/
     end
   end
 
-  describe "when showing a new search" do
+  context "when showing a new search" do
     before do
       get :index, :query => "social security", :page => 4
       @search = assigns[:search]
@@ -132,6 +132,15 @@ describe SearchesController do
       response.body.should_not match(/related_gov_forms/)
     end
 
+  end
+
+  context "when handling a mobile affiliate search request" do
+    integrate_views
+    before do
+      get :index, :affiliate=> affiliates(:power_affiliate).name, :query => "weather", :m => "true"
+    end
+
+    should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'
   end
 
   context "when handling an invalid affiliate search request" do

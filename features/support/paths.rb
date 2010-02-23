@@ -6,6 +6,8 @@ module NavigationHelpers
       root_path
     when /the search page/
       search_path
+    when /the advanced search page/
+      advanced_search_path
     when /the image search page/
       image_search_path
     when /^(.*)'s search page$/

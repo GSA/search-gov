@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-search_rb.html">app/models/search.rb</a></td>
-            <td class='right_align'><tt>230</tt></td>
-            <td class='right_align'><tt>199</tt></td>
+            <td class='right_align'><tt>221</tt></td>
+            <td class='right_align'><tt>190</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -987,7 +987,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line156">156</a>       query += limit_field(options[:query_limit], options[:query])</pre></td>
+            <td><pre><a name="line156">156</a>       query += options[:query].split.collect{ |term| limit_field(options[:query_limit], term) }.join(' ')</pre></td>
           </tr>
         
           
@@ -1011,55 +1011,55 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line160">160</a>       query += ' '</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line161">161</a>       query += limit_field(options[:query_quote_limit], &quot;\&quot;#{options[:query_quote]}\&quot;&quot;)</pre></td>
+            <td><pre><a name="line160">160</a>       query += ' ' + limit_field(options[:query_quote_limit], &quot;\&quot;#{options[:query_quote]}\&quot;&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line162">162</a>     end</pre></td>
+            <td><pre><a name="line161">161</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line163">163</a>     </pre></td>
+            <td><pre><a name="line162">162</a>     </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line164">164</a>     if !options[:query_or].blank?</pre></td>
+            <td><pre><a name="line163">163</a>     if !options[:query_or].blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line165">165</a>       query_or = '(' + options[:query_or].split.join(' OR ') + ')'</pre></td>
+            <td><pre><a name="line164">164</a>       query += ' ' + options[:query_or].split.collect{ |term| limit_field(options[:query_or_limit], term) }.join(' OR ')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line165">165</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line166">166</a>     </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line166">166</a>       query_or = ' ' + limit_field(options[:query_or_limit], query_or)</pre></td>
+            <td><pre><a name="line167">167</a>     if !options[:query_not].blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line167">167</a>       query_or = query_or.gsub(/\(\(/, '(').gsub(/\)\)/, ')')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line168">168</a>       query += query_or</pre></td>
+            <td><pre><a name="line168">168</a>       query += ' ' + options[:query_not].split.collect{ |term| &quot;-#{limit_field(options[:query_not_limit], term)}&quot;}.join(' ')</pre></td>
           </tr>
         
           
@@ -1071,277 +1071,277 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line170">170</a>     </pre></td>
+            <td><pre><a name="line170">170</a>    </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line171">171</a>     if !options[:query_not].blank?</pre></td>
+            <td><pre><a name="line171">171</a>     query += &quot; filetype:#{options[:file_type]}&quot; unless options[:file_type].blank? || options[:file_type].downcase == 'all'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line172">172</a>       query_not = '-' + options[:query_not].split.join(' -')</pre></td>
+            <td><pre><a name="line172">172</a>     query += &quot; #{options[:site_limits].split.collect { |site| 'site:' + site}.join(' OR ')}&quot; unless options[:site_limits].blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line173">173</a>       query += ' ' + limit_field(options[:query_not_limit], query_not)</pre></td>
+            <td><pre><a name="line173">173</a>     query += &quot; #{options[:site_excludes].split.collect { |site| '-site:' + site}.join(' ')}&quot; unless options[:site_excludes].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line174">174</a>     return query.strip</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line174">174</a>     end</pre></td>
+            <td><pre><a name="line175">175</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line175">175</a>    </pre></td>
+            <td><pre><a name="line176">176</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line176">176</a>     query += &quot; filetype:#{options[:file_type]}&quot; unless options[:file_type].blank? || options[:file_type].downcase == 'all'</pre></td>
+            <td><pre><a name="line177">177</a>   def limit_field(field_name, term)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line177">177</a>     query += &quot; #{options[:site_limits].split.collect { |site| 'site:' + site}.join(' OR ')}&quot; unless options[:site_limits].blank?</pre></td>
+            <td><pre><a name="line178">178</a>     if field_name.blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line178">178</a>     query += &quot; #{options[:site_excludes].split.collect { |site| '-site:' + site}.join(' ')}&quot; unless options[:site_excludes].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line179">179</a>     return query.strip</pre></td>
+            <td><pre><a name="line179">179</a>       term</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line180">180</a>   end</pre></td>
+            <td><pre><a name="line180">180</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line181">181</a>       &quot;#{field_name}#{term}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line181">181</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line182">182</a>   def limit_field(field_name, query_string)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line183">183</a>     if field_name.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line184">184</a>       query_string</pre></td>
+            <td><pre><a name="line182">182</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line185">185</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line186">186</a>       if field_name.empty?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line187">187</a>         query_string</pre></td>
+            <td><pre><a name="line183">183</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line188">188</a>       else</pre></td>
+            <td><pre><a name="line184">184</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line189">189</a>         &quot;#{field_name}(#{query_string})&quot;</pre></td>
+            <td><pre><a name="line185">185</a>   def offset</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line186">186</a>     page * results_per_page</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line190">190</a>       end</pre></td>
+            <td><pre><a name="line187">187</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line191">191</a>     end</pre></td>
+            <td><pre><a name="line188">188</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line189">189</a>   def scope</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line190">190</a>     if affiliate_scope</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line191">191</a>       affiliate_scope</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line192">192</a>     elsif self.scope_id  &amp;&amp; !self.scope_id.empty? &amp;&amp; self.scope_id != 'all'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line193">193</a>       &quot;(scopeid:usagov#{self.scope_id})&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line192">192</a>   end</pre></td>
+            <td><pre><a name="line194">194</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line195">195</a>       DEFAULT_SCOPE</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line193">193</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line194">194</a>   def offset</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line195">195</a>     page * results_per_page</pre></td>
+            <td><pre><a name="line196">196</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line196">196</a>   end</pre></td>
+            <td><pre><a name="line197">197</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line197">197</a> </pre></td>
+            <td><pre><a name="line198">198</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line198">198</a>   def scope</pre></td>
+            <td><pre><a name="line199">199</a>   def affiliate_scope</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line199">199</a>     if affiliate_scope</pre></td>
+            <td><pre><a name="line200">200</a>     return unless affiliate_scope?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line200">200</a>       affiliate_scope</pre></td>
+            <td><pre><a name="line201">201</a>     scope = affiliate.domains.split(&quot;\n&quot;).collect {|site| &quot;site:#{site}&quot;}.join(&quot; OR &quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line201">201</a>     elsif self.scope_id  &amp;&amp; !self.scope_id.empty? &amp;&amp; self.scope_id != 'all'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line202">202</a>       &quot;(scopeid:usagov#{self.scope_id})&quot;</pre></td>
+            <td><pre><a name="line202">202</a>     &quot;(#{scope})&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line203">203</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line204">204</a>       DEFAULT_SCOPE</pre></td>
+            <td><pre><a name="line203">203</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line205">205</a>     end</pre></td>
+            <td><pre><a name="line204">204</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line205">205</a>   def affiliate_scope?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line206">206</a>     affiliate &amp;&amp; affiliate.domains.present? &amp;&amp; query !~ /site:/</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line206">206</a>   end</pre></td>
+            <td><pre><a name="line207">207</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line207">207</a> </pre></td>
+            <td><pre><a name="line208">208</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line208">208</a>   def affiliate_scope</pre></td>
+            <td><pre><a name="line209">209</a>   def english_locale?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line209">209</a>     return unless affiliate_scope?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line210">210</a>     scope = affiliate.domains.split(&quot;\n&quot;).collect {|site| &quot;site:#{site}&quot;}.join(&quot; OR &quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line211">211</a>     &quot;(#{scope})&quot;</pre></td>
+            <td><pre><a name="line210">210</a>     I18n.locale.to_s == 'en'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line212">212</a>   end</pre></td>
+            <td><pre><a name="line211">211</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line213">213</a> </pre></td>
+            <td><pre><a name="line212">212</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line214">214</a>   def affiliate_scope?</pre></td>
+            <td><pre><a name="line213">213</a>   def locale</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line215">215</a>     affiliate &amp;&amp; affiliate.domains.present? &amp;&amp; query !~ /site:/</pre></td>
+            <td><pre><a name="line214">214</a>     return if english_locale?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line215">215</a>     &quot;language:#{I18n.locale}&quot;</pre></td>
           </tr>
         
           
@@ -1359,13 +1359,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line218">218</a>   def english_locale?</pre></td>
+            <td><pre><a name="line218">218</a>   def formatted_query</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line219">219</a>     I18n.locale.to_s == 'en'</pre></td>
+            <td><pre><a name="line219">219</a>     &quot;#{query} #{scope} #{locale}&quot;.strip.squeeze(' ')</pre></td>
           </tr>
         
           
@@ -1377,67 +1377,13 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line221">221</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line222">222</a>   def locale</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line223">223</a>     return if english_locale?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line224">224</a>     &quot;language:#{I18n.locale}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line225">225</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line226">226</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line227">227</a>   def formatted_query</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line228">228</a>     &quot;#{query} #{scope} #{locale}&quot;.strip.squeeze(' ')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line229">229</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line230">230</a> end</pre></td>
+            <td><pre><a name="line221">221</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Feb 22 17:02:35 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Tue Feb 23 11:33:20 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

@@ -1,6 +1,7 @@
 class SearchesController < ApplicationController
   before_filter :set_search_options
   has_mobile_fu
+  before_filter :adjust_mobile_mode
 
   def index
     @search = Search.new(@search_options)
@@ -53,7 +54,15 @@ class SearchesController < ApplicationController
       :filter => params["filter"],
       :fedstates => params["fedstates"] || nil,
       :affiliate => affiliate,
-      :results_per_page => in_mobile_view? ? (is_device?("iphone") ? 10 : 3) : (params["per-page"].blank? ? nil : params["per-page"].to_i)  
+      :results_per_page => in_mobile_view? ? (is_device?("iphone") ? 10 : 3) : (params["per-page"].blank? ? nil : params["per-page"].to_i)
     }
+  end
+
+  def adjust_mobile_mode
+    request.format= :html if @search_options[:affiliate].present? or is_advanced_search?
+  end
+
+  def is_advanced_search?
+    params[:action] == "advanced"
   end
 end
