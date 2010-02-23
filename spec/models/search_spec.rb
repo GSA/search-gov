@@ -43,6 +43,41 @@ describe Search do
       end
     end
 
+    context "when a SocketError occurs" do
+      before do
+        @search = Search.new(@valid_options)
+        Net::HTTP::Get.stub!(:new).and_raise SocketError
+      end
+
+      it "should return false when searching" do
+        @search.run.should be_false
+      end
+    end
+
+    context "when Bing gives us the hand" do
+      before do
+        @search = Search.new(@valid_options)
+        Net::HTTP::Get.stub!(:new).and_raise Errno::ECONNREFUSED
+      end
+
+      it "should return false when searching" do
+        @search.run.should be_false
+      end
+
+    end
+
+    context "when Bing kicks us to the curb" do
+      before do
+        @search = Search.new(@valid_options)
+        Net::HTTP::Get.stub!(:new).and_raise Errno::ECONNRESET
+      end
+
+      it "should return false when searching" do
+        @search.run.should be_false
+      end
+
+    end
+
     context "when non-English locale is specified" do
       before do
         I18n.locale = :es
@@ -141,19 +176,19 @@ describe Search do
         search.run
       end
     end
-    
+
     context "when advanced query parameters are passed" do
       before do
         @uriresult = URI::parse('http://localhost:3000')
       end
-      
+
       context "when query is limited to search only in titles" do
         it "should construct a query string with the intitle: limits on the query parameter" do
           search = Search.new(@valid_options.merge(:query_limit => "intitle:"))
           URI.should_receive(:parse).with(/query=intitle:\(government\)/).and_return(@uriresult)
           search.run
         end
-        
+
         context "when more than one query term is specified" do
           it "should construct a query string with intitle: limits before each query term" do
             search = Search.new(@valid_options.merge(:query => 'barack obama', :query_limit => 'intitle:'))
@@ -161,7 +196,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when query limit is blank" do
           it "should not use the query limit in the query string" do
             search = Search.new(@valid_options.merge(:query_limit => ''))
@@ -170,14 +205,14 @@ describe Search do
           end
         end
       end
-      
+
       context "when a phrase query is specified" do
         it "should construct a query string that includes the phrase in quotes" do
           search = Search.new(@valid_options.merge(:query_quote => 'barack obama'))
           URI.should_receive(:parse).with(/%22barack%20obama%22/).and_return(@uriresult)
           search.run
         end
-      
+
         context "when the phrase query limit is set to intitle:" do
           it "should construct a query string with the intitle: limit on the phrase query" do
             search = Search.new(@valid_options.merge(:query_quote => 'barack obama', :query_quote_limit => 'intitle:'))
@@ -185,7 +220,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "and it is blank" do
           it "should not include a phrase query in the url" do
             search = Search.new(@valid_options.merge(:query_quote => ''))
@@ -193,7 +228,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when the phrase query is blank and the phrase query limit is blank" do
           it "should not include anything relating to phrase query in the query string" do
             search = Search.new(@valid_options.merge(:query_quote => '', :query_quote_limit => ''))
@@ -202,14 +237,14 @@ describe Search do
           end
         end
       end
-      
+
       context "when OR terms are specified" do
         it "should construct a query string that includes the OR terms OR'ed together" do
           search = Search.new(@valid_options.merge(:query_or => 'barack obama'))
           URI.should_receive(:parse).with(/\(barack%20OR%20obama\)/).and_return(@uriresult)
           search.run
         end
-        
+
         context "when the OR query limit is set to intitle:" do
           it "should construct a query string that includes the OR terms with intitle prefix" do
             search = Search.new(@valid_options.merge(:query_or => 'barack obama', :query_or_limit => 'intitle:'))
@@ -217,7 +252,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when the OR query is blank" do
           it "should not include an OR query parameter in the query string" do
             search = Search.new(@valid_options.merge(:query_or => ''))
@@ -225,7 +260,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when the OR query is blank and the OR query limit is blank" do
           it "should not include anything relating to OR query in the query string" do
             search = Search.new(@valid_options.merge(:query_or => '', :query_or_limit => ''))
@@ -234,14 +269,14 @@ describe Search do
           end
         end
       end
-      
+
       context "when negative query terms are specified" do
         it "should construct a query string that includes the negative query terms prefixed with '-'" do
           search = Search.new(@valid_options.merge(:query_not => 'barack obama'))
           URI.should_receive(:parse).with(/-barack%20-obama/).and_return(@uriresult)
           search.run
         end
-        
+
         context "when the negative query limit is set to intitle:" do
           it "should construct a query string that includes the negative terms with intitle prefix" do
             search = Search.new(@valid_options.merge(:query_not => 'barack obama', :query_not_limit => 'intitle:'))
@@ -249,7 +284,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when the negative query is blank" do
           it "should not include a negative query parameter in the query string" do
             search = Search.new(@valid_options.merge(:query_not => ''))
@@ -257,7 +292,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when the negative query is blank and the negative query limit are blank" do
           it "should not include anything relating to negative query in the query string" do
             search = Search.new(@valid_options.merge(:query_not => '', :query_not_limit => ''))
@@ -266,14 +301,14 @@ describe Search do
           end
         end
       end
-      
+
       context "when a filetype is specified" do
         it "should construct a query string that includes a filetype" do
           search = Search.new(@valid_options.merge(:file_type => 'pdf'))
           URI.should_receive(:parse).with(/filetype:pdf/).and_return(@uriresult)
           search.run
         end
-        
+
         context "when the filetype specified is 'All'" do
           it "should construct a query string that does not have a filetype parameter" do
             search = Search.new(@valid_options.merge(:file_type => 'All'))
@@ -281,7 +316,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when a blank filetype is passed in" do
           it "should not put filetype parameters in the query string" do
             search = Search.new(@valid_options.merge(:file_type => ''))
@@ -290,14 +325,14 @@ describe Search do
           end
         end
       end
-      
+
       context "when one or more site limits are specified" do
         it "should construct a query string with site limits for each of the sites" do
           search = Search.new(@valid_options.merge(:site_limits => 'whitehouse.gov omb.gov'))
           URI.should_receive(:parse).with(/site:whitehouse.gov%20OR%20site:omb.gov/).and_return(@uriresult)
           search.run
         end
-        
+
         context "when a blank site limit is passed" do
           it "should not include site limit in the query string" do
             search = Search.new(@valid_options.merge(:site_limits => ''))
@@ -306,7 +341,7 @@ describe Search do
           end
         end
       end
-      
+
       context "when one or more site exclusions is specified" do
         it "should construct a query string with site exlcusions for each of the sites" do
           search = Search.new(@valid_options.merge(:site_excludes => "whitehouse.gov omb.gov"))
@@ -322,14 +357,14 @@ describe Search do
           end
         end
       end
-      
+
       context "when a fedstates parameter is specified" do
         it "should set the scope if with the fedstates parameter" do
           search = Search.new(@valid_options.merge(:fedstates => 'MD'))
           URI.should_receive(:parse).with(/\(scopeid:usagovMD\)/).and_return(@uriresult)
           search.run
         end
-        
+
         context "when the fedstates parameter specified is 'all'" do
           it "should use the 'usagovall' scopeid with .gov and .mil sites included" do
             search = Search.new(@valid_options.merge(:fedstates => 'all'))
@@ -337,7 +372,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when fedstates parameter is blank" do
           it "should use the 'usagovall' scope id with .gov and .mil sites included" do
             search = Search.new(@valid_options.merge(:fedstates => ''))
@@ -346,20 +381,20 @@ describe Search do
           end
         end
       end
-      
+
       context "when a results per page number is specified" do
         it "should construct a query string with the appropriate per page variable set" do
           search = Search.new(@valid_options.merge(:results_per_page => 20))
           URI.should_receive(:parse).with(/web\.count=20/).and_return(@uriresult)
           search.run
         end
-        
+
         it "should not set a per page value above 50" do
           search = Search.new(@valid_options.merge(:results_per_page => 100))
           URI.should_receive(:parse).with(/web\.count=50/).and_return(@uriresult)
           search.run
         end
-        
+
         context "when the results_per_page variable passed is blank" do
           it "should set the per-page parameter to the default value, defined by the DEFAULT_PER_PAGE variable" do
             search = Search.new(@valid_options)
@@ -367,7 +402,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when the results_per_page variable that is passed is a string" do
           it "should convert the string to an integer and not fail" do
             search = Search.new(@valid_options.merge(:results_per_page => "30"))
@@ -376,7 +411,7 @@ describe Search do
           end
         end
       end
-            
+
       context "when multiple or all of the advanced query parameters are specified" do
         it "should construct a query string that incorporates all of them with the proper spacing" do
           search = Search.new(@valid_options.merge(:query_limit => 'intitle:',
@@ -393,7 +428,7 @@ describe Search do
           search.run
         end
       end
-      
+
       context "when a filter parameter is set" do
         it "should set the Adult parameter in the query sent to Bing" do
           search = Search.new(@valid_options.merge(:filter => 'moderate'))
@@ -417,10 +452,10 @@ describe Search do
           search.run
         end
       end
-  
+
     end
-    
-     
+
+
 
     context "when searching with valid queries" do
       before do
