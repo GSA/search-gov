@@ -51,3 +51,8 @@ Feature: Homepage
     When I follow "Images" within "#search_form"
     Then I should be on the image search page
     And I should see 30 image results
+
+  Scenario: Clicking on Advanced Search on the homepage
+    Given I am on the homepage
+    And I follow "Advanced Search"
+    Then I should see "Use the options on this page to create a very specific search."

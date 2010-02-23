@@ -16,6 +16,8 @@ describe "searches/index.html.haml" do
       @search.stub!(:gov_forms).and_return nil
       @search.stub!(:spotlight).and_return nil
       @search.stub!(:error_message).and_return "Ignore me"
+      @search.stub!(:filter_setting).and_return nil
+      @search.stub!(:scope_id).and_return nil
     end
 
     it "should show the spelling suggestion" do
@@ -34,6 +36,8 @@ describe "searches/index.html.haml" do
       @search.stub!(:gov_forms).and_return nil
       @search.stub!(:spotlight).and_return nil
       @search.stub!(:error_message).and_return "Enter some search terms"
+      @search.stub!(:filter_setting).and_return nil
+      @search.stub!(:scope_id).and_return nil
     end
 
     it "should show header search form but not show footer search form" do
@@ -66,6 +70,8 @@ describe "searches/index.html.haml" do
       @search.stub!(:boosted_sites).and_return nil
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil
+      @search.stub!(:filter_setting).and_return nil
+      @search.stub!(:scope_id).and_return nil
     end
 
     context "when there are fewer than five results" do
@@ -89,6 +95,75 @@ describe "searches/index.html.haml" do
         render
         response.should have_selector("#search_query_auto_complete")
         response.should have_selector("#footer_search_form")
+      end
+    end
+    
+    it "should not display a hidden filter parameter" do
+      render
+      response.should_not have_tag('input[type=?][name=?]', 'hidden', 'filter')
+    end
+    
+    it "should not display a hidden fedstates parameter" do
+      render
+      response.should_not have_tag('input[type=?][name=?]', 'hidden', 'fedstates')
+    end
+    
+    context "when a filter parameter is specified" do
+      
+      context "when the filter parameter is set to 'strict'" do
+        before do
+          @search.stub!(:filter_setting).and_return 'strict'
+        end
+      
+        it "should include a hidden input field in the search form with the filter parameter" do
+          render
+          response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'filter', 'strict')
+        end
+      end
+      
+      context "when the filter parameter is set to 'off'" do
+        before do
+          @search.stub!(:filter_setting).and_return 'off'
+        end
+        
+        it "should include a hidden input field in the search with the filter parameter set to 'off'" do
+          render
+          response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'filter', 'off')
+        end
+      end
+    end
+    
+    context "when a scope id filter is set from the advanced form" do
+      before do
+        @search.stub!(:scope_id).and_return 'MD'
+        5.times { @search_results << @search_result }
+      end
+      
+      it "should include a hidden input field in the search with the fedstates value set to the scope id" do
+        render
+        response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'fedstates', 'MD')
+      end
+      
+      it "should inform the user that the search was restricted" do
+        render
+        response.should contain(/This search was restricted/)
+      end
+      
+      it "should link to a unrestricted version of the search" do
+        render
+        response.should_not have_tag('a[href=?]', /fedstates=MD/)
+      end
+      
+      context "when the scope id is set to 'all'" do
+        before do
+          @search.stub!(:scope_id).and_return 'all'
+          5.times { @search_results << @search_result }
+        end
+        
+        it "should not show a restriction message" do
+          render
+          response.should_not contain(/This search was restricted/)
+        end
       end
     end
     

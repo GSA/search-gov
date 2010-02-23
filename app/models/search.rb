@@ -11,6 +11,7 @@ class Search
   USER_AGENT = "USASearch"
   CLIENT_IP = "209.251.180.16"
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:.gov OR site:.mil)"
+  DEFAULT_FILTER_SETTING = 'strict'
 
   attr_accessor :query,
                 :page,
@@ -27,7 +28,9 @@ class Search
                 :spotlight,
                 :faqs,
                 :gov_forms,
-                :results_per_page
+                :results_per_page,
+                :filter_setting,
+                :scope_id
 
   def initialize(options = {})
     options ||= {}
@@ -37,6 +40,8 @@ class Search
     self.results_per_page = options[:results_per_page] || DEFAULT_PER_PAGE
     self.results_per_page = self.results_per_page.to_i unless self.results_per_page.is_a?(Integer)
     self.results_per_page = MAX_PER_PAGE if results_per_page > MAX_PER_PAGE
+    self.scope_id = options[:fedstates] || nil
+    self.filter_setting = options[:filter] || nil
     self.results, self.related_search = [], []
   end
 
@@ -88,6 +93,7 @@ class Search
       "AppId=#{APP_ID}",
       "sources=#{SOURCES}",
       "Options=EnableHighlighting",
+      "Adult=#{self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : self.filter_setting}",
       "query=#{URI.escape(query_string)}"
     ]
     "#{JSON_SITE}?" + params.join('&')
@@ -145,30 +151,32 @@ class Search
   end
 
   def build_query(options)
-    query = ""
-    if !options[:query].nil? && !options[:query].empty?
+    query = ''
+    if !options[:query].blank?
       query += limit_field(options[:query_limit], options[:query])
     end
-
-    if !options[:query_quote].nil? && !options[:query_quote].empty?
+    
+    if !options[:query_quote].blank?
       query += ' '
       query += limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"")
     end
-
-    if !options[:query_or].nil? && !options[:query_or].empty?
-      query_or = options[:query_or].split.join(' OR ')
-      query += ' ' + limit_field(options[:query_or_limit], query_or)
+    
+    if !options[:query_or].blank?
+      query_or = '(' + options[:query_or].split.join(' OR ') + ')'
+      query_or = ' ' + limit_field(options[:query_or_limit], query_or)
+      query_or = query_or.gsub(/\(\(/, '(').gsub(/\)\)/, ')')
+      query += query_or
     end
-
-    if !options[:query_not].nil? && !options[:query_not].empty?
+    
+    if !options[:query_not].blank?
       query_not = '-' + options[:query_not].split.join(' -')
       query += ' ' + limit_field(options[:query_not_limit], query_not)
     end
-
-    query += " filetype:#{options[:file_type]}" unless options[:file_type].nil? || options[:file_type].empty? || options[:file_type].downcase == 'all'
-    query += " #{options[:site_limits].split.collect { |site| 'site:' + site}.join(' OR ')}" unless options[:site_limits].nil? || options[:site_limits].empty?
-    query += " #{options[:site_excludes].split.collect { |site| '-site:' + site}.join(' ')}" unless options[:site_excludes].nil? || options[:site_excludes].empty?
-    query.strip
+   
+    query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
+    query += " #{options[:site_limits].split.collect { |site| 'site:' + site}.join(' OR ')}" unless options[:site_limits].blank?
+    query += " #{options[:site_excludes].split.collect { |site| '-site:' + site}.join(' ')}" unless options[:site_excludes].blank?
+    return query.strip
   end
 
   def limit_field(field_name, query_string)
@@ -188,7 +196,13 @@ class Search
   end
 
   def scope
-    affiliate_scope || DEFAULT_SCOPE
+    if affiliate_scope
+      affiliate_scope
+    elsif self.scope_id  && !self.scope_id.empty? && self.scope_id != 'all'
+      "(scopeid:usagov#{self.scope_id})"
+    else
+      DEFAULT_SCOPE
+    end
   end
 
   def affiliate_scope

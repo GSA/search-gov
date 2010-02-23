@@ -206,7 +206,7 @@ describe Search do
       context "when OR terms are specified" do
         it "should construct a query string that includes the OR terms OR'ed together" do
           search = Search.new(@valid_options.merge(:query_or => 'barack obama'))
-          URI.should_receive(:parse).with(/barack%20OR%20obama/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/\(barack%20OR%20obama\)/).and_return(@uriresult)
           search.run
         end
         
@@ -323,6 +323,30 @@ describe Search do
         end
       end
       
+      context "when a fedstates parameter is specified" do
+        it "should set the scope if with the fedstates parameter" do
+          search = Search.new(@valid_options.merge(:fedstates => 'MD'))
+          URI.should_receive(:parse).with(/\(scopeid:usagovMD\)/).and_return(@uriresult)
+          search.run
+        end
+        
+        context "when the fedstates parameter specified is 'all'" do
+          it "should use the 'usagovall' scopeid with .gov and .mil sites included" do
+            search = Search.new(@valid_options.merge(:fedstates => 'all'))
+            URI.should_receive(:parse).with(/\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            search.run
+          end
+        end
+        
+        context "when fedstates parameter is blank" do
+          it "should use the 'usagovall' scope id with .gov and .mil sites included" do
+            search = Search.new(@valid_options.merge(:fedstates => ''))
+            URI.should_receive(:parse).with(/\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            search.run
+          end
+        end
+      end
+      
       context "when a results per page number is specified" do
         it "should construct a query string with the appropriate per page variable set" do
           search = Search.new(@valid_options.merge(:results_per_page => 20))
@@ -352,7 +376,7 @@ describe Search do
           end
         end
       end
-      
+            
       context "when multiple or all of the advanced query parameters are specified" do
         it "should construct a query string that incorporates all of them with the proper spacing" do
           search = Search.new(@valid_options.merge(:query_limit => 'intitle:',
@@ -365,11 +389,35 @@ describe Search do
                                                    :file_type => 'pdf',
                                                    :site_limits => 'whitehouse.gov omb.gov',
                                                    :site_excludes => 'nasa.gov noaa.gov'))
-          URI.should_receive(:parse).with(/query=intitle:\(government\)%20%22barack%20obama%22%20cars%20OR%20stimulus%20intitle:\(-clunkers\)%20filetype:pdf%20site:whitehouse.gov%20OR%20site:omb.gov%20-site:nasa.gov%20-site:noaa.gov/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/query=intitle:\(government\)%20%22barack%20obama%22%20\(cars%20OR%20stimulus\)%20intitle:\(-clunkers\)%20filetype:pdf%20site:whitehouse.gov%20OR%20site:omb.gov%20-site:nasa.gov%20-site:noaa.gov/).and_return(@uriresult)
           search.run
         end
       end
       
+      context "when a filter parameter is set" do
+        it "should set the Adult parameter in the query sent to Bing" do
+          search = Search.new(@valid_options.merge(:filter => 'moderate'))
+          URI.should_receive(:parse).with(/Adult=moderate/).and_return(@uriresult)
+          search.run
+        end
+
+        context "when the filter parameter is blank" do
+          it "should set the Adult parameter to the default value ('strict')" do
+            search = Search.new(@valid_options.merge(:filter => ''))
+            URI.should_receive(:parse).with(/Adult=strict/).and_return(@uriresult)
+            search.run
+          end
+        end
+      end
+
+      context "when a filter parameter is not set" do
+        it "should set the Adult parameter to the default value ('strict')" do
+          search = Search.new(@valid_options)
+          URI.should_receive(:parse).with(/Adult=strict/).and_return(@uriresult)
+          search.run
+        end
+      end
+  
     end
     
      

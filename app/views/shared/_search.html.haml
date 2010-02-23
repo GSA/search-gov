@@ -13,8 +13,11 @@
   = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
+  = hidden_field_tag :filter, @search.filter_setting unless @search.nil? || @search.filter_setting.nil?
+  = hidden_field_tag :fedstates, @search.scope_id unless @search.nil? || @search.scope_id.nil?
   = submit_tag(t :search, :id => "search_button")
-  = link_to t(:advanced_search), advanced_search_path
+  = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil ) ))
+  = " | "
   = link_to(t(:search_in), home_page_path(:locale => other_locale_str)) unless @affiliate
 
 :javascript

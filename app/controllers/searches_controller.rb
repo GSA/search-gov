@@ -51,8 +51,9 @@ class SearchesController < ApplicationController
       :site_limits => params["sitelimit"],
       :site_excludes => params["siteexclude"],
       :filter => params["filter"],
+      :fedstates => params["fedstates"] || nil,
       :affiliate => affiliate,
-      :results_per_page => in_mobile_view? ? (is_device?("iphone") ? 10 : 3) : (params["per-page"].nil? ? nil : (params["per-page"].empty? ? nil : params["per-page"].to_i))
+      :results_per_page => in_mobile_view? ? (is_device?("iphone") ? 10 : 3) : (params["per-page"].blank? ? nil : params["per-page"].to_i)  
     }
   end
 end

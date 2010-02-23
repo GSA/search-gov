@@ -31,6 +31,7 @@ describe "shared/_searchresults.html.haml" do
       @search.stub!(:boosted_sites).and_return nil
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil
+      @search.stub!(:scope_id).and_return nil
       
       20.times { @search_results << @search_result }
     
