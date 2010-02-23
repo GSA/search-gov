@@ -153,24 +153,19 @@ class Search
   def build_query(options)
     query = ''
     if !options[:query].blank?
-      query += limit_field(options[:query_limit], options[:query])
+      query += options[:query].split.collect{ |term| limit_field(options[:query_limit], term) }.join(' ')
     end
     
     if !options[:query_quote].blank?
-      query += ' '
-      query += limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"")
+      query += ' ' + limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"")
     end
     
     if !options[:query_or].blank?
-      query_or = '(' + options[:query_or].split.join(' OR ') + ')'
-      query_or = ' ' + limit_field(options[:query_or_limit], query_or)
-      query_or = query_or.gsub(/\(\(/, '(').gsub(/\)\)/, ')')
-      query += query_or
+      query += ' ' + options[:query_or].split.collect{ |term| limit_field(options[:query_or_limit], term) }.join(' OR ')
     end
     
     if !options[:query_not].blank?
-      query_not = '-' + options[:query_not].split.join(' -')
-      query += ' ' + limit_field(options[:query_not_limit], query_not)
+      query += ' ' + options[:query_not].split.collect{ |term| "-#{limit_field(options[:query_not_limit], term)}"}.join(' ')
     end
    
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
@@ -179,15 +174,11 @@ class Search
     return query.strip
   end
 
-  def limit_field(field_name, query_string)
-    if field_name.nil?
-      query_string
+  def limit_field(field_name, term)
+    if field_name.blank?
+      term
     else
-      if field_name.empty?
-        query_string
-      else
-        "#{field_name}(#{query_string})"
-      end
+      "#{field_name}#{term}"
     end
   end
 

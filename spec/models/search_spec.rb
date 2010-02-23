@@ -185,14 +185,14 @@ describe Search do
       context "when query is limited to search only in titles" do
         it "should construct a query string with the intitle: limits on the query parameter" do
           search = Search.new(@valid_options.merge(:query_limit => "intitle:"))
-          URI.should_receive(:parse).with(/query=intitle:\(government\)/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/query=intitle:government/).and_return(@uriresult)
           search.run
         end
 
         context "when more than one query term is specified" do
           it "should construct a query string with intitle: limits before each query term" do
             search = Search.new(@valid_options.merge(:query => 'barack obama', :query_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/query=intitle:\(barack%20obama\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=intitle:barack%20intitle:obama/).and_return(@uriresult)
             search.run
           end
         end
@@ -216,7 +216,7 @@ describe Search do
         context "when the phrase query limit is set to intitle:" do
           it "should construct a query string with the intitle: limit on the phrase query" do
             search = Search.new(@valid_options.merge(:query_quote => 'barack obama', :query_quote_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/%20intitle:\(%22barack%20obama%22\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/%20intitle:%22barack%20obama%22/).and_return(@uriresult)
             search.run
           end
         end
@@ -241,14 +241,14 @@ describe Search do
       context "when OR terms are specified" do
         it "should construct a query string that includes the OR terms OR'ed together" do
           search = Search.new(@valid_options.merge(:query_or => 'barack obama'))
-          URI.should_receive(:parse).with(/\(barack%20OR%20obama\)/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/barack%20OR%20obama/).and_return(@uriresult)
           search.run
         end
 
         context "when the OR query limit is set to intitle:" do
           it "should construct a query string that includes the OR terms with intitle prefix" do
             search = Search.new(@valid_options.merge(:query_or => 'barack obama', :query_or_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/intitle:\(barack%20OR%20obama\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/intitle:barack%20OR%20intitle:obama/).and_return(@uriresult)
             search.run
           end
         end
@@ -280,7 +280,7 @@ describe Search do
         context "when the negative query limit is set to intitle:" do
           it "should construct a query string that includes the negative terms with intitle prefix" do
             search = Search.new(@valid_options.merge(:query_not => 'barack obama', :query_not_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/intitle:\(-barack%20-obama\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/-intitle:barack%20-intitle:obama/).and_return(@uriresult)
             search.run
           end
         end
@@ -424,7 +424,7 @@ describe Search do
                                                    :file_type => 'pdf',
                                                    :site_limits => 'whitehouse.gov omb.gov',
                                                    :site_excludes => 'nasa.gov noaa.gov'))
-          URI.should_receive(:parse).with(/query=intitle:\(government\)%20%22barack%20obama%22%20\(cars%20OR%20stimulus\)%20intitle:\(-clunkers\)%20filetype:pdf%20site:whitehouse.gov%20OR%20site:omb.gov%20-site:nasa.gov%20-site:noaa.gov/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/query=intitle:government%20%22barack%20obama%22%20cars%20OR%20stimulus%20-intitle:clunkers%20filetype:pdf%20site:whitehouse.gov%20OR%20site:omb.gov%20-site:nasa.gov%20-site:noaa.gov/).and_return(@uriresult)
           search.run
         end
       end
@@ -454,8 +454,6 @@ describe Search do
       end
 
     end
-
-
 
     context "when searching with valid queries" do
       before do
