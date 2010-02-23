@@ -2,7 +2,6 @@
   .row.center
     = link_to(image_tag("/m/i/logo.gif"), :controller => "home")
   - form_tag(search_path, :method => :get, :id=>"search_form") do
-    = its_beta if @affiliate
     .row.center
       = text_field :search, :query, {:name=>"query", :placeholder => "Search"}
       = submit_tag(t :search, :id => "search_button")

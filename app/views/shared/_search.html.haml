@@ -1,11 +1,9 @@
 - path = @search.is_a?(ImageSearch) ? image_search_path : search_path
 - form_tag(path, :method => :get, :id => "search_form") do
-  = its_beta if @affiliate
   - search_params = {:query => params[:query], :locale => params[:locale]}
   %ul.navigation
     %li.first= link_to_unless web_search?, t(:government_web), search_path(search_params)
     %li= link_to_unless image_search?, t(:images), image_search_path(search_params)
-  = label(:search, :query, "Search Query:", :class => :hidden)
   - if @affiliate or not english_locale? or @search.is_a?(ImageSearch)
     = text_field :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}
   - else

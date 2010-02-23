@@ -76,6 +76,26 @@ div.results {
     background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px;
 }
 
+#search_form ul.navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px; }
+  #search_form ul.navigation li {
+    font-weight: bold;
+    color: #990000;
+    display: inline;
+    border-left: 2px solid #CCC;
+    padding: 0 5px 0 8px; }
+    #search_form ul.navigation li a {
+      text-decoration: none;
+      font-weight: bold; }
+    #search_form ul.navigation li a:hover {
+      text-decoration: underline; }
+  #search_form ul.navigation li.first {
+    padding-left: 0;
+    border-left: 0; }
+
 </style>
 </head>
 <body class="body">
@@ -83,7 +103,7 @@ div.results {
   <tr>
     <td colspan="2">
       <%= yield %>
-      
+
     </td>
   </tr>
 </table>
