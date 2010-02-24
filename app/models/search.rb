@@ -99,11 +99,18 @@ class Search
     "#{JSON_SITE}?" + params.join('&')
   end
 
+  def self.suggestion(sanitized_query)
+    pre_filters = ' AND query NOT LIKE "%http:%" AND query NOT LIKE "%intitle:%" AND query NOT LIKE "%site:%" AND query NOT REGEXP "[()\/\"]"'
+    conditions = ['query LIKE ? '+pre_filters, sanitized_query + '%' ]
+    results = DailyQueryStat.find(:all, :conditions => conditions, :order => 'query ASC', :limit => 100, :select=>"distinct(query) as query")
+    BlockWord.filter(results, "query", 15)
+  end
+
   protected
 
   def related_search_results(response)
     begin
-      BlockWord.filter(response.related_search.results, "Title")
+      BlockWord.filter(response.related_search.results, "Title", 5)
     rescue
       return []
     end
@@ -155,19 +162,19 @@ class Search
     if !options[:query].blank?
       query += options[:query].split.collect{ |term| limit_field(options[:query_limit], term) }.join(' ')
     end
-    
+
     if !options[:query_quote].blank?
       query += ' ' + limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"")
     end
-    
+
     if !options[:query_or].blank?
       query += ' ' + options[:query_or].split.collect{ |term| limit_field(options[:query_or_limit], term) }.join(' OR ')
     end
-    
+
     if !options[:query_not].blank?
       query += ' ' + options[:query_not].split.collect{ |term| "-#{limit_field(options[:query_not_limit], term)}"}.join(' ')
     end
-   
+
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
     query += " #{options[:site_limits].split.collect { |site| 'site:' + site}.join(' OR ')}" unless options[:site_limits].blank?
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site}.join(' ')}" unless options[:site_excludes].blank?

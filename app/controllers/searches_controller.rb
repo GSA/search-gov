@@ -9,14 +9,10 @@ class SearchesController < ApplicationController
     handle_affiliate_search
   end
 
-  # TODO This could be cleaned up into search.rb
   def auto_complete_for_search_query
     render :inline => "" and return unless params['query']
     sanitized_query = params['query'].gsub('\\', '')
-    pre_filters = ' AND query NOT LIKE "%http:%" AND query NOT LIKE "%intitle:%" AND query NOT LIKE "%site:%" AND query NOT REGEXP "[()\/\"]"'
-    conditions = ['query LIKE ? '+pre_filters, sanitized_query + '%' ]
-    results = DailyQueryStat.find(:all, :conditions => conditions, :order => 'query ASC', :limit => 15, :select=>"distinct(query) as query")
-    @auto_complete_options = BlockWord.filter(results, "query")
+    @auto_complete_options = Search.suggestion(sanitized_query)
     render :inline => "<%= auto_complete_result(@auto_complete_options, 'query', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
   end
 

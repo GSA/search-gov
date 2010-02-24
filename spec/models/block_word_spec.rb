@@ -13,7 +13,7 @@ describe BlockWord do
     BlockWord.create!(@valid_attributes)
   end
 
-  describe "#filter(results, key)" do
+  describe "#filter(results, key, number_of_results)" do
     before do
       BlockWord.create(:word => "foo")
       BlockWord.create(:word => "blat baz")
@@ -22,18 +22,22 @@ describe BlockWord do
     end
 
     it "should filter out results that contain blocked terms" do
-      filtered_terms = BlockWord.filter(@results, "somekey")
+      filtered_terms = BlockWord.filter(@results, "somekey", 10)
       filtered_terms.detect {|ft| ft["somekey"] == "bar foo" }.should be_nil
       filtered_terms.detect {|ft| ft["somekey"] == "blat <strong>baz</strong>" }.should be_nil
     end
 
     it "should not filter out queries that contain blocked terms but do not end on a word boundary" do
-      filtered_terms = BlockWord.filter(@results, "somekey")
+      filtered_terms = BlockWord.filter(@results, "somekey", 10)
       filtered_terms.detect {|ft| ft["somekey"] == "food" }.should_not be_nil
     end
 
     it "should handle a nil results list by returning nil" do
-      BlockWord.filter(nil, "somekey").should be_nil
+      BlockWord.filter(nil, "somekey", 10).should be_nil
+    end
+
+    it "should return number_of_results words" do
+      BlockWord.filter(@results, "somekey", 3).size.should == 3      
     end
   end
 
