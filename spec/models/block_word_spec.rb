@@ -17,14 +17,13 @@ describe BlockWord do
     before do
       BlockWord.create(:word => "foo")
       BlockWord.create(:word => "blat baz")
-      queries = ["bar foo", "bar blat", "blat", "baz blat", "baz loren", "food", "blat <strong>baz</strong>"]
+      queries = ["bar Foo", "bar \xEE\x80\x80Foo\xEE\x80\x81", "bar blat", "blat", "baz blat", "baz loren", "food", "blat <strong>baz</strong>"]
       @results = queries.collect {|q| { "somekey" => q } }
     end
 
     it "should filter out results that contain blocked terms" do
       filtered_terms = BlockWord.filter(@results, "somekey", 10)
-      filtered_terms.detect {|ft| ft["somekey"] == "bar foo" }.should be_nil
-      filtered_terms.detect {|ft| ft["somekey"] == "blat <strong>baz</strong>" }.should be_nil
+      filtered_terms.size.should == 5
     end
 
     it "should not filter out queries that contain blocked terms but do not end on a word boundary" do
@@ -37,7 +36,7 @@ describe BlockWord do
     end
 
     it "should return number_of_results words" do
-      BlockWord.filter(@results, "somekey", 3).size.should == 3      
+      BlockWord.filter(@results, "somekey", 3).size.should == 3
     end
   end
 
