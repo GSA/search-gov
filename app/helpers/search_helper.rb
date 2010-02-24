@@ -63,6 +63,11 @@ module SearchHelper
     body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
   end
 
+  def unescaped_text_field_with_auto_complete(object, method, tag_options = {}, completion_options = {})
+    tfwac = text_field_with_auto_complete(object, method, tag_options, completion_options)
+    tfwac.gsub("&amp;","&")
+  end
+
   def shunt_from_bing_to_usasearch(bingurl, affiliate)
     query = CGI::unescape(bingurl.split("?q=").last)
     opts = {:query=> query}
@@ -98,7 +103,7 @@ module SearchHelper
   def no_results_for(query)
     content_tag(:p, (t :no_results_for, :query => h(query)), :class=>"noresults")
   end
-  
+
   EN_SCOPE_ID_OPTIONS = [
     ['All Government Domains', 'all'],
     ['Federally-Focused', 'federal'],
@@ -229,9 +234,9 @@ module SearchHelper
     ['Islas Marshall', 'MH'],
     ['Islas Vírgenes, EE.UU.', 'VI'],
     ['Puerto Rico', 'PR'],
-    ['Samoa Americana', 'SA']    
+    ['Samoa Americana', 'SA']
   ]
-    
+
   def scope_ids_as_options
     if I18n.locale == :es
       ES_SCOPE_ID_OPTIONS
@@ -239,7 +244,7 @@ module SearchHelper
       EN_SCOPE_ID_OPTIONS
     end
   end
-      
+
   private
   def shorten_url (url)
     return url if url.length <=30
