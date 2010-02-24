@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-block_word_rb.html">app/models/block_word.rb</a></td>
-            <td class='right_align'><tt>9</tt></td>
-            <td class='right_align'><tt>8</tt></td>
+            <td class='right_align'><tt>15</tt></td>
+            <td class='right_align'><tt>14</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -81,7 +81,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   def self.filter(results, key)</pre></td>
+            <td><pre><a name="line5">5</a>   def self.filter(results, key, number_of_records)</pre></td>
           </tr>
         
           
@@ -92,26 +92,62 @@
         
           
           
+          <tr class="inferred">
+            <td><pre><a name="line7">7</a>     records = results.reject do |rs|</pre></td>
+          </tr>
+        
+          
+          
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     results.reject { |rs| block_words.detect { |bw| rs[key].gsub(/&lt;\/?[^&gt;]*&gt;/, '') =~ /#{bw.word}\b/i } } unless results.nil?</pre></td>
+            <td><pre><a name="line8">8</a>       block_words.detect do |bw|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>         sanitized_term = rs[key].gsub(/&lt;\/?[^&gt;]*&gt;/, '').gsub(/\xEE\x80\x80/, '').gsub(/\xEE\x80\x81/, '')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>         sanitized_term =~ /\b#{bw.word}\b/i</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>   end</pre></td>
+            <td><pre><a name="line11">11</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     end unless results.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>     records[0, number_of_records] unless records.nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a> end</pre></td>
+            <td><pre><a name="line14">14</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line15">15</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Feb 23 11:33:19 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Wed Feb 24 13:56:03 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
