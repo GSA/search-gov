@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users"
   map.resources :users
@@ -35,7 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   map.auto_complete ':controller/:action',
                     :requirements => { :action => /auto_complete_for_\S+/ },
                     :conditions => { :method => :get }
-
-  # handle static content
-  map.connect '*path', :controller => 'docs', :action => 'show'
+  map.resources :pages,
+                :controller => 'pages',
+                :only       => [:show]
 end
