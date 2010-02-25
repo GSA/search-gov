@@ -78,6 +78,18 @@ describe Search do
 
     end
 
+    context "when Bing takes waaaaaaaaay to long to respond" do
+      before do
+        @search = Search.new(@valid_options)
+        Net::HTTP::Get.stub!(:new).and_raise Timeout::Error
+      end
+
+      it "should return false when searching" do
+        @search.run.should be_false
+      end
+
+    end
+
     context "when non-English locale is specified" do
       before do
         I18n.locale = :es

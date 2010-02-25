@@ -143,7 +143,7 @@ class Search
       req["User-Agent"] = USER_AGENT
       req["Client-IP"] = CLIENT_IP
       http.request(req)
-    rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET => error
+    rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Timeout::Error => error
       raise BingSearchError.new(error.to_s)
     end
   end
