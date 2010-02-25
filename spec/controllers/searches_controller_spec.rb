@@ -34,6 +34,7 @@ describe SearchesController do
         DailyQueryStat.create(:query => "site: this has site: in it", :times => 1, :day => Date.today)
         DailyQueryStat.create(:query => "intitle: this has intitle: in it", :times => 1, :day => Date.today)
         DailyQueryStat.create(:query => "\"quoted phrase\" is in it", :times => 1, :day => Date.today)
+        DailyQueryStat.create(:query => "this_is_at@email.address", :times => 1, :day => Date.today)
       end
 
       it "should filter out those with http:" do
@@ -59,6 +60,10 @@ describe SearchesController do
       it "should filter out those with quoted phrases:" do
         get :auto_complete_for_search_query, :query=>"\"quote"
         response.body.should_not match(/quote/)
+      end
+      it "should filter out those with @" do
+        get :auto_complete_for_search_query, :query=>"this_is_at"
+        response.body.should_not match(/this_is_at@/)
       end
     end
 

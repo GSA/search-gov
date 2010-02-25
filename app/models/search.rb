@@ -100,7 +100,7 @@ class Search
   end
 
   def self.suggestion(sanitized_query)
-    pre_filters = ' AND query NOT LIKE "%http:%" AND query NOT LIKE "%intitle:%" AND query NOT LIKE "%site:%" AND query NOT REGEXP "[()\/\"]"'
+    pre_filters = ' AND query NOT LIKE "%http:%" AND query NOT LIKE "%intitle:%" AND query NOT LIKE "%site:%" AND query NOT REGEXP "[()\/\"@]"'
     conditions = ['query LIKE ? '+pre_filters, sanitized_query + '%' ]
     results = DailyQueryStat.find(:all, :conditions => conditions, :order => 'query ASC', :limit => 100, :select=>"distinct(query) as query")
     BlockWord.filter(results, "query", 15)
