@@ -188,3 +188,12 @@ Feature: Affiliate clients
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"
     And I should see "Your XML document could not be processed. Please check the format and try again."
+
+  Scenario: Getting an embed code for my affiliate site search
+    Given the following Affiliates exist:
+    | name             | contact_email         | contact_name        |
+    | aff.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the user account page
+    And I follow "Get Code"
+    Then I should see "Copy and paste the HTML code below to create a search box for aff.gov"

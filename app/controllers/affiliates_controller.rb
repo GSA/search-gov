@@ -46,6 +46,10 @@ class AffiliatesController < AffiliateAuthController
     flash[:success] = "Staged content is now visible"
     redirect_to account_path
   end
+  
+  def embed_code
+    @affiliate = Affiliate.find(params[:id])
+  end
 
   def destroy
     @affiliate.destroy

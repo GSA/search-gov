@@ -23,6 +23,8 @@
               |
               = link_to "Boosted sites", new_affiliate_boosted_sites_upload_path(affiliate)
               |
+              = link_to "Get Code", embed_code_affiliate_path(affiliate)
+              |
               = button_to "Delete Affiliate", affiliate_path(affiliate), :title => "Delete this affiliate", :confirm => "You are about to delete this affiliate. Are you sure?", :method => :delete
 
 .span-16.contentcard
