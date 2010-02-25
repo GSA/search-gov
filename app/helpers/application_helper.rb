@@ -42,12 +42,15 @@ module ApplicationHelper
       ["Suggest-A-Link", "http://www.usa.gov/feedback/SuggestLinkForm.jsp" ],
       ["Link to Us", "http://www.usa.gov/About/FirstGov_Logos.shtml"],
       ["Accessibility", "/pages/accessibility"]
+      ["Need Larger Text?", "/docs/textsize"]
     ],
     :es => [
       ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
       ["Privacidad", "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"],
       ["Enlace su sitio al nuestro", "http://www.usa.gov/gobiernousa/link_to_us.shtml"],
-      ["Sugiera un enlace", "http://www.usa.gov/feedback/sugieraunenlaceformulario.jsp"]
+      ["Sugiera un enlace", "http://www.usa.gov/feedback/sugieraunenlaceformulario.jsp"],
+      ["¿Necesita letra grande?", "/docs/textsize?locale=es"]
+      
     ]
   }
 

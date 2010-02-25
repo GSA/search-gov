@@ -56,3 +56,16 @@ Feature: Homepage
     Given I am on the homepage
     And I follow "Advanced Search"
     Then I should see "Use the options on this page to create a very specific search."
+
+  Scenario: Clicking on 'Need Larger Text'
+    Given I am on the homepage
+    And I follow "Need Larger Text?"
+    Then I should see "Change Text Size"
+    And I should see "En Español"
+
+  Scenario: Visiting Homepage as a Spanish speaker and needing larger text
+    Given I am on the homepage
+    And I follow "Busque en español"
+    And I follow "¿Necesita letra grande?"
+    Then I should see "Cómo cambiar el tamaño del texto"
+    And I should see "In English"    
