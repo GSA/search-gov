@@ -63,9 +63,13 @@ module SearchHelper
     body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
   end
 
+  def strip_bing_highlights(body)
+    body.gsub(/\xEE\x80\x80/, '').gsub(/\xEE\x80\x81/, '')
+  end
+
   def unescaped_text_field_with_auto_complete(object, method, tag_options = {}, completion_options = {})
     tfwac = text_field_with_auto_complete(object, method, tag_options, completion_options)
-    tfwac.gsub("&amp;","&")
+    tfwac.gsub("&amp;", "&")
   end
 
   def shunt_from_bing_to_usasearch(bingurl, affiliate)
@@ -77,11 +81,13 @@ module SearchHelper
 
   def spelling_suggestion(spelling_suggestion, affiliate)
     if (spelling_suggestion)
-      opts = {:query=> spelling_suggestion}
+      escaped_spelling_suggestion = h(spelling_suggestion)
+      rendered_suggestion = translate_bing_highlights(escaped_spelling_suggestion)
+      suggestion_for_url = strip_bing_highlights(escaped_spelling_suggestion)
+      opts = {:query=> suggestion_for_url}
       opts.merge!(:affiliate => affiliate.name) if affiliate
-      suggestion = translate_bing_highlights(h(spelling_suggestion))
       url = image_search? ? image_search_path(opts): search_path(opts)
-      content_tag(:h4, "#{t :did_you_mean}: #{link_to(suggestion, url)}")
+      content_tag(:h4, "#{t :did_you_mean}: #{link_to(rendered_suggestion, url)}")
     end
   end
 
