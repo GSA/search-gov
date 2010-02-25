@@ -8,6 +8,9 @@ describe BlockWord do
 
   should_validate_presence_of :word
   should_validate_uniqueness_of :word
+  should_validate_length_of :word, :within=> (3..50)
+  should_not_allow_values_for :word, "citizenship[", "email@address.com", "\"over quoted\""
+  should_allow_values_for :word, "my-name", "1099 form"
 
   it "should create a new instance given valid attributes" do
     BlockWord.create!(@valid_attributes)
@@ -15,8 +18,9 @@ describe BlockWord do
 
   describe "#filter(results, key, number_of_results)" do
     before do
-      BlockWord.create(:word => "foo")
-      BlockWord.create(:word => "blat baz")
+      BlockWord.create!(:word => "foo")
+      BlockWord.create!(:word => "blat baz")
+      BlockWord.create!(:word => "hyphenate-me")
       queries = ["bar Foo", "bar \xEE\x80\x80Foo\xEE\x80\x81", "bar blat", "blat", "baz blat", "baz loren", "food", "blat <strong>baz</strong>"]
       @results = queries.collect {|q| { "somekey" => q } }
     end

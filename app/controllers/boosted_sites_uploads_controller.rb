@@ -13,10 +13,10 @@ class BoostedSitesUploadsController < AffiliateAuthController
       BoostedSite.transaction do
         BoostedSite.destroy_all("affiliate_id = #{@affiliate.id}")
         doc.root.each_element('//entry') do |entry|
-          BoostedSite.create( :url => entry.elements["url"].first.to_s,
-                              :title => entry.elements["title"].first.to_s,
-                              :description => entry.elements["description"].first.to_s,
-                              :affiliate => @affiliate )
+          BoostedSite.create!( :url => entry.elements["url"].first.to_s,
+                               :title => entry.elements["title"].first.to_s,
+                               :description => entry.elements["description"].first.to_s,
+                               :affiliate => @affiliate )
         end
         flash[:success] = "Boosted sites uploaded successfully for #{@affiliate.name}"
         redirect_to account_path

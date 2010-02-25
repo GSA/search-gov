@@ -1,6 +1,8 @@
 class BlockWord < ActiveRecord::Base
   validates_presence_of :word
   validates_uniqueness_of :word
+  validates_length_of :word, :within=> (3..50)
+  validates_format_of :word, :with=> /^[\w\s-]+$/i
 
   def self.filter(results, key, number_of_records)
     block_words = all
