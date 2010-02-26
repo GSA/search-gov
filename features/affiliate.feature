@@ -11,9 +11,9 @@ Feature: Affiliate clients
 
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | multi1           | two@bar.gov           | Two Bar             |
-    | multi2           | two@bar.gov           | Two Bar             |
+      | name             | contact_email         | contact_name        |
+      | multi1           | two@bar.gov           | Two Bar             |
+      | multi2           | two@bar.gov           | Two Bar             |
     And I am logged in with email "two@bar.gov" and password "random_string"
     When I go to the user account page
     Then I should see "multi1"
@@ -25,11 +25,11 @@ Feature: Affiliate clients
     When I go to the user account page
     And I follow "Add Affiliate"
     And I fill in the following:
-    | Name of new site search                                               | www.agency.gov             |
-    | Your Website URL (www.example.gov)                                    | www.agency.gov             |
-    | Domains (one per line)                                                | agency.gov                 |
-    | Enter HTML to customize the top of your search page                   | My header                  |
-    | Enter HTML to customize the bottom of your search page                | My footer                  |
+      | Name of new site search                                               | www.agency.gov             |
+      | Your Website URL (www.example.gov)                                    | www.agency.gov             |
+      | Domains (one per line)                                                | agency.gov                 |
+      | Enter HTML to customize the top of your search page                   | My header                  |
+      | Enter HTML to customize the bottom of your search page                | My footer                  |
     And I press "Create"
     Then I should be on the user account page
     And I should see "Affiliate successfully created"
@@ -37,8 +37,8 @@ Feature: Affiliate clients
 
   Scenario: Adding an affiliate with problems
     Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | aff.gov          | aff@bar.gov           | John Bar            |
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "new"
@@ -48,8 +48,8 @@ Feature: Affiliate clients
 
   Scenario: Deleting an affiliate
     Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | aff.gov          | aff@bar.gov           | John Bar            |
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I press "Delete Affiliate"
@@ -58,8 +58,8 @@ Feature: Affiliate clients
 
   Scenario: Staging changes to an affiliate's look and feel
     Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        | domains			| header		| footer		| staged_domains	| staged_header	| staged_footer	|
-    | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov	| Old header	| Old footer	| oldagency.gov		| Old header			| Old footer	|						
+      | name             | contact_email         | contact_name        | domains			  | header		  | footer		  | staged_domains	| staged_header	  | staged_footer	|
+      | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov	| Old header	| Old footer	| oldagency.gov		| Old header			| Old footer	  |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Edit"
@@ -67,11 +67,11 @@ Feature: Affiliate clients
     And the "Enter HTML to customize the top of your search page" field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search page" field should contain "Old footer"
     When I fill in the following:
-    | Name of new site search                                               | newname                    |
-    | Your Website URL (www.example.gov)                                    | www.agency.gov             |
-    | Domains (one per line)                                                | newagency.gov              |
-    | Enter HTML to customize the top of your search page                   | New header                 |
-    | Enter HTML to customize the bottom of your search page                | New footer                 |
+      | Name of new site search                                               | newname                    |
+      | Your Website URL (www.example.gov)                                    | www.agency.gov             |
+      | Domains (one per line)                                                | newagency.gov              |
+      | Enter HTML to customize the top of your search page                   | New header                 |
+      | Enter HTML to customize the bottom of your search page                | New footer                 |
     And I press "Save for preview"
     Then I should see "Staged changes to your affiliate successfully."
     And I should be on the user account page
@@ -100,19 +100,19 @@ Feature: Affiliate clients
 
   Scenario: Site visitor sees relevant boosted results for given affiliate search
     Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | aff.gov          | aff@bar.gov           | John Bar            |
-    | bar.gov          | aff@bar.gov           | John Bar            |
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
+      | bar.gov          | aff@bar.gov           | John Bar            |
     And the following Boosted Sites exist for the affiliate "aff.gov"
-    | title               | url                     | description                               |
-    | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
-    | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
-    | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
+      | title               | url                     | description                               |
+      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
+      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
+      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And the following Boosted Sites exist for the affiliate "bar.gov"
-    | title               | url                     | description                               |
-    | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
-    | Pelosi misspelling  | http://www.bar.gov/pel  | Synonyms file test works                  |
-    | all about agencies  | http://www.bar.gov/pel  | Stemming works                            |
+      | title               | url                     | description                               |
+      | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
+      | Pelosi misspelling  | http://www.bar.gov/pel  | Synonyms file test works                  |
+      | all about agencies  | http://www.bar.gov/pel  | Stemming works                            |
     When I go to aff.gov's search page
     And I fill in "query" with "emergency"
     And I submit the search form
@@ -134,8 +134,8 @@ Feature: Affiliate clients
 
   Scenario: Uploading valid booster XML document as a logged in affiliate
     Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | aff.gov          | aff@bar.gov           | John Bar            |
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Boosted sites"
@@ -144,7 +144,7 @@ Feature: Affiliate clients
 
     When I attach the file "features/support/boosted_sites.xml" to "xmlfile"
     And I press "Upload"
-    Then I should see "Boosted sites uploaded successfully for aff.gov"
+    Then I should see "Boosted sites uploaded successfully for affiliate 'aff.gov'"
 
     When I follow "Boosted sites"
     Then I should see "This is a listing about Texas"
@@ -157,42 +157,34 @@ Feature: Affiliate clients
     Then I should see "New results about Texas"
     And I should see "New results about hurricanes"
 
-  Scenario: Uploading invalid booster XML document (plaintext) as a logged in affiliate
+  Scenario: Uploading invalid booster XML document as a logged in affiliate
     Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | aff.gov          | aff@bar.gov           | John Bar            |
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following Boosted Sites exist for the affiliate "aff.gov"
+      | title               | url                     | description                               |
+      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
+      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
+      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Boosted sites"
-    And I attach the file "features/support/boosted_sites.xml" to "xmlfile"
+    And I attach the file "features/support/missing_title_boosted_sites.xml" to "xmlfile"
     And I press "Upload"
-    And I follow "Boosted sites"
-    And I attach the file "features/support/invalid_boosted_sites.txt" to "xmlfile"
-    And I press "Upload"
-    Then I should see "This is a listing about Texas"
-    And I should see "Some other listing about hurricanes"
-    And I should see "Your XML document could not be processed. Please check the format and try again."
+    Then I should see "Your XML document could not be processed. Please check the format and try again."
+    And I should see "Our Emergency Page"
+    And I should see "FAQ Emergency Page"
+    And I should see "Our Tourism Page"
 
-  Scenario: Uploading invalid booster XML document (malformed) as a logged in affiliate
-    Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | aff.gov          | aff@bar.gov           | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the user account page
-    And I follow "Boosted sites"
-    And I attach the file "features/support/boosted_sites.xml" to "xmlfile"
-    And I press "Upload"
-    And I follow "Boosted sites"
-    And I attach the file "features/support/invalid_boosted_sites.xml" to "xmlfile"
-    And I press "Upload"
-    Then I should see "This is a listing about Texas"
-    And I should see "Some other listing about hurricanes"
-    And I should see "Your XML document could not be processed. Please check the format and try again."
+    When I go to aff.gov's search page
+    And I fill in "query" with "tourism"
+    And I submit the search form
+    Then I should see "Our Tourism Page" within "#boosted"
 
   Scenario: Getting an embed code for my affiliate site search
     Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | aff.gov          | aff@bar.gov           | John Bar            |
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Get Code"

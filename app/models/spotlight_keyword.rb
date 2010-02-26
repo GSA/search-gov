@@ -8,6 +8,6 @@ class SpotlightKeyword < ActiveRecord::Base
 
   private
   def reindex_spotlight
-    Spotlight.reindex
+    spotlight.index
   end
 end
