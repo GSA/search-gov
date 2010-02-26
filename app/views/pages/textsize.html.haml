@@ -1,6 +1,6 @@
 %p
   %h1= t :text_size_title
-  %div= t :text_size_translation_link
+  %div= link_to((t :text_size_translation_link), page_path(:id => 'textsize', :locale => I18n.locale==I18n.default_locale ? 'es':'en' ))
 %h3= t :text_size_header_1
 %p= t :text_size_paragraph_1
 %h3= t :text_size_header_2
