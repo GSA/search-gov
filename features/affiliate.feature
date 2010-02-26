@@ -58,24 +58,31 @@ Feature: Affiliate clients
 
   Scenario: Staging changes to an affiliate's look and feel
     Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | aff.gov          | aff@bar.gov           | John Bar            |
+    | name             | contact_email         | contact_name        | domains			| header		| footer		|
+    | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov	| Old header	| Old footer	|		
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Edit"
-    And I fill in the following:
+    Then the "Domains (one per line)" field should contain "oldagency.gov"
+    And the "Enter HTML to customize the top of your search page" field should contain "Old header"
+    And the "Enter HTML to customize the bottom of your search page" field should contain "Old footer"
+    When I fill in the following:
     | Name of new site search                                               | newname                    |
     | Your Website URL (www.example.gov)                                    | www.agency.gov             |
-    | Domains (one per line)                                                | agency.gov                 |
-    | Enter HTML to customize the top of your search page                   | My header                  |
-    | Enter HTML to customize the bottom of your search page                | My footer                  |
+    | Domains (one per line)                                                | newagency.gov              |
+    | Enter HTML to customize the top of your search page                   | New header                 |
+    | Enter HTML to customize the bottom of your search page                | New footer                 |
     And I press "Save for preview"
     Then I should see "Staged changes to your affiliate successfully."
     And I should be on the user account page
     And I should see "newname"
+    When I follow "View current"
+    Then I should see "Old header"
+    And I should see "Old footer"
+    When I go to the user account page
     When I follow "View staged"
-    Then I should see "My header"
-    And I should see "My footer"
+    Then I should see "New header"
+    And I should see "New footer"
     When I go to the user account page
     And I press "Push Changes"
     Then I should be on the user account page
@@ -83,8 +90,8 @@ Feature: Affiliate clients
     And I should not see "Push Changes"
     And I should not see "View staged"
     When I follow "View current"
-    Then I should see "My header"
-    And I should see "My footer"
+    Then I should see "New header"
+    And I should see "New footer"
 
   Scenario: Site visitor sees relevant boosted results for given affiliate search
     Given the following Affiliates exist:

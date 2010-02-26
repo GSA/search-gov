@@ -6,6 +6,9 @@ class AffiliatesController < AffiliateAuthController
   end
 
   def edit
+    @affiliate.staged_domains = @affiliate.domains
+    @affiliate.staged_header = @affiliate.header
+    @affiliate.staged_footer = @affiliate.footer
   end
 
   def new
