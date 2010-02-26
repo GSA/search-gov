@@ -89,6 +89,17 @@ describe Search do
       end
 
     end
+    
+    context "when Bing is unreachable" do
+      before do
+        @search = Search.new(@valid_options)
+        Net::HTTP::Get.stub!(:new).and_raise Errno::ENETUNREACH
+      end
+      
+      it "shoudl return false when searching" do
+        @search.run.should be_false
+      end
+    end
 
     context "when non-English locale is specified" do
       before do
