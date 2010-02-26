@@ -58,8 +58,8 @@ Feature: Affiliate clients
 
   Scenario: Staging changes to an affiliate's look and feel
     Given the following Affiliates exist:
-    | name             | contact_email         | contact_name        | domains			| header		| footer		|
-    | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov	| Old header	| Old footer	|		
+    | name             | contact_email         | contact_name        | domains			| header		| footer		| staged_domains	| staged_header	| staged_footer	|
+    | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov	| Old header	| Old footer	| oldagency.gov		| Old header			| Old footer	|						
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Edit"
@@ -76,6 +76,11 @@ Feature: Affiliate clients
     Then I should see "Staged changes to your affiliate successfully."
     And I should be on the user account page
     And I should see "newname"
+    When I follow "Edit"
+    Then the "Domains (one per line)" field should contain "newagency.gov"
+    And the "Enter HTML to customize the top of your search page" field should contain "New header"
+    And the "Enter HTML to customize the bottom of your search page" field should contain "New footer"
+    When I go to the user account page
     When I follow "View current"
     Then I should see "Old header"
     And I should see "Old footer"
