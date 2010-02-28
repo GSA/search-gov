@@ -17,6 +17,7 @@
       .span-24.header
         = header_links
       .span-24.main
+        #need-larger-text= link_to((t :need_larger_text), page_path(:id => 'textsize'), :locale => other_locale_str)
         = yield
       .prepend-1.span-22.append-1.footer
         = footer_links
