@@ -4,4 +4,5 @@ Given /^the following Boosted Sites exist for the affiliate "([^\"]*)"$/ do |aff
     BoostedSite.new(:url => hash["url"], :description => hash["description"], :title => hash["title"])
   end
   affiliate.boosted_sites << sites
+  Sunspot.index(sites) # because BoostedSite has auto indexing turned off for saves/creates
 end
