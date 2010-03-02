@@ -38,6 +38,8 @@ module NavigationHelpers
       new_account_path
     when /the affiliate welcome page/
       affiliates_path
+    when /the reports homepage/
+      monthly_reports_path
 
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +

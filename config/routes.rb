@@ -31,6 +31,7 @@ ActionController::Routing::Routes.draw do |map|
   map.analytics_faq '/analytics/faq', :controller => "analytics/faq"
   map.analytics_query_search '/analytics/query_search', :controller => "analytics/query_searches"
   map.query_timeline '/analytics/timeline/:query', :controller => 'analytics/timeline', :action => 'show', :requirements => { :query => /.*/ }
+  map.monthly_reports '/analytics/monthly_reports', :controller => 'analytics/monthly_reports'
   map.home_page '/', :controller => "home"
   map.auto_complete ':controller/:action',
                     :requirements => { :action => /auto_complete_for_\S+/ },
