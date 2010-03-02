@@ -9,8 +9,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   AVAILABLE_LOCALES = [:en, :es]
+  EXCEPTIONS_NOT_LOGGED = ['ActionController::UnknownAction', 'ActionController::RoutingError']
+
+  protected
+
+  def log_error(exc)
+    super unless EXCEPTIONS_NOT_LOGGED.include?(exc.class.name)
+  end
 
   private
+
   def set_locale
     I18n.locale = determine_locale_from_param(params[:locale]) || I18n.default_locale
   end
