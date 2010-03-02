@@ -189,3 +189,5 @@ Feature: Affiliate clients
     When I go to the user account page
     And I follow "Get Code"
     Then I should see "Copy and paste the HTML code below to create a search box for aff.gov"
+    And I should see "English Version"
+    And I should see "Spanish Version"

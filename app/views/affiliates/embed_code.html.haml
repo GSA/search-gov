@@ -1,10 +1,25 @@
 %h3= "Copy and paste the HTML code below to create a search box for #{ @affiliate.name }"
 = find_and_preserve do
-  %textarea{ :readonly => true, :id => "embed_code_textarea", :onclick => "document.getElementById('embed_code_textarea').focus(); document.getElementById('embed_code_textarea').select();" }
-    = '<form method="get" action="http://search.usa.gov/search">'
-    = "  <input type=\"hidden\" name=\"affiliate\" value=\"#{ @affiliate.name }\" />"
-    = '  <label for="query-field">Enter Search Term(s): </label>'
-    = '  <input type="text" name="query" id="query-field"/>'
-    = '  <input type="submit" value="Search" />'
-    = '</form>'
+  #embed_code_english
+    English Version
+    %br
+    %textarea{ :readonly => true, :id => "embed_code_textarea", :onclick => "document.getElementById('embed_code_textarea').focus(); document.getElementById('embed_code_textarea').select();" }
+      = '<form method="get" action="http://search.usa.gov/search">'
+      = "  <input type=\"hidden\" name=\"affiliate\" value=\"#{ @affiliate.name }\" />"
+      = '  <label for="query-field">Enter Search Term(s): </label>'
+      = '  <input type="text" name="query" id="query-field"/>'
+      = '  <input type="submit" value="Search" />'
+      = '</form>'
+  #embed_code_spanish
+    Spanish Version
+    %br
+    %textarea{ :readonly => true, :id => "embed_code_textarea_spanish", :onclick => "document.getElementById('embed_code_textarea_spanish').focus(); document.getElementById('embed_code_textarea_spanish').select();" }
+      = '<form method="get" action="http://search.usa.gov/search">'
+      = "  <input type=\"hidden\" name=\"affiliate\" value=\"#{ @affiliate.name }\" />"
+      = '  <input type="hidden" name="locale" value="es"/>'
+      = '  <label for="query-field">Enter Search Term(s): </label>'
+      = '  <input type="text" name="query" id="query-field"/>'
+      = '  <input type="submit" value="Search" />'
+      = '</form>'
+    
   
