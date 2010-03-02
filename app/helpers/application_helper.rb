@@ -81,7 +81,7 @@ module ApplicationHelper
       elements << link_to("Register", new_account_path)
     end
     elements << mail_to("***REMOVED***", "Contact Us")
-    elements << link_to("FAQ", "http://searchusa.zendesk.com/")
+    elements << link_to("FAQ", "http://searchsupport.usa.gov/")
     elements << link_to("search.usa.gov", home_page_path)
     elements.join(" | ")
   end
