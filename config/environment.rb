@@ -26,8 +26,10 @@ Rails::Initializer.run do |config|
   config.gem 'sunspot', :lib => 'sunspot', :version=> '0.10.9'
   config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version=> '0.11.5'
   config.gem 'hoptoad_notifier'
-  
+
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'Eastern Time (US & Canada)'
 end
+
+APP_EMAIL_ADDRESS = "***REMOVED***"
