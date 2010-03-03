@@ -86,5 +86,41 @@ describe "query_log rake tasks" do
         end
       end
     end
+
+    describe "usasearch:query_log:import" do
+      before do
+        @task_name = "usasearch:query_log:import"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when not given a directory of log files" do
+        it "should print out an error message" do
+          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          @rake[@task_name].invoke
+        end
+      end
+
+      context "when given a directory of log files" do
+        before do
+          @logdir = "/tmp/mydir_for_import_test"
+          Dir.mkdir(@logdir)
+          log_entry = "doesn't matter"
+          @logfiles = %w{2010_03_08_web2.log 2010_03_08_web1.log file_we_should_ignore.log}
+          @logfiles.each {|logfile| File.open("#{@logdir}/#{logfile}", "w+") {|f| f.write(log_entry) } }
+        end
+
+        it "should process each log file with names that look like YYYY_MM_DD_webN.log" do
+          LogFile.should_receive(:process).twice
+          @rake[@task_name].invoke(@logdir)
+        end
+
+        after do
+          FileUtils.rm_r(@logdir)
+        end
+      end
+    end
   end
 end

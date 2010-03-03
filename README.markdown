@@ -71,10 +71,6 @@ Make sure the integration tests run. These require a Solr server to be spun up.
     rake sunspot:solr:start RAILS_ENV=test
     script/cucumber
 
-There seems to be a consistency issue with Solr/Sunspot, so if your Cucumber scenarios are failing around Spotlights, try this and then re-run cucumber:
-
-   rake sunspot:solr:reindex RAILS_ENV=test
-
 # Code Coverage
 
 We track test coverage of the codebase over time, to help identify areas where we could write better tests and to see when poorly tested code got introduced.
