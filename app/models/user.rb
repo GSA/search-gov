@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   validates_presence_of :state
   validates_presence_of :time_zone
   validates_presence_of :contact_name
-  validates_format_of :email, :with => /\.gov$/i, :message => "must end in '.gov'", :on => :create
+  validates_format_of :email, :with => /\.gov$|\.mil$/i, :message => "must end in '.gov' or '.mil'", :on => :create
   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
   has_many :affiliates
   after_create :ping_admin

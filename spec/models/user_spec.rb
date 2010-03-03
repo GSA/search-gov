@@ -35,8 +35,18 @@ describe User do
     it "should create a new instance given valid attributes" do
       User.create!(@valid_attributes)
     end
+    
+    it "should allow a dot gov email address" do
+      u = User.new(@valid_attributes)
+      u.valid?.should be_true
+    end
+    
+    it "should allow a dot mil email address" do
+      u = User.new(@valid_attributes.merge(:email => 'foo@something.mil'))
+      u.valid?.should be_true
+    end
 
-    it "should require a dot gov email address" do
+    it "should not allow something that is not a dot gov or dot mil email address" do
       u = User.new(@valid_attributes.merge(:email => "foo@notadot.gov.biz"))
       u.valid?.should be_false
     end
