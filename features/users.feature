@@ -35,6 +35,26 @@ Feature: Users
     And I should see "Thank you for registering for USA.gov Search Services"
     And I should see "You currently have no affiliates"
 
+  Scenario: Registering as a new affiliate user with a .mil email address
+    Given I am on the new user page
+    And I fill in the following:
+    | Contact Name                  | Lorem Ipsum                 |
+    | Email                         | lorem.ipsum@agency.mil      |
+    | Phone                         | 301.123.4567                |
+    | Organization name             | The Agency                  |
+    | Organization address          | 123 Penn Ave                |
+    | Address Line 2                | Ste 456                     |
+    | City                          | Reston                      |
+    | Zip                           | 20022                       |
+    | Password                      | huge_secret                 |
+    | Password confirmation         | huge_secret                 |
+    And I select "Virginia" from "State"
+    And I select "(GMT-05:00) Eastern Time (US & Canada)" from "Time Zone"
+    And I press "Register"
+    Then I should be on the user account page
+    And I should see "Thank you for registering for USA.gov Search Services"
+    And I should see "You currently have no affiliates"
+
   Scenario: Failing registration as a new affiliate user
     Given I am on the new user page
     And I fill in the following:
