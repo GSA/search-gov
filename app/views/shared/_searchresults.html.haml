@@ -4,7 +4,7 @@
   #boosted
     - search.boosted_sites.hits.each_with_index do |hit, index|
       - boosted_site_url = hit.instance.url
-      %div.searchresult{:id => "boostedresult#{index+1}"}
+      .searchresult{:id => "boostedresult#{index+1}"}
         %h2= link_to highlight_hit(hit, :title), boosted_site_url
         %h3= highlight_hit(hit, :description)
         %h3= link_to boosted_site_url, boosted_site_url

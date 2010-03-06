@@ -1,5 +1,5 @@
 require "#{File.dirname(__FILE__)}/../../spec_helper"
-describe "layouts/affiliate.html.erb" do
+describe "layouts/affiliate" do
   before do
     @webtrends_tag = 'var _tag=new WebTrends();'
   end

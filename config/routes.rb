@@ -12,6 +12,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :image_searches
   map.namespace(:admin) do |admin|
     admin.resources :affiliates, :active_scaffold => true
+    admin.resources :affiliate_templates, :active_scaffold => true
     admin.resources :users, :active_scaffold => true
     admin.resources :block_words, :active_scaffold => true
     admin.resources :boosted_sites, :active_scaffold => true

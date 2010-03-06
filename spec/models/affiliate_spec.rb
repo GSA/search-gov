@@ -1,10 +1,12 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Affiliate do
-  fixtures :users, :affiliates
+  fixtures :users, :affiliates, :affiliate_templates
+
   before(:each) do
     @valid_attributes = {
       :name => "someaffiliate.gov",
+      :template => affiliate_templates(:default),
       :domains => "someaffiliate.gov",
       :website => "http://www.someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
@@ -24,6 +26,12 @@ describe Affiliate do
 
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_attributes)
+    end
+
+    it "requires template" do
+      affiliate = Affiliate.new(:template => nil)
+      affiliate.should_not be_valid
+      affiliate.should have_at_least(1).error_on(:template)
     end
   end
 end

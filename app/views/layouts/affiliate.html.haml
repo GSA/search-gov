@@ -1,0 +1,15 @@
+!!! XML
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+  %head
+    - if @affiliate
+      = stylesheet_link_tag "compiled/affiliates/#{@affiliate.template.stylesheet}"
+    %title= @page_title
+  %body
+    #container
+      #header= @affiliate.header if @affiliate
+      #search
+        %h1 Search
+        = yield
+      #footer= @affiliate.footer if @affiliate
+  = render "/shared/webtrends_affiliates"

@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
+# This file is auto-generated from the current state of the database. Instead of editing this file,
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100203232752) do
+ActiveRecord::Schema.define(:version => 20100306213431) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -20,8 +20,16 @@ ActiveRecord::Schema.define(:version => 20100203232752) do
 
   add_index "affiliate_broadcasts", ["user_id"], :name => "index_affiliate_broadcasts_on_user_id"
 
+  create_table "affiliate_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "stylesheet"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "affiliates", :force => true do |t|
-    t.string   "name",                                  :null => false
+    t.string   "name",                                     :null => false
     t.text     "domains"
     t.text     "header"
     t.text     "footer"
@@ -31,8 +39,9 @@ ActiveRecord::Schema.define(:version => 20100203232752) do
     t.text     "staged_domains"
     t.text     "staged_header"
     t.text     "staged_footer"
-    t.boolean  "has_staged_content", :default => false, :null => false
+    t.boolean  "has_staged_content",    :default => false, :null => false
     t.string   "website"
+    t.integer  "affiliate_template_id"
   end
 
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
@@ -151,10 +160,10 @@ ActiveRecord::Schema.define(:version => 20100203232752) do
   add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
 
   create_table "queries", :id => false, :force => true do |t|
-    t.string    "ipaddr",    :limit => 17
-    t.string    "query",     :limit => 100
-    t.string    "affiliate", :limit => 32
-    t.timestamp "timestamp",                :null => false
+    t.string   "ipaddr",    :limit => 17
+    t.string   "query",     :limit => 100
+    t.string   "affiliate", :limit => 32
+    t.datetime "timestamp",                :null => false
   end
 
   add_index "queries", ["query"], :name => "queryindex"
