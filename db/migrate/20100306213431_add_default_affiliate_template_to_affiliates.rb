@@ -1,8 +1,10 @@
 class AddDefaultAffiliateTemplateToAffiliates < ActiveRecord::Migration
-  class AffiliateTemplate < ActiveRecord::Base;end
-  
+
   def self.up
-    Affiliate.update_all("affiliate_template_id = #{AffiliateTemplate.first.id}")
+    affiliate_template = AffiliateTemplate.create(:name => "Default",
+                                                  :description => "A simple, clean gray page",
+                                                  :stylesheet  => "default")
+    Affiliate.update_all("affiliate_template_id = #{affiliate_template.id}")
   end
 
   def self.down
