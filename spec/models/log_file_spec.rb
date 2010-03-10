@@ -85,7 +85,8 @@ EOF
         Query.should_receive(:create!).with(:query=>"delinquent delivery plus&more",
                                             :affiliate => "acqnet.gov_far_current",
                                             :ipaddr => "143.81.248.53",
-                                            :timestamp => @timestamp_utc)
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -102,7 +103,8 @@ EOF
         Query.should_receive(:create!).with(:query=>"delinquent delivery",
                                             :affiliate => "parseme",
                                             :ipaddr => "143.81.248.53",
-                                            :timestamp => @timestamp_utc)
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -119,7 +121,8 @@ EOF
         Query.should_receive(:create!).with(:query=>"car's",
                                             :affiliate => "acqnet.gov_far_current",
                                             :ipaddr => "143.81.248.53",
-                                            :timestamp => @timestamp_utc)
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -136,7 +139,8 @@ EOF
         Query.should_receive(:create!).with(:query=>"car",
                                             :affiliate => "acqnet.gov_far_current",
                                             :ipaddr => "143.81.248.53",
-                                            :timestamp => @timestamp_utc)
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -152,7 +156,8 @@ EOF
         Query.should_receive(:create!).with(:query => "",
                                             :affiliate => "acqnet.gov_far_current",
                                             :ipaddr => "143.81.248.53",
-                                            :timestamp => @timestamp_utc)
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -168,7 +173,8 @@ EOF
         Query.should_receive(:create!).with(:query => "foo",
                                             :affiliate => "usasearch.gov",
                                             :ipaddr => "143.81.248.53",
-                                            :timestamp => @timestamp_utc)
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -212,7 +218,8 @@ EOF
         Query.should_receive(:create!).with(:query => "delinquent delivery",
                                             :affiliate => "usasearch.gov",
                                             :ipaddr => "143.81.248.53",
-                                            :timestamp => @timestamp_utc)
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -229,11 +236,65 @@ EOF
         Query.should_receive(:create!).with(:query=>"d'kc\"z'gj'\"**5*(((;-*`)",
                                             :affiliate => "usasearch.gov",
                                             :ipaddr => "155.82.73.253",
-                                            :timestamp => @timestamp_utc)
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s)
         LogFile.parse_line(@log_entry)
       end
     end
+    
+    context "when locale param is not present" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF        
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+      
+      it "should create a Query record with the default locale" do
+        Query.should_receive(:create!).with(:query => 'obama',
+                                            :affiliate => "usasearch.gov",
+                                            :ipaddr => '143.81.248.53',
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+    
+    context "when English local param is present" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=en HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
 
+      it "should create a Query record with the English locale identifier" do
+        Query.should_receive(:create!).with(:query => 'obama',
+                                            :affiliate => "usasearch.gov",
+                                            :ipaddr => '143.81.248.53',
+                                            :timestamp => @timestamp_utc,
+                                            :locale => 'en')
+        LogFile.parse_line(@log_entry)
+      end
+    end
+      
+    context "when Spanish local param is present" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4 .0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+      
+      it "should create a Query record with the Spanish locale identifier" do
+        Query.should_receive(:create!).with(:query => 'obama',
+                                            :affiliate => "usasearch.gov",
+                                            :ipaddr => '143.81.248.53',
+                                            :timestamp => @timestamp_utc,
+                                            :locale => 'es')
+        LogFile.parse_line(@log_entry)
+      end
+    end
   end
 
   describe "#process_clicks(logfilename)" do

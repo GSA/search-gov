@@ -66,12 +66,17 @@ class DailyUsageStat < ActiveRecord::Base
   # this will not work, since we don't have profile information available
   # TODO: incorporate profile data here.
   def populate_queries_data
-    #self.total_queries = DailyQueryStat.sum(:times, :conditions => [ "day = ?", self.day ])
+    if self.profile != 'Affiliates'
+      locale = self.profile == 'English' ? 'en' : 'es'
+      self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=?", Time.parse('00:00', self.day), Time.parse('23:59', self.day), locale, "usasearch.gov"])
+    else
+      self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate <> ?", Time.parse('00:00', self.day), Time.parse('23:59', self.day), "usasearch.gov"])
+    end
   end
   
   def populate_clicks_data
   end
-  
+
   def get_profile_data
     http =  Net::HTTP.new(WEBTRENDS_HOSTNAME, Net::HTTP.http_default_port)
     response = http.start { |http|

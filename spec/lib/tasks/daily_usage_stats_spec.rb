@@ -36,9 +36,22 @@ describe "Daily Usage Stats rake tasks" do
     
     # For some reason that I can not figure out, this fails.
     it "should populate data for all of the current profiles" do
-      #DailyUsageStat.should_receive(:new).exactly(DailyUsageStat::Profiles.size).times
-      #@rake[@task_name].invoke
+      DailyUsageStat.should_receive(:new).exactly(DailyUsageStat::Profiles.size).times
+      @rake[@task_name].invoke
     end
+    
+    context "when an error occurs" do
+      before do
+        @daily_usage_stat = DailyUsageStat.new(:day => @report_date, :profile => 'English')
+        @daily_usage_stat.stub!(:save).and_return false
+        DailyUsageStat.stub!(:new).and_return @daily_usage_stat
+      end
+      
+      it "should log an error" do
+        RAILS_DEFAULT_LOGGER.should_receive(:error).exactly(DailyUsageStat::Profile_Names.size).times
+        @rake[@task_name].invoke
+      end
+    end  
     
   end
     

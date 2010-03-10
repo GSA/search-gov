@@ -18,7 +18,8 @@ describe "summary_tables rake tasks" do
         :query => "passport",
         :affiliate => "usasearch.gov",
         :ipaddr => @first_ip,
-        :timestamp => @first_time
+        :timestamp => @first_time,
+        :locale => I18n.default_locale.to_s
       }
 
       Query.create!(@valid_attributes)
@@ -140,7 +141,8 @@ describe "summary_tables rake tasks" do
         :query => "some search term",
         :affiliate => "usasearch.gov",
         :ipaddr => first_ip,
-        :timestamp => first_time
+        :timestamp => first_time,
+        :locale => I18n.default_locale
       }
     end
 

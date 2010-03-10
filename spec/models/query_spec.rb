@@ -5,7 +5,8 @@ describe Query do
       :query => "government",
       :ipaddr => "123.456.7.89",
       :affiliate => "usasearch.gov",
-      :timestamp => Time.now
+      :timestamp => Time.now,
+      :locale => "en"
     }
   end
 
@@ -16,5 +17,6 @@ describe Query do
   should_validate_presence_of :ipaddr
   should_validate_presence_of :affiliate
   should_validate_presence_of :timestamp
+  should_validate_presence_of :locale
 
 end
