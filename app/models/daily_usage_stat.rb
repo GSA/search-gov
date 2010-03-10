@@ -2,6 +2,7 @@ class DailyUsageStat < ActiveRecord::Base
   validates_presence_of :day, :profile
   validates_uniqueness_of :profile, :scope => :day
     
+  WEBTRENDS_HOSTNAME = 'ws.webtrends.com'
   WEBTRENDS_ACCOUNT = 'usa.gov'
   WEBTRENDS_USERNAME = 'Jay Virdy'
   WEBTRENDS_PASSWORD = 'S3@rch.USA.gov'
@@ -72,8 +73,7 @@ class DailyUsageStat < ActiveRecord::Base
   end
   
   def get_profile_data
-    hostname = "ws.webtrends.com"
-    http =  Net::HTTP.new(hostname, Net::HTTP.http_default_port)
+    http =  Net::HTTP.new(WEBTRENDS_HOSTNAME, Net::HTTP.http_default_port)
     response = http.start { |http|
       request = Net::HTTP::Get.new("/v2/ReportService/profiles/#{Profiles[self.profile][:profile_id]}/?period=#{self.day.strftime('%Ym%md%d')}&format=json")
       request.basic_auth "#{WEBTRENDS_ACCOUNT}\\#{WEBTRENDS_USERNAME}", WEBTRENDS_PASSWORD
