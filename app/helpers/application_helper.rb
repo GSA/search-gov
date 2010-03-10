@@ -96,7 +96,7 @@ module ApplicationHelper
       elements << link_to("Query Groups Admin", analytics_query_groups_path) if cur_user.is_affiliate_admin?
       elements << link_to("Usage Reports", monthly_reports_path) if cur_user.is_analyst?
     end
-    elements << link_to("USAsearch.gov", home_page_path)
+    elements << link_to("search.usa.gov", home_page_path)
     elements.join(" | ")
   end
 
