@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-log_file_rb.html">app/models/log_file.rb</a></td>
-            <td class='right_align'><tt>74</tt></td>
-            <td class='right_align'><tt>70</tt></td>
+            <td class='right_align'><tt>75</tt></td>
+            <td class='right_align'><tt>71</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -207,301 +207,307 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>     return if query.nil?</pre></td>
+            <td><pre><a name="line26">26</a>     locale = parsed_log[&quot;locale&quot;][0].blank? ? I18n.default_locale.to_s : parsed_log[&quot;locale&quot;][0]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>     noquery = parsed_log[&quot;noquery&quot;][0]</pre></td>
+            <td><pre><a name="line27">27</a>     return if query.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>     Query.create!(:query =&gt; query.strip, :affiliate =&gt; affiliate, :ipaddr =&gt; ipaddr, :timestamp =&gt; datetime) if noquery.nil?</pre></td>
+            <td><pre><a name="line28">28</a>     noquery = parsed_log[&quot;noquery&quot;][0]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>     Query.create!(:query =&gt; query.strip, :affiliate =&gt; affiliate, :ipaddr =&gt; ipaddr, :timestamp =&gt; datetime, :locale =&gt; locale) if noquery.nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>   end</pre></td>
+            <td><pre><a name="line30">30</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a> </pre></td>
+            <td><pre><a name="line31">31</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>   def self.process_clicks(filepath)</pre></td>
+            <td><pre><a name="line32">32</a>   def self.process_clicks(filepath)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>     RAILS_DEFAULT_LOGGER.info(&quot;Processing file for clicks: #{filepath}&quot;)</pre></td>
+            <td><pre><a name="line33">33</a>     RAILS_DEFAULT_LOGGER.info(&quot;Processing file for clicks: #{filepath}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>     File.open(filepath) do |file|</pre></td>
+            <td><pre><a name="line34">34</a>     File.open(filepath) do |file|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>       failures = []</pre></td>
+            <td><pre><a name="line35">35</a>       failures = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>       while log_entry = file.gets</pre></td>
+            <td><pre><a name="line36">36</a>       while log_entry = file.gets</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>         parse_line_for_click(log_entry) rescue failures &lt;&lt; log_entry</pre></td>
+            <td><pre><a name="line37">37</a>         parse_line_for_click(log_entry) rescue failures &lt;&lt; log_entry</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>       end</pre></td>
+            <td><pre><a name="line38">38</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>       RAILS_DEFAULT_LOGGER.warn(&quot;File #{filepath} has #{failures.size} errors: #{failures.inspect}&quot;) if failures.size &gt; 0</pre></td>
+            <td><pre><a name="line39">39</a>       RAILS_DEFAULT_LOGGER.warn(&quot;File #{filepath} has #{failures.size} errors: #{failures.inspect}&quot;) if failures.size &gt; 0</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>     end</pre></td>
+            <td><pre><a name="line40">40</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>   end</pre></td>
+            <td><pre><a name="line41">41</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a> </pre></td>
+            <td><pre><a name="line42">42</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>   def self.parse_line_for_click(log_entry)</pre></td>
+            <td><pre><a name="line43">43</a>   def self.parse_line_for_click(log_entry)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     log = Apache::Log::Combined.parse log_entry</pre></td>
+            <td><pre><a name="line44">44</a>     log = Apache::Log::Combined.parse log_entry</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>     queried_at = log.time</pre></td>
+            <td><pre><a name="line45">45</a>     queried_at = log.time</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>     if log.path.include?('?')</pre></td>
+            <td><pre><a name="line46">46</a>     if log.path.include?('?')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>       query_string = log.path.split('?')[1]</pre></td>
+            <td><pre><a name="line47">47</a>       query_string = log.path.split('?')[1]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>       parsed_log = CGI.parse(query_string)</pre></td>
+            <td><pre><a name="line48">48</a>       parsed_log = CGI.parse(query_string)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>       url = parsed_log[&quot;url&quot;][0]</pre></td>
+            <td><pre><a name="line49">49</a>       url = parsed_log[&quot;url&quot;][0]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>       if !url.nil?</pre></td>
+            <td><pre><a name="line50">50</a>       if !url.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>         captures = url.match(/^(?:[^\/]+:\/\/)?([^\/:]+)/)</pre></td>
+            <td><pre><a name="line51">51</a>         captures = url.match(/^(?:[^\/]+:\/\/)?([^\/:]+)/)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>         host = captures[1]</pre></td>
+            <td><pre><a name="line52">52</a>         host = captures[1]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>         if host</pre></td>
+            <td><pre><a name="line53">53</a>         if host</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>           tld = host.split('.').last</pre></td>
+            <td><pre><a name="line54">54</a>           tld = host.split('.').last</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>           serp_position = parsed_log[&quot;rrank&quot;][0].to_i</pre></td>
+            <td><pre><a name="line55">55</a>           serp_position = parsed_log[&quot;rrank&quot;][0].to_i</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>           source = parsed_log[&quot;rsource&quot;][0]</pre></td>
+            <td><pre><a name="line56">56</a>           source = parsed_log[&quot;rsource&quot;][0]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>           project = parsed_log[&quot;v:project&quot;][0]</pre></td>
+            <td><pre><a name="line57">57</a>           project = parsed_log[&quot;v:project&quot;][0]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>           affiliate = parsed_log[&quot;affiliate&quot;][0].blank? ? &quot;usasearch.gov&quot; : parsed_log[&quot;affiliate&quot;][0]</pre></td>
+            <td><pre><a name="line58">58</a>           affiliate = parsed_log[&quot;affiliate&quot;][0].blank? ? &quot;usasearch.gov&quot; : parsed_log[&quot;affiliate&quot;][0]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>           referrer = log.referer</pre></td>
+            <td><pre><a name="line59">59</a>           referrer = log.referer</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>           if referrer</pre></td>
+            <td><pre><a name="line60">60</a>           if referrer</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line60">60</a>             referrer_query_string = referrer.split('?')[1]</pre></td>
+            <td><pre><a name="line61">61</a>             referrer_query_string = referrer.split('?')[1]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line61">61</a>             if referrer_query_string</pre></td>
+            <td><pre><a name="line62">62</a>             if referrer_query_string</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>               parsed_referrer = CGI.parse(referrer_query_string)</pre></td>
+            <td><pre><a name="line63">63</a>               parsed_referrer = CGI.parse(referrer_query_string)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>               query = parsed_referrer['query'][0]</pre></td>
+            <td><pre><a name="line64">64</a>               query = parsed_referrer['query'][0]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a>               if affiliate.blank? || affiliate == 'usasearch.gov'</pre></td>
+            <td><pre><a name="line65">65</a>               if affiliate.blank? || affiliate == 'usasearch.gov'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>                 affiliate = parsed_referrer[&quot;affiliate&quot;][0].blank? ? &quot;usasearch.gov&quot; : parsed_referrer[&quot;affiliate&quot;][0]</pre></td>
+            <td><pre><a name="line66">66</a>                 affiliate = parsed_referrer[&quot;affiliate&quot;][0].blank? ? &quot;usasearch.gov&quot; : parsed_referrer[&quot;affiliate&quot;][0]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line66">66</a>               end</pre></td>
+            <td><pre><a name="line67">67</a>               end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line67">67</a>             end</pre></td>
+            <td><pre><a name="line68">68</a>             end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line68">68</a>           end</pre></td>
+            <td><pre><a name="line69">69</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line69">69</a>           Click.create!(:query =&gt; query, :queried_at =&gt; queried_at, :url =&gt; url, :serp_position =&gt; serp_position, :source =&gt; source, :project =&gt; project, :affiliate =&gt; affiliate, :host =&gt; host, :tld =&gt; tld)</pre></td>
+            <td><pre><a name="line70">70</a>           Click.create!(:query =&gt; query, :queried_at =&gt; queried_at, :url =&gt; url, :serp_position =&gt; serp_position, :source =&gt; source, :project =&gt; project, :affiliate =&gt; affiliate, :host =&gt; host, :tld =&gt; tld)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line70">70</a>         end</pre></td>
+            <td><pre><a name="line71">71</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line71">71</a>       end</pre></td>
+            <td><pre><a name="line72">72</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line72">72</a>     end</pre></td>
+            <td><pre><a name="line73">73</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line73">73</a>   end</pre></td>
+            <td><pre><a name="line74">74</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a> end</pre></td>
+            <td><pre><a name="line75">75</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Mar 10 09:34:33 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Wed Mar 10 17:21:06 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.7.1</a></p>
 
   </body>
 </html>
