@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-query_log_rake.html">lib/tasks/query_log.rake</a></td>
-            <td class='right_align'><tt>16</tt></td>
-            <td class='right_align'><tt>15</tt></td>
+            <td class='right_align'><tt>22</tt></td>
+            <td class='right_align'><tt>20</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,7 +75,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     desc &quot;Process a directory of query log files (NCSA format 1)&quot;</pre></td>
+            <td><pre><a name="line4">4</a>     desc &quot;Process a directory of Vivisimo query log files (NCSA format 1)&quot;</pre></td>
           </tr>
         
           
@@ -105,7 +105,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>         destination_log_dir_name = File.basename(file)[0,7]</pre></td>
+            <td><pre><a name="line9">9</a>         destination_log_dir_name = File.basename(file)[0, 7]</pre></td>
           </tr>
         
           
@@ -141,19 +141,55 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>   end</pre></td>
+            <td><pre><a name="line15">15</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>     desc &quot;Import a directory of search query log files (NCSA combined)&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>     task :import, :log_dir_name, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>       RAILS_DEFAULT_LOGGER.error(&quot;usage: rake usasearch:query_log:import log_dir_name&quot;) and return if args.log_dir_name.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>       Dir.glob(&quot;#{args.log_dir_name}/[0-9][0-9][0-9][0-9]_[0-9][0-9]_[0-9][0-9]_web*.log&quot;) { |file| LogFile.process(file) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> end</pre></td>
+            <td><pre><a name="line20">20</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Feb 26 15:31:53 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.7.1</a></p>
+    <p>Generated on Wed Mar 10 09:34:33 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

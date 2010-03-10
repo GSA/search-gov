@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-application_controller_rb.html">app/controllers/application_controller.rb</a></td>
-            <td class='right_align'><tt>73</tt></td>
-            <td class='right_align'><tt>59</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class='right_align'><tt>81</tt></td>
+            <td class='right_align'><tt>64</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>97.53%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:98px"></div>
+            <div class="uncovered" style="width:2px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>96.88%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:97px"></div>
+            <div class="uncovered" style="width:3px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -122,104 +122,104 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a> </pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line13">13</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>   def set_locale</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>     I18n.locale = determine_locale_from_param(params[:locale]) || I18n.default_locale</pre></td>
+            <td><pre><a name="line12">12</a>   EXCEPTIONS_NOT_LOGGED = ['ActionController::UnknownAction', 'ActionController::RoutingError']</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>   end</pre></td>
+            <td><pre><a name="line13">13</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>   protected</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a> </pre></td>
+            <td><pre><a name="line15">15</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>   def determine_locale_from_param (locale_param)</pre></td>
+            <td><pre><a name="line16">16</a>   def log_error(exc)</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>     return nil if locale_param.nil? || locale_param.match(/^\w{2}$/).nil? || !locale_exists?(locale_param)</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line17">17</a>     super unless EXCEPTIONS_NOT_LOGGED.include?(exc.class.name)</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>     locale_param.to_sym</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line18">18</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   end</pre></td>
+            <td><pre><a name="line19">19</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a> </pre></td>
+            <td><pre><a name="line21">21</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>   def locale_exists? (locale)</pre></td>
+            <td><pre><a name="line22">22</a>   def set_locale</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>     available_locales.include?(locale.to_sym)</pre></td>
+            <td><pre><a name="line23">23</a>     I18n.locale = determine_locale_from_param(params[:locale]) || I18n.default_locale</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>   end</pre></td>
+            <td><pre><a name="line24">24</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a> </pre></td>
+            <td><pre><a name="line25">25</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>   def available_locales</pre></td>
+            <td><pre><a name="line26">26</a>   def determine_locale_from_param (locale_param)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>     AVAILABLE_LOCALES</pre></td>
+            <td><pre><a name="line27">27</a>     return nil if locale_param.nil? || locale_param.match(/^\w{2}$/).nil? || !locale_exists?(locale_param)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>     locale_param.to_sym</pre></td>
           </tr>
         
           
@@ -237,139 +237,139 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>   def default_url_options(options={})</pre></td>
+            <td><pre><a name="line31">31</a>   def locale_exists? (locale)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>     available_locales.include?(locale.to_sym)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>     {</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>       :locale =&gt; I18n.locale,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>       :m =&gt; &quot;false&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>     }</pre></td>
+            <td><pre><a name="line33">33</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>   end</pre></td>
+            <td><pre><a name="line34">34</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>   def available_locales</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>     AVAILABLE_LOCALES</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>   def current_user_session</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>     return @current_user_session if defined?(@current_user_session)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>     @current_user_session = UserSession.find</pre></td>
+            <td><pre><a name="line37">37</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   end</pre></td>
+            <td><pre><a name="line38">38</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>   def default_url_options(options={})</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a> </pre></td>
+            <td><pre><a name="line40">40</a>     {</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>   def current_user</pre></td>
+            <td><pre><a name="line41">41</a>       :locale =&gt; I18n.locale,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>     return @current_user if defined?(@current_user)</pre></td>
+            <td><pre><a name="line42">42</a>       :m =&gt; &quot;false&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>     @current_user = current_user_session &amp;&amp; current_user_session.user</pre></td>
+            <td><pre><a name="line43">43</a>     }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>   end</pre></td>
+            <td><pre><a name="line44">44</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a> </pre></td>
+            <td><pre><a name="line45">45</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>   def require_user</pre></td>
+            <td><pre><a name="line46">46</a>   def current_user_session</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>     unless current_user</pre></td>
+            <td><pre><a name="line47">47</a>     return @current_user_session if defined?(@current_user_session)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>       store_location</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line51">51</a>       redirect_to new_user_session_url</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line52">52</a>       return false</pre></td>
+            <td><pre><a name="line48">48</a>     @current_user_session = UserSession.find</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line53">53</a>     end</pre></td>
+            <td><pre><a name="line49">49</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line50">50</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>   def current_user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>     return @current_user if defined?(@current_user)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>     @current_user = current_user_session &amp;&amp; current_user_session.user</pre></td>
           </tr>
         
           
@@ -387,13 +387,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>   def require_no_user</pre></td>
+            <td><pre><a name="line56">56</a>   def require_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>     if current_user</pre></td>
+            <td><pre><a name="line57">57</a>     unless current_user</pre></td>
           </tr>
         
           
@@ -405,7 +405,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>       redirect_to account_url</pre></td>
+            <td><pre><a name="line59">59</a>       redirect_to new_user_session_url</pre></td>
           </tr>
         
           
@@ -435,67 +435,115 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a>   def store_location</pre></td>
+            <td><pre><a name="line64">64</a>   def require_no_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>     session[:return_to] = request.request_uri</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line66">66</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line67">67</a> </pre></td>
+            <td><pre><a name="line65">65</a>     if current_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line68">68</a>   def redirect_back_or_default(default)</pre></td>
+            <td><pre><a name="line66">66</a>       store_location</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line69">69</a>     redirect_to(session[:return_to] || default)</pre></td>
+            <td><pre><a name="line67">67</a>       redirect_to account_url</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>     session[:return_to] = nil</pre></td>
+            <td><pre><a name="line68">68</a>       return false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line71">71</a>   end</pre></td>
+            <td><pre><a name="line69">69</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line72">72</a> </pre></td>
+            <td><pre><a name="line70">70</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line73">73</a> end</pre></td>
+            <td><pre><a name="line71">71</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line72">72</a>   def store_location</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line73">73</a>     session[:return_to] = request.request_uri</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line74">74</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line75">75</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line76">76</a>   def redirect_back_or_default(default)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>     redirect_to(session[:return_to] || default)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line78">78</a>     session[:return_to] = nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line79">79</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line80">80</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line81">81</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Feb 26 15:31:52 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.7.1</a></p>
+    <p>Generated on Wed Mar 10 09:34:33 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100306213431) do
+ActiveRecord::Schema.define(:version => 20100310003534) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -174,10 +174,10 @@ ActiveRecord::Schema.define(:version => 20100306213431) do
   add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
 
   create_table "queries", :id => false, :force => true do |t|
-    t.string    "ipaddr",    :limit => 17
-    t.string    "query",     :limit => 100
-    t.string    "affiliate", :limit => 32
-    t.timestamp "timestamp",                :null => false
+    t.string   "ipaddr",    :limit => 17
+    t.string   "query",     :limit => 100
+    t.string   "affiliate", :limit => 32
+    t.datetime "timestamp",                :null => false
   end
 
   add_index "queries", ["query"], :name => "queryindex"
@@ -190,6 +190,21 @@ ActiveRecord::Schema.define(:version => 20100306213431) do
   end
 
   add_index "query_groups", ["name"], :name => "index_query_groups_on_name", :unique => true
+
+  create_table "sayt_filters", :force => true do |t|
+    t.string   "phrase",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sayt_filters", ["phrase"], :name => "index_sayt_filters_on_phrase", :unique => true
+
+  create_table "sayt_suggestions", :force => true do |t|
+    t.string   "phrase",     :null => false
+    t.datetime "created_at"
+  end
+
+  add_index "sayt_suggestions", ["phrase"], :name => "index_sayt_suggestions_on_phrase", :unique => true
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

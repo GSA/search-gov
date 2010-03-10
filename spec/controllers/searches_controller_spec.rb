@@ -1,11 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe SearchesController do
-  fixtures :affiliates
+  fixtures :affiliates, :affiliate_templates
 
   describe "#auto_complete_for_search_query" do
     it "should use query param to find terms starting with that param" do
-      DailyQueryStat.create(:query=>"Lorem ipsum dolor sit amet", :times=>1, :day=>Date.today)
+      SaytSuggestion.create(:phrase=>"Lorem ipsum dolor sit amet")
       get :auto_complete_for_search_query, :query=>"lorem"
       response.body.should match(/lorem/i)
     end
@@ -15,67 +15,11 @@ describe SearchesController do
       lambda {get :auto_complete_for_search_query, :query=>"foo's"}.should_not raise_error
     end
 
-    context "when suggestions contain apostrophes" do
-      before do
-        DailyQueryStat.create(:query=>"oba'ma", :times=>1, :day=>Date.today)
-      end
-
-      it "should handle highlighting apostrophe in suggestions" do
-        get :auto_complete_for_search_query, :query=>"oba'"
-        response.body.should == "<ul><li><strong class=\"highlight\">oba'</strong>ma</li></ul>"
-      end
-    end
-
-    context "when suggestions contain unhelpful and unusual SAYT suggestions" do
-      before do
-        DailyQueryStat.create(:query => "http: this starts with http:", :times => 1, :day => Date.today)
-        DailyQueryStat.create(:query => "(this has parens)", :times => 1, :day => Date.today)
-        DailyQueryStat.create(:query => "this/has/slashes/everywhere", :times => 1, :day => Date.today)
-        DailyQueryStat.create(:query => "site: this has site: in it", :times => 1, :day => Date.today)
-        DailyQueryStat.create(:query => "intitle: this has intitle: in it", :times => 1, :day => Date.today)
-        DailyQueryStat.create(:query => "\"quoted phrase\" is in it", :times => 1, :day => Date.today)
-        DailyQueryStat.create(:query => "this_is_at@email.address", :times => 1, :day => Date.today)
-      end
-
-      it "should filter out those with http:" do
-        get :auto_complete_for_search_query, :query=>"http:"
-        response.body.should_not match(/http:/)
-      end
-      it "should filter out those with parens" do
-        get :auto_complete_for_search_query, :query=>"(this"
-        response.body.should_not match(/parens/)
-      end
-      it "should filter out those with forward slashes" do
-        get :auto_complete_for_search_query, :query=>"this/has"
-        response.body.should_not match(/slashes/)
-      end
-      it "should filter out those with site:" do
-        get :auto_complete_for_search_query, :query=>"site:"
-        response.body.should_not match(/site:/)
-      end
-      it "should filter out those with intitle:" do
-        get :auto_complete_for_search_query, :query=>"intitle:"
-        response.body.should_not match(/intitle:/)
-      end
-      it "should filter out those with quoted phrases:" do
-        get :auto_complete_for_search_query, :query=>"\"quote"
-        response.body.should_not match(/quote/)
-      end
-      it "should filter out those with @" do
-        get :auto_complete_for_search_query, :query=>"this_is_at"
-        response.body.should_not match(/this_is_at@/)
-      end
-    end
-
     it "should return empty result if no search param present" do
       get :auto_complete_for_search_query
       response.body.should be_blank
     end
 
-    it "should filter block words from suggestions" do
-      BlockWord.should_receive(:filter).once
-      get :auto_complete_for_search_query, :query=>"foo"
-    end
   end
 
   context "when showing index" do

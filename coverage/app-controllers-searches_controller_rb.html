@@ -141,13 +141,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     @auto_complete_options = Search.suggestion(sanitized_query)</pre></td>
+            <td><pre><a name="line15">15</a>     @auto_complete_options = Search.suggestions(sanitized_query)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     render :inline =&gt; &quot;&lt;%= auto_complete_result(@auto_complete_options, 'query', '#{sanitized_query.gsub(&quot;'&quot;, &quot;\\\\'&quot;)}') %&gt;&quot;</pre></td>
+            <td><pre><a name="line16">16</a>     render :inline =&gt; &quot;&lt;%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub(&quot;'&quot;, &quot;\\\\'&quot;)}') %&gt;&quot;</pre></td>
           </tr>
         
           
@@ -441,7 +441,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Fri Feb 26 15:31:52 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.7.1</a></p>
+    <p>Generated on Wed Mar 10 09:34:33 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

@@ -12,8 +12,8 @@ class SearchesController < ApplicationController
   def auto_complete_for_search_query
     render :inline => "" and return unless params['query']
     sanitized_query = params['query'].gsub('\\', '')
-    @auto_complete_options = Search.suggestion(sanitized_query)
-    render :inline => "<%= auto_complete_result(@auto_complete_options, 'query', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
+    @auto_complete_options = Search.suggestions(sanitized_query)
+    render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
   end
 
   private
