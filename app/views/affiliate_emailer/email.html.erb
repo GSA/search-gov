@@ -3,7 +3,7 @@ Dear <%= @name %>,
 <%= @body %>
 
 Below you'll see the affiliates we have associated with your email address (<%= @email %>).
-Follow the link next to the affiliate name to preview the look and feel for that affiliate.
+Follow the link next to the affiliate name to see the look and feel for that account.
 
 <%- @affiliate_ids.each do | aff_name| %>
   <%= "#{aff_name}: #{search_url(:affiliate=> aff_name)}&query=gov" -%>
