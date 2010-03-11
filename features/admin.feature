@@ -5,7 +5,9 @@ Feature:  Administration
     Then I should see "Users"
     Then I should see "Affiliates"
     Then I should see "Affiliate Broadcast"
-    Then I should see "Blocked Words"
+    Then I should see "Related Search Blocked Words"
+    Then I should see "SAYT Filters"
+    Then I should see "SAYT Suggestions Bulk Upload"
     Then I should see "Boosted Sites"
     Then I should see "Spotlights"
     Then I should see "FAQs"
@@ -41,3 +43,27 @@ Feature:  Administration
     And they should see "Two Bar" in the email body
     And they should see "multi1" in the email body
     And they should see "multi2" in the email body
+
+
+  Scenario: Uploading, as a logged in admin, a SAYT suggestions text file containing 3 new SAYT suggestions and 2 that already exist and a blank line
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following SAYT Suggestions exist:
+      | phrase             |
+      | tsunami            |
+      | hurricane          |
+    When I go to the admin home page
+    And I follow "SAYT Suggestions Bulk Upload"
+    Then I should see "Use a plain text file with one search suggestion per line."
+
+    When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
+    And I press "Upload"
+    Then I should see "3 SAYT suggestions uploaded successfully. 2 SAYT suggestions ignored."
+
+  Scenario: Uploading an invalid SAYT suggestions text file as a logged in admin
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin home page
+    And I follow "SAYT Suggestions Bulk Upload"
+    And I attach the file "features/support/cant_read_this.doc" to "txtfile"
+    And I press "Upload"
+    Then I should see "Your file could not be processed."
+

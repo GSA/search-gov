@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/affiliate_auth_controller.rb</title>
+    <title>app/controllers/admin/sayt_suggestions_uploads_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/affiliate_auth_controller.rb</h2>
+    <h2>app/controllers/admin/sayt_suggestions_uploads_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-affiliate_auth_controller_rb.html">app/controllers/affiliate_auth_controller.rb</a></td>
-            <td class='right_align'><tt>17</tt></td>
-            <td class='right_align'><tt>14</tt></td>
+            <td class="left_align"><a href="app-controllers-admin-sayt_suggestions_uploads_controller_rb.html">app/controllers/admin/sayt_suggestions_uploads_controller.rb</a></td>
+            <td class='right_align'><tt>18</tt></td>
+            <td class='right_align'><tt>16</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,103 +57,109 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class AffiliateAuthController &lt; SslController</pre></td>
+            <td><pre><a name="line1">1</a> class Admin::SaytSuggestionsUploadsController &lt; Admin::AdminController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   layout &quot;account&quot;</pre></td>
+            <td><pre><a name="line2">2</a>   def new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   private</pre></td>
+            <td><pre><a name="line5">5</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   def require_affiliate</pre></td>
+            <td><pre><a name="line6">6</a>     result = SaytSuggestion.process_sayt_suggestion_txt_upload(params[:txtfile])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     return false if require_user == false</pre></td>
+            <td><pre><a name="line7">7</a>     if result</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     unless current_user.is_affiliate?</pre></td>
+            <td><pre><a name="line8">8</a>       flashy = &quot;#{result[:created]} SAYT suggestions uploaded successfully.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>       redirect_to home_page_url</pre></td>
+            <td><pre><a name="line9">9</a>       flashy += &quot; #{result[:ignored]} SAYT suggestions ignored.&quot; if result[:ignored] &gt; 0</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>       return false</pre></td>
+            <td><pre><a name="line10">10</a>       flash[:success] = flashy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>       redirect_to admin_home_page_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line11">11</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a> </pre></td>
+            <td><pre><a name="line12">12</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>   def setup_affiliate</pre></td>
+            <td><pre><a name="line13">13</a>       flash[:error] = &quot;Your file could not be processed. Please check the format and try again.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>     @affiliate = @current_user.affiliates.find(params[:id] || params[:affiliate_id]) rescue redirect_to(home_page_url) and return false</pre></td>
+            <td><pre><a name="line14">14</a>       render :action =&gt; 'new'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>   end</pre></td>
+            <td><pre><a name="line15">15</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> </pre></td>
+            <td><pre><a name="line16">16</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a> end</pre></td>
+            <td><pre><a name="line17">17</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line18">18</a> end</pre></td>
           </tr>
         
       </tbody>

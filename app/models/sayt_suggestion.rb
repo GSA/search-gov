@@ -10,4 +10,17 @@ class SaytSuggestion < ActiveRecord::Base
       create(:phrase => dqs.query)
     end unless filtered_daily_query_stats.empty?
   end
+
+  def self.process_sayt_suggestion_txt_upload(txtfile)
+    if txtfile.content_type == 'text/plain' || txtfile.content_type == 'txt'
+      created, ignored = 0, 0
+      txtfile.readlines.each do |phrase|
+        entry = phrase.chomp.strip
+        unless entry.blank?
+          create(:phrase => entry).id.nil? ? (ignored += 1) : (created += 1)
+        end
+      end
+      return {:created => created, :ignored => ignored}
+    end
+  end
 end

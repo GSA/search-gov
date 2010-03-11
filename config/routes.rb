@@ -16,6 +16,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :users, :active_scaffold => true
     admin.resources :block_words, :active_scaffold => true
     admin.resources :sayt_filters, :active_scaffold => true
+    admin.resources :sayt_suggestions, :active_scaffold => true
+    admin.resource :sayt_suggestions_upload, :only => [:create, :new]
     admin.resources :boosted_sites, :active_scaffold => true
     admin.resources :spotlights, :active_scaffold => true
     admin.resources :affiliate_broadcasts, :only => [:new, :create]
