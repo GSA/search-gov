@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   AVAILABLE_LOCALES = [:en, :es]
-  EXCEPTIONS_NOT_LOGGED = ['ActionController::UnknownAction', 'ActionController::RoutingError']
+  EXCEPTIONS_NOT_LOGGED = ['ActionController::UnknownAction', 'ActionController::RoutingError', 'ActionController::MethodNotAllowed']
 
   protected
 
