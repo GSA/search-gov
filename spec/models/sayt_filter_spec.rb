@@ -30,13 +30,8 @@ describe SaytFilter do
       SaytFilter.create!(:phrase => "foo")
       SaytFilter.create!(:phrase => "blat baz")
       SaytFilter.create!(:phrase => "hyphenate-me")
-      queries = ["bar Foo", "bar \xEE\x80\x80Foo\xEE\x80\x81", "bar blat", "blat", "baz blat", "baz loren", "food", "blat <strong>baz</strong>"]
+      queries = ["bar Foo", "bar blat", "blat", "baz blat", "baz loren", "food"]
       @results = queries.collect {|q| { "somekey" => q } }
-    end
-
-    it "should filter out results stripped of highlighting that contain blocked terms" do
-      filtered_terms = SaytFilter.filter(@results, "somekey")
-      filtered_terms.size.should == 5
     end
 
     it "should not filter out queries that contain blocked terms but do not end on a word boundary" do
@@ -46,6 +41,11 @@ describe SaytFilter do
 
     it "should handle a nil results list by returning nil" do
       SaytFilter.filter(nil, "somekey").should be_nil
+    end
+
+    it "should handle an empty SaytFilter table" do
+      SaytFilter.delete_all
+      SaytFilter.filter(@results, "somekey").size.should == @results.size      
     end
   end
 end

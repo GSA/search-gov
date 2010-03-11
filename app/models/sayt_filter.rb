@@ -4,14 +4,13 @@ class SaytFilter < ActiveRecord::Base
 
   after_save :apply_filter_to_sayt_suggestions
 
-  def self.filter(results, key)
-    phrases_to_filter = all
-    results.reject do |rs|
-      phrases_to_filter.detect do |filter|
-        sanitized_term = rs[key].gsub(/<\/?[^>]*>/, '').gsub(/\xEE\x80\x80/, '').gsub(/\xEE\x80\x81/, '')
-        sanitized_term =~ /(\b#{filter.phrase}\b|site:|intitle:|http:)/i
-      end
-    end unless results.nil?
+  def self.filter(inputs, key)
+    filters = all
+    inputs.reject do |candidate|
+      rejected = filters.detect { |filter| candidate[key] =~ /\b#{filter.phrase}\b/i }
+      rejected = candidate[key] =~ /(site:|intitle:|http:)/i unless rejected
+      rejected
+    end unless inputs.nil?
   end
 
   private
