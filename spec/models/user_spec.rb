@@ -36,21 +36,6 @@ describe User do
       User.create!(@valid_attributes)
     end
     
-    it "should allow a dot gov email address" do
-      u = User.new(@valid_attributes)
-      u.valid?.should be_true
-    end
-    
-    it "should allow a dot mil email address" do
-      u = User.new(@valid_attributes.merge(:email => 'foo@something.mil'))
-      u.valid?.should be_true
-    end
-
-    it "should not allow something that is not a dot gov or dot mil email address" do
-      u = User.new(@valid_attributes.merge(:email => "foo@notadot.gov.biz"))
-      u.valid?.should be_false
-    end
-
     it "should send the admins a notification email about the new user" do
       Emailer.should_receive(:deliver_new_user_to_admin).with(an_instance_of(User))
       User.create!(@valid_attributes)

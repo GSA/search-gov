@@ -57,9 +57,6 @@ Feature: Users
 
   Scenario: Failing registration as a new affiliate user
     Given I am on the new user page
-    And I fill in the following:
-    | Contact Name                  | Lorem Ipsum                 |
-    | Email                         | lorem.ipsum@company.biz     |
     And I press "Register"
     Then I should be on the user account page
-    And I should see "must end in '.gov'"
+    And I should see "can't be blank"

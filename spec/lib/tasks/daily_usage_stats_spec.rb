@@ -24,36 +24,36 @@ describe "Daily Usage Stats rake tasks" do
       @affiliates_daily_usage_stat.stub!(:get_profile_data).and_return affiliates_response_body
       DailyUsageStat.stub!(:new).and_return { :profile == 'English' ? @english_daily_usage_stat : :profile == 'Spanish' ? @spanish_daily_usage_stat : @affiliates_daily_usage_stat }
     end
-    
+
     it "should have 'environment' as a prereq" do
       @rake[@task_name].prerequisites.should include("environment")
     end
-  
+
     it "should delete existing data for the past day, if it exists" do
       DailyUsageStat.should_receive(:delete_all).with(["day = ?", Date.yesterday]).exactly(1).times
       @rake[@task_name].invoke
     end
-    
+
     it "should populate data for all of the current profiles" do
-      DailyUsageStat.should_receive(:new).exactly(DailyUsageStat::Profiles.size).times
+      DailyUsageStat.should_receive(:new).exactly(DailyUsageStat::PROFILES.size).times
       @rake[@task_name].invoke
     end
-    
+
     context "when an error occurs" do
       before do
         @daily_usage_stat = DailyUsageStat.new(:day => @report_date, :profile => 'English')
         @daily_usage_stat.stub!(:save).and_return false
         DailyUsageStat.stub!(:new).and_return @daily_usage_stat
       end
-      
+
       it "should log an error" do
-        RAILS_DEFAULT_LOGGER.should_receive(:error).exactly(DailyUsageStat::Profile_Names.size).times
+        RAILS_DEFAULT_LOGGER.should_receive(:error).exactly(DailyUsageStat::PROFILE_NAMES.size).times
         @rake[@task_name].invoke
       end
-    end  
-    
+    end
+
   end
-  
+
   describe "usasearch:update_usage_stats" do
     before do
       @task_name = "usasearch:update_usage_stats"
@@ -71,48 +71,48 @@ describe "Daily Usage Stats rake tasks" do
       @start_date = Date.parse('2010-03-01')
       @end_date = Date.parse('2010-03-09')
     end
-    
+
     it "should have 'environment' as a prereq" do
       @rake[@task_name].prerequisites.should include("environment")
     end
-    
+
     it "should log an error if no parameters are specified" do
       RAILS_DEFAULT_LOGGER.should_receive(:error)
       @rake[@task_name].invoke
     end
-    
+
     it "should log an error if only one parameter is specified" do
       RAILS_DEFAULT_LOGGER.should_receive(:error)
       @rake[@task_name].invoke('2010-03-01')
     end
-    
+
     it "should delete all data from start to end date" do
       DailyUsageStat.should_receive(:delete_all).with(["day between ? and ?", @start_date, @end_date]).exactly(1).times
       @rake[@task_name].invoke('2010-03-01', '2010-03-09')
     end
-    
+
     it "should populate usage stats once per day for each profile" do
       @start_date.upto(@end_date) do |report_date|
-        DailyUsageStat::Profile_Names.each do |profile_name|
+        DailyUsageStat::PROFILE_NAMES.each do |profile_name|
           DailyUsageStat.should_receive(:new).with(:day => report_date, :profile => profile_name).exactly(1).times
         end
       end
       @rake[@task_name].invoke('2010-03-01', '2010-03-09')
     end
-    
+
     context "when an error occurs" do
       before do
         @daily_usage_stat = DailyUsageStat.new(:day => @report_date, :profile => 'English')
         @daily_usage_stat.stub!(:save).and_return false
         DailyUsageStat.stub!(:new).and_return @daily_usage_stat
       end
-      
+
       it "should log an error" do
-        RAILS_DEFAULT_LOGGER.should_receive(:error).exactly(DailyUsageStat::Profile_Names.size * (@end_date - @start_date + 1)).times
+        RAILS_DEFAULT_LOGGER.should_receive(:error).exactly(DailyUsageStat::PROFILE_NAMES.size * (@end_date - @start_date + 1)).times
         @rake[@task_name].invoke('2010-03-01', '2010-03-09')
       end
     end
-  
+
   end
-    
+
 end
