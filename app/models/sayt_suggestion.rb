@@ -1,4 +1,6 @@
 class SaytSuggestion < ActiveRecord::Base
+  before_validation :lowercase
+
   validates_presence_of :phrase
   validates_uniqueness_of :phrase
   validates_length_of :phrase, :within=> (3..80)
@@ -18,16 +20,16 @@ class SaytSuggestion < ActiveRecord::Base
       txtfile.readlines.each do |phrase|
         entry = phrase.chomp.strip
         unless entry.blank?
-          sayt_suggestion = find_or_initialize_by_phrase(:phrase => entry)
-          if sayt_suggestion.new_record? and sayt_suggestion.valid?
-            sayt_suggestion.save!
-            created += 1
-          else
-            ignored += 1
-          end
+          create(:phrase => entry).id.nil? ? (ignored += 1) : (created += 1)
         end
       end
       return {:created => created, :ignored => ignored}
     end
+  end
+
+  private
+
+  def lowercase
+    self.phrase.downcase! unless self.phrase.nil?
   end
 end

@@ -45,7 +45,8 @@ Feature:  Administration
     And they should see "multi2" in the email body
 
 
-  Scenario: Uploading, as a logged in admin, a SAYT suggestions text file containing 3 new SAYT suggestions and 2 that already exist and a blank line
+  Scenario: Uploading, as a logged in admin, a SAYT suggestions text file containing:
+            3 new SAYT suggestions, 1 that already exists exactly, 1 that exists in a different case, and a blank line
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following SAYT Suggestions exist:
       | phrase             |

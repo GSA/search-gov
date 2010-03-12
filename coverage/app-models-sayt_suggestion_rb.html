@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-sayt_suggestion_rb.html">app/models/sayt_suggestion.rb</a></td>
-            <td class='right_align'><tt>26</tt></td>
-            <td class='right_align'><tt>24</tt></td>
+            <td class='right_align'><tt>35</tt></td>
+            <td class='right_align'><tt>30</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,157 +63,211 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   validates_presence_of :phrase</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line3">3</a>   validates_uniqueness_of :phrase</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>   validates_length_of :phrase, :within=&gt; (3..50)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>   validates_format_of :phrase, :with=&gt; /^[\w\s-]+$/i</pre></td>
+            <td><pre><a name="line2">2</a>   before_validation :lowercase</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> </pre></td>
+            <td><pre><a name="line3">3</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   def self.populate_for(day)</pre></td>
+            <td><pre><a name="line4">4</a>   validates_presence_of :phrase</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     filtered_daily_query_stats = SaytFilter.filter(DailyQueryStat.find_all_by_day(day), &quot;query&quot;)</pre></td>
+            <td><pre><a name="line5">5</a>   validates_uniqueness_of :phrase</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     filtered_daily_query_stats.each do |dqs|</pre></td>
+            <td><pre><a name="line6">6</a>   validates_length_of :phrase, :within=&gt; (3..80)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>       create(:phrase =&gt; dqs.query)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     end unless filtered_daily_query_stats.empty?</pre></td>
+            <td><pre><a name="line7">7</a>   validates_format_of :phrase, :with=&gt; /^[\w\s.'-]+$/i</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a>   end</pre></td>
+            <td><pre><a name="line8">8</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>   def self.populate_for(day)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>     filtered_daily_query_stats = SaytFilter.filter(DailyQueryStat.find_all_by_day(day), &quot;query&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     filtered_daily_query_stats.each do |dqs|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>       create(:phrase =&gt; dqs.query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>     end unless filtered_daily_query_stats.empty?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>   def self.process_sayt_suggestion_txt_upload(txtfile)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>     if txtfile.content_type == 'text/plain' || txtfile.content_type == 'txt'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>       created, ignored = 0, 0</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>       txtfile.readlines.each do |phrase|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>         entry = phrase.chomp.strip</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>         unless entry.blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>           create(:phrase =&gt; entry).id.nil? ? (ignored += 1) : (created += 1)</pre></td>
+            <td><pre><a name="line14">14</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line22">22</a>       end</pre></td>
+            <td><pre><a name="line15">15</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>       return {:created =&gt; created, :ignored =&gt; ignored}</pre></td>
+            <td><pre><a name="line16">16</a>   def self.process_sayt_suggestion_txt_upload(txtfile)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>     valid_content_types = ['application/octet-stream', 'text/plain' , 'txt']</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>     if valid_content_types.include? txtfile.content_type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>       created, ignored = 0, 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       txtfile.readlines.each do |phrase|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>         entry = phrase.chomp.strip</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>         unless entry.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>           create(:phrase =&gt; entry).id.nil? ? (ignored += 1) : (created += 1)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>     end</pre></td>
+            <td><pre><a name="line24">24</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>   end</pre></td>
+            <td><pre><a name="line25">25</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>       return {:created =&gt; created, :ignored =&gt; ignored}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a> end</pre></td>
+            <td><pre><a name="line27">27</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line28">28</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line29">29</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line31">31</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>   def lowercase</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>     self.phrase.downcase!</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line34">34</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line35">35</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Mar 10 23:21:16 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Fri Mar 12 10:11:15 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

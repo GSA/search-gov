@@ -18,6 +18,11 @@ describe SaytSuggestion do
     it "should create a new instance given valid attributes" do
       SaytSuggestion.create!(@valid_attributes)
     end
+
+    it "should downcase the phrase before entering into DB" do
+      SaytSuggestion.create!(:phrase => "ALL CAPS")
+      SaytSuggestion.find_by_phrase("all caps").phrase.should == "all caps"
+    end
   end
 
   describe "#populate_for(day)" do
