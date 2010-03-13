@@ -6,6 +6,7 @@ describe Affiliate do
   before(:each) do
     @valid_attributes = {
       :name => "someaffiliate.gov",
+      :template => affiliate_templates(:default),
       :domains => "someaffiliate.gov",
       :website => "http://www.someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
@@ -26,17 +27,11 @@ describe Affiliate do
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_attributes)
     end
-  end
-  
-  describe "#template" do
-    it "returns DefaultAffiliateTemplate when nil" do
-      affiliate = Affiliate.create!(@valid_attributes)
-      affiliate.template.should == DefaultAffiliateTemplate
-    end
 
-    it "returns affiliate template when not nil" do
-      affiliate = Affiliate.create!(@valid_attributes.merge(:template => affiliate_templates(:basic_gray)))
-      affiliate.template.should == affiliate_templates(:basic_gray)
+    it "requires template" do
+      affiliate = Affiliate.new(:template => nil)
+      affiliate.should_not be_valid
+      affiliate.should have_at_least(1).error_on(:template)
     end
   end
 end

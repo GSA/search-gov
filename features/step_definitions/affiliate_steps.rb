@@ -23,7 +23,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :footer => hash["footer"],
       :staged_domains => hash["staged_domains"],
       :staged_header => hash["staged_header"],
-      :staged_footer => hash["staged_footer"]
+      :staged_footer => hash["staged_footer"],
+      :template => AffiliateTemplate.default
     )
   end
 end
