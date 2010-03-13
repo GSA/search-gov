@@ -1,5 +1,4 @@
 class AddDefaultAffiliateTemplateToAffiliates < ActiveRecord::Migration
-
   def self.up
     affiliate_template = AffiliateTemplate.create(:name => "Default",
                                                   :description => "A simple, clean gray page",

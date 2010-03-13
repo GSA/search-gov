@@ -4,11 +4,14 @@
   %head
     - if @affiliate
       = stylesheet_link_tag "compiled/affiliates/#{@affiliate.template.stylesheet}"
+      /[if lt IE 8]
+        = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+      = stylesheet_link_tag "clearfix"
     %title= @page_title
   %body
     #container
       #header= @affiliate.header if @affiliate
-      #search
+      #search.clearfix
         %h1 Search
         = yield
       #footer= @affiliate.footer if @affiliate

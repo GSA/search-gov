@@ -9,11 +9,12 @@ class AffiliatesController < AffiliateAuthController
   end
 
   def new
-    @affiliate = Affiliate.new(:template => AffiliateTemplate.default)
+    @affiliate = Affiliate.new
   end
 
   def create
-    @affiliate = Affiliate.new(params[:affiliate].merge(:user_id=>@current_user.id))
+    @affiliate = Affiliate.new(params[:affiliate])
+    @affiliate.user = @current_user
     if @affiliate.save
       @affiliate.update_attributes(
         :domains => @affiliate.staged_domains,
