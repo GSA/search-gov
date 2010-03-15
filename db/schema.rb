@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20100313165633) do
     t.integer  "affiliate_template_id"
   end
 
+  add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
   add_index "affiliates", ["user_id"], :name => "index_affiliates_on_user_id"
 
