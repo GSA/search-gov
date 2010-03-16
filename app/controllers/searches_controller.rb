@@ -52,7 +52,7 @@ class SearchesController < ApplicationController
       :filter => params["filter"],
       :fedstates => params["fedstates"] || nil,
       :affiliate => affiliate,
-      :results_per_page => in_mobile_view? ? (is_device?("iphone") ? 10 : 3) : (params["per-page"].blank? ? nil : params["per-page"].to_i)
+      :results_per_page => params["per-page"]
     }
   end
 
