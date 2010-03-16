@@ -20,11 +20,40 @@ describe SearchesController do
       response.body.should be_blank
     end
 
+    context "when searching in mobile mode" do
+      before do
+        @there_must_be_a_better_way_to_stub_this = ActionController::MobileFu::MOBILE_USER_AGENTS
+        module ActionController::MobileFu
+          remove_const :MOBILE_USER_AGENTS
+        end
+        ActionController::MobileFu::MOBILE_USER_AGENTS = "."
+      end
+
+      it "should return 6 suggestions" do
+        Search.should_receive(:suggestions).with("lorem", 6)
+        get :auto_complete_for_search_query, :query=>"lorem"
+      end
+
+      after do
+        module ActionController::MobileFu
+          remove_const :MOBILE_USER_AGENTS
+        end
+        ActionController::MobileFu::MOBILE_USER_AGENTS = @there_must_be_a_better_way_to_stub_this
+      end
+    end
+
+    context "when searching in non-mobile mode" do
+      it "should return 15 suggestions" do
+        Search.should_receive(:suggestions).with("lorem", 15)
+        get :auto_complete_for_search_query, :query=>"lorem"
+      end
+    end
+
   end
 
   context "when showing index" do
     it "should have a route with a locale" do
-      search_path.should =~ /search\?locale\=en/
+      search_path.should =~ /search\?locale=en/
     end
   end
 
@@ -83,10 +112,10 @@ describe SearchesController do
 
   end
 
-  context "when handling a mobile affiliate search request" do
+  context "when handling any affiliate search request (mobile or otherwise)" do
     integrate_views
     before do
-      get :index, :affiliate=> affiliates(:power_affiliate).name, :query => "weather", :m => "true"
+      get :index, :affiliate=> affiliates(:power_affiliate).name, :query => "weather"
     end
 
     should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'

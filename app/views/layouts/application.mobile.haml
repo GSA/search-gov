@@ -5,7 +5,7 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
     = stylesheet_link_tag 'mobile.css'
     - if is_device? 'iphone'
-      %meta{:name => "viewport", :content => "initial-scale = 1.0, user-scalable = no"}
+      %meta{:name => "viewport", :content => "initial-scale = 1.0"}
       %meta{:name => "apple-touch-fullscreen", :content => "YES"}
     - else
       %meta{:name => "MobileOptimized", :content => "175"}

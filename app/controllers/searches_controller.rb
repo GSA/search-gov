@@ -2,6 +2,8 @@ class SearchesController < ApplicationController
   before_filter :set_search_options
   has_mobile_fu
   before_filter :adjust_mobile_mode
+  SAYT_SUGGESTION_SIZE = 15
+  SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
 
   def index
     @search = Search.new(@search_options)
@@ -12,7 +14,7 @@ class SearchesController < ApplicationController
   def auto_complete_for_search_query
     render :inline => "" and return unless params['query']
     sanitized_query = params['query'].gsub('\\', '')
-    @auto_complete_options = Search.suggestions(sanitized_query)
+    @auto_complete_options = Search.suggestions(sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
     render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
   end
 

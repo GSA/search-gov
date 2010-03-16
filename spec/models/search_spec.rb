@@ -655,4 +655,25 @@ describe Search do
     end
   end
 
+  describe "#suggestions()" do
+    before do
+      phrase = "aaaazy"
+      16.times { SaytSuggestion.create!(:phrase => phrase.succ!) }
+    end
+
+    it "should default to returning 15 suggestions" do
+      Search.suggestions("aaa").size.should == 15
+    end
+
+    it "should accept an override for number of suggestions to return" do
+      Search.suggestions("aaa",6).size.should == 6
+    end
+
+    it "should return suggestions in alphabetical order" do
+      suggs = Search.suggestions("aaa")
+      suggs.first.phrase.should == "aaaazz"
+      suggs.last.phrase.should == "aaaban"      
+    end
+  end
+
 end

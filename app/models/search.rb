@@ -99,8 +99,8 @@ class Search
     "#{JSON_SITE}?" + params.join('&')
   end
 
-  def self.suggestions(sanitized_query)
-    SaytSuggestion.find(:all, :conditions => ['phrase LIKE ? ', sanitized_query + '%' ], :order => 'phrase ASC', :limit => 15, :select=>"distinct(phrase) as phrase")
+  def self.suggestions(sanitized_query, num_suggestions = 15)
+    SaytSuggestion.find(:all, :conditions => ['phrase LIKE ? ', sanitized_query + '%' ], :order => 'phrase ASC', :limit => num_suggestions, :select=>"distinct(phrase) as phrase")
   end
 
   protected
