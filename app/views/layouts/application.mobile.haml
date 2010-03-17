@@ -5,11 +5,11 @@
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
     = stylesheet_link_tag 'mobile.css'
     - if is_device? 'iphone'
-      %meta{:name => "viewport", :content => "width = device-width, user-scalable = no"}
+      %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, minimum-scale = 1.0"}
       %meta{:name => "apple-mobile-web-app-capable", :content => "YES"}
+      = javascript_include_tag :defaults
     - else
       %meta{:name => "MobileOptimized", :content => "175"}
-    = javascript_include_tag :defaults
 
   %body
     = yield
