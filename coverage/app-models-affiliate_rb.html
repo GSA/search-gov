@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-affiliate_rb.html">app/models/affiliate.rb</a></td>
+            <td class='right_align'><tt>21</tt></td>
             <td class='right_align'><tt>17</tt></td>
-            <td class='right_align'><tt>14</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,7 +63,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   validates_presence_of :name, :template</pre></td>
+            <td><pre><a name="line2">2</a>   validates_presence_of :name</pre></td>
           </tr>
         
           
@@ -93,7 +93,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   belongs_to :template, :class_name =&gt; &quot;AffiliateTemplate&quot;, :foreign_key =&gt; &quot;affiliate_template_id&quot;</pre></td>
+            <td><pre><a name="line7">7</a>   belongs_to :affiliate_template</pre></td>
           </tr>
         
           
@@ -117,31 +117,31 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a> </pre></td>
+            <td><pre><a name="line11">11</a>   def template</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>   def remove_boosted_sites_from_index</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>     boosted_sites.each { |bs| bs.remove_from_index }</pre></td>
+            <td><pre><a name="line12">12</a>     affiliate_template || DefaultAffiliateTemplate</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>   end</pre></td>
+            <td><pre><a name="line13">13</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line14">14</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>   private</pre></td>
           </tr>
         
           
@@ -152,14 +152,38 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>   def remove_boosted_sites_from_index</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>     boosted_sites.each { |bs| bs.remove_from_index }</pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line17">17</a> end</pre></td>
+            <td><pre><a name="line19">19</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line20">20</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Mar 12 10:11:15 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Fri Mar 19 01:31:40 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.7.1</a></p>
 
   </body>
 </html>
