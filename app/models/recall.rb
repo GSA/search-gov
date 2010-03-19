@@ -5,7 +5,7 @@ class Recall < ActiveRecord::Base
   validates_presence_of :recall_number, :y2k
   
   searchable do
-    integer :recall_number
+    string :recall_number
     integer :y2k
     time :recalled_on
     integer :recall_year do |recall|
