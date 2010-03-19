@@ -44,9 +44,12 @@ class Recall < ActiveRecord::Base
     end
   end
   
-  def self.search_for(query, page = 1, per_page = 10)
+  def self.search_for(query, start_date = nil, end_date = nil, page = 1, per_page = 10)
     Recall.search do
       keywords query
+      if start_date && end_date
+        with(:recalled_on).between(start_date..end_date)
+      end
       facet :hazard_facet, :zeroes => true, :sort => :count
       facet :country_facet, :zeroes => true, :sort => :count
       facet :manufacturer_facet, :zeroes => true, :sort => :count
@@ -57,15 +60,7 @@ class Recall < ActiveRecord::Base
       paginate :page => page, :per_page => per_page
     end
   end
-  
-  def self.search_for_date_range(start_date, end_date, page = 1, per_page = 10)
-    Recall.search do
-      with(:recalled_on).between(start_date..end_date)
-      paginate :page => page, :per_page => per_page
-    end
-  end
-      
-  
+        
   def self.load_from_csv_file(file_path)
     FasterCSV.foreach(file_path, :headers => true) do |row|
       process_row(row)
@@ -116,8 +111,12 @@ class Recall < ActiveRecord::Base
   end
   
   def to_json(options = {})
-    recall_hash = { :recall_number => recall_number, :recall_date => recalled_on.to_s, :manufacturers => list_detail("Manufacturer"), :descriptions => list_detail("Description"), :hazards => list_detail("Hazard"), :countries => list_detail("Country"), :recall_types => list_detail("RecallType") }
+    recall_hash = { :recall_number => self.recall_number, :recall_date => self.recalled_on.to_s, :recall_url => self.recall_url, :manufacturers => list_detail("Manufacturer"), :descriptions => list_detail("Description"), :hazards => list_detail("Hazard"), :countries => list_detail("Country"), :recall_types => list_detail("RecallType") }
     recall_hash.to_json
+  end
+  
+  def recall_url
+    "http://www.cpsc.gov/cpscpub/prerel/prhtml#{self.recall_number.to_s[0..1]}/#{self.recall_number}.html" unless self.recall_number.blank?
   end
   
   private

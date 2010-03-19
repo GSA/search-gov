@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100316202847) do
+ActiveRecord::Schema.define(:version => 20100319173135) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -173,11 +173,11 @@ ActiveRecord::Schema.define(:version => 20100316202847) do
   add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
 
   create_table "queries", :id => false, :force => true do |t|
-    t.string   "ipaddr",    :limit => 17
-    t.string   "query",     :limit => 100
-    t.string   "affiliate", :limit => 32
-    t.datetime "timestamp",                :null => false
-    t.string   "locale",    :limit => 5
+    t.string    "ipaddr",    :limit => 17
+    t.string    "query",     :limit => 100
+    t.string    "affiliate", :limit => 32
+    t.timestamp "timestamp",                :null => false
+    t.string    "locale",    :limit => 5
   end
 
   add_index "queries", ["query"], :name => "queryindex"
@@ -198,6 +198,8 @@ ActiveRecord::Schema.define(:version => 20100316202847) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "recall_details", ["recall_id"], :name => "index_recall_details_on_recall_id"
 
   create_table "recalls", :force => true do |t|
     t.integer  "recall_number"

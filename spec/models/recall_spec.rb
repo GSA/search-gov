@@ -278,33 +278,29 @@ EOF
       search.facet(:recall_year).rows.size.should == 2
     end
     
-    after do
-      Recall.destroy_all
-      Recall.reindex
-    end
-  end
-  
-  describe "#search_for_date_range" do
-    integrate_sunspot
-    before do
-      @start_date = Date.parse('2010-03-01')
-      10.times do |index|
-        recall = Recall.new(:recall_number => 12345, :y2k => 12345, :recalled_on => @start_date - index.month)
-        recall.recall_details << RecallDetail.new(:detail_type => 'Manufacturer', :detail_value => 'Acme Corp')
-        recall.recall_details << RecallDetail.new(:detail_type => 'RecallType', :detail_value => 'Dangerous Stuff')
-        recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Baby Stroller can be dangerous to children')
-        recall.recall_details << RecallDetail.new(:detail_type => 'Hazard', :detail_value => 'Horrible Death')
-        recall.recall_details << RecallDetail.new(:detail_type => 'Country', :detail_value => 'United States')
-        recall.save
+    context "when searching by date" do
+      before(:all) do
+        @start_date_string = '2010-03-10'
+        @start_date = Date.parse(@start_date_string)
+        @end_date_string = '2010-01-01'
+        @end_date = Date.parse(@end_date_string)
+        @query = 'stroller'
       end
-      Recall.reindex
-    end
+      
+      it "should search by a date range" do
+        search = Recall.search_for(@query, @start_date, @end_date)
+        search.total.should == 3
+      end
     
-    it "should search by a date range" do
-      @start_date = Date.parse('2010-03-10')
-      @end_date = Date.parse('2010-01-01')
-      search = Recall.search_for_date_range(@start_date, @end_date)
-      search.total.should == 3
+      it "should search by a date range without a query" do
+        search = Recall.search_for(nil, @start_date, @end_date)
+        search.total.should == 3
+      end
+      
+      it "should search by date correctly if the dates are supplied as strings instead of Date objects" do
+        search = Recall.search_for(@query, @start_date_string, @end_date_string)
+        search.total.should == 3
+      end
     end
     
     after do
@@ -339,6 +335,11 @@ EOF
       parsed_recall = JSON.parse(@recall.to_json)
       parsed_recall["recall_date"].should == '2010-03-01'
     end
+    
+    it "should properly parse the recall url" do
+      parsed_recall = JSON.parse(@recall.to_json)
+      parsed_recall["recall_url"].should == "http://www.cpsc.gov/cpscpub/prerel/prhtml12/12345.html"
+    end
 
     it "should properly parse the list of manufacturers" do
       parsed_recall = JSON.parse(@recall.to_json)
@@ -368,6 +369,28 @@ EOF
     after do
       Recall.destroy_all
       Recall.reindex
+    end
+  end
+  
+  describe "#recall_url" do
+    context "when generating a recall URL to the press release of a recall with a recall number" do
+      before do
+        @recall = Recall.new(:recall_number => 12345)
+      end
+      
+      it "should generate a recall URL using the first two digits of the recall number and the recall number to complete the URL" do
+        @recall.recall_url.should == "http://www.cpsc.gov/cpscpub/prerel/prhtml12/12345.html"
+      end
+    end
+    
+    context "when generating a recall URL to the press release of a recall without a recall number" do
+      before do
+        @recall = Recall.new
+      end
+      
+      it "should return nil" do
+        @recall.recall_url.should be_nil
+      end
     end
   end
 end
