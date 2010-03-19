@@ -29,16 +29,6 @@ describe Spotlight do
       @spotty = spotlights(:time)
     end
 
-    context "when a relevant spotlight is active" do
-      before do
-        Spotlight.reindex
-      end
-
-      it "should return a Spotlight" do
-        Spotlight.search_for("time").should == @spotty
-      end
-    end
-
     context "when an otherwise relevant spotlight is inactive" do
       before do
         @spotty.update_attribute(:is_active, false)
@@ -49,5 +39,20 @@ describe Spotlight do
         Spotlight.search_for("time").should be_nil
       end
     end
+
+    context "when a relevant spotlight is active" do
+      before do
+        Spotlight.reindex
+      end
+
+      it "should return a Spotlight" do
+        Spotlight.search_for("time").should == @spotty
+      end
+    end
+
+    after(:all) do
+      Spotlight.remove_all_from_index!
+    end
+
   end
 end
