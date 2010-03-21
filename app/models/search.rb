@@ -1,6 +1,7 @@
 # TODO Cleanup
 class Search
-  class BingSearchError < RuntimeError;end
+  class BingSearchError < RuntimeError;
+  end
 
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PER_PAGE = 10
@@ -71,19 +72,20 @@ class Search
   private
 
   def hits(response)
-    (response.web.total rescue 0)
+    (response.web.results.empty? ? 0 : response.web.total) rescue 0
   end
 
   def process_results(response)
     processed = response.web.results.collect do |result|
       {
-        'title'         => result.title,
+        'title'         => (result.title rescue nil),
         'unescapedUrl'  => result.url,
         'content'       => (result.description rescue nil),
         'cacheUrl'      => (result.CacheUrl rescue nil),
         'deepLinks'     => result["DeepLinks"]
       }
     end
+    processed.reject { |hash| hash['title'].blank? or hash['content'].blank? }
   end
 
   def bing_query(query_string, offset, count)
@@ -133,15 +135,17 @@ class Search
   end
 
   def perform(query_string, offset)
-    begin
-      uri = URI.parse(bing_query(query_string, offset, results_per_page))
-      http = Net::HTTP.new(uri.host, uri.port)
-      req = Net::HTTP::Get.new(uri.request_uri)
-      req["User-Agent"] = USER_AGENT
-      req["Client-IP"] = CLIENT_IP
-      http.request(req)
-    rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error => error
-      raise BingSearchError.new(error.to_s)
+    ActiveRecord::Base.benchmark("Performing Bing Search") do
+      begin
+        uri = URI.parse(bing_query(query_string, offset, results_per_page))
+        http = Net::HTTP.new(uri.host, uri.port)
+        req = Net::HTTP::Get.new(uri.request_uri)
+        req["User-Agent"] = USER_AGENT
+        req["Client-IP"] = CLIENT_IP
+        http.request(req)
+      rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error => error
+        raise BingSearchError.new(error.to_s)
+      end
     end
   end
 
