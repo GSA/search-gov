@@ -5,11 +5,11 @@ Feature: Homepage
 
   Scenario: A typical popular search from the home page
     Given I am on the homepage
-    When I fill in "query" with "social security"
+    When I fill in "query" with "visa lottery"
     And I submit the search form
     Then I should be on the search page
     And I should see "Results 1-10"
-    And I should see "social security"
+    And I should see "visa lottery"
     And I should see 10 search results
     And I should see "Next"
 
@@ -68,4 +68,4 @@ Feature: Homepage
     And I follow "Busque en español"
     And I follow "¿Necesita letra grande?"
     Then I should see "Cómo cambiar el tamaño del texto"
-    And I should see "In English"    
+    And I should see "In English"
