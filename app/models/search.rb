@@ -135,15 +135,17 @@ class Search
   end
 
   def perform(query_string, offset)
-    begin
-      uri = URI.parse(bing_query(query_string, offset, results_per_page))
-      http = Net::HTTP.new(uri.host, uri.port)
-      req = Net::HTTP::Get.new(uri.request_uri)
-      req["User-Agent"] = USER_AGENT
-      req["Client-IP"] = CLIENT_IP
-      http.request(req)
-    rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error => error
-      raise BingSearchError.new(error.to_s)
+    ActiveRecord::Base.benchmark("Performing Bing Search") do
+      begin
+        uri = URI.parse(bing_query(query_string, offset, results_per_page))
+        http = Net::HTTP.new(uri.host, uri.port)
+        req = Net::HTTP::Get.new(uri.request_uri)
+        req["User-Agent"] = USER_AGENT
+        req["Client-IP"] = CLIENT_IP
+        http.request(req)
+      rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error => error
+        raise BingSearchError.new(error.to_s)
+      end
     end
   end
 
