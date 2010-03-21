@@ -12,7 +12,7 @@ describe SaytSuggestion do
     should_validate_presence_of :phrase
     should_validate_uniqueness_of :phrase
     should_validate_length_of :phrase, :within=> (3..80)
-    should_not_allow_values_for :phrase, "citizenship[", "email@address.com", "\"over quoted\"", "colon: here"
+    should_not_allow_values_for :phrase, "citizenship[", "email@address.com", "\"over quoted\"", "colon: here", "en español"
     should_allow_values_for :phrase, "my-name", "1099 form", "Senator Frank S. Farley State Marina", "Oswald West State Park's Smuggler Cove"
 
     it "should create a new instance given valid attributes" do

@@ -4,7 +4,7 @@ class SaytSuggestion < ActiveRecord::Base
   validates_presence_of :phrase
   validates_uniqueness_of :phrase
   validates_length_of :phrase, :within=> (3..80)
-  validates_format_of :phrase, :with=> /^[\w\s.'-]+$/i
+  validates_format_of :phrase, :with=> /^[a-zA-Z0-9\s.'-]+$/i
 
   def self.populate_for(day)
     filtered_daily_query_stats = SaytFilter.filter(DailyQueryStat.find_all_by_day(day), "query")

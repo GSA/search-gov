@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100313165633) do
+ActiveRecord::Schema.define(:version => 20100321171719) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -191,6 +191,24 @@ ActiveRecord::Schema.define(:version => 20100313165633) do
   end
 
   add_index "query_groups", ["name"], :name => "index_query_groups_on_name", :unique => true
+
+  create_table "recall_details", :force => true do |t|
+    t.integer  "recall_id"
+    t.string   "detail_type"
+    t.string   "detail_value"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "recall_details", ["recall_id"], :name => "index_recall_details_on_recall_id"
+
+  create_table "recalls", :force => true do |t|
+    t.string   "recall_number", :limit => 10
+    t.integer  "y2k"
+    t.date     "recalled_on"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sayt_filters", :force => true do |t|
     t.string   "phrase",     :null => false
