@@ -1,6 +1,7 @@
 # TODO Cleanup
 class Search
-  class BingSearchError < RuntimeError;end
+  class BingSearchError < RuntimeError;
+  end
 
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PER_PAGE = 10
@@ -71,19 +72,20 @@ class Search
   private
 
   def hits(response)
-    (response.web.total rescue 0)
+    (response.web.results.empty? ? 0 : response.web.total) rescue 0
   end
 
   def process_results(response)
     processed = response.web.results.collect do |result|
       {
-        'title'         => result.title,
+        'title'         => (result.title rescue nil),
         'unescapedUrl'  => result.url,
         'content'       => (result.description rescue nil),
         'cacheUrl'      => (result.CacheUrl rescue nil),
         'deepLinks'     => result["DeepLinks"]
       }
     end
+    processed.reject { |hash| hash['title'].blank? or hash['content'].blank? }
   end
 
   def bing_query(query_string, offset, count)

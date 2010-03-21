@@ -545,18 +545,14 @@ describe Search do
       end
     end
 
-    context "when searching with 'adult' queries" do
+    context "when searching with popular queries that generate an 11th result missing a title" do
       before do
-        @search = Search.new(@valid_options.merge(:query => 'clitoris'))
+        @search = Search.new(@valid_options.merge(:query => 'Nas & Kelis'))
       end
 
-      it "should return true when searching" do
-        @search.run.should be_true
-      end
-
-      it "should have 0 results" do
+      it "should only have 10 results" do
         @search.run
-        @search.results.size.should == 0
+        @search.results.size.should == 10
       end
     end
 
@@ -672,8 +668,24 @@ describe Search do
     it "should return suggestions in alphabetical order" do
       suggs = Search.suggestions("aaa")
       suggs.first.phrase.should == "aaaazz"
-      suggs.last.phrase.should == "aaaban"      
+      suggs.last.phrase.should == "aaaban"
     end
   end
 
+  describe "#hits(response)" do
+    context "when Bing reports a total > 0 but gives no results whatsoever" do
+      before do
+        @search = Search.new
+        @response = mock("response")
+        web = mock("web")
+        @response.stub!(:web).and_return(web)
+        web.stub!(:results).and_return(nil)
+        web.stub!(:total).and_return(4000)
+      end
+
+      it "should return zero for the number of hits" do
+        @search.send(:hits, @response).should == 0
+      end
+    end
+  end
 end
