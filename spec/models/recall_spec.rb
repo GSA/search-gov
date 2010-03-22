@@ -14,6 +14,14 @@ describe Recall do
   it "should create a new instance given valid attributes" do
     Recall.create!(@valid_attributes)
   end
+  
+  it "should delete RecallDetails associated with a Recall on deleting a Recall" do
+    recall = Recall.new(@valid_attributes)
+    recall.recall_details << RecallDetail.new(:detail_type => 'Manufacturer', :detail_value => 'Acme Corp')
+    recall.save!
+    recall.destroy
+    RecallDetail.find(:first, :conditions => ["recall_id = ? AND detail_type = ? AND detail_value = ?", recall.id, 'Manufacturer', 'Acme Corp']).should be_nil
+  end
 
   describe "#load_from_csv_file" do
     before do
@@ -121,12 +129,14 @@ EOF
       end
 
       context "processing recall details" do
-
-        it "should create a RecallDetail for Manufacturers that are present" do
-          recall = Recall.new(:recall_number => '10156', :y2k => 110156)
-          Recall.stub!(:new).and_return recall
+        before(:each) do
+          @recall = Recall.new(:recall_number => '10156', :y2k => 110156)
+          Recall.stub!(:new).and_return @recall
           Recall.process_row(@row)
-          recall.recall_details.find(:first, :conditions => ['detail_type = ? AND detail_value = ?', 'Manufacturer', 'Ethan Allen']).should_not be_nil
+        end
+        
+        it "should create a RecallDetail for Manufacturers that are present" do
+          @recall.recall_details.find(:first, :conditions => ['detail_type = ? AND detail_value = ?', 'Manufacturer', 'Ethan Allen']).should_not be_nil
         end
 
         it "should create a RecallDetail for RecallTypes that are present" do
@@ -167,7 +177,7 @@ EOF
       end
 
       it "should check to see if the recall number already exists in the database" do
-        Recall.should_receive(:find_by_recall_number).with('10154')
+        Recall.should_receive(:find_by_recall_number).with('10154').should_not be_nil
         Recall.process_row(@row2)
       end
 

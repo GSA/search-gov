@@ -7,6 +7,7 @@ namespace :usasearch do
         RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:load[/path/to/recalls/csv]")
       else
         Recall.load_from_csv_file(args.recalls_csv_filename)
+        Recall.reindex
       end
     end
   end

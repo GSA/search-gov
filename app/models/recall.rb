@@ -60,7 +60,7 @@ class Recall < ActiveRecord::Base
       recall.recalled_on = Date.parse(row[8]) rescue nil
     end
     FULL_TEXT_SEARCH_FIELDS.each_pair do |detail_type, column_index|
-      unless row[column_index].blank? or recall.recall_details.exists?(['detail_type = ? AND detail_value = ?', 'Manufacturer', row[column_index]])
+      unless row[column_index].blank? or recall.recall_details.exists?(['detail_type = ? AND detail_value = ?', detail_type, row[column_index]])
         recall.recall_details << RecallDetail.new(:detail_type => detail_type, :detail_value => row[column_index])
       end
     end

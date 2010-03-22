@@ -53,6 +53,11 @@ EOF
           @rake[@task_name].invoke(@csv_file_path)
         end
         
+        it "should reindex the Recalls data" do
+          Recall.should_receive(:reindex)
+          @rake[@task_name].invoke(@csv_file_path)
+        end
+        
         after do
           FileUtils.rm_r(@tmp_dir)
         end
