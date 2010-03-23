@@ -177,8 +177,8 @@ EOF
       end
 
       it "should check to see if the recall number already exists in the database" do
-        Recall.should_receive(:find_by_recall_number).with('10154').should_not be_nil
         Recall.process_row(@row2)
+        Recall.find_by_recall_number("10154").should_not be_nil
       end
 
       it "should not create a new Recall" do
