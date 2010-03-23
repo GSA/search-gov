@@ -2,11 +2,21 @@ namespace :usasearch do
   namespace :recalls do
 
     desc "Load recalls from spreadsheet/CSV from CPSC"
-    task :load, :recalls_csv_filename, :needs => :environment do |t, args|
+    task :load_cpsc_data, :recalls_csv_filename, :needs => :environment do |t, args|
       if args.recalls_csv_filename.blank?
-        RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:load[/path/to/recalls/csv]")
+        RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:load_cpsc_data[/path/to/recalls/csv]")
       else
-        Recall.load_from_csv_file(args.recalls_csv_filename)
+        Recall.load_cpsc_data_from_file(args.recalls_csv_filename)
+        Recall.reindex
+      end
+    end
+    
+    desc "Load NHTSA recalls from tab-delimited file"
+    task :load_nhtsa_data, :data_file, :needs => :environment do |t, args|
+      if args.data_file.blank?
+        RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:load_nhtsa_data[/path/to/recalls/file]")
+      else
+        Recall.load_nhtsa_data_from_file(args.data_file)
         Recall.reindex
       end
     end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100321171719) do
+ActiveRecord::Schema.define(:version => 20100325174330) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -47,6 +47,22 @@ ActiveRecord::Schema.define(:version => 20100321171719) do
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
   add_index "affiliates", ["name"], :name => "index_affiliates_on_name", :unique => true
   add_index "affiliates", ["user_id"], :name => "index_affiliates_on_user_id"
+
+  create_table "auto_recalls", :force => true do |t|
+    t.integer  "recall_id"
+    t.string   "make",                     :limit => 25
+    t.string   "model"
+    t.integer  "year"
+    t.string   "component_description"
+    t.date     "manufacturing_begin_date"
+    t.date     "manufacturing_end_date"
+    t.string   "manufacturer",             :limit => 40
+    t.string   "recalled_component_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "auto_recalls", ["recall_id"], :name => "index_auto_recalls_on_recall_id"
 
   create_table "block_words", :force => true do |t|
     t.string   "word",       :null => false
@@ -208,6 +224,7 @@ ActiveRecord::Schema.define(:version => 20100321171719) do
     t.date     "recalled_on"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "organization",  :limit => 10
   end
 
   create_table "sayt_filters", :force => true do |t|
