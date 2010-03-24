@@ -10,5 +10,19 @@ namespace :usasearch do
         Recall.reindex
       end
     end
+    
+    desc "Add sample UPC data to Recalls"
+    task :load_sample_upc_data, :needs => :environment do |t, args|
+      upcs = {'05586' => '718103051743', '05224' => '016256658148', '05225' => '717103051750', '05587' => '021200140624', '05226' => '071641880740', '05227' => '077914050179', '05228' => '077914050179', '05229' => '718103201384', '05230' => '718103201384', '05231' => '718103201384', '05589' => '070330201286', '05232' => '070330201286', '05233' => '718103010344', '05234' => '718103010344', '05235' => '718103010344', '05236' => '718103121866', '05237' => '718103121866', '05238' => '718103121866', '05592' => '718103121866', '05593' => '718103121866'}
+      upcs.each_pair do |recall_number, upc|
+        recall = Recall.find_by_recall_number(recall_number)
+        if recall
+          recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => upc)
+          recall.save!
+        end
+      end
+      Recall.reindex
+    end
+    
   end
 end

@@ -205,7 +205,9 @@ EOF
 
   describe "#search_for" do
     integrate_sunspot
-    before do
+    before(:all) do
+      Recall.destroy_all
+      Recall.remove_all_from_index!
       start_date = Date.parse('2010-02-01')
       @number_of_recalls = 3
       @number_of_recalls.times do |index|
@@ -215,6 +217,7 @@ EOF
         recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Baby Stroller can be dangerous to children')
         recall.recall_details << RecallDetail.new(:detail_type => 'Hazard', :detail_value => 'Horrible Death')
         recall.recall_details << RecallDetail.new(:detail_type => 'Country', :detail_value => 'United States')
+        recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '021200140624')
         recall.save!
       end
       Recall.reindex
@@ -241,7 +244,12 @@ EOF
     end
 
     it "should find recalls by keywords in the country" do
-      search= Recall.search_for('United States')
+      search = Recall.search_for('United States')
+      search.total.should == @number_of_recalls
+    end
+    
+    it "should find recalls by upc fielded search" do
+      search = Recall.search_for(nil, {:upc => '021200140624'})
       search.total.should == @number_of_recalls
     end
 
@@ -289,82 +297,75 @@ EOF
       end
 
       it "should search by a date range" do
-        search = Recall.search_for(@query, @start_date, @end_date)
+        search = Recall.search_for(@query, {:start_date => @start_date, :end_date => @end_date})
         search.total.should == 2
       end
 
       it "should search by a date range without a query" do
-        search = Recall.search_for(nil, @start_date, @end_date)
+        search = Recall.search_for(nil, {:start_date => @start_date, :end_date => @end_date})
         search.total.should == 2
       end
 
       it "should search by date correctly if the dates are supplied as strings instead of Date objects" do
-        search = Recall.search_for(@query, @start_date_string, @end_date_string)
+        search = Recall.search_for(@query, {:start_date => @start_date, :end_date => @end_date})
         search.total.should == 2
       end
-
     end
 
-    after do
+    after(:all) do
       Recall.remove_all_from_index!
     end
   end
 
   describe "#to_json" do
-    before do
+    before(:all) do
       @recall = Recall.new(:recall_number => '12345', :y2k => 12345, :recalled_on => Date.parse('2010-03-01'))
       @recall.recall_details << RecallDetail.new(:detail_type => 'Manufacturer', :detail_value => 'Acme Corp')
       @recall.recall_details << RecallDetail.new(:detail_type => 'RecallType', :detail_value => 'Dangerous Stuff')
       @recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Baby Stroller can be dangerous to children')
       @recall.recall_details << RecallDetail.new(:detail_type => 'Hazard', :detail_value => 'Horrible Death')
       @recall.recall_details << RecallDetail.new(:detail_type => 'Country', :detail_value => 'United States')
+      @recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '0123456789')
       @recall.save!
 
-      @recall_json = """{\"manufacturers\":[\"Acme Corp\"],\"descriptions\":[\"Baby Stroller can be dangerous to children\"],\"hazards\":[\"Horrible Death\"],\"recall_number\":\"12345\",\"countries\":[\"United States\"],\"recall_date\":\"2010-03-18\",\"recall_types\":[\"Dangerous Stuff\"]}\""
+      @recall_json = "{\"upc\":\"0123456789\",\"manufacturers\":[\"Acme Corp\"],\"descriptions\":[\"Baby Stroller can be dangerous to children\"],\"hazards\":[\"Horrible Death\"],\"recall_number\":\"12345\",\"countries\":[\"United States\"],\"recall_date\":\"2010-03-18\",\"recall_types\":[\"Dangerous Stuff\"]}\""
+      @parsed_recall = JSON.parse(@recall.to_json)
     end
-
-    it "should output well-format JSON" do
-      JSON.parse(@recall.to_json)
+        
+    it "should properly parse the UPC" do
+      @parsed_recall["upc"].should == '0123456789'
     end
-
+    
     it "should properly parse the recall number" do
-      parsed_recall = JSON.parse(@recall.to_json)
-      parsed_recall["recall_number"].should == '12345'
+      @parsed_recall["recall_number"].should == '12345'
     end
 
     it "should properly parse the recall date" do
-      parsed_recall = JSON.parse(@recall.to_json)
-      parsed_recall["recall_date"].should == '2010-03-01'
+      @parsed_recall["recall_date"].should == '2010-03-01'
     end
 
     it "should properly parse the recall url" do
-      parsed_recall = JSON.parse(@recall.to_json)
-      parsed_recall["recall_url"].should == "http://www.cpsc.gov/cpscpub/prerel/prhtml12/12345.html"
+      @parsed_recall["recall_url"].should == "http://www.cpsc.gov/cpscpub/prerel/prhtml12/12345.html"
     end
 
     it "should properly parse the list of manufacturers" do
-      parsed_recall = JSON.parse(@recall.to_json)
-      parsed_recall["manufacturers"].should == ['Acme Corp']
+      @parsed_recall["manufacturers"].should == ['Acme Corp']
     end
 
     it "should properly parse the list of descriptions" do
-      parsed_recall = JSON.parse(@recall.to_json)
-      parsed_recall["descriptions"].should == ["Baby Stroller can be dangerous to children"]
+      @parsed_recall["descriptions"].should == ["Baby Stroller can be dangerous to children"]
     end
 
     it "should properly parse the list of hazards" do
-      parsed_recall = JSON.parse(@recall.to_json)
-      parsed_recall["hazards"].should == ["Horrible Death"]
+      @parsed_recall["hazards"].should == ["Horrible Death"]
     end
 
     it "should properly parse the list of recall types" do
-      parsed_recall = JSON.parse(@recall.to_json)
-      parsed_recall["recall_types"].should == ["Dangerous Stuff"]
+      @parsed_recall["recall_types"].should == ["Dangerous Stuff"]
     end
 
     it "should properly parse the list of countries" do
-      parsed_recall = JSON.parse(@recall.to_json)
-      parsed_recall["countries"].should == ["United States"]
+      @parsed_recall["countries"].should == ["United States"]
     end
   end
 
@@ -387,6 +388,25 @@ EOF
       it "should return nil" do
         @recall.recall_url.should be_nil
       end
+    end
+  end
+  
+  describe "#upc" do
+    it "should return the value of the RecallDetail UPC if present" do
+      @recall = Recall.new(:recall_number => '12345', :y2k => 12345)
+      @recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '0123456789')
+      @recall.save!
+      @recall.upc.should == '0123456789'
+    end
+    
+    it "should return 'UNKNOWN' if no RecallDetail is present" do
+      @recall = Recall.new(:recall_number => '12345', :y2k => 12345)
+      @recall.save!
+      @recall.upc.should == 'UNKNOWN'
+    end
+    
+    after do
+      Recall.destroy_all
     end
   end
 end

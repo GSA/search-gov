@@ -4,7 +4,8 @@ class RecallsController < ApplicationController
     @page = params[:page] || 1
     @start_date = params[:start_date]
     @end_date = params[:end_date]
-    @search = Recall.search_for(@query, @start_date, @end_date, @page)
+    @upc = params[:upc]
+    @search = Recall.search_for(@query, {:start_date => @start_date, :end_date => @end_date, :upc => @upc}, @page)
     respond_to do |format|
       format.json {
         render :json => { :success => { :total => @search.total, :results => @search.results } }

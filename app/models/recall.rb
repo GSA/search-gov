@@ -12,7 +12,11 @@ class Recall < ActiveRecord::Base
     integer :recall_year do |recall|
       recall.recalled_on.year unless recall.recalled_on.blank?
     end
-
+    
+    string :upc do |recall|
+      recall.upc unless recall.upc.blank?
+    end
+    
     # full-text search fields
     FULL_TEXT_SEARCH_FIELDS.each_key do |detail_type|
       text detail_type.underscore.to_sym do |recall|
@@ -29,19 +33,21 @@ class Recall < ActiveRecord::Base
     end
   end
 
-  def self.search_for(query, start_date = nil, end_date = nil, page = 1, per_page = 10)
+  def self.search_for(query, options = {}, page = 1, per_page = 10)
     Recall.search do
       keywords query
-      if start_date && end_date
-        with(:recalled_on).between(start_date..end_date)
-      end
+      with(:recalled_on).between(options[:start_date]..options[:end_date]) unless options[:start_date].blank? || options[:end_date].blank?
+      with(:upc).equal_to(options[:upc]) unless options[:upc].blank?
+      
       facet :hazard_facet, :zeroes => true, :sort => :count
       facet :country_facet, :zeroes => true, :sort => :count
       facet :manufacturer_facet, :zeroes => true, :sort => :count
       facet :recall_type_facet, :zeroes => true, :sort => :count
       facet :recall_year
+      
       order_by :score, :asc
       order_by :y2k, :desc
+      
       paginate :page => page, :per_page => per_page
     end
   end
@@ -67,15 +73,20 @@ class Recall < ActiveRecord::Base
     recall.save!
   end
 
-  def to_json
-    recall_hash = { :recall_number => self.recall_number, :recall_date => self.recalled_on.to_s, :recall_url => self.recall_url, :manufacturers => list_detail("Manufacturer"), :descriptions => list_detail("Description"), :hazards => list_detail("Hazard"), :countries => list_detail("Country"), :recall_types => list_detail("RecallType") }
+  def to_json(options = {})
+    recall_hash = { :recall_number => self.recall_number, :recall_date => self.recalled_on.to_s, :recall_url => self.recall_url, :upc => self.upc, :manufacturers => list_detail("Manufacturer"), :descriptions => list_detail("Description"), :hazards => list_detail("Hazard"), :countries => list_detail("Country"), :recall_types => list_detail("RecallType") }
     recall_hash.to_json
   end
 
   def recall_url
     "http://www.cpsc.gov/cpscpub/prerel/prhtml#{self.recall_number.to_s[0..1]}/#{self.recall_number}.html" unless self.recall_number.blank?
   end
-
+  
+  def upc
+    upc_detail = self.recall_details.find(:first, :conditions => ['detail_type = ?', 'UPC'])
+    upc_detail ? upc_detail.detail_value : "UNKNOWN"
+  end
+  
   private
 
   def list_detail(field)

@@ -62,6 +62,17 @@ describe RecallsController do
         @end_date.should == '2010-03-18'
       end
     end
+    
+    context "when searching by UPC" do
+      before do
+        get :index, :upc => '123456789', :format => 'json'
+        @upc = assigns[:upc]
+      end
+      
+      it "should assing the upc" do
+        @upc.should == '123456789'
+      end
+    end
 
     context "when making a request with some other format, besides json" do
       before do
