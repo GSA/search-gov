@@ -545,14 +545,17 @@ describe Search do
       end
     end
 
-    context "when searching with popular queries that generate an 11th result missing a title" do
+    context "when results contain listing missing a title" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'Nas & Kelis'))
+        json = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_two_search_results_one_missing_title.json")
+        parsed = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
       end
 
-      it "should only have 10 results" do
+      it "should ignore that result" do
         @search.run
-        @search.results.size.should == 10
+        @search.results.size.should == 1
       end
     end
 
