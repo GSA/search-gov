@@ -45,7 +45,7 @@ class Recall < ActiveRecord::Base
       facet :recall_type_facet, :zeroes => true, :sort => :count
       facet :recall_year
       
-      order_by :score, :asc
+      order_by :score, :desc
       order_by :y2k, :desc
       
       paginate :page => page, :per_page => per_page
