@@ -1,5 +1,10 @@
 # USASearch Info
 
+## Rails
+
+If you have no experience with Ruby on Rails, this is not the document for you. This README assumes you already have a
+working development environment for Rails up and running, including the database drivers.
+
 ## Ruby
 
 You will need Ruby 1.8.7. Verify that your path points to the correct version of Ruby:
@@ -9,7 +14,7 @@ You will need Ruby 1.8.7. Verify that your path points to the correct version of
     lappy:usasearch loren$ which ruby
     /opt/local/bin/ruby
 
-You will need to install rubygems 1.3.5 or later and set up your gem sources:
+You will need to install rubygems 1.3.5 (1.3.6 generates deprecation warnings) and set up your gem sources:
 
     lappy:usasearch loren$ gem -v
     1.3.5
@@ -32,7 +37,8 @@ You will need to install rubygems 1.3.5 or later and set up your gem sources:
 
 We're using Solr for fulltext search. You might need to install these gems separately due to a Catch-22 with the Rake gem installer.
 
-    sudo gem install sunspot sunspot_rails hoptoad_notifier
+    sudo gem install sunspot --version '=0.10.9'
+    sudo gem install sunspot_rails --version '=0.11.5'
 
 You can start/stop/reindex Solr like this:
 
@@ -44,7 +50,7 @@ You can start/stop/reindex Solr like this:
 ## Gems
 
 You should be able to get all the rest of the gems needed for this project like this:
-
+    sudo gem install cucumber hoptoad_notifier rspec rspec-rails capistrano capistrano-ext ruby-debug
     sudo rake gems:install
     sudo rake gems:install RAILS_ENV=test
     sudo rake gems:install RAILS_ENV=cucumber
@@ -62,13 +68,16 @@ Create and setup your development and test databases:
 
 # Tests
 
+These require a Solr server to be spun up.
+
+    rake sunspot:solr:start RAILS_ENV=test
+
 Make sure the unit tests and functional tests run:
 
     rake spec
 
-Make sure the integration tests run. These require a Solr server to be spun up.
+Make sure the integration tests run.
 
-    rake sunspot:solr:start RAILS_ENV=test
     script/cucumber
 
 # Code Coverage
