@@ -10,6 +10,7 @@ describe RecallDetail do
   end
 
   should_validate_presence_of :detail_type, :detail_value
+  should_belong_to :recall
 
   it "should create a new instance given valid attributes" do
     RecallDetail.create!(@valid_attributes)

@@ -45,3 +45,35 @@ Feature: Mobile Search
   Scenario: An advanced search on the mobile home page
     When I am on the advanced search page
     Then I should see "Use the options on this page to create a very specific search"
+
+  Scenario: A search with results containing recalls on multiple days
+    Given the following Product Recalls exist:
+    |recall_number|manufacturer                   |type    |product                                                     |hazard        |country             |recalled_days_ago|
+    |10155        |Graco                          |Stroller|Graco E-Z Roller baby strollers, Graco Hard-to-Roll stroller|Entrapment    |Canada              |15               |
+    |10157        |Hasbro                         |Stroller|Hasbro Window Stroller                                      |Defenestration|USA                 |18               |
+    |10156        |Graco, Walmart, Martha Stewart |Bed     |Graco Cozy Glow-in-the-Dark Classic Toddler Beds            |Vomiting      |USA, Vietnam, China |25               |
+    |10150        |Graco                          |Stroller|Graco Neck Restraint                                        |Decapitation  |Canada              |35               |
+    And I am on the homepage
+    When I fill in "query" with "graco recall"
+    And I submit the search form
+    Then I should be on the search page
+    And in "recall1" I should see "Graco E-Z Roller baby strollers, Graco Hard-to-Roll stroller"
+    And in "recall2" I should see "Graco Cozy Glow-in-the-Dark Classic Toddler Beds"
+    And I should not see "Hasbro Window Stroller"
+    And I should not see "Graco Neck Restraint"
+
+  Scenario: A search with auto results containing recent recalls
+    Given the following Auto Recalls exist:
+    |recall_number|manufacturer              |component_description            |recalled_days_ago|
+    |10155        |TOYOTA, TOYOTA                    |FRONT BRAKE PADS, STEERING WHEEL |15               |
+    |10157        |TOYOTA                    |REAR-VIEW MIRROR                 |18               |
+    |10156        |HONDA, INFINITI, PORSCHE  |BRAKE PAD ASSEMBLY,BRAKE PAD ASSEMBLY,BRAKE PAD ASSEMBLY               |25               |
+    |10150        |TOYOTA                    |OLD BRAKE PADS                   |35               |
+    And I am on the homepage
+    When I fill in "query" with "brake pad recall"
+    And I submit the search form
+    Then I should be on the search page
+    And in "recall1" I should see "FRONT BRAKE PADS, STEERING WHEEL FROM TOYOTA"
+    And in "recall2" I should see "BRAKE PAD ASSEMBLY FROM HONDA, INFINITI, PORSCHE"
+    And I should not see "REAR-VIEW MIRROR"
+    And I should not see "OLD BRAKE PADS"

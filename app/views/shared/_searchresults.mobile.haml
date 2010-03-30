@@ -2,6 +2,12 @@
 - if search.results.present?
   %h1= results_summary(search.startrecord, search.endrecord, search.total, search.query, false)
   %hr
+  - if (@search && @search.recalls && @search.recalls.total > 0)
+    .group{:id => "recalls"}
+      %h1 Recent Recalls
+      - search.recalls.hits.each_with_index do |hit, index|
+        .row{:id => "recall#{index+1}"}
+          .links= link_to "#{hit.instance.summary}, #{hit.instance.recalled_on.to_formatted_s(:short).strip}", hit.instance.recall_url
   .group
     - search.results.each_with_index do |search_result, index|
       .row{:id => "searchresult#{index+1}"}

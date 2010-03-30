@@ -607,6 +607,53 @@ describe Search do
       end
     end
 
+    context "recent recalls (last month)" do
+      before do
+        @date_filter_hash= {:start_date=>1.month.ago.to_date, :end_date=>Date.today}
+      end
+
+      context "when search term does not contain recall or recalls" do
+        it "should not look for recalls" do
+          search = Search.new(@valid_options.merge(:query => 'foo bar'))
+          Recall.should_not_receive(:search_for)
+          search.run
+        end
+      end
+
+      context "when search phrase is just the word recall(s)" do
+        it "should not look for recalls" do
+          search = Search.new(@valid_options.merge(:query => 'recall'))
+          Recall.should_not_receive(:search_for)
+          search.run
+        end
+      end
+
+      context "when search phrase contains recall" do
+        it "should strip off the recall word before searching" do
+          search = Search.new(@valid_options.merge(:query => 'foo bar recall'))
+          Recall.should_receive(:search_for).with('foo bar', @date_filter_hash)
+          search.run
+        end
+      end
+
+      context "when search phrase contains recalls" do
+        it "should strip off the recalls word before searching" do
+          search = Search.new(@valid_options.merge(:query => 'recalls of pepper'))
+          Recall.should_receive(:search_for).with('of pepper', @date_filter_hash)
+          search.run
+        end
+      end
+
+      context "when no relevant recall exists for the search term" do
+        it "should assign nil to recalls" do
+          search = Search.new(@valid_options.merge(:query => 'nothing here recall'))
+          Recall.should_receive(:search_for).with('nothing here', @date_filter_hash).and_return(nil)
+          search.run
+          search.recalls.should be_nil
+        end
+      end
+    end
+
     context "when paginating" do
       default_page = 0
 
@@ -665,7 +712,7 @@ describe Search do
     end
 
     it "should accept an override for number of suggestions to return" do
-      Search.suggestions("aaa",6).size.should == 6
+      Search.suggestions("aaa", 6).size.should == 6
     end
 
     it "should return suggestions in alphabetical order" do
