@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-recalls_rake.html">lib/tasks/recalls.rake</a></td>
-            <td class='right_align'><tt>13</tt></td>
-            <td class='right_align'><tt>12</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class='right_align'><tt>38</tt></td>
+            <td class='right_align'><tt>34</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>65.79%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:66px"></div>
+            <div class="uncovered" style="width:34px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>64.71%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:65px"></div>
+            <div class="uncovered" style="width:35px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -81,7 +81,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     task :load, :recalls_csv_filename, :needs =&gt; :environment do |t, args|</pre></td>
+            <td><pre><a name="line5">5</a>     task :load_cpsc_data, :recalls_csv_filename, :needs =&gt; :environment do |t, args|</pre></td>
           </tr>
         
           
@@ -93,7 +93,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>         RAILS_DEFAULT_LOGGER.error(&quot;usage: rake usasearch:recalls:load[/path/to/recalls/csv]&quot;)</pre></td>
+            <td><pre><a name="line7">7</a>         RAILS_DEFAULT_LOGGER.error(&quot;usage: rake usasearch:recalls:load_cpsc_data[/path/to/recalls/csv]&quot;)</pre></td>
           </tr>
         
           
@@ -105,37 +105,187 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>         Recall.load_from_csv_file(args.recalls_csv_filename)</pre></td>
+            <td><pre><a name="line9">9</a>         Recall.load_cpsc_data_from_file(args.recalls_csv_filename)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>         Recall.reindex</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a>       end</pre></td>
+            <td><pre><a name="line11">11</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a>     end</pre></td>
+            <td><pre><a name="line12">12</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a>   end</pre></td>
+            <td><pre><a name="line13">13</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>     desc &quot;Load NHTSA recalls from tab-delimited file&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>     task :load_nhtsa_data, :data_file, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>       if args.data_file.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>         RAILS_DEFAULT_LOGGER.error(&quot;usage: rake usasearch:recalls:load_nhtsa_data[/path/to/recalls/file]&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a> end</pre></td>
+            <td><pre><a name="line18">18</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>         Recall.load_nhtsa_data_from_file(args.data_file)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>         Recall.reindex</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>     desc &quot;Add sample UPC data to Recalls&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>     task :load_sample_upc_data, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line26">26</a>       upcs = {'05586' =&gt; '718103051743', '05224' =&gt; '016256658148', '05225' =&gt; '717103051750', '05587' =&gt; '021200140624', '05226' =&gt; '071641880740', '05227' =&gt; '077914050179', '05228' =&gt; '077914050179', '05229' =&gt; '718103201384', '05230' =&gt; '718103201384', '05231' =&gt; '718103201384', '05589' =&gt; '070330201286', '05232' =&gt; '070330201286', '05233' =&gt; '718103010344', '05234' =&gt; '718103010344', '05235' =&gt; '718103010344', '05236' =&gt; '718103121866', '05237' =&gt; '718103121866', '05238' =&gt; '718103121866', '05592' =&gt; '718103121866', '05593' =&gt; '718103121866'}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line27">27</a>       upcs.each_pair do |recall_number, upc|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line28">28</a>         recall = Recall.find_by_recall_number(recall_number)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line29">29</a>         if recall</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line30">30</a>           recall.recall_details &lt;&lt; RecallDetail.new(:detail_type =&gt; 'UPC', :detail_value =&gt; upc)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line31">31</a>           recall.save!</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line32">32</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line33">33</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line34">34</a>       Recall.reindex</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line35">35</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line36">36</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line37">37</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line38">38</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Mar 19 01:31:40 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.7.1</a></p>
+    <p>Generated on Tue Mar 30 13:50:56 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
