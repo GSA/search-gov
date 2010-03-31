@@ -190,11 +190,11 @@ ActiveRecord::Schema.define(:version => 20100325174330) do
   add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
 
   create_table "queries", :id => false, :force => true do |t|
-    t.string   "ipaddr",    :limit => 17
-    t.string   "query",     :limit => 100
-    t.string   "affiliate", :limit => 32
-    t.datetime "timestamp",                :null => false
-    t.string   "locale",    :limit => 5
+    t.string    "ipaddr",    :limit => 17
+    t.string    "query",     :limit => 100
+    t.string    "affiliate", :limit => 32
+    t.timestamp "timestamp",                :null => false
+    t.string    "locale",    :limit => 5
   end
 
   add_index "queries", ["query"], :name => "queryindex"
