@@ -503,58 +503,97 @@ EOF
   end
 
   describe "#to_json" do
-    before(:all) do
-      @recall = Recall.new(:organization => 'CPSC', :recall_number => '12345', :y2k => 12345, :recalled_on => Date.parse('2010-03-01'))
-      @recall.recall_details << RecallDetail.new(:detail_type => 'Manufacturer', :detail_value => 'Acme Corp')
-      @recall.recall_details << RecallDetail.new(:detail_type => 'ProductType', :detail_value => 'Dangerous Stuff')
-      @recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Baby Stroller can be dangerous to children')
-      @recall.recall_details << RecallDetail.new(:detail_type => 'Hazard', :detail_value => 'Horrible Death')
-      @recall.recall_details << RecallDetail.new(:detail_type => 'Country', :detail_value => 'United States')
-      @recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '0123456789')
-      @recall.save!
+    context "for a CPSC recall" do
+      before(:all) do
+        @recall = Recall.new(:organization => 'CPSC', :recall_number => '12345', :y2k => 12345, :recalled_on => Date.parse('2010-03-01'))
+        @recall.recall_details << RecallDetail.new(:detail_type => 'Manufacturer', :detail_value => 'Acme Corp')
+        @recall.recall_details << RecallDetail.new(:detail_type => 'ProductType', :detail_value => 'Dangerous Stuff')
+        @recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Baby Stroller can be dangerous to children')
+        @recall.recall_details << RecallDetail.new(:detail_type => 'Hazard', :detail_value => 'Horrible Death')
+        @recall.recall_details << RecallDetail.new(:detail_type => 'Country', :detail_value => 'United States')
+        @recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '0123456789')
+        @recall.save!
 
-      @recall_json = "{\"organization\":\"CPSC\",\"upc\":\"0123456789\",\"manufacturers\":[\"Acme Corp\"],\"descriptions\":[\"Baby Stroller can be dangerous to children\"],\"hazards\":[\"Horrible Death\"],\"recall_number\":\"12345\",\"countries\":[\"United States\"],\"recall_date\":\"2010-03-18\",\"product_types\":[\"Dangerous Stuff\"]}"
-      @parsed_recall = JSON.parse(@recall.to_json)
+        @recall_json = "{\"organization\":\"CPSC\",\"upc\":\"0123456789\",\"manufacturers\":[\"Acme Corp\"],\"descriptions\":[\"Baby Stroller can be dangerous to children\"],\"hazards\":[\"Horrible Death\"],\"recall_number\":\"12345\",\"countries\":[\"United States\"],\"recall_date\":\"2010-03-18\",\"product_types\":[\"Dangerous Stuff\"]}"
+        @parsed_recall = JSON.parse(@recall.to_json)
+      end
+
+      it "should properly parse the organization value" do
+        @parsed_recall["organization"].should == 'CPSC'
+      end
+
+      it "should properly parse the UPC" do
+        @parsed_recall["upc"].should == '0123456789'
+      end
+
+      it "should properly parse the recall number" do
+        @parsed_recall["recall_number"].should == '12345'
+      end
+
+      it "should properly parse the recall date" do
+        @parsed_recall["recall_date"].should == '2010-03-01'
+      end
+
+      it "should properly parse the recall url" do
+        @parsed_recall["recall_url"].should == "http://www.cpsc.gov/cpscpub/prerel/prhtml12/12345.html"
+      end
+
+      it "should properly parse the list of manufacturers" do
+        @parsed_recall["manufacturers"].should == ['Acme Corp']
+      end
+
+      it "should properly parse the list of descriptions" do
+        @parsed_recall["descriptions"].should == ["Baby Stroller can be dangerous to children"]
+      end
+
+      it "should properly parse the list of hazards" do
+        @parsed_recall["hazards"].should == ["Horrible Death"]
+      end
+
+      it "should properly parse the list of recall types" do
+        @parsed_recall["product_types"].should == ["Dangerous Stuff"]
+      end
+
+      it "should properly parse the list of countries" do
+        @parsed_recall["countries"].should == ["United States"]
+      end
     end
-
-    it "should properly parse the organization value" do
-      @parsed_recall["organization"].should == 'CPSC'
-    end
-
-    it "should properly parse the UPC" do
-      @parsed_recall["upc"].should == '0123456789'
-    end
-
-    it "should properly parse the recall number" do
-      @parsed_recall["recall_number"].should == '12345'
-    end
-
-    it "should properly parse the recall date" do
-      @parsed_recall["recall_date"].should == '2010-03-01'
-    end
-
-    it "should properly parse the recall url" do
-      @parsed_recall["recall_url"].should == "http://www.cpsc.gov/cpscpub/prerel/prhtml12/12345.html"
-    end
-
-    it "should properly parse the list of manufacturers" do
-      @parsed_recall["manufacturers"].should == ['Acme Corp']
-    end
-
-    it "should properly parse the list of descriptions" do
-      @parsed_recall["descriptions"].should == ["Baby Stroller can be dangerous to children"]
-    end
-
-    it "should properly parse the list of hazards" do
-      @parsed_recall["hazards"].should == ["Horrible Death"]
-    end
-
-    it "should properly parse the list of recall types" do
-      @parsed_recall["product_types"].should == ["Dangerous Stuff"]
-    end
-
-    it "should properly parse the list of countries" do
-      @parsed_recall["countries"].should == ["United States"]
+    
+    context "for a NHTSA recall" do
+      before(:all) do
+        @recall = Recall.new(:organization => 'NHTSA', :recall_number => '12345', :recalled_on => Date.parse('2010-03-01'))
+        Recall::NHTSA_DETAIL_FIELDS.each_key do |detail_type|
+          @recall.recall_details << RecallDetail.new(:detail_type => detail_type, :detail_value => 'test')
+        end
+        @recall.auto_recalls << AutoRecall.new(:make => 'TOYOTA', :model => 'CAMRY', :year => '2006', :component_description => 'BRAKES', :manufacturer => 'TOYOTA', :recalled_component_id => '1234567890', :manufacturing_begin_date => Date.parse('2006-01-01'), :manufacturing_end_date => Date.parse('2006-12-31'))
+        @recall.auto_recalls << AutoRecall.new(:make => 'TOYOTA', :model => 'SIENA', :year => '2006', :component_description => 'BRAKES', :manufacturer => 'TOYOTA', :recalled_component_id => '1234567890', :manufacturing_begin_date => Date.parse('2006-01-01'), :manufacturing_end_date => Date.parse('2006-12-31'))
+        @recall.save!
+        @parsed_recall = JSON.parse(@recall.to_json)
+      end
+      
+      it "should properly parse the organization" do
+        @parsed_recall["organization"].should == 'NHTSA'
+      end
+      
+      it "should properly parse the recall number" do
+        @parsed_recall["recall_number"].should == '12345'
+      end
+      
+      it "should properly parse the recall date" do
+        @parsed_recall["recall_date"].should == '2010-03-01'
+      end
+      
+      it "should properly parse all of the Recall details fields" do
+        Recall::NHTSA_DETAIL_FIELDS.each_key do |detail_type|
+          @parsed_recall[detail_type.underscore].should == 'test'
+        end
+      end
+      
+      it "should list the associated auto recalls" do
+        @parsed_recall["records"].size.should == 2
+        @parsed_recall["records"][0]["model"].should == "CAMRY"
+        @parsed_recall["records"][1]["model"].should == "SIENA"
+      end
     end
   end
 
@@ -575,7 +614,7 @@ EOF
       end
 
       it "should generate a recall URL using the first two digits of the recall number and the recall number to complete the URL" do
-        @recall.recall_url.should == "http://www-odi.nhtsa.dot.gov/recalls/results.cfm?rcl_id=12345&searchtype=quicksearch&summary=true&refurl=rss"
+        @recall.recall_url.should == "http://www-odi.nhtsa.dot.gov/recalls/recallresults.cfm?start=1&SearchType=QuickSearch&rcl_ID=12345&summary=true&PrintVersion=YES"
       end
     end
 

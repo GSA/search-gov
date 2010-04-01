@@ -108,5 +108,22 @@ EOF
         end
       end
     end
+  
+    describe "usasearch:recalls:load_sample_upc_data" do
+      before do
+        @task_name = "usasearch:recalls:load_sample_upc_data"
+      end
+      
+      it "should update an existing recall with the appropriate UPC symbol" do
+        @recall = Recall.create(:recall_number => '05586', :organization => 'CPSC')
+        @rake[@task_name].invoke
+        Recall.find_by_recall_number('05586').upc.should == '718103051743'
+      end
+      
+      it "should reindex the Recalls data" do
+        Recall.should_receive(:reindex)
+        @rake[@task_name].invoke
+      end
+    end
   end
 end

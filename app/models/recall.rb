@@ -132,7 +132,7 @@ class Recall < ActiveRecord::Base
     if self.organization == 'CPSC'
       "http://www.cpsc.gov/cpscpub/prerel/prhtml#{self.recall_number.to_s[0..1]}/#{self.recall_number}.html" unless self.recall_number.blank?
     elsif self.organization == 'NHTSA'
-      "http://www-odi.nhtsa.dot.gov/recalls/results.cfm?rcl_id=#{self.recall_number}&searchtype=quicksearch&summary=true&refurl=rss"
+      "http://www-odi.nhtsa.dot.gov/recalls/recallresults.cfm?start=1&SearchType=QuickSearch&rcl_ID=#{self.recall_number}&summary=true&PrintVersion=YES"
     end
   end
 

@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-sayt_filter_rb.html">app/models/sayt_filter.rb</a></td>
-            <td class='right_align'><tt>22</tt></td>
-            <td class='right_align'><tt>19</tt></td>
+            <td class='right_align'><tt>27</tt></td>
+            <td class='right_align'><tt>23</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,133 +63,163 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   validates_presence_of :phrase</pre></td>
+            <td><pre><a name="line2">2</a>   before_validation :strip_whitespace</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   validates_uniqueness_of :phrase</pre></td>
+            <td><pre><a name="line3">3</a>   validates_presence_of :phrase</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>   validates_uniqueness_of :phrase</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a> </pre></td>
+            <td><pre><a name="line5">5</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   after_save :apply_filter_to_sayt_suggestions</pre></td>
+            <td><pre><a name="line6">6</a>   after_save :apply_filter_to_sayt_suggestions</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> </pre></td>
+            <td><pre><a name="line7">7</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   def self.filter(inputs, key)</pre></td>
+            <td><pre><a name="line8">8</a>   def self.filter(inputs, key)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     filters = all</pre></td>
+            <td><pre><a name="line9">9</a>     filters = all</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     inputs.reject do |candidate|</pre></td>
+            <td><pre><a name="line10">10</a>     inputs.reject do |candidate|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>       rejected = filters.detect { |filter| candidate[key] =~ /\b#{filter.phrase}\b/i }</pre></td>
+            <td><pre><a name="line11">11</a>       rejected = filters.detect { |filter| candidate[key] =~ /\b#{filter.phrase}\b/i }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>       rejected = candidate[key] =~ /(site:|intitle:|http:)/i unless rejected</pre></td>
+            <td><pre><a name="line12">12</a>       rejected = candidate[key] =~ /(site:|intitle:|http:)/i unless rejected</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>       rejected</pre></td>
+            <td><pre><a name="line13">13</a>       rejected</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>     end unless inputs.nil?</pre></td>
+            <td><pre><a name="line14">14</a>     end unless inputs.nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>   end</pre></td>
+            <td><pre><a name="line15">15</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a> </pre></td>
+            <td><pre><a name="line16">16</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>   private</pre></td>
+            <td><pre><a name="line17">17</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>   def apply_filter_to_sayt_suggestions</pre></td>
+            <td><pre><a name="line18">18</a>   def apply_filter_to_sayt_suggestions</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>     SaytSuggestion.all.each do |suggestion|</pre></td>
+            <td><pre><a name="line19">19</a>     SaytSuggestion.all.each do |suggestion|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>       suggestion.delete if suggestion.phrase =~ /\b#{phrase}\b/i</pre></td>
+            <td><pre><a name="line20">20</a>       suggestion.delete if suggestion.phrase =~ /\b#{phrase}\b/i</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>     end</pre></td>
+            <td><pre><a name="line21">21</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   end</pre></td>
+            <td><pre><a name="line22">22</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a> end</pre></td>
+            <td><pre><a name="line23">23</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>   def strip_whitespace</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>     self.phrase.strip! unless self.phrase.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line26">26</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line27">27</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Mar 30 13:50:56 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Apr 01 13:54:55 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

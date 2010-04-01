@@ -19,4 +19,19 @@ describe AutoRecall do
   it "should create a new instance given valid attributes" do
     AutoRecall.create!(@valid_attributes)
   end
+  
+  describe "#to_json" do
+    it "should return JSON the includes all the fields" do
+      @auto_recall = AutoRecall.new(@valid_attributes)
+      parsed_json = JSON.parse(@auto_recall.to_json)
+      parsed_json["make"].should == @valid_attributes[:make]
+      parsed_json["model"].should == @valid_attributes[:model]
+      parsed_json["year"].should == @valid_attributes[:year]
+      parsed_json["component_description"].should == @valid_attributes[:component_description]
+      parsed_json["manufacturer"].should == @valid_attributes[:manufacturer]
+      parsed_json["recalled_component_id"].should == @valid_attributes[:recalled_component_id]
+      parsed_json["manufacturing_begin_date"].should == @valid_attributes[:manufacturing_begin_date].to_s
+      parsed_json["manufacturing_end_date"].should == @valid_attributes[:manufacturing_end_date].to_s
+    end
+  end
 end

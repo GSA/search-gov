@@ -30,15 +30,15 @@
             <td class="left_align"><a href="app-models-recall_rb.html">app/models/recall.rb</a></td>
             <td class='right_align'><tt>191</tt></td>
             <td class='right_align'><tt>153</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>95.29%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:95px"></div>
-            <div class="uncovered" style="width:5px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>94.12%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:94px"></div>
-            <div class="uncovered" style="width:6px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -764,55 +764,55 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line119">119</a>     else</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line120">120</a>       nhtsa_hash = { :recall_url =&gt; self.recall_url }</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line121">121</a>       NHTSA_DETAIL_FIELDS.each_key do |detail_type|</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line122">122</a>         recall_detail = self.recall_details.find_by_detail_type(detail_type)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line123">123</a>         nhtsa_hash[detail_type.underscore.to_sym] = recall_detail.detail_value unless recall_detail.nil?</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line124">124</a>       end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line125">125</a>       recall_hash.merge!(nhtsa_hash)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line126">126</a>       recall_hash.merge!(:records =&gt; self.auto_recalls)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line127">127</a>     end</pre></td>
           </tr>
         
@@ -861,7 +861,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line135">135</a>       &quot;http://www-odi.nhtsa.dot.gov/recalls/results.cfm?rcl_id=#{self.recall_number}&amp;searchtype=quicksearch&amp;summary=true&amp;refurl=rss&quot;</pre></td>
+            <td><pre><a name="line135">135</a>       &quot;http://www-odi.nhtsa.dot.gov/recalls/recallresults.cfm?start=1&amp;SearchType=QuickSearch&amp;rcl_ID=#{self.recall_number}&amp;summary=true&amp;PrintVersion=YES&quot;</pre></td>
           </tr>
         
           
@@ -1203,7 +1203,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Mar 30 13:50:56 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Apr 01 13:54:55 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
