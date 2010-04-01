@@ -30,6 +30,11 @@ describe SaytSuggestion do
       sf.phrase.should == phrase.strip
     end
 
+    it "should squish multiple whitespaces between words in the phrase before entering into DB" do
+      SaytSuggestion.create!(:phrase => "two  spaces")
+      SaytSuggestion.find_by_phrase("two spaces").phrase.should == "two spaces"
+    end
+
   end
 
   describe "#populate_for(day)" do
