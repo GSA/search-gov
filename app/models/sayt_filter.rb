@@ -1,4 +1,5 @@
 class SaytFilter < ActiveRecord::Base
+  before_validation :strip_whitespace
   validates_presence_of :phrase
   validates_uniqueness_of :phrase
 
@@ -18,5 +19,9 @@ class SaytFilter < ActiveRecord::Base
     SaytSuggestion.all.each do |suggestion|
       suggestion.delete if suggestion.phrase =~ /\b#{phrase}\b/i
     end
+  end
+
+  def strip_whitespace
+    self.phrase.strip! unless self.phrase.nil?
   end
 end

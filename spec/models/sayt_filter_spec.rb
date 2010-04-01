@@ -6,10 +6,14 @@ describe SaytFilter do
   describe "Creating new instance" do
     should_validate_presence_of :phrase
     should_validate_uniqueness_of :phrase
+    it "should strip whitespace from phrase before inserting in DB" do
+      phrase = " leading and trailing whitespaces "
+      sf = SaytFilter.create!(:phrase => phrase)
+      sf.phrase.should == phrase.strip
+    end
 
     it "should create a new instance given valid attributes" do
-      valid_attributes = { :phrase => "some valid filter phrase" }
-      SaytFilter.create!(valid_attributes)
+      SaytFilter.create!(:phrase => "some valid filter phrase")
     end
   end
 
@@ -45,7 +49,7 @@ describe SaytFilter do
 
     it "should handle an empty SaytFilter table" do
       SaytFilter.delete_all
-      SaytFilter.filter(@results, "somekey").size.should == @results.size      
+      SaytFilter.filter(@results, "somekey").size.should == @results.size
     end
   end
 end
