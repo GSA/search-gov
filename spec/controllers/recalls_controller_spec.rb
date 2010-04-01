@@ -83,5 +83,16 @@ describe RecallsController do
         response.body.should contain('Not Implemented')
       end
     end
+    
+    context "when sorting by date" do
+      before do
+        get :index, :query => 'strollers', :sort => 'date'
+        @sort = assigns[:sort]
+      end
+      
+      it "should assign the sort to date" do
+        @sort.should == 'date'
+      end
+    end
   end
 end

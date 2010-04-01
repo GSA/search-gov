@@ -91,7 +91,11 @@ class Recall < ActiveRecord::Base
       facet :make_facet, :sort => :count
       facet :model_facet, :sort => :count
       facet :year_facet, :sort => :count
-
+      
+      if options[:sort] == "date"
+        order_by :recalled_on, :desc
+      end
+      
       paginate :page => page, :per_page => per_page
     end
   end

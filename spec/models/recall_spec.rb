@@ -309,38 +309,30 @@ EOF
     before(:all) do
       Recall.destroy_all
       Recall.remove_all_from_index!
-      start_date = Date.parse('2010-02-01')
-      @number_of_cpsc_recalls = 3
-      @number_of_cpsc_recalls.times do |index|
-        recall = Recall.new(:recall_number => '12345', :y2k => 12345, :recalled_on => start_date - index.month, :organization => 'CPSC')
-        recall.recall_details << RecallDetail.new(:detail_type => 'Manufacturer', :detail_value => 'Acme Corp')
-        recall.recall_details << RecallDetail.new(:detail_type => 'ProductType', :detail_value => 'Dangerous Stuff')
-        recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Baby Stroller can be dangerous to children')
-        recall.recall_details << RecallDetail.new(:detail_type => 'Hazard', :detail_value => 'Horrible Death')
-        recall.recall_details << RecallDetail.new(:detail_type => 'Country', :detail_value => 'United States')
-        recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '021200140624')
-        recall.save!
-      end
-      @row = ["1", "02V269000", "MACK", "CH", "2002", "SCO277", "PARKING BRAKE", "MACK TRUCKS, INCORPORATED", "", "", "V", "557", "20030321", "MFR", "MACK TRUCKS, INC", "20021003", "20021004", "571", "121", "CERTAIN CLASS 8 CHASSIS FAIL TO COMPLY WITH REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 121, \"AIR BRAKE SYSTEMS.\"  THE INSTALLATION OF THE ADDITIONAL AXLE(S), RAISES THE GVW CAPABILITY OF THE VEHICLE AND THEREFORE REQUIRES AN INCREASE IN THE PARKING BRAKE PERFORMANCE TO HOLD ON A 20% GRADE IN ORDER TO MEET THE REQUIREMENTS OF THE STANDARD.", "Consequence Summary", "DEALERS WILL MODIFY THE PARK BRAKE CONFIGURATION ON THESE VEHICLES.   OWNERS WHO TAKE THEIR VEHICLES TO AN AUTHORIZED DEALER ON AN AGREED UPON SERVICE DATE AND DO NOT RECEIVE THE FREE REMEDY WITHIN A REASONABLE TIME SHOULD CONTACT MACK AT 1-610-709-3337.", "MACK TRUCK RECALL NO. SCO277. CUSTOMERS CAN ALSO CONTACT THE NATIONAL HIGHWAY TRAFFIC SAFETY ADMINISTRATION'S AUTO SAFETY HOTLINE AT 1-888-DASH-2-DOT (1-888-327-4236).", "000015283000097074000000115"]
-      @number_of_nhtsa_recalls = 3
-      @number_of_nhtsa_recalls.times do |index|
-        recall = Recall.new(:recall_number => @row[1], :recalled_on => start_date - index.month, :organization => 'NHTSA')
-        Recall::NHTSA_DETAIL_FIELDS.each_pair do |detail_type, column_index|
-          recall.recall_details << RecallDetail.new(:detail_type => detail_type, :detail_value => @row[column_index]) unless @row[column_index].blank?
-        end
-        recall.auto_recalls << AutoRecall.new(:make => @row[2], :model => @row[3], :year => @row[4])
-        recall.save!
-      end
-      Recall.reindex
-    end
-
-    it "should filter search results by organization" do
-      search = Recall.search_for('stroller', {:organization => 'CPSC'})
-      search.total.should == @number_of_cpsc_recalls
+      @start_date = Date.parse('2010-02-01')
     end
 
     context "CPSC-related searches" do
-
+      before(:all) do
+        @number_of_cpsc_recalls = 3
+        @number_of_cpsc_recalls.times do |index|
+          recall = Recall.new(:recall_number => '12345', :y2k => 12345, :recalled_on => @start_date - index.month, :organization => 'CPSC')
+          recall.recall_details << RecallDetail.new(:detail_type => 'Manufacturer', :detail_value => 'Acme Corp')
+          recall.recall_details << RecallDetail.new(:detail_type => 'ProductType', :detail_value => 'Dangerous Stuff')
+          recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Baby Stroller can be dangerous to children')
+          recall.recall_details << RecallDetail.new(:detail_type => 'Hazard', :detail_value => 'Horrible Death')
+          recall.recall_details << RecallDetail.new(:detail_type => 'Country', :detail_value => 'United States')
+          recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '021200140624')
+          recall.save!
+        end
+        Recall.reindex
+      end
+      
+      it "should filter search results by organization" do
+        search = Recall.search_for('stroller', {:organization => 'CPSC'})
+        search.total.should == @number_of_cpsc_recalls
+      end
+      
       it "should find recalls by keywords in the description" do
         search = Recall.search_for('stroller')
         search.total.should == @number_of_cpsc_recalls
@@ -407,6 +399,20 @@ EOF
     end
 
     context "NHTSA-related searches" do
+      before(:all) do
+        @row = ["1", "02V269000", "MACK", "CH", "2002", "SCO277", "PARKING BRAKE", "MACK TRUCKS, INCORPORATED", "", "", "V", "557", "20030321", "MFR", "MACK TRUCKS, INC", "20021003", "20021004", "571", "121", "CERTAIN CLASS 8 CHASSIS FAIL TO COMPLY WITH REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 121, \"AIR BRAKE SYSTEMS.\"  THE INSTALLATION OF THE ADDITIONAL AXLE(S), RAISES THE GVW CAPABILITY OF THE VEHICLE AND THEREFORE REQUIRES AN INCREASE IN THE PARKING BRAKE PERFORMANCE TO HOLD ON A 20% GRADE IN ORDER TO MEET THE REQUIREMENTS OF THE STANDARD.", "Consequence Summary", "DEALERS WILL MODIFY THE PARK BRAKE CONFIGURATION ON THESE VEHICLES.   OWNERS WHO TAKE THEIR VEHICLES TO AN AUTHORIZED DEALER ON AN AGREED UPON SERVICE DATE AND DO NOT RECEIVE THE FREE REMEDY WITHIN A REASONABLE TIME SHOULD CONTACT MACK AT 1-610-709-3337.", "MACK TRUCK RECALL NO. SCO277. CUSTOMERS CAN ALSO CONTACT THE NATIONAL HIGHWAY TRAFFIC SAFETY ADMINISTRATION'S AUTO SAFETY HOTLINE AT 1-888-DASH-2-DOT (1-888-327-4236).", "000015283000097074000000115"]
+        @number_of_nhtsa_recalls = 3
+        @number_of_nhtsa_recalls.times do |index|
+          recall = Recall.new(:recall_number => @row[1], :recalled_on => @start_date - index.month, :organization => 'NHTSA')
+          Recall::NHTSA_DETAIL_FIELDS.each_pair do |detail_type, column_index|
+            recall.recall_details << RecallDetail.new(:detail_type => detail_type, :detail_value => @row[column_index]) unless @row[column_index].blank?
+          end
+          recall.auto_recalls << AutoRecall.new(:make => @row[2], :model => @row[3], :year => @row[4])
+          recall.save!
+        end
+        Recall.reindex
+      end
+      
       it "should match terms in the defect summary" do
         search = Recall.search_for("CHASSIS")
         search.total.should == @number_of_nhtsa_recalls
@@ -468,16 +474,27 @@ EOF
         search = Recall.search_for("mack")
         search.total.should == @number_of_nhtsa_recalls
         search.facet(:year_facet).rows.size.should == 1
-      end
-
+      end      
     end
 
     context "when searching by date" do
       before(:all) do
         @start_date_string = '2010-03-10'
         @start_date = Date.parse(@start_date_string)
-        @end_date_string = '2010-01-01'
+        @end_date_string = '2010-02-01'
         @end_date = Date.parse(@end_date_string)
+        @number_of_cpsc_recalls = 3
+        @number_of_cpsc_recalls.times do |index|
+          recall = Recall.new(:recall_number => '12345', :y2k => 12345, :recalled_on => @start_date - index.month, :organization => 'CPSC')
+          recall.recall_details << RecallDetail.new(:detail_type => 'Manufacturer', :detail_value => 'Acme Corp')
+          recall.recall_details << RecallDetail.new(:detail_type => 'ProductType', :detail_value => 'Dangerous Stuff')
+          recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Baby Stroller can be dangerous to children')
+          recall.recall_details << RecallDetail.new(:detail_type => 'Hazard', :detail_value => 'Horrible Death')
+          recall.recall_details << RecallDetail.new(:detail_type => 'Country', :detail_value => 'United States')
+          recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '021200140624')
+          recall.save!
+        end
+        Recall.reindex  
         @query = 'stroller'
       end
 
@@ -488,15 +505,43 @@ EOF
 
       it "should search by a date range without a query" do
         search = Recall.search_for(nil, {:start_date => @start_date, :end_date => @end_date})
-        search.total.should == 4
+        search.total.should == 2
       end
 
       it "should search by date correctly if the dates are supplied as strings instead of Date objects" do
         search = Recall.search_for(@query, {:start_date => @start_date, :end_date => @end_date})
         search.total.should == 2
+      end      
+    end
+    
+    context "when sorting by date" do
+      it "should be ordered by date descending" do
+        search = Recall.search_for("stroller", :sort => "date")
+        search.results.each_with_index do |result, index|
+          search.results[index].recalled_on.should be >= search.results[index + 1].recalled_on unless index == (search.total - 1)
+        end
+      end
+    end
+    
+    context "when no sort value is specified" do
+      it "should order the results by score" do
+        search = Recall.search_for("stroller")
+        search.results.each_with_index do |result, index|
+          search.hits[index].score.should be >= search.hits[index + 1].score unless index == (search.total - 1)
+        end
       end
     end
 
+    context "when sort by score" do
+      it "should order the results by score" do
+        search = Recall.search_for("stroller", :sort => "score")
+        search.results.each_with_index do |result, index|
+          search.hits[index].score.should be >= search.hits[index + 1].score unless index == (search.total - 1)
+        end
+      end
+    end
+
+    
     after(:all) do
       Recall.remove_all_from_index!
     end
