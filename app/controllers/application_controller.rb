@@ -5,17 +5,8 @@ class ApplicationController < ActionController::Base
   helper :all
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
-
   protect_from_forgery
-
   AVAILABLE_LOCALES = [:en, :es]
-  EXCEPTIONS_NOT_LOGGED = ['ActionController::UnknownAction', 'ActionController::RoutingError', 'ActionController::MethodNotAllowed']
-
-  protected
-
-  def log_error(exc)
-    super unless EXCEPTIONS_NOT_LOGGED.include?(exc.class.name)
-  end
 
   private
 
