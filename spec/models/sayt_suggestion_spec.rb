@@ -23,6 +23,18 @@ describe SaytSuggestion do
       SaytSuggestion.create!(:phrase => "ALL CAPS")
       SaytSuggestion.find_by_phrase("all caps").phrase.should == "all caps"
     end
+
+    it "should strip whitespace from phrase before inserting in DB" do
+      phrase = " leading and trailing whitespaces "
+      sf = SaytSuggestion.create!(:phrase => phrase)
+      sf.phrase.should == phrase.strip
+    end
+
+    it "should squish multiple whitespaces between words in the phrase before entering into DB" do
+      SaytSuggestion.create!(:phrase => "two  spaces")
+      SaytSuggestion.find_by_phrase("two spaces").phrase.should == "two spaces"
+    end
+
   end
 
   describe "#populate_for(day)" do
