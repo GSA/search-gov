@@ -15,6 +15,12 @@ describe SaytFilter do
     it "should create a new instance given valid attributes" do
       SaytFilter.create!(:phrase => "some valid filter phrase")
     end
+
+    it "should downcase the phrase before entering into DB" do
+      SaytFilter.create!(:phrase => "ALL CAPS")
+      SaytFilter.find_by_phrase("all caps").phrase.should == "all caps"
+    end
+
   end
 
   context "after saving a SaytFilter" do

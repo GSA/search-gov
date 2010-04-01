@@ -1,5 +1,5 @@
 class SaytSuggestion < ActiveRecord::Base
-  before_validation :lowercase
+  before_validation :strip_whitespace_and_downcase
 
   validates_presence_of :phrase
   validates_uniqueness_of :phrase
@@ -29,7 +29,7 @@ class SaytSuggestion < ActiveRecord::Base
 
   private
 
-  def lowercase
-    self.phrase.downcase! unless self.phrase.nil?
+  def strip_whitespace_and_downcase
+    self.phrase = self.phrase.strip.downcase unless self.phrase.nil?
   end
 end
