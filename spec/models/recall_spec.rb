@@ -25,6 +25,45 @@ describe Recall do
     RecallDetail.find(:first, :conditions => ["recall_id = ? AND detail_type = ? AND detail_value = ?", recall.id, 'Manufacturer', 'Acme Corp']).should be_nil
   end
 
+  describe "#load_cdc_data_from_rss_feed" do
+    before do
+      response = mock("response")
+      Net::HTTP.stub!(:get_response).and_return(response)
+      content = File.read(RAILS_ROOT + "/spec/fixtures/rss/food_recalls.rss")
+      response.stub!(:body).and_return(content)
+    end
+
+    it "should load food recalls data into DB" do
+      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146")
+      first = FoodRecall.first
+      first.url.should == "http://www.fda.gov/Safety/Recalls/ucm207477.htm"
+      first.summary.should == "Whole Foods Market Voluntarily Recalls Frozen Whole Catch Yellow Fin Tuna Steaks Due to Possible Health Risks"
+      first.description.should == "Whole Foods Market announced the recall of its Whole Catch Yellow fin Tuna Steaks (frozen) with a best by date of Dec 5th, 2010 because of possible elevated levels of histamine that may result in symptoms that generally appear within minutes to an hour after eating the affected fish.  No other Whole Foods Market, Whole Catch, 365 or 365 Organic products are affected."
+      first.recall.recalled_on.should == Date.parse("Mon, 05 Apr 2010")
+      first.recall.organization.should=='CDC'
+      first.recall.recall_number.should_not be_nil
+      last = FoodRecall.last
+      last.url.should == "http://www.fda.gov/Safety/Recalls/ucm207345.htm"
+      last.summary.should == "Golden Pacific Foods, Inc. Issues Allergy Alert for Undeclared Milk and Soy in Marco Polo Brand Shrimp Snacks"
+      last.description.should == "Chino, California  (April 2, 2010) -- Golden Pacific Foods, Inc. is recalling Marco Polo Brand Shrimp Snacks sold as Original, Onion & Garlic Flavored and Bar-B-Que Flavored, because they may contain undeclared milk and soy. People who have allergies to milk and soy run the risk of serious or life-threatening reaction if they consume these products."
+      last.recall.recalled_on.should == Date.parse("Sun, 04 Apr 2010")
+      last.recall.organization.should=='CDC'
+      last.recall.recall_number.should_not be_nil
+    end
+
+    it "should skip recalls that have already been loaded" do
+      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146")
+      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146")
+      Recall.all.size.should == 2
+      FoodRecall.all.size.should == 2
+    end
+
+    it "should reindex data in Solr" do
+      Recall.should_receive(:reindex)
+      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146")
+    end
+  end
+
   describe "#load_cpsc_data_from_file" do
     before do
       @tmp_dir = "/tmp/mydir"
@@ -244,14 +283,14 @@ EOF
         Recall.should_receive(:new).with(:recall_number => '02V269000', :recalled_on => Date.parse('20040608'), :organization => 'NHTSA').and_return @recall
         Recall.process_nhtsa_row(@row)
       end
-      
+
       it "should use row[24] for the date, unless it's blank, in which case, it should use row[16]" do
         @missing_pubdate_row = Array.new(@row)
         @missing_pubdate_row[24] = ""
         Recall.should_receive(:new).with(:recall_number => '02V269000', :recalled_on => Date.parse('20021004'), :organization => 'NHTSA').and_return @recall
         Recall.process_nhtsa_row(@missing_pubdate_row)
       end
-      
+
       it "should add RecallDetails for each of the full text fields" do
         Recall.stub!(:new).and_return @recall
         Recall.process_nhtsa_row(@row)
@@ -344,12 +383,12 @@ EOF
       before(:all) do
         Recall.reindex
       end
-      
+
       it "should filter search results by organization" do
         search = Recall.search_for('stroller', {:organization => 'CPSC'})
         search.total.should == @number_of_cpsc_recalls
       end
-      
+
       it "should find recalls by keywords in the description" do
         search = Recall.search_for('stroller')
         search.total.should == @number_of_cpsc_recalls
@@ -419,7 +458,7 @@ EOF
       before(:all) do
         Recall.reindex
       end
-      
+
       it "should match terms in the defect summary" do
         search = Recall.search_for("CHASSIS")
         search.total.should == @number_of_nhtsa_recalls
@@ -481,7 +520,7 @@ EOF
         search = Recall.search_for("mack")
         search.total.should == @number_of_nhtsa_recalls
         search.facet(:year_facet).rows.size.should == 1
-      end      
+      end
     end
 
     context "when searching by date" do
@@ -507,9 +546,9 @@ EOF
       it "should search by date correctly if the dates are supplied as strings instead of Date objects" do
         search = Recall.search_for(@query, {:start_date => @start_date, :end_date => @end_date})
         search.total.should == 1
-      end      
+      end
     end
-    
+
     context "when sorting results" do
       context "when sorting by date" do
         it "should be ordered by date descending" do
@@ -519,7 +558,7 @@ EOF
           end
         end
       end
-    
+
       context "when no sort value is specified" do
         it "should order the results by score" do
           search = Recall.search_for("stroller")
@@ -538,7 +577,7 @@ EOF
         end
       end
     end
-        
+
     after(:all) do
       Recall.remove_all_from_index!
     end
@@ -600,7 +639,7 @@ EOF
         @parsed_recall["countries"].should == ["United States"]
       end
     end
-    
+
     context "for a NHTSA recall" do
       before(:all) do
         @recall = Recall.new(:organization => 'NHTSA', :recall_number => '12345', :recalled_on => Date.parse('2010-03-01'))
@@ -612,30 +651,58 @@ EOF
         @recall.save!
         @parsed_recall = JSON.parse(@recall.to_json)
       end
-      
+
       it "should properly parse the organization" do
         @parsed_recall["organization"].should == 'NHTSA'
       end
-      
+
       it "should properly parse the recall number" do
         @parsed_recall["recall_number"].should == '12345'
       end
-      
+
       it "should properly parse the recall date" do
         @parsed_recall["recall_date"].should == '2010-03-01'
       end
-      
+
       it "should properly parse all of the Recall details fields" do
         Recall::NHTSA_DETAIL_FIELDS.each_key do |detail_type|
           @parsed_recall[detail_type.underscore].should == 'test'
         end
       end
-      
+
       it "should list the associated auto recalls" do
         @parsed_recall["records"].size.should == 2
         @parsed_recall["records"][0]["model"].should == "CAMRY"
         @parsed_recall["records"][1]["model"].should == "SIENA"
       end
+    end
+
+    context "for a CDC recall" do
+      before(:all) do
+        @recall = Recall.new(:organization => 'CDC', :recall_number => '12345', :recalled_on => Date.parse('2010-03-01'))
+        @recall.food_recall = FoodRecall.new( :url => "RECALL_URL", :summary => "SUMMARY", :description => "DESCRIPTION")
+        @recall.save!
+        @parsed_recall = JSON.parse(@recall.to_json)
+      end
+
+      it "should properly parse the organization" do
+        @parsed_recall["organization"].should == 'CDC'
+      end
+
+      it "should properly parse the recall number" do
+        @parsed_recall["recall_number"].should == '12345'
+      end
+
+      it "should properly parse the recall date" do
+        @parsed_recall["recall_date"].should == '2010-03-01'
+      end
+
+      it "should properly parse all of the FoodRecall fields" do
+        %w{recall_url summary description}.each do |field_name|
+          @parsed_recall[field_name].should == field_name.upcase
+        end
+      end
+
     end
   end
 

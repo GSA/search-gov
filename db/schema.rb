@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100401210327) do
+ActiveRecord::Schema.define(:version => 20100406005620) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -144,6 +144,13 @@ ActiveRecord::Schema.define(:version => 20100401210327) do
     t.datetime "updated_at"
   end
 
+  create_table "food_recalls", :force => true do |t|
+    t.integer "recall_id"
+    t.string  "summary",     :null => false
+    t.text    "description", :null => false
+    t.string  "url",         :null => false
+  end
+
   create_table "gov_forms", :force => true do |t|
     t.string   "name",        :null => false
     t.string   "form_number", :null => false
@@ -226,6 +233,8 @@ ActiveRecord::Schema.define(:version => 20100401210327) do
     t.datetime "updated_at"
     t.string   "organization",  :limit => 10
   end
+
+  add_index "recalls", ["recall_number"], :name => "index_recalls_on_recall_number"
 
   create_table "sayt_filters", :force => true do |t|
     t.string   "phrase",     :null => false

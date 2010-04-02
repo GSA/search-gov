@@ -1,6 +1,7 @@
 class Recall < ActiveRecord::Base
   has_many :recall_details, :dependent => :destroy
   has_many :auto_recalls, :dependent => :destroy
+  has_one :food_recall, :dependent => :destroy
 
   validates_presence_of :recall_number, :organization
 
@@ -62,6 +63,14 @@ class Recall < ActiveRecord::Base
         recall_detail.detail_value if recall_detail
       end
     end
+
+    text :food_recall_summary do
+      food_recall.summary unless food_recall.nil?
+    end
+
+    text :food_recall_description do
+      food_recall.description unless food_recall.nil?
+    end
   end
 
   def self.search_for(query, options = {}, page = 1, per_page = 10)
@@ -91,11 +100,11 @@ class Recall < ActiveRecord::Base
       facet :make_facet, :sort => :count
       facet :model_facet, :sort => :count
       facet :year_facet, :sort => :count
-      
+
       if options[:sort] == "date"
         order_by :recalled_on, :desc
       end
-      
+
       paginate :page => page, :per_page => per_page
     end
   end
@@ -116,39 +125,84 @@ class Recall < ActiveRecord::Base
     end
   end
 
-  def to_json(options = {})
-    recall_hash = { :organization => self.organization, :recall_number => self.recall_number, :recall_date => self.recalled_on.to_s }
-    if self.organization == 'CPSC'
-      recall_hash.merge!({ :recall_url => self.recall_url, :upc => self.upc, :manufacturers => list_detail("Manufacturer"), :descriptions => list_detail("Description"), :hazards => list_detail("Hazard"), :countries => list_detail("Country"), :product_types => list_detail("ProductType") })
-    else
-      nhtsa_hash = { :recall_url => self.recall_url }
-      NHTSA_DETAIL_FIELDS.each_key do |detail_type|
-        recall_detail = self.recall_details.find_by_detail_type(detail_type)
-        nhtsa_hash[detail_type.underscore.to_sym] = recall_detail.detail_value unless recall_detail.nil?
-      end
-      recall_hash.merge!(nhtsa_hash)
-      recall_hash.merge!(:records => self.auto_recalls)
+  def self.load_cdc_data_from_rss_feed(url)
+    require 'rss/2.0'
+    RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|
+      find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10], :recalled_on => item.pubDate.to_date, :organization => 'CDC',
+                                      :food_recall => FoodRecall.new(:url=>item.link, :summary=> item.title, :description => item.description))
     end
+    reindex
+  end
+
+  def to_json(options = {})
+    recall_hash = { :organization => self.organization, :recall_number => self.recall_number,
+                    :recall_date => self.recalled_on.to_s, :recall_url => self.recall_url}
+    detail_hash = case self.organization
+      when 'CPSC' then
+        cpsc_hash
+      when 'NHTSA' then
+        nhtsa_hash
+      when 'CDC' then
+        cdc_hash
+    end
+    recall_hash.merge!(detail_hash) unless detail_hash.nil?
     recall_hash.to_json
   end
 
+  def cpsc_hash
+    { :upc => self.upc, :manufacturers => list_detail("Manufacturer"),
+      :descriptions => list_detail("Description"), :hazards => list_detail("Hazard"), :countries => list_detail("Country"),
+      :product_types => list_detail("ProductType")}
+  end
+
+  def nhtsa_hash
+    nhtsa_hash = { :records => self.auto_recalls }
+    NHTSA_DETAIL_FIELDS.each_key do |detail_type|
+      recall_detail = self.recall_details.find_by_detail_type(detail_type)
+      nhtsa_hash[detail_type.underscore.to_sym] = recall_detail.detail_value unless recall_detail.nil?
+    end
+    nhtsa_hash
+  end
+
+  def cdc_hash
+    {:summary => food_recall.summary, :description => food_recall.description}
+  end
+
   def recall_url
-    if self.organization == 'CPSC'
-      "http://www.cpsc.gov/cpscpub/prerel/prhtml#{self.recall_number.to_s[0..1]}/#{self.recall_number}.html" unless self.recall_number.blank?
-    elsif self.organization == 'NHTSA'
-      "http://www-odi.nhtsa.dot.gov/recalls/recallresults.cfm?start=1&SearchType=QuickSearch&rcl_ID=#{self.recall_number}&summary=true&PrintVersion=YES"
+    case self.organization
+      when 'CPSC' then
+        "http://www.cpsc.gov/cpscpub/prerel/prhtml#{self.recall_number.to_s[0..1]}/#{self.recall_number}.html" unless self.recall_number.blank?
+      when 'NHTSA' then
+        "http://www-odi.nhtsa.dot.gov/recalls/recallresults.cfm?start=1&SearchType=QuickSearch&rcl_ID=#{self.recall_number}&summary=true&PrintVersion=YES"
+      when 'CDC' then
+        food_recall.url
     end
   end
 
   def summary
-    if self.organization == 'CPSC'
-      summary = recall_details.select {|rd| rd.detail_type=="Description"}.collect{|rd| rd.detail_value}.join(', ')
-    elsif self.organization == 'NHTSA'
-      summary = auto_recalls.collect {|ar| ar.component_description}.uniq.join(', ')
-      manufacturers = auto_recalls.collect {|ar| ar.manufacturer}.uniq.join(', ')
-      summary << " FROM #{manufacturers}" unless manufacturers.blank?
+    summary = case self.organization
+      when 'CPSC' then
+        cpsc_summary
+      when 'NHTSA' then
+        nhtsa_summary
+      when 'CDC' then
+        cdc_summary
     end
     summary.blank? ? "Click here to see products" : summary
+  end
+
+  def cpsc_summary
+    recall_details.select {|rd| rd.detail_type=="Description"}.collect{|rd| rd.detail_value}.join(', ')
+  end
+
+  def nhtsa_summary
+    summary = auto_recalls.collect {|ar| ar.component_description}.uniq.join(', ')
+    manufacturers = auto_recalls.collect {|ar| ar.manufacturer}.uniq.join(', ')
+    summary << " FROM #{manufacturers}" unless manufacturers.blank?
+  end
+
+  def cdc_summary
+    food_recall.summary
   end
 
   def upc
@@ -182,7 +236,7 @@ class Recall < ActiveRecord::Base
         recall.recall_details << RecallDetail.new(:detail_type => detail_type, :detail_value => row[column_index]) unless row[column_index].blank?
       end
     end
-    auto_recall = AutoRecall.new(:make => row[2], :model => row[3], :year => row[4].to_i == 9999 ? nil : row[4].to_i , :component_description => row[6], :manufacturer => row[14], :recalled_component_id => row[23])
+    auto_recall = AutoRecall.new(:make => row[2], :model => row[3], :year => row[4].to_i == 9999 ? nil : row[4].to_i, :component_description => row[6], :manufacturer => row[14], :recalled_component_id => row[23])
     auto_recall.manufacturing_begin_date = Date.parse(row[8]) unless row[8].blank?
     auto_recall.manufacturing_end_date = Date.parse(row[9]) unless row[9].blank?
     recall.auto_recalls << auto_recall
