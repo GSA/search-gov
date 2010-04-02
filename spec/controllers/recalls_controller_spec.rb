@@ -94,5 +94,27 @@ describe RecallsController do
         @sort.should == 'date'
       end
     end
+    
+    context "when limiting a search by organization" do
+      before do
+        get :index, :query => 'fire', :organization => 'NHTSA'
+        @organization = assigns[:organization]
+      end
+      
+      it "should assign the organization variable" do
+        @organization.should == "NHTSA"
+      end
+    end
+    
+    context "when limiting a search by code" do
+      before do
+        get :index, :query => 'fire', :code => 'V'
+        @code = assigns[:code]
+      end
+      
+      it "should assign the code variable" do
+        @code.should == 'V'
+      end
+    end
   end
 end

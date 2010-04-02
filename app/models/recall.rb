@@ -7,7 +7,7 @@ class Recall < ActiveRecord::Base
   CPSC_FULL_TEXT_SEARCH_FIELDS = {'Manufacturer' => 2, 'ProductType' => 3, 'Description' => 4, 'Hazard' => 6, 'Country' => 7 }
   CPSC_FACET_FIELDS = %w{Manufacturer ProductType Hazard Country}
 
-  NHTSA_DETAIL_FIELDS = {'ManufacturerCampaignNumber' => 5, 'ComponentDescription'=> 6, 'Manufacturer' => 7, 'Code' => 10, 'PotentialUnitsAffected' => 11, 'NotificationDate' => 12, 'Initiator' => 13, 'ReportDate' => 15, 'PartNumber' => 17, 'FederalMotorVehicleSafetyNumber' => 18, 'DefectSummary' => 19, 'ConsequenceSummary' => 20, 'CorrectiveSummary' => 21, 'Notes' => 22 }
+  NHTSA_DETAIL_FIELDS = {'ManufacturerCampaignNumber' => 5, 'ComponentDescription'=> 6, 'Manufacturer' => 7, 'Code' => 10, 'PotentialUnitsAffected' => 11, 'NotificationDate' => 12, 'Initiator' => 13, 'ReportDate' => 15, 'PartNumber' => 17, 'FederalMotorVehicleSafetyNumber' => 18, 'DefectSummary' => 19, 'ConsequenceSummary' => 20, 'CorrectiveSummary' => 21, 'Notes' => 22, 'RecallSubject' => 25}
   NHTSA_FULL_TEXT_SEARCH_FIELDS = {'ComponentDescription'=> 6, 'DefectSummary' => 19, 'ConsequenceSummary' => 20, 'CorrectiveSummary' => 21, 'Notes' => 22}
   NHTSA_FACET_FIELDS = %w{Make Model Year}
 
@@ -176,7 +176,7 @@ class Recall < ActiveRecord::Base
   def self.process_nhtsa_row(row)
     recall = Recall.find_by_recall_number(row[1])
     unless recall
-      recall = Recall.new(:recall_number => row[1], :organization => 'NHTSA', :recalled_on => Date.parse(row[16]))
+      recall = Recall.new(:recall_number => row[1], :organization => 'NHTSA', :recalled_on => Date.parse(row[24]))
       NHTSA_DETAIL_FIELDS.each_pair do |detail_type, column_index|
         recall.recall_details << RecallDetail.new(:detail_type => detail_type, :detail_value => row[column_index]) unless row[column_index].blank?
       end
