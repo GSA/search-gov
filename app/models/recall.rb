@@ -176,7 +176,8 @@ class Recall < ActiveRecord::Base
   def self.process_nhtsa_row(row)
     recall = Recall.find_by_recall_number(row[1])
     unless recall
-      recall = Recall.new(:recall_number => row[1], :organization => 'NHTSA', :recalled_on => Date.parse(row[24]))
+      date_string = row[24].blank? ? row[16] : row[24]
+      recall = Recall.new(:recall_number => row[1], :organization => 'NHTSA', :recalled_on => Date.parse(date_string))
       NHTSA_DETAIL_FIELDS.each_pair do |detail_type, column_index|
         recall.recall_details << RecallDetail.new(:detail_type => detail_type, :detail_value => row[column_index]) unless row[column_index].blank?
       end
