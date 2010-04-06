@@ -474,7 +474,7 @@ EOF
         search.total.should == @number_of_nhtsa_recalls
       end
 
-      it "should match tersm in the notes field" do
+      it "should match terms in the notes field" do
         search = Recall.search_for("highway")
         search.total.should == @number_of_nhtsa_recalls
       end
@@ -553,7 +553,7 @@ EOF
       context "when sorting by date" do
         it "should be ordered by date descending" do
           search = Recall.search_for("stroller", :sort => "date")
-          search.results.each_with_index do |result, index|
+          search.results.size.times do |index|
             search.results[index].recalled_on.should be >= search.results[index + 1].recalled_on unless index == (search.total - 1)
           end
         end
@@ -562,20 +562,12 @@ EOF
       context "when no sort value is specified" do
         it "should order the results by score" do
           search = Recall.search_for("stroller")
-          search.results.each_with_index do |result, index|
+          search.results.size.times do |index|
             search.hits[index].score.should be >= search.hits[index + 1].score unless index == (search.total - 1)
           end
         end
       end
 
-      context "when sort by score" do
-        it "should order the results by score" do
-          search = Recall.search_for("stroller", :sort => "score")
-          search.results.each_with_index do |result, index|
-            search.hits[index].score.should be >= search.hits[index + 1].score unless index == (search.total - 1)
-          end
-        end
-      end
     end
 
     after(:all) do

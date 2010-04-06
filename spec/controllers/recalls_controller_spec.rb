@@ -1,76 +1,31 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe RecallsController do
-  before(:all) do
-    @search = mock(Sunspot::Search)
-    @search.stub!(:total).and_return 0
-    @search.stub!(:results).and_return nil
-    Recall.stub!(:search_for).and_return @search
-  end
-
-  describe "searching for recalls" do
-    context "when searching recalls by keyword" do
+  describe "#index" do
+    context "when all parameters specified" do
       before do
+        @search = mock(Sunspot::Search)
+        @search.stub!(:total).and_return 1
+        @search.stub!(:results).and_return [{:key1=>"val1"}, {:key2=>"val2"}]
         @query_string = 'stroller'
-        get :index, :query => @query_string, :format => 'json'
-        @query = assigns[:query]
-        @page = assigns[:page]
-        @search = assigns[:search]
+        @page = "2"
+        valid_options = %w{start_date end_date upc sort code organization make model year}
+        @valid_options_hash = valid_options.inject({}) { |s, e| s.merge( { e.to_s => "MY_#{e.upcase}" } ) }
+        @valid_params = @valid_options_hash.merge(:format => 'json', :query => @query_string, :page => @page)
       end
 
-      it "should assign the query parameter to the query variable" do
-        @query.should == @query_string
-      end
-
-      it "should set the page to nil when page is not specified" do
-        @page.should == 1
-      end
-
-      it "should perform a search and return a search object" do
-        @search.should_not be_nil
+      it "should perform a search with the relevant parameters passed in" do
+        Recall.should_receive(:search_for).with(@query_string, @valid_options_hash, @page).and_return(@search)
+        param_to_be_ignored = {:ignore_me => "foo bar"}
+        get :index, @valid_params.merge(param_to_be_ignored)
       end
 
       it "should return parsable JSON" do
+        Recall.stub!(:search_for).and_return(@search)
+        get :index, @valid_params
         parsed_response = JSON.parse(response.body)
-        parsed_response.should_not be_nil
-      end
-    end
-
-    context "when paginating through results" do
-      before do
-        get :index, :query => @query_string, :page => 2, :format => 'json'
-        @page = assigns[:page]
-      end
-
-      it "should assign the page parameter to the page variable" do
-        @page.should == '2'
-      end
-    end
-
-    context "when searching with a date range" do
-      before do
-        get :index, :start_date => '2010-01-01', :end_date => '2010-03-18', :format => 'json'
-        @start_date = assigns[:start_date]
-        @end_date = assigns[:end_date]
-      end
-
-      it "should assign the start date" do
-        @start_date.should == '2010-01-01'
-      end
-
-      it "should assign the end date" do
-        @end_date.should == '2010-03-18'
-      end
-    end
-    
-    context "when searching by UPC" do
-      before do
-        get :index, :upc => '123456789', :format => 'json'
-        @upc = assigns[:upc]
-      end
-      
-      it "should assing the upc" do
-        @upc.should == '123456789'
+        parsed_response["success"]["total"].should == 1
+        parsed_response["success"]["results"].should == [{"key1"=>"val1"}, {"key2"=>"val2"}]
       end
     end
 
@@ -81,39 +36,6 @@ describe RecallsController do
 
       it "should return an error message" do
         response.body.should contain('Not Implemented')
-      end
-    end
-    
-    context "when sorting by date" do
-      before do
-        get :index, :query => 'strollers', :sort => 'date'
-        @sort = assigns[:sort]
-      end
-      
-      it "should assign the sort to date" do
-        @sort.should == 'date'
-      end
-    end
-    
-    context "when limiting a search by organization" do
-      before do
-        get :index, :query => 'fire', :organization => 'NHTSA'
-        @organization = assigns[:organization]
-      end
-      
-      it "should assign the organization variable" do
-        @organization.should == "NHTSA"
-      end
-    end
-    
-    context "when limiting a search by code" do
-      before do
-        get :index, :query => 'fire', :code => 'V'
-        @code = assigns[:code]
-      end
-      
-      it "should assign the code variable" do
-        @code.should == 'V'
       end
     end
   end
