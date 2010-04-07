@@ -29,7 +29,7 @@
           <tr>
             <td class="left_align"><a href="app-models-recall_rb.html">app/models/recall.rb</a></td>
             <td class='right_align'><tt>250</tt></td>
-            <td class='right_align'><tt>202</tt></td>
+            <td class='right_align'><tt>203</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -734,116 +734,116 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line114">114</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line115">115</a> </pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line116">116</a>   def self.load_cpsc_data_from_text(csv)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line117">117</a>     FasterCSV.parse(csv, :headers =&gt; true) { |row| process_cpsc_row(row) }</pre></td>
+            <td><pre><a name="line114">114</a>     Sunspot.commit</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line118">118</a>   end</pre></td>
+            <td><pre><a name="line115">115</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line119">119</a> </pre></td>
+            <td><pre><a name="line116">116</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line120">120</a>   def self.load_nhtsa_data_from_file(file_path)</pre></td>
+            <td><pre><a name="line117">117</a>   def self.load_nhtsa_data_from_file(file_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line121">121</a>     File.open(file_path).each do |line|</pre></td>
+            <td><pre><a name="line118">118</a>     File.open(file_path).each do |line|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line122">122</a>       row = []</pre></td>
+            <td><pre><a name="line119">119</a>       row = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line123">123</a>       line.split(&quot;\t&quot;).each { |field| row &lt;&lt; field.chomp }</pre></td>
+            <td><pre><a name="line120">120</a>       line.split(&quot;\t&quot;).each { |field| row &lt;&lt; field.chomp }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line124">124</a>       process_nhtsa_row(row)</pre></td>
+            <td><pre><a name="line121">121</a>       process_nhtsa_row(row)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line125">125</a>     end</pre></td>
+            <td><pre><a name="line122">122</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line123">123</a>     Sunspot.commit</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line126">126</a>   end</pre></td>
+            <td><pre><a name="line124">124</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line127">127</a> </pre></td>
+            <td><pre><a name="line125">125</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line128">128</a>   def self.load_cdc_data_from_rss_feed(url)</pre></td>
+            <td><pre><a name="line126">126</a>   def self.load_cdc_data_from_rss_feed(url)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line129">129</a>     require 'rss/2.0'</pre></td>
+            <td><pre><a name="line127">127</a>     require 'rss/2.0'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line130">130</a>     RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|</pre></td>
+            <td><pre><a name="line128">128</a>     RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line131">131</a>       find_or_create_by_recall_number(:recall_number =&gt; Digest::MD5.hexdigest(item.link.downcase)[0, 10], :recalled_on =&gt; item.pubDate.to_date, :organization =&gt; 'CDC',</pre></td>
+            <td><pre><a name="line129">129</a>       find_or_create_by_recall_number(:recall_number =&gt; Digest::MD5.hexdigest(item.link.downcase)[0, 10],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line132">132</a>                                       :food_recall =&gt; FoodRecall.new(:url=&gt;item.link, :summary=&gt; item.title, :description =&gt; item.description))</pre></td>
+            <td><pre><a name="line130">130</a>                                       :recalled_on =&gt; item.pubDate.to_date, :organization =&gt; 'CDC',</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line131">131</a>                                       :food_recall =&gt; FoodRecall.new(:url=&gt;item.link, :summary=&gt; item.title,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line132">132</a>                                       :description =&gt; item.description))</pre></td>
           </tr>
         
           
@@ -855,7 +855,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line134">134</a>     reindex</pre></td>
+            <td><pre><a name="line134">134</a>     Sunspot.commit</pre></td>
           </tr>
         
           
@@ -1557,7 +1557,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Mon Apr 05 19:17:53 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Wed Apr 07 15:59:57 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
