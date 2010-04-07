@@ -7,7 +7,6 @@ namespace :usasearch do
         RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:load_cpsc_data[/path/to/recalls/csv]")
       else
         Recall.load_cpsc_data_from_file(args.recalls_csv_filename)
-        Recall.reindex
       end
     end
 
@@ -17,7 +16,6 @@ namespace :usasearch do
         RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:load_nhtsa_data[/path/to/recalls/file]")
       else
         Recall.load_nhtsa_data_from_file(args.data_file)
-        Recall.reindex
       end
     end
 
@@ -40,7 +38,6 @@ namespace :usasearch do
           recall.save!
         end
       end
-      Recall.reindex
     end
 
   end

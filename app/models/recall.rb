@@ -111,10 +111,7 @@ class Recall < ActiveRecord::Base
 
   def self.load_cpsc_data_from_file(file_path)
     FasterCSV.foreach(file_path, :headers => true) { |row| process_cpsc_row(row) }
-  end
-
-  def self.load_cpsc_data_from_text(csv)
-    FasterCSV.parse(csv, :headers => true) { |row| process_cpsc_row(row) }
+    Sunspot.commit
   end
 
   def self.load_nhtsa_data_from_file(file_path)
@@ -123,15 +120,18 @@ class Recall < ActiveRecord::Base
       line.split("\t").each { |field| row << field.chomp }
       process_nhtsa_row(row)
     end
+    Sunspot.commit
   end
 
   def self.load_cdc_data_from_rss_feed(url)
     require 'rss/2.0'
     RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|
-      find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10], :recalled_on => item.pubDate.to_date, :organization => 'CDC',
-                                      :food_recall => FoodRecall.new(:url=>item.link, :summary=> item.title, :description => item.description))
+      find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10],
+                                      :recalled_on => item.pubDate.to_date, :organization => 'CDC',
+                                      :food_recall => FoodRecall.new(:url=>item.link, :summary=> item.title,
+                                      :description => item.description))
     end
-    reindex
+    Sunspot.commit
   end
 
   def to_json(options = {})
