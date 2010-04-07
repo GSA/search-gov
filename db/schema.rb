@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100406005620) do
+ActiveRecord::Schema.define(:version => 20100407042525) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -150,6 +150,8 @@ ActiveRecord::Schema.define(:version => 20100406005620) do
     t.text    "description", :null => false
     t.string  "url",         :null => false
   end
+
+  add_index "food_recalls", ["recall_id"], :name => "index_food_recalls_on_recall_id"
 
   create_table "gov_forms", :force => true do |t|
     t.string   "name",        :null => false
