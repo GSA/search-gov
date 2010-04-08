@@ -82,12 +82,7 @@ describe Recall do
         @row = ['10156', '110156', 'Ethan Allen', "Blinds, Shades & Cords", 'Ethan Allen Design Center Roman Shades', '12660', 'Strangulation', 'United States', '2010-03-04']
       end
 
-      it "should check to see if the recall number already exists in the database" do
-        Recall.should_receive(:find_by_recall_number).with('10156').exactly(1).times.and_return nil
-        Recall.process_cpsc_row(@row)
-      end
-
-      it "should create a new recall if the recall is not found in the database" do
+      it "should create a new recall" do
         Recall.process_cpsc_row(@row)
         Recall.find_by_recall_number('10156').should_not be_nil
       end
@@ -135,35 +130,30 @@ describe Recall do
         end
 
         it "should create a RecallDetail for Manufacturers that are present" do
-          @recall.recall_details.find(:first, :conditions => ['detail_type = ? AND detail_value = ?', 'Manufacturer', 'Ethan Allen']).should_not be_nil
+          @recall.recall_details.find_by_detail_type_and_detail_value('Manufacturer', 'Ethan Allen').should_not be_nil
         end
 
         it "should create a RecallDetail for ProductTypes that are present" do
-          recall = Recall.new(:recall_number => '10156', :y2k => 110156, :organization => 'CPSC')
-          Recall.stub!(:new).and_return recall
-          Recall.process_cpsc_row(@row)
-          recall.recall_details.find(:first, :conditions => ['detail_type = ? AND detail_value = ?', 'ProductType', 'Blinds, Shades & Cords']).should_not be_nil
+          @recall.recall_details.find_by_detail_type_and_detail_value('ProductType', 'Blinds, Shades & Cords').should_not be_nil
         end
 
         it "should create a RecallDetail for Descriptions that are present" do
-          recall = Recall.new(:recall_number => '10156', :y2k => 110156, :organization => 'CPSC')
-          Recall.stub!(:new).and_return recall
-          Recall.process_cpsc_row(@row)
-          recall.recall_details.find(:first, :conditions => ['detail_type = ? AND detail_value = ?', 'Description', 'Ethan Allen Design Center Roman Shades']).should_not be_nil
+          @recall.recall_details.find_by_detail_type_and_detail_value('Description', 'Ethan Allen Design Center Roman Shades').should_not be_nil
         end
 
         it "should create a RecallDetail for Hazards that are present" do
-          recall = Recall.new(:recall_number => '10156', :y2k => 110156, :organization => 'CPSC')
-          Recall.stub!(:new).and_return recall
-          Recall.process_cpsc_row(@row)
-          recall.recall_details.find(:first, :conditions => ['detail_type = ? AND detail_value = ?', 'Hazard', 'Strangulation']).should_not be_nil
+          @recall.recall_details.find_by_detail_type_and_detail_value('Hazard', 'Strangulation').should_not be_nil
         end
 
         it "should create a RecallDetail for Countries that are present" do
-          recall = Recall.new(:recall_number => '10156', :y2k => 110156, :organization => 'CPSC')
-          Recall.stub!(:new).and_return recall
-          Recall.process_cpsc_row(@row)
-          recall.recall_details.find(:first, :conditions => ['detail_type = ? AND detail_value = ?', 'Country', 'United States']).should_not be_nil
+          @recall.recall_details.find_by_detail_type_and_detail_value('Country', 'United States').should_not be_nil
+        end
+
+        context "when processing recall details that already exist" do
+          it "should not create duplicate recall details" do
+            Recall.process_cpsc_row(@row)
+            @recall.recall_details.find_all_by_detail_type_and_detail_value('Manufacturer', 'Ethan Allen').size.should == 1
+          end
         end
       end
     end
@@ -175,14 +165,9 @@ describe Recall do
         Recall.process_cpsc_row(@row1)
       end
 
-      it "should check to see if the recall number already exists in the database" do
-        Recall.process_cpsc_row(@row2)
-        Recall.find_by_recall_number("10154").should_not be_nil
-      end
-
       it "should not create a new Recall" do
-        Recall.should_not_receive(:new)
         Recall.process_cpsc_row(@row2)
+        Recall.find_all_by_recall_number('10154').size.should == 1
       end
 
       it "should not update the date" do
@@ -190,13 +175,15 @@ describe Recall do
         Recall.stub!(:find_by_recall_number).and_return recall
         recall.recalled_on.should_not be_nil
         Recall.process_cpsc_row(@row2)
+        recall = Recall.find_by_recall_number('10154')
+        recall.recalled_on.should_not be_nil
       end
 
       it "should add RecallDetails to the existing Recall" do
         recall = Recall.find_by_recall_number('10154')
         Recall.stub!(:find_by_recall_number).and_return recall
         Recall.process_cpsc_row(@row2)
-        recall.recall_details.find(:first, :conditions => ['detail_type = ? AND detail_value = ?', 'Manufacturer', 'Acuity Brands Lighting']).should_not be_nil
+        recall.recall_details.find_by_detail_type_and_detail_value('Manufacturer', 'Acuity Brands Lighting').should_not be_nil
       end
     end
   end

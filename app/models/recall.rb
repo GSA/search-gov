@@ -215,10 +215,8 @@ end
   private
 
   def self.process_cpsc_row(row)
-    recall = Recall.find_by_recall_number(row[0]) || Recall.new(:recall_number => row[0], :y2k => row[1], :organization => 'CPSC')
-    if recall.recalled_on.blank? && row[8]
-      recall.recalled_on = Date.parse(row[8]) rescue nil
-    end
+    recall = Recall.find_or_initialize_by_recall_number(:recall_number => row[0], :y2k => row[1], :organization => 'CPSC')
+    recall.recalled_on ||= Date.parse(row[8]) rescue nil
     CPSC_FULL_TEXT_SEARCH_FIELDS.each_pair do |detail_type, column_index|
       unless row[column_index].blank? or recall.recall_details.exists?(['detail_type = ? AND detail_value = ?', detail_type, row[column_index]])
         recall.recall_details << RecallDetail.new(:detail_type => detail_type, :detail_value => row[column_index])
