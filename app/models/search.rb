@@ -117,7 +117,7 @@ class Search
   end
 
   def spelling_results(response)
-    response.spell.results.first.value.split(/ \(scopeid/).first.gsub(/<\/?[^>]*>/, '') rescue nil
+    response.spell.results.first.value.split(/ \(scopeid/).first.gsub(/<\/?[^>]*>/, '').chomp(')').reverse.chomp('(').reverse rescue nil
   end
 
   def populate_additional_results
@@ -233,6 +233,6 @@ class Search
   end
 
   def formatted_query
-    "#{query} #{scope} #{locale}".strip.squeeze(' ')
+    "(#{query}) #{scope} #{locale}".strip.squeeze(' ')
   end
 end
