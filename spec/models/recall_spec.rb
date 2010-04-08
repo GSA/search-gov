@@ -149,12 +149,6 @@ describe Recall do
           @recall.recall_details.find_by_detail_type_and_detail_value('Country', 'United States').should_not be_nil
         end
 
-        context "when processing recall details that already exist" do
-          it "should not create duplicate recall details" do
-            Recall.process_cpsc_row(@row)
-            @recall.recall_details.find_all_by_detail_type_and_detail_value('Manufacturer', 'Ethan Allen').size.should == 1
-          end
-        end
       end
     end
 
@@ -185,6 +179,13 @@ describe Recall do
         Recall.process_cpsc_row(@row2)
         recall.recall_details.find_by_detail_type_and_detail_value('Manufacturer', 'Acuity Brands Lighting').should_not be_nil
       end
+
+      context "when processing recall details that already exist" do
+        it "should not create duplicate recall details" do
+          Recall.process_cpsc_row(@row1)
+          RecallDetail.find_all_by_detail_type_and_detail_value('Manufacturer', 'American Electric Lighting').size.should == 1
+        end
+      end
     end
   end
 
@@ -203,65 +204,47 @@ describe Recall do
   describe "#process_nhtsa_row" do
     before do
       @row = ["1", "02V269000", "MACK", "CH", "2002", "SCO277", "PARKING BRAKE", "MACK TRUCKS, INCORPORATED", "", "", "V", "557", "20030321", "MFR", "MACK TRUCKS, INC", "20021003", "20021004", "571", "121", "CERTAIN CLASS 8 CHASSIS FAIL TO COMPLY WITH REQUIREMENTS OF FEDERAL MOTOR VEHICLE SAFETY STANDARD NO. 121, \"AIR BRAKE SYSTEMS.\"  THE INSTALLATION OF THE ADDITIONAL AXLE(S), RAISES THE GVW CAPABILITY OF THE VEHICLE AND THEREFORE REQUIRES AN INCREASE IN THE PARKING BRAKE PERFORMANCE TO HOLD ON A 20% GRADE IN ORDER TO MEET THE REQUIREMENTS OF THE STANDARD.", "Consequence Summary", "DEALERS WILL MODIFY THE PARK BRAKE CONFIGURATION ON THESE VEHICLES.   OWNERS WHO TAKE THEIR VEHICLES TO AN AUTHORIZED DEALER ON AN AGREED UPON SERVICE DATE AND DO NOT RECEIVE THE FREE REMEDY WITHIN A REASONABLE TIME SHOULD CONTACT MACK AT 1-610-709-3337.", "MACK TRUCK RECALL NO. SCO277. CUSTOMERS CAN ALSO CONTACT THE NATIONAL HIGHWAY TRAFFIC SAFETY ADMINISTRATION'S AUTO SAFETY HOTLINE AT 1-888-DASH-2-DOT (1-888-327-4236).", "000015283000097074000000115", "20040608", "PARKING BRAKE PROBLEM"]
-      @recall = Recall.new(:recall_number => '02V269000', :recalled_on => Date.parse('20040608'), :organization => 'NHTSA')
-      @auto_recall = AutoRecall.new(:make => @row[2], :model => @row[3], :year => @row[4].to_i, :component_description => @row[6], :manufacturer => @row[14], :recalled_component_id => @row[23])
     end
 
     context "when processing a Recall with a Campaign Number that has not already been seen" do
-      it "should look for the recall by the campaign number" do
-        Recall.should_receive(:find_by_recall_number).with("02V269000").and_return nil
-        Recall.process_nhtsa_row(@row)
-      end
-
       it "should create a new Recall with the recall number, recall date and organization" do
-        Recall.should_receive(:new).with(:recall_number => '02V269000', :recalled_on => Date.parse('20040608'), :organization => 'NHTSA').and_return @recall
         Recall.process_nhtsa_row(@row)
+        Recall.find_by_recall_number_and_recalled_on_and_organization( '02V269000', Date.parse('20040608'), 'NHTSA').should_not be_nil
       end
 
       it "should use row[24] for the date, unless it's blank, in which case, it should use row[16]" do
-        @missing_pubdate_row = Array.new(@row)
-        @missing_pubdate_row[24] = ""
-        Recall.should_receive(:new).with(:recall_number => '02V269000', :recalled_on => Date.parse('20021004'), :organization => 'NHTSA').and_return @recall
-        Recall.process_nhtsa_row(@missing_pubdate_row)
+        missing_pubdate_row = Array.new(@row)
+        missing_pubdate_row[24] = ""
+        Recall.process_nhtsa_row(missing_pubdate_row)
+        Recall.find_by_recall_number_and_recalled_on_and_organization('02V269000', Date.parse(@row[16]), 'NHTSA').should_not be_nil
       end
 
       it "should add RecallDetails for each of the full text fields" do
-        Recall.stub!(:new).and_return @recall
         Recall.process_nhtsa_row(@row)
-        @recall.recall_details.size.should == Recall::NHTSA_DETAIL_FIELDS.size
+        recall = Recall.find_by_recall_number_and_recalled_on_and_organization( '02V269000', Date.parse('20040608'), 'NHTSA')
+        recall.recall_details.size.should == Recall::NHTSA_DETAIL_FIELDS.size
         Recall::NHTSA_DETAIL_FIELDS.each_key do |detail_type|
-          @recall.recall_details.find(:first, :conditions => ['detail_type = ?', detail_type]).should_not be_nil
+          recall.recall_details.find_by_detail_type(detail_type).should_not be_nil
         end
       end
 
       it "should create an AutoRecall for the auto-recall data" do
-        AutoRecall.should_receive(:new).with(:make => @row[2], :model => @row[3], :year => @row[4].to_i, :component_description => @row[6], :manufacturer => @row[14], :recalled_component_id => @row[23]).and_return @auto_recall
+        @row[8] = "20040608"
+        @row[9] = "20040609"
         Recall.process_nhtsa_row(@row)
-        @auto_recall.manufacturing_begin_date.should be_nil
-        @auto_recall.manufacturing_end_date.should be_nil
+        ar = AutoRecall.find_by_make_and_model_and_year_and_component_description_and_manufacturer_and_recalled_component_id(
+          @row[2], @row[3], @row[4].to_i, @row[6], @row[14], @row[23] )
+        ar.manufacturing_begin_date.should == Date.parse('20040608')
+        ar.manufacturing_end_date.should == Date.parse('20040609')
       end
 
       it "should set the year to nil if the value supplied is 9999" do
-        auto_recall = @auto_recall
-        auto_recall.year = nil
-        AutoRecall.should_receive(:new).with(:make => @row[2], :model => @row[3], :year => nil, :component_description => @row[6], :manufacturer => @row[14], :recalled_component_id => @row[23]).and_return auto_recall
-        row = @row
-        row[4] = 9999
-        Recall.process_nhtsa_row(row)
-      end
-
-
-      it "should associate the AutoRecall with the Recall record" do
-        Recall.stub!(:new).and_return @recall
+        @row[4] = "9999"
         Recall.process_nhtsa_row(@row)
-        @recall.auto_recalls.size.should == 1
+        AutoRecall.find_by_make_and_model_and_component_description_and_manufacturer_and_recalled_component_id(
+          @row[2], @row[3], @row[6], @row[14], @row[23] ).year.should be_nil
       end
 
-      it "should save the recall" do
-        Recall.stub!(:new).and_return @recall
-        @recall.should_receive(:save!)
-        Recall.process_nhtsa_row(@row)
-      end
     end
 
     context "when processing an NHTSA recall record with a campaign number that we've already seen" do
@@ -271,15 +254,16 @@ describe Recall do
       end
 
       it "should not create a new Recall" do
-        Recall.should_not_receive(:new)
         Recall.process_nhtsa_row(@row2)
+        Recall.find_all_by_recall_number("02V269000").size.should == 1
       end
 
-      it "should create an AutoRecall for the auto-recall data" do
-        AutoRecall.should_receive(:new).with(:make => @row2[2], :model => @row2[3], :year => @row2[4].to_i, :component_description => @row2[6], :manufacturer => @row2[14], :recalled_component_id => @row2[23]).and_return @auto_recall
-        Recall.process_nhtsa_row(@row2)
-        @auto_recall.manufacturing_begin_date.should be_nil
-        @auto_recall.manufacturing_end_date.should be_nil
+      context "when the auto recall data already exists in the database" do
+        it "should not create duplicate auto recalls" do
+          auto_recall_count = Recall.find_by_recall_number("02V269000").auto_recalls.size
+          Recall.process_nhtsa_row(@row)
+          Recall.find_by_recall_number("02V269000").auto_recalls.size.should == auto_recall_count
+        end
       end
     end
   end

@@ -8,8 +8,13 @@ class Recall < ActiveRecord::Base
   CPSC_FULL_TEXT_SEARCH_FIELDS = {'Manufacturer' => 2, 'ProductType' => 3, 'Description' => 4, 'Hazard' => 6, 'Country' => 7 }
   CPSC_FACET_FIELDS = %w{Manufacturer ProductType Hazard Country}
 
-  NHTSA_DETAIL_FIELDS = {'ManufacturerCampaignNumber' => 5, 'ComponentDescription'=> 6, 'Manufacturer' => 7, 'Code' => 10, 'PotentialUnitsAffected' => 11, 'NotificationDate' => 12, 'Initiator' => 13, 'ReportDate' => 15, 'PartNumber' => 17, 'FederalMotorVehicleSafetyNumber' => 18, 'DefectSummary' => 19, 'ConsequenceSummary' => 20, 'CorrectiveSummary' => 21, 'Notes' => 22, 'RecallSubject' => 25}
-  NHTSA_FULL_TEXT_SEARCH_FIELDS = {'ComponentDescription'=> 6, 'DefectSummary' => 19, 'ConsequenceSummary' => 20, 'CorrectiveSummary' => 21, 'Notes' => 22}
+  NHTSA_DETAIL_FIELDS = {'ManufacturerCampaignNumber' => 5, 'ComponentDescription'=> 6, 'Manufacturer' => 7,
+                         'Code' => 10, 'PotentialUnitsAffected' => 11, 'NotificationDate' => 12,
+                         'Initiator' => 13, 'ReportDate' => 15, 'PartNumber' => 17,
+                         'FederalMotorVehicleSafetyNumber' => 18, 'DefectSummary' => 19, 'ConsequenceSummary' => 20,
+                         'CorrectiveSummary' => 21, 'Notes' => 22, 'RecallSubject' => 25}
+  NHTSA_FULL_TEXT_SEARCH_FIELDS = {'ComponentDescription'=> 6, 'DefectSummary' => 19, 'ConsequenceSummary' => 20,
+                                   'CorrectiveSummary' => 21, 'Notes' => 22}
   NHTSA_FACET_FIELDS = %w{Make Model Year}
 
   searchable do
@@ -232,17 +237,20 @@ class Recall < ActiveRecord::Base
   end
 
   def self.process_nhtsa_row(row)
-    recall = Recall.find_by_recall_number(row[1])
-    unless recall
-      date_string = row[24].blank? ? row[16] : row[24]
-      recall = Recall.new(:recall_number => row[1], :organization => 'NHTSA', :recalled_on => Date.parse(date_string))
+    date_string = row[24].blank? ? row[16] : row[24]
+    recall = Recall.find_or_create_by_recall_number(:recall_number => row[1], :organization => 'NHTSA',
+                                                    :recalled_on => Date.parse(date_string))
+    if recall.recall_details.empty?
       NHTSA_DETAIL_FIELDS.each_pair do |detail_type, column_index|
         recall.recall_details << RecallDetail.new(:detail_type => detail_type, :detail_value => row[column_index]) unless row[column_index].blank?
       end
     end
-    auto_recall = AutoRecall.new(:make => row[2], :model => row[3], :year => row[4].to_i == 9999 ? nil : row[4].to_i, :component_description => row[6], :manufacturer => row[14], :recalled_component_id => row[23])
-    auto_recall.manufacturing_begin_date = Date.parse(row[8]) unless row[8].blank?
-    auto_recall.manufacturing_end_date = Date.parse(row[9]) unless row[9].blank?
+    year = row[4] == "9999" ? nil : row[4].to_i
+    manufacturing_begin_date = row[8].blank? ? nil : Date.parse(row[8])
+    manufacturing_end_date = row[9].blank? ? nil : Date.parse(row[9])
+    auto_recall = AutoRecall.find_or_initialize_by_recall_id_and_recalled_component_id(
+      :recall_id => recall.id, :recalled_component_id => row[23], :make => row[2], :model => row[3], :year => year,
+      :component_description => row[6], :manufacturer => row[14], :manufacturing_begin_date => manufacturing_begin_date, :manufacturing_end_date => manufacturing_end_date)
     recall.auto_recalls << auto_recall
     recall.save!
   end
