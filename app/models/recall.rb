@@ -22,13 +22,14 @@ class Recall < ActiveRecord::Base
     end
 
     string :upc do |recall|
-      recall.upc unless recall.upc.blank?
+      upc = recall.upc
+      upc unless upc.blank?
     end
 
     # full-text search fields
     CPSC_FULL_TEXT_SEARCH_FIELDS.each_key do |detail_type|
       text detail_type.underscore.to_sym do |recall|
-        recall.recall_details.map {|detail| detail.detail_value if detail.detail_type == detail_type}.compact
+        recall.recall_details.map {|detail| detail.detail_value if detail.detail_type == detail_type}.compact if recall.organization == 'CPSC'
       end
     end
 
@@ -36,16 +37,16 @@ class Recall < ActiveRecord::Base
     CPSC_FACET_FIELDS.each do |detail_type|
       facet_sym = "#{detail_type}Facet".underscore.to_sym
       string facet_sym, :multiple => true do |recall|
-        recall.recall_details.map {|detail| detail.detail_value if detail.detail_type == detail_type}.compact
+        recall.recall_details.map {|detail| detail.detail_value if detail.detail_type == detail_type}.compact if recall.organization == 'CPSC'
       end
     end
 
     string :make_facet, :multiple => true do |recall|
-      recall.auto_recalls.map {|auto_recall| auto_recall.make.downcase }.compact
+      recall.auto_recalls.map {|auto_recall| auto_recall.make.downcase }.compact if recall.organization == 'NHTSA'
     end
 
     string :model_facet, :multiple => true do |recall|
-      recall.auto_recalls.map {|auto_recall| auto_recall.model.downcase }.compact
+      recall.auto_recalls.map {|auto_recall| auto_recall.model.downcase }.compact if recall.organization == 'NHTSA'
     end
 
     integer :year_facet, :multiple => true do |recall|
@@ -53,23 +54,27 @@ class Recall < ActiveRecord::Base
     end
 
     string :code do |recall|
-      code_detail = recall.recall_details.find_by_detail_type("Code")
-      code_detail.detail_value if code_detail
+      if recall.organization == 'NHTSA'
+        code_detail = recall.recall_details.find_by_detail_type("Code")
+        code_detail.detail_value if code_detail
+      end
     end
 
     NHTSA_FULL_TEXT_SEARCH_FIELDS.each_key do |detail_type|
       text detail_type.underscore.to_sym do |recall|
-        recall_detail = recall.recall_details.find_by_detail_type(detail_type)
-        recall_detail.detail_value if recall_detail
+        if recall.organization == 'NHTSA'
+          recall_detail = recall.recall_details.find_by_detail_type(detail_type)
+          recall_detail.detail_value if recall_detail
+        end
       end
     end
 
     text :food_recall_summary do
-      food_recall.summary unless food_recall.nil?
+      food_recall.summary unless organization != 'CDC' or food_recall.nil?
     end
 
     text :food_recall_description do
-      food_recall.description unless food_recall.nil?
+      food_recall.description unless organization != 'CDC' or food_recall.nil?
     end
   end
 
@@ -107,7 +112,7 @@ class Recall < ActiveRecord::Base
 
       paginate :page => page, :per_page => per_page
     end
-end
+  end
 
   def self.load_cpsc_data_from_file(file_path)
     FasterCSV.foreach(file_path, :headers => true) { |row| process_cpsc_row(row) }
@@ -129,7 +134,7 @@ end
       find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10],
                                       :recalled_on => item.pubDate.to_date, :organization => 'CDC',
                                       :food_recall => FoodRecall.new(:url=>item.link, :summary=> item.title,
-                                      :description => item.description))
+                                                                     :description => item.description))
     end
     Sunspot.commit
   end
@@ -206,8 +211,8 @@ end
   end
 
   def upc
-    if self.organization == 'CPSC'
-      upc_detail = self.recall_details.find(:first, :conditions => ['detail_type = ?', 'UPC'])
+    if organization == 'CPSC'
+      upc_detail = recall_details.find_by_detail_type('UPC')
       upc_detail ? upc_detail.detail_value : "UNKNOWN"
     end
   end
@@ -218,7 +223,8 @@ end
     recall = Recall.find_or_initialize_by_recall_number(:recall_number => row[0], :y2k => row[1], :organization => 'CPSC')
     recall.recalled_on ||= Date.parse(row[8]) rescue nil
     CPSC_FULL_TEXT_SEARCH_FIELDS.each_pair do |detail_type, column_index|
-      unless row[column_index].blank? or recall.recall_details.exists?(['detail_type = ? AND detail_value = ?', detail_type, row[column_index]])
+      conditions = ['detail_type = ? AND detail_value = ?', detail_type, row[column_index]]
+      unless row[column_index].blank? or (!recall.new_record? && recall.recall_details.exists?(conditions))
         recall.recall_details << RecallDetail.new(:detail_type => detail_type, :detail_value => row[column_index])
       end
     end
