@@ -652,6 +652,15 @@ describe Search do
           search.recalls.should be_nil
         end
       end
+      
+      context "when search phrase stripped of 'recall' is an unparseable query string" do
+        it "should catch an rsolr error and assign nil to recalls" do
+          search = Search.new(@valid_options.merge(:query => 'sheetrock OR recall'))
+          Recall.should_receive(:search_for).with('sheetrock OR', @date_filter_hash).and_raise(RSolr::RequestError)
+          search.run
+          search.recalls.should be_nil
+        end
+      end
     end
 
     context "when paginating" do

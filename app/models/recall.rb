@@ -74,44 +74,40 @@ class Recall < ActiveRecord::Base
   end
 
   def self.search_for(query, options = {}, page = 1, per_page = 10)
-    begin
-      Recall.search do
-        keywords query
+    Recall.search do
+      keywords query
 
-        # date range fields
-        with(:recalled_on).between(options[:start_date]..options[:end_date]) unless options[:start_date].blank? || options[:end_date].blank?
+      # date range fields
+      with(:recalled_on).between(options[:start_date]..options[:end_date]) unless options[:start_date].blank? || options[:end_date].blank?
 
-        with(:organization).equal_to(options[:organization]) unless options[:organization].blank?
+      with(:organization).equal_to(options[:organization]) unless options[:organization].blank?
 
-        # CPSC fields
-        with(:upc).equal_to(options[:upc]) unless options[:upc].blank?
+      # CPSC fields
+      with(:upc).equal_to(options[:upc]) unless options[:upc].blank?
 
-        # NHTSA fields
-        with(:make_facet).equal_to(options[:make].downcase) unless options[:make].blank?
-        with(:model_facet).equal_to(options[:model].downcase) unless options[:model].blank?
-        with(:year_facet).equal_to(options[:year]) unless options[:year].blank?
-        with(:code).equal_to(options[:code]) unless options[:code].blank?
+      # NHTSA fields
+      with(:make_facet).equal_to(options[:make].downcase) unless options[:make].blank?
+      with(:model_facet).equal_to(options[:model].downcase) unless options[:model].blank?
+      with(:year_facet).equal_to(options[:year]) unless options[:year].blank?
+      with(:code).equal_to(options[:code]) unless options[:code].blank?
 
-        facet :hazard_facet, :sort => :count
-        facet :country_facet, :sort => :count
-        facet :manufacturer_facet, :sort => :count
-        facet :product_type_facet, :sort => :count
-        facet :recall_year
+      facet :hazard_facet, :sort => :count
+      facet :country_facet, :sort => :count
+      facet :manufacturer_facet, :sort => :count
+      facet :product_type_facet, :sort => :count
+      facet :recall_year
 
-        facet :make_facet, :sort => :count
-        facet :model_facet, :sort => :count
-        facet :year_facet, :sort => :count
+      facet :make_facet, :sort => :count
+      facet :model_facet, :sort => :count
+      facet :year_facet, :sort => :count
 
-        if options[:sort] == "date"
-          order_by :recalled_on, :desc
-        end
-
-        paginate :page => page, :per_page => per_page
+      if options[:sort] == "date"
+        order_by :recalled_on, :desc
       end
-    rescue RSolr::RequestError
-      return nil
+
+      paginate :page => page, :per_page => per_page
     end
-  end
+end
 
   def self.load_cpsc_data_from_file(file_path)
     FasterCSV.foreach(file_path, :headers => true) { |row| process_cpsc_row(row) }

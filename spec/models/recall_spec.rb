@@ -515,13 +515,6 @@ describe Recall do
         end
       end
     end
-    
-    context "when an unparseable query is queried" do
-      it "should return nil" do
-        search = Recall.search_for("sheetrock OR ")
-        search.should be_nil
-      end
-    end
 
     after(:all) do
       Recall.remove_all_from_index!
