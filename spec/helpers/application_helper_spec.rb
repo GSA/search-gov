@@ -73,6 +73,10 @@ describe ApplicationHelper do
           helper.build_page_title("some title").should == "some title - #{t :site_title}"
         end
       end
+      
+      after do
+        I18n.locale = I18n.default_locale
+      end
     end
   end
 end
