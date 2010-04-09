@@ -109,7 +109,7 @@ describe Search do
       it "should pass a language filter to Bing" do
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options)
-        URI.should_receive(:parse).with(/%20language:es/).and_return(uriresult)
+        URI.should_receive(:parse).with(/%20language%3Aes/).and_return(uriresult)
         search.run
       end
 
@@ -131,7 +131,7 @@ describe Search do
         affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => affiliate))
-        URI.should_receive(:parse).with(/query=\(government\)%20\(site:foo\.com%20OR%20site:bar\.com\)$/).and_return(uriresult)
+        URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(uriresult)
         search.run
       end
     end
@@ -141,7 +141,7 @@ describe Search do
         affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => affiliate, :query=>"government site:blat.gov"))
-        URI.should_receive(:parse).with(/query=\(government%20site:blat\.gov\)%20\(scopeid:usagovall%20OR%20site:\.gov%20OR%20site:\.mil\)$/).and_return(uriresult)
+        URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3Ausagovall%20OR%20site%3A\.gov%20OR%20site%3A\.mil\)$/).and_return(uriresult)
         search.run
       end
     end
@@ -150,7 +150,7 @@ describe Search do
       it "should use just query string and ScopeID/gov/mil combo" do
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => Affiliate.new))
-        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:\.gov%20OR%20site:\.mil\)$/).and_return(uriresult)
+        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A\.gov%20OR%20site%3A\.mil\)$/).and_return(uriresult)
         search.run
       end
     end
@@ -162,7 +162,7 @@ describe Search do
 
       it "should use just query string and ScopeID/gov/mil combo" do
         uriresult = URI::parse("http://localhost:3000/")
-        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:\.gov%20OR%20site:\.mil\)$/).and_return(uriresult)
+        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A\.gov%20OR%20site%3A\.mil\)$/).and_return(uriresult)
         @search.run
       end
 
@@ -208,14 +208,14 @@ describe Search do
       context "when query is limited to search only in titles" do
         it "should construct a query string with the intitle: limits on the query parameter" do
           search = Search.new(@valid_options.merge(:query_limit => "intitle:"))
-          URI.should_receive(:parse).with(/query=\(intitle:government\)/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/query=\(intitle%3Agovernment\)/).and_return(@uriresult)
           search.run
         end
 
         context "when more than one query term is specified" do
           it "should construct a query string with intitle: limits before each query term" do
             search = Search.new(@valid_options.merge(:query => 'barack obama', :query_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/query=\(intitle:barack%20intitle:obama\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(intitle%3Abarack%20intitle%3Aobama\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -223,7 +223,7 @@ describe Search do
         context "when query limit is blank" do
           it "should not use the query limit in the query string" do
             search = Search.new(@valid_options.merge(:query_limit => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -239,7 +239,7 @@ describe Search do
         context "when the phrase query limit is set to intitle:" do
           it "should construct a query string with the intitle: limit on the phrase query" do
             search = Search.new(@valid_options.merge(:query_quote => 'barack obama', :query_quote_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/%20intitle:%22barack%20obama%22/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/%20intitle%3A%22barack%20obama%22/).and_return(@uriresult)
             search.run
           end
         end
@@ -247,7 +247,7 @@ describe Search do
         context "and it is blank" do
           it "should not include a phrase query in the url" do
             search = Search.new(@valid_options.merge(:query_quote => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -255,7 +255,7 @@ describe Search do
         context "when the phrase query is blank and the phrase query limit is blank" do
           it "should not include anything relating to phrase query in the query string" do
             search = Search.new(@valid_options.merge(:query_quote => '', :query_quote_limit => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -271,7 +271,7 @@ describe Search do
         context "when the OR query limit is set to intitle:" do
           it "should construct a query string that includes the OR terms with intitle prefix" do
             search = Search.new(@valid_options.merge(:query_or => 'barack obama', :query_or_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/intitle:barack%20OR%20intitle:obama/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/intitle%3Abarack%20OR%20intitle%3Aobama/).and_return(@uriresult)
             search.run
           end
         end
@@ -279,7 +279,7 @@ describe Search do
         context "when the OR query is blank" do
           it "should not include an OR query parameter in the query string" do
             search = Search.new(@valid_options.merge(:query_or => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -287,7 +287,7 @@ describe Search do
         context "when the OR query is blank and the OR query limit is blank" do
           it "should not include anything relating to OR query in the query string" do
             search = Search.new(@valid_options.merge(:query_or => '', :query_or_limit => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -303,7 +303,7 @@ describe Search do
         context "when the negative query limit is set to intitle:" do
           it "should construct a query string that includes the negative terms with intitle prefix" do
             search = Search.new(@valid_options.merge(:query_not => 'barack obama', :query_not_limit => 'intitle:'))
-            URI.should_receive(:parse).with(/-intitle:barack%20-intitle:obama/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/-intitle%3Abarack%20-intitle%3Aobama/).and_return(@uriresult)
             search.run
           end
         end
@@ -311,7 +311,7 @@ describe Search do
         context "when the negative query is blank" do
           it "should not include a negative query parameter in the query string" do
             search = Search.new(@valid_options.merge(:query_not => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -319,7 +319,7 @@ describe Search do
         context "when the negative query is blank and the negative query limit are blank" do
           it "should not include anything relating to negative query in the query string" do
             search = Search.new(@valid_options.merge(:query_not => '', :query_not_limit => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -328,14 +328,14 @@ describe Search do
       context "when a filetype is specified" do
         it "should construct a query string that includes a filetype" do
           search = Search.new(@valid_options.merge(:file_type => 'pdf'))
-          URI.should_receive(:parse).with(/filetype:pdf/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/filetype%3Apdf/).and_return(@uriresult)
           search.run
         end
 
         context "when the filetype specified is 'All'" do
           it "should construct a query string that does not have a filetype parameter" do
             search = Search.new(@valid_options.merge(:file_type => 'All'))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -343,7 +343,7 @@ describe Search do
         context "when a blank filetype is passed in" do
           it "should not put filetype parameters in the query string" do
             search = Search.new(@valid_options.merge(:file_type => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -352,14 +352,14 @@ describe Search do
       context "when one or more site limits are specified" do
         it "should construct a query string with site limits for each of the sites" do
           search = Search.new(@valid_options.merge(:site_limits => 'whitehouse.gov omb.gov'))
-          URI.should_receive(:parse).with(/site:whitehouse.gov%20OR%20site:omb.gov/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/site%3Awhitehouse.gov%20OR%20site%3Aomb.gov/).and_return(@uriresult)
           search.run
         end
 
         context "when a blank site limit is passed" do
           it "should not include site limit in the query string" do
             search = Search.new(@valid_options.merge(:site_limits => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -368,14 +368,14 @@ describe Search do
       context "when one or more site exclusions is specified" do
         it "should construct a query string with site exlcusions for each of the sites" do
           search = Search.new(@valid_options.merge(:site_excludes => "whitehouse.gov omb.gov"))
-          URI.should_receive(:parse).with(/-site:whitehouse.gov%20-site:omb.gov/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/-site%3Awhitehouse.gov%20-site%3Aomb.gov/).and_return(@uriresult)
           search.run
         end
 
         context "when a blank site exclude is passed" do
           it "should not include site exclude in the query string" do
             search = Search.new(@valid_options.merge(:site_excludes => ''))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -384,14 +384,14 @@ describe Search do
       context "when a fedstates parameter is specified" do
         it "should set the scope if with the fedstates parameter" do
           search = Search.new(@valid_options.merge(:fedstates => 'MD'))
-          URI.should_receive(:parse).with(/\(scopeid:usagovMD\)/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/\(scopeid%3AusagovMD\)/).and_return(@uriresult)
           search.run
         end
 
         context "when the fedstates parameter specified is 'all'" do
           it "should use the 'usagovall' scopeid with .gov and .mil sites included" do
             search = Search.new(@valid_options.merge(:fedstates => 'all'))
-            URI.should_receive(:parse).with(/\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -399,7 +399,7 @@ describe Search do
         context "when fedstates parameter is blank" do
           it "should use the 'usagovall' scope id with .gov and .mil sites included" do
             search = Search.new(@valid_options.merge(:fedstates => ''))
-            URI.should_receive(:parse).with(/\(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil\)/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/\(scopeid%3Ausagovall%20OR%20site%3A.gov%20OR%20site%3A.mil\)/).and_return(@uriresult)
             search.run
           end
         end
@@ -447,7 +447,7 @@ describe Search do
                                                    :file_type => 'pdf',
                                                    :site_limits => 'whitehouse.gov omb.gov',
                                                    :site_excludes => 'nasa.gov noaa.gov'))
-          URI.should_receive(:parse).with(/query=\(intitle:government%20%22barack%20obama%22%20cars%20OR%20stimulus%20-intitle:clunkers%20filetype:pdf%20site:whitehouse.gov%20OR%20site:omb.gov%20-site:nasa.gov%20-site:noaa.gov\)/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/query=\(intitle%3Agovernment%20%22barack%20obama%22%20cars%20OR%20stimulus%20-intitle%3Aclunkers%20filetype%3Apdf%20site%3Awhitehouse.gov%20OR%20site%3Aomb.gov%20-site%3Anasa.gov%20-site%3Anoaa.gov\)/).and_return(@uriresult)
           search.run
         end
       end
@@ -498,6 +498,16 @@ describe Search do
         @search.related_search.first.url.should_not be_nil
       end
 
+    end
+    
+    context "when the query contains an '&' character" do
+      it "should pass a url-escaped query string to Bing" do
+        @uriresult = URI::parse('http://localhost:3000')
+        query = "Pros & Cons Physician Assisted Suicide"
+        search = Search.new(@valid_options.merge(:query => query))
+        URI.should_receive(:parse).with(/Pros%20%26%20Cons%20Physician%20Assisted%20Suicide/).and_return(@uriresult)
+        search.run
+      end
     end
 
     context "when search results contain related searches" do

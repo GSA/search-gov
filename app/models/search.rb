@@ -97,7 +97,7 @@ class Search
       "sources=#{SOURCES}",
       "Options=EnableHighlighting",
       "Adult=#{self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : self.filter_setting}",
-      "query=#{URI.escape(query_string)}"
+      "query=#{URI.escape(query_string, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
     ]
     "#{JSON_SITE}?" + params.join('&')
   end
