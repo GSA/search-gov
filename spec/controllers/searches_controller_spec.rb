@@ -58,13 +58,25 @@ describe SearchesController do
   end
 
   context "when showing a new search" do
+    integrate_views
     before do
       get :index, :query => "social security", :page => 4
       @search = assigns[:search]
+      @page_title = assigns[:page_title]
     end
 
     should_render_template 'searches/index.html.haml', :layout => 'application'
-
+    
+    should_assign_to :page_title
+    
+    it "should assign the query as the page title" do
+      @page_title.should == "social security"
+    end
+    
+    it "should show a custom title for the results page" do
+      response.body.should contain("social security - The U.S. Government's Official Web Search")
+    end
+    
     it "should set the query in the Search model" do
       @search.query.should == "social security"
     end
@@ -85,6 +97,7 @@ describe SearchesController do
       @affiliate = affiliates(:power_affiliate)
       get :index, :affiliate=>@affiliate.name, :query => "weather"
       @search = assigns[:search]
+      @page_title = assigns[:page_title]
     end
 
     should_assign_to :affiliate
@@ -92,6 +105,10 @@ describe SearchesController do
 
     should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'
 
+    it "should set an affiliate page title" do
+      @page_title.should == "Search.USA.gov search results for #{@affiliate.name}: #{@search.query}"
+    end
+    
     it "should render the header in the response" do
       response.body.should match(/#{@affiliate.header}/)
     end

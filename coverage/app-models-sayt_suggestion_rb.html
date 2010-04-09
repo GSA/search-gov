@@ -63,7 +63,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   before_validation :lowercase</pre></td>
+            <td><pre><a name="line2">2</a>   before_validation :squish_whitespace_and_downcase</pre></td>
           </tr>
         
           
@@ -243,13 +243,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>   def lowercase</pre></td>
+            <td><pre><a name="line32">32</a>   def squish_whitespace_and_downcase</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>     self.phrase.downcase! unless self.phrase.nil?</pre></td>
+            <td><pre><a name="line33">33</a>     self.phrase = self.phrase.squish.downcase unless self.phrase.nil?</pre></td>
           </tr>
         
           
@@ -267,7 +267,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Apr 01 13:54:55 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Apr 09 14:09:41 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

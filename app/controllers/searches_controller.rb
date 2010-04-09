@@ -8,6 +8,7 @@ class SearchesController < ApplicationController
   def index
     @search = Search.new(@search_options)
     @search.run
+    @page_title = @search.query
     handle_affiliate_search
   end
 

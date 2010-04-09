@@ -1,14 +1,12 @@
 class RecallsController < ApplicationController
   def index
-    @query = params[:query]
-    @page = params[:page] || 1
-    @start_date = params[:start_date]
-    @end_date = params[:end_date]
-    @upc = params[:upc]
-    @search = Recall.search_for(@query, {:start_date => @start_date, :end_date => @end_date, :upc => @upc}, @page)
+    valid_options = %w{start_date end_date upc sort code organization make model year}
+    search = Recall.search_for(params[:query],
+                               params.reject {|k,| !valid_options.include?k.to_s},
+                               params[:page])
     respond_to do |format|
       format.json {
-        render :json => { :success => { :total => @search.total, :results => @search.results } }
+        render :json => { :success => { :total => search.total, :results => search.results } }
       }
       format.any {
         render :text => 'Not Implemented'

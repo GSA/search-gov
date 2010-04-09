@@ -28,8 +28,8 @@ end
 
 
 Then /^I should see the header for the current date$/ do
-  response.should contain("Monthly Usage Stats for #{Date::MONTHNAMES[Date.today.month]} #{Date.today.year}") 
-  response.should contain("(current as of #{Date.yesterday.strftime('%B %e, %Y')})")
+  response.should contain("Monthly Usage Stats for #{Date::MONTHNAMES[Date.today.month]} #{Date.today.year}")
+  response.should contain("(current as of #{Date.yesterday.strftime('%B %e, %Y').squish})")
 end
 
 Then /^I should see the "([^\"]*)" queries total within "([^\"]*)"$/ do |profile, selector|

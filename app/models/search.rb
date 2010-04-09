@@ -13,6 +13,7 @@ class Search
   CLIENT_IP = "209.251.180.16"
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:.gov OR site:.mil)"
   DEFAULT_FILTER_SETTING = 'strict'
+  URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
 
   attr_accessor :query,
                 :page,
@@ -97,7 +98,7 @@ class Search
       "sources=#{SOURCES}",
       "Options=EnableHighlighting",
       "Adult=#{self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : self.filter_setting}",
-      "query=#{URI.escape(query_string)}"
+      "query=#{URI.escape(query_string, URI_REGEX)}"
     ]
     "#{JSON_SITE}?" + params.join('&')
   end
@@ -117,7 +118,7 @@ class Search
   end
 
   def spelling_results(response)
-    response.spell.results.first.value.split(/ \(scopeid/).first.gsub(/<\/?[^>]*>/, '') rescue nil
+    response.spell.results.first.value.split(/ \(scopeid/).first.gsub(/<\/?[^>]*>/, '').chomp(')').reverse.chomp('(').reverse rescue nil
   end
 
   def populate_additional_results
@@ -129,7 +130,12 @@ class Search
       self.gov_forms = GovForm.search_for(query)
     end
     if query =~ /\brecalls?\b/i and not query=~ /^recalls?$/i
-      self.recalls= Recall.search_for(query.gsub(/\brecalls?\b/i,'').strip, {:start_date=>1.month.ago.to_date, :end_date=>Date.today})
+      begin
+        self.recalls = Recall.search_for(query.gsub(/\brecalls?\b/i,'').strip, {:start_date=>1.month.ago.to_date, :end_date=>Date.today})
+      rescue RSolr::RequestError => error
+        RAILS_DEFAULT_LOGGER.warn "Error in searching for Recalls: #{error.to_s}"
+        self.recalls = nil
+      end
     end
   end
 
@@ -228,6 +234,6 @@ class Search
   end
 
   def formatted_query
-    "#{query} #{scope} #{locale}".strip.squeeze(' ')
+    "(#{query}) #{scope} #{locale}".strip.squeeze(' ')
   end
 end

@@ -1,5 +1,10 @@
 # -*- coding: iso-8859-1 -*-
 module ApplicationHelper
+  
+  def build_page_title(page_title)
+    (page_title.blank? ? "" : "#{page_title} - ") + (t :site_title)
+  end
+  
   def show_flash_messages
     unless (flash.nil? or flash.empty?)
       html = content_tag(:div, flash.collect{ |key, msg| content_tag(:div, msg, :class => key) }, :id => 'flash-message', :class => 'flash-message')
