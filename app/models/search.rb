@@ -13,6 +13,7 @@ class Search
   CLIENT_IP = "209.251.180.16"
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:.gov OR site:.mil)"
   DEFAULT_FILTER_SETTING = 'strict'
+  URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
 
   attr_accessor :query,
                 :page,
@@ -97,7 +98,7 @@ class Search
       "sources=#{SOURCES}",
       "Options=EnableHighlighting",
       "Adult=#{self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : self.filter_setting}",
-      "query=#{URI.escape(query_string, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
+      "query=#{URI.escape(query_string, URI_REGEX)}"
     ]
     "#{JSON_SITE}?" + params.join('&')
   end

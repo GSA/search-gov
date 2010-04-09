@@ -76,6 +76,38 @@ describe Recall do
     end
   end
 
+  describe "#load_cpsc_data_from_xml_feed" do
+    before do
+      Net::HTTP.stub!(:get_response).and_return mock("response", :body => File.read(RAILS_ROOT + "/spec/fixtures/xml/cpsc.xml"))
+    end
+
+    it "should process each result entry in the file" do
+      Recall.should_receive(:process_cpsc_row).twice
+      Recall.load_cpsc_data_from_xml_feed("foo")
+    end
+
+    it "should commit data in Solr so Solr knows to index it" do
+      Sunspot.should_receive(:commit)
+      Recall.load_cpsc_data_from_xml_feed("foo")
+    end
+  end
+
+  describe "#load_nhtsa_data_from_tab_delimited_feed" do
+    before do
+      Net::HTTP.stub!(:get_response).and_return mock("response", :body => File.read(RAILS_ROOT + "/spec/fixtures/txt/nhtsa_recalls.txt"))
+    end
+
+    it "should process each result entry in the file" do
+      Recall.should_receive(:process_nhtsa_row).exactly(3).times
+      Recall.load_nhtsa_data_from_tab_delimited_feed("foo")
+    end
+
+    it "should commit data in Solr so Solr knows to index it" do
+      Sunspot.should_receive(:commit)
+      Recall.load_nhtsa_data_from_tab_delimited_feed("foo")
+    end
+  end
+
   describe "#process_cpsc_row" do
     context "when a recall is seen for the first time" do
       before do

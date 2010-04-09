@@ -36,6 +36,31 @@ describe "Recalls rake tasks" do
       end
     end
 
+    describe "usasearch:recalls:read_cpsc_feed" do
+      before do
+        @task_name = "usasearch:recalls:read_cpsc_feed"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when not given an XML feed URL" do
+        it "should print out an error message" do
+          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          @rake[@task_name].invoke
+        end
+      end
+
+      context "when given an XML Feed URL" do
+        it "should send the URL to Recall for processing" do
+          url = "foo"
+          Recall.should_receive(:load_cpsc_data_from_xml_feed).with(url)
+          @rake[@task_name].invoke(url)
+        end
+      end
+    end
+
     describe "usasearch:recalls:load_cpsc_data" do
       before do
         @task_name = "usasearch:recalls:load_cpsc_data"
@@ -80,6 +105,31 @@ describe "Recalls rake tasks" do
         it "should process the file" do
           Recall.should_receive(:load_nhtsa_data_from_file).with("/some/file")
           @rake[@task_name].invoke("/some/file")
+        end
+      end
+    end
+
+    describe "usasearch:recalls:read_nhtsa_feed" do
+      before do
+        @task_name = "usasearch:recalls:read_nhtsa_feed"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when not given a feed URL" do
+        it "should print out an error message" do
+          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          @rake[@task_name].invoke
+        end
+      end
+
+      context "when given a Feed URL" do
+        it "should send the URL to Recall for processing" do
+          url = "foo"
+          Recall.should_receive(:load_nhtsa_data_from_tab_delimited_feed).with(url)
+          @rake[@task_name].invoke(url)
         end
       end
     end

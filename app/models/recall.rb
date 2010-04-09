@@ -124,6 +124,24 @@ class Recall < ActiveRecord::Base
     Sunspot.commit
   end
 
+  def self.load_cpsc_data_from_xml_feed(url)
+    require 'rexml/document'
+    REXML::Document.new(Net::HTTP.get_response(URI.parse(url)).body).elements.each('message/results/result') do |element|
+      process_cpsc_row([
+        element.attributes["y2k"].to_s.slice(1, 6),
+        element.attributes["y2k"],
+        element.attributes["manufacturer"],
+        element.attributes["type"],
+        element.attributes["prname"],
+        nil,
+        element.attributes["hazard"],
+        element.attributes["country_mfg"],
+        element.attributes["recDate"]
+      ])
+    end
+    Sunspot.commit
+  end
+
   def self.load_nhtsa_data_from_file(file_path)
     File.open(file_path).each do |line|
       row = []
@@ -131,6 +149,13 @@ class Recall < ActiveRecord::Base
       process_nhtsa_row(row)
     end
     Sunspot.commit
+  end
+
+  def self.load_nhtsa_data_from_tab_delimited_feed(url)
+    file = Tempfile.new("nhtsa")
+    file.write(Net::HTTP.get_response(URI.parse(url)).body)
+    file.close
+    load_nhtsa_data_from_file(file.path)
   end
 
   def self.load_cdc_data_from_rss_feed(url)

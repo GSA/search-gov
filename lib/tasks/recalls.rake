@@ -10,6 +10,24 @@ namespace :usasearch do
       end
     end
 
+    desc "Load recalls from CPSC XML feed"
+    task :read_cpsc_feed, :xml_url, :needs => :environment do |t, args|
+      if args.xml_url.blank?
+        RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:read_cpsc_feed[XML Feed URL]")
+      else
+        Recall.load_cpsc_data_from_xml_feed(args.xml_url)
+      end
+    end
+
+    desc "Load recalls from NHTSA tab-delimited feed"
+    task :read_nhtsa_feed, :tab_delimited_url, :needs => :environment do |t, args|
+      if args.tab_delimited_url.blank?
+        RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:read_nhtsa_feed[Tab-delimited Feed URL]")
+      else
+        Recall.load_nhtsa_data_from_tab_delimited_feed(args.tab_delimited_url)
+      end
+    end
+
     desc "Load NHTSA recalls from tab-delimited file"
     task :load_nhtsa_data, :data_file, :needs => :environment do |t, args|
       if args.data_file.blank?
@@ -19,7 +37,7 @@ namespace :usasearch do
       end
     end
 
-    desc "Load CDC food recall data from RSS feed"
+    desc "Load/update CDC food recall data from RSS feed"
     task :load_cdc_data, :rss_url, :needs => :environment do |t, args|
       if args.rss_url.blank?
         RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:load_cdc_data[RSS Feed URL]")
