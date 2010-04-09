@@ -97,6 +97,39 @@ describe "summary_tables rake tasks" do
           DailyQueryIpStat.find_by_query("ignore me").should be_nil
         end
       end
+      
+      context "when search are not from a known bot" do
+        before do
+          Query.create!(@valid_attributes.merge(:is_bot => false, :query => 'not a bot'))
+        end
+        
+        it "should include it in the calculation" do
+          @rake[@task_name].invoke
+          DailyQueryIpStat.find_by_query("not a bot").should_not be_nil
+        end
+      end
+      
+      context "when searches are from a marked as being from a bot" do
+        before do
+          Query.create!(@valid_attributes.merge(:is_bot => true, :query => 'bot'))
+        end
+        
+        it "should ingore them" do
+          @rake[@task_name].invoke
+          DailyQueryIpStat.find_by_query("bot").should be_nil
+        end
+      end
+      
+      context "when searches do not have an is_bot value" do
+        before do
+          Query.create!(@valid_attributes.merge(:is_bot => nil, :query => 'nil bot'))
+        end
+        
+        it "should include it in the calculation" do
+          @rake[@task_name] .invoke
+          DailyQueryIpStat.find_by_query("nil bot").should_not be_nil
+        end
+      end
     end
 
     describe "usasearch:daily_query_ip_stats:compute" do

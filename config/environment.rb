@@ -34,3 +34,5 @@ Rails::Initializer.run do |config|
 end
 
 APP_EMAIL_ADDRESS = "***REMOVED***"
+
+BOT_USER_AGENTS = %w{Googlebot Baiduspider}

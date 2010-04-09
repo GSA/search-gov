@@ -1,8 +1,8 @@
 namespace :usasearch do
   namespace :daily_query_ip_stats do
     insert_sql = "insert ignore into daily_query_ip_stats (query, ipaddr, day, times) select lower(query), ipaddr, date(timestamp) day, count(*) from queries "
-    where_clause = "where affiliate = 'usasearch.gov' and query not in ( 'enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', 'test') and ipaddr not in ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') "
-    group_by = "group by day,query, ipaddr"
+    where_clause = "WHERE affiliate = 'usasearch.gov' AND query not in ( 'enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', 'test') AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND (is_bot=false OR ISNULL(is_bot))"
+    group_by = "GROUP BY day, query, ipaddr"
 
     desc "initial population of daily_query_ip_stats from queries table. Destroys existing data in daily_query_ip_stats table."
     task :populate => :environment do
@@ -18,7 +18,7 @@ namespace :usasearch do
       yyyymmdd = args.day.to_i
       sql = "delete from daily_query_ip_stats where day = #{yyyymmdd}"
       ActiveRecord::Base.connection.execute(sql)
-      sql = "#{insert_sql} #{where_clause} and date(timestamp) = #{yyyymmdd} #{group_by}"
+      sql = "#{insert_sql} #{where_clause} AND date(timestamp) = #{yyyymmdd} #{group_by}"
       ActiveRecord::Base.connection.execute(sql)
     end
 

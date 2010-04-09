@@ -1,7 +1,7 @@
 class LogFile < ActiveRecord::Base
   validates_presence_of :name
   validates_uniqueness_of :name
-
+  
   def self.process(filepath)
     RAILS_DEFAULT_LOGGER.info("Processing file #{filepath}")
     File.open(filepath) do |file|
@@ -18,6 +18,8 @@ class LogFile < ActiveRecord::Base
     log = Apache::Log::Combined.parse log_entry
     datetime = log.time
     ipaddr = log.remote_ip
+    agent = log.agent
+    is_bot = is_agent_a_bot?(agent)
     return unless log.path.include?('?')
     query_string = log.path.split('?')[1]
     parsed_log = CGI.parse(query_string)
@@ -26,7 +28,7 @@ class LogFile < ActiveRecord::Base
     locale = parsed_log["locale"][0].blank? ? I18n.default_locale.to_s : parsed_log["locale"][0]
     return if query.nil?
     noquery = parsed_log["noquery"][0]
-    Query.create!(:query => query.strip, :affiliate => affiliate, :ipaddr => ipaddr, :timestamp => datetime, :locale => locale) if noquery.nil?
+    Query.create!(:query => query.strip, :affiliate => affiliate, :ipaddr => ipaddr, :timestamp => datetime, :locale => locale, :agent => agent, :is_bot => is_bot) if noquery.nil?
   end
 
   def self.process_clicks(filepath)
@@ -71,5 +73,12 @@ class LogFile < ActiveRecord::Base
         end
       end
     end
+  end
+  
+  private 
+  
+  def self.is_agent_a_bot?(agent)
+    BOT_USER_AGENTS.each{ |bot| return true if agent.downcase.include?(bot.downcase) } 
+    false
   end
 end

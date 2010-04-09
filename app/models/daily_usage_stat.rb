@@ -63,14 +63,12 @@ class DailyUsageStat < ActiveRecord::Base
     #self.total_unique_visits = profile_data['data'][query_date]["measures"]["Visits"]
   end
 
-  # this will not work, since we don't have profile information available
-  # TODO: incorporate profile data here.
   def populate_queries_data
     if self.profile != 'Affiliates'
       locale = self.profile == 'English' ? 'en' : 'es'
-      self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=?", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), locale, "usasearch.gov"])
+      self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), locale, "usasearch.gov"])
     else
-      self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate <> ?", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), "usasearch.gov"])
+      self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate <> ? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), "usasearch.gov"])
     end
   end
 
