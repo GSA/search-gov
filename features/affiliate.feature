@@ -58,8 +58,8 @@ Feature: Affiliate clients
 
   Scenario: Staging changes to an affiliate's look and feel
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        | domains			  | header		  | footer		  | staged_domains	| staged_header	  | staged_footer	|
-      | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov	| Old header	| Old footer	| oldagency.gov		| Old header			| Old footer	  |
+      | name             | contact_email         | contact_name        | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
+      | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Edit"
@@ -188,6 +188,16 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the user account page
     And I follow "Get Code"
-    Then I should see "Copy and paste the HTML code below to create a search box for aff.gov"
+    Then I should see "Site Search"
+    And I should see "Copy and paste the HTML code below to create a search box for aff.gov"
     And I should see "English Version"
     And I should see "Spanish Version"
+
+  Scenario: Getting an embed code for affiliate Search as You Type (SAYT)
+    Given the following Affiliates exist:
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the user account page
+    And I follow "Get Code"
+    Then I should see "Search as You Type"
