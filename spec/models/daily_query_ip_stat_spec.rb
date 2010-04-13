@@ -5,7 +5,8 @@ describe DailyQueryIpStat do
       :query => "government",
       :ipaddr => "123.456.7.89",
       :times => 1,
-      :day => Date.today
+      :day => Date.today,
+      :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME
     }
   end
 

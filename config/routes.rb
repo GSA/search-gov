@@ -7,6 +7,9 @@ ActionController::Routing::Routes.draw do |map|
     affiliate.resource :boosted_sites_upload, :only => [:create, :new]
   end
   map.click '/click', :controller => "clicks", :action => "create"
+  map.affiliate_analytics_home_page '/affiliates/:id/analytics', :controller => 'affiliates', :action => 'analytics'
+  map.affiliate_analytics_query_search '/affiliates/:id/query_search', :controller => 'affiliates', :action => 'query_search'
+  map.affiliate_analytics_monthly_reports '/affiliates/:id/monthly_reports', :controller => 'affiliates', :action => 'monthly_reports'
   map.search '/search', :controller => "searches"
   map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get
   map.image_search "/search/images", :controller => "image_searches", :action => "index"

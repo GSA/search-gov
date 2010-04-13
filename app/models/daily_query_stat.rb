@@ -2,15 +2,17 @@ class DailyQueryStat < ActiveRecord::Base
   validates_presence_of :day
   validates_presence_of :query
   validates_presence_of :times
-  validates_uniqueness_of :query, :scope => :day
+  validates_presence_of :affiliate
+  validates_uniqueness_of :query, :scope => [:day, :affiliate]
   RESULTS_SIZE = 10
   INSUFFICIENT_DATA = "Not enough historic data to compute most popular"
+  DEFAULT_AFFILIATE_NAME = "usasearch.gov"
 
-  def self.most_popular_terms_like(query, use_starts_with_instead_of_contains)
+  def self.most_popular_terms_like(query, use_starts_with_instead_of_contains, affiliate_name = DEFAULT_AFFILIATE_NAME)
     contains = use_starts_with_instead_of_contains ? '' : '%'
     DailyQueryStat.sum(:times,
                        :group => :query,
-                       :conditions => ["query LIKE ?", "#{contains}#{query}%"],
+                       :conditions => ["query LIKE ? AND affiliate = ?", "#{contains}#{query}%", affiliate_name],
                        :order => "sum_times desc")
   end
 
@@ -23,12 +25,12 @@ class DailyQueryStat < ActiveRecord::Base
     ary.reverse
   end
 
-  def self.most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE)
+  def self.most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = DEFAULT_AFFILIATE_NAME)
     return INSUFFICIENT_DATA if end_date.nil?
     start_date = end_date - days_back.days + 1.day
     results = DailyQueryStat.sum(:times,
                                  :group => :query,
-                                 :conditions => ['day between ? AND ?', start_date, end_date],
+                                 :conditions => ['day between ? AND ? AND affiliate = ?', start_date, end_date, affiliate_name],
                                  :having => "sum_times > 3",
                                  :order => "sum_times desc")
     return INSUFFICIENT_DATA if results.empty?
@@ -51,8 +53,8 @@ class DailyQueryStat < ActiveRecord::Base
     qcs.sort_by {|qc| qc.times}.reverse[0, num_results]
   end
 
-  def self.most_recent_populated_date
-    maximum(:day)
+  def self.most_recent_populated_date(affiliate_name = DEFAULT_AFFILIATE_NAME)
+    maximum(:day, :conditions => ['affiliate = ?', affiliate_name])
   end
 
   def self.collect_query_group_named(name)

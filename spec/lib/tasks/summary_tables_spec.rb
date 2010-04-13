@@ -21,7 +21,6 @@ describe "summary_tables rake tasks" do
         :timestamp => @first_time,
         :locale => I18n.default_locale.to_s
       }
-
       Query.create!(@valid_attributes)
     end
 
@@ -89,12 +88,12 @@ describe "summary_tables rake tasks" do
 
       context "when searches are not from usasearch.gov affiliate" do
         before do
-          Query.create!(@valid_attributes.merge(:affiliate => "ignore me", :query=>"ignore me"))
+          Query.create!(@valid_attributes.merge(:affiliate => "dont ignore me", :query=>"do not ignore me"))
         end
 
-        it "should ignore them" do
+        it "should not ignore them" do
           @rake[@task_name].invoke
-          DailyQueryIpStat.find_by_query("ignore me").should be_nil
+          DailyQueryIpStat.find_by_query("do not ignore me").should_not be_nil
         end
       end
       
@@ -262,6 +261,40 @@ describe "summary_tables rake tasks" do
           DailyQueryStat.find_by_query('some search term').should be_nil
         end
       end
+      
+      context "when query and daily ip stats are present for the default site (usasearch.gov) and other affilaites" do
+        before do
+          first_time = @valid_attributes[:timestamp]
+          first_ip = @valid_attributes[:ipaddr]
+          5.times do
+            first_time += 1.day
+            first_ip.succ!
+            Query.create!(@valid_attributes.merge(:ipaddr=>first_ip, :timestamp => first_time))
+            Query.create!(@valid_attributes.merge(:ipaddr=>first_ip, :timestamp => first_time + 1.minute))
+          end
+          Query.create!(@valid_attributes.merge(:ipaddr=>"9.8.7.6", :timestamp => Date.yesterday.to_time))
+          10.times do
+            first_time += 1.day
+            first_ip.succ!
+            Query.create!(@valid_attributes.merge(:ipaddr=>first_ip, :timestamp => first_time, :affiliate => 'test.gov'))
+            Query.create!(@valid_attributes.merge(:ipaddr=>first_ip, :timestamp => first_time + 1.minute, :affiliate => 'test.gov'))
+          end
+          Query.create!(@valid_attributes.merge(:ipaddr=>"9.8.7.6", :timestamp => Date.yesterday.to_time, :affiliate => 'test.gov'))
+          @rake["usasearch:daily_query_ip_stats:populate"].invoke
+          default_affiliate_total = DailyQueryIpStat.sum(:times, :conditions=> "query = 'some search term' AND affiliate = 'usasearch.gov'")
+          test_affiliate_total = DailyQueryIpStat.sum(:times, :conditions=> "query = 'some search term' AND affiliate = 'test.gov'")
+          default_affiliate_total.should == 11
+          test_affiliate_total.should == 21      
+        end
+        
+        it "should calcualte the sums separately by affiliate" do
+          @rake[@task_name].invoke
+          DailyQueryStat.find_all_by_affiliate(DailyQueryStat::DEFAULT_AFFILIATE_NAME).should_not be_nil
+          DailyQueryStat.find_all_by_affiliate('test.gov').should_not be_nil
+        end
+      end
+          
+            
     end
 
     describe "usasearch:daily_query_stats:compute" do
@@ -312,7 +345,7 @@ describe "summary_tables rake tasks" do
       context "when daily_query_stats data is available over some date range" do
         before do
           DailyQueryStat.delete_all
-          Date.yesterday.upto(Date.tomorrow) {|day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever") }
+          Date.yesterday.upto(Date.tomorrow) {|day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME) }
         end
 
         it "should calculate moving queries for each day in that range" do

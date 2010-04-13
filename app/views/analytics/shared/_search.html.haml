@@ -1,4 +1,4 @@
-- form_tag(analytics_query_search_path, :method => :get, :id=>"query_search_form") do
+- form_tag(path, :method => :get, :id=>"query_search_form") do
   = label :search, "Search for query term"
   = text_field_with_auto_complete :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}, {:url=> {:controller => "/searches", :action => "auto_complete_for_search_query"}, :method=> :get}
   = submit_tag "Search", :id=>"search_button", :onClick=>"document.getElementById('busy').style.display='block'"
@@ -6,7 +6,10 @@
   = radio_button(:search, "search_type", "contains", :id=> "Contains", :name => "search_type")
   = label :search, "Starts with"
   = radio_button(:search, "search_type", "starts_with", :checked=> true, :id=> "Starts with", :name => "search_type")
-
+  - if affiliate
+    = hidden_field_tag("affiliate", affiliate.name)
+    = hidden_field_tag("locale", I18n.locale.to_s)
+    = hidden_field_tag("m", false)
 %p{:style=>"display:none", :id=>"busy"}
   Please wait...
   = image_tag('busy.gif', :alt=>"", :width => 16, :height => 11)

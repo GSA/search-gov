@@ -27,3 +27,19 @@ Given /^the following Affiliates exist:$/ do |table|
     )
   end
 end
+
+Given /^there is analytics data for affiliate "([^\"]*)" from "([^\"]*)" thru "([^\"]*)"$/ do |aff, sd, ed|
+  DailyQueryStat.delete_all
+  startdate, enddate = sd.to_date, ed.to_date
+  affiliate = aff
+  wordcount = 5
+  words = []
+  startword = "aaaa"
+  wordcount.times {words << startword.succ!}
+  startdate.upto(enddate) do |day|
+    words.each do |word|
+      times = rand(1000)
+      DailyQueryStat.create(:day => day, :query => word, :times => times, :affiliate => affiliate)
+    end
+  end
+end

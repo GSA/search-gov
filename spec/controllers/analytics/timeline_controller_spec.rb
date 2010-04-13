@@ -52,8 +52,8 @@ describe Analytics::TimelineController do
       context "when query group passed in" do
         before do
           DailyQueryStat.delete_all
-          DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10 )
-          DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1 )
+          DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
+          DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
           qg = QueryGroup.create!(:name=>"foo")
           qg.grouped_queries << GroupedQuery.create!(:query=>"query1")
           qg.grouped_queries << GroupedQuery.create!(:query=>"query2")

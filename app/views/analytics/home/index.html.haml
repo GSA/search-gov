@@ -1,21 +1,22 @@
 .span-24
-  = render :partial => "analytics/shared/search"
+  = render :partial => "analytics/shared/search", :locals => { :path => analytics_query_search_path, :affiliate => nil }
 .span-24
   %h2= display_most_recent_date_available(@day_being_shown)
 
-.span-24.headertitle
-  .span-21
-    %h2 Accelerating Queries
-  .span-3.last
-    %form
-      = display_select_for_window("qas", @num_results_qas, @day_being_shown)
+- if @affiliate.nil?
+  .span-24.headertitle
+    .span-21
+      %h2 Accelerating Queries
+    .span-3.last
+      %form
+        = display_select_for_window("qas", @num_results_qas, @day_being_shown)
 
-.span-8{:id=>"qas1"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_biggest_movers , :content_name => "qas1", :heading => "Previous Day"}
-.span-8{:id=>"qas7"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @weekly_biggest_movers , :content_name => "qas7", :heading => "Previous 7 Days"}
-.span-8.last{:id=>"qas30"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @monthly_biggest_movers , :content_name => "qas30", :heading => "Previous 30 Days"}
+  .span-8{:id=>"qas1"}
+    = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_biggest_movers , :content_name => "qas1", :heading => "Previous Day", :affiliate => nil }
+  .span-8{:id=>"qas7"}
+    = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @weekly_biggest_movers , :content_name => "qas7", :heading => "Previous 7 Days", :affiliate => nil }
+  .span-8.last{:id=>"qas30"}
+    = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @monthly_biggest_movers , :content_name => "qas30", :heading => "Previous 30 Days", :affiliate => nil }
 
 .span-24.headertitle
   .span-21
@@ -24,8 +25,8 @@
     %form
       = display_select_for_window("dqs", @num_results_dqs, @day_being_shown)
 .span-8{:id=>"dqs1"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_terms , :content_name => "dqs1", :heading => "Previous Day"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_terms , :content_name => "dqs1", :heading => "Previous Day", :affiliate => nil }
 .span-8{:id=>"dqs7"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "Previous 7 Days"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "Previous 7 Days", :affiliate => nil }
 .span-8.last{:id=>"dqs30"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Previous 30 Days"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Previous 30 Days", :affiliate => nil }
