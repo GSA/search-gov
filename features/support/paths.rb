@@ -40,7 +40,8 @@ module NavigationHelpers
       affiliates_path
     when /the reports homepage/
       monthly_reports_path
-
+    when /the affiliate analytics query search results page/
+      affiliate_analytics_query_search_path
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

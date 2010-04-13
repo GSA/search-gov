@@ -16,7 +16,7 @@ Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
   startdate.upto(enddate) do |day|
     words.each do |word|
       times = rand(1000)
-      DailyQueryStat.create(:day => day, :query => word, :times => times)
+      DailyQueryStat.create(:day => day, :query => word, :times => times, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       [1, 7, 30].each { |window_size| MovingQuery.create(:day => day, :query => word, :window_size => window_size, :times => window_size * times, :mean => 1.0, :std_dev => 0.001) }
     end
   end
@@ -25,7 +25,7 @@ end
 Given /^the following DailyQueryStats exist for yesterday:$/ do |table|
   DailyQueryStat.delete_all
   table.hashes.each do |hash|
-    DailyQueryStat.create(:day => Date.yesterday, :query => hash["query"], :times => hash["times"])
+    DailyQueryStat.create(:day => Date.yesterday, :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? DailyQueryStat::DEFAULT_AFFILIATE_NAME : hash["affiliate"])
   end
 end
 

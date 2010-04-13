@@ -60,7 +60,6 @@ class DailyUsageStat < ActiveRecord::Base
     query_date = "#{self.day.month}/#{self.day.day}/#{self.day.year}"
     self.total_page_views = profile_data["data"][query_date]["measures"]["Page Views"]
     self.total_unique_visitors = profile_data["data"][query_date]["measures"]["Visitors"]
-    #self.total_unique_visits = profile_data['data'][query_date]["measures"]["Visits"]
   end
 
   def populate_queries_data

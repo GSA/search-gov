@@ -27,8 +27,7 @@ describe Analytics::HomeController do
       activate_authlogic
       UserSession.create(:email=> users("analyst").email, :password => "admin")
     end
-
-
+    
     it "should assign popular terms for the target day, its trailing week, and its trailing month" do
       yday = Date.yesterday.to_date
       DailyQueryStat.should_receive(:most_popular_terms).with(yday, 1, 10).and_return("ydaymp")

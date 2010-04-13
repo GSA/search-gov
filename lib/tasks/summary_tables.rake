@@ -1,8 +1,8 @@
 namespace :usasearch do
   namespace :daily_query_ip_stats do
-    insert_sql = "insert ignore into daily_query_ip_stats (query, ipaddr, day, times) select lower(query), ipaddr, date(timestamp) day, count(*) from queries "
-    where_clause = "WHERE affiliate = 'usasearch.gov' AND query not in ( 'enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', 'test') AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND (is_bot=false OR ISNULL(is_bot))"
-    group_by = "GROUP BY day, query, ipaddr"
+    insert_sql = "INSERT IGNORE INTO daily_query_ip_stats (query, ipaddr, day, affiliate, times) SELECT lower(query), ipaddr, date(timestamp) day, affiliate, count(*) FROM queries "
+    where_clause = "WHERE query NOT IN ( 'enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', 'test') AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND (is_bot=false OR ISNULL(is_bot))"
+    group_by = "GROUP BY day, query, ipaddr, affiliate"
 
     desc "initial population of daily_query_ip_stats from queries table. Destroys existing data in daily_query_ip_stats table."
     task :populate => :environment do
@@ -11,7 +11,7 @@ namespace :usasearch do
       sql = "#{insert_sql} #{where_clause} #{group_by}"
       ActiveRecord::Base.connection.execute(sql)
     end
-
+    
     desc "compute daily_query_ip_stats from queries table for given YYYYMMDD date (defaults to yesterday)"
     task :compute, :day, :needs => :environment do |t, args|
       args.with_defaults(:day => Date.yesterday.to_s(:number))
@@ -20,14 +20,13 @@ namespace :usasearch do
       ActiveRecord::Base.connection.execute(sql)
       sql = "#{insert_sql} #{where_clause} AND date(timestamp) = #{yyyymmdd} #{group_by}"
       ActiveRecord::Base.connection.execute(sql)
-    end
-
+    end    
   end
 
   namespace :daily_query_stats do
-    insert_sql = "insert into daily_query_stats (query, day,times) select d.query, d.day, count(*) from daily_query_ip_stats  d, proportions p"
-    where_clause = "where d.query = p.query and p.proportion > .10"
-    group_by = "group by d.query, d.day"
+    insert_sql = "INSERT INTO daily_query_stats (query, day, times, affiliate) SELECT d.query, d.day, count(*), d.affiliate FROM daily_query_ip_stats d, proportions p"
+    where_clause = "WHERE d.query = p.query AND p.proportion > 0.10"
+    group_by = "GROUP BY d.query, d.day, d.affiliate"
 
     desc "initial population of daily_query_stats from queries & daily_queries_ip_stats table. Destroys existing data in daily_query_stats table."
     task :populate => :environment do
@@ -69,11 +68,11 @@ namespace :usasearch do
 
   private
   def calculate_proportions
-    sql = "drop table if exists proportions"
+    sql = "DROP TABLE IF EXISTS proportions"
     ActiveRecord::Base.connection.execute(sql)
-    sql = "create temporary table proportions(query varchar(100), times int, uips int, proportion float) select query, sum(times) as times, count( distinct ipaddr) as uips, count( distinct ipaddr)/sum(times) proportion from daily_query_ip_stats  group by query having times > 10"
+    sql = "CREATE TEMPORARY TABLE proportions(query varchar(100), affiliate varchar(32), times int, uips int, proportion float) SELECT query, affiliate, sum(times) as times, count(distinct ipaddr) as uips, count(distinct ipaddr)/sum(times) proportion FROM daily_query_ip_stats GROUP BY affiliate, query HAVING times > 10"
     ActiveRecord::Base.connection.execute(sql)
-    sql = "alter table proportions add index qp (query, proportion)"
+    sql = "ALTER TABLE proportions ADD INDEX qp (query, proportion)"
     ActiveRecord::Base.connection.execute(sql)
   end
 end

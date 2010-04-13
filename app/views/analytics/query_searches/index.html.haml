@@ -1,4 +1,4 @@
 .span-24
-  = render :partial => "analytics/shared/search"
+  = render :partial => "analytics/shared/search", :locals => { :path => analytics_query_search_path, :affiliate => nil }
 .span-16
-  = render :partial => "analytics/shared/searchresults", :locals => { :search => @search_results }
+  = render :partial => "analytics/shared/searchresults", :locals => { :search => @search_results, :affiliate => nil }

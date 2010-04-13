@@ -192,3 +192,97 @@ Feature: Affiliate clients
     And I should see "Copy and paste the HTML code below to create a search box for aff.gov"
     And I should see "English Version"
     And I should see "Spanish Version"
+
+  Scenario: Getting an embed code for affiliate Search as You Type (SAYT)
+    Given the following Affiliates exist:
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the user account page
+    And I follow "Get Code"
+    Then I should see "Search as You Type"
+    
+  Scenario: Stats link on affiliate home page
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
+    When I go to the user account page
+    Then I should see "Analytics"
+    
+  Scenario: Getting stats for an affiliate
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
+    When I go to the user account page
+    And I follow "Analytics"
+    Then I should see "Most Frequent Queries"
+    Then I should see "Data for April 15, 2010"
+    And in "dqs1" I should not see "No queries matched"
+    And in "dqs7" I should not see "No queries matched"
+    And in "dqs30" I should not see "No queries matched"
+    
+  Scenario: No daily query stats available for any time period
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And there are no daily query stats
+    When I go to the user account page
+    And I follow "Analytics"
+    Then in "dqs1" I should see "Not enough historic data"
+    And in "dqs7" I should see "Not enough historic data"
+    And in "dqs30" I should see "Not enough historic data"
+
+  Scenario: Searching for a query term that starts with a given string
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And the following DailyQueryStats exist for yesterday:
+    | query                       | times | affiliate |
+    | cenobitic                   | 100   | aff.gov   |
+    | cenolitic                   | 90    | aff.gov   |
+    | finochio                    | 80    | aff.gov   |
+    | burmannia                   | 40    | aff.gov   |
+    When I go to the user account page
+    And I follow "Analytics"
+    When I fill in "query" with "ceno"
+    And I choose "Starts with"
+    And I press "Search"
+    Then I should see "Results starting with 'ceno'"
+    And I should see "cenobitic"
+    And I should see "cenolitic"
+
+  Scenario: Searching for a query term that contains a given string
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And the following DailyQueryStats exist for yesterday:
+    | query                       | times | affiliate |
+    | cenobitic                   | 100   | aff.gov   |
+    | cenolitic                   | 90    | aff.gov   |
+    | finochio                    | 80    | aff.gov   |
+    | burmannia                   | 40    | aff.gov   |
+    When I go to the user account page
+    And I follow "Analytics"
+    When I fill in "query" with "itic"
+    And I choose "Contains"
+    And I press "Search"
+    Then I should see "Results containing 'itic'"
+    And I should see "cenobitic"
+    And I should see "cenolitic"
+    
+  Scenario: Doing a blank search from the affiliate analytics page
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And I am on the user account page
+    And I follow "Analytics"
+    And I press "Search"
+    Then I should see "Please enter search term(s)"

@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-analytics-home_helper_rb.html">app/helpers/analytics/home_helper.rb</a></td>
-            <td class='right_align'><tt>41</tt></td>
-            <td class='right_align'><tt>37</tt></td>
+            <td class='right_align'><tt>53</tt></td>
+            <td class='right_align'><tt>47</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -99,211 +99,283 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   def query_chart_link(query_count)</pre></td>
+            <td><pre><a name="line8">8</a>   def query_chart_link(query_count, affiliate = nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     html = link_to(query_count.query, make_query_timeline_path(query_count))</pre></td>
+            <td><pre><a name="line9">9</a>     if affiliate.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     html &lt;&lt; &quot; &quot;</pre></td>
+            <td><pre><a name="line10">10</a>       html = link_to(query_count.query, make_query_timeline_path(query_count))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     html &lt;&lt; link_to(image_tag(&quot;open_new_window.png&quot;, :alt =&gt; &quot;Open graph in new window&quot;, :size =&gt; &quot;8x8&quot;),</pre></td>
+            <td><pre><a name="line11">11</a>       html &lt;&lt; &quot; &quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>                     make_query_timeline_path(query_count),</pre></td>
+            <td><pre><a name="line12">12</a>       html &lt;&lt; link_to(image_tag(&quot;open_new_window.png&quot;, :alt =&gt; &quot;Open graph in new window&quot;, :size =&gt; &quot;8x8&quot;),</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>                       make_query_timeline_path(query_count),</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>                     :popup=&gt;['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'],</pre></td>
+            <td><pre><a name="line14">14</a>                       :popup=&gt;['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>                     :title =&gt; &quot;Open graph in new window&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>     html</pre></td>
+            <td><pre><a name="line15">15</a>                       :title =&gt; &quot;Open graph in new window&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>   end</pre></td>
+            <td><pre><a name="line16">16</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>       html = query_count.query</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a> </pre></td>
+            <td><pre><a name="line18">18</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>   def display_most_recent_date_available(day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>     return &quot;Query data currently unavailable&quot; if day.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>     current_day = content_tag(:span,day.to_s(:long), :class=&gt;&quot;highlight&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>     html = &quot;Data for #{current_day}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>     firstdate = DailyQueryStat.minimum(:day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>     first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>     lastdate = DailyQueryStat.maximum(:day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>     last = [lastdate.year, (lastdate.month.to_i - 1), lastdate.day].join(',')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>     html&lt;&lt; calendar_date_select_tag(&quot;pop_up_hidden&quot;, &quot;&quot;, :hidden =&gt; true, :image=&gt;&quot;change_date.png&quot;, :buttons =&gt; false,</pre></td>
+            <td><pre><a name="line19">19</a>     html</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>                                     :onchange =&gt; &quot;location = '/analytics/?day='+$F(this);&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>                                     :valid_date_check =&gt; &quot;date &lt;= (new Date(#{last})).stripTime() &amp;&amp; date &gt;= (new Date(#{first})).stripTime()&quot;)</pre></td>
+            <td><pre><a name="line20">20</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>   end</pre></td>
+            <td><pre><a name="line21">21</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>   def display_most_recent_date_available(day, affiliate = nil)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>     return &quot;Query data currently unavailable&quot; if day.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>     current_day = content_tag(:span,day.to_s(:long), :class=&gt;&quot;highlight&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>     html = &quot;Data for #{current_day}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>     firstdate = DailyQueryStat.minimum(:day, :conditions =&gt; ['affiliate = ?', affiliate_name(affiliate)])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>     first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>     lastdate = DailyQueryStat.maximum(:day, :conditions =&gt; ['affiliate = ?', affiliate_name(affiliate)])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>     last = [lastdate.year, (lastdate.month.to_i - 1), lastdate.day].join(',')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>     html&lt;&lt; calendar_date_select_tag(&quot;pop_up_hidden&quot;, &quot;&quot;, :hidden =&gt; true, :image=&gt;&quot;change_date.png&quot;, :buttons =&gt; false,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>                                     :onchange =&gt; &quot;location = '#{analytics_path_prefix(affiliate)}/?day='+$F(this);&quot;,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>                                     :valid_date_check =&gt; &quot;date &lt;= (new Date(#{last})).stripTime() &amp;&amp; date &gt;= (new Date(#{first})).stripTime()&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>   def display_select_for_window(window, num_results, day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>     options = [10, 50, 100, 500, 1000].collect{ |x| [&quot;Show #{x} results&quot;, x] }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>     select_tag(&quot;num_results_select#{window}&quot;, options_for_select( options, num_results), {</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>       :onchange =&gt; &quot;location = '/analytics/?day=#{day}&amp;num_results_#{window}='+this.options[this.selectedIndex].value;&quot;})</pre></td>
+            <td><pre><a name="line33">33</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line36">36</a> </pre></td>
+            <td><pre><a name="line34">34</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>   private</pre></td>
+            <td><pre><a name="line35">35</a>   def display_select_for_window(window, num_results, day, affiliate = nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>   def make_query_timeline_path(query_count)</pre></td>
+            <td><pre><a name="line36">36</a>     options = [10, 50, 100, 500, 1000].collect{ |x| [&quot;Show #{x} results&quot;, x] }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     query_count.children.empty? ? query_timeline_path(query_count.query) : query_timeline_path(query_count.query, :grouped =&gt; 1)</pre></td>
+            <td><pre><a name="line37">37</a>     select_tag(&quot;num_results_select#{window}&quot;, options_for_select( options, num_results), {</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>       :onchange =&gt; &quot;location = '#{analytics_path_prefix(affiliate)}/?day=#{day}&amp;num_results_#{window}='+this.options[this.selectedIndex].value;&quot;})</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>   end</pre></td>
+            <td><pre><a name="line39">39</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a> end</pre></td>
+            <td><pre><a name="line40">40</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>   def affiliate_name(affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>     affiliate ? affiliate.name : DailyQueryStat::DEFAULT_AFFILIATE_NAME</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line43">43</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>   def analytics_path_prefix(affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line46">46</a>     affiliate ? &quot;/affiliates/#{affiliate.id}/analytics&quot; : &quot;/analytics&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line47">47</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line48">48</a>    </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line50">50</a>   def make_query_timeline_path(query_count)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>     query_count.children.empty? ? query_timeline_path(query_count.query) : query_timeline_path(query_count.query, :grouped =&gt; 1)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line53">53</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Apr 15 22:25:33 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Mon Apr 19 10:31:07 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
