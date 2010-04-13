@@ -10,6 +10,7 @@ class SearchesController < ApplicationController
     @search.run
     @page_title = @search.query
     handle_affiliate_search
+    record_accepted_sayt_suggestion
   end
 
   def auto_complete_for_search_query
@@ -27,6 +28,10 @@ class SearchesController < ApplicationController
       @page_title = "#{t :search_results_for} #{@affiliate.name}: #{@search.query}"
       render :action => "affiliate_index", :layout => "affiliate"
     end
+  end
+
+  def record_accepted_sayt_suggestion
+    AcceptedSaytSuggestion.create!(:phrase=>params["query"]) if params["sayt"]
   end
 
   # TODO This could be cleaned up into search.rb

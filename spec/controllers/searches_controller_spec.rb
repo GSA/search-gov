@@ -66,17 +66,17 @@ describe SearchesController do
     end
 
     should_render_template 'searches/index.html.haml', :layout => 'application'
-    
+
     should_assign_to :page_title
-    
+
     it "should assign the query as the page title" do
       @page_title.should == "social security"
     end
-    
+
     it "should show a custom title for the results page" do
       response.body.should contain("social security - The U.S. Government's Official Web Search")
     end
-    
+
     it "should set the query in the Search model" do
       @search.query.should == "social security"
     end
@@ -108,7 +108,7 @@ describe SearchesController do
     it "should set an affiliate page title" do
       @page_title.should == "Search.USA.gov search results for #{@affiliate.name}: #{@search.query}"
     end
-    
+
     it "should render the header in the response" do
       response.body.should match(/#{@affiliate.header}/)
     end
@@ -169,6 +169,26 @@ describe SearchesController do
     it "should search for GovForm results" do
       @search.should_not be_nil
       @search.gov_forms.should_not be_nil
+    end
+  end
+
+  context "when handling a search based on an SAYT suggestion" do
+    before do
+      get :index, :query => 'very suggestive', :sayt => true
+    end
+
+    it "should record the accepted suggestion" do
+      AcceptedSaytSuggestion.find_by_phrase('very suggestive').should_not be_nil
+    end
+  end
+
+  context "when handling a search NOT based on an SAYT suggestion" do
+    before do
+      get :index, :query => 'very suggestive'
+    end
+
+    it "should NOT record the accepted suggestion" do
+      AcceptedSaytSuggestion.find_by_phrase('very suggestive').should be_nil
     end
   end
 
