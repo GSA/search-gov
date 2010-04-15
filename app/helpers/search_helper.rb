@@ -27,12 +27,10 @@ module SearchHelper
   end
 
   def display_result_links (result, link = true)
-    if false == link then
-      return shorten_url(result['unescapedUrl'])
-    end
+    shortened_url = shorten_url(result['unescapedUrl'])
+    return shortened_url unless link
 
-    url = shorten_url "#{result['unescapedUrl']}"
-    html = link_to(url, "#{h result['unescapedUrl']}")
+    html = link_to shortened_url, click_url(:key => result['jumpClickKey'])
     unless result['cacheUrl'].blank?
       html << " - "
       html << link_to((t :cached), "#{h result['cacheUrl']}", :class => 'cache_link')
@@ -52,7 +50,7 @@ module SearchHelper
   end
 
   def display_result_title (result)
-    link_to "#{translate_bing_highlights(h(result['title']))}", "#{h result['unescapedUrl']}"
+    link_to "#{translate_bing_highlights(h(result['title']))}", click_url(:key => result['jumpClickKey'])
   end
 
   def display_result_description (result)

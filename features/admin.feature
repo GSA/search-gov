@@ -68,3 +68,14 @@ Feature:  Administration
     And I press "Upload"
     Then I should see "Your file could not be processed."
 
+  Scenario: Seeing click thru details from user searches
+    Given I am on the homepage
+    And I fill in "query" with "barack obama biography"
+    And I submit the search form
+    And I follow "Inauguration Day 2009"
+    When I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And I go to the admin home page
+    And I follow "Search Clickthrus"
+    Then I should see "barack obama biography"
+
+

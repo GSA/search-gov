@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :affiliates, :member => { :push_content_for => :post, :embed_code => :get } do |affiliate|
     affiliate.resource :boosted_sites_upload, :only => [:create, :new]
   end
+  map.click '/click', :controller => "clicks", :action => "create"
   map.search '/search', :controller => "searches"
   map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get
   map.image_search "/search/images", :controller => "image_searches", :action => "index"
@@ -25,6 +26,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :affiliate_broadcasts, :only => [:new, :create]
     admin.resources :faqs, :active_scaffold => true
     admin.resources :gov_forms, :active_scaffold => true
+    admin.resources :clicks, :active_scaffold => true
   end
   map.admin_home_page '/admin', :controller => "admin/home"
   map.namespace(:analytics) do |admin|

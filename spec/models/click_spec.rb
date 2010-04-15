@@ -1,14 +1,15 @@
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+
 describe Click do
-  before(:each) do
+  before do
     @valid_attributes = {
       :query => "barack obama",
-      :queried_at => Time.now,
+      :queried_at => DateTime.now,
+      :clicked_at => DateTime.now,
       :url => 'http://www.whitehouse.gov/',
-      :serp_position => 0,
-      :source => 'firstgov',
-      :project => 'firstgov-autos',
-      :affiliate => 'usasearch.gov'
+      :serp_position => 1,
+      :results_source => 'BingResults',
+      :affiliate => 'doi.gov'
     }
   end
 
@@ -16,6 +17,5 @@ describe Click do
     Click.create!(@valid_attributes)
   end
 
-  should_validate_presence_of :queried_at
-  should_validate_presence_of :url
+  should_validate_presence_of :queried_at, :url, :query, :results_source
 end
