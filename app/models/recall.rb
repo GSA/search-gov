@@ -128,7 +128,7 @@ class Recall < ActiveRecord::Base
     require 'rexml/document'
     REXML::Document.new(Net::HTTP.get_response(URI.parse(url)).body).elements.each('message/results/result') do |element|
       process_cpsc_row([
-        element.attributes["y2k"].to_s.slice(1, 6),
+        element.attributes["recallNo"],
         element.attributes["y2k"],
         element.attributes["manufacturer"],
         element.attributes["type"],
