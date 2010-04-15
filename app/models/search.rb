@@ -78,16 +78,34 @@ class Search
   end
 
   def process_results(response)
+    idx = 0
     processed = response.web.results.collect do |result|
-      {
-        'title'         => (result.title rescue nil),
-        'unescapedUrl'  => result.url,
-        'content'       => (result.description rescue nil),
-        'cacheUrl'      => (result.CacheUrl rescue nil),
-        'deepLinks'     => result["DeepLinks"]
-      }
+      title = result.title rescue nil
+      content = result.description rescue nil
+      if title.present? and content.present?
+        idx += 1
+        {
+          'title'         => title,
+          'unescapedUrl'  => result.url,
+          'content'       => content,
+          'cacheUrl'      => (result.CacheUrl rescue nil),
+          'jumpClickKey'  => cache(result.url, idx, "BingResults"),
+          'deepLinks'     => result["DeepLinks"]
+        }
+      else
+        nil
+      end
     end
-    processed.reject { |hash| hash['title'].blank? or hash['content'].blank? }
+    processed.compact
+  end
+
+  def cache(url, idx, source)
+    click = Click.new(:query=> self.query, :queried_at => DateTime.now, :url => url, :serp_position => idx,
+                      :affiliate => (self.affiliate.name if self.affiliate), :results_source=> source)
+    json = click.to_json
+    md5 = Digest::MD5.hexdigest(json)
+    Rails.cache.write(md5, json)
+    md5
   end
 
   def bing_query(query_string, offset, count)
@@ -131,7 +149,7 @@ class Search
     end
     if query =~ /\brecalls?\b/i and not query=~ /^recalls?$/i
       begin
-        self.recalls = Recall.search_for(query.gsub(/\brecalls?\b/i,'').strip, {:start_date=>1.month.ago.to_date, :end_date=>Date.today})
+        self.recalls = Recall.search_for(query.gsub(/\brecalls?\b/i, '').strip, {:start_date=>1.month.ago.to_date, :end_date=>Date.today})
       rescue RSolr::RequestError => error
         RAILS_DEFAULT_LOGGER.warn "Error in searching for Recalls: #{error.to_s}"
         self.recalls = nil

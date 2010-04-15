@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-search_helper_rb.html">app/helpers/search_helper.rb</a></td>
-            <td class='right_align'><tt>266</tt></td>
-            <td class='right_align'><tt>245</tt></td>
+            <td class='right_align'><tt>264</tt></td>
+            <td class='right_align'><tt>243</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -231,1429 +231,1417 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>     if false == link then</pre></td>
+            <td><pre><a name="line30">30</a>     shortened_url = shorten_url(result['unescapedUrl'])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>       return shorten_url(result['unescapedUrl'])</pre></td>
+            <td><pre><a name="line31">31</a>     return shortened_url unless link</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>     end</pre></td>
+            <td><pre><a name="line32">32</a> </pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line33">33</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>     url = shorten_url &quot;#{result['unescapedUrl']}&quot;</pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line35">35</a>     html = link_to(url, &quot;#{h result['unescapedUrl']}&quot;)</pre></td>
+            <td><pre><a name="line33">33</a>     html = link_to shortened_url, click_url(:key =&gt; result['jumpClickKey'])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>     unless result['cacheUrl'].blank?</pre></td>
+            <td><pre><a name="line34">34</a>     unless result['cacheUrl'].blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>       html &lt;&lt; &quot; - &quot;</pre></td>
+            <td><pre><a name="line35">35</a>       html &lt;&lt; &quot; - &quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>       html &lt;&lt; link_to((t :cached), &quot;#{h result['cacheUrl']}&quot;, :class =&gt; 'cache_link')</pre></td>
+            <td><pre><a name="line36">36</a>       html &lt;&lt; link_to((t :cached), &quot;#{h result['cacheUrl']}&quot;, :class =&gt; 'cache_link')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>     end</pre></td>
+            <td><pre><a name="line37">37</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>     html</pre></td>
+            <td><pre><a name="line38">38</a>     html</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   end</pre></td>
+            <td><pre><a name="line39">39</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a> </pre></td>
+            <td><pre><a name="line40">40</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>   def display_deep_links_for(result)</pre></td>
+            <td><pre><a name="line41">41</a>   def display_deep_links_for(result)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>     return if result[&quot;deepLinks&quot;].nil?</pre></td>
+            <td><pre><a name="line42">42</a>     return if result[&quot;deepLinks&quot;].nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>     rows = []</pre></td>
+            <td><pre><a name="line43">43</a>     rows = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>     result[&quot;deepLinks&quot;].in_groups_of(2)[0, 4].each do |row_pair|</pre></td>
+            <td><pre><a name="line44">44</a>     result[&quot;deepLinks&quot;].in_groups_of(2)[0, 4].each do |row_pair|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>       row = content_tag(:td, row_pair[0].nil? ? &quot;&quot; : link_to((h row_pair[0].title), row_pair[0].url))</pre></td>
+            <td><pre><a name="line45">45</a>       row = content_tag(:td, row_pair[0].nil? ? &quot;&quot; : link_to((h row_pair[0].title), row_pair[0].url))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>       row &lt;&lt; content_tag(:td, row_pair[1].nil? ? &quot;&quot; : link_to((h row_pair[1].title), row_pair[1].url))</pre></td>
+            <td><pre><a name="line46">46</a>       row &lt;&lt; content_tag(:td, row_pair[1].nil? ? &quot;&quot; : link_to((h row_pair[1].title), row_pair[1].url))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>       rows &lt;&lt; content_tag(:tr, row)</pre></td>
+            <td><pre><a name="line47">47</a>       rows &lt;&lt; content_tag(:tr, row)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>     end</pre></td>
+            <td><pre><a name="line48">48</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>     content_tag(:table, rows, :class=&gt;&quot;deep_links&quot;)</pre></td>
+            <td><pre><a name="line49">49</a>     content_tag(:table, rows, :class=&gt;&quot;deep_links&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>   end</pre></td>
+            <td><pre><a name="line50">50</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line53">53</a> </pre></td>
+            <td><pre><a name="line51">51</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>   def display_result_title (result)</pre></td>
+            <td><pre><a name="line52">52</a>   def display_result_title (result)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>     link_to &quot;#{translate_bing_highlights(h(result['title']))}&quot;, &quot;#{h result['unescapedUrl']}&quot;</pre></td>
+            <td><pre><a name="line53">53</a>     link_to &quot;#{translate_bing_highlights(h(result['title']))}&quot;, click_url(:key =&gt; result['jumpClickKey'])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a>   end</pre></td>
+            <td><pre><a name="line54">54</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line57">57</a> </pre></td>
+            <td><pre><a name="line55">55</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>   def display_result_description (result)</pre></td>
+            <td><pre><a name="line56">56</a>   def display_result_description (result)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>     translate_bing_highlights(h(result['content']))</pre></td>
+            <td><pre><a name="line57">57</a>     translate_bing_highlights(h(result['content']))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a>   end</pre></td>
+            <td><pre><a name="line58">58</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line61">61</a> </pre></td>
+            <td><pre><a name="line59">59</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>   def translate_bing_highlights(body)</pre></td>
+            <td><pre><a name="line60">60</a>   def translate_bing_highlights(body)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>     body.gsub(/\xEE\x80\x80/, '&lt;strong&gt;').gsub(/\xEE\x80\x81/, '&lt;/strong&gt;')</pre></td>
+            <td><pre><a name="line61">61</a>     body.gsub(/\xEE\x80\x80/, '&lt;strong&gt;').gsub(/\xEE\x80\x81/, '&lt;/strong&gt;')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a>   end</pre></td>
+            <td><pre><a name="line62">62</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a> </pre></td>
+            <td><pre><a name="line63">63</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>   def strip_bing_highlights(body)</pre></td>
+            <td><pre><a name="line64">64</a>   def strip_bing_highlights(body)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>     body.gsub(/\xEE\x80\x80/, '').gsub(/\xEE\x80\x81/, '')</pre></td>
+            <td><pre><a name="line65">65</a>     body.gsub(/\xEE\x80\x80/, '').gsub(/\xEE\x80\x81/, '')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line68">68</a>   end</pre></td>
+            <td><pre><a name="line66">66</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a> </pre></td>
+            <td><pre><a name="line67">67</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>   def unescaped_text_field_with_auto_complete(object, method, tag_options = {}, completion_options = {})</pre></td>
+            <td><pre><a name="line68">68</a>   def unescaped_text_field_with_auto_complete(object, method, tag_options = {}, completion_options = {})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line71">71</a>     tfwac = text_field_with_auto_complete(object, method, tag_options, completion_options)</pre></td>
+            <td><pre><a name="line69">69</a>     tfwac = text_field_with_auto_complete(object, method, tag_options, completion_options)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>     tfwac.gsub(&quot;&amp;amp;&quot;, &quot;&amp;&quot;)</pre></td>
+            <td><pre><a name="line70">70</a>     tfwac.gsub(&quot;&amp;amp;&quot;, &quot;&amp;&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line73">73</a>   end</pre></td>
+            <td><pre><a name="line71">71</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a> </pre></td>
+            <td><pre><a name="line72">72</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line75">75</a>   def shunt_from_bing_to_usasearch(bingurl, affiliate)</pre></td>
+            <td><pre><a name="line73">73</a>   def shunt_from_bing_to_usasearch(bingurl, affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line76">76</a>     query = CGI::unescape(bingurl.split(&quot;?q=&quot;).last)</pre></td>
+            <td><pre><a name="line74">74</a>     query = CGI::unescape(bingurl.split(&quot;?q=&quot;).last)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line77">77</a>     opts = {:query=&gt; query}</pre></td>
+            <td><pre><a name="line75">75</a>     opts = {:query=&gt; query}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line78">78</a>     opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
+            <td><pre><a name="line76">76</a>     opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>     search_path(opts)</pre></td>
+            <td><pre><a name="line77">77</a>     search_path(opts)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line80">80</a>   end</pre></td>
+            <td><pre><a name="line78">78</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line81">81</a> </pre></td>
+            <td><pre><a name="line79">79</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>   def spelling_suggestion(spelling_suggestion, affiliate)</pre></td>
+            <td><pre><a name="line80">80</a>   def spelling_suggestion(spelling_suggestion, affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>     if (spelling_suggestion)</pre></td>
+            <td><pre><a name="line81">81</a>     if (spelling_suggestion)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>       escaped_spelling_suggestion = h(spelling_suggestion)</pre></td>
+            <td><pre><a name="line82">82</a>       escaped_spelling_suggestion = h(spelling_suggestion)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>       rendered_suggestion = translate_bing_highlights(escaped_spelling_suggestion)</pre></td>
+            <td><pre><a name="line83">83</a>       rendered_suggestion = translate_bing_highlights(escaped_spelling_suggestion)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line86">86</a>       suggestion_for_url = strip_bing_highlights(escaped_spelling_suggestion)</pre></td>
+            <td><pre><a name="line84">84</a>       suggestion_for_url = strip_bing_highlights(escaped_spelling_suggestion)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line87">87</a>       opts = {:query=&gt; suggestion_for_url}</pre></td>
+            <td><pre><a name="line85">85</a>       opts = {:query=&gt; suggestion_for_url}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>       opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
+            <td><pre><a name="line86">86</a>       opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line89">89</a>       url = image_search? ? image_search_path(opts): search_path(opts)</pre></td>
+            <td><pre><a name="line87">87</a>       url = image_search? ? image_search_path(opts): search_path(opts)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line90">90</a>       content_tag(:h4, &quot;#{t :did_you_mean}: #{link_to(rendered_suggestion, url)}&quot;)</pre></td>
+            <td><pre><a name="line88">88</a>       content_tag(:h4, &quot;#{t :did_you_mean}: #{link_to(rendered_suggestion, url)}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line91">91</a>     end</pre></td>
+            <td><pre><a name="line89">89</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line92">92</a>   end</pre></td>
+            <td><pre><a name="line90">90</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line93">93</a> </pre></td>
+            <td><pre><a name="line91">91</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line94">94</a>   def results_summary(a, b, total, q, show_logo = true)</pre></td>
+            <td><pre><a name="line92">92</a>   def results_summary(a, b, total, q, show_logo = true)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line95">95</a>     summary = t :results_summary, :from =&gt; a, :to =&gt; b, :total =&gt; number_with_delimiter(total), :query =&gt; q</pre></td>
+            <td><pre><a name="line93">93</a>     summary = t :results_summary, :from =&gt; a, :to =&gt; b, :total =&gt; number_with_delimiter(total), :query =&gt; q</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line96">96</a>     p_sum = content_tag(:p, summary)</pre></td>
+            <td><pre><a name="line94">94</a>     p_sum = content_tag(:p, summary)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line97">97</a>     logo = show_logo ? image_tag(&quot;binglogo.gif&quot;, :style=&gt;&quot;float:right&quot;) : &quot;&quot;</pre></td>
+            <td><pre><a name="line95">95</a>     logo = show_logo ? image_tag(&quot;binglogo.gif&quot;, :style=&gt;&quot;float:right&quot;) : &quot;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line98">98</a>     container = content_tag(:div, logo + p_sum, :id =&gt; &quot;summary&quot;)</pre></td>
+            <td><pre><a name="line96">96</a>     container = content_tag(:div, logo + p_sum, :id =&gt; &quot;summary&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line99">99</a>   end</pre></td>
+            <td><pre><a name="line97">97</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line100">100</a> </pre></td>
+            <td><pre><a name="line98">98</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line101">101</a>   def web_search?</pre></td>
+            <td><pre><a name="line99">99</a>   def web_search?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line102">102</a>     [&quot;searches&quot;, &quot;home&quot;].include?(controller.controller_name)</pre></td>
+            <td><pre><a name="line100">100</a>     [&quot;searches&quot;, &quot;home&quot;].include?(controller.controller_name)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line103">103</a>   end</pre></td>
+            <td><pre><a name="line101">101</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line104">104</a> </pre></td>
+            <td><pre><a name="line102">102</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line105">105</a>   def image_search?</pre></td>
+            <td><pre><a name="line103">103</a>   def image_search?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line106">106</a>     controller.controller_name == &quot;image_searches&quot;</pre></td>
+            <td><pre><a name="line104">104</a>     controller.controller_name == &quot;image_searches&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line107">107</a>   end</pre></td>
+            <td><pre><a name="line105">105</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line108">108</a> </pre></td>
+            <td><pre><a name="line106">106</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line109">109</a>   def no_results_for(query)</pre></td>
+            <td><pre><a name="line107">107</a>   def no_results_for(query)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line110">110</a>     content_tag(:p, (t :no_results_for, :query =&gt; h(query)), :class=&gt;&quot;noresults&quot;)</pre></td>
+            <td><pre><a name="line108">108</a>     content_tag(:p, (t :no_results_for, :query =&gt; h(query)), :class=&gt;&quot;noresults&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line111">111</a>   end</pre></td>
+            <td><pre><a name="line109">109</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line112">112</a> </pre></td>
+            <td><pre><a name="line110">110</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line113">113</a>   EN_SCOPE_ID_OPTIONS = [</pre></td>
+            <td><pre><a name="line111">111</a>   EN_SCOPE_ID_OPTIONS = [</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line114">114</a>     ['All Government Domains', 'all'],</pre></td>
+            <td><pre><a name="line112">112</a>     ['All Government Domains', 'all'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line115">115</a>     ['Federally-Focused', 'federal'],</pre></td>
+            <td><pre><a name="line113">113</a>     ['Federally-Focused', 'federal'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line116">116</a>     ['Non-Federal', 'nonfed'],</pre></td>
+            <td><pre><a name="line114">114</a>     ['Non-Federal', 'nonfed'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line117">117</a>     ['Tribal Sites', 'tribal'],</pre></td>
+            <td><pre><a name="line115">115</a>     ['Tribal Sites', 'tribal'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line118">118</a>     ['US territories', 'territories'],</pre></td>
+            <td><pre><a name="line116">116</a>     ['US territories', 'territories'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line119">119</a>     ['Alabama', 'AL'],</pre></td>
+            <td><pre><a name="line117">117</a>     ['Alabama', 'AL'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line120">120</a>     ['Alaska', 'AK'],</pre></td>
+            <td><pre><a name="line118">118</a>     ['Alaska', 'AK'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line121">121</a>     ['Arizona', 'AZ'],</pre></td>
+            <td><pre><a name="line119">119</a>     ['Arizona', 'AZ'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line122">122</a>     ['Arkansas', 'AR'],</pre></td>
+            <td><pre><a name="line120">120</a>     ['Arkansas', 'AR'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line123">123</a>     ['California', 'CA'],</pre></td>
+            <td><pre><a name="line121">121</a>     ['California', 'CA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line124">124</a>     ['Colorado', 'CO'],</pre></td>
+            <td><pre><a name="line122">122</a>     ['Colorado', 'CO'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line125">125</a>     ['Connecticut', 'CT'],</pre></td>
+            <td><pre><a name="line123">123</a>     ['Connecticut', 'CT'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line126">126</a>     ['D.C.', 'DC'],</pre></td>
+            <td><pre><a name="line124">124</a>     ['D.C.', 'DC'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line127">127</a>     ['Delaware', 'DE'],</pre></td>
+            <td><pre><a name="line125">125</a>     ['Delaware', 'DE'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line128">128</a>     ['Florida', 'FL'],</pre></td>
+            <td><pre><a name="line126">126</a>     ['Florida', 'FL'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line129">129</a>     ['Georgia', 'GA'],</pre></td>
+            <td><pre><a name="line127">127</a>     ['Georgia', 'GA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line130">130</a>     ['Hawaii', 'HI'],</pre></td>
+            <td><pre><a name="line128">128</a>     ['Hawaii', 'HI'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line131">131</a>     ['Idaho', 'ID'],</pre></td>
+            <td><pre><a name="line129">129</a>     ['Idaho', 'ID'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line132">132</a>     ['Illinois', 'IL'],</pre></td>
+            <td><pre><a name="line130">130</a>     ['Illinois', 'IL'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line133">133</a>     ['Indiana', 'IN'],</pre></td>
+            <td><pre><a name="line131">131</a>     ['Indiana', 'IN'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line134">134</a>     ['Iowa', 'IA'],</pre></td>
+            <td><pre><a name="line132">132</a>     ['Iowa', 'IA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line135">135</a>     ['Kansas', 'KS'],</pre></td>
+            <td><pre><a name="line133">133</a>     ['Kansas', 'KS'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line136">136</a>     ['Kentucky', 'KY'],</pre></td>
+            <td><pre><a name="line134">134</a>     ['Kentucky', 'KY'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line137">137</a>     ['Louisiana', 'LA'],</pre></td>
+            <td><pre><a name="line135">135</a>     ['Louisiana', 'LA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line138">138</a>     ['Maine', 'ME'],</pre></td>
+            <td><pre><a name="line136">136</a>     ['Maine', 'ME'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line139">139</a>     ['Maryland', 'MD'],</pre></td>
+            <td><pre><a name="line137">137</a>     ['Maryland', 'MD'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line140">140</a>     ['Massachusetts', 'MA'],</pre></td>
+            <td><pre><a name="line138">138</a>     ['Massachusetts', 'MA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line141">141</a>     ['Michigan', 'MI'],</pre></td>
+            <td><pre><a name="line139">139</a>     ['Michigan', 'MI'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line142">142</a>     ['Minnesota', 'MN'],</pre></td>
+            <td><pre><a name="line140">140</a>     ['Minnesota', 'MN'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line143">143</a>     ['Mississippi', 'MS'],</pre></td>
+            <td><pre><a name="line141">141</a>     ['Mississippi', 'MS'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line144">144</a>     ['Missouri', 'MO'],</pre></td>
+            <td><pre><a name="line142">142</a>     ['Missouri', 'MO'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line145">145</a>     ['Montana', 'MT'],</pre></td>
+            <td><pre><a name="line143">143</a>     ['Montana', 'MT'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line146">146</a>     ['Nebraska', 'NE'],</pre></td>
+            <td><pre><a name="line144">144</a>     ['Nebraska', 'NE'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line147">147</a>     ['Nevada', 'NV'],</pre></td>
+            <td><pre><a name="line145">145</a>     ['Nevada', 'NV'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line148">148</a>     ['New Hampshire', 'NH'],</pre></td>
+            <td><pre><a name="line146">146</a>     ['New Hampshire', 'NH'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line149">149</a>     ['New Jersey', 'NJ'],</pre></td>
+            <td><pre><a name="line147">147</a>     ['New Jersey', 'NJ'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line150">150</a>     ['New Mexico', 'NM'],</pre></td>
+            <td><pre><a name="line148">148</a>     ['New Mexico', 'NM'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line151">151</a>     ['New York', 'NY'],</pre></td>
+            <td><pre><a name="line149">149</a>     ['New York', 'NY'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line152">152</a>     ['North Carolina', 'NC'],</pre></td>
+            <td><pre><a name="line150">150</a>     ['North Carolina', 'NC'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line153">153</a>     ['North Dakota', 'ND'],</pre></td>
+            <td><pre><a name="line151">151</a>     ['North Dakota', 'ND'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line154">154</a>     ['Ohio', 'OH'],</pre></td>
+            <td><pre><a name="line152">152</a>     ['Ohio', 'OH'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line155">155</a>     ['Oklahoma', 'OK'],</pre></td>
+            <td><pre><a name="line153">153</a>     ['Oklahoma', 'OK'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line156">156</a>     ['Oregon', 'OR'],</pre></td>
+            <td><pre><a name="line154">154</a>     ['Oregon', 'OR'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line157">157</a>     ['Pennsylvania', 'PA'],</pre></td>
+            <td><pre><a name="line155">155</a>     ['Pennsylvania', 'PA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line158">158</a>     ['Rhode Island', 'RI'],</pre></td>
+            <td><pre><a name="line156">156</a>     ['Rhode Island', 'RI'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line159">159</a>     ['South Carolina', 'SC'],</pre></td>
+            <td><pre><a name="line157">157</a>     ['South Carolina', 'SC'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line160">160</a>     ['South Dakota', 'SD'],</pre></td>
+            <td><pre><a name="line158">158</a>     ['South Dakota', 'SD'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line161">161</a>     ['Tennessee', 'TN'],</pre></td>
+            <td><pre><a name="line159">159</a>     ['Tennessee', 'TN'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line162">162</a>     ['Texas', 'TX'],</pre></td>
+            <td><pre><a name="line160">160</a>     ['Texas', 'TX'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line163">163</a>     ['Utah', 'UT'],</pre></td>
+            <td><pre><a name="line161">161</a>     ['Utah', 'UT'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line164">164</a>     ['Vermont', 'VT'],</pre></td>
+            <td><pre><a name="line162">162</a>     ['Vermont', 'VT'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line165">165</a>     ['Virgina', 'VA'],</pre></td>
+            <td><pre><a name="line163">163</a>     ['Virgina', 'VA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line166">166</a>     ['Washington', 'WA'],</pre></td>
+            <td><pre><a name="line164">164</a>     ['Washington', 'WA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line167">167</a>     ['West Virginia', 'WV'],</pre></td>
+            <td><pre><a name="line165">165</a>     ['West Virginia', 'WV'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line168">168</a>     ['Wisconsin', 'WI'],</pre></td>
+            <td><pre><a name="line166">166</a>     ['Wisconsin', 'WI'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line169">169</a>     ['Wyoming', 'WY'],</pre></td>
+            <td><pre><a name="line167">167</a>     ['Wyoming', 'WY'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line170">170</a>     ['American Samoa', 'SA'],</pre></td>
+            <td><pre><a name="line168">168</a>     ['American Samoa', 'SA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line171">171</a>     ['Guam', 'GU'],</pre></td>
+            <td><pre><a name="line169">169</a>     ['Guam', 'GU'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line172">172</a>     ['Mariana Islands', 'MP'],</pre></td>
+            <td><pre><a name="line170">170</a>     ['Mariana Islands', 'MP'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line173">173</a>     ['Marshall Islands', 'MH'],</pre></td>
+            <td><pre><a name="line171">171</a>     ['Marshall Islands', 'MH'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line174">174</a>     ['Micronesia', 'micronesia'],</pre></td>
+            <td><pre><a name="line172">172</a>     ['Micronesia', 'micronesia'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line175">175</a>     ['Puerto Rico', 'PR'],</pre></td>
+            <td><pre><a name="line173">173</a>     ['Puerto Rico', 'PR'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line176">176</a>     ['Virgin Islands', 'VI']</pre></td>
+            <td><pre><a name="line174">174</a>     ['Virgin Islands', 'VI']</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line177">177</a>   ]</pre></td>
+            <td><pre><a name="line175">175</a>   ]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line178">178</a> </pre></td>
+            <td><pre><a name="line176">176</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line179">179</a>   ES_SCOPE_ID_OPTIONS = [</pre></td>
+            <td><pre><a name="line177">177</a>   ES_SCOPE_ID_OPTIONS = [</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line180">180</a>     ['a nivel federal y estatal', 'all'],</pre></td>
+            <td><pre><a name="line178">178</a>     ['a nivel federal y estatal', 'all'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line181">181</a>     ['a nivel federal', 'federal'],</pre></td>
+            <td><pre><a name="line179">179</a>     ['a nivel federal', 'federal'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line182">182</a>     ['a nivel estatal', 'nonfed'],</pre></td>
+            <td><pre><a name="line180">180</a>     ['a nivel estatal', 'nonfed'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line183">183</a>     ['a nivel territorial', 'territories'],</pre></td>
+            <td><pre><a name="line181">181</a>     ['a nivel territorial', 'territories'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line184">184</a>     ['Alabama', 'AL'],</pre></td>
+            <td><pre><a name="line182">182</a>     ['Alabama', 'AL'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line185">185</a>     ['Alaska', 'AK'],</pre></td>
+            <td><pre><a name="line183">183</a>     ['Alaska', 'AK'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line186">186</a>     ['Arizona', 'AZ'],</pre></td>
+            <td><pre><a name="line184">184</a>     ['Arizona', 'AZ'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line187">187</a>     ['Arkansas', 'AR'],</pre></td>
+            <td><pre><a name="line185">185</a>     ['Arkansas', 'AR'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line188">188</a>     ['California', 'CA'],</pre></td>
+            <td><pre><a name="line186">186</a>     ['California', 'CA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line189">189</a>     ['Carolina del Norte', 'NC'],</pre></td>
+            <td><pre><a name="line187">187</a>     ['Carolina del Norte', 'NC'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line190">190</a>     ['Carolina del Sur', 'SC'],</pre></td>
+            <td><pre><a name="line188">188</a>     ['Carolina del Sur', 'SC'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line191">191</a>     ['Colorado', 'CO'],</pre></td>
+            <td><pre><a name="line189">189</a>     ['Colorado', 'CO'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line192">192</a>     ['Connecticut', 'CT'],</pre></td>
+            <td><pre><a name="line190">190</a>     ['Connecticut', 'CT'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line193">193</a>     ['Dakota del Norte', 'ND'],</pre></td>
+            <td><pre><a name="line191">191</a>     ['Dakota del Norte', 'ND'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line194">194</a>     ['Dakota del Sur', 'SD'],</pre></td>
+            <td><pre><a name="line192">192</a>     ['Dakota del Sur', 'SD'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line195">195</a>     ['D.C.', 'DC'],</pre></td>
+            <td><pre><a name="line193">193</a>     ['D.C.', 'DC'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line196">196</a>     ['Delaware', 'DE'],</pre></td>
+            <td><pre><a name="line194">194</a>     ['Delaware', 'DE'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line197">197</a>     ['Florida', 'FL'],</pre></td>
+            <td><pre><a name="line195">195</a>     ['Florida', 'FL'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line198">198</a>     ['Georgia', 'GA'],</pre></td>
+            <td><pre><a name="line196">196</a>     ['Georgia', 'GA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line199">199</a>     ['Hawaii', 'HI'],</pre></td>
+            <td><pre><a name="line197">197</a>     ['Hawaii', 'HI'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line200">200</a>     ['Idaho', 'ID'],</pre></td>
+            <td><pre><a name="line198">198</a>     ['Idaho', 'ID'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line201">201</a>     ['Illinois', 'IL'],</pre></td>
+            <td><pre><a name="line199">199</a>     ['Illinois', 'IL'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line202">202</a>     ['Indiana', 'IN'],</pre></td>
+            <td><pre><a name="line200">200</a>     ['Indiana', 'IN'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line203">203</a>     ['Iowa', 'IA'],</pre></td>
+            <td><pre><a name="line201">201</a>     ['Iowa', 'IA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line204">204</a>     ['Kansas', 'KS'],</pre></td>
+            <td><pre><a name="line202">202</a>     ['Kansas', 'KS'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line205">205</a>     ['Kentucky', 'KY'],</pre></td>
+            <td><pre><a name="line203">203</a>     ['Kentucky', 'KY'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line206">206</a>     ['Luisiana', 'LA'],</pre></td>
+            <td><pre><a name="line204">204</a>     ['Luisiana', 'LA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line207">207</a>     ['Maine', 'ME'],</pre></td>
+            <td><pre><a name="line205">205</a>     ['Maine', 'ME'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line208">208</a>     ['Maryland', 'MD'],</pre></td>
+            <td><pre><a name="line206">206</a>     ['Maryland', 'MD'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line209">209</a>     ['Massachusets', 'MA'],</pre></td>
+            <td><pre><a name="line207">207</a>     ['Massachusets', 'MA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line210">210</a>     ['Michigan', 'MI'],</pre></td>
+            <td><pre><a name="line208">208</a>     ['Michigan', 'MI'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line211">211</a>     ['Minesota', 'MN'],</pre></td>
+            <td><pre><a name="line209">209</a>     ['Minesota', 'MN'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line212">212</a>     ['Misisipi', 'MS'],</pre></td>
+            <td><pre><a name="line210">210</a>     ['Misisipi', 'MS'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line213">213</a>     ['Misuri', 'MO'],</pre></td>
+            <td><pre><a name="line211">211</a>     ['Misuri', 'MO'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line214">214</a>     ['Montana', 'MT'],</pre></td>
+            <td><pre><a name="line212">212</a>     ['Montana', 'MT'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line215">215</a>     ['Nebraska', 'NE'],</pre></td>
+            <td><pre><a name="line213">213</a>     ['Nebraska', 'NE'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line216">216</a>     ['Nevada', 'NV'],</pre></td>
+            <td><pre><a name="line214">214</a>     ['Nevada', 'NV'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line217">217</a>     ['Nuevo Hampshire', 'NH'],</pre></td>
+            <td><pre><a name="line215">215</a>     ['Nuevo Hampshire', 'NH'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line218">218</a>     ['Nuevo Jersey', 'NJ'],</pre></td>
+            <td><pre><a name="line216">216</a>     ['Nuevo Jersey', 'NJ'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line219">219</a>     ['Nuevo Mexico', 'NM'],</pre></td>
+            <td><pre><a name="line217">217</a>     ['Nuevo Mexico', 'NM'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line220">220</a>     ['Nuevo York', 'NY'],</pre></td>
+            <td><pre><a name="line218">218</a>     ['Nuevo York', 'NY'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line221">221</a>     ['Ohio', 'OH'],</pre></td>
+            <td><pre><a name="line219">219</a>     ['Ohio', 'OH'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line222">222</a>     ['Oklahoma', 'OK'],</pre></td>
+            <td><pre><a name="line220">220</a>     ['Oklahoma', 'OK'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line223">223</a>     ['Oregón', 'OR'],</pre></td>
+            <td><pre><a name="line221">221</a>     ['Oregón', 'OR'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line224">224</a>     ['Pensilvania', 'PA'],</pre></td>
+            <td><pre><a name="line222">222</a>     ['Pensilvania', 'PA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line225">225</a>     ['Rhode Island', 'RI'],</pre></td>
+            <td><pre><a name="line223">223</a>     ['Rhode Island', 'RI'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line226">226</a>     ['South Carolina', 'SC'],</pre></td>
+            <td><pre><a name="line224">224</a>     ['South Carolina', 'SC'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line227">227</a>     ['South Dakota', 'SD'],</pre></td>
+            <td><pre><a name="line225">225</a>     ['South Dakota', 'SD'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line228">228</a>     ['Tennessee', 'TN'],</pre></td>
+            <td><pre><a name="line226">226</a>     ['Tennessee', 'TN'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line229">229</a>     ['Texas', 'TX'],</pre></td>
+            <td><pre><a name="line227">227</a>     ['Texas', 'TX'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line230">230</a>     ['Utah', 'UT'],</pre></td>
+            <td><pre><a name="line228">228</a>     ['Utah', 'UT'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line231">231</a>     ['Vermont', 'VT'],</pre></td>
+            <td><pre><a name="line229">229</a>     ['Vermont', 'VT'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line232">232</a>     ['Virgina', 'VA'],</pre></td>
+            <td><pre><a name="line230">230</a>     ['Virgina', 'VA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line233">233</a>     ['Virginia Occidental', 'WV'],</pre></td>
+            <td><pre><a name="line231">231</a>     ['Virginia Occidental', 'WV'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line234">234</a>     ['Washington', 'WA'],</pre></td>
+            <td><pre><a name="line232">232</a>     ['Washington', 'WA'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line235">235</a>     ['Wisconsin', 'WI'],</pre></td>
+            <td><pre><a name="line233">233</a>     ['Wisconsin', 'WI'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line236">236</a>     ['Wyoming', 'WY'],</pre></td>
+            <td><pre><a name="line234">234</a>     ['Wyoming', 'WY'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line237">237</a>     ['Estados Federados de Micronesia', 'micronesia'],</pre></td>
+            <td><pre><a name="line235">235</a>     ['Estados Federados de Micronesia', 'micronesia'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line238">238</a>     ['Guam', 'GU'],</pre></td>
+            <td><pre><a name="line236">236</a>     ['Guam', 'GU'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line239">239</a>     ['Islas Mariana', 'MP'],</pre></td>
+            <td><pre><a name="line237">237</a>     ['Islas Mariana', 'MP'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line240">240</a>     ['Islas Marshall', 'MH'],</pre></td>
+            <td><pre><a name="line238">238</a>     ['Islas Marshall', 'MH'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line241">241</a>     ['Islas Vírgenes, EE.UU.', 'VI'],</pre></td>
+            <td><pre><a name="line239">239</a>     ['Islas Vírgenes, EE.UU.', 'VI'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line242">242</a>     ['Puerto Rico', 'PR'],</pre></td>
+            <td><pre><a name="line240">240</a>     ['Puerto Rico', 'PR'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line243">243</a>     ['Samoa Americana', 'SA']</pre></td>
+            <td><pre><a name="line241">241</a>     ['Samoa Americana', 'SA']</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line244">244</a>   ]</pre></td>
+            <td><pre><a name="line242">242</a>   ]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line245">245</a> </pre></td>
+            <td><pre><a name="line243">243</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line246">246</a>   def scope_ids_as_options</pre></td>
+            <td><pre><a name="line244">244</a>   def scope_ids_as_options</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line247">247</a>     if I18n.locale == :es</pre></td>
+            <td><pre><a name="line245">245</a>     if I18n.locale == :es</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line248">248</a>       ES_SCOPE_ID_OPTIONS</pre></td>
+            <td><pre><a name="line246">246</a>       ES_SCOPE_ID_OPTIONS</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line249">249</a>     else</pre></td>
+            <td><pre><a name="line247">247</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line250">250</a>       EN_SCOPE_ID_OPTIONS</pre></td>
+            <td><pre><a name="line248">248</a>       EN_SCOPE_ID_OPTIONS</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line251">251</a>     end</pre></td>
+            <td><pre><a name="line249">249</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line252">252</a>   end</pre></td>
+            <td><pre><a name="line250">250</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line253">253</a> </pre></td>
+            <td><pre><a name="line251">251</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line254">254</a>   private</pre></td>
+            <td><pre><a name="line252">252</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line255">255</a>   def shorten_url (url)</pre></td>
+            <td><pre><a name="line253">253</a>   def shorten_url (url)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line256">256</a>     return url if url.length &lt;=30</pre></td>
+            <td><pre><a name="line254">254</a>     return url if url.length &lt;=30</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line257">257</a>     if url.count('/') &gt;= 4</pre></td>
+            <td><pre><a name="line255">255</a>     if url.count('/') &gt;= 4</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line258">258</a>       arr = url.split('/')</pre></td>
+            <td><pre><a name="line256">256</a>       arr = url.split('/')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line259">259</a>       host= arr[0]+&quot;//&quot;+arr[2]</pre></td>
+            <td><pre><a name="line257">257</a>       host= arr[0]+&quot;//&quot;+arr[2]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line260">260</a>       doc = arr.last.split('?').first</pre></td>
+            <td><pre><a name="line258">258</a>       doc = arr.last.split('?').first</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line261">261</a>       [host, &quot;...&quot;, doc].join('/')</pre></td>
+            <td><pre><a name="line259">259</a>       [host, &quot;...&quot;, doc].join('/')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line262">262</a>     else</pre></td>
+            <td><pre><a name="line260">260</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line263">263</a>       url[0, 30]+&quot;...&quot;</pre></td>
+            <td><pre><a name="line261">261</a>       url[0, 30]+&quot;...&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line264">264</a>     end</pre></td>
+            <td><pre><a name="line262">262</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line265">265</a>   end</pre></td>
+            <td><pre><a name="line263">263</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line266">266</a> end</pre></td>
+            <td><pre><a name="line264">264</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Apr 09 14:09:41 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Apr 15 22:25:33 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

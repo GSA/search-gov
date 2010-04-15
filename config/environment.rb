@@ -27,6 +27,7 @@ Rails::Initializer.run do |config|
   config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version=> '0.11.5'
   config.gem 'hoptoad_notifier'
   config.gem 'fastercsv'
+  config.gem 'memcached'
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
