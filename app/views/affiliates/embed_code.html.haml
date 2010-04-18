@@ -24,21 +24,3 @@
       = '  <input type="text" name="query" id="query-field"/>'
       = '  <input type="submit" value="Search" />'
       = '</form>'
-
-%hr
-
-%h3 Search as You Type
-%p
-  Copy and paste the HTML code below to create a dynamic search box
-  == for #{@affiliate.name} that suggests queries as the user types
-
-= find_and_preserve do
-  .span-12
-    %p English Version
-    %textarea{:readonly => true, :rows => 10}
-      = render "sayt", :locale => "en", :affiliate_name => @affiliate.name
-
-  .span-11
-    %p Spanish Version
-    %textarea{:readonly => true}
-      = render "sayt", :locale => "es", :affiliate_name => @affiliate.name
