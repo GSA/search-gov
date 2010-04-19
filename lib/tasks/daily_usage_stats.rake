@@ -4,7 +4,14 @@ namespace :usasearch do
     yesterday = Date.yesterday
     DailyUsageStat.delete_all(["day = ?", yesterday])
     DailyUsageStat::PROFILES.each do |profile_name, profile_data|
-      @daily_usage_stat = DailyUsageStat.new(:day => yesterday, :profile => profile_name)
+      @daily_usage_stat = DailyUsageStat.new(:day => yesterday, :profile => profile_name, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+      @daily_usage_stat.populate_data
+      if !@daily_usage_stat.save
+        RAILS_DEFAULT_LOGGER.error("Error computing daily usage stats: #{@daily_usage_stat.errors}")
+      end
+    end
+    Affiliate.all.each do |affiliate|
+      @daily_usage_stat = DailyUsageStat.new(:day => yesterday, :profile => 'Affiliates', :affiliate => affiliate.name)
       @daily_usage_stat.populate_data
       if !@daily_usage_stat.save
         RAILS_DEFAULT_LOGGER.error("Error computing daily usage stats: #{@daily_usage_stat.errors}")
@@ -22,7 +29,14 @@ namespace :usasearch do
       DailyUsageStat.delete_all(["day between ? and ?", start_date, end_date])
       start_date.upto(end_date) do |report_date|
         DailyUsageStat::PROFILE_NAMES.each do |profile_name|
-          @daily_usage_stat = DailyUsageStat.new(:day => report_date, :profile => profile_name)
+          @daily_usage_stat = DailyUsageStat.new(:day => report_date, :profile => profile_name, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+          @daily_usage_stat.populate_data
+          if !@daily_usage_stat.save
+            RAILS_DEFAULT_LOGGER.error @daily_usage_stat.errors
+          end
+        end
+        Affiliate.all.each do |affiliate|
+          @daily_usage_stat = DailyUsageStat.new(:day => report_date, :profile => 'Affiliates', :affiliate => affiliate.name)
           @daily_usage_stat.populate_data
           if !@daily_usage_stat.save
             RAILS_DEFAULT_LOGGER.error @daily_usage_stat.errors

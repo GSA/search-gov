@@ -115,12 +115,32 @@ describe DailyUsageStat do
       end
     end
 
+    context "when the populating data for a specific affiliate" do
+      before do
+        @daily_usage_stat = DailyUsageStat.new(:day => @yesterday, :profile => 'Affiliates', :affiliate => 'test.gov')
+      end
+
+      it "should populate the proper data for each of the daily metrics for affiliates" do
+        @daily_usage_stat.populate_data
+        @daily_usage_stat.total_queries.should == 10
+        @daily_usage_stat.total_page_views.should be_nil
+        @daily_usage_stat.total_unique_visitors.should be_nil
+        @daily_usage_stat.total_clicks.should be_nil
+      end
+
+      it "should sum up all the queries from the past day regardless of locale, ignoring bots, for the affiliate specified" do
+        Query.should_receive(:count).with(:all, :conditions => ["timestamp between ? and ? AND affiliate = ? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', @yesterday), Time.parse('23:59:59', @yesterday), 'test.gov'])
+        @daily_usage_stat.populate_data
+      end
+    end
+    
     after do
       DailyUsageStat.delete_all
       Query.delete_all
     end
   end
-
+  
+      
   context "When compiling data for a given month" do
     before do
       @year = 2010
@@ -129,10 +149,10 @@ describe DailyUsageStat do
 
     it "should sum up all the DailyUsageStat values for the given month" do
       DailyUsageStat::PROFILE_NAMES.each do |profile_name|
-        DailyUsageStat.should_receive(:total_monthly_queries).with(@year, @month, profile_name).exactly(1).times
-        DailyUsageStat.should_receive(:total_monthly_page_views).with(@year, @month, profile_name).exactly(1).times
-        DailyUsageStat.should_receive(:total_monthly_unique_visitors).with(@year, @month, profile_name).exactly(1).times
-        DailyUsageStat.should_receive(:total_monthly_clicks).with(@year, @month, profile_name).exactly(1).times
+        DailyUsageStat.should_receive(:total_monthly_queries).with(@year, @month, profile_name, 'usasearch.gov').exactly(1).times
+        DailyUsageStat.should_receive(:total_monthly_page_views).with(@year, @month, profile_name, 'usasearch.gov').exactly(1).times
+        DailyUsageStat.should_receive(:total_monthly_unique_visitors).with(@year, @month, profile_name, 'usasearch.gov').exactly(1).times
+        DailyUsageStat.should_receive(:total_monthly_clicks).with(@year, @month, profile_name, 'usasearch.gov').exactly(1).times
       end
       DailyUsageStat.monthly_totals(@year, @month)
     end

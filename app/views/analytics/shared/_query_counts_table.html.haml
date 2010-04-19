@@ -11,7 +11,7 @@
       %tr
         %td{:colspan=>2}
           = "#{idx+1}."
-          = query_chart_link(query_count, affiliate)
+          = affiliate.nil? ? query_chart_link(query_count) : query_count.query
           = open_close_toggle_icon(content_name,"#{idx}") unless query_count.children.empty?
         %td{:style => "text-align: right"}= query_count.times
       %tr{:id => "#{content_name}item#{idx}", :style => "display:none"}

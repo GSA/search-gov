@@ -13,43 +13,50 @@ class DailyUsageStat < ActiveRecord::Base
                "Affiliates" => { :name => "Search Affiliates", :profile_id => "ivO5EkIX0j6" }
   }
 
-  def self.monthly_totals(year, month)
+  def self.monthly_totals(year, month, affiliate_name = 'usasearch.gov')
     result = {}
-    PROFILE_NAMES.each do |profile|
+    if affiliate_name != 'usasearch.gov'
       profile_totals = {}
-      profile_totals[:total_queries] = total_monthly_queries(year, month, profile)
-      profile_totals[:total_page_views] = total_monthly_page_views(year, month, profile)
-      profile_totals[:total_unique_visitors] = total_monthly_unique_visitors(year, month, profile)
-      profile_totals[:total_clicks] = total_monthly_clicks(year, month, profile)
-      result[profile] = profile_totals
+      profile_totals[:total_queries] = total_monthly_queries(year, month, 'Affiliates', affiliate_name)
+      profile_totals[:total_clicks] = total_monthly_clicks(year, month, 'Affiliates', affiliate_name)
+      result[affiliate_name] = profile_totals
+    else
+      PROFILE_NAMES.each do |profile|
+        profile_totals = {}
+        profile_totals[:total_queries] = total_monthly_queries(year, month, profile, affiliate_name)
+        profile_totals[:total_page_views] = total_monthly_page_views(year, month, profile, affiliate_name)
+        profile_totals[:total_unique_visitors] = total_monthly_unique_visitors(year, month, profile, affiliate_name)
+        profile_totals[:total_clicks] = total_monthly_clicks(year, month, profile, affiliate_name)
+        result[profile] = profile_totals
+      end
     end
     return result
   end
 
-  def self.total_monthly_queries(year, month, profile)
-    sum_usage_stat_by_month(:total_queries, year, month, profile)
+  def self.total_monthly_queries(year, month, profile, affiliate)
+    sum_usage_stat_by_month(:total_queries, year, month, profile, affiliate)
   end
 
-  def self.total_monthly_page_views(year, month, profile)
-    sum_usage_stat_by_month(:total_page_views, year, month, profile)
+  def self.total_monthly_page_views(year, month, profile, affiliate)
+    sum_usage_stat_by_month(:total_page_views, year, month, profile, affiliate)
   end
 
-  def self.total_monthly_unique_visitors(year, month, profile)
-    sum_usage_stat_by_month(:total_unique_visitors, year, month, profile)
+  def self.total_monthly_unique_visitors(year, month, profile, affiliate)
+    sum_usage_stat_by_month(:total_unique_visitors, year, month, profile, affiliate)
   end
 
-  def self.total_monthly_clicks(year, month, profile)
-    sum_usage_stat_by_month(:total_clicks, year, month, profile)
+  def self.total_monthly_clicks(year, month, profile, affiliate)
+    sum_usage_stat_by_month(:total_clicks, year, month, profile, affiliate)
   end
 
-  def self.sum_usage_stat_by_month(field, year, month, profile)
+  def self.sum_usage_stat_by_month(field, year, month, profile, affiliate)
     report_date = Date.civil(year, month)
-    DailyUsageStat.sum(field, :conditions => [ "(day between ? and ?) AND profile = ?", report_date.beginning_of_month, report_date.end_of_month, profile ])
+    DailyUsageStat.sum(field, :conditions => [ "(day between ? and ?) AND profile = ? AND affiliate = ?", report_date.beginning_of_month, report_date.end_of_month, profile, affiliate ])
   end
 
   def populate_data
     if self.day && self.profile
-      self.populate_webtrends_data
+      self.populate_webtrends_data if self.affiliate == 'usasearch.gov'
       self.populate_queries_data
       self.populate_clicks_data
     end
@@ -67,7 +74,11 @@ class DailyUsageStat < ActiveRecord::Base
       locale = self.profile == 'English' ? 'en' : 'es'
       self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), locale, "usasearch.gov"])
     else
-      self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate <> ? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), "usasearch.gov"])
+      if self.affiliate == 'usasearch.gov'
+        self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate <> ? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), "usasearch.gov"])
+      else
+        self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate = ? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), self.affiliate])
+      end
     end
   end
 

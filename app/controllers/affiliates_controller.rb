@@ -1,6 +1,6 @@
 class AffiliatesController < AffiliateAuthController
   before_filter :require_affiliate, :except=> [:index]
-  before_filter :setup_affiliate, :only=> [:edit, :update, :push_content_for, :destroy, :analytics, :query_search]
+  before_filter :setup_affiliate, :only=> [:edit, :update, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports]
 
   def index
   end

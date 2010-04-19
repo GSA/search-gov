@@ -5,17 +5,13 @@ module Analytics::HomeHelper
                                    :onClick=>"new Effect.toggle('#{name}item#{id}', 'blind', {duration: 0.5,beforeStart:function(){ image = document.getElementById('#{name}toggle#{id}'); image.src = ( image.src.match('opened') ) ? '/images/item_closed.png' : '/images/item_opened.png'; }})"})
   end
 
-  def query_chart_link(query_count, affiliate = nil)
-    if affiliate.nil?
-      html = link_to(query_count.query, make_query_timeline_path(query_count))
-      html << " "
-      html << link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"),
-                      make_query_timeline_path(query_count),
-                      :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'],
-                      :title => "Open graph in new window")
-    else
-      html = query_count.query
-    end
+  def query_chart_link(query_count)
+    html = link_to(query_count.query, make_query_timeline_path(query_count))
+    html << " "
+    html << link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"),
+                    make_query_timeline_path(query_count),
+                    :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'],
+                    :title => "Open graph in new window")
     html
   end
 

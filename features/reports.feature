@@ -8,10 +8,10 @@ Feature: Reports
 
   Scenario: Viewing the Reports homepage
     Given the following DailyUsageStats exists for each day in the current month
-    | profile     | total_queries | total_page_views  | total_unique_visitors | total_clicks  |
-    | English     | 1000          | 1000              | 1000                  | 1000          |
-    | Spanish     | 1000          | 1000              | 1000                  | 1000          |
-    | Affiliates  | 1000          | 1000              | 1000                  | 1000          |
+    | profile     | total_queries | total_page_views  | total_unique_visitors | total_clicks  | affiliate     |
+    | English     | 1000          | 1000              | 1000                  | 1000          | usasearch.gov |
+    | Spanish     | 1000          | 1000              | 1000                  | 1000          | usasearch.gov |
+    | Affiliates  | 1000          | 1000              | 1000                  | 1000          | usasearch.gov |
     And I am logged in with email "analyst@fixtures.org" and password "admin"
     When I am on the reports homepage
     Then I should see the header for the current date
@@ -30,8 +30,8 @@ Feature: Reports
     
   Scenario: Viewing Reports for a month in the past
     Given the following DailyUsageStats exist for each day in "2010-02"
-    | profile | total_queries | total_page_views  | total_unique_visitors | total_clicks  |
-    | English | 1000          | 1000              | 1000                  | 1000          |
+    | profile | total_queries | total_page_views  | total_unique_visitors | total_clicks  | affiliate     |
+    | English | 1000          | 1000              | 1000                  | 1000          | usasearch.gov |
     And I am logged in with email "analyst@fixtures.org" and password "admin"
     And I am on the reports homepage
     And I select "February 1, 2010" as the report date  

@@ -30,15 +30,15 @@
             <td class="left_align"><a href="app-controllers-affiliates_controller_rb.html">app/controllers/affiliates_controller.rb</a></td>
             <td class='right_align'><tt>86</tt></td>
             <td class='right_align'><tt>74</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>95.35%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:95px"></div>
-            <div class="uncovered" style="width:5px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>94.59%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:95px"></div>
-            <div class="uncovered" style="width:5px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -69,7 +69,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   before_filter :setup_affiliate, :only=&gt; [:edit, :update, :push_content_for, :destroy, :analytics, :query_search]</pre></td>
+            <td><pre><a name="line3">3</a>   before_filter :setup_affiliate, :only=&gt; [:edit, :update, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports]</pre></td>
           </tr>
         
           
@@ -440,25 +440,25 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line65">65</a>     @today = Date.today</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line66">66</a>     @report_date = params[:date].blank? ? @today : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line67">67</a>     @monthly_totals = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, @affiliate.name)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line68">68</a>   end</pre></td>
           </tr>
         
@@ -573,7 +573,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Mon Apr 19 10:31:07 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Apr 20 17:28:43 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

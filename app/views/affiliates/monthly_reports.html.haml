@@ -1,0 +1,21 @@
+#h1
+  Monthly Usage
+
+- form_tag(affiliate_analytics_monthly_reports_path(@affiliate), :method => :get) do
+  = select_date @report_date, { :discard_day => true, :start_year => 2010, :end_year => @today.year }
+  = submit_tag 'Get Usage Stats'
+%br
+- if @report_date.future?
+  %p
+    Report information not available for the future.
+- else
+  %h3
+    = "Monthly Usage Stats for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}"
+    - unless @report_date.year != @today.year || @report_date.month != @today.month
+      = "(current as of #{Date::MONTHNAMES[@today.yesterday.month.to_i]} #{@today.yesterday.day}, #{@today.yesterday.year})"
+  .usage_stats{ :id => "#{@affiliate.name.downcase}_usage_stats" }
+    %ul
+      %li
+        Total Queries: #{number_with_delimiter @monthly_totals[@affiliate.name][:total_queries]}
+      %li
+        Total Click Throughs: #{number_with_delimiter @monthly_totals[@affiliate.name][:total_clicks]}
