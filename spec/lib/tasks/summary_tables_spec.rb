@@ -96,34 +96,34 @@ describe "summary_tables rake tasks" do
           DailyQueryIpStat.find_by_query("do not ignore me").should_not be_nil
         end
       end
-      
+
       context "when search are not from a known bot" do
         before do
           Query.create!(@valid_attributes.merge(:is_bot => false, :query => 'not a bot'))
         end
-        
+
         it "should include it in the calculation" do
           @rake[@task_name].invoke
           DailyQueryIpStat.find_by_query("not a bot").should_not be_nil
         end
       end
-      
+
       context "when searches are from a marked as being from a bot" do
         before do
           Query.create!(@valid_attributes.merge(:is_bot => true, :query => 'bot'))
         end
-        
+
         it "should ingore them" do
           @rake[@task_name].invoke
           DailyQueryIpStat.find_by_query("bot").should be_nil
         end
       end
-      
+
       context "when searches do not have an is_bot value" do
         before do
           Query.create!(@valid_attributes.merge(:is_bot => nil, :query => 'nil bot'))
         end
-        
+
         it "should include it in the calculation" do
           @rake[@task_name] .invoke
           DailyQueryIpStat.find_by_query("nil bot").should_not be_nil
@@ -261,8 +261,8 @@ describe "summary_tables rake tasks" do
           DailyQueryStat.find_by_query('some search term').should be_nil
         end
       end
-      
-      context "when query and daily ip stats are present for the default site (usasearch.gov) and other affilaites" do
+
+      context "when query and daily ip stats are present for the default site (usasearch.gov) and other affiliates" do
         before do
           first_time = @valid_attributes[:timestamp]
           first_ip = @valid_attributes[:ipaddr]
@@ -284,17 +284,17 @@ describe "summary_tables rake tasks" do
           default_affiliate_total = DailyQueryIpStat.sum(:times, :conditions=> "query = 'some search term' AND affiliate = 'usasearch.gov'")
           test_affiliate_total = DailyQueryIpStat.sum(:times, :conditions=> "query = 'some search term' AND affiliate = 'test.gov'")
           default_affiliate_total.should == 11
-          test_affiliate_total.should == 21      
+          test_affiliate_total.should == 21
         end
-        
-        it "should calcualte the sums separately by affiliate" do
+
+        it "should calculate the sums separately by affiliate" do
           @rake[@task_name].invoke
           DailyQueryStat.find_all_by_affiliate(DailyQueryStat::DEFAULT_AFFILIATE_NAME).should_not be_nil
           DailyQueryStat.find_all_by_affiliate('test.gov').should_not be_nil
         end
       end
-          
-            
+
+
     end
 
     describe "usasearch:daily_query_stats:compute" do
