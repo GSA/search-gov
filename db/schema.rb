@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(:version => 20100419192955) do
     t.integer  "total_clicks"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "affiliate",             :limit => 32, :default => "usasearch.gov"
   end
 
   add_index "daily_usage_stats", ["day", "profile"], :name => "index_daily_usage_stats_on_day_and_profile", :unique => true

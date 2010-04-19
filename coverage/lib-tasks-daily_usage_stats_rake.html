@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-daily_usage_stats_rake.html">lib/tasks/daily_usage_stats.rake</a></td>
-            <td class='right_align'><tt>35</tt></td>
-            <td class='right_align'><tt>33</tt></td>
+            <td class='right_align'><tt>49</tt></td>
+            <td class='right_align'><tt>47</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -93,7 +93,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>       @daily_usage_stat = DailyUsageStat.new(:day =&gt; yesterday, :profile =&gt; profile_name)</pre></td>
+            <td><pre><a name="line7">7</a>       @daily_usage_stat = DailyUsageStat.new(:day =&gt; yesterday, :profile =&gt; profile_name, :affiliate =&gt; DailyQueryStat::DEFAULT_AFFILIATE_NAME)</pre></td>
           </tr>
         
           
@@ -128,146 +128,230 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>     Affiliate.all.each do |affiliate|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   desc &quot;Update usage statistics for a date range.&quot;</pre></td>
+            <td><pre><a name="line14">14</a>       @daily_usage_stat = DailyUsageStat.new(:day =&gt; yesterday, :profile =&gt; 'Affiliates', :affiliate =&gt; affiliate.name)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>   task :update_usage_stats, :start_date, :end_date, :needs =&gt; :environment do |t, args|</pre></td>
+            <td><pre><a name="line15">15</a>       @daily_usage_stat.populate_data</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>     if args.start_date.blank? || args.end_date.blank?</pre></td>
+            <td><pre><a name="line16">16</a>       if !@daily_usage_stat.save</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>       RAILS_DEFAULT_LOGGER.error(&quot;usage: rake usasearch:update_usage_stats[start_date],[end_date] (Dates should look like: 2010-03-01)&quot;)</pre></td>
+            <td><pre><a name="line17">17</a>         RAILS_DEFAULT_LOGGER.error(&quot;Error computing daily usage stats: #{@daily_usage_stat.errors}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>       start_date = Date.parse(args.start_date)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>       end_date = Date.parse(args.end_date)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>       DailyUsageStat.delete_all([&quot;day between ? and ?&quot;, start_date, end_date])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>       start_date.upto(end_date) do |report_date|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>         DailyUsageStat::PROFILE_NAMES.each do |profile_name|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>           @daily_usage_stat = DailyUsageStat.new(:day =&gt; report_date, :profile =&gt; profile_name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>           @daily_usage_stat.populate_data</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>           if !@daily_usage_stat.save</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>             RAILS_DEFAULT_LOGGER.error @daily_usage_stat.errors</pre></td>
+            <td><pre><a name="line18">18</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>           end</pre></td>
+            <td><pre><a name="line19">19</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>         end</pre></td>
+            <td><pre><a name="line20">20</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>       end</pre></td>
+            <td><pre><a name="line21">21</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>   desc &quot;Update usage statistics for a date range.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>   task :update_usage_stats, :start_date, :end_date, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>     if args.start_date.blank? || args.end_date.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       RAILS_DEFAULT_LOGGER.error(&quot;usage: rake usasearch:update_usage_stats[start_date],[end_date] (Dates should look like: 2010-03-01)&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>     end</pre></td>
+            <td><pre><a name="line26">26</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       start_date = Date.parse(args.start_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>       end_date = Date.parse(args.end_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>       DailyUsageStat.delete_all([&quot;day between ? and ?&quot;, start_date, end_date])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>       start_date.upto(end_date) do |report_date|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>         DailyUsageStat::PROFILE_NAMES.each do |profile_name|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>           @daily_usage_stat = DailyUsageStat.new(:day =&gt; report_date, :profile =&gt; profile_name, :affiliate =&gt; DailyQueryStat::DEFAULT_AFFILIATE_NAME)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>           @daily_usage_stat.populate_data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>           if !@daily_usage_stat.save</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>             RAILS_DEFAULT_LOGGER.error @daily_usage_stat.errors</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>   end</pre></td>
+            <td><pre><a name="line36">36</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a> </pre></td>
+            <td><pre><a name="line37">37</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>         Affiliate.all.each do |affiliate|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>           @daily_usage_stat = DailyUsageStat.new(:day =&gt; report_date, :profile =&gt; 'Affiliates', :affiliate =&gt; affiliate.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>           @daily_usage_stat.populate_data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>           if !@daily_usage_stat.save</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>             RAILS_DEFAULT_LOGGER.error @daily_usage_stat.errors</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a> end</pre></td>
+            <td><pre><a name="line43">43</a>           end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line45">45</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line47">47</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line48">48</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line49">49</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Apr 19 10:31:08 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Apr 20 17:28:43 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

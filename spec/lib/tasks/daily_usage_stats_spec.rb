@@ -34,11 +34,11 @@ describe "Daily Usage Stats rake tasks" do
       @rake[@task_name].invoke
     end
 
-    it "should populate data for all of the current profiles" do
-      DailyUsageStat.should_receive(:new).exactly(DailyUsageStat::PROFILES.size).times
+    it "should populate data for all of the current profiles and affiliates" do
+      DailyUsageStat.should_receive(:new).exactly(DailyUsageStat::PROFILES.size + Affiliate.all.size).times
       @rake[@task_name].invoke
     end
-
+    
     context "when an error occurs" do
       before do
         @daily_usage_stat = DailyUsageStat.new(:day => @report_date, :profile => 'English')
@@ -47,7 +47,7 @@ describe "Daily Usage Stats rake tasks" do
       end
 
       it "should log an error" do
-        RAILS_DEFAULT_LOGGER.should_receive(:error).exactly(DailyUsageStat::PROFILE_NAMES.size).times
+        RAILS_DEFAULT_LOGGER.should_receive(:error).exactly(DailyUsageStat::PROFILE_NAMES.size + Affiliate.all.size).times
         @rake[@task_name].invoke
       end
     end
@@ -91,12 +91,8 @@ describe "Daily Usage Stats rake tasks" do
       @rake[@task_name].invoke('2010-03-01', '2010-03-09')
     end
 
-    it "should populate usage stats once per day for each profile" do
-      @start_date.upto(@end_date) do |report_date|
-        DailyUsageStat::PROFILE_NAMES.each do |profile_name|
-          DailyUsageStat.should_receive(:new).with(:day => report_date, :profile => profile_name).exactly(1).times
-        end
-      end
+    it "should populate usage stats once per day for each profile and each affiliate" do
+      DailyUsageStat.should_receive(:new).exactly((DailyUsageStat::PROFILE_NAMES.size + Affiliate.all.size) * (@end_date - @start_date + 1)).times
       @rake[@task_name].invoke('2010-03-01', '2010-03-09')
     end
 
@@ -108,7 +104,7 @@ describe "Daily Usage Stats rake tasks" do
       end
 
       it "should log an error" do
-        RAILS_DEFAULT_LOGGER.should_receive(:error).exactly(DailyUsageStat::PROFILE_NAMES.size * (@end_date - @start_date + 1)).times
+        RAILS_DEFAULT_LOGGER.should_receive(:error).exactly((DailyUsageStat::PROFILE_NAMES.size + Affiliate.all.size) * (@end_date - @start_date + 1)).times
         @rake[@task_name].invoke('2010-03-01', '2010-03-09')
       end
     end
