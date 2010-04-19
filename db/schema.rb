@@ -102,23 +102,23 @@ ActiveRecord::Schema.define(:version => 20100415211705) do
   add_index "clicks", ["serp_position"], :name => "index_clicks_on_serp_position"
 
   create_table "daily_query_ip_stats", :force => true do |t|
-    t.date    "day",                      :null => false
-    t.string  "query",     :limit => 100, :null => false
-    t.string  "ipaddr",    :limit => 17,  :null => false
-    t.integer "times",                    :null => false
-    t.string  "affiliate", :limit => 32
+    t.date    "day",                                                   :null => false
+    t.string  "query",     :limit => 100,                              :null => false
+    t.string  "ipaddr",    :limit => 17,                               :null => false
+    t.integer "times",                                                 :null => false
+    t.string  "affiliate", :limit => 32,  :default => "usasearch.gov"
   end
 
   add_index "daily_query_ip_stats", ["query"], :name => "index_daily_query_ip_stats_on_query"
 
   create_table "daily_query_stats", :force => true do |t|
-    t.date    "day",                      :null => false
-    t.string  "query",     :limit => 100, :null => false
-    t.integer "times",                    :null => false
-    t.string  "affiliate", :limit => 32
+    t.date    "day",                                                   :null => false
+    t.string  "query",     :limit => 100,                              :null => false
+    t.integer "times",                                                 :null => false
+    t.string  "affiliate", :limit => 32,  :default => "usasearch.gov"
   end
 
-  add_index "daily_query_stats", ["day", "query", "affiliate"], :name => "index_daily_query_stats_on_day_and_query_and_affiliate", :unique => true
+  add_index "daily_query_stats", ["day", "query"], :name => "index_daily_query_stats_on_day_and_query_and_affiliate", :unique => true
   add_index "daily_query_stats", ["query", "day"], :name => "index_daily_query_stats_on_query_and_day"
 
   create_table "daily_usage_stats", :force => true do |t|
@@ -201,7 +201,7 @@ ActiveRecord::Schema.define(:version => 20100415211705) do
     t.string   "ipaddr",    :limit => 17
     t.string   "query",     :limit => 100
     t.string   "affiliate", :limit => 32
-    t.datetime "timestamp",                :null => false
+    t.timestamp "timestamp",                :null => false
     t.string   "locale",    :limit => 5
     t.string   "agent"
     t.boolean  "is_bot"
