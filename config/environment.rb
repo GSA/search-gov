@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   config.gem 'hoptoad_notifier'
   config.gem 'fastercsv'
   config.gem 'memcache-client', :lib => 'memcache', :version => '>= 1.8.2'
+  config.gem 'SystemTimer', :lib => 'system_timer', :version => '>= 1.2'
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
