@@ -1,6 +1,6 @@
 class DailyUsageStat < ActiveRecord::Base
-  validates_presence_of :day, :profile
-  validates_uniqueness_of :profile, :scope => :day
+  validates_presence_of :day, :profile, :affiliate
+  validates_uniqueness_of :day, :scope => [:profile, :affiliate]
 
   WEBTRENDS_HOSTNAME = 'ws.webtrends.com'
   WEBTRENDS_ACCOUNT = 'usa.gov'

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100419192955) do
+ActiveRecord::Schema.define(:version => 20100420213732) do
 
   create_table "accepted_sayt_suggestions", :force => true do |t|
     t.string   "phrase",     :null => false
@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(:version => 20100419192955) do
     t.string   "affiliate",             :limit => 32, :default => "usasearch.gov"
   end
 
-  add_index "daily_usage_stats", ["day", "profile"], :name => "index_daily_usage_stats_on_day_and_profile", :unique => true
+  add_index "daily_usage_stats", ["day", "profile", "affiliate"], :name => "index_daily_usage_stats_on_day_and_profile_and_affiliate", :unique => true
 
   create_table "faqs", :force => true do |t|
     t.string   "url"
