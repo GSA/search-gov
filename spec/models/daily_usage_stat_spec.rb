@@ -11,9 +11,14 @@ describe DailyUsageStat do
       :total_clicks => 1
     }
   end
-
-  it "should create a new instance given valid attributes" do
-    DailyUsageStat.create!(@valid_attributes)
+  
+  describe "validations on create" do
+    before do
+      DailyUsageStat.create!(@valid_attributes)
+    end
+          
+    should_validate_presence_of :day, :profile, :affiliate
+    should_validate_uniqueness_of :day, :scope => [:profile, :affiliate]  
   end
 
   context "When populating data for yesterday" do
