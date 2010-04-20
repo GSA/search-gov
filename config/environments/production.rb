@@ -29,3 +29,16 @@ APP_URL = "search.usa.gov"
 
 # Enable threaded mode
 # config.threadsafe!
+
+require 'memcache'
+begin
+  PhusionPassenger.on_event(:starting_worker_process) do |forked|
+    if forked
+# We're in smart spawning mode, so...
+# Close duplicated memcached connections - they will open themselves
+      Rails.cache.instance_variable_get(:@data).reset
+    end
+  end
+# In case you're not running under Passenger (i.e. devmode with mongrel)
+rescue NameError => error
+end
