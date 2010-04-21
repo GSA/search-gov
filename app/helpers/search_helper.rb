@@ -26,11 +26,8 @@ module SearchHelper
     link_to link, result["MediaUrl"], :rel => "no-follow"
   end
 
-  def display_result_links (result, link = true)
-    shortened_url = shorten_url(result['unescapedUrl'])
-    return shortened_url unless link
-
-    html = link_to shortened_url, click_url(:key => result['jumpClickKey'])
+  def display_result_links (result, search, affiliate, position)
+    html = tracked_click_link(result['unescapedUrl'], shorten_url(result['unescapedUrl']), search, affiliate, position, 'BWEB')
     unless result['cacheUrl'].blank?
       html << " - "
       html << link_to((t :cached), "#{h result['cacheUrl']}", :class => 'cache_link')
@@ -49,8 +46,14 @@ module SearchHelper
     content_tag(:table, rows, :class=>"deep_links")
   end
 
-  def display_result_title (result)
-    link_to "#{translate_bing_highlights(h(result['title']))}", click_url(:key => result['jumpClickKey'])
+  def display_result_title (result, search, affiliate, position)
+    tracked_click_link(result['unescapedUrl'], translate_bing_highlights(h(result['title'])),search, affiliate, position, 'BWEB')
+  end
+
+  def tracked_click_link(url, title, search, affiliate, position, source)
+    aff_name = affiliate.name rescue ""
+    query = search.query.gsub("'", "\\\\'")
+    "<a href=\"#{url}\" onmousedown=\"return click('#{query}','#{url}', #{position + 1}, '#{aff_name}', '#{source}', #{search.queried_at_seconds})\">#{title}</a>"
   end
 
   def display_result_description (result)
@@ -77,15 +80,15 @@ module SearchHelper
     search_path(opts)
   end
 
-  def spelling_suggestion(spelling_suggestion, affiliate)
-    if (spelling_suggestion)
-      escaped_spelling_suggestion = h(spelling_suggestion)
+  def spelling_suggestion(search, affiliate)
+    if (search.spelling_suggestion)
+      escaped_spelling_suggestion = h(search.spelling_suggestion)
       rendered_suggestion = translate_bing_highlights(escaped_spelling_suggestion)
       suggestion_for_url = strip_bing_highlights(escaped_spelling_suggestion)
       opts = {:query=> suggestion_for_url}
       opts.merge!(:affiliate => affiliate.name) if affiliate
       url = image_search? ? image_search_path(opts): search_path(opts)
-      content_tag(:h4, "#{t :did_you_mean}: #{link_to(rendered_suggestion, url)}")
+      content_tag(:h4, "#{t :did_you_mean}: #{tracked_click_link(url, rendered_suggestion, search, affiliate, 0, 'BSPEL')}")
     end
   end
 
@@ -93,7 +96,7 @@ module SearchHelper
     summary = t :results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => q
     p_sum = content_tag(:p, summary)
     logo = show_logo ? image_tag("binglogo.gif", :style=>"float:right") : ""
-    container = content_tag(:div, logo + p_sum, :id => "summary")
+    content_tag(:div, logo + p_sum, :id => "summary")
   end
 
   def web_search?

@@ -67,8 +67,6 @@ describe SearchesController do
 
     should_render_template 'searches/index.html.haml', :layout => 'application'
 
-    should_assign_to :page_title
-
     it "should assign the query as the page title" do
       @page_title.should == "social security"
     end

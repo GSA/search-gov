@@ -1,4 +1,4 @@
-= spelling_suggestion(search.spelling_suggestion, @affiliate) if (search)
+= spelling_suggestion(search, @affiliate) if (search)
 - if search.results.present?
   %h1= results_summary(search.startrecord, search.endrecord, search.total, search.query, false)
   %hr
@@ -9,12 +9,13 @@
         .row{:id => "recall#{index+1}"}
           .links= link_to "#{hit.instance.summary}, #{hit.instance.recalled_on.to_formatted_s(:short).strip}", hit.instance.recall_url
   .group
+    - affiliate_name = @affiliate.present? ? @affiliate.name : nil
     - search.results.each_with_index do |search_result, index|
       .row{:id => "searchresult#{index+1}"}
-        .title= display_result_title(search_result)
+        .title= display_result_title(search_result, search, affiliate_name, index)
         .content
           = display_result_description(search_result)
-        .links= display_result_links(search_result, false)
+        .links= shorten_url(search_result['unescapedUrl'])
       - unless index == search.results.length - 1 then
         %hr
   %hr

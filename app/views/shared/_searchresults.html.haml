@@ -1,5 +1,5 @@
 - result_partial = result_partial_for(search)
-= spelling_suggestion(search.spelling_suggestion, @affiliate)
+= spelling_suggestion(search, @affiliate)
 - if (search.boosted_sites && search.boosted_sites.total > 0)
   #boosted
     - search.boosted_sites.hits.each_with_index do |hit, index|
@@ -17,7 +17,7 @@
     #spotlight
       = search.spotlight.html
   - search.results.each_with_index do |result, index|
-    = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => index
+    = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
   = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
 - elsif search.error_message
   %p.noresults #{search.error_message}
