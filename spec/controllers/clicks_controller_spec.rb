@@ -1,49 +1,27 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe ClicksController do
-  fixtures :affiliates
-
   describe "#create" do
-    context "when key exists in cache" do
-      before do
-        @search = Search.new({:query => 'government', :affiliate => affiliates(:basic_affiliate) })
-        @serp_position = 9
-        @url = "http://www.someurl.com"
-        @results_source = "some result source"
-        key = @search.send(:cache, @url, @serp_position, @results_source)
-        get :create, :key => key
-      end
-
-      it "should redirect to destination URL" do
-        response.should redirect_to(@url)
-      end
-
-      it "should record the click" do
-        click = Click.find_by_url_and_results_source_and_serp_position(@url, @results_source, @serp_position)
-        click.query.should == @search.query
-        click.affiliate.should == @search.affiliate.name
-        click.queried_at.should_not be_nil
-        click.clicked_at.should_not be_nil
-      end
+    before do
+      @request.env['REMOTE_ADDR'] = '1.2.3.4'
+      get :create, :u=>"some url", :q=>"some query", :t=> "1271978905", :a=>"some affiliate", :p=>"7", :s=>"results source"
     end
 
-    context "when key can't be found in cache" do
-      it "should redirect to home page" do
-        get :create, :key => "not gonna find me"
-        response.should redirect_to(home_page_path)
-      end
-
-      it "should log a warning so we can track it" do
-        RAILS_DEFAULT_LOGGER.should_receive(:warn)
-        get :create, :key => "not gonna find me"
-      end
+    it "should return success" do
+      response.should be_success
     end
 
-    context "when key isn't passed in" do
-      it "should redirect to home page" do
-        get :create
-        response.should redirect_to(home_page_path)
-      end
+    it "should record the click" do
+      click = Click.last
+      click.query.should == "some query"
+      click.url.should == "some url"
+      click.serp_position.should == 7
+      click.results_source.should == "results source"
+      click.affiliate.should == "some affiliate"
+      click.queried_at.to_i.should == 1271978905
+      click.clicked_at.should_not be_nil
+      click.user_agent.should == 'Rails Testing'
+      click.click_ip.should == '1.2.3.4'
     end
   end
 end

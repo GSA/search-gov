@@ -1,6 +1,6 @@
 .searchresult.clearfix{:id => "searchresult#{index+1}"}
-  %h2= display_result_title(result)
+  %h2= display_result_title(result, search, affiliate, index)
   %h3= display_result_description(result)
-  %h3= display_result_links(result)
+  %h3= display_result_links(result, search, affiliate, index)
   - if affiliate == nil && index == 0 && search.page == 0
     = display_deep_links_for(result)

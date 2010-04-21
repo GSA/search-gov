@@ -1,2 +1,8 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
+function click(query, url, serp_position, affiliate, source, queried_at) {
+  if (document.images) {
+    var img = new Image;
+    params='u='+escape(url)+'&q='+escape(query)+'&p='+serp_position+'&a='+affiliate+'&s='+source+'&t='+queried_at
+    img.src = '/click?'+ params
+  }
+  return true;
+}

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100420213732) do
+ActiveRecord::Schema.define(:version => 20100423010137) do
 
   create_table "accepted_sayt_suggestions", :force => true do |t|
     t.string   "phrase",     :null => false
@@ -95,11 +95,9 @@ ActiveRecord::Schema.define(:version => 20100420213732) do
     t.string   "affiliate",      :limit => 50
     t.datetime "clicked_at"
     t.string   "results_source"
+    t.string   "user_agent"
+    t.string   "click_ip"
   end
-
-  add_index "clicks", ["affiliate"], :name => "index_clicks_on_affiliate"
-  add_index "clicks", ["queried_at"], :name => "index_clicks_on_queried_at"
-  add_index "clicks", ["serp_position"], :name => "index_clicks_on_serp_position"
 
   create_table "daily_query_ip_stats", :force => true do |t|
     t.date    "day",                                                   :null => false
@@ -202,7 +200,7 @@ ActiveRecord::Schema.define(:version => 20100420213732) do
     t.string   "ipaddr",    :limit => 17
     t.string   "query",     :limit => 100
     t.string   "affiliate", :limit => 32
-    t.timestamp "timestamp",                :null => false
+    t.datetime "timestamp",                :null => false
     t.string   "locale",    :limit => 5
     t.string   "agent"
     t.boolean  "is_bot"

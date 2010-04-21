@@ -33,7 +33,8 @@ class Search
                 :recalls,
                 :results_per_page,
                 :filter_setting,
-                :scope_id
+                :scope_id,
+                :queried_at_seconds
 
   def initialize(options = {})
     options ||= {}
@@ -46,6 +47,7 @@ class Search
     self.scope_id = options[:fedstates] || nil
     self.filter_setting = options[:filter] || nil
     self.results, self.related_search = [], []
+    self.queried_at_seconds = Time.now.to_i
   end
 
   def run
@@ -78,18 +80,15 @@ class Search
   end
 
   def process_results(response)
-    idx = 0
     processed = response.web.results.collect do |result|
       title = result.title rescue nil
       content = result.description rescue nil
       if title.present? and content.present?
-        idx += 1
         {
           'title'         => title,
           'unescapedUrl'  => result.url,
           'content'       => content,
           'cacheUrl'      => (result.CacheUrl rescue nil),
-          'jumpClickKey'  => cache(result.url, idx, "BingResults"),
           'deepLinks'     => result["DeepLinks"]
         }
       else
@@ -97,15 +96,6 @@ class Search
       end
     end
     processed.compact
-  end
-
-  def cache(url, idx, source)
-    click = Click.new(:query=> self.query, :queried_at => DateTime.now, :url => url, :serp_position => idx,
-                      :affiliate => (self.affiliate.name if self.affiliate), :results_source=> source)
-    json = click.to_json
-    md5 = Digest::MD5.hexdigest(json)
-    Rails.cache.write(md5, json)
-    md5
   end
 
   def bing_query(query_string, offset, count)

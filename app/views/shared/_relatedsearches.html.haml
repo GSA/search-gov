@@ -1,8 +1,8 @@
 - if (@search && @search.related_search.size > 0)
   %h3.alt= t :related_searches
   %ul{:id => "relatedsearch"}
-    - @search.related_search.each do |result|
-      %li= link_to(translate_bing_highlights(h(result.title)), shunt_from_bing_to_usasearch(result.url, @affiliate ))
+    - @search.related_search.each_with_index do |result, index|
+      %li= tracked_click_link(shunt_from_bing_to_usasearch(result.url, @affiliate ),translate_bing_highlights(h(result.title)), @search, nil, index, 'BREL')
 - else
   &nbsp
 - if (@search && @search.faqs && @search.faqs.total > 0)

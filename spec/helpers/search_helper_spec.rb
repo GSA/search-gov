@@ -8,7 +8,7 @@ describe SearchHelper do
       result['unescapedUrl'] = "actual content is..."
       result['cacheUrl'] = "...not important here"
       helper.should_receive(:shorten_url).once
-      helper.display_result_links(result)
+      helper.display_result_links(result, Search.new, Affiliate.new, 1)
     end
   end
 
