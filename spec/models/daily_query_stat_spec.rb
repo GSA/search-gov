@@ -27,6 +27,8 @@ describe DailyQueryStat do
         DailyQueryStat.delete_all
         DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
         DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 1, :query => "outlier", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed", :affiliate => "affiliate.gov")
+        DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 1, :query => "outlier", :affiliate => 'affiliate.gov')
         @ary = DailyQueryStat.reversed_backfilled_series_since_2009_for("outlier")
       end
 
@@ -170,6 +172,8 @@ describe DailyQueryStat do
         DailyQueryStat.delete_all
         DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 100, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
         DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 100, :affiliate => 'affiliate.gov' )
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 10, :affiliate => 'affiliate.gov' )
         qg = QueryGroup.create!(:name=>"my query group")
         qg.grouped_queries << GroupedQuery.create!(:query=>"query1")
         qg.grouped_queries << GroupedQuery.create!(:query=>"query2")
@@ -207,6 +211,8 @@ describe DailyQueryStat do
       DailyQueryStat.delete_all
       DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+      DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => 'affiliate.gov')
+      DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => 'affiliate.gov')
       qg = QueryGroup.create!(:name=>"my query group")
       qg.grouped_queries << GroupedQuery.create!(:query=>"query1")
       qg.grouped_queries << GroupedQuery.create!(:query=>"query2")
