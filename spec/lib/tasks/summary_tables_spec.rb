@@ -346,6 +346,7 @@ describe "summary_tables rake tasks" do
         before do
           DailyQueryStat.delete_all
           Date.yesterday.upto(Date.tomorrow) {|day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME) }
+          Date.yesterday.upto(Date.tomorrow) {|day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => 'affiliate.gov')}          
         end
 
         it "should calculate moving queries for each day in that range" do
