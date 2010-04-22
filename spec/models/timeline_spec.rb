@@ -68,5 +68,19 @@ describe Timeline do
         timeline.series[timeline.dates.index(Date.yesterday)].y.should == 1
       end
     end
+    
+    context "when Daily Query Stats exist for affiliates besides the default" do
+      before do
+        DailyQueryStat.delete_all
+        DailyQueryStat.create!(:day => Date.yesterday, :query => 'foo', :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => 'foo', :times => 1, :affiliate => 'affiliate.gov')
+      end
+      
+      it "should complete, and not figure in non-default affiliate query stats" do
+        timeline = Timeline.new("foo")
+        timeline.dates.last.should == Date.yesterday
+        timeline.series.last.y.should == 1
+      end
+    end
   end
 end

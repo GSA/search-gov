@@ -6,7 +6,7 @@ class Timeline
     if grouped
       results = DailyQueryStat.collect_query_group_named(query)
     else
-      results = DailyQueryStat.find_all_by_query(query, :conditions => ["affiliate = ?", 'usasearch.gov'], :order => "day", :select=>"day, times")    
+      results = DailyQueryStat.find_all_by_query(query, :conditions => ['affiliate = ?', DailyQueryStat::DEFAULT_AFFILIATE_NAME], :order => "day", :select=>"day, times")
     end
     return if results.empty?
     date_marker = results.first.day
