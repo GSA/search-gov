@@ -52,8 +52,8 @@ namespace :usasearch do
   namespace :moving_queries do
     desc "initial population of moving_queries data using every date available in daily_queries_stats table. Replaces any existing data in moving_queries table."
     task :populate => :environment do
-      min = DailyQueryStat.minimum(:day)
-      max = DailyQueryStat.maximum(:day)
+      min = DailyQueryStat.minimum(:day, :conditions => ['affiliate = ?', DailyQueryStat::DEFAULT_AFFILIATE_NAME])
+      max = DailyQueryStat.maximum(:day, :conditions => ['affiliate = ?', DailyQueryStat::DEFAULT_AFFILIATE_NAME])
       days = []
       min.upto(max) {|day| days << day.to_s(:number) }
       days.reverse.each { |day| MovingQuery.compute_for(day) }
