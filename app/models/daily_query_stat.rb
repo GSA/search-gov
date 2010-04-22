@@ -62,7 +62,7 @@ class DailyQueryStat < ActiveRecord::Base
     queries = qg.grouped_queries.collect {|gq| "'#{gq.query}'"}.join(',')
     results = DailyQueryStat.sum(:times, :group => :day, :conditions => "query in (#{queries}) AND affiliate = '#{DEFAULT_AFFILIATE_NAME}'", :order => "day")
     dqs=[]
-    results.each_pair { |day, times| dqs << DailyQueryStat.new(:day=> day, :times => times) }
+    results.each_pair { |day, times| dqs << DailyQueryStat.new(:day=> day, :times => times, :affiliate => DEFAULT_AFFILIATE_NAME) }
     dqs
   end
 

@@ -77,7 +77,7 @@ class MovingQuery < ActiveRecord::Base
     start_date = yyyymmdd.to_date - window_size.days + 1.day
     DailyQueryStat.sum(:times,
                        :group=>:query,
-                       :conditions=>["day BETWEEN ? AND ?", start_date, yyyymmdd],
+                       :conditions=>["day BETWEEN ? AND ? AND affiliate = ?", start_date, yyyymmdd, DailyQueryStat::DEFAULT_AFFILIATE_NAME],
                        :having => "sum_times > #{MIN_NUM_QUERIES_PER_WINDOW[window_size]}")
   end
 
