@@ -44,6 +44,26 @@ describe MovingQuery do
         MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "7-day", 7).times.should == 200007
         MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "30-day", 30).times.should == 300030
       end
+      
+      context "when there is similar data for affiliates" do
+        before do
+          DailyQueryStat.create!(:day => Date.yesterday, :times => 100000, :query => "1-day", :affiliate => 'affiliate.gov')
+
+          DailyQueryStat.create!(:day => 4.days.ago.to_date, :times => 7, :query => "7-day", :affiliate => 'affiliate.gov')
+          DailyQueryStat.create!(:day => Date.yesterday, :times => 200000, :query => "7-day", :affiliate => 'affiliate.gov')
+
+          DailyQueryStat.create!(:day => 3.weeks.ago.to_date, :times => 30, :query => "30-day", :affiliate => 'affiliate.gov')
+          DailyQueryStat.create!(:day => Date.yesterday, :times => 300000, :query => "30-day", :affiliate => 'affiliate.gov')
+        end
+        
+        it "should find and create 1, 7 and 30 day movie queries for the given day, uninfluenced by the affiliate stats" do
+          MovingQuery.compute_for(Date.yesterday.to_s(:number))
+          MovingQuery.count.should == 9
+          [1, 7, 30].each {|win_size| MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "1-day", win_size).times.should == 100000 }
+          MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "7-day", 7).times.should == 200007
+          MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "30-day", 30).times.should == 300030
+        end 
+      end
     end
 
     context "when a query gets roughly the same amount of queries it normally gets for a given day, week, and month" do
@@ -57,6 +77,18 @@ describe MovingQuery do
         MovingQuery.compute_for(@target_date)
         [1, 7, 30].each {|win_size| MovingQuery.find_by_day_and_query_and_window_size(@target_date, "usual", win_size).should be_nil }
       end
+      
+      context "when there are affiliate queries with the same terms for the same time period" do
+        before do
+          Date.new(2009, 1, 1).upto(Date.new(2009, 6, 1)) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 10 + rand(5), :query => "usual", :affiliate => 'affiliate.gov')}
+          DailyQueryStat.create!(:day => @target_date, :times => 16, :query => "usual", :affiliate => 'affiliate.gov')
+        end
+        
+        it "should not create any moving query records for that query on that day" do
+          MovingQuery.compute_for(@target_date)
+          [1, 7, 30].each {|win_size| MovingQuery.find_by_day_and_query_and_window_size(@target_date, "usual", win_size).should be_nil }
+        end
+      end    
     end
 
     context "when a brand new query (i.e., zero searches since Jan 1 2009) gets 16 searches per day for the 14th day in a row" do
@@ -69,6 +101,17 @@ describe MovingQuery do
         MovingQuery.compute_for(Date.yesterday.to_s(:number))
         MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "still accelerating?", 1).should be_nil
       end
+      
+      context "when there is similar data for an affiliate" do
+        before do
+          14.days.ago.to_date.upto(Date.yesterday) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 16, :query => "still accelerating?", :affiliate => 'affiliate.gov')}
+        end
+        
+        it "should not create a 1-day moving query for the query" do
+          MovingQuery.compute_for(Date.yesterday.to_s(:number))
+          MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "still accelerating?", 1).should be_nil
+        end
+      end 
     end
 
     context "when a brand new query (i.e., zero searches since Jan 1 2009) gets 40 searches one day followed by 30, 22, 21, 20, and 16 searches" do
