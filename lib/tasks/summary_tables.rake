@@ -25,7 +25,7 @@ namespace :usasearch do
 
   namespace :daily_query_stats do
     insert_sql = "INSERT INTO daily_query_stats (query, day, times, affiliate) SELECT d.query, d.day, count(*), d.affiliate FROM daily_query_ip_stats d, proportions p"
-    where_clause = "WHERE d.query = p.query AND p.proportion > 0.10"
+    where_clause = "WHERE d.query = p.query AND p.proportion > 0.10 and d.affiliate=p.affiliate"
     group_by = "GROUP BY d.query, d.day, d.affiliate"
 
     desc "initial population of daily_query_stats from queries & daily_queries_ip_stats table. Destroys existing data in daily_query_stats table."
