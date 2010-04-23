@@ -329,6 +329,27 @@ describe "summary_tables rake tasks" do
           DailyQueryStat.find_by_day(Date.yesterday).should_not be_nil
         end
       end
+    
+      context "when calculating daily_query_stats for a single day for usasearch.gov and affiliates" do
+        before do
+          DailyQueryIpStat.delete_all
+          DailyQueryStat.delete_all
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 11, :query => 'something', :ipaddr => '1.2.3.4', :affiliate => 'usasearch.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 11, :query => 'something', :ipaddr => '2.3.4.5', :affiliate => 'affiliate.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 11, :query => 'something', :ipaddr => '3.4.5.6', :affiliate => 'another_affiliate.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '11.2.3.4', :affiliate => 'usasearch.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '12.3.4.5', :affiliate => 'affiliate.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '13.4.5.6', :affiliate => 'another_affiliate.gov')
+        end
+      
+        it "should populate daily_query_stats for each affiliate according to the number of ip addresses" do
+          @rake[@task_name].invoke(Date.yesterday.to_s(:number))
+          DailyQueryStat.all.size.should > 0
+          DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'usasearch.gov']).times.should == 2
+          DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'affiliate.gov']).times.should == 2
+          DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'another_affiliate.gov']).times.should == 2
+        end
+      end
     end
   end
 
