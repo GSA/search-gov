@@ -53,7 +53,7 @@ module SearchHelper
   def tracked_click_link(url, title, search, affiliate, position, source)
     aff_name = affiliate.name rescue ""
     query = search.query.gsub("'", "\\\\'")
-    "<a href=\"#{url}\" onmousedown=\"return click('#{query}','#{url}', #{position + 1}, '#{aff_name}', '#{source}', #{search.queried_at_seconds})\">#{title}</a>"
+    "<a href=\"#{url}\" onmousedown=\"return click('#{query}',this.href, #{position + 1}, '#{aff_name}', '#{source}', #{search.queried_at_seconds})\">#{title}</a>"
   end
 
   def display_result_description (result)
