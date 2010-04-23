@@ -9,11 +9,11 @@
   %h3.alt= t :related_faqs_header
   %ul{:id => "related_faqs"}
     - @search.faqs.hits.each_with_index do |hit, index|
-      %li= link_to( highlight_hit(hit, :question), hit.instance.url)
+      %li= tracked_click_link(hit.instance.url,highlight_hit(hit, :question), @search, nil, index, 'FAQS')
   .more_results= link_to('Source: answers.usa.gov', 'http://answers.usa.gov')
 - if (@search && @search.gov_forms && @search.gov_forms.total > 0)
   %h3.alt= t :related_gov_forms_header
   %ul{:id => "related_gov_forms"}
     - @search.gov_forms.hits.each_with_index do |hit, index|
-      %li= link_to( highlight_hit(hit, :name), hit.instance.url)
+      %li= tracked_click_link(hit.instance.url,highlight_hit(hit, :name), @search, nil, index, 'FORM')
   .more_results= link_to('Source: forms.gov', 'http://forms.gov')
