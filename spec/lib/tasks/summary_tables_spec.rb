@@ -162,6 +162,47 @@ describe "summary_tables rake tasks" do
         end
       end
     end
+    
+    describe "usasearch:daily_query_ip_stats:compute_affiliate" do
+      before do
+        @task_name = "usasearch:daily_query_ip_stats:compute_affiliates"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when query data exists for multiple days" do
+        before do
+          Query.create!(@valid_attributes.merge(:timestamp=>Date.yesterday.to_time, :affiliate => 'affiliate.gov'))
+          Query.create!(@valid_attributes.merge(:timestamp=>Date.today.to_time, :affiliate => 'affiliate.gov'))
+          Query.create!(@valid_attributes.merge(:timestamp=>Date.tomorrow.to_time, :affiliate => 'affiliate.gov'))
+          Query.create!(@valid_attributes.merge(:timestamp=>Date.yesterday.to_time))
+          Query.create!(@valid_attributes.merge(:timestamp=>Date.today.to_time))
+          Query.create!(@valid_attributes.merge(:timestamp=>Date.tomorrow.to_time))
+        end
+
+        it "should populate daily_query_ip_stats from queries table for a given day" do
+          @rake[@task_name].invoke(Date.today.to_s(:number))
+          DailyQueryIpStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'affiliate.gov']).should be_nil
+          DailyQueryIpStat.find_by_day(Date.today, :conditions => ['affiliate = ?', 'affiliate.gov']).should_not be_nil
+          DailyQueryIpStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'affiliate.gov']).should be_nil
+          DailyQueryIpStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+          DailyQueryIpStat.find_by_day(Date.today, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+          DailyQueryIpStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+        end
+
+        it "should default to yesterday" do
+          @rake[@task_name].invoke
+          DailyQueryIpStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'affiliate.gov']).should_not be_nil
+          DailyQueryIpStat.find_by_day(Date.today, :conditions => ['affiliate = ?', 'affiliate.gov']).should be_nil
+          DailyQueryIpStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'affiliate.gov']).should be_nil
+          DailyQueryIpStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+          DailyQueryIpStat.find_by_day(Date.today, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+          DailyQueryIpStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+        end
+      end
+    end
   end
 
   describe "usasearch:daily_query_stats" do
@@ -293,10 +334,8 @@ describe "summary_tables rake tasks" do
           DailyQueryStat.find_all_by_affiliate('test.gov').should_not be_nil
         end
       end
-
-
     end
-
+    
     describe "usasearch:daily_query_stats:compute" do
       before do
         @task_name = "usasearch:daily_query_stats:compute"
@@ -351,8 +390,72 @@ describe "summary_tables rake tasks" do
         end
       end
     end
-  end
 
+    describe "usasearch:daily_query_stats:compute_affiliates" do
+      before do
+        @task_name = "usasearch:daily_query_stats:compute_affiliates"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when query data and DailyQueryIpStats data exists for multiple days" do
+        before do
+          DailyQueryIpStat.delete_all
+          DailyQueryStat.delete_all
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 4, :query => @valid_attributes[:query], :ipaddr => @valid_attributes[:ipaddr], :affiliate => 'affiliate.gov')
+          DailyQueryIpStat.create!(:day => Date.today, :times => 4, :query => @valid_attributes[:query], :ipaddr => @valid_attributes[:ipaddr].succ!, :affiliate => 'affiliate.gov')
+          DailyQueryIpStat.create!(:day => Date.tomorrow, :times => 4, :query => @valid_attributes[:query], :ipaddr => @valid_attributes[:ipaddr].succ!, :affiliate => 'affiliate.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 4, :query => @valid_attributes[:query], :ipaddr => @valid_attributes[:ipaddr])
+          DailyQueryIpStat.create!(:day => Date.today, :times => 4, :query => @valid_attributes[:query], :ipaddr => @valid_attributes[:ipaddr].succ!)
+          DailyQueryIpStat.create!(:day => Date.tomorrow, :times => 4, :query => @valid_attributes[:query], :ipaddr => @valid_attributes[:ipaddr].succ!)
+        end
+
+        it "should populate daily_query_stats from queries table for a given day" do
+          @rake[@task_name].invoke(Date.today.to_s(:number))
+          DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'affiliate.gov']).should be_nil
+          DailyQueryStat.find_by_day(Date.today, :conditions => ['affiliate = ?', 'affiliate.gov']).should_not be_nil
+          DailyQueryStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'affiliate.gov']).should be_nil
+          DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+          DailyQueryStat.find_by_day(Date.today, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+          DailyQueryStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+        end
+
+        it "should default to yesterday" do
+          @rake[@task_name].invoke
+          DailyQueryStat.find_by_day(Date.today, :conditions => ['affiliate = ?', 'affiliate.gov']).should be_nil
+          DailyQueryStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'affiliate.gov']).should be_nil
+          DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'affiliate.gov']).should_not be_nil
+          DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+          DailyQueryStat.find_by_day(Date.today, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+          DailyQueryStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+        end
+      end
+    
+      context "when calculating daily_query_stats for a single day for usasearch.gov and affiliates" do
+        before do
+          DailyQueryIpStat.delete_all
+          DailyQueryStat.delete_all
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 11, :query => 'something', :ipaddr => '1.2.3.4', :affiliate => 'usasearch.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 11, :query => 'something', :ipaddr => '2.3.4.5', :affiliate => 'affiliate.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 11, :query => 'something', :ipaddr => '3.4.5.6', :affiliate => 'another_affiliate.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '11.2.3.4', :affiliate => 'usasearch.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '12.3.4.5', :affiliate => 'affiliate.gov')
+          DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '13.4.5.6', :affiliate => 'another_affiliate.gov')
+        end
+      
+        it "should populate daily_query_stats for each affiliate according to the number of ip addresses" do
+          @rake[@task_name].invoke(Date.yesterday.to_s(:number))
+          DailyQueryStat.all.size.should > 0
+          DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+          DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'affiliate.gov']).times.should == 2
+          DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'another_affiliate.gov']).times.should == 2
+        end
+      end
+    end
+  end
+  
   describe "usasearch:moving_queries" do
     describe "usasearch:moving_queries:populate" do
       before do
