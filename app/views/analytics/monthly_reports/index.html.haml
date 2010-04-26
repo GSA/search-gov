@@ -25,3 +25,6 @@
           Total Unique Visitors: #{number_with_delimiter @monthly_totals[profile_name][:total_unique_visitors]}
         %li
           Total Click Throughs: #{number_with_delimiter @monthly_totals[profile_name][:total_clicks]}
+  %p 
+    Download top 20,000 queries for this month (English only)
+    = link_to "(Excel Spreadsheet)", top_queries_path(:date => {:month => @report_date.month, :year => @report_date.year}) 

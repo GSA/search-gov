@@ -47,5 +47,12 @@ Feature: Reports
     And I am on the reports homepage
     And I select "December 2010" as the report date  
     And I press "Get Usage Stats"
-    Then I should see "Report information not available for the future."   
+    Then I should see "Report information not available for the future."
+  
+  Scenario: Downloading a spreadsheet of top 20K queries for a month in the past
+    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And I am on the reports homepage
+    And I select "March 2010" as the report date  
+    And I press "Get Usage Stats"
+    Then I should see "Download top 20,000 queries for this month"
   
