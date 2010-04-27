@@ -47,13 +47,30 @@ module SearchHelper
   end
 
   def display_result_title (result, search, affiliate, position)
-    tracked_click_link(result['unescapedUrl'], translate_bing_highlights(h(result['title'])),search, affiliate, position, 'BWEB')
+    tracked_click_link(result['unescapedUrl'], translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB')
   end
 
   def tracked_click_link(url, title, search, affiliate, position, source)
     aff_name = affiliate.name rescue ""
     query = search.query.gsub("'", "\\\\'")
-    "<a href=\"#{url}\" onmousedown=\"return click('#{query}',this.href, #{position + 1}, '#{aff_name}', '#{source}', #{search.queried_at_seconds})\">#{title}</a>"
+    onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds)
+    "<a href=\"#{url}\" #{onmousedown}>#{title}</a>"
+  end
+
+  def render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)
+    require 'hpricot'
+    doc = Hpricot(spotlight_html)
+    (doc/:a).each_with_index do |e, idx|
+      url =  e.attributes['href']
+      tag = e.inner_html
+      onmousedown = onmousedown_for_click(query, idx, '', 'SPOT', queried_at_seconds)
+      e.swap("<a href=\"#{url}\" #{onmousedown}>#{tag}</a>")
+    end
+    doc.to_html
+  end
+
+  def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at)
+    "onmousedown=\"return click('#{query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at})\""
   end
 
   def display_result_description (result)
@@ -87,7 +104,7 @@ module SearchHelper
       suggestion_for_url = strip_bing_highlights(escaped_spelling_suggestion)
       opts = {:query=> suggestion_for_url}
       opts.merge!(:affiliate => affiliate.name) if affiliate
-      url = image_search? ? image_search_path(opts): search_path(opts)
+      url = image_search? ? image_search_path(opts) : search_path(opts)
       content_tag(:h4, "#{t :did_you_mean}: #{tracked_click_link(url, rendered_suggestion, search, affiliate, 0, 'BSPEL')}")
     end
   end
@@ -264,4 +281,5 @@ module SearchHelper
       url[0, 30]+"..."
     end
   end
+
 end

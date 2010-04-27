@@ -12,6 +12,16 @@ describe SearchHelper do
     end
   end
 
+  describe "#render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)" do
+    it "should add indexed mousedowns to each link" do
+      spotlight_html = "<li><a href='foo'>bar</a></li><li><a href='blat'>baz</a></li>"
+      query = "bdd"
+      queried_at_seconds = 1271978870
+      html = helper.render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)
+      html.should == "<li><a href=\"foo\" onmousedown=\"return click('bdd',this.href, 1, '', 'SPOT', 1271978870)\">bar</a></li><li><a href=\"blat\" onmousedown=\"return click('bdd',this.href, 2, '', 'SPOT', 1271978870)\">baz</a></li>"
+    end
+  end
+
   describe "#shunt_from_bing_to_usasearch" do
     fixtures :affiliates
     before do
@@ -52,7 +62,7 @@ describe SearchHelper do
   describe "#display_deep_links_for(result)" do
     before do
       deep_links=[]
-      8.times {|idx| deep_links << OpenStruct.new(:title=>"title #{idx}", :url => "url #{idx}")}
+      8.times { |idx| deep_links << OpenStruct.new(:title=>"title #{idx}", :url => "url #{idx}") }
       @result = {"title"=>"my title", "deepLinks"=>deep_links, "cacheUrl"=>"cached", "content"=>"Some content", "unescapedUrl"=>"http://www.gsa.gov/someurl"}
     end
 
