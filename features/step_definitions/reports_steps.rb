@@ -66,4 +66,12 @@ Given /^I select "([^\"]*)" as the report date$/ do |date_string|
   select date.strftime('%B'), :from => "date[month]"
 end
 
+Given /^the following DailyQueryStats exist$/ do |table|
+  DailyQueryStat.delete_all
+  table.hashes.each do |hash|
+    DailyQueryStat.create(:day => Date.parse(hash["day"]), :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? DailyQueryStat::DEFAULT_AFFILIATE_NAME : hash["affiliate"])
+  end
+end
+
+
 

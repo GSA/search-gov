@@ -30,15 +30,15 @@
             <td class="left_align"><a href="app-controllers-analytics-monthly_reports_controller_rb.html">app/controllers/analytics/monthly_reports_controller.rb</a></td>
             <td class='right_align'><tt>26</tt></td>
             <td class='right_align'><tt>22</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>61.54%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:62px"></div>
-            <div class="uncovered" style="width:38px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>54.55%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:55px"></div>
-            <div class="uncovered" style="width:45px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -104,61 +104,61 @@
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line9">9</a>     @top_queries = DailyQueryStat.find(:all, :select =&gt; 'DISTINCT query, SUM(times) as total', :conditions =&gt; ['day BETWEEN ? AND ? AND affiliate=?', @report_date.beginning_of_month, @report_date.end_of_month, 'usasearch.gov'], :group =&gt; 'query', :order =&gt; 'total desc', :limit =&gt; '20000')</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line10">10</a>     csv_string = FasterCSV.generate do |csv|</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line11">11</a>       csv &lt;&lt; [&quot;Query&quot;, &quot;Count&quot;]</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line12">12</a>       @top_queries.each do |top_query|</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line13">13</a>         csv &lt;&lt; [top_query.query, top_query.total]</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line14">14</a>       end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line15">15</a>     end</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line16">16</a>     @filename = &quot;top_queries_#{@report_date.strftime('%Y%m')}.csv&quot;</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="marked">
             <td><pre><a name="line17">17</a>     send_data(csv_string, :type =&gt; 'text/csv', :filename =&gt; @filename)</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line18">18</a>   end</pre></td>
           </tr>
         
@@ -213,7 +213,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Mon Apr 26 22:22:01 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Tue Apr 27 09:11:14 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

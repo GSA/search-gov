@@ -48,7 +48,7 @@ describe Analytics::MonthlyReportsController do
   describe "#top_queries" do
     context "when not logged in" do
       it "should redirect to the login page" do
-        get :index
+        get :top_queries
         response.should redirect_to(new_user_session_path)
       end
     end
@@ -60,7 +60,7 @@ describe Analytics::MonthlyReportsController do
       end
 
       it "should redirect to the usasearch home page" do
-        get :index
+        get :top_queries
         response.should redirect_to(home_page_url)
       end
     end
@@ -72,17 +72,35 @@ describe Analytics::MonthlyReportsController do
       end
             
       it "should set the report date to the current month" do
-        get :index
+        get :top_queries
         report_date = assigns[:report_date]
         report_date.month.should == Date.today.month
         report_date.year.should == Date.today.year
       end
       
       it "should set the report date to the first day of the month of the parameters passed in" do
-        get :index, :date => { :month => 3, :year => 2010 }
+        get :top_queries, :date => { :month => 3, :year => 2010 }
         report_date = assigns[:report_date]
         report_date.month.should == 3
         report_date.year.should == 2010
+      end
+      
+      it "should set the filename according to the year and month" do
+        get :top_queries, :date => { :month => 3, :year => 2010 }
+        filename = assigns[:filename]
+        filename.should == 'top_queries_201003.csv'
+      end
+      
+      it "should order the top queries by total descending" do
+        DailyQueryStat.create(:day => Date.today, :query => 'apples', :times => 10)
+        DailyQueryStat.create(:day => Date.today, :query => 'banana', :times => 8)
+        DailyQueryStat.create(:day => Date.today, :query => 'pears', :times => 8)
+        DailyQueryStat.create(:day => Date.today, :query => 'oranges', :times => 5)
+        get :top_queries
+        top_queries = assigns[:top_queries]
+        top_queries.each_with_index do |top_query, index|
+          top_query.total.to_i.should <= top_queries[index - 1].total.to_i unless index == 0
+        end
       end
     end
   end

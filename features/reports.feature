@@ -50,9 +50,20 @@ Feature: Reports
     Then I should see "Report information not available for the future."
   
   Scenario: Downloading a spreadsheet of top 20K queries for a month in the past
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    Given the following DailyQueryStats exist
+    | day         | query   | times   |
+    | 2010-03-23  | apples  | 10      |
+    | 2010-03-25  | apples  | 5       |
+    | 2010-03-21  | bananas | 5       |
+    | 2010-03-13  | bananas | 3       |
+    And I am logged in with email "analyst@fixtures.org" and password "admin"
     And I am on the reports homepage
     And I select "March 2010" as the report date  
     And I press "Get Usage Stats"
     Then I should see "Download top 20,000 queries for this month"
+    And I follow "Excel Spreadsheet"
+    Then I should be on the top queries csv report
+    And I should see "Query,Count"
+    And I should see "apples,15"
+    And I should see "bananas,8"
   
