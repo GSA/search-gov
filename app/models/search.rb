@@ -94,12 +94,12 @@ class Search
   def process_results(response)
     processed = response.web.results.collect do |result|
       title = result.title rescue nil
-      content = result.description rescue nil
+      content = result.description rescue ''
       if title.present?
         {
           'title'         => title,
           'unescapedUrl'  => result.url,
-          'content'       => content.present? ? content : "",
+          'content'       => content,
           'cacheUrl'      => (result.CacheUrl rescue nil),
           'deepLinks'     => result["DeepLinks"]
         }

@@ -499,7 +499,7 @@ describe Search do
       end
 
     end
-    
+
     context "when the query contains an '&' character" do
       it "should pass a url-escaped query string to Bing" do
         @uriresult = URI::parse('http://localhost:3000')
@@ -568,7 +568,7 @@ describe Search do
         @search.results.size.should == 1
       end
     end
-    
+
     context "when results contain listing missing a description" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'data'))
@@ -576,7 +576,7 @@ describe Search do
         parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
       end
-      
+
       it "should use a blank description" do
         @search.run
         @search.results.size.should == 10
@@ -679,7 +679,7 @@ describe Search do
           search.recalls.should be_nil
         end
       end
-      
+
       context "when search phrase stripped of 'recall' is an unparseable query string" do
         it "should catch an rsolr error and assign nil to recalls" do
           search = Search.new(@valid_options.merge(:query => 'sheetrock OR recall'))
