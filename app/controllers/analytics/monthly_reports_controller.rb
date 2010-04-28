@@ -3,6 +3,7 @@ class Analytics::MonthlyReportsController < Analytics::AnalyticsController
 
   def index
     @monthly_totals = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month)
+    @clicks = Click.monthly_totals_by_module(@report_date.year, @report_date.month)
   end
 
   def top_queries
@@ -16,7 +17,7 @@ class Analytics::MonthlyReportsController < Analytics::AnalyticsController
     @filename = "top_queries_#{@report_date.strftime('%Y%m')}.csv"
     send_data(csv_string, :type => 'text/csv', :filename => @filename)
   end
-  
+
   private
 
   def set_report_date

@@ -9,22 +9,34 @@
   %p
     Report information not available for the future.
 - else
-  %h3
-    = "Monthly Usage Stats for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}"
-    - unless @report_date.year != @today.year || @report_date.month != @today.month
-      = "(current as of #{Date::MONTHNAMES[@today.yesterday.month.to_i]} #{@today.yesterday.day}, #{@today.yesterday.year})"
-  - DailyUsageStat::PROFILE_NAMES.each do |profile_name|
-    .usage_stats{ :id => "#{profile_name.downcase}_usage_stats" }
-      Profile: #{profile_name}
-      %ul
-        %li
-          Total Queries: #{number_with_delimiter @monthly_totals[profile_name][:total_queries]}
-        %li
-          Total Page Views: #{number_with_delimiter @monthly_totals[profile_name][:total_page_views]}
-        %li
-          Total Unique Visitors: #{number_with_delimiter @monthly_totals[profile_name][:total_unique_visitors]}
-        %li
-          Total Click Throughs: #{number_with_delimiter @monthly_totals[profile_name][:total_clicks]}
-  %p 
-    Download top 20,000 queries for this month (English only)
-    = link_to "(Excel Spreadsheet)", top_queries_path(:date => {:month => @report_date.month, :year => @report_date.year}) 
+  .span-14
+    %h3
+      = "Monthly Usage Stats for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}"
+      - unless @report_date.year != @today.year || @report_date.month != @today.month
+        = "(current as of #{Date::MONTHNAMES[@today.yesterday.month.to_i]} #{@today.yesterday.day}, #{@today.yesterday.year})"
+    - DailyUsageStat::PROFILE_NAMES.each do |profile_name|
+      .usage_stats{ :id => "#{profile_name.downcase}_usage_stats" }
+        Profile: #{profile_name}
+        %ul
+          %li
+            Total Queries: #{number_with_delimiter @monthly_totals[profile_name][:total_queries]}
+          %li
+            Total Page Views: #{number_with_delimiter @monthly_totals[profile_name][:total_page_views]}
+          %li
+            Total Unique Visitors: #{number_with_delimiter @monthly_totals[profile_name][:total_unique_visitors]}
+          %li
+            Total Click Throughs: #{number_with_delimiter @monthly_totals[profile_name][:total_clicks]}
+    %p
+      Download top 20,000 queries for this month (English only)
+      = link_to "(Excel Spreadsheet)", top_queries_path(:date => {:month => @report_date.month, :year => @report_date.year})
+  - if @clicks.present?
+    .span-6
+      %h3 Clicks by module
+      %table{:id => "module_click_stats"}
+        %tr
+          %th Module
+          %th Clicks
+        - @clicks.each_pair do |module_name, click_count|
+          %tr
+            %td=module_name
+            %td=click_count

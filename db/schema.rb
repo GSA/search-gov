@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100423010137) do
+ActiveRecord::Schema.define(:version => 20100427215756) do
 
   create_table "accepted_sayt_suggestions", :force => true do |t|
     t.string   "phrase",     :null => false
@@ -98,6 +98,8 @@ ActiveRecord::Schema.define(:version => 20100423010137) do
     t.string   "user_agent"
     t.string   "click_ip"
   end
+
+  add_index "clicks", ["clicked_at"], :name => "index_clicks_on_clicked_at"
 
   create_table "daily_query_ip_stats", :force => true do |t|
     t.date    "day",                                                   :null => false

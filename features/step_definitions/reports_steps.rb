@@ -73,5 +73,14 @@ Given /^the following DailyQueryStats exist$/ do |table|
   end
 end
 
+Given /^the following Clicks per module exist in "([^\"]*)"$/ do |month_year, table|
+  time = Time.parse(month_year)
+  table.hashes.each do |hash|
+    hash["total"].to_i.times do
+      Click.create!(:query=>"foo", :queried_at=> time, :clicked_at=>time, :url=>"bar", :results_source => hash["module"])
+    end
+  end
+end
+
 
 
