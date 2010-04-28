@@ -10,7 +10,7 @@ config.action_controller.perform_caching = true
 config.action_view.cache_template_loading = true
 
 config.logger = Logger.new("#{RAILS_ROOT}/log/#{ENV['RAILS_ENV']}.log")
-#config.logger.level = Logger::INFO
+config.logger.level = Logger::INFO
 
 # Use a different logger for distributed setups
 # config.logger = SyslogLogger.new

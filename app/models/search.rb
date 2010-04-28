@@ -70,10 +70,22 @@ class Search
       self.endrecord = startrecord + results.size - 1
       populate_additional_results
     end
+    log_impression
     true
   end
 
   private
+
+  def log_impression
+    modules = []
+    modules << "BWEB" unless self.total.zero?
+    modules << "BSPEL" unless self.spelling_suggestion.nil?
+    modules << "BREL" unless self.related_search.nil? or self.related_search.empty?
+    modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
+    modules << "FORM" unless self.gov_forms.nil? or self.gov_forms.total.zero?
+    modules << "SPOT" unless self.spotlight.nil?
+    RAILS_DEFAULT_LOGGER.info("[Search Impression] time: #{Time.now.to_formatted_s(:db)} , query: #{self.query}, modules: #{modules.inspect}")
+  end
 
   def hits(response)
     (response.web.results.empty? ? 0 : response.web.total) rescue 0
@@ -153,7 +165,7 @@ class Search
   end
 
   def perform(query_string, offset)
-    ActiveRecord::Base.benchmark("Performing Bing Search") do
+    ActiveRecord::Base.benchmark("[Bing Search]", Logger::INFO) do
       begin
         uri = URI.parse(bing_query(query_string, offset, results_per_page))
         http = Net::HTTP.new(uri.host, uri.port)
