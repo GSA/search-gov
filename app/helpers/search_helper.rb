@@ -70,7 +70,7 @@ module SearchHelper
   end
 
   def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at)
-    "onmousedown=\"return click('#{query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at})\""
+    "onmousedown=\"return clk('#{query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at})\""
   end
 
   def display_result_description (result)

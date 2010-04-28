@@ -1,8 +1,7 @@
-function click(query, url, serp_position, affiliate, source, queried_at) {
+function clk(a, b, c, d, e, f) {
   if (document.images) {
-    img = new Image;
-    params = 'u=' + escape(url) + '&q=' + escape(query) + '&p=' + serp_position + '&a=' + affiliate + '&s=' + source + '&t=' + queried_at;
-    img.src = '/click?' + params;
+    var img = new Image;
+    img.src = ['/click?','u=',escape(b),'&q=',escape(a),'&p=',c,'&a=',d,'&s=',e,'&t=',f].join('');
   }
   return true;
 }

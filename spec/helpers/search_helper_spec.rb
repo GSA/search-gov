@@ -18,7 +18,7 @@ describe SearchHelper do
       query = "bdd"
       queried_at_seconds = 1271978870
       html = helper.render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)
-      html.should == "<li><a href=\"foo\" onmousedown=\"return click('bdd',this.href, 1, '', 'SPOT', 1271978870)\">bar</a></li><li><a href=\"blat\" onmousedown=\"return click('bdd',this.href, 2, '', 'SPOT', 1271978870)\">baz</a></li>"
+      html.should == "<li><a href=\"foo\" onmousedown=\"return clk('bdd',this.href, 1, '', 'SPOT', 1271978870)\">bar</a></li><li><a href=\"blat\" onmousedown=\"return clk('bdd',this.href, 2, '', 'SPOT', 1271978870)\">baz</a></li>"
     end
   end
 
