@@ -568,6 +568,23 @@ describe Search do
         @search.results.size.should == 1
       end
     end
+    
+    context "when results contain listing missing a description" do
+      before do
+        @search = Search.new(@valid_options.merge(:query => 'data'))
+        json = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_some_missing_descriptions.json")
+        parsed = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
+      end
+      
+      it "should use a blank description" do
+        @search.run
+        @search.results.size.should == 10
+        @search.results.each do |result|
+          result['content'].should == ""
+        end
+      end
+    end
 
     context "when searching for misspelled terms" do
       before do
