@@ -19,9 +19,9 @@ module Analytics::HomeHelper
     return "Query data currently unavailable" if day.nil?
     current_day = content_tag(:span,day.to_s(:long), :class=>"highlight")
     html = "Data for #{current_day}"
-    firstdate = DailyQueryStat.minimum(:day, :conditions => ['affiliate = ?', affiliate_name(affiliate)])
+    firstdate = DailyQueryStat.minimum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name(affiliate), I18n.default_locale.to_s])
     first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',')
-    lastdate = DailyQueryStat.maximum(:day, :conditions => ['affiliate = ?', affiliate_name(affiliate)])
+    lastdate = DailyQueryStat.maximum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name(affiliate), I18n.default_locale.to_s])
     last = [lastdate.year, (lastdate.month.to_i - 1), lastdate.day].join(',')
     html<< calendar_date_select_tag("pop_up_hidden", "", :hidden => true, :image=>"change_date.png", :buttons => false,
                                     :onchange => "location = '#{analytics_path_prefix(affiliate)}/?day='+$F(this);",

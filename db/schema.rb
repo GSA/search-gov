@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100427215756) do
+ActiveRecord::Schema.define(:version => 20100429115931) do
 
   create_table "accepted_sayt_suggestions", :force => true do |t|
     t.string   "phrase",     :null => false
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(:version => 20100427215756) do
     t.string  "ipaddr",    :limit => 17,                               :null => false
     t.integer "times",                                                 :null => false
     t.string  "affiliate", :limit => 32,  :default => "usasearch.gov"
+    t.string  "locale",    :limit => 5,   :default => "en"
   end
 
   add_index "daily_query_ip_stats", ["query"], :name => "index_daily_query_ip_stats_on_query"
@@ -116,9 +117,10 @@ ActiveRecord::Schema.define(:version => 20100427215756) do
     t.string  "query",     :limit => 100,                              :null => false
     t.integer "times",                                                 :null => false
     t.string  "affiliate", :limit => 32,  :default => "usasearch.gov"
+    t.string  "locale",    :limit => 5,   :default => "en"
   end
 
-  add_index "daily_query_stats", ["day", "query", "affiliate"], :name => "index_daily_query_stats_on_day_and_query_and_affiliate", :unique => true
+  add_index "daily_query_stats", ["day", "query", "affiliate", "locale"], :name => "daily_query_stats_unique_index", :unique => true
   add_index "daily_query_stats", ["query", "day"], :name => "index_daily_query_stats_on_query_and_day"
 
   create_table "daily_usage_stats", :force => true do |t|

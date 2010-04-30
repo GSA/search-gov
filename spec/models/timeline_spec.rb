@@ -72,8 +72,9 @@ describe Timeline do
     context "when Daily Query Stats exist for affiliates besides the default" do
       before do
         DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => Date.yesterday, :query => 'foo', :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :query => 'foo', :times => 1, :affiliate => 'affiliate.gov')
+        %w{usasearch.gov affiliate.gov}.each do |affiliate|
+          DailyQueryStat.create!(:day => Date.yesterday, :query => 'foo', :times => 1, :affiliate => affiliate, :locale => 'en')
+        end
       end
       
       it "should complete, and not figure in non-default affiliate query stats" do
@@ -82,5 +83,20 @@ describe Timeline do
         timeline.series.last.y.should == 1
       end
     end
+    
+    context "when Daily Query Stats exist for more than a single locale" do
+      before do
+        DailyQueryStat.delete_all
+        %w{en es}.each do |locale|
+          DailyQueryStat.create!(:day => Date.yesterday, :query => 'foo', :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => locale)
+        end
+      end
+      
+      it "should complete and not figure in data from other locales" do
+        timeline = Timeline.new("foo")
+        timeline.dates.last.should == Date.yesterday
+        timeline.series.last.y.should == 1
+      end
+    end 
   end
 end

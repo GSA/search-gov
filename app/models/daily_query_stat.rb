@@ -1,18 +1,15 @@
 class DailyQueryStat < ActiveRecord::Base
-  validates_presence_of :day
-  validates_presence_of :query
-  validates_presence_of :times
-  validates_presence_of :affiliate
-  validates_uniqueness_of :query, :scope => [:day, :affiliate]
+  validates_presence_of :day, :query, :times, :affiliate, :locale
+  validates_uniqueness_of :query, :scope => [:day, :affiliate, :locale]
   RESULTS_SIZE = 10
   INSUFFICIENT_DATA = "Not enough historic data to compute most popular"
   DEFAULT_AFFILIATE_NAME = "usasearch.gov"
 
-  def self.most_popular_terms_like(query, use_starts_with_instead_of_contains, affiliate_name = DEFAULT_AFFILIATE_NAME)
+  def self.most_popular_terms_like(query, use_starts_with_instead_of_contains, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
     contains = use_starts_with_instead_of_contains ? '' : '%'
     DailyQueryStat.sum(:times,
                        :group => :query,
-                       :conditions => ["query LIKE ? AND affiliate = ?", "#{contains}#{query}%", affiliate_name],
+                       :conditions => ["query LIKE ? AND affiliate = ? AND locale = ?", "#{contains}#{query}%", affiliate_name, locale],
                        :order => "sum_times desc")
   end
 
@@ -25,12 +22,12 @@ class DailyQueryStat < ActiveRecord::Base
     ary.reverse
   end
 
-  def self.most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = DEFAULT_AFFILIATE_NAME)
+  def self.most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
     return INSUFFICIENT_DATA if end_date.nil?
     start_date = end_date - days_back.days + 1.day
     results = DailyQueryStat.sum(:times,
                                  :group => :query,
-                                 :conditions => ['day between ? AND ? AND affiliate = ?', start_date, end_date, affiliate_name],
+                                 :conditions => ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],
                                  :having => "sum_times > 3",
                                  :order => "sum_times desc")
     return INSUFFICIENT_DATA if results.empty?
@@ -53,16 +50,16 @@ class DailyQueryStat < ActiveRecord::Base
     qcs.sort_by {|qc| qc.times}.reverse[0, num_results]
   end
 
-  def self.most_recent_populated_date(affiliate_name = DEFAULT_AFFILIATE_NAME)
-    maximum(:day, :conditions => ['affiliate = ?', affiliate_name])
+  def self.most_recent_populated_date(affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+    maximum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name, locale])
   end
 
   def self.collect_query_group_named(name)
     qg = QueryGroup.find_by_name(name)
     queries = qg.grouped_queries.collect {|gq| "'#{gq.query}'"}.join(',')
-    results = DailyQueryStat.sum(:times, :group => :day, :conditions => "query in (#{queries}) AND affiliate = '#{DEFAULT_AFFILIATE_NAME}'", :order => "day")
+    results = DailyQueryStat.sum(:times, :group => :day, :conditions => "query in (#{queries}) AND affiliate = '#{DEFAULT_AFFILIATE_NAME}' AND locale = '#{I18n.default_locale.to_s}'", :order => "day")
     dqs=[]
-    results.each_pair { |day, times| dqs << DailyQueryStat.new(:day=> day, :times => times, :affiliate => DEFAULT_AFFILIATE_NAME) }
+    results.each_pair { |day, times| dqs << DailyQueryStat.new(:day=> day, :times => times, :affiliate => DEFAULT_AFFILIATE_NAME, :locale => I18n.default_locale.to_s) }
     dqs
   end
 

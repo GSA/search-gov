@@ -7,7 +7,7 @@ class SaytSuggestion < ActiveRecord::Base
   validates_format_of :phrase, :with=> /^[a-zA-Z0-9\s.'-]+$/i
 
   def self.populate_for(day)
-    filtered_daily_query_stats = SaytFilter.filter(DailyQueryStat.find_all_by_day(day, :conditions => ["affiliate = ?", DailyQueryStat::DEFAULT_AFFILIATE_NAME]), "query")
+    filtered_daily_query_stats = SaytFilter.filter(DailyQueryStat.find_all_by_day(day, :conditions => ["affiliate = ? AND locale = ?", DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s]), "query")
     filtered_daily_query_stats.each do |dqs|
       create(:phrase => dqs.query)
     end unless filtered_daily_query_stats.empty?
