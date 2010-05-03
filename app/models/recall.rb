@@ -5,7 +5,7 @@ class Recall < ActiveRecord::Base
 
   validates_presence_of :recall_number, :organization
 
-  CPSC_FULL_TEXT_SEARCH_FIELDS = {'Manufacturer' => 2, 'ProductType' => 3, 'Description' => 4, 'Hazard' => 6, 'Country' => 7 }
+  CPSC_FULL_TEXT_SEARCH_FIELDS = {'Manufacturer' => 2, 'ProductType' => 3, 'Description' => 4, 'Hazard' => 7, 'Country' => 8 }
   CPSC_FACET_FIELDS = %w{Manufacturer ProductType Hazard Country}
 
   NHTSA_DETAIL_FIELDS = {'ManufacturerCampaignNumber' => 5, 'ComponentDescription'=> 6, 'Manufacturer' => 7,
@@ -134,6 +134,7 @@ class Recall < ActiveRecord::Base
         element.attributes["type"],
         element.attributes["prname"],
         nil,
+        nil,
         element.attributes["hazard"],
         element.attributes["country_mfg"],
         element.attributes["recDate"]
@@ -251,7 +252,7 @@ class Recall < ActiveRecord::Base
 
   def self.process_cpsc_row(row)
     recall = Recall.find_or_initialize_by_recall_number(:recall_number => row[0], :y2k => row[1], :organization => 'CPSC')
-    recall.recalled_on ||= Date.parse(row[8]) rescue nil
+    recall.recalled_on ||= Date.parse(row[9]) rescue nil
     CPSC_FULL_TEXT_SEARCH_FIELDS.each_pair do |detail_type, column_index|
       conditions = ['detail_type = ? AND detail_value = ?', detail_type, row[column_index]]
       unless row[column_index].blank? or (!recall.new_record? && recall.recall_details.exists?(conditions))

@@ -111,7 +111,7 @@ describe Recall do
   describe "#process_cpsc_row" do
     context "when a recall is seen for the first time" do
       before do
-        @row = ['10156', '110156', 'Ethan Allen', "Blinds, Shades & Cords", 'Ethan Allen Design Center Roman Shades', '12660', 'Strangulation', 'United States', '2010-03-04']
+        @row = ['10156', '110156', 'Ethan Allen', "Blinds, Shades & Cords", 'Ethan Allen Design Center Roman Shades', nil, '12660', 'Strangulation', 'United States', '2010-03-04']
       end
 
       it "should create a new recall" do
@@ -143,7 +143,7 @@ describe Recall do
 
       context "when a date is not present in the CSV row" do
         before do
-          @row = ['10156', '110156', 'Ethan Allen', "Blinds, Shades & Cords", 'Ethan Allen Design Center Roman Shades', '12660', 'Strangulation', 'United States']
+          @row = ['10156', '110156', 'Ethan Allen', "Blinds, Shades & Cords", 'Ethan Allen Design Center Roman Shades', nil, '12660', 'Strangulation', 'United States']
         end
 
         it "should not set a date" do
@@ -186,8 +186,8 @@ describe Recall do
 
     context "when seeing a recall number for the second time" do
       before do
-        @row1 = ['10154', '110154', 'American Electric Lighting', 'Lights & Accessories', 'American Electric Lighting AVL Outdoor Lighting Fixtures', '12648', 'Electrocution/Electric Shock', 'Mexico', '2010-03-03']
-        @row2 = ['10154', '110154', 'Acuity Brands Lighting', nil, nil, '12649', nil, nil, nil]
+        @row1 = ['10154', '110154', 'American Electric Lighting', 'Lights & Accessories', 'American Electric Lighting AVL Outdoor Lighting Fixtures', nil, '12648', 'Electrocution/Electric Shock', 'Mexico', '2010-03-03']
+        @row2 = ['10154', '110154', 'Acuity Brands Lighting', nil, nil, nil, '12649', nil, nil, nil]
         Recall.process_cpsc_row(@row1)
       end
 
