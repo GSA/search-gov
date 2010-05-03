@@ -1,9 +1,9 @@
 set :user,        "web"
 set :deploy_to,   "/var/www/#{application}"
 set :branch, "production"
-role :app, "10.153.9.203", "10.153.9.211"
-role :web, "10.153.9.203", "10.153.9.211"
-role :db,  "10.153.9.203", :primary => true
+role :app, "10.153.9.213", "10.153.9.211"
+role :web, "10.153.9.213", "10.153.9.211"
+role :db,  "10.153.9.213", :primary => true
 
 before "deploy:symlink", "production_yaml_files"
 
