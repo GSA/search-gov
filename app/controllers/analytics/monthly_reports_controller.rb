@@ -7,7 +7,8 @@ class Analytics::MonthlyReportsController < Analytics::AnalyticsController
   end
 
   def top_queries
-    @top_queries = DailyQueryStat.find(:all, :select => 'DISTINCT query, SUM(times) as total', :conditions => ['day BETWEEN ? AND ? AND affiliate=?', @report_date.beginning_of_month, @report_date.end_of_month, 'usasearch.gov'], :group => 'query', :order => 'total desc', :limit => '20000')
+    @site_locale = params[:site_locale] || I18n.default_locale.to_s
+    @top_queries = DailyQueryStat.find(:all, :select => 'DISTINCT query, SUM(times) as total', :conditions => ['day BETWEEN ? AND ? AND affiliate = ? AND locale = ?', @report_date.beginning_of_month, @report_date.end_of_month, 'usasearch.gov', @site_locale], :group => 'query', :order => 'total desc', :limit => '20000')
     csv_string = FasterCSV.generate do |csv|
       csv << ["Query", "Count"]
       @top_queries.each do |top_query|

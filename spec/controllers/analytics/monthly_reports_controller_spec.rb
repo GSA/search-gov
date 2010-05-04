@@ -85,6 +85,16 @@ describe Analytics::MonthlyReportsController do
         report_date.year.should == 2010
       end
       
+      it "should set the locale to 'en' if not specified" do
+        get :top_queries
+        assigns[:site_locale].should == 'en'
+      end
+      
+      it "should set the locale according to the site_locale parameter" do
+        get :top_queries, :site_locale => 'es'
+        assigns[:site_locale].should == 'es'
+      end
+      
       it "should set the filename according to the year and month" do
         get :top_queries, :date => { :month => 3, :year => 2010 }
         filename = assigns[:filename]

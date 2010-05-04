@@ -75,18 +75,34 @@ Feature: Reports
 
   Scenario: Downloading a spreadsheet of top 20K queries for a month in the past
     Given the following DailyQueryStats exist
-    | day         | query   | times   |
-    | 2010-03-23  | apples  | 10      |
-    | 2010-03-25  | apples  | 5       |
-    | 2010-03-21  | bananas | 5       |
-    | 2010-03-13  | bananas | 3       |
+    | day         | query     | times   | locale  |
+    | 2010-03-23  | apples    | 100     | en      |
+    | 2010-03-25  | apples    | 50      | en      |
+    | 2010-03-21  | bananas   | 50      | en      |
+    | 2010-03-13  | bananas   | 30      | en      |
+    | 2010-03-12  | manzanas  | 120     | es      |
+    | 2010-03-23  | naranjas  | 30      | es      |
+    | 2010-03-13  | manzanas  | 50      | es      |
+    | 2010-03-24  | naranjas  | 20      | es      |
+    | 2010-03-12  | apples    | 20      | es      |
+    | 2010-04-01  | apples    | 20      | es      |
+    | 2010-03-01  | manazanas | 20      | en      |    
     And I am logged in with email "analyst@fixtures.org" and password "admin"
     And I am on the reports homepage
     And I select "March 2010" as the report date
     And I press "Get Usage Stats"
-    Then I should see "Download top 20,000 queries for this month"
-    And I follow "Excel Spreadsheet"
+    Then I should see "Download top 20,000 queries for March 2010"
+    And I follow "English"
     Then I should be on the top queries csv report
     And I should see "Query,Count"
-    And I should see "apples,15"
-    And I should see "bananas,8"
+    And I should see "apples,150"
+    And I should see "bananas,80"
+    And I am on the reports homepage
+    And I select "March 2010" as the report date
+    And I press "Get Usage Stats"
+    And I follow "Spanish"
+    Then I should be on the top queries csv report
+    And I should see "Query,Count"
+    And I should see "manzanas,170"
+    And I should see "naranjas,50"
+    And I should see "apples,20"

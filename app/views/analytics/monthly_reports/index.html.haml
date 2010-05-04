@@ -27,8 +27,11 @@
           %li
             Total Click Throughs: #{number_with_delimiter @monthly_totals[profile_name][:total_clicks]}
     %p
-      Download top 20,000 queries for this month (English only)
-      = link_to "(Excel Spreadsheet)", top_queries_path(:date => {:month => @report_date.month, :year => @report_date.year})
+      = "Download top 20,000 queries for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year} ("
+      = link_to "English", top_queries_path(:date => {:month => @report_date.month, :year => @report_date.year}, :site_locale => 'en')
+      ,
+      = link_to "Spanish", top_queries_path(:date => {:month => @report_date.month, :year => @report_date.year}, :site_locale => 'es')
+      ) 
   - if @clicks.present?
     .span-6
       %h3 Clicks by module

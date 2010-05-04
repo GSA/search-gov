@@ -69,7 +69,7 @@ end
 Given /^the following DailyQueryStats exist$/ do |table|
   DailyQueryStat.delete_all
   table.hashes.each do |hash|
-    DailyQueryStat.create(:day => Date.parse(hash["day"]), :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? DailyQueryStat::DEFAULT_AFFILIATE_NAME : hash["affiliate"])
+    DailyQueryStat.create(:day => Date.parse(hash["day"]), :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? DailyQueryStat::DEFAULT_AFFILIATE_NAME : hash["affiliate"], :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
   end
 end
 
