@@ -13,26 +13,26 @@ Feature: Mobile Search
 
   Scenario: Visiting the home page with a mobile device
     Given I am on the homepage
-    Then I should see "Full Site"
+    Then I should see "USA.gov’s Full Website"
 
   Scenario: Toggling full mode
     Given I am on the homepage
-    When I follow "Full Site"
+    When I follow "USA.gov’s Full Website"
     Then I should be on the homepage
     And I should see "Mobile"
 
   Scenario: Toggling back to mobile mode
     Given I am on the homepage
-    When I follow "Full Site"
+    When I follow "USA.gov’s Full Website"
     And I follow "Mobile"
     Then I should be on the homepage
-    And I should see "Full Site"
+    And I should see "USA.gov’s Full Website"
 
   Scenario: Using mobile mode with a brower not identified as mobile
     Given I am using a desktop device
     And I am on the homepage
     When I follow "Mobile"
-    Then I should see "Full Site"
+    Then I should see "USA.gov’s Full Website"
 
   Scenario: A search on the mobile home page
     Given I am on the homepage

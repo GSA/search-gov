@@ -1,8 +1,7 @@
 = spelling_suggestion(search, @affiliate) if (search)
 - if search.results.present?
-  %h1= results_summary(search.startrecord, search.endrecord, search.total, search.query, false)
   %hr
-  - if (@search && @search.recalls && @search.recalls.total > 0)
+  - if (search && search.recalls && search.recalls.total > 0)
     .group{:id => "recalls"}
       %h1 Recent Recalls
       - search.recalls.hits.each_with_index do |hit, index|
@@ -16,8 +15,16 @@
         .content
           = display_result_description(search_result)
         .links= shorten_url(search_result['unescapedUrl'])
+        - if index.zero? and search.page.zero?
+          = display_deep_links_for(search_result)
       - unless index == search.results.length - 1 then
         %hr
+  - if (search && search.related_search.present?)
+    #relatedsearch.group
+      %p= "Searches related to '#{h search.query}'"
+      %ul
+        - search.related_search.each_with_index do |result, index|
+          %li= tracked_click_link(shunt_from_bing_to_usasearch(result.url, @affiliate ),translate_bing_highlights(h(result.title)), search, nil, index, 'BREL')
   %hr
   .group
     .row.center
