@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100429115931) do
+ActiveRecord::Schema.define(:version => 20100505031121) do
 
   create_table "accepted_sayt_suggestions", :force => true do |t|
     t.string   "phrase",     :null => false
@@ -110,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20100429115931) do
     t.string  "locale",    :limit => 5,   :default => "en"
   end
 
+  add_index "daily_query_ip_stats", ["day", "affiliate", "locale"], :name => "daily_query_ip_stats_index"
   add_index "daily_query_ip_stats", ["query"], :name => "index_daily_query_ip_stats_on_query"
 
   create_table "daily_query_stats", :force => true do |t|
@@ -204,7 +205,7 @@ ActiveRecord::Schema.define(:version => 20100429115931) do
     t.string   "ipaddr",    :limit => 17
     t.string   "query",     :limit => 100
     t.string   "affiliate", :limit => 32
-    t.datetime "timestamp",                :null => false
+    t.timestamp "timestamp",                :null => false
     t.string   "locale",    :limit => 5
     t.string   "agent"
     t.boolean  "is_bot"
