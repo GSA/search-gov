@@ -180,7 +180,53 @@ Feature: Affiliate clients
     And I fill in "query" with "tourism"
     And I submit the search form
     Then I should see "Our Tourism Page" within "#boosted"
+    
+  Scenario: Doing an advanced affiliate search
+    Given the following Affiliates exist:
+      | name             | contact_email         | contact_name        | domains        | header      | footer      |
+      | aff.gov          | aff@bar.gov           | John Bar            | usa.gov        | Header      | Footer      |
+    When I go to aff.gov's search page
+    Then I should see "Advanced Search"
+    And I follow "Advanced Search"
+    Then I should see "Header"
+    And I should see "Footer"
+    And I should see "Use the options on this page to create a very specific search for aff.gov"
+    And I fill in "query" with "emergency"
+    And I press "Search"
+    Then I should see "Results 1-10"
+    And I should see "emergency"
+  
+    When I am on the affiliate advanced search page for "aff.gov"
+    And I fill in "query-or" with "barack obama"
+    And I press "Search"
+    Then I should see "barack OR obama"
+    
+    When I am on the affiliate advanced search page for "aff.gov"
+    And I fill in "query-quote" with "barack obama"
+    And I press "Search"
+    Then I should see "barack obama"
+    
+    When I am on the affiliate advanced search page for "aff.gov"
+    And I fill in "query-not" with "barack"
+    And I press "Search"
+    Then I should see "-barack"
+    
+    When I am on the affiliate advanced search page for "aff.gov"
+    And I select "Adobe PDF" from "filetype"
+    And I press "Search"
+    Then I should see "filetype:pdf"
 
+    When I am on the affiliate advanced search page for "aff.gov"
+    And I fill in "query" with "barack obama"
+    And I select "20" from "per-page"
+    And I press "Search"
+    Then I should see "Results 1-20"
+    
+    When I am on the affiliate advanced search page for "aff.gov"
+    And I choose "No filter"
+    And I press "Search"
+    Then I should not see "Sorry, no results found"    
+    
   Scenario: Getting an embed code for my affiliate site search
     Given the following Affiliates exist:
       | name             | contact_email         | contact_name        |

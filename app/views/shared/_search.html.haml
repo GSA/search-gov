@@ -19,6 +19,8 @@
     = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil ))) unless @affiliate
     |
     = link_to(t(:search_in), home_page_path(:locale => other_locale_str))
+  - else
+    = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil, :affiliate => @affiliate.name )))
 
 :javascript
   document.getElementById("search_query").focus();

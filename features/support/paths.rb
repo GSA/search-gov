@@ -46,6 +46,8 @@ module NavigationHelpers
       top_queries_path
     when /the daily top queries csv report/
       daily_top_queries_path
+    when /the affiliate advanced search page for "([^\"]*)"$/
+      advanced_search_path(:affilite => $1)
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

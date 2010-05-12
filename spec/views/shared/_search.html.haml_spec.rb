@@ -24,7 +24,7 @@ describe "shared/_search.html.haml" do
 
       it "should not display a link to the advanced search page" do
         render :locals => { :search => @search, :affiliate => @affiliate }
-        response.should_not contain(/Advanced Search/)
+        response.should contain(/Advanced Search/)
       end
 
     end

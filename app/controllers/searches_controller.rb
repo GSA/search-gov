@@ -19,6 +19,13 @@ class SearchesController < ApplicationController
     @auto_complete_options = Search.suggestions(sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
     render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
   end
+  
+  def advanced
+    if @search_options[:affiliate]
+      @affiliate = @search_options[:affiliate]
+      render :layout => "affiliate"
+    end
+  end
 
   private
 
