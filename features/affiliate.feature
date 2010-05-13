@@ -183,15 +183,14 @@ Feature: Affiliate clients
     
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        | domains        | header      | footer      |
-      | aff.gov          | aff@bar.gov           | John Bar            | usa.gov        | Header      | Footer      |
+      | name             | contact_email         | contact_name        | domains        | header                | footer                |
+      | aff.gov          | aff@bar.gov           | John Bar            | usa.gov        | Affiliate Header      | Affiliate Footer      |
     When I go to aff.gov's search page
-    Then I should see "Advanced Search"
     And I follow "Advanced Search"
     Then I should see "Header"
     And I should see "Footer"
     And I should see "Use the options on this page to create a very specific search for aff.gov"
-    And I fill in "query" with "emergency"
+    When I fill in "query" with "emergency"
     And I press "Search"
     Then I should see "Results 1-10"
     And I should see "emergency"
@@ -199,33 +198,45 @@ Feature: Affiliate clients
     When I am on the affiliate advanced search page for "aff.gov"
     And I fill in "query-or" with "barack obama"
     And I press "Search"
-    Then I should see "barack OR obama"
+    Then I should see "Affiliate Header"
+    And I should see "Affiliate Footer"
+    And I should see "barack OR obama"
     
     When I am on the affiliate advanced search page for "aff.gov"
     And I fill in "query-quote" with "barack obama"
     And I press "Search"
-    Then I should see "barack obama"
+    Then I should see "Affiliate Header"
+    And I should see "Affiliate Footer"
+    And I should see "barack obama"
     
     When I am on the affiliate advanced search page for "aff.gov"
     And I fill in "query-not" with "barack"
     And I press "Search"
-    Then I should see "-barack"
+    Then I should see "Affiliate Header"
+    And I should see "Affiliate Footer"
+    And I should see "-barack"
     
     When I am on the affiliate advanced search page for "aff.gov"
     And I select "Adobe PDF" from "filetype"
     And I press "Search"
-    Then I should see "filetype:pdf"
+    Then I should see "Affiliate Header"
+    And I should see "Affiliate Footer"
+    And I should see "filetype:pdf"
 
     When I am on the affiliate advanced search page for "aff.gov"
     And I fill in "query" with "barack obama"
     And I select "20" from "per-page"
     And I press "Search"
-    Then I should see "Results 1-20"
+    Then I should see "Affiliate Header"
+    And I should see "Affiliate Footer"
+    And I should see "Results 1-20"
     
     When I am on the affiliate advanced search page for "aff.gov"
     And I choose "No filter"
     And I press "Search"
-    Then I should not see "Sorry, no results found"    
+    Then I should see "Affiliate Header"
+    And I should see "Affiliate Footer"
+    And I should not see "Sorry, no results found"    
     
   Scenario: Getting an embed code for my affiliate site search
     Given the following Affiliates exist:
