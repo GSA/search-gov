@@ -4,8 +4,9 @@
     = hidden_field_tag :m, params[:m]
     .row
       %h3 Search All Government
-      = unescaped_text_field_with_auto_complete :search, :query, {:name=>"query", :autocomplete => "off"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ element.parentNode.submit(value) }", :frequency => 0.1 }
-      = submit_tag(t :search, :id => "search_button")
+      #search
+        = unescaped_text_field_with_auto_complete :search, :query, {:name=>"query", :autocomplete => "off"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ element.parentNode.submit(value) }", :frequency => 0.1 }
+        = submit_tag t(:search)
 - if js_enabled_mobile_device?
   :javascript
     document.getElementById("search_query").focus();

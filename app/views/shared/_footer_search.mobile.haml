@@ -1,9 +1,10 @@
 - form_tag(search_path, :method => :get, :id=>"search_form") do
+  = hidden_field_tag :locale, I18n.locale
+  = hidden_field_tag :m, params[:m]
   .group
     .row.center
-      = text_field :search, :query, {:name=>"query", :placeholder => "Search"}
-      = submit_tag(t :search, :id => "search_button")
-      = hidden_field_tag :locale, I18n.locale
-      = hidden_field_tag :m, params[:m]
+      #search
+        = text_field :search, :query, {:name=> "query", :placeholder => "Search"}
+        = submit_tag t(:search)
     .row.center
       = image_tag("binglogo.gif")
