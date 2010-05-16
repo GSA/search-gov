@@ -1,1 +1,19 @@
+#logo.group
+  = link_to image_tag("/m/i/logo.gif"), root_path
+
+%h2.center Contact Your Government
+
+.group
+  .row
+    = link_to "Call Us", "tel:18003334636", :class => "arrow"
+    %p
+      %small
+        1 (800) FED-INFO (333-4636)
+        %br
+        M-F 8am-8pm ET
+  .row
+    = link_to "E-mail US", "", :class => "arrow"
+  .row
+    = link_to "Visit Our Blog", "http://blog.usa.gov", :class => "arrow"
+
 = render :partial => "shared/search"

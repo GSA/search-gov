@@ -14,6 +14,19 @@ body {
     padding-bottom: 17px;
 }
 
+#logo {
+  text-align: center;
+}
+
+#logo img {
+  padding: 5px 0;
+}
+
+a {
+  color: #336699;
+  text-decoration: none;
+}
+
 hr {
     display: none;
 }
@@ -23,6 +36,11 @@ h1 {
     padding: 0 10px 0 10px;
     font-size: 17px;
     color: #4c566c;
+}
+
+h2 {
+  margin: 0;
+  color: #785629;
 }
 
 div.group {
@@ -41,6 +59,8 @@ div.row .summary, div.row .links {
 }
 
 div.row h3 {
+    margin-top: 0;
+    color: #336699;
     font-weight: normal;
 }
 
@@ -66,4 +86,9 @@ p, h1, h2, h3, table {
 
 div.auto_complete ul li {
   text-align: left
+}
+
+a.arrow {
+  padding-right: 30px;
+  background: url(/m/i/iPhoneArrow.png) top right no-repeat;
 }
