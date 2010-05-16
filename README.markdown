@@ -50,6 +50,7 @@ You can start/stop/reindex Solr like this:
 ## Gems
 
 You should be able to get all the rest of the gems needed for this project like this:
+
     sudo gem install cucumber hoptoad_notifier rspec rspec-rails capistrano capistrano-ext ruby-debug
     sudo rake gems:install
     sudo rake gems:install RAILS_ENV=test
