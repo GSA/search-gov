@@ -73,7 +73,15 @@ class Search
     log_impression
     true
   end
-
+  
+  def as_json(options = {})
+    if self.error_message
+      { :error => self.error_message }
+    else
+      { :total => self.total, :startrecord => self.startrecord, :endrecord => self.endrecord, :spelling_suggestions => self.spelling_suggestion, :related => self.related_search, :results => self.results }
+    end
+  end
+  
   private
 
   def log_impression

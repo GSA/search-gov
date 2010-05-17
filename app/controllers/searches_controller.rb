@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  before_filter :grab_format
   before_filter :set_search_options
   has_mobile_fu
   before_filter :adjust_mobile_mode
@@ -11,6 +12,15 @@ class SearchesController < ApplicationController
     @page_title = @search.query
     handle_affiliate_search
     record_accepted_sayt_suggestion
+    if @search_options[:affiliate]
+      render :action => "affiliate_index", :layout => "affiliate"
+    else
+      respond_to do |format|
+        format.html
+        format.mobile
+        format.json { render :json => @search }
+      end
+    end
   end
 
   def auto_complete_for_search_query
@@ -33,12 +43,15 @@ class SearchesController < ApplicationController
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
       @page_title = "#{t :search_results_for} #{@affiliate.name}: #{@search.query}"
-      render :action => "affiliate_index", :layout => "affiliate"
     end
   end
 
   def record_accepted_sayt_suggestion
     AcceptedSaytSuggestion.create!(:phrase=>params["query"]) if params["sayt"]
+  end
+  
+  def grab_format
+    @original_format = request.format
   end
 
   # TODO This could be cleaned up into search.rb
@@ -70,7 +83,8 @@ class SearchesController < ApplicationController
   end
 
   def adjust_mobile_mode
-    request.format= :html if @search_options[:affiliate].present? or is_advanced_search?
+    request.format = :html if @search_options[:affiliate].present? or is_advanced_search?
+    request.format = :json if @original_format == 'application/json'
   end
 
   def is_advanced_search?
