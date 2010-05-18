@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("#usagov-search-field").autocomplete("http://searchdemo.usa.gov/searches/auto_complete_for_search_query", {
+  $("#usagov-search-field").autocomplete("http://demo:***REMOVED***@searchdemo.usa.gov/searches/auto_complete_for_search_query", {
     dataType: "jsonp",
     parse: function(data) {
       var rows = new Array();
@@ -11,6 +11,10 @@ $(document).ready(function() {
     formatItem: function(row, i, n) {
       return row;
     },
+    highlight: function(value, term) {
+      return value.replace(term, "<strong class='highlight'>" + term + "</strong>");
+    },
+    scroll: false,
     max: 15,
     extraParams: {
       locale: "en",
