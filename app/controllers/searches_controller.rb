@@ -24,10 +24,15 @@ class SearchesController < ApplicationController
   end
 
   def auto_complete_for_search_query
-    render :inline => "" and return unless params['query']
-    sanitized_query = params['query'].gsub('\\', '')
+    query = params["mode"] == "jquery" ? params["q"] : params["query"]
+    render :inline => "" and return unless query
+    sanitized_query = query.gsub('\\', '')
     @auto_complete_options = Search.suggestions(sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
-    render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
+    if params["mode"] == "jquery"
+      render :inline => @auto_complete_options.map{|option| option.phrase }.join("\n")
+    else
+      render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
+    end
   end
   
   def advanced

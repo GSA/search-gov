@@ -48,7 +48,21 @@ describe SearchesController do
         get :auto_complete_for_search_query, :query=>"lorem"
       end
     end
-
+    
+    context "when searching from some other site on the internet" do
+      it "should accept the 'q' parameter to work with jQuery's autocomplete syntax when style is set to 'jquery'" do
+        SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
+        get :auto_complete_for_search_query, :q =>"lorem", :mode => 'jquery'
+        response.body.should match(/lorem/i)
+      end
+      
+      it "should return a carriage-return separated list in jquery mode" do
+        SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
+        SaytSuggestion.create(:phrase => "Lorem sic transit gloria")
+        get :auto_complete_for_search_query, :q => "lorem", :mode => 'jquery'
+        response.body.should == "lorem ipsum dolor sit amet\nlorem sic transit gloria"
+      end
+    end
   end
 
   context "when showing index" do
