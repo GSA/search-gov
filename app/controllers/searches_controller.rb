@@ -29,7 +29,7 @@ class SearchesController < ApplicationController
     sanitized_query = query.gsub('\\', '')
     @auto_complete_options = Search.suggestions(sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
     if params["mode"] == "jquery"
-      render :inline => @auto_complete_options.map{|option| option.phrase }.join("\n")
+      render :json => "#{params['callback']}(#{@auto_complete_options.map{|option| option.phrase }.to_json})"
     else
       render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
     end

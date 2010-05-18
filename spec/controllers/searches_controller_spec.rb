@@ -59,8 +59,8 @@ describe SearchesController do
       it "should return a carriage-return separated list in jquery mode" do
         SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
         SaytSuggestion.create(:phrase => "Lorem sic transit gloria")
-        get :auto_complete_for_search_query, :q => "lorem", :mode => 'jquery'
-        response.body.should == "lorem ipsum dolor sit amet\nlorem sic transit gloria"
+        get :auto_complete_for_search_query, :q => "lorem", :mode => 'jquery', :callback => 'jsonp'
+        response.body.should == 'jsonp(["lorem ipsum dolor sit amet","lorem sic transit gloria"])'
       end
     end
   end
