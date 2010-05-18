@@ -1,4 +1,6 @@
 class SearchesController < ApplicationController
+  before_filter :handle_old_advanced_form, :only => [ :index ]
+  before_filter :grab_format
   before_filter :set_search_options
   has_mobile_fu
   before_filter :adjust_mobile_mode
@@ -39,6 +41,16 @@ class SearchesController < ApplicationController
 
   def record_accepted_sayt_suggestion
     AcceptedSaytSuggestion.create!(:phrase=>params["query"]) if params["sayt"]
+  end
+  
+  def handle_old_advanced_form
+    if params["form"] == "advanced-firstgov"
+      redirect_to advanced_search_path(params)
+    end
+  end
+  
+  def grab_format
+    @original_format = request.format
   end
 
   # TODO This could be cleaned up into search.rb

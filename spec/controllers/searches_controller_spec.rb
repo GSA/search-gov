@@ -189,5 +189,25 @@ describe SearchesController do
       AcceptedSaytSuggestion.find_by_phrase('very suggestive').should be_nil
     end
   end
+  
+  context "when a user is attempting to visit an old-style advanced search page" do
+    before do
+      get :index, :form => "advanced-firstgov"
+    end
+    
+    it "should redirect to the advanced search page" do
+      response.should redirect_to advanced_search_path(:form => "advanced-firstgov")
+    end
+  end
+  
+  context "when a user is attempting to visit an old-style advanced search page for an affiliate" do
+    before do
+      get :index, :form => 'advanced-firstgov', :affiliate => 'aff.gov'
+    end
+    
+    it "should redirect to the affiliate advanced search page" do
+      response.should redirect_to advanced_search_path(:form => 'advanced-firstgov', :affiliate => 'aff.gov')
+    end
+  end
 
 end
