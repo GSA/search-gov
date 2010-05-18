@@ -21,5 +21,7 @@ $(document).ready(function() {
       m: false,
       mode: "jquery"
     }
+  }).result(function(event, data, formatted){
+    $("#usagov-search").submit();
   });
 });
