@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  $("#usagov-search-field").autocomplete("http://demo:***REMOVED***@searchdemo.usa.gov/searches/auto_complete_for_search_query", {
+  $(".usagov-search-autocomplete").autocomplete("http://searchdemo.usa.gov/searches/auto_complete_for_search_query", {
     dataType: "jsonp",
     parse: function(data) {
       var rows = new Array();
@@ -22,6 +22,6 @@ $(document).ready(function() {
       mode: "jquery"
     }
   }).result(function(event, data, formatted){
-    $("#usagov-search").submit();
+    $(this).parent().submit();
   });
 });
