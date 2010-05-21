@@ -3,11 +3,11 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
   %head
     - if @affiliate
+      = stylesheet_link_tag 'compiled/advanced.css'
       = stylesheet_link_tag "compiled/affiliates/#{@affiliate.template.stylesheet}"
       /[if lt IE 8]
         = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
       = stylesheet_link_tag "clearfix"
-      = stylesheet_link_tag 'compiled/advanced.css'
     = javascript_include_tag :defaults
 
     %title= @page_title
