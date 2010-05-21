@@ -12,7 +12,7 @@
         %br
         M-F 8am-8pm ET
   .row
-    = link_to "E-mail US", "", :class => "arrow"
+    = mail_to "musa.gov@mail.fedinfo.gov?subject=" + URI.encode("USA.gov Mobile Inquiry") + "&body=" + URI.encode("\n\n\n\n------ Please add your question above this line ------\n\n[FORMGEN]"), "E-mail US", :class => "arrow"
   .row
     = link_to "Visit Our Blog", "http://blog.usa.gov", :class => "arrow"
 

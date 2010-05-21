@@ -94,3 +94,7 @@ Feature: Mobile Search
     And I should not see "The Fizz recalls Screw-on Ice Cream Float Cup"
     And I should not see "Old Marshmallow Recall news"
 
+    Scenario: Emailing from the home page
+      Given I am on the homepage
+      Then I should see "E-mail US"
+      And "E-mail US" should open an email to "mailto:musa.gov@mail.fedinfo.gov"
