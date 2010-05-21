@@ -244,7 +244,7 @@ describe SearchesController do
     end
     
     it "should redirect to the advanced search page" do
-      response.should redirect_to advanced_search_path(:form => "advanced-firstgov")
+      response.should redirect_to advanced_search_path(:form => 'advanced-firstgov')
     end
   end
   
@@ -254,7 +254,8 @@ describe SearchesController do
     end
     
     it "should redirect to the affiliate advanced search page" do
-      response.should redirect_to advanced_search_path(:form => 'advanced-firstgov', :affiliate => 'aff.gov')
+      response.should be_redirect
+      redirect_to advanced_search_path(:affiliate => 'aff.gov', :form => 'advanced-firstgov')
     end
   end
 
