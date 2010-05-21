@@ -45,7 +45,7 @@ class SearchesController < ApplicationController
   
   def handle_old_advanced_form
     if params["form"] == "advanced-firstgov"
-      redirect_to advanced_search_path(params)
+      redirect_to advanced_search_path(params.merge(:controller => "searches", :action => "advanced"))
     end
   end
   
