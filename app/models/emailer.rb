@@ -19,7 +19,16 @@ class Emailer < ActionMailer::Base
     @subject += "Welcome to USA Search Services"
     body(:user => user)
   end
-
+  
+  def mobile_feedback(email, message)
+    @recipients = "musa.gov@mail.fedinfo.gov"
+    @from       = email
+    @subject    = "USA.gov Mobile Inquiry"
+    @sent_on    = Time.now
+    @headers['Content-Type'] = "text/plain; charset=utf-8; format=flowed"
+    body(:message => message)
+  end
+  
   private
   def setup_email(recipients)
     @recipients = recipients

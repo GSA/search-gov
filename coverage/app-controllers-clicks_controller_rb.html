@@ -69,55 +69,55 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     Click.create!(:url =&gt; params['u'],</pre></td>
+            <td><pre><a name="line3">3</a>     Click.create(:url =&gt; params['u'],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>                   :query =&gt; params['q'],</pre></td>
+            <td><pre><a name="line4">4</a>                  :query =&gt; params['q'],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>                   :serp_position =&gt; params['p'],</pre></td>
+            <td><pre><a name="line5">5</a>                  :serp_position =&gt; params['p'],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>                   :queried_at =&gt; Time.at(params['t'].to_i),</pre></td>
+            <td><pre><a name="line6">6</a>                  :queried_at =&gt; Time.at(params['t'].to_i),</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>                   :affiliate =&gt; params['a'].present? ? params['a'] : nil,</pre></td>
+            <td><pre><a name="line7">7</a>                  :affiliate =&gt; params['a'].present? ? params['a'] : nil,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>                   :results_source =&gt; params['s'],</pre></td>
+            <td><pre><a name="line8">8</a>                  :results_source =&gt; params['s'],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>                   :clicked_at =&gt; DateTime.now,</pre></td>
+            <td><pre><a name="line9">9</a>                  :clicked_at =&gt; DateTime.now,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>                   :click_ip =&gt; request.env['REMOTE_ADDR'],</pre></td>
+            <td><pre><a name="line10">10</a>                  :click_ip =&gt; request.env['REMOTE_ADDR'],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>                   :user_agent =&gt; request.user_agent)</pre></td>
+            <td><pre><a name="line11">11</a>                  :user_agent =&gt; request.user_agent)</pre></td>
           </tr>
         
           
@@ -147,7 +147,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Wed May 05 12:28:34 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon May 24 16:54:02 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

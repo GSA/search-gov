@@ -97,4 +97,25 @@ Feature: Mobile Search
     Scenario: Emailing from the home page
       Given I am on the homepage
       Then I should see "E-mail US"
-      And "E-mail US" should open an email to "mailto:musa.gov@mail.fedinfo.gov"
+      When I follow "E-mail US"
+      Then I should be on the mobile contact form page
+      And I should see "E-mail Us"
+      And I should see "Email *"
+      And I should see "Message *"
+      And I fill in "Email *" with "mobileuser@usa.gov"
+      And I fill in "Message *" with "I love your site!"
+      And I press "Submit"
+      Then I should be on the mobile contact form page
+      And I should see "Thank you.  We have received your message and will be responding soon."
+      And "musa.gov@mail.fedinfo.gov" should receive an email
+    
+    Scenario: User does not provide some information for contact form
+      Given I am on the mobile contact form page
+      And I fill in "Email *" with "mobileuser@usa.gov"
+      And I press "Submit"
+      Then I should see "You must fill in all required fields marked by an '*'"
+      
+      When I am on the mobile contact form page
+      And I fill in "Message *" with "I love your site!"
+      And I press "Submit"
+      Then I should see "You must fill in all required fields marked by an '*'"

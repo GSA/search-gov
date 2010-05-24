@@ -45,6 +45,7 @@ ActionController::Routing::Routes.draw do |map|
   map.top_queries 'analytics/top_queries', :controller => 'analytics/monthly_reports', :action => 'top_queries'
   map.daily_top_queries 'analytics/daily_top_queries', :controller => 'analytics/home', :action => 'daily_top_queries'
   map.home_page '/', :controller => "home"
+  map.contact_form '/contact_form', :controller => "home", :action => "contact_form"
   map.auto_complete ':controller/:action',
                     :requirements => { :action => /auto_complete_for_\S+/ },
                     :conditions => { :method => :get }

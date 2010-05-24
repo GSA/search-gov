@@ -1,5 +1,5 @@
 #logo.group
-  = link_to image_tag("/m/i/logo.gif"), root_path
+  = link_to image_tag("/m/i/logo.gif"), root_path(:locale => I18n.locale.to_s, :m => true)
 
 %h2.center Contact Your Government
 
@@ -12,7 +12,7 @@
         %br
         M-F 8am-8pm ET
   .row
-    = mail_to "musa.gov@mail.fedinfo.gov?subject=" + URI.encode("USA.gov Mobile Inquiry") + "&body=" + URI.encode("\n\n\n\n------ Please add your question above this line ------\n\n[FORMGEN]"), "E-mail US", :class => "arrow"
+    = link_to "E-mail US", contact_form_path(:m => true, :locale => I18n.locale.to_s), :class => "arrow"
   .row
     = link_to "Visit Our Blog", "http://blog.usa.gov", :class => "arrow"
 
