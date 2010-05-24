@@ -205,7 +205,7 @@ ActiveRecord::Schema.define(:version => 20100505031121) do
     t.string   "ipaddr",    :limit => 17
     t.string   "query",     :limit => 100
     t.string   "affiliate", :limit => 32
-    t.timestamp "timestamp",                :null => false
+    t.datetime "timestamp",                :null => false
     t.string   "locale",    :limit => 5
     t.string   "agent"
     t.boolean  "is_bot"
