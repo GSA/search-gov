@@ -23,8 +23,7 @@ Rails::Initializer.run do |config|
   config.gem "bcrypt-ruby", :lib => "bcrypt", :version => '>= 2.1.1'
   config.gem "authlogic", :version => '>= 2.1.1'
   config.gem 'schoefmax-multi_db', :lib => 'multi_db', :source => 'http://gems.github.com'
-  config.gem 'sunspot', :lib => 'sunspot', :version=> '0.10.9'
-  config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version=> '0.11.5'
+  config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version => '1.1.0'
   config.gem 'hoptoad_notifier'
   config.gem 'fastercsv'
 

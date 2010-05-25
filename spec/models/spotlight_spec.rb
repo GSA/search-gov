@@ -23,8 +23,6 @@ describe Spotlight do
   end
 
   describe "#search_for" do
-    integrate_sunspot
-
     before do
       @spotty = spotlights(:time)
     end

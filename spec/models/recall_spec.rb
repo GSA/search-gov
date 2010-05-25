@@ -301,7 +301,6 @@ describe Recall do
   end
 
   describe "#search_for" do
-    integrate_sunspot
     before(:all) do
       Recall.destroy_all
       Recall.remove_all_from_index!

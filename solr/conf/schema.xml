@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema version="0.9" name="sunspot">
   <types>
+    <!-- *** This fieldtype is used by Sunspot! *** -->
     <fieldtype class="solr.TextField" positionIncrementGap="100" name="text">
       <analyzer>
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -8,7 +9,7 @@
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
         <filter class="solr.SynonymFilterFactory" synonyms="syn.txt" ignoreCase="true" expand="false"/>
-        <filter class="solr.EnglishPorterFilterFactory" protected="protwords.txt" />
+        <filter class="solr.EnglishPorterFilterFactory" protected="protwords.txt"/>
       </analyzer>
     </fieldtype>
     <fieldtype class="solr.RandomSortField" name="rand"/>
@@ -19,46 +20,129 @@
     <fieldtype name="string" class="solr.StrField" omitNorms="true"/>
     <fieldtype name="sdouble" class="solr.SortableDoubleField" omitNorms="true"/>
     <fieldtype name="slong" class="solr.SortableLongField" omitNorms="true"/>
+    <!-- *** This fieldType is used by Sunspot! *** -->
+    <fieldType name="tdouble" class="solr.TrieDoubleField" omitNorms="true"/>
+    <!-- *** This fieldType is used by Sunspot! *** -->
+    <fieldType name="tint" class="solr.TrieIntField" omitNorms="true"/>
+    <!-- *** This fieldType is used by Sunspot! *** -->
+    <fieldType name="tfloat" class="solr.TrieFloatField" omitNorms="true"/>
+    <!-- *** This fieldType is used by Sunspot! *** -->
+    <fieldType name="tdate" class="solr.TrieDateField" omitNorms="true"/>
   </types>
   <fields>
-    <field name="id"         type="string"  indexed="true" stored="true"  multiValued="false" />
-    <field name="type"       type="string"  indexed="true" stored="false" multiValued="true" />
-    <field name="class_name" type="string"  indexed="true" stored="false" multiValued="false" />
-    <field name="text"       type="text"    indexed="true" stored="true" multiValued="true" />
-    <field name="lat"        type="sdouble" indexed="true" stored="true"  multiValued="false" />
-    <field name="long"       type="sdouble" indexed="true" stored="true"  multiValued="false" />
-    <dynamicField name="*_text"   type="text"    indexed="true" stored="true"  multiValued="true" />
-    <dynamicField name="*_texts"  type="text"    indexed="true" stored="true"  multiValued="true" />
-    <dynamicField name="random_*" type="rand"    indexed="true" stored="false" multiValued="false" />
-    <dynamicField name="_local*" type="sdouble" indexed="true" stored="false" multiValued="false" />
-    <dynamicField name="*_b" type="boolean" indexed="true" stored="false" multiValued="false" />
-    <dynamicField name="*_f" type="sfloat" indexed="true" stored="false" multiValued="false" />
-    <dynamicField name="*_d" type="date" indexed="true" stored="false" multiValued="false" />
-    <dynamicField name="*_i" type="sint" indexed="true" stored="false" multiValued="false" />
-    <dynamicField name="*_s" type="string" indexed="true" stored="false" multiValued="false" />
-    <dynamicField name="*_e" type="sdouble" indexed="true" stored="false" multiValued="false" />
-    <dynamicField name="*_l" type="slong" indexed="true" stored="false" multiValued="false" />
-    <dynamicField name="*_bm" type="boolean" indexed="true" stored="false" multiValued="true" />
-    <dynamicField name="*_fm" type="sfloat" indexed="true" stored="false" multiValued="true" />
-    <dynamicField name="*_dm" type="date" indexed="true" stored="false" multiValued="true" />
-    <dynamicField name="*_im" type="sint" indexed="true" stored="false" multiValued="true" />
-    <dynamicField name="*_sm" type="string" indexed="true" stored="false" multiValued="true" />
-    <dynamicField name="*_em" type="sdouble" indexed="true" stored="false" multiValued="true" />
-    <dynamicField name="*_lm" type="slong" indexed="true" stored="false" multiValued="true" />
-    <dynamicField name="*_bs" type="boolean" indexed="true" stored="true" multiValued="false" />
-    <dynamicField name="*_fs" type="sfloat" indexed="true" stored="true" multiValued="false" />
-    <dynamicField name="*_ds" type="date" indexed="true" stored="true" multiValued="false" />
-    <dynamicField name="*_is" type="sint" indexed="true" stored="true" multiValued="false" />
-    <dynamicField name="*_ss" type="string" indexed="true" stored="true" multiValued="false" />
-    <dynamicField name="*_es" type="sdouble" indexed="true" stored="true" multiValued="false" />
-    <dynamicField name="*_ls" type="slong" indexed="true" stored="true" multiValued="false" />
-    <dynamicField name="*_bms" type="boolean" indexed="true" stored="true" multiValued="true" />
-    <dynamicField name="*_fms" type="sfloat" indexed="true" stored="true" multiValued="true" />
-    <dynamicField name="*_dms" type="date" indexed="true" stored="true" multiValued="true" />
-    <dynamicField name="*_ims" type="sint" indexed="true" stored="true" multiValued="true" />
-    <dynamicField name="*_sms" type="string" indexed="true" stored="true" multiValued="true" />
-    <dynamicField name="*_ems" type="sdouble" indexed="true" stored="true" multiValued="true" />
-    <dynamicField name="*_lms" type="slong" indexed="true" stored="true" multiValued="true" />
+    <!-- *** This field is used by Sunspot! *** -->
+    <field name="id" type="string" indexed="true" stored="true" multiValued="false"/>
+    <!-- *** This field is used by Sunspot! *** -->
+    <field name="type" type="string" indexed="true" stored="false" multiValued="true"/>
+    <!-- *** This field is used by Sunspot! *** -->
+    <field name="class_name" type="string" indexed="true" stored="false" multiValued="false"/>
+    <!-- *** This field is used by Sunspot! *** -->
+    <field name="text" type="text" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This field is used by Sunspot! *** -->
+    <field name="lat" type="sdouble" indexed="true" stored="true" multiValued="false"/>
+    <field name="long" type="sdouble" indexed="true" stored="true" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_text" type="text" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_texts" type="text" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="random_*" type="rand" indexed="true" stored="false" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="_local*" type="sdouble" indexed="true" stored="false" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_b" type="boolean" indexed="true" stored="false" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_f" type="sfloat" indexed="true" stored="false" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_d" type="date" indexed="true" stored="false" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_i" type="sint" indexed="true" stored="false" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_s" type="string" indexed="true" stored="false" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_e" type="sdouble" indexed="true" stored="false" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_l" type="slong" indexed="true" stored="false" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_bm" type="boolean" indexed="true" stored="false" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_fm" type="sfloat" indexed="true" stored="false" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_dm" type="date" indexed="true" stored="false" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_im" type="sint" indexed="true" stored="false" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_sm" type="string" indexed="true" stored="false" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_em" type="sdouble" indexed="true" stored="false" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_lm" type="slong" indexed="true" stored="false" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_bs" type="boolean" indexed="true" stored="true" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_fs" type="sfloat" indexed="true" stored="true" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_ds" type="date" indexed="true" stored="true" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_is" type="sint" indexed="true" stored="true" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_ss" type="string" indexed="true" stored="true" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_es" type="sdouble" indexed="true" stored="true" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_ls" type="slong" indexed="true" stored="true" multiValued="false"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_bms" type="boolean" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_fms" type="sfloat" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_dms" type="date" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_ims" type="sint" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_sms" type="string" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_ems" type="sdouble" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_lms" type="slong" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This field is used by Sunspot! *** -->
+    <field name="lng" multiValued="false" stored="true" indexed="true" type="tdouble"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_textv" multiValued="true" stored="false" termVectors="true" indexed="true" type="text"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_textsv" multiValued="true" stored="true" termVectors="true" indexed="true" type="text"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_it" multiValued="false" stored="false" termVectors="true" indexed="true" type="tint"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_itm" multiValued="true" stored="false" termVectors="true" indexed="true" type="tint"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_its" multiValued="false" stored="true" termVectors="true" indexed="true" type="tint"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_itms" multiValued="true" stored="true" termVectors="true" indexed="true" type="tint"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_ft" multiValued="false" stored="false" termVectors="true" indexed="true" type="tfloat"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_ftm" multiValued="true" stored="false" termVectors="true" indexed="true" type="tfloat"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_fts" multiValued="false" stored="true" termVectors="true" indexed="true" type="tfloat"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_ftms" multiValued="true" stored="true" termVectors="true" indexed="true" type="tfloat"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_et" multiValued="false" stored="false" termVectors="true" indexed="true" type="tdouble"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_etm" multiValued="true" stored="false" termVectors="true" indexed="true" type="tdouble"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_ets" multiValued="false" stored="true" termVectors="true" indexed="true" type="tdouble"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_etms" multiValued="true" stored="true" termVectors="true" indexed="true" type="tdouble"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_dt" multiValued="false" stored="false" termVectors="true" indexed="true" type="tdate"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_dtm" multiValued="true" stored="false" termVectors="true" indexed="true" type="tdate"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_dts" multiValued="false" stored="true" termVectors="true" indexed="true" type="tdate"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_dtms" multiValued="true" stored="true" termVectors="true" indexed="true" type="tdate"/>
   </fields>
   <uniqueKey>id</uniqueKey>
   <defaultSearchField>text</defaultSearchField>

@@ -37,8 +37,8 @@ You will need to install rubygems 1.3.5 (1.3.6 generates deprecation warnings) a
 
 We're using Solr for fulltext search. You might need to install these gems separately due to a Catch-22 with the Rake gem installer.
 
-    sudo gem install sunspot --version '=0.10.9'
-    sudo gem install sunspot_rails --version '=0.11.5'
+    sudo gem install sunspot --version '=1.1.0'
+    sudo gem install sunspot_rails --version '=1.1.0'
 
 You can start/stop/reindex Solr like this:
 
@@ -46,6 +46,18 @@ You can start/stop/reindex Solr like this:
     rake sunspot:solr:stop
     rake sunspot:solr:run
     rake sunspot:solr:reindex
+
+If you are upgrading from a previous version of Sunspot/Solr (typically, this would be from Sunspot 0.11.5 and Solr 1.3 to Sunspot 1.1.0 and Solr 1.4), then you should take the following steps:
+
+    rake sunspot:solr:stop
+    rake sunspot:solr:stop RAILS_ENV=test
+    git pull
+    sudo gem install sunspot --version '=1.1.0'
+    sudo gem install sunspot_rails --version '=1.1.0'
+    rake sunspot:solr:start
+    rake sunspot:solr:start RAILS_ENV=test
+    rake sunspot:solr:reindex
+    rake sunspot:solr:reindex RAILS_ENV=test
 
 ## Gems
 
