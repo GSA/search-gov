@@ -8,9 +8,7 @@ class SaytFilter < ActiveRecord::Base
   def self.filter(inputs, key)
     filters = all
     inputs.reject do |candidate|
-      rejected = filters.detect { |filter| candidate[key] =~ /\b#{filter.phrase}\b/i }
-      rejected = candidate[key] =~ /(site:|intitle:|http:)/i unless rejected
-      rejected
+      filters.detect { |filter| candidate[key] =~ /\b#{filter.phrase}\b/i }
     end unless inputs.nil?
   end
 

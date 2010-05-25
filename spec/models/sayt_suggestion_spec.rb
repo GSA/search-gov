@@ -12,8 +12,10 @@ describe SaytSuggestion do
     should_validate_presence_of :phrase
     should_validate_uniqueness_of :phrase
     should_validate_length_of :phrase, :within=> (3..80)
-    should_not_allow_values_for :phrase, "citizenship[", "email@address.com", "\"over quoted\"", "colon: here", "en español"
-    should_allow_values_for :phrase, "my-name", "1099 form", "Senator Frank S. Farley State Marina", "Oswald West State Park's Smuggler Cove"
+    should_not_allow_values_for :phrase, "citizenship[", "email@address.com", "\"over quoted\"", "colon: here",
+                                "http:something", "site:something", "intitle:something",
+                                "en español", "passports'", ".mp3", "' pictures"
+    should_allow_values_for :phrase, "basic phrase", "my-name", "1099 form", "Senator Frank S. Farley State Marina", "Oswald West State Park's Smuggler Cove"
 
     it "should create a new instance given valid attributes" do
       SaytSuggestion.create!(@valid_attributes)
@@ -46,9 +48,9 @@ describe SaytSuggestion do
 
     context "when DailyQueryStats exist for multiple days" do
       before do
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "yesterday term1", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-        DailyQueryStat.create!(:day => Date.today, :query => "today term1", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-        DailyQueryStat.create!(:day => Date.today, :query => "today term2", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "yesterday term1", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.today, :query => "today term1", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.today, :query => "today term2", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       end
 
       it "should populate SaytSuggestions based on each DailyQueryStat for the given day" do
@@ -61,8 +63,8 @@ describe SaytSuggestion do
 
     context "when SaytFilters exist" do
       before do
-        DailyQueryStat.create!(:day => Date.today, :query => "today term1", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-        DailyQueryStat.create!(:day => Date.today, :query => "today term2", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
+        DailyQueryStat.create!(:day => Date.today, :query => "today term1", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.today, :query => "today term2", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
         SaytFilter.create!(:phrase => "term2")
       end
 
@@ -72,24 +74,10 @@ describe SaytSuggestion do
       end
     end
 
-    context "when DailyQueryStats contain any of a handful of non-word constants" do
-      before do
-        DailyQueryStat.create!(:day => Date.today, :query => "http:something", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-        DailyQueryStat.create!(:day => Date.today, :query => "site:something", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-        DailyQueryStat.create!(:day => Date.today, :query => "intitle:something", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-        DailyQueryStat.create!(:day => Date.today, :query => "intitlesomething", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-      end
-
-      it "should filter those out" do
-        SaytSuggestion.should_receive(:create).once.with(:phrase => "intitlesomething")
-        SaytSuggestion.populate_for(Date.today)
-      end
-    end
-
     context "when SaytSuggestion already exists" do
       before do
         SaytSuggestion.create!(:phrase => "already here")
-        DailyQueryStat.create!(:day => Date.today, :query => "already here", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
+        DailyQueryStat.create!(:day => Date.today, :query => "already here", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       end
 
       it "should not throw an error" do
