@@ -13,7 +13,7 @@
       = hidden_field_tag "locale", I18n.locale.to_s
       = hidden_field_tag "m", "true"
       .row= label_tag "email", "Email *"
-      .row= text_field_tag "email"
+      .row= text_field_tag "email", @email || ""
       .row= label_tag "message", "Message *"
-      .row= text_field_tag "message"
+      .row= text_field_tag "message", @message || ""
       .row= submit_tag "Submit"

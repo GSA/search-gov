@@ -114,8 +114,18 @@ Feature: Mobile Search
       And I fill in "Email *" with "mobileuser@usa.gov"
       And I press "Submit"
       Then I should see "You must fill in all required fields marked by an '*'"
+      And the "Email *" field should contain "mobileuser@usa.gov"
       
       When I am on the mobile contact form page
       And I fill in "Message *" with "I love your site!"
       And I press "Submit"
       Then I should see "You must fill in all required fields marked by an '*'"
+      And the "Message *" field should contain "I love your site!"
+      
+      When I am on the mobile contact form page
+      And I fill in "Email *" with "bad email"
+      And I fill in "Message *" with "message"
+      And I press "Submit"
+      Then I should see "You must provide a valid email address."
+      And the "Email *" field should contain "bad email"
+      And the "Message *" field should contain "message"

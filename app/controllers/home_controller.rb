@@ -11,9 +11,13 @@ class HomeController < ApplicationController
       if @email.blank? || @message.blank?
         flash[:notice] = "You must fill in all required fields marked by an '*'"
       else
-        Emailer.deliver_mobile_feedback(@email, @message)
-        flash[:notice] = "Thank you.  We have received your message and will be responding soon."
-        @thank_you = true
+        if @email =~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/
+          Emailer.deliver_mobile_feedback(@email, @message)
+          flash[:notice] = "Thank you.  We have received your message and will be responding soon."
+          @thank_you = true
+        else
+          flash[:notice] = "You must provide a valid email address."
+        end
       end
     end
   end
