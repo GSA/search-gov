@@ -1,7 +1,7 @@
 !!!strict
 %html
   %head
-    %title= build_page_title(@page_title)
+    %title= h build_page_title(@page_title)
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
     = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/base.css'
