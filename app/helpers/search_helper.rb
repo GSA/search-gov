@@ -54,7 +54,7 @@ module SearchHelper
     aff_name = affiliate.name rescue ""
     query = search.query.gsub("'", "\\\\'")
     onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds)
-    "<a href=\"#{url}\" #{onmousedown}>#{title}</a>"
+    "<a href=\"#{h url}\" #{onmousedown}>#{title}</a>"
   end
 
   def render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)
