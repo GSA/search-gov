@@ -10,7 +10,7 @@
       = stylesheet_link_tag "clearfix"
     = javascript_include_tag :defaults
 
-    %title= @page_title
+    %title= h @page_title
   %body
     #container
       #header= @affiliate.header if @affiliate
