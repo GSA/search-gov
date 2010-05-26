@@ -205,6 +205,26 @@ describe SearchesController do
       @search.faqs.should_not be_nil
     end
   end
+  
+  context "when handling a request that has FAQ results, but the FAQ records have been deleted from the database" do
+    integrate_views
+    before do
+      Faq.destroy_all
+      Faq.reindex
+      Sunspot.commit
+      Faq.search_for('uspto').total.should == 0
+      @faq = Faq.create(:question => 'What is the USPTO?', :answer => 'The USPTO is a government agency', :url => 'http://uspto.gov', :ranking => 1)
+      Sunspot.commit
+      Faq.search_for('uspto').total.should == 1
+      Faq.delete_all
+      Faq.search_for('uspto').total.should == 1
+      get :index, :query => 'uspto'
+    end
+    
+    it "should display search results without Faq results" do
+      response.should be_success
+    end
+  end
 
   context "when handling a request that has GovForm results" do
     before do
@@ -215,6 +235,26 @@ describe SearchesController do
     it "should search for GovForm results" do
       @search.should_not be_nil
       @search.gov_forms.should_not be_nil
+    end
+  end
+  
+  context "when handling a request that has GovForm results, but the GovForm records have been deleted from the database" do
+    integrate_views
+    before do
+      GovForm.destroy_all
+      GovForm.reindex
+      Sunspot.commit
+      GovForm.search_for('uspto').total.should == 0
+      @gov_form = GovForm.create(:name => 'uspto GovForm', :form_number => 12345, :agency => 'UPSTO', :bureau => 'USPTO', :description => 'Something to do with the USPTO', :url => 'http://uspto.gov')
+      Sunspot.commit
+      GovForm.search_for('uspto').total.should == 1
+      GovForm.delete_all
+      GovForm.search_for('uspto').total.should == 1
+      get :index, :query => 'uspto'
+    end
+    
+    it "should display search results without GovForm results" do
+      response.should be_success
     end
   end
 
