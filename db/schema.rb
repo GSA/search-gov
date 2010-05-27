@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100505031121) do
+ActiveRecord::Schema.define(:version => 20100526171400) do
 
   create_table "accepted_sayt_suggestions", :force => true do |t|
     t.string   "phrase",     :null => false
@@ -189,6 +189,15 @@ ActiveRecord::Schema.define(:version => 20100505031121) do
   end
 
   add_index "log_files", ["name"], :name => "index_log_files_on_name", :unique => true
+
+  create_table "misspellings", :force => true do |t|
+    t.string   "wrong"
+    t.string   "rite"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "misspellings", ["wrong"], :name => "index_misspellings_on_wrong"
 
   create_table "moving_queries", :force => true do |t|
     t.date    "day",                        :null => false

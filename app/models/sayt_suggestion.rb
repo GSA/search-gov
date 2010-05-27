@@ -1,5 +1,5 @@
 class SaytSuggestion < ActiveRecord::Base
-  before_validation :squish_whitespace_and_downcase
+  before_validation :squish_whitespace_and_downcase_and_spellcheck
 
   validates_presence_of :phrase
   validates_uniqueness_of :phrase
@@ -30,7 +30,7 @@ class SaytSuggestion < ActiveRecord::Base
 
   private
 
-  def squish_whitespace_and_downcase
-    self.phrase = self.phrase.squish.downcase unless self.phrase.nil?
+  def squish_whitespace_and_downcase_and_spellcheck
+    self.phrase = Misspelling.correct(self.phrase.squish.downcase) unless self.phrase.nil?
   end
 end

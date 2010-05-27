@@ -1,7 +1,7 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe SaytSuggestion do
-  fixtures :sayt_suggestions
+  fixtures :sayt_suggestions, :misspellings
   before(:each) do
     @valid_attributes = {
       :phrase => "some valid suggestion"
@@ -37,6 +37,10 @@ describe SaytSuggestion do
       SaytSuggestion.find_by_phrase("two spaces").phrase.should == "two spaces"
     end
 
+    it "should correct misspellings before entering in DB" do
+      SaytSuggestion.create!(:phrase => "barack ubama")
+      SaytSuggestion.find_by_phrase("barack obama").should_not be_nil      
+    end
   end
 
   describe "#populate_for(day)" do
