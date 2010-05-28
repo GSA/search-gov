@@ -756,6 +756,16 @@ describe Search do
       suggs.first.phrase.should == "aaaazz"
       suggs.last.phrase.should == "aaaban"
     end
+
+    context "when no suggestions exist for the query" do
+      before do
+        SaytSuggestion.create!(:phrase => "affiliate")
+      end
+
+      it "should guess at a suggestion by iteratively removing the last letter of the query and retrying" do
+        Search.suggestions("affilaite").first.phrase.should == "affiliate"              
+      end
+    end
   end
 
   describe "#hits(response)" do
