@@ -1,5 +1,5 @@
 #logo.group
-  = link_to image_tag("/m/i/logo_mobile.png"), root_path
+  = link_to image_tag("/m/i/logo_mobile.png"), root_path(:locale => I18n.locale.to_s, :m => true)
 
 #search
   = render :partial => "shared/search"
@@ -12,7 +12,7 @@
     .navFloatRight
       >
   .navBodyItem
-    = link_to "E-mail Us", "/contact_form", :class => "mobileNavLink"
+    = link_to "E-mail Us", contact_form_path(:m => true, :locale => I18n.locale.to_s), :class => "mobileNavLink"
     .navFloatRight
       >
   .navFooter
