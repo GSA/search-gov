@@ -1,7 +1,7 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe Search do
-  fixtures :affiliates
+  fixtures :affiliates, :misspellings
 
   before do
     @affiliate = affiliates(:basic_affiliate)
@@ -751,6 +751,11 @@ describe Search do
       Search.suggestions("aaa", 6).size.should == 6
     end
 
+    it "should run the words in the query phrase against the misspellings list" do
+      SaytSuggestion.create!(:phrase => "obama president")
+      Search.suggestions("ubama pres").first.phrase.should == "obama president"
+    end
+
     it "should return suggestions in alphabetical order" do
       suggs = Search.suggestions("aaa")
       suggs.first.phrase.should == "aaaazz"
@@ -763,7 +768,7 @@ describe Search do
       end
 
       it "should guess at a suggestion by iteratively removing the last letter of the query and retrying" do
-        Search.suggestions("affilaite").first.phrase.should == "affiliate"              
+        Search.suggestions("affila").first.phrase.should == "affiliate"
       end
     end
   end

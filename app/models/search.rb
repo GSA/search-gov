@@ -133,11 +133,13 @@ class Search
 
   def self.suggestions(sanitized_query, num_suggestions = 15)
     query = sanitized_query.clone
+    corrected_query = Misspelling.correct(query)
+    corrected_suggestions = corrected_query != query ? SaytSuggestion.like(corrected_query, num_suggestions) : []
     begin
-      suggestions = SaytSuggestion.find(:all, :conditions => ['phrase LIKE ? ', query + '%'], :order => 'phrase ASC', :limit => num_suggestions, :select=>"distinct(phrase) as phrase")
+      suggestions = SaytSuggestion.like(query, num_suggestions)
       query.chop!
     end while suggestions.empty? and query.size > 2
-    suggestions
+    corrected_suggestions + suggestions
   end
 
   protected
