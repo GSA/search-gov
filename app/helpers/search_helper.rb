@@ -27,7 +27,7 @@ module SearchHelper
   end
 
   def display_result_links (result, search, affiliate, position)
-    html = tracked_click_link(result['unescapedUrl'], shorten_url(result['unescapedUrl']), search, affiliate, position, 'BWEB')
+    html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, 'BWEB')
     unless result['cacheUrl'].blank?
       html << " - "
       html << link_to((t :cached), "#{h result['cacheUrl']}", :class => 'cache_link')
@@ -47,14 +47,14 @@ module SearchHelper
   end
 
   def display_result_title (result, search, affiliate, position)
-    tracked_click_link(result['unescapedUrl'], translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB')
+    tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB')
   end
 
   def tracked_click_link(url, title, search, affiliate, position, source)
     aff_name = affiliate.name rescue ""
     query = search.query.gsub("'", "\\\\'")
     onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds)
-    "<a href=\"#{h url}\" #{onmousedown}>#{title}</a>"
+    "<a href=\"#{url}\" #{onmousedown}>#{title}</a>"
   end
 
   def render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)
