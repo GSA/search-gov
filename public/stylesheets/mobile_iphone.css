@@ -6,7 +6,6 @@ body, html, div, span, img, p, h1, h2, h3 {
 }
 
 body {
-    background: #c5ccd3;
     font-family: "Helvetica", sans-serif;
     font-size: 17px;
     font-weight: normal;
@@ -68,41 +67,6 @@ div.group > div.row:last-child {
     border: none;
 }
 
-input {
-    height: 30px;
-}
-
-#search {
-  overflow: hidden;
-  z-index: 1;
-}
-
-#search input[type=text] {
-  font-size: 16px;
-  padding: 2px;
-  float: left;
-}
-
-@media screen and (max-width: 320px)
-{
-    #search input[type=text] { width: 236px }
-}
-
-@media screen and (min-width: 321px)
-{
-    #search input[type=text] { width: 392px }
-}
-
-#search input[type=submit] {
-  display: inline-block;
-  float: right;
-  width: 32px;
-  margin-top: 4px;
-  text-indent: -99999px;
-  overflow: hidden;
-  border: 0;
-  background: url(/m/i/search.gif) top center no-repeat;
-}
 
 table {
     font-size: 0.5em;

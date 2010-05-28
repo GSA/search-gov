@@ -13,26 +13,26 @@ Feature: Mobile Search
 
   Scenario: Visiting the home page with a mobile device
     Given I am on the homepage
-    Then I should see "USA.gov’s Full Website"
+    Then I should see "Contact your Government"
 
   Scenario: Toggling full mode
     Given I am on the homepage
-    When I follow "USA.gov’s Full Website"
+    When I follow "Classic"
     Then I should be on the homepage
     And I should see "Mobile"
 
   Scenario: Toggling back to mobile mode
     Given I am on the homepage
-    When I follow "USA.gov’s Full Website"
+    When I follow "Classic"
     And I follow "Mobile"
     Then I should be on the homepage
-    And I should see "USA.gov’s Full Website"
+    And I should see "Contact your Government"
 
-  Scenario: Using mobile mode with a brower not identified as mobile
+  Scenario: Using mobile mode with a browser not identified as mobile
     Given I am using a desktop device
     And I am on the homepage
     When I follow "Mobile"
-    Then I should see "USA.gov’s Full Website"
+    Then I should see "Contact your Government"
 
   Scenario: A search on the mobile home page
     Given I am on the homepage
@@ -96,8 +96,8 @@ Feature: Mobile Search
 
     Scenario: Emailing from the home page
       Given I am on the homepage
-      Then I should see "E-mail US"
-      When I follow "E-mail US"
+      Then I should see "E-mail Us"
+      When I follow "E-mail Us"
       Then I should be on the mobile contact form page
       And I should see "E-mail Us"
       And I should see "Email *"
@@ -106,7 +106,7 @@ Feature: Mobile Search
       And I fill in "Message *" with "I love your site!"
       And I press "Submit"
       Then I should be on the mobile contact form page
-      And I should see "Thank you.  We have received your message and will be responding soon."
+      And I should see "Thank you. We have received your message and will be responding soon."
       And "musa.gov@mail.fedinfo.gov" should receive an email
     
     Scenario: User does not provide some information for contact form

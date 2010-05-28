@@ -11,14 +11,14 @@
       = javascript_include_tag :defaults
     - else
       %meta{:name => "MobileOptimized", :content => "175"}
+
   %body{:onload => "setTimeout(function() { window.scrollTo(0, 1) }, 100);"}
-    = yield
-    .group
-      .row.center
-        = link_to_mobile_mode("USA.gov’s Full Website", "override")
+  #container
+    #contentWrapper
+      = yield
+      .mobileFooter
+        View site in: 
+        = link_to_mobile_mode("Classic", "override")
         |
-        = link_to "Privacy", "http://www.usa.gov/About/Privacy_Security.shtml"
-        |
-        = link_to "Feedback", "http://www.usa.gov/Contact_Us.shtml"
-        |
-        = link_to "Terms of Use", "http://www.usa.gov/About/Important_Notices.shtml"
+        Mobile
+

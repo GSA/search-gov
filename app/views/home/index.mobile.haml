@@ -1,19 +1,22 @@
 #logo.group
-  = link_to image_tag("/m/i/logo.gif"), root_path(:locale => I18n.locale.to_s, :m => true)
+  = link_to image_tag("/m/i/logo_mobile.png"), root_path
 
-%h2.center Contact Your Government
+#search
+  = render :partial => "shared/search"
 
-.group
-  .row
-    = link_to "Call Us", "tel:18003334636", :class => "arrow"
-    %p
-      %small
-        1 (800) FED-INFO (333-4636)
-        %br
-        M-F 8am-8pm ET
-  .row
-    = link_to "E-mail US", contact_form_path(:m => true, :locale => I18n.locale.to_s), :class => "arrow"
-  .row
-    = link_to "Visit Our Blog", "http://blog.usa.gov", :class => "arrow"
+#homeNav
+  .navHeader
+    Contact your Government
+  .navBodyItem
+    Call 1 (800) FED-INFO
+    .navFloatRight
+      >
+  .navBodyItem
+    = link_to "E-mail Us", "/contact_form", :class => "mobileNavLink"
+    .navFloatRight
+      >
+  .navFooter
+    = link_to "Visit Our Blog", "http://blog.usa.gov", :class => "mobileNavLink"
+    .navFloatRight
+      >
 
-= render :partial => "shared/search"

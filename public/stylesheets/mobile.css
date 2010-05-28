@@ -2,13 +2,133 @@ body, div, p, h1, h2, h3, a, span, ul, li {
     margin: 0;
     padding: 0;
     border: #ffffff none 0;
+	font-family: Arial;
     font-weight: normal;
+}
+
+img{
+	
+	border: none;
 }
 
 .center {
     text-align: center;
 }
 
+#container
+{
+	background-color: #fff;
+    margin:0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#contentWrapper{
+	background-color: #fff;
+	width: 290px;
+	height: 460px;
+	position: relative;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
+#logo{
+	padding:22px 0 45px 0;
+}
+
+#search{
+	padding:0 0 40px 0;
+	width: 290px;
+}
+
+	.dvSearchBox{
+		float: left;
+		width: 253px;
+	}
+	
+		.mobileSearchTextBox{
+			background-image:url('/m/i/textBoxSkin.png');
+			background-repeat: no-repeat;
+			background-position: center left;
+			border: none;
+			font-size: 1em;
+			height: 32px;
+			padding-left: 15px;
+			width: 237px;
+		}
+		
+	.dvSearchBtn{
+		float: right;
+		margin: 1px 0 0 0;
+		width: 37px;
+	}
+
+#homeNav{
+	padding: 0 0 60px 0;
+	color: #636363;
+	font-size: .9em;
+}
+	.mobileNavLink{
+		color: #636363;
+		text-decoration: none;
+	}
+	
+	.navHeader{
+		background: url('/m/i/bgHomeNavHeader.png');
+		color: #24496b;
+		font-weight: bold;
+		height: 26px;
+		padding: 12px 0 0 15px;
+		width: 274px;	
+	}
+	
+	.navBodyItem{
+		border: solid 1px #ccc;
+		border-top: none;
+		height: 25px;
+		padding: 12px 0 0 27px;
+		width: 260px;
+	}
+	
+	.navFooter{
+		background: url('/m/i/bgHomeNavFooter.png');
+		height: 25px;
+		padding: 12px 0 0 27px;
+		width: 262px;
+	}
+	
+	.navFloatRight{
+		float: right;
+		padding: 0 20px 0 0;
+	}
+
+.mobileFooter{
+	float: right;
+	font-size: .8em;
+	
+}
+
+.floatRight{
+	float: right;	
+}
+
+.clear{
+	clear: both;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*  OLD ORIGINAL CSS */
 .links {
     color: green;
 }
@@ -34,3 +154,4 @@ table.deep_links {
 table.deep_links td {
   vertical-align: top;
 }
+
