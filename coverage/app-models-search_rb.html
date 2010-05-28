@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-search_rb.html">app/models/search.rb</a></td>
-            <td class='right_align'><tt>267</tt></td>
-            <td class='right_align'><tt>233</tt></td>
+            <td class='right_align'><tt>274</tt></td>
+            <td class='right_align'><tt>240</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -507,7 +507,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line76">76</a>   </pre></td>
+            <td><pre><a name="line76">76</a> </pre></td>
           </tr>
         
           
@@ -525,7 +525,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>       { :error =&gt; self.error_message }</pre></td>
+            <td><pre><a name="line79">79</a>       {:error =&gt; self.error_message}</pre></td>
           </tr>
         
           
@@ -537,7 +537,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>       { :total =&gt; self.total, :startrecord =&gt; self.startrecord, :endrecord =&gt; self.endrecord, :spelling_suggestions =&gt; self.spelling_suggestion, :related =&gt; self.related_search, :results =&gt; self.results }</pre></td>
+            <td><pre><a name="line81">81</a>       {:total =&gt; self.total, :startrecord =&gt; self.startrecord, :endrecord =&gt; self.endrecord, :spelling_suggestions =&gt; self.spelling_suggestion, :related =&gt; self.related_search, :results =&gt; self.results}</pre></td>
           </tr>
         
           
@@ -555,7 +555,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line84">84</a>   </pre></td>
+            <td><pre><a name="line84">84</a> </pre></td>
           </tr>
         
           
@@ -861,409 +861,409 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line135">135</a>     SaytSuggestion.find(:all, :conditions =&gt; ['phrase LIKE ? ', sanitized_query + '%' ], :order =&gt; 'phrase ASC', :limit =&gt; num_suggestions, :select=&gt;&quot;distinct(phrase) as phrase&quot;)</pre></td>
+            <td><pre><a name="line135">135</a>     query = sanitized_query.clone</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line136">136</a>     corrected_query = Misspelling.correct(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line137">137</a>     corrected_suggestions = corrected_query != query ? SaytSuggestion.like(corrected_query, num_suggestions) : []</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line136">136</a>   end</pre></td>
+            <td><pre><a name="line138">138</a>     begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line139">139</a>       suggestions = SaytSuggestion.like(query, num_suggestions)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line140">140</a>       query.chop!</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line141">141</a>     end while suggestions.empty? and query.size &gt; 2</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line142">142</a>     corrected_suggestions + suggestions</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line137">137</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line138">138</a>   protected</pre></td>
+            <td><pre><a name="line143">143</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line139">139</a> </pre></td>
+            <td><pre><a name="line144">144</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line140">140</a>   def related_search_results(response)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line141">141</a>     begin</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line142">142</a>       BlockWord.filter(response.related_search.results, &quot;Title&quot;, 5)</pre></td>
+            <td><pre><a name="line145">145</a>   protected</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line143">143</a>     rescue</pre></td>
+            <td><pre><a name="line146">146</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line144">144</a>       return []</pre></td>
+            <td><pre><a name="line147">147</a>   def related_search_results(response)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line148">148</a>     begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line149">149</a>       BlockWord.filter(response.related_search.results, &quot;Title&quot;, 5)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line145">145</a>     end</pre></td>
+            <td><pre><a name="line150">150</a>     rescue</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line151">151</a>       return []</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line146">146</a>   end</pre></td>
+            <td><pre><a name="line152">152</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line147">147</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line148">148</a>   def spelling_results(response)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line149">149</a>     response.spell.results.first.value.split(/ \(scopeid/).first.gsub(/&lt;\/?[^&gt;]*&gt;/, '').chomp(')').reverse.chomp('(').reverse rescue nil</pre></td>
+            <td><pre><a name="line153">153</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line150">150</a>   end</pre></td>
+            <td><pre><a name="line154">154</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line155">155</a>   def spelling_results(response)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line156">156</a>     response.spell.results.first.value.split(/ \(scopeid/).first.gsub(/&lt;\/?[^&gt;]*&gt;/, '').chomp(')').reverse.chomp('(').reverse rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line151">151</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line152">152</a>   def populate_additional_results</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line153">153</a>     if affiliate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line154">154</a>       self.boosted_sites = BoostedSite.search_for(affiliate, query)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line155">155</a>     elsif english_locale?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line156">156</a>       self.spotlight = Spotlight.search_for(query)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line157">157</a>       self.faqs = Faq.search_for(query)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line158">158</a>       self.gov_forms = GovForm.search_for(query)</pre></td>
+            <td><pre><a name="line157">157</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line159">159</a>     end</pre></td>
+            <td><pre><a name="line158">158</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line160">160</a>     if query =~ /\brecalls?\b/i and not query=~ /^recalls?$/i</pre></td>
+            <td><pre><a name="line159">159</a>   def populate_additional_results</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line161">161</a>       begin</pre></td>
+            <td><pre><a name="line160">160</a>     if affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line162">162</a>         self.recalls = Recall.search_for(query.gsub(/\brecalls?\b/i, '').strip, {:start_date=&gt;1.month.ago.to_date, :end_date=&gt;Date.today})</pre></td>
+            <td><pre><a name="line161">161</a>       self.boosted_sites = BoostedSite.search_for(affiliate, query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line162">162</a>     elsif english_locale?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line163">163</a>       self.spotlight = Spotlight.search_for(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line164">164</a>       self.faqs = Faq.search_for(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line165">165</a>       self.gov_forms = GovForm.search_for(query)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line163">163</a>       rescue RSolr::RequestError =&gt; error</pre></td>
+            <td><pre><a name="line166">166</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line164">164</a>         RAILS_DEFAULT_LOGGER.warn &quot;Error in searching for Recalls: #{error.to_s}&quot;</pre></td>
+            <td><pre><a name="line167">167</a>     if query =~ /\brecalls?\b/i and not query=~ /^recalls?$/i</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line165">165</a>         self.recalls = nil</pre></td>
+            <td><pre><a name="line168">168</a>       begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line169">169</a>         self.recalls = Recall.search_for(query.gsub(/\brecalls?\b/i, '').strip, {:start_date=&gt;1.month.ago.to_date, :end_date=&gt;Date.today})</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line166">166</a>       end</pre></td>
+            <td><pre><a name="line170">170</a>       rescue RSolr::RequestError =&gt; error</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line171">171</a>         RAILS_DEFAULT_LOGGER.warn &quot;Error in searching for Recalls: #{error.to_s}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line172">172</a>         self.recalls = nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line167">167</a>     end</pre></td>
+            <td><pre><a name="line173">173</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line168">168</a>   end</pre></td>
+            <td><pre><a name="line174">174</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line169">169</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line170">170</a>   def paginate(items)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line171">171</a>     pagination_total = [results_per_page * 20, total].min</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line172">172</a>     WillPaginate::Collection.create(page + 1, results_per_page, pagination_total) { |pager| pager.replace(items) }</pre></td>
+            <td><pre><a name="line175">175</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line173">173</a>   end</pre></td>
+            <td><pre><a name="line176">176</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line177">177</a>   def paginate(items)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line178">178</a>     pagination_total = [results_per_page * 20, total].min</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line179">179</a>     WillPaginate::Collection.create(page + 1, results_per_page, pagination_total) { |pager| pager.replace(items) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line174">174</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line175">175</a>   def perform(query_string, offset)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line176">176</a>     ActiveRecord::Base.benchmark(&quot;[Bing Search]&quot;, Logger::INFO) do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line177">177</a>       begin</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line178">178</a>         uri = URI.parse(bing_query(query_string, offset, results_per_page))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line179">179</a>         http = Net::HTTP.new(uri.host, uri.port)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line180">180</a>         req = Net::HTTP::Get.new(uri.request_uri)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line181">181</a>         req[&quot;User-Agent&quot;] = USER_AGENT</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line182">182</a>         req[&quot;Client-IP&quot;] = CLIENT_IP</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line183">183</a>         http.request(req)</pre></td>
+            <td><pre><a name="line180">180</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line184">184</a>       rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error =&gt; error</pre></td>
+            <td><pre><a name="line181">181</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line185">185</a>         raise BingSearchError.new(error.to_s)</pre></td>
+            <td><pre><a name="line182">182</a>   def perform(query_string, offset)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line183">183</a>     ActiveRecord::Base.benchmark(&quot;[Bing Search]&quot;, Logger::INFO) do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line184">184</a>       begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line185">185</a>         uri = URI.parse(bing_query(query_string, offset, results_per_page))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line186">186</a>         http = Net::HTTP.new(uri.host, uri.port)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line187">187</a>         req = Net::HTTP::Get.new(uri.request_uri)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line188">188</a>         req[&quot;User-Agent&quot;] = USER_AGENT</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line189">189</a>         req[&quot;Client-IP&quot;] = CLIENT_IP</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line190">190</a>         http.request(req)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line186">186</a>       end</pre></td>
+            <td><pre><a name="line191">191</a>       rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error =&gt; error</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line192">192</a>         raise BingSearchError.new(error.to_s)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line187">187</a>     end</pre></td>
+            <td><pre><a name="line193">193</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line188">188</a>   end</pre></td>
+            <td><pre><a name="line194">194</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line189">189</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line190">190</a>   def parse(response)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line191">191</a>     begin</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line192">192</a>       json = JSON.parse(response.body)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line193">193</a>       ResponseData.new(json['SearchResponse'])</pre></td>
+            <td><pre><a name="line195">195</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line194">194</a>     rescue JSON::ParserError =&gt; error</pre></td>
+            <td><pre><a name="line196">196</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line195">195</a>       raise BingSearchError.new(error.to_s)</pre></td>
+            <td><pre><a name="line197">197</a>   def parse(response)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line198">198</a>     begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line199">199</a>       json = JSON.parse(response.body)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line200">200</a>       ResponseData.new(json['SearchResponse'])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line196">196</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line197">197</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line198">198</a> </pre></td>
+            <td><pre><a name="line201">201</a>     rescue JSON::ParserError =&gt; error</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line199">199</a>   def build_query(options)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line200">200</a>     query = ''</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line201">201</a>     if !options[:query].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line202">202</a>       query += options[:query].split.collect{ |term| limit_field(options[:query_limit], term) }.join(' ')</pre></td>
+            <td><pre><a name="line202">202</a>       raise BingSearchError.new(error.to_s)</pre></td>
           </tr>
         
           
@@ -1275,391 +1275,433 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line204">204</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line205">205</a>     if !options[:query_quote].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line206">206</a>       query += ' ' + limit_field(options[:query_quote_limit], &quot;\&quot;#{options[:query_quote]}\&quot;&quot;)</pre></td>
+            <td><pre><a name="line204">204</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line207">207</a>     end</pre></td>
+            <td><pre><a name="line205">205</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line206">206</a>   def build_query(options)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line207">207</a>     query = ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line208">208</a>     if !options[:query].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line209">209</a>       query += options[:query].split.collect { |term| limit_field(options[:query_limit], term) }.join(' ')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line208">208</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line209">209</a>     if !options[:query_or].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line210">210</a>       query += ' ' + options[:query_or].split.collect{ |term| limit_field(options[:query_or_limit], term) }.join(' OR ')</pre></td>
+            <td><pre><a name="line210">210</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line211">211</a>     end</pre></td>
+            <td><pre><a name="line211">211</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line212">212</a>     if !options[:query_quote].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line213">213</a>       query += ' ' + limit_field(options[:query_quote_limit], &quot;\&quot;#{options[:query_quote]}\&quot;&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line212">212</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line213">213</a>     if !options[:query_not].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line214">214</a>       query += ' ' + options[:query_not].split.collect{ |term| &quot;-#{limit_field(options[:query_not_limit], term)}&quot;}.join(' ')</pre></td>
+            <td><pre><a name="line214">214</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line215">215</a>     end</pre></td>
+            <td><pre><a name="line215">215</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line216">216</a>     if !options[:query_or].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line217">217</a>       query += ' ' + options[:query_or].split.collect { |term| limit_field(options[:query_or_limit], term) }.join(' OR ')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line216">216</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line217">217</a>     query += &quot; filetype:#{options[:file_type]}&quot; unless options[:file_type].blank? || options[:file_type].downcase == 'all'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line218">218</a>     query += &quot; #{options[:site_limits].split.collect { |site| 'site:' + site}.join(' OR ')}&quot; unless options[:site_limits].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line219">219</a>     query += &quot; #{options[:site_excludes].split.collect { |site| '-site:' + site}.join(' ')}&quot; unless options[:site_excludes].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line220">220</a>     return query.strip</pre></td>
+            <td><pre><a name="line218">218</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line221">221</a>   end</pre></td>
+            <td><pre><a name="line219">219</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line220">220</a>     if !options[:query_not].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line221">221</a>       query += ' ' + options[:query_not].split.collect { |term| &quot;-#{limit_field(options[:query_not_limit], term)}&quot; }.join(' ')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line222">222</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line223">223</a>   def limit_field(field_name, term)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line224">224</a>     if field_name.blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line225">225</a>       term</pre></td>
+            <td><pre><a name="line222">222</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line226">226</a>     else</pre></td>
+            <td><pre><a name="line223">223</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line227">227</a>       &quot;#{field_name}#{term}&quot;</pre></td>
+            <td><pre><a name="line224">224</a>     query += &quot; filetype:#{options[:file_type]}&quot; unless options[:file_type].blank? || options[:file_type].downcase == 'all'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line225">225</a>     query += &quot; #{options[:site_limits].split.collect { |site| 'site:' + site }.join(' OR ')}&quot; unless options[:site_limits].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line226">226</a>     query += &quot; #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}&quot; unless options[:site_excludes].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line227">227</a>     return query.strip</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line228">228</a>     end</pre></td>
+            <td><pre><a name="line228">228</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line229">229</a>   end</pre></td>
+            <td><pre><a name="line229">229</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line230">230</a>   def limit_field(field_name, term)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line231">231</a>     if field_name.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line232">232</a>       term</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line230">230</a> </pre></td>
+            <td><pre><a name="line233">233</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line231">231</a>   def offset</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line232">232</a>     page * results_per_page</pre></td>
+            <td><pre><a name="line234">234</a>       &quot;#{field_name}#{term}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line233">233</a>   end</pre></td>
+            <td><pre><a name="line235">235</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line234">234</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line235">235</a>   def scope</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line236">236</a>     if affiliate_scope</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line237">237</a>       affiliate_scope</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line238">238</a>     elsif self.scope_id  &amp;&amp; !self.scope_id.empty? &amp;&amp; self.scope_id != 'all'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line239">239</a>       &quot;(scopeid:usagov#{self.scope_id})&quot;</pre></td>
+            <td><pre><a name="line236">236</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line240">240</a>     else</pre></td>
+            <td><pre><a name="line237">237</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line241">241</a>       DEFAULT_SCOPE</pre></td>
+            <td><pre><a name="line238">238</a>   def offset</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line239">239</a>     page * results_per_page</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line242">242</a>     end</pre></td>
+            <td><pre><a name="line240">240</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line243">243</a>   end</pre></td>
+            <td><pre><a name="line241">241</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line242">242</a>   def scope</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line243">243</a>     if affiliate_scope</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line244">244</a>       affiliate_scope</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line245">245</a>     elsif self.scope_id &amp;&amp; !self.scope_id.empty? &amp;&amp; self.scope_id != 'all'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line246">246</a>       &quot;(scopeid:usagov#{self.scope_id})&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line244">244</a> </pre></td>
+            <td><pre><a name="line247">247</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line245">245</a>   def affiliate_scope</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line246">246</a>     return unless affiliate_scope?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line247">247</a>     scope = affiliate.domains.split(&quot;\n&quot;).collect {|site| &quot;site:#{site}&quot;}.join(&quot; OR &quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line248">248</a>     &quot;(#{scope})&quot;</pre></td>
+            <td><pre><a name="line248">248</a>       DEFAULT_SCOPE</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line249">249</a>   end</pre></td>
+            <td><pre><a name="line249">249</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line250">250</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line251">251</a>   def affiliate_scope?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line252">252</a>     affiliate &amp;&amp; affiliate.domains.present? &amp;&amp; query !~ /site:/</pre></td>
+            <td><pre><a name="line250">250</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line253">253</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line254">254</a> </pre></td>
+            <td><pre><a name="line251">251</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line255">255</a>   def english_locale?</pre></td>
+            <td><pre><a name="line252">252</a>   def affiliate_scope</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line256">256</a>     I18n.locale.to_s == 'en'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line257">257</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line258">258</a> </pre></td>
+            <td><pre><a name="line253">253</a>     return unless affiliate_scope?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line259">259</a>   def locale</pre></td>
+            <td><pre><a name="line254">254</a>     scope = affiliate.domains.split(&quot;\n&quot;).collect { |site| &quot;site:#{site}&quot; }.join(&quot; OR &quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line260">260</a>     return if english_locale?</pre></td>
+            <td><pre><a name="line255">255</a>     &quot;(#{scope})&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line256">256</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line257">257</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line261">261</a>     &quot;language:#{I18n.locale}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line262">262</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line263">263</a> </pre></td>
+            <td><pre><a name="line258">258</a>   def affiliate_scope?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line264">264</a>   def formatted_query</pre></td>
+            <td><pre><a name="line259">259</a>     affiliate &amp;&amp; affiliate.domains.present? &amp;&amp; query !~ /site:/</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line260">260</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line261">261</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line265">265</a>     &quot;(#{query}) #{scope} #{locale}&quot;.strip.squeeze(' ')</pre></td>
+            <td><pre><a name="line262">262</a>   def english_locale?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line263">263</a>     I18n.locale.to_s == 'en'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line266">266</a>   end</pre></td>
+            <td><pre><a name="line264">264</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line267">267</a> end</pre></td>
+            <td><pre><a name="line265">265</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line266">266</a>   def locale</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line267">267</a>     return if english_locale?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line268">268</a>     &quot;language:#{I18n.locale}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line269">269</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line270">270</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line271">271</a>   def formatted_query</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line272">272</a>     &quot;(#{query}) #{scope} #{locale}&quot;.strip.squeeze(' ')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line273">273</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line274">274</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu May 27 09:39:31 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Fri May 28 14:18:59 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
