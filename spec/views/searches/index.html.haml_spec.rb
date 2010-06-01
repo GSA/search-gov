@@ -190,5 +190,18 @@ describe "searches/index.html.haml" do
         response.should_not contain(/onmousedown/)
       end
     end
+    
+    context "when related searches are available" do
+      before do
+        related_search = [ResponseData.new({"Title" => "Related Title", "Url" => "http://related.gov"})]
+        @search.stub!(:related_search).and_return related_search
+        @search.stub!(:results).and_return @search_results
+      end
+      
+      it "should display 'Results by Bing" do
+        render
+        response.should contain(/Results by Bing/)
+      end
+    end
   end
 end
