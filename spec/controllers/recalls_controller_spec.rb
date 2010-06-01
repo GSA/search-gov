@@ -38,5 +38,29 @@ describe RecallsController do
         response.body.should contain('Not Implemented')
       end
     end
+    
+    context "when recalls search returns an error" do
+      it "should pass along the error message in a JSON error object" do
+        Recall.stub!(:search_for).and_raise(StandardError.new("Some error occured"))
+        get :index, :query => "something"
+        parsed_response = JSON.parse(response.body)
+        parsed_response["error"].should == "Some error occured"
+      end
+    end
+    
+    context "when dates are submitted in an invalid format" do
+      before do
+        @start_date = '05-20-2010'
+        @end_date = '06-20-2010'
+        @query = "stroller"
+      end
+      
+      it "should throw an error and return a JSON error object" do
+        Recall.should_receive(:search_for).and_raise('invalid date')
+        get :index, :query => @query, :start_date => @start_date, :end_date => @end_date
+        parsed_response = JSON.parse(response.body)
+        parsed_response["error"].should == "invalid date"
+      end
+    end
   end
 end
