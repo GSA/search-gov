@@ -1,14 +1,14 @@
-#logo.group
+#logoHome.group
   = link_to image_tag("/m/i/logo_mobile.png"), root_path(:locale => I18n.locale.to_s, :m => true)
 
-#search
+#searchHome
   = render :partial => "shared/search"
 
 #homeNav
   .navHeader
     Contact your Government
   .navBodyItem
-    Call 1 (800) FED-INFO
+    = link_to "Call 1 (800) FED-INFO", "tel:+1-800-333-4636", :class => "mobileNavLink"  
     .navFloatRight
       >
   .navBodyItem
@@ -16,7 +16,7 @@
     .navFloatRight
       >
   .navFooter
-    = link_to "Visit Our Blog", "http://blog.usa.gov", :class => "mobileNavLink"
+    = link_to "Visit Our Blog", "http://m.info.gov/6036&t=f9ceb3ded94727d482bd7f5d31ea7904", :class => "mobileNavLink"
     .navFloatRight
       >
 

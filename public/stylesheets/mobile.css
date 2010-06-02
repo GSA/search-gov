@@ -1,9 +1,10 @@
 body, div, p, h1, h2, h3, a, span, ul, li {
-    margin: 0;
-    padding: 0;
     border: #ffffff none 0;
+	color: #333;
 	font-family: Arial;
     font-weight: normal;
+	margin: 0;
+    padding: 0;
 }
 
 img{
@@ -26,19 +27,35 @@ img{
 
 #contentWrapper{
 	background-color: #fff;
-	width: 290px;
-	height: 460px;
+	width: 310px;
+	min-height: 460px;
 	position: relative;
 	margin: 0 auto;
-	padding: 0 15px;
+	padding: 0;
+}
+
+#logoHome{
+	padding: 10px 0 25px 10px;
 }
 
 #logo{
-	padding:22px 0 45px 0;
+	
 }
 
-#search{
-	padding:0 0 40px 0;
+#searchHome{
+	padding:0 10px 25px 10px;
+	width: 290px;
+}
+
+.search{
+	border-bottom: 1px solid #d8d8d8;
+	border-top: 1px solid  #d8d8d8;
+	background-image:url('/m/i/bg_searchResultsSearchBox.png');
+	height: 48px;
+}
+
+.searchBoxContainer{
+	padding: 5px 10px;
 	width: 290px;
 }
 
@@ -58,6 +75,18 @@ img{
 			width: 237px;
 		}
 		
+		.mobileSearchTextBoxResultsPage{
+			background-image:url('/m/i/textBoxSkin_ResultsPage.png');
+			background-color: Transparent;
+			background-repeat: no-repeat;
+			background-position: center left;
+			border: none;
+			font-size: 1em;
+			height: 32px;
+			padding-left: 15px;
+			width: 237px;
+		}
+		
 	.dvSearchBtn{
 		float: right;
 		margin: 1px 0 0 0;
@@ -65,7 +94,7 @@ img{
 	}
 
 #homeNav{
-	padding: 0 0 60px 0;
+	padding: 0 10px 60px 10px;
 	color: #636363;
 	font-size: .9em;
 }
@@ -113,42 +142,81 @@ img{
 	float: right;	
 }
 
+.floatLeft{
+	float: left;	
+}
+
 .clear{
 	clear: both;
 }
 
+#logoSmall
+{
+	float: right;
+	height: 25px;
+	padding: 3px;
+}
 
+.alerttext{	
+	color: red;
+}
 
+.searchResult{
+	padding: 0 4px;
+}
 
+.title{
+	font-size: 15px;
+}
 
+.content{
+	font-size: 13px;
+}
 
-
-
-
-
-
-
-/*  OLD ORIGINAL CSS */
 .links {
     color: green;
+	font-size: 13px;
+}
+
+.noresults{
+	font-size: 13px;
+	padding: 3px;
+	text-align: center;
+}
+
+.pad10{
+	height: 10px;
+	width: 10px;
+}
+
+.textbox1
+{
+	border: 1px solid #ccc;
+	height: 30px;
+	width: 270px;
+	font-size: 17px;
+}
+
+.submit1
+{
+	border: 1px solid #ccc;
+	font-size: 17px;
 }
 
 #recalls {
-  background: LightBlue;
 }
 
 #relatedsearch {
-  padding: 0.5em 1em;
-  font-size: 0.8em;
+	font-size: .8em;
 }
 
 #relatedsearch ul {
-  list-style-type: none;
+  	list-style-type: none;
 }
 
 table.deep_links {
-  font-size: 0.8em;
-  width: 100%;
+	font-size: 12px;
+	width: 100%;
 }
 
 table.deep_links td {

@@ -10,19 +10,11 @@ body {
     font-size: 17px;
     font-weight: normal;
     word-wrap: break-word;
-    padding-bottom: 17px;
-}
-
-#logo {
-  text-align: center;
-}
-
-#logo img {
-  padding: 5px 0;
+    padding-bottom: 16px;
 }
 
 a {
-  color: #336699;
+  color: #333399;
   text-decoration: none;
 }
 
@@ -33,8 +25,9 @@ hr {
 h1 {
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
     padding: 0 10px 0 10px;
-    font-size: 17px;
-    color: #4c566c;
+    font-size: 16px;
+	color: #24496b;
+	font-weight: bold;
 }
 
 h2 {
@@ -45,16 +38,13 @@ h2 {
 div.group {
     background: #fff;
     -webkit-border-radius: 8px;
-    margin: 17px 10px 17px 10px;
+    margin: 14px 0;
 }
 
 div.row {
     border-bottom: solid 1px #d8d8d8;
-    padding: 17px 10px 17px 10px;
-}
-
-div.row .summary, div.row .links {
-    font-size: 17px;
+    padding: 14px 0 16px 0;
+	font-size: 13px;
 }
 
 div.row h3 {
@@ -73,7 +63,7 @@ table {
 }
 
 p, h1, h2, h3, table {
-    margin: 10px 0 10px 0;
+    margin: 10px 0;
 }
 
 .row h1 {
@@ -88,3 +78,18 @@ a.arrow {
   padding-right: 30px;
   background: url(/m/i/iPhoneArrow.png) top right no-repeat;
 }
+
+
+
+/*  begin new CSS - RCR */
+
+.mobileSearchTextBox{
+	padding-left: 8px;
+}
+	
+.dvSearchBtn{
+	margin: 4px 0 0 0;
+}
+
+
+/* end new CSS - RCR */

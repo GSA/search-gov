@@ -99,33 +99,33 @@ Feature: Mobile Search
       Then I should see "E-mail Us"
       When I follow "E-mail Us"
       Then I should be on the mobile contact form page
-      And I should see "E-mail Us"
-      And I should see "Email *"
-      And I should see "Message *"
-      And I fill in "Email *" with "mobileuser@usa.gov"
-      And I fill in "Message *" with "I love your site!"
+      And I should see "Contact Your Government"
+      And I should see "Email"
+      And I should see "Message"
+      And I fill in "Email" with "mobileuser@usa.gov"
+      And I fill in "Message" with "I love your site!"
       And I press "Submit"
       Then I should be on the mobile contact form page
-      And I should see "Thank you. We have received your message and will be responding soon."
+      And I should see "Thank you. We have received your message and will be responding soon"
       And "musa.gov@mail.fedinfo.gov" should receive an email
     
     Scenario: User does not provide some information for contact form
       Given I am on the mobile contact form page
-      And I fill in "Email *" with "mobileuser@usa.gov"
+      And I fill in "Email" with "mobileuser@usa.gov"
       And I press "Submit"
-      Then I should see "You must fill in all required fields marked by an '*'"
-      And the "Email *" field should contain "mobileuser@usa.gov"
+      Then I should see "Missing required fields (*)"
+      And the "Email" field should contain "mobileuser@usa.gov"
       
       When I am on the mobile contact form page
-      And I fill in "Message *" with "I love your site!"
+      And I fill in "Message" with "I love your site!"
       And I press "Submit"
-      Then I should see "You must fill in all required fields marked by an '*'"
-      And the "Message *" field should contain "I love your site!"
+      Then I should see "Missing required fields (*)"
+      And the "Message" field should contain "I love your site!"
       
       When I am on the mobile contact form page
-      And I fill in "Email *" with "bad email"
-      And I fill in "Message *" with "message"
+      And I fill in "Email" with "bad email"
+      And I fill in "Message" with "message"
       And I press "Submit"
-      Then I should see "You must provide a valid email address."
-      And the "Email *" field should contain "bad email"
-      And the "Message *" field should contain "message"
+      Then I should see "Email address is not valid"
+      And the "Email" field should contain "bad email"
+      And the "Message" field should contain "message"
