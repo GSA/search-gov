@@ -2,8 +2,11 @@ require File.join(File.dirname(__FILE__),'spec_helper')
 
 $most_simply_combinded_log = '- - - [25/Sep/2008:08:48:38 +0900] "" - - "-" "-"'
 
+# typicality of common apache log
+$normal_load_common_log = '127.0.0.1 - - [24/Sep/2008:19:48:38 -0400] "GET /index.html HTTP/1.1" 200 45'
+
 # typicality of combined apache log
-$normal_load_log = '127.0.0.1 - - [25/Sep/2008:08:48:38 +0900] "GET /index.html HTTP/1.1" 200 45 "http://localhost/sample.html" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"'
+$normal_load_log = '127.0.0.1 - - [24/Sep/2008:19:48:38 -0400] "GET /index.html HTTP/1.1" 200 45 "http://localhost/sample.html" "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"'
 
 # typicality of combined apache log
 $normal_load_log_tsv = '127.0.0.1	-	-	[25/Sep/2008:08:48:38 +0900]	"GET /index.html HTTP/1.1"	200	45	"http://localhost/sample.html"	"Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"'
@@ -87,12 +90,45 @@ describe :apache_log do
 		end
 	end
 
+	describe Apache::Log::Common do
+		describe "creation" do
+			it "should allow parsed log data array" do
+				input = [ "127.0.0.1", nil, nil, Time.utc( 2008, 9, 24, 23, 48, 38 ), "GET", "/index.html", "HTTP/1.1", 200, 45 ]
+				log = Apache::Log::Common.new( input )
+
+				log.remote_ip.should == "127.0.0.1"
+				log.user.should be_nil
+				log.time.should == Time.utc( 2008, 9, 24, 23, 48, 38 )
+				log.to_s.should == $normal_load_common_log
+			end
+
+			it "should allow non parsed splitted log data array" do
+				input = [ "127.0.0.1", "-", "-", "25/Sep/2008:08:48:38 +0900", "GET", "/index.html", "HTTP/1.1", "200", "45" ]
+				log = Apache::Log::Common.new( input )
+
+				log.remote_ip.should == "127.0.0.1"
+				log.user.should be_nil
+				log.time.should == Time.utc( 2008, 9, 24, 23, 48, 38 )
+				log.to_s.should == $normal_load_common_log
+			end
+
+			it "should create with no argument" do
+				a = Apache::Log::Common.new
+				a.should_not be_nil
+			end
+
+			it "should throw ArgumentError less than 8 args" do
+				lambda{ Apache::Log::Common.new( [ 1, 2 ] ) }.should raise_error( ArgumentError )
+			end
+		end
+	end
+
 	it "should be able to parse for typicality of combined apache log" do
 		parsed = Apache::Log::Combined.parse( $normal_load_log )
 		parsed[0].should == "127.0.0.1"
 		parsed[1].should == "-"
 		parsed[2].should == "-"
-		parsed[3].should == "25/Sep/2008:08:48:38 +0900"
+		parsed[3].should == "24/Sep/2008:19:48:38 -0400"
 		parsed[4].should == "GET"
 		parsed[5].should == "/index.html"
 		parsed[6].should == "HTTP/1.1"
@@ -129,9 +165,48 @@ describe :apache_log do
 		to_a[11].should be_nil
 	end
 
+	it "should be able to parse for typicality of common apache log" do
+		parsed = Apache::Log::Common.parse( $normal_load_common_log )
+		parsed[0].should == "127.0.0.1"
+		parsed[1].should == "-"
+		parsed[2].should == "-"
+		parsed[3].should == "24/Sep/2008:19:48:38 -0400"
+		parsed[4].should == "GET"
+		parsed[5].should == "/index.html"
+		parsed[6].should == "HTTP/1.1"
+		parsed[7].should == "200"
+		parsed[8].should == "45"
+
+		parsed.remote_ip.should == "127.0.0.1"
+		parsed.ident.should     == nil
+		parsed.user.should      == nil
+		parsed.time.utc.should  == Time.utc( 2008, 9, 24, 23, 48, 38 )
+		parsed.method.should    == "GET"
+		parsed.path.should      == "/index.html"
+		parsed.protocol.should  == "HTTP/1.1"
+		parsed.status.should    == 200
+		parsed.size.should      == 45
+
+		to_a = parsed.to_a
+		to_a[0].should == "127.0.0.1"
+		to_a[1].should be_nil
+		to_a[2].should be_nil
+		to_a[3].should == Time.utc( 2008, 9, 24, 23, 48, 38 )
+		to_a[4].should == "GET"
+		to_a[5].should == "/index.html"
+		to_a[6].should == "HTTP/1.1"
+		to_a[7].should == 200
+		to_a[8].should == 45
+	end
+
 	it "should make combined apache log" do
 		parsed = Apache::Log::Combined.parse( $normal_load_log )
 		parsed.to_s.should == $normal_load_log
+	end
+
+	it "should make common apache log" do
+		parsed = Apache::Log::Common.parse( $normal_load_common_log )
+		parsed.to_s.should == $normal_load_common_log
 	end
 
 	it "should allow appendix" do
@@ -139,7 +214,7 @@ describe :apache_log do
 		parsed[0].should == "127.0.0.1"
 		parsed[1].should == "-"
 		parsed[2].should == "-"
-		parsed[3].should == "25/Sep/2008:08:48:38 +0900"
+		parsed[3].should == "24/Sep/2008:19:48:38 -0400"
 		parsed[4].should == "GET"
 		parsed[5].should == "/index.html"
 		parsed[6].should == "HTTP/1.1"
@@ -248,9 +323,9 @@ describe :apache_log do
 				logs.size.should == 2
 			end
 
-			it "should support only combined log format yet" do
+			it "should support only combined and common log format yet" do
 				lambda { Apache::LogFile.read( "spec/test.log", :format => :combined ) }.should_not raise_error( ArgumentError )
-				lambda { Apache::LogFile.read( "spec/test.log", :format => :common ) }.should raise_error( ArgumentError )
+				lambda { Apache::LogFile.read( "spec/test.log", :format => :common ) }.should_not raise_error( ArgumentError )
 			end
 		end
 

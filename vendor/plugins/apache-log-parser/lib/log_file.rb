@@ -22,6 +22,8 @@ module Apache
 				format = options[ :format ] || :combined
 				if format == :combined
 					format = Apache::Log::Combined
+				elsif format == :common
+				  format = Apache::Log::Common
 				else
 					raise ArgumentError.new( "Invalid log format" )
 				end

@@ -15,11 +15,11 @@ class LogFile < ActiveRecord::Base
   end
 
   def self.parse_line(log_entry)
-    log = Apache::Log::Combined.parse log_entry
+    log = Apache::Log::Combined.parse(log_entry) || Apache::Log::Common.parse(log_entry)
     datetime = log.time
     ipaddr = log.remote_ip
-    agent = log.agent
-    is_bot = is_agent_a_bot?(agent)
+    agent = log.agent rescue nil
+    is_bot = is_agent_a_bot?(agent) rescue nil
     return unless log.path.include?('?')
     query_string = log.path.split('?')[1]
     parsed_log = CGI.parse(query_string)

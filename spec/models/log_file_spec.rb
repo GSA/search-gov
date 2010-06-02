@@ -377,6 +377,26 @@ EOF
         LogFile.parse_line(@log_entry)
       end
     end
+    
+    context "when the line is in the Apache common format, instead of the expected combined format" do
+      before do
+        @log_entry = <<'EOF'
+209.112.135.192 - - [31/May/2010:00:02:05 -0400] "GET /search?affiliate=nws.noaa.gov&v%3Aproject=firstgov&query=alaska HTTP/1.1" 200 15035
+EOF
+        @timestamp_utc = Time.parse("31/May/2010 00:02:05 -0400")
+      end
+      
+      it "should parse the log line, but not set the user agent, and have is_bot set to nil" do
+        Query.should_receive(:create!).with(:query => 'alaska',
+                                            :affiliate => 'nws.noaa.gov',
+                                            :ipaddr => '209.112.135.192',
+                                            :timestamp => @timestamp_utc,
+                                            :locale => 'en',
+                                            :agent => nil,
+                                            :is_bot => nil)
+        LogFile.parse_line(@log_entry)
+      end
+    end
   end
 
 end
