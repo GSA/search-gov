@@ -35,7 +35,8 @@ class Search
                 :results_per_page,
                 :filter_setting,
                 :scope_id,
-                :queried_at_seconds
+                :queried_at_seconds,
+                :enable_highlighting
 
   def initialize(options = {})
     options ||= {}
@@ -49,6 +50,7 @@ class Search
     self.filter_setting = options[:filter] || nil
     self.results, self.related_search = [], []
     self.queried_at_seconds = Time.now.to_i
+    self.enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
   end
 
   def run
@@ -56,7 +58,7 @@ class Search
     self.error_message = (I18n.translate :empty_query) and return false if query.blank?
 
     begin
-      response = parse(perform(formatted_query, offset))
+      response = parse(perform(formatted_query, offset, enable_highlighting))
     rescue BingSearchError => error
       RAILS_DEFAULT_LOGGER.warn "Error getting search results from Bing server: #{error}"
       return false
@@ -119,13 +121,13 @@ class Search
     processed.compact
   end
 
-  def bing_query(query_string, offset, count)
+  def bing_query(query_string, offset, count, enable_highlighting = true)
     params = [
       "web.offset=#{offset}",
       "web.count=#{count}",
       "AppId=#{APP_ID}",
       "sources=#{SOURCES}",
-      "Options=EnableHighlighting",
+      "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
       "Adult=#{self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : self.filter_setting}",
       "query=#{URI.escape(query_string, URI_REGEX)}"
     ]
@@ -181,10 +183,10 @@ class Search
     WillPaginate::Collection.create(page + 1, results_per_page, pagination_total) { |pager| pager.replace(items) }
   end
 
-  def perform(query_string, offset)
+  def perform(query_string, offset, enable_highlighting = true)
     ActiveRecord::Base.benchmark("[Bing Search]", Logger::INFO) do
       begin
-        uri = URI.parse(bing_query(query_string, offset, results_per_page))
+        uri = URI.parse(bing_query(query_string, offset, results_per_page, enable_highlighting))
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Get.new(uri.request_uri)
         req["User-Agent"] = USER_AGENT

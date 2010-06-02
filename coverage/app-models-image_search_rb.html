@@ -231,7 +231,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>   def bing_query(query_string, offset, count)</pre></td>
+            <td><pre><a name="line30">30</a>   def bing_query(query_string, offset, count, enable_highlighting = true)</pre></td>
           </tr>
         
           
@@ -266,8 +266,8 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line36">36</a>       &quot;Options=EnableHighlighting&quot;,</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>       &quot;Options=#{ enable_highlighting ? &quot;EnableHighlighting&quot; : &quot;&quot;}&quot;,</pre></td>
           </tr>
         
           
@@ -333,7 +333,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Fri May 28 14:18:59 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Mon Jun 07 15:40:58 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

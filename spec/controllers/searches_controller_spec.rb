@@ -298,5 +298,39 @@ describe SearchesController do
       redirect_to advanced_search_path(:affiliate => 'aff.gov', :form => 'advanced-firstgov')
     end
   end
+  
+  context "highlighting" do
+    context "when a client requests results without highlighting" do
+      before do
+        get :index, :query => "obama", :hl => "false"
+      end
+    
+      it "should set the highlighting option to false" do
+        @search_options = assigns[:search_options]
+        @search_options[:enable_highlighting].should be_false
+      end
+    end
 
+    context "when a client requests result with highlighting" do
+      before do
+        get :index, :query => "obama", :hl => "true"
+      end
+      
+      it "should set the highlighting option to true" do
+        @search_options = assigns[:search_options]
+        @search_options[:enable_highlighting].should be_true
+      end
+    end
+    
+    context "when a client does not specify highlighting" do
+      before do
+        get :index, :query => "obama"
+      end
+      
+      it "should set the highlighting option to true" do
+        @search_options = assigns[:search_options]
+        @search_options[:enable_highlighting].should be_true
+      end
+    end
+  end 
 end

@@ -100,6 +100,24 @@ describe Search do
         @search.run.should be_false
       end
     end
+    
+    context "when enable highlighting is set to true" do
+      it "should pass the enable highlighting paramater to Bing as an option" do
+        uriresult = URI::parse("http://localhost:3000")
+        search = Search.new(@valid_options.merge(:enable_highlighting => true))
+        URI.should_receive(:parse).with(/EnableHighlighting/).and_return(uriresult)
+        search.run
+      end
+    end
+    
+    context "when enable highlighting is set to false" do
+      it "should not pass enable highlighting parameter to Bing as an option" do
+        uriresult = URI::parse("http://localhost:3000")
+        search = Search.new(@valid_options.merge(:enable_highlighting => false))
+        URI.should_receive(:parse).with(/Options=&/).and_return(uriresult)
+        search.run
+      end
+    end
 
     context "when non-English locale is specified" do
       before do

@@ -27,13 +27,13 @@ class ImageSearch < Search
     end
   end
 
-  def bing_query(query_string, offset, count)
+  def bing_query(query_string, offset, count, enable_highlighting = true)
     params = [
       "image.offset=#{offset}",
       "image.count=#{count}",
       "AppId=#{APP_ID}",
       "sources=#{SOURCES}",
-      "Options=EnableHighlighting",
+      "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
       "query=#{URI.escape(query_string)}"
     ]
     "#{JSON_SITE}?" + params.join('&')

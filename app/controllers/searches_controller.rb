@@ -90,7 +90,8 @@ class SearchesController < ApplicationController
       :filter => params["filter"],
       :fedstates => params["fedstates"] || nil,
       :affiliate => affiliate,
-      :results_per_page => params["per-page"]
+      :results_per_page => params["per-page"],
+      :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
     }
   end
 
