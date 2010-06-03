@@ -770,6 +770,11 @@ describe Search do
       it "should guess at a suggestion by iteratively removing the last letter of the query and retrying" do
         Search.suggestions("affila").first.phrase.should == "affiliate"
       end
+
+      it "should cap the length of the phrase to place an upper bound on the number of lookups done" do
+        SaytSuggestion.should_receive(:like).at_most(Search::MAX_QUERY_LENGTH_FOR_ITERATIVE_SEARCH).times
+        Search.suggestions("a"*80)
+      end
     end
   end
 

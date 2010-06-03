@@ -1,6 +1,6 @@
 class ClicksController < ApplicationController
   def create
-    Click.create(:url => params['u'],
+    Click.create(:url => CGI.unescape(params['u']).gsub(' ','+'),
                  :query => params['q'],
                  :serp_position => params['p'],
                  :queried_at => Time.at(params['t'].to_i),
