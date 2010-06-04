@@ -18,6 +18,7 @@ production: &PROD
   encoding: utf8
   pool: 5
   timeout: 5000
+  reconnect: true
 
 production_slave_database:
   <<: *PROD
