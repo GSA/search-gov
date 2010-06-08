@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-analytics-monthly_reports_controller_rb.html">app/controllers/analytics/monthly_reports_controller.rb</a></td>
-            <td class='right_align'><tt>28</tt></td>
-            <td class='right_align'><tt>24</tt></td>
+            <td class='right_align'><tt>15</tt></td>
+            <td class='right_align'><tt>12</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,7 +63,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   before_filter :set_report_date</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :set_report_date, :establish_aws_connection</pre></td>
           </tr>
         
           
@@ -105,127 +105,49 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>   def top_queries</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>     @site_locale = params[:site_locale] || I18n.default_locale.to_s</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     @top_queries = DailyQueryStat.find(:all, :select =&gt; 'DISTINCT query, SUM(times) as total', :conditions =&gt; ['day BETWEEN ? AND ? AND affiliate = ? AND locale = ?', @report_date.beginning_of_month, @report_date.end_of_month, 'usasearch.gov', @site_locale], :group =&gt; 'query', :order =&gt; 'total desc', :limit =&gt; '20000')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>     csv_string = FasterCSV.generate do |csv|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>       csv &lt;&lt; [&quot;Query&quot;, &quot;Count&quot;]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>       @top_queries.each do |top_query|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>         csv &lt;&lt; [top_query.query, top_query.total]</pre></td>
+            <td><pre><a name="line9">9</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line17">17</a>     end</pre></td>
+            <td><pre><a name="line10">10</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>     @filename = &quot;top_queries_#{@report_date.strftime('%Y%m')}.csv&quot;</pre></td>
+            <td><pre><a name="line11">11</a>   def set_report_date</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>     send_data(csv_string, :type =&gt; 'text/csv', :filename =&gt; @filename)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line21">21</a> </pre></td>
+            <td><pre><a name="line12">12</a>     @today = Date.today</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>   private</pre></td>
+            <td><pre><a name="line13">13</a>     @report_date = params[:date].blank? ? @today : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>   def set_report_date</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>     @today = Date.today</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>     @report_date = params[:date].blank? ? @today : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)</pre></td>
+            <td><pre><a name="line14">14</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line28">28</a> end</pre></td>
+            <td><pre><a name="line15">15</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Jun 07 15:40:57 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jun 10 08:58:04 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

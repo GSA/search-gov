@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-analytics-home_controller_rb.html">app/controllers/analytics/home_controller.rb</a></td>
-            <td class='right_align'><tt>37</tt></td>
-            <td class='right_align'><tt>33</tt></td>
+            <td class='right_align'><tt>20</tt></td>
+            <td class='right_align'><tt>17</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,7 +63,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   before_filter :day_being_show</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :day_being_show, :establish_aws_connection</pre></td>
           </tr>
         
           
@@ -141,145 +141,43 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   def daily_top_queries</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>     @count = (params[:count] || 1000).to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>     @site_locale = params[:site_locale] || I18n.default_locale.to_s </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>     @top_queries = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @count, DailyQueryStat::DEFAULT_AFFILIATE_NAME, @site_locale)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>     if @top_queries.is_a?(String)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>       @top_queries = []</pre></td>
+            <td><pre><a name="line15">15</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>     end</pre></td>
+            <td><pre><a name="line16">16</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>     csv_string = FasterCSV.generate do |csv|</pre></td>
+            <td><pre><a name="line17">17</a>   def day_being_show</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>       csv &lt;&lt; [&quot;Query&quot;, &quot;Count&quot;]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>       @top_queries.each do |top_query|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>         csv &lt;&lt; [top_query.query, top_query.times]</pre></td>
+            <td><pre><a name="line18">18</a>     @day_being_shown = request[&quot;day&quot;].nil? ? DailyQueryStat.most_recent_populated_date : request[&quot;day&quot;].to_date</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>       end</pre></td>
+            <td><pre><a name="line19">19</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>     @filename = &quot;daily_top_queries_#{@day_being_shown.to_s}_#{@site_locale}.csv&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>     send_data(csv_string, :type =&gt; 'text/csv', :filename =&gt; @filename)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line30">30</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line31">31</a>     </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line33">33</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>   def day_being_show</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>     @day_being_shown = request[&quot;day&quot;].nil? ? DailyQueryStat.most_recent_populated_date : request[&quot;day&quot;].to_date</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line36">36</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line37">37</a> end</pre></td>
+            <td><pre><a name="line20">20</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Jun 07 15:40:57 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jun 10 08:58:04 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

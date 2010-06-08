@@ -41,6 +41,14 @@ module Analytics::HomeHelper
   def analytics_path_prefix(affiliate)
     affiliate ? "/affiliates/#{affiliate.id}/analytics" : "/analytics"
   end
+  
+  def monthly_report_filename(locale, report_date)
+    "#{locale}_top_queries_#{report_date.strftime('%Y%m')}.csv"
+  end
+
+  def daily_report_filename(locale, report_date)
+    "#{locale}_top_queries_#{report_date.strftime('%Y%m%d')}.csv"
+  end
    
   private
   def make_query_timeline_path(query_count)

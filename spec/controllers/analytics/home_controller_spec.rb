@@ -90,64 +90,24 @@ describe Analytics::HomeController do
         assigns[:num_results_qas].should == 20
       end
     end
-  end
-  
-  describe "#daily_top_queries" do
-    context "when not logged in" do
-      it "should redirect to the login page" do
-        get :daily_top_queries
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-
-    context "when logged in as a non-analyst user" do
+    
+    context "when rendering the monthly reports page" do
+      integrate_views
       before do
-        activate_authlogic
-        UserSession.create(:email=> users("non_affiliate_admin").email, :password => "admin")
+        AWS::S3::Base.stub!(:establish_connection!).and_return true
       end
-
-      it "should redirect to the usasearch home page" do
-        get :daily_top_queries
-        response.should redirect_to(home_page_url)
+      
+      it "should establish an AWS connection" do
+        AWS::S3::Base.should_receive(:establish_connection!).once
+        get :index
+      end
+     
+      it "should link to the reports on Amazon S3 using SSL" do
+        %w{en es}.each do |locale|
+          AWS::S3::S3Object.should_receive(:url_for).with("#{locale}_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv", "usasearch-reports", :use_ssl => true).once.and_return ""
+        end
+        get :index
       end
     end
-
-    context "when logged in as an analyst" do
-      before do
-        activate_authlogic
-        UserSession.create(:email=> users("analyst").email, :password => "admin")
-      end
-      
-      it "should default the count to 1000" do
-        get :daily_top_queries
-        count = assigns[:count].should == 1000
-      end
-      
-      it "should set the count to the count parameter when specified" do
-        get :daily_top_queries, :count => 100
-        count = assigns[:count].should == 100
-      end
-      
-      it "should use the default locale if none specified" do
-        get :daily_top_queries
-        locale = assigns[:site_locale].should == I18n.default_locale.to_s
-      end
-      
-      it "should set the locale to the site_locale parameter when specified" do
-        get :daily_top_queries, :site_locale => 'es'
-        assigns[:site_locale].should == 'es'
-      end
-      
-      it "should set the top queries to an empty array if insufficient data is returned" do
-        DailyQueryStat.stub!(:most_popular_terms).and_return DailyQueryStat::INSUFFICIENT_DATA
-        get :daily_top_queries
-        assigns[:top_queries].should == []
-      end
-      
-      it "should output a CSV file with a filename that includes the date and locale" do
-        get :daily_top_queries, :day => "20100430", :site_locale => 'es'
-        assigns[:filename].should == "daily_top_queries_2010-04-30_es.csv"
-      end
-    end
-  end
+  end  
 end

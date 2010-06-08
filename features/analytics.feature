@@ -103,26 +103,9 @@ Feature: Analytics Homepage
   Scenario: List of top queries for English and Spanish
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And the following DailyQueryStats exist for yesterday:
-    | query         | times | locale  |
-    | apples        | 1000  | en      |
-    | manzanas      | 500   | es      |
-    | oranges       | 300   | en      |
-    | naranjas      | 250   | es      |
-    | pears         | 100   | en      |
-    | peras         | 75    | es      |
+    | query                       | times   |
+    | obama                       | 10000   |
     And I am on the analytics homepage
-    Then I should see "English"
+    Then I should see the download prompt for yesterday
+    And I should see "English"
     And I should see "Spanish"
-    And I follow "English"
-    Then I should be on the daily top queries csv report
-    And I should see "Query,Count"
-    And I should see "apples,1000"
-    And I should see "oranges,300"
-    And I should see "pears,100"
-    And I am on the analytics homepage
-    And I follow "Spanish"
-    Then I should be on the daily top queries csv report
-    And I should see "Query,Count"
-    And I should see "manzanas,500"
-    And I should see "naranjas,250"
-    And I should see "peras,75"

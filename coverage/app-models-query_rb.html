@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-query_rb.html">app/models/query.rb</a></td>
-            <td class='right_align'><tt>6</tt></td>
-            <td class='right_align'><tt>6</tt></td>
+            <td class='right_align'><tt>14</tt></td>
+            <td class='right_align'><tt>12</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -87,13 +87,61 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> end</pre></td>
+            <td><pre><a name="line6">6</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>   DEFAULT_EXCLUDED_QUERIES = ['enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', 'test']</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>   DEFAULT_EXCLUDED_IPADDRESSES = ['192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169']</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>   EXCLUDE_BOTS_CLAUSE = &quot;AND (is_bot=false OR ISNULL(is_bot))&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line10">10</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>   def self.top_queries(start_time, end_time, locale = 'en', affiliate = 'usasearch.gov', result_count = 20000, exclude_bots = true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     Query.find(:all, :select =&gt; &quot;DISTINCT query, count(*) AS total&quot;, :conditions =&gt; [&quot;timestamp BETWEEN ? AND ? AND affiliate=? AND locale=? AND query NOT IN (?) AND ipaddr NOT IN (?) #{ exclude_bots ? EXCLUDE_BOTS_CLAUSE : &quot;&quot; }&quot;, start_time, end_time, affiliate, locale, DEFAULT_EXCLUDED_QUERIES, DEFAULT_EXCLUDED_IPADDRESSES], :group =&gt; 'query', :order =&gt; 'total desc', :limit =&gt; result_count)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line13">13</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line14">14</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Jun 07 15:40:58 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jun 10 08:58:05 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -32,4 +32,5 @@
   = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Previous 30 Days", :affiliate => nil }
   
 #daily_top_queries
-  = "Download CSV of top 1000 queries for #{ @day_being_shown.to_s } (#{ link_to 'English', daily_top_queries_path(:day => @day_being_shown.to_s, :site_locale => 'en') }, #{ link_to 'Spanish', daily_top_queries_path(:day => @day_being_shown.to_s, :site_locale => 'es') })"
+  = "Download CSV of top 1000 queries for #{ @day_being_shown.to_s } (#{ link_to "English", AWS::S3::S3Object.url_for(daily_report_filename(I18n.default_locale.to_s, @day_being_shown), REPORTS_AWS_BUCKET_NAME, :use_ssl => true) }, #{ link_to 'Spanish', AWS::S3::S3Object.url_for(daily_report_filename(other_locale_str, @day_being_shown), REPORTS_AWS_BUCKET_NAME, :use_ssl => true) })" unless @day_being_shown.nil?
+  

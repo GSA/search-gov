@@ -26,6 +26,7 @@ Rails::Initializer.run do |config|
   config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version => '1.1.0'
   config.gem 'hoptoad_notifier'
   config.gem 'fastercsv'
+  config.gem "aws-s3", :lib => "aws/s3", :version => '0.6.2'
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
@@ -33,5 +34,9 @@ Rails::Initializer.run do |config|
 end
 
 APP_EMAIL_ADDRESS = "***REMOVED***"
+
+AWS_ACCESS_KEY_ID = "AKIAIVNWMNPIMQL37COQ"
+AWS_SECRET_ACCESS_KEY = "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"
+REPORTS_AWS_BUCKET_NAME = "usasearch-reports"
 
 BOT_USER_AGENTS = ["Googlebot", "Baiduspider", "DotBot", "crawler@evreka.com", "bitlybot", "CamontSpider", "CatchBot", "CCBot", "COMODOspider", "ConveraCrawler", "cyberpatrolcrawler", "CydralSpider", "DotSpotsBot", "Educational Crawler", "eventBot", "findfiles.net", "Gigabot", "sai-crawler.callingcard", "ia_archiver", "ICC-Crawler", "ICRA_Semantic_spider", "IssueCrawler", "Jbot", "KIT webcrawler", "KS Crawler", "KSCrawler", "Lijit", "Linguee Bot", "MLBot", "Kwaclebot", "80legs.com/spider.html", "ellerdale.com/crawler.html", "aiHitBot", "archive.org_bot", "cdlwas_bot", "discobot", "Dow Jones Searchbot", "Exabot", "Feedtrace-bot", "foobot", "accelobot.com", "MarketDefenderBot", "MJ12bot", "mxbot", "Purebot", "Reflectbot", "RssFetcherBot", "Search17Bot", "sgbot", "spbot", "Speedy Spider", "woriobot", "xalodotvn-crawler", "YioopBot", "Twiceler", "msnbot", "MSR-ISRCCrawler", "Netchart Adv Crawler", "NetinfoBot", "PicselSpider", "psbot", "R6_FeedFetcher", "radian6_linkcheck_", "SindiceBot", "Snapbot", "Sogou web spider", "Sosospider", "Speedy Spider", "Tasapspider", "the.cyrus.hellborg.sharecrawler", "TurnitinBot", "yacybot", "YaDirectBot", "Yeti"]

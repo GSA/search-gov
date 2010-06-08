@@ -37,3 +37,7 @@ Given /^the following query groups exist:$/ do |table|
     qg.grouped_queries << gqs
   end
 end
+
+Then /^I should see the download prompt for yesterday$/ do
+  response.body.should contain(/Download CSV of top 1000 queries for #{ Date.yesterday.to_s }/)
+end
