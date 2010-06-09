@@ -4,6 +4,11 @@ class ImageSearchesController < ApplicationController
   def index
     @search = ImageSearch.new(@search_options)
     @search.run
+    respond_to do |format|
+      format.html
+      format.mobile
+      format.json { render :json => @search }
+    end
   end
 
   private

@@ -38,6 +38,14 @@ class ImageSearch < Search
     ]
     "#{JSON_SITE}?" + params.join('&')
   end
+  
+  def as_json(options = {})
+    if self.error_message
+      {:error => self.error_message}
+    else
+      {:total => self.total, :startrecord => self.startrecord, :endrecord => self.endrecord, :results => self.results}
+    end
+  end
 
   protected
   def populate_additional_results

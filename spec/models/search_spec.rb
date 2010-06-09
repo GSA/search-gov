@@ -812,4 +812,35 @@ describe Search do
       end
     end
   end
+  
+  describe "#as_json" do
+    context "when converting search response to json" do
+      before do
+        @search = Search.new(:query => 'obama')
+        @search.run
+        allow_message_expectations_on_nil
+      end
+      
+      it "should generate a JSON representation of total, start and end records, spelling suggestions, related searches and search results" do
+        @search.spelling_suggestion.should_receive(:to_json).and_return ""
+        @search.related_search.should_receive(:to_json).and_return ""
+        @search.results.should_receive(:to_json).and_return ""
+        json = @search.to_json
+        json.should contain(/total/)
+        json.should contain(/startrecord/)
+        json.should contain(/endrecord/)
+      end
+      
+      context "when an error occurs" do
+        before do
+          @search.error_message = "Some error"
+        end
+        
+        it "should output an error if an error is detected" do
+          json = @search.to_json
+          json.should contain(/"error":"Some error"/)
+        end
+      end
+    end
+  end
 end
