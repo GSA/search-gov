@@ -1,0 +1,45 @@
+require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+
+describe Sayt do
+
+  before do
+    @suggestion = SaytSuggestion.create(:phrase=>"Lorem ipsum dolor sit amet")
+    SaytSuggestion.create(:phrase => "Lorem sic transit gloria")
+  end
+
+  it "should return JSONP containing terms that begin with the 'q' param string" do
+    get '/sayt', :q => 'lorem', :callback => 'jsonp1276290049647'
+    response.body.should == 'jsonp1276290049647(["lorem ipsum dolor sit amet","lorem sic transit gloria"])'
+  end
+
+  it "should return empty JSONP if nothing matches the 'q' param string" do
+    get '/sayt', :q=>"who moved my cheese", :callback => 'jsonp1276290049647'
+    response.body.should == 'jsonp1276290049647([])'
+  end
+
+  it "should not completely melt down when strange characters are present" do
+    lambda {get '/sayt', :q=>"foo\\", :callback => 'jsonp1276290049647'}.should_not raise_error
+    lambda {get '/sayt', :q=>"foo's", :callback => 'jsonp1276290049647'}.should_not raise_error
+  end
+
+  it "should return empty result if no params present" do
+    get '/sayt'
+    response.body.should == ''
+  end
+
+  context "when searching in non-mobile mode" do
+    it "should return 15 suggestions" do
+      Search.should_receive(:suggestions).with("lorem", 15).and_return([@suggestion])
+      get '/sayt', :q=>"lorem", :callback => 'jsonp1276290049647'
+    end
+  end
+
+  context "when searching in mobile mode" do
+    it "should return 6 suggestions" do
+      Sayt.stub!(:mobile?).and_return(true)
+      Search.should_receive(:suggestions).with("lorem", 6).and_return([@suggestion])
+      get '/sayt', :q=>"lorem", :callback => 'jsonp1276290049647'
+    end
+  end
+
+end
