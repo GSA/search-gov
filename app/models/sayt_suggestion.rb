@@ -6,9 +6,9 @@ class SaytSuggestion < ActiveRecord::Base
   validates_length_of :phrase, :within=> (3..80)
   validates_format_of :phrase, :with=> /^[a-zA-Z0-9][a-zA-Z0-9\s.'-]+[a-zA-Z0-9]$/i
 
-  named_scope :like, lambda { |query, num_suggestions|
-    {:conditions => ['phrase LIKE ? ', query + '%'], :order => 'phrase ASC', :limit => num_suggestions, :select=> 'phrase'}
-  }
+  def self.like(query, num_suggestions)
+    find(:all, :conditions => ['phrase LIKE ? ', query + '%'], :order => 'phrase ASC', :limit => num_suggestions, :select=> 'phrase')
+  end
 
   def self.populate_for(day)
     filtered_daily_query_stats = SaytFilter.filter(

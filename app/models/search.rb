@@ -141,7 +141,7 @@ class Search
     query = query[0, MAX_QUERY_LENGTH_FOR_ITERATIVE_SEARCH]
     begin
       suggestions = SaytSuggestion.like(query, num_suggestions) || []
-      query.chop!
+      query.chop!.rstrip!
     end while suggestions.empty? and query.size > 2
     corrected_suggestions + suggestions
   end
