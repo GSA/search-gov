@@ -178,6 +178,8 @@ Now re-run that taxes search again and you should see content above the search r
         rake spec
         script/cucumber
 
+5. If you did any work with web forms, check for any XSS or SQL Injection vulnerabilities with the Firefox plugins from Seccom labs (http://labs.securitycompass.com/index.php/exploit-me/).
+
 6. Check in code to your local git repo (use `git status` and `git add` until everything is staged):
 
         git commit
