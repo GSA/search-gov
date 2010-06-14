@@ -15,6 +15,11 @@ describe "layouts/application.html.haml" do
       render_page
       response.should contain(@english_webtrends_tag)
     end
+    
+    it "should define the SAYT url" do
+      render_page
+      response.body.should contain(/var usagov_sayt_url =/)
+    end
   end
   
   context "when locale is set to English" do
@@ -38,5 +43,4 @@ describe "layouts/application.html.haml" do
       response.should contain(@spanish_webtrends_tag)
     end
   end
-  
 end

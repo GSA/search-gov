@@ -1,5 +1,9 @@
+if (usagov_sayt_url === undefined) {
+    var usagov_sayt_url = "http://search.usa.gov/sayt";
+}
+
 $(document).ready(function() {
-  $(".usagov-search-autocomplete").autocomplete("http://searchdemo.usa.gov/searches/auto_complete_for_search_query", {
+  $(".usagov-search-autocomplete").autocomplete(usagov_sayt_url, {
     dataType: "jsonp",
     parse: function(data) {
       var rows = new Array();

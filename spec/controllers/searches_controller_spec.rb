@@ -42,7 +42,7 @@ describe SearchesController do
       end
     end
 
-    context "when searching in non-mobile mode" do
+    context "when searching in nonmobile mode" do
       it "should return 15 suggestions" do
         Search.should_receive(:suggestions).with("lorem", 15)
         get :auto_complete_for_search_query, :query=>"lorem"
@@ -56,7 +56,7 @@ describe SearchesController do
         response.body.should match(/lorem/i)
       end
       
-      it "should return a carriage-return separated list in jquery mode" do
+      it "should return a carriagereturn separated list in jquery mode" do
         SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
         SaytSuggestion.create(:phrase => "Lorem sic transit gloria")
         get :auto_complete_for_search_query, :q => "lorem", :mode => 'jquery', :callback => 'jsonp'
@@ -64,7 +64,7 @@ describe SearchesController do
       end
     end
   end
-
+  
   context "when showing index" do
     it "should have a route with a locale" do
       search_path.should =~ /search\?locale=en/

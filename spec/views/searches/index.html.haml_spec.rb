@@ -44,7 +44,7 @@ describe "searches/index.html.haml" do
     it "should show header search form but not show footer search form" do
       render
       response.should contain("Enter some search terms")
-      response.should have_selector("#search_query_auto_complete")
+      response.should have_selector("#search_query")
       response.should_not have_selector("#footer_search_form")
     end
   end
@@ -82,7 +82,7 @@ describe "searches/index.html.haml" do
 
       it "should show header search form but not show footer search form" do
         render
-        response.should have_selector("#search_query_auto_complete")
+        response.should have_selector("#search_query")
         response.should_not have_selector("#footer_search_form")
       end
     end
@@ -94,7 +94,7 @@ describe "searches/index.html.haml" do
 
       it "should show header search form and footer search form" do
         render
-        response.should have_selector("#search_query_auto_complete")
+        response.should have_selector("#search_query")
         response.should have_selector("#footer_search_form")
       end
     end
