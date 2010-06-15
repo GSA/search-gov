@@ -1,15 +1,3 @@
 = render :partial => "shared/header_search"
 = render :partial => "shared/searchresults", :locals => { :search => @search }
 = render :partial => "shared/footer_search", :locals => { :search => @search }
-- if js_enabled_mobile_device?
-  :javascript
-    function toggleSearchClose() {
-      var closeImage = $$(".dvSearchClose img")[0];
-      if ($$('.auto_complete')[0].visible()) {
-        closeImage.show();
-      } else {
-        closeImage.hide();
-      }
-      setTimeout("toggleSearchClose()", 100);
-    }
-    toggleSearchClose();
