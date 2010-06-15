@@ -6,6 +6,7 @@ class SearchesController < ApplicationController
   before_filter :adjust_mobile_mode
   SAYT_SUGGESTION_SIZE = 15
   SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
+  ssl_allowed :auto_complete_for_search_query  
 
   def index
     @search = Search.new(@search_options)
@@ -35,7 +36,7 @@ class SearchesController < ApplicationController
       render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
     end
   end
-  
+
   def advanced
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
@@ -55,13 +56,13 @@ class SearchesController < ApplicationController
   def record_accepted_sayt_suggestion
     AcceptedSaytSuggestion.create!(:phrase=>params["query"]) if params["sayt"]
   end
-  
+
   def handle_old_advanced_form
     if params["form"] == "advanced-firstgov"
       redirect_to advanced_search_path(params.merge(:controller => "searches", :action => "advanced"))
     end
   end
-  
+
   def grab_format
     @original_format = request.format
   end
