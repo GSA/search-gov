@@ -1,11 +1,8 @@
-#logoSmall
-  = link_to image_tag("/m/i/logo_mobile_small.png" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
-.clear
 - form_tag(search_path, :method => :get, :id=>"search_form") do
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
   .search
-    .searchBoxContainer
+    .searchBoxContainer.dvCenter
       .dvSearchBtn
         = image_submit_tag "/m/i/btnSearchSkin_ResultsPage.png"
       .dvSearchClose.results

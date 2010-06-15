@@ -1,4 +1,5 @@
 
+
 = spelling_suggestion(search, @affiliate) if (search)
 
 - if search.results.present?
@@ -22,16 +23,17 @@
             = display_deep_links_for(search_result)
       - unless index == search.results.length - 1 then
         %hr
+  .group
+    .row.center
+      = will_paginate search.results, :page_links => false, :previous_label => "", :next_label => "Next Page"
+    
   - if (search && search.related_search.present?)
-    #relatedsearch.group
+    #relatedsearch
       %p= "Searches related to '#{h search.query}'"
       %ul
         - search.related_search.each_with_index do |result, index|
           %li= tracked_click_link(shunt_from_bing_to_usasearch(result.url, @affiliate ),translate_bing_highlights(h(result.title)), search, nil, index, 'BREL')
-  %hr
-  .group
-    .row.center
-      = will_paginate search.results, :page_links => false, :previous_label => "", :next_label => "Next Page"
+
 - elsif search.error_message
   %p.noresults #{search.error_message}
 - else

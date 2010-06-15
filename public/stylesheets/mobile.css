@@ -16,6 +16,11 @@ img{
     text-align: center;
 }
 
+.dvCenter{
+	width: 100px;
+	margin: 0 auto;
+}
+
 #container
 {
   background-color: #fff;
@@ -27,7 +32,7 @@ img{
 
 #contentWrapper{
   background-color: #fff;
-  width: 310px;
+  width: 100%;
   min-height: 460px;
   position: relative;
   margin: 0 auto;
@@ -35,7 +40,7 @@ img{
 }
 
 #logoHome{
-  padding: 10px 0 25px 10px;
+	padding: 10px 0 30px 10px;
 }
 
 #logo{
@@ -52,6 +57,8 @@ img{
   border-top: 1px solid  #d8d8d8;
   background-image:url('/m/i/bg_searchResultsSearchBox.png');
   height: 48px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .searchBoxContainer{
@@ -91,7 +98,6 @@ img{
     border-bottom: 1px solid #D8D8D8;
   }
 
-
   .dvSearchClose img{
     width: 24px;
     height: 24px;
@@ -129,9 +135,10 @@ img{
   }
 
 #homeNav{
-  padding: 0 10px 60px 10px;
+  padding: 0 0 40px 0;
   color: #636363;
   font-size: .9em;
+  width: 290px;
 }
   .mobileNavLink{
     color: #636363;
@@ -162,10 +169,10 @@ img{
     width: 262px;
   }
 
-  .navFloatRight{
-    float: right;
-    padding: 0 20px 0 0;
-  }
+	.navFloatRight{
+		float: right;
+		padding: 0 20px 0 0;
+	}
 
 .mobileFooter{
   float: right;
@@ -219,9 +226,17 @@ img{
   text-align: center;
 }
 
+.clear10{
+	height: 10px;
+	width: 10px;
+}
+
+.pad5{
+	padding: 0 5px;
+}
+
 .pad10{
-  height: 10px;
-  width: 10px;
+	padding: 0 10px;
 }
 
 .textbox1
@@ -242,7 +257,8 @@ img{
 }
 
 #relatedsearch {
-  font-size: .8em;
+	font-size: .8em;
+	padding: 0 10px 20px 10px;
 }
 
 #relatedsearch ul {

@@ -5,4 +5,3 @@ function clk(a, b, c, d, e, f) {
   }
   return true;
 }
-

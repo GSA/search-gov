@@ -2,13 +2,17 @@
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
   .search
-    .searchBoxContainer
+    .searchBoxContainer.dvCenter
       .dvSearchBtn
         = image_submit_tag "/m/i/btnSearchSkin_ResultsPage.png"
       .dvSearchClose.results
         = image_tag "/m/i/close.png", :style => "display: none;"
       .dvSearchBox
-        = unescaped_text_field_with_auto_complete :search, :query, {:name=>"query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ element.parentNode.submit(value) }", :frequency => 0.1 }
+        = unescaped_text_field_with_auto_complete :search1, :query1, {:name=>"query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ element.parentNode.submit(value) }", :frequency => 0.1 }
+        
+        / this 2nd search in the footer is causing extra scrolling - 
+        / changed symbols :search to :search1 and :query to :query1 and that fixed it
+        /= unescaped_text_field_with_auto_complete :search, :query, {:name=>"query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ element.parentNode.submit(value) }", :frequency => 0.1 }
   .group
     .row.center
       = image_tag("binglogo.gif")
