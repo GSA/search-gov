@@ -5,7 +5,7 @@
 !link = #2200CC
 
 body
-  :background-color= !site_theme_color
+  :background-color #F7F7F7
 
 a, a:visited, a:hover
   :text-decoration none
@@ -17,13 +17,33 @@ a, a:visited, a:hover
 a:hover
   :text-decoration underline
 
+.header-wrap
+  :background url(/images/backgrounds/bg_top_left_long.gif) no-repeat 0 12px
+
 .header
+  :float right
   :text-align right
+  :background url(/images/backgrounds/bg_top_right_long.gif) no-repeat right 12px
+  :height 23px
   :margin
-    :bottom 0.2em
+    :bottom 0
     :top 0
+  :padding
+    :right 1em
+    :bottom 0.2em
+  :width 90%
+  a
+    :color #25496B
+  a:visited
+    :color #595959
+
+.main-wrap
+  :background #fff url(/images/backgrounds/bg_left.gif) repeat-y
 
 .main
+  :float right
+  :background url(/images/backgrounds/bg_right.gif) repeat-y top right
+  :width 99%
   a, a:visited
     :font-weight normal
     :text-decoration underline
@@ -48,8 +68,18 @@ a:hover
   position: relative
   min-height: 550px
 
+.footer-wrap
+  :background url(/images/backgrounds/bg_bottom_left_long.gif) no-repeat
+
 .footer
+  :background url(/images/backgrounds/bg_bottom_right_long.gif) no-repeat top right
+  :padding
+    :top 15px
   :text-align center
+  a
+    :color #25496B
+  a:visited
+    :color #595959
 
 .homepage
   :margin

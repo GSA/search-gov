@@ -17,14 +17,17 @@
     = javascript_include_tag "sayt.js"
     = javascript_include_tag "application.js"
 
-  %body{:style=>"background-color: #{locale_dependent_background_color}"}
+  %body
     .container
       %a.hidden{:href => "#content"} skip navigation
-      .span-24.header
-        = header_links
-      .span-24.main
-        #need-larger-text= link_to((t :need_larger_text), page_path(:id => 'textsize'), :locale => other_locale_str)
-        = yield
-      .prepend-1.span-22.append-1.footer
-        = footer_links
+      .span-24.header-wrap
+        .header
+          = header_links
+      .span-24.main-wrap
+        .main
+          #need-larger-text= link_to((t :need_larger_text), page_path(:id => 'textsize'), :locale => other_locale_str)
+          = yield
+      .span-24.footer-wrap
+        .footer
+          = footer_links
     = render_webtrends_code

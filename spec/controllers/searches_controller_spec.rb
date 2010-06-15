@@ -332,5 +332,13 @@ describe SearchesController do
         @search_options[:enable_highlighting].should be_true
       end
     end
-  end 
+  end
+  
+  context "when omitting search textbox" do
+    it "should omit the search textbox if the show_searchbox parameter is set to false and mobile mode is true" do
+      get :index, :query => "obama", :show_searchbox => "false"
+      assigns[:show_searchbox].should be_false
+      response.body.should_not have_selector "search_form"
+    end
+  end
 end

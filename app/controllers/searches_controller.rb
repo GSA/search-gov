@@ -4,6 +4,7 @@ class SearchesController < ApplicationController
   before_filter :set_search_options
   has_mobile_fu
   before_filter :adjust_mobile_mode
+  before_filter :show_searchbox
   SAYT_SUGGESTION_SIZE = 15
   SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
   ssl_allowed :auto_complete_for_search_query  
@@ -115,5 +116,9 @@ class SearchesController < ApplicationController
 
   def is_advanced_search?
     params[:action] == "advanced"
+  end
+  
+  def show_searchbox
+    @show_searchbox = params[:show_searchbox].present? && params[:show_searchbox] == "false" ? false : true
   end
 end
