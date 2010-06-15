@@ -8,8 +8,8 @@
       .dvSearchClose.results
         = image_tag "/m/i/close.png", :style => "display: none;"
       .dvSearchBox
-        = text_field :search, :query, { :name => "query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage usagov-search-autocomplete" }
-      .clear 
+        = unescaped_text_field_with_auto_complete :search, :query, {:name=>"query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ element.parentNode.submit(value) }", :frequency => 0.1 }
+      .clear
 - if js_enabled_mobile_device?
   :javascript
     document.getElementById("search_query").focus();
