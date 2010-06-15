@@ -138,11 +138,7 @@ class Search
     query = sanitized_query.clone
     corrected_query = Misspelling.correct(query)
     corrected_suggestions = corrected_query != query ? SaytSuggestion.like(corrected_query, num_suggestions) : []
-    query = query[0, MAX_QUERY_LENGTH_FOR_ITERATIVE_SEARCH]
-    begin
-      suggestions = SaytSuggestion.like(query, num_suggestions) || []
-      query.chop!.rstrip!
-    end while suggestions.empty? and query.size > 2
+    suggestions = SaytSuggestion.like(query, num_suggestions) || []
     corrected_suggestions + suggestions
   end
 
