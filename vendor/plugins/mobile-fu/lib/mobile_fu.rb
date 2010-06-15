@@ -5,9 +5,9 @@ module ActionController
     # to add on to this list.
 
 
-    MOBILE_USER_AGENTS =  'palm|palmos|palmsource|iphone|blackberry|nokia|phone|midp|mobi|pda|' +
+    MOBILE_USER_AGENTS =  'palm|palmos|palmsource|iphone|blackberry|nokia|phone|midp|pda|' +
                           'wap|java|nokia|hand|symbian|chtml|wml|ericsson|lg|audiovox|motorola|' +
-                          'samsung|sanyo|sharp|telit|tsm|mobile|mini|windows ce|smartphone|' +
+                          'samsung|sanyo|sharp|telit|tsm|mini|windows ce|smartphone|' +
                           '240x320|320x320|mobileexplorer|j2me|sgh|portable|sprint|vodafone|' +
                           'docomo|kddi|softbank|pdxgw|j-phone|astel|minimo|plucker|netfront|' +
                           'xiino|mot-v|mot-e|portalmmm|sagem|sie-s|sie-m|android|ipod|opwv-sdk'
