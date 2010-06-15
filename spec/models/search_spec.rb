@@ -100,7 +100,7 @@ describe Search do
         @search.run.should be_false
       end
     end
-    
+
     context "when enable highlighting is set to true" do
       it "should pass the enable highlighting paramater to Bing as an option" do
         uriresult = URI::parse("http://localhost:3000")
@@ -109,7 +109,7 @@ describe Search do
         search.run
       end
     end
-    
+
     context "when enable highlighting is set to false" do
       it "should not pass enable highlighting parameter to Bing as an option" do
         uriresult = URI::parse("http://localhost:3000")
@@ -617,7 +617,7 @@ describe Search do
 
     context "when suggestions for misspelled terms contain scope parameters" do
       before do
-        @search = Search.new(@valid_options.merge(:query => 'data.org'))
+        @search = Search.new(@valid_options.merge(:query => 'morgage rates'))
         @search.run
       end
 
@@ -812,7 +812,7 @@ describe Search do
       end
     end
   end
-  
+
   describe "#as_json" do
     context "when converting search response to json" do
       before do
@@ -820,7 +820,7 @@ describe Search do
         @search.run
         allow_message_expectations_on_nil
       end
-      
+
       it "should generate a JSON representation of total, start and end records, spelling suggestions, related searches and search results" do
         @search.spelling_suggestion.should_receive(:to_json).and_return ""
         @search.related_search.should_receive(:to_json).and_return ""
@@ -830,12 +830,12 @@ describe Search do
         json.should contain(/startrecord/)
         json.should contain(/endrecord/)
       end
-      
+
       context "when an error occurs" do
         before do
           @search.error_message = "Some error"
         end
-        
+
         it "should output an error if an error is detected" do
           json = @search.to_json
           json.should contain(/"error":"Some error"/)
