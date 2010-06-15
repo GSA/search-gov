@@ -13,7 +13,7 @@ class Clicked
                    :results_source => params['s'],
                    :clicked_at => DateTime.now,
                    :click_ip => env['REMOTE_ADDR'],
-                   :user_agent => env['HTTP_USER_AGENT'])
+                   :user_agent => env['HTTP_USER_AGENT']) unless params['u'].blank? 
       [200, {"Content-Type" => "text/html"}, ['']]
     else
       [404, {"Content-Type" => "text/html"}, ["Not Found"]]
