@@ -19,6 +19,9 @@ $(document).ready(function() {
       return value.replace(term, "<strong class='highlight'>" + term + "</strong>");
     },
     scroll: false,
+    delay: 50,
+    minChars: 2,
+    cacheLength: 50,
     max: 15
   }).result(function(event, data, formatted){
     $(this).parent().submit();
