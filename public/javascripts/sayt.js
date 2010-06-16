@@ -25,6 +25,6 @@ $(document).ready(function() {
     cacheLength: 50,
     max: 15
   }).result(function(event, data, formatted){
-    $(this).parent().submit();
+    $(this).closest('form').submit();
   });
 });
