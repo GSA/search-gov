@@ -21,6 +21,7 @@ $(document).ready(function() {
     scroll: false,
     delay: 50,
     minChars: 2,
+    matchSubset: false,
     cacheLength: 50,
     max: 15
   }).result(function(event, data, formatted){
