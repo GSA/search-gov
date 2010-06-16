@@ -7,5 +7,11 @@ namespace :usasearch do
       yyyymmdd = args.day.to_i
       SaytSuggestion.populate_for(yyyymmdd)
     end
+
+    desc "expire SAYT suggestions that have not been updated in X days (defaults to 30)"
+    task :expire, :days_back, :needs => :environment do |t, args|
+      args.with_defaults(:days_back => 30)
+      SaytSuggestion.expire(args.days_back)
+    end
   end
 end

@@ -7,19 +7,24 @@ class SaytSuggestion < ActiveRecord::Base
   validates_format_of :phrase, :with=> /^[a-zA-Z0-9][a-zA-Z0-9\s.'-]+[a-zA-Z0-9]$/i
 
   def self.like(query, num_suggestions)
-    find(:all, :conditions => ['phrase LIKE ? ', query + '%'], :order => 'phrase ASC', :limit => num_suggestions, :select=> 'phrase')
+    find(:all, :conditions => ['phrase LIKE ? ', query + '%'], :order => 'popularity DESC', :limit => num_suggestions, :select=> 'phrase')
   end
 
   def self.populate_for(day)
     filtered_daily_query_stats = SaytFilter.filter(
-      DailyQueryStat.find_all_by_day_and_affiliate_and_locale(day, DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s), "query")
+      DailyQueryStat.find_all_by_day_and_affiliate_and_locale(day, DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s),
+      "query")
     filtered_daily_query_stats.each do |dqs|
-      create(:phrase => dqs.query)
+      temp_ss = SaytSuggestion.new(:phrase => dqs.query)
+      temp_ss.squish_whitespace_and_downcase_and_spellcheck
+      sayt_suggestion = find_or_initialize_by_phrase(:phrase => temp_ss.phrase, :popularity => dqs.times)
+      sayt_suggestion.popularity += dqs.times unless sayt_suggestion.new_record?
+      sayt_suggestion.save
     end unless filtered_daily_query_stats.empty?
   end
 
   def self.process_sayt_suggestion_txt_upload(txtfile)
-    valid_content_types = ['application/octet-stream', 'text/plain' , 'txt']
+    valid_content_types = ['application/octet-stream', 'text/plain', 'txt']
     if valid_content_types.include? txtfile.content_type
       created, ignored = 0, 0
       txtfile.readlines.each do |phrase|
@@ -32,7 +37,9 @@ class SaytSuggestion < ActiveRecord::Base
     end
   end
 
-  private
+  def self.expire(days_back)
+    SaytSuggestion.delete_all(["updated_at < ?", days_back.days.ago.to_s(:db)])
+  end
 
   def squish_whitespace_and_downcase_and_spellcheck
     self.phrase = Misspelling.correct(self.phrase.squish.downcase) unless self.phrase.nil?

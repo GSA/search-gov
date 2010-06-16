@@ -5,7 +5,7 @@ describe Search do
 
   before do
     @affiliate = affiliates(:basic_affiliate)
-    @valid_options = {:query => 'government', :page => 3, :affiliate => @affiliate }
+    @valid_options = {:query => 'government', :page => 3, :affiliate => @affiliate}
   end
 
   describe "#run" do
@@ -146,7 +146,7 @@ describe Search do
 
     context "when affiliate has domains specified and user does not specify site: in search" do
       it "should use affiliate domains in query to Bing without passing ScopeID" do
-        affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
+        affiliate = Affiliate.new(:domains => %w( foo.com bar.com ).join("\n"))
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => affiliate))
         URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(uriresult)
@@ -156,7 +156,7 @@ describe Search do
 
     context "when affiliate has domains specified but user specifies site: in search" do
       it "should override affiliate domains in query to Bing and use ScopeID/gov/mil combo" do
-        affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
+        affiliate = Affiliate.new(:domains => %w( foo.com bar.com ).join("\n"))
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => affiliate, :query=>"government site:blat.gov"))
         URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(uriresult)
@@ -712,7 +712,7 @@ describe Search do
       default_page = 0
 
       it "should default to page 0 if no valid page number was specified" do
-        options_without_page = @valid_options.reject{|k, v| k == :page}
+        options_without_page = @valid_options.reject { |k, v| k == :page }
         Search.new(options_without_page).page.should == default_page
         Search.new(@valid_options.merge(:page => '')).page.should == default_page
         Search.new(@valid_options.merge(:page => 'string')).page.should == default_page
@@ -758,7 +758,8 @@ describe Search do
   describe "#suggestions()" do
     before do
       phrase = "aaaazy"
-      16.times { SaytSuggestion.create!(:phrase => phrase.succ!) }
+      popularity = 10
+      16.times { SaytSuggestion.create!(:phrase => phrase.succ!, :popularity => (popularity = popularity.succ)) }
     end
 
     it "should default to returning 15 suggestions" do
@@ -774,10 +775,10 @@ describe Search do
       Search.suggestions("ubama pres").first.phrase.should == "obama president"
     end
 
-    it "should return suggestions in alphabetical order" do
+    it "should return suggestions in order of search popularity" do
       suggs = Search.suggestions("aaa")
-      suggs.first.phrase.should == "aaaazz"
-      suggs.last.phrase.should == "aaaban"
+      suggs.first.phrase.should == "aaabao"
+      suggs.last.phrase.should == "aaabaa"
     end
 
     context "when no suggestions exist for the query" do

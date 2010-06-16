@@ -32,7 +32,33 @@ describe "SAYT suggestions rake tasks" do
         it "should default to yesterday" do
           day = Date.yesterday.to_s(:number).to_i
           SaytSuggestion.should_receive(:populate_for).with(day)
-          @rake[@task_name].invoke(day)
+          @rake[@task_name].invoke
+        end
+      end
+    end
+
+    describe "usasearch:sayt_suggestions:expire" do
+      before do
+        @task_name = "usasearch:sayt_suggestions:expire"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when days back is specified" do
+        it "should expire sayt_suggestions that have not been updated for that many days" do
+          days_back = 7
+          SaytSuggestion.should_receive(:expire).with(days_back)
+          @rake[@task_name].invoke(days_back)
+        end
+      end
+
+      context "when days back is not specified" do
+        it "should expire sayt_suggestions that have not been updated for 30 days" do
+          days_back = 30
+          SaytSuggestion.should_receive(:expire).with(days_back)
+          @rake[@task_name].invoke
         end
       end
     end

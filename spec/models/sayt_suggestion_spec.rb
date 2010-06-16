@@ -4,7 +4,8 @@ describe SaytSuggestion do
   fixtures :sayt_suggestions, :misspellings
   before(:each) do
     @valid_attributes = {
-      :phrase => "some valid suggestion"
+      :phrase => "some valid suggestion",
+      :popularity => 100
     }
   end
 
@@ -39,7 +40,20 @@ describe SaytSuggestion do
 
     it "should correct misspellings before entering in DB" do
       SaytSuggestion.create!(:phrase => "barack ubama")
-      SaytSuggestion.find_by_phrase("barack obama").should_not be_nil      
+      SaytSuggestion.find_by_phrase("barack obama").should_not be_nil
+    end
+
+    it "should default popularity to 1 if not specified" do
+      SaytSuggestion.create!(:phrase => "popular")
+      SaytSuggestion.find_by_phrase("popular").popularity.should == 1
+    end
+
+  end
+
+  describe "#expire(days_back)" do
+    it "should delete suggestions that have not been updated in X days" do
+      SaytSuggestion.should_receive(:delete_all).with(["updated_at < ?", 30.days.ago.to_s(:db)])
+      SaytSuggestion.expire(30)
     end
   end
 
@@ -58,10 +72,10 @@ describe SaytSuggestion do
       end
 
       it "should populate SaytSuggestions based on each DailyQueryStat for the given day" do
-        SaytSuggestion.should_receive(:create).with(:phrase => "today term1")
-        SaytSuggestion.should_receive(:create).with(:phrase => "today term2")
-        SaytSuggestion.should_not_receive(:create).with(:phrase => "yesterday term1")
         SaytSuggestion.populate_for(Date.today)
+        SaytSuggestion.find_by_phrase_and_popularity("today term1", 2).should_not be_nil
+        SaytSuggestion.find_by_phrase_and_popularity("today term2", 2).should_not be_nil
+        SaytSuggestion.find_by_phrase("yesterday term1").should be_nil
       end
     end
 
@@ -73,19 +87,20 @@ describe SaytSuggestion do
       end
 
       it "should apply SaytFilters to each eligible DailyQueryStat word" do
-        SaytSuggestion.should_not_receive(:create).with(:phrase => "today term2")
         SaytSuggestion.populate_for(Date.today)
+        SaytSuggestion.find_by_phrase("today term2").should be_nil
       end
     end
 
     context "when SaytSuggestion already exists" do
       before do
-        SaytSuggestion.create!(:phrase => "already here")
+        SaytSuggestion.create!(:phrase => "already here", :popularity => 10)
         DailyQueryStat.create!(:day => Date.today, :query => "already here", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       end
 
-      it "should not throw an error" do
+      it "should increment the popularity field appropriately" do
         SaytSuggestion.populate_for(Date.today)
+        SaytSuggestion.find_by_phrase("already here").popularity.should == 12
       end
     end
   end

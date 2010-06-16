@@ -85,6 +85,14 @@ class Search
     end
   end
 
+  def self.suggestions(sanitized_query, num_suggestions = 15)
+    query = sanitized_query.clone
+    corrected_query = Misspelling.correct(query)
+    corrected_suggestions = corrected_query != query ? SaytSuggestion.like(corrected_query, num_suggestions) : []
+    suggestions = SaytSuggestion.like(query, num_suggestions) || []
+    (corrected_suggestions + suggestions)[0, num_suggestions]
+  end
+
   private
 
   def log_impression
@@ -132,14 +140,6 @@ class Search
       "query=#{URI.escape(query_string, URI_REGEX)}"
     ]
     "#{JSON_SITE}?" + params.join('&')
-  end
-
-  def self.suggestions(sanitized_query, num_suggestions = 15)
-    query = sanitized_query.clone
-    corrected_query = Misspelling.correct(query)
-    corrected_suggestions = corrected_query != query ? SaytSuggestion.like(corrected_query, num_suggestions) : []
-    suggestions = SaytSuggestion.like(query, num_suggestions) || []
-    corrected_suggestions + suggestions
   end
 
   protected

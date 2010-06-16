@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100526171400) do
+ActiveRecord::Schema.define(:version => 20100615222319) do
 
   create_table "accepted_sayt_suggestions", :force => true do |t|
     t.string   "phrase",     :null => false
@@ -261,11 +261,13 @@ ActiveRecord::Schema.define(:version => 20100526171400) do
   add_index "sayt_filters", ["phrase"], :name => "index_sayt_filters_on_phrase", :unique => true
 
   create_table "sayt_suggestions", :force => true do |t|
-    t.string   "phrase",     :null => false
+    t.string   "phrase",                    :null => false
     t.datetime "created_at"
+    t.integer  "popularity", :default => 1, :null => false
+    t.datetime "updated_at"
   end
 
-  add_index "sayt_suggestions", ["phrase"], :name => "index_sayt_suggestions_on_phrase", :unique => true
+  add_index "sayt_suggestions", ["phrase", "popularity"], :name => "index_sayt_suggestions_on_phrase_and_popularity"
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false
