@@ -19,12 +19,7 @@ $(document).ready(function() {
       return value.replace(term, "<strong class='highlight'>" + term + "</strong>");
     },
     scroll: false,
-    max: 15,
-    extraParams: {
-      locale: "en",
-      m: false,
-      mode: "jquery"
-    }
+    max: 15
   }).result(function(event, data, formatted){
     $(this).parent().submit();
   });
