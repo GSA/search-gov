@@ -1,1 +1,38 @@
-Placeholder.  Hadoop / Pig code goes here...
+Pig "session based" related queries
+
+* compute top 25k queries in logs
+* find contiguous sessions in AOL logs (basic approach = same anonID, date)
+* compute co-occurence of queries within sessions, limited to top 25k queries
+* group pairs of queries to form co-occurence, emit counts
+* compute TFIDF on co-occurence for top 25k
+* for each query in top 25k, sort by TFIDF desc, return top 25 "related queries"
+
+Pig "click url based" related queries
+
+* repeat top 25k selection used in session approach
+* group queries by click url
+* compute TFIDF score for co-occurence based on click url
+
+Running Pig jobs on EC2
+
+* Starting a Cluster:
+TODO: fill this in
+
+Data Description:
+
+hadoop@domU-12-31-39-0F-74-41:~$ hadoop fs -ls 's3://usasearch-logs/'
+Found 7 items
+-rwxrwxrwx   1   50490252 2010-06-16 02:42 /clicksExtract.bz2
+-rwxrwxrwx   1    5659996 2010-06-16 02:42 /clicksSample
+drwxrwxrwx   -          0 1970-01-01 00:00 /queries_extract_pii
+-rwxrwxrwx   1 1628805636 2010-06-16 02:50 /queries_extract_pii_20100421.bz2
+-rwxrwxrwx   1    1000577 2010-06-16 02:42 /queries_extract_pii_sample
+
+queries_extract_pii_20100421.bz2 contains full anonymized PII stripped query logs from usasearch.gov and affiliates over the last 2 years (as of 4/21/2010)
+
+Entries have the following format
+(query:chararray, user_hash:chararray, timestamp:chararray, affiliate:chararray, locale:chararray, agent:chararray, is_bot:chararray);
+
+locale, agent, and is_bot are all NULL in the current extract and can be ignored for now.
+
+
