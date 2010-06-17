@@ -23,7 +23,8 @@ $(document).ready(function() {
     minChars: 2,
     matchSubset: false,
     cacheLength: 50,
-    max: 15
+    max: 15,
+    selectFirst: false
   }).result(function(event, data, formatted){
     $(this).closest('form').submit();
   });
