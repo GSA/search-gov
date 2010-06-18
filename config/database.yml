@@ -25,3 +25,7 @@ production_slave_database:
 
 cucumber:
   <<: *TEST
+
+labs:
+  <<: *PROD
+  database: usasearch_labs
