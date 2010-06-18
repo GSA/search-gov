@@ -99,9 +99,8 @@ module SearchHelper
 
   def spelling_suggestion(search, affiliate)
     if (search.spelling_suggestion)
-      escaped_spelling_suggestion = h(search.spelling_suggestion)
-      rendered_suggestion = translate_bing_highlights(escaped_spelling_suggestion)
-      suggestion_for_url = strip_bing_highlights(escaped_spelling_suggestion)
+      rendered_suggestion = translate_bing_highlights(search.spelling_suggestion)
+      suggestion_for_url = strip_bing_highlights(search.spelling_suggestion)
       opts = {:query=> suggestion_for_url}
       opts.merge!(:affiliate => affiliate.name) if affiliate
       url = image_search? ? image_search_path(opts) : search_path(opts)
