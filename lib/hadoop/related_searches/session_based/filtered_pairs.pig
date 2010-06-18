@@ -18,11 +18,16 @@ DEFINE query_pairs `query_pairs.py`
 coo_queries = STREAM sessions THROUGH query_pairs
 	AS (query:chararray, coquery:chararray);
 	
-grouped_coo = GROUP coo_queries BY (query, coquery);
+grouped_coo = GROUP coo_queries BY (query, coquery) PARALLEL 50;
 query_coo = FOREACH grouped_coo GENERATE $0.query as query, 
   $0.coquery as coquery, SIZE($1) as count;
-filtered_pairs = FILTER query_coo BY count > 1;
+filtered_pairs = FILTER query_coo BY count > 2 PARALLEL 50;
+STORE filtered_pairs INTO filtered_pairs;
+
+filtered_pairs = LOAD 'filtered_pairs' AS (query:chararray, coquery:chararray, count:long);
+
 STORE filtered_pairs INTO 's3://usasearch-logs/filtered_pairs';
 
--- Records written : 1,705,768
+--Records written : 21,376,075
+
 

@@ -13,6 +13,26 @@ Pig "click url based" related queries
 * group queries by click url
 * compute TFIDF score for co-occurence based on click url
 
+--------------------------
+TODO:
+
+* get session code working
+* apply TFIDF pig code
+* Change ClickUrl name in pig scripts to Affiliate
+* Frequency counts of queries by AnonId
+* Frequency counts of queries by Date
+* Frequency counts of queries by Affiliate
+* Top Queries by affiliate
+* instead of removing large sessions, downsample, i.e. replace this line: sessions = FILTER sessions BY (count >1) AND (count <=500);
+* try relaxing session definition to be same AnonId and month.
+* Form matrix of AnonId x Queries , where Anonid has > 1 query.  Run NMF or SVD on Matrix,
+  use basis vectors to expand number of queries in user sessions.  Recompute related searches.
+* look at simple query chain, sequential queries from global session frequency.. most often after obama, people search for X.. just emit sequential query pairs based on user in sliding window over ordered user history.  logical break due to activity / session change will wash out.  Alternatively can use sliding time window.
+* basic topic related queries based on wikipedia link graph for entity exact matches (with redirect fixes)  Barack obama, nancy pelosi etc.  Use grouping related trends blog post.  Use wikipedia redirect based tweet entity ngram tagger from spatialanalytics github project.
+
+----------------------------
+
+
 Running Pig jobs on EC2
 
 * Starting a Cluster:
