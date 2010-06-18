@@ -12,7 +12,7 @@ class Sayt
       params = Rack::Request.new(env).params
       query, response = params['q'], ''
       if query
-        sanitized_query = query.gsub('\\', '')
+        sanitized_query = query.gsub('\\', '').squish.strip
         num_suggestions = mobile?(env['HTTP_USER_AGENT']) ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE
         auto_complete_options = Search.suggestions(sanitized_query, num_suggestions)
         response = "#{params['callback']}(#{auto_complete_options.map { |option| option.phrase }.to_json})"

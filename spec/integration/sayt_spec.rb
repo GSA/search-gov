@@ -27,6 +27,11 @@ describe Sayt do
     response.body.should == ''
   end
 
+  it "should call Search.suggestions with a whitespace-normalized string" do
+    Search.should_receive(:suggestions).with('does torture', an_instance_of(Fixnum)).and_return []
+    get '/sayt', :q=>"does  torture ", :callback => 'jsonp1276290049647'
+  end
+
   context "when searching in non-mobile mode" do
     it "should return 15 suggestions" do
       Search.should_receive(:suggestions).with("lorem", 15).and_return([@suggestion])
