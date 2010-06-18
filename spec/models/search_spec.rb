@@ -615,15 +615,14 @@ describe Search do
       end
     end
 
-    context "when suggestions for misspelled terms contain scope parameters" do
+    context "when suggestions for misspelled terms contain scopeid, parenthesis, and extra site: params" do
       before do
-        @search = Search.new(@valid_options.merge(:query => 'morgage rates'))
+        @search = Search.new(@valid_options.merge(:query => 'electro coagulation site:uspto.gov'))
         @search.run
       end
 
       it "should strip them all out" do
-        @search.spelling_suggestion.should_not match(/scopeid:/)
-        @search.spelling_suggestion.should_not match(/site:/)
+        @search.spelling_suggestion.should == "\356\200\200electrocoagulation\356\200\201 site:uspto.gov"
       end
     end
 
