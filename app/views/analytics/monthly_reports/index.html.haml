@@ -24,14 +24,12 @@
             Total Page Views: #{number_with_delimiter @monthly_totals[profile_name][:total_page_views]}
           %li
             Total Unique Visitors: #{number_with_delimiter @monthly_totals[profile_name][:total_unique_visitors]}
-          %li
-            Total Click Throughs: #{number_with_delimiter @monthly_totals[profile_name][:total_clicks]}
     %p
       = "Download top 20,000 queries for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year} ("
       = link_to "English", AWS::S3::S3Object.url_for(monthly_report_filename(I18n.default_locale.to_s, @report_date), REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
       ,
       = link_to "Spanish", AWS::S3::S3Object.url_for(monthly_report_filename(other_locale_str, @report_date), REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
-      ) 
+      )
   - if @clicks.present?
     .span-6
       %h3 Clicks by module
