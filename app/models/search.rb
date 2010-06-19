@@ -93,55 +93,6 @@ class Search
     (corrected_suggestions + suggestions)[0, num_suggestions]
   end
 
-  private
-
-  def log_impression
-    modules = []
-    modules << "BWEB" unless self.total.zero?
-    modules << "BSPEL" unless self.spelling_suggestion.nil?
-    modules << "BREL" unless self.related_search.nil? or self.related_search.empty?
-    modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
-    modules << "FORM" unless self.gov_forms.nil? or self.gov_forms.total.zero?
-    modules << "SPOT" unless self.spotlight.nil?
-    RAILS_DEFAULT_LOGGER.info("[Search Impression] time: #{Time.now.to_formatted_s(:db)} , query: #{self.query}, modules: #{modules.inspect}")
-  end
-
-  def hits(response)
-    (response.web.results.empty? ? 0 : response.web.total) rescue 0
-  end
-
-  def process_results(response)
-    processed = response.web.results.collect do |result|
-      title = result.title rescue nil
-      content = result.description rescue ''
-      if title.present?
-        {
-          'title'         => title,
-          'unescapedUrl'  => result.url,
-          'content'       => content,
-          'cacheUrl'      => (result.CacheUrl rescue nil),
-          'deepLinks'     => result["DeepLinks"]
-        }
-      else
-        nil
-      end
-    end
-    processed.compact
-  end
-
-  def bing_query(query_string, offset, count, enable_highlighting = true)
-    params = [
-      "web.offset=#{offset}",
-      "web.count=#{count}",
-      "AppId=#{APP_ID}",
-      "sources=#{SOURCES}",
-      "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
-      "Adult=#{self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : self.filter_setting}",
-      "query=#{URI.escape(query_string, URI_REGEX)}"
-    ]
-    "#{JSON_SITE}?" + params.join('&')
-  end
-
   protected
 
   def related_search_results(response)
@@ -153,7 +104,8 @@ class Search
   end
 
   def spelling_results(response)
-    response.spell.results.first.value.split(/ \(scopeid/).first.gsub(/<\/?[^>]*>/, '').chomp(')').reverse.chomp('(').reverse rescue nil
+    did_you_mean_suggestion = response.spell.results.first.value rescue nil
+    strip_extra_chars_from(did_you_mean_suggestion)
   end
 
   def populate_additional_results
@@ -271,4 +223,58 @@ class Search
   def formatted_query
     "(#{query}) #{scope} #{locale}".strip.squeeze(' ')
   end
+
+  private
+
+  def log_impression
+    modules = []
+    modules << "BWEB" unless self.total.zero?
+    modules << "BSPEL" unless self.spelling_suggestion.nil?
+    modules << "BREL" unless self.related_search.nil? or self.related_search.empty?
+    modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
+    modules << "FORM" unless self.gov_forms.nil? or self.gov_forms.total.zero?
+    modules << "SPOT" unless self.spotlight.nil?
+    RAILS_DEFAULT_LOGGER.info("[Search Impression] time: #{Time.now.to_formatted_s(:db)} , query: #{self.query}, modules: #{modules.inspect}")
+  end
+
+  def hits(response)
+    (response.web.results.empty? ? 0 : response.web.total) rescue 0
+  end
+
+  def process_results(response)
+    processed = response.web.results.collect do |result|
+      title = result.title rescue nil
+      content = result.description rescue ''
+      if title.present?
+        {
+          'title'         => title,
+          'unescapedUrl'  => result.url,
+          'content'       => content,
+          'cacheUrl'      => (result.CacheUrl rescue nil),
+          'deepLinks'     => result["DeepLinks"]
+        }
+      else
+        nil
+      end
+    end
+    processed.compact
+  end
+
+  def bing_query(query_string, offset, count, enable_highlighting = true)
+    params = [
+      "web.offset=#{offset}",
+      "web.count=#{count}",
+      "AppId=#{APP_ID}",
+      "sources=#{SOURCES}",
+      "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
+      "Adult=#{self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : self.filter_setting}",
+      "query=#{URI.escape(query_string, URI_REGEX)}"
+    ]
+    "#{JSON_SITE}?" + params.join('&')
+  end
+
+  def strip_extra_chars_from(did_you_mean_suggestion)
+    did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').strip.squish unless did_you_mean_suggestion.nil?
+  end
+
 end
