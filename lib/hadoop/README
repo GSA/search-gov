@@ -31,7 +31,13 @@ DONE:
 TODO:
 
 
-*Add postprocessing step to cluster related searches based on simple string edit distance using python difflib and hcluster.  This will remove many spelling variants and improve quality & diversity of results
+* Add postprocessing step to cluster related searches based on simple string edit distance using python difflib and hcluster.  This will remove many spelling variants and improve quality & diversity of results
+* Add de-duplication based on word transpositions, for example these two queries would be the same:
+ - stimulus package 2009
+ - 2009 stimulus package
+* Compute "Norvig-style"" spelling corrections based on query reformulation within sessions
+
+
 * try restricting filtered_pairs to pairs that occur at least 30 times before running TFIDF (current threshold is 5)
 * try association metric instead of TFIDF: Cxy/(Cx+Cy-Cxy)
 * quick edit distance "filtered_pairs" post-filter ---> collapse filtered pairs based on string edit distance. Run pairwise edit distance and collapse closely matching strings to same entities. 
