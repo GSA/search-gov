@@ -1,6 +1,7 @@
 REGISTER s3://piggybank/0.6.0/piggybank.jar
 DEFINE LOG1P org.apache.pig.piggybank.evaluation.math.LOG1P();
 
+
 set job.name 'topn_TFIDF'
 rmf topn_tfidf
 
@@ -32,13 +33,17 @@ tfidf = FOREACH joined_freq GENERATE term_frequency::document as document,
   term_frequency::term as term, 
   term_frequency::frequency * idf::idf * idf::idf as tfidf_score, term_frequency::count;
  
+-- generate top 25 related queries
 grouped_tfidf = GROUP tfidf BY document PARALLEL 100;
+
 top_n = FOREACH grouped_tfidf {
        sorted = ORDER tfidf BY $2 DESC;
-       sorted = LIMIT sorted 100;
-             GENERATE group, sorted;}
+       sorted = LIMIT sorted 25;
+             GENERATE group, sorted.term, sorted.tfidf_score, sorted.count;}
              
 --top_n = FOREACH top_n GENERATE flatten(sorted) AS (document:chararray, term:chararray, tfidf_score:double);            
 
 STORE top_n INTO 'topn_tfidf';
+
+
 

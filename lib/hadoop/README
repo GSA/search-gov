@@ -30,10 +30,12 @@ DONE:
 --------------------------
 TODO:
 
+
+*Add postprocessing step to cluster related searches based on simple string edit distance using python difflib and hcluster.  This will remove many spelling variants and improve quality & diversity of results
 * try restricting filtered_pairs to pairs that occur at least 30 times before running TFIDF (current threshold is 5)
 * try association metric instead of TFIDF: Cxy/(Cx+Cy-Cxy)
 * quick edit distance "filtered_pairs" post-filter ---> collapse filtered pairs based on string edit distance. Run pairwise edit distance and collapse closely matching strings to same entities. 
-* remove domain regex matches: www.uspto.gov/web/offices/com/sol/og/ , site:www.cpc.ncep.noaa.gov, site:www.emc.ncep.noaa.govm site:www.hpc.ncep.noaa.gov, site:http://www.uspto.gov/go/classification, www.yahoo.com, site:www.swpc.noaa.gov, %2bwww.wrh.noaa.gov, www.hotmail.com, www.blumadvisory.com
+* remove domain regex matches: http://fueleconomy.gov:80/feg/compx2008f.jsp/?year=2009&make=audi&model=a4 avant quattro&hiddenfield www.uspto.gov/web/offices/com/sol/og/ , site:www.cpc.ncep.noaa.gov, site:www.emc.ncep.noaa.govm site:www.hpc.ncep.noaa.gov, site:http://www.uspto.gov/go/classification, www.yahoo.com, site:www.swpc.noaa.gov, %2bwww.wrh.noaa.gov, www.hotmail.com, www.blumadvisory.com
 * remove: enter search term(s)
 * display_strings: remap lowercase output to most common mixed case form
 * quick session based spelling correction fix:  if queries within the same session are within 2 characters of eachother based on edit distance, only keep the last version of the query
