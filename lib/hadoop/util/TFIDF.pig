@@ -18,7 +18,7 @@ D = FOREACH grouped_doc_counts GENERATE 1 as stub, COUNT_STAR(doc_counts) AS tot
 joined_term_doc = JOIN term_document BY document, doc_counts BY document PARALLEL 100;
 term_frequency = FOREACH joined_term_doc GENERATE term_document::document as document, 
  term_document::term as term, 
- term_document::count / ((float)doc_counts::term_count + 1.0) as frequency;
+ term_document::count / ((float)doc_counts::term_count + 1.0) as frequency, term_document::count as count;
 
 -- compute inverse document frequency (idf)
 grouped_terms = group term_document BY term PARALLEL 100;
@@ -30,7 +30,7 @@ idf = FOREACH joined_tot_grouped_terms GENERATE grouped_terms::term as term,
 joined_freq = JOIN term_frequency BY term, idf BY term PARALLEL 100;
 tfidf = FOREACH joined_freq GENERATE term_frequency::document as document, 
   term_frequency::term as term, 
-  term_frequency::frequency * idf::idf as tfidf_score;
+  term_frequency::frequency * idf::idf * idf::idf as tfidf_score, term_frequency::count;
  
 grouped_tfidf = GROUP tfidf BY document PARALLEL 100;
 top_n = FOREACH grouped_tfidf {
@@ -38,8 +38,7 @@ top_n = FOREACH grouped_tfidf {
        sorted = LIMIT sorted 100;
              GENERATE group, sorted;}
              
-top_n = FOREACH top_n GENERATE flatten(sorted) AS (document:chararray, 
-  term:chararray, tfidf_score:double);            
+--top_n = FOREACH top_n GENERATE flatten(sorted) AS (document:chararray, term:chararray, tfidf_score:double);            
 
 STORE top_n INTO 'topn_tfidf';
 

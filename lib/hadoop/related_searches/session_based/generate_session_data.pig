@@ -19,6 +19,9 @@ queries = FOREACH queries GENERATE AnonID, QueryDate,
   ((CleanQuery is null) ? Query : CleanQuery) as Query;
 
 queries = DISTINCT queries;
+-- at this point we have  AnonID, QueryDate, Query
+
+
 sessions = GROUP queries BY (AnonID, QueryDate);
 sessions = FOREACH sessions GENERATE $0 as session_id, $1.Query as searches, SIZE($1) as count;
 sessions = FILTER sessions BY (count >1) AND (count <=500);

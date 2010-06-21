@@ -13,22 +13,42 @@ Pig "click url based" related queries
 * group queries by click url
 * compute TFIDF score for co-occurence based on click url
 
+------------
+DONE:
+
+* remove double quotes from queries
+* omit queries with empty strings
+* remove single letter queries: "l", "a", etc, require len > 1
+* Use wikipedia redirect based tweet entity ngram tagger from spatialanalytics github project. Wikipedia redirects have errors, so only remap phrases if edit distance is close. 
+* map city, state variants to canonical form...
+* apply TFIDF pig code
+* correct for frequency in TFIDF related search ranking
+* Decide on good "N" for top N cutoff of session based related searches vs. Solr based related searches
+--- preliminary value = top 50K searches
+
+
 --------------------------
 TODO:
 
-* omit queries with empty strings
-* apply TFIDF pig code
+* try restricting filtered_pairs to pairs that occur at least 30 times before running TFIDF (current threshold is 5)
+* try association metric instead of TFIDF: Cxy/(Cx+Cy-Cxy)
+* quick edit distance "filtered_pairs" post-filter ---> collapse filtered pairs based on string edit distance. Run pairwise edit distance and collapse closely matching strings to same entities. 
+* remove domain regex matches: www.uspto.gov/web/offices/com/sol/og/ , site:www.cpc.ncep.noaa.gov, site:www.emc.ncep.noaa.govm site:www.hpc.ncep.noaa.gov, site:http://www.uspto.gov/go/classification, www.yahoo.com, site:www.swpc.noaa.gov, %2bwww.wrh.noaa.gov, www.hotmail.com, www.blumadvisory.com
+* remove: enter search term(s)
+* display_strings: remap lowercase output to most common mixed case form
+* quick session based spelling correction fix:  if queries within the same session are within 2 characters of eachother based on edit distance, only keep the last version of the query
+* collapse spelling variants with spell correct UDF
+* remove known spammers/bots: seo ardan michael blum inlinks to www.blumadvisory.com
 * Change ClickUrl name in pig scripts to Affiliate
 * Frequency counts of queries by AnonId
 * Frequency counts of queries by Date
 * Frequency counts of queries by Affiliate
 * Top Queries by affiliate
-* instead of removing large sessions, downsample, i.e. replace this line: sessions = FILTER sessions BY (count >1) AND (count <=500);
-* try relaxing session definition to be same AnonId and month.
+* instead of removing large sessions, downsample, by replacing this line: sessions = FILTER sessions BY (count >1) AND (count <=500);
 * Form matrix of AnonId x Queries , where Anonid has > 1 query.  Run NMF or SVD on Matrix,
   use basis vectors to expand number of queries in user sessions.  Recompute related searches.
 * look at simple query chain, sequential queries from global session frequency.. most often after obama, people search for X.. just emit sequential query pairs based on user in sliding window over ordered user history.  logical break due to activity / session change will wash out.  Alternatively can use sliding time window.
-* basic topic related queries based on wikipedia link graph for entity exact matches (with redirect fixes)  Barack obama, nancy pelosi etc.  Use grouping related trends blog post.  Use wikipedia redirect based tweet entity ngram tagger from spatialanalytics github project.
+* basic topic related queries based on wikipedia link graph for entity exact matches (with redirect fixes)  Barack obama, nancy pelosi etc.  Use example in "grouping related trends" blog post.  
 
 ----------------------------
 
