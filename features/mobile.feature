@@ -16,17 +16,17 @@ Feature: Mobile Search
     Then I should see "Contact your Government"
 
   Scenario: Toggling full mode
-    Given I am on the homepage
+    Given I am on the search page
     When I follow "Classic"
-    Then I should be on the homepage
+    Then I should be on the search page
     And I should see "Mobile"
 
   Scenario: Toggling back to mobile mode
-    Given I am on the homepage
+    Given I am on the search page
     When I follow "Classic"
     And I follow "Mobile"
-    Then I should be on the homepage
-    And I should see "Contact your Government"
+    Then I should be on the search page
+    And I should see "View site in:"
 
   Scenario: Using mobile mode with a browser not identified as mobile
     Given I am using a desktop device
