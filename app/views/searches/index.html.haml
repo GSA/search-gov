@@ -1,7 +1,8 @@
-#sidebar
-  = link_to image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
-  = render "/shared/relatedsearches"
-#results
-  = render "/shared/search", :path => search_path
-  = render "/shared/searchresults", :search => @search
-  = render "/shared/footer_search", :search => @search
+#results-wrap
+  #sidebar
+    = link_to image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
+    = render "/shared/relatedsearches"
+  #results
+    = render "/shared/search", :path => search_path
+    = render "/shared/searchresults", :search => @search
+    = render "/shared/footer_search", :search => @search
