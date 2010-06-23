@@ -1,8 +1,14 @@
-#logoHome.center
-  = link_to image_tag("/m/i/logo_mobile.png"), root_path(:locale => I18n.locale.to_s, :m => true)
+/#logoHome.center
+/  = link_to image_tag("/m/i/logo_mobile.png"), root_path(:locale => I18n.locale.to_s, :m => true)
+  
+#logoSmall
+  = link_to image_tag("/m/i/logo_mobile_small.png" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
+.clear
 
-%h1.center
-  Contact Your Government
+.search
+  %h4.center
+    Contact Your Government
+    
 .alerttext.center
   = flash[:notice] if flash[:notice]
 
@@ -11,17 +17,17 @@
     = hidden_field_tag "locale", I18n.locale.to_s
     = hidden_field_tag "m", "true"
     %clear10 &nbsp;
-    .pad5
-      %span.alerttext *
+    .pad15
       = label_tag "email", "Email"
+      %span.alerttext *
     .center
       = text_field_tag "email", @email || "", :class => "textbox1"
     %clear10 &nbsp;
-    .pad5
-      %span.alerttext *
+    .pad15
       = label_tag "message", "Message"
+      %span.alerttext *
     .center
-      = text_field_tag "message", @message || "", :class => "textbox1"
+      = text_area_tag "message", @message || "", :class => "textarea1"
     .clear10 &nbsp;
     .pad10
       = submit_tag "Submit", :class => "submit1"

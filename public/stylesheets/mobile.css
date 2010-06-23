@@ -1,10 +1,14 @@
-body, div, p, h1, h2, h3, a, span, ul, li {
-    border: #ffffff none 0;
+body, div, p, h1, h2, h3, h4, a, span, ul, li {
+  border: #ffffff none 0;
   color: #333;
   font-family: Arial;
-    font-weight: normal;
+  font-weight: normal;
   margin: 0;
-    padding: 0;
+  padding: 0;
+}
+
+.h4{
+  padding: 10px 0;
 }
 
 img{
@@ -201,6 +205,7 @@ img{
 
 .alerttext{
   color: red;
+  font-size: .8em;
 }
 
 .searchResult{
@@ -239,12 +244,25 @@ img{
 	padding: 0 10px;
 }
 
+.pad15{
+	padding: 0 15px;
+}
+
 .textbox1
 {
   border: 1px solid #ccc;
   height: 30px;
   width: 270px;
   font-size: 17px;
+}
+
+.textarea1
+{
+  border: 1px solid #ccc;
+  height: 90px;
+  width: 270px;
+  font-size: 17px;
+  resize: none;
 }
 
 .submit1
