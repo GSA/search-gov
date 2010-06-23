@@ -1,6 +1,6 @@
 class RecallsController < ApplicationController
   def index
-    valid_options = %w{start_date end_date upc sort code organization make model year}
+    valid_options = %w{start_date end_date upc sort code organization make model year food_type}
     begin
       search = Recall.search_for(params[:query],
                                  params.reject {|k,| !valid_options.include?k.to_s},

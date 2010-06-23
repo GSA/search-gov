@@ -27,11 +27,20 @@ describe "Recalls rake tasks" do
         end
       end
 
-      context "when given an RSS Feed URL" do
-        it "should send the URL to Recall for processing" do
+      context "when given an RSS Feed URL, but not a food type" do
+        it "should print out an error message" do
           url = "foo"
-          Recall.should_receive(:load_cdc_data_from_rss_feed).with(url)
+          RAILS_DEFAULT_LOGGER.should_receive(:error)
           @rake[@task_name].invoke(url)
+        end
+      end
+      
+      context "when given an RSS feed URL and a food type" do
+        it "should pass along the url for processing" do
+          url = "foo"
+          food_type = "food"
+          Recall.should_receive(:load_cdc_data_from_rss_feed).with(url, food_type)
+          @rake[@task_name].invoke(url, food_type)
         end
       end
     end

@@ -81,6 +81,10 @@ class Recall < ActiveRecord::Base
     text :food_recall_description do
       food_recall.description unless organization != 'CDC' or food_recall.nil?
     end
+    
+    string :food_type do
+      food_recall.food_type unless organization != 'CDC' or food_recall.nil?
+    end
   end
 
   def self.search_for(query, options = {}, page = 1, per_page = 10)
@@ -100,6 +104,9 @@ class Recall < ActiveRecord::Base
       with(:model_facet).equal_to(options[:model].downcase) unless options[:model].blank?
       with(:year_facet).equal_to(options[:year]) unless options[:year].blank?
       with(:code).equal_to(options[:code]) unless options[:code].blank?
+      
+      # CDC/Food/Drug fields
+      with(:food_type).equal_to(options[:food_type]) unless options[:food_type].blank?
 
       facet :hazard_facet, :sort => :count
       facet :country_facet, :sort => :count
@@ -159,13 +166,15 @@ class Recall < ActiveRecord::Base
     load_nhtsa_data_from_file(file.path)
   end
 
-  def self.load_cdc_data_from_rss_feed(url)
+  def self.load_cdc_data_from_rss_feed(url, food_type)
     require 'rss/2.0'
     RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|
       find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10],
                                       :recalled_on => item.pubDate.to_date, :organization => 'CDC',
-                                      :food_recall => FoodRecall.new(:url=>item.link, :summary=> item.title,
-                                                                     :description => item.description))
+                                      :food_recall => FoodRecall.new(:url=>item.link, 
+                                                                     :summary=> item.title,
+                                                                     :description => item.description,
+                                                                     :food_type => food_type))
     end
     Sunspot.commit
   end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100615222319) do
+ActiveRecord::Schema.define(:version => 20100623173419) do
 
   create_table "accepted_sayt_suggestions", :force => true do |t|
     t.string   "phrase",     :null => false
@@ -149,9 +149,10 @@ ActiveRecord::Schema.define(:version => 20100615222319) do
 
   create_table "food_recalls", :force => true do |t|
     t.integer "recall_id"
-    t.string  "summary",     :null => false
-    t.text    "description", :null => false
-    t.string  "url",         :null => false
+    t.string  "summary",                   :null => false
+    t.text    "description",               :null => false
+    t.string  "url",                       :null => false
+    t.string  "food_type",   :limit => 10
   end
 
   add_index "food_recalls", ["recall_id"], :name => "index_food_recalls_on_recall_id"

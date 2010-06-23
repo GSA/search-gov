@@ -34,11 +34,12 @@ describe Recall do
     end
 
     it "should load food recalls data into DB" do
-      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146")
+      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146", "food")
       first = FoodRecall.first
       first.url.should == "http://www.fda.gov/Safety/Recalls/ucm207477.htm"
       first.summary.should == "Whole Foods Market Voluntarily Recalls Frozen Whole Catch Yellow Fin Tuna Steaks Due to Possible Health Risks"
       first.description.should == "Whole Foods Market announced the recall of its Whole Catch Yellow fin Tuna Steaks (frozen) with a best by date of Dec 5th, 2010 because of possible elevated levels of histamine that may result in symptoms that generally appear within minutes to an hour after eating the affected fish.  No other Whole Foods Market, Whole Catch, 365 or 365 Organic products are affected."
+      first.food_type.should == "food"
       first.recall.recalled_on.should == Date.parse("Mon, 05 Apr 2010")
       first.recall.organization.should=='CDC'
       first.recall.recall_number.should_not be_nil
@@ -46,21 +47,22 @@ describe Recall do
       last.url.should == "http://www.fda.gov/Safety/Recalls/ucm207345.htm"
       last.summary.should == "Golden Pacific Foods, Inc. Issues Allergy Alert for Undeclared Milk and Soy in Marco Polo Brand Shrimp Snacks"
       last.description.should == "Chino, California  (April 2, 2010) -- Golden Pacific Foods, Inc. is recalling Marco Polo Brand Shrimp Snacks sold as Original, Onion & Garlic Flavored and Bar-B-Que Flavored, because they may contain undeclared milk and soy. People who have allergies to milk and soy run the risk of serious or life-threatening reaction if they consume these products."
+      last.food_type.should == "food"
       last.recall.recalled_on.should == Date.parse("Sun, 04 Apr 2010")
       last.recall.organization.should=='CDC'
       last.recall.recall_number.should_not be_nil
     end
 
     it "should skip recalls that have already been loaded" do
-      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146")
-      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146")
+      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146", "food")
+      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146", "food")
       Recall.all.size.should == 2
       FoodRecall.all.size.should == 2
     end
 
     it "should commit data in Solr so Solr knows to index it" do
       Sunspot.should_receive(:commit)
-      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146")
+      Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146", "food")
     end
   end
 
@@ -518,6 +520,34 @@ describe Recall do
       end
     end
 
+    context "CDC food/drug related searches" do
+      before(:all) do 
+        Recall.create(:recall_number => Digest::MD5.hexdigest("http://www.fda.gov/Safety/Recalls/ucm216903.htm")[0, 10],
+                      :recalled_on => @start_date, :organization => 'CDC',
+                      :food_recall => FoodRecall.new(:url=>"http://www.fda.gov/Safety/Recalls/ucm216903.htm", 
+                                                     :summary=> "Food Recall",
+                                                     :description => "Food Recall",
+                                                     :food_type => "food"))
+        Recall.create(:recall_number => Digest::MD5.hexdigest("http://www.fda.gov/Safety/Recalls/ucm215921.htm")[0, 10],
+                      :recalled_on => @start_date, :organization => 'CDC',
+                      :food_recall => FoodRecall.new(:url=>"http://www.fda.gov/Safety/Recalls/ucm215921.htm", 
+                                                     :summary=> "Drug Recall",
+                                                     :description => "Drug Recall",
+                                                     :food_type => "drug"))       
+        Recall.reindex
+      end
+      
+      it "should only retrieve CDC recalls when the organization is set to 'CDC'" do
+        search = Recall.search_for("", :organization => "CDC")
+        search.total.should == 2
+      end
+      
+      it "should filter by food type" do
+        search = Recall.search_for("recall", :organization => "CDC", :food_type => "food")
+        search.total.should == 1
+      end
+    end
+    
     after(:all) do
       Recall.remove_all_from_index!
     end
@@ -620,7 +650,7 @@ describe Recall do
     context "for a CDC recall" do
       before(:all) do
         @recall = Recall.new(:organization => 'CDC', :recall_number => '12345', :recalled_on => Date.parse('2010-03-01'))
-        @recall.food_recall = FoodRecall.new( :url => "RECALL_URL", :summary => "SUMMARY", :description => "DESCRIPTION")
+        @recall.food_recall = FoodRecall.new( :url => "RECALL_URL", :summary => "SUMMARY", :description => "DESCRIPTION", :food_type => "FOOD_TYPE")
         @recall.save!
         @parsed_recall = JSON.parse(@recall.to_json)
       end
