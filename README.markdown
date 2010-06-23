@@ -204,3 +204,46 @@ Now re-run that taxes search again and you should see content above the search r
 11. Mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment. Add an acceptance test in the story comments so someone else can easily verify what you have done.
 
 12. Goto Step 1
+
+# Using Labs
+From time to time, a new feature will require testing and feedback from those outside of our development group.  We do not want to push experimental changes to our staging server, which is used for acceptance testing.  Instead, we have create a 'labs' deployment that is available for previewing experimental features.  The labs site is available at http://labs.searchdemo.usa.gov.  If that URL is not available, modify your /etc/hosts file to map the IP address of the searchdemo.usa.gov to labs.searchdemo.usa.gov.
+
+In order to begin developing for the labs branch, you'll need to make sure that no one else is using the branch, or that you are at least in touch with those that are using it.  If the branch has been out of use for a while, it will probably be easier to remove the contents of the remote labs branch and start with a fresh version of the current code.  To remove the remote branch:
+
+      git push origin :labs
+      
+Make sure to check that no one is using the labs branch before doing this, otherwise you'll delete their work!  Now, checkout a new local branch called labs, and push it up as a new remote branch:
+
+      git checkout -b labs
+      git push origin labs
+      
+If you want to begin using the labs branch as it is (for example, if you're working with someone else and they have already created the remote labs branch), you'll need to begin tracking the remote branch:
+
+      git branch --track labs origin/labs
+      
+Now you can checkout the labs branch locally
+
+      git checkout labs
+      
+and work together with other developers.
+      
+You are now ready to begin developing on the labs branch.  You'll probably want to branch off the labs branch itself if you're working on a big feature, and merge your changes into the labs branch.
+
+When you are ready to deploy your experimental features on the labs.searchdemo.usa.gov site, push your latest commits up to the remote labs branch:
+
+    git push origin labs
+    
+and do a deploy of the labs stage:
+
+    cap labs deploy
+
+Your experimental features are now on labs.searchdemo.usa.gov!  When your experimental features have been completed, and you're ready to merge them into the master branch so they can be deployed on searchdemo for acceptance testing, just treat your labs branch as your would any other feature branch:  rebase off of master, checkout master, and merge your changes into master.
+
+Note:  when working with the labs branch, it's your responsibility to keep it in sync with master; if you don't rebase labs on master frequently, it's possible that your branch will become very different from master, making the process of merging your experimental features back into the master branch a real hassle.  It is advisable to rebase on master regularly:
+
+      git checkout master
+      git pull
+      git checkout labs
+      git rebase master
+
+This will keep your labs branch in sync with the master branch, so when you're finished your experimental features, they'll integrate easily with the master branch.
