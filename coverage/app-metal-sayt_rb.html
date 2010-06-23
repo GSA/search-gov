@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/misspelling.rb</title>
+    <title>app/metal/sayt.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/models/misspelling.rb</h2>
+    <h2>app/metal/sayt.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-misspelling_rb.html">app/models/misspelling.rb</a></td>
-            <td class='right_align'><tt>33</tt></td>
-            <td class='right_align'><tt>28</tt></td>
+            <td class="left_align"><a href="app-metal-sayt_rb.html">app/metal/sayt.rb</a></td>
+            <td class='right_align'><tt>29</tt></td>
+            <td class='right_align'><tt>25</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -56,206 +56,182 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line1">1</a> class Misspelling &lt; ActiveRecord::Base</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line1">1</a> # Allow the metal piece to run in isolation</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   before_validation :squish_whitespace_and_downcase</pre></td>
+            <td><pre><a name="line2">2</a> require(File.dirname(__FILE__) + &quot;/../../config/environment&quot;) unless defined?(Rails)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a> require 'mobile_fu'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   validates_presence_of :wrong, :rite</pre></td>
+            <td><pre><a name="line5">5</a> class Sayt</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   validates_uniqueness_of :wrong</pre></td>
+            <td><pre><a name="line6">6</a>   SAYT_SUGGESTION_SIZE = 15</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>   SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>   MOBILE_REGEXP = Regexp.new(ActionController::MobileFu::MOBILE_USER_AGENTS, true)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> </pre></td>
+            <td><pre><a name="line9">9</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   after_save :spell_check_existing_sayt_suggestions</pre></td>
+            <td><pre><a name="line10">10</a>   def self.call(env)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     if env['PATH_INFO'] =~ /^\/sayt/</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>       params = Rack::Request.new(env).params</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>       query, response = params['q'], ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>       if query</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>         sanitized_query = query.gsub('\\', '').squish.strip</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>         num_suggestions = mobile?(env['HTTP_USER_AGENT']) ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>         auto_complete_options = Search.suggestions(params['aid'], sanitized_query, num_suggestions)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>         response = &quot;#{params['callback']}(#{auto_complete_options.map { |option| option.phrase }.to_json})&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a> </pre></td>
+            <td><pre><a name="line19">19</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>   def self.correct(phrase)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>     return if phrase.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     corrected = phrase.split.map do |word|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>       correction = find_by_wrong(word)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>       correction.nil? ? word : correction.rite</pre></td>
+            <td><pre><a name="line20">20</a>       [200, {&quot;Content-Type&quot; =&gt; &quot;application/json&quot;}, [response]]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>     end</pre></td>
+            <td><pre><a name="line21">21</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     corrected.join(' ')</pre></td>
+            <td><pre><a name="line22">22</a>       [404, {&quot;Content-Type&quot; =&gt; &quot;text/html&quot;}, [&quot;Not Found&quot;]]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>   end</pre></td>
+            <td><pre><a name="line23">23</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>   def spell_check_existing_sayt_suggestions</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>     SaytSuggestion.all.each do |s|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>       corrected = s.phrase.gsub(/\b#{wrong}\b/, rite)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>       if corrected != s.phrase</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>         s.delete</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>         SaytSuggestion.create(:phrase =&gt;corrected)</pre></td>
+            <td><pre><a name="line24">24</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line26">26</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line27">27</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line28">28</a> </pre></td>
+            <td><pre><a name="line25">25</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>   def squish_whitespace_and_downcase</pre></td>
+            <td><pre><a name="line26">26</a>   def self.mobile?(ua)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>     self.wrong = self.wrong.squish.downcase unless self.wrong.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>     self.rite = self.rite.squish.downcase unless self.rite.nil?</pre></td>
+            <td><pre><a name="line27">27</a>     ua =~ MOBILE_REGEXP</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>   end</pre></td>
+            <td><pre><a name="line28">28</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a> end</pre></td>
+            <td><pre><a name="line29">29</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Jun 23 15:40:32 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Wed Jun 23 15:40:31 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

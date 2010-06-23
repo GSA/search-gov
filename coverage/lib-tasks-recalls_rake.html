@@ -297,19 +297,19 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line41">41</a>     task :load_cdc_data, :rss_url, :needs =&gt; :environment do |t, args|</pre></td>
+            <td><pre><a name="line41">41</a>     task :load_cdc_data, :rss_url, :food_type, :needs =&gt; :environment do |t, args|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>       if args.rss_url.blank?</pre></td>
+            <td><pre><a name="line42">42</a>       if args.rss_url.blank? || args.food_type.blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>         RAILS_DEFAULT_LOGGER.error(&quot;usage: rake usasearch:recalls:load_cdc_data[RSS Feed URL]&quot;)</pre></td>
+            <td><pre><a name="line43">43</a>         RAILS_DEFAULT_LOGGER.error(&quot;usage: rake usasearch:recalls:load_cdc_data[RSS Feed URL][food type]&quot;)</pre></td>
           </tr>
         
           
@@ -321,7 +321,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>         Recall.load_cdc_data_from_rss_feed(args.rss_url)</pre></td>
+            <td><pre><a name="line45">45</a>         Recall.load_cdc_data_from_rss_feed(args.rss_url, args.food_type)</pre></td>
           </tr>
         
           
@@ -429,7 +429,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Jun 10 08:58:05 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jun 23 15:40:32 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
