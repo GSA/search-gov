@@ -22,6 +22,7 @@ describe Affiliate do
     should_allow_values_for :name, "data.gov", "ct-new", "NewAff", "some_aff", "123"
     should_belong_to :user
     should_have_many :boosted_sites
+    should_have_many :sayt_suggestions
 
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_attributes)

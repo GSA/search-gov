@@ -6,6 +6,7 @@ class Affiliate < ActiveRecord::Base
   belongs_to :user
   belongs_to :affiliate_template
   has_many :boosted_sites, :dependent => :destroy
+  has_many :sayt_suggestions, :dependent => :destroy
   after_destroy :remove_boosted_sites_from_index
 
   def template

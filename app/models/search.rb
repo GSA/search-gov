@@ -85,12 +85,10 @@ class Search
     end
   end
 
-  def self.suggestions(sanitized_query, num_suggestions = 15)
-    query = sanitized_query.clone
-    corrected_query = Misspelling.correct(query)
-    corrected_suggestions = corrected_query != query ? SaytSuggestion.like(corrected_query, num_suggestions) : []
-    suggestions = SaytSuggestion.like(query, num_suggestions) || []
-    (corrected_suggestions + suggestions)[0, num_suggestions]
+  def self.suggestions(affiliate_id, sanitized_query, num_suggestions = 15)
+    corrected_query = Misspelling.correct(sanitized_query)
+    suggestions = SaytSuggestion.like(affiliate_id, corrected_query, num_suggestions) || []
+    suggestions[0, num_suggestions]
   end
 
   protected

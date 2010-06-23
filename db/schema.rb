@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
+# This file is auto-generated from the current state of the database. Instead of editing this file,
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -262,13 +262,14 @@ ActiveRecord::Schema.define(:version => 20100623173419) do
   add_index "sayt_filters", ["phrase"], :name => "index_sayt_filters_on_phrase", :unique => true
 
   create_table "sayt_suggestions", :force => true do |t|
-    t.string   "phrase",                    :null => false
+    t.string   "phrase",                      :null => false
     t.datetime "created_at"
-    t.integer  "popularity", :default => 1, :null => false
+    t.integer  "popularity",   :default => 1, :null => false
     t.datetime "updated_at"
+    t.integer  "affiliate_id"
   end
 
-  add_index "sayt_suggestions", ["phrase", "popularity"], :name => "index_sayt_suggestions_on_phrase_and_popularity"
+  add_index "sayt_suggestions", ["affiliate_id", "phrase", "popularity"], :name => "index_sayt_suggestions_on_affiliate_id_and_phrase_and_popularity", :unique => true
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

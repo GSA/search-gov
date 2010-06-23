@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
   before_filter :show_searchbox
   SAYT_SUGGESTION_SIZE = 15
   SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
-  ssl_allowed :auto_complete_for_search_query  
+  ssl_allowed :auto_complete_for_search_query
 
   def index
     @search = Search.new(@search_options)
@@ -30,26 +30,14 @@ class SearchesController < ApplicationController
     query = params["mode"] == "jquery" ? params["q"] : params["query"]
     render :inline => "" and return unless query
     sanitized_query = query.gsub('\\', '')
-    @auto_complete_options = Search.suggestions(sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
+    @auto_complete_options = Search.suggestions(nil, sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
     if params["mode"] == "jquery"
       render :json => "#{params['callback']}(#{@auto_complete_options.map{|option| option.phrase }.to_json})"
     else
       render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
     end
   end
-  
-  def auto_complete_for_search_query
-    query = params["mode"] == "jquery" ? params["q"] : params["query"]
-    render :inline => "" and return unless query
-    sanitized_query = query.gsub('\\', '')
-    @auto_complete_options = Search.suggestions(sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
-    if params["mode"] == "jquery"
-      render :json => "#{params['callback']}(#{@auto_complete_options.map{|option| option.phrase }.to_json})"
-    else
-      render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
-    end
-  end
-  
+
   def advanced
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
@@ -117,7 +105,7 @@ class SearchesController < ApplicationController
   def is_advanced_search?
     params[:action] == "advanced"
   end
-  
+
   def show_searchbox
     @show_searchbox = params[:show_searchbox].present? && params[:show_searchbox] == "false" ? false : true
   end

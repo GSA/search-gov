@@ -30,7 +30,7 @@ describe SearchesController do
       end
 
       it "should return 6 suggestions" do
-        Search.should_receive(:suggestions).with("lorem", 6)
+        Search.should_receive(:suggestions).with(nil, "lorem", 6)
         get :auto_complete_for_search_query, :query=>"lorem"
       end
 
@@ -44,18 +44,18 @@ describe SearchesController do
 
     context "when searching in nonmobile mode" do
       it "should return 15 suggestions" do
-        Search.should_receive(:suggestions).with("lorem", 15)
+        Search.should_receive(:suggestions).with(nil, "lorem", 15)
         get :auto_complete_for_search_query, :query=>"lorem"
       end
     end
-    
+
     context "when searching from some other site on the internet" do
       it "should accept the 'q' parameter to work with jQuery's autocomplete syntax when style is set to 'jquery'" do
         SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
         get :auto_complete_for_search_query, :q =>"lorem", :mode => 'jquery'
         response.body.should match(/lorem/i)
       end
-      
+
       it "should return a carriagereturn separated list in jquery mode" do
         SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
         SaytSuggestion.create(:phrase => "Lorem sic transit gloria")
@@ -64,7 +64,7 @@ describe SearchesController do
       end
     end
   end
-  
+
   context "when showing index" do
     it "should have a route with a locale" do
       search_path.should =~ /search\?locale=en/
@@ -140,34 +140,34 @@ describe SearchesController do
     end
 
   end
-  
+
   context "when searching via the API" do
     integrate_views
-    
+
     context "when searching normally" do
       before do
         get :index, :query => 'weather', :format => "json"
         @search = assigns[:search]
         @format = assigns[:original_format]
       end
-    
+
       it "should set the format to json" do
         @format.to_s.should == "application/json"
       end
-    
+
       it "should serialize the results into JSON" do
         response.body.should =~ /total/
         response.body.should =~ /startrecord/
         response.body.should =~ /endrecord/
       end
     end
-        
+
     context "when some error is returned" do
       before do
         get :index, :query => 'a' * 1001, :format => "json"
         @search = assigns[:search]
       end
-      
+
       it "should serialize an error into JSON" do
         response.body.should =~ /error/
         response.body.should =~ /#{I18n.translate :too_long}/
@@ -205,7 +205,7 @@ describe SearchesController do
       @search.faqs.should_not be_nil
     end
   end
-  
+
   context "when handling a request that has FAQ results, but the FAQ records have been deleted from the database" do
     integrate_views
     before do
@@ -220,7 +220,7 @@ describe SearchesController do
       Faq.search_for('uspto').total.should == 1
       get :index, :query => 'uspto'
     end
-    
+
     it "should display search results without Faq results" do
       response.should be_success
     end
@@ -237,7 +237,7 @@ describe SearchesController do
       @search.gov_forms.should_not be_nil
     end
   end
-  
+
   context "when handling a request that has GovForm results, but the GovForm records have been deleted from the database" do
     integrate_views
     before do
@@ -252,7 +252,7 @@ describe SearchesController do
       GovForm.search_for('uspto').total.should == 1
       get :index, :query => 'uspto'
     end
-    
+
     it "should display search results without GovForm results" do
       response.should be_success
     end
@@ -277,34 +277,34 @@ describe SearchesController do
       AcceptedSaytSuggestion.find_by_phrase('very suggestive').should be_nil
     end
   end
-  
+
   context "when a user is attempting to visit an old-style advanced search page" do
     before do
       get :index, :form => "advanced-firstgov"
     end
-    
+
     it "should redirect to the advanced search page" do
       response.should redirect_to advanced_search_path(:form => 'advanced-firstgov')
     end
   end
-  
+
   context "when a user is attempting to visit an old-style advanced search page for an affiliate" do
     before do
       get :index, :form => 'advanced-firstgov', :affiliate => 'aff.gov'
     end
-    
+
     it "should redirect to the affiliate advanced search page" do
       response.should be_redirect
       redirect_to advanced_search_path(:affiliate => 'aff.gov', :form => 'advanced-firstgov')
     end
   end
-  
+
   context "highlighting" do
     context "when a client requests results without highlighting" do
       before do
         get :index, :query => "obama", :hl => "false"
       end
-    
+
       it "should set the highlighting option to false" do
         @search_options = assigns[:search_options]
         @search_options[:enable_highlighting].should be_false
@@ -315,25 +315,25 @@ describe SearchesController do
       before do
         get :index, :query => "obama", :hl => "true"
       end
-      
+
       it "should set the highlighting option to true" do
         @search_options = assigns[:search_options]
         @search_options[:enable_highlighting].should be_true
       end
     end
-    
+
     context "when a client does not specify highlighting" do
       before do
         get :index, :query => "obama"
       end
-      
+
       it "should set the highlighting option to true" do
         @search_options = assigns[:search_options]
         @search_options[:enable_highlighting].should be_true
       end
     end
   end
-  
+
   context "when omitting search textbox" do
     it "should omit the search textbox if the show_searchbox parameter is set to false and mobile mode is true" do
       get :index, :query => "obama", :show_searchbox => "false"

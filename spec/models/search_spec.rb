@@ -146,7 +146,7 @@ describe Search do
 
     context "when affiliate has domains specified and user does not specify site: in search" do
       it "should use affiliate domains in query to Bing without passing ScopeID" do
-        affiliate = Affiliate.new(:domains => %w( foo.com bar.com ).join("\n"))
+        affiliate = Affiliate.new(:domains => %w(  foo.com bar.com  ).join("\n"))
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => affiliate))
         URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(uriresult)
@@ -156,7 +156,7 @@ describe Search do
 
     context "when affiliate has domains specified but user specifies site: in search" do
       it "should override affiliate domains in query to Bing and use ScopeID/gov/mil combo" do
-        affiliate = Affiliate.new(:domains => %w( foo.com bar.com ).join("\n"))
+        affiliate = Affiliate.new(:domains => %w(  foo.com bar.com  ).join("\n"))
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => affiliate, :query=>"government site:blat.gov"))
         URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(uriresult)
@@ -754,7 +754,7 @@ describe Search do
     end
   end
 
-  describe "#suggestions()" do
+  describe "#suggestions(affiliate_id, sanitized_query, num_suggestions)" do
     before do
       phrase = "aaaazy"
       popularity = 10
@@ -762,28 +762,27 @@ describe Search do
     end
 
     it "should default to returning 15 suggestions" do
-      Search.suggestions("aaa").size.should == 15
+      Search.suggestions(nil, "aaa").size.should == 15
     end
 
     it "should accept an override for number of suggestions to return" do
-      Search.suggestions("aaa", 6).size.should == 6
+      Search.suggestions(nil, "aaa", 6).size.should == 6
     end
 
     it "should run the words in the query phrase against the misspellings list" do
       SaytSuggestion.create!(:phrase => "obama president")
-      Search.suggestions("ubama pres").first.phrase.should == "obama president"
-    end
-
-    it "should return suggestions in order of search popularity" do
-      suggs = Search.suggestions("aaa")
-      suggs.first.phrase.should == "aaabao"
-      suggs.last.phrase.should == "aaabaa"
+      Search.suggestions(nil, "ubama pres").first.phrase.should == "obama president"
     end
 
     context "when no suggestions exist for the query" do
       it "should return an empty array" do
-        Search.suggestions("nothing to see here").should == []
+        Search.suggestions(nil, "nothing to see here").should == []
       end
+    end
+
+    it "should use affiliate_id to find suggestions" do
+      SaytSuggestion.should_receive(:like).with(370, "xyz", 5)
+      Search.suggestions(370, "xyz", 5)
     end
   end
 
