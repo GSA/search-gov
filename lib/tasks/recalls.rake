@@ -39,8 +39,8 @@ namespace :usasearch do
 
     desc "Load/update CDC food recall data from RSS feed"
     task :load_cdc_data, :rss_url, :food_type, :needs => :environment do |t, args|
-      if args.rss_url.blank? || args.food_type.blank?
-        RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:load_cdc_data[RSS Feed URL][food type]")
+      if args.rss_url.blank?
+        RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:recalls:load_cdc_data[RSS Feed URL, food type]")
       else
         Recall.load_cdc_data_from_rss_feed(args.rss_url, args.food_type)
       end
