@@ -1,5 +1,6 @@
 class ImageSearchesController < ApplicationController
   before_filter :set_search_options
+  has_mobile_fu
 
   def index
     @search = ImageSearch.new(@search_options)

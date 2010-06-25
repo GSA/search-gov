@@ -1,3 +1,8 @@
+#topLinks
+  - search_params = {:query => params[:query], :locale => params[:locale]}
+  %ul
+    %li.first= link_to_unless web_search?, t(:government_web), search_path(search_params)
+    %li= link_to_unless image_search?, t(:images), image_search_path(search_params)
 #logoSmall
   = link_to image_tag("/m/i/logo_mobile_small.png" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
 .clear

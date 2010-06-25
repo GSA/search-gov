@@ -28,4 +28,12 @@ class HomeController < ApplicationController
       format.mobile
     end
   end
+
+  def serp_prototype
+  
+  end
+  
+  def serp_image_prototype
+  
+  end
 end

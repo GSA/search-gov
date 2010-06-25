@@ -74,5 +74,15 @@ describe ImageSearchesController do
         end
       end
     end
+    
+    context "when searching in mobile mode" do
+      before do
+        get :index, :query => 'obama', :m => "true"
+      end
+      
+      it "should show the mobile version of the page" do
+        response.should be_success
+      end
+    end
   end
 end
