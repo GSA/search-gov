@@ -28,7 +28,7 @@ class DailyQueryStat < ActiveRecord::Base
     results = DailyQueryStat.sum(:times,
                                  :group => :query,
                                  :conditions => ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],
-                                 :having => "sum_times > 3",
+                                 :having => "sum_times > #{ affiliate_name == DEFAULT_AFFILIATE_NAME ? "3" : "0"}",
                                  :order => "sum_times desc")
     return INSUFFICIENT_DATA if results.empty?
     qcs=[]

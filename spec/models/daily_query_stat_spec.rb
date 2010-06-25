@@ -164,9 +164,10 @@ describe DailyQueryStat do
         DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "recent day most popular", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
         DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "older most popular", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
         DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "recent day most popular", :times => 4, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "sparse term", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       end
 
-      it "should calculate popularity sums based on the target date and number of days parameter" do
+      it "should calculate popularity sums based on the target date and number of days parameter, ignoring terms with a frequency of less than 4" do
         yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1)
         yday.first.query.should == "recent day most popular"
         yday.first.times.should == 4
@@ -184,7 +185,7 @@ describe DailyQueryStat do
           DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "older most popular", :times => 10, :affiliate => "other_affiliate")
           DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "recent day most popular", :times => 3, :affiliate => "other_affiliate")
           DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "older most popular", :times => 2, :affiliate => "other_affiliate")
-          DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "recent day most popular", :times => 5, :affiliate => "other_affiliate")          
+          DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "recent day most popular", :times => 5, :affiliate => "other_affiliate")
         end
 
         it "should use the affiliate parameter if set to scope the results" do
@@ -194,6 +195,18 @@ describe DailyQueryStat do
           twodaysago = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 2, 10, "other_affiliate")
           twodaysago.first.query.should == "older most popular"
           twodaysago.first.times.should == 12
+        end
+      end
+      
+      context "when a very small amount of affiliate data exists" do
+        before do
+          DailyQueryStat.create!(:day => Date.yesterday, :query => "sparse term", :times => 1, :affiliate => "tiny_affiliate")
+        end
+        
+        it "should return those results for affiliates" do
+          most_popular_terms = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date("tiny_affiliate"), 1, 10, "tiny_affiliate")
+          most_popular_terms.class.should == Array
+          most_popular_terms.size.should == 1
         end
       end
       
