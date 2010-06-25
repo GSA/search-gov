@@ -168,7 +168,7 @@ describe SaytSuggestion do
       end
     end
 
-    context "when there are multiple results available" do
+    context "when there are multiple suggestions available" do
       before do
         SaytSuggestion.create!(:phrase => "child", :popularity => 10, :affiliate_id => @affiliate.id)
         SaytSuggestion.create!(:phrase => "child care", :popularity => 1, :affiliate_id => @affiliate.id)
@@ -176,10 +176,10 @@ describe SaytSuggestion do
         @array = SaytSuggestion.like(@affiliate.id, "child", 10)
       end
 
-      it "should return an array of phrases" do
-        @array.is_a?Array.should be_true
+      it "should return an array of SAYT suggestions" do
+        @array.class.should == Array
         @array.each do |phrase|
-          phrase.is_a?String.should be_true
+          phrase.class.should == SaytSuggestion
         end
       end
 
