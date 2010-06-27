@@ -31,6 +31,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :gov_forms, :active_scaffold => true
     admin.resources :clicks, :active_scaffold => true
   end
+  map.affiliate_analytics_redirect '/admin/affiliates/:id/analytics', :controller => 'admin/affiliates', :action => 'analytics'
   map.admin_home_page '/admin', :controller => "admin/home"
   map.namespace(:analytics) do |admin|
     admin.resources :query_groups, :active_scaffold => true

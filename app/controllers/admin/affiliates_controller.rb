@@ -5,6 +5,11 @@ class Admin::AffiliatesController < Admin::AdminController
     config.list.sorting = { :name => :asc }
     config.update.columns = [:name, :domains, :header, :footer, :affiliate_template]
     config.create.columns = [:name, :domains, :header, :footer, :affiliate_template]
+    config.action_links.add "analytics", :label => "Analytics", :type => :record, :page => true
+  end
+  
+  def analytics
+    redirect_to affiliate_analytics_home_page_path(:id => params[:id])
   end
 
 end

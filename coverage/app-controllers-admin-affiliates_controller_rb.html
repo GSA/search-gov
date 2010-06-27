@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-admin-affiliates_controller_rb.html">app/controllers/admin/affiliates_controller.rb</a></td>
-            <td class='right_align'><tt>10</tt></td>
-            <td class='right_align'><tt>8</tt></td>
+            <td class='right_align'><tt>15</tt></td>
+            <td class='right_align'><tt>12</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -98,26 +98,56 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line8">8</a>   end</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     config.action_links.add &quot;analytics&quot;, :label =&gt; &quot;Analytics&quot;, :type =&gt; :record, :page =&gt; true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a> </pre></td>
+            <td><pre><a name="line9">9</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a> end</pre></td>
+            <td><pre><a name="line10">10</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>   def analytics</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     redirect_to affiliate_analytics_home_page_path(:id =&gt; params[:id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line13">13</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line14">14</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line15">15</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Jun 23 15:40:31 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Sun Jun 27 10:12:40 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

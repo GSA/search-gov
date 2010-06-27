@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Admin::AffiliatesController do
-  fixtures :users
+  fixtures :users, :affiliates
 
   context "when logged in as a non-affiliate admin user" do
     before do
@@ -21,5 +21,19 @@ describe Admin::AffiliatesController do
       response.should redirect_to(new_user_session_path)
     end
   end
-
+  
+  describe "#analytics" do
+    context "when logged in as an affiliate admin" do
+      before do
+        activate_authlogic
+        UserSession.create(:email => users("affiliate_admin").email, :password => "admin")
+        @affiliate = affiliates("basic_affiliate")
+      end
+    
+      it "should redirect to the affiliate analytics page for the affiliate id passed" do
+        get :analytics, :id => @affiliate.id
+        response.should redirect_to affiliate_analytics_home_page_path(:id => @affiliate.id)
+      end
+    end
+  end
 end
