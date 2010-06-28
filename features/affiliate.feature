@@ -267,8 +267,9 @@ Feature: Affiliate clients
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the user account page
     And I follow "Analytics"
-    Then I should see "Most Frequent Queries"
-    Then I should see "Data for April 15, 2010"
+    Then I should see "Query Analytics for aff.gov"
+    And I should see "Most Frequent Queries"
+    And I should see "Data for April 15, 2010"
     And in "dqs1" I should not see "No queries matched"
     And in "dqs7" I should not see "No queries matched"
     And in "dqs30" I should not see "No queries matched"
