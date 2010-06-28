@@ -5,7 +5,7 @@ class Recall < ActiveRecord::Base
 
   validates_presence_of :recall_number, :organization
 
-  CPSC_FULL_TEXT_SEARCH_FIELDS = {'Manufacturer' => 2, 'ProductType' => 3, 'Description' => 4, 'Hazard' => 7, 'Country' => 8 }
+  CPSC_FULL_TEXT_SEARCH_FIELDS = {'Manufacturer' => 2, 'ProductType' => 3, 'Description' => 4, 'UPC' => 5, 'Hazard' => 7, 'Country' => 8 }
   CPSC_FACET_FIELDS = %w{Manufacturer ProductType Hazard Country}
 
   NHTSA_DETAIL_FIELDS = {'ManufacturerCampaignNumber' => 5, 'ComponentDescription'=> 6, 'Manufacturer' => 7,
@@ -140,7 +140,7 @@ class Recall < ActiveRecord::Base
         element.attributes["manufacturer"],
         element.attributes["type"],
         element.attributes["prname"],
-        nil,
+        element.attributes["UPC"],
         nil,
         element.attributes["hazard"],
         element.attributes["country_mfg"],

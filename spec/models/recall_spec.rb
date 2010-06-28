@@ -113,13 +113,37 @@ describe Recall do
   describe "#process_cpsc_row" do
     context "when a recall is seen for the first time" do
       before do
-        @row = ['10156', '110156', 'Ethan Allen', "Blinds, Shades & Cords", 'Ethan Allen Design Center Roman Shades', nil, '12660', 'Strangulation', 'United States', '2010-03-04']
+        @row = ['10156', '110156', 'Ethan Allen', "Blinds, Shades & Cords", 'Ethan Allen Design Center Roman Shades', "718103121866", '12660', 'Strangulation', 'United States', '2010-03-04']
       end
 
       it "should create a new recall" do
         Recall.process_cpsc_row(@row)
         Recall.find_by_recall_number('10156').should_not be_nil
       end
+      
+      context "when the UPC is nil" do
+        before do
+          @row[5] = nil
+        end
+        
+        it "should create a recall without a UPC recall detail" do
+          Recall.process_cpsc_row(@row)
+          recall = Recall.find_by_recall_number("10156")
+          recall.recall_details.find_by_detail_type('UPC').should be_nil
+        end
+      end
+      
+      context "when the UPC is blank" do
+        before do
+          @row[5] = ""
+        end
+        
+        it "should create a recall without a UPC recall detail" do
+          Recall.process_cpsc_row(@row)
+          recall = Recall.find_by_recall_number("10156")
+          recall.recall_details.find_by_detail_type('UPC').should be_nil
+        end
+      end          
 
       context "when a date is present in the CSV row" do
         it "should set the date on the new recall object when date is present in the row" do
@@ -145,7 +169,7 @@ describe Recall do
 
       context "when a date is not present in the CSV row" do
         before do
-          @row = ['10156', '110156', 'Ethan Allen', "Blinds, Shades & Cords", 'Ethan Allen Design Center Roman Shades', nil, '12660', 'Strangulation', 'United States']
+          @row = ['10156', '110156', 'Ethan Allen', "Blinds, Shades & Cords", 'Ethan Allen Design Center Roman Shades', "718103121866", '12660', 'Strangulation', 'United States']
         end
 
         it "should not set a date" do
@@ -174,6 +198,10 @@ describe Recall do
         it "should create a RecallDetail for Descriptions that are present" do
           @recall.recall_details.find_by_detail_type_and_detail_value('Description', 'Ethan Allen Design Center Roman Shades').should_not be_nil
         end
+        
+        it "should create a RecallDetail for UPC codes that are present" do
+          @recall.recall_details.find_by_detail_type_and_detail_value('UPC', "718103121866").should_not be_nil
+        end
 
         it "should create a RecallDetail for Hazards that are present" do
           @recall.recall_details.find_by_detail_type_and_detail_value('Hazard', 'Strangulation').should_not be_nil
@@ -188,7 +216,7 @@ describe Recall do
 
     context "when seeing a recall number for the second time" do
       before do
-        @row1 = ['10154', '110154', 'American Electric Lighting', 'Lights & Accessories', 'American Electric Lighting AVL Outdoor Lighting Fixtures', nil, '12648', 'Electrocution/Electric Shock', 'Mexico', '2010-03-03']
+        @row1 = ['10154', '110154', 'American Electric Lighting', 'Lights & Accessories', 'American Electric Lighting AVL Outdoor Lighting Fixtures', "718103121866", '12648', 'Electrocution/Electric Shock', 'Mexico', '2010-03-03']
         @row2 = ['10154', '110154', 'Acuity Brands Lighting', nil, nil, nil, '12649', nil, nil, nil]
         Recall.process_cpsc_row(@row1)
       end
