@@ -139,6 +139,39 @@ describe AffiliatesController do
           get :analytics, :id => other_user.affiliates.first.id
           response.should redirect_to(home_page_path)
         end
+        
+        context "when rendering the page" do
+          integrate_views
+          before do
+            AWS::S3::Base.stub!(:establish_connection!).and_return true
+          end
+      
+          it "should display the affiliate name" do
+            get :analytics, :id => @user.affiliates.first.id
+            response.should contain(/#{@user.affiliates.first.name}/)
+          end
+          
+          it "should establish an AWS connection" do
+            AWS::S3::Base.should_receive(:establish_connection!).once
+            get :analytics, :id => @user.affiliates.first.id
+          end
+     
+          it "should not link to the reports if there's no data" do
+            AWS::S3::S3Object.should_not_receive(:url_for)
+            get :analytics, :id => @user.affiliates.first.id
+          end
+          
+          context "when there is affiliate data" do
+            before do
+              DailyQueryStat.create(:query => 'test', :times => 12, :affiliate => @user.affiliates.first.name, :day => Date.yesterday, :locale => "en")
+            end
+            
+            it "should link to the report on Amazon using S3/SSL" do
+        AWS::S3::S3Object.should_receive(:url_for).with("#{@user.affiliates.first.name}_top_queries_#{DailyQueryStat.most_recent_populated_date(@user.affiliates.first.name).strftime('%Y%m%d')}.csv", "usasearch-reports", :use_ssl => true).once.and_return ""
+              get :analytics, :id => @user.affiliates.first.id
+            end
+          end
+        end
       end 
     end
   end
@@ -191,6 +224,29 @@ describe AffiliatesController do
           other_user = users("another_affiliate_manager")
           get :monthly_reports, :id => other_user.affiliates.first.id
           response.should redirect_to(home_page_path)
+        end
+        
+        context "when rendering the page" do
+          integrate_views
+          before do
+            AWS::S3::Base.stub!(:establish_connection!).and_return true
+            @report_date = Date.today
+          end
+  
+          it "should display the affiliate name" do
+            get :monthly_reports, :id => @user.affiliates.first.id
+            response.should contain(/#{@user.affiliates.first.name}/)
+          end
+        
+          it "should establish an AWS connection" do
+            AWS::S3::Base.should_receive(:establish_connection!).once
+            get :monthly_reports, :id => @user.affiliates.first.id
+          end
+             
+          it "should link to the report on Amazon using S3/SSL" do
+              AWS::S3::S3Object.should_receive(:url_for).with("#{@user.affiliates.first.name}_top_queries_#{@report_date.strftime('%Y%m')}.csv", "usasearch-reports", :use_ssl => true).once.and_return ""
+              get :monthly_reports, :id => @user.affiliates.first.id
+          end
         end
       end 
     end

@@ -16,3 +16,6 @@
   = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "Previous 7 Days", :affiliate => @affiliate}
 .span-8.last{:id=>"dqs30"}
   = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Previous 30 Days", :affiliate => @affiliate}
+
+#daily_top_queries
+  = "Download top 1000 queries for #{ @day_being_shown.to_s } (#{ link_to "csv", AWS::S3::S3Object.url_for(daily_report_filename(@affiliate.name, @day_being_shown), REPORTS_AWS_BUCKET_NAME, :use_ssl => true) })" unless @day_being_shown.nil?

@@ -16,9 +16,4 @@ class Analytics::AnalyticsController < SslController
   def default_url_options(options={})
     {}
   end
-  
-  def establish_aws_connection
-    AWS::S3::Base.establish_connection!(:access_key_id => AWS_ACCESS_KEY_ID, 
-                                        :secret_access_key => AWS_SECRET_ACCESS_KEY)
-  end
 end

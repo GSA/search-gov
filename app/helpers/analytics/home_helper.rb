@@ -42,12 +42,12 @@ module Analytics::HomeHelper
     affiliate ? "/affiliates/#{affiliate.id}/analytics" : "/analytics"
   end
   
-  def monthly_report_filename(locale, report_date)
-    "#{locale}_top_queries_#{report_date.strftime('%Y%m')}.csv"
+  def monthly_report_filename(prefix, report_date)
+    "#{prefix}_top_queries_#{report_date.strftime('%Y%m')}.csv"
   end
 
-  def daily_report_filename(locale, report_date)
-    "#{locale}_top_queries_#{report_date.strftime('%Y%m%d')}.csv"
+  def daily_report_filename(prefix, report_date)
+    "#{prefix}_top_queries_#{report_date.strftime('%Y%m%d')}.csv"
   end
    
   private

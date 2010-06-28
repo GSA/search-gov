@@ -68,5 +68,9 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
+  
+  def establish_aws_connection
+    AWS::S3::Base.establish_connection!(:access_key_id => AWS_ACCESS_KEY_ID, :secret_access_key => AWS_SECRET_ACCESS_KEY)
+  end
 
 end
