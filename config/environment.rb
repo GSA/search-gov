@@ -15,13 +15,13 @@ Rails::Initializer.run do |config|
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
   # Specify gems that this application depends on and have them installed with rake gems:install
   config.gem "haml", :version => '2.2.3'
-  config.gem "json", :version => '>= 1.2.0'
+  config.gem "json", :version => '>= 1.4.3'
   config.gem 'mislav-will_paginate', :version => '~> 2.3.11', :lib => 'will_paginate', :source => 'http://gems.github.com'
   config.gem "chriseppstein-compass", :lib => 'compass', :source => 'http://gems.github.com', :version => '>= 0.8.9'
-  config.gem "hpricot", :version => '>= 0.8.1'
-  config.gem "calendar_date_select", :version => '>= 1.15'
+  config.gem "hpricot", :version => '>= 0.8.2'
+  config.gem "calendar_date_select", :version => '>= 1.16.1'
   config.gem "bcrypt-ruby", :lib => "bcrypt", :version => '>= 2.1.1'
-  config.gem "authlogic", :version => '>= 2.1.1'
+  config.gem "authlogic", :version => '>= 2.1.5'
   config.gem 'schoefmax-multi_db', :lib => 'multi_db', :source => 'http://gems.github.com'
   config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version => '1.1.0'
   config.gem 'hoptoad_notifier'
