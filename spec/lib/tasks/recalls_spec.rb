@@ -151,5 +151,53 @@ describe "Recalls rake tasks" do
         Recall.find_by_recall_number('05586').upc.should == '718103051743'
       end
     end
+    
+    describe "usasearch:recalls:load_upc_data" do
+      before do
+        @task_name = "usasearch:recalls:load_upc_data"
+      end
+      
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when not given a file name" do
+        it "should print out an error message" do
+          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          @rake[@task_name].invoke
+        end
+      end
+      
+      context "when given a file name" do
+        before do
+          Recall.destroy_all
+          RecallDetail.destroy_all
+          @recall = Recall.create(:recall_number => 12345, :organization => 'CPSC')
+          file = <<'EOF'
+12345 765456
+34567 764756
+EOF
+          File.stub!(:open).and_return file
+        end
+        
+        it "should add the UPC value as a Recall Detail associated with the proper Recall" do
+          @rake[@task_name].invoke("filename")
+          RecallDetail.find(:all, :conditions => ['recall_id=? AND detail_type="UPC" AND detail_value="765456"', @recall.id]).should_not be_empty
+        end
+      
+        it "should not create records if the recall can not be found" do
+          @rake[@task_name].invoke("filename")
+          RecallDetail.find(:all, :conditions => ['detail_type="UPC" AND detail_value="764756"']).should be_empty
+        end
+        
+        it "should not create duplicate UPC values when run twice" do
+          @rake[@task_name].invoke("filename")
+          @rake[@task_name].invoke("filename")
+          upc_detail = RecallDetail.find(:all, :conditions => ['recall_id=? AND detail_type="UPC" AND detail_value="765456"', @recall.id])
+          upc_detail.should_not be_empty
+          upc_detail.size.should == 1
+        end
+      end
+    end 
   end
 end

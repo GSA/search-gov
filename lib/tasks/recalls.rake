@@ -57,6 +57,21 @@ namespace :usasearch do
         end
       end
     end
-
+    
+    desc 'Associate UPC symbols with recalls'
+    task :load_upc_data, :filename, :needs => :environment do |t, args|
+      if args.filename.blank?
+        RAILS_DEFAULT_LOGGER.error "Usage: rake usasearch:recalls:load_upc_data[/path/to/filename] RAILS_ENV=your_env"
+      else
+        File.open(args.filename).each do |line|
+          recall_upc = line.split
+          recall = Recall.find_by_recall_number(recall_upc[0])
+          if recall && recall.recall_details.find_by_detail_type_and_detail_value("UPC", recall_upc[1]).nil?
+            recall.recall_details << RecallDetail.new(:detail_type => "UPC", :detail_value => recall_upc[1]) 
+            recall.save!
+          end
+        end
+      end
+    end
   end
 end
