@@ -602,7 +602,7 @@ describe Recall do
       end
 
       it "should properly parse the UPC" do
-        @parsed_recall["upc"].should == '0123456789'
+        @parsed_recall["upc"].should == ['0123456789']
       end
 
       it "should properly parse the recall number" do
@@ -802,17 +802,21 @@ describe Recall do
   end
 
   describe "#upc" do
-    it "should return the value of the RecallDetail UPC if present" do
+    it "should return a list of the RecallDetail UPCs if present" do
       @recall = Recall.new(:recall_number => '12345', :y2k => 12345, :organization => 'CPSC')
       @recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '0123456789')
+      @recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '1234567890')
       @recall.save!
-      @recall.upc.should == '0123456789'
+      @recall.upc.should_not be_empty 
+      @recall.upc.size.should == 2
+      @recall.upc.first.should == '0123456789'
+      @recall.upc.last.should == '1234567890'
     end
 
-    it "should return 'UNKNOWN' if no RecallDetail is present" do
+    it "should return an empty list if no RecallDetail UPCs are present" do
       @recall = Recall.new(:recall_number => '12345', :y2k => 12345, :organization => 'CPSC')
       @recall.save!
-      @recall.upc.should == 'UNKNOWN'
+      @recall.upc.should be_empty
     end
 
     it "should return nil if organization is not CPSC" do

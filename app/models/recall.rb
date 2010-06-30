@@ -26,9 +26,8 @@ class Recall < ActiveRecord::Base
       recall.recalled_on.year unless recall.recalled_on.blank?
     end
 
-    string :upc do |recall|
-      upc = recall.upc
-      upc unless upc.blank?
+    string :upc, :multiple => true do |recall|
+      recall.upc unless recall.upc.nil?
     end
 
     # full-text search fields
@@ -252,8 +251,10 @@ class Recall < ActiveRecord::Base
 
   def upc
     if organization == 'CPSC'
-      upc_detail = recall_details.find_by_detail_type('UPC')
-      upc_detail ? upc_detail.detail_value : "UNKNOWN"
+      upc_details = recall_details.find_all_by_detail_type('UPC')
+      upc_details.collect{|detail| detail.detail_value}
+    else
+      return nil
     end
   end
 
