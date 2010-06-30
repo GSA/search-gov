@@ -1,5 +1,5 @@
-set :stages, %w(staging production production_clone labs)
-set :default_stage, "staging"
+set :stages, %w(staging production labs rs-staging rs-production)
+set :default_stage, "rs-staging"
 require 'capistrano/ext/multistage'
 
 set :application, "usasearch"
