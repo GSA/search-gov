@@ -6,9 +6,9 @@
       %li.first= link_to_unless web_search?, t(:government_web), search_path(search_params)
       %li= link_to_unless image_search?, t(:images), image_search_path(search_params)
   - if @affiliate or not english_locale? or @search.is_a?(ImageSearch)
-    = text_field :search, :query, {:size=>50, :name=>"query", :autocomplete => "off"}
+    = text_field :search, :query, {:size=>49, :name=>"query", :autocomplete => "off"}
   - else
-    = text_field :search, :query, { :size => 50, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete" }
+    = text_field :search, :query, { :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete" }
   = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]

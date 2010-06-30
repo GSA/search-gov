@@ -1,7 +1,7 @@
 !!!strict
 %html
   %head
-    %title= "USA Search"
+    %title= @title
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
     = stylesheet_link_tag 'mobile.css'
     - if is_device? 'iphone'

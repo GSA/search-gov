@@ -1,10 +1,13 @@
 class HomeController < ApplicationController
   has_mobile_fu
+
   def index
     @search = Search.new
+    @title = "USA Search"
   end
   
   def contact_form
+    @title = "USA.gov Mobile"
     if request.method == :post
       @email = params["email"]
       @message = params["message"]
@@ -13,7 +16,7 @@ class HomeController < ApplicationController
       else
         if @email =~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/
           Emailer.deliver_mobile_feedback(@email, @message)
-          flash[:notice] = "Thank you. We have received your message and will be responding soon"
+          flash[:notice] = "Thank you for contacting USA.gov. We will respond to you within two business days."
           @thank_you = true
         else
           flash[:notice] = "Email address is not valid"

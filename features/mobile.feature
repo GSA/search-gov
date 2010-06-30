@@ -106,7 +106,7 @@ Feature: Mobile Search
       And I fill in "Message" with "I love your site!"
       And I press "Submit"
       Then I should be on the mobile contact form page
-      And I should see "Thank you. We have received your message and will be responding soon"
+      And I should see "Thank you for contacting USA.gov. We will respond to you within two business days"
       And "musa.gov@mail.fedinfo.gov" should receive an email
     
     Scenario: User does not provide some information for contact form
