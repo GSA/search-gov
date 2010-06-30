@@ -11,7 +11,6 @@ class Search
   APP_ID = "A4C32FAE6F3DB386FC32ED1C4F3024742ED30906"
   SOURCES = "Spell+Web+RelatedSearch"
   USER_AGENT = "USASearch"
-  CLIENT_IP = "209.251.180.16"
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:gov OR site:mil)"
   DEFAULT_FILTER_SETTING = 'strict'
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
@@ -136,7 +135,6 @@ class Search
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Get.new(uri.request_uri)
         req["User-Agent"] = USER_AGENT
-        req["Client-IP"] = CLIENT_IP
         http.request(req)
       rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error => error
         raise BingSearchError.new(error.to_s)
