@@ -3,11 +3,11 @@ class HomeController < ApplicationController
 
   def index
     @search = Search.new
-    @title = "USA Search"
+    @title = "| Home"
   end
   
   def contact_form
-    @title = "USA.gov Mobile"
+    @title = "| Contact Form"
     if request.method == :post
       @email = params["email"]
       @message = params["message"]
