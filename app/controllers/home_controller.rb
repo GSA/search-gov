@@ -23,5 +23,9 @@ class HomeController < ApplicationController
         end
       end
     end
+    respond_to do |format|
+      format.html { render :file => File.join(RAILS_ROOT, "public", "404.html"), :status => 404 }
+      format.mobile
+    end
   end
 end

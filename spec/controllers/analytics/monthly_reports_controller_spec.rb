@@ -56,7 +56,7 @@ describe Analytics::MonthlyReportsController do
        
         it "should link to the reports on Amazon S3 using SSL" do
           %w{en es}.each do |locale|
-            AWS::S3::S3Object.should_receive(:url_for).with("#{locale}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", "usasearch-reports", :use_ssl => true).once.and_return ""
+            AWS::S3::S3Object.should_receive(:url_for).with("#{locale}_top_queries_#{Date.today.strftime('%Y%m')}.csv", "usasearch-reports", :use_ssl => true).once.and_return ""
           end
           get :index
         end

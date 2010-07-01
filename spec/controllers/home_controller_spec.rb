@@ -50,4 +50,20 @@ describe HomeController do
     end
   end
 
+  describe "#contact_form" do
+    it "should display a form in mobile mode" do
+      get :contact_form, :m => "true"
+      response.should be_success
+    end
+    
+    it "should return 404 if not in mobile mode" do
+      get :contact_form, :m => "false"
+      response.status.should == "404 Not Found"
+    end
+    
+    it "should return 404 if no mode is specified" do
+      get :contact_form
+      response.status.should == "404 Not Found"
+    end      
+  end
 end
