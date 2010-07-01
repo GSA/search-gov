@@ -2,6 +2,7 @@ set :user,        "search"
 set :deploy_to,   "/home/jwynne/#{application}"
 set :branch,      "rackspace"
 role :app, "192.168.100.164", "192.168.100.165", "192.168.100.166", "192.168.110.10"
+role :web, "192.168.100.164", "192.168.100.165", "192.168.100.166", "192.168.110.10"
 role :db,  "192.168.100.164", :primary => true
 
 before "deploy:symlink", "production_yaml_files"
