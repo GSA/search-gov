@@ -26,9 +26,6 @@ img {
   border: 0;
 }
 
-
-/*  FROM MOBILE_IPHONE.CSS */
-
 body, html, div, span, img, p, h1, h2, h3 {
     background: none;
     margin: 0;
@@ -109,12 +106,75 @@ a.arrow {
   background: url(/m/i/iPhoneArrow.png) top right no-repeat;
 }
 
-.mobileSearchTextBox{
-	padding-left: 8px;
-}
-	
-.dvSearchBtn{
-	margin: 4px 0 0 0;
+
+/* existing styles from mobile.css */
+#homeNav{
+  margin: 0 0 0 35px;
+  padding: 0 0 40px 0;
+  color: #636363;
+  font-size: .9em;
+  width: 290px;
 }
 
-/* END FROM MOBILE_IPHONE.CSS */
+#searchHome{
+  padding:0 10px 25px 10px;
+  width: 290px;
+}
+.search{
+  border-bottom: 1px solid #d8d8d8;
+  border-top: 1px solid  #d8d8d8;
+  background-image:url('/m/i/bg_searchResultsSearchBox.png');
+  height: 48px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+  .searchBoxContainer{
+    padding: 6px 10px 5px 10px;
+    width: 290px;
+  }
+  .dvSearchBox{
+      float: left;
+      width: 211px;
+      margin: 0 0 0 10px;
+  }
+  .dvSearchBox.results{
+      float: left;
+      width: 203px;
+      margin: 0 0 0 18px;
+  }
+    .mobileSearchTextBox{
+    	padding: 6px 0 0 8px;
+    }
+    .mobileSearchTextBoxResultsPage{
+      padding: 6px 0 0 8px;
+    }
+  .dvSearchBtn{
+  	margin: -1px 0 0 -2px;
+  }
+  .dvSearchClose {
+    display: inline-block;
+    margin: 0;
+    float: right;
+    padding: 0;
+    padding-top: 3px;
+    width: 32px;
+    height: 27px;
+    text-align: center;
+    border-top: 1px solid #4B6AC1;
+    border-bottom: 1px solid #112A85;
+  }
+  .dvSearchClose.results {
+    background-color: #FFF;
+    display: inline-block;
+    margin: 0;
+    float: right;
+    padding: 0;
+    padding-top: 3px;
+    width: 32px;
+    height: 27px;
+    text-align: center;
+    border-top: 1px solid #D8D8D8;
+    border-bottom: 1px solid #D8D8D8;
+  }
+
