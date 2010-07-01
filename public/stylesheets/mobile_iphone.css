@@ -98,5 +98,32 @@ a.arrow {
 	margin: 4px 0 0 0;
 }
 
+/* existing styles from mobile.css */
+.dvSearchClose { 
+  display: inline-block;
+  margin-top: 4px;
+  float: right;
+  padding: 0;
+  padding-top: 3px;
+  width: 32px;
+  height: 27px;
+  text-align: center;
+  border-top: 1px solid #4B6AC1;
+  border-bottom: 1px solid #112A85;
+}
+
+.dvSearchClose.results {
+  background-color: #FFF;
+  display: inline-block;
+  margin-top: 4px;
+  float: right;
+  padding: 0;
+  padding-top: 3px;
+  width: 32px;
+  height: 27px;
+  text-align: center;
+  border-top: 1px solid #D8D8D8;
+  border-bottom: 1px solid #D8D8D8;
+}
 
 /* end new CSS - RCR */
