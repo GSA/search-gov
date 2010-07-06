@@ -2,7 +2,7 @@
   = link_to image_tag("/m/i/logo_mobile.png"), root_path(:locale => I18n.locale.to_s, :m => true)
 
 #searchHome.dvCenter
-  = render :partial => "shared/search"
+  = render :partial => "shared/search" if @show_searchbox
 
 #homeNav.dvCenter
   .navHeader
