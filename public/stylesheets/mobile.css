@@ -22,7 +22,12 @@ a {
 }
 
 hr {
-    display: none;
+    background: #d8d8d8;
+    border: 0;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 h1 {
@@ -47,14 +52,13 @@ h4{
 
 div.group {
     background: #fff;
-    -webkit-border-radius: 8px;
-    margin: 14px 0;
+    margin: 0 0 14px 0;
 }
 
 div.row {
     border-bottom: solid 1px #d8d8d8;
     padding: 14px 5px 16px 5px;
-	font-size: 13px;
+	  font-size: 13px;
 }
 
 div.row h3 {
