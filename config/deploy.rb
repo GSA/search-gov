@@ -20,18 +20,12 @@ namespace :deploy do
 end
 
 before "deploy:symlink", "install_gems"
-before "deploy:symlink", "fix_permissions"
 
 desc "Installs gems as specified in environment.rb"
 task :install_gems do
   rake = fetch(:rake, 'rake')
   rails_env = fetch(:rails_env, 'production')
   run "cd #{release_path}; sudo #{rake} RAILS_ENV=#{rails_env} gems:install"
-end
-
-desc "Make releases directory readable/writable (+rx) to workaround overly restrictive default umask"
-task :fix_permissions do
-  run "cd #{release_path}; sudo chmod -R a+rx ."
 end
 
 Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|
