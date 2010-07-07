@@ -19,10 +19,6 @@ namespace :usasearch do
       end
       AWS::S3::S3Object.store(filename, csv_string, REPORTS_AWS_BUCKET_NAME)
     end
-    
-    def list_affiliate_names(start_time, end_time)
-      Query.find(:all, :select => "DISTINCT affiliate", :conditions => ["timestamp between ? and ? AND affiliate<>?", start_time, end_time, 'usasearch.gov']).collect{|query| query.affiliate}
-    end
 
     desc "Generate Top Queries reports for the month of the date specified"
     task :generate_monthly_top_queries, :day, :generate_usasearch, :generate_affiliates, :needs => :environment do |t, args|
@@ -33,9 +29,9 @@ namespace :usasearch do
         top_queries = Query.top_queries(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 20000: 4000, true)
         generate_report(top_queries, generate_report_filename(locale, day, '%Y%m'))
       end if args.generate_usasearch
-      list_affiliate_names(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day).each do |affiliate_name|
-        top_queries = Query.top_queries(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, I18n.default_locale.to_s, affiliate_name, 1000, true)
-        generate_report(top_queries, generate_report_filename(affiliate_name, day, '%Y%m'))  
+      Affiliate.all.each do |affiliate|
+        top_queries = Query.top_queries(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, I18n.default_locale.to_s, affiliate.name, 1000, true)
+        generate_report(top_queries, generate_report_filename(affiliate.name, day, '%Y%m'))  
       end if args.generate_affiliates
     end
     
@@ -48,9 +44,9 @@ namespace :usasearch do
         top_queries = Query.top_queries(day.beginning_of_day, day.end_of_day, locale, 'usasearch.gov', 1000, true)
         generate_report(top_queries, generate_report_filename(locale, day, '%Y%m%d'))
       end if args.generate_usasearch
-      list_affiliate_names(day.beginning_of_day, day.end_of_day).each do |affiliate_name|
-        top_queries = Query.top_queries(day.beginning_of_day, day.end_of_day, I18n.default_locale.to_s, affiliate_name, 1000, true)
-        generate_report(top_queries, generate_report_filename(affiliate_name, day, '%Y%m%d'))
+      Affiliate.all.each do |affiliate|
+        top_queries = Query.top_queries(day.beginning_of_day, day.end_of_day, I18n.default_locale.to_s, affiliate.name, 1000, true)
+        generate_report(top_queries, generate_report_filename(affiliate.name, day, '%Y%m%d'))
       end if args.generate_affiliates
     end
     

@@ -46,16 +46,18 @@ describe "Report generation rake tasks" do
       
       context "report generation" do
         before do
-          @affiliate_names = ['affiliate1', 'affiliate2']
+          Affiliate.delete_all
+          Affiliate.create(:name => 'affiliate1')
+          Affiliate.create(:name => 'affiliate2')
+          Affiliate.all.size.should == 2
         end
         
         it "should default to yesterday, and produce reports for both English and Spanish locales (20K/4K results respectively), as well as all affiliates" do
           %w{en es}.each do |locale|
             Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 20000 : 4000, true).once.and_return []
           end
-          Query.stub!(:find).with(:all, :select => "DISTINCT affiliate", :conditions => ["timestamp between ? and ? AND affiliate<>?", Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, 'usasearch.gov']).and_return [Query.new(:affiliate => 'affiliate1'), Query.new(:affiliate => 'affiliate2')]
-          @affiliate_names.each do |affiliate_name|
-            Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, 'en', affiliate_name, 1000, true).once.and_return []
+          Affiliate.all.each do |affiliate|
+            Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, 'en', affiliate.name, 1000, true).once.and_return []
           end
           @rake[@task_name].invoke()
         end
@@ -65,18 +67,16 @@ describe "Report generation rake tasks" do
           %w{en es}.each do |locale|
             Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 20000 : 4000, true).once.and_return []
           end
-          Query.stub!(:find).with(:all, :select => "DISTINCT affiliate", :conditions => ["timestamp between ? and ? AND affiliate<>?", day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'usasearch.gov']).and_return [Query.new(:affiliate => 'affiliate1'), Query.new(:affiliate => 'affiliate2')]
-          @affiliate_names.each do |affiliate_name|
-            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'en', affiliate_name, 1000, true).once.and_return []
+          Affiliate.all.each do |affiliate|
+            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'en', affiliate.name, 1000, true).once.and_return []
           end
           @rake[@task_name].invoke(day.to_s)        
         end
       
         it "should skip usasearch.gov reports when the generate_usasearch parameter is set to false" do
           day = Date.yesterday
-          Query.stub!(:find).with(:all, :select => "DISTINCT affiliate", :conditions => ["timestamp between ? and ? AND affiliate<>?", day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'usasearch.gov']).and_return [Query.new(:affiliate => 'affiliate1'), Query.new(:affiliate => 'affiliate2')]
-          @affiliate_names.each do |affiliate_name|
-            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'en', affiliate_name, 1000, true).once.and_return []
+          Affiliate.all.each do |affiliate|
+            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'en', affiliate.name, 1000, true).once.and_return []
           end
           @rake[@task_name].invoke(day.to_s, false)
         end
@@ -93,10 +93,9 @@ describe "Report generation rake tasks" do
           %w{en es}.each do |locale|
             AWS::S3::S3Object.should_receive(:store).with("#{locale}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", "Query,Count\n", 'usasearch-reports')
           end
-          Query.stub!(:find).with(:all, :select => "DISTINCT affiliate", :conditions => ["timestamp between ? and ? AND affiliate<>?", Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, 'usasearch.gov']).and_return [Query.new(:affiliate => 'affiliate1'), Query.new(:affiliate => 'affiliate2')]
           Query.stub!(:top_queries).and_return []
-          @affiliate_names.each do |affiliate_name|
-            AWS::S3::S3Object.should_receive(:store).with("#{affiliate_name}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", "Query,Count\n", 'usasearch-reports')
+          Affiliate.all.each do |affiliate|
+            AWS::S3::S3Object.should_receive(:store).with("#{affiliate.name}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", "Query,Count\n", 'usasearch-reports')
           end
           @rake[@task_name].invoke()
         end
@@ -139,16 +138,18 @@ describe "Report generation rake tasks" do
       
       context "report generation" do
         before do
-          @affiliate_names = ['affiliate1', 'affiliate2']
+          Affiliate.delete_all
+          Affiliate.create(:name => 'affiliate1')
+          Affiliate.create(:name => 'affiliate2')
+          Affiliate.all.size.should == 2
         end
         
         it "should default to yesterday, and produce reports for both English and Spanish locales (1k each), as well as all affiliates" do
           %w{en es}.each do |locale|
             Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_day, Date.yesterday.end_of_day, locale, 'usasearch.gov', 1000, true).once.and_return []
           end
-          Query.stub!(:find).with(:all, :select => "DISTINCT affiliate", :conditions => ["timestamp between ? and ? AND affiliate<>?", Date.yesterday.beginning_of_day, Date.yesterday.end_of_day, 'usasearch.gov']).and_return [Query.new(:affiliate => 'affiliate1'), Query.new(:affiliate => 'affiliate2')]
-          @affiliate_names.each do |affiliate_name|
-            Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_day, Date.yesterday.end_of_day, 'en', affiliate_name, 1000, true).once.and_return []
+          Affiliate.all.each do |affiliate|
+            Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_day, Date.yesterday.end_of_day, 'en', affiliate.name, 1000, true).once.and_return []
           end
           @rake[@task_name].invoke()
         end
@@ -158,18 +159,16 @@ describe "Report generation rake tasks" do
           %w{en es}.each do |locale|
             Query.should_receive(:top_queries).with(day.beginning_of_day, day.end_of_day, locale, 'usasearch.gov', 1000, true).once.and_return []
           end
-          Query.stub!(:find).with(:all, :select => "DISTINCT affiliate", :conditions => ["timestamp between ? and ? AND affiliate<>?", day.beginning_of_day, day.end_of_day, 'usasearch.gov']).and_return [Query.new(:affiliate => 'affiliate1'), Query.new(:affiliate => 'affiliate2')]
-          @affiliate_names.each do |affiliate_name|
-            Query.should_receive(:top_queries).with(day.beginning_of_day, day.end_of_day, 'en', affiliate_name, 1000, true).once.and_return []
+          Affiliate.all.each do |affiliate|
+            Query.should_receive(:top_queries).with(day.beginning_of_day, day.end_of_day, 'en', affiliate.name, 1000, true).once.and_return []
           end
           @rake[@task_name].invoke(day.to_s)        
         end
       
         it "should skip usasearch.gov reports when the generate_usasearch parameter is set to false" do
           day = Date.yesterday
-          Query.stub!(:find).with(:all, :select => "DISTINCT affiliate", :conditions => ["timestamp between ? and ? AND affiliate<>?", day.beginning_of_day, day.end_of_day, 'usasearch.gov']).and_return [Query.new(:affiliate => 'affiliate1'), Query.new(:affiliate => 'affiliate2')]
-          @affiliate_names.each do |affiliate_name|
-            Query.should_receive(:top_queries).with(day.beginning_of_day, day.end_of_day, 'en', affiliate_name, 1000, true).once.and_return []
+          Affiliate.all.each do |affiliate|
+            Query.should_receive(:top_queries).with(day.beginning_of_day, day.end_of_day, 'en', affiliate.name, 1000, true).once.and_return []
           end
           @rake[@task_name].invoke(day.to_s, false)
         end
@@ -186,10 +185,9 @@ describe "Report generation rake tasks" do
           %w{en es}.each do |locale|
             AWS::S3::S3Object.should_receive(:store).with("#{locale}_top_queries_#{Date.yesterday.strftime('%Y%m%d')}.csv", "Query,Count\n", 'usasearch-reports')
           end
-          Query.stub!(:find).with(:all, :select => "DISTINCT affiliate", :conditions => ["timestamp between ? and ? AND affiliate<>?", Date.yesterday.beginning_of_day, Date.yesterday.end_of_day, 'usasearch.gov']).and_return [Query.new(:affiliate => 'affiliate1'), Query.new(:affiliate => 'affiliate2')]
           Query.stub!(:top_queries).and_return []
-          @affiliate_names.each do |affiliate_name|
-            AWS::S3::S3Object.should_receive(:store).with("#{affiliate_name}_top_queries_#{Date.yesterday.strftime('%Y%m%d')}.csv", "Query,Count\n", 'usasearch-reports')
+          Affiliate.all.each do |affiliate|
+            AWS::S3::S3Object.should_receive(:store).with("#{affiliate.name}_top_queries_#{Date.yesterday.strftime('%Y%m%d')}.csv", "Query,Count\n", 'usasearch-reports')
           end
           @rake[@task_name].invoke()
         end
