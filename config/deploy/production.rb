@@ -1,9 +1,9 @@
-set :user,        "web"
-set :deploy_to,   "/var/www/#{application}"
-set :branch, "production"
-role :app, "10.153.9.213", "10.153.9.211"
-role :web, "10.153.9.213", "10.153.9.211"
-role :db,  "10.153.9.213", :primary => true
+set :user,        "search"
+set :deploy_to,   "/home/jwynne/#{application}"
+set :branch,      "production"
+role :app, "192.168.100.164", "192.168.100.165", "192.168.100.166", "192.168.110.10", "192.168.100.161", "192.168.110.11"
+role :web, "192.168.100.164", "192.168.100.165", "192.168.100.166", "192.168.110.10", "192.168.100.161", "192.168.110.11"
+role :db,  "192.168.100.161", :primary => true
 
 before "deploy:symlink", "production_yaml_files"
 
