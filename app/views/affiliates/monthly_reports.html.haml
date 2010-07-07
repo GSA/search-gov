@@ -1,5 +1,5 @@
 #h1
-  Monthly Usage
+  = "Monthly Usage for #{@affiliate.name}"
 
 - form_tag(affiliate_analytics_monthly_reports_path(@affiliate), :method => :get) do
   = select_date @report_date, { :discard_day => true, :start_year => 2010, :end_year => @today.year }
@@ -19,3 +19,7 @@
         Total Queries: #{number_with_delimiter @monthly_totals[@affiliate.name][:total_queries]}
       %li
         Total Click Throughs: #{number_with_delimiter @monthly_totals[@affiliate.name][:total_clicks]}
+  %p
+    = "Download top queries for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year} ("
+    = link_to "csv", AWS::S3::S3Object.url_for(monthly_report_filename(@affiliate.name, @report_date), REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
+    )

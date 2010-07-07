@@ -1,4 +1,5 @@
-body, div, p, h1, h2, h3, h4, a, span, ul, li {
+body, html, div, p, h1, h2, h3, h4, a, span, ul, li {
+  background: none;
   border: #ffffff none 0;
   color: #333;
   font-family: Arial;
@@ -6,6 +7,90 @@ body, div, p, h1, h2, h3, h4, a, span, ul, li {
   margin: 0;
   padding: 0;
 }
+
+body {
+    font-family: "Helvetica", sans-serif;
+    font-size: 17px;
+    font-weight: normal;
+    word-wrap: break-word;
+    padding-bottom: 16px;
+}
+
+a {
+  color: #333399;
+  text-decoration: none;
+}
+
+hr {
+    display: none;
+}
+
+h1 {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    padding: 0 10px 0 10px;
+    font-size: 16px;
+	  color: #24496b;
+	  font-weight: bold;
+}
+
+h2 {
+  margin: 0;
+  color: #785629;
+}
+
+h4{
+  padding: 5px 10px 0 10px;
+  font-size: 16px;
+  color: #24496b;
+  font-weight: bold;
+}
+
+div.group {
+    background: #fff;
+    -webkit-border-radius: 8px;
+    margin: 14px 0;
+}
+
+div.row {
+    border-bottom: solid 1px #d8d8d8;
+    padding: 14px 5px 16px 5px;
+	font-size: 13px;
+}
+
+div.row h3 {
+    margin-top: 0;
+    color: #336699;
+    font-weight: normal;
+}
+
+div.group > div.row:last-child {
+    border: none;
+}
+
+
+table {
+    font-size: 0.5em;
+}
+
+p, h1, h2, h3, h4, table {
+    margin: 10px 0;
+}
+
+.row h1 {
+    padding: 0;
+}
+
+div.auto_complete ul li {
+  text-align: left
+}
+
+a.arrow {
+  padding-right: 30px;
+  background: url(/m/i/iPhoneArrow.png) top right no-repeat;
+}
+
+/*end taken from mobile_iphone.css*/
+
 
 .h4{
   padding: 10px 0;
@@ -77,12 +162,11 @@ img{
 
   .dvSearchClose {
     display: inline-block;
-    margin-top: 4px;
+    margin-top: 1px;
     float: right;
     padding: 0;
-    padding-top: 3px;
     width: 32px;
-    height: 27px;
+    height: 30px;
     text-align: center;
     border-top: 1px solid #4B6AC1;
     border-bottom: 1px solid #112A85;
@@ -91,12 +175,11 @@ img{
   .dvSearchClose.results {
     background-color: #FFF;
     display: inline-block;
-    margin-top: 4px;
+    margin-top: 1px;
     float: right;
     padding: 0;
-    padding-top: 3px;
     width: 32px;
-    height: 27px;
+    height: 30px;
     text-align: center;
     border-top: 1px solid #D8D8D8;
     border-bottom: 1px solid #D8D8D8;
@@ -247,7 +330,7 @@ img{
 }
 
 .pad15{
-	padding-left:: 15px;
+	padding-left: 15px;
   padding-right: 15px;
 }
 

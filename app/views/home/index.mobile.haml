@@ -2,21 +2,22 @@
   = link_to image_tag("/m/i/logo_mobile.png"), root_path(:locale => I18n.locale.to_s, :m => true)
 
 #searchHome.dvCenter
-  = render :partial => "shared/search"
+  = render :partial => "shared/search" if @show_searchbox
 
 #homeNav.dvCenter
   .navHeader
     Contact your Government
   .navBodyItem
+    .navFloatRight
+      >
     = link_to "Call 1 (800) FED-INFO", "tel:+1-800-333-4636", :class => "mobileNavLink"  
-    .navFloatRight
-      >
   .navBodyItem
+    .navFloatRight
+      >
     = link_to "E-mail Us", contact_form_path(:m => true, :locale => I18n.locale.to_s), :class => "mobileNavLink"
-    .navFloatRight
-      >
   .navFooter
-    = link_to "Visit Our Blog", "http://m.info.gov/6036&t=f9ceb3ded94727d482bd7f5d31ea7904", :class => "mobileNavLink"
     .navFloatRight
       >
+    = link_to "Visit Our Blog", "http://m.info.gov/6036&t=f9ceb3ded94727d482bd7f5d31ea7904", :class => "mobileNavLink"
+    
 

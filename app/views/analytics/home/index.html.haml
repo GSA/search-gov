@@ -33,4 +33,5 @@
   
 #daily_top_queries
   = "Download CSV of top 1000 queries for #{ @day_being_shown.to_s } (#{ link_to "English", AWS::S3::S3Object.url_for(daily_report_filename(I18n.default_locale.to_s, @day_being_shown), REPORTS_AWS_BUCKET_NAME, :use_ssl => true) }, #{ link_to 'Spanish', AWS::S3::S3Object.url_for(daily_report_filename(other_locale_str, @day_being_shown), REPORTS_AWS_BUCKET_NAME, :use_ssl => true) })" unless @day_being_shown.nil?
+
   

@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   include SslRequirement
   skip_before_filter :ensure_proper_protocol unless Rails.env.production?
   before_filter :set_locale
+  before_filter :show_searchbox
   helper :all
   helper_method :current_user_session, :current_user
   filter_parameter_logging :password, :password_confirmation
@@ -68,5 +69,13 @@ class ApplicationController < ActionController::Base
     redirect_to(session[:return_to] || default)
     session[:return_to] = nil
   end
-
+  
+  def establish_aws_connection
+    AWS::S3::Base.establish_connection!(:access_key_id => AWS_ACCESS_KEY_ID, :secret_access_key => AWS_SECRET_ACCESS_KEY)
+  end
+  
+  def show_searchbox
+    @show_searchbox = params[:show_searchbox].present? && params[:show_searchbox] == "false" ? false : true
+  end
+  
 end
