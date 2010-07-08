@@ -1,6 +1,6 @@
 = spelling_suggestion(search, @affiliate) if (search)
 - if search.results.present?
-  %hr
+  %hr.topresults
   - if (search && search.recalls && search.recalls.total > 0)
     .group{:id => "recalls"}
       %h1 Recent Recalls
