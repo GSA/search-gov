@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+             xmlns="http://research.sun.com/wadl/2006/10" 
+             xsi:schemaLocation="http://research.sun.com/wadl/2006/10">
+  <resources base="http://search.usa.gov/">
+    <resource path="search">
+      <resource path="images">
+        <method name="GET">
+          <request>
+            <param name="query" type="xsd:string" style="query">
+              <doc xml:lang="en" title="query (Sample Value: obama)">Estimated Type (supposed): [xsd:string]</doc>
+            </param>
+            <param name="page" type="xsd:integer" style="query">
+              <doc xml:lang="en" title="page (Sample Value: 1)">Estimated Type (supposed): [xsd:integer]</doc>
+            </param>
+            <param href="#formatParam"/>
+          </request>
+        </method>
+      </resource>
+      <resource path="recalls">
+        <method name="GET">
+          <request>
+            <param name="start_date" type="xsd:date" style="query">
+              <doc xml:lang="en" title="start_date (Sample Value: 2010-06-01)">Estimated Type (sure): [xsd:date]</doc>
+            </param>
+            <param name="end_date" type="xsd:date" style="query">
+              <doc xml:lang="en" title="end_date (Sample Value: 2010-06-01)">Estimated Type (sure): [xsd:date]</doc>
+            </param>
+            <param name="upc" type="xsd:integer" style="query">
+              <doc xml:lang="en" title="upc (Sample Value: 12345)">Estimated Type (sure): [xsd:integer]</doc>
+            </param>
+            <param name="sort" type="xsd:string" style="query">
+              <doc xml:lang="en" title="sort (Sample Value: up)">Estimated Type (supposed): [xsd:string]</doc>
+            </param>
+            <param name="code" type="xsd:string" style="query">
+              <doc xml:lang="en" title="code (Sample Value: V)">Estimated Type (supposed): [xsd:string]</doc>
+            </param>
+            <param name="organization" type="xsd:integer" style="query">
+              <doc xml:lang="en" title="organization (Sample Value: 123)">Estimated Type (sure): [xsd:integer]</doc>
+            </param>
+            <param name="model" type="xsd:string" style="query">
+              <doc xml:lang="en" title="model (Sample Value: camry)">Estimated Type (supposed): [xsd:string]</doc>
+            </param>
+            <param name="make" type="xsd:string" style="query">
+              <doc xml:lang="en" title="make (Sample Value: toyota)">Estimated Type (supposed): [xsd:string]</doc>
+            </param>
+            <param name="year" type="xsd:integer" style="query">
+              <doc xml:lang="en" title="year (Sample Value: 2010)">Estimated Type (sure): [xsd:integer]</doc>
+            </param>
+            <param name="food_type" type="xsd:string" style="query">
+              <doc xml:lang="en" title="food_type (Sample Value: drug)">Estimated Type (supposed): [xsd:string]</doc>
+            </param>
+          </request>
+        </method>
+      </resource>
+      <method name="GET">
+        <request>
+          <param name="input-form" type="xsd:string" style="query">
+            <doc xml:lang="en" title="input-form (Sample Value: advanced)">Estimated Type (supposed): [xsd:string]</doc>
+          </param>
+          <param name="query" type="xsd:string" style="query">
+            <doc xml:lang="en" title="query">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="query-limit" type="xsd:string" style="query">
+            <doc xml:lang="en" title="query-limit">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="query-quote" type="xsd:string" style="query">
+            <doc xml:lang="en" title="query-quote">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="query-quote-limit" type="xsd:string" style="query">
+            <doc xml:lang="en" title="query-quote-limit">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="query-or" type="xsd:string" style="query">
+            <doc xml:lang="en" title="query-or">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="query-or-limit" type="xsd:string" style="query">
+            <doc xml:lang="en" title="query-or-limit">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="query-not" type="xsd:string" style="query">
+            <doc xml:lang="en" title="query-not">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="query-not-limit" type="xsd:string" style="query">
+            <doc xml:lang="en" title="query-not-limit">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="filetype" type="xsd:string" style="query">
+            <doc xml:lang="en" title="filetype">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="sitelimit" type="xsd:string" style="query">
+            <doc xml:lang="en" title="sitelimit">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="siteexclude" type="xsd:string" style="query">
+            <doc xml:lang="en" title="siteexclude">Estimated Type (manual): [xsd:string]</doc>
+          </param>
+          <param name="fedstates" type="xsd:string" style="query">
+            <doc xml:lang="en" title="fedstates (Sample Value: all)">Estimated Type (supposed): [xsd:string]</doc>
+          </param>
+          <param name="per-page" type="xsd:integer" style="query">
+            <doc xml:lang="en" title="per-page (Sample Value: 10)">Estimated Type (sure): [xsd:integer]</doc>
+          </param>
+          <param name="filter" type="xsd:string" style="query">
+            <doc xml:lang="en" title="filter (Sample Value: strict)">Estimated Type (supposed): [xsd:string]</doc>
+          </param>
+          <param href="#formatParam"/>
+        </request>
+      </method>
+    </resource>
+  </resources>
+  <param name="format" type="xsd:string" style="query" id="formatParam">
+    <doc xml:lang="en" title="format (Sample Value: json)">Estimated Type (supposed): [xsd:string]</doc>
+  </param>
+</application>
