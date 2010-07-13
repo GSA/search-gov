@@ -1,5 +1,5 @@
 class Analytics::HomeController < Analytics::AnalyticsController
-  before_filter :day_being_show, :establish_aws_connection
+  before_filter :day_being_shown, :establish_aws_connection
   
   def index
     @num_results_qas = (request["num_results_qas"] || "10").to_i
@@ -14,7 +14,7 @@ class Analytics::HomeController < Analytics::AnalyticsController
   
   private
   
-  def day_being_show
+  def day_being_shown
     @day_being_shown = request["day"].nil? ? DailyQueryStat.most_recent_populated_date : request["day"].to_date
   end
 end

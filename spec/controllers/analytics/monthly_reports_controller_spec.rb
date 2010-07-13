@@ -54,11 +54,50 @@ describe Analytics::MonthlyReportsController do
           get :index
         end
        
-        it "should link to the reports on Amazon S3 using SSL" do
+        it "should link to the reports on Amazon S3 using SSL if they exist" do
           %w{en es}.each do |locale|
-            AWS::S3::S3Object.should_receive(:url_for).with("#{locale}_top_queries_#{Date.today.strftime('%Y%m')}.csv", "usasearch-reports", :use_ssl => true).once.and_return ""
+            filename = "#{locale}_top_queries_#{Date.today.strftime('%Y%m')}.csv"
+            AWS::S3::S3Object.should_receive(:exists?).with(filename, REPORTS_AWS_BUCKET_NAME).and_return true
+            AWS::S3::S3Object.should_receive(:url_for).with(filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
           end
           get :index
+          response.body.should contain(/Download top 20,000 queries for/)
+          response.body.should contain(/\(English, Spanish\)/)
+        end
+        
+        it "should link to the English report only if the English exists, but the Spanish does not" do
+          english_filename = "en_top_queries_#{Date.today.strftime('%Y%m')}.csv"
+          AWS::S3::S3Object.should_receive(:exists?).with(english_filename, REPORTS_AWS_BUCKET_NAME).and_return true
+          AWS::S3::S3Object.should_not_receive(:url_for).with(english_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
+          spanish_filename = "es_top_queries_#{Date.today.strftime('%Y%m')}.csv"
+          AWS::S3::S3Object.should_receive(:exists?).with(spanish_filename, REPORTS_AWS_BUCKET_NAME).and_return false
+          AWS::S3::S3Object.should_not_receive(:url_for).with(spanish_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
+          get :index
+          response.body.should contain(/Download top 20,000 queries for/)
+          response.body.should contain(/\(English\)/)
+        end
+        
+        it "should link to the Spanish report only if the Spanish exists, but the English does not" do
+          english_filename = "en_top_queries_#{Date.today.strftime('%Y%m')}.csv"
+          AWS::S3::S3Object.should_receive(:exists?).with(english_filename, REPORTS_AWS_BUCKET_NAME).and_return false
+          AWS::S3::S3Object.should_not_receive(:url_for).with(english_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
+          spanish_filename = "es_top_queries_#{Date.today.strftime('%Y%m')}.csv"
+          AWS::S3::S3Object.should_receive(:exists?).with(spanish_filename, REPORTS_AWS_BUCKET_NAME).and_return true
+          AWS::S3::S3Object.should_receive(:url_for).with(spanish_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
+          get :index
+          response.body.should contain(/Download top 20,000 queries for/)
+          response.body.should contain(/\(Spanish\)/)
+        end
+        
+        it "should not link to the reports if both don't exist" do
+          %w{en es}.each do |locale|
+            filename = "#{locale}_top_queries_#{Date.today.strftime('%Y%m')}.csv"
+            AWS::S3::S3Object.should_receive(:exists?).with(filename, REPORTS_AWS_BUCKET_NAME).and_return false
+            AWS::S3::S3Object.should_not_receive(:url_for).with(filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
+          end
+          get :index
+          response.body.should_not contain(/Download top 20,000 queries for/)
+          response.body.should_not contain(/\(English, Spanish\)/)          
         end
       end
     end

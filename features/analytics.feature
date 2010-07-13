@@ -99,13 +99,3 @@ Feature: Analytics Homepage
     When I follow "FAQ"
     Then I should be on the FAQ page
     And I should see "Frequently Asked Questions about Analytics"
-    
-  Scenario: List of top queries for English and Spanish
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist for yesterday:
-    | query                       | times   |
-    | obama                       | 10000   |
-    And I am on the analytics homepage
-    Then I should see the download prompt for yesterday
-    And I should see "English"
-    And I should see "Spanish"
