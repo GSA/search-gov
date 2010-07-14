@@ -1,4 +1,5 @@
 class SearchesController < ApplicationController
+  skip_before_filter :verify_authenticity_token
   before_filter :handle_old_advanced_form, :only => [ :index ]
   before_filter :grab_format
   before_filter :set_search_options
@@ -104,5 +105,5 @@ class SearchesController < ApplicationController
   def is_advanced_search?
     params[:action] == "advanced"
   end
-  
+
 end
