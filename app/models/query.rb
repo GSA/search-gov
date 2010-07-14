@@ -9,6 +9,6 @@ class Query < ActiveRecord::Base
   EXCLUDE_BOTS_CLAUSE = "AND (is_bot=false OR ISNULL(is_bot))"
   
   def self.top_queries(start_time, end_time, locale = 'en', affiliate = 'usasearch.gov', result_count = 20000, exclude_bots = true)
-    Query.find(:all, :select => "DISTINCT query, count(*) AS total", :conditions => ["timestamp BETWEEN ? AND ? AND affiliate=? AND locale=? AND query NOT IN (?) AND ipaddr NOT IN (?) #{ exclude_bots ? EXCLUDE_BOTS_CLAUSE : "" }", start_time, end_time, affiliate, locale, DEFAULT_EXCLUDED_QUERIES, DEFAULT_EXCLUDED_IPADDRESSES], :group => 'query', :order => 'total desc', :limit => result_count)
+    Query.find(:all, :select => "DISTINCT query, count(*) AS total", :conditions => ["timestamp BETWEEN ? AND ? AND affiliate=? AND locale=? AND query NOT IN (?) AND ipaddr NOT IN (?) #{ exclude_bots ? EXCLUDE_BOTS_CLAUSE : "" }", start_time, end_time, affiliate, locale, DEFAULT_EXCLUDED_QUERIES, DEFAULT_EXCLUDED_IPADDRESSES], :joins => 'FORCE INDEX (timestamp)', :group => 'query', :order => 'total desc', :limit => result_count)
   end
 end
