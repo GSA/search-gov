@@ -93,9 +93,6 @@ a.arrow {
   background: url(/m/i/iPhoneArrow.png) top right no-repeat;
 }
 
-/*end taken from mobile_iphone.css*/
-
-
 .h4{
   padding: 10px 0;
 }
@@ -161,9 +158,10 @@ img{
 
   .dvSearchBox{
     float: left;
-    width: 221px;
+    width: 253px;
   }
 
+/* removed temporarily until sayt X is fixed for jquery
   .dvSearchClose {
     display: inline-block;
     margin-top: 1px;
@@ -195,6 +193,7 @@ img{
     margin: 0;
     padding: 0;
   }
+*/
 
     .mobileSearchTextBox{
       background-image:url('/m/i/textBoxSkin.png');
@@ -205,6 +204,8 @@ img{
       height: 32px;
       padding-left: 15px;
       width: 213px;
+      
+      width: 245px;
     }
 
     .mobileSearchTextBoxResultsPage{
@@ -217,12 +218,15 @@ img{
       height: 32px;
       padding-left: 15px;
       width: 205px;
+      
+      width: 237px;
     }
 
   .dvSearchBtn{
     float: right;
-    margin: 1px 0 0 0;
+    margin: 1px 0 0 -0;
     width: 37px;
+    height: 32px;
   }
 
 #homeNav{

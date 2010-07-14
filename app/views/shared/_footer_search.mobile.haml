@@ -4,7 +4,7 @@
   .search
     .searchBoxContainer.dvCenter
       .dvSearchBox.results
-        = unescaped_text_field_with_auto_complete :search_bottom, :query_bottom, {:name=>"query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage"}, {:url=> {:controller => "searches", :action => "auto_complete_for_search_query"}, :method=> :get, :min_chars => 2, :after_update_element => "function(element,value){ element.parentNode.submit(value) }", :frequency => 0.1 }
+        = text_field :search, :query, { :name => "query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage usagov-search-autocomplete" }
       .dvSearchBtn.results
         = image_submit_tag "/m/i/btnSearchSkin_ResultsPage.png"
       .dvSearchClose.results
