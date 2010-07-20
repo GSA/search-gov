@@ -25,16 +25,15 @@
  * See FCKConfig.TemplatesXmlPath in the configuration file.
 -->
 <Templates imagesBasePath="fck_template/images/">
-	<Template title="Image left (with high title)" image="template1.gif">
+	<Template title="1 column - bullets only" image="template1.gif">
 		<Html>
 			<![CDATA[
 <table class="spotlight" border="0">
 <tbody>
 <tr>
-<td colspan="2"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
+<td style="font-size:16px;"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
 </tr>
 <tr>
-<td style="width:50px;"><img style="float: right;" src="http://www.webweaver.nu/clipart/img/nature/dogs/dalmation.jpg" alt="Photo of barney" /></td>
 <td style="vertical-align: top;">
 <ul>
 <li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
@@ -48,15 +47,16 @@
 			]]>
 		</Html>
 	</Template>
-	<Template title="Title with bullets - NO IMAGE" image="template1.gif">
+	<Template title="2 column - image with bullets" image="template1.gif">
 		<Html>
 			<![CDATA[
 <table class="spotlight" border="0">
 <tbody>
 <tr>
-<td><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
+<td colspan="2" style="font-size:16px;"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
 </tr>
 <tr>
+<td style="width:50px;"><img style="float: right;" src="http://www.webweaver.nu/clipart/img/nature/dogs/dalmation.jpg" alt="Photo of barney" /></td>
 <td style="vertical-align: top;">
 <ul>
 <li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
@@ -76,7 +76,7 @@
       <table class="spotlight" border="0">
           <tbody>
               <tr>
-                  <td colspan="3"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
+                  <td colspan="3" style="font-size:16px;"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
               </tr>
               <tr>
                   <td style="vertical-align: top;">
@@ -106,7 +106,7 @@
       <table class="spotlight" border="0">
           <tbody>
               <tr>
-                  <td colspan="4"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
+                  <td colspan="4" style="font-size:16px;"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
               </tr>
               <tr>
                   <td style="width:50px;"><img style="float: right;" alt="Photo of barney" src="http://www.webweaver.nu/clipart/img/nature/dogs/dalmation.jpg" /></td>
@@ -125,6 +125,37 @@
                       <li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
                   </ul>
                   </td>
+              </tr>
+          </tbody>
+      </table>
+			]]>
+		</Html>
+	</Template>
+	<Template title="My TSA template" image="template1.gif">
+		<Html>
+			<![CDATA[
+      <table class="spotlight" border="0">
+          <tbody>
+              <tr>
+                <td colspan="2" style="vertical-align:top;">
+      		        <span style="font-size: 18px; font-weight: bold;color:#174578;">
+      		          Looking for flight delay times?
+      		        </span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+      		        <a href="http://apps.usa.gov/tsa-app" target="new"><img src="/images/my-tsa-app.png" style="border:0; padding:10px 20px 0 10px"></a>
+      		      </td>
+      		      <td style="padding-top: 10px;">
+      		        The new <strong>My TSA</strong> iPhone app and mobile website has up-to-the-minute information on flight times, schedules, and other time-sensitive airport information.
+      		        <br />
+      		        <span style="float:right;">
+      		        <a href="http://itunes.apple.com/us/app/my-tsa/id380200364?mt=8" target="_blank"><img src="/images/btn-iphone-download-now.png" style="border:0; padding:10px 10px 0 0;"></a> 
+      		        <a href="http://www.tsa.gov/mobile" target="_blank"><img src="/images/btn-mobileweb-visit-now.png" style="border:0; padding:5px 10px 0 0;"></a> 
+      		        <a href="http://apps.usa.gov/tsa-app" target="_blank"><img src="/images/btn-app-gallery.png" style="border:0; padding:5px 10px 0 0;"></a>
+    		        </span>
+      		      </td>
               </tr>
           </tbody>
       </table>
