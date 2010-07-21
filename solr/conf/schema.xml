@@ -28,6 +28,15 @@
     <fieldType name="tfloat" class="solr.TrieFloatField" omitNorms="true"/>
     <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="tdate" class="solr.TrieDateField" omitNorms="true"/>
+    
+    <!-- Related Search field types -->
+    
+    <!-- A text field that only splits on whitespace for exact matching of words -->
+    <fieldType name="textw" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+ 	      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
+      </analyzer>
+    </fieldType>
   </types>
   <fields>
     <!-- *** This field is used by Sunspot! *** -->
