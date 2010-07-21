@@ -32,7 +32,7 @@
     <!-- Related Search field types -->
     
     <!-- A text field that only splits on whitespace for exact matching of words -->
-    <fieldType name="textw" class="solr.TextField" positionIncrementGap="100">
+    <fieldType name="related_query_textw" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
  	      <tokenizer class="solr.WhitespaceTokenizerFactory"/>
       </analyzer>
