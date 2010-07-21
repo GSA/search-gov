@@ -30,6 +30,10 @@
     <fieldType name="tdate" class="solr.TrieDateField" omitNorms="true"/>
     
     <!-- Related Search field types -->
+    <!-- A text field that uses WordDelimiterFilter to enable splitting and matching of words on case-change, alpha numeric boundaries, and
+    non-alphanumeric chars,so that a query of "wifi" or "wi fi" could match a document containing "Wi-Fi".
+    Synonyms and stopwords are customized by external files, and stemming is enabled. 
+    -->
     <fieldType name="related_query_text" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
         <tokenizer class="solr.WhitespaceTokenizerFactory"/>
