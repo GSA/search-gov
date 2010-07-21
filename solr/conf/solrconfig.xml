@@ -385,6 +385,47 @@
       <!-- defined below -->
     </lst>
   </requestHandler>
+  
+  <requestHandler name="/rs" class="solr.SearchHandler" >
+    <!-- the Sunspot client (or any other client for that matter) can not change invariants -->
+    <lst name="invariants">
+     <str name="defType">dismax</str>
+     <str name="echoParams">explicit</str>
+     <float name="tie">0.01</float>
+     <str name="qf">
+        query_textw query_texts
+     </str>
+     <str name="pf">
+        query_textw query_texts
+     </str>
+     <str name="bf">
+        recip(ms(NOW,day_dts),3.16e-11,10,1) log(times_is)
+     </str>
+     <str name="fl">
+        *,score
+     </str>
+     <!--
+     <str name="mm">
+        2&lt;-1 5&lt;-2 6&lt;90%
+     </str>
+     -->
+     <int name="ps">3</int>
+     <str name="q.alt">*:*</str>
+     <!-- example highlighter config, enable per-query with hl=true -->     
+     <str name="hl.fl">query_texts</str>
+     <!-- for this field, we want no fragmenting, just highlighting -->
+     <str name="f.name.hl.fragsize">0</str>
+     <!-- instructs Solr to return the field itself if no query terms are
+          found -->
+     <str name="f.name.hl.alternateField">name</str>
+     <str name="f.text.hl.fragmenter">regex</str> <!-- defined below -->
+    </lst>
+    <!-- if needed, bypasses Sunspot control of fields
+    <lst name="appends">
+
+    </lst> -->
+  </requestHandler>
+
   <!-- Note how you can register the same handler multiple times with
        different names (and different init parameters)
     -->
