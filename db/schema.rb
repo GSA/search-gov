@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(:version => 20100805171609) do
 
   add_index "affiliate_broadcasts", ["user_id"], :name => "index_affiliate_broadcasts_on_user_id"
 
+  create_table "affiliate_related_searches", :force => true do |t|
+    t.string   "query"
+    t.string   "affiliate"
+    t.date     "day"
+    t.integer  "times"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
     t.string   "description"
@@ -210,6 +219,15 @@ ActiveRecord::Schema.define(:version => 20100805171609) do
 
   add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
 
+  create_table "processed_queries", :force => true do |t|
+    t.string   "query"
+    t.string   "affiliate"
+    t.date     "day"
+    t.integer  "times"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "queries", :id => false, :force => true do |t|
     t.string   "ipaddr",    :limit => 17
     t.string   "query",     :limit => 100
@@ -261,6 +279,16 @@ ActiveRecord::Schema.define(:version => 20100805171609) do
   end
 
   add_index "related_queries", ["query"], :name => "index_related_queries_on_query"
+
+  create_table "related_searches", :force => true do |t|
+    t.string   "query"
+    t.string   "related_query"
+    t.float    "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "related_searches", ["query"], :name => "index_related_searches_on_query"
 
   create_table "sayt_filters", :force => true do |t|
     t.string   "phrase",     :null => false
