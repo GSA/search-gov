@@ -252,6 +252,16 @@ ActiveRecord::Schema.define(:version => 20100805171609) do
 
   add_index "recalls", ["recall_number"], :name => "index_recalls_on_recall_number"
 
+  create_table "related_queries", :force => true do |t|
+    t.string   "query"
+    t.string   "related_query"
+    t.float    "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "related_queries", ["query"], :name => "index_related_queries_on_query"
+
   create_table "sayt_filters", :force => true do |t|
     t.string   "phrase",     :null => false
     t.datetime "created_at"

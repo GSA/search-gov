@@ -1,4 +1,4 @@
-class SessionRelatedQuery < ActiveRecord::Base
+class RelatedQuery < ActiveRecord::Base
   validates_presence_of :query, :related_query, :score
   validates_numericality_of :score
 
