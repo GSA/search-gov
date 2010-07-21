@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file,
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100623173419) do
+ActiveRecord::Schema.define(:version => 20100715011950) do
 
   create_table "accepted_sayt_suggestions", :force => true do |t|
     t.string   "phrase",     :null => false
@@ -252,6 +252,16 @@ ActiveRecord::Schema.define(:version => 20100623173419) do
   end
 
   add_index "recalls", ["recall_number"], :name => "index_recalls_on_recall_number"
+
+  create_table "related_queries", :force => true do |t|
+    t.string   "query"
+    t.string   "related_query"
+    t.float    "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "related_queries", ["query"], :name => "index_related_queries_on_query"
 
   create_table "sayt_filters", :force => true do |t|
     t.string   "phrase",     :null => false
