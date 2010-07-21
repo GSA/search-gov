@@ -386,7 +386,7 @@
     </lst>
   </requestHandler>
   
-  <requestHandler name="/rs" class="solr.SearchHandler" >
+  <requestHandler name="/relatedSearch" class="solr.SearchHandler" >
     <!-- the Sunspot client (or any other client for that matter) can not change invariants -->
     <lst name="invariants">
      <str name="defType">dismax</str>
