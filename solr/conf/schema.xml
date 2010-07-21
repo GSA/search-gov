@@ -79,6 +79,10 @@
     <!-- *** This field is used by Sunspot! *** -->
     <field name="lat" type="sdouble" indexed="true" stored="true" multiValued="false"/>
     <field name="long" type="sdouble" indexed="true" stored="true" multiValued="false"/>
+    <!-- Related Search fields -->
+    <field name="related_query_text" type="related_query_text" indexed="true" stored="true" multiValued="true"/>
+    <field name="related_query_textw" stored="false" type="related_query_textw" multiValued="false" indexed="true"/>
+
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_text" type="text" indexed="true" stored="true" multiValued="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
@@ -181,10 +185,6 @@
     <dynamicField name="*_dts" multiValued="false" stored="true" termVectors="true" indexed="true" type="tdate"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_dtms" multiValued="true" stored="true" termVectors="true" indexed="true" type="tdate"/>
-    
-    <field name="related_query_text" type="related_query_text" indexed="true" stored="true" multiValued="true"/>
-    <field name="related_query_textw" stored="false" type="related_query_textw" multiValued="false" indexed="true"/>
-
   </fields>
   <uniqueKey>id</uniqueKey>
   <defaultSearchField>text</defaultSearchField>
