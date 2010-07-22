@@ -14,7 +14,7 @@ class ProcessedQuery < ActiveRecord::Base
       request_handler 'relatedSearch'
       keywords query
       with(:affiliate).equal_to(options[:affiliate]) unless options[:affiliate].blank?
-      paginate :page => page, :per_page => per_page
+      paginate :page => options[:page], :per_page => options[:per_page]
     end  
   end  
   

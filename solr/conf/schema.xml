@@ -80,8 +80,8 @@
     <field name="lat" type="sdouble" indexed="true" stored="true" multiValued="false"/>
     <field name="long" type="sdouble" indexed="true" stored="true" multiValued="false"/>
     <!-- Related Search fields -->
-    <field name="related_query_text" type="related_query_text" indexed="true" stored="true" multiValued="true"/>
-    <field name="related_query_textw" stored="false" type="related_query_textw" multiValued="false" indexed="true"/>
+    <field name="query_text" type="related_query_text" indexed="true" stored="true" multiValued="true"/>
+    <field name="query_textw" stored="false" type="related_query_textw" multiValued="false" indexed="true"/>
 
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_text" type="text" indexed="true" stored="true" multiValued="true"/>
@@ -190,5 +190,5 @@
   <defaultSearchField>text</defaultSearchField>
   <solrQueryParser defaultOperator="AND"/>
   <copyField dest="text" source="*_text"/>
-  <copyField dest="related_query_text" source="related_query_textw"/>
+  <copyField dest="query_text" source="query_textw"/>
 </schema>
