@@ -18,14 +18,27 @@ describe ProcessedQuery do
   end
   
   describe "#related_to" do
-    before do
-      ProcessedQuery.create!(@valid_attributes.merge(:query => 'barack h. obama'))
-      ProcessedQuery.create!(@valid_attributes.merge(:query => 'barack obama'))      
-      Sunspot.commit
-    end
+    context "when searching for related queries" do
+      before do
+        ProcessedQuery.destroy_all
+        Sunspot.commit
+        ProcessedQuery.reindex
+        ProcessedQuery.create!(@valid_attributes.merge(:query => 'barack h. obama'))
+        ProcessedQuery.create!(@valid_attributes.merge(:query => 'barack obama'))
+        ProcessedQuery.create!(@valid_attributes.merge(:query => 'barak obama'))
+        ProcessedQuery.create!(@valid_attributes.merge(:query => 'president barack obama'))
+        ProcessedQuery.create!(@valid_attributes.merge(:query => 'michelle obama'))      
+        ProcessedQuery.create!(@valid_attributes.merge(:query => 'joe biden'))      
+        Sunspot.commit
+        ProcessedQuery.reindex
+      end
     
-    it "should return results that are similar to the query specified" do
-      ProcessedQuery.related_to('obama').total.should == 2
+      it "should return results that are similar to the query specified" do
+        related_queries = ProcessedQuery.related_to('barack obama')
+        related_queries.total.should == 3
+        related_queries.results.first.query.should == 'barack obama'
+        related_queries.results.last.query.should == 'barack h. obama'
+      end
     end
   end
 end
