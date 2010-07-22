@@ -5,7 +5,7 @@ describe ProcessedQuery do
     @valid_attributes = {
       :query => 'barack obama',
       :affiliate => 'usasearch.gov',
-      :timestamp => Time.now,
+      :day => Date.today,
       :times => 20
     }
   end
