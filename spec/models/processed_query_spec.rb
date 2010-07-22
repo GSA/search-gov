@@ -28,7 +28,6 @@ describe ProcessedQuery do
         ProcessedQuery.create!(@valid_attributes.merge(:query => 'barak obama'))
         ProcessedQuery.create!(@valid_attributes.merge(:query => 'president barack obama'))
         ProcessedQuery.create!(@valid_attributes.merge(:query => 'michelle obama'))      
-        ProcessedQuery.create!(@valid_attributes.merge(:query => 'joe biden'))      
         Sunspot.commit
         ProcessedQuery.reindex
       end
@@ -39,6 +38,20 @@ describe ProcessedQuery do
         related_queries.results.first.query.should == 'barack obama'
         related_queries.results.last.query.should == 'barack h. obama'
       end
+    end
+  end
+  
+  describe "#load_csv" do
+    it "should execute an SQL statement using the filename provided" do
+      filename = File.join(RAILS_ROOT, "spec", "fixtures", "csv", "processed_queries.csv")
+      ProcessedQuery.load_csv(filename)
+      ProcessedQuery.all.size.should == 3
+      ProcessedQuery.all.each do |processed_query|
+        processed_query.query.should_not be_nil
+        processed_query.created_at.should_not be_nil
+        processed_query.updated_at.should_not be_nil
+      end
+      ProcessedQuery.find_by_query('obama').should_not be_nil
     end
   end
 end

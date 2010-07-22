@@ -19,12 +19,7 @@ class ProcessedQuery < ActiveRecord::Base
   end  
   
   def self.load_csv(filename)
-    File.open(filename) do |file|
-      while line = file.gets
-        row = line.split("\t")
-        day = Date.parse(row[3][0..10])
-        ProcessedQuery.create(:query => row[0], :affiliate => row[1], :times => row[2], :day => day) rescue nil
-      end
-    end
+    sql = "LOAD DATA LOCAL INFILE '#{filename}' INTO TABLE processed_queries(query, affiliate, times, day) SET created_at=now(), updated_at=now();"
+    ActiveRecord::Base.connection.execute(sql) rescue nil
   end
 end
