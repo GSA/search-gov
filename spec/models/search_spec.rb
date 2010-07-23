@@ -598,14 +598,17 @@ describe Search do
       end
     end
 
-    context "when suggestions for misspelled terms contain scopeid, parenthesis, and extra site: params" do
+    context "when suggestions for misspelled terms contain scopeid or parenthesis" do
       before do
-        @search = Search.new(@valid_options.merge(:query => 'electro coagulation site:uspto.gov'))
+        @search = Search.new(@valid_options.merge(:query => '(electro coagulation) site:uspto.gov'))
+        json = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+        parsed = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
         @search.run
       end
 
-      it "should strip them all out" do
-        @search.spelling_suggestion.should == "\356\200\200electrocoagulation\356\200\201 site:uspto.gov"
+      it "should strip them all out, leaving site: terms in the suggestion" do
+        @search.spelling_suggestion.should == "electrocoagulation site:uspto.gov"
       end
     end
 
