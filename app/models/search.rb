@@ -94,8 +94,12 @@ class Search
   end
 
   protected
-
+  
   def related_search_results(response)
+    usa_related_search_results = RelatedSearch.related_to(query)
+    
+
+  def bing_related_search_results(response)
     begin
       BlockWord.filter(response.related_search.results, "Title", 5)
     rescue
