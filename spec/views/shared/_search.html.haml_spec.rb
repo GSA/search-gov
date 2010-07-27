@@ -5,6 +5,7 @@ describe "shared/_search.html.haml" do
     @search.stub!(:query).and_return nil
     @search.stub!(:filter_setting).and_return nil
     @search.stub!(:scope_id).and_return nil
+    @search.stub!(:fedstates).and_return nil
     assigns[:search] = @search
   end
 
@@ -22,11 +23,23 @@ describe "shared/_search.html.haml" do
         assigns[:affiliate] = @affiliate
       end
 
-      it "should not display a link to the advanced search page" do
+      it "should display a link to the advanced search page" do
         render :locals => { :search => @search, :affiliate => @affiliate }
         response.should contain(/Advanced Search/)
       end
-
+      
+      context "when a scope id is specified" do
+        before do
+          @search.stub!(:scope_id).and_return "SomeScope"
+          assigns[:scope_id] = 'SomeScope'
+        end
+        
+        it "should include a hidden tag with the scope id" do
+          @search.scope_id.should == 'SomeScope'
+          render :locals => { :search => @search, :affiliate => @affiliate, :scope_id => 'SomeScope'}
+          response.should have_tag('input[type=?][id=?][value=?]', 'hidden', 'scope_id', 'SomeScope')
+        end
+      end
     end
   end
 

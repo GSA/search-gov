@@ -11,8 +11,8 @@
 %a{:name => "content"}
 - if search.results.present?
   = results_summary(search.startrecord, search.endrecord, search.total, h(search.query))
-  - if (search && search.scope_id && search.scope_id != 'all')
-    = "#{t :search_results_restriction_message_front, :scope_setting => search.scope_id}  #{ link_to((t :search_results_restriction_message_link), search_path( request.parameters.merge(:fedstates => nil) ) ) }"
+  - if (search && search.fedstates && search.fedstates != 'all')
+    = "#{t :search_results_restriction_message_front, :scope_setting => search.fedstates}  #{ link_to((t :search_results_restriction_message_link), search_path( request.parameters.merge(:fedstates => nil) ) ) }"
   - if search.spotlight
     #spotlight
       = render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds)

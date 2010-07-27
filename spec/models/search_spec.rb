@@ -128,31 +128,101 @@ describe Search do
     end
 
     context "when affiliate has domains specified and user does not specify site: in search" do
+      before do
+        @affiliate = Affiliate.new(:domains => %w(  foo.com bar.com  ).join("\n"))
+        @uriresult = URI::parse("http://localhost:3000/")
+      end
+      
       it "should use affiliate domains in query to Bing without passing ScopeID" do
-        affiliate = Affiliate.new(:domains => %w(  foo.com bar.com  ).join("\n"))
-        uriresult = URI::parse("http://localhost:3000/")
-        search = Search.new(@valid_options.merge(:affiliate => affiliate))
-        URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(uriresult)
+        search = Search.new(@valid_options.merge(:affiliate => @affiliate))
+        URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(@uriresult)
         search.run
       end
+      
+      context "when a scope id parameter is passed" do
+        it "should use the scope id and ignore any domains if the scope id is valid" do
+          search = Search.new(@valid_options.merge(:affiliate => @affiliate, :scope_id => 'PatentClass'))
+          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass\)$/).and_return(@uriresult)
+          search.run
+        end
+        
+        it "should use the affiliate's domains if the scope id is not on the list of valid scopes" do
+          search = Search.new(@valid_options.merge(:affiliate => @affiliate, :scope_id => 'InvalidScope'))
+          URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(@uriresult)
+          search.run
+        end
+        
+        it "should use the affiliates domains if the scope id is empty" do
+          search = Search.new(@valid_options.merge(:affiliate => @affiliate, :scope_id => ''))
+          URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(@uriresult)
+          search.run
+        end
+      end      
     end
 
     context "when affiliate has domains specified but user specifies site: in search" do
+      before do
+        @affiliate = Affiliate.new(:domains => %w(  foo.com bar.com  ).join("\n"))
+        @uriresult = URI::parse("http://localhost:3000/")
+        @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
+      end
+      
       it "should override affiliate domains in query to Bing and use ScopeID/gov/mil combo" do
-        affiliate = Affiliate.new(:domains => %w(  foo.com bar.com  ).join("\n"))
-        uriresult = URI::parse("http://localhost:3000/")
-        search = Search.new(@valid_options.merge(:affiliate => affiliate, :query=>"government site:blat.gov"))
-        URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(uriresult)
+        search = Search.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov"))
+        URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20#{@default_scope}$/).and_return(@uriresult)
         search.run
+      end
+      
+      context "and the affiliate specifies a scope id" do
+        it "should use the scope id instead of the default scope if the scope is valid" do
+          search = Search.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov", :scope_id => 'PatentClass'))
+          URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3APatentClass\)$/).and_return @uriresult
+          search.run
+        end
+        
+        it "should use the default scope if the scope is invalid" do
+          search = Search.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov", :scope_id => 'InvalidScope'))
+          URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20#{@default_scope}$/).and_return(@uriresult)
+          search.run
+        end
+        
+        it "should use the default scope if the scope is empty" do
+          search = Search.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov", :scope_id => ''))
+          URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20#{@default_scope}$/).and_return(@uriresult)
+          search.run
+        end
       end
     end
 
     context "when affiliate has no domains specified" do
+      before do
+        @uriresult = URI::parse("http://localhost:3000/")
+      end
+      
       it "should use just query string and ScopeID/gov/mil combo" do
-        uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:affiliate => Affiliate.new))
-        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(uriresult)
+        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
         search.run
+      end
+      
+      context "when a scope id is provided" do
+        it "should use the scope id instead of the default scope if the scope id provided is valid" do
+          search = Search.new(@valid_options.merge(:affiliate => Affiliate.new, :scope_id => 'PatentClass'))
+          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass\)$/).and_return(@uriresult)
+          search.run
+        end
+        
+        it "should ignore the scope id if it's not on the list of valid scopes" do
+          search = Search.new(@valid_options.merge(:affiliate => Affiliate.new, :scope_id => 'InvalidScope'))
+          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
+          search.run
+        end
+        
+        it "should ignore the scope id if it's empty" do
+          search = Search.new(@valid_options.merge(:affiliate => Affiliate.new, :scope_id => ''))
+          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
+          search.run
+        end
       end
     end
 
@@ -175,6 +245,15 @@ describe Search do
       it "should search for GovForms" do
         GovForm.should_receive(:search_for).with('government')
         @search.run
+      end
+      
+      context "when a scope id is specified" do
+        it "should ignore the scope id" do
+          uriresult = URI::parse("http://localhost:3000/")
+          @search = Search.new(@valid_options.merge(:affiliate => nil, :scope_id => 'PatentClass'))
+          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(uriresult)
+          @search.run
+        end
       end
     end
 
@@ -200,7 +279,7 @@ describe Search do
         search.run
       end
     end
-
+    
     context "when advanced query parameters are passed" do
       before do
         @uriresult = URI::parse('http://localhost:3000')

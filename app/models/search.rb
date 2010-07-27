@@ -14,6 +14,7 @@ class Search
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:gov OR site:mil)"
   DEFAULT_FILTER_SETTING = 'strict'
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
+  VALID_SCOPES = %w{PatentClass} 
 
   attr_accessor :query,
                 :page,
@@ -33,6 +34,7 @@ class Search
                 :recalls,
                 :results_per_page,
                 :filter_setting,
+                :fedstates,
                 :scope_id,
                 :queried_at_seconds,
                 :enable_highlighting
@@ -45,7 +47,8 @@ class Search
     self.results_per_page = options[:results_per_page] || DEFAULT_PER_PAGE
     self.results_per_page = self.results_per_page.to_i unless self.results_per_page.is_a?(Integer)
     self.results_per_page = MAX_PER_PAGE if results_per_page > MAX_PER_PAGE
-    self.scope_id = options[:fedstates] || nil
+    self.fedstates = options[:fedstates] || nil
+    self.scope_id = options[:scope_id] || nil
     self.filter_setting = options[:filter] || nil
     self.results, self.related_search = [], []
     self.queried_at_seconds = Time.now.to_i
@@ -168,7 +171,7 @@ class Search
     if !options[:query_not].blank?
       query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ')
     end
-
+    # query += " (scopeid:usagov#{options[:fedstates]})" unless options[:fedstates].blank? || options[:fedstates].downcase == 'all'
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
     query += " #{options[:site_limits].split.collect { |site| 'site:' + site }.join(' OR ')}" unless options[:site_limits].blank?
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
@@ -190,8 +193,8 @@ class Search
   def scope
     if affiliate_scope
       affiliate_scope
-    elsif self.scope_id && !self.scope_id.empty? && self.scope_id != 'all'
-      "(scopeid:usagov#{self.scope_id})"
+    elsif self.fedstates && !self.fedstates.empty? && self.fedstates != 'all'
+      "(scopeid:usagov#{self.fedstates})"
     else
       DEFAULT_SCOPE
     end
@@ -199,12 +202,20 @@ class Search
 
   def affiliate_scope
     return unless affiliate_scope?
-    scope = affiliate.domains.split("\n").collect { |site| "site:#{site}" }.join(" OR ")
-    "(#{scope})"
+    if valid_scope_id?
+      "(scopeid:#{self.scope_id})"
+    else
+      scope = affiliate.domains.split("\n").collect { |site| "site:#{site}" }.join(" OR ")
+      "(#{scope})"
+    end
   end
 
   def affiliate_scope?
-    affiliate && affiliate.domains.present? && query !~ /site:/
+    affiliate && ((affiliate.domains.present? && query !~ /site:/) || valid_scope_id?)
+  end
+  
+  def valid_scope_id?
+    self.scope_id.present? && VALID_SCOPES.include?(self.scope_id)
   end
 
   def english_locale?

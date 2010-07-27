@@ -19,6 +19,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:error_message).and_return "Ignore me"
       @search.stub!(:filter_setting).and_return nil
       @search.stub!(:scope_id).and_return nil
+      @search.stub!(:fedstates).and_return nil
     end
 
     it "should show the spelling suggestion" do
@@ -39,6 +40,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:error_message).and_return "Enter some search terms"
       @search.stub!(:filter_setting).and_return nil
       @search.stub!(:scope_id).and_return nil
+      @search.stub!(:fedstates).and_return nil
     end
 
     it "should show header search form but not show footer search form" do
@@ -73,6 +75,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:gov_forms).and_return nil
       @search.stub!(:filter_setting).and_return nil
       @search.stub!(:scope_id).and_return nil
+      @search.stub!(:fedstates).and_return nil
     end
 
     context "when there are fewer than five results" do
@@ -134,9 +137,9 @@ describe "searches/index.html.haml" do
       end
     end
 
-    context "when a scope id filter is set from the advanced form" do
+    context "when a fedstates filter is set from the advanced form" do
       before do
-        @search.stub!(:scope_id).and_return 'MD'
+        @search.stub!(:fedstates).and_return 'MD'
       end
 
       it "should include a hidden input field in the search with the fedstates value set to the scope id" do
@@ -157,7 +160,7 @@ describe "searches/index.html.haml" do
 
       context "when the scope id is set to 'all'" do
         before do
-          @search.stub!(:scope_id).and_return 'all'
+          @search.stub!(:fedstates).and_return 'all'
         end
 
         it "should not show a restriction message" do

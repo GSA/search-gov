@@ -26,6 +26,22 @@ describe "searches/advanced.html.haml" do
     after do
       I18n.locale = I18n.default_locale
     end
-  end     
+  end 
   
+  context "when visiting an affiliate advanced search page" do
+    fixtures :affiliates
+    
+    it "should include a hidden input tag with the affiliate" do
+      assigns[:affiliate] = affiliates(:power_affiliate)
+      render
+      response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'affiliate', affiliates(:power_affiliate).name)
+    end
+    
+    it "should include a hidden input tag with the scope id if a scope id is passed" do
+      assigns[:affiliate] = affiliates(:power_affiliate)
+      assigns[:scope_id] = 'SomeScope'
+      render
+      response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'scope_id', 'SomeScope')
+    end
+  end
 end

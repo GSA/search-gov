@@ -41,6 +41,7 @@ class SearchesController < ApplicationController
   def advanced
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
+      @scope_id = @search_options[:scope_id]
       render :layout => "affiliate"
     end
   end
@@ -50,6 +51,7 @@ class SearchesController < ApplicationController
   def handle_affiliate_search
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
+      @scope_id = @search_options[:scope_id]
       @page_title = "#{t :search_results_for} #{@affiliate.name}: #{@search.query}"
     end
   end
@@ -92,6 +94,7 @@ class SearchesController < ApplicationController
       :filter => params["filter"],
       :fedstates => params["fedstates"] || nil,
       :affiliate => affiliate,
+      :scope_id => params["scope_id"] || nil,
       :results_per_page => params["per-page"],
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
     }

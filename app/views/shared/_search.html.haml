@@ -13,7 +13,8 @@
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
   = hidden_field_tag :filter, @search.filter_setting unless @search.nil? || @search.filter_setting.nil?
-  = hidden_field_tag :fedstates, @search.scope_id unless @search.nil? || @search.scope_id.nil?
+  = hidden_field_tag :fedstates, @search.fedstates unless @search.nil? || @search.fedstates.nil?
+  = hidden_field_tag :scope_id, @scope_id if @affiliate and @scope_id
   = submit_tag(t :search, :id => "search_button")
   - if @affiliate.nil?
     = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil ))) unless @affiliate
