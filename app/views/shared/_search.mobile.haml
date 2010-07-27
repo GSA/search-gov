@@ -4,6 +4,8 @@
   = hidden_field_tag :m, params[:m]
   .dvSearchBox
     = text_field :search, :query, { :name => "query", :autocomplete => "off", :class => "mobileSearchTextBox usagov-search-autocomplete" }
+    .dvSearchClose
+      = image_tag "/m/i/close.png", :style => "display: none;"
   .dvSearchBtn
     = image_submit_tag "/m/i/btnSearchSkin.png"
   .clear

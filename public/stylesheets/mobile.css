@@ -159,21 +159,26 @@ img{
   .dvSearchBox{
     float: left;
     width: 253px;
+    height: 48px;
   }
 
-/* removed temporarily until sayt X is fixed for jquery
   .dvSearchClose {
-    display: inline-block;
-    margin-top: 1px;
+    position: relative;
     float: right;
-    padding: 0;
+    top: -30px;
     width: 32px;
     height: 30px;
-    text-align: center;
-    border-top: 1px solid #4B6AC1;
-    border-bottom: 1px solid #112A85;
+    z-index: 9999;
   }
-
+  
+  .dvSearchClose img{
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    padding: 0;
+  }
+  
+/* removed temporarily until sayt X is fixed for jquery
   .dvSearchClose.results {
     background-color: #FFF;
     display: inline-block;
@@ -185,13 +190,6 @@ img{
     text-align: center;
     border-top: 1px solid #D8D8D8;
     border-bottom: 1px solid #D8D8D8;
-  }
-
-  .dvSearchClose img{
-    width: 24px;
-    height: 24px;
-    margin: 0;
-    padding: 0;
   }
 */
 

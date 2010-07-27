@@ -5,10 +5,10 @@
     .searchBoxContainer.dvCenter
       .dvSearchBox.results
         = text_field :search, :query, { :name => "query", :autocomplete => "off", :class => "mobileSearchTextBoxResultsPage usagov-search-autocomplete" }
+        .dvSearchClose
+          = image_tag "/m/i/close.png", :style => "display: none;"
       .dvSearchBtn.results
         = image_submit_tag "/m/i/btnSearchSkin_ResultsPage.png"
-      /.dvSearchClose.results
-      /  = image_tag "/m/i/close.png", :style => "display: none;"
       .clear
 - if js_enabled_mobile_device?
   :javascript
