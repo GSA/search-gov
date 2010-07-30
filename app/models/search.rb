@@ -97,8 +97,15 @@ class Search
   
   def related_search_results(response)
     usa_related_search_results = RelatedSearch.related_to(query)
+    if usa_related_search.size < 5
+      bing_related_search = bing_related_search_results(response)
+      counter = 0
+      usa_related_search_results.size.upto(5) do |index|
+        usa_related_search_results[index - 1] = bing_related_search[counter++]
+      end
+    end
+  end
     
-
   def bing_related_search_results(response)
     begin
       BlockWord.filter(response.related_search.results, "Title", 5)
