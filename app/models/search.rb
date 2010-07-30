@@ -203,7 +203,7 @@ class Search
   def affiliate_scope
     return unless affiliate_scope?
     if valid_scope_id?
-      "(scopeid:#{self.scope_id})"
+      "(scopeid:#{self.scope_id}) #{DEFAULT_SCOPE}"
     else
       scope = affiliate.domains.split("\n").collect { |site| "site:#{site}" }.join(" OR ")
       "(#{scope})"

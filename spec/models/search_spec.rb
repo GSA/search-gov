@@ -131,6 +131,7 @@ describe Search do
       before do
         @affiliate = Affiliate.new(:domains => %w(  foo.com bar.com  ).join("\n"))
         @uriresult = URI::parse("http://localhost:3000/")
+        @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
       
       it "should use affiliate domains in query to Bing without passing ScopeID" do
@@ -140,9 +141,9 @@ describe Search do
       end
       
       context "when a scope id parameter is passed" do
-        it "should use the scope id and ignore any domains if the scope id is valid" do
+        it "should use the scope id with the default scope and ignore any domains if the scope id is valid" do
           search = Search.new(@valid_options.merge(:affiliate => @affiliate, :scope_id => 'PatentClass'))
-          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass\)$/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass\)%20#{@default_scope}$/).and_return(@uriresult)
           search.run
         end
         
@@ -174,9 +175,9 @@ describe Search do
       end
       
       context "and the affiliate specifies a scope id" do
-        it "should use the scope id instead of the default scope if the scope is valid" do
+        it "should use the scope id with the default scope if the scope is valid" do
           search = Search.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov", :scope_id => 'PatentClass'))
-          URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3APatentClass\)$/).and_return @uriresult
+          URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3APatentClass\)%20#{@default_scope}$/).and_return @uriresult
           search.run
         end
         
@@ -197,30 +198,31 @@ describe Search do
     context "when affiliate has no domains specified" do
       before do
         @uriresult = URI::parse("http://localhost:3000/")
+        @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/        
       end
       
       it "should use just query string and ScopeID/gov/mil combo" do
         search = Search.new(@valid_options.merge(:affiliate => Affiliate.new))
-        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
+        URI.should_receive(:parse).with(/query=\(government\)%20#{@default_scope}$/).and_return(@uriresult)
         search.run
       end
       
       context "when a scope id is provided" do
-        it "should use the scope id instead of the default scope if the scope id provided is valid" do
+        it "should use the scope id with the default scope if the scope id provided is valid" do
           search = Search.new(@valid_options.merge(:affiliate => Affiliate.new, :scope_id => 'PatentClass'))
-          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass\)$/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass\)%20#{@default_scope}$/).and_return(@uriresult)
           search.run
         end
         
         it "should ignore the scope id if it's not on the list of valid scopes" do
           search = Search.new(@valid_options.merge(:affiliate => Affiliate.new, :scope_id => 'InvalidScope'))
-          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/query=\(government\)%20#{@default_scope}$/).and_return(@uriresult)
           search.run
         end
         
         it "should ignore the scope id if it's empty" do
           search = Search.new(@valid_options.merge(:affiliate => Affiliate.new, :scope_id => ''))
-          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/query=\(government\)%20#{@default_scope}$/).and_return(@uriresult)
           search.run
         end
       end
