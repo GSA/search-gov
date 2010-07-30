@@ -2,9 +2,9 @@
   %h3.alt= t :related_searches
   %ul{:id => "relatedsearch"}
     - @search.related_search.each_with_index do |result, index|
-      %li= tracked_click_link(shunt_from_bing_to_usasearch(result.url, @affiliate ),translate_bing_highlights(h(result.title)), @search, nil, index, 'BREL')
+      %li= tracked_click_link(search_path(:query => result), h(result), @search, nil, index, 'BREL')
   .more_results
-    Results by Bing
+    Results by Search.USA.gov and Bing
 - else
   &nbsp
 - if (@search && @search.faqs && @search.faqs.total > 0)

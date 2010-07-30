@@ -97,13 +97,15 @@ class Search
   
   def related_search_results(response)
     usa_related_search_results = RelatedSearch.related_to(query)
-    if usa_related_search.size < 5
+    if usa_related_search_results.size < 5
       bing_related_search = bing_related_search_results(response)
       counter = 0
-      usa_related_search_results.size.upto(5) do |index|
-        usa_related_search_results[index - 1] = bing_related_search[counter++]
+      usa_related_search_results.size.upto(5) do
+        usa_related_search_results << bing_related_search[counter]["Title"] if bing_related_search[counter].present?
+        counter += 1
       end
     end
+    usa_related_search_results
   end
     
   def bing_related_search_results(response)
@@ -182,7 +184,6 @@ class Search
     if !options[:query_not].blank?
       query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ')
     end
-    # query += " (scopeid:usagov#{options[:fedstates]})" unless options[:fedstates].blank? || options[:fedstates].downcase == 'all'
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
     query += " #{options[:site_limits].split.collect { |site| 'site:' + site }.join(' OR ')}" unless options[:site_limits].blank?
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
