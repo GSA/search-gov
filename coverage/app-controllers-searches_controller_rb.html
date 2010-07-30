@@ -63,37 +63,37 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   before_filter :handle_old_advanced_form, :only =&gt; [ :index ]</pre></td>
+            <td><pre><a name="line2">2</a>   skip_before_filter :verify_authenticity_token</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   before_filter :grab_format</pre></td>
+            <td><pre><a name="line3">3</a>   before_filter :handle_old_advanced_form, :only =&gt; [ :index ]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :set_search_options</pre></td>
+            <td><pre><a name="line4">4</a>   before_filter :grab_format</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   has_mobile_fu</pre></td>
+            <td><pre><a name="line5">5</a>   before_filter :set_search_options</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   before_filter :adjust_mobile_mode</pre></td>
+            <td><pre><a name="line6">6</a>   has_mobile_fu</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   before_filter :show_searchbox</pre></td>
+            <td><pre><a name="line7">7</a>   before_filter :adjust_mobile_mode</pre></td>
           </tr>
         
           
@@ -315,409 +315,409 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>       render :layout =&gt; &quot;affiliate&quot;</pre></td>
+            <td><pre><a name="line44">44</a>       @scope_id = @search_options[:scope_id]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>       render :layout =&gt; &quot;affiliate&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>     end</pre></td>
+            <td><pre><a name="line46">46</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>   end</pre></td>
+            <td><pre><a name="line47">47</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a> </pre></td>
+            <td><pre><a name="line48">48</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>   private</pre></td>
+            <td><pre><a name="line49">49</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a> </pre></td>
+            <td><pre><a name="line50">50</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>   def handle_affiliate_search</pre></td>
+            <td><pre><a name="line51">51</a>   def handle_affiliate_search</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>     if @search_options[:affiliate]</pre></td>
+            <td><pre><a name="line52">52</a>     if @search_options[:affiliate]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>       @affiliate = @search_options[:affiliate]</pre></td>
+            <td><pre><a name="line53">53</a>       @affiliate = @search_options[:affiliate]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>       @page_title = &quot;#{t :search_results_for} #{@affiliate.name}: #{@search.query}&quot;</pre></td>
+            <td><pre><a name="line54">54</a>       @scope_id = @search_options[:scope_id]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>       @page_title = &quot;#{t :search_results_for} #{@affiliate.name}: #{@search.query}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a>     end</pre></td>
+            <td><pre><a name="line56">56</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line55">55</a>   end</pre></td>
+            <td><pre><a name="line57">57</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a> </pre></td>
+            <td><pre><a name="line58">58</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>   def record_accepted_sayt_suggestion</pre></td>
+            <td><pre><a name="line59">59</a>   def record_accepted_sayt_suggestion</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>     AcceptedSaytSuggestion.create!(:phrase=&gt;params[&quot;query&quot;]) if params[&quot;sayt&quot;]</pre></td>
+            <td><pre><a name="line60">60</a>     AcceptedSaytSuggestion.create!(:phrase=&gt;params[&quot;query&quot;]) if params[&quot;sayt&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line59">59</a>   end</pre></td>
+            <td><pre><a name="line61">61</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a> </pre></td>
+            <td><pre><a name="line62">62</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line61">61</a>   def handle_old_advanced_form</pre></td>
+            <td><pre><a name="line63">63</a>   def handle_old_advanced_form</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>     if params[&quot;form&quot;] == &quot;advanced-firstgov&quot;</pre></td>
+            <td><pre><a name="line64">64</a>     if params[&quot;form&quot;] == &quot;advanced-firstgov&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>       redirect_to advanced_search_path(params.merge(:controller =&gt; &quot;searches&quot;, :action =&gt; &quot;advanced&quot;))</pre></td>
+            <td><pre><a name="line65">65</a>       redirect_to advanced_search_path(params.merge(:controller =&gt; &quot;searches&quot;, :action =&gt; &quot;advanced&quot;))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a>     end</pre></td>
+            <td><pre><a name="line66">66</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a>   end</pre></td>
+            <td><pre><a name="line67">67</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line66">66</a> </pre></td>
+            <td><pre><a name="line68">68</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>   def grab_format</pre></td>
+            <td><pre><a name="line69">69</a>   def grab_format</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line68">68</a>     @original_format = request.format</pre></td>
+            <td><pre><a name="line70">70</a>     @original_format = request.format</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a>   end</pre></td>
+            <td><pre><a name="line71">71</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line70">70</a> </pre></td>
+            <td><pre><a name="line72">72</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line71">71</a>   # TODO This could be cleaned up into search.rb</pre></td>
+            <td><pre><a name="line73">73</a>   # TODO This could be cleaned up into search.rb</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>   def set_search_options</pre></td>
+            <td><pre><a name="line74">74</a>   def set_search_options</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>     affiliate = params[&quot;affiliate&quot;] ? Affiliate.find_by_name(params[&quot;affiliate&quot;]) : nil</pre></td>
+            <td><pre><a name="line75">75</a>     affiliate = params[&quot;affiliate&quot;] ? Affiliate.find_by_name(params[&quot;affiliate&quot;]) : nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>     if affiliate &amp;&amp; params[&quot;staged&quot;]</pre></td>
+            <td><pre><a name="line76">76</a>     if affiliate &amp;&amp; params[&quot;staged&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line75">75</a>       affiliate.domains = affiliate.staged_domains</pre></td>
+            <td><pre><a name="line77">77</a>       affiliate.domains = affiliate.staged_domains</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line76">76</a>       affiliate.header = affiliate.staged_header</pre></td>
+            <td><pre><a name="line78">78</a>       affiliate.header = affiliate.staged_header</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line77">77</a>       affiliate.footer = affiliate.staged_footer</pre></td>
+            <td><pre><a name="line79">79</a>       affiliate.footer = affiliate.staged_footer</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line78">78</a>     end</pre></td>
+            <td><pre><a name="line80">80</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>     @search_options = {</pre></td>
+            <td><pre><a name="line81">81</a>     @search_options = {</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>       :page =&gt; (params[:page].to_i - 1),</pre></td>
+            <td><pre><a name="line82">82</a>       :page =&gt; (params[:page].to_i - 1),</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>       :query =&gt; params[&quot;query&quot;],</pre></td>
+            <td><pre><a name="line83">83</a>       :query =&gt; params[&quot;query&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>       :query_limit =&gt; params[&quot;query-limit&quot;],</pre></td>
+            <td><pre><a name="line84">84</a>       :query_limit =&gt; params[&quot;query-limit&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>       :query_quote =&gt; params[&quot;query-quote&quot;],</pre></td>
+            <td><pre><a name="line85">85</a>       :query_quote =&gt; params[&quot;query-quote&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>       :query_quote_limit =&gt; params[&quot;query-quote-limit&quot;],</pre></td>
+            <td><pre><a name="line86">86</a>       :query_quote_limit =&gt; params[&quot;query-quote-limit&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>       :query_or =&gt; params[&quot;query-or&quot;],</pre></td>
+            <td><pre><a name="line87">87</a>       :query_or =&gt; params[&quot;query-or&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line86">86</a>       :query_or_limit =&gt; params[&quot;query-or-limit&quot;],</pre></td>
+            <td><pre><a name="line88">88</a>       :query_or_limit =&gt; params[&quot;query-or-limit&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line87">87</a>       :query_not =&gt; params[&quot;query-not&quot;],</pre></td>
+            <td><pre><a name="line89">89</a>       :query_not =&gt; params[&quot;query-not&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>       :query_not_limit =&gt; params[&quot;query-not-limit&quot;],</pre></td>
+            <td><pre><a name="line90">90</a>       :query_not_limit =&gt; params[&quot;query-not-limit&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line89">89</a>       :file_type =&gt; params[&quot;filetype&quot;],</pre></td>
+            <td><pre><a name="line91">91</a>       :file_type =&gt; params[&quot;filetype&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line90">90</a>       :site_limits =&gt; params[&quot;sitelimit&quot;],</pre></td>
+            <td><pre><a name="line92">92</a>       :site_limits =&gt; params[&quot;sitelimit&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line91">91</a>       :site_excludes =&gt; params[&quot;siteexclude&quot;],</pre></td>
+            <td><pre><a name="line93">93</a>       :site_excludes =&gt; params[&quot;siteexclude&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line92">92</a>       :filter =&gt; params[&quot;filter&quot;],</pre></td>
+            <td><pre><a name="line94">94</a>       :filter =&gt; params[&quot;filter&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line93">93</a>       :fedstates =&gt; params[&quot;fedstates&quot;] || nil,</pre></td>
+            <td><pre><a name="line95">95</a>       :fedstates =&gt; params[&quot;fedstates&quot;] || nil,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line94">94</a>       :affiliate =&gt; affiliate,</pre></td>
+            <td><pre><a name="line96">96</a>       :affiliate =&gt; affiliate,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line95">95</a>       :results_per_page =&gt; params[&quot;per-page&quot;],</pre></td>
+            <td><pre><a name="line97">97</a>       :scope_id =&gt; params[&quot;scope_id&quot;] || nil,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line96">96</a>       :enable_highlighting =&gt; params[&quot;hl&quot;].present? &amp;&amp; params[&quot;hl&quot;] == &quot;false&quot; ? false : true</pre></td>
+            <td><pre><a name="line98">98</a>       :results_per_page =&gt; params[&quot;per-page&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line99">99</a>       :enable_highlighting =&gt; params[&quot;hl&quot;].present? &amp;&amp; params[&quot;hl&quot;] == &quot;false&quot; ? false : true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line97">97</a>     }</pre></td>
+            <td><pre><a name="line100">100</a>     }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line98">98</a>   end</pre></td>
+            <td><pre><a name="line101">101</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line99">99</a> </pre></td>
+            <td><pre><a name="line102">102</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line100">100</a>   def adjust_mobile_mode</pre></td>
+            <td><pre><a name="line103">103</a>   def adjust_mobile_mode</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line101">101</a>     request.format = :html if @search_options[:affiliate].present? or is_advanced_search?</pre></td>
+            <td><pre><a name="line104">104</a>     request.format = :html if @search_options[:affiliate].present? or is_advanced_search?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line102">102</a>     request.format = :json if @original_format == 'application/json'</pre></td>
+            <td><pre><a name="line105">105</a>     request.format = :json if @original_format == 'application/json'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line103">103</a>   end</pre></td>
+            <td><pre><a name="line106">106</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line104">104</a> </pre></td>
+            <td><pre><a name="line107">107</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line105">105</a>   def is_advanced_search?</pre></td>
+            <td><pre><a name="line108">108</a>   def is_advanced_search?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line106">106</a>     params[:action] == &quot;advanced&quot;</pre></td>
+            <td><pre><a name="line109">109</a>     params[:action] == &quot;advanced&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line107">107</a>   end</pre></td>
+            <td><pre><a name="line110">110</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line108">108</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line109">109</a>   def show_searchbox</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line110">110</a>     @show_searchbox = params[:show_searchbox].present? &amp;&amp; params[:show_searchbox] == &quot;false&quot; ? false : true</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line111">111</a>   end</pre></td>
+            <td><pre><a name="line111">111</a> </pre></td>
           </tr>
         
           
@@ -729,7 +729,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Sun Jun 27 10:12:41 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jul 30 11:10:20 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

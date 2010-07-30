@@ -85,11 +85,6 @@ module SearchHelper
     body.gsub(/\xEE\x80\x80/, '').gsub(/\xEE\x80\x81/, '')
   end
 
-  def unescaped_text_field_with_auto_complete(object, method, tag_options = {}, completion_options = {})
-    tfwac = text_field_with_auto_complete(object, method, tag_options, completion_options)
-    tfwac.gsub("&amp;", "&")
-  end
-
   def shunt_from_bing_to_usasearch(bingurl, affiliate)
     query = CGI::unescape(bingurl.split("?q=").last)
     opts = {:query=> query}

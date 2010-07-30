@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-reports_rake.html">lib/tasks/reports.rake</a></td>
-            <td class='right_align'><tt>51</tt></td>
-            <td class='right_align'><tt>44</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class='right_align'><tt>54</tt></td>
+            <td class='right_align'><tt>48</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>94.44%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:94px"></div>
+            <div class="uncovered" style="width:6px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>93.75%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:94px"></div>
+            <div class="uncovered" style="width:6px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -69,301 +69,319 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a>    </pre></td>
+            <td><pre><a name="line3">3</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>     def establish_aws_connection</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>       AWS::S3::Base.establish_connection!(:access_key_id =&gt; AWS_ACCESS_KEY_ID, :secret_access_key =&gt; AWS_SECRET_ACCESS_KEY)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>       AWS::S3::Bucket.find('usasearch-reports') rescue AWS::S3::Bucket.create(REPORTS_AWS_BUCKET_NAME)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a>    # this task is run once each night, what it does is calculate the top queries for the current month, format into a CSV file, and upload</pre></td>
+            <td><pre><a name="line7">7</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a>    # that CSV file to Amazon S3 in a well known location. It should use the Queries table to calculate the top queries for the month because</pre></td>
+            <td><pre><a name="line8">8</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>     def generate_report_filename(prefix, day, date_format)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>       &quot;#{prefix}_top_queries_#{day.strftime(date_format)}.csv&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a>    # the DailyQueryStats table does not have enough information.</pre></td>
+            <td><pre><a name="line11">11</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a>    # We'll see, actually.  It does have enough information for English queries, but not for Spanish</pre></td>
+            <td><pre><a name="line12">12</a>    </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>     def generate_report(top_queries, filename)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>       csv_string = FasterCSV.generate do |csv|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>         csv &lt;&lt; [&quot;Query&quot;, &quot;Count&quot;]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>         top_queries.each do |top_query|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line17">17</a>           csv &lt;&lt; [top_query.query, top_query.total]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line18">18</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line19">19</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       AWS::S3::S3Object.store(filename, csv_string, REPORTS_AWS_BUCKET_NAME)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>    # English sould be 20K, Spanish 4K</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>     desc &quot;Generate Top Queries reports for the month of the date specified&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>     task :generate_monthly_top_queries, :day, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>       day = Date.parse(args.day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>       AWS::S3::Base.establish_connection!(:access_key_id =&gt; AWS_ACCESS_KEY_ID, </pre></td>
+            <td><pre><a name="line21">21</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>                                           :secret_access_key =&gt; AWS_SECRET_ACCESS_KEY)</pre></td>
+            <td><pre><a name="line22">22</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>       AWS::S3::Bucket.find('usasearch-reports') rescue AWS::S3::Bucket.create(REPORTS_AWS_BUCKET_NAME)</pre></td>
+            <td><pre><a name="line23">23</a>     desc &quot;Generate Top Queries reports for the month of the date specified&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>       locales = %w{en es}</pre></td>
+            <td><pre><a name="line24">24</a>     task :generate_monthly_top_queries, :day, :generate_usasearch, :generate_affiliates, :needs =&gt; :environment do |t, args|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       locales.each do |locale|</pre></td>
+            <td><pre><a name="line25">25</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number), :generate_usasearch =&gt; &quot;true&quot;, :generate_affiliates =&gt; &quot;true&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>         top_queries = Query.top_queries(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 20000: 4000, true)</pre></td>
+            <td><pre><a name="line26">26</a>       day = Date.parse(args.day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>         csv_string = FasterCSV.generate do |csv|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>           csv &lt;&lt; [&quot;Query&quot;, &quot;Count&quot;]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>           top_queries.each do |top_query|</pre></td>
+            <td><pre><a name="line27">27</a>       establish_aws_connection</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a>             csv &lt;&lt; [top_query.query, top_query.total]</pre></td>
+            <td><pre><a name="line28">28</a>       %w{en es}.each do |locale|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>         top_queries = Query.top_queries(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 20000: 4000, true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>         generate_report(top_queries, generate_report_filename(locale, day, '%Y%m'))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>       end if args.generate_usasearch</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>       Affiliate.all.each do |affiliate|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>         top_queries = Query.top_queries(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, I18n.default_locale.to_s, affiliate.name, 1000, true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>         generate_report(top_queries, generate_report_filename(affiliate.name, day, '%Y%m'))  </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>       end if args.generate_affiliates</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a>           end</pre></td>
+            <td><pre><a name="line36">36</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>         end</pre></td>
+            <td><pre><a name="line37">37</a>     </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>         filename = &quot;#{locale}_top_queries_#{day.strftime('%Y%m')}.csv&quot;</pre></td>
+            <td><pre><a name="line38">38</a>     desc &quot;Generate Top Queries reports for the date specified&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>         AWS::S3::S3Object.store(filename, csv_string, REPORTS_AWS_BUCKET_NAME)</pre></td>
+            <td><pre><a name="line39">39</a>     task :generate_daily_top_queries, :day, :generate_usasearch, :generate_affiliates, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number), :generate_usasearch =&gt; &quot;true&quot;, :generate_affiliates =&gt; &quot;true&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>       day = Date.parse(args.day)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>       establish_aws_connection</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>       end</pre></td>
+            <td><pre><a name="line43">43</a>       %w{en es}.each do |locale|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>         top_queries = Query.top_queries(day.beginning_of_day, day.end_of_day, locale, 'usasearch.gov', 1000, true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>         generate_report(top_queries, generate_report_filename(locale, day, '%Y%m%d'))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line46">46</a>       end if args.generate_usasearch</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>       Affiliate.all.each do |affiliate|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>         top_queries = Query.top_queries(day.beginning_of_day, day.end_of_day, I18n.default_locale.to_s, affiliate.name, 1000, true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>         generate_report(top_queries, generate_report_filename(affiliate.name, day, '%Y%m%d'))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line50">50</a>       end if args.generate_affiliates</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>     end</pre></td>
+            <td><pre><a name="line51">51</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>     </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>     desc &quot;Generate Top Queries reports for the date specified&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>     task :generate_daily_top_queries, :day, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>       day = Date.parse(args.day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>       AWS::S3::Base.establish_connection!(:access_key_id =&gt; AWS_ACCESS_KEY_ID, </pre></td>
+            <td><pre><a name="line52">52</a>     </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>                                           :secret_access_key =&gt; AWS_SECRET_ACCESS_KEY)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>       AWS::S3::Bucket.find('usasearch-reports') rescue AWS::S3::Bucket.create(REPORTS_AWS_BUCKET_NAME)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>       locales = %w{en es}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>       locales.each do |locale|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>         top_queries = Query.top_queries(day.beginning_of_day, day.end_of_day, locale, 'usasearch.gov', 1000, true)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>         csv_string = FasterCSV.generate do |csv|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>           csv &lt;&lt; [&quot;Query&quot;, &quot;Count&quot;]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>           top_queries.each do |top_query|</pre></td>
+            <td><pre><a name="line53">53</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line43">43</a>             csv &lt;&lt; [top_query.query, top_query.total]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line44">44</a>           end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line45">45</a>          end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>         filename = &quot;#{locale}_top_queries_#{day.strftime('%Y%m%d')}.csv&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>         AWS::S3::S3Object.store(filename, csv_string, REPORTS_AWS_BUCKET_NAME)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line48">48</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line49">49</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line50">50</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line51">51</a> end</pre></td>
+            <td><pre><a name="line54">54</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Jun 27 10:12:42 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jul 30 11:10:20 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

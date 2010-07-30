@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-application_controller_rb.html">app/controllers/application_controller.rb</a></td>
-            <td class='right_align'><tt>72</tt></td>
-            <td class='right_align'><tt>59</tt></td>
+            <td class='right_align'><tt>81</tt></td>
+            <td class='right_align'><tt>66</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -81,415 +81,469 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   helper :all</pre></td>
+            <td><pre><a name="line5">5</a>   before_filter :show_searchbox</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   helper_method :current_user_session, :current_user</pre></td>
+            <td><pre><a name="line6">6</a>   helper :all</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   filter_parameter_logging :password, :password_confirmation</pre></td>
+            <td><pre><a name="line7">7</a>   helper_method :current_user_session, :current_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   protect_from_forgery</pre></td>
+            <td><pre><a name="line8">8</a>   filter_parameter_logging :password, :password_confirmation</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>   AVAILABLE_LOCALES = [:en, :es]</pre></td>
+            <td><pre><a name="line9">9</a>   protect_from_forgery</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>   AVAILABLE_LOCALES = [:en, :es]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a> </pre></td>
+            <td><pre><a name="line11">11</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>   private</pre></td>
+            <td><pre><a name="line12">12</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a> </pre></td>
+            <td><pre><a name="line13">13</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>   def set_locale</pre></td>
+            <td><pre><a name="line14">14</a>   def set_locale</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>     I18n.locale = determine_locale_from_param(params[:locale]) || I18n.default_locale</pre></td>
+            <td><pre><a name="line15">15</a>     I18n.locale = determine_locale_from_param(params[:locale]) || I18n.default_locale</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>   end</pre></td>
+            <td><pre><a name="line16">16</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> </pre></td>
+            <td><pre><a name="line17">17</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>   def determine_locale_from_param (locale_param)</pre></td>
+            <td><pre><a name="line18">18</a>   def determine_locale_from_param (locale_param)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>     return nil if locale_param.nil? || locale_param.match(/^\w{2}$/).nil? || !locale_exists?(locale_param)</pre></td>
+            <td><pre><a name="line19">19</a>     return nil if locale_param.nil? || locale_param.match(/^\w{2}$/).nil? || !locale_exists?(locale_param)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>     locale_param.to_sym</pre></td>
+            <td><pre><a name="line20">20</a>     locale_param.to_sym</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>   end</pre></td>
+            <td><pre><a name="line21">21</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a> </pre></td>
+            <td><pre><a name="line22">22</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>   def locale_exists? (locale)</pre></td>
+            <td><pre><a name="line23">23</a>   def locale_exists? (locale)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>     available_locales.include?(locale.to_sym)</pre></td>
+            <td><pre><a name="line24">24</a>     available_locales.include?(locale.to_sym)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>   end</pre></td>
+            <td><pre><a name="line25">25</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a> </pre></td>
+            <td><pre><a name="line26">26</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>   def available_locales</pre></td>
+            <td><pre><a name="line27">27</a>   def available_locales</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>     AVAILABLE_LOCALES</pre></td>
+            <td><pre><a name="line28">28</a>     AVAILABLE_LOCALES</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>   end</pre></td>
+            <td><pre><a name="line29">29</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a> </pre></td>
+            <td><pre><a name="line30">30</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>   def default_url_options(options={})</pre></td>
+            <td><pre><a name="line31">31</a>   def default_url_options(options={})</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>     {</pre></td>
+            <td><pre><a name="line32">32</a>     {</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>       :locale =&gt; I18n.locale,</pre></td>
+            <td><pre><a name="line33">33</a>       :locale =&gt; I18n.locale,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>       :m =&gt; &quot;false&quot;</pre></td>
+            <td><pre><a name="line34">34</a>       :m =&gt; &quot;false&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>     }</pre></td>
+            <td><pre><a name="line35">35</a>     }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>   end</pre></td>
+            <td><pre><a name="line36">36</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a> </pre></td>
+            <td><pre><a name="line37">37</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>   def current_user_session</pre></td>
+            <td><pre><a name="line38">38</a>   def current_user_session</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>     return @current_user_session if defined?(@current_user_session)</pre></td>
+            <td><pre><a name="line39">39</a>     return @current_user_session if defined?(@current_user_session)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     @current_user_session = UserSession.find</pre></td>
+            <td><pre><a name="line40">40</a>     @current_user_session = UserSession.find</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>   end</pre></td>
+            <td><pre><a name="line41">41</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a> </pre></td>
+            <td><pre><a name="line42">42</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>   def current_user</pre></td>
+            <td><pre><a name="line43">43</a>   def current_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     return @current_user if defined?(@current_user)</pre></td>
+            <td><pre><a name="line44">44</a>     return @current_user if defined?(@current_user)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>     @current_user = current_user_session &amp;&amp; current_user_session.user</pre></td>
+            <td><pre><a name="line45">45</a>     @current_user = current_user_session &amp;&amp; current_user_session.user</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>   end</pre></td>
+            <td><pre><a name="line46">46</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a> </pre></td>
+            <td><pre><a name="line47">47</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>   def require_user</pre></td>
+            <td><pre><a name="line48">48</a>   def require_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>     unless current_user</pre></td>
+            <td><pre><a name="line49">49</a>     unless current_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>       store_location</pre></td>
+            <td><pre><a name="line50">50</a>       store_location</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>       redirect_to new_user_session_url</pre></td>
+            <td><pre><a name="line51">51</a>       redirect_to new_user_session_url</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>       return false</pre></td>
+            <td><pre><a name="line52">52</a>       return false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>     end</pre></td>
+            <td><pre><a name="line53">53</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line53">53</a>   end</pre></td>
+            <td><pre><a name="line54">54</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a> </pre></td>
+            <td><pre><a name="line55">55</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>   def require_no_user</pre></td>
+            <td><pre><a name="line56">56</a>   def require_no_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>     if current_user</pre></td>
+            <td><pre><a name="line57">57</a>     if current_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>       store_location</pre></td>
+            <td><pre><a name="line58">58</a>       store_location</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>       redirect_to account_url</pre></td>
+            <td><pre><a name="line59">59</a>       redirect_to account_url</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>       return false</pre></td>
+            <td><pre><a name="line60">60</a>       return false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a>     end</pre></td>
+            <td><pre><a name="line61">61</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line61">61</a>   end</pre></td>
+            <td><pre><a name="line62">62</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line62">62</a> </pre></td>
+            <td><pre><a name="line63">63</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>   def store_location</pre></td>
+            <td><pre><a name="line64">64</a>   def store_location</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a>     session[:return_to] = request.request_uri</pre></td>
+            <td><pre><a name="line65">65</a>     session[:return_to] = request.request_uri</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a>   end</pre></td>
+            <td><pre><a name="line66">66</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line66">66</a> </pre></td>
+            <td><pre><a name="line67">67</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>   def redirect_back_or_default(default)</pre></td>
+            <td><pre><a name="line68">68</a>   def redirect_back_or_default(default)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line68">68</a>     redirect_to(session[:return_to] || default)</pre></td>
+            <td><pre><a name="line69">69</a>     redirect_to(session[:return_to] || default)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line69">69</a>     session[:return_to] = nil</pre></td>
+            <td><pre><a name="line70">70</a>     session[:return_to] = nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line70">70</a>   end</pre></td>
+            <td><pre><a name="line71">71</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line71">71</a> </pre></td>
+            <td><pre><a name="line72">72</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line73">73</a>   def establish_aws_connection</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line74">74</a>     AWS::S3::Base.establish_connection!(:access_key_id =&gt; AWS_ACCESS_KEY_ID, :secret_access_key =&gt; AWS_SECRET_ACCESS_KEY)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line72">72</a> end</pre></td>
+            <td><pre><a name="line75">75</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line76">76</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>   def show_searchbox</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line78">78</a>     @show_searchbox = params[:show_searchbox].present? &amp;&amp; params[:show_searchbox] == &quot;false&quot; ? false : true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line79">79</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line80">80</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line81">81</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Jun 27 10:12:41 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jul 30 11:10:20 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-home_controller_rb.html">app/controllers/home_controller.rb</a></td>
-            <td class='right_align'><tt>24</tt></td>
-            <td class='right_align'><tt>23</tt></td>
+            <td class='right_align'><tt>31</tt></td>
+            <td class='right_align'><tt>29</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -68,140 +68,182 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line3">3</a>   def index</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line3">3</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     @search = Search.new</pre></td>
+            <td><pre><a name="line4">4</a>   def index</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>     @search = Search.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>     @title = &quot;| Home&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a>   end</pre></td>
+            <td><pre><a name="line7">7</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a>   </pre></td>
+            <td><pre><a name="line8">8</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   def contact_form</pre></td>
+            <td><pre><a name="line9">9</a>   def contact_form</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     if request.method == :post</pre></td>
+            <td><pre><a name="line10">10</a>     @title = &quot;| Contact Form&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>       @email = params[&quot;email&quot;]</pre></td>
+            <td><pre><a name="line11">11</a>     if request.method == :post</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>       @message = params[&quot;message&quot;]</pre></td>
+            <td><pre><a name="line12">12</a>       @email = params[&quot;email&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>       if @email.blank? || @message.blank?</pre></td>
+            <td><pre><a name="line13">13</a>       @message = params[&quot;message&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>         flash[:notice] = &quot;Missing required fields (*)&quot;</pre></td>
+            <td><pre><a name="line14">14</a>       if @email.blank? || @message.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>         flash[:notice] = &quot;Missing required fields (*)&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>       else</pre></td>
+            <td><pre><a name="line16">16</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>         if @email =~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/</pre></td>
+            <td><pre><a name="line17">17</a>         if @email =~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>           Emailer.deliver_mobile_feedback(@email, @message)</pre></td>
+            <td><pre><a name="line18">18</a>           Emailer.deliver_mobile_feedback(@email, @message)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>           flash[:notice] = &quot;Thank you. We have received your message and will be responding soon&quot;</pre></td>
+            <td><pre><a name="line19">19</a>           flash[:notice] = &quot;Thank you for contacting USA.gov. We will respond to you within two business days.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>           @thank_you = true</pre></td>
+            <td><pre><a name="line20">20</a>           @thank_you = true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>         else</pre></td>
+            <td><pre><a name="line21">21</a>         else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>           flash[:notice] = &quot;Email address is not valid&quot;</pre></td>
+            <td><pre><a name="line22">22</a>           flash[:notice] = &quot;Email address is not valid&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>         end</pre></td>
+            <td><pre><a name="line23">23</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>       end</pre></td>
+            <td><pre><a name="line24">24</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a>     end</pre></td>
+            <td><pre><a name="line25">25</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       format.html { render :file =&gt; File.join(RAILS_ROOT, &quot;public&quot;, &quot;404.html&quot;), :status =&gt; 404 }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>       format.mobile</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a>   end</pre></td>
+            <td><pre><a name="line29">29</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a> end</pre></td>
+            <td><pre><a name="line30">30</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line31">31</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Jun 27 10:12:41 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jul 30 11:10:20 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

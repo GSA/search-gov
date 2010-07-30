@@ -123,7 +123,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     Query.find(:all, :select =&gt; &quot;DISTINCT query, count(*) AS total&quot;, :conditions =&gt; [&quot;timestamp BETWEEN ? AND ? AND affiliate=? AND locale=? AND query NOT IN (?) AND ipaddr NOT IN (?) #{ exclude_bots ? EXCLUDE_BOTS_CLAUSE : &quot;&quot; }&quot;, start_time, end_time, affiliate, locale, DEFAULT_EXCLUDED_QUERIES, DEFAULT_EXCLUDED_IPADDRESSES], :group =&gt; 'query', :order =&gt; 'total desc', :limit =&gt; result_count)</pre></td>
+            <td><pre><a name="line12">12</a>     Query.find(:all, :select =&gt; &quot;DISTINCT query, count(*) AS total&quot;, :conditions =&gt; [&quot;timestamp BETWEEN ? AND ? AND affiliate=? AND locale=? AND query NOT IN (?) AND ipaddr NOT IN (?) #{ exclude_bots ? EXCLUDE_BOTS_CLAUSE : &quot;&quot; }&quot;, start_time, end_time, affiliate, locale, DEFAULT_EXCLUDED_QUERIES, DEFAULT_EXCLUDED_IPADDRESSES], :joins =&gt; 'FORCE INDEX (timestamp)', :group =&gt; 'query', :order =&gt; 'total desc', :limit =&gt; result_count)</pre></td>
           </tr>
         
           
@@ -141,7 +141,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Sun Jun 27 10:12:41 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jul 30 11:10:20 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
