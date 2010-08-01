@@ -575,11 +575,8 @@ describe Search do
       end
 
       it "should have a related searches array" do
-        @search.related_search.size.should > 0
-        @search.related_search.first.title.should_not be_nil
-        @search.related_search.first.url.should_not be_nil
+        @search.related_search.should_not be_nil
       end
-
     end
 
     context "when the query contains an '&' character" do
@@ -593,13 +590,23 @@ describe Search do
     end
 
     context "when search results contain related searches" do
-
+      before do
+        RelatedQuery.create(:query => @valid_options[:query], :related_query => 'related', :score => 1.0)
+        ProcessedQuery.create(:query => 'governments', :times => 100, :day => Date.yesterday, :affiliate => 'usasearch.gov')
+      end
+      
+      it "should have a related searches array that is not nil and not empty" do
+        @search = Search.new(@valid_options)
+        @search.run
+        @search.related_search.should_not be_nil
+        @search.related_search.should_not be_empty
+      end
+      
       it "should filter block words from related searches" do
         BlockWord.should_receive(:filter).once
         @search = Search.new(@valid_options)
         @search.run
       end
-
     end
 
     context "when searching with really long queries" do
