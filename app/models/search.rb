@@ -101,9 +101,9 @@ class Search
       bing_related_search = bing_related_search_results(response)
       counter = 0
       usa_related_search_results.size.upto(5) do
-        usa_related_search_results << bing_related_search[counter]["Title"] if bing_related_search[counter].present?
+        usa_related_search_results << bing_related_search[counter]["Title"] if bing_related_search[counter].present? && !usa_related_search_results.include?(bing_related_search[counter]["Title"].downcase.gsub('<strong>', '').gsub('</strong>', ''))
         counter += 1
-      end
+      end if bing_related_search.present? && !bing_related_search.empty?
     end
     usa_related_search_results
   end
