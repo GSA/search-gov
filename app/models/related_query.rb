@@ -5,7 +5,7 @@ class RelatedQuery < ActiveRecord::Base
   before_save :normalize
   
   def self.search_for(query)
-    SessionRelatedQuery.find_all_by_query(query.downcase, :order => "score desc", :limit => 5)
+    RelatedQuery.find_all_by_query(query.downcase, :order => "score desc", :limit => 5)
   end
   
   def self.load_json(filename)
@@ -14,7 +14,7 @@ class RelatedQuery < ActiveRecord::Base
         parsed_line = JSON.parse(line)
         parsed_line.each do |query, related_queries|
           related_queries.each do |related_query, score|
-            SessionRelatedQuery.create(:query => query, :related_query => related_query, :score => score)
+            RelatedQuery.create(:query => query, :related_query => related_query, :score => score)
           end
         end
       end
