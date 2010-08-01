@@ -29,7 +29,7 @@
       %p= "Searches related to '#{h search.query}'"
       %ul
         - search.related_search.each_with_index do |result, index|
-          %li= tracked_click_link(shunt_from_bing_to_usasearch(result.url, @affiliate ),translate_bing_highlights(h(result.title)), search, nil, index, 'BREL')
+          %li= tracked_click_link(search_path(:query => result), translate_bing_highlights(h(result)), search, nil, index, 'BREL')
 
 - elsif search.error_message
   %p.noresults #{search.error_message}
