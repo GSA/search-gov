@@ -591,20 +591,40 @@ describe Search do
 
     context "when search results contain related searches" do
       before do
-        RelatedQuery.create(:query => @valid_options[:query], :related_query => 'related', :score => 1.0)
-        ProcessedQuery.create(:query => 'governments', :times => 100, :day => Date.yesterday, :affiliate => 'usasearch.gov')
+        RelatedSearch.stub!(:related_to).and_return ['related1', 'related2', 'related3']
+        @search = Search.new(@valid_options)
       end
       
       it "should have a related searches array that is not nil and not empty" do
-        @search = Search.new(@valid_options)
         @search.run
         @search.related_search.should_not be_nil
         @search.related_search.should_not be_empty
       end
       
+      it "should supplement related searches with related searches from Bing, up to five results" do
+        @search.should_receive(:bing_related_search_results).and_return [ResponseData.new("Title" => 'BingRelated1'), ResponseData.new("Title" => "BingRelated2"), ResponseData.new("Title" => 'BingRelated3')]
+        @search.run
+        @search.related_search.size.should == 5
+        @search.related_search.first.should == 'related1'
+        @search.related_search[1].should == 'related2'
+        @search.related_search[2].should == 'related3'
+        @search.related_search[3].should == 'BingRelated1'
+        @search.related_search.last.should == 'BingRelated2'
+      end
+      
+      it "should skip over Bing related searches that are the same as any of the related results from our related search, regardless markup and case" do
+        @search.should_receive(:bing_related_search_results).and_return [ResponseData.new("Title" => '<strong>Related1</strong>'), ResponseData.new("Title" => "BingRelated2"), ResponseData.new("Title" => 'BingRelated3')]
+        @search.run
+        @search.related_search.size.should == 5
+        @search.related_search.first.should == 'related1'
+        @search.related_search[1].should == 'related2'
+        @search.related_search[2].should == 'related3'
+        @search.related_search[3].should == 'BingRelated2'
+        @search.related_search.last.should == 'BingRelated3'
+      end
+      
       it "should filter block words from related searches" do
         BlockWord.should_receive(:filter).once
-        @search = Search.new(@valid_options)
         @search.run
       end
     end
