@@ -203,7 +203,7 @@ describe "searches/index.html.haml" do
       
       it "should display 'Results by Bing" do
         render
-        response.should contain(/Results by Bing/)
+        response.should contain(/Results by Search.USA.gov and Bing/)
       end
     end
   end
