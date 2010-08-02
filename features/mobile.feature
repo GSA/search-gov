@@ -39,7 +39,7 @@ Feature: Mobile Search
     When I fill in "query" with "social security"
     And I submit the search form
     Then I should be on the search page
-    And I should see "social security"
+    And I should see "Social Security"
     And I should see 3 search results
 
   Scenario: An advanced search on the mobile home page
@@ -108,20 +108,20 @@ Feature: Mobile Search
     Then I should be on the mobile contact form page
     And I should see "Thank you for contacting USA.gov. We will respond to you within two business days"
     And "musa.gov@mail.fedinfo.gov" should receive an email
-  
+
   Scenario: User does not provide some information for contact form
     Given I am on the mobile contact form page
     And I fill in "Email" with "mobileuser@usa.gov"
     And I press "Submit"
     Then I should see "Missing required fields (*)"
     And the "Email" field should contain "mobileuser@usa.gov"
-    
+
     When I am on the mobile contact form page
     And I fill in "Message" with "I love your site!"
     And I press "Submit"
     Then I should see "Missing required fields (*)"
     And the "Message" field should contain "I love your site!"
-    
+
     When I am on the mobile contact form page
     And I fill in "Email" with "bad email"
     And I fill in "Message" with "message"

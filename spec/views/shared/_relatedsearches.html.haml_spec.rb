@@ -2,9 +2,8 @@ require "#{File.dirname(__FILE__)}/../../spec_helper"
 describe "shared/_relatedsearches.html.haml" do
   before do
     @search = stub("Search")
-    @related_search.stub!(:title).and_return 'A Title'
-    @related_search.stub!(:url).and_return 'http://arelatedurl.com'
-    @search.stub!(:related_search).and_return [ @related_search, @related_search ]
+    @related_searches = %w{first | second | third}
+    @search.stub!(:related_search).and_return @related_searches
     @search.stub!(:queried_at_seconds).and_return(1271978870)
     assigns[:search] = @search
   end
@@ -41,7 +40,7 @@ describe "shared/_relatedsearches.html.haml" do
 
     it "should display related search results" do
       render :locals => { :search => @search }
-      response.should have_tag('h3', :text => 'Related Searches')
+      response.should have_tag('h3', :text => 'Related Topics')
       response.should have_tag('ul', :id => 'relatedsearch')
     end
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/block_word.rb</title>
+    <title>app/controllers/admin/affiliate_broadcasts_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/models/block_word.rb</h2>
+    <h2>app/controllers/admin/affiliate_broadcasts_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-block_word_rb.html">app/models/block_word.rb</a></td>
+            <td class="left_align"><a href="app-controllers-admin-affiliate_broadcasts_controller_rb.html">app/controllers/admin/affiliate_broadcasts_controller.rb</a></td>
             <td class='right_align'><tt>17</tt></td>
-            <td class='right_align'><tt>16</tt></td>
+            <td class='right_align'><tt>14</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,31 +57,31 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class BlockWord &lt; ActiveRecord::Base</pre></td>
+            <td><pre><a name="line1">1</a> class Admin::AffiliateBroadcastsController &lt; Admin::AdminController</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line2">2</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   validates_presence_of :word</pre></td>
+            <td><pre><a name="line3">3</a>   def new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   validates_uniqueness_of :word</pre></td>
+            <td><pre><a name="line4">4</a>     @affiliate_broadcast = AffiliateBroadcast.new</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>   validates_length_of :word, :within=&gt; (3..50)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>   validates_format_of :word, :with=&gt; /^[\w\s-]+$/i</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line5">5</a>   end</pre></td>
           </tr>
         
           
@@ -93,61 +93,61 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   def self.filter(results, key, number_of_records)</pre></td>
+            <td><pre><a name="line7">7</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     block_words = all</pre></td>
+            <td><pre><a name="line8">8</a>     @affiliate_broadcast = AffiliateBroadcast.new(params[:affiliate_broadcast].merge(:user=&gt;@current_user))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>     if @affiliate_broadcast.save</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>       flash[:success] = &quot;Message broadcasted to all affiliates successfully&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>       redirect_to admin_affiliates_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>     records = results.reject do |rs|</pre></td>
+            <td><pre><a name="line12">12</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>       block_words.detect do |bw|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>         sanitized_term = rs[key].gsub(/&lt;\/?[^&gt;]*&gt;/, '').gsub(/\xEE\x80\x80/, '').gsub(/\xEE\x80\x81/, '')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>         sanitized_term =~ /\b#{bw.word}\b/i</pre></td>
+            <td><pre><a name="line13">13</a>       render :action =&gt; 'new'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>     end unless results.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>     records[0, number_of_records] unless records.nil?</pre></td>
+            <td><pre><a name="line14">14</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>   end</pre></td>
+            <td><pre><a name="line15">15</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line16">16</a> </pre></td>
           </tr>
         
           
@@ -159,7 +159,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Wed Aug 11 18:49:15 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Aug 11 22:58:22 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

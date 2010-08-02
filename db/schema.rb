@@ -1,4 +1,4 @@
-# This file is auto-generated from the current state of the database. Instead of editing this file, 
+# This file is auto-generated from the current state of the database. Instead of editing this file,
 # please use the migrations feature of Active Record to incrementally modify your database, and
 # then regenerate this schema definition.
 #
@@ -86,6 +86,15 @@ ActiveRecord::Schema.define(:version => 20100805171609) do
   end
 
   add_index "boosted_sites", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"
+
+  create_table "calais_related_searches", :force => true do |t|
+    t.string   "term"
+    t.string   "related_terms", :limit => 4096
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "calais_related_searches", ["term"], :name => "index_calais_related_searches_on_term", :unique => true
 
   create_table "clicks", :force => true do |t|
     t.string   "query"

@@ -14,7 +14,7 @@ class Search
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:gov OR site:mil)"
   DEFAULT_FILTER_SETTING = 'strict'
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
-  VALID_SCOPES = %w{PatentClass} 
+  VALID_SCOPES = %w{ PatentClass }
 
   attr_accessor :query,
                 :page,
@@ -96,11 +96,13 @@ class Search
   protected
 
   def related_search_results(response)
-    begin
-      BlockWord.filter(response.related_search.results, "Title", 5)
-    rescue
-      return []
-    end
+    solr = CalaisRelatedSearch.search_for(self.query)
+    related_terms = solr.hits.first.instance.related_terms rescue ""
+    related_terms_array = related_terms.split('|')
+    related_terms_array.each{|t| t.strip!}
+    related_terms_array.delete(self.query)
+    related_terms_array.sort! {|x,y| y.length <=> x.length }
+    return related_terms_array[0,5].sort
   end
 
   def spelling_results(response)
@@ -213,7 +215,7 @@ class Search
   def affiliate_scope?
     affiliate && ((affiliate.domains.present? && query !~ /site:/) || valid_scope_id?)
   end
-  
+
   def valid_scope_id?
     self.scope_id.present? && VALID_SCOPES.include?(self.scope_id)
   end
@@ -237,7 +239,7 @@ class Search
     modules = []
     modules << "BWEB" unless self.total.zero?
     modules << "BSPEL" unless self.spelling_suggestion.nil?
-    modules << "BREL" unless self.related_search.nil? or self.related_search.empty?
+    modules << "CREL" unless self.related_search.nil? or self.related_search.empty?
     modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
     modules << "FORM" unless self.gov_forms.nil? or self.gov_forms.total.zero?
     modules << "SPOT" unless self.spotlight.nil?

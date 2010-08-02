@@ -5,7 +5,7 @@ Feature:  Administration
     Then I should see "Users"
     Then I should see "Affiliates"
     Then I should see "Affiliate Broadcast"
-    Then I should see "Related Search Blocked Words"
+    Then I should see "Calais Related Searches"
     Then I should see "SAYT Filters"
     Then I should see "SAYT Suggestions Bulk Upload"
     Then I should see "Boosted Sites"

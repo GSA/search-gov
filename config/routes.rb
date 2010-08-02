@@ -18,7 +18,6 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :affiliates, :active_scaffold => true
     admin.resources :affiliate_templates, :active_scaffold => true
     admin.resources :users, :active_scaffold => true
-    admin.resources :block_words, :active_scaffold => true
     admin.resources :sayt_filters, :active_scaffold => true
     admin.resources :sayt_suggestions, :active_scaffold => true
     admin.resources :misspellings, :active_scaffold => true
@@ -31,6 +30,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :faqs, :active_scaffold => true
     admin.resources :gov_forms, :active_scaffold => true
     admin.resources :clicks, :active_scaffold => true
+    admin.resources :calais_related_searches, :active_scaffold => true
   end
   map.affiliate_analytics_redirect '/admin/affiliates/:id/analytics', :controller => 'admin/affiliates', :action => 'analytics'
   map.admin_home_page '/admin', :controller => "admin/home"

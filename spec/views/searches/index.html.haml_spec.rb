@@ -169,11 +169,10 @@ describe "searches/index.html.haml" do
         end
       end
     end
-    
+
     context "when results have potential XSS attack code" do
       before do
         @dangerous_url = "http://www.first.army.mil/family/contentdisplayFAFP.asp?ContentID=133&SiteID=\"><script>alert(String.fromCharCode(88,83,83))</script>"
-        @sanitized_url = "http://www.first.army.mil/family/contentdisplayFAFP.asp?ContentID=133&SiteID=%22%3E%3Cscript%3Ealert(String.fromCharCode(88,83,83))%3C/script%3E"
         @sanitized_url = "http://www.first.army.mil/family/contentdisplayFAFP.asp?ContentID=133&SiteID=\"><script>alert(String.fromCharCode(88,83,83))</script>"
         @dangerous_title = "Dangerous Title"
         @dangerous_content = "Dangerous Content"
@@ -187,24 +186,12 @@ describe "searches/index.html.haml" do
         @search.stub!(:results).and_return @search_results
         @search_results << @search_result
       end
-      
+
       it "should escape the url" do
         render
         response.should_not contain(/onmousedown/)
       end
     end
-    
-    context "when related searches are available" do
-      before do
-        related_search = [ResponseData.new({"Title" => "Related Title", "Url" => "http://related.gov"})]
-        @search.stub!(:related_search).and_return related_search
-        @search.stub!(:results).and_return @search_results
-      end
-      
-      it "should display 'Results by Bing" do
-        render
-        response.should contain(/Results by Bing/)
-      end
-    end
+
   end
 end
