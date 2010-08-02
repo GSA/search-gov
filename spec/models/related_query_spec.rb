@@ -38,7 +38,7 @@ describe RelatedQuery do
   describe "#load_json" do
     context "when loading related searches as JSON" do
       before do
-        @filename = File.join(RAILS_ROOT + "/spec/fixtures/json/related_searches.json")
+        @filename = File.join(RAILS_ROOT + "/spec/fixtures/json/related_queries.json")
       end
   
       it "should create a new related search record for each of the pairs listed on each line, associated with the key" do

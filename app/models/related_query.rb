@@ -11,8 +11,11 @@ class RelatedQuery < ActiveRecord::Base
   def self.load_json(filename)
     File.open(filename) do |file|
       while line = file.gets
-        parsed_line = JSON.parse(line)
-        parsed_line.each do |query, related_queries|
+        line_parts = line.split("\t")
+        query = line_parts.first
+        json = line_parts.last
+        parsed_json = JSON.parse(json)
+        parsed_json.each do |fake_query, related_queries|
           related_queries.each do |related_query, score|
             RelatedQuery.create(:query => query, :related_query => related_query, :score => score)
           end
