@@ -233,7 +233,18 @@ When you are ready to deploy your experimental features on the labs.searchdemo.u
 
     git push origin labs
     
-and do a deploy of the labs stage:
+For our labs server, we use an EC2 instance.  The EC2 instance is not necessarily running all the time, so you may need to log on to the EC2 console and start it.  Here's a brief overview of what you'll need to do to start the instance:
+
+    1.  Log on to the Amazon EC2 console (contact Jay Virdy for login information)
+    2.  Start a new m1.small instance using the AMI called 'labs_server' (ami-55779c3c)
+    3.  Associate the instance with the IP address 184.72.238.88 by clicking on Elastic IPs -> Associate and selecting your instance id.
+    4.  Log onto the server as labs.  If you've been working on this project for a while, your public key is installed, so you just need to connect via ssh as the labs user to the IP address.
+    5.  Run the following command: sudo chmod a+rwx /dev/null
+    6.  Start Apache and MySQL: /etc/init.d/httpd start and /etc/init.d/mysql start
+    
+That's it!  Your labs server is now up and running, and is mapped to the labs.searchdemo.usa.gov domain name.  Visit http://labs.searchdemo.usa.gov in your browser to verify that it's working.
+
+Now, you'll want to deploy your changes to the labs server.  Do a deploy of the labs stage:
 
     cap labs deploy
 
