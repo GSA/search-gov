@@ -383,3 +383,43 @@ table.deep_links {
 table.deep_links td {
   vertical-align: top;
 }
+
+/* SAYT STYLES */
+
+.ac_results{
+  padding: 0px;
+  background: #fff;
+  z-index: 99999;
+  width: 274px;
+}
+  ul{
+    width: 288px;
+    background: #fff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #888;
+  }
+  li{
+    margin: 0px;
+    padding: 3px;
+    cursor: default;
+    display: block;
+    font: menu;
+    font-size: 18px;
+    text-align: left;
+  }
+
+.ac_loading{
+  background: white right center no-repeat;
+}
+.ac_over{
+  background-color: #ffb;
+}
+.ac_results ul strong.highlight{
+  color: #800;
+  margin: 0;
+  padding: 0;
+}
+
+/* SAYT STYLES END */
