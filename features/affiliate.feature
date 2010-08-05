@@ -350,22 +350,21 @@ Feature: Affiliate clients
      | name             | contact_email           | contact_name        |
      | aff.gov          | aff@bar.gov             | John Bar            |
     And the following DailyUsageStats exists for each day in the current month
-    | profile     | total_queries | total_clicks  | affiliate |
-    | Affiliates  | 1000          | 1000          | aff.gov   |
+    | profile     | total_queries | affiliate |
+    | Affiliates  | 1000          | aff.gov   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And I am on the user account page
     And I follow "Usage Stats"
     Then I should see the header for the current date
     And I should see the "aff.gov" queries total within "aff.gov_usage_stats"
-    And I should see the "aff.gov" clicks total within "aff.gov_usage_stats"
     
   Scenario: Viewing the Affiliates Monthly Reports page for a month in the past
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
      | aff.gov          | aff@bar.gov             | John Bar            |
     Given the following DailyUsageStats exist for each day in "2010-02"
-     | profile | total_queries | total_clicks  | affiliate  |
-     | Affiliates | 1000          | 1000          | aff.gov    |
+     | profile | total_queries  | affiliate  |
+     | Affiliates | 1000        | aff.gov    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And I am on the user account page
     And I follow "Usage Stats"
@@ -373,15 +372,14 @@ Feature: Affiliate clients
     And I press "Get Usage Stats"
     Then I should see the report header for "2010-02"
     And I should see the "aff.gov" "Queries" total within "aff.gov_usage_stats" with a total of "28,000"
-    And I should see the "aff.gov" "Click Throughs" total within "aff.gov_usage_stats" with a total of "28,000"
 
   Scenario: Viewing the Affiliates Monthly Reports page for a month in the future
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
      | aff.gov          | aff@bar.gov             | John Bar            |
     Given the following DailyUsageStats exist for each day in "2010-02"
-     | profile | total_queries | total_clicks  | affiliate  |
-     | Affiliates | 1000          | 1000          | aff.gov    |
+     | profile | total_queries  | affiliate  |
+     | Affiliates | 1000        | aff.gov    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And I am on the user account page
     And I follow "Usage Stats"

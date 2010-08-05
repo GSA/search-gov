@@ -51,8 +51,8 @@ Feature: Reports
 
   Scenario: Viewing Reports for a month in the past
     Given the following DailyUsageStats exist for each day in "2010-02"
-    | profile | total_queries | total_page_views  | total_unique_visitors | total_clicks  | affiliate     |
-    | English | 1000          | 1000              | 1000                  | 1000          | usasearch.gov |
+    | profile | total_queries | total_page_views  | total_unique_visitors | affiliate     |
+    | English | 1000          | 1000              | 1000                  | usasearch.gov |
     And I am logged in with email "analyst@fixtures.org" and password "admin"
     And I am on the reports homepage
     And I select "February 2010" as the report date

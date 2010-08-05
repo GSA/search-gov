@@ -1,7 +1,7 @@
 Given /^the following DailyUsageStats exist for yesterday:$/ do |table|
   DailyUsageStat.delete_all
   table.hashes.each do |hash|
-    DailyUsageStat.create(:day => Date.yesterday, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :total_clicks => hash["total_clicks"])
+    DailyUsageStat.create(:day => Date.yesterday, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"])
   end
 end
 
@@ -11,7 +11,7 @@ Given /^the following DailyUsageStats exists for each day in the current month$/
   table.hashes.each do |hash|
     Date.today.day.times do |index|
       date = today - index
-      DailyUsageStat.create(:day => date, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :total_clicks => hash["total_clicks"], :affiliate => hash["affiliate"])
+      DailyUsageStat.create(:day => date, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :affiliate => hash["affiliate"])
     end
   end
 end
@@ -21,7 +21,7 @@ Given /^the following DailyUsageStats exist for each day in "([^\"]*)"$/ do |mon
   month_date = Date.parse(month + "-01")
   table.hashes.each do |hash|
     (Date.new(Time.now.year,12,31).to_date<<(12-month_date.month)).day.times do |index|
-      DailyUsageStat.create(:day => month_date + index.days, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :total_clicks => hash["total_clicks"], :affiliate => hash["affiliate"])
+      DailyUsageStat.create(:day => month_date + index.days, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :affiliate => hash["affiliate"])
     end
   end
 end
