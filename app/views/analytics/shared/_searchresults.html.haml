@@ -1,5 +1,5 @@
 - if (@search_results.size > 0)
-  %p= "Results #{@starts_with ? "starting with" : "containing"} '#{h @search_query_term}'"
+  %p= "Matches for '#{h @search_query_term}'"
   %table
     %tr
       %th Query term

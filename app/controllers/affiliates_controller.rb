@@ -53,7 +53,7 @@ class AffiliatesController < AffiliateAuthController
   def embed_code
     @affiliate = Affiliate.find(params[:id])
   end
-  
+
   def analytics
     @num_results_qas = (request["num_results_qas"] || "10").to_i
     @num_results_dqs = (request["num_results_dqs"] || "10").to_i
@@ -62,23 +62,18 @@ class AffiliatesController < AffiliateAuthController
     @trailing_week_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 7, @num_results_dqs, @affiliate.name)
     @trailing_month_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 30, @num_results_dqs, @affiliate.name)
   end
-  
+
   def monthly_reports
     @today = Date.today
     @report_date = params[:date].blank? ? @today : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)
     @monthly_totals = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, @affiliate.name)
   end
-  
+
   def query_search
     @search_query_term = params["query"]
-    @search_results = []
-    unless @search_query_term.blank?
-      @starts_with = true
-      @starts_with = false if params["search_type"] && params["search_type"] == "contains"
-      @search_results = DailyQueryStat.most_popular_terms_like(@search_query_term, @starts_with, @affiliate.name)
-    end
+    @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term, @affiliate.name)
   end
-  
+
   def destroy
     @affiliate.destroy
     flash[:success]= "Affiliate deleted"
