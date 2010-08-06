@@ -34,9 +34,9 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.affiliate_analytics_redirect '/admin/affiliates/:id/analytics', :controller => 'admin/affiliates', :action => 'analytics'
   map.admin_home_page '/admin', :controller => "admin/home"
-  map.namespace(:analytics) do |admin|
-    admin.resources :query_groups, :active_scaffold => true
-    admin.resources :grouped_queries, :active_scaffold => true
+  map.namespace(:analytics) do |analytics|
+    analytics.resources :query_groups, :active_scaffold => true, :collection => { :bulk_add => :post }
+    analytics.resources :grouped_queries, :active_scaffold => true
   end
   map.root :controller => "home"
   map.analytics_home_page '/analytics', :controller => "analytics/home"

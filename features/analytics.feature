@@ -52,6 +52,39 @@ Feature: Analytics Homepage
     And in "dqs1" I should see "POTUS"
     And in "dqs1" I should see "10014"
 
+  Scenario: Doing a blank search from the home page
+    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And I am on the analytics homepage
+    And I press "Search"
+    Then I should be on the analytics query search results page
+    And I should see "Please enter search term(s)"
+    
+  Scenario: Bulk adding query terms from analytics search results to an existing query group
+    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And the following DailyQueryStats exist for yesterday:
+    | query                       | times   |
+    | obama                       | 10000   |
+    | health care bill            |  1000   |
+    | health care reform          |   100   |
+    | obama health care           |    10   |
+    | president                   |     4   |
+    | ignore me                   |     1   |
+    And the following query groups exist:
+    | group      | queries  |
+    | hcreform   | medicaid |
+    When I am on the analytics homepage
+    When I fill in "query" with "health care"
+    And I press "Search"
+    Then I should be on the analytics query search results page
+    When I check "bulk_add_health-care-bill"
+    And I check "bulk_add_health-care-reform"
+    And I check "bulk_add_obama-health-care"
+    And I select "hcreform" from "query_group_name"
+    And I press "Add to Query Group"
+    Then I should be on the analytics query search results page
+    And I should see "The following queries were added to the 'hcreform' query group:"
+    And I should see "obama health care, health care reform, health care bill"
+        
   Scenario: Visiting the FAQ page
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And I am on the analytics homepage
