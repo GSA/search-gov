@@ -537,13 +537,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>       queries = qg.grouped_queries.collect { |gq| &quot;'#{gq.query}'&quot; }.join(',')</pre></td>
+            <td><pre><a name="line81">81</a>       queries = qg.grouped_queries.collect { |gq| gq.query }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>       results = DailyQueryStat.sum(:times, :group =&gt; :day, :conditions =&gt; &quot;query in (#{queries}) AND affiliate = '#{DEFAULT_AFFILIATE_NAME}' AND locale = '#{I18n.default_locale.to_s}'&quot;, :order =&gt; &quot;day&quot;)</pre></td>
+            <td><pre><a name="line82">82</a>       results = DailyQueryStat.sum(:times, :group =&gt; :day, :conditions =&gt; [&quot;query IN (?) AND affiliate = ? AND locale = ?&quot;, queries, DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s], :order =&gt; &quot;day&quot;)</pre></td>
           </tr>
         
           
@@ -591,7 +591,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Mon Aug 09 08:43:42 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 10 07:52:19 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
