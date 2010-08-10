@@ -78,8 +78,8 @@ class DailyQueryStat < ActiveRecord::Base
 
     def collect_query_group_named(name)
       qg = QueryGroup.find_by_name(name)
-      queries = qg.grouped_queries.collect { |gq| "'#{gq.query}'" }.join(',')
-      results = DailyQueryStat.sum(:times, :group => :day, :conditions => "query in (#{queries}) AND affiliate = '#{DEFAULT_AFFILIATE_NAME}' AND locale = '#{I18n.default_locale.to_s}'", :order => "day")
+      queries = qg.grouped_queries.collect { |gq| gq.query }
+      results = DailyQueryStat.sum(:times, :group => :day, :conditions => ["query IN (?) AND affiliate = ? AND locale = ?", queries, DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s], :order => "day")
       dqs=[]
       results.each_pair { |day, times| dqs << DailyQueryStat.new(:day=> day, :times => times, :affiliate => DEFAULT_AFFILIATE_NAME, :locale => I18n.default_locale.to_s) }
       dqs

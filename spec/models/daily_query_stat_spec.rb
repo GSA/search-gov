@@ -229,6 +229,23 @@ describe DailyQueryStat do
       results.first.day.should == Date.yesterday
       results.first.times.should == 11
     end
+    
+    context "when one of the queries has a single quote in it" do
+      before do
+        DailyQueryStat.create(:query => "jobs", :day => Date.yesterday, :times => 20, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'en')
+        DailyQueryStat.create(:query => "job's", :day => Date.yesterday, :times => 25, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'en')
+        query_group = QueryGroup.create!(:name => 'group2')
+        query_group.grouped_queries << GroupedQuery.create!(:query => "jobs")
+        query_group.grouped_queries << GroupedQuery.create!(:query => "job's")
+      end
+      
+      it "should return results normally" do
+        results = DailyQueryStat.collect_query_group_named("group2")
+        results.size.should == 1
+        results.first.day.should == Date.yesterday
+        results.first.times.should == 45
+      end
+    end 
   end
 
 end
