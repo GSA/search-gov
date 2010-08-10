@@ -11,7 +11,7 @@ module ActiveScaffold::Config
     # global level configuration
     # --------------------------
     cattr_accessor :link
-    @@link = ActiveScaffold::DataStructures::ActionLink.new('show', :label => :show, :type => :record, :security_method => :show_authorized?)
+    @@link = ActiveScaffold::DataStructures::ActionLink.new('show', :label => :show, :type => :member, :security_method => :show_authorized?)
     # instance-level configuration
     # ----------------------------
 
@@ -28,9 +28,7 @@ module ActiveScaffold::Config
       self.columns = @core.columns._inheritable unless @columns # lazy evaluation
       @columns
     end
-    def columns=(val)
-      @columns = ActiveScaffold::DataStructures::ActionColumns.new(*val)
-      @columns.action = self
-    end
+    
+    public :columns=
   end
 end

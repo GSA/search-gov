@@ -26,6 +26,7 @@ module ActionView #:nodoc:
       if args.first == :super
         options = args[1] || {}
         options[:locals] ||= {}
+        options[:locals].reverse_merge! @local_assigns
 
         known_extensions = [:erb, :rhtml, :rjs, :haml]
         # search through call stack for a template file (normally matches on first caller)
@@ -33,6 +34,7 @@ module ActionView #:nodoc:
         # solution is to count colons from the *right* of the string, not the left. see issue #299.
         template_path = caller.find{|c| known_extensions.include?(c.split(':')[-3].split('.').last.to_sym) }
         template = File.basename(template_path.split(':')[-3])
+        template, format = template.split('.')
 
         # paths previous to current template_path must be ignored to avoid infinite loops when is called twice or more
         index = 0
@@ -40,10 +42,8 @@ module ActionView #:nodoc:
           index = i + 1 and break if template_path.include? active_scaffold_template_path
         end
 
-        controller.class.active_scaffold_paths.slice(index..-1).each do |active_scaffold_template_path|
-          active_scaffold_template = File.join(active_scaffold_template_path, template)
-          return render(:file => active_scaffold_template, :locals => options[:locals]) if File.file? active_scaffold_template
-        end
+        active_scaffold_template = controller.class.active_scaffold_paths.slice(index..-1).find_template(template, format, false)
+        render(:file => active_scaffold_template, :locals => options[:locals])
       elsif args.first.is_a?(Hash) and args.first[:active_scaffold]
         require 'digest/md5'
         options = args.first
@@ -85,4 +85,15 @@ module ActionView #:nodoc:
       end
     end
   end
+end
+
+module ActionView::Renderable
+  def render_with_active_scaffold(view, local_assigns = {})
+    old_local_assigns = view.instance_variable_get(:@local_assigns)
+    view.instance_variable_set(:@local_assigns, local_assigns)
+    output = render_without_active_scaffold(view, local_assigns)
+    view.instance_variable_set(:@local_assigns, old_local_assigns)
+    output
+  end
+  alias_method_chain :render, :active_scaffold
 end

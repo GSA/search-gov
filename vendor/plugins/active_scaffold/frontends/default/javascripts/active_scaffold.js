@@ -8,6 +8,8 @@ if (Prototype.Version.substring(0, 3) != '1.6')
   warning = "ActiveScaffold Error: Prototype version 1.6.x is required. Please update prototype.js (rake rails:update:javascripts).";
   alert(warning);
 }
+if (!Element.Methods.highlight) Element.addMethods({highlight: Prototype.emptyFunction});
+
 
 /*
  * Simple utility methods
@@ -48,9 +50,8 @@ var ActiveScaffold = {
     }
   },
   reload_if_empty: function(tbody, url) {
-    var content_container_id = tbody.replace('tbody', 'content');
     if (this.records_for(tbody).length == 0) {
-      new Ajax.Updater($(content_container_id), url, {
+      new Ajax.Request(url, {
         method: 'get',
         asynchronous: true,
         evalScripts: true
@@ -70,12 +71,19 @@ var ActiveScaffold = {
   decrement_record_count: function(scaffold_id) {
     // decrement the last record count, firsts record count are in nested lists
     count = $$('#' + scaffold_id + ' span.active-scaffold-records').last();
-    count.innerHTML = parseInt(count.innerHTML) - 1;
+    if (count) count.update(parseInt(count.innerHTML, 10) - 1);
   },
   increment_record_count: function(scaffold_id) {
     // increment the last record count, firsts record count are in nested lists
     count = $$('#' + scaffold_id + ' span.active-scaffold-records').last();
-    count.innerHTML = parseInt(count.innerHTML) + 1;
+    if (count) count.update(parseInt(count.innerHTML, 10) + 1);
+  },
+  update_row: function(row, html) {
+    row = $(row);
+    Element.replace(row, html);
+    var new_row = $(row.id);
+    if (row.hasClassName('even-record')) new_row.addClassName('even-record');
+    new_row.highlight();
   },
 
   server_error_response: '',
@@ -166,8 +174,7 @@ Element.Methods.Simulated = {
  * A set of links. As a set, they can be controlled such that only one is "open" at a time, etc.
  */
 ActiveScaffold.Actions = new Object();
-ActiveScaffold.Actions.Abstract = function(){}
-ActiveScaffold.Actions.Abstract.prototype = {
+ActiveScaffold.Actions.Abstract = Class.create({
   initialize: function(links, target, loading_indicator, options) {
     this.target = $(target);
     this.loading_indicator = $(loading_indicator);
@@ -180,15 +187,14 @@ ActiveScaffold.Actions.Abstract.prototype = {
   instantiate_link: function(link) {
     throw 'unimplemented'
   }
-}
+});
 
 /**
  * A DataStructures::ActionLink, represented in JavaScript.
  * Concerned with AJAX-enabling a link and adapting the result for insertion into the table.
  */
 ActiveScaffold.ActionLink = new Object();
-ActiveScaffold.ActionLink.Abstract = function(){}
-ActiveScaffold.ActionLink.Abstract.prototype = {
+ActiveScaffold.ActionLink.Abstract = Class.create({
   initialize: function(a, target, loading_indicator) {
     this.tag = $(a);
     this.url = this.tag.href;
@@ -197,6 +203,8 @@ ActiveScaffold.ActionLink.Abstract.prototype = {
       this.method = 'delete';
     } else if(this.url.match('_method=post')){
       this.method = 'post';
+    } else if(this.url.match('_method=put')){
+      this.method = 'put';
     }
     this.target = target;
     this.loading_indicator = loading_indicator;
@@ -226,37 +234,37 @@ ActiveScaffold.ActionLink.Abstract.prototype = {
     }
   },
 
-	open_action: function() {
-		if (this.position) this.disable();
+  open_action: function() {
+    if (this.position) this.disable();
 
-		if (this.page_link) {
-			window.location = this.url;
-		} else {
-			if (this.loading_indicator) this.loading_indicator.style.visibility = 'visible';
-	    new Ajax.Request(this.url, {
-	      asynchronous: true,
-	      evalScripts: true,
-              method: this.method,
-	      onSuccess: function(request) {
-	        if (this.position) {
-	          this.insert(request.responseText);
-	          if (this.hide_target) this.target.hide();
-	        } else {
-	          request.evalResponse();
-	        }
-	      }.bind(this),
+    if (this.page_link) {
+      window.location = this.url;
+    } else {
+      if (this.loading_indicator) this.loading_indicator.style.visibility = 'visible';
+      new Ajax.Request(this.url, {
+        asynchronous: true,
+        evalScripts: true,
+        method: this.method,
+        onSuccess: function(request) {
+          if (this.position) {
+            this.insert(request.responseText);
+            if (this.hide_target) this.target.hide();
+          } else {
+            request.evalResponse();
+          }
+        }.bind(this),
 
-	      onFailure: function(request) {
-	        ActiveScaffold.report_500_response(this.scaffold_id());
-	        if (this.position) this.enable()
-	      }.bind(this),
+        onFailure: function(request) {
+          ActiveScaffold.report_500_response(this.scaffold_id());
+          if (this.position) this.enable()
+        }.bind(this),
 
-	      onComplete: function(request) {
-	        if (this.loading_indicator) this.loading_indicator.style.visibility = 'hidden';
-	      }.bind(this)
-			});
-		}
-	},
+        onComplete: function(request) {
+          if (this.loading_indicator) this.loading_indicator.style.visibility = 'hidden';
+        }.bind(this)
+      });
+    }
+  },
 
   insert: function(content) {
     throw 'unimplemented'
@@ -266,6 +274,11 @@ ActiveScaffold.ActionLink.Abstract.prototype = {
     this.enable();
     this.adapter.remove();
     if (this.hide_target) this.target.show();
+  },
+
+  close_handler: function(event) {
+    this.close();
+    if (event) Event.stop(event);
   },
 
   register_cancel_hooks: function() {
@@ -304,13 +317,12 @@ ActiveScaffold.ActionLink.Abstract.prototype = {
   scaffold_id: function() {
     return this.tag.up('div.active-scaffold').id;
   }
-}
+});
 
 /**
  * Concrete classes for record actions
  */
-ActiveScaffold.Actions.Record = Class.create();
-ActiveScaffold.Actions.Record.prototype = Object.extend(new ActiveScaffold.Actions.Abstract(), {
+ActiveScaffold.Actions.Record = Class.create(ActiveScaffold.Actions.Abstract, {
   instantiate_link: function(link) {
     var l = new ActiveScaffold.ActionLink.Record(link, this.target, this.loading_indicator);
     l.refresh_url = this.options.refresh_url;
@@ -324,11 +336,13 @@ ActiveScaffold.Actions.Record.prototype = Object.extend(new ActiveScaffold.Actio
   }
 });
 
-ActiveScaffold.ActionLink.Record = Class.create();
-ActiveScaffold.ActionLink.Record.prototype = Object.extend(new ActiveScaffold.ActionLink.Abstract(), {
+ActiveScaffold.ActionLink.Record = Class.create(ActiveScaffold.ActionLink.Abstract, {
   close_previous_adapter: function() {
     this.set.links.each(function(item) {
-      if (item.url != this.url && item.is_disabled() && item.adapter) item.close();
+      if (item.url != this.url && item.is_disabled() && item.adapter) {
+        item.enable();
+        item.adapter.remove();
+      }
     }.bind(this));
   },
 
@@ -355,32 +369,28 @@ ActiveScaffold.ActionLink.Record.prototype = Object.extend(new ActiveScaffold.Ac
     this.adapter.down('a.inline-adapter-close').observe('click', this.close_handler.bind(this));
     this.register_cancel_hooks();
 
-    new Effect.Highlight(this.adapter.down('td'));
+    this.adapter.down('td').down().highlight();
   },
 
-  close_handler: function(event) {
-    this.close_with_refresh();
-    if (event) Event.stop(event);
-  },
-
-  /* it might simplify things to just override the close function. then the Record and Table links could share more code ... wouldn't need custom close_handler functions, for instance */
-  close_with_refresh: function() {
-    new Ajax.Request(this.refresh_url, {
-      asynchronous: true,
-      evalScripts: true,
-      method: this.method,
-      onSuccess: function(request) {
-        Element.replace(this.target, request.responseText);
-        var new_target = $(this.target.id);
-        if (this.target.hasClassName('even-record')) new_target.addClassName('even-record');
-        this.target = new_target;
-        this.close();
-      }.bind(this),
-
-      onFailure: function(request) {
-        ActiveScaffold.report_500_response(this.scaffold_id());
-      }
-    });
+  close: function($super, updatedRow) {
+    if (updatedRow) {
+      ActiveScaffold.update_row(this.target, updatedRow);
+      $super();
+    } else {
+      new Ajax.Request(this.refresh_url, {
+        asynchronous: true,
+        evalScripts: true,
+        method: this.method,
+        onSuccess: function(request) {
+          ActiveScaffold.update_row(this.target, request.responseText);
+          $super();
+        }.bind(this),
+  
+        onFailure: function(request) {
+          ActiveScaffold.report_500_response(this.scaffold_id());
+        }
+      });
+    }
   },
 
   enable: function() {
@@ -401,8 +411,7 @@ ActiveScaffold.ActionLink.Record.prototype = Object.extend(new ActiveScaffold.Ac
 /**
  * Concrete classes for table actions
  */
-ActiveScaffold.Actions.Table = Class.create();
-ActiveScaffold.Actions.Table.prototype = Object.extend(new ActiveScaffold.Actions.Abstract(), {
+ActiveScaffold.Actions.Table = Class.create(ActiveScaffold.Actions.Abstract, {
   instantiate_link: function(link) {
     var l = new ActiveScaffold.ActionLink.Table(link, this.target, this.loading_indicator);
     if (l.position) l.url = l.url.append_params({adapter: '_list_inline_adapter'});
@@ -410,8 +419,7 @@ ActiveScaffold.Actions.Table.prototype = Object.extend(new ActiveScaffold.Action
   }
 });
 
-ActiveScaffold.ActionLink.Table = Class.create();
-ActiveScaffold.ActionLink.Table.prototype = Object.extend(new ActiveScaffold.ActionLink.Abstract(), {
+ActiveScaffold.ActionLink.Table = Class.create(ActiveScaffold.ActionLink.Abstract, {
   insert: function(content) {
     if (this.position == 'top') {
       new Insertion.Top(this.target, content);
@@ -424,29 +432,35 @@ ActiveScaffold.ActionLink.Table.prototype = Object.extend(new ActiveScaffold.Act
     this.adapter.down('a.inline-adapter-close').observe('click', this.close_handler.bind(this));
     this.register_cancel_hooks();
 
-    new Effect.Highlight(this.adapter.down('td'));
-  },
-
-  close_handler: function(event) {
-    this.close();
-    if (event) Event.stop(event);
+    this.adapter.down('td').down().highlight();
   }
 });
 
+if (Ajax.InPlaceEditor) {
 ActiveScaffold.InPlaceEditor = Class.create(Ajax.InPlaceEditor, {
   setFieldFromAjax: function(url, options) {
-    this._controls.editor.remove();
+    var ipe = this;
+    $(ipe._controls.editor).remove();
     new Ajax.Request(url, {
       method: 'get',
       onComplete: function(response) {
-        this._form.insert({top: response.responseText});
-        var fld = this._form.findFirstElement();
-        fld.name = this.options.paramName;
-        fld.className = 'editor_field';
-        if (this.options.submitOnBlur)
-          fld.onblur = this._boundSubmitHandler;
-        this._controls.editor = fld;
-      }.bind(this)
+        ipe._form.insert({top: response.responseText});
+        if (options.plural) {
+          ipe._form.getElements().each(function(el) {
+            if (el.type != "submit" && el.type != "image") {
+              el.name = ipe.options.paramName + '[]';
+              el.className = 'editor_field';
+            }
+          });
+        } else {
+          var fld = ipe._form.findFirstElement();
+          fld.name = ipe.options.paramName;
+          fld.className = 'editor_field';
+          if (ipe.options.submitOnBlur)
+            fld.onblur = ipe._boundSubmitHandler;
+          ipe._controls.editor = fld;
+        }
+      }
     });
   },
 
@@ -464,7 +478,7 @@ ActiveScaffold.InPlaceEditor = Class.create(Ajax.InPlaceEditor, {
     this.setValue(fld, this._controls.editor.value);
     if (this.options.submitOnBlur)
       fld.onblur = this._boundSubmitHandler;
-    this._controls.editor.remove();
+    $(this._controls.editor).remove();
     this._controls.editor = fld;
     this._form.appendChild(this._controls.editor);
 
@@ -515,3 +529,4 @@ ActiveScaffold.InPlaceEditor = Class.create(Ajax.InPlaceEditor, {
     }
   }
 });
+}

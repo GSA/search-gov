@@ -24,18 +24,18 @@ module ActiveScaffold::Actions
 
     def do_search
       unless params[:search].nil?
-        like_pattern = active_scaffold_config.field_search.full_text_search? ? '%?%' : '?%'
+        text_search = active_scaffold_config.field_search.text_search
         search_conditions = []
         columns = active_scaffold_config.field_search.columns
         columns.each do |column|
-          search_conditions << self.class.condition_for_column(column, params[:search][column.name], like_pattern)
+          search_conditions << self.class.condition_for_column(column, params[:search][column.name], text_search)
         end
         search_conditions.compact!
         self.active_scaffold_conditions = merge_conditions(self.active_scaffold_conditions, *search_conditions)
         @filtered = !search_conditions.blank?
 
         includes_for_search_columns = columns.collect{ |column| column.includes}.flatten.uniq.compact
-        self.active_scaffold_joins.concat includes_for_search_columns
+        self.active_scaffold_includes.concat includes_for_search_columns
 
         active_scaffold_config.list.user.page = nil
       end

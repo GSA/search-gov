@@ -47,6 +47,11 @@ module ActiveScaffold
       end
 
       columns.each :for => parent_record, :action => action, :flatten => true do |column|
+        # Set any passthrough parameters that may be associated with this column (ie, file column "keep" and "temp" attributes)
+        unless column.params.empty?
+          column.params.each{|p| parent_record.send("#{p}=", attributes[p]) if attributes.has_key? p}
+        end
+
         if multi_parameter_attributes.has_key? column.name
           parent_record.send(:assign_multiparameter_attributes, multi_parameter_attributes[column.name])
         elsif attributes.has_key? column.name
@@ -55,11 +60,6 @@ module ActiveScaffold
           # we avoid assigning a value that already exists because otherwise has_one associations will break (AR bug in has_one_association.rb#replace)
           parent_record.send("#{column.name}=", value) unless column.through_association? or parent_record.send(column.name) == value
           
-          # Set any passthrough parameters that may be associated with this column (ie, file column "keep" and "temp" attributes)
-          unless column.params.empty?
-            column.params.each{|p| parent_record.send("#{p}=", attributes[p])}
-          end
-
         # plural associations may not actually appear in the params if all of the options have been unselected or cleared away.
         # NOTE: the "form_ui" check isn't really necessary, except that without it we have problems
         # with subforms. the UI cuts out deep associations, which means they're not present in the
@@ -111,7 +111,10 @@ module ActiveScaffold
         elsif column.singular_association?
           manage_nested_record_from_params(parent_record, column, value)
         elsif column.plural_association?
-          value.collect {|key_value_pair| manage_nested_record_from_params(parent_record, column, key_value_pair[1])}.compact
+          # sort by id or temporary id so new records are created in the same order as user write them
+          value.sort.collect {|key_value_pair| manage_nested_record_from_params(parent_record, column, key_value_pair[1])}.compact
+        else
+          value
         end
       else
         if column.singular_association?
@@ -120,13 +123,20 @@ module ActiveScaffold
         elsif column.plural_association?
           # it's an array of ids
           column.association.klass.find(value) if value and not value.empty?
-        elsif column.column && column.column.number? && [:i18n_number, :currency].include?(column.options[:format])
-          native = '.'
-          delimiter = I18n.t('number.format.delimiter')
-          separator = I18n.t('number.format.separator')
-
-          unless delimiter == native && !value.include?(separator) && value !~ /\.\d{3}$/
-            value.gsub(/[^0-9\-#{I18n.t('number.format.separator')}]/, '').gsub(I18n.t('number.format.separator'), native)
+        elsif column.column && column.column.number? && column.options[:format]
+          native = '.' # native ruby separator
+          format = {:separator => '', :delimiter => ''}.merge! I18n.t('number.format', :default => {})
+          specific = case column.options[:format]
+          when :currency
+            I18n.t('number.currency.format', :default => nil)
+          when :size
+            I18n.t('number.human.format', :default => nil)
+          when :percentage
+            I18n.t('number.percentage.format', :default => nil)
+          end
+          format.merge! specific unless specific.nil?
+          unless format[:separator].blank? || !value.include?(format[:separator]) && value.include?(native) && (format[:delimiter] != native || value !~ /\.\d{3}$/)
+            value.gsub(/[^0-9\-#{format[:separator]}]/, '').gsub(format[:separator], native)
           else
             value
           end
@@ -146,7 +156,7 @@ module ActiveScaffold
     def find_or_create_for_params(params, parent_column, parent_record)
       current = parent_record.send(parent_column.name)
       klass = parent_column.association.klass
-      return nil if parent_column.show_blank_record and attributes_hash_is_empty?(params, klass)
+      return nil if parent_column.show_blank_record?(current) and attributes_hash_is_empty?(params, klass)
 
       if params.has_key? :id
         # modifying the current object of a singular association
