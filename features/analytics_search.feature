@@ -60,8 +60,10 @@ Feature: Analytics Search
     | president                   |     4   |
     | ignore me                   |     1   |
     And the following query groups exist:
-    | group      | queries  |
-    | hcreform   | medicaid |
+    | group     | queries            |
+    | hcreform  | medicaid           |
+    | hcreform  | obama health care  |
+    | no_dups   | blargh             |
     When I am on the analytics homepage
     When I fill in "query" with "health care"
     And I press "Search"
@@ -71,10 +73,19 @@ Feature: Analytics Search
     And I check "bulk_add_obama-health-care"
     And I select "hcreform" from "query_group_name"
     And I press "Add to Query Group"
+    Then I should be on the analytics homepage
+    And I should see "2 queries added to group 'hcreform'; 1 duplicates ignored."
+    
+    When I fill in "query" with "health care"
+    And I press "Search"
     Then I should be on the analytics query search results page
-    And I should see "The following queries were added to the 'hcreform' query group:"
-    And I should see "obama health care, health care reform, health care bill"
-
+    When I check "bulk_add_health-care-bill"
+    And I check "bulk_add_obama-health-care"
+    And I select "no_dups" from "query_group_name"
+    And I press "Add to Query Group"
+    Then I should be on the analytics homepage
+    And I should see "2 queries added to group 'no_dups'"
+    
   Scenario: Getting empty results from a search on the analytics home page
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And I am on the analytics homepage

@@ -36,7 +36,6 @@ describe Analytics::QuerySearchesController do
         
         it "should output those query terms without markup" do
           get :index, :query => 'obama'
-          puts "BODY: #{response.body}"
           response.body.should contain(/<b>obama<\/b>/)
         end
       end
