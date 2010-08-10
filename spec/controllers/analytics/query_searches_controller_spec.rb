@@ -26,7 +26,20 @@ describe Analytics::QuerySearchesController do
 
         should_render_template 'analytics/query_searches/index.html.haml', :layout => 'analytics'
       end
-
+      
+      context "when some of the matching query terms contain HTML markup" do
+        integrate_views
+        before do
+          DailyQueryStat.create(:query => "<b>obama</b>", :day => Date.yesterday, :times => 100, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'en')
+          DailyQueryStat.reindex
+        end
+        
+        it "should output those query terms without markup" do
+          get :index, :query => 'obama'
+          puts "BODY: #{response.body}"
+          response.body.should contain(/<b>obama<\/b>/)
+        end
+      end
     end
   end
 end
