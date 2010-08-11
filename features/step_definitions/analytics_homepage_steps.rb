@@ -1,5 +1,6 @@
 Given /^there are no daily query stats$/ do
   DailyQueryStat.delete_all
+  DailyQueryStat.reindex
 end
 
 Given /^there are no query accelerations stats$/ do
@@ -20,6 +21,7 @@ Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
       [1, 7, 30].each { |window_size| MovingQuery.create(:day => day, :query => word, :window_size => window_size, :times => window_size * times, :mean => 1.0, :std_dev => 0.001) }
     end
   end
+  DailyQueryStat.reindex
 end
 
 Given /^the following DailyQueryStats exist:$/ do |table|
@@ -31,8 +33,8 @@ Given /^the following DailyQueryStats exist:$/ do |table|
                           :affiliate => hash["affiliate"].nil? ? DailyQueryStat::DEFAULT_AFFILIATE_NAME : hash["affiliate"],
                           :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
   end
+  DailyQueryStat.reindex
 end
-
 
 Given /^the following query groups exist:$/ do |table|
   table.hashes.each do |hash|
