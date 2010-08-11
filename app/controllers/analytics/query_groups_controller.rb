@@ -2,6 +2,7 @@ class Analytics::QueryGroupsController < Analytics::AnalyticsController
   active_scaffold :query_group do |config|
     config.columns = [:name, :updated_at, :grouped_queries]
     config.list.sorting = { :name => :asc }
+    config.action_links.add "bulk_edit", :label => "Bulk Edit", :type => :member, :page => true
   end
   
   def bulk_add
@@ -17,6 +18,35 @@ class Analytics::QueryGroupsController < Analytics::AnalyticsController
     end
     flash[:notice] = flash_notice(query_terms, duplicate_count, query_group.name)
     redirect_to analytics_home_page_path
+  end
+  
+  def bulk_edit
+    @query_group = QueryGroup.find(params[:id])
+    if params[:grouped_queries_text].present?
+      updated_queries = params[:grouped_queries_text].split("\n").collect{|query| query.chomp }
+      # remove queries that are no longer in the list
+      remove_list = []
+      @query_group.grouped_queries.each do |grouped_query|        
+        if !updated_queries.include?(grouped_query.query)
+          remove_list << grouped_query
+        end
+      end
+      @query_group.grouped_queries.delete(remove_list)
+      # add in new queries
+      update_count = 0
+      updated_queries.each do |query|
+        if query.present? && @query_group.grouped_queries.find_by_query(query).nil?
+          @query_group.grouped_queries << GroupedQuery.find_or_create_by_query(query)
+          update_count += 1
+        end
+      end
+      flash[:notice] = "#{update_count} queries added, #{remove_list.size} queries removed."
+      @query_group.save
+    elsif request.method == :post
+      flash[:notice] = "#{@query_group.grouped_queries.size} queries removed."
+      @query_group.grouped_queries.delete_all
+    end
+    @grouped_queries_text = @query_group.grouped_queries.find(:all, :order => 'query ASC').collect{|grouped_query| grouped_query.query }.join("\n")
   end
   
   private
