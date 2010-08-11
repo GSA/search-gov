@@ -71,7 +71,10 @@ class AffiliatesController < AffiliateAuthController
 
   def query_search
     @search_query_term = params["query"]
-    @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term, @affiliate.name)
+    @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term,
+                                                                 Date.parse(params["analytics_search_start_date"]),
+                                                                 Date.parse(params["analytics_search_end_date"]),
+                                                                 @affiliate.name)
   end
 
   def destroy

@@ -11,9 +11,9 @@ describe Analytics::QuerySearchesController do
 
     describe "#index" do
 
-      context "when a search query term is passed in" do
+      context "when a search query term and start/end dates are passed in" do
         before do
-          get :index, :query => "social security"
+          get :index, :query => "social security", :analytics_search_start_date => "August 11, 2010", :analytics_search_end_date => "August 21, 2010"
         end
 
         it "should set the search query term" do
@@ -26,16 +26,16 @@ describe Analytics::QuerySearchesController do
 
         should_render_template 'analytics/query_searches/index.html.haml', :layout => 'analytics'
       end
-      
+
       context "when some of the matching query terms contain HTML markup" do
         integrate_views
         before do
-          DailyQueryStat.create(:query => "<b>obama</b>", :day => Date.yesterday, :times => 100, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'en')
+          DailyQueryStat.create(:query => "<b>obama</b>", :day => Date.parse("August 12, 2010"), :times => 100, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'en')
           DailyQueryStat.reindex
         end
-        
+
         it "should output those query terms without markup" do
-          get :index, :query => 'obama'
+          get :index, :query => 'obama', :analytics_search_start_date => "August 11, 2010", :analytics_search_end_date => "August 21, 2010"
           response.body.should contain(/<b>obama<\/b>/)
         end
       end

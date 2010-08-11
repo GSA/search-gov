@@ -14,19 +14,19 @@ class DailyQueryStat < ActiveRecord::Base
 
   class << self
 
-    def search_for(query, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s, start_date = 1.year.ago, end_date = Date.today)
+    def search_for(query, start_date = 1.year.ago, end_date = Date.today, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       search do
         with :affiliate, affiliate_name
         with :locale, locale
         with(:day).between(start_date..end_date)
         keywords query
-        paginate :page => 1, :per_page => 50000
+        paginate :page => 1, :per_page => 3000
       end rescue nil
     end
 
-    def query_counts_for_terms_like(query, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s, start_date = 1.year.ago, end_date = Date.today)
+    def query_counts_for_terms_like(query, start_date = 1.year.ago, end_date = Date.today, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       unless query.blank?
-        solr_search_results = search_for query, affiliate_name, locale, start_date, end_date
+        solr_search_results = search_for query, start_date, end_date, affiliate_name, locale
         return sum(:times,
                    :group => :query,
                    :conditions => "id in (#{solr_search_results.results.collect(& :id).join(',')})",
