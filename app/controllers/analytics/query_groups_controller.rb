@@ -46,7 +46,7 @@ class Analytics::QueryGroupsController < Analytics::AnalyticsController
       flash[:notice] = "#{@query_group.grouped_queries.size} queries removed."
       @query_group.grouped_queries.delete_all
     end
-    @grouped_queries_text = @query_group.grouped_queries.find(:all, :order => 'query ASC').collect{|grouped_query| grouped_query.query }.join("\n")
+    @grouped_queries_text = @query_group.grouped_queries.reload.collect{|grouped_query| grouped_query.query }.join("\n")
   end
   
   private
