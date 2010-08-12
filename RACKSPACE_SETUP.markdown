@@ -4,6 +4,10 @@ These are the steps I took to get the staging, production, and disaster recovery
 
 ## Initial changes/tweaks to Redhat5.4
 
+Install XML parsing libraries
+
+    sudo yum install -y libxml2 libxml2-devel libxslt libxslt-devel curl-devel
+
 Comment out these lines with visudo, or Capistrano won't work (it has no tty, and it needs to inherit PATH from the parent environment):
 
     #Defaults    requiretty
@@ -116,7 +120,7 @@ Compile mysql gem
 
 Install some other gems that seem to require manual installation
 
-    sudo gem install hoptoad_notifier rspec rspec-rails capistrano capistrano-ext ruby-debug
+    sudo gem install hoptoad_notifier rspec rspec-rails capistrano capistrano-ext ruby-debug calais
     sudo gem install cucumber -v=0.6.1
     sudo gem install sunspot --version '=1.1.0'
     sudo gem install sunspot_rails --version '=1.1.0'
