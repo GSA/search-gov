@@ -6,10 +6,10 @@ module ActiveScaffold::DataStructures
       self.action = action.to_s
       self.label = action
       self.confirm = false
-      self.type = :table
+      self.type = :collection
       self.inline = true
       self.method = :get
-      self.crud_type = :destroy if [:destroy].include?(action.to_sym)
+      self.crud_type = :delete if [:destroy].include?(action.to_sym)
       self.crud_type = :create if [:create, :new].include?(action.to_sym)
       self.crud_type = :update if [:edit, :update].include?(action.to_sym)
       self.crud_type ||= :read
@@ -42,8 +42,8 @@ module ActiveScaffold::DataStructures
 
     # if the action requires confirmation
     attr_writer :confirm
-    def confirm
-      @confirm.is_a?(String) ? as_(@confirm) : @confirm
+    def confirm(label = '')
+      @confirm.is_a?(String) ? @confirm : as_(@confirm, :label => label)
     end
     def confirm?
       @confirm ? true : false
@@ -71,7 +71,7 @@ module ActiveScaffold::DataStructures
 
     # the crud type of the (eventual?) action. different than :method, because this crud action may not be imminent.
     # this is used to determine record-level authorization (e.g. record.authorized_for?(:action => link.crud_type).
-    # options are :create, :read, :update, and :destroy
+    # options are :create, :read, :update, and :delete
     attr_accessor :crud_type
 
     # an "inline" link is inserted into the existing page
@@ -114,12 +114,12 @@ module ActiveScaffold::DataStructures
     def page?; @page end
 
     # where the result of this action should insert in the display.
-    # for :type => :table, supported values are:
+    # for :type => :collection, supported values are:
     #   :top
     #   :bottom
     #   :replace (for updating the entire table)
     #   false (no attempt at positioning)
-    # for :type => :record, supported values are:
+    # for :type => :member, supported values are:
     #   :before
     #   :replace
     #   :after
@@ -127,13 +127,25 @@ module ActiveScaffold::DataStructures
     attr_writer :position
     def position
       return @position unless @position.nil? or @position == true
-      return :replace if self.type == :record
-      return :top if self.type == :table
+      return :replace if self.type == :member
+      return :top if self.type == :collection
       raise "what should the default position be for #{self.type}?"
     end
 
-    # what type of link this is. currently supported values are :table and :record.
+    # what type of link this is. currently supported values are :collection and :member.
     attr_accessor :type
+    # deprecated
+    def type=(value)
+      old_value = value
+      value = case value
+        when :table then :collection
+        when :record then :member
+        else value
+      end
+      ::ActiveSupport::Deprecation.warn(":#{old_value} is deprecated, use :#{value} instead", caller) if old_value != value
+      @type = value
+    end
+
     # html options for the link
     attr_accessor :html_options
   end

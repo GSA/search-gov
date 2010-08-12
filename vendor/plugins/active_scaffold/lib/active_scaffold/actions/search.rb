@@ -21,13 +21,13 @@ module ActiveScaffold::Actions
 
       unless @query.empty?
         columns = active_scaffold_config.search.columns
-        like_pattern = active_scaffold_config.search.full_text_search? ? '%?%' : '?%'
-        search_conditions = self.class.create_conditions_for_columns(@query.split(' '), columns, like_pattern)
+        text_search = active_scaffold_config.search.text_search
+        search_conditions = self.class.create_conditions_for_columns(@query.split(' '), columns, text_search)
         self.active_scaffold_conditions = merge_conditions(self.active_scaffold_conditions, search_conditions)
         @filtered = !search_conditions.blank?
 
         includes_for_search_columns = columns.collect{ |column| column.includes}.flatten.uniq.compact
-        self.active_scaffold_joins.concat includes_for_search_columns
+        self.active_scaffold_includes.concat includes_for_search_columns
 
         active_scaffold_config.list.user.page = nil
       end

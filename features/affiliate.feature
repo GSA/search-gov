@@ -180,7 +180,7 @@ Feature: Affiliate clients
     And I fill in "query" with "tourism"
     And I submit the search form
     Then I should see "Our Tourism Page" within "#boosted"
-    
+
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:
       | name             | contact_email         | contact_name        | domains        | header                | footer                |
@@ -194,28 +194,28 @@ Feature: Affiliate clients
     And I press "Search"
     Then I should see "Results 1-10"
     And I should see "emergency"
-  
+
     When I am on the affiliate advanced search page for "aff.gov"
     And I fill in "query-or" with "barack obama"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
     And I should see "barack OR obama"
-    
+
     When I am on the affiliate advanced search page for "aff.gov"
     And I fill in "query-quote" with "barack obama"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
     And I should see "barack obama"
-    
+
     When I am on the affiliate advanced search page for "aff.gov"
     And I fill in "query-not" with "barack"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
     And I should see "-barack"
-    
+
     When I am on the affiliate advanced search page for "aff.gov"
     And I select "Adobe PDF" from "filetype"
     And I press "Search"
@@ -230,14 +230,14 @@ Feature: Affiliate clients
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
     And I should see "Results 1-20"
-    
+
     When I am on the affiliate advanced search page for "aff.gov"
     And I choose "No filter"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"
-    And I should not see "Sorry, no results found"    
-    
+    And I should not see "Sorry, no results found"
+
   Scenario: Getting an embed code for my affiliate site search
     Given the following Affiliates exist:
       | name             | contact_email         | contact_name        |
@@ -258,7 +258,7 @@ Feature: Affiliate clients
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the user account page
     Then I should see "Analytics"
-    
+
   Scenario: Getting stats for an affiliate
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
@@ -273,7 +273,7 @@ Feature: Affiliate clients
     And in "dqs1" I should not see "No queries matched"
     And in "dqs7" I should not see "No queries matched"
     And in "dqs30" I should not see "No queries matched"
-    
+
   Scenario: No daily query stats available for any time period
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
@@ -286,56 +286,6 @@ Feature: Affiliate clients
     And in "dqs7" I should see "Not enough historic data"
     And in "dqs30" I should see "Not enough historic data"
 
-  Scenario: Searching for a query term that starts with a given string
-    Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    And the following DailyQueryStats exist for yesterday:
-    | query                       | times | affiliate |
-    | cenobitic                   | 100   | aff.gov   |
-    | cenolitic                   | 90    | aff.gov   |
-    | finochio                    | 80    | aff.gov   |
-    | burmannia                   | 40    | aff.gov   |
-    When I go to the user account page
-    And I follow "Analytics"
-    When I fill in "query" with "ceno"
-    And I choose "Starts with"
-    And I press "Search"
-    Then I should see "Results starting with 'ceno'"
-    And I should see "cenobitic"
-    And I should see "cenolitic"
-
-  Scenario: Searching for a query term that contains a given string
-    Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    And the following DailyQueryStats exist for yesterday:
-    | query                       | times | affiliate |
-    | cenobitic                   | 100   | aff.gov   |
-    | cenolitic                   | 90    | aff.gov   |
-    | finochio                    | 80    | aff.gov   |
-    | burmannia                   | 40    | aff.gov   |
-    When I go to the user account page
-    And I follow "Analytics"
-    When I fill in "query" with "itic"
-    And I choose "Contains"
-    And I press "Search"
-    Then I should see "Results containing 'itic'"
-    And I should see "cenobitic"
-    And I should see "cenolitic"
-    
-  Scenario: Doing a blank search from the affiliate analytics page
-    Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    And I am on the user account page
-    And I follow "Analytics"
-    And I press "Search"
-    Then I should see "Please enter search term(s)"
-    
   Scenario: Getting usage stats for an affiliate
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
@@ -344,47 +294,45 @@ Feature: Affiliate clients
     And I am on the user account page
     And I follow "Usage Stats"
     Then I should see "Monthly Usage Stats"
-    
+
   Scenario: Viewing the Affiliates Monthly Reports page
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
      | aff.gov          | aff@bar.gov             | John Bar            |
     And the following DailyUsageStats exists for each day in the current month
-    | profile     | total_queries | total_clicks  | affiliate |
-    | Affiliates  | 1000          | 1000          | aff.gov   |
+    | profile     | total_queries | affiliate |
+    | Affiliates  | 1000          | aff.gov   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And I am on the user account page
     And I follow "Usage Stats"
     Then I should see the header for the current date
     And I should see the "aff.gov" queries total within "aff.gov_usage_stats"
-    And I should see the "aff.gov" clicks total within "aff.gov_usage_stats"
-    
+
   Scenario: Viewing the Affiliates Monthly Reports page for a month in the past
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
      | aff.gov          | aff@bar.gov             | John Bar            |
     Given the following DailyUsageStats exist for each day in "2010-02"
-     | profile | total_queries | total_clicks  | affiliate  |
-     | Affiliates | 1000          | 1000          | aff.gov    |
+     | profile | total_queries  | affiliate  |
+     | Affiliates | 1000        | aff.gov    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And I am on the user account page
     And I follow "Usage Stats"
-    And I select "February 1, 2010" as the report date  
+    And I select "February 2010" as the report date  
     And I press "Get Usage Stats"
     Then I should see the report header for "2010-02"
     And I should see the "aff.gov" "Queries" total within "aff.gov_usage_stats" with a total of "28,000"
-    And I should see the "aff.gov" "Click Throughs" total within "aff.gov_usage_stats" with a total of "28,000"
 
   Scenario: Viewing the Affiliates Monthly Reports page for a month in the future
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
      | aff.gov          | aff@bar.gov             | John Bar            |
     Given the following DailyUsageStats exist for each day in "2010-02"
-     | profile | total_queries | total_clicks  | affiliate  |
-     | Affiliates | 1000          | 1000          | aff.gov    |
+     | profile | total_queries  | affiliate  |
+     | Affiliates | 1000        | aff.gov    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And I am on the user account page
     And I follow "Usage Stats"
-    And I select "December 2010" as the report date  
+    And I select "December 2010" as the report date
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."

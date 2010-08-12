@@ -2,8 +2,12 @@
   = link_to image_tag("/m/i/logo_mobile.png"), root_path(:locale => I18n.locale.to_s, :m => true)
 
 #searchHome.dvCenter
+  %a{:id => "search_box", :name => "search_box"}
   = render :partial => "shared/search" if @show_searchbox
-
+  - if is_device? 'iphone'
+    %style{:type => "text/css", :media => "screen"}
+      :plain
+        .ac_results {margin-top: -130px;}
 #homeNav.dvCenter
   .navHeader
     Contact your Government

@@ -50,6 +50,10 @@ module NavigationHelpers
       advanced_search_path(:affiliate => $1)
     when /the mobile contact form page/
       contact_form_path
+    when /the query groups admin page/
+      analytics_query_groups_path
+    when /the bulk edit query groups page/
+      bulk_edit_analytics_query_group_path
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

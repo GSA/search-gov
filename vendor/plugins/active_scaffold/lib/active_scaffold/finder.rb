@@ -4,9 +4,10 @@ module ActiveScaffold
       # Takes a collection of search terms (the tokens) and creates SQL that
       # searches all specified ActiveScaffold columns. A row will match if each
       # token is found in at least one of the columns.
-      def create_conditions_for_columns(tokens, columns, like_pattern = '%?%')
+      def create_conditions_for_columns(tokens, columns, text_search = :full)
         # if there aren't any columns, then just return a nil condition
         return unless columns.length > 0
+        like_pattern = like_pattern(text_search)
 
         tokens = [tokens] if tokens.is_a? String
 
@@ -27,7 +28,8 @@ module ActiveScaffold
       # Generates an SQL condition for the given ActiveScaffold column based on
       # that column's database type (or form_ui ... for virtual columns?).
       # TODO: this should reside on the column, not the controller
-      def condition_for_column(column, value, like_pattern = '%?%')
+      def condition_for_column(column, value, text_search = :full)
+        like_pattern = like_pattern(text_search)
         # we must check false or not blank because we want to search for false but false is blank
         return unless column and column.search_sql and not value.blank?
         search_ui = column.search_ui || column.column.type
@@ -84,6 +86,15 @@ module ActiveScaffold
       alias_method :condition_for_date_type, :condition_for_datetime_type
       alias_method :condition_for_time_type, :condition_for_datetime_type
       alias_method :condition_for_timestamp_type, :condition_for_datetime_type
+
+      def like_pattern(text_search)
+        case text_search
+          when :full then '%?%'
+          when :start then '?%'
+          when :end then '%?'
+          else '?'
+        end
+      end
     end
 
     NumericComparators = [
@@ -107,9 +118,19 @@ module ActiveScaffold
       @active_scaffold_conditions ||= []
     end
 
-    attr_writer :active_scaffold_joins
-    def active_scaffold_joins
-      @active_scaffold_joins ||= []
+    attr_writer :active_scaffold_includes
+    def active_scaffold_includes
+      if respond_to? :active_scaffold_joins
+        ::ActiveSupport::Deprecation.warn("You have defined active_scaffold_joins, but it's deprecated because it's confusing, you should use active_scaffold_includes now", caller)
+        return active_scaffold_joins 
+      end
+      @active_scaffold_includes ||= []
+    end
+
+    # Deprecated method
+    def active_scaffold_joins=(value)
+      ::ActiveSupport::Deprecation.warn("active_scaffold_joins is deprecated because it's confusing, you should use active_scaffold_includes now", caller)
+      self.active_scaffold_includes = value
     end
 
     attr_writer :active_scaffold_habtm_joins
@@ -126,12 +147,29 @@ module ActiveScaffold
         active_scaffold_session_storage[:conditions] # embedding conditions (weaker constraints)
       )
     end
-
+    
+    # Deprecated
+    def model_with_named_scope(model = active_scaffold_config.model, scope_definitions = named_scopes_for_collection)
+      case scope_definitions
+      when String
+        model.instance_eval(scope_definitions)
+      when Symbol
+        model.send(scope_definitions)
+      when Array
+        if scope_definitions.any?{|element| element.is_a?(Array)}
+          scope_definitions.inject(model) {|records, scope_definition| records = model_with_named_scope(records, scope_definition)}
+        else
+          model.send(*scope_definitions)
+        end
+      else
+        model
+      end
+    end
+    
     # returns a single record (the given id) but only if it's allowed for the specified action.
     # accomplishes this by checking model.#{action}_authorized?
     # TODO: this should reside on the model, not the controller
-    def find_if_allowed(id, action, klass = nil)
-      klass ||= active_scaffold_config.model
+    def find_if_allowed(id, action, klass = beginning_of_chain)
       record = klass.find(id)
       raise ActiveScaffold::RecordNotAllowed unless record.authorized_for?(:action => action.to_sym)
       return record
@@ -144,16 +182,16 @@ module ActiveScaffold
     # * :page
     # TODO: this should reside on the model, not the controller
     def find_page(options = {})
-      options.assert_valid_keys :sorting, :per_page, :page, :count_includes
+      options.assert_valid_keys :sorting, :per_page, :page, :count_includes, :pagination
 
-      full_includes = (active_scaffold_joins.blank? ? nil : active_scaffold_joins)
       search_conditions = all_conditions
+      full_includes = (active_scaffold_includes.blank? ? nil : active_scaffold_includes)
       options[:per_page] ||= 999999999
       options[:page] ||= 1
       options[:count_includes] ||= full_includes unless search_conditions.nil?
 
-      klass = active_scaffold_config.model
-
+      klass = beginning_of_chain
+      
       # create a general-use options array that's compatible with Rails finders
       finder_options = { :order => options[:sorting].try(:clause),
                          :conditions => search_conditions,
@@ -163,7 +201,7 @@ module ActiveScaffold
       finder_options.merge! custom_finder_options
 
       # NOTE: we must use :include in the count query, because some conditions may reference other tables
-      count = klass.count(finder_options.reject{|k,v| [:select, :order].include? k})
+      count = klass.count(finder_options.reject{|k,v| [:select, :order].include? k}) unless options[:pagination] == :infinite
 
       # Converts count to an integer if ActiveRecord returned an OrderedHash
       # that happens when finder_options contains a :group key
@@ -174,12 +212,14 @@ module ActiveScaffold
       # we build the paginator differently for method- and sql-based sorting
       if options[:sorting] and options[:sorting].sorts_by_method?
         pager = ::Paginator.new(count, options[:per_page]) do |offset, per_page|
-          sorted_collection = sort_collection_by_column(klass.find(:all, finder_options), *options[:sorting].first)
-          sorted_collection.slice(offset, per_page)
+          sorted_collection = sort_collection_by_column(klass.all(finder_options), *options[:sorting].first)
+          sorted_collection = sorted_collection.slice(offset, per_page) if options[:pagination]
+          sorted_collection
         end
       else
         pager = ::Paginator.new(count, options[:per_page]) do |offset, per_page|
-          klass.find(:all, finder_options.merge(:offset => offset, :limit => per_page))
+          finder_options.merge!(:offset => offset, :limit => per_page) if options[:pagination]
+          klass.all(finder_options)
         end
       end
 

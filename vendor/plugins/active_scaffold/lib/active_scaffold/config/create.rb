@@ -1,5 +1,5 @@
 module ActiveScaffold::Config
-  class Create < Form
+  class Create < ActiveScaffold::Config::Form
     self.crud_type = :create
     def initialize(*args)
       super
@@ -16,7 +16,7 @@ module ActiveScaffold::Config
     def self.link=(val)
       @@link = val
     end
-    @@link = ActiveScaffold::DataStructures::ActionLink.new('new', :label => :create_new, :type => :table, :security_method => :create_authorized?)
+    @@link = ActiveScaffold::DataStructures::ActionLink.new('new', :label => :create_new, :type => :collection, :security_method => :create_authorized?)
 
     # whether the form stays open after a create or not
     cattr_accessor :persistent

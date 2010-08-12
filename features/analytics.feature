@@ -32,50 +32,16 @@ Feature: Analytics Homepage
     And in "qas7" I should see "No queries matched"
     And in "qas30" I should see "No queries matched"
 
-  Scenario: Searching for a query term that starts with a given string
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist for yesterday:
-    | query                       | times |
-    | cenobitic                   | 100   |
-    | cenolitic                   | 90    |
-    | finochio                    | 80    |
-    | burmannia                   | 40    |
-    And I am on the analytics homepage
-    When I fill in "query" with "ceno"
-    And I choose "Starts with"
-    And I press "Search"
-    Then I should be on the analytics query search results page
-    And I should see "Results starting with 'ceno'"
-    And I should see "cenobitic"
-    And I should see "cenolitic"
-
-  Scenario: Searching for a query term that contains a given string
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist for yesterday:
-    | query                       | times |
-    | cenobitic                   | 100   |
-    | cenolitic                   | 90    |
-    | finochio                    | 80    |
-    | burmannia                   | 40    |
-    And I am on the analytics homepage
-    When I fill in "query" with "itic"
-    And I choose "Contains"
-    And I press "Search"
-    Then I should be on the analytics query search results page
-    And I should see "Results containing 'itic'"
-    And I should see "cenobitic"
-    And I should see "cenolitic"
-
   Scenario: Viewing queries with at least 4 queries per day that are part of query groups (i.e., semantic sets)
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist for yesterday:
-    | query                       | times   |
-    | obama                       | 10000   |
-    | health care bill            |  1000   |
-    | health care reform          |   100   |
-    | obama health care           |    10   |
-    | president                   |     4   |
-    | ignore me                   |     1   |
+    And the following DailyQueryStats exist:
+    | query                       | times   |  days_back  |
+    | obama                       | 10000   |    1        |
+    | health care bill            |  1000   |    1        |
+    | health care reform          |   100   |    1        |
+    | obama health care           |    10   |    1        |
+    | president                   |     4   |    1        |
+    | ignore me                   |     1   |    1        |
     And the following query groups exist:
     | group      | queries                                                 |
     | POTUS      | obama, president, obama health care, ignore me          |
@@ -85,13 +51,6 @@ Feature: Analytics Homepage
     And in "dqs1" I should see "1110"
     And in "dqs1" I should see "POTUS"
     And in "dqs1" I should see "10014"
-
-  Scenario: Doing a blank search from the home page
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And I am on the analytics homepage
-    And I press "Search"
-    Then I should be on the analytics query search results page
-    And I should see "Please enter search term(s)"
 
   Scenario: Visiting the FAQ page
     Given I am logged in with email "analyst@fixtures.org" and password "admin"

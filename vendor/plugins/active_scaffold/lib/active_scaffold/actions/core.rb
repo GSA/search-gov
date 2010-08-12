@@ -11,15 +11,13 @@ module ActiveScaffold::Actions
       else
         active_scaffold_config.model.new
       end
-      @update_columns = []
       column = active_scaffold_config.columns[params[:column]]
       if params[:in_place_editing]
         render :inline => "<%= active_scaffold_input_for(active_scaffold_config.columns[params[:update_column].to_sym]) %>"
       elsif !column.nil?
         value = column_value_from_param_value(@record, column, params[:value])
         @record.send "#{column.name}=", value
-        @update_columns << Array(params[:update_column]).collect {|column_name| active_scaffold_config.columns[column_name.to_sym]}
-        @update_columns.flatten!
+        @update_columns = Array(params[:update_column])
         after_render_field(@record, column)
       end
     end
@@ -61,7 +59,11 @@ module ActiveScaffold::Actions
     end
 
     def response_status
-      successful? ? 200 : 422
+      if successful?
+        action_name == 'create' ? 201 : 200
+      else
+        422
+      end
     end
 
     # API response object that will be converted to XML/YAML/JSON using to_xxx
@@ -101,7 +103,15 @@ module ActiveScaffold::Actions
       {}
     end
   
-
+    #Overide this method on your controller to provide model with named scopes
+    def beginning_of_chain
+      if respond_to? :named_scopes_for_collection
+        ::ActiveSupport::Deprecation.warn(":named_scope_for_collection is deprecated, override beginning_of_chain instead", caller)
+        return model_with_named_scope
+      end
+      active_scaffold_config.model
+    end
+        
     # Builds search conditions by search params for column names. This allows urls like "contacts/list?company_id=5".
     def conditions_from_params
       conditions = nil

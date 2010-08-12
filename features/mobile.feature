@@ -129,3 +129,32 @@ Feature: Mobile Search
     Then I should see "Email address is not valid"
     And the "Email" field should contain "bad email"
     And the "Message" field should contain "message"
+    
+  Scenario: A mobile image search
+    Given I am on the homepage
+    When I fill in "query" with "social security"
+    And I submit the search form
+    Then I should be on the search page
+    When I follow "Images"
+    Then I should be on the image search page
+    And I should see 30 image results
+    And I should see "Next"
+    
+    Given I am on the homepage
+    When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I submit the search form
+    Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
+    When I follow "Images"
+    Then I should be on the image search page
+    And I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
+    
+    Given I am on the homepage
+    When I submit the search form
+    Then I should be on the search page
+    When I follow "Images"
+    Then I should be on the image search page
+    And I should see "Please enter search term(s)"
+
+    
+
+    

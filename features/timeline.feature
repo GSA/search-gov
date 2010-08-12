@@ -5,12 +5,12 @@ Feature: Timeline for query
 
   Scenario: Viewing a chart for a given term
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist for yesterday:
-    | query                       | times |
-    | cenobitic                   | 100   |
-    | oxaluria                    | 90    |
-    | finochio                    | 80    |
-    | burmannia                   | 40    |
+    And the following DailyQueryStats exist:
+    | query                       | times |  days_back   |
+    | cenobitic                   | 100   |     1        |
+    | oxaluria                    | 90    |     1        |
+    | finochio                    | 80    |     1        |
+    | burmannia                   | 40    |     1        |
     And I am on the analytics homepage
     Then I should see "cenobitic"
     And I should see "oxaluria"

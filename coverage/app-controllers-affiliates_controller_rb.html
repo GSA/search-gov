@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates_controller_rb.html">app/controllers/affiliates_controller.rb</a></td>
-            <td class='right_align'><tt>88</tt></td>
-            <td class='right_align'><tt>76</tt></td>
+            <td class='right_align'><tt>86</tt></td>
+            <td class='right_align'><tt>74</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -387,7 +387,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a>   </pre></td>
+            <td><pre><a name="line56">56</a> </pre></td>
           </tr>
         
           
@@ -441,7 +441,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a>   </pre></td>
+            <td><pre><a name="line65">65</a> </pre></td>
           </tr>
         
           
@@ -477,7 +477,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line71">71</a>   </pre></td>
+            <td><pre><a name="line71">71</a> </pre></td>
           </tr>
         
           
@@ -495,97 +495,85 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>     @search_results = []</pre></td>
+            <td><pre><a name="line74">74</a>     @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line75">75</a>     unless @search_query_term.blank?</pre></td>
+            <td><pre><a name="line75">75</a>                                                                  Date.parse(params[&quot;analytics_search_start_date&quot;]),</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line76">76</a>       @starts_with = true</pre></td>
+            <td><pre><a name="line76">76</a>                                                                  Date.parse(params[&quot;analytics_search_end_date&quot;]),</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line77">77</a>       @starts_with = false if params[&quot;search_type&quot;] &amp;&amp; params[&quot;search_type&quot;] == &quot;contains&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line78">78</a>       @search_results = DailyQueryStat.most_popular_terms_like(@search_query_term, @starts_with, @affiliate.name)</pre></td>
+            <td><pre><a name="line77">77</a>                                                                  @affiliate.name)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line79">79</a>     end</pre></td>
+            <td><pre><a name="line78">78</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line80">80</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line81">81</a>   </pre></td>
+            <td><pre><a name="line79">79</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>   def destroy</pre></td>
+            <td><pre><a name="line80">80</a>   def destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>     @affiliate.destroy</pre></td>
+            <td><pre><a name="line81">81</a>     @affiliate.destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>     flash[:success]= &quot;Affiliate deleted&quot;</pre></td>
+            <td><pre><a name="line82">82</a>     flash[:success]= &quot;Affiliate deleted&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>     redirect_to account_path</pre></td>
+            <td><pre><a name="line83">83</a>     redirect_to account_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line86">86</a>   end</pre></td>
+            <td><pre><a name="line84">84</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line87">87</a> </pre></td>
+            <td><pre><a name="line85">85</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line88">88</a> end</pre></td>
+            <td><pre><a name="line86">86</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jul 30 11:10:19 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Aug 11 18:49:15 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

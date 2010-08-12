@@ -1,0 +1,19 @@
+- search = @search
+= render :partial => "shared/header_search_links"
+= render :partial => "shared/header_search" if @show_searchbox
+- if search.results.present?
+  .group
+    .row{:style => "overflow: auto;width: 98%;"}
+      - search.results.each_with_index do |search_result, index|
+        .searchThumbnail
+          %span.image_result{:id => "searchresult#{index+1}"}
+            = thumbnail_image_link(search_result)
+            = thumbnail_link(search_result)
+  .group
+    .row.center
+      = will_paginate search.results, :page_links => false, :previous_label => "", :next_label => "Next Page"
+- elsif search.error_message
+  %p.noresults #{search.error_message}
+- else
+  = no_results_for search.query
+= render :partial => "shared/footer_search", :locals => { :search => @search }

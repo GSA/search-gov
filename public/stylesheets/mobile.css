@@ -285,12 +285,88 @@ img{
   clear: both;
 }
 
+#topLinks
+{
+  float: left;
+  font-size: .8em;
+  padding: 7px 5px;
+  width: 60%;
+}
+
+  #topLinks ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 5px;
+    border: none;
+    }
+    
+    #topLinks li{
+      font-weight: bold;
+      font-size: 12px;
+      color: #990000;
+      display: inline;
+      border-left: 2px solid #CCC;
+      padding: 0 5px 0 8px;
+      }
+      
+      #topLinks a{
+        text-decoration: none;
+        font-weight: bold;
+        }
+        
+      #topLinks a:hover{
+        text-decoration: underline;
+        }
+        
+    #topLinks li.first{
+      padding-left: 0;
+      border-left: 0;
+      }
+
 #logoSmall
 {
   float: right;
   height: 25px;
   padding: 3px;
 }
+
+.spellingSuggestion
+{
+  border-top: solid 1px #D8D8D8;
+  border-bottom: solid 1px #D8D8D8;
+  font-size: .8em;
+  padding: 10px 15px;
+}
+
+.searchLocation
+{
+  background: #eee;
+  font-size: .8em;
+  border-bottom: solid 1px #D8D8D8;
+  padding: 10px 15px;
+  overflow: auto;
+}
+
+.spotlightRow
+{
+  margin: 0 5px 5px;
+}
+
+.spotlightImage
+{
+  background-color: #eee; 
+  height: 100px; 
+  width: 100px; 
+  float: left;
+  margin: 5px 10px 0 0;
+}
+
+.spotlightContent
+{
+  margin: 5px 10px 0 0;
+}
+
 
 .alerttext{
   color: red;
@@ -383,3 +459,52 @@ table.deep_links {
 table.deep_links td {
   vertical-align: top;
 }
+
+/* SAYT STYLES */
+
+.ac_results{
+  padding: 0px;
+  background: #fff;
+  z-index: 99999;
+  width: 274px;
+}
+  ul{
+    width: 288px;
+    background: #fff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #888;
+  }
+  li{
+    margin: 0px;
+    padding: 3px;
+    cursor: default;
+    display: block;
+    font: menu;
+    font-size: 18px;
+    text-align: left;
+  }
+
+.ac_loading{
+  background: white right center no-repeat;
+}
+.ac_over{
+  background-color: #ffb;
+}
+.ac_results ul strong.highlight{
+  color: #800;
+  margin: 0;
+  padding: 0;
+}
+
+.searchThumbnail
+{
+  background-color: #eee; 
+  height: 75px; 
+  width: 75px; 
+  float: left;
+  margin: 1px;
+  overflow: hidden;
+}
+

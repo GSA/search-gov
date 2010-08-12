@@ -1,0 +1,6 @@
+#left_column
+  &nbsp
+#results
+  = render :partial => "/shared/search", :path => image_search_path(:affiliate => @affiliate)
+  = render :partial => "/shared/searchresults", :locals => { :search => @search }
+  = render :partial => "/shared/footer_search", :locals => { :search => @search }

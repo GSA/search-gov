@@ -62,17 +62,27 @@ module ActiveScaffold
       end
 
       def javascript_for_update_column(column, scope, options)
-        if column.options.is_a?(Hash) && column.options[:update_column]
+        update_column = column.update_column
+        if update_column.nil? && column.options.is_a?(Hash) && column.options[:update_column]
+          ::ActiveSupport::Deprecation.warn("options[:update_column] is deprecated, use update_column = true instead", caller)
+          update_column = column.options[:update_column]
+        end
+        if update_column
           form_action = :create
           form_action = :update if params[:action] == 'edit'
-          url_params = {:action => 'render_field', :id => params[:id], :column => column.name, :update_column => column.options[:update_column]}
-          url_params[:eid] = params[:eid] if params[:eid]
+          url_params = {
+            :action => 'render_field',
+            :id => params[:id],
+            :column => column.name,
+            :update_column => update_column,
+            :eid => params[:eid],
+            :scope => scope
+          }
           url_params[:controller] = controller.class.active_scaffold_controller_for(@record.class).controller_path if scope
-          url_params[:scope] = params[:scope] if scope
           ajax_options = {:method => :get, 
                           :url => url_for(url_params), :with => "'value=' + this.value",
-                          :after => "$('#{loading_indicator_id(:action => :render_field, :id => params[:id])}').style.visibility = 'visible'; Form.disable('#{element_form_id(:action => form_action)}');",
-                          :complete => "$('#{loading_indicator_id(:action => :render_field, :id => params[:id])}').style.visibility = 'hidden'; Form.enable('#{element_form_id(:action => form_action)}');"}
+                          :after => "$('#{loading_indicator_id(:action => form_action, :id => params[:id])}').style.visibility = 'visible'; Form.disable('#{element_form_id(:action => form_action)}');",
+                          :complete => "$('#{loading_indicator_id(:action => form_action, :id => params[:id])}').style.visibility = 'hidden'; Form.enable('#{element_form_id(:action => form_action)}');"}
           options[:onchange] = "#{remote_function(ajax_options)};#{options[:onchange]}"
         end
         options
@@ -93,12 +103,9 @@ module ActiveScaffold
         html_options[:name] += '[id]'
         options = {:selected => selected, :include_blank => as_(:_select_)}
 
-        # For backwards compatibility, to add method options is needed to set a html_options hash
-        # in other case all column.options will be added as html options
-        if column.options[:html_options]
-          html_options.update(column.options[:html_options] || {})
-          options.update(column.options)
-        else
+        html_options.update(column.options[:html_options] || {})
+        options.update(column.options)
+        unless column.options[:html_options] || column.options.empty?
           Rails.logger.warn "ActiveScaffold: Setting html options directly in a hash is deprecated for :select form_ui. Set the html options hash under html_options key, such as config.columns[:column_name].options = {:html_options => {...}, ...}"
           html_options.update(column.options)
         end
@@ -130,6 +137,11 @@ module ActiveScaffold
         html
       end
 
+      def active_scaffold_translated_option(column, text, value = nil)
+        value ||= text
+        [(text.is_a?(Symbol) ? column.active_record_class.human_attribute_name(text) : text), value]
+      end
+
       def active_scaffold_input_select(column, html_options)
         if column.singular_association?
           active_scaffold_input_singular_association(column, html_options)
@@ -138,7 +150,9 @@ module ActiveScaffold
         else
           options = { :selected => @record.send(column.name) }
           if column.options.is_a? Hash
-            options_for_select = column.options[:options]
+            options_for_select = column.options[:options].collect do |(text, value)|
+              active_scaffold_translated_option(column, text, value)
+            end
             html_options.update(column.options[:html_options] || {})
             options.update(column.options)
           else
@@ -152,8 +166,8 @@ module ActiveScaffold
       def active_scaffold_input_radio(column, html_options)
         html_options.update(column.options[:html_options] || {})
         column.options[:options].inject('') do |html, (text, value)|
-          value ||= text
-          html << content_tag(:label, radio_button(:record, column.name, value, html_options.merge(:id => html_options[:id] + '-' + value)) + text)
+          text, value = active_scaffold_translated_option(column, text, value)
+          html << content_tag(:label, radio_button(:record, column.name, value, html_options.merge(:id => html_options[:id] + '-' + value.to_s)) + text)
         end
       end
 

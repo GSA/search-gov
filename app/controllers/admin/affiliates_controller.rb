@@ -5,7 +5,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.list.sorting = { :name => :asc }
     config.update.columns = [:name, :domains, :header, :footer, :affiliate_template]
     config.create.columns = [:name, :domains, :header, :footer, :affiliate_template]
-    config.action_links.add "analytics", :label => "Analytics", :type => :record, :page => true
+    config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
   end
   
   def analytics
