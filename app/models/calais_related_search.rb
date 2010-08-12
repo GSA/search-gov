@@ -33,7 +33,9 @@ class CalaisRelatedSearch < ActiveRecord::Base
             logger.info("#{term} => #{related_terms}\n")
           end
         rescue Calais::Error => error
-          RAILS_DEFAULT_LOGGER.warn "Error getting Calais results for #{term}: #{error}"
+          RAILS_DEFAULT_LOGGER.warn "Problem getting Calais Socialtags for #{term}: #{error}"
+        rescue Nokogiri::XML::XPath::SyntaxError => error
+          RAILS_DEFAULT_LOGGER.warn "Error parsing Calais XML results for #{term}: #{error}"
         end
       end
     end
