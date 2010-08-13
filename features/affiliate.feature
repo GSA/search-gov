@@ -180,7 +180,24 @@ Feature: Affiliate clients
     And I fill in "query" with "tourism"
     And I submit the search form
     Then I should see "Our Tourism Page" within "#boosted"
-
+    
+  Scenario: Affiliate SAYT
+    Given the following Affiliates exist:
+      | name          | contact_email         | contact_name        | domains        | is_sayt_enabled |
+      | aff.gov       | aff@bar.gov           | John Bar            | usa.gov        | true            |
+      | otheraff.gov  | otheraff@bar.gov      | Other John Bar      | usa.gov        | false           |
+    When I go to aff.gov's search page
+    Then the search bar should have SAYT enabled
+    And I fill in "query" with "emergency"
+    And I submit the search form    
+    Then the search bar should have SAYT enabled
+    
+    When I go to otheraff.gov's search page
+    Then the search bar should not have SAYT enabled
+    And I fill in "query" with "emergency"
+    And I submit the search form    
+    Then the search bar should not have SAYT enabled
+    
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:
       | name             | contact_email         | contact_name        | domains        | header                | footer                |

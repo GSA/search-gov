@@ -20,6 +20,7 @@ describe "shared/_search.html.haml" do
       before do
         @affiliate = stub('Affiliate')
         @affiliate.stub!(:name).and_return 'aff.gov'
+        @affiliate.stub!(:is_sayt_enabled).and_return false
         assigns[:affiliate] = @affiliate
       end
 

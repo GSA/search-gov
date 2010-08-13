@@ -23,7 +23,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :footer => hash["footer"],
       :staged_domains => hash["staged_domains"],
       :staged_header => hash["staged_header"],
-      :staged_footer => hash["staged_footer"]
+      :staged_footer => hash["staged_footer"],
+      :is_sayt_enabled => hash["is_sayt_enabled"]
     )
   end
 end
@@ -42,4 +43,12 @@ Given /^there is analytics data for affiliate "([^\"]*)" from "([^\"]*)" thru "(
       DailyQueryStat.create(:day => day, :query => word, :times => times, :affiliate => affiliate)
     end
   end
+end
+
+Then /^the search bar should have SAYT enabled$/ do
+  response.body.should have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")
+end
+
+Then /^the search bar should not have SAYT enabled$/ do
+  response.body.should_not have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")
 end

@@ -10,7 +10,7 @@ describe Affiliate do
       :website => "http://www.someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
       :footer => "<center>gasp</center>",
-      :user => users(:affiliate_manager)
+      :user => users(:affiliate_manager),
     }
   end
 
@@ -26,6 +26,10 @@ describe Affiliate do
 
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_attributes)
+    end
+    
+    it "should have SAYT disabled by default" do
+      Affiliate.create!(@valid_attributes).is_sayt_enabled.should be_false
     end
   end
 
