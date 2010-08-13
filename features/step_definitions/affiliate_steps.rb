@@ -46,9 +46,11 @@ Given /^there is analytics data for affiliate "([^\"]*)" from "([^\"]*)" thru "(
 end
 
 Then /^the search bar should have SAYT enabled$/ do
+  response.body.should have_tag("script[type=text/javascript][src^=/javascripts/sayt.js]")
   response.body.should have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")
 end
 
 Then /^the search bar should not have SAYT enabled$/ do
+  response.body.should_not have_tag("script[type=text/javascript][src^=/javascripts/sayt.js]")
   response.body.should_not have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")
 end
