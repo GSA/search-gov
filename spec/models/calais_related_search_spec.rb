@@ -81,6 +81,17 @@ describe CalaisRelatedSearch do
         end
       end
 
+      context "when Calais throws a NoMethodError from some parsing problem" do
+        before do
+          Calais.stub!(:process_document).and_raise(NoMethodError)
+        end
+
+        it "should log the error" do
+          RAILS_DEFAULT_LOGGER.should_receive(:warn).once
+          CalaisRelatedSearch.related_terms_for(@term)
+        end
+      end
+
     end
 
   end
