@@ -2,25 +2,23 @@ namespace :usasearch do
   namespace :related_searches do
     
     desc "Load JSON of related searches into the related_searches table"
-    task :load_json, :filename, :needs => :environment do |t, args|
+    task :load_related_queries, :filename, :needs => :environment do |t, args|
       if args.filename.blank?
-        RAILS_DEFAULT_LOGGER.error "Usage: rake usasearch:related_searches:load_json[/path/to/json/file] RAILS_ENV=your_rails_environment"
+        RAILS_DEFAULT_LOGGER.error "Usage: rake usasearch:related_searches:load_related_queries[/path/to/json/file] RAILS_ENV=your_rails_environment"
       else
         RelatedQuery.load_json(args.filename)
       end
     end
     
     desc "Load CSV of affiliate related searches"
-    task :load_affiliate_csv, :filename, :needs => :environment do |t, args|
+    task :load_processed_queries, :filename, :needs => :environment do |t, args|
       if args.filename.blank?
-        RAILS_DEFAULT_LOGGER.error "Usage: rake usasearch:related_searches:load_affiliate_csv[/path/to/csv/file] RAILS_ENV=your_rails_env"
+        RAILS_DEFAULT_LOGGER.error "Usage: rake usasearch:related_searches:load_processed_queries[/path/to/csv/file] RAILS_ENV=your_rails_env"
       else
         ProcessedQuery.load_csv(args.filename)
       end
     end
-  end
-    
-    
+
     namespace :extract do   
       extract_query_sql = "select replace(query,'\\t',' '),SHA1(ipaddr),timestamp,affiliate,locale,agent,is_bot into outfile '_EXPORT_FILE_' fields terminated by '\\t' from queries "
       extract_click_sql = "select replace(query,'\\t',' '),SHA1(click_ip),queried_at,clicked_at,url,serp_position,affiliate,results_source,user_agent into outfile '_EXPORT_FILE_' fields terminated by '\\t' from clicks "
