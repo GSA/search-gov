@@ -27,7 +27,7 @@ describe "Related Search rake tasks" do
 
     context "when given a JSON file" do
       it "should process the file" do
-        RelatedSearch.should_receive(:load_json).with("/some/file").and_return true
+        RelatedQuery.should_receive(:load_json).with("/some/file").and_return true
         @rake[@task_name].invoke("/some/file")
       end
     end
@@ -51,7 +51,7 @@ describe "Related Search rake tasks" do
 
     context "when given a CSV file" do
       it "should process the file" do
-        RelatedSearch.should_receive(:load_csv).with("/some/file").and_return true
+        ProcessedQuery.should_receive(:load_csv).with("/some/file").and_return true
         @rake[@task_name].invoke("/some/file")
       end
     end
