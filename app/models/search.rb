@@ -9,7 +9,7 @@ class Search
   MAX_PER_PAGE = 50
   JSON_SITE = "http://api.search.live.net/json.aspx"
   APP_ID = "A4C32FAE6F3DB386FC32ED1C4F3024742ED30906"
-  SOURCES = "Spell+Web+RelatedSearch"
+  SOURCES = "Spell+Web"
   USER_AGENT = "USASearch"
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:gov OR site:mil)"
   DEFAULT_FILTER_SETTING = 'strict'
