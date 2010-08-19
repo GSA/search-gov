@@ -31,6 +31,10 @@ describe Affiliate do
     it "should have SAYT disabled by default" do
       Affiliate.create!(@valid_attributes).is_sayt_enabled.should be_false
     end
+    
+    it "should have Affiliate-specific SAYT suggestions disabled by default" do
+      Affiliate.create!(@valid_attributes).is_affiliate_suggestions_enabled.should be_false
+    end
   end
 
   describe "#template" do

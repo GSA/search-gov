@@ -131,7 +131,6 @@ Feature: Affiliate clients
     And I submit the search form
     Then I should see "Stemming works" within "#boosted"
 
-
   Scenario: Uploading valid booster XML document as a logged in affiliate
     Given the following Affiliates exist:
       | name             | contact_email         | contact_name        |
@@ -183,20 +182,42 @@ Feature: Affiliate clients
     
   Scenario: Affiliate SAYT
     Given the following Affiliates exist:
-      | name          | contact_email         | contact_name        | domains        | is_sayt_enabled |
-      | aff.gov       | aff@bar.gov           | John Bar            | usa.gov        | true            |
-      | otheraff.gov  | otheraff@bar.gov      | Other John Bar      | usa.gov        | false           |
+      | name            | contact_email             | contact_name          | domains        | is_sayt_enabled | is_affiliate_suggestions_enabled |
+      | aff.gov           | aff@bar.gov             | John Bar              | usa.gov        | true            | false                            |
+      | otheraff.gov      | otheraff@bar.gov        | Other John Bar        | usa.gov        | false           | false                            |
+      | anotheraff.gov    | anotheraff@bar.gov      | Another John Bar      | usa.gov        | true            | true                             |
+      | yetanotheraff.gov | yetanotheraff@bar.gov   | Yet Another John Bar  | usa.gov        | false           | true                             |
     When I go to aff.gov's search page
     Then the search bar should have SAYT enabled
+    And affiliate SAYT suggestions for "aff.gov" should be disabled
     And I fill in "query" with "emergency"
     And I submit the search form    
     Then the search bar should have SAYT enabled
+    And affiliate SAYT suggestions for "aff.gov" should be disabled
     
     When I go to otheraff.gov's search page
     Then the search bar should not have SAYT enabled
+    And affiliate SAYT suggestions for "otheraff.gov" should be disabled
     And I fill in "query" with "emergency"
     And I submit the search form    
     Then the search bar should not have SAYT enabled
+    And affiliate SAYT suggestions for "otheraff.gov" should be disabled
+    
+    When I go to anotheraff.gov's search page
+    Then the search bar should have SAYT enabled
+    And affiliate SAYT suggestions for "anotheraff.gov" should be enabled
+    And I fill in "query" with "emergency"
+    And I submit the search form
+    Then the search bar should have SAYT enabled
+    And affiliate SAYT suggestions for "anotheraff.gov" should be enabled
+    
+    When I go to yetanotheraff.gov's search page
+    Then the search bar should not have SAYT enabled
+    And affiliate SAYT suggestions for "yetanotheraff.gov" should be disabled
+    And I fill in "query" with "emergency"
+    And I submit the search form
+    Then the search bar should not have SAYT enabled
+    And affiliate SAYT suggestions for "yetanotheraff.gov" should be disabled
     
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:

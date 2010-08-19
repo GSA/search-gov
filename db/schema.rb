@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(:version => 20100819152301) do
   end
 
   create_table "affiliates", :force => true do |t|
-    t.string   "name",                                     :null => false
+    t.string   "name",                                                :null => false
     t.text     "domains"
     t.text     "header"
     t.text     "footer"
@@ -44,10 +44,11 @@ ActiveRecord::Schema.define(:version => 20100819152301) do
     t.text     "staged_domains"
     t.text     "staged_header"
     t.text     "staged_footer"
-    t.boolean  "has_staged_content",    :default => false, :null => false
+    t.boolean  "has_staged_content",               :default => false, :null => false
     t.string   "website"
     t.integer  "affiliate_template_id"
-    t.boolean  "is_sayt_enabled",       :default => false
+    t.boolean  "is_sayt_enabled",                  :default => false
+    t.boolean  "is_affiliate_suggestions_enabled", :default => false
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -213,13 +214,13 @@ ActiveRecord::Schema.define(:version => 20100819152301) do
   add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
 
   create_table "queries", :id => false, :force => true do |t|
-    t.string   "ipaddr",    :limit => 17
-    t.string   "query",     :limit => 100
-    t.string   "affiliate", :limit => 32
-    t.datetime "timestamp",                :null => false
-    t.string   "locale",    :limit => 5
-    t.string   "agent"
-    t.boolean  "is_bot"
+    t.string    "ipaddr",    :limit => 17
+    t.string    "query",     :limit => 100
+    t.string    "affiliate", :limit => 32
+    t.timestamp "timestamp",                :null => false
+    t.string    "locale",    :limit => 5
+    t.string    "agent"
+    t.boolean   "is_bot"
   end
 
   add_index "queries", ["query"], :name => "queryindex"

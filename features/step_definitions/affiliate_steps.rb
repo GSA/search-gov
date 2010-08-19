@@ -24,7 +24,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_domains => hash["staged_domains"],
       :staged_header => hash["staged_header"],
       :staged_footer => hash["staged_footer"],
-      :is_sayt_enabled => hash["is_sayt_enabled"]
+      :is_sayt_enabled => hash["is_sayt_enabled"],
+      :is_affiliate_suggestions_enabled => hash["is_affiliate_suggestions_enabled"]
     )
   end
 end
@@ -53,4 +54,14 @@ end
 Then /^the search bar should not have SAYT enabled$/ do
   response.body.should_not have_tag("script[type=text/javascript][src^=/javascripts/sayt.js]")
   response.body.should_not have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")
+end
+
+Then /^affiliate SAYT suggestions for "([^\"]*)" should be enabled$/ do |affiliate_name|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  response.body.should have_tag("script[type=text/javascript]", :text => "\n    //\n    var usagov_sayt_url = \"#{root_url}sayt?aid=#{affiliate.id}&\";\n    //\n    ")
+end
+
+Then /^affiliate SAYT suggestions for "([^\"]*)" should be disabled$/ do |affiliate_name|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  response.body.should_not have_tag("script[type=text/javascript]", :text => "\n    //\n    var usagov_sayt_url = \"#{root_url}sayt?aid=#{affiliate.id}&\";\n    //\n    ")
 end
