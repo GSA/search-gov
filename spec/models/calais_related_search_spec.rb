@@ -96,4 +96,11 @@ describe CalaisRelatedSearch do
 
   end
 
+
+  describe "#to_label" do
+    it "should return the query term associates with the Calais related search" do
+      crs = calais_related_searches(:one)
+      crs.to_label.should == crs.term
+    end
+  end
 end

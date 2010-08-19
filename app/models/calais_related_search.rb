@@ -56,4 +56,8 @@ class CalaisRelatedSearch < ActiveRecord::Base
     text :related_terms
   end
 
+  def to_label
+    term
+  end
+
 end

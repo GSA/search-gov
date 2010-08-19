@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100813141129) do
+ActiveRecord::Schema.define(:version => 20100819152301) do
 
   create_table "accepted_sayt_suggestions", :force => true do |t|
     t.string   "phrase",     :null => false
@@ -69,14 +69,6 @@ ActiveRecord::Schema.define(:version => 20100813141129) do
   end
 
   add_index "auto_recalls", ["recall_id"], :name => "index_auto_recalls_on_recall_id"
-
-  create_table "block_words", :force => true do |t|
-    t.string   "word",       :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "block_words", ["word"], :name => "index_block_words_on_word"
 
   create_table "boosted_sites", :force => true do |t|
     t.integer  "affiliate_id", :null => false
