@@ -25,35 +25,51 @@ describe DailyUsageStat do
       @yesterday = Date.parse('20100302')
       Query.delete_all
       # English queries
+      query_params = {
+        :ipaddr => '127.0.0.1',
+        :query => 'test',
+        :affiliate => 'usasearch.gov',
+        :timestamp => Time.parse("00:01", @yesterday),
+        :locale => 'en', 
+        :agent => 'Mozilla/5.0',
+        :is_bot => false,
+        :is_contextual => false
+      }
+      # regular queries    
       5.times do |index|
-       Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'usasearch.gov', :timestamp => Time.parse("00:01", @yesterday) + index.hours, :locale => 'en', :agent => 'Mozilla/5.0', :is_bot => false)
-       Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'usasearch.gov', :timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :locale => 'en', :agent => 'Mozilla/5.0', :is_bot => false)
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday) + index.hours))
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours))
       end
       # Spanish queries
       5.times do |index|
-        Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'usasearch.gov', :timestamp => Time.parse("00:01", @yesterday) + index.hours, :locale => 'es', :agent => 'Mozilla/5.0', :is_bot => false)
-        Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'usasearch.gov', :timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :locale => 'es', :agent => 'Mozilla/5.0', :is_bot => false)
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday) + index.hours, :locale => 'es'))
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :locale => 'es'))
       end
       # Affiliate queries
       5.times do |index|
-        Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'test.gov', :timestamp => Time.parse("00:01", @yesterday) + index.hours, :locale => 'en', :agent => 'Mozilla/5.0', :is_bot => false)
-         Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'test.gov', :timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :locale => 'en', :agent => 'Mozilla/5.0', :is_bot => false)
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday) + index.hours, :affiliate => 'test.gov'))
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :affiliate => 'test.gov'))
       end
       # Affiliate queries with Spanish locale
       5.times do |index|        
-        Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'test.gov', :timestamp => Time.parse("00:01", @yesterday) + index.hours, :locale => 'es', :agent => 'Mozilla/5.0', :is_bot => false)
-        Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'test.gov', :timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :locale => 'es', :agent => 'Mozilla/5.0', :is_bot => false)
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday) + index.hours, :affiliate => 'test.gov', :locale => 'es'))
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :affiliate => 'test.gov', :locale => 'es'))
       end
       # records with is_bot set to true; these should be ignored
       5.times do |index|
-        Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'usasearch.gov', :timestamp => Time.parse("00:01", @yesterday) + index.hours, :locale => 'en', :agent => 'Mozilla/5.0', :is_bot => true)
-        Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'usasearch.gov', :timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :locale => 'en', :agent => 'Mozilla/5.0', :is_bot => true)
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday) + index.hours, :is_bot => true))
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :is_bot => true))
       end
       # records with nil agent and is_bot
       5.times do |index|
-        Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'usasearch.gov', :timestamp => Time.parse("00:01", @yesterday) + index.hours, :locale => 'en')
-        Query.create(:ipaddr => '127.0.0.1', :query => 'test', :affiliate => 'usasearch.gov', :timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :locale => 'en')
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday) + index.hours, :agent => nil, :is_bot => nil))
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :agent => nil, :is_bot => nil))
       end      
+      # contextual queries; should not be included in stats
+      5.times do |index|
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday) + index.hours, :is_contextual => true))
+        Query.create(query_params.merge(:timestamp => Time.parse("00:01", @yesterday + 1.day) + index.hours, :is_contextual => true))
+      end
     end  
 
     context "when the Profile is English" do
@@ -71,7 +87,7 @@ describe DailyUsageStat do
       end
     
       it "should sum up all the English queries from the past day ignoring queries from bots" do
-        Query.should_receive(:count).with(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', @yesterday), Time.parse('23:59:59', @yesterday), "en", "usasearch.gov"])
+        Query.should_receive(:count).with(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false", Time.parse('00:00', @yesterday), Time.parse('23:59:59', @yesterday), "en", "usasearch.gov"])
         @daily_usage_stat.populate_data
       end
     end
@@ -91,7 +107,7 @@ describe DailyUsageStat do
       end
 
       it "should sum up all the Spanish queries from the past day, ignore queries from bots" do
-        Query.should_receive(:count).with(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', @yesterday), Time.parse('23:59:59', @yesterday), "es", "usasearch.gov"])
+        Query.should_receive(:count).with(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false", Time.parse('00:00', @yesterday), Time.parse('23:59:59', @yesterday), "es", "usasearch.gov"])
         @daily_usage_stat.populate_data
       end
     end
@@ -111,7 +127,7 @@ describe DailyUsageStat do
       end
 
       it "should sum up all the Affiliates queries from the past day, regardless of locale, ignoring any records marked as bots" do
-        Query.should_receive(:count).with(:all, :conditions => ["timestamp between ? and ? AND affiliate <> ? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', @yesterday), Time.parse('23:59:59', @yesterday), "usasearch.gov"])
+        Query.should_receive(:count).with(:all, :conditions => ["timestamp between ? and ? AND affiliate <> ? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false", Time.parse('00:00', @yesterday), Time.parse('23:59:59', @yesterday), "usasearch.gov"])
         @daily_usage_stat.populate_data
       end
     end
@@ -129,7 +145,7 @@ describe DailyUsageStat do
       end
 
       it "should sum up all the queries from the past day regardless of locale, ignoring bots, for the affiliate specified" do
-        Query.should_receive(:count).with(:all, :conditions => ["timestamp between ? and ? AND affiliate = ? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', @yesterday), Time.parse('23:59:59', @yesterday), 'test.gov'])
+        Query.should_receive(:count).with(:all, :conditions => ["timestamp between ? and ? AND affiliate = ? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false", Time.parse('00:00', @yesterday), Time.parse('23:59:59', @yesterday), 'test.gov'])
         @daily_usage_stat.populate_data
       end
     end
@@ -139,8 +155,7 @@ describe DailyUsageStat do
       Query.delete_all
     end
   end
-  
-      
+   
   context "When compiling data for a given month" do
     before do
       @year = 2010

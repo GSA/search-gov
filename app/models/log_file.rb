@@ -26,9 +26,10 @@ class LogFile < ActiveRecord::Base
     query = parsed_log["query"][0]
     affiliate = parsed_log["affiliate"][0].blank? ? "usasearch.gov" : parsed_log["affiliate"][0]
     locale = parsed_log["locale"][0].blank? ? I18n.default_locale.to_s : parsed_log["locale"][0]
+    is_contextual = parsed_log["linked"][0].present? ? (parsed_log["linked"][0] == "1" ? true : false) : false
     return if query.nil?
     noquery = parsed_log["noquery"][0]
-    Query.create!(:query => query.strip, :affiliate => affiliate, :ipaddr => ipaddr, :timestamp => datetime, :locale => locale, :agent => agent, :is_bot => is_bot) if noquery.nil?
+    Query.create!(:query => query.strip, :affiliate => affiliate, :ipaddr => ipaddr, :timestamp => datetime, :locale => locale, :agent => agent, :is_bot => is_bot, :is_contextual => is_contextual) if noquery.nil?
   end
 
   private

@@ -65,12 +65,12 @@ class DailyUsageStat < ActiveRecord::Base
   def populate_queries_data
     if self.profile != 'Affiliates'
       locale = self.profile == 'English' ? 'en' : 'es'
-      self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), locale, "usasearch.gov"])
+      self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), locale, "usasearch.gov"])
     else
       if self.affiliate == 'usasearch.gov'
-        self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate <> ? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), "usasearch.gov"])
+        self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate <> ? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), "usasearch.gov"])
       else
-        self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate = ? AND (is_bot=false OR ISNULL(is_bot))", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), self.affiliate])
+        self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate = ? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), self.affiliate])
       end
     end
   end

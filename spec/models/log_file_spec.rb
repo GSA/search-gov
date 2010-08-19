@@ -88,7 +88,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => I18n.default_locale.to_s,
                                             :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -108,7 +109,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => I18n.default_locale.to_s,
                                             :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -128,7 +130,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => I18n.default_locale.to_s,
                                             :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -148,7 +151,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => I18n.default_locale.to_s,
                                             :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -167,7 +171,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => I18n.default_locale.to_s,
                                             :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -186,7 +191,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => I18n.default_locale.to_s,
                                             :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -233,7 +239,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => I18n.default_locale.to_s,
                                             :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -253,7 +260,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => I18n.default_locale.to_s,
                                             :agent => "w3af.sourceforge.net",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -273,7 +281,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => I18n.default_locale.to_s,
                                             :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -293,7 +302,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => 'en',
                                             :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -313,7 +323,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => 'es',
                                             :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -333,7 +344,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => 'es',
                                             :agent => '',
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -353,7 +365,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => 'es',
                                             :agent => 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)',
-                                            :is_bot => false)
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -373,7 +386,8 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => 'es',
                                             :agent => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
-                                            :is_bot => true)
+                                            :is_bot => true,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
@@ -393,10 +407,52 @@ EOF
                                             :timestamp => @timestamp_utc,
                                             :locale => 'en',
                                             :agent => nil,
-                                            :is_bot => nil)
+                                            :is_bot => nil,
+                                            :is_contextual => false)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+    
+    context "when the query includes a parameter where linked=1" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18&linked=1 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+
+      it "should create a Query record with the necessary parameters, and set the is_contextual flag to true" do
+        Query.should_receive(:create!).with(:query=>"delinquent delivery plus&more",
+                                            :affiliate => "acqnet.gov_far_current",
+                                            :ipaddr => "143.81.248.53",
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s,
+                                            :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
+                                            :is_bot => false,
+                                            :is_contextual => true)
+        LogFile.parse_line(@log_entry)
+      end
+    end
+    
+        context "when the query contains a parameter where linked is present but doesn't equal '1'" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18&linked=2 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+
+      it "should create a Query record with the necessary parameters, and set the is_contextual flag to true" do
+        Query.should_receive(:create!).with(:query=>"delinquent delivery plus&more",
+                                            :affiliate => "acqnet.gov_far_current",
+                                            :ipaddr => "143.81.248.53",
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s,
+                                            :agent => "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)",
+                                            :is_bot => false,
+                                            :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
     end
   end
-
 end
