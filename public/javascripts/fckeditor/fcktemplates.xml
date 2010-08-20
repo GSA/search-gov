@@ -28,10 +28,11 @@
 	<Template title="1 column - bullets only" image="template1.gif">
 		<Html>
 			<![CDATA[
-<table class="spotlight" border="0">
+<div id="spotlight-simple">
+<table class="spotlight">
 <tbody>
 <tr>
-<td style="font-size:16px;"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
+<td style="font-size:16px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Barney, the first dog</span></td>
 </tr>
 <tr>
 <td style="vertical-align: top;">
@@ -44,20 +45,22 @@
 </tr>
 </tbody>
 </table>
+</div>
 			]]>
 		</Html>
 	</Template>
 	<Template title="2 column - image with bullets" image="template1.gif">
 		<Html>
 			<![CDATA[
-<table class="spotlight" border="0">
+<div id="spotlight-simple">
+<table class="spotlight">
 <tbody>
 <tr>
-<td colspan="2" style="font-size:16px;"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
+<td colspan="2" style="font-size:16px; padding-bottom: 5px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Barney, the first dog</span></td>
 </tr>
 <tr>
-<td style="width:50px;"><img style="float: right;" src="http://www.webweaver.nu/clipart/img/nature/dogs/dalmation.jpg" alt="Photo of barney" /></td>
-<td style="vertical-align: top;">
+<td style="width:50px;"><img  style="width: 100px; padding:3px; border:1px solid #ddd;"  src="/javascripts/fckeditor/usa.jpg" alt="Photo of barney" /></td>
+<td style="vertical-align: top; padding-left: 10px;">
 <ul>
 <li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
 <li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
@@ -67,58 +70,125 @@
 </tr>
 </tbody>
 </table>
+</div>
+			]]>
+		</Html>
+	</Template>
+	<Template title="2 column - Larger image" image="template1.gif">
+		<Html>
+			<![CDATA[
+<div id="spotlight-simple">
+<table class="spotlight">
+<tbody>
+<tr>
+<td colspan="2" style="font-size:16px; padding-bottom: 5px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Barney, the first dog</span></td>
+</tr>
+<tr>
+<td style="width:50px;"><img  style="width: 125px;padding:3px; border:1px solid #ddd;"  src="/javascripts/fckeditor/afflag-large.png" alt="Photo of barney" /></td>
+<td style="vertical-align: top; padding-left: 10px;">
+<ul>
+<li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
+<li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
+<li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
 			]]>
 		</Html>
 	</Template>
 	<Template title="3 column with middle IMAGE column" image="template1.gif">
 		<Html>
 			<![CDATA[
-      <table class="spotlight" border="0">
+			<div id="spotlight-simple">
+      <table class="spotlight">
           <tbody>
               <tr>
-                  <td colspan="3" style="font-size:16px;"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
+                  <td colspan="3" style="font-size:16px; padding-bottom: 5px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Afghanistan</span></td>
               </tr>
               <tr>
-                  <td style="vertical-align: top; width: 37%;">
+                  <td style="vertical-align: top; width: 250px;">
                   <ul style="padding-left: 15px;">
-                      <li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
-                      <li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
-                      <li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
+                      <li><a href="http://www.whitehouse.gov/barney/">History, Culture, Government, Society</a></li>
+                      <li><a href="http://www.whitehouse.gov/barney/archives.html">CIA World Factbook</a></li>
+                      <li><a href="#">U.S. State Dept. Country Notes</a></li>
+                      <li><a href="#">Trade, Investment, Reconstruction</a></li>
+                      <li><a href="">Constitution &amp; Legal Guides</a></li>
                   </ul>
                   </td>
-                  <td style="width:50px; vertical-align: top; padding: 0 2px 0 2px"><img alt="Photo of barney" src="http://www.webweaver.nu/clipart/img/nature/dogs/dalmation.jpg" /></td>
-                  <td style="vertical-align: top; width: 37%;">
+                  <td style="width:110px; vertical-align: top;"><img alt="Photo of barney" style="width: 100px; padding:3px; border:1px solid #ddd;" src="/javascripts/fckeditor/afflag.jpg" /></td>
+                  <td style="vertical-align: top; width: 250px;">
                   <ul style="padding-left: 15px;">
-                      <li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
-                      <li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
-                      <li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
+                      <li><a href="http://www.whitehouse.gov/barney/">Afghan War Diary, 2004-2010 (Wikileaks)</a></li>
+                      <li><a href="http://www.whitehouse.gov/barney/archives.html">President Obama's Reaction to Leaks</a></li>
+                      <li><a href="http://www.whitehouse.gov/interactive/interact_1.html">N.S.A. Gen. James Jones on Wikileaks</a></li>
+                      <li><a href="">Pentagon Launches Probe into Leaks</a></li>
+                      <li><a href="">War in Afghanistan (Congressional Research Service)</a></li>
                   </ul>
                   </td>
               </tr>
           </tbody>
       </table>
+      </div>
+			]]>
+		</Html>
+	</Template>
+	<Template title="3 column - Larger Image" image="template1.gif">
+		<Html>
+			<![CDATA[
+			<div id="spotlight-simple">
+      <table class="spotlight">
+          <tbody>
+              <tr>
+                  <td colspan="3" style="font-size:16px; padding-bottom: 5px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Afghanistan</span></td>
+              </tr>
+              <tr>
+                  <td style="vertical-align: top; width: 230px;">
+                  <ul style="padding-left: 15px;">
+                      <li><a href="http://www.whitehouse.gov/barney/">History, Culture, Government, Society</a></li>
+                      <li><a href="http://www.whitehouse.gov/barney/archives.html">CIA World Factbook</a></li>
+                      <li><a href="#">U.S. State Dept. Country Notes</a></li>
+                      <li><a href="#">Trade, Investment, Reconstruction</a></li>
+                  </ul>
+                  </td>
+                  <td style="width:125px; vertical-align: top;"><img alt="Photo of barney" style="width: 125px;padding:3px; border:1px solid #ddd;" src="/javascripts/fckeditor/afflag-large.png" /></td>
+                  <td style="padding-left: 5px; vertical-align: top; width: 230px;">
+                  <ul style="padding-left: 15px;">
+                      <li><a href="http://www.whitehouse.gov/barney/">Afghan War Diary, 2004-2010 (Wikileaks)</a></li>
+                      <li><a href="http://www.whitehouse.gov/barney/archives.html">President Obama's Reaction to Leaks</a></li>
+                      <li><a href="http://www.whitehouse.gov/interactive/interact_1.html">N.S.A. Gen. James Jones on Wikileaks</a></li>
+                      <li><a href="">Pentagon Launches Probe into Leaks</a></li>
+                  </ul>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      </div>
 			]]>
 		</Html>
 	</Template>
 	<Template title="4 column - images with bullets" image="template1.gif">
 		<Html>
 			<![CDATA[
-      <table class="spotlight" border="0">
+			<div id="spotlight-simple">
+      <table class="spotlight">
           <tbody>
               <tr>
-                  <td colspan="4" style="font-size:16px;"><strong><a href="http://www.whitehouse.gov/barney/">Barney, the first dog</a></strong></td>
+                  <td colspan="4" style="font-size:16px; padding-bottom: 5px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Barney, the first dog</span></td>
               </tr>
               <tr>
-                  <td style="width:50px; vertical-align: top;"><img style="float: right;" alt="Photo of barney" src="http://www.webweaver.nu/clipart/img/nature/dogs/dalmation.jpg" /></td>
-                  <td style="vertical-align: top; width: 25%;">
+                  <td style="width:50px; vertical-align: top; padding: 0 5px 0 0;"><img  style="padding:3px; border:1px solid #ddd;" alt="Photo of barney" src="/javascripts/fckeditor/usa_small.jpg" /></td>
+                  <td style="vertical-align: top; width: 200px;">
                   <ul style="padding-left: 15px;">
                       <li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
                       <li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
                       <li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
                   </ul>
                   </td>
-                  <td style="width:50px; vertical-align: top;"><img style="float: right;" alt="Photo of barney" src="http://www.webweaver.nu/clipart/img/nature/dogs/dalmation.jpg" /></td>
-                  <td style="vertical-align: top; width: 25%;">
+                  <td style="width:50px; vertical-align: top; padding: 0 0 0 5px;"><img  style="padding:3px; border:1px solid #ddd;" alt="Photo of barney" src="/javascripts/fckeditor/usa_small.jpg" /></td>
+                  <td style="vertical-align: top; width: 200px;">
                   <ul style="padding-left: 15px;">
                       <li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
                       <li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
@@ -128,13 +198,15 @@
               </tr>
           </tbody>
       </table>
+      </div>
 			]]>
 		</Html>
 	</Template>
 	<Template title="My TSA template" image="template1.gif">
 		<Html>
 			<![CDATA[
-      <table class="spotlight" border="0">
+			<div id="spotlight-simple">
+      <table class="spotlight">
           <tbody>
               <tr>
                 <td colspan="2" style="vertical-align:top;">
@@ -159,6 +231,37 @@
               </tr>
           </tbody>
       </table>
+      </div>
+			]]>
+		</Html>
+	</Template>
+	<Template title="NOAA template" image="template1.gif">
+		<Html>
+			<![CDATA[
+      <div id="spotlight-custom" style="background: url('/images/spotlights/noaa.jpg');">
+        <div style="width: 200px; position:relative; top:60px; left:400px; margin: 0; padding: 0;">
+            <ul style="list-style-type: none;margin:0; padding:0;">
+              <li style="margin-bottom: 5px;"><a href="" style="color: #0a4595; text-decoration: none;">Higher Waves Increase Erosion and Flooding Along the Oregon Coast</a></li>
+              <li style="margin-bottom: 5px;"><a href="" style="color: #0a4595; text-decoration: none;">The Search for Oil in the Gulf</a></li>
+              <li><a href="" style="color: #0a4595; text-decoration: none;">NWS Serves Vital Role in Oil Spill Operations</a></li>
+            </ul>
+          </div>
+      </div>
+			]]>
+		</Html>
+	</Template>
+	<Template title="NASA template" image="template1.gif">
+		<Html>
+			<![CDATA[
+      <div id="spotlight-custom" style="background: url('/images/spotlights/nasa.jpg');">
+        <div style="width: 220px; position:relative; top:25px; left:25px; margin: 0; padding: 0;">
+          <ul style="list-style-type: none;margin:0; padding:0;">
+            <li style="margin-bottom: 5px;"><a class="spotlight-custom-link" href="">NASA Images Show Anatomy of Pakistan Flood Disaster</a></li>
+            <li style="margin-bottom: 5px;"><a class="spotlight-custom-link" href="">Drought Drives Decade-Long Decline in Plant Growth</a></li>
+            <li><a class="spotlight-custom-link" href="">NASA Sensors to Guide Spacecraft to Safe, Distant Landings</a></li>
+          </ul>
+        </div>
+      </div>
 			]]>
 		</Html>
 	</Template>

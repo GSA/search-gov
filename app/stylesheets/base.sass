@@ -163,19 +163,31 @@ ul#related_gov_forms
     :text-decoration none
 
 #spotlight
-  :width 600px
   :color black
-  :border 1px solid lightgray
   :margin 1em 0
-  :padding 1em 0.5em 0 1em
-  :background #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
-  table
-    :margin-bottom .9em
-  td
-    :padding 0
-    ul
-      :margin 0
-      :list-style-type none
+  :padding 0
+  :width 620px
+  
+  #spotlight-simple
+    :width 600px
+    :color black
+    :margin 0
+    :background #fff url(/images/bg.png) repeat-x scroll 0 -153px
+    :border 1px solid #ddd
+    :padding 0.5em 0.5em 0 1em
+    
+    table
+      td
+        :padding 0
+        ul
+          :margin 0
+          :list-style-type disc
+          :color gray
+          
+  #spotlight-custom
+    :height 175px
+    .spotlight-custom-link
+      :color #000
 
 .hidden
   :position absolute
