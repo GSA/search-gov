@@ -130,6 +130,28 @@ describe "summary_tables rake tasks" do
         end
       end
       
+      context "when queries are marked as not being contextual" do
+        before do
+          Query.create!(@valid_attributes.merge(:query => "I'm not contextual!", :is_contextual => false))
+        end
+        
+        it "should include those queries in the calculations" do
+          @rake[@task_name].invoke
+          DailyQueryIpStat.find_by_query("I'm not contextual!").should_not be_nil
+        end
+      end
+      
+      context "when queries are marked as being contextual" do
+        before do
+          Query.create!(@valid_attributes.merge(:query => "I'm contextual!", :is_contextual => true))
+        end
+        
+        it "should not be included in the calculation" do
+          @rake[@task_name].invoke
+          DailyQueryIpStat.find_by_query("I'm contextual!").should be_nil
+        end
+      end
+      
       context "when there are queries from both the English and the Spanish site with the same IP address" do
         before do
           Query.create!(@valid_attributes)
@@ -173,6 +195,18 @@ describe "summary_tables rake tasks" do
           DailyQueryIpStat.find_by_day(Date.tomorrow).should be_nil
         end
       end
+      
+      context "when contextual queries exist along with non-contextual queries" do
+        before do
+          Query.create!(@valid_attributes.merge(:timestamp => Date.yesterday.to_time))
+          Query.create!(@valid_attributes.merge(:timestamp => Date.yesterday.to_time, :is_contextual => true))
+        end
+        
+        it "should not include the contextual links in the calculations" do
+          @rake[@task_name].invoke
+          DailyQueryIpStat.find_all_by_day(Date.yesterday).size.should == 1
+        end
+      end
     end
     
     describe "usasearch:daily_query_ip_stats:compute_affiliate" do
@@ -212,6 +246,17 @@ describe "summary_tables rake tasks" do
           DailyQueryIpStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
           DailyQueryIpStat.find_by_day(Date.today, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
           DailyQueryIpStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
+        end
+        
+        context "when contextual queries exist" do
+          before do
+            Query.create!(@valid_attributes.merge(:timestamp => Date.yesterday.to_time, :affiliate => 'affiliate.gov', :is_contextual => true))
+          end
+          
+          it "should not include the contextual queries in the calculations" do
+            @rake[@task_name].invoke
+            DailyQueryIpStat.find_all_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'affiliate.gov']).size.should == 1
+          end
         end
       end
     end
