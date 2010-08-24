@@ -4,7 +4,7 @@ class Query < ActiveRecord::Base
   validates_presence_of :affiliate
   validates_presence_of :locale
   
-  DEFAULT_EXCLUDED_QUERIES = ['enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', 'test']
+  DEFAULT_EXCLUDED_QUERIES = ['enter keywords', 'cheesewiz' , 'cheeseman', 'clusty' ,' ', '1', 'test']
   DEFAULT_EXCLUDED_IPADDRESSES = ['192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169']
   EXCLUDE_BOTS_CLAUSE = "AND (is_bot=false OR ISNULL(is_bot))"
   

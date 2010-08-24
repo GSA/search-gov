@@ -1,8 +1,8 @@
 namespace :usasearch do
   namespace :daily_query_ip_stats do
     insert_sql = "INSERT IGNORE INTO daily_query_ip_stats (query, ipaddr, day, affiliate, locale, times) SELECT lower(query), ipaddr, date(timestamp) day, affiliate, locale, count(*) FROM queries "
-    where_clause = "WHERE query NOT IN ( 'enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', 'test') AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false"
-    affiliate_where_clause = "WHERE query NOT IN ( 'enter keywords', 'cheesewiz' ,'clusty' ,' ', '1', 'test') AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND (is_bot=false OR ISNULL(is_bot)) AND affiliate<>'usasearch.gov' AND is_contextual=false"    
+    where_clause = "WHERE query NOT IN ( 'enter keywords', 'cheesewiz' , 'cheeseman', 'clusty' ,' ', '1', 'test') AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false"
+    affiliate_where_clause = "WHERE query NOT IN ( 'enter keywords', 'cheesewiz' , 'chesseman', 'clusty' ,' ', '1', 'test') AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND (is_bot=false OR ISNULL(is_bot)) AND affiliate<>'usasearch.gov' AND is_contextual=false"    
     group_by = "GROUP BY day, query, ipaddr, affiliate, locale"
 
     desc "initial population of daily_query_ip_stats from queries table. Destroys existing data in daily_query_ip_stats table."
