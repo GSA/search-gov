@@ -101,12 +101,12 @@ describe SearchesController do
       @search.should_not be_nil
       @search.results.should_not be_nil
     end
-    
+
     context "when a scope id is provided" do
       before do
         get :index, :query => 'obama', :scope_id => 'Scope'
       end
-      
+
       it "should set the scope id parameter in the search options and the search, but not set a variable to be passed to the view" do
         assigns[:search_options][:scope_id].should == 'Scope'
         assigns[:search].scope_id.should == 'Scope'
@@ -150,12 +150,12 @@ describe SearchesController do
       @search.gov_forms.should be_nil
       response.body.should_not match(/related_gov_forms/)
     end
-    
+
     context "when a scope id is provided do" do
       before do
         get :index, :affiliate => @affiliate.name, :query => 'weather', :scope_id => 'SomeScope'
       end
-      
+
       it "should set the scope id variable" do
         assigns[:scope_id].should == 'SomeScope'
       end
@@ -279,26 +279,6 @@ describe SearchesController do
     end
   end
 
-  context "when handling a search based on an SAYT suggestion" do
-    before do
-      get :index, :query => 'very suggestive', :sayt => true
-    end
-
-    it "should record the accepted suggestion" do
-      AcceptedSaytSuggestion.find_by_phrase('very suggestive').should_not be_nil
-    end
-  end
-
-  context "when handling a search NOT based on an SAYT suggestion" do
-    before do
-      get :index, :query => 'very suggestive'
-    end
-
-    it "should NOT record the accepted suggestion" do
-      AcceptedSaytSuggestion.find_by_phrase('very suggestive').should be_nil
-    end
-  end
-
   context "when a user is attempting to visit an old-style advanced search page" do
     before do
       get :index, :form => "advanced-firstgov"
@@ -362,19 +342,19 @@ describe SearchesController do
       response.body.should_not have_selector "search_form"
     end
   end
-  
+
   describe "#advanced" do
     context "when an affiliate advanced search form is displayed" do
       context "when a valid scope id is specified" do
         before do
           get :index, :affiliate=> affiliates(:power_affiliate).name, :query => "weather", :scope_id => 'PatentClass'
         end
-        
+
         it "should assign the scope id" do
           assigns[:scope_id].should == 'PatentClass'
         end
       end
     end
   end
-        
+
 end

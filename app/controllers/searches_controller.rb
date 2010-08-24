@@ -14,7 +14,6 @@ class SearchesController < ApplicationController
     @search.run
     @page_title = @search.query
     handle_affiliate_search
-    record_accepted_sayt_suggestion
     if @search_options[:affiliate]
       render :action => "affiliate_index", :layout => "affiliate"
     else
@@ -54,10 +53,6 @@ class SearchesController < ApplicationController
       @scope_id = @search_options[:scope_id]
       @page_title = "#{t :search_results_for} #{@affiliate.name}: #{@search.query}"
     end
-  end
-
-  def record_accepted_sayt_suggestion
-    AcceptedSaytSuggestion.create!(:phrase=>params["query"]) if params["sayt"]
   end
 
   def handle_old_advanced_form
