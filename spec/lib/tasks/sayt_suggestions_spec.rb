@@ -48,16 +48,16 @@ describe "SAYT suggestions rake tasks" do
 
       context "when days back is specified" do
         it "should expire sayt_suggestions that have not been updated for that many days" do
-          days_back = 7
-          SaytSuggestion.should_receive(:expire).with(days_back)
+          days_back = "7"
+          SaytSuggestion.should_receive(:expire).with(days_back.to_i)
           @rake[@task_name].invoke(days_back)
         end
       end
 
       context "when days back is not specified" do
         it "should expire sayt_suggestions that have not been updated for 30 days" do
-          days_back = 30
-          SaytSuggestion.should_receive(:expire).with(days_back)
+          days_back = "30"
+          SaytSuggestion.should_receive(:expire).with(days_back.to_i)
           @rake[@task_name].invoke
         end
       end
