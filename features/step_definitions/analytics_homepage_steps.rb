@@ -10,15 +10,13 @@ end
 Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
   DailyQueryStat.delete_all
   startdate, enddate = sd.to_date, ed.to_date
-  wordcount = 5
-  words = []
-  startword = "aaaa"
-  wordcount.times { words << startword.succ! }
+  cnt = 10000
+  words = ("aaaa".."aaaz").to_a
   startdate.upto(enddate) do |day|
     words.each do |word|
-      times = rand(1000)
-      DailyQueryStat.create(:day => day, :query => word, :times => times, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-      [1, 7, 30].each { |window_size| MovingQuery.create(:day => day, :query => word, :window_size => window_size, :times => window_size * times, :mean => 1.0, :std_dev => 0.001) }
+      cnt = cnt -1
+      DailyQueryStat.create(:day => day, :query => word, :times => cnt, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+      MovingQuery.create(:day => day, :query => word, :window_size => 1, :times => cnt, :mean => 1.0, :std_dev => 0.001)
     end
   end
   DailyQueryStat.reindex

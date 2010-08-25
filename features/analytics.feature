@@ -6,15 +6,17 @@ Feature: Analytics Homepage
 
   Scenario: Viewing the homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And there is analytics data from "20090831" thru "20090911"
+    And there is analytics data from "20090909" thru "20090911"
     When I am on the analytics homepage
     Then I should see "Data for September 11, 2009"
-    And in "dqs1" I should not see "No queries matched"
-    And in "dqs7" I should not see "No queries matched"
-    And in "dqs30" I should not see "No queries matched"
-    And in "qas1" I should not see "No queries matched"
-    And in "qas7" I should not see "No queries matched"
-    And in "qas30" I should not see "No queries matched"
+    And I should see "Most Frequent Queries"
+    And in "dqs1" I should see "aaaa"
+    And in "dqs7" I should see "aaaa"
+    And in "dqs30" I should see "aaaa"
+    And I should see "Hot Topics for the Day"
+    And in "qas0" I should see "aaaa"
+    And in "qas1" I should see "aaah"
+    And in "qas2" I should see "aaao"
 
   Scenario: No daily query stats available for any time period
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
@@ -24,13 +26,11 @@ Feature: Analytics Homepage
     And in "dqs7" I should see "Not enough historic data"
     And in "dqs30" I should see "Not enough historic data"
 
-  Scenario: No query accelerations (biggest movers) available for any time period
+  Scenario: No query accelerations (biggest movers) available
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And there are no query accelerations stats
     When I am on the analytics homepage
-    Then in "qas1" I should see "No queries matched"
-    And in "qas7" I should see "No queries matched"
-    And in "qas30" I should see "No queries matched"
+    Then I should not see "Hot Topics for the Day"
 
   Scenario: Viewing queries with at least 4 queries per day that are part of query groups (i.e., semantic sets)
     Given I am logged in with email "analyst@fixtures.org" and password "admin"

@@ -1,3 +1,4 @@
+- offset ||= 0
 %table.querycounts
   %tr
     %th.alt Query
@@ -10,11 +11,11 @@
     - query_counts.each_with_index do |query_count, idx|
       %tr
         %td{:colspan=>2}
-          = "#{idx+1}."
+          = "#{idx+1+offset}."
           = affiliate.nil? ? query_chart_link(query_count) : query_count.query
           = open_close_toggle_icon(content_name,"#{idx}") unless query_count.children.empty?
         %td{:style => "text-align: right"}= query_count.times
-      %tr{:id => "#{content_name}item#{idx}", :style => "display:none"}
+      %tr{:id => "#{content_name}item#{idx+offset}", :style => "display:none"}
         %td{:colspan=>3}
           %table
             - query_count.children.each do |kid|
