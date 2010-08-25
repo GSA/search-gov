@@ -1,5 +1,6 @@
 class SaytSuggestion < ActiveRecord::Base
   before_validation :squish_whitespace_and_downcase_and_spellcheck
+  belongs_to :affiliate
 
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :scope => :affiliate_id

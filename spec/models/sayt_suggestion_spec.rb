@@ -11,6 +11,7 @@ describe SaytSuggestion do
   end
 
   describe "Creating new instance" do
+    should_belong_to :affiliate
     should_validate_presence_of :phrase
     should_validate_uniqueness_of :phrase, :scope => :affiliate_id
     should_validate_length_of :phrase, :within=> (3..80)
