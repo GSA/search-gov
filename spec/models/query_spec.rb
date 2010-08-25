@@ -24,9 +24,9 @@ describe Query do
   should_validate_presence_of :locale
   
   describe "#top_queries" do
-    it "should query between the start and end times specified, using 'en' as the default locale, 'usasearch.gov' as the default affiliate, limit of 20K and excluding bots and contextual queries" do
+    it "should query between the start and end times specified, using 'en' as the default locale, 'usasearch.gov' as the default affiliate, limit of 30K and excluding bots and contextual queries" do
       @date = Date.parse('20100603')
-      Query.should_receive(:find).with(:all, :select => "DISTINCT query, count(*) AS total", :conditions => ["timestamp BETWEEN ? AND ? AND affiliate=? AND locale=? AND query NOT IN (?) AND ipaddr NOT IN (?) AND is_contextual=false #{ Query::EXCLUDE_BOTS_CLAUSE }", @date.beginning_of_month.beginning_of_day, @date.end_of_month.end_of_day, 'usasearch.gov', 'en', Query::DEFAULT_EXCLUDED_QUERIES, Query::DEFAULT_EXCLUDED_IPADDRESSES], :joins => 'FORCE INDEX (timestamp)', :group => 'query', :order => 'total desc', :limit => 20000).and_return []
+      Query.should_receive(:find).with(:all, :select => "DISTINCT query, count(*) AS total", :conditions => ["timestamp BETWEEN ? AND ? AND affiliate=? AND locale=? AND query NOT IN (?) AND ipaddr NOT IN (?) AND is_contextual=false #{ Query::EXCLUDE_BOTS_CLAUSE }", @date.beginning_of_month.beginning_of_day, @date.end_of_month.end_of_day, 'usasearch.gov', 'en', Query::DEFAULT_EXCLUDED_QUERIES, Query::DEFAULT_EXCLUDED_IPADDRESSES], :joins => 'FORCE INDEX (timestamp)', :group => 'query', :order => 'total desc', :limit => 30000).and_return []
       Query.top_queries(@date.beginning_of_month.beginning_of_day, @date.end_of_month.end_of_day)
     end
     

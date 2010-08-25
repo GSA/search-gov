@@ -57,9 +57,9 @@ describe "Report generation rake tasks" do
           Affiliate.all.size.should == 2
         end
         
-        it "should default to yesterday, and produce reports for both English and Spanish locales (20K/4K results respectively), as well as all affiliates" do
+        it "should default to yesterday, and produce reports for both English and Spanish locales (30K/4K results respectively), as well as all affiliates" do
           %w{en es}.each do |locale|
-            Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 20000 : 4000, true).once.and_return @fake_top_queries
+            Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 30000 : 4000, true).once.and_return @fake_top_queries
           end
           Affiliate.all.each do |affiliate|
             Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, 'en', affiliate.name, 1000, true).once.and_return @fake_top_queries
@@ -70,7 +70,7 @@ describe "Report generation rake tasks" do
         it "should generate all reports for the date specified" do
           day = Date.today
           %w{en es}.each do |locale|
-            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 20000 : 4000, true).once.and_return @fake_top_queries
+            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 30000 : 4000, true).once.and_return @fake_top_queries
           end
           Affiliate.all.each do |affiliate|
             Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'en', affiliate.name, 1000, true).once.and_return @fake_top_queries
@@ -89,7 +89,7 @@ describe "Report generation rake tasks" do
         it "should skip affiliate report generation if the generate_affiliate parameter is set to false" do
           day = Date.yesterday
           %w{en es}.each do |locale|
-            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 20000 : 4000, true).once.and_return @fake_top_queries
+            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 30000 : 4000, true).once.and_return @fake_top_queries
           end
           @rake[@task_name].invoke(day.to_s, true, false)        
         end

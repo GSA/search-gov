@@ -26,7 +26,7 @@ namespace :usasearch do
       day = Date.parse(args.day)
       establish_aws_connection
       %w{en es}.each do |locale|
-        top_queries = Query.top_queries(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 20000: 4000, true)
+        top_queries = Query.top_queries(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 30000: 4000, true)
         generate_report(top_queries, generate_report_filename(locale, day, '%Y%m'))
       end if args.generate_usasearch
       Affiliate.all.each do |affiliate|
