@@ -30,8 +30,26 @@ describe DailyQueryStat do
       @valid_attributes.delete(:locale)
       DailyQueryStat.create(@valid_attributes).locale.should == I18n.default_locale.to_s
     end
+    
+    context "when queries have extra internal whitespace and/or external whitespace" do
+      before do
+        @unsquished_query = '  this query  should be   squished.  '
+        @squished_query = 'this query should be squished.'
+      end
+      
+      it "should remove extra interal whitespace and strip whitespace off the ends on create" do
+        DailyQueryStat.create(@valid_attributes.merge(:query => @unsquished_query)).query.should == @squished_query
+      end
+    
+      it "should remove extra internal whitespace and strip whitespace off the ends on update" do
+        daily_query_stat = DailyQueryStat.create(@valid_attributes.merge(:query => 'something'))
+        daily_query_stat.id.should_not be_nil
+        daily_query_stat.update_attributes(:query => @unsquished_query)
+        daily_query_stat.query.should == @squished_query
+      end
+    end
   end
-
+  
   describe "#reversed_backfilled_series_since_2009_for" do
     context "when no target date is passed in" do
       before do
