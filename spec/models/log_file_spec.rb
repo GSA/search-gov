@@ -467,6 +467,34 @@ EOF
         Query.should_not_receive(:create!)
         LogFile.parse_line(@log_entry)
       end
-    end 
+    end
+    
+    context "when query contains non-English characters that have been URL encoded" do
+      before do
+        @log_entry = <<'EOF'
+98.233.40.157 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=%D7%91%D7%94%D7%A6%D7%9C%D7%97%D7%94&locale=en&m=&commit=Search HTTP/1.1" 200 6185 "http://search.usa.gov/" "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.127 Safari/533.4"
+EOF
+        @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
+      end
+      
+      it "should create a query with properly UTF-8 encoded characters" do
+        Query.should_receive(:create!).with(:query => "בהצלחה",
+                                            :affiliate => "usasearch.gov",
+                                            :ipaddr => "98.233.40.157",
+                                            :timestamp => @timestamp_utc,
+                                            :locale => I18n.default_locale.to_s,
+                                            :agent => "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_4; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.127 Safari/533.4",
+                                            :is_bot => false,
+                                            :is_contextual => false)
+        LogFile.parse_line(@log_entry)
+      end
+      
+      it "should create a query that can be found by searching for the query" do
+        LogFile.parse_line(@log_entry)
+        query = Query.find_by_query("בהצלחה")
+        query.should_not be_nil
+        query.query.should == "בהצלחה"
+      end
+    end
   end
 end
