@@ -7,6 +7,11 @@ describe HomeController do
     assigns[:search].should_not be_nil
   end
 
+  it "should assign a local server IP variable" do
+    get :index
+    assigns[:local_sever_ip_in_html_comment].should match(/Served from (\d{1,3}\.){3}\d{1,3}/)
+  end
+
   context "when no locale is specified" do
     it "should use default locale" do
       get :index
@@ -55,15 +60,15 @@ describe HomeController do
       get :contact_form, :m => "true"
       response.should be_success
     end
-    
+
     it "should return 404 if not in mobile mode" do
       get :contact_form, :m => "false"
       response.status.should == "404 Not Found"
     end
-    
+
     it "should return 404 if no mode is specified" do
       get :contact_form
       response.status.should == "404 Not Found"
-    end      
+    end
   end
 end
