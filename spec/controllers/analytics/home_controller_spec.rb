@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Analytics::HomeController do
-  fixtures :users
+  fixtures :users, :daily_query_stats
 
   context "when not logged in" do
     it "should redirect to the login page" do
@@ -27,7 +27,7 @@ describe Analytics::HomeController do
       activate_authlogic
       UserSession.create(:email=> users("analyst").email, :password => "admin")
     end
-    
+
     it "should assign popular terms for the target day, its trailing week, and its trailing month" do
       yday = Date.yesterday.to_date
       DailyQueryStat.should_receive(:most_popular_terms).with(yday, 1, 10).and_return("ydaymp")
@@ -51,7 +51,6 @@ describe Analytics::HomeController do
     end
 
     describe "day_being_shown" do
-      fixtures :daily_query_stats
       context "when no date is selected by user" do
         it "should assign the most recent day" do
           get :index
@@ -90,18 +89,18 @@ describe Analytics::HomeController do
         assigns[:num_results_qas].should == 20
       end
     end
-    
+
     context "when rendering the monthly reports page" do
       integrate_views
       before do
         AWS::S3::Base.stub!(:establish_connection!).and_return true
       end
-      
+
       it "should establish an AWS connection" do
         AWS::S3::Base.should_receive(:establish_connection!).once
         get :index
       end
-     
+
       it "should link to the reports on Amazon S3 using SSL if the file exists on S3" do
         %w{en es}.each do |locale|
           filename = "#{locale}_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
@@ -112,7 +111,7 @@ describe Analytics::HomeController do
         response.body.should contain(/Download CSV of top 1000 queries for/)
         response.body.should contain(/English, Spanish/)
       end
-      
+
       it "should not link to the English report on S3 if it doesn't exist" do
         english_filename = "en_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
         AWS::S3::S3Object.should_receive(:exists?).with(english_filename, REPORTS_AWS_BUCKET_NAME).and_return false
@@ -124,9 +123,9 @@ describe Analytics::HomeController do
         response.body.should contain(/Download CSV of top 1000 queries for/)
         response.body.should_not contain(/English/)
         response.body.should contain(/Spanish/)
-        response.body.should_not contain(/, Spanish/)       
+        response.body.should_not contain(/, Spanish/)
       end
-      
+
       it "should not link to the Spanish report on S3 if it doesn't exist" do
         english_filename = "en_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
         AWS::S3::S3Object.should_receive(:exists?).with(english_filename, REPORTS_AWS_BUCKET_NAME).and_return true
@@ -140,7 +139,7 @@ describe Analytics::HomeController do
         response.body.should_not contain(/Spanish/)
         response.body.should_not contain(/English,/)
       end
-      
+
       it "should not link to the reports if neither exist" do
         %w{en es}.each do |locale|
           filename = "#{locale}_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
@@ -153,5 +152,5 @@ describe Analytics::HomeController do
         response.body.should_not contain(/Spanish/)
       end
     end
-  end  
+  end
 end
