@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-log_file_rb.html">app/models/log_file.rb</a></td>
-            <td class='right_align'><tt>40</tt></td>
-            <td class='right_align'><tt>36</tt></td>
+            <td class='right_align'><tt>44</tt></td>
+            <td class='right_align'><tt>39</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -231,7 +231,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>     return if query.nil?</pre></td>
+            <td><pre><a name="line30">30</a>     return if query.nil? or invalid_query(query)</pre></td>
           </tr>
         
           
@@ -291,13 +291,37 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a> end</pre></td>
+            <td><pre><a name="line40">40</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>   def self.invalid_query(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>     query[0..2] == '&gt;&lt;a' ? true : false</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line43">43</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Aug 23 11:06:26 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Aug 27 23:27:55 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
