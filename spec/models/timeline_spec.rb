@@ -5,6 +5,16 @@ describe Timeline do
     it "should generate a new Timeline object given a query" do
       Timeline.new("foo").should be_instance_of(Timeline)
     end
+    
+    context "when there are no records for the query term at all" do
+      it "should return an array with zeros for each day from Jan. 1 2009 to yesterday" do
+        timeline = Timeline.new("not in the database")
+        timeline.dates.size.should == (Date.yesterday - Date.new(2009, 1, 1)).to_i
+        timeline.series.each do |timeline_entry|
+          timeline_entry.y.should == 0
+        end
+      end
+    end
 
     context "when there are no searches for a term on a given day" do
       before do

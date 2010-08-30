@@ -1,8 +1,16 @@
-%h2="Interest over time for '#{h @query}'"
-- annotated_timeline_for(@dates, :width => 940, :height => 300) do |atl|
-  - atl.add_line(@query, @series, :value => :y)
+%h2= "Interest over time for '#{h @query}'#{@comparison_query ? h(' compared to \'' + @comparison_query + '\'') : ''}"
+- annotated_timeline_for(@timelines.first.dates, :width => 940, :height => 300) do |atl|
+  - atl.add_line(@query, @timelines.first.series, :value => :y)
+  - atl.add_line(@comparison_query, @timelines.last.series, :value => :y) if @comparison_query
 
 - if @query_group
   %dl
     %dt= link_to @query_group.name, analytics_query_groups_path
     %dd= @query_group.grouped_queries.collect {|gq| link_to h(gq.query), analytics_grouped_queries_path }.join(', ')
+
+- form_tag(query_timeline_path(@query), :method => :get, :id => "queries") do
+  = label_tag 'comparison_query', "Add a comparison term"
+  = text_field_tag 'comparison_query', @comparison_query
+  = submit_tag 'Compare'
+%p
+  = link_to "Remove: #{h @comparison_query}", query_timeline_path(@query) if @comparison_query

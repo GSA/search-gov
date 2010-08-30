@@ -8,8 +8,7 @@ class Timeline
     else
       results = DailyQueryStat.find_all_by_query(query, :conditions => ['affiliate = ? AND locale = ?', DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s], :order => "day", :select=>"day, times")
     end
-    return if results.empty?
-    date_marker = results.first.day
+    date_marker = results.first.present? ? results.first.day : Date.yesterday
     pad_with_zeroes_from_to(Date.new(2009, 1, 1), date_marker - 1.day)
     results.each do |dqs|
       while (dqs.day != date_marker)
@@ -21,7 +20,7 @@ class Timeline
       @dates << dqs.day
       date_marker += 1.day
     end
-    pad_with_zeroes_from_to(date_marker, DailyQueryStat.most_recent_populated_date)
+    pad_with_zeroes_from_to(date_marker, DailyQueryStat.most_recent_populated_date) if DailyQueryStat.most_recent_populated_date
   end
 
   private
