@@ -129,7 +129,7 @@ describe Search do
 
     context "when affiliate has domains specified and user does not specify site: in search" do
       before do
-        @affiliate = Affiliate.new(:domains => %w(  foo.com bar.com  ).join("\n"))
+        @affiliate = Affiliate.new(:domains => %w(   foo.com bar.com   ).join("\n"))
         @uriresult = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -163,7 +163,7 @@ describe Search do
 
     context "when affiliate has domains specified but user specifies site: in search" do
       before do
-        @affiliate = Affiliate.new(:domains => %w(  foo.com bar.com  ).join("\n"))
+        @affiliate = Affiliate.new(:domains => %w(   foo.com bar.com   ).join("\n"))
         @uriresult = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -562,7 +562,7 @@ describe Search do
 
     context "when searching with valid queries" do
       before do
-        CalaisRelatedSearch.create!(:term=> @valid_options[:query], :related_terms => %w{government grants | big government | democracy})
+        CalaisRelatedSearch.create!(:term=> @valid_options[:query], :related_terms => %w{ government grants | big government | democracy })
         CalaisRelatedSearch.reindex
         @search = Search.new(@valid_options)
         @search.run
@@ -590,6 +590,19 @@ describe Search do
         search = Search.new(@valid_options.merge(:query => query))
         URI.should_receive(:parse).with(/Pros%20%26%20Cons%20Physician%20Assisted%20Suicide/).and_return(@uriresult)
         search.run
+      end
+    end
+
+    context "when the query ends in OR" do
+      before do
+        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{ portland or | oregon | rain })
+        CalaisRelatedSearch.reindex
+        @search = Search.new(:query => "Portland OR")
+        @search.run
+      end
+
+      it "should still work (i.e., downcase the query so Solr does not treat it as a Boolean OR)" do
+        @search.related_search.size.should == 3
       end
     end
 

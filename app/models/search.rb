@@ -158,19 +158,20 @@ class Search
 
   def build_query(options)
     query = ''
-    if !options[:query].blank?
+    if options[:query].present?
+      options[:query].downcase! if options[:query][-3,options[:query].size] == " OR"
       query += options[:query].split.collect { |term| limit_field(options[:query_limit], term) }.join(' ')
     end
 
-    if !options[:query_quote].blank?
+    if options[:query_quote].present?
       query += ' ' + limit_field(options[:query_quote_limit], "\"#{options[:query_quote]}\"")
     end
 
-    if !options[:query_or].blank?
+    if options[:query_or].present?
       query += ' ' + options[:query_or].split.collect { |term| limit_field(options[:query_or_limit], term) }.join(' OR ')
     end
 
-    if !options[:query_not].blank?
+    if options[:query_not].present?
       query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ')
     end
     # query += " (scopeid:usagov#{options[:fedstates]})" unless options[:fedstates].blank? || options[:fedstates].downcase == 'all'
