@@ -44,7 +44,7 @@ describe MovingQuery do
         MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "7-day", 7).times.should == 200007
         MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "30-day", 30).times.should == 300030
       end
-      
+
       context "when there is similar data for affiliates" do
         before do
           DailyQueryStat.create!(:day => Date.yesterday, :times => 100000, :query => "1-day", :affiliate => 'affiliate.gov')
@@ -55,14 +55,14 @@ describe MovingQuery do
           DailyQueryStat.create!(:day => 3.weeks.ago.to_date, :times => 30, :query => "30-day", :affiliate => 'affiliate.gov')
           DailyQueryStat.create!(:day => Date.yesterday, :times => 300000, :query => "30-day", :affiliate => 'affiliate.gov')
         end
-        
+
         it "should find and create 1, 7 and 30 day movie queries for the given day, uninfluenced by the affiliate stats" do
           MovingQuery.compute_for(Date.yesterday.to_s(:number))
           MovingQuery.count.should == 9
           [1, 7, 30].each {|win_size| MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "1-day", win_size).times.should == 100000 }
           MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "7-day", 7).times.should == 200007
           MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "30-day", 30).times.should == 300030
-        end 
+        end
       end
     end
 
@@ -77,18 +77,18 @@ describe MovingQuery do
         MovingQuery.compute_for(@target_date)
         [1, 7, 30].each {|win_size| MovingQuery.find_by_day_and_query_and_window_size(@target_date, "usual", win_size).should be_nil }
       end
-      
+
       context "when there are affiliate queries with the same terms for the same time period" do
         before do
           Date.new(2009, 1, 1).upto(Date.new(2009, 6, 1)) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 10 + rand(5), :query => "usual", :affiliate => 'affiliate.gov')}
           DailyQueryStat.create!(:day => @target_date, :times => 16, :query => "usual", :affiliate => 'affiliate.gov')
         end
-        
+
         it "should not create any moving query records for that query on that day" do
           MovingQuery.compute_for(@target_date)
           [1, 7, 30].each {|win_size| MovingQuery.find_by_day_and_query_and_window_size(@target_date, "usual", win_size).should be_nil }
         end
-      end    
+      end
     end
 
     context "when a brand new query (i.e., zero searches since Jan 1 2009) gets 16 searches per day for the 14th day in a row" do
@@ -101,17 +101,17 @@ describe MovingQuery do
         MovingQuery.compute_for(Date.yesterday.to_s(:number))
         MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "still accelerating?", 1).should be_nil
       end
-      
+
       context "when there is similar data for an affiliate" do
         before do
           14.days.ago.to_date.upto(Date.yesterday) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 16, :query => "still accelerating?", :affiliate => 'affiliate.gov')}
         end
-        
+
         it "should not create a 1-day moving query for the query" do
           MovingQuery.compute_for(Date.yesterday.to_s(:number))
           MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "still accelerating?", 1).should be_nil
         end
-      end 
+      end
     end
 
     context "when a brand new query (i.e., zero searches since Jan 1 2009) gets 40 searches one day followed by 30, 22, 21, 20, and 16 searches" do
@@ -180,49 +180,6 @@ describe MovingQuery do
 
       it "should return an error string that there is not enough historical data" do
         MovingQuery.biggest_movers(@day, 30).should == "Not enough historic data to compute accelerations"
-      end
-    end
-
-    context "when there are grouped queries in the data that do not belong to a query group" do
-      before do
-        MovingQuery.delete_all
-        MovingQuery.create!(:query=> "earliest data in table", :day => Date.new(2009,1,1).to_date, :window_size => 30, :times => 160, :mean => 11.9, :std_dev => 1.0)
-        @day = Date.new(2009, 7, 21).to_date
-        MovingQuery.create!(:query=> "query1", :day => @day, :window_size => 1, :times => 16, :mean => 11.9, :std_dev => 1.0)
-        GroupedQuery.create!(:query=>"query1")
-      end
-
-      it "should treat the grouped queries as regular queries" do
-        yday = MovingQuery.biggest_movers(@day, 1)
-        yday.size.should == 1
-        yday.first.query.should == "query1"
-        yday.first.times.should == 16
-      end
-    end
-
-    context "when there are query groups and grouped queries in the data" do
-      before do
-        MovingQuery.delete_all
-        MovingQuery.create!(:query=> "earliest data in table", :day => Date.new(2009,1,1).to_date, :window_size => 30, :times => 160, :mean => 11.9, :std_dev => 1.0)
-        @day = Date.new(2009, 7, 21).to_date
-        MovingQuery.create!(:query=> "query1", :day => @day, :window_size => 1, :times => 16, :mean => 11.9, :std_dev => 1.0)
-        MovingQuery.create!(:query=> "query2", :day => @day, :window_size => 1, :times => 18, :mean => 11.9, :std_dev => 1.0)
-        qg = QueryGroup.create!(:name=>"my query group")
-        qg.grouped_queries << GroupedQuery.create!(:query=>"query1")
-        qg.grouped_queries << GroupedQuery.create!(:query=>"query2")
-      end
-
-      it "should roll up grouped queries into a single QueryCount with children" do
-        yday = MovingQuery.biggest_movers(@day, 1)
-        yday.size.should == 1
-        yday.first.query.should == "my query group"
-        yday.first.times.should == 34
-        kids = yday.first.children
-        kids.should_not be_nil
-        kids.first.query.should == "query2"
-        kids.first.times.should == 18
-        kids.last.query.should == "query1"
-        kids.last.times.should == 16
       end
     end
   end

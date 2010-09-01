@@ -4,8 +4,8 @@ class MovingQuery < ActiveRecord::Base
   validates_presence_of :window_size
   validates_presence_of :times
   validates_uniqueness_of :query, :scope => [:day, :window_size]
-  MIN_NUM_QUERIES_PER_WINDOW = { 1 => 15, 7 => 25, 30 => 45}
-  MULTIPLES_OF_STD_DEV_PER_WINDOW = { 1 => 4, 7 => 3, 30 => 2}
+  MIN_NUM_QUERIES_PER_WINDOW = {1 => 15, 7 => 25, 30 => 45}
+  MULTIPLES_OF_STD_DEV_PER_WINDOW = {1 => 4, 7 => 3, 30 => 2}
   RESULTS_SIZE = 10
   NO_QUERIES_MATCHED = "No queries matched"
   INSUFFICIENT_DATA = "Not enough historic data to compute accelerations"
@@ -43,34 +43,18 @@ class MovingQuery < ActiveRecord::Base
 
   def self.biggest_movers(end_date, window_size, num_results = RESULTS_SIZE)
     return NO_QUERIES_MATCHED if end_date.nil?
-    results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=>"times DESC")
+    results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=>"times DESC", :limit => num_results)
     return NO_QUERIES_MATCHED if results.empty?
     return INSUFFICIENT_DATA if insufficient_data?(end_date, window_size)
-    qcs=[]
-    qgcounts = {}
-    grouped_queries_hash = GroupedQuery.grouped_queries_hash
-    results.each do |res|
-      grouped_query = grouped_queries_hash[res.query]
-      if (grouped_query && !grouped_query.query_groups.empty?)
-        grouped_query.query_groups.each do |query_group|
-          qgcounts[query_group.name] = QueryCount.new(query_group.name, 0) if qgcounts[query_group.name].nil?
-          qgcounts[query_group.name].times += res.times.to_i
-          qgcounts[query_group.name].children << QueryCount.new(res.query, res.times)
-        end
-      else
-        qcs << QueryCount.new(res.query, res.times)
-      end
-    end
-    qcs += qgcounts.values
-    qcs.sort_by {|qc| qc.times}.reverse[0, num_results]
+    results.collect { |res| QueryCount.new(res.query, res.times) }
   end
 
   private
   def self.sum_by_window_except_last(ary, window_size)
     return ary if window_size == 1
     windows = ary.in_groups_of(window_size)
-    windows = windows[0, (windows.size) - 1] if windows.last.include?nil
-    windows.collect {|window| window.sum }
+    windows = windows[0, (windows.size) - 1] if windows.last.include? nil
+    windows.collect { |window| window.sum }
   end
 
   def self.get_window_candidates(window_size, yyyymmdd)
