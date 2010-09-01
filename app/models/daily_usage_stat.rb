@@ -57,7 +57,7 @@ class DailyUsageStat < ActiveRecord::Base
 
   def populate_webtrends_data
     profile_data = JSON.parse(get_profile_data)
-    query_date = "#{self.day.month}/#{self.day.day}/#{self.day.year}"
+    query_date = self.day.strftime('%m/%d/%Y')
     self.total_page_views = profile_data["data"][query_date]["measures"]["Page Views"]
     self.total_unique_visitors = profile_data["data"][query_date]["measures"]["Visitors"]
   end
