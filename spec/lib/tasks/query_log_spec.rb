@@ -122,5 +122,137 @@ describe "query_log rake tasks" do
         end
       end
     end
+  
+    describe "usasearch:query_log:extract" do
+      describe "usasearch:query_log:extract:clicks" do
+        before do
+          @task_name = "usasearch:query_log:extract:clicks"
+          ENV['DAY'] = nil
+          ENV['EXPORT_FILE'] = nil
+          ENV['LIMIT'] = nil
+          AWS::S3::Base.stub!(:establish_connection).and_return true
+          AWS::S3::Bucket.stub!(:find).and_return true
+          AWS::S3::S3Object.stub!(:store).and_return true
+          @streamed_content = StringIO.new
+          Kernel.stub!(:open).and_return @streamed_content
+          File.stub!(:delete).and_return true
+        end
+
+        it "should have 'environment' as a prereq" do
+          @rake[@task_name].prerequisites.should include("environment")
+        end
+        
+        it "should default to yesterday if no date is provided, outputting to /tmp, and not use a limit" do 
+          day = Date.yesterday.to_s(:number)
+          sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(click_ip) as click_ip, queried_at, clicked_at, url, serp_position, affiliate, results_source, user_agent FROM clicks WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND click_ip NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(clicked_at) = #{day.to_i}"
+          Click.should_receive(:find_by_sql).with(sql).and_return []
+          @rake[@task_name].invoke
+        end
+        
+        it "should use a date passed in as an environment variable in place of the default" do
+          day = Date.parse("2010-09-01").to_s(:number)
+          sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(click_ip) as click_ip, queried_at, clicked_at, url, serp_position, affiliate, results_source, user_agent FROM clicks WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND click_ip NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(clicked_at) = #{day.to_i}"
+          Click.should_receive(:find_by_sql).with(sql).and_return []
+          ENV["DAY"] = "20100901"
+          @rake[@task_name].invoke
+        end
+        
+        it "should usa an outfile as specified as an environment variable" do
+          day = Date.yesterday.to_s(:number)
+          sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(click_ip) as click_ip, queried_at, clicked_at, url, serp_position, affiliate, results_source, user_agent FROM clicks WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND click_ip NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(clicked_at) = #{day.to_i}"
+          Click.should_receive(:find_by_sql).with(sql).and_return []
+          ENV["EXPORT_FILE"] = "/tmp/my-clicks-#{day}"
+          @rake[@task_name].invoke
+        end
+        
+        it "should include a limit if specified as an environment variable" do
+          day = Date.yesterday.to_s(:number)
+          sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(click_ip) as click_ip, queried_at, clicked_at, url, serp_position, affiliate, results_source, user_agent FROM clicks WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND click_ip NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(clicked_at) = #{day.to_i} LIMIT 10"
+          Click.should_receive(:find_by_sql).with(sql).and_return []
+          ENV["LIMIT"] = "10"
+          @rake[@task_name].invoke
+        end
+        
+        it "should upload the outputted file to S3" do
+          day = Date.parse('2010-09-01').to_s(:number)
+          filename = 'click_logs/2010/09/clicks-20100901'
+          AWS::S3::S3Object.should_receive(:store).with(filename, @streamed_content, '***REMOVED***')
+          ENV['DAY'] = day
+          @rake[@task_name].invoke
+        end
+        
+        it "should delete the locally generated outfile" do
+          day = Date.yesterday.to_s(:number)
+          filename = "/tmp/clicks-#{day}"
+          File.should_receive(:delete).with(filename).and_return true
+          @rake[@task_name].invoke
+        end        
+      end
+      
+      describe "usasearch:query_log:extract:queries" do
+        before do
+          @task_name = "usasearch:query_log:extract:queries"
+          ENV['DAY'] = nil
+          ENV['EXPORT_FILE'] = nil
+          ENV['LIMIT'] = nil
+          AWS::S3::Base.stub!(:establish_connection).and_return true
+          AWS::S3::Bucket.stub!(:find).and_return true
+          AWS::S3::S3Object.stub!(:store).and_return true
+          @streamed_content = StringIO.new
+          Kernel.stub!(:open).and_return @streamed_content
+          File.stub!(:delete).and_return true
+        end
+
+        it "should have 'environment' as a prereq" do
+          @rake[@task_name].prerequisites.should include("environment")
+        end
+        
+        it "should default to yesterday if no date is provided, outputting to /tmp, and not use a limit" do 
+          day = Date.yesterday.to_s(:number)
+          sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(ipaddr) as ipaddr, timestamp, affiliate, locale, agent, is_bot FROM queries WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(timestamp) = #{day.to_i}"
+          Query.should_receive(:find_by_sql).with(sql).and_return []
+          @rake[@task_name].invoke
+        end
+        
+        it "should use a date passed in as an environment variable in place of the default" do
+          day = Date.parse("2010-09-01").to_s(:number)
+          sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(ipaddr) as ipaddr, timestamp, affiliate, locale, agent, is_bot FROM queries WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(timestamp) = #{day.to_i}"
+          Query.should_receive(:find_by_sql).with(sql).and_return []
+          ENV["DAY"] = "20100901"
+          @rake[@task_name].invoke
+        end
+        
+        it "should use an outfile as specified as an environment variable" do
+          day = Date.yesterday.to_s(:number)
+          sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(ipaddr) as ipaddr, timestamp, affiliate, locale, agent, is_bot FROM queries WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(timestamp) = #{day.to_i}"
+          Query.should_receive(:find_by_sql).with(sql).and_return []
+          ENV["EXPORT_FILE"] = "/tmp/my-queries-#{day}"
+          @rake[@task_name].invoke
+        end
+        
+        it "should include a limit if specified as an environment variable" do
+          day = Date.yesterday.to_s(:number)
+          sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(ipaddr) as ipaddr, timestamp, affiliate, locale, agent, is_bot FROM queries WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(timestamp) = #{day.to_i} LIMIT 10"
+          Query.should_receive(:find_by_sql).with(sql).and_return []
+          ENV["LIMIT"] = "10"
+          @rake[@task_name].invoke
+        end
+        
+        it "should upload the outputted file to S3" do
+          day = Date.parse('2010-09-01').to_s(:number)
+          filename = 'query_logs/2010/09/queries-20100901'
+          AWS::S3::S3Object.should_receive(:store).with(filename, @streamed_content, '***REMOVED***')
+          ENV['DAY'] = day
+          @rake[@task_name].invoke
+        end
+        
+        it "should delete the locally generated outfile" do
+          day = Date.yesterday.to_s(:number)
+          filename = "/tmp/queries-#{day}"
+          File.should_receive(:delete).with(filename).and_return true
+          @rake[@task_name].invoke
+        end
+      end
+    end
   end
 end

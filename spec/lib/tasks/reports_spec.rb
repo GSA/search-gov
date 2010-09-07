@@ -20,7 +20,7 @@ describe "Report generation rake tasks" do
         @task_name = "usasearch:reports:generate_monthly_top_queries"
         AWS::S3::Base.stub!(:establish_connection).and_return true
         AWS::S3::Bucket.stub!(:find).and_return true
-        AWS::S3::S3Object.stub(:store).and_return true
+        AWS::S3::S3Object.stub!(:store).and_return true
       end
 
       it "should have 'environment' as a prereq" do
