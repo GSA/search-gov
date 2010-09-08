@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-moving_query_rb.html">app/models/moving_query.rb</a></td>
-            <td class='right_align'><tt>89</tt></td>
-            <td class='right_align'><tt>82</tt></td>
+            <td class='right_align'><tt>73</tt></td>
+            <td class='right_align'><tt>66</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -93,13 +93,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   MIN_NUM_QUERIES_PER_WINDOW = { 1 =&gt; 15, 7 =&gt; 25, 30 =&gt; 45}</pre></td>
+            <td><pre><a name="line7">7</a>   MIN_NUM_QUERIES_PER_WINDOW = {1 =&gt; 15, 7 =&gt; 25, 30 =&gt; 45}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   MULTIPLES_OF_STD_DEV_PER_WINDOW = { 1 =&gt; 4, 7 =&gt; 3, 30 =&gt; 2}</pre></td>
+            <td><pre><a name="line8">8</a>   MULTIPLES_OF_STD_DEV_PER_WINDOW = {1 =&gt; 4, 7 =&gt; 3, 30 =&gt; 2}</pre></td>
           </tr>
         
           
@@ -327,7 +327,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>     results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=&gt;&quot;times DESC&quot;)</pre></td>
+            <td><pre><a name="line46">46</a>     results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=&gt;&quot;times DESC&quot;, :limit =&gt; num_results)</pre></td>
           </tr>
         
           
@@ -345,103 +345,103 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>     qcs=[]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line50">50</a>     qgcounts = {}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line51">51</a>     grouped_queries_hash = GroupedQuery.grouped_queries_hash</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line52">52</a>     results.each do |res|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line53">53</a>       grouped_query = grouped_queries_hash[res.query]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line54">54</a>       if (grouped_query &amp;&amp; !grouped_query.query_groups.empty?)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line55">55</a>         grouped_query.query_groups.each do |query_group|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line56">56</a>           qgcounts[query_group.name] = QueryCount.new(query_group.name, 0) if qgcounts[query_group.name].nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line57">57</a>           qgcounts[query_group.name].times += res.times.to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line58">58</a>           qgcounts[query_group.name].children &lt;&lt; QueryCount.new(res.query, res.times)</pre></td>
+            <td><pre><a name="line49">49</a>     results.collect { |res| QueryCount.new(res.query, res.times) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line59">59</a>         end</pre></td>
+            <td><pre><a name="line50">50</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a>       else</pre></td>
+            <td><pre><a name="line51">51</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line61">61</a>         qcs &lt;&lt; QueryCount.new(res.query, res.times)</pre></td>
+            <td><pre><a name="line52">52</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>   def self.sum_by_window_except_last(ary, window_size)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line54">54</a>     return ary if window_size == 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>     windows = ary.in_groups_of(window_size)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>     windows = windows[0, (windows.size) - 1] if windows.last.include? nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>     windows.collect { |window| window.sum }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line62">62</a>       end</pre></td>
+            <td><pre><a name="line58">58</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line63">63</a>     end</pre></td>
+            <td><pre><a name="line59">59</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a>     qcs += qgcounts.values</pre></td>
+            <td><pre><a name="line60">60</a>   def self.get_window_candidates(window_size, yyyymmdd)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>     qcs.sort_by {|qc| qc.times}.reverse[0, num_results]</pre></td>
+            <td><pre><a name="line61">61</a>     start_date = yyyymmdd.to_date - window_size.days + 1.day</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line62">62</a>     DailyQueryStat.sum(:times,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line63">63</a>                        :group=&gt;:query,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>                        :conditions=&gt;[&quot;day BETWEEN ? AND ? AND affiliate = ? AND locale = ?&quot;, start_date, yyyymmdd, DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a>                        :having =&gt; &quot;sum_times &gt; #{MIN_NUM_QUERIES_PER_WINDOW[window_size]}&quot;)</pre></td>
           </tr>
         
           
@@ -459,139 +459,43 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line68">68</a>   private</pre></td>
+            <td><pre><a name="line68">68</a>   def self.insufficient_data?(day, window_size)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line69">69</a>   def self.sum_by_window_except_last(ary, window_size)</pre></td>
+            <td><pre><a name="line69">69</a>     available_periods = (day - minimum(:day)) / window_size</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>     return ary if window_size == 1</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line71">71</a>     windows = ary.in_groups_of(window_size)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line72">72</a>     windows = windows[0, (windows.size) - 1] if windows.last.include?nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line73">73</a>     windows.collect {|window| window.sum }</pre></td>
+            <td><pre><a name="line70">70</a>     available_periods &lt; MIN_ACCELERATION_PERIODS_REQUIRED</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a>   end</pre></td>
+            <td><pre><a name="line71">71</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line75">75</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line76">76</a>   def self.get_window_candidates(window_size, yyyymmdd)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line77">77</a>     start_date = yyyymmdd.to_date - window_size.days + 1.day</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line78">78</a>     DailyQueryStat.sum(:times,</pre></td>
+            <td><pre><a name="line72">72</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line79">79</a>                        :group=&gt;:query,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line80">80</a>                        :conditions=&gt;[&quot;day BETWEEN ? AND ? AND affiliate = ? AND locale = ?&quot;, start_date, yyyymmdd, DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line81">81</a>                        :having =&gt; &quot;sum_times &gt; #{MIN_NUM_QUERIES_PER_WINDOW[window_size]}&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line82">82</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line83">83</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line84">84</a>   def self.insufficient_data?(day, window_size)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line85">85</a>     available_periods = (day - minimum(:day)) / window_size</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line86">86</a>     available_periods &lt; MIN_ACCELERATION_PERIODS_REQUIRED</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line87">87</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line88">88</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line89">89</a> end</pre></td>
+            <td><pre><a name="line73">73</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Sep 01 14:58:53 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Tue Sep 07 22:01:15 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
