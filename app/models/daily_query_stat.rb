@@ -48,11 +48,11 @@ class DailyQueryStat < ActiveRecord::Base
     def most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       return INSUFFICIENT_DATA if end_date.nil?
       start_date = end_date - days_back.days + 1.day
-      results = DailyQueryStat.sum(:times,
-                                   :group => :query,
-                                   :conditions => ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],
-                                   :having => "sum_times > #{ affiliate_name == DEFAULT_AFFILIATE_NAME ? "3" : "0"}",
-                                   :order => "sum_times desc")
+      results = sum(:times,
+                    :group => :query,
+                    :conditions => ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],
+                    :having => "sum_times > #{ affiliate_name == DEFAULT_AFFILIATE_NAME ? "3" : "0"}",
+                    :order => "sum_times desc")
       return INSUFFICIENT_DATA if results.empty?
       qcs=[]
       qgcounts = {}
@@ -80,15 +80,15 @@ class DailyQueryStat < ActiveRecord::Base
     def collect_query_group_named(name)
       qg = QueryGroup.find_by_name(name)
       queries = qg.grouped_queries.collect { |gq| gq.query }
-      results = DailyQueryStat.sum(:times, :group => :day, :conditions => ["query IN (?) AND affiliate = ? AND locale = ?", queries, DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s], :order => "day")
+      results = sum(:times, :group => :day, :conditions => ["query IN (?) AND affiliate = ? AND locale = ?", queries, DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s], :order => "day")
       dqs=[]
-      results.each_pair { |day, times| dqs << DailyQueryStat.new(:day=> day, :times => times, :affiliate => DEFAULT_AFFILIATE_NAME, :locale => I18n.default_locale.to_s) }
+      results.each_pair { |day, times| dqs << new(:day=> day, :times => times, :affiliate => DEFAULT_AFFILIATE_NAME, :locale => I18n.default_locale.to_s) }
       dqs
     end
   end
-  
+
   private
-  
+
   def squish_query
     self.query.squish!
   end

@@ -29,10 +29,8 @@ class SaytSuggestion < ActiveRecord::Base
       filtered_daily_query_stats.each do |dqs|
         temp_ss = new(:phrase => dqs.query)
         temp_ss.squish_whitespace_and_downcase_and_spellcheck
-        sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase(:affiliate_id => affiliate_id,
-                                                                        :phrase => temp_ss.phrase,
-                                                                        :popularity => dqs.times)
-        sayt_suggestion.popularity += dqs.times unless sayt_suggestion.new_record?
+        sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase(affiliate_id, temp_ss.phrase)
+        sayt_suggestion.popularity = dqs.times
         sayt_suggestion.save
       end unless filtered_daily_query_stats.empty?
     end

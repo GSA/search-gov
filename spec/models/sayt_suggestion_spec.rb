@@ -117,9 +117,9 @@ describe SaytSuggestion do
         DailyQueryStat.create!(:day => Date.today, :query => "already here", :times => 2, :affiliate => @affiliate.name)
       end
 
-      it "should increment the popularity field appropriately" do
+      it "should update the popularity field with the new count" do
         SaytSuggestion.populate_for_affiliate_on(@affiliate.name, @affiliate.id, Date.today)
-        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "already here").popularity.should == 12
+        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "already here").popularity.should == 2
       end
     end
   end
