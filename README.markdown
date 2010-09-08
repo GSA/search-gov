@@ -246,4 +246,4 @@ Note:  when working with the labs branch, it's your responsibility to keep it in
       git checkout labs
       git rebase master
 
-This will keep your labs branch in sync with the master branch, so when you're finished your experimental features, they'll integrate easily with the master branch. 
+This will keep your labs branch in sync with the master branch, so when you're finished your experimental features, they'll integrate easily with the master branch.
