@@ -5,7 +5,7 @@ class SaytSuggestion < ActiveRecord::Base
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :scope => :affiliate_id
   validates_length_of :phrase, :within=> (3..80)
-  validates_format_of :phrase, :with=> /^[a-zA-Z0-9][a-zA-Z0-9\s.'-]+[a-zA-Z0-9]$/i
+  validates_format_of :phrase, :with=> /^[a-zA-Z0-9][\s\w\.'-]+[a-zA-Z0-9]$/iu
 
   class << self
 

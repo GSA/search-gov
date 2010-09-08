@@ -16,9 +16,8 @@ describe SaytSuggestion do
     should_validate_uniqueness_of :phrase, :scope => :affiliate_id
     should_validate_length_of :phrase, :within=> (3..80)
     should_not_allow_values_for :phrase, "citizenship[", "email@address.com", "\"over quoted\"", "colon: here",
-                                "http:something", "site:something", "intitle:something",
-                                "en español", "passports'", ".mp3", "' pictures"
-    should_allow_values_for :phrase, "basic phrase", "my-name", "1099 form", "Senator Frank S. Farley State Marina", "Oswald West State Park's Smuggler Cove"
+                                "http:something", "site:something", "intitle:something", "passports'", ".mp3", "' pictures"
+    should_allow_values_for :phrase, "basic phrase", "my-name", "1099 form", "Senator Frank S. Farley State Marina", "Oswald West State Park's Smuggler Cove", "en español"
 
     it "should create a new instance given valid attributes" do
       SaytSuggestion.create!(@valid_attributes)
