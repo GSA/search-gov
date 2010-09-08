@@ -136,7 +136,7 @@ EOF
       end
     end
 
-    context "when log entry contains leading or traling spaces" do
+    context "when log entry contains leading or trailing spaces" do
       before do
         @log_entry = <<'EOF'
 143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=%20car%20&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
@@ -337,7 +337,7 @@ EOF
         @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
       end
 
-      it "should create a Query record with the Spanish locale identifier" do
+      it "should create a Query record with a blank user agent" do
         Query.should_receive(:create!).with(:query => 'obama',
                                             :affiliate => "usasearch.gov",
                                             :ipaddr => '143.81.248.53',
@@ -391,7 +391,7 @@ EOF
         LogFile.parse_line(@log_entry)
       end
     end
-    
+
     context "when the line is in the Apache common format, instead of the expected combined format" do
       before do
         @log_entry = <<'EOF'
@@ -399,7 +399,7 @@ EOF
 EOF
         @timestamp_utc = Time.parse("31/May/2010 00:02:05 -0400")
       end
-      
+
       it "should parse the log line, but not set the user agent, and have is_bot set to nil" do
         Query.should_receive(:create!).with(:query => 'alaska',
                                             :affiliate => 'nws.noaa.gov',
@@ -412,7 +412,7 @@ EOF
         LogFile.parse_line(@log_entry)
       end
     end
-    
+
     context "when the query includes a parameter where linked=1" do
       before do
         @log_entry = <<'EOF'
@@ -433,7 +433,7 @@ EOF
         LogFile.parse_line(@log_entry)
       end
     end
-    
+
     context "when the query contains a parameter where linked is present but doesn't equal '1'" do
       before do
         @log_entry = <<'EOF'
@@ -454,21 +454,21 @@ EOF
         LogFile.parse_line(@log_entry)
       end
     end
-    
-    context "when the query starts with an invalid sequence of characters such as '><a'" do
+
+    context "when the query starts with an invalid sequence of characters" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=><a%20href&affiliate=acqnet.gov_far_current&x=44&y=18&linked=2 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=%22><a%20href&affiliate=acqnet.gov_far_current&x=44&y=18&linked=2 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
         @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
       end
-      
+
       it "should not create a query" do
         Query.should_not_receive(:create!)
         LogFile.parse_line(@log_entry)
       end
     end
-    
+
     context "when query contains non-English characters that have been URL encoded" do
       before do
         @log_entry = <<'EOF'
@@ -476,7 +476,7 @@ EOF
 EOF
         @timestamp_utc = Time.parse("08/Oct/2009 02:02:28 -0500").utc
       end
-      
+
       it "should create a query with properly UTF-8 encoded characters" do
         Query.should_receive(:create!).with(:query => "בהצלחה",
                                             :affiliate => "usasearch.gov",
@@ -488,7 +488,7 @@ EOF
                                             :is_contextual => false)
         LogFile.parse_line(@log_entry)
       end
-      
+
       it "should create a query that can be found by searching for the query" do
         LogFile.parse_line(@log_entry)
         query = Query.find_by_query("בהצלחה")
