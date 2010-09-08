@@ -96,6 +96,18 @@ describe SaytSuggestion do
       end
     end
 
+    context "when DailyQueryStats exist for multiple locales for an affiliate" do
+      before do
+        DailyQueryStat.create!(:day => Date.today, :query => "el paso", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale=>'es')
+        DailyQueryStat.create!(:day => Date.today, :query => "el paso", :times => 4, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale=>'en')
+      end
+
+      it "should combine data from all locales to populate SaytSuggestions" do
+        SaytSuggestion.populate_for_affiliate_on(DailyQueryStat::DEFAULT_AFFILIATE_NAME, nil, Date.today)
+        SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "el paso").popularity.should == 6
+      end
+    end
+
     context "when SaytFilters exist" do
       before do
         @affiliate = affiliates(:power_affiliate)

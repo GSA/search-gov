@@ -23,9 +23,9 @@ class SaytSuggestion < ActiveRecord::Base
     end
 
     def populate_for_affiliate_on(affiliate_name, affiliate_id, day)
-      filtered_daily_query_stats = SaytFilter.filter(
-        DailyQueryStat.find_all_by_day_and_affiliate_and_locale(day, affiliate_name, I18n.default_locale.to_s),
-        "query")
+      ordered_hash = DailyQueryStat.sum(:times, :group=> "query", :conditions=>["day = ? and affiliate = ?", day, affiliate_name])
+      daily_query_stats = ordered_hash.map{|entry| DailyQueryStat.new(:query=> entry[0], :times=> entry[1])}
+      filtered_daily_query_stats = SaytFilter.filter(daily_query_stats, "query")
       filtered_daily_query_stats.each do |dqs|
         temp_ss = new(:phrase => dqs.query)
         temp_ss.squish_whitespace_and_downcase_and_spellcheck
