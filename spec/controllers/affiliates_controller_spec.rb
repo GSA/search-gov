@@ -168,15 +168,15 @@ describe AffiliatesController do
             end
             
             it "should link to the report on Amazon using S3/SSL if it exists" do
-              AWS::S3::S3Object.should_receive(:exists?).with(@filename, REPORTS_AWS_BUCKET_NAME).and_return true
-              AWS::S3::S3Object.should_receive(:url_for).with(@filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
+              AWS::S3::S3Object.should_receive(:exists?).with(@filename, AWS_BUCKET_NAME).and_return true
+              AWS::S3::S3Object.should_receive(:url_for).with(@filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
               get :analytics, :id => @user.affiliates.first.id
               response.body.should contain(/Download top 1000 queries for #{Date.yesterday.to_s}/)
             end
             
             it "should not link to the report on Amazon if the file is not found" do
-              AWS::S3::S3Object.should_receive(:exists?).with(@filename, REPORTS_AWS_BUCKET_NAME).and_return false
-              AWS::S3::S3Object.should_not_receive(:url_for).with(@filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
+              AWS::S3::S3Object.should_receive(:exists?).with(@filename, AWS_BUCKET_NAME).and_return false
+              AWS::S3::S3Object.should_not_receive(:url_for).with(@filename, AWS_BUCKET_NAME, :use_ssl => true)
               get :analytics, :id => @user.affiliates.first.id
               response.body.should_not contain(/Download top 1000 queries for #{Date.yesterday.to_s}/)
             end
@@ -259,15 +259,15 @@ describe AffiliatesController do
             end
             
             it "should link to the report on Amazon using S3/SSL if the report exists on S3" do
-              AWS::S3::S3Object.should_receive(:exists?).with(@filename, REPORTS_AWS_BUCKET_NAME).and_return true
-              AWS::S3::S3Object.should_receive(:url_for).with(@filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
+              AWS::S3::S3Object.should_receive(:exists?).with(@filename, AWS_BUCKET_NAME).and_return true
+              AWS::S3::S3Object.should_receive(:url_for).with(@filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
               get :monthly_reports, :id => @user.affiliates.first.id
               response.body.should contain(/Download top queries for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}/)
             end
             
             it "should not link to the report on Amazon if the file does not exist on S3" do
-              AWS::S3::S3Object.should_receive(:exists?).with(@filename, REPORTS_AWS_BUCKET_NAME).and_return false
-              AWS::S3::S3Object.should_not_receive(:url_for).with(@filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
+              AWS::S3::S3Object.should_receive(:exists?).with(@filename, AWS_BUCKET_NAME).and_return false
+              AWS::S3::S3Object.should_not_receive(:url_for).with(@filename, AWS_BUCKET_NAME, :use_ssl => true)
               get :monthly_reports, :id => @user.affiliates.first.id
               response.body.should_not contain(/Download top queries for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}/)
             end

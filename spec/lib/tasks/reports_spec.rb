@@ -33,7 +33,7 @@ describe "Report generation rake tasks" do
       end
       
       it "should check to make sure the bucket for search reports exists" do
-        AWS::S3::Bucket.should_receive(:find).with('usasearch-reports').once
+        AWS::S3::Bucket.should_receive(:find).with(AWS_BUCKET_NAME).once
         @rake[@task_name].invoke()
       end
       
@@ -44,7 +44,7 @@ describe "Report generation rake tasks" do
         end
         
         it "should create the bucket if it doesn't exist" do
-          AWS::S3::Bucket.should_receive(:create).with('usasearch-reports').once
+          AWS::S3::Bucket.should_receive(:create).with(AWS_BUCKET_NAME).once
           @rake[@task_name].invoke()
         end
       end
@@ -96,11 +96,11 @@ describe "Report generation rake tasks" do
       
         it "should upload the generated csv for each locale to S3 with a filename corresponding to the date specified" do
           %w{en es}.each do |locale|
-            AWS::S3::S3Object.should_receive(:store).with("#{locale}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", @csv_output, 'usasearch-reports')
+            AWS::S3::S3Object.should_receive(:store).with("reports/#{locale}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", @csv_output, AWS_BUCKET_NAME)
           end
           Query.stub!(:top_queries).and_return @fake_top_queries
           Affiliate.all.each do |affiliate|
-            AWS::S3::S3Object.should_receive(:store).with("#{affiliate.name}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", @csv_output, 'usasearch-reports')
+            AWS::S3::S3Object.should_receive(:store).with("reports/#{affiliate.name}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", @csv_output, AWS_BUCKET_NAME)
           end
           @rake[@task_name].invoke()
         end
@@ -125,7 +125,7 @@ describe "Report generation rake tasks" do
       end
       
       it "should check to make sure the bucket for search reports exists" do
-        AWS::S3::Bucket.should_receive(:find).with('usasearch-reports').once
+        AWS::S3::Bucket.should_receive(:find).with(AWS_BUCKET_NAME).once
         @rake[@task_name].invoke()
       end
       
@@ -136,7 +136,7 @@ describe "Report generation rake tasks" do
         end
         
         it "should create the bucket if it doesn't exist" do
-          AWS::S3::Bucket.should_receive(:create).with('usasearch-reports').once
+          AWS::S3::Bucket.should_receive(:create).with(AWS_BUCKET_NAME).once
           @rake[@task_name].invoke()
         end
       end
@@ -188,11 +188,11 @@ describe "Report generation rake tasks" do
       
         it "should upload the generated csv for each locale to S3 with a filename corresponding to the date specified" do
           %w{en es}.each do |locale|
-            AWS::S3::S3Object.should_receive(:store).with("#{locale}_top_queries_#{Date.yesterday.strftime('%Y%m%d')}.csv", @csv_output, 'usasearch-reports')
+            AWS::S3::S3Object.should_receive(:store).with("reports/#{locale}_top_queries_#{Date.yesterday.strftime('%Y%m%d')}.csv", @csv_output, AWS_BUCKET_NAME)
           end
           Query.stub!(:top_queries).and_return @fake_top_queries
           Affiliate.all.each do |affiliate|
-            AWS::S3::S3Object.should_receive(:store).with("#{affiliate.name}_top_queries_#{Date.yesterday.strftime('%Y%m%d')}.csv", @csv_output, 'usasearch-reports')
+            AWS::S3::S3Object.should_receive(:store).with("reports/#{affiliate.name}_top_queries_#{Date.yesterday.strftime('%Y%m%d')}.csv", @csv_output, AWS_BUCKET_NAME)
           end
           @rake[@task_name].invoke()
         end

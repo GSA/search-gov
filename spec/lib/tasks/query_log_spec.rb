@@ -176,7 +176,7 @@ describe "query_log rake tasks" do
         it "should upload the outputted file to S3" do
           day = Date.parse('2010-09-01').to_s(:number)
           filename = 'click_logs/2010/09/clicks-20100901'
-          AWS::S3::S3Object.should_receive(:store).with(filename, @streamed_content, '***REMOVED***')
+          AWS::S3::S3Object.should_receive(:store).with(filename, @streamed_content, AWS_BUCKET_NAME)
           ENV['DAY'] = day
           @rake[@task_name].invoke
         end
@@ -241,7 +241,7 @@ describe "query_log rake tasks" do
         it "should upload the outputted file to S3" do
           day = Date.parse('2010-09-01').to_s(:number)
           filename = 'query_logs/2010/09/queries-20100901'
-          AWS::S3::S3Object.should_receive(:store).with(filename, @streamed_content, '***REMOVED***')
+          AWS::S3::S3Object.should_receive(:store).with(filename, @streamed_content, AWS_BUCKET_NAME)
           ENV['DAY'] = day
           @rake[@task_name].invoke
         end

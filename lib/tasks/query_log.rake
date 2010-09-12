@@ -55,8 +55,8 @@ namespace :usasearch do
   
         # copy export file to S3
         filename = "click_logs/#{year}/#{month}/clicks-#{yyyymmdd}"
-        AWS::S3::Base.establish_connection!(:access_key_id => GSA_AWS_ACCESS_KEY_ID, :secret_access_key => GSA_AWS_SECRET_ACCESS_KEY)
-        AWS::S3::S3Object.store(filename, Kernel.open(outfile), '***REMOVED***')
+        AWS::S3::Base.establish_connection!(:access_key_id => AWS_ACCESS_KEY_ID, :secret_access_key => AWS_SECRET_ACCESS_KEY)
+        AWS::S3::S3Object.store(filename, Kernel.open(outfile), AWS_BUCKET_NAME)
         File.delete(outfile)
       end
 
@@ -82,8 +82,8 @@ namespace :usasearch do
         
         # copy export file to S3
         filename = "query_logs/#{year}/#{month}/queries-#{yyyymmdd}"
-        AWS::S3::Base.establish_connection!(:access_key_id => GSA_AWS_ACCESS_KEY_ID, :secret_access_key => GSA_AWS_SECRET_ACCESS_KEY)
-        AWS::S3::S3Object.store(filename, Kernel.open(outfile), '***REMOVED***')
+        AWS::S3::Base.establish_connection!(:access_key_id => AWS_ACCESS_KEY_ID, :secret_access_key => AWS_SECRET_ACCESS_KEY)
+        AWS::S3::S3Object.store(filename, Kernel.open(outfile), AWS_BUCKET_NAME)
         File.delete(outfile)
       end
     end

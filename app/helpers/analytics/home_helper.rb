@@ -48,30 +48,30 @@ module Analytics::HomeHelper
     if report_date.present?
       english_filename = daily_report_filename(I18n.default_locale.to_s, report_date)
       spanish_filename = daily_report_filename(other_locale_str, report_date)
-      english_filename_exists = AWS::S3::S3Object.exists?(english_filename, REPORTS_AWS_BUCKET_NAME)
-      spanish_filename_exists = AWS::S3::S3Object.exists?(spanish_filename, REPORTS_AWS_BUCKET_NAME)
-      "Download CSV of top 1000 queries for #{ report_date.to_s } (#{ link_to('English', AWS::S3::S3Object.url_for(english_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)) if english_filename_exists }#{ ", " if english_filename_exists && spanish_filename_exists }#{ link_to('Spanish', AWS::S3::S3Object.url_for(spanish_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)) if spanish_filename_exists })" if english_filename_exists || spanish_filename_exists
+      english_filename_exists = AWS::S3::S3Object.exists?(english_filename, AWS_BUCKET_NAME)
+      spanish_filename_exists = AWS::S3::S3Object.exists?(spanish_filename, AWS_BUCKET_NAME)
+      "Download CSV of top 1000 queries for #{ report_date.to_s } (#{ link_to('English', AWS::S3::S3Object.url_for(english_filename, AWS_BUCKET_NAME, :use_ssl => true)) if english_filename_exists }#{ ", " if english_filename_exists && spanish_filename_exists }#{ link_to('Spanish', AWS::S3::S3Object.url_for(spanish_filename, AWS_BUCKET_NAME, :use_ssl => true)) if spanish_filename_exists })" if english_filename_exists || spanish_filename_exists
     end
   end
 
   def analytics_monthly_report_link(report_date)
     english_filename = monthly_report_filename(I18n.default_locale.to_s, report_date)
     spanish_filename = monthly_report_filename(other_locale_str, report_date)
-    english_filename_exists = AWS::S3::S3Object.exists?(english_filename, REPORTS_AWS_BUCKET_NAME)
-    spanish_filename_exists = AWS::S3::S3Object.exists?(spanish_filename, REPORTS_AWS_BUCKET_NAME)
-    "Download top 20,000 queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to("English", AWS::S3::S3Object.url_for(english_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)) if english_filename_exists }#{ ", " if english_filename_exists && spanish_filename_exists }#{ link_to("Spanish", AWS::S3::S3Object.url_for(spanish_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)) if spanish_filename_exists })" if english_filename_exists || spanish_filename_exists
+    english_filename_exists = AWS::S3::S3Object.exists?(english_filename, AWS_BUCKET_NAME)
+    spanish_filename_exists = AWS::S3::S3Object.exists?(spanish_filename, AWS_BUCKET_NAME)
+    "Download top 20,000 queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to("English", AWS::S3::S3Object.url_for(english_filename, AWS_BUCKET_NAME, :use_ssl => true)) if english_filename_exists }#{ ", " if english_filename_exists && spanish_filename_exists }#{ link_to("Spanish", AWS::S3::S3Object.url_for(spanish_filename, AWS_BUCKET_NAME, :use_ssl => true)) if spanish_filename_exists })" if english_filename_exists || spanish_filename_exists
   end
 
   def affiliate_analytics_daily_report_link(affiliate_name, report_date)
     if report_date
       filename = daily_report_filename(affiliate_name, report_date)
-      "Download top 1000 queries for #{ report_date.to_s } (#{ link_to 'csv', AWS::S3::S3Object.url_for(filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true) })" if AWS::S3::S3Object.exists?(filename, REPORTS_AWS_BUCKET_NAME)
+      "Download top 1000 queries for #{ report_date.to_s } (#{ link_to 'csv', AWS::S3::S3Object.url_for(filename, AWS_BUCKET_NAME, :use_ssl => true) })" if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
     end
   end
 
   def affiliate_analytics_monthly_report_link(affiliate_name, report_date)
     filename = monthly_report_filename(affiliate_name, report_date)
-    "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to 'csv', AWS::S3::S3Object.url_for(filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)}" if AWS::S3::S3Object.exists?(filename, REPORTS_AWS_BUCKET_NAME)
+    "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to 'csv', AWS::S3::S3Object.url_for(filename, AWS_BUCKET_NAME, :use_ssl => true)}" if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
   end
 
   private

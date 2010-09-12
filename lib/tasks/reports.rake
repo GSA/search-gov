@@ -3,11 +3,11 @@ namespace :usasearch do
     
     def establish_aws_connection
       AWS::S3::Base.establish_connection!(:access_key_id => AWS_ACCESS_KEY_ID, :secret_access_key => AWS_SECRET_ACCESS_KEY)
-      AWS::S3::Bucket.find('usasearch-reports') rescue AWS::S3::Bucket.create(REPORTS_AWS_BUCKET_NAME)
+      AWS::S3::Bucket.find(AWS_BUCKET_NAME) rescue AWS::S3::Bucket.create(AWS_BUCKET_NAME)
     end
     
     def generate_report_filename(prefix, day, date_format)
-      "#{prefix}_top_queries_#{day.strftime(date_format)}.csv"
+      "reports/#{prefix}_top_queries_#{day.strftime(date_format)}.csv"
     end
    
     def generate_report(top_queries, filename)
@@ -17,7 +17,7 @@ namespace :usasearch do
           csv << [top_query.query, top_query.total]
         end
       end
-      AWS::S3::S3Object.store(filename, csv_string, REPORTS_AWS_BUCKET_NAME)
+      AWS::S3::S3Object.store(filename, csv_string, AWS_BUCKET_NAME)
     end
 
     desc "Generate Top Queries reports for the month of the date specified"

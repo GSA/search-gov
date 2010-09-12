@@ -82,8 +82,8 @@ describe Analytics::HomeController do
       it "should link to the reports on Amazon S3 using SSL if the file exists on S3" do
         %w{en es}.each do |locale|
           filename = "#{locale}_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
-          AWS::S3::S3Object.should_receive(:exists?).with(filename, REPORTS_AWS_BUCKET_NAME).and_return true
-          AWS::S3::S3Object.should_receive(:url_for).with(filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
+          AWS::S3::S3Object.should_receive(:exists?).with(filename, AWS_BUCKET_NAME).and_return true
+          AWS::S3::S3Object.should_receive(:url_for).with(filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
         end
         get :index
         response.body.should contain(/Download CSV of top 1000 queries for/)
@@ -92,11 +92,11 @@ describe Analytics::HomeController do
 
       it "should not link to the English report on S3 if it doesn't exist" do
         english_filename = "en_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
-        AWS::S3::S3Object.should_receive(:exists?).with(english_filename, REPORTS_AWS_BUCKET_NAME).and_return false
-        AWS::S3::S3Object.should_not_receive(:url_for).with(english_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
+        AWS::S3::S3Object.should_receive(:exists?).with(english_filename, AWS_BUCKET_NAME).and_return false
+        AWS::S3::S3Object.should_not_receive(:url_for).with(english_filename, AWS_BUCKET_NAME, :use_ssl => true)
         spanish_filename = "es_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
-        AWS::S3::S3Object.should_receive(:exists?).with(spanish_filename, REPORTS_AWS_BUCKET_NAME).and_return true
-        AWS::S3::S3Object.should_receive(:url_for).with(spanish_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
+        AWS::S3::S3Object.should_receive(:exists?).with(spanish_filename, AWS_BUCKET_NAME).and_return true
+        AWS::S3::S3Object.should_receive(:url_for).with(spanish_filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
         get :index
         response.body.should contain(/Download CSV of top 1000 queries for/)
         response.body.should_not contain(/English/)
@@ -106,11 +106,11 @@ describe Analytics::HomeController do
 
       it "should not link to the Spanish report on S3 if it doesn't exist" do
         english_filename = "en_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
-        AWS::S3::S3Object.should_receive(:exists?).with(english_filename, REPORTS_AWS_BUCKET_NAME).and_return true
-        AWS::S3::S3Object.should_receive(:url_for).with(english_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
+        AWS::S3::S3Object.should_receive(:exists?).with(english_filename, AWS_BUCKET_NAME).and_return true
+        AWS::S3::S3Object.should_receive(:url_for).with(english_filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
         spanish_filename = "es_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
-        AWS::S3::S3Object.should_receive(:exists?).with(spanish_filename, REPORTS_AWS_BUCKET_NAME).and_return false
-        AWS::S3::S3Object.should_not_receive(:url_for).with(spanish_filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
+        AWS::S3::S3Object.should_receive(:exists?).with(spanish_filename, AWS_BUCKET_NAME).and_return false
+        AWS::S3::S3Object.should_not_receive(:url_for).with(spanish_filename, AWS_BUCKET_NAME, :use_ssl => true)
         get :index
         response.body.should contain(/Download CSV of top 1000 queries for/)
         response.body.should contain(/English/)
@@ -121,8 +121,8 @@ describe Analytics::HomeController do
       it "should not link to the reports if neither exist" do
         %w{en es}.each do |locale|
           filename = "#{locale}_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
-          AWS::S3::S3Object.should_receive(:exists?).with(filename, REPORTS_AWS_BUCKET_NAME).and_return false
-          AWS::S3::S3Object.should_not_receive(:url_for).with(filename, REPORTS_AWS_BUCKET_NAME, :use_ssl => true)
+          AWS::S3::S3Object.should_receive(:exists?).with(filename, AWS_BUCKET_NAME).and_return false
+          AWS::S3::S3Object.should_not_receive(:url_for).with(filename, AWS_BUCKET_NAME, :use_ssl => true)
         end
         get :index
         response.body.should_not contain(/Download CSV of top 1000 queries for/)
