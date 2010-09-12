@@ -54,9 +54,40 @@ EOF
           File.open("#{@tmp_dir}/b", "w+") {|f| f.write(@tmp_faq) }
         end
         
-        it "should delete all the existing faqs in the table" do
-          Faq.should_receive(:delete_all)
-          @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
+        context "when no locale is specified" do
+          it "should delete all the existing faqs in the table for the default locale" do
+            Faq.should_receive(:delete_all).with(['locale=?', I18n.default_locale.to_s])
+            @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
+          end
+        
+          it "should assign the proper values to the proper fields, including stripping HTML from the question field, for the default locale" do
+            Faq.should_receive(:create).with(:url => 'http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/std_adp.php?p_faqid=32',
+                                             :question => 'Authenticating Documents: Status Request',
+                                             :answer => '<p>The authentication of documents by the <rn:answer_xref answer_id="203" contents="Office of Authentications" />&nbsp;at the <rn:answer_xref answer_id="4391" contents="United States Department of State (DOS)" />&nbsp;takes approximately&nbsp;five busines',
+                                             :ranking => 3248,
+                                             :locale => I18n.default_locale.to_s)
+            @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
+          end
+        end
+        
+        context "when a locale is specified" do
+          before do
+            @locale = 'es'
+          end
+          
+          it "should delete all the existing faqs in the table" do
+            Faq.should_receive(:delete_all).with(['locale=?', @locale])
+            @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}", @locale)
+          end
+        
+          it "should assign the proper values to the proper fields, including stripping HTML from the question field" do
+            Faq.should_receive(:create).with( :url => 'http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/std_adp.php?p_faqid=32',
+                                              :question => 'Authenticating Documents: Status Request',
+                                              :answer => '<p>The authentication of documents by the <rn:answer_xref answer_id="203" contents="Office of Authentications" />&nbsp;at the <rn:answer_xref answer_id="4391" contents="United States Department of State (DOS)" />&nbsp;takes approximately&nbsp;five busines',
+                                              :ranking => 3248,
+                                              :locale => @locale)
+            @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}", @locale)
+          end
         end
         
         it "should create a Faq entry for each 'Row' in the file, except the first line" do
@@ -64,19 +95,12 @@ EOF
           @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
         end
         
-        it "should assign the proper values to the proper fields, including stripping HTML from the question field" do
-          Faq.should_receive(:create).with( :url => 'http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/std_adp.php?p_faqid=32',
-                                            :question => 'Authenticating Documents: Status Request',
-                                            :answer => '<p>The authentication of documents by the <rn:answer_xref answer_id="203" contents="Office of Authentications" />&nbsp;at the <rn:answer_xref answer_id="4391" contents="United States Department of State (DOS)" />&nbsp;takes approximately&nbsp;five busines',
-                                            :ranking => 3248)
-          @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
-        end
-        
         it "should skip the first line" do
           Faq.should_not_receive(:create).with(:url => 'Link to Content',
                                                :question => 'Question',
                                                :answer => 'Answer',
-                                               :ranking => 'Approximate Ranking')
+                                               :ranking => 'Approximate Ranking',
+                                               :locale => I18n.default_locale.to_s)
           @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
         end
         

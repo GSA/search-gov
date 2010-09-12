@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100908135939) do
+ActiveRecord::Schema.define(:version => 20100912060038) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -142,6 +142,7 @@ ActiveRecord::Schema.define(:version => 20100908135939) do
     t.integer  "ranking"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "locale",     :limit => 5, :default => "en"
   end
 
   create_table "food_recalls", :force => true do |t|

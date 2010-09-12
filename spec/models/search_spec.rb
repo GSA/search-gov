@@ -114,11 +114,11 @@ describe Search do
         search.run
       end
 
-      it "should not search for Spotlights, GovForms or FAQs" do
+      it "should not search for Spotlights or GovForms, but should search for FAQs" do
         search = Search.new(@valid_options.merge(:affiliate => nil))
         Spotlight.should_not_receive(:search_for)
         GovForm.should_not_receive(:search_for)
-        Faq.should_not_receive(:search_for)
+        Faq.should_receive(:search_for).with(@valid_options[:query], I18n.locale.to_s)
         search.run
       end
 
@@ -240,7 +240,7 @@ describe Search do
       end
 
       it "should search for FAQs" do
-        Faq.should_receive(:search_for).with('government')
+        Faq.should_receive(:search_for).with('government', I18n.default_locale.to_s)
         @search.run
       end
 
