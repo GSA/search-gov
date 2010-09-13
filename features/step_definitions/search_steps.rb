@@ -4,3 +4,11 @@ Given /^the following FAQs exist:$/ do |table|
   end
   Sunspot.commit
 end
+
+Given /^the following Calais Related Searches exist:$/ do |table|
+  table.hashes.each do |hash|
+    CalaisRelatedSearch.create(:term => hash["term"], :related_terms => hash["related_terms"])
+  end
+  Sunspot.commit
+end
+

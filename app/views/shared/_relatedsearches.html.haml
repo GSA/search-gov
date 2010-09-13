@@ -1,4 +1,4 @@
-- if (@search && @search.related_search.size > 0)
+- if (english_locale? && @search && @search.related_search.size > 0)
   %h3.alt= t :related_searches
   %ul{:id => "relatedsearch"}
     - @search.related_search.each_with_index do |related_term, index|
