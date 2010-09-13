@@ -26,7 +26,7 @@ Feature: Search
     And I fill in "query" with "president"
     And I press "Buscar"
     Then I should be on the search page
-    And I should see "Preguntas y respuestas relacionadas"
+    And I should see "Respuestas relacionadas"
     And I should not see "Who is the president of the United States?"
     And I should see "Who is the president of the Estados Unidos?"
     
