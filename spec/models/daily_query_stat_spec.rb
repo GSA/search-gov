@@ -30,17 +30,17 @@ describe DailyQueryStat do
       @valid_attributes.delete(:locale)
       DailyQueryStat.create(@valid_attributes).locale.should == I18n.default_locale.to_s
     end
-    
+
     context "when queries have extra internal whitespace and/or external whitespace" do
       before do
         @unsquished_query = '  this query  should be   squished.  '
         @squished_query = 'this query should be squished.'
       end
-      
+
       it "should remove extra interal whitespace and strip whitespace off the ends on create" do
         DailyQueryStat.create(@valid_attributes.merge(:query => @unsquished_query)).query.should == @squished_query
       end
-    
+
       it "should remove extra internal whitespace and strip whitespace off the ends on update" do
         daily_query_stat = DailyQueryStat.create(@valid_attributes.merge(:query => 'something'))
         daily_query_stat.id.should_not be_nil
@@ -49,7 +49,7 @@ describe DailyQueryStat do
       end
     end
   end
-  
+
   describe "#reversed_backfilled_series_since_2009_for" do
     context "when no target date is passed in" do
       before do
@@ -182,32 +182,53 @@ describe DailyQueryStat do
         DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1).should == "Not enough historic data to compute most popular"
       end
     end
+  end
 
-    context "when there are query groups and grouped queries in the data" do
+  describe "#most_popular_query_groups" do
+    context "when the table has no query group data for the time period specified" do
       before do
         DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 100, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 100, :affiliate => 'affiliate.gov')
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 10, :affiliate => 'affiliate.gov')
-        qg = QueryGroup.create!(:name=>"my query group")
-        qg.grouped_queries << GroupedQuery.create!(:query=>"query1")
-        qg.grouped_queries << GroupedQuery.create!(:query=>"query2")
       end
 
-      it "should roll up grouped queries into a single QueryCount with children" do
-        yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1)
-        yday.size.should == 1
-        yday.first.query.should == "my query group"
-        yday.first.times.should == 110
-        kids = yday.first.children
-        kids.should_not be_nil
-        kids.first.query.should == "query1"
-        kids.first.times.should == 100
-        kids.last.query.should == "query2"
-        kids.last.times.should == 10
+      it "should return an error string that no queries matched" do
+        DailyQueryStat.most_popular_query_groups(DailyQueryStat.most_recent_populated_date, 1).should == "Not enough historic data to compute most popular"
       end
     end
+
+    context "when the table is populated with multiple affiliates and locales over multiple days" do
+      before do
+        DailyQueryStat.delete_all
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 500, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 50, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 200, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'es')
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 20, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'es')
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 100, :affiliate => 'affiliate.gov')
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 10, :affiliate => 'affiliate.gov')
+        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "query1", :times => 100, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "query2", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query3", :times => 100, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query4", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        qg1 = QueryGroup.create!(:name=>"qg1")
+        qg1.grouped_queries << GroupedQuery.create!(:query=>"query1")
+        qg1.grouped_queries << GroupedQuery.create!(:query=>"query2")
+        qg2 = QueryGroup.create!(:name=>"qg2")
+        qg2.grouped_queries << GroupedQuery.create!(:query=>"query3")
+        qg2.grouped_queries << GroupedQuery.create!(:query=>"query4")
+      end
+
+      it "should calculate popularity sums for the query groups based on the target date, affiliate, locale, and number of days parameter" do
+        yday = DailyQueryStat.most_popular_query_groups(DailyQueryStat.most_recent_populated_date, 1)
+        yday.first.query.should == "qg1"
+        yday.first.times.should == 550
+        yday.last.query.should == "qg2"
+        yday.last.times.should == 110
+      end
+
+      it "should use the num_results parameter to determine result set size" do
+        DailyQueryStat.most_popular_query_groups(DailyQueryStat.most_recent_populated_date, 1, 1).size.should == 1
+      end
+    end
+
   end
 
   describe "#most_recent_populated_date" do
@@ -247,7 +268,7 @@ describe DailyQueryStat do
       results.first.day.should == Date.yesterday
       results.first.times.should == 11
     end
-    
+
     context "when one of the queries has a single quote in it" do
       before do
         DailyQueryStat.create(:query => "jobs", :day => Date.yesterday, :times => 20, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'en')
@@ -256,14 +277,14 @@ describe DailyQueryStat do
         query_group.grouped_queries << GroupedQuery.create!(:query => "jobs")
         query_group.grouped_queries << GroupedQuery.create!(:query => "job's")
       end
-      
+
       it "should return results normally" do
         results = DailyQueryStat.collect_query_group_named("group2")
         results.size.should == 1
         results.first.day.should == Date.yesterday
         results.first.times.should == 45
       end
-    end 
+    end
   end
 
 end

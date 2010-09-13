@@ -6,7 +6,6 @@ describe MovingQuery do
     @valid_attributes = {
       :day => "20090830",
       :query => "government",
-      :window_size => 7,
       :times => 314,
       :mean => 100.01,
       :std_dev => 4.3
@@ -14,8 +13,8 @@ describe MovingQuery do
   end
 
   describe 'validations on create' do
-    should_validate_presence_of(:day, :query, :window_size, :times)
-    should_validate_uniqueness_of :query, :scope => [:day, :window_size]
+    should_validate_presence_of(:day, :query, :times)
+    should_validate_uniqueness_of :query, :scope => :day
 
     it "should create a new instance given valid attributes" do
       MovingQuery.create!(@valid_attributes)
@@ -27,7 +26,7 @@ describe MovingQuery do
       before do
         DailyQueryStat.delete_all
         MovingQuery.delete_all
-        # received zero queries per day for these terms sine Jan 1 2009 except for these:
+        # received zero queries per day for these terms since Jan 1 2009 except for these:
         DailyQueryStat.create!(:day => Date.yesterday, :times => 100000, :query => "1-day", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
 
         DailyQueryStat.create!(:day => 4.days.ago.to_date, :times => 7, :query => "7-day", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
@@ -37,12 +36,10 @@ describe MovingQuery do
         DailyQueryStat.create!(:day => Date.yesterday, :times => 300000, :query => "30-day", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       end
 
-      it "should find and create 1-, 7-, and 30-day moving queries for the given day" do
+      it "should find and create 1-day moving queries for the given day" do
         MovingQuery.compute_for(Date.yesterday.to_s(:number))
-        MovingQuery.count.should == 9
-        [1, 7, 30].each {|win_size| MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "1-day", win_size).times.should == 100000 }
-        MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "7-day", 7).times.should == 200007
-        MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "30-day", 30).times.should == 300030
+        MovingQuery.count.should == 3
+        MovingQuery.find_by_day_and_query(Date.yesterday, "1-day").times.should == 100000
       end
 
       context "when there is similar data for affiliates" do
@@ -56,37 +53,35 @@ describe MovingQuery do
           DailyQueryStat.create!(:day => Date.yesterday, :times => 300000, :query => "30-day", :affiliate => 'affiliate.gov')
         end
 
-        it "should find and create 1, 7 and 30 day movie queries for the given day, uninfluenced by the affiliate stats" do
+        it "should find and create 1 day moving queries for the given day, uninfluenced by the affiliate stats" do
           MovingQuery.compute_for(Date.yesterday.to_s(:number))
-          MovingQuery.count.should == 9
-          [1, 7, 30].each {|win_size| MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "1-day", win_size).times.should == 100000 }
-          MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "7-day", 7).times.should == 200007
-          MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "30-day", 30).times.should == 300030
+          MovingQuery.count.should == 3
+          MovingQuery.find_by_day_and_query(Date.yesterday, "1-day").times.should == 100000
         end
       end
     end
 
-    context "when a query gets roughly the same amount of queries it normally gets for a given day, week, and month" do
+    context "when a query gets roughly the same amount of queries it normally gets for a given day" do
       before do
-        Date.new(2009, 1, 1).upto(Date.new(2009, 6, 1)) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 10 + rand(5), :query => "usual", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)}
+        Date.new(2009, 5, 10).upto(Date.new(2009, 6, 1)) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 10 + rand(5), :query => "usual", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)}
         @target_date = Date.new(2009, 6, 2)
         DailyQueryStat.create!(:day => @target_date, :times => 16, :query => "usual", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       end
 
       it "should not create any moving query records for that query on that day" do
         MovingQuery.compute_for(@target_date)
-        [1, 7, 30].each {|win_size| MovingQuery.find_by_day_and_query_and_window_size(@target_date, "usual", win_size).should be_nil }
+        MovingQuery.find_by_day_and_query(@target_date, "usual").should be_nil
       end
 
       context "when there are affiliate queries with the same terms for the same time period" do
         before do
-          Date.new(2009, 1, 1).upto(Date.new(2009, 6, 1)) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 10 + rand(5), :query => "usual", :affiliate => 'affiliate.gov')}
+          Date.new(2009, 5, 10).upto(Date.new(2009, 6, 1)) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 10 + rand(5), :query => "usual", :affiliate => 'affiliate.gov')}
           DailyQueryStat.create!(:day => @target_date, :times => 16, :query => "usual", :affiliate => 'affiliate.gov')
         end
 
         it "should not create any moving query records for that query on that day" do
           MovingQuery.compute_for(@target_date)
-          [1, 7, 30].each {|win_size| MovingQuery.find_by_day_and_query_and_window_size(@target_date, "usual", win_size).should be_nil }
+          MovingQuery.find_by_day_and_query(@target_date, "usual").should be_nil
         end
       end
     end
@@ -99,7 +94,7 @@ describe MovingQuery do
 
       it "should not create a 1-day moving query for the query" do
         MovingQuery.compute_for(Date.yesterday.to_s(:number))
-        MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "still accelerating?", 1).should be_nil
+        MovingQuery.find_by_day_and_query(Date.yesterday, "still accelerating?").should be_nil
       end
 
       context "when there is similar data for an affiliate" do
@@ -109,7 +104,7 @@ describe MovingQuery do
 
         it "should not create a 1-day moving query for the query" do
           MovingQuery.compute_for(Date.yesterday.to_s(:number))
-          MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "still accelerating?", 1).should be_nil
+          MovingQuery.find_by_day_and_query(Date.yesterday, "still accelerating?").should be_nil
         end
       end
     end
@@ -127,15 +122,15 @@ describe MovingQuery do
 
       it "should not create a 1-day moving query for the query" do
         MovingQuery.compute_for(Date.yesterday.to_s(:number))
-        MovingQuery.find_by_day_and_query_and_window_size(Date.yesterday, "still accelerating?", 1).should be_nil
+        MovingQuery.find_by_day_and_query(Date.yesterday, "still accelerating?").should be_nil
       end
     end
   end
 
   describe "#passes_minimum_thresholds?" do
     it "should return true when the MovingQuery exceeds thresholds for deviation from mean and number of queries for a given time window" do
-      MovingQuery.new(:query=> "query", :day => Date.today, :window_size => 1, :times => 16, :mean => 11.9, :std_dev => 1.0).passes_minimum_thresholds?.should be_true
-      MovingQuery.new(:query=> "query", :day => Date.today, :window_size => 1, :times => 16, :mean => 12.1, :std_dev => 1.0).passes_minimum_thresholds?.should be_false
+      MovingQuery.new(:query=> "query", :day => Date.today, :times => 16, :mean => 11.9, :std_dev => 1.0).passes_minimum_thresholds?.should be_true
+      MovingQuery.new(:query=> "query", :day => Date.today, :times => 16, :mean => 12.1, :std_dev => 1.0).passes_minimum_thresholds?.should be_false
     end
   end
 
@@ -143,20 +138,20 @@ describe MovingQuery do
     context "when the table is populated" do
       before do
         MovingQuery.delete_all
-        MovingQuery.create!(:query=> "earliest data", :day => Date.new(2009,1,1), :window_size => 1, :times => 16, :mean => 11.9, :std_dev => 1.0)
+        MovingQuery.create!(:query=> "earliest data", :day => Date.new(2009,1,1), :times => 16, :mean => 11.9, :std_dev => 1.0)
         @day = Date.new(2009, 7, 21).to_date
-        MovingQuery.create!(:query=> "anomaly", :day => @day, :window_size => 1, :times => 16, :mean => 11.9, :std_dev => 1.0)
-        MovingQuery.create!(:query=> "bigger anomaly", :day => @day, :window_size => 1, :times => 18, :mean => 11.9, :std_dev => 1.0)
+        MovingQuery.create!(:query=> "anomaly", :day => @day, :times => 16, :mean => 11.9, :std_dev => 1.0)
+        MovingQuery.create!(:query=> "bigger anomaly", :day => @day, :times => 18, :mean => 11.9, :std_dev => 1.0)
       end
 
       it "should rank biggest movers for the most recent data available based on search popularity" do
-        movers = MovingQuery.biggest_movers(@day, 1)
+        movers = MovingQuery.biggest_movers(@day)
         movers.first.query.should == "bigger anomaly"
         movers.last.query.should == "anomaly"
       end
 
       it "should use the num_results parameter to determine result set size" do
-        MovingQuery.biggest_movers(@day, 1, 1).size.should == 1
+        MovingQuery.biggest_movers(@day, 1).size.should == 1
       end
     end
 
@@ -166,20 +161,20 @@ describe MovingQuery do
       end
 
       it "should return an error string that no queries matched" do
-        MovingQuery.biggest_movers(Date.today.to_date, 1).should == "No queries matched"
+        MovingQuery.biggest_movers(Date.today.to_date).should == "No queries matched"
       end
     end
 
     context "when there is insufficient data for the time period and window size specified" do
       before do
         MovingQuery.delete_all
-        MovingQuery.create!(:query=> "earliest data in table", :day => Date.new(2009,1,1).to_date, :window_size => 30, :times => 160, :mean => 11.9, :std_dev => 1.0)
-        @day = Date.new(2009, 5, 21).to_date
-        MovingQuery.create!(:query=> "anomaly but computed with fewer than 7 data points", :day => @day, :window_size => 30, :times => 160, :mean => 11.9, :std_dev => 1.0)
+        MovingQuery.create!(:query=> "earliest data in table", :day => Date.new(2009,1,1).to_date, :times => 160, :mean => 11.9, :std_dev => 1.0)
+        @day = Date.new(2009, 1, 5).to_date
+        MovingQuery.create!(:query=> "anomaly but computed with fewer than 7 data points", :day => @day, :times => 160, :mean => 11.9, :std_dev => 1.0)
       end
 
       it "should return an error string that there is not enough historical data" do
-        MovingQuery.biggest_movers(@day, 30).should == "Not enough historic data to compute accelerations"
+        MovingQuery.biggest_movers(@day).should == "Not enough historic data to compute accelerations"
       end
     end
   end

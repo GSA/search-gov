@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100912060038) do
+ActiveRecord::Schema.define(:version => 20100913201908) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -199,15 +199,14 @@ ActiveRecord::Schema.define(:version => 20100912060038) do
   add_index "misspellings", ["wrong"], :name => "index_misspellings_on_wrong"
 
   create_table "moving_queries", :force => true do |t|
-    t.date    "day",                        :null => false
-    t.integer "window_size",                :null => false
-    t.integer "times",                      :null => false
-    t.string  "query",       :limit => 100, :null => false
-    t.float   "mean",                       :null => false
-    t.float   "std_dev",                    :null => false
+    t.date    "day",                    :null => false
+    t.integer "times",                  :null => false
+    t.string  "query",   :limit => 100, :null => false
+    t.float   "mean",                   :null => false
+    t.float   "std_dev",                :null => false
   end
 
-  add_index "moving_queries", ["day", "window_size", "times"], :name => "index_moving_queries_on_day_and_window_size_and_times"
+  add_index "moving_queries", ["day", "times"], :name => "index_moving_queries_on_day_and_times"
 
   create_table "queries", :id => false, :force => true do |t|
     t.string   "ipaddr",        :limit => 17

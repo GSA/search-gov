@@ -4,10 +4,14 @@ class Analytics::HomeController < Analytics::AnalyticsController
 
   def index
     @num_results_dqs = (request["num_results_dqs"] || "10").to_i
+    @num_results_dqgs = (request["num_results_dqgs"] || "10").to_i
     @most_recent_day_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs)
     @trailing_week_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 7, @num_results_dqs)
     @trailing_month_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 30, @num_results_dqs)
-    @most_recent_day_biggest_movers = MovingQuery.biggest_movers(@day_being_shown, 1, MAX_NUMBER_OF_BIG_MOVERS_TO_SHOW)
+    @most_recent_day_popular_query_groups = DailyQueryStat.most_popular_query_groups(@day_being_shown, 1, @num_results_dqgs)
+    @trailing_week_popular_query_groups = DailyQueryStat.most_popular_query_groups(@day_being_shown, 7, @num_results_dqgs)
+    @trailing_month_popular_query_groups = DailyQueryStat.most_popular_query_groups(@day_being_shown, 30, @num_results_dqgs)
+    @most_recent_day_biggest_movers = MovingQuery.biggest_movers(@day_being_shown, MAX_NUMBER_OF_BIG_MOVERS_TO_SHOW)
   end
 
   private

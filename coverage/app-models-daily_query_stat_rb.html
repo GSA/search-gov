@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-daily_query_stat_rb.html">app/models/daily_query_stat.rb</a></td>
-            <td class='right_align'><tt>95</tt></td>
-            <td class='right_align'><tt>85</tt></td>
+            <td class='right_align'><tt>91</tt></td>
+            <td class='right_align'><tt>80</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -357,139 +357,139 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>       results = DailyQueryStat.sum(:times,</pre></td>
+            <td><pre><a name="line51">51</a>       results = sum(:times,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>                                    :group =&gt; :query,</pre></td>
+            <td><pre><a name="line52">52</a>                     :group =&gt; :query,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line53">53</a>                                    :conditions =&gt; ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],</pre></td>
+            <td><pre><a name="line53">53</a>                     :conditions =&gt; ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>                                    :having =&gt; &quot;sum_times &gt; #{ affiliate_name == DEFAULT_AFFILIATE_NAME ? &quot;3&quot; : &quot;0&quot;}&quot;,</pre></td>
+            <td><pre><a name="line54">54</a>                     :having =&gt; &quot;sum_times &gt; #{ affiliate_name == DEFAULT_AFFILIATE_NAME ? &quot;3&quot; : &quot;0&quot;}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line55">55</a>                                    :order =&gt; &quot;sum_times desc&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line56">56</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line57">57</a>       qcs=[]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line58">58</a>       qgcounts = {}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line59">59</a>       grouped_queries_hash = GroupedQuery.grouped_queries_hash</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>       results.each_pair do |query, times|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line61">61</a>         grouped_query = grouped_queries_hash[query]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line62">62</a>         if (grouped_query)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line63">63</a>           grouped_query.query_groups.each do |query_group|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line64">64</a>             qgcounts[query_group.name] = QueryCount.new(query_group.name, 0) if qgcounts[query_group.name].nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line65">65</a>             qgcounts[query_group.name].times += times.to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line66">66</a>             qgcounts[query_group.name].children &lt;&lt; QueryCount.new(query, times)</pre></td>
+            <td><pre><a name="line55">55</a>                     :order =&gt; &quot;sum_times desc&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line67">67</a>           end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line68">68</a>         else</pre></td>
+            <td><pre><a name="line56">56</a>                     :limit =&gt; num_results)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line69">69</a>           qcs &lt;&lt; QueryCount.new(query, times)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line70">70</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line71">71</a>       end</pre></td>
+            <td><pre><a name="line57">57</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>       qcs += qgcounts.values</pre></td>
+            <td><pre><a name="line58">58</a>       results.collect { |hash| QueryCount.new(hash.first, hash.last) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line59">59</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line60">60</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>       qcs.sort_by { |qc| qc.times }.reverse[0, num_results]</pre></td>
+            <td><pre><a name="line61">61</a>     def most_popular_query_groups(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line62">62</a>       return INSUFFICIENT_DATA if end_date.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>       start_date = end_date - days_back.days + 1.day</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>       results = find_by_sql [&quot;select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b &quot;+</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a>         &quot;where day between ? AND ? AND affiliate = ? AND locale = ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id &quot;+</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line66">66</a>         &quot;group by q.name order by cnt desc limit ?&quot;,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line67">67</a>                              start_date, end_date, affiliate_name, locale, num_results]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line70">70</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line71">71</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line72">72</a>     def most_recent_populated_date(affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line73">73</a>       maximum(:day, :conditions =&gt; ['affiliate = ? AND locale = ?', affiliate_name, locale])</pre></td>
           </tr>
         
           
@@ -507,127 +507,103 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line76">76</a>     def most_recent_populated_date(affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
+            <td><pre><a name="line76">76</a>     def collect_query_group_named(name)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line77">77</a>       maximum(:day, :conditions =&gt; ['affiliate = ? AND locale = ?', affiliate_name, locale])</pre></td>
+            <td><pre><a name="line77">77</a>       qg = QueryGroup.find_by_name(name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line78">78</a>       queries = qg.grouped_queries.collect { |gq| gq.query }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line79">79</a>       results = sum(:times, :group =&gt; :day, :conditions =&gt; [&quot;query IN (?) AND affiliate = ? AND locale = ?&quot;, queries, DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s], :order =&gt; &quot;day&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line80">80</a>       dqs=[]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line81">81</a>       results.each_pair { |day, times| dqs &lt;&lt; new(:day=&gt; day, :times =&gt; times, :affiliate =&gt; DEFAULT_AFFILIATE_NAME, :locale =&gt; I18n.default_locale.to_s) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line82">82</a>       dqs</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line78">78</a>     end</pre></td>
+            <td><pre><a name="line83">83</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line79">79</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line80">80</a>     def collect_query_group_named(name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line81">81</a>       qg = QueryGroup.find_by_name(name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line82">82</a>       queries = qg.grouped_queries.collect { |gq| gq.query }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line83">83</a>       results = DailyQueryStat.sum(:times, :group =&gt; :day, :conditions =&gt; [&quot;query IN (?) AND affiliate = ? AND locale = ?&quot;, queries, DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s], :order =&gt; &quot;day&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line84">84</a>       dqs=[]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line85">85</a>       results.each_pair { |day, times| dqs &lt;&lt; DailyQueryStat.new(:day=&gt; day, :times =&gt; times, :affiliate =&gt; DEFAULT_AFFILIATE_NAME, :locale =&gt; I18n.default_locale.to_s) }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line86">86</a>       dqs</pre></td>
+            <td><pre><a name="line84">84</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line87">87</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line88">88</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line89">89</a>   </pre></td>
+            <td><pre><a name="line85">85</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line90">90</a>   private</pre></td>
+            <td><pre><a name="line86">86</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line91">91</a>   </pre></td>
+            <td><pre><a name="line87">87</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line92">92</a>   def squish_query</pre></td>
+            <td><pre><a name="line88">88</a>   def squish_query</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line93">93</a>     self.query.squish!</pre></td>
+            <td><pre><a name="line89">89</a>     self.query.squish!</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line94">94</a>   end</pre></td>
+            <td><pre><a name="line90">90</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line95">95</a> end</pre></td>
+            <td><pre><a name="line91">91</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Sep 07 22:01:14 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Sep 13 14:29:30 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

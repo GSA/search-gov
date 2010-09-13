@@ -1,72 +1,59 @@
 class MovingQuery < ActiveRecord::Base
   validates_presence_of :day
   validates_presence_of :query
-  validates_presence_of :window_size
   validates_presence_of :times
-  validates_uniqueness_of :query, :scope => [:day, :window_size]
-  MIN_NUM_QUERIES_PER_WINDOW = {1 => 15, 7 => 25, 30 => 45}
-  MULTIPLES_OF_STD_DEV_PER_WINDOW = {1 => 4, 7 => 3, 30 => 2}
+  validates_uniqueness_of :query, :scope => :day
+  MIN_NUM_QUERIES = 15
+  MIN_ACCELERATION_PERIODS_REQUIRED = 7
+  MULTIPLES_OF_STD_DEV = 4
   RESULTS_SIZE = 10
   NO_QUERIES_MATCHED = "No queries matched"
   INSUFFICIENT_DATA = "Not enough historic data to compute accelerations"
-  MIN_ACCELERATION_PERIODS_REQUIRED = 7
 
   def passes_minimum_thresholds?
-    self.times > MIN_NUM_QUERIES_PER_WINDOW[self.window_size] &&
-      self.times > (self.mean + (MULTIPLES_OF_STD_DEV_PER_WINDOW[self.window_size] * self.std_dev))
+    self.times > MIN_NUM_QUERIES && self.times > (self.mean + (MULTIPLES_OF_STD_DEV * self.std_dev))
   end
 
   def self.compute_for(yyyymmdd)
     reversed_backfilled_yearlong_series_hash = {}
     transaction do
       delete_all(["day = ?", yyyymmdd])
-      [1, 7, 30].each do |window_size|
-        get_window_candidates(window_size, yyyymmdd).each_pair do |query, sum_times|
-          reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]
-          if reversed_backfilled_yearlong_series.nil?
-            reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)
-            reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series
-          end
-          window_sums = sum_by_window_except_last(reversed_backfilled_yearlong_series, window_size)
-          next if window_sums.length < 2
-          next if window_sums[0] <= window_sums[1]
-          mean = window_sums.sum / window_sums.length.to_f
-          sum_of_squares = window_sums.inject(0) { |acc, i| acc + (i - mean) ** 2 }
-          std_dev = Math.sqrt(sum_of_squares / window_sums.length.to_f)
-          moving_query = new(:query=> query, :day => yyyymmdd, :window_size => window_size,
-                             :times => sum_times, :mean => mean, :std_dev => std_dev)
-          moving_query.save if moving_query.passes_minimum_thresholds?
+      get_window_candidates(yyyymmdd).each_pair do |query, sum_times|
+        reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]
+        if reversed_backfilled_yearlong_series.nil?
+          reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)
+          reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series
         end
+        next if reversed_backfilled_yearlong_series.length < 2
+        next if reversed_backfilled_yearlong_series[0] <= reversed_backfilled_yearlong_series[1]
+        mean = reversed_backfilled_yearlong_series.sum / reversed_backfilled_yearlong_series.length.to_f
+        sum_of_squares = reversed_backfilled_yearlong_series.inject(0) { |acc, i| acc + (i - mean) ** 2 }
+        std_dev = Math.sqrt(sum_of_squares / reversed_backfilled_yearlong_series.length.to_f)
+        moving_query = new(:query=> query, :day => yyyymmdd, :times => sum_times, :mean => mean, :std_dev => std_dev)
+        moving_query.save if moving_query.passes_minimum_thresholds?
       end
     end
   end
 
-  def self.biggest_movers(end_date, window_size, num_results = RESULTS_SIZE)
+  def self.biggest_movers(end_date, num_results = RESULTS_SIZE)
     return NO_QUERIES_MATCHED if end_date.nil?
-    results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=>"times DESC", :limit => num_results)
+    results= find_all_by_day(end_date.to_date, :order=>"times DESC", :limit => num_results)
     return NO_QUERIES_MATCHED if results.empty?
-    return INSUFFICIENT_DATA if insufficient_data?(end_date, window_size)
+    return INSUFFICIENT_DATA if insufficient_data?(end_date)
     results.collect { |res| QueryCount.new(res.query, res.times) }
   end
 
   private
-  def self.sum_by_window_except_last(ary, window_size)
-    return ary if window_size == 1
-    windows = ary.in_groups_of(window_size)
-    windows = windows[0, (windows.size) - 1] if windows.last.include? nil
-    windows.collect { |window| window.sum }
-  end
 
-  def self.get_window_candidates(window_size, yyyymmdd)
-    start_date = yyyymmdd.to_date - window_size.days + 1.day
+  def self.get_window_candidates(yyyymmdd)
     DailyQueryStat.sum(:times,
                        :group=>:query,
-                       :conditions=>["day BETWEEN ? AND ? AND affiliate = ? AND locale = ?", start_date, yyyymmdd, DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s],
-                       :having => "sum_times > #{MIN_NUM_QUERIES_PER_WINDOW[window_size]}")
+                       :conditions=>["day = ? AND affiliate = ? AND locale = ?", yyyymmdd, DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s],
+                       :having => "sum_times > #{MIN_NUM_QUERIES}")
   end
 
-  def self.insufficient_data?(day, window_size)
-    available_periods = (day - minimum(:day)) / window_size
+  def self.insufficient_data?(day)
+    available_periods = day - minimum(:day)
     available_periods < MIN_ACCELERATION_PERIODS_REQUIRED
   end
 

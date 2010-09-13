@@ -9,7 +9,7 @@ Feature: Analytics Homepage
     And there is analytics data from "20090909" thru "20090911"
     When I am on the analytics homepage
     Then I should see "Data for September 11, 2009"
-    And I should see "Most Frequent Queries"
+    And I should see "Most Popular Queries"
     And in "dqs1" I should see "aaaa"
     And in "dqs7" I should see "aaaa"
     And in "dqs30" I should see "aaaa"
@@ -25,6 +25,9 @@ Feature: Analytics Homepage
     Then in "dqs1" I should see "Not enough historic data"
     And in "dqs7" I should see "Not enough historic data"
     And in "dqs30" I should see "Not enough historic data"
+    And in "dqgs1" I should see "Not enough historic data"
+    And in "dqgs7" I should see "Not enough historic data"
+    And in "dqgs30" I should see "Not enough historic data"
 
   Scenario: No query accelerations (biggest movers) available
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
@@ -32,7 +35,7 @@ Feature: Analytics Homepage
     When I am on the analytics homepage
     Then I should not see "Hot Topics for the Day"
 
-  Scenario: Viewing queries with at least 4 queries per day that are part of query groups (i.e., semantic sets)
+  Scenario: Viewing queries that are part of query groups (i.e., semantic sets)
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And the following DailyQueryStats exist:
     | query                       | times   |  days_back  |
@@ -41,16 +44,16 @@ Feature: Analytics Homepage
     | health care reform          |   100   |    1        |
     | obama health care           |    10   |    1        |
     | president                   |     4   |    1        |
-    | ignore me                   |     1   |    1        |
+    | do not ignore me            |     1   |    1        |
     And the following query groups exist:
     | group      | queries                                                 |
-    | POTUS      | obama, president, obama health care, ignore me          |
+    | POTUS      | obama, president, obama health care, do not ignore me   |
     | hcreform   | health care bill, health care reform, obama health care |
     When I am on the analytics homepage
-    Then in "dqs1" I should see "hcreform"
-    And in "dqs1" I should see "1110"
-    And in "dqs1" I should see "POTUS"
-    And in "dqs1" I should see "10014"
+    Then in "dqgs1" I should see "hcreform"
+    And in "dqgs1" I should see "1110"
+    And in "dqgs1" I should see "POTUS"
+    And in "dqgs1" I should see "10015"
 
   Scenario: Visiting the FAQ page
     Given I am logged in with email "analyst@fixtures.org" and password "admin"

@@ -16,7 +16,7 @@ Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
     words.each do |word|
       cnt = cnt -1
       DailyQueryStat.create(:day => day, :query => word, :times => cnt, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-      MovingQuery.create(:day => day, :query => word, :window_size => 1, :times => cnt, :mean => 1.0, :std_dev => 0.001)
+      MovingQuery.create(:day => day, :query => word, :times => cnt, :mean => 1.0, :std_dev => 0.001)
     end
   end
   DailyQueryStat.reindex

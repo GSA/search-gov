@@ -28,24 +28,6 @@ describe Analytics::HomeController do
       UserSession.create(:email=> users("analyst").email, :password => "admin")
     end
 
-    it "should assign popular terms for the target day, its trailing week, and its trailing month" do
-      yday = Date.yesterday.to_date
-      DailyQueryStat.should_receive(:most_popular_terms).with(yday, 1, 10).and_return("ydaymp")
-      DailyQueryStat.should_receive(:most_popular_terms).with(yday, 7, 10).and_return("weekmp")
-      DailyQueryStat.should_receive(:most_popular_terms).with(yday, 30, 10).and_return("monthmp")
-      get :index, :day => yday
-      assigns[:most_recent_day_popular_terms].should == "ydaymp"
-      assigns[:trailing_week_popular_terms].should == "weekmp"
-      assigns[:trailing_month_popular_terms].should == "monthmp"
-    end
-
-    it "should assign biggest movers on the target day" do
-      yday = Date.yesterday.to_date
-      MovingQuery.should_receive(:biggest_movers).with(yday, 1, Analytics::HomeController::MAX_NUMBER_OF_BIG_MOVERS_TO_SHOW).and_return("ydaybm")
-      get :index, :day => yday
-      assigns[:most_recent_day_biggest_movers].should == "ydaybm"
-    end
-
     describe "day_being_shown" do
       context "when no date is selected by user" do
         it "should assign the most recent day" do
@@ -65,6 +47,7 @@ describe Analytics::HomeController do
     it "should set a value for the number of results to show per Most Popular section (i.e., 1 day, 7 day, 30 day)" do
       get :index
       assigns[:num_results_dqs].should_not be_nil
+      assigns[:num_results_dqgs].should_not be_nil
     end
 
     context "when the number of results for the most popular queries is set by the user" do
@@ -73,6 +56,15 @@ describe Analytics::HomeController do
       end
       it "should use the param as the number of results to show per section" do
         assigns[:num_results_dqs].should == 20
+      end
+    end
+
+    context "when the number of results for the most popular query groups is set by the user" do
+      before do
+        get :index, :num_results_dqgs=> "20"
+      end
+      it "should use the param as the number of results to show per section" do
+        assigns[:num_results_dqgs].should == 20
       end
     end
 

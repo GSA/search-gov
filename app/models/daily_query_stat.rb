@@ -52,25 +52,21 @@ class DailyQueryStat < ActiveRecord::Base
                     :group => :query,
                     :conditions => ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],
                     :having => "sum_times > #{ affiliate_name == DEFAULT_AFFILIATE_NAME ? "3" : "0"}",
-                    :order => "sum_times desc")
+                    :order => "sum_times desc",
+                    :limit => num_results)
       return INSUFFICIENT_DATA if results.empty?
-      qcs=[]
-      qgcounts = {}
-      grouped_queries_hash = GroupedQuery.grouped_queries_hash
-      results.each_pair do |query, times|
-        grouped_query = grouped_queries_hash[query]
-        if (grouped_query)
-          grouped_query.query_groups.each do |query_group|
-            qgcounts[query_group.name] = QueryCount.new(query_group.name, 0) if qgcounts[query_group.name].nil?
-            qgcounts[query_group.name].times += times.to_i
-            qgcounts[query_group.name].children << QueryCount.new(query, times)
-          end
-        else
-          qcs << QueryCount.new(query, times)
-        end
-      end
-      qcs += qgcounts.values
-      qcs.sort_by { |qc| qc.times }.reverse[0, num_results]
+      results.collect { |hash| QueryCount.new(hash.first, hash.last) }
+    end
+
+    def most_popular_query_groups(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+      return INSUFFICIENT_DATA if end_date.nil?
+      start_date = end_date - days_back.days + 1.day
+      results = find_by_sql ["select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b "+
+        "where day between ? AND ? AND affiliate = ? AND locale = ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id "+
+        "group by q.name order by cnt desc limit ?",
+                             start_date, end_date, affiliate_name, locale, num_results]
+      return INSUFFICIENT_DATA if results.empty?
+      results.collect { |res| QueryCount.new(res.name, res.cnt, true) }
     end
 
     def most_recent_populated_date(affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)

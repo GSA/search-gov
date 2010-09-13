@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-moving_query_rb.html">app/models/moving_query.rb</a></td>
-            <td class='right_align'><tt>73</tt></td>
-            <td class='right_align'><tt>66</tt></td>
+            <td class='right_align'><tt>60</tt></td>
+            <td class='right_align'><tt>53</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,31 +75,31 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   validates_presence_of :window_size</pre></td>
+            <td><pre><a name="line4">4</a>   validates_presence_of :times</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   validates_presence_of :times</pre></td>
+            <td><pre><a name="line5">5</a>   validates_uniqueness_of :query, :scope =&gt; :day</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   validates_uniqueness_of :query, :scope =&gt; [:day, :window_size]</pre></td>
+            <td><pre><a name="line6">6</a>   MIN_NUM_QUERIES = 15</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   MIN_NUM_QUERIES_PER_WINDOW = {1 =&gt; 15, 7 =&gt; 25, 30 =&gt; 45}</pre></td>
+            <td><pre><a name="line7">7</a>   MIN_ACCELERATION_PERIODS_REQUIRED = 7</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   MULTIPLES_OF_STD_DEV_PER_WINDOW = {1 =&gt; 4, 7 =&gt; 3, 30 =&gt; 2}</pre></td>
+            <td><pre><a name="line8">8</a>   MULTIPLES_OF_STD_DEV = 4</pre></td>
           </tr>
         
           
@@ -122,278 +122,278 @@
         
           
           
+          <tr class="inferred">
+            <td><pre><a name="line12">12</a> </pre></td>
+          </tr>
+        
+          
+          
           <tr class="marked">
-            <td><pre><a name="line12">12</a>   MIN_ACCELERATION_PERIODS_REQUIRED = 7</pre></td>
+            <td><pre><a name="line13">13</a>   def passes_minimum_thresholds?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>     self.times &gt; MIN_NUM_QUERIES &amp;&amp; self.times &gt; (self.mean + (MULTIPLES_OF_STD_DEV * self.std_dev))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>   def passes_minimum_thresholds?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>     self.times &gt; MIN_NUM_QUERIES_PER_WINDOW[self.window_size] &amp;&amp;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>       self.times &gt; (self.mean + (MULTIPLES_OF_STD_DEV_PER_WINDOW[self.window_size] * self.std_dev))</pre></td>
+            <td><pre><a name="line15">15</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>   end</pre></td>
+            <td><pre><a name="line16">16</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>   def self.compute_for(yyyymmdd)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>     reversed_backfilled_yearlong_series_hash = {}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>     transaction do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       delete_all([&quot;day = ?&quot;, yyyymmdd])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       get_window_candidates(yyyymmdd).each_pair do |query, sum_times|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>         reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>         if reversed_backfilled_yearlong_series.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>           reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>           reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a> </pre></td>
+            <td><pre><a name="line26">26</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>   def self.compute_for(yyyymmdd)</pre></td>
+            <td><pre><a name="line27">27</a>         next if reversed_backfilled_yearlong_series.length &lt; 2</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>     reversed_backfilled_yearlong_series_hash = {}</pre></td>
+            <td><pre><a name="line28">28</a>         next if reversed_backfilled_yearlong_series[0] &lt;= reversed_backfilled_yearlong_series[1]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>     transaction do</pre></td>
+            <td><pre><a name="line29">29</a>         mean = reversed_backfilled_yearlong_series.sum / reversed_backfilled_yearlong_series.length.to_f</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>       delete_all([&quot;day = ?&quot;, yyyymmdd])</pre></td>
+            <td><pre><a name="line30">30</a>         sum_of_squares = reversed_backfilled_yearlong_series.inject(0) { |acc, i| acc + (i - mean) ** 2 }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>       [1, 7, 30].each do |window_size|</pre></td>
+            <td><pre><a name="line31">31</a>         std_dev = Math.sqrt(sum_of_squares / reversed_backfilled_yearlong_series.length.to_f)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>         get_window_candidates(window_size, yyyymmdd).each_pair do |query, sum_times|</pre></td>
+            <td><pre><a name="line32">32</a>         moving_query = new(:query=&gt; query, :day =&gt; yyyymmdd, :times =&gt; sum_times, :mean =&gt; mean, :std_dev =&gt; std_dev)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>           reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>           if reversed_backfilled_yearlong_series.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>             reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>             reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series</pre></td>
+            <td><pre><a name="line33">33</a>         moving_query.save if moving_query.passes_minimum_thresholds?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>           end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>           window_sums = sum_by_window_except_last(reversed_backfilled_yearlong_series, window_size)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>           next if window_sums.length &lt; 2</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>           next if window_sums[0] &lt;= window_sums[1]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>           mean = window_sums.sum / window_sums.length.to_f</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>           sum_of_squares = window_sums.inject(0) { |acc, i| acc + (i - mean) ** 2 }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>           std_dev = Math.sqrt(sum_of_squares / window_sums.length.to_f)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>           moving_query = new(:query=&gt; query, :day =&gt; yyyymmdd, :window_size =&gt; window_size,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>                              :times =&gt; sum_times, :mean =&gt; mean, :std_dev =&gt; std_dev)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>           moving_query.save if moving_query.passes_minimum_thresholds?</pre></td>
+            <td><pre><a name="line34">34</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>         end</pre></td>
+            <td><pre><a name="line35">35</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>       end</pre></td>
+            <td><pre><a name="line36">36</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>     end</pre></td>
+            <td><pre><a name="line37">37</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>   def self.biggest_movers(end_date, num_results = RESULTS_SIZE)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>     return NO_QUERIES_MATCHED if end_date.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>     results= find_all_by_day(end_date.to_date, :order=&gt;&quot;times DESC&quot;, :limit =&gt; num_results)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>     return NO_QUERIES_MATCHED if results.empty?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>     return INSUFFICIENT_DATA if insufficient_data?(end_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>     results.collect { |res| QueryCount.new(res.query, res.times) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a>   end</pre></td>
+            <td><pre><a name="line44">44</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line43">43</a> </pre></td>
+            <td><pre><a name="line45">45</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>   def self.biggest_movers(end_date, window_size, num_results = RESULTS_SIZE)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>     return NO_QUERIES_MATCHED if end_date.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>     results= find_all_by_day_and_window_size(end_date.to_date, window_size, :order=&gt;&quot;times DESC&quot;, :limit =&gt; num_results)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>     return NO_QUERIES_MATCHED if results.empty?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>     return INSUFFICIENT_DATA if insufficient_data?(end_date, window_size)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>     results.collect { |res| QueryCount.new(res.query, res.times) }</pre></td>
+            <td><pre><a name="line46">46</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>   end</pre></td>
+            <td><pre><a name="line47">47</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>   def self.get_window_candidates(yyyymmdd)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>     DailyQueryStat.sum(:times,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a> </pre></td>
+            <td><pre><a name="line50">50</a>                        :group=&gt;:query,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>   private</pre></td>
+            <td><pre><a name="line51">51</a>                        :conditions=&gt;[&quot;day = ? AND affiliate = ? AND locale = ?&quot;, yyyymmdd, DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a>                        :having =&gt; &quot;sum_times &gt; #{MIN_NUM_QUERIES}&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line53">53</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line54">54</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>   def self.sum_by_window_except_last(ary, window_size)</pre></td>
+            <td><pre><a name="line55">55</a>   def self.insufficient_data?(day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>     return ary if window_size == 1</pre></td>
+            <td><pre><a name="line56">56</a>     available_periods = day - minimum(:day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>     windows = ary.in_groups_of(window_size)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line56">56</a>     windows = windows[0, (windows.size) - 1] if windows.last.include? nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line57">57</a>     windows.collect { |window| window.sum }</pre></td>
+            <td><pre><a name="line57">57</a>     available_periods &lt; MIN_ACCELERATION_PERIODS_REQUIRED</pre></td>
           </tr>
         
           
@@ -410,92 +410,14 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>   def self.get_window_candidates(window_size, yyyymmdd)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line61">61</a>     start_date = yyyymmdd.to_date - window_size.days + 1.day</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line62">62</a>     DailyQueryStat.sum(:times,</pre></td>
-          </tr>
-        
-          
-          
           <tr class="inferred">
-            <td><pre><a name="line63">63</a>                        :group=&gt;:query,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line64">64</a>                        :conditions=&gt;[&quot;day BETWEEN ? AND ? AND affiliate = ? AND locale = ?&quot;, start_date, yyyymmdd, DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line65">65</a>                        :having =&gt; &quot;sum_times &gt; #{MIN_NUM_QUERIES_PER_WINDOW[window_size]}&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line66">66</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line67">67</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line68">68</a>   def self.insufficient_data?(day, window_size)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line69">69</a>     available_periods = (day - minimum(:day)) / window_size</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line70">70</a>     available_periods &lt; MIN_ACCELERATION_PERIODS_REQUIRED</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line71">71</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line72">72</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line73">73</a> end</pre></td>
+            <td><pre><a name="line60">60</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Sep 07 22:01:15 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Sep 13 14:29:30 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
