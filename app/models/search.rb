@@ -226,10 +226,6 @@ class Search
   def english_locale?
     I18n.locale.to_s == 'en'
   end
-  
-  def spanish_locale?
-    I18n.locale.to_s == 'es'
-  end
 
   def locale
     return if english_locale?
