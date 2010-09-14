@@ -20,7 +20,7 @@ describe "Calais related searches rake tasks" do
         @rake[@task_name].prerequisites.should include("environment")
       end
 
-      it "should create/update related searches based on yesterday's popular search terms" do
+      it "should create/update related searches based on recent popular search terms" do
         CalaisRelatedSearch.should_receive(:populate_with_new_popular_terms)
         @rake[@task_name].invoke
       end

@@ -2,17 +2,21 @@ class CalaisRelatedSearch < ActiveRecord::Base
   validates_presence_of :term, :related_terms
   validates_uniqueness_of :term
 
-  WEEK_AGO = 7
-  BATCH_SIZE = 20000
+  BATCH_SIZE = 10000
   BING_RESULTS_TO_CONSIDER_FOR_TEXT = 100
 
   class << self
 
     def populate_with_new_popular_terms
-      DailyQueryStat.most_popular_terms(Date.yesterday, WEEK_AGO, BATCH_SIZE).each do |dqs|
-        term = dqs.query.downcase
-        related_terms_for(term) unless exists?(:term => term)
-      end
+      popular_en_locale_terms_not_yet_in_related_searches =
+        DailyQueryStat.find(:all,
+                            :select=>"daily_query_stats.query, sum(times) sum_times",
+                            :joins=>"left outer join calais_related_searches on calais_related_searches.term = daily_query_stats.query",
+                            :conditions=>"calais_related_searches.term is null and locale='en'",
+                            :group=>"daily_query_stats.query",
+                            :order=>"sum_times desc",
+                            :limit => BATCH_SIZE)
+      popular_en_locale_terms_not_yet_in_related_searches.each { |dqs| related_terms_for(dqs.query.downcase) }
     end
 
     def related_terms_for(term)

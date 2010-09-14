@@ -22,8 +22,8 @@ describe CalaisRelatedSearch do
     context "when some of the popular terms already have their related searches computed" do
       before do
         CalaisRelatedSearch.create!(@valid_attributes)
-        DailyQueryStat.create!(:day => Date.yesterday, :times => 1001, :query => "SOME new popular term", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :times => 1000, :query => "debt relief", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :times => 1001, :query => "SOME new popular term")
+        DailyQueryStat.create!(:day => Date.yesterday, :times => 1000, :query => "debt relief")
       end
 
       it "should call related_terms_for() with only the new terms, normalized to lowercase" do
