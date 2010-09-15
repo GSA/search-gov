@@ -12,6 +12,14 @@ describe "Report generation rake tasks" do
     @fake_top_queries = Query.top_queries(Date.yesterday.beginning_of_day, Date.yesterday.end_of_day)
     @fake_top_queries.size.should > 0
     @csv_output = "Query,Count\nobama,1\n"
+    
+    @affiliate_names = %w{affiliate1 affiliate2 affiliate3}
+    File.open('/tmp/affiliates.out', 'w+') do |file|
+      file.puts('name')
+      @affiliate_names.each do |affiliate_name|
+        file.puts(affiliate_name)
+      end
+    end
   end
 
   describe "usasearch:reports" do
@@ -50,19 +58,12 @@ describe "Report generation rake tasks" do
       end
       
       context "report generation" do
-        before do
-          Affiliate.delete_all
-          Affiliate.create(:name => 'affiliate1')
-          Affiliate.create(:name => 'affiliate2')
-          Affiliate.all.size.should == 2
-        end
-        
         it "should default to yesterday, and produce reports for both English and Spanish locales (30K/4K results respectively), as well as all affiliates" do
           %w{en es}.each do |locale|
             Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 30000 : 4000, true).once.and_return @fake_top_queries
           end
-          Affiliate.all.each do |affiliate|
-            Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, 'en', affiliate.name, 1000, true).once.and_return @fake_top_queries
+          @affiliate_names.each do |affiliate_name|
+            Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_month.beginning_of_day, Date.yesterday.end_of_month.end_of_day, 'en', affiliate_name, 1000, true).once.and_return @fake_top_queries
           end
           @rake[@task_name].invoke()
         end
@@ -72,16 +73,16 @@ describe "Report generation rake tasks" do
           %w{en es}.each do |locale|
             Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, locale, 'usasearch.gov', locale == 'en' ? 30000 : 4000, true).once.and_return @fake_top_queries
           end
-          Affiliate.all.each do |affiliate|
-            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'en', affiliate.name, 1000, true).once.and_return @fake_top_queries
+          @affiliate_names.each do |affiliate_name|
+            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'en', affiliate_name, 1000, true).once.and_return @fake_top_queries
           end
           @rake[@task_name].invoke(day.to_s)        
         end
       
         it "should skip usasearch.gov reports when the generate_usasearch parameter is set to false" do
           day = Date.yesterday
-          Affiliate.all.each do |affiliate|
-            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'en', affiliate.name, 1000, true).once.and_return @fake_top_queries
+          @affiliate_names.each do |affiliate_name|
+            Query.should_receive(:top_queries).with(day.beginning_of_month.beginning_of_day, day.end_of_month.end_of_day, 'en', affiliate_name, 1000, true).once.and_return @fake_top_queries
           end
           @rake[@task_name].invoke(day.to_s, false)
         end
@@ -99,8 +100,8 @@ describe "Report generation rake tasks" do
             AWS::S3::S3Object.should_receive(:store).with("reports/#{locale}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", @csv_output, AWS_BUCKET_NAME)
           end
           Query.stub!(:top_queries).and_return @fake_top_queries
-          Affiliate.all.each do |affiliate|
-            AWS::S3::S3Object.should_receive(:store).with("reports/#{affiliate.name}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", @csv_output, AWS_BUCKET_NAME)
+          @affiliate_names.each do |affiliate_name|
+            AWS::S3::S3Object.should_receive(:store).with("reports/#{affiliate_name}_top_queries_#{Date.yesterday.strftime('%Y%m')}.csv", @csv_output, AWS_BUCKET_NAME)
           end
           @rake[@task_name].invoke()
         end
@@ -141,20 +142,13 @@ describe "Report generation rake tasks" do
         end
       end
       
-      context "report generation" do
-        before do
-          Affiliate.delete_all
-          Affiliate.create(:name => 'affiliate1')
-          Affiliate.create(:name => 'affiliate2')
-          Affiliate.all.size.should == 2
-        end
-        
+      context "report generation" do        
         it "should default to yesterday, and produce reports for both English and Spanish locales (1k each), as well as all affiliates" do
           %w{en es}.each do |locale|
             Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_day, Date.yesterday.end_of_day, locale, 'usasearch.gov', 1000, true).once.and_return @fake_top_queries
           end
-          Affiliate.all.each do |affiliate|
-            Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_day, Date.yesterday.end_of_day, 'en', affiliate.name, 1000, true).once.and_return @fake_top_queries
+          @affiliate_names.each do |affiliate_name|
+            Query.should_receive(:top_queries).with(Date.yesterday.beginning_of_day, Date.yesterday.end_of_day, 'en', affiliate_name, 1000, true).once.and_return @fake_top_queries
           end
           @rake[@task_name].invoke()
         end
@@ -164,16 +158,16 @@ describe "Report generation rake tasks" do
           %w{en es}.each do |locale|
             Query.should_receive(:top_queries).with(day.beginning_of_day, day.end_of_day, locale, 'usasearch.gov', 1000, true).once.and_return @fake_top_queries
           end
-          Affiliate.all.each do |affiliate|
-            Query.should_receive(:top_queries).with(day.beginning_of_day, day.end_of_day, 'en', affiliate.name, 1000, true).once.and_return @fake_top_queries
+          @affiliate_names.each do |affiliate_name|
+            Query.should_receive(:top_queries).with(day.beginning_of_day, day.end_of_day, 'en', affiliate_name, 1000, true).once.and_return @fake_top_queries
           end
           @rake[@task_name].invoke(day.to_s)        
         end
       
         it "should skip usasearch.gov reports when the generate_usasearch parameter is set to false" do
           day = Date.yesterday
-          Affiliate.all.each do |affiliate|
-            Query.should_receive(:top_queries).with(day.beginning_of_day, day.end_of_day, 'en', affiliate.name, 1000, true).once.and_return @fake_top_queries
+          @affiliate_names.each do |affiliate_name|
+            Query.should_receive(:top_queries).with(day.beginning_of_day, day.end_of_day, 'en', affiliate_name, 1000, true).once.and_return @fake_top_queries
           end
           @rake[@task_name].invoke(day.to_s, false)
         end
@@ -191,8 +185,8 @@ describe "Report generation rake tasks" do
             AWS::S3::S3Object.should_receive(:store).with("reports/#{locale}_top_queries_#{Date.yesterday.strftime('%Y%m%d')}.csv", @csv_output, AWS_BUCKET_NAME)
           end
           Query.stub!(:top_queries).and_return @fake_top_queries
-          Affiliate.all.each do |affiliate|
-            AWS::S3::S3Object.should_receive(:store).with("reports/#{affiliate.name}_top_queries_#{Date.yesterday.strftime('%Y%m%d')}.csv", @csv_output, AWS_BUCKET_NAME)
+          @affiliate_names.each do |affiliate_name|
+            AWS::S3::S3Object.should_receive(:store).with("reports/#{affiliate_name}_top_queries_#{Date.yesterday.strftime('%Y%m%d')}.csv", @csv_output, AWS_BUCKET_NAME)
           end
           @rake[@task_name].invoke()
         end
@@ -200,5 +194,3 @@ describe "Report generation rake tasks" do
     end 
   end
 end
-
-
