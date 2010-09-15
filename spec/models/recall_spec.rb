@@ -397,40 +397,6 @@ describe Recall do
         search = Recall.search_for(nil, {:upc => '021200140624'})
         search.total.should == @number_of_cpsc_recalls
       end
-
-      it "should facet by Manufacturer" do
-        search = Recall.search_for('stroller')
-        search.total.should == @number_of_cpsc_recalls
-        search.facet(:manufacturer_facet).rows.first.value.should == 'Acme Corp'
-        search.facet(:manufacturer_facet).rows.first.count.should == @number_of_cpsc_recalls
-      end
-
-      it "should facet by ProductType" do
-        search = Recall.search_for('stroller')
-        search.total.should == @number_of_cpsc_recalls
-        search.facet(:product_type_facet).rows.first.value.should == 'Dangerous Stuff'
-        search.facet(:product_type_facet).rows.first.count.should == @number_of_cpsc_recalls
-      end
-
-      it "should facet by Hazard" do
-        search = Recall.search_for('stroller')
-        search.total.should == @number_of_cpsc_recalls
-        search.facet(:hazard_facet).rows.first.value.should == 'Horrible Death'
-        search.facet(:hazard_facet).rows.first.count.should == @number_of_cpsc_recalls
-      end
-
-      it "should facet by Country" do
-        search = Recall.search_for('stroller')
-        search.total.should == @number_of_cpsc_recalls
-        search.facet(:country_facet).rows.first.value.should == 'United States'
-        search.facet(:country_facet).rows.first.count.should == @number_of_cpsc_recalls
-      end
-
-      it "should facet by recall year" do
-        search = Recall.search_for('stroller')
-        search.total.should == @number_of_cpsc_recalls
-        search.facet(:recall_year).rows.size.should == 2
-      end
     end
 
     context "NHTSA-related searches" do
@@ -481,24 +447,6 @@ describe Recall do
       it "should field search on code" do
         search = Recall.search_for(nil, {:code => 'V'})
         search.total.should == @number_of_nhtsa_recalls
-      end
-
-      it "should facet by make" do
-        search = Recall.search_for("mack")
-        search.total.should == @number_of_nhtsa_recalls
-        search.facet(:make_facet).rows.size.should == 1
-      end
-
-      it "should facet by model" do
-        search = Recall.search_for("mack")
-        search.total.should == @number_of_nhtsa_recalls
-        search.facet(:model_facet).rows.size.should == 1
-      end
-
-      it "should facet by year" do
-        search = Recall.search_for("mack")
-        search.total.should == @number_of_nhtsa_recalls
-        search.facet(:year_facet).rows.size.should == 1
       end
     end
 
