@@ -22,6 +22,7 @@ describe CalaisRelatedSearch do
     context "when some of the popular terms already have their related searches computed" do
       before do
         CalaisRelatedSearch.create!(@valid_attributes)
+        DailyQueryStat.destroy_all
         DailyQueryStat.create!(:day => Date.yesterday, :times => 1001, :query => "SOME new popular term")
         DailyQueryStat.create!(:day => Date.yesterday, :times => 1000, :query => "debt relief")
       end

@@ -534,17 +534,33 @@ describe Search do
         end
       end
 
-      context "when a filter parameter is set" do
+      context "when a valid filter parameter is set" do
         it "should set the Adult parameter in the query sent to Bing" do
-          search = Search.new(@valid_options.merge(:filter => 'moderate'))
-          URI.should_receive(:parse).with(/Adult=moderate/).and_return(@uriresult)
+          search = Search.new(@valid_options.merge(:filter => 'off'))
+          URI.should_receive(:parse).with(/Adult=off/).and_return(@uriresult)
           search.run
         end
 
         context "when the filter parameter is blank" do
           it "should set the Adult parameter to the default value ('strict')" do
             search = Search.new(@valid_options.merge(:filter => ''))
-            URI.should_receive(:parse).with(/Adult=strict/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/Adult=#{Search::DEFAULT_FILTER_SETTING}/).and_return(@uriresult)
+            search.run
+          end
+        end
+        
+        context "when the filter parameter is nil" do
+          it "should set the Adult parameter to the default value" do
+            search = Search.new(@valid_options)
+            URI.should_receive(:parse).with(/Adult=#{Search::DEFAULT_FILTER_SETTING}/).and_return(@uriresult)
+            search.run
+          end
+        end
+        
+        context "when the filter parameter is not in the list of valid filter values" do
+          it "should set the Adult parameter to the default value" do
+            search = Search.new(@valid_options.merge(:filter => 'invalid'))
+            URI.should_receive(:parse).with(/Adult=#{Search::DEFAULT_FILTER_SETTING}/).and_return(@uriresult)
             search.run
           end
         end

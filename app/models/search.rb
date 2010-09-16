@@ -12,10 +12,11 @@ class Search
   SOURCES = "Spell+Web"
   USER_AGENT = "USASearch"
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:gov OR site:mil)"
+  VALID_FILTER_VALUES = %w{strict off}
   DEFAULT_FILTER_SETTING = 'strict'
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
   VALID_SCOPES = %w{ PatentClass }
-
+  
   attr_accessor :query,
                 :page,
                 :error_message,
@@ -279,12 +280,16 @@ class Search
       "AppId=#{APP_ID}",
       "sources=#{SOURCES}",
       "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
-      "Adult=#{self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : self.filter_setting}",
+      "Adult=#{adult_filter_setting}",
       "query=#{URI.escape(query_string, URI_REGEX)}"
     ]
     "#{JSON_SITE}?" + params.join('&')
   end
-
+  
+  def adult_filter_setting
+    self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : VALID_FILTER_VALUES.include?(self.filter_setting) ? self.filter_setting : DEFAULT_FILTER_SETTING
+  end
+    
   def strip_extra_chars_from(did_you_mean_suggestion)
     did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').strip.squish unless did_you_mean_suggestion.nil?
   end
