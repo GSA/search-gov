@@ -331,12 +331,12 @@ describe Recall do
   end
 
   describe "#search_for" do
-    before(:all) do
+    before do
       Recall.destroy_all
       Recall.remove_all_from_index!
       @start_date = Date.parse('2010-02-01')
       @number_of_cpsc_recalls = 3
-      @number_of_cpsc_recalls.times do |index|
+      (@number_of_cpsc_recalls - 1).downto(0) do |index|
         recall = Recall.new(:recall_number => '12345', :y2k => 12345, :recalled_on => @start_date - index.month, :organization => 'CPSC')
         recall.recall_details << RecallDetail.new(:detail_type => 'Manufacturer', :detail_value => 'Acme Corp')
         recall.recall_details << RecallDetail.new(:detail_type => 'ProductType', :detail_value => 'Dangerous Stuff')
@@ -356,13 +356,10 @@ describe Recall do
         recall.auto_recalls << AutoRecall.new(:make => @row[2], :model => @row[3], :year => @row[4])
         recall.save!
       end
+      Sunspot.commit
     end
 
     context "CPSC-related searches" do
-      before(:all) do
-        Recall.reindex
-      end
-
       it "should filter search results by organization" do
         search = Recall.search_for('stroller', {:organization => 'CPSC'})
         search.total.should == @number_of_cpsc_recalls
@@ -400,10 +397,6 @@ describe Recall do
     end
 
     context "NHTSA-related searches" do
-      before(:all) do
-        Recall.reindex
-      end
-
       it "should match terms in the defect summary" do
         search = Recall.search_for("CHASSIS")
         search.total.should == @number_of_nhtsa_recalls
@@ -450,14 +443,13 @@ describe Recall do
       end
     end
 
-    context "when searching by date" do
+    context "when searching by date range" do
       before(:all) do
         @end_date_string = '2010-03-10'
         @end_date = Date.parse(@end_date_string)
         @start_date_string = '2010-02-01'
         @start_date = Date.parse(@start_date_string)
         @query = 'stroller'
-        Recall.reindex
       end
 
       it "should search by a date range" do
@@ -474,12 +466,11 @@ describe Recall do
         search = Recall.search_for(@query, {:start_date => @start_date, :end_date => @end_date})
         search.total.should == 1
       end
-    end
-
-    context "when sorting results" do
+      
       context "when sorting by date" do
         it "should be ordered by date descending" do
-          search = Recall.search_for("stroller", :sort => "date")
+          search = Recall.search_for("stroller", {:organization => 'CPSC', :sort => 'date'})
+          search.results.size.should > 0
           search.results.size.times do |index|
             search.results[index].recalled_on.should be >= search.results[index + 1].recalled_on unless index == (search.total - 1)
           end
@@ -487,17 +478,43 @@ describe Recall do
       end
 
       context "when no sort value is specified" do
-        it "should order the results by score" do
-          search = Recall.search_for("stroller")
+        it "should order the results by score, with more recent recalls boosted" do
+          search = Recall.search_for("stroller", {:organization => 'CPSC'})
+          search.results.size.should > 0
           search.results.size.times do |index|
-            search.hits[index].score.should be >= search.hits[index + 1].score unless index == (search.total - 1)
+            search.hits[index].score.should == search.hits[index + 1].score unless index == (search.total - 1)
           end
-        end
+          search.results.size.times do |index|
+            search.results[index].recalled_on.should be <= search.results[index + 1].recalled_on unless index == (search.total - 1)
+          end
+        end        
+      end
+    end
+    
+    context "when sorting by relevancy, and two results have about the same relevancy" do
+      before do
+        Recall.destroy_all
+        Recall.remove_all_from_index!
+        
+        @older_recall = Recall.create(:recall_number => '12345', :recalled_on => Date.yesterday - 1.month, :organization => 'CPSC')
+        @older_recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'This is a really long sentence that includes the word knife which is the keyword that we are looking for.  By putting lots of words in this description, we will make this document have a lower score, and when we boost more recent results, this one will end up lower.')
+
+        @recent_recall = Recall.create(:recall_number => '23456', :recalled_on => Date.yesterday, :organization => 'CPSC')
+        @recent_recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'This is a really long sentence that includes the word knife which is the keyword that we are looking for.  By making this document about as long as the other document, they will have about the same score, and when boosted by date, this will be first.')
+        
+        Recall.reindex
+      end
+      
+      it "should return the newer results ahead of the older results" do
+        search = Recall.search_for("knife", :organization => 'CPSC')
+        search.results.size.should == 2
+        search.results.first.should == @recent_recall
+        search.results.last.should == @older_recall
       end
     end
 
     context "CDC food/drug related searches" do
-      before(:all) do 
+      before do 
         Recall.create(:recall_number => Digest::MD5.hexdigest("http://www.fda.gov/Safety/Recalls/ucm216903.htm")[0, 10],
                       :recalled_on => @start_date, :organization => 'CDC',
                       :food_recall => FoodRecall.new(:url=>"http://www.fda.gov/Safety/Recalls/ucm216903.htm", 

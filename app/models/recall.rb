@@ -21,6 +21,11 @@ class Recall < ActiveRecord::Base
     string :organization
     string :recall_number
     time :recalled_on
+    
+    boost do |recall|
+      boost_value = Time.parse(recall.recalled_on.to_s).to_i
+      boost_value unless recall.recalled_on.blank?
+    end
 
     integer :recall_year do |recall|
       recall.recalled_on.year unless recall.recalled_on.blank?
