@@ -15,7 +15,7 @@ class Emailer < ActionMailer::Base
   end
 
   def welcome_to_new_user(user)
-    setup_email(user.email)
+    setup_email(user.email) 
     @subject += "Welcome to USA Search Services"
     body(:user => user)
   end
@@ -25,7 +25,7 @@ class Emailer < ActionMailer::Base
     @from       = email
     @subject    = "USA.gov Mobile Inquiry"
     @sent_on    = Time.now
-    @headers['Content-Type'] = "text/plain; charset=utf-8; format=flowed"
+    @headers['Content-Type'] = "text/plain; charset=iso-8859-1; format=flowed"
     body(:message => message)
   end
   
