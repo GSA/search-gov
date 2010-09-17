@@ -1,6 +1,6 @@
 class Emailer < ActionMailer::Base
   default_url_options[:host] = APP_URL
-
+  
   def password_reset_instructions(user)
     setup_email(user.email)
 
@@ -26,7 +26,7 @@ class Emailer < ActionMailer::Base
     @subject    = "USA.gov Mobile Inquiry"
     @sent_on    = Time.now
     @headers['Content-Type'] = "text/plain; charset=iso-8859-1; format=flowed"
-    charset = "iso-8859-1"
+    charset "iso-8859-1"
     body(:message => message)
   end
   
