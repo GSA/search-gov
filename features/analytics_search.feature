@@ -25,6 +25,7 @@ Feature: Analytics Search
     And I should not see "social security"
     And I should not see "old security"
     And I should not see "finochio"
+    And I should not see "Add to Query Group"
 
   Scenario: Doing a fulltext search for a query term to see query counts for one of my affiliates in English locale
     Given the following Affiliates exist:
@@ -49,6 +50,7 @@ Feature: Analytics Search
     And I should see "social security"
     And I should not see "old security"
     And I should not see "securities"
+    And I should not see "Add to Query Group"
 
   Scenario: Doing a blank search from the analytics home page
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
@@ -58,7 +60,7 @@ Feature: Analytics Search
     And I should see "Please enter search term(s)"
 
   Scenario: Bulk adding query terms from analytics search results to an existing query group
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    Given I am logged in with email "marilyn@fixtures.org" and password "admin"
     And the following DailyQueryStats exist:
     | query                       | times   |  days_back  |
     | obama                       | 10000   |     2       |

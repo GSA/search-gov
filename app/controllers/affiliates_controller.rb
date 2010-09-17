@@ -55,7 +55,6 @@ class AffiliatesController < AffiliateAuthController
   end
 
   def analytics
-    @num_results_qas = (request["num_results_qas"] || "10").to_i
     @num_results_dqs = (request["num_results_dqs"] || "10").to_i
     @day_being_shown = request["day"].nil? ? DailyQueryStat.most_recent_populated_date(@affiliate.name) : request["day"].to_date
     @most_recent_day_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs, @affiliate.name)

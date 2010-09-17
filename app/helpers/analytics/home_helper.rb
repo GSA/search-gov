@@ -1,17 +1,18 @@
 module Analytics::HomeHelper
-  def query_chart_link(query_count)
-    html = link_to(query_count.query, make_query_timeline_path(query_count))
+  def query_chart_link(query, is_grouped = false)
+    html = link_to(h(query), make_query_timeline_path(query, is_grouped))
     html << " "
     html << link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"),
-                    make_query_timeline_path(query_count),
-                    :popup=>['_blank', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=450,width=1000'],
+                    make_query_timeline_path(query, is_grouped),
+                    :popup=>['_blank',
+                             'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=500,width=1000'],
                     :title => "Open graph in new window")
     html
   end
 
   def display_most_recent_date_available(day, affiliate = nil)
     return "Query data currently unavailable" if day.nil?
-    current_day = content_tag(:span,day.to_s(:long), :class=>"highlight")
+    current_day = content_tag(:span, day.to_s(:long), :class=>"highlight")
     html = "Data for #{current_day}"
     firstdate = DailyQueryStat.minimum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name(affiliate), I18n.default_locale.to_s])
     first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',')
@@ -23,8 +24,8 @@ module Analytics::HomeHelper
   end
 
   def display_select_for_window(window, num_results, day, affiliate = nil)
-    options = [10, 50, 100, 500, 1000].collect{ |x| ["Show #{x} results", x] }
-    select_tag("num_results_select#{window}", options_for_select( options, num_results), {
+    options = [10, 50, 100, 500, 1000].collect { |x| ["Show #{x} results", x] }
+    select_tag("num_results_select#{window}", options_for_select(options, num_results), {
       :onchange => "location = '#{analytics_path_prefix(affiliate)}/?day=#{day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
   end
 
@@ -75,7 +76,7 @@ module Analytics::HomeHelper
   end
 
   private
-  def make_query_timeline_path(query_count)
-    query_count.is_grouped? ?  query_timeline_path(query_count.query, :grouped => 1) : query_timeline_path(query_count.query)
+  def make_query_timeline_path(query, is_grouped)
+    is_grouped ? query_timeline_path(query, :grouped => 1) : query_timeline_path(query)
   end
 end

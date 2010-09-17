@@ -1,10 +1,9 @@
-# -*- coding: iso-8859-1 -*-
 module ApplicationHelper
-  
+
   def build_page_title(page_title)
     (page_title.blank? ? "" : "#{page_title} - ") + (t :site_title)
   end
-  
+
   def show_flash_messages
     unless (flash.nil? or flash.empty?)
       html = content_tag(:div, flash.collect{ |key, msg| content_tag(:div, msg, :class => key) }, :id => 'flash-message', :class => 'flash-message')
@@ -98,7 +97,7 @@ module ApplicationHelper
       elements << link_to("My Account", account_path)
       elements << link_to("Logout", user_session_path, :method => :delete)
       elements << link_to("FAQ", analytics_faq_path)
-      elements << link_to("Query Groups Admin", analytics_query_groups_path) if cur_user.is_affiliate_admin?
+      elements << link_to("Query Groups Admin", analytics_query_groups_path) if cur_user.is_analyst_admin?
       elements << link_to("Monthly Reports", monthly_reports_path) if cur_user.is_analyst?
     end
     elements << link_to("search.usa.gov", home_page_path)
