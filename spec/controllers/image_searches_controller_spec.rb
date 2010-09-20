@@ -20,7 +20,7 @@ describe ImageSearchesController do
       should_render_template 'image_searches/affiliate_index.html.haml', :layout => 'affiliate'
       
       it "should set an affiliate page title" do
-        @page_title.should == "Search.USA.gov image search results for #{@affiliate.name}: #{@search.query}"
+        @page_title.should == "Image search results for #{@affiliate.name}: #{@search.query}"
       end
 
       it "should render the header in the response" do
