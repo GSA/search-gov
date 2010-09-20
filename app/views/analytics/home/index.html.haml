@@ -8,7 +8,7 @@
 
 - if @affiliate.nil? and @most_recent_day_biggest_movers.is_a? Array
   .span-24.headertitle
-    %h2 Hot Topics for the Day
+    %h2 Top Movers
 
   - group_size = (@most_recent_day_biggest_movers.size / 3)+(@most_recent_day_biggest_movers.size % 3 == 0 ? 0 : 1)
   - most_recent_day_biggest_movers_in_3_groups = @most_recent_day_biggest_movers.in_groups_of(group_size, false)

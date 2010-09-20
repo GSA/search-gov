@@ -13,7 +13,7 @@ Feature: Analytics Homepage
     And in "dqs1" I should see "aaaa"
     And in "dqs7" I should see "aaaa"
     And in "dqs30" I should see "aaaa"
-    And I should see "Hot Topics for the Day"
+    And I should see "Top Movers"
     And in "qas0" I should see "aaaa"
     And in "qas1" I should see "aaah"
     And in "qas2" I should see "aaao"
@@ -33,7 +33,7 @@ Feature: Analytics Homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And there are no query accelerations stats
     When I am on the analytics homepage
-    Then I should not see "Hot Topics for the Day"
+    Then I should not see "Top Movers"
 
   Scenario: Viewing queries that are part of query groups (i.e., semantic sets)
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
