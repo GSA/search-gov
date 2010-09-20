@@ -5,7 +5,7 @@ describe Timeline do
     it "should generate a new Timeline object given a query" do
       Timeline.new("foo").should be_instance_of(Timeline)
     end
-    
+
     context "when there are no records for the query term at all" do
       it "should return an array with zeros for each day from Jan. 1 2009 to yesterday" do
         timeline = Timeline.new("not in the database")
@@ -18,8 +18,8 @@ describe Timeline do
 
     context "when there are no searches for a term on a given day" do
       before do
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "most recent query", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-        [2, 9, 11, 12, 15].each {|x| DailyQueryStat.create!(:day => Date.today.to_date - x.days, :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )}
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "most recent query", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        [2, 9, 11, 12, 15].each { |x| DailyQueryStat.create!(:day => Date.today.to_date - x.days, :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME) }
       end
 
       it "should fill in missing dates from Jan 1 2009 and zero them out" do
@@ -32,7 +32,7 @@ describe Timeline do
 
     context "when data does not extend back to Jan 1, 2009" do
       before do
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       end
       it "should prepend the data with zeros so that there are data points back to Jan 1, 2009" do
         timeline = Timeline.new("foo")
@@ -42,8 +42,8 @@ describe Timeline do
 
     context "when data extends back to Jan 1, 2009" do
       before do
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-        DailyQueryStat.create!(:day => Date.new(2009, 1, 1), :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.new(2009, 1, 1), :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       end
       it "should not prepend the data with zeros" do
         timeline = Timeline.new("foo")
@@ -55,8 +55,8 @@ describe Timeline do
     context "when data does not extend forward to the most recently populated date" do
       before do
         DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => Time.now.yesterday.yesterday.to_date, :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-        DailyQueryStat.create!(:day => Time.now.yesterday.to_date, :query => "bar", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
+        DailyQueryStat.create!(:day => Time.now.yesterday.yesterday.to_date, :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Time.now.yesterday.to_date, :query => "bar", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       end
 
       it "should append the data with zeros so that there are data points thru the most recently populated date" do
@@ -68,7 +68,7 @@ describe Timeline do
     context "when data does extend forward to the most recently populated date" do
       before do
         DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => Time.now.yesterday.to_date, :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
+        DailyQueryStat.create!(:day => Time.now.yesterday.to_date, :query => "foo", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
       end
 
       it "should not append the data with zeros" do
@@ -78,35 +78,23 @@ describe Timeline do
         timeline.series[timeline.dates.index(Date.yesterday)].y.should == 1
       end
     end
-    
-    context "when Daily Query Stats exist for affiliates besides the default" do
+
+    context "when Daily Query Stats exist for affiliates and locales besides the default" do
       before do
         DailyQueryStat.delete_all
-        %w{usasearch.gov affiliate.gov}.each do |affiliate|
-          DailyQueryStat.create!(:day => Date.yesterday, :query => 'foo', :times => 1, :affiliate => affiliate, :locale => 'en')
+        %w{ en es }.each do |locale|
+          %w{ usasearch.gov affiliate.gov }.each do |affiliate|
+            DailyQueryStat.create!(:day => Date.yesterday, :query => 'foo', :times => 1, :affiliate => affiliate, :locale => locale)
+          end
         end
       end
-      
-      it "should complete, and not figure in non-default affiliate query stats" do
+
+      it "should combine non-default affiliate and locale query stats" do
         timeline = Timeline.new("foo")
         timeline.dates.last.should == Date.yesterday
-        timeline.series.last.y.should == 1
+        timeline.series.last.y.should == 4
       end
     end
-    
-    context "when Daily Query Stats exist for more than a single locale" do
-      before do
-        DailyQueryStat.delete_all
-        %w{en es}.each do |locale|
-          DailyQueryStat.create!(:day => Date.yesterday, :query => 'foo', :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => locale)
-        end
-      end
-      
-      it "should complete and not figure in data from other locales" do
-        timeline = Timeline.new("foo")
-        timeline.dates.last.should == Date.yesterday
-        timeline.series.last.y.should == 1
-      end
-    end 
+
   end
 end

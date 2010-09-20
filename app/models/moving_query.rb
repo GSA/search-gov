@@ -18,7 +18,7 @@ class MovingQuery < ActiveRecord::Base
     reversed_backfilled_yearlong_series_hash = {}
     transaction do
       delete_all(["day = ?", yyyymmdd])
-      get_window_candidates(yyyymmdd).each_pair do |query, sum_times|
+      get_moving_query_candidates(yyyymmdd).each_pair do |query, sum_times|
         reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]
         if reversed_backfilled_yearlong_series.nil?
           reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)
@@ -45,11 +45,8 @@ class MovingQuery < ActiveRecord::Base
 
   private
 
-  def self.get_window_candidates(yyyymmdd)
-    DailyQueryStat.sum(:times,
-                       :group=>:query,
-                       :conditions=>["day = ? AND affiliate = ? AND locale = ?", yyyymmdd, DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s],
-                       :having => "sum_times > #{MIN_NUM_QUERIES}")
+  def self.get_moving_query_candidates(yyyymmdd)
+    DailyQueryStat.sum(:times, :group=>:query, :conditions=>["day = ?", yyyymmdd], :having => "sum_times > #{MIN_NUM_QUERIES}")
   end
 
   def self.insufficient_data?(day)

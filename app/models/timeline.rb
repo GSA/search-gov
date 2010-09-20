@@ -6,7 +6,7 @@ class Timeline
     if grouped
       results = DailyQueryStat.collect_query_group_named(query)
     else
-      results = DailyQueryStat.find_all_by_query(query, :conditions => ['affiliate = ? AND locale = ?', DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s], :order => "day", :select=>"day, times")
+      results = DailyQueryStat.collect_query(query)
     end
     date_marker = results.first.present? ? results.first.day : Date.yesterday
     pad_with_zeroes_from_to(Date.new(2009, 1, 1), date_marker - 1.day)

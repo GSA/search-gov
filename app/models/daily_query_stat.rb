@@ -74,11 +74,18 @@ class DailyQueryStat < ActiveRecord::Base
     end
 
     def collect_query_group_named(name)
-      qg = QueryGroup.find_by_name(name)
-      queries = qg.grouped_queries.collect { |gq| gq.query }
-      results = sum(:times, :group => :day, :conditions => ["query IN (?) AND affiliate = ? AND locale = ?", queries, DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s], :order => "day")
+      queries = QueryGroup.find_by_name(name).grouped_queries.collect { |gq| gq.query }
+      generic_collection(["query IN (?)", queries])
+    end
+
+    def collect_query(query)
+      generic_collection(["query = ?", query])
+    end
+
+    def generic_collection(conditions)
+      results = sum(:times, :group => :day, :conditions => conditions, :order => "day")
       dqs=[]
-      results.each_pair { |day, times| dqs << new(:day=> day, :times => times, :affiliate => DEFAULT_AFFILIATE_NAME, :locale => I18n.default_locale.to_s) }
+      results.each_pair { |day, times| dqs << new(:day=> day, :times => times) }
       dqs
     end
   end
