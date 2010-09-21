@@ -37,3 +37,20 @@
           %tr
             %td=module_name
             %td=click_count
+
+  .span-24.headertitle
+    .span-21
+      %h2 Most Popular Queries
+    .span-3.last
+      %form
+        = display_select_for_monthly_reports_window("mpq", @num_results_mpq, @report_date)
+  .span-24{:id=>"pop_queries"}
+    = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @popular_queries_for_month , :content_name => "pop_queries", :heading => "Monthly Total", :affiliate => nil}
+  .span-24.headertitle
+    .span-21
+      %h2 Most Popular Query Groups
+    .span-3.last
+      %form
+        = display_select_for_monthly_reports_window("mpqg", @num_results_mpqg, @report_date)
+  .span-24.last{:id=>"pop_query_groups"}
+    = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @popular_groups_for_month , :content_name => "pop_query_groups", :heading => "Monthly Total", :affiliate => nil}
