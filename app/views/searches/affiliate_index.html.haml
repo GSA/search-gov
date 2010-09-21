@@ -1,5 +1,5 @@
 #left_column
-  &nbsp
+  = render "/shared/relatedsearches"
 #results
   = render :partial => "shared/search"
   = render :partial => "shared/searchresults", :locals => { :search => @search }
