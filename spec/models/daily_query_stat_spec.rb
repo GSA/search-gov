@@ -55,14 +55,14 @@ describe DailyQueryStat do
       before do
         DailyQueryStat.delete_all
         DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 1, :query => "outlier", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 10, :query => "outlier", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
         DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed", :affiliate => "affiliate.gov")
-        DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 1, :query => "outlier", :affiliate => 'affiliate.gov')
+        DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 2, :query => "outlier", :affiliate => 'affiliate.gov')
         @ary = DailyQueryStat.reversed_backfilled_series_since_2009_for("outlier")
       end
 
       it "should return an array of query counts in reverse day order for a given query" do
-        @ary[1].should == 1
+        @ary[1].should == 12
       end
 
       it "should return an array of query counts for every day since Jan 1 2009 thru yesterday, filling in zeros where there is no data for a given day" do
@@ -262,11 +262,11 @@ describe DailyQueryStat do
       qg.grouped_queries << GroupedQuery.create!(:query=>"query2")
     end
 
-    it "should return an array of DailyQueryStats that sums the frequencies for all queries in query group, ignoring other affiliates and locales" do
+    it "should return an array of DailyQueryStats that sums the frequencies for all queries in query group, combining other affiliates and locales" do
       results = DailyQueryStat.collect_query_group_named("my query group")
       results.size.should == 1
       results.first.day.should == Date.yesterday
-      results.first.times.should == 11
+      results.first.times.should == 33
     end
 
     context "when one of the queries has a single quote in it" do

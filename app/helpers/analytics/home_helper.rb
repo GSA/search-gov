@@ -29,6 +29,12 @@ module Analytics::HomeHelper
       :onchange => "location = '#{analytics_path_prefix(affiliate)}/?day=#{day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
   end
 
+  def display_select_for_monthly_reports_window(window, num_results, report_date)
+    options = [10, 50, 100, 500, 1000].collect { |x| ["Show #{x} results", x] }
+    select_tag("num_results_select#{window}", options_for_select(options, num_results), {
+      :onchange => "location = '#{monthly_reports_path}/?date[month]=#{report_date.month}&date[year]=#{report_date.year}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
+  end
+
   def affiliate_name(affiliate)
     affiliate ? affiliate.name : DailyQueryStat::DEFAULT_AFFILIATE_NAME
   end

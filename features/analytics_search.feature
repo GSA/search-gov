@@ -7,23 +7,23 @@ Feature: Analytics Search
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And the following DailyQueryStats exist:
     | query                       | times | affiliate     | locale |   days_back   |
-    | security                    | 100   | usasearch.gov | en     |      1        |
-    | old security                | 10    | usasearch.gov | en     |      30       |
-    | securities                  | 90    | usasearch.gov | en     |      1        |
-    | el security                 | 88    | usasearch.gov | es     |      1        |
-    | social security             | 70    | noaa.gov      | en     |      1        |
+    | pollution                    | 100   | usasearch.gov | en     |      1        |
+    | old pollution                | 10    | usasearch.gov | en     |      30       |
+    | pollutant                  | 90    | usasearch.gov | en     |      1        |
+    | el pollution                 | 88    | usasearch.gov | es     |      1        |
+    | social pollution             | 70    | noaa.gov      | en     |      1        |
     | finochio                    | 80    | usasearch.gov | en     |      1        |
     And I am on the analytics homepage
-    When I fill in "query" with "security"
+    When I fill in "query" with "pollution"
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
     And I press "Search"
     Then I should be on the analytics query search results page
-    And I should see "Matches for 'security'"
-    And I should see "security"
-    And I should see "securities"
-    And I should not see "social security"
-    And I should not see "old security"
+    And I should see "Matches for 'pollution'"
+    And I should see "pollution"
+    And I should see "pollutant"
+    And I should not see "social pollution"
+    And I should not see "old pollution"
     And I should not see "finochio"
     And I should not see "Add to Query Group"
 
@@ -34,22 +34,22 @@ Feature: Analytics Search
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And the following DailyQueryStats exist:
     | query                       | times | affiliate     | locale |  days_back   |
-    | security                    | 100   | usasearch.gov | en     |      1       |
-    | old security                | 10    | usasearch.gov | en     |      30      |
-    | securities                  | 90    | usasearch.gov | en     |      1       |
-    | el security                 | 88    | usasearch.gov | es     |      1       |
-    | social security             | 70    | aff.gov       | en     |      1       |
+    | pollution                    | 100   | usasearch.gov | en     |      1       |
+    | old pollution                | 10    | usasearch.gov | en     |      30      |
+    | pollutant                  | 90    | usasearch.gov | en     |      1       |
+    | el pollution                 | 88    | usasearch.gov | es     |      1       |
+    | social pollution             | 70    | aff.gov       | en     |      1       |
     | finochio                    | 80    | usasearch.gov | en     |      1       |
     When I go to the user account page
     And I follow "Analytics"
-    And I fill in "query" with "security"
+    And I fill in "query" with "pollution"
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
     And I press "Search"
-    Then I should see "Matches for 'security'"
-    And I should see "social security"
-    And I should not see "old security"
-    And I should not see "securities"
+    Then I should see "Matches for 'pollution'"
+    And I should see "social pollution"
+    And I should not see "old pollution"
+    And I should not see "pollutant"
     And I should not see "Add to Query Group"
 
   Scenario: Doing a blank search from the analytics home page

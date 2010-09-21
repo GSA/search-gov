@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-moving_query_rb.html">app/models/moving_query.rb</a></td>
-            <td class='right_align'><tt>60</tt></td>
-            <td class='right_align'><tt>53</tt></td>
+            <td class='right_align'><tt>57</tt></td>
+            <td class='right_align'><tt>50</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -177,7 +177,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>       get_window_candidates(yyyymmdd).each_pair do |query, sum_times|</pre></td>
+            <td><pre><a name="line21">21</a>       get_moving_query_candidates(yyyymmdd).each_pair do |query, sum_times|</pre></td>
           </tr>
         
           
@@ -339,85 +339,67 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>   def self.get_window_candidates(yyyymmdd)</pre></td>
+            <td><pre><a name="line48">48</a>   def self.get_moving_query_candidates(yyyymmdd)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>     DailyQueryStat.sum(:times,</pre></td>
+            <td><pre><a name="line49">49</a>     DailyQueryStat.sum(:times, :group=&gt;:query, :conditions=&gt;[&quot;day = ?&quot;, yyyymmdd], :having =&gt; &quot;sum_times &gt; #{MIN_NUM_QUERIES}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>                        :group=&gt;:query,</pre></td>
+            <td><pre><a name="line50">50</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line51">51</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>                        :conditions=&gt;[&quot;day = ? AND affiliate = ? AND locale = ?&quot;, yyyymmdd, DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line52">52</a>                        :having =&gt; &quot;sum_times &gt; #{MIN_NUM_QUERIES}&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line53">53</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line54">54</a> </pre></td>
+            <td><pre><a name="line52">52</a>   def self.insufficient_data?(day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>   def self.insufficient_data?(day)</pre></td>
+            <td><pre><a name="line53">53</a>     available_periods = day - minimum(:day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>     available_periods = day - minimum(:day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line57">57</a>     available_periods &lt; MIN_ACCELERATION_PERIODS_REQUIRED</pre></td>
+            <td><pre><a name="line54">54</a>     available_periods &lt; MIN_ACCELERATION_PERIODS_REQUIRED</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line58">58</a>   end</pre></td>
+            <td><pre><a name="line55">55</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line59">59</a> </pre></td>
+            <td><pre><a name="line56">56</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a> end</pre></td>
+            <td><pre><a name="line57">57</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Sep 17 15:46:59 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Mon Sep 20 18:21:57 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

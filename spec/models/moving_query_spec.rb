@@ -22,46 +22,23 @@ describe MovingQuery do
   end
 
   describe "#compute_for" do
-    context "when query terms get an unusually large number of queries for a given time period" do
+    context "when query terms get an unusually large number of queries for a given day" do
       before do
         DailyQueryStat.delete_all
         MovingQuery.delete_all
         # received zero queries per day for these terms since Jan 1 2009 except for these:
         DailyQueryStat.create!(:day => Date.yesterday, :times => 100000, :query => "1-day", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-
-        DailyQueryStat.create!(:day => 4.days.ago.to_date, :times => 7, :query => "7-day", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :times => 200000, :query => "7-day", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-
-        DailyQueryStat.create!(:day => 3.weeks.ago.to_date, :times => 30, :query => "30-day", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :times => 300000, :query => "30-day", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-      end
-
-      it "should find and create 1-day moving queries for the given day" do
+        DailyQueryStat.create!(:day => Date.yesterday, :times => 200000, :query => "1-day", :locale => 'es')
+        DailyQueryStat.create!(:day => Date.yesterday, :times => 300000, :query => "1-day", :affiliate => 'noaa.gov')
         MovingQuery.compute_for(Date.yesterday.to_s(:number))
-        MovingQuery.count.should == 3
-        MovingQuery.find_by_day_and_query(Date.yesterday, "1-day").times.should == 100000
       end
 
-      context "when there is similar data for affiliates" do
-        before do
-          DailyQueryStat.create!(:day => Date.yesterday, :times => 100000, :query => "1-day", :affiliate => 'affiliate.gov')
-
-          DailyQueryStat.create!(:day => 4.days.ago.to_date, :times => 7, :query => "7-day", :affiliate => 'affiliate.gov')
-          DailyQueryStat.create!(:day => Date.yesterday, :times => 200000, :query => "7-day", :affiliate => 'affiliate.gov')
-
-          DailyQueryStat.create!(:day => 3.weeks.ago.to_date, :times => 30, :query => "30-day", :affiliate => 'affiliate.gov')
-          DailyQueryStat.create!(:day => Date.yesterday, :times => 300000, :query => "30-day", :affiliate => 'affiliate.gov')
-        end
-
-        it "should find and create 1 day moving queries for the given day, uninfluenced by the affiliate stats" do
-          MovingQuery.compute_for(Date.yesterday.to_s(:number))
-          MovingQuery.count.should == 3
-          MovingQuery.find_by_day_and_query(Date.yesterday, "1-day").times.should == 100000
-        end
+      it "should find and create 1-day moving queries for the given day by combining locales and affiliates" do
+        MovingQuery.find_by_day_and_query(Date.yesterday, "1-day").times.should == 600000
       end
     end
 
-    context "when a query gets roughly the same amount of queries it normally gets for a given day" do
+    context "when an English locale query for usasearch.gov gets roughly the same amount of queries it normally gets for a given day" do
       before do
         Date.new(2009, 5, 10).upto(Date.new(2009, 6, 1)) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 10 + rand(5), :query => "usual", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)}
         @target_date = Date.new(2009, 6, 2)
@@ -71,18 +48,6 @@ describe MovingQuery do
       it "should not create any moving query records for that query on that day" do
         MovingQuery.compute_for(@target_date)
         MovingQuery.find_by_day_and_query(@target_date, "usual").should be_nil
-      end
-
-      context "when there are affiliate queries with the same terms for the same time period" do
-        before do
-          Date.new(2009, 5, 10).upto(Date.new(2009, 6, 1)) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 10 + rand(5), :query => "usual", :affiliate => 'affiliate.gov')}
-          DailyQueryStat.create!(:day => @target_date, :times => 16, :query => "usual", :affiliate => 'affiliate.gov')
-        end
-
-        it "should not create any moving query records for that query on that day" do
-          MovingQuery.compute_for(@target_date)
-          MovingQuery.find_by_day_and_query(@target_date, "usual").should be_nil
-        end
       end
     end
 

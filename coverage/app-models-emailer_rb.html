@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-emailer_rb.html">app/models/emailer.rb</a></td>
-            <td class='right_align'><tt>41</tt></td>
-            <td class='right_align'><tt>34</tt></td>
+            <td class='right_align'><tt>42</tt></td>
+            <td class='right_align'><tt>35</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -69,7 +69,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+            <td><pre><a name="line3">3</a>   </pre></td>
           </tr>
         
           
@@ -225,85 +225,91 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>     body(:message =&gt; message)</pre></td>
+            <td><pre><a name="line29">29</a>     charset &quot;iso-8859-1&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>     body(:message =&gt; message)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>   end</pre></td>
+            <td><pre><a name="line31">31</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>   </pre></td>
+            <td><pre><a name="line32">32</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>   private</pre></td>
+            <td><pre><a name="line33">33</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>   def setup_email(recipients)</pre></td>
+            <td><pre><a name="line34">34</a>   def setup_email(recipients)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>     @recipients = recipients</pre></td>
+            <td><pre><a name="line35">35</a>     @recipients = recipients</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>     @from       = APP_EMAIL_ADDRESS</pre></td>
+            <td><pre><a name="line36">36</a>     @from       = APP_EMAIL_ADDRESS</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>     @subject    = &quot;[USASearch] &quot;</pre></td>
+            <td><pre><a name="line37">37</a>     @subject    = &quot;[USASearch] &quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>     @sent_on    = Time.now</pre></td>
+            <td><pre><a name="line38">38</a>     @sent_on    = Time.now</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>     @headers['Content-Type'] = &quot;text/plain; charset=utf-8; format=flowed&quot;</pre></td>
+            <td><pre><a name="line39">39</a>     @headers['Content-Type'] = &quot;text/plain; charset=utf-8; format=flowed&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>   end</pre></td>
+            <td><pre><a name="line40">40</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a> </pre></td>
+            <td><pre><a name="line41">41</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a> end</pre></td>
+            <td><pre><a name="line42">42</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Sep 17 15:46:59 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Mon Sep 20 18:21:57 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

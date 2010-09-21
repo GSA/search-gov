@@ -3,20 +3,26 @@ Feature:  Administration
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     Then I should see "Users"
-    Then I should see "Affiliates"
-    Then I should see "Affiliate Broadcast"
-    Then I should see "Calais Related Searches"
-    Then I should see "SAYT Filters"
-    Then I should see "SAYT Suggestions Bulk Upload"
-    Then I should see "Boosted Sites"
-    Then I should see "Spotlights"
-    Then I should see "FAQs"
-    Then I should see "Query Grouping"
+    And I should see "Affiliates"
+    And I should see "Affiliate Broadcast"
+    And I should see "Calais Related Searches"
+    And I should see "SAYT Filters"
+    And I should see "SAYT Suggestions Bulk Upload"
+    And I should see "Boosted Sites"
+    And I should see "Spotlights"
+    And I should see "FAQs"
+    And I should not see "Query Grouping"
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
     And I should see "Logout"
     When I follow "Logout"
     Then I should be on the login page
+
+  Scenario: Visiting the admin home page as Marilyn
+    Given I am logged in with email "marilyn@fixtures.org" and password "admin"
+    When I go to the admin home page
+    Then I should see "Users"
+    And I should see "Query Grouping"
 
   Scenario: Sending a welcome email to all affiliates
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
