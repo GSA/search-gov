@@ -21,9 +21,10 @@
     .container
       .span-24.header-wrap
         .header
-          = header_links
-        #skiplink
-          %a{:href => "#content"} Skip to Main Content
+          #headerlinks
+            = header_links
+          #skiplink
+            %a{:href => "#content"} Skip to Main Content&nbsp;|&nbsp;  
       .span-24.main-wrap
         .main
           #need-larger-text= link_to((t :need_larger_text), page_path(:id => 'textsize'), :locale => other_locale_str)
