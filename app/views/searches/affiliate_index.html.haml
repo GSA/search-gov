@@ -1,5 +1,8 @@
 #left_column
-  = render "/shared/relatedsearches"
+  - if (english_locale? && @search && @search.related_search.size > 0)
+    #related_searches
+      = render "/shared/relatedsearches"
+  &nbsp;
 #results
   = render :partial => "shared/search"
   = render :partial => "shared/searchresults", :locals => { :search => @search }
