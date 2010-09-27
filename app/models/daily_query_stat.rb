@@ -52,6 +52,7 @@ class DailyQueryStat < ActiveRecord::Base
                     :group => :query,
                     :conditions => ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],
                     :having => "sum_times > #{ affiliate_name == DEFAULT_AFFILIATE_NAME ? "3" : "0"}",
+                    :joins => 'FORCE INDEX (aldq)',
                     :order => "sum_times desc",
                     :limit => num_results)
       return INSUFFICIENT_DATA if results.empty?
