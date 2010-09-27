@@ -44,3 +44,8 @@
 
 #daily_top_queries.span-24
   = analytics_daily_report_link(@day_being_shown)
+  
+.span-24.headertitle
+  .span-21
+    %h2
+      = "Contextual Queries: #{@contextual_query_total}"

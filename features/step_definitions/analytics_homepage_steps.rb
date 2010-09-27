@@ -45,3 +45,7 @@ end
 Then /^I should see the download prompt for yesterday$/ do
   response.body.should contain(/Download CSV of top 1000 queries for #{ Date.yesterday.to_s }/)
 end
+
+Given /^the DailyContextualQueryTotal for yesterday is "([^\"]*)"$/ do |total|
+  DailyContextualQueryTotal.create(:day => Date.yesterday, :total => total)
+end

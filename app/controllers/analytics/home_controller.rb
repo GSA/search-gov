@@ -12,6 +12,7 @@ class Analytics::HomeController < Analytics::AnalyticsController
     @trailing_week_popular_query_groups = DailyQueryStat.most_popular_query_groups(@day_being_shown, 7, @num_results_dqgs)
     @trailing_month_popular_query_groups = DailyQueryStat.most_popular_query_groups(@day_being_shown, 30, @num_results_dqgs)
     @most_recent_day_biggest_movers = MovingQuery.biggest_movers(@day_being_shown, MAX_NUMBER_OF_BIG_MOVERS_TO_SHOW)
+    @contextual_query_total = DailyContextualQueryTotal.total_for(@day_being_shown)
   end
 
   private
