@@ -11,7 +11,7 @@ describe "summary_tables rake tasks" do
 
   describe "usasearch:daily_query_ip_stats" do
     before do
-      Query.delete_all  # it's a MyISAM table with no transactions, so records accrue and need pruning
+      Query.delete_all # it's a MyISAM table with no transactions, so records accrue and need pruning
       @first_time = Time.parse("1/1/2009 12:00pm")
       @first_ip = "123.456.7.1"
       @valid_attributes = {
@@ -65,24 +65,24 @@ describe "summary_tables rake tasks" do
       context "when searches are 'enter keywords', 'cheesewiz', 'cheeseman', 'clusty' ,' ', '1', or 'test'" do
         before do
           @terms= ['enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test']
-          @terms.each {|term| Query.create!(@valid_attributes.merge(:query=>term))}
+          @terms.each { |term| Query.create!(@valid_attributes.merge(:query=>term)) }
         end
 
         it "should ignore them" do
           @rake[@task_name].invoke
-          @terms.each {|term| DailyQueryIpStat.find_by_query(term).should be_nil}
+          @terms.each { |term| DailyQueryIpStat.find_by_query(term).should be_nil }
         end
       end
 
       context "when searches are from 192.107.175.226, 74.52.58.146 , 208.110.142.80 , or 66.231.180.169" do
         before do
           @ips= ["192.107.175.226", "74.52.58.146", "208.110.142.80", "66.231.180.169"]
-          @ips.each {|ip| Query.create!(@valid_attributes.merge(:ipaddr=>ip))}
+          @ips.each { |ip| Query.create!(@valid_attributes.merge(:ipaddr=>ip)) }
         end
 
         it "should ignore them" do
           @rake[@task_name].invoke
-          @ips.each {|ip| DailyQueryIpStat.find_by_ipaddr(ip).should be_nil}
+          @ips.each { |ip| DailyQueryIpStat.find_by_ipaddr(ip).should be_nil }
         end
       end
 
@@ -129,40 +129,40 @@ describe "summary_tables rake tasks" do
           DailyQueryIpStat.find_by_query("nil bot").should_not be_nil
         end
       end
-      
+
       context "when queries are marked as not being contextual" do
         before do
           Query.create!(@valid_attributes.merge(:query => "I'm not contextual!", :is_contextual => false))
         end
-        
+
         it "should include those queries in the calculations" do
           @rake[@task_name].invoke
           DailyQueryIpStat.find_by_query("I'm not contextual!").should_not be_nil
         end
       end
-      
+
       context "when queries are marked as being contextual" do
         before do
           Query.create!(@valid_attributes.merge(:query => "I'm contextual!", :is_contextual => true))
         end
-        
+
         it "should not be included in the calculation" do
           @rake[@task_name].invoke
           DailyQueryIpStat.find_by_query("I'm contextual!").should be_nil
         end
       end
-      
+
       context "when there are queries from both the English and the Spanish site with the same IP address" do
         before do
           Query.create!(@valid_attributes)
           Query.create!(@valid_attributes.merge(:locale => 'es'))
         end
-        
+
         it "should count them as separate IP stats" do
           @rake[@task_name].invoke
           DailyQueryIpStat.find_all_by_query("passport").size.should == 2
         end
-      end 
+      end
     end
 
     describe "usasearch:daily_query_ip_stats:compute" do
@@ -195,20 +195,20 @@ describe "summary_tables rake tasks" do
           DailyQueryIpStat.find_by_day(Date.tomorrow).should be_nil
         end
       end
-      
+
       context "when contextual queries exist along with non-contextual queries" do
         before do
           Query.create!(@valid_attributes.merge(:timestamp => Date.yesterday.to_time))
           Query.create!(@valid_attributes.merge(:timestamp => Date.yesterday.to_time, :is_contextual => true))
         end
-        
+
         it "should not include the contextual links in the calculations" do
           @rake[@task_name].invoke
           DailyQueryIpStat.find_all_by_day(Date.yesterday).size.should == 1
         end
       end
     end
-    
+
     describe "usasearch:daily_query_ip_stats:compute_affiliate" do
       before do
         @task_name = "usasearch:daily_query_ip_stats:compute_affiliates"
@@ -247,12 +247,12 @@ describe "summary_tables rake tasks" do
           DailyQueryIpStat.find_by_day(Date.today, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
           DailyQueryIpStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
         end
-        
+
         context "when contextual queries exist" do
           before do
             Query.create!(@valid_attributes.merge(:timestamp => Date.yesterday.to_time, :affiliate => 'affiliate.gov', :is_contextual => true))
           end
-          
+
           it "should not include the contextual queries in the calculations" do
             @rake[@task_name].invoke
             DailyQueryIpStat.find_all_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'affiliate.gov']).size.should == 1
@@ -391,7 +391,7 @@ describe "summary_tables rake tasks" do
           DailyQueryStat.find_all_by_affiliate('test.gov').should_not be_nil
         end
       end
-      
+
       context "when query and daily ip stats are present for the English and Spanish locales" do
         before do
           @first_time = @valid_attributes[:timestamp]
@@ -416,7 +416,7 @@ describe "summary_tables rake tasks" do
           english_locale_total.should == 13
           spanish_locale_total.should == 15
         end
-        
+
         it "should calculate the sums separately for each locale" do
           @rake[@task_name].invoke
           DailyQueryStat.find_all_by_locale('en').should_not be_nil
@@ -424,7 +424,7 @@ describe "summary_tables rake tasks" do
         end
       end
     end
-    
+
     describe "usasearch:daily_query_stats:compute" do
       before do
         @task_name = "usasearch:daily_query_stats:compute"
@@ -457,7 +457,7 @@ describe "summary_tables rake tasks" do
           DailyQueryStat.find_by_day(Date.yesterday).should_not be_nil
         end
       end
-    
+
       context "when calculating daily_query_stats for a single day for usasearch.gov and affiliates" do
         before do
           DailyQueryIpStat.delete_all
@@ -469,7 +469,7 @@ describe "summary_tables rake tasks" do
           DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '12.3.4.5', :affiliate => 'affiliate.gov')
           DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '13.4.5.6', :affiliate => 'another_affiliate.gov')
         end
-      
+
         it "should populate daily_query_stats for each affiliate according to the number of ip addresses" do
           @rake[@task_name].invoke(Date.yesterday.to_s(:number))
           DailyQueryStat.all.size.should > 0
@@ -478,7 +478,7 @@ describe "summary_tables rake tasks" do
           DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['affiliate = ?', 'another_affiliate.gov']).times.should == 2
         end
       end
-      
+
       context "when calculating daily_query_stats for a single day for usasearch.gov for both spanish and english sites" do
         before do
           DailyQueryIpStat.delete_all
@@ -488,14 +488,14 @@ describe "summary_tables rake tasks" do
           DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '11.2.3.4', :affiliate => 'usasearch.gov', :locale => 'en')
           DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '12.3.4.5', :affiliate => 'usasearch.gov', :locale => 'es')
         end
-        
+
         it "should populate daily_query_stats for each locale according to the number of IP addresses" do
           @rake[@task_name].invoke(Date.yesterday.to_s(:number))
           DailyQueryStat.all.size.should > 0
           DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['locale = ?', 'en']).times.should == 2
           DailyQueryStat.find_by_day(Date.yesterday, :conditions => ['locale = ?', 'es']).times.should == 2
-       end
-      end           
+        end
+      end
     end
 
     describe "usasearch:daily_query_stats:compute_affiliates" do
@@ -539,7 +539,7 @@ describe "summary_tables rake tasks" do
           DailyQueryStat.find_by_day(Date.tomorrow, :conditions => ['affiliate = ?', 'usasearch.gov']).should be_nil
         end
       end
-    
+
       context "when calculating daily_query_stats for a single day for usasearch.gov and affiliates" do
         before do
           DailyQueryIpStat.delete_all
@@ -551,7 +551,7 @@ describe "summary_tables rake tasks" do
           DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '12.3.4.5', :affiliate => 'affiliate.gov')
           DailyQueryIpStat.create!(:day => Date.yesterday, :times => 1, :query => 'something', :ipaddr => '13.4.5.6', :affiliate => 'another_affiliate.gov')
         end
-      
+
         it "should populate daily_query_stats for each affiliate according to the number of ip addresses" do
           @rake[@task_name].invoke(Date.yesterday.to_s(:number))
           DailyQueryStat.all.size.should > 0
@@ -561,8 +561,33 @@ describe "summary_tables rake tasks" do
         end
       end
     end
+
+    describe "usasearch:daily_query_stats:index_most_recent_day_stats_in_solr" do
+      before do
+        @task_name = "usasearch:daily_query_stats:index_most_recent_day_stats_in_solr"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when daily_query_stats data is available over some date range" do
+        before do
+          DailyQueryStat.delete_all
+          DailyQueryStat.create!(:day => Date.yesterday, :times => 10, :query => "ignore me", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+          @first = DailyQueryStat.create!(:day => Date.today, :times => 20, :query => "index me", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+          @second = DailyQueryStat.create!(:day => Date.today, :times => 20, :query => "index me too", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        end
+
+        it "should call Sunspot.index on the most-recently-added DailyQueryStat models" do
+          Sunspot.should_receive(:index).with([@first, @second])
+          @rake[@task_name].invoke
+        end
+      end
+    end
+
   end
-  
+
   describe "usasearch:moving_queries" do
     describe "usasearch:moving_queries:populate" do
       before do
@@ -576,9 +601,9 @@ describe "summary_tables rake tasks" do
       context "when daily_query_stats data is available over some date range" do
         before do
           DailyQueryStat.delete_all
-          Date.yesterday.upto(Date.tomorrow) {|day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME) }
-          Date.yesterday.upto(Date.tomorrow) {|day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => 'affiliate.gov')}
-          Date.yesterday.upto(Date.tomorrow) {|day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'es')}          
+          Date.yesterday.upto(Date.tomorrow) { |day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME) }
+          Date.yesterday.upto(Date.tomorrow) { |day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => 'affiliate.gov') }
+          Date.yesterday.upto(Date.tomorrow) { |day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'es') }
         end
 
         it "should calculate moving queries for each day in that range, ignoring affiliates and non-English locales" do
