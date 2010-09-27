@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(:version => 20100927034711) do
   end
 
   add_index "daily_query_stats", ["affiliate", "locale", "day", "query"], :name => "aldq", :unique => true
-  add_index "daily_query_stats", ["day", "query", "affiliate", "locale"], :name => "dqal", :unique => true
+  add_index "daily_query_stats", ["query", "day", "affiliate", "locale"], :name => "qdal", :unique => true
   add_index "daily_query_stats", ["query", "day"], :name => "index_daily_query_stats_on_query_and_day"
 
   create_table "daily_usage_stats", :force => true do |t|

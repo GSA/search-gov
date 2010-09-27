@@ -2,7 +2,10 @@
   %h3.alt= t :related_searches
   %ul{:id => "relatedsearch"}
     - @search.related_search.each_with_index do |related_term, index|
-      %li= tracked_click_link(search_path(:query=>related_term, :affiliate=> @affiliate.name ),h(related_term.titleize), @search, nil, index, 'CREL')
+      - if (@affiliate)
+        %li= tracked_click_link(search_path(:query=>related_term, :affiliate=> @affiliate.name ),h(related_term.titleize), @search, nil, index, 'CREL')
+      - else
+        %li= tracked_click_link(search_path(:query=>related_term, :affiliate=> @affiliate ),h(related_term.titleize), @search, nil, index, 'CREL')
 - else
   &nbsp
 - if (@search && @search.faqs && @search.faqs.total > 0)
