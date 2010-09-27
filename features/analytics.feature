@@ -65,14 +65,14 @@ Feature: Analytics Homepage
   Scenario: Viewing Daily Contextual Query Totals
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And I am on the analytics homepage
-    Then I should see "Contextual Queries: 0"
+    Then I should see "Total USA.gov Most Popular Clickthrus: 0"
     
     Given the following DailyQueryStats exist:
     | query                       | times   |  days_back  |
     | obama                       | 10000   |    1        |
     And I am on the analytics homepage
-    Then I should see "Contextual Queries: 0"
-    
+    Then I should see "Total USA.gov Most Popular Clickthrus: 0"
+        
     Given the DailyContextualQueryTotal for yesterday is "100"
     And I am on the analytics homepage
-    Then I should see "Contextual Queries: 100"
+    Then I should see "Total USA.gov Most Popular Clickthrus: 100"
