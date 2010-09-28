@@ -68,8 +68,8 @@ Feature: Analytics Homepage
     Then I should see "Total USA.gov Most Popular Clickthrus: 0"
     
     Given the following DailyQueryStats exist:
-    | query                       | times   |  days_back  |
-    | obama                       | 10000   |    1        |
+    | query                       | times   |
+    | obama                       | 10000   |
     And I am on the analytics homepage
     Then I should see "Total USA.gov Most Popular Clickthrus: 0"
         
