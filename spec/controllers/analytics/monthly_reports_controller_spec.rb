@@ -99,8 +99,29 @@ describe Analytics::MonthlyReportsController do
           response.body.should_not contain(/Download top 20,000 queries for/)
           response.body.should_not contain(/\(English, Spanish\)/)          
         end
+        
+        context "when viewing most popular queries and query groups" do      
+          it "should set the number of results to 10 if no parameter is specified" do
+            get :index
+            assigns[:num_results_mpq].should == 10
+          end
+          
+          it "should display the top most popular queries based on parameter specified" do
+            get :index, :num_results_mpq => "50"
+            assigns[:num_results_mpq].should == 50
+          end
+          
+          it "should set the number of results for query groups to 10 if no parameter is specified" do
+            get :index
+            assigns[:num_results_mpqg].should == 10
+          end
+          
+          it "should set the number of results for query groups according to the parameter that is passed" do
+            get :index, :num_results_mpqg => "50"
+            assigns[:num_results_mpqg].should == 50
+          end
+        end
       end
     end
   end
-  
 end
