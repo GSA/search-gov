@@ -65,7 +65,7 @@ class DailyQueryStat < ActiveRecord::Base
       results = sum(:times,
                     :group => :query,
                     :conditions => ['day between ? AND ?', start_date, end_date],
-                    :joins => 'FORCE INDEX (index_daily_query_stats_on_query_and_day)',
+                    :joins => 'FORCE INDEX (dq)',
                     :order => "sum_times desc",
                     :limit => num_results)
       return INSUFFICIENT_DATA if results.empty?
