@@ -54,13 +54,6 @@ Feature: Analytics Homepage
     And in "dqgs1" I should see "1110"
     And in "dqgs1" I should see "POTUS"
     And in "dqgs1" I should see "10015"
-
-  Scenario: Visiting the FAQ page
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And I am on the analytics homepage
-    When I follow "FAQ"
-    Then I should be on the FAQ page
-    And I should see "Frequently Asked Questions about Analytics"
     
   Scenario: Viewing Daily Contextual Query Totals
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
@@ -76,3 +69,4 @@ Feature: Analytics Homepage
     Given the DailyContextualQueryTotal for yesterday is "100"
     And I am on the analytics homepage
     Then I should see "Total USA.gov Most Popular Clickthrus: 100"
+

@@ -1,3 +1,11 @@
+.qtip.qtip-stylename
+  .qtip-tip{:rel => "cornerValue"}
+    .qtip-wrapper 
+      .qtip-contentWrapper
+        .qtip-title 
+          .qtip-button 
+          .qtip-content
+
 .span-24{:style => 'color: green;'}
   = flash[:notice]
 .span-24
@@ -8,8 +16,10 @@
 
 - if @affiliate.nil? and @most_recent_day_biggest_movers.is_a? Array
   .span-24.headertitle
-    %h2 Top Movers
-
+    .span-2.topmovers-title
+      %h2 Top Movers
+    #topmovers-tooltip
+      What's this?
   - group_size = (@most_recent_day_biggest_movers.size / 3)+(@most_recent_day_biggest_movers.size % 3 == 0 ? 0 : 1)
   - most_recent_day_biggest_movers_in_3_groups = @most_recent_day_biggest_movers.in_groups_of(group_size, false)
   - most_recent_day_biggest_movers_in_3_groups.each_with_index do |col, idx|
@@ -17,7 +27,7 @@
       = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => col , :content_name => "qas#{idx}", :heading => "", :affiliate => nil, :offset => most_recent_day_biggest_movers_in_3_groups.first.size * idx }
 
 .span-24.headertitle
-  .span-21
+  .span-6
     %h2 Most Popular Queries
   .span-3.last
     %form
