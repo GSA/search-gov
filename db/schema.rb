@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100928000646) do
+ActiveRecord::Schema.define(:version => 20100929205439) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -105,6 +105,8 @@ ActiveRecord::Schema.define(:version => 20100928000646) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "daily_contextual_query_totals", ["day"], :name => "index_daily_contextual_query_totals_on_day", :unique => true
 
   create_table "daily_query_ip_stats", :force => true do |t|
     t.date    "day",                                                   :null => false
