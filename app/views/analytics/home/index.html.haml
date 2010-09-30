@@ -16,10 +16,11 @@
 
 - if @affiliate.nil? and @most_recent_day_biggest_movers.is_a? Array
   .span-24.headertitle
-    .span-2.topmovers-title
-      %h2 Top Movers
-    #topmovers-tooltip
-      What's this?
+    .span-6
+      .topmovers-title
+        %h2 Top Movers
+      #topmovers-tooltip
+        What's this?
   - group_size = (@most_recent_day_biggest_movers.size / 3)+(@most_recent_day_biggest_movers.size % 3 == 0 ? 0 : 1)
   - most_recent_day_biggest_movers_in_3_groups = @most_recent_day_biggest_movers.in_groups_of(group_size, false)
   - most_recent_day_biggest_movers_in_3_groups.each_with_index do |col, idx|
