@@ -31,6 +31,7 @@ describe "shared/_relatedsearches.html.haml" do
       @search_results.stub!(:total_pages).and_return 1
       @search.stub!(:results).and_return @search_results
       @search.stub!(:spotlight).and_return nil
+      @search.stub!(:weather_spotlight).and_return nil
       @search.stub!(:boosted_sites).and_return nil
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil

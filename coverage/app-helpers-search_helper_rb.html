@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-search_helper_rb.html">app/helpers/search_helper.rb</a></td>
-            <td class='right_align'><tt>279</tt></td>
-            <td class='right_align'><tt>256</tt></td>
+            <td class='right_align'><tt>289</tt></td>
+            <td class='right_align'><tt>265</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -489,7 +489,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>     &quot;onmousedown=\&quot;return clk('#{query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at})\&quot;&quot;</pre></td>
+            <td><pre><a name="line73">73</a>     &quot;onmousedown=\&quot;return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at})\&quot;&quot;</pre></td>
           </tr>
         
           
@@ -1641,97 +1641,157 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line265">265</a> </pre></td>
+            <td><pre><a name="line265">265</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line266">266</a>   private</pre></td>
+            <td><pre><a name="line266">266</a>   def forecast_date(date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line267">267</a>   def shorten_url (url)</pre></td>
+            <td><pre><a name="line267">267</a>     if date.wday == Date.today.wday</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line268">268</a>     return url if url.length &lt;=30</pre></td>
+            <td><pre><a name="line268">268</a>       &quot;Today&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line269">269</a>     if url.count('/') &gt;= 4</pre></td>
+            <td><pre><a name="line269">269</a>     elsif date.wday == Date.tomorrow.wday</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line270">270</a>       arr = url.split('/')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line271">271</a>       host= arr[0]+&quot;//&quot;+arr[2]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line272">272</a>       doc = arr.last.split('?').first</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line273">273</a>       [host, &quot;...&quot;, doc].join('/')</pre></td>
+            <td><pre><a name="line270">270</a>       &quot;Tomorrow&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line274">274</a>     else</pre></td>
+            <td><pre><a name="line271">271</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line275">275</a>       url[0, 30]+&quot;...&quot;</pre></td>
+            <td><pre><a name="line272">272</a>       Date::DAYNAMES[date.wday]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line276">276</a>     end</pre></td>
+            <td><pre><a name="line273">273</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line277">277</a>   end</pre></td>
+            <td><pre><a name="line274">274</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line278">278</a> </pre></td>
+            <td><pre><a name="line275">275</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line276">276</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line277">277</a>   def shorten_url (url)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line278">278</a>     return url if url.length &lt;=30</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line279">279</a>     if url.count('/') &gt;= 4</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line280">280</a>       arr = url.split('/')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line281">281</a>       host= arr[0]+&quot;//&quot;+arr[2]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line282">282</a>       doc = arr.last.split('?').first</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line283">283</a>       [host, &quot;...&quot;, doc].join('/')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line279">279</a> end</pre></td>
+            <td><pre><a name="line284">284</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line285">285</a>       url[0, 30]+&quot;...&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line286">286</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line287">287</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line288">288</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line289">289</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Sep 27 12:52:52 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Oct 04 14:19:41 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100929214757) do
+ActiveRecord::Schema.define(:version => 20101003191357) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -191,6 +191,17 @@ ActiveRecord::Schema.define(:version => 20100929214757) do
   end
 
   add_index "grouped_queries_query_groups", ["query_group_id", "grouped_query_id"], :name => "joinindex", :unique => true
+
+  create_table "locations", :force => true do |t|
+    t.integer  "zip_code"
+    t.string   "state"
+    t.string   "city"
+    t.integer  "population"
+    t.float    "lat"
+    t.float    "lng"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "log_files", :force => true do |t|
     t.string   "name",       :null => false

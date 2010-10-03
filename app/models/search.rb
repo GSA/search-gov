@@ -33,6 +33,7 @@ class Search
                 :faqs,
                 :gov_forms,
                 :recalls,
+                :weather_spotlight,
                 :results_per_page,
                 :filter_setting,
                 :fedstates,
@@ -128,6 +129,9 @@ class Search
         RAILS_DEFAULT_LOGGER.warn "Error in searching for Recalls: #{error.to_s}"
         self.recalls = nil
       end
+    end
+    if query =~ /^weather \d{5}$/
+      self.weather_spotlight = WeatherSpotlight.new(query)
     end
   end
 

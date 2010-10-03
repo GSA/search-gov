@@ -793,6 +793,35 @@ describe Search do
         end
       end
     end
+    
+    context "weather searches" do
+      before do
+        @location = Location.create(:zip_code => 21209, :state => 'MD', :city => 'Baltimore', :population => 20000, :lat => 39.0459, :lng => -76.7896)
+        @query = 'weather 21209'
+        NOAA.stub!(:forecast).and_return {}
+        @weather_spotlight = WeatherSpotlight.new(@query)
+        WeatherSpotlight.stub!(:new).and_return @weather_spotlight
+      end
+      
+      context "when search does not start with the term 'weather'" do
+        it "should not create a weather spotlight" do
+          WeatherSpotlight.should_not_receive(:new)
+          search = Search.new(@valid_options)
+          search.run
+          search.weather_spotlight.should be_nil
+        end
+      end
+      
+      context "when the query is in the form of 'weather ZIP-CODE'" do
+        it "should create a weather spotlight with a 5-day forecast" do
+          search = Search.new(:query => @query)
+          search.run
+          search.weather_spotlight.should_not be_nil
+        end
+      end
+      
+      context "when the query is a "
+    end
 
     context "when paginating" do
       default_page = 0

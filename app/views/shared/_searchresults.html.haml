@@ -16,6 +16,8 @@
   - if search.spotlight
     #spotlight
       = render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds)
+  - if search.weather_spotlight
+    = render :partial => 'shared/weather_spotlight', :locals => { :weather_spotlight => search.weather_spotlight }
   - search.results.each_with_index do |result, index|
     = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
   = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

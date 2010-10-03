@@ -28,6 +28,7 @@ Rails::Initializer.run do |config|
   config.gem 'fastercsv'
   config.gem 'calais', :version => '>= 0.0.11'
   config.gem "aws-s3", :lib => "aws/s3", :version => '0.6.2'
+  config.gem "noaa", :version => '=0.2.4'
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.

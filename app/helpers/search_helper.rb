@@ -262,7 +262,17 @@ module SearchHelper
       EN_SCOPE_ID_OPTIONS
     end
   end
-
+  
+  def forecast_date(date)
+    if date.wday == Date.today.wday
+      "Today"
+    elsif date.wday == Date.tomorrow.wday
+      "Tomorrow"
+    else
+      Date::DAYNAMES[date.wday]
+    end
+  end
+  
   private
   def shorten_url (url)
     return url if url.length <=30
