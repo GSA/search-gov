@@ -11,7 +11,7 @@
         .forecast-summary
           = weather_spotlight.forecast[index].weather_summary
         .forecast-hilo
-          Hi/Lo: #{weather_spotlight.forecast[index].low}/#{weather_spotlight.forecast[index].high}ºF
+          Lo/Hi: #{weather_spotlight.forecast[index].low}/#{weather_spotlight.forecast[index].high}ºF
   #attribution
     = link_to 'View Full Forecast', "http://forecast.weather.gov/MapClick.php?textField1=#{weather_spotlight.location.lat}&amp;textField2=#{weather_spotlight.location.lng}"
 
