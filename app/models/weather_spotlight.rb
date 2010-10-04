@@ -6,7 +6,11 @@ class WeatherSpotlight
     if location
       @query = query
       @location = Location.find_by_zip_code(location)
-      @forecast = NOAA.forecast(5, @location.lat, @location.lng)
+      if @location
+        @forecast = NOAA.forecast(5, @location.lat, @location.lng)
+      else
+        raise "Location Not Found: #{location}"
+      end
     end
   end  
 end

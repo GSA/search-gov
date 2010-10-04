@@ -818,6 +818,19 @@ describe Search do
           search.run
           search.weather_spotlight.should_not be_nil
         end
+        
+        context "when the zip code queried is not a valid location" do
+          before do
+            WeatherSpotlight.stub!(:new).and_raise(RuntimeError.new('Location Not Found: 21208'))
+          end
+          
+          it "should create a search with no weather spotlight" do
+            search = Search.new(:query => 'weather 21208')
+            search.run
+            search.should_not be_nil
+            search.weather_spotlight.should be_nil
+          end
+        end        
       end
       
       context "when the query is a "

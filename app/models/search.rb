@@ -131,7 +131,12 @@ class Search
       end
     end
     if query =~ /^weather \d{5}$/
-      self.weather_spotlight = WeatherSpotlight.new(query)
+      begin
+        self.weather_spotlight = WeatherSpotlight.new(query)
+      rescue RuntimeError => error
+        RAILS_DEFAULT_LOGGER.warn "Error in search for Weather: #{error.to_s}"
+        self.weather_spotlight = nil
+      end
     end
   end
 
