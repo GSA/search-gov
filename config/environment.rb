@@ -25,10 +25,11 @@ Rails::Initializer.run do |config|
   config.gem 'schoefmax-multi_db', :lib => 'multi_db', :source => 'http://gems.github.com'
   config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version => '1.1.0'
   config.gem 'hoptoad_notifier', :version => '2.3.4'
-  config.gem 'fastercsv'
+  config.gem 'fastercsv', :version => '1.5.3'
   config.gem 'calais', :version => '>= 0.0.11'
   config.gem "aws-s3", :lib => "aws/s3", :version => '0.6.2'
   config.gem "noaa", :version => '=0.2.4'
+  config.gem "libxml-ruby", :version => '=1.1.4', :lib => "xml/libxml"
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
