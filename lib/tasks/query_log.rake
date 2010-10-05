@@ -18,16 +18,25 @@ namespace :usasearch do
       RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:query_log:import log_dir_name") and return if args.log_dir_name.nil?
       Dir.glob("#{args.log_dir_name}/[0-9][0-9][0-9][0-9]_[0-9][0-9]_[0-9][0-9]_web*.log") { |file| LogFile.process(file) }
     end
-    
-    namespace :extract do   
+
+    desc "Transform and filter a search query log file into a format that can be imported into Hive's queries table"
+    task :transform_to_hive_queries_format, :file_name, :needs => :environment do |t, args|
+      if args.file_name.nil?
+        RAILS_DEFAULT_LOGGER.error "usage: rake usasearch:query_log:transform_to_hive_queries_format[file_name]"
+      else
+        LogFile.transform_to_hive_queries_format(args.file_name)
+      end
+    end
+
+    namespace :extract do
       extract_query_sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(ipaddr) as ipaddr, timestamp, affiliate, locale, agent, is_bot FROM queries"
       extract_click_sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(click_ip) as click_ip, queried_at, clicked_at, url, serp_position, affiliate, results_source, user_agent FROM clicks"
       base_where_clause = "WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)'"
       ip_addresses = "('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169')"
       query_where_clause = "AND ipaddr NOT IN #{ip_addresses}"
       click_where_clause = "AND click_ip NOT IN #{ip_addresses}"
-      
-      # where query REGEXP'[[:alpha:]]+'  at least one alpha character.  strips: zip codes, phone numbers, FedEx tracking, USPS domestic tracking, 
+
+      # where query REGEXP'[[:alpha:]]+'  at least one alpha character.  strips: zip codes, phone numbers, FedEx tracking, USPS domestic tracking,
       # credit card numbers
       # ^[A-Za-z]{2}[0-9]+US$ - USPS intervational
       # REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' - Most non-government e-mails
@@ -43,7 +52,7 @@ namespace :usasearch do
         if limit != nil
           sql << " LIMIT #{limit}"
         end
-        
+
         options = {}
         options.merge!(:limit => limit.to_i) if limit.present?
         clicks = Click.find_by_sql(sql)
@@ -52,7 +61,7 @@ namespace :usasearch do
             csv << [click.query, click.click_ip, click.queried_at.strftime('%Y-%m-%d %H:%M:%S'), click.clicked_at.strftime('%Y-%m-%d %H:%M:%S'), click.url, click.serp_position, click.affiliate, click.results_source, click.user_agent]
           end
         end
-  
+
         # copy export file to S3
         filename = "click_logs/#{year}/#{month}/clicks-#{yyyymmdd}"
         AWS::S3::Base.establish_connection!(:access_key_id => AWS_ACCESS_KEY_ID, :secret_access_key => AWS_SECRET_ACCESS_KEY)
@@ -72,14 +81,14 @@ namespace :usasearch do
         if limit != nil
           sql << " LIMIT #{limit}"
         end
-        
+
         queries = Query.find_by_sql(sql)
         FasterCSV.open(outfile, "w", :col_sep => "\t") do |csv|
           queries.each do |query|
             csv << [query.query, query.ipaddr, query.timestamp.strftime('%Y-%m-%d %H:%M:%S'), query.affiliate, query.locale, query.agent, query.is_bot ? "1" : "0"]
           end
         end
-        
+
         # copy export file to S3
         filename = "query_logs/#{year}/#{month}/queries-#{yyyymmdd}"
         AWS::S3::Base.establish_connection!(:access_key_id => AWS_ACCESS_KEY_ID, :secret_access_key => AWS_SECRET_ACCESS_KEY)
