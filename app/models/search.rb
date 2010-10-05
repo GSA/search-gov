@@ -130,7 +130,7 @@ class Search
         self.recalls = nil
       end
     end
-    if query =~ /^weather \d{5}$/
+    if !%w{weather forecast}.include?(query.downcase) and query.downcase =~ /^.*?\b(weather|forecast)\b.*?$/
       begin
         self.weather_spotlight = WeatherSpotlight.new(query)
       rescue RuntimeError => error

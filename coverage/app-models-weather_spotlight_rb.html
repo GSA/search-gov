@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-weather_spotlight_rb.html">app/models/weather_spotlight.rb</a></td>
-            <td class='right_align'><tt>12</tt></td>
-            <td class='right_align'><tt>11</tt></td>
+            <td class='right_align'><tt>30</tt></td>
+            <td class='right_align'><tt>29</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -81,55 +81,163 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     location = query.match(/weather (\d{5})/).captures[0]</pre></td>
+            <td><pre><a name="line5">5</a>     location_match = query.downcase.match(/^(.*?)\b(weather|forecast)\b(.*?)$/)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     if location</pre></td>
+            <td><pre><a name="line6">6</a>     location_query = location_match.captures.present? ? (location_match.captures[0].present? ? location_match.captures[0].strip : location_match.captures[2].strip) : nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>       @query = query</pre></td>
+            <td><pre><a name="line7">7</a>     if location_query</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>       @location = Location.find_by_zip_code(location)</pre></td>
+            <td><pre><a name="line8">8</a>       @query = query</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>       @forecast = NOAA.forecast(5, @location.lat, @location.lng)</pre></td>
+            <td><pre><a name="line9">9</a>       if location_query =~ /\d{5}/</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>         @location = Location.find_by_zip_code(location_query)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a>     end</pre></td>
+            <td><pre><a name="line11">11</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>       if location_query.include?(',')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>         city_state = location_query.split(',')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>         @location = Location.find_by_state_and_city(city_state.last.strip, city_state.first, :order =&gt; 'population desc')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a>   end  </pre></td>
+            <td><pre><a name="line15">15</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>         city_state = location_query.split</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>         if city_state.last.length == 2</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>           @location = Location.find_by_state_and_city(city_state.last.strip, city_state[0..-2].join(' '), :order =&gt; 'population desc')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a> end</pre></td>
+            <td><pre><a name="line19">19</a>         else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>           @location = Location.find_by_city(city_state.collect{|term| term.strip}.join(' '), :order =&gt; 'population desc')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       end unless @location</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>       if @location</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>         @forecast = NOAA.forecast(5, @location.lat, @location.lng)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line25">25</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>         raise &quot;Location Not Found: #{location_query}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line27">27</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line28">28</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line29">29</a>   end  </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line30">30</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Oct 04 14:19:42 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Oct 07 00:42:47 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

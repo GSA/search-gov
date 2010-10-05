@@ -796,14 +796,12 @@ describe Search do
     
     context "weather searches" do
       before do
-        @location = Location.create(:zip_code => 21209, :state => 'MD', :city => 'Baltimore', :population => 20000, :lat => 39.0459, :lng => -76.7896)
-        @query = 'weather 21209'
-        NOAA.stub!(:forecast).and_return {}
-        @weather_spotlight = WeatherSpotlight.new(@query)
-        WeatherSpotlight.stub!(:new).and_return @weather_spotlight
+        Location.create(:zip_code => 21209, :state => 'MD', :city => 'Baltimore', :population => 20000, :lat => 39.0459, :lng => -76.7896)
+        Location.create(:zip_code => 21215, :state => 'MD', :city => 'Baltimore', :population => 19000, :lat => 39.0345, :lng => -76.9890)
+        Location.create(:zip_code => 10003, :state => 'NY', :city => 'Baltimore', :population => 100, :lat => 45.4567, :lng => -144.0303)
       end
       
-      context "when search does not start with the term 'weather'" do
+      context "when the query does not contain the term 'weather'" do
         it "should not create a weather spotlight" do
           WeatherSpotlight.should_not_receive(:new)
           search = Search.new(@valid_options)
@@ -812,28 +810,54 @@ describe Search do
         end
       end
       
-      context "when the query is in the form of 'weather ZIP-CODE'" do
-        it "should create a weather spotlight with a 5-day forecast" do
-          search = Search.new(:query => @query)
+      context "when the query is 'weather'" do
+        it "should not create a weather spotlight" do
+          WeatherSpotlight.should_not_receive(:new)
+          search = Search.new(:query => 'weather')
+          search.run
+          search.weather_spotlight.should be_nil
+        end
+      end
+      
+      context "when the query is 'forecast'" do
+        it "should not create a weather spotlight" do
+          WeatherSpotlight.should_not_receive(:new)
+          search = Search.new(:query => 'forecast')
+          search.run
+          search.weather_spotlight.should be_nil
+        end
+      end
+      
+      context "when the query contains the term 'weather' with additional information" do
+        it "should create a weather spotlight" do
+          WeatherSpotlight.should_receive(:new).with('weather 21209').and_return true
+          search = Search.new(:query => 'weather 21209')
           search.run
           search.weather_spotlight.should_not be_nil
         end
-        
-        context "when the zip code queried is not a valid location" do
-          before do
-            WeatherSpotlight.stub!(:new).and_raise(RuntimeError.new('Location Not Found: 21208'))
-          end
-          
-          it "should create a search with no weather spotlight" do
-            search = Search.new(:query => 'weather 21208')
-            search.run
-            search.should_not be_nil
-            search.weather_spotlight.should be_nil
-          end
-        end        
+      end
+
+      context "when the query contains the term 'forecast' with additional information" do
+        it "should create a weather spotlight" do
+          WeatherSpotlight.should_receive(:new).with('baltimore forecast').and_return true
+          search = Search.new(:query => 'baltimore forecast')
+          search.run
+          search.weather_spotlight.should_not be_nil
+        end
       end
       
-      context "when the query is a "
+      context "when the terms queried are not a valid location" do
+        before do
+          WeatherSpotlight.stub!(:new).and_raise(RuntimeError.new('Location Not Found: 21208'))
+        end
+          
+        it "should create a search with no weather spotlight" do
+          search = Search.new(:query => 'weather 21208')
+          search.run
+          search.should_not be_nil
+          search.weather_spotlight.should be_nil
+        end
+      end      
     end
 
     context "when paginating" do
