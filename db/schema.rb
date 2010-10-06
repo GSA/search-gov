@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101003191357) do
+ActiveRecord::Schema.define(:version => 20101007221355) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20101003191357) do
     t.string   "related_terms", :limit => 4096
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "locale",                        :default => "en", :null => false
   end
 
   add_index "calais_related_searches", ["term"], :name => "index_calais_related_searches_on_term", :unique => true
@@ -144,6 +145,7 @@ ActiveRecord::Schema.define(:version => 20101003191357) do
     t.string   "affiliate",             :limit => 32, :default => "usasearch.gov"
   end
 
+  add_index "daily_usage_stats", ["affiliate", "profile", "day"], :name => "apd", :unique => true
   add_index "daily_usage_stats", ["day", "profile", "affiliate"], :name => "index_daily_usage_stats_on_day_and_profile_and_affiliate", :unique => true
 
   create_table "faqs", :force => true do |t|

@@ -1,11 +1,10 @@
-- if (english_locale? && @search && @search.related_search.size > 0)
+- if (@search && @search.related_search.size > 0)
   %h3.alt= t :related_searches
   %ul{:id => "relatedsearch"}
     - @search.related_search.each_with_index do |related_term, index|
-      - if (@affiliate)
-        %li= tracked_click_link(search_path(:query=>related_term, :affiliate=> @affiliate.name ),h(related_term.titleize), @search, nil, index, 'CREL')
-      - else
-        %li= tracked_click_link(search_path(:query=>related_term, :affiliate=> @affiliate ),h(related_term.titleize), @search, nil, index, 'CREL')
+      - options = {:query=>related_term}
+      - options[:affiliate] = @affiliate.name if @affiliate
+      %li= tracked_click_link(search_path(options),h(related_term.titleize), @search, @affiliate, index, 'CREL')
 - else
   &nbsp
 - if (@search && @search.faqs && @search.faqs.total > 0)

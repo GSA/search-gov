@@ -16,7 +16,7 @@ class Search
   DEFAULT_FILTER_SETTING = 'strict'
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
   VALID_SCOPES = %w{ PatentClass }
-  
+
   attr_accessor :query,
                 :page,
                 :error_message,
@@ -72,7 +72,7 @@ class Search
     unless total.zero?
       self.results = paginate(process_results(response))
       self.spelling_suggestion = spelling_results(response)
-      self.related_search = related_search_results(response)
+      self.related_search = related_search_results
       self.startrecord = page * results_per_page + 1
       self.endrecord = startrecord + results.size - 1
       populate_additional_results
@@ -97,8 +97,8 @@ class Search
 
   protected
 
-  def related_search_results(response)
-    solr = CalaisRelatedSearch.search_for(self.query)
+  def related_search_results
+    solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s)
     related_terms = solr.hits.first.instance.related_terms rescue ""
     related_terms_array = related_terms.split('|')
     related_terms_array.each{|t| t.strip!}
@@ -139,7 +139,7 @@ class Search
       end
     end
   end
-  
+
   def paginate(items)
     pagination_total = [results_per_page * 20, total].min
     WillPaginate::Collection.create(page + 1, results_per_page, pagination_total) { |pager| pager.replace(items) }
@@ -294,11 +294,11 @@ class Search
     ]
     "#{JSON_SITE}?" + params.join('&')
   end
-  
+
   def adult_filter_setting
     self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : VALID_FILTER_VALUES.include?(self.filter_setting) ? self.filter_setting : DEFAULT_FILTER_SETTING
   end
-    
+
   def strip_extra_chars_from(did_you_mean_suggestion)
     did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').strip.squish unless did_you_mean_suggestion.nil?
   end

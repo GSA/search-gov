@@ -7,7 +7,8 @@ describe CalaisRelatedSearch do
   before(:each) do
     @valid_attributes = {
       :term => "debt relief",
-      :related_terms => "Personal finance | United States bankruptcy law | Mortgage Forgiveness Debt Relief Act"
+      :related_terms => "Personal finance | United States bankruptcy law | Mortgage Forgiveness Debt Relief Act",
+      :locale => 'en'
     }
   end
 
@@ -15,8 +16,9 @@ describe CalaisRelatedSearch do
     CalaisRelatedSearch.create!(@valid_attributes)
   end
 
-  should_validate_presence_of :term, :related_terms
-  should_validate_uniqueness_of :term
+  should_validate_presence_of :term, :related_terms, :locale
+  should_validate_uniqueness_of :term, :scoped => :locale
+  should_validate_inclusion_of :locale, :in => CalaisRelatedSearch::SUPPORTED_LOCALES
 
   describe "#populate_with_new_popular_terms" do
     context "when some of the popular terms already have their related searches computed" do
@@ -54,9 +56,9 @@ describe CalaisRelatedSearch do
           Calais.stub!(:process_document).and_return(m_calais)
         end
 
-        it "should set the CalaisRelatedSearch's related terms for that term" do
+        it "should set the CalaisRelatedSearch's English-locale related terms for that term" do
           CalaisRelatedSearch.related_terms_for(@term)
-          CalaisRelatedSearch.find_by_term(@term).related_terms.should == "congress | california | senator"
+          CalaisRelatedSearch.find_by_term_and_locale(@term, 'en').related_terms.should == "congress | california | senator"
         end
       end
 

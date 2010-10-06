@@ -7,7 +7,7 @@ end
 
 Given /^the following Calais Related Searches exist:$/ do |table|
   table.hashes.each do |hash|
-    CalaisRelatedSearch.create(:term => hash["term"], :related_terms => hash["related_terms"])
+    CalaisRelatedSearch.create(:term => hash["term"], :related_terms => hash["related_terms"], :locale => hash["locale"])
   end
   Sunspot.commit
 end

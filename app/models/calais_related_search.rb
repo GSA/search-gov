@@ -1,9 +1,11 @@
 class CalaisRelatedSearch < ActiveRecord::Base
-  validates_presence_of :term, :related_terms
-  validates_uniqueness_of :term
-
+  SUPPORTED_LOCALES = %w{en es}
   BATCH_SIZE = 10000
   BING_RESULTS_TO_CONSIDER_FOR_TEXT = 100
+
+  validates_presence_of :term, :related_terms, :locale
+  validates_uniqueness_of :term, :scoped => :locale
+  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES
 
   class << self
 
@@ -12,7 +14,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
         DailyQueryStat.find(:all,
                             :select=>"daily_query_stats.query, sum(times) sum_times",
                             :joins=>"left outer join calais_related_searches on calais_related_searches.term = daily_query_stats.query",
-                            :conditions=>"calais_related_searches.term is null and locale='en'",
+                            :conditions=>"calais_related_searches.term is null and daily_query_stats.locale='en'",
                             :group=>"daily_query_stats.query",
                             :order=>"sum_times desc",
                             :limit => BATCH_SIZE)
@@ -31,7 +33,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
           social_tags.delete_if { |tag| tag.include?('_') or term.include?(tag.singularize) or term.include?(tag.pluralize) }
           unless social_tags.empty?
             related_terms = social_tags.join(' | ')
-            calais_related_search = find_or_initialize_by_term(term)
+            calais_related_search = find_or_initialize_by_term_and_locale(term, 'en')
             calais_related_search.related_terms = related_terms
             calais_related_search.save!
             logger.info("#{term} => #{related_terms}\n")
@@ -46,9 +48,10 @@ class CalaisRelatedSearch < ActiveRecord::Base
       end
     end
 
-    def search_for(term)
+    def search_for(term, locale = I18n.default_locale.to_s)
       search do
         keywords term, :highlight=>true
+        with :locale, locale
         paginate :page => 1, :per_page => 2
       end rescue nil
     end
@@ -58,6 +61,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
   searchable do
     text :term, :boost => 5.0
     text :related_terms
+    string :locale
   end
 
   def to_label
