@@ -212,7 +212,15 @@ describe SearchesController do
     end
 
     should_render_template 'searches/index.html.haml', :layout => 'application'
-
+  end
+  
+  context "when handling any affiliate search request with a JSON format" do
+    integrate_views
+    before do
+      get :index, :affiliate => affiliates(:power_affiliate).name, :query => "weather", :format => "json"
+    end
+    
+    should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'
   end
 
   context "when handling a request that has FAQ results" do

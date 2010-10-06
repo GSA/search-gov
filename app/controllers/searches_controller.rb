@@ -97,7 +97,7 @@ class SearchesController < ApplicationController
 
   def adjust_mobile_mode
     request.format = :html if @search_options[:affiliate].present? or is_advanced_search?
-    request.format = :json if @original_format == 'application/json'
+    request.format = :json if @original_format == 'application/json' and @search_options[:affiliate].blank?
   end
 
   def is_advanced_search?
