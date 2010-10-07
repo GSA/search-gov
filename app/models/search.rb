@@ -130,16 +130,16 @@ class Search
         self.recalls = nil
       end
     end
-    if !%w{weather forecast}.include?(query.downcase) and query.downcase =~ /^.*?\b(weather|forecast)\b.*?$/
+    if WeatherSpotlight.is_weather_spotlight_query(query)
       begin
-        self.weather_spotlight = WeatherSpotlight.new(query)
+        self.weather_spotlight = WeatherSpotlight.new(WeatherSpotlight.parse_query(query))
       rescue RuntimeError => error
         RAILS_DEFAULT_LOGGER.warn "Error in search for Weather: #{error.to_s}"
         self.weather_spotlight = nil
       end
     end
   end
-
+  
   def paginate(items)
     pagination_total = [results_per_page * 20, total].min
     WillPaginate::Collection.create(page + 1, results_per_page, pagination_total) { |pager| pager.replace(items) }

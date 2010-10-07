@@ -20,6 +20,7 @@ describe Location do
   
   describe "#parse" do
     before do
+      Location.delete_all
       @filename = File.join(RAILS_ROOT, "spec", "fixtures", "txt", "zips.txt")    
     end
     

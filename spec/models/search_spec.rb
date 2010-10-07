@@ -830,7 +830,7 @@ describe Search do
       
       context "when the query contains the term 'weather' with additional information" do
         it "should create a weather spotlight" do
-          WeatherSpotlight.should_receive(:new).with('weather 21209').and_return true
+          WeatherSpotlight.should_receive(:new).with('21209').and_return true
           search = Search.new(:query => 'weather 21209')
           search.run
           search.weather_spotlight.should_not be_nil
@@ -839,7 +839,7 @@ describe Search do
 
       context "when the query contains the term 'forecast' with additional information" do
         it "should create a weather spotlight" do
-          WeatherSpotlight.should_receive(:new).with('baltimore forecast').and_return true
+          WeatherSpotlight.should_receive(:new).with('baltimore').and_return true
           search = Search.new(:query => 'baltimore forecast')
           search.run
           search.weather_spotlight.should_not be_nil
@@ -847,11 +847,8 @@ describe Search do
       end
       
       context "when the terms queried are not a valid location" do
-        before do
-          WeatherSpotlight.stub!(:new).and_raise(RuntimeError.new('Location Not Found: 21208'))
-        end
-          
         it "should create a search with no weather spotlight" do
+          WeatherSpotlight.should_receive(:new).with('21208').and_raise(RuntimeError.new('Location Not Found: 21208'))
           search = Search.new(:query => 'weather 21208')
           search.run
           search.should_not be_nil
