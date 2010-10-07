@@ -4,7 +4,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
   BING_RESULTS_TO_CONSIDER_FOR_TEXT = 100
 
   validates_presence_of :term, :related_terms, :locale
-  validates_uniqueness_of :term, :scoped => :locale
+  validates_uniqueness_of :term, :scope => :locale
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES
 
   class << self
