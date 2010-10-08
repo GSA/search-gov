@@ -3,7 +3,7 @@ class Admin::CalaisRelatedSearchesController < Admin::AdminController
     config.list.sorting = { :updated_at => :desc }
     config.columns = [:term, :related_terms, :locale, :updated_at]
     config.columns[:locale].form_ui= :select
-    config.columns[:locale].options = {:options => CalaisRelatedSearch::SUPPORTED_LOCALES.map(&:to_sym)}        
+    config.columns[:locale].options = {:options => CalaisRelatedSearch::SUPPORTED_LOCALES.map{|locale| [locale.to_sym, locale]}}
     config.list.per_page = 100
   end
 end
