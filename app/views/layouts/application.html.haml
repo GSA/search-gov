@@ -8,12 +8,13 @@
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     = stylesheet_link_tag 'compiled/advanced.css'
     = stylesheet_link_tag 'compiled/sayt.css'
+    = stylesheet_link_tag 'jquery-ui/jquery-ui-1.8.5.custom.css'
     /[if lt IE 8]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = javascript_tag "var usagov_sayt_url = \"#{root_url}sayt\";"
     = javascript_include_tag "jquery/jquery-1.4.2.min.js"
+    = javascript_include_tag "jquery/jquery-ui-1.8.5.custom.min.js"
     = javascript_include_tag "jquery/jquery.bgiframe.min.js"
-    = javascript_include_tag "jquery/jquery.autocomplete.min.js"
     = javascript_include_tag "sayt.js"
     = javascript_include_tag "application.js"
 
