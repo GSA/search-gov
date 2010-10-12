@@ -18,19 +18,32 @@ describe Location do
     Location.create!(@valid_attributes)
   end
   
-  describe "#parse" do
+  describe "#load_from_census_data" do
     before do
       Location.delete_all
       @filename = File.join(RAILS_ROOT, "spec", "fixtures", "txt", "zips.txt")    
     end
     
     it "should parse the file and create Locations for each of the lines, titleizing the city and multiplying the longitude by -1" do
-      Location.parse(@filename)
+      Location.load_from_census_data(@filename)
       Location.count.should == 13
       Location.find_all_by_city('Baltimore').size.should == 10
       Location.all.each do |location|
         location.lng.should < 0
       end
+    end
+  end
+  
+  describe "#load_from_geonames_data" do
+    before do
+      Location.delete_all
+      @filename = File.join(RAILS_ROOT, "spec", "fixtures", "txt", "geonames.txt")    
+    end
+    
+    it "should parse the file and create Locations for each of the lines" do
+      Location.load_from_geonames_data(@filename)
+      Location.count.should == 20
+      Location.find_all_by_city('San Bernardino').size.should == 7
     end
   end
 end
