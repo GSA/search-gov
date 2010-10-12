@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-location_rb.html">app/models/location.rb</a></td>
-            <td class='right_align'><tt>32</tt></td>
-            <td class='right_align'><tt>29</tt></td>
+            <td class='right_align'><tt>38</tt></td>
+            <td class='right_align'><tt>34</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -87,7 +87,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     def parse(filename)</pre></td>
+            <td><pre><a name="line6">6</a>     def load_from_census_data(filename)</pre></td>
           </tr>
         
           
@@ -123,19 +123,19 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     def find_by_query(location_query)</pre></td>
+            <td><pre><a name="line12">12</a>     def load_from_geonames_data(filename)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       if location_query =~ /\d{5}/</pre></td>
+            <td><pre><a name="line13">13</a>       FasterCSV.foreach(filename, :col_sep =&gt; &quot;\t&quot;) do |row|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>         location = Location.find_by_zip_code(location_query)</pre></td>
+            <td><pre><a name="line14">14</a>         Location.create(:zip_code =&gt; row[1], :state =&gt; row[4], :city =&gt; row[2], :population =&gt; 0, :lat =&gt; row[9], :lng =&gt; row[10])</pre></td>
           </tr>
         
           
@@ -146,110 +146,146 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>       unless location</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>         if location_query.include?(',')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>           city_state = location_query.split(',')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>           location = Location.find_by_state_and_city(city_state.last.strip, city_state.first, :order =&gt; 'population desc')</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line16">16</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>         else</pre></td>
+            <td><pre><a name="line17">17</a>     </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>           city_state = location_query.split</pre></td>
+            <td><pre><a name="line18">18</a>     def find_by_query(location_query)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>           if city_state.last.length == 2</pre></td>
+            <td><pre><a name="line19">19</a>       if location_query =~ /\d{5}/</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>             location = Location.find_by_state_and_city(city_state.last.strip, city_state[0..-2].join(' '), :order =&gt; 'population desc')</pre></td>
+            <td><pre><a name="line20">20</a>         location = Location.find_by_zip_code(location_query)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>           else</pre></td>
+            <td><pre><a name="line21">21</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>             location = Location.find_by_city(city_state.collect{|term| term.strip}.join(' '), :order =&gt; 'population desc')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line26">26</a>           end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line27">27</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line28">28</a>       end</pre></td>
+            <td><pre><a name="line22">22</a>       unless location</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>       location</pre></td>
+            <td><pre><a name="line23">23</a>         if location_query.include?(',')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>           city_state = location_query.split(',')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>           location = Location.find_by_state_and_city(city_state.last.strip, city_state.first, :order =&gt; 'population desc')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>     end</pre></td>
+            <td><pre><a name="line26">26</a>         else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>           city_state = location_query.split</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>           if city_state.last.length == 2</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>             location = Location.find_by_state_and_city(city_state.last.strip, city_state[0..-2].join(' '), :order =&gt; 'population desc')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>   end</pre></td>
+            <td><pre><a name="line30">30</a>           else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>             location = Location.find_by_city(city_state.collect{|term| term.strip}.join(' '), :order =&gt; 'population desc')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a> end</pre></td>
+            <td><pre><a name="line32">32</a>           end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line33">33</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line34">34</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>       location</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line36">36</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line37">37</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line38">38</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Oct 07 16:17:02 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Wed Oct 13 00:29:10 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

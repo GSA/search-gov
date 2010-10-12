@@ -12,10 +12,7 @@ describe BoostedSite do
   end
 
   describe "Creating new instance of BoostedSite" do
-    should_validate_presence_of :url
-    should_validate_presence_of :title
-    should_validate_presence_of :description
-    should_validate_presence_of :affiliate
+    should_validate_presence_of :url, :title, :description
     should_belong_to :affiliate
 
     it "should create a new instance given valid attributes" do

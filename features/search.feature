@@ -60,3 +60,26 @@ Feature: Search
     When I fill in "query" with "hello"
     And I press "Buscar"
     And I should not see "Some Unique Related Term"
+    
+  Scenario: Site visitor sees relevant boosted results for given search  
+    Given the following Boosted Sites exist
+      | title               | url                     | description                               |
+      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
+      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
+      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
+    And the following Affiliates exist:
+      | name             | contact_email         | contact_name        |
+      | bar.gov          | aff@bar.gov           | John Bar            |
+    And the following Boosted Sites exist for the affiliate "bar.gov"
+      | title               | url                     | description                               |
+      | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
+      | Pelosi misspelling  | http://www.bar.gov/pel  | Synonyms file test works                  |
+      | all about agencies  | http://www.bar.gov/pel  | Stemming works                            |
+    And I am on the homepage
+    And I fill in "query" with "emergency"
+    And I press "Search"
+    Then I should be on the search page
+    And I should see "Our Emergency Page" 
+    And I should see "FAQ Emergency Page" 
+    And I should not see "Our Tourism Page" 
+    And I should not see "Bar Emergency Page"

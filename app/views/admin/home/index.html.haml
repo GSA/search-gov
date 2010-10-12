@@ -9,10 +9,12 @@
   %li=link_to("SAYT Suggestions", admin_sayt_suggestions_path)
   %li=link_to("SAYT Misspellings", admin_misspellings_path)
   %li=link_to("SAYT Suggestions Bulk Upload", new_admin_sayt_suggestions_upload_path)
-  %li=link_to("Boosted Sites", admin_boosted_sites_path)
+  %li=link_to("Search.USA.gov Boosted Sites", admin_boosted_sites_path)
+  %li=link_to("Affiliate Boosted Sites", admin_affiliate_boosted_sites_path)
   %li=link_to("Spotlights", admin_spotlights_path)
   %li=link_to("FAQs", admin_faqs_path)
   %li=link_to("Government Forms", admin_gov_forms_path)
-  %li=link_to("Query Grouping", analytics_query_groups_path) if @current_user.is_analyst_admin?
+  - if @current_user.is_analyst_admin?
+    %li=link_to("Query Grouping", analytics_query_groups_path)
   %li=link_to("Calais Related Searches", admin_calais_related_searches_path)
 

@@ -19,12 +19,4 @@ describe Admin::GovFormsController do
       UserSession.create(@user)
     end
   end
-  
-  #Delete this example and add some real ones
-  it "should use Admin::GovFormssController" do
-    controller.should be_an_instance_of(Admin::GovFormsController)
-  end
-  
-  
-
 end

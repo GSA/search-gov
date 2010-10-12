@@ -8,7 +8,8 @@ Feature:  Administration
     And I should see "Calais Related Searches"
     And I should see "SAYT Filters"
     And I should see "SAYT Suggestions Bulk Upload"
-    And I should see "Boosted Sites"
+    And I should see "Search.USA.gov Boosted Sites"
+    And I should see "Affiliate Boosted Sites"
     And I should see "Spotlights"
     And I should see "FAQs"
     And I should not see "Query Grouping"
@@ -73,3 +74,26 @@ Feature:  Administration
     And I attach the file "features/support/cant_read_this.doc" to "txtfile"
     And I press "Upload"
     Then I should see "Your file could not be processed."
+    
+  Scenario: Viewing Boosted Sites (both affiliate and Search.USA.gov)
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Boosted Sites exist
+    | title               | url                     | description                               |
+    | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
+    | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
+    | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
+    And the following Affiliates exist:
+    | name             | contact_email         | contact_name        |
+    | bar.gov          | aff@bar.gov           | John Bar            |
+    And the following Boosted Sites exist for the affiliate "bar.gov"
+    | title               | url                     | description                               |
+    | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
+    When I go to the admin home page
+    And I follow "Search.USA.gov Boosted Sites"
+    Then I should see "Our Emergency Page"
+    And I should not see "Bar Emergency Page"
+    
+    When I go to the admin home page
+    And I follow "Affiliate Boosted Sites"
+    Then I should see "Bar Emergency Page"
+    And I should not see "Our Emergency Page"

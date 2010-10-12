@@ -1,17 +1,19 @@
 class BoostedSite < ActiveRecord::Base
   require 'rexml/document'
-  validates_presence_of :title, :url, :description, :affiliate
+  validates_presence_of :title, :url, :description
   belongs_to :affiliate
 
   searchable :auto_index => false do
     text :title, :description
-    integer :affiliate_id
+    string :affiliate_name do |boosted_site|
+      boosted_site.affiliate.present? ? boosted_site.affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME
+    end
   end
 
-  def self.search_for(affiliate, query)
+  def self.search_for(query, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
     search do
-      with :affiliate_id, affiliate.id
-      keywords query, :highlight=>true
+      with :affiliate_name, affiliate_name
+      keywords query, :highlight => true
       paginate :page => 1, :per_page => 3
     end rescue nil
   end
@@ -37,5 +39,4 @@ class BoostedSite < ActiveRecord::Base
     end
     false
   end
-
 end
