@@ -8,7 +8,7 @@ describe DailyQueryStat do
       :day => "20090830",
       :query => "government",
       :times => 314,
-      :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME,
+      :affiliate => Affiliate::USAGOV_AFFILIATE_NAME,
       :locale => I18n.default_locale.to_s
     }
   end
@@ -23,7 +23,7 @@ describe DailyQueryStat do
 
     it "should create a new instance with the default affiliate if none is specified" do
       @valid_attributes.delete(:affiliate)
-      DailyQueryStat.create(@valid_attributes).affiliate.should == DailyQueryStat::DEFAULT_AFFILIATE_NAME
+      DailyQueryStat.create(@valid_attributes).affiliate.should == Affiliate::USAGOV_AFFILIATE_NAME
     end
 
     it "should create a new instance with the default locale if none is specified" do
@@ -54,8 +54,8 @@ describe DailyQueryStat do
     context "when no target date is passed in" do
       before do
         DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 10, :query => "outlier", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 10, :query => "outlier", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         DailyQueryStat.create!(:day => Date.yesterday, :times => 1, :query => "most recent day processed", :affiliate => "affiliate.gov")
         DailyQueryStat.create!(:day => Date.yesterday - 1.day, :times => 2, :query => "outlier", :affiliate => 'affiliate.gov')
         @ary = DailyQueryStat.reversed_backfilled_series_since_2009_for("outlier")
@@ -79,7 +79,7 @@ describe DailyQueryStat do
       before do
         DailyQueryStat.delete_all
         @day = Date.new(2009, 7, 21).to_date
-        DailyQueryStat.create!(:day => @day, :times => 1, :query => "outlier", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => @day, :times => 1, :query => "outlier", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         @ary = DailyQueryStat.reversed_backfilled_series_since_2009_for("outlier", @day)
       end
 
@@ -95,11 +95,11 @@ describe DailyQueryStat do
     context "when the table is populated" do
       before do
         DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "older most popular", :times => 9, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "recent day most popular", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "older most popular", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "recent day most popular", :times => 4, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "sparse term", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "older most popular", :times => 9, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "recent day most popular", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "older most popular", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "recent day most popular", :times => 4, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "sparse term", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       end
 
       it "should calculate popularity sums based on the target date and number of days parameter, ignoring terms with a frequency of less than 4" do
@@ -163,10 +163,10 @@ describe DailyQueryStat do
         end
 
         it "should use the locale parameter if set to scope the results" do
-          yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1, 10, DailyQueryStat::DEFAULT_AFFILIATE_NAME, 'es')
+          yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1, 10, Affiliate::USAGOV_AFFILIATE_NAME, 'es')
           yday.first.query.should == "recent day most popular"
           yday.first.times.should == 10
-          twodaysago = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 2, 10, DailyQueryStat::DEFAULT_AFFILIATE_NAME, 'es')
+          twodaysago = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 2, 10, Affiliate::USAGOV_AFFILIATE_NAME, 'es')
           twodaysago.first.query.should == "older most popular"
           twodaysago.first.times.should == 24
         end
@@ -198,16 +198,16 @@ describe DailyQueryStat do
     context "when the table is populated with multiple affiliates and locales over multiple days" do
       before do
         DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 500, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 50, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 200, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'es')
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 20, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'es')
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 500, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 50, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 200, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es')
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 20, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es')
         DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 100, :affiliate => 'affiliate.gov')
         DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 10, :affiliate => 'affiliate.gov')
-        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "query1", :times => 100, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "query2", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query3", :times => 100, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "query4", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "query1", :times => 100, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => 12.days.ago.to_date, :query => "query2", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query3", :times => 100, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "query4", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         qg1 = QueryGroup.create!(:name=>"qg1")
         qg1.grouped_queries << GroupedQuery.create!(:query=>"query1")
         qg1.grouped_queries << GroupedQuery.create!(:query=>"query2")
@@ -233,7 +233,7 @@ describe DailyQueryStat do
 
   describe "#most_recent_populated_date" do
     it "should return the most recent date entered into the table for the default affiliate and locale" do
-      DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ? AND locale = ?', DailyQueryStat::DEFAULT_AFFILIATE_NAME, I18n.default_locale.to_s])
+      DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s])
       DailyQueryStat.most_recent_populated_date
     end
 
@@ -243,7 +243,7 @@ describe DailyQueryStat do
     end
 
     it "should return the most recent date for a locale if specified" do
-      DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ? AND locale = ?', DailyQueryStat::DEFAULT_AFFILIATE_NAME, 'es'])
+      DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, 'es'])
       DailyQueryStat.most_recent_populated_date('usasearch.gov', 'es')
     end
   end
@@ -251,12 +251,12 @@ describe DailyQueryStat do
   describe "#collect_query_group_named" do
     before do
       DailyQueryStat.delete_all
-      DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-      DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+      DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => 'affiliate.gov')
       DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => 'affiliate.gov')
-      DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'es')
-      DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'es')
+      DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es')
+      DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es')
       qg = QueryGroup.create!(:name=>"my query group")
       qg.grouped_queries << GroupedQuery.create!(:query=>"query1")
       qg.grouped_queries << GroupedQuery.create!(:query=>"query2")
@@ -271,8 +271,8 @@ describe DailyQueryStat do
 
     context "when one of the queries has a single quote in it" do
       before do
-        DailyQueryStat.create(:query => "jobs", :day => Date.yesterday, :times => 20, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'en')
-        DailyQueryStat.create(:query => "job's", :day => Date.yesterday, :times => 25, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'en')
+        DailyQueryStat.create(:query => "jobs", :day => Date.yesterday, :times => 20, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'en')
+        DailyQueryStat.create(:query => "job's", :day => Date.yesterday, :times => 25, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'en')
         query_group = QueryGroup.create!(:name => 'group2')
         query_group.grouped_queries << GroupedQuery.create!(:query => "jobs")
         query_group.grouped_queries << GroupedQuery.create!(:query => "job's")

@@ -33,8 +33,8 @@ describe Analytics::TimelineController do
       context "when showing a timeline" do
         before do
           DailyQueryStat.delete_all
-          DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
-          DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME )
+          DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME )
+          DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME )
         end
 
         context "when query term passed in" do

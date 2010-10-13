@@ -36,7 +36,7 @@ module Analytics::HomeHelper
   end
 
   def affiliate_name(affiliate)
-    affiliate ? affiliate.name : DailyQueryStat::DEFAULT_AFFILIATE_NAME
+    affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME
   end
 
   def analytics_path_prefix(affiliate)

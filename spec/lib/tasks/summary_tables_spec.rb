@@ -387,7 +387,7 @@ describe "summary_tables rake tasks" do
 
         it "should calculate the sums separately by affiliate" do
           @rake[@task_name].invoke
-          DailyQueryStat.find_all_by_affiliate(DailyQueryStat::DEFAULT_AFFILIATE_NAME).should_not be_nil
+          DailyQueryStat.find_all_by_affiliate(Affiliate::USAGOV_AFFILIATE_NAME).should_not be_nil
           DailyQueryStat.find_all_by_affiliate('test.gov').should_not be_nil
         end
       end
@@ -574,9 +574,9 @@ describe "summary_tables rake tasks" do
       context "when daily_query_stats data is available over some date range" do
         before do
           DailyQueryStat.delete_all
-          DailyQueryStat.create!(:day => Date.yesterday, :times => 10, :query => "ignore me", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-          @first = DailyQueryStat.create!(:day => Date.today, :times => 20, :query => "index me", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-          @second = DailyQueryStat.create!(:day => Date.today, :times => 20, :query => "index me too", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+          DailyQueryStat.create!(:day => Date.yesterday, :times => 10, :query => "ignore me", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+          @first = DailyQueryStat.create!(:day => Date.today, :times => 20, :query => "index me", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+          @second = DailyQueryStat.create!(:day => Date.today, :times => 20, :query => "index me too", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         end
 
         it "should call Sunspot.index on the most-recently-added DailyQueryStat models" do
@@ -601,9 +601,9 @@ describe "summary_tables rake tasks" do
       context "when daily_query_stats data is available over some date range" do
         before do
           DailyQueryStat.delete_all
-          Date.yesterday.upto(Date.tomorrow) { |day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME) }
+          Date.yesterday.upto(Date.tomorrow) { |day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME) }
           Date.yesterday.upto(Date.tomorrow) { |day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => 'affiliate.gov') }
-          Date.yesterday.upto(Date.tomorrow) { |day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'es') }
+          Date.yesterday.upto(Date.tomorrow) { |day| DailyQueryStat.create!(:day => day, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es') }
         end
 
         it "should calculate moving queries for each day in that range, ignoring affiliates and non-English locales" do

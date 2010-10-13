@@ -30,7 +30,7 @@ describe Analytics::QuerySearchesController do
       context "when some of the matching query terms contain HTML markup" do
         integrate_views
         before do
-          DailyQueryStat.create(:query => "<b>obama</b>", :day => Date.parse("August 12, 2010"), :times => 100, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'en')
+          DailyQueryStat.create(:query => "<b>obama</b>", :day => Date.parse("August 12, 2010"), :times => 100, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'en')
           DailyQueryStat.reindex
         end
 

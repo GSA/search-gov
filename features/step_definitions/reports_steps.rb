@@ -69,7 +69,7 @@ end
 Given /^the following DailyQueryStats exist in "([^\"]*)"$/ do |month_year, table|
   time = Time.parse(month_year)
   table.hashes.each do |hash|
-    DailyQueryStat.create(:day => time, :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? DailyQueryStat::DEFAULT_AFFILIATE_NAME : hash["affiliate"], :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
+    DailyQueryStat.create(:day => time, :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? Affiliate::USAGOV_AFFILIATE_NAME : hash["affiliate"], :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
   end
 end
 

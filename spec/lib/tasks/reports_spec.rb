@@ -8,7 +8,7 @@ describe "Report generation rake tasks" do
     Rake.application.rake_require "lib/tasks/reports"
     Rake::Task.define_task(:environment)
     Query.delete_all
-    Query.create(:query => 'obama', :timestamp => Date.yesterday, :ipaddr => '1.2.3.4', :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale => 'en', :is_bot => false, :agent => 'Mozilla/5.0')
+    Query.create(:query => 'obama', :timestamp => Date.yesterday, :ipaddr => '1.2.3.4', :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'en', :is_bot => false, :agent => 'Mozilla/5.0')
     @fake_top_queries = Query.top_queries(Date.yesterday.beginning_of_day, Date.yesterday.end_of_day)
     @fake_top_queries.size.should > 0
     @csv_output = "Query,Count\nobama,1\n"

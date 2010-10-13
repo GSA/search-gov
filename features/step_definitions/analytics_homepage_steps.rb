@@ -15,7 +15,7 @@ Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
   startdate.upto(enddate) do |day|
     words.each do |word|
       cnt = cnt -1
-      DailyQueryStat.create(:day => day, :query => word, :times => cnt, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+      DailyQueryStat.create(:day => day, :query => word, :times => cnt, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       MovingQuery.create(:day => day, :query => word, :times => cnt, :mean => 1.0, :std_dev => 0.001)
     end
   end
@@ -28,7 +28,7 @@ Given /^the following DailyQueryStats exist:$/ do |table|
     DailyQueryStat.create(:day => hash["days_back"].nil? ? Date.yesterday : hash["days_back"].to_i.day.ago,
                           :query => hash["query"],
                           :times => hash["times"],
-                          :affiliate => hash["affiliate"].nil? ? DailyQueryStat::DEFAULT_AFFILIATE_NAME : hash["affiliate"],
+                          :affiliate => hash["affiliate"].nil? ? Affiliate::USAGOV_AFFILIATE_NAME : hash["affiliate"],
                           :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
   end
   DailyQueryStat.reindex

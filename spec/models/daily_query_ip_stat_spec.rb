@@ -6,7 +6,7 @@ describe DailyQueryIpStat do
       :ipaddr => "123.456.7.89",
       :times => 1,
       :day => Date.today,
-      :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME,
+      :affiliate => Affiliate::USAGOV_AFFILIATE_NAME,
       :locale => I18n.default_locale.to_s
     }
   end

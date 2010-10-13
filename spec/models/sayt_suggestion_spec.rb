@@ -65,7 +65,7 @@ describe SaytSuggestion do
 
   describe "#populate_for(day)" do
     it "should populate SAYT suggestions for the default affiliate and all affiliates in affiliate table" do
-      SaytSuggestion.should_receive(:populate_for_affiliate_on).with(DailyQueryStat::DEFAULT_AFFILIATE_NAME, nil, Date.today)
+      SaytSuggestion.should_receive(:populate_for_affiliate_on).with(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
       Affiliate.all.each do |aff|
         SaytSuggestion.should_receive(:populate_for_affiliate_on).with(aff.name, aff.id, Date.today)
       end
@@ -76,19 +76,19 @@ describe SaytSuggestion do
   describe "#populate_for_affiliate_on" do
     context "when no DailyQueryStats exist for the given day for an affiliate" do
       it "should return nil" do
-        SaytSuggestion.populate_for_affiliate_on(DailyQueryStat::DEFAULT_AFFILIATE_NAME, nil, Date.today).should be_nil
+        SaytSuggestion.populate_for_affiliate_on(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today).should be_nil
       end
     end
 
     context "when DailyQueryStats exist for multiple days for an affiliate" do
       before do
-        DailyQueryStat.create!(:day => Date.yesterday, :query => "yesterday term1", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.today, :query => "today term1", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
-        DailyQueryStat.create!(:day => Date.today, :query => "today term2", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "yesterday term1", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.today, :query => "today term1", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.today, :query => "today term2", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       end
 
       it "should populate SaytSuggestions based on each DailyQueryStat for the given day" do
-        SaytSuggestion.populate_for_affiliate_on(DailyQueryStat::DEFAULT_AFFILIATE_NAME, nil, Date.today)
+        SaytSuggestion.populate_for_affiliate_on(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
         SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term1", 2).should_not be_nil
         SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term2", 2).should_not be_nil
         SaytSuggestion.find_by_phrase("yesterday term1").should be_nil
@@ -97,12 +97,12 @@ describe SaytSuggestion do
 
     context "when DailyQueryStats exist for multiple locales for an affiliate" do
       before do
-        DailyQueryStat.create!(:day => Date.today, :query => "el paso", :times => 2, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale=>'es')
-        DailyQueryStat.create!(:day => Date.today, :query => "el paso", :times => 4, :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :locale=>'en')
+        DailyQueryStat.create!(:day => Date.today, :query => "el paso", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'es')
+        DailyQueryStat.create!(:day => Date.today, :query => "el paso", :times => 4, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'en')
       end
 
       it "should combine data from all locales to populate SaytSuggestions" do
-        SaytSuggestion.populate_for_affiliate_on(DailyQueryStat::DEFAULT_AFFILIATE_NAME, nil, Date.today)
+        SaytSuggestion.populate_for_affiliate_on(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
         SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "el paso").popularity.should == 6
       end
     end

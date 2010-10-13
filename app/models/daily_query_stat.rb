@@ -4,7 +4,6 @@ class DailyQueryStat < ActiveRecord::Base
   before_save :squish_query
   RESULTS_SIZE = 10
   INSUFFICIENT_DATA = "Not enough historic data to compute most popular"
-  DEFAULT_AFFILIATE_NAME = "usasearch.gov"
 
   searchable do
     text :query
@@ -15,7 +14,7 @@ class DailyQueryStat < ActiveRecord::Base
 
   class << self
 
-    def search_for(query, start_date = 1.year.ago, end_date = Date.today, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+    def search_for(query, start_date = 1.year.ago, end_date = Date.today, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       search do
         with :affiliate, affiliate_name
         with :locale, locale
@@ -25,7 +24,7 @@ class DailyQueryStat < ActiveRecord::Base
       end rescue nil
     end
 
-    def query_counts_for_terms_like(query, start_date = 1.year.ago, end_date = Date.today, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+    def query_counts_for_terms_like(query, start_date = 1.year.ago, end_date = Date.today, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       unless query.blank?
         solr_search_results = search_for query, start_date, end_date, affiliate_name, locale
         return sum(:times,
@@ -45,13 +44,13 @@ class DailyQueryStat < ActiveRecord::Base
       ary.reverse
     end
 
-    def most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+    def most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       return INSUFFICIENT_DATA if end_date.nil?
       start_date = end_date - days_back.days + 1.day
       results = sum(:times,
                     :group => :query,
                     :conditions => ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],
-                    :having => "sum_times > #{ affiliate_name == DEFAULT_AFFILIATE_NAME ? "3" : "0"}",
+                    :having => "sum_times > #{ affiliate_name == Affiliate::USAGOV_AFFILIATE_NAME ? "3" : "0"}",
                     :joins => 'FORCE INDEX (aldq)',
                     :order => "sum_times desc",
                     :limit => num_results)
@@ -82,7 +81,7 @@ class DailyQueryStat < ActiveRecord::Base
       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }
     end
 
-    def most_popular_query_groups(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+    def most_popular_query_groups(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       return INSUFFICIENT_DATA if end_date.nil?
       start_date = end_date - days_back.days + 1.day
       results = find_by_sql ["select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b "+
@@ -93,7 +92,7 @@ class DailyQueryStat < ActiveRecord::Base
       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }
     end
 
-    def most_recent_populated_date(affiliate_name = DEFAULT_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+    def most_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       maximum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name, locale])
     end
 

@@ -18,7 +18,7 @@ class SaytSuggestion < ActiveRecord::Base
 
     def populate_for(day)
       name_id_list = Affiliate.all.collect { |aff| {:name => aff.name, :id => aff.id} }
-      name_id_list << {:name => DailyQueryStat::DEFAULT_AFFILIATE_NAME, :id => nil}
+      name_id_list << {:name => Affiliate::USAGOV_AFFILIATE_NAME, :id => nil}
       name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day) }
     end
 

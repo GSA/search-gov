@@ -27,7 +27,7 @@ describe MovingQuery do
         DailyQueryStat.delete_all
         MovingQuery.delete_all
         # received zero queries per day for these terms since Jan 1 2009 except for these:
-        DailyQueryStat.create!(:day => Date.yesterday, :times => 100000, :query => "1-day", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :times => 100000, :query => "1-day", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         DailyQueryStat.create!(:day => Date.yesterday, :times => 200000, :query => "1-day", :locale => 'es')
         DailyQueryStat.create!(:day => Date.yesterday, :times => 300000, :query => "1-day", :affiliate => 'noaa.gov')
         MovingQuery.compute_for(Date.yesterday.to_s(:number))
@@ -40,9 +40,9 @@ describe MovingQuery do
 
     context "when an English locale query for usasearch.gov gets roughly the same amount of queries it normally gets for a given day" do
       before do
-        Date.new(2009, 5, 10).upto(Date.new(2009, 6, 1)) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 10 + rand(5), :query => "usual", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)}
+        Date.new(2009, 5, 10).upto(Date.new(2009, 6, 1)) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 10 + rand(5), :query => "usual", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)}
         @target_date = Date.new(2009, 6, 2)
-        DailyQueryStat.create!(:day => @target_date, :times => 16, :query => "usual", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => @target_date, :times => 16, :query => "usual", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       end
 
       it "should not create any moving query records for that query on that day" do
@@ -54,7 +54,7 @@ describe MovingQuery do
     context "when a brand new query (i.e., zero searches since Jan 1 2009) gets 16 searches per day for the 14th day in a row" do
       before do
         DailyQueryStat.delete_all
-        14.days.ago.to_date.upto(Date.yesterday) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 16, :query => "still accelerating?", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)}
+        14.days.ago.to_date.upto(Date.yesterday) { |day| DailyQueryStat.create!(:day => day.to_date, :times => 16, :query => "still accelerating?", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)}
       end
 
       it "should not create a 1-day moving query for the query" do
@@ -80,7 +80,7 @@ describe MovingQuery do
         ary = [40, 30, 22, 21, 20, 16]
         idx = 0
         ary.size.days.ago.to_date.upto(Date.yesterday) do |day|
-          DailyQueryStat.create!(:day => day.to_date, :times => ary[idx], :query => "still accelerating?", :affiliate => DailyQueryStat::DEFAULT_AFFILIATE_NAME)
+          DailyQueryStat.create!(:day => day.to_date, :times => ary[idx], :query => "still accelerating?", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
           idx+=1
         end
       end
