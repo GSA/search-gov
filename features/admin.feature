@@ -77,7 +77,7 @@ Feature:  Administration
     
   Scenario: Viewing Boosted Sites (both affiliate and Search.USA.gov)
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Boosted Sites exist
+    And the following Boosted Sites exist:
     | title               | url                     | description                               |
     | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
     | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |

@@ -54,6 +54,8 @@ module NavigationHelpers
       analytics_query_groups_path
     when /the bulk edit query groups page/
       bulk_edit_analytics_query_group_path
+    when /the boosted sites admin page/
+      admin_boosted_sites_path
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

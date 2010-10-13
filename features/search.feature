@@ -62,7 +62,7 @@ Feature: Search
     And I should not see "Some Unique Related Term"
     
   Scenario: Site visitor sees relevant boosted results for given search  
-    Given the following Boosted Sites exist
+    Given the following Boosted Sites exist:
       | title               | url                     | description                               |
       | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
       | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
