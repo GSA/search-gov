@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101012191557) do
+ActiveRecord::Schema.define(:version => 20101013200500) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -204,6 +204,10 @@ ActiveRecord::Schema.define(:version => 20101012191557) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "locations", ["city"], :name => "index_locations_on_city"
+  add_index "locations", ["state"], :name => "index_locations_on_state"
+  add_index "locations", ["zip_code"], :name => "index_locations_on_zip_code", :unique => true
 
   create_table "log_files", :force => true do |t|
     t.string   "name",       :null => false

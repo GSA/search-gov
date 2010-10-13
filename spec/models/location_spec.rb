@@ -2,6 +2,7 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe Location do
   before do
+    Location.delete_all
     @valid_attributes = {
       :zip_code => 21209,
       :state => 'MD',
@@ -10,12 +11,14 @@ describe Location do
       :lat => 39.3716,
       :lng => -76.6744
     }
+    Location.create!(@valid_attributes)
   end
   
   should_validate_presence_of :zip_code, :state, :city, :population, :lat, :lng
+  should_validate_uniqueness_of :zip_code
   
   it "should create a Location given valid attributes" do
-    Location.create!(@valid_attributes)
+    Location.create!(@valid_attributes.merge(:zip_code => '21208'))
   end
   
   describe "#load_from_census_data" do
