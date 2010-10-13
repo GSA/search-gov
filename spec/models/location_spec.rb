@@ -11,11 +11,9 @@ describe Location do
       :lat => 39.3716,
       :lng => -76.6744
     }
-    Location.create!(@valid_attributes)
   end
   
   should_validate_presence_of :zip_code, :state, :city, :population, :lat, :lng
-  should_validate_uniqueness_of :zip_code
   
   it "should create a Location given valid attributes" do
     Location.create!(@valid_attributes.merge(:zip_code => '21208'))

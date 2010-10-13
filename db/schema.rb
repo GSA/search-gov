@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101013200500) do
+ActiveRecord::Schema.define(:version => 20101013203634) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -207,7 +207,7 @@ ActiveRecord::Schema.define(:version => 20101013200500) do
 
   add_index "locations", ["city"], :name => "index_locations_on_city"
   add_index "locations", ["state"], :name => "index_locations_on_state"
-  add_index "locations", ["zip_code"], :name => "index_locations_on_zip_code", :unique => true
+  add_index "locations", ["zip_code"], :name => "index_locations_on_zip_code"
 
   create_table "log_files", :force => true do |t|
     t.string   "name",       :null => false

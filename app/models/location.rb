@@ -1,6 +1,5 @@
 class Location < ActiveRecord::Base
   validates_presence_of :state, :city, :zip_code, :population, :lat, :lng
-  validates_uniqueness_of :zip_code
   
   class << self
     # parse locations from file http://www.census.gov/tiger/tms/gazetteer/zips.txt (described http://www.census.gov/tiger/tms/gazetteer/zip90r.txt)
