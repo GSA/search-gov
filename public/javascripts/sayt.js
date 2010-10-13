@@ -3,38 +3,29 @@ if (usagov_sayt_url === undefined) {
 }
 
 $(document).ready(function() {
-  $(".usagov-search-autocomplete").autocomplete({
-  	source: function( request, response ) {
-  		$.ajax({
-  			url: usagov_sayt_url + "?q=" + request.term,
-  			dataType: "jsonp",
-  			data: {
-  				featureClass: "P",
-  				style: "full",
-  				maxRows: 12,
-  				name_startsWith: request.term
-  			},
-  			success: function( data ) {
-  				response( $.map(data, function( item ) {
-  				  return {
-        			label: item,
-  						value: item
-  					}
-  				}));
-  			}
-  		});
-  	},
-  	minLength: 1,
-  	select: function( event, ui ) {
-  	  $(".usagov-search-autocomplete").val(ui.item.value.toString());
-  		$(this).closest('form').submit();      
-  	},
-  	open: function() {
-  		$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
-  		$.ui.keyCode;
-  	},
-  	close: function() {
-  		$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-  	}
+  $(".usagov-search-autocomplete").autocomplete(usagov_sayt_url, {
+    dataType: "jsonp",
+    parse: function(data) {
+      var rows = new Array();
+      for (var i = 0; i < data.length; i++) {
+        rows[i] = {data:data[i], value:data[i], result:data[i]};
+      }
+      return rows;
+    },
+    formatItem: function(row, i, n) {
+      return row;
+    },
+    highlight: function(value, term) {
+      return value.replace(term, "<strong class='highlight'>" + term + "</strong>");
+    },
+    scroll: false,
+    delay: 50,
+    minChars: 2,
+    matchSubset: false,
+    cacheLength: 50,
+    max: 15,
+    selectFirst: false
+  }).result(function(event, data, formatted){
+    $(this).closest('form').submit();
   });
 });
