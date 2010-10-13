@@ -72,6 +72,7 @@ describe Analytics::HomeController do
       integrate_views
       before do
         AWS::S3::Base.stub!(:establish_connection!).and_return true
+        DailyQueryStat.stub!(:most_recent_populated_date).and_return Date.yesterday
       end
 
       it "should establish an AWS connection" do
