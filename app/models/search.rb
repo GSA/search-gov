@@ -258,7 +258,7 @@ class Search
     modules << "FORM" unless self.gov_forms.nil? or self.gov_forms.total.zero?
     modules << "SPOT" unless self.spotlight.nil?
     modules << "WEAT" unless self.weather_spotlight.nil?
-    modules << "BOOS" unless self.boosted_sites.nil?
+    modules << "BOOS" unless self.boosted_sites.nil? or self.boosted_sites.total.zero?
     RAILS_DEFAULT_LOGGER.info("[Search Impression] time: #{Time.now.to_formatted_s(:db)} , query: #{self.query}, modules: #{modules.inspect}")
   end
 
