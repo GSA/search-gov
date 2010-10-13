@@ -26,15 +26,15 @@ $(document).ready(function() {
   	},
   	minLength: 1,
   	select: function( event, ui ) {
-  	  event.preventDefault();
   	  $(".usagov-search-autocomplete").val(ui.item.value.toString());
   		$(this).closest('form').submit();      
   	},
   	open: function() {
   		$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+  		$.ui.keyCode;
   	},
   	close: function() {
   		$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
   	}
-  }); 
+  });
 });
