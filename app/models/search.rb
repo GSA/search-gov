@@ -129,7 +129,7 @@ class Search
         self.recalls = nil
       end
     end
-    if WeatherSpotlight.is_weather_spotlight_query(query)
+    if affiliate.nil? and WeatherSpotlight.is_weather_spotlight_query(query)
       ActiveRecord::Base.benchmark("[Weather Search]", Logger::INFO) do
         begin
           self.weather_spotlight = WeatherSpotlight.new(WeatherSpotlight.parse_query(query))

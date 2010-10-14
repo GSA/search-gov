@@ -804,7 +804,7 @@ describe Search do
       context "when the query does not contain the term 'weather'" do
         it "should not create a weather spotlight" do
           WeatherSpotlight.should_not_receive(:new)
-          search = Search.new(@valid_options)
+          search = Search.new(:query => 'obama')
           search.run
           search.weather_spotlight.should be_nil
         end
@@ -816,15 +816,33 @@ describe Search do
           search = Search.new(:query => 'weather')
           search.run
           search.weather_spotlight.should be_nil
+        end        
+        
+        context "when the query is capitlized" do
+          it "should not create a weather spotlight" do
+            WeatherSpotlight.should_not_receive(:new)
+            search = Search.new(:query => 'Weather')
+            search.run
+            search.weather_spotlight.should be_nil
+          end
         end
       end
-      
+            
       context "when the query is 'forecast'" do
         it "should not create a weather spotlight" do
           WeatherSpotlight.should_not_receive(:new)
           search = Search.new(:query => 'forecast')
           search.run
           search.weather_spotlight.should be_nil
+        end
+        
+        context "when the query is capitlized" do
+          it "should not create a weather spotlight" do
+            WeatherSpotlight.should_not_receive(:new)
+            search = Search.new(:query => 'FORECASE')
+            search.run
+            search.weather_spotlight.should be_nil
+          end
         end
       end
       
@@ -854,7 +872,17 @@ describe Search do
           search.should_not be_nil
           search.weather_spotlight.should be_nil
         end
-      end      
+      end
+      
+      context "when the search is for an affiliate" do
+        it "should not search for weather spotlights" do
+          WeatherSpotlight.should_not_receive(:new)
+          search = Search.new(@valid_options.merge(:query => 'weather 21209'))
+          search.run
+          search.should_not be_nil
+          search.weather_spotlight.should be_nil
+        end
+      end  
     end
 
     context "when paginating" do

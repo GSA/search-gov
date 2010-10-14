@@ -3,7 +3,7 @@ class WeatherSpotlight
   
   class << self
     def is_weather_spotlight_query(query)
-      !%w{weather forecast}.include?(query) and query.downcase =~ /^(.*?)\b(weather|forecast)\b(.*?)$/
+      !%w{weather forecast}.include?(query.downcase) and query.downcase =~ /^(.*?)\b(weather|forecast)\b(.*?)$/
     end
     
     def parse_query(query)
