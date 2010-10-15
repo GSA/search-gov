@@ -1,0 +1,287 @@
+%p
+  %a{ :name => "content" }
+%h1
+  Recalls API
+%p
+  The Recalls API returns product recall data feeds from three sources: Food safety data from CDC; car safety data from NHTSA; and product safety from CPSC. When possible, the feeds are processed every 30 minutes. 
+%p
+  These government organizations supplying the recall data are as follows: 
+%p
+%ul
+  %li
+    NHTSA -National Highway Traffic Safety Administration - http://www.nhtsa.gov 
+  %li
+    CPSC - Consumer Product Safety Commission - http://www.cpsc.gov/ 
+  %li
+    CDC - Centers for Disease Control and Prevention - http://www.cdc.gov/ 
+
+%p
+  The Recalls.gov search engine has two important features of note: 
+%p
+%ol
+  %li
+    Does fulltext search using. I.e., search all the fields in the database. 
+  %li
+    Does stemming (or prefix search) so allergic and allergy get you the same information 
+%p
+  These features both reduce the complexity of queries necessary while returning the maximum results. 
+%p
+  %h3
+    Base URL: 
+%ul
+  %li
+    http://search.usa.gov/search/recalls 
+%p  
+  %h3
+    Format: 
+%ul
+  %li
+    json. This is only response format at present. 
+%p  
+  %h3 
+    Type:
+%ul
+  %li
+    HTTP GET 
+%p  
+  %h3 
+    Authentication:
+%ul
+  %li
+    None
+%p
+  %h3 
+    Parameters: 
+%ul
+  %li
+    format: json. Default value. Leaving this parameter out of the query URL will still return JSON results. 
+    %ul
+      %li
+        Example: http://search.usa.gov/search/recalls?format=json
+  %li
+    start_date: yyyy-mm-dd. Start date of recall. 
+    %ul
+      %li
+        Example: http://search.usa.gov/search/recalls?start_date=2010-01-01&end_date=2010-03-19&format=json 
+  %li
+    end_date: yyyy-mm-dd. End date of recall 
+    %ul
+      %li
+        Example: http://search.usa.gov/search/recalls?start_date=2010-01-01&end_date=2010-03-19&format=json 
+  %li
+    organization: Government organization that is providing the recalls data.  Values must all be in caps. 
+    %ul
+      %li
+        NHTSA -National Highway Traffic Safety Administration - http://www.nhtsa.gov 
+      %li
+        CPSC - Consumer Product Safety Commission - http://www.cpsc.gov/ 
+      %li
+        CDC - Centers for Disease Control and Prevention - http://www.cdc.gov/ 
+  %li
+    upc: UPC code - currently, the database does not have any UPC codes 
+    %ul
+      %li
+        http://search.usa.gov/search/recalls?upc=UPC_CODE&format=json 
+  %li
+    sort - right now just date, or leave blank for sort by relevance 
+  %li
+    code - used for auto recalls from NHTSA, valid values are E V I T C or X (single letter, all caps).   
+    %ul
+      %li
+        E 
+    %ul
+      %li
+        V is for vehicles  
+    %ul
+      %li
+        I 
+    %ul
+      %li  
+        T 
+    %ul
+      %li
+        C 
+    %ul
+      %li 
+        X 
+  %li
+    make - only applies to auto recalls from NHTSA 
+    %ul
+      %li
+        Example: http://search.usa.gov/search/recalls?format=json&make=Toyota 
+  %li
+    model - only applies to auto recalls from NHTSA 
+    %ul
+      %li
+        Example: http://search.usa.gov/search/recalls?format=json&model=Camry 
+  %li
+    year - only applies to auto recalls from NHTSA 
+    %ul
+      %li
+        Example: http://search.usa.gov/search/recalls?format=json&year=2002 
+  %li
+    page - 10 results per page are shown.  Pagination can be done by adding '&page=2' to the query string 
+    %ul
+      %li
+        Example: 
+
+%p
+  %h3
+    Usage Notes 
+%ul
+  %li
+    Default is page 1, 10 results per page.  Pagination can be done by adding '&page=2' to the query string 
+  %li
+    You can combine keyword and date range searching by using both the query and date range parameters. 
+  %li
+    You can view json results in text or treeview format using tools available on the web.  For example: http://jsonviewer.stack.hu/#http://search.usa.gov/search/recalls?start_date=2010-01-01&end_date=2010-03-19&format=json&organization=CDC 
+  
+%p
+  %h3
+    Example Queries 
+%ol
+  %li
+    Recall Search by Keyword:  http://search.usa.gov/search/recalls?query=[KEYWORD]&format=json 
+  %li
+    Recall Search by Date Range: http://search.usa.gov/search/recalls?start_date=[yyyy-mm-dd]&end_date=[yyyy-mm-dd]&format=json&organization=[ORGANIZATION] 
+  %li
+    Recalls Search by UPC: N/A at present. 
+  
+%p
+  %h3
+    Response fields:
+  Note that the list of response fields below is an aggregate representing what the data feeds (specific above) might return for a query. Not all fields will appear in all recall query results. 
+%ul
+  %li
+    success:  
+    %ul
+      %li
+        total: Number of matching recall query results. 
+      %li
+        results: Array of recall query results. Each array item contains the following data. 
+        %ul
+          %li
+            code: One-letter code representing ??? 
+          %li
+            component_description: String containing description of the faulty component. All capital letters. 
+          %li
+            consequence_summary: String containing consequence summary. All capital letters. 
+          %li
+            corrective_summary: String containing corrective summary. All capital letters. 
+          %li
+            countries: An array of strings containing the names of countries relevant to the recall. 
+          %li
+            defect_summary: String containing summary of the defect. All capital letters. 
+          %li
+            descriptions: Array of strings containing the descriptions of the recalled item. 
+          %li
+            federal_motor_vehicle_safety_number: Integer?? String of digits??? Represents??? 
+          %li
+            hazards: Array of strings specifying the actual hazards. E.g., Lead. 
+          %li
+            initiator: String containing code specifying who initiated the recall. E.g., “MFR” means manufacturer.  
+          %li
+            manufacturer: String containing manufacturer information. All capital letters. 
+          %li
+            manufacturers: Array of strings containing manufacturer names relevant to the recall. 
+          %li
+            manufacturer_campaign_number: String containing digits of campaign number. Has leading zeros. 
+          %li
+            notes: String containing additional recall notes. All capital letters. 
+          %li
+            notification_date: yyyymmdd. Date of recall notification. 
+          %li
+            organization: Government organization code. E.g., NHTSA. 
+          %li
+            potential_units_affected: Integer. Value represents number of potential recall units. 
+          %li
+            product_types: An array of strings representing types of products being recalled. 
+          %li
+            recall_date: yyyy-mm-dd. Date of actual recall notice. 
+          %li
+            recall_number: String containing recall number. Varies by data feed. Some are digits only, others digits and letters. 
+          %li
+            recall_subject: String containing recall subject. All capital letters. 
+          %li
+            recall_url: Url of Web page containing information about the recall. 
+          %li
+            records: a list of all makes/models affected by the recall 
+            %ul
+              %li
+                component_description: String containing name/ description of recalled component. All capital letters. 
+              %li
+                make: String containing product make. All capital letters. E.g., "HYUNDAI". 
+              %li
+                manufacturer: String containing manufacturer information. All capital letters. 
+              %li
+                manufacturing_begin_date: yyyy-mm-dd. Earliest date of manufacturing for a recalled item. 
+              %li
+                manufacturing_end_date: yyyy-mm-dd. Final date of manufacturing for a recalled item. 
+              %li
+                model: String containing model name of recalled component. All capital letters. 
+              %li
+                recalled_component_id: String containing digits -- with possible leading zeros -- representing the id of the recalled component. 
+              %li
+                year: yyyy. Year value represents ???? 
+          %li
+            report_date: yyyymmdd. Date that the recall was reported. 
+          %li
+            upc: String representing the UPC code. Might be unavailable for some data feeds, or possible marked as "UNKNOWN". All capital letters. 
+
+%p
+  %h3
+    Response(JSON):
+%pre
+  :preserve
+    {
+      "success": {
+        "total": 29,
+        "results": [
+          {
+            "defect_summary": "E-ONE IS RECALLING CERTAIN MODEL YEAR 2008-2009 ....",
+            "recall_number": "10V225000",
+            "manufacturer_campaign_number": "4EN",
+            "potential_units_affected": "20",
+            "corrective_summary": "DETROIT DIESEL IS HANDLING THE OWNER NOTIFICATION SCHEDULE AND REMEDY FOR THIS CAMPAIGN. ...",
+            "code": "V",
+            "organization": "NHTSA",
+            "component_description": "ENGINE AND ENGINE COOLING:EXHAUST SYSTEM",
+            "initiator": "MFR",
+            "consequence_summary": "UNEXPECTED SHUT DOWN OF THE ENGINE MAY PREVENT THE OPERATION OF EQUIPMENT ON ....",
+            "records": [
+              {
+                "recalled_component_id": "000035917000879778000000138",
+                "make": "E-ONE",
+                "model": "QUEST",
+                "component_description": "ENGINE AND ENGINE COOLING:EXHAUST SYSTEM",
+                "year": 2008,
+                "manufacturing_begin_date": "2008-03-13",
+                "manufacturing_end_date": "2009-09-27",
+                "manufacturer": "E-ONE, INC."
+              },
+              {
+                "recalled_component_id": "000035917000879777000000138",
+                "make": "E-ONE",
+                "model": "QUEST",
+                "component_description": "ENGINE AND ENGINE COOLING:EXHAUST SYSTEM",
+                "year": 2009,
+                "manufacturing_begin_date": "2008-03-13",
+                "manufacturing_end_date": "2009-09-27",
+                "manufacturer": "E-ONE, INC."
+              },
+              ...
+            ],
+            "notes": "E-ONE SAFETY RECALL NO. 4EN.OWNERS MAY AL ...",
+            "recall_subject": "SOFTWARE PROBLEM ENGINE CONTROL COMPUTER",
+            "recall_date": "2010-05-26",
+            "manufacturer": "E-ONE, INC.",
+            "report_date": "20100526",
+            "recall_url": "http://www-odi.nhtsa.dot.gov/recalls/recallresults.cfm?start=1&SearchType=QuickSearch&rcl_ID=10V225000&summary=true&PrintVersion=YES"
+          },
+          ...
+        ]
+      }
+    } 
+
+
+
