@@ -113,7 +113,7 @@ class Search
   end
 
   def populate_additional_results
-    self.boosted_sites = BoostedSite.search_for(query, affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
+    self.boosted_sites = BoostedSite.search_for(query, affiliate)
     unless affiliate
       self.faqs = Faq.search_for(query, I18n.locale.to_s)
       if english_locale?

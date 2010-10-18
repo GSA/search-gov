@@ -57,7 +57,22 @@ describe "shared/_searchresults.html.haml" do
         response.should_not have_tag('table', :class => 'deep_links')
       end
     end
-
+    
+    context "when a boosted site is returned as a hit, but that boosted site is not in the database" do
+      before do
+        boosted_site = BoostedSite.create(:title => 'test', :url => 'http://test.gov', :description => 'test')
+        BoostedSite.reindex
+        boosted_site.delete
+        boosted_sites_results = BoostedSite.search_for("test")
+        boosted_sites_results.hits.first.instance.should be_nil
+        @search.stub!(:boosted_sites).and_return boosted_sites_results
+      end
+      
+      it "should render the page without an error, and without boosted sites" do
+        render :locals => { :search => @search }
+        response.should be_success
+        response.body.should have_tag('div#boosted', :text => "")
+      end
+    end
   end
-
 end

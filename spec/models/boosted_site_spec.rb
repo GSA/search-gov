@@ -19,5 +19,31 @@ describe BoostedSite do
       BoostedSite.create!(@valid_attributes)
     end
   end
-
+  
+  context "when the affiliate associated with a particular Boosted Site is destroyed" do
+    fixtures :affiliates
+    before do
+      affiliate = Affiliate.create(:name => 'test_affiliate')
+      BoostedSite.create(@valid_attributes.merge(:affiliate => affiliate))
+      affiliate.destroy
+    end
+    
+    it "should also delete the boosted site" do
+      BoostedSite.find_by_url(@valid_attributes[:url]).should be_nil
+    end
+  end
+  
+  context "when the affiliate associated with a particular Boosted Site is deleted, and BoostedSites are reindexed" do
+    fixtures :affiliates
+    before do
+      affiliate = Affiliate.create(:name => 'test_affiliate')
+      BoostedSite.create(@valid_attributes.merge(:affiliate => affiliate))
+      affiliate.delete
+      BoostedSite.reindex
+    end
+    
+    it "should not find the orphaned boosted site while searching for Search.USA.gov boosted sites" do
+      BoostedSite.search_for("foobar").total.should == 0
+    end
+  end
 end

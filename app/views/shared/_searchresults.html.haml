@@ -2,7 +2,7 @@
 = spelling_suggestion(search, @affiliate)
 - if (search.boosted_sites && search.boosted_sites.total > 0)
   #boosted
-    - search.boosted_sites.hits.each_with_index do |hit, index|
+    - search.boosted_sites.hits(:verify => true).each_with_index do |hit, index|
       - boosted_site_url = hit.instance.url
       .searchresult{:id => "boostedresult#{index+1}"}
         %h2= link_to highlight_hit(hit, :title), boosted_site_url

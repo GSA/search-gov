@@ -6,14 +6,20 @@ class BoostedSite < ActiveRecord::Base
   searchable :auto_index => false do
     text :title, :description
     string :affiliate_name do |boosted_site|
-      boosted_site.affiliate.present? ? boosted_site.affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME
+      if boosted_site.affiliate_id.nil?
+        Affiliate::USAGOV_AFFILIATE_NAME
+      elsif Affiliate.find_by_id(boosted_site.affiliate_id)
+        boosted_site.affiliate.name
+      else
+        nil
+      end
     end
   end
 
-  def self.search_for(query, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
+  def self.search_for(query, affiliate = nil)
     search do
-      with :affiliate_name, affiliate_name
       keywords query, :highlight => true
+      with :affiliate_name, affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME
       paginate :page => 1, :per_page => 3
     end rescue nil
   end
