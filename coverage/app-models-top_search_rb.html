@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/analytics/grouped_queries_controller.rb</title>
+    <title>app/models/top_search.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/analytics/grouped_queries_controller.rb</h2>
+    <h2>app/models/top_search.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-analytics-grouped_queries_controller_rb.html">app/controllers/analytics/grouped_queries_controller.rb</a></td>
-            <td class='right_align'><tt>6</tt></td>
-            <td class='right_align'><tt>6</tt></td>
+            <td class="left_align"><a href="app-models-top_search_rb.html">app/models/top_search.rb</a></td>
+            <td class='right_align'><tt>8</tt></td>
+            <td class='right_align'><tt>7</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,37 +57,49 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Analytics::GroupedQueriesController &lt; Analytics::AnalyticsController</pre></td>
+            <td><pre><a name="line1">1</a> class TopSearch &lt; ActiveRecord::Base</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   active_scaffold :grouped_queries do |config|</pre></td>
+            <td><pre><a name="line2">2</a>   validates_presence_of :position, :query</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     config.columns = [:query, :query_groups]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>     config.list.per_page = 100</pre></td>
+            <td><pre><a name="line3">3</a>   validates_numericality_of :position, :greater_than_or_equal_to =&gt; 1, :less_than_or_equal_to =&gt; 5</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a>   end</pre></td>
+            <td><pre><a name="line4">4</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>   def link_url</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>     self.url.present? ? self.url : &quot;http://search.usa.gov/search?query=#{CGI::escape(self.query)}&amp;linked=1&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> end</pre></td>
+            <td><pre><a name="line7">7</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a> end</pre></td>
           </tr>
         
       </tbody>

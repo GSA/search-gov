@@ -97,3 +97,41 @@ Feature:  Administration
     And I follow "Affiliate Boosted Sites"
     Then I should see "Bar Emergency Page"
     And I should not see "Our Emergency Page"
+    
+  Scenario: Viewing Top Searches
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Top Searches exist:
+    | position  | query         |
+    | 1         | Top Search 1  |
+    | 2         | Top Search 2  |  
+    | 3         | Top Search 3  |  
+    | 4         | Top Search 4  |  
+    | 5         | Top Search 5  |
+    When I go to the admin home page
+    And I follow "Top Searches"
+    Then I should see "Top Searches"
+    And the "query1" field should contain "Top Search 1"
+    And the "query5" field should contain "Top Search 5"
+    
+  Scenario: Updating Top Searches
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Top Searches exist:
+    | position  | query         | url                 |
+    | 1         | Top Search 1  |                     |
+    | 2         | Top Search 2  | http://some.com/url |
+    | 3         | Top Search 3  |                     |
+    | 4         | Top Search 4  |                     |
+    | 5         | Top Search 5  |                     |
+    When I go to the top search admin page
+    And I fill in "query1" with "New Search 1"
+    And I fill in "query5" with "New Search 5"
+    And I fill in "url2" with ""
+    And I fill in "url4" with "http://someother.com/url"
+    And I press "Update Top Searches"
+    Then I should be on the top search admin page
+    And the "query1" field should not contain "Top Search 1"
+    And the "query1" field should contain "New Search 1"
+    And the "query5" field should not contain "Top Search 5"
+    And the "query5" field should contain "New Search 5"
+    And the "url2" field should not contain "http://some.com/url"
+    And the "url4" field should contain "http://someother.com/url"

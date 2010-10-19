@@ -1,0 +1,27 @@
+%h2
+  Top Searches
+%p
+  Update the top searches using the form below.  Note: your changes will be live as soon as you press 'Update Top Searches', so carefully review your changes.
+  Leave the 'URL' field blank to link to the corresponding search results page on search.usa.gov.
+  If you want to override this and have the link point elsewhere, fill in the 'URL' field with the desired url.
+- form_tag admin_top_searches_path, :method => :post do
+  %table
+    %tr
+      %th
+        Position
+      %th
+        Query
+      %th
+        URL
+    - @top_searches.each_with_index do |top_search, index|
+      %tr
+        %td
+          Top Search ##{index + 1}:
+        %td
+          = label_tag "query#{index + 1}", nil, :style => "display: none;" 
+          = text_field_tag "query#{index + 1}", top_search.query
+        %td
+          = label_tag "url#{index + 1}", nil, :style => "display: none;"
+          = text_field_tag "url#{index + 1}", top_search.url
+  = submit_tag 'Update Top Searches'
+    

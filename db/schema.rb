@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101013203634) do
+ActiveRecord::Schema.define(:version => 20101019134728) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -324,6 +324,16 @@ ActiveRecord::Schema.define(:version => 20101013203634) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "top_searches", :force => true do |t|
+    t.string   "query"
+    t.string   "url"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "top_searches", ["position"], :name => "index_top_searches_on_position", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                                        :null => false
