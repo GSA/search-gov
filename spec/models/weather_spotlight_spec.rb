@@ -44,7 +44,7 @@ describe WeatherSpotlight do
         end
         
         it "should set the location to the matching location with the highest population" do
-          WeatherSpotlight.new(@city_state_query).location.should == @popular_location
+          lambda {WeatherSpotlight.new(@city_state_query).should raise_error(RuntimeError, 'Location Not Found: baltimore, md')}
         end
       
         context "when the query is not found" do
@@ -64,7 +64,7 @@ describe WeatherSpotlight do
         end
         
         it "should set the location to the matching location with the highest population" do
-          WeatherSpotlight.new(@city_state_query).location.should == @san_fran
+          lambda {WeatherSpotlight.new(@city_state_query).should raise_error(RuntimeError, 'Location Not Found: san francisco ca')}
         end
         
         context "when the query is not found" do
@@ -84,7 +84,7 @@ describe WeatherSpotlight do
         end
         
         it "should set the location to the matching Location with the highest population" do
-          WeatherSpotlight.new(@city_query).location.should == @popular_location
+          lambda {WeatherSpotlight.new(@city_query).should raise_error(RuntimeError, 'Location Not Found: baltimore')}
         end
         
         context "when the query is not found" do

@@ -19,19 +19,6 @@ class Location < ActiveRecord::Base
       if location_query =~ /\d{5}/
         location = Location.find_by_zip_code(location_query)
       end
-      unless location
-        if location_query.include?(',')
-          city_state = location_query.split(',')
-          location = Location.find_by_state_and_city(city_state.last.strip, city_state.first, :order => 'population desc')
-        else
-          city_state = location_query.split
-          if city_state.last.length == 2
-            location = Location.find_by_state_and_city(city_state.last.strip, city_state[0..-2].join(' '), :order => 'population desc')
-          else
-            location = Location.find_by_city(city_state.collect{|term| term.strip}.join(' '), :order => 'population desc')
-          end
-        end
-      end
       location
     end
   end
