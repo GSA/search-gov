@@ -1,0 +1,14 @@
+= stylesheet_link_tag 'compiled/top_searches.css'
+#most_popular
+  .t
+    .b
+      .bl
+        .br
+          .tr
+            .tl
+              .head3
+                TOP SEARCHES
+              %ol.pop_list
+                - @top_searches.each do |top_search|
+                  %li
+                    =link_to top_search.query, top_search.link_url

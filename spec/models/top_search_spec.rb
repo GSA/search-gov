@@ -15,7 +15,7 @@ describe TopSearch do
     end
     
     it "should return a Search.USA.gov URL with the query URL-escaped if url is not present" do
-      @top_search_without_url.link_url.should == "http://search.usa.gov/search?query=some+query&linked=1"
+      @top_search_without_url.link_url.should == "http://search.usa.gov/search?query=some+query&linked=1&position=2"
     end
   end
 end
