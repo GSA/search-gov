@@ -874,6 +874,16 @@ describe Search do
         end
       end
       
+      context "when the request to Weather.gov times out" do
+        it "should catch the timeout exception, complete the search without a weather spotlight" do
+          WeatherSpotlight.should_receive(:new).with('21209').and_raise Errno::ETIMEDOUT
+          search = Search.new(:query => 'weather 21209')
+          search.run
+          search.should_not be_nil
+          search.weather_spotlight.should be_nil
+        end
+      end
+      
       context "when the search is for an affiliate" do
         it "should not search for weather spotlights" do
           WeatherSpotlight.should_not_receive(:new)

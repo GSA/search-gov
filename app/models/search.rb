@@ -133,7 +133,7 @@ class Search
       ActiveRecord::Base.benchmark("[Weather Search]", Logger::INFO) do
         begin
           self.weather_spotlight = WeatherSpotlight.new(WeatherSpotlight.parse_query(query))
-        rescue RuntimeError => error
+        rescue RuntimeError, Errno::ETIMEDOUT => error
           RAILS_DEFAULT_LOGGER.warn "Error in search for Weather: #{error.to_s}"
           self.weather_spotlight = nil
         end
