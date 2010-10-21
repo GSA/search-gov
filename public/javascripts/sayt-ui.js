@@ -2,6 +2,11 @@ if (usagov_sayt_url === undefined) {
     var usagov_sayt_url = "http://search.usa.gov/sayt";
 }
 
+function __highlight(s, t) {
+  var matcher = new RegExp("("+$.ui.autocomplete.escapeRegex(t)+")", "ig" );
+  return s.replace(matcher, "<span style='font-weight:normal;'>$1</span>");
+}
+
 $(document).ready(function() {
   $(".usagov-search-autocomplete").autocomplete({
   	source: function( request, response ) {
@@ -17,7 +22,7 @@ $(document).ready(function() {
   			success: function( data ) {
   				response( $.map(data, function( item ) {
   				  return {
-        			label: item,
+        			label: __highlight(item, request.term),
   						value: item
   					}
   				}));
@@ -36,5 +41,10 @@ $(document).ready(function() {
   	close: function() {
   		$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
   	}
-  });
+  }).data( "autocomplete" )._renderItem = function( ul, item ) {
+      return $( "<li></li>" )
+        .data( "item.autocomplete", item )
+        .append( $( "<a></a>" ).html(item.label) )
+        .appendTo( ul );
+    };
 });
