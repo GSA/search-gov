@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-log_file_rb.html">app/models/log_file.rb</a></td>
-            <td class='right_align'><tt>47</tt></td>
-            <td class='right_align'><tt>41</tt></td>
+            <td class='right_align'><tt>88</tt></td>
+            <td class='right_align'><tt>78</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -93,13 +93,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     def process(filepath)</pre></td>
+            <td><pre><a name="line7">7</a>     def transform_to_hive_queries_format(filepath)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>       RAILS_DEFAULT_LOGGER.info(&quot;Processing file #{filepath}&quot;)</pre></td>
+            <td><pre><a name="line8">8</a>       failures = []</pre></td>
           </tr>
         
           
@@ -111,169 +111,169 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>         failures = []</pre></td>
+            <td><pre><a name="line10">10</a>         while log_entry = file.gets</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>         while log_entry = file.gets</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>           parse_line(log_entry) rescue failures &lt;&lt; log_entry</pre></td>
+            <td><pre><a name="line11">11</a>           parse_and_emit_line(log_entry) rescue failures &lt;&lt; log_entry</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>         create!(:name=&gt;File.basename(filepath))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>         RAILS_DEFAULT_LOGGER.warn(&quot;File #{filepath} has #{failures.size} errors: #{failures.inspect}&quot;) if failures.size &gt; 0</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>       end unless find_by_name(File.basename(filepath))</pre></td>
+            <td><pre><a name="line12">12</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>     end</pre></td>
+            <td><pre><a name="line13">13</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>       RAILS_DEFAULT_LOGGER.warn(&quot;File #{filepath} has #{failures.size} errors:\n#{failures}&quot;) unless failures.empty?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>     def parse_line(log_entry)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>       log = Apache::Log::Combined.parse(log_entry) || Apache::Log::Common.parse(log_entry)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>       datetime = log.time</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>       ipaddr = log.remote_ip</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>       agent = log.agent rescue nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>       is_bot = is_agent_a_bot?(agent) rescue nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>       return unless log.path.include?('?')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>       query_string = log.path.split('?')[1]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>       parsed_log = CGI.parse(query_string)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>       query = parsed_log[&quot;query&quot;][0]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>       affiliate = parsed_log[&quot;affiliate&quot;][0].blank? ? &quot;usasearch.gov&quot; : parsed_log[&quot;affiliate&quot;][0]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>       locale = parsed_log[&quot;locale&quot;][0].blank? ? I18n.default_locale.to_s : parsed_log[&quot;locale&quot;][0]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>       is_contextual = parsed_log[&quot;linked&quot;][0].present? ? (parsed_log[&quot;linked&quot;][0] == &quot;1&quot; ? true : false) : false</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>       return if query.nil? or invalid_query(query)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>       noquery = parsed_log[&quot;noquery&quot;][0]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>       Query.create!(:query =&gt; query.strip, :affiliate =&gt; affiliate, :ipaddr =&gt; ipaddr, :timestamp =&gt; datetime, :locale =&gt; locale, :agent =&gt; agent, :is_bot =&gt; is_bot, :is_contextual =&gt; is_contextual) if noquery.nil?</pre></td>
+            <td><pre><a name="line15">15</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line36">36</a> </pre></td>
+            <td><pre><a name="line16">16</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>     private</pre></td>
+            <td><pre><a name="line17">17</a>     def parse_and_emit_line(log_entry)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>       log = Apache::Log::Combined.parse(log_entry) || Apache::Log::Common.parse(log_entry)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>       return unless log.path.include?('?')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       query_string = log.path.split('?')[1]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       return if query_string.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       params_hash = CGI.parse(query_string)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>       return unless params_hash[&quot;query&quot;][0].present?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>       query = params_hash[&quot;query&quot;][0].gsub(&quot;\t&quot;, ' ')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       normalized_query = normalize(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>       ipaddr = log.remote_ip</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       return if skippable_query(query) or skippable_query(normalized_query) or params_hash[&quot;noquery&quot;][0] or skippable_ip(ipaddr)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>       time_of_day = log.time.strftime(&quot;%H:%M:%S&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>       referrer = log.referer rescue ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>       agent = log.agent rescue ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>       affiliate = params_hash[&quot;affiliate&quot;][0].blank? ? Affiliate::USAGOV_AFFILIATE_NAME : params_hash[&quot;affiliate&quot;][0]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>       locale = params_hash[&quot;locale&quot;][0] == 'es' ? 'es' : I18n.default_locale.to_s</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>       is_bot = is_agent_a_bot?(agent) ? 1 : 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>       is_contextual = params_hash[&quot;linked&quot;][0].present? ? 1 : 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>       line = [ipaddr, time_of_day, log.path, log.size, referrer, agent, query, normalized_query, affiliate, locale, is_bot, is_contextual]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>       puts line.join(&quot;\t&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line37">37</a>     end</pre></td>
           </tr>
         
           
@@ -285,61 +285,307 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     def is_agent_a_bot?(agent)</pre></td>
+            <td><pre><a name="line39">39</a>     def process(filepath)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>       BOT_USER_AGENTS.detect { |bot| agent.downcase.include?(bot.downcase) }.present?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line41">41</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line42">42</a> </pre></td>
+            <td><pre><a name="line40">40</a>       RAILS_DEFAULT_LOGGER.info(&quot;Processing file #{filepath}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     def invalid_query(query)</pre></td>
+            <td><pre><a name="line41">41</a>       File.open(filepath) do |file|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>       query[0..3] == '&quot;&gt;&lt;a'</pre></td>
+            <td><pre><a name="line42">42</a>         failures = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>         while log_entry = file.gets</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>           parse_line(log_entry) rescue failures &lt;&lt; log_entry</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>     end</pre></td>
+            <td><pre><a name="line45">45</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line46">46</a>         create!(:name=&gt;File.basename(filepath))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>         RAILS_DEFAULT_LOGGER.warn(&quot;File #{filepath} has #{failures.size} errors: #{failures.inspect}&quot;) if failures.size &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>       end unless find_by_name(File.basename(filepath))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>   end</pre></td>
+            <td><pre><a name="line49">49</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a> end</pre></td>
+            <td><pre><a name="line50">50</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>     def parse_line(log_entry)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>       log = Apache::Log::Combined.parse(log_entry) || Apache::Log::Common.parse(log_entry)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>       datetime = log.time</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line54">54</a>       ipaddr = log.remote_ip</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>       agent = log.agent rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>       is_bot = is_agent_a_bot?(agent) rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>       return unless log.path.include?('?')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>       query_string = log.path.split('?')[1]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>       parsed_log = CGI.parse(query_string)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>       query = parsed_log[&quot;query&quot;][0]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line61">61</a>       affiliate = parsed_log[&quot;affiliate&quot;][0].blank? ? &quot;usasearch.gov&quot; : parsed_log[&quot;affiliate&quot;][0]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line62">62</a>       locale = parsed_log[&quot;locale&quot;][0].blank? ? I18n.default_locale.to_s : parsed_log[&quot;locale&quot;][0]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>       is_contextual = parsed_log[&quot;linked&quot;][0].present?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>       return if skippable_query(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>       noquery = parsed_log[&quot;noquery&quot;][0]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line66">66</a>       Query.create!(:query =&gt; query.strip, :affiliate =&gt; affiliate, :ipaddr =&gt; ipaddr, :timestamp =&gt; datetime, :locale =&gt; locale, :agent =&gt; agent, :is_bot =&gt; is_bot, :is_contextual =&gt; is_contextual) if noquery.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line67">67</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line68">68</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>     private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line70">70</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line71">71</a>     def is_agent_a_bot?(agent)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line72">72</a>       return false if agent.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line73">73</a>       BOT_USER_AGENTS.detect { |bot| agent.downcase.include?(bot.downcase) }.present?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line74">74</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line75">75</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line76">76</a>     def skippable_query(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>       query.nil? || query.empty? || query[0..3] == '&quot;&gt;&lt;a' || Query::DEFAULT_EXCLUDED_QUERIES.include?(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line78">78</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line79">79</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line80">80</a>     def skippable_ip(ip)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line81">81</a>       Query::DEFAULT_EXCLUDED_IPADDRESSES.include?(ip)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line82">82</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line83">83</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line84">84</a>     def normalize(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line85">85</a>       query.delete(&quot;'&quot;).gsub(&quot;,&quot;, ' ').squish.strip.downcase</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line86">86</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line87">87</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line88">88</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Oct 22 17:49:17 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Oct 22 15:09:30 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
