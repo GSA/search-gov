@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-boosted_site_rb.html">app/models/boosted_site.rb</a></td>
+            <td class='right_align'><tt>51</tt></td>
             <td class='right_align'><tt>48</tt></td>
-            <td class='right_align'><tt>45</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -69,283 +69,301 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   validates_presence_of :title, :url, :description</pre></td>
+            <td><pre><a name="line3">3</a>   validates_presence_of :title, :url, :description, :locale</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   belongs_to :affiliate</pre></td>
+            <td><pre><a name="line4">4</a>   validates_inclusion_of :locale, :in =&gt; SUPPORTED_LOCALES</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>   belongs_to :affiliate</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a> </pre></td>
+            <td><pre><a name="line6">6</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   searchable :auto_index =&gt; false do</pre></td>
+            <td><pre><a name="line7">7</a>   searchable :auto_index =&gt; false do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     text :title, :description</pre></td>
+            <td><pre><a name="line8">8</a>     text :title, :description</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     string :affiliate_name do |boosted_site|</pre></td>
+            <td><pre><a name="line9">9</a>     string :affiliate_name do |boosted_site|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>       if boosted_site.affiliate_id.nil?</pre></td>
+            <td><pre><a name="line10">10</a>       if boosted_site.affiliate_id.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>         Affiliate::USAGOV_AFFILIATE_NAME</pre></td>
+            <td><pre><a name="line11">11</a>         Affiliate::USAGOV_AFFILIATE_NAME</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>       elsif Affiliate.find_by_id(boosted_site.affiliate_id)</pre></td>
+            <td><pre><a name="line12">12</a>       elsif Affiliate.find_by_id(boosted_site.affiliate_id)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>         boosted_site.affiliate.name</pre></td>
+            <td><pre><a name="line13">13</a>         boosted_site.affiliate.name</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>       else</pre></td>
+            <td><pre><a name="line14">14</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>         nil</pre></td>
+            <td><pre><a name="line15">15</a>         nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>       end</pre></td>
+            <td><pre><a name="line16">16</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>     end</pre></td>
+            <td><pre><a name="line17">17</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>     string :locale</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>   end</pre></td>
+            <td><pre><a name="line19">19</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a> </pre></td>
+            <td><pre><a name="line20">20</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>   def self.search_for(query, affiliate = nil)</pre></td>
+            <td><pre><a name="line21">21</a>   def self.search_for(query, affiliate = nil, locale = I18n.default_locale)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>     search do</pre></td>
+            <td><pre><a name="line22">22</a>     search do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>       keywords query, :highlight =&gt; true</pre></td>
+            <td><pre><a name="line23">23</a>       keywords query, :highlight =&gt; true</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>       with :affiliate_name, affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME</pre></td>
+            <td><pre><a name="line24">24</a>       with(:affiliate_name, affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>       paginate :page =&gt; 1, :per_page =&gt; 3</pre></td>
+            <td><pre><a name="line25">25</a>       with(:locale, locale.to_s) if locale</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>     end rescue nil</pre></td>
+            <td><pre><a name="line26">26</a>       paginate :page =&gt; 1, :per_page =&gt; 3</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>     end rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>   end</pre></td>
+            <td><pre><a name="line28">28</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a> </pre></td>
+            <td><pre><a name="line29">29</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>   def self.process_boosted_site_xml_upload_for(affiliate, xmlfile)</pre></td>
+            <td><pre><a name="line30">30</a>   def self.process_boosted_site_xml_upload_for(affiliate, xmlfile)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>     begin</pre></td>
+            <td><pre><a name="line31">31</a>     begin</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>       doc=REXML::Document.new(xmlfile.read)</pre></td>
+            <td><pre><a name="line32">32</a>       doc=REXML::Document.new(xmlfile.read)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>       models_to_index = []</pre></td>
+            <td><pre><a name="line33">33</a>       models_to_index = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>       transaction do</pre></td>
+            <td><pre><a name="line34">34</a>       transaction do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>         destroy_all(&quot;affiliate_id = #{affiliate.id}&quot;)</pre></td>
+            <td><pre><a name="line35">35</a>         destroy_all(&quot;affiliate_id = #{affiliate.id}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>         doc.root.each_element('//entry') do |entry|</pre></td>
+            <td><pre><a name="line36">36</a>         doc.root.each_element('//entry') do |entry|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>           models_to_index &lt;&lt; create!( :url =&gt; entry.elements[&quot;url&quot;].first.to_s,</pre></td>
+            <td><pre><a name="line37">37</a>           models_to_index &lt;&lt; create!( :url =&gt; entry.elements[&quot;url&quot;].first.to_s,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>                                       :title =&gt; entry.elements[&quot;title&quot;].first.to_s,</pre></td>
+            <td><pre><a name="line38">38</a>                                       :title =&gt; entry.elements[&quot;title&quot;].first.to_s,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>                                       :description =&gt; entry.elements[&quot;description&quot;].first.to_s,</pre></td>
+            <td><pre><a name="line39">39</a>                                       :description =&gt; entry.elements[&quot;description&quot;].first.to_s,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>                                       :affiliate =&gt; affiliate )</pre></td>
+            <td><pre><a name="line40">40</a>                                       :affiliate =&gt; affiliate )</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>         end</pre></td>
+            <td><pre><a name="line41">41</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>       end</pre></td>
+            <td><pre><a name="line42">42</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>       Sunspot.index(models_to_index)</pre></td>
+            <td><pre><a name="line43">43</a>       Sunspot.index(models_to_index)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line41">41</a>       return true</pre></td>
+            <td><pre><a name="line44">44</a>       return true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a>     rescue</pre></td>
+            <td><pre><a name="line45">45</a>     rescue</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>       RAILS_DEFAULT_LOGGER.warn &quot;Problem processing boosted site XML document: #{$!}&quot;</pre></td>
+            <td><pre><a name="line46">46</a>       RAILS_DEFAULT_LOGGER.warn &quot;Problem processing boosted site XML document: #{$!}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>       Sunspot.index(affiliate.boosted_sites)</pre></td>
+            <td><pre><a name="line47">47</a>       Sunspot.index(affiliate.boosted_sites)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>     end</pre></td>
+            <td><pre><a name="line48">48</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>     false</pre></td>
+            <td><pre><a name="line49">49</a>     false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>   end</pre></td>
+            <td><pre><a name="line50">50</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a> end</pre></td>
+            <td><pre><a name="line51">51</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Oct 21 11:55:04 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Oct 22 17:49:17 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

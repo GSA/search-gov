@@ -69,25 +69,25 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     config.list.per_page = 100</pre></td>
+            <td><pre><a name="line3">3</a>     config.columns = [:description, :title, :url, :locale]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     config.list.columns.exclude :affiliate, :created_at</pre></td>
+            <td><pre><a name="line4">4</a>     config.columns[:locale].form_ui = :select</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     config.create.columns = [:description, :title, :url]</pre></td>
+            <td><pre><a name="line5">5</a>     config.columns[:locale].options = {:options =&gt; SUPPORTED_LOCALES.map{|locale| [locale.to_sym, locale]}}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     config.update.columns = [:description, :title, :url]</pre></td>
+            <td><pre><a name="line6">6</a>     config.list.per_page = 100</pre></td>
           </tr>
         
           
@@ -177,7 +177,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Oct 21 11:55:04 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Oct 22 17:49:16 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
