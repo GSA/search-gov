@@ -40,8 +40,8 @@ describe "query_log rake tasks" do
           Dir.mkdir(@logdir)
           log_entry = "sdfsdf"
           @logfile = "2009-09-18-cf26.log"
-          File.open("#{@logdir}/#{@logfile}", "w+") {|f| f.write(log_entry) }
-          File.open("#{@logdir}/b", "w+") {|f| f.write(log_entry) }
+          File.open("#{@logdir}/#{@logfile}", "w+") { |f| f.write(log_entry) }
+          File.open("#{@logdir}/b", "w+") { |f| f.write(log_entry) }
         end
 
         it "should process each log file with names matching /\d{4}-\d{2}-\d{2}-.{4}\.log$/" do
@@ -87,6 +87,31 @@ describe "query_log rake tasks" do
       end
     end
 
+    describe "usasearch:query_log:transform_to_hive_queries_format" do
+      before do
+        @task_name = "usasearch:query_log:transform_to_hive_queries_format"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when not passed a log file parameter" do
+        it "should print out an error message" do
+          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          @rake[@task_name].invoke
+        end
+      end
+
+      context "when passed a log file parameter" do
+        it "should attempt to process the log file" do
+          filename = "/path/to/file.log"
+          LogFile.should_receive(:transform_to_hive_queries_format).with(filename)
+          @rake[@task_name].invoke(filename)
+        end
+      end
+    end
+
     describe "usasearch:query_log:import" do
       before do
         @task_name = "usasearch:query_log:import"
@@ -108,8 +133,8 @@ describe "query_log rake tasks" do
           @logdir = "/tmp/mydir_for_import_test"
           Dir.mkdir(@logdir)
           log_entry = "doesn't matter"
-          @logfiles = %w{2010_03_08_web2.log 2010_03_08_web1.log file_we_should_ignore.log}
-          @logfiles.each {|logfile| File.open("#{@logdir}/#{logfile}", "w+") {|f| f.write(log_entry) } }
+          @logfiles = %w{  2010_03_08_web2.log 2010_03_08_web1.log file_we_should_ignore.log  }
+          @logfiles.each { |logfile| File.open("#{@logdir}/#{logfile}", "w+") { |f| f.write(log_entry) } }
         end
 
         it "should process each log file with names that look like YYYY_MM_DD_webN.log" do
@@ -122,7 +147,7 @@ describe "query_log rake tasks" do
         end
       end
     end
-  
+
     describe "usasearch:query_log:extract" do
       describe "usasearch:query_log:extract:clicks" do
         before do
@@ -141,14 +166,14 @@ describe "query_log rake tasks" do
         it "should have 'environment' as a prereq" do
           @rake[@task_name].prerequisites.should include("environment")
         end
-        
-        it "should default to yesterday if no date is provided, outputting to /tmp, and not use a limit" do 
+
+        it "should default to yesterday if no date is provided, outputting to /tmp, and not use a limit" do
           day = Date.yesterday.to_s(:number)
           sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(click_ip) as click_ip, queried_at, clicked_at, url, serp_position, affiliate, results_source, user_agent FROM clicks WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND click_ip NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(clicked_at) = #{day.to_i}"
           Click.should_receive(:find_by_sql).with(sql).and_return []
           @rake[@task_name].invoke
         end
-        
+
         it "should use a date passed in as an environment variable in place of the default" do
           day = Date.parse("2010-09-01").to_s(:number)
           sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(click_ip) as click_ip, queried_at, clicked_at, url, serp_position, affiliate, results_source, user_agent FROM clicks WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND click_ip NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(clicked_at) = #{day.to_i}"
@@ -156,7 +181,7 @@ describe "query_log rake tasks" do
           ENV["DAY"] = "20100901"
           @rake[@task_name].invoke
         end
-        
+
         it "should usa an outfile as specified as an environment variable" do
           day = Date.yesterday.to_s(:number)
           sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(click_ip) as click_ip, queried_at, clicked_at, url, serp_position, affiliate, results_source, user_agent FROM clicks WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND click_ip NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(clicked_at) = #{day.to_i}"
@@ -164,7 +189,7 @@ describe "query_log rake tasks" do
           ENV["EXPORT_FILE"] = "/tmp/my-clicks-#{day}"
           @rake[@task_name].invoke
         end
-        
+
         it "should include a limit if specified as an environment variable" do
           day = Date.yesterday.to_s(:number)
           sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(click_ip) as click_ip, queried_at, clicked_at, url, serp_position, affiliate, results_source, user_agent FROM clicks WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND click_ip NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(clicked_at) = #{day.to_i} LIMIT 10"
@@ -172,7 +197,7 @@ describe "query_log rake tasks" do
           ENV["LIMIT"] = "10"
           @rake[@task_name].invoke
         end
-        
+
         it "should upload the outputted file to S3" do
           day = Date.parse('2010-09-01').to_s(:number)
           filename = 'click_logs/2010/09/clicks-20100901'
@@ -180,15 +205,15 @@ describe "query_log rake tasks" do
           ENV['DAY'] = day
           @rake[@task_name].invoke
         end
-        
+
         it "should delete the locally generated outfile" do
           day = Date.yesterday.to_s(:number)
           filename = "/tmp/clicks-#{day}"
           File.should_receive(:delete).with(filename).and_return true
           @rake[@task_name].invoke
-        end        
+        end
       end
-      
+
       describe "usasearch:query_log:extract:queries" do
         before do
           @task_name = "usasearch:query_log:extract:queries"
@@ -206,14 +231,14 @@ describe "query_log rake tasks" do
         it "should have 'environment' as a prereq" do
           @rake[@task_name].prerequisites.should include("environment")
         end
-        
-        it "should default to yesterday if no date is provided, outputting to /tmp, and not use a limit" do 
+
+        it "should default to yesterday if no date is provided, outputting to /tmp, and not use a limit" do
           day = Date.yesterday.to_s(:number)
           sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(ipaddr) as ipaddr, timestamp, affiliate, locale, agent, is_bot FROM queries WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(timestamp) = #{day.to_i}"
           Query.should_receive(:find_by_sql).with(sql).and_return []
           @rake[@task_name].invoke
         end
-        
+
         it "should use a date passed in as an environment variable in place of the default" do
           day = Date.parse("2010-09-01").to_s(:number)
           sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(ipaddr) as ipaddr, timestamp, affiliate, locale, agent, is_bot FROM queries WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(timestamp) = #{day.to_i}"
@@ -221,7 +246,7 @@ describe "query_log rake tasks" do
           ENV["DAY"] = "20100901"
           @rake[@task_name].invoke
         end
-        
+
         it "should use an outfile as specified as an environment variable" do
           day = Date.yesterday.to_s(:number)
           sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(ipaddr) as ipaddr, timestamp, affiliate, locale, agent, is_bot FROM queries WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(timestamp) = #{day.to_i}"
@@ -229,7 +254,7 @@ describe "query_log rake tasks" do
           ENV["EXPORT_FILE"] = "/tmp/my-queries-#{day}"
           @rake[@task_name].invoke
         end
-        
+
         it "should include a limit if specified as an environment variable" do
           day = Date.yesterday.to_s(:number)
           sql = "SELECT REPLACE(query, '\\t', ' ') as query, SHA1(ipaddr) as ipaddr, timestamp, affiliate, locale, agent, is_bot FROM queries WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND date(timestamp) = #{day.to_i} LIMIT 10"
@@ -237,7 +262,7 @@ describe "query_log rake tasks" do
           ENV["LIMIT"] = "10"
           @rake[@task_name].invoke
         end
-        
+
         it "should upload the outputted file to S3" do
           day = Date.parse('2010-09-01').to_s(:number)
           filename = 'query_logs/2010/09/queries-20100901'
@@ -245,7 +270,7 @@ describe "query_log rake tasks" do
           ENV['DAY'] = day
           @rake[@task_name].invoke
         end
-        
+
         it "should delete the locally generated outfile" do
           day = Date.yesterday.to_s(:number)
           filename = "/tmp/queries-#{day}"
