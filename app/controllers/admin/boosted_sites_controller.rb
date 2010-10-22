@@ -1,9 +1,9 @@
 class Admin::BoostedSitesController < Admin::AdminController
   active_scaffold :boosted_site do |config|
+    config.columns = [:description, :title, :url, :locale]
+    config.columns[:locale].form_ui = :select
+    config.columns[:locale].options = {:options => SUPPORTED_LOCALES.map{|locale| [locale.to_sym, locale]}}
     config.list.per_page = 100
-    config.list.columns.exclude :affiliate, :created_at
-    config.create.columns = [:description, :title, :url]
-    config.update.columns = [:description, :title, :url]
   end
   
   def conditions_for_collection

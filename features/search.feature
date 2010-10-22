@@ -63,9 +63,9 @@ Feature: Search
     
   Scenario: Site visitor sees relevant boosted results for given search  
     Given the following Boosted Sites exist:
-      | title               | url                     | description                               |
-      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
-      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
+      | title               | url                     | description                               | 
+      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      | 
+      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         | 
       | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And the following Affiliates exist:
       | name             | contact_email         | contact_name        |
@@ -86,10 +86,10 @@ Feature: Search
     
   Scenario: Site visitor does not see relevant boosted sites on Buscador
     Given the following Boosted Sites exist:
-      | title               | url                     | description                               |
-      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
-      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
-      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
+      | title                   | url                     | description                               | locale  |
+      | Our Emergency Page      | http://www.aff.gov/911  | Updated information on the emergency      | en      |
+      | FAQ Emergency Page      | http://www.aff.gov/faq  | More information on the emergency         | en      |
+      | Spanish Emergency Page  | http://www.aff.gov/ese  | Spanish Emergency                         | es      |
     And I am on the homepage
     And I follow "Busque en español"
     And I fill in "query" with "emergency"
@@ -97,3 +97,4 @@ Feature: Search
     Then I should be on the search page
     And I should not see "Our Emergency Page"
     And I should not see "FAQ Emergency Page"
+    And I should see "Spanish Emergency"

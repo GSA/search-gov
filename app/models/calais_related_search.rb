@@ -1,5 +1,4 @@
 class CalaisRelatedSearch < ActiveRecord::Base
-  SUPPORTED_LOCALES = %w{en es}
   BATCH_SIZE = 10000
   BING_RESULTS_TO_CONSIDER_FOR_TEXT = 100
 

@@ -18,7 +18,7 @@ describe CalaisRelatedSearch do
 
   should_validate_presence_of :term, :related_terms, :locale
   should_validate_uniqueness_of :term, :scope => :locale
-  should_validate_inclusion_of :locale, :in => CalaisRelatedSearch::SUPPORTED_LOCALES
+  should_validate_inclusion_of :locale, :in => SUPPORTED_LOCALES
 
   describe "#populate_with_new_popular_terms" do
     context "when some of the popular terms already have their related searches computed" do

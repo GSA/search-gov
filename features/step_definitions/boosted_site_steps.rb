@@ -9,7 +9,7 @@ end
 
 Given /^the following Boosted Sites exist:$/ do |table|
   sites = table.hashes.collect do |hash|
-    BoostedSite.create(:url => hash["url"], :description => hash["description"], :title => hash["title"])
+    BoostedSite.create(:url => hash["url"], :description => hash["description"], :title => hash["title"], :locale => hash["locale"].present? ? hash["locale"] : I18n.default_locale.to_s)
   end
   Sunspot.index(sites) # because BoostedSite has auto indexing turned off for saves/creates
 end

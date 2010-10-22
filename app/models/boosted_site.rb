@@ -1,6 +1,7 @@
 class BoostedSite < ActiveRecord::Base
   require 'rexml/document'
-  validates_presence_of :title, :url, :description
+  validates_presence_of :title, :url, :description, :locale
+  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES
   belongs_to :affiliate
 
   searchable :auto_index => false do
@@ -14,12 +15,14 @@ class BoostedSite < ActiveRecord::Base
         nil
       end
     end
+    string :locale
   end
 
-  def self.search_for(query, affiliate = nil)
+  def self.search_for(query, affiliate = nil, locale = I18n.default_locale)
     search do
       keywords query, :highlight => true
-      with :affiliate_name, affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME
+      with(:affiliate_name, affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
+      with(:locale, locale.to_s) if locale
       paginate :page => 1, :per_page => 3
     end rescue nil
   end

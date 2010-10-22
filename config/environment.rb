@@ -1,5 +1,8 @@
 # Be sure to restart your server when you modify this file
 
+# This has to be up here for some reason; otherwise, tests fail.
+SUPPORTED_LOCALES = %w{en es}
+
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 

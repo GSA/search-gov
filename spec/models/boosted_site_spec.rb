@@ -12,11 +12,16 @@ describe BoostedSite do
   end
 
   describe "Creating new instance of BoostedSite" do
-    should_validate_presence_of :url, :title, :description
+    should_validate_presence_of :url, :title, :description, :locale
+    should_validate_inclusion_of :locale, :in => SUPPORTED_LOCALES
     should_belong_to :affiliate
 
     it "should create a new instance given valid attributes" do
       BoostedSite.create!(@valid_attributes)
+    end
+    
+    it "should default the locale to 'en'" do
+      BoostedSite.create!(@valid_attributes).locale.should == 'en'
     end
   end
   
