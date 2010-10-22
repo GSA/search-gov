@@ -1,6 +1,6 @@
 - result_partial = result_partial_for(search)
 = spelling_suggestion(search, @affiliate)
-- if (search.boosted_sites && search.boosted_sites.total > 0)
+- if (search.boosted_sites && search.boosted_sites.total > 0 && english_locale?)
   #boosted
     - search.boosted_sites.hits(:verify => true).each_with_index do |hit, index|
       - boosted_site_url = hit.instance.url
