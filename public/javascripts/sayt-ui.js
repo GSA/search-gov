@@ -4,7 +4,7 @@ if (usagov_sayt_url === undefined) {
 
 function __highlight(s, t) {
   var matcher = new RegExp("("+$.ui.autocomplete.escapeRegex(t)+")", "ig" );
-  return s.replace(matcher, "<span style='font-weight:normal;'>$1</span>");
+  return s.replace(matcher, "<span style='font-weight:normal;color:#000'>$1</span>");
 }
 
 $(document).ready(function() {
