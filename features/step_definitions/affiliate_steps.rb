@@ -49,11 +49,13 @@ end
 Then /^the search bar should have SAYT enabled$/ do
   response.body.should have_tag("script[type=text/javascript][src^=/javascripts/sayt-ui.js]")
   response.body.should have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")
+  response.body.should have_tag("script[type=text/javascript][src^=/javascripts/jquery/jquery-ui-1.8.5.custom.min.js]")
 end
 
 Then /^the search bar should not have SAYT enabled$/ do
   response.body.should_not have_tag("script[type=text/javascript][src^=/javascripts/sayt-ui.js]")
   response.body.should_not have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")
+  response.body.should_not have_tag("script[type=text/javascript][src^=/javascripts/jquery/jquery-ui-1.8.5.custom.min.js]")
 end
 
 Then /^affiliate SAYT suggestions for "([^\"]*)" should be enabled$/ do |affiliate_name|
