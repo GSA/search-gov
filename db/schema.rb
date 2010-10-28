@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101108142930) do
+ActiveRecord::Schema.define(:version => 20101108223827) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -111,18 +111,6 @@ ActiveRecord::Schema.define(:version => 20101108142930) do
 
   add_index "daily_contextual_query_totals", ["day"], :name => "index_daily_contextual_query_totals_on_day", :unique => true
 
-  create_table "daily_query_ip_stats", :force => true do |t|
-    t.date    "day",                                                   :null => false
-    t.string  "query",     :limit => 100,                              :null => false
-    t.string  "ipaddr",    :limit => 17,                               :null => false
-    t.integer "times",                                                 :null => false
-    t.string  "affiliate", :limit => 32,  :default => "usasearch.gov"
-    t.string  "locale",    :limit => 5,   :default => "en"
-  end
-
-  add_index "daily_query_ip_stats", ["day", "affiliate", "locale"], :name => "daily_query_ip_stats_index"
-  add_index "daily_query_ip_stats", ["query"], :name => "index_daily_query_ip_stats_on_query"
-
   create_table "daily_query_stats", :force => true do |t|
     t.date    "day",                                                   :null => false
     t.string  "query",     :limit => 100,                              :null => false
@@ -210,14 +198,6 @@ ActiveRecord::Schema.define(:version => 20101108142930) do
   add_index "locations", ["state"], :name => "index_locations_on_state"
   add_index "locations", ["zip_code"], :name => "index_locations_on_zip_code"
 
-  create_table "log_files", :force => true do |t|
-    t.string   "name",       :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "log_files", ["name"], :name => "index_log_files_on_name", :unique => true
-
   create_table "misspellings", :force => true do |t|
     t.string   "wrong"
     t.string   "rite"
@@ -236,20 +216,6 @@ ActiveRecord::Schema.define(:version => 20101108142930) do
   end
 
   add_index "moving_queries", ["day", "times"], :name => "index_moving_queries_on_day_and_times"
-
-  create_table "queries", :id => false, :force => true do |t|
-    t.string   "ipaddr",        :limit => 17
-    t.string   "query",         :limit => 100
-    t.string   "affiliate",     :limit => 32
-    t.datetime "timestamp",                                       :null => false
-    t.string   "locale",        :limit => 5
-    t.string   "agent"
-    t.boolean  "is_bot"
-    t.boolean  "is_contextual",                :default => false
-  end
-
-  add_index "queries", ["query"], :name => "queryindex"
-  add_index "queries", ["timestamp"], :name => "timestamp"
 
   create_table "query_groups", :force => true do |t|
     t.string   "name",       :null => false

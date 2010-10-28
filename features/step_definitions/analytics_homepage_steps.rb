@@ -49,3 +49,7 @@ end
 Given /^the DailyContextualQueryTotal for yesterday is "([^\"]*)"$/ do |total|
   DailyContextualQueryTotal.create(:day => Date.yesterday, :total => total)
 end
+
+Given /^no DailyContextualQueryTotals exist$/ do
+  DailyContextualQueryTotal.delete_all
+end

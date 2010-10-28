@@ -63,19 +63,6 @@ class DailyUsageStat < ActiveRecord::Base
     self.total_unique_visitors = profile_data["data"][query_date]["measures"]["Visitors"]
   end
 
-  def populate_queries_data
-    if self.profile != 'Affiliates'
-      locale = self.profile == 'English' ? 'en' : 'es'
-      self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND locale=? AND affiliate=? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), locale, "usasearch.gov"])
-    else
-      if self.affiliate == 'usasearch.gov'
-        self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate <> ? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), "usasearch.gov"])
-      else
-        self.total_queries = Query.count(:all, :conditions => ["timestamp between ? and ? AND affiliate = ? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false", Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), self.affiliate])
-      end
-    end
-  end
-
   def get_profile_data
     Net::HTTP.new(WEBTRENDS_HOSTNAME, Net::HTTP.http_default_port).start do |http|
       request = Net::HTTP::Get.new("/v2/ReportService/profiles/#{PROFILES[self.profile][:profile_id]}/?period=#{self.day.strftime('%Ym%md%d')}&format=json")
