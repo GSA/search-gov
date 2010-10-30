@@ -48,10 +48,11 @@ class DailyUsageStat < ActiveRecord::Base
     DailyUsageStat.sum(field, :conditions => [ "(day between ? and ?) AND profile = ? AND affiliate = ?", report_date.beginning_of_month, report_date.end_of_month, profile, affiliate ])
   end
 
-  def populate_data
-    if self.day && self.profile
-      self.populate_webtrends_data if self.affiliate == 'usasearch.gov'
-      self.populate_queries_data
+  def self.update_webtrends_stats_for(day)
+    PROFILES.each_key do |profile_name|
+      daily_usage_stat = find_or_initialize_by_day_and_profile_and_affiliate(day, profile_name, Affiliate::USAGOV_AFFILIATE_NAME)
+      daily_usage_stat.populate_webtrends_data
+      daily_usage_stat.save!
     end
   end
 
