@@ -1,6 +1,6 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 describe LogFile do
-  fixtures :log_files
+  fixtures :log_files, :affiliates
 
   should_validate_presence_of :name
   should_validate_uniqueness_of :name
@@ -8,9 +8,9 @@ describe LogFile do
   describe "#transform_to_hive_queries_format(filepath)" do
     before do
       raw_entries = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:26 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
-143.81.248.54 - - [08/Oct/2009:02:02:27 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
-143.81.248.55 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:26 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.54 - - [08/Oct/2009:02:02:27 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.55 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       @log_entries = raw_entries.split("\n")
       @logfile = "/tmp/2009-09-18-cf26.log"
@@ -45,12 +45,12 @@ EOF
     context "when log entry is well-formed" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a tab-delimited record with all the fields [ipaddr, time_of_day (in GMT), path, response size in bytes, referrer, user agent, query term, normalized query term, affiliate, locale, is_bot, is_contextual]" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery plus&more\tdelinquent delivery plus&more\tacqnet.gov_far_current\ten\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery plus&more\tdelinquent delivery plus&more\tnoaa.gov\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -58,12 +58,25 @@ EOF
     context "when log entry query string begins with affiliate parameter" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?affiliate=parseme&input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?affiliate=NOAA.gov&input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a tab-delimited record with all the fields [ipaddr, time_of_day (in GMT), path, response size in bytes, referrer, user agent, query term, normalized query term, affiliate, locale, is_bot, is_contextual]" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?affiliate=parseme&input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery\tdelinquent delivery\tparseme\ten\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?affiliate=NOAA.gov&input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery\tdelinquent delivery\tnoaa.gov\ten\t0\t0")
+        LogFile.parse_and_emit_line(@log_entry)
+      end
+    end
+
+    context "when affiliate parameter contains uppercase characters" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?affiliate=NOAA.gov&input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+      end
+
+      it "should lowercase the affiliate name" do
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?affiliate=NOAA.gov&input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery\tdelinquent delivery\tnoaa.gov\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -71,12 +84,12 @@ EOF
     context "when log entry contains query with an apostrophe" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=car%27s&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=car%27s&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should strip out the apostrophe in the normalized query" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=car%27s&affiliate=acqnet.gov_far_current&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tcar's\tcars\tacqnet.gov_far_current\ten\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=car%27s&affiliate=noaa.gov&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tcar's\tcars\tnoaa.gov\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -84,12 +97,12 @@ EOF
     context "when log entry contains query with a comma" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=city%2Cstate&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=city%2Cstate&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should turn the comma into a space in the normalized query" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=city%2Cstate&affiliate=acqnet.gov_far_current&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tcity,state\tcity state\tacqnet.gov_far_current\ten\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=city%2Cstate&affiliate=noaa.gov&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tcity,state\tcity state\tnoaa.gov\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -97,12 +110,12 @@ EOF
     context "when query term contains leading, trailing, or multiple spaces" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=%20car%20%20port%20&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=%20car%20%20port%20&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should strip out the leading and trailing spaces and squish multiple spaces from the normalized query" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=%20car%20%20port%20&affiliate=acqnet.gov_far_current&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\t car  port \tcar port\tacqnet.gov_far_current\ten\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=%20car%20%20port%20&affiliate=noaa.gov&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\t car  port \tcar port\tnoaa.gov\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -110,12 +123,12 @@ EOF
     context "when affiliate param is not present" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a record with the affiliate set to the USA.gov affiliate name" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery\tdelinquent delivery\tusasearch.gov\ten\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery\tdelinquent delivery\tusasearch.gov\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -123,12 +136,12 @@ EOF
     context "when affiliate is nil (e.g., '&y=12&affiliate=&x=12')" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=foo&affiliate=&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=foo&affiliate=&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a record with the affiliate set to the USA.gov affiliate name" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=foo&affiliate=&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tfoo\tfoo\t#{Affiliate::USAGOV_AFFILIATE_NAME}\ten\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=foo&affiliate=&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tfoo\tfoo\t#{Affiliate::USAGOV_AFFILIATE_NAME}\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -136,7 +149,20 @@ EOF
     context "when request contains 'noquery' parameter" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=foo&affiliate=acqnet.gov_far_current&noquery=&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=foo&affiliate=noaa.gov&noquery=&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+      end
+
+      it "should ignore the record" do
+        LogFile.should_not_receive(:puts)
+        LogFile.parse_and_emit_line(@log_entry)
+      end
+    end
+
+    context "when the affiliate does not exist" do
+      before do
+        @log_entry = <<'EOF'
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&affiliate=sexytime.com&query=spam&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
@@ -149,7 +175,7 @@ EOF
     context "when query param is not present" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&affiliate=acqnet.gov_far_current&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
@@ -188,12 +214,12 @@ EOF
     context "when locale param is not present" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a record with the default locale" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tobama\tobama\tusasearch.gov\t#{I18n.default_locale.to_s}\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tobama\tobama\tusasearch.gov\t#{I18n.default_locale.to_s}\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -201,12 +227,12 @@ EOF
     context "when English local param is present" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=en HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=en HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a record with the English locale specified" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=en\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tobama\tobama\tusasearch.gov\ten\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=en\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tobama\tobama\tusasearch.gov\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -214,12 +240,12 @@ EOF
     context "when Spanish local param is present" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a record with the Spanish locale specified" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tobama\tobama\tusasearch.gov\tes\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tobama\tobama\tusasearch.gov\tes\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -227,12 +253,12 @@ EOF
     context "when the User Agent is blank" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a record with no agent (i.e., nothing between the tab delimiters)" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\t\tobama\tobama\tusasearch.gov\tes\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\t\tobama\tobama\tusasearch.gov\tes\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -240,12 +266,12 @@ EOF
     context "when the user agent is not a bot" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a record with is_bot set to 0 (false)" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tobama\tobama\tusasearch.gov\tes\t0\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tobama\tobama\tusasearch.gov\tes\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -253,12 +279,12 @@ EOF
     context "when the user agent matches a known bot user agent" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a record with is_bot set to 1 (true)" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\tobama\tobama\tusasearch.gov\tes\t1\t0")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=obama&locale=es\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\tobama\tobama\tusasearch.gov\tes\t1\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -266,12 +292,12 @@ EOF
     context "when the line is in the Apache common format, instead of the expected combined format" do
       before do
         @log_entry = <<'EOF'
-209.112.135.192 - - [31/May/2010:00:02:05 -0400] "GET /search?affiliate=nws.noaa.gov&v%3Aproject=firstgov&query=alaska HTTP/1.1" 200 15035
+209.112.135.192 - - [31/May/2010:00:02:05 -0400] "GET /search?affiliate=noaa.gov&v%3Aproject=firstgov&query=alaska HTTP/1.1" 200 15035
 EOF
       end
 
       it "should parse the log line, but not set the user agent, and have is_bot set to 0 (false)" do
-        LogFile.should_receive(:puts).with("209.112.135.192\t04:02:05\t/search?affiliate=nws.noaa.gov&v%3Aproject=firstgov&query=alaska\t15035\t\t\talaska\talaska\tnws.noaa.gov\ten\t0\t0")
+        LogFile.should_receive(:puts).with("209.112.135.192\t04:02:05\t/search?affiliate=noaa.gov&v%3Aproject=firstgov&query=alaska\t15035\t\t\talaska\talaska\tnoaa.gov\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -279,12 +305,12 @@ EOF
     context "when the query includes a parameter where linked=1" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18&linked=1 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18&linked=1 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a record with the is_contextual flag to 1 (true)" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18&linked=1\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery plus&more\tdelinquent delivery plus&more\tacqnet.gov_far_current\ten\t0\t1")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18&linked=1\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery plus&more\tdelinquent delivery plus&more\tnoaa.gov\ten\t0\t1")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -292,12 +318,12 @@ EOF
     context "when the query contains a parameter where linked is present but doesn't equal '1'" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18&linked=2 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18&linked=2 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 
       it "should emit a record with the is_contextual flag to 1 (true)" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?query=delinquent+delivery%20plus%26more&affiliate=acqnet.gov_far_current&x=44&y=18&linked=2\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery plus&more\tdelinquent delivery plus&more\tacqnet.gov_far_current\ten\t0\t1")
+        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18&linked=2\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery plus&more\tdelinquent delivery plus&more\tnoaa.gov\ten\t0\t1")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -305,7 +331,7 @@ EOF
     context "when the query starts with an invalid sequence of characters, like a XSS injection" do
       before do
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=%22><a%20href&affiliate=acqnet.gov_far_current&x=44&y=18&linked=2 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=acqnet.gov_far_current&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=%22><a%20href&affiliate=noaa.gov&x=44&y=18&linked=2 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 

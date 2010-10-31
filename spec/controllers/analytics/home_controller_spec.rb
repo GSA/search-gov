@@ -87,7 +87,7 @@ describe Analytics::HomeController do
           AWS::S3::S3Object.should_receive(:url_for).with(filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
         end
         get :index
-        response.body.should contain(/Download CSV of top 1000 queries for/)
+        response.body.should contain(/Download CSV of top queries for/)
         response.body.should contain(/English, Spanish/)
       end
 
@@ -99,7 +99,7 @@ describe Analytics::HomeController do
         AWS::S3::S3Object.should_receive(:exists?).with(spanish_filename, AWS_BUCKET_NAME).and_return true
         AWS::S3::S3Object.should_receive(:url_for).with(spanish_filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
         get :index
-        response.body.should contain(/Download CSV of top 1000 queries for/)
+        response.body.should contain(/Download CSV of top queries for/)
         response.body.should_not contain(/English/)
         response.body.should contain(/Spanish/)
         response.body.should_not contain(/, Spanish/)
@@ -113,7 +113,7 @@ describe Analytics::HomeController do
         AWS::S3::S3Object.should_receive(:exists?).with(spanish_filename, AWS_BUCKET_NAME).and_return false
         AWS::S3::S3Object.should_not_receive(:url_for).with(spanish_filename, AWS_BUCKET_NAME, :use_ssl => true)
         get :index
-        response.body.should contain(/Download CSV of top 1000 queries for/)
+        response.body.should contain(/Download CSV of top queries for/)
         response.body.should contain(/English/)
         response.body.should_not contain(/Spanish/)
         response.body.should_not contain(/English,/)
@@ -126,7 +126,7 @@ describe Analytics::HomeController do
           AWS::S3::S3Object.should_not_receive(:url_for).with(filename, AWS_BUCKET_NAME, :use_ssl => true)
         end
         get :index
-        response.body.should_not contain(/Download CSV of top 1000 queries for/)
+        response.body.should_not contain(/Download CSV of top queries for/)
         response.body.should_not contain(/English/)
         response.body.should_not contain(/Spanish/)
       end

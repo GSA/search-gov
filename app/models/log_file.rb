@@ -29,6 +29,8 @@ class LogFile < ActiveRecord::Base
       referrer = log.referer rescue ''
       agent = log.agent rescue ''
       affiliate = params_hash["affiliate"][0].blank? ? Affiliate::USAGOV_AFFILIATE_NAME : params_hash["affiliate"][0]
+      return unless Affiliate.exists?(:name => affiliate) or affiliate == Affiliate::USAGOV_AFFILIATE_NAME
+      affiliate.downcase!
       locale = params_hash["locale"][0] == 'es' ? 'es' : I18n.default_locale.to_s
       is_bot = is_agent_a_bot?(agent) ? 1 : 0
       is_contextual = params_hash["linked"][0].present? ? 1 : 0
