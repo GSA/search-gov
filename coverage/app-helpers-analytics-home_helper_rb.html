@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-analytics-home_helper_rb.html">app/helpers/analytics/home_helper.rb</a></td>
-            <td class='right_align'><tt>88</tt></td>
-            <td class='right_align'><tt>76</tt></td>
+            <td class='right_align'><tt>92</tt></td>
+            <td class='right_align'><tt>79</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -411,7 +411,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line60">60</a>       &quot;Download CSV of top 1000 queries for #{ report_date.to_s } (#{ link_to('English', AWS::S3::S3Object.url_for(english_filename, AWS_BUCKET_NAME, :use_ssl =&gt; true)) if english_filename_exists }#{ &quot;, &quot; if english_filename_exists &amp;&amp; spanish_filename_exists }#{ link_to('Spanish', AWS::S3::S3Object.url_for(spanish_filename, AWS_BUCKET_NAME, :use_ssl =&gt; true)) if spanish_filename_exists })&quot; if english_filename_exists || spanish_filename_exists</pre></td>
+            <td><pre><a name="line60">60</a>       &quot;Download CSV of top queries for #{ report_date.to_s } (#{ link_to('English', s3_link(english_filename)) if english_filename_exists }#{ &quot;, &quot; if english_filename_exists &amp;&amp; spanish_filename_exists }#{ link_to('Spanish', s3_link(spanish_filename)) if spanish_filename_exists })&quot; if english_filename_exists || spanish_filename_exists</pre></td>
           </tr>
         
           
@@ -465,7 +465,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line69">69</a>     &quot;Download top 20,000 queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to(&quot;English&quot;, AWS::S3::S3Object.url_for(english_filename, AWS_BUCKET_NAME, :use_ssl =&gt; true)) if english_filename_exists }#{ &quot;, &quot; if english_filename_exists &amp;&amp; spanish_filename_exists }#{ link_to(&quot;Spanish&quot;, AWS::S3::S3Object.url_for(spanish_filename, AWS_BUCKET_NAME, :use_ssl =&gt; true)) if spanish_filename_exists })&quot; if english_filename_exists || spanish_filename_exists</pre></td>
+            <td><pre><a name="line69">69</a>     &quot;Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to(&quot;English&quot;, s3_link(english_filename)) if english_filename_exists }#{ &quot;, &quot; if english_filename_exists &amp;&amp; spanish_filename_exists }#{ link_to(&quot;Spanish&quot;, s3_link(spanish_filename)) if spanish_filename_exists })&quot; if english_filename_exists || spanish_filename_exists</pre></td>
           </tr>
         
           
@@ -495,13 +495,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>       filename = daily_report_filename(affiliate_name, report_date)</pre></td>
+            <td><pre><a name="line74">74</a>       filename = daily_report_filename(affiliate_name.downcase, report_date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line75">75</a>       &quot;Download top 1000 queries for #{ report_date.to_s } (#{ link_to 'csv', AWS::S3::S3Object.url_for(filename, AWS_BUCKET_NAME, :use_ssl =&gt; true) })&quot; if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)</pre></td>
+            <td><pre><a name="line75">75</a>       &quot;Download top queries for #{ report_date.to_s } (#{ link_to 'csv', s3_link(filename) })&quot; if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)</pre></td>
           </tr>
         
           
@@ -531,13 +531,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>     filename = monthly_report_filename(affiliate_name, report_date)</pre></td>
+            <td><pre><a name="line80">80</a>     filename = monthly_report_filename(affiliate_name.downcase, report_date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>     &quot;Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to 'csv', AWS::S3::S3Object.url_for(filename, AWS_BUCKET_NAME, :use_ssl =&gt; true)}&quot; if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)</pre></td>
+            <td><pre><a name="line81">81</a>     &quot;Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to 'csv', s3_link(filename)}&quot; if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)</pre></td>
           </tr>
         
           
@@ -579,13 +579,37 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line88">88</a> end</pre></td>
+            <td><pre><a name="line88">88</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line89">89</a>   def s3_link(filename)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line90">90</a>     AWS::S3::S3Object.url_for(filename, AWS_BUCKET_NAME, :use_ssl =&gt; true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line91">91</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line92">92</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Oct 22 15:09:30 -0700 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Mon Nov 01 13:46:56 -0400 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
