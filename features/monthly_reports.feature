@@ -65,9 +65,9 @@ Feature: Monthly Reports
     | hcreform   | health care bill, health care reform, obama health care |
     When I am on the reports homepage
     Then in "pop_query_groups" I should see "hcreform"
-    And in "pop_query_groups" I should see "1110"
+    And in "pop_query_groups" I should see "3330"
     And in "pop_query_groups" I should see "POTUS"
-    And in "pop_query_groups" I should see "10015"
+    And in "pop_query_groups" I should see "30045"
 
   Scenario: Viewing DailyUsageStats on the the Reports homepage
     Given the following DailyUsageStats exists for each day in the current month

@@ -27,9 +27,10 @@ Given /^the following DailyUsageStats exist for each day in "([^\"]*)"$/ do |mon
 end
 
 Given /^the following DailyQueryStats exist for the past (\d+) days:$/ do |days_back, table|
+  DailyQueryStat.delete_all
   start_date = Date.yesterday - days_back.to_i.days
   table.hashes.each do |hash|
-    start_date.upto(Date.today) do |date|
+    start_date.upto(Date.yesterday) do |date|
       DailyQueryStat.create(:day => date, :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? Affiliate::USAGOV_AFFILIATE_NAME : hash["affiliate"], :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
     end
   end
