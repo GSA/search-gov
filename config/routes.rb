@@ -56,4 +56,5 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pages,
                 :controller => 'pages',
                 :only       => [:show]
+  map.superfresh_feed '/superfresh', :controller => "superfresh", :action => "index"
 end
