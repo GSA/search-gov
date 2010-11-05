@@ -1,0 +1,28 @@
+!!!strict
+%html
+  %head
+    = stylesheet_link_tag 'compiled/widgets.css'
+  %body{:style=>"margin:0;"}
+    #weather-widget
+      .weather-leftcol
+        %ul.weather-list
+          %li
+            %a{:href=>"http://www.nhc.noaa.gov/index.shtml?"}
+              %span
+                News on Latest Atlantic Storms
+          %li
+            %a{:href=>"http://www.nasa.gov/mission_pages/hurricanes/archives/2010/h2010_08.html"}
+              %span
+                2010 Atlantic Hurricane Season
+        %ul.weather-list
+          %li
+            %a{:href=>"http://www.nhc.noaa.gov/text/refresh/MIATCPAT1+shtml/301448.shtml"}
+              %span
+                Danielle Advisories
+          %li
+            %a{:href=>"http://www.nhc.noaa.gov/refresh/graphics_at1+shtml/144713.shtml?5-daynl#contents"}
+              %span
+                Danielle 5 Day Forecast Cone
+      .weather-image-container
+        .weather-image
+          %img{:src=>"http://www.nhc.noaa.gov/overview_atl/atl_overview.gif"}

@@ -1,0 +1,25 @@
+= stylesheet_link_tag 'compiled/widgets.css'
+%p
+  %a{ :name => "content" }
+%h1
+  Widgets
+%p
+  To include the following widgets on your web site, copy and paste the code below the widgets to your site.
+%h2
+  Weather widget  
+%p
+  %iframe{:id=>"weather_widget_frame" :scrolling=>'no' :src=>"/widgets/weather_spotlight"}
+%p
+  Copy and Paste:
+  .code
+    &lt;iframe id='weather_widget' scrolling='no' src='http://search.usa.gov/widgets/weather_spotlight' style='border: 0; padding: 0; margin: 0; width: 620px; height: 257px;'>&lt;/iframe> 
+%br    
+%h2
+  Top searches widget
+%p
+  #top_searches_container
+    %iframe{:id=>"top_searches" :scrolling=>'no' :src=>"/widgets/top_searches"}
+%p
+  Copy and Paste:
+  .code
+    &lt;div id="top_searches_container" style="width:232px; height:265px; overflow:hidden; position:relative; background: transparent;">&lt;iframe id="top_searches" scrolling='no' src="http://search.usa.gov/widgets/top_searches" style="position:absolute; top: -10px; left:-10px; overflow: hidden; border: 0; padding: 0; margin: 0; width: 245px; height: 280px;">&lt;/iframe>&lt;/div>

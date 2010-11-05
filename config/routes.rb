@@ -52,7 +52,8 @@ ActionController::Routing::Routes.draw do |map|
   map.auto_complete ':controller/:action',
                     :requirements => { :action => /auto_complete_for_\S+/ },
                     :conditions => { :method => :get }
-  map.top_searches '/top_searches', :controller => "searches", :action => "top_searches"
+  map.top_searches_widget '/widgets/top_searches', :controller => "widgets", :action => "top_searches"
+  map.weather_spotlight_widget '/widgets/weather_spotlight', :controller => "widgets", :action => "weather_spotlight"
   map.resources :pages,
                 :controller => 'pages',
                 :only       => [:show]

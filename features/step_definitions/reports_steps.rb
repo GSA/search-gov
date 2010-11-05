@@ -26,16 +26,6 @@ Given /^the following DailyUsageStats exist for each day in "([^\"]*)"$/ do |mon
   end
 end
 
-Given /^the following DailyQueryStats exist for the past (\d+) days:$/ do |days_back, table|
-  DailyQueryStat.delete_all
-  start_date = Date.yesterday - days_back.to_i.days
-  table.hashes.each do |hash|
-    start_date.upto(Date.yesterday) do |date|
-      DailyQueryStat.create(:day => date, :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? Affiliate::USAGOV_AFFILIATE_NAME : hash["affiliate"], :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
-    end
-  end
-end
-
 Then /^I should see the header for the current date$/ do
   response.should contain("Monthly Usage Stats for #{Date::MONTHNAMES[Date.today.month]} #{Date.today.year}")
   response.should contain("(current as of #{Date.yesterday.strftime('%B %e, %Y').squish})")
