@@ -1,7 +1,7 @@
 class AffiliatesController < AffiliateAuthController
   before_filter :require_affiliate_or_admin, :except=> [:index, :edit]
   before_filter :require_affiliate, :only => [:edit]
-  before_filter :setup_affiliate, :only=> [:edit, :update, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports]
+  before_filter :setup_affiliate, :only=> [:edit, :update, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports, :superfresh_urls, :create_superfresh_url]
   before_filter :establish_aws_connection, :only => [:analytics, :monthly_reports]
 
   def index
@@ -75,7 +75,24 @@ class AffiliatesController < AffiliateAuthController
                                                                  Date.parse(params["analytics_search_end_date"]),
                                                                  @affiliate.name)
   end
-
+  
+  def superfresh_urls
+    @superfresh_url = SuperfreshUrl.new
+    @uncrawled_urls = SuperfreshUrl.uncrawled_urls(@affiliate)
+    @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])
+  end
+  
+  def create_superfresh_url
+    @superfresh_url = SuperfreshUrl.new(params[:superfresh_url])
+    @superfresh_url.affiliate = @affiliate
+    if @superfresh_url.save
+      flash[:notice] = "Successfully added #{@superfresh_url.url}.  It will be refreshed soon."
+    else
+      flash[:error] = "There was an error adding the URL to be refreshed.  Please check the URL and try again."
+    end
+    redirect_to superfresh_urls_affiliate_path(@affiliate)
+  end
+  
   def destroy
     @affiliate.destroy
     flash[:success]= "Affiliate deleted"

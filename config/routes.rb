@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resource :user_session
   map.resources :password_resets
-  map.resources :affiliates, :member => { :push_content_for => :post, :embed_code => :get } do |affiliate|
+  map.resources :affiliates, :member => { :push_content_for => :post, :embed_code => :get, :superfresh_urls => :get, :create_superfresh_url => :post } do |affiliate|
     affiliate.resource :boosted_sites_upload, :only => [:create, :new]
   end
   map.affiliate_analytics_home_page '/affiliates/:id/analytics', :controller => 'affiliates', :action => 'analytics'
@@ -32,6 +32,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :clicks, :active_scaffold => true
     admin.resources :calais_related_searches, :active_scaffold => true
     admin.resources :top_searches
+    admin.resources :superfresh_urls, :active_scaffold => true
   end
   map.affiliate_analytics_redirect '/admin/affiliates/:id/analytics', :controller => 'admin/affiliates', :action => 'analytics'
   map.admin_home_page '/admin', :controller => "admin/home"

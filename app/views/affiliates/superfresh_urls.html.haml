@@ -1,0 +1,40 @@
+%h3
+  Refresh a URL
+%p
+  Enter a URL into the form below, and it will be updated shortly.
+- form_for @superfresh_url, {:url => create_superfresh_url_affiliate_path} do |f|
+  = f.label :url
+  = f.text_field :url
+  = f.submit "Submit"
+
+%br
+
+#uncrawled-urls.span-24.headertitle
+  %h2
+    Uncrawled URLs (#{@uncrawled_urls.size})
+%table
+  %tr
+    %th
+      URL
+  - @uncrawled_urls.each do |uncrawled_url|
+    %tr
+      %td.uncrawled-url
+        = link_to uncrawled_url.url, uncrawled_url.url
+        
+#crawled-urls.span-24.headertitle
+  %h2
+    Previously Refreshed URLs
+%table
+  %tr
+    %th
+      URL
+    %th
+      Crawled At
+  - @crawled_urls.each do |crawled_url|
+    %tr
+      %td.crawled-url
+        = link_to crawled_url.url, crawled_url.url
+      %td
+        = crawled_url.crawled_at
+%div{:style => "text-align: center;"}
+  = will_paginate @crawled_urls

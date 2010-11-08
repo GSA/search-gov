@@ -58,6 +58,10 @@ module NavigationHelpers
       admin_boosted_sites_path
     when /the top search admin page/
       admin_top_searches_path
+    when /the affiliate superfresh page/
+      superfresh_urls_affiliate_path(:locale => nil, :m => nil)
+    when /the superfresh feed/
+      superfresh_feed_path
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

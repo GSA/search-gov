@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101022163543) do
+ActiveRecord::Schema.define(:version => 20101108142930) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -322,6 +322,14 @@ ActiveRecord::Schema.define(:version => 20101022163543) do
     t.string   "notes"
     t.text     "html",                         :null => false
     t.boolean  "is_active",  :default => true, :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "superfresh_urls", :force => true do |t|
+    t.text     "url"
+    t.datetime "crawled_at"
+    t.integer  "affiliate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

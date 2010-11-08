@@ -500,7 +500,7 @@ describe Recall do
         @older_recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'This is a really long sentence that includes the word knife which is the keyword that we are looking for.  By putting lots of words in this description, we will make this document have a lower score, and when we boost more recent results, this one will end up lower.')
 
         @recent_recall = Recall.create(:recall_number => '23456', :recalled_on => Date.yesterday, :organization => 'CPSC')
-        @recent_recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'This is a really long sentence that includes the word knife which is the keyword that we are looking for.  By making this document about as long as the other document, they will have about the same score, and when boosted by date, this will be first.')
+        @recent_recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'This is a really long sentence that includes the word knife which is the keyword that we are looking for.  They will have about the same score, and when boosted by date, this will be first.')
         
         Recall.reindex
       end
