@@ -3,7 +3,7 @@ require 'spec_helper'
 describe ImageSearch do
   before do
     # Image search for "White House"
-    uri = "http://api.search.live.net/json.aspx?image.offset=0&image.count=10&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Image+RelatedSearch&Options=EnableHighlighting&query=White%20House%20(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil)"
+    uri = "http://api.bing.net/json.aspx?image.offset=0&image.count=10&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Image+RelatedSearch&Options=EnableHighlighting&query=White%20House%20(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil)"
     @body = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_image_results_for_white_house.json")
     
     # Should be using fakeweb, but search_spec is too brittle right now - bk

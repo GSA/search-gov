@@ -7,7 +7,7 @@ class Search
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PER_PAGE = 10
   MAX_PER_PAGE = 50
-  JSON_SITE = "http://api.search.live.net/json.aspx"
+  JSON_SITE = "http://api.bing.net/json.aspx"
   APP_ID = "A4C32FAE6F3DB386FC32ED1C4F3024742ED30906"
   SOURCES = "Spell+Web"
   USER_AGENT = "USASearch"
