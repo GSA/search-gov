@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates_controller_rb.html">app/controllers/affiliates_controller.rb</a></td>
-            <td class='right_align'><tt>85</tt></td>
-            <td class='right_align'><tt>73</tt></td>
+            <td class='right_align'><tt>102</tt></td>
+            <td class='right_align'><tt>88</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,7 +75,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :setup_affiliate, :only=&gt; [:edit, :update, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports]</pre></td>
+            <td><pre><a name="line4">4</a>   before_filter :setup_affiliate, :only=&gt; [:edit, :update, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports, :superfresh_urls, :create_superfresh_url]</pre></td>
           </tr>
         
           
@@ -519,31 +519,31 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line78">78</a> </pre></td>
+            <td><pre><a name="line78">78</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>   def destroy</pre></td>
+            <td><pre><a name="line79">79</a>   def superfresh_urls</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>     @affiliate.destroy</pre></td>
+            <td><pre><a name="line80">80</a>     @superfresh_url = SuperfreshUrl.new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>     flash[:success]= &quot;Affiliate deleted&quot;</pre></td>
+            <td><pre><a name="line81">81</a>     @uncrawled_urls = SuperfreshUrl.uncrawled_urls(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>     redirect_to account_path</pre></td>
+            <td><pre><a name="line82">82</a>     @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])</pre></td>
           </tr>
         
           
@@ -555,19 +555,121 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line84">84</a> </pre></td>
+            <td><pre><a name="line84">84</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line85">85</a>   def create_superfresh_url</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line86">86</a>     @superfresh_url = SuperfreshUrl.new(params[:superfresh_url])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line87">87</a>     @superfresh_url.affiliate = @affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line88">88</a>     if @superfresh_url.save</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line89">89</a>       flash[:notice] = &quot;Successfully added #{@superfresh_url.url}.  It will be refreshed soon.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line85">85</a> end</pre></td>
+            <td><pre><a name="line90">90</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line91">91</a>       flash[:error] = &quot;There was an error adding the URL to be refreshed.  Please check the URL and try again.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line92">92</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line93">93</a>     redirect_to superfresh_urls_affiliate_path(@affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line94">94</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line95">95</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line96">96</a>   def destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line97">97</a>     @affiliate.destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line98">98</a>     flash[:success]= &quot;Affiliate deleted&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line99">99</a>     redirect_to account_path</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line100">100</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line101">101</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line102">102</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Nov 08 12:20:00 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Nov 09 12:42:18 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

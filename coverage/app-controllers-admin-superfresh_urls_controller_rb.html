@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/food_recall.rb</title>
+    <title>app/controllers/admin/superfresh_urls_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/models/food_recall.rb</h2>
+    <h2>app/controllers/admin/superfresh_urls_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-food_recall_rb.html">app/models/food_recall.rb</a></td>
-            <td class='right_align'><tt>4</tt></td>
-            <td class='right_align'><tt>4</tt></td>
+            <td class="left_align"><a href="app-controllers-admin-superfresh_urls_controller_rb.html">app/controllers/admin/superfresh_urls_controller.rb</a></td>
+            <td class='right_align'><tt>8</tt></td>
+            <td class='right_align'><tt>8</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,25 +57,49 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class FoodRecall &lt; ActiveRecord::Base</pre></td>
+            <td><pre><a name="line1">1</a> class Admin::SuperfreshUrlsController &lt; Admin::AdminController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   validates_presence_of :url, :summary, :description, :food_type</pre></td>
+            <td><pre><a name="line2">2</a>   active_scaffold :superfresh_url do |config|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   belongs_to :recall</pre></td>
+            <td><pre><a name="line3">3</a>     config.list.sorting = { :crawled_at =&gt; :asc, :created_at =&gt; :asc }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>     config.list.per_page = 100</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>     config.columns = [:url, :affiliate, :crawled_at, :created_at]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>     config.create.columns = [:url]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a> end</pre></td>
+            <td><pre><a name="line7">7</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a> end</pre></td>
           </tr>
         
       </tbody>
