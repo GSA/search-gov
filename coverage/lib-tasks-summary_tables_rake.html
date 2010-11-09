@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-summary_tables_rake.html">lib/tasks/summary_tables.rake</a></td>
-            <td class='right_align'><tt>116</tt></td>
-            <td class='right_align'><tt>104</tt></td>
+            <td class='right_align'><tt>27</tt></td>
+            <td class='right_align'><tt>23</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -62,134 +62,134 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line2">2</a>   namespace :daily_query_ip_stats do</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line2">2</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     insert_sql = &quot;INSERT IGNORE INTO daily_query_ip_stats (query, ipaddr, day, affiliate, locale, times) SELECT lower(query), ipaddr, date(timestamp) day, affiliate, locale, count(*) FROM queries &quot;</pre></td>
+            <td><pre><a name="line3">3</a>   namespace :daily_query_stats do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     where_clause = &quot;WHERE query NOT IN ( 'enter keywords', 'cheesewiz' , 'cheeseman', 'clusty' ,' ', '1', 'test') AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false&quot;</pre></td>
+            <td><pre><a name="line4">4</a>     desc &quot;tell Solr to index the collection of most-recently-added DailyQueryStats (ideally yesterday's)&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     affiliate_where_clause = &quot;WHERE query NOT IN ( 'enter keywords', 'cheesewiz' , 'cheeseman', 'clusty' ,' ', '1', 'test') AND ipaddr NOT IN ('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169') AND (is_bot=false OR ISNULL(is_bot)) AND affiliate&lt;&gt;'usasearch.gov' AND is_contextual=false&quot;</pre></td>
+            <td><pre><a name="line5">5</a>     task :index_most_recent_day_stats_in_solr =&gt; :environment do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     group_by = &quot;GROUP BY day, query, ipaddr, affiliate, locale&quot;</pre></td>
+            <td><pre><a name="line6">6</a>       Sunspot.index(DailyQueryStat.find_all_by_day(DailyQueryStat.most_recent_populated_date))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line8">8</a>     desc &quot;initial population of daily_query_ip_stats from queries table. Destroys existing data in daily_query_ip_stats table.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>     task :populate =&gt; :environment do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>       sql = &quot;truncate daily_query_ip_stats&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>       sql = &quot;#{insert_sql} #{where_clause} #{group_by}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
+            <td><pre><a name="line7">7</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>     end</pre></td>
+            <td><pre><a name="line8">8</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a> </pre></td>
+            <td><pre><a name="line9">9</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     desc &quot;compute daily_query_ip_stats from queries table for given YYYYMMDD date (defaults to yesterday)&quot;</pre></td>
+            <td><pre><a name="line10">10</a>   namespace :moving_queries do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>     task :compute, :day, :needs =&gt; :environment do |t, args|</pre></td>
+            <td><pre><a name="line11">11</a>     desc &quot;initial population of moving_queries data using every date available in daily_queries_stats table. Replaces any existing data in moving_queries table.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
+            <td><pre><a name="line12">12</a>     task :populate =&gt; :environment do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>       yyyymmdd = args.day.to_i</pre></td>
+            <td><pre><a name="line13">13</a>       min = DailyQueryStat.minimum(:day, :conditions =&gt; ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>       sql = &quot;DELETE FROM daily_query_ip_stats WHERE day = #{yyyymmdd}&quot;</pre></td>
+            <td><pre><a name="line14">14</a>       max = DailyQueryStat.maximum(:day, :conditions =&gt; ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
+            <td><pre><a name="line15">15</a>       days = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>       sql = &quot;#{insert_sql} #{where_clause} AND date(timestamp) = #{yyyymmdd} #{group_by}&quot;</pre></td>
+            <td><pre><a name="line16">16</a>       min.upto(max) {|day| days &lt;&lt; day.to_s(:number) }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
+            <td><pre><a name="line17">17</a>       days.reverse.each { |day| MovingQuery.compute_for(day) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line18">18</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line19">19</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>     desc &quot;compute moving queries for 1-, 7-, and 30-day windows for a given YYYYMMDD date (defaults to yesterday)&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>     task :compute, :day, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>       MovingQuery.compute_for(args.day)</pre></td>
           </tr>
         
           
@@ -201,559 +201,25 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>     desc &quot;compute daily_query_ip_stats from queries table for given YYYYMMDD date (defaults to yesterday) for affiliates only&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>     task :compute_affiliates, :day, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>       yyyymmdd = args.day.to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>       sql = &quot;DELETE FROM daily_query_ip_stats WHERE day = #{yyyymmdd} AND affiliate &lt;&gt; 'usasearch.gov'&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>       sql = &quot;#{insert_sql} #{affiliate_where_clause} AND date(timestamp) = #{yyyymmdd} #{group_by}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
+            <td><pre><a name="line25">25</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>     end</pre></td>
+            <td><pre><a name="line26">26</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line36">36</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>   namespace :daily_query_stats do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>     insert_sql = &quot;INSERT INTO daily_query_stats (query, day, times, affiliate, locale) SELECT d.query, d.day, count(*), d.affiliate, d.locale FROM daily_query_ip_stats d, proportions p&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>     affiliate_insert_sql = &quot;INSERT INTO daily_query_stats (query, day, times, affiliate, locale) SELECT d.query, d.day, count(*), d.affiliate, d.locale FROM daily_query_ip_stats d, affiliate_proportions p&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>     where_clause = &quot;WHERE d.query = p.query AND p.proportion &gt; 0.10 AND d.affiliate=p.affiliate AND d.locale=p.locale&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>     affiliate_where_clause = &quot;WHERE d.query = p.query AND p.proportion &gt; 0.10 and d.affiliate=p.affiliate AND p.affiliate&lt;&gt;'usasearch.gov' AND d.locale=p.locale&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>     group_by = &quot;GROUP BY d.query, d.day, d.affiliate, d.locale&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line43">43</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>     desc &quot;initial population of daily_query_stats from queries &amp; daily_queries_ip_stats table. Destroys existing data in daily_query_stats table.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>     task :populate =&gt; :environment do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>       sql = &quot;truncate daily_query_stats&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>       calculate_proportions</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>       sql = &quot;#{insert_sql} #{where_clause} #{group_by}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line50">50</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line51">51</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line52">52</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line53">53</a>     desc &quot;compute daily_query_stats from queries &amp; daily_queries_ip_stats table for given YYYYMMDD date (defaults to yesterday)&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line54">54</a>     task :compute, :day, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line55">55</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line56">56</a>       yyyymmdd = args.day.to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line57">57</a>       sql = &quot;delete from daily_query_stats where day = #{yyyymmdd}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line58">58</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line59">59</a>       calculate_proportions</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>       sql = &quot;#{insert_sql} #{where_clause} and d.day = #{yyyymmdd} #{group_by}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line61">61</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line62">62</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line63">63</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line64">64</a>     desc &quot;compute daily_query_stats from queries &amp; daily_queries_ip_stats table for given YYYYMMDD date (defaults to yesterday) for affiliates&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line65">65</a>     task :compute_affiliates, :day, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line66">66</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line67">67</a>       yyyymmdd = args.day.to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line68">68</a>       sql = &quot;delete from daily_query_stats where day = #{yyyymmdd} AND affiliate&lt;&gt;'usasearch.gov'&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line69">69</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line70">70</a>       calculate_affiliate_proportions</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line71">71</a>       sql = &quot;#{affiliate_insert_sql} #{affiliate_where_clause} and d.day = #{yyyymmdd} #{group_by}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line72">72</a>       ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line73">73</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line74">74</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line75">75</a>     desc &quot;tell Solr to index the collection of most-recently-added DailyQueryStats (ideally yesterday's)&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line76">76</a>     task :index_most_recent_day_stats_in_solr =&gt; :environment do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line77">77</a>       Sunspot.index(DailyQueryStat.find_all_by_day(DailyQueryStat.most_recent_populated_date))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line78">78</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line79">79</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line80">80</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line81">81</a>   namespace :moving_queries do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line82">82</a>     desc &quot;initial population of moving_queries data using every date available in daily_queries_stats table. Replaces any existing data in moving_queries table.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line83">83</a>     task :populate =&gt; :environment do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line84">84</a>       min = DailyQueryStat.minimum(:day, :conditions =&gt; ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line85">85</a>       max = DailyQueryStat.maximum(:day, :conditions =&gt; ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line86">86</a>       days = []</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line87">87</a>       min.upto(max) {|day| days &lt;&lt; day.to_s(:number) }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line88">88</a>       days.reverse.each { |day| MovingQuery.compute_for(day) }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line89">89</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line90">90</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line91">91</a>     desc &quot;compute moving queries for 1-, 7-, and 30-day windows for a given YYYYMMDD date (defaults to yesterday)&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line92">92</a>     task :compute, :day, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line93">93</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line94">94</a>       MovingQuery.compute_for(args.day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line95">95</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line96">96</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line97">97</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line98">98</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line99">99</a>   def calculate_proportions</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line100">100</a>     sql = &quot;DROP TABLE IF EXISTS proportions&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line101">101</a>     ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line102">102</a>     sql = &quot;CREATE TEMPORARY TABLE proportions(query varchar(100), affiliate varchar(32), locale varchar(5), times int, uips int, proportion float) SELECT query, affiliate, locale, sum(times) as times, count(distinct ipaddr) as uips, count(distinct ipaddr)/sum(times) proportion FROM daily_query_ip_stats GROUP BY affiliate, locale, query HAVING times &gt; 10&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line103">103</a>     ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line104">104</a>     sql = &quot;ALTER TABLE proportions ADD INDEX qp (query, proportion)&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line105">105</a>     ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line106">106</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line107">107</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line108">108</a>   def calculate_affiliate_proportions</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line109">109</a>     sql = &quot;DROP TABLE IF EXISTS affiliate_proportions&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line110">110</a>     ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line111">111</a>     sql = &quot;CREATE TEMPORARY TABLE affiliate_proportions(query varchar(100), affiliate varchar(32), locale varchar(5), times int, uips int, proportion float) SELECT query, affiliate, locale, sum(times) as times, count(distinct ipaddr) as uips, count(distinct ipaddr)/sum(times) proportion FROM daily_query_ip_stats GROUP BY affiliate, locale, query HAVING times &gt; 10&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line112">112</a>     ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line113">113</a>     sql = &quot;ALTER TABLE affiliate_proportions ADD INDEX qp (query, proportion)&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line114">114</a>     ActiveRecord::Base.connection.execute(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line115">115</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line116">116</a> end</pre></td>
+            <td><pre><a name="line27">27</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Nov 09 12:42:19 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Nov 09 10:29:57 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

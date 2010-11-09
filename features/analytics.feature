@@ -54,19 +54,19 @@ Feature: Analytics Homepage
     And in "dqgs1" I should see "1110"
     And in "dqgs1" I should see "POTUS"
     And in "dqgs1" I should see "10015"
-    
-  Scenario: Viewing Daily Contextual Query Totals
+
+  Scenario: Viewing Daily Contextual Query Totals when no data exists
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And I am on the analytics homepage
+    And no DailyContextualQueryTotals exist
+    When I am on the analytics homepage
     Then I should see "Total USA.gov Most Popular Clickthrus: 0"
-    
-    Given the following DailyQueryStats exist:
-    | query                       | times   |
-    | obama                       | 10000   |
-    And I am on the analytics homepage
-    Then I should see "Total USA.gov Most Popular Clickthrus: 0"
-        
-    Given the DailyContextualQueryTotal for yesterday is "100"
-    And I am on the analytics homepage
+
+  Scenario: Viewing Daily Contextual Query Totals when data exists
+    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And the following DailyQueryStats exist:
+      | query                                                    | times   |
+      | sets most recent date to yesterday                       | 10000   |
+    And the DailyContextualQueryTotal for yesterday is "100"
+    When I am on the analytics homepage
     Then I should see "Total USA.gov Most Popular Clickthrus: 100"
 

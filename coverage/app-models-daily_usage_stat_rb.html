@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-daily_usage_stat_rb.html">app/models/daily_usage_stat.rb</a></td>
-            <td class='right_align'><tt>93</tt></td>
-            <td class='right_align'><tt>81</tt></td>
+            <td class='right_align'><tt>80</tt></td>
+            <td class='right_align'><tt>69</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -447,175 +447,97 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>   def populate_queries_data</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line67">67</a>     if self.profile != 'Affiliates'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line68">68</a>       locale = self.profile == 'English' ? 'en' : 'es'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line69">69</a>       self.total_queries = Query.count(:all, :conditions =&gt; [&quot;timestamp between ? and ? AND locale=? AND affiliate=? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false&quot;, Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), locale, &quot;usasearch.gov&quot;])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line70">70</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line71">71</a>       if self.affiliate == 'usasearch.gov'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line72">72</a>         self.total_queries = Query.count(:all, :conditions =&gt; [&quot;timestamp between ? and ? AND affiliate &lt;&gt; ? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false&quot;, Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), &quot;usasearch.gov&quot;])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line73">73</a>       else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line74">74</a>         self.total_queries = Query.count(:all, :conditions =&gt; [&quot;timestamp between ? and ? AND affiliate = ? AND (is_bot=false OR ISNULL(is_bot)) AND is_contextual=false&quot;, Time.parse('00:00', self.day), Time.parse('23:59:59', self.day), self.affiliate])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line75">75</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line76">76</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line77">77</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line78">78</a> </pre></td>
+            <td><pre><a name="line66">66</a>   def get_profile_data</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>   def get_profile_data</pre></td>
+            <td><pre><a name="line67">67</a>     Net::HTTP.new(WEBTRENDS_HOSTNAME, Net::HTTP.http_default_port).start do |http|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>     Net::HTTP.new(WEBTRENDS_HOSTNAME, Net::HTTP.http_default_port).start do |http|</pre></td>
+            <td><pre><a name="line68">68</a>       request = Net::HTTP::Get.new(&quot;/v2/ReportService/profiles/#{PROFILES[self.profile][:profile_id]}/?period=#{self.day.strftime('%Ym%md%d')}&amp;format=json&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>       request = Net::HTTP::Get.new(&quot;/v2/ReportService/profiles/#{PROFILES[self.profile][:profile_id]}/?period=#{self.day.strftime('%Ym%md%d')}&amp;format=json&quot;)</pre></td>
+            <td><pre><a name="line69">69</a>       request.basic_auth &quot;#{WEBTRENDS_ACCOUNT}\\#{WEBTRENDS_USERNAME}&quot;, WEBTRENDS_PASSWORD</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>       request.basic_auth &quot;#{WEBTRENDS_ACCOUNT}\\#{WEBTRENDS_USERNAME}&quot;, WEBTRENDS_PASSWORD</pre></td>
+            <td><pre><a name="line70">70</a>       response = http.request(request)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>       response = http.request(request)</pre></td>
+            <td><pre><a name="line71">71</a>       case response</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>       case response</pre></td>
+            <td><pre><a name="line72">72</a>         when Net::HTTPSuccess, Net::HTTPRedirection</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>         when Net::HTTPSuccess, Net::HTTPRedirection</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line86">86</a>           response.body</pre></td>
+            <td><pre><a name="line73">73</a>           response.body</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line87">87</a>         else</pre></td>
+            <td><pre><a name="line74">74</a>         else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>           response.error!</pre></td>
+            <td><pre><a name="line75">75</a>           response.error!</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line89">89</a>       end</pre></td>
+            <td><pre><a name="line76">76</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line90">90</a>     end</pre></td>
+            <td><pre><a name="line77">77</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line91">91</a>   end</pre></td>
+            <td><pre><a name="line78">78</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line92">92</a> </pre></td>
+            <td><pre><a name="line79">79</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line93">93</a> end</pre></td>
+            <td><pre><a name="line80">80</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Nov 09 12:42:18 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Nov 09 10:29:57 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
