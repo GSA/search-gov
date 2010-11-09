@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-query_log_rake.html">lib/tasks/query_log.rake</a></td>
-            <td class='right_align'><tt>100</tt></td>
-            <td class='right_align'><tt>84</tt></td>
+            <td class='right_align'><tt>12</tt></td>
+            <td class='right_align'><tt>12</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -68,596 +68,68 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>     desc &quot;Transform and filter a search query log file into a format that can be imported into Hive's queries table&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     desc &quot;Process a directory of Vivisimo query log files (NCSA format 1)&quot;</pre></td>
+            <td><pre><a name="line4">4</a>     task :transform_to_hive_queries_format, :file_name, :needs =&gt; :environment do |t, args|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     task :process, :log_dir_name, :destination_log_dir_root, :needs =&gt; :environment do |t, args|</pre></td>
+            <td><pre><a name="line5">5</a>       if args.file_name.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>       RAILS_DEFAULT_LOGGER.error(&quot;usage: rake usasearch:query_log:process log_dir_name destination_log_dir_root&quot;) and return if (args.log_dir_name.nil? || args.destination_log_dir_root.nil?)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>       Dir.glob(&quot;#{args.log_dir_name}/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]-*.log&quot;) do |file|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line8">8</a>         LogFile.process(file)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>         destination_log_dir_name = File.basename(file)[0, 7]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>         destination_dir = [args.destination_log_dir_root, destination_log_dir_name].join(&quot;/&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>         FileUtils.mkdir(destination_dir) unless File.directory?(destination_dir)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>         FileUtils.cp(file, destination_dir)</pre></td>
+            <td><pre><a name="line6">6</a>         RAILS_DEFAULT_LOGGER.error &quot;usage: rake usasearch:query_log:transform_to_hive_queries_format[file_name]&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>       end</pre></td>
+            <td><pre><a name="line7">7</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>         LogFile.transform_to_hive_queries_format(args.file_name)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>     end</pre></td>
+            <td><pre><a name="line9">9</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>     desc &quot;Import a directory of search query log files (NCSA combined)&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>     task :import, :log_dir_name, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>       RAILS_DEFAULT_LOGGER.error(&quot;usage: rake usasearch:query_log:import log_dir_name&quot;) and return if args.log_dir_name.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>       Dir.glob(&quot;#{args.log_dir_name}/[0-9][0-9][0-9][0-9]_[0-9][0-9]_[0-9][0-9]_web*.log&quot;) { |file| LogFile.process(file) }</pre></td>
+            <td><pre><a name="line10">10</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>     end</pre></td>
+            <td><pre><a name="line11">11</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>     desc &quot;Transform and filter a search query log file into a format that can be imported into Hive's queries table&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>     task :transform_to_hive_queries_format, :file_name, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>       if args.file_name.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>         RAILS_DEFAULT_LOGGER.error &quot;usage: rake usasearch:query_log:transform_to_hive_queries_format[file_name]&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line26">26</a>       else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>         LogFile.transform_to_hive_queries_format(args.file_name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line28">28</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line29">29</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line30">30</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>     namespace :extract do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>       extract_query_sql = &quot;SELECT REPLACE(query, '\\t', ' ') as query, SHA1(ipaddr) as ipaddr, timestamp, affiliate, locale, agent, is_bot FROM queries&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>       extract_click_sql = &quot;SELECT REPLACE(query, '\\t', ' ') as query, SHA1(click_ip) as click_ip, queried_at, clicked_at, url, serp_position, affiliate, results_source, user_agent FROM clicks&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>       base_where_clause = &quot;WHERE query not in ('enter keywords', 'cheesewiz', 'cheeseman', 'clusty', ' ', '1', 'test') AND query REGEXP'[[:alpha:]]+' AND query NOT REGEXP'^[A-Za-z]{2}[0-9]+US$' AND query NOT REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)'&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>       ip_addresses = &quot;('192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169')&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>       query_where_clause = &quot;AND ipaddr NOT IN #{ip_addresses}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>       click_where_clause = &quot;AND click_ip NOT IN #{ip_addresses}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line38">38</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line39">39</a>       # where query REGEXP'[[:alpha:]]+'  at least one alpha character.  strips: zip codes, phone numbers, FedEx tracking, USPS domestic tracking,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line40">40</a>       # credit card numbers</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line41">41</a>       # ^[A-Za-z]{2}[0-9]+US$ - USPS intervational</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line42">42</a>       # REGEXP'@[[a-zA-Z0-9]+\\.(com|org|edu|net)' - Most non-government e-mails</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>       desc &quot;extract click table to a tab delimited file.  Data extracted has IP addresses hashed using SHA1.  Clicks have tabs replaced by spaces.  Clicks with PII are not extracted.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>       task :clicks =&gt; :environment do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>         day = ENV[&quot;DAY&quot;] || Date.yesterday.to_s(:number)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>         yyyymmdd = day.to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>         year = day.slice(0..3)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>         month = day.slice(4..5)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>         outfile = ENV[&quot;EXPORT_FILE&quot;] || &quot;/tmp/clicks-#{day}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line50">50</a>         limit = ENV[&quot;LIMIT&quot;] || nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line51">51</a>         sql = &quot;#{extract_click_sql} #{base_where_clause} #{click_where_clause} AND date(clicked_at) = #{yyyymmdd}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line52">52</a>         if limit != nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line53">53</a>           sql &lt;&lt; &quot; LIMIT #{limit}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line54">54</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line55">55</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line56">56</a>         options = {}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line57">57</a>         options.merge!(:limit =&gt; limit.to_i) if limit.present?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line58">58</a>         clicks = Click.find_by_sql(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line59">59</a>         FasterCSV.open(outfile, &quot;w&quot;, :col_sep =&gt; &quot;\t&quot;) do |csv|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>           clicks.each do |click|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line61">61</a>             csv &lt;&lt; [click.query, click.click_ip, click.queried_at.strftime('%Y-%m-%d %H:%M:%S'), click.clicked_at.strftime('%Y-%m-%d %H:%M:%S'), click.url, click.serp_position, click.affiliate, click.results_source, click.user_agent]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line62">62</a>           end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line63">63</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line64">64</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line65">65</a>         # copy export file to S3</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line66">66</a>         filename = &quot;click_logs/#{year}/#{month}/clicks-#{yyyymmdd}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line67">67</a>         AWS::S3::Base.establish_connection!(:access_key_id =&gt; AWS_ACCESS_KEY_ID, :secret_access_key =&gt; AWS_SECRET_ACCESS_KEY)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line68">68</a>         AWS::S3::S3Object.store(filename, Kernel.open(outfile), AWS_BUCKET_NAME)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line69">69</a>         File.delete(outfile)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line70">70</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line71">71</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line72">72</a>       desc &quot;extract query table to a tab delimited file.  Data extracted has IP addresses hashed using SHA1.  Queries have tabs replaced by spaces.  Queries with PII are not extracted.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line73">73</a>       task :queries =&gt; :environment do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line74">74</a>         day = ENV[&quot;DAY&quot;] || Date.yesterday.to_s(:number)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line75">75</a>         yyyymmdd = day.to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line76">76</a>         year = day.slice(0..3)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line77">77</a>         month = day.slice(4..5)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line78">78</a>         outfile = ENV[&quot;EXPORT_FILE&quot;] || &quot;/tmp/queries-#{day}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line79">79</a>         limit = ENV[&quot;LIMIT&quot;] || nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line80">80</a>         sql = &quot;#{extract_query_sql} #{base_where_clause} #{query_where_clause} AND date(timestamp) = #{yyyymmdd}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line81">81</a>         if limit != nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line82">82</a>           sql &lt;&lt; &quot; LIMIT #{limit}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line83">83</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line84">84</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line85">85</a>         queries = Query.find_by_sql(sql)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line86">86</a>         FasterCSV.open(outfile, &quot;w&quot;, :col_sep =&gt; &quot;\t&quot;) do |csv|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line87">87</a>           queries.each do |query|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line88">88</a>             csv &lt;&lt; [query.query, query.ipaddr, query.timestamp.strftime('%Y-%m-%d %H:%M:%S'), query.affiliate, query.locale, query.agent, query.is_bot ? &quot;1&quot; : &quot;0&quot;]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line89">89</a>           end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line90">90</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line91">91</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line92">92</a>         # copy export file to S3</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line93">93</a>         filename = &quot;query_logs/#{year}/#{month}/queries-#{yyyymmdd}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line94">94</a>         AWS::S3::Base.establish_connection!(:access_key_id =&gt; AWS_ACCESS_KEY_ID, :secret_access_key =&gt; AWS_SECRET_ACCESS_KEY)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line95">95</a>         AWS::S3::S3Object.store(filename, Kernel.open(outfile), AWS_BUCKET_NAME)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line96">96</a>         File.delete(outfile)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line97">97</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line98">98</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line99">99</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line100">100</a> end</pre></td>
+            <td><pre><a name="line12">12</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Nov 09 12:42:18 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Nov 09 10:29:57 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
