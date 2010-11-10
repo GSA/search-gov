@@ -548,7 +548,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when the filter parameter is nil" do
           it "should set the Adult parameter to the default value" do
             search = Search.new(@valid_options)
@@ -556,7 +556,7 @@ describe Search do
             search.run
           end
         end
-        
+
         context "when the filter parameter is not in the list of valid filter values" do
           it "should set the Adult parameter to the default value" do
             search = Search.new(@valid_options.merge(:filter => 'invalid'))
@@ -576,7 +576,21 @@ describe Search do
 
     end
 
-    context "when searching with valid queries" do
+    context "when performing an affiliate search that has related topics" do
+      before do
+        CalaisRelatedSearch.create!(:affiliate => @valid_options[:affiliate], :term=> @valid_options[:query], :related_terms => %w{ government grants | big government | democracy })
+        CalaisRelatedSearch.reindex
+        @search = Search.new(@valid_options)
+        @search.run
+      end
+
+      it "should have a related searches array of strings" do
+        @search.related_search.size.should == 3
+        @search.related_search.first.should be_an_instance_of(String)
+      end
+    end
+
+    context "when performing an affiliate search that does not have related topics while the default affiliate does" do
       before do
         CalaisRelatedSearch.create!(:term=> @valid_options[:query], :related_terms => %w{ government grants | big government | democracy })
         CalaisRelatedSearch.reindex
@@ -584,19 +598,10 @@ describe Search do
         @search.run
       end
 
-      it "should find results based on query" do
-        @search.results.size.should > 0
-      end
-
-      it "should have a total at least as large as the first set of results" do
-        @search.total.should >= @search.results.size
-      end
-
-      it "should have a related searches array of strings" do
+      it "should fall back to the result for the default affiliate" do
         @search.related_search.size.should == 3
         @search.related_search.first.should be_an_instance_of(String)
       end
-
     end
 
     context "when the query contains an '&' character" do
@@ -793,14 +798,14 @@ describe Search do
         end
       end
     end
-    
+
     context "weather searches" do
       before do
         Location.create(:zip_code => 21209, :state => 'MD', :city => 'Baltimore', :population => 20000, :lat => 39.0459, :lng => -76.7896)
         Location.create(:zip_code => 21215, :state => 'MD', :city => 'Baltimore', :population => 19000, :lat => 39.0345, :lng => -76.9890)
         Location.create(:zip_code => 10003, :state => 'NY', :city => 'Baltimore', :population => 100, :lat => 45.4567, :lng => -144.0303)
       end
-      
+
       context "when the query does not contain the term 'weather'" do
         it "should not create a weather spotlight" do
           WeatherSpotlight.should_not_receive(:new)
@@ -809,15 +814,15 @@ describe Search do
           search.weather_spotlight.should be_nil
         end
       end
-      
+
       context "when the query is 'weather'" do
         it "should not create a weather spotlight" do
           WeatherSpotlight.should_not_receive(:new)
           search = Search.new(:query => 'weather')
           search.run
           search.weather_spotlight.should be_nil
-        end        
-        
+        end
+
         context "when the query is capitlized" do
           it "should not create a weather spotlight" do
             WeatherSpotlight.should_not_receive(:new)
@@ -827,7 +832,7 @@ describe Search do
           end
         end
       end
-            
+
       context "when the query is 'forecast'" do
         it "should not create a weather spotlight" do
           WeatherSpotlight.should_not_receive(:new)
@@ -835,7 +840,7 @@ describe Search do
           search.run
           search.weather_spotlight.should be_nil
         end
-        
+
         context "when the query is capitlized" do
           it "should not create a weather spotlight" do
             WeatherSpotlight.should_not_receive(:new)
@@ -845,7 +850,7 @@ describe Search do
           end
         end
       end
-      
+
       context "when the query contains the term 'weather' with additional information" do
         it "should create a weather spotlight" do
           WeatherSpotlight.should_receive(:new).with('21209').and_return true
@@ -863,7 +868,7 @@ describe Search do
           search.weather_spotlight.should_not be_nil
         end
       end
-      
+
       context "when the terms queried are not a valid location" do
         it "should create a search with no weather spotlight" do
           WeatherSpotlight.should_receive(:new).with('21208').and_raise(RuntimeError.new('Location Not Found: 21208'))
@@ -873,7 +878,7 @@ describe Search do
           search.weather_spotlight.should be_nil
         end
       end
-      
+
       context "when the request to Weather.gov times out" do
         it "should catch the timeout exception, complete the search without a weather spotlight" do
           WeatherSpotlight.should_receive(:new).with('21209').and_raise Errno::ETIMEDOUT
@@ -883,7 +888,7 @@ describe Search do
           search.weather_spotlight.should be_nil
         end
       end
-      
+
       context "when the search is for an affiliate" do
         it "should not search for weather spotlights" do
           WeatherSpotlight.should_not_receive(:new)
@@ -892,7 +897,7 @@ describe Search do
           search.should_not be_nil
           search.weather_spotlight.should be_nil
         end
-      end  
+      end
     end
 
     context "when paginating" do

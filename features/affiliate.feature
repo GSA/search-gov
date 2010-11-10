@@ -98,6 +98,19 @@ Feature: Affiliate clients
     Then I should see "New header"
     And I should see "New footer"
 
+  Scenario: Related Topics on English SERPs for given affiliate search
+    Given the following Affiliates exist:
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following Calais Related Searches exist for affiliate "aff.gov":
+      | term    | related_terms             | locale |
+      | obama   | Some Unique Related Term  | en     |
+    When I go to aff.gov's search page
+    And I fill in "query" with "obama"
+    And I press "Search"
+    Then I should see "Related Topics"
+    And I should see "Some Unique Related Term"
+
   Scenario: Site visitor sees relevant boosted results for given affiliate search
     Given the following Affiliates exist:
       | name             | contact_email         | contact_name        |
@@ -179,7 +192,7 @@ Feature: Affiliate clients
     And I fill in "query" with "tourism"
     And I submit the search form
     Then I should see "Our Tourism Page" within "#boosted"
-    
+
   Scenario: Affiliate SAYT
     Given the following Affiliates exist:
       | name            | contact_email             | contact_name          | domains        | is_sayt_enabled | is_affiliate_suggestions_enabled |
@@ -191,18 +204,18 @@ Feature: Affiliate clients
     Then the search bar should have SAYT enabled
     And affiliate SAYT suggestions for "aff.gov" should be disabled
     And I fill in "query" with "emergency"
-    And I submit the search form    
+    And I submit the search form
     Then the search bar should have SAYT enabled
     And affiliate SAYT suggestions for "aff.gov" should be disabled
-    
+
     When I go to otheraff.gov's search page
     Then the search bar should not have SAYT enabled
     And affiliate SAYT suggestions for "otheraff.gov" should be disabled
     And I fill in "query" with "emergency"
-    And I submit the search form    
+    And I submit the search form
     Then the search bar should not have SAYT enabled
     And affiliate SAYT suggestions for "otheraff.gov" should be disabled
-    
+
     When I go to anotheraff.gov's search page
     Then the search bar should have SAYT enabled
     And affiliate SAYT suggestions for "anotheraff.gov" should be enabled
@@ -210,7 +223,7 @@ Feature: Affiliate clients
     And I submit the search form
     Then the search bar should have SAYT enabled
     And affiliate SAYT suggestions for "anotheraff.gov" should be enabled
-    
+
     When I go to yetanotheraff.gov's search page
     Then the search bar should not have SAYT enabled
     And affiliate SAYT suggestions for "yetanotheraff.gov" should be disabled
@@ -218,7 +231,7 @@ Feature: Affiliate clients
     And I submit the search form
     Then the search bar should not have SAYT enabled
     And affiliate SAYT suggestions for "yetanotheraff.gov" should be disabled
-    
+
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:
       | name             | contact_email         | contact_name        | domains        | header                | footer                |
@@ -356,7 +369,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And I am on the user account page
     And I follow "Usage Stats"
-    And I select "February 2010" as the report date  
+    And I select "February 2010" as the report date
     And I press "Get Usage Stats"
     Then I should see the report header for "2010-02"
     And I should see the "aff.gov" "Queries" total within "aff.gov_usage_stats" with a total of "28,000"

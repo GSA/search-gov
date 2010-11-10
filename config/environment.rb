@@ -33,6 +33,10 @@ Rails::Initializer.run do |config|
   config.gem "aws-s3", :lib => "aws/s3", :version => '0.6.2'
   config.gem "noaa", :version => '=0.2.4'
   config.gem "libxml-ruby", :version => '=1.1.4', :lib => "xml/libxml"
+  config.gem "yajl-ruby", :lib => 'yajl', :version => '= 0.7.8'
+  config.gem "redis", :version => '= 2.1.1'
+  config.gem "redis-namespace", :lib => false, :version => '= 0.10.0'
+  config.gem "resque", :version => '= 1.10.0'
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.

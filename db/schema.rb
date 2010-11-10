@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101108223827) do
+ActiveRecord::Schema.define(:version => 20101110234928) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -83,9 +83,10 @@ ActiveRecord::Schema.define(:version => 20101108223827) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "locale",                        :default => "en", :null => false
+    t.integer  "affiliate_id"
   end
 
-  add_index "calais_related_searches", ["term", "locale"], :name => "index_calais_related_searches_on_term_and_locale", :unique => true
+  add_index "calais_related_searches", ["affiliate_id", "term"], :name => "index_calais_related_searches_on_affiliate_id_and_term"
 
   create_table "clicks", :force => true do |t|
     t.string   "query"

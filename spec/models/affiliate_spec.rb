@@ -23,15 +23,16 @@ describe Affiliate do
     should_belong_to :user
     should_have_many :boosted_sites
     should_have_many :sayt_suggestions
+    should_have_many :calais_related_searches
 
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_attributes)
     end
-    
+
     it "should have SAYT disabled by default" do
       Affiliate.create!(@valid_attributes).is_sayt_enabled.should be_false
     end
-    
+
     it "should have Affiliate-specific SAYT suggestions disabled by default" do
       Affiliate.create!(@valid_attributes).is_affiliate_suggestions_enabled.should be_false
     end

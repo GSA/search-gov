@@ -30,8 +30,8 @@ APP_URL = "localhost:3000"
 # like if you have constraints or database-specific column types
 # config.active_record.schema_format = :sql
 
-config.gem "rspec",            :lib => false, :version => ['>= 1.3.0', '< 2.0.0.beta.20']
-config.gem "rspec-rails",      :lib => false, :version => ['>= 1.3.2', '< 2.0.0.beta.20']
+config.gem "rspec",            :lib => 'spec', :version => ['>= 1.3.0', '< 2.0.0.beta.20']
+config.gem "rspec-rails",      :lib => 'spec/rails', :version => ['>= 1.3.2', '< 2.0.0.beta.20']
 config.gem "remarkable_rails", :lib => false, :version => '>= 3.1.10'
 config.gem "webrat",           :lib => false
 config.gem "nokogiri",         :lib => false
@@ -39,3 +39,4 @@ config.gem "cucumber",         :lib => false, :version => '>= 0.6.1'
 config.gem "cucumber-rails",   :lib => false
 config.gem "rcov",             :lib => false
 config.gem 'email_spec',       :lib => 'email_spec'
+config.gem "resque_spec",      :version => '~> 0.2.0'

@@ -7,8 +7,9 @@ class Affiliate < ActiveRecord::Base
   belongs_to :affiliate_template
   has_many :boosted_sites, :dependent => :destroy
   has_many :sayt_suggestions, :dependent => :destroy
+  has_many :calais_related_searches, :dependent => :destroy
   after_destroy :remove_boosted_sites_from_index
-  
+
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
 
   def template

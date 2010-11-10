@@ -98,7 +98,11 @@ class Search
   protected
 
   def related_search_results
-    solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s)
+    affiliate_id = self.affiliate.nil? ? nil : self.affiliate.id
+    if (affiliate_id)
+      solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s, affiliate_id)
+    end
+    solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s) unless solr && solr.hits.present?
     related_terms = solr.hits.first.instance.related_terms rescue ""
     related_terms_array = related_terms.split('|')
     related_terms_array.each{|t| t.strip!}

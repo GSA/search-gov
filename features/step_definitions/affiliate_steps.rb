@@ -67,3 +67,12 @@ Then /^affiliate SAYT suggestions for "([^\"]*)" should be disabled$/ do |affili
   affiliate = Affiliate.find_by_name(affiliate_name)
   response.body.should_not have_tag("script[type=text/javascript]", :text => "\n    //\n    var usagov_sayt_url = \"#{root_url}sayt?aid=#{affiliate.id}&\";\n    //\n    ")
 end
+
+Given /^the following Calais Related Searches exist for affiliate "([^\"]*)":$/ do |affiliate_name, table|
+  affiliate = Affiliate.find_by_name affiliate_name
+  CalaisRelatedSearch.delete_all
+  table.hashes.each do |hash|
+    CalaisRelatedSearch.create!(:term => hash["term"], :related_terms => hash["related_terms"], :locale => hash["locale"], :affiliate => affiliate)
+  end
+  CalaisRelatedSearch.reindex
+end
