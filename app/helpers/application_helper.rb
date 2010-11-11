@@ -45,7 +45,8 @@ module ApplicationHelper
       ["Privacy", "http://www.usa.gov/About/Privacy_Security.shtml" ],
       ["Suggest-A-Link", "http://www.usa.gov/feedback/SuggestLinkForm.jsp" ],
       ["Link to Us", "http://www.usa.gov/About/Usagov_Logos.shtml"],
-      ["Accessibility", "/pages/accessibility"]
+      ["Accessibility", "/pages/accessibility"],
+      ["API", "/api"]
     ],
     :es => [
       ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
