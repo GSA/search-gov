@@ -64,6 +64,10 @@ If you are upgrading from a previous version of Sunspot/Solr (typically, this wo
 You should be able to get all the rest of the gems needed for this project like this:
 
     sudo gem install cucumber hoptoad_notifier rspec rspec-rails capistrano capistrano-ext ruby-debug
+    sudo gem install sinatra --version '= 0.9.2'
+    sudo gem install redis redis-namespace yajl-ruby
+    sudo gem install resque
+    sudo gem install resque_spec --version '~> 0.2.0'
     sudo rake gems:install
     sudo rake gems:install RAILS_ENV=test
     sudo rake gems:install RAILS_ENV=cucumber
@@ -211,28 +215,28 @@ From time to time, a new feature will require testing and feedback from those ou
 In order to begin developing for the labs branch, you'll need to make sure that no one else is using the branch, or that you are at least in touch with those that are using it.  If the branch has been out of use for a while, it will probably be easier to remove the contents of the remote labs branch and start with a fresh version of the current code.  To remove the remote branch:
 
       git push origin :labs
-      
+
 Make sure to check that no one is using the labs branch before doing this, otherwise you'll delete their work!  Now, checkout a new local branch called labs, and push it up as a new remote branch:
 
       git checkout -b labs
       git push origin labs
-      
+
 If you want to begin using the labs branch as it is (for example, if you're working with someone else and they have already created the remote labs branch), you'll need to begin tracking the remote branch:
 
       git branch --track labs origin/labs
-      
+
 Now you can checkout the labs branch locally
 
       git checkout labs
-      
+
 and work together with other developers.
-      
+
 You are now ready to begin developing on the labs branch.  You'll probably want to branch off the labs branch itself if you're working on a big feature, and merge your changes into the labs branch.
 
 When you are ready to deploy your experimental features on the labs.searchdemo.usa.gov site, push your latest commits up to the remote labs branch:
 
     git push origin labs
-    
+
 and do a deploy of the labs stage:
 
     cap labs deploy
