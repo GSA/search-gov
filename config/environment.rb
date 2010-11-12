@@ -34,6 +34,8 @@ Rails::Initializer.run do |config|
   config.gem "noaa", :version => '=0.2.4'
   config.gem "libxml-ruby", :version => '=1.1.4', :lib => "xml/libxml"
   config.gem "yajl-ruby", :lib => 'yajl', :version => '= 0.7.8'
+  config.gem "rack", :version => '~> 1.0.0'
+  config.gem "sinatra", :version => '= 0.9.2'
   config.gem "redis", :version => '= 2.1.1'
   config.gem "redis-namespace", :lib => false, :version => '= 0.10.0'
   config.gem "resque", :version => '= 1.10.0'
