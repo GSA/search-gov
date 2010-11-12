@@ -186,6 +186,38 @@ On staging server, type
 
 This could take a while the first time it runs, as many gems are installed/built.
 
+## Installing Redis
+
+The Redis server runs on staging, and on the production cron machine. These instructions install it as a service on the cron machine.
+
+Get configuration file and init.d file from staging server:
+
+    scp /etc/redis/redis.conf search@cron:/tmp
+    scp /etc/init.d/redis-server !$
+
+on cron:
+
+    cd downloads
+    curl http://redis.googlecode.com/files/redis-2.0.4.tar.gz | tar xz
+    cd redis-2.0.4/
+    make
+    sudo cp redis-server /usr/local/sbin
+    sudo cp redis-cli /usr/local/bin
+    sudo mkdir /var/lib/redis /etc/redis
+    sudo mv /tmp/redis.conf /etc/redis/redis.conf
+    chmod 755 /tmp/redis-server
+    sudo mv /tmp/redis-server /etc/init.d
+    sudo /sbin/chkconfig --add redis-server
+    sudo /sbin/chkconfig --level 345 redis-server on
+    sudo /sbin/service redis-server start
+    tail /var/log/redis.log
+
+Verify it's working:
+
+    ./redis-cli set mykey somevalue
+    ./redis-cli get mykey
+    ./redis-cli del mykey
+
 ## Installing Solr
 
 These instructions assume you've got the search.usa.gov codebase deployed via Capistrano to the machine you're going to install Solr on.
