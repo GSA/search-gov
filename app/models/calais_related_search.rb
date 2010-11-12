@@ -1,6 +1,6 @@
 class CalaisRelatedSearch < ActiveRecord::Base
   @queue = :calais_related_search
-  @calais_api_counter
+  @calais_api_counter = 0
 
   DAILY_API_QUOTA = 49000
   BING_RESULTS_TO_CONSIDER_FOR_TEXT = 100
@@ -48,7 +48,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
       affiliate = Affiliate.find_by_name(affiliate_name)
       affiliate_id = affiliate.nil? ? nil : affiliate.id
 
-      search = Search.new(:query=>term, :affiliate=> affiliate_name, :results_per_page => BING_RESULTS_TO_CONSIDER_FOR_TEXT, :enable_highlighting=>false)
+      search = Search.new(:query=>term, :affiliate=> affiliate, :results_per_page => BING_RESULTS_TO_CONSIDER_FOR_TEXT, :enable_highlighting=>false)
       search.run
       summary = search.results.collect { |r| [r['title'], r['content']].join('. ') }.join(' ')
       unless summary.blank?
