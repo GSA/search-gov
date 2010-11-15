@@ -50,6 +50,12 @@ describe Analytics::HomeController do
       assigns[:num_results_dqgs].should_not be_nil
     end
 
+    it "should assign reasonable defaults for start/end dates" do
+      get :index
+      assigns[:start_date].should == 1.month.ago.to_date
+      assigns[:end_date].should == Date.yesterday.to_date
+    end
+
     context "when the number of results for the most popular queries is set by the user" do
       before do
         get :index, :num_results_dqs=> "20"
