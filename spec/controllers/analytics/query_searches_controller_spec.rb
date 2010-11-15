@@ -20,11 +20,29 @@ describe Analytics::QuerySearchesController do
           assigns[:search_query_term].should == "social security"
         end
 
+        it "should assign the start date" do
+          assigns[:start_date].should == Date.parse("August 11, 2010").to_date
+        end
+
+        it "should assign the end date" do
+          assigns[:end_date].should == Date.parse("August 21, 2010").to_date
+        end
+
         it "should assign query counts for fulltext matches of the query term" do
           assigns[:search_results].should_not be_nil
         end
 
         should_render_template 'analytics/query_searches/index.html.haml', :layout => 'analytics'
+      end
+
+      context "when search query terms and bogus start/end dates are passed in" do
+        it "should default start/end dates to sensible values" do
+          DailyQueryStat.should_receive(:query_counts_for_terms_like).with("social security", 1.month.ago.to_date, Date.yesterday)
+          get :index, :query => "social security", :analytics_search_start_date => "whatever", :analytics_search_end_date => "Loren 21, 2010"
+          assigns[:start_date].should == 1.month.ago.to_date
+          assigns[:end_date].should == Date.yesterday.to_date
+        end
+
       end
 
       context "when some of the matching query terms contain HTML markup" do

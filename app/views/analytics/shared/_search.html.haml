@@ -2,9 +2,9 @@
   = label :search, "Search for query term"
   = text_field_with_auto_complete :search, :query, {:size=>50, :name=>"query", :autocomplete => "off", :value=> @search_query_term}, {:url=> {:controller => "/searches", :action => "auto_complete_for_search_query"}, :method=> :get}
   from
-  = calendar_date_select_tag("analytics_search_start_date", params["analytics_search_start_date"].nil? ? 1.month.ago : Date.parse(params["analytics_search_start_date"]))
+  = calendar_date_select_tag("analytics_search_start_date", @start_date)
   to
-  = calendar_date_select_tag("analytics_search_end_date", params["analytics_search_end_date"].nil? ? Date.yesterday : Date.parse(params["analytics_search_end_date"]))
+  = calendar_date_select_tag("analytics_search_end_date", @end_date)
   = submit_tag "Search", :id=>"search_button", :onClick=>"document.getElementById('busy').style.display='block'"
   - if affiliate
     = hidden_field_tag("affiliate", affiliate.name)
