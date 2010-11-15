@@ -218,6 +218,21 @@ Verify it's working:
     ./redis-cli get mykey
     ./redis-cli del mykey
 
+## Resque workers
+
+The cron machine should have 5 Resque processes ready to work through the Calais related search work queue.
+
+To see how many are there, run this from cron:
+
+  pgrep -f "Processing calais_related_search since" | wc -l
+
+
+To start some workers, do this:
+
+    cd /home/jwynne/usasearch/current
+    # do this five times
+    RAILS_ENV=production QUEUE=calais_related_search rake environment resque:work &
+
 ## Installing Solr
 
 These instructions assume you've got the search.usa.gov codebase deployed via Capistrano to the machine you're going to install Solr on.
