@@ -156,6 +156,17 @@ describe CalaisRelatedSearch do
         end
       end
 
+      context "when Calais service times out" do
+        before do
+          Calais.stub!(:process_document).and_raise(Curl::Err::TimeoutError)
+        end
+
+        it "should log the error" do
+          RAILS_DEFAULT_LOGGER.should_receive(:warn).once
+          CalaisRelatedSearch.perform(@affiliate.name, @term)
+        end
+      end
+
     end
 
   end
