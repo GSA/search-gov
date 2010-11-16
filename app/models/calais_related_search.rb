@@ -66,6 +66,8 @@ class CalaisRelatedSearch < ActiveRecord::Base
           end
         rescue Curl::Err::TimeoutError => error
           RAILS_DEFAULT_LOGGER.warn "Call to Calais API timed out for #{affiliate_name}:#{term}: #{error}"
+        rescue ArgumentError => error
+          RAILS_DEFAULT_LOGGER.warn "Argument error during response processing for #{affiliate_name}:#{term}: #{error}"
         rescue Calais::Error => error
           RAILS_DEFAULT_LOGGER.warn "Problem getting Calais Socialtags for #{affiliate_name}:#{term}: #{error}"
         rescue NoMethodError => error
