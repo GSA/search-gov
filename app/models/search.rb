@@ -1,8 +1,10 @@
-# TODO Cleanup
 class Search
   class BingSearchError < RuntimeError;
   end
 
+  @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
+
+  BING_CACHE_DURATION_IN_SECONDS = 60 * 60 * 2
   MAX_QUERY_LENGTH_FOR_ITERATIVE_SEARCH = 30
   MAX_QUERYTERM_LENGTH = 1000
   DEFAULT_PER_PAGE = 10
@@ -151,22 +153,28 @@ class Search
   end
 
   def perform(query_string, offset, enable_highlighting = true)
+    cache_key = [query_string, offset, results_per_page, enable_highlighting].join(':')
+    response_body = @@redis.get(cache_key) rescue nil
+    return response_body unless response_body.nil?
+
     ActiveRecord::Base.benchmark("[Bing Search]", Logger::INFO) do
       begin
         uri = URI.parse(bing_query(query_string, offset, results_per_page, enable_highlighting))
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Get.new(uri.request_uri)
         req["User-Agent"] = USER_AGENT
-        http.request(req)
+        response = http.request(req)
+        @@redis.setex(cache_key, BING_CACHE_DURATION_IN_SECONDS, response.body) rescue nil
+        return response.body
       rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error => error
         raise BingSearchError.new(error.to_s)
       end
     end
   end
 
-  def parse(response)
+  def parse(response_body)
     begin
-      json = JSON.parse(response.body)
+      json = JSON.parse(response_body)
       ResponseData.new(json['SearchResponse'])
     rescue JSON::ParserError => error
       raise BingSearchError.new(error.to_s)
@@ -191,7 +199,6 @@ class Search
     if options[:query_not].present?
       query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ')
     end
-    # query += " (scopeid:usagov#{options[:fedstates]})" unless options[:fedstates].blank? || options[:fedstates].downcase == 'all'
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
     query += " #{options[:site_limits].split.collect { |site| 'site:' + site }.join(' OR ')}" unless options[:site_limits].blank?
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?

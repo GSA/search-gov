@@ -1026,4 +1026,24 @@ describe Search do
       end
     end
   end
+
+  describe "caching in #perform(query_string, offset, enable_highlighting)" do
+    before do
+      @redis = Search.send(:class_variable_get,:@@redis)
+      @search = Search.new
+      @search.results_per_page = 99
+    end
+
+    it "should attempt to get the results from the Redis cache" do
+      @redis.should_receive(:get).with("foo:10:99:true")
+      @search.send(:perform, "foo", 10, true)
+    end
+
+    context "when no results in cache" do
+      it "should store newly fetched results in cache with appropriate expiry" do
+        @redis.should_receive(:setex).with("foobar:10:99:true", Search::BING_CACHE_DURATION_IN_SECONDS, an_instance_of(String))
+        @search.send(:perform, "foobar", 10, true)
+      end
+    end
+  end
 end
