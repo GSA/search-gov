@@ -12,6 +12,5 @@ cucumber:
   <<: *defaults
 
 production:
-  host: 192.168.100.164
-  port: 6379
+  <<: *defaults
 
