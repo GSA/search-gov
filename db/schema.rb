@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101110234928) do
+ActiveRecord::Schema.define(:version => 20101117185756) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -312,14 +312,14 @@ ActiveRecord::Schema.define(:version => 20101110234928) do
   add_index "top_searches", ["position"], :name => "index_top_searches_on_position", :unique => true
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                                        :null => false
+    t.string   "email",                                                                      :null => false
     t.string   "perishable_token"
     t.string   "crypted_password"
     t.string   "password_salt"
     t.string   "persistence_token"
-    t.integer  "login_count",        :default => 0,                            :null => false
-    t.string   "time_zone",          :default => "Eastern Time (US & Canada)", :null => false
-    t.boolean  "is_affiliate_admin", :default => false,                        :null => false
+    t.integer  "login_count",                      :default => 0,                            :null => false
+    t.string   "time_zone",                        :default => "Eastern Time (US & Canada)", :null => false
+    t.boolean  "is_affiliate_admin",               :default => false,                        :null => false
     t.datetime "last_request_at"
     t.datetime "last_login_at"
     t.datetime "current_login_at"
@@ -328,8 +328,8 @@ ActiveRecord::Schema.define(:version => 20101110234928) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "contact_name"
-    t.boolean  "is_affiliate",       :default => true,                         :null => false
-    t.boolean  "is_analyst",         :default => false,                        :null => false
+    t.boolean  "is_affiliate",                     :default => true,                         :null => false
+    t.boolean  "is_analyst",                       :default => false,                        :null => false
     t.string   "phone"
     t.string   "organization_name"
     t.string   "address"
@@ -337,7 +337,8 @@ ActiveRecord::Schema.define(:version => 20101110234928) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
-    t.boolean  "is_analyst_admin",   :default => false,                        :null => false
+    t.boolean  "is_analyst_admin",                 :default => false,                        :null => false
+    t.string   "api_key",            :limit => 32
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

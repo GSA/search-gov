@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
   validates_presence_of :state, :if => :is_affiliate_or_higher
   validates_presence_of :time_zone, :if => :is_affiliate_or_higher
   validates_presence_of :contact_name
+  validates_presence_of :api_key
   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
   has_many :affiliates
+  before_validation :generate_api_key
   after_create :ping_admin
   after_create :welcome_user
 
@@ -48,5 +50,8 @@ class User < ActiveRecord::Base
   def welcome_user
     Emailer.deliver_welcome_to_new_user(self)
   end
-
+  
+  def generate_api_key
+    self.api_key = Digest::MD5.hexdigest("#{contact_name}:#{email}:#{Time.now.to_s}") if self.api_key.nil?
+  end
 end

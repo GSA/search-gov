@@ -1,5 +1,13 @@
 %h2 Search.USA.gov Account Profile
 %h2 My Products
+
+.span-16.contentcard
+  %h2
+    API Key
+  %p
+    Your API key is:
+    %b= @user.api_key
+
 - if @user.is_affiliate?
   .span-16.contentcard
     %h2 Affiliates #{link_to "(new)", new_affiliate_path, :class => "small"}
