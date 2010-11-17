@@ -1,5 +1,5 @@
 if (usagov_sayt_url === undefined) {
-    var usagov_sayt_url = "http://search.usa.gov/sayt";
+    var usagov_sayt_url = "http://search.usa.gov/sayt?";
 }
 
 function __highlight(s, t) {
@@ -11,7 +11,7 @@ $(document).ready(function() {
   $(".usagov-search-autocomplete").autocomplete({
   	source: function( request, response ) {
   		$.ajax({
-  			url: usagov_sayt_url + "?q=" + request.term,
+  			url: usagov_sayt_url + "q=" + request.term,
   			dataType: "jsonp",
   			data: {
   				featureClass: "P",
