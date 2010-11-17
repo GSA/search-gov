@@ -42,19 +42,20 @@
     %dd&= @user.email
     %dt Contact Name:
     %dd&= @user.contact_name
-    %dt Time Zone:
-    %dd&= @user.time_zone
-    %dt Organization Name:
-    %dd&= @user.organization_name
-    %dt Address:
-    %dd&= @user.address
-    %dt Address Line 2:
-    %dd&= @user.address2
-    %dt City:
-    %dd&= @user.city
-    %dt State:
-    %dd&= @user.state
-    %dt Zip:
-    %dd&= @user.zip
-    %dt Phone:
-    %dd&= @user.phone
+    - if @user.is_affiliate_or_higher
+      %dt Time Zone:
+      %dd&= @user.time_zone
+      %dt Organization Name:
+      %dd&= @user.organization_name
+      %dt Address:
+      %dd&= @user.address
+      %dt Address Line 2:
+      %dd&= @user.address2
+      %dt City:
+      %dd&= @user.city
+      %dt State:
+      %dd&= @user.state
+      %dt Zip:
+      %dd&= @user.zip
+      %dt Phone:
+      %dd&= @user.phone

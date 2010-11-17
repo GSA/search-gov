@@ -26,7 +26,7 @@ Feature: Users
     | Address Line 2                | Ste 456                     |
     | City                          | Reston                      |
     | Zip                           | 20022                       |
-    | Password                      | huge_secret                 |
+    | Enter password                | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I select "Virginia" from "State"
     And I select "(GMT-05:00) Eastern Time (US & Canada)" from "Time Zone"
@@ -46,7 +46,7 @@ Feature: Users
     | Address Line 2                | Ste 456                     |
     | City                          | Reston                      |
     | Zip                           | 20022                       |
-    | Password                      | huge_secret                 |
+    | Enter password                | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I select "Virginia" from "State"
     And I select "(GMT-05:00) Eastern Time (US & Canada)" from "Time Zone"

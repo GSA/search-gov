@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users"
   map.resources :users
+  map.resources :developers
   map.resource :user_session
   map.resources :password_resets
   map.resources :affiliates, :member => { :push_content_for => :post, :embed_code => :get, :superfresh_urls => :get, :create_superfresh_url => :post } do |affiliate|

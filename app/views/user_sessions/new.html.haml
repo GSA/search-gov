@@ -3,15 +3,6 @@
     %h1
       Login #{link_to "(register)", new_user_path, :class => "small"}
     = f.error_messages(:header_message => nil, :class => "error")
-    %dl
-      %dt
-        = f.label :email, "Email address"
-      %dd
-        = f.text_field :email, :class => "text"
-      %dt
-        = f.label :password
-      %dd
-        = f.password_field :password, :class => "text"
-    = f.submit "Login"
+    = render :partial => 'form', :object => f
     %p
       = link_to "Forgot your password?", new_password_reset_path

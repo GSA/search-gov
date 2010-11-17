@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/metal/clicked.rb</title>
+    <title>app/controllers/developers_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/metal/clicked.rb</h2>
+    <h2>app/controllers/developers_controller.rb</h2>
 
     
 
@@ -27,8 +27,8 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-metal-clicked_rb.html">app/metal/clicked.rb</a></td>
-            <td class='right_align'><tt>22</tt></td>
+            <td class="left_align"><a href="app-controllers-developers_controller_rb.html">app/controllers/developers_controller.rb</a></td>
+            <td class='right_align'><tt>23</tt></td>
             <td class='right_align'><tt>20</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
@@ -56,148 +56,146 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line1">1</a> # Allow the metal piece to run in isolation</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line1">1</a> class DevelopersController &lt; UsersController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a> require(File.dirname(__FILE__) + &quot;/../../config/environment&quot;) unless defined?(Rails)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :require_no_user, :only =&gt; [:new, :create]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a> class Clicked</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>   def self.call(env)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>     if env[&quot;PATH_INFO&quot;] =~ /^\/clicked/</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>       params = Rack::Request.new(env).params</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line8">8</a>       Click.create(:url =&gt; CGI.unescape(params['u']).gsub(' ', '+'),</pre></td>
+            <td><pre><a name="line3">3</a>   before_filter :require_user, :only =&gt; [:show, :edit, :update]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>                    :query =&gt; params['q'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line10">10</a>                    :serp_position =&gt; params['p'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line11">11</a>                    :queried_at =&gt; Time.at(params['t'].to_i),</pre></td>
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>                    :affiliate =&gt; params['a'].blank? ? nil : params['a'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a>                    :results_source =&gt; params['s'],</pre></td>
+            <td><pre><a name="line5">5</a>   def index</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>                    :clicked_at =&gt; DateTime.now,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line15">15</a>                    :click_ip =&gt; env['REMOTE_ADDR'],</pre></td>
+            <td><pre><a name="line6">6</a>     @user_session = UserSession.new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>                    :user_agent =&gt; env['HTTP_USER_AGENT']) unless params['u'].blank? </pre></td>
+            <td><pre><a name="line7">7</a>     @user = User.new_developer</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line9">9</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       [200, {&quot;Content-Type&quot; =&gt; &quot;text/html&quot;}, ['']]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line18">18</a>     else</pre></td>
+            <td><pre><a name="line10">10</a>   def new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>       [404, {&quot;Content-Type&quot; =&gt; &quot;text/html&quot;}, [&quot;Not Found&quot;]]</pre></td>
+            <td><pre><a name="line11">11</a>     @user = User.new_developer</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>     end</pre></td>
+            <td><pre><a name="line12">12</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   end</pre></td>
+            <td><pre><a name="line13">13</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>   def create</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>     @user = User.new_developer(params[:user])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>     if @user.save</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>       flash[:success] = &quot;Thank you for registering for USA.gov Search Services&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>       redirect_to account_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a> end</pre></td>
+            <td><pre><a name="line19">19</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       render :action =&gt; :new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <p>Generated on Tue Nov 16 17:13:10 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
-=======
-    <p>Generated on Wed Nov 17 00:31:21 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
->>>>>>> 1ccc0f6... Update coverage
-=======
     <p>Generated on Wed Nov 17 12:17:57 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
->>>>>>> 6d205f4... Update coverage
 
   </body>
 </html>

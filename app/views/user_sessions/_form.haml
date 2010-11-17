@@ -1,0 +1,10 @@
+%dl
+  %dt
+    = form.label :email, "Email address"
+  %dd
+    = form.text_field :email, :class => "text"
+  %dt
+    = form.label :password
+  %dd
+    = form.password_field :password, :class => "text"
+= form.submit "Login"
