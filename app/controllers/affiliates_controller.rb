@@ -23,7 +23,7 @@ class AffiliatesController < AffiliateAuthController
         :header => @affiliate.staged_header,
         :footer => @affiliate.staged_footer)
       flash[:success] = "Affiliate successfully created"
-      redirect_to account_path
+      redirect_to home_affiliates_path(:said=>@affiliate.id)
     else
       render :action => :new
     end
@@ -34,7 +34,7 @@ class AffiliatesController < AffiliateAuthController
     if @affiliate.save
       @affiliate.update_attribute(:has_staged_content, true)
       flash[:success]= "Staged changes to your affiliate successfully."
-      redirect_to account_path
+      redirect_to home_affiliates_path
     else
       render :action => :edit
     end
@@ -47,7 +47,7 @@ class AffiliatesController < AffiliateAuthController
       :header => @affiliate.staged_header,
       :footer => @affiliate.staged_footer)
     flash[:success] = "Staged content is now visible"
-    redirect_to account_path
+    redirect_to home_affiliates_path(:said=>@affiliate.id)
   end
 
   def embed_code
@@ -96,7 +96,13 @@ class AffiliatesController < AffiliateAuthController
   def destroy
     @affiliate.destroy
     flash[:success]= "Affiliate deleted"
-    redirect_to account_path
+    redirect_to home_affiliates_path
+  end
+  
+  def home
+    if params["said"].present?
+      @affiliate = Affiliate.find(params["said"])
+    end
   end
 
 end

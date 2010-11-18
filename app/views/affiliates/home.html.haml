@@ -1,0 +1,26 @@
+%h2 Affiliates Administration
+- if @current_user.is_affiliate?
+  .span-16
+    %p
+      Welcome to the affiliate section.  To begin, select an affiliate from the left.
+  .span-16.contentcard
+    %h2 Affiliates #{link_to "(new)", new_affiliate_path, :class => "small"}
+    -if @current_user.affiliates.empty?
+      %p.alt You currently have no affiliates.
+      %p= link_to "Add Affiliate", new_affiliate_path
+    -else
+      %table
+        - @current_user.affiliates.each do |affiliate|
+          %tr
+            %td&= affiliate.name
+            %td
+              = link_to "Edit", edit_affiliate_path(affiliate)
+              |
+              = link_to "Preview", search_url(:affiliate=> affiliate.name, :query=>"gov")
+              - if affiliate.has_staged_content?
+                |
+                = link_to "View staged", search_url(:affiliate=> affiliate.name, :query=>"gov", :staged => 1)
+                |
+                = button_to "Push Changes", push_content_for_affiliate_path(affiliate, :affiliate_id => affiliate.id)
+              |
+              = button_to "Delete Affiliate", affiliate_path(affiliate, :affiliate_id => affiliate.id), :title => "Delete this affiliate", :confirm => "You are about to delete this affiliate. Are you sure?", :method => :delete

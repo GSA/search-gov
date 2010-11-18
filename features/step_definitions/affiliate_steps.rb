@@ -76,3 +76,8 @@ Given /^the following Calais Related Searches exist for affiliate "([^\"]*)":$/ 
   end
   CalaisRelatedSearch.reindex
 end
+
+When /^I output some debug information$/ do
+  puts request.url
+  puts response.body # express the regexp above with the code you wish you had
+end

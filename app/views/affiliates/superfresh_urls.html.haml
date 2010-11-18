@@ -1,7 +1,11 @@
+
 %h3
-  Refresh a URL
+  Add to Bing
 %p
-  Enter a URL into the form below, and it will be updated shortly.
+  Are new, moved, or modified pages on your site not showing up in the Bing index?
+  Use our Add to Bing feature to let Bing know about these pages so that they can crawl your
+  pages and include them in their index.
+  
 - form_for @superfresh_url, {:url => create_superfresh_url_affiliate_path} do |f|
   = f.label :url
   = f.text_field :url
@@ -12,7 +16,7 @@
 #uncrawled-urls.span-24.headertitle
   %h2
     Uncrawled URLs (#{@uncrawled_urls.size})
-%table
+%table.admin-table
   %tr
     %th
       URL
@@ -20,7 +24,7 @@
     %tr
       %td.uncrawled-url
         = link_to uncrawled_url.url, uncrawled_url.url
-        
+      
 #crawled-urls.span-24.headertitle
   %h2
     Previously Refreshed URLs

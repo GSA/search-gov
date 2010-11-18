@@ -8,10 +8,10 @@ Feature: Affiliate Superfresh Interface
       | name             | contact_email         | contact_name        |
       | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the user account page
-    And I follow "Refresh URLs"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
-    And I should see "Refresh a URL"
+    And I should see "Add to Bing"
     When I fill in "Url" with "http://new.url.com"
     And I press "Submit"
     Then I should be on the affiliate superfresh page
@@ -22,8 +22,8 @@ Feature: Affiliate Superfresh Interface
     When I go to the superfresh feed
     Then I should see "http://new.url.com"
     
-    When I go to the user account page
-    And I follow "Refresh URLs"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Add to Bing"
     Then I should see "Uncrawled URLs (0)"
     And I should see "http://new.url.com" within ".crawled-url"
 
@@ -32,10 +32,10 @@ Feature: Affiliate Superfresh Interface
       | name             | contact_email         | contact_name        |
       | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the user account page
-    And I follow "Refresh URLs"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
-    And I should see "Refresh a URL"
+    And I should see "Add to Bing"
     When I fill in "Url" with ""
     And I press "Submit"
     Then I should be on the affiliate superfresh page

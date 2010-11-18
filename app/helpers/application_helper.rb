@@ -78,6 +78,9 @@ module ApplicationHelper
     elements = []
     if cur_user
       elements << cur_user.email
+      if cur_user.is_affiliate_admin?
+        elements << link_to("Affiliate Admin", home_affiliates_path)
+      end
       elements << link_to("My Account", account_path)
       elements << link_to("Logout", user_session_path, :method => :delete)
       elements << link_to("Users", admin_users_path) if cur_user.is_affiliate_admin?

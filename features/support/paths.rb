@@ -66,6 +66,10 @@ module NavigationHelpers
       developers_path
     when /the developers signup page/
       developers_path
+    when /the affiliate admin page with "([^\"]*)" selected$/
+      home_affiliates_path(:said => Affiliate.find_by_name($1).id)
+    when /the affiliate admin page/
+      home_affiliates_path
     else
       raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
         "Now, go and add a mapping in #{__FILE__}"

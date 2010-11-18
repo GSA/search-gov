@@ -5,7 +5,7 @@
     For example, an important news story just posted on your server will not appear at the top of our results listings,
     and you want to get your search users this information. With Boosted Sites, the link for the page(s) are returned
     above our search results for queries that match the information you uploaded.
-.span-18.append-3
+.span-22.append-3
   %pre
     :preserve
     :escaped
@@ -24,7 +24,7 @@
         </entries>
       </xml>
 
-.span-10
+.span-14
   - form_tag affiliate_boosted_sites_upload_path(@affiliate), :multipart => true, :class=> "bordered" do
     %h1="Upload boosted sites for #{@affiliate.name}"
     = file_field_tag 'xmlfile', :accept => 'text/xml'

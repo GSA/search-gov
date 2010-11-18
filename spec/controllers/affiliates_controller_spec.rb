@@ -66,7 +66,7 @@ describe AffiliatesController do
 
       it "should redirect to account page on success with flash message" do
         post :update, :id => @affiliate.id, :affiliate=> {:name=>"NEWNAME", :header=>"FOO", :footer=>"BAR", :domains=>"BLAT"}
-        response.should redirect_to(account_path)
+        response.should redirect_to(home_affiliates_path)
         flash[:success].should_not be_nil
       end
 

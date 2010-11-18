@@ -40,7 +40,7 @@ Feature: Analytics Search
     | el pollution                 | 88    | usasearch.gov | es     |      1       |
     | social pollution             | 70    | aff.gov       | en     |      1       |
     | finochio                    | 80    | usasearch.gov | en     |      1       |
-    When I go to the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Analytics"
     And I fill in "query" with "pollution"
     And I fill in "analytics_search_start_date" with a date representing "29" days ago

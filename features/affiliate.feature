@@ -22,7 +22,7 @@ Feature: Affiliate clients
 
   Scenario: Adding a new affiliate
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
-    When I go to the user account page
+    When I go to the affiliate admin page
     And I follow "Add Affiliate"
     And I fill in the following:
       | Name of new site search                                               | www.agency.gov             |
@@ -31,7 +31,7 @@ Feature: Affiliate clients
       | Enter HTML to customize the top of your search page                   | My header                  |
       | Enter HTML to customize the bottom of your search page                | My footer                  |
     And I press "Create"
-    Then I should be on the user account page
+    Then I should be on the affiliate admin page
     And I should see "Affiliate successfully created"
     And I should see "agency.gov"
 
@@ -40,7 +40,7 @@ Feature: Affiliate clients
       | name             | contact_email         | contact_name        |
       | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the user account page
+    When I go to the affiliate admin page
     And I follow "new"
     And I fill in "name" with "aff.gov"
     And I press "Create"
@@ -51,9 +51,9 @@ Feature: Affiliate clients
       | name             | contact_email         | contact_name        |
       | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the user account page
+    When I go to the affiliate admin page
     And I press "Delete Affiliate"
-    Then I should be on the user account page
+    Then I should be on the affiliate admin page
     And I should see "Affiliate deleted"
 
   Scenario: Staging changes to an affiliate's look and feel
@@ -61,7 +61,7 @@ Feature: Affiliate clients
       | name             | contact_email         | contact_name        | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
       | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the user account page
+    When I go to the affiliate admin page
     And I follow "Edit"
     Then the "Domains (one per line)" field should contain "oldagency.gov"
     And the "Enter HTML to customize the top of your search page" field should contain "Old header"
@@ -74,27 +74,27 @@ Feature: Affiliate clients
       | Enter HTML to customize the bottom of your search page                | New footer                 |
     And I press "Save for preview"
     Then I should see "Staged changes to your affiliate successfully."
-    And I should be on the user account page
+    And I should be on the affiliate admin page
     And I should see "newname"
     When I follow "Edit"
     Then the "Domains (one per line)" field should contain "newagency.gov"
     And the "Enter HTML to customize the top of your search page" field should contain "New header"
     And the "Enter HTML to customize the bottom of your search page" field should contain "New footer"
-    When I go to the user account page
-    When I follow "View current"
+    When I go to the affiliate admin page
+    When I follow "Preview"
     Then I should see "Old header"
     And I should see "Old footer"
-    When I go to the user account page
+    When I go to the affiliate admin page
     When I follow "View staged"
     Then I should see "New header"
     And I should see "New footer"
-    When I go to the user account page
+    When I go to the affiliate admin page
     And I press "Push Changes"
-    Then I should be on the user account page
+    Then I should be on the affiliate admin page
     And I should see "Staged content is now visible"
     And I should not see "Push Changes"
     And I should not see "View staged"
-    When I follow "View current"
+    When I follow "Preview"
     Then I should see "New header"
     And I should see "New footer"
 
@@ -149,7 +149,7 @@ Feature: Affiliate clients
       | name             | contact_email         | contact_name        |
       | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted sites"
     Then I should see "aff.gov has no boosted sites"
     And I should see "Upload boosted sites for aff.gov"
@@ -158,7 +158,8 @@ Feature: Affiliate clients
     And I press "Upload"
     Then I should see "Boosted sites uploaded successfully for affiliate 'aff.gov'"
 
-    When I follow "Boosted sites"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Boosted sites"
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"
     And I should see "Upload boosted sites for aff.gov"
@@ -179,7 +180,7 @@ Feature: Affiliate clients
       | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
       | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted sites"
     And I attach the file "features/support/missing_title_boosted_sites.xml" to "xmlfile"
     And I press "Upload"
@@ -294,7 +295,7 @@ Feature: Affiliate clients
       | name             | contact_email         | contact_name        |
       | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get Code"
     Then I should see "Site Search"
     And I should see "Copy and paste the HTML code below to create a search box for aff.gov"
@@ -307,7 +308,7 @@ Feature: Affiliate clients
      | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
-    When I go to the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     Then I should see "Analytics"
 
   Scenario: Getting stats for an affiliate
@@ -316,7 +317,7 @@ Feature: Affiliate clients
      | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
-    When I go to the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Analytics"
     Then I should see "Query Analytics for aff.gov"
     And I should see "Most Frequent Queries"
@@ -331,7 +332,7 @@ Feature: Affiliate clients
      | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there are no daily query stats
-    When I go to the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Analytics"
     Then in "dqs1" I should see "Not enough historic data"
     And in "dqs7" I should see "Not enough historic data"
@@ -342,7 +343,7 @@ Feature: Affiliate clients
      | name             | contact_email           | contact_name        |
      | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    And I am on the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Usage Stats"
     Then I should see "Monthly Usage Stats"
 
@@ -354,7 +355,7 @@ Feature: Affiliate clients
     | profile     | total_queries | affiliate |
     | Affiliates  | 1000          | aff.gov   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    And I am on the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Usage Stats"
     Then I should see the header for the current date
     And I should see the "aff.gov" queries total within "aff.gov_usage_stats"
@@ -367,7 +368,7 @@ Feature: Affiliate clients
      | profile | total_queries  | affiliate  |
      | Affiliates | 1000        | aff.gov    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    And I am on the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Usage Stats"
     And I select "February 2010" as the report date
     And I press "Get Usage Stats"
@@ -382,7 +383,7 @@ Feature: Affiliate clients
      | profile | total_queries  | affiliate  |
      | Affiliates | 1000        | aff.gov    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    And I am on the user account page
+    When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Usage Stats"
     And I select "December 2010" as the report date
     And I press "Get Usage Stats"
