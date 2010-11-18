@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates_presence_of :time_zone, :if => :is_affiliate_or_higher
   validates_presence_of :contact_name
   validates_presence_of :api_key
+  validates_uniqueness_of :api_key
   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
   has_and_belongs_to_many :affiliates
   before_validation :generate_api_key

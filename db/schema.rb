@@ -360,6 +360,7 @@ ActiveRecord::Schema.define(:version => 20101210021715) do
     t.string   "api_key",            :limit => 32
   end
 
+  add_index "users", ["api_key"], :name => "index_users_on_api_key", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
 

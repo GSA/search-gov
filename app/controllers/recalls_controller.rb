@@ -1,7 +1,9 @@
 class RecallsController < ApplicationController
+  before_filter :validate_api_key
+
   @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
   RECALLS_CACHE_DURATION_IN_SECONDS = 60 * 30
-
+  
   def index
     valid_options = %w{start_date end_date upc sort code organization make model year food_type}
     valid_params = params.reject { |k,| !valid_options.include? k.to_s }
@@ -23,7 +25,7 @@ class RecallsController < ApplicationController
 
     respond_to do |format|
       format.json { render :text => success_total_results_json, :content_type => "application/json" }
-      format.any { render :text => 'Not Implemented' }
+      format.any { render :text => 'Not Implemented', :status => 501 }
     end
   end
 
@@ -36,6 +38,10 @@ class RecallsController < ApplicationController
     error_message = "invalid year" if p[:year] and not p[:year] =~ /^\d{4}$/
     error_message = "invalid page" if p[:page] and not p[:page] =~ /^\d+$/
     return error_message
+  end
+  
+  def validate_api_key
+    render :text => 'Invalid API Key', :status => 401 if params['api_key'].present? and User.find_by_api_key(params['api_key']).nil?
   end
 end
 

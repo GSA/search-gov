@@ -1,7 +1,31 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe RecallsController do
+  before do
+    @developer = User.new_developer(:email => 'developer@usa.gov', :contact_name => 'USA.gov Developer', :password => 'password', :password_confirmation => 'password')
+    @developer.save
+  end
+  
   describe "#index" do
+    context "when an API key is specified" do
+      it "should check that the API key belongs to a user, and process the request" do
+        User.should_receive(:find_by_api_key).with(@developer.api_key).and_return @developer
+        get :index, :query => 'stroller', :api_key => @developer.api_key, :format => 'json'
+        response.should be_success
+      end
+      
+      it "should return a 401 error if the key is not found" do
+        User.should_receive(:find_by_api_key).with('badkey').and_return nil
+        get :index, :query => 'stroller', :api_key => 'badkey', :format => 'json'
+        response.should_not be_success
+      end
+      
+      it "should not care if the API key is not specified" do
+        get :index, :query => 'stroller', :format => 'json'
+        response.should be_success
+      end
+    end
+    
     context "when all parameters specified" do
       before do
         @redis = RecallsController.send(:class_variable_get, :@@redis)
@@ -11,7 +35,7 @@ describe RecallsController do
         @query_string = 'stroller'
         @page = "2"
         @valid_options_hash = {"start_date"=> "2010-11-10", "end_date"=> "2010-11-20"}
-        @valid_params = @valid_options_hash.merge("format" => 'json', "query" => @query_string, "page" => @page)
+        @valid_params = @valid_options_hash.merge(:format => 'json', :query => @query_string, :page => @page, :api_key => @developer.api_key)
       end
 
       context "when result is not cached" do
@@ -57,8 +81,12 @@ describe RecallsController do
       it "should return an error message" do
         response.body.should contain('Not Implemented')
       end
+      
+      it "should return an error status of 501" do
+        response.status.should == "501 Not Implemented"
+      end
     end
-
+    
     context "when dates are submitted in an invalid format" do
       before do
         @good_date = '2010-5-20'
@@ -67,9 +95,6 @@ describe RecallsController do
       end
 
       it "should return a JSON error object" do
-        get :index, :query => @query, :start_date => @bad_date, :end_date => @good_date
-        parsed_response = JSON.parse(response.body)
-        parsed_response["error"].should == "invalid date"
         get :index, :query => @query, :end_date => @bad_date, :start_date => @good_date
         parsed_response = JSON.parse(response.body)
         parsed_response["error"].should == "invalid date"
