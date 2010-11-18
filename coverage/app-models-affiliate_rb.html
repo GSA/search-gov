@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-affiliate_rb.html">app/models/affiliate.rb</a></td>
-            <td class='right_align'><tt>25</tt></td>
-            <td class='right_align'><tt>20</tt></td>
+            <td class='right_align'><tt>34</tt></td>
+            <td class='right_align'><tt>28</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -87,49 +87,49 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   belongs_to :user</pre></td>
+            <td><pre><a name="line6">6</a>   belongs_to :owner, :class_name =&gt; 'User'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   belongs_to :affiliate_template</pre></td>
+            <td><pre><a name="line7">7</a>   has_and_belongs_to_many :users</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   has_many :boosted_sites, :dependent =&gt; :destroy</pre></td>
+            <td><pre><a name="line8">8</a>   belongs_to :affiliate_template</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>   has_many :sayt_suggestions, :dependent =&gt; :destroy</pre></td>
+            <td><pre><a name="line9">9</a>   has_many :boosted_sites, :dependent =&gt; :destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   has_many :calais_related_searches, :dependent =&gt; :destroy</pre></td>
+            <td><pre><a name="line10">10</a>   has_many :sayt_suggestions, :dependent =&gt; :destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>   after_destroy :remove_boosted_sites_from_index</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a> </pre></td>
+            <td><pre><a name="line11">11</a>   has_many :calais_related_searches, :dependent =&gt; :destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>   USAGOV_AFFILIATE_NAME = 'usasearch.gov'</pre></td>
+            <td><pre><a name="line12">12</a>   after_destroy :remove_boosted_sites_from_index</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>   after_create :add_owner_as_user</pre></td>
           </tr>
         
           
@@ -141,49 +141,49 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   def template</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>     affiliate_template || DefaultAffiliateTemplate</pre></td>
+            <td><pre><a name="line15">15</a>   USAGOV_AFFILIATE_NAME = 'usasearch.gov'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>   end</pre></td>
+            <td><pre><a name="line16">16</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>   def template</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>     affiliate_template || DefaultAffiliateTemplate</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>   private</pre></td>
+            <td><pre><a name="line19">19</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a> </pre></td>
+            <td><pre><a name="line20">20</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>   def remove_boosted_sites_from_index</pre></td>
+            <td><pre><a name="line21">21</a>   def is_owner?(user)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>     boosted_sites.each { |bs| bs.remove_from_index }</pre></td>
+            <td><pre><a name="line22">22</a>     self.owner == user ? true : false</pre></td>
           </tr>
         
           
@@ -200,14 +200,68 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>   private</pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line25">25</a> end</pre></td>
+            <td><pre><a name="line26">26</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>   def remove_boosted_sites_from_index</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>     boosted_sites.each { |bs| bs.remove_from_index }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line29">29</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line30">30</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>   def add_owner_as_user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>     self.users &lt;&lt; self.owner if self.owner</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line33">33</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line34">34</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Nov 17 20:42:59 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Nov 29 17:28:11 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

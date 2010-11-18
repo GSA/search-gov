@@ -1,0 +1,35 @@
+%h2
+  Users for Affiliate: #{@affiliate.name}
+
+.span-14.contentcard
+  %h2
+    Owner
+  - if @affiliate.owner
+    #{@affiliate.owner.contact_name} (#{mail_to @affiliate.owner.email})
+
+.span-14.contentcard
+  %h2
+    Affiliate Users
+  - if @affiliate.users.size > 1
+    %table
+      %tbody
+        - @affiliate.users.each do |user|
+          - unless @affiliate.is_owner?(user)
+            %tr
+              = "#{user.contact_name} (#{user.email})"
+              |
+              = link_to 'Remove', affiliate_user_path(@affiliate, user.id), :method => :delete
+  - else
+    No other users associated with this affiliate.
+    
+.span-14.contentcard
+  %h2
+    Add a user by email
+  %p
+    Enter an email address to add a user to this affiliate.  The email address must be associated with an existing account on Search.USA.gov.  If the email is not associated with an existing account, register a new account with that email address.
+  - form_tag affiliate_users_path do |f|
+    = label_tag 'email'
+    = text_field_tag 'email', @email
+    = submit_tag 'Add User'
+  
+  

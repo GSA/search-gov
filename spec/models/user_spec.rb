@@ -36,7 +36,7 @@ describe User do
     should_validate_presence_of :time_zone, :if => :is_affiliate_or_higher
     should_validate_presence_of :contact_name
     
-    should_have_many :affiliates
+    should_have_and_belong_to_many :affiliates
 
     it "should create a new instance given valid attributes" do
       User.create(@valid_attributes)

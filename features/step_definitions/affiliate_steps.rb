@@ -15,9 +15,9 @@ Given /^the following Affiliates exist:$/ do |table|
     }
     user = User.find_by_email(hash["contact_email"]) || User.create!( valid_options )
     user.update_attribute(:is_affiliate, true)
-    Affiliate.create(
+    affiliate = Affiliate.create(
       :name => hash["name"],
-      :user => user,
+      :owner => user,
       :domains => hash["domains"],
       :header => hash["header"],
       :footer => hash["footer"],

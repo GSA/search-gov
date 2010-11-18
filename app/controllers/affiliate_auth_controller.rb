@@ -1,7 +1,8 @@
 class AffiliateAuthController < SslController
   layout "account"
 
-  private
+  protected
+  
   def require_affiliate
     return false if require_user == false
     unless current_user.is_affiliate?
@@ -19,10 +20,11 @@ class AffiliateAuthController < SslController
   end
 
   def setup_affiliate
+    affiliate_id = params[:affiliate_id] || params[:id]
     if current_user.is_affiliate_admin?
-      @affiliate = Affiliate.find(params[:id] || params[:affiliate_id])
+      @affiliate = Affiliate.find(affiliate_id)
     elsif current_user.is_affiliate?
-      @affiliate = current_user.affiliates.find(params[:id] || params[:affiliate_id]) rescue redirect_to(home_page_url) and return false
+      @affiliate = current_user.affiliates.find(affiliate_id) rescue redirect_to(home_page_url) and return false
     end
     return true
   end

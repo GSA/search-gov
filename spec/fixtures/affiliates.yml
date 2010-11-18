@@ -4,13 +4,17 @@ power_affiliate:
   domains: noaa.gov\n usa.gov\nnga.mil
   header: <center>
   footer: </center>
-  user: :affiliate_manager
+  owner: :affiliate_manager
+  users: [:affiliate_manager]
 basic_affiliate:
   name: nps.gov
-  user: :affiliate_manager
+  owner: :affiliate_manager
+  users: [:affiliate_manager]
 another_affiliate:
   name: another.gov
-  user: :another_affiliate_manager
+  owner: :another_affiliate_manager
+  users: [:another_affiliate_manager]
 admin_affiliate:
   name: affiliate.gov
-  user: :affiliate_admin
+  owner: :affiliate_admin
+  users: [:admin_affiliate]

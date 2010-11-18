@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :user_session
   map.resources :password_resets
   map.resources :affiliates, :member => { :push_content_for => :post, :embed_code => :get, :superfresh_urls => :get, :create_superfresh_url => :post }, :collection => { :home => :get } do |affiliate|
+    affiliate.resources :users, :controller => 'affiliate_users', :only => [:index, :new, :create, :destroy]
     affiliate.resource :boosted_sites_upload, :only => [:create, :new]
   end
   map.affiliate_analytics_home_page '/affiliates/:id/analytics', :controller => 'affiliates', :action => 'analytics'

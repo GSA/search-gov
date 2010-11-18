@@ -202,6 +202,7 @@ describe AffiliatesController do
       context "when logged in as an admin" do
         before do
           @user = users("affiliate_admin")
+          @user.affiliates << @affiliate
           UserSession.create(@user)
         end
 
@@ -293,6 +294,7 @@ describe AffiliatesController do
       context "when logged in as an admin" do
         before do
           @user = users("affiliate_admin")
+          @user.affiliates << @affiliate
           UserSession.create(@user)
         end
 

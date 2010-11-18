@@ -16,7 +16,7 @@ class AffiliatesController < AffiliateAuthController
 
   def create
     @affiliate = Affiliate.new(params[:affiliate])
-    @affiliate.user = @current_user
+    @affiliate.owner = @current_user
     if @affiliate.save
       @affiliate.update_attributes(
         :domains => @affiliate.staged_domains,

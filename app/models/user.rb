@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_presence_of :contact_name
   validates_presence_of :api_key
   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
-  has_many :affiliates
+  has_and_belongs_to_many :affiliates
   before_validation :generate_api_key
   after_create :ping_admin
   after_create :welcome_user
