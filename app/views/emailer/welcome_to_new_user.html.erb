@@ -3,10 +3,16 @@ Dear <%= @user.contact_name %>,
 Welcome to USA Search Services! You just signed up with the following information:
 
 Email: <%= @user.email %>
+<% if @user.is_affiliate_or_higher %>
 Organization name: <%= @user.organization_name %>
+<% end %>
 
 You can start using your account immediately. Just visit the link below:
+<% if @user.is_affiliate_or_higher %>
   <%= affiliates_url %>
+<% else %>
+  <%= developers_url %>
+<% end %>
 
 If you have any questions, have a look at the help page (http://searchsupport.usa.gov/) or get in touch with us via email at the following address:
   <%= APP_EMAIL_ADDRESS %>
