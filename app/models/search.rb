@@ -165,7 +165,7 @@ class Search
         req["User-Agent"] = USER_AGENT
         response = http.request(req)
         @@redis.setex(cache_key, BING_CACHE_DURATION_IN_SECONDS, response.body) rescue nil
-        return response.body
+        response.body
       rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error => error
         raise BingSearchError.new(error.to_s)
       end
