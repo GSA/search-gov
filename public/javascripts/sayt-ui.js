@@ -30,9 +30,11 @@ $(document).ready(function() {
   		});
   	},
   	minLength: 2,
+  	delay: 50,
   	select: function( event, ui ) {
   	  $(".usagov-search-autocomplete").val(ui.item.value.toString());
-  		$(this).closest('form').submit();      
+      $("#sc").val("1");
+  		$(this).closest('form').submit();
   	},
   	open: function() {
   		$( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
