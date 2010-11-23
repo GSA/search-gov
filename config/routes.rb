@@ -36,6 +36,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :calais_related_searches, :active_scaffold => true
     admin.resources :top_searches
     admin.resources :superfresh_urls, :active_scaffold => true
+    admin.resources :site_pages, :active_scaffold => true
   end
   map.affiliate_analytics_redirect '/admin/affiliates/:id/analytics', :controller => 'admin/affiliates', :action => 'analytics'
   map.admin_home_page '/admin', :controller => "admin/home"
@@ -45,7 +46,6 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.root :controller => "home"
   map.analytics_home_page '/analytics', :controller => "analytics/home"
-#  map.analytics_faq '/analytics/faq', :controller => "analytics/faq" 
   map.analytics_query_search '/analytics/query_search', :controller => "analytics/query_searches"
   map.query_timeline '/analytics/timeline/:query', :controller => 'analytics/timeline', :action => 'show', :requirements => { :query => /.*/ }
   map.monthly_reports '/analytics/monthly_reports', :controller => 'analytics/monthly_reports'
@@ -65,4 +65,5 @@ ActionController::Routing::Routes.draw do |map|
   map.api_docs '/api', :controller => "pages", :action => "show", :id => "api"
   map.recalls_api_docs '/api/recalls', :controller => "pages", :action => "show", :id => "recalls"
   map.recalls_tos_docs '/api/tos', :controller => "pages", :action => "show", :id => "tos"
+  map.usa '/usa/:url_slug', :controller => 'usa', :action => 'show', :requirements => { :url_slug => /.*/ }
 end

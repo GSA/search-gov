@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101118161945) do
+ActiveRecord::Schema.define(:version => 20101123220917) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -281,6 +281,17 @@ ActiveRecord::Schema.define(:version => 20101118161945) do
 
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
+
+  create_table "site_pages", :force => true do |t|
+    t.string   "url_slug"
+    t.string   "title"
+    t.string   "breadcrumb"
+    t.text     "main_content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "site_pages", ["url_slug"], :name => "index_site_pages_on_url_slug", :unique => true
 
   create_table "spotlight_keywords", :force => true do |t|
     t.integer  "spotlight_id", :null => false

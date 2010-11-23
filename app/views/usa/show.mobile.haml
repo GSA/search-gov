@@ -1,0 +1,17 @@
+#logoHome.center
+  = link_to image_tag("/m/i/logo_mobile.png"), root_path(:locale => I18n.locale.to_s, :m => true)
+
+#searchHome.dvCenter
+  %a{:id => "search_box", :name => "search_box"}
+  = render :partial => "shared/search"
+  - if is_device? 'iphone'
+    %style{:type => "text/css", :media => "screen"}
+      :plain
+        .ac_results {margin-top: -130px;}
+#homeNav.dvCenter
+  = @site_page.breadcrumb
+  = @site_page.main_content
+.group.clear
+.mobileFooter.pad5
+  %a{:title => "USA.gov", :href => "http://www.usa.gov"} USA.gov Full Site
+

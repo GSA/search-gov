@@ -111,6 +111,14 @@ img{
 	margin: 0 auto;
 }
 
+.a-z_list ul li {
+  float: left;
+}
+
+.a-z_list ul {
+  float: left;
+}
+
 #container
 {
   background-color: #fff;
@@ -170,14 +178,14 @@ img{
     height: 30px;
     z-index: 9999;
   }
-  
+
   .dvSearchClose img{
     width: 24px;
     height: 24px;
     margin: 0;
     padding: 0;
   }
-  
+
 /* removed temporarily until sayt X is fixed for jquery
   .dvSearchClose.results {
     background-color: #FFF;
@@ -202,7 +210,7 @@ img{
       height: 32px;
       padding-left: 15px;
       width: 213px;
-      
+
       width: 245px;
     }
 
@@ -216,7 +224,7 @@ img{
       height: 32px;
       padding-left: 15px;
       width: 205px;
-      
+
       width: 237px;
     }
 
@@ -300,7 +308,7 @@ img{
     margin-bottom: 5px;
     border: none;
     }
-    
+
     #topLinks li{
       font-weight: bold;
       font-size: 12px;
@@ -309,16 +317,16 @@ img{
       border-left: 2px solid #CCC;
       padding: 0 5px 0 8px;
       }
-      
+
       #topLinks a{
         text-decoration: none;
         font-weight: bold;
         }
-        
+
       #topLinks a:hover{
         text-decoration: underline;
         }
-        
+
     #topLinks li.first{
       padding-left: 0;
       border-left: 0;
@@ -355,9 +363,9 @@ img{
 
 .spotlightImage
 {
-  background-color: #eee; 
-  height: 100px; 
-  width: 100px; 
+  background-color: #eee;
+  height: 100px;
+  width: 100px;
   float: left;
   margin: 5px 10px 0 0;
 }
@@ -500,9 +508,9 @@ table.deep_links td {
 
 .searchThumbnail
 {
-  background-color: #eee; 
-  height: 75px; 
-  width: 75px; 
+  background-color: #eee;
+  height: 75px;
+  width: 75px;
   float: left;
   margin: 1px;
   overflow: hidden;
