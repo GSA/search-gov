@@ -3,75 +3,75 @@
 %h1
   Product Recall Data API
 %p
-  USASearch’s Product Recall Data API returns data on product safety and recalls from three federal government agencies: (1) food safety data from the 
+  USASearch’s Product Recall Data API returns data on product safety and recalls from three federal government agencies: (1) food safety data from the
   %a{:href=>"http://www.cdc.gov"}
-    Centers for Disease Control and Prevention; 
-  (2) car safety data from the 
+    Centers for Disease Control and Prevention;
+  (2) car safety data from the
   %a{:href=>"http://www.nhtsa.gov"}
-    National Highway Traffic Safety Administration; 
-  and (3) product safety data from the 
+    National Highway Traffic Safety Administration;
+  and (3) product safety data from the
   %a{:href=>"http://www.cpsc.gov"}
-    Consumer Product Safety Commission. 
-  The feeds are processed every 30 minutes, when possible. 
+    Consumer Product Safety Commission.
+  The feeds are processed every 30 minutes, when possible.
 %p
-  The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the recall of search results. First, the API searches all the fields in the database (the full text of the record). Second, the API stems (or performs prefix search) customers’ search terms (for example, allergic and allergy retrieve the same search results). 
+  The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the recall of search results. First, the API searches all the fields in the database (the full text of the record). Second, the API stems (or performs prefix search) customers’ search terms (for example, allergic and allergy retrieve the same search results).
 
 %p
   %h3
-    Base URL: 
+    Base URL:
 %ul
   %li
-    http://search.usa.gov/search/recalls 
-%p  
+    http://search.usa.gov/search/recalls
+%p
   %h3
-    Format: 
+    Format:
 %ul
   %li
-    JSON is currently the only response format. 
-%p  
-  %h3 
+    JSON is currently the only response format.
+%p
+  %h3
     Type:
 %ul
   %li
-    HTTP GET 
-%p  
-  %h3 
+    HTTP GET
+%p
+  %h3
     Authentication:
 %ul
   %li
     None required.
 %p
-  %h3 
-    Parameters: 
+  %h3
+    Parameters:
 %ul
   %li
-    format: json (default value). JSON results are returned with or without this parameter in the query URL.  Most recent recalls are returned as the default if no other parameters are given. 
+    format: json. This parameter is required. The most recent recalls are returned as the default if no other parameters are given.
     %ul
       %li
-        Example: http://search.usa.gov/search/recalls?format=json 
+        Example: http://search.usa.gov/search/recalls?format=json
   %li
     query: keywords.  Query terms for the search.
     %ul
       %li
-        Example: http://search.usa.gov/search/recalls?query=tires&format=json 
+        Example: http://search.usa.gov/search/recalls?query=tires&format=json
   %li
     start_date: yyyy-mm-dd. Start date of the recall.
     %ul
       %li
-        Example: http://search.usa.gov/search/recalls?start_date=2010-01-01&end_date=2010-03-19&format=json 
+        Example: http://search.usa.gov/search/recalls?start_date=2010-01-01&end_date=2010-03-19&format=json
   %li
     end_date: yyyy-mm-dd. End date of the recall.
     %ul
       %li
-        Example: http://search.usa.gov/search/recalls?start_date=2010-01-01&end_date=2010-03-19&format=json 
+        Example: http://search.usa.gov/search/recalls?start_date=2010-01-01&end_date=2010-03-19&format=json
   %li
-    organization: Government organization providing the recall data. Valid values are: (1) NHTSA. 
+    organization: Government organization providing the recall data. Valid values are: (1) NHTSA.
     %a{:href=>"http://www.nhtsa.gov"}
-      National Highway Traffic Safety Administration; 
-    (2) CPSC. 
+      National Highway Traffic Safety Administration;
+    (2) CPSC.
     %a{:href=>"http://www.cpsc.gov"}
-      Consumer Product Safety Commission; 
-    or (3) CDC. 
+      Consumer Product Safety Commission;
+    or (3) CDC.
     %a{:href=>"http://www.cdc.gov"}
       Centers for Disease Control and Prevention.
     Values must be entered in all caps.
@@ -82,9 +82,9 @@
     upc: UPC code. This parameter is only relevant for Product Safety.  Not all products have UPC code.
     %ul
       %li
-        Example: http://search.usa.gov/search/recalls?upc=3826959035 &format=json  
+        Example: http://search.usa.gov/search/recalls?upc=3826959035 &format=json
   %li
-    sort: Sort order. Add “&sort=date” to sort by date, or leave blank to sort by relevance. 
+    sort: Sort order. Add “&sort=date” to sort by date, or leave blank to sort by relevance.
     %ul
       %li
         Example: http://search.usa.gov/search/recalls?format=json&organization=CDC&sort=date
@@ -97,17 +97,17 @@
     make: NHTSA make information for auto recalls.
     %ul
       %li
-        Example: http://search.usa.gov/search/recalls?format=json&make=Toyota 
+        Example: http://search.usa.gov/search/recalls?format=json&make=Toyota
   %li
     model: NHTSA model information for auto recalls.
     %ul
       %li
-        Example: http://search.usa.gov/search/recalls?format=json&model=Camry 
+        Example: http://search.usa.gov/search/recalls?format=json&model=Camry
   %li
-    year: NHTSA year information for auto recalls. 
+    year: yyyy. NHTSA year information for auto recalls.
     %ul
       %li
-        Example: http://search.usa.gov/search/recalls?format=json&year=2002 
+        Example: http://search.usa.gov/search/recalls?format=json&year=2002
   %li
     page: Pagination of search results. Ten results are displayed on each search results page. Paginate search results pages by adding '&page=#' to the query string.
     %ul
@@ -132,9 +132,9 @@
       success:
       %ul
         %li
-          total: Total number of results for  the query. 
+          total: Total number of results for  the query.
         %li
-          results: Array of results for the query. Each array item contains the following data. 
+          results: Array of results for the query. Each array item contains the following data.
           %ul
             %li
               code: specify an NHTSA recall code (usually V for vehicles).
@@ -145,27 +145,27 @@
             %li
               corrective_summary: String containing the corrective summary. All capital letters.
             %li
-              countries: An array of strings containing the names of countries relevant to the recall. 
+              countries: An array of strings containing the names of countries relevant to the recall.
             %li
-              defect_summary: String containing the summary of the defect. All capital letters. 
+              defect_summary: String containing the summary of the defect. All capital letters.
             %li
-              descriptions: Array of strings containing the descriptions of the recalled item. 
+              descriptions: Array of strings containing the descriptions of the recalled item.
             %li
-              federal_motor_vehicle_safety_number: Integer 
+              federal_motor_vehicle_safety_number: Integer
             %li
-              hazards: Array of strings specifying the actual hazards (e.g., lead). 
+              hazards: Array of strings specifying the actual hazards (e.g., lead).
             %li
               initiator: String containing the code specifying who initiated the recall (e.g., “MFR” for manufacturer).
             %li
               manufacturer: String containing information on the manufacturer(s). All capital letters.
             %li
-              manufacturers: Array of strings containing the names of the manufacturers relevant to the recall. 
+              manufacturers: Array of strings containing the names of the manufacturers relevant to the recall.
             %li
               manufacturer_campaign_number: String containing the digits of campaign number. Contains leading zeros.
             %li
-              notes: String containing additional recall notes. All capital letters. 
+              notes: String containing additional recall notes. All capital letters.
             %li
-              notification_date: yyyymmdd. Date of recall notification. 
+              notification_date: yyyymmdd. Date of recall notification.
             %li
               organization: Government organization code (e.g., NHTSA).
             %li
@@ -173,36 +173,36 @@
             %li
               product_types: Array of strings representing the types of products being recalled.
             %li
-              recall_date: yyyy-mm-dd. Date of recall notice. 
+              recall_date: yyyy-mm-dd. Date of recall notice.
             %li
-              recall_number: String containing the recall number. Varies by data feed. Some strings contain only digits while others contain both digits and letters. 
+              recall_number: String containing the recall number. Varies by data feed. Some strings contain only digits while others contain both digits and letters.
             %li
               recall_subject: String containing the recall subject. All capital letters.
             %li
-              recall_url: URL of Web page containing information about the recall. 
+              recall_url: URL of Web page containing information about the recall.
             %li
               records: A list of all makes/models affected by the recall (only available for auto recall data from NHTSA).
               %ul
                 %li
-                  component_description: String containing the name/description of the recalled component. All capital letters. 
+                  component_description: String containing the name/description of the recalled component. All capital letters.
                 %li
                   make: String containing the product make (e.g., "HYUNDAI"). All capital letters.
                 %li
-                  manufacturer: String containing the manufacturer information. All capital letters. 
+                  manufacturer: String containing the manufacturer information. All capital letters.
                 %li
-                  manufacturing_begin_date: yyyy-mm-dd. Earliest date of manufacturing for a recalled item. 
+                  manufacturing_begin_date: yyyy-mm-dd. Earliest date of manufacturing for a recalled item.
                 %li
-                  manufacturing_end_date: yyyy-mm-dd. Latest date of manufacturing for a recalled item. 
+                  manufacturing_end_date: yyyy-mm-dd. Latest date of manufacturing for a recalled item.
                 %li
-                  model: String containing the model name of the recalled component. All capital letters. 
+                  model: String containing the model name of the recalled component. All capital letters.
                 %li
-                  recalled_component_id: String containing digits—with possible leading zeros—representing the id of the recalled component. 
+                  recalled_component_id: String containing digits—with possible leading zeros—representing the id of the recalled component.
                 %li
                   year: yyyy. Year value representing the make.
             %li
-              report_date: yyyymmdd. Date that the recall was reported. 
+              report_date: yyyymmdd. Date that the recall was reported.
             %li
-              upc: String representing the UPC code. Unavailable in some data feeds, or sometimes marked as "UNKNOWN". All capital letters. 
+              upc: String representing the UPC code. Unavailable in some data feeds, or sometimes marked as "UNKNOWN". All capital letters.
 %p
   %h3
     Response(JSON):
@@ -256,7 +256,7 @@
           ...
         ]
       }
-    } 
+    }
 
 
 
