@@ -12,7 +12,7 @@ class AffiliateUsersController < AffiliateAuthController
     if @user
       if !@affiliate.users.include?(@user)
         @affiliate.users << @user
-        flash.now[:notice] = "Successfully added #{@user.contact_name} (#{@user.email})"
+        flash.now[:success] = "Successfully added #{@user.contact_name} (#{@user.email})"
       elsif @affiliate.is_owner?(@user)
         flash.now[:error] = "That user is the current owner of this affiliate; you can not add them again."
       else
@@ -30,7 +30,7 @@ class AffiliateUsersController < AffiliateAuthController
       flash.now[:error] = "You can't remove the owner of the affiliate from the list of users."
     else
       @affiliate.users.delete(@user)
-      flash.now[:notice] = "Removed #{@user.contact_name} from affiliate."
+      flash.now[:success] = "Removed #{@user.contact_name} from affiliate."
     end
     render :action => :index
   end
