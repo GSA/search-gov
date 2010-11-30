@@ -576,23 +576,35 @@ describe Search do
 
     end
 
+    context "when performing an uppercase search that has a downcased related topic" do
+      before do
+        CalaisRelatedSearch.create!(:term=> "whatever", :related_terms => "ridiculous government grants | big government | democracy")
+        CalaisRelatedSearch.reindex
+        @search = Search.new(:query=>"Democracy")
+        @search.run
+      end
+
+      it "should not have the matching related topic in the array of strings" do
+        @search.related_search.should == ["big government", "ridiculous government grants", "whatever"]
+      end
+    end
+
     context "when performing an affiliate search that has related topics" do
       before do
-        CalaisRelatedSearch.create!(:affiliate => @valid_options[:affiliate], :term=> @valid_options[:query], :related_terms => %w{ government grants | big government | democracy })
+        CalaisRelatedSearch.create!(:affiliate => @valid_options[:affiliate], :term=> "pivot term", :related_terms => "government grants | big government | democracy")
         CalaisRelatedSearch.reindex
         @search = Search.new(@valid_options)
         @search.run
       end
 
-      it "should have a related searches array of strings" do
-        @search.related_search.size.should == 3
-        @search.related_search.first.should be_an_instance_of(String)
+      it "should have a related searches array of strings including the pivot term" do
+        @search.related_search.should == ["big government" , "democracy","government grants", "pivot term"]
       end
     end
 
     context "when performing an affiliate search that does not have related topics while the default affiliate does" do
       before do
-        CalaisRelatedSearch.create!(:term=> @valid_options[:query], :related_terms => %w{ government grants | big government | democracy })
+        CalaisRelatedSearch.create!(:term=> @valid_options[:query], :related_terms => "government grants | big government | democracy")
         CalaisRelatedSearch.reindex
         @search = Search.new(@valid_options)
         @search.run

@@ -88,9 +88,9 @@ describe CalaisRelatedSearch do
           DailyQueryStat.create!(:day => Date.yesterday, :times => 1000, :affiliate => @affiliate.name, :query => "debt relief")
         end
 
-        it "should enqueue for processing only the new terms, normalized to lowercase" do
+        it "should enqueue for processing only the new terms" do
           CalaisRelatedSearch.populate_affiliate_with_new_popular_terms(@affiliate.name)
-          CalaisRelatedSearch.should have_queued(@affiliate.name, "some new popular term")
+          CalaisRelatedSearch.should have_queued(@affiliate.name, "SOME new popular term")
           CalaisRelatedSearch.should_not have_queued(@affiliate.name, "debt relief")
         end
       end
@@ -111,7 +111,7 @@ describe CalaisRelatedSearch do
 
       context "when there are Calais SocialTags for a term's corpus of titles and descriptions" do
         before do
-          related_terms = ["congress", "California", "senator", "Pelosi", "Pelosi awards", "Pelosi award"]
+          related_terms = ["congress", "California", "CIA inquiry", "Pelosi", "Pelosi awards", "Pelosi award"]
           social_tags = related_terms.collect { |rt| OpenStruct.new(:name=> rt) }
           m_calais = mock("calais", :socialtags => social_tags)
           Calais.stub!(:process_document).and_return(m_calais)
@@ -119,7 +119,7 @@ describe CalaisRelatedSearch do
 
         it "should set the CalaisRelatedSearch's English-locale related terms for that term" do
           CalaisRelatedSearch.perform(@affiliate.name, @term)
-          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "congress | california | senator"
+          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "congress | California | CIA inquiry"
         end
       end
 

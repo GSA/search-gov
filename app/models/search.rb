@@ -105,10 +105,12 @@ class Search
       solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s, affiliate_id)
     end
     solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s) unless solr && solr.hits.present?
-    related_terms = solr.hits.first.instance.related_terms rescue ""
-    related_terms_array = related_terms.split('|')
+    instance = solr.hits.first.instance rescue nil
+    return [] if instance.nil?
+    related_terms = instance.related_terms
+    related_terms_array = related_terms.split('|') << instance.term
     related_terms_array.each{|t| t.strip!}
-    related_terms_array.delete(self.query)
+    related_terms_array.delete(self.query.downcase)
     related_terms_array.sort! {|x,y| y.length <=> x.length }
     return related_terms_array[0,5].sort
   end

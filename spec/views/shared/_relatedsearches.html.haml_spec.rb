@@ -2,7 +2,7 @@ require "#{File.dirname(__FILE__)}/../../spec_helper"
 describe "shared/_relatedsearches.html.haml" do
   before do
     @search = stub("Search")
-    @related_searches = %w{first | second | third}
+    @related_searches = ["first-1 keeps the hyphen", "second one is a string", "CIA stays capitalized"]
     @search.stub!(:related_search).and_return @related_searches
     @search.stub!(:queried_at_seconds).and_return(1271978870)
     assigns[:search] = @search
@@ -43,6 +43,9 @@ describe "shared/_relatedsearches.html.haml" do
       render :locals => { :search => @search }
       response.should have_tag('h3', :text => 'Related Topics')
       response.should have_tag('ul', :id => 'relatedsearch')
+      response.should have_tag('a', :text => 'CIA Stays Capitalized')
+      response.should have_tag('a', :text => 'First-1 Keeps the Hyphen')
+      response.should have_tag('a', :text => 'Second One is a String')
     end
 
     context "when there are related FAQ results" do

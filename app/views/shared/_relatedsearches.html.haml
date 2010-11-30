@@ -4,7 +4,7 @@
     - @search.related_search.each_with_index do |related_term, index|
       - options = {:query=>related_term}
       - options[:affiliate] = @affiliate.name if @affiliate
-      %li= tracked_click_link(search_path(options),h(related_term.titleize), @search, @affiliate, index, 'CREL')
+      %li= tracked_click_link(search_path(options),h(sentence_case(related_term)), @search, @affiliate, index, 'CREL')
 - else
   &nbsp
 - if (@search && @search.faqs && @search.faqs.total > 0)

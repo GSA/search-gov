@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def sentence_case(str)
+    non_capitalized = %w{ of etc and by the for on is at to but nor or a via de los des el del }
+    str.gsub(/\b[a-z]+/) { |w| non_capitalized.include?(w) ? w : w.capitalize }.sub(/^[a-z]/) { |l| l.upcase }.sub(/\b[a-z][^\s]*?$/) { |l| l.capitalize }
+  end
 
   def build_page_title(page_title)
     (page_title.blank? ? "" : "#{page_title} - ") + (t :site_title)
@@ -6,7 +10,7 @@ module ApplicationHelper
 
   def show_flash_messages
     unless (flash.nil? or flash.empty?)
-      html = content_tag(:div, flash.collect{ |key, msg| content_tag(:div, msg, :class => key) }, :id => 'flash-message', :class => 'flash-message')
+      html = content_tag(:div, flash.collect { |key, msg| content_tag(:div, msg, :class => key) }, :id => 'flash-message', :class => 'flash-message')
       html << content_tag(:script, "setTimeout(\"new Effect.Fade('flash-message');\",15000)", :type => 'text/javascript')
       html
     end
@@ -36,14 +40,14 @@ module ApplicationHelper
 
   FOOTER_LINKS = {
     :en => [
-      ["Home", "http://www.usa.gov/index.shtml" ],
-      ["About Us", "http://www.usa.gov/About.shtml" ],
-      ["Contact Us", "http://www.usa.gov/Contact_Us.shtml" ],
-      ["Contact Government", "http://www.usa.gov/Contact/Elected.shtml" ],
-      ["FAQs", "http://www.usa.gov/Contact/Faq.shtml" ],
-      ["Website Policies", "http://www.usa.gov/About/Important_Notices.shtml" ],
-      ["Privacy", "http://www.usa.gov/About/Privacy_Security.shtml" ],
-      ["Suggest-A-Link", "http://www.usa.gov/feedback/SuggestLinkForm.jsp" ],
+      ["Home", "http://www.usa.gov/index.shtml"],
+      ["About Us", "http://www.usa.gov/About.shtml"],
+      ["Contact Us", "http://www.usa.gov/Contact_Us.shtml"],
+      ["Contact Government", "http://www.usa.gov/Contact/Elected.shtml"],
+      ["FAQs", "http://www.usa.gov/Contact/Faq.shtml"],
+      ["Website Policies", "http://www.usa.gov/About/Important_Notices.shtml"],
+      ["Privacy", "http://www.usa.gov/About/Privacy_Security.shtml"],
+      ["Suggest-A-Link", "http://www.usa.gov/feedback/SuggestLinkForm.jsp"],
       ["Link to Us", "http://www.usa.gov/About/Usagov_Logos.shtml"],
       ["Accessibility", "/pages/accessibility"],
       ["API", "/api"]
@@ -56,7 +60,7 @@ module ApplicationHelper
     ]
   }
 
-  BACKGROUND_COLORS = { :en => "#003366", :es => "#A40000" }
+  BACKGROUND_COLORS = {:en => "#003366", :es => "#A40000"}
 
   def header_links
     iterate_links(HEADER_LINKS[I18n.locale.to_sym])
@@ -128,6 +132,6 @@ module ApplicationHelper
   private
 
   def iterate_links(links)
-    links.collect {|link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?
+    links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?
   end
 end

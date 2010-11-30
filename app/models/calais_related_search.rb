@@ -38,7 +38,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
                             :group=>"daily_query_stats.query",
                             :order=>"sum_times desc")
       yesterdays_popular_en_locale_terms_not_yet_in_related_searches_for_affiliate.each do |dqs|
-        Resque.enqueue(CalaisRelatedSearch, affiliate_name, dqs.query.downcase)
+        Resque.enqueue(CalaisRelatedSearch, affiliate_name, dqs.query)
         @calais_api_counter += 1
         break if @calais_api_counter >= daily_api_quota
       end
@@ -54,15 +54,19 @@ class CalaisRelatedSearch < ActiveRecord::Base
       unless summary.blank?
         begin
           calais = Calais.process_document(:content => summary, :content_type => :raw, :license_id => CALAIS_LICENSE_ID, :metadata_enables=>['SocialTags'])
-          social_tags = calais.socialtags.collect { |st| st.name.downcase }
-          [term, term.singularize, term.pluralize].each { |t| social_tags.delete(t) }
-          social_tags.delete_if { |tag| tag.include?('_') or term.include?(tag.singularize) or term.include?(tag.pluralize) }
+          downcased_term = term.downcase
+          social_tags = calais.socialtags.collect { |st| st.name }
+          social_tags.delete_if do |tag|
+            downcased_tag = tag.downcase
+            downcased_tag.include?('_') or downcased_term.include?(downcased_tag.singularize) or
+              downcased_term.include?(downcased_tag.pluralize) or downcased_tag == downcased_term or
+              downcased_tag == downcased_term.singularize or downcased_tag == downcased_term.pluralize
+          end
           unless social_tags.empty?
             related_terms = social_tags.join(' | ')
             calais_related_search = find_or_initialize_by_term_and_locale_and_affiliate_id(term, 'en', affiliate_id)
             calais_related_search.related_terms = related_terms
             calais_related_search.save!
-            logger.info("#{affiliate_name}:#{term} => #{related_terms}\n")
           end
         rescue Curl::Err::TimeoutError => error
           RAILS_DEFAULT_LOGGER.warn "Call to Calais API timed out for #{affiliate_name}:#{term}: #{error}"
