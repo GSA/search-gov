@@ -16,7 +16,7 @@
         - @affiliate.users.each do |user|
           - unless @affiliate.is_owner?(user)
             %tr
-              = "#{user.contact_name} (#{user.email})"
+              = "#{user.contact_name} (#{mail_to user.email})"
               |
               = link_to 'Remove', affiliate_user_path(@affiliate, user.id), :method => :delete
   - else
@@ -27,7 +27,7 @@
     Add a user by email
   %p
     Enter an email address to add a user to this affiliate.  The email address must be associated with an existing account on Search.USA.gov.  If the email is not associated with an existing account, register a new account with that email address.
-  - form_tag affiliate_users_path do |f|
+  - form_tag affiliate_users_path do
     = label_tag 'email'
     = text_field_tag 'email', @email
     = submit_tag 'Add User'

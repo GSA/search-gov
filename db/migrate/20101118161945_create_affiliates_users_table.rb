@@ -6,6 +6,9 @@ class CreateAffiliatesUsersTable < ActiveRecord::Migration
     end
     add_index :affiliates_users, [:affiliate_id, :user_id], :unique => true
     rename_column :affiliates, :user_id, :owner_id
+    Affiliate.all.each do |affiliate|
+      affiliate.users << affiliate.owner if affiliate.owner
+    end
   end
 
   def self.down

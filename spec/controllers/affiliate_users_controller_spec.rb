@@ -73,7 +73,7 @@ describe AffiliateUsersController do
           post :create, :affiliate_id => @affiliate.id, :email => 'newuser@usa.gov'
           assigns[:email].should == 'newuser@usa.gov'
           assigns[:user].should be_nil
-          flash[:error].should == "Could not find user with email: newuser@usa.gov; please ask them to register as an affiliate with their email address."
+          response.should contain(/Could not find user with email: newuser@usa.gov; please ask them to register as an affiliate with their email address./)
           response.should render_template(:index)
         end
       end
@@ -83,7 +83,7 @@ describe AffiliateUsersController do
           post :create, :affiliate_id => @affiliate.id, :email => @user.email
           assigns[:email].should == @user.email
           assigns[:user].should == @user
-          flash[:error].should == "That user is the current owner of this affiliate; you can not add them again."
+          response.should contain(/That user is the current owner of this affiliate; you can not add them again./)
           response.should render_template(:index)
         end
       end
@@ -98,7 +98,7 @@ describe AffiliateUsersController do
           post :create, :affiliate_id => @affiliate.id, :email => @another_user.email
           assigns[:email].should == @another_user.email
           assigns[:user].should == @another_user
-          flash[:error].should == "That user is already associated with this affiliate; you can not add them again."
+          response.should contain(/That user is already associated with this affiliate; you can not add them again./)
           response.should render_template(:index)
         end
       end
@@ -122,6 +122,7 @@ describe AffiliateUsersController do
   end
 
   describe "#destroy" do
+    integrate_views
     before do
       @affiliate_user = users(:marilyn)
       @affiliate.users << @affiliate_user
@@ -152,7 +153,7 @@ describe AffiliateUsersController do
       context "when attempting to remove an affiliate user that is the owner of the affiliate" do
         it "should not remove the user and flash an error message" do
           delete :destroy, :affiliate_id => @affiliate.id, :id => @affiliate_owner.id
-          flash[:error].should == "You can't remove the owner of the affiliate from the list of users."
+          response.should contain(/You can't remove the owner of the affiliate from the list of users./)
           response.should render_template(:index)
           @affiliate.users.include?(@affiliate_owner).should be_true
         end

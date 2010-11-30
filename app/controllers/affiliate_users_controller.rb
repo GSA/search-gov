@@ -14,12 +14,12 @@ class AffiliateUsersController < AffiliateAuthController
         @affiliate.users << @user
         flash.now[:notice] = "Successfully added #{@user.contact_name} (#{@user.email})"
       elsif @affiliate.is_owner?(@user)
-        flash[:error] = "That user is the current owner of this affiliate; you can not add them again."
+        flash.now[:error] = "That user is the current owner of this affiliate; you can not add them again."
       else
-        flash[:error] = "That user is already associated with this affiliate; you can not add them again."
+        flash.now[:error] = "That user is already associated with this affiliate; you can not add them again."
       end
     else
-      flash[:error] = "Could not find user with email: #{@email}; please ask them to register as an affiliate with their email address."
+      flash.now[:error] = "Could not find user with email: #{@email}; please ask them to register as an affiliate with their email address."
     end
     render :action => :index
   end
@@ -27,7 +27,7 @@ class AffiliateUsersController < AffiliateAuthController
   def destroy
     @user = User.find(params[:id])
     if @affiliate.is_owner?(@user)
-      flash[:error] = "You can't remove the owner of the affiliate from the list of users."
+      flash.now[:error] = "You can't remove the owner of the affiliate from the list of users."
     else
       @affiliate.users.delete(@user)
       flash.now[:notice] = "Removed #{@user.contact_name} from affiliate."
