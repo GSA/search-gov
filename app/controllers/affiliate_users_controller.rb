@@ -12,6 +12,7 @@ class AffiliateUsersController < AffiliateAuthController
     if @user
       if !@affiliate.users.include?(@user)
         @affiliate.users << @user
+        @email = nil
         flash.now[:success] = "Successfully added #{@user.contact_name} (#{@user.email})"
       elsif @affiliate.is_owner?(@user)
         flash.now[:error] = "That user is the current owner of this affiliate; you can not add them again."

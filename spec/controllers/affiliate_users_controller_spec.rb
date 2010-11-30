@@ -111,7 +111,7 @@ describe AffiliateUsersController do
         it "should associate the user and flash a success message" do
           @affiliate.users.include?(@another_user).should be_false
           post :create, :affiliate_id => @affiliate.id, :email => @another_user.email
-          assigns[:email].should == @another_user.email
+          assigns[:email].should be_nil
           assigns[:user].should == @another_user
           response.should render_template(:index)
           response.body.should contain(/Successfully added #{@another_user.contact_name} \(#{@another_user.email}\)/)
