@@ -12,10 +12,10 @@
     Affiliate Users
   - if @affiliate.users.size > 1
     %table
-      %tbody
-        - @affiliate.users.each do |user|
-          - unless @affiliate.is_owner?(user)
-            %tr
+      - @affiliate.users.each do |user|
+        - unless @affiliate.is_owner?(user)
+          %tr
+            %td
               = "#{user.contact_name} (#{mail_to user.email})"
               |
               = link_to 'Remove', affiliate_user_path(@affiliate, user.id), :method => :delete
