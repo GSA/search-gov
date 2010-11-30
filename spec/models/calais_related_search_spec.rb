@@ -5,6 +5,7 @@ describe CalaisRelatedSearch do
   fixtures :affiliates, :calais_related_searches
 
   before(:each) do
+    @redis = CalaisRelatedSearch.send(:class_variable_get, :@@redis)
     @affiliate = affiliates(:power_affiliate)
     @valid_attributes = {
       :affiliate => @affiliate,
@@ -25,6 +26,27 @@ describe CalaisRelatedSearch do
     should_belong_to :affiliate
   end
 
+  describe "#refresh_stalest_entries" do
+    before do
+      ResqueSpec.reset!
+      CalaisRelatedSearch.stub!(:daily_api_quota).and_return(2)
+      CalaisRelatedSearch.delete_all
+      a = CalaisRelatedSearch.create!(:affiliate => @affiliate, :term => "term1", :related_terms => "rs1 | rs2 | rs3", :locale => 'en')
+      b = CalaisRelatedSearch.create!(:affiliate => nil, :term => "term2", :related_terms => "rs4 | rs5 | rs6", :locale => 'en')
+      CalaisRelatedSearch.create!(:affiliate => @affiliate, :term => "term3", :related_terms => "rs7 | rs8 | rs9", :locale => 'en')
+      @oldest_two = [a,b]
+    end
+
+    it "should refresh the oldest entries up to the daily API quota limit" do
+      @redis.should_receive(:incr).twice.and_return(1, 2)
+      CalaisRelatedSearch.should_receive(:find_all_by_locale).with('en', :order => 'updated_at', :limit => 2).and_return @oldest_two
+      CalaisRelatedSearch.refresh_stalest_entries
+      CalaisRelatedSearch.should have_queued(@affiliate.name, "term1")
+      CalaisRelatedSearch.should have_queued(Affiliate::USAGOV_AFFILIATE_NAME, "term2")
+      CalaisRelatedSearch.should_not have_queued(@affiliate.name, "term3")
+    end
+  end
+
   describe "#populate_with_new_popular_terms" do
     before do
       @second_affiliate = affiliates(:basic_affiliate)
@@ -34,6 +56,7 @@ describe CalaisRelatedSearch do
       before do
         DailyQueryStat.create!(:day => Date.yesterday, :times => 1001, :affiliate => @affiliate.name, :query => "SOME new popular term")
         DailyQueryStat.create!(:day => Date.yesterday, :times => 1001, :affiliate => @second_affiliate.name, :query => "SOME new popular term")
+        @redis.stub!(:get).and_return(1, 2)
       end
 
       it "should call populate_affiliate_with_new_popular_terms for each one" do
@@ -47,12 +70,15 @@ describe CalaisRelatedSearch do
       before do
         ResqueSpec.reset!
         CalaisRelatedSearch.stub!(:daily_api_quota).and_return(2)
+        @redis = CalaisRelatedSearch.send(:class_variable_get, :@@redis)
         DailyQueryStat.create!(:affiliate => @second_affiliate.name, :day => Date.yesterday, :times => 1000, :query => "first one")
         DailyQueryStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday, :times => 1000, :query => "second one")
         DailyQueryStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday, :times => 1000, :query => "third one")
       end
 
       it "should only enqueue up to the limit" do
+        @redis.should_receive(:incr).twice.and_return(1, 2)
+        @redis.should_receive(:get).twice.and_return("1", "2")
         CalaisRelatedSearch.populate_with_new_popular_terms
         CalaisRelatedSearch.should have_queued(@second_affiliate.name, "first one")
         CalaisRelatedSearch.should have_queued(@affiliate.name, "second one")
@@ -72,6 +98,7 @@ describe CalaisRelatedSearch do
           @crs = calais_related_searches(:usasearch)
           DailyQueryStat.create!(:day => Date.yesterday, :times => 1000, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :query => @crs.term)
           DailyQueryStat.create!(:day => Date.yesterday, :times => 1001, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :query => "new term")
+          @redis.stub!(:incr).and_return(1, 2)
         end
 
         it "should enqueue for processing only the new terms" do
@@ -86,6 +113,7 @@ describe CalaisRelatedSearch do
           CalaisRelatedSearch.create!(@valid_attributes)
           DailyQueryStat.create!(:day => Date.yesterday, :times => 1001, :affiliate => @affiliate.name, :query => "SOME new popular term")
           DailyQueryStat.create!(:day => Date.yesterday, :times => 1000, :affiliate => @affiliate.name, :query => "debt relief")
+          @redis.stub!(:incr).and_return(1, 2)
         end
 
         it "should enqueue for processing only the new terms" do
@@ -120,6 +148,22 @@ describe CalaisRelatedSearch do
         it "should set the CalaisRelatedSearch's English-locale related terms for that term" do
           CalaisRelatedSearch.perform(@affiliate.name, @term)
           CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "congress | California | CIA inquiry"
+        end
+      end
+
+      context "when there's an existing and differently-cased CalaisRelatedSearch to be updated" do
+        before do
+          CalaisRelatedSearch.create!(:term=> @term.upcase, :locale=>'en', :affiliate_id => @affiliate.id, :related_terms => "congress | California | CIA inquiry")
+          related_terms = ["totally", "new", "terms"]
+          social_tags = related_terms.collect { |rt| OpenStruct.new(:name=> rt) }
+          m_calais = mock("calais", :socialtags => social_tags)
+          Calais.stub!(:process_document).and_return(m_calais)
+        end
+
+        it "should update the CalaisRelatedSearch's English-locale related terms for that term" do
+          CalaisRelatedSearch.perform(@affiliate.name, @term)
+          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "totally | new | terms"
+          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term.upcase, 'en', @affiliate.id).related_terms.should == "totally | new | terms"
         end
       end
 

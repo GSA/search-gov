@@ -1,9 +1,10 @@
 class CalaisRelatedSearch < ActiveRecord::Base
   @queue = :calais_related_search
-  @calais_api_counter = 0
+  @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
 
   DAILY_API_QUOTA = 49000
   BING_RESULTS_TO_CONSIDER_FOR_TEXT = 100
+  CRS_REDIS_KEY_PREFIX = "calais_related_search_daily_count:"
 
   validates_presence_of :term, :related_terms, :locale
   validates_uniqueness_of :term, :scope => [:locale, :affiliate_id]
@@ -12,14 +13,21 @@ class CalaisRelatedSearch < ActiveRecord::Base
 
   class << self
 
+    def refresh_stalest_entries
+      find_all_by_locale('en', :order => 'updated_at', :limit => daily_api_quota).each do |crs|
+        affiliate_name = crs.affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : crs.affiliate.name
+        Resque.enqueue(CalaisRelatedSearch, affiliate_name, crs.term)
+        break if @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.today.to_s) >= daily_api_quota
+      end
+    end
+
     def populate_with_new_popular_terms
-      @calais_api_counter = 0
       stats_with_yesterdays_active_affiliates = DailyQueryStat.find(:all,
                                                                     :select=>"distinct(affiliate) affiliate",
                                                                     :conditions=>["day = ? and locale='en'", Date.yesterday])
       stats_with_yesterdays_active_affiliates.each do |dqs|
         populate_affiliate_with_new_popular_terms(dqs.affiliate)
-        break if @calais_api_counter >= daily_api_quota
+        break if @@redis.get(CRS_REDIS_KEY_PREFIX + Date.today.to_s).to_i >= daily_api_quota
       end
     end
 
@@ -39,8 +47,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
                             :order=>"sum_times desc")
       yesterdays_popular_en_locale_terms_not_yet_in_related_searches_for_affiliate.each do |dqs|
         Resque.enqueue(CalaisRelatedSearch, affiliate_name, dqs.query)
-        @calais_api_counter += 1
-        break if @calais_api_counter >= daily_api_quota
+        break if @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.today.to_s) >= daily_api_quota
       end
     end
 

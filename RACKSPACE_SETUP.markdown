@@ -224,7 +224,7 @@ The cron machine should have 5 Resque processes ready to work through the Calais
 
 To see how many are there, run this from cron:
 
-  pgrep -f "Processing calais_related_search since" | wc -l
+  pgrep -f "calais_related_search" | wc -l
 
 
 To start some workers, do this:

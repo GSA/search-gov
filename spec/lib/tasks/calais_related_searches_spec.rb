@@ -26,5 +26,22 @@ describe "Calais related searches rake tasks" do
       end
     end
 
+    describe "usasearch:calais_related_searches:refresh" do
+      before do
+        @task_name = "usasearch:calais_related_searches:refresh"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      it "should update related terms of oldest existing entries" do
+        redis = CalaisRelatedSearch.send(:class_variable_get,:@@redis)
+        redis.stub!(:incr).and_return(1)
+        CalaisRelatedSearch.should_receive(:refresh_stalest_entries)
+        @rake[@task_name].invoke
+      end
+    end
+
   end
 end

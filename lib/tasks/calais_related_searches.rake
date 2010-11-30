@@ -6,5 +6,10 @@ namespace :usasearch do
       CalaisRelatedSearch.populate_with_new_popular_terms
     end
 
+    desc "regenerate related terms for oldest CalaisRelatedSearch entries"
+    task :refresh, :needs => :environment do |t, args|
+      CalaisRelatedSearch.refresh_stalest_entries
+    end
+
   end
 end
