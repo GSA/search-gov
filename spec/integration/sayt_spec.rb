@@ -27,6 +27,11 @@ describe Sayt do
     response.body.should == ''
   end
 
+  it "should return empty result if query term is all whitespace" do
+    get '/sayt', :q=>"  ", :callback => 'jsonp1276290049647'
+    response.body.should == ''
+  end
+
   it "should call Search.suggestions with a whitespace-normalized string" do
     Search.should_receive(:suggestions).with(nil, 'does torture', an_instance_of(Fixnum)).and_return []
     get '/sayt', :q=>"does  torture ", :callback => 'jsonp1276290049647'
