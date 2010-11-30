@@ -20,6 +20,11 @@ describe SearchesController do
       response.body.should be_blank
     end
 
+    it "should return empty result if query is just blank spaces" do
+      get :auto_complete_for_search_query, :query=>" "
+      response.body.should be_blank
+    end
+
     context "when searching in mobile mode" do
       before do
         @there_must_be_a_better_way_to_stub_this = ActionController::MobileFu::MOBILE_USER_AGENTS
@@ -213,13 +218,13 @@ describe SearchesController do
 
     should_render_template 'searches/index.html.haml', :layout => 'application'
   end
-  
+
   context "when handling any affiliate search request with a JSON format" do
     integrate_views
     before do
       get :index, :affiliate => affiliates(:power_affiliate).name, :query => "weather", :format => "json"
     end
-    
+
     should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'
   end
 
