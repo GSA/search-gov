@@ -16,7 +16,7 @@ describe Affiliate do
 
   describe "Creating new instance of Affiliate" do
     should_validate_presence_of :name
-    should_validate_uniqueness_of :name
+    should_validate_uniqueness_of :name, :case_sensitive => false
     should_validate_length_of :name, :within=> (3..33)
     should_not_allow_values_for :name, "<IMG SRC=", "259771935505'", "spacey name"
     should_allow_values_for :name, "data.gov", "ct-new", "NewAff", "some_aff", "123"
@@ -36,6 +36,12 @@ describe Affiliate do
 
     it "should have Affiliate-specific SAYT suggestions disabled by default" do
       Affiliate.create!(@valid_attributes).is_affiliate_suggestions_enabled.should be_false
+    end
+    
+    it "should not generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do
+      Affiliate.create!(@valid_attributes)
+      @duplicate_affiliate = Affiliate.new(@valid_attributes.merge(:name => @valid_attributes[:name].upcase))
+      @duplicate_affiliate.save.should be_false
     end
   end
 
