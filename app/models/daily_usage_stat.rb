@@ -13,9 +13,9 @@ class DailyUsageStat < ActiveRecord::Base
                "Affiliates" => { :name => "Search Affiliates", :profile_id => "ivO5EkIX0j6" }
   }
 
-  def self.monthly_totals(year, month, affiliate_name = 'usasearch.gov')
+  def self.monthly_totals(year, month, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
     result = {}
-    if affiliate_name != 'usasearch.gov'
+    if affiliate_name != Affiliate::USAGOV_AFFILIATE_NAME
       profile_totals = {}
       profile_totals[:total_queries] = total_monthly_queries(year, month, 'Affiliates', affiliate_name)
       result[affiliate_name] = profile_totals

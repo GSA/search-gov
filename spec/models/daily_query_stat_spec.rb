@@ -244,7 +244,7 @@ describe DailyQueryStat do
 
     it "should return the most recent date for a locale if specified" do
       DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, 'es'])
-      DailyQueryStat.most_recent_populated_date('usasearch.gov', 'es')
+      DailyQueryStat.most_recent_populated_date(Affiliate::USAGOV_AFFILIATE_NAME, 'es')
     end
   end
 
