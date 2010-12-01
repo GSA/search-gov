@@ -1,3 +1,11 @@
+.breadcrumb
+  = link_to 'Dashboard', home_affiliates_path
+  >
+  = link_to(@affiliate.name, affiliate_path(@affiliate))
+  >
+  Boosted Sites
+%br
+
 .span-24
   %h1 Boosted Sites
   %p Boosted sites allows you to direct users to content that is relevant but does not appear at the top of our results.
@@ -5,39 +13,41 @@
     For example, an important news story just posted on your server will not appear at the top of our results listings,
     and you want to get your search users this information. With Boosted Sites, the link for the page(s) are returned
     above our search results for queries that match the information you uploaded.
-.span-22.append-3
-  %pre
-    :preserve
-    :escaped
-      <xml>
-        <entries>
-          <entry>
-            <title>This is a listing about Texas</title>
-            <url>http://some.url</url>
-            <description>This is the description of the listing</description>
-          </entry>
-          <entry>
-            <title>Some other listing about hurricanes</title>
-            <url>http://some.other.url</url>
-            <description>Another description for another listing</description>
-          </entry>
-        </entries>
-      </xml>
 
-.span-14
-  - form_tag affiliate_boosted_sites_upload_path(@affiliate), :multipart => true, :class=> "bordered" do
-    %h1="Upload boosted sites for #{@affiliate.name}"
-    = file_field_tag 'xmlfile', :accept => 'text/xml'
-    = submit_tag "Upload"
+.clear
+%pre
+  :preserve
+  :escaped
+    <xml>
+      <entries>
+        <entry>
+          <title>This is a listing about Texas</title>
+          <url>http://some.url</url>
+          <description>This is the description of the listing</description>
+        </entry>
+        <entry>
+          <title>Some other listing about hurricanes</title>
+          <url>http://some.other.url</url>
+          <description>Another description for another listing</description>
+        </entry>
+      </entries>
+    </xml>
 
-.span-23.contentcard
-  %h2="Current Boosted Sites for #{@affiliate.name}"
-  - if @affiliate.boosted_sites.empty?
-    %p.alt= "Affiliate #{@affiliate.name} has no boosted sites"
-  - else
-    %table
-      - @affiliate.boosted_sites.each do |boosted_site|
-        %tr
-          %td= boosted_site.title
-          %td= boosted_site.url
-          %td= boosted_site.description
+.clear
+%br
+- form_tag affiliate_boosted_sites_upload_path(@affiliate), :multipart => true, :class=> "bordered" do
+  %h1="Upload boosted sites for #{@affiliate.name}"
+  = file_field_tag 'xmlfile', :accept => 'text/xml'
+  = submit_tag "Upload"
+%br
+.header-box
+  ="Current Boosted Sites for #{@affiliate.name}"
+- if @affiliate.boosted_sites.empty?
+  .content-box= "Affiliate #{@affiliate.name} has no boosted sites"
+- else
+  %table.admin-table
+    - @affiliate.boosted_sites.each do |boosted_site|
+      %tr{:class => cycle('even', 'odd')}
+        %td= boosted_site.title
+        %td= boosted_site.url
+        %td= boosted_site.description

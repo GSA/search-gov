@@ -1,4 +1,12 @@
-#h1
+.breadcrumb
+  = link_to 'Dashboard', home_affiliates_path
+  >
+  = link_to(@affiliate.name, affiliate_path(@affiliate))
+  >
+  Monthly Reports
+%br
+
+%h1
   = "Monthly Usage for #{@affiliate.name}"
 
 - form_tag(affiliate_analytics_monthly_reports_path(@affiliate), :method => :get) do

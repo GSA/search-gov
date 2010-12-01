@@ -18,12 +18,12 @@ Feature: Affiliate clients
     When I go to the user account page
     Then I should see "multi1"
     And I should see "multi2"
-    And I should see "FAQ"
+    And I should see "Help"
 
   Scenario: Adding a new affiliate
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "Add Affiliate"
+    And I follow "Add New Affiliate"
     And I fill in the following:
       | Name of new site search                                               | www.agency.gov             |
       | Your Website URL (www.example.gov)                                    | www.agency.gov             |
@@ -81,7 +81,7 @@ Feature: Affiliate clients
     And the "Enter HTML to customize the top of your search page" field should contain "New header"
     And the "Enter HTML to customize the bottom of your search page" field should contain "New footer"
     When I go to the affiliate admin page
-    When I follow "Preview"
+    When I follow "View Current"
     Then I should see "Old header"
     And I should see "Old footer"
     When I go to the affiliate admin page
@@ -94,7 +94,7 @@ Feature: Affiliate clients
     And I should see "Staged content is now visible"
     And I should not see "Push Changes"
     And I should not see "View staged"
-    When I follow "Preview"
+    When I follow "View Current"
     Then I should see "New header"
     And I should see "New footer"
 
@@ -297,7 +297,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get Code"
-    Then I should see "Site Search"
+    Then I should see "Embed Search Code"
     And I should see "Copy and paste the HTML code below to create a search box for aff.gov"
     And I should see "English Version"
     And I should see "Spanish Version"
@@ -318,7 +318,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Analytics"
+    And I follow "Query Logs"
     Then I should see "Query Analytics for aff.gov"
     And I should see "Most Frequent Queries"
     And I should see "Data for April 15, 2010"
@@ -333,7 +333,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there are no daily query stats
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Analytics"
+    And I follow "Query Logs"
     Then in "dqs1" I should see "Not enough historic data"
     And in "dqs7" I should see "Not enough historic data"
     And in "dqs30" I should see "Not enough historic data"
@@ -344,7 +344,7 @@ Feature: Affiliate clients
      | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Usage Stats"
+    And I follow "Monthly Reports"
     Then I should see "Monthly Usage Stats"
 
   Scenario: Viewing the Affiliates Monthly Reports page
@@ -356,7 +356,7 @@ Feature: Affiliate clients
     | Affiliates  | 1000          | aff.gov   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Usage Stats"
+    And I follow "Monthly Reports"
     Then I should see the header for the report date
     And I should see the "aff.gov" queries total within "aff.gov_usage_stats"
 
@@ -369,7 +369,7 @@ Feature: Affiliate clients
      | Affiliates | 1000        | aff.gov    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Usage Stats"
+    And I follow "Monthly Reports"
     And I select "February 2010" as the report date
     And I press "Get Usage Stats"
     Then I should see the report header for "2010-02"
@@ -384,7 +384,7 @@ Feature: Affiliate clients
      | Affiliates | 1000            | aff.gov    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Usage Stats"
+    And I follow "Monthly Reports"
     And I select "December 2011" as the report date
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."

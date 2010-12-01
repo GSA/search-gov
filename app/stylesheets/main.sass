@@ -8,14 +8,14 @@
 +blueprint-scaffolding
 +blueprint-liquid-grid
 +fancy-type
-!site_base_color= "lavender"
+!site_base_color= "#fff"
 
 .container
   :width 99%
   .span-8,.span-11,.span-13,.span-21,.span-3
     :margin 0
 
-p+p
+p+p 
   :text-indent 0
   :margin-top 0
 
@@ -25,19 +25,20 @@ div.span-8.last table.querycounts
   :padding-right 0
 
 body
-  :font-size 100%
+  :font-size 95%
 
 a
-  +hover-link
+  &:hover
+    :color #c81b2a
 
 .loud
   :font-weight bold
 h1
-  :font-size 1.5em
   :margin-bottom 0.5em
-  :display inline
-  :font-size 1.6em
+  :font-size 1.5em
   :vertical-align 40%
+  :font-weight bold
+  :color #1c3f94
 
 h2
   :font-size 1.25em
@@ -45,6 +46,11 @@ h2
   :padding-left 0.2em
   & img
     :vertical-align text-bottom
+
+h3
+  :font-size 1em
+  :margin-bottom 0
+  :padding-left 0.2em
 
 th
   :background-color lightgray
@@ -80,6 +86,7 @@ div.calendar_date_select div.cds_body thead th
 form#query_search_form
   :text-align center
   :margin-bottom 1em
+  :text-align left
 
 table table
   :border 1px solid lightgray
@@ -97,19 +104,15 @@ div.auto_complete ul strong.highlight
 
 
 form.bordered
-  :margin 1em auto 0 auto
-  :background-color= !site_base_color
-  :padding 2em 2em 1em 2em
-  :border 10px solid lightgrey
-  :-moz-border-radius 10px
-  :-webkit-border-radius 10px
+  :border 1px solid #bdbdbd
+  :padding 15px
   ul
     :list-style none
   input.text
     :width inherit
   dl dd
     textarea
-      :width 100%
+      :width 95%
     input.text
       :width 50%
 
@@ -171,6 +174,15 @@ pre
   :border 1px solid gainsboro
 
 
+/* begin rcr redesign classes */
+.main
+  :padding 15px
+
+.admin-content
+  :float left
+  :display block
+  :overflow hidden
+
 .topmovers-title
   float: left
   margin-right: 0
@@ -198,36 +210,110 @@ table.admin-table
   :border-spacing 0
   :border-collapse collapse
   :border-style solid
-  :border-color #ccc
+  :border-color #bdbdbd
+  th
+    :background-color #e5e5e5
+    :padding 15px 5px
+    :border-width 1px 1px 0 0
+    :border-style solid
+    :border-color #bdbdbd
+    :color #000
+    :font-weight bolder
+  td
+    :margin 0
+    :padding 10px 5px
+    :border-width 1px 1px 0 0
+    :border-style solid
+    :border-color #bdbdbd
+    form.button-to
+      :display inline
+    div
+      :display inline
+tr.even td
+  :background-color #fff
+tr.odd td 
+  :background-color #f7f7f7
 
-.admin-table td, .admin-table th
-  :margin 0
-  :padding 4px
-  :border-width 1px 1px 0 0
+.header-box
+  :overflow auto
+  :background-color #e5e5e5
+  :padding 15px 5px
+  :border-width 1px 1px 0 1px
   :border-style solid
-  :border-color #ccc
-  
-.select-affiliate
-  :margin-top 0
-  :background #eee
-  h2
-    :background #555
-    :color #fff
+  :border-color #bdbdbd
+  :color #000
+  :font-weight bolder
+.content-box
+  :overflow auto
+  :border-width 1px
+  :border-spacing 0
+  :border-collapse collapse
+  :border-style solid
+  :border-color #bdbdbd
+  :margin 0 0 20px 0
+  :padding 10px 5px
 
-.affiliate-dropdown
-  :margin-left 2px
-  :height 30px
-  :width 145px
-  :font-size 1em
-  
-#affiliate-nav
-  :padding 15px
-  :border 1px #ccc solid
-  :border-top 0px
-  :margin-top -1px
-  
+table.nav-links
+  a
+    :padding-left 15px
 .left
   :float left
   
 .right
   :float right
+  
+.title-row
+  :overflow auto
+  :padding 0.15em 0.5em
+  :color #fff
+  :background-color #555
+  h2
+    :color #fff
+    :margin 0
+  a
+    :color #fff
+
+.affiliate-nav
+  :min-height 100px
+  :width 170px
+  :margin 0 30px 0 0
+      
+.secondary-navbar
+  :clear both
+  :height 29px
+  :background url("/images/backgrounds/bg_red_gradient.png")
+  :background-repeat repeat-x
+  :margin 0 0 10px 0
+  :width 100%
+  :text-align right
+  .sec-nav-left
+    :float left
+    :color #fff
+    :padding 3px 0px 0 10px
+  .sec-nav-right
+    :float right
+    :padding 0 10px 0 0
+    :font-size .9em
+    :color #fff
+  a
+    :color #fff
+  
+.affiliate-dropdown
+  :margin 3px 0 0 0
+  :font-size 1em
+  :height auto
+
+    
+#flash-message
+  :margin-bottom 10px
+  
+.breadcrumb
+  :font-size .9em
+  :border-bottom 1px solid #bdbdbd
+
+.admin-footer
+  :text-align center
+  :font-size .8em
+  :border-top 1px solid #bdbdbd
+  :padding 10px 0 0 0
+  :margin 40px 0 0 0

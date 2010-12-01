@@ -1,15 +1,27 @@
+.breadcrumb
+  = link_to 'Dashboard', home_affiliates_path
+  >
+  = link_to(@affiliate.name, affiliate_path(@affiliate))
+  >
+  Query Analytics 
+%br
+
 %h1= "Query Analytics for #{@affiliate.name}"
 .span-24
   = render :partial => "analytics/shared/search", :locals => { :affiliate => @affiliate, :path => affiliate_analytics_query_search_path }
 .span-24
-  %h2= display_most_recent_date_available(@day_being_shown, @affiliate)
-
-.span-24.headertitle
-  .span-21
-    %h2 Most Frequent Queries
-  .span-3.last
+  = display_most_recent_date_available(@day_being_shown, @affiliate)
+.clear
+%br
+.header-box
+  .left
+    Most Frequent Queries
+  .right
     %form
       = display_select_for_window("dqs", @num_results_dqs, @day_being_shown, @affiliate)
+
+.clear
+
 .span-8{:id=>"dqs1"}
   = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_terms , :content_name => "dqs1", :heading => "Previous Day", :affiliate => @affiliate }
 .span-8{:id=>"dqs7"}

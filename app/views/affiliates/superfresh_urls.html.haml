@@ -1,5 +1,12 @@
+.breadcrumb
+  = link_to 'Dashboard', home_affiliates_path
+  >
+  = link_to(@affiliate.name, affiliate_path(@affiliate))
+  >
+  Add to Bing
+%br
 
-%h3
+%h1
   Add to Bing
 %p
   Are new, moved, or modified pages on your site not showing up in the Bing index?
@@ -13,29 +20,27 @@
 
 %br
 
-#uncrawled-urls.span-24.headertitle
-  %h2
-    Uncrawled URLs (#{@uncrawled_urls.size})
+#uncrawled-urls.title-row
+  Uncrawled URLs (#{@uncrawled_urls.size})
 %table.admin-table
   %tr
     %th
       URL
   - @uncrawled_urls.each do |uncrawled_url|
-    %tr
+    %tr{:class => cycle('even', 'odd')}
       %td.uncrawled-url
         = link_to uncrawled_url.url, uncrawled_url.url
       
-#crawled-urls.span-24.headertitle
-  %h2
-    Previously Refreshed URLs
-%table
+#crawled-urls.title-row
+  Previously Refreshed URLs
+%table.admin-table
   %tr
     %th
       URL
     %th
       Crawled At
   - @crawled_urls.each do |crawled_url|
-    %tr
+    %tr{:class => cycle('even', 'odd')}
       %td.crawled-url
         = link_to crawled_url.url, crawled_url.url
       %td

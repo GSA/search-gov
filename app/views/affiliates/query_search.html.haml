@@ -1,3 +1,11 @@
+.breadcrumb
+  = link_to 'Dashboard', home_affiliates_path
+  >
+  = link_to(@affiliate.name, affiliate_path(@affiliate))
+  >
+  Query Search
+%br
+
 .span-24
   = render :partial => "analytics/shared/search", :locals => { :affiliate => @affiliate, :path => affiliate_analytics_query_search_path }
 .span-16

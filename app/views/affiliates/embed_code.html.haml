@@ -1,12 +1,17 @@
+.breadcrumb
+  = link_to 'Dashboard', home_affiliates_path
+  >
+  = link_to(@affiliate.name, affiliate_path(@affiliate))
+  >
+  Get Code
+%br
+
 %h1 Embed Search Code
 
-%hr
-
-%h3 Site Search
 %p== Copy and paste the HTML code below to create a search box for #{@affiliate.name}
 = find_and_preserve do
   #embed_code_english.span-12
-    %p English Version
+    %h2 English Version
     %textarea{ :readonly => true, :id => "embed_code_textarea", :onclick => "document.getElementById('embed_code_textarea').focus(); document.getElementById('embed_code_textarea').select();" }
       = '<form method="get" action="http://search.usa.gov/search">'
       = "  <input type=\"hidden\" name=\"affiliate\" value=\"#{ @affiliate.name }\" />"
@@ -15,7 +20,7 @@
       = '  <input type="submit" value="Search" />'
       = '</form>'
   #embed_code_spanish
-    %p Spanish Version
+    %h2 Spanish Version
     %textarea{ :readonly => true, :id => "embed_code_textarea_spanish", :onclick => "document.getElementById('embed_code_textarea_spanish').focus(); document.getElementById('embed_code_textarea_spanish').select();" }
       = '<form method="get" action="http://search.usa.gov/search">'
       = "  <input type=\"hidden\" name=\"affiliate\" value=\"#{ @affiliate.name }\" />"

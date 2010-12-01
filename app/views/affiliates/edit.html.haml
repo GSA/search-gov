@@ -1,6 +1,13 @@
+.breadcrumb
+  = link_to 'Dashboard', home_affiliates_path
+  >
+  = link_to(@affiliate.name, affiliate_path(@affiliate))
+  >
+  Edit
+%br
+%h1 Edit Affiliate
 .span-15
   - form_for @affiliate, :html => {:class=>"bordered"} do |f|
-    %h1 Edit Affiliate
     = f.error_messages(:header_message => nil, :class => "error")
     = render :partial => "form", :object => f
     = f.submit "Save for preview"

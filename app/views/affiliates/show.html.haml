@@ -1,0 +1,32 @@
+.breadcrumb
+  = link_to 'Dashboard', home_affiliates_path
+  >
+  = @affiliate.name
+%br
+
+%h1
+  Affiliate: 
+  = @affiliate.name
+ 
+.span-16
+  %table.admin-table
+    %tr
+      %th
+        Website URL
+      %th
+        Actions
+    %tr
+      %td
+        = @affiliate.website
+      %td
+        = link_to 'Edit', edit_affiliate_path(@affiliate)
+        |
+        = link_to 'Current Site', search_url(:affiliate=> @affiliate.name, :query => "gov")
+        - if @affiliate.has_staged_content?
+          | 
+          = link_to "View staged", search_url(:affiliate=> @affiliate.name, :query => "gov", :staged => 1)
+          |
+          = button_to "Push Changes", push_content_for_affiliate_path(@affiliate, :affiliate_id => @affiliate.id)
+        |
+        = button_to "Delete Affiliate", affiliate_path(@affiliate), :title => "Delete this affiliate", :confirm => "You are about to delete this affiliate. Are you sure?", :method => :delete
+    

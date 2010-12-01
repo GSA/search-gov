@@ -1,32 +1,41 @@
-%h2
+.breadcrumb
+  = link_to 'Dashboard', home_affiliates_path
+  >
+  = link_to(@affiliate.name, affiliate_path(@affiliate))
+  >
+  Manage Users
+%br
+
+%h1
   Users for Affiliate: #{@affiliate.name}
 
-.span-14.contentcard
-  %h2
-    Owner
-  - if @affiliate.owner
+.header-box
+  Owner
+- if @affiliate.owner
+  .content-box
     #{@affiliate.owner.contact_name} (#{mail_to @affiliate.owner.email})
 
-.span-14.contentcard
-  %h2
-    Affiliate Users
+%table.admin-table
+  %tr
+    %th
+      Affiliate Users
   - if @affiliate.users.size > 1
-    %table
-      - @affiliate.users.each do |user|
-        - unless @affiliate.is_owner?(user)
-          %tr
-            %td
-              = "#{user.contact_name} (#{mail_to user.email})"
-              |
-              = link_to 'Remove', affiliate_user_path(@affiliate, user.id), :method => :delete
+    - @affiliate.users.each do |user|
+      - unless @affiliate.is_owner?(user)
+        %tr{:class => cycle('even', 'odd')}
+          %td
+            = "#{user.contact_name} (#{mail_to user.email})"
+            |
+            = link_to 'Remove', affiliate_user_path(@affiliate, user.id), :method => :delete
   - else
-    No other users associated with this affiliate.
+    %tr
+      %td
+        No other users associated with this affiliate.
     
-.span-14.contentcard
-  %h2
-    Add a user by email
-  %p
-    Enter an email address to add a user to this affiliate.  The email address must be associated with an existing account on Search.USA.gov.  If the email is not associated with an existing account, register a new account with that email address.
+.header-box
+  Add a user by email
+.content-box
+  Enter an email address to add a user to this affiliate.  The email address must be associated with an existing account on Search.USA.gov.  If the email is not associated with an existing account, register a new account with that email address.
   - form_tag affiliate_users_path do
     = label_tag 'email'
     = text_field_tag 'email', @email

@@ -35,7 +35,6 @@ Feature: Users
     And I press "Register"
     Then I should be on the user account page
     And I should see "Thank you for registering for USA.gov Search Services"
-    And I should see "You currently have no affiliates"
 
   Scenario: Registering as a new affiliate user with a .mil email address
     Given I am on the new user page
@@ -55,7 +54,6 @@ Feature: Users
     And I press "Register"
     Then I should be on the user account page
     And I should see "Thank you for registering for USA.gov Search Services"
-    And I should see "You currently have no affiliates"
 
   Scenario: Failing registration as a new affiliate user
     Given I am on the new user page

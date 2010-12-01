@@ -82,19 +82,14 @@ module ApplicationHelper
     elements = []
     if cur_user
       elements << cur_user.email
-      if cur_user.is_affiliate_admin?
-        elements << link_to("Affiliate Admin", home_affiliates_path)
-      end
       elements << link_to("My Account", account_path)
-      elements << link_to("Logout", user_session_path, :method => :delete)
       elements << link_to("Users", admin_users_path) if cur_user.is_affiliate_admin?
+      elements << mail_to(APP_EMAIL_ADDRESS, "Contact Us")
+      elements << link_to("Logout", user_session_path, :method => :delete)
     else
       elements << link_to("Login", new_user_session_path)
       elements << link_to("Register", new_account_path)
     end
-    elements << mail_to(APP_EMAIL_ADDRESS, "Contact Us")
-    elements << link_to("FAQ", "http://searchsupport.usa.gov/")
-    elements << link_to("search.usa.gov", home_page_path)
     elements.join(" | ")
   end
 
@@ -108,7 +103,17 @@ module ApplicationHelper
       elements << link_to("Query Groups Admin", analytics_query_groups_path) if cur_user.is_analyst_admin?
       elements << link_to("Monthly Reports", monthly_reports_path) if cur_user.is_analyst?
     end
-    elements << link_to("search.usa.gov", home_page_path)
+    elements.join(" | ")
+  end
+  
+  def secondary_header_navigation_for(cur_user)
+    elements = []
+    if cur_user
+      if cur_user.is_affiliate?
+        elements << link_to("Dashboard", home_affiliates_path)
+      end
+      elements << link_to("Help", "http://searchsupport.usa.gov/")
+    end
     elements.join(" | ")
   end
 

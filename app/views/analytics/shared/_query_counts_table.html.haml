@@ -1,9 +1,9 @@
 - offset ||= 0
 %table.querycounts
   %tr
-    %th.alt Query
+    %th Query
     %th{:style=>"text-align:center"} #{heading}
-    %th.alt{:style=>"text-align:right"} Frequency
+    %th{:style=>"text-align:right"} Frequency
   - if query_counts.kind_of?(String)
     %tr
       %td.alt{:colspan=>3}=query_counts

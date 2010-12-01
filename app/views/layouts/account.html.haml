@@ -22,31 +22,56 @@
         = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), home_page_path)
       .span-16.last.header
         = basic_header_navigation_for current_user
+    .secondary-navbar
+      .sec-nav-left
+        - if @current_user && @current_user.is_affiliate?
+          Affiliate Center: 
+        = secondary_header_navigation_for current_user
+      .sec-nav-right
+        - if @current_user && @current_user.is_affiliate?
+          - if !@current_user.affiliates.empty?
+            Selected Affiliate 
+            = select("affiliate", "id", @current_user.affiliates.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select affiliate'}, :class =>"affiliate-dropdown")
+    .container
       .span-24.main
-        %hr
-        .span-4.left
+        .affiliate-nav.left
           - if @current_user && @current_user.is_affiliate?
             - if @current_user.affiliates.empty?
-              %p.alt You currently have no affiliates.
-              %p= link_to "Add Affiliate", new_affiliate_path
+              %p= link_to "Add New Affiliate", new_affiliate_path
             - else
-              .contentcard.select-affiliate
-                %h2 Selected Affiliate
-                = select("affiliate", "id", @current_user.affiliates.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select affiliate'}, :class =>"affiliate-dropdown")
               - if @affiliate && @affiliate.id.present?
-                #affiliate-nav
-                  = link_to "Boosted sites", new_affiliate_boosted_sites_upload_path(@affiliate)
-                  %br
-                  = link_to "Get Code", embed_code_affiliate_path(@affiliate)
-                  %br
-                  = link_to "Analytics", affiliate_analytics_home_page_path(@affiliate)
-                  %br
-                  = link_to "Usage Stats", affiliate_analytics_monthly_reports_path(@affiliate)
-                  %br
-                  = link_to "Add to Bing", superfresh_urls_affiliate_path(@affiliate)
-                  %br
-                  = link_to "Manage Users", affiliate_users_path(@affiliate)
-                      
+                .header-box
+                  = link_to(@affiliate.name, affiliate_path(@affiliate))
+                %table.admin-table.nav-links
+                  %tr
+                    %td
+                      %strong Settings
+                      %br
+                      = link_to "Boosted sites", new_affiliate_boosted_sites_upload_path(@affiliate)
+                      %br
+                      = link_to "Get Code", embed_code_affiliate_path(@affiliate)
+                      %br
+                      = link_to "Add to Bing", superfresh_urls_affiliate_path(@affiliate)
+                  %tr
+                    %td
+                      %strong Analytics
+                      %br
+                      = link_to "Query Logs", affiliate_analytics_home_page_path(@affiliate)
+                      %br
+                      = link_to "Monthly Reports", affiliate_analytics_monthly_reports_path(@affiliate)
+                  %tr
+                    %td
+                      = link_to "Manage Users", affiliate_users_path(@affiliate)
         .span-16.append-3= show_flash_messages
-        .span-19.left
+        .span-19.left.admin-content
           = yield
+        
+        .clear
+        %br
+        .admin-footer
+          USASearch Program, General Services Administration
+          %br
+          One Constitution Square, 1275 First Street NE, 11th Floor, Washington, DC 20417
+          %p
+          Email us at: searchusa@gsa.gov
+          

@@ -1,13 +1,15 @@
-.span-16.contentcard
-  %h2
-    API Key
-  %p
-    Your API key is:
-    %b= @user.api_key
-
-  %h2
-    Account Profile
-    =link_to "Edit your profile", edit_account_path
+%h1
+  My Account
+.span-14.header-box
+  API Key
+.span-14.content-box
+  Your API key is:
+  %b= @user.api_key
+.clear
+.span-14.header-box
+  Account Profile
+  =link_to "Edit your profile", edit_account_path
+.span-14.content-box
   %dl
     %dt Email:
     %dd&= @user.email
