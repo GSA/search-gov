@@ -241,7 +241,7 @@ describe AffiliatesController do
           integrate_views
           before do
             AWS::S3::Base.stub!(:establish_connection!).and_return true
-            @report_date = Date.today
+            @report_date = Date.yesterday
           end
 
           it "should display the affiliate name" do
@@ -328,20 +328,20 @@ describe AffiliatesController do
           get :superfresh_urls, :id => other_user.affiliates.first.id
           response.should redirect_to(home_page_path)
         end
-        
+
         context "when viewing the page" do
           before do
             SuperfreshUrl.create(:url => 'http://uncrawled.url', :affiliate => @user.affiliates.first)
             SuperfreshUrl.create(:url => 'http://crawled.url', :crawled_at => Time.now, :affiliate => @user.affiliates.first)
           end
-          
+
           it "should create a new superfresh url, and find all the uncrawled and the first 30 crawled superfresh urls" do
             get :superfresh_urls, :id => @user.affiliates.first.id
             assigns[:superfresh_url].should_not be_nil
             assigns[:uncrawled_urls].size.should == 1
             assigns[:crawled_urls].size.should == 1
           end
-          
+
           it "should paginate the crawled urls using the page parameter" do
             get :superfresh_urls, :id => @user.affiliates.first.id, :page => 2
             assigns[:crawled_urls].should be_empty

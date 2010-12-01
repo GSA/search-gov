@@ -9,10 +9,7 @@
   %p
     Report information not available for the future.
 - else
-  %h3
-    = "Monthly Usage Stats for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}"
-    - unless @report_date.year != @today.year || @report_date.month != @today.month
-      = "(current as of #{Date::MONTHNAMES[@today.yesterday.month.to_i]} #{@today.yesterday.day}, #{@today.yesterday.year})"
+  %h3= "Monthly Usage Stats for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}"
   .usage_stats{ :id => "#{@affiliate.name.downcase}_usage_stats" }
     %ul
       %li

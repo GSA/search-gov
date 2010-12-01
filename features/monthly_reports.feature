@@ -70,14 +70,14 @@ Feature: Monthly Reports
     And in "pop_query_groups" I should see "10015"
 
   Scenario: Viewing DailyUsageStats on the the Reports homepage
-    Given the following DailyUsageStats exists for each day in the current month
+    Given the following DailyUsageStats exists for each day in yesterday's month
     | profile     | total_queries | total_page_views  | total_unique_visitors | total_clicks  | affiliate     |
     | English     | 1000          | 1000              | 1000                  | 1000          | usasearch.gov |
     | Spanish     | 1000          | 1000              | 1000                  | 1000          | usasearch.gov |
     | Affiliates  | 1000          | 1000              | 1000                  | 1000          | usasearch.gov |
     And I am logged in with email "analyst@fixtures.org" and password "admin"
     When I am on the reports homepage
-    Then I should see the header for the current date
+    Then I should see the header for the report date
     And I should see the "English" queries total within "english_usage_stats"
     And I should see the "English" page views total within "english_usage_stats"
     And I should see the "English" unique visitors total within "english_usage_stats"

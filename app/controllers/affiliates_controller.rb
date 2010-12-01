@@ -64,7 +64,7 @@ class AffiliatesController < AffiliateAuthController
 
   def monthly_reports
     @today = Date.today
-    @report_date = params[:date].blank? ? @today : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)
+    @report_date = params[:date].blank? ? Date.yesterday : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)
     @monthly_totals = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, @affiliate.name)
   end
 
@@ -75,13 +75,13 @@ class AffiliatesController < AffiliateAuthController
                                                                  Date.parse(params["analytics_search_end_date"]),
                                                                  @affiliate.name)
   end
-  
+
   def superfresh_urls
     @superfresh_url = SuperfreshUrl.new
     @uncrawled_urls = SuperfreshUrl.uncrawled_urls(@affiliate)
     @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])
   end
-  
+
   def create_superfresh_url
     @superfresh_url = SuperfreshUrl.new(params[:superfresh_url])
     @superfresh_url.affiliate = @affiliate
@@ -92,13 +92,13 @@ class AffiliatesController < AffiliateAuthController
     end
     redirect_to superfresh_urls_affiliate_path(@affiliate)
   end
-  
+
   def destroy
     @affiliate.destroy
     flash[:success]= "Affiliate deleted"
     redirect_to home_affiliates_path
   end
-  
+
   def home
     if params["said"].present?
       @affiliate = Affiliate.find(params["said"])

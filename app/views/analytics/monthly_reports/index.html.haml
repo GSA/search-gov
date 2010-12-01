@@ -10,10 +10,7 @@
     Report information not available for the future.
 - else
   .span-14
-    %h3
-      = "Monthly Usage Stats for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}"
-      - unless @report_date.year != @today.year || @report_date.month != @today.month
-        = "(current as of #{Date::MONTHNAMES[@today.yesterday.month.to_i]} #{@today.yesterday.day}, #{@today.yesterday.year})"
+    %h3= "Monthly Usage Stats for #{Date::MONTHNAMES[@report_date.month.to_i]} #{@report_date.year}"
     - DailyUsageStat::PROFILE_NAMES.each do |profile_name|
       .usage_stats{ :id => "#{profile_name.downcase}_usage_stats" }
         Profile: #{profile_name}

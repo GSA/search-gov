@@ -351,13 +351,13 @@ Feature: Affiliate clients
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
      | aff.gov          | aff@bar.gov             | John Bar            |
-    And the following DailyUsageStats exists for each day in the current month
+    And the following DailyUsageStats exists for each day in yesterday's month
     | profile     | total_queries | affiliate |
     | Affiliates  | 1000          | aff.gov   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Usage Stats"
-    Then I should see the header for the current date
+    Then I should see the header for the report date
     And I should see the "aff.gov" queries total within "aff.gov_usage_stats"
 
   Scenario: Viewing the Affiliates Monthly Reports page for a month in the past

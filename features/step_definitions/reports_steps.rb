@@ -5,13 +5,12 @@ Given /^the following DailyUsageStats exist for yesterday:$/ do |table|
   end
 end
 
-Given /^the following DailyUsageStats exists for each day in the current month$/ do |table|
+Given /^the following DailyUsageStats exists for each day in yesterday's month$/ do |table|
   DailyUsageStat.delete_all
-  today = Date.today
+  yday = Date.yesterday
   table.hashes.each do |hash|
-    Date.today.day.times do |index|
-      date = today - index
-      DailyUsageStat.create(:day => date, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :affiliate => hash["affiliate"])
+    yday.day.times do |index|
+      DailyUsageStat.create(:day => yday - index, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :affiliate => hash["affiliate"])
     end
   end
 end
@@ -26,28 +25,27 @@ Given /^the following DailyUsageStats exist for each day in "([^\"]*)"$/ do |mon
   end
 end
 
-Then /^I should see the header for the current date$/ do
-  response.should contain("Monthly Usage Stats for #{Date::MONTHNAMES[Date.today.month]} #{Date.today.year}")
-  response.should contain("(current as of #{Date.yesterday.strftime('%B %e, %Y').squish})")
+Then /^I should see the header for the report date$/ do
+  response.should contain("Monthly Usage Stats for #{Date::MONTHNAMES[Date.yesterday.month]} #{Date.yesterday.year}")
 end
 
 Then /^I should see the "([^\"]*)" queries total within "([^\"]*)"$/ do |profile, selector|
-  value = 1000 * Date.today.day
+  value = 1000 * Date.yesterday.day
   response.should contain("Total Queries: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
 end
 
 Then /^I should see the "([^\"]*)" page views total within "([^\"]*)"$/ do |profile, selector|
-  value = 1000 * Date.today.day
+  value = 1000 * Date.yesterday.day
   response.should contain("Total Page Views: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
 end
 
 Then /^I should see the "([^\"]*)" unique visitors total within "([^\"]*)"$/ do |profile, selector|
-  value = 1000 * Date.today.day
+  value = 1000 * Date.yesterday.day
   response.should contain("Total Unique Visitors: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
 end
 
 Then /^I should see the "([^\"]*)" clicks total within "([^\"]*)"$/ do |profile, selector|
-  value = 1000 * Date.today.day
+  value = 1000 * Date.yesterday.day
   response.should contain("Total Click Throughs: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
 end
 
