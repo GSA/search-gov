@@ -10,9 +10,9 @@ class Sayt
   def self.call(env)
     if env['PATH_INFO'] =~ /^\/sayt/
       params = Rack::Request.new(env).params
-      query, response = params['q'], ''
-      if query
-        sanitized_query = query.gsub('\\', '').squish.strip
+      query, response = params['q'] || '', ''
+      sanitized_query = query.gsub('\\', '').squish.strip
+      unless sanitized_query.empty?
         num_suggestions = mobile?(env['HTTP_USER_AGENT']) ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE
         auto_complete_options = Search.suggestions(params['aid'], sanitized_query, num_suggestions)
         response = "#{params['callback']}(#{auto_complete_options.map { |option| option.phrase }.to_json})"

@@ -27,8 +27,8 @@ class SearchesController < ApplicationController
 
   def auto_complete_for_search_query
     query = params["mode"] == "jquery" ? params["q"] : params["query"]
-    render :inline => "" and return unless query
-    sanitized_query = query.gsub('\\', '')
+    sanitized_query = query.nil? ? "" : query.squish.strip.gsub('\\', '')
+    render :inline => "" and return if sanitized_query.empty?
     @auto_complete_options = Search.suggestions(nil, sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
     if params["mode"] == "jquery"
       render :json => "#{params['callback']}(#{@auto_complete_options.map{|option| option.phrase }.to_json})"
