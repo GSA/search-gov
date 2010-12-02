@@ -2,7 +2,7 @@
   = "Monthly Usage for #{@affiliate.name}"
 
 - form_tag(affiliate_analytics_monthly_reports_path(@affiliate), :method => :get) do
-  = select_date @report_date, { :discard_day => true, :start_year => 2010, :end_year => @today.year }
+  = select_date @report_date, { :discard_day => true, :start_year => 2010, :end_year => @most_recent_date.year }
   = submit_tag 'Get Usage Stats'
 %br
 - if @report_date.future?

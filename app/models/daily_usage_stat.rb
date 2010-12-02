@@ -12,6 +12,10 @@ class DailyUsageStat < ActiveRecord::Base
                "Spanish" => { :name => "Search Spanish", :profile_id => "I2JrcxgX0j6" },
                "Affiliates" => { :name => "Search Affiliates", :profile_id => "ivO5EkIX0j6" }
   }
+  
+  def self.most_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
+    maximum(:day, :conditions => ['affiliate=?', affiliate_name])
+  end
 
   def self.monthly_totals(year, month, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
     result = {}

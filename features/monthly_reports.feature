@@ -103,7 +103,10 @@ Feature: Monthly Reports
 
   Scenario: Viewing Reports for a month in the future
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And the following DailyUsageStats exist for each day in "2019-02"
+     | profile    | total_queries   | total_page_views  | total_unique_visitors | affiliate       |
+     | English    | 1000            | 1000              | 1000                  | usasearch.gov   |    
     And I am on the reports homepage
-    And I select "December 2010" as the report date
+    And I select "December 2019" as the report date
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."

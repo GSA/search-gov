@@ -379,12 +379,12 @@ Feature: Affiliate clients
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
      | aff.gov          | aff@bar.gov             | John Bar            |
-    Given the following DailyUsageStats exist for each day in "2010-02"
-     | profile | total_queries  | affiliate  |
-     | Affiliates | 1000        | aff.gov    |
+    Given the following DailyUsageStats exist for each day in "2019-02"
+     | profile    | total_queries   | affiliate  |
+     | Affiliates | 1000            | aff.gov    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Usage Stats"
-    And I select "December 2010" as the report date
+    And I select "December 2011" as the report date
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."
