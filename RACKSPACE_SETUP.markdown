@@ -231,7 +231,7 @@ To start some workers, do this:
 
     cd /home/jwynne/usasearch/current
     # do this five times
-    RAILS_ENV=production QUEUE=calais_related_search rake environment resque:work &
+    RAILS_ENV=production QUEUE=calais_related_search nohup rake environment resque:work &
 
 ## Installing Solr
 
