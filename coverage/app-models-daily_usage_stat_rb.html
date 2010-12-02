@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-daily_usage_stat_rb.html">app/models/daily_usage_stat.rb</a></td>
-            <td class='right_align'><tt>80</tt></td>
-            <td class='right_align'><tt>69</tt></td>
+            <td class='right_align'><tt>84</tt></td>
+            <td class='right_align'><tt>72</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -141,127 +141,127 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a> </pre></td>
+            <td><pre><a name="line15">15</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>   def self.monthly_totals(year, month, affiliate_name = 'usasearch.gov')</pre></td>
+            <td><pre><a name="line16">16</a>   def self.most_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>     result = {}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>     if affiliate_name != 'usasearch.gov'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>       profile_totals = {}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>       profile_totals[:total_queries] = total_monthly_queries(year, month, 'Affiliates', affiliate_name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>       result[affiliate_name] = profile_totals</pre></td>
+            <td><pre><a name="line17">17</a>     maximum(:day, :conditions =&gt; ['affiliate=?', affiliate_name])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>       PROFILE_NAMES.each do |profile|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>         profile_totals = {}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>         profile_totals[:total_queries] = total_monthly_queries(year, month, profile, affiliate_name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>         profile_totals[:total_page_views] = total_monthly_page_views(year, month, profile, affiliate_name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>         profile_totals[:total_unique_visitors] = total_monthly_unique_visitors(year, month, profile, affiliate_name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>         result[profile] = profile_totals</pre></td>
+            <td><pre><a name="line18">18</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line30">30</a>     end</pre></td>
+            <td><pre><a name="line19">19</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>     return result</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line32">32</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line33">33</a> </pre></td>
+            <td><pre><a name="line20">20</a>   def self.monthly_totals(year, month, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>   def self.total_monthly_queries(year, month, profile, affiliate)</pre></td>
+            <td><pre><a name="line21">21</a>     result = {}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>     sum_usage_stat_by_month(:total_queries, year, month, profile, affiliate)</pre></td>
+            <td><pre><a name="line22">22</a>     if affiliate_name != Affiliate::USAGOV_AFFILIATE_NAME</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>       profile_totals = {}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>       profile_totals[:total_queries] = total_monthly_queries(year, month, 'Affiliates', affiliate_name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       result[affiliate_name] = profile_totals</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line26">26</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       PROFILE_NAMES.each do |profile|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>         profile_totals = {}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>         profile_totals[:total_queries] = total_monthly_queries(year, month, profile, affiliate_name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>         profile_totals[:total_page_views] = total_monthly_page_views(year, month, profile, affiliate_name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>         profile_totals[:total_unique_visitors] = total_monthly_unique_visitors(year, month, profile, affiliate_name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>         result[profile] = profile_totals</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line33">33</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line34">34</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>     return result</pre></td>
           </tr>
         
           
@@ -279,13 +279,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>   def self.total_monthly_page_views(year, month, profile, affiliate)</pre></td>
+            <td><pre><a name="line38">38</a>   def self.total_monthly_queries(year, month, profile, affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     sum_usage_stat_by_month(:total_page_views, year, month, profile, affiliate)</pre></td>
+            <td><pre><a name="line39">39</a>     sum_usage_stat_by_month(:total_queries, year, month, profile, affiliate)</pre></td>
           </tr>
         
           
@@ -303,13 +303,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>   def self.total_monthly_unique_visitors(year, month, profile, affiliate)</pre></td>
+            <td><pre><a name="line42">42</a>   def self.total_monthly_page_views(year, month, profile, affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     sum_usage_stat_by_month(:total_unique_visitors, year, month, profile, affiliate)</pre></td>
+            <td><pre><a name="line43">43</a>     sum_usage_stat_by_month(:total_page_views, year, month, profile, affiliate)</pre></td>
           </tr>
         
           
@@ -327,217 +327,241 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>   def self.sum_usage_stat_by_month(field, year, month, profile, affiliate)</pre></td>
+            <td><pre><a name="line46">46</a>   def self.total_monthly_unique_visitors(year, month, profile, affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>     report_date = Date.civil(year, month)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>     DailyUsageStat.sum(field, :conditions =&gt; [ &quot;(day between ? and ?) AND profile = ? AND affiliate = ?&quot;, report_date.beginning_of_month, report_date.end_of_month, profile, affiliate ])</pre></td>
+            <td><pre><a name="line47">47</a>     sum_usage_stat_by_month(:total_unique_visitors, year, month, profile, affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a>   end</pre></td>
+            <td><pre><a name="line48">48</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a> </pre></td>
+            <td><pre><a name="line49">49</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>   def self.update_webtrends_stats_for(day)</pre></td>
+            <td><pre><a name="line50">50</a>   def self.sum_usage_stat_by_month(field, year, month, profile, affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>     PROFILES.each_key do |profile_name|</pre></td>
+            <td><pre><a name="line51">51</a>     report_date = Date.civil(year, month)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>       daily_usage_stat = find_or_initialize_by_day_and_profile_and_affiliate(day, profile_name, Affiliate::USAGOV_AFFILIATE_NAME)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line54">54</a>       daily_usage_stat.populate_webtrends_data</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line55">55</a>       daily_usage_stat.save!</pre></td>
+            <td><pre><a name="line52">52</a>     DailyUsageStat.sum(field, :conditions =&gt; [ &quot;(day between ? and ?) AND profile = ? AND affiliate = ?&quot;, report_date.beginning_of_month, report_date.end_of_month, profile, affiliate ])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a>     end</pre></td>
+            <td><pre><a name="line53">53</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line57">57</a>   end</pre></td>
+            <td><pre><a name="line54">54</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>   def self.update_webtrends_stats_for(day)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>     PROFILES.each_key do |profile_name|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>       daily_usage_stat = find_or_initialize_by_day_and_profile_and_affiliate(day, profile_name, Affiliate::USAGOV_AFFILIATE_NAME)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>       daily_usage_stat.populate_webtrends_data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>       daily_usage_stat.save!</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line58">58</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line59">59</a>   def populate_webtrends_data</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>     profile_data = JSON.parse(get_profile_data)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line61">61</a>     query_date = self.day.strftime('%m/%d/%Y')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line62">62</a>     self.total_page_views = profile_data[&quot;data&quot;][query_date][&quot;measures&quot;][&quot;Page Views&quot;]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line63">63</a>     self.total_unique_visitors = profile_data[&quot;data&quot;][query_date][&quot;measures&quot;][&quot;Visitors&quot;]</pre></td>
+            <td><pre><a name="line60">60</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a>   end</pre></td>
+            <td><pre><a name="line61">61</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a> </pre></td>
+            <td><pre><a name="line62">62</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>   def get_profile_data</pre></td>
+            <td><pre><a name="line63">63</a>   def populate_webtrends_data</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>     Net::HTTP.new(WEBTRENDS_HOSTNAME, Net::HTTP.http_default_port).start do |http|</pre></td>
+            <td><pre><a name="line64">64</a>     profile_data = JSON.parse(get_profile_data)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line68">68</a>       request = Net::HTTP::Get.new(&quot;/v2/ReportService/profiles/#{PROFILES[self.profile][:profile_id]}/?period=#{self.day.strftime('%Ym%md%d')}&amp;format=json&quot;)</pre></td>
+            <td><pre><a name="line65">65</a>     query_date = self.day.strftime('%m/%d/%Y')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line69">69</a>       request.basic_auth &quot;#{WEBTRENDS_ACCOUNT}\\#{WEBTRENDS_USERNAME}&quot;, WEBTRENDS_PASSWORD</pre></td>
+            <td><pre><a name="line66">66</a>     self.total_page_views = profile_data[&quot;data&quot;][query_date][&quot;measures&quot;][&quot;Page Views&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>       response = http.request(request)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line71">71</a>       case response</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line72">72</a>         when Net::HTTPSuccess, Net::HTTPRedirection</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line73">73</a>           response.body</pre></td>
+            <td><pre><a name="line67">67</a>     self.total_unique_visitors = profile_data[&quot;data&quot;][query_date][&quot;measures&quot;][&quot;Visitors&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a>         else</pre></td>
+            <td><pre><a name="line68">68</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line69">69</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line75">75</a>           response.error!</pre></td>
+            <td><pre><a name="line70">70</a>   def get_profile_data</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line71">71</a>     Net::HTTP.new(WEBTRENDS_HOSTNAME, Net::HTTP.http_default_port).start do |http|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line72">72</a>       request = Net::HTTP::Get.new(&quot;/v2/ReportService/profiles/#{PROFILES[self.profile][:profile_id]}/?period=#{self.day.strftime('%Ym%md%d')}&amp;format=json&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line73">73</a>       request.basic_auth &quot;#{WEBTRENDS_ACCOUNT}\\#{WEBTRENDS_USERNAME}&quot;, WEBTRENDS_PASSWORD</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line74">74</a>       response = http.request(request)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line75">75</a>       case response</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line76">76</a>         when Net::HTTPSuccess, Net::HTTPRedirection</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>           response.body</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line76">76</a>       end</pre></td>
+            <td><pre><a name="line78">78</a>         else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line79">79</a>           response.error!</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line77">77</a>     end</pre></td>
+            <td><pre><a name="line80">80</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line78">78</a>   end</pre></td>
+            <td><pre><a name="line81">81</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line79">79</a> </pre></td>
+            <td><pre><a name="line82">82</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line80">80</a> end</pre></td>
+            <td><pre><a name="line83">83</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line84">84</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Nov 30 01:26:14 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Dec 02 12:19:27 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
