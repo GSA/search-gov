@@ -19,7 +19,8 @@ Feature: Affiliate Superfresh Interface
     And I should see "Uncrawled URLs (1)"
     And I should see "http://new.url.com" within ".uncrawled-url"
   
-    When I go to the superfresh feed
+    When the user agent is the MSNbot
+    And I call the superfresh feed
     Then I should see "http://new.url.com"
     
     When I go to the affiliate admin page with "aff.gov" selected

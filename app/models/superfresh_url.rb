@@ -2,6 +2,8 @@ class SuperfreshUrl < ActiveRecord::Base
   belongs_to :affiliate
   validates_presence_of :url
   
+  MSNBOT_USER_AGENT = "msnbot-UDiscovery/2.0b (+http://search.msn.com/msnbot.htm)"
+  
   class << self
     def uncrawled_urls(affiliate = nil)
       if affiliate
