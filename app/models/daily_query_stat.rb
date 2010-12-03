@@ -30,7 +30,7 @@ class DailyQueryStat < ActiveRecord::Base
         return sum(:times,
                    :group => :query,
                    :conditions => "id in (#{solr_search_results.results.collect(& :id).join(',')})",
-                   :order => "sum_times desc") unless solr_search_results.total.zero?
+                   :order => "query asc") unless solr_search_results.total.zero?
       end
       return []
     end

@@ -286,5 +286,20 @@ describe DailyQueryStat do
       end
     end
   end
-
+  
+  describe "#query_counts_for_terms_like" do
+    it "should return an empty array if the query is blank" do
+      DailyQueryStat.query_counts_for_terms_like("").should be_empty
+    end
+    
+    it "should return a list of queries in alphabetical order" do
+      DailyQueryStat.create(:day => Date.yesterday, :query => 'jobs', :times => 100)
+      DailyQueryStat.create(:day => Date.yesterday, :query => 'real jobs', :times => 200)
+      DailyQueryStat.create(:day => Date.yesterday, :query => 'xyz jobs', :times => 300)
+      Sunspot.commit
+      results = DailyQueryStat.query_counts_for_terms_like("jobs")
+      results.to_a.first[0].should == 'jobs'
+      results.to_a.last[0].should == 'xyz jobs'
+    end
+  end
 end
