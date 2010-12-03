@@ -69,13 +69,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     SuperfreshUrl.transaction do </pre></td>
+            <td><pre><a name="line3">3</a>     @superfresh_urls = SuperfreshUrl.uncrawled_urls</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>       @superfresh_urls = SuperfreshUrl.uncrawled_urls</pre></td>
+            <td><pre><a name="line4">4</a>     SuperfreshUrl.transaction do </pre></td>
           </tr>
         
           
@@ -98,8 +98,8 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line8">8</a>     end</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     end if request.user_agent == SuperfreshUrl::MSNBOT_USER_AGENT</pre></td>
           </tr>
         
           
@@ -123,7 +123,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Dec 02 12:19:27 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Dec 03 15:33:26 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
