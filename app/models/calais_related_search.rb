@@ -75,16 +75,8 @@ class CalaisRelatedSearch < ActiveRecord::Base
             calais_related_search.related_terms = related_terms
             calais_related_search.save!
           end
-        rescue Curl::Err::TimeoutError => error
-          RAILS_DEFAULT_LOGGER.warn "Call to Calais API timed out for #{affiliate_name}:#{term}: #{error}"
-        rescue ArgumentError => error
-          RAILS_DEFAULT_LOGGER.warn "Argument error during response processing for #{affiliate_name}:#{term}: #{error}"
-        rescue Calais::Error => error
+        rescue NoMethodError, Nokogiri::XML::XPath::SyntaxError, Calais::Error, Curl::Err::TimeoutError, Curl::Err::GotNothingError, ArgumentError => error
           RAILS_DEFAULT_LOGGER.warn "Problem getting Calais Socialtags for #{affiliate_name}:#{term}: #{error}"
-        rescue NoMethodError => error
-          RAILS_DEFAULT_LOGGER.warn "Problem parsing Calais XML results for #{affiliate_name}:#{term}: #{error}"
-        rescue Nokogiri::XML::XPath::SyntaxError => error
-          RAILS_DEFAULT_LOGGER.warn "Error parsing Calais XML results for #{affiliate_name}:#{term}: #{error}"
         end
       end
     end

@@ -178,6 +178,17 @@ describe CalaisRelatedSearch do
         end
       end
 
+      context "when Calais throws a Curl::Err::GotNothingError" do
+        before do
+          Calais.stub!(:process_document).and_raise(Curl::Err::GotNothingError)
+        end
+
+        it "should log the error" do
+          RAILS_DEFAULT_LOGGER.should_receive(:warn).once
+          CalaisRelatedSearch.perform(@affiliate.name, @term)
+        end
+      end
+
       context "when Calais throws a Nokogiri::XML::XPath::SyntaxError" do
         before do
           Calais.stub!(:process_document).and_raise(Nokogiri::XML::XPath::SyntaxError)
