@@ -40,6 +40,7 @@ describe Analytics::QuerySearchesController do
       
       context "when there are query groups" do
         before do
+          QueryGroup.destroy_all
           QueryGroup.create(:name => 'abc')
           QueryGroup.create(:name => 'def')
         end

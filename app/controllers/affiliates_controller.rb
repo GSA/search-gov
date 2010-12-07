@@ -1,7 +1,7 @@
 class AffiliatesController < AffiliateAuthController
   before_filter :require_affiliate_or_admin, :except=> [:index, :edit]
   before_filter :require_affiliate, :only => [:edit]
-  before_filter :setup_affiliate, :only=> [:edit, :update, :show, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports, :superfresh_urls, :create_superfresh_url]
+  before_filter :setup_affiliate, :only=> [:edit, :update, :show, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports, :superfresh_urls, :create_superfresh_url, :upload_superfresh_urls]
   before_filter :establish_aws_connection, :only => [:analytics, :monthly_reports]
 
   def index
@@ -94,6 +94,20 @@ class AffiliatesController < AffiliateAuthController
     else
       flash[:error] = "There was an error adding the URL to be refreshed.  Please check the URL and try again."
     end
+    redirect_to superfresh_urls_affiliate_path(@affiliate)
+  end
+  
+  def upload_superfresh_urls
+    begin
+      uploaded_count = SuperfreshUrl.process_file(params[:superfresh_urls], @affiliate)
+      if uploaded_count > 0
+        flash[:success] = "Successfully uploaded #{uploaded_count} urls."
+      else
+        flash[:error] = "No urls uploaded; please check your file and try again."
+      end
+    rescue Exception => e
+      flash[:error] = e.message
+    end 
     redirect_to superfresh_urls_affiliate_path(@affiliate)
   end
 

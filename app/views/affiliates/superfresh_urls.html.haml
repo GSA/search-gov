@@ -47,3 +47,26 @@
         = crawled_url.crawled_at
 %div{:style => "text-align: center;"}
   = will_paginate @crawled_urls
+  
+#bulk-upload
+  %h1
+    Bulk Upload
+  %p
+    Upload a list of URLs to add to Bing.
+    %br
+    Maximum of 
+    %b
+      100 URLs 
+    per file.
+  %p
+    Sample file format:
+  %ul{:style => 'list-style-type: none;'}
+    http://www.sample.gov/1.html
+    %br
+    http://www.sample.gov/2.html
+    %br
+    http://www.sample.gov/3.html
+      
+  - form_tag upload_superfresh_urls_affiliate_path(@affiliate), :multipart => true do
+    = file_field_tag 'superfresh_urls'
+    = submit_tag "Upload"

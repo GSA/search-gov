@@ -41,3 +41,28 @@ Feature: Affiliate Superfresh Interface
     And I press "Submit"
     Then I should be on the affiliate superfresh page
     And I should see "There was an error adding the URL to be refreshed."
+    
+  Scenario: Bulk-uploading URLs for on-demand indexing
+    Given the following Affiliates exist:
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Add to Bing"
+    Then I should be on the affiliate superfresh page
+    And I should see "Bulk Upload"
+    
+    When I attach the file "features/support/superfresh_urls.txt" to "superfresh_urls"
+    And I press "Upload"
+    Then I should be on the affiliate superfresh page
+    And I should see "Successfully uploaded 5 urls."
+    
+    When I attach the file "features/support/too_many_superfresh_urls.txt" to "superfresh_urls"
+    And I press "Upload"
+    Then I should be on the affiliate superfresh page
+    And I should see "Too many URLs in your file."
+    
+    When I attach the file "features/support/no_superfresh_urls.txt" to "superfresh_urls"
+    And I press "Upload"
+    Then I should be on the affiliate superfresh page
+    And I should see "No urls uploaded; please check your file and try again."
