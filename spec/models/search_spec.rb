@@ -73,6 +73,18 @@ describe Search do
 
     end
 
+    context "when Bing stops talking in mid-sentence" do
+      before do
+        @search = Search.new(@valid_options)
+        Net::HTTP::Get.stub!(:new).and_raise EOFError
+      end
+
+      it "should return false when searching" do
+        @search.run.should be_false
+      end
+
+    end
+
     context "when Bing is unreachable" do
       before do
         @search = Search.new(@valid_options)
