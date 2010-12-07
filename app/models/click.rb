@@ -6,6 +6,7 @@ class Click < ActiveRecord::Base
     end_datetime = start_datetime + 1.month
     Click.count(:group => 'results_source',
                 :conditions=> {:clicked_at => start_datetime..end_datetime},
-                :order => "count_all desc")
+                :order => "count_all desc",
+                :having => "count_all >= 10")
   end
 end

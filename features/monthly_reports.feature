@@ -9,27 +9,29 @@ Feature: Monthly Reports
 
   Scenario: Viewing module click stats on the the Reports homepage
     Given the following Clicks per module exist in "February 2010"
-    | module  | total |
-    | FORM    | 4     |
-    | FAQS    | 3     |
+    | module  | total   |
+    | FORM    | 400     |
+    | FAQS    | 300     |
+    | noblis  | 9       |
     And the following Clicks per module exist in "March 2010"
-    | module  | total |
-    | BWEB    | 2     |
-    | BREL    | 1     |
+    | module  | total   |
+    | BWEB    | 200     |
+    | BREL    | 10      |
     And I am logged in with email "analyst@fixtures.org" and password "admin"
     When I am on the reports homepage
     And I select "February 2010" as the report date
     And I press "Get Usage Stats"
     Then in "module_click_stats" I should see "FORM"
-    And in "module_click_stats" I should see "4"
+    And in "module_click_stats" I should see "400"
     And in "module_click_stats" I should see "FAQS"
-    And in "module_click_stats" I should see "3"
+    And in "module_click_stats" I should see "300"
+    And in "module_click_stats" I should not see "noblis"
     When I select "March 2010" as the report date
     And I press "Get Usage Stats"
     Then in "module_click_stats" I should see "BWEB"
-    And in "module_click_stats" I should see "2"
+    And in "module_click_stats" I should see "200"
     And in "module_click_stats" I should see "BREL"
-    And in "module_click_stats" I should see "1"
+    And in "module_click_stats" I should see "10"
 
   Scenario: Viewing most popular queries across all affiliates and locales
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
@@ -105,7 +107,7 @@ Feature: Monthly Reports
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And the following DailyUsageStats exist for each day in "2019-02"
      | profile    | total_queries   | total_page_views  | total_unique_visitors | affiliate       |
-     | English    | 1000            | 1000              | 1000                  | usasearch.gov   |    
+     | English    | 1000            | 1000              | 1000                  | usasearch.gov   |
     And I am on the reports homepage
     And I select "December 2019" as the report date
     And I press "Get Usage Stats"
