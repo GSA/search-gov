@@ -69,3 +69,4 @@ Feature: Analytics Homepage
     And the DailyContextualQueryTotal for yesterday is "100"
     When I am on the analytics homepage
     Then I should see "Total USA.gov Most Popular Clickthrus: 100"
+
