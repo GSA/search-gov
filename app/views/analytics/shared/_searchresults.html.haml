@@ -28,7 +28,7 @@
           %td
           %td
           %td{:style => "text-align: center;"}
-            = select 'query_group', 'name', options_from_collection_for_select(QueryGroup.all, 'name', 'name'), { :include_blank => true }
+            = select 'query_group', 'name', options_from_collection_for_select(@query_groups, 'name', 'name'), { :include_blank => true }
             = submit_tag 'Add to Query Group'
   - else
     %table

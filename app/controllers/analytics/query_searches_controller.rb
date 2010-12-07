@@ -4,5 +4,6 @@ class Analytics::QuerySearchesController < Analytics::AnalyticsController
     @start_date = Date.parse(params["analytics_search_start_date"]) rescue 1.month.ago.to_date
     @end_date = Date.parse(params["analytics_search_end_date"]) rescue Date.yesterday
     @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term, @start_date, @end_date)
+    @query_groups = QueryGroup.all(:order => 'name ASC')
   end
 end

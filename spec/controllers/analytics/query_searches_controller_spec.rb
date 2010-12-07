@@ -32,7 +32,23 @@ describe Analytics::QuerySearchesController do
           assigns[:search_results].should_not be_nil
         end
 
+        it "should assign an alphabetized list of query groups" do
+          assigns[:query_groups].should_not be_nil
+        end
         should_render_template 'analytics/query_searches/index.html.haml', :layout => 'analytics'
+      end
+      
+      context "when there are query groups" do
+        before do
+          QueryGroup.create(:name => 'abc')
+          QueryGroup.create(:name => 'def')
+        end
+        
+        it "should assign an alphabetized list of query groups" do
+          get :index, :query => "social security", :analytics_search_start_date => "August 11, 2010", :analytics_search_end_date => "August 21, 2010"
+          assigns[:query_groups].first.name.should == 'abc'
+          assigns[:query_groups].last.name.should == 'def'
+        end
       end
 
       context "when search query terms and bogus start/end dates are passed in" do
