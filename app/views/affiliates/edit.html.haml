@@ -6,7 +6,7 @@
   Edit
 %br
 %h1 Edit Affiliate
-.span-15
+.span-20
   - form_for @affiliate, :html => {:class=>"bordered"} do |f|
     = f.error_messages(:header_message => nil, :class => "error")
     = render :partial => "form", :object => f

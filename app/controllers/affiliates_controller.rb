@@ -34,7 +34,7 @@ class AffiliatesController < AffiliateAuthController
     if @affiliate.save
       @affiliate.update_attribute(:has_staged_content, true)
       flash[:success]= "Staged changes to your affiliate successfully."
-      redirect_to home_affiliates_path
+      redirect_to home_affiliates_path(:said=>@affiliate.id)
     else
       render :action => :edit
     end

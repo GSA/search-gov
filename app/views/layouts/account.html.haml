@@ -33,8 +33,8 @@
             Selected Affiliate 
             = select("affiliate", "id", @current_user.affiliates.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select affiliate'}, :class =>"affiliate-dropdown")
     .container
-      .span-24.main
-        .affiliate-nav.left
+      .main
+        .affiliate-nav
           - if @current_user && @current_user.is_affiliate?
             - if @current_user.affiliates.empty?
               %p= link_to "Add New Affiliate", new_affiliate_path
@@ -62,16 +62,18 @@
                   %tr
                     %td
                       = link_to "Manage Users", affiliate_users_path(@affiliate)
-        .span-16.append-3= show_flash_messages
-        .span-19.left.admin-content
+        
+        .admin-content
+          .span-18.append-3= show_flash_messages
+          .clear
           = yield
         
-        .clear
+      .clear
+      %br
+      .admin-footer
+        USASearch Program, General Services Administration
         %br
-        .admin-footer
-          USASearch Program, General Services Administration
-          %br
-          One Constitution Square, 1275 First Street NE, 11th Floor, Washington, DC 20417
-          %p
-          Email us at: searchusa@gsa.gov
+        One Constitution Square, 1275 First Street NE, 11th Floor, Washington, DC 20417
+        %p
+        Email us at: searchusa@gsa.gov
           
