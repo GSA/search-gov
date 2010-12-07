@@ -39,7 +39,7 @@ class AffiliatesController < AffiliateAuthController
       render :action => :edit
     end
   end
-  
+
   def show
   end
 
@@ -63,6 +63,8 @@ class AffiliatesController < AffiliateAuthController
     @most_recent_day_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs, @affiliate.name)
     @trailing_week_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 7, @num_results_dqs, @affiliate.name)
     @trailing_month_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 30, @num_results_dqs, @affiliate.name)
+    @start_date = 1.month.ago.to_date
+    @end_date = Date.yesterday
   end
 
   def monthly_reports
@@ -73,10 +75,9 @@ class AffiliatesController < AffiliateAuthController
 
   def query_search
     @search_query_term = params["query"]
-    @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term,
-                                                                 Date.parse(params["analytics_search_start_date"]),
-                                                                 Date.parse(params["analytics_search_end_date"]),
-                                                                 @affiliate.name)
+    @start_date = Date.parse(params["analytics_search_start_date"]) rescue 1.month.ago.to_date
+    @end_date = Date.parse(params["analytics_search_end_date"]) rescue Date.yesterday
+    @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term, @start_date, @end_date, @affiliate.name)
   end
 
   def superfresh_urls

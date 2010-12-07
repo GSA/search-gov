@@ -77,6 +77,30 @@ describe AffiliatesController do
     end
   end
 
+  describe "query search dates" do
+    context "when logged in as an affiliate" do
+      before do
+        @user = users("affiliate_manager")
+        UserSession.create(@user)
+      end
+
+      it "should assign reasonable defaults for start/end dates" do
+        get :analytics, :id => @user.affiliates.first.id
+        assigns[:start_date].should == 1.month.ago.to_date
+        assigns[:end_date].should == Date.yesterday.to_date
+      end
+
+      it "should assign start/end dates from params" do
+        get :query_search, :id => @user.affiliates.first.id,
+            :analytics_search_start_date=>"November 10, 2010",
+            :analytics_search_end_date=>"November 20, 2010",
+            :query => "foo"
+        assigns[:start_date].should == Date.parse("November 10, 2010")
+        assigns[:end_date].should == Date.parse("November 20, 2010")
+      end
+    end
+  end
+
   describe "#analytics" do
     context "when requesting analytics for an affiliate" do
       before do
