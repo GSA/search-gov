@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates_controller_rb.html">app/controllers/affiliates_controller.rb</a></td>
-            <td class='right_align'><tt>108</tt></td>
-            <td class='right_align'><tt>93</tt></td>
+            <td class='right_align'><tt>112</tt></td>
+            <td class='right_align'><tt>96</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,7 +75,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :setup_affiliate, :only=&gt; [:edit, :update, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports, :superfresh_urls, :create_superfresh_url]</pre></td>
+            <td><pre><a name="line4">4</a>   before_filter :setup_affiliate, :only=&gt; [:edit, :update, :show, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports, :superfresh_urls, :create_superfresh_url]</pre></td>
           </tr>
         
           
@@ -309,403 +309,427 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>   def push_content_for</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>     @affiliate.update_attributes(</pre></td>
+            <td><pre><a name="line43">43</a>   def show</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>       :has_staged_content=&gt; false,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>       :domains =&gt; @affiliate.staged_domains,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>       :header =&gt; @affiliate.staged_header,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>       :footer =&gt; @affiliate.staged_footer)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>     flash[:success] = &quot;Staged content is now visible&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line50">50</a>     redirect_to home_affiliates_path(:said=&gt;@affiliate.id)</pre></td>
+            <td><pre><a name="line44">44</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a>   end</pre></td>
+            <td><pre><a name="line45">45</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line46">46</a>   def push_content_for</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>     @affiliate.update_attributes(</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a> </pre></td>
+            <td><pre><a name="line48">48</a>       :has_staged_content=&gt; false,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>   def embed_code</pre></td>
+            <td><pre><a name="line49">49</a>       :domains =&gt; @affiliate.staged_domains,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>     @affiliate = Affiliate.find(params[:id])</pre></td>
+            <td><pre><a name="line50">50</a>       :header =&gt; @affiliate.staged_header,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>       :footer =&gt; @affiliate.staged_footer)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>     flash[:success] = &quot;Staged content is now visible&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>     redirect_to home_affiliates_path(:said=&gt;@affiliate.id)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line55">55</a>   end</pre></td>
+            <td><pre><a name="line54">54</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a> </pre></td>
+            <td><pre><a name="line55">55</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>   def analytics</pre></td>
+            <td><pre><a name="line56">56</a>   def embed_code</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>     @num_results_dqs = (request[&quot;num_results_dqs&quot;] || &quot;10&quot;).to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line59">59</a>     @day_being_shown = request[&quot;day&quot;].nil? ? DailyQueryStat.most_recent_populated_date(@affiliate.name) : request[&quot;day&quot;].to_date</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>     @most_recent_day_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs, @affiliate.name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line61">61</a>     @trailing_week_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 7, @num_results_dqs, @affiliate.name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line62">62</a>     @trailing_month_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 30, @num_results_dqs, @affiliate.name)</pre></td>
+            <td><pre><a name="line57">57</a>     @affiliate = Affiliate.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line63">63</a>   end</pre></td>
+            <td><pre><a name="line58">58</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a> </pre></td>
+            <td><pre><a name="line59">59</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>   def monthly_reports</pre></td>
+            <td><pre><a name="line60">60</a>   def analytics</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>     @most_recent_date = DailyUsageStat.most_recent_populated_date(@affiliate.name) || Date.today</pre></td>
+            <td><pre><a name="line61">61</a>     @num_results_dqs = (request[&quot;num_results_dqs&quot;] || &quot;10&quot;).to_i</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>     @report_date = params[:date].blank? ? Date.yesterday : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)</pre></td>
+            <td><pre><a name="line62">62</a>     @day_being_shown = request[&quot;day&quot;].nil? ? DailyQueryStat.most_recent_populated_date(@affiliate.name) : request[&quot;day&quot;].to_date</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line68">68</a>     @monthly_totals = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, @affiliate.name)</pre></td>
+            <td><pre><a name="line63">63</a>     @most_recent_day_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs, @affiliate.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>     @trailing_week_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 7, @num_results_dqs, @affiliate.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>     @trailing_month_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 30, @num_results_dqs, @affiliate.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line66">66</a>     @start_date = 1.month.ago.to_date</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line67">67</a>     @end_date = Date.yesterday</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a>   end</pre></td>
+            <td><pre><a name="line68">68</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line70">70</a> </pre></td>
+            <td><pre><a name="line69">69</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line71">71</a>   def query_search</pre></td>
+            <td><pre><a name="line70">70</a>   def monthly_reports</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>     @search_query_term = params[&quot;query&quot;]</pre></td>
+            <td><pre><a name="line71">71</a>     @most_recent_date = DailyUsageStat.most_recent_populated_date(@affiliate.name) || Date.today</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>     @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term,</pre></td>
+            <td><pre><a name="line72">72</a>     @report_date = params[:date].blank? ? Date.yesterday : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>                                                                  Date.parse(params[&quot;analytics_search_start_date&quot;]),</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line75">75</a>                                                                  Date.parse(params[&quot;analytics_search_end_date&quot;]),</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line76">76</a>                                                                  @affiliate.name)</pre></td>
+            <td><pre><a name="line73">73</a>     @monthly_totals = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, @affiliate.name)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line77">77</a>   end</pre></td>
+            <td><pre><a name="line74">74</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line78">78</a> </pre></td>
+            <td><pre><a name="line75">75</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>   def superfresh_urls</pre></td>
+            <td><pre><a name="line76">76</a>   def query_search</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>     @superfresh_url = SuperfreshUrl.new</pre></td>
+            <td><pre><a name="line77">77</a>     @search_query_term = params[&quot;query&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>     @uncrawled_urls = SuperfreshUrl.uncrawled_urls(@affiliate)</pre></td>
+            <td><pre><a name="line78">78</a>     @start_date = Date.parse(params[&quot;analytics_search_start_date&quot;]) rescue 1.month.ago.to_date</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>     @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])</pre></td>
+            <td><pre><a name="line79">79</a>     @end_date = Date.parse(params[&quot;analytics_search_end_date&quot;]) rescue Date.yesterday</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line80">80</a>     @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term, @start_date, @end_date, @affiliate.name)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line83">83</a>   end</pre></td>
+            <td><pre><a name="line81">81</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line84">84</a> </pre></td>
+            <td><pre><a name="line82">82</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>   def create_superfresh_url</pre></td>
+            <td><pre><a name="line83">83</a>   def superfresh_urls</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line86">86</a>     @superfresh_url = SuperfreshUrl.new(params[:superfresh_url])</pre></td>
+            <td><pre><a name="line84">84</a>     @superfresh_url = SuperfreshUrl.new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line87">87</a>     @superfresh_url.affiliate = @affiliate</pre></td>
+            <td><pre><a name="line85">85</a>     @uncrawled_urls = SuperfreshUrl.uncrawled_urls(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>     if @superfresh_url.save</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line89">89</a>       flash[:notice] = &quot;Successfully added #{@superfresh_url.url}.  It will be refreshed soon.&quot;</pre></td>
+            <td><pre><a name="line86">86</a>     @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line90">90</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line91">91</a>       flash[:error] = &quot;There was an error adding the URL to be refreshed.  Please check the URL and try again.&quot;</pre></td>
+            <td><pre><a name="line87">87</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line92">92</a>     end</pre></td>
+            <td><pre><a name="line88">88</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line93">93</a>     redirect_to superfresh_urls_affiliate_path(@affiliate)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line94">94</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line95">95</a> </pre></td>
+            <td><pre><a name="line89">89</a>   def create_superfresh_url</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line96">96</a>   def destroy</pre></td>
+            <td><pre><a name="line90">90</a>     @superfresh_url = SuperfreshUrl.new(params[:superfresh_url])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line97">97</a>     @affiliate.destroy</pre></td>
+            <td><pre><a name="line91">91</a>     @superfresh_url.affiliate = @affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line98">98</a>     flash[:success]= &quot;Affiliate deleted&quot;</pre></td>
+            <td><pre><a name="line92">92</a>     if @superfresh_url.save</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line99">99</a>     redirect_to home_affiliates_path</pre></td>
+            <td><pre><a name="line93">93</a>       flash[:notice] = &quot;Successfully added #{@superfresh_url.url}.  It will be refreshed soon.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line100">100</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line101">101</a> </pre></td>
+            <td><pre><a name="line94">94</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line102">102</a>   def home</pre></td>
+            <td><pre><a name="line95">95</a>       flash[:error] = &quot;There was an error adding the URL to be refreshed.  Please check the URL and try again.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line96">96</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line103">103</a>     if params[&quot;said&quot;].present?</pre></td>
+            <td><pre><a name="line97">97</a>     redirect_to superfresh_urls_affiliate_path(@affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line98">98</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line99">99</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line104">104</a>       @affiliate = Affiliate.find(params[&quot;said&quot;])</pre></td>
+            <td><pre><a name="line100">100</a>   def destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line101">101</a>     @affiliate.destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line102">102</a>     flash[:success]= &quot;Affiliate deleted&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line103">103</a>     redirect_to home_affiliates_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line105">105</a>     end</pre></td>
+            <td><pre><a name="line104">104</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line106">106</a>   end</pre></td>
+            <td><pre><a name="line105">105</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line106">106</a>   def home</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line107">107</a>     if params[&quot;said&quot;].present?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line108">108</a>       @affiliate = Affiliate.find(params[&quot;said&quot;])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line107">107</a> </pre></td>
+            <td><pre><a name="line109">109</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line108">108</a> end</pre></td>
+            <td><pre><a name="line110">110</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line111">111</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line112">112</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Dec 03 15:33:26 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Dec 06 19:59:16 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
