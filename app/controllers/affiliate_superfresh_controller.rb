@@ -2,6 +2,8 @@ class AffiliateSuperfreshController < AffiliateAuthController
   before_filter :require_affiliate_or_admin
   before_filter :setup_affiliate
   
+  VALID_CONTENT_TYPES = %w{text/plain txt}
+  
   def index
     @superfresh_url = SuperfreshUrl.new
     @uncrawled_urls = SuperfreshUrl.uncrawled_urls(nil, @affiliate)
@@ -28,7 +30,7 @@ class AffiliateSuperfreshController < AffiliateAuthController
   
   def upload
     file = params[:superfresh_urls]
-    if file.content_type == "txt"
+    if VALID_CONTENT_TYPES.include?(file.content_type)
       begin    
         uploaded_count = SuperfreshUrl.process_file(file, @affiliate)
         if uploaded_count > 0
