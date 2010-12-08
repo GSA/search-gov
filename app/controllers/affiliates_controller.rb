@@ -1,5 +1,5 @@
 class AffiliatesController < AffiliateAuthController
-  before_filter :require_affiliate_or_admin, :except=> [:index, :edit]
+  before_filter :require_affiliate_or_admin, :except=> [:index, :edit, :how_it_works, :demo]
   before_filter :require_affiliate, :only => [:edit]
   before_filter :setup_affiliate, :only=> [:edit, :update, :show, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports]
   before_filter :establish_aws_connection, :only => [:analytics, :monthly_reports]
@@ -10,6 +10,12 @@ class AffiliatesController < AffiliateAuthController
   def edit
   end
 
+  def how_it_works
+  end
+
+  def demo
+  end
+   
   def new
     @affiliate = Affiliate.new
   end
@@ -91,5 +97,5 @@ class AffiliatesController < AffiliateAuthController
       @affiliate = Affiliate.find(params["said"])
     end
   end
-
+  
 end

@@ -5,9 +5,9 @@ Feature: Affiliate clients
 
   Scenario: Visiting the affiliate welcome/list page as a un-authenticated Affiliate
     When I go to the affiliate welcome page
-    Then I should see "Who are we?"
-    When I follow "Register now"
-    Then I should see "Sign up"
+    Then I should see "Hosted Search Services"
+    And I should see "How it works"
+    And I should see "See it in action"
 
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
