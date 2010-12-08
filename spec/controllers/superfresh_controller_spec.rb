@@ -44,5 +44,10 @@ describe SuperfreshController do
         response.body.should_not contain(/already.crawled.url/)
       end
     end
+    
+    it "should only show 500 urls" do
+      SuperfreshUrl.should_receive(:uncrawled_urls).with(500).and_return []
+      get :index
+    end
   end
 end

@@ -20,6 +20,16 @@ describe SuperfreshUrl do
     end
     
     context "when looking up uncrawled URLs without an affiliate" do
+      it "should limit the number of URLs returned if specified" do
+        SuperfreshUrl.should_receive(:find_all_by_crawled_at).with(nil, {:limit => 500, :order => 'created_at asc'}).and_return []
+        SuperfreshUrl.uncrawled_urls(500)
+      end
+      
+      it "should not limit the number of URLs returned if the value is not specified" do
+        SuperfreshUrl.should_receive(:find_all_by_crawled_at).with(nil, {:order => 'created_at asc'}).and_return []
+        SuperfreshUrl.uncrawled_urls
+      end
+      
       it "should return all the uncrawled urls (i.e. where crawled_at == nil), including those for affiliates, ordered by created time ascending" do
         uncrawled_urls = SuperfreshUrl.uncrawled_urls
         uncrawled_urls.size.should == 3
@@ -30,8 +40,13 @@ describe SuperfreshUrl do
     end
     
     context "when looking up crawled URLs with an affiliate" do
+      it "should limit the number of URLs returned if specified" do
+        SuperfreshUrl.should_receive(:find_all_by_crawled_at_and_affiliate_id).with(nil, affiliates(:basic_affiliate).id, {:order => 'created_at asc', :limit => 500}).and_return []
+        SuperfreshUrl.uncrawled_urls(500, affiliates(:basic_affiliate))
+      end
+
       it "should return the uncrawled URLs for that affiliate" do
-        uncrawled_urls = SuperfreshUrl.uncrawled_urls(affiliates(:basic_affiliate))
+        uncrawled_urls = SuperfreshUrl.uncrawled_urls(nil, affiliates(:basic_affiliate))
         uncrawled_urls.size.should == 1
         uncrawled_urls.include?(@affiliate_uncrawled_url).should be_true
         uncrawled_urls.include?(@first_uncrawled_url).should be_false

@@ -5,11 +5,13 @@ class SuperfreshUrl < ActiveRecord::Base
   MSNBOT_USER_AGENT = "msnbot-UDiscovery/2.0b (+http://search.msn.com/msnbot.htm)"
   
   class << self
-    def uncrawled_urls(affiliate = nil)
+    def uncrawled_urls(number_of_urls = nil, affiliate = nil)
+      sql_options = {}
+      sql_options.merge!(:limit => number_of_urls) if number_of_urls
       if affiliate
-        find_all_by_crawled_at_and_affiliate_id(nil, affiliate.id, :order => 'created_at asc')
+        find_all_by_crawled_at_and_affiliate_id(nil, affiliate.id, sql_options.merge(:order => 'created_at asc'))
       else
-        find_all_by_crawled_at(nil, :order => 'created_at asc')
+        find_all_by_crawled_at(nil, sql_options.merge(:order => 'created_at asc'))
       end
     end
     

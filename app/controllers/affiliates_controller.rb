@@ -82,7 +82,7 @@ class AffiliatesController < AffiliateAuthController
 
   def superfresh_urls
     @superfresh_url = SuperfreshUrl.new
-    @uncrawled_urls = SuperfreshUrl.uncrawled_urls(@affiliate)
+    @uncrawled_urls = SuperfreshUrl.uncrawled_urls(nil, @affiliate)
     @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])
   end
 
