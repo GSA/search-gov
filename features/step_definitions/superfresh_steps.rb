@@ -5,3 +5,10 @@ end
 When /^I call the superfresh feed$/ do
   get '/superfresh', '', headers
 end
+
+Given /^the following SuperfreshUrls exist:$/ do |table|
+  table.hashes.each do |hash|
+    SuperfreshUrl.create(:url => hash["url"], :affiliate => Affiliate.find_by_name(hash["affiliate"]))
+  end
+end
+

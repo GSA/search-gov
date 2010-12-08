@@ -1,0 +1,89 @@
+.breadcrumb
+  = link_to 'Dashboard', home_affiliates_path
+  >
+  = link_to(@affiliate.name, affiliate_path(@affiliate))
+  >
+  Add to Bing
+%br
+
+%h1
+  Add to Bing
+%p
+  Are new, moved, or modified pages on your site not showing up in the Bing index?
+  Use our Add to Bing feature to let Bing know about these pages so that they can crawl your
+  pages and include them in their index.
+  
+- form_for @superfresh_url, {:url => affiliate_superfresh_urls_path(@affiliate)} do |f|
+  = f.label :url
+  = f.text_field :url
+  = f.submit "Submit"
+
+%br
+
+#uncrawled-urls.title-row
+  Uncrawled URLs (#{@uncrawled_urls.size})
+%table.admin-table
+  %tr
+    %th
+      URL
+  - @uncrawled_urls.each do |uncrawled_url|
+    %tr{:class => cycle('even', 'odd')}
+      %td.uncrawled-url
+        = link_to uncrawled_url.url, uncrawled_url.url
+        |
+        = button_to "Remove URL", affiliate_superfresh_url_path(@affiliate, uncrawled_url), :title => "Remove URL", :confirm => "You are about to remove this URL. Are you sure?", :method => :delete
+      
+#crawled-urls.title-row
+  Previously Refreshed URLs
+%table.admin-table
+  %tr
+    %th
+      URL
+    %th
+      Crawled At
+  - @crawled_urls.each do |crawled_url|
+    %tr{:class => cycle('even', 'odd')}
+      %td.crawled-url
+        = link_to crawled_url.url, crawled_url.url
+      %td
+        = crawled_url.crawled_at
+%div{:style => "text-align: center;"}
+  = will_paginate @crawled_urls
+  
+#bulk-upload
+  %h1
+    Bulk Upload
+  %p
+    To upload a list of URLs to be crawled by Bing, follow these instructions:
+  %ul
+    %li
+      Create a new new text file following same format as the sample below.
+    %li
+      Save the file as filename.txt on your computer; you can name the file whatever you like, as long as it's plain text. 
+    %li
+      %b
+        Do not use Microsoft Word files
+      , or any other file type, except plain text.
+    %li
+      Add, modify or delete individual entries in the file.
+    %li
+      Browse for the file on your computer
+    %li
+      Upload the file to Search.USA.gov using the form below
+    %li
+      Maximum of 
+      %b
+        100 URLs 
+      per file.
+  %p
+    Sample file format:
+    %ul{:style => 'list-style-type: none;'}
+      http://www.sample.gov/1.html
+      %br
+      http://www.sample.gov/2.html
+      %br
+      http://www.sample.gov/3.html
+      
+  - form_tag upload_affiliate_superfresh_urls_path(@affiliate), :multipart => true do
+    = file_field_tag 'superfresh_urls', :accept => 'text/plain'
+    = submit_tag "Upload"
