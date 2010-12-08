@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-superfresh_url_rb.html">app/models/superfresh_url.rb</a></td>
-            <td class='right_align'><tt>39</tt></td>
-            <td class='right_align'><tt>33</tt></td>
+            <td class='right_align'><tt>41</tt></td>
+            <td class='right_align'><tt>35</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -99,199 +99,211 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     def uncrawled_urls(affiliate = nil)</pre></td>
+            <td><pre><a name="line8">8</a>     def uncrawled_urls(number_of_urls = nil, affiliate = nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>       if affiliate</pre></td>
+            <td><pre><a name="line9">9</a>       sql_options = {}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>         find_all_by_crawled_at_and_affiliate_id(nil, affiliate.id, :order =&gt; 'created_at asc')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line11">11</a>       else</pre></td>
+            <td><pre><a name="line10">10</a>       sql_options.merge!(:limit =&gt; number_of_urls) if number_of_urls</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>         find_all_by_crawled_at(nil, :order =&gt; 'created_at asc')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line15">15</a>     </pre></td>
+            <td><pre><a name="line11">11</a>       if affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     def crawled_urls(affiliate = nil, page = 1)</pre></td>
+            <td><pre><a name="line12">12</a>         find_all_by_crawled_at_and_affiliate_id(nil, affiliate.id, sql_options.merge(:order =&gt; 'created_at asc'))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line13">13</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       if affiliate</pre></td>
+            <td><pre><a name="line14">14</a>         find_all_by_crawled_at(nil, sql_options.merge(:order =&gt; 'created_at asc'))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line15">15</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line16">16</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line17">17</a>     </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>         paginate_by_affiliate_id(affiliate.id, :conditions =&gt; ['NOT ISNULL(crawled_at)'], :page =&gt; page, :order =&gt; 'crawled_at desc')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line21">21</a>     </pre></td>
+            <td><pre><a name="line18">18</a>     def crawled_urls(affiliate = nil, page = 1)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>     def process_file(file, affiliate = nil)</pre></td>
+            <td><pre><a name="line19">19</a>       if affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>       counter = 0</pre></td>
+            <td><pre><a name="line20">20</a>         paginate_by_affiliate_id(affiliate.id, :conditions =&gt; ['NOT ISNULL(crawled_at)'], :page =&gt; page, :order =&gt; 'crawled_at desc')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a>     </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>       if file.lines.count &lt;= 100</pre></td>
+            <td><pre><a name="line24">24</a>     def process_file(file, affiliate = nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>         file.open</pre></td>
+            <td><pre><a name="line25">25</a>       counter = 0</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>         file.each do |line|</pre></td>
+            <td><pre><a name="line26">26</a>       if file.lines.count &lt;= 100</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>           if SuperfreshUrl.create(:url =&gt; line.chomp, :affiliate =&gt; affiliate)</pre></td>
+            <td><pre><a name="line27">27</a>         file.open</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>             counter += 1</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line29">29</a>           end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line30">30</a>         end</pre></td>
+            <td><pre><a name="line28">28</a>         file.each do |line|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>         return counter</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line32">32</a>       else</pre></td>
+            <td><pre><a name="line29">29</a>           if SuperfreshUrl.create(:url =&gt; line.chomp, :affiliate =&gt; affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>         raise 'Too many URLs in your file.  Please limit your file to 100 URLs.'</pre></td>
+            <td><pre><a name="line30">30</a>             counter += 1</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>       end</pre></td>
+            <td><pre><a name="line31">31</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>     end</pre></td>
+            <td><pre><a name="line32">32</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>         return counter</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>     </pre></td>
+            <td><pre><a name="line34">34</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>         raise 'Too many URLs in your file.  Please limit your file to 100 URLs.'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>   end</pre></td>
+            <td><pre><a name="line36">36</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>   </pre></td>
+            <td><pre><a name="line37">37</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a> end</pre></td>
+            <td><pre><a name="line38">38</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line39">39</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line40">40</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line41">41</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Dec 08 07:12:17 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Dec 08 14:22:57 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/password_resets_controller.rb</title>
+    <title>app/controllers/affiliate_superfresh_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/password_resets_controller.rb</h2>
+    <h2>app/controllers/affiliate_superfresh_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-password_resets_controller_rb.html">app/controllers/password_resets_controller.rb</a></td>
-            <td class='right_align'><tt>42</tt></td>
-            <td class='right_align'><tt>36</tt></td>
+            <td class="left_align"><a href="app-controllers-affiliate_superfresh_controller_rb.html">app/controllers/affiliate_superfresh_controller.rb</a></td>
+            <td class='right_align'><tt>48</tt></td>
+            <td class='right_align'><tt>43</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,91 +57,91 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class PasswordResetsController &lt; SslController</pre></td>
+            <td><pre><a name="line1">1</a> class AffiliateSuperfreshController &lt; AffiliateAuthController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   layout &quot;account&quot;</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :require_affiliate_or_admin</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   before_filter :require_no_user</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :load_user_using_perishable_token, :only =&gt; [:edit, :update]</pre></td>
+            <td><pre><a name="line3">3</a>   before_filter :setup_affiliate</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a> </pre></td>
+            <td><pre><a name="line4">4</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   def edit</pre></td>
+            <td><pre><a name="line5">5</a>   def index</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     render</pre></td>
+            <td><pre><a name="line6">6</a>     @superfresh_url = SuperfreshUrl.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>     @uncrawled_urls = SuperfreshUrl.uncrawled_urls(nil, @affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>   end</pre></td>
+            <td><pre><a name="line9">9</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a> </pre></td>
+            <td><pre><a name="line10">10</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   def update</pre></td>
+            <td><pre><a name="line11">11</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     @user.password = params[:user][:password]</pre></td>
+            <td><pre><a name="line12">12</a>     @superfresh_url = SuperfreshUrl.new(params[:superfresh_url])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     @user.password_confirmation = params[:user][:password_confirmation]</pre></td>
+            <td><pre><a name="line13">13</a>     @superfresh_url.affiliate = @affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>     if @user.save</pre></td>
+            <td><pre><a name="line14">14</a>     if @superfresh_url.save</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>       flash[:notice] = &quot;Password successfully updated&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>       redirect_to account_url</pre></td>
+            <td><pre><a name="line15">15</a>       flash[:success] = &quot;Successfully added #{@superfresh_url.url}.  It will be refreshed soon.&quot;</pre></td>
           </tr>
         
           
@@ -153,7 +153,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       render :action =&gt; :edit</pre></td>
+            <td><pre><a name="line17">17</a>       flash[:error] = &quot;There was an error adding the URL to be refreshed.  Please check the URL and try again.&quot;</pre></td>
           </tr>
         
           
@@ -164,146 +164,182 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a> </pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line21">21</a>   def new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>     render</pre></td>
+            <td><pre><a name="line19">19</a>     redirect_to affiliate_superfresh_urls_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a>   end</pre></td>
+            <td><pre><a name="line20">20</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a> </pre></td>
+            <td><pre><a name="line21">21</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>   def create</pre></td>
+            <td><pre><a name="line22">22</a>   def destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>     @user = User.find_by_email(params[:email])</pre></td>
+            <td><pre><a name="line23">23</a>     if @superfresh_url = SuperfreshUrl.destroy(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>     if @user</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>       @user.deliver_password_reset_instructions!</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>       flash.now[:notice] = &quot;Instructions to reset your password have been emailed to you. Please check your email.&quot;</pre></td>
+            <td><pre><a name="line24">24</a>       flash[:success] = &quot;Removed #{@superfresh_url.url} from list of uncrawled URLs.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>     else</pre></td>
+            <td><pre><a name="line25">25</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>       flash.now[:notice] = &quot;No user was found with that email address&quot;</pre></td>
+            <td><pre><a name="line26">26</a>     redirect_to affiliate_superfresh_urls_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>     end</pre></td>
+            <td><pre><a name="line27">27</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line28">28</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>     render :action =&gt; :new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line34">34</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line35">35</a> </pre></td>
+            <td><pre><a name="line29">29</a>   def upload</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line37">37</a> </pre></td>
+            <td><pre><a name="line30">30</a>     file = params[:superfresh_urls]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>   def load_user_using_perishable_token</pre></td>
+            <td><pre><a name="line31">31</a>     if file.content_type == &quot;txt&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     @user = User.find_using_perishable_token(params[:id])</pre></td>
+            <td><pre><a name="line32">32</a>       begin    </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>     redirect_to home_page_path unless @user</pre></td>
+            <td><pre><a name="line33">33</a>         uploaded_count = SuperfreshUrl.process_file(file, @affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>         if uploaded_count &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>           flash[:success] = &quot;Successfully uploaded #{uploaded_count} urls.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   end</pre></td>
+            <td><pre><a name="line36">36</a>         else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>           flash[:error] = &quot;No urls uploaded; please check your file and try again.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a> end</pre></td>
+            <td><pre><a name="line38">38</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line39">39</a>       rescue Exception =&gt; e</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>         flash[:error] = e.message</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line41">41</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line42">42</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>       flash[:error] = &quot;Invalid file format; please upload a plain text file (.txt).&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>     redirect_to affiliate_superfresh_urls_path(@affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line47">47</a> end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line48">48</a>   </pre></td>
           </tr>
         
       </tbody>
