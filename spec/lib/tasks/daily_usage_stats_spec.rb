@@ -18,8 +18,10 @@ describe "Daily Usage Stats rake tasks" do
       @rake[@task_name].prerequisites.should include("environment")
     end
 
-    it "should update the webtrends stats for yesterday" do
-      DailyUsageStat.should_receive(:update_webtrends_stats_for).with(Date.yesterday)
+    it "should update the webtrends stats for the past 3 days" do
+      (Date.yesterday - 2.days).upto(Date.yesterday) do |date|
+        DailyUsageStat.should_receive(:update_webtrends_stats_for).with(date)
+      end
       @rake[@task_name].invoke
     end
 
