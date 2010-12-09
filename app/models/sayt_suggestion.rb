@@ -12,7 +12,7 @@ class SaytSuggestion < ActiveRecord::Base
     def like(affiliate_id, query, num_suggestions)
       equals_is = affiliate_id.nil? ? 'is' : '='
       clause = "phrase LIKE ? AND affiliate_id #{equals_is} ?"
-      find(:all, :conditions => [clause, query + '%', affiliate_id], :order => 'popularity DESC',
+      find(:all, :conditions => [clause, query + '%', affiliate_id], :order => 'popularity DESC, phrase ASC',
            :limit => num_suggestions, :select=> 'phrase')
     end
 
