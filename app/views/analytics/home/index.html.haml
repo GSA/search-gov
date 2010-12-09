@@ -15,7 +15,7 @@
   %h2= display_most_recent_date_available(@day_being_shown)
 
 - if @affiliate.nil? and @most_recent_day_biggest_movers.is_a? Array
-  .span-24.headertitle
+  .span-24.header-box
     .span-6
       .topmovers-title
         %h2 Top Movers
@@ -27,10 +27,11 @@
     .span-8{:id=>"qas#{idx}"}
       = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => col , :content_name => "qas#{idx}", :heading => "", :affiliate => nil, :offset => most_recent_day_biggest_movers_in_3_groups.first.size * idx }
 
-.span-24.headertitle
-  .span-6
-    %h2 Most Popular Queries
-  .span-3.last
+.clear
+.header-box
+  .left 
+    Most Popular Queries
+  .right.last
     %form
       = display_select_for_window("dqs", @num_results_dqs, @day_being_shown)
 .span-8{:id=>"dqs1"}
@@ -39,11 +40,11 @@
   = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "Previous 7 Days", :affiliate => nil}
 .span-8.last{:id=>"dqs30"}
   = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Previous 30 Days", :affiliate => nil}
-
-.span-24.headertitle
-  .span-21
-    %h2 Most Popular Query Groups
-  .span-3.last
+.clear
+.header-box
+  .left
+    Most Popular Query Groups
+  .right.last
     %form
       = display_select_for_window("dqgs", @num_results_dqgs, @day_being_shown)
 .span-8{:id=>"dqgs1"}
@@ -55,8 +56,8 @@
 
 #daily_top_queries.span-24
   = analytics_daily_report_link(@day_being_shown)
-  
-.span-24.headertitle
-  .span-21
+.clear
+.header-box
+  .left
     %h2
       = "Total USA.gov Most Popular Clickthrus: #{@contextual_query_total}"
