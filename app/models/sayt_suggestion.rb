@@ -35,14 +35,14 @@ class SaytSuggestion < ActiveRecord::Base
       end unless filtered_daily_query_stats.empty?
     end
 
-    def process_sayt_suggestion_txt_upload(txtfile)
+    def process_sayt_suggestion_txt_upload(txtfile, affiliate = nil)
       valid_content_types = ['application/octet-stream', 'text/plain', 'txt']
       if valid_content_types.include? txtfile.content_type
         created, ignored = 0, 0
         txtfile.readlines.each do |phrase|
           entry = phrase.chomp.strip
           unless entry.blank?
-            create(:phrase => entry).id.nil? ? (ignored += 1) : (created += 1)
+            create(:phrase => entry, :affiliate => affiliate).id.nil? ? (ignored += 1) : (created += 1)
           end
         end
         return {:created => created, :ignored => ignored}

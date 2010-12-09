@@ -1,7 +1,7 @@
 class AffiliatesController < AffiliateAuthController
   before_filter :require_affiliate_or_admin, :except=> [:index, :edit, :how_it_works, :demo]
   before_filter :require_affiliate, :only => [:edit]
-  before_filter :setup_affiliate, :only=> [:edit, :update, :show, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports]
+  before_filter :setup_affiliate, :only=> [:edit, :update, :show, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports, :sayt_suggestions, :upload_sayt_suggestions]
   before_filter :establish_aws_connection, :only => [:analytics, :monthly_reports]
 
   def index
@@ -98,4 +98,20 @@ class AffiliatesController < AffiliateAuthController
     end
   end
   
+  def sayt_suggestions
+    render :template => 'admin/sayt_suggestions_uploads/new', :locals => { :upload_path => upload_sayt_suggestions_affiliate_path(@affiliate) }
+  end
+  
+  def upload_sayt_suggestions
+    result = SaytSuggestion.process_sayt_suggestion_txt_upload(params[:txtfile], @affiliate)
+    if result
+      flashy = "#{result[:created]} SAYT suggestions uploaded successfully."
+      flashy += " #{result[:ignored]} SAYT suggestions ignored." if result[:ignored] > 0
+      flash[:success] = flashy
+      redirect_to sayt_suggestions_affiliate_path(@affiliate)
+    else
+      flash[:error] = "Your file could not be processed. Please check the format and try again."
+      redirect_to sayt_suggestions_affiliate_path(@affiliate)
+    end
+  end
 end

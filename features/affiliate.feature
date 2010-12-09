@@ -388,3 +388,28 @@ Feature: Affiliate clients
     And I select "December 2011" as the report date
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."
+    
+  Scenario: Uploading SAYT Suggestions for an affiliate
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "SAYT Suggestions"
+    Then I should be on the affiliate sayt page
+    And I should see "SAYT Suggestions Bulk Upload"
+    
+    When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
+    And I press "Upload"
+    Then I should be on the affiliate sayt page
+    And I should see "5 SAYT suggestions uploaded successfully"
+    
+    When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
+    And I press "Upload"
+    Then I should be on the affiliate sayt page
+    And I should see "5 SAYT suggestions ignored"
+    
+    When I attach the file "features/support/cant_read_this.doc" to "txtfile"
+    And I press "Upload"
+    Then I should be on the affiliate sayt page
+    And I should see "Your file could not be processed."  

@@ -1,5 +1,6 @@
 class Admin::SaytSuggestionsUploadsController < Admin::AdminController
   def new
+    render :template => 'admin/sayt_suggestions_uploads/new', :locals => { :upload_path => admin_sayt_suggestions_upload_path }
   end
 
   def create
@@ -11,8 +12,7 @@ class Admin::SaytSuggestionsUploadsController < Admin::AdminController
       redirect_to admin_sayt_suggestions_path
     else
       flash[:error] = "Your file could not be processed. Please check the format and try again."
-      render :action => 'new'
+      render :template => 'admin/sayt_suggestions_uploads/new', :locals => { :upload_path => admin_sayt_suggestions_upload_path }
     end
   end
-
 end

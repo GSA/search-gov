@@ -215,4 +215,29 @@ describe SaytSuggestion do
       end
     end
   end
+
+  describe "#process_sayt_suggestion_txt_upload" do
+    fixtures :affiliates
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      @phrases = %w{one two three}
+      @file = ActionController::TestUploadedFile.new('spec/fixtures/txt/sayt_suggestions.txt', 'text/plain')
+      @file.open
+      @dummy_suggestion = SaytSuggestion.create(:phrase => 'dummy suggestions')
+    end
+    
+    it "should create SAYT suggestions using the affiliate provided, if provided" do
+      @phrases.each do |phrase|
+        SaytSuggestion.should_receive(:create).with({:phrase => phrase, :affiliate => @affiliate}).and_return @dummy_suggestion
+      end
+      SaytSuggestion.process_sayt_suggestion_txt_upload(@file, @affiliate)
+    end
+    
+    it "should create SAYT suggestions without an affiliate if none is provided" do
+      @phrases.each do |phrase|
+        SaytSuggestion.should_receive(:create).with(:phrase => phrase, :affiliate => nil).and_return @dummy_suggestion
+      end
+      SaytSuggestion.process_sayt_suggestion_txt_upload(@file)
+    end
+  end
 end
