@@ -200,5 +200,19 @@ describe SaytSuggestion do
         @array.last.phrase.should == "child care"
       end
     end
+
+    context "when multiple suggestions have the same popularity" do
+      before do
+        SaytSuggestion.create!(:phrase => "eliz hhh", :popularity => 100, :affiliate_id => @affiliate.id)
+        SaytSuggestion.create!(:phrase => "eliz aaa", :popularity => 100, :affiliate_id => @affiliate.id)
+        SaytSuggestion.create!(:phrase => "eliz ggg", :popularity => 100, :affiliate_id => @affiliate.id)
+      end
+
+      it "should return results in alphabetical order" do
+        @array = SaytSuggestion.like(@affiliate.id, "eliz", 3)
+        @array.first.phrase.should == "eliz aaa"
+        @array.last.phrase.should == "eliz hhh"
+      end
+    end
   end
 end
