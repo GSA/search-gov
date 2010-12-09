@@ -5,6 +5,7 @@ class AffiliateSuperfreshController < AffiliateAuthController
   VALID_CONTENT_TYPES = %w{text/plain txt}
   
   def index
+    @title = "Add to Bing - "
     @superfresh_url = SuperfreshUrl.new
     @uncrawled_urls = SuperfreshUrl.uncrawled_urls(nil, @affiliate)
     @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])

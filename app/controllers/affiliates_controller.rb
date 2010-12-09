@@ -5,15 +5,18 @@ class AffiliatesController < AffiliateAuthController
   before_filter :establish_aws_connection, :only => [:analytics, :monthly_reports]
 
   def index
+    @title = "Affiliate Program - "
   end
 
   def edit
   end
 
   def how_it_works
+    @title = "How it works - "
   end
 
   def demo
+    @title = "See it in Action - "
   end
    
   def new
@@ -47,6 +50,7 @@ class AffiliatesController < AffiliateAuthController
   end
 
   def show
+    @title = "Affiliate Page for " + @affiliate.name + " - "
   end
 
   def push_content_for
@@ -60,10 +64,12 @@ class AffiliatesController < AffiliateAuthController
   end
 
   def embed_code
+    @title = "Embed Search Code - "
     @affiliate = Affiliate.find(params[:id])
   end
 
   def analytics
+    @title = "Query Logs - "
     @num_results_dqs = (request["num_results_dqs"] || "10").to_i
     @day_being_shown = request["day"].nil? ? DailyQueryStat.most_recent_populated_date(@affiliate.name) : request["day"].to_date
     @most_recent_day_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs, @affiliate.name)
@@ -74,6 +80,7 @@ class AffiliatesController < AffiliateAuthController
   end
 
   def monthly_reports
+    @title = "Monthly Reports - "
     @most_recent_date = DailyUsageStat.most_recent_populated_date(@affiliate.name) || Date.today
     @report_date = params[:date].blank? ? Date.yesterday : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)
     @monthly_totals = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, @affiliate.name)
@@ -93,6 +100,7 @@ class AffiliatesController < AffiliateAuthController
   end
 
   def home
+    @title = "Affiliate Dashboard - "
     if params["said"].present?
       @affiliate = Affiliate.find(params["said"])
     end

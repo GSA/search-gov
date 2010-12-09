@@ -3,6 +3,7 @@ class BoostedSitesUploadsController < AffiliateAuthController
   before_filter :setup_affiliate
 
   def new
+    @title = "Boosted Sites - "
   end
 
   def create

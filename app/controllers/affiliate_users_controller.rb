@@ -4,6 +4,7 @@ class AffiliateUsersController < AffiliateAuthController
     
   def index
     @email = nil
+    @title = "Manage Users - "
   end
   
   def create
