@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates_controller_rb.html">app/controllers/affiliates_controller.rb</a></td>
-            <td class='right_align'><tt>101</tt></td>
-            <td class='right_align'><tt>85</tt></td>
+            <td class='right_align'><tt>117</tt></td>
+            <td class='right_align'><tt>100</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,7 +75,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :setup_affiliate, :only=&gt; [:edit, :update, :show, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports]</pre></td>
+            <td><pre><a name="line4">4</a>   before_filter :setup_affiliate, :only=&gt; [:edit, :update, :show, :push_content_for, :destroy, :analytics, :query_search, :monthly_reports, :sayt_suggestions, :upload_sayt_suggestions]</pre></td>
           </tr>
         
           
@@ -656,14 +656,110 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line101">101</a>   def sayt_suggestions</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line102">102</a>     render :template =&gt; 'admin/sayt_suggestions_uploads/new', :locals =&gt; { :upload_path =&gt; upload_sayt_suggestions_affiliate_path(@affiliate) }</pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line101">101</a> end</pre></td>
+            <td><pre><a name="line103">103</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line104">104</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line105">105</a>   def upload_sayt_suggestions</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line106">106</a>     result = SaytSuggestion.process_sayt_suggestion_txt_upload(params[:txtfile], @affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line107">107</a>     if result</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line108">108</a>       flashy = &quot;#{result[:created]} SAYT suggestions uploaded successfully.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line109">109</a>       flashy += &quot; #{result[:ignored]} SAYT suggestions ignored.&quot; if result[:ignored] &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line110">110</a>       flash[:success] = flashy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line111">111</a>       redirect_to sayt_suggestions_affiliate_path(@affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line112">112</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line113">113</a>       flash[:error] = &quot;Your file could not be processed. Please check the format and try again.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line114">114</a>       redirect_to sayt_suggestions_affiliate_path(@affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line115">115</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line116">116</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line117">117</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Dec 09 09:26:55 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Dec 09 15:43:38 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
