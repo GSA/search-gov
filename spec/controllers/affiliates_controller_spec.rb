@@ -12,6 +12,20 @@ describe AffiliatesController do
       response.should be_success
     end
   end
+  
+  describe "do GET on #how_it_works" do
+    it "should have a title" do
+      get :how_it_works
+      response.should be_success
+    end
+  end
+  
+  describe "do GET on #demo" do
+    it "should have a title" do
+      get :demo
+      response.should be_success
+    end
+  end
 
   describe "do GET on #edit" do
     it "should require affiliate login for edit" do

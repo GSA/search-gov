@@ -301,6 +301,15 @@ Feature: Affiliate clients
     And I should see "Copy and paste the HTML code below to create a search box for aff.gov"
     And I should see "English Version"
     And I should see "Spanish Version"
+  
+  Scenario: Navigating to an Affiliate page for a particular Affiliate
+    Given the following Affiliates exist:
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "aff.gov"
+    Then I should see "Affiliate: aff.gov"
 
   Scenario: Stats link on affiliate home page
     Given the following Affiliates exist:
