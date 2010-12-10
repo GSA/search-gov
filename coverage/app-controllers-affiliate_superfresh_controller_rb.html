@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliate_superfresh_controller_rb.html">app/controllers/affiliate_superfresh_controller.rb</a></td>
-            <td class='right_align'><tt>50</tt></td>
-            <td class='right_align'><tt>44</tt></td>
+            <td class='right_align'><tt>51</tt></td>
+            <td class='right_align'><tt>45</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -99,265 +99,271 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     @superfresh_url = SuperfreshUrl.new</pre></td>
+            <td><pre><a name="line8">8</a>     @title = &quot;Add to Bing - &quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     @uncrawled_urls = SuperfreshUrl.uncrawled_urls(nil, @affiliate)</pre></td>
+            <td><pre><a name="line9">9</a>     @superfresh_url = SuperfreshUrl.new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])</pre></td>
+            <td><pre><a name="line10">10</a>     @uncrawled_urls = SuperfreshUrl.uncrawled_urls(nil, @affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a>   end</pre></td>
+            <td><pre><a name="line12">12</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a> </pre></td>
+            <td><pre><a name="line13">13</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>   def create</pre></td>
+            <td><pre><a name="line14">14</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>     @superfresh_url = SuperfreshUrl.new(params[:superfresh_url])</pre></td>
+            <td><pre><a name="line15">15</a>     @superfresh_url = SuperfreshUrl.new(params[:superfresh_url])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     @superfresh_url.affiliate = @affiliate</pre></td>
+            <td><pre><a name="line16">16</a>     @superfresh_url.affiliate = @affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     if @superfresh_url.save</pre></td>
+            <td><pre><a name="line17">17</a>     if @superfresh_url.save</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       flash[:success] = &quot;Successfully added #{@superfresh_url.url}.  It will be refreshed soon.&quot;</pre></td>
+            <td><pre><a name="line18">18</a>       flash[:success] = &quot;Successfully added #{@superfresh_url.url}.  It will be refreshed soon.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>     else</pre></td>
+            <td><pre><a name="line19">19</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>       flash[:error] = &quot;There was an error adding the URL to be refreshed.  Please check the URL and try again.&quot;</pre></td>
+            <td><pre><a name="line20">20</a>       flash[:error] = &quot;There was an error adding the URL to be refreshed.  Please check the URL and try again.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>     end</pre></td>
+            <td><pre><a name="line21">21</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>     redirect_to affiliate_superfresh_urls_path(@affiliate)</pre></td>
+            <td><pre><a name="line22">22</a>     redirect_to affiliate_superfresh_urls_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a>   end</pre></td>
+            <td><pre><a name="line23">23</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a>   </pre></td>
+            <td><pre><a name="line24">24</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>   def destroy</pre></td>
+            <td><pre><a name="line25">25</a>   def destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>     if @superfresh_url = SuperfreshUrl.destroy(params[:id])</pre></td>
+            <td><pre><a name="line26">26</a>     if @superfresh_url = SuperfreshUrl.destroy(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>       flash[:success] = &quot;Removed #{@superfresh_url.url} from list of uncrawled URLs.&quot;</pre></td>
+            <td><pre><a name="line27">27</a>       flash[:success] = &quot;Removed #{@superfresh_url.url} from list of uncrawled URLs.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>     end</pre></td>
+            <td><pre><a name="line28">28</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>     redirect_to affiliate_superfresh_urls_path(@affiliate)</pre></td>
+            <td><pre><a name="line29">29</a>     redirect_to affiliate_superfresh_urls_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>   end</pre></td>
+            <td><pre><a name="line30">30</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>   </pre></td>
+            <td><pre><a name="line31">31</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>   def upload</pre></td>
+            <td><pre><a name="line32">32</a>   def upload</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>     file = params[:superfresh_urls]</pre></td>
+            <td><pre><a name="line33">33</a>     file = params[:superfresh_urls]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>     if VALID_CONTENT_TYPES.include?(file.content_type)</pre></td>
+            <td><pre><a name="line34">34</a>     if VALID_CONTENT_TYPES.include?(file.content_type)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>       begin    </pre></td>
+            <td><pre><a name="line35">35</a>       begin    </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>         uploaded_count = SuperfreshUrl.process_file(file, @affiliate)</pre></td>
+            <td><pre><a name="line36">36</a>         uploaded_count = SuperfreshUrl.process_file(file, @affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>         if uploaded_count &gt; 0</pre></td>
+            <td><pre><a name="line37">37</a>         if uploaded_count &gt; 0</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>           flash[:success] = &quot;Successfully uploaded #{uploaded_count} urls.&quot;</pre></td>
+            <td><pre><a name="line38">38</a>           flash[:success] = &quot;Successfully uploaded #{uploaded_count} urls.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>         else</pre></td>
+            <td><pre><a name="line39">39</a>         else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>           flash[:error] = &quot;No urls uploaded; please check your file and try again.&quot;</pre></td>
+            <td><pre><a name="line40">40</a>           flash[:error] = &quot;No urls uploaded; please check your file and try again.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>         end</pre></td>
+            <td><pre><a name="line41">41</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>       rescue Exception =&gt; e</pre></td>
+            <td><pre><a name="line42">42</a>       rescue Exception =&gt; e</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>         flash[:error] = e.message</pre></td>
+            <td><pre><a name="line43">43</a>         flash[:error] = e.message</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line43">43</a>       end</pre></td>
+            <td><pre><a name="line44">44</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line44">44</a>     else</pre></td>
+            <td><pre><a name="line45">45</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>       flash[:error] = &quot;Invalid file format; please upload a plain text file (.txt).&quot;</pre></td>
+            <td><pre><a name="line46">46</a>       flash[:error] = &quot;Invalid file format; please upload a plain text file (.txt).&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>     end</pre></td>
+            <td><pre><a name="line47">47</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>     redirect_to affiliate_superfresh_urls_path(@affiliate)</pre></td>
+            <td><pre><a name="line48">48</a>     redirect_to affiliate_superfresh_urls_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a>   end</pre></td>
+            <td><pre><a name="line49">49</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a> end</pre></td>
+            <td><pre><a name="line50">50</a> end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>   </pre></td>
+            <td><pre><a name="line51">51</a>   </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Dec 09 15:43:38 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Dec 10 12:51:53 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
