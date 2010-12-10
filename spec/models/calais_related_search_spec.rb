@@ -11,13 +11,19 @@ describe CalaisRelatedSearch do
       :affiliate => @affiliate,
       :term => "debt relief",
       :related_terms => "Personal finance | United States bankruptcy law | Mortgage Forgiveness Debt Relief Act",
-      :locale => 'en'
+      :locale => 'en',
+      :gets_refreshed => true
     }
   end
 
   context "when creating a new instance" do
     it "should create a new instance given valid attributes" do
       CalaisRelatedSearch.create!(@valid_attributes)
+    end
+
+    it "should default to being protected from automatic refreshes" do
+      crs = CalaisRelatedSearch.create!(:term => "debt relief", :related_terms => "whatevs")
+      crs.gets_refreshed.should be_false
     end
 
     should_validate_presence_of :term, :related_terms, :locale
@@ -37,9 +43,9 @@ describe CalaisRelatedSearch do
       @oldest_two = [a,b]
     end
 
-    it "should refresh the oldest entries up to the daily API quota limit" do
+    it "should refresh the oldest refreshable English entries up to the daily API quota limit" do
       @redis.should_receive(:incr).twice.and_return(1, 2)
-      CalaisRelatedSearch.should_receive(:find_all_by_locale).with('en', :order => 'updated_at', :limit => 2).and_return @oldest_two
+      CalaisRelatedSearch.should_receive(:find_all_by_locale_and_gets_refreshed).with('en', true, :order => 'updated_at', :limit => 2).and_return @oldest_two
       CalaisRelatedSearch.refresh_stalest_entries
       CalaisRelatedSearch.should have_queued(@affiliate.name, "term1")
       CalaisRelatedSearch.should have_queued(Affiliate::USAGOV_AFFILIATE_NAME, "term2")
@@ -148,6 +154,11 @@ describe CalaisRelatedSearch do
         it "should set the CalaisRelatedSearch's English-locale related terms for that term" do
           CalaisRelatedSearch.perform(@affiliate.name, @term)
           CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "congress | California | CIA inquiry"
+        end
+
+        it "should set the CalaisRelatedSearch's gets_refreshed flag to true for that term" do
+          CalaisRelatedSearch.perform(@affiliate.name, @term)
+          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).gets_refreshed.should be_true
         end
       end
 

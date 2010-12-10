@@ -14,7 +14,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
   class << self
 
     def refresh_stalest_entries
-      find_all_by_locale('en', :order => 'updated_at', :limit => daily_api_quota).each do |crs|
+      find_all_by_locale_and_gets_refreshed('en', true, :order => 'updated_at', :limit => daily_api_quota).each do |crs|
         affiliate_name = crs.affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : crs.affiliate.name
         Resque.enqueue(CalaisRelatedSearch, affiliate_name, crs.term)
         break if @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.today.to_s) >= daily_api_quota
@@ -73,6 +73,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
             related_terms = social_tags.join(' | ')
             calais_related_search = find_or_initialize_by_term_and_locale_and_affiliate_id(term, 'en', affiliate_id)
             calais_related_search.related_terms = related_terms
+            calais_related_search.gets_refreshed = true
             calais_related_search.save!
           end
         rescue NoMethodError, Nokogiri::XML::XPath::SyntaxError, Calais::Error, Curl::Err::TimeoutError, Curl::Err::GotNothingError, ArgumentError => error
