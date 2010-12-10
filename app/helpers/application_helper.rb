@@ -88,7 +88,7 @@ module ApplicationHelper
       elements << link_to("Logout", user_session_path, :method => :delete)
     else
       elements << link_to("Login", new_user_session_path)
-      elements << link_to("Register", new_account_path)
+      elements << link_to("Sign Up", new_account_path)
     end
     elements.join(" | ")
   end
@@ -118,7 +118,7 @@ module ApplicationHelper
       elements << link_to("Sign Up", new_account_path)
       elements << link_to("How it works", how_it_works_affiliates_path)
       elements << link_to("See it in action", demo_affiliates_path)
-      elements << link_to("Support", "http://searchsupport.usa.gov/")
+      elements << link_to("Help", "http://searchsupport.usa.gov/")
     end
     elements.join(" | ")
   end

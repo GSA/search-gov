@@ -1,5 +1,5 @@
 .breadcrumb
-  = link_to 'USA Search', home_affiliates_path
+  = link_to 'USASearch', root_path
   >
   = link_to 'Affiliate Program', affiliates_path
   >
@@ -13,49 +13,49 @@
     We provide search services for over 300 government websites. Click on any organization's name in the list below to visit their website and see how they've been able to improve their customers' search experience by becoming an affiliate and leveraging our USASearch services.
   %p
     Once you've had a chance to see it in action on other sites, be sure to
-    learn how our affiliate program works
+    = link_to 'learn how our affiliate program works', how_it_works_affiliates_path
     and to
-    sign up 
+    = link_to 'sign up', new_account_path
     to become an affiliate.
     
 .pad10.clear
 .prepend-1.span-20
 
   .affiliate-marketing-left
-    %a{:href=>"http://data.gov"}
+    %a{:href=>"http://data.gov", :target=>"_new"}
       %img{:src=>"/images/affiliates/thumb_datagov.png"}
   .affiliate-marketing-right
     %h2
-      %a{:href=>"http://data.gov"}
+      %a{:href=>"http://data.gov", :target=>"_new"}
         Data.gov
     %em 
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      
       %p.right
-        %br Jane Smith, Web Content Manager, Data.gov
+        
   .pad10.clear
   
   .affiliate-marketing-left
-    %a{:href=>"http://www.nws.gov"}
+    %a{:href=>"http://www.nws.gov", :target=>"_new"}
       %img{:src=>"/images/affiliates/thumb_nws.png"}
   .affiliate-marketing-right
     %h2
-      %a{:href=>"http://www.nws.gov"}
+      %a{:href=>"http://www.nws.gov", :target=>"_new"}
         National Weather Service
     %em 
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      
       %p.right
-        %br Jane Smith, Web Content Manager, Data.gov
+        %br 
   .pad10.clear
   
   .affiliate-marketing-left
-    %a{:href=>"http://www.ct.gov"}
+    %a{:href=>"http://www.ct.gov", :target=>"_new"}
       %img{:src=>"/images/affiliates/thumb_ct.png"}
   .affiliate-marketing-right
     %h2
-      %a{:href=>"http://www.ct.gov"}
+      %a{:href=>"http://www.ct.gov", :target=>"_new"}
         CT.gov
     %em 
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      
       %p.right
-        %br Jane Smith, Web Content Manager, Data.gov
+        %br 
   .clear

@@ -32,7 +32,7 @@ Feature: Users
     | Password confirmation         | huge_secret                 |
     And I select "Virginia" from "State"
     And I select "(GMT-05:00) Eastern Time (US & Canada)" from "Time Zone"
-    And I press "Register"
+    And I press "Sign Up Now"
     Then I should be on the user account page
     And I should see "Thank you for registering for USA.gov Search Services"
 
@@ -51,12 +51,12 @@ Feature: Users
     | Password confirmation         | huge_secret                 |
     And I select "Virginia" from "State"
     And I select "(GMT-05:00) Eastern Time (US & Canada)" from "Time Zone"
-    And I press "Register"
+    And I press "Sign Up Now"
     Then I should be on the user account page
     And I should see "Thank you for registering for USA.gov Search Services"
 
   Scenario: Failing registration as a new affiliate user
     Given I am on the new user page
-    And I press "Register"
+    And I press "Sign Up Now"
     Then I should be on the user account page
     And I should see "can't be blank"
