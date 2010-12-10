@@ -1,10 +1,4 @@
-.breadcrumb
-  = link_to 'Dashboard', home_affiliates_path
-  >
-  = link_to(@affiliate.name, affiliate_path(@affiliate))
-  >
-  Query Analytics 
-%br
+= render :partial => 'breadcrumbs', :locals => { :breadcrumbs => [ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Query Analytics'] }
 
 %h1= "Query Analytics for #{@affiliate.name}"
 .span-24

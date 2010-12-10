@@ -1,10 +1,4 @@
-.breadcrumb
-  = link_to 'Dashboard', home_affiliates_path
-  >
-  = link_to(@affiliate.name, affiliate_path(@affiliate))
-  >
-  Get Code
-%br
+= render :partial => 'breadcrumbs', :locals => { :breadcrumbs => [ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Get Code'] }
 
 %h1 Embed Search Code
 

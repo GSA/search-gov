@@ -1,8 +1,4 @@
-.breadcrumb
-  = link_to 'Dashboard', home_affiliates_path
-  >
-  Add New Affiliate
-%br
+= render :partial => 'breadcrumbs', :locals => { :breadcrumbs => ['Add New Affiliate'] }
 
 %h1 New Affiliate
 .span-20

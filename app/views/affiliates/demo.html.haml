@@ -1,10 +1,4 @@
-.breadcrumb
-  = link_to 'USASearch', root_path
-  >
-  = link_to 'Affiliate Program', affiliates_path
-  >
-  See it in Action
-%br
+= render :partial => 'breadcrumbs', :locals => { :breadcrumbs => [ link_to('Affiliate Program', affiliates_path), 'See it in Action'] }
 
 .prepend-1.span-23.last
   %h1 See it in Action

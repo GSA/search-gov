@@ -1,10 +1,5 @@
-.breadcrumb
-  = link_to 'Dashboard', home_affiliates_path
-  >
-  = link_to(@affiliate.name, affiliate_path(@affiliate))
-  >
-  Edit
-%br
+= render :partial => 'breadcrumbs', :locals => { :breadcrumbs => [ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Edit'] }
+
 %h1 Edit Affiliate
 .span-20
   - form_for @affiliate, :html => {:class=>"bordered"} do |f|

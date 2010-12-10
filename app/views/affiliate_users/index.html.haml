@@ -1,10 +1,4 @@
-.breadcrumb
-  = link_to 'Dashboard', home_affiliates_path
-  >
-  = link_to(@affiliate.name, affiliate_path(@affiliate))
-  >
-  Manage Users
-%br
+= render :partial => 'affiliates/breadcrumbs', :locals => { :breadcrumbs => [ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Manage Users'] }
 
 %h1
   Users for Affiliate: #{@affiliate.name}
