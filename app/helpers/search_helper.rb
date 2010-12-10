@@ -50,11 +50,11 @@ module SearchHelper
     tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB')
   end
 
-  def tracked_click_link(url, title, search, affiliate, position, source)
+  def tracked_click_link(url, title, search, affiliate, position, source, opts = nil)
     aff_name = affiliate.name rescue ""
     query = search.query.gsub("'", "\\\\'")
     onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds)
-    "<a href=\"#{url}\" #{onmousedown}>#{title}</a>"
+    "<a href=\"#{url}\" #{onmousedown} #{opts}>#{title}</a>"
   end
 
   def render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)
@@ -98,8 +98,13 @@ module SearchHelper
       suggestion_for_url = strip_bing_highlights(search.spelling_suggestion)
       opts = {:query=> suggestion_for_url}
       opts.merge!(:affiliate => affiliate.name) if affiliate
-      url = image_search? ? image_search_path(opts) : search_path(opts)
-      content_tag(:h4, "#{t :did_you_mean}: #{tracked_click_link(url, rendered_suggestion, search, affiliate, 0, 'BSPEL')}")
+      corrected_url = image_search? ? image_search_path(opts) : search_path(opts)
+      opts.merge!(:query => "+#{search.query}")
+      original_url = image_search? ? image_search_path(opts) : search_path(opts)
+      did_you_mean = t :did_you_mean,
+                       :assumed_term => tracked_click_link(corrected_url, rendered_suggestion, search, affiliate, 0, 'BSPEL', "style='font-weight:bold'"),
+                       :term_as_typed => tracked_click_link(original_url, search.query, search, affiliate, 0, 'OVER', "style='font-style:italic'")
+      content_tag(:h4, did_you_mean)
     end
   end
 
@@ -262,7 +267,7 @@ module SearchHelper
       EN_SCOPE_ID_OPTIONS
     end
   end
-  
+
   def forecast_date(date)
     if date.wday == Date.today.wday
       "Today"
@@ -272,7 +277,7 @@ module SearchHelper
       Date::DAYNAMES[date.wday]
     end
   end
-  
+
   private
   def shorten_url (url)
     return url if url.length <=30

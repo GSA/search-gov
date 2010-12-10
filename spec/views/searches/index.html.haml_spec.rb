@@ -9,8 +9,10 @@ describe "searches/index.html.haml" do
 
   context "when spelling suggestion is available" do
     before do
-      @search.stub!(:query).and_return "U mispeled everytheeng"
-      @search.stub!(:spelling_suggestion).and_return "You misspelled everything"
+      @rong = "U mispeled everytheeng"
+      @rite = "You misspelled everything"
+      @search.stub!(:query).and_return @rong
+      @search.stub!(:spelling_suggestion).and_return @rite
       @search.stub!(:results).and_return []
       @search.stub!(:boosted_sites).and_return nil
       @search.stub!(:faqs).and_return nil
@@ -25,7 +27,7 @@ describe "searches/index.html.haml" do
 
     it "should show the spelling suggestion" do
       render
-      response.should contain("You misspelled everything")
+      response.should contain("We're including results for #{@rite}. Do you want results only for #{@rong}?")
     end
   end
 
