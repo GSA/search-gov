@@ -1,0 +1,44 @@
+= render :partial => 'affiliates/breadcrumbs', :locals => { :breadcrumbs => [ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Type-ahead Search'] }
+
+.span-24{:style => 'margin-bottom: 21px;'}
+  - form_tag preferences_affiliate_type_ahead_search_path(@affiliate), :class=> "bordered" do
+    %h1
+      Preferences
+    Enable type-ahead search to provide your customers with suggestions as they type their search in your site's search box.
+    %ul{:style => 'list-style-type: none;'}
+      %li
+        = radio_button_tag 'sayt_preferences', 'enable_affiliate', @affiliate.is_affiliate_sayt_enabled?
+        Enable type-ahead search based on your site's search analytics
+      %li
+        = radio_button_tag 'sayt_preferences', 'enable_global', @affiliate.is_global_sayt_enabled?
+        Enable type-ahead search based on Search.USA.gov's government-widge search analytics
+      %li
+        = radio_button_tag 'sayt_preferences', 'disable', @affiliate.is_sayt_disabled?
+        Disable type-ahead search
+    = submit_tag "Set Preferences"
+    
+.span-24{:style => 'margin-bottom: 21px;'}
+  - form_for @sayt_suggestion, {:url => affiliate_type_ahead_search_index_path(@affiliate), :html => {:class => 'bordered'}} do |f|
+    %h1
+      Add Type-ahead Search Suggestion
+    = f.label :phrase
+    = f.text_field :phrase
+    = f.submit "Add"
+
+#sayt-suggestions-title.title-row
+  Type-ahead Search Suggestions
+%table#sayt-suggestions.admin-table
+  %tr
+    %th
+      Phrase
+    %th
+      Actions
+  - @sayt_suggestions.each do |sayt_suggestion|
+    %tr{:class => cycle('even', 'odd')}
+      %td.sayt_suggestion
+        = sayt_suggestion.phrase
+      %td.sayt_actions
+        = button_to "Delete", affiliate_type_ahead_search_path(@affiliate, sayt_suggestion), :title => "Remove", :confirm => "You are about to remove this phrase. Are you sure?", :method => :delete
+
+.span-24
+  = render :partial => 'bulk_upload_form', :locals => { :upload_path => upload_affiliate_type_ahead_search_path(@affiliate) }

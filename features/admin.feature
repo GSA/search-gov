@@ -61,7 +61,7 @@ Feature:  Administration
       | hurricane          |
     When I go to the admin home page
     And I follow "SAYT Suggestions Bulk Upload"
-    Then I should see "Use a plain text file with one search suggestion per line."
+    Then I should see "Create a new text file following the same format as the sample below (one entry per line)"
 
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
     And I press "Upload"

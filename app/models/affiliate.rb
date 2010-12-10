@@ -21,7 +21,19 @@ class Affiliate < ActiveRecord::Base
   def is_owner?(user)
     self.owner == user ? true : false
   end
-
+  
+  def is_affiliate_sayt_enabled?
+    self.is_sayt_enabled && self.is_affiliate_suggestions_enabled
+  end
+  
+  def is_global_sayt_enabled?
+    self.is_sayt_enabled && !self.is_affiliate_suggestions_enabled
+  end
+  
+  def is_sayt_disabled?
+    !self.is_sayt_enabled && !self.is_affiliate_suggestions_enabled
+  end
+  
   private
 
   def remove_boosted_sites_from_index

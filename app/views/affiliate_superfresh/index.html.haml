@@ -72,11 +72,12 @@
   %p
     Sample file format:
     %ul{:style => 'list-style-type: none;'}
-      http://www.sample.gov/1.html
-      %br
-      http://www.sample.gov/2.html
-      %br
-      http://www.sample.gov/3.html
+      %li
+        http://www.sample.gov/1.html
+      %li
+        http://www.sample.gov/2.html
+      %li
+        http://www.sample.gov/3.html
       
   - form_tag upload_affiliate_superfresh_urls_path(@affiliate), :multipart => true do
     = file_field_tag 'superfresh_urls', :accept => 'text/plain'

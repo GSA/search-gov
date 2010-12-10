@@ -76,3 +76,26 @@ Given /^the following Calais Related Searches exist for affiliate "([^\"]*)":$/ 
   end
   CalaisRelatedSearch.reindex
 end
+
+Then /^the affiliate "([^\"]*)" should be set to use affiliate SAYT$/ do |affiliate_name|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  affiliate.is_sayt_enabled.should be_true
+  affiliate.is_affiliate_suggestions_enabled.should be_true
+end
+
+Then /^the affiliate "([^\"]*)" should be set to use global SAYT$/ do |affiliate_name|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  affiliate.is_sayt_enabled.should be_true
+  affiliate.is_affiliate_suggestions_enabled.should be_false
+end
+
+Then /^the affiliate "([^\"]*)" should be disabled$/ do |affiliate_name|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  affiliate.is_sayt_enabled.should be_false
+  affiliate.is_affiliate_suggestions_enabled.should be_false
+end
+
+Then /^the "([^\"]*)" button should be checked$/ do |field|
+  response_body.should have_selector "input[type=radio][checked=checked][id=#{field}]"
+end
+

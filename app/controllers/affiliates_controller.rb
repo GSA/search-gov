@@ -105,21 +105,4 @@ class AffiliatesController < AffiliateAuthController
       @affiliate = Affiliate.find(params["said"])
     end
   end
-  
-  def sayt_suggestions
-    render :template => 'admin/sayt_suggestions_uploads/new', :locals => { :upload_path => upload_sayt_suggestions_affiliate_path(@affiliate) }
-  end
-  
-  def upload_sayt_suggestions
-    result = SaytSuggestion.process_sayt_suggestion_txt_upload(params[:txtfile], @affiliate)
-    if result
-      flashy = "#{result[:created]} SAYT suggestions uploaded successfully."
-      flashy += " #{result[:ignored]} SAYT suggestions ignored." if result[:ignored] > 0
-      flash[:success] = flashy
-      redirect_to sayt_suggestions_affiliate_path(@affiliate)
-    else
-      flash[:error] = "Your file could not be processed. Please check the format and try again."
-      redirect_to sayt_suggestions_affiliate_path(@affiliate)
-    end
-  end
 end

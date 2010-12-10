@@ -398,25 +398,90 @@ Feature: Affiliate clients
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."
     
+  Scenario: Viewing SAYT Suggestions for an affiliate
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Type-ahead Search"
+    Then I should be on the affiliate sayt page
+    And I should see "Dashboard > aff.gov > Type-ahead Search"
+    
+  Scenario: Setting SAYT Preferences for an affiliate
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Type-ahead Search"
+    Then I should be on the affiliate sayt page
+    And I should see "Preferences"
+    And the "sayt_preferences_disable" button should be checked
+    
+    When I choose "sayt_preferences_enable_affiliate"
+    And I press "Set Preferences"
+    Then I should be on the affiliate sayt page
+    And I should see "Preferences updated"
+    And the "sayt_preferences_enable_affiliate" button should be checked    
+    And the affiliate "aff.gov" should be set to use affiliate SAYT
+    
+    When I choose "sayt_preferences_enable_global"
+    And I press "Set Preferences"
+    Then I should be on the affiliate sayt page
+    And the "sayt_preferences_enable_global" button should be checked
+    And the affiliate "aff.gov" should be set to use global SAYT
+    
+    When I choose "sayt_preferences_disable"
+    And I press "Set Preferences"
+    Then I should be on the affiliate sayt page
+    And the "sayt_preferences_disable" button should be checked
+    And the affiliate "aff.gov" should be disabled
+    
+  Scenario: Adding and removing a SAYT Suggestion to an affiliate
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Type-ahead Search"
+    Then I should be on the affiliate sayt page
+    And I should see "Add Type-ahead Search Suggestion"
+    When I fill in "Phrase" with "banana"
+    And I press "Add"
+    Then I should be on the affiliate sayt page
+    And I should see "Successfully added: banana"
+    And I should see "banana" within "#sayt-suggestions"
+    
+    When I fill in "Phrase" with "banana"
+    And I press "Add"
+    Then I should be on the affiliate sayt page
+    And I should see "Unable to add: banana"
+    
+    When I press "Delete"
+    Then I should be on the affiliate sayt page
+    And I should see "Deleted phrase: banana"
+    And I should not see "banana" within "#sayt-suggestions"
+    
   Scenario: Uploading SAYT Suggestions for an affiliate
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
      | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "SAYT Suggestions"
+    And I follow "Type-ahead Search"
     Then I should be on the affiliate sayt page
-    And I should see "SAYT Suggestions Bulk Upload"
+    And I should see "Type-ahead Search Suggestions Bulk Upload"
     
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
     And I press "Upload"
     Then I should be on the affiliate sayt page
-    And I should see "5 SAYT suggestions uploaded successfully"
+    And I should see "5 Type-ahead Search suggestions uploaded successfully"
     
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
     And I press "Upload"
     Then I should be on the affiliate sayt page
-    And I should see "5 SAYT suggestions ignored"
+    And I should see "5 Type-ahead Search suggestions ignored"
     
     When I attach the file "features/support/cant_read_this.doc" to "txtfile"
     And I press "Upload"

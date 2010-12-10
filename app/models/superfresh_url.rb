@@ -35,7 +35,5 @@ class SuperfreshUrl < ActiveRecord::Base
         raise 'Too many URLs in your file.  Please limit your file to 100 URLs.'
       end
     end
-    
   end
-  
 end

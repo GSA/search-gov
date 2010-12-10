@@ -1,0 +1,32 @@
+- form_tag upload_path, :multipart => true, :class=> "bordered" do
+  %h1 
+    Type-ahead Search Suggestions Bulk Upload
+  %ul{:style => 'list-style-type: disc;'}
+    %li
+      Create a new text file following the same format as the sample below (one entry per line).  
+    %li
+      %b
+        Do not use a Microsoft Word file.
+    %li
+      Save the text file as suggestions.txt on your computer
+    %li
+      Add, modify or delete individual entries in the file
+    %li
+      Browse for the file on your computer.
+    %li
+      Upload the file to Search.USA.gov.
+  %p
+    Sample file format:
+    %ul{:style => 'list-style-type: none;'}
+      %li
+        Binghamton University
+      %li
+        baseball hall of fame
+      %li
+        Oneonta NY
+      %li
+        Maurice Hinchey
+      %li
+        SUNY Oneonta         
+  = file_field_tag 'txtfile'
+  = submit_tag "Upload"

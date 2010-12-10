@@ -1,6 +1,2 @@
 .span-10
-  - form_tag upload_path, :multipart => true, :class=> "bordered" do
-    %h1 SAYT Suggestions Bulk Upload
-    %p="Use a plain text file with one search suggestion per line. Uploading a Word document will not work."
-    = file_field_tag 'txtfile'
-    = submit_tag "Upload"
+  = render :partial => 'affiliate_sayt/bulk_upload_form', :locals => { :upload_path => admin_sayt_suggestions_upload_path }
