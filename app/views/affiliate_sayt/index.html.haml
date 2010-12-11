@@ -27,7 +27,7 @@
 
 #sayt-suggestions-title.title-row
   Type-ahead Search Suggestions
-%table#sayt-suggestions.admin-table
+%table#sayt-suggestions.admin-table{:style => 'margin-bottom: 0px;'}
   %tr
     %th
       Phrase
@@ -39,6 +39,8 @@
         = sayt_suggestion.phrase
       %td.sayt_actions
         = button_to "Delete", affiliate_type_ahead_search_path(@affiliate, sayt_suggestion), :title => "Remove", :confirm => "You are about to remove this phrase. Are you sure?", :method => :delete
+%div{:style => "text-align: center; margin-bottom: 10px;"}
+  = will_paginate @sayt_suggestions
 
 .span-24
   = render :partial => 'bulk_upload_form', :locals => { :upload_path => upload_affiliate_type_ahead_search_path(@affiliate) }
