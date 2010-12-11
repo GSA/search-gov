@@ -4,7 +4,7 @@ class AffiliateSaytController < AffiliateAuthController
 
   def index
     @sayt_suggestion = SaytSuggestion.new
-    @sayt_suggestions = SaytSuggestion.paginate_by_affiliate_id(@affiliate.id, :page => params[:page] || 1, :order => 'phrase DESC')
+    @sayt_suggestions = SaytSuggestion.paginate_by_affiliate_id(@affiliate.id, :page => params[:page] || 1, :order => 'phrase ASC')
   end
   
   def create
