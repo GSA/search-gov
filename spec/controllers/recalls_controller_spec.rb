@@ -75,6 +75,16 @@ describe RecallsController do
         parsed_response["error"].should == "invalid date"
       end
     end
+    
+    context "when valid organizations are specified" do
+      it "should not return a JSON error object" do
+        Recall::VALID_ORGANIZATIONS.each do |organization|
+          get :index, :organization => organization
+          parsed_response = JSON.parse(response.body)
+          parsed_response["error"].should be_nil
+        end
+      end
+    end
 
     context "when invalid organzation is specified" do
       it "should return a JSON error object" do

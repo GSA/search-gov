@@ -31,7 +31,7 @@ class RecallsController < ApplicationController
   def verify_params(p)
     error_message = nil
     error_message = "invalid date" if (p[:start_date] and not p[:start_date] =~ /^\d{4}-\d{1,2}-\d{1,2}$/) or (p[:end_date] and not p[:end_date] =~ /^\d{4}-\d{1,2}-\d{1,2}$/)
-    error_message = "invalid organization" if p[:organization] and not %w{NHTSA CPC CDC}.include? p[:organization]
+    error_message = "invalid organization" if p[:organization] and not Recall::VALID_ORGANIZATIONS.include? p[:organization]
     error_message = "invalid code" if p[:code] and not %w{E V I T C X}.include? p[:code]
     error_message = "invalid year" if p[:year] and not p[:year] =~ /^\d{4}$/
     error_message = "invalid page" if p[:page] and not p[:page] =~ /^\d+$/

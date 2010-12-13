@@ -5,6 +5,7 @@ class Recall < ActiveRecord::Base
 
   validates_presence_of :recall_number, :organization
 
+  VALID_ORGANIZATIONS = %w{NHTSA CPSC CDC}
   CPSC_FULL_TEXT_SEARCH_FIELDS = {'Manufacturer' => 2, 'ProductType' => 3, 'Description' => 4, 'UPC' => 5, 'Hazard' => 7, 'Country' => 8 }
   CPSC_FACET_FIELDS = %w{Manufacturer ProductType Hazard Country}
 
