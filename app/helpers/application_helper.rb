@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def display_for(role)
+    yield if (current_user && current_user.send("is_#{role}?"))
+  end
+
   def sentence_case(str)
     non_capitalized = %w{ of etc and by the for on is at to but nor or a via de los des el del }
     str.gsub(/\b[a-z]+/) { |w| non_capitalized.include?(w) ? w : w.capitalize }.sub(/^[a-z]/) { |l| l.upcase }.sub(/\b[a-z][^\s]*?$/) { |l| l.capitalize }
@@ -102,23 +106,6 @@ module ApplicationHelper
 #      elements << link_to("FAQ", analytics_faq_path)
       elements << link_to("Query Groups Admin", analytics_query_groups_path) if cur_user.is_analyst_admin?
       elements << link_to("Monthly Reports", monthly_reports_path) if cur_user.is_analyst?
-    end
-    elements.join(" | ")
-  end
-
-  def secondary_header_navigation_for(cur_user)
-    elements = []
-    if cur_user
-      if cur_user.is_affiliate?
-        elements << link_to("Dashboard", home_affiliates_path)
-      end
-      elements << link_to("Help", "http://searchsupport.usa.gov/")
-    else
-      elements << link_to("Home", affiliates_path)
-      elements << link_to("Sign Up", new_account_path)
-      elements << link_to("How it works", how_it_works_affiliates_path)
-      elements << link_to("See it in action", demo_affiliates_path)
-      elements << link_to("Help", "http://searchsupport.usa.gov/")
     end
     elements.join(" | ")
   end

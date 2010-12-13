@@ -6,8 +6,31 @@ Feature: Affiliate clients
   Scenario: Visiting the affiliate welcome/list page as a un-authenticated Affiliate
     When I go to the affiliate welcome page
     Then I should see "Hosted Search Services"
-    And I should see "How it works"
-    And I should see "See it in action"
+    Then I should see "Affiliate Program"
+    And I should see "API & Web Services"
+    And I should see "Search.USA.gov"
+    And I should not see "USA Search Program"
+    And I should not see "Admin Center"
+    And I should not see "Analytics Center"
+    And I should not see "Affiliate Center"
+    And I should not see "Developer"
+
+  Scenario: Visiting the affiliate welcome page as affiliate admin
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    Then I should see "Admin Center"
+    And I should not see "Analytics Center"
+    And I should not see "Affiliate Center"
+
+  Scenario: Visiting the affiliate welcome page as analyst admin
+    Given I am logged in with email "analyst_admin@fixtures.org" and password "admin"
+    Then I should see "Analytics Center"
+    And I should not see "Admin Center"
+
+  Scenario: Visiting the affiliate welcome page as affiliate
+    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    Then I should see "Affiliate Center"
+    And I should not see "Admin Center"
+    And I should not see "Analytics Center"
 
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
@@ -18,7 +41,6 @@ Feature: Affiliate clients
     When I go to the user account page
     Then I should see "multi1"
     And I should see "multi2"
-    And I should see "Help"
 
   Scenario: Adding a new affiliate
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"

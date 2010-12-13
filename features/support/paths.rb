@@ -46,10 +46,6 @@ module NavigationHelpers
       monthly_reports_path
     when /the affiliate analytics query search results page/
       affiliate_analytics_query_search_path
-    when /the top queries csv report/
-      top_queries_path
-    when /the daily top queries csv report/
-      daily_top_queries_path
     when /the affiliate advanced search page for "([^\"]*)"$/
       advanced_search_path(:affiliate => $1)
     when /the mobile contact form page/

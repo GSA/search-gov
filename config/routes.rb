@@ -50,8 +50,6 @@ ActionController::Routing::Routes.draw do |map|
   map.analytics_query_search '/analytics/query_search', :controller => "analytics/query_searches"
   map.query_timeline '/analytics/timeline/:query', :controller => 'analytics/timeline', :action => 'show', :requirements => { :query => /.*/ }
   map.monthly_reports '/analytics/monthly_reports', :controller => 'analytics/monthly_reports'
-  map.top_queries 'analytics/top_queries', :controller => 'analytics/monthly_reports', :action => 'top_queries'
-  map.daily_top_queries 'analytics/daily_top_queries', :controller => 'analytics/home', :action => 'daily_top_queries'
   map.home_page '/', :controller => "home"
   map.contact_form '/contact_form', :controller => "home", :action => "contact_form"
   map.auto_complete ':controller/:action',

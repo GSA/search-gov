@@ -22,24 +22,24 @@
     = calendar_date_select_includes
   %body
     .container
-      .span-8
-        = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), home_page_path)
-      .span-16.last.header
+      .span-12
+        = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :style=>"vertical-align:middle;"), home_page_path) 
+        = link_to(image_tag('USAsearchProgram_medium_en.png', :alt=>"USAsearch Home", :style=>"vertical-align:middle"), home_page_path)
+      .span-10.last.header
         = basic_header_navigation_for current_user
     .secondary-navbar
       .sec-nav-left
-        Affiliate Center: 
-        = secondary_header_navigation_for current_user
+        = render "/shared/affiliate_nav"
       .sec-nav-right
-        - if @current_user && @current_user.is_affiliate?
-          - if !@current_user.affiliates.empty?
-            Selected Affiliate 
-            = select("affiliate", "id", @current_user.affiliates.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select affiliate'}, :class =>"affiliate-dropdown")
+        - display_for(:affiliate) do
+          - unless current_user.affiliates.empty?
+            Selected Affiliate
+            = select("affiliate", "id", current_user.affiliates.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select affiliate'}, :class =>"affiliate-dropdown")
     .container
       .main
         .affiliate-nav
-          - if @current_user && @current_user.is_affiliate?
-            - if @current_user.affiliates.empty?
+          - display_for(:affiliate) do
+            - if current_user.affiliates.empty?
               %p= link_to "Add New Affiliate", new_affiliate_path
             - else
               - if @affiliate && @affiliate.id.present?
@@ -77,9 +77,16 @@
       .clear
       %br
       .admin-footer
-        USASearch Program, General Services Administration
+        = link_to "Affiliate Program", affiliates_path
+        | 
+        = link_to "API & Web Services", api_docs_path
+        | 
+        = link_to "Search.USA.gov", root_path
         %br
-        One Constitution Square, 1275 First Street NE, 11th Floor, Washington, DC 20417
+        = link_to "USASearch Program", affiliates_path
         %p
-        Email us at: searchusa@gsa.gov
-          
+          USASearch Program, General Services Administration
+          %br
+          One Constitution Square, 1275 First Street NE, 11th Floor, Washington, DC 20417
+          %br
+          Email us at: #{mail_to 'searchusa@gsa.gov'}

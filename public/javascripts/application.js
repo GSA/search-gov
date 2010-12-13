@@ -17,3 +17,16 @@ function getParameterByName( name )
   else
     return decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+
+jQuery(document).ready(function () {	
+	jQuery('#nav li').hover(
+		function () {
+			//show submenu
+			jQuery('ul', this).slideDown(100);
+		}, 
+		function () {
+			//hide submenu
+			jQuery('ul', this).slideUp(100);			
+		}
+	);
+});
