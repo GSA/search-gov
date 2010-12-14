@@ -7,7 +7,7 @@
 
 .search
   %h4.center
-    Contact Your Government
+    = t(:contact_your_government)
     
 .alerttext.center
   = flash[:notice] if flash[:notice]
@@ -18,16 +18,16 @@
     = hidden_field_tag "m", "true"
     %clear10 &nbsp;
     .pad15
-      = label_tag "email", "Email Address"
+      = label_tag "email", t(:email_address)
       %span.alerttext *
     .center
       = text_field_tag "email", @email || "", :class => "textbox1"
     %clear10 &nbsp;
     .pad15
-      = label_tag "message", "Message"
+      = label_tag "message", t(:message)
       %span.alerttext *
     .center
       = text_area_tag "message", @message || "", :class => "textarea1"
     .clear10 &nbsp;
     .pad10
-      = submit_tag "Submit", :class => "submit1"
+      = submit_tag t(:submit), :class => "submit1"
