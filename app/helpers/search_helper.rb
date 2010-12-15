@@ -122,6 +122,10 @@ module SearchHelper
   def image_search?
     controller.controller_name == "image_searches"
   end
+  
+  def recalls_search?
+    controller.controller_name == "recalls"
+  end
 
   def no_results_for(query)
     content_tag(:p, (t :no_results_for, :query => h(query)), :class=>"noresults")

@@ -12,7 +12,7 @@ describe "shared/_search.html.haml" do
   context "when page is displayed" do
 
     it "should display a link to the advanced search page" do
-      render :locals => { :search => @search }
+      render :locals => { :path => search_path, :search => @search }
       response.should contain(/Advanced Search/)
     end
 
@@ -25,7 +25,7 @@ describe "shared/_search.html.haml" do
       end
 
       it "should display a link to the advanced search page" do
-        render :locals => { :search => @search, :affiliate => @affiliate }
+        render :locals => { :path => search_path, :search => @search, :affiliate => @affiliate }
         response.should contain(/Advanced Search/)
       end
       
@@ -37,7 +37,7 @@ describe "shared/_search.html.haml" do
         
         it "should include a hidden tag with the scope id" do
           @search.scope_id.should == 'SomeScope'
-          render :locals => { :search => @search, :affiliate => @affiliate, :scope_id => 'SomeScope'}
+          render :locals => { :path => search_path, :search => @search, :affiliate => @affiliate, :scope_id => 'SomeScope'}
           response.should have_tag('input[type=?][id=?][value=?]', 'hidden', 'scope_id', 'SomeScope')
         end
       end

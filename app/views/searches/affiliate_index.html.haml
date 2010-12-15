@@ -4,6 +4,6 @@
       = render "/shared/relatedsearches"
   &nbsp;
 #results
-  = render :partial => "shared/search"
+  = render "shared/search", :path => search_path
   = render :partial => "shared/searchresults", :locals => { :search => @search }
   = render :partial => "shared/footer_search", :locals => { :search => @search }

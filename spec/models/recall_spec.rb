@@ -794,4 +794,49 @@ describe Recall do
       Recall.destroy_all
     end
   end
+  
+  describe "#is_food_recall?" do
+    before do
+      @food_recall = Recall.new(:recall_number => '123444', :organization => 'CDC')
+      @non_food_recall = Recall.new(:recall_number => '234566', :organization => 'CPSC')
+    end
+    
+    it "should return true if the recall is a food recall" do
+      @food_recall.is_food_recall?.should be_true
+    end
+    
+    it "should return false if the recall is not a food recall" do
+      @non_food_recall.is_food_recall?.should be_false
+    end
+  end
+  
+  describe "#is_product_recall?" do
+    before do
+      @product_recall = Recall.new(:recall_number => '123444', :organization => 'CPSC')
+      @non_product_recall = Recall.new(:recall_number => '234566', :organization => 'CDC')
+    end
+    
+    it "should return true if the recall is a food recall" do
+      @product_recall.is_product_recall?.should be_true
+    end
+    
+    it "should return false if the recall is not a food recall" do
+      @non_product_recall.is_product_recall?.should be_false
+    end
+  end
+  
+  describe "#is_auto_recall?" do
+    before do
+      @auto_recall = Recall.new(:recall_number => '123444', :organization => 'NHTSA')
+      @non_auto_recall = Recall.new(:recall_number => '234566', :organization => 'CPSC')
+    end
+    
+    it "should return true if the recall is a food recall" do
+      @auto_recall.is_auto_recall?.should be_true
+    end
+    
+    it "should return false if the recall is not a food recall" do
+      @non_auto_recall.is_auto_recall?.should be_false
+    end
+  end
 end

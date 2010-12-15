@@ -17,6 +17,7 @@ class Recall < ActiveRecord::Base
   NHTSA_FULL_TEXT_SEARCH_FIELDS = {'ComponentDescription'=> 6, 'DefectSummary' => 19, 'ConsequenceSummary' => 20,
                                    'CorrectiveSummary' => 21, 'Notes' => 22}
   NHTSA_FACET_FIELDS = %w{Make Model Year}
+  EARLIEST_RECALL_DATE = Date.parse('1970-01-01')
 
   searchable do
     string :organization
@@ -91,87 +92,92 @@ class Recall < ActiveRecord::Base
       food_recall.food_type unless organization != 'CDC' or food_recall.nil?
     end
   end
+  
+  class << self
+    def search_for(query, options = {}, page = 1, per_page = 10)
+      Recall.search do
+        fulltext query
 
-  def self.search_for(query, options = {}, page = 1, per_page = 10)
-    Recall.search do
-      keywords query
+        # date range fields
+        with(:recalled_on).between(options[:start_date]..options[:end_date]) unless options[:start_date].blank? || options[:end_date].blank?
 
-      # date range fields
-      with(:recalled_on).between(options[:start_date]..options[:end_date]) unless options[:start_date].blank? || options[:end_date].blank?
+        with(:organization).equal_to(options[:organization]) unless options[:organization].blank?
 
-      with(:organization).equal_to(options[:organization]) unless options[:organization].blank?
+        # CPSC fields
+        with(:upc).equal_to(options[:upc]) unless options[:upc].blank?
 
-      # CPSC fields
-      with(:upc).equal_to(options[:upc]) unless options[:upc].blank?
-
-      # NHTSA fields
-      with(:make_facet).equal_to(options[:make].downcase) unless options[:make].blank?
-      with(:model_facet).equal_to(options[:model].downcase) unless options[:model].blank?
-      with(:year_facet).equal_to(options[:year]) unless options[:year].blank?
-      with(:code).equal_to(options[:code]) unless options[:code].blank?
+        # NHTSA fields
+        with(:make_facet).equal_to(options[:make].downcase) unless options[:make].blank?
+        with(:model_facet).equal_to(options[:model].downcase) unless options[:model].blank?
+        with(:year_facet).equal_to(options[:year]) unless options[:year].blank?
+        with(:code).equal_to(options[:code]) unless options[:code].blank?
       
-      # CDC/Food/Drug fields
-      with(:food_type).equal_to(options[:food_type]) unless options[:food_type].blank?
+        # CDC/Food/Drug fields
+        with(:food_type).equal_to(options[:food_type]) unless options[:food_type].blank?
+      
+        facet :organization
+        facet :food_type
 
-      if options[:sort] == "date"
-        order_by :recalled_on, :desc
+        if options[:sort] == "date"
+          order_by :recalled_on, :desc
+        end
+
+        paginate :page => page, :per_page => per_page
       end
-
-      paginate :page => page, :per_page => per_page
     end
-  end
-
-  def self.load_cpsc_data_from_file(file_path)
-    FasterCSV.foreach(file_path, :headers => true) { |row| process_cpsc_row(row) }
-    Sunspot.commit
-  end
-
-  def self.load_cpsc_data_from_xml_feed(url)
-    require 'rexml/document'
-    REXML::Document.new(Net::HTTP.get_response(URI.parse(url)).body).elements.each('message/results/result') do |element|
-      process_cpsc_row([
-        element.attributes["recallNo"],
-        element.attributes["y2k"],
-        element.attributes["manufacturer"],
-        element.attributes["type"],
-        element.attributes["prname"],
-        element.attributes["UPC"],
-        nil,
-        element.attributes["hazard"],
-        element.attributes["country_mfg"],
-        element.attributes["recDate"]
-      ])
+    
+    def load_cpsc_data_from_file(file_path)
+      FasterCSV.foreach(file_path, :headers => true) { |row| process_cpsc_row(row) }
+      Sunspot.commit
     end
-    Sunspot.commit
-  end
 
-  def self.load_nhtsa_data_from_file(file_path)
-    File.open(file_path).each do |line|
-      row = []
-      line.split("\t").each { |field| row << field.chomp }
-      process_nhtsa_row(row)
+    def load_cpsc_data_from_xml_feed(url)
+      require 'rexml/document'
+      REXML::Document.new(Net::HTTP.get_response(URI.parse(url)).body).elements.each('message/results/result') do |element|
+        process_cpsc_row([
+          element.attributes["recallNo"],
+          element.attributes["y2k"],
+          element.attributes["manufacturer"],
+          element.attributes["type"],
+          element.attributes["prname"],
+          element.attributes["UPC"],
+          nil,
+          element.attributes["hazard"],
+          element.attributes["country_mfg"],
+          element.attributes["recDate"]
+        ])
+      end
+      Sunspot.commit
     end
-    Sunspot.commit
-  end
 
-  def self.load_nhtsa_data_from_tab_delimited_feed(url)
-    file = Tempfile.new("nhtsa")
-    file.write(Net::HTTP.get_response(URI.parse(url)).body)
-    file.close
-    load_nhtsa_data_from_file(file.path)
-  end
-
-  def self.load_cdc_data_from_rss_feed(url, food_type)
-    require 'rss/2.0'
-    RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|
-      find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10],
-                                      :recalled_on => item.pubDate.to_date, :organization => 'CDC',
-                                      :food_recall => FoodRecall.new(:url=>item.link, 
-                                                                     :summary=> item.title,
-                                                                     :description => item.description,
-                                                                     :food_type => food_type))
+    def load_nhtsa_data_from_file(file_path)
+      File.open(file_path).each do |line|
+        row = []
+        line.split("\t").each { |field| row << field.chomp }
+        process_nhtsa_row(row)
+      end
+      Sunspot.commit
     end
-    Sunspot.commit
+
+    def load_nhtsa_data_from_tab_delimited_feed(url)
+      file = Tempfile.new("nhtsa")
+      file.write(Net::HTTP.get_response(URI.parse(url)).body)
+      file.close
+      load_nhtsa_data_from_file(file.path)
+    end
+
+    def load_cdc_data_from_rss_feed(url, food_type)
+      require 'rss/2.0'
+      RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|
+        find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10],
+                                        :recalled_on => item.pubDate.to_date, :organization => 'CDC',
+                                        :food_recall => FoodRecall.new(:url=>item.link, 
+                                                                       :summary=> item.title,
+                                                                       :description => item.description,
+                                                                       :food_type => food_type))
+      end
+      Sunspot.commit
+    end
   end
 
   def to_json(options = {})
@@ -244,7 +250,7 @@ class Recall < ActiveRecord::Base
   def cdc_summary
     food_recall.summary
   end
-
+  
   def upc
     if organization == 'CPSC'
       upc_details = recall_details.find_all_by_detail_type('UPC')
@@ -252,6 +258,18 @@ class Recall < ActiveRecord::Base
     else
       return nil
     end
+  end
+  
+  def is_food_recall?
+    return true if self.organization == 'CDC'
+  end
+  
+  def is_product_recall?
+    return true if self.organization == 'CPSC'
+  end
+  
+  def is_auto_recall?
+    return true if self.organization == 'NHTSA'
   end
 
   private
@@ -290,5 +308,4 @@ class Recall < ActiveRecord::Base
   def list_detail(field)
     self.recall_details.find_all_by_detail_type(field).map{|detail| detail.detail_value}
   end
-
 end

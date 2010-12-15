@@ -1,0 +1,16 @@
+#results-wrap
+  #sidebar
+    = link_to image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
+    = render "sidebar"
+  #results
+    = render "/shared/search", :path => recalls_search_path
+    - if @search.total > 0
+      - @search.results.each_with_index do |result, index|
+        = render 'result', :object => result, :index => index
+      = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+    - elsif @error_message
+      %p.noresults 
+        = @error_message
+    - else
+      = no_results_for params[:query]
+    = render "/shared/footer_search", :search => @search
