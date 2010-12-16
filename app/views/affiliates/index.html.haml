@@ -1,8 +1,4 @@
-.breadcrumb
-  = link_to 'USASearch', root_path
-  >
-  Affiliate Program
-%br
+= breadcrumbs([link_to('USASearch', root_path), "Affiliate Program"])
 
 .prepend-1.span-23.last
   %h1 USASearch Affiliate Program
@@ -20,5 +16,5 @@
 .prepend-1.span-24.center-outer
   .center-inner
     = link_to(image_tag('register_now.png', :alt=>"Register Now"), new_user_path, :title => "Register Now")
-    
+
 

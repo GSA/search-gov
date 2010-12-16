@@ -1,4 +1,4 @@
-= render :partial => 'affiliates/breadcrumbs', :locals => { :breadcrumbs => [ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Manage Users'] }
+= breadcrumbs([ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Manage Users'] )
 
 %h1
   Users for Affiliate: #{@affiliate.name}
@@ -25,7 +25,7 @@
     %tr
       %td
         No other users associated with this affiliate.
-    
+
 .header-box
   Add a user by email
 .content-box
@@ -34,5 +34,4 @@
     = label_tag 'email'
     = text_field_tag 'email', @email
     = submit_tag 'Add User'
-  
-  
+

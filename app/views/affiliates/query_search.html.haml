@@ -1,4 +1,4 @@
-= render :partial => 'breadcrumbs', :locals => { :breadcrumbs => [ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Query Search'] }
+= breadcrumbs([ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Query Search'])
 
 .span-24
   = render :partial => "analytics/shared/search", :locals => { :affiliate => @affiliate, :path => affiliate_analytics_query_search_path }

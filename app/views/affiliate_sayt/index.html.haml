@@ -1,4 +1,4 @@
-= render :partial => 'affiliates/breadcrumbs', :locals => { :breadcrumbs => [ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Type-ahead Search'] }
+= breadcrumbs([ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Type-ahead Search'])
 
 .span-24{:style => 'margin-bottom: 21px;'}
   - form_tag preferences_affiliate_type_ahead_search_path(@affiliate), :class=> "bordered" do
@@ -16,7 +16,7 @@
         = radio_button_tag 'sayt_preferences', 'disable', @affiliate.is_sayt_disabled?
         Disable type-ahead search
     = submit_tag "Set Preferences"
-    
+
 .span-24{:style => 'margin-bottom: 21px;'}
   - form_for @sayt_suggestion, {:url => affiliate_type_ahead_search_index_path(@affiliate), :html => {:class => 'bordered'}} do |f|
     %h1

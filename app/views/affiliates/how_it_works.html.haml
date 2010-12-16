@@ -1,4 +1,4 @@
-= render :partial => 'breadcrumbs', :locals => { :breadcrumbs => [ link_to('Affiliate Program', affiliates_path), 'How it Works'] }
+= breadcrumbs([ link_to('Affiliate Program', affiliates_path), 'How it Works'])
 
 .prepend-1.span-23.last
   %h1 How the Affiliate Program Works
@@ -55,7 +55,7 @@
 .clear.pad20
 .prepend-1.span-20
   %h1 Take Advantage of Our Features--All Industry Best Practices
-  
+
   .pad10.clear
   .affiliate-marketing-left
     %img{:src=>"/images/affiliates/thumb_spotlight.png"}
@@ -70,7 +70,7 @@
           Boost selected content, such as "deep web" content not found in search engines.
         %li
           Identify new, modified, or moved pages for crawling and indexing by Bing.
-  
+
   .clear
   .affiliate-marketing-left
     %img{:src=>"/images/affiliates/thumb_sayt.png"}

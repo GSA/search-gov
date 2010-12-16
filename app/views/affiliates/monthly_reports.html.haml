@@ -1,4 +1,4 @@
-= render :partial => 'breadcrumbs', :locals => { :breadcrumbs => [ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Monthly Reports'] }
+= breadcrumbs([ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Monthly Reports'])
 
 %h1
   = "Monthly Usage for #{@affiliate.name}"

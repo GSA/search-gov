@@ -1,4 +1,4 @@
-= render :partial => 'breadcrumbs', :locals => { :breadcrumbs => [ link_to('Affiliate Program', affiliates_path), 'See it in Action'] }
+= breadcrumbs([ link_to('Affiliate Program', affiliates_path), 'See it in Action'])
 
 .prepend-1.span-23.last
   %h1 See it in Action
@@ -11,7 +11,7 @@
     and to
     = link_to 'sign up', new_account_path
     to become an affiliate.
-    
+
 .pad10.clear
 .prepend-1.span-20
 
@@ -22,12 +22,12 @@
     %h2
       %a{:href=>"http://data.gov", :target=>"_new"}
         Data.gov
-    %em 
-      
+    %em
+
       %p.right
-        
+
   .pad10.clear
-  
+
   .affiliate-marketing-left
     %a{:href=>"http://www.nws.gov", :target=>"_new"}
       %img{:src=>"/images/affiliates/thumb_nws.png"}
@@ -35,12 +35,12 @@
     %h2
       %a{:href=>"http://www.nws.gov", :target=>"_new"}
         National Weather Service
-    %em 
-      
+    %em
+
       %p.right
-        %br 
+        %br
   .pad10.clear
-  
+
   .affiliate-marketing-left
     %a{:href=>"http://www.ct.gov", :target=>"_new"}
       %img{:src=>"/images/affiliates/thumb_ct.png"}
@@ -48,8 +48,8 @@
     %h2
       %a{:href=>"http://www.ct.gov", :target=>"_new"}
         CT.gov
-    %em 
-      
+    %em
+
       %p.right
-        %br 
+        %br
   .clear
