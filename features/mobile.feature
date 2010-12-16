@@ -99,7 +99,7 @@ Feature: Mobile Search
     Then I should see "E-mail Us"
     When I follow "E-mail Us"
     Then I should be on the mobile contact form page
-    And I should see "Contact Your Government"
+    And I should see "Contact your Government"
     And I should see "Email"
     And I should see "Message"
     And I fill in "Email" with "mobileuser@usa.gov"
@@ -129,7 +129,7 @@ Feature: Mobile Search
     Then I should see "Email address is not valid"
     And the "Email" field should contain "bad email"
     And the "Message" field should contain "message"
-    
+
   Scenario: A mobile image search
     Given I am on the homepage
     When I fill in "query" with "social security"
@@ -139,7 +139,7 @@ Feature: Mobile Search
     Then I should be on the image search page
     And I should see 30 image results
     And I should see "Next"
-    
+
     Given I am on the homepage
     When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
     And I submit the search form
@@ -147,7 +147,7 @@ Feature: Mobile Search
     When I follow "Images"
     Then I should be on the image search page
     And I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
-    
+
     Given I am on the homepage
     When I submit the search form
     Then I should be on the search page
@@ -155,6 +155,5 @@ Feature: Mobile Search
     Then I should be on the image search page
     And I should see "Please enter search term(s)"
 
-    
 
-    
+
