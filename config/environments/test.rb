@@ -35,8 +35,8 @@ config.gem "rspec-rails",      :lib => 'spec/rails', :version => ['>= 1.3.2', '<
 config.gem "remarkable_rails", :lib => false, :version => '>= 3.1.10'
 config.gem "webrat",           :lib => false
 config.gem "nokogiri",         :lib => false
-config.gem "cucumber",         :lib => false, :version => '>= 0.6.1'
-config.gem "cucumber-rails",   :lib => false
+config.gem "cucumber",         :lib => false, :version => '>= 0.10.0'
+config.gem "cucumber-rails",   :lib => false, :version => '>= 0.3.2'
 config.gem "rcov",             :lib => false
 config.gem 'email_spec',       :lib => 'email_spec'
 config.gem "resque_spec",      :version => '~> 0.2.0'
