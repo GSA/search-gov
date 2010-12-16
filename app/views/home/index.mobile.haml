@@ -10,46 +10,44 @@
         .ac_results {margin-top: -130px;}
 #homeNav.dvCenter
   .navHeader
-    = t(:contact_your_government)
+    Contact your Government
   .navBodyItem
     .navFloatRight
       >
-    = link_to t(:call_1800FEDINFO), "tel:+1-800-333-4636", :class => "mobileNavLink"
+    = link_to "Call 1 (800) FED-INFO", "tel:+1-800-333-4636", :class => "mobileNavLink"
   .navBodyItem
     .navFloatRight
       >
-    = link_to t(:email_us), contact_form_path(:m => true, :locale => I18n.locale.to_s), :class => "mobileNavLink"
+    = link_to "E-mail Us", contact_form_path(:m => true, :locale => I18n.locale.to_s), :class => "mobileNavLink"
   .navFooter
     .navFloatRight
       >
-    = link_to t(:visit_our_blog), "http://m.info.gov/6036&t=f9ceb3ded94727d482bd7f5d31ea7904", :class => "mobileNavLink"
+    = link_to "Visit Our Blog", "http://m.info.gov/6036&t=f9ceb3ded94727d482bd7f5d31ea7904", :class => "mobileNavLink"
 
-- if I18n.locale == I18n.default_locale
-  #homeNav.dvCenter
-    .navHeader
-      =  t(:usagov_resources)
-    .navBodyItem
-      .navFloatRight
-        >
-      = link_to t(:specific_audiences), "/usa/Topics/Audiences", :class => "mobileNavLink"
-    .navBodyItem
-      .navFloatRight
-        >
-      = link_to t(:citizen_services), "/usa/Citizen/Services", :class => "mobileNavLink"
-    .navBodyItem
-      .navFloatRight
-        >
-      = link_to t(:explore_topics), "/usa/Citizen/Topics/All_Topics", :class => "mobileNavLink"
-    .navBodyItem
-      .navFloatRight
-        >
-      = link_to t(:contact_your_government), "/usa/Contact", :class => "mobileNavLink"
-    .navFooter
-      .navFloatRight
-        >
-      = link_to t(:find_government_agencies), "/usa/Agencies", :class => "mobileNavLink"
+#homeNav.dvCenter
+  .navHeader
+    USA.gov Resources
+  .navBodyItem
+    .navFloatRight
+      >
+    = link_to "Specific Audiences", "/usa/Topics/Audiences", :class => "mobileNavLink"
+  .navBodyItem
+    .navFloatRight
+      >
+    = link_to "Citizen Services", "/usa/Citizen/Services", :class => "mobileNavLink"
+  .navBodyItem
+    .navFloatRight
+      >
+    = link_to "Explore Topics", "/usa/Citizen/Topics/All_Topics", :class => "mobileNavLink"
+  .navBodyItem
+    .navFloatRight
+      >
+    = link_to "Contact Government", "/usa/Contact", :class => "mobileNavLink"
+  .navFooter
+    .navFloatRight
+      >
+    = link_to "Find Government Agencies", "/usa/Agencies", :class => "mobileNavLink"
 .group.clear
 .mobileFooter.pad5
-  %a{:title => "USA.gov", :href => "http://www.usa.gov"}
-    = t(:usagov_full_site)
+  %a{:title => "USA.gov", :href => "http://www.usa.gov"} USA.gov Full Site
 

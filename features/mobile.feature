@@ -99,7 +99,7 @@ Feature: Mobile Search
     Then I should see "E-mail Us"
     When I follow "E-mail Us"
     Then I should be on the mobile contact form page
-    And I should see "Contact your Government"
+    And I should see "Contact Your Government"
     And I should see "Email"
     And I should see "Message"
     And I fill in "Email" with "mobileuser@usa.gov"
