@@ -1,5 +1,5 @@
 #logoHome.center
-  = link_to image_tag("/m/i/logo_mobile.png"), root_path(:locale => I18n.locale.to_s, :m => true)
+  = link_to image_tag("/m/i/logo_mobile.png"), root_path
 
 #searchHome.dvCenter
   %a{:id => "search_box", :name => "search_box"}
@@ -8,46 +8,91 @@
     %style{:type => "text/css", :media => "screen"}
       :plain
         .ac_results {margin-top: -130px;}
-#homeNav.dvCenter
-  .navHeader
-    Contact your Government
-  .navBodyItem
-    .navFloatRight
-      >
-    = link_to "Call 1 (800) FED-INFO", "tel:+1-800-333-4636", :class => "mobileNavLink"
-  .navBodyItem
-    .navFloatRight
-      >
-    = link_to "E-mail Us", contact_form_path(:m => true, :locale => I18n.locale.to_s), :class => "mobileNavLink"
-  .navFooter
-    .navFloatRight
-      >
-    = link_to "Visit Our Blog", "http://m.info.gov/6036&t=f9ceb3ded94727d482bd7f5d31ea7904", :class => "mobileNavLink"
 
-#homeNav.dvCenter
-  .navHeader
-    USA.gov Resources
-  .navBodyItem
-    .navFloatRight
-      >
-    = link_to "Specific Audiences", "/usa/Topics/Audiences", :class => "mobileNavLink"
-  .navBodyItem
-    .navFloatRight
-      >
-    = link_to "Citizen Services", "/usa/Citizen/Services", :class => "mobileNavLink"
-  .navBodyItem
-    .navFloatRight
-      >
-    = link_to "Explore Topics", "/usa/Citizen/Topics/All_Topics", :class => "mobileNavLink"
-  .navBodyItem
-    .navFloatRight
-      >
-    = link_to "Contact Government", "/usa/Contact", :class => "mobileNavLink"
-  .navFooter
-    .navFloatRight
-      >
-    = link_to "Find Government Agencies", "/usa/Agencies", :class => "mobileNavLink"
+- if I18n.locale == :es
+  #homeNav.dvCenter
+    .navHeader
+      Contacto con su Gobierno
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Llámenos 1 (800) FED-INFO", "tel:+1-800-333-4636", :class => "mobileNavLink"
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Envíenos un email", contact_form_path(:m => true), :class => "mobileNavLink"
+    .navFooter
+      .navFloatRight
+        >
+      = link_to "Visita nuestro blog", "http://m.info.gov/6036&t=f9ceb3ded94727d482bd7f5d31ea7904", :class => "mobileNavLink"
+
+  #homeNav.dvCenter
+    .navHeader
+      USA.gov Recursos
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Usuarios por Perfil", usa_path("gobiernousa/Usuarios"), :class => "mobileNavLink"
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Obtener Servicios", usa_path("gobiernousa/Temas/Servicios"), :class => "mobileNavLink"
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Explorar Temas", usa_path("gobiernousa/Temas"), :class => "mobileNavLink"
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Contactos", usa_path("gobiernousa/Contactenos"), :class => "mobileNavLink"
+    .navFooter
+      .navFloatRight
+        >
+      = link_to "Consultar Directorios", usa_path("gobiernousa/Agencias/index"), :class => "mobileNavLink"
+- else
+  #homeNav.dvCenter
+    .navHeader
+      Contact your Government
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Call 1 (800) FED-INFO", "tel:+1-800-333-4636", :class => "mobileNavLink"
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "E-mail Us", contact_form_path(:m => true), :class => "mobileNavLink"
+    .navFooter
+      .navFloatRight
+        >
+      = link_to "Visit Our Blog", "http://m.info.gov/6036&t=f9ceb3ded94727d482bd7f5d31ea7904", :class => "mobileNavLink"
+
+  #homeNav.dvCenter
+    .navHeader
+      USA.gov Resources
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Specific Audiences", usa_path("Topics/Audiences"), :class => "mobileNavLink"
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Citizen Services", usa_path("Citizen/Services"), :class => "mobileNavLink"
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Explore Topics", usa_path("Citizen/Topics/All_Topics"), :class => "mobileNavLink"
+    .navBodyItem
+      .navFloatRight
+        >
+      = link_to "Contact Government", usa_path("Contact"), :class => "mobileNavLink"
+    .navFooter
+      .navFloatRight
+        >
+      = link_to "Find Government Agencies", usa_path("Agencies"), :class => "mobileNavLink"
+
 .group.clear
 .mobileFooter.pad5
+  = link_to(t(:search_in), home_page_path(:locale => other_locale_str))
+  |
   %a{:title => "USA.gov", :href => "http://www.usa.gov"} USA.gov Full Site
 

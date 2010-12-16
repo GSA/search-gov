@@ -13,14 +13,14 @@ class ApplicationController < ActionController::Base
   private
 
   def set_locale
-    I18n.locale = determine_locale_from_param(params[:locale]) || I18n.default_locale
+    I18n.locale = determine_locale_from_url(params[:locale]) || I18n.default_locale
   end
 
   def set_local_ip
     @local_sever_ip_in_html_comment = "<!-- Served from #{LOCAL_IP} -->"
   end
 
-  def determine_locale_from_param (locale_param)
+  def determine_locale_from_url (locale_param)
     return nil if locale_param.nil? || locale_param.match(/^\w{2}$/).nil? || !locale_exists?(locale_param)
     locale_param.to_sym
   end
