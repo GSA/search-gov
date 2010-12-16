@@ -16,10 +16,10 @@ class HomeController < ApplicationController
       else
         if @email =~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/
           Emailer.deliver_mobile_feedback(@email, @message)
-          flash[:notice] = "Thank you for contacting USA.gov. We will respond to you within two business days."
+          flash[:notice] = t(:contact_thank_you)
           @thank_you = true
         else
-          flash[:notice] = "Email address is not valid"
+          flash[:notice] = t(:contact_invalid_email)
         end
       end
     end
