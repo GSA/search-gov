@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/click.rb</title>
+    <title>app/helpers/affiliate_helper.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/models/click.rb</h2>
+    <h2>app/helpers/affiliate_helper.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-click_rb.html">app/models/click.rb</a></td>
-            <td class='right_align'><tt>12</tt></td>
-            <td class='right_align'><tt>11</tt></td>
+            <td class="left_align"><a href="app-helpers-affiliate_helper_rb.html">app/helpers/affiliate_helper.rb</a></td>
+            <td class='right_align'><tt>7</tt></td>
+            <td class='right_align'><tt>7</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,73 +57,43 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Click &lt; ActiveRecord::Base</pre></td>
+            <td><pre><a name="line1">1</a> module AffiliateHelper</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   validates_presence_of :queried_at, :url, :query, :results_source</pre></td>
+            <td><pre><a name="line2">2</a>   def breadcrumbs(breadcrumbs)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>     trail = link_to 'Dashboard', home_affiliates_path</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>     breadcrumbs.each { |breadcrumb| trail &lt;&lt; ' &gt; ' &lt;&lt; breadcrumb }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>     content_tag(:div,trail, :class =&gt; 'breadcrumb') + content_tag(:br)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>   def self.monthly_totals_by_module(year, month)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>     start_datetime = Date.new(year,month,1).to_time</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>     end_datetime = start_datetime + 1.month</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>     Click.count(:group =&gt; 'results_source',</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line8">8</a>                 :conditions=&gt; {:clicked_at =&gt; start_datetime..end_datetime},</pre></td>
+            <td><pre><a name="line6">6</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>                 :order =&gt; &quot;count_all desc&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line10">10</a>                 :having =&gt; &quot;count_all &gt;= 10&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line11">11</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a> end</pre></td>
+            <td><pre><a name="line7">7</a> end</pre></td>
           </tr>
         
       </tbody>

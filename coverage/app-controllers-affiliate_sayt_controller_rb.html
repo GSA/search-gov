@@ -93,7 +93,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     @sayt_suggestions = SaytSuggestion.paginate_by_affiliate_id(@affiliate.id, :page =&gt; params[:page] || 1, :order =&gt; 'phrase DESC')</pre></td>
+            <td><pre><a name="line7">7</a>     @sayt_suggestions = SaytSuggestion.paginate_by_affiliate_id(@affiliate.id, :page =&gt; params[:page] || 1, :order =&gt; 'phrase ASC')</pre></td>
           </tr>
         
           
@@ -375,7 +375,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Sat Dec 11 17:54:34 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Dec 17 16:36:42 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

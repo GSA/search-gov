@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-site_page_rb.html">app/models/site_page.rb</a></td>
-            <td class='right_align'><tt>47</tt></td>
-            <td class='right_align'><tt>42</tt></td>
+            <td class='right_align'><tt>53</tt></td>
+            <td class='right_align'><tt>49</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -105,61 +105,61 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     start_page = &quot;/site_index.shtml&quot;</pre></td>
+            <td><pre><a name="line9">9</a>     start_page_en = &quot;/site_index.shtml&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     skip_page = &quot;/index.shtml&quot;</pre></td>
+            <td><pre><a name="line10">10</a>     start_page_es = &quot;/gobiernousa/Indice/A.shtml&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     base_url = &quot;http://www.usa.gov&quot;</pre></td>
+            <td><pre><a name="line11">11</a>     skip_page_en = &quot;/index.shtml&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     total = 0</pre></td>
+            <td><pre><a name="line12">12</a>     skip_page_es = &quot;/gobiernousa/index.shtml&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>     queue = []</pre></td>
+            <td><pre><a name="line13">13</a>     base_url = &quot;http://www.usa.gov&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>     marked = Set.new [skip_page, start_page]</pre></td>
+            <td><pre><a name="line14">14</a>     total, queue = 0, []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     queue.push(start_page)</pre></td>
+            <td><pre><a name="line15">15</a>     marked = Set.new [skip_page_es, skip_page_en, start_page_en, start_page_es]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     ActiveRecord::Base.transaction do</pre></td>
+            <td><pre><a name="line16">16</a>     queue.push start_page_en, start_page_es</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       delete_all</pre></td>
+            <td><pre><a name="line17">17</a>     transaction do</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line18">18</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>       delete_all</pre></td>
           </tr>
         
           
@@ -183,139 +183,139 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>         doc = open(url) { |f| Hpricot(f) }</pre></td>
+            <td><pre><a name="line22">22</a>         RAILS_DEFAULT_LOGGER.debug &quot;Working on #{url}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>         main_content = searchify_usagov_urls((doc/&quot;#main_content&quot;).inner_html.squish.gsub(/&lt;!--(.*?)--&gt;/, &quot;&quot;))</pre></td>
+            <td><pre><a name="line23">23</a>         begin</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>         raw_breadcrumb = (doc/&quot;#breadcrumbs_dl&quot;).inner_html</pre></td>
+            <td><pre><a name="line24">24</a>           doc = open(url) { |f| Hpricot(f) }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>         breadcrumb = searchify_usagov_urls(raw_breadcrumb.gsub(/&lt;h2.*h2&gt;/, &quot;&quot;).squish)</pre></td>
+            <td><pre><a name="line25">25</a>           main_content = searchify_usagov_urls((doc/&quot;#main_content&quot;).inner_html.squish.gsub(/&lt;!--(.*?)--&gt;/, &quot;&quot;))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>         url_slug = page.gsub(&quot;.shtml&quot;, &quot;&quot;).sub(&quot;/&quot;, &quot;&quot;)</pre></td>
+            <td><pre><a name="line26">26</a>           raw_breadcrumb = (doc/&quot;#breadcrumbs_dl&quot;).inner_html</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>         title = (doc/&quot;#title_dl&quot;).inner_html</pre></td>
+            <td><pre><a name="line27">27</a>           breadcrumb = searchify_usagov_urls(raw_breadcrumb.gsub(/&lt;h2.*h2&gt;/, &quot;&quot;).squish)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>         create!(:url_slug =&gt; url_slug, :title=&gt; title, :breadcrumb =&gt; breadcrumb, :main_content =&gt; main_content)</pre></td>
+            <td><pre><a name="line28">28</a>           url_slug = page.sub(&quot;.shtml&quot;, &quot;&quot;).sub(&quot;/&quot;, &quot;&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>         links = (doc/&quot;#main_content//a&quot;) + (doc/&quot;#breadcrumbs_dl//a&quot;)</pre></td>
+            <td><pre><a name="line29">29</a>           title = (doc/&quot;#title_dl&quot;).inner_html</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>         links.each do |link|</pre></td>
+            <td><pre><a name="line30">30</a>           create!(:url_slug =&gt; url_slug, :title=&gt; title, :breadcrumb =&gt; breadcrumb, :main_content =&gt; main_content)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>           href = link.attributes['href']</pre></td>
+            <td><pre><a name="line31">31</a>           links = (doc/&quot;#main_content//a&quot;) + (doc/&quot;#breadcrumbs_dl//a&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>           if href.start_with?('/') and not href.start_with?('/gobiernousa') and href.end_with?('.shtml') and !marked.include?(href)</pre></td>
+            <td><pre><a name="line32">32</a>           links.each do |link|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>             queue.push(href)</pre></td>
+            <td><pre><a name="line33">33</a>             href = link.attributes['href']</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>             marked.add href</pre></td>
+            <td><pre><a name="line34">34</a>             if href.start_with?('/') and href.end_with?('.shtml') and !marked.include?(href)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>               queue.push href</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>               marked.add href</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>           end</pre></td>
+            <td><pre><a name="line37">37</a>             end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>         end</pre></td>
+            <td><pre><a name="line38">38</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>         total += 1</pre></td>
+            <td><pre><a name="line39">39</a>           total += 1</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line39">39</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line40">40</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line41">41</a> </pre></td>
+            <td><pre><a name="line40">40</a>         rescue Exception =&gt; e</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>   private</pre></td>
+            <td><pre><a name="line41">41</a>           RAILS_DEFAULT_LOGGER.error &quot;Trouble fetching #{url}: #{e}&quot;</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>   def self.searchify_usagov_urls(str)</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line42">42</a>         end</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>     str.gsub(&quot;.shtml&quot;, &quot;&quot;).gsub(&quot;href=\&quot;/&quot;, &quot;href=\&quot;/usa/&quot;).gsub(&quot;\&quot;/usa/index\&quot;&quot;, &quot;\&quot;/\&quot;&quot;)</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line43">43</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a>     end</pre></td>
           </tr>
         
           
@@ -332,14 +332,50 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>   def self.searchify_usagov_urls(str)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>     str.gsub(&quot;.shtml&quot;, &quot;&quot;).gsub(&quot;href=\&quot;http://www.usa.gov/&quot;, &quot;href=\&quot;/&quot;).gsub(&quot;href=\&quot;/&quot;, &quot;href=\&quot;/usa/&quot;).</pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line47">47</a> end</pre></td>
+            <td><pre><a name="line50">50</a>       gsub(&quot;\&quot;/usa/index\&quot;&quot;, &quot;\&quot;/\&quot;&quot;).gsub(&quot;\&quot;/usa/gobiernousa/index\&quot;&quot;, &quot;\&quot;/?locale=es\&quot;&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line51">51</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line53">53</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Dec 11 17:54:35 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Dec 17 16:36:42 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
