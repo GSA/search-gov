@@ -54,7 +54,7 @@ describe SitePage do
     end
   end
 
-  context "when some usa.gov links point to non-existent pages" do
+  context "when some usa.gov links point to non-existent/broken pages" do
     describe "#crawl_usa_gov" do
       before do
         SitePage.stub!(:open).and_raise(Exception)

@@ -105,7 +105,7 @@ module ApplicationHelper
     end
     elements.join(" | ")
   end
-  
+
   def secondary_header_navigation_for(cur_user)
     elements = []
     if cur_user
@@ -138,6 +138,12 @@ module ApplicationHelper
   def highlight_hit(hit, sym)
     return hit.highlights(sym).first.format { |phrase| "<strong>#{h phrase}</strong>" } unless hit.highlights(sym).first.nil?
     hit.instance.send(sym)
+  end
+
+  def mobile_menu_item(link_text, target, is_footer = false)
+    arrow = content_tag(:div, '>', :class=> "navFloatRight")
+    link = link_to link_text, target, :class => "mobileNavLink"
+    content_tag(:div, arrow + link, :class=> is_footer ? "navFooter" : "navBodyItem")
   end
 
   private

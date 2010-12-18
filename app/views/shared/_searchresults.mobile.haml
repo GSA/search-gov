@@ -22,11 +22,11 @@
         %hr
   .group
     .row.center
-      = will_paginate search.results, :page_links => false, :previous_label => "", :next_label => "Next Page"
+      = will_paginate search.results, :page_links => false, :previous_label => "", :next_label => t(:next_page)
 
   - if (search && search.related_search.present?)
     #relatedsearch
-      %p= "Searches related to '#{h search.query}'"
+      %p= t :searches_related_to, :query=> h(search.query)
       %ul
         - search.related_search.each_with_index do |related_term, index|
           %li= tracked_click_link(search_path(:query=>related_term, :affiliate=> @affiliate ),h(related_term.titleize), search, nil, index, 'CREL')

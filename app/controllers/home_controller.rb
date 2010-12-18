@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @search = Search.new
     @title = "Home - "
   end
-  
+
   def contact_form
     @title = "Contact Form - "
     if request.method == :post
@@ -16,10 +16,10 @@ class HomeController < ApplicationController
       else
         if @email =~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/
           Emailer.deliver_mobile_feedback(@email, @message)
-          flash[:notice] = "Thank you for contacting USA.gov. We will respond to you within two business days."
+          flash[:notice] = t(:contact_thank_you)
           @thank_you = true
         else
-          flash[:notice] = "Email address is not valid"
+          flash[:notice] = t(:contact_invalid_email)
         end
       end
     end
@@ -30,10 +30,10 @@ class HomeController < ApplicationController
   end
 
   def serp_prototype
-  
+
   end
-  
+
   def serp_image_prototype
-  
+
   end
 end
