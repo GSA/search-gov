@@ -4,8 +4,12 @@ module NavigationHelpers
 
     when /the homepage/
       root_path
+    when /the Spanish homepage/
+      root_path(:locale => 'es')
     when /the search page/
       search_path
+    when /the Spanish mobile search results page for "([^\"]*)"$/
+      search_path(:query => $1, :locale => 'en', :m => 'true')
     when /the advanced search page/
       advanced_search_path
     when /the image search page/

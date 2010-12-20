@@ -23,8 +23,9 @@
 
 .group.clear
 .mobileFooter.pad5
-  = link_to(t(:search_in), home_page_path(:locale => other_locale_str))
-  |
+  - if I18n.locale.to_s == 'es'
+    = link_to(t(:search_in), home_page_path(:locale => other_locale_str))
+    |
   %a{:title => "USA.gov", :href => "http://www.usa.gov"}
     = t(:usagov_full_site)
 
