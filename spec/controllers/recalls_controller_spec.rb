@@ -21,7 +21,7 @@ describe RecallsController do
           @search.stub!(:results).and_return [{:key1=>"val1"}, {:key2=>"val2"}]
           @query_string = 'stroller'
           @page = "2"
-          @valid_options_hash = {"start_date"=> "2010-11-10", "end_date"=> "2010-11-20"}
+          @valid_options_hash = {"start_date"=> "2010-11-10", "end_date"=> "2010-11-20", "sort" => 'date'}
           @valid_params = @valid_options_hash.merge(:query => @query_string, :page => @page)
         end
 
@@ -31,7 +31,7 @@ describe RecallsController do
           get :index, @valid_params.merge(param_to_be_ignored)
         end
 
-        it "should do any caching of the result" do
+        it "should not do any caching of the result" do
           @redis.should be_nil
           get :index, @valid_params
         end
@@ -51,6 +51,13 @@ describe RecallsController do
           get :index, :date_range => 'last_year'
           assigns[:valid_params][:start_date].should == Date.parse("#{Date.today.year - 1}-01-01")
           assigns[:valid_params][:end_date].should == Date.parse("#{Date.today.year - 1}-12-31")
+        end
+      end
+      
+      context "when no sort value is defined" do
+        it "should default to searching by date" do
+          get :index
+          assigns[:valid_params][:sort].should == 'date'
         end
       end
     end
@@ -190,6 +197,13 @@ describe RecallsController do
           parsed_response = JSON.parse(response.body)
           parsed_response["error"].should == "Invalid date range"
         end
+      end
+    end
+    
+    context "when no sort value is specified" do
+      it "should not set a sort value" do
+        get :index, :format => 'json'
+        assigns[:valid_params][:sort].should be_nil
       end
     end
     
