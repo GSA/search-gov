@@ -17,7 +17,6 @@ class Recall < ActiveRecord::Base
   NHTSA_FULL_TEXT_SEARCH_FIELDS = {'ComponentDescription'=> 6, 'DefectSummary' => 19, 'ConsequenceSummary' => 20,
                                    'CorrectiveSummary' => 21, 'Notes' => 22}
   NHTSA_FACET_FIELDS = %w{Make Model Year}
-  EARLIEST_RECALL_DATE = Date.parse('1966-01-01')
 
   searchable do
     string :organization
