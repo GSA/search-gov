@@ -65,7 +65,7 @@ module NavigationHelpers
     when /the affiliate superfresh page/
       affiliate_superfresh_urls_path(:locale => nil, :m => nil)
     when /the superfresh feed/
-      superfresh_feed_path
+      main_superfresh_feed_path
     when /the developers home page/
       developers_path
     when /the developers signup page/

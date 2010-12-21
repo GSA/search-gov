@@ -62,7 +62,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :pages,
                 :controller => 'pages',
                 :only       => [:show]
-  map.superfresh_feed '/superfresh', :controller => "superfresh", :action => "index"
+  map.main_superfresh_feed '/superfresh', :controller => "superfresh", :action => "index"
+  map.superfresh_feed '/superfresh/:feed_id', :controller => "superfresh", :action => "index"
   map.api_docs '/api', :controller => "pages", :action => "show", :id => "api"
   map.recalls_api_docs '/api/recalls', :controller => "pages", :action => "show", :id => "recalls"
   map.recalls_tos_docs '/api/tos', :controller => "pages", :action => "show", :id => "tos"

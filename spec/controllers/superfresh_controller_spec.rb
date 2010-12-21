@@ -49,5 +49,37 @@ describe SuperfreshController do
       SuperfreshUrl.should_receive(:uncrawled_urls).with(500).and_return []
       get :index
     end
+    
+    context "when a feed id is not provided" do
+      before do
+        get :index
+      end
+      
+      it "should assign default to the main/first feed" do
+        assigns[:feed_id].should == 1
+      end
+    end
+    
+    context "when a feed id is provided" do
+      before do
+        @uncrawled_urls = SuperfreshUrl.uncrawled_urls(500)
+      end
+      
+      context "when the feed id is '1'" do        
+        it "should fetch the first 500 uncrawled URLs" do
+          SuperfreshUrl.should_receive(:uncrawled_urls).with(500).and_return @uncrawled_urls
+          get :index, :feed_id => "1"
+          assigns[:superfresh_urls].should_not be_empty
+        end
+      end
+      
+      context "when the feed id is anything other than '1'" do
+        it "should not fetch any uncrawled urls" do
+          SuperfreshUrl.should_not_receive(:uncrawled_urls)
+          get :index, :feed_id => 3
+          assigns[:superfresh_urls].should be_empty
+        end
+      end
+    end
   end
 end
