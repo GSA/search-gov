@@ -12,7 +12,7 @@ class Admin::AffiliatesController < Admin::AdminController
   end
   
   def analytics
-    redirect_to affiliate_analytics_home_page_path(:id => params[:id])
+    redirect_to affiliate_analytics_path(:affiliate_id => params[:id])
   end
 
 end

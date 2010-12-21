@@ -4,15 +4,13 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :developers
   map.resource :user_session
   map.resources :password_resets
-  map.resources :affiliates, :member => { :push_content_for => :post, :embed_code => :get }, :collection => { :home => :get, :how_it_works => :get, :demo => :get } do |affiliate|
-    affiliate.resources :users, :controller => 'affiliate_users', :only => [:index, :new, :create, :destroy]
-    affiliate.resource :boosted_sites_upload, :only => [:create, :new]
-    affiliate.resources :superfresh_urls, :controller => 'affiliate_superfresh', :only => [:index, :create, :destroy], :collection => { :upload => :post }
-    affiliate.resources :type_ahead_search, :controller => 'affiliate_sayt', :only => [:index, :create, :destroy], :collection => { :upload => :post, :preferences => :post }
+  map.resources :affiliates, :controller => 'affiliates/home', :member => { :push_content_for => :post, :embed_code => :get }, :collection => { :home => :get, :how_it_works => :get, :demo => :get } do |affiliate|
+    affiliate.resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy]
+    affiliate.resource :boosted_sites_upload, :controller => 'affiliates/boosted_sites_uploads', :only => [:create, :new]
+    affiliate.resources :superfresh_urls, :controller => 'affiliates/superfresh', :only => [:index, :create, :destroy], :collection => { :upload => :post }
+    affiliate.resources :type_ahead_search, :controller => 'affiliates/sayt', :only => [:index, :create, :destroy], :collection => { :upload => :post, :preferences => :post }
+    affiliate.resources :analytics, :controller => 'affiliates/analytics', :only => [:index], :collection => {:monthly_reports => :get, :query_search => :get}
   end
-  map.affiliate_analytics_home_page '/affiliates/:id/analytics', :controller => 'affiliates', :action => 'analytics'
-  map.affiliate_analytics_query_search '/affiliates/:id/query_search', :controller => 'affiliates', :action => 'query_search'
-  map.affiliate_analytics_monthly_reports '/affiliates/:id/monthly_reports', :controller => 'affiliates', :action => 'monthly_reports'
   map.search '/search', :controller => "searches"
   map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get
   map.image_search "/search/images", :controller => "image_searches", :action => "index"

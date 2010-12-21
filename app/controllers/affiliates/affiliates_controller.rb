@@ -1,4 +1,4 @@
-class AffiliateAuthController < SslController
+class Affiliates::AffiliatesController < SslController
   layout "account"
 
   protected

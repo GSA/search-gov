@@ -1,4 +1,4 @@
-class AffiliateSaytController < AffiliateAuthController
+class Affiliates::SaytController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin
   before_filter :setup_affiliate
 

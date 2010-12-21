@@ -1,4 +1,4 @@
-class AffiliateSuperfreshController < AffiliateAuthController
+class Affiliates::SuperfreshController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin
   before_filter :setup_affiliate
   

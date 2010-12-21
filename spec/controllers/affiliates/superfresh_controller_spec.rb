@@ -1,6 +1,6 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
-describe AffiliateSuperfreshController do
+describe Affiliates::SuperfreshController do
   fixtures :users, :affiliates
   before do
     activate_authlogic

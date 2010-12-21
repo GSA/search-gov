@@ -2,7 +2,7 @@
 
 %h1= "Query Analytics for #{@affiliate.name}"
 .span-24
-  = render :partial => "analytics/shared/search", :locals => { :affiliate => @affiliate, :path => affiliate_analytics_query_search_path }
+  = render :partial => "analytics/shared/search", :locals => { :affiliate => @affiliate, :path => query_search_affiliate_analytics_path(@affiliate) }
 .span-24
   = display_most_recent_date_available(@day_being_shown, @affiliate)
 .clear

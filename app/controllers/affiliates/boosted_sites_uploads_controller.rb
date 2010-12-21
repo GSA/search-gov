@@ -1,4 +1,4 @@
-class BoostedSitesUploadsController < AffiliateAuthController
+class Affiliates::BoostedSitesUploadsController < Affiliates::AffiliatesController
   before_filter :require_affiliate
   before_filter :setup_affiliate
 

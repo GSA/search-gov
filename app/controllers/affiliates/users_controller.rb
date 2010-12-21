@@ -1,4 +1,4 @@
-class AffiliateUsersController < AffiliateAuthController
+class Affiliates::UsersController < Affiliates::AffiliatesController
   before_filter :require_affiliate
   before_filter :setup_affiliate
     

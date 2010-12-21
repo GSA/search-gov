@@ -1,6 +1,6 @@
-require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
+require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
-describe BoostedSitesUploadsController do
+describe Affiliates::BoostedSitesUploadsController do
   fixtures :users, :affiliates
   before do
     activate_authlogic
@@ -40,7 +40,7 @@ describe BoostedSitesUploadsController do
         get :new, :affiliate_id => affiliates(:power_affiliate).id
       end
 
-      should_render_template 'boosted_sites_uploads/new.html.haml', :layout => 'account'
+      should_render_template 'affiliates/boosted_sites_uploads/new.html.haml', :layout => 'account'
     end
   end
 
