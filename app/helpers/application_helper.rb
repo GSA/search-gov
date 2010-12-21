@@ -71,7 +71,7 @@ module ApplicationHelper
   end
 
   def footer_links
-    iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone << ["Mobile", I18n.locale.to_s == 'es' ? search_path(:query => '', :locale => 'es', :m => 'true') :url_for_mobile_mode("true")])
+    iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone << [t(:mobile), I18n.locale.to_s == 'es' ? search_path(:query => '', :locale => 'es', :m => 'true') :url_for_mobile_mode("true")])
   end
 
   def render_webtrends_code
