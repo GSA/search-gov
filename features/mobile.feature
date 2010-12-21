@@ -31,8 +31,8 @@ Feature: Mobile Search
   Scenario: Going to mobile mode from Spanish web homepage
     Given I am using a desktop device
     And I am on the Spanish homepage
-    Then I should see "Mobile"
-    When I follow "Mobile"
+    Then I should see "Móvil"
+    When I follow "Móvil"
     Then I should be on the search page
     And I should see "Por favor, introduzca los términos de búsqueda"
     And I should see "Ver sitio en Clásico | Móvil"
