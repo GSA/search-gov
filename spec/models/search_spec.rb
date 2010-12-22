@@ -603,14 +603,61 @@ describe Search do
 
     context "when performing an affiliate search that has related topics" do
       before do
-        CalaisRelatedSearch.create!(:affiliate => @valid_options[:affiliate], :term=> "pivot term", :related_terms => "government grants | big government | democracy")
+        CalaisRelatedSearch.create!(:term => "pivot term", :related_terms => "government grants | big government | democracy", :affiliate => @valid_options[:affiliate])
         CalaisRelatedSearch.reindex
-        @search = Search.new(@valid_options)
-        @search.run
       end
 
       it "should have a related searches array of strings including the pivot term" do
-        @search.related_search.should == ["big government" , "democracy","government grants", "pivot term"]
+        search = Search.new(@valid_options)
+        search.run
+        search.related_search.should == ["big government" , "democracy","government grants", "pivot term"]
+      end
+      
+      context "when there are also related topics for the default affiliate" do
+        before do
+          @affiliate = @valid_options[:affiliate]
+          CalaisRelatedSearch.create!(:term => "pivot term", :related_terms => "government health care | small government | fascism")
+          CalaisRelatedSearch.reindex
+        end
+      
+        context "when the affiliate has affiliate related topics enabled" do
+          before do
+            @affiliate.related_topics_setting = 'affiliate_enabled'
+            @affiliate.save
+          end
+        
+          it "should return the affiliate related topics" do
+            search = Search.new(@valid_options)
+            search.run
+            search.related_search.should == ["big government" , "democracy", "government grants", "pivot term"]
+          end
+        end
+      
+        context "when the affiliate has global related topics enabled" do
+          before do
+            @affiliate.related_topics_setting = 'global_enabled'
+            @affiliate.save
+          end
+        
+          it "should return the global related topics" do
+            search = Search.new(@valid_options)
+            search.run
+            search.related_search.should == ["fascism", "government health care", "pivot term", "small government"]
+          end
+        end
+
+        context "when the affiliate has related topics disabled" do
+          before do
+            @affiliate.related_topics_setting = 'disabled'
+            @affiliate.save
+          end
+        
+          it "should return the affiliate related topics" do
+            search = Search.new(@valid_options)
+            search.run
+            search.related_search.should == []
+          end
+        end
       end
     end
 

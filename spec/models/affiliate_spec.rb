@@ -70,4 +70,25 @@ describe Affiliate do
       @affiliate.is_owner?(users(:another_affiliate_manager)).should be_false
     end
   end
+  
+  describe "#is_affiliate_related_topics_enabled?" do
+    it "should return true if the value of related_topics_setting is nil" do
+      affiliate = Affiliate.create(@valid_attributes.merge(:related_topics_setting => nil))
+      affiliate.is_affiliate_related_topics_enabled?.should be_true
+    end
+    
+    it "should return true if the value of related_topics_setting is 'affiliate_enabled'" do
+      affiliate = Affiliate.create(@valid_attributes.merge(:related_topics_setting => 'affiliate_enabled'))
+      affiliate.is_affiliate_related_topics_enabled?.should be_true
+    end
+    
+    it "should return true if the value is set to anything other than 'global_enabled' or 'disabled'" do
+      affiliate = Affiliate.create(@valid_attributes.merge(:related_topics_setting => 'bananas'))
+      affiliate.is_affiliate_related_topics_enabled?.should be_true
+      affiliate = Affiliate.create(@valid_attributes.merge(:related_topics_setting => 'global_enabled'))
+      affiliate.is_affiliate_related_topics_enabled?.should be_false
+      affiliate = Affiliate.create(@valid_attributes.merge(:related_topics_setting => 'disabled'))
+      affiliate.is_affiliate_related_topics_enabled?.should be_false
+    end
+  end
 end

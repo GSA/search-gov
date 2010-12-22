@@ -101,8 +101,12 @@ class Search
 
   def related_search_results
     affiliate_id = self.affiliate.nil? ? nil : self.affiliate.id
-    if (affiliate_id)
-      solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s, affiliate_id)
+    if affiliate_id
+      affiliate = Affiliate.find(affiliate_id)
+      return [] if affiliate.is_related_topics_disabled?
+      if affiliate.is_affiliate_related_topics_enabled?
+        solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s, affiliate_id)
+      end
     end
     solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s) unless solr && solr.hits.present?
     instance = solr.hits.first.instance rescue nil

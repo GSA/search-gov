@@ -28,4 +28,8 @@ class Affiliates::AffiliatesController < SslController
     end
     return true
   end
+  
+  def default_url_options(options={})
+    {}
+  end
 end

@@ -10,6 +10,7 @@ ActionController::Routing::Routes.draw do |map|
     affiliate.resources :superfresh_urls, :controller => 'affiliates/superfresh', :only => [:index, :create, :destroy], :collection => { :upload => :post }
     affiliate.resources :type_ahead_search, :controller => 'affiliates/sayt', :only => [:index, :create, :destroy], :collection => { :upload => :post, :preferences => :post }
     affiliate.resources :analytics, :controller => 'affiliates/analytics', :only => [:index], :collection => {:monthly_reports => :get, :query_search => :get}
+    affiliate.resources :related_topics, :controller => 'affiliates/related_topics', :only => [:index], :collection => {:preferences => :post}
   end
   map.search '/search', :controller => "searches"
   map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get

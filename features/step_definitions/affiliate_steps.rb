@@ -99,3 +99,19 @@ Then /^the "([^\"]*)" button should be checked$/ do |field|
   response_body.should have_selector "input[type=radio][checked=checked][id=#{field}]"
 end
 
+Then /^the affiliate "([^\"]*)" should be set to use global related topics$/ do |affiliate_name|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  affiliate.related_topics_setting.should == 'global_enabled'
+end
+
+Then /^the affiliate "([^\"]*)" should be set to use affiliate related topics$/ do |affiliate_name|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  affiliate.related_topics_setting.should == 'affiliate_enabled'
+end
+
+Then /^the affiliate "([^\"]*)" related topics should be disabled$/ do |affiliate_name|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  affiliate.related_topics_setting.should == 'disabled'
+end
+
+

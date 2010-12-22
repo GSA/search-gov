@@ -13,7 +13,8 @@ class Affiliate < ActiveRecord::Base
   after_create :add_owner_as_user
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
-
+  VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}
+  
   def template
     affiliate_template || DefaultAffiliateTemplate
   end
@@ -32,6 +33,18 @@ class Affiliate < ActiveRecord::Base
   
   def is_sayt_disabled?
     !self.is_sayt_enabled && !self.is_affiliate_suggestions_enabled
+  end
+  
+  def is_affiliate_related_topics_enabled?
+    (self.related_topics_setting != 'global_enabled' && self.related_topics_setting != 'disabled') || self.related_topics_setting.nil?
+  end
+  
+  def is_global_related_topics_enabled?
+    self.related_topics_setting == 'global_enabled'
+  end
+  
+  def is_related_topics_disabled?
+    self.related_topics_setting == 'disabled'
   end
   
   private

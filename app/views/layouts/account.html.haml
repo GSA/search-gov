@@ -49,15 +49,20 @@
                   %tr
                     %td
                       %strong Settings
-                      %br
-                      = link_to "Boosted sites", new_affiliate_boosted_sites_upload_path(@affiliate)
-                      %br
-                      = link_to "Get Code", embed_code_affiliate_path(@affiliate)
-                      %br
-                      = link_to "Add to Bing", affiliate_superfresh_urls_path(@affiliate)
-                      %img{:src=>"/images/new.png"}
-                      = link_to "Type-ahead Search", affiliate_type_ahead_search_index_path(@affiliate)
-                      %img{:src=>"/images/new.png"}
+                      %ul{:style => 'list-style-type: none; margin: 0'}
+                        %li
+                          = link_to "Boosted sites", new_affiliate_boosted_sites_upload_path(@affiliate)
+                        %li
+                          = link_to "Get Code", embed_code_affiliate_path(@affiliate)
+                        %li
+                        = link_to "Add to Bing", affiliate_superfresh_urls_path(@affiliate)
+                        = image_tag 'new.png'
+                        %li
+                          = link_to "Type-ahead Search", affiliate_type_ahead_search_index_path(@affiliate)
+                          = image_tag 'new.png'
+                        %li
+                          = link_to "Related Topics", affiliate_related_topics_path(@affiliate)
+                          = image_tag 'new.png'
                   %tr
                     %td
                       %strong Analytics

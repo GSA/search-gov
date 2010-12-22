@@ -508,4 +508,44 @@ Feature: Affiliate clients
     When I attach the file "features/support/cant_read_this.doc" to "txtfile"
     And I press "Upload"
     Then I should be on the affiliate sayt page
-    And I should see "Your file could not be processed."  
+    And I should see "Your file could not be processed."
+    
+  Scenario: Viewing Related Topics for an affiliate
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Related Topics"
+    Then I should be on the affiliate related topics page
+    And I should see "Dashboard > aff.gov > Related Topics"
+    
+  Scenario: Setting Related Topics Preferences for an affiliate
+    Given the following Affiliates exist:
+     | name             | contact_email           | contact_name        |
+     | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Related Topics"
+    Then I should be on the affiliate related topics page
+    And I should see "Preferences"
+    And the "related_topics_setting_affiliate_enabled" button should be checked
+    
+    When I choose "related_topics_setting_global_enabled"
+    And I press "Set Preferences"
+    Then I should be on the affiliate related topics page
+    And the "related_topics_setting_global_enabled" button should be checked
+    And the affiliate "aff.gov" should be set to use global related topics
+    
+    When I choose "related_topics_setting_affiliate_enabled"
+    And I press "Set Preferences"
+    Then I should be on the affiliate related topics page
+    And I should see "Preferences updated"
+    And the "related_topics_setting_affiliate_enabled" button should be checked    
+    And the affiliate "aff.gov" should be set to use affiliate related topics
+    
+    When I choose "related_topics_setting_disabled"
+    And I press "Set Preferences"
+    Then I should be on the affiliate related topics page
+    And the "related_topics_setting_disabled" button should be checked
+    And the affiliate "aff.gov" related topics should be disabled
