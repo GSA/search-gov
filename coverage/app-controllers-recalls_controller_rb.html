@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-recalls_controller_rb.html">app/controllers/recalls_controller.rb</a></td>
-            <td class='right_align'><tt>47</tt></td>
-            <td class='right_align'><tt>40</tt></td>
+            <td class='right_align'><tt>78</tt></td>
+            <td class='right_align'><tt>70</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -68,20 +68,20 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>   before_filter :setup_params</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   @@redis = Redis.new(:host =&gt; REDIS_HOST, :port =&gt; REDIS_PORT)</pre></td>
+            <td><pre><a name="line4">4</a>   before_filter :verify_params</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   RECALLS_CACHE_DURATION_IN_SECONDS = 60 * 30</pre></td>
+            <td><pre><a name="line5">5</a>   before_filter :convert_date_range_to_start_and_end_dates</pre></td>
           </tr>
         
           
@@ -93,253 +93,439 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   def index</pre></td>
+            <td><pre><a name="line7">7</a>   @@redis = Redis.new(:host =&gt; REDIS_HOST, :port =&gt; REDIS_PORT)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     valid_options = %w{start_date end_date upc sort code organization make model year food_type}</pre></td>
+            <td><pre><a name="line8">8</a>   RECALLS_CACHE_DURATION_IN_SECONDS = 60 * 30</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     valid_params = params.reject { |k,| !valid_options.include? k.to_s }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>     error_message = verify_params(valid_params.merge(:page =&gt; params[:page]))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     if error_message</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>       render :json =&gt; {:error =&gt; error_message}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>       return</pre></td>
+            <td><pre><a name="line9">9</a>   VALID_OPTIONS = %w{start_date end_date date_range upc sort code organization make model year food_type}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>     end</pre></td>
+            <td><pre><a name="line10">10</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>   def index</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>       format.html {</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>         @valid_params[:sort] = 'date' if params[:sort].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>         @query = params[:query]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>         @page = params[:page]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>         @search = Recall.search_for(@query, @valid_params, @page)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a> </pre></td>
+            <td><pre><a name="line18">18</a>       }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     query = params[:query]</pre></td>
+            <td><pre><a name="line19">19</a>       format.json {</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>     page = params[:page]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>     cache_key = [valid_params.to_s, query, page].join(':')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>     success_total_results_json = @@redis.get(cache_key) rescue nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>     if success_total_results_json.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>       search = Recall.search_for(query, valid_params, page)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>       success_total_results_json = {:success =&gt; {:total =&gt; search.total, :results =&gt; search.results}}.to_json</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>       @@redis.setex(cache_key, RECALLS_CACHE_DURATION_IN_SECONDS, success_total_results_json) rescue nil</pre></td>
+            <td><pre><a name="line20">20</a>         api_search</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>     end</pre></td>
+            <td><pre><a name="line21">21</a>       }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       format.any {</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>         render :text =&gt; 'Not Implemented', :status =&gt; 501 </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>     respond_to do |format|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>       format.json { render :text =&gt; success_total_results_json, :content_type =&gt; &quot;application/json&quot; }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>       format.any { render :text =&gt; 'Not Implemented', :status =&gt; 501 }</pre></td>
+            <td><pre><a name="line24">24</a>       }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>     end</pre></td>
+            <td><pre><a name="line25">25</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>   end</pre></td>
+            <td><pre><a name="line26">26</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a> </pre></td>
+            <td><pre><a name="line27">27</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>   private</pre></td>
+            <td><pre><a name="line28">28</a>   def api_search</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>   def verify_params(p)</pre></td>
+            <td><pre><a name="line29">29</a>     if @error_message</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>     error_message = nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>     error_message = &quot;invalid date&quot; if (p[:start_date] and not p[:start_date] =~ /^\d{4}-\d{1,2}-\d{1,2}$/) or (p[:end_date] and not p[:end_date] =~ /^\d{4}-\d{1,2}-\d{1,2}$/)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>     error_message = &quot;invalid organization&quot; if p[:organization] and not Recall::VALID_ORGANIZATIONS.include? p[:organization]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>     error_message = &quot;invalid code&quot; if p[:code] and not %w{E V I T C X}.include? p[:code]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>     error_message = &quot;invalid year&quot; if p[:year] and not p[:year] =~ /^\d{4}$/</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>     error_message = &quot;invalid page&quot; if p[:page] and not p[:page] =~ /^\d+$/</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>     return error_message</pre></td>
+            <td><pre><a name="line30">30</a>       render :json =&gt; { :error =&gt; @error_message }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line42">42</a>   </pre></td>
+            <td><pre><a name="line31">31</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>   def validate_api_key</pre></td>
+            <td><pre><a name="line32">32</a>       query = params[:query]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>     render :text =&gt; 'Invalid API Key', :status =&gt; 401 if params['api_key'].present? and User.find_by_api_key(params['api_key']).nil?</pre></td>
+            <td><pre><a name="line33">33</a>       page = params[:page]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>       cache_key = [@valid_params.to_s, query, page].join(':')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>       success_total_results_json = @@redis.get(cache_key) rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>       if success_total_results_json.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>         search = Recall.search_for(query, @valid_params, page)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>         success_total_results_json = {:success =&gt; {:total =&gt; search.total, :results =&gt; search.results}}.to_json</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>         @@redis.setex(cache_key, RECALLS_CACHE_DURATION_IN_SECONDS, success_total_results_json) rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>   end</pre></td>
+            <td><pre><a name="line40">40</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>       render :text =&gt; success_total_results_json, :content_type =&gt; &quot;application/json&quot; </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a> end</pre></td>
+            <td><pre><a name="line42">42</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a> </pre></td>
+            <td><pre><a name="line43">43</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>   def validate_api_key</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>     render :text =&gt; 'Invalid API Key', :status =&gt; 401 if request.format == 'json' and params[:api_key].present? and User.find_by_api_key(params[:api_key]).nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line49">49</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line50">50</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>   def setup_params</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>     @valid_params = params.reject { |k,| !VALID_OPTIONS.include? k.to_s }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line53">53</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line54">54</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>   def verify_params</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>     @error_message = nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>     @error_message = &quot;Invalid date&quot; if (params[:start_date] and not params[:start_date] =~ /^\d{4}-\d{1,2}-\d{1,2}$/) or (params[:end_date] and not params[:end_date] =~ /^\d{4}-\d{1,2}-\d{1,2}$/)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>     @error_message = &quot;Invalid organization&quot; if params[:organization] and not Recall::VALID_ORGANIZATIONS.include? params[:organization]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>     @error_message = &quot;Invalid code&quot; if params[:code] and not %w{E V I T C X}.include? params[:code]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>     @error_message = &quot;Invalid year&quot; if params[:year] and not params[:year] =~ /^\d{4}$/</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line61">61</a>     @error_message = &quot;Invalid page&quot; if params[:page] and not params[:page] =~ /^\d+$/</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line62">62</a>     @error_message = &quot;Invalid date range&quot; if params[:date_range] and not %w{last_30 last_90 current_year last_year}.include?(params[:date_range])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line63">63</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line64">64</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>   def convert_date_range_to_start_and_end_dates</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line66">66</a>     if params[:date_range].present?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line67">67</a>       if params[:date_range] == &quot;last_30&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>         @valid_params[:start_date], @valid_params[:end_date] = Date.today - 30.days, Date.today</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>       elsif params[:date_range] == &quot;last_90&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line70">70</a>         @valid_params[:start_date], @valid_params[:end_date] = Date.today - 90.days, Date.today</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line71">71</a>       elsif params[:date_range] == &quot;current_year&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line72">72</a>         @valid_params[:start_date], @valid_params[:end_date] = Date.parse(&quot;#{Date.today.year}-01-01&quot;), Date.today</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line73">73</a>       elsif params[:date_range] = &quot;last_year&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line74">74</a>         @valid_params[:start_date], @valid_params[:end_date] = Date.parse(&quot;#{Date.today.year - 1}-01-01&quot;), Date.parse(&quot;#{Date.today.year - 1}-12-31&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line75">75</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line76">76</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line77">77</a>   end </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line78">78</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Dec 17 16:36:42 -0800 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Wed Dec 22 13:14:16 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

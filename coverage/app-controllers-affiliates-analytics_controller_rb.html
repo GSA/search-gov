@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/users_controller.rb</title>
+    <title>app/controllers/affiliates/analytics_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/users_controller.rb</h2>
+    <h2>app/controllers/affiliates/analytics_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-users_controller_rb.html">app/controllers/users_controller.rb</a></td>
-            <td class='right_align'><tt>37</tt></td>
-            <td class='right_align'><tt>32</tt></td>
+            <td class="left_align"><a href="app-controllers-affiliates-analytics_controller_rb.html">app/controllers/affiliates/analytics_controller.rb</a></td>
+            <td class='right_align'><tt>30</tt></td>
+            <td class='right_align'><tt>27</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,25 +57,25 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class UsersController &lt; SslController</pre></td>
+            <td><pre><a name="line1">1</a> class Affiliates::AnalyticsController &lt; Affiliates::AffiliatesController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   layout &quot;account&quot;</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :require_affiliate_or_admin</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   before_filter :require_no_user, :only =&gt; [:new, :create]</pre></td>
+            <td><pre><a name="line3">3</a>   before_filter :setup_affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :require_user, :only =&gt; [:show, :edit, :update]</pre></td>
+            <td><pre><a name="line4">4</a>   before_filter :establish_aws_connection, :only =&gt; [:index, :monthly_reports]</pre></td>
           </tr>
         
           
@@ -87,97 +87,97 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   def new</pre></td>
+            <td><pre><a name="line6">6</a>   def index</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     @user = User.new</pre></td>
+            <td><pre><a name="line7">7</a>     @title = &quot;Query Logs - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     @num_results_dqs = (request[&quot;num_results_dqs&quot;] || &quot;10&quot;).to_i</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>     @day_being_shown = request[&quot;day&quot;].nil? ? DailyQueryStat.most_recent_populated_date(@affiliate.name) : request[&quot;day&quot;].to_date</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>     @most_recent_day_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs, @affiliate.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     @trailing_week_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 7, @num_results_dqs, @affiliate.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     @trailing_month_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 30, @num_results_dqs, @affiliate.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>     @start_date = 1.month.ago.to_date</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>     @end_date = Date.yesterday</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>   end</pre></td>
+            <td><pre><a name="line15">15</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a> </pre></td>
+            <td><pre><a name="line16">16</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   def create</pre></td>
+            <td><pre><a name="line17">17</a>   def monthly_reports</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     @user = User.new(params[:user])</pre></td>
+            <td><pre><a name="line18">18</a>     @title = &quot;Monthly Reports - &quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     if @user.save</pre></td>
+            <td><pre><a name="line19">19</a>     @most_recent_date = DailyUsageStat.most_recent_populated_date(@affiliate.name) || Date.today</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       flash[:success] = &quot;Thank you for registering for USA.gov Search Services&quot;</pre></td>
+            <td><pre><a name="line20">20</a>     @report_date = params[:date].blank? ? Date.yesterday : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>       redirect_to account_path</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line15">15</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>       render :action =&gt; :new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line17">17</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line18">18</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>   def show</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>     @user = @current_user</pre></td>
+            <td><pre><a name="line21">21</a>     @monthly_totals = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, @affiliate.name)</pre></td>
           </tr>
         
           
@@ -195,85 +195,43 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>   def edit</pre></td>
+            <td><pre><a name="line24">24</a>   def query_search</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>     @user = @current_user</pre></td>
+            <td><pre><a name="line25">25</a>     @search_query_term = params[&quot;query&quot;]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>     @start_date = Date.parse(params[&quot;analytics_search_start_date&quot;]) rescue 1.month.ago.to_date</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>     @end_date = Date.parse(params[&quot;analytics_search_end_date&quot;]) rescue Date.yesterday</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>     @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term, @start_date, @end_date, @affiliate.name)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>   end</pre></td>
+            <td><pre><a name="line29">29</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>   def update</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>     @user = @current_user # makes our views &quot;cleaner&quot; and more consistent</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>     if @user.update_attributes(params[:user])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>       flash[:success] = &quot;Account updated!&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>       redirect_to account_url</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line33">33</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>       render :action =&gt; :edit</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line35">35</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line36">36</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line37">37</a> end</pre></td>
+            <td><pre><a name="line30">30</a> end</pre></td>
           </tr>
         
       </tbody>
