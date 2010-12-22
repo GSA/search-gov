@@ -3,6 +3,7 @@ class Affiliate < ActiveRecord::Base
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within=> (3..33)
   validates_format_of :name, :with=> /^[\w.-]+$/i
+  validates_length_of :domains, :maximum => 1000, :allow_nil => true, :allow_blank => true
   belongs_to :owner, :class_name => 'User'
   has_and_belongs_to_many :users
   belongs_to :affiliate_template

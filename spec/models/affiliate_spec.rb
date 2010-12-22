@@ -18,6 +18,7 @@ describe Affiliate do
     should_validate_presence_of :name
     should_validate_uniqueness_of :name, :case_sensitive => false
     should_validate_length_of :name, :within=> (3..33)
+    should_validate_length_of :domains, :maximum => 1000, :allow_nil => true, :allow_blank => true
     should_not_allow_values_for :name, "<IMG SRC=", "259771935505'", "spacey name"
     should_allow_values_for :name, "data.gov", "ct-new", "NewAff", "some_aff", "123"
     should_belong_to :owner
