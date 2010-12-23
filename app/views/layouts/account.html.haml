@@ -81,17 +81,4 @@
         
       .clear
       %br
-      .admin-footer
-        = link_to "Affiliate Program", affiliates_path
-        | 
-        = link_to "API & Web Services", api_docs_path
-        | 
-        = link_to "Search.USA.gov", root_path
-        %br
-        = link_to "USASearch Program", affiliates_path
-        %p
-          USASearch Program, General Services Administration
-          %br
-          One Constitution Square, 1275 First Street NE, 11th Floor, Washington, DC 20417
-          %br
-          Email us at: #{mail_to 'searchusa@gsa.gov'}
+      = render "/shared/affiliate_footer"

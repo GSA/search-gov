@@ -74,6 +74,12 @@ module NavigationHelpers
       affiliate_type_ahead_search_index_path(:locale => nil, :m => nil)
     when /the recalls search page/
       recalls_search_path
+    when /the program welcome page/
+      program_path
+    when /the api page/
+      api_docs_path(:locale => nil, :m => nil)
+    when /the searchusagov page/
+      searchusagov_path(:locale => nil, :m => nil)
     else
       begin
         page_name =~ /the (.*) page/

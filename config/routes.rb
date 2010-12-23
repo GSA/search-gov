@@ -65,4 +65,6 @@ ActionController::Routing::Routes.draw do |map|
   map.recalls_api_docs '/api/recalls', :controller => "pages", :action => "show", :id => "recalls"
   map.recalls_tos_docs '/api/tos', :controller => "pages", :action => "show", :id => "tos"
   map.usa '/usa/:url_slug', :controller => 'usa', :action => 'show', :requirements => { :url_slug => /.*/ }
+  map.program '/program', :controller => "pages", :action => "show", :id => "program"
+  map.searchusagov '/searchusagov', :controller => "pages", :action => "show", :id => "search"
 end

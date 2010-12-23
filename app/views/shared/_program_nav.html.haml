@@ -1,0 +1,24 @@
+%ul#nav{:style=>"display:inline"}
+  %li
+    = link_to 'Affiliate Program', affiliates_path
+    %ul
+      %li
+        = link_to 'How it works', how_it_works_affiliates_path
+      %li
+        = link_to 'See it in action', demo_affiliates_path
+      %li
+        = link_to 'Affiliate Signup', new_account_path
+    .clear
+  %li
+    = link_to 'API & Web Services', api_docs_path
+    %ul
+      %li
+        = link_to 'Recalls API', recalls_api_docs_path
+      %li
+        = link_to 'Widgets', page_path(:id => "widgets")
+      %li
+        = link_to 'API Signup', new_account_path
+    .clear
+  %li
+    = link_to 'Search.USA.gov', searchusagov_path
+    .clear

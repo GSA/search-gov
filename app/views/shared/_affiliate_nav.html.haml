@@ -1,39 +1,6 @@
 %ul#nav{:style=>"display:inline"}
   - unless current_user
-    %li
-      = link_to 'Affiliate Program', affiliates_path
-      %ul
-        %li
-          = link_to 'Overview', affiliates_path
-        %li
-          = link_to 'How it works', how_it_works_affiliates_path
-        %li
-          = link_to 'See it in action', demo_affiliates_path
-        %li
-          = link_to 'Signup', new_account_path
-      .clear
-    %li
-      = link_to 'API & Web Services', api_docs_path
-      %ul
-        %li
-          = link_to 'Overview', api_docs_path
-        %li
-          = link_to 'Recalls API', recalls_api_docs_path
-        %li
-          = link_to 'Widgets', page_path(:id => "widgets")
-        %li
-          = link_to 'Signup', new_account_path
-      .clear
-    %li
-      = link_to 'Search.USA.gov', root_path
-      %ul
-        %li
-          = link_to 'Overview', root_path
-        %li
-          = link_to 'Search Tips (TBD)', root_path
-        %li
-          = link_to 'Govbox (TBD)', root_path
-      .clear
+    = render "/shared/program_nav"
   - if current_user
     %li
       = link_to 'USASearch Program', root_path
