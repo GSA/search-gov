@@ -141,7 +141,7 @@ describe Search do
 
     context "when affiliate has domains specified and user does not specify site: in search" do
       before do
-        @affiliate = Affiliate.new(:domains => %w(   foo.com bar.com   ).join("\n"))
+        @affiliate = Affiliate.new(:domains => %w(   foo.com bar.com   ).join("\r\n"))
         @uriresult = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end

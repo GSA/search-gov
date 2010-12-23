@@ -238,7 +238,7 @@ class Search
     if valid_scope_id?
       "(scopeid:#{self.scope_id}) #{DEFAULT_SCOPE}"
     else
-      scope = affiliate.domains.split("\n").collect { |site| "site:#{site}" }.join(" OR ")
+      scope = affiliate.domains.split("\r\n").collect { |site| "site:#{site}" }.join(" OR ")
       "(#{scope})"
     end
   end
