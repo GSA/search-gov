@@ -22,8 +22,9 @@
     = javascript_include_tag "/m/j/close.js"
 
   %body{:onload => "setTimeout(function() { window.scrollTo(0, 1) }, 100);"}
-  #container
-    #contentWrapper
-      = yield
+    #container
+      #contentWrapper
+        = yield
+    = render 'shared/webtrends_mobile'
 
 
