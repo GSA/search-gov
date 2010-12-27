@@ -24,6 +24,21 @@ describe UsaController do
         get :show, :url_slug=>"Some/Topic"
         assigns[:title].should == "Some Topic"
       end
+
+      context "when the request is from a web browser" do
+        it "should show a 404 error, instead of erroring" do
+          get :show, :url_slug => "Some/Topic"
+          response.should_not be_success
+          response.should render_template("#{RAILS_ROOT}/public/404.html")
+        end
+      end
+      
+      context "when the request is from a mobile browser" do
+        it "should return a page successfully" do
+          get :show, :url_slug => 'Some/Topic', :m => "true"
+          response.should be_success
+        end
+      end 
     end
 
     context "when page does not exist for a slug" do
@@ -31,6 +46,6 @@ describe UsaController do
         get :show, :url_slug=>"Some/Topic/That/Is/Not/There"
         response.should redirect_to(home_page_path)
       end
-    end
+    end 
   end
 end
