@@ -2,12 +2,21 @@ if (usagov_sayt_url === undefined) {
     var usagov_sayt_url = "http://search.usa.gov/sayt?";
 }
 
-function __highlight(s, t) {
-  var matcher = new RegExp("("+$.ui.autocomplete.escapeRegex(t)+")", "ig" );
-  return s.replace(matcher, "<span style='color:#444444;font-weight:normal;'>$1</span>");
-}
+function monkeyPatchAutocomplete() {
+     var oldFn = $.ui.autocomplete.prototype._renderItem;
 
-$(document).ready(function() {
+     $.ui.autocomplete.prototype._renderItem = function( ul, item) {
+         var re = new RegExp("^" + this.term) ;
+         var t = item.label.replace(re,"<span style='color:#444444;font-weight:normal;'>" + this.term + "</span>");
+         return $( "<li></li>" )
+             .data( "item.autocomplete", item )
+             .append( "<a>" + t + "</a>" )
+             .appendTo( ul );
+     };
+ }
+
+$(document).ready(function()  {
+  monkeyPatchAutocomplete();
   $(".usagov-search-autocomplete").autocomplete({
   	source: function( request, response ) {
   		$.ajax({
@@ -22,9 +31,9 @@ $(document).ready(function() {
   			success: function( data ) {
   				response( $.map(data, function( item ) {
   				  return {
-        			label: __highlight(item, request.term),
+        			label: item,
   						value: item
-  					}
+  					} 
   				}));
   			}
   		});
@@ -42,11 +51,6 @@ $(document).ready(function() {
   	},
   	close: function() {
   		$( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-  	}
-  }).data( "autocomplete" )._renderItem = function( ul, item ) {
-      return $( "<li></li>" )
-        .data( "item.autocomplete", item )
-        .append( $( "<a></a>" ).html(item.label) )
-        .appendTo( ul );
-    };
+  	} 
+  })
 });
