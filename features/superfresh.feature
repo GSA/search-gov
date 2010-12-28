@@ -12,7 +12,7 @@ Feature: Affiliate Superfresh Interface
     And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
     And I should see "Add to Bing"
-    When I fill in "Url" with "http://new.url.com"
+    When I fill in "Single URL" with "http://new.url.com"
     And I press "Submit"
     Then I should be on the affiliate superfresh page
     And I should see "Successfully added http://new.url.com."
@@ -52,7 +52,7 @@ Feature: Affiliate Superfresh Interface
     And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
     And I should see "Add to Bing"
-    When I fill in "Url" with ""
+    When I fill in "Single URL" with ""
     And I press "Submit"
     Then I should be on the affiliate superfresh page
     And I should see "There was an error adding the URL to be refreshed."

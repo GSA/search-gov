@@ -22,23 +22,25 @@
     = calendar_date_select_includes
   %body
     .container
-      .span-12
+      .span-14
         = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :style=>"vertical-align:middle;"), home_page_path) 
         = link_to(image_tag('USAsearchProgram_medium_en.png', :alt=>"USAsearch Home", :style=>"vertical-align:middle"), home_page_path)
-      .span-10.last.header
+      .right
         = basic_header_navigation_for current_user
     .secondary-navbar
       .sec-nav-left
         = render "/shared/affiliate_nav"
       .sec-nav-right
-        - display_for(:affiliate) do
-          - unless current_user.affiliates.empty?
-            Selected Affiliate
-            = select("affiliate", "id", current_user.affiliates.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select affiliate'}, :class =>"affiliate-dropdown")
+        &nbsp;
     .container
       .main
         .affiliate-nav
           - display_for(:affiliate) do
+            - unless current_user.affiliates.empty?
+              .title-row
+                Selected Affiliate
+              .content-box
+                = select("affiliate", "id", current_user.affiliates.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select affiliate'}, :class =>"affiliate-dropdown")
             - if current_user.affiliates.empty?
               %p= link_to "Add New Affiliate", new_affiliate_path
             - else
@@ -55,14 +57,12 @@
                         %li
                           = link_to "Get Code", embed_code_affiliate_path(@affiliate)
                         %li
-                        = link_to "Add to Bing", affiliate_superfresh_urls_path(@affiliate)
-                        = image_tag 'new.png'
+                          = link_to "Add to Bing", affiliate_superfresh_urls_path(@affiliate)
+                          = image_tag 'new.png'
                         %li
                           = link_to "Type-ahead Search", affiliate_type_ahead_search_index_path(@affiliate)
-                          = image_tag 'new.png'
                         %li
                           = link_to "Related Topics", affiliate_related_topics_path(@affiliate)
-                          = image_tag 'new.png'
                   %tr
                     %td
                       %strong Analytics
@@ -72,6 +72,8 @@
                       = link_to "Monthly Reports", monthly_reports_affiliate_analytics_path(@affiliate)
                   %tr
                     %td
+                      = link_to "Add Affiliate", new_affiliate_path
+                      %br
                       = link_to "Manage Users", affiliate_users_path(@affiliate)
         
         .admin-content
