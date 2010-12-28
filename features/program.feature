@@ -6,7 +6,10 @@ Feature: Program
     Given I am on the program welcome page
     Then I should see "Affiliate Program" within ".main"
     And I should see "APIs and other web services" within ".main"
-    And I should see "search.USA.gov" within ".main"
+    And I should see "Search.USA.gov" within ".main"
+
+    When I follow "program_logo"
+    Then I should be on the program welcome page
 
   Scenario: Affiliate Program link should be on the affiliates page
     Given I am on the program welcome page

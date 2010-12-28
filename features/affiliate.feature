@@ -22,12 +22,6 @@ Feature: Affiliate clients
     And I should not see "Analytics Center"
     And I should not see "Affiliate Center"
 
-  Scenario: Visiting the affiliate welcome page as analyst admin
-    Given I am logged in with email "analyst_admin@fixtures.org" and password "admin"
-    When I go to the affiliate welcome page
-    Then I should see "Analytics Center"
-    And I should not see "Admin Center"
-
   Scenario: Visiting the affiliate welcome page as affiliate
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate welcome page

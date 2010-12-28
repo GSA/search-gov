@@ -3,7 +3,7 @@
     = render "/shared/program_nav"
   - if current_user
     %li
-      = link_to 'USASearch Program', root_path
+      = link_to 'USASearch Program', program_path
       %ul
         %li
           = link_to 'Affiliate Program', affiliates_path
@@ -21,9 +21,9 @@
         %li
           = link_to 'Manage Affiliates', admin_affiliates_path
         %li
-          = link_to 'Affiliate Broadcast', admin_affiliate_broadcasts_path
+          = link_to 'Affiliate Broadcast', new_admin_affiliate_broadcast_path
         %li
-          = link_to 'Affiliate Boosted Sites', admin_boosted_sites_path
+          = link_to 'Affiliate Boosted', admin_affiliate_boosted_sites_path
         %li
           = link_to 'SAYT Filters', admin_sayt_filters_path
         %li
@@ -31,7 +31,9 @@
         %li
           = link_to 'SAYT Misspellings', admin_misspellings_path
         %li
-          = link_to 'SAYT Bulk Upload', admin_sayt_suggestions_upload_path
+          = link_to 'SAYT Bulk Upload', new_admin_sayt_suggestions_upload_path
+        %li
+          =link_to("Boosted Sites", admin_boosted_sites_path)
         %li
           = link_to 'Search Clickthrus', admin_clicks_path
         %li
@@ -48,16 +50,20 @@
           = link_to 'Superfresh URLs', admin_superfresh_urls_path
         %li
           = link_to 'Manage Users', admin_users_path
-      .clear
-  - display_for(:analyst_admin) do
-    %li
-      = link_to 'Analytics Center', analytics_home_page_path
-      %ul
         %li
-          = link_to 'Popular Queries', analytics_home_page_path
-        %li
-          = link_to 'Monthly Reports', monthly_reports_path
+          =link_to("Mobile Pages", admin_site_pages_path)
       .clear
+
+  /
+    - display_for(:analyst_admin) do
+      %li
+        = link_to 'Analytics Center', analytics_home_page_path
+        %ul
+          %li
+            = link_to 'Popular Queries', analytics_home_page_path
+          %li
+            = link_to 'Monthly Reports', monthly_reports_path
+        .clear
   - display_for(:affiliate) do
     %li
       = link_to 'Affiliate Center', home_affiliates_path

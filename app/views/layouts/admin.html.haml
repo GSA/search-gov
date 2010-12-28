@@ -18,10 +18,13 @@
     .container
       .span-8
         = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), admin_home_page_path)
-        %h1.alt=link_to("Admin Center",admin_home_page_path)
       .span-16.last.header
         = basic_header_navigation_for current_user
+    .secondary-navbar
+      .sec-nav-left
+        = render "/shared/affiliate_nav"
+    .container
       .span-24.main
-        %hr
+        = breadcrumbs([link_to('USASearch', program_path), link_to("Affiliate Program", affiliates_path), "Admin Center"])
         .span-6.prepend-9.append-9= show_flash_messages
         = yield

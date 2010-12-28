@@ -20,7 +20,7 @@
     .container
       .span-12
         = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :style=>"vertical-align:middle;"), home_page_path) 
-        = link_to(image_tag('USAsearchProgram_medium_en.png', :alt=>"USAsearch Home", :style=>"vertical-align:middle"), home_page_path)
+        = link_to(image_tag('USAsearchProgram_medium_en.png', :alt=>"USAsearch Home", :style=>"vertical-align:middle", :id => "program_logo"), program_path)
       .span-10.last.header
         = basic_header_navigation_for current_user
     .secondary-navbar

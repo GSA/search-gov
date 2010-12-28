@@ -30,6 +30,8 @@ module NavigationHelpers
       admin_home_page_path
     when /the spotlights admin homepage/
       admin_spotlights_path
+    when /admin site pages page/
+      admin_site_pages_path
     when /the affiliate admin broadcast page/
       new_admin_affiliate_broadcast_path
     when /the login page/
@@ -62,6 +64,8 @@ module NavigationHelpers
       affiliate_superfresh_urls_path(:locale => nil, :m => nil)
     when /the superfresh feed/
       main_superfresh_feed_path
+    when /admin sayt suggestions upload/
+      new_admin_sayt_suggestions_upload_path
     when /the developers home page/
       developers_path
     when /the developers signup page/
@@ -75,7 +79,7 @@ module NavigationHelpers
     when /the recalls search page/
       recalls_search_path
     when /the program welcome page/
-      program_path
+      program_path(:locale => nil, :m => nil)
     when /the api page/
       api_docs_path(:locale => nil, :m => nil)
     when /the searchusagov page/
