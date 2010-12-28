@@ -151,7 +151,20 @@ describe Search do
         URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(@uriresult)
         search.run
       end
-
+      
+      context "when the domains are separated by only '\\n'" do
+        before do
+          @affiliate.domains = %w(  foo.com bar.com  ).join("\n")
+          @affiliate.save
+        end
+        
+        it "should split the domains the same way" do
+          search = Search.new(@valid_options.merge(:affiliate => @affiliate))
+URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(@uriresult)
+        search.run
+        end
+      end
+      
       context "when a scope id parameter is passed" do
         it "should use the scope id with the default scope and ignore any domains if the scope id is valid" do
           search = Search.new(@valid_options.merge(:affiliate => @affiliate, :scope_id => 'PatentClass'))
