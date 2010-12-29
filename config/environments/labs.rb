@@ -26,5 +26,8 @@ config.logger.level = Logger::INFO
 # Sent in emails to users
 APP_URL = "labs.searchdemo.usa.gov"
 
+# protocol for login and logout url
+SSL_PROTOCOL = "http"
+
 # Enable threaded mode
 # config.threadsafe!

@@ -88,9 +88,9 @@ module ApplicationHelper
       elements << cur_user.email
       elements << link_to("My Account", account_path)
       elements << mail_to(APP_EMAIL_ADDRESS, "Contact Us")
-      elements << link_to("Logout", user_session_path, :method => :delete)
+      elements << link_to("Logout", user_session_url(:protocol => ENV["SSL_PROTOCOL"]), :method => :delete, :id => "logout")
     else
-      elements << link_to("Login", new_user_session_path)
+      elements << link_to("Login", new_user_session_url(:protocol => ENV["SSL_PROTOCOL"]), :id => "login")
       elements << link_to("Sign Up", new_account_path)
     end
     elements.join(" | ")

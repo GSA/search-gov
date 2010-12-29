@@ -1,15 +1,26 @@
 Feature: Program
   In order to provide information about hosted search services,
   I want to see information about affiliate program, API / web services and searchUSA.gov
-
-  Scenario: Show links to affiliate program, API / web services and searchUSA.gov
+  Scenario:
+ Show links to affiliate program, API / web services and searchUSA.gov
     Given I am on the program welcome page
     Then I should see "Affiliate Program" within ".main"
     And I should see "APIs and other web services" within ".main"
     And I should see "Search.USA.gov" within ".main"
-
+    And the "login" link should use full url
     When I follow "program_logo"
     Then I should be on the program welcome page
+
+    When I follow "Login"
+    Then I should be on the login page
+
+  Scenario: Visiting the affiliate welcome page as affiliate
+    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    When I go to the program welcome page
+    Then the "logout" link should use full url
+
+    When I follow "Logout"
+    Then I should be on the login page
 
   Scenario: Affiliate Program link should be on the affiliates page
     Given I am on the program welcome page

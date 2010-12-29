@@ -19,3 +19,6 @@ config.action_mailer.raise_delivery_errors = false
 
 # Sent in emails to users
 APP_URL = "localhost:3000"
+
+# protocol for login and logout url
+SSL_PROTOCOL = "http"
