@@ -88,9 +88,9 @@ module ApplicationHelper
       elements << cur_user.email
       elements << link_to("My Account", account_path)
       elements << mail_to(APP_EMAIL_ADDRESS, "Contact Us")
-      elements << link_to("Logout", user_session_url(:protocol => ENV["SSL_PROTOCOL"]), :method => :delete, :id => "logout")
+      elements << link_to("Logout", url_for_logout, :method => :delete)
     else
-      elements << link_to("Login", new_user_session_url(:protocol => ENV["SSL_PROTOCOL"]), :id => "login")
+      elements << link_to("Login", url_for_login)
       elements << link_to("Sign Up", new_account_path)
     end
     elements.join(" | ")
@@ -101,7 +101,7 @@ module ApplicationHelper
     if cur_user
       elements << cur_user.email
       elements << link_to("My Account", account_path)
-      elements << link_to("Logout", user_session_path, :method => :delete)
+      elements << link_to("Logout", url_for_logout, :method => :delete)
 #      elements << link_to("FAQ", analytics_faq_path)
       elements << link_to("Query Groups Admin", analytics_query_groups_path) if cur_user.is_analyst_admin?
     end
@@ -131,7 +131,25 @@ module ApplicationHelper
     content_tag(:div, arrow + link, :class=> is_footer ? "navFooter" : "navBodyItem")
   end
 
+  def url_for_login
+    url_for(:controller => "/user_sessions",
+            :action => "new",
+            :protocol => ssl_protocol,
+            :only_path => false)
+  end
+
+  def url_for_logout
+    url_for(:controller => "/user_sessions",
+            :action => "destroy",
+            :protocol => ssl_protocol,
+            :only_path => false)
+  end
+
   private
+
+  def ssl_protocol
+    SSL_PROTOCOL
+  end
 
   def iterate_links(links)
     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?

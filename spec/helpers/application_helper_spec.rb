@@ -121,4 +121,26 @@ describe ApplicationHelper do
       end
     end
   end
+
+  describe "#basic_header_navigation_for" do
+    before(:each) do
+      helper.stub(:ssl_protocol).and_return("aprotocol")
+    end
+
+    context "when user is not logged in" do
+      it "should use generate Login link with predefined SSL_PROTOCOL" do
+        content = helper.basic_header_navigation_for(nil)
+        content.should have_tag("a[href^=aprotocol]", "Login")
+      end
+    end
+
+    context "when user is logged in" do
+      it "should use generate Logout link with predefined SSL_PROTOCOL" do
+        user = stub("User", :email => "user@fixtures.org")
+        content = helper.basic_header_navigation_for(user)
+        content.should have_tag("a[href^=aprotocol]", "Logout")
+      end
+    end
+  end
+
 end
