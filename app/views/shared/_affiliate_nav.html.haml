@@ -54,16 +54,13 @@
           =link_to("Mobile Pages", admin_site_pages_path)
       .clear
 
-  /
-    - display_for(:analyst_admin) do
-      %li
-        = link_to 'Analytics Center', analytics_home_page_path
-        %ul
-          %li
-            = link_to 'Popular Queries', analytics_home_page_path
-          %li
-            = link_to 'Monthly Reports', monthly_reports_path
-        .clear
+  - display_for(:analyst) do
+    %li
+      = link_to 'Analyst Center', analytics_home_page_path
+      %ul
+        %li
+          = link_to 'Monthly Reports', monthly_reports_path
+      .clear
   - display_for(:affiliate) do
     %li
       = link_to 'Affiliate Center', home_affiliates_path

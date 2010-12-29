@@ -11,7 +11,7 @@ Feature: Affiliate clients
     And I should see "Search.USA.gov"
     And I should not see "USA Search Program"
     And I should not see "Admin Center"
-    And I should not see "Analytics Center"
+    And I should not see "Analyst Center"
     And I should not see "Affiliate Center"
     And I should not see "Developer"
 
@@ -19,7 +19,7 @@ Feature: Affiliate clients
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the affiliate welcome page
     Then I should see "Admin Center"
-    And I should not see "Analytics Center"
+    And I should not see "Analyst Center"
     And I should not see "Affiliate Center"
 
   Scenario: Visiting the affiliate welcome page as affiliate
@@ -27,7 +27,7 @@ Feature: Affiliate clients
     When I go to the affiliate welcome page
     Then I should see "Affiliate Center"
     And I should not see "Admin Center"
-    And I should not see "Analytics Center"
+    And I should not see "Analyst Center"
 
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
