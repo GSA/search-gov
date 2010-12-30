@@ -1,11 +1,13 @@
 .admin-footer
-  = link_to "Affiliate Program", affiliates_path
+  = link_to "Affiliate Program", affiliates_path, :class => "footer-link"
   |
-  = link_to "API & Web Services", api_docs_path
+  = link_to "API & Web Services", api_docs_path, :class => "footer-link"
   |
-  = link_to "Search.USA.gov", root_path
+  = link_to "Search.USA.gov", root_path, :class => "footer-link"
   %br
-  = link_to "USASearch Program", program_path
+  %br
+  %strong
+    = link_to "USASearch Program", program_path
   %p
     US General Services Administration
     %br

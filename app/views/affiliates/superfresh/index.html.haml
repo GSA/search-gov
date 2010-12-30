@@ -8,15 +8,24 @@
   pages and include them in their index.
 
 .left.span-17
+  = link_to 'Single URL', "#singleurl"
+  |
+  = link_to 'Bulk Upload', "#bulkupload"
+  |
+  = link_to 'Status', "#status"
+  %br
+  %br
   .content-box.pad20
+    %a{:name => "singleurl"}
     - form_for @superfresh_url, {:url => affiliate_superfresh_urls_path(@affiliate)} do |f|
       = f.label :url, "<h2>Single URL</h2>"
       = f.text_field :url
       = f.submit "Submit"
-    (e.g. data.gov)
+    (for example, http://www.sample.gov/folder/mypage.html)
   .clear
   %br
   .content-box.pad20
+    %a{:name => "bulkupload"}
     #bulk-upload
       %h2
         Bulk Upload
@@ -57,6 +66,7 @@
         = submit_tag "Upload"   
   .clear
   %br
+  %a{:name => "status"}
   %h2
     Status
   %br

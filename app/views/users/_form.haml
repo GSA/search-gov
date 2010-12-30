@@ -1,27 +1,62 @@
-%dl
-  %dt= form.label :email
-  %dd= form.text_field :email, :class => "text"
-  %dt= form.label :contact_name
-  %dd= form.text_field :contact_name, :class => "text"
+%table
+  %tr
+    %td
+      = form.label :email
+    %td
+      = form.text_field :email, :class => "text"
+  %tr
+    %td    
+      = form.label :contact_name
+    %td
+      = form.text_field :contact_name, :class => "text"
   - if @user.is_affiliate_or_higher
-    %dt= form.label :phone
-    %dd= form.text_field :phone, :class => "text"
-    %dt= form.label :organization_name
-    %dd= form.text_field :organization_name, :class => "text"
-    %dt= form.label :address, "Organization address"
-    %dd= form.text_field :address, :class => "text"
-    %dt= form.label :address2, "Address line 2"
-    %dd= form.text_field :address2, :class => "text"
-    %dt= form.label :city
-    %dd= form.text_field :city, :class => "text"
-    %dt= form.label :state
-    %dd= us_state_select 'user', 'state'
-    %dt= form.label :zip
-    %dd= form.text_field :zip, :class => "text"
-
-    %dt= form.label :time_zone
-    %dd= form.time_zone_select('time_zone', ActiveSupport::TimeZone.us_zones)
-  %dt= form.label :password, form.object.new_record? ? 'Enter password' : "Change password"
-  %dd= form.password_field :password, :class => "text"
-  %dt= form.label :password_confirmation
-  %dd= form.password_field :password_confirmation, :class => "text"
+    %tr
+      %td
+        = form.label :phone
+      %td
+        = form.text_field :phone, :class => "text"
+    %tr
+      %td
+        = form.label :organization_name
+      %td
+        = form.text_field :organization_name, :class => "text"
+    %tr
+      %td
+        = form.label :address, "Organization address"
+      %td
+        = form.text_field :address, :class => "text"
+    %tr
+      %td
+        = form.label :address2, "Address line 2"
+      %td
+        = form.text_field :address2, :class => "text"
+    %tr
+      %td
+        = form.label :city
+      %td
+        = form.text_field :city, :class => "text"
+    %tr
+      %td
+        = form.label :state
+      %td
+        = us_state_select 'user', 'state'
+    %tr
+      %td
+        = form.label :zip
+      %td
+        = form.text_field :zip, :class => "text"
+    %tr
+      %td
+        = form.label :time_zone
+      %td
+        = form.time_zone_select('time_zone', ActiveSupport::TimeZone.us_zones)      
+  %tr
+    %td
+      = form.label :password, form.object.new_record? ? 'Enter password' : "Change password"
+    %td
+      = form.password_field :password, :class => "text"
+  %tr
+    %td
+      = form.label :password_confirmation
+    %td
+      = form.password_field :password_confirmation, :class => "text"
