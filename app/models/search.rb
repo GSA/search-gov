@@ -326,5 +326,4 @@ class Search
   def strip_extra_chars_from(did_you_mean_suggestion)
     did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').strip.squish unless did_you_mean_suggestion.nil?
   end
-
 end

@@ -369,4 +369,56 @@ describe SearchesController do
       end
     end
   end
+
+  describe "#forms" do
+    integrate_views
+    before do
+      get :forms, :query => "taxes", :page => 2
+      @search = assigns[:search]
+      @page_title = assigns[:page_title]
+    end
+
+    should_render_template 'searches/index.html.haml', :layout => 'application'
+
+    it "should assign the query with a forms prefix as the page title" do
+      @page_title.should == "Forms Search for: taxes"
+    end
+
+    it "should show a custom title for the results page" do
+      response.body.should contain("Forms Search for: taxes - The U.S. Government's Official Web Search")
+    end
+
+    it "should set the query in the Search model" do
+      @search.query.should == "taxes"
+    end
+
+    it "should offset the start page in the Search model by one" do
+      @search.page.should == 1
+    end
+
+    it "should load results for a keyword query" do
+      @search.should_not be_nil
+      @search.results.should_not be_nil
+    end
+    
+    it "should use the FormSearch model to do the search" do
+      form_search_results = FormSearch.new(:query => 'taxes')
+      FormSearch.should_receive(:new).with(:results_per_page => nil, :query => "taxes", :enable_highlighting => true, :page => 1).and_return form_search_results
+      get :forms, :query => "taxes", :page => 2
+    end
+    
+    it "should render the search box with the form search path" do
+      response.body.should have_tag("form#search_form[method=get][action=/search/forms?locale=en&amp;m=false]")
+    end
+    
+    it "should not show any related search results" do
+      @search.related_search.should be_empty
+    end
+    
+    it "should have a Forms header at the top of the results, and link to Government Web and Images" do
+      response.body.should have_tag("a[href=/search?m=false&amp;query=taxes]", :text => "Government Web")
+      response.body.should have_tag("a[href=/search/images?m=false&amp;query=taxes]", :text => "Images")
+      response.body.should have_tag("li", :text => "Forms")
+    end
+  end
 end
