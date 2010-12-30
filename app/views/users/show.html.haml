@@ -1,34 +1,71 @@
 %h1
   My Account
-.span-14.header-box
-  API Key
-.span-14.content-box
+.span-17
+  %table.account-table
+    %tr
+      %th
+        Account Profile
+      %th{:style=>"text-align:right; font-size:smaller"}
+        =link_to "- edit your profile", edit_account_path
+    %tr{:class => cycle('even', 'odd')}
+      %td{:class=>"label"}
+        Email:
+      %td
+        &= @user.email
+    %tr
+      %td{:class=>"label"}
+        Contact Name:
+      %td
+        &= @user.contact_name
+    - if @user.is_affiliate_or_higher
+      %tr
+        %td{:class=>"label"}
+          Time Zone:
+        %td
+          &= @user.time_zone
+      %tr
+        %td{:class=>"label"}
+          Organization Name:
+        %td
+          &= @user.organization_name
+      %tr
+        %td{:class=>"label"}
+          Address:
+        %td
+          &= @user.address
+      %tr
+        %td{:class=>"label"}
+          Address Line 2:
+        %td
+          &= @user.address2
+      %tr
+        %td{:class=>"label"}
+          City:
+        %td
+          &= @user.city
+      %tr
+        %td{:class=>"label"} 
+          State:
+        %td
+          &= @user.state
+      %tr
+        %td{:class=>"label"} 
+          Zip:
+        %td
+          &= @user.zip
+      %tr
+        %td{:class=>"label"} 
+          Phone:
+        %td
+          &= @user.phone
+.clear
+
+.span-17
+  %h2
+    API Key
+  Control the look and feel of your search results pages by using the application program interface (API) for USASearch affiliates below.
+  %br
+  %br
+.span-17.content-box
   Your API key is:
   %b= @user.api_key
-.clear
-.span-14.header-box
-  Account Profile
-  =link_to "Edit your profile", edit_account_path
-.span-14.content-box
-  %dl
-    %dt Email:
-    %dd&= @user.email
-    %dt Contact Name:
-    %dd&= @user.contact_name
-    - if @user.is_affiliate_or_higher
-      %dt Time Zone:
-      %dd&= @user.time_zone
-      %dt Organization Name:
-      %dd&= @user.organization_name
-      %dt Address:
-      %dd&= @user.address
-      %dt Address Line 2:
-      %dd&= @user.address2
-      %dt City:
-      %dd&= @user.city
-      %dt State:
-      %dd&= @user.state
-      %dt Zip:
-      %dd&= @user.zip
-      %dt Phone:
-      %dd&= @user.phone
