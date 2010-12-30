@@ -682,9 +682,8 @@ URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%2
         @search.run
       end
 
-      it "should fall back to the result for the default affiliate" do
-        @search.related_search.size.should == 3
-        @search.related_search.first.should be_an_instance_of(String)
+      it "should not fall back to the result for the default affiliate" do
+        @search.related_search.size.should == 0
       end
     end
 
