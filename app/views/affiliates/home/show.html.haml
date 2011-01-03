@@ -15,7 +15,7 @@
       %td
         = link_to 'Edit', edit_affiliate_path(@affiliate)
         |
-        = link_to 'Current Site', search_url(:affiliate=> @affiliate.name, :query => "gov")
+        = link_to 'Current Site', search_url(:affiliate=> @affiliate.name, :query => "gov"), :target => "_blank"
         - if @affiliate.has_staged_content?
           |
           = link_to "View staged", search_url(:affiliate=> @affiliate.name, :query => "gov", :staged => 1)

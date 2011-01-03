@@ -90,7 +90,7 @@ module ApplicationHelper
     if cur_user
       elements << cur_user.email
       elements << link_to("My Account", account_path)
-      elements << mail_to(APP_EMAIL_ADDRESS, "Contact Us")
+      elements << link_to("Contact Us", contactus_path)
       elements << link_to("Logout", url_for_logout, :method => :delete)
     else
       elements << link_to("Login", url_for_login)

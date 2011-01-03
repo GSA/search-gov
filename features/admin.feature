@@ -17,7 +17,6 @@ Feature:  Administration
     And I should not see "Query Grouping"
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
-    And I should not see "Users" within ".header"
     And I should see "Mobile Pages" within "#nav"
     And I should see "Logout"
 

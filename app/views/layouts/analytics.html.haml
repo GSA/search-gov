@@ -22,9 +22,10 @@
     = calendar_date_select_includes
   %body
     .container
-      .span-8
-        = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), analytics_home_page_path)
-      .span-16.last.header
+      .span-10
+        = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :style=>"vertical-align:middle;"), home_page_path) 
+        = link_to(image_tag('USAsearchProgram_medium_en.png', :alt=>"USAsearch Home", :style=>"vertical-align:middle"), home_page_path)
+      .right
         = analytics_header_navigation_for current_user
     .secondary-navbar
       .sec-nav-left
