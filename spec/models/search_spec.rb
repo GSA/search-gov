@@ -151,20 +151,20 @@ describe Search do
         URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(@uriresult)
         search.run
       end
-      
+
       context "when the domains are separated by only '\\n'" do
         before do
           @affiliate.domains = %w(  foo.com bar.com  ).join("\n")
           @affiliate.save
         end
-        
+
         it "should split the domains the same way" do
           search = Search.new(@valid_options.merge(:affiliate => @affiliate))
 URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(@uriresult)
         search.run
         end
       end
-      
+
       context "when a scope id parameter is passed" do
         it "should use the scope id with the default scope and ignore any domains if the scope id is valid" do
           search = Search.new(@valid_options.merge(:affiliate => @affiliate, :scope_id => 'PatentClass'))
@@ -614,6 +614,19 @@ URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%2
       end
     end
 
+    context "when performing a search that has a uppercased related topic" do
+      before do
+        CalaisRelatedSearch.create!(:term=> "whatever", :related_terms => "Fred Espenak | big government | democracy")
+        CalaisRelatedSearch.reindex
+        @search = Search.new(:query=>"Fred Espenak")
+        @search.run
+      end
+
+      it "should not have the matching related topic in the array of strings" do
+        @search.related_search.should == ["big government", "democracy", "whatever"]
+      end
+    end
+
     context "when performing an affiliate search that has related topics" do
       before do
         CalaisRelatedSearch.create!(:term => "pivot term", :related_terms => "government grants | big government | democracy", :affiliate => @valid_options[:affiliate])
@@ -625,33 +638,33 @@ URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%2
         search.run
         search.related_search.should == ["big government" , "democracy","government grants", "pivot term"]
       end
-      
+
       context "when there are also related topics for the default affiliate" do
         before do
           @affiliate = @valid_options[:affiliate]
           CalaisRelatedSearch.create!(:term => "pivot term", :related_terms => "government health care | small government | fascism")
           CalaisRelatedSearch.reindex
         end
-      
+
         context "when the affiliate has affiliate related topics enabled" do
           before do
             @affiliate.related_topics_setting = 'affiliate_enabled'
             @affiliate.save
           end
-        
+
           it "should return the affiliate related topics" do
             search = Search.new(@valid_options)
             search.run
             search.related_search.should == ["big government" , "democracy", "government grants", "pivot term"]
           end
         end
-      
+
         context "when the affiliate has global related topics enabled" do
           before do
             @affiliate.related_topics_setting = 'global_enabled'
             @affiliate.save
           end
-        
+
           it "should return the global related topics" do
             search = Search.new(@valid_options)
             search.run
@@ -664,7 +677,7 @@ URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%2
             @affiliate.related_topics_setting = 'disabled'
             @affiliate.save
           end
-        
+
           it "should return the affiliate related topics" do
             search = Search.new(@valid_options)
             search.run

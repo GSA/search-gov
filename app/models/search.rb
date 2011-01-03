@@ -118,7 +118,7 @@ class Search
     related_terms = instance.related_terms
     related_terms_array = related_terms.split('|') << instance.term
     related_terms_array.each{|t| t.strip!}
-    related_terms_array.delete(self.query.downcase)
+    related_terms_array.delete_if {|related_term| self.query.casecmp(related_term).zero? }
     related_terms_array.sort! {|x,y| y.length <=> x.length }
     return related_terms_array[0,5].sort
   end
