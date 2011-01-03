@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101222015949) do
+ActiveRecord::Schema.define(:version => 20110103071549) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -287,7 +287,7 @@ ActiveRecord::Schema.define(:version => 20101222015949) do
   create_table "site_pages", :force => true do |t|
     t.string   "url_slug"
     t.string   "title"
-    t.string   "breadcrumb"
+    t.string   "breadcrumb",   :limit => 2048
     t.text     "main_content"
     t.datetime "created_at"
     t.datetime "updated_at"
