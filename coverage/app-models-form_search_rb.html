@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/gov_form.rb</title>
+    <title>app/models/form_search.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/models/gov_form.rb</h2>
+    <h2>app/models/form_search.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-gov_form_rb.html">app/models/gov_form.rb</a></td>
-            <td class='right_align'><tt>18</tt></td>
-            <td class='right_align'><tt>15</tt></td>
+            <td class="left_align"><a href="app-models-form_search_rb.html">app/models/form_search.rb</a></td>
+            <td class='right_align'><tt>17</tt></td>
+            <td class='right_align'><tt>12</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,109 +57,103 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class GovForm &lt; ActiveRecord::Base</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line2">2</a>   validates_presence_of :name, :form_number, :agency, :description, :url</pre></td>
+            <td><pre><a name="line1">1</a> class FormSearch &lt; Search</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a>   </pre></td>
+            <td><pre><a name="line2">2</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>   DEFAULT_SCOPE = &quot;(form OR forms) (site:gov OR site:mil OR site:usps.com) (filetype:pdf OR contains:pdf)&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a>   # TODO: weight the form_number field so that matches to that rank higher.</pre></td>
+            <td><pre><a name="line4">4</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   searchable do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>     text :name, :form_number</pre></td>
+            <td><pre><a name="line5">5</a>   protected</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a>   end</pre></td>
+            <td><pre><a name="line6">6</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>   def related_search_results</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     []</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>   def self.search_for(query, page = 1, per_page = 3)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>     GovForm.search do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>       keywords query do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>         highlight :name, { :fragment_size =&gt; 255, :max_snippets =&gt; 1, :merge_continuous_fragments =&gt; true }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>         highlight :form_number, { :fragment_size =&gt; 255, :max_snippets =&gt; 1, :merge_continuous_fragments =&gt; true }</pre></td>
+            <td><pre><a name="line9">9</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>       end</pre></td>
+            <td><pre><a name="line10">10</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>       paginate :page =&gt; page, :per_page =&gt; per_page</pre></td>
+            <td><pre><a name="line11">11</a>   def populate_additional_results</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     end rescue nil</pre></td>
+            <td><pre><a name="line12">12</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>   end</pre></td>
+            <td><pre><a name="line13">13</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>   def scope</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>     DEFAULT_SCOPE</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a> end</pre></td>
+            <td><pre><a name="line16">16</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line17">17</a> end</pre></td>
           </tr>
         
       </tbody>

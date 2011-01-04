@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>141</tt></td>
-            <td class='right_align'><tt>120</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>89.36%</tt></div>
+            <td class='right_align'><tt>160</tt></td>
+            <td class='right_align'><tt>135</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>90.62%</tt></div>
+          <div class="percent_graph">
+            <div class="covered" style="width:91px"></div>
+            <div class="uncovered" style="width:9px"></div>
+          </div></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>88.89%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:89px"></div>
             <div class="uncovered" style="width:11px"></div>
-          </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>87.50%</tt></div>
-          <div class="percent_graph">
-            <div class="covered" style="width:88px"></div>
-            <div class="uncovered" style="width:12px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -63,19 +63,19 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   def display_for(role)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line3">3</a>     yield if (current_user &amp;&amp; current_user.send(&quot;is_#{role}?&quot;))</pre></td>
+            <td><pre><a name="line2">2</a>   NON_CAPITALIZED = %w{a al an and ante as at bajo but by cabe con conmigo consigo contigo contra de del desde</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a>   end</pre></td>
+            <td><pre><a name="line3">3</a>       durante e el en entre et etc for from hacia hasta in into la las los mediante ni nor o of off on onto or out</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line4">4</a>       para pero por salvo según sin so sobre than the to tras u un una unas unos v versus via vs vía with y}</pre></td>
           </tr>
         
           
@@ -87,823 +87,937 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   def sentence_case(str)</pre></td>
+            <td><pre><a name="line6">6</a>   def display_for(role)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     non_capitalized = %w{ of etc and by the for on is at to but nor or a via de los des el del }</pre></td>
+            <td><pre><a name="line7">7</a>     yield if (current_user &amp;&amp; current_user.send(&quot;is_#{role}?&quot;))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line9">9</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     str.gsub(/\b[a-z]+/) { |w| non_capitalized.include?(w) ? w : w.capitalize }.sub(/^[a-z]/) { |l| l.upcase }.sub(/\b[a-z][^\s]*?$/) { |l| l.capitalize }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line9">9</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line10">10</a> </pre></td>
+            <td><pre><a name="line10">10</a>   def sentence_case(str)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>   def build_page_title(page_title)</pre></td>
+            <td><pre><a name="line11">11</a>     str.gsub(/\b[a-z]+/) { |w| NON_CAPITALIZED.include?(w) ? w : w.capitalize }.sub(/^[a-z]/) { |l| l.upcase }.sub(/\b[a-z][^\s]*?$/) { |l| l.capitalize }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line12">12</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line13">13</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     (page_title.blank? ? &quot;&quot; : &quot;#{page_title} - &quot;) + (t :site_title)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a> </pre></td>
+            <td><pre><a name="line14">14</a>   def build_page_title(page_title)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   def show_flash_messages</pre></td>
+            <td><pre><a name="line15">15</a>     (page_title.blank? ? &quot;&quot; : &quot;#{page_title} - &quot;) + (t :site_title)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line16">16</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line17">17</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     unless (flash.nil? or flash.empty?)</pre></td>
+            <td><pre><a name="line18">18</a>   def show_flash_messages</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       html = content_tag(:div, flash.collect { |key, msg| content_tag(:div, msg, :class =&gt; key) }, :id =&gt; 'flash-message', :class =&gt; 'flash-message')</pre></td>
+            <td><pre><a name="line19">19</a>     unless (flash.nil? or flash.empty?)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>       html &lt;&lt; content_tag(:script, &quot;setTimeout(\&quot;new Effect.Fade('flash-message');\&quot;,15000)&quot;, :type =&gt; 'text/javascript')</pre></td>
+            <td><pre><a name="line20">20</a>       html = content_tag(:div, flash.collect { |key, msg| content_tag(:div, msg, :class =&gt; key) }, :id =&gt; 'flash-message', :class =&gt; 'flash-message')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>       html</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line21">21</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line22">22</a> </pre></td>
+            <td><pre><a name="line21">21</a>       html &lt;&lt; content_tag(:script, &quot;setTimeout(\&quot;new Effect.Fade('flash-message');\&quot;,15000)&quot;, :type =&gt; 'text/javascript')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>   def url_for_mobile_mode(new_mobile_mode)</pre></td>
+            <td><pre><a name="line22">22</a>       html</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line24">24</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line25">25</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>     new_params = request.params.update({:m =&gt; new_mobile_mode.to_s})</pre></td>
+            <td><pre><a name="line26">26</a>   def url_for_mobile_mode(new_mobile_mode)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>     url_for({:controller =&gt; params[:controller], :action =&gt; params[:action], :params =&gt; new_params})</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line26">26</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line27">27</a> </pre></td>
+            <td><pre><a name="line27">27</a>     new_params = request.params.update({:m =&gt; new_mobile_mode.to_s})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>   def link_to_mobile_mode(text, new_mobile_mode)</pre></td>
+            <td><pre><a name="line28">28</a>     url_for({:controller =&gt; params[:controller], :action =&gt; params[:action], :params =&gt; new_params})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line29">29</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line30">30</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>     link_to(text, url_for_mobile_mode(new_mobile_mode))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line30">30</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line31">31</a> </pre></td>
+            <td><pre><a name="line31">31</a>   def link_to_mobile_mode(text, new_mobile_mode)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>   HEADER_LINKS = {</pre></td>
+            <td><pre><a name="line32">32</a>     link_to(text, url_for_mobile_mode(new_mobile_mode))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>     :en =&gt; [</pre></td>
+            <td><pre><a name="line33">33</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>       [&quot;USA.gov&quot;, &quot;http://usa.gov&quot;],</pre></td>
+            <td><pre><a name="line34">34</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>   HEADER_LINKS = {</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>       [&quot;GobiernoUSA.gov&quot;, &quot;http://GobiernoUSA.gov&quot;],</pre></td>
+            <td><pre><a name="line36">36</a>     :en =&gt; [</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>       [&quot;Email USA.gov&quot;, &quot;http://www.usa.gov/questions&quot;]</pre></td>
+            <td><pre><a name="line37">37</a>       [&quot;USA.gov&quot;, &quot;http://usa.gov&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line38">38</a>       [&quot;GobiernoUSA.gov&quot;, &quot;http://GobiernoUSA.gov&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line39">39</a>       [&quot;Email USA.gov&quot;, &quot;http://www.usa.gov/questions&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line37">37</a>     ],</pre></td>
+            <td><pre><a name="line40">40</a>     ],</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line38">38</a>     :es =&gt; [</pre></td>
+            <td><pre><a name="line41">41</a>     :es =&gt; [</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line39">39</a>       [&quot;GobiernoUSA.gov&quot;, &quot;http://GobiernoUSA.gov&quot;],</pre></td>
+            <td><pre><a name="line42">42</a>       [&quot;GobiernoUSA.gov&quot;, &quot;http://GobiernoUSA.gov&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line40">40</a>       [&quot;USA.gov (en inglés)&quot;, &quot;http://usa.gov&quot;],</pre></td>
+            <td><pre><a name="line43">43</a>       [&quot;USA.gov (en inglés)&quot;, &quot;http://usa.gov&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line41">41</a>       [&quot;Contáctenos&quot;, &quot;http://www.usa.gov/gobiernousa/Contactenos.shtml&quot;]</pre></td>
+            <td><pre><a name="line44">44</a>       [&quot;Contáctenos&quot;, &quot;http://www.usa.gov/gobiernousa/Contactenos.shtml&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line42">42</a>     ]</pre></td>
+            <td><pre><a name="line45">45</a>     ]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line43">43</a>   }</pre></td>
+            <td><pre><a name="line46">46</a>   }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line44">44</a> </pre></td>
+            <td><pre><a name="line47">47</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>   FOOTER_LINKS = {</pre></td>
+            <td><pre><a name="line48">48</a>   FOOTER_LINKS = {</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>     :en =&gt; [</pre></td>
+            <td><pre><a name="line49">49</a>     :en =&gt; [</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>       [&quot;Home&quot;, &quot;http://www.usa.gov/index.shtml&quot;],</pre></td>
+            <td><pre><a name="line50">50</a>       [&quot;Home&quot;, &quot;http://www.usa.gov/index.shtml&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a>       [&quot;About Us&quot;, &quot;http://www.usa.gov/About.shtml&quot;],</pre></td>
+            <td><pre><a name="line51">51</a>       [&quot;About Us&quot;, &quot;http://www.usa.gov/About.shtml&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a>       [&quot;Contact Us&quot;, &quot;http://www.usa.gov/Contact_Us.shtml&quot;],</pre></td>
+            <td><pre><a name="line52">52</a>       [&quot;Contact Us&quot;, &quot;http://www.usa.gov/Contact_Us.shtml&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>       [&quot;Contact Government&quot;, &quot;http://www.usa.gov/Contact/Elected.shtml&quot;],</pre></td>
+            <td><pre><a name="line53">53</a>       [&quot;Contact Government&quot;, &quot;http://www.usa.gov/Contact/Elected.shtml&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a>       [&quot;FAQs&quot;, &quot;http://www.usa.gov/Contact/Faq.shtml&quot;],</pre></td>
+            <td><pre><a name="line54">54</a>       [&quot;FAQs&quot;, &quot;http://www.usa.gov/Contact/Faq.shtml&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>       [&quot;Website Policies&quot;, &quot;http://www.usa.gov/About/Important_Notices.shtml&quot;],</pre></td>
+            <td><pre><a name="line55">55</a>       [&quot;Website Policies&quot;, &quot;http://www.usa.gov/About/Important_Notices.shtml&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line53">53</a>       [&quot;Privacy&quot;, &quot;http://www.usa.gov/About/Privacy_Security.shtml&quot;],</pre></td>
+            <td><pre><a name="line56">56</a>       [&quot;Privacy&quot;, &quot;http://www.usa.gov/About/Privacy_Security.shtml&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a>       [&quot;Suggest-A-Link&quot;, &quot;http://www.usa.gov/feedback/SuggestLinkForm.jsp&quot;],</pre></td>
+            <td><pre><a name="line57">57</a>       [&quot;Suggest-A-Link&quot;, &quot;http://www.usa.gov/feedback/SuggestLinkForm.jsp&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line55">55</a>       [&quot;Link to Us&quot;, &quot;http://www.usa.gov/About/Usagov_Logos.shtml&quot;],</pre></td>
+            <td><pre><a name="line58">58</a>       [&quot;Link to Us&quot;, &quot;http://www.usa.gov/About/Usagov_Logos.shtml&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a>       [&quot;Accessibility&quot;, &quot;/pages/accessibility&quot;],</pre></td>
+            <td><pre><a name="line59">59</a>       [&quot;Accessibility&quot;, &quot;/pages/accessibility&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line57">57</a>       [&quot;API&quot;, &quot;/api&quot;]</pre></td>
+            <td><pre><a name="line60">60</a>       [&quot;API&quot;, &quot;/api&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line58">58</a>     ],</pre></td>
+            <td><pre><a name="line61">61</a>     ],</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line59">59</a>     :es =&gt; [</pre></td>
+            <td><pre><a name="line62">62</a>     :es =&gt; [</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line60">60</a>       [&quot;GobiernoUSA.gov&quot;, &quot;http://GobiernoUSA.gov&quot;],</pre></td>
+            <td><pre><a name="line63">63</a>       [&quot;GobiernoUSA.gov&quot;, &quot;http://GobiernoUSA.gov&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line61">61</a>       [&quot;Privacidad&quot;, &quot;http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml&quot;],</pre></td>
+            <td><pre><a name="line64">64</a>       [&quot;Privacidad&quot;, &quot;http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line62">62</a>       [&quot;Enlace su sitio al nuestro&quot;, &quot;http://www.usa.gov/gobiernousa/link_to_us.shtml&quot;],</pre></td>
+            <td><pre><a name="line65">65</a>       [&quot;Enlace su sitio al nuestro&quot;, &quot;http://www.usa.gov/gobiernousa/link_to_us.shtml&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line63">63</a>       [&quot;Sugiera un enlace&quot;, &quot;http://www.usa.gov/feedback/sugieraunenlaceformulario.jsp&quot;]</pre></td>
+            <td><pre><a name="line66">66</a>       [&quot;Sugiera un enlace&quot;, &quot;http://www.usa.gov/feedback/sugieraunenlaceformulario.jsp&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line64">64</a>     ]</pre></td>
+            <td><pre><a name="line67">67</a>     ]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line65">65</a>   }</pre></td>
+            <td><pre><a name="line68">68</a>   }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line66">66</a> </pre></td>
+            <td><pre><a name="line69">69</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>   BACKGROUND_COLORS = {:en =&gt; &quot;#003366&quot;, :es =&gt; &quot;#A40000&quot;}</pre></td>
+            <td><pre><a name="line70">70</a>   BACKGROUND_COLORS = {:en =&gt; &quot;#003366&quot;, :es =&gt; &quot;#A40000&quot;}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line68">68</a> </pre></td>
+            <td><pre><a name="line71">71</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line69">69</a>   def header_links</pre></td>
+            <td><pre><a name="line72">72</a>   def header_links</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>     iterate_links(HEADER_LINKS[I18n.locale.to_sym])</pre></td>
+            <td><pre><a name="line73">73</a>     iterate_links(HEADER_LINKS[I18n.locale.to_sym])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line71">71</a>   end</pre></td>
+            <td><pre><a name="line74">74</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line72">72</a> </pre></td>
+            <td><pre><a name="line75">75</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>   def footer_links</pre></td>
+            <td><pre><a name="line76">76</a>   def footer_links</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>     iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone &lt;&lt; [&quot;Mobile&quot;, I18n.locale.to_s == 'es' ? search_path(:query =&gt; '', :locale =&gt; 'es', :m =&gt; 'true') :url_for_mobile_mode(&quot;true&quot;)])</pre></td>
+            <td><pre><a name="line77">77</a>     iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone &lt;&lt; [t(:mobile), I18n.locale.to_s == 'es' ? search_path(:query =&gt; '', :locale =&gt; 'es', :m =&gt; 'true') :url_for_mobile_mode(&quot;true&quot;)])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line75">75</a>   end</pre></td>
+            <td><pre><a name="line78">78</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line76">76</a> </pre></td>
+            <td><pre><a name="line79">79</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line77">77</a>   def render_webtrends_code</pre></td>
+            <td><pre><a name="line80">80</a>   def render_webtrends_code</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line78">78</a>     if params[:locale] == 'es'</pre></td>
+            <td><pre><a name="line81">81</a>     if params[:locale] == 'es'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>       render :partial =&gt; 'shared/webtrends_spanish'</pre></td>
+            <td><pre><a name="line82">82</a>       render :partial =&gt; 'shared/webtrends_spanish'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line80">80</a>     else</pre></td>
+            <td><pre><a name="line83">83</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>       render :partial =&gt; 'shared/webtrends_english'</pre></td>
+            <td><pre><a name="line84">84</a>       render :partial =&gt; 'shared/webtrends_english'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line82">82</a>     end</pre></td>
+            <td><pre><a name="line85">85</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line83">83</a>   end</pre></td>
+            <td><pre><a name="line86">86</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line84">84</a> </pre></td>
+            <td><pre><a name="line87">87</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>   def basic_header_navigation_for(cur_user)</pre></td>
+            <td><pre><a name="line88">88</a>   def basic_header_navigation_for(cur_user)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line86">86</a>     elements = []</pre></td>
+            <td><pre><a name="line89">89</a>     elements = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line87">87</a>     if cur_user</pre></td>
+            <td><pre><a name="line90">90</a>     if cur_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>       elements &lt;&lt; cur_user.email</pre></td>
+            <td><pre><a name="line91">91</a>       elements &lt;&lt; cur_user.email</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line89">89</a>       elements &lt;&lt; link_to(&quot;My Account&quot;, account_path)</pre></td>
+            <td><pre><a name="line92">92</a>       elements &lt;&lt; link_to(&quot;My Account&quot;, account_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line90">90</a>       elements &lt;&lt; link_to(&quot;Users&quot;, admin_users_path) if cur_user.is_affiliate_admin?</pre></td>
+            <td><pre><a name="line93">93</a>       elements &lt;&lt; mail_to(APP_EMAIL_ADDRESS, &quot;Contact Us&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line91">91</a>       elements &lt;&lt; mail_to(APP_EMAIL_ADDRESS, &quot;Contact Us&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line92">92</a>       elements &lt;&lt; link_to(&quot;Logout&quot;, user_session_path, :method =&gt; :delete)</pre></td>
+            <td><pre><a name="line94">94</a>       elements &lt;&lt; link_to(&quot;Logout&quot;, url_for_logout, :method =&gt; :delete)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line93">93</a>     else</pre></td>
+            <td><pre><a name="line95">95</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line94">94</a>       elements &lt;&lt; link_to(&quot;Login&quot;, new_user_session_path)</pre></td>
+            <td><pre><a name="line96">96</a>       elements &lt;&lt; link_to(&quot;Login&quot;, url_for_login)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line95">95</a>       elements &lt;&lt; link_to(&quot;Sign Up&quot;, new_account_path)</pre></td>
+            <td><pre><a name="line97">97</a>       elements &lt;&lt; link_to(&quot;Sign Up&quot;, new_account_path)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line96">96</a>     end</pre></td>
+            <td><pre><a name="line98">98</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line97">97</a>     elements.join(&quot; | &quot;)</pre></td>
+            <td><pre><a name="line99">99</a>     elements.join(&quot; | &quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line98">98</a>   end</pre></td>
+            <td><pre><a name="line100">100</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line99">99</a> </pre></td>
+            <td><pre><a name="line101">101</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line100">100</a>   def analytics_header_navigation_for(cur_user)</pre></td>
+            <td><pre><a name="line102">102</a>   def analytics_header_navigation_for(cur_user)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line101">101</a>     elements = []</pre></td>
+            <td><pre><a name="line103">103</a>     elements = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line102">102</a>     if cur_user</pre></td>
+            <td><pre><a name="line104">104</a>     if cur_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line103">103</a>       elements &lt;&lt; cur_user.email</pre></td>
+            <td><pre><a name="line105">105</a>       elements &lt;&lt; cur_user.email</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line104">104</a>       elements &lt;&lt; link_to(&quot;My Account&quot;, account_path)</pre></td>
+            <td><pre><a name="line106">106</a>       elements &lt;&lt; link_to(&quot;My Account&quot;, account_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line105">105</a>       elements &lt;&lt; link_to(&quot;Logout&quot;, user_session_path, :method =&gt; :delete)</pre></td>
+            <td><pre><a name="line107">107</a>       elements &lt;&lt; link_to(&quot;Logout&quot;, url_for_logout, :method =&gt; :delete)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line106">106</a> #      elements &lt;&lt; link_to(&quot;FAQ&quot;, analytics_faq_path)</pre></td>
+            <td><pre><a name="line108">108</a> #      elements &lt;&lt; link_to(&quot;FAQ&quot;, analytics_faq_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line107">107</a>       elements &lt;&lt; link_to(&quot;Query Groups Admin&quot;, analytics_query_groups_path) if cur_user.is_analyst_admin?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line108">108</a>       elements &lt;&lt; link_to(&quot;Monthly Reports&quot;, monthly_reports_path) if cur_user.is_analyst?</pre></td>
+            <td><pre><a name="line109">109</a>       elements &lt;&lt; link_to(&quot;Query Groups Admin&quot;, analytics_query_groups_path) if cur_user.is_analyst_admin?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line109">109</a>     end</pre></td>
+            <td><pre><a name="line110">110</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line110">110</a>     elements.join(&quot; | &quot;)</pre></td>
+            <td><pre><a name="line111">111</a>     elements.join(&quot; | &quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line111">111</a>   end</pre></td>
+            <td><pre><a name="line112">112</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line112">112</a> </pre></td>
+            <td><pre><a name="line113">113</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line113">113</a>   def other_locale_str</pre></td>
+            <td><pre><a name="line114">114</a>   def other_locale_str</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line114">114</a>     I18n.locale.to_s == &quot;en&quot; ? &quot;es&quot; : &quot;en&quot;</pre></td>
+            <td><pre><a name="line115">115</a>     I18n.locale.to_s == &quot;en&quot; ? &quot;es&quot; : &quot;en&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line115">115</a>   end</pre></td>
+            <td><pre><a name="line116">116</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line116">116</a> </pre></td>
+            <td><pre><a name="line117">117</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line117">117</a>   def english_locale?</pre></td>
+            <td><pre><a name="line118">118</a>   def english_locale?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line118">118</a>     I18n.locale.to_s == &quot;en&quot;</pre></td>
+            <td><pre><a name="line119">119</a>     I18n.locale.to_s == &quot;en&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line119">119</a>   end</pre></td>
+            <td><pre><a name="line120">120</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line120">120</a> </pre></td>
+            <td><pre><a name="line121">121</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line121">121</a>   def locale_dependent_background_color</pre></td>
+            <td><pre><a name="line122">122</a>   def locale_dependent_background_color</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line122">122</a>     BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]</pre></td>
+            <td><pre><a name="line123">123</a>     BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line123">123</a>   end</pre></td>
+            <td><pre><a name="line124">124</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line124">124</a> </pre></td>
+            <td><pre><a name="line125">125</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line125">125</a>   def highlight_hit(hit, sym)</pre></td>
+            <td><pre><a name="line126">126</a>   def highlight_hit(hit, sym)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line126">126</a>     return hit.highlights(sym).first.format { |phrase| &quot;&lt;strong&gt;#{h phrase}&lt;/strong&gt;&quot; } unless hit.highlights(sym).first.nil?</pre></td>
+            <td><pre><a name="line127">127</a>     return hit.highlights(sym).first.format { |phrase| &quot;&lt;strong&gt;#{h phrase}&lt;/strong&gt;&quot; } unless hit.highlights(sym).first.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line127">127</a>     hit.instance.send(sym)</pre></td>
+            <td><pre><a name="line128">128</a>     hit.instance.send(sym)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line128">128</a>   end</pre></td>
+            <td><pre><a name="line129">129</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line129">129</a> </pre></td>
+            <td><pre><a name="line130">130</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line130">130</a>   def mobile_menu_item(link_text, target, is_footer = false)</pre></td>
+            <td><pre><a name="line131">131</a>   def mobile_menu_item(link_text, target, is_footer = false)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line131">131</a>     arrow = content_tag(:div, '&gt;', :class=&gt; &quot;navFloatRight&quot;)</pre></td>
+            <td><pre><a name="line132">132</a>     arrow = content_tag(:div, '&gt;', :class=&gt; &quot;navFloatRight&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line132">132</a>     link = link_to link_text, target, :class =&gt; &quot;mobileNavLink&quot;</pre></td>
+            <td><pre><a name="line133">133</a>     link = link_to link_text, target, :class =&gt; &quot;mobileNavLink&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line133">133</a>     content_tag(:div, arrow + link, :class=&gt; is_footer ? &quot;navFooter&quot; : &quot;navBodyItem&quot;)</pre></td>
+            <td><pre><a name="line134">134</a>     content_tag(:div, arrow + link, :class=&gt; is_footer ? &quot;navFooter&quot; : &quot;navBodyItem&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line134">134</a>   end</pre></td>
+            <td><pre><a name="line135">135</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line135">135</a> </pre></td>
+            <td><pre><a name="line136">136</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line136">136</a>   private</pre></td>
+            <td><pre><a name="line137">137</a>   def url_for_login</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line137">137</a> </pre></td>
+            <td><pre><a name="line138">138</a>     url_for(:controller =&gt; &quot;/user_sessions&quot;,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line139">139</a>             :action =&gt; &quot;new&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line138">138</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line140">140</a>             :protocol =&gt; ssl_protocol,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line139">139</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+            <td><pre><a name="line141">141</a>             :only_path =&gt; false)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line140">140</a>   end</pre></td>
+            <td><pre><a name="line142">142</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line141">141</a> end</pre></td>
+            <td><pre><a name="line143">143</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line144">144</a>   def url_for_logout</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line145">145</a>     url_for(:controller =&gt; &quot;/user_sessions&quot;,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line146">146</a>             :action =&gt; &quot;destroy&quot;,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line147">147</a>             :protocol =&gt; ssl_protocol,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line148">148</a>             :only_path =&gt; false)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line149">149</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line150">150</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line151">151</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line152">152</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line153">153</a>   def ssl_protocol</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line154">154</a>     SSL_PROTOCOL</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line155">155</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line156">156</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line157">157</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line158">158</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line159">159</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line160">160</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Dec 22 13:14:16 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Jan 04 08:52:24 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
