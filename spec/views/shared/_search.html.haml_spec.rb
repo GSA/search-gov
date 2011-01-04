@@ -28,13 +28,13 @@ describe "shared/_search.html.haml" do
         render :locals => { :path => search_path, :search => @search, :affiliate => @affiliate }
         response.should contain(/Advanced Search/)
       end
-      
+
       context "when a scope id is specified" do
         before do
           @search.stub!(:scope_id).and_return "SomeScope"
           assigns[:scope_id] = 'SomeScope'
         end
-        
+
         it "should include a hidden tag with the scope id" do
           @search.scope_id.should == 'SomeScope'
           render :locals => { :path => search_path, :search => @search, :affiliate => @affiliate, :scope_id => 'SomeScope'}
