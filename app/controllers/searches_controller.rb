@@ -2,7 +2,8 @@ class SearchesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_filter :handle_old_advanced_form, :only => [ :index ]
   before_filter :grab_format
-  before_filter :set_search_options
+  before_filter :set_search_options, :except => :forms
+  before_filter :set_form_search_options, :only => :forms
   has_mobile_fu
   before_filter :adjust_mobile_mode
   SAYT_SUGGESTION_SIZE = 15
@@ -12,6 +13,7 @@ class SearchesController < ApplicationController
   def index
     @search = Search.new(@search_options)
     @search.run
+    @form_path = search_path
     @page_title = @search.query
     handle_affiliate_search
     if @search_options[:affiliate]
@@ -22,6 +24,18 @@ class SearchesController < ApplicationController
         format.mobile
         format.json { render :json => @search }
       end
+    end
+  end
+  
+  def forms
+    @search = FormSearch.new(@search_options)
+    @search.run
+    @form_path = forms_search_path
+    @page_title = "Forms Search for: #{@search.query}"
+    respond_to do |format|
+      format.html { render :action => :index }
+      format.mobile { render :action => :index }
+      format.json { render :json => @search }
     end
   end
 
@@ -94,6 +108,15 @@ class SearchesController < ApplicationController
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
     }
   end
+  
+  def set_form_search_options
+    @search_options = {
+      :page => (params[:page].to_i - 1),
+      :query => params["query"],
+      :results_per_page => params["per-page"],
+      :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
+    }    
+  end
 
   def adjust_mobile_mode
     request.format = :html if @search_options[:affiliate].present? or is_advanced_search?
@@ -103,5 +126,4 @@ class SearchesController < ApplicationController
   def is_advanced_search?
     params[:action] == "advanced"
   end
-
 end

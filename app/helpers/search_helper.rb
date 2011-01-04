@@ -118,7 +118,7 @@ module SearchHelper
   end
 
   def web_search?
-    ["searches", "home"].include?(controller.controller_name)
+    ["searches", "home"].include?(controller.controller_name) and controller.action_name == "index"
   end
 
   def image_search?
@@ -127,6 +127,10 @@ module SearchHelper
   
   def recalls_search?
     controller.controller_name == "recalls"
+  end
+  
+  def forms_search?
+    controller.controller_name == "searches" and controller.action_name == "forms"
   end
 
   def no_results_for(query)
