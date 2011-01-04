@@ -4,7 +4,7 @@ describe "layouts/application.mobile.haml" do
     it "should should show the movile webtrends javascript" do
       template.stub!(:is_device?).and_return false
       render
-      response.body.should contain(/webtrends_mobile/)
+      response.body.should have_tag("script[src=/javascripts/webtrends_mobile.js][type=text/javascript]")
     end
   end
 end
