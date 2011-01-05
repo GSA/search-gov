@@ -7,6 +7,7 @@ Feature: Forms Home Page and Search
     Given I am on the homepage
     When I follow "Forms" within "#search_form"
     Then I should be on the forms home page
+    And I should see "Forms.gov has moved!"
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the forms search page
@@ -44,7 +45,7 @@ Feature: Forms Home Page and Search
     When I follow "Formas"
     Then I should be on the forms home page
     And I should see "Todo el Gobierno"
-    And I should see "Hola! Usted ha sido redirigido a Search.USA.gov/forms, su nueva casa para encontrar EE.UU. Formas de Gobierno."
+    And I should see "Forms.gov se ha movido! "
     
     When I fill in "query" with "impuestos"
     And I submit the search form

@@ -3,6 +3,8 @@
   = link_to(image_tag("USAsearch_large_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale))
   = render "shared/search", :path => forms_search_path
 
-#message{:style => "text-align: center; color: #2200CC; font-size: 1.5em;"}
-  %a{:name => "message"}
-  = t :forms_home_page_message
+.prepend-6.span-15.append-3{:style => "color: #1C3F94;"}
+  #message-title{:style => "font-size: 1.7em"}
+    = t :forms_home_page_message_title
+  #message{:style => "font-size: 1.5em"}
+    = t :forms_home_page_message
