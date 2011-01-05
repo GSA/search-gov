@@ -386,11 +386,11 @@ describe SearchesController do
       should_render_template 'searches/index.html.haml', :layout => 'application'
 
       it "should assign the query with a forms prefix as the page title" do
-        @page_title.should == "Forms Search for: taxes"
+        @page_title.should == "taxes"
       end
 
       it "should show a custom title for the results page" do
-        response.body.should contain("Forms Search for: taxes - The U.S. Government's Official Web Search")
+        response.body.should contain("taxes - The U.S. Government's Official Web Search")
       end
 
       it "should set the query in the Search model" do
