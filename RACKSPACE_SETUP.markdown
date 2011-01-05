@@ -188,7 +188,7 @@ This could take a while the first time it runs, as many gems are installed/built
 
 ## Installing Redis
 
-The Redis server runs on staging, and on the production cron machine. These instructions install it as a service on the cron machine.
+A Redis instance runs on staging, the production cron machine, and the ROR machine (drweb) in the disaster recovery environment. These instructions show how it got installed as a service on the cron machine.
 
 Get configuration file and init.d file from staging server:
 
@@ -217,6 +217,8 @@ Verify it's working:
     ./redis-cli set mykey somevalue
     ./redis-cli get mykey
     ./redis-cli del mykey
+    ./redis-cli get mykey
+    ./redis-cli info
 
 ## Resque workers
 
