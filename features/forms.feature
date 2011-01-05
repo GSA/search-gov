@@ -37,27 +37,16 @@ Feature: Forms Home Page and Search
     When I fill in "query" with a 10000 character string
     And I submit the search form
     Then I should see "That is too long a word. Try using a shorter word."
-
-  Scenario: Searching for forms as a Spanish speaker
-    Given I am on the homepage
-    And I follow "Busque en español"
-    Then I should see "Formas"
-    When I follow "Formas"
-    Then I should be on the forms home page
-    And I should see "Todo el Gobierno"
-    And I should see "Forms.gov se ha movido! "
     
-    When I fill in "query" with "impuestos"
-    And I submit the search form
-    Then I should be on the forms search page
-    And I should see "Resultados"
-    
-  Scenario: Visiting the forms search page as a Spanish speaker
+  Scenario: No Spanish or Advanced links
     Given I am on the forms home page
-    And I follow "Busque en español"
-    Then I should see "Contáctenos"
-    And I should see "Sugiera un enlace"
-
+    Then I should not see "Advanced Search"
+    And I should not see "Busque en español"
+    
+    Given I am on the forms search page
+    Then I should not see "Advanced Search"
+    And I should not see "Busque en español"
+    
   Scenario: Switching to web search
     Given I am on the forms home page
     When I fill in "query" with "White House"

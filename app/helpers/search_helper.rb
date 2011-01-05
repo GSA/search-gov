@@ -139,7 +139,7 @@ module SearchHelper
   end
   
   def search_box_forms_link(search_params)
-    controller.controller_name == "home" ? forms_path(:locale => I18n.locale.to_s) : forms_search_path(search_params)
+    controller.controller_name == "home" ? forms_path : forms_search_path(search_params)
   end
 
   def no_results_for(query)
