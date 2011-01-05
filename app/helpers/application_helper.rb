@@ -148,6 +148,14 @@ module ApplicationHelper
             :only_path => false)
   end
 
+  def favicon_link_tag
+    tag('link', {
+        :rel  => 'shortcut icon',
+        :type => 'image/vnd.microsoft.icon',
+        :href => path_to_image("/favicon.ico")
+    })
+  end
+
   private
 
   def ssl_protocol

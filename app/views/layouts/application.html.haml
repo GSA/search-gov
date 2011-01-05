@@ -3,6 +3,7 @@
   %head
     %title= h build_page_title(@page_title)
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
+    = favicon_link_tag
     = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/base.css'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
@@ -25,7 +26,7 @@
           #headerlinks
             = header_links
           #skiplink
-            %a{:href => "#content"} Skip to Main Content&nbsp;|&nbsp;  
+            %a{:href => "#content"} Skip to Main Content&nbsp;|&nbsp;
       .span-24.main-wrap
         .main
           #need-larger-text= link_to((t :need_larger_text), page_path(:id => 'textsize'), :locale => other_locale_str)
