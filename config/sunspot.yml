@@ -10,6 +10,7 @@ development:
     port: 8982
     log_level: INFO
     solr_home: #{RAILS_ROOT}/solr
+    max_memory: 512M
 
 test:
   solr:
@@ -24,7 +25,7 @@ cucumber:
     port: 8981
     log_level: WARNING
     solr_home: #{RAILS_ROOT}/solr
-    
+
 labs:
   solr:
     hostname: localhost
