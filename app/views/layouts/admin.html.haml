@@ -21,5 +21,6 @@
     .container
       .span-24.main
         = breadcrumbs([link_to('USASearch', program_path), link_to("Affiliate Program", affiliates_path), "Admin Center"])
-        .span-6.prepend-9.append-9= show_flash_messages
+        .span-6.prepend-9.append-9
+          = show_flash_messages
         = yield

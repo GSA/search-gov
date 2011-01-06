@@ -1,6 +1,6 @@
 class Admin::TopSearchesController < Admin::AdminController
   def index
-    @top_searches = TopSearch.find(:all, :order => "position asc")
+    @top_searches = TopSearch.find(:all, :order => "position ASC")
   end
   
   def create

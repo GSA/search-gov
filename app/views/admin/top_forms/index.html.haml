@@ -1,0 +1,70 @@
+%h2
+  Top Forms
+%p
+  Update the Top Forms shown on the Forms home page here.
+%p
+  Note: the lowest position entry will be considered the header/title for the column.  It will be displayed in larger text than the other items, and will not be linked (the URL field will be ignored).  A good strategy is to create a Top Form with sort order of 1, and make this the title.  Then, create links with sort order values in increments of 10.  That way, you can insert additional links without having to edit multiple entries.
+%br
+%p
+  You are viewing  
+  %strong= "Column ##{@column_number}"
+  %br
+  Switch to a different column: 
+  = select_tag "column_numbers", options_for_select([["Column 1", "1"], ["Column 2", "2"], ["Column 3", "3"]], @column_number.to_s), :onchange => "location.href = '#{admin_top_forms_url}?column_number=' + this.options[this.selectedIndex].value;"
+
+%h3
+  Add new Top Form
+%br
+- form_for @top_form, :url => admin_top_forms_path, :as => :post do |f|
+  = hidden_field_tag 'column_number', @column_number
+  %table
+    %tr
+      %th
+        Sort Order
+      %th
+        Text
+      %th
+        URL (leave blank for no link)
+      %th
+        Actions
+    %tr
+      %td
+        = f.text_field :sort_order, :id => 'new_sort_order'
+      %td
+        = f.text_field :name, :id => 'new_name'
+      %td
+        = f.text_field :url, :id => 'new_url'
+      %td
+        = submit_tag 'Add Top Form'
+
+%br
+
+%h3
+  Existing Top Forms
+%br
+%table
+  %tr
+    %th
+      Sort Order
+    %th
+      Text
+    %th
+      URL (leave blank for no link)
+    %th
+      Actions
+  - unless @top_forms.empty?
+    - @top_forms.each do |top_form|
+      - form_for top_form, :url => admin_top_form_path(top_form) do |f|
+        = f.hidden_field :column_number
+        = hidden_field_tag 'column_number', @column_number
+        %tr
+          %td
+            = f.text_field :sort_order
+          %td
+            = f.text_field :name
+          %td
+            = f.text_field :url
+          %td
+            = submit_tag 'Update'
+            |
+            = link_to 'Delete', admin_top_form_path(top_form), :method => :delete
