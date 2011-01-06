@@ -28,14 +28,14 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>160</tt></td>
-            <td class='right_align'><tt>135</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>90.62%</tt></div>
+            <td class='right_align'><tt>168</tt></td>
+            <td class='right_align'><tt>142</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>91.07%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:91px"></div>
             <div class="uncovered" style="width:9px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>88.89%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>89.44%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:89px"></div>
             <div class="uncovered" style="width:11px"></div>
@@ -957,67 +957,115 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line151">151</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line152">152</a> </pre></td>
+            <td><pre><a name="line151">151</a>   def favicon_link_tag</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line153">153</a>   def ssl_protocol</pre></td>
+            <td><pre><a name="line152">152</a>     tag('link', {</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line153">153</a>         :rel  =&gt; 'shortcut icon',</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line154">154</a>         :type =&gt; 'image/vnd.microsoft.icon',</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line154">154</a>     SSL_PROTOCOL</pre></td>
+            <td><pre><a name="line155">155</a>         :href =&gt; path_to_image(&quot;/favicon.ico&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line155">155</a>   end</pre></td>
+            <td><pre><a name="line156">156</a>     })</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line156">156</a> </pre></td>
+            <td><pre><a name="line157">157</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line158">158</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line157">157</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line159">159</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line160">160</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line158">158</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+            <td><pre><a name="line161">161</a>   def ssl_protocol</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line162">162</a>     SSL_PROTOCOL</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line159">159</a>   end</pre></td>
+            <td><pre><a name="line163">163</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line160">160</a> end</pre></td>
+            <td><pre><a name="line164">164</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line165">165</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line166">166</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line167">167</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line168">168</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Jan 04 12:56:33 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jan 05 17:51:01 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
