@@ -35,7 +35,7 @@ Feature: Mobile Search
     When I follow "Móvil"
     Then I should be on the search page
     And I should see "Por favor, introduzca los términos de búsqueda"
-    And I should see "Sitio en versión: clásica | Móvil"
+    And I should see "Versión: Web | Móvil"
 
   Scenario: Using mobile mode with a browser not identified as mobile
     Given I am using a desktop device

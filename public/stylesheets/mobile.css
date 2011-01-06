@@ -295,10 +295,10 @@ img{
 
 #topLinks
 {
-  float: left;
+  float: right;
   font-size: .8em;
   padding: 7px 5px;
-  width: 60%;
+  width: auto;
 }
 
   #topLinks ul{
@@ -307,6 +307,7 @@ img{
     padding: 0;
     margin-bottom: 5px;
     border: none;
+    width: auto;
     }
 
     #topLinks li{
@@ -334,7 +335,7 @@ img{
 
 #logoSmall
 {
-  float: right;
+  float: left;
   height: 25px;
   padding: 3px;
 }
