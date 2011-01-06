@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110103071549) do
+ActiveRecord::Schema.define(:version => 20110106001640) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -226,6 +226,14 @@ ActiveRecord::Schema.define(:version => 20110103071549) do
   end
 
   add_index "moving_queries", ["day", "times"], :name => "index_moving_queries_on_day_and_times"
+
+  create_table "popular_image_queries", :force => true do |t|
+    t.string   "query"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "popular_image_queries", ["query"], :name => "index_popular_image_queries_on_query", :unique => true
 
   create_table "query_groups", :force => true do |t|
     t.string   "name",       :null => false

@@ -41,7 +41,7 @@
       a.cache_link, a.cache_link:visited, a.cache_link:hover
         :color= gray
 
-  span.image_result
+  span.image_result, span.small_image_result
     width: 200px
     height: 200px
     margin: 0
@@ -57,30 +57,36 @@
       vertical-align: top
     a
       font-size: 0.8em
+      display: block
+
+  span.small_image_result
+    height: 130px
+    width: 145px
+
   .pagination
     :margin-left 200px
     :margin-bottom 1em
     :font-size 1.2em
-    
+
   #weather-spotlight
     :text-align left
     :margin-bottom 10px
-    
+
     .title
       :font-size 16px
-      
+
     ul
       :list-style-type none
       :margin 0
     li
       :float left
       :width 110px
-    
+
     .forecast-date
       :text-align left
       :font-weight bold
-    
+
     .forecast-image
-      
+
     #attribution
-      :clear both  
+      :clear both

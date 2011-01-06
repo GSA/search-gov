@@ -6,25 +6,7 @@ class ImageSearch < Search
   end
 
   def process_results(response)
-    response.image.results.collect do |result|
-      {
-        "title" => result.title,
-        "Width" => result.width,
-        "Height" => result.height,
-        "FileSize" => result.fileSize,
-        "ContentType" => result.contentType,
-        "Url" => result.Url,
-        "DisplayUrl" => result.displayUrl,
-        "MediaUrl" => result.mediaUrl,
-        "Thumbnail" => {
-          "Url" => result.thumbnail.url,
-          "FileSize" => result.thumbnail.fileSize,
-          "Width" => result.thumbnail.width,
-          "Height" => result.thumbnail.height,
-          "ContentType" => result.thumbnail.contentType
-        }
-      }
-    end
+    process_image_results(response)
   end
 
   def bing_query(query_string, offset, count, enable_highlighting = true)
@@ -38,7 +20,7 @@ class ImageSearch < Search
     ]
     "#{JSON_SITE}?" + params.join('&')
   end
-  
+
   def as_json(options = {})
     if self.error_message
       {:error => self.error_message}
@@ -48,7 +30,7 @@ class ImageSearch < Search
   end
 
   protected
-  def populate_additional_results
-  end  
+  def populate_additional_results(response)
+  end
 
 end

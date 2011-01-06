@@ -59,6 +59,45 @@ describe SearchHelper do
     end
   end
 
+  describe "#thumbnail_image_tag" do
+    before do
+      @image_result = {
+        "FileSize"=>2555475,
+        "Thumbnail"=>{
+          "FileSize"=>3728,
+          "Url"=>"http://ts1.mm.bing.net/images/thumbnail.aspx?q=327984100492&id=22f3cf1f7970509592422738e08108b1",
+          "Width"=>160,
+          "Height"=>120,
+          "ContentType"=>"image/jpeg"
+        },
+        "title"=>" ... Inauguration of Barack Obama",
+        "MediaUrl"=>"http://www.house.gov/list/speech/mi01_stupak/morenews/Obama.JPG",
+        "Url"=>"http://www.house.gov/list/speech/mi01_stupak/morenews/20090120inauguration.html",
+        "DisplayUrl"=>"http://www.house.gov/list/speech/mi01_stupak/morenews/20090120inauguration.html",
+        "Width"=>3264,
+        "Height"=>2448,
+        "ContentType"=>"image/jpeg"
+      }
+    end
+
+    context "for popular images" do
+      it "should create an image tag that respects max height and max width when present" do
+        helper.send(:thumbnail_image_tag, @image_result, 80, 100).should =~ /width="80"/
+        helper.send(:thumbnail_image_tag, @image_result, 80, 100).should =~ /height="60"/
+
+        helper.send(:thumbnail_image_tag, @image_result, 150, 90).should =~ /width="120"/
+        helper.send(:thumbnail_image_tag, @image_result, 150, 90).should =~ /height="90"/
+      end
+    end
+
+    context "for image search results" do
+      it "should return an image tag with thumbnail height and width" do
+        helper.send(:thumbnail_image_tag, @image_result).should =~ /width="160"/
+        helper.send(:thumbnail_image_tag, @image_result).should =~ /height="120"/
+      end
+    end
+  end
+
   describe "#display_deep_links_for(result)" do
     before do
       deep_links=[]

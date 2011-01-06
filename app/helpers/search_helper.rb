@@ -7,17 +7,24 @@ module SearchHelper
     end
   end
 
-  def thumbnail_image_link(result)
-    link_to thumbnail_image_tag(result),
+  def thumbnail_image_link(result, max_width=nil, max_height=nil)
+    link_to thumbnail_image_tag(result, max_width, max_height),
             result["Url"],
             :alt => result["title"],
             :rel => "no-follow"
   end
 
-  def thumbnail_image_tag(result)
+  def thumbnail_image_tag(result, max_width=nil, max_height=nil)
+    width = result["Thumbnail"]["Width"].to_f
+    height = result["Thumbnail"]["Height"].to_f
+    reduction = [
+      (max_width && width > max_width) ? (max_width.to_f / width) : 1,
+      (max_height && height > max_height) ? (max_height.to_f / height) : 1
+    ].min
+
     image_tag result["Thumbnail"]["Url"],
-              :width  => result["Thumbnail"]["Width"],
-              :height => result["Thumbnail"]["Height"],
+              :width  => (width * reduction).to_i,
+              :height => (height * reduction).to_i,
               :title  => result["title"]
   end
 
@@ -112,8 +119,8 @@ module SearchHelper
     summary = t :results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => q
     p_sum = content_tag(:p, summary)
     logo = show_logo ? image_tag("binglogo_#{I18n.locale}.gif", :style=>"float:right") : ""
-    
-    
+
+
     content_tag(:div, logo + p_sum, :id => "summary")
   end
 
@@ -124,11 +131,11 @@ module SearchHelper
   def image_search?
     controller.controller_name == "image_searches"
   end
-  
+
   def recalls_search?
     controller.controller_name == "recalls"
   end
-  
+
   def forms_search?
     controller.controller_name == "searches" and controller.action_name == "forms"
   end

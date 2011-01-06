@@ -4,5 +4,6 @@
     = render "/shared/relatedsearches"
   #results
     = render "/shared/search", :path => @form_path
+    = render "/shared/popular_images", :search => @search if @search.extra_image_results.present?
     = render "/shared/searchresults", :search => @search
     = render "/shared/footer_search", :search => @search

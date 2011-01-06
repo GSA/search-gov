@@ -5,6 +5,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:related_search).and_return []
     @search.stub!(:queried_at_seconds).and_return(1271978870)
     @search.stub!(:recalls)
+    @search.stub!(:extra_image_results)
     assigns[:search] = @search
   end
 

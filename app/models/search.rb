@@ -11,7 +11,6 @@ class Search
   MAX_PER_PAGE = 50
   JSON_SITE = "http://api.bing.net/json.aspx"
   APP_ID = "A4C32FAE6F3DB386FC32ED1C4F3024742ED30906"
-  SOURCES = "Spell+Web"
   USER_AGENT = "USASearch"
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:gov OR site:mil)"
   VALID_FILTER_VALUES = %w{strict off}
@@ -25,6 +24,7 @@ class Search
                 :affiliate,
                 :total,
                 :results,
+                :extra_image_results,
                 :startrecord,
                 :endrecord,
                 :images,
@@ -77,7 +77,7 @@ class Search
       self.related_search = related_search_results
       self.startrecord = page * results_per_page + 1
       self.endrecord = startrecord + results.size - 1
-      populate_additional_results
+      populate_additional_results(response)
     end
     log_impression
     true
@@ -128,7 +128,7 @@ class Search
     strip_extra_chars_from(did_you_mean_suggestion)
   end
 
-  def populate_additional_results
+  def populate_additional_results(response)
     self.boosted_sites = BoostedSite.search_for(query, affiliate, I18n.locale)
     unless affiliate
       self.faqs = Faq.search_for(query, I18n.locale.to_s)
@@ -154,6 +154,10 @@ class Search
           self.weather_spotlight = nil
         end
       end
+    end
+
+    if response.has?(:image) && response.image.total > 0
+      self.extra_image_results = process_image_results(response)
     end
   end
 
@@ -288,6 +292,32 @@ class Search
   end
 
   def process_results(response)
+    process_web_results(response)
+  end
+
+  def process_image_results(response)
+    response.image.results.collect do |result|
+       {
+         "title" => result.title,
+         "Width" => result.width,
+         "Height" => result.height,
+         "FileSize" => result.fileSize,
+         "ContentType" => result.contentType,
+         "Url" => result.Url,
+         "DisplayUrl" => result.displayUrl,
+         "MediaUrl" => result.mediaUrl,
+         "Thumbnail" => {
+           "Url" => result.thumbnail.url,
+           "FileSize" => result.thumbnail.fileSize,
+           "Width" => result.thumbnail.width,
+           "Height" => result.thumbnail.height,
+           "ContentType" => result.thumbnail.contentType
+         }
+       }
+     end
+  end
+
+  def process_web_results(response)
     processed = response.web.results.collect do |result|
       title = result.title rescue nil
       content = result.description rescue ''
@@ -311,12 +341,16 @@ class Search
       "web.offset=#{offset}",
       "web.count=#{count}",
       "AppId=#{APP_ID}",
-      "sources=#{SOURCES}",
+      "sources=#{sources}",
       "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
       "Adult=#{adult_filter_setting}",
       "query=#{URI.escape(query_string, URI_REGEX)}"
     ]
     "#{JSON_SITE}?" + params.join('&')
+  end
+
+  def sources
+    (PopularImageQuery.find_by_query(query).present? && page < 1) ?  "Spell+Web+Image" : "Spell+Web"
   end
 
   def adult_filter_setting

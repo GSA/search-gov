@@ -1,4 +1,8 @@
 class ResponseData < Hash
+  def has?(attr_name)
+    has_key?(camelize(attr_name))
+  end
+
   private
   def initialize(data={})
     data.each_pair {|k, v| self[k.to_s] = deep_parse(v) }
@@ -15,10 +19,14 @@ class ResponseData < Hash
     end
   end
 
+  def camelize(name)
+    name.to_s.split('_').map {|w| "#{w[0, 1].upcase}#{w[1..-1]}" }.join("")
+  end
+
   def method_missing(*args)
     name = args[0].to_s
     return self[name] if has_key? name
-    camelname = name.split('_').map {|w| "#{w[0, 1].upcase}#{w[1..-1]}" }.join("")
+    camelname = camelize(name)
     if has_key? camelname
       self[camelname]
     else
