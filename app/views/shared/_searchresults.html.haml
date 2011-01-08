@@ -19,12 +19,7 @@
   - if search.weather_spotlight
     = render :partial => 'shared/weather_spotlight', :locals => { :weather_spotlight => search.weather_spotlight }
   - if (search.recalls && search.recalls.total > 0)
-    .govbox
-      %h3 Recent Recalls
-      %ul
-        - search.recalls.hits.each_with_index do |hit, index|
-          %li{:id => "recall#{index+1}"}
-            .links= link_to "#{hit.instance.summary}, #{hit.instance.recalled_on.to_formatted_s(:short).strip}", hit.instance.recall_url
+    = render "shared/recall_gov_box", :search => search
   - search.results.each_with_index do |result, index|
     = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
   = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

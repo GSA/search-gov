@@ -766,6 +766,13 @@ describe Recall do
 
   end
 
+  describe "#details" do
+    it "should have details for an NHTSA recall"
+    it "should have details for a CPSC recall"
+    it "should have details for a CDC recall"
+    it "should have details for a UPC recall"
+  end
+
   describe "#upc" do
     it "should return a list of the RecallDetail UPCs if present" do
       @recall = Recall.new(:recall_number => '12345', :y2k => 12345, :organization => 'CPSC')

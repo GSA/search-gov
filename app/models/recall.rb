@@ -249,6 +249,17 @@ class Recall < ActiveRecord::Base
   def cdc_summary
     food_recall.summary
   end
+
+  def description
+     case self.organization
+       when 'CPSC' then
+         recall_details.select {|rd| rd.detail_type=="ProductType"}.collect{|rd| rd.detail_value}.join(', ')
+       when 'NHTSA' then
+        "Recall for model#{"s" if auto_recalls.length > 1}: #{auto_recalls.map(&:model).join(", ")}"
+       when 'CDC' then
+         food_recall.description
+    end
+  end
   
   def upc
     if organization == 'CPSC'
