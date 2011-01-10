@@ -141,26 +141,25 @@ class Search
         self.spotlight = Spotlight.search_for(query)
         self.gov_forms = GovForm.search_for(query)
       end
-    end
-    if query =~ /\brecalls?\b/i and not query=~ /^recalls?$/i
-      begin
-        self.recalls = Recall.search_for(query.gsub(/\brecalls?\b/i, '').strip, {:start_date=>1.month.ago.to_date, :end_date=>Date.today})
-      rescue RSolr::RequestError => error
-        RAILS_DEFAULT_LOGGER.warn "Error in searching for Recalls: #{error.to_s}"
-        self.recalls = nil
-      end
-    end
-    if affiliate.nil? and WeatherSpotlight.is_weather_spotlight_query(query)
-      ActiveRecord::Base.benchmark("[Weather Search]", Logger::INFO) do
+      if page < 1 && query =~ /\brecalls?\b/i and not query=~ /^recalls?$/i
         begin
-          self.weather_spotlight = WeatherSpotlight.new(WeatherSpotlight.parse_query(query))
-        rescue RuntimeError, Errno::ETIMEDOUT => error
-          RAILS_DEFAULT_LOGGER.warn "Error in search for Weather: #{error.to_s}"
-          self.weather_spotlight = nil
+          self.recalls = Recall.search_for(query.gsub(/\brecalls?\b/i, '').strip, {:start_date=>1.month.ago.to_date, :end_date=>Date.today})
+        rescue RSolr::RequestError => error
+          RAILS_DEFAULT_LOGGER.warn "Error in searching for Recalls: #{error.to_s}"
+          self.recalls = nil
+        end
+      end
+      if WeatherSpotlight.is_weather_spotlight_query(query)
+        ActiveRecord::Base.benchmark("[Weather Search]", Logger::INFO) do
+          begin
+            self.weather_spotlight = WeatherSpotlight.new(WeatherSpotlight.parse_query(query))
+          rescue RuntimeError, Errno::ETIMEDOUT => error
+            RAILS_DEFAULT_LOGGER.warn "Error in search for Weather: #{error.to_s}"
+            self.weather_spotlight = nil
+          end
         end
       end
     end
-
     if response.has?(:image) && response.image.total > 0
       self.extra_image_results = process_image_results(response)
     end

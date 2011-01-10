@@ -143,4 +143,27 @@ describe ApplicationHelper do
     end
   end
 
+  describe "#truncate_on_words" do
+    it "should replace excess words with ..." do
+      helper.truncate_on_words("asdfasdf jkl;", 8).should == "asdfasdf..."
+    end
+
+    it "should not append ... if the text length < max length" do
+      helper.truncate_on_words("asdf jkl;", 10).should == "asdf jkl;"
+    end
+
+    it "should split on word boundaries" do
+      helper.truncate_on_words("asdf jkl;", 7).should == "asdf..."
+    end
+
+    it "should return the right number of characters if it is a single word" do
+      helper.truncate_on_words("asdfjkl;", 7).should == "asdfjkl..."
+    end
+
+    it "should not end in ,..." do
+      helper.truncate_on_words("asdfjkl, askjdn", 7).should == "asdfjkl..."
+      helper.truncate_on_words("asdfjkl, askjdn", 8).should == "asdfjkl..."
+      helper.truncate_on_words("asdfjkl, askjdn", 9).should == "asdfjkl..."
+    end
+  end
 end
