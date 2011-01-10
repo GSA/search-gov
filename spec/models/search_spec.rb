@@ -897,25 +897,25 @@ describe Search do
 
     context "popular image searches" do
       it "should try to find images when searching for a popular image" do
-        search = Search.new(@valid_options.merge(:query => popular_image_queries(:snowflake).query, :page => 0))
+        search = Search.new(:query => popular_image_queries(:snowflake).query)
         search.run
         search.extra_image_results.should_not be_nil
       end
 
       it "should try to find images when searching for a popular image when no page param is passed in as an HTTP param" do
-        search = Search.new(@valid_options.merge(:query => popular_image_queries(:snowflake).query, :page => -1))
+        search = Search.new(:query => popular_image_queries(:snowflake).query, :page => -1)
         search.run
         search.extra_image_results.should_not be_nil
       end
 
       it "should never show extra image results on any page but the first" do
-        search = Search.new(@valid_options.merge(:query => popular_image_queries(:snowflake).query, :page => 2))
+        search = Search.new(:query => popular_image_queries(:snowflake).query, :page => 2)
         search.run
         search.extra_image_results.should be_nil
       end
 
       it "should never show extra image results if it is not a popular image query" do
-        search = Search.new(@valid_options.merge(:query => "non popular image query", :page => 0))
+        search = Search.new(:query => "non popular image query", :page => 0)
         search.run
         search.extra_image_results.should be_nil
       end
@@ -1117,6 +1117,24 @@ describe Search do
       SaytSuggestion.should_receive(:like).with(370, "xyz", 5)
       Search.suggestions(370, "xyz", 5)
     end
+  end
+
+  describe "#sources" do
+    it "should default to 'Spell+Web'" do
+      search = Search.new(:query => 'non-popular image')
+      search.sources.should == "Spell+Web"
+    end
+
+    it "should be 'Spell+Web+Image' when query is a PopularImageQuery and first page of results and not affiliate scoped" do
+      search = Search.new(:query => 'snowflake')
+      search.sources.should == "Spell+Web+Image"
+    end
+
+    it "should be 'Spell+Web' for affilitate searches, even when the query is a PopularImageQuery and on first page of results" do
+      search = Search.new(:query => 'snowflake', :affiliate => @affiliate)
+      search.sources.should == "Spell+Web"
+    end
+
   end
 
   describe "#hits(response)" do

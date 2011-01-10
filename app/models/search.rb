@@ -97,6 +97,11 @@ class Search
     suggestions[0, num_suggestions]
   end
 
+  def sources
+    query_for_images = page < 1 && affiliate.nil? && PopularImageQuery.find_by_query(query).present?
+    query_for_images ?  "Spell+Web+Image" : "Spell+Web"
+  end  
+
   protected
 
   def related_search_results
@@ -347,10 +352,6 @@ class Search
       "query=#{URI.escape(query_string, URI_REGEX)}"
     ]
     "#{JSON_SITE}?" + params.join('&')
-  end
-
-  def sources
-    (PopularImageQuery.find_by_query(query).present? && page < 1) ?  "Spell+Web+Image" : "Spell+Web"
   end
 
   def adult_filter_setting
