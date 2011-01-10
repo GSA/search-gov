@@ -165,49 +165,71 @@ Your user account should have admin priveleges set. Now go here and poke around.
 Create a Spotlight (hint: use the template to get started). For keywords, put in 'taxes'.
 Now re-run that taxes search again and you should see content above the search results.
 
-# Contributing Code
+# Working on Stories
 
-1. Pick the next story off the top of the queue on Tracker and make sure you understand the intent behind it. Click the "Start" button so nobody else starts working on it. But before you click "Start", do you have a firm idea of what you will need to do in order to clck "Finished"?
+1. Pick the next story off the top of the queue on Tracker and make sure you understand the intent behind it. Click the "Start" button so nobody else starts working on it. But before you click "Start", do you have a firm idea of what you will need to do in order to clck "Finished"? How will you know when you are done?
 
-2. Make sure you have the latest code:
+1. For user-facing content (e.g., Search Engine Results Pages [SERPs]), you'll want to raise these questions with the story owner:
+    * How should this feature behave for Spanish-locale traffic? Is there any localized text I will need?
+    * How should this feature behave for affiliate traffic?
+    * Should this feature have a mobile web implementation?
+    * Is there an admin component to this feature?
+    * Does the usage of this feature need to be tracked?
+
+1. Now that you have a good idea of how to get started and how to be finished, make sure you have the latest code:
 
         git pull
 
-3. Write acceptance tests in rspec and/or cucumber that will specify whether the feature is implemented properly or not.
+1. Some people like to create a story branch so that all the work for a story is happening somewhere outside of master. For quick 1-point stories, this isn't so important, but if you happen to be working on a larger story that gets sidelined and need to commit something else to master, having story branches makes it easy to keep track of everything.
 
-4. Write the minimal amount of code needed to make those tests pass
+1. Write acceptance tests in rspec and/or cucumber that will specify whether the feature is implemented properly or not.
 
-5. Run regression tests to make sure all prior functionality still passes tests
+1. Write the minimal amount of code needed to make those tests pass.
+
+1. Run regression tests to make sure all prior functionality still passes tests
 
         rake spec
         script/cucumber
 
-5. If you did any work with web forms, check for any XSS or SQL Injection vulnerabilities with the Firefox plugins from Seccom labs (http://labs.securitycompass.com/index.php/exploit-me/).
+    The entire test suite should always be 100% green. If anything fails at any time, it's the new top priority to fix it, and no developer should check in code on top of broken tests.
 
-6. Check in code to your local git repo (use `git status` and `git add` until everything is staged):
+1. Now that you are green, have a look through all your changes to make sure everything that is in there needs to be there. Can you delete any lines of code? Can you refactor anything?
+
+1. If you did any work with web forms, check for any XSS or SQL Injection vulnerabilities with the Firefox plugins from Seccom labs (http://labs.securitycompass.com/index.php/exploit-me/). We have a third party scan our site monthly for XSS vulnerabilities (among other things), and if they discover XSS vulnerabilities before we do, it could risk our [C&A](http://en.wikipedia.org/wiki/Certification_and_Accreditation) standing.
+
+1. Check in code to your local git repo (use `git status` and `git add` until everything is staged):
 
         git commit
 
-7. Push code up to the origin
+    It's easier for other developers to see the work you did for a story in a single commit, rather than spread out over a bunch of checkpoints. It's a good idea to do many local commits while working on a story, and then roll those up into a single commit with Git either by continually amending your prior commit, or by doing an interactive rebase and squashing everything. The exception to this is the 'coverage/' directory that gets updated with 'rcov'. That's better off in its own commit, so your code changes aren't lost among several hundred auto-generated HTML files.
+
+1. Run RCov to make sure all your code gets touched by a test, at least:
+
+        rake rcov:all
+        open coverage/index.html
+        git add coverage
+        git ci -am "updated rcov coverage report"
+
+1. Push code up to the origin. Before you do this, remember that you are committing to the master branch, and future production deployments will ideally be grabbing everything from this branch. For this reason, you'll only want to push to origin/master code that is pretty much ready for production deployment, or could be ready fairly soon, say after a day or two of iterating on feedback. One good rule of thumb is the "Washington Post" test, as it's a scenario that is raised fairly often. Before pushing to origin, ask yourself, "If this work I've just done somehow finds its way into a Washington Post article with a screenshot, will everyone be OK with that?". If so, then....
 
         git push
 
-8. Problems doing the push? Someone else may have checked in code since your last pull, so
+1. Problems doing the push? Someone else may have checked in code since your last pull, so
 
         git pull
         rake spec
         script/cucumber
         git push
 
-9. Mark story as "Finished" on Tracker. This means you are done testing/coding.
+1. Mark story as "Finished" on Tracker. This means you are done testing/coding.
 
-10. Deploy to demo
+1. Deploy to demo (or have someone with VPN access deploy for you).
 
         cap deploy
 
-11. Mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment. Add an acceptance test in the story comments so someone else can easily verify what you have done.
+1. Mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment. Add an acceptance test in the story comments so someone else can easily verify what you have done, including ways to highlight various scenarios and corner cases (e.g., "By searching on 'beef recalls', you can see how the UI looks when there are many recalls listed...", or "Go to this URL on staging to see how it behaves in Spanish for affiliates").
 
-12. Goto Step 1
+1. Goto Step 1
 
 # Using Labs
 From time to time, a new feature will require testing and feedback from those outside of our development group.  We do not want to push experimental changes to our staging server, which is used for acceptance testing.  Instead, we have create a 'labs' deployment that is available for previewing experimental features.  The labs site is available at http://labs.searchdemo.usa.gov.  If that URL is not available, modify your /etc/hosts file to map the IP address of the searchdemo.usa.gov to labs.searchdemo.usa.gov.
