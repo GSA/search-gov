@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :affiliates, :active_scaffold => true
     admin.resources :affiliate_templates, :active_scaffold => true
     admin.resources :users, :active_scaffold => true
+    admin.resources :popular_image_queries, :active_scaffold => true
     admin.resources :sayt_filters, :active_scaffold => true
     admin.resources :sayt_suggestions, :active_scaffold => true
     admin.resources :misspellings, :active_scaffold => true

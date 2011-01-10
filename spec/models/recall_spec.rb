@@ -711,16 +711,18 @@ describe Recall do
     end
   end
 
-  describe "#summary" do
+  describe "#summary, #description" do
     context "when generating a summary for a CPSC recall" do
       before do
         @recall = Recall.new(:recall_number => '12345', :organization => 'CPSC')
         products = %w{Foo Bar Blat}.collect { |product| RecallDetail.new(:detail_type=>"Description", :detail_value=> product.strip) }
         @recall.recall_details << products
+        @recall.recall_details << RecallDetail.new(:detail_type=>"ProductType", :detail_value=> "Goo")
       end
 
       it "should generate a summary based on all the products involved" do
         @recall.summary.should == "Foo, Bar, Blat"
+        @recall.description.should == "Goo"
       end
     end
 
@@ -731,6 +733,7 @@ describe Recall do
 
       it "should generate a summary based on all the products involved" do
         @recall.summary.should == "Click here to see products"
+        @recall.description.should be_blank
       end
     end
 
@@ -751,6 +754,7 @@ describe Recall do
 
       it "should generate a summary based on all the products involved" do
         @recall.summary.should == "FOO, BAR, BLAT FROM FOP, BAS, BLAU"
+        @recall.description.should be_present
       end
     end
 
@@ -761,6 +765,7 @@ describe Recall do
 
       it "should generate a summary based on all the products involved" do
         @recall.summary.should == "Click here to see products"
+        @recall.description.should be_present
       end
     end
 
