@@ -1212,13 +1212,21 @@ describe Search do
     end
 
     it "should attempt to get the results from the Redis cache" do
-      @redis.should_receive(:get).with("foo:10:99:true")
+      @redis.should_receive(:get).with("foo:Source1+Source2:10:99:true")
+      @search.should_receive(:sources).and_return("Source1+Source2")
       @search.send(:perform, "foo", 10, true)
+    end
+
+    it "should use the Spell+Image source for image searches" do
+      @redis.should_receive(:get).with("foo:Spell+Image:10:55:true")
+      image_search = ImageSearch.new
+      image_search.results_per_page = 55
+      image_search.send(:perform, "foo", 10, true)
     end
 
     context "when no results in cache" do
       it "should store newly fetched results in cache with appropriate expiry" do
-        @redis.should_receive(:setex).with("foobar:10:99:true", Search::BING_CACHE_DURATION_IN_SECONDS, an_instance_of(String))
+        @redis.should_receive(:setex).with("foobar:Spell+Web:10:99:true", Search::BING_CACHE_DURATION_IN_SECONDS, an_instance_of(String))
         @search.send(:perform, "foobar", 10, true)
       end
     end

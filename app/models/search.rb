@@ -171,13 +171,14 @@ class Search
   end
 
   def perform(query_string, offset, enable_highlighting = true)
-    cache_key = [query_string, offset, results_per_page, enable_highlighting].join(':')
+    query_sources = sources
+    cache_key = [query_string, query_sources, offset, results_per_page, enable_highlighting].join(':')
     response_body = @@redis.get(cache_key) rescue nil
     return response_body unless response_body.nil?
 
     ActiveRecord::Base.benchmark("[Bing Search]", Logger::INFO) do
       begin
-        uri = URI.parse(bing_query(query_string, offset, results_per_page, enable_highlighting))
+        uri = URI.parse(bing_query(query_string, query_sources, offset, results_per_page, enable_highlighting))
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Get.new(uri.request_uri)
         req["User-Agent"] = USER_AGENT
@@ -340,12 +341,12 @@ class Search
     processed.compact
   end
 
-  def bing_query(query_string, offset, count, enable_highlighting = true)
+  def bing_query(query_string, query_sources, offset, count, enable_highlighting = true)
     params = [
       "web.offset=#{offset}",
       "web.count=#{count}",
       "AppId=#{APP_ID}",
-      "sources=#{sources}",
+      "sources=#{query_sources}",
       "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
       "Adult=#{adult_filter_setting}",
       "query=#{URI.escape(query_string, URI_REGEX)}"

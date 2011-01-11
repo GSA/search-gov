@@ -1,5 +1,4 @@
 class ImageSearch < Search
-  SOURCES = "Spell+Image"
 
   def hits(response)
     response.image.total rescue 0
@@ -9,16 +8,20 @@ class ImageSearch < Search
     process_image_results(response)
   end
 
-  def bing_query(query_string, offset, count, enable_highlighting = true)
+  def bing_query(query_string, query_sources, offset, count, enable_highlighting = true)
     params = [
       "image.offset=#{offset}",
       "image.count=#{count}",
       "AppId=#{APP_ID}",
-      "sources=#{SOURCES}",
+      "sources=#{query_sources}",
       "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
       "query=#{URI.escape(query_string)}"
     ]
     "#{JSON_SITE}?" + params.join('&')
+  end
+
+  def sources
+    "Spell+Image"
   end
 
   def as_json(options = {})
