@@ -29,13 +29,13 @@
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
             <td class='right_align'><tt>177</tt></td>
-            <td class='right_align'><tt>150</tt></td>
+            <td class='right_align'><tt>151</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>91.53%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:92px"></div>
             <div class="uncovered" style="width:8px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>90.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>90.07%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:90px"></div>
             <div class="uncovered" style="width:10px"></div>
@@ -609,37 +609,37 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line93">93</a>       elements &lt;&lt; mail_to(APP_EMAIL_ADDRESS, &quot;Contact Us&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line94">94</a>       elements &lt;&lt; link_to(&quot;Logout&quot;, url_for_logout, :method =&gt; :delete)</pre></td>
+            <td><pre><a name="line93">93</a>       elements &lt;&lt; link_to(&quot;Logout&quot;, url_for_logout, :method =&gt; :delete)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line95">95</a>     else</pre></td>
+            <td><pre><a name="line94">94</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line96">96</a>       elements &lt;&lt; link_to(&quot;Login&quot;, url_for_login)</pre></td>
+            <td><pre><a name="line95">95</a>       elements &lt;&lt; link_to(&quot;Login&quot;, url_for_login)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line97">97</a>       elements &lt;&lt; link_to(&quot;Sign Up&quot;, new_account_path)</pre></td>
+            <td><pre><a name="line96">96</a>       elements &lt;&lt; link_to(&quot;Sign Up&quot;, new_account_path)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line98">98</a>     end</pre></td>
+            <td><pre><a name="line97">97</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line98">98</a>     elements &lt;&lt; link_to(&quot;Help Desk&quot;, &quot;http://searchsupport.usa.gov/home&quot;, :target =&gt; &quot;_blank&quot;)</pre></td>
           </tr>
         
           
@@ -693,25 +693,25 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line107">107</a>       elements &lt;&lt; link_to(&quot;Logout&quot;, url_for_logout, :method =&gt; :delete)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line108">108</a> #      elements &lt;&lt; link_to(&quot;FAQ&quot;, analytics_faq_path)</pre></td>
+            <td><pre><a name="line107">107</a>       elements &lt;&lt; link_to(&quot;Query Groups Admin&quot;, analytics_query_groups_path) if cur_user.is_analyst_admin?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line109">109</a>       elements &lt;&lt; link_to(&quot;Query Groups Admin&quot;, analytics_query_groups_path) if cur_user.is_analyst_admin?</pre></td>
+            <td><pre><a name="line108">108</a>       elements &lt;&lt; link_to(&quot;Logout&quot;, url_for_logout, :method =&gt; :delete)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line110">110</a>     end</pre></td>
+            <td><pre><a name="line109">109</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line110">110</a>     elements &lt;&lt; link_to(&quot;Help Desk&quot;, &quot;http://searchsupport.usa.gov/home&quot;, :target =&gt; &quot;_blank&quot;)</pre></td>
           </tr>
         
           
@@ -1119,7 +1119,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Mon Jan 10 17:34:15 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Jan 11 13:02:16 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

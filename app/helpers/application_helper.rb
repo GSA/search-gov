@@ -90,12 +90,12 @@ module ApplicationHelper
     if cur_user
       elements << cur_user.email
       elements << link_to("My Account", account_path)
-      elements << link_to("Contact Us", contactus_path)
       elements << link_to("Logout", url_for_logout, :method => :delete)
     else
       elements << link_to("Login", url_for_login)
       elements << link_to("Sign Up", new_account_path)
     end
+    elements << link_to("Help Desk", "http://searchsupport.usa.gov/home", :target => "_blank")
     elements.join(" | ")
   end
 
@@ -104,10 +104,10 @@ module ApplicationHelper
     if cur_user
       elements << cur_user.email
       elements << link_to("My Account", account_path)
-      elements << link_to("Logout", url_for_logout, :method => :delete)
-#      elements << link_to("FAQ", analytics_faq_path)
       elements << link_to("Query Groups Admin", analytics_query_groups_path) if cur_user.is_analyst_admin?
+      elements << link_to("Logout", url_for_logout, :method => :delete)
     end
+    elements << link_to("Help Desk", "http://searchsupport.usa.gov/home", :target => "_blank")
     elements.join(" | ")
   end
 
