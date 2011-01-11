@@ -67,4 +67,4 @@
           %td
             = submit_tag 'Update'
             |
-            = link_to 'Delete', admin_top_form_path(top_form), :method => :delete
+            = link_to 'Delete', admin_top_form_path(top_form, :column_number => @column_number), :method => :delete

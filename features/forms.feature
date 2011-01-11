@@ -79,3 +79,16 @@ Feature: Forms Home Page and Search
     When I follow "Forms" within "#search_form"
     Then I should be on the forms search page
     And I should see 10 search results
+    
+  Scenario: Viewing Top Forms on Forms Landing Page
+    Given the following Top Forms exist:
+    | name            | url                 | column_number | sort_order  |
+    | Column 1        |                     | 1             | 1           |
+    | Link 1.1        | http://link11.com   | 1             | 10          |
+    | Link 1.2        | http://link12.com   | 1             | 20          |
+    | Column 3        |                     | 3             | 1           |
+    And I am on the forms home page
+    Then I should see "Column 1" within "#top-forms-column-1"
+    And I should see "Link 1.1" within "#top-forms-column-1"
+    And I should see "Link 1.2" within "#top-forms-column-1"
+    And I should see "Column 3" within "#top-forms-column-3"
