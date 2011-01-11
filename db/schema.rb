@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110106001640) do
+ActiveRecord::Schema.define(:version => 20110111175041) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -192,21 +192,6 @@ ActiveRecord::Schema.define(:version => 20110106001640) do
   end
 
   add_index "grouped_queries_query_groups", ["query_group_id", "grouped_query_id"], :name => "joinindex", :unique => true
-
-  create_table "locations", :force => true do |t|
-    t.integer  "zip_code"
-    t.string   "state"
-    t.string   "city"
-    t.integer  "population"
-    t.float    "lat"
-    t.float    "lng"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "locations", ["city"], :name => "index_locations_on_city"
-  add_index "locations", ["state"], :name => "index_locations_on_state"
-  add_index "locations", ["zip_code"], :name => "index_locations_on_zip_code"
 
   create_table "misspellings", :force => true do |t|
     t.string   "wrong"
