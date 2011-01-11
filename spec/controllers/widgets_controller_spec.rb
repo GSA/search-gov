@@ -20,12 +20,5 @@ describe WidgetsController do
       end
     end
   end
-  
-  describe "#weather_spotlight" do
-    it "should render the static weather spotlight page" do
-      get :weather_spotlight
-      response.should be_success
-    end
-  end
 end
 

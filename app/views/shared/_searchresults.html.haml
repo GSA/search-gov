@@ -16,8 +16,6 @@
   - if search.spotlight
     #spotlight
       = render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds)
-  - if search.weather_spotlight
-    = render :partial => 'shared/weather_spotlight', :locals => { :weather_spotlight => search.weather_spotlight }
   - if (search.recalls && search.recalls.total > 0)
     = render "shared/recall_gov_box", :search => search
   - search.results.each_with_index do |result, index|

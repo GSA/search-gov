@@ -3,9 +3,5 @@ class WidgetsController < ApplicationController
     @top_searches = TopSearch.find(:all, :limit => 5, :order => 'position asc')
     render :layout => false
   end
-  
-  def weather_spotlight
-    render :layout => false
-  end
 end
 

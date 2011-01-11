@@ -35,7 +35,6 @@ class Search
                 :faqs,
                 :gov_forms,
                 :recalls,
-                :weather_spotlight,
                 :results_per_page,
                 :filter_setting,
                 :fedstates,
@@ -147,16 +146,6 @@ class Search
         rescue RSolr::RequestError => error
           RAILS_DEFAULT_LOGGER.warn "Error in searching for Recalls: #{error.to_s}"
           self.recalls = nil
-        end
-      end
-      if WeatherSpotlight.is_weather_spotlight_query(query)
-        ActiveRecord::Base.benchmark("[Weather Search]", Logger::INFO) do
-          begin
-            self.weather_spotlight = WeatherSpotlight.new(WeatherSpotlight.parse_query(query))
-          rescue RuntimeError, Errno::ETIMEDOUT => error
-            RAILS_DEFAULT_LOGGER.warn "Error in search for Weather: #{error.to_s}"
-            self.weather_spotlight = nil
-          end
         end
       end
     end
@@ -286,7 +275,6 @@ class Search
     modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
     modules << "FORM" unless self.gov_forms.nil? or self.gov_forms.total.zero?
     modules << "SPOT" unless self.spotlight.nil?
-    modules << "WEAT" unless self.weather_spotlight.nil?
     modules << "BOOS" unless self.boosted_sites.nil? or self.boosted_sites.total.zero?
     RAILS_DEFAULT_LOGGER.info("[Search Impression] time: #{Time.now.to_formatted_s(:db)} , query: #{self.query}, modules: #{modules.inspect}")
   end
