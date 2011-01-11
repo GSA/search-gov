@@ -176,6 +176,8 @@ Now re-run that taxes search again and you should see content above the search r
     * Is there an admin component to this feature?
     * Does the usage of this feature need to be tracked?
 
+1. Make sure you are comfortable with the number of story points associated with the feature. As a rule of thumb, zero points means you can knock it out in an hour or less, one point means a half-day or so, two points is a full day or so of work, and four points is a few days. Generally we decompose eight point stories (epics) into smaller stories. If someone already assigned points to the story and you disagree, then change it to reflect your viewpoint.
+
 1. Now that you have a good idea of how to get started and how to be finished, make sure you have the latest code:
 
         git pull

@@ -132,6 +132,15 @@ describe ApplicationHelper do
         content = helper.basic_header_navigation_for(nil)
         content.should have_tag("a[href^=aprotocol]", "Login")
       end
+
+      it "should contain Login, Sign Up and Help Desk links" do
+        content = helper.basic_header_navigation_for(nil)
+        content.should have_tag("a", "Login")
+        content.should have_tag("a", "Sign Up")
+        content.should have_tag("a", "Help Desk")
+        content.should_not have_tag("a", "My Account")
+        content.should_not have_tag("a", "Logout")
+      end
     end
 
     context "when user is logged in" do
@@ -139,6 +148,50 @@ describe ApplicationHelper do
         user = stub("User", :email => "user@fixtures.org")
         content = helper.basic_header_navigation_for(user)
         content.should have_tag("a[href^=aprotocol]", "Logout")
+      end
+    end
+
+    it "should contain My Account and Logout links" do
+      user = stub("User", :email => "user@fixtures.org")
+      content = helper.basic_header_navigation_for(user)
+      content.should_not have_tag("a", "Login")
+      content.should_not have_tag("a", "Sign Up")
+      content.should have_tag("a", "Help Desk")
+      content.should have_tag("a", "My Account")
+      content.should have_tag("a", "Logout")
+    end
+  end
+
+  describe "#analytics_header_navigation_for" do
+    context "when user is not logged in" do
+      it "should contain Help Desk link" do
+        content = helper.analytics_header_navigation_for(nil)
+        content.should_not have_tag("a", "My Account")
+        content.should_not have_tag("a", "Query Groups Admin")
+        content.should_not have_tag("a", "Logout")
+        content.should have_tag("a", "Help Desk")
+      end
+    end
+
+    context "when analyst admin is logged in" do
+      it "should contain My Account, Query Groups Admin, Logout and Help Desk" do
+        user = stub("User", :email => "user@fixtures.org", :is_analyst_admin? => true)
+        content = helper.analytics_header_navigation_for(user)
+        content.should have_tag("a", "My Account")
+        content.should have_tag("a", "Query Groups Admin")
+        content.should have_tag("a", "Logout")
+        content.should have_tag("a", "Help Desk")
+      end
+    end
+
+    context "when non analyst admin is logged in" do
+      it "should contain My Account, Logout and Help Desk" do
+        user = stub("User", :email => "user@fixtures.org", :is_analyst_admin? => false)
+        content = helper.analytics_header_navigation_for(user)
+        content.should have_tag("a", "My Account")
+        content.should_not have_tag("a", "Query Groups Admin")
+        content.should have_tag("a", "Logout")
+        content.should have_tag("a", "Help Desk")
       end
     end
   end

@@ -31,8 +31,6 @@ Rails::Initializer.run do |config|
   config.gem 'fastercsv', :version => '1.5.3'
   config.gem 'calais', :version => '>= 0.0.11'
   config.gem "aws-s3", :lib => "aws/s3", :version => '0.6.2'
-  config.gem "noaa", :version => '=0.2.4'
-  config.gem "libxml-ruby", :version => '=1.1.4', :lib => "xml/libxml"
   config.gem "yajl-ruby", :lib => 'yajl', :version => '= 0.7.8'
   config.gem "redis", :version => '= 2.1.1'
   config.gem "redis-namespace", :lib => false, :version => '= 0.10.0'

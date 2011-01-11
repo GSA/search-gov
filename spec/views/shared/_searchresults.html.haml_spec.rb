@@ -13,7 +13,6 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:total).and_return 20
     @search.stub!(:page).and_return 0
     @search.stub!(:spotlight)
-    @search.stub!(:weather_spotlight)
     @search.stub!(:boosted_sites)
     @search.stub!(:faqs)
     @search.stub!(:gov_forms)

@@ -20,7 +20,6 @@ describe "searches/index.html.haml" do
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil
       @search.stub!(:spotlight).and_return nil
-      @search.stub!(:weather_spotlight).and_return nil
       @search.stub!(:error_message).and_return "Ignore me"
       @search.stub!(:filter_setting).and_return nil
       @search.stub!(:scope_id).and_return nil
@@ -42,7 +41,6 @@ describe "searches/index.html.haml" do
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil
       @search.stub!(:spotlight).and_return nil
-      @search.stub!(:weather_spotlight).and_return nil
       @search.stub!(:error_message).and_return "Enter some search terms"
       @search.stub!(:filter_setting).and_return nil
       @search.stub!(:scope_id).and_return nil
@@ -76,7 +74,6 @@ describe "searches/index.html.haml" do
       @search_results.stub!(:total_pages).and_return 1
       @search.stub!(:results).and_return @search_results
       @search.stub!(:spotlight).and_return nil
-      @search.stub!(:weather_spotlight).and_return nil
       @search.stub!(:boosted_sites).and_return nil
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil
