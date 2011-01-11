@@ -29,9 +29,6 @@ Feature: Affiliate clients
     And I should not see "Admin Center"
     And I should not see "Analyst Center"
 
-    When I follow "Contact Us"
-    Then I should see "Contact Us" within ".main"
-
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
       | name             | contact_email         | contact_name        |

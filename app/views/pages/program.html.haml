@@ -1,26 +1,36 @@
-= breadcrumbs([link_to('USASearch', root_path), "Program"])
+= breadcrumbs([link_to('USASearch', root_path), "USASearch Program"])
 %h1
   USASearch Program
 %p
   USASearch is a program of General Services Administration’s Office of Citizen Services and Information Technology (OCSIT). For over ten years, USASearch has improved the general public’s access to government information by providing hosted search services for more than 300 government affiliate organizations, sharing APIs and web services, and operating the U.S. government’s official search engine at Search.USA.gov.
 .prepend-1.span-20
   .affiliate-marketing-left
-    %img{:src=>"/images/affiliates/thumb_affiliate.png"}
+    %img{:src=>"/images/program_affiliate.png"}
   .affiliate-marketing-right
-    %a{:href => "/affiliates"}
+    %h2
       Affiliate Program
-    \-- Free hosted search services for any federal, state, local, tribal, or territorial government agency.
+    %p
+      Free hosted search services for any federal, state, local, tribal, or territorial government agency.
+      = link_to "Learn more", affiliates_path, :id => "learn_more_affiliates"
   .clear
   .affiliate-marketing-left
-    %img{:src=>"/images/affiliates/thumb_analytics.png"}
+    %img{:src=>"/images/program_api.png"}
   .affiliate-marketing-right
-    %a{:href => "/api"}
+    %h2
       APIs and other web services
-    \-- Free for anyone interested in using them to build new applications or mashups from government data.
+    %p
+      Free for anyone interested in using them to build new applications or mashups from government data.
+      = link_to "Learn more", api_docs_path, :id => "learn_more_api"
   .clear
   .affiliate-marketing-left
-    %img{:src=>"/images/affiliates/thumb_spotlight.png"}
+    %img{:src=>"/images/program_search.png"}
   .affiliate-marketing-right
-    %a{:href => "/searchusagov"}
+    %h2
       Search.USA.gov
-    \-- The U.S. government’s official search engine.
+    The U.S. government’s official search engine.
+    = link_to "Learn more", searchusagov_path, :id => "learn_more_searchusagov"
+    - form_tag(search_path, :method => :get, :id => "search_form") do
+      = hidden_field_tag :locale, I18n.locale
+      = hidden_field_tag :m, params[:m]
+      = text_field :search, :query, { :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete" }
+      = submit_tag("Search", :id => "search_button")

@@ -8,18 +8,24 @@ Feature: Program
     And I should see "APIs and other web services" within ".main"
     And I should see "Search.USA.gov" within ".main"
     And I should see "Program" within ".breadcrumb"
+
     When I follow "program_logo"
     Then I should be on the program welcome page
 
+    When I fill in "query" with "White House"
+    Then I press "Search"
+    Then I should be on the search page
+    And I should see 10 search results
+
   Scenario: Affiliate Program link should be on the affiliates page
     Given I am on the program welcome page
-    When I follow "Affiliate Program" within ".main"
+    When I follow "learn_more_affiliates" within ".main"
     Then I should be on the affiliates page
     And I should see "USASearch Affiliate Program"
 
   Scenario: APIs and other web services link should be on the affiliates page
     Given I am on the program welcome page
-    When I follow "APIs and other web services" within ".main"
+    When I follow "learn_more_api" within ".main"
     Then I should be on the api page
     And I should see "USASearch APIs"
 
@@ -33,6 +39,6 @@ Feature: Program
 
   Scenario: search.USA.gov link should be on the searchusagov page
     Given I am on the program welcome page
-    When I follow "Search.USA.gov" within ".main"
+    When I follow "learn_more_searchusagov" within ".main"
     Then I should be on the searchusagov page
     And I should see "Search.USA.gov"
