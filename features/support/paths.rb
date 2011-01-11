@@ -82,8 +82,12 @@ module NavigationHelpers
       program_path(:locale => nil, :m => nil)
     when /the api page/
       api_docs_path(:locale => nil, :m => nil)
+    when /the recalls api page/
+      recalls_api_docs_path(:locale => nil, :m => nil)
     when /the searchusagov page/
       searchusagov_path(:locale => nil, :m => nil)
+    when /the contact us page/
+      contactus_path
     else
       begin
         page_name =~ /the (.*) page/

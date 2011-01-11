@@ -69,4 +69,5 @@ ActionController::Routing::Routes.draw do |map|
   map.usa '/usa/:url_slug', :controller => 'usa', :action => 'show', :requirements => { :url_slug => /.*/ }
   map.program '/program', :controller => "pages", :action => "show", :id => "program"
   map.searchusagov '/searchusagov', :controller => "pages", :action => "show", :id => "search"
+  map.contactus '/contactus', :controller => "pages", :action => "show", :id => "contactus"
 end

@@ -7,6 +7,7 @@ Feature: Program
     Then I should see "Affiliate Program" within ".main"
     And I should see "APIs and other web services" within ".main"
     And I should see "Search.USA.gov" within ".main"
+    And I should see "Program" within ".breadcrumb"
     When I follow "program_logo"
     Then I should be on the program welcome page
 
@@ -21,6 +22,14 @@ Feature: Program
     When I follow "APIs and other web services" within ".main"
     Then I should be on the api page
     And I should see "USASearch APIs"
+
+    When I follow "API & Web Services" within "#nav"
+    Then I should be on the api page
+    And I should see "API & Web Services" within ".breadcrumb"
+
+    When I follow "Recalls API" within "#nav"
+    Then I should be on the recalls api page
+    And I should see "Recalls API" within ".breadcrumb"
 
   Scenario: search.USA.gov link should be on the searchusagov page
     Given I am on the program welcome page
