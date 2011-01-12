@@ -178,65 +178,9 @@ describe CalaisRelatedSearch do
         end
       end
 
-      context "when Calais throws a Calais:Error" do
+      context "when Calais throws an error while processing a request for social tags" do
         before do
-          Calais.stub!(:process_document).and_raise(Calais::Error)
-        end
-
-        it "should log the error" do
-          RAILS_DEFAULT_LOGGER.should_receive(:warn).once
-          CalaisRelatedSearch.perform(@affiliate.name, @term)
-        end
-      end
-
-      context "when Calais throws a Curl::Err::GotNothingError" do
-        before do
-          Calais.stub!(:process_document).and_raise(Curl::Err::GotNothingError)
-        end
-
-        it "should log the error" do
-          RAILS_DEFAULT_LOGGER.should_receive(:warn).once
-          CalaisRelatedSearch.perform(@affiliate.name, @term)
-        end
-      end
-
-      context "when Calais throws a Nokogiri::XML::XPath::SyntaxError" do
-        before do
-          Calais.stub!(:process_document).and_raise(Nokogiri::XML::XPath::SyntaxError)
-        end
-
-        it "should log the error" do
-          RAILS_DEFAULT_LOGGER.should_receive(:warn).once
-          CalaisRelatedSearch.perform(@affiliate.name, @term)
-        end
-      end
-
-      context "when Calais throws a NoMethodError from some parsing problem" do
-        before do
-          Calais.stub!(:process_document).and_raise(NoMethodError)
-        end
-
-        it "should log the error" do
-          RAILS_DEFAULT_LOGGER.should_receive(:warn).once
-          CalaisRelatedSearch.perform(@affiliate.name, @term)
-        end
-      end
-
-
-      context "when Calais throws a date parsing or other argument error" do
-        before do
-          Calais.stub!(:process_document).and_raise(ArgumentError)
-        end
-
-        it "should log the error" do
-          RAILS_DEFAULT_LOGGER.should_receive(:warn).once
-          CalaisRelatedSearch.perform(@affiliate.name, @term)
-        end
-      end
-
-      context "when Calais service times out" do
-        before do
-          Calais.stub!(:process_document).and_raise(Curl::Err::TimeoutError)
+          Calais.stub!(:process_document).and_raise(StandardError)
         end
 
         it "should log the error" do

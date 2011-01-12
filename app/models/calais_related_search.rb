@@ -76,7 +76,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
             calais_related_search.gets_refreshed = true
             calais_related_search.save!
           end
-        rescue NoMethodError, Nokogiri::XML::XPath::SyntaxError, Calais::Error, Curl::Err::TimeoutError, Curl::Err::GotNothingError, ArgumentError => error
+        rescue StandardError => error
           RAILS_DEFAULT_LOGGER.warn "Problem getting Calais Socialtags for #{affiliate_name}:#{term}: #{error}"
         end
       end
