@@ -1,6 +1,4 @@
-#logoSmall
-  = link_to image_tag("/m/i/logo_mobile_small.png" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
-.clear
+= render :partial => "shared/small_logo"
 
 .search
   %h4.center=t(:contact_your_government)
