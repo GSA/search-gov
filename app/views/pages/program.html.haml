@@ -3,7 +3,7 @@
   USASearch Program
 %p
   USASearch is a program of General Services Administration’s Office of Citizen Services and Information Technology (OCSIT). For over ten years, USASearch has improved the general public’s access to government information by providing hosted search services for more than 300 government affiliate organizations, sharing APIs and web services, and operating the U.S. government’s official search engine at Search.USA.gov.
-.prepend-1.span-20
+.prepend-1.span-22
   .affiliate-marketing-left
     %img{:src=>"/images/program_affiliate.png"}
   .affiliate-marketing-right
@@ -27,7 +27,7 @@
   .affiliate-marketing-right
     %h2
       Search.USA.gov
-    The U.S. government’s official search engine.
+    The U.S. government’s official search engine with about 50 million pages from federal, state, local, territorial and tribal websites.
     = link_to "Learn more", searchusagov_path, :id => "learn_more_searchusagov"
     - form_tag(search_path, :method => :get, :id => "search_form") do
       = hidden_field_tag :locale, I18n.locale

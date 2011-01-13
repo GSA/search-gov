@@ -23,22 +23,31 @@ Feature: Program
     Then I should be on the affiliates page
     And I should see "USASearch Affiliate Program"
 
+    When I follow "Affiliate Program" within ".admin-footer"
+    Then I should be on the affiliates page
+
   Scenario: APIs and other web services link should be on the affiliates page
     Given I am on the program welcome page
     When I follow "learn_more_api" within ".main"
     Then I should be on the api page
     And I should see "USASearch APIs"
 
-    When I follow "API & Web Services" within "#nav"
+    When I follow "API & Web Services" within ".nav"
     Then I should be on the api page
     And I should see "API & Web Services" within ".breadcrumb"
 
-    When I follow "Recalls API" within "#nav"
+    When I follow "API & Web Services" within ".admin-footer"
+    Then I should be on the api page
+
+    When I follow "Recalls API" within ".nav"
     Then I should be on the recalls api page
     And I should see "Recalls API" within ".breadcrumb"
 
-  Scenario: search.USA.gov link should be on the searchusagov page
+  Scenario: Search.USA.gov link should be on the searchusagov page
     Given I am on the program welcome page
     When I follow "learn_more_searchusagov" within ".main"
     Then I should be on the searchusagov page
     And I should see "Search.USA.gov"
+
+    When I follow "Search.USA.gov" within ".admin-footer"
+    Then I should be on the searchusagov page

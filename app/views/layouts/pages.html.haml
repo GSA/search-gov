@@ -18,15 +18,8 @@
     = javascript_include_tag "application.js"
     = javascript_include_tag "affiliates.js"
   %body
-    .container
-      .span-12
-        = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :style=>"vertical-align:middle;"), home_page_path) 
-        = link_to(image_tag('USAsearchProgram_medium_en.png', :alt=>"USAsearch Home", :style=>"vertical-align:middle", :id => "program_logo"), program_path)
-      .right
-        = basic_header_navigation_for current_user
-    .secondary-navbar
-      .sec-nav-left
-        = render "/shared/program_nav"
+    = render "/shared/program_header"
+    = render "/shared/program_nav"
     .container
       .main    
         .admin-content

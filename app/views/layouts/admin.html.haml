@@ -16,14 +16,8 @@
     = active_scaffold_includes
 
   %body
-    .container
-      .span-8
-        = link_to(image_tag('USAsearch_medium_en.gif', :alt=>"USAsearch Home", :width => 201, :height => 44), admin_home_page_path)
-      .right
-        = basic_header_navigation_for current_user
-    .secondary-navbar
-      .sec-nav-left
-        = render "/shared/affiliate_nav"
+    = render "/shared/program_header"
+    = render "/shared/program_nav"
     .container
       .span-24.main
         = breadcrumbs([link_to('USASearch', program_path), link_to("Affiliate Program", affiliates_path), "Admin Center"])

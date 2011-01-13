@@ -19,7 +19,7 @@ function getParameterByName( name )
 }
 
 jQuery(document).ready(function () {	
-	jQuery('#nav li').hover(
+	jQuery('.nav li').hover(
 		function () {
 			//show submenu
 			jQuery('ul', this).slideDown(100);

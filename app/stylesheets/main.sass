@@ -325,6 +325,7 @@ table.nav-links
   :background url("/images/backgrounds/bg_red_gradient.png")
   :background-repeat repeat-x
   :margin 0 0 10px 0
+  :min-width 980px
   :width 100%
   :text-align right
   .sec-nav-left
@@ -333,9 +334,8 @@ table.nav-links
     :padding 3px 0px 0 10px
   .sec-nav-right
     :float right
-    :padding 0 10px 0 0
-    :font-size .9em
     :color #fff
+    :padding 3px 10px 0 0px
   a
     :color #fff
   
@@ -387,7 +387,7 @@ table.nav-links
   
   
 /* dropdown menu begin */
-#nav
+.nav
   :margin 0
   :padding 0
   :list-style none
@@ -443,6 +443,6 @@ table.nav-links
         :color #222
         :margin 0
           
-*html #nav ul
+*html .nav ul
   :margin 0 0 0 -2px
 /*dropdown menu end*/

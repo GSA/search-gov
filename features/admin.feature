@@ -2,8 +2,11 @@ Feature:  Administration
   Scenario: Visiting the admin home page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
-    Then I should see "Admin Center"
-    And I should see "Boosted Sites" within "#nav"
+    Then I should see "Affiliate Program" within ".nav"
+    And I should see "API & Web Services" within ".nav"
+    And I should see "Search.USA.gov" within ".nav"
+    And I should see "Admin Center"
+    And I should see "Boosted Sites" within ".secondary-navbar"
     And I should see "Users" within ".main"
     And I should see "Affiliates"
     And I should see "Affiliate Broadcast"
@@ -17,31 +20,31 @@ Feature:  Administration
     And I should not see "Query Grouping"
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
-    And I should see "Mobile Pages" within "#nav"
+    And I should see "Mobile Pages" within ".secondary-navbar"
     And I should see "Logout"
 
-    When I follow "Affiliate Broadcast" within "#nav"
+    When I follow "Affiliate Broadcast" within ".secondary-navbar"
     Then I should be on the affiliate admin broadcast page
 
-    When I follow "Mobile Pages" within "#nav"
+    When I follow "Mobile Pages" within ".secondary-navbar"
     Then I should be on the admin site pages page
 
-    When I follow "SAYT Bulk Upload"
+    When I follow "SAYT Bulk Upload" within ".secondary-navbar"
     Then I should be on the admin sayt suggestions upload page
 
     When I follow "Logout"
     Then I should be on the login page
 
-  Scenario: Clicking on USASearch nav link in the admin home page as an admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the admin home page
-    When I follow "USASearch" within "#nav"
-    Then I should be on the program welcome page
-
   Scenario: Clicking on USASearch breadcrumb link in the admin home page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     When I follow "USASearch" within ".breadcrumb"
+    Then I should be on the program welcome page
+
+  Scenario: Clicking on program logo in the admin home page as an admin
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin home page
+    And  I follow "program_logo"
     Then I should be on the program welcome page
 
   Scenario: Visiting the admin home page as Marilyn

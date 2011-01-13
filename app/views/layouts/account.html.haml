@@ -22,16 +22,8 @@
     = javascript_include_tag "affiliates.js"
     = calendar_date_select_includes
   %body
-    .container
-      .span-14
-        = render "/shared/logos"
-      .right
-        = basic_header_navigation_for current_user
-    .secondary-navbar
-      .sec-nav-left
-        = render "/shared/affiliate_nav"
-      .sec-nav-right
-        &nbsp;
+    = render "/shared/program_header"
+    = render "/shared/program_nav"
     .container
       .main
         .affiliate-nav
