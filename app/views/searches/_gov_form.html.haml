@@ -1,0 +1,7 @@
+.searchresult.clearfix
+  %h2
+    = link_to "#{gov_form.name} (#{gov_form.form_number})", h(gov_form.url)
+  %h3
+    = gov_form.description
+  %h3
+    = link_to h(gov_form.url), h(gov_form.url)

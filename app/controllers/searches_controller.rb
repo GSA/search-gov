@@ -29,13 +29,22 @@ class SearchesController < ApplicationController
   
   def forms
     @search = FormSearch.new(@search_options)
-    @search.run
+    if params[:source] == "gov_forms"
+      @gov_forms = GovForm.search_for(@search_options[:query], [@search_options[:page], 0].max + 1, @search_options[:results_per_page] || 10)
+    else
+      @search.run
+    end
     @form_path = forms_search_path
     @page_title = "Forms Search for: #{@search.query}"
     respond_to do |format|
-      format.html { render :action => :index }
-      format.mobile { render :action => :index }
-      format.json { render :json => @search }
+      if @gov_forms
+        format.html
+        format.mobile
+      else
+        format.html { render :action => :index }
+        format.mobile { render :action => :index }
+        format.json { render :json => @search }
+      end
     end
   end
 

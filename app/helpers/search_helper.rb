@@ -119,8 +119,6 @@ module SearchHelper
     summary = t :results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => q
     p_sum = content_tag(:p, summary)
     logo = show_logo ? image_tag("binglogo_#{I18n.locale}.gif", :style=>"float:right") : ""
-
-
     content_tag(:div, logo + p_sum, :id => "summary")
   end
 
