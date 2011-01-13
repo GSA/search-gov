@@ -436,7 +436,11 @@ describe SearchesController do
     it "should output a Forms GovBox with a link to more GovForm search results" do
       response.body.should have_tag("div[class=govbox]")
       response.body.should have_tag("a[href=/search/forms?locale=en&amp;m=false&amp;query=taxes&amp;source=gov_forms]", :text => "Forms for taxes")
-      response.body.should have_tag("a[href=#{@gov_form.url}]", :text => @gov_form.name)
+      response.body.should have_tag("a[href=#{@gov_form.url}]", :text => "#{@gov_form.name} (#{@gov_form.form_number})")
+    end
+    
+    it "should not have related Gov Forms" do
+      response.body.should_not have_tag("ul[id=related_gov_forms]")
     end
   end
 end

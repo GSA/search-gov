@@ -4,7 +4,7 @@
     
   - search.gov_forms.hits.each_with_index do |hit, index|
     .gov_form{:style => 'margin-bottom: 10px;'}
-      = link_to highlight(truncate_on_words(hit.instance.name, 100), search.query.split, :highlighter => '<b>\1</b>'), hit.instance.url
+      = link_to highlight(truncate_on_words("#{hit.instance.name} (#{hit.instance.form_number})", 100), search.query.split, :highlighter => '<b>\1</b>'), hit.instance.url
       .gov_form_description
         - if hit.instance.description.present?    
           = highlight(truncate_on_words(hit.instance.description, 190), search.query.split, :highlighter => '<b>\1</b>')
