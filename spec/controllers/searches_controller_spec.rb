@@ -373,6 +373,9 @@ describe SearchesController do
   describe "#forms" do
     integrate_views
     before do
+      GovForm.destroy_all
+      @gov_form = GovForm.create(:name => "Tax Form", :form_number => "1040", :description => "A tax form", :agency => "IRS", :url => 'http://irs.gov/1040.pdf')
+      GovForm.reindex
       get :forms, :query => "taxes", :page => 2
       @search = assigns[:search]
       @page_title = assigns[:page_title]
@@ -407,6 +410,15 @@ describe SearchesController do
       get :forms, :query => "taxes", :page => 2
     end
     
+    it "should populate additional gov form results if the query matches" do
+      @search.gov_forms.should_not be_nil
+      @search.gov_forms.hits.should_not be_nil
+      @search.gov_forms.total.should == 1
+      @search.gov_forms.hits.first.instance.should_not be_nil
+      @search.gov_forms.results.should_not be_empty
+      @search.gov_forms.results.first.should == @gov_form
+    end
+        
     it "should render the search box with the form search path" do
       response.body.should have_tag("form#search_form[method=get][action=/search/forms?locale=en&amp;m=false]")
     end
@@ -419,6 +431,12 @@ describe SearchesController do
       response.body.should have_tag("a[href=/search?m=false&amp;query=taxes]", :text => "Government Web")
       response.body.should have_tag("a[href=/search/images?m=false&amp;query=taxes]", :text => "Images")
       response.body.should have_tag("li", :text => "Forms")
+    end
+    
+    it "should output a Forms GovBox with a link to more GovForm search results" do
+      response.body.should have_tag("div[class=govbox]")
+      response.body.should have_tag("a[href=/search/forms?locale=en&amp;m=false&amp;query=taxes&amp;source=gov_forms]", :text => "Forms for taxes")
+      response.body.should have_tag("a[href=#{@gov_form.url}]", :text => @gov_form.name)
     end
   end
 end

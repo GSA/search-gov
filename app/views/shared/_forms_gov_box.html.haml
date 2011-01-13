@@ -1,0 +1,10 @@
+.govbox
+  %h3
+    = link_to t(:forms_for, :query => "<b>#{search.query}</b>"), forms_search_path(:query => search.query, :source => "gov_forms")
+    
+  - search.gov_forms.hits.each_with_index do |hit, index|
+    .gov_form{:style => 'margin-bottom: 10px;'}
+      = link_to highlight(truncate_on_words(hit.instance.name, 100), search.query.split, :highlighter => '<b>\1</b>'), hit.instance.url
+      .gov_form_description
+        - if hit.instance.description.present?    
+          = highlight(truncate_on_words(hit.instance.description, 190), search.query.split, :highlighter => '<b>\1</b>')
