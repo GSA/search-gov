@@ -7,7 +7,7 @@ Feature: Forms Home Page and Search
     Given I am on the homepage
     When I follow "Forms" within "#search_form"
     Then I should be on the forms home page
-    And I should see "Forms.gov has moved!"
+    And I should see "Federal Government Forms Catalog has moved and is different."
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the forms search page
