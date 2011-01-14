@@ -16,6 +16,15 @@ class SaytSuggestion < ActiveRecord::Base
            :limit => num_suggestions, :select=> 'phrase')
     end
 
+    def prune_dead_ends
+      all.each do |ss|
+        unless Search.results_present_for?(ss.phrase, ss.affiliate)
+          RAILS_DEFAULT_LOGGER.info "Deleting #{ss.phrase} for affiliate #{ss.affiliate.name rescue Affiliate::USAGOV_AFFILIATE_NAME}"
+          ss.delete
+        end
+      end
+    end
+
     def populate_for(day)
       name_id_list = Affiliate.all.collect { |aff| {:name => aff.name, :id => aff.id} }
       name_id_list << {:name => Affiliate::USAGOV_AFFILIATE_NAME, :id => nil}
@@ -23,15 +32,18 @@ class SaytSuggestion < ActiveRecord::Base
     end
 
     def populate_for_affiliate_on(affiliate_name, affiliate_id, day)
+      affiliate = Affiliate.find_by_id affiliate_id
       ordered_hash = DailyQueryStat.sum(:times, :group=> "query", :conditions=>["day = ? and affiliate = ?", day, affiliate_name])
-      daily_query_stats = ordered_hash.map{|entry| DailyQueryStat.new(:query=> entry[0], :times=> entry[1])}
+      daily_query_stats = ordered_hash.map { |entry| DailyQueryStat.new(:query=> entry[0], :times=> entry[1]) }
       filtered_daily_query_stats = SaytFilter.filter(daily_query_stats, "query")
       filtered_daily_query_stats.each do |dqs|
-        temp_ss = new(:phrase => dqs.query)
-        temp_ss.squish_whitespace_and_downcase_and_spellcheck
-        sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase(affiliate_id, temp_ss.phrase)
-        sayt_suggestion.popularity = dqs.times
-        sayt_suggestion.save
+        if Search.results_present_for?(dqs.query, affiliate) then
+          temp_ss = new(:phrase => dqs.query)
+          temp_ss.squish_whitespace_and_downcase_and_spellcheck
+          sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase(affiliate_id, temp_ss.phrase)
+          sayt_suggestion.popularity = dqs.times
+          sayt_suggestion.save
+        end
       end unless filtered_daily_query_stats.empty?
     end
 

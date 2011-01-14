@@ -16,6 +16,53 @@ describe CalaisRelatedSearch do
     }
   end
 
+  describe "#prune_dead_ends" do
+    context "when the pivot term has no search results" do
+      before do
+        @ups = calais_related_searches(:ups)
+        @potus = calais_related_searches(:potus)
+        Search.stub!(:results_present_for?).and_return true
+        Search.should_receive(:results_present_for?).with(@potus.term, nil).and_return false
+      end
+
+      it "should delete the CalaisRelatedSearches that yield no search results for the pivot term" do
+        CalaisRelatedSearch.prune_dead_ends
+        CalaisRelatedSearch.exists?(:term => @ups.term).should be_true
+        CalaisRelatedSearch.exists?(:term => @potus.term).should be_false
+      end
+    end
+
+    context "when one of the related terms yields no search results" do
+      before do
+        @potus = calais_related_searches(:potus)
+        @dead_term = "oval office"
+        Search.stub!(:results_present_for?).and_return true
+        Search.should_receive(:results_present_for?).with(@dead_term, nil).and_return false
+      end
+
+      it "should delete the related term from the group" do
+        CalaisRelatedSearch.find_by_term(@potus.term).related_terms.should match(/#{@dead_term}/)
+        CalaisRelatedSearch.prune_dead_ends
+        CalaisRelatedSearch.find_by_term(@potus.term).related_terms.should_not match(/#{@dead_term}/)
+      end
+    end
+
+    context "when all of the related terms yield no search results but the pivot term does yield results" do
+      before do
+        calais_related_searches(:ups).delete
+        potus = calais_related_searches(:potus)
+        Search.stub!(:results_present_for?).and_return false
+        Search.should_receive(:results_present_for?).with(potus.term, nil).and_return true
+      end
+
+      it "should delete the CalaisRelatedSearch entry altogether" do
+        CalaisRelatedSearch.count.should > 0
+        CalaisRelatedSearch.prune_dead_ends
+        CalaisRelatedSearch.count.should be_zero
+      end
+    end
+  end
+
   context "when creating a new instance" do
     it "should create a new instance given valid attributes" do
       CalaisRelatedSearch.create!(@valid_attributes)
@@ -40,7 +87,7 @@ describe CalaisRelatedSearch do
       a = CalaisRelatedSearch.create!(:affiliate => @affiliate, :term => "term1", :related_terms => "rs1 | rs2 | rs3", :locale => 'en')
       b = CalaisRelatedSearch.create!(:affiliate => nil, :term => "term2", :related_terms => "rs4 | rs5 | rs6", :locale => 'en')
       CalaisRelatedSearch.create!(:affiliate => @affiliate, :term => "term3", :related_terms => "rs7 | rs8 | rs9", :locale => 'en')
-      @oldest_two = [a,b]
+      @oldest_two = [a, b]
     end
 
     it "should refresh the oldest refreshable English entries up to the daily API quota limit" do
@@ -101,7 +148,7 @@ describe CalaisRelatedSearch do
     context "when some of the popular terms already have their related searches computed" do
       context "when the affiliate is the default usasearch.gov affiliate" do
         before do
-          @crs = calais_related_searches(:usasearch)
+          @crs = calais_related_searches(:potus)
           DailyQueryStat.create!(:day => Date.yesterday, :times => 1000, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :query => @crs.term)
           DailyQueryStat.create!(:day => Date.yesterday, :times => 1001, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :query => "new term")
           @redis.stub!(:incr).and_return(1, 2)
@@ -141,6 +188,7 @@ describe CalaisRelatedSearch do
         search.stub!(:run).and_return(nil)
         search.stub!(:results).and_return([{'title'=>'First title', 'content' => 'First content'},
                                            {'title'=>'Second title', 'content' => 'Second content'}])
+        Search.stub!(:results_present_for?).and_return true
       end
 
       context "when there are Calais SocialTags for a term's corpus of titles and descriptions" do
@@ -159,6 +207,17 @@ describe CalaisRelatedSearch do
         it "should set the CalaisRelatedSearch's gets_refreshed flag to true for that term" do
           CalaisRelatedSearch.perform(@affiliate.name, @term)
           CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).gets_refreshed.should be_true
+        end
+
+        context "when a SocialTag doesn't have any search results associated with it for that affiliate" do
+          before do
+            Search.should_receive(:results_present_for?).with("congress", @affiliate).and_return false
+          end
+
+          it "should not include that SocialTag in the set of related terms for that pivot term" do
+            CalaisRelatedSearch.perform(@affiliate.name, @term)
+            CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "California | CIA inquiry"            
+          end
         end
       end
 
@@ -195,7 +254,7 @@ describe CalaisRelatedSearch do
 
   describe "#to_label" do
     it "should return the query term associates with the Calais related search" do
-      crs = calais_related_searches(:one)
+      crs = calais_related_searches(:ups)
       crs.to_label.should == crs.term
     end
   end

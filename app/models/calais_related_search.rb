@@ -51,6 +51,24 @@ class CalaisRelatedSearch < ActiveRecord::Base
       end
     end
 
+    def prune_dead_ends
+      all.each do |crs|
+        new_related_terms = []
+        crs.related_terms.split('|').each do |term|
+          if Search.results_present_for?(term.strip, crs.affiliate)
+            new_related_terms << term.strip
+          end
+        end
+        if not Search.results_present_for?(crs.term, crs.affiliate) or new_related_terms.empty?
+          RAILS_DEFAULT_LOGGER.info "Deleting #{crs.term} for affiliate #{crs.affiliate.name rescue Affiliate::USAGOV_AFFILIATE_NAME}"
+          crs.delete
+        else
+          new_related_terms_str = new_related_terms.join(' | ')
+          crs.update_attribute(:related_terms, new_related_terms_str) unless new_related_terms_str == crs.related_terms
+        end
+      end
+    end
+
     def perform(affiliate_name, term)
       affiliate = Affiliate.find_by_name(affiliate_name)
       affiliate_id = affiliate.nil? ? nil : affiliate.id
@@ -67,7 +85,8 @@ class CalaisRelatedSearch < ActiveRecord::Base
             downcased_tag = tag.downcase
             downcased_tag.include?('_') or downcased_term.include?(downcased_tag.singularize) or
               downcased_term.include?(downcased_tag.pluralize) or downcased_tag == downcased_term or
-              downcased_tag == downcased_term.singularize or downcased_tag == downcased_term.pluralize
+              downcased_tag == downcased_term.singularize or downcased_tag == downcased_term.pluralize or not
+              Search.results_present_for?(tag, affiliate)
           end
           unless social_tags.empty?
             related_terms = social_tags.join(' | ')

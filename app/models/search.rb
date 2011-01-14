@@ -96,10 +96,16 @@ class Search
     suggestions[0, num_suggestions]
   end
 
+  def self.results_present_for?(query, affiliate)
+    search = new(:query => query, :affiliate => affiliate)
+    search.run
+    return search.results.present?
+  end
+
   def sources
     query_for_images = page < 1 && affiliate.nil? && PopularImageQuery.find_by_query(query).present?
     query_for_images ?  "Spell+Web+Image" : "Spell+Web"
-  end  
+  end
 
   protected
 

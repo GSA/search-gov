@@ -1127,4 +1127,33 @@ describe Search do
       end
     end
   end
+
+  describe "#self.results_present_for?" do
+    before do
+      @search = Search.new(:affiliate => @affiliate.name, :query => "some term")
+      Search.stub!(:new).and_return(@search)
+      @search.stub!(:run).and_return(nil)
+    end
+
+    context "when search results exist for a term/affiliate pair" do
+      before do
+        @search.stub!(:results).and_return([{'title'=>'First title', 'content' => 'First content'},
+                                           {'title'=>'Second title', 'content' => 'Second content'}])
+      end
+
+      it "should return true" do
+        Search.results_present_for?("some term", @affiliate).should be_true
+      end
+    end
+
+    context "when search results do not exist for a term/affiliate pair" do
+      before do
+        @search.stub!(:results).and_return([])
+      end
+
+      it "should return false" do
+        Search.results_present_for?("some term", @affiliate).should be_false
+      end
+    end
+  end
 end

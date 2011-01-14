@@ -11,5 +11,10 @@ namespace :usasearch do
       CalaisRelatedSearch.refresh_stalest_entries
     end
 
+    desc "prune CalaisRelatedSearch entries that lead to no search results"
+    task :prune_dead_ends => :environment do
+      CalaisRelatedSearch.prune_dead_ends
+    end
+
   end
 end

@@ -43,5 +43,20 @@ describe "Calais related searches rake tasks" do
       end
     end
 
+    describe "usasearch:calais_related_searches:prune_dead_ends" do
+      before do
+        @task_name = "usasearch:calais_related_searches:prune_dead_ends"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      it "should prune calais_related_searches that yield no search results" do
+        CalaisRelatedSearch.should_receive(:prune_dead_ends)
+        @rake[@task_name].invoke
+      end
+    end
+
   end
 end

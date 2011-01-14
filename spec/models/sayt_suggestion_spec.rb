@@ -4,7 +4,7 @@ describe SaytSuggestion do
   fixtures :sayt_suggestions, :misspellings, :affiliates
   before(:each) do
     @valid_attributes = {
-      :affiliate_id => 370,
+      :affiliate_id => affiliates(:power_affiliate).id,
       :phrase => "some valid suggestion",
       :popularity => 100
     }
@@ -63,6 +63,22 @@ describe SaytSuggestion do
     end
   end
 
+  describe "#prune_dead_ends" do
+    before do
+      SaytSuggestion.delete_all
+      one = SaytSuggestion.create!(:phrase => "yosemite", :affiliate_id => affiliates(:basic_affiliate).id)
+      two = SaytSuggestion.create!(:phrase => "prune me")
+      Search.should_receive(:results_present_for?).with(one.phrase, affiliates(:basic_affiliate)).and_return true
+      Search.should_receive(:results_present_for?).with(two.phrase, nil).and_return false
+    end
+
+    it "should delete suggestions that yield no search results" do
+      SaytSuggestion.prune_dead_ends
+      SaytSuggestion.count.should == 1
+      SaytSuggestion.first.phrase.should == "yosemite"
+    end
+  end
+
   describe "#populate_for(day)" do
     it "should populate SAYT suggestions for the default affiliate and all affiliates in affiliate table" do
       SaytSuggestion.should_receive(:populate_for_affiliate_on).with(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
@@ -85,6 +101,7 @@ describe SaytSuggestion do
         DailyQueryStat.create!(:day => Date.yesterday, :query => "yesterday term1", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         DailyQueryStat.create!(:day => Date.today, :query => "today term1", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         DailyQueryStat.create!(:day => Date.today, :query => "today term2", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        Search.stub!(:results_present_for?).and_return true
       end
 
       it "should populate SaytSuggestions based on each DailyQueryStat for the given day" do
@@ -95,10 +112,26 @@ describe SaytSuggestion do
       end
     end
 
+    context "when search results are present for only some query/affiliate pairs" do
+      before do
+        @one = DailyQueryStat.create!(:day => Date.today, :query => "no results for this query", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
+        @two = DailyQueryStat.create!(:day => Date.today, :query => "got some for this query", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
+        Search.should_receive(:results_present_for?).with(@one.query, affiliates(:basic_affiliate)).and_return false
+        Search.should_receive(:results_present_for?).with(@two.query, affiliates(:basic_affiliate)).and_return true
+      end
+
+      it "should only create SaytSuggestions for the ones with results" do
+        SaytSuggestion.populate_for_affiliate_on(affiliates(:basic_affiliate).name, affiliates(:basic_affiliate).id, Date.today)
+        SaytSuggestion.find_by_phrase(@one.query).should be_nil
+        SaytSuggestion.find_by_phrase(@two.query).should_not be_nil
+      end
+    end
+
     context "when DailyQueryStats exist for multiple locales for an affiliate" do
       before do
         DailyQueryStat.create!(:day => Date.today, :query => "el paso", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'es')
         DailyQueryStat.create!(:day => Date.today, :query => "el paso", :times => 4, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'en')
+        Search.stub!(:results_present_for?).and_return true
       end
 
       it "should combine data from all locales to populate SaytSuggestions" do
@@ -113,6 +146,7 @@ describe SaytSuggestion do
         DailyQueryStat.create!(:day => Date.today, :query => "today term1", :times => 2, :affiliate => @affiliate.name)
         DailyQueryStat.create!(:day => Date.today, :query => "today term2", :times => 2, :affiliate => @affiliate.name)
         SaytFilter.create!(:phrase => "term2")
+        Search.stub!(:results_present_for?).and_return true
       end
 
       it "should apply SaytFilters to each eligible DailyQueryStat word" do
@@ -126,6 +160,7 @@ describe SaytSuggestion do
         @affiliate = affiliates(:power_affiliate)
         SaytSuggestion.create!(:phrase => "already here", :popularity => 10, :affiliate_id => @affiliate.id)
         DailyQueryStat.create!(:day => Date.today, :query => "already here", :times => 2, :affiliate => @affiliate.name)
+        Search.stub!(:results_present_for?).and_return true
       end
 
       it "should update the popularity field with the new count" do
@@ -220,19 +255,19 @@ describe SaytSuggestion do
     fixtures :affiliates
     before do
       @affiliate = affiliates(:basic_affiliate)
-      @phrases = %w{one two three}
+      @phrases = %w{ one two three }
       @file = ActionController::TestUploadedFile.new('spec/fixtures/txt/sayt_suggestions.txt', 'text/plain')
       @file.open
       @dummy_suggestion = SaytSuggestion.create(:phrase => 'dummy suggestions')
     end
-    
+
     it "should create SAYT suggestions using the affiliate provided, if provided" do
       @phrases.each do |phrase|
         SaytSuggestion.should_receive(:create).with({:phrase => phrase, :affiliate => @affiliate}).and_return @dummy_suggestion
       end
       SaytSuggestion.process_sayt_suggestion_txt_upload(@file, @affiliate)
     end
-    
+
     it "should create SAYT suggestions without an affiliate if none is provided" do
       @phrases.each do |phrase|
         SaytSuggestion.should_receive(:create).with(:phrase => phrase, :affiliate => nil).and_return @dummy_suggestion
