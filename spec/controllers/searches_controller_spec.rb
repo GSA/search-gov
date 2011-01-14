@@ -372,75 +372,117 @@ describe SearchesController do
 
   describe "#forms" do
     integrate_views
-    before do
-      GovForm.destroy_all
-      @gov_form = GovForm.create(:name => "Tax Form", :form_number => "1040", :description => "A tax form", :agency => "IRS", :url => 'http://irs.gov/1040.pdf')
-      GovForm.reindex
-      get :forms, :query => "taxes", :page => 2
-      @search = assigns[:search]
-      @page_title = assigns[:page_title]
-    end
-
-    should_render_template 'searches/index.html.haml', :layout => 'application'
-
-    it "should assign the query with a forms prefix as the page title" do
-      @page_title.should == "Forms Search for: taxes"
-    end
-
-    it "should show a custom title for the results page" do
-      response.body.should contain("Forms Search for: taxes - The U.S. Government's Official Web Search")
-    end
-
-    it "should set the query in the Search model" do
-      @search.query.should == "taxes"
-    end
-
-    it "should offset the start page in the Search model by one" do
-      @search.page.should == 1
-    end
-
-    it "should load results for a keyword query" do
-      @search.should_not be_nil
-      @search.results.should_not be_nil
-    end
     
-    it "should use the FormSearch model to do the search" do
-      form_search_results = FormSearch.new(:query => 'taxes')
-      FormSearch.should_receive(:new).with(:results_per_page => nil, :query => "taxes", :enable_highlighting => true, :page => 1).and_return form_search_results
-      get :forms, :query => "taxes", :page => 2
-    end
+    context "when the source parameter is not specified" do
+      before do
+        GovForm.destroy_all
+        @gov_form = GovForm.create(:name => "Tax Form", :form_number => "1040", :description => "A tax form", :agency => "IRS", :url => 'http://irs.gov/1040.pdf')
+        GovForm.reindex
+        get :forms, :query => "taxes", :page => 2
+        @search = assigns[:search]
+        @page_title = assigns[:page_title]
+      end
+
+      should_render_template 'searches/index.html.haml', :layout => 'application'
+
+      it "should assign the query with a forms prefix as the page title" do
+        @page_title.should == "Forms Search for: taxes"
+      end
+
+      it "should show a custom title for the results page" do
+        response.body.should contain("Forms Search for: taxes - The U.S. Government's Official Web Search")
+      end
+
+      it "should set the query in the Search model" do
+        @search.query.should == "taxes"
+      end
+
+      it "should offset the start page in the Search model by one" do
+        @search.page.should == 1
+      end
+
+      it "should load results for a keyword query" do
+        @search.should_not be_nil
+        @search.results.should_not be_nil
+      end
     
-    it "should populate additional gov form results if the query matches" do
-      @search.gov_forms.should_not be_nil
-      @search.gov_forms.hits.should_not be_nil
-      @search.gov_forms.total.should == 1
-      @search.gov_forms.hits.first.instance.should_not be_nil
-      @search.gov_forms.results.should_not be_empty
-      @search.gov_forms.results.first.should == @gov_form
-    end
+      it "should use the FormSearch model to do the search" do
+        form_search_results = FormSearch.new(:query => 'taxes')
+        FormSearch.should_receive(:new).with(:results_per_page => nil, :query => "taxes", :enable_highlighting => true, :page => 1).and_return form_search_results
+        get :forms, :query => "taxes", :page => 2
+      end
+    
+      it "should populate additional gov form results if the query matches" do
+        @search.gov_forms.should_not be_nil
+        @search.gov_forms.hits.should_not be_nil
+        @search.gov_forms.total.should == 1
+        @search.gov_forms.hits.first.instance.should_not be_nil
+        @search.gov_forms.results.should_not be_empty
+        @search.gov_forms.results.first.should == @gov_form
+      end
         
-    it "should render the search box with the form search path" do
-      response.body.should have_tag("form#search_form[method=get][action=/search/forms?locale=en&amp;m=false]")
+      it "should render the search box with the form search path" do
+        response.body.should have_tag("form#search_form[method=get][action=/search/forms?locale=en&amp;m=false]")
+      end
+    
+      it "should not show any related search results" do
+        @search.related_search.should be_empty
+      end
+    
+      it "should have a Forms header at the top of the results, and link to Government Web and Images" do
+        response.body.should have_tag("a[href=/search?m=false&amp;query=taxes]", :text => "Government Web")
+        response.body.should have_tag("a[href=/search/images?m=false&amp;query=taxes]", :text => "Images")
+        response.body.should have_tag("li", :text => "Forms")
+      end
+    
+      it "should output a Forms GovBox with a link to more GovForm search results" do
+        response.body.should have_tag("div[class=govbox]")
+        response.body.should have_tag("a[href=/search/forms?locale=en&amp;m=false&amp;query=taxes&amp;source=gov_forms]", :text => "Forms for taxes")
+        response.body.should have_tag("a[href=#{@gov_form.url}]", :text => "#{@gov_form.name} (#{@gov_form.form_number})")
+      end
+    
+      it "should not have related Gov Forms" do
+        response.body.should_not have_tag("ul[id=related_gov_forms]")
+      end
     end
     
-    it "should not show any related search results" do
-      @search.related_search.should be_empty
-    end
-    
-    it "should have a Forms header at the top of the results, and link to Government Web and Images" do
-      response.body.should have_tag("a[href=/search?m=false&amp;query=taxes]", :text => "Government Web")
-      response.body.should have_tag("a[href=/search/images?m=false&amp;query=taxes]", :text => "Images")
-      response.body.should have_tag("li", :text => "Forms")
-    end
-    
-    it "should output a Forms GovBox with a link to more GovForm search results" do
-      response.body.should have_tag("div[class=govbox]")
-      response.body.should have_tag("a[href=/search/forms?locale=en&amp;m=false&amp;query=taxes&amp;source=gov_forms]", :text => "Forms for taxes")
-      response.body.should have_tag("a[href=#{@gov_form.url}]", :text => "#{@gov_form.name} (#{@gov_form.form_number})")
-    end
-    
-    it "should not have related Gov Forms" do
-      response.body.should_not have_tag("ul[id=related_gov_forms]")
+    context "when the source parameter is set to 'gov_forms'" do
+      before do
+        GovForm.destroy_all
+        1.upto(12) do |index|
+          GovForm.create(:name => "Taxes Form ##{index}", :form_number => index, :agency => 'GSA', :url => "http://forms.gov/#{index}.pdf", :description => 'A Government Tax Form')
+        end
+        GovForm.reindex
+        get :forms, :query => "taxes", :source => 'gov_forms'
+        @search = assigns[:search]
+        @gov_forms = assigns[:gov_forms]
+        @page_title = assigns[:page_title]        
+      end
+      
+      should_render_template 'searches/forms.html.haml', :layout => 'application'
+      
+      it "should assign the query with a forms prefix as the page title" do
+        @page_title.should == "Forms Search for: taxes"
+      end
+
+      it "should show a custom title for the results page" do
+        response.body.should contain("Forms Search for: taxes - The U.S. Government's Official Web Search")
+      end
+
+      it "should set the query in the Search model" do
+        @search.query.should == "taxes"
+      end
+
+      it "should assign results to the gov_forms variable" do
+        @gov_forms.should_not be_nil
+      end
+      
+      it "should output 10 GovForm results, linked to their URL" do
+        1.upto(10) do |index|
+          response.body.should have_tag("a[href=http://forms.gov/#{index}.pdf]", :text => "Taxes Form ##{index} (#{index})")
+        end
+        response.body.should_not have_tag("a[href=http://forms.gov/11.pdf]", :text => "Taxes Form #11 (11)")
+      end
     end
   end
 end
