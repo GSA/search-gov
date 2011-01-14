@@ -17,17 +17,19 @@ Given /^the following Affiliates exist:$/ do |table|
     user.update_attribute(:is_affiliate, true)
 
     default_affiliate_template = AffiliateTemplate.find_by_stylesheet("default") || AffiliateTemplate.create!(:name => "Default", :description => "A minimal design with blue titles and green urls", :stylesheet => "default")
+    basic_gray_affiliate_template = AffiliateTemplate.find_by_stylesheet("basic_gray") || AffiliateTemplate.create!(:name => "Basic Gray", :description => "A simple, clean gray page", :stylesheet => "basic_gray")
 
     affiliate = Affiliate.create(
       :name => hash["name"],
       :owner => user,
       :domains => hash["domains"],
+      :affiliate_template_id => default_affiliate_template.id,
       :header => hash["header"],
       :footer => hash["footer"],
       :staged_domains => hash["staged_domains"],
+      :staged_affiliate_template_id => default_affiliate_template.id,
       :staged_header => hash["staged_header"],
       :staged_footer => hash["staged_footer"],
-      :affiliate_template_id => default_affiliate_template.id,
       :is_sayt_enabled => hash["is_sayt_enabled"],
       :is_affiliate_suggestions_enabled => hash["is_affiliate_suggestions_enabled"]
     )
@@ -60,6 +62,14 @@ Then /^the search bar should not have SAYT enabled$/ do
   response.body.should_not have_tag("script[type=text/javascript][src^=/javascripts/sayt-ui.js]")
   response.body.should_not have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")
   response.body.should_not have_tag("script[type=text/javascript][src^=/javascripts/jquery/jquery-ui-1.8.5.custom.min.js]")
+end
+
+Then /^I should see the page with affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
+  response.body.should have_tag("link[type=text/css][href*=#{stylesheet_name}]")
+end
+
+Then /^I should not see the page with affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
+  response.body.should_not have_tag("link[type=text/css][href*=#{stylesheet_name}]")
 end
 
 Then /^affiliate SAYT suggestions for "([^\"]*)" should be enabled$/ do |affiliate_name|

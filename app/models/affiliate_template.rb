@@ -4,7 +4,10 @@ class AffiliateTemplate < ActiveRecord::Base
   validates_uniqueness_of :stylesheet
 
   def self.default_id
-    default_template = AffiliateTemplate.find_by_stylesheet("default")
     default_template.nil? ? nil : default_template.id
+  end
+
+  def self.default_template
+    @default_template ||= AffiliateTemplate.find_by_stylesheet("default")
   end
 end

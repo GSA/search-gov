@@ -28,6 +28,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     if @affiliate.save
       @affiliate.update_attributes(
         :domains => @affiliate.staged_domains,
+        :affiliate_template_id => @affiliate.staged_affiliate_template_id,
         :header => @affiliate.staged_header,
         :footer => @affiliate.staged_footer)
       flash[:success] = "Affiliate successfully created"
@@ -62,6 +63,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @affiliate.update_attributes(
       :has_staged_content=> false,
       :domains => @affiliate.staged_domains,
+      :affiliate_template_id => @affiliate.staged_affiliate_template_id,
       :header => @affiliate.staged_header,
       :footer => @affiliate.staged_footer)
     flash[:success] = "Staged content is now visible"

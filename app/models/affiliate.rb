@@ -43,6 +43,10 @@ class Affiliate < ActiveRecord::Base
   def is_related_topics_disabled?
     self.related_topics_setting == 'disabled'
   end
+
+  def template
+    affiliate_template.presence || AffiliateTemplate.default_template
+  end
   
   private
 
@@ -55,6 +59,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_default_affiliate_template
+    self.staged_affiliate_template_id = AffiliateTemplate.default_id if staged_affiliate_template_id.blank?
     self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?
   end
 end

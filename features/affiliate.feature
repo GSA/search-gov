@@ -86,11 +86,12 @@ Feature: Affiliate clients
     And the "Enter HTML to customize the top of your search page" field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search page" field should contain "Old footer"
     When I fill in the following:
-      | Name of new site search                                               | newname                    |
-      | Your Website URL (www.example.gov)                                    | www.agency.gov             |
-      | Domains (one per line)                                                | newagency.gov              |
-      | Enter HTML to customize the top of your search page                   | New header                 |
-      | Enter HTML to customize the bottom of your search page                | New footer                 |
+      | Name of new site search                                               | newname                                             |
+      | Your Website URL (www.example.gov)                                    | www.agency.gov                                      |
+      | Domains (one per line)                                                | newagency.gov                                       |
+      | Enter HTML to customize the top of your search page                   | New header                                          |
+      | Enter HTML to customize the bottom of your search page                | New footer                                          |
+    And I select "Basic Gray (A simple, clean gray page)" from "Style for your search page results"
     And I press "Save for preview"
     Then I should see "Staged changes to your affiliate successfully."
     And I should be on the affiliate admin page
@@ -103,10 +104,14 @@ Feature: Affiliate clients
     When I follow "View Current"
     Then I should see "Old header"
     And I should see "Old footer"
+    And I should see the page with affiliate stylesheet "default"
+    And I should not see the page with affiliate stylesheet "basic_gray"
     When I go to the affiliate admin page
     When I follow "View staged"
     Then I should see "New header"
     And I should see "New footer"
+    And I should see the page with affiliate stylesheet "basic_gray"
+    And I should not see the page with affiliate stylesheet "default"
     When I go to the affiliate admin page
     And I press "Push Changes"
     Then I should be on the affiliate admin page
@@ -116,6 +121,8 @@ Feature: Affiliate clients
     When I follow "View Current"
     Then I should see "New header"
     And I should see "New footer"
+    And I should see the page with affiliate stylesheet "basic_gray"
+    And I should not see the page with affiliate stylesheet "default"
 
   Scenario: Related Topics on English SERPs for given affiliate search
     Given the following Affiliates exist:

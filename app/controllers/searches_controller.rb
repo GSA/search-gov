@@ -95,6 +95,7 @@ class SearchesController < ApplicationController
       affiliate.domains = affiliate.staged_domains
       affiliate.header = affiliate.staged_header
       affiliate.footer = affiliate.staged_footer
+      affiliate.affiliate_template_id = affiliate.staged_affiliate_template_id
     end
     @search_options = {
       :page => (params[:page].to_i - 1),

@@ -6,8 +6,8 @@
   %dd= form.text_field :website, :class => "text"
   %dt= form.label :staged_domains, "Domains (one per line)"
   %dd= form.text_area :staged_domains, :class => "text"
-  %dt= form.label :affiliate_template_id, "Style for your search page results"
-  %dd= form.select :affiliate_template_id, affiliate_template_options(@affiliate)
+  %dt= form.label :staged_affiliate_template_id, "Style for your search page results"
+  %dd= form.select :staged_affiliate_template_id, affiliate_template_options(@affiliate)
   %dt= form.label :staged_header, "Enter HTML to customize the top of your search page"
   %dd= form.text_area :staged_header
   %dt= form.label :staged_footer, "Enter HTML to customize the bottom of your search page"

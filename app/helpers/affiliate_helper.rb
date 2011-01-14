@@ -9,7 +9,7 @@ module AffiliateHelper
     options = "<option value=\"\">Default</option>"
     options << "<optgroup label = \"All Styles\">"
     template_options = AffiliateTemplate.all.sort_by(&:name).collect {|template| ["#{template.name} (#{template.description})", template.id]}
-    options << options_for_select(template_options, :selected => affiliate.affiliate_template_id)
+    options << options_for_select(template_options, :selected => affiliate.staged_affiliate_template_id)
     options << "</optgroup>"
     options
   end

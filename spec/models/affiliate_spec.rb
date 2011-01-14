@@ -55,6 +55,20 @@ describe Affiliate do
     end
   end
 
+  describe "#template" do
+    it "should return the affiliate template if present" do
+      affiliate = Affiliate.create!(@valid_attributes.merge(:affiliate_template => affiliate_templates(:basic_gray)))
+      affiliate.affiliate_template.should == affiliate_templates(:basic_gray)
+      affiliate.template.should == affiliate.affiliate_template
+    end
+
+    it "should return the default affiliate template if no affiliate template" do
+      affiliate = Affiliate.create!(@valid_attributes.merge(:affiliate_template_id => -1))
+      affiliate.affiliate_template.should be_nil
+      affiliate.template.should == AffiliateTemplate.default_template
+    end
+  end
+
   describe "on save" do
     it "should set the affiliate_template_id to the default affiliate_template_id if saved with no affiliate_template_id" do
       affiliate = Affiliate.create!(@valid_attributes.merge(:affiliate_template => affiliate_templates(:basic_gray)))
