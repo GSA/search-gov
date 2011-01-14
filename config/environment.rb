@@ -27,7 +27,7 @@ Rails::Initializer.run do |config|
   config.gem "authlogic", :version => '>= 2.1.5'
   config.gem 'schoefmax-multi_db', :lib => 'multi_db', :source => 'http://gems.github.com'
   config.gem 'sunspot_rails', :lib => 'sunspot/rails', :version => '1.1.0'
-  config.gem 'hoptoad_notifier', :version => '2.3.4'
+  config.gem 'hoptoad_notifier', :version => '2.4.2'
   config.gem 'fastercsv', :version => '1.5.3'
   config.gem 'calais', :version => '>= 0.0.11'
   config.gem "aws-s3", :lib => "aws/s3", :version => '0.6.2'
