@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-affiliate_rb.html">app/models/affiliate.rb</a></td>
-            <td class='right_align'><tt>60</tt></td>
-            <td class='right_align'><tt>48</tt></td>
+            <td class='right_align'><tt>65</tt></td>
+            <td class='right_align'><tt>52</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -327,55 +327,55 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>   </pre></td>
+            <td><pre><a name="line46">46</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>   private</pre></td>
+            <td><pre><a name="line47">47</a>   def template</pre></td>
+          </tr>
+
+
+
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>     affiliate_template.presence || AffiliateTemplate.default_template</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a> </pre></td>
+            <td><pre><a name="line49">49</a>   end</pre></td>
           </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>   def remove_boosted_sites_from_index</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line50">50</a>     boosted_sites.each { |bs| bs.remove_from_index }</pre></td>
-          </tr>
-        
-          
-          
+
+
+
           <tr class="inferred">
-            <td><pre><a name="line51">51</a>   end</pre></td>
+            <td><pre><a name="line50">50</a>   </pre></td>
           </tr>
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>   private</pre></td>
+          </tr>
+
+
+
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>   </pre></td>
+            <td><pre><a name="line52">52</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>   def add_owner_as_user</pre></td>
+            <td><pre><a name="line53">53</a>   def remove_boosted_sites_from_index</pre></td>
           </tr>
-        
-          
-          
+
+
+
           <tr class="marked">
-            <td><pre><a name="line54">54</a>     self.users &lt;&lt; self.owner if self.owner</pre></td>
+            <td><pre><a name="line54">54</a>     boosted_sites.each { |bs| bs.remove_from_index }</pre></td>
           </tr>
         
           
@@ -387,19 +387,19 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a> </pre></td>
+            <td><pre><a name="line56">56</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>   def set_default_affiliate_template</pre></td>
+            <td><pre><a name="line57">57</a>   def add_owner_as_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>     self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?</pre></td>
+            <td><pre><a name="line58">58</a>     self.users &lt;&lt; self.owner if self.owner</pre></td>
           </tr>
         
           
@@ -411,13 +411,43 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a> end</pre></td>
+            <td><pre><a name="line60">60</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line61">61</a>   def set_default_affiliate_template</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line62">62</a>     self.staged_affiliate_template_id = AffiliateTemplate.default_id if staged_affiliate_template_id.blank?</pre></td>
+          </tr>
+
+
+
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>     self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line64">64</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jan 14 10:58:04 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Fri Jan 14 11:29:30 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
