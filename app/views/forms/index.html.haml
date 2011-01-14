@@ -1,20 +1,22 @@
 .prepend-6.span-15.append-3.homepage
   %a{:name => "content"}
-  = link_to(image_tag("USAsearch_large_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale))
+  = link_to(image_tag("USAsearch_large_#{I18n.locale}_forms.gif" , :alt => "USASearch Forms Home"), home_page_path(:locale => I18n.locale))
   = render "shared/search", :path => forms_search_path
 
-.prepend-4.span-15.append-3{:style => "color: #1C3F94; text-align: center;"}
-  %h2{:style => 'margin-top: 5px;'}
+.prepend-2.span-16.append-3{:style => "text-align: center;"}
+  %div{:style => 'margin-top: 5px; color: black; font-family: Arial; font-weight: bold;'}
     = t :forms_home_page_message
+  = image_tag('dotline.gif', :alt => 'dotted line')
 
-.prepend-4.top-forms
-  - @top_forms.each_with_index do |top_forms_column, column_index|
-    - unless top_forms_column.nil?
-      .span-6.top-forms-column{:id => "top-forms-column-#{column_index + 1}"}
-        - if top_forms_column.first
-          %h2{:style => 'margin-bottom: 5px;'}
-            = top_forms_column.first.name
-          %ul{:style => 'list-style-type: none; padding: 0;'}
-            - top_forms_column[1..-1].each_with_index do |top_form, sort_index|
-              %li
-                = link_to top_form.name, top_form.url, :style => "font-size: 125%; text-decoration: none;"
+- if @top_forms.size > 0
+  .prepend-4.top-forms
+    - @top_forms.each_with_index do |top_forms_column, column_index|
+      - unless top_forms_column.nil?
+        .span-6.top-forms-column{:id => "top-forms-column-#{column_index + 1}"}
+          - if top_forms_column.first
+            %h2{:style => 'margin-bottom: 5px;'}
+              = top_forms_column.first.name
+            %ul{:style => 'list-style-type: none; padding: 0;'}
+              - top_forms_column[1..-1].each_with_index do |top_form, sort_index|
+                %li
+                  = link_to top_form.name, top_form.url, :style => "font-size: 125%; text-decoration: none;"

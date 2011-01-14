@@ -142,6 +142,5 @@ describe SearchHelper do
         html.should match("<tr><td><a href=\"url 6\">title 6</a></td><td></td></tr>")
       end
     end
-
-  end
+  end  
 end

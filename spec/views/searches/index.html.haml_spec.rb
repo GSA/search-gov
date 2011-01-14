@@ -2,28 +2,46 @@ require "#{File.dirname(__FILE__)}/../../spec_helper"
 describe "searches/index.html.haml" do
   before do
     @search = stub("Search")
+    @search.stub!(:query).and_return "test"
+    @search.stub!(:spelling_suggestion).and_return nil
     @search.stub!(:related_search).and_return []
     @search.stub!(:queried_at_seconds).and_return(1271978870)
     @search.stub!(:recalls)
     @search.stub!(:extra_image_results)
+    @search.stub!(:results).and_return []
+    @search.stub!(:boosted_sites).and_return nil
+    @search.stub!(:faqs).and_return nil
+    @search.stub!(:gov_forms).and_return nil
+    @search.stub!(:spotlight).and_return nil
+    @search.stub!(:error_message).and_return "Ignore me"
+    @search.stub!(:filter_setting).and_return nil
+    @search.stub!(:scope_id).and_return nil
+    @search.stub!(:fedstates).and_return nil
     assigns[:search] = @search
   end
-
+  
+  it "should link to the medium sized search logo" do
+    render
+    response.body.should have_tag("img[src^=/images/USAsearch_medium_en.gif]")
+  end
+  
+  context "when rendered as a forms serp" do
+    before do
+      controller.action_name = "forms"
+      render
+    end
+    
+    it "should link to the medium sized forms search logo" do
+      response.body.should have_tag("img[src^=/images/USAsearch_medium_en_forms.gif]")
+    end
+  end
+  
   context "when spelling suggestion is available" do
     before do
       @rong = "U mispeled everytheeng"
       @rite = "You misspelled everything"
       @search.stub!(:query).and_return @rong
       @search.stub!(:spelling_suggestion).and_return @rite
-      @search.stub!(:results).and_return []
-      @search.stub!(:boosted_sites).and_return nil
-      @search.stub!(:faqs).and_return nil
-      @search.stub!(:gov_forms).and_return nil
-      @search.stub!(:spotlight).and_return nil
-      @search.stub!(:error_message).and_return "Ignore me"
-      @search.stub!(:filter_setting).and_return nil
-      @search.stub!(:scope_id).and_return nil
-      @search.stub!(:fedstates).and_return nil
     end
 
     it "should show the spelling suggestion" do

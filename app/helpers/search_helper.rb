@@ -145,6 +145,14 @@ module SearchHelper
   def no_results_for(query)
     content_tag(:p, (t :no_results_for, :query => h(query)), :class=>"noresults")
   end
+  
+  def search_results_logo
+    if forms_search?
+      image_tag("USAsearch_medium_#{I18n.locale}_forms.gif" , :alt => "USASearch Forms Home")
+    else
+      image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home")
+    end
+  end
 
   EN_SCOPE_ID_OPTIONS = [
     ['All Government Domains', 'all'],
