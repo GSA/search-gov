@@ -226,14 +226,11 @@ The cron machine should have 5 Resque processes ready to work through the Calais
 
 To see how many are there, run this from cron:
 
-  pgrep -f "calais_related_search" | wc -l
+    ps wax | grep resque
 
+To start/stop/restart the workers, do this:
 
-To start some workers, do this:
-
-    cd /home/jwynne/usasearch/current
-    # do this five times
-    RAILS_ENV=production QUEUE=calais_related_search nohup rake environment resque:work &
+    sudo service resque_workers (start|stop|restart)
 
 ## Installing Solr
 
