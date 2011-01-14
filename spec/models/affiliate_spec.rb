@@ -43,20 +43,27 @@ describe Affiliate do
       @duplicate_affiliate = Affiliate.new(@valid_attributes.merge(:name => @valid_attributes[:name].upcase))
       @duplicate_affiliate.save.should be_false
     end
-  end
 
-  describe "#template" do
-    it "returns DefaultAffiliateTemplate when nil" do
+    it "should set the affiliate_template_id to the default affiliate_template_id" do
       affiliate = Affiliate.create!(@valid_attributes)
-      affiliate.template.should == DefaultAffiliateTemplate
+      affiliate.affiliate_template.should == affiliate_templates(:default)
     end
 
-    it "returns affiliate template when not nil" do
+    it "should set the affiliate_template_id to the default affiliate_template_id" do
       affiliate = Affiliate.create!(@valid_attributes.merge(:affiliate_template => affiliate_templates(:basic_gray)))
-      affiliate.template.should == affiliate_templates(:basic_gray)
+      affiliate.affiliate_template.should == affiliate_templates(:basic_gray)
     end
   end
-  
+
+  describe "on save" do
+    it "should set the affiliate_template_id to the default affiliate_template_id if saved with no affiliate_template_id" do
+      affiliate = Affiliate.create!(@valid_attributes.merge(:affiliate_template => affiliate_templates(:basic_gray)))
+      affiliate.affiliate_template.should == affiliate_templates(:basic_gray)
+      Affiliate.find(affiliate.id).update_attributes(:affiliate_template_id => "")
+      Affiliate.find(affiliate.id).affiliate_template.should == affiliate_templates(:default)
+    end
+  end
+
   describe "#is_owner" do
     before do
       @affiliate = Affiliate.create(@valid_attributes)

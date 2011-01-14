@@ -5,7 +5,7 @@
     = favicon_link_tag
     - if @affiliate
       = stylesheet_link_tag 'compiled/advanced.css'
-      = stylesheet_link_tag "compiled/affiliates/#{@affiliate.template.stylesheet}"
+      = stylesheet_link_tag "compiled/affiliates/#{@affiliate.affiliate_template.stylesheet}"
       /[if lt IE 8]
         = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
       = stylesheet_link_tag "clearfix"

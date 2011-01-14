@@ -10,15 +10,12 @@ class Affiliate < ActiveRecord::Base
   has_many :sayt_suggestions, :dependent => :destroy
   has_many :calais_related_searches, :dependent => :destroy
   after_destroy :remove_boosted_sites_from_index
+  before_save :set_default_affiliate_template
   after_create :add_owner_as_user
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}
-  
-  def template
-    affiliate_template || DefaultAffiliateTemplate
-  end
-  
+
   def is_owner?(user)
     self.owner == user ? true : false
   end
@@ -55,5 +52,9 @@ class Affiliate < ActiveRecord::Base
   
   def add_owner_as_user
     self.users << self.owner if self.owner
+  end
+
+  def set_default_affiliate_template
+    self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?
   end
 end

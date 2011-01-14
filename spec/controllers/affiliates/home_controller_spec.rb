@@ -54,6 +54,19 @@ describe Affiliates::HomeController do
         response.should redirect_to(home_page_path)
       end
     end
+
+    context "when logged in as the affiliate manager" do
+      integrate_views
+      before do
+        UserSession.create(users(:affiliate_manager))
+      end
+
+      it "should render the edit page" do
+        get :edit, :id => affiliates(:basic_affiliate).id
+        response.should render_template("edit")
+      end
+
+    end
   end
 
   describe "do POST on #update" do

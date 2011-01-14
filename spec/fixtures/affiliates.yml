@@ -6,15 +6,19 @@ power_affiliate:
   footer: </center>
   owner: :affiliate_manager
   users: [:affiliate_manager]
+  affiliate_template: :basic_gray
 basic_affiliate:
   name: nps.gov
   owner: :affiliate_manager
   users: [:affiliate_manager]
+  affiliate_template: :default
 another_affiliate:
   name: another.gov
   owner: :another_affiliate_manager
   users: [:another_affiliate_manager]
+  affiliate_template: :default
 admin_affiliate:
   name: affiliate.gov
   owner: :affiliate_admin
   users: [:admin_affiliate]
+  affiliate_template: :default
