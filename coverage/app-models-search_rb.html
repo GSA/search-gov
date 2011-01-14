@@ -909,7 +909,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line143">143</a>       if page &lt; 1 &amp;&amp; query =~ /\brecalls?\b/i and not query=~ /^recalls?$/i</pre></td>
+            <td><pre><a name="line143">143</a>       if page &lt; 1 &amp;&amp; Recall.recall_query?(query)</pre></td>
           </tr>
         
           
@@ -921,7 +921,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line145">145</a>           self.recalls = Recall.search_for(query.gsub(/\brecalls?\b/i, '').strip, {:start_date=&gt;1.month.ago.to_date, :end_date=&gt;Date.today})</pre></td>
+            <td><pre><a name="line145">145</a>           self.recalls = Recall.search_for(query, {:start_date=&gt;1.month.ago.to_date, :end_date=&gt;Date.today})</pre></td>
           </tr>
         
           
@@ -2169,7 +2169,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Fri Jan 14 11:29:30 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jan 14 15:08:43 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

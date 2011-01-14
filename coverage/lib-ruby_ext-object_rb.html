@@ -4,7 +4,7 @@
     <title>lib/ruby_ext/object.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
-
+    
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
     <script type="text/javascript" src="rcov.js"></script>
   </head>
@@ -12,7 +12,7 @@
     <h1>Usasearch C0 Coverage Information - RCov</h1>
     <h2>lib/ruby_ext/object.rb</h2>
 
-
+    
 
     <div class="report_table_wrapper">
       <table class='report' id='report_table'>
@@ -44,164 +44,164 @@
         </tbody>
       </table>
     </div>
-
+    
     <h3>Key</h3>
-
+    
     <div class="key"><pre><span class='marked'>Code reported as executed by Ruby looks like this...</span><span class='marked1'>and this: this line is also marked as covered.</span><span class='inferred'>Lines considered as run by rcov, but not reported by Ruby, look like this,</span><span class='inferred1'>and this: these lines were inferred by rcov (using simple heuristics).</span><span class='uncovered'>Finally, here's a line marked as not executed.</span></pre></div>
 
     <h3>Coverage Details</h3>
 
     <table class="details">
       <tbody>
-
-
-
+        
+          
+          
           <tr class="marked">
             <td><pre><a name="line1">1</a> class Object</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line2">2</a> </pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line3">3</a>   # backported from Rails 3:</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line4">4</a>   # https://github.com/rails/rails/commit/1c47d04ea5ac19601b316daf8fdc6f38c50eec73</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line5">5</a> </pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line6">6</a>   # Returns object if it's #present? otherwise returns nil.</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line7">7</a>   # object.presence is equivalent to object.present? ? object : nil.</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line8">8</a>   #</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line9">9</a>   # This is handy for any representation of objects where blank is the same</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line10">10</a>   # as not present at all.  For example, this simplifies a common check for</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line11">11</a>   # HTTP POST/query parameters:</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line12">12</a>   #</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line13">13</a>   #   state   = params[:state]   if params[:state].present?</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line14">14</a>   #   country = params[:country] if params[:country].present?</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line15">15</a>   #   region  = state || country || 'US'</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line16">16</a>   #</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line17">17</a>   # ...becomes:</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line18">18</a>   #</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line19">19</a>   #   region = params[:state].presence || params[:country].presence || 'US'</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="marked">
             <td><pre><a name="line20">20</a>   def presence</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="marked">
             <td><pre><a name="line21">21</a>     self if present?</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line22">22</a>   end</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line23">23</a> </pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line24">24</a> end</pre></td>
           </tr>
-
+        
       </tbody>
     </table>
 
-    <p>Generated on Fri Jan 14 11:29:31 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jan 14 15:08:43 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
