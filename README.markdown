@@ -205,6 +205,8 @@ Now re-run that taxes search again and you should see content above the search r
 
     It's easier for other developers to see the work you did for a story in a single commit, rather than spread out over a bunch of checkpoints. It's a good idea to do many local commits while working on a story, and then roll those up into a single commit with Git either by continually amending your prior commit, or by doing an interactive rebase and squashing everything. The exception to this is the 'coverage/' directory that gets updated with 'rcov'. That's better off in its own commit, so your code changes aren't lost among several hundred auto-generated HTML files.
 
+    By using the [special syntax](https://www.pivotaltracker.com/help/api?version=v3#scm_post_commit_message_syntax) in the commit message, you can associate the commit with one or more Tracker story IDs and (optionally) a state change for the story.
+
 1. Run RCov to make sure all your code gets touched by a test, at least:
 
         rake rcov:all
