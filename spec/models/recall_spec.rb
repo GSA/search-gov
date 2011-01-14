@@ -330,7 +330,7 @@ describe Recall do
     end
   end
 
-  describe "#search_for" do
+  describe ".search_for" do
     before do
       Recall.destroy_all
       Recall.remove_all_from_index!
@@ -357,6 +357,25 @@ describe Recall do
         recall.save!
       end
       Sunspot.commit
+    end
+
+    describe "stripping recall terms before sending to Solr" do
+      before :each do
+        Recall.should_receive(:do_search).with('stroller', {}, 1, 10).at_least(2).times
+      end
+
+      it "should strip 'recall'" do
+        Recall.search_for('stroller recall')
+        Recall.search_for('stroller recalls')
+      end
+
+      it "should strip 'retirado' and its forms" do
+        Recall.search_for('stroller retirado')
+        Recall.search_for('stroller retirada')
+        Recall.search_for('stroller retirados')
+        Recall.search_for('stroller retiradas')
+      end
+
     end
 
     context "CPSC-related searches" do
@@ -860,4 +879,25 @@ describe Recall do
       @non_auto_recall.is_auto_recall?.should be_false
     end
   end
+
+  describe ".recall_query?" do
+    it "should pass for english and spanish variations of the word recall" do
+      Recall.should be_recall_query("beef recall")
+      Recall.should be_recall_query("beef recalls")
+      Recall.should be_recall_query("beef retirado")
+      Recall.should be_recall_query("beef retirada")
+      Recall.should be_recall_query("beef retirados")
+      Recall.should be_recall_query("beef retiradas")
+    end
+
+    it "should not pass if query is just recall" do
+      Recall.should_not be_recall_query("recall")
+    end
+
+    it "should not pass if the query doesn't contain 'recall' or  a translation" do
+      Recall.should_not be_recall_query("beef")
+      Recall.should_not be_recall_query("rotten beef")
+    end
+  end
+
 end

@@ -5,10 +5,10 @@
   - search.recalls.hits.sort_by{|a| a.instance.recalled_on || a.instance.created_at.to_date }.reverse[0..2].each_with_index do |hit, index|
     .recall{:style => 'margin-bottom: 10px;'}      
       = link_to highlight(truncate_on_words(hit.instance.summary, 100), search.query.split, :highlighter => '<b>\1</b>'), hit.instance.recall_url
+      = t(:in_english)
       .recall_description
         %span{:style => "color: #666;"}
           = time_ago_in_words(hit.instance.recalled_on || hit.instance.created_at)
-          ago -
         - if hit.instance.description.present?    
           = highlight(truncate_on_words(hit.instance.description, 190), search.query.split, :highlighter => '<b>\1</b>')
 

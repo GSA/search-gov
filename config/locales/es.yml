@@ -17,7 +17,8 @@ es:
   advanced_search: "Búsqueda Avanzada"
   images: "Imágenes"
   images_for: "Imágenes de {{query}}"
-  recalls_for: "Retiradas para {{query}}"
+  recalls_for: "Productos retirados: {{query}}"
+  in_english: "(en inglés)"
   view_all_images_for: "Ver todas las imágenes de {{query}}"
   government_web: "Todo el Gobierno"
   advanced_search: "Búsqueda avanzada"
@@ -81,3 +82,41 @@ es:
   text_size_paragraph_3: 'El sitio de Internet llamado, «<a href="http://www.w3.org/WAI/changedesign.html">Web Accessibility Initiative site</a>» (Iniciativa para la Accesibilidad)  [<a href="http://www.usa.gov/About/Important_Notices.shtml">limitación de responsabilidad</a>] provee instrucciones acerca de otros buscadores de web y sistemas de operadores de computadoras (sólo disponible en inglés).'
 
   forms: Formas
+
+  # support for this story: https://www.pivotaltracker.com/story/show/8554195
+  # based on https://github.com/svenfuchs/rails-i18n/blob/2-2/rails/locale/es.yml#L64
+  # but altered, so now all the methods do time_ago, and are *broken* for time from now
+  # Used in distance_of_time_in_words(), distance_of_time_in_words_to_now(), time_ago_in_words()
+  datetime:
+    distance_in_words:
+      half_a_minute: "medio minuto"
+      less_than_x_seconds:
+        one:  "menos de 1 segundo"
+        other: "menos de {{count}} segundos"
+      x_seconds:
+        one:  "Hace 1 segundo"
+        other: "Desde hace {{count}} segundos"
+      less_than_x_minutes:
+        one:  "menos de 1 minuto"
+        other: "menos de {{count}} minutos"
+      x_minutes:
+        one:  "hace 1 minute minuto"
+        other: "Desde hace {{count}} minutos"
+      about_x_hours:
+        one:  "Aproximadamente desde hace una hora"
+        other: "alrededor de {{count}} horas"
+      x_days:
+        one:  "Desde ayer"
+        other: "Desde hace {{count}} días"
+      about_x_months:
+        one:  "Aproximadamente desde hace un mes"
+        other: "alrededor de {{count}} meses"
+      x_months:
+        one:  "Hace 1 mes"
+        other: "Hace {{count}} meses"
+      about_x_years:
+        one:  " Aproximadamente desde hace un año"
+        other: "alrededor de {{count}} años"
+      over_x_years:
+        one:  "más de 1 año"
+        other: "más de {{count}} años"

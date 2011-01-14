@@ -849,22 +849,21 @@ describe Search do
           @options_with_recall = {:query => "foo bar recall"}
         end
 
-
         it "should strip off the recall word before searching" do
           search = Search.new(@options_with_recall)
-          Recall.should_receive(:search_for).with('foo bar', @date_filter_hash)
+          Recall.should_receive(:do_search).with('foo bar', @date_filter_hash, 1, 10)
           search.run
         end
 
         it "should not run on pages other than the first page" do
           search = Search.new(@options_with_recall.merge(:page => 2))
-          Recall.should_not_receive(:search_for)
+          Recall.should_not_receive(:do_search)
           search.run
         end
 
         it "should not run on affiliate pages" do
           search = Search.new(@options_with_recall.merge(:affiliate => @affiliate))
-          Recall.should_not_receive(:search_for)
+          Recall.should_not_receive(:do_search)
           search.run
         end
 
@@ -886,11 +885,10 @@ describe Search do
         end
       end
 
-
       context "when search phrase contains recalls" do
         it "should strip off the recalls word before searching" do
           search = Search.new(:query => 'recalls of pepper')
-          Recall.should_receive(:search_for).with('of pepper', @date_filter_hash)
+          Recall.should_receive(:do_search).with('of pepper', @date_filter_hash, 1, 10)
           search.run
         end
       end
@@ -898,7 +896,7 @@ describe Search do
       context "when no relevant recall exists for the search term" do
         it "should assign nil to recalls" do
           search = Search.new(:query => 'nothing here recall')
-          Recall.should_receive(:search_for).with('nothing here', @date_filter_hash).and_return(nil)
+          Recall.should_receive(:do_search).with('nothing here', @date_filter_hash, 1, 10).and_return(nil)
           search.run
           search.recalls.should be_nil
         end
@@ -907,7 +905,7 @@ describe Search do
       context "when search phrase stripped of 'recall' is an unparseable query string" do
         it "should catch an rsolr error and assign nil to recalls" do
           search = Search.new(:query => 'sheetrock OR recall')
-          Recall.should_receive(:search_for).with('sheetrock OR', @date_filter_hash).and_raise(RSolr::RequestError)
+          Recall.should_receive(:do_search).with('sheetrock OR', @date_filter_hash, 1, 10).and_raise(RSolr::RequestError)
           search.run
           search.recalls.should be_nil
         end

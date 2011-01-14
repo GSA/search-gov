@@ -93,7 +93,19 @@ class Recall < ActiveRecord::Base
   end
   
   class << self
+    RECALL_RE_EN = /\brecalls?\b/i
+    RECALL_RE_ES = /\bretirad[oa]s?\b/i
+
+    def recall_query?(query)
+      (query =~ RECALL_RE_EN or query =~ RECALL_RE_ES) and not query=~ /^recalls?$/i
+    end
+
     def search_for(query, options = {}, page = 1, per_page = 10)
+      stripped_query = query.gsub(RECALL_RE_EN, '').gsub(RECALL_RE_ES, '').strip if query
+      do_search(stripped_query, options, page, per_page)
+    end
+
+    def do_search(query, options, page, per_page)
       Recall.search do
         fulltext query
 
