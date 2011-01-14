@@ -66,4 +66,3 @@ BOT_USER_AGENTS = ["Googlebot", "Baiduspider", "DotBot", "crawler@evreka.com", "
 
 DEFAULT_EXCLUDED_QUERIES = ['enter keywords', 'cheesewiz' , 'cheeseman', 'clusty' ,' ', '1', 'test', 'search']
 DEFAULT_EXCLUDED_IPADDRESSES = ['192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169', '66.231.180.174', '173.203.40.164']
-
