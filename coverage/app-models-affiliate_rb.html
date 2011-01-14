@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-affiliate_rb.html">app/models/affiliate.rb</a></td>
-            <td class='right_align'><tt>59</tt></td>
-            <td class='right_align'><tt>47</tt></td>
+            <td class='right_align'><tt>60</tt></td>
+            <td class='right_align'><tt>48</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -129,289 +129,295 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>   after_create :add_owner_as_user</pre></td>
+            <td><pre><a name="line13">13</a>   before_save :set_default_affiliate_template</pre></td>
+          </tr>
+
+
+
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>   after_create :add_owner_as_user</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a> </pre></td>
+            <td><pre><a name="line15">15</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   USAGOV_AFFILIATE_NAME = 'usasearch.gov'</pre></td>
+            <td><pre><a name="line16">16</a>   USAGOV_AFFILIATE_NAME = 'usasearch.gov'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>   VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}</pre></td>
+            <td><pre><a name="line17">17</a>   VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>   </pre></td>
+            <td><pre><a name="line18">18</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>   def template</pre></td>
+            <td><pre><a name="line19">19</a>   def is_owner?(user)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>     affiliate_template || DefaultAffiliateTemplate</pre></td>
+            <td><pre><a name="line20">20</a>     self.owner == user ? true : false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>   end</pre></td>
+            <td><pre><a name="line21">21</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   </pre></td>
+            <td><pre><a name="line22">22</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>   def is_owner?(user)</pre></td>
+            <td><pre><a name="line23">23</a>   def is_affiliate_sayt_enabled?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>     self.owner == user ? true : false</pre></td>
+            <td><pre><a name="line24">24</a>     self.is_sayt_enabled &amp;&amp; self.is_affiliate_suggestions_enabled</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>   end</pre></td>
+            <td><pre><a name="line25">25</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>   </pre></td>
+            <td><pre><a name="line26">26</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>   def is_affiliate_sayt_enabled?</pre></td>
+            <td><pre><a name="line27">27</a>   def is_global_sayt_enabled?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>     self.is_sayt_enabled &amp;&amp; self.is_affiliate_suggestions_enabled</pre></td>
+            <td><pre><a name="line28">28</a>     self.is_sayt_enabled &amp;&amp; !self.is_affiliate_suggestions_enabled</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>   end</pre></td>
+            <td><pre><a name="line29">29</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>   </pre></td>
+            <td><pre><a name="line30">30</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>   def is_global_sayt_enabled?</pre></td>
+            <td><pre><a name="line31">31</a>   def is_sayt_disabled?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>     self.is_sayt_enabled &amp;&amp; !self.is_affiliate_suggestions_enabled</pre></td>
+            <td><pre><a name="line32">32</a>     !self.is_sayt_enabled &amp;&amp; !self.is_affiliate_suggestions_enabled</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>   end</pre></td>
+            <td><pre><a name="line33">33</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>   </pre></td>
+            <td><pre><a name="line34">34</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>   def is_sayt_disabled?</pre></td>
+            <td><pre><a name="line35">35</a>   def is_affiliate_related_topics_enabled?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>     !self.is_sayt_enabled &amp;&amp; !self.is_affiliate_suggestions_enabled</pre></td>
+            <td><pre><a name="line36">36</a>     (self.related_topics_setting != 'global_enabled' &amp;&amp; self.related_topics_setting != 'disabled') || self.related_topics_setting.nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>   end</pre></td>
+            <td><pre><a name="line37">37</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>   </pre></td>
+            <td><pre><a name="line38">38</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>   def is_affiliate_related_topics_enabled?</pre></td>
+            <td><pre><a name="line39">39</a>   def is_global_related_topics_enabled?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     (self.related_topics_setting != 'global_enabled' &amp;&amp; self.related_topics_setting != 'disabled') || self.related_topics_setting.nil?</pre></td>
+            <td><pre><a name="line40">40</a>     self.related_topics_setting == 'global_enabled'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>   end</pre></td>
+            <td><pre><a name="line41">41</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   </pre></td>
+            <td><pre><a name="line42">42</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>   def is_global_related_topics_enabled?</pre></td>
+            <td><pre><a name="line43">43</a>   def is_related_topics_disabled?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     self.related_topics_setting == 'global_enabled'</pre></td>
+            <td><pre><a name="line44">44</a>     self.related_topics_setting == 'disabled'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line44">44</a>   end</pre></td>
+            <td><pre><a name="line45">45</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>   </pre></td>
+            <td><pre><a name="line46">46</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>   def is_related_topics_disabled?</pre></td>
+            <td><pre><a name="line47">47</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line48">48</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>     self.related_topics_setting == 'disabled'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line48">48</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line49">49</a>   </pre></td>
+            <td><pre><a name="line49">49</a>   def remove_boosted_sites_from_index</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>   private</pre></td>
+            <td><pre><a name="line50">50</a>     boosted_sites.each { |bs| bs.remove_from_index }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a> </pre></td>
+            <td><pre><a name="line51">51</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>   def remove_boosted_sites_from_index</pre></td>
+            <td><pre><a name="line53">53</a>   def add_owner_as_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>     boosted_sites.each { |bs| bs.remove_from_index }</pre></td>
+            <td><pre><a name="line54">54</a>     self.users &lt;&lt; self.owner if self.owner</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a>   end</pre></td>
+            <td><pre><a name="line55">55</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line55">55</a>   </pre></td>
+            <td><pre><a name="line56">56</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>   def add_owner_as_user</pre></td>
+            <td><pre><a name="line57">57</a>   def set_default_affiliate_template</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>     self.users &lt;&lt; self.owner if self.owner</pre></td>
+            <td><pre><a name="line58">58</a>     self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line58">58</a>   end</pre></td>
+            <td><pre><a name="line59">59</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line59">59</a> end</pre></td>
+            <td><pre><a name="line60">60</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Jan 11 17:03:08 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Jan 13 16:50:03 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
