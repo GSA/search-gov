@@ -95,57 +95,57 @@
           <tr class="inferred">
             <td><pre><a name="line7">7</a> </pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="marked">
             <td><pre><a name="line8">8</a>   def affiliate_template_options(affiliate)</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="marked">
             <td><pre><a name="line9">9</a>     options = &quot;&lt;option value=\&quot;\&quot;&gt;Default&lt;/option&gt;&quot;</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="marked">
             <td><pre><a name="line10">10</a>     options &lt;&lt; &quot;&lt;optgroup label = \&quot;All Styles\&quot;&gt;&quot;</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="marked">
             <td><pre><a name="line11">11</a>     template_options = AffiliateTemplate.all.sort_by(&amp;:name).collect {|template| [&quot;#{template.name} (#{template.description})&quot;, template.id]}</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="marked">
             <td><pre><a name="line12">12</a>     options &lt;&lt; options_for_select(template_options, :selected =&gt; affiliate.affiliate_template_id)</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="marked">
             <td><pre><a name="line13">13</a>     options &lt;&lt; &quot;&lt;/optgroup&gt;&quot;</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="marked">
             <td><pre><a name="line14">14</a>     options</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line15">15</a>   end</pre></td>
           </tr>
-
-
-
+        
+          
+          
           <tr class="inferred">
             <td><pre><a name="line16">16</a> end</pre></td>
           </tr>
@@ -153,7 +153,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Jan 13 16:50:03 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jan 14 11:20:22 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
