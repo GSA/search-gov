@@ -120,30 +120,30 @@ describe Recall do
         Recall.process_cpsc_row(@row)
         Recall.find_by_recall_number('10156').should_not be_nil
       end
-      
+
       context "when the UPC is nil" do
         before do
           @row[5] = nil
         end
-        
+
         it "should create a recall without a UPC recall detail" do
           Recall.process_cpsc_row(@row)
           recall = Recall.find_by_recall_number("10156")
           recall.recall_details.find_by_detail_type('UPC').should be_nil
         end
       end
-      
+
       context "when the UPC is blank" do
         before do
           @row[5] = ""
         end
-        
+
         it "should create a recall without a UPC recall detail" do
           Recall.process_cpsc_row(@row)
           recall = Recall.find_by_recall_number("10156")
           recall.recall_details.find_by_detail_type('UPC').should be_nil
         end
-      end          
+      end
 
       context "when a date is present in the CSV row" do
         it "should set the date on the new recall object when date is present in the row" do
@@ -198,7 +198,7 @@ describe Recall do
         it "should create a RecallDetail for Descriptions that are present" do
           @recall.recall_details.find_by_detail_type_and_detail_value('Description', 'Ethan Allen Design Center Roman Shades').should_not be_nil
         end
-        
+
         it "should create a RecallDetail for UPC codes that are present" do
           @recall.recall_details.find_by_detail_type_and_detail_value('UPC', "718103121866").should_not be_nil
         end
@@ -271,7 +271,7 @@ describe Recall do
     context "when processing a Recall with a Campaign Number that has not already been seen" do
       it "should create a new Recall with the recall number, recall date and organization" do
         Recall.process_nhtsa_row(@row)
-        Recall.find_by_recall_number_and_recalled_on_and_organization( '02V269000', Date.parse('20040608'), 'NHTSA').should_not be_nil
+        Recall.find_by_recall_number_and_recalled_on_and_organization('02V269000', Date.parse('20040608'), 'NHTSA').should_not be_nil
       end
 
       it "should use row[24] for the date, unless it's blank, in which case, it should use row[16]" do
@@ -283,7 +283,7 @@ describe Recall do
 
       it "should add RecallDetails for each of the full text fields" do
         Recall.process_nhtsa_row(@row)
-        recall = Recall.find_by_recall_number_and_recalled_on_and_organization( '02V269000', Date.parse('20040608'), 'NHTSA')
+        recall = Recall.find_by_recall_number_and_recalled_on_and_organization('02V269000', Date.parse('20040608'), 'NHTSA')
         recall.recall_details.size.should == Recall::NHTSA_DETAIL_FIELDS.size
         Recall::NHTSA_DETAIL_FIELDS.each_key do |detail_type|
           recall.recall_details.find_by_detail_type(detail_type).should_not be_nil
@@ -295,7 +295,7 @@ describe Recall do
         @row[9] = "20040609"
         Recall.process_nhtsa_row(@row)
         ar = AutoRecall.find_by_make_and_model_and_year_and_component_description_and_manufacturer_and_recalled_component_id(
-          @row[2], @row[3], @row[4].to_i, @row[6], @row[14], @row[23] )
+          @row[2], @row[3], @row[4].to_i, @row[6], @row[14], @row[23])
         ar.manufacturing_begin_date.should == Date.parse('20040608')
         ar.manufacturing_end_date.should == Date.parse('20040609')
       end
@@ -304,7 +304,7 @@ describe Recall do
         @row[4] = "9999"
         Recall.process_nhtsa_row(@row)
         AutoRecall.find_by_make_and_model_and_component_description_and_manufacturer_and_recalled_component_id(
-          @row[2], @row[3], @row[6], @row[14], @row[23] ).year.should be_nil
+          @row[2], @row[3], @row[6], @row[14], @row[23]).year.should be_nil
       end
 
     end
@@ -466,7 +466,7 @@ describe Recall do
         search = Recall.search_for(@query, {:start_date => @start_date, :end_date => @end_date})
         search.total.should == 1
       end
-      
+
       context "when sorting by date" do
         it "should be ordered by date descending" do
           search = Recall.search_for("stroller", {:organization => 'CPSC', :sort => 'date'})
@@ -487,24 +487,24 @@ describe Recall do
           search.results.size.times do |index|
             search.results[index].recalled_on.should be <= search.results[index + 1].recalled_on unless index == (search.total - 1)
           end
-        end        
+        end
       end
     end
-    
+
     context "when sorting by relevancy, and two results have about the same relevancy" do
       before do
         Recall.destroy_all
         Recall.remove_all_from_index!
-        
+
         @older_recall = Recall.create(:recall_number => '12345', :recalled_on => Date.yesterday - 1.month, :organization => 'CPSC')
         @older_recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'This is a really long sentence that includes the word knife which is the keyword that we are looking for.  By putting lots of words in this description, we will make this document have a lower score, and when we boost more recent results, this one will end up lower.')
 
         @recent_recall = Recall.create(:recall_number => '23456', :recalled_on => Date.yesterday, :organization => 'CPSC')
         @recent_recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'This is a really long sentence that includes the word knife which is the keyword that we are looking for.  They will have about the same score, and when boosted by date, this will be first.')
-        
+
         Recall.reindex
       end
-      
+
       it "should return the newer results ahead of the older results" do
         search = Recall.search_for("knife", :organization => 'CPSC')
         search.results.size.should == 2
@@ -514,33 +514,33 @@ describe Recall do
     end
 
     context "CDC food/drug related searches" do
-      before do 
+      before do
         Recall.create(:recall_number => Digest::MD5.hexdigest("http://www.fda.gov/Safety/Recalls/ucm216903.htm")[0, 10],
                       :recalled_on => @start_date, :organization => 'CDC',
-                      :food_recall => FoodRecall.new(:url=>"http://www.fda.gov/Safety/Recalls/ucm216903.htm", 
+                      :food_recall => FoodRecall.new(:url=>"http://www.fda.gov/Safety/Recalls/ucm216903.htm",
                                                      :summary=> "Food Recall",
                                                      :description => "Food Recall",
                                                      :food_type => "food"))
         Recall.create(:recall_number => Digest::MD5.hexdigest("http://www.fda.gov/Safety/Recalls/ucm215921.htm")[0, 10],
                       :recalled_on => @start_date, :organization => 'CDC',
-                      :food_recall => FoodRecall.new(:url=>"http://www.fda.gov/Safety/Recalls/ucm215921.htm", 
+                      :food_recall => FoodRecall.new(:url=>"http://www.fda.gov/Safety/Recalls/ucm215921.htm",
                                                      :summary=> "Drug Recall",
                                                      :description => "Drug Recall",
-                                                     :food_type => "drug"))       
+                                                     :food_type => "drug"))
         Recall.reindex
       end
-      
+
       it "should only retrieve CDC recalls when the organization is set to 'CDC'" do
         search = Recall.search_for("", :organization => "CDC")
         search.total.should == 2
       end
-      
+
       it "should filter by food type" do
         search = Recall.search_for("recall", :organization => "CDC", :food_type => "food")
         search.total.should == 1
       end
     end
-    
+
     after(:all) do
       Recall.remove_all_from_index!
     end
@@ -643,7 +643,7 @@ describe Recall do
     context "for a CDC recall" do
       before(:all) do
         @recall = Recall.new(:organization => 'CDC', :recall_number => '12345', :recalled_on => Date.parse('2010-03-01'))
-        @recall.food_recall = FoodRecall.new( :url => "RECALL_URL", :summary => "SUMMARY", :description => "DESCRIPTION", :food_type => "FOOD_TYPE")
+        @recall.food_recall = FoodRecall.new(:url => "RECALL_URL", :summary => "SUMMARY", :description => "DESCRIPTION", :food_type => "FOOD_TYPE")
         @recall.save!
         @parsed_recall = JSON.parse(@recall.to_json)
       end
@@ -661,7 +661,7 @@ describe Recall do
       end
 
       it "should properly parse all of the FoodRecall fields" do
-        %w{recall_url summary description}.each do |field_name|
+        %w{ recall_url summary description }.each do |field_name|
           @parsed_recall[field_name].should == field_name.upcase
         end
       end
@@ -715,7 +715,7 @@ describe Recall do
     context "when generating a summary for a CPSC recall" do
       before do
         @recall = Recall.new(:recall_number => '12345', :organization => 'CPSC')
-        products = %w{Foo Bar Blat}.collect { |product| RecallDetail.new(:detail_type=>"Description", :detail_value=> product.strip) }
+        products = %w{ Foo Bar Blat }.collect { |product| RecallDetail.new(:detail_type=>"Description", :detail_value=> product.strip) }
         @recall.recall_details << products
         @recall.recall_details << RecallDetail.new(:detail_type=>"ProductType", :detail_value=> "Goo")
       end
@@ -740,15 +740,15 @@ describe Recall do
     context "when generating a summary for a NHTSA recall" do
       before do
         @recall = Recall.new(:recall_number => '12345', :organization => 'NHTSA')
-        @recall.auto_recalls = %w{FOO BAR BLAT}.collect do |str|
-          AutoRecall.new( :make => 'AMC',
-                          :model => 'some model',
-                          :year => 2006,
-                          :component_description => str,
-                          :manufacturer => str.succ,
-                          :recalled_component_id => '000000000012321320020202V00',
-                          :manufacturing_begin_date => Date.parse('2005-01-01'),
-                          :manufacturing_end_date => Date.parse('2005-12-31'))
+        @recall.auto_recalls = %w{ FOO BAR BLAT }.collect do |str|
+          AutoRecall.new(:make => 'AMC',
+                         :model => 'some model',
+                         :year => 2006,
+                         :component_description => str,
+                         :manufacturer => str.succ,
+                         :recalled_component_id => '000000000012321320020202V00',
+                         :manufacturing_begin_date => Date.parse('2005-01-01'),
+                         :manufacturing_end_date => Date.parse('2005-12-31'))
         end
       end
 
@@ -769,6 +769,22 @@ describe Recall do
       end
     end
 
+    context "when generating a summary for a CDC recall" do
+      before do
+        @recall = Recall.create(:recall_number => Digest::MD5.hexdigest("http://www.fda.gov/Safety/Recalls/ucm216903.htm")[0, 10],
+                                :recalled_on => Date.yesterday, :organization => 'CDC',
+                                :food_recall => FoodRecall.new(:url=>"http://www.fda.gov/Safety/Recalls/ucm216903.htm",
+                                                               :summary=> "Food Recall Summary Here",
+                                                               :description => "Food Recall",
+                                                               :food_type => "food"))
+      end
+
+      it "should use the underlying FoodRecall summary" do
+        @recall.summary.should == "Food Recall Summary Here"
+        @recall.description.should be_present
+      end
+    end
+
   end
 
   describe "#upc" do
@@ -777,7 +793,7 @@ describe Recall do
       @recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '0123456789')
       @recall.recall_details << RecallDetail.new(:detail_type => 'UPC', :detail_value => '1234567890')
       @recall.save!
-      @recall.upc.should_not be_empty 
+      @recall.upc.should_not be_empty
       @recall.upc.size.should == 2
       @recall.upc.first.should == '0123456789'
       @recall.upc.last.should == '1234567890'
@@ -799,47 +815,47 @@ describe Recall do
       Recall.destroy_all
     end
   end
-  
+
   describe "#is_food_recall?" do
     before do
       @food_recall = Recall.new(:recall_number => '123444', :organization => 'CDC')
       @non_food_recall = Recall.new(:recall_number => '234566', :organization => 'CPSC')
     end
-    
+
     it "should return true if the recall is a food recall" do
       @food_recall.is_food_recall?.should be_true
     end
-    
+
     it "should return false if the recall is not a food recall" do
       @non_food_recall.is_food_recall?.should be_false
     end
   end
-  
+
   describe "#is_product_recall?" do
     before do
       @product_recall = Recall.new(:recall_number => '123444', :organization => 'CPSC')
       @non_product_recall = Recall.new(:recall_number => '234566', :organization => 'CDC')
     end
-    
+
     it "should return true if the recall is a food recall" do
       @product_recall.is_product_recall?.should be_true
     end
-    
+
     it "should return false if the recall is not a food recall" do
       @non_product_recall.is_product_recall?.should be_false
     end
   end
-  
+
   describe "#is_auto_recall?" do
     before do
       @auto_recall = Recall.new(:recall_number => '123444', :organization => 'NHTSA')
       @non_auto_recall = Recall.new(:recall_number => '234566', :organization => 'CPSC')
     end
-    
+
     it "should return true if the recall is a food recall" do
       @auto_recall.is_auto_recall?.should be_true
     end
-    
+
     it "should return false if the recall is not a food recall" do
       @non_auto_recall.is_auto_recall?.should be_false
     end
