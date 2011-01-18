@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-admin-affiliate_broadcasts_controller_rb.html">app/controllers/admin/affiliate_broadcasts_controller.rb</a></td>
+            <td class='right_align'><tt>20</tt></td>
             <td class='right_align'><tt>17</tt></td>
-            <td class='right_align'><tt>14</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -62,104 +62,122 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line2">2</a> </pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   def new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>     @affiliate_broadcast = AffiliateBroadcast.new</pre></td>
+            <td><pre><a name="line2">2</a>   PAGE_TITLE = &quot;Affiliate Broadcast&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line6">6</a> </pre></td>
+            <td><pre><a name="line3">3</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   def create</pre></td>
+            <td><pre><a name="line4">4</a>   def new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     @affiliate_broadcast = AffiliateBroadcast.new(params[:affiliate_broadcast].merge(:user=&gt;@current_user))</pre></td>
+            <td><pre><a name="line5">5</a>     @affiliate_broadcast = AffiliateBroadcast.new</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     if @affiliate_broadcast.save</pre></td>
+            <td><pre><a name="line6">6</a>     @page_title = PAGE_TITLE</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line7">7</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>       flash[:success] = &quot;Message broadcasted to all affiliates successfully&quot;</pre></td>
+            <td><pre><a name="line9">9</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>       redirect_to admin_affiliates_path</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a>     else</pre></td>
+            <td><pre><a name="line10">10</a>     @affiliate_broadcast = AffiliateBroadcast.new(params[:affiliate_broadcast].merge(:user=&gt;@current_user))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       render :action =&gt; 'new'</pre></td>
+            <td><pre><a name="line11">11</a>     if @affiliate_broadcast.save</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>       flash[:success] = &quot;Message broadcasted to all affiliates successfully&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>       redirect_to admin_affiliates_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>     end</pre></td>
+            <td><pre><a name="line14">14</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>       @page_title = PAGE_TITLE</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>       render :action =&gt; 'new'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>   end</pre></td>
+            <td><pre><a name="line17">17</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> </pre></td>
+            <td><pre><a name="line18">18</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a> end</pre></td>
+            <td><pre><a name="line19">19</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line20">20</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jan 14 15:08:42 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Jan 18 15:24:06 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

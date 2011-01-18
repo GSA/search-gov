@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-admin-top_searches_controller_rb.html">app/controllers/admin/top_searches_controller.rb</a></td>
-            <td class='right_align'><tt>17</tt></td>
-            <td class='right_align'><tt>16</tt></td>
+            <td class='right_align'><tt>23</tt></td>
+            <td class='right_align'><tt>21</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,103 +63,139 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   def index</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :assign_page_title</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     @top_searches = TopSearch.find(:all, :order =&gt; &quot;position asc&quot;)</pre></td>
+            <td><pre><a name="line3">3</a>   def index</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>     @top_searches = TopSearch.find(:all, :order =&gt; &quot;position asc&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a>   end</pre></td>
+            <td><pre><a name="line5">5</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a>   </pre></td>
+            <td><pre><a name="line6">6</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   def create</pre></td>
+            <td><pre><a name="line7">7</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     @top_searches = []</pre></td>
+            <td><pre><a name="line8">8</a>     @top_searches = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     1.upto(5) do |index|</pre></td>
+            <td><pre><a name="line9">9</a>     1.upto(5) do |index|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>       top_search = TopSearch.find_by_position(index)</pre></td>
+            <td><pre><a name="line10">10</a>       top_search = TopSearch.find_by_position(index)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>       top_search.query = params[&quot;query#{index}&quot;]</pre></td>
+            <td><pre><a name="line11">11</a>       top_search.query = params[&quot;query#{index}&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>       top_search.url = params[&quot;url#{index}&quot;].present? ? params[&quot;url#{index}&quot;] : nil</pre></td>
+            <td><pre><a name="line12">12</a>       top_search.url = params[&quot;url#{index}&quot;].present? ? params[&quot;url#{index}&quot;] : nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>       top_search.save</pre></td>
+            <td><pre><a name="line13">13</a>       top_search.save</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       @top_searches &lt;&lt; top_search</pre></td>
+            <td><pre><a name="line14">14</a>       @top_searches &lt;&lt; top_search</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>     end</pre></td>
+            <td><pre><a name="line15">15</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     render :action =&gt; :index</pre></td>
+            <td><pre><a name="line16">16</a>     render :action =&gt; :index</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>   end  </pre></td>
+            <td><pre><a name="line17">17</a>   end  </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a> end</pre></td>
+            <td><pre><a name="line18">18</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>   def assign_page_title</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>     @page_title = &quot;Top Searches&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jan 14 15:08:42 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Jan 18 15:24:06 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

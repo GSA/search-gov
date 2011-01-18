@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-affiliate_helper_rb.html">app/helpers/affiliate_helper.rb</a></td>
-            <td class='right_align'><tt>16</tt></td>
-            <td class='right_align'><tt>15</tt></td>
+            <td class='right_align'><tt>22</tt></td>
+            <td class='right_align'><tt>20</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,25 +63,25 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   def breadcrumbs(breadcrumbs)</pre></td>
+            <td><pre><a name="line2">2</a>   def affiliate_center_breadcrumbs(crumbs)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     trail = link_to 'Dashboard', home_affiliates_path</pre></td>
+            <td><pre><a name="line3">3</a>     aff_breadcrumbs =</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     breadcrumbs.each { |breadcrumb| trail &lt;&lt; ' &gt; ' &lt;&lt; breadcrumb }</pre></td>
+            <td><pre><a name="line4">4</a>       [link_to(&quot;Affiliate Program&quot;, affiliates_path), link_to(&quot;Affiliate Center&quot;,home_affiliates_path), crumbs]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     content_tag(:div,trail, :class =&gt; 'breadcrumb')</pre></td>
+            <td><pre><a name="line5">5</a>     breadcrumbs(aff_breadcrumbs.flatten)</pre></td>
           </tr>
         
           
@@ -99,61 +99,97 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   def affiliate_template_options(affiliate)</pre></td>
+            <td><pre><a name="line8">8</a>   def breadcrumbs(breadcrumbs)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     options = &quot;&lt;option value=\&quot;\&quot;&gt;Default&lt;/option&gt;&quot;</pre></td>
+            <td><pre><a name="line9">9</a>     trail = link_to('USASearch', program_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     options &lt;&lt; &quot;&lt;optgroup label = \&quot;All Styles\&quot;&gt;&quot;</pre></td>
+            <td><pre><a name="line10">10</a>     breadcrumbs.each { |breadcrumb| trail &lt;&lt; ' &gt; ' &lt;&lt; breadcrumb }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     template_options = AffiliateTemplate.all.sort_by(&amp;:name).collect {|template| [&quot;#{template.name} (#{template.description})&quot;, template.id]}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>     options &lt;&lt; options_for_select(template_options, :selected =&gt; affiliate.staged_affiliate_template_id)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>     options &lt;&lt; &quot;&lt;/optgroup&gt;&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>     options</pre></td>
+            <td><pre><a name="line11">11</a>     content_tag(:div,trail, :class =&gt; 'breadcrumb')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>   end</pre></td>
+            <td><pre><a name="line12">12</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> end</pre></td>
+            <td><pre><a name="line13">13</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>   def affiliate_template_options(affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>     options = &quot;&lt;option value=\&quot;\&quot;&gt;Default&lt;/option&gt;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>     options &lt;&lt; &quot;&lt;optgroup label = \&quot;All Styles\&quot;&gt;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>     template_options = AffiliateTemplate.all.sort_by(&amp;:name).collect {|template| [&quot;#{template.name} (#{template.description})&quot;, template.id]}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>     options &lt;&lt; options_for_select(template_options, :selected =&gt; affiliate.staged_affiliate_template_id)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>     options &lt;&lt; &quot;&lt;/optgroup&gt;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>     options</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jan 14 15:08:42 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Jan 18 15:24:06 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
