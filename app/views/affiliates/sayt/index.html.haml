@@ -1,4 +1,4 @@
-= breadcrumbs([ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Type-ahead Search'])
+= affiliate_center_breadcrumbs([ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Type-ahead Search'])
 
 .span-24{:style => 'margin-bottom: 21px;'}
   - form_tag preferences_affiliate_type_ahead_search_path(@affiliate), :class=> "bordered" do

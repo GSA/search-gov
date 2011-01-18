@@ -1,4 +1,5 @@
 class Admin::TopSearchesController < Admin::AdminController
+  before_filter :assign_page_title
   def index
     @top_searches = TopSearch.find(:all, :order => "position asc")
   end
@@ -14,4 +15,9 @@ class Admin::TopSearchesController < Admin::AdminController
     end
     render :action => :index
   end  
+
+  private
+  def assign_page_title
+    @page_title = "Top Searches"
+  end
 end

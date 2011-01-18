@@ -23,6 +23,7 @@ describe Admin::AffiliateBroadcastsController do
       it "should assign a new affiliate broadcast" do
         get :new
         assigns[:affiliate_broadcast].should_not be_nil
+        assigns[:page_title].should == "Affiliate Broadcast"
       end
     end
 
@@ -41,6 +42,7 @@ describe Admin::AffiliateBroadcastsController do
       it "should render #new on errors" do
         post :create, :affiliate_broadcast => {:subject => "AAAAA"}
         response.should render_template(:new)
+        assigns[:page_title].should == "Affiliate Broadcast"
       end
     end
   end

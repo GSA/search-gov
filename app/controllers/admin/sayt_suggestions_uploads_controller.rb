@@ -1,5 +1,7 @@
 class Admin::SaytSuggestionsUploadsController < Admin::AdminController
+  PAGE_TITLE = "SAYT Suggestions Bulk Upload"
   def new
+    @page_title = PAGE_TITLE
   end
 
   def create
@@ -11,6 +13,7 @@ class Admin::SaytSuggestionsUploadsController < Admin::AdminController
       redirect_to admin_sayt_suggestions_path
     else
       flash[:error] = "Your file could not be processed. Please check the format and try again."
+      @page_title = PAGE_TITLE
       render :action => :new
     end
   end

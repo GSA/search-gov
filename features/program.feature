@@ -7,7 +7,6 @@ Feature: Program
     Then I should see "Affiliate Program" within ".main"
     And I should see "APIs and other web services" within ".main"
     And I should see "Search.USA.gov" within ".main"
-    And I should see "Program" within ".breadcrumb"
 
     When I follow "program_logo"
     Then I should be on the program welcome page
@@ -17,16 +16,23 @@ Feature: Program
     Then I should be on the search page
     And I should see 10 search results
 
-  Scenario: Affiliate Program link should be on the affiliates page
+  Scenario: Visiting Affiliate Program links
     Given I am on the program welcome page
     When I follow "learn_more_affiliates" within ".main"
     Then I should be on the affiliates page
+    And I should see "USASearch > Affiliate Program"
     And I should see "USASearch Affiliate Program"
+
+    When I follow "How It Works"
+    Then I should see "USASearch > Affiliate Program > How it Works"
+
+    When I follow "See it in action"
+    Then I should see "USASearch > Affiliate Program > See it in Action"
 
     When I follow "Affiliate Program" within ".admin-footer"
     Then I should be on the affiliates page
 
-  Scenario: APIs and other web services link should be on the affiliates page
+  Scenario: Visiting APIs and other web services links
     Given I am on the program welcome page
     When I follow "learn_more_api" within ".main"
     Then I should be on the api page
@@ -34,20 +40,26 @@ Feature: Program
 
     When I follow "API & Web Services" within ".nav"
     Then I should be on the api page
-    And I should see "API & Web Services" within ".breadcrumb"
+    And I should see "USASearch > API & Web Services"
 
     When I follow "API & Web Services" within ".admin-footer"
     Then I should be on the api page
 
+    When I follow "Terms of Service"
+    Then I should be on the terms of service page
+    And I should see "USASearch > API & Web Services > Terms of Service"
+    And I should see "USASearch API Terms of Service"
+
     When I follow "Recalls API" within ".nav"
     Then I should be on the recalls api page
-    And I should see "Recalls API" within ".breadcrumb"
+    And I should see "USASearch > API & Web Services > Recalls API"
 
   Scenario: Search.USA.gov link should be on the searchusagov page
     Given I am on the program welcome page
     When I follow "learn_more_searchusagov" within ".main"
     Then I should be on the searchusagov page
-    And I should see "Search.USA.gov"
+    And I should see "USASearch > Search.USA.gov"
+    And I should see "Search.USA.gov" within ".main"
 
     When I follow "Search.USA.gov" within ".admin-footer"
     Then I should be on the searchusagov page

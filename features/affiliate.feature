@@ -5,7 +5,8 @@ Feature: Affiliate clients
 
   Scenario: Visiting the affiliate welcome/list page as a un-authenticated Affiliate
     When I go to the affiliate welcome page
-    Then I should see "Hosted Search Services"
+    Then I should see "USASearch > Affiliate Program"
+    And I should see "Hosted Search Services"
     Then I should see "Affiliate Program"
     And I should see "API & Web Services"
     And I should see "Search.USA.gov"
@@ -21,13 +22,20 @@ Feature: Affiliate clients
     Then I should see "Admin Center"
     And I should not see "Analyst Center"
     And I should not see "Affiliate Center"
+    Then I should see "USASearch > Affiliate Program"
 
   Scenario: Visiting the affiliate welcome page as affiliate
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate welcome page
-    Then I should see "Affiliate Center"
+    Then I should see "Affiliate Center" within ".secondary-navbar"
     And I should not see "Admin Center"
     And I should not see "Analyst Center"
+    And I should see "USASearch > Affiliate Program"
+
+  Scenario: Visiting the affiliate admin page as affiliate
+    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    Then I should see "USASearch > Affiliate Program > Affiliate Center"
 
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
@@ -43,6 +51,7 @@ Feature: Affiliate clients
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "Add New Affiliate"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Affiliate"
     And I fill in the following:
       | Name of new site search                                               | www.agency.gov             |
       | Your Website URL (www.example.gov)                                    | www.agency.gov             |
@@ -82,7 +91,8 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "Edit"
-    Then the "Domains (one per line)" field should contain "oldagency.gov"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Edit"
+    And the "Domains (one per line)" field should contain "oldagency.gov"
     And the "Enter HTML to customize the top of your search page" field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search page" field should contain "Old footer"
     When I fill in the following:
@@ -177,6 +187,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted sites"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Boosted Sites"
     Then I should see "aff.gov has no boosted sites"
     And I should see "Upload boosted sites for aff.gov"
 
@@ -323,6 +334,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get Code"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Get Code"
     Then I should see "Embed Search Code"
     And I should see "Copy and paste the HTML code below to create a search box for aff.gov"
     And I should see "English Version"
@@ -335,7 +347,8 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "aff.gov"
-    Then I should see "Affiliate: aff.gov"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov"
+    And I should see "Affiliate: aff.gov"
 
   Scenario: Stats link on affiliate home page
     Given the following Affiliates exist:
@@ -354,7 +367,8 @@ Feature: Affiliate clients
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Query Logs"
-    Then I should see "Query Analytics for aff.gov"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Query Analytics"
+    And I should see "Query Analytics for aff.gov"
     And I should see "Most Frequent Queries"
     And I should see "Data for April 15, 2010"
     And in "dqs1" I should not see "No queries matched"
@@ -373,6 +387,27 @@ Feature: Affiliate clients
     And in "dqs7" I should see "Not enough historic data"
     And in "dqs30" I should see "Not enough historic data"
 
+  Scenario: Viewing Query Search page
+    Given the following Affiliates exist:
+      | name             | contact_email           | contact_name        |
+      | aff.gov          | aff@bar.gov             | John Bar            |
+    And the following DailyQueryStats exist:
+      | query                       | times | affiliate     | locale |   days_back   |
+      | pollution                   | 100   | aff.gov       | en     |      1        |
+      | old pollution               | 10    | aff.gov       | en     |      30       |
+      | pollutant                   | 90    | usasearch.gov | en     |      1        |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Query Logs"
+    And I fill in "query" with "pollution"
+    And I fill in "analytics_search_start_date" with a date representing "29" days ago
+    And I fill in "analytics_search_end_date" with a date representing "1" day ago
+    And I press "Search"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Query Search"
+    And I should see "Matches for 'pollution'"
+    And I should not see "Matches for 'old pollution'"
+    And I should not see "Matches for 'pollutant'"
+
   Scenario: Getting usage stats for an affiliate
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
@@ -380,7 +415,8 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Monthly Reports"
-    Then I should see "Monthly Usage Stats"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Monthly Reports"
+    And I should see "Monthly Usage Stats"
 
   Scenario: Viewing the Affiliates Monthly Reports page
     Given the following Affiliates exist:
@@ -432,8 +468,8 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"
     Then I should be on the affiliate sayt page
-    And I should see "Dashboard > aff.gov > Type-ahead Search"
-    
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Type-ahead Search"
+
   Scenario: Setting SAYT Preferences for an affiliate
     Given the following Affiliates exist:
      | name             | contact_email           | contact_name        |
@@ -522,7 +558,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Related Topics"
     Then I should be on the affiliate related topics page
-    And I should see "Dashboard > aff.gov > Related Topics"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Related Topics"
     
   Scenario: Setting Related Topics Preferences for an affiliate
     Given the following Affiliates exist:
@@ -553,3 +589,14 @@ Feature: Affiliate clients
     Then I should be on the affiliate related topics page
     And the "related_topics_setting_disabled" button should be checked
     And the affiliate "aff.gov" related topics should be disabled
+
+  Scenario: Viewing Manage Users for an affiliate
+    Given the following Affiliates exist:
+      | name             | contact_email           | contact_name        |
+      | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Manage Users"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Manage Users"
+    And I should see "Users for Affiliate: aff.gov"
+    And I should see "John Bar (aff@bar.gov)"

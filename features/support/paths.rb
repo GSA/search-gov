@@ -32,6 +32,10 @@ module NavigationHelpers
       admin_spotlights_path
     when /admin site pages page/
       admin_site_pages_path
+    when /users admin page/
+      admin_users_path
+    when /sayt filters admin page/
+      admin_sayt_filters_path
     when /the affiliate admin broadcast page/
       new_admin_affiliate_broadcast_path
     when /the login page/
@@ -58,6 +62,8 @@ module NavigationHelpers
       bulk_edit_analytics_query_group_path
     when /the boosted sites admin page/
       admin_boosted_sites_path
+    when /the affiliate boosted sites admin page/
+      admin_affiliate_boosted_sites_path
     when /the top search admin page/
       admin_top_searches_path
     when /the affiliate superfresh page/
@@ -84,6 +90,8 @@ module NavigationHelpers
       api_docs_path(:locale => nil, :m => nil)
     when /the recalls api page/
       recalls_api_docs_path(:locale => nil, :m => nil)
+    when /the terms of service page/
+      recalls_tos_docs_path(:locale => nil, :m => nil) 
     when /the searchusagov page/
       searchusagov_path(:locale => nil, :m => nil)
     else

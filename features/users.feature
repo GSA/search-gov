@@ -3,7 +3,8 @@ Feature: Users
   Scenario: Logged-in user visits account page
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the user account page
-    Then I should see "API Key"
+    Then I should see "USASearch > Affiliate Program > My Account"
+    And I should see "API Key"
     And I should see "Your API key is:"
     And I should see "Account Profile"
     And I should see "Email"
@@ -60,3 +61,11 @@ Feature: Users
     And I press "Sign Up Now"
     Then I should be on the user account page
     And I should see "can't be blank"
+
+  Scenario: Visiting edit my account profile page
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the user account page
+    And I follow "edit your profile"
+    Then I should see "USASearch > Affiliate Program > My Account > Edit"
+    And I should see "Edit My Account"
+

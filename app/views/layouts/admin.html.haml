@@ -20,6 +20,9 @@
     = render "/shared/program_nav"
     .container
       .span-24.main
-        = breadcrumbs([link_to('USASearch', program_path), link_to("Affiliate Program", affiliates_path), "Admin Center"])
+        - if @page_title.nil? and active_scaffold_config.nil?
+          = breadcrumbs([link_to("Affiliate Program", affiliates_path), "Admin Center"])
+        - else
+          = breadcrumbs([link_to("Affiliate Program", affiliates_path),link_to("Admin Center", admin_home_page_path), @page_title || active_scaffold_config.label])
         .span-6.prepend-9.append-9= show_flash_messages
         = yield

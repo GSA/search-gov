@@ -1,5 +1,6 @@
 class Admin::BoostedSitesController < Admin::AdminController
   active_scaffold :boosted_site do |config|
+    config.label = 'Search.USA.gov Boosted Sites'
     config.columns = [:description, :title, :url, :locale]
     config.columns[:locale].form_ui = :select
     config.columns[:locale].options = {:options => SUPPORTED_LOCALES.map{|locale| [locale.to_sym, locale]}}

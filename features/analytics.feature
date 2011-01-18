@@ -8,7 +8,9 @@ Feature: Analytics Homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And there is analytics data from "20090901" thru "20090911"
     When I am on the analytics homepage
-    Then I should see "Data for September 11, 2009"
+    Then I should see "Analyst Center" within ".secondary-navbar"
+    And I should see "USASearch > Affiliate Program > Analyst Center"
+    And I should see "Data for September 11, 2009"
     And I should see "Most Popular Queries"
     And in "dqs1" I should see "aaaa"
     And in "dqs7" I should see "aaaa"

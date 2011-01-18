@@ -1,6 +1,12 @@
 module AffiliateHelper
+  def affiliate_center_breadcrumbs(crumbs)
+    aff_breadcrumbs =
+      [link_to("Affiliate Program", affiliates_path), link_to("Affiliate Center",home_affiliates_path), crumbs]
+    breadcrumbs(aff_breadcrumbs.flatten)
+  end
+
   def breadcrumbs(breadcrumbs)
-    trail = link_to 'Dashboard', home_affiliates_path
+    trail = link_to('USASearch', program_path)
     breadcrumbs.each { |breadcrumb| trail << ' > ' << breadcrumb }
     content_tag(:div,trail, :class => 'breadcrumb')
   end

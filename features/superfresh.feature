@@ -11,6 +11,7 @@ Feature: Affiliate Superfresh Interface
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Add to Bing"
     And I should see "Add to Bing"
     When I fill in "Single URL" with "http://new.url.com"
     And I press "Submit"

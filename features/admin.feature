@@ -5,7 +5,8 @@ Feature:  Administration
     Then I should see "Affiliate Program" within ".nav"
     And I should see "API & Web Services" within ".nav"
     And I should see "Search.USA.gov" within ".nav"
-    And I should see "Admin Center"
+    And I should see "USASearch > Affiliate Program > Admin Center"
+    And I should see "Search.USA.gov Admin Center"
     And I should see "Boosted Sites" within ".secondary-navbar"
     And I should see "Users" within ".main"
     And I should see "Affiliates"
@@ -35,23 +36,50 @@ Feature:  Administration
     When I follow "Logout"
     Then I should be on the login page
 
-  Scenario: Clicking on USASearch breadcrumb link in the admin home page as an admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the admin home page
-    When I follow "USASearch" within ".breadcrumb"
-    Then I should be on the program welcome page
-
   Scenario: Clicking on program logo in the admin home page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     And  I follow "program_logo"
     Then I should be on the program welcome page
 
+  Scenario: Clicking on USASearch breadcrumb link in the admin home page as an admin
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin home page
+    And I follow "USASearch" within ".breadcrumb"
+    Then I should be on the program welcome page
+
+  Scenario: Clicking on Affiliate Admin breadcrumb link in the admin home page as an admin
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin home page
+    And I follow "Affiliate Program" within ".breadcrumb"
+    Then I should be on the affiliate welcome page
+
   Scenario: Visiting the admin home page as Marilyn
     Given I am logged in with email "marilyn@fixtures.org" and password "admin"
     When I go to the admin home page
     Then I should see "Users"
     And I should see "Query Grouping"
+
+  Scenario: Visiting the users admin page as an admin
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin home page
+    And I follow "Users" within ".main"
+    Then I should be on the users admin page
+    And I should see "USASearch > Affiliate Program > Admin Center > Users"
+
+  Scenario: Visiting the Affiliate Broadcast admin page as an admin
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin home page
+    And I follow "Affiliate Broadcast" within ".main"
+    Then I should be on the affiliate admin broadcast page
+    And I should see "USASearch > Affiliate Program > Admin Center > Affiliate Broadcast"
+
+  Scenario: Visiting the SAYT Filters admin page as an admin
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin home page
+    And I follow "SAYT Filters" within ".main"
+    Then I should be on the sayt filters admin page
+    And I should see "USASearch > Affiliate Program > Admin Center > SaytFilters"
 
   Scenario: Sending a welcome email to all affiliates
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
@@ -89,7 +117,8 @@ Feature:  Administration
       | hurricane          |
     When I go to the admin home page
     And I follow "SAYT Suggestions Bulk Upload"
-    Then I should see "Create a new text file following the same format as the sample below (one entry per line)"
+    Then I should see "USASearch > Affiliate Program > Admin Center > SAYT Suggestions Bulk Upload"
+    And I should see "Create a new text file following the same format as the sample below (one entry per line)"
 
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
     And I press "Upload"
@@ -101,7 +130,8 @@ Feature:  Administration
     And I follow "SAYT Suggestions Bulk Upload"
     And I attach the file "features/support/cant_read_this.doc" to "txtfile"
     And I press "Upload"
-    Then I should see "Your file could not be processed."
+    Then I should see "USASearch > Affiliate Program > Admin Center > SAYT Suggestions Bulk Upload"
+    And I should see "Your file could not be processed."
     
   Scenario: Viewing Boosted Sites (both affiliate and Search.USA.gov)
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
@@ -118,12 +148,14 @@ Feature:  Administration
     | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
     When I go to the admin home page
     And I follow "Search.USA.gov Boosted Sites"
-    Then I should see "Our Emergency Page"
+    And I should see "USASearch > Affiliate Program > Admin Center > Search.USA.gov Boosted Sites"
+    And I should see "Our Emergency Page"
     And I should not see "Bar Emergency Page"
     
     When I go to the admin home page
     And I follow "Affiliate Boosted Sites"
-    Then I should see "Bar Emergency Page"
+    Then I should see "USASearch > Affiliate Program > Admin Center > Affiliate Boosted Sites"
+    And I should see "Bar Emergency Page"
     And I should not see "Our Emergency Page"
     
   Scenario: Viewing Top Searches
@@ -137,7 +169,8 @@ Feature:  Administration
     | 5         | Top Search 5  |
     When I go to the admin home page
     And I follow "Top Searches"
-    Then I should see "Top Searches"
+    Then I should see "USASearch > Affiliate Program > Admin Center > Top Searches"
+    And I should see "Top Searches" within ".main"
     And the "query1" field should contain "Top Search 1"
     And the "query5" field should contain "Top Search 5"
     

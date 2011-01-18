@@ -19,6 +19,7 @@ Feature: Analytics Search
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
     And I press "Search"
     Then I should be on the analytics query search results page
+    And I should see "USASearch > Affiliate Program > Analyst Center > Query Search"
     And I should see "Matches for 'pollution'"
     And I should see "pollution"
     And I should see "pollutant"
