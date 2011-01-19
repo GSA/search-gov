@@ -94,6 +94,12 @@ module NavigationHelpers
       recalls_tos_docs_path(:locale => nil, :m => nil) 
     when /the searchusagov page/
       searchusagov_path(:locale => nil, :m => nil)
+    when /the forms home page/
+      forms_path
+    when /the top forms admin page$/
+      admin_top_forms_path
+    when /the top forms admin page for column "([^\"]*)"/
+      admin_top_forms_path(:column_number => $1) 
     else
       begin
         page_name =~ /the (.*) page/

@@ -43,5 +43,4 @@ describe "shared/_search.html.haml" do
       end
     end
   end
-
 end

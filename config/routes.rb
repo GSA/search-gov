@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get
   map.image_search "/search/images", :controller => "image_searches", :action => "index"
   map.recalls_search "/search/recalls", :controller => "recalls", :action => "index"
+  map.resources :forms, :only => :index
   map.forms_search "/search/forms", :controller => "searches", :action => 'forms'
   map.resources :image_searches
   map.namespace(:admin) do |admin|
@@ -36,7 +37,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :gov_forms, :active_scaffold => true
     admin.resources :clicks, :active_scaffold => true
     admin.resources :calais_related_searches, :active_scaffold => true
-    admin.resources :top_searches
+    admin.resources :top_searches, :only => [:index, :create]
+    admin.resources :top_forms, :only => [:index, :create, :update, :destroy]
     admin.resources :superfresh_urls, :active_scaffold => true
     admin.resources :site_pages, :active_scaffold => true
   end

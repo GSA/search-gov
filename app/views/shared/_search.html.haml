@@ -4,8 +4,8 @@
     %ul.navigation
       %li.first= link_to_unless web_search?, t(:government_web), search_path(search_params)
       %li= link_to_unless image_search?, t(:images), image_search_path(search_params)
-      - if forms_search?
-        %li= link_to_unless forms_search?, t(:forms), forms_search_path(search_params)
+      - if english_locale?
+        %li= link_to_unless forms_search?, t(:forms), search_box_forms_link(search_params)
     %label{:for => "query", :class => "hidden"} Search
   - if (@affiliate and not @affiliate.is_sayt_enabled) or @search.is_a?(ImageSearch)
     = text_field :search, :query, {:size=>49, :name=>"query", :autocomplete => "off"}
@@ -24,9 +24,10 @@
     = hidden_field_tag :scope_id, @scope_id if @affiliate and @scope_id
   = submit_tag(t :search, :id => "search_button")
   - if @affiliate.nil?
-    = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil ))) unless @affiliate
-    |
-    = link_to(t(:search_in), home_page_path(:locale => other_locale_str))
+    - unless forms_search?
+      = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil ))) unless @affiliate
+      |
+      = link_to(t(:search_in), home_page_path(:locale => other_locale_str))
   - else
     .advancedsearch
       = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil, :affiliate => @affiliate.name )))

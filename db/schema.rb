@@ -315,6 +315,18 @@ ActiveRecord::Schema.define(:version => 20110114010639) do
     t.datetime "updated_at"
   end
 
+  create_table "top_forms", :force => true do |t|
+    t.string   "name"
+    t.text     "url"
+    t.integer  "column_number"
+    t.integer  "sort_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "top_forms", ["column_number"], :name => "index_top_forms_on_column_number"
+  add_index "top_forms", ["sort_order"], :name => "index_top_forms_on_sort_order"
+
   create_table "top_searches", :force => true do |t|
     t.string   "query"
     t.string   "url"

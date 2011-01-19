@@ -135,11 +135,23 @@ module SearchHelper
   end
 
   def forms_search?
-    controller.controller_name == "searches" and controller.action_name == "forms"
+    (controller.controller_name == "searches" and controller.action_name == "forms") or controller.controller_name == "forms"
+  end
+  
+  def search_box_forms_link(search_params)
+    controller.controller_name == "home" ? forms_path : forms_search_path(search_params)
   end
 
   def no_results_for(query)
     content_tag(:p, (t :no_results_for, :query => h(query)), :class=>"noresults")
+  end
+  
+  def search_results_logo
+    if forms_search?
+      image_tag("USAsearch_medium_#{I18n.locale}_forms.gif" , :alt => "USASearch Forms Home")
+    else
+      image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home")
+    end
   end
 
   EN_SCOPE_ID_OPTIONS = [

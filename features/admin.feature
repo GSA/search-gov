@@ -18,6 +18,8 @@ Feature:  Administration
     And I should see "Affiliate Boosted"
     And I should see "Spotlights"
     And I should see "FAQs"
+    And I should see "Top Searches"
+    And I should see "Top Forms"
     And I should not see "Query Grouping"
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
@@ -199,3 +201,73 @@ Feature:  Administration
     And the "query5" field should contain "New Search 5"
     And the "url2" field should not contain "http://some.com/url"
     And the "url4" field should contain "http://someother.com/url"
+    
+  Scenario: Viewing Top Forms
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Top Forms exist:
+    | name        | url                     | column_number | sort_order|
+    | Form 1      | http://forms.gov/1.pdf  | 1             | 1         |
+    | Form 2      | http://forms.gov/2.pdf  | 2             | 1         |
+    When I go to the top forms admin page
+    Then I should see "You are viewing Column #1"
+    And I should see "Form 1" as a Top Form name
+    And I should not see "Form 2" as a Top Form name
+    
+    When I go to the top forms admin page for column "2"
+    Then I should see "You are viewing Column #2"
+    And I should see "Form 2" as a Top Form name
+    And I should not see "Form 1" as a Top Form name
+    
+  Scenario: Adding a new Top Form
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the top forms admin page
+    And I fill in "new_name" with "New Form"
+    And I fill in "new_url" with "http://forms.gov/new.pdf"
+    And I fill in "new_sort_order" with "1"
+    And I press "Add Top Form"
+    Then I should be on the top forms admin page
+    And I should see "Successfully added top form to Column 1 in position 1"
+    And I should see "New Form" as a Top Form name
+    
+  Scenario: Updating existing Top Forms
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Top Forms exist:
+    | name        | url                     | column_number | sort_order|
+    | New Forms   |                         | 1             | 1         |
+    When I go to the top forms admin page
+    And I fill in "top_form_name" with "Newer Forms"
+    And I press "Update"
+    Then I should be on the top forms admin page
+    And I should not see "New Forms" as a Top Form name
+    And I should see "Newer Forms" as a Top Form name
+    
+  Scenario: Deleting a Top Form
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Top Forms exist:
+    | name        | url                     | column_number | sort_order|
+    | New Forms   |                         | 1             | 1         |
+    | Form 1      | http://forms.gov/1.pdf  | 1             | 2         |
+    | Old Forms   |                         | 2             | 1         |
+    | Form 2      | http://forms.gov/2.pdf  | 2             | 2         |
+    When I go to the top forms admin page
+    And I follow "Delete"
+    Then I should be on the top forms admin page
+    And I should see "Successfully Removed Top Form"
+    And I should not see "New Forms" as a Top Form name
+    And I should see "Form 1" as a Top Form name
+    
+  Scenario: Adding a form in the same position as an existing form
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Top Forms exist:
+    | name        | url                     | column_number | sort_order|
+    | New Forms   |                         | 1             | 1         |
+    | Form 1      | http://forms.gov/1.pdf  | 1             | 2         |
+    | Old Forms   |                         | 2             | 1         |
+    | Form 2      | http://forms.gov/2.pdf  | 2             | 2         |
+    When I go to the top forms admin page
+    And I fill in "new_name" with "Form 1"
+    And I fill in "new_url" with "http://forms.gov/1.pdf"
+    And I fill in "new_sort_order" with "2"
+    And I press "Add Top Form"
+    Then I should be on the top forms admin page
+    And I should see "The Top Form could not be saved."

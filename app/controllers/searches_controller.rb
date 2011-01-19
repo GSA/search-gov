@@ -35,7 +35,7 @@ class SearchesController < ApplicationController
       @search.run
     end
     @form_path = forms_search_path
-    @page_title = "Forms Search for: #{@search.query}"
+    @page_title = @search.query
     respond_to do |format|
       if @gov_forms
         format.html

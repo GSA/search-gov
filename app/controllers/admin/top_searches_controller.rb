@@ -1,7 +1,7 @@
 class Admin::TopSearchesController < Admin::AdminController
   before_filter :assign_page_title
   def index
-    @top_searches = TopSearch.find(:all, :order => "position asc")
+    @top_searches = TopSearch.find(:all, :order => "position ASC")
   end
   
   def create
