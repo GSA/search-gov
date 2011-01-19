@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-sayt_suggestion_rb.html">app/models/sayt_suggestion.rb</a></td>
-            <td class='right_align'><tt>60</tt></td>
-            <td class='right_align'><tt>52</tt></td>
+            <td class='right_align'><tt>72</tt></td>
+            <td class='right_align'><tt>63</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -165,259 +165,331 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>     def populate_for(day)</pre></td>
+            <td><pre><a name="line19">19</a>     def prune_dead_ends</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>       name_id_list = Affiliate.all.collect { |aff| {:name =&gt; aff.name, :id =&gt; aff.id} }</pre></td>
+            <td><pre><a name="line20">20</a>       all.each do |ss|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>       name_id_list &lt;&lt; {:name =&gt; Affiliate::USAGOV_AFFILIATE_NAME, :id =&gt; nil}</pre></td>
+            <td><pre><a name="line21">21</a>         unless Search.results_present_for?(ss.phrase, ss.affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>       name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day) }</pre></td>
+            <td><pre><a name="line22">22</a>           RAILS_DEFAULT_LOGGER.info &quot;Deleting #{ss.phrase} for affiliate #{ss.affiliate.name rescue Affiliate::USAGOV_AFFILIATE_NAME}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>           ss.delete</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a>     end</pre></td>
+            <td><pre><a name="line24">24</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>     def populate_for_affiliate_on(affiliate_name, affiliate_id, day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>       ordered_hash = DailyQueryStat.sum(:times, :group=&gt; &quot;query&quot;, :conditions=&gt;[&quot;day = ? and affiliate = ?&quot;, day, affiliate_name])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>       daily_query_stats = ordered_hash.map{|entry| DailyQueryStat.new(:query=&gt; entry[0], :times=&gt; entry[1])}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>       filtered_daily_query_stats = SaytFilter.filter(daily_query_stats, &quot;query&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>       filtered_daily_query_stats.each do |dqs|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>         temp_ss = new(:phrase =&gt; dqs.query)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>         temp_ss.squish_whitespace_and_downcase_and_spellcheck</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>         sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase(affiliate_id, temp_ss.phrase)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>         sayt_suggestion.popularity = dqs.times</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>         sayt_suggestion.save</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>       end unless filtered_daily_query_stats.empty?</pre></td>
+            <td><pre><a name="line25">25</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>     end</pre></td>
+            <td><pre><a name="line26">26</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a> </pre></td>
+            <td><pre><a name="line27">27</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>     def process_sayt_suggestion_txt_upload(txtfile, affiliate = nil)</pre></td>
+            <td><pre><a name="line28">28</a>     def populate_for(day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>       valid_content_types = ['application/octet-stream', 'text/plain', 'txt']</pre></td>
+            <td><pre><a name="line29">29</a>       name_id_list = Affiliate.all.collect { |aff| {:name =&gt; aff.name, :id =&gt; aff.id} }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>       if valid_content_types.include? txtfile.content_type</pre></td>
+            <td><pre><a name="line30">30</a>       name_id_list &lt;&lt; {:name =&gt; Affiliate::USAGOV_AFFILIATE_NAME, :id =&gt; nil}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line41">41</a>         created, ignored = 0, 0</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>         txtfile.readlines.each do |phrase|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>           entry = phrase.chomp.strip</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>           unless entry.blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>             create(:phrase =&gt; entry, :affiliate =&gt; affiliate).id.nil? ? (ignored += 1) : (created += 1)</pre></td>
+            <td><pre><a name="line31">31</a>       name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>           end</pre></td>
+            <td><pre><a name="line32">32</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>         end</pre></td>
+            <td><pre><a name="line33">33</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>         return {:created =&gt; created, :ignored =&gt; ignored}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line49">49</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line50">50</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line51">51</a> </pre></td>
+            <td><pre><a name="line34">34</a>     def populate_for_affiliate_on(affiliate_name, affiliate_id, day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>     def expire(days_back)</pre></td>
+            <td><pre><a name="line35">35</a>       affiliate = Affiliate.find_by_id affiliate_id</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>       delete_all([&quot;updated_at &lt; ?&quot;, days_back.days.ago.beginning_of_day.to_s(:db)])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line54">54</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line55">55</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line56">56</a> </pre></td>
+            <td><pre><a name="line36">36</a>       ordered_hash = DailyQueryStat.sum(:times, :group=&gt; &quot;query&quot;, :conditions=&gt;[&quot;day = ? and affiliate = ?&quot;, day, affiliate_name])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>   def squish_whitespace_and_downcase_and_spellcheck</pre></td>
+            <td><pre><a name="line37">37</a>       daily_query_stats = ordered_hash.map { |entry| DailyQueryStat.new(:query=&gt; entry[0], :times=&gt; entry[1]) }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>     self.phrase = Misspelling.correct(self.phrase.squish.downcase) unless self.phrase.nil?</pre></td>
+            <td><pre><a name="line38">38</a>       filtered_daily_query_stats = SaytFilter.filter(daily_query_stats, &quot;query&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>       filtered_daily_query_stats.each do |dqs|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>         if Search.results_present_for?(dqs.query, affiliate) then</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>           temp_ss = new(:phrase =&gt; dqs.query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>           temp_ss.squish_whitespace_and_downcase_and_spellcheck</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>           sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase(affiliate_id, temp_ss.phrase)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>           sayt_suggestion.popularity = dqs.times</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>           sayt_suggestion.save</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line59">59</a>   end</pre></td>
+            <td><pre><a name="line46">46</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>       end unless filtered_daily_query_stats.empty?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a> end</pre></td>
+            <td><pre><a name="line48">48</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line49">49</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line50">50</a>     def process_sayt_suggestion_txt_upload(txtfile, affiliate = nil)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>       valid_content_types = ['application/octet-stream', 'text/plain', 'txt']</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>       if valid_content_types.include? txtfile.content_type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>         created, ignored = 0, 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line54">54</a>         txtfile.readlines.each do |phrase|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>           entry = phrase.chomp.strip</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>           unless entry.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>             create(:phrase =&gt; entry, :affiliate =&gt; affiliate).id.nil? ? (ignored += 1) : (created += 1)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line58">58</a>           end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line59">59</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>         return {:created =&gt; created, :ignored =&gt; ignored}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line61">61</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line62">62</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line63">63</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>     def expire(days_back)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>       delete_all([&quot;updated_at &lt; ?&quot;, days_back.days.ago.beginning_of_day.to_s(:db)])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line66">66</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line67">67</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line68">68</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>   def squish_whitespace_and_downcase_and_spellcheck</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line70">70</a>     self.phrase = Misspelling.correct(self.phrase.squish.downcase) unless self.phrase.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line71">71</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line72">72</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Jan 18 15:24:06 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jan 19 07:03:22 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

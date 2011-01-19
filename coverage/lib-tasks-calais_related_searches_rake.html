@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-calais_related_searches_rake.html">lib/tasks/calais_related_searches.rake</a></td>
-            <td class='right_align'><tt>15</tt></td>
-            <td class='right_align'><tt>12</tt></td>
+            <td class='right_align'><tt>20</tt></td>
+            <td class='right_align'><tt>16</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -134,20 +134,50 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a>   end</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>     desc &quot;prune CalaisRelatedSearch entries that lead to no search results&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>     task :prune_dead_ends =&gt; :environment do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>       CalaisRelatedSearch.prune_dead_ends</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a> end</pre></td>
+            <td><pre><a name="line17">17</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line18">18</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line19">19</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line20">20</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Jan 18 15:24:06 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jan 19 07:03:22 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
