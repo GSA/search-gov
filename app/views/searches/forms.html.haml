@@ -3,6 +3,11 @@
     = link_to image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
   #results
     = render "/shared/search", :path => @form_path
+    %div{:style => "font-size: 16px;"}
+      = t(:forms_for, :query => "<b>#{@search.query}</b>")
+    %div
+      = link_to "<< Return to government web results for <b>#{@search.query}</b>", forms_search_path(:query => @search.query)
+    %br
     - if @gov_forms.total > 0
       - startrecord = @search.page * @search.results_per_page + 1
       = results_summary(startrecord, [startrecord + @search.results_per_page - 1, @gov_forms.total].min, @gov_forms.total, h(@search.query), false)

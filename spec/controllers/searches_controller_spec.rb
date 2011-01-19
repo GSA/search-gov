@@ -437,7 +437,7 @@ describe SearchesController do
     
       it "should output a Forms GovBox with a link to more GovForm search results" do
         response.body.should have_tag("div[class=govbox]")
-        response.body.should have_tag("a[href=/search/forms?locale=en&amp;m=false&amp;query=taxes&amp;source=gov_forms]", :text => "Forms for taxes")
+        response.body.should have_tag("a[href=/search/forms?locale=en&amp;m=false&amp;query=taxes&amp;source=gov_forms]", :text => "Federal Government Forms Catalog: taxes")
         response.body.should have_tag("a[href=#{@gov_form.url}]", :text => "#{@gov_form.name} (#{@gov_form.form_number})")
       end
     
@@ -475,6 +475,15 @@ describe SearchesController do
 
       it "should assign results to the gov_forms variable" do
         @gov_forms.should_not be_nil
+      end
+      
+      it "should output a title with the query" do
+        response.body.should contain(/Federal Government Forms Catalog: taxes/)
+      end
+      
+      it "should link back to the forms web results" do
+        puts response.body
+        response.body.should have_tag("a[href=/search/forms?locale=en&amp;m=false&amp;query=taxes]", :text => "<< Return to government web results for taxes")
       end
       
       it "should output 10 GovForm results, linked to their URL" do
