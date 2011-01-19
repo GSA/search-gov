@@ -17,10 +17,11 @@ module SearchHelper
   def thumbnail_image_tag(result, max_width=nil, max_height=nil)
     width = result["Thumbnail"]["Width"].to_f
     height = result["Thumbnail"]["Height"].to_f
-    reduction = [
+    reductions = [
       (max_width && width > max_width) ? (max_width.to_f / width) : 1,
       (max_height && height > max_height) ? (max_height.to_f / height) : 1
-    ].min
+    ]
+    reduction = reductions.min
 
     image_tag result["Thumbnail"]["Url"],
               :width  => (width * reduction).to_i,
