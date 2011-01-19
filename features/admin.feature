@@ -60,6 +60,9 @@ Feature:  Administration
     Then I should see "Users"
     And I should see "Query Grouping"
 
+    When I follow "Query Grouping"
+    Then I should see "USASearch > Affiliate Program > Admin Center > QueryGroups"
+
   Scenario: Visiting the users admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page

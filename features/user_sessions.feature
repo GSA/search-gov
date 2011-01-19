@@ -1,5 +1,9 @@
 Feature: User sessions
 
+  Scenario: Visiting the login page
+    Given I am on the login page
+    Then I should see "USASearch > Affiliate Program > Login"
+
   Scenario: Already logged-in user visits login page
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the login page

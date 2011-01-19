@@ -20,7 +20,8 @@ Feature: Users
 
   Scenario: Registering as a new affiliate user
     Given I am on the new user page
-    And I fill in the following:
+    Then I should see "USASearch > Affiliate Program > Sign Up"
+    When I fill in the following:
     | Contact Name                  | Lorem Ipsum                 |
     | Email                         | lorem.ipsum@agency.gov      |
     | Phone                         | 301.123.4567                |

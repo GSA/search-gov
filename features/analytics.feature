@@ -19,6 +19,8 @@ Feature: Analytics Homepage
     And in "qas0" I should see "aaaa"
     And in "qas1" I should see "aaah"
     And in "qas2" I should see "aaao"
+    When I follow "aaaa"
+    Then I should see "USASearch > Affiliate Program > Analyst Center > Query Timeline"
 
   Scenario: No daily query stats available for any time period
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
