@@ -37,7 +37,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :gov_forms, :active_scaffold => true
     admin.resources :clicks, :active_scaffold => true
     admin.resources :calais_related_searches, :active_scaffold => true
-    admin.resources :top_searches, :only => [:index, :create]
+    admin.resources :top_searches, :only => [:index, :create, :new]
     admin.resources :top_forms, :only => [:index, :create, :update, :destroy]
     admin.resources :superfresh_urls, :active_scaffold => true
     admin.resources :site_pages, :active_scaffold => true
