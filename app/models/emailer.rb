@@ -21,7 +21,7 @@ class Emailer < ActionMailer::Base
   end
   
   def mobile_feedback(email, message)
-    @recipients = "musa.gov@mail.fedinfo.gov"
+    @recipients = I18n.t(:contact_recipients)
     @from       = email
     @subject    = "USA.gov Mobile Inquiry"
     @sent_on    = Time.now
