@@ -138,7 +138,7 @@ module SearchHelper
   def forms_search?
     (controller.controller_name == "searches" and controller.action_name == "forms") or controller.controller_name == "forms"
   end
-  
+
   def search_box_forms_link(search_params)
     controller.controller_name == "home" ? forms_path : forms_search_path(search_params)
   end
@@ -146,12 +146,12 @@ module SearchHelper
   def no_results_for(query)
     content_tag(:p, (t :no_results_for, :query => h(query)), :class=>"noresults")
   end
-  
+
   def search_results_logo
     if forms_search?
-      image_tag("USAsearch_medium_#{I18n.locale}_forms.gif" , :alt => "USASearch Forms Home")
+      link_to image_tag("USAsearch_medium_#{I18n.locale}_forms.gif" , :alt => "USASearch Forms Home"), forms_path(:locale => I18n.locale)
     else
-      image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home")
+      link_to image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
     end
   end
 
@@ -297,7 +297,7 @@ module SearchHelper
   end
 
   private
-  
+
   def shorten_url (url)
     return url if url.length <=30
     if url.count('/') >= 4

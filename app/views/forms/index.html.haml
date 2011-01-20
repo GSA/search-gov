@@ -1,6 +1,6 @@
 .prepend-6.span-15.append-3.homepage
   %a{:name => "content"}
-  = link_to(image_tag("USAsearch_large_#{I18n.locale}_forms.gif" , :alt => "USASearch Forms Home"), home_page_path(:locale => I18n.locale))
+  = link_to(image_tag("USAsearch_large_#{I18n.locale}_forms.gif" , :alt => "USASearch Forms Home"), forms_path(:locale => I18n.locale))
   = render "shared/search", :path => forms_search_path
 
 .prepend-2.span-16.append-3{:style => "text-align: center;"}

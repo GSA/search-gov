@@ -1,6 +1,6 @@
 #results-wrap
   #sidebar
-    = link_to search_results_logo, home_page_path(:locale => I18n.locale)
+    = search_results_logo
   #results
     = render "/shared/search", :path => @form_path
     %div{:style => "font-size: 16px;"}
