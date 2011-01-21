@@ -16,6 +16,16 @@ describe CalaisRelatedSearch do
     }
   end
 
+  describe "#delete_if_exists(term, locale, affiliate_id)" do
+    context "when a CalaisRelatedSearch exists matching the given term, locale, and affilaite_id" do
+      it "should delete the CalaisRelatedSearch" do
+        crs = calais_related_searches(:ups)
+        CalaisRelatedSearch.delete_if_exists(crs.term, crs.locale, crs.affiliate.id)
+        CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(crs.term, crs.locale, crs.affiliate.id).should be_false
+      end
+    end
+  end
+
   describe "#prune_dead_ends" do
     context "when the pivot term has no search results" do
       before do
@@ -180,6 +190,21 @@ describe CalaisRelatedSearch do
   end
 
   describe "#perform(affiliate_name, term)" do
+    context "when there are no search results for a term" do
+      before do
+        @term = "no results found here"
+        search = Search.new(:affiliate => @affiliate.name, :query => @term)
+        Search.stub!(:new).and_return(search)
+        search.stub!(:run)
+        search.stub!(:results).and_return([])
+      end
+
+      it "should attempt to delete any existing record for that affiliate and term" do
+        CalaisRelatedSearch.should_receive(:delete_if_exists).with(@term, 'en', @affiliate.id)
+        CalaisRelatedSearch.perform(@affiliate.name, @term)
+      end
+    end
+
     context "when there are search results for a term" do
       before do
         @term = "pelosi award"
@@ -189,6 +214,17 @@ describe CalaisRelatedSearch do
         search.stub!(:results).and_return([{'title'=>'First title', 'content' => 'First content'},
                                            {'title'=>'Second title', 'content' => 'Second content'}])
         Search.stub!(:results_present_for?).and_return true
+      end
+
+      context "when there are no Calais SocialTags for a term's corpus of titles and descriptions" do
+        before do
+          Calais.stub!(:process_document).and_return(mock("calais", :socialtags => []))
+        end
+
+        it "should attempt to delete any existing record for that affiliate and term" do
+          CalaisRelatedSearch.should_receive(:delete_if_exists).with(@term, 'en', @affiliate.id)
+          CalaisRelatedSearch.perform(@affiliate.name, @term)
+        end
       end
 
       context "when there are Calais SocialTags for a term's corpus of titles and descriptions" do
@@ -216,7 +252,7 @@ describe CalaisRelatedSearch do
 
           it "should not include that SocialTag in the set of related terms for that pivot term" do
             CalaisRelatedSearch.perform(@affiliate.name, @term)
-            CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "California | CIA inquiry"            
+            CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "California | CIA inquiry"
           end
         end
       end

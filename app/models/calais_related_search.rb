@@ -69,6 +69,11 @@ class CalaisRelatedSearch < ActiveRecord::Base
       end
     end
 
+    def delete_if_exists(term, locale, affiliate_id)
+      prunable_existing_crs = find_by_term_and_locale_and_affiliate_id(term, locale, affiliate_id)
+      prunable_existing_crs.delete unless prunable_existing_crs.nil?
+    end
+
     def perform(affiliate_name, term)
       affiliate = Affiliate.find_by_name(affiliate_name)
       affiliate_id = affiliate.nil? ? nil : affiliate.id
@@ -76,7 +81,9 @@ class CalaisRelatedSearch < ActiveRecord::Base
       search = Search.new(:query=>term, :affiliate=> affiliate, :results_per_page => BING_RESULTS_TO_CONSIDER_FOR_TEXT, :enable_highlighting=>false)
       search.run
       summary = search.results.collect { |r| [r['title'], r['content']].join('. ') }.join(' ')
-      unless summary.blank?
+      if summary.blank?
+        delete_if_exists(term, 'en', affiliate_id)
+      else
         begin
           calais = Calais.process_document(:content => summary, :content_type => :raw, :license_id => CALAIS_LICENSE_ID, :metadata_enables=>['SocialTags'])
           downcased_term = term.downcase
@@ -88,7 +95,9 @@ class CalaisRelatedSearch < ActiveRecord::Base
               downcased_tag == downcased_term.singularize or downcased_tag == downcased_term.pluralize or not
               Search.results_present_for?(tag, affiliate)
           end
-          unless social_tags.empty?
+          if social_tags.empty?
+            delete_if_exists(term, 'en', affiliate_id)
+          else
             related_terms = social_tags.join(' | ')
             calais_related_search = find_or_initialize_by_term_and_locale_and_affiliate_id(term, 'en', affiliate_id)
             calais_related_search.related_terms = related_terms
