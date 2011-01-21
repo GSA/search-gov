@@ -89,10 +89,22 @@ describe SaytSuggestion do
     end
   end
 
-  describe "#populate_for_affiliate_on" do
+  describe "#populate_for_affiliate_on(affiliate_name, affiliate_id, day)" do
+    before do
+      ResqueSpec.reset!
+    end
+
+    it "should enqueue the affiliate for processing" do
+      aff = affiliates(:basic_affiliate)
+      SaytSuggestion.populate_for_affiliate_on(aff.name, aff.id, Date.today)
+      SaytSuggestion.should have_queued(aff.name, aff.id, Date.today)
+    end
+  end
+
+  describe "#perform(affiliate_name, affiliate_id, day)" do
     context "when no DailyQueryStats exist for the given day for an affiliate" do
       it "should return nil" do
-        SaytSuggestion.populate_for_affiliate_on(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today).should be_nil
+        SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today).should be_nil
       end
     end
 
@@ -105,7 +117,7 @@ describe SaytSuggestion do
       end
 
       it "should populate SaytSuggestions based on each DailyQueryStat for the given day" do
-        SaytSuggestion.populate_for_affiliate_on(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
+        SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
         SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term1", 2).should_not be_nil
         SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term2", 2).should_not be_nil
         SaytSuggestion.find_by_phrase("yesterday term1").should be_nil
@@ -121,7 +133,7 @@ describe SaytSuggestion do
       end
 
       it "should only create SaytSuggestions for the ones with results" do
-        SaytSuggestion.populate_for_affiliate_on(affiliates(:basic_affiliate).name, affiliates(:basic_affiliate).id, Date.today)
+        SaytSuggestion.perform(affiliates(:basic_affiliate).name, affiliates(:basic_affiliate).id, Date.today)
         SaytSuggestion.find_by_phrase(@one.query).should be_nil
         SaytSuggestion.find_by_phrase(@two.query).should_not be_nil
       end
@@ -135,7 +147,7 @@ describe SaytSuggestion do
       end
 
       it "should combine data from all locales to populate SaytSuggestions" do
-        SaytSuggestion.populate_for_affiliate_on(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
+        SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
         SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "el paso").popularity.should == 6
       end
     end
@@ -150,7 +162,7 @@ describe SaytSuggestion do
       end
 
       it "should apply SaytFilters to each eligible DailyQueryStat word" do
-        SaytSuggestion.populate_for_affiliate_on(@affiliate.name, @affiliate.id, Date.today)
+        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.today)
         SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "today term2").should be_nil
       end
     end
@@ -164,7 +176,7 @@ describe SaytSuggestion do
       end
 
       it "should update the popularity field with the new count" do
-        SaytSuggestion.populate_for_affiliate_on(@affiliate.name, @affiliate.id, Date.today)
+        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.today)
         SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "already here").popularity.should == 2
       end
     end

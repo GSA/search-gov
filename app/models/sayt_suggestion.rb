@@ -1,4 +1,5 @@
 class SaytSuggestion < ActiveRecord::Base
+  @queue = :sayt_suggestion
   before_validation :squish_whitespace_and_downcase_and_spellcheck
   belongs_to :affiliate
 
@@ -32,6 +33,10 @@ class SaytSuggestion < ActiveRecord::Base
     end
 
     def populate_for_affiliate_on(affiliate_name, affiliate_id, day)
+      Resque.enqueue(SaytSuggestion, affiliate_name, affiliate_id, day)
+    end
+
+    def perform(affiliate_name, affiliate_id, day)
       affiliate = Affiliate.find_by_id affiliate_id
       ordered_hash = DailyQueryStat.sum(:times, :group=> "query", :conditions=>["day = ? and affiliate = ?", day, affiliate_name])
       daily_query_stats = ordered_hash.map { |entry| DailyQueryStat.new(:query=> entry[0], :times=> entry[1]) }
