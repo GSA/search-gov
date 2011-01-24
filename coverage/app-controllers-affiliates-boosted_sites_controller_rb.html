@@ -207,7 +207,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>     @boosted_site = @affiliate.boosted_sites.create(params[:boosted_site])</pre></td>
+            <td><pre><a name="line26">26</a>     @boosted_site = BoostedSite.create(params[:boosted_site].merge(:affiliate =&gt; @affiliate))</pre></td>
           </tr>
         
           
@@ -405,7 +405,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Mon Jan 24 12:53:15 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Jan 24 15:58:47 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
