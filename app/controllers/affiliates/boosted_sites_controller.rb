@@ -23,7 +23,7 @@ class Affiliates::BoostedSitesController < Affiliates::AffiliatesController
   end
 
   def create
-    @boosted_site = @affiliate.boosted_sites.create(params[:boosted_site])
+    @boosted_site = BoostedSite.create(params[:boosted_site].merge(:affiliate => @affiliate))
     if @boosted_site.errors.empty?
       flash[:success] = "Boosted site successfully added for affiliate '#{@affiliate.name}'"
       redirect_to new_affiliate_boosted_site_path

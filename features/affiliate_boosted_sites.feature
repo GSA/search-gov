@@ -11,11 +11,17 @@ Feature: Boosted Sites
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted sites"
+    Then I should be on the new affiliate boosted site page
     And I fill in "Title" with "Test"
     And I fill in "Url" with "http://www.test.gov"
-    And I fill in "Description" with "Test Description"
+    And I fill in "Description" with ""
+    And I press "Save Boosted Site"
+    Then I should see "There was a problem saving your boosted site"
+    And I should see "Description can't be blank"
+    Then I fill in "Description" with "Test Description"
     And I press "Save Boosted Site"
     Then I should be on the new affiliate boosted site page
+    And I should see "Boosted site successfully added"
     And I should see "Test" within "#boosted_sites"
     And I should see "http://www.test.gov" within "#boosted_sites"
     And I should see "Test Description" within "#boosted_sites"

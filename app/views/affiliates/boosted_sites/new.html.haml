@@ -1,73 +1,94 @@
-= affiliate_center_breadcrumbs([link_to(@affiliate.name, affiliate_path(@affiliate)), "Boosted Sites"])
-%br
+.boosted-sites.span-24
+  = affiliate_center_breadcrumbs([link_to(@affiliate.name, affiliate_path(@affiliate)), "Boosted Sites"])
 
-.span-24
-  %h1 Boosted Sites
-  %p Boosted sites allows you to direct users to content that is relevant but does not appear at the top of our results.
-  %p
-    For example, an important news story just posted on your server will not appear at the top of our results listings,
-    and you want to get your search users this information. With Boosted Sites, the link for the page(s) are returned
-    above our search results for queries that match the information you uploaded.
+  .span-17.append-1
+    %h1 Boosted Sites
+    %p
+      Boost sites to make specific pages appear above the main search results displayed on your pages.
+      Boosted sites appears above other pages whenever words in a searcher's query match text in the page's title, URL, or description.
 
+    %p
+      = link_to("Add a New Entry", "#add_a_new_entry")
+      &nbsp; | &nbsp;
+      = link_to("Edit / Delete Current Entries", "#edit_delete_current_entries")
+      &nbsp; | &nbsp;
+      = link_to("Bulk Upload", "#bulk_upload")
 
-  = render :partial => "form"
-  %br
-
-
-  .header-box
-    ="Current Boosted Sites for #{@affiliate.name}"
-  - if @affiliate.boosted_sites.empty?
-    .content-box= "Affiliate #{@affiliate.name} has no boosted sites"
-  - else
-    %table.admin-table#boosted_sites
-      - @affiliate.boosted_sites.each do |boosted_site|
-        %tr{:class => cycle('even', 'odd')}
-          %td= boosted_site.title
-          %td= boosted_site.url
-          %td= boosted_site.description
-          %td= boosted_site.updated_at.strftime("%m/%d/%Y")
-          %td
-            = link_to("Edit", edit_affiliate_boosted_site_path(@affiliate, boosted_site))
-            &nbsp; | &nbsp;
-            = link_to("Delete", affiliate_boosted_site_path(@affiliate, boosted_site), :method => :delete, :confirm => "Are you sure you want to delete this boosted site?  ")
-
-  %br
-
-  - form_tag bulk_affiliate_boosted_sites_path(@affiliate), :multipart => true, :class=> "bordered" do
-    %h2="Bulk Upload Boosted Sites for #{@affiliate.name}"
-    %div
-      = file_field_tag 'xml_file', :accept => 'text/xml'
-      = submit_tag "Upload"
-
+    #add_a_new_entry
+      = render :partial => "form"
     %br
-    %b Instructions
-    %ol
-      %li
-        Create a new XML file using the format in the example below.
-      %li
-        Save the XML file as {filename}.xml on your computer.
-      %li
-        Add, modify, or delete individual entries in the file.
-      %li
-        Browse for the file on your computer.
-      %li
-        Upload the file to GSA's server.
 
-    %b Example Boosted Sites XML
-    %pre{:style => "padding: 0; margin: 0;"}
-      :preserve
-      :escaped
-        <xml>
-          <entries>
-            <entry>
-              <title>This is a listing about Texas</title>
-              <url>http://some.url</url>
-              <description>This is the description of the listing</description>
-            </entry>
-            <entry>
-              <title>Some other listing about hurricanes</title>
-              <url>http://some.other.url</url>
-              <description>Another description for another listing</description>
-            </entry>
-          </entries>
-        </xml>
+
+    #edit_delete_current_entries
+      .header-box
+        ="Edit / Delete Current Boosted Entries"
+      - if @affiliate.boosted_sites.empty?
+        .content-box= "Affiliate #{@affiliate.name} has no boosted sites"
+      - else
+        %table.admin-table#boosted_sites
+          - @affiliate.boosted_sites.each do |boosted_site|
+            %tr{:class => cycle('even', 'odd')}
+              %td= boosted_site.title
+              %td= boosted_site.url
+              %td= boosted_site.description
+              %td= boosted_site.updated_at.strftime("%m/%d/%Y")
+              %td.actions
+                = link_to("Edit", edit_affiliate_boosted_site_path(@affiliate, boosted_site))
+                %br
+                = link_to("Delete", affiliate_boosted_site_path(@affiliate, boosted_site), :method => :delete, :confirm => "Are you sure you want to delete this boosted site?  ")
+
+    #bulk_upload
+      - form_tag bulk_affiliate_boosted_sites_path(@affiliate), :multipart => true, :class=> "bordered" do
+        %h2="Bulk Upload Boosted Sites for #{@affiliate.name}"
+        %h4 Instructions
+        %ol
+          %li
+            Create a new XML file using the format in the example below.
+          %li
+            Save the XML file as {filename}.xml on your computer.
+          %li
+            Add, modify, or delete individual entries in the file.
+          %li
+            Browse for the file on your computer.
+          %li
+            Upload the file to GSA's server.
+
+        %h4 Example Boosted Sites XML
+        %pre
+          = preserve do
+            :escaped
+              <xml>
+                <entries>
+                  <entry>
+                    <title>This is a listing about Texas</title>
+                    <url>http://some.url</url>
+                    <description>This is the description of the listing</description>
+                  </entry>
+                  <entry>
+                    <title>Some other listing about hurricanes</title>
+                    <url>http://some.other.url</url>
+                    <description>Another description for another listing</description>
+                  </entry>
+                </entries>
+              </xml>
+
+        %h4 Important Notes
+        %p
+          :escaped
+            Note that the fields in your XML file are case sensitive and everything must be lower case so enter them as <title>, <url>, and <description>. (The system will prevent you from uploading files using title case or all caps so do not use <Title>, <URL>, <Description>, for example.)
+        %p
+          Also, be sure to enter a title, url, and description field for every entry. (They are mandatory so the system will prevent you from uploading files without a field for every entry.)
+
+        %h4 Select Boosted Sites XML
+        = file_field_tag 'xml_file', :accept => 'text/xml'
+        = submit_tag "Upload"
+
+
+  .span-6.last
+    .content-box.cross-promotion
+      %h4 Another Way to Highlight Sites
+      %p
+        = link_to "Add to Bing", affiliate_superfresh_urls_path(@affiliate)
+        %sup TM
+        \-
+        Identify new, modified, or moved pages for Bing to crawl and index.

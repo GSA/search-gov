@@ -1,16 +1,20 @@
 - form_for(@boosted_site || :boosted_site, :url => @boosted_site.new_record? ? affiliate_boosted_sites_path(@affiliate) : affiliate_boosted_site_path(@affiliate, @boosted_site), :html => {:class=> "bordered"}) do |f|
-  %h2="#{@boosted_site.new_record? ? "Add A" : "Edit"} Boosted Site for #{@affiliate.name}"
+  %h2= @boosted_site.new_record? ? "Add a New Entry" : "Edit Boosted Site"
+  %p
+    Fill out the metadata fields below to add a page as boosted content.
+    %br
+    Title, URL, and description are required fields.
   = f.error_messages(:header_message => nil, :class => "error")
-  %table{:style => "width: auto;"}
+  %table
     %tr
       %td= f.label :title
-      %td= f.text_field :title
+      %td= f.text_field :title, :size => 50
     %tr
       %td= f.label :url
-      %td= f.text_field :url
+      %td= f.text_field :url, :size => 50
     %tr
       %td= f.label :description
-      %td= f.text_area :description, :style => "height: 3em;"
+      %td= f.text_area :description
   = f.hidden_field :id
   = submit_tag "Save Boosted Site"
-  = link_to "Cancel", new_affiliate_boosted_site_path(@affiliate)
+  = link_to content_tag(:button, "Cancel"), new_affiliate_boosted_site_path(@affiliate)
