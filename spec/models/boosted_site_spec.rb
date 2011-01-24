@@ -51,4 +51,61 @@ describe BoostedSite do
       BoostedSite.search_for("foobar").total.should == 0
     end
   end
+
+  context "bulk uploads" do
+    fixtures :affiliates
+
+    before :each do
+      @site_xml = <<-XML
+        <xml>
+          <entries>
+            <entry>
+              <title>This is a listing about Texas</title>
+              <url>http://some.url</url>
+              <description>This is the description of the listing</description>
+            </entry>
+            <entry>
+              <title>Some other listing about hurricanes</title>
+              <url>http://some.other.url</url>
+              <description>Another description for another listing</description>
+            </entry>
+          </entries>
+        </xml>
+      XML
+    end
+
+    it "should create and index boosted sites from an xml document" do
+      basic_affiliate = affiliates(:basic_affiliate)
+
+      BoostedSite.process_boosted_site_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
+
+      basic_affiliate.reload
+      basic_affiliate.boosted_sites.length.should == 2
+      basic_affiliate.boosted_sites.map(&:url).should =~ ["http://some.url", "http://some.other.url"]
+      basic_affiliate.boosted_sites.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
+    end
+
+    it "should update existing boosted sites if the url match" do
+      basic_affiliate = affiliates(:basic_affiliate)
+      basic_affiliate.boosted_sites.create!(:url => "http://some.url", :title => "an old title", :description => "an old description")
+
+      BoostedSite.process_boosted_site_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
+
+      basic_affiliate.reload
+      basic_affiliate.boosted_sites.length.should == 2
+      basic_affiliate.boosted_sites.all.find { |b| b.url == "http://some.url" }.title.should == "This is a listing about Texas"      
+    end
+
+    it "should merge with preexisting boosted sites" do
+      basic_affiliate = affiliates(:basic_affiliate)
+      basic_affiliate.boosted_sites.create!(:url => "http://a.different.url", :title => "title", :description => "description")
+
+      BoostedSite.process_boosted_site_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
+
+      basic_affiliate.reload
+      basic_affiliate.boosted_sites.length.should == 3
+      basic_affiliate.boosted_sites.map(&:url).should =~ ["http://some.url", "http://some.other.url", "http://a.different.url"]
+    end
+
+  end
 end

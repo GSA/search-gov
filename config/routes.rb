@@ -6,7 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :password_resets
   map.resources :affiliates, :controller => 'affiliates/home', :member => { :push_content_for => :post, :embed_code => :get }, :collection => { :home => :get, :how_it_works => :get, :demo => :get } do |affiliate|
     affiliate.resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy]
-    affiliate.resource :boosted_sites_upload, :controller => 'affiliates/boosted_sites_uploads', :only => [:create, :new]
+    affiliate.resources :boosted_sites, :controller => 'affiliates/boosted_sites', :collection => {:bulk => :post}
     affiliate.resources :superfresh_urls, :controller => 'affiliates/superfresh', :only => [:index, :create, :destroy], :collection => { :upload => :post }
     affiliate.resources :type_ahead_search, :controller => 'affiliates/sayt', :only => [:index, :create, :destroy], :collection => { :upload => :post, :preferences => :post }
     affiliate.resources :analytics, :controller => 'affiliates/analytics', :only => [:index], :collection => {:monthly_reports => :get, :query_search => :get}
