@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/affiliates/sayt_controller.rb</title>
+    <title>app/controllers/affiliates/boosted_sites_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/affiliates/sayt_controller.rb</h2>
+    <h2>app/controllers/affiliates/boosted_sites_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-affiliates-sayt_controller_rb.html">app/controllers/affiliates/sayt_controller.rb</a></td>
-            <td class='right_align'><tt>53</tt></td>
-            <td class='right_align'><tt>48</tt></td>
+            <td class="left_align"><a href="app-controllers-affiliates-boosted_sites_controller_rb.html">app/controllers/affiliates/boosted_sites_controller.rb</a></td>
+            <td class='right_align'><tt>58</tt></td>
+            <td class='right_align'><tt>50</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,13 +57,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Affiliates::SaytController &lt; Affiliates::AffiliatesController</pre></td>
+            <td><pre><a name="line1">1</a> class Affiliates::BoostedSitesController &lt; Affiliates::AffiliatesController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   before_filter :require_affiliate_or_admin</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :require_affiliate</pre></td>
           </tr>
         
           
@@ -74,218 +74,218 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line4">4</a> </pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   def index</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>     @sayt_suggestion = SaytSuggestion.new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>     @sayt_suggestions = SaytSuggestion.paginate_by_affiliate_id(@affiliate.id, :page =&gt; params[:page] || 1, :order =&gt; 'phrase ASC')</pre></td>
+            <td><pre><a name="line4">4</a>   before_filter :find_boosted_site, :only =&gt; [:edit, :update, :destroy]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>   end</pre></td>
+            <td><pre><a name="line5">5</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>   def new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>     @title = &quot;Boosted Sites - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     @boosted_site = @affiliate.boosted_sites.new</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>   def create</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     @sayt_suggestion = SaytSuggestion.new(params[:sayt_suggestion])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>     @sayt_suggestion.affiliate = @affiliate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>     if @sayt_suggestion.save</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>       flash[:success] = &quot;Successfully added: #{@sayt_suggestion.phrase}&quot;</pre></td>
+            <td><pre><a name="line9">9</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>     else</pre></td>
+            <td><pre><a name="line10">10</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>       flash[:error] = &quot;Unable to add: &lt;b&gt;#{@sayt_suggestion.phrase}&lt;/b&gt;; Please check the phrase and try again.  Note: &lt;ul&gt;&lt;li&gt;Duplicate phrases are rejected.&lt;/li&gt;&lt;li&gt;Phrases must be at least 3 characters.&lt;/li&gt;&lt;/ul&gt;&quot;</pre></td>
+            <td><pre><a name="line11">11</a>   def edit</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     @title = &quot;#{@boosted_site.title} - Edit Boosted Site&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)</pre></td>
+            <td><pre><a name="line13">13</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>   end</pre></td>
+            <td><pre><a name="line14">14</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>   def update</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>     if @boosted_site.update_attributes(params[:boosted_site])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>       flash[:success] = &quot;Boosted site successfully updated&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>       redirect_to new_affiliate_boosted_site_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>   </pre></td>
+            <td><pre><a name="line19">19</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>   def destroy</pre></td>
+            <td><pre><a name="line20">20</a>       flash[:error] = &quot;There was a problem saving your boosted site&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>     @sayt_suggestion = SaytSuggestion.find(params[:id])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>     if @sayt_suggestion</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>       @sayt_suggestion.destroy</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>       flash[:success] = &quot;Deleted phrase: #{@sayt_suggestion.phrase}&quot;</pre></td>
+            <td><pre><a name="line21">21</a>       render :action =&gt; :edit</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)</pre></td>
+            <td><pre><a name="line22">22</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>   end</pre></td>
+            <td><pre><a name="line23">23</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>   </pre></td>
+            <td><pre><a name="line24">24</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>   def upload</pre></td>
+            <td><pre><a name="line25">25</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>     result = SaytSuggestion.process_sayt_suggestion_txt_upload(params[:txtfile], @affiliate)</pre></td>
+            <td><pre><a name="line26">26</a>     @boosted_site = @affiliate.boosted_sites.create(params[:boosted_site])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>     if result</pre></td>
+            <td><pre><a name="line27">27</a>     if @boosted_site.errors.empty?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>       flashy = &quot;#{result[:created]} Type-ahead Search suggestions uploaded successfully.&quot;</pre></td>
+            <td><pre><a name="line28">28</a>       flash[:success] = &quot;Boosted site successfully added for affiliate '#{@affiliate.name}'&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>       flashy += &quot; #{result[:ignored]} Type-ahead Search suggestions ignored.&quot; if result[:ignored] &gt; 0</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>       flash[:success] = flashy</pre></td>
+            <td><pre><a name="line29">29</a>       redirect_to new_affiliate_boosted_site_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>     else</pre></td>
+            <td><pre><a name="line30">30</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>       flash[:error] = &quot;Your file could not be processed. Please check the format and try again.&quot;</pre></td>
+            <td><pre><a name="line31">31</a>       flash[:error] = &quot;There was a problem saving your boosted site&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>       render :action =&gt; :new</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>     end</pre></td>
+            <td><pre><a name="line33">33</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line34">34</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line35">35</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)</pre></td>
+            <td><pre><a name="line36">36</a>   def destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>     @boosted_site.destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>     flash[:success] = &quot;Boosted site successfully deleted&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>     redirect_to new_affiliate_boosted_site_path</pre></td>
           </tr>
         
           
@@ -297,79 +297,109 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   </pre></td>
+            <td><pre><a name="line41">41</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>   def preferences</pre></td>
+            <td><pre><a name="line42">42</a>   def bulk</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     if params[:sayt_preferences] == 'enable_affiliate'</pre></td>
+            <td><pre><a name="line43">43</a>     if BoostedSite.process_boosted_site_xml_upload_for(@affiliate, params[:xml_file])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>       @affiliate.update_attributes(:is_sayt_enabled =&gt; true, :is_affiliate_suggestions_enabled =&gt; true)</pre></td>
+            <td><pre><a name="line44">44</a>       flash[:success] = &quot;Boosted sites uploaded successfully for affiliate '#{@affiliate.name}'&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>     elsif params[:sayt_preferences] == 'enable_global'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>       @affiliate.update_attributes(:is_sayt_enabled =&gt; true, :is_affiliate_suggestions_enabled =&gt; false)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>     elsif params[:sayt_preferences] == 'disable'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>       @affiliate.update_attributes(:is_sayt_enabled =&gt; false, :is_affiliate_suggestions_enabled =&gt; false)</pre></td>
+            <td><pre><a name="line45">45</a>       redirect_to new_affiliate_boosted_site_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a>     end</pre></td>
+            <td><pre><a name="line46">46</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>     flash[:success] = 'Preferences updated.'</pre></td>
+            <td><pre><a name="line47">47</a>       flash[:error] = &quot;Your XML document could not be processed. Please check the format and try again.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)    </pre></td>
+            <td><pre><a name="line48">48</a>       @boosted_site = @affiliate.boosted_sites.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>       render :action =&gt; 'new'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>   end</pre></td>
+            <td><pre><a name="line50">50</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line53">53</a> end</pre></td>
+            <td><pre><a name="line51">51</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line54">54</a>   def find_boosted_site</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>     @boosted_site = BoostedSite.find(params[:id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line56">56</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line57">57</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line58">58</a> end</pre></td>
           </tr>
         
       </tbody>
