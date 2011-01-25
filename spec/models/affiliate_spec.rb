@@ -22,7 +22,7 @@ describe Affiliate do
     should_allow_values_for :name, "data.gov", "ct-new", "NewAff", "some_aff", "123"
     should_belong_to :owner
     should_have_and_belong_to_many :users
-    should_have_many :boosted_sites
+    should_have_many :boosted_contents
     should_have_many :sayt_suggestions
     should_have_many :calais_related_searches
 

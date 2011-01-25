@@ -13,7 +13,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:total).and_return 20
     @search.stub!(:page).and_return 0
     @search.stub!(:spotlight)
-    @search.stub!(:boosted_sites)
+    @search.stub!(:boosted_contents)
     @search.stub!(:faqs)
     @search.stub!(:gov_forms)
     @search.stub!(:scope_id)
@@ -58,17 +58,17 @@ describe "shared/_searchresults.html.haml" do
       end
     end
 
-    context "when a boosted site is returned as a hit, but that boosted site is not in the database" do
+    context "when a boosted Content is returned as a hit, but that boosted Content is not in the database" do
       before do
-        boosted_site = BoostedSite.create(:title => 'test', :url => 'http://test.gov', :description => 'test')
-        BoostedSite.reindex
-        boosted_site.delete
-        boosted_sites_results = BoostedSite.search_for("test")
-        boosted_sites_results.hits.first.instance.should be_nil
-        @search.stub!(:boosted_sites).and_return boosted_sites_results
+        boosted_content = BoostedContent.create(:title => 'test', :url => 'http://test.gov', :description => 'test')
+        BoostedContent.reindex
+        boosted_content.delete
+        boosted_contents_results = BoostedContent.search_for("test")
+        boosted_contents_results.hits.first.instance.should be_nil
+        @search.stub!(:boosted_contents).and_return boosted_contents_results
       end
 
-      it "should render the page without an error, and without boosted sites" do
+      it "should render the page without an error, and without boosted Contents" do
         render :locals => { :search => @search }
         response.should be_success
         response.body.should have_tag('div#boosted', :text => "")

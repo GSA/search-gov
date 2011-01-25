@@ -60,10 +60,10 @@ module NavigationHelpers
       analytics_query_groups_path
     when /the bulk edit query groups page/
       bulk_edit_analytics_query_group_path
-    when /the boosted sites admin page/
-      admin_boosted_sites_path
-    when /the affiliate boosted sites admin page/
-      admin_affiliate_boosted_sites_path
+    when /the boosted contents admin page/
+      admin_boosted_contents_path
+    when /the affiliate boosted contents admin page/
+      admin_affiliate_boosted_contents_path
     when /the top search admin page/
       admin_top_searches_path
     when /the affiliate superfresh page/

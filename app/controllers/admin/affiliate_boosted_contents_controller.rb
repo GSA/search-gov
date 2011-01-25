@@ -1,6 +1,6 @@
-class Admin::AffiliateBoostedSitesController < Admin::AdminController
-  active_scaffold :boosted_site do |config|
-    config.label = 'Affiliate Boosted Sites'
+class Admin::AffiliateBoostedContentsController < Admin::AdminController
+  active_scaffold :boosted_content do |config|
+    config.label = 'Affiliate Boosted Content'
     config.actions.exclude :create, :update
     config.list.columns.exclude :locale
     config.list.per_page = 100

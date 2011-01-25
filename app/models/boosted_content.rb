@@ -1,4 +1,4 @@
-class BoostedSite < ActiveRecord::Base
+class BoostedContent < ActiveRecord::Base
   require 'rexml/document'
   validates_presence_of :title, :url, :description, :locale
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES
@@ -7,11 +7,11 @@ class BoostedSite < ActiveRecord::Base
 
   searchable :auto_index => false do
     text :title, :description
-    string :affiliate_name do |boosted_site|
-      if boosted_site.affiliate_id.nil?
+    string :affiliate_name do |boosted_content|
+      if boosted_content.affiliate_id.nil?
         Affiliate::USAGOV_AFFILIATE_NAME
-      elsif Affiliate.find_by_id(boosted_site.affiliate_id)
-        boosted_site.affiliate.name
+      elsif Affiliate.find_by_id(boosted_content.affiliate_id)
+        boosted_content.affiliate.name
       else
         nil
       end
@@ -28,8 +28,8 @@ class BoostedSite < ActiveRecord::Base
     end rescue nil
   end
 
-  def self.process_boosted_site_xml_upload_for(affiliate, xml_file)
-    existing = affiliate.boosted_sites
+  def self.process_boosted_content_xml_upload_for(affiliate, xml_file)
+    existing = affiliate.boosted_contents
     begin
       doc=REXML::Document.new(xml_file.read)
       transaction do
@@ -40,7 +40,7 @@ class BoostedSite < ActiveRecord::Base
             :description => entry.elements["description"].first.to_s,
             :affiliate => affiliate
           }
-          if matching = existing.detect { |boosted_site| boosted_site.url == info[:url] }
+          if matching = existing.detect { |boosted_content| boosted_content.url == info[:url] }
             matching.update_attributes(info)
           else
             create!(info)
@@ -49,8 +49,8 @@ class BoostedSite < ActiveRecord::Base
       end
       return true
     rescue
-      RAILS_DEFAULT_LOGGER.warn "Problem processing boosted site XML document: #{$!}"
-      Sunspot.index(affiliate.boosted_sites)
+      RAILS_DEFAULT_LOGGER.warn "Problem processing boosted Content XML document: #{$!}"
+      Sunspot.index(affiliate.boosted_contents)
     end
     false
   end

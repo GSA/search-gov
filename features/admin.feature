@@ -7,14 +7,14 @@ Feature:  Administration
     And I should see "Search.USA.gov" within ".nav"
     And I should see "USASearch > Affiliate Program > Admin Center"
     And I should see "Search.USA.gov Admin Center"
-    And I should see "Boosted Sites" within ".secondary-navbar"
+    And I should see "Boosted Content" within ".secondary-navbar"
     And I should see "Users" within ".main"
     And I should see "Affiliates"
     And I should see "Affiliate Broadcast"
     And I should see "Calais Related Searches"
     And I should see "SAYT Filters"
     And I should see "SAYT Suggestions Bulk Upload"
-    And I should see "Search.USA.gov Boosted Sites"
+    And I should see "Search.USA.gov Boosted Content"
     And I should see "Affiliate Boosted"
     And I should see "Spotlights"
     And I should see "FAQs"
@@ -138,9 +138,9 @@ Feature:  Administration
     Then I should see "USASearch > Affiliate Program > Admin Center > SAYT Suggestions Bulk Upload"
     And I should see "Your file could not be processed."
     
-  Scenario: Viewing Boosted Sites (both affiliate and Search.USA.gov)
+  Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Boosted Sites exist:
+    And the following Boosted Content entries exist:
     | title               | url                     | description                               |
     | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
     | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
@@ -148,18 +148,18 @@ Feature:  Administration
     And the following Affiliates exist:
     | name             | contact_email         | contact_name        |
     | bar.gov          | aff@bar.gov           | John Bar            |
-    And the following Boosted Sites exist for the affiliate "bar.gov"
+    And the following Boosted Content entries exist for the affiliate "bar.gov"
     | title               | url                     | description                               |
     | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
     When I go to the admin home page
-    And I follow "Search.USA.gov Boosted Sites"
-    And I should see "USASearch > Affiliate Program > Admin Center > Search.USA.gov Boosted Sites"
+    And I follow "Search.USA.gov Boosted Content"
+    And I should see "USASearch > Affiliate Program > Admin Center > Search.USA.gov Boosted Content"
     And I should see "Our Emergency Page"
     And I should not see "Bar Emergency Page"
     
     When I go to the admin home page
-    And I follow "Affiliate Boosted Sites"
-    Then I should see "USASearch > Affiliate Program > Admin Center > Affiliate Boosted Sites"
+    And I follow "Affiliate Boosted Content"
+    Then I should see "USASearch > Affiliate Program > Admin Center > Affiliate Boosted Content"
     And I should see "Bar Emergency Page"
     And I should not see "Our Emergency Page"
     

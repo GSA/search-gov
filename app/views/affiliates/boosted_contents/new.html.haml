@@ -1,11 +1,11 @@
 .boosted-sites.span-24
-  = affiliate_center_breadcrumbs([link_to(@affiliate.name, affiliate_path(@affiliate)), "Boosted Sites"])
+  = affiliate_center_breadcrumbs([link_to(@affiliate.name, affiliate_path(@affiliate)), "Boosted Content"])
 
   .span-17.append-1
-    %h1 Boosted Sites
+    %h1 Boosted Content
     %p
-      Boost sites to make specific pages appear above the main search results displayed on your pages.
-      Boosted sites appears above other pages whenever words in a searcher's query match text in the page's title, URL, or description.
+      Boost content to make specific pages appear above the main search results displayed on your pages.
+      Boosted Content appears above other pages whenever words in a searcher's query match text in the page's title, URL, or description.
 
     %p
       = link_to("Add a New Entry", "#add_a_new_entry")
@@ -22,24 +22,24 @@
     #edit_delete_current_entries
       .header-box
         ="Edit / Delete Current Boosted Entries"
-      - if @affiliate.boosted_sites.empty?
-        .content-box= "Affiliate #{@affiliate.name} has no boosted sites"
+      - if @affiliate.boosted_contents.empty?
+        .content-box= "Affiliate #{@affiliate.name} has no Boosted Content"
       - else
-        %table.admin-table#boosted_sites
-          - @affiliate.boosted_sites.each do |boosted_site|
+        %table.admin-table#boosted_contents
+          - @affiliate.boosted_contents.each do |boosted_content|
             %tr{:class => cycle('even', 'odd')}
-              %td= boosted_site.title
-              %td= boosted_site.url
-              %td= boosted_site.description
-              %td= boosted_site.updated_at.strftime("%m/%d/%Y")
+              %td= boosted_content.title
+              %td= boosted_content.url
+              %td= boosted_content.description
+              %td= boosted_content.updated_at.strftime("%m/%d/%Y")
               %td.actions
-                = link_to("Edit", edit_affiliate_boosted_site_path(@affiliate, boosted_site))
+                = link_to("Edit", edit_affiliate_boosted_content_path(@affiliate, boosted_content))
                 %br
-                = link_to("Delete", affiliate_boosted_site_path(@affiliate, boosted_site), :method => :delete, :confirm => "Are you sure you want to delete this boosted site?  ")
+                = link_to("Delete", affiliate_boosted_content_path(@affiliate, boosted_content), :method => :delete, :confirm => "Are you sure you want to delete this Boosted Content entry?  ")
 
     #bulk_upload
-      - form_tag bulk_affiliate_boosted_sites_path(@affiliate), :multipart => true, :class=> "bordered" do
-        %h2="Bulk Upload Boosted Sites for #{@affiliate.name}"
+      - form_tag bulk_affiliate_boosted_contents_path(@affiliate), :multipart => true, :class=> "bordered" do
+        %h2="Bulk Upload Boosted Content for #{@affiliate.name}"
         %h4 Instructions
         %ol
           %li
@@ -53,7 +53,7 @@
           %li
             Upload the file to GSA's server.
 
-        %h4 Example Boosted Sites XML
+        %h4 Example Boosted Content XML
         %pre
           = preserve do
             :escaped
@@ -79,7 +79,7 @@
         %p
           Also, be sure to enter a title, url, and description field for every entry. (They are mandatory so the system will prevent you from uploading files without a field for every entry.)
 
-        %h4 Select Boosted Sites XML
+        %h4 Select Boosted Content XML
         = file_field_tag 'xml_file', :accept => 'text/xml'
         = submit_tag "Upload"
 

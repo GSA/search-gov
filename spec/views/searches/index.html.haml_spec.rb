@@ -9,7 +9,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:recalls)
     @search.stub!(:extra_image_results)
     @search.stub!(:results).and_return []
-    @search.stub!(:boosted_sites).and_return nil
+    @search.stub!(:boosted_contents).and_return nil
     @search.stub!(:faqs).and_return nil
     @search.stub!(:gov_forms).and_return nil
     @search.stub!(:spotlight).and_return nil
@@ -55,7 +55,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:query).and_return ""
       @search.stub!(:spelling_suggestion).and_return nil
       @search.stub!(:results).and_return []
-      @search.stub!(:boosted_sites).and_return nil
+      @search.stub!(:boosted_contents).and_return nil
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil
       @search.stub!(:spotlight).and_return nil
@@ -92,7 +92,7 @@ describe "searches/index.html.haml" do
       @search_results.stub!(:total_pages).and_return 1
       @search.stub!(:results).and_return @search_results
       @search.stub!(:spotlight).and_return nil
-      @search.stub!(:boosted_sites).and_return nil
+      @search.stub!(:boosted_contents).and_return nil
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil
       @search.stub!(:filter_setting).and_return nil

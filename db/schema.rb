@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110124181045) do
+ActiveRecord::Schema.define(:version => 20110125175354) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20110124181045) do
 
   add_index "auto_recalls", ["recall_id"], :name => "index_auto_recalls_on_recall_id"
 
-  create_table "boosted_sites", :force => true do |t|
+  create_table "boosted_contents", :force => true do |t|
     t.integer  "affiliate_id"
     t.string   "title",                                       :null => false
     t.string   "url",                                         :null => false
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(:version => 20110124181045) do
     t.datetime "updated_at"
   end
 
-  add_index "boosted_sites", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"
+  add_index "boosted_contents", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"
 
   create_table "calais_related_searches", :force => true do |t|
     t.string   "term"

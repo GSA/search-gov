@@ -30,7 +30,7 @@ class Search
                 :images,
                 :related_search,
                 :spelling_suggestion,
-                :boosted_sites,
+                :boosted_contents,
                 :spotlight,
                 :faqs,
                 :gov_forms,
@@ -139,7 +139,7 @@ class Search
   end
 
   def populate_additional_results(response)
-    self.boosted_sites = BoostedSite.search_for(query, affiliate, I18n.locale)
+    self.boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
     unless affiliate
       self.faqs = Faq.search_for(query, I18n.locale.to_s)
       if english_locale?
@@ -282,7 +282,7 @@ class Search
     modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
     modules << "FORM" unless self.gov_forms.nil? or self.gov_forms.total.zero?
     modules << "SPOT" unless self.spotlight.nil?
-    modules << "BOOS" unless self.boosted_sites.nil? or self.boosted_sites.total.zero?
+    modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
     RAILS_DEFAULT_LOGGER.info("[Search Impression] time: #{Time.now.to_formatted_s(:db)} , query: #{self.query}, modules: #{modules.inspect}")
   end
 

@@ -1,13 +1,13 @@
 - result_partial = result_partial_for(search)
 = spelling_suggestion(search, @affiliate)
-- if (search.boosted_sites && search.boosted_sites.total > 0)
+- if (search.boosted_contents && search.boosted_contents.total > 0)
   #boosted
-    - search.boosted_sites.hits(:verify => true).each_with_index do |hit, index|
-      - boosted_site_url = hit.instance.url
+    - search.boosted_contents.hits(:verify => true).each_with_index do |hit, index|
+      - boosted_content_url = hit.instance.url
       .searchresult{:id => "boostedresult#{index+1}"}
-        %h2= link_to highlight_hit(hit, :title), boosted_site_url
+        %h2= link_to highlight_hit(hit, :title), boosted_content_url
         %h3= highlight_hit(hit, :description)
-        %h3= link_to boosted_site_url, boosted_site_url
+        %h3= link_to boosted_content_url, boosted_content_url
 %a{:name => "content"}
 - if search.results.present?
   = results_summary(search.startrecord, search.endrecord, search.total, h(search.query))

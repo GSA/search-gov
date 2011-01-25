@@ -62,7 +62,7 @@ Feature: Search
     And I should not see "Some Unique Related Term"
     
   Scenario: Site visitor sees relevant boosted results for given search  
-    Given the following Boosted Sites exist:
+    Given the following Boosted Content entries exist:
       | title               | url                     | description                               | 
       | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      | 
       | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         | 
@@ -70,7 +70,7 @@ Feature: Search
     And the following Affiliates exist:
       | name             | contact_email         | contact_name        |
       | bar.gov          | aff@bar.gov           | John Bar            |
-    And the following Boosted Sites exist for the affiliate "bar.gov"
+    And the following Boosted Content entries exist for the affiliate "bar.gov"
       | title               | url                     | description                               |
       | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
       | Pelosi misspelling  | http://www.bar.gov/pel  | Synonyms file test works                  |
@@ -84,8 +84,8 @@ Feature: Search
     And I should not see "Our Tourism Page" 
     And I should not see "Bar Emergency Page"
     
-  Scenario: Site visitor does not see relevant boosted sites on Buscador
-    Given the following Boosted Sites exist:
+  Scenario: Site visitor does not see relevant boosted Content on Buscador
+    Given the following Boosted Content entries exist:
       | title                   | url                     | description                               | locale  |
       | Our Emergency Page      | http://www.aff.gov/911  | Updated information on the emergency      | en      |
       | FAQ Emergency Page      | http://www.aff.gov/faq  | More information on the emergency         | en      |

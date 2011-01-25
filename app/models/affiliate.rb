@@ -6,10 +6,10 @@ class Affiliate < ActiveRecord::Base
   belongs_to :owner, :class_name => 'User'
   has_and_belongs_to_many :users
   belongs_to :affiliate_template
-  has_many :boosted_sites, :dependent => :destroy
+  has_many :boosted_contents, :dependent => :destroy
   has_many :sayt_suggestions, :dependent => :destroy
   has_many :calais_related_searches, :dependent => :destroy
-  after_destroy :remove_boosted_sites_from_index
+  after_destroy :remove_boosted_contents_from_index
   before_save :set_default_affiliate_template
   after_create :add_owner_as_user
 
@@ -50,8 +50,8 @@ class Affiliate < ActiveRecord::Base
   
   private
 
-  def remove_boosted_sites_from_index
-    boosted_sites.each { |bs| bs.remove_from_index }
+  def remove_boosted_contents_from_index
+    boosted_contents.each { |bs| bs.remove_from_index }
   end
   
   def add_owner_as_user

@@ -1,11 +1,11 @@
-Feature: Boosted Sites
+Feature: Boosted Content
   In order to boost specific sites to the top of search results
   And admin
-  wants to create boosted sites
+  wants to create boosted Content
   
-  Scenario: Create a new Boosted Site
+  Scenario: Create a new Boosted Content entry
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And I am on the boosted sites admin page
+    And I am on the boosted contents admin page
     And I follow "Create New"
     And I fill in "Description" with "Test"
     And I fill in "Title" with "Test"
@@ -17,12 +17,12 @@ Feature: Boosted Sites
     Then I should be on the search page
     And I should see "Test" within "#boosted"
     
-  Scenario: Update a Boosted Site
+  Scenario: Update a Boosted Content entry
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Boosted Sites exist:
+    And the following Boosted Content entries exist:
     | description | title | url                 |
     | Test XYZ    | Test  | http://www.test.gov |
-    And I am on the boosted sites admin page
+    And I am on the boosted contents admin page
     And I follow "Edit"
     And I fill in "Description" with "Bananas"
     And I fill in "Title" with "Bananas"
@@ -40,12 +40,12 @@ Feature: Boosted Sites
     Then I should be on the search page
     And I should see "Bananas" within "#boosted"
   
-  Scenario: Delete a Boosted Site
+  Scenario: Delete a Boosted Content entry
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Boosted Sites exist:
+    And the following Boosted Content entries exist:
     | description | title | url                 |
     | Test XYZ    | Test  | http://www.test.gov |
-    And I am on the boosted sites admin page
+    And I am on the boosted contents admin page
     And I follow "Delete"
     When I am on the homepage
     And I fill in "query" with "test"
