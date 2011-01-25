@@ -85,6 +85,14 @@ module ApplicationHelper
     end
   end
 
+  def render_mobile_webtrends_code
+    if params[:locale] == 'es'
+      render :partial => 'shared/webtrends_mobile_spanish'
+    else
+      render :partial => 'shared/webtrends_mobile_english'
+    end
+  end
+
   def basic_header_navigation_for(cur_user)
     elements = []
     if cur_user
