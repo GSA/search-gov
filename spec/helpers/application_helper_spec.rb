@@ -14,6 +14,30 @@ describe ApplicationHelper do
     end
   end
 
+  describe "time_ago_in_words" do
+    it "should include 'ago'" do
+      time_ago_in_words(4.hours.ago).should == "about 4 hours ago"
+      time_ago_in_words(1.month.ago).should == "about 1 month ago"
+      time_ago_in_words(2.days.ago).should == "2 days ago"
+      time_ago_in_words(1.day.ago).should == "1 day ago"
+    end
+
+    context "es" do
+      before :each do
+        I18n.locale = :es
+      end
+      after :each do
+        I18n.locale = :en
+      end
+      it "should use the Aproximadamente form" do
+        time_ago_in_words(4.hours.ago).should == "aproximadamente desde hace 4 horas"
+        time_ago_in_words(1.month.ago).should == "aproximadamente desde hace un mes"
+        time_ago_in_words(2.days.ago).should == "desde hace 2 días"
+        time_ago_in_words(1.day.ago).should == "desde ayer"
+      end
+    end
+  end
+
   describe "#locale_dependent_background_color" do
     it "should default to bgcolor for English locale" do
       helper.locale_dependent_background_color.should == ApplicationHelper::BACKGROUND_COLORS[:en]
