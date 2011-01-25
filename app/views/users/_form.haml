@@ -1,25 +1,25 @@
 %table
   %tr
     %td
-      = form.label :email
-    %td
-      = form.text_field :email, :class => "text"
-  %tr
-    %td    
-      = form.label :contact_name
+      = form.label :contact_name, "Name*"
     %td
       = form.text_field :contact_name, :class => "text"
-  - if @user.is_affiliate_or_higher
+  %tr
+    %td
+      = form.label :organization_name, "Organization"
+    %td
+      = form.text_field :organization_name, :class => "text"
+  %tr
+    %td
+      = form.label :email, "Email*"
+    %td
+      = form.text_field :email, :class => "text"
+  - if !@user.new_record? && @user.is_affiliate_or_higher
     %tr
       %td
         = form.label :phone
       %td
         = form.text_field :phone, :class => "text"
-    %tr
-      %td
-        = form.label :organization_name
-      %td
-        = form.text_field :organization_name, :class => "text"
     %tr
       %td
         = form.label :address, "Organization address"
@@ -52,11 +52,26 @@
         = form.time_zone_select('time_zone', ActiveSupport::TimeZone.us_zones)      
   %tr
     %td
-      = form.label :password, form.object.new_record? ? 'Enter password' : "Change password"
+      = form.label :password, form.object.new_record? ? 'Password*' : "Change password"
     %td
       = form.password_field :password, :class => "text"
   %tr
     %td
-      = form.label :password_confirmation
+      = form.label :password_confirmation, form.object.new_record? ? "Password confirmation*" : "Password confirmation"
     %td
       = form.password_field :password_confirmation, :class => "text"
+  %tr
+    %td{:colspan => 2}
+      * Required
+  - if @user.new_record?
+    %tr
+      %td{:colspan => 2}
+        %span.loud
+          Select one:
+    %tr
+      %td{:colspan => 2}
+        = form.radio_button :is_affiliate, 1, {:checked => @user.is_affiliate?}
+        = form.label :is_affiliate_1, "I am a government employee or contractor.", :class => "text"
+        %br
+        = form.radio_button :is_affiliate, 0, {:checked => @user.is_developer?}
+        = form.label :is_affiliate_0, "I am not affiliated with a government agency.", :class => "text"

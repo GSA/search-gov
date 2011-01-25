@@ -60,4 +60,46 @@ describe UsersController do
       end
     end
   end
+
+  context "when not logged in" do
+    before do
+      @affiliate_user_attributes = {
+          :contact_name => "Some One",
+          :email => "unique_login@agency.gov",
+          :password => "password",
+          :password_confirmation => "password",
+          :is_affiliate => "1"
+      }
+    end
+
+    describe "do POST on create" do
+      before do
+        @user = stub_model(User, @affiliate_user_attributes)
+        User.should_receive(:new_affiliate_or_developer).and_return(@user)
+      end
+
+      it "should assign @user" do
+        @user.should_receive(:save)
+        post :create, :user => @affiliate_user_attributes
+        assigns[:user].should == @user
+      end
+
+      context "when the user fails to save" do
+        before do
+          @user.should_receive(:save).and_return(false)
+        end
+
+        it "should render login page on failure" do
+          post :create
+          response.should render_template("user_sessions/new")
+        end
+
+        it "should assign @user_session on failure" do
+          post :create
+          assigns[:user_session].should be_instance_of(UserSession)
+        end
+      end
+    end
+
+  end
 end

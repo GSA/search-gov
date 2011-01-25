@@ -1,11 +1,6 @@
 class User < ActiveRecord::Base
   validates_presence_of :email
-  validates_presence_of :phone, :if => :is_affiliate_or_higher
-  validates_presence_of :zip, :if => :is_affiliate_or_higher
   validates_presence_of :organization_name, :if => :is_affiliate_or_higher
-  validates_presence_of :address, :if => :is_affiliate_or_higher
-  validates_presence_of :state, :if => :is_affiliate_or_higher
-  validates_presence_of :time_zone, :if => :is_affiliate_or_higher
   validates_presence_of :contact_name
   validates_presence_of :api_key
   validates_uniqueness_of :api_key
@@ -22,10 +17,10 @@ class User < ActiveRecord::Base
   end
   
   class << self
-    def new_developer(params = {})
-      developer = User.new(params)
-      developer.is_affiliate = false
-      developer
+    def new_affiliate_or_developer(params = {})
+      user = User.new(params)
+      user.is_affiliate = params[:is_affiliate] == "1" ? true : false
+      user
     end
   end
 
@@ -41,7 +36,11 @@ class User < ActiveRecord::Base
   def is_affiliate_or_higher
     is_affiliate || is_affiliate_admin || is_analyst
   end
-  
+
+  def is_developer?
+    !is_affiliate_or_higher
+  end
+
   private
   
   def ping_admin

@@ -29,6 +29,9 @@ Feature: Program
     When I follow "See it in action"
     Then I should see "USASearch > Affiliate Program > See it in Action"
 
+    When I follow "Affiliate Signup"
+    Then I should see "Sign In to Use Our Services"
+
     When I follow "Affiliate Program" within ".admin-footer"
     Then I should be on the affiliates page
 
@@ -53,6 +56,9 @@ Feature: Program
     When I follow "Recalls API" within ".nav"
     Then I should be on the recalls api page
     And I should see "USASearch > API & Web Services > Recalls API"
+
+    When I follow "API Signup"
+    Then I should see "Sign In to Use Our Services"
 
   Scenario: Search.USA.gov link should be on the searchusagov page
     Given I am on the program welcome page

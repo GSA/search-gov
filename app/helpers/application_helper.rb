@@ -93,7 +93,6 @@ module ApplicationHelper
       elements << link_to("Logout", url_for_logout, :method => :delete)
     else
       elements << link_to("Login", url_for_login)
-      elements << link_to("Sign Up", new_account_path)
     end
     elements << link_to("Help Desk", "http://searchsupport.usa.gov/home", :target => "_blank")
     elements.join(" | ")

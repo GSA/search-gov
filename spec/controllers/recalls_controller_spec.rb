@@ -64,7 +64,7 @@ describe RecallsController do
     
     context "when requesting JSON results" do
       before do
-        @developer = User.new_developer(:email => 'developer@usa.gov', :contact_name => 'USA.gov Developer', :password => 'password', :password_confirmation => 'password')
+        @developer = User.new_affiliate_or_developer(:email => 'developer@usa.gov', :contact_name => 'USA.gov Developer', :password => 'password', :password_confirmation => 'password')
         @developer.save
       end
       

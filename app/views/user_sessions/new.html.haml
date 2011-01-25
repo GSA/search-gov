@@ -1,9 +1,22 @@
-= breadcrumbs([link_to("Affiliate Program", affiliates_path), "Login"])
-.span-15
+= breadcrumbs("Sign In to Use Our Services")
+%p
+  Access to our Affiliate Program, APIs, and web services requires authentication. Log in, or register for a new account below.
+.span-9.append-1
   - form_for @user_session, :url => user_session_path, :html => {:class=>"bordered"}  do |f|
     %h1
-      Login #{link_to "(register)", new_user_path, :class => "small"}
+      Log In
+    %p
+      Already have a USASearch account? Log in with your email address and password below.
     = f.error_messages(:header_message => nil, :class => "error")
-    = render :partial => 'form', :object => f
+    = render :partial => '/user_sessions/form', :object => f
     %p
       = link_to "Forgot your password?", new_password_reset_path
+
+.span-13
+  - form_for @user, :url => account_path, :html => {:class=>"bordered"} do |f|
+    %h1
+      Sign up
+    = f.error_messages(:header_message => nil, :class => "error")
+    = render :partial => "/users/form", :object => f
+    = f.submit "Register for a new account"
+

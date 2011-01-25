@@ -157,10 +157,9 @@ describe ApplicationHelper do
         content.should have_tag("a[href^=aprotocol]", "Login")
       end
 
-      it "should contain Login, Sign Up and Help Desk links" do
+      it "should contain Login and Help Desk links" do
         content = helper.basic_header_navigation_for(nil)
         content.should have_tag("a", "Login")
-        content.should have_tag("a", "Sign Up")
         content.should have_tag("a", "Help Desk")
         content.should_not have_tag("a", "My Account")
         content.should_not have_tag("a", "Logout")
@@ -179,7 +178,6 @@ describe ApplicationHelper do
       user = stub("User", :email => "user@fixtures.org")
       content = helper.basic_header_navigation_for(user)
       content.should_not have_tag("a", "Login")
-      content.should_not have_tag("a", "Sign Up")
       content.should have_tag("a", "Help Desk")
       content.should have_tag("a", "My Account")
       content.should have_tag("a", "Logout")

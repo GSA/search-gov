@@ -1,7 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resource :account, :controller => "users"
   map.resources :users
-  map.resources :developers
   map.resource :user_session
   map.resources :password_resets
   map.resources :affiliates, :controller => 'affiliates/home', :member => { :push_content_for => :post, :embed_code => :get }, :collection => { :home => :get, :how_it_works => :get, :demo => :get } do |affiliate|

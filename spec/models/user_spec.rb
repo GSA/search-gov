@@ -28,14 +28,9 @@ describe User do
   describe "when validating" do
     should_validate_presence_of :email
     should_validate_uniqueness_of :email
-    should_validate_presence_of :phone, :if => :is_affiliate_or_higher
-    should_validate_presence_of :zip, :if => :is_affiliate_or_higher
     should_validate_presence_of :organization_name, :if => :is_affiliate_or_higher
-    should_validate_presence_of :address, :if => :is_affiliate_or_higher
-    should_validate_presence_of :state, :if => :is_affiliate_or_higher
-    should_validate_presence_of :time_zone, :if => :is_affiliate_or_higher
     should_validate_presence_of :contact_name
-    
+
     should_have_and_belong_to_many :affiliates
 
     it "should create a new instance given valid attributes" do
@@ -83,12 +78,28 @@ describe User do
     end
   end
   
-  describe "#new_developer" do
-    it "should return a User with no affiliate, affiliate_admin or analyst privileges" do
-      developer = User.new_developer
-      developer.is_affiliate.should be_false
-      developer.is_affiliate_admin.should be_false
-      developer.is_analyst.should be_false
+  describe "#new_affiliate_or_developer" do
+    it "should return a User with affiliate privilege if is_affiliate is set to 1" do
+      user = User.new_affiliate_or_developer(:is_affiliate => "1")
+      user.is_affiliate_admin.should be_false
+      user.is_affiliate.should be_true
+      user.is_analyst.should be_false
+    end
+
+    it "should return a User without affiliate privilege if is_affiliate is set to 0" do
+      user = User.new_affiliate_or_developer(:is_affiliate => "0")
+      user.is_affiliate_admin.should be_false
+      user.is_affiliate.should be_false
+      user.is_analyst.should be_false
+    end
+  end
+
+  describe "#is_developer?" do
+    it "should return true when is_affiliate? and is_affiliate_admin? and is_analyst? are false" do
+      users(:affiliate_admin).is_developer?.should be_false
+      users(:affiliate_manager).is_developer?.should be_false
+      users(:analyst).is_developer?.should be_false
+      users(:developer).is_developer?.should be_true
     end
   end
 end
