@@ -251,11 +251,14 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get Code"
     Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Get Code"
-    Then I should see "Embed Search Code"
-    And I should see "Copy and paste the HTML code below to create a search box for aff.gov"
-    And I should see "English Version"
-    And I should see "Spanish Version"
-  
+    And I should see "The following is the HTML code for your search box form. Copy and paste this code into your page(s) where the search box should appear."
+    And I should see "Code for English-language sites"
+    And I should see "Code for Spanish-language sites"
+    And I should see "Do you want to have Type-ahead Search box on your home page and/or in your banner?"
+    And I should see "How To Implement Type-ahead Search"
+    When I follow "Type-ahead Search" within ".cross-promotion"
+    Then I should see "Add Type-ahead Search Suggestion"
+
   Scenario: Navigating to an Affiliate page for a particular Affiliate
     Given the following Affiliates exist:
       | name             | contact_email         | contact_name        |
