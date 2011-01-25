@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/boosted_site.rb</title>
+    <title>app/models/boosted_content.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/models/boosted_site.rb</h2>
+    <h2>app/models/boosted_content.rb</h2>
 
     
 
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-boosted_site_rb.html">app/models/boosted_site.rb</a></td>
+            <td class="left_align"><a href="app-models-boosted_content_rb.html">app/models/boosted_content.rb</a></td>
             <td class='right_align'><tt>61</tt></td>
             <td class='right_align'><tt>57</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
@@ -57,7 +57,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class BoostedSite &lt; ActiveRecord::Base</pre></td>
+            <td><pre><a name="line1">1</a> class BoostedContent &lt; ActiveRecord::Base</pre></td>
           </tr>
         
           
@@ -111,13 +111,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     string :affiliate_name do |boosted_site|</pre></td>
+            <td><pre><a name="line10">10</a>     string :affiliate_name do |boosted_content|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>       if boosted_site.affiliate_id.nil?</pre></td>
+            <td><pre><a name="line11">11</a>       if boosted_content.affiliate_id.nil?</pre></td>
           </tr>
         
           
@@ -129,13 +129,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       elsif Affiliate.find_by_id(boosted_site.affiliate_id)</pre></td>
+            <td><pre><a name="line13">13</a>       elsif Affiliate.find_by_id(boosted_content.affiliate_id)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>         boosted_site.affiliate.name</pre></td>
+            <td><pre><a name="line14">14</a>         boosted_content.affiliate.name</pre></td>
           </tr>
         
           
@@ -237,13 +237,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>   def self.process_boosted_site_xml_upload_for(affiliate, xml_file)</pre></td>
+            <td><pre><a name="line31">31</a>   def self.process_boosted_content_xml_upload_for(affiliate, xml_file)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>     existing = affiliate.boosted_sites</pre></td>
+            <td><pre><a name="line32">32</a>     existing = affiliate.boosted_contents</pre></td>
           </tr>
         
           
@@ -309,7 +309,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>           if matching = existing.detect { |boosted_site| boosted_site.url == info[:url] }</pre></td>
+            <td><pre><a name="line43">43</a>           if matching = existing.detect { |boosted_content| boosted_content.url == info[:url] }</pre></td>
           </tr>
         
           
@@ -363,13 +363,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>       RAILS_DEFAULT_LOGGER.warn &quot;Problem processing boosted site XML document: #{$!}&quot;</pre></td>
+            <td><pre><a name="line52">52</a>       RAILS_DEFAULT_LOGGER.warn &quot;Problem processing boosted Content XML document: #{$!}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>       Sunspot.index(affiliate.boosted_sites)</pre></td>
+            <td><pre><a name="line53">53</a>       Sunspot.index(affiliate.boosted_contents)</pre></td>
           </tr>
         
           
@@ -423,7 +423,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Jan 25 11:01:56 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Jan 25 11:50:42 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

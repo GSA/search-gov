@@ -105,7 +105,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>   has_many :boosted_sites, :dependent =&gt; :destroy</pre></td>
+            <td><pre><a name="line9">9</a>   has_many :boosted_contents, :dependent =&gt; :destroy</pre></td>
           </tr>
         
           
@@ -123,7 +123,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>   after_destroy :remove_boosted_sites_from_index</pre></td>
+            <td><pre><a name="line12">12</a>   after_destroy :remove_boosted_contents_from_index</pre></td>
           </tr>
         
           
@@ -369,13 +369,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>   def remove_boosted_sites_from_index</pre></td>
+            <td><pre><a name="line53">53</a>   def remove_boosted_contents_from_index</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>     boosted_sites.each { |bs| bs.remove_from_index }</pre></td>
+            <td><pre><a name="line54">54</a>     boosted_contents.each { |bs| bs.remove_from_index }</pre></td>
           </tr>
         
           
@@ -447,7 +447,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Jan 25 11:01:56 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Jan 25 11:50:41 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
