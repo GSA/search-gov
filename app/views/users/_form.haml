@@ -70,8 +70,8 @@
           Select one:
     %tr
       %td{:colspan => 2}
-        = form.radio_button :is_affiliate, 1, {:checked => @user.is_affiliate?}
-        = form.label :is_affiliate_1, "I am a government employee or contractor.", :class => "text"
+        = form.radio_button :government_affiliation, "1"
+        = form.label :government_affiliation_1, "I am a government employee or contractor.", :class => "text"
         %br
-        = form.radio_button :is_affiliate, 0, {:checked => @user.is_developer?}
-        = form.label :is_affiliate_0, "I am not affiliated with a government agency.", :class => "text"
+        = form.radio_button :government_affiliation, "0"
+        = form.label :government_affiliation_0, "I am not affiliated with a government agency.", :class => "text"
