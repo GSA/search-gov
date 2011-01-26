@@ -3,6 +3,18 @@ Feature: Affiliate Superfresh Interface
   As an affiliate
   I want to see and manage my Superfresh URLs
 
+  Scenario: Visiting my superfresh page
+    Given the following Affiliates exist:
+      | name             | contact_email         | contact_name        |
+      | aff.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Add to Bing"
+    Then I should see "Learn more about our Add to Bing™ feature by going to our new section in the Help Desk"
+    And I should see "Another Way to Highlight Content"
+    When I follow "Boosted Content" within ".right-sidebar"
+    Then I should see "aff.gov > Boosted Content"
+
   Scenario: Submit a URL for on-demand indexing
     Given the following Affiliates exist:
       | name             | contact_email         | contact_name        |
