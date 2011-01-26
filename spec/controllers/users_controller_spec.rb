@@ -62,26 +62,34 @@ describe UsersController do
   end
 
   context "when not logged in" do
-    before do
-      @affiliate_user_attributes = {
-          :contact_name => "Some One",
-          :email => "unique_login@agency.gov",
-          :password => "password",
-          :password_confirmation => "password",
-          :is_affiliate => "1"
-      }
-    end
-
     describe "do POST on create" do
       before do
-        @user = stub_model(User, @affiliate_user_attributes)
-        User.should_receive(:new_affiliate_or_developer).and_return(@user)
+        @user = stub_model(User)
+        User.should_receive(:new).and_return(@user)
       end
 
       it "should assign @user" do
         @user.should_receive(:save)
-        post :create, :user => @affiliate_user_attributes
+        post :create
         assigns[:user].should == @user
+      end
+
+      context "when a user saves successfully" do
+        before do
+          @user.should_receive(:save).and_return(true)
+        end
+
+        it "should redirect to affiliate home for affiliate user" do
+          @user.should_receive(:is_affiliate?).and_return(true)
+          post :create
+          response.should redirect_to(home_affiliates_path)
+        end
+
+        it "should redirect to my account page for non affiliate user" do
+          @user.should_receive(:is_affiliate?).and_return(false)
+          post :create
+          response.should redirect_to(account_path)
+        end
       end
 
       context "when the user fails to save" do

@@ -3,7 +3,7 @@ Feature: Users
   Scenario: Logged-in user visits account page
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the user account page
-    Then I should see "USASearch > Affiliate Program > My Account"
+    Then I should see "USASearch > My Account"
     And I should see "API Key"
     And I should see "Your API key is:"
     And I should see "Account Profile"
@@ -21,15 +21,17 @@ Feature: Users
   Scenario: Registering as a new affiliate user who is a government employee or contractor
     Given I am on the login page
     Then I should see "USASearch > Sign In to Use Our Services"
+    And I should see "Register for a New Account"
+    And the "I am a government employee or contractor" checkbox should not be checked
+    And the "I am not affiliated with a government agency" checkbox should not be checked
     When I fill in the following within "#new_user":
     | Email                         | lorem.ipsum@agency.gov      |
     | Name                          | Lorem Ipsum                 |
-    | Organization                  | The Agency                  |
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I choose "I am a government employee or contractor"
     And I press "Register for a new account"
-    Then I should be on the user account page
+    Then I should be on the affiliate admin page
     And I should see "Thank you for registering for USA.gov Search Services"
     And I should see "Affiliate Center"
     And I should see "Add New Affiliate"
@@ -40,7 +42,6 @@ Feature: Users
     When I fill in the following within "#new_user":
     | Email                         | lorem.imsum@notagency.com   |
     | Name                          | Lorem Ipsum                 |
-    | Organization                  | Not Agency                  |
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I choose "I am not affiliated with a government agency"
@@ -60,7 +61,7 @@ Feature: Users
     | Password confirmation         | huge_secret                 |
     And I choose "I am a government employee or contractor"
     And I press "Register for a new account"
-    Then I should be on the user account page
+    Then I should be on the affiliate admin page
     And I should see "Thank you for registering for USA.gov Search Services"
 
   Scenario: Failing registration as a new affiliate user
@@ -68,6 +69,16 @@ Feature: Users
     And I press "Register for a new account"
     Then I should be on the account page
     And I should see "can't be blank"
+
+  Scenario: Registering without selecting government affiliation
+    Given I am on the login page
+    When I fill in the following within "#new_user":
+    | Email                         | lorem.imsum@notagency.com   |
+    | Name                          | Lorem Ipsum                 |
+    | Password                      | huge_secret                 |
+    | Password confirmation         | huge_secret                 |
+    And I press "Register for a new account"
+    Then I should see "An option for government affiliation must be selected"
 
   Scenario: Visiting edit my account profile page as an affiliate user
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

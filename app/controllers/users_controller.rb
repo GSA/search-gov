@@ -4,10 +4,14 @@ class UsersController < SslController
   before_filter :require_user, :only => [:show, :edit, :update]
 
   def create
-    @user = User.new_affiliate_or_developer(params[:user])
+    @user = User.new(params[:user])
     if @user.save
       flash[:success] = "Thank you for registering for USA.gov Search Services"
-      redirect_to account_path
+      if @user.is_affiliate?
+        redirect_to home_affiliates_path
+      else
+        redirect_to account_path
+      end
     else
       @user_session = UserSession.new
       render :template => "user_sessions/new"

@@ -15,20 +15,30 @@ describe User do
       :city=> "Reston",
       :state=> "VA",
       :zip=> "20022",
-      :organization_name=> "Agency"
+      :organization_name=> "Agency",
+      :government_affiliation => "1"
     }
+
     @valid_developer_attributes = {
       :email => "some.guy@usa.gov",
       :contact_name => "Some Guy",
       :password => "password",
-      :password_confirmation => "password"
+      :password_confirmation => "password",
+      :government_affiliation => "0"
+    }
+
+    @valid_affiliate_attributes = {
+      :email => "some.guy@usa.gov",
+      :contact_name => "Some Guy",
+      :password => "password",
+      :password_confirmation => "password",
+      :government_affiliation => "1"
     }
   end
 
   describe "when validating" do
     should_validate_presence_of :email
     should_validate_uniqueness_of :email
-    should_validate_presence_of :organization_name, :if => :is_affiliate_or_higher
     should_validate_presence_of :contact_name
 
     should_have_and_belong_to_many :affiliates
@@ -36,11 +46,17 @@ describe User do
     it "should create a new instance given valid attributes" do
       User.create!(@valid_attributes)
     end
-    
-    it "should create a user with a minimal set of attributes if the user is a developer" do
+
+    it "should create a user with a minimal set of attributes if the user is an affiliate" do
       developer_user = User.new(@valid_developer_attributes)
-      developer_user.is_affiliate = false
       developer_user.save.should be_true
+      developer_user.is_developer?.should be_true
+    end
+
+    it "should create a user with a minimal set of attributes if the user is a developer" do
+      affiliate_user = User.new(@valid_affiliate_attributes)
+      affiliate_user.save.should be_true
+      affiliate_user.is_developer?.should be_false
     end
     
     it "should send the admins a notification email about the new user" do
@@ -78,22 +94,6 @@ describe User do
     end
   end
   
-  describe "#new_affiliate_or_developer" do
-    it "should return a User with affiliate privilege if is_affiliate is set to 1" do
-      user = User.new_affiliate_or_developer(:is_affiliate => "1")
-      user.is_affiliate_admin.should be_false
-      user.is_affiliate.should be_true
-      user.is_analyst.should be_false
-    end
-
-    it "should return a User without affiliate privilege if is_affiliate is set to 0" do
-      user = User.new_affiliate_or_developer(:is_affiliate => "0")
-      user.is_affiliate_admin.should be_false
-      user.is_affiliate.should be_false
-      user.is_analyst.should be_false
-    end
-  end
-
   describe "#is_developer?" do
     it "should return true when is_affiliate? and is_affiliate_admin? and is_analyst? are false" do
       users(:affiliate_admin).is_developer?.should be_false

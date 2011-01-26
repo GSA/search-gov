@@ -1,4 +1,6 @@
 = breadcrumbs("Sign In to Use Our Services")
+%h1
+  Sign In to Use Our Services
 %p
   Access to our Affiliate Program, APIs, and web services requires authentication. Log in, or register for a new account below.
 .span-9.append-1
@@ -15,7 +17,7 @@
 .span-13
   - form_for @user, :url => account_path, :html => {:class=>"bordered"} do |f|
     %h1
-      Sign up
+      Register for a New Account
     = f.error_messages(:header_message => nil, :class => "error")
     = render :partial => "/users/form", :object => f
     = f.submit "Register for a new account"

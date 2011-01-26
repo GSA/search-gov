@@ -11,7 +11,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :city => "Reston",
       :state => "VA",
       :zip => "20022",
-      :organization_name=> "Agency"
+      :organization_name=> "Agency",
+      :government_affiliation => "1"
     }
     user = User.find_by_email(hash["contact_email"]) || User.create!( valid_options )
     user.update_attribute(:is_affiliate, true)

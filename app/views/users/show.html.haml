@@ -1,4 +1,4 @@
-= breadcrumbs([link_to("Affiliate Program", affiliates_path), "My Account"])
+= breadcrumbs("My Account")
 %h1
   My Account
 .span-17
@@ -18,17 +18,17 @@
         Contact Name:
       %td
         &= @user.contact_name
+    %tr
+      %td{:class=>"label"}
+        Organization Name:
+      %td
+        &= @user.organization_name
     - if @user.is_affiliate_or_higher
       %tr
         %td{:class=>"label"}
           Time Zone:
         %td
           &= @user.time_zone
-      %tr
-        %td{:class=>"label"}
-          Organization Name:
-        %td
-          &= @user.organization_name
       %tr
         %td{:class=>"label"}
           Address:
