@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110125175354) do
+ActiveRecord::Schema.define(:version => 20110125194002) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20110125175354) do
   end
 
   add_index "affiliates_users", ["affiliate_id", "user_id"], :name => "index_affiliates_users_on_affiliate_id_and_user_id", :unique => true
+  add_index "affiliates_users", ["user_id"], :name => "index_affiliates_users_on_user_id"
 
   create_table "auto_recalls", :force => true do |t|
     t.integer  "recall_id"
@@ -315,6 +316,8 @@ ActiveRecord::Schema.define(:version => 20110125175354) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "superfresh_urls", ["affiliate_id"], :name => "index_superfresh_urls_on_affiliate_id"
 
   create_table "top_forms", :force => true do |t|
     t.string   "name"
