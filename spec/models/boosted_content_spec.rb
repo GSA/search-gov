@@ -23,6 +23,19 @@ describe BoostedContent do
     it "should default the locale to 'en'" do
       BoostedContent.create!(@valid_attributes).locale.should == 'en'
     end
+
+    it "should validate unique url" do
+      BoostedContent.create!(@valid_attributes)
+      duplicate = BoostedContent.new(@valid_attributes)
+      duplicate.should_not be_valid
+      duplicate.errors[:url].should =~ /already been boosted/
+    end
+
+    it "should allow a duplicate url for a different affiliate" do
+      BoostedContent.create!(@valid_attributes)
+      duplicate = BoostedContent.new(@valid_attributes.merge(:affiliate => affiliates(:basic_affiliate)))
+      duplicate.should be_valid
+    end
   end
   
   context "when the affiliate associated with a particular Boosted Content is destroyed" do

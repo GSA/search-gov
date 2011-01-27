@@ -1,8 +1,11 @@
 class BoostedContent < ActiveRecord::Base
   require 'rexml/document'
-  validates_presence_of :title, :url, :description, :locale
-  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES
   belongs_to :affiliate
+
+  validates_presence_of :title, :url, :description, :locale
+  validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id"
+  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES
+
   after_save :sunspot_index
 
   searchable :auto_index => false do
@@ -29,7 +32,11 @@ class BoostedContent < ActiveRecord::Base
   end
 
   def self.process_boosted_content_xml_upload_for(affiliate, xml_file)
-    existing = affiliate.boosted_contents
+    existing = affiliate.boosted_contents.inject({}) do |hash, bc|
+      hash[bc.url] = bc
+      hash
+    end
+
     begin
       doc=REXML::Document.new(xml_file.read)
       transaction do
@@ -40,7 +47,7 @@ class BoostedContent < ActiveRecord::Base
             :description => entry.elements["description"].first.to_s,
             :affiliate => affiliate
           }
-          if matching = existing.detect { |boosted_content| boosted_content.url == info[:url] }
+          if matching = existing[info[:url]]
             matching.update_attributes(info)
           else
             create!(info)
