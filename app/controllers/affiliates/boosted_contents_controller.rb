@@ -43,6 +43,12 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
     redirect_to new_affiliate_boosted_content_path
   end
 
+  def destroy_all
+    @affiliate.boosted_contents.delete_all
+    flash[:success] = "All Boosted Content successfully deleted"
+    redirect_to new_affiliate_boosted_content_path
+  end
+
   def bulk
     if BoostedContent.process_boosted_content_xml_upload_for(@affiliate, params[:xml_file])
       flash[:success] = "Boosted Content entries uploaded successfully for affiliate '#{@affiliate.name}'"

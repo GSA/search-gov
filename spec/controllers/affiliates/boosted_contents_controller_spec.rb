@@ -160,11 +160,11 @@ describe Affiliates::BoostedContentsController do
       @affiliate = affiliates(:basic_affiliate)
       UserSession.create(@affiliate.owner)
       @original_max_boosted_content = Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT
-      Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT = 2
+      silently{Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT = 2}
     end
 
     after :each do
-      Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT = @original_max_boosted_content
+      silently{Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT = @original_max_boosted_content}
     end
 
     it "should not set the bulk content variable if there are too many (show count instead)" do
@@ -188,6 +188,17 @@ describe Affiliates::BoostedContentsController do
     end
   end
 
-  describe "bulk delete" do
+  describe "delete all" do
+    it "should delete all BoostedContent and redirect to new" do
+      affiliate = affiliates(:basic_affiliate)
+      UserSession.create(affiliate.owner)
+      3.times { |i| affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url#{i}.com") }
+
+      post :destroy_all, :affiliate_id => affiliate.to_param
+
+      response.should redirect_to(new_affiliate_boosted_content_path)
+
+      affiliate.reload.boosted_contents.should be_empty
+    end
   end
 end

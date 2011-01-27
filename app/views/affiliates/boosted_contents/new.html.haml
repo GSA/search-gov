@@ -21,11 +21,15 @@
 
     #edit_delete_current_entries
       .header-box
+        = link_to(content_tag(:button, "Delete All"), destroy_all_affiliate_boosted_contents_path(@affiliate), :method => :delete, :confirm => "Are you sure you want to delete all of your Boosted Content?\nThis action can not be undone.", :style => "float: right;")
         ="Edit / Delete Current Boosted Entries"
       - if @boosted_content_count == 0
         .content-box= "Affiliate #{@affiliate.name} has no Boosted Content"
       - elsif @boosted_contents.empty?
-        .content-box= "Affiliate #{@affiliate.name} has #{@boosted_content_count} Boosted Content entries."
+        .content-box
+          %p= "Affiliate #{@affiliate.name} has #{@boosted_content_count} Boosted Content entries."
+          %p= "You can individually manage up to #{Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT} entries."
+          Please use the Delete All and Bulk Upload features to edit your entries.
       - else
         %table.admin-table#boosted_contents
           - @affiliate.boosted_contents.each do |boosted_content|
