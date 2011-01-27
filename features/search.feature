@@ -74,7 +74,7 @@ Feature: Search
       | title               | url                     | description                               |
       | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
       | Pelosi misspelling  | http://www.bar.gov/pel  | Synonyms file test works                  |
-      | all about agencies  | http://www.bar.gov/pel  | Stemming works                            |
+      | all about agencies  | http://www.bar.gov/pe2  | Stemming works                            |
     And I am on the homepage
     And I fill in "query" with "emergency"
     And I press "Search"
