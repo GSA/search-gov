@@ -3,9 +3,12 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   before_filter :setup_affiliate
   before_filter :find_boosted_content, :only => [:edit, :update, :destroy]
 
+  MAX_DISPLAYED_BOOSTED_CONTENT = 100
+
   def new
     @title = "Boosted Content - "
     @boosted_content = @affiliate.boosted_contents.new
+    load_boosted_contents
   end
 
   def edit
@@ -29,6 +32,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
       redirect_to new_affiliate_boosted_content_path
     else
       flash[:error] = "There was a problem saving your Boosted Content entry"
+      load_boosted_contents
       render :action => :new
     end
   end
@@ -42,17 +46,20 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   def bulk
     if BoostedContent.process_boosted_content_xml_upload_for(@affiliate, params[:xml_file])
       flash[:success] = "Boosted Content entries uploaded successfully for affiliate '#{@affiliate.name}'"
-      redirect_to new_affiliate_boosted_content_path
     else
       flash[:error] = "Your XML document could not be processed. Please check the format and try again."
-      @boosted_content = @affiliate.boosted_contents.new
-      render :action => 'new'
     end
+    redirect_to new_affiliate_boosted_content_path
   end
 
   private
   def find_boosted_content
     @boosted_content = BoostedContent.find(params[:id])
+  end
+
+  def load_boosted_contents
+    @boosted_content_count = @affiliate.boosted_contents.count
+    @boosted_contents = @boosted_content_count > MAX_DISPLAYED_BOOSTED_CONTENT ? [] : @affiliate.boosted_contents
   end
 
 end

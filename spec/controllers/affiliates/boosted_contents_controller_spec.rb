@@ -66,13 +66,16 @@ describe Affiliates::BoostedContentsController do
       end
 
       it "should render if errors" do
-        post :create, :affiliate_id => @affiliate.to_param, :boosted_content => {:url => "a url", :description => "a description"}
+        existing_boosted_content = @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
 
+        post :create, :affiliate_id => @affiliate.to_param, :boosted_content => {:url => "a url", :description => "a description"}
         response.should render_template(:new)
+
         @affiliate.reload
-        @affiliate.boosted_contents.length.should == 0
+        @affiliate.boosted_contents.length.should == 1
 
         assigns[:boosted_content].errors[:title].should == "can't be blank"
+        assigns[:boosted_contents].should == [existing_boosted_content]
       end
 
       it "should ?? if adding a duplicate url"
@@ -141,12 +144,50 @@ describe Affiliates::BoostedContentsController do
     end
 
     it "should notify if errors" do
+      existing_boosted_content = @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
+
       BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(@affiliate, @xml).and_return(false)
 
       post :bulk, :affiliate_id => @affiliate.to_param, :xml_file => @xml
 
-      response.should render_template(:new)
+      response.should redirect_to(new_affiliate_boosted_content_path)
       flash[:error].should =~ /could not be processed/
     end
+  end
+
+  describe "lots of bulk content" do
+    before :each do
+      @affiliate = affiliates(:basic_affiliate)
+      UserSession.create(@affiliate.owner)
+      @original_max_boosted_content = Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT
+      Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT = 2
+    end
+
+    after :each do
+      Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT = @original_max_boosted_content
+    end
+
+    it "should not set the bulk content variable if there are too many (show count instead)" do
+      3.times { |i| @affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url#{i}.com") }
+
+      get :new, :affiliate_id => @affiliate.to_param
+      response.should be_success
+
+      assigns(:boosted_content_count).should == 3
+      assigns(:boosted_contents).should be_empty
+    end
+
+    it "should set the bulk content variable if there are too many (show count instead)" do
+      boosted_content = @affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url.com")
+
+      get :new, :affiliate_id => @affiliate.to_param
+      response.should be_success
+
+      assigns(:boosted_content_count).should == 1
+      assigns(:boosted_contents).should == [boosted_content]
+    end
+  end
+
+  describe "bulk delete" do
   end
 end

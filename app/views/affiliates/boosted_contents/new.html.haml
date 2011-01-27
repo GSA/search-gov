@@ -22,8 +22,10 @@
     #edit_delete_current_entries
       .header-box
         ="Edit / Delete Current Boosted Entries"
-      - if @affiliate.boosted_contents.empty?
+      - if @boosted_content_count == 0
         .content-box= "Affiliate #{@affiliate.name} has no Boosted Content"
+      - elsif @boosted_contents.empty?
+        .content-box= "Affiliate #{@affiliate.name} has #{@boosted_content_count} Boosted Content entries."
       - else
         %table.admin-table#boosted_contents
           - @affiliate.boosted_contents.each do |boosted_content|
