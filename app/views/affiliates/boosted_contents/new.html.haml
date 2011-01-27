@@ -25,14 +25,18 @@
         ="Edit / Delete Current Boosted Entries"
       - if @boosted_content_count == 0
         .content-box= "Affiliate #{@affiliate.name} has no Boosted Content"
-      - elsif @boosted_contents.empty?
-        .content-box
-          %p= "Affiliate #{@affiliate.name} has #{@boosted_content_count} Boosted Content entries."
-          %p= "You can individually manage up to #{Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT} entries."
-          Please use the Delete All and Bulk Upload features to edit your entries.
       - else
         %table.admin-table#boosted_contents
-          - @affiliate.boosted_contents.each do |boosted_content|
+          - if @boosted_contents.length < @boosted_content_count
+            %tr
+              %td{:colspan => 5}
+                = "Affiliate #{@affiliate.name} has #{@boosted_content_count} Boosted Content entries."
+                %br
+                = "Displayed below are the most recent #{Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX} entries."
+                %br
+                Please use the Delete All and Bulk Upload features to edit the rest of the entries.
+
+          - @boosted_contents.each do |boosted_content|
             %tr{:class => cycle('even', 'odd')}
               %td= boosted_content.title
               %td= boosted_content.url

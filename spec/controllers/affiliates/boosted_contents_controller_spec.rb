@@ -144,7 +144,7 @@ describe Affiliates::BoostedContentsController do
     end
 
     it "should notify if errors" do
-      existing_boosted_content = @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
+      @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
 
       BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(@affiliate, @xml).and_return(false)
 
@@ -159,32 +159,39 @@ describe Affiliates::BoostedContentsController do
     before :each do
       @affiliate = affiliates(:basic_affiliate)
       UserSession.create(@affiliate.owner)
-      @original_max_boosted_content = Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT
-      silently{Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT = 2}
+      @original_max = Affiliates::BoostedContentsController::MAX_TO_DISPLAY
+      @original_to_display = Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX
+      silently do
+        Affiliates::BoostedContentsController::MAX_TO_DISPLAY = 3
+        Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX = 2
+      end
     end
 
     after :each do
-      silently{Affiliates::BoostedContentsController::MAX_DISPLAYED_BOOSTED_CONTENT = @original_max_boosted_content}
+      silently do
+        Affiliates::BoostedContentsController::MAX_TO_DISPLAY = @original_max_boosted_content
+        Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX = @original_to_display
+      end
     end
 
-    it "should not set the bulk content variable if there are too many (show count instead)" do
-      3.times { |i| @affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url#{i}.com") }
+    it "should load limited content if the total exceeds the max" do
+      boosted_contents = (0..3).collect { |i| @affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url#{i}.com") }
+
+      get :new, :affiliate_id => @affiliate.to_param
+      response.should be_success
+
+      assigns(:boosted_content_count).should == 4
+      assigns(:boosted_contents).should == [boosted_contents[3], boosted_contents[2]]
+    end
+
+    it "load all if below the max" do
+      boosted_contents = (0..2).collect { |i| @affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url#{i}.com") }
 
       get :new, :affiliate_id => @affiliate.to_param
       response.should be_success
 
       assigns(:boosted_content_count).should == 3
-      assigns(:boosted_contents).should be_empty
-    end
-
-    it "should set the bulk content variable if there are too many (show count instead)" do
-      boosted_content = @affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url.com")
-
-      get :new, :affiliate_id => @affiliate.to_param
-      response.should be_success
-
-      assigns(:boosted_content_count).should == 1
-      assigns(:boosted_contents).should == [boosted_content]
+      assigns(:boosted_contents).should =~ boosted_contents
     end
   end
 

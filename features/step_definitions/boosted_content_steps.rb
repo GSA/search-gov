@@ -1,9 +1,8 @@
 Given /^the following Boosted Content entries exist for the affiliate "([^\"]*)"$/ do |aff_name, table|
   affiliate = Affiliate.find_by_name aff_name
   sites = table.hashes.collect do |hash|
-    BoostedContent.new(:url => hash["url"], :description => hash["description"], :title => hash["title"])
+    BoostedContent.create!(:url => hash["url"], :description => hash["description"], :title => hash["title"], :affiliate => affiliate)
   end
-  affiliate.boosted_contents << sites
   Sunspot.index(sites) # because BoostedContent has auto indexing turned off for saves/creates
 end
 

@@ -62,7 +62,7 @@ Feature: Boosted Content
       | title               | url                     | description                               |
       | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
       | Pelosi misspelling  | http://www.bar.gov/pel  | Synonyms file test works                  |
-      | all about agencies  | http://www.bar.gov/pel  | Stemming works                            |
+      | all about agencies  | http://www.bar.gov/pe2  | Stemming works                            |
     When I go to aff.gov's search page
     And I fill in "query" with "emergency"
     And I submit the search form

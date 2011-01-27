@@ -3,7 +3,8 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   before_filter :setup_affiliate
   before_filter :find_boosted_content, :only => [:edit, :update, :destroy]
 
-  MAX_DISPLAYED_BOOSTED_CONTENT = 100
+  MAX_TO_DISPLAY = 100
+  NUMBER_TO_DISPLAY_IF_ABOVE_MAX = 10
 
   def new
     @title = "Boosted Content - "
@@ -65,7 +66,9 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
 
   def load_boosted_contents
     @boosted_content_count = @affiliate.boosted_contents.count
-    @boosted_contents = @boosted_content_count > MAX_DISPLAYED_BOOSTED_CONTENT ? [] : @affiliate.boosted_contents
+    @boosted_contents = @boosted_content_count > MAX_TO_DISPLAY ?
+        @affiliate.boosted_contents.find(:all, :limit => NUMBER_TO_DISPLAY_IF_ABOVE_MAX, :order => "updated_at desc, id desc") :
+        @affiliate.boosted_contents
   end
 
 end
