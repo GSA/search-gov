@@ -1,7 +1,10 @@
 = form.hidden_field :affiliate_template_id
 %dl
-  %dt= form.label :name, "Name of new site search"
-  %dd= form.text_field :name, :class => "text"
+  %dt= form.label :display_name, "Site name"
+  %dd= form.text_field :display_name, :class => "text"
+  - unless @affiliate.new_record?
+    %dt= form.label :name, "HTTP parameter site name (no spaces allowed)"
+    %dd= form.text_field :name, :class => "text"
   %dt= form.label :website, "Your Website URL (www.example.gov)"
   %dd= form.text_field :website, :class => "text"
   %dt= form.label :staged_domains, "Domains (one per line)"

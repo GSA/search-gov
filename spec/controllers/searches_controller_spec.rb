@@ -135,7 +135,7 @@ describe SearchesController do
     should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'
 
     it "should set an affiliate page title" do
-      @page_title.should == "Search results for #{@affiliate.name}: #{@search.query}"
+      @page_title.should == "Search results for #{@affiliate.display_name}: #{@search.query}"
     end
 
     it "should render the header in the response" do

@@ -101,7 +101,7 @@ describe Affiliates::AnalyticsController do
 
           it "should display the affiliate name" do
             get :index, :affiliate_id => @user.affiliates.first.id
-            response.should contain(/#{@user.affiliates.first.name}/)
+            response.should contain(/#{@user.affiliates.first.display_name}/)
           end
 
           it "should establish an AWS connection" do
@@ -199,7 +199,7 @@ describe Affiliates::AnalyticsController do
 
           it "should display the affiliate name" do
             get :monthly_reports, :affiliate_id => @user.affiliates.first.id
-            response.should contain(/#{@user.affiliates.first.name}/)
+            response.should contain(/#{@user.affiliates.first.display_name}/)
           end
 
           it "should establish an AWS connection" do
