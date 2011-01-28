@@ -78,7 +78,16 @@ describe Affiliates::BoostedContentsController do
         assigns[:boosted_contents].should == [existing_boosted_content]
       end
 
-      it "should ?? if adding a duplicate url"
+      it "should render new and flash an error if adding a duplicate url" do
+        @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
+
+        post :create, :affiliate_id => @affiliate.to_param, :boosted_content => {:url => "existing url", :title => "new title", :description => "a description"}
+
+        response.should render_template(:new)
+
+        assigns[:boosted_content].errors[:url].should == "has already been boosted"
+        flash[:error].should =~ /problem/
+      end
 
     end
   end
@@ -110,7 +119,16 @@ describe Affiliates::BoostedContentsController do
     end
 
 
-    it "should ?? if updating to a duplicate url"
+    it "should alert error and render edit if updating to a duplicate url" do
+      @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
+
+      post :update, :affiliate_id => @affiliate.to_param, :id => @boosted_content.to_param, :boosted_content => {:url => "existing url", :title => "new title", :description => "a description"}
+
+      response.should render_template(:edit)
+
+      assigns[:boosted_content].errors[:url].should == "has already been boosted"
+      flash[:error].should =~ /problem/
+    end
 
   end
 
