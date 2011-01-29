@@ -69,43 +69,46 @@
     :font-size 1.2em
 
 
-=border-radius
-  :-webkit-border-radius 8px 8px
-  :-moz-border-radius 8px / 8px
-  :border-radius 8px / 8px
-
-=vertical-gradient(!from, !to)
-  :background = -webkit-gradient(linear, 0% 30%, 0% 100%, from(!from), to(!to))
-  :background = -moz-linear-gradient(0% 30% 270deg,!from, !to)
-
-
 #popular_forms
   :margin 20px 0
   :overflow hidden
   :clear both
   :border 2px solid #DDD
-  +border-radius
+  :-webkit-border-radius 8px 8px
+  :-moz-border-radius 8px / 8px
+  :border-radius 8px / 8px
   h2
     :color #755224
-    :font-size 15px
+    :font-size 1.3em
     :font-weight bold
     :text-transform uppercase
-    :margin 10px 0
+    :margin 10px 0 0 0
     :padding 0 20px 10px 20px
-    +vertical-gradient(#FFF, #DDD)
+    :background = -webkit-gradient(linear, 0% 30%, 0% 100%, from(#FFF), to(#D2D2D2))
+    :background = -moz-linear-gradient(0% 30% 270deg, #FFF, #D2D2D2)
   .top-forms-column
-    :margin-right 0
-    h3
-      :font-weight bold
-      :font-size 14px
-      :margin-bottom 5px
-      :color #022945
-    ul,ol
-      :padding 0 0 0 15px
-      :font-size 12px
-    a
-      :color #25496B
-      :font-weight bold
-      :text-decoration none
-    a:hover
-      :text-decoration underline
+    :margin 0 0 10px 0
+    :background -moz-linear-gradient(top, #FFFFFF 0%, #D2D2D2 30%, #D2D2D2 70%, #FFFFFF 100%)
+    :background -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFFFFF), color-stop(50%,#D2D2D2), color-stop(100%,#FFFFFF))
+    :padding-right 1px
+    .top-forms-column-content
+      :padding-bottom 10px
+      :padding-top 20px
+      :background-color white
+      h3
+        :font-weight bold
+        :font-size 1.2em
+        :margin 0 0 5px 0
+        :color #022945
+      ul,ol
+        :padding 0 0 0 15px
+        :font-size 1em
+      a
+        :color #25496B
+        :font-weight bold
+        :text-decoration none
+      a:hover
+        :text-decoration underline
+    &#top-forms-column-3
+      :background none
+      :padding-right none

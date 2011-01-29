@@ -14,10 +14,11 @@
       %h2 Popular Forms
       - @top_forms.each_with_index do |top_forms_column, column_index|
         - unless top_forms_column.nil?
-          .prepend-2.span-6.top-forms-column{:id => "top-forms-column-#{column_index + 1}"}
-            - if top_forms_column.first
-              %h3= top_forms_column.first.name
-              %ul
-                - top_forms_column[1..-1].each do |top_form|
-                  %li
-                    = link_to top_form.name, top_form.url
+          .span-8.top-forms-column{:id => "top-forms-column-#{column_index + 1}"}
+            .prepend-2.append-2.top-forms-column-content
+              - if top_forms_column.first
+                %h3= top_forms_column.first.name
+                %ul
+                  - top_forms_column[1..-1].each do |top_form|
+                    %li
+                      = link_to top_form.name, top_form.url
