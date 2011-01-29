@@ -1,7 +1,7 @@
 .boosted-sites.span-24
   = affiliate_center_breadcrumbs([link_to(@affiliate.name, affiliate_path(@affiliate)), "Boosted Content"])
 
-  .span-17.append-1
+  .span-17.append-1.last
     %h1 Boosted Content
     %p
       Boost content to make specific pages appear above the main search results displayed on your pages.
@@ -27,21 +27,26 @@
         .content-box= "Affiliate #{@affiliate.name} has no Boosted Content"
       - else
         %table.admin-table#boosted_contents
-          - if @boosted_contents.length < @boosted_content_count
-            %tr
-              %td{:colspan => 5}
+          %tr
+            %td{:colspan => 5}
+              - if @boosted_contents.length < @boosted_content_count
                 = "Affiliate #{@affiliate.name} has #{@boosted_content_count} Boosted Content entries."
                 %br
                 = "Displayed below are the most recent #{Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX} entries."
                 %br
                 Please use the Delete All and Bulk Upload features to edit the rest of the entries.
-
+              -else
+                = "Affiliate #{@affiliate.name} has #{@boosted_content_count} Boosted Content entries."
+          %tr
+            %th Title
+            %th URL
+            %th Description
+            %th Actions
           - @boosted_contents.each do |boosted_content|
             %tr{:class => cycle('even', 'odd')}
-              %td= boosted_content.title
-              %td= boosted_content.url
-              %td= boosted_content.description
-              %td= boosted_content.updated_at.strftime("%m/%d/%Y")
+              %td= truncate(boosted_content.title, :length => 50)
+              %td= link_to(shorten_url(boosted_content.url, 20), boosted_content.url, :target => "_blank", :title => boosted_content.url)
+              %td= truncate(boosted_content.description, :length => 50)
               %td.actions
                 = link_to("Edit", edit_affiliate_boosted_content_path(@affiliate, boosted_content))
                 %br

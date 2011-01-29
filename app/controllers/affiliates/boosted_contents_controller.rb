@@ -51,8 +51,11 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   end
 
   def bulk
-    if BoostedContent.process_boosted_content_xml_upload_for(@affiliate, params[:xml_file])
-      flash[:success] = "Boosted Content entries uploaded successfully for affiliate '#{@affiliate.name}'"
+    if (results = BoostedContent.process_boosted_content_xml_upload_for(@affiliate, params[:xml_file]))
+      messages = []
+      messages << "#{results[:created]} Boosted Content entries successfully created." if results[:created] > 0
+      messages << "#{results[:updated]} Boosted Content entries successfully updated." if results[:updated] > 0
+      flash[:success] = "Successful Bulk Import for affiliate '#{@affiliate.name}':<br/>#{messages.join("<br/>")}"
     else
       flash[:error] = "Your XML document could not be processed. Please check the format and try again."
     end

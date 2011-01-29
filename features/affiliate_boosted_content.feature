@@ -94,7 +94,8 @@ Feature: Boosted Content
 
     When I attach the file "features/support/boosted_content.xml" to "xml_file"
     And I press "Upload"
-    Then I should see "Boosted Content entries uploaded successfully for affiliate 'aff.gov'"
+    Then I should see "Successful Bulk Import for affiliate 'aff.gov'"
+    Then I should see "2 Boosted Content entries successfully created."
 
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted Content"

@@ -37,6 +37,7 @@ class BoostedContent < ActiveRecord::Base
       hash
     end
 
+    counts = {:created => 0, :updated => 0}
     begin
       doc=REXML::Document.new(xml_file.read)
       transaction do
@@ -49,17 +50,19 @@ class BoostedContent < ActiveRecord::Base
           }
           if matching = existing[info[:url]]
             matching.update_attributes(info)
+            counts[:updated] += 1
           else
             create!(info)
+            counts[:created] += 1
           end
         end
       end
-      return true
     rescue
       RAILS_DEFAULT_LOGGER.warn "Problem processing boosted Content XML document: #{$!}"
       Sunspot.index(affiliate.boosted_contents)
+      return false
     end
-    false
+    counts
   end
 
   def sunspot_index
