@@ -167,6 +167,14 @@ describe SearchesController do
     end
   end
 
+  context "when handling a staged affiliate search request" do
+    integrate_views
+    it "should maintain the staged parameter for future searches" do
+      get :index, :query => "test", :staged => 1
+      response.body.should have_tag("input[type=hidden][value=1][name=staged]")
+    end
+  end
+
   context "when searching via the API" do
     integrate_views
 

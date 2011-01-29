@@ -18,6 +18,7 @@
   = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
+  = hidden_field_tag :staged, params[:staged]
   - if !recalls_search?
     = hidden_field_tag :filter, @search.filter_setting unless @search.nil? || @search.filter_setting.nil?
     = hidden_field_tag :fedstates, @search.fedstates unless @search.nil? || @search.fedstates.nil?
