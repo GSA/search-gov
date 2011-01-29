@@ -41,7 +41,7 @@ describe BoostedContent do
   context "when the affiliate associated with a particular Boosted Content is destroyed" do
     fixtures :affiliates
     before do
-      affiliate = Affiliate.create(:name => 'test_affiliate')
+      affiliate = Affiliate.create(:display_name => "Test Affiliate", :name => 'test_affiliate')
       BoostedContent.create(@valid_attributes.merge(:affiliate => affiliate))
       affiliate.destroy
     end
@@ -54,7 +54,7 @@ describe BoostedContent do
   context "when the affiliate associated with a particular Boosted Content is deleted, and BoostedContents are reindexed" do
     fixtures :affiliates
     before do
-      affiliate = Affiliate.create(:name => 'test_affiliate')
+      affiliate = Affiliate.create(:display_name => "Test Affiliate", :name => 'test_affiliate')
       BoostedContent.create(@valid_attributes.merge(:affiliate => affiliate))
       affiliate.delete
       BoostedContent.reindex

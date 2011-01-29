@@ -50,7 +50,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def show
-    @title = "Affiliate Page for " + @affiliate.name + " - "
+    @title = "Affiliate Page for " + @affiliate.display_name + " - "
   end
   
   def destroy

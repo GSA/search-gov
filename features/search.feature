@@ -68,8 +68,8 @@ Feature: Search
       | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         | 
       | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | bar.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
       | title               | url                     | description                               |
       | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |

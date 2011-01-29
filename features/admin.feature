@@ -65,6 +65,19 @@ Feature:  Administration
     When I follow "Query Grouping"
     Then I should see "USASearch > Affiliate Program > Admin Center > QueryGroups"
 
+  Scenario: Visiting the affiliate admin page as an admin
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | single site      | single.gov       | one@foo.gov           | One Foo             |
+    When I go to the admin home page
+    And I follow "Affiliates" within ".main"
+    Then I should see "USASearch > Affiliate Program > Admin Center > Affiliates"
+    And I should see "Site name"
+    And I should see "HTTP parameter site name"
+    And I should see "single site"
+    And I should see "single.gov"
+
   Scenario: Visiting the users admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
@@ -89,10 +102,10 @@ Feature:  Administration
   Scenario: Sending a welcome email to all affiliates
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | single           | one@foo.gov           | One Foo             |
-    | multi1           | two@bar.gov           | Two Bar             |
-    | multi2           | two@bar.gov           | Two Bar             |
+    | display_name     | name             | contact_email         | contact_name        |
+    | single site      | single           | one@foo.gov           | One Foo             |
+    | multi1 site      | multi1           | two@bar.gov           | Two Bar             |
+    | multi2 site      | multi2           | two@bar.gov           | Two Bar             |
     And a clear email queue
     When I go to the affiliate admin broadcast page
     And I fill in "Subject" with "some title"
@@ -146,8 +159,8 @@ Feature:  Administration
     | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
     | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And the following Affiliates exist:
-    | name             | contact_email         | contact_name        |
-    | bar.gov          | aff@bar.gov           | John Bar            |
+    | display_name     | name             | contact_email         | contact_name        |
+    | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
     | title               | url                     | description                               |
     | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |

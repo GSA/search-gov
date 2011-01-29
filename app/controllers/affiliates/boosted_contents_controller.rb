@@ -29,7 +29,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   def create
     @boosted_content = BoostedContent.create(params[:boosted_content].merge(:affiliate => @affiliate))
     if @boosted_content.errors.empty?
-      flash[:success] = "Boosted Content entry successfully added for affiliate '#{@affiliate.name}'"
+      flash[:success] = "Boosted Content entry successfully added for affiliate '#{ERB::Util.html_escape(@affiliate.display_name)}'"
       redirect_to new_affiliate_boosted_content_path
     else
       flash[:error] = "There was a problem saving your Boosted Content entry"
@@ -55,7 +55,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
       messages = []
       messages << "#{results[:created]} Boosted Content entries successfully created." if results[:created] > 0
       messages << "#{results[:updated]} Boosted Content entries successfully updated." if results[:updated] > 0
-      flash[:success] = "Successful Bulk Import for affiliate '#{@affiliate.name}':<br/>#{messages.join("<br/>")}"
+      flash[:success] = "Successful Bulk Import for affiliate '#{ERB::Util.html_escape(@affiliate.display_name)}':<br/>#{messages.join("<br/>")}"
     else
       flash[:error] = "Your XML document could not be processed. Please check the format and try again."
     end

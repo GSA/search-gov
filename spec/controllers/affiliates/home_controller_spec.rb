@@ -83,16 +83,16 @@ describe Affiliates::HomeController do
       end
 
       it "should update the Affiliate" do
-        post :update, :id => @affiliate.id, :affiliate=> {:name=>"NEWNAME", :header=>"FOO", :footer=>"BAR", :domains=>"BLAT"}
+        post :update, :id => @affiliate.id, :affiliate=> {:name=>"newname", :header=>"FOO", :footer=>"BAR", :domains=>"BLAT"}
         @affiliate.reload
-        @affiliate.name.should == "NEWNAME"
+        @affiliate.name.should == "newname"
         @affiliate.footer.should == "BAR"
         @affiliate.header.should == "FOO"
         @affiliate.domains.should == "BLAT"
       end
 
       it "should redirect to affiliates home on success with flash message" do
-        post :update, :id => @affiliate.id, :affiliate=> {:name=>"NEWNAME", :header=>"FOO", :footer=>"BAR", :domains=>"BLAT"}
+        post :update, :id => @affiliate.id, :affiliate=> {:name=>"newname", :header=>"FOO", :footer=>"BAR", :domains=>"BLAT"}
         response.should redirect_to(home_affiliates_path(:said=>@affiliate.id))
         flash[:success].should_not be_nil
       end

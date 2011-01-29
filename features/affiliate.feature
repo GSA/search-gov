@@ -39,21 +39,27 @@ Feature: Affiliate clients
 
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | multi1           | two@bar.gov           | Two Bar             |
-      | multi2           | two@bar.gov           | Two Bar             |
+      | display_name     | name             | contact_email         | contact_name        |
+      | multi1 site      | multi1.gov       | two@bar.gov           | Two Bar             |
+      | multi2 site      | multi2.gov       | two@bar.gov           | Two Bar             |
     And I am logged in with email "two@bar.gov" and password "random_string"
     When I go to the user account page
-    Then I should see "multi1"
-    And I should see "multi2"
+    Then I should see "multi1 site"
+    And I should see "multi2 site"
+    When I follow "Affiliate Center"
+    Then I should see "multi1 site" within ".admin-table"
+    And I should see "multi2 site" within ".admin-table"
+    And I should not see "multi1.gov"
+    And I should not see "multi2.gov"
 
   Scenario: Adding a new affiliate
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "Add New Affiliate"
     Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Affiliate"
+    And I should not see "HTTP parameter site name"
     And I fill in the following:
-      | Name of new site search                                               | www.agency.gov             |
+      | Site name                                                             | My Awesome Agency          |
       | Your Website URL (www.example.gov)                                    | www.agency.gov             |
       | Domains (one per line)                                                | agency.gov                 |
       | Enter HTML to customize the top of your search page                   | My header                  |
@@ -61,23 +67,52 @@ Feature: Affiliate clients
     And I press "Create"
     Then I should be on the affiliate admin page
     And I should see "Affiliate successfully created"
-    And I should see "agency.gov"
+    And I should see "My Awesome Agency"
+    And I should not see "www.agency.gov"
 
-  Scenario: Adding an affiliate with problems
+  Scenario: Updating HTTP parameter site name
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name      | name              | contact_email         | contact_name        |
+      | aff site1         | aff1.gov          | aff@bar.gov           | John Bar            |
+      | aff site2         | aff2.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
+    And I follow "aff site2"
+    And I follow "Edit"
+    And I fill in "HTTP parameter site name" with "aff-01_2011.gov"
+    And I press "Save for preview"
+    Then I should see "Staged changes to your affiliate successfully."
+    And I follow "aff site2"
+    And I follow "Edit"
+    And the "HTTP parameter site name" field should contain "aff-01_2011.gov"
+
+  Scenario: Editing an affiliate with problems
+    Given the following Affiliates exist:
+      | display_name      | name              | contact_email         | contact_name        |
+      | aff site1         | aff1.gov          | aff@bar.gov           | John Bar            |
+      | aff site2         | aff2.gov          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site2"
+    And I follow "Edit"
+    And I fill in "HTTP parameter site name" with "aff1.gov"
+    And I press "Save for preview"
+    Then I should see "HTTP parameter site name has already been taken"
+
+  Scenario: Adding an affiliate without site display name
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
     And I follow "new"
-    And I fill in "name" with "aff.gov"
     And I press "Create"
-    Then I should see "Name has already been taken"
+    Then I should see "Site name can't be blank"
+    And I should not see "HTTP parameter site name can't be blank"
+    And I should not see "HTTP parameter site name is too short"
+    And I should not see "HTTP parameter site name is invalid"
 
   Scenario: Deleting an affiliate
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I press "Delete Affiliate"
@@ -86,17 +121,18 @@ Feature: Affiliate clients
 
   Scenario: Staging changes to an affiliate's look and feel
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
-      | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
+      | display_name     | name             | contact_email         | contact_name        | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "Edit"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Edit"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Edit"
     And the "Domains (one per line)" field should contain "oldagency.gov"
     And the "Enter HTML to customize the top of your search page" field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search page" field should contain "Old footer"
     When I fill in the following:
-      | Name of new site search                                               | newname                                             |
+      | Site name                                                             | new site name                                       |
+      | HTTP parameter site name                                              | newname                                             |
       | Your Website URL (www.example.gov)                                    | www.agency.gov                                      |
       | Domains (one per line)                                                | newagency.gov                                       |
       | Enter HTML to customize the top of your search page                   | New header                                          |
@@ -105,7 +141,7 @@ Feature: Affiliate clients
     And I press "Save for preview"
     Then I should see "Staged changes to your affiliate successfully."
     And I should be on the affiliate admin page
-    And I should see "newname"
+    And I should see "new site name"
     When I follow "Edit"
     Then the "Domains (one per line)" field should contain "newagency.gov"
     And the "Enter HTML to customize the top of your search page" field should contain "New header"
@@ -136,8 +172,8 @@ Feature: Affiliate clients
 
   Scenario: Related Topics on English SERPs for given affiliate search
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And the following Calais Related Searches exist for affiliate "aff.gov":
       | term    | related_terms             | locale |
       | obama   | Some Unique Related Term  | en     |
@@ -146,14 +182,15 @@ Feature: Affiliate clients
     And I press "Search"
     Then I should see "Related Topics"
     And I should see "Some Unique Related Term"
+    And I should not see "aff.gov"
 
   Scenario: Affiliate SAYT
     Given the following Affiliates exist:
-      | name            | contact_email             | contact_name          | domains        | is_sayt_enabled | is_affiliate_suggestions_enabled |
-      | aff.gov           | aff@bar.gov             | John Bar              | usa.gov        | true            | false                            |
-      | otheraff.gov      | otheraff@bar.gov        | Other John Bar        | usa.gov        | false           | false                            |
-      | anotheraff.gov    | anotheraff@bar.gov      | Another John Bar      | usa.gov        | true            | true                             |
-      | yetanotheraff.gov | yetanotheraff@bar.gov   | Yet Another John Bar  | usa.gov        | false           | true                             |
+      | display_name      | name            | contact_email             | contact_name          | domains        | is_sayt_enabled | is_affiliate_suggestions_enabled |
+      | aff site          | aff.gov           | aff@bar.gov             | John Bar              | usa.gov        | true            | false                            |
+      | other site        | otheraff.gov      | otheraff@bar.gov        | Other John Bar        | usa.gov        | false           | false                            |
+      | another site      | anotheraff.gov    | anotheraff@bar.gov      | Another John Bar      | usa.gov        | true            | true                             |
+      | yet another site  | yetanotheraff.gov | yetanotheraff@bar.gov   | Yet Another John Bar  | usa.gov        | false           | true                             |
     When I go to aff.gov's search page
     Then the search bar should have SAYT enabled
     And affiliate SAYT suggestions for "aff.gov" should be disabled
@@ -188,13 +225,14 @@ Feature: Affiliate clients
 
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        | domains        | header                | footer                |
-      | aff.gov          | aff@bar.gov           | John Bar            | usa.gov        | Affiliate Header      | Affiliate Footer      |
+      | display_name     | name             | contact_email         | contact_name        | domains        | header                | footer                |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            | usa.gov        | Affiliate Header      | Affiliate Footer      |
     When I go to aff.gov's search page
     And I follow "Advanced Search"
     Then I should see "Header"
     And I should see "Footer"
-    And I should see "Use the options on this page to create a very specific search for aff.gov"
+    And I should see "Use the options on this page to create a very specific search for aff site"
+    And I should not see "aff.gov"
     When I fill in "query" with "emergency"
     And I press "Search"
     Then I should see "Results 1-10"
@@ -245,12 +283,12 @@ Feature: Affiliate clients
 
   Scenario: Getting an embed code for my affiliate site search
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get Code"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Get Code"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Get Code"
     And I should see "The following is the HTML code for your search box form. Copy and paste this code into your page(s) where the search box should appear."
     And I should see "Code for English-language sites"
     And I should see "Code for Spanish-language sites"
@@ -258,21 +296,23 @@ Feature: Affiliate clients
     And I should see "How To Implement Type-ahead Search"
     When I follow "Type-ahead Search" within ".cross-promotion"
     Then I should see "Add Type-ahead Search Suggestion"
+    And I should not see "aff.gov"
 
   Scenario: Navigating to an Affiliate page for a particular Affiliate
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "aff.gov"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov"
-    And I should see "Affiliate: aff.gov"
+    And I follow "aff site"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site"
+    And I should see "Affiliate: aff site"
+    And I should not see "aff.gov"
 
   Scenario: Stats link on affiliate home page
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the affiliate admin page with "aff.gov" selected
@@ -280,14 +320,15 @@ Feature: Affiliate clients
 
   Scenario: Getting stats for an affiliate
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Query Logs"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Query Analytics"
-    And I should see "Query Analytics for aff.gov"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Query Analytics"
+    And I should see "Query Analytics for aff site"
+    And I should not see "aff.gov"
     And I should see "Most Frequent Queries"
     And I should see "Data for April 15, 2010"
     And in "dqs1" I should not see "No queries matched"
@@ -296,8 +337,8 @@ Feature: Affiliate clients
 
   Scenario: No daily query stats available for any time period
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there are no daily query stats
     When I go to the affiliate admin page with "aff.gov" selected
@@ -308,8 +349,8 @@ Feature: Affiliate clients
 
   Scenario: Viewing Query Search page
     Given the following Affiliates exist:
-      | name             | contact_email           | contact_name        |
-      | aff.gov          | aff@bar.gov             | John Bar            |
+      | display_name     | name             | contact_email           | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And the following DailyQueryStats exist:
       | query                       | times | affiliate     | locale |   days_back   |
       | pollution                   | 100   | aff.gov       | en     |      1        |
@@ -322,25 +363,28 @@ Feature: Affiliate clients
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
     And I press "Search"
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Query Search"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Query Search"
     And I should see "Matches for 'pollution'"
     And I should not see "Matches for 'old pollution'"
     And I should not see "Matches for 'pollutant'"
+    And I should not see "aff.gov"
 
   Scenario: Getting usage stats for an affiliate
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Monthly Reports"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Monthly Reports"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Monthly Reports"
+    And I should see "Monthly Usage for aff site"
     And I should see "Monthly Usage Stats"
+    And I should not see "aff.gov"
 
   Scenario: Viewing the Affiliates Monthly Reports page
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And the following DailyUsageStats exists for each day in yesterday's month
     | profile     | total_queries | affiliate |
     | Affiliates  | 1000          | aff.gov   |
@@ -348,12 +392,12 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Monthly Reports"
     Then I should see the header for the report date
-    And I should see the "aff.gov" queries total within "aff.gov_usage_stats"
+    And I should see the "aff site" queries total within "aff.gov_usage_stats"
 
   Scenario: Viewing the Affiliates Monthly Reports page for a month in the past
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     Given the following DailyUsageStats exist for each day in "2010-02"
      | profile | total_queries  | affiliate  |
      | Affiliates | 1000        | aff.gov    |
@@ -363,12 +407,12 @@ Feature: Affiliate clients
     And I select "February 2010" as the report date
     And I press "Get Usage Stats"
     Then I should see the report header for "2010-02"
-    And I should see the "aff.gov" "Queries" total within "aff.gov_usage_stats" with a total of "28,000"
+    And I should see the "aff site" "Queries" total within "aff.gov_usage_stats" with a total of "28,000"
 
   Scenario: Viewing the Affiliates Monthly Reports page for a month in the future
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     Given the following DailyUsageStats exist for each day in "2019-02"
      | profile    | total_queries   | affiliate  |
      | Affiliates | 1000            | aff.gov    |
@@ -381,18 +425,19 @@ Feature: Affiliate clients
     
   Scenario: Viewing SAYT Suggestions for an affiliate
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"
     Then I should be on the affiliate sayt page
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Type-ahead Search"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Type-ahead Search"
+    And I should not see "aff.gov"
 
   Scenario: Setting SAYT Preferences for an affiliate
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"
@@ -421,8 +466,8 @@ Feature: Affiliate clients
     
   Scenario: Adding and removing a SAYT Suggestion to an affiliate
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"
@@ -446,8 +491,8 @@ Feature: Affiliate clients
     
   Scenario: Uploading SAYT Suggestions for an affiliate
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"
@@ -471,18 +516,19 @@ Feature: Affiliate clients
     
   Scenario: Viewing Related Topics for an affiliate
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Related Topics"
     Then I should be on the affiliate related topics page
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Related Topics"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Related Topics"
+    And I should not see "aff.gov"
     
   Scenario: Setting Related Topics Preferences for an affiliate
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Related Topics"
@@ -511,11 +557,12 @@ Feature: Affiliate clients
 
   Scenario: Viewing Manage Users for an affiliate
     Given the following Affiliates exist:
-      | name             | contact_email           | contact_name        |
-      | aff.gov          | aff@bar.gov             | John Bar            |
+      | display_name     | name             | contact_email           | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Manage Users"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Manage Users"
-    And I should see "Users for Affiliate: aff.gov"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Manage Users"
+    And I should see "Users for Affiliate: aff site"
     And I should see "John Bar (aff@bar.gov)"
+    And I should not see "aff.gov"
