@@ -1857,13 +1857,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line301">301</a>   def shorten_url (url)</pre></td>
+            <td><pre><a name="line301">301</a>   def shorten_url (url, length=30)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line302">302</a>     return url if url.length &lt;=30</pre></td>
+            <td><pre><a name="line302">302</a>     return url if url.length &lt;= length</pre></td>
           </tr>
         
           
@@ -1905,7 +1905,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line309">309</a>       url[0, 30]+&quot;...&quot;</pre></td>
+            <td><pre><a name="line309">309</a>       url[0, length]+&quot;...&quot;</pre></td>
           </tr>
         
           
@@ -1929,7 +1929,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Jan 27 12:14:17 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jan 28 22:43:03 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

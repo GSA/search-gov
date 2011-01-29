@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-boosted_content_rb.html">app/models/boosted_content.rb</a></td>
-            <td class='right_align'><tt>68</tt></td>
-            <td class='right_align'><tt>61</tt></td>
+            <td class='right_align'><tt>71</tt></td>
+            <td class='right_align'><tt>64</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -291,181 +291,199 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>     begin</pre></td>
+            <td><pre><a name="line40">40</a>     counts = {:created =&gt; 0, :updated =&gt; 0}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line41">41</a>       doc=REXML::Document.new(xml_file.read)</pre></td>
+            <td><pre><a name="line41">41</a>     begin</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>       transaction do</pre></td>
+            <td><pre><a name="line42">42</a>       doc=REXML::Document.new(xml_file.read)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>         doc.root.each_element('//entry') do |entry|</pre></td>
+            <td><pre><a name="line43">43</a>       transaction do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>           info = {</pre></td>
+            <td><pre><a name="line44">44</a>         doc.root.each_element('//entry') do |entry|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>             :url =&gt; entry.elements[&quot;url&quot;].first.to_s,</pre></td>
+            <td><pre><a name="line45">45</a>           info = {</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>             :title =&gt; entry.elements[&quot;title&quot;].first.to_s,</pre></td>
+            <td><pre><a name="line46">46</a>             :url =&gt; entry.elements[&quot;url&quot;].first.to_s,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>             :description =&gt; entry.elements[&quot;description&quot;].first.to_s,</pre></td>
+            <td><pre><a name="line47">47</a>             :title =&gt; entry.elements[&quot;title&quot;].first.to_s,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>             :description =&gt; entry.elements[&quot;description&quot;].first.to_s,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a>             :affiliate =&gt; affiliate</pre></td>
+            <td><pre><a name="line49">49</a>             :affiliate =&gt; affiliate</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a>           }</pre></td>
+            <td><pre><a name="line50">50</a>           }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>           if matching = existing[info[:url]]</pre></td>
+            <td><pre><a name="line51">51</a>           if matching = existing[info[:url]]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>             matching.update_attributes(info)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line52">52</a>           else</pre></td>
+            <td><pre><a name="line52">52</a>             matching.update_attributes(info)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>             create!(info)</pre></td>
+            <td><pre><a name="line53">53</a>             counts[:updated] += 1</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a>           end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line55">55</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line56">56</a>       end</pre></td>
+            <td><pre><a name="line54">54</a>           else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>       return true</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line58">58</a>     rescue</pre></td>
+            <td><pre><a name="line55">55</a>             create!(info)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>       RAILS_DEFAULT_LOGGER.warn &quot;Problem processing boosted Content XML document: #{$!}&quot;</pre></td>
+            <td><pre><a name="line56">56</a>             counts[:created] += 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line57">57</a>           end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line58">58</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line59">59</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line60">60</a>     rescue</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line60">60</a>       Sunspot.index(affiliate.boosted_contents)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line61">61</a>     end</pre></td>
+            <td><pre><a name="line61">61</a>       RAILS_DEFAULT_LOGGER.warn &quot;Problem processing boosted Content XML document: #{$!}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>     false</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line63">63</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line64">64</a> </pre></td>
+            <td><pre><a name="line62">62</a>       Sunspot.index(affiliate.boosted_contents)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>   def sunspot_index</pre></td>
+            <td><pre><a name="line63">63</a>       return false</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line64">64</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>     Sunspot.index(self)</pre></td>
+            <td><pre><a name="line65">65</a>     counts</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line67">67</a>   end</pre></td>
+            <td><pre><a name="line66">66</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line68">68</a> end</pre></td>
+            <td><pre><a name="line67">67</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>   def sunspot_index</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>     Sunspot.index(self)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line70">70</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line71">71</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jan 27 12:14:17 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jan 28 22:43:03 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

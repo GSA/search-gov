@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates-boosted_contents_controller_rb.html">app/controllers/affiliates/boosted_contents_controller.rb</a></td>
-            <td class='right_align'><tt>74</tt></td>
-            <td class='right_align'><tt>63</tt></td>
+            <td class='right_align'><tt>77</tt></td>
+            <td class='right_align'><tt>66</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -243,7 +243,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>       flash[:success] = &quot;Boosted Content entry successfully added for affiliate '#{@affiliate.name}'&quot;</pre></td>
+            <td><pre><a name="line32">32</a>       flash[:success] = &quot;Boosted Content entry successfully added for affiliate '#{ERB::Util.html_escape(@affiliate.display_name)}'&quot;</pre></td>
           </tr>
         
           
@@ -375,133 +375,151 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>     if BoostedContent.process_boosted_content_xml_upload_for(@affiliate, params[:xml_file])</pre></td>
+            <td><pre><a name="line54">54</a>     if (results = BoostedContent.process_boosted_content_xml_upload_for(@affiliate, params[:xml_file]))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>       flash[:success] = &quot;Boosted Content entries uploaded successfully for affiliate '#{@affiliate.name}'&quot;</pre></td>
+            <td><pre><a name="line55">55</a>       messages = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>       messages &lt;&lt; &quot;#{results[:created]} Boosted Content entries successfully created.&quot; if results[:created] &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>       messages &lt;&lt; &quot;#{results[:updated]} Boosted Content entries successfully updated.&quot; if results[:updated] &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>       flash[:success] = &quot;Successful Bulk Import for affiliate '#{ERB::Util.html_escape(@affiliate.display_name)}':&lt;br/&gt;#{messages.join(&quot;&lt;br/&gt;&quot;)}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a>     else</pre></td>
+            <td><pre><a name="line59">59</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>       flash[:error] = &quot;Your XML document could not be processed. Please check the format and try again.&quot;</pre></td>
+            <td><pre><a name="line60">60</a>       flash[:error] = &quot;Your XML document could not be processed. Please check the format and try again.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line58">58</a>     end</pre></td>
+            <td><pre><a name="line61">61</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>     redirect_to new_affiliate_boosted_content_path</pre></td>
+            <td><pre><a name="line62">62</a>     redirect_to new_affiliate_boosted_content_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a>   end</pre></td>
+            <td><pre><a name="line63">63</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line61">61</a> </pre></td>
+            <td><pre><a name="line64">64</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>   private</pre></td>
+            <td><pre><a name="line65">65</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>   def find_boosted_content</pre></td>
+            <td><pre><a name="line66">66</a>   def find_boosted_content</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a>     @boosted_content = BoostedContent.find(params[:id])</pre></td>
+            <td><pre><a name="line67">67</a>     @boosted_content = BoostedContent.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a>   end</pre></td>
+            <td><pre><a name="line68">68</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line66">66</a> </pre></td>
+            <td><pre><a name="line69">69</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>   def load_boosted_contents</pre></td>
+            <td><pre><a name="line70">70</a>   def load_boosted_contents</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line68">68</a>     @boosted_content_count = @affiliate.boosted_contents.count</pre></td>
+            <td><pre><a name="line71">71</a>     @boosted_content_count = @affiliate.boosted_contents.count</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line69">69</a>     @boosted_contents = @boosted_content_count &gt; MAX_TO_DISPLAY ?</pre></td>
+            <td><pre><a name="line72">72</a>     @boosted_contents = @boosted_content_count &gt; MAX_TO_DISPLAY ?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>         @affiliate.boosted_contents.find(:all, :limit =&gt; NUMBER_TO_DISPLAY_IF_ABOVE_MAX, :order =&gt; &quot;updated_at desc, id desc&quot;) :</pre></td>
+            <td><pre><a name="line73">73</a>         @affiliate.boosted_contents.find(:all, :limit =&gt; NUMBER_TO_DISPLAY_IF_ABOVE_MAX, :order =&gt; &quot;updated_at desc, id desc&quot;) :</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line71">71</a>         @affiliate.boosted_contents</pre></td>
+            <td><pre><a name="line74">74</a>         @affiliate.boosted_contents</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line72">72</a>   end</pre></td>
+            <td><pre><a name="line75">75</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line73">73</a> </pre></td>
+            <td><pre><a name="line76">76</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a> end</pre></td>
+            <td><pre><a name="line77">77</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jan 27 12:14:16 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jan 28 22:43:02 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
