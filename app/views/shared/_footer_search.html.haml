@@ -4,3 +4,4 @@
     = hidden_field_tag :affiliate, @affiliate.name, :id => "footer_search_affiliate" unless @affiliate.nil?
     = hidden_field_tag :locale, I18n.locale, :id => "footer_search_locale"
     = submit_tag(t :search, :id => "footer_search_button")
+    =# submit_tag((forms_search? ? t(:forms_search) : t(:search)), :id => "footer_search_button")
