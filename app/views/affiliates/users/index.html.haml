@@ -21,6 +21,9 @@
             = "#{user.contact_name} (#{mail_to user.email})"
             |
             = link_to 'Remove', affiliate_user_path(@affiliate, user.id), :method => :delete
+            - if @affiliate.is_owner?(current_user)
+              |
+              = link_to 'Make Owner', make_owner_affiliate_user_path(@affiliate, user.id), :method => :post, :confirm => "Are you sure? This action can not be undone."
   - else
     %tr
       %td

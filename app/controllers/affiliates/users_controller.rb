@@ -1,12 +1,12 @@
 class Affiliates::UsersController < Affiliates::AffiliatesController
   before_filter :require_affiliate
   before_filter :setup_affiliate
-    
+
   def index
     @email = nil
     @title = "Manage Users - "
   end
-  
+
   def create
     @email = params[:email]
     @user = User.find_by_email(params[:email])
@@ -25,7 +25,7 @@ class Affiliates::UsersController < Affiliates::AffiliatesController
     end
     render :action => :index
   end
-  
+
   def destroy
     @user = User.find(params[:id])
     if @affiliate.is_owner?(@user)
@@ -35,5 +35,18 @@ class Affiliates::UsersController < Affiliates::AffiliatesController
       flash.now[:success] = "Removed #{@user.contact_name} from affiliate."
     end
     render :action => :index
+  end
+
+  def make_owner
+    if @affiliate.is_owner?(current_user)
+      if user = @affiliate.users.find_by_id(params[:id])
+        @affiliate.update_attribute(:owner, user)
+      else
+        flash[:error] = "That user is not an affiliate user. Only affiliate users can be become owners."
+      end
+    else
+      flash[:error] = "Only the affiliate owner can reassign ownership."
+    end
+    redirect_to affiliate_users_path(@affiliate)
   end
 end

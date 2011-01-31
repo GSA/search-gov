@@ -121,6 +121,69 @@ describe Affiliates::UsersController do
     end
   end
 
+  describe "#make_owner" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      @owner = @affiliate.owner
+      @affiliate_user = users(:another_affiliate_manager)
+      @affiliate.users << @affiliate_user
+    end
+
+    context "when not logged in" do
+      it "should redirect to the sign in page" do
+        post :make_owner, :affiliate_id => @affiliate.id, :id => @affiliate_user.id
+
+        response.should redirect_to(new_user_session_path)
+        @affiliate.owner.should == @owner
+      end
+    end
+
+    context "when logged in as the owner of the affiliate" do
+      before do
+        UserSession.create(@owner)
+      end
+
+      it "should make the user the affiliate owner" do
+        post :make_owner, :affiliate_id => @affiliate.to_param, :id => @affiliate_user.id
+
+        response.should redirect_to(affiliate_users_path(@affiliate))
+
+        @affiliate.reload
+        @affiliate.owner.should == @affiliate_user
+        @affiliate.users.should =~ [@owner, @affiliate_user]
+      end
+
+
+      it "should fail if the requested user is not an affiliate user" do
+        post :make_owner, :affiliate_id => @affiliate.to_param, :id => users(:affiliate_admin)
+
+        response.should redirect_to(affiliate_users_path(@affiliate))
+
+        flash[:error].should =~ /not an affiliate user/
+        @affiliate.owner.should == @owner
+        @affiliate.users.should =~ [@owner, @affiliate_user]
+      end
+
+    end
+
+    context "when logged in as a non-owner user of the affiliate" do
+      before do
+        UserSession.create(@affiliate_user)
+      end
+
+      it "should fail if the current user is not the owner" do
+        post :make_owner, :affiliate_id => @affiliate.to_param, :id => users(:affiliate_admin)
+
+        response.should redirect_to(affiliate_users_path(@affiliate))
+
+        flash[:error].should =~ /only the affiliate owner/i
+        @affiliate.owner.should == @owner
+        @affiliate.users.should =~ [@owner, @affiliate_user]
+      end
+    end
+
+  end
+
   describe "#destroy" do
     integrate_views
     before do
