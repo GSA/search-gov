@@ -1,3 +1,7 @@
+- content_for :head do 
+  %meta{:name => 'description', :content => 'Search.USA.gov Forms is the U.S. government’s official search engine for forms.'}
+  %meta{:name => 'keywords', :content => 'government forms, official forms, pdf forms, standard forms, optional forms, gsa forms, military forms, dod forms, usps forms, postal service forms, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web'}
+  
 .prepend-6.span-15.append-3.homepage
   %a{:name => "content"}
   = link_to(image_tag("USAsearch_large_#{I18n.locale}_forms.gif" , :alt => "USASearch Forms Home"), forms_path(:locale => I18n.locale))

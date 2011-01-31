@@ -1,6 +1,10 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe ApplicationHelper do
+  before do
+    helper.stub!(:forms_search?).and_return false
+  end
+  
   describe "#other_locale_str" do
     it "should toggle between English and Spanish locales (both strings and symbols)" do
       I18n.locale = :es
@@ -74,7 +78,26 @@ describe ApplicationHelper do
           helper.build_page_title("some title").should == "some title - #{t :site_title}"
         end
       end
+      
+      context "when it's a forms page" do
+        before do
+          helper.stub!(:forms_search?).and_return true
+        end
+        
+        context "when the page title is not defined" do
+          it "should return the forms title" do
+            helper.build_page_title(nil).should == (t :forms_site_title)
+          end
+        end
+        
+        context "when a non-blank page title is defined" do
+          it "should prefix the defined page title with the English forms site title" do
+            helper.build_page_title("some title").should == "some title - #{t :forms_site_title}"
+          end
+        end
+      end
     end
+    
     context "for the Spanish site" do
       before do
         I18n.locale = :es

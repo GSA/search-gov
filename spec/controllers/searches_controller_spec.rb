@@ -398,7 +398,7 @@ describe SearchesController do
       end
 
       it "should show a custom title for the results page" do
-        response.body.should contain("taxes - The U.S. Government's Official Web Search")
+        response.body.should contain("taxes - Search.USA.gov Forms")
       end
 
       it "should set the query in the Search model" do
@@ -474,7 +474,7 @@ describe SearchesController do
       end
 
       it "should show a custom title for the results page" do
-        response.body.should contain("taxes - The U.S. Government's Official Web Search")
+        response.body.should contain("taxes - Search.USA.gov Forms")
       end
 
       it "should set the query in the Search model" do
