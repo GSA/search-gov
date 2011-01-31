@@ -154,11 +154,14 @@ describe Affiliates::BoostedContentsController do
     end
 
     it "should process the xml file and redirect to new" do
-      BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(@affiliate, @xml).and_return(true)
+      BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(@affiliate, @xml).and_return({:created => 4, :updated => 2})
 
       post :bulk, :affiliate_id => @affiliate.to_param, :xml_file => @xml
 
       response.should redirect_to new_affiliate_boosted_content_path
+
+      flash[:success].should =~ /4 Boosted Content entries successfully created/
+      flash[:success].should =~ /2 Boosted Content entries successfully updated/
     end
 
     it "should notify if errors" do

@@ -1,7 +1,7 @@
 .boosted-sites.span-24
-  = affiliate_center_breadcrumbs([link_to(@affiliate.name, affiliate_path(@affiliate)), "Boosted Content"])
+  = affiliate_center_breadcrumbs([link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), "Boosted Content"])
 
-  .span-17.append-1
+  .span-17.append-1.last
     %h1 Boosted Content
     %p
       Boost content to make specific pages appear above the main search results displayed on your pages.
@@ -24,24 +24,29 @@
         = link_to(content_tag(:button, "Delete All"), destroy_all_affiliate_boosted_contents_path(@affiliate), :method => :delete, :confirm => "Are you sure you want to delete all of your Boosted Content?\nThis action can not be undone.", :style => "float: right;")
         ="Edit / Delete Current Boosted Entries"
       - if @boosted_content_count == 0
-        .content-box= "Affiliate #{@affiliate.name} has no Boosted Content"
+        .content-box= "Affiliate #{h(@affiliate.display_name)} has no Boosted Content"
       - else
         %table.admin-table#boosted_contents
-          - if @boosted_contents.length < @boosted_content_count
-            %tr
-              %td{:colspan => 5}
-                = "Affiliate #{@affiliate.name} has #{@boosted_content_count} Boosted Content entries."
+          %tr
+            %td{:colspan => 5}
+              - if @boosted_contents.length < @boosted_content_count
+                = "Affiliate #{h(@affiliate.display_name)} has #{@boosted_content_count} Boosted Content entries."
                 %br
                 = "Displayed below are the most recent #{Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX} entries."
                 %br
                 Please use the Delete All and Bulk Upload features to edit the rest of the entries.
-
+              -else
+                = "Affiliate #{h(@affiliate.display_name)} has #{@boosted_content_count} Boosted Content entries."
+          %tr
+            %th Title
+            %th URL
+            %th Description
+            %th Actions
           - @boosted_contents.each do |boosted_content|
             %tr{:class => cycle('even', 'odd')}
-              %td= boosted_content.title
-              %td= boosted_content.url
-              %td= boosted_content.description
-              %td= boosted_content.updated_at.strftime("%m/%d/%Y")
+              %td= truncate(boosted_content.title, :length => 50)
+              %td= link_to(shorten_url(boosted_content.url, 20), boosted_content.url, :target => "_blank", :title => boosted_content.url)
+              %td= truncate(boosted_content.description, :length => 50)
               %td.actions
                 = link_to("Edit", edit_affiliate_boosted_content_path(@affiliate, boosted_content))
                 %br
@@ -49,7 +54,7 @@
 
     #bulk_upload
       - form_tag bulk_affiliate_boosted_contents_path(@affiliate), :multipart => true, :class=> "bordered" do
-        %h2="Bulk Upload Boosted Content for #{@affiliate.name}"
+        %h2="Bulk Upload Boosted Content for #{h(@affiliate.display_name)}"
         %h4 Instructions
         %ol
           %li

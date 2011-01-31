@@ -298,15 +298,15 @@ module SearchHelper
 
   private
 
-  def shorten_url (url)
-    return url if url.length <=30
+  def shorten_url (url, length=30)
+    return url if url.length <= length
     if url.count('/') >= 4
       arr = url.split('/')
       host= arr[0]+"//"+arr[2]
       doc = arr.last.split('?').first
       [host, "...", doc].join('/')
     else
-      url[0, 30]+"..."
+      url[0, length]+"..."
     end
   end
 end

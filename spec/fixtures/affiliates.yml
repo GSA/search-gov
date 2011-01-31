@@ -1,4 +1,5 @@
 power_affiliate:
+  display_name: Noaa Site
   name: noaa.gov
   website: http://www.noaa.gov
   domains: noaa.gov\n usa.gov\nnga.mil
@@ -8,16 +9,19 @@ power_affiliate:
   users: [:affiliate_manager]
   affiliate_template: :basic_gray
 basic_affiliate:
+  display_name: NPS Site
   name: nps.gov
   owner: :affiliate_manager
   users: [:affiliate_manager]
   affiliate_template: :default
 another_affiliate:
+  display_name: Another Gov Site
   name: another.gov
   owner: :another_affiliate_manager
   users: [:another_affiliate_manager]
   affiliate_template: :default
 admin_affiliate:
+  display_name: Affiliate Gov Site
   name: affiliate.gov
   owner: :affiliate_admin
   users: [:admin_affiliate]

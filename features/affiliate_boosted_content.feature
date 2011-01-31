@@ -6,12 +6,13 @@ Feature: Boosted Content
 
   Scenario: Create a new Boosted Content entry
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         |aff.gov           | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted Content"
     Then I should be on the new affiliate boosted content page
+    And I should not see "aff.gov"
     And I fill in "Title" with "Test"
     And I fill in "Url" with "http://www.test.gov"
     And I fill in "Description" with ""
@@ -21,15 +22,16 @@ Feature: Boosted Content
     Then I fill in "Description" with "Test Description"
     And I press "Save Boosted Content"
     Then I should be on the new affiliate boosted content page
-    And I should see "Boosted Content entry successfully added"
+    And I should see "Boosted Content entry successfully added for affiliate 'aff site'"
     And I should see "Test" within "#boosted_contents"
     And I should see "http://www.test.gov" within "#boosted_contents"
     And I should see "Test Description" within "#boosted_contents"
+    And I should not see "aff.gov"
 
   Scenario: Edit a Boosted Content entry
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         |aff.gov           | aff@bar.gov             | John Bar            |
     And the following Boosted Content entries exist for the affiliate "aff.gov"
      | title            | url               | description     |
      | a title          | http://a.url.gov  | A description    |
@@ -50,9 +52,9 @@ Feature: Boosted Content
 
   Scenario: Site visitor sees relevant boosted results for given affiliate search
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
-      | bar.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name                  | contact_email         | contact_name        |
+      | aff site         | aff.gov               | aff@bar.gov           | John Bar            |
+      | bar site         | bar.gov               | aff@bar.gov           | John Bar            |
     And the following Boosted Content entries exist for the affiliate "aff.gov"
       | title               | url                     | description                               |
       | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
@@ -83,24 +85,25 @@ Feature: Boosted Content
 
   Scenario: Uploading valid booster XML document as a logged in affiliate
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted Content"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Boosted Content"
-    Then I should see "aff.gov has no Boosted Content"
-    And I should see "Bulk Upload Boosted Content for aff.gov"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Content"
+    Then I should see "aff site has no Boosted Content"
+    And I should see "Bulk Upload Boosted Content for aff site"
 
     When I attach the file "features/support/boosted_content.xml" to "xml_file"
     And I press "Upload"
-    Then I should see "Boosted Content entries uploaded successfully for affiliate 'aff.gov'"
+    Then I should see "Successful Bulk Import for affiliate 'aff site'"
+    Then I should see "2 Boosted Content entries successfully created."
 
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted Content"
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"
-    And I should see "Bulk Upload Boosted Content for aff.gov"
+    And I should see "Bulk Upload Boosted Content for aff site"
 
     When I attach the file "features/support/new_boosted_content.xml" to "xml_file"
     And I press "Upload"
@@ -110,8 +113,8 @@ Feature: Boosted Content
 
   Scenario: Uploading invalid booster XML document as a logged in affiliate
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         |aff.gov           | aff@bar.gov           | John Bar            |
     And the following Boosted Content entries exist for the affiliate "aff.gov"
       | title               | url                     | description                               |
       | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |

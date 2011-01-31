@@ -30,8 +30,8 @@ Feature: Analytics Search
 
   Scenario: Doing a fulltext search for a query term to see query counts for one of my affiliates in English locale
     Given the following Affiliates exist:
-     | name             | contact_email           | contact_name        |
-     | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And the following DailyQueryStats exist:
     | query                       | times | affiliate     | locale |  days_back   |

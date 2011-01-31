@@ -5,25 +5,25 @@ Feature: Affiliate Superfresh Interface
 
   Scenario: Visiting my superfresh page
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Add to Bing"
     Then I should see "Learn more about our Add to Bing™ feature by going to our new section in the Help Desk"
     And I should see "Another Way to Highlight Content"
     When I follow "Boosted Content" within ".right-sidebar"
-    Then I should see "aff.gov > Boosted Content"
+    Then I should see "aff site > Boosted Content"
 
   Scenario: Submit a URL for on-demand indexing
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff.gov > Add to Bing"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Add to Bing"
     And I should see "Add to Bing"
     When I fill in "Single URL" with "http://new.url.com"
     And I press "Submit"
@@ -43,8 +43,8 @@ Feature: Affiliate Superfresh Interface
     
   Scenario: Remove a URL to be crawled
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And the following SuperfreshUrls exist:
       | url                   | affiliate |
       | http://removeme.com   | aff.gov   |        
@@ -58,8 +58,8 @@ Feature: Affiliate Superfresh Interface
 
   Scenario: Submitting a bad URL for on-demand indexing
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Add to Bing"
@@ -72,8 +72,8 @@ Feature: Affiliate Superfresh Interface
     
   Scenario: Bulk-uploading URLs for on-demand indexing
     Given the following Affiliates exist:
-      | name             | contact_email         | contact_name        |
-      | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Add to Bing"

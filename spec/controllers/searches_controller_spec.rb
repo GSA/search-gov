@@ -135,7 +135,7 @@ describe SearchesController do
     should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'
 
     it "should set an affiliate page title" do
-      @page_title.should == "Search results for #{@affiliate.name}: #{@search.query}"
+      @page_title.should == "Search results for #{@affiliate.display_name}: #{@search.query}"
     end
 
     it "should render the header in the response" do
@@ -164,6 +164,14 @@ describe SearchesController do
       it "should set the scope id variable" do
         assigns[:scope_id].should == 'SomeScope'
       end
+    end
+  end
+
+  context "when handling a staged affiliate search request" do
+    integrate_views
+    it "should maintain the staged parameter for future searches" do
+      get :index, :query => "test", :staged => 1
+      response.body.should have_tag("input[type=hidden][value=1][name=staged]")
     end
   end
 

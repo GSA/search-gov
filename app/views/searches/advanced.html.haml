@@ -6,7 +6,7 @@
   = hidden_field_tag 'affiliate', @affiliate.name if @affiliate
   = hidden_field_tag 'scope_id', @scope_id if @affiliate && @scope_id
   #advanced-form-intro
-    %strong= (@affiliate.nil? ? (t :advanced_search_instruction) : (t :advanced_affiliate_search_instruction, :affiliate_name => @affiliate.name))
+    %strong= (@affiliate.nil? ? (t :advanced_search_instruction) : (t :advanced_affiliate_search_instruction, :affiliate_name => h(@affiliate.display_name)))
   .elements
     %div
       %strong= t :advanced_search_show_results_header

@@ -32,13 +32,13 @@
               .title-row
                 Selected Affiliate
               .content-box
-                = select("affiliate", "id", current_user.affiliates.all.collect {|p| [ p.name, p.id ] }, {:prompt => 'Select affiliate'}, :class =>"affiliate-dropdown")
+                = select("affiliate", "id", current_user.affiliates.all.collect {|p| [ p.display_name, p.id ] }, {:prompt => 'Select affiliate'}, :class =>"affiliate-dropdown")
             - if current_user.affiliates.empty?
               %p= link_to "Add New Affiliate", new_affiliate_path
             - else
               - if @affiliate && @affiliate.id.present?
                 .header-box
-                  = link_to(@affiliate.name, affiliate_path(@affiliate))
+                  = link_to(h(@affiliate.display_name), affiliate_path(@affiliate))
                 %table.admin-table.nav-links
                   %tr
                     %td

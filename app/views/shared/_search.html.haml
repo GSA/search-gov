@@ -18,11 +18,12 @@
   = hidden_field_tag :affiliate, @affiliate.name unless @affiliate.nil?
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
+  = hidden_field_tag :staged, params[:staged]
   - if !recalls_search?
     = hidden_field_tag :filter, @search.filter_setting unless @search.nil? || @search.filter_setting.nil?
     = hidden_field_tag :fedstates, @search.fedstates unless @search.nil? || @search.fedstates.nil?
     = hidden_field_tag :scope_id, @scope_id if @affiliate and @scope_id
-  = submit_tag(t :search, :id => "search_button")
+  = submit_tag((forms_search? ? t(:forms_search) : t(:search)), :id => "search_button")
   - if @affiliate.nil?
     - unless forms_search?
       = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil ))) unless @affiliate

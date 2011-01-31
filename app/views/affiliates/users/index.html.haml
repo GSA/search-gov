@@ -1,7 +1,7 @@
-= affiliate_center_breadcrumbs([ link_to(@affiliate.name, affiliate_path(@affiliate)), 'Manage Users'] )
+= affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Manage Users'] )
 
 %h1
-  Users for Affiliate: #{@affiliate.name}
+  Users for Affiliate: #{h(@affiliate.display_name)}
 
 .header-box
   Owner

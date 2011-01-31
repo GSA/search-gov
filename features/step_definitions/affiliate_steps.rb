@@ -21,6 +21,7 @@ Given /^the following Affiliates exist:$/ do |table|
     basic_gray_affiliate_template = AffiliateTemplate.find_by_stylesheet("basic_gray") || AffiliateTemplate.create!(:name => "Basic Gray", :description => "A simple, clean gray page", :stylesheet => "basic_gray")
 
     affiliate = Affiliate.create(
+      :display_name => hash["display_name"],
       :name => hash["name"],
       :owner => user,
       :domains => hash["domains"],

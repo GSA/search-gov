@@ -41,7 +41,7 @@ describe BoostedContent do
   context "when the affiliate associated with a particular Boosted Content is destroyed" do
     fixtures :affiliates
     before do
-      affiliate = Affiliate.create(:name => 'test_affiliate')
+      affiliate = Affiliate.create(:display_name => "Test Affiliate", :name => 'test_affiliate')
       BoostedContent.create(@valid_attributes.merge(:affiliate => affiliate))
       affiliate.destroy
     end
@@ -54,7 +54,7 @@ describe BoostedContent do
   context "when the affiliate associated with a particular Boosted Content is deleted, and BoostedContents are reindexed" do
     fixtures :affiliates
     before do
-      affiliate = Affiliate.create(:name => 'test_affiliate')
+      affiliate = Affiliate.create(:display_name => "Test Affiliate", :name => 'test_affiliate')
       BoostedContent.create(@valid_attributes.merge(:affiliate => affiliate))
       affiliate.delete
       BoostedContent.reindex
@@ -90,34 +90,40 @@ describe BoostedContent do
     it "should create and index boosted Contents from an xml document" do
       basic_affiliate = affiliates(:basic_affiliate)
 
-      BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
+      counts = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 2
       basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url"]
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
+      counts[:created].should == 2
+      counts[:updated].should == 0
     end
 
     it "should update existing boosted Contents if the url match" do
       basic_affiliate = affiliates(:basic_affiliate)
       basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description")
 
-      BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
+      counts = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 2
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.url" }.title.should == "This is a listing about Texas"
+      counts[:created].should == 1
+      counts[:updated].should == 1
     end
 
     it "should merge with preexisting boosted Contents" do
       basic_affiliate = affiliates(:basic_affiliate)
       basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description")
 
-      BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
+      counts = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 3
       basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url", "http://a.different.url"]
+      counts[:created].should == 2
+      counts[:updated].should == 0
     end
 
   end
