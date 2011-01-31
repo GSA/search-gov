@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-admin-affiliates_controller_rb.html">app/controllers/admin/affiliates_controller.rb</a></td>
-            <td class='right_align'><tt>18</tt></td>
-            <td class='right_align'><tt>15</tt></td>
+            <td class='right_align'><tt>19</tt></td>
+            <td class='right_align'><tt>16</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,7 +75,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     config.columns = [:display_name, :name, :domains, :header, :footer, :affiliate_template, :boosted_contents, :is_sayt_enabled, :is_affiliate_suggestions_enabled, :created_at, :updated_at]</pre></td>
+            <td><pre><a name="line4">4</a>     config.columns = [:display_name,:name, :owner, :domains, :header, :footer, :affiliate_template, :boosted_contents, :is_sayt_enabled, :is_affiliate_suggestions_enabled, :created_at, :updated_at]</pre></td>
           </tr>
         
           
@@ -93,79 +93,85 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     config.update.columns = [:name, :domains, :header, :footer, :affiliate_template, :is_sayt_enabled, :is_affiliate_suggestions_enabled]</pre></td>
+            <td><pre><a name="line7">7</a>     config.update.columns = [:name, :owner, :domains, :header, :footer, :affiliate_template, :is_sayt_enabled, :is_affiliate_suggestions_enabled]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     config.create.columns = [:name, :domains, :header, :footer, :affiliate_template]</pre></td>
+            <td><pre><a name="line8">8</a>     config.columns[:owner].form_ui = :select</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     config.columns[:is_sayt_enabled].label = &quot;Enable SAYT&quot;</pre></td>
+            <td><pre><a name="line9">9</a>     config.create.columns = [:name, :domains, :header, :footer, :affiliate_template]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     config.columns[:is_affiliate_suggestions_enabled].label = &quot;Enable Affiliate SAYT Suggestions&quot;</pre></td>
+            <td><pre><a name="line10">10</a>     config.columns[:is_sayt_enabled].label = &quot;Enable SAYT&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     config.action_links.add &quot;analytics&quot;, :label =&gt; &quot;Analytics&quot;, :type =&gt; :member, :page =&gt; true</pre></td>
+            <td><pre><a name="line11">11</a>     config.columns[:is_affiliate_suggestions_enabled].label = &quot;Enable Affiliate SAYT Suggestions&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     config.action_links.add &quot;analytics&quot;, :label =&gt; &quot;Analytics&quot;, :type =&gt; :member, :page =&gt; true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a>   end</pre></td>
+            <td><pre><a name="line13">13</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>   </pre></td>
+            <td><pre><a name="line14">14</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>   def analytics</pre></td>
+            <td><pre><a name="line15">15</a>   def analytics</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     redirect_to affiliate_analytics_path(:affiliate_id =&gt; params[:id])</pre></td>
+            <td><pre><a name="line16">16</a>     redirect_to affiliate_analytics_path(:affiliate_id =&gt; params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>   end</pre></td>
+            <td><pre><a name="line17">17</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a> </pre></td>
+            <td><pre><a name="line18">18</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a> end</pre></td>
+            <td><pre><a name="line19">19</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Jan 29 11:27:34 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Jan 31 14:58:17 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates-users_controller_rb.html">app/controllers/affiliates/users_controller.rb</a></td>
-            <td class='right_align'><tt>39</tt></td>
-            <td class='right_align'><tt>36</tt></td>
+            <td class='right_align'><tt>52</tt></td>
+            <td class='right_align'><tt>48</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,7 +75,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a>     </pre></td>
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
@@ -105,7 +105,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>   </pre></td>
+            <td><pre><a name="line9">9</a> </pre></td>
           </tr>
         
           
@@ -219,7 +219,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>   </pre></td>
+            <td><pre><a name="line28">28</a> </pre></td>
           </tr>
         
           
@@ -285,13 +285,91 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a> end</pre></td>
+            <td><pre><a name="line39">39</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>   def make_owner</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>     if @affiliate.is_owner?(current_user)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>       if user = @affiliate.users.find_by_id(params[:id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>         @affiliate.update_attribute(:owner, user)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>         flash[:error] = &quot;That user is not an affiliate user. Only affiliate users can be become owners.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line47">47</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>       flash[:error] = &quot;Only the affiliate owner can reassign ownership.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line49">49</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line50">50</a>     redirect_to affiliate_users_path(@affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line51">51</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Jan 29 11:27:34 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Jan 31 14:58:17 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
