@@ -12,5 +12,13 @@ describe Admin::AffiliatesHelper do
 
       User.find(:all, :conditions => conditions).should =~ [users(:affiliate_manager), users(:another_affiliate_manager )]
     end
+
+    it "should not act on other associations" do
+      conditions = helper.options_for_association_conditions(Affiliate.reflections[:users])
+
+
+      User.find(:all, :conditions => conditions).count.should == User.count
+      
+    end
   end
 end
