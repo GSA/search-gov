@@ -1,8 +1,9 @@
-= breadcrumbs([link_to("API & Web Services", api_docs_path), "Terms of Service"])
+= breadcrumbs([link_to("APIs & Web Services", api_docs_path), "Terms of Service"])
 %p
   %a{ :name => "content" }
+= render "/shared/api_key"
 %h1
-  USASearch API Terms of Service
+  Terms of Service for USASearch's APIs and Web Services
 %p
   The General Services Administration’s USASearch Program offers some of its public data in machine readable format via application program interfaces (APIs). This service is offered subject to your acceptance of the terms and conditions contained herein as well as any relevant sections of the USA.gov 
   %a{:href=>"http://www.usa.gov/About/Important_Notices.shtml"}

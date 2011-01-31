@@ -1,7 +1,7 @@
 .secondary-navbar
   .sec-nav-left
     %ul.nav{:style=>"display:inline"}
-      %li
+      %li#affiliate_program_nav
         = link_to 'Affiliate Program', affiliates_path
         %ul
           %li
@@ -9,15 +9,15 @@
           %li
             = link_to 'See it in action', demo_affiliates_path
           %li
-            = link_to 'Affiliate Signup', url_for_login
+            = link_to 'Sign in', url_for_login
         .clear
-      %li
-        = link_to 'API & Web Services', api_docs_path
+      %li#api_nav
+        = link_to 'APIs & Web Services', api_docs_path
         %ul
           %li
             = link_to 'Recalls API', recalls_api_docs_path
           %li
-            = link_to 'API Signup', url_for_login
+            = link_to 'Sign in', url_for_login
         .clear
       %li
         = link_to 'Search.USA.gov', searchusagov_path

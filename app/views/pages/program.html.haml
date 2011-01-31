@@ -28,8 +28,4 @@
       Search.USA.gov
     The U.S. government’s official search engine with about 50 million pages from federal, state, local, territorial and tribal websites.
     = link_to "Learn more", searchusagov_path, :id => "learn_more_searchusagov"
-    - form_tag(search_path, :method => :get, :id => "search_form") do
-      = hidden_field_tag :locale, I18n.locale
-      = hidden_field_tag :m, params[:m]
-      = text_field :search, :query, { :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete" }
-      = submit_tag("Search", :id => "search_button")
+    = render "/shared/basic_search_form"

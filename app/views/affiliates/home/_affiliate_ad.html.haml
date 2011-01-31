@@ -1,0 +1,6 @@
+.affiliate-marketing-left
+  = link_to image_tag("affiliates/#{affiliate_ad[:thumbnail]}", :alt => affiliate_ad[:display_name]), affiliate_ad[:url], :target => "_new"
+.affiliate-marketing-right
+  %h2
+    = link_to affiliate_ad[:display_name], affiliate_ad[:url], :target => "_new"
+.pad10.clear

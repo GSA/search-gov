@@ -25,6 +25,16 @@ describe Affiliates::HomeController do
       get :demo
       response.should be_success
     end
+
+    it "assigns @affiliate_ads that contains 3 items" do
+      get :demo
+      assigns[:affiliate_ads].size.should == 3
+    end
+
+    it "assigns @affiliate_ads that contains more than 3 items if all parameter is defined" do
+      get :demo, :all => ""
+      assigns[:affiliate_ads].size.should > 3
+    end
   end
 
   describe "do GET on #edit" do

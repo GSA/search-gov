@@ -8,7 +8,7 @@ Feature: Affiliate clients
     Then I should see "USASearch > Affiliate Program"
     And I should see "Hosted Search Services"
     Then I should see "Affiliate Program"
-    And I should see "API & Web Services"
+    And I should see "APIs & Web Services"
     And I should see "Search.USA.gov"
     And I should not see "USA Search Program"
     And I should not see "Admin Center"

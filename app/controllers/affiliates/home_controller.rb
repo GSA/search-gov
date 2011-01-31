@@ -3,19 +3,59 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate, :only => [:edit]
   before_filter :setup_affiliate, :only=> [:edit, :update, :show, :push_content_for, :destroy]
 
+  AFFILIATE_ADS = [
+    {:display_name => "BROWARD.org",
+     :url => "http://www.broward.org",
+     :thumbnail => "thumb_broward.png"},
+    {:display_name => "CT.gov",
+     :url => "http://www.ct.gov",
+     :thumbnail => "thumb_ct.png"},
+    {:display_name => "DATA.gov",
+     :url => "http://data.gov",
+     :thumbnail => "thumb_datagov.png"},
+    {:display_name => "DOI.gov",
+     :url => "http://www.doi.gov",
+     :thumbnail => "thumb_doi.png"},
+    {:display_name => "IMLS.gov",
+     :url => "http://imls.gov",
+     :thumbnail => "thumb_imls.png"},
+    {:display_name => "Navajo County",
+     :url => "http://www.navajocountyaz.gov",
+     :thumbnail => "thumb_navajo.png"},
+    {:display_name => "National Park Service",
+     :url => "http://www.nps.gov",
+     :thumbnail => "thumb_nps.png"},
+    {:display_name => "National Weather Service",
+     :url => "http://www.nws.gov",
+     :thumbnail => "thumb_nws.png"},
+    {:display_name => "City of Reno, Nevada",
+     :url => "http://reno.gov",
+     :thumbnail => "thumb_reno.png"},
+    {:display_name => "www.nan.usace.army.mil",
+     :url => "http://www.nan.usace.army.mil",
+     :thumbnail => "thumb_usace.png"},
+    {:display_name => "WSDOT.wa.gov",
+     :url => "http://wsdot.wa.gov",
+     :thumbnail => "thumb_wsdot.png"},
+  ]
   def index
-    @title = "Affiliate Program - "
+    @title = "USASearch Affiliate Program - "
   end
 
   def edit
   end
 
   def how_it_works
-    @title = "How it works - "
+    @title = "How the Affiliate Program Works - "
   end
 
   def demo
-    @title = "See it in Action - "
+    @title = "See the Affiliate Program in Action - "
+    if params.include?(:all)
+      @affiliate_ads = AFFILIATE_ADS
+    else
+      @affiliate_ads = AFFILIATE_ADS.shuffle.slice(0,3)
+    end
   end
    
   def new

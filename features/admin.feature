@@ -3,7 +3,7 @@ Feature:  Administration
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     Then I should see "Affiliate Program" within ".nav"
-    And I should see "API & Web Services" within ".nav"
+    And I should see "APIs & Web Services" within ".nav"
     And I should see "Search.USA.gov" within ".nav"
     And I should see "USASearch > Affiliate Program > Admin Center"
     And I should see "Search.USA.gov Admin Center"
