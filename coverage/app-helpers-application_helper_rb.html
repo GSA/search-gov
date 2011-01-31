@@ -141,7 +141,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     (page_title.blank? ? &quot;&quot; : &quot;#{page_title} - &quot;) + (t :site_title)</pre></td>
+            <td><pre><a name="line15">15</a>     (page_title.blank? ? &quot;&quot; : &quot;#{page_title} - &quot;) + (forms_search? ? (t :forms_site_title) : (t :site_title))</pre></td>
           </tr>
         
           
@@ -1161,7 +1161,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Mon Jan 31 14:58:17 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Jan 31 15:19:35 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
