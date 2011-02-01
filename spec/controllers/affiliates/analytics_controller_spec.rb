@@ -80,6 +80,11 @@ describe Affiliates::AnalyticsController do
           @user = users("affiliate_manager")
           UserSession.create(@user)
         end
+        
+        it "should assign the page title" do
+          get :index, :affiliate_id => @user.affiliates.first.id
+          assigns[:title].should == "Query Logs - "
+        end
 
         it "should allow the affiliate to view his own analytics" do
           get :index, :affiliate_id => @user.affiliates.first.id
@@ -176,6 +181,11 @@ describe Affiliates::AnalyticsController do
         before do
           @user = users("affiliate_manager")
           UserSession.create(@user)
+        end
+        
+        it "should assign the page title" do
+          get :monthly_reports, :affiliate_id => @user.affiliates.first.id
+          assigns[:title].should == "Monthly Reports - "
         end
 
         it "should allow the affiliate to view his own monthly reports" do
