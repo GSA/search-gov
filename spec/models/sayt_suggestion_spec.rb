@@ -124,12 +124,12 @@ describe SaytSuggestion do
       end
     end
 
-    context "when search results are present for only some query/affiliate pairs" do
+    context "when search results with no Bing spelling suggestions are present for only some query/affiliate pairs" do
       before do
-        @one = DailyQueryStat.create!(:day => Date.today, :query => "no results for this query", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
-        @two = DailyQueryStat.create!(:day => Date.today, :query => "got some for this query", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
-        Search.should_receive(:results_present_for?).with(@one.query, affiliates(:basic_affiliate)).and_return false
-        Search.should_receive(:results_present_for?).with(@two.query, affiliates(:basic_affiliate)).and_return true
+        @one = DailyQueryStat.create!(:day => Date.today, :query => "no results for this query, or got a spelling correction", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
+        @two = DailyQueryStat.create!(:day => Date.today, :query => "got results with no spelling suggestion for this query", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
+        Search.should_receive(:results_present_for?).with(@one.query, affiliates(:basic_affiliate), false).and_return false
+        Search.should_receive(:results_present_for?).with(@two.query, affiliates(:basic_affiliate), false).and_return true
       end
 
       it "should only create SaytSuggestions for the ones with results" do

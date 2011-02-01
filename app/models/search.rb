@@ -96,10 +96,11 @@ class Search
     suggestions[0, num_suggestions]
   end
 
-  def self.results_present_for?(query, affiliate)
+  def self.results_present_for?(query, affiliate, is_misspelling_allowed = true)
     search = new(:query => query, :affiliate => affiliate)
     search.run
-    return search.results.present?
+    spelling_ok = is_misspelling_allowed ? true : search.spelling_suggestion.nil?
+    return (search.results.present? && spelling_ok)
   end
 
   def sources

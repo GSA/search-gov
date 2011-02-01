@@ -42,7 +42,7 @@ class SaytSuggestion < ActiveRecord::Base
       daily_query_stats = ordered_hash.map { |entry| DailyQueryStat.new(:query=> entry[0], :times=> entry[1]) }
       filtered_daily_query_stats = SaytFilter.filter(daily_query_stats, "query")
       filtered_daily_query_stats.each do |dqs|
-        if Search.results_present_for?(dqs.query, affiliate) then
+        if Search.results_present_for?(dqs.query, affiliate, false) then
           temp_ss = new(:phrase => dqs.query)
           temp_ss.squish_whitespace_and_downcase_and_spellcheck
           sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase(affiliate_id, temp_ss.phrase)

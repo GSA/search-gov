@@ -712,7 +712,7 @@ describe Search do
 
     context "when the query ends in OR" do
       before do
-        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{ portland or | oregon | rain })
+        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{   portland or | oregon | rain   })
         CalaisRelatedSearch.reindex
         @search = Search.new(:query => "Portland OR")
         @search.run
@@ -1128,7 +1128,7 @@ describe Search do
     end
   end
 
-  describe "#self.results_present_for?" do
+  describe "#self.results_present_for?(query, affiliate, is_misspelling_allowed)" do
     before do
       @search = Search.new(:affiliate => @affiliate.name, :query => "some term")
       Search.stub!(:new).and_return(@search)
@@ -1138,11 +1138,33 @@ describe Search do
     context "when search results exist for a term/affiliate pair" do
       before do
         @search.stub!(:results).and_return([{'title'=>'First title', 'content' => 'First content'},
-                                           {'title'=>'Second title', 'content' => 'Second content'}])
+                                            {'title'=>'Second title', 'content' => 'Second content'}])
       end
 
       it "should return true" do
         Search.results_present_for?("some term", @affiliate).should be_true
+      end
+
+      context "when misspellings aren't allowed" do
+        context "when Bing suggests a different spelling" do
+          before do
+            @search.stub!(:spelling_suggestion).and_return "sum term"
+          end
+
+          it "should return false" do
+            Search.results_present_for?("some term", @affiliate, false).should be_false
+          end
+        end
+
+        context "when Bing has no spelling suggestion" do
+          before do
+            @search.stub!(:spelling_suggestion).and_return nil
+          end
+
+          it "should return true" do
+            Search.results_present_for?("some term", @affiliate, false).should be_true
+          end
+        end
       end
     end
 
