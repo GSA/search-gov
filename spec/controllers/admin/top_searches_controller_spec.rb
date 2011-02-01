@@ -9,7 +9,7 @@ describe Admin::TopSearchesController do
 
   it "should require login" do
     get :new
-    response.should redirect_to(new_user_session_path)
+    response.should redirect_to(login_path)
   end
 
   context "a logged in user" do

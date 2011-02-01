@@ -30,7 +30,7 @@ describe Affiliates::HomeController do
   describe "do GET on #edit" do
     it "should require affiliate login for edit" do
       get :edit, :id => affiliates(:power_affiliate).id
-      response.should redirect_to(new_user_session_path)
+      response.should redirect_to(login_path)
     end
 
     context "when logged in but not an affiliate manager" do
@@ -72,7 +72,7 @@ describe Affiliates::HomeController do
   describe "do POST on #update" do
     it "should require affiliate login for update" do
       post :update, :id => affiliates(:power_affiliate).id, :affiliate=> {}
-      response.should redirect_to(new_user_session_path)
+      response.should redirect_to(login_path)
     end
 
     context "when logged in as an affiliate manager" do

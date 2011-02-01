@@ -10,7 +10,7 @@ describe Admin::AffiliateBroadcastsController do
 
   it "should require login" do
     get :new
-    response.should redirect_to(new_user_session_path)
+    response.should redirect_to(login_url)
   end
 
   context "a logged in user" do

@@ -26,6 +26,6 @@ class UserSessionsController < SslController
 
   def destroy
     current_user_session.destroy
-    redirect_back_or_default new_user_session_url
+    redirect_back_or_default login_url
   end
 end

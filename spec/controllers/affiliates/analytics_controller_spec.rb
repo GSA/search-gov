@@ -39,7 +39,7 @@ describe Affiliates::AnalyticsController do
       context "when not logged in" do
         it "should redirect to the home page" do
           get :index, :affiliate_id => @affiliate.id
-          response.should redirect_to new_user_session_path
+          response.should redirect_to login_path
         end
       end
 
@@ -148,7 +148,7 @@ describe Affiliates::AnalyticsController do
       context "when not logged in" do
         it "should redirect to the home page" do
           get :monthly_reports, :affiliate_id => @affiliate.id
-          response.should redirect_to new_user_session_path
+          response.should redirect_to login_path
         end
       end
 

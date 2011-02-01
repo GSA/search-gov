@@ -6,7 +6,7 @@ describe Analytics::HomeController do
   context "when not logged in" do
     it "should redirect to the login page" do
       get :index
-      response.should redirect_to(new_user_session_path)
+      response.should redirect_to(login_path)
     end
   end
 
