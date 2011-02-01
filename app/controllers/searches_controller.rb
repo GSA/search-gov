@@ -39,10 +39,8 @@ class SearchesController < ApplicationController
     respond_to do |format|
       if @gov_forms
         format.html
-        format.mobile
       else
         format.html { render :action => :index }
-        format.mobile { render :action => :index }
         format.json { render :json => @search }
       end
     end
@@ -129,11 +127,15 @@ class SearchesController < ApplicationController
   end
 
   def adjust_mobile_mode
-    request.format = :html if @search_options[:affiliate].present? or is_advanced_search?
+    request.format = :html if @search_options[:affiliate].present? or is_advanced_search? or is_forms_search?
     request.format = :json if @original_format == 'application/json' and @search_options[:affiliate].blank?
   end
 
   def is_advanced_search?
     params[:action] == "advanced"
+  end
+  
+  def is_forms_search?
+    params[:action] == "forms"
   end
 end
