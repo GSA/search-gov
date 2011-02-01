@@ -25,9 +25,13 @@ Feature: Program
 
     When I follow "How It Works"
     Then I should see "USASearch > Affiliate Program > How it Works"
+    When I follow "Register Now"
+    Then I should see "Sign In to Use Our Services"
 
     When I follow "See it in action"
     Then I should see "USASearch > Affiliate Program > See it in Action"
+    When I follow "sign up"
+    And I should see "Sign In to Use Our Services"
 
     When I follow "Affiliate Signup"
     Then I should see "Sign In to Use Our Services"

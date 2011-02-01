@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resource :account, :controller => "users"
-  map.resources :users
+  map.resource :account, :controller => "users", :except => [:new]
+  map.resources :users, :except => [:new]
   map.resource :user_session
   map.resources :password_resets
   map.resources :affiliates, :controller => 'affiliates/home', :member => { :push_content_for => :post, :embed_code => :get }, :collection => { :home => :get, :how_it_works => :get, :demo => :get } do |affiliate|
@@ -70,4 +70,5 @@ ActionController::Routing::Routes.draw do |map|
   map.program '/program', :controller => "pages", :action => "show", :id => "program"
   map.searchusagov '/searchusagov', :controller => "pages", :action => "show", :id => "search"
   map.contactus '/contactus', :controller => "pages", :action => "show", :id => "contactus"
+  map.login '/login', :controller => "user_sessions", :action => "new"
 end

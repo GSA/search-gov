@@ -9,7 +9,7 @@ describe Affiliates::BoostedContentsController do
   describe "do GET on #new" do
     it "should require affiliate login for new" do
       get :new, :affiliate_id => affiliates(:power_affiliate).id
-      response.should redirect_to(new_user_session_path)
+      response.should redirect_to(login_path)
     end
 
     context "when logged in but not an affiliate manager" do
@@ -47,7 +47,7 @@ describe Affiliates::BoostedContentsController do
   describe "create" do
     it "should require affiliate login" do
       post :create, :affiliate_id => affiliates(:power_affiliate).id
-      response.should redirect_to(new_user_session_path)
+      response.should redirect_to(login_path)
     end
 
     context "logged in" do

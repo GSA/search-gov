@@ -11,7 +11,7 @@ describe Affiliates::UsersController do
     context "when not logged in" do
       it "should redirect to the sign in page" do
         get :index, :affiliate_id => @affiliate.id
-        response.should redirect_to(new_user_session_path)
+        response.should redirect_to(login_path)
       end
     end
     
@@ -48,7 +48,7 @@ describe Affiliates::UsersController do
       
       it "should redirect back to the user's account page" do
         get :index, :affiliate_id => @affiliate.id
-        response.should redirect_to new_user_session_path
+        response.should redirect_to login_path
       end
     end
   end
@@ -58,7 +58,7 @@ describe Affiliates::UsersController do
     context "when not logged in" do
       it "should redirect to the sign in page" do
         post :create, :affiliate_id => @affiliate.id, :email => 'newuser@usa.gov'
-        response.should redirect_to(new_user_session_path)
+        response.should redirect_to(login_path)
       end
     end
     
@@ -131,7 +131,7 @@ describe Affiliates::UsersController do
     context "when not logged in" do
       it "should redirect to the sign in page" do
         delete :destroy, :affiliate_id => @affiliate.id, :id => @affiliate_user.id
-        response.should redirect_to(new_user_session_path)
+        response.should redirect_to(login_path)
         @affiliate.users.include?(@affiliate_user).should be_true
       end
     end

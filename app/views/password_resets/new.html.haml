@@ -1,7 +1,7 @@
 .span-15
   - form_tag password_resets_path, :class=>"bordered"  do
     %h1
-      Reset Password #{link_to "(log in)", new_user_session_path, :class => "small"}
+      Reset Password #{link_to "(log in)", login_path, :class => "small"}
     %p
       Enter your email address below. Instructions to reset your password will be emailed to you:
     %label

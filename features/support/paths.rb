@@ -39,13 +39,11 @@ module NavigationHelpers
     when /the affiliate admin broadcast page/
       new_admin_affiliate_broadcast_path
     when /the login page/
-      new_user_session_path
+      login_path
     when /the password reset page/
       password_resets_path
     when /the user account page/
       account_path
-    when /the new user page/
-      new_account_path
     when /the affiliate welcome page/
       affiliates_path
     when /the reports homepage/

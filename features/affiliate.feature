@@ -16,6 +16,9 @@ Feature: Affiliate clients
     And I should not see "Affiliate Center"
     And I should not see "Developer"
 
+    When I follow "Register Now"
+    Then I should see "Sign In to Use Our Services"
+
   Scenario: Visiting the affiliate welcome page as affiliate admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the affiliate welcome page
