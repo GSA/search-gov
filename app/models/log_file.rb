@@ -52,7 +52,7 @@ class LogFile
     end
 
     def normalize(query)
-      query.delete("'").gsub(",", ' ').squish.strip.downcase
+      query.gsub(",", ' ').squish.strip.downcase
     end
   end
 end

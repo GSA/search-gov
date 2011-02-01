@@ -1,7 +1,7 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 describe LogFile do
   fixtures :affiliates
-  
+
   describe "#transform_to_hive_queries_format(filepath)" do
     before do
       raw_entries = <<'EOF'
@@ -74,19 +74,6 @@ EOF
 
       it "should lowercase the affiliate name" do
         LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?affiliate=NOAA.gov&input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tdelinquent delivery\tdelinquent delivery\tnoaa.gov\ten\t0\t0")
-        LogFile.parse_and_emit_line(@log_entry)
-      end
-    end
-
-    context "when log entry contains query with an apostrophe" do
-      before do
-        @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=car%27s&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
-EOF
-      end
-
-      it "should strip out the apostrophe in the normalized query" do
-        LogFile.should_receive(:puts).with("143.81.248.53\t07:02:28\t/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=car%27s&affiliate=noaa.gov&x=44&y=18\t165\thttp://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18\tMozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)\tcar's\tcars\tnoaa.gov\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
@@ -190,7 +177,7 @@ EOF
       end
 
       it "should emit record with the necessary characters unencoded in the query and normalized query fields" do
-        LogFile.should_receive(:puts).with("155.82.73.253\t19:49:50\t/search?v%3Asources=firstgov-search-select&sitelimit=www.usace.army.mil&Submit=Go&v%3Aproject=firstgov&query=d%27kc%22z%27gj%27%22%2A%2A5%2A%28%28%28%3B-%2A%60%29&input-form=simple-firstgov\t60322\t\tw3af.sourceforge.net\td'kc\"z'gj'\"**5*(((;-*`)\tdkc\"zgj\"**5*(((;-*`)\tusasearch.gov\ten\t0\t0")
+        LogFile.should_receive(:puts).with("155.82.73.253\t19:49:50\t/search?v%3Asources=firstgov-search-select&sitelimit=www.usace.army.mil&Submit=Go&v%3Aproject=firstgov&query=d%27kc%22z%27gj%27%22%2A%2A5%2A%28%28%28%3B-%2A%60%29&input-form=simple-firstgov\t60322\t\tw3af.sourceforge.net\td'kc\"z'gj'\"**5*(((;-*`)\td'kc\"z'gj'\"**5*(((;-*`)\tusasearch.gov\ten\t0\t0")
         LogFile.parse_and_emit_line(@log_entry)
       end
     end
