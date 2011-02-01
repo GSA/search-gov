@@ -133,7 +133,7 @@ describe Affiliates::UsersController do
       it "should redirect to the sign in page" do
         post :make_owner, :affiliate_id => @affiliate.id, :id => @affiliate_user.id
 
-        response.should redirect_to(new_user_session_path)
+        response.should redirect_to(login_path)
         @affiliate.owner.should == @owner
       end
     end
