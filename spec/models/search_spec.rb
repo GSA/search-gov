@@ -141,7 +141,7 @@ describe Search do
 
     context "when affiliate has domains specified and user does not specify site: in search" do
       before do
-        @affiliate     = Affiliate.new(:domains => %w(   foo.com bar.com   ).join("\r\n"))
+        @affiliate     = Affiliate.new(:domains => %w(    foo.com bar.com    ).join("\r\n"))
         @uriresult     = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -154,7 +154,7 @@ describe Search do
 
       context "when the domains are separated by only '\\n'" do
         before do
-          @affiliate.domains = %w(  foo.com bar.com  ).join("\n")
+          @affiliate.domains = %w(   foo.com bar.com   ).join("\n")
           @affiliate.save
         end
 
@@ -188,7 +188,7 @@ describe Search do
 
     context "when affiliate has domains specified but user specifies site: in search" do
       before do
-        @affiliate     = Affiliate.new(:domains => %w(   foo.com bar.com   ).join("\n"))
+        @affiliate     = Affiliate.new(:domains => %w(    foo.com bar.com    ).join("\n"))
         @uriresult     = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -712,7 +712,7 @@ describe Search do
 
     context "when the query ends in OR" do
       before do
-        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{   portland or | oregon | rain   })
+        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{portland or | oregon | rain})
         CalaisRelatedSearch.reindex
         @search = Search.new(:query => "Portland OR")
         @search.run
@@ -811,6 +811,20 @@ describe Search do
 
       it "should strip them all out, leaving site: terms in the suggestion" do
         @search.spelling_suggestion.should == "electrocoagulation site:uspto.gov"
+      end
+    end
+
+    context "when the Bing spelling suggestion is identical to the original query except for Bing highight characters" do
+      before do
+        @search = Search.new(:query => 'ct-w4')
+        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_highlight_characters.json")
+        parsed  = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
+        @search.run
+      end
+
+      it "should strip them all out, leaving site: terms in the suggestion" do
+        @search.spelling_suggestion.should be_nil
       end
     end
 
