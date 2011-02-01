@@ -330,7 +330,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Query Logs"
     Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Query Analytics"
-    And I should see "Query Analytics for aff site"
+    And I should see "Query Logs for aff site"
     And I should not see "aff.gov"
     And I should see "Most Frequent Queries"
     And I should see "Data for April 15, 2010"
@@ -380,7 +380,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Monthly Reports"
     Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Monthly Reports"
-    And I should see "Monthly Usage for aff site"
+    And I should see "Monthly Reports for aff site"
     And I should see "Monthly Usage Stats"
     And I should not see "aff.gov"
 
