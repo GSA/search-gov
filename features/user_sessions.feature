@@ -1,7 +1,8 @@
 Feature: User sessions
 
   Scenario: Visiting the login page
-    Given I am on the login page
+    Given I am on the program welcome page
+    When I follow "Sign In"
     Then I should see "USASearch > Sign In to Use Our Services"
     And I should see "Log In"
 
@@ -9,6 +10,9 @@ Feature: User sessions
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the login page
     Then I should be on the user account page
+
+    When I follow "Sign Out"
+    Then I should be on the login page
 
   Scenario: User has trouble logging in
     Given I am on the login page

@@ -24,7 +24,7 @@ Feature:  Administration
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
     And I should see "Mobile Pages" within ".secondary-navbar"
-    And I should see "Logout"
+    And I should see "Sign Out"
 
     When I follow "Affiliate Broadcast" within ".secondary-navbar"
     Then I should be on the affiliate admin broadcast page
@@ -35,7 +35,7 @@ Feature:  Administration
     When I follow "SAYT Bulk Upload" within ".secondary-navbar"
     Then I should be on the admin sayt suggestions upload page
 
-    When I follow "Logout"
+    When I follow "Sign Out"
     Then I should be on the login page
 
   Scenario: Clicking on program logo in the admin home page as an admin
