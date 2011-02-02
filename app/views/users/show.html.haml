@@ -5,38 +5,38 @@
   %table.account-table
     %tr
       %th
-        Account Profile
+        Contact Information
       %th{:style=>"text-align:right; font-size:smaller"}
         =link_to "- edit your profile", edit_account_path
-    %tr{:class => cycle('even', 'odd')}
-      %td{:class=>"label"}
-        Email:
-      %td
-        &= @user.email
     %tr
       %td{:class=>"label"}
-        Contact Name:
+        Name:
       %td
         &= @user.contact_name
     %tr
       %td{:class=>"label"}
-        Organization Name:
+        Government organization:
       %td
         &= @user.organization_name
+    %tr
+      %td{:class=>"label"}
+        Email:
+      %td
+        &= @user.email
     - if @user.is_affiliate_or_higher
       %tr
-        %td{:class=>"label"}
-          Time Zone:
+        %td{:class=>"label"} 
+          Phone:
         %td
-          &= @user.time_zone
+          &= @user.phone
       %tr
         %td{:class=>"label"}
-          Address:
+          Organization address:
         %td
           &= @user.address
       %tr
         %td{:class=>"label"}
-          Address Line 2:
+          Address 2:
         %td
           &= @user.address2
       %tr
@@ -54,11 +54,6 @@
           Zip:
         %td
           &= @user.zip
-      %tr
-        %td{:class=>"label"} 
-          Phone:
-        %td
-          &= @user.phone
 .clear
 
 .span-17
