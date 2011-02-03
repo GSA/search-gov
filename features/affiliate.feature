@@ -298,7 +298,7 @@ Feature: Affiliate clients
     And I should see "Do you want to have Type-ahead Search box on your home page and/or in your banner?"
     And I should see "How To Implement Type-ahead Search"
     When I follow "Type-ahead Search" within ".cross-promotion"
-    Then I should see "Add Type-ahead Search Suggestion"
+    Then I should see "Add a New Entry"
     And I should not see "aff.gov"
 
   Scenario: Navigating to an Affiliate page for a particular Affiliate
@@ -475,7 +475,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"
     Then I should be on the affiliate sayt page
-    And I should see "Add Type-ahead Search Suggestion"
+    And I should see "Add a New Entry"
     When I fill in "Phrase" with "banana"
     And I press "Add"
     Then I should be on the affiliate sayt page
@@ -500,7 +500,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"
     Then I should be on the affiliate sayt page
-    And I should see "Type-ahead Search Suggestions Bulk Upload"
+    And I should see "Bulk Upload"
     
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
     And I press "Upload"

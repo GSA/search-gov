@@ -53,12 +53,21 @@ describe SaytSuggestion do
       SaytSuggestion.create!(:phrase => "popular")
       SaytSuggestion.find_by_phrase("popular").affiliate_id.should be_nil
     end
-
+    
+    it "should default protected status to false" do
+      suggestion = SaytSuggestion.create!(:phrase => "unprotected")
+      suggestion.is_protected.should be_false
+    end
+    
+    it "should not create a new suggestion if one exists, but is marked as deleted" do
+      SaytSuggestion.create!(:phrase => "deleted", :deleted_at => Time.now)
+      SaytSuggestion.create(:phrase => 'deleted').id.should be_nil
+    end
   end
 
   describe "#expire(days_back)" do
-    it "should delete suggestions that have not been updated in X days" do
-      SaytSuggestion.should_receive(:delete_all).with(["updated_at < ?", 30.days.ago.beginning_of_day.to_s(:db)])
+    it "should delete suggestions that have not been updated in X days, and that are unproteced" do
+      SaytSuggestion.should_receive(:delete_all).with(["updated_at < ? AND is_protected = ?", 30.days.ago.beginning_of_day.to_s(:db), false])
       SaytSuggestion.expire(30)
     end
   end
@@ -115,12 +124,33 @@ describe SaytSuggestion do
         DailyQueryStat.create!(:day => Date.today, :query => "today term2", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         Search.stub!(:results_present_for?).and_return true
       end
+      
+      it "should create unprotected suggestions" do
+        SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
+        SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term1", 2).is_protected.should be_false
+      end
 
       it "should populate SaytSuggestions based on each DailyQueryStat for the given day" do
         SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
         SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term1", 2).should_not be_nil
         SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term2", 2).should_not be_nil
         SaytSuggestion.find_by_phrase("yesterday term1").should be_nil
+      end
+      
+      context "when suggestions exist that have been marked as deleted" do
+        before do
+          @suggestion = SaytSuggestion.create!(:phrase => 'today term1', :affiliate => nil, :deleted_at => Time.now, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY)
+          @suggestion.should_not be_nil
+        end
+        
+        it "should not create a new suggestion, and leave the old suggestion alone" do
+          SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
+          suggestion = SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "today term1")
+          suggestion.should_not be_nil
+          suggestion.should == @suggestion
+          suggestion.deleted_at.should_not be_nil
+          suggestion.popularity.should == SaytSuggestion::MAX_POPULARITY
+        end
       end
     end
 
@@ -275,14 +305,14 @@ describe SaytSuggestion do
 
     it "should create SAYT suggestions using the affiliate provided, if provided" do
       @phrases.each do |phrase|
-        SaytSuggestion.should_receive(:create).with({:phrase => phrase, :affiliate => @affiliate}).and_return @dummy_suggestion
+        SaytSuggestion.should_receive(:create).with({:phrase => phrase, :affiliate => @affiliate, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY}).and_return @dummy_suggestion
       end
       SaytSuggestion.process_sayt_suggestion_txt_upload(@file, @affiliate)
     end
 
     it "should create SAYT suggestions without an affiliate if none is provided" do
       @phrases.each do |phrase|
-        SaytSuggestion.should_receive(:create).with(:phrase => phrase, :affiliate => nil).and_return @dummy_suggestion
+        SaytSuggestion.should_receive(:create).with(:phrase => phrase, :affiliate => nil, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY).and_return @dummy_suggestion
       end
       SaytSuggestion.process_sayt_suggestion_txt_upload(@file)
     end
