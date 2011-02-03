@@ -853,76 +853,29 @@ describe Search do
       end
     end
 
-    context "recent recalls (last month)" do
-      before do
-        @date_filter_hash= {:start_date=>1.month.ago.to_date, :end_date=>Date.today}
+    context "recent recalls" do
+      before :each do
+        @options_with_recall = {:query => "foo bar recall"}
       end
 
-      context "when search phrase contains recall" do
-        before :each do
-          @options_with_recall = {:query => "foo bar recall"}
-        end
-
-        it "should strip off the recall word before searching" do
-          search = Search.new(@options_with_recall)
-          Recall.should_receive(:do_search).with('foo bar', @date_filter_hash, 1, 10)
-          search.run
-        end
-
-        it "should not run on pages other than the first page" do
-          search = Search.new(@options_with_recall.merge(:page => 2))
-          Recall.should_not_receive(:do_search)
-          search.run
-        end
-
-        it "should not run on affiliate pages" do
-          search = Search.new(@options_with_recall.merge(:affiliate => @affiliate))
-          Recall.should_not_receive(:do_search)
-          search.run
-        end
-
+      it "should send the query to recall" do
+        search = Search.new(@options_with_recall)
+        results = [1,2,3]
+        Recall.should_receive(:recent).with('foo bar recall').and_return(results)
+        search.run
+        search.recalls.should == results
       end
 
-      context "when search term does not contain recall or recalls" do
-        it "should not look for recalls" do
-          search = Search.new(:query => 'foo bar')
-          Recall.should_not_receive(:search_for)
-          search.run
-        end
+      it "should not run on pages other than the first page" do
+        search = Search.new(@options_with_recall.merge(:page => 2))
+        Recall.should_not_receive(:recent)
+        search.run
       end
 
-      context "when search phrase is just the word recall(s)" do
-        it "should not look for recalls" do
-          search = Search.new(:query => 'recall')
-          Recall.should_not_receive(:search_for)
-          search.run
-        end
-      end
-
-      context "when search phrase contains recalls" do
-        it "should strip off the recalls word before searching" do
-          search = Search.new(:query => 'recalls of pepper')
-          Recall.should_receive(:do_search).with('of pepper', @date_filter_hash, 1, 10)
-          search.run
-        end
-      end
-
-      context "when no relevant recall exists for the search term" do
-        it "should assign nil to recalls" do
-          search = Search.new(:query => 'nothing here recall')
-          Recall.should_receive(:do_search).with('nothing here', @date_filter_hash, 1, 10).and_return(nil)
-          search.run
-          search.recalls.should be_nil
-        end
-      end
-
-      context "when search phrase stripped of 'recall' is an unparseable query string" do
-        it "should catch an rsolr error and assign nil to recalls" do
-          search = Search.new(:query => 'sheetrock OR recall')
-          Recall.should_receive(:do_search).with('sheetrock OR', @date_filter_hash, 1, 10).and_raise(RSolr::RequestError)
-          search.run
-          search.recalls.should be_nil
-        end
+      it "should not run on affiliate pages" do
+        search = Search.new(@options_with_recall.merge(:affiliate => @affiliate))
+        Recall.should_not_receive(:recent)
+        search.run
       end
     end
 

@@ -330,6 +330,45 @@ describe Recall do
     end
   end
 
+  describe ".recent" do
+    it "should not pass non recall queries to SOLR" do
+      Recall.should_not_receive(:do_search)
+      Recall.should_not_receive(:search_for)
+
+      Recall.recent("beef")
+    end
+
+    it "should search within the last month" do
+      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.today, :sort => "date"}, 1, 3).and_return(Struct.new(:total).new(5))
+
+      Recall.recent("beef recall").total.should == 5
+    end
+
+    it "should retry with no date filter if 0 results in last month" do
+      results = [1,2,3]
+      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.today, :sort => "date"}, 1, 3).and_return(Struct.new(:total).new(0))
+      Recall.should_receive(:search_for).with('beef recall', {:sort => "date"}, 1, 3).and_return(results)
+
+      Recall.recent("beef recall").should == results
+    end
+
+    it "should retry with no date filter if nil results in last month" do
+      results = [1,2,3]
+      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.today, :sort => "date"}, 1, 3).and_return(nil)
+      Recall.should_receive(:search_for).with('beef recall', {:sort => "date"}, 1, 3).and_return(results)
+
+      Recall.recent("beef recall").should == results
+    end
+
+    it "should be nil if no results in either period" do
+      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.today, :sort => "date"}, 1, 3).and_return(nil)
+      Recall.should_receive(:search_for).with('beef recall', {:sort => "date"}, 1, 3).and_return(nil)
+
+      Recall.recent("beef recall").should be_nil
+    end
+
+  end
+
   describe ".search_for" do
     before do
       Recall.destroy_all
@@ -375,8 +414,18 @@ describe Recall do
         Recall.search_for('stroller retirados')
         Recall.search_for('stroller retiradas')
       end
-
     end
+
+    describe "when SOLR raises an error" do
+      before do
+        Recall.should_receive(:do_search).with('sheetrock OR', {}, 1, 10).and_raise(RSolr::RequestError)
+      end
+
+      it "should return nil" do
+        Recall.search_for("sheetrock OR")
+      end
+    end
+
 
     context "CPSC-related searches" do
       it "should filter search results by organization" do
@@ -730,7 +779,7 @@ describe Recall do
     end
   end
 
-  describe "#summary, #description" do
+  describe "#summary, #description, #industry" do
     context "when generating a summary for a CPSC recall" do
       before do
         @recall = Recall.new(:recall_number => '12345', :organization => 'CPSC')
@@ -741,7 +790,15 @@ describe Recall do
 
       it "should generate a summary based on all the products involved" do
         @recall.summary.should == "Foo, Bar, Blat"
+      end
+      it "should generate a description based on detail value" do
         @recall.description.should == "Goo"
+      end
+      it "should have an industry of :product" do
+        @recall.industry.should == :product
+      end
+      it "should have an agency name" do
+        @recall.agency_name.should == "Consumer Product Safety Commission"
       end
     end
 
@@ -753,6 +810,7 @@ describe Recall do
       it "should generate a summary based on all the products involved" do
         @recall.summary.should == "Click here to see products"
         @recall.description.should be_blank
+        @recall.industry.should == :product
       end
     end
 
@@ -773,7 +831,15 @@ describe Recall do
 
       it "should generate a summary based on all the products involved" do
         @recall.summary.should == "FOO, BAR, BLAT FROM FOP, BAS, BLAU"
+      end
+      it "should generate a description" do
         @recall.description.should be_present
+      end
+      it "should have an industry of :auto" do
+        @recall.industry.should == :auto
+      end
+      it "should have an agency name" do
+        @recall.agency_name.should == "National Highway Traffic Safety Administration"
       end
     end
 
@@ -785,6 +851,7 @@ describe Recall do
       it "should generate a summary based on all the products involved" do
         @recall.summary.should == "Click here to see products"
         @recall.description.should be_present
+        @recall.industry.should == :auto
       end
     end
 
@@ -801,6 +868,27 @@ describe Recall do
       it "should use the underlying FoodRecall summary" do
         @recall.summary.should == "Food Recall Summary Here"
         @recall.description.should be_present
+      end
+
+      it "should have an industry of :food" do
+        @recall.industry.should == :food
+      end
+      it "should have an agency name" do
+        @recall.agency_name.should == "United States Department of Agriculture"
+      end
+
+      context "when food_type is 'drug'" do
+        before do
+          @recall.food_recall.food_type = "drug"
+        end
+
+        it "should have an industry of :drug" do
+          @recall.industry.should == :drug
+        end
+        it "should have an agency name" do
+          @recall.agency_name.should == "Food and Drug Administration"
+
+        end
       end
     end
 
@@ -890,8 +978,9 @@ describe Recall do
       Recall.should be_recall_query("beef retiradas")
     end
 
-    it "should not pass if query is just recall" do
-      Recall.should_not be_recall_query("recall")
+    it "should pass if query is just recall" do
+      Recall.should be_recall_query("recall")
+      Recall.should be_recall_query("recalls")
     end
 
     it "should not pass if the query doesn't contain 'recall' or  a translation" do

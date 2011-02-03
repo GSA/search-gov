@@ -148,13 +148,8 @@ class Search
         self.spotlight = Spotlight.search_for(query)
         self.gov_forms = GovForm.search_for(query)
       end
-      if page < 1 && Recall.recall_query?(query)
-        begin
-          self.recalls = Recall.search_for(query, {:start_date=>1.month.ago.to_date, :end_date=>Date.today})
-        rescue RSolr::RequestError => error
-          RAILS_DEFAULT_LOGGER.warn "Error in searching for Recalls: #{error.to_s}"
-          self.recalls = nil
-        end
+      if page < 1
+        self.recalls = Recall.recent(query)
       end
     end
     if response.has?(:image) && response.image.total > 0

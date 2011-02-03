@@ -89,7 +89,7 @@ describe "shared/_searchresults.html.haml" do
         render :locals => { :search => @search }
 
         response.should be_success
-        response.body.should have_tag('.govbox .recall a', /details/)
+        response.body.should have_tag('.recalls-govbox .details a', /details/)
 
       end
     end

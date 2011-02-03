@@ -1,14 +1,17 @@
-.govbox
-  %h3
-    = t(:recalls_for, :query => "<b>#{search.query}</b>")
-
-  - search.recalls.hits.sort_by{|a| a.instance.recalled_on || a.instance.created_at.to_date }.reverse[0..2].each_with_index do |hit, index|
-    .recall{:style => 'margin-bottom: 10px;'}      
-      = link_to highlight(truncate_on_words(hit.instance.summary, 100), search.query.split, :highlighter => '<b>\1</b>'), hit.instance.recall_url
-      = t(:in_english)
-      .recall_description
-        %span{:style => "color: #666;"}
-          = time_ago_in_words(hit.instance.recalled_on || hit.instance.created_at)
-        - if hit.instance.description.present?    
-          = highlight(truncate_on_words(hit.instance.description, 190), search.query.split, :highlighter => '<b>\1</b>')
-
+.recalls-govbox
+  %h3<
+    Results from the U.S. Government's Recalls Database
+    -#= link_to("View More Product Recalls >", "")
+  %table
+    - search.recalls.hits.each do |hit|
+      %tr
+        %td.industry
+          = image_tag("industry_#{hit.instance.industry}.png")
+          %br
+          = hit.instance.industry.to_s.titleize
+        %td.details
+          = link_to highlight(truncate_on_words(hit.instance.summary, 100), search.query.split, :highlighter => '<b>\1</b>'), hit.instance.recall_url
+          .agency
+            = hit.instance.agency_name
+          .recall-date
+            = (hit.instance.recalled_on || hit.instance.created_at).strftime("%b. %d, %Y")

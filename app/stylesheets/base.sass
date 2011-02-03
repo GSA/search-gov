@@ -136,7 +136,6 @@ table.deep_links
 #results
   :display block
   :float left
-  :overflow hidden
   :width 620px
 
 ul#relatedsearch
@@ -216,7 +215,7 @@ ul#related_gov_forms
   :border 1px solid #ddd
   :padding 1em
   h3
-    :font-size 18px
+    :font-size 1.5em
     :color rgb(23, 69, 120)
     :margin 0 0 1em 0
   ul
@@ -224,6 +223,30 @@ ul#related_gov_forms
     :padding-left 0.5em
     :list-style-type disc
     :color gray
+
+.recalls-govbox
+  h3
+    :font-size 1.3em
+    :line-height 19px
+    :color = !red
+    :padding-left 15px
+    :margin-left -15px
+    :background white url('/images/red_triangle.png') left center no-repeat
+  .agency
+    :color #222
+  .recall-date
+    :color gray
+    :font-style italic
+  td
+    :vertical-align top
+  .industry
+    :text-align center
+    :color gray
+    :font-weight bold
+    :width 50px
+    :padding 0
+  .details
+    :padding 0 10px
 
 .hidden
   :position absolute

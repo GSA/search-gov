@@ -96,13 +96,23 @@ class Recall < ActiveRecord::Base
     RECALL_RE_EN = /\brecalls?\b/i
     RECALL_RE_ES = /\bretirad[oa]s?\b/i
 
+    def recent(query)
+      if recall_query?(query)
+        this_month_results = search_for(query, {:start_date=>1.month.ago.to_date, :end_date=>Date.today, :sort => "date"}, 1, 3)
+        (this_month_results && this_month_results.total > 0) ? this_month_results : search_for(query, {:sort => "date"}, 1, 3)
+      end
+    end
+
     def recall_query?(query)
-      (query =~ RECALL_RE_EN or query =~ RECALL_RE_ES) and not query=~ /^recalls?$/i
+      (query =~ RECALL_RE_EN or query =~ RECALL_RE_ES)
     end
 
     def search_for(query, options = {}, page = 1, per_page = 10)
       stripped_query = query.gsub(RECALL_RE_EN, '').gsub(RECALL_RE_ES, '').strip if query
       do_search(stripped_query, options, page, per_page)
+    rescue RSolr::RequestError => error
+      RAILS_DEFAULT_LOGGER.warn "Error in searching for Recalls: #{error.to_s}"
+      nil
     end
 
     def do_search(query, options, page, per_page)
@@ -292,6 +302,24 @@ class Recall < ActiveRecord::Base
   
   def is_auto_recall?
     return true if self.organization == 'NHTSA'
+  end
+
+  def industry
+    case organization
+      when "NHTSA" : :auto
+      when "CPSC" : :product
+      when "CDC" : food_recall.food_type == "drug" ? :drug : :food
+      else :unknown
+    end
+  end
+
+  def agency_name
+    case organization
+      when "NHTSA" : "National Highway Traffic Safety Administration"
+      when "CPSC" : "Consumer Product Safety Commission"
+      when "CDC" : food_recall.food_type == "drug" ? "Food and Drug Administration" : "United States Department of Agriculture"
+      else ""
+    end
   end
 
   private
