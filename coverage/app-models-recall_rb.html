@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-recall_rb.html">app/models/recall.rb</a></td>
-            <td class='right_align'><tt>361</tt></td>
-            <td class='right_align'><tt>300</tt></td>
+            <td class='right_align'><tt>352</tt></td>
+            <td class='right_align'><tt>292</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -1923,7 +1923,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line312">312</a>       else :product</pre></td>
+            <td><pre><a name="line312">312</a>       else :other</pre></td>
           </tr>
         
           
@@ -1947,283 +1947,229 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line316">316</a>   def agency_name</pre></td>
+            <td><pre><a name="line316">316</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line317">317</a>     case organization</pre></td>
+            <td><pre><a name="line317">317</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line318">318</a>       when &quot;NHTSA&quot; : &quot;National Highway Traffic Safety Administration&quot;</pre></td>
+            <td><pre><a name="line318">318</a>   def self.process_cpsc_row(row)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line319">319</a>       when &quot;CPSC&quot; : &quot;Consumer Product Safety Commission&quot;</pre></td>
+            <td><pre><a name="line319">319</a>     recall = Recall.find_or_initialize_by_recall_number(:recall_number =&gt; row[0], :y2k =&gt; row[1], :organization =&gt; 'CPSC')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line320">320</a>       when &quot;CDC&quot; : food_recall.food_type == &quot;drug&quot; ? &quot;Food and Drug Administration&quot; : &quot;United States Department of Agriculture&quot;</pre></td>
+            <td><pre><a name="line320">320</a>     recall.recalled_on ||= Date.parse(row[9]) rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line321">321</a>       else &quot;&quot;</pre></td>
+            <td><pre><a name="line321">321</a>     CPSC_FULL_TEXT_SEARCH_FIELDS.each_pair do |detail_type, column_index|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line322">322</a>       conditions = ['detail_type = ? AND detail_value = ?', detail_type, row[column_index]]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line323">323</a>       unless row[column_index].blank? or (!recall.new_record? &amp;&amp; recall.recall_details.exists?(conditions))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line324">324</a>         recall.recall_details &lt;&lt; RecallDetail.new(:detail_type =&gt; detail_type, :detail_value =&gt; row[column_index])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line325">325</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line322">322</a>     end</pre></td>
+            <td><pre><a name="line326">326</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line327">327</a>     recall.save!</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line328">328</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line329">329</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line330">330</a>   def self.process_nhtsa_row(row)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line331">331</a>     date_string = row[24].blank? ? row[16] : row[24]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line332">332</a>     recall = Recall.find_or_create_by_recall_number(:recall_number =&gt; row[1], :organization =&gt; 'NHTSA',</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line333">333</a>                                                     :recalled_on =&gt; Date.parse(date_string))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line334">334</a>     if recall.recall_details.empty?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line335">335</a>       NHTSA_DETAIL_FIELDS.each_pair do |detail_type, column_index|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line336">336</a>         recall.recall_details &lt;&lt; RecallDetail.new(:detail_type =&gt; detail_type, :detail_value =&gt; row[column_index]) unless row[column_index].blank?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line323">323</a>   end</pre></td>
+            <td><pre><a name="line337">337</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line324">324</a> </pre></td>
+            <td><pre><a name="line338">338</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line325">325</a>   private</pre></td>
+            <td><pre><a name="line339">339</a>     year = row[4] == &quot;9999&quot; ? nil : row[4].to_i</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line340">340</a>     manufacturing_begin_date = row[8].blank? ? nil : Date.parse(row[8])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line341">341</a>     manufacturing_end_date = row[9].blank? ? nil : Date.parse(row[9])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line342">342</a>     auto_recall = AutoRecall.find_or_initialize_by_recall_id_and_recalled_component_id(</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line343">343</a>       :recall_id =&gt; recall.id, :recalled_component_id =&gt; row[23], :make =&gt; row[2], :model =&gt; row[3], :year =&gt; year,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line344">344</a>       :component_description =&gt; row[6], :manufacturer =&gt; row[14], :manufacturing_begin_date =&gt; manufacturing_begin_date, :manufacturing_end_date =&gt; manufacturing_end_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line345">345</a>     recall.auto_recalls &lt;&lt; auto_recall</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line346">346</a>     recall.save!</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line326">326</a> </pre></td>
+            <td><pre><a name="line347">347</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line327">327</a>   def self.process_cpsc_row(row)</pre></td>
+            <td><pre><a name="line348">348</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line328">328</a>     recall = Recall.find_or_initialize_by_recall_number(:recall_number =&gt; row[0], :y2k =&gt; row[1], :organization =&gt; 'CPSC')</pre></td>
+            <td><pre><a name="line349">349</a>   def list_detail(field)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line329">329</a>     recall.recalled_on ||= Date.parse(row[9]) rescue nil</pre></td>
+            <td><pre><a name="line350">350</a>     self.recall_details.find_all_by_detail_type(field).map{|detail| detail.detail_value}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line330">330</a>     CPSC_FULL_TEXT_SEARCH_FIELDS.each_pair do |detail_type, column_index|</pre></td>
+            <td><pre><a name="line351">351</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line331">331</a>       conditions = ['detail_type = ? AND detail_value = ?', detail_type, row[column_index]]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line332">332</a>       unless row[column_index].blank? or (!recall.new_record? &amp;&amp; recall.recall_details.exists?(conditions))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line333">333</a>         recall.recall_details &lt;&lt; RecallDetail.new(:detail_type =&gt; detail_type, :detail_value =&gt; row[column_index])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line334">334</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line335">335</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line336">336</a>     recall.save!</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line337">337</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line338">338</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line339">339</a>   def self.process_nhtsa_row(row)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line340">340</a>     date_string = row[24].blank? ? row[16] : row[24]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line341">341</a>     recall = Recall.find_or_create_by_recall_number(:recall_number =&gt; row[1], :organization =&gt; 'NHTSA',</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line342">342</a>                                                     :recalled_on =&gt; Date.parse(date_string))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line343">343</a>     if recall.recall_details.empty?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line344">344</a>       NHTSA_DETAIL_FIELDS.each_pair do |detail_type, column_index|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line345">345</a>         recall.recall_details &lt;&lt; RecallDetail.new(:detail_type =&gt; detail_type, :detail_value =&gt; row[column_index]) unless row[column_index].blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line346">346</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line347">347</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line348">348</a>     year = row[4] == &quot;9999&quot; ? nil : row[4].to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line349">349</a>     manufacturing_begin_date = row[8].blank? ? nil : Date.parse(row[8])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line350">350</a>     manufacturing_end_date = row[9].blank? ? nil : Date.parse(row[9])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line351">351</a>     auto_recall = AutoRecall.find_or_initialize_by_recall_id_and_recalled_component_id(</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line352">352</a>       :recall_id =&gt; recall.id, :recalled_component_id =&gt; row[23], :make =&gt; row[2], :model =&gt; row[3], :year =&gt; year,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line353">353</a>       :component_description =&gt; row[6], :manufacturer =&gt; row[14], :manufacturing_begin_date =&gt; manufacturing_begin_date, :manufacturing_end_date =&gt; manufacturing_end_date)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line354">354</a>     recall.auto_recalls &lt;&lt; auto_recall</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line355">355</a>     recall.save!</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line356">356</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line357">357</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line358">358</a>   def list_detail(field)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line359">359</a>     self.recall_details.find_all_by_detail_type(field).map{|detail| detail.detail_value}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line360">360</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line361">361</a> end</pre></td>
+            <td><pre><a name="line352">352</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Feb 03 16:17:07 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Feb 04 10:27:07 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
