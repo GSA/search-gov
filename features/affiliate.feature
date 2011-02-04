@@ -56,22 +56,100 @@ Feature: Affiliate clients
     And I should not see "multi2.gov"
 
   Scenario: Adding a new affiliate
+    Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "Add New Affiliate"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
+    And I should see "Add a New Site"
+    And I should see "Step 1. Enter contact information" within ".current_step"
+    And I should see "Contact information"
+    And the "Name*" field should contain "A New Affiliate"
+    And the "Email*" field should contain "affiliate_with_no_contact_info@fixtures.org"
+    And I fill in the following:
+      | Government organization                    | Awesome Agency             |
+      | Phone                                      | 202-123-4567               |
+      | Organization address                       | 123 Penn Avenue            |
+      | Address 2                                  | Ste 456                    |
+      | City                                       | Reston                     |
+      | Zip                                        | 20022                      |
+    And I select "Virginia" from "State"
+    And I press "Next"
+    Then I should see "Step 2. Set up site" within ".current_step"
+    And I should see "Site information"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+      | Domains to search         | www.awesomeagency.gov            |
+    And I press "Next"
+    And I should see "Site successfully created"
+    And I should see "Step 3. Get the code" within ".current_step"
+    And I should see "View search results page"
+    When I fill in "query" with "White House"
+    And I press "Search"
+    Then I should see "Search results for My awesome agency"
+
+  Scenario: Affiliate user who filled out contact information should not have to fill out the form again
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "Add New Affiliate"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Affiliate"
-    And I should not see "HTTP parameter site name"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
+    And I should see "Add a New Site"
+    And I should see "Step 1. Enter contact information" within ".current_step"
+    And I should see "Contact information"
+    And the "Name*" field should contain "A New Manager"
+    And the "Email*" field should contain "affiliate_manager_with_no_affiliates@fixtures.org"
+    And the "Government organization*" field should contain "Agency"
+    And the "Phone*" field should contain "301-123-4567"
+    And the "Organization address*" field should contain "123 Penn Ave"
+    And the "Address 2" field should contain "Ste 100"
+    And the "City*" field should contain "Reston"
+    And the "State*" field should contain "VA"
+    And the "Zip*" field should contain "20022"
+    And I press "Next"
+    Then I should see "Step 2. Set up site" within ".current_step"
+
+  Scenario: Clicking on Adding additional sites in Step 3. Get the code
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
     And I fill in the following:
-      | Site name                                                             | My Awesome Agency          |
-      | Your Website URL (www.example.gov)                                    | www.agency.gov             |
-      | Domains (one per line)                                                | agency.gov                 |
-      | Enter HTML to customize the top of your search page                   | My header                  |
-      | Enter HTML to customize the bottom of your search page                | My footer                  |
-    And I press "Create"
+      | Site name                 | My awesome agency                |
+    And I press "Next"
+    And I follow "Adding additional sites"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
+
+  Scenario: Clicking on Customizing the look and feel in Step 3. Get the code
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+    And I press "Next"
+    And I follow "Customizing the look and feel"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > My awesome agency > Edit"
+
+  Scenario: Clicking on Setting up the type-ahead search in Step 3. Get the code
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+    And I press "Next"
+    And I follow "Setting up the type-ahead search"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > My awesome agency > Type-ahead Search"
+
+  Scenario: Clicking on Go to Affiliate Center in Step 3. Get the code
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+    And I press "Next"
+    And I follow "Go to Affiliate Center"
     Then I should be on the affiliate admin page
-    And I should see "Affiliate successfully created"
-    And I should see "My Awesome Agency"
-    And I should not see "www.agency.gov"
 
   Scenario: Updating HTTP parameter site name
     Given the following Affiliates exist:
@@ -102,11 +180,23 @@ Feature: Affiliate clients
     And I press "Save for preview"
     Then I should see "HTTP parameter site name has already been taken"
 
-  Scenario: Adding an affiliate without site display name
+  Scenario: Adding an affiliate without filling out contact information should fail
+    Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    Then I should see "Organization name can't be blank"
+    Then I should see "Phone can't be blank"
+    Then I should see "Address can't be blank"
+    Then I should see "City can't be blank"
+    Then I should see "Zip can't be blank"
+
+  Scenario: Adding an affiliate without site display name should fail
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "new"
-    And I press "Create"
+    And I press "Next"
+    And I press "Next"
     Then I should see "Site name can't be blank"
     And I should not see "HTTP parameter site name can't be blank"
     And I should not see "HTTP parameter site name is too short"

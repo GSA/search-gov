@@ -14,6 +14,8 @@ basic_affiliate:
   owner: :affiliate_manager
   users: [:affiliate_manager]
   affiliate_template: :default
+  is_sayt_enabled: false
+  is_affiliate_suggestions_enabled: false
 another_affiliate:
   display_name: Another Gov Site
   name: another.gov

@@ -59,7 +59,8 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
    
   def new
-    @affiliate = Affiliate.new
+    @user = @current_user
+    @current_step = :edit_contact_information
   end
 
   def create
@@ -71,11 +72,12 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
         :affiliate_template_id => @affiliate.staged_affiliate_template_id,
         :header => @affiliate.staged_header,
         :footer => @affiliate.staged_footer)
-      flash[:success] = "Affiliate successfully created"
-      redirect_to home_affiliates_path(:said=>@affiliate.id)
+      @current_step = :get_the_code
+      flash.now[:success] = "Site successfully created"
     else
-      render :action => :new
+      @current_step = :new_site_information
     end
+    render :action => :new
   end
 
   def update
@@ -87,6 +89,18 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     else
       render :action => :edit
     end
+  end
+
+  def update_contact_information
+    @user = @current_user
+    @user.strict_mode = true
+    if @user.update_attributes(params[:user])
+      @affiliate = Affiliate.new
+      @current_step = :new_site_information
+    else
+      @current_step = :edit_contact_information
+    end
+    render :action => :new
   end
 
   def show

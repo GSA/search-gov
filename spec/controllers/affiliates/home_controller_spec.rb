@@ -37,6 +37,29 @@ describe Affiliates::HomeController do
     end
   end
 
+  describe "do GET on #new" do
+    it "should require affiliate login for new" do
+      get :new
+      response.should redirect_to(login_path)
+    end
+
+    context "when logged in" do
+      before do
+        UserSession.create(users(:affiliate_manager_with_no_affiliates))
+      end
+
+      it "should assign @user" do
+        get :new
+        assigns[:user].should == users(:affiliate_manager_with_no_affiliates)
+      end
+
+      it "should assign @current_step to :edit_contact_information" do
+        get :new
+        assigns[:current_step].should == :edit_contact_information
+      end
+    end
+  end
+
   describe "do GET on #edit" do
     it "should require affiliate login for edit" do
       get :edit, :id => affiliates(:power_affiliate).id
@@ -112,5 +135,124 @@ describe Affiliates::HomeController do
         response.should render_template(:edit)
       end
     end
+  end
+
+  describe "do POST on #update_contact_information" do
+    it "should require login for update_contact_information" do
+      post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+      response.should redirect_to(login_path)
+    end
+
+    context "when logged in" do
+      before do
+        UserSession.create(users(:affiliate_manager_with_no_affiliates))
+        User.should_receive(:find_by_id).and_return(users(:affiliate_manager_with_no_affiliates))
+      end
+
+      it "should assign @user" do
+        post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+        assigns[:user].should == users(:affiliate_manager_with_no_affiliates)
+      end
+
+      it "should set strict_mode on user to true" do
+        users(:affiliate_manager_with_no_affiliates).should_receive(:strict_mode=).with(true)
+        post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+      end
+
+      it "should update_attributes on user" do
+        users(:affiliate_manager_with_no_affiliates).should_receive(:update_attributes)
+        post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+      end
+
+      it "should render the new template" do
+        users(:affiliate_manager_with_no_affiliates).should_receive(:update_attributes).and_return(true)
+        post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+        response.should render_template("new")
+      end
+
+      context "when the user update_attributes successfully" do
+        before do
+          users(:affiliate_manager_with_no_affiliates).should_receive(:update_attributes).and_return(true)
+        end
+
+        it "should assign @affiliate" do
+          affiliate = stub_model(Affiliate)
+          Affiliate.should_receive(:new).and_return(affiliate)
+          post :update_contact_information
+          assigns[:affiliate].should == affiliate
+        end
+
+        it "should assign @current_step to :new_site_information" do
+          post :update_contact_information
+          assigns[:current_step].should == :new_site_information
+        end
+      end
+
+      context "when the user fails to update_attributes" do
+        it "should assign @current_step to :edit_contact_information" do
+          users(:affiliate_manager_with_no_affiliates).should_receive(:update_attributes).and_return(false)
+          post :update_contact_information
+          assigns[:current_step].should == :edit_contact_information
+        end
+      end
+    end
+  end
+
+  describe "do POST on #create" do
+    it "should require login for create" do
+      post :create
+      response.should redirect_to(login_path)
+    end
+
+    context "when logged in" do
+      before do
+        UserSession.create(users(:affiliate_manager_with_no_affiliates))
+        @affiliate = stub_model(Affiliate)
+        Affiliate.should_receive(:new).and_return(@affiliate)
+      end
+
+      it "should assign @affiliate" do
+        post :create
+        assigns[:affiliate].should == @affiliate
+      end
+
+      it "should save the affiliate" do
+        @affiliate.should_receive(:save)
+        post :create
+      end
+
+      context "when the affiliate saves successfully" do
+        before do
+          @affiliate.should_receive(:save).twice.and_return(true)
+        end
+
+        it "should assign @current_step to :get_code" do
+          post :create
+          assigns[:current_step].should == :get_the_code
+        end
+
+        it "should render the new template" do
+          post :create
+          response.should render_template("new")
+        end
+      end
+
+      context "when the affiliate fails to save" do
+        before do
+          @affiliate.should_receive(:save).and_return(false)
+        end
+
+        it "should assign @current_step to :new_site_information" do
+          post :create
+          assigns[:current_step].should == :new_site_information
+        end
+
+        it "should render the new template" do
+          post :create
+          response.should render_template("new")
+        end
+      end
+    end
+
   end
 end

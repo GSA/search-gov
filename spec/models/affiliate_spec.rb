@@ -74,12 +74,12 @@ describe Affiliate do
       affiliate.update_attributes(:name => "").should_not be_true
     end
 
-    it "should have SAYT disabled by default" do
-      Affiliate.create!(@valid_create_attributes).is_sayt_enabled.should be_false
+    it "should have SAYT enabled by default" do
+      Affiliate.create!(@valid_create_attributes).is_sayt_enabled.should be_true
     end
 
-    it "should have Affiliate-specific SAYT suggestions disabled by default" do
-      Affiliate.create!(@valid_create_attributes).is_affiliate_suggestions_enabled.should be_false
+    it "should have Affiliate-specific SAYT suggestions enabled by default" do
+      Affiliate.create!(@valid_create_attributes).is_affiliate_suggestions_enabled.should be_true
     end
     
     it "should generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do

@@ -6,13 +6,7 @@
 = find_and_preserve do
   #embed_code_english.span-15
     %h2 Code for English-language sites
-    %textarea{ :readonly => true, :id => "embed_code_textarea", :onclick => "document.getElementById('embed_code_textarea').focus(); document.getElementById('embed_code_textarea').select();" }
-      = '<form method="get" action="http://search.usa.gov/search">'
-      = "  <input type=\"hidden\" name=\"affiliate\" value=\"#{ @affiliate.name }\" />"
-      = '  <label for="query-field">Enter Search Term(s): </label>'
-      = '  <input type="text" name="query" id="query-field"/>'
-      = '  <input type="submit" value="Search" />'
-      = '</form>'
+    = render 'embed_code_text_area'
 
 .span-8.last
   .content-box.cross-promotion

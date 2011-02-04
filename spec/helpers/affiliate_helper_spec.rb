@@ -19,4 +19,21 @@ describe AffiliateHelper do
       content.should contain("a title")
     end
   end
+
+  describe "#site_wizard_header" do
+    it "should add current_step class based on the current_step parameter" do
+      content = helper.site_wizard_header :edit_contact_information
+      content.should have_tag("span[class=step current_step]", "Step 1. Enter contact information")
+      content.should have_tag("span[class=step]", "Step 2. Set up site")
+      content.should have_tag("span[class=step]", "Step 3. Get the code")
+      content = helper.site_wizard_header :new_site_information
+      content.should have_tag("span[class=step]", "Step 1. Enter contact information")
+      content.should have_tag("span[class=step current_step]", "Step 2. Set up site")
+      content.should have_tag("span[class=step]", "Step 3. Get the code")
+      content = helper.site_wizard_header :get_the_code
+      content.should have_tag("span[class=step]", "Step 1. Enter contact information")
+      content.should have_tag("span[class=step]", "Step 2. Set up site")
+      content.should have_tag("span[class=step current_step]", "Step 3. Get the code")
+    end
+  end
 end

@@ -1,0 +1,49 @@
+%table
+  %tr
+    %td
+      = edit_contact_information_form.label :contact_name, "Name*"
+    %td
+      = edit_contact_information_form.text_field :contact_name, :class => "text"
+  %tr
+    %td
+      = edit_contact_information_form.label :organization_name, "Government organization*"
+    %td
+      = edit_contact_information_form.text_field :organization_name, :class => "text"
+  %tr
+    %td
+      = edit_contact_information_form.label :email, "Email*"
+    %td
+      = edit_contact_information_form.text_field :email, :class => "text"
+  %tr
+    %td
+      = edit_contact_information_form.label :phone, "Phone*"
+    %td
+      = edit_contact_information_form.text_field :phone, :class => "text"
+  %tr
+    %td
+      = edit_contact_information_form.label :address, "Organization address*"
+    %td
+      = edit_contact_information_form.text_field :address, :class => "text"
+  %tr
+    %td
+      = edit_contact_information_form.label :address2, "Address 2"
+    %td
+      = edit_contact_information_form.text_field :address2, :class => "text"
+  %tr
+    %td
+      = edit_contact_information_form.label :city, "City*"
+    %td
+      = edit_contact_information_form.text_field :city, :class => "text"
+  %tr
+    %td
+      = edit_contact_information_form.label :state, "State*"
+    %td
+      = us_state_select 'user', 'state'
+  %tr
+    %td
+      = edit_contact_information_form.label :zip, "Zip*"
+    %td
+      = edit_contact_information_form.text_field :zip, :class => "text"
+  %tr
+    %td{:colspan => 2}
+      * Required

@@ -85,6 +85,7 @@ describe User do
     it { should_not allow_mass_assignment_of(:is_affiliate_admin) }
     it { should_not allow_mass_assignment_of(:is_affiliate) }
     it { should_not allow_mass_assignment_of(:is_analyst) }
+    it { should_not allow_mass_assignment_of(:strict_mode) }
   end
 
   describe "#to_label" do
@@ -100,6 +101,28 @@ describe User do
       users(:affiliate_manager).is_developer?.should be_false
       users(:analyst).is_developer?.should be_false
       users(:developer).is_developer?.should be_true
+    end
+  end
+
+  describe "when validating with strict_mode" do
+    it "should require organization name, phone and address fields if strict_mode is set" do
+      user = User.new(@valid_affiliate_attributes)
+      user.strict_mode.should be_false
+      user.should_not validate_presence_of(:phone)
+      user.should_not validate_presence_of(:organization_name)
+      user.should_not validate_presence_of(:address)
+      user.should_not validate_presence_of(:city)
+      user.should_not validate_presence_of(:state)
+      user.should_not validate_presence_of(:zip)
+      user.strict_mode = true
+      user.should validate_presence_of(:contact_name)
+      user.should validate_presence_of(:email)
+      user.should validate_presence_of(:phone)
+      user.should validate_presence_of(:organization_name)
+      user.should validate_presence_of(:address)
+      user.should validate_presence_of(:city)
+      user.should validate_presence_of(:state)
+      user.should validate_presence_of(:zip)
     end
   end
 end
