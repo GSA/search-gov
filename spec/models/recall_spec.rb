@@ -892,6 +892,14 @@ describe Recall do
       end
     end
 
+    context "when unknown organization" do
+      it "should have an industry of :product" do
+        Recall.new.industry.should == :product
+      end
+      it "should have a blank agency name" do
+        Recall.new.agency_name.should be_blank
+      end
+    end
   end
 
   describe "#upc" do
