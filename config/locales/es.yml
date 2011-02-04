@@ -22,6 +22,20 @@ es:
   in_english: "(en inglés)"
   view_all_images_for: "Ver todas las imágenes de {{query}}"
   government_web: "Todo el Gobierno"
+  recall_govbox_header: " Resultados de ___"
+  industry:
+    auto:
+      name: auto
+      agency_name: National Highway Traffic Safety Administration
+    product:
+      name: producto
+      agency_name: Consumer Product Safety Commission
+    food:
+      name: alimentos
+      agency_name: United States Department of Agriculture
+    drug:
+      name: medicinas
+      agency_name: Food and Drug Administration
   advanced_search: "Búsqueda avanzada"
   advanced_search_instruction: "Use las opciones a continuación para hacer una búsqueda específica."
   advanced_search_show_results_header: "Buscar resultados con"
@@ -82,6 +96,20 @@ es:
   text_size_header_2: "Si no funciona…"
   text_size_paragraph_2: "Pulse en la palabra «<i>View</i>» en la parte superior de su pantalla, luego pulse en «<i>Text Size</i>». Elija entre los tamaños «Larger» o «Smaller» (mayor o menor) hasta que encuentre el tamaño de letra que le guste."
   text_size_paragraph_3: 'El sitio de Internet llamado, «<a href="http://www.w3.org/WAI/changedesign.html">Web Accessibility Initiative site</a>» (Iniciativa para la Accesibilidad)  [<a href="http://www.usa.gov/About/Important_Notices.shtml">limitación de responsabilidad</a>] provee instrucciones acerca de otros buscadores de web y sistemas de operadores de computadoras (sólo disponible en inglés).'
+
+  date:
+    formats:
+      medium: "%e de %B de %Y"
+
+    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
+    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Setiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Set, Oct, Nov, Dic]
+    # Used in date_select and datime_select.
+    order: [ :day, :month, :year ]
+
 
   # support for this story: https://www.pivotaltracker.com/story/show/8554195
   # based on https://github.com/svenfuchs/rails-i18n/blob/2-2/rails/locale/es.yml#L64

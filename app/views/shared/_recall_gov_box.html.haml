@@ -1,17 +1,17 @@
 .recalls-govbox
   %h3<
-    Results from the U.S. Government's Recalls Database
-    -#= link_to("View More Product Recalls >", "")
+    = t :recall_govbox_header
+    -#= link_to(t "View More Product Recalls >", "")
   %table
     - search.recalls.hits.each do |hit|
       %tr
         %td.industry
           = image_tag("industry_#{hit.instance.industry}.png")
           %br
-          = hit.instance.industry.to_s.titleize
+          = t("industry.#{hit.instance.industry}.name").titleize
         %td.details
           = link_to highlight(truncate_on_words(hit.instance.summary, 100), search.query.split, :highlighter => '<b>\1</b>'), hit.instance.recall_url
           .agency
-            = hit.instance.agency_name
+            = t "industry.#{hit.instance.industry}.agency_name"
           .recall-date
-            = (hit.instance.recalled_on || hit.instance.created_at).strftime("%b. %d, %Y")
+            = l((hit.instance.recalled_on || hit.instance.created_at), :format => :medium)

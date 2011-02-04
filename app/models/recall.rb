@@ -309,16 +309,7 @@ class Recall < ActiveRecord::Base
       when "NHTSA" : :auto
       when "CPSC" : :product
       when "CDC" : food_recall.food_type == "drug" ? :drug : :food
-      else :product
-    end
-  end
-
-  def agency_name
-    case organization
-      when "NHTSA" : "National Highway Traffic Safety Administration"
-      when "CPSC" : "Consumer Product Safety Commission"
-      when "CDC" : food_recall.food_type == "drug" ? "Food and Drug Administration" : "United States Department of Agriculture"
-      else ""
+      else :other
     end
   end
 

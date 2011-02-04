@@ -797,9 +797,6 @@ describe Recall do
       it "should have an industry of :product" do
         @recall.industry.should == :product
       end
-      it "should have an agency name" do
-        @recall.agency_name.should == "Consumer Product Safety Commission"
-      end
     end
 
     context "when generating a summary for a CPSC recall with no product descriptions" do
@@ -838,9 +835,6 @@ describe Recall do
       it "should have an industry of :auto" do
         @recall.industry.should == :auto
       end
-      it "should have an agency name" do
-        @recall.agency_name.should == "National Highway Traffic Safety Administration"
-      end
     end
 
     context "when generating a summary for a NHTSA recall with no product descriptions" do
@@ -873,9 +867,6 @@ describe Recall do
       it "should have an industry of :food" do
         @recall.industry.should == :food
       end
-      it "should have an agency name" do
-        @recall.agency_name.should == "United States Department of Agriculture"
-      end
 
       context "when food_type is 'drug'" do
         before do
@@ -885,19 +876,12 @@ describe Recall do
         it "should have an industry of :drug" do
           @recall.industry.should == :drug
         end
-        it "should have an agency name" do
-          @recall.agency_name.should == "Food and Drug Administration"
-
-        end
       end
     end
 
     context "when unknown organization" do
-      it "should have an industry of :product" do
-        Recall.new.industry.should == :product
-      end
-      it "should have a blank agency name" do
-        Recall.new.agency_name.should be_blank
+      it "should have an industry of :other" do
+        Recall.new.industry.should == :other
       end
     end
   end

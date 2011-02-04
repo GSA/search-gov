@@ -24,6 +24,20 @@ en:
   forms_for: "Federal Government Forms Catalog: {{query}}"
   view_all_images_for: "View all images for {{query}}"
   government_web: "Government Web"
+  recall_govbox_header: "Results from the U.S. Government's Recalls Database"
+  industry:
+    auto:
+      name: auto
+      agency_name: National Highway Traffic Safety Administration
+    product:
+      name: product
+      agency_name: Consumer Product Safety Commission
+    food:
+      name: food
+      agency_name: United States Department of Agriculture
+    drug:
+      name: drug
+      agency_name: Food and Drug Administration
   advanced_search_instruction: "Use the options on this page to create a very specific search."
   advanced_affiliate_search_instruction: "Use the options on this page to create a very specific search for {{affiliate_name}}."
   advanced_search_show_results_header: "Show results with"
@@ -96,6 +110,9 @@ en:
         en: 'English'
         es: 'Spanish'
 
+  date:
+    formats:
+      medium: "%b. %d, %Y"
   # support for this story: https://www.pivotaltracker.com/story/show/8554195
   # based on https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/en-US.yml#L91
   # but altered, so now all the methods do time_ago, and are *broken* for time from now
