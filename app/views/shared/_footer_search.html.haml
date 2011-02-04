@@ -1,6 +1,6 @@
-- unless search.results.size < 5
+- if @search && @search.results.size >= 5
   - form_tag(search_path, :method => :get, :id=>"footer_search_form") do
-    = text_field :search, :query, :size=>50, :name=>"query", :id => "footer_search_query"
+    = text_field_tag 'search', recalls_search? ? params[:query] : @search.query, { :size=>50, :name=>"query", :id => "footer_search_query" }
     = hidden_field_tag :affiliate, @affiliate.name, :id => "footer_search_affiliate" unless @affiliate.nil?
     = hidden_field_tag :locale, I18n.locale, :id => "footer_search_locale"
     = submit_tag((forms_search? ? t(:forms_search) : t(:search)), :id => "footer_search_button")

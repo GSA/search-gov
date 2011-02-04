@@ -3,6 +3,7 @@
 !site_theme_color= #003366
 !red = #990000
 !link = #2200CC
+!green = #008000
 
 body
   :background-color #F7F7F7
@@ -224,30 +225,53 @@ ul#related_gov_forms
     :list-style-type disc
     :color gray
 
-.recalls-govbox
+.recalls-govbox, .recalls
   h3
     :font-size 1.3em
     :line-height 19px
     :color = !red
     :padding-left 15px
     :margin-left -15px
-    :background white url('/images/red_triangle.png') left center no-repeat
-  .agency
-    :color #222
-  .recall-date
-    :color gray
-    :font-style italic
-  td
-    :vertical-align top
-  .industry
-    :text-align center
-    :color gray
-    :font-weight bold
-    :width 50px
-    :padding 0
-  .details
-    :padding 0 10px
+    :background white url('/images/red_triangle.png') left top no-repeat
+    a, a:visited, .recall_stats
+      :font-size 0.75em
+      :display block
+      :color = !red
+      :text-decoration none
+      :font-style italic
+  .sort
+    :margin-bottom 1em
+  .recall
+    :overflow hidden
+    :margin-bottom 1em
+    .agency
+      :color #222
+    .industry-icon
+      :text-align center
+      :color gray
+      :font-weight bold
+      :width 50px
+      :padding 0
+      :float left
+    .details
+      :width 550px
+      :float left
+      :padding-left 15px
+      .recall-date
+        :color gray
+        :font-style italic
+      .description
+        .recall-date
+          :display inline
+      .url
+        a
+          :color = !green
 
+.recalls-govbox
+  .recall
+    .details
+      :padding-top 0.5em
+      
 .hidden
   :position absolute
   :left -10000px

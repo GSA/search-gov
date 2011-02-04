@@ -12,7 +12,7 @@ class RecallsController < ApplicationController
     respond_to do |format|
       format.html {
         @valid_params[:sort] = 'date' if params[:sort].blank?
-        @query = params[:query]
+        @query = params[:query] || ""
         @page = params[:page]
         @search = Recall.search_for(@query, @valid_params, @page)
       }

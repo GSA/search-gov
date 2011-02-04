@@ -6,15 +6,13 @@
       %li= link_to_unless image_search?, t(:images), image_search_path(search_params)
       - if english_locale?
         %li= link_to_unless forms_search?, t(:forms), search_box_forms_link(search_params)
+      %li= link_to_unless recalls_search?, t(:recalls), recalls_search_path(search_params)
     %label{:for => "query", :class => "hidden"} Search
   - if (@affiliate and not @affiliate.is_sayt_enabled) or @search.is_a?(ImageSearch)
     = text_field :search, :query, {:size=>49, :name=>"query", :autocomplete => "off"}
   - else
     = hidden_field_tag :sc, 0
-    - if !recalls_search?
-      = text_field :search, :query, { :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete" }
-    - else
-      = text_field_tag 'search', params[:query], { :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete" }
+    = text_field_tag 'search', recalls_search? ? params[:query] : (@search ? @search.query : ""), { :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete", :id => "search_query" }
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
 
@@ -22,7 +20,7 @@
     = hidden_field_tag :affiliate, @affiliate.name
     = hidden_field_tag :staged, params[:staged] if params[:staged].present?
 
-  - if !recalls_search?
+  - unless recalls_search?
     = hidden_field_tag :filter, @search.filter_setting unless @search.nil? || @search.filter_setting.nil?
     = hidden_field_tag :fedstates, @search.fedstates unless @search.nil? || @search.fedstates.nil?
     = hidden_field_tag :scope_id, @scope_id if @affiliate and @scope_id

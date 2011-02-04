@@ -1,16 +1,27 @@
 #results-wrap
   #sidebar
     = link_to image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
-    = render "sidebar"
+    =# render "sidebar"
   #results
     = render "/shared/search", :path => recalls_search_path
-    - if @search.total > 0
-      - @search.results.each_with_index do |result, index|
-        = render 'result', :object => result, :index => index
+    - if @search && @search.total > 0
+      .recalls
+        %h3<
+          = t :recall_govbox_header
+          .recall_stats
+            = t :displaying_count_of_total_for_query, :start => start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, :end => start + @search.hits.length - 1, :total => @search.total, :query => @query   
+        .sort
+          = "#{t :sort_by}:"
+          = link_to_unless params[:sort].blank? || params[:sort] == 'date', t(:by_date), recalls_search_path(@valid_params.merge(:sort => 'date').merge(:query => @query))
+          |
+          = link_to_unless params[:sort] == 'rel', t(:by_relevance), recalls_search_path(@valid_params.merge(:sort => 'rel').merge(:query => @query))
+
+        - @search.results.each_with_index do |result, index|
+          = render 'result', :object => result, :index => index
       = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
     - elsif @error_message
       %p.noresults 
         = @error_message
     - else
       = no_results_for params[:query]
-    = render "/shared/footer_search", :search => @search
+    = render "/shared/footer_search"
