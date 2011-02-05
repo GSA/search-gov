@@ -1,7 +1,7 @@
 .recalls-govbox
   %h3<
     = t :recall_govbox_header
-    = link_to("#{t(:view_more_recalls)} >", recalls_search_path(:query => search.query))
+    = link_to("#{t(:view_more_recalls)} >", recalls_search_path(:query => search.query), :id =>"view_more_recalls")
   - search.recalls.hits.each do |hit|
     .recall
       = render "recalls/industry_icon", :recall => hit.instance
