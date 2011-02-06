@@ -17,11 +17,8 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
       @sayt_suggestion.popularity = SaytSuggestion::MAX_POPULARITY
       @sayt_suggestion.affiliate = @affiliate
       @sayt_suggestion.deleted_at = nil
-      if @sayt_suggestion.save
-        flash[:success] = "Successfully added: #{@sayt_suggestion.phrase}"
-      else
-        flash[:error] = "An error occurred while adding your suggestion; please try again."
-      end
+      @sayt_suggestion.save
+      flash[:success] = "Successfully added: #{@sayt_suggestion.phrase}"
     end
     redirect_to affiliate_type_ahead_search_index_path(@affiliate)
   end
