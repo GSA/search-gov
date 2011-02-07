@@ -19,6 +19,11 @@ describe HomeController do
     end
   end
 
+  it "should assign a trending_searches object" do
+    get :index
+    assigns[:trending_searches].should_not be_nil
+  end
+
   context "when valid locale is specified" do
     it "should assign a locale" do
       get :index, :locale=> "es"

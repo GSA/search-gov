@@ -4,6 +4,10 @@ describe "layouts/application.html.haml" do
     render "home/index.html.haml", :layout=> "application"
   end
 
+  before do
+    assigns[:trending_searches] = []
+  end
+
   context "when page is displayed" do
     it "should should show webtrends javascript" do
       render_page

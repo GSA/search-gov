@@ -97,7 +97,9 @@ module NavigationHelpers
     when /the top forms admin page$/
       admin_top_forms_path
     when /the top forms admin page for column "([^\"]*)"/
-      admin_top_forms_path(:column_number => $1) 
+      admin_top_forms_path(:column_number => $1)
+    when /the trending searches page/
+      trending_searches_widget_path
     else
       begin
         page_name =~ /the (.*) page/

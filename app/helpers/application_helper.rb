@@ -172,6 +172,10 @@ module ApplicationHelper
     "#{truncated}..."
   end
 
+  def render_trending_searches
+    render(:partial => 'shared/trending_searches') if params[:locale].blank? || params[:locale] == 'en'
+  end
+
   private
 
   def ssl_protocol

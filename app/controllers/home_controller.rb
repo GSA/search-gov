@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   def index
     @search = Search.new
     @title = "Home - "
+    @trending_searches = TopSearch.find(:all, :limit => 4, :order => 'position asc')
   end
 
   def contact_form
