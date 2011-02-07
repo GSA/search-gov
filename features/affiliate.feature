@@ -165,6 +165,28 @@ Feature: Affiliate clients
     And I follow "Go to Affiliate Center"
     Then I should be on the affiliate admin page
 
+   Scenario: Adding an affiliate without filling out contact information should fail
+    Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    Then I should see "Organization name can't be blank"
+    Then I should see "Phone can't be blank"
+    Then I should see "Address can't be blank"
+    Then I should see "City can't be blank"
+    Then I should see "Zip can't be blank"
+
+  Scenario: Adding an affiliate without site display name should fail
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    And I press "Next"
+    Then I should see "Site name can't be blank"
+    And I should not see "HTTP parameter site name can't be blank"
+    And I should not see "HTTP parameter site name is too short"
+    And I should not see "HTTP parameter site name is invalid"
+
   Scenario: Updating HTTP parameter site name
     Given the following Affiliates exist:
       | display_name      | name              | contact_email         | contact_name        |
@@ -194,28 +216,6 @@ Feature: Affiliate clients
     And I press "Save for preview"
     Then I should see "HTTP parameter site name has already been taken"
 
-  Scenario: Adding an affiliate without filling out contact information should fail
-    Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
-    When I go to the affiliate admin page
-    And I follow "new"
-    And I press "Next"
-    Then I should see "Organization name can't be blank"
-    Then I should see "Phone can't be blank"
-    Then I should see "Address can't be blank"
-    Then I should see "City can't be blank"
-    Then I should see "Zip can't be blank"
-
-  Scenario: Adding an affiliate without site display name should fail
-    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
-    When I go to the affiliate admin page
-    And I follow "new"
-    And I press "Next"
-    And I press "Next"
-    Then I should see "Site name can't be blank"
-    And I should not see "HTTP parameter site name can't be blank"
-    And I should not see "HTTP parameter site name is too short"
-    And I should not see "HTTP parameter site name is invalid"
-
   Scenario: Deleting an affiliate
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -225,6 +225,115 @@ Feature: Affiliate clients
     And I press "Delete Site"
     Then I should be on the affiliate admin page
     And I should see "Site deleted"
+
+  Scenario: Visiting the site information page
+    Given the following Affiliates exist:
+      | display_name     | name        | domains       | staged_domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov     | example.org   | example.org          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Site information"
+    Then I should see "Site Information" within "title"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Site Information"
+    And I should see "Site Information" within ".main"
+    And the "Site name" field should contain "aff site"
+    And the "HTTP parameter site name" field should contain "aff.gov"
+    And the "Domains to search" field should contain "example.org"
+    And I should see "Cancel"
+    When I follow "Cancel"
+    Then I should be on the "aff site" affiliate page
+
+  Scenario: Editing site information and saving it for preview
+    Given the following Affiliates exist:
+      | display_name     | name            | domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Site information"
+    And I fill in the following:
+      | Site name                  | new aff site        |
+      | HTTP parameter site name   | awesomeparam        |
+      | Site URL                   | www.aff.gov         |
+      | Domains to search          | data.gov            |
+    And I press "Save for Preview"
+    Then I should be on the "new aff site" affiliate page
+    And I should see "Staged changes to your site successfully"
+    And I should see "Site: new aff site"
+    And I should see "www.aff.gov"
+
+    When I follow "View staged"
+    And I should see 10 search results
+
+    When I go to the "new aff site" affiliate page
+    And I follow "Current Site"
+    Then I should see "Sorry, no results found"
+
+    When I go to the "new aff site" affiliate page
+    And I follow "Site Information"
+    Then the "HTTP parameter site name" field should contain "awesomeparam"
+
+  Scenario: Editing site information with problem and saving it for preview
+    Given the following Affiliates exist:
+      | display_name     | name            | domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Site information"
+    And I fill in the following:
+      | Site name                  |                     |
+      | HTTP parameter site name   |                     |
+      | Site URL                   |                     |
+      | Domains to search          |                     |
+    And I press "Save for Preview"
+    Then I should see "Site Information" within "title"
+    And I should see "Site name can't be blank"
+    And I should see "HTTP parameter site name can't be blank"
+    And I should see "HTTP parameter site name is too short"
+    And I should see "HTTP parameter site name is invalid"
+
+  Scenario: Editing site information and make it live
+    Given the following Affiliates exist:
+      | display_name     | name            | domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Site information"
+    And I fill in the following:
+      | Site name                  | new aff site        |
+      | HTTP parameter site name   | awesomeparam        |
+      | Site URL                   | www.aff.gov         |
+      | Domains to search          | data.gov            |
+    And I press "Make Live"
+    Then I should be on the "new aff site" affiliate page
+    And I should see "Updated changes to your live site successfully"
+    And I should see "Site: new aff site"
+    And I should see "www.aff.gov"
+    And I should not see "View staged"
+
+    When I follow "Current Site"
+    Then I should see 10 search results
+
+   Scenario: Editing site information with problem and make it live
+    Given the following Affiliates exist:
+      | display_name     | name            | domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Site information"
+    And I fill in the following:
+      | Site name                  |                     |
+      | HTTP parameter site name   |                     |
+      | Site URL                   |                     |
+      | Domains to search          |                     |
+    And I press "Make Live"
+    Then I should see "Site Information" within "title"
+    And I should see "Site name can't be blank"
+    And I should see "HTTP parameter site name can't be blank"
+    And I should see "HTTP parameter site name is too short"
+    And I should see "HTTP parameter site name is invalid"
+
 
   Scenario: Staging changes to an affiliate's look and feel
     Given the following Affiliates exist:
@@ -418,6 +527,7 @@ Feature: Affiliate clients
     And I should see "USASearch > Affiliate Program > Affiliate Center > aff site"
     And I should see "Site: aff site" within ".main"
     And I should see "Delete Site" button
+    And I should see "Site information" within ".affiliate-nav"
     And I should see "Add new site" within ".affiliate-nav"
     And I should see "My account" within ".affiliate-nav"
     And I should see "Manage users" within ".affiliate-nav"

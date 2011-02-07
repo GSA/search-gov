@@ -69,6 +69,60 @@ describe Affiliate do
       end
     end
 
+    describe "on update_attributes_for_staging" do
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+
+      before do
+        @update_params = {:staged_domains => "updated.domain.gov",
+                          :staged_header => "<span>header</span>",
+                          :staged_footer => "<span>footer</span>",
+                          :staged_affiliate_template_id => affiliate_templates(:basic_gray).id}
+      end
+
+      it "should set has_staged_content to true" do
+        affiliate.has_staged_content.should be_false
+        affiliate.update_attributes_for_staging(@update_params).should be_true
+        affiliate.has_staged_content.should be_true
+      end
+
+      it "should update staged attributes" do
+        affiliate.update_attributes_for_staging(@update_params).should be_true
+        affiliate.staged_domains.should == @update_params[:staged_domains]
+        affiliate.staged_header.should == @update_params[:staged_header]
+        affiliate.staged_footer.should == @update_params[:staged_footer]
+        affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
+      end
+    end
+
+    describe "on update_attributes_for_current" do
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+
+      before do
+        @update_params = {:staged_domains => "updated.domain.gov",
+                          :staged_header => "<span>header</span>",
+                          :staged_footer => "<span>footer</span>",
+                          :staged_affiliate_template_id => affiliate_templates(:basic_gray).id}
+      end
+
+      it "should set has_staged_content to false" do
+        affiliate.has_staged_content.should be_false
+        affiliate.update_attributes_for_current(@update_params).should be_true
+        affiliate.has_staged_content.should be_false
+      end
+
+      it "should update current attributes" do
+        affiliate.update_attributes_for_current(@update_params).should be_true
+        affiliate.domains.should == @update_params[:staged_domains]
+        affiliate.header.should == @update_params[:staged_header]
+        affiliate.footer.should == @update_params[:staged_footer]
+        affiliate.affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
+        affiliate.staged_domains.should == @update_params[:staged_domains]
+        affiliate.staged_header.should == @update_params[:staged_header]
+        affiliate.staged_footer.should == @update_params[:staged_footer]
+        affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
+      end
+    end
+
     it "should validate presence of :name on update" do
       affiliate = Affiliate.create!(@valid_create_attributes)
       affiliate.update_attributes(:name => "").should_not be_true

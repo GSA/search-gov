@@ -51,6 +51,8 @@
                       %strong BASIC SETTINGS
                       %ul{:style => 'list-style-type: none; margin: 0'}
                         %li
+                          = link_to "Site information", edit_site_information_affiliate_path(@affiliate)
+                        %li
                           = link_to "Get code", embed_code_affiliate_path(@affiliate)
                   %tr
                     %td

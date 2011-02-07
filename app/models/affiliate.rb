@@ -55,6 +55,20 @@ class Affiliate < ActiveRecord::Base
     affiliate_template.presence || AffiliateTemplate.default_template
   end
 
+  def update_attributes_for_staging(attributes)
+    attributes[:has_staged_content] = true
+    self.update_attributes(attributes)
+  end
+
+  def update_attributes_for_current(attributes)
+    attributes[:domains] = attributes[:staged_domains]
+    attributes[:header] = attributes[:staged_header]
+    attributes[:footer] = attributes[:staged_footer]
+    attributes[:affiliate_template_id] = attributes[:staged_affiliate_template_id]
+    attributes[:has_staged_content] = false
+    self.update_attributes(attributes)
+  end
+
   class << self
     def human_attribute_name(attribute_key_name, options = {})
       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super

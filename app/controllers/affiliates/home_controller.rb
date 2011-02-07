@@ -1,7 +1,7 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
-  before_filter :require_affiliate_or_admin, :except=> [:index, :edit, :how_it_works, :demo]
-  before_filter :require_affiliate, :only => [:edit]
-  before_filter :setup_affiliate, :only=> [:edit, :update, :show, :push_content_for, :destroy]
+  before_filter :require_affiliate_or_admin, :except=> [:index, :edit, :edit_site_information, :how_it_works, :demo]
+  before_filter :require_affiliate, :only => [:edit, :edit_site_information]
+  before_filter :setup_affiliate, :only=> [:edit, :edit_site_information, :update_site_information, :update, :show, :push_content_for, :destroy]
 
   AFFILIATE_ADS = [
     {:display_name => "BROWARD.org",
@@ -46,6 +46,10 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @title = "Edit Site - "
   end
 
+  def edit_site_information
+    @title = "Site Information - "
+  end
+
   def how_it_works
     @title = "How the Affiliate Program Works - "
   end
@@ -81,6 +85,26 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
       @current_step = :new_site_information
     end
     render :action => :new
+  end
+
+  def update_site_information
+    if params[:commit] == "Save for Preview"
+      if @affiliate.update_attributes_for_staging(params[:affiliate])
+        flash[:success]= "Staged changes to your site successfully."
+        redirect_to affiliate_path(@affiliate)
+      else
+        @title = "Site Information - "
+        render :action => :edit_site_information
+      end
+    else
+      if @affiliate.update_attributes_for_current(params[:affiliate])
+        flash[:success]= "Updated changes to your live site successfully."
+        redirect_to affiliate_path(@affiliate)
+      else
+        @title = "Site Information - "
+        render :action => :edit_site_information
+      end
+    end
   end
 
   def update

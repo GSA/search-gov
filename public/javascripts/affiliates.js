@@ -2,17 +2,20 @@ jQuery(document).ready(function() {
   jQuery('#affiliate_id').change(function(event) {
     window.location.replace("/affiliates/" + jQuery('#affiliate_id').val());
   });
-  jQuery('#formatting_tips_link').click(function() {
+
+  jQuery('.sliding_trigger').click(function() {
     var collapsedPattern = /^\+/;
-    var content = jQuery('#formatting_tips_link').html();
+    var slidingContentId = "#" + jQuery(this).attr("id") + "_content";
+    var content = jQuery(this).html();
+
     if (collapsedPattern.test(content)) {
-      jQuery('#formatting_tips').slideDown('fast');
+      jQuery(slidingContentId).slideDown('fast');
       content = content.replace("+", "-");
     } else {
-      jQuery('#formatting_tips').slideUp('fast');
+      jQuery(slidingContentId).slideUp('fast');
       content = content.replace("-", "+");
     }
-    jQuery('#formatting_tips_link').html(content);
+    jQuery(this).html(content);
     return false;
   })
 });

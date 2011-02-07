@@ -111,6 +111,146 @@ describe Affiliates::HomeController do
     end
   end
 
+  describe "do GET on #edit_site_information" do
+    it "should require affiliate login for edit_site_information" do
+      get :edit_site_information, :id => affiliates(:power_affiliate).id
+      response.should redirect_to(login_path)
+    end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+      end
+
+      it "should require affiliate login for edit_site_information" do
+        get :edit_site_information, :id => affiliates(:power_affiliate).id
+        response.should redirect_to(home_page_path)
+      end
+    end
+
+    context "when logged in as an affiliate manager who doesn't own the affiliate being edited" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+      end
+
+      it "should redirect to home page" do
+        get :edit_site_information, :id => affiliates(:another_affiliate).id
+        response.should redirect_to(home_page_path)
+      end
+    end
+
+    context "when logged in as the affiliate manager" do
+      integrate_views
+      before do
+        UserSession.create(users(:affiliate_manager))
+      end
+
+      it "should assign @title" do
+        get :edit_site_information, :id => affiliates(:basic_affiliate).id
+        assigns[:title].should_not be_blank
+      end
+
+      it "should render the edit_site_information page" do
+        get :edit_site_information, :id => affiliates(:basic_affiliate).id
+        response.should render_template("edit_site_information")
+      end
+    end
+  end
+
+  describe "do POST on #update_site_information" do
+    before do
+      @affiliate = affiliates(:power_affiliate)
+    end
+
+    it "should require affiliate login for update_site_information" do
+      post :update_site_information, :id => @affiliate.id, :affiliate=> {}
+      response.should redirect_to(login_path)
+    end
+
+    context "when logged in as an affiliate manager" do
+      before do
+        user = users(:affiliate_manager)
+        UserSession.create(user)
+        Affiliate.should_receive(:find).and_return(@affiliate)
+      end
+
+      it "should assign @affiliate" do
+        post :update_site_information, :id => @affiliate.id, :affiliate=> {}
+        assigns[:affiliate].should == @affiliate
+      end
+
+      it "should update @affiliate attributes" do
+        @affiliate.should_receive(:update_attributes)
+        post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}
+      end
+
+      context "when the affiliate update attributes successfully for 'Save for Preview' request" do
+        before do
+          @affiliate.should_receive(:update_attributes_for_staging).and_return(true)
+        end
+
+        it "should set a flash[:success] message" do
+          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
+          flash[:success].should_not be_blank
+        end
+
+        it "should redirect to affiliate specific page" do
+          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
+          response.should redirect_to(affiliate_path(@affiliate))
+        end
+      end
+
+       context "when the affiliate failed to update attributes for 'Save for Preview' request" do
+        before do
+          @affiliate.should_receive(:update_attributes_for_staging).and_return(false)
+        end
+
+        it "should assign @title" do
+          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
+          assigns[:title].should_not be_blank
+        end
+
+        it "should redirect to edit site information page" do
+          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
+          response.should render_template(:edit_site_information)
+        end
+      end
+
+      context "when the affiliate update attributes successfully for 'Make Live' request" do
+        before do
+          @affiliate.should_receive(:update_attributes_for_current).and_return(true)
+        end
+
+        it "should set a flash[:success] message" do
+          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
+          flash[:success].should_not be_blank
+        end
+
+        it "should redirect to affiliate specific page" do
+          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
+          response.should redirect_to(affiliate_path(@affiliate))
+        end
+      end
+
+       context "when the affiliate failed update attributes for 'Make Live' request" do
+        before do
+          @affiliate.should_receive(:update_attributes_for_current).and_return(false)
+        end
+
+        it "should assign @title" do
+          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
+          assigns[:title].should_not be_blank
+        end
+
+        it "should redirect to edit site information  page" do
+          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
+          response.should render_template(:edit_site_information)
+        end
+      end
+
+    end
+  end
+
   describe "do POST on #update" do
     it "should require affiliate login for update" do
       post :update, :id => affiliates(:power_affiliate).id, :affiliate=> {}
