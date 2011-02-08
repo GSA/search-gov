@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>184</tt></td>
-            <td class='right_align'><tt>157</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>91.85%</tt></div>
+            <td class='right_align'><tt>188</tt></td>
+            <td class='right_align'><tt>160</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>92.02%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:92px"></div>
             <div class="uncovered" style="width:8px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>90.45%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>90.62%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:90px"></div>
-            <div class="uncovered" style="width:10px"></div>
+            <div class="covered" style="width:91px"></div>
+            <div class="uncovered" style="width:9px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -1101,31 +1101,31 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line175">175</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line176">176</a> </pre></td>
+            <td><pre><a name="line175">175</a>   def render_trending_searches</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line177">177</a>   def ssl_protocol</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line178">178</a>     SSL_PROTOCOL</pre></td>
+            <td><pre><a name="line176">176</a>     render(:partial =&gt; 'shared/trending_searches') if params[:locale].blank? || params[:locale] == 'en'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line179">179</a>   end</pre></td>
+            <td><pre><a name="line177">177</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line178">178</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line179">179</a>   private</pre></td>
           </tr>
         
           
@@ -1137,13 +1137,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line181">181</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line181">181</a>   def ssl_protocol</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line182">182</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+            <td><pre><a name="line182">182</a>     SSL_PROTOCOL</pre></td>
           </tr>
         
           
@@ -1155,13 +1155,37 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line184">184</a> end</pre></td>
+            <td><pre><a name="line184">184</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line185">185</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line186">186</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line187">187</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line188">188</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Feb 07 11:22:25 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Feb 08 10:29:57 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
