@@ -1,4 +1,5 @@
 @import compass/utilities/tables.sass
+@import trending_searches.sass
 
 !site_theme_color= #003366
 !red = #990000
@@ -323,47 +324,3 @@ ul#related_gov_forms
 .homepage
   #search_form
     margin-bottom: 0.5em
-
-#home_searchtrend
-  float: left
-  font-family: verdana, verdana, sans-serif
-  width: 650px
-  height: 30px
-  text-align: left
-  padding: 7px 0 5px 5px
-  font-size: 11px
-  background: url('/images/trending_searches_bg.png') no-repeat
-  h2
-    margin: 0 0 0 0
-    padding: 0 20px 0 5px
-    color: #5D411C
-    font-weight: bold
-    font-size: 100%
-    display: block
-    float: left
-  ul
-    margin: 0
-    padding: 0
-    li
-      margin: 0
-      padding: 0 0 0 10px
-      display: inline
-      background: url('/images/trending_searches_divider.gif') no-repeat center left
-      &.first
-        background: none
-        border-left: none
-        list-style: none
-        display: inline
-        padding: 0
-        margin: 0
-  a
-    margin: 0 0 0 0
-    padding: 0 5px 0 0
-    text-decoration: none
-    color: #022945
-    &:hover
-      text-decoration: underline
-    &:visited
-      color: #595959
-
-/* end bj search trends code

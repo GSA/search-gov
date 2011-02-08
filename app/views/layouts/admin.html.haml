@@ -24,5 +24,6 @@
           = breadcrumbs([link_to("Affiliate Program", affiliates_path), "Admin Center"])
         - else
           = breadcrumbs([link_to("Affiliate Program", affiliates_path),link_to("Admin Center", admin_home_page_path), @page_title || active_scaffold_config.label])
-        .span-6.prepend-9.append-9= show_flash_messages
+        .span-8.prepend-8.append-8= show_flash_messages
+        .clear
         = yield

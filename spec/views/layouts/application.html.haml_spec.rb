@@ -5,7 +5,7 @@ describe "layouts/application.html.haml" do
   end
 
   before do
-    assigns[:trending_searches] = []
+    assigns[:active_top_searches] = []
   end
 
   context "when page is displayed" do

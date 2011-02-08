@@ -22,8 +22,11 @@ describe Admin::TopSearchesController do
       it "should assign page title" do
         top_searches = [mock_model(TopSearch)]
         TopSearch.should_receive(:find).and_return(top_searches)
+        active_top_searches = []
+        TopSearch.should_receive(:find_active_entries).and_return(active_top_searches)
         get :index
         assigns[:top_searches].should == top_searches
+        assigns[:active_top_searches].should == active_top_searches
         assigns[:page_title].should == "Top Searches"
       end
     end
@@ -48,7 +51,7 @@ describe Admin::TopSearchesController do
 
       it "should render #index on create" do
         post :create
-        response.should render_template(:index)
+        response.should redirect_to admin_top_searches_path
       end
 
       it "should assign page title on create" do

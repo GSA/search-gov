@@ -2,6 +2,7 @@ class Admin::TopSearchesController < Admin::AdminController
   before_filter :assign_page_title
   def index
     @top_searches = TopSearch.find(:all, :order => "position ASC")
+    @active_top_searches = TopSearch.find_active_entries
   end
   
   def create
@@ -13,8 +14,9 @@ class Admin::TopSearchesController < Admin::AdminController
       top_search.save
       @top_searches << top_search
     end
-    render :action => :index
-  end  
+    flash[:success] = 'Top Searches were updated successfully.'
+    redirect_to admin_top_searches_path
+  end
 
   private
   def assign_page_title

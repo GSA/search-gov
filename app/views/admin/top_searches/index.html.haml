@@ -24,4 +24,9 @@
           = label_tag "url#{index + 1}", nil, :style => "display: none;"
           = text_field_tag "url#{index + 1}", top_search.url
   = submit_tag 'Update Top Searches'
-    
+
+%br
+%h2
+  Current Trending Searches
+= render_trending_searches
+

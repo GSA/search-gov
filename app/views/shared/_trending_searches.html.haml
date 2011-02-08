@@ -2,7 +2,7 @@
   %h2
     Search Trends
   %ul
-    - @trending_searches.each_with_index do |trending_search, index|
+    - @active_top_searches.each_with_index do |top_search, index|
       %li{:class => index == 0 && "first"}
-        =link_to trending_search.query, trending_search.link_url, :target => '_top'
+        =link_to top_search.query, top_search.link_url, :target => '_top'
 
