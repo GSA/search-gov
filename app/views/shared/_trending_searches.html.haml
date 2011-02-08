@@ -4,5 +4,5 @@
   %ul
     - @trending_searches.each_with_index do |trending_search, index|
       %li{:class => index == 0 && "first"}
-        =link_to trending_search.query, trending_search.link_url
+        =link_to trending_search.query, trending_search.link_url, :target => '_top'
 
