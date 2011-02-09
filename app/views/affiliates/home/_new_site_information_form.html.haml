@@ -10,6 +10,9 @@
   %dd
     = new_site_information_form.text_area :staged_domains, :class => "text"
     %br
+    %span.sublabel
+      for example, yoursite.gov
+    %br
     = link_to "+ Formatting Tips", "#formatting_tips_link", :id => "formatting_tips_link"
     %div#formatting_tips
       %p
@@ -21,5 +24,6 @@
         List subagency.yoursite.gov to include lower-level domains
       %p
         Invididual pages: List www.yoursite.gov/yourpage.html include only specific pages.
+    %br
   %dt= new_site_information_form.label :staged_affiliate_template_id, "Choose template"
   %dd= new_site_information_form.select :staged_affiliate_template_id, affiliate_template_options(@affiliate)

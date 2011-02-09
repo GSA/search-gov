@@ -48,6 +48,11 @@ describe Affiliates::HomeController do
         UserSession.create(users(:affiliate_manager_with_no_affiliates))
       end
 
+      it "should assign @title" do
+        get :new
+        assigns[:title].should_not be_blank
+      end
+
       it "should assign @user" do
         get :new
         assigns[:user].should == users(:affiliate_manager_with_no_affiliates)
@@ -94,11 +99,15 @@ describe Affiliates::HomeController do
         UserSession.create(users(:affiliate_manager))
       end
 
+      it "should assign @title" do
+        get :edit, :id => affiliates(:basic_affiliate).id
+        assigns[:title].should_not be_blank
+      end
+
       it "should render the edit page" do
         get :edit, :id => affiliates(:basic_affiliate).id
         response.should render_template("edit")
       end
-
     end
   end
 
@@ -147,6 +156,11 @@ describe Affiliates::HomeController do
       before do
         UserSession.create(users(:affiliate_manager_with_no_affiliates))
         User.should_receive(:find_by_id).and_return(users(:affiliate_manager_with_no_affiliates))
+      end
+
+      it "should assign @title" do
+        post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+        assigns[:title].should_not be_blank
       end
 
       it "should assign @user" do
@@ -209,6 +223,11 @@ describe Affiliates::HomeController do
         UserSession.create(users(:affiliate_manager_with_no_affiliates))
         @affiliate = stub_model(Affiliate)
         Affiliate.should_receive(:new).and_return(@affiliate)
+      end
+
+      it "should assign @title" do
+        post :create
+        assigns[:title].should_not be_blank
       end
 
       it "should assign @affiliate" do

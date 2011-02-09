@@ -3,13 +3,13 @@
 - if @current_user.is_affiliate?
   .span-18  
     -if @current_user.affiliates.empty?
-      %p You currently have no affiliates.  To begin, please add a new affiliate.
+      %p You currently have no sites.  To begin, please add a new site.
     -else
-      %p Welcome to the affiliate section.  To begin, select an affiliate from the left menu.
+      %p Welcome to the affiliate section.  To begin, select a site from the left menu.
       .title-row
         .right
-          #{link_to "+ add new affiliate", new_affiliate_path, :class => "small"}
-        Affiliate List
+          #{link_to "+ add new site", new_affiliate_path, :class => "small"}
+        Site List
       %table.admin-table
         %tr
           %th 
@@ -30,4 +30,4 @@
                 |
                 = button_to "Push Changes", push_content_for_affiliate_path(affiliate, :affiliate_id => affiliate.id)
               |
-              = button_to "Delete Affiliate", affiliate_path(affiliate), :title => "Delete this affiliate", :confirm => "You are about to delete this affiliate. Are you sure?", :method => :delete
+              = button_to "Delete Site", affiliate_path(affiliate), :title => "Delete this site", :confirm => "You are about to delete this site. Are you sure?", :method => :delete

@@ -43,6 +43,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def edit
+    @title = "Edit Site - "
   end
 
   def how_it_works
@@ -59,11 +60,13 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
    
   def new
+    @title = "Add a New Site - "
     @user = @current_user
     @current_step = :edit_contact_information
   end
 
   def create
+    @title = "Add a New Site - "
     @affiliate = Affiliate.new(params[:affiliate])
     @affiliate.owner = @current_user
     if @affiliate.save
@@ -84,7 +87,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @affiliate.attributes = params[:affiliate]
     if @affiliate.save
       @affiliate.update_attribute(:has_staged_content, true)
-      flash[:success]= "Staged changes to your affiliate successfully."
+      flash[:success]= "Staged changes to your site successfully."
       redirect_to home_affiliates_path(:said=>@affiliate.id)
     else
       render :action => :edit
@@ -92,6 +95,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def update_contact_information
+    @title = "Add a New Site - "
     @user = @current_user
     @user.strict_mode = true
     if @user.update_attributes(params[:user])
@@ -104,12 +108,12 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def show
-    @title = "Affiliate Page for " + @affiliate.display_name + " - "
+    @title = "Site: " + @affiliate.display_name + " - "
   end
   
   def destroy
     @affiliate.destroy
-    flash[:success]= "Affiliate deleted"
+    flash[:success]= "Site deleted"
     redirect_to home_affiliates_path
   end
 

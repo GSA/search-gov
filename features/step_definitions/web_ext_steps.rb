@@ -5,3 +5,7 @@ When /^I fill in the following within "([^"]*)":$/ do |selector, fields|
     end
   end
 end
+
+Then /^(?:|I )should see "([^"]*)" button$/ do |value|
+  response.body.should have_tag("input[value=#{value}]")
+end

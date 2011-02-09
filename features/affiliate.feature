@@ -35,10 +35,21 @@ Feature: Affiliate clients
     And I should not see "Analyst Center"
     And I should see "USASearch > Affiliate Program"
 
-  Scenario: Visiting the affiliate admin page as affiliate
+  Scenario: Visiting the affiliate admin page as affiliate with existing sites
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    Then I should see "USASearch > Affiliate Program > Affiliate Center"
+    Then I should see "Affiliate Dashboard" within "title"
+    And I should see "Affiliate Dashboard" within ".main"
+    And I should see "USASearch > Affiliate Program > Affiliate Center"
+    And I should see "Site List"
+    And I should see "+ add new site"
+
+  Scenario: Visiting the affiliate admin page as affiliate without existing sites
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    Then I should see "Affiliate Dashboard"
+    And I should see "USASearch > Affiliate Program > Affiliate Center"
+    And I should see "Add New Site"
 
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
@@ -58,9 +69,10 @@ Feature: Affiliate clients
   Scenario: Adding a new affiliate
     Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "Add New Affiliate"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
-    And I should see "Add a New Site"
+    And I follow "Add New Site"
+    Then I should see "Add a New Site" within "title"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
+    And I should see "Add a New Site" within ".main"
     And I should see "Step 1. Enter contact information" within ".current_step"
     And I should see "Contact information"
     And the "Name*" field should contain "A New Affiliate"
@@ -74,12 +86,14 @@ Feature: Affiliate clients
       | Zip                                        | 20022                      |
     And I select "Virginia" from "State"
     And I press "Next"
-    Then I should see "Step 2. Set up site" within ".current_step"
+    Then I should see "Add a New Site" within "title"
+    And I should see "Step 2. Set up site" within ".current_step"
     And I should see "Site information"
     And I fill in the following:
       | Site name                 | My awesome agency                |
       | Domains to search         | www.awesomeagency.gov            |
     And I press "Next"
+    Then I should see "Add a New Site" within "title"
     And I should see "Site successfully created"
     And I should see "Step 3. Get the code" within ".current_step"
     And I should see "View search results page"
@@ -90,7 +104,7 @@ Feature: Affiliate clients
   Scenario: Affiliate user who filled out contact information should not have to fill out the form again
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "Add New Affiliate"
+    And I follow "Add New Site"
     Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
     And I should see "Add a New Site"
     And I should see "Step 1. Enter contact information" within ".current_step"
@@ -162,7 +176,7 @@ Feature: Affiliate clients
     And I follow "Edit"
     And I fill in "HTTP parameter site name" with "aff-01_2011.gov"
     And I press "Save for preview"
-    Then I should see "Staged changes to your affiliate successfully."
+    Then I should see "Staged changes to your site successfully."
     And I follow "aff site2"
     And I follow "Edit"
     And the "HTTP parameter site name" field should contain "aff-01_2011.gov"
@@ -208,9 +222,9 @@ Feature: Affiliate clients
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
-    And I press "Delete Affiliate"
+    And I press "Delete Site"
     Then I should be on the affiliate admin page
-    And I should see "Affiliate deleted"
+    And I should see "Site deleted"
 
   Scenario: Staging changes to an affiliate's look and feel
     Given the following Affiliates exist:
@@ -219,7 +233,9 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "Edit"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Edit"
+    Then I should see "Edit Site" within "title"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Edit"
+    And I should see "Edit Site" within ".main"
     And the "Domains (one per line)" field should contain "oldagency.gov"
     And the "Enter HTML to customize the top of your search page" field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search page" field should contain "Old footer"
@@ -232,7 +248,7 @@ Feature: Affiliate clients
       | Enter HTML to customize the bottom of your search page                | New footer                                          |
     And I select "Basic Gray (A simple, clean gray page)" from "Style for your search page results"
     And I press "Save for preview"
-    Then I should see "Staged changes to your affiliate successfully."
+    Then I should see "Staged changes to your site successfully."
     And I should be on the affiliate admin page
     And I should see "new site name"
     When I follow "Edit"
@@ -398,9 +414,17 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "aff site"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site"
-    And I should see "Affiliate: aff site"
+    Then I should see "Site: aff site" within "title"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site"
+    And I should see "Site: aff site" within ".main"
+    And I should see "Delete Site" button
+    And I should see "Add new site" within ".affiliate-nav"
+    And I should see "My account" within ".affiliate-nav"
+    And I should see "Manage users" within ".affiliate-nav"
     And I should not see "aff.gov"
+
+    When I follow "My account" within ".affiliate-nav"
+    Then I should be on the user account page"
 
   Scenario: Stats link on affiliate home page
     Given the following Affiliates exist:
@@ -409,7 +433,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the affiliate admin page with "aff.gov" selected
-    Then I should see "Analytics"
+    Then I should see "SITE ANALYTICS"
 
   Scenario: Getting stats for an affiliate
     Given the following Affiliates exist:
