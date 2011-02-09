@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-top_search_rb.html">app/models/top_search.rb</a></td>
-            <td class='right_align'><tt>8</tt></td>
-            <td class='right_align'><tt>7</tt></td>
+            <td class='right_align'><tt>18</tt></td>
+            <td class='right_align'><tt>15</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,7 +63,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   validates_presence_of :position, :query</pre></td>
+            <td><pre><a name="line2">2</a>   validates_presence_of :position</pre></td>
           </tr>
         
           
@@ -74,38 +74,98 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>   before_validation :set_query_to_nil_if_blank</pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line4">4</a>   </pre></td>
+            <td><pre><a name="line5">5</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   def link_url</pre></td>
+            <td><pre><a name="line6">6</a>   def self.find_active_entries</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     self.url.present? ? self.url : &quot;http://search.usa.gov/search?query=#{CGI::escape(self.query)}&amp;linked=1&amp;position=#{self.position}&quot;</pre></td>
+            <td><pre><a name="line7">7</a>     all(:conditions =&gt; &quot;query IS NOT NULL&quot;, :order =&gt; &quot;position ASC&quot;, :limit =&gt; 5)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a>   end</pre></td>
+            <td><pre><a name="line8">8</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a> end</pre></td>
+            <td><pre><a name="line9">9</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>   def link_url</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     self.url.present? ? self.url : &quot;http://search.usa.gov/search?query=#{CGI::escape(self.query)}&amp;linked=1&amp;position=#{self.position}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line12">12</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line13">13</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>   def set_query_to_nil_if_blank</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>     self.query = nil if self.query.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line17">17</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line18">18</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Feb 08 10:29:58 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Feb 09 09:23:21 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

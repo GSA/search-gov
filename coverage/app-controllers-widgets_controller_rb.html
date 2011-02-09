@@ -69,7 +69,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     @top_searches = TopSearch.find(:all, :limit =&gt; 5, :order =&gt; 'position asc')</pre></td>
+            <td><pre><a name="line3">3</a>     @active_top_searches = TopSearch.find_active_entries</pre></td>
           </tr>
         
           
@@ -99,7 +99,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     @trending_searches = TopSearch.find(:all, :limit =&gt; 4, :order =&gt; 'position asc')</pre></td>
+            <td><pre><a name="line8">8</a>     @active_top_searches = TopSearch.find_active_entries</pre></td>
           </tr>
         
           
@@ -129,7 +129,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Feb 08 10:29:57 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Feb 09 09:23:21 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
