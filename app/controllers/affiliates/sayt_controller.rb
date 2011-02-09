@@ -5,7 +5,9 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
   def index
     @title = "Type-ahead Search - "
     @sayt_suggestion = SaytSuggestion.new
-    @sayt_suggestions = SaytSuggestion.paginate_by_affiliate_id(@affiliate.id, :conditions => ["ISNULL(deleted_at)"], :page => params[:page] || 1, :order => 'phrase ASC')
+    @filter = params[:filter]
+    conditions = @filter.present? ? ["phrase LIKE ? AND ISNULL(deleted_at)", "#{@filter}%"] : ["ISNULL(deleted_at)"]
+    @sayt_suggestions = SaytSuggestion.paginate_by_affiliate_id(@affiliate.id, :conditions => conditions, :page => params[:page] || 1, :order => 'phrase ASC')
   end
   
   def create
