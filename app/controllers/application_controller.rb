@@ -9,8 +9,19 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   protect_from_forgery
   AVAILABLE_LOCALES = [:en, :es]
-
+  VALID_FORMATS = %w{html rss json xml mobile}
+  
+  rescue_from ActionView::MissingTemplate, :with => :template_not_found
+  
   private
+  
+  def template_not_found(error)
+    if VALID_FORMATS.include?(request.format)
+      raise error
+    else
+      render :file => File.join(RAILS_ROOT, "public", "404.html"), :status => 404
+    end
+  end
 
   def set_locale
     I18n.locale = determine_locale_from_url(params[:locale]) || I18n.default_locale
