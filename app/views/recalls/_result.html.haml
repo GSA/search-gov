@@ -1,8 +1,8 @@
-.recall[result]
+.searchresult.recall[result]
   = render "recalls/industry_icon", :recall => result
   .details
-    = link_to highlight(truncate_on_words(result.summary, 90), @query.split, :highlighter => '<b>\1</b>'), result.recall_url
+    %h2= link_to truncate_on_words(result.summary, 48), result.recall_url
     .description
       .recall-date= "#{(result.recalled_on || result.created_at).strftime("%b. %d, %Y")}:"
-      = truncate(sanitize(result.description, :tags => []), 180)
-    .url= link_to result.recall_url, result.recall_url
+      = truncate(sanitize(result.description, :tags => []), 166)
+    .url= link_to shorten_url(result.recall_url), result.recall_url

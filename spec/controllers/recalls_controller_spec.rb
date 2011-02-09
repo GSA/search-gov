@@ -57,7 +57,7 @@ describe RecallsController do
       context "when no sort value is defined" do
         it "should default to searching by date" do
           get :index
-          assigns[:valid_params][:sort].should == 'date'
+          assigns[:valid_params][:sort].should == 'rel'
         end
       end
     end

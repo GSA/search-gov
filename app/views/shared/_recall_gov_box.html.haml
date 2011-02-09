@@ -1,12 +1,14 @@
+- en_ingles = params[:locale] == "es" ? " (en ingles) " : ""
 .recalls-govbox
   %h3<
     = t :recall_govbox_header
-    = link_to("#{t(:view_more_recalls)} >", recalls_search_path(:query => search.query))
+    = link_to("#{t(:view_more_recalls)}#{en_ingles}>", recalls_search_path(:query => search.query, :locale => "en"), :id =>"view_more_recalls")
   - search.recalls.hits.each do |hit|
     .recall
       = render "recalls/industry_icon", :recall => hit.instance
       .details
-        = link_to highlight(truncate_on_words(hit.instance.summary, 90), search.query.split, :highlighter => '<b>\1</b>'), hit.instance.recall_url
+        = link_to highlight(truncate_on_words(hit.instance.summary, en_ingles.blank? ? 90 : 80), search.query.split, :highlighter => '<b>\1</b>'), hit.instance.recall_url
+        = en_ingles
         .agency
           = t "industry.#{hit.instance.industry}.agency_name"
         .recall-date
