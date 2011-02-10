@@ -14,7 +14,7 @@
 
 - if @top_forms.size > 0
   .prepend-2.span-20.append-2
-    #popular_forms
+    #popular
       %h2 Popular Forms
       - @top_forms.each_with_index do |top_forms_column, column_index|
         - unless top_forms_column.nil?

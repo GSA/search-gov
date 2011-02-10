@@ -1,4 +1,4 @@
-Feature: Image search
+Feature: Recalls search
   In order to get government-related recalls
   As a site visitor
   I want to search for recalls
@@ -16,8 +16,13 @@ Feature: Image search
     And I submit the search form
     Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
 
-  Scenario: Doing a blank search
+  Scenario: Doing a blank search from the recalls home page
+    Given I am on the recalls landing page
+    When I submit the search form
+    Then I should be on the recalls landing page
+
+  Scenario: Doing a blank search from the recalls SERP
     Given I am on the recalls search page
     When I submit the search form
-    Then I should be on the recalls search page
-    And I should see "Sorry, no results found for"
+    Then I should be on the recalls landing page
+

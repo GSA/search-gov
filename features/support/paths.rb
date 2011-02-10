@@ -80,6 +80,8 @@ module NavigationHelpers
       home_affiliates_path
     when /the affiliate sayt page/
       affiliate_type_ahead_search_index_path(:locale => nil, :m => nil)
+    when /the recalls landing page/
+      recalls_path
     when /the recalls search page/
       recalls_search_path
     when /the program welcome page/

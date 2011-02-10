@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe RecallsController do
   
-  describe "#index" do
+  describe "#search" do
     context "when making a request for a request without a format (or HTML)" do
       it "should render the html template" do
         get :index, :query => 'strollers'
@@ -28,27 +28,27 @@ describe RecallsController do
         it "should perform a search with the relevant parameters passed in" do
           Recall.should_receive(:search_for).with(@query_string, @valid_options_hash, @page).and_return(@search)
           param_to_be_ignored = {:ignore_me => "foo bar"}
-          get :index, @valid_params.merge(param_to_be_ignored)
+          get :search, @valid_params.merge(param_to_be_ignored)
         end
 
         it "should not do any caching of the result" do
           @redis.should be_nil
-          get :index, @valid_params
+          get :search, @valid_params
         end
       end
       
       context "when a date range is supplied" do
         it "should set the start and end date to appropriate values for each of the values" do
-          get :index, :date_range => 'last_30'
+          get :search, :date_range => 'last_30'
           assigns[:valid_params][:start_date].should == Date.today - 30.days
           assigns[:valid_params][:end_date].should == Date.today
-          get :index, :date_range => 'last_90'
+          get :search, :date_range => 'last_90'
           assigns[:valid_params][:start_date].should == Date.today - 90.days
           assigns[:valid_params][:end_date].should == Date.today
-          get :index, :date_range => 'current_year'
+          get :search, :date_range => 'current_year'
           assigns[:valid_params][:start_date].should == Date.parse("#{Date.today.year}-01-01")
           assigns[:valid_params][:end_date].should == Date.today
-          get :index, :date_range => 'last_year'
+          get :search, :date_range => 'last_year'
           assigns[:valid_params][:start_date].should == Date.parse("#{Date.today.year - 1}-01-01")
           assigns[:valid_params][:end_date].should == Date.parse("#{Date.today.year - 1}-12-31")
         end
@@ -56,8 +56,15 @@ describe RecallsController do
       
       context "when no sort value is defined" do
         it "should default to searching by date" do
-          get :index
+          get :search, :query => "beef"
           assigns[:valid_params][:sort].should == 'rel'
+        end
+      end
+
+      context "when the query is blank" do
+        it "should redirect to the landing page" do
+          get :search
+          response.should redirect_to recalls_path
         end
       end
     end
@@ -71,18 +78,18 @@ describe RecallsController do
       context "when an API key is specified" do
         it "should check that the API key belongs to a user, and process the request" do
           User.should_receive(:find_by_api_key).with(@developer.api_key).and_return @developer
-          get :index, :query => 'stroller', :api_key => @developer.api_key, :format => 'json'
+          get :search, :query => 'stroller', :api_key => @developer.api_key, :format => 'json'
           response.should be_success
         end
       
         it "should return a 401 error if the key is not found" do
           User.should_receive(:find_by_api_key).with('badkey').and_return nil
-          get :index, :query => 'stroller', :api_key => 'badkey', :format => 'json'
+          get :search, :query => 'stroller', :api_key => 'badkey', :format => 'json'
           response.should_not be_success
         end
       
         it "should not care if the API key is not specified" do
-          get :index, :query => 'stroller', :format => 'json'
+          get :search, :query => 'stroller', :format => 'json'
           response.should be_success
         end
       end
@@ -107,18 +114,18 @@ describe RecallsController do
           it "should perform a search with the relevant parameters passed in" do
             Recall.should_receive(:search_for).with(@query_string, @valid_options_hash, @page).and_return(@search)
             param_to_be_ignored = {:ignore_me => "foo bar"}
-            get :index, @valid_params.merge(param_to_be_ignored)
+            get :search, @valid_params.merge(param_to_be_ignored)
           end
 
           it "should cache the result" do
             @redis.should_receive(:setex).and_return 1
-            get :index, @valid_params
+            get :search, @valid_params
           end
 
           context "when JSON results are requested" do
             it "should return parsable JSON" do
               Recall.stub!(:search_for).and_return(@search)
-              get :index, @valid_params.merge(:format => 'json')
+              get :search, @valid_params.merge(:format => 'json')
               parsed_response = JSON.parse(response.body)
               parsed_response["success"]["total"].should == 1
               parsed_response["success"]["results"].should == [{"key1"=>"val1"}, {"key2"=>"val2"}]
@@ -129,7 +136,7 @@ describe RecallsController do
         context "when result is cached" do
           it "should fetch the result from cache" do
             @redis.should_receive(:get).once.and_return "some valid results in JSON"
-            get :index, :format => 'json'
+            get :search, :format => 'json'
             response.body.should == "some valid results in JSON"
           end
         end
@@ -143,7 +150,7 @@ describe RecallsController do
         end
 
         it "should return a JSON error object" do
-          get :index, :query => @query, :end_date => @bad_date, :start_date => @good_date, :format => 'json'
+          get :search, :query => @query, :end_date => @bad_date, :start_date => @good_date, :format => 'json'
           parsed_response = JSON.parse(response.body)
           parsed_response["error"].should == "Invalid date"
         end
@@ -152,7 +159,7 @@ describe RecallsController do
       context "when valid organizations are specified" do
         it "should not return a JSON error object" do
           Recall::VALID_ORGANIZATIONS.each do |organization|
-            get :index, :organization => organization, :format => 'json'
+            get :search, :organization => organization, :format => 'json'
             parsed_response = JSON.parse(response.body)
             parsed_response["error"].should be_nil
           end
@@ -161,7 +168,7 @@ describe RecallsController do
 
       context "when invalid organzation is specified" do
         it "should return a JSON error object" do
-          get :index, :organization => "bogus", :format => 'json'
+          get :search, :organization => "bogus", :format => 'json'
           parsed_response = JSON.parse(response.body)
           parsed_response["error"].should == "Invalid organization"
         end
@@ -169,7 +176,7 @@ describe RecallsController do
 
       context "when invalid code is specified" do
         it "should return a JSON error object" do
-          get :index, :code => "bogus", :format => 'json'
+          get :search, :code => "bogus", :format => 'json'
           parsed_response = JSON.parse(response.body)
           parsed_response["error"].should == "Invalid code"
         end
@@ -177,7 +184,7 @@ describe RecallsController do
 
       context "when invalid year is specified" do
         it "should return a JSON error object" do
-          get :index, :year => "bogus", :format => 'json'
+          get :search, :year => "bogus", :format => 'json'
           parsed_response = JSON.parse(response.body)
           parsed_response["error"].should == "Invalid year"
         end
@@ -185,7 +192,7 @@ describe RecallsController do
 
       context "when invalid page is specified" do
         it "should return a JSON error object" do
-          get :index, :page => "bogus", :format => 'json'
+          get :search, :page => "bogus", :format => 'json'
           parsed_response = JSON.parse(response.body)
           parsed_response["error"].should == "Invalid page"
         end
@@ -193,7 +200,7 @@ describe RecallsController do
       
       context "when an invalid date range is specified" do
         it "should return a JSON error object" do
-          get :index, :date_range => 'all', :format => 'json'
+          get :search, :date_range => 'all', :format => 'json'
           parsed_response = JSON.parse(response.body)
           parsed_response["error"].should == "Invalid date range"
         end
@@ -202,14 +209,14 @@ describe RecallsController do
     
     context "when no sort value is specified" do
       it "should not set a sort value" do
-        get :index, :format => 'json'
+        get :search, :format => 'json'
         assigns[:valid_params][:sort].should be_nil
       end
     end
     
     context "when making a request with some other format, besides json" do
       before do
-        get :index, :query => 'strollers', :format => 'wml'
+        get :search, :query => 'strollers', :format => 'wml'
       end
 
       it "should return an error message" do
@@ -221,5 +228,25 @@ describe RecallsController do
       end
     end
     
+  end
+
+  describe "#index" do
+    describe "rendering" do
+      integrate_views
+      it "should succeed" do
+        get :index
+
+        response.should be_success
+      end
+    end
+
+    describe "content" do
+      it "should fetch recent recalls" do
+        search = ["latest recall", "second latest recall"]
+        Recall.should_receive(:search_for).with("", {:sort => 'date'}).and_return(search)
+        get :index
+        assigns[:latest_recalls].should == search
+      end
+    end
   end
 end

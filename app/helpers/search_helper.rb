@@ -139,10 +139,6 @@ module SearchHelper
     (controller.controller_name == "searches" and controller.action_name == "forms") or controller.controller_name == "forms"
   end
 
-  def search_box_forms_link(search_params)
-    controller.controller_name == "home" ? forms_path : forms_search_path(search_params)
-  end
-
   def no_results_for(query)
     content_tag(:p, (t :no_results_for, :query => h(query)), :class=>"noresults")
   end

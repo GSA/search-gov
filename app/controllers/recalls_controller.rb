@@ -9,18 +9,22 @@ class RecallsController < ApplicationController
   VALID_OPTIONS = %w{start_date end_date date_range upc sort code organization make model year food_type}
   
   def index
+    @latest_recalls = Recall.search_for("", {:sort => "date"})
+  end
+
+  def search
     respond_to do |format|
       format.html {
-        @valid_params[:sort] = 'rel' if params[:sort].blank?
         @query = params[:query] || ""
+
+        redirect_to recalls_path and return if @query.blank?
+
+        @valid_params[:sort] = 'rel' if params[:sort].blank?
         @page = params[:page]
         @search = Recall.search_for(@query, @valid_params, @page)
       }
       format.json {
         api_search
-      }
-      format.any {
-        render :text => 'Not Implemented', :status => 501 
       }
     end
   end

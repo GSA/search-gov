@@ -499,5 +499,12 @@ describe SearchesController do
         response.body.should_not have_tag("a[href=http://forms.gov/11.pdf]", :text => "Taxes Form #11 (11)")
       end
     end
+
+    context "when the query is blank" do
+      it "should redirect to the forms landing page" do
+        get :forms
+        response.should redirect_to forms_path
+      end
+    end
   end
 end

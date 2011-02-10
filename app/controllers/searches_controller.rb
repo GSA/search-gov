@@ -26,8 +26,9 @@ class SearchesController < ApplicationController
       end
     end
   end
-  
+
   def forms
+    redirect_to forms_path and return if @search_options[:query].blank?
     @search = FormSearch.new(@search_options)
     if params[:source] == "gov_forms"
       @gov_forms = GovForm.search_for(@search_options[:query], [@search_options[:page], 0].max + 1, @search_options[:results_per_page] || 10)
