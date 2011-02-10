@@ -297,9 +297,19 @@ module SearchHelper
   def shorten_url (url, length=30)
     return url if url.length <= length
     if url.count('/') >= 4
-      arr = url.split('/')
-      host= arr[0]+"//"+arr[2]
-      doc = arr.last.split('?').first
+      if url.index('?')
+        arr = url[0..url.index('?')].split('/')
+        arr[arr.size - 1] += url[url.index('?') + 1..-1]
+      else
+        arr = url.split('/')
+      end
+      host = arr[0]+"//"+arr[2]
+      if arr.last.index('?')
+        doc_path = arr.last.split('?')
+        doc = [doc_path.first, "?", doc_path[1].split('&').first, "..."].join
+      else
+        doc = arr.last.split('?').first
+      end
       [host, "...", doc].join('/')
     else
       url[0, length]+"..."
