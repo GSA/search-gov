@@ -22,6 +22,8 @@ class RecallsController < ApplicationController
         @valid_params[:sort] = 'rel' if params[:sort].blank?
         @page = params[:page]
         @search = Recall.search_for(@query, @valid_params, @page)
+        @page_title = @query
+
       }
       format.json {
         api_search

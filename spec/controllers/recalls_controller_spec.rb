@@ -1,16 +1,65 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe RecallsController do
-  
+  describe "#index" do
+    context "when rendering the page" do
+      integrate_views
+      before do
+        get :index
+      end
+    
+      it "should succeed" do
+        response.should be_success
+      end
+    
+      it "should assign the page title to nothing" do
+        assigns[:page_title].should be_nil
+      end
+    
+      it "should set the page title to 'Search.USA.gov Forms'" do
+        response.should have_tag("title", :content => 'Search.USA.gov Recalls')
+      end
+    
+      it "should have meta tags for description and keywords" do
+        response.should have_tag("meta[name=description]")
+        response.should have_tag("meta[name=keywords]")
+      end
+    end
+        
+    it "should fetch recent recalls" do
+      search = ["latest recall", "second latest recall"]
+      Recall.should_receive(:search_for).with("", {:sort => 'date'}).and_return(search)
+      get :index
+      assigns[:latest_recalls].should == search
+    end
+  end
+
   describe "#search" do
+    context "for a normal request" do
+      integrate_views
+      before do
+        get :search, :query => 'strollers'
+      end
+      
+      should_render_template 'recalls/search.html.haml', :layout => 'application'
+
+      it "should assign the query with a forms prefix as the page title" do
+        assigns[:page_title].should == "strollers"
+      end
+
+      it "should show a custom title for the results page" do
+        response.body.should contain("strollers - Search.USA.gov Recalls")
+      end
+    end
+    
     context "when making a request for a request without a format (or HTML)" do
       it "should render the html template" do
-        get :index, :query => 'strollers'
+        get :search, :query => 'strollers'
         response.should be_success
       end
       
       it "should not care about an API key" do
-        get :index, :query => 'strollers', :api_key => 'bad api key'
+        get :search, :query => 'strollers', :api_key => 'bad api key'
         response.should be_success
       end
       
@@ -225,27 +274,6 @@ describe RecallsController do
       
       xit "should return an error status of 501" do
         response.status.should == "501 Not Implemented"
-      end
-    end
-    
-  end
-
-  describe "#index" do
-    describe "rendering" do
-      integrate_views
-      it "should succeed" do
-        get :index
-
-        response.should be_success
-      end
-    end
-
-    describe "content" do
-      it "should fetch recent recalls" do
-        search = ["latest recall", "second latest recall"]
-        Recall.should_receive(:search_for).with("", {:sort => 'date'}).and_return(search)
-        get :index
-        assigns[:latest_recalls].should == search
       end
     end
   end

@@ -12,7 +12,14 @@ module ApplicationHelper
   end
 
   def build_page_title(page_title)
-    (page_title.blank? ? "" : "#{page_title} - ") + (forms_search? ? (t :forms_site_title) : (t :site_title))
+    if forms_search?
+      site_title = (t :forms_site_title)
+    elsif recalls_search?
+      site_title = (t :recalls_site_title)
+    else
+      site_title = (t :site_title)
+    end
+    (page_title.blank? ? "" : "#{page_title} - ") + site_title
   end
 
   def show_flash_messages

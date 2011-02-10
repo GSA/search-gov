@@ -3,6 +3,7 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 describe ApplicationHelper do
   before do
     helper.stub!(:forms_search?).and_return false
+    helper.stub!(:recalls_search?).and_return false
   end
   
   describe "#other_locale_str" do
@@ -93,6 +94,24 @@ describe ApplicationHelper do
         context "when a non-blank page title is defined" do
           it "should prefix the defined page title with the English forms site title" do
             helper.build_page_title("some title").should == "some title - #{t :forms_site_title}"
+          end
+        end
+      end
+      
+      context "when it's a recalls page" do
+        before do
+          helper.stub!(:recalls_search?).and_return true
+        end
+        
+        context "when the page title is not defined" do
+          it "should return the recalls title" do
+            helper.build_page_title(nil).should == (t :recalls_site_title)
+          end
+        end
+        
+        context "when a non-blank page title is defined" do
+          it "should prefix the defined page title with the English recalls site title" do
+            helper.build_page_title("some title").should == "some title - #{t :recalls_site_title}"
           end
         end
       end
