@@ -18,7 +18,7 @@ class Affiliate < ActiveRecord::Base
   before_save :set_default_affiliate_template
   before_validation_on_create :set_default_search_results_page_title, :set_default_staged_search_results_page_title
   after_create :add_owner_as_user
-
+  
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
@@ -28,6 +28,10 @@ class Affiliate < ActiveRecord::Base
     :name => "HTTP parameter site name",
     :staged_search_results_page_title => "Search results page title"
   }
+  
+  def name=(name)
+    new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
+  end
 
   def is_owner?(user)
     self.owner == user ? true : false

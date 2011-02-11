@@ -3,7 +3,7 @@
   %dd= site_information_form.text_field :display_name, :class => "text"
   - unless @affiliate.new_record?
     %dt= site_information_form.label :name, "HTTP parameter site name"
-    %dd= site_information_form.text_field :name, :class => "text"
+    %dd= site_information_form.text_field :name, :class => "text", :disabled => true
     %dt= site_information_form.label :website, "Site URL"
     %dd
       = site_information_form.text_field :website, :class => "text"

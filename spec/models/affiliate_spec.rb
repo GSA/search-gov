@@ -140,9 +140,10 @@ describe Affiliate do
       end
     end
 
-    it "should validate presence of :name on update" do
+    it "should not change the name attribute on update" do
       affiliate = Affiliate.create!(@valid_create_attributes)
-      affiliate.update_attributes(:name => "").should_not be_true
+      lambda {affiliate.update_attributes(:name => "")}.should raise_error("This field cannot be changed.")
+      affiliate.name.should == "myawesomesite"
     end
 
     it "should validate presence of :search_results_page_title on update" do

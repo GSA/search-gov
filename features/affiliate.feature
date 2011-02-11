@@ -187,35 +187,6 @@ Feature: Affiliate clients
     And I should not see "HTTP parameter site name is too short"
     And I should not see "HTTP parameter site name is invalid"
 
-  Scenario: Updating HTTP parameter site name
-    Given the following Affiliates exist:
-      | display_name      | name              | contact_email         | contact_name        |
-      | aff site1         | aff1.gov          | aff@bar.gov           | John Bar            |
-      | aff site2         | aff2.gov          | aff@bar.gov           | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site2"
-    And I follow "Site information"
-    And I fill in "HTTP parameter site name" with "aff-01_2011.gov"
-    And I press "Save for preview"
-    Then I should see "Staged changes to your site successfully."
-    And I follow "aff site2"
-    And I follow "Site information"
-    And the "HTTP parameter site name" field should contain "aff-01_2011.gov"
-
-  Scenario: Editing an affiliate with problems
-    Given the following Affiliates exist:
-      | display_name      | name              | contact_email         | contact_name        |
-      | aff site1         | aff1.gov          | aff@bar.gov           | John Bar            |
-      | aff site2         | aff2.gov          | aff@bar.gov           | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site2"
-    And I follow "Site information"
-    And I fill in "HTTP parameter site name" with "aff1.gov"
-    And I press "Save for preview"
-    Then I should see "HTTP parameter site name has already been taken"
-
   Scenario: Deleting an affiliate
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -253,7 +224,6 @@ Feature: Affiliate clients
     And I follow "Site information"
     And I fill in the following:
       | Site name                  | new aff site        |
-      | HTTP parameter site name   | awesomeparam        |
       | Site URL                   | www.aff.gov         |
       | Domains to search          | data.gov            |
     And I press "Save for Preview"
@@ -271,7 +241,7 @@ Feature: Affiliate clients
 
     When I go to the "new aff site" affiliate page
     And I follow "Site Information"
-    Then the "HTTP parameter site name" field should contain "awesomeparam"
+    Then the "HTTP parameter site name" field should contain "aff.gov"
 
     When I go to the "new aff site" affiliate page
     And I press "Push Changes"
@@ -288,15 +258,11 @@ Feature: Affiliate clients
     And I follow "Site information"
     And I fill in the following:
       | Site name                  |                     |
-      | HTTP parameter site name   |                     |
       | Site URL                   |                     |
       | Domains to search          |                     |
     And I press "Save for Preview"
     Then I should see "Site Information" within "title"
     And I should see "Site name can't be blank"
-    And I should see "HTTP parameter site name can't be blank"
-    And I should see "HTTP parameter site name is too short"
-    And I should see "HTTP parameter site name is invalid"
 
   Scenario: Editing site information and make it live
     Given the following Affiliates exist:
@@ -308,7 +274,6 @@ Feature: Affiliate clients
     And I follow "Site information"
     And I fill in the following:
       | Site name                  | new aff site        |
-      | HTTP parameter site name   | awesomeparam        |
       | Site URL                   | www.aff.gov         |
       | Domains to search          | data.gov            |
     And I press "Make Live"
@@ -330,15 +295,11 @@ Feature: Affiliate clients
     And I follow "Site information"
     And I fill in the following:
       | Site name                  |                     |
-      | HTTP parameter site name   |                     |
       | Site URL                   |                     |
       | Domains to search          |                     |
     And I press "Make Live"
     Then I should see "Site Information" within "title"
     And I should see "Site name can't be blank"
-    And I should see "HTTP parameter site name can't be blank"
-    And I should see "HTTP parameter site name is too short"
-    And I should see "HTTP parameter site name is invalid"
 
   Scenario: Visiting the look and feel page
     Given the following Affiliates exist:
