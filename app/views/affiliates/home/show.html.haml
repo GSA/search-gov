@@ -13,8 +13,6 @@
       %td
         = h(@affiliate.website)
       %td
-        = link_to 'Edit', edit_affiliate_path(@affiliate)
-        |
         = link_to 'Current Site', search_url(:affiliate=> @affiliate.name, :query => "gov"), :target => "_blank"
         - if @affiliate.has_staged_content?
           |

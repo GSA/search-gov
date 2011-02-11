@@ -1,0 +1,9 @@
+%dl
+  %dt= look_and_feel_form.label :staged_search_results_page_title, "Search results page title"
+  %dd= look_and_feel_form.text_field :staged_search_results_page_title, :class => "text"
+  %dt= look_and_feel_form.label :staged_affiliate_template_id, "Template"
+  %dd= look_and_feel_form.select :staged_affiliate_template_id, affiliate_template_options(@affiliate)
+  %dt= look_and_feel_form.label :staged_header, "Enter HTML to customize the top of your search results page."
+  %dd= look_and_feel_form.text_area :staged_header
+  %dt= look_and_feel_form.label :staged_footer, "Enter HTML to customize the bottom of your search results page."
+  %dd= look_and_feel_form.text_area :staged_footer

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110208115622) do
+ActiveRecord::Schema.define(:version => 20110211210757) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(:version => 20110208115622) do
     t.string   "related_topics_setting",           :limit => 30, :default => "affiliate_enabled"
     t.integer  "staged_affiliate_template_id"
     t.string   "display_name",                                                                    :null => false
+    t.string   "search_results_page_title",                                                       :null => false
+    t.string   "staged_search_results_page_title",                                                :null => false
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

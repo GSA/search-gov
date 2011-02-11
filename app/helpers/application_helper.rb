@@ -43,8 +43,7 @@ module ApplicationHelper
     :en => [
       ["USA.gov", "http://usa.gov"],
       ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
-      ["Email USA.gov", "http://www.usa.gov/questions"]
-    ],
+      ["Email USA.gov", "http://www.usa.gov/questions"] ],
     :es => [
       ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
       ["USA.gov (en inglés)", "http://usa.gov"],
@@ -64,8 +63,7 @@ module ApplicationHelper
       ["Suggest-A-Link", "http://www.usa.gov/feedback/SuggestLinkForm.jsp"],
       ["Link to Us", "http://www.usa.gov/About/Usagov_Logos.shtml"],
       ["Accessibility", "/pages/accessibility"],
-      ["API", "/api"]
-    ],
+      ["API", "/api"] ],
     :es => [
       ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
       ["Privacidad", "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"],

@@ -21,8 +21,6 @@
             %td
               = link_to(h(affiliate.display_name), affiliate_path(affiliate))
             %td
-              = link_to "Edit", edit_affiliate_path(affiliate)
-              |
               = link_to "View current", search_url(:affiliate=> affiliate.name, :query=>"gov"), :target => "_blank"
               - if affiliate.has_staged_content?
                 |

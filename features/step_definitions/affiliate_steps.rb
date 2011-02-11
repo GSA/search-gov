@@ -33,7 +33,9 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_header => hash["staged_header"],
       :staged_footer => hash["staged_footer"],
       :is_sayt_enabled => hash["is_sayt_enabled"],
-      :is_affiliate_suggestions_enabled => hash["is_affiliate_suggestions_enabled"]
+      :is_affiliate_suggestions_enabled => hash["is_affiliate_suggestions_enabled"],
+      :search_results_page_title => hash["search_results_page_title"],
+      :staged_search_results_page_title => hash["staged_search_results_page_title"]
     )
   end
 end
@@ -130,4 +132,9 @@ Then /^the affiliate "([^\"]*)" related topics should be disabled$/ do |affiliat
   affiliate.related_topics_setting.should == 'disabled'
 end
 
+Then /^the affiliate "([^\"]*)" field should be set to use "([^\"]*)" template$/ do |template_field, template_name|
+  actual_template_id =  field_labeled(template_field).value
+  affiliate_template = AffiliateTemplate.find(actual_template_id)
+  affiliate_template.name.should == template_name
+end
 

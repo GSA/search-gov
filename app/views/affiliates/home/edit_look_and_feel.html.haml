@@ -1,0 +1,11 @@
+= affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Look and Feel of the Search Results Page'] )
+%h1 Look and Feel of the Search Results Page
+.span-20
+  - form_for @affiliate, :url => {:action => :update_look_and_feel}, :html => {:class=>"bordered"} do |f|
+    = f.error_messages(:header_message => nil, :class => "error")
+    = render :partial => "look_and_feel_form", :object => f
+    %p
+      Important note: You must click the Make Live button below to make any changes appear on your live website.
+    = f.submit "Save for Preview", :id => "save_for_preview"
+    = f.submit "Make Live", :id => "make_live"
+    = link_to "Cancel", affiliate_path(@affiliate)
