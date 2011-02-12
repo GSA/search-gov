@@ -118,8 +118,8 @@ Feature: Mobile Search
     And I should see "Thank you for contacting USA.gov. We will respond to you within two business days"
     And "musa.gov@mail.fedinfo.gov" should receive an email
     When I open the email
-    Then I should see "[FORMGEN]" in the email body
-
+    Then I should see "USA.gov Mobile Inquiry" in the email subject
+    And I should see "[FORMGEN]" in the email body
 
   Scenario: User does not provide some information for contact form
     Given I am on the mobile contact form page
@@ -156,7 +156,8 @@ Feature: Mobile Search
     And I should see "Gracias por contactar con USA.gov. Le responderemos en el plazo de dos días hábiles."
     And "mgobiernousa.gov@mail.fedinfo.gov" should receive an email
     When I open the email
-    Then I should see "[FORMGEN]" in the email body
+    Then I should see "GobiernoUSA.gov Mobile Inquiry" in the email subject
+    And I should see "[FORMGEN]" in the email body
 
   Scenario: A mobile image search
     Given I am on the homepage
