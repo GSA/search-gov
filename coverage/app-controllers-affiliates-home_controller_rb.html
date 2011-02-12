@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates-home_controller_rb.html">app/controllers/affiliates/home_controller.rb</a></td>
-            <td class='right_align'><tt>166</tt></td>
-            <td class='right_align'><tt>151</tt></td>
+            <td class='right_align'><tt>168</tt></td>
+            <td class='right_align'><tt>150</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,19 +63,19 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   before_filter :require_affiliate_or_admin, :except=&gt; [:index, :edit, :edit_site_information, :how_it_works, :demo]</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :require_affiliate_or_admin, :except=&gt; [:index, :edit_site_information, :edit_look_and_feel, :how_it_works, :demo]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   before_filter :require_affiliate, :only =&gt; [:edit, :edit_site_information]</pre></td>
+            <td><pre><a name="line3">3</a>   before_filter :require_affiliate, :only =&gt; [:edit_site_information, :edit_look_and_feel]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :setup_affiliate, :only=&gt; [:edit, :edit_site_information, :update_site_information, :update, :show, :push_content_for, :destroy]</pre></td>
+            <td><pre><a name="line4">4</a>   before_filter :setup_affiliate, :only=&gt; [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :push_content_for, :destroy]</pre></td>
           </tr>
         
           
@@ -296,764 +296,776 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>   def index</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line41">41</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>     @title = &quot;USASearch Affiliate Program - &quot;</pre></td>
+            <td><pre><a name="line42">42</a>   UPDATE_ACTION_HASH = {</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line43">43</a>   end</pre></td>
+            <td><pre><a name="line43">43</a>     :update_site_information =&gt; {</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line44">44</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>   def edit</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>     @title = &quot;Edit Site - &quot;</pre></td>
+            <td><pre><a name="line44">44</a>       :title =&gt; 'Site Information - ',</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>   end</pre></td>
+            <td><pre><a name="line45">45</a>       :edit_action =&gt; :edit_site_information },</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>   def edit_site_information</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line50">50</a>     @title = &quot;Site Information - &quot;</pre></td>
+            <td><pre><a name="line46">46</a>     :update_look_and_feel =&gt; {</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a>   end</pre></td>
+            <td><pre><a name="line47">47</a>       :title =&gt; &quot;Look and Feel of the Search Results Page - &quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line53">53</a>   def how_it_works</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line54">54</a>     @title = &quot;How the Affiliate Program Works - &quot;</pre></td>
+            <td><pre><a name="line48">48</a>       :edit_action =&gt; :edit_look_and_feel }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line55">55</a>   end</pre></td>
+            <td><pre><a name="line49">49</a>   }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a> </pre></td>
+            <td><pre><a name="line50">50</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>   def demo</pre></td>
+            <td><pre><a name="line51">51</a>   def index</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>     @title = &quot;See the Affiliate Program in Action - &quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line59">59</a>     if params.include?(:all)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>       @affiliate_ads = AFFILIATE_ADS</pre></td>
+            <td><pre><a name="line52">52</a>     @title = &quot;USASearch Affiliate Program - &quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line61">61</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line62">62</a>       @affiliate_ads = AFFILIATE_ADS.shuffle.slice(0,3)</pre></td>
+            <td><pre><a name="line53">53</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line63">63</a>     end</pre></td>
+            <td><pre><a name="line54">54</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>   def edit_site_information</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>     @title = &quot;Site Information - &quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a>   end</pre></td>
+            <td><pre><a name="line57">57</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a>    </pre></td>
+            <td><pre><a name="line58">58</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>   def new</pre></td>
+            <td><pre><a name="line59">59</a>   def edit_look_and_feel</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>     @title = &quot;Add a New Site - &quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line68">68</a>     @user = @current_user</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line69">69</a>     @current_step = :edit_contact_information</pre></td>
+            <td><pre><a name="line60">60</a>     @title = &quot;Look and Feel of the Search Results Page - &quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line70">70</a>   end</pre></td>
+            <td><pre><a name="line61">61</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line71">71</a> </pre></td>
+            <td><pre><a name="line62">62</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>   def create</pre></td>
+            <td><pre><a name="line63">63</a>   def how_it_works</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>     @title = &quot;Add a New Site - &quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line74">74</a>     @affiliate = Affiliate.new(params[:affiliate])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line75">75</a>     @affiliate.owner = @current_user</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line76">76</a>     if @affiliate.save</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line77">77</a>       @affiliate.update_attributes(</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line78">78</a>         :domains =&gt; @affiliate.staged_domains,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line79">79</a>         :affiliate_template_id =&gt; @affiliate.staged_affiliate_template_id,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line80">80</a>         :header =&gt; @affiliate.staged_header,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line81">81</a>         :footer =&gt; @affiliate.staged_footer)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line82">82</a>       @current_step = :get_the_code</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line83">83</a>       flash.now[:success] = &quot;Site successfully created&quot;</pre></td>
+            <td><pre><a name="line64">64</a>     @title = &quot;How the Affiliate Program Works - &quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line84">84</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line85">85</a>       @current_step = :new_site_information</pre></td>
+            <td><pre><a name="line65">65</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line86">86</a>     end</pre></td>
+            <td><pre><a name="line66">66</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line87">87</a>     render :action =&gt; :new</pre></td>
+            <td><pre><a name="line67">67</a>   def demo</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>     @title = &quot;See the Affiliate Program in Action - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>     if params.include?(:all)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line70">70</a>       @affiliate_ads = AFFILIATE_ADS</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line88">88</a>   end</pre></td>
+            <td><pre><a name="line71">71</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line72">72</a>       @affiliate_ads = AFFILIATE_ADS.shuffle.slice(0,3)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line89">89</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line90">90</a>   def update_site_information</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line91">91</a>     if params[:commit] == &quot;Save for Preview&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line92">92</a>       if @affiliate.update_attributes_for_staging(params[:affiliate])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line93">93</a>         flash[:success]= &quot;Staged changes to your site successfully.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line94">94</a>         redirect_to affiliate_path(@affiliate)</pre></td>
+            <td><pre><a name="line73">73</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line95">95</a>       else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line96">96</a>         @title = &quot;Site Information - &quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line97">97</a>         render :action =&gt; :edit_site_information</pre></td>
+            <td><pre><a name="line74">74</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line98">98</a>       end</pre></td>
+            <td><pre><a name="line75">75</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line76">76</a>   def new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>     @title = &quot;Add a New Site - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line78">78</a>     @user = @current_user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line79">79</a>     @current_step = :edit_contact_information</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line99">99</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line100">100</a>       if @affiliate.update_attributes_for_current(params[:affiliate])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line101">101</a>         flash[:success]= &quot;Updated changes to your live site successfully.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line102">102</a>         redirect_to affiliate_path(@affiliate)</pre></td>
+            <td><pre><a name="line80">80</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line103">103</a>       else</pre></td>
+            <td><pre><a name="line81">81</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line104">104</a>         @title = &quot;Site Information - &quot;</pre></td>
+            <td><pre><a name="line82">82</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line105">105</a>         render :action =&gt; :edit_site_information</pre></td>
+            <td><pre><a name="line83">83</a>     @title = &quot;Add a New Site - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line84">84</a>     @affiliate = Affiliate.new(params[:affiliate])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line85">85</a>     @affiliate.owner = @current_user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line86">86</a>     if @affiliate.save</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line87">87</a>       @affiliate.update_attributes(</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line88">88</a>         :domains =&gt; @affiliate.staged_domains,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line89">89</a>         :affiliate_template_id =&gt; @affiliate.staged_affiliate_template_id,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line90">90</a>         :header =&gt; @affiliate.staged_header,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line91">91</a>         :footer =&gt; @affiliate.staged_footer)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line92">92</a>       @current_step = :get_the_code</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line93">93</a>       flash.now[:success] = &quot;Site successfully created&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line106">106</a>       end</pre></td>
+            <td><pre><a name="line94">94</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line95">95</a>       @current_step = :new_site_information</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line107">107</a>     end</pre></td>
+            <td><pre><a name="line96">96</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line97">97</a>     render :action =&gt; :new</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line108">108</a>   end</pre></td>
+            <td><pre><a name="line98">98</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line109">109</a> </pre></td>
+            <td><pre><a name="line99">99</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line110">110</a>   def update</pre></td>
+            <td><pre><a name="line100">100</a>   def update_site_information</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line111">111</a>     @affiliate.attributes = params[:affiliate]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line112">112</a>     if @affiliate.save</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line113">113</a>       @affiliate.update_attribute(:has_staged_content, true)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line114">114</a>       flash[:success]= &quot;Staged changes to your site successfully.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line115">115</a>       redirect_to home_affiliates_path(:said=&gt;@affiliate.id)</pre></td>
+            <td><pre><a name="line101">101</a>     update</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line116">116</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line117">117</a>       render :action =&gt; :edit</pre></td>
+            <td><pre><a name="line102">102</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line118">118</a>     end</pre></td>
+            <td><pre><a name="line103">103</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line104">104</a>   def update_look_and_feel</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line105">105</a>     update</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line119">119</a>   end</pre></td>
+            <td><pre><a name="line106">106</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line120">120</a> </pre></td>
+            <td><pre><a name="line107">107</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line121">121</a>   def update_contact_information</pre></td>
+            <td><pre><a name="line108">108</a>   def update</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line122">122</a>     @title = &quot;Add a New Site - &quot;</pre></td>
+            <td><pre><a name="line109">109</a>     if params[:commit] == &quot;Make Live&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line123">123</a>     @user = @current_user</pre></td>
+            <td><pre><a name="line110">110</a>       if @affiliate.update_attributes_for_current(params[:affiliate])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line124">124</a>     @user.strict_mode = true</pre></td>
+            <td><pre><a name="line111">111</a>         flash[:success]= &quot;Updated changes to your live site successfully.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line125">125</a>     if @user.update_attributes(params[:user])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line126">126</a>       @affiliate = Affiliate.new</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line127">127</a>       @current_step = :new_site_information</pre></td>
+            <td><pre><a name="line112">112</a>         redirect_to affiliate_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line128">128</a>     else</pre></td>
+            <td><pre><a name="line113">113</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line129">129</a>       @current_step = :edit_contact_information</pre></td>
+            <td><pre><a name="line114">114</a>         @title = UPDATE_ACTION_HASH[params[:action].to_sym][:title]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line115">115</a>         render :action =&gt; UPDATE_ACTION_HASH[params[:action].to_sym][:edit_action]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line130">130</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line131">131</a>     render :action =&gt; :new</pre></td>
+            <td><pre><a name="line116">116</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line132">132</a>   end</pre></td>
+            <td><pre><a name="line117">117</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line118">118</a>       if @affiliate.update_attributes_for_staging(params[:affiliate])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line119">119</a>         flash[:success]= &quot;Staged changes to your site successfully.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line120">120</a>         redirect_to affiliate_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line133">133</a> </pre></td>
+            <td><pre><a name="line121">121</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line134">134</a>   def show</pre></td>
+            <td><pre><a name="line122">122</a>         @title = UPDATE_ACTION_HASH[params[:action].to_sym][:title]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line135">135</a>     @title = &quot;Site: &quot; + @affiliate.display_name + &quot; - &quot;</pre></td>
+            <td><pre><a name="line123">123</a>         render :action =&gt; UPDATE_ACTION_HASH[params[:action].to_sym][:edit_action]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line136">136</a>   end</pre></td>
+            <td><pre><a name="line124">124</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line137">137</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line138">138</a>   def destroy</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line139">139</a>     @affiliate.destroy</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line140">140</a>     flash[:success]= &quot;Site deleted&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line141">141</a>     redirect_to home_affiliates_path</pre></td>
+            <td><pre><a name="line125">125</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line142">142</a>   end</pre></td>
+            <td><pre><a name="line126">126</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line143">143</a> </pre></td>
+            <td><pre><a name="line127">127</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line144">144</a>   def push_content_for</pre></td>
+            <td><pre><a name="line128">128</a>   def update_contact_information</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line145">145</a>     @affiliate.update_attributes(</pre></td>
+            <td><pre><a name="line129">129</a>     @title = &quot;Add a New Site - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line130">130</a>     @user = @current_user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line131">131</a>     @user.strict_mode = true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line132">132</a>     if @user.update_attributes(params[:user])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line133">133</a>       @affiliate = Affiliate.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line134">134</a>       @current_step = :new_site_information</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line146">146</a>       :has_staged_content=&gt; false,</pre></td>
+            <td><pre><a name="line135">135</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line147">147</a>       :domains =&gt; @affiliate.staged_domains,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line148">148</a>       :affiliate_template_id =&gt; @affiliate.staged_affiliate_template_id,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line149">149</a>       :header =&gt; @affiliate.staged_header,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line150">150</a>       :footer =&gt; @affiliate.staged_footer)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line151">151</a>     flash[:success] = &quot;Staged content is now visible&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line152">152</a>     redirect_to home_affiliates_path(:said=&gt;@affiliate.id)</pre></td>
+            <td><pre><a name="line136">136</a>       @current_step = :edit_contact_information</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line153">153</a>   end</pre></td>
+            <td><pre><a name="line137">137</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line138">138</a>     render :action =&gt; :new</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line154">154</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line155">155</a>   def embed_code</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line156">156</a>     @title = &quot;Embed Search Code - &quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line157">157</a>     @affiliate = Affiliate.find(params[:id])</pre></td>
+            <td><pre><a name="line139">139</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line158">158</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line159">159</a> </pre></td>
+            <td><pre><a name="line140">140</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line160">160</a>   def home</pre></td>
+            <td><pre><a name="line141">141</a>   def show</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line161">161</a>     @title = &quot;Affiliate Dashboard - &quot;</pre></td>
+            <td><pre><a name="line142">142</a>     @title = &quot;Site: &quot; + @affiliate.display_name + &quot; - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line143">143</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line144">144</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line162">162</a>     if params[&quot;said&quot;].present?</pre></td>
+            <td><pre><a name="line145">145</a>   def destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line163">163</a>       @affiliate = Affiliate.find(params[&quot;said&quot;])</pre></td>
+            <td><pre><a name="line146">146</a>     @affiliate.destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line147">147</a>     flash[:success]= &quot;Site deleted&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line148">148</a>     redirect_to home_affiliates_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line164">164</a>     end</pre></td>
+            <td><pre><a name="line149">149</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line165">165</a>   end</pre></td>
+            <td><pre><a name="line150">150</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line151">151</a>   def push_content_for</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line152">152</a>     @affiliate.update_attributes_for_current(@affiliate.staging_attributes)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line153">153</a>     flash[:success] = &quot;Staged content is now visible&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line154">154</a>     redirect_to home_affiliates_path(:said=&gt;@affiliate.id)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line166">166</a> end</pre></td>
+            <td><pre><a name="line155">155</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line156">156</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line157">157</a>   def embed_code</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line158">158</a>     @title = &quot;Embed Search Code - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line159">159</a>     @affiliate = Affiliate.find(params[:id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line160">160</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line161">161</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line162">162</a>   def home</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line163">163</a>     @title = &quot;Affiliate Dashboard - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line164">164</a>     if params[&quot;said&quot;].present?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line165">165</a>       @affiliate = Affiliate.find(params[&quot;said&quot;])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line166">166</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line167">167</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line168">168</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Feb 11 18:25:07 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Feb 12 00:08:22 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

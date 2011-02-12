@@ -507,7 +507,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line76">76</a>       @page_title = &quot;#{t :search_results_for} #{@affiliate.display_name}: #{@search.query}&quot;</pre></td>
+            <td><pre><a name="line76">76</a>       @page_title = params[:staged] ? @affiliate.build_staged_search_results_page_title(params[:query]) : @affiliate.build_search_results_page_title(params[:query])</pre></td>
           </tr>
         
           
@@ -909,7 +909,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Fri Feb 11 18:25:08 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Feb 12 00:08:22 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
