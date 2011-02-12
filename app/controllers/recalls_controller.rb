@@ -5,6 +5,7 @@ class RecallsController < ApplicationController
   before_filter :convert_date_range_to_start_and_end_dates
   
   @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
+  MAX_PAGES = 4
   RECALLS_CACHE_DURATION_IN_SECONDS = 60 * 30
   VALID_OPTIONS = %w{start_date end_date date_range upc sort code organization make model year food_type}
   
@@ -21,7 +22,10 @@ class RecallsController < ApplicationController
 
         @valid_params[:sort] = 'rel' if params[:sort].blank?
         @page = params[:page]
+        @page = MAX_PAGES if @page && @page.to_i > MAX_PAGES
         @search = Recall.search_for(@query, @valid_params, @page)
+        pagination_total = [@search.results.total_pages, MAX_PAGES].min
+        @paginated_results = WillPaginate::Collection.create(@search.hits.current_page, @search.hits.per_page, pagination_total * @search.hits.per_page) { |pager| pager.replace(@search.hits) }
         @page_title = @query
 
       }

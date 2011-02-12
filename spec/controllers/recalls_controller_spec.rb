@@ -65,17 +65,30 @@ describe RecallsController do
       
       context "when all parameters specified" do
         before do
-          @search = mock(Sunspot::Search)
-          @search.stub!(:total).and_return 1
-          @search.stub!(:results).and_return [{:key1=>"val1"}, {:key2=>"val2"}]
           @query_string = 'stroller'
           @page = "2"
           @valid_options_hash = {"start_date"=> "2010-11-10", "end_date"=> "2010-11-20", "sort" => 'date'}
           @valid_params = @valid_options_hash.merge(:query => @query_string, :page => @page)
+
+          @search = mock(Sunspot::Search)
+          @search.stub!(:total).and_return 1
+
+          @per_page = 10
+          @total_pages = 1
+          hits = stub("Hits")
+          hits.stub!(:current_page).and_return @page.to_i
+          hits.stub!(:per_page).and_return @per_page
+          @search.stub!(:hits).and_return(hits)
+
+          results = stub("Results")
+          results.stub!(:total_pages).and_return @total_pages
+          @search.stub!(:results).and_return(results)
+
+          WillPaginate::Collection.should_receive(:create).with(@page.to_i, @per_page, @total_pages * @per_page)
+          Recall.should_receive(:search_for).with(@query_string, @valid_options_hash, @page).and_return(@search)
         end
 
         it "should perform a search with the relevant parameters passed in" do
-          Recall.should_receive(:search_for).with(@query_string, @valid_options_hash, @page).and_return(@search)
           param_to_be_ignored = {:ignore_me => "foo bar"}
           get :search, @valid_params.merge(param_to_be_ignored)
         end
@@ -274,6 +287,33 @@ describe RecallsController do
       
       xit "should return an error status of 501" do
         response.status.should == "501 Not Implemented"
+      end
+    end
+
+    context "when there are a lot of results" do
+      before do
+        @max_pages = RecallsController::MAX_PAGES
+        @page = @max_pages - 2
+        @per_page = 10
+
+        @search = mock(Sunspot::Search)
+
+        hits = stub("Hits")
+        hits.stub!(:current_page).and_return(@page)
+        hits.stub!(:per_page).and_return(@per_page)
+        @search.stub!(:hits).and_return(hits)
+
+        results = stub("Results")
+        results.stub!(:total_pages).and_return(1000)
+        @search.stub!(:results).and_return(results)
+
+        @valid_options_hash = {"sort" => "rel"}
+      end
+
+      it "should not allow people to page past the MAX_PAGE limit" do
+        Recall.should_receive(:search_for).with("strollers", @valid_options_hash, @page.to_s).and_return(@search)
+        WillPaginate::Collection.should_receive(:create).with(@page, @per_page, @max_pages * @per_page)
+        get :search, :query => 'strollers', :page => @page
       end
     end
   end
