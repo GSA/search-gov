@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>193</tt></td>
-            <td class='right_align'><tt>165</tt></td>
+            <td class='right_align'><tt>200</tt></td>
+            <td class='right_align'><tt>171</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -1131,91 +1131,133 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line180">180</a>   def render_trending_searches</pre></td>
+            <td><pre><a name="line180">180</a>   def highlight_like_solr(text, highlights)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line181">181</a>     render(:partial =&gt; 'shared/trending_searches') if params[:locale].blank? || params[:locale] == 'en'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line182">182</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line183">183</a> </pre></td>
+            <td><pre><a name="line181">181</a>     terms = highlights.collect do |highlight|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line184">184</a>   private</pre></td>
+            <td><pre><a name="line182">182</a>       highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line185">185</a> </pre></td>
+            <td><pre><a name="line183">183</a>     end.flatten</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line186">186</a>   def ssl_protocol</pre></td>
+            <td><pre><a name="line184">184</a>     highlight(text, terms, :highlighter =&gt; '&lt;strong&gt;\1&lt;/strong&gt;')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line185">185</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line186">186</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line187">187</a>     SSL_PROTOCOL</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line188">188</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line189">189</a> </pre></td>
+            <td><pre><a name="line187">187</a>   def render_trending_searches</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line190">190</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line188">188</a>     render(:partial =&gt; 'shared/trending_searches') if params[:locale].blank? || params[:locale] == 'en'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line189">189</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line190">190</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line191">191</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+            <td><pre><a name="line191">191</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line192">192</a>   end</pre></td>
+            <td><pre><a name="line192">192</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line193">193</a>   def ssl_protocol</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line194">194</a>     SSL_PROTOCOL</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line193">193</a> end</pre></td>
+            <td><pre><a name="line195">195</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line196">196</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line197">197</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line198">198</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line199">199</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line200">200</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Feb 12 00:40:26 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Feb 14 12:03:17 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

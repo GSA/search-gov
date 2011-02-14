@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-recall_rb.html">app/models/recall.rb</a></td>
-            <td class='right_align'><tt>352</tt></td>
-            <td class='right_align'><tt>292</tt></td>
+            <td class='right_align'><tt>354</tt></td>
+            <td class='right_align'><tt>294</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -771,37 +771,37 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line120">120</a>         fulltext query</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line121">121</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line122">122</a>         # date range fields</pre></td>
+            <td><pre><a name="line120">120</a>         fulltext query do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line123">123</a>         with(:recalled_on).between(options[:start_date]..options[:end_date]) unless options[:start_date].blank? || options[:end_date].blank?</pre></td>
+            <td><pre><a name="line121">121</a>           highlight :fragment_size =&gt; 0</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line124">124</a> </pre></td>
+            <td><pre><a name="line122">122</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line123">123</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line124">124</a>         # date range fields</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line125">125</a>         with(:organization).equal_to(options[:organization]) unless options[:organization].blank?</pre></td>
+            <td><pre><a name="line125">125</a>         with(:recalled_on).between(options[:start_date]..options[:end_date]) unless options[:start_date].blank? || options[:end_date].blank?</pre></td>
           </tr>
         
           
@@ -812,1142 +812,1142 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line127">127</a>         with(:organization).equal_to(options[:organization]) unless options[:organization].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line128">128</a> </pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line127">127</a>         # CPSC fields</pre></td>
+            <td><pre><a name="line129">129</a>         # CPSC fields</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line128">128</a>         with(:upc).equal_to(options[:upc]) unless options[:upc].blank?</pre></td>
+            <td><pre><a name="line130">130</a>         with(:upc).equal_to(options[:upc]) unless options[:upc].blank?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line129">129</a> </pre></td>
+            <td><pre><a name="line131">131</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line130">130</a>         # NHTSA fields</pre></td>
+            <td><pre><a name="line132">132</a>         # NHTSA fields</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line131">131</a>         with(:make_facet).equal_to(options[:make].downcase) unless options[:make].blank?</pre></td>
+            <td><pre><a name="line133">133</a>         with(:make_facet).equal_to(options[:make].downcase) unless options[:make].blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line132">132</a>         with(:model_facet).equal_to(options[:model].downcase) unless options[:model].blank?</pre></td>
+            <td><pre><a name="line134">134</a>         with(:model_facet).equal_to(options[:model].downcase) unless options[:model].blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line133">133</a>         with(:year_facet).equal_to(options[:year]) unless options[:year].blank?</pre></td>
+            <td><pre><a name="line135">135</a>         with(:year_facet).equal_to(options[:year]) unless options[:year].blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line134">134</a>         with(:code).equal_to(options[:code]) unless options[:code].blank?</pre></td>
+            <td><pre><a name="line136">136</a>         with(:code).equal_to(options[:code]) unless options[:code].blank?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line135">135</a>       </pre></td>
+            <td><pre><a name="line137">137</a>       </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line136">136</a>         # CDC/Food/Drug fields</pre></td>
+            <td><pre><a name="line138">138</a>         # CDC/Food/Drug fields</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line137">137</a>         with(:food_type).equal_to(options[:food_type]) unless options[:food_type].blank?</pre></td>
+            <td><pre><a name="line139">139</a>         with(:food_type).equal_to(options[:food_type]) unless options[:food_type].blank?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line138">138</a>       </pre></td>
+            <td><pre><a name="line140">140</a>       </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line139">139</a>         facet :organization</pre></td>
+            <td><pre><a name="line141">141</a>         facet :organization</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line140">140</a>         facet :food_type</pre></td>
+            <td><pre><a name="line142">142</a>         facet :food_type</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line141">141</a> </pre></td>
+            <td><pre><a name="line143">143</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line142">142</a>         if options[:sort] == &quot;date&quot;</pre></td>
+            <td><pre><a name="line144">144</a>         if options[:sort] == &quot;date&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line143">143</a>           order_by :recalled_on, :desc</pre></td>
+            <td><pre><a name="line145">145</a>           order_by :recalled_on, :desc</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line144">144</a>         end</pre></td>
+            <td><pre><a name="line146">146</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line145">145</a> </pre></td>
+            <td><pre><a name="line147">147</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line146">146</a>         paginate :page =&gt; page, :per_page =&gt; per_page</pre></td>
+            <td><pre><a name="line148">148</a>         paginate :page =&gt; page, :per_page =&gt; per_page</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line147">147</a>       end</pre></td>
+            <td><pre><a name="line149">149</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line148">148</a>     end</pre></td>
+            <td><pre><a name="line150">150</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line149">149</a>     </pre></td>
+            <td><pre><a name="line151">151</a>     </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line150">150</a>     def load_cpsc_data_from_file(file_path)</pre></td>
+            <td><pre><a name="line152">152</a>     def load_cpsc_data_from_file(file_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line151">151</a>       FasterCSV.foreach(file_path, :headers =&gt; true) { |row| process_cpsc_row(row) }</pre></td>
+            <td><pre><a name="line153">153</a>       FasterCSV.foreach(file_path, :headers =&gt; true) { |row| process_cpsc_row(row) }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line152">152</a>       Sunspot.commit</pre></td>
+            <td><pre><a name="line154">154</a>       Sunspot.commit</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line153">153</a>     end</pre></td>
+            <td><pre><a name="line155">155</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line154">154</a> </pre></td>
+            <td><pre><a name="line156">156</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line155">155</a>     def load_cpsc_data_from_xml_feed(url)</pre></td>
+            <td><pre><a name="line157">157</a>     def load_cpsc_data_from_xml_feed(url)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line156">156</a>       require 'rexml/document'</pre></td>
+            <td><pre><a name="line158">158</a>       require 'rexml/document'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line157">157</a>       REXML::Document.new(Net::HTTP.get_response(URI.parse(url)).body).elements.each('message/results/result') do |element|</pre></td>
+            <td><pre><a name="line159">159</a>       REXML::Document.new(Net::HTTP.get_response(URI.parse(url)).body).elements.each('message/results/result') do |element|</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line158">158</a>         process_cpsc_row([</pre></td>
+            <td><pre><a name="line160">160</a>         process_cpsc_row([</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line159">159</a>           element.attributes[&quot;recallNo&quot;],</pre></td>
+            <td><pre><a name="line161">161</a>           element.attributes[&quot;recallNo&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line160">160</a>           element.attributes[&quot;y2k&quot;],</pre></td>
+            <td><pre><a name="line162">162</a>           element.attributes[&quot;y2k&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line161">161</a>           element.attributes[&quot;manufacturer&quot;],</pre></td>
+            <td><pre><a name="line163">163</a>           element.attributes[&quot;manufacturer&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line162">162</a>           element.attributes[&quot;type&quot;],</pre></td>
+            <td><pre><a name="line164">164</a>           element.attributes[&quot;type&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line163">163</a>           element.attributes[&quot;prname&quot;],</pre></td>
+            <td><pre><a name="line165">165</a>           element.attributes[&quot;prname&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line164">164</a>           element.attributes[&quot;UPC&quot;],</pre></td>
+            <td><pre><a name="line166">166</a>           element.attributes[&quot;UPC&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line165">165</a>           nil,</pre></td>
+            <td><pre><a name="line167">167</a>           nil,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line166">166</a>           element.attributes[&quot;hazard&quot;],</pre></td>
+            <td><pre><a name="line168">168</a>           element.attributes[&quot;hazard&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line167">167</a>           element.attributes[&quot;country_mfg&quot;],</pre></td>
+            <td><pre><a name="line169">169</a>           element.attributes[&quot;country_mfg&quot;],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line168">168</a>           element.attributes[&quot;recDate&quot;]</pre></td>
+            <td><pre><a name="line170">170</a>           element.attributes[&quot;recDate&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line169">169</a>         ])</pre></td>
+            <td><pre><a name="line171">171</a>         ])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line170">170</a>       end</pre></td>
+            <td><pre><a name="line172">172</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line171">171</a>       Sunspot.commit</pre></td>
+            <td><pre><a name="line173">173</a>       Sunspot.commit</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line172">172</a>     end</pre></td>
+            <td><pre><a name="line174">174</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line173">173</a> </pre></td>
+            <td><pre><a name="line175">175</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line174">174</a>     def load_nhtsa_data_from_file(file_path)</pre></td>
+            <td><pre><a name="line176">176</a>     def load_nhtsa_data_from_file(file_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line175">175</a>       File.open(file_path).each do |line|</pre></td>
+            <td><pre><a name="line177">177</a>       File.open(file_path).each do |line|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line176">176</a>         row = []</pre></td>
+            <td><pre><a name="line178">178</a>         row = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line177">177</a>         line.split(&quot;\t&quot;).each { |field| row &lt;&lt; field.chomp }</pre></td>
+            <td><pre><a name="line179">179</a>         line.split(&quot;\t&quot;).each { |field| row &lt;&lt; field.chomp }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line178">178</a>         process_nhtsa_row(row)</pre></td>
+            <td><pre><a name="line180">180</a>         process_nhtsa_row(row)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line179">179</a>       end</pre></td>
+            <td><pre><a name="line181">181</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line180">180</a>       Sunspot.commit</pre></td>
+            <td><pre><a name="line182">182</a>       Sunspot.commit</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line181">181</a>     end</pre></td>
+            <td><pre><a name="line183">183</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line182">182</a> </pre></td>
+            <td><pre><a name="line184">184</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line183">183</a>     def load_nhtsa_data_from_tab_delimited_feed(url)</pre></td>
+            <td><pre><a name="line185">185</a>     def load_nhtsa_data_from_tab_delimited_feed(url)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line184">184</a>       file = Tempfile.new(&quot;nhtsa&quot;)</pre></td>
+            <td><pre><a name="line186">186</a>       file = Tempfile.new(&quot;nhtsa&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line185">185</a>       file.write(Net::HTTP.get_response(URI.parse(url)).body)</pre></td>
+            <td><pre><a name="line187">187</a>       file.write(Net::HTTP.get_response(URI.parse(url)).body)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line186">186</a>       file.close</pre></td>
+            <td><pre><a name="line188">188</a>       file.close</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line187">187</a>       load_nhtsa_data_from_file(file.path)</pre></td>
+            <td><pre><a name="line189">189</a>       load_nhtsa_data_from_file(file.path)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line188">188</a>     end</pre></td>
+            <td><pre><a name="line190">190</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line189">189</a> </pre></td>
+            <td><pre><a name="line191">191</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line190">190</a>     def load_cdc_data_from_rss_feed(url, food_type)</pre></td>
+            <td><pre><a name="line192">192</a>     def load_cdc_data_from_rss_feed(url, food_type)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line191">191</a>       require 'rss/2.0'</pre></td>
+            <td><pre><a name="line193">193</a>       require 'rss/2.0'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line192">192</a>       RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|</pre></td>
+            <td><pre><a name="line194">194</a>       RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line193">193</a>         find_or_create_by_recall_number(:recall_number =&gt; Digest::MD5.hexdigest(item.link.downcase)[0, 10],</pre></td>
+            <td><pre><a name="line195">195</a>         find_or_create_by_recall_number(:recall_number =&gt; Digest::MD5.hexdigest(item.link.downcase)[0, 10],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line194">194</a>                                         :recalled_on =&gt; item.pubDate.to_date, :organization =&gt; 'CDC',</pre></td>
+            <td><pre><a name="line196">196</a>                                         :recalled_on =&gt; item.pubDate.to_date, :organization =&gt; 'CDC',</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line195">195</a>                                         :food_recall =&gt; FoodRecall.new(:url=&gt;item.link, </pre></td>
+            <td><pre><a name="line197">197</a>                                         :food_recall =&gt; FoodRecall.new(:url=&gt;item.link, </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line196">196</a>                                                                        :summary=&gt; item.title,</pre></td>
+            <td><pre><a name="line198">198</a>                                                                        :summary=&gt; item.title,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line197">197</a>                                                                        :description =&gt; item.description,</pre></td>
+            <td><pre><a name="line199">199</a>                                                                        :description =&gt; item.description,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line198">198</a>                                                                        :food_type =&gt; food_type))</pre></td>
+            <td><pre><a name="line200">200</a>                                                                        :food_type =&gt; food_type))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line199">199</a>       end</pre></td>
+            <td><pre><a name="line201">201</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line200">200</a>       Sunspot.commit</pre></td>
+            <td><pre><a name="line202">202</a>       Sunspot.commit</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line201">201</a>     end</pre></td>
+            <td><pre><a name="line203">203</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line202">202</a>   end</pre></td>
+            <td><pre><a name="line204">204</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line203">203</a> </pre></td>
+            <td><pre><a name="line205">205</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line204">204</a>   def to_json(options = {})</pre></td>
+            <td><pre><a name="line206">206</a>   def to_json(options = {})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line205">205</a>     recall_hash = { :organization =&gt; self.organization, :recall_number =&gt; self.recall_number,</pre></td>
+            <td><pre><a name="line207">207</a>     recall_hash = { :organization =&gt; self.organization, :recall_number =&gt; self.recall_number,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line206">206</a>                     :recall_date =&gt; self.recalled_on.to_s, :recall_url =&gt; self.recall_url}</pre></td>
+            <td><pre><a name="line208">208</a>                     :recall_date =&gt; self.recalled_on.to_s, :recall_url =&gt; self.recall_url}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line207">207</a>     detail_hash = case self.organization</pre></td>
+            <td><pre><a name="line209">209</a>     detail_hash = case self.organization</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line208">208</a>       when 'CPSC' then</pre></td>
+            <td><pre><a name="line210">210</a>       when 'CPSC' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line209">209</a>         cpsc_hash</pre></td>
+            <td><pre><a name="line211">211</a>         cpsc_hash</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line210">210</a>       when 'NHTSA' then</pre></td>
+            <td><pre><a name="line212">212</a>       when 'NHTSA' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line211">211</a>         nhtsa_hash</pre></td>
+            <td><pre><a name="line213">213</a>         nhtsa_hash</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line212">212</a>       when 'CDC' then</pre></td>
+            <td><pre><a name="line214">214</a>       when 'CDC' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line213">213</a>         cdc_hash</pre></td>
+            <td><pre><a name="line215">215</a>         cdc_hash</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line214">214</a>     end</pre></td>
+            <td><pre><a name="line216">216</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line215">215</a>     recall_hash.merge!(detail_hash) unless detail_hash.nil?</pre></td>
+            <td><pre><a name="line217">217</a>     recall_hash.merge!(detail_hash) unless detail_hash.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line216">216</a>     recall_hash.to_json</pre></td>
+            <td><pre><a name="line218">218</a>     recall_hash.to_json</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line217">217</a>   end</pre></td>
+            <td><pre><a name="line219">219</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line218">218</a> </pre></td>
+            <td><pre><a name="line220">220</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line219">219</a>   def cpsc_hash</pre></td>
+            <td><pre><a name="line221">221</a>   def cpsc_hash</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line220">220</a>     { :upc =&gt; self.upc, :manufacturers =&gt; list_detail(&quot;Manufacturer&quot;),</pre></td>
+            <td><pre><a name="line222">222</a>     { :upc =&gt; self.upc, :manufacturers =&gt; list_detail(&quot;Manufacturer&quot;),</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line221">221</a>       :descriptions =&gt; list_detail(&quot;Description&quot;), :hazards =&gt; list_detail(&quot;Hazard&quot;), :countries =&gt; list_detail(&quot;Country&quot;),</pre></td>
+            <td><pre><a name="line223">223</a>       :descriptions =&gt; list_detail(&quot;Description&quot;), :hazards =&gt; list_detail(&quot;Hazard&quot;), :countries =&gt; list_detail(&quot;Country&quot;),</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line222">222</a>       :product_types =&gt; list_detail(&quot;ProductType&quot;)}</pre></td>
+            <td><pre><a name="line224">224</a>       :product_types =&gt; list_detail(&quot;ProductType&quot;)}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line223">223</a>   end</pre></td>
+            <td><pre><a name="line225">225</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line224">224</a> </pre></td>
+            <td><pre><a name="line226">226</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line225">225</a>   def nhtsa_hash</pre></td>
+            <td><pre><a name="line227">227</a>   def nhtsa_hash</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line226">226</a>     nhtsa_hash = { :records =&gt; self.auto_recalls }</pre></td>
+            <td><pre><a name="line228">228</a>     nhtsa_hash = { :records =&gt; self.auto_recalls }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line227">227</a>     NHTSA_DETAIL_FIELDS.each_key do |detail_type|</pre></td>
+            <td><pre><a name="line229">229</a>     NHTSA_DETAIL_FIELDS.each_key do |detail_type|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line228">228</a>       recall_detail = self.recall_details.find_by_detail_type(detail_type)</pre></td>
+            <td><pre><a name="line230">230</a>       recall_detail = self.recall_details.find_by_detail_type(detail_type)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line229">229</a>       nhtsa_hash[detail_type.underscore.to_sym] = recall_detail.detail_value unless recall_detail.nil?</pre></td>
+            <td><pre><a name="line231">231</a>       nhtsa_hash[detail_type.underscore.to_sym] = recall_detail.detail_value unless recall_detail.nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line230">230</a>     end</pre></td>
+            <td><pre><a name="line232">232</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line231">231</a>     nhtsa_hash</pre></td>
+            <td><pre><a name="line233">233</a>     nhtsa_hash</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line232">232</a>   end</pre></td>
+            <td><pre><a name="line234">234</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line233">233</a> </pre></td>
+            <td><pre><a name="line235">235</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line234">234</a>   def cdc_hash</pre></td>
+            <td><pre><a name="line236">236</a>   def cdc_hash</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line235">235</a>     {:summary =&gt; food_recall.summary, :description =&gt; food_recall.description}</pre></td>
+            <td><pre><a name="line237">237</a>     {:summary =&gt; food_recall.summary, :description =&gt; food_recall.description}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line236">236</a>   end</pre></td>
+            <td><pre><a name="line238">238</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line237">237</a> </pre></td>
+            <td><pre><a name="line239">239</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line238">238</a>   def recall_url</pre></td>
+            <td><pre><a name="line240">240</a>   def recall_url</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line239">239</a>     case self.organization</pre></td>
+            <td><pre><a name="line241">241</a>     case self.organization</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line240">240</a>       when 'CPSC' then</pre></td>
+            <td><pre><a name="line242">242</a>       when 'CPSC' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line241">241</a>         &quot;http://www.cpsc.gov/cpscpub/prerel/prhtml#{self.recall_number.to_s[0..1]}/#{self.recall_number}.html&quot; unless self.recall_number.blank?</pre></td>
+            <td><pre><a name="line243">243</a>         &quot;http://www.cpsc.gov/cpscpub/prerel/prhtml#{self.recall_number.to_s[0..1]}/#{self.recall_number}.html&quot; unless self.recall_number.blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line242">242</a>       when 'NHTSA' then</pre></td>
+            <td><pre><a name="line244">244</a>       when 'NHTSA' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line243">243</a>         &quot;http://www-odi.nhtsa.dot.gov/recalls/recallresults.cfm?start=1&amp;SearchType=QuickSearch&amp;rcl_ID=#{self.recall_number}&amp;summary=true&amp;PrintVersion=YES&quot;</pre></td>
+            <td><pre><a name="line245">245</a>         &quot;http://www-odi.nhtsa.dot.gov/recalls/recallresults.cfm?start=1&amp;SearchType=QuickSearch&amp;rcl_ID=#{self.recall_number}&amp;summary=true&amp;PrintVersion=YES&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line244">244</a>       when 'CDC' then</pre></td>
+            <td><pre><a name="line246">246</a>       when 'CDC' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line245">245</a>         food_recall.url</pre></td>
+            <td><pre><a name="line247">247</a>         food_recall.url</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line246">246</a>     end</pre></td>
+            <td><pre><a name="line248">248</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line247">247</a>   end</pre></td>
+            <td><pre><a name="line249">249</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line248">248</a> </pre></td>
+            <td><pre><a name="line250">250</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line249">249</a>   def summary</pre></td>
+            <td><pre><a name="line251">251</a>   def summary</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line250">250</a>     summary = case self.organization</pre></td>
+            <td><pre><a name="line252">252</a>     summary = case self.organization</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line251">251</a>       when 'CPSC' then</pre></td>
+            <td><pre><a name="line253">253</a>       when 'CPSC' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line252">252</a>         cpsc_summary</pre></td>
+            <td><pre><a name="line254">254</a>         cpsc_summary</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line253">253</a>       when 'NHTSA' then</pre></td>
+            <td><pre><a name="line255">255</a>       when 'NHTSA' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line254">254</a>         nhtsa_summary</pre></td>
+            <td><pre><a name="line256">256</a>         nhtsa_summary</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line255">255</a>       when 'CDC' then</pre></td>
+            <td><pre><a name="line257">257</a>       when 'CDC' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line256">256</a>         cdc_summary</pre></td>
+            <td><pre><a name="line258">258</a>         cdc_summary</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line257">257</a>     end</pre></td>
+            <td><pre><a name="line259">259</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line258">258</a>     summary.blank? ? &quot;Click here to see products&quot; : summary</pre></td>
+            <td><pre><a name="line260">260</a>     summary.blank? ? &quot;Click here to see products&quot; : summary</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line259">259</a>   end</pre></td>
+            <td><pre><a name="line261">261</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line260">260</a> </pre></td>
+            <td><pre><a name="line262">262</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line261">261</a>   def cpsc_summary</pre></td>
+            <td><pre><a name="line263">263</a>   def cpsc_summary</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line262">262</a>     recall_details.select {|rd| rd.detail_type==&quot;Description&quot;}.collect{|rd| rd.detail_value}.join(', ')</pre></td>
+            <td><pre><a name="line264">264</a>     recall_details.select {|rd| rd.detail_type==&quot;Description&quot;}.collect{|rd| rd.detail_value}.join(', ')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line263">263</a>   end</pre></td>
+            <td><pre><a name="line265">265</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line264">264</a> </pre></td>
+            <td><pre><a name="line266">266</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line265">265</a>   def nhtsa_summary</pre></td>
+            <td><pre><a name="line267">267</a>   def nhtsa_summary</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line266">266</a>     summary = auto_recalls.collect {|ar| ar.component_description}.uniq.join(', ')</pre></td>
+            <td><pre><a name="line268">268</a>     summary = auto_recalls.collect {|ar| ar.component_description}.uniq.join(', ')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line267">267</a>     manufacturers = auto_recalls.collect {|ar| ar.manufacturer}.uniq.join(', ')</pre></td>
+            <td><pre><a name="line269">269</a>     manufacturers = auto_recalls.collect {|ar| ar.manufacturer}.uniq.join(', ')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line268">268</a>     summary &lt;&lt; &quot; FROM #{manufacturers}&quot; unless manufacturers.blank?</pre></td>
+            <td><pre><a name="line270">270</a>     summary &lt;&lt; &quot; FROM #{manufacturers}&quot; unless manufacturers.blank?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line269">269</a>   end</pre></td>
+            <td><pre><a name="line271">271</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line270">270</a> </pre></td>
+            <td><pre><a name="line272">272</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line271">271</a>   def cdc_summary</pre></td>
+            <td><pre><a name="line273">273</a>   def cdc_summary</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line272">272</a>     food_recall.summary</pre></td>
+            <td><pre><a name="line274">274</a>     food_recall.summary</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line273">273</a>   end</pre></td>
+            <td><pre><a name="line275">275</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line274">274</a> </pre></td>
+            <td><pre><a name="line276">276</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line275">275</a>   def description</pre></td>
+            <td><pre><a name="line277">277</a>   def description</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line276">276</a>      case self.organization</pre></td>
+            <td><pre><a name="line278">278</a>      case self.organization</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line277">277</a>        when 'CPSC' then</pre></td>
+            <td><pre><a name="line279">279</a>        when 'CPSC' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line278">278</a>          recall_details.select {|rd| rd.detail_type==&quot;ProductType&quot;}.collect{|rd| rd.detail_value}.join(', ')</pre></td>
+            <td><pre><a name="line280">280</a>          recall_details.select {|rd| rd.detail_type==&quot;ProductType&quot;}.collect{|rd| rd.detail_value}.join(', ')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line279">279</a>        when 'NHTSA' then</pre></td>
+            <td><pre><a name="line281">281</a>        when 'NHTSA' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line280">280</a>         &quot;Recall for model#{&quot;s&quot; if auto_recalls.length &gt; 1}: #{auto_recalls.map(&amp;:model).join(&quot;, &quot;)}&quot;</pre></td>
+            <td><pre><a name="line282">282</a>         &quot;Recall for model#{&quot;s&quot; if auto_recalls.length &gt; 1}: #{auto_recalls.map(&amp;:model).join(&quot;, &quot;)}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line281">281</a>        when 'CDC' then</pre></td>
+            <td><pre><a name="line283">283</a>        when 'CDC' then</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line282">282</a>          food_recall.description</pre></td>
+            <td><pre><a name="line284">284</a>          food_recall.description</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line283">283</a>     end</pre></td>
+            <td><pre><a name="line285">285</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line284">284</a>   end</pre></td>
+            <td><pre><a name="line286">286</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line285">285</a>   </pre></td>
+            <td><pre><a name="line287">287</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line286">286</a>   def upc</pre></td>
+            <td><pre><a name="line288">288</a>   def upc</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line287">287</a>     if organization == 'CPSC'</pre></td>
+            <td><pre><a name="line289">289</a>     if organization == 'CPSC'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line288">288</a>       upc_details = recall_details.find_all_by_detail_type('UPC')</pre></td>
+            <td><pre><a name="line290">290</a>       upc_details = recall_details.find_all_by_detail_type('UPC')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line289">289</a>       upc_details.collect{|detail| detail.detail_value}</pre></td>
+            <td><pre><a name="line291">291</a>       upc_details.collect{|detail| detail.detail_value}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line290">290</a>     else</pre></td>
+            <td><pre><a name="line292">292</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line291">291</a>       return nil</pre></td>
+            <td><pre><a name="line293">293</a>       return nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line292">292</a>     end</pre></td>
+            <td><pre><a name="line294">294</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line293">293</a>   end</pre></td>
+            <td><pre><a name="line295">295</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line294">294</a>   </pre></td>
+            <td><pre><a name="line296">296</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line295">295</a>   def is_food_recall?</pre></td>
+            <td><pre><a name="line297">297</a>   def is_food_recall?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line296">296</a>     return true if self.organization == 'CDC'</pre></td>
+            <td><pre><a name="line298">298</a>     return true if self.organization == 'CDC'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line297">297</a>   end</pre></td>
+            <td><pre><a name="line299">299</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line298">298</a>   </pre></td>
+            <td><pre><a name="line300">300</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line299">299</a>   def is_product_recall?</pre></td>
+            <td><pre><a name="line301">301</a>   def is_product_recall?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line300">300</a>     return true if self.organization == 'CPSC'</pre></td>
+            <td><pre><a name="line302">302</a>     return true if self.organization == 'CPSC'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line301">301</a>   end</pre></td>
+            <td><pre><a name="line303">303</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line302">302</a>   </pre></td>
+            <td><pre><a name="line304">304</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line303">303</a>   def is_auto_recall?</pre></td>
+            <td><pre><a name="line305">305</a>   def is_auto_recall?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line304">304</a>     return true if self.organization == 'NHTSA'</pre></td>
+            <td><pre><a name="line306">306</a>     return true if self.organization == 'NHTSA'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line305">305</a>   end</pre></td>
+            <td><pre><a name="line307">307</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line306">306</a> </pre></td>
+            <td><pre><a name="line308">308</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line307">307</a>   def industry</pre></td>
+            <td><pre><a name="line309">309</a>   def industry</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line308">308</a>     case organization</pre></td>
+            <td><pre><a name="line310">310</a>     case organization</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line309">309</a>       when &quot;NHTSA&quot; : :auto</pre></td>
+            <td><pre><a name="line311">311</a>       when &quot;NHTSA&quot; : :auto</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line310">310</a>       when &quot;CPSC&quot; : :product</pre></td>
+            <td><pre><a name="line312">312</a>       when &quot;CPSC&quot; : :product</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line311">311</a>       when &quot;CDC&quot; : food_recall.food_type == &quot;drug&quot; ? :drug : :food</pre></td>
+            <td><pre><a name="line313">313</a>       when &quot;CDC&quot; : food_recall.food_type == &quot;drug&quot; ? :drug : :food</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line312">312</a>       else :other</pre></td>
+            <td><pre><a name="line314">314</a>       else :other</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line313">313</a>     end</pre></td>
+            <td><pre><a name="line315">315</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line314">314</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line315">315</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line316">316</a>   private</pre></td>
+            <td><pre><a name="line316">316</a>   end</pre></td>
           </tr>
         
           
@@ -1959,217 +1959,229 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line318">318</a>   def self.process_cpsc_row(row)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line319">319</a>     recall = Recall.find_or_initialize_by_recall_number(:recall_number =&gt; row[0], :y2k =&gt; row[1], :organization =&gt; 'CPSC')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line320">320</a>     recall.recalled_on ||= Date.parse(row[9]) rescue nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line321">321</a>     CPSC_FULL_TEXT_SEARCH_FIELDS.each_pair do |detail_type, column_index|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line322">322</a>       conditions = ['detail_type = ? AND detail_value = ?', detail_type, row[column_index]]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line323">323</a>       unless row[column_index].blank? or (!recall.new_record? &amp;&amp; recall.recall_details.exists?(conditions))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line324">324</a>         recall.recall_details &lt;&lt; RecallDetail.new(:detail_type =&gt; detail_type, :detail_value =&gt; row[column_index])</pre></td>
+            <td><pre><a name="line318">318</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line325">325</a>       end</pre></td>
+            <td><pre><a name="line319">319</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line320">320</a>   def self.process_cpsc_row(row)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line321">321</a>     recall = Recall.find_or_initialize_by_recall_number(:recall_number =&gt; row[0], :y2k =&gt; row[1], :organization =&gt; 'CPSC')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line322">322</a>     recall.recalled_on ||= Date.parse(row[9]) rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line323">323</a>     CPSC_FULL_TEXT_SEARCH_FIELDS.each_pair do |detail_type, column_index|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line324">324</a>       conditions = ['detail_type = ? AND detail_value = ?', detail_type, row[column_index]]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line325">325</a>       unless row[column_index].blank? or (!recall.new_record? &amp;&amp; recall.recall_details.exists?(conditions))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line326">326</a>         recall.recall_details &lt;&lt; RecallDetail.new(:detail_type =&gt; detail_type, :detail_value =&gt; row[column_index])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line326">326</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line327">327</a>     recall.save!</pre></td>
+            <td><pre><a name="line327">327</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line328">328</a>   end</pre></td>
+            <td><pre><a name="line328">328</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line329">329</a>     recall.save!</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line329">329</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line330">330</a>   def self.process_nhtsa_row(row)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line331">331</a>     date_string = row[24].blank? ? row[16] : row[24]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line332">332</a>     recall = Recall.find_or_create_by_recall_number(:recall_number =&gt; row[1], :organization =&gt; 'NHTSA',</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line333">333</a>                                                     :recalled_on =&gt; Date.parse(date_string))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line334">334</a>     if recall.recall_details.empty?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line335">335</a>       NHTSA_DETAIL_FIELDS.each_pair do |detail_type, column_index|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line336">336</a>         recall.recall_details &lt;&lt; RecallDetail.new(:detail_type =&gt; detail_type, :detail_value =&gt; row[column_index]) unless row[column_index].blank?</pre></td>
+            <td><pre><a name="line330">330</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line337">337</a>       end</pre></td>
+            <td><pre><a name="line331">331</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line332">332</a>   def self.process_nhtsa_row(row)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line333">333</a>     date_string = row[24].blank? ? row[16] : row[24]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line334">334</a>     recall = Recall.find_or_create_by_recall_number(:recall_number =&gt; row[1], :organization =&gt; 'NHTSA',</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line335">335</a>                                                     :recalled_on =&gt; Date.parse(date_string))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line336">336</a>     if recall.recall_details.empty?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line337">337</a>       NHTSA_DETAIL_FIELDS.each_pair do |detail_type, column_index|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line338">338</a>         recall.recall_details &lt;&lt; RecallDetail.new(:detail_type =&gt; detail_type, :detail_value =&gt; row[column_index]) unless row[column_index].blank?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line338">338</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line339">339</a>     year = row[4] == &quot;9999&quot; ? nil : row[4].to_i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line340">340</a>     manufacturing_begin_date = row[8].blank? ? nil : Date.parse(row[8])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line341">341</a>     manufacturing_end_date = row[9].blank? ? nil : Date.parse(row[9])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line342">342</a>     auto_recall = AutoRecall.find_or_initialize_by_recall_id_and_recalled_component_id(</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line343">343</a>       :recall_id =&gt; recall.id, :recalled_component_id =&gt; row[23], :make =&gt; row[2], :model =&gt; row[3], :year =&gt; year,</pre></td>
+            <td><pre><a name="line339">339</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line344">344</a>       :component_description =&gt; row[6], :manufacturer =&gt; row[14], :manufacturing_begin_date =&gt; manufacturing_begin_date, :manufacturing_end_date =&gt; manufacturing_end_date)</pre></td>
+            <td><pre><a name="line340">340</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line345">345</a>     recall.auto_recalls &lt;&lt; auto_recall</pre></td>
+            <td><pre><a name="line341">341</a>     year = row[4] == &quot;9999&quot; ? nil : row[4].to_i</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line346">346</a>     recall.save!</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line347">347</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line348">348</a> </pre></td>
+            <td><pre><a name="line342">342</a>     manufacturing_begin_date = row[8].blank? ? nil : Date.parse(row[8])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line349">349</a>   def list_detail(field)</pre></td>
+            <td><pre><a name="line343">343</a>     manufacturing_end_date = row[9].blank? ? nil : Date.parse(row[9])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line350">350</a>     self.recall_details.find_all_by_detail_type(field).map{|detail| detail.detail_value}</pre></td>
+            <td><pre><a name="line344">344</a>     auto_recall = AutoRecall.find_or_initialize_by_recall_id_and_recalled_component_id(</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line345">345</a>       :recall_id =&gt; recall.id, :recalled_component_id =&gt; row[23], :make =&gt; row[2], :model =&gt; row[3], :year =&gt; year,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line351">351</a>   end</pre></td>
+            <td><pre><a name="line346">346</a>       :component_description =&gt; row[6], :manufacturer =&gt; row[14], :manufacturing_begin_date =&gt; manufacturing_begin_date, :manufacturing_end_date =&gt; manufacturing_end_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line347">347</a>     recall.auto_recalls &lt;&lt; auto_recall</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line348">348</a>     recall.save!</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line352">352</a> end</pre></td>
+            <td><pre><a name="line349">349</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line350">350</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line351">351</a>   def list_detail(field)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line352">352</a>     self.recall_details.find_all_by_detail_type(field).map{|detail| detail.detail_value}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line353">353</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line354">354</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Feb 12 00:40:26 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Feb 14 12:03:17 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
