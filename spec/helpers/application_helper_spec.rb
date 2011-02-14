@@ -283,4 +283,22 @@ describe ApplicationHelper do
       helper.truncate_on_words("asdfjkl, askjdn", 9).should == "asdfjkl..."
     end
   end
+
+  describe "#highlight_like_solr" do
+    it "should highlight based on the hit highlights returned from solr" do
+      chicken_highlight = Sunspot::Search::Highlight.new(:field_name, "a @@@hl@@@chicken@@@endhl@@@ recall")
+      helper.highlight_like_solr("I describe a chicken recall", [chicken_highlight]).should == "I describe a <strong>chicken</strong> recall"
+    end
+
+    it "should highlight multiple terms" do
+      chicken_wings_highlight = Sunspot::Search::Highlight.new(:field_name, "a @@@hl@@@chicken@@@endhl@@@ @@@hl@@@wings@@@endhl@@@ recall")
+      helper.highlight_like_solr("I describe a chicken wings recall", [chicken_wings_highlight]).should == "I describe a <strong>chicken</strong> <strong>wings</strong> recall"
+    end
+
+    it "should highlight multiple terms from multiple highlights" do
+      one_two_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@one@@@endhl@@@ @@@hl@@@two@@@endhl@@@")
+      three_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@three@@@endhl@@@")
+      helper.highlight_like_solr("zero one two three four", [one_two_highlight, three_highlight]).should == "zero <strong>one</strong> <strong>two</strong> <strong>three</strong> four"
+    end
+  end
 end

@@ -6,7 +6,7 @@
       %h1 Recent Recalls
       - search.recalls.hits.each_with_index do |hit, index|
         .row{:id => "recall#{index+1}"}
-          .links= link_to "#{hit.instance.summary}, #{hit.instance.recalled_on.to_formatted_s(:short).strip}", hit.instance.recall_url
+          .links= link_to "#{highlight_like_solr(hit.instance.summary, hit.highlights)}, #{hit.instance.recalled_on.to_formatted_s(:short).strip}", hit.instance.recall_url
   .group
     - affiliate_name = @affiliate.present? ? @affiliate.name : nil
     - search.results.each_with_index do |search_result, index|

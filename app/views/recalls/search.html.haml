@@ -17,7 +17,7 @@
           = link_to_unless params[:sort] == 'date', t(:by_date), recalls_search_path(@valid_params.merge(:sort => 'date').merge(:query => @query))
 
         - @search.results.each_with_index do |result, index|
-          = render 'result', :object => result, :index => index
+          = render 'result', :object => result, :index => index, :hit => @search.hits[index]
       = will_paginate(@paginated_results, :previous_label => (t :prev_label), :next_label => (t :next_label))
     - elsif @error_message
       %p.noresults

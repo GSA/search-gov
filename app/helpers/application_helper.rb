@@ -177,6 +177,13 @@ module ApplicationHelper
     "#{truncated}..."
   end
 
+  def highlight_like_solr(text, highlights)
+    terms = highlights.collect do |highlight|
+      highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER)
+    end.flatten
+    highlight(text, terms, :highlighter => '<strong>\1</strong>')
+  end
+
   def render_trending_searches
     render(:partial => 'shared/trending_searches') if params[:locale].blank? || params[:locale] == 'en'
   end

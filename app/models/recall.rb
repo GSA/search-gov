@@ -117,7 +117,9 @@ class Recall < ActiveRecord::Base
 
     def do_search(query, options, page, per_page)
       Recall.search do
-        fulltext query
+        fulltext query do
+          highlight :fragment_size => 0
+        end
 
         # date range fields
         with(:recalled_on).between(options[:start_date]..options[:end_date]) unless options[:start_date].blank? || options[:end_date].blank?
