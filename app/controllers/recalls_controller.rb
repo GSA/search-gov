@@ -5,7 +5,7 @@ class RecallsController < ApplicationController
   before_filter :convert_date_range_to_start_and_end_dates
   
   @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
-  MAX_PAGES = 4
+  MAX_PAGES = 100
   RECALLS_CACHE_DURATION_IN_SECONDS = 60 * 30
   VALID_OPTIONS = %w{start_date end_date date_range upc sort code organization make model year food_type}
   
