@@ -79,6 +79,8 @@ describe "shared/_searchresults.html.haml" do
       before do
         recall = Recall.create!(:recall_number => '23456', :recalled_on => Date.yesterday, :organization => 'CPSC')
         recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Recall details')
+        recall_without_recalled_on = Recall.create!(:recall_number => '23456', :organization => 'CDC')
+        recall_without_recalled_on.create_food_recall(:url => "http://www.fda.gov/", :summary => "bad drugs", :description => "bad drugs details", :food_type => "drug")
         Recall.reindex
 
         @search.stub!(:recalls).and_return(Recall.search_for("details"))

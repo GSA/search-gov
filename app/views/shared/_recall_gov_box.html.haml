@@ -10,6 +10,7 @@
         = t(:in_english)
         .agency
           = t "industry.#{hit.instance.industry}.agency_name"
-        .recall-date
-          = l((hit.instance.recalled_on || hit.instance.created_at), :format => :medium)
+        - if hit.instance.recalled_on.present?
+          .recall-date
+            = l((hit.instance.recalled_on), :format => :medium)
 
