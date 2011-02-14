@@ -43,6 +43,30 @@ describe ApplicationHelper do
     end
   end
 
+  describe "localize dates" do
+    context "es" do
+      before :each do
+        I18n.locale = :es
+      end
+      after :each do
+        I18n.locale = :en
+      end
+
+      describe "medium localization" do
+        it "should look like 29 de enero de 2011" do
+          l(Date.parse('2011-01-29'), :format => :medium).should == "29 de enero de 2011"
+        end
+
+        (1..12).each do |month|
+          it "should work for month #{month}" do
+            date = Date.parse("2011-%02i-22" % month)
+            l(date, :format => :medium)
+          end
+        end
+      end
+    end
+  end
+
   describe "#locale_dependent_background_color" do
     it "should default to bgcolor for English locale" do
       helper.locale_dependent_background_color.should == ApplicationHelper::BACKGROUND_COLORS[:en]
