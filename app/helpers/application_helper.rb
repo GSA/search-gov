@@ -178,10 +178,12 @@ module ApplicationHelper
   end
 
   def highlight_like_solr(text, highlights)
-    terms = highlights.collect do |highlight|
-      highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER)
-    end.flatten
-    highlight(text, terms, :highlighter => '<strong>\1</strong>')
+    highlights.each do |highlight|
+      highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).each do |term|
+        text.gsub!(/\b(#{term})\b/, '<strong>\1</strong>')
+      end
+    end
+    text
   end
 
   def render_trending_searches

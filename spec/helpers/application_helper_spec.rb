@@ -324,5 +324,15 @@ describe ApplicationHelper do
       three_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@three@@@endhl@@@")
       helper.highlight_like_solr("zero one two three four", [one_two_highlight, three_highlight]).should == "zero <strong>one</strong> <strong>two</strong> <strong>three</strong> four"
     end
+
+    it "should not highlight word fragements" do
+      irs_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@IRS@@@endhl@@@")
+      helper.highlight_like_solr("the IRS is the first", [irs_highlight]).should == "the <strong>IRS</strong> is the first"
+    end
+
+    it "should not highlight anything if term doesn't match" do
+      irs_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@IRS@@@endhl@@@")
+      helper.highlight_like_solr("no matches found", [irs_highlight]).should == "no matches found"
+    end
   end
 end
