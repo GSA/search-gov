@@ -3,6 +3,7 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 describe ApplicationHelper do
   before do
     helper.stub!(:forms_search?).and_return false
+    helper.stub!(:recalls_search?).and_return false
   end
   
   describe "#other_locale_str" do
@@ -38,6 +39,30 @@ describe ApplicationHelper do
         time_ago_in_words(1.month.ago).should == "Aproximadamente desde hace un mes"
         time_ago_in_words(2.days.ago).should == "Desde hace 2 días"
         time_ago_in_words(1.day.ago).should == "Desde ayer"
+      end
+    end
+  end
+
+  describe "localize dates" do
+    context "es" do
+      before :each do
+        I18n.locale = :es
+      end
+      after :each do
+        I18n.locale = :en
+      end
+
+      describe "medium localization" do
+        it "should look like 29 de enero de 2011" do
+          l(Date.parse('2011-01-29'), :format => :medium).should == "29 de enero de 2011"
+        end
+
+        (1..12).each do |month|
+          it "should work for month #{month}" do
+            date = Date.parse("2011-%02i-22" % month)
+            l(date, :format => :medium)
+          end
+        end
       end
     end
   end
@@ -93,6 +118,24 @@ describe ApplicationHelper do
         context "when a non-blank page title is defined" do
           it "should prefix the defined page title with the English forms site title" do
             helper.build_page_title("some title").should == "some title - #{t :forms_site_title}"
+          end
+        end
+      end
+      
+      context "when it's a recalls page" do
+        before do
+          helper.stub!(:recalls_search?).and_return true
+        end
+        
+        context "when the page title is not defined" do
+          it "should return the recalls title" do
+            helper.build_page_title(nil).should == (t :recalls_site_title)
+          end
+        end
+        
+        context "when a non-blank page title is defined" do
+          it "should prefix the defined page title with the English recalls site title" do
+            helper.build_page_title("some title").should == "some title - #{t :recalls_site_title}"
           end
         end
       end
@@ -262,6 +305,34 @@ describe ApplicationHelper do
       helper.truncate_on_words("asdfjkl, askjdn", 7).should == "asdfjkl..."
       helper.truncate_on_words("asdfjkl, askjdn", 8).should == "asdfjkl..."
       helper.truncate_on_words("asdfjkl, askjdn", 9).should == "asdfjkl..."
+    end
+  end
+
+  describe "#highlight_like_solr" do
+    it "should highlight based on the hit highlights returned from solr" do
+      chicken_highlight = Sunspot::Search::Highlight.new(:field_name, "a @@@hl@@@chicken@@@endhl@@@ recall")
+      helper.highlight_like_solr("I describe a chicken recall", [chicken_highlight]).should == "I describe a <strong>chicken</strong> recall"
+    end
+
+    it "should highlight multiple terms" do
+      chicken_wings_highlight = Sunspot::Search::Highlight.new(:field_name, "a @@@hl@@@chicken@@@endhl@@@ @@@hl@@@wings@@@endhl@@@ recall")
+      helper.highlight_like_solr("I describe a chicken wings recall", [chicken_wings_highlight]).should == "I describe a <strong>chicken</strong> <strong>wings</strong> recall"
+    end
+
+    it "should highlight multiple terms from multiple highlights" do
+      one_two_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@one@@@endhl@@@ @@@hl@@@two@@@endhl@@@")
+      three_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@three@@@endhl@@@")
+      helper.highlight_like_solr("zero one two three four", [one_two_highlight, three_highlight]).should == "zero <strong>one</strong> <strong>two</strong> <strong>three</strong> four"
+    end
+
+    it "should not highlight word fragements" do
+      irs_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@IRS@@@endhl@@@")
+      helper.highlight_like_solr("the IRS is the first", [irs_highlight]).should == "the <strong>IRS</strong> is the first"
+    end
+
+    it "should not highlight anything if term doesn't match" do
+      irs_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@IRS@@@endhl@@@")
+      helper.highlight_like_solr("no matches found", [irs_highlight]).should == "no matches found"
     end
   end
 end

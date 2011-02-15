@@ -1,9 +1,23 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe TopSearch do
-  should_validate_presence_of :position, :query
+  should_validate_presence_of :position
   should_validate_numericality_of :position, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 5
-  
+
+  describe "#save" do
+    it "should set query to nil if query is blank" do
+      top_search = TopSearch.create!(:position => 1, :query => '  ')
+      top_search.query.should be_nil
+    end
+  end
+
+  describe "#find_active_entries" do
+    it "should retrieve 5 entries with query that is not null, sorted by position in ascending order" do
+      TopSearch.should_receive(:all).with(:conditions => "query IS NOT NULL", :order => "position ASC", :limit => 5)
+      TopSearch.find_active_entries
+    end
+  end
+
   describe "#link_url" do
     before do
       @top_search_with_url = TopSearch.create(:position => 1, :query => 'query', :url => 'http://test.com/')

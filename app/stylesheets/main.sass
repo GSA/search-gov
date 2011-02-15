@@ -4,6 +4,7 @@
 @import blueprint/modules/scaffolding.sass
 @import blueprint/modules/fancy_type.sass
 @import blueprint/modules/liquid.sass
+@import trending_searches.sass
 +blueprint
 +blueprint-scaffolding
 +blueprint-liquid-grid
@@ -118,6 +119,9 @@ form.bordered
       :width 95%
     input.text
       :width 50%
+
+.sublabel
+  :font-weight normal
 
 .contentcard
   :border 1px solid #ccc
@@ -473,3 +477,20 @@ table.nav-links
   textarea
     :width 90%
     :height 200px
+
+.sliding_content
+  :display none
+
+.steps_header
+  :line-height 2
+  :margin-bottom 15px
+  .step
+    :background #E5EEF9
+    :color #666
+    :font-size 1.1em
+    :font-weight bold
+    :margin-right 5px
+    :padding 5px 10px
+  .current_step
+    :background #1C3F94
+    :color white

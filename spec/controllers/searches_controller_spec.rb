@@ -135,7 +135,7 @@ describe SearchesController do
     should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'
 
     it "should set an affiliate page title" do
-      @page_title.should == "Search results for #{@affiliate.display_name}: #{@search.query}"
+      @page_title.should == "Current weather - Noaa Site Search Results"
     end
 
     it "should render the header in the response" do
@@ -165,12 +165,22 @@ describe SearchesController do
         assigns[:scope_id].should == 'SomeScope'
       end
     end
+  end
 
-    context "when handling a staged affiliate search request" do
-      it "should maintain the staged parameter for future searches" do
-        get :index, :query => "test", :staged => 1
-        response.body.should have_tag("input[type=hidden][value=1][name=staged]")
-      end
+  context "when handling a valid staged affiliate search request" do
+    integrate_views
+    before do
+      @affiliate = affiliates(:power_affiliate)
+    end
+
+    it "should maintain the staged parameter for future searches" do
+      get :index, :affiliate => @affiliate.name, :query => "weather", :staged => 1
+      response.body.should have_tag("input[type=hidden][value=1][name=staged]")
+    end
+
+    it "should set an affiliate page title" do
+      get :index, :affiliate => @affiliate.name, :query => "weather", :staged => 1
+      assigns[:page_title].should == "Staged weather - Noaa Site Search Results"
     end
   end
 
@@ -497,6 +507,13 @@ describe SearchesController do
           response.body.should have_tag("a[href=http://forms.gov/#{index}.pdf]", :text => "Taxes Form ##{index} (#{index})")
         end
         response.body.should_not have_tag("a[href=http://forms.gov/11.pdf]", :text => "Taxes Form #11 (11)")
+      end
+    end
+
+    context "when the query is blank" do
+      it "should redirect to the forms landing page" do
+        get :forms
+        response.should redirect_to forms_path
       end
     end
   end

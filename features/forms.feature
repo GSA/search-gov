@@ -20,11 +20,15 @@ Feature: Forms Home Page and Search
     And I submit the search form
     Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
 
-  Scenario: Doing a blank search
+  Scenario: Doing a blank search from the forms home page
     Given I am on the forms home page
     When I submit the search form
-    Then I should be on the forms search page
-    And I should see "Please enter search term(s)"
+    Then I should be on the forms home page
+
+  Scenario: Doing a blank search from the forms SERP
+    Given I am on the forms search page
+    When I submit the search form
+    Then I should be on the forms home page
 
   Scenario: A unicode search
     Given I am on the forms home page

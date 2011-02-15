@@ -35,10 +35,21 @@ Feature: Affiliate clients
     And I should not see "Analyst Center"
     And I should see "USASearch > Affiliate Program"
 
-  Scenario: Visiting the affiliate admin page as affiliate
+  Scenario: Visiting the affiliate admin page as affiliate with existing sites
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    Then I should see "USASearch > Affiliate Program > Affiliate Center"
+    Then I should see "Affiliate Dashboard" within "title"
+    And I should see "Affiliate Dashboard" within ".main"
+    And I should see "USASearch > Affiliate Program > Affiliate Center"
+    And I should see "Site List"
+    And I should see "+ add new site"
+
+  Scenario: Visiting the affiliate admin page as affiliate without existing sites
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    Then I should see "Affiliate Dashboard"
+    And I should see "USASearch > Affiliate Program > Affiliate Center"
+    And I should see "Add New Site"
 
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
@@ -56,57 +67,136 @@ Feature: Affiliate clients
     And I should not see "multi2.gov"
 
   Scenario: Adding a new affiliate
+    Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "Add New Site"
+    Then I should see "Add a New Site" within "title"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
+    And I should see "Add a New Site" within ".main"
+    And I should see "Step 1. Enter contact information" within ".current_step"
+    And I should see "Contact information"
+    And the "Name*" field should contain "A New Affiliate"
+    And the "Email*" field should contain "affiliate_with_no_contact_info@fixtures.org"
+    And I fill in the following:
+      | Government organization                    | Awesome Agency             |
+      | Phone                                      | 202-123-4567               |
+      | Organization address                       | 123 Penn Avenue            |
+      | Address 2                                  | Ste 456                    |
+      | City                                       | Reston                     |
+      | Zip                                        | 20022                      |
+    And I select "Virginia" from "State"
+    And I press "Next"
+    Then I should see "Add a New Site" within "title"
+    And I should see "Step 2. Set up site" within ".current_step"
+    And I should see "Site information"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+      | Domains to search         | www.awesomeagency.gov            |
+    And I press "Next"
+    Then I should see "Add a New Site" within "title"
+    And I should see "Site successfully created"
+    And I should see "Step 3. Get the code" within ".current_step"
+    And I should see "View search results page"
+    When I fill in "query" with "White House"
+    And I press "Search"
+    Then I should see "White House - My awesome agency Search Results"
+
+  Scenario: Affiliate user who filled out contact information should not have to fill out the form again
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "Add New Affiliate"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Affiliate"
-    And I should not see "HTTP parameter site name"
-    And I fill in the following:
-      | Site name                                                             | My Awesome Agency          |
-      | Your Website URL (www.example.gov)                                    | www.agency.gov             |
-      | Domains (one per line)                                                | agency.gov                 |
-      | Enter HTML to customize the top of your search page                   | My header                  |
-      | Enter HTML to customize the bottom of your search page                | My footer                  |
-    And I press "Create"
-    Then I should be on the affiliate admin page
-    And I should see "Affiliate successfully created"
-    And I should see "My Awesome Agency"
-    And I should not see "www.agency.gov"
-
-  Scenario: Updating HTTP parameter site name
-    Given the following Affiliates exist:
-      | display_name      | name              | contact_email         | contact_name        |
-      | aff site1         | aff1.gov          | aff@bar.gov           | John Bar            |
-      | aff site2         | aff2.gov          | aff@bar.gov           | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site2"
-    And I follow "Edit"
-    And I fill in "HTTP parameter site name" with "aff-01_2011.gov"
-    And I press "Save for preview"
-    Then I should see "Staged changes to your affiliate successfully."
-    And I follow "aff site2"
-    And I follow "Edit"
-    And the "HTTP parameter site name" field should contain "aff-01_2011.gov"
-
-  Scenario: Editing an affiliate with problems
-    Given the following Affiliates exist:
-      | display_name      | name              | contact_email         | contact_name        |
-      | aff site1         | aff1.gov          | aff@bar.gov           | John Bar            |
-      | aff site2         | aff2.gov          | aff@bar.gov           | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site2"
-    And I follow "Edit"
-    And I fill in "HTTP parameter site name" with "aff1.gov"
-    And I press "Save for preview"
-    Then I should see "HTTP parameter site name has already been taken"
-
-  Scenario: Adding an affiliate without site display name
+    And I follow "Add New Site"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
+    And I should see "Add a New Site"
+    And I should see "Step 1. Enter contact information" within ".current_step"
+    And I should see "Contact information"
+    And the "Name*" field should contain "A New Manager"
+    And the "Email*" field should contain "affiliate_manager_with_no_affiliates@fixtures.org"
+    And the "Government organization*" field should contain "Agency"
+    And the "Phone*" field should contain "301-123-4567"
+    And the "Organization address*" field should contain "123 Penn Ave"
+    And the "Address 2" field should contain "Ste 100"
+    And the "City*" field should contain "Reston"
+    And the "State*" field should contain "VA"
+    And the "Zip*" field should contain "20022"
+    And I press "Next"
+    Then I should see "Step 2. Set up site" within ".current_step"
+    
+  Scenario: Affiliates receive confirmation email when creating a new affiliate
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "new"
-    And I press "Create"
+    And I press "Next"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+    And I press "Next"
+    Then "affiliate_manager_with_no_affiliates@fixtures.org" should receive an email
+    When I open the email
+    Then I should see "Your new Affiliate site" in the email subject
+    And I should see "Dear A New Manager" in the email body
+    And I should see "Site name: My awesome agency" in the email body
+    And I should see "affiliate_manager_with_no_affiliates@fixtures.org" in the email body
+
+  Scenario: Clicking on Adding additional sites in Step 3. Get the code
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+    And I press "Next"
+    And I follow "Adding additional sites"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
+
+  Scenario: Clicking on Customizing the look and feel in Step 3. Get the code
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+    And I press "Next"
+    And I follow "Customizing the look and feel"
+    Then I should see "Look and Feel of the Search Results Page" within "title"
+
+  Scenario: Clicking on Setting up the type-ahead search in Step 3. Get the code
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+    And I press "Next"
+    And I follow "Setting up the type-ahead search"
+    Then I should see "USASearch > Affiliate Program > Affiliate Center > My awesome agency > Type-ahead Search"
+
+  Scenario: Clicking on Go to Affiliate Center in Step 3. Get the code
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+    And I press "Next"
+    And I follow "Go to Affiliate Center"
+    Then I should be on the affiliate admin page
+
+   Scenario: Adding an affiliate without filling out contact information should fail
+    Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    Then I should see "Organization name can't be blank"
+    Then I should see "Phone can't be blank"
+    Then I should see "Address can't be blank"
+    Then I should see "City can't be blank"
+    Then I should see "Zip can't be blank"
+
+  Scenario: Adding an affiliate without site display name should fail
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    And I press "Next"
     Then I should see "Site name can't be blank"
     And I should not see "HTTP parameter site name can't be blank"
     And I should not see "HTTP parameter site name is too short"
@@ -118,60 +208,254 @@ Feature: Affiliate clients
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
-    And I press "Delete Affiliate"
+    And I press "Delete Site"
     Then I should be on the affiliate admin page
-    And I should see "Affiliate deleted"
+    And I should see "Site deleted"
 
-  Scenario: Staging changes to an affiliate's look and feel
+  Scenario: Visiting the site information page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
+      | display_name     | name        | domains       | staged_domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov     | example.org   | example.org          | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Site information"
+    Then I should see "Site Information" within "title"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Site Information"
+    And I should see "Site Information" within ".main"
+    And the "Site name" field should contain "aff site"
+    And the "HTTP parameter site name" field should contain "aff.gov"
+    And the "Domains to search" field should contain "example.org"
+    And I should see "Cancel"
+    When I follow "Cancel"
+    Then I should be on the "aff site" affiliate page
+
+  Scenario: Editing site information and saving it for preview
+    Given the following Affiliates exist:
+      | display_name     | name            | domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
-    And I follow "Edit"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Edit"
-    And the "Domains (one per line)" field should contain "oldagency.gov"
-    And the "Enter HTML to customize the top of your search page" field should contain "Old header"
-    And the "Enter HTML to customize the bottom of your search page" field should contain "Old footer"
-    When I fill in the following:
-      | Site name                                                             | new site name                                       |
-      | HTTP parameter site name                                              | newname                                             |
-      | Your Website URL (www.example.gov)                                    | www.agency.gov                                      |
-      | Domains (one per line)                                                | newagency.gov                                       |
-      | Enter HTML to customize the top of your search page                   | New header                                          |
-      | Enter HTML to customize the bottom of your search page                | New footer                                          |
-    And I select "Basic Gray (A simple, clean gray page)" from "Style for your search page results"
-    And I press "Save for preview"
-    Then I should see "Staged changes to your affiliate successfully."
-    And I should be on the affiliate admin page
-    And I should see "new site name"
-    When I follow "Edit"
-    Then the "Domains (one per line)" field should contain "newagency.gov"
-    And the "Enter HTML to customize the top of your search page" field should contain "New header"
-    And the "Enter HTML to customize the bottom of your search page" field should contain "New footer"
+    And I follow "aff site"
+    And I follow "Site information"
+    And I fill in the following:
+      | Site name                  | new aff site        |
+      | Site URL                   | www.aff.gov         |
+      | Domains to search          | data.gov            |
+    And I press "Save for Preview"
+    Then I should be on the "new aff site" affiliate page
+    And I should see "Staged changes to your site successfully"
+    And I should see "Site: new aff site"
+    And I should see "www.aff.gov"
+
+    When I follow "View staged"
+    And I should see 10 search results
+
+    When I go to the "new aff site" affiliate page
+    And I follow "Current Site"
+    Then I should see "Sorry, no results found"
+
+    When I go to the "new aff site" affiliate page
+    And I follow "Site Information"
+    Then the "HTTP parameter site name" field should contain "aff.gov"
+
+    When I go to the "new aff site" affiliate page
+    And I press "Push Changes"
+    And I go to the "new aff site" affiliate page
+    And I follow "Current Site"
+    Then I should see 10 search results
+
+  Scenario: Editing site information with problem and saving it for preview
+    Given the following Affiliates exist:
+      | display_name     | name            | domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Site information"
+    And I fill in the following:
+      | Site name                  |                     |
+      | Site URL                   |                     |
+      | Domains to search          |                     |
+    And I press "Save for Preview"
+    Then I should see "Site Information" within "title"
+    And I should see "Site name can't be blank"
+
+  Scenario: Editing site information and make it live
+    Given the following Affiliates exist:
+      | display_name     | name            | domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
-    When I follow "View Current"
-    Then I should see "Old header"
+    And I follow "aff site"
+    And I follow "Site information"
+    And I fill in the following:
+      | Site name                  | new aff site        |
+      | Site URL                   | www.aff.gov         |
+      | Domains to search          | data.gov            |
+    And I press "Make Live"
+    Then I should be on the "new aff site" affiliate page
+    And I should see "Updated changes to your live site successfully"
+    And I should see "Site: new aff site"
+    And I should see "www.aff.gov"
+    And I should not see "View staged"
+
+    When I follow "Current Site"
+    Then I should see 10 search results
+
+   Scenario: Editing site information with problem and make it live
+    Given the following Affiliates exist:
+      | display_name     | name            | domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Site information"
+    And I fill in the following:
+      | Site name                  |                     |
+      | Site URL                   |                     |
+      | Domains to search          |                     |
+    And I press "Make Live"
+    Then I should see "Site Information" within "title"
+    And I should see "Site name can't be blank"
+
+  Scenario: Visiting the look and feel page
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    Then I should see "Look and Feel of the Search Results Page" within "title"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page"
+    And I should see "Look and Feel of the Search Results Page" within ".main"
+    And the "Search Results Page Title" field should contain "\{Query\} - \{SiteName\} Search Results"
+    And the affiliate "Template" field should be set to use "Default" template
+    And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
+    And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
+    And I should see "Cancel"
+    When I follow "Cancel"
+    Then I should be on the "aff site" affiliate page
+
+  Scenario: Editing look and feel and saving it for preview
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Look and feel"
+    And I fill in the following:
+      | Search results page title                                         | {SiteName} : {Query} |
+      | Enter HTML to customize the top of your search results page.      | New header           |
+      | Enter HTML to customize the bottom of your search results page.   | New footer           |
+    And I select "Basic Gray (A simple, clean gray page)" from "Template"
+    And I press "Save for Preview"
+    Then I should be on the "aff site" affiliate page
+    And I should see "Staged changes to your site successfully"
+
+    When I follow "Current Site"
+    Then I should see "gov - aff site Search Results"
+    And I should see "Old header"
     And I should see "Old footer"
     And I should see the page with affiliate stylesheet "default"
     And I should not see the page with affiliate stylesheet "basic_gray"
-    When I go to the affiliate admin page
-    When I follow "View staged"
-    Then I should see "New header"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View staged"
+    Then I should see "aff site : gov"
+    And I should see "New header"
     And I should see "New footer"
     And I should see the page with affiliate stylesheet "basic_gray"
     And I should not see the page with affiliate stylesheet "default"
-    When I go to the affiliate admin page
+
+    When I go to the "aff site" affiliate page
     And I press "Push Changes"
-    Then I should be on the affiliate admin page
-    And I should see "Staged content is now visible"
-    And I should not see "Push Changes"
-    And I should not see "View staged"
-    When I follow "View Current"
-    Then I should see "New header"
+    And I go to the "aff site" affiliate page
+    And I follow "Current Site"
+    Then I should see "aff site : gov"
+    And I should see "New header"
     And I should see "New footer"
     And I should see the page with affiliate stylesheet "basic_gray"
     And I should not see the page with affiliate stylesheet "default"
+
+  Scenario: Editing look and feel with problem and saving it for preview
+    Given the following Affiliates exist:
+      | display_name     | name            | domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    And I fill in the following:
+      | Search results page title                                         |     |
+    And I press "Save for Preview"
+    Then I should see "Look and Feel of the Search Results Page" within "title"
+    And I should see "Search results page title can't be blank"
+
+  Scenario: Editing look and feel and make it live
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Look and feel"
+    And I fill in the following:
+      | Search results page title                                         | {SiteName} : {Query} |
+      | Enter HTML to customize the top of your search results page.      | New header           |
+      | Enter HTML to customize the bottom of your search results page.   | New footer           |
+    And I select "Basic Gray (A simple, clean gray page)" from "Template"
+    And I press "Make Live"
+    Then I should be on the "aff site" affiliate page
+    And I should see "Updated changes to your live site successfully"
+    And I should not see "View staged"
+
+    When I follow "Current Site"
+    Then I should see "aff site : gov"
+    And I should see "New header"
+    And I should see "New footer"
+    And I should see the page with affiliate stylesheet "basic_gray"
+    And I should not see the page with affiliate stylesheet "default"
+
+  Scenario: Editing look and feel with problem and make it live
+    Given the following Affiliates exist:
+      | display_name     | name            | domains       | contact_email         | contact_name        |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    And I fill in the following:
+      | Search results page title                                         |     |
+    And I press "Make Live"
+    Then I should see "Look and Feel of the Search Results Page" within "title"
+    And I should see "Search results page title can't be blank"
+
+  Scenario: Visiting the preview page
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Preview"
+    Then I should see "Preview" within "title"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Preview"
+    And I should see "Preview" within "h1"
+    And I should see "Search on Live Site" button
+    And I should not see "Preview Search on Staged Site" button
+
+    When I follow "Look and feel"
+    And I fill in the following:
+      | Search results page title                                   | Staged - {SiteName} : {Query} |
+    And I press "Save for Preview"
+    And I follow "Preview"
+    And I fill in the following within "#staged_site_search_form":
+      | query | White House |
+    And I press "Preview Search on Staged Site"
+    Then I should see "Staged - aff site : White House" within "title"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Preview"
+    And I fill in the following within "#live_site_search_form":
+      | query | White House |
+    And I press "Search on Live Site"
+    Then I should see "White House - aff site Search Results"
 
   Scenario: Related Topics on English SERPs for given affiliate search
     Given the following Affiliates exist:
@@ -298,7 +582,7 @@ Feature: Affiliate clients
     And I should see "Do you want to have Type-ahead Search box on your home page and/or in your banner?"
     And I should see "How To Implement Type-ahead Search"
     When I follow "Type-ahead Search" within ".cross-promotion"
-    Then I should see "Add Type-ahead Search Suggestion"
+    Then I should see "Add a New Entry"
     And I should not see "aff.gov"
 
   Scenario: Navigating to an Affiliate page for a particular Affiliate
@@ -308,9 +592,18 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "aff site"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site"
-    And I should see "Affiliate: aff site"
+    Then I should see "Site: aff site" within "title"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site"
+    And I should see "Site: aff site" within ".main"
+    And I should see "Delete Site" button
+    And I should see "Site information" within ".affiliate-nav"
+    And I should see "Add new site" within ".affiliate-nav"
+    And I should see "My account" within ".affiliate-nav"
+    And I should see "Manage users" within ".affiliate-nav"
     And I should not see "aff.gov"
+
+    When I follow "My account" within ".affiliate-nav"
+    Then I should be on the user account page"
 
   Scenario: Stats link on affiliate home page
     Given the following Affiliates exist:
@@ -319,7 +612,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the affiliate admin page with "aff.gov" selected
-    Then I should see "Analytics"
+    Then I should see "SITE ANALYTICS"
 
   Scenario: Getting stats for an affiliate
     Given the following Affiliates exist:
@@ -469,13 +762,13 @@ Feature: Affiliate clients
     
   Scenario: Adding and removing a SAYT Suggestion to an affiliate
     Given the following Affiliates exist:
-     | display_name     | name             | contact_email           | contact_name        |
-     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        | is_sayt_enabled | is_affiliate_suggestions_enabled |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            | true            | true                             |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"
     Then I should be on the affiliate sayt page
-    And I should see "Add Type-ahead Search Suggestion"
+    And I should see "Add a New Entry"
     When I fill in "Phrase" with "banana"
     And I press "Add"
     Then I should be on the affiliate sayt page
@@ -494,13 +787,13 @@ Feature: Affiliate clients
     
   Scenario: Uploading SAYT Suggestions for an affiliate
     Given the following Affiliates exist:
-     | display_name     | name             | contact_email           | contact_name        |
-     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+     | display_name     | name             | contact_email           | contact_name        | is_sayt_enabled | is_affiliate_suggestions_enabled |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |  true            | true                             |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"
     Then I should be on the affiliate sayt page
-    And I should see "Type-ahead Search Suggestions Bulk Upload"
+    And I should see "Bulk Upload"
     
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
     And I press "Upload"

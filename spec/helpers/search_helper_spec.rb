@@ -38,13 +38,23 @@ describe SearchHelper do
   end
 
   describe "#shorten_url" do
+    context "when URL is more than 30 chars, has sublevels, but no query params" do
+      before do
+        @url = "http://www.foo.com/this/is/a/really/long/url/that/has/no/query/string.html"
+      end
+      
+      it "should ellipse the directories and just show the file" do
+        helper.send(:shorten_url, @url).should == "http://www.foo.com/.../string.html"
+      end
+    end
+    
     context "when URL is more than 30 chars long and has at least one sublevel specified" do
       before do
         @url = "http://www.foo.com/this/goes/on/and/on/and/on/and/on/and/ends/with/XXXX.html?q=1&a=2&b=3"
       end
 
-      it "should replace everything between the hostname and the document with ellipses and remove params" do
-        helper.send(:shorten_url, @url).should == "http://www.foo.com/.../XXXX.html"
+      it "should replace everything between the hostname and the document with ellipses, and show only the first param, followed by ellipses" do
+        helper.send(:shorten_url, @url).should == "http://www.foo.com/.../XXXX.html?q=1..."
       end
     end
 

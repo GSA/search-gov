@@ -1,27 +1,16 @@
-#results-wrap
-  #sidebar
-    = link_to image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
-    =# render "sidebar"
-  #results
-    = render "/shared/search", :path => recalls_search_path
-    - if @search && @search.total > 0
-      .recalls
-        %h3<
-          = t :recall_govbox_header
-          .recall_stats
-            = t :displaying_count_of_total_for_query, :start => start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, :end => start + @search.hits.length - 1, :total => @search.total, :query => @query   
-        .sort
-          = "#{t :sort_by}:"
-          = link_to_unless params[:sort].blank? || params[:sort] == 'date', t(:by_date), recalls_search_path(@valid_params.merge(:sort => 'date').merge(:query => @query))
-          |
-          = link_to_unless params[:sort] == 'rel', t(:by_relevance), recalls_search_path(@valid_params.merge(:sort => 'rel').merge(:query => @query))
+- content_for :head do
+  %meta{:name => 'description', :content => 'Search.USA.gov Recalls is the U.S. government’s official database for recalls.'}
+  %meta{:name => 'keywords', :content => 'government recalls, recalls, recalled items, recall list, product recalls, auto recalls, vehicle recalls, car recalls, automobile recalls, food recalls, drug recalls, fda recalls, usda recalls, nhtsa recalls, cdc recalls, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web'}  
 
-        - @search.results.each_with_index do |result, index|
-          = render 'result', :object => result, :index => index
-      = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
-    - elsif @error_message
-      %p.noresults 
-        = @error_message
-    - else
-      = no_results_for params[:query]
-    = render "/shared/footer_search"
+.prepend-6.span-15.append-3.homepage
+  %a{:name => "content"}
+  = link_to(image_tag("USAsearch_large_#{I18n.locale}_recalls.gif" , :alt => "USASearch Recalls Home"), recalls_path(:locale => I18n.locale))
+  = render "shared/search", :path => recalls_search_path
+
+- if @latest_recalls.results.size > 0
+  .prepend-6.span-12.append-6.homepage
+    #popular
+      %h2 Latest Recalls
+      #results.recalls
+        - @latest_recalls.results[0..4].each_with_index do |result, index|
+          = render 'result', :object => result, :index => index, :hit => @latest_recalls.hits[index]

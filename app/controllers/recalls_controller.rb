@@ -5,22 +5,32 @@ class RecallsController < ApplicationController
   before_filter :convert_date_range_to_start_and_end_dates
   
   @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
+  MAX_PAGES = 100
   RECALLS_CACHE_DURATION_IN_SECONDS = 60 * 30
   VALID_OPTIONS = %w{start_date end_date date_range upc sort code organization make model year food_type}
   
   def index
+    @latest_recalls = Recall.search_for("", {:sort => "date"})
+  end
+
+  def search
     respond_to do |format|
       format.html {
-        @valid_params[:sort] = 'date' if params[:sort].blank?
         @query = params[:query] || ""
+
+        redirect_to recalls_path and return if @query.blank?
+
+        @valid_params[:sort] = 'rel' if params[:sort].blank?
         @page = params[:page]
+        @page = MAX_PAGES if @page && @page.to_i > MAX_PAGES
         @search = Recall.search_for(@query, @valid_params, @page)
+        pagination_total = [@search.results.total_pages, MAX_PAGES].min
+        @paginated_results = WillPaginate::Collection.create(@search.hits.current_page, @search.hits.per_page, pagination_total * @search.hits.per_page) { |pager| pager.replace(@search.hits) }
+        @page_title = @query
+
       }
       format.json {
         api_search
-      }
-      format.any {
-        render :text => 'Not Implemented', :status => 501 
       }
     end
   end
@@ -34,7 +44,7 @@ class RecallsController < ApplicationController
       cache_key = [@valid_params.to_s, query, page].join(':')
       success_total_results_json = @@redis.get(cache_key) rescue nil
       if success_total_results_json.nil?
-        search = Recall.search_for(query, @valid_params, page)
+        search = Recall.search_for(query, @valid_params, page) || Struct.new(:total, :results).new(0, [])
         success_total_results_json = {:success => {:total => search.total, :results => search.results}}.to_json
         @@redis.setex(cache_key, RECALLS_CACHE_DURATION_IN_SECONDS, success_total_results_json) rescue nil
       end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110128183710) do
+ActiveRecord::Schema.define(:version => 20110211210757) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -42,11 +42,13 @@ ActiveRecord::Schema.define(:version => 20110128183710) do
     t.boolean  "has_staged_content",                             :default => false,               :null => false
     t.string   "website"
     t.integer  "affiliate_template_id"
-    t.boolean  "is_sayt_enabled",                                :default => false
-    t.boolean  "is_affiliate_suggestions_enabled",               :default => false
+    t.boolean  "is_sayt_enabled",                                :default => true
+    t.boolean  "is_affiliate_suggestions_enabled",               :default => true
     t.string   "related_topics_setting",           :limit => 30, :default => "affiliate_enabled"
     t.integer  "staged_affiliate_template_id"
     t.string   "display_name",                                                                    :null => false
+    t.string   "search_results_page_title",                                                       :null => false
+    t.string   "staged_search_results_page_title",                                                :null => false
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -262,14 +264,16 @@ ActiveRecord::Schema.define(:version => 20110128183710) do
   add_index "sayt_filters", ["phrase"], :name => "index_sayt_filters_on_phrase", :unique => true
 
   create_table "sayt_suggestions", :force => true do |t|
-    t.string   "phrase",                      :null => false
+    t.string   "phrase",                          :null => false
     t.datetime "created_at"
-    t.integer  "popularity",   :default => 1, :null => false
+    t.integer  "popularity",   :default => 1,     :null => false
     t.datetime "updated_at"
     t.integer  "affiliate_id"
+    t.boolean  "is_protected", :default => false
+    t.datetime "deleted_at"
   end
 
-  add_index "sayt_suggestions", ["affiliate_id", "phrase", "popularity"], :name => "index_sayt_suggestions_on_affiliate_id_and_phrase_and_popularity", :unique => true
+  add_index "sayt_suggestions", ["affiliate_id", "phrase", "deleted_at", "popularity"], :name => "index_sayt_suggestions_on_aff_id_phrase_del_at_pop", :unique => true
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

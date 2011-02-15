@@ -21,13 +21,19 @@ class Emailer < ActionMailer::Base
   end
   
   def mobile_feedback(email, message)
-    @recipients = I18n.t(:contact_recipients)
+    @recipients = I18n.t(:mobile_feedback_contact_recipients)
     @from       = email
-    @subject    = "USA.gov Mobile Inquiry"
+    @subject    = I18n.t(:mobile_feedback_subject)
     @sent_on    = Time.now
     @headers['Content-Type'] = "text/plain; charset=iso-8859-1; format=flowed"
     charset "iso-8859-1"
     body(:message => message)
+  end
+  
+  def new_affiliate_site(affiliate)
+    setup_email(affiliate.owner.email)
+    @subject += "Your new Affiliate site"
+    body(:affiliate => affiliate)
   end
   
   private

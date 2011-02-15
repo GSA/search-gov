@@ -2,6 +2,7 @@ es:
   search_in: "Search in English"
   search: "Buscar"
   forms_search: "Buscar Formas"
+  recalls_search: Buscar Retirados
   did_you_mean: "Se incluyen resultados para {{assumed_term}}. ¿Deseas mostrar sólo los resultados para {{term_as_typed}}?"
   results_summary: "Resultados {{from}}-{{to}} de aproximadamente {{total}} de '{{query}}'"
   cached: "En caché"
@@ -23,25 +24,25 @@ es:
   in_english: "(en inglés)"
   view_all_images_for: "Ver todas las imágenes de {{query}}"
   government_web: "Todo el Gobierno"
-  recall_govbox_header: " Resultados de ___"
-  displaying_count_of_total_for_query: Displaying {{start}}-{{end}} of {{total}} for {{query}} (ES)
-  view_more_recalls: View More Recalls (ES)
+  recall_govbox_header: "Resultados de la base de datos de productos retirados, Gobierno de EE. UU."
+  displaying_count_of_total_for_query: Mostrando {{start}}-{{end}} de {{total}} por {{query}}
+  view_more_recalls: Vea más productos retirados
   industry:
     auto:
       name: auto
-      agency_name: National Highway Traffic Safety Administration
+      agency_name: Administración Nacional de Seguridad del Tráfico en las Carreteras
     product:
       name: producto
-      agency_name: Consumer Product Safety Commission
+      agency_name: Comisión para la Seguridad de los Productos de Consumo
     food:
       name: alimentos
-      agency_name: United States Department of Agriculture
+      agency_name: Departamento de Agricultura
     drug:
       name: medicinas
-      agency_name: Food and Drug Administration
-  sort_by: Sort by (ES)
-  by_date: Date (ES)
-  by_relevance: Relevance (ES)
+      agency_name: Administración de Alimentos y Medicamentos
+  sort_by: Ordenar por
+  by_date: Por fecha
+  by_relevance: Por importancia
   advanced_search: "Búsqueda avanzada"
   advanced_search_instruction: "Use las opciones a continuación para hacer una búsqueda específica."
   advanced_search_show_results_header: "Buscar resultados con"
@@ -89,7 +90,8 @@ es:
   citizen_services_url: "/usa/gobiernousa/Temas/Servicios"
   explore_topics_url: "/usa/gobiernousa/Temas"
   find_government_agencies_url: "/usa/gobiernousa/Agencias/index"
-  contact_recipients: "mgobiernousa.gov@mail.fedinfo.gov"
+  mobile_feedback_contact_recipients: "mgobiernousa.gov@mail.fedinfo.gov"
+  mobile_feedback_subject: "GobiernoUSA.gov Mobile Inquiry"
   contact_thank_you: "Gracias por contactar con USA.gov. Le responderemos en el plazo de dos días hábiles."
   contact_invalid_email: "Dirección de correo electrónico no es válida"
   searches_related_to: "Búsquedas relacionadas a '{{query}}'"
@@ -107,12 +109,12 @@ es:
     formats:
       medium: "%e de %B de %Y"
 
-    day_names: [Domingo, Lunes, Martes, Miércoles, Jueves, Viernes, Sábado]
-    abbr_day_names: [Dom, Lun, Mar, Mie, Jue, Vie, Sab]
+    day_names: [domingo, lunes, martes, miércoles, jueves, viernes, sábado]
+    abbr_day_names: [do, lu, ma, mi, ju, vi, sa]
 
     # Don't forget the nil at the beginning; there's no such thing as a 0th month
-    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Setiembre, Octubre, Noviembre, Diciembre]
-    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Ago, Set, Oct, Nov, Dic]
+    month_names: [~, enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre]
+    abbr_month_names: [~, ene, feb, mar, abr, may, jun, jul, ago, sep, oct, nov, dic]
     # Used in date_select and datime_select.
     order: [ :day, :month, :year ]
 

@@ -78,8 +78,12 @@ module NavigationHelpers
       home_affiliates_path(:said => Affiliate.find_by_name($1).id)
     when /the affiliate admin page/
       home_affiliates_path
+    when /the "([^\"]*)" affiliate page$/
+      affiliate_path(Affiliate.find_by_display_name($1))
     when /the affiliate sayt page/
       affiliate_type_ahead_search_index_path(:locale => nil, :m => nil)
+    when /the recalls landing page/
+      recalls_path
     when /the recalls search page/
       recalls_search_path
     when /the program welcome page/
@@ -97,7 +101,9 @@ module NavigationHelpers
     when /the top forms admin page$/
       admin_top_forms_path
     when /the top forms admin page for column "([^\"]*)"/
-      admin_top_forms_path(:column_number => $1) 
+      admin_top_forms_path(:column_number => $1)
+    when /the trending searches page/
+      trending_searches_widget_path
     else
       begin
         page_name =~ /the (.*) page/

@@ -1,46 +1,81 @@
-= affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Type-ahead Search'])
-
-.span-24{:style => 'margin-bottom: 21px;'}
-  - form_tag preferences_affiliate_type_ahead_search_path(@affiliate), :class=> "bordered" do
-    %h1
-      Preferences
-    Enable type-ahead search to provide your customers with suggestions as they type their search in your site's search box.
-    %ul{:style => 'list-style-type: none;'}
-      %li
-        = radio_button_tag 'sayt_preferences', 'enable_affiliate', @affiliate.is_affiliate_sayt_enabled?
-        Enable type-ahead search based on your site's search analytics
-      %li
-        = radio_button_tag 'sayt_preferences', 'enable_global', @affiliate.is_global_sayt_enabled?
-        Enable type-ahead search based on Search.USA.gov's government-widge search analytics
-      %li
-        = radio_button_tag 'sayt_preferences', 'disable', @affiliate.is_sayt_disabled?
-        Disable type-ahead search
-    = submit_tag "Set Preferences"
-
-.span-24{:style => 'margin-bottom: 21px;'}
-  - form_for @sayt_suggestion, {:url => affiliate_type_ahead_search_index_path(@affiliate), :html => {:class => 'bordered'}} do |f|
-    %h1
-      Add Type-ahead Search Suggestion
-    = f.label :phrase
-    = f.text_field :phrase
-    = f.submit "Add"
-
-#sayt-suggestions-title.title-row
-  Type-ahead Search Suggestions
-%table#sayt-suggestions.admin-table{:style => 'margin-bottom: 0px;'}
-  %tr
-    %th
-      Phrase
-    %th
-      Actions
-  - @sayt_suggestions.each do |sayt_suggestion|
-    %tr{:class => cycle('even', 'odd')}
-      %td.sayt_suggestion
-        = sayt_suggestion.phrase
-      %td.sayt_actions
-        = button_to "Delete", affiliate_type_ahead_search_path(@affiliate, sayt_suggestion), :title => "Remove", :confirm => "You are about to remove this phrase. Are you sure?", :method => :delete
-%div{:style => "text-align: center; margin-bottom: 10px;"}
-  = will_paginate @sayt_suggestions
-
 .span-24
-  = render :partial => 'bulk_upload_form', :locals => { :upload_path => upload_affiliate_type_ahead_search_path(@affiliate) }
+  = affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Type-ahead Search'])
+
+.span-17.append-1.last
+  %h1 Type-ahead Search
+  %p
+    Enable type-ahead search to provide your customers with suggestions as they type their search in your site's search box.
+  %p
+    = link_to "Preferences", "#preferences"
+    &nbsp; | &nbsp;
+    = link_to "Preview", "#preview"
+    &nbsp; | &nbsp;
+    = link_to "Add a New Entry", "#add_a_new_entry"
+    &nbsp; | &nbsp;
+    = link_to "Current Entries", "#current_entries"
+    &nbsp; | &nbsp;
+    = link_to "Bulk Upload", "#bulk_upload"
+    
+  #preferences{:style => 'margin-bottom: 20px;'}
+    - form_tag preferences_affiliate_type_ahead_search_path(@affiliate) do
+      %h2
+        Preferences
+      %ul{:style => 'list-style-type: none;'}
+        %li
+          = radio_button_tag 'sayt_preferences', 'enable_affiliate', @affiliate.is_affiliate_sayt_enabled?
+          Enable type-ahead search based on your site's search analytics
+        %li
+          = radio_button_tag 'sayt_preferences', 'enable_global', @affiliate.is_global_sayt_enabled?
+          Enable type-ahead search based on Search.USA.gov's government-widge search analytics
+        %li
+          = radio_button_tag 'sayt_preferences', 'disable', @affiliate.is_sayt_disabled?
+          Disable type-ahead search
+      = submit_tag "Set Preferences"
+  
+  #preview{:style => 'margin-bottom: 25px;'}
+    %h2
+      Preview
+    = text_field_tag 'search', nil, { :size => 49, :name => "query", :autocomplete => "off", :class => (@affiliate.is_sayt_disabled? ? "usagov-search" : "usagov-search-autocomplete") }
+  
+  - if @affiliate.is_affiliate_sayt_enabled?
+    #add_a_new_entry{:style => 'margin-bottom: 25px;'}
+      - form_for @sayt_suggestion, {:url => affiliate_type_ahead_search_index_path(@affiliate)} do |f|
+        %h2
+          Add a New Entry
+        = f.label :phrase
+        = f.text_field :phrase
+        = f.submit "Add"
+  
+    #current_entries{:style => "margin-bottom: 25px;"}
+      %h2
+        Current Entries
+      - form_tag affiliate_type_ahead_search_index_path(:anchor => "current_entries"), :method => :get do
+        = label_tag "Filter Entries:"
+        = text_field_tag "filter", @filter
+        = submit_tag "Filter"
+        = link_to 'Remove Filter', affiliate_type_ahead_search_index_path(:anchor => "current_entries") if @filter.present?
+  
+      %table#sayt-suggestions.admin-table{:style => 'margin-bottom: 0px;'}
+        %tr
+          %th
+            Type-ahead suggestion
+          %th
+            Actions
+        - @sayt_suggestions.each do |sayt_suggestion|
+          %tr{:class => cycle('even', 'odd')}
+            %td.sayt_suggestion
+              = sayt_suggestion.phrase
+            %td.sayt_actions
+              = button_to "Delete", affiliate_type_ahead_search_path(@affiliate, sayt_suggestion), :title => "Remove", :confirm => "You are about to remove this phrase. Are you sure?", :method => :delete
+      %div{:style => "text-align: center; margin-bottom: 10px;"}
+        = will_paginate @sayt_suggestions
+
+    #bulk_upload{:style => 'margin-bottom: 25px;'}
+      = render :partial => 'bulk_upload_form', :locals => { :upload_path => upload_affiliate_type_ahead_search_path(@affiliate) }
+  
+.span-6.last
+  .content-box.cross-promotion
+    %p
+      Do you want to have type-ahead search suggestions in the search box on your home page and/or in your banner?
+    %p
+      Read our detailed instructions: #{link_to 'How To Implement Type-ahead Search', 'http://searchsupport.usa.gov/entries/219044-how-to-implement-search-as-you-type-sayt'}

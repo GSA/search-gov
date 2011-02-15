@@ -27,6 +27,8 @@ describe Affiliate do
     should_have_many :boosted_contents
     should_have_many :sayt_suggestions
     should_have_many :calais_related_searches
+    should_belong_to :affiliate_template
+    should_belong_to :staged_affiliate_template
 
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_create_attributes)
@@ -67,19 +69,99 @@ describe Affiliate do
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "123"))
         affiliate.name.should == "123"
       end
+
+      it "should set default search_results_page_title if search_results_page_title is blank" do
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate.search_results_page_title.should == "{Query} - {SiteName} Search Results"
+      end
+
+      it "should set default staged_search_results_page_title if staged_search_results_page_title is blank" do
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate.staged_search_results_page_title.should == "{Query} - {SiteName} Search Results"
+      end
     end
 
-    it "should validate presence of :name on update" do
+    describe "on update_attributes_for_staging" do
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+
+      before do
+        @update_params = {:staged_domains => "updated.domain.gov",
+                          :staged_header => "<span>header</span>",
+                          :staged_footer => "<span>footer</span>",
+                          :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
+                          :staged_search_results_page_title => "updated - {query} - {sitename} Search Results"}
+      end
+
+      it "should set has_staged_content to true" do
+        affiliate.has_staged_content.should be_false
+        affiliate.update_attributes_for_staging(@update_params).should be_true
+        affiliate.has_staged_content.should be_true
+      end
+
+      it "should update staged attributes" do
+        affiliate.update_attributes_for_staging(@update_params).should be_true
+        affiliate.staged_domains.should == @update_params[:staged_domains]
+        affiliate.staged_header.should == @update_params[:staged_header]
+        affiliate.staged_footer.should == @update_params[:staged_footer]
+        affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
+        affiliate.staged_search_results_page_title.should == @update_params[:staged_search_results_page_title]
+      end
+    end
+
+    describe "on update_attributes_for_current" do
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+
+      before do
+        @update_params = {:staged_domains => "updated.domain.gov",
+                          :staged_header => "<span>header</span>",
+                          :staged_footer => "<span>footer</span>",
+                          :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
+                          :staged_search_results_page_title => "updated - {query} - {sitename} Search Results"}
+      end
+
+      it "should set has_staged_content to false" do
+        affiliate.has_staged_content.should be_false
+        affiliate.update_attributes_for_current(@update_params).should be_true
+        affiliate.has_staged_content.should be_false
+      end
+
+      it "should update current attributes" do
+        affiliate.update_attributes_for_current(@update_params).should be_true
+        affiliate.domains.should == @update_params[:staged_domains]
+        affiliate.header.should == @update_params[:staged_header]
+        affiliate.footer.should == @update_params[:staged_footer]
+        affiliate.affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
+        affiliate.search_results_page_title.should == @update_params[:staged_search_results_page_title]
+        affiliate.staged_domains.should == @update_params[:staged_domains]
+        affiliate.staged_header.should == @update_params[:staged_header]
+        affiliate.staged_footer.should == @update_params[:staged_footer]
+        affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
+        affiliate.staged_search_results_page_title.should == @update_params[:staged_search_results_page_title]
+      end
+    end
+
+    it "should not change the name attribute on update" do
       affiliate = Affiliate.create!(@valid_create_attributes)
-      affiliate.update_attributes(:name => "").should_not be_true
+      lambda {affiliate.update_attributes(:name => "")}.should raise_error("This field cannot be changed.")
+      affiliate.name.should == "myawesomesite"
     end
 
-    it "should have SAYT disabled by default" do
-      Affiliate.create!(@valid_create_attributes).is_sayt_enabled.should be_false
+    it "should validate presence of :search_results_page_title on update" do
+      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate.update_attributes(:search_results_page_title => "").should_not be_true
     end
 
-    it "should have Affiliate-specific SAYT suggestions disabled by default" do
-      Affiliate.create!(@valid_create_attributes).is_affiliate_suggestions_enabled.should be_false
+    it "should validate presence of :staged_search_results_page_title on update" do
+      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate.update_attributes(:staged_search_results_page_title => "").should_not be_true
+    end
+
+    it "should have SAYT enabled by default" do
+      Affiliate.create!(@valid_create_attributes).is_sayt_enabled.should be_true
+    end
+
+    it "should have Affiliate-specific SAYT suggestions enabled by default" do
+      Affiliate.create!(@valid_create_attributes).is_affiliate_suggestions_enabled.should be_true
     end
     
     it "should generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do
@@ -160,5 +242,66 @@ describe Affiliate do
   describe "#human_attribute_name" do
     Affiliate.human_attribute_name("display_name").should == "Site name"
     Affiliate.human_attribute_name("name").should == "HTTP parameter site name"
+    Affiliate.human_attribute_name("staged_search_results_page_title").should == "Search results page title"
+  end
+
+  describe "#build_search_results_page_title" do
+    let(:affiliate) { Affiliate.create(@valid_create_attributes) }
+
+    it "should handle nil query" do
+      affiliate.build_search_results_page_title(nil).should == " - My Awesome Site Search Results"
+    end
+
+    it "should return default search results page title" do
+      affiliate.build_search_results_page_title("gov").should == "gov - My Awesome Site Search Results"
+    end
+
+    it "should return search results page title with updated format" do
+      affiliate.update_attributes! :search_results_page_title => "{SiteName} Search Results: {Query}"
+      affiliate.build_search_results_page_title("healthcare").should == "My Awesome Site Search Results: healthcare"
+    end
+
+    it "should return plain search results page title when search_results_page_title field does not contain special format" do
+      affiliate.update_attributes! :search_results_page_title => "Plain Search Results Page"
+      affiliate.build_search_results_page_title("healthcare").should == "Plain Search Results Page"
+    end
+  end
+
+  describe "#build_staged_search_results_page_title" do
+    let(:affiliate) { Affiliate.create(@valid_create_attributes) }
+
+    it "should handle nil query" do
+      affiliate.build_staged_search_results_page_title(nil).should == " - My Awesome Site Search Results"
+    end
+
+    it "should return default staged search results page title" do
+      affiliate.build_staged_search_results_page_title("gov").should == "gov - My Awesome Site Search Results"
+    end
+
+    it "should return staged search results page title with updated format" do
+      affiliate.update_attributes! :staged_search_results_page_title => "{SiteName} Search Results: {Query}"
+      affiliate.build_staged_search_results_page_title("healthcare").should == "My Awesome Site Search Results: healthcare"
+    end
+
+    it "should return plain staged search results page title when staged_search_results_page_title field does not contain special format" do
+      affiliate.update_attributes! :staged_search_results_page_title => "Plain Search Results Page"
+      affiliate.build_staged_search_results_page_title("healthcare").should == "Plain Search Results Page"
+    end
+  end
+
+  describe "#staging_attributes" do
+    it "should return all staging attributes" do
+      affiliate = Affiliate.create(@valid_create_attributes)
+      affiliate.staging_attributes.include?(:staged_domains).should be_true
+      affiliate.staging_attributes.include?(:staged_header).should be_true
+      affiliate.staging_attributes.include?(:staged_footer).should be_true
+      affiliate.staging_attributes.include?(:staged_affiliate_template_id).should be_true
+      affiliate.staging_attributes.include?(:staged_search_results_page_title).should be_true
+      affiliate.staging_attributes[:staged_domains].should == affiliate.staged_domains
+      affiliate.staging_attributes[:staged_header].should == affiliate.staged_header
+      affiliate.staging_attributes[:staged_footer].should == affiliate.staged_footer
+      affiliate.staging_attributes[:staged_affiliate_template_id] == affiliate.staged_affiliate_template_id
+      affiliate.staging_attributes[:staged_search_results_page_title] == affiliate.staged_search_results_page_title
+    end
   end
 end

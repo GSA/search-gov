@@ -7,12 +7,14 @@ class SaytSuggestion < ActiveRecord::Base
   validates_uniqueness_of :phrase, :scope => :affiliate_id
   validates_length_of :phrase, :within=> (3..80)
   validates_format_of :phrase, :with=> /^[a-zA-Z0-9][\s\w\.'-]+[a-zA-Z0-9]$/iu
+  
+  MAX_POPULARITY = 2**30
 
   class << self
 
     def like(affiliate_id, query, num_suggestions)
       equals_is = affiliate_id.nil? ? 'is' : '='
-      clause = "phrase LIKE ? AND affiliate_id #{equals_is} ?"
+      clause = "phrase LIKE ? AND affiliate_id #{equals_is} ? AND ISNULL(deleted_at)"
       find(:all, :conditions => [clause, query + '%', affiliate_id], :order => 'popularity DESC, phrase ASC',
            :limit => num_suggestions, :select=> 'phrase')
     end
@@ -45,9 +47,11 @@ class SaytSuggestion < ActiveRecord::Base
         if Search.results_present_for?(dqs.query, affiliate, false) then
           temp_ss = new(:phrase => dqs.query)
           temp_ss.squish_whitespace_and_downcase_and_spellcheck
-          sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase(affiliate_id, temp_ss.phrase)
-          sayt_suggestion.popularity = dqs.times
-          sayt_suggestion.save
+          sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase_and_deleted_at(affiliate_id, temp_ss.phrase, nil)
+          if sayt_suggestion
+            sayt_suggestion.popularity = dqs.times
+            sayt_suggestion.save
+          end
         end
       end unless filtered_daily_query_stats.empty?
     end
@@ -59,7 +63,7 @@ class SaytSuggestion < ActiveRecord::Base
         txtfile.readlines.each do |phrase|
           entry = phrase.chomp.strip
           unless entry.blank?
-            create(:phrase => entry, :affiliate => affiliate).id.nil? ? (ignored += 1) : (created += 1)
+            create(:phrase => entry, :affiliate => affiliate, :is_protected => true, :popularity => MAX_POPULARITY).id.nil? ? (ignored += 1) : (created += 1)
           end
         end
         return {:created => created, :ignored => ignored}
@@ -67,7 +71,7 @@ class SaytSuggestion < ActiveRecord::Base
     end
 
     def expire(days_back)
-      delete_all(["updated_at < ?", days_back.days.ago.beginning_of_day.to_s(:db)])
+      delete_all(["updated_at < ? AND is_protected = ?", days_back.days.ago.beginning_of_day.to_s(:db), false])
     end
   end
 

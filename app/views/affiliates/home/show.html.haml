@@ -1,6 +1,6 @@
 = affiliate_center_breadcrumbs(h(@affiliate.display_name))
 
-%h1= "Affiliate: #{h(@affiliate.display_name)}"
+%h1= "Site: #{h(@affiliate.display_name)}"
 
 .span-18
   %table.admin-table
@@ -13,8 +13,6 @@
       %td
         = h(@affiliate.website)
       %td
-        = link_to 'Edit', edit_affiliate_path(@affiliate)
-        |
         = link_to 'Current Site', search_url(:affiliate=> @affiliate.name, :query => "gov"), :target => "_blank"
         - if @affiliate.has_staged_content?
           |
@@ -22,4 +20,4 @@
           |
           = button_to "Push Changes", push_content_for_affiliate_path(@affiliate, :affiliate_id => @affiliate.id)
         |
-        = button_to "Delete Affiliate", affiliate_path(@affiliate), :title => "Delete this affiliate", :confirm => "You are about to delete this affiliate. Are you sure?", :method => :delete
+        = button_to "Delete Site", affiliate_path(@affiliate), :title => "Delete this site", :confirm => "You are about to delete this site. Are you sure?", :method => :delete

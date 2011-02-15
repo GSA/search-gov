@@ -8,21 +8,35 @@ power_affiliate:
   owner: :affiliate_manager
   users: [:affiliate_manager]
   affiliate_template: :basic_gray
+  staged_affiliate_template: [:basic_gray]
+  search_results_page_title: Current {Query} - {SiteName} Search Results
+  staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
+
 basic_affiliate:
   display_name: NPS Site
   name: nps.gov
   owner: :affiliate_manager
   users: [:affiliate_manager]
   affiliate_template: :default
+  is_sayt_enabled: false
+  is_affiliate_suggestions_enabled: false
+  search_results_page_title: Current {Query} - {SiteName} Search Results
+  staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
+
 another_affiliate:
   display_name: Another Gov Site
   name: another.gov
   owner: :another_affiliate_manager
   users: [:another_affiliate_manager]
   affiliate_template: :default
+  search_results_page_title: Current {Query} - {SiteName} Search Results
+  staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
+
 admin_affiliate:
   display_name: Affiliate Gov Site
   name: affiliate.gov
   owner: :affiliate_admin
   users: [:admin_affiliate]
   affiliate_template: :default
+  search_results_page_title: Current {Query} - {SiteName} Search Results
+  staged_search_results_page_title: Staged {Query} - {SiteName} Search Results

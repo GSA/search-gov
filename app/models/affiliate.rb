@@ -1,27 +1,37 @@
 class Affiliate < ActiveRecord::Base
   validates_presence_of :display_name
   validates_presence_of :name
+  validates_presence_of :search_results_page_title
+  validates_presence_of :staged_search_results_page_title
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within=> (3..33)
   validates_format_of :name, :with=> /^[a-z0-9._-]+$/
   belongs_to :owner, :class_name => 'User'
   has_and_belongs_to_many :users
   belongs_to :affiliate_template
+  belongs_to :staged_affiliate_template, :class_name => 'AffiliateTemplate'
   has_many :boosted_contents, :dependent => :destroy
   has_many :sayt_suggestions, :dependent => :destroy
   has_many :calais_related_searches, :dependent => :destroy
   after_destroy :remove_boosted_contents_from_index
   before_validation_on_create :set_default_name
   before_save :set_default_affiliate_template
+  before_validation_on_create :set_default_search_results_page_title, :set_default_staged_search_results_page_title
   after_create :add_owner_as_user
-
+  
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}
+  DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
 
   HUMAN_ATTRIBUTE_NAME_HASH = {
     :display_name => "Site name",
-    :name => "HTTP parameter site name"
+    :name => "HTTP parameter site name",
+    :staged_search_results_page_title => "Search results page title"
   }
+  
+  def name=(name)
+    new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
+  end
 
   def is_owner?(user)
     self.owner == user ? true : false
@@ -55,6 +65,45 @@ class Affiliate < ActiveRecord::Base
     affiliate_template.presence || AffiliateTemplate.default_template
   end
 
+  def update_attributes_for_staging(attributes)
+    attributes[:has_staged_content] = true
+    self.update_attributes(attributes)
+  end
+
+  def update_attributes_for_current(attributes)
+    attributes[:domains] = attributes[:staged_domains] if attributes.include?(:staged_domains)
+    attributes[:header] = attributes[:staged_header] if attributes.include?(:staged_header)
+    attributes[:footer] = attributes[:staged_footer] if attributes.include?(:staged_footer)
+    attributes[:affiliate_template_id] = attributes[:staged_affiliate_template_id] if attributes.include?(:staged_affiliate_template_id)
+    attributes[:search_results_page_title] = attributes[:staged_search_results_page_title] if attributes.include?(:staged_search_results_page_title)
+    attributes[:has_staged_content] = false
+    self.update_attributes(attributes)
+  end
+
+  def build_search_results_page_title(query)
+    build_page_title self.search_results_page_title, query
+  end
+
+  def build_staged_search_results_page_title(query)
+    build_page_title self.staged_search_results_page_title, query
+  end
+
+  def build_page_title(page_title, query)
+    query_string = query.blank? ? '' : query
+    page_title = page_title.gsub(/\{query\}/i, query_string)
+    page_title.gsub(/\{sitename\}/i, self.display_name)
+  end
+
+  def staging_attributes
+    {
+      :staged_domains => self.staged_domains,
+      :staged_header => self.staged_header,
+      :staged_footer => self.staged_footer,
+      :staged_affiliate_template_id => self.staged_affiliate_template_id,
+      :staged_search_results_page_title => self.staged_search_results_page_title
+    }
+  end
+
   class << self
     def human_attribute_name(attribute_key_name, options = {})
       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
@@ -83,5 +132,13 @@ class Affiliate < ActiveRecord::Base
       self.name = nil if !self.name.blank? and Affiliate.find_by_name(self.name)
       self.name = Digest::MD5.hexdigest("#{self.owner_id}:#{Time.now.to_s}")[0..8] if self.name.blank?
     end
+  end
+
+  def set_default_search_results_page_title
+    self.search_results_page_title = DEFAULT_SEARCH_RESULTS_PAGE_TITLE if self.search_results_page_title.blank?
+  end
+
+  def set_default_staged_search_results_page_title
+    self.staged_search_results_page_title = DEFAULT_SEARCH_RESULTS_PAGE_TITLE if self.staged_search_results_page_title.blank?
   end
 end

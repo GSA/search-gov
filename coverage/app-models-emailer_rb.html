@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-emailer_rb.html">app/models/emailer.rb</a></td>
-            <td class='right_align'><tt>42</tt></td>
-            <td class='right_align'><tt>35</tt></td>
+            <td class='right_align'><tt>48</tt></td>
+            <td class='right_align'><tt>40</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -195,7 +195,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>     @recipients = I18n.t(:contact_recipients)</pre></td>
+            <td><pre><a name="line24">24</a>     @recipients = I18n.t(:mobile_feedback_contact_recipients)</pre></td>
           </tr>
         
           
@@ -207,7 +207,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>     @subject    = &quot;USA.gov Mobile Inquiry&quot;</pre></td>
+            <td><pre><a name="line26">26</a>     @subject    = I18n.t(:mobile_feedback_subject)</pre></td>
           </tr>
         
           
@@ -249,67 +249,103 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>   private</pre></td>
+            <td><pre><a name="line33">33</a>   def new_affiliate_site(affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>   def setup_email(recipients)</pre></td>
+            <td><pre><a name="line34">34</a>     setup_email(affiliate.owner.email)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>     @recipients = recipients</pre></td>
+            <td><pre><a name="line35">35</a>     @subject += &quot;Your new Affiliate site&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>     @from       = APP_EMAIL_ADDRESS</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>     @subject    = &quot;[USASearch] &quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>     @sent_on    = Time.now</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>     @headers['Content-Type'] = &quot;text/plain; charset=utf-8; format=flowed&quot;</pre></td>
+            <td><pre><a name="line36">36</a>     body(:affiliate =&gt; affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>   end</pre></td>
+            <td><pre><a name="line37">37</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a> </pre></td>
+            <td><pre><a name="line38">38</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>   def setup_email(recipients)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>     @recipients = recipients</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>     @from       = APP_EMAIL_ADDRESS</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>     @subject    = &quot;[USASearch] &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>     @sent_on    = Time.now</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>     @headers['Content-Type'] = &quot;text/plain; charset=utf-8; format=flowed&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a> end</pre></td>
+            <td><pre><a name="line46">46</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line47">47</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line48">48</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Feb 04 14:57:21 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Feb 14 21:23:17 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

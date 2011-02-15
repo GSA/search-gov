@@ -1,0 +1,25 @@
+%p Copy and paste the HTML code below where you want the search box to appear on your site.
+= find_and_preserve do
+  #embed_code_english.span-15
+    = render 'embed_code_text_area'
+.clear
+%p
+  Congratulations! You finished registering to become an Affiliate and setting up your site.
+  Visit the Affiliate Center to further customize your site, including
+%ul
+  %li
+    = link_to "Adding additional sites.", new_affiliate_path
+  %li
+    = link_to "Customizing the look and feel.", edit_look_and_feel_affiliate_path(@affiliate)
+  %li
+    = link_to "Setting up the type-ahead search.", affiliate_type_ahead_search_index_path(@affiliate)
+
+%h2
+  View search results page
+= render "/shared/affiliate_search_form"
+
+%br
+%br
+.prepend-1.span-24.center-outer
+  .center-inner
+    = link_to(image_tag('go_to_affiliate_center.gif', :alt=>"Go to Affiliate Center"), home_affiliates_path, :title => "Go to Affiliate Center")

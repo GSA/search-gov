@@ -2,22 +2,27 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 
 describe WidgetsController do
+  before do
+    @active_top_searches = []
+    TopSearch.should_receive(:find_active_entries).and_return(@active_top_searches)
+  end
 
   describe "#top_searches" do
-    before do
-      TopSearch.delete_all
-      1.upto(5) do |index|
-        TopSearch.create!(:position => index, :query => "Top Search #{index}")
-      end
-    end
-  
     it "should assign the top searches to the top 5 positions" do
       get :top_searches
-      assigns[:top_searches].is_a?(Array).should be_true
-      assigns[:top_searches].size.should == 5
-      0.upto(4) do |index|
-        assigns[:top_searches][index].query.should == "Top Search #{index + 1}"
-      end
+      assigns[:active_top_searches].should == @active_top_searches
+    end
+  end
+
+  describe "#trending_searches" do
+    it "should assign the top searches to the top 5 positions" do
+      get :trending_searches
+      assigns[:active_top_searches].should == @active_top_searches
+    end
+
+    it "should render trending_searches partial" do
+      get :trending_searches
+      response.should render_template('shared/_trending_searches')
     end
   end
 end

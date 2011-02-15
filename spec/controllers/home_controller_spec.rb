@@ -19,6 +19,13 @@ describe HomeController do
     end
   end
 
+  it "should assign a top_searches object" do
+    top_searches = []
+    TopSearch.should_receive(:find_active_entries).and_return(top_searches)
+    get :index
+    assigns[:active_top_searches].should == top_searches
+  end
+
   context "when valid locale is specified" do
     it "should assign a locale" do
       get :index, :locale=> "es"

@@ -11,15 +11,21 @@
     = stylesheet_link_tag 'compiled/main.css', :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     = stylesheet_link_tag 'jquery-ui/jquery-ui-1.8.5.custom.css'
+    = stylesheet_link_tag 'compiled/sayt.css'
+    - if @affiliate and @affiliate.is_affiliate_suggestions_enabled
+      = javascript_tag "var usagov_sayt_url = \"#{root_url}sayt?aid=#{@affiliate.id}&\";"
+    - else
+      = javascript_tag "var usagov_sayt_url = \"#{root_url}sayt?\";"
     /[if IE]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = javascript_include_tag "jquery/jquery-1.4.2.min.js"
     = javascript_include_tag "jquery/jquery-ui-1.8.5.custom.min.js"
+    = javascript_include_tag "jquery/jquery.bgiframe.min.js"
     :javascript
       jQuery.noConflict();
     = javascript_include_tag :defaults
-    = javascript_include_tag "application.js"
     = javascript_include_tag "affiliates.js"
+    = javascript_include_tag "sayt-ui.js"
     = calendar_date_select_includes
   %body
     = render "/shared/program_header"
@@ -30,11 +36,11 @@
           - display_for(:affiliate) do
             - unless current_user.affiliates.empty?
               .title-row
-                Selected Affiliate
+                Selected Site
               .content-box
-                = select("affiliate", "id", current_user.affiliates.all.collect {|p| [ p.display_name, p.id ] }, {:prompt => 'Select affiliate'}, :class =>"affiliate-dropdown")
+                = select("affiliate", "id", current_user.affiliates.all.collect {|p| [ p.display_name, p.id ] }, {:prompt => 'Select site'}, :class =>"affiliate-dropdown")
             - if current_user.affiliates.empty?
-              %p= link_to "Add New Affiliate", new_affiliate_path
+              %p= link_to "Add New Site", new_affiliate_path
             - else
               - if @affiliate && @affiliate.id.present?
                 .header-box
@@ -42,31 +48,45 @@
                 %table.admin-table.nav-links
                   %tr
                     %td
-                      %strong Settings
+                      %strong BASIC SETTINGS
                       %ul{:style => 'list-style-type: none; margin: 0'}
                         %li
-                          = link_to "Boosted Content", new_affiliate_boosted_content_path(@affiliate)
+                          = link_to "Site information", edit_site_information_affiliate_path(@affiliate)
                         %li
-                          = link_to "Get Code", embed_code_affiliate_path(@affiliate)
+                          = link_to "Look and feel", edit_look_and_feel_affiliate_path(@affiliate)
+                        %li
+                          = link_to "Preview", preview_affiliate_path(@affiliate)
+                        %li
+                          = link_to "Get code", embed_code_affiliate_path(@affiliate)
+                  %tr
+                    %td
+                      %strong FEATURES
+                      %ul{:style => 'list-style-type: none; margin: 0'}
                         %li
                           = link_to "Add to Bing", affiliate_superfresh_urls_path(@affiliate)
                           = image_tag 'new.png'
                         %li
-                          = link_to "Type-ahead Search", affiliate_type_ahead_search_index_path(@affiliate)
+                          = link_to "Boosted content", new_affiliate_boosted_content_path(@affiliate)
                         %li
-                          = link_to "Related Topics", affiliate_related_topics_path(@affiliate)
+                          = link_to "Related topics", affiliate_related_topics_path(@affiliate)
+                        %li
+                          = link_to "Type-ahead search", affiliate_type_ahead_search_index_path(@affiliate)
                   %tr
                     %td
-                      %strong Analytics
+                      %strong SITE ANALYTICS
                       %br
-                      = link_to "Query Logs", affiliate_analytics_path(@affiliate)
+                      = link_to "Query logs", affiliate_analytics_path(@affiliate)
                       %br
-                      = link_to "Monthly Reports", monthly_reports_affiliate_analytics_path(@affiliate)
+                      = link_to "Monthly reports", monthly_reports_affiliate_analytics_path(@affiliate)
                   %tr
                     %td
-                      = link_to "Add Affiliate", new_affiliate_path
+                      %strong ACCOUNT SETTINGS
                       %br
-                      = link_to "Manage Users", affiliate_users_path(@affiliate)
+                      = link_to "Add new site", new_affiliate_path
+                      %br
+                      = link_to "My account", account_path
+                      %br
+                      = link_to "Manage users", affiliate_users_path(@affiliate)
         
         .admin-content
           .span-18.append-3= show_flash_messages

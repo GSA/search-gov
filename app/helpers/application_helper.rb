@@ -12,7 +12,14 @@ module ApplicationHelper
   end
 
   def build_page_title(page_title)
-    (page_title.blank? ? "" : "#{page_title} - ") + (forms_search? ? (t :forms_site_title) : (t :site_title))
+    if forms_search?
+      site_title = (t :forms_site_title)
+    elsif recalls_search?
+      site_title = (t :recalls_site_title)
+    else
+      site_title = (t :site_title)
+    end
+    (page_title.blank? ? "" : "#{page_title} - ") + site_title
   end
 
   def show_flash_messages
@@ -36,8 +43,7 @@ module ApplicationHelper
     :en => [
       ["USA.gov", "http://usa.gov"],
       ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
-      ["Email USA.gov", "http://www.usa.gov/questions"]
-    ],
+      ["Email USA.gov", "http://www.usa.gov/questions"] ],
     :es => [
       ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
       ["USA.gov (en inglés)", "http://usa.gov"],
@@ -57,8 +63,7 @@ module ApplicationHelper
       ["Suggest-A-Link", "http://www.usa.gov/feedback/SuggestLinkForm.jsp"],
       ["Link to Us", "http://www.usa.gov/About/Usagov_Logos.shtml"],
       ["Accessibility", "/pages/accessibility"],
-      ["API", "/api"]
-    ],
+      ["API", "/api"] ],
     :es => [
       ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
       ["Privacidad", "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"],
@@ -170,6 +175,19 @@ module ApplicationHelper
     last_word_character_index = truncated.length - (truncated.reverse.index(/\w/, last_space_index) || 0)
     truncated = truncated[0...last_word_character_index] unless last_space_index.nil?
     "#{truncated}..."
+  end
+
+  def highlight_like_solr(text, highlights)
+    highlights.each do |highlight|
+      highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).each do |term|
+        text.gsub!(/\b(#{term})\b/, '<strong>\1</strong>')
+      end
+    end
+    text
+  end
+
+  def render_trending_searches
+    render(:partial => 'shared/trending_searches') if params[:locale].blank? || params[:locale] == 'en'
   end
 
   private

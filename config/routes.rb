@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :except => [:new]
   map.resource :user_session
   map.resources :password_resets
-  map.resources :affiliates, :controller => 'affiliates/home', :member => { :push_content_for => :post, :embed_code => :get }, :collection => { :home => :get, :how_it_works => :get, :demo => :get } do |affiliate|
+  map.resources :affiliates, :controller => 'affiliates/home', :member => { :push_content_for => :post, :embed_code => :get, :edit_site_information => :get, :update_site_information => :put, :edit_look_and_feel => :get, :update_look_and_feel => :put, :preview => :get }, :collection => { :home => :get, :how_it_works => :get, :demo => :get, :update_contact_information => :put }, :except => [:edit, :update] do |affiliate|
     affiliate.resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy], :member => {:make_owner => :post}
     affiliate.resources :boosted_contents, :controller => 'affiliates/boosted_contents', :collection => {:bulk => :post, :destroy_all => :delete}
     affiliate.resources :superfresh_urls, :controller => 'affiliates/superfresh', :only => [:index, :create, :destroy], :collection => { :upload => :post }
@@ -14,7 +14,8 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search', :controller => "searches"
   map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get
   map.image_search "/search/images", :controller => "image_searches", :action => "index"
-  map.recalls_search "/search/recalls", :controller => "recalls", :action => "index"
+  map.resources :recalls, :only => :index
+  map.recalls_search "/search/recalls", :controller => "recalls", :action => "search"
   map.resources :forms, :only => :index
   map.forms_search "/search/forms", :controller => "searches", :action => 'forms'
   map.resources :image_searches
@@ -58,6 +59,7 @@ ActionController::Routing::Routes.draw do |map|
                     :requirements => { :action => /auto_complete_for_\S+/ },
                     :conditions => { :method => :get }
   map.top_searches_widget '/widgets/top_searches', :controller => "widgets", :action => "top_searches"
+  map.trending_searches_widget '/widgets/trending_searches', :controller => "widgets", :action => "trending_searches"
   map.resources :pages,
                 :controller => 'pages',
                 :only       => [:show]

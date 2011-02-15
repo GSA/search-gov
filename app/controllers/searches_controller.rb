@@ -26,8 +26,9 @@ class SearchesController < ApplicationController
       end
     end
   end
-  
+
   def forms
+    redirect_to forms_path and return if @search_options[:query].blank?
     @search = FormSearch.new(@search_options)
     if params[:source] == "gov_forms"
       @gov_forms = GovForm.search_for(@search_options[:query], [@search_options[:page], 0].max + 1, @search_options[:results_per_page] || 10)
@@ -72,7 +73,7 @@ class SearchesController < ApplicationController
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
       @scope_id = @search_options[:scope_id]
-      @page_title = "#{t :search_results_for} #{@affiliate.display_name}: #{@search.query}"
+      @page_title = params[:staged] ? @affiliate.build_staged_search_results_page_title(params[:query]) : @affiliate.build_search_results_page_title(params[:query])
     end
   end
 

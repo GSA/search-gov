@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates-sayt_controller_rb.html">app/controllers/affiliates/sayt_controller.rb</a></td>
-            <td class='right_align'><tt>53</tt></td>
-            <td class='right_align'><tt>48</tt></td>
+            <td class='right_align'><tt>60</tt></td>
+            <td class='right_align'><tt>55</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -87,61 +87,61 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     @sayt_suggestion = SaytSuggestion.new</pre></td>
+            <td><pre><a name="line6">6</a>     @title = &quot;Type-ahead Search - &quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     @sayt_suggestions = SaytSuggestion.paginate_by_affiliate_id(@affiliate.id, :page =&gt; params[:page] || 1, :order =&gt; 'phrase ASC')</pre></td>
+            <td><pre><a name="line7">7</a>     @sayt_suggestion = SaytSuggestion.new</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     @filter = params[:filter]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>     conditions = @filter.present? ? [&quot;phrase LIKE ? AND ISNULL(deleted_at)&quot;, &quot;#{@filter}%&quot;] : [&quot;ISNULL(deleted_at)&quot;]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>     @sayt_suggestions = SaytSuggestion.paginate_by_affiliate_id(@affiliate.id, :conditions =&gt; conditions, :page =&gt; params[:page] || 1, :order =&gt; 'phrase ASC')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>   end</pre></td>
+            <td><pre><a name="line11">11</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>   </pre></td>
+            <td><pre><a name="line12">12</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   def create</pre></td>
+            <td><pre><a name="line13">13</a>   def create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     @sayt_suggestion = SaytSuggestion.new(params[:sayt_suggestion])</pre></td>
+            <td><pre><a name="line14">14</a>     @sayt_suggestion = SaytSuggestion.find_or_initialize_by_affiliate_id_and_phrase(@affiliate.id, params[:sayt_suggestion][:phrase])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     @sayt_suggestion.affiliate = @affiliate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>     if @sayt_suggestion.save</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>       flash[:success] = &quot;Successfully added: #{@sayt_suggestion.phrase}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line15">15</a>     else</pre></td>
+            <td><pre><a name="line15">15</a>     if @sayt_suggestion.id.present? and @sayt_suggestion.deleted_at.nil?</pre></td>
           </tr>
         
           
@@ -153,229 +153,271 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>     end</pre></td>
+            <td><pre><a name="line17">17</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)</pre></td>
+            <td><pre><a name="line18">18</a>       @sayt_suggestion.is_protected = true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>       @sayt_suggestion.popularity = SaytSuggestion::MAX_POPULARITY</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       @sayt_suggestion.affiliate = @affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       @sayt_suggestion.deleted_at = nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       @sayt_suggestion.save</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>       flash[:success] = &quot;Successfully added: #{@sayt_suggestion.phrase}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>   end</pre></td>
+            <td><pre><a name="line24">24</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>   def destroy</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>     @sayt_suggestion = SaytSuggestion.find(params[:id])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>     if @sayt_suggestion</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>       @sayt_suggestion.destroy</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>       flash[:success] = &quot;Deleted phrase: #{@sayt_suggestion.phrase}&quot;</pre></td>
+            <td><pre><a name="line26">26</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>     end</pre></td>
+            <td><pre><a name="line27">27</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)</pre></td>
+            <td><pre><a name="line28">28</a>   def destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>     @sayt_suggestion = SaytSuggestion.find(params[:id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>     if @sayt_suggestion</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>       @sayt_suggestion.update_attributes(:deleted_at =&gt; Time.now, :is_protected =&gt; true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>       flash[:success] = &quot;Deleted phrase: #{@sayt_suggestion.phrase}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>   end</pre></td>
+            <td><pre><a name="line33">33</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>   def upload</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>     result = SaytSuggestion.process_sayt_suggestion_txt_upload(params[:txtfile], @affiliate)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>     if result</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>       flashy = &quot;#{result[:created]} Type-ahead Search suggestions uploaded successfully.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>       flashy += &quot; #{result[:ignored]} Type-ahead Search suggestions ignored.&quot; if result[:ignored] &gt; 0</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>       flash[:success] = flashy</pre></td>
+            <td><pre><a name="line35">35</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>     else</pre></td>
+            <td><pre><a name="line36">36</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>       flash[:error] = &quot;Your file could not be processed. Please check the format and try again.&quot;</pre></td>
+            <td><pre><a name="line37">37</a>   def upload</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>     result = SaytSuggestion.process_sayt_suggestion_txt_upload(params[:txtfile], @affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>     if result</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>       flashy = &quot;#{result[:created]} Type-ahead Search suggestions uploaded successfully.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>       flashy += &quot; #{result[:ignored]} Type-ahead Search suggestions ignored.&quot; if result[:ignored] &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>       flash[:success] = flashy</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>     end</pre></td>
+            <td><pre><a name="line43">43</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)</pre></td>
+            <td><pre><a name="line44">44</a>       flash[:error] = &quot;Your file could not be processed. Please check the format and try again.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>   end</pre></td>
+            <td><pre><a name="line45">45</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line46">46</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>   def preferences</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>     if params[:sayt_preferences] == 'enable_affiliate'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>       @affiliate.update_attributes(:is_sayt_enabled =&gt; true, :is_affiliate_suggestions_enabled =&gt; true)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>     elsif params[:sayt_preferences] == 'enable_global'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>       @affiliate.update_attributes(:is_sayt_enabled =&gt; true, :is_affiliate_suggestions_enabled =&gt; false)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>     elsif params[:sayt_preferences] == 'disable'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>       @affiliate.update_attributes(:is_sayt_enabled =&gt; false, :is_affiliate_suggestions_enabled =&gt; false)</pre></td>
+            <td><pre><a name="line47">47</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a>     end</pre></td>
+            <td><pre><a name="line48">48</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>     flash[:success] = 'Preferences updated.'</pre></td>
+            <td><pre><a name="line49">49</a>   def preferences</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)    </pre></td>
+            <td><pre><a name="line50">50</a>     if params[:sayt_preferences] == 'enable_affiliate'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>       @affiliate.update_attributes(:is_sayt_enabled =&gt; true, :is_affiliate_suggestions_enabled =&gt; true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>     elsif params[:sayt_preferences] == 'enable_global'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>       @affiliate.update_attributes(:is_sayt_enabled =&gt; true, :is_affiliate_suggestions_enabled =&gt; false)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line54">54</a>     elsif params[:sayt_preferences] == 'disable'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>       @affiliate.update_attributes(:is_sayt_enabled =&gt; false, :is_affiliate_suggestions_enabled =&gt; false)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>   end</pre></td>
+            <td><pre><a name="line56">56</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>     flash[:success] = 'Preferences updated.'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>     redirect_to affiliate_type_ahead_search_index_path(@affiliate)    </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line53">53</a> end</pre></td>
+            <td><pre><a name="line59">59</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line60">60</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Feb 04 14:57:20 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Feb 14 21:23:16 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

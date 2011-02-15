@@ -2,3 +2,4 @@
   %a{:name => "content"}
   = link_to(image_tag("USAsearch_large_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale))
   = render "shared/search", :path => search_path
+  = render_trending_searches

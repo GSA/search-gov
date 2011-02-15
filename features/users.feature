@@ -33,7 +33,6 @@ Feature: Users
     Then I should be on the affiliate admin page
     And I should see "Thank you for registering for USA.gov Search Services"
     And I should see "Affiliate Center"
-    And I should see "Add New Affiliate"
 
   Scenario: Registering as a new affiliate user who is not affiliated with a government agency
     Given I am on the login page

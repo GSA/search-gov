@@ -1,8 +1,0 @@
-= affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Edit'] )
-
-%h1 Edit Affiliate
-.span-20
-  - form_for @affiliate, :html => {:class=>"bordered"} do |f|
-    = f.error_messages(:header_message => nil, :class => "error")
-    = render :partial => "form", :object => f
-    = f.submit "Save for preview"

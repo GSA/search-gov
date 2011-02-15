@@ -67,9 +67,11 @@
     :margin-left 200px
     :margin-bottom 1em
     :font-size 1.2em
+    .disabled
+      :visibility hidden
 
 
-#popular_forms
+#popular
   :margin 20px 0
   :overflow hidden
   :clear both
@@ -77,7 +79,7 @@
   :-webkit-border-radius 8px 8px
   :-moz-border-radius 8px / 8px
   :border-radius 8px / 8px
-  h2
+  > h2
     :color #755224
     :font-size 1.3em
     :font-weight bold
@@ -112,3 +114,13 @@
     &#top-forms-column-3
       :background none
       :padding-right none
+  #results
+    padding: 0.75em
+    width: 100%
+    div.searchresult
+      width: 100%
+  .recalls
+    .recall
+      .details
+        width: 80%
+        float: left

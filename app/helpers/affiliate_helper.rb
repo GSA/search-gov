@@ -19,4 +19,18 @@ module AffiliateHelper
     options << "</optgroup>"
     options
   end
+
+  def site_wizard_header(current_step)
+    steps = [:edit_contact_information, :new_site_information, :get_the_code]
+    step_contents = ["Step 1. Enter contact information", "Step 2. Set up site", "Step 3. Get the code"]
+    header = ''
+    steps.each_with_index do |step, index|
+      if step == current_step
+        header << content_tag('span', step_contents[index], :class => "step current_step")
+      else
+        header << content_tag('span', step_contents[index], :class => "step")
+      end
+    end
+    header
+  end
 end

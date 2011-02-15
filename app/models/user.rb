@@ -3,6 +3,12 @@ class User < ActiveRecord::Base
   validates_presence_of :contact_name
   validates_presence_of :api_key
   validates_uniqueness_of :api_key
+  validates_presence_of :phone, :if => :strict_mode
+  validates_presence_of :organization_name, :if => :strict_mode
+  validates_presence_of :address, :if => :strict_mode
+  validates_presence_of :city, :if => :strict_mode
+  validates_presence_of :state, :if => :strict_mode
+  validates_presence_of :zip, :if => :strict_mode
   validate_on_create :valid_government_affiliation?
   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
   has_and_belongs_to_many :affiliates
@@ -11,6 +17,8 @@ class User < ActiveRecord::Base
   after_create :ping_admin
   after_create :welcome_user
   attr_accessor :government_affiliation
+  attr_accessor :strict_mode
+  attr_protected :strict_mode
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
