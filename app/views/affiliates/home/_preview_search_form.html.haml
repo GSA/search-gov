@@ -1,0 +1,5 @@
+= hidden_field_tag :locale, I18n.locale
+= hidden_field_tag :m, params[:m]
+= hidden_field_tag :affiliate, @affiliate.name
+= hidden_field_tag(:staged, 1) if staged
+= text_field_tag :query, nil, { :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete" }

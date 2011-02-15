@@ -7,5 +7,9 @@ When /^I fill in the following within "([^"]*)":$/ do |selector, fields|
 end
 
 Then /^(?:|I )should see "([^"]*)" button$/ do |value|
-  response.body.should have_tag("input[value=#{value}]")
+  response.body.should have_tag("input[value=#{value}][type=submit]")
+end
+
+Then /^(?:|I )should not see "([^"]*)" button$/ do |value|
+  response.body.should_not have_tag("input[value=#{value}][type=submit]")
 end

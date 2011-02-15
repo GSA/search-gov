@@ -1,7 +1,7 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :except=> [:index, :edit_site_information, :edit_look_and_feel, :how_it_works, :demo]
-  before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel]
-  before_filter :setup_affiliate, :only=> [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :push_content_for, :destroy]
+  before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel, :preview]
+  before_filter :setup_affiliate, :only=> [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :preview, :push_content_for, :destroy]
 
   AFFILIATE_ADS = [
     {:display_name => "BROWARD.org",
@@ -141,6 +141,10 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def show
     @title = "Site: " + @affiliate.display_name + " - "
+  end
+
+  def preview
+    @title = "Preview - "
   end
 
   def destroy

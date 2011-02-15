@@ -518,4 +518,51 @@ describe Affiliates::HomeController do
       end
     end
    end
+
+  describe "do GET on #preview" do
+    it "should require affiliate login for preview" do
+      get :preview, :id => affiliates(:power_affiliate).id
+      response.should redirect_to(login_path)
+    end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+      end
+
+      it "should require affiliate login for preview" do
+        get :preview, :id => affiliates(:power_affiliate).id
+        response.should redirect_to(home_page_path)
+      end
+    end
+
+    context "when logged in as an affiliate manager who doesn't own the affiliate being previewed" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+      end
+
+      it "should redirect to home page" do
+        get :preview, :id => affiliates(:another_affiliate).id
+        response.should redirect_to(home_page_path)
+      end
+    end
+
+    context "when logged in as the affiliate manager" do
+      integrate_views
+      before do
+        UserSession.create(users(:affiliate_manager))
+      end
+
+      it "should assign @title" do
+        get :preview, :id => affiliates(:basic_affiliate).id
+        assigns[:title].should_not be_blank
+      end
+
+      it "should render the preview page" do
+        get :preview, :id => affiliates(:basic_affiliate).id
+        response.should render_template("preview")
+      end
+    end
+  end
+
 end

@@ -427,6 +427,36 @@ Feature: Affiliate clients
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see "Search results page title can't be blank"
 
+  Scenario: Visiting the preview page
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Preview"
+    Then I should see "Preview" within "title"
+    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Preview"
+    And I should see "Preview" within "h1"
+    And I should see "Search on Live Site" button
+    And I should not see "Preview Search on Staged Site" button
+
+    When I follow "Look and feel"
+    And I fill in the following:
+      | Search results page title                                   | Staged - {SiteName} : {Query} |
+    And I press "Save for Preview"
+    And I follow "Preview"
+    And I fill in the following within "#staged_site_search_form":
+      | query | White House |
+    And I press "Preview Search on Staged Site"
+    Then I should see "Staged - aff site : White House" within "title"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Preview"
+    And I fill in the following within "#live_site_search_form":
+      | query | White House |
+    And I press "Search on Live Site"
+    Then I should see "White House - aff site Search Results"
+
   Scenario: Related Topics on English SERPs for given affiliate search
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
