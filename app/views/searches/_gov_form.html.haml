@@ -1,7 +1,7 @@
 .searchresult.clearfix
   %h2
-    = link_to "#{gov_form.name} (#{gov_form.form_number})", h(gov_form.url)
+    = link_to highlight_like_solr("#{gov_form.instance.name} (#{gov_form.instance.form_number})", gov_form.highlights), h(gov_form.instance.url)
   %h3
-    = gov_form.description
+    = highlight_like_solr(gov_form.instance.description, gov_form.highlights)
   %h3
-    = link_to h(gov_form.url), h(gov_form.url)
+    = link_to h(gov_form.instance.url)

@@ -11,7 +11,7 @@
     - if @gov_forms.total > 0
       - startrecord = @search.page * @search.results_per_page + 1
       = results_summary(startrecord, [startrecord + @search.results_per_page - 1, @gov_forms.total].min, @gov_forms.total, h(@search.query), false)
-      = render :partial => "gov_form", :collection => @gov_forms.results
+      = render :partial => "gov_form", :collection => @gov_forms.hits
       = will_paginate(@gov_forms.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
     - else
       = no_results_for params[:query]
