@@ -831,6 +831,8 @@ Feature: Affiliate clients
     Then I should be on the affiliate related topics page
     And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Related Topics"
     And I should not see "aff.gov"
+    When I follow "Preview Button"
+    Then I should be on the preview affiliate page
     
   Scenario: Setting Related Topics Preferences for an affiliate
     Given the following Affiliates exist:
