@@ -44,7 +44,7 @@ class RecallsController < ApplicationController
       cache_key = [@valid_params.to_s, query, page].join(':')
       success_total_results_json = @@redis.get(cache_key) rescue nil
       if success_total_results_json.nil?
-        search = Recall.search_for(query, @valid_params, page)
+        search = Recall.search_for(query, @valid_params, page) || Struct.new(:total, :results).new(0, [])
         success_total_results_json = {:success => {:total => search.total, :results => search.results}}.to_json
         @@redis.setex(cache_key, RECALLS_CACHE_DURATION_IN_SECONDS, success_total_results_json) rescue nil
       end

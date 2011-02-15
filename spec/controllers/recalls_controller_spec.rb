@@ -203,6 +203,19 @@ describe RecallsController do
           end
         end
       end
+
+      context "when no results" do
+        it "should return empty results" do
+          Recall.stub!(:search_for).and_return(nil)
+
+          get :search, :format => "json", :query => "no results", :page => 1
+
+          response.should be_success
+          parsed_response = JSON.parse(response.body)
+          parsed_response["success"]["total"].should == 0
+          parsed_response["success"]["results"].should == []
+        end
+      end
       
       context "when dates are submitted in an invalid format" do
         before do
