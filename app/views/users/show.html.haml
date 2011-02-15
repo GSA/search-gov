@@ -1,13 +1,19 @@
 = breadcrumbs("My Account")
 %h1
   My Account
-.span-17
+.span-14.append-1
   %table.account-table
     %tr
       %th
         Contact Information
       %th{:style=>"text-align:right; font-size:smaller"}
-        =link_to "- edit your profile", edit_account_path
+        = link_to "+ edit your profile", edit_account_path
+        - if @user.affiliates.count == 1
+          %br
+          = link_to '+ add an additional contact', affiliate_users_path(@user.affiliates.first)
+        - elsif @user.affiliates.count > 1
+          %br
+          = link_to '+ add an additional contact', '#add_additional_contact', :id => "add_additional_contact", :class => "sliding_trigger"
     %tr
       %td{:class=>"label"}
         Name:
@@ -54,14 +60,29 @@
           Zip:
         %td
           &= @user.zip
-.clear
 
-.span-17
   %h2
     API Key
   Control the look and feel of your search results pages by using the application program interface (API) for USASearch affiliates below.
   %br
   %br
-.span-17.content-box
-  Your API key is:
-  %b= @user.api_key
+  .content-box
+    Your API key is:
+    %b= @user.api_key
+  
+.span-6.last
+  #add_additional_contact_content.sliding_content
+    .content-box.cross-promotion
+      %p
+        You have multiple sites associated with your account. To add an additional contact, follow these steps:
+      %ol
+        %li
+          Go to the #{ link_to 'Affiliate Center', home_affiliates_path } homepage.
+        %li
+          Select a site
+        %li
+          Click on the 'Manage Users' link in the left-hand navigation.
+        %li
+          Add additional contacts for the selected site.
+        %li
+          Repeat, as needed, for each site.

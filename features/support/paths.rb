@@ -80,6 +80,8 @@ module NavigationHelpers
       home_affiliates_path
     when /the "([^\"]*)" affiliate page$/
       affiliate_path(Affiliate.find_by_display_name($1))
+    when /the "([^\"]*)" affiliate users page$/
+      affiliate_users_path(Affiliate.find_by_display_name($1))
     when /the affiliate sayt page/
       affiliate_type_ahead_search_index_path(:locale => nil, :m => nil)
     when /the recalls landing page/

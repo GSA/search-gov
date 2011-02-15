@@ -9,44 +9,35 @@ class Affiliates::UsersController < Affiliates::AffiliatesController
 
   def create
     @email = params[:email]
+    @contact_name = params[:name]
     @user = User.find_by_email(params[:email])
     if @user
-      if !@affiliate.users.include?(@user)
-        @affiliate.users << @user
-        @email = nil
-        flash.now[:success] = "Successfully added #{@user.contact_name} (#{@user.email})"
-      elsif @affiliate.is_owner?(@user)
-        flash.now[:error] = "That user is the current owner of this affiliate; you can not add them again."
-      else
+      if @affiliate.users.include?(@user)
         flash.now[:error] = "That user is already associated with this affiliate; you can not add them again."
+      else
+        @affiliate.users << @user
+        @email, @contact_name = nil, nil
+        flash.now[:success] = "Successfully added #{@user.contact_name} (#{@user.email})"
+        Emailer.deliver_new_affiliate_user(@affiliate, @user, current_user)
       end
     else
-      flash.now[:error] = "Could not find user with email: #{@email}; please ask them to register as an affiliate with their email address."
+      random_password = Digest::MD5.hexdigest("#{@email}:#{Time.now.to_s}")[0..8]
+      @user = User.create(:email => @email, :contact_name => @contact_name, :government_affiliation => true, :password => random_password, :password_confirmation => random_password)
+      @affiliate.users << @user
+      flash.now[:success] = "That user does not exist in the system; we've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
+      Emailer.deliver_welcome_to_new_user_added_by_affiliate(@affiliate, @user, current_user)
     end
-    render :action => :index
+    redirect_to affiliate_users_path(@affiliate)
   end
 
   def destroy
     @user = User.find(params[:id])
-    if @affiliate.is_owner?(@user)
-      flash.now[:error] = "You can't remove the owner of the affiliate from the list of users."
+    @affiliate.users.delete(@user)
+    flash.now[:success] = "Removed #{@user.contact_name} from affiliate."
+    if @user == current_user
+      redirect_to home_affiliates_path
     else
-      @affiliate.users.delete(@user)
-      flash.now[:success] = "Removed #{@user.contact_name} from affiliate."
+      redirect_to affiliate_users_path(@affiliate)
     end
-    render :action => :index
-  end
-
-  def make_owner
-    if @affiliate.is_owner?(current_user)
-      if user = @affiliate.users.find_by_id(params[:id])
-        @affiliate.update_attribute(:owner, user)
-      else
-        flash[:error] = "That user is not an affiliate user. Only affiliate users can be become owners."
-      end
-    else
-      flash[:error] = "Only the affiliate owner can reassign ownership."
-    end
-    redirect_to affiliate_users_path(@affiliate)
   end
 end

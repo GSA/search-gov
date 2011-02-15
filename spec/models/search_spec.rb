@@ -155,7 +155,6 @@ describe Search do
       context "when the domains are separated by only '\\n'" do
         before do
           @affiliate.domains = %w(   foo.com bar.com   ).join("\n")
-          @affiliate.save
         end
 
         it "should split the domains the same way" do

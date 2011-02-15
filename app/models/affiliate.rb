@@ -6,7 +6,6 @@ class Affiliate < ActiveRecord::Base
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within=> (3..33)
   validates_format_of :name, :with=> /^[a-z0-9._-]+$/
-  belongs_to :owner, :class_name => 'User'
   has_and_belongs_to_many :users
   belongs_to :affiliate_template
   belongs_to :staged_affiliate_template, :class_name => 'AffiliateTemplate'
@@ -17,7 +16,6 @@ class Affiliate < ActiveRecord::Base
   before_validation_on_create :set_default_name
   before_save :set_default_affiliate_template
   before_validation_on_create :set_default_search_results_page_title, :set_default_staged_search_results_page_title
-  after_create :add_owner_as_user
   
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}
@@ -33,10 +31,6 @@ class Affiliate < ActiveRecord::Base
     new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
   end
 
-  def is_owner?(user)
-    self.owner == user ? true : false
-  end
-  
   def is_affiliate_sayt_enabled?
     self.is_sayt_enabled && self.is_affiliate_suggestions_enabled
   end
@@ -116,10 +110,6 @@ class Affiliate < ActiveRecord::Base
     boosted_contents.each { |bs| bs.remove_from_index }
   end
   
-  def add_owner_as_user
-    self.users << self.owner if self.owner
-  end
-
   def set_default_affiliate_template
     self.staged_affiliate_template_id = AffiliateTemplate.default_id if staged_affiliate_template_id.blank?
     self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?
@@ -130,7 +120,7 @@ class Affiliate < ActiveRecord::Base
       self.name = self.display_name.downcase.gsub(/[^a-z0-9._-]/, '')[0,33] unless self.display_name.blank?
       self.name = nil if !self.name.blank? and self.name.length < 3
       self.name = nil if !self.name.blank? and Affiliate.find_by_name(self.name)
-      self.name = Digest::MD5.hexdigest("#{self.owner_id}:#{Time.now.to_s}")[0..8] if self.name.blank?
+      self.name = Digest::MD5.hexdigest("#{Time.now.to_s}")[0..8] if self.name.blank?
     end
   end
 

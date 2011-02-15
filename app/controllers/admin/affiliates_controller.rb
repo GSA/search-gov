@@ -1,11 +1,10 @@
 class Admin::AffiliatesController < Admin::AdminController
 
   active_scaffold :affiliate do |config|
-    config.columns = [:display_name,:name, :owner, :domains, :header, :footer, :affiliate_template, :boosted_contents, :is_sayt_enabled, :is_affiliate_suggestions_enabled, :created_at, :updated_at]
+    config.columns = [:display_name,:name, :domains, :header, :footer, :affiliate_template, :boosted_contents, :is_sayt_enabled, :is_affiliate_suggestions_enabled, :created_at, :updated_at]
     config.list.sorting = { :display_name => :asc }
     config.list.per_page = 100
-    config.update.columns = [:name, :owner, :domains, :header, :footer, :affiliate_template, :is_sayt_enabled, :is_affiliate_suggestions_enabled]
-    config.columns[:owner].form_ui = :select
+    config.update.columns = [:name, :domains, :header, :footer, :affiliate_template, :is_sayt_enabled, :is_affiliate_suggestions_enabled]
     config.create.columns = [:name, :domains, :header, :footer, :affiliate_template]
     config.columns[:is_sayt_enabled].label = "Enable SAYT"
     config.columns[:is_affiliate_suggestions_enabled].label = "Enable Affiliate SAYT Suggestions"

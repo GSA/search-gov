@@ -1,40 +1,38 @@
 = affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Manage Users'] )
 
 %h1
-  Users for Affiliate: #{h(@affiliate.display_name)}
-
-.header-box
-  Owner
-- if @affiliate.owner
-  .content-box
-    #{@affiliate.owner.contact_name} (#{mail_to @affiliate.owner.email})
+  Manage Users
 
 %table.admin-table
   %tr
     %th
-      Affiliate Users
-  - if @affiliate.users.size > 1
+      Users
+    %th
+      Actions
     - @affiliate.users.each do |user|
-      - unless @affiliate.is_owner?(user)
-        %tr{:class => cycle('even', 'odd')}
-          %td
-            = "#{user.contact_name} (#{mail_to user.email})"
+      %tr{:class => cycle('even', 'odd')}
+        %td
+          = "#{user.contact_name} (#{mail_to user.email})"
+        %td
+          - if current_user == user
+            = link_to 'My Account', account_path
             |
-            = link_to 'Remove', affiliate_user_path(@affiliate, user.id), :method => :delete
-            - if @affiliate.is_owner?(current_user)
-              |
-              = link_to 'Make Owner', make_owner_affiliate_user_path(@affiliate, user.id), :method => :post, :confirm => "Are you sure? This action can not be undone."
-  - else
-    %tr
-      %td
-        No other users associated with this affiliate.
+          = link_to 'Remove', affiliate_user_path(@affiliate, user.id), :method => :delete, :confirm => 'Are you sure? This action can not be undone.'
 
-.header-box
-  Add a user by email
-.content-box
-  Enter an email address to add a user to this affiliate.  The email address must be associated with an existing account on Search.USA.gov.  If the email is not associated with an existing account, register a new account with that email address.
+= link_to '+ Add a new user', '#add_new_user', :id => "add_new_user", :class => "sliding_trigger"
+#add_new_user_content.sliding_content{:style => 'margin-top: 3px;'}
+  %h3
+    Create Account for a New User
+  %p
+    Just enter a name and email address.  We'll create a new account (if one doesn't already exist) and send your new team member instructions on how to activate it.
   - form_tag affiliate_users_path do
+    = label_tag 'name'
+    = text_field_tag 'name', @contact_name
+    %br
     = label_tag 'email'
     = text_field_tag 'email', @email
+    %br
     = submit_tag 'Add User'
-
+    |
+    = link_to 'Cancel', '#add_new_user', :id => 'hide_new_user', :class => 'sliding_trigger' 
+%br

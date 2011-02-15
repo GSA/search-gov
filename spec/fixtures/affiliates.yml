@@ -5,7 +5,6 @@ power_affiliate:
   domains: noaa.gov\n usa.gov\nnga.mil
   header: <center>
   footer: </center>
-  owner: :affiliate_manager
   users: [:affiliate_manager]
   affiliate_template: :basic_gray
   staged_affiliate_template: [:basic_gray]
@@ -15,7 +14,6 @@ power_affiliate:
 basic_affiliate:
   display_name: NPS Site
   name: nps.gov
-  owner: :affiliate_manager
   users: [:affiliate_manager]
   affiliate_template: :default
   is_sayt_enabled: false
@@ -26,7 +24,6 @@ basic_affiliate:
 another_affiliate:
   display_name: Another Gov Site
   name: another.gov
-  owner: :another_affiliate_manager
   users: [:another_affiliate_manager]
   affiliate_template: :default
   search_results_page_title: Current {Query} - {SiteName} Search Results
@@ -35,7 +32,6 @@ another_affiliate:
 admin_affiliate:
   display_name: Affiliate Gov Site
   name: affiliate.gov
-  owner: :affiliate_admin
   users: [:admin_affiliate]
   affiliate_template: :default
   search_results_page_title: Current {Query} - {SiteName} Search Results

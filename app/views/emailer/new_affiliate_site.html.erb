@@ -1,9 +1,9 @@
-Dear <%= @affiliate.owner.contact_name %>,
+Dear <%= @user.contact_name %>,
 
 A new site <%= @affiliate.display_name %> (<%= affiliate_url(@affiliate) %>) has been added to your USASearch account. Here's the information for your new site.
 
 Site name: <%= @affiliate.display_name %>
-User who added site: <%= @affiliate.owner.email %>
+User who added site: <%= @user.email %>
 Manage site settings: <%= affiliate_url(@affiliate) %>
 
 

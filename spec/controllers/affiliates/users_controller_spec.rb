@@ -15,18 +15,6 @@ describe Affiliates::UsersController do
       end
     end
     
-    context "when logged in as the owner of an affiliate" do
-      before do
-        UserSession.create(users(:affiliate_manager))
-      end
-      
-      it "should assign a nil email value, and show the page" do
-        get :index, :affiliate_id => @affiliate.id
-        assigns[:email].should be_nil
-        response.should be_success
-      end
-    end
-    
     context "when logged in as a user of an affiliate" do
       before do
         @another_user = users(:affiliate_manager_with_no_affiliates)
@@ -62,32 +50,26 @@ describe Affiliates::UsersController do
       end
     end
     
-    context "when logged in as the affiliate owner" do
+    context "when logged in as an affiliate user" do
       before do
         @user = users(:affiliate_manager)
         UserSession.create(@user)
       end
       
-      context "when the user added is not an existing affiliate user" do
-        it "should assign the email address and flash an error that the user is not recognized" do
-          post :create, :affiliate_id => @affiliate.id, :email => 'newuser@usa.gov'
+      context "when the user added is not an existing user" do        
+        it "should assign the email address and contact name, create a user with that information, and send a welcome email" do
+          Emailer.should_receive(:deliver_welcome_to_new_user_added_by_affiliate)
+          post :create, :affiliate_id => @affiliate.id, :email => 'newuser@usa.gov', :name => 'New User'
           assigns[:email].should == 'newuser@usa.gov'
-          assigns[:user].should be_nil
-          response.should contain(/Could not find user with email: newuser@usa.gov; please ask them to register as an affiliate with their email address./)
-          response.should render_template(:index)
+          assigns[:contact_name].should == 'New User'
+          assigns[:user].should_not be_nil
+          assigns[:user].email.should == 'newuser@usa.gov'
+          session[:flash][:success].should == "That user does not exist in the system; we've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
+          response.should redirect_to affiliate_users_path(@affiliate)
+          @affiliate.users.include?(assigns[:user]).should be_true
         end
       end
-      
-      context "when the user added is the owner of the affiliate" do
-        it "should flash a message that the owner can not be added" do
-          post :create, :affiliate_id => @affiliate.id, :email => @user.email
-          assigns[:email].should == @user.email
-          assigns[:user].should == @user
-          response.should contain(/That user is the current owner of this affiliate; you can not add them again./)
-          response.should render_template(:index)
-        end
-      end
-      
+            
       context "when the user added is already a user of the affiliate" do
         before do
           @another_user = users(:affiliate_manager_with_no_affiliates)
@@ -98,8 +80,8 @@ describe Affiliates::UsersController do
           post :create, :affiliate_id => @affiliate.id, :email => @another_user.email
           assigns[:email].should == @another_user.email
           assigns[:user].should == @another_user
-          response.should contain(/That user is already associated with this affiliate; you can not add them again./)
-          response.should render_template(:index)
+          session[:flash][:error].should == "That user is already associated with this affiliate; you can not add them again."
+          response.should redirect_to affiliate_users_path(@affiliate)
         end
       end
       
@@ -110,115 +92,53 @@ describe Affiliates::UsersController do
         
         it "should associate the user and flash a success message" do
           @affiliate.users.include?(@another_user).should be_false
+          Emailer.should_receive(:deliver_new_affiliate_user).with(@affiliate, @another_user, @user)
           post :create, :affiliate_id => @affiliate.id, :email => @another_user.email
           assigns[:email].should be_nil
           assigns[:user].should == @another_user
-          response.should render_template(:index)
-          response.body.should contain(/Successfully added #{@another_user.contact_name} \(#{@another_user.email}\)/)
+          session[:flash][:success].should == "Successfully added #{@another_user.contact_name} (#{@another_user.email})"
+          response.should redirect_to affiliate_users_path(@affiliate)
           @affiliate.users.include?(@another_user).should be_true
         end
       end
     end
   end
 
-  describe "#make_owner" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-      @owner = @affiliate.owner
-      @affiliate_user = users(:another_affiliate_manager)
-      @affiliate.users << @affiliate_user
-    end
-
-    context "when not logged in" do
-      it "should redirect to the sign in page" do
-        post :make_owner, :affiliate_id => @affiliate.id, :id => @affiliate_user.id
-
-        response.should redirect_to(login_path)
-        @affiliate.owner.should == @owner
-      end
-    end
-
-    context "when logged in as the owner of the affiliate" do
-      before do
-        UserSession.create(@owner)
-      end
-
-      it "should make the user the affiliate owner" do
-        post :make_owner, :affiliate_id => @affiliate.to_param, :id => @affiliate_user.id
-
-        response.should redirect_to(affiliate_users_path(@affiliate))
-
-        @affiliate.reload
-        @affiliate.owner.should == @affiliate_user
-        @affiliate.users.should =~ [@owner, @affiliate_user]
-      end
-
-
-      it "should fail if the requested user is not an affiliate user" do
-        post :make_owner, :affiliate_id => @affiliate.to_param, :id => users(:affiliate_admin)
-
-        response.should redirect_to(affiliate_users_path(@affiliate))
-
-        flash[:error].should =~ /not an affiliate user/
-        @affiliate.owner.should == @owner
-        @affiliate.users.should =~ [@owner, @affiliate_user]
-      end
-
-    end
-
-    context "when logged in as a non-owner user of the affiliate" do
-      before do
-        UserSession.create(@affiliate_user)
-      end
-
-      it "should fail if the current user is not the owner" do
-        post :make_owner, :affiliate_id => @affiliate.to_param, :id => users(:affiliate_admin)
-
-        response.should redirect_to(affiliate_users_path(@affiliate))
-
-        flash[:error].should =~ /only the affiliate owner/i
-        @affiliate.owner.should == @owner
-        @affiliate.users.should =~ [@owner, @affiliate_user]
-      end
-    end
-
-  end
-
   describe "#destroy" do
     integrate_views
     before do
-      @affiliate_user = users(:marilyn)
-      @affiliate.users << @affiliate_user
+      @another_affiliate_user = users(:marilyn)
+      @affiliate.users << @another_affiliate_user
     end
     
     context "when not logged in" do
       it "should redirect to the sign in page" do
-        delete :destroy, :affiliate_id => @affiliate.id, :id => @affiliate_user.id
+        delete :destroy, :affiliate_id => @affiliate.id, :id => @another_affiliate_user.id
         response.should redirect_to(login_path)
-        @affiliate.users.include?(@affiliate_user).should be_true
+        @affiliate.users.include?(@another_affiliate_user).should be_true
       end
     end
     
-    context "when logged in as the owner of the affiliate" do
+    context "when logged in as a user of the affiliate" do
       before do
-        @affiliate_owner = users(:affiliate_manager)
-        UserSession.create(@affiliate_owner)
+        @user = users(:affiliate_manager)
+        UserSession.create(@user)
+        @affiliate.users.include?(@user).should be_true
       end
       
-      context "when attempting to remove an affiliate user that is not the owner" do
-        it "should remove the user from the affiliate" do
-          delete :destroy, :affiliate_id => @affiliate.id, :id => @affiliate_user.id
-          response.should render_template(:index)
-          @affiliate.users.include?(@affiliate_user).should be_false
+      context "when attempting to remove oneself from the affiliate" do
+        it "should remove the user and redirect back to the affiliates home" do
+          delete :destroy, :affiliate_id => @affiliate.id, :id => @user.id
+          response.should redirect_to home_affiliates_path
+          @affiliate.users.include?(@user).should be_false
         end
       end
       
-      context "when attempting to remove an affiliate user that is the owner of the affiliate" do
-        it "should not remove the user and flash an error message" do
-          delete :destroy, :affiliate_id => @affiliate.id, :id => @affiliate_owner.id
-          response.should contain(/You can't remove the owner of the affiliate from the list of users./)
-          response.should render_template(:index)
-          @affiliate.users.include?(@affiliate_owner).should be_true
+      context "when attempting to remove an affiliate user" do
+        it "should remove the user from the affiliate" do
+          delete :destroy, :affiliate_id => @affiliate.id, :id => @another_affiliate_user
+          response.should redirect_to affiliate_users_path(@affiliate)
+          @affiliate.users.include?(@another_affiliate_user).should be_false
         end
       end
     end

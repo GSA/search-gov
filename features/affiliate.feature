@@ -872,6 +872,41 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Manage Users"
     Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Manage Users"
-    And I should see "Users for Affiliate: aff site"
+    And I should see "Manage Users"
     And I should see "John Bar (aff@bar.gov)"
+    And I should see "My Account"
     And I should not see "aff.gov"
+    
+  Scenario: Adding an existing user to an affiliate
+    Given the following Users exist:
+      | contact_name  | email             |
+      | Existing User | existing@usa.gov  |
+    And the following Affiliates exist:
+      | display_name     | name             | contact_email           | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+    And no emails have been sent
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Manage Users"
+    And I fill in "Email" with "existing@usa.gov"
+    And I fill in "Name" with "Existing User"
+    And I press "Add User"
+    When "existing@usa.gov" opens the email
+    And I should see "Dear Existing User" in the email body
+    And I should see "You have been successfully added to aff site by John Bar" in the email body
+  
+  Scenario: Adding a new user to an affiliate
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email           | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+    And no emails have been sent
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Manage Users"
+    And I fill in "Email" with "newuser@usa.gov"
+    And I fill in "Name" with "New User"
+    And I press "Add User"
+    When "newuser@usa.gov" opens the email with text "Welcome to the USASearch Affiliate Program"
+    Then I should see "Welcome to the USASearch Affiliate Program" in the email subject
+    And I should see "Dear New User" in the email body
+    And I should see "You have been successfully registered and added to aff site by John Bar with the following account information." in the email body

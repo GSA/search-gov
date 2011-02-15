@@ -9,10 +9,8 @@ describe Affiliate do
       :domains => "someaffiliate.gov",
       :website => "http://www.someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
-      :footer => "<center>gasp</center>",
-      :owner => users(:affiliate_manager),
+      :footer => "<center>gasp</center>"
     }
-
     @valid_attributes = @valid_create_attributes.merge(:name => "someaffiliate.gov")
   end
 
@@ -22,7 +20,6 @@ describe Affiliate do
     should_validate_length_of :name, :within=> (3..33)
     should_not_allow_values_for :name, "<IMG SRC=", "259771935505'", "spacey name", "NewAff"
     should_allow_values_for :name, "data.gov", "ct-new", "some_aff", "123"
-    should_belong_to :owner
     should_have_and_belong_to_many :users
     should_have_many :boosted_contents
     should_have_many :sayt_suggestions
@@ -201,20 +198,6 @@ describe Affiliate do
       affiliate.affiliate_template.should == affiliate_templates(:basic_gray)
       Affiliate.find(affiliate.id).update_attributes(:affiliate_template_id => "")
       Affiliate.find(affiliate.id).affiliate_template.should == affiliate_templates(:default)
-    end
-  end
-
-  describe "#is_owner" do
-    before do
-      @affiliate = Affiliate.create(@valid_create_attributes)
-    end
-    
-    it "should return true if the user specified is the owner of the affiliate" do
-      @affiliate.is_owner?(users(:affiliate_manager)).should be_true
-    end
-    
-    it "should return false if the user specified is not the owner of the affiliate" do
-      @affiliate.is_owner?(users(:another_affiliate_manager)).should be_false
     end
   end
   

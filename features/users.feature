@@ -32,7 +32,7 @@ Feature: Users
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
     And I should see "Thank you for registering for USA.gov Search Services"
-    And I should see "Affiliate Center"
+    And I should see "Affiliate Center" within "#program_nav"
 
   Scenario: Registering as a new affiliate user who is not affiliated with a government agency
     Given I am on the login page
@@ -46,7 +46,7 @@ Feature: Users
     And I press "Register for a new account"
     Then I should be on the user account page
     And I should see "Thank you for registering for USA.gov Search Services"
-    And I should not see "Affiliate Center"
+    And I should not see "Affiliate Center" within "#program_nav"
     And I should not see "Add New Affiliate"
 
   Scenario: Registering as a new affiliate user with a .mil email address
@@ -117,4 +117,32 @@ Feature: Users
     And I should see "Password confirmation"
     And I should not see "I am a government employee or contractor"
     And I should not see "I am not affiliated with a government agency"
-
+    
+  Scenario: Adding additional contacts to an affiliate from an account with a single affiliate
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Affiliates exist:
+      | display_name     | name             | contact_email                 | contact_name        |
+      | aff site         | aff.gov          | affiliate_admin@fixtures.org  | John Bar            |
+    When I go to the user account page
+    Then I should see "+ add an additional contact"
+    When I follow "+ add an additional contact"
+    Then I should be on the "aff site" affiliate users page
+    
+  Scenario: Adding additional contacts to an affiliate from an account with multiple affiliates
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And the following Affiliates exist:
+      | display_name     | name             | contact_email                 | contact_name        |
+      | aff site         | aff.gov          | affiliate_admin@fixtures.org  | John Bar            |
+      | aff site 2       | aff2.gov         | affiliate_admin@fixtures.org  | John Bar            |
+    When I go to the user account page
+    Then I should see "+ add an additional contact"
+    When I follow "+ add an additional contact"
+    Then I should be on the user account page
+    And I should see "You have multiple sites associated with your account. To add an additional contact, follow these steps"
+    When I follow "Affiliate Center"
+    Then I should be on the the affiliate admin page
+    
+  Scenario: User does not see "+ add additional contact when no affiliates are associated with the account"
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the user account page
+    Then I should not see "+ add an additional contact"

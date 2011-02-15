@@ -420,51 +420,41 @@ describe Affiliates::HomeController do
     context "when logged in" do
       before do
         UserSession.create(users(:affiliate_manager_with_no_affiliates))
-        @affiliate = stub_model(Affiliate)
-        Affiliate.should_receive(:new).and_return(@affiliate)
       end
 
       it "should assign @title" do
-        post :create
+        post :create, :affiliate => {:display_name => 'new_affiliate'}
         assigns[:title].should_not be_blank
       end
 
       it "should assign @affiliate" do
-        post :create
-        assigns[:affiliate].should == @affiliate
+        post :create, :affiliate => {:display_name => 'new_affiliate'}
+        assigns[:affiliate].should_not be_nil
       end
 
       it "should save the affiliate" do
-        @affiliate.should_receive(:save)
-        post :create
+        post :create, :affiliate => {:display_name => 'new_affiliate'}
+        assigns[:affiliate].id.should_not be_nil
       end
 
       context "when the affiliate saves successfully" do
-        before do
-          @affiliate.should_receive(:save).twice.and_return(true)
-        end
-
         it "should assign @current_step to :get_code" do
-          post :create
+          post :create, :affiliate => {:display_name => 'new_affiliate'}
           assigns[:current_step].should == :get_the_code
         end
          
         it "should email the affiliate a confirmation email" do
-          Emailer.should_receive(:deliver_new_affiliate_site).with(@affiliate).and_return true
-          post :create
+          Emailer.should_receive(:deliver_new_affiliate_site)
+          post :create, :affiliate => {:display_name => 'new_affiliate'}
         end
 
         it "should render the new template" do
-          post :create
+          post :create, :affiliate => {:display_name => 'new_affiliate'}
           response.should render_template("new")
         end
       end
 
       context "when the affiliate fails to save" do
-        before do
-          @affiliate.should_receive(:save).and_return(false)
-        end
-
         it "should assign @current_step to :new_site_information" do
           post :create
           assigns[:current_step].should == :new_site_information

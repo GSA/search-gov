@@ -23,7 +23,6 @@ Given /^the following Affiliates exist:$/ do |table|
     affiliate = Affiliate.create(
       :display_name => hash["display_name"],
       :name => hash["name"],
-      :owner => user,
       :domains => hash["domains"],
       :affiliate_template_id => default_affiliate_template.id,
       :header => hash["header"],
@@ -37,6 +36,7 @@ Given /^the following Affiliates exist:$/ do |table|
       :search_results_page_title => hash["search_results_page_title"],
       :staged_search_results_page_title => hash["staged_search_results_page_title"]
     )
+    affiliate.users << user
   end
 end
 

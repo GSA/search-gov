@@ -53,7 +53,7 @@ describe Affiliates::BoostedContentsController do
     context "logged in" do
       before :each do
         @affiliate = affiliates(:basic_affiliate)
-        UserSession.create(@affiliate.owner)
+        UserSession.create(@affiliate.users.first)
       end
 
       it "should redirect back to new if a new site is added" do
@@ -96,7 +96,7 @@ describe Affiliates::BoostedContentsController do
     before :each do
       @affiliate = affiliates(:basic_affiliate)
       @boosted_content = @affiliate.boosted_contents.create!(:url => "a url", :title => "a title", :description => "a description")
-      UserSession.create(@affiliate.owner)
+      UserSession.create(@affiliate.users.first)
     end
 
     it "should redirect back to new on success" do
@@ -136,7 +136,7 @@ describe Affiliates::BoostedContentsController do
     it "should delete, flash, and redirect" do
       affiliate = affiliates(:basic_affiliate)
       boosted_content = affiliate.boosted_contents.create!(:url => "a url", :title => "a title", :description => "a description")
-      UserSession.create(affiliate.owner)
+      UserSession.create(affiliate.users.first)
 
       post :destroy, :affiliate_id => affiliate.to_param, :id => boosted_content.to_param
 
@@ -149,7 +149,7 @@ describe Affiliates::BoostedContentsController do
   describe "bulk upload" do
     before :each do
       @affiliate = affiliates(:basic_affiliate)
-      UserSession.create(@affiliate.owner)
+      UserSession.create(@affiliate.users.first)
       @xml = StringIO.new("xml")
     end
 
@@ -179,7 +179,7 @@ describe Affiliates::BoostedContentsController do
   describe "lots of bulk content" do
     before :each do
       @affiliate = affiliates(:basic_affiliate)
-      UserSession.create(@affiliate.owner)
+      UserSession.create(@affiliate.users.first)
       @original_max = Affiliates::BoostedContentsController::MAX_TO_DISPLAY
       @original_to_display = Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX
       silently do
@@ -219,7 +219,7 @@ describe Affiliates::BoostedContentsController do
   describe "delete all" do
     it "should delete all BoostedContent and redirect to new" do
       affiliate = affiliates(:basic_affiliate)
-      UserSession.create(affiliate.owner)
+      UserSession.create(affiliate.users.first)
       3.times { |i| affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url#{i}.com") }
 
       post :destroy_all, :affiliate_id => affiliate.to_param

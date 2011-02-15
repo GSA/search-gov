@@ -82,7 +82,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   def create
     @title = "Add a New Site - "
     @affiliate = Affiliate.new(params[:affiliate])
-    @affiliate.owner = @current_user
+    @affiliate.users << @current_user
     if @affiliate.save
       @affiliate.update_attributes(
         :domains => @affiliate.staged_domains,
@@ -90,7 +90,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
         :header => @affiliate.staged_header,
         :footer => @affiliate.staged_footer)
       @current_step = :get_the_code
-      Emailer.deliver_new_affiliate_site(@affiliate)
+      @affiliate.users.each do |user|
+        Emailer.deliver_new_affiliate_site(@affiliate, user)
+      end
       flash.now[:success] = "Site successfully created"
     else
       @current_step = :new_site_information
