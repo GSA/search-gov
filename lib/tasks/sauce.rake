@@ -6,4 +6,4 @@ end
 
 # saucelabs configuration:
 # gem install sauce
-# sauce configure  irrationaldesign 62285eaf-f008-4eae-b70e-9231856d219e
+# sauce configure  usa_search 5060039c-fa2b-403c-9fef-617142894173
