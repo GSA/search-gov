@@ -90,6 +90,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
         :header => @affiliate.staged_header,
         :footer => @affiliate.staged_footer)
       @current_step = :get_the_code
+      Emailer.deliver_new_affiliate_site(@affiliate)
       flash.now[:success] = "Site successfully created"
     else
       @current_step = :new_site_information

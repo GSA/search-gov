@@ -120,6 +120,21 @@ Feature: Affiliate clients
     And the "Zip*" field should contain "20022"
     And I press "Next"
     Then I should see "Step 2. Set up site" within ".current_step"
+    
+  Scenario: Affiliates receive confirmation email when creating a new affiliate
+    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "new"
+    And I press "Next"
+    And I fill in the following:
+      | Site name                 | My awesome agency                |
+    And I press "Next"
+    Then "affiliate_manager_with_no_affiliates@fixtures.org" should receive an email
+    When I open the email
+    Then I should see "Your new Affiliate site" in the email subject
+    And I should see "Dear A New Manager" in the email body
+    And I should see "Site name: My awesome agency" in the email body
+    And I should see "affiliate_manager_with_no_affiliates@fixtures.org" in the email body
 
   Scenario: Clicking on Adding additional sites in Step 3. Get the code
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"

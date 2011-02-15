@@ -448,6 +448,11 @@ describe Affiliates::HomeController do
           post :create
           assigns[:current_step].should == :get_the_code
         end
+         
+        it "should email the affiliate a confirmation email" do
+          Emailer.should_receive(:deliver_new_affiliate_site).with(@affiliate).and_return true
+          post :create
+        end
 
         it "should render the new template" do
           post :create
@@ -463,6 +468,11 @@ describe Affiliates::HomeController do
         it "should assign @current_step to :new_site_information" do
           post :create
           assigns[:current_step].should == :new_site_information
+        end
+        
+        it "should not send an email" do
+          Emailer.should_not_receive(:deliver_new_affiliate_site)
+          post :create
         end
 
         it "should render the new template" do

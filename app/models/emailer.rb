@@ -30,6 +30,12 @@ class Emailer < ActionMailer::Base
     body(:message => message)
   end
   
+  def new_affiliate_site(affiliate)
+    setup_email(affiliate.owner.email)
+    @subject += "Your new Affiliate site"
+    body(:affiliate => affiliate)
+  end
+  
   private
   def setup_email(recipients)
     @recipients = recipients

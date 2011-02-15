@@ -1,0 +1,23 @@
+Dear <%= @affiliate.owner.contact_name %>,
+
+A new site (<%= link_to @affiliate.display_name, affiliate_url(@affiliate)%>) has been added to your USASearch account. Here's the information for your new site.
+
+Site name: <%= @affiliate.display_name %>
+User who added site: <%= @affiliate.owner.email %>
+Manage site settings: <%= link_to affiliate_url(@affiliate), affiliate_url(@affiliate) %>
+
+
+Now that your site is set up, visit the Affiliate Center to further customize your site. Get started now.
+
+1. <%= link_to "Add additional sites.", new_affiliate_url %>
+2. <%= link_to "Customize the look and feel.", edit_look_and_feel_affiliate_url(@affiliate) %>
+3. <%= link_to "Set up the type-ahead search.", affiliate_type_ahead_search_index_url(@affiliate) %>
+
+Questions or comments? Visit our Help Desk at Help Desk at 
+
+<%= link_to "http://searchsupport.usa.gov", "http://searchsupport.usa.gov" %>
+
+or send us an email and we'll get back to you promptly.
+
+The USASearch Team
+***REMOVED***
