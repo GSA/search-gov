@@ -58,13 +58,17 @@ Spec::Runner.configure do |config|
   # For more information take a look at Spec::Runner::Configuration and Spec::Runner
 end
 
-require 'sauce'
+begin
+  require 'sauce'
 
-Sauce.config do |conf|
-    conf.browser_url = "http://24542.test/"
-    conf.browsers = [
-        ["Windows 2003", "firefox", "3."]
-    ]
-    conf.application_host = "127.0.0.1"
-    conf.application_port = "3001"
+  Sauce.config do |conf|
+       conf.browser_url = "http://24542.test/"
+       conf.browsers = [
+           ["Windows 2003", "firefox", "3."]
+       ]
+       conf.application_host = "127.0.0.1"
+       conf.application_port = "3001"
+  end
+rescue LoadError => e
+  $stderr.puts e.message
 end
