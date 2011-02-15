@@ -13,7 +13,7 @@ class HomeController < ApplicationController
       @email = params["email"]
       @message = params["message"]
       if @email.blank? || @message.blank?
-        flash[:notice] = "Missing required fields (*)"
+        flash[:notice] = t(:contact_missing_required_fields)
       else
         if @email =~ /^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$/
           Emailer.deliver_mobile_feedback(@email, @message)
