@@ -12,5 +12,5 @@
     #popular
       %h2 Latest Recalls
       #results.recalls
-        - @latest_recalls.results[0..4].each do |result|
-          = render "result", :result => result
+        - @latest_recalls.results[0..4].each_with_index do |result, index|
+          = render 'result', :object => result, :index => index, :hit => @latest_recalls.hits[index]

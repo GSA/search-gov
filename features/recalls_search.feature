@@ -26,3 +26,20 @@ Feature: Recalls search
     When I submit the search form
     Then I should be on the recalls landing page
 
+  Scenario: The Recalls landing page
+    Given the following Product Recalls exist:
+    |recall_number|manufacturer                   |type    |product                                                     |hazard        |country             |recalled_days_ago|
+    |10155        |Graco                          |Stroller|Graco E-Z Roller baby strollers, Graco Hard-to-Roll stroller|Entrapment    |Canada              |15               |
+    |10157        |Hasbro                         |Stroller|Hasbro Window Stroller                                      |Defenestration|USA                 |18               |
+    |10156        |Graco, Walmart, Martha Stewart |Bed     |Graco Cozy Glow-in-the-Dark Classic Toddler Beds            |Vomiting      |USA, Vietnam, China |25               |
+    |10150        |Graco                          |Stroller|Graco Neck Restraint                                        |Decapitation  |Canada              |35               |
+    Given I am on the homepage
+    And I follow "recalls"
+    Then I should be on the recalls landing page
+    And I should see "Latest Recalls"
+    And I should see "Graco E-Z Roller baby strollers, Graco Hard-to-Roll stroller"
+    And I should see "Hasbro Window Stroller"
+    And I should see "Graco Cozy Glow-in-the-Dark Classic Toddler Beds"
+    And I should see "Graco Neck Restraint"
+
+
