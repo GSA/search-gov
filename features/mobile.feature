@@ -146,18 +146,34 @@ Feature: Mobile Search
     Given I am on the Spanish homepage
     When I follow "Envíanos un correo electrónico"
     Then I should be on the mobile contact form page
-    And I should see "Contacte a su Gobierno"
-    And I should see "Dirección de correo electrónico"
+    And I should see "Escríbenos un e-mail"
+    And I should see "Tu e-mail"
     And I should see "Mensaje"
-    And I fill in "Dirección de correo electrónico" with "spanishmobileuser@usa.gov"
+    And I fill in "Tu e-mail" with "spanishmobileuser@usa.gov"
     And I fill in "Mensaje" with "I love your site!"
     And I press "Enviar"
     Then I should be on the mobile contact form page
-    And I should see "Gracias por contactar con USA.gov. Le responderemos en el plazo de dos días hábiles."
+    And I should see "Gracias por contactar con GobiernoUSA.gov. Te responderemos en dos días hábiles."
     And "mgobiernousa.gov@mail.fedinfo.gov" should receive an email
     When I open the email
     Then I should see "GobiernoUSA.gov Mobile Inquiry" in the email subject
     And I should see "[FORMGEN]" in the email body
+
+  Scenario: Emailing from the Spanish home page with problem
+    Given I am on the Spanish homepage
+    When I follow "Envíanos un correo electrónico"
+    And I fill in "Tu e-mail" with " "
+    And I fill in "Mensaje" with " "
+    And I press "Enviar"
+    Then I should be on the mobile contact form page
+    And I should see "Faltan datos requeridos"
+    When I fill in "Tu e-mail" with "invalid email"
+    And I fill in "Mensaje" with "I love your site"
+    And I press "Enviar"
+    Then I should be on the mobile contact form page
+    And I should see "Este email no es válido"
+    And the "Tu e-mail" field should contain "invalid email"
+    And the "Mensaje" field should contain "I love your site"
 
   Scenario: A mobile image search
     Given I am on the homepage

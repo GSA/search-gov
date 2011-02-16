@@ -512,9 +512,9 @@ describe Affiliates::HomeController do
         post :push_content_for, :id => @affiliate.id
       end
 
-      it "should render the new template" do
+      it "should redirect to affiliate specific page" do
         post :push_content_for, :id => @affiliate.id
-        response.should redirect_to home_affiliates_path(:said=>@affiliate.id)
+        response.should redirect_to affiliate_path(@affiliate)
       end
     end
    end

@@ -156,7 +156,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   def push_content_for
     @affiliate.update_attributes_for_current(@affiliate.staging_attributes)
     flash[:success] = "Staged content is now visible"
-    redirect_to home_affiliates_path(:said=>@affiliate.id)
+    redirect_to affiliate_path(@affiliate)
   end
 
   def embed_code

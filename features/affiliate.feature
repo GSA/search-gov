@@ -457,6 +457,17 @@ Feature: Affiliate clients
     And I press "Search on Live Site"
     Then I should see "White House - aff site Search Results"
 
+    When I go to the "aff site" affiliate page
+    And I follow "Preview"
+    And I press "Make Live"
+    Then I should be on the "aff site" affiliate page
+    And I should see "Staged content is now visible"
+    And I follow "Preview"
+    And I fill in the following within "#live_site_search_form":
+      | query | White House |
+    And I press "Search on Live Site"
+    Then I should see "Staged - aff site : White House" within "title"
+
   Scenario: Related Topics on English SERPs for given affiliate search
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -820,6 +831,8 @@ Feature: Affiliate clients
     Then I should be on the affiliate related topics page
     And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Related Topics"
     And I should not see "aff.gov"
+    When I follow "Preview Button"
+    Then I should be on the preview affiliate page
     
   Scenario: Setting Related Topics Preferences for an affiliate
     Given the following Affiliates exist:

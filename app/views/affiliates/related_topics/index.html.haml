@@ -20,3 +20,6 @@
         = radio_button_tag 'related_topics_setting', 'disabled', @affiliate.is_related_topics_disabled?
         Don't display related topics
     = submit_tag "Set Preferences"
+.prepend-1.span-24.center-outer
+  .center-inner
+    = link_to(image_tag('preview.png', :alt=>"Preview Button"), preview_affiliate_path(@affiliate), :title => "Preview")
