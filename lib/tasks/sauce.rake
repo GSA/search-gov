@@ -1,7 +1,7 @@
 namespace :screenshots do
   task :clean do
-    FileUtils.rm "spec/screenshots/screenshots/index.html", :force => true
-    FileUtils.rm Dir["spec/screenshots/screenshots/*.png"]
+    FileUtils.rm_rf  Dir["spec/screenshots/report/**/*-*-*"]
+    FileUtils.rm  Dir["spec/screenshots/report/**/*.html"]
   end
 
   desc "" #hide from rake -T screenshots
@@ -12,8 +12,8 @@ namespace :screenshots do
   end
 
   task :report do
-    %x{haml spec/screenshots/screenshots/index.html.haml > spec/screenshots/screenshots/index.html}
-    %x{open spec/screenshots/screenshots/index.html}
+    %x{haml spec/screenshots/report/index.html.haml > spec/screenshots/report/index.html}
+    %x{open spec/screenshots/report/index.html}
   end
 
   task :run do

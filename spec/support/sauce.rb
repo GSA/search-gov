@@ -1,11 +1,14 @@
 INSTALL_SAUCE_MESSAGE = "To enable sauce integration, run 'gem install sauce && sauce configure  usa_search 5060039c-fa2b-403c-9fef-617142894173'"
 begin
+  gem 'sauce', '0.15.1'
   require 'sauce'
 
   Sauce.config do |conf|
     conf.browser_url = "http://demo:***REMOVED***@searchdemo.usa.gov"
     conf.browsers = [
-        ["Windows 2003", "firefox", "3."]
+        ["Windows 2003", "iexploreproxy", "6."],
+        ["Windows 2003", "firefox", "3."],
+        ["Windows 2003", "safari", "4."],
     ]
   end
 
@@ -18,8 +21,7 @@ begin
       config = Sauce::Config.new
       description = [self.class.description, self.description].join(" ")
       config.browsers.each do |os, browser, version|
-        @selenium = Sauce::Selenium.new({:os => os, :browser => browser, :browser_version => version,
-                                         :job_name => "#{description}"})
+        @selenium = Sauce::Selenium.new({:os => os, :browser => browser, :browser_version => version, :job_name => "#{description}"})
         @selenium.start
         begin
           super(*args)

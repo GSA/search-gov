@@ -26,9 +26,13 @@ describe "search.usa.gov" do
 end
 
 def capture_page(page, page_name)
-  @@step ||= 0
+  @@steps ||= Hash.new {|h,k| h[k] = 0}
+  browser_hash = JSON.parse(page.browser_string)
+  browser_identifier = "#{browser_hash["os"]}-#{browser_hash["browser"]}-#{browser_hash["browser-version"]}"
+  FileUtils.mkdir_p(File.dirname(__FILE__) + "/report/" + browser_identifier)
+
   png = page.capture_screenshot_to_string
-  File.open(File.dirname(__FILE__) + "/screenshots/%03i-%s-screenshot.png" % [@@step+=1, page_name], 'wb') do |f|
+  File.open(File.dirname(__FILE__) + "/report/" + browser_identifier + "/%03i-%s-screenshot.png" % [@@steps[browser_identifier]+=1, page_name], 'wb') do |f|
     f.write(Base64.decode64(png))
     f.close
   end

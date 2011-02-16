@@ -1,0 +1,21 @@
+- subdirectories = Dir["#{File.dirname(__FILE__)}/*"].select{|name|File.directory?(name)}
+- image_file_names = subdirectories.map{|subdirectory| Dir["#{subdirectory}/???-*.png"] }
+!!!html
+%head
+  %style
+    == img.thumbnail {max-width: 512px}
+
+%body
+  %h1 Sauce Screenshots
+  %table
+    %tr
+      %th
+      - subdirectories.each do |subdirectory|
+        %th= subdirectory.split("/").last
+
+    - image_file_names.first.each_with_index do |filename, i|
+      %tr
+        %td= filename.split("/").last
+        - subdirectories.length.times do |j|
+          %td
+            %img.thumbnail{:src => image_file_names[j][i].split('/')[-2..-1].join("/")}

@@ -1,7 +1,0 @@
-!!!html
-%body
-  %h1 Sauce Screenshots
-  - Dir["#{File.dirname(__FILE__)}/???-*"].each do |filename|
-    %p
-      %img{:src => filename.split('/').last}  
-
