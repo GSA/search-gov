@@ -153,7 +153,7 @@ Feature: Mobile Search
     And I fill in "Mensaje" with "I love your site!"
     And I press "Enviar"
     Then I should be on the mobile contact form page
-    And I should see "Gracias por contactar con GobiernoUSA.gov. Te responderemos en dos días hábiles."
+    And I should see "Gracias por contactar a GobiernoUSA.gov. Te responderemos en dos días hábiles."
     And "mgobiernousa.gov@mail.fedinfo.gov" should receive an email
     When I open the email
     Then I should see "GobiernoUSA.gov Mobile Inquiry" in the email subject
@@ -171,7 +171,7 @@ Feature: Mobile Search
     And I fill in "Mensaje" with "I love your site"
     And I press "Enviar"
     Then I should be on the mobile contact form page
-    And I should see "Este email no es válido"
+    And I should see "Este e-mail no es válido"
     And the "Tu e-mail" field should contain "invalid email"
     And the "Mensaje" field should contain "I love your site"
 
