@@ -53,7 +53,6 @@ describe ImageSearch do
       end
 
       it "should generate a JSON representation of total, start and end records, spelling suggestions, related searches and search results" do
-        @search.results.should_receive(:to_json).and_return ""
         json = @search.to_json
         json.should contain(/total/)
         json.should contain(/startrecord/)

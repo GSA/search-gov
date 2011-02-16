@@ -4,6 +4,7 @@ namespace :screenshots do
     FileUtils.rm Dir["spec/screenshots/screenshots/*.png"]
   end
 
+  desc "" #hide from rake -T screenshots
   Spec::Rake::SpecTask.new :runtests do |t|
     t.spec_opts = ['--options', "\"#{Rails.root.join('spec', 'spec.opts')}\""]
     spec_glob = ENV["SAUCE_SPEC_GLOB"] || "spec/screenshots/**/*_spec.rb"
