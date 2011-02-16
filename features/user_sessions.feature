@@ -29,7 +29,6 @@ Feature: User sessions
       | Password                      | admin                             |
     And I press "Login"
     Then I should be on the affiliate admin page
-    And I should see "Admin Center"
 
   Scenario: Analyst should be on the analytics homepage upon successful login
     Given I am on the login page
@@ -38,7 +37,6 @@ Feature: User sessions
       | Password                      | admin                             |
     And I press "Login"
     Then I should be on the analytics homepage
-    And I should see "Analyst Center"
 
   Scenario: Affiliate manager should be on the affiliate home page upon successful login
     Given I am on the login page
@@ -47,4 +45,3 @@ Feature: User sessions
       | Password                      | admin                             |
     And I press "Login"
     Then I should be on the affiliate admin page
-    And I should see "Affiliate Center"
