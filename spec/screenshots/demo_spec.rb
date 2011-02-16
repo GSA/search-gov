@@ -1,8 +1,8 @@
 require "spec_helper"
 require "base64"
 
-describe "my app" do
-  it "should have a home page" do
+describe "search.usa.gov" do
+  it "should have image searches" do
     page.open "/"
     page.is_text_present("Advanced Search").should be_true
     capture_page(page, "home")
@@ -28,7 +28,7 @@ end
 def capture_page(page, page_name)
   @@step ||= 0
   png = page.capture_screenshot_to_string
-  File.open("#{Rails.root}/spec/selenium/screenshots/%03i-%s-screenshot.png" % [@@step+=1, page_name], 'wb') do |f|
+  File.open(File.dirname(__FILE__) + "/screenshots/%03i-%s-screenshot.png" % [@@step+=1, page_name], 'wb') do |f|
     f.write(Base64.decode64(png))
     f.close
   end

@@ -1,9 +1,27 @@
-begin
-  require 'sauce/raketasks'
-rescue LoadError => e
-  $stderr.puts e.message
+namespace :screenshots do
+  task :clean do
+    FileUtils.rm "spec/screenshots/screenshots/index.html", :force => true
+    FileUtils.rm Dir["spec/screenshots/screenshots/*.png"]
+  end
+
+  Spec::Rake::SpecTask.new :runtests do |t|
+    t.spec_opts = ['--options', "\"#{Rails.root.join('spec', 'spec.opts')}\""]
+    spec_glob = ENV["SAUCE_SPEC_GLOB"] || "spec/screenshots/**/*_spec.rb"
+    t.spec_files = FileList[spec_glob]
+  end
+
+  task :report do
+    %x{haml spec/screenshots/screenshots/index.html.haml > spec/screenshots/screenshots/index.html}
+    %x{open spec/screenshots/screenshots/index.html}
+  end
+
+  task :run do
+    Rake::Task["screenshots:clean"].invoke
+    Rake::Task["screenshots:runtests"].invoke
+    Rake::Task["screenshots:report"].invoke
+  end
 end
 
-# saucelabs configuration:
-# gem install sauce
-# sauce configure  usa_search 5060039c-fa2b-403c-9fef-617142894173
+desc "Run sauce tests, create screenshots"
+task :screenshots => "screenshots:run"
+
