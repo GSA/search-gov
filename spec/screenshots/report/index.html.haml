@@ -1,21 +1,104 @@
-- subdirectories = Dir["#{File.dirname(__FILE__)}/*"].select{|name|File.directory?(name)}
-- image_file_names = subdirectories.map{|subdirectory| Dir["#{subdirectory}/???-*.png"] }
+- require 'json'
+
+- browser_dirs = Dir["#{File.dirname(__FILE__)}/*"].select{|name|File.directory?(name)}
+- image_file_names = browser_dirs.map{|subdirectory| Dir["#{subdirectory}/???-*.png"] }
+
+- browsers = browser_dirs.map{|dir|File.basename(dir).gsub(/[^\w-]*/, "")}
+- image_basenames = image_file_names.flatten.map{|filename|File.basename(filename).gsub(/[^\w-]*/, "")}.uniq.sort
+
 !!!html
 %head
+  %script{:type => "text/javascript", :src => "jquery-1.5.min.js"}
   %style
-    == img.thumbnail {max-width: 512px}
+    == table {display: none;}
+    == #all img.thumbnail { max-width: 512px; }
+    == #image_store { visibility: hidden; height: 1px; overflow: hidden; }
+
+  :javascript
+    $(function() {
+      function showBrowser(name) {
+        showAll()
+        $('table').hide();
+        $("#browser")
+          .show()
+          .find("#browser_name")
+            .html(name)
+          .end().find(".screenshot").each(function() {
+            $(this).append($("#" + name + $(this).attr("basename")));
+          });
+      }
+
+      function showStep(name) {
+        showAll()
+        $('table').hide();
+        $("#step")
+          .show()
+          .find("#step_name")
+            .html(name)
+          .end().find(".screenshot").each(function() {
+            $(this).append($("#" + $(this).attr("browser") + name));
+          });
+      }
+
+      function showAll() {
+        $('table').hide();
+        $("#all")
+          .show()
+          .find(".screenshot").each(function(){
+            $(this).append($('#'+$(this).attr('image_id')))
+          });
+
+      }
+
+      $('.nav').click(function() {
+        if (browser = $(this).attr('browser')) {
+          showBrowser(browser);
+        } else if (basename = $(this).attr('basename')) {
+          showStep(basename);
+        } else {
+          showAll();
+        }
+      })
+
+      showAll();
+    })
 
 %body
-  %h1 Sauce Screenshots
-  %table
+  %h1.nav Sauce Screenshots
+
+  %table#all
     %tr
       %th
-      - subdirectories.each do |subdirectory|
-        %th= subdirectory.split("/").last
-
-    - image_file_names.first.each_with_index do |filename, i|
+      - browsers.each do |browser|
+        %th.nav{:browser => browser}= browser
+    - image_basenames.each do |basename|
       %tr
-        %td= filename.split("/").last
-        - subdirectories.length.times do |j|
-          %td
-            %img.thumbnail{:src => image_file_names[j][i].split('/')[-2..-1].join("/")}
+        %td.nav{:basename => basename}= basename
+        - browsers.each do |browser|
+          %td{:class => "screenshot", :image_id => browser + basename}
+
+
+  %table#browser
+    %tr
+      %th Step
+      %th#browser_name
+
+    - image_basenames.each do |basename|
+      %tr
+        %td.nav{:basename => basename}= basename
+        %td{:class => "screenshot", :basename => basename}
+
+  %table#step
+    %tr
+      %th Browser
+      %th#step_name
+
+    - browsers.each do |browser|
+      %tr
+        %td.nav{:browser => browser}= browser
+        %td{:class => "screenshot", :browser => browser}
+
+#image_store
+  - image_file_names.flatten.each do |filename|
+    - relative_path = filename.split('/')[-2..-1].join("/")
+    %img.thumbnail{:src => relative_path, :id => relative_path.gsub(/[^\w-]*/, "")}
