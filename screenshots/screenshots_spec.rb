@@ -1,7 +1,9 @@
-require "spec_helper"
 require "base64"
+require "rubygems"
+require "spec"
+require File.dirname(__FILE__) + "/support/sauce.rb"
 
-describe "search.usa.gov" do
+describe "search.usa.gov", :type => :screenshot do
   it "should have image searches" do
     page.open "/"
     page.is_text_present("Advanced Search").should be_true
