@@ -288,20 +288,6 @@ describe RecallsController do
         assigns[:valid_params][:sort].should be_nil
       end
     end
-    
-    context "when making a request with some other format, besides json" do
-      before do
-        get :search, :query => 'strollers', :format => 'wml'
-      end
-
-      xit "should return an error message" do
-        response.body.should contain('Not Implemented')
-      end
-      
-      xit "should return an error status of 501" do
-        response.status.should == "501 Not Implemented"
-      end
-    end
 
     context "when there are a lot of results" do
       before do
