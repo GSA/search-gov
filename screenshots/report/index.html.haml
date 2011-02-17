@@ -4,76 +4,35 @@
 - image_file_names = browser_dirs.map{|subdirectory| Dir["#{subdirectory}/???-*.png"] }
 
 - browsers = browser_dirs.map{|dir|File.basename(dir).gsub(/[^\w-]*/, "")}
-- image_basenames = image_file_names.flatten.map{|filename|File.basename(filename).gsub(/[^\w-]*/, "")}.uniq.sort
+- image_basenames = image_file_names.flatten.map{|filename|File.basename(filename).gsub(/-screenshot\.png$/, "").gsub(/[^\w-]*/, "")}.uniq.sort
 
 !!!html
 %head
   %script{:type => "text/javascript", :src => "jquery-1.5.min.js"}
   %style
+    == body {font-family:sans-serif;}
     == table {display: none;}
+    == h1 span {font-size: 0.5em;}
     == #all img.thumbnail { max-width: 512px; }
     == #image_store { visibility: hidden; height: 1px; overflow: hidden; }
-
-  :javascript
-    $(function() {
-      function showBrowser(name) {
-        showAll()
-        $('table').hide();
-        $("#browser")
-          .show()
-          .find("#browser_name")
-            .html(name)
-          .end().find(".screenshot").each(function() {
-            $(this).append($("#" + name + $(this).attr("basename")));
-          });
-      }
-
-      function showStep(name) {
-        showAll()
-        $('table').hide();
-        $("#step")
-          .show()
-          .find("#step_name")
-            .html(name)
-          .end().find(".screenshot").each(function() {
-            $(this).append($("#" + $(this).attr("browser") + name));
-          });
-      }
-
-      function showAll() {
-        $('table').hide();
-        $("#all")
-          .show()
-          .find(".screenshot").each(function(){
-            $(this).append($('#'+$(this).attr('image_id')))
-          });
-
-      }
-
-      $('.nav').click(function() {
-        if (browser = $(this).attr('browser')) {
-          showBrowser(browser);
-        } else if (basename = $(this).attr('basename')) {
-          showStep(basename);
-        } else {
-          showAll();
-        }
-      })
-
-      showAll();
-    })
+    == .nav { cursor: pointer; text-decoration: underline; }
 
 %body
-  %h1.nav Sauce Screenshots
+  %h1
+    searchdemo.usa.gov Screenshots
+    %span= "generated with saucelabs on #{Time.new.strftime("%b %d, %Y")}"
+    %span.nav (view all)
 
   %table#all
     %tr
       %th
       - browsers.each do |browser|
-        %th.nav{:browser => browser}= browser
+        %th
+          .nav{:browser => browser}= browser
     - image_basenames.each do |basename|
       %tr
-        %td.nav{:basename => basename}= basename
+        %td
+          .nav{:basename => basename}= basename
         - browsers.each do |browser|
           %td{:class => "screenshot", :image_id => browser + basename}
 
@@ -85,7 +44,8 @@
 
     - image_basenames.each do |basename|
       %tr
-        %td.nav{:basename => basename}= basename
+        %td
+          .nav{:basename => basename}= basename
         %td{:class => "screenshot", :basename => basename}
 
   %table#step
@@ -95,10 +55,61 @@
 
     - browsers.each do |browser|
       %tr
-        %td.nav{:browser => browser}= browser
+        %td
+          .nav{:browser => browser}= browser
         %td{:class => "screenshot", :browser => browser}
 
 #image_store
   - image_file_names.flatten.each do |filename|
     - relative_path = filename.split('/')[-2..-1].join("/")
-    %img.thumbnail{:src => relative_path, :id => relative_path.gsub(/[^\w-]*/, "")}
+    %img.thumbnail{:src => relative_path, :id => relative_path.gsub(/-screenshot\.png$/, "").gsub(/[^\w-]*/, "")}
+
+:javascript
+  $(function() {
+    function showBrowser(name) {
+      showAll()
+      $('table').hide();
+      $("#browser")
+        .show()
+        .find("#browser_name")
+          .html(name)
+        .end().find(".screenshot").each(function() {
+          $(this).append($("#" + name + $(this).attr("basename")));
+        });
+    }
+
+    function showStep(name) {
+      showAll()
+      $('table').hide();
+      $("#step")
+        .show()
+        .find("#step_name")
+          .html(name)
+        .end().find(".screenshot").each(function() {
+          $(this).append($("#" + $(this).attr("browser") + name));
+        });
+    }
+
+    function showAll() {
+      $('table').hide();
+      $("#all")
+        .show()
+        .find(".screenshot").each(function(){
+          $(this).append($('#'+$(this).attr('image_id')))
+        });
+
+    }
+
+    $('.nav').click(function() {
+      if (browser = $(this).attr('browser')) {
+        showBrowser(browser);
+      } else if (basename = $(this).attr('basename')) {
+        showStep(basename);
+      } else {
+        showAll();
+      }
+    })
+
+    showAll();
+  })
+

@@ -2,10 +2,10 @@ require "base64"
 require "rubygems"
 require "spec"
 begin
-  gem 'sauce', '0.15.1'
+  gem 'sauce'
   require 'sauce'
 rescue LoadError => e
-  $stderr.puts "To enable sauce integration, run 'gem install sauce -v 0.15.1"
+  $stderr.puts "To enable sauce integration, run 'gem install sauce"
   raise e
 end
 
@@ -39,6 +39,8 @@ class ScreenshotExampleGroup < Spec::Example::ExampleGroup
 
   def capture_page(page, page_name)
     page.wait_for_page_to_load
+    $stdout.putc "."
+    $stdout.flush
     @@steps ||= Hash.new {|h,k| h[k] = 0}
     browser_hash = JSON.parse(page.browser_string)
     browser_identifier = "#{browser_hash["browser"]}-#{browser_hash["browser-version"]}-#{browser_hash["os"]}"

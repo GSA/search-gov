@@ -1,9 +1,12 @@
 require File.dirname(__FILE__) + "/support/sauce.rb"
 
 BROWSERS = [
-    Browser.new("Windows 2003", "iexploreproxy", "6."),
+    Browser.new("Windows 2003", "iexplore", "6."),
+    Browser.new("Windows 2003", "iexplore", "7."),
+    Browser.new("Windows 2003", "iexplore", "8."),
     Browser.new("Windows 2003", "firefox", "3."),
     Browser.new("Windows 2003", "safari", "4."),
+    Browser.new("Windows 2003", "googlechrome", ""),
 ]
 
 
