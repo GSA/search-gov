@@ -1,4 +1,4 @@
-INSTALL_SAUCE_MESSAGE = "To enable sauce integration, run 'gem install sauce && sauce configure  usa_search 5060039c-fa2b-403c-9fef-617142894173'"
+INSTALL_SAUCE_MESSAGE = "To enable sauce integration, run 'gem install sauce -v 0.15.1 && sauce configure  usa_search 5060039c-fa2b-403c-9fef-617142894173'"
 begin
   gem 'sauce', '0.15.1'
   require 'sauce'
