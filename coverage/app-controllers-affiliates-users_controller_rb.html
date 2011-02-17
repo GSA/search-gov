@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates-users_controller_rb.html">app/controllers/affiliates/users_controller.rb</a></td>
-            <td class='right_align'><tt>52</tt></td>
-            <td class='right_align'><tt>48</tt></td>
+            <td class='right_align'><tt>43</tt></td>
+            <td class='right_align'><tt>40</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -123,61 +123,61 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     @user = User.find_by_email(params[:email])</pre></td>
+            <td><pre><a name="line12">12</a>     @contact_name = params[:name]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>     if @user</pre></td>
+            <td><pre><a name="line13">13</a>     @user = User.find_by_email(params[:email])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>       if !@affiliate.users.include?(@user)</pre></td>
+            <td><pre><a name="line14">14</a>     if @user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>         @affiliate.users &lt;&lt; @user</pre></td>
+            <td><pre><a name="line15">15</a>       if @affiliate.users.include?(@user)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>         @email = nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>         flash.now[:success] = &quot;Successfully added #{@user.contact_name} (#{@user.email})&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>       elsif @affiliate.is_owner?(@user)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>         flash.now[:error] = &quot;That user is the current owner of this affiliate; you can not add them again.&quot;</pre></td>
+            <td><pre><a name="line16">16</a>         flash.now[:error] = &quot;That user is already associated with this affiliate; you can not add them again.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>       else</pre></td>
+            <td><pre><a name="line17">17</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>         flash.now[:error] = &quot;That user is already associated with this affiliate; you can not add them again.&quot;</pre></td>
+            <td><pre><a name="line18">18</a>         @affiliate.users &lt;&lt; @user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>         @email, @contact_name = nil, nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>         flash.now[:success] = &quot;Successfully added #{@user.contact_name} (#{@user.email})&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>         Emailer.deliver_new_affiliate_user(@affiliate, @user, current_user)</pre></td>
           </tr>
         
           
@@ -195,181 +195,127 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>       flash.now[:error] = &quot;Could not find user with email: #{@email}; please ask them to register as an affiliate with their email address.&quot;</pre></td>
+            <td><pre><a name="line24">24</a>       random_password = Digest::MD5.hexdigest(&quot;#{@email}:#{Time.now.to_s}&quot;)[0..8]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       @user = User.create(:email =&gt; @email, :contact_name =&gt; @contact_name, :government_affiliation =&gt; true, :password =&gt; random_password, :password_confirmation =&gt; random_password)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>       @affiliate.users &lt;&lt; @user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       flash.now[:success] = &quot;That user does not exist in the system; we've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>       Emailer.deliver_welcome_to_new_user_added_by_affiliate(@affiliate, @user, current_user)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>     end</pre></td>
+            <td><pre><a name="line29">29</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>     render :action =&gt; :index</pre></td>
+            <td><pre><a name="line30">30</a>     redirect_to affiliate_users_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>   end</pre></td>
+            <td><pre><a name="line31">31</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a> </pre></td>
+            <td><pre><a name="line32">32</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>   def destroy</pre></td>
+            <td><pre><a name="line33">33</a>   def destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>     @user = User.find(params[:id])</pre></td>
+            <td><pre><a name="line34">34</a>     @user = User.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>     if @affiliate.is_owner?(@user)</pre></td>
+            <td><pre><a name="line35">35</a>     @affiliate.users.delete(@user)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>       flash.now[:error] = &quot;You can't remove the owner of the affiliate from the list of users.&quot;</pre></td>
+            <td><pre><a name="line36">36</a>     flash.now[:success] = &quot;Removed #{@user.contact_name} from affiliate.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>     if @user == current_user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>       redirect_to home_affiliates_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>     else</pre></td>
+            <td><pre><a name="line39">39</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>       @affiliate.users.delete(@user)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>       flash.now[:success] = &quot;Removed #{@user.contact_name} from affiliate.&quot;</pre></td>
+            <td><pre><a name="line40">40</a>       redirect_to affiliate_users_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>     render :action =&gt; :index</pre></td>
+            <td><pre><a name="line41">41</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>   end</pre></td>
+            <td><pre><a name="line42">42</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>   def make_owner</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>     if @affiliate.is_owner?(current_user)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>       if user = @affiliate.users.find_by_id(params[:id])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>         @affiliate.update_attribute(:owner, user)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line44">44</a>       else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>         flash[:error] = &quot;That user is not an affiliate user. Only affiliate users can be become owners.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line46">46</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line47">47</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>       flash[:error] = &quot;Only the affiliate owner can reassign ownership.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line49">49</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line50">50</a>     redirect_to affiliate_users_path(@affiliate)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line51">51</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line52">52</a> end</pre></td>
+            <td><pre><a name="line43">43</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Feb 15 17:48:35 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Feb 17 11:21:25 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
