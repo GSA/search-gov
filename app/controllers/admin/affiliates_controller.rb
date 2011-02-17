@@ -8,6 +8,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.create.columns = [:name, :domains, :header, :footer, :affiliate_template]
     config.columns[:is_sayt_enabled].label = "Enable SAYT"
     config.columns[:is_affiliate_suggestions_enabled].label = "Enable Affiliate SAYT Suggestions"
+    config.columns[:affiliate_template].form_ui= :select
     config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
   end
 
