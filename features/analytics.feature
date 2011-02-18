@@ -9,7 +9,7 @@ Feature: Analytics Homepage
     And there is analytics data from "20090901" thru "20090911"
     When I am on the analytics homepage
     Then I should see "Analytics Center" within ".secondary-navbar"
-    And I should see "USASearch > Affiliate Program > Analytics Center"
+    And I should see "USASearch > Search.USA.gov > Analytics Center"
     And I should see "Data for September 11, 2009"
     And I should see "Most Popular Queries"
     And in "dqs1" I should see "aaaa"
@@ -20,7 +20,7 @@ Feature: Analytics Homepage
     And in "qas1" I should see "aaah"
     And in "qas2" I should see "aaao"
     When I follow "aaaa"
-    Then I should see "USASearch > Affiliate Program > Analytics Center > Query Timeline"
+    Then I should see "USASearch > Search.USA.gov > Analytics Center > Query Timeline"
 
   Scenario: No daily query stats available for any time period
     Given I am logged in with email "analyst@fixtures.org" and password "admin"

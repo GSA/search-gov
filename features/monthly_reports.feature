@@ -20,7 +20,7 @@ Feature: Monthly Reports
     And I am logged in with email "analyst@fixtures.org" and password "admin"
     When I am on the analytics homepage
     And I follow "Monthly Reports"
-    Then I should see "USASearch > Affiliate Program > Analytics Center > Monthly Reports"
+    Then I should see "USASearch > Search.USA.gov > Analytics Center > Monthly Reports"
     And I select "February 2010" as the report date
     And I press "Get Usage Stats"
     Then in "module_click_stats" I should see "FORM"
