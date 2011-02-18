@@ -16,7 +16,13 @@ class Emailer < ActionMailer::Base
 
   def welcome_to_new_user(user)
     setup_email(user.email) 
-    @subject += "Welcome to USA Search Services"
+    @subject += "Welcome to the USASearch Affiliate Program"
+    body(:user => user)
+  end
+  
+  def welcome_to_new_developer(user)
+    setup_email(user.email)
+    @subject += "Welcome to the USASearch Program: APIs and Web Services"
     body(:user => user)
   end
   

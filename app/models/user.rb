@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   after_create :welcome_user
   attr_accessor :government_affiliation
   attr_accessor :strict_mode
+  attr_accessor :skip_welcome_email
   attr_protected :strict_mode
 
   acts_as_authentic do |c|
@@ -50,7 +51,13 @@ class User < ActiveRecord::Base
   end
 
   def welcome_user
-    Emailer.deliver_welcome_to_new_user(self)
+    unless self.skip_welcome_email
+      if is_developer?
+        Emailer.deliver_welcome_to_new_developer(self)
+      else
+        Emailer.deliver_welcome_to_new_user(self)
+      end
+    end
   end
   
   def generate_api_key

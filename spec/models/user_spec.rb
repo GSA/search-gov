@@ -69,6 +69,21 @@ describe User do
       User.create!(@valid_attributes)
     end
     
+    context "when the user is a developer" do
+      it "should send the developer a welcome email" do
+        Emailer.should_receive(:deliver_welcome_to_new_developer).with(an_instance_of(User))
+        User.create!(@valid_developer_attributes)
+      end
+    end
+    
+    context "when the flag to not send an email is set to true" do
+      it "should not send any emails" do
+        Emailer.should_not_receive(:deliver_welcome_to_new_user)
+        Emailer.should_not_receive(:deliver_welcome_to_new_developer)
+        User.create!(@valid_attributes.merge(:skip_welcome_email => true))
+      end
+    end
+    
     it "should generate an API Key when creating a new user" do
       user = User.create!(@valid_attributes)
       user.api_key.should_not be_nil

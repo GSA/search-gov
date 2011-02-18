@@ -1,20 +1,20 @@
 Dear <%= @user.contact_name %>,
+ 
+Welcome to the USASearch Affiliate Program. You have successfully registered with the following account information.
+ 
+Name: <%= @user.contact_name %>
+Organization: <%= @user.organization_name %>
+E-mail: <%= @user.email %>
 
-Welcome to USA Search Services! You just signed up with the following information:
+Now that you've signed up for an account, visit the Affiliate Center to get started now. Adding a site is as easy as 1-2-3 at 
 
-Email: <%= @user.email %>
-<% if @user.is_affiliate_or_higher %>
-Organization name: <%= @user.organization_name %>
-<% end %>
-
-You can start using your account immediately. Just visit the link below:
-<% if @user.is_affiliate_or_higher %>
-  <%= affiliates_url %>
-<% else %>
-  <%= account_url %>
-<% end %>
-
-If you have any questions, have a look at the help page (http://searchsupport.usa.gov/) or get in touch with us via email at the following address:
-  <%= APP_EMAIL_ADDRESS %>
-
--USA Search Services
+https://search.usa.gov/affiliates/new
+ 
+Questions or comments? Visit our Help Desk at
+ 
+http://searchsupport.usa.gov
+ 
+or send us an email and we'll get back to you promptly.
+ 
+The USASearch Team
+***REMOVED***

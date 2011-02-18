@@ -59,6 +59,8 @@ describe Affiliates::UsersController do
       context "when the user added is not an existing user" do        
         it "should assign the email address and contact name, create a user with that information, and send a welcome email" do
           Emailer.should_receive(:deliver_welcome_to_new_user_added_by_affiliate)
+          Emailer.should_not_receive(:deliver_welcome_to_new_user)
+          Emailer.should_not_receive(:deliver_welcome_to_new_developer)
           post :create, :affiliate_id => @affiliate.id, :email => 'newuser@usa.gov', :name => 'New User'
           assigns[:email].should == 'newuser@usa.gov'
           assigns[:contact_name].should == 'New User'
