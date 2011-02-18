@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>202</tt></td>
-            <td class='right_align'><tt>173</tt></td>
+            <td class='right_align'><tt>208</tt></td>
+            <td class='right_align'><tt>178</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -1209,25 +1209,25 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line193">193</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line194">194</a> </pre></td>
+            <td><pre><a name="line193">193</a>   def breadcrumbs(breadcrumbs)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line195">195</a>   def ssl_protocol</pre></td>
+            <td><pre><a name="line194">194</a>     trail = link_to('USASearch', program_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line196">196</a>     SSL_PROTOCOL</pre></td>
+            <td><pre><a name="line195">195</a>     breadcrumbs.each { |breadcrumb| trail &lt;&lt; ' &gt; ' &lt;&lt; breadcrumb }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line196">196</a>     content_tag(:div,trail, :class =&gt; 'breadcrumb')</pre></td>
           </tr>
         
           
@@ -1245,31 +1245,67 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line199">199</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line199">199</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line200">200</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line200">200</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+            <td><pre><a name="line201">201</a>   def ssl_protocol</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line202">202</a>     SSL_PROTOCOL</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line201">201</a>   end</pre></td>
+            <td><pre><a name="line203">203</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line202">202</a> end</pre></td>
+            <td><pre><a name="line204">204</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line205">205</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line206">206</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line207">207</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line208">208</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Feb 17 11:21:26 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Feb 18 14:14:10 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

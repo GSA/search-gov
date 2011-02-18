@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-admin-users_controller_rb.html">app/controllers/admin/users_controller.rb</a></td>
-            <td class='right_align'><tt>11</tt></td>
-            <td class='right_align'><tt>11</tt></td>
+            <td class='right_align'><tt>17</tt></td>
+            <td class='right_align'><tt>17</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -69,19 +69,19 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     config.actions.exclude :create, :delete</pre></td>
+            <td><pre><a name="line3">3</a>     config.actions.exclude :create</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     config.columns = [:email, :contact_name, :affiliates, :last_login_at]</pre></td>
+            <td><pre><a name="line4">4</a>     config.columns = [:email, :contact_name, :affiliates, :last_login_at, :last_request_at, :created_at]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     config.update.columns = [:affiliates, :email, :contact_name, :organization_name, :address, :address2, :phone, :city, :state, :zip]</pre></td>
+            <td><pre><a name="line5">5</a>     config.update.columns = [:affiliates, :email, :contact_name, :organization_name, :address, :address2, :phone, :city, :state, :zip, :is_affiliate_admin, :is_analyst, :is_affiliate, :is_analyst_admin]</pre></td>
           </tr>
         
           
@@ -99,31 +99,67 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     config.columns[:affiliates].form_ui= :select</pre></td>
+            <td><pre><a name="line8">8</a>     config.columns[:affiliates].form_ui = :select</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     config.columns[:state].form_ui= :usa_state</pre></td>
+            <td><pre><a name="line9">9</a>     config.columns[:affiliates].options = { :draggable_lists =&gt; true }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>     config.columns[:state].form_ui = :select</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     config.columns[:state].options = ActionView::Helpers::FormOptionsHelper::US_STATES</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     config.columns[:is_affiliate_admin].description = &quot;Set this to true to make the user an Administrator, and give them access to the Admin Center.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>     config.columns[:is_analyst].description = &quot;Set this to true to make the user an Analyst, and give them access to the Analytics Center.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>     config.columns[:is_affiliate].description = &quot;Set this to true to make the user an Affiliate, and give them access to the Affiliate Center.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>     config.columns[:is_analyst_admin].description = &quot;Set this to true to make the user an Analytics Admin, and give them the ability to create and edit Query Groups.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a>   end</pre></td>
+            <td><pre><a name="line16">16</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a> end</pre></td>
+            <td><pre><a name="line17">17</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Feb 17 11:21:25 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Feb 18 14:14:10 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

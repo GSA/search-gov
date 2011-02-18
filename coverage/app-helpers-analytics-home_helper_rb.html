@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-analytics-home_helper_rb.html">app/helpers/analytics/home_helper.rb</a></td>
-            <td class='right_align'><tt>92</tt></td>
-            <td class='right_align'><tt>79</tt></td>
+            <td class='right_align'><tt>96</tt></td>
+            <td class='right_align'><tt>82</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -555,43 +555,43 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>   private</pre></td>
+            <td><pre><a name="line84">84</a>   def analytics_center_breadcrumbs(page_title = nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>   def make_query_timeline_path(query, is_grouped)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line86">86</a>     is_grouped ? query_timeline_path(query, :grouped =&gt; 1) : query_timeline_path(query)</pre></td>
+            <td><pre><a name="line85">85</a>     page_title.blank? ? breadcrumbs([link_to('Search.USA.gov', searchusagov_path), &quot;Analytics Center&quot;]) : breadcrumbs([link_to('Search.USA.gov', searchusagov_path), link_to(&quot;Analytics Center&quot;, analytics_home_page_path), page_title])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line87">87</a>   end</pre></td>
+            <td><pre><a name="line86">86</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line88">88</a> </pre></td>
+            <td><pre><a name="line87">87</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line89">89</a>   def s3_link(filename)</pre></td>
+            <td><pre><a name="line88">88</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line90">90</a>     AWS::S3::S3Object.url_for(filename, AWS_BUCKET_NAME, :use_ssl =&gt; true)</pre></td>
+            <td><pre><a name="line89">89</a>   def make_query_timeline_path(query, is_grouped)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line90">90</a>     is_grouped ? query_timeline_path(query, :grouped =&gt; 1) : query_timeline_path(query)</pre></td>
           </tr>
         
           
@@ -603,13 +603,37 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line92">92</a> end</pre></td>
+            <td><pre><a name="line92">92</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line93">93</a>   def s3_link(filename)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line94">94</a>     AWS::S3::S3Object.url_for(filename, AWS_BUCKET_NAME, :use_ssl =&gt; true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line95">95</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line96">96</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Feb 17 11:21:26 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Feb 18 14:14:10 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
