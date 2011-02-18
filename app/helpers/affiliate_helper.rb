@@ -5,12 +5,6 @@ module AffiliateHelper
     breadcrumbs(aff_breadcrumbs.flatten)
   end
 
-  def breadcrumbs(breadcrumbs)
-    trail = link_to('USASearch', program_path)
-    breadcrumbs.each { |breadcrumb| trail << ' > ' << breadcrumb }
-    content_tag(:div,trail, :class => 'breadcrumb')
-  end
-
   def affiliate_template_options(affiliate)
     options = "<option value=\"\">Default</option>"
     options << "<optgroup label = \"All Styles\">"

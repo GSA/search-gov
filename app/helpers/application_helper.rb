@@ -190,6 +190,12 @@ module ApplicationHelper
     render(:partial => 'shared/trending_searches') if params[:locale].blank? || params[:locale] == 'en'
   end
 
+  def breadcrumbs(breadcrumbs)
+    trail = link_to('USASearch', program_path)
+    breadcrumbs.each { |breadcrumb| trail << ' > ' << breadcrumb }
+    content_tag(:div,trail, :class => 'breadcrumb')
+  end
+
   private
 
   def ssl_protocol

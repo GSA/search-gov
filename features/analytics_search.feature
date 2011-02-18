@@ -13,7 +13,7 @@ Feature: Analytics Search
     | el pollution                 | 88    | usasearch.gov | es     |      1        |
     | social pollution             | 70    | noaa.gov      | en     |      1        |
     | finochio                    | 80    | usasearch.gov | en     |      1        |
-    And I am on the analytics homepage
+    And I am on the analytics queries page
     When I fill in "query" with "pollution"
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
@@ -55,7 +55,7 @@ Feature: Analytics Search
 
   Scenario: Doing a blank search from the analytics home page
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And I am on the analytics homepage
+    And I am on the analytics queries page
     And I press "Search"
     Then I should be on the analytics query search results page
     And I should see "Please enter search term(s)"
@@ -75,8 +75,8 @@ Feature: Analytics Search
     | hcreform  | medicaid           |
     | hcreform  | obama health care  |
     | no_dups   | blargh             |
-    When I am on the analytics homepage
-    When I fill in "query" with "health care"
+    When I am on the analytics queries page
+    And I fill in "query" with "health care"
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
     And I press "Search"
@@ -86,7 +86,7 @@ Feature: Analytics Search
     And I check "bulk_add_obama-health-care"
     And I select "hcreform" from "query_group_name"
     And I press "Add to Query Group"
-    Then I should be on the analytics homepage
+    Then I should be on the analytics queries page
     And I should see "2 queries added to group 'hcreform'; 1 duplicates ignored."
 
     When I fill in "query" with "health care"
@@ -96,12 +96,12 @@ Feature: Analytics Search
     And I check "bulk_add_obama-health-care"
     And I select "no_dups" from "query_group_name"
     And I press "Add to Query Group"
-    Then I should be on the analytics homepage
+    Then I should be on the analytics queries page
     And I should see "2 queries added to group 'no_dups'"
 
   Scenario: Getting empty results from a search on the analytics home page
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And I am on the analytics homepage
+    And I am on the analytics queries page
     When I fill in "query" with "abcdef"
     And I press "Search"
     Then I should be on the analytics query search results page
@@ -117,7 +117,7 @@ Feature: Analytics Search
     | obama health care           |    10   |       1        |
     | president                   |     4   |       1        |
     | ignore me                   |     1   |       1        |
-    And I am on the analytics homepage
+    And I am on the analytics queries page
     When I fill in "query" with "health care"
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago

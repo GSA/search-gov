@@ -10,6 +10,8 @@ Feature: Analytics Homepage
     When I am on the analytics homepage
     Then I should see "Analytics Center" within ".secondary-navbar"
     And I should see "USASearch > Search.USA.gov > Analytics Center"
+    When I follow "Queries"
+    Then I should see "USASearch > Search.USA.gov > Analytics Center > Queries"
     And I should see "Data for September 11, 2009"
     And I should see "Most Popular Queries"
     And in "dqs1" I should see "aaaa"
@@ -26,6 +28,7 @@ Feature: Analytics Homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And there are no daily query stats
     When I am on the analytics homepage
+    And I follow "Queries"
     Then in "dqs1" I should see "Not enough historic data"
     And in "dqs7" I should see "Not enough historic data"
     And in "dqs30" I should see "Not enough historic data"
@@ -54,6 +57,7 @@ Feature: Analytics Homepage
     | POTUS      | obama, president, obama health care, do not ignore me   |
     | hcreform   | health care bill, health care reform, obama health care |
     When I am on the analytics homepage
+    And I follow "Queries"
     Then in "dqgs1" I should see "hcreform"
     And in "dqgs1" I should see "1110"
     And in "dqgs1" I should see "POTUS"
@@ -63,6 +67,7 @@ Feature: Analytics Homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And no DailyContextualQueryTotals exist
     When I am on the analytics homepage
+    And I follow "Queries"
     Then I should see "Total USA.gov Most Popular Clickthrus: 0"
 
   Scenario: Viewing Daily Contextual Query Totals when data exists
@@ -72,5 +77,5 @@ Feature: Analytics Homepage
       | sets most recent date to yesterday                       | 10000   |
     And the DailyContextualQueryTotal for yesterday is "100"
     When I am on the analytics homepage
+    And I follow "Queries"
     Then I should see "Total USA.gov Most Popular Clickthrus: 100"
-

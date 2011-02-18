@@ -1,4 +1,4 @@
-= breadcrumbs([link_to('Search.USA.gov', searchusagov_path), link_to("Analytics Center", analytics_home_page_path), "Query Timeline"])
+= analytics_center_breadcrumbs 'Query Timeline'
 %h2= "Interest over time for '#{h @query}'#{@comparison_query ? h(' compared to \'' + @comparison_query + '\'') : ''}"
 - annotated_timeline_for(@timelines.first.dates, :width => 940, :height => 300) do |atl|
   - atl.add_line(@query, @timelines.first.series, :value => :y)

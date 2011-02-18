@@ -1,8 +1,12 @@
 class Analytics::HomeController < Analytics::AnalyticsController
   MAX_NUMBER_OF_BIG_MOVERS_TO_SHOW = 21
-  before_filter :establish_aws_connection
+  before_filter :establish_aws_connection, :only => [:queries]
 
   def index
+  end
+
+  def queries
+    @page_title = 'Queries'
     @day_being_shown = request["day"].nil? ? DailyQueryStat.most_recent_populated_date : request["day"].to_date
     @num_results_dqs = (request["num_results_dqs"] || "10").to_i
     @num_results_dqgs = (request["num_results_dqgs"] || "10").to_i
@@ -17,5 +21,4 @@ class Analytics::HomeController < Analytics::AnalyticsController
     @start_date = 1.month.ago.to_date
     @end_date = Date.yesterday
   end
-
 end

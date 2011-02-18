@@ -81,6 +81,10 @@ module Analytics::HomeHelper
     "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to 'csv', s3_link(filename)})" if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
   end
 
+  def analytics_center_breadcrumbs(page_title = nil)
+    page_title.blank? ? breadcrumbs([link_to('Search.USA.gov', searchusagov_path), "Analytics Center"]) : breadcrumbs([link_to('Search.USA.gov', searchusagov_path), link_to("Analytics Center", analytics_home_page_path), page_title])
+  end
+
   private
   def make_query_timeline_path(query, is_grouped)
     is_grouped ? query_timeline_path(query, :grouped => 1) : query_timeline_path(query)

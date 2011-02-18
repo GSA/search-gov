@@ -50,6 +50,7 @@ ActionController::Routing::Routes.draw do |map|
   end
   map.root :controller => "home"
   map.analytics_home_page '/analytics', :controller => "analytics/home"
+  map.analytics_queries '/analytics/queries', :controller => 'analytics/home', :action => 'queries'
   map.analytics_query_search '/analytics/query_search', :controller => "analytics/query_searches"
   map.query_timeline '/analytics/timeline/:query', :controller => 'analytics/timeline', :action => 'show', :requirements => { :query => /.*/ }
   map.monthly_reports '/analytics/monthly_reports', :controller => 'analytics/monthly_reports'

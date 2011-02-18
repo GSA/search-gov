@@ -1,4 +1,4 @@
-= breadcrumbs([link_to('Search.USA.gov', searchusagov_path), link_to("Analytics Center", analytics_home_page_path), "Query Search"])
+= analytics_center_breadcrumbs 'Query Search'
 .span-24
   = render :partial => "analytics/shared/search", :locals => { :path => analytics_query_search_path, :affiliate => nil }
 .span-16

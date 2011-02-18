@@ -18,7 +18,7 @@ class Analytics::QueryGroupsController < Analytics::AnalyticsAdminController
       end
     end
     flash[:notice] = flash_notice(query_terms, duplicate_count, query_group.name)
-    redirect_to analytics_home_page_path
+    redirect_to analytics_queries_path
   end
 
   def bulk_edit

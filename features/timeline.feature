@@ -11,7 +11,7 @@ Feature: Timeline for query
     | oxaluria                    | 90    |     1        |
     | finochio                    | 80    |     1        |
     | burmannia                   | 40    |     1        |
-    And I am on the analytics homepage
+    And I am on the analytics queries page
     Then I should see "cenobitic"
     And I should see "oxaluria"
     And I should see "finochio"

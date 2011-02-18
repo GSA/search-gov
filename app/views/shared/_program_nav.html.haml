@@ -27,59 +27,13 @@
       - display_for(:affiliate_admin) do
         %li
           = link_to 'Admin Center', admin_home_page_path
-          %ul
-            %li
-              = link_to 'Analytics', analytics_home_page_path
-            %li
-              = link_to 'Manage Affiliates', admin_affiliates_path
-            %li
-              = link_to 'Affiliate Broadcast', new_admin_affiliate_broadcast_path
-            %li
-              = link_to 'Affiliate Boosted', admin_affiliate_boosted_contents_path
-            %li
-              = link_to 'SAYT Filters', admin_sayt_filters_path
-            %li
-              = link_to 'SAYT Suggestions', admin_sayt_suggestions_path
-            %li
-              = link_to 'SAYT Misspellings', admin_misspellings_path
-            %li
-              = link_to 'SAYT Bulk Upload', new_admin_sayt_suggestions_upload_path
-            %li
-              =link_to("Boosted Content", admin_boosted_contents_path)
-            %li
-              = link_to 'Search Clickthrus', admin_clicks_path
-            %li
-              = link_to 'Top Searches', admin_top_searches_path
-            %li
-              = link_to 'Related Searches', admin_calais_related_searches_path
-            %li
-              = link_to 'Spotlights', admin_spotlights_path
-            %li
-              = link_to 'Gov Forms', admin_gov_forms_path
-            %li
-              = link_to 'FAQs', admin_faqs_path
-            %li
-              = link_to 'Superfresh URLs', admin_superfresh_urls_path
-            %li
-              = link_to 'Manage Users', admin_users_path
-            %li
-              =link_to("Mobile Pages", admin_site_pages_path)
-            %li
-              =link_to("Popular Image Queries", admin_popular_image_queries_path)
           .clear
-
       - display_for(:analyst) do
         %li
           = link_to 'Analytics Center', analytics_home_page_path
-          %ul
-            %li
-              = link_to 'Monthly Reports', monthly_reports_path
           .clear
       - display_for(:affiliate) do
         %li
           = link_to 'Affiliate Center', home_affiliates_path
-          %ul
-            %li
-              = link_to 'Dashboard', home_affiliates_path
           .clear
       .clear

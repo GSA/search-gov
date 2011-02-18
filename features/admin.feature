@@ -7,7 +7,6 @@ Feature:  Administration
     And I should see "Search.USA.gov" within ".nav"
     And I should see "USASearch > Search.USA.gov > Admin Center"
     And I should see "Search.USA.gov Admin Center"
-    And I should see "Boosted Content" within ".secondary-navbar"
     And I should see "Users" within ".main"
     And I should see "Affiliates"
     And I should see "Affiliate Broadcast"
@@ -23,17 +22,7 @@ Feature:  Administration
     And I should not see "Query Grouping"
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
-    And I should see "Mobile Pages" within ".secondary-navbar"
     And I should see "Sign Out"
-
-    When I follow "Affiliate Broadcast" within ".secondary-navbar"
-    Then I should be on the affiliate admin broadcast page
-
-    When I follow "Mobile Pages" within ".secondary-navbar"
-    Then I should be on the admin site pages page
-
-    When I follow "SAYT Bulk Upload" within ".secondary-navbar"
-    Then I should be on the admin sayt suggestions upload page
 
     When I follow "Sign Out"
     Then I should be on the login page

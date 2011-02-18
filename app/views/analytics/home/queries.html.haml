@@ -1,0 +1,64 @@
+= analytics_center_breadcrumbs @page_title
+.qtip.qtip-stylename
+  .qtip-tip{:rel => "cornerValue"}
+    .qtip-wrapper 
+      .qtip-contentWrapper
+        .qtip-title 
+          .qtip-button 
+          .qtip-content
+
+.span-24{:style => 'color: green;'}
+  = flash[:notice]
+.span-24
+  = render :partial => "analytics/shared/search", :locals => { :path => analytics_query_search_path, :affiliate => nil }
+
+.span-24
+  %h2= display_most_recent_date_available(@day_being_shown)
+
+- if @affiliate.nil? and @most_recent_day_biggest_movers.is_a? Array
+  .span-24.header-box
+    .span-6
+      .topmovers-title
+        %h2 Top Movers
+      #topmovers-tooltip
+        What's this?
+  - group_size = (@most_recent_day_biggest_movers.size / 3)+(@most_recent_day_biggest_movers.size % 3 == 0 ? 0 : 1)
+  - most_recent_day_biggest_movers_in_3_groups = @most_recent_day_biggest_movers.in_groups_of(group_size, false)
+  - most_recent_day_biggest_movers_in_3_groups.each_with_index do |col, idx|
+    .span-8{:id=>"qas#{idx}"}
+      = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => col , :content_name => "qas#{idx}", :heading => "", :affiliate => nil, :offset => most_recent_day_biggest_movers_in_3_groups.first.size * idx }
+
+.clear
+.header-box
+  .left 
+    Most Popular Queries
+  .right.last
+    %form
+      = display_select_for_window("dqs", @num_results_dqs, @day_being_shown)
+.span-8{:id=>"dqs1"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_terms , :content_name => "dqs1", :heading => "1 Day", :affiliate => nil}
+.span-8{:id=>"dqs7"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "Previous 7 Days", :affiliate => nil}
+.span-8.last{:id=>"dqs30"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Previous 30 Days", :affiliate => nil}
+.clear
+.header-box
+  .left
+    Most Popular Query Groups
+  .right.last
+    %form
+      = display_select_for_window("dqgs", @num_results_dqgs, @day_being_shown)
+.span-8{:id=>"dqgs1"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_query_groups , :content_name => "dqgs1", :heading => "1 Day", :affiliate => nil}
+.span-8{:id=>"dqgs7"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_query_groups , :content_name => "dqgs7", :heading => "Previous 7 Days", :affiliate => nil}
+.span-8.last{:id=>"dqgs30"}
+  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_query_groups , :content_name => "dqgs30", :heading => "Previous 30 Days", :affiliate => nil}
+
+#daily_top_queries.span-24
+  = analytics_daily_report_link(@day_being_shown)
+.clear
+.header-box
+  .left
+    %h2
+      = "Total USA.gov Most Popular Clickthrus: #{@contextual_query_total}"
