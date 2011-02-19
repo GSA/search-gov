@@ -200,6 +200,12 @@ describe Affiliates::AnalyticsController do
           response.should redirect_to(home_page_path)
         end
 
+        it "should assign @total_clicks" do
+          Click.should_receive(:monthly_totals_for_affiliate).and_return(100)
+          get :monthly_reports, :affiliate_id => @user.affiliates.first.id
+          assigns[:total_clicks].should == 100
+        end
+
         context "when rendering the page" do
           integrate_views
           before do

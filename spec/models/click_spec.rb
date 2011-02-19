@@ -18,4 +18,15 @@ describe Click do
   end
 
   should_validate_presence_of :queried_at, :url, :query, :results_source
+
+  describe "#monthly_totals_for_affiliate" do
+    it "should return total number of clicks for the given affiliate within the specified year and month" do
+      year = 2011
+      month = 1
+      start_datetime = Date.new(year,month,1).to_time
+      end_datetime = start_datetime + 1.month
+      Click.should_receive(:count).with(:conditions => {:clicked_at => start_datetime..end_datetime, :affiliate => 'aff'})
+      Click.monthly_totals_for_affiliate(year, month, 'aff')
+    end
+  end
 end

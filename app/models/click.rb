@@ -9,4 +9,10 @@ class Click < ActiveRecord::Base
                 :order => "count_all desc",
                 :having => "count_all >= 10")
   end
+
+  def self.monthly_totals_for_affiliate(year, month, affiliate)
+    start_datetime = Date.new(year,month,1).to_time
+    end_datetime = start_datetime + 1.month
+    Click.count(:conditions => {:clicked_at => start_datetime..end_datetime, :affiliate => affiliate})
+  end
 end
