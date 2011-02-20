@@ -60,6 +60,4 @@ These are the steps to take in order to upgrade the non-automatically-updating p
 ### Verify that the slave DB's on slave1/slave2/drmaster all are updating properly
     show slave status\G
 
-### Restart five Resque workers on CRON
-    cd /home/jwynne/usasearch/current
-    RAILS_ENV=production QUEUE=calais_related_search nohup rake environment resque:work &
+### Disable alarm suppression on Opsview and Rackspace
