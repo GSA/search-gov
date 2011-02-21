@@ -287,4 +287,32 @@ describe Affiliate do
       affiliate.staging_attributes[:staged_search_results_page_title] == affiliate.staged_search_results_page_title
     end
   end
+
+  describe "#cancel_staged_changes" do
+    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+
+    before do
+      @update_params = {:staged_domains => "updated.domain.gov",
+                        :staged_header => "<span>header</span>",
+                        :staged_footer => "<span>footer</span>",
+                        :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
+                        :staged_search_results_page_title => "updated - {query} - {sitename} Search Results"}
+      affiliate.update_attributes_for_staging(@update_params)
+    end
+
+    it "should overwrite all staged attributes with non staged attributes" do
+      affiliate.cancel_staged_changes
+      affiliate.staged_domains.should_not == @update_params[:staged_domains]
+      affiliate.staged_header.should_not == @update_params[:staged_header]
+      affiliate.staged_footer.should_not == @update_params[:staged_footer]
+      affiliate.staged_affiliate_template_id.should_not == @update_params[:staged_affiliate_template_id]
+      affiliate.staged_search_results_page_title.should_not == @update_params[:staged_search_results_page_title]
+    end
+
+    it "should not have staged content" do
+      affiliate.has_staged_content = true
+      affiliate.cancel_staged_changes
+      affiliate.has_staged_content = false
+    end
+  end
 end

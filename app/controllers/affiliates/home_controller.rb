@@ -1,7 +1,7 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :except=> [:index, :edit_site_information, :edit_look_and_feel, :how_it_works, :demo]
   before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel, :preview]
-  before_filter :setup_affiliate, :only=> [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :preview, :push_content_for, :destroy]
+  before_filter :setup_affiliate, :only=> [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :preview, :push_content_for, :cancel_staged_changes_for, :destroy]
 
   AFFILIATE_ADS = [
     {:display_name => "BROWARD.org",
@@ -156,8 +156,14 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def push_content_for
-    @affiliate.update_attributes_for_current(@affiliate.staging_attributes)
+    @affiliate.push_staged_changes
     flash[:success] = "Staged content is now visible"
+    redirect_to affiliate_path(@affiliate)
+  end
+
+  def cancel_staged_changes_for
+    @affiliate.cancel_staged_changes
+    flash[:success] = "Staged changes were successfully cancelled."
     redirect_to affiliate_path(@affiliate)
   end
 

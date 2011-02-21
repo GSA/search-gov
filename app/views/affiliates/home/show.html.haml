@@ -2,7 +2,7 @@
 
 %h1= "Site: #{h(@affiliate.display_name)}"
 
-.span-18
+.span-21
   %table.admin-table
     %tr
       %th
@@ -19,5 +19,7 @@
           = link_to "View staged", search_url(:affiliate=> @affiliate.name, :query => "gov", :staged => 1), :target => "_blank"
           |
           = button_to "Push Changes", push_content_for_affiliate_path(@affiliate, :affiliate_id => @affiliate.id)
+          |
+          = button_to "Cancel Changes", cancel_staged_changes_for_affiliate_path(@affiliate)
         |
         = button_to "Delete Site", affiliate_path(@affiliate), :title => "Delete this site", :confirm => "You are about to delete this site. Are you sure?", :method => :delete

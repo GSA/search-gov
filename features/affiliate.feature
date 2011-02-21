@@ -53,18 +53,31 @@ Feature: Affiliate clients
 
   Scenario: Visiting the account page as a logged-in user with affiliates
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | multi1 site      | multi1.gov       | two@bar.gov           | Two Bar             |
-      | multi2 site      | multi2.gov       | two@bar.gov           | Two Bar             |
+      | display_name     | name             | contact_email         | contact_name        | has_staged_content |
+      | foo site         | multifoo.gov     | two@bar.gov           | Two Bar             | true               |
+      | bar site         | multibar.gov     | two@bar.gov           | Two Bar             | false              |
+      | other site       | other.gov        | other@other.gov       | Other Bar           | false              |
     And I am logged in with email "two@bar.gov" and password "random_string"
     When I go to the user account page
-    Then I should see "multi1 site"
-    And I should see "multi2 site"
+    Then I should see "foo site"
+    And I should see "bar site"
+    And I should not see "other site"
     When I follow "Affiliate Center"
-    Then I should see "multi1 site" within ".admin-table"
-    And I should see "multi2 site" within ".admin-table"
-    And I should not see "multi1.gov"
-    And I should not see "multi2.gov"
+    Then I should see "foo site" within site named "foo site"
+    Then I should see "View current" within site named "foo site"
+    Then I should see "View staged" within site named "foo site"
+    Then I should see "Push Changes" button within site named "foo site"
+    Then I should see "Cancel Changes" button within site named "foo site"
+    Then I should see "Delete Site" button within site named "foo site"
+    Then I should see "bar site" within site named "bar site"
+    Then I should see "View current" within site named "bar site"
+    Then I should not see "View staged" within site named "bar site"
+    Then I should not see "Push Changes" button within site named "bar site"
+    Then I should see "Delete Site" button within site named "bar site"
+    And I should not see "other site"
+    And I should not see "multifoo.gov"
+    And I should not see "multibar.gov"
+    And I should not see "other.gov"
 
   Scenario: Adding a new affiliate
     Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
@@ -426,6 +439,75 @@ Feature: Affiliate clients
     And I press "Make Live"
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see "Search results page title can't be blank"
+
+  Scenario: Cancelling staged changes from the Affiliate Center page
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        | has_staged_content | header     | staged_header |
+      | foo site         | multifoo.gov     | two@bar.gov           | Two Bar             | true               | old header | new header    |
+    And I am logged in with email "two@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I press "Cancel Changes"
+    Then I should be on the affiliate page
+    And I should see "Staged changes were successfully cancelled."
+    And I should not see "View staged"
+    And I should not see "Push Changes" button
+    When I follow "Current Site"
+    Then I should see "old header"
+
+  Scenario: Cancelling staged changes from the site specific Affiliate Center page
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
+      | foo site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | data.gov       | Old header  | Old footer  | data.gov        | Old header      | Old footer    |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "foo site" affiliate page
+    And I follow "Site Information"
+    And I fill in "Domains to search" with "invalid.org"
+    And I press "Save for Preview"
+    Then I should see "Staged changes to your site successfully"
+    And I should see "Cancel Changes" button
+    When I follow "Look and feel"
+    And I fill in the following:
+      | Search results page title                                         | updated SERP title  |
+      | Enter HTML to customize the top of your search results page.      | New header          |
+      | Enter HTML to customize the bottom of your search results page.   | New footer          |
+    And I select "Basic Gray (A simple, clean gray page)" from "Template"
+    And I press "Save for Preview"
+    And I should see "Staged changes to your site successfully"
+    Then I should see "Cancel Changes" button
+    When I follow "View staged"
+    Then I should see the page with affiliate stylesheet "basic_gray"
+    And I should see "updated SERP title"
+    And I should see "New header"
+    And I should see "New footer"
+    And I should see "Sorry, no results found"
+
+    When I go to the "foo site" affiliate page
+    And I press "Cancel Changes"
+    Then I should be on the affiliate page
+    And I should see "Staged changes were successfully cancelled."
+    And I should not see "View staged"
+    And I should not see "Push Changes" button
+    When I follow "Current Site"
+    Then I should see the page with affiliate stylesheet "default"
+    And I should see "gov - foo site Search Results"
+    And I should see "Old header"
+    And I should see "Old footer"
+    And I should see 10 search results
+
+  Scenario: Cancelling staged changes from the Preview page
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        | has_staged_content | header     | staged_header |
+      | foo site         | multifoo.gov     | two@bar.gov           | Two Bar             | true               | old header | new header    |
+    And I am logged in with email "two@bar.gov" and password "random_string"
+    When I go to the "foo site" affiliate page
+    And I follow "Preview"
+    And I press "Cancel Staged Changes"
+    Then I should be on the affiliate page
+    And I should see "Staged changes were successfully cancelled."
+    And I should not see "View staged"
+    And I should not see "Push Changes" button
+    When I follow "Current Site"
+    Then I should see "old header"
 
   Scenario: Visiting the preview page
     Given the following Affiliates exist:

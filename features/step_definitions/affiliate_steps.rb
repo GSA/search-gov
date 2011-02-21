@@ -34,7 +34,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :is_sayt_enabled => hash["is_sayt_enabled"],
       :is_affiliate_suggestions_enabled => hash["is_affiliate_suggestions_enabled"],
       :search_results_page_title => hash["search_results_page_title"],
-      :staged_search_results_page_title => hash["staged_search_results_page_title"]
+      :staged_search_results_page_title => hash["staged_search_results_page_title"],
+      :has_staged_content => hash["has_staged_content"] || false
     )
     affiliate.users << user
   end
@@ -138,3 +139,7 @@ Then /^the affiliate "([^\"]*)" field should be set to use "([^\"]*)" template$/
   affiliate_template.name.should == template_name
 end
 
+Then /^(.+) within site named "([^"]*)"$/ do |step, site_display_name|
+  site = Affiliate.find_by_display_name site_display_name
+  Then %{#{step} within "tr#site_#{site.id}"}
+end

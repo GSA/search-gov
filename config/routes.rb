@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :except => [:new]
   map.resource :user_session
   map.resources :password_resets
-  map.resources :affiliates, :controller => 'affiliates/home', :member => { :push_content_for => :post, :embed_code => :get, :edit_site_information => :get, :update_site_information => :put, :edit_look_and_feel => :get, :update_look_and_feel => :put, :preview => :get }, :collection => { :home => :get, :how_it_works => :get, :demo => :get, :update_contact_information => :put }, :except => [:edit, :update] do |affiliate|
+  map.resources :affiliates, :controller => 'affiliates/home', :member => { :push_content_for => :post, :embed_code => :get, :edit_site_information => :get, :update_site_information => :put, :edit_look_and_feel => :get, :update_look_and_feel => :put, :preview => :get, :cancel_staged_changes_for => :post }, :collection => { :home => :get, :how_it_works => :get, :demo => :get, :update_contact_information => :put }, :except => [:edit, :update] do |affiliate|
     affiliate.resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy]
     affiliate.resources :boosted_contents, :controller => 'affiliates/boosted_contents', :collection => {:bulk => :post, :destroy_all => :delete}
     affiliate.resources :superfresh_urls, :controller => 'affiliates/superfresh', :only => [:index, :create, :destroy], :collection => { :upload => :post }

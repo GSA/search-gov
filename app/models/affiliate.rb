@@ -98,6 +98,21 @@ class Affiliate < ActiveRecord::Base
     }
   end
 
+  def push_staged_changes
+    self.update_attributes_for_current(self.staging_attributes)
+  end
+
+  def cancel_staged_changes
+    self.update_attributes({
+      :staged_domains => self.domains,
+      :staged_header => self.header,
+      :staged_footer => self.footer,
+      :staged_affiliate_template_id => self.affiliate_template_id,
+      :staged_search_results_page_title => self.search_results_page_title,
+      :has_staged_content => false
+    })
+  end
+
   class << self
     def human_attribute_name(attribute_key_name, options = {})
       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super

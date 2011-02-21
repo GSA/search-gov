@@ -496,9 +496,7 @@ describe Affiliates::HomeController do
       end
 
       it "should update @affiliate attributes for current" do
-        staging_attributes = {}
-        @affiliate.should_receive(:staging_attributes).and_return(staging_attributes)
-        @affiliate.should_receive(:update_attributes_for_current).with(staging_attributes)
+        @affiliate.should_receive(:push_staged_changes)
         post :push_content_for, :id => @affiliate.id
       end
 
@@ -507,7 +505,42 @@ describe Affiliates::HomeController do
         response.should redirect_to affiliate_path(@affiliate)
       end
     end
-   end
+  end
+
+  describe "do POST on #cancel_staged_changes_for" do
+    before do
+      @affiliate = affiliates(:power_affiliate)
+    end
+
+    it "should require affiliate login for cancel_staged_changes_for" do
+      post :cancel_staged_changes_for, :id => @affiliate.id
+      response.should redirect_to(login_path)
+    end
+
+    context "when logged in as an affiliate manager" do
+      before do
+        user = users(:affiliate_manager)
+        UserSession.create(user)
+        Affiliate.should_receive(:find).and_return(@affiliate)
+      end
+
+      it "should assign @affiliate" do
+        post :cancel_staged_changes_for, :id => @affiliate.id
+        assigns[:affiliate].should == @affiliate
+      end
+
+      it "should update @affiliate attributes for current" do
+        staging_attributes = {}
+        @affiliate.should_receive(:cancel_staged_changes)
+        post :cancel_staged_changes_for, :id => @affiliate.id
+      end
+
+      it "should redirect to affiliate specific page" do
+        post :cancel_staged_changes_for, :id => @affiliate.id
+        response.should redirect_to affiliate_path(@affiliate)
+      end
+    end
+  end
 
   describe "do GET on #preview" do
     it "should require affiliate login for preview" do
