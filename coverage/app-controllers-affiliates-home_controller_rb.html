@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates-home_controller_rb.html">app/controllers/affiliates/home_controller.rb</a></td>
-            <td class='right_align'><tt>175</tt></td>
-            <td class='right_align'><tt>156</tt></td>
+            <td class='right_align'><tt>181</tt></td>
+            <td class='right_align'><tt>161</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,7 +75,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :setup_affiliate, :only=&gt; [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :preview, :push_content_for, :destroy]</pre></td>
+            <td><pre><a name="line4">4</a>   before_filter :setup_affiliate, :only=&gt; [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :preview, :push_content_for, :cancel_staged_changes_for, :destroy]</pre></td>
           </tr>
         
           
@@ -1005,7 +1005,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line159">159</a>     @affiliate.update_attributes_for_current(@affiliate.staging_attributes)</pre></td>
+            <td><pre><a name="line159">159</a>     @affiliate.push_staged_changes</pre></td>
           </tr>
         
           
@@ -1035,79 +1035,115 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line164">164</a>   def embed_code</pre></td>
+            <td><pre><a name="line164">164</a>   def cancel_staged_changes_for</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line165">165</a>     @title = &quot;Embed Search Code - &quot;</pre></td>
+            <td><pre><a name="line165">165</a>     @affiliate.cancel_staged_changes</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line166">166</a>     @affiliate = Affiliate.find(params[:id])</pre></td>
+            <td><pre><a name="line166">166</a>     flash[:success] = &quot;Staged changes were successfully cancelled.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line167">167</a>     redirect_to affiliate_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line167">167</a>   end</pre></td>
+            <td><pre><a name="line168">168</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line168">168</a> </pre></td>
+            <td><pre><a name="line169">169</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line169">169</a>   def home</pre></td>
+            <td><pre><a name="line170">170</a>   def embed_code</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line170">170</a>     @title = &quot;Affiliate Dashboard - &quot;</pre></td>
+            <td><pre><a name="line171">171</a>     @title = &quot;Embed Search Code - &quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line171">171</a>     if params[&quot;said&quot;].present?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line172">172</a>       @affiliate = Affiliate.find(params[&quot;said&quot;])</pre></td>
+            <td><pre><a name="line172">172</a>     @affiliate = Affiliate.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line173">173</a>     end</pre></td>
+            <td><pre><a name="line173">173</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line174">174</a>   end</pre></td>
+            <td><pre><a name="line174">174</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line175">175</a>   def home</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line176">176</a>     @title = &quot;Affiliate Dashboard - &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line177">177</a>     if params[&quot;said&quot;].present?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line178">178</a>       @affiliate = Affiliate.find(params[&quot;said&quot;])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line175">175</a> end</pre></td>
+            <td><pre><a name="line179">179</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line180">180</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line181">181</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Feb 18 21:46:05 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Feb 22 14:56:46 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
