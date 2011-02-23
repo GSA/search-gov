@@ -1,6 +1,6 @@
 require "base64"
+require "pp"
 require "rubygems"
-require "spec"
 require "active_support"
 
 I18n.load_path = Dir[File.dirname(__FILE__) + '/../../config/locales/*.yml']
@@ -26,53 +26,50 @@ class Browser < Struct.new(:os, :browser, :browser_version)
   end
 end
 
-module SauceHelper
-  def capture_page(page, page_name, locale = nil)
-    page.wait_for_page_to_load
-    $stdout.putc "."
-    $stdout.flush
-    @@steps ||= Hash.new {|h,k| h[k] = 0}
-    browser_hash = JSON.parse(page.browser_string)
-    browser_identifier = "#{"#{locale}-" if locale}#{browser_hash["browser"]}-#{browser_hash["browser-version"]}-#{browser_hash["os"]}"
-    report_path = File.dirname(__FILE__) + "/../report/" + browser_identifier
+module UsaSearch
+  class Selenium < Sauce::Selenium
+    attr_reader :locale
 
-    png = page.capture_screenshot_to_string
-    FileUtils.mkdir_p(report_path)
-    File.open(report_path + "/%03i-%s-screenshot.png" % [@@steps[browser_identifier]+=1, page_name], 'wb') do |f|
-      f.write(Base64.decode64(png))
-      f.close
+    def initialize(options)
+      @locale = options.delete(:locale)
+      super(options)
+    end
+
+    def search_as_you_type(locator, text)
+      type(locator, firefox? ? "" : text)
+      type_keys(locator, text)
+    end
+
+    def firefox?
+      @config.browser == "firefox"
+    end
+
+    def capture_to_file(name, wait=true)
+      wait_for_page_to_load if wait
+      $stdout.putc "."
+      $stdout.flush
+      @@steps ||= Hash.new { |h, k| h[k] = 0 }
+
+      browser_identifier = "#{locale}-#{@config.browser}-#{@config.browser_version}-#{@config.os}"
+      report_path = File.dirname(__FILE__) + "/../report/" + browser_identifier
+
+      png = capture_screenshot_to_string
+      FileUtils.mkdir_p(report_path)
+      File.open(report_path + "/%03i-%s-screenshot.png" % [@@steps[browser_identifier]+=1, name], 'wb') do |f|
+        f.write(Base64.decode64(png))
+        f.close
+      end
     end
   end
 end
 
-class ScreenshotExampleGroup < Spec::Example::ExampleGroup
-  include SauceHelper
-  attr_reader :selenium
-  alias_method :page, :selenium
-
-  before :each do
-    description = [self.class.description, self.description].join(" ")
-    @selenium = Sauce::Selenium.new({:os => @browser.os, :browser => @browser.browser, :browser_version => @browser.browser_version, :job_name => "#{description}"})
-    @selenium.start
-  end
-
-  after :each do
-    @selenium.stop
-  end
-
-  Spec::Example::ExampleGroupFactory.register(:screenshot, self)
-
-end
-
 class Script < Struct.new(:browser, :locale)
-  include SauceHelper
-
   attr_reader :selenium
   alias_method :page, :selenium
 
   def before
     description = [locale, browser].join(" ")
-    @selenium = Sauce::Selenium.new({:os => browser.os, :browser => browser.browser, :browser_version => browser.browser_version, :job_name => "#{description}"})
+    @selenium = UsaSearch::Selenium.new({:os => browser.os, :browser => browser.browser, :browser_version => browser.browser_version, :job_name => "#{description}", :locale => locale})
     @selenium.start
   end
 
@@ -83,6 +80,7 @@ class Script < Struct.new(:browser, :locale)
   def run
     before
     run_script
+    run_en_only_script if locale.to_s == "en"
   ensure
     after
   end
