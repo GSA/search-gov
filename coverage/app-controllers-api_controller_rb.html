@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-api_controller_rb.html">app/controllers/api_controller.rb</a></td>
-            <td class='right_align'><tt>23</tt></td>
-            <td class='right_align'><tt>19</tt></td>
+            <td class='right_align'><tt>21</tt></td>
+            <td class='right_align'><tt>17</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -87,115 +87,103 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     @search = Search.new(@search_options)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>     @search.run</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line8">8</a>     render :json =&gt; @search</pre></td>
+            <td><pre><a name="line6">6</a>     render :json =&gt; ApiSearch.search(@search_options)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>   end</pre></td>
+            <td><pre><a name="line7">7</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a> </pre></td>
+            <td><pre><a name="line8">8</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>   def verify_api_key_and_load_affiliate</pre></td>
+            <td><pre><a name="line9">9</a>   def verify_api_key_and_load_affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     unless user = params[:api_key].present? &amp;&amp; User.find_by_api_key(params[:api_key])</pre></td>
+            <td><pre><a name="line10">10</a>     unless user = params[:api_key].present? &amp;&amp; User.find_by_api_key(params[:api_key])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       render :text =&gt; 'Invalid API Key', :status =&gt; 401</pre></td>
+            <td><pre><a name="line11">11</a>       render :text =&gt; 'Invalid API Key', :status =&gt; 401</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>       return false</pre></td>
+            <td><pre><a name="line12">12</a>       return false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>     end</pre></td>
+            <td><pre><a name="line13">13</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> </pre></td>
+            <td><pre><a name="line14">14</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>     unless @affiliate = user.affiliates.find_by_name(params[:affiliate_name])</pre></td>
+            <td><pre><a name="line15">15</a>     unless @affiliate = user.affiliates.find_by_name(params[:affiliate_name])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>       render :text =&gt; 'Unauthorized', :status =&gt; 403</pre></td>
+            <td><pre><a name="line16">16</a>       render :text =&gt; 'Unauthorized', :status =&gt; 403</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>       return false</pre></td>
+            <td><pre><a name="line17">17</a>       return false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>     end</pre></td>
+            <td><pre><a name="line18">18</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   end</pre></td>
+            <td><pre><a name="line19">19</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a> </pre></td>
+            <td><pre><a name="line20">20</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a> end</pre></td>
+            <td><pre><a name="line21">21</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Feb 24 15:07:40 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Feb 24 14:57:40 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

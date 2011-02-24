@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/pages_controller.rb</title>
+    <title>app/models/api_search.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/pages_controller.rb</h2>
+    <h2>app/models/api_search.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-pages_controller_rb.html">app/controllers/pages_controller.rb</a></td>
+            <td class="left_align"><a href="app-models-api_search_rb.html">app/models/api_search.rb</a></td>
             <td class='right_align'><tt>19</tt></td>
-            <td class='right_align'><tt>18</tt></td>
+            <td class='right_align'><tt>17</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,103 +57,103 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class PagesController &lt; HighVoltage::PagesController</pre></td>
+            <td><pre><a name="line1">1</a> class ApiSearch</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   layout 'pages'</pre></td>
+            <td><pre><a name="line2">2</a>   cattr_reader :redis</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   before_filter :set_page_title, :only =&gt; [:show]</pre></td>
+            <td><pre><a name="line3">3</a>   @@redis = Redis.new(:host =&gt; REDIS_HOST, :port =&gt; REDIS_PORT)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   PAGE_TITLES = {</pre></td>
+            <td><pre><a name="line5">5</a>   CACHE_EXPIRATION_IN_SECONDS = 5 * 60</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a>     :accessibility =&gt; &quot;Accessibility&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line6">6</a>     :api =&gt; &quot;APIs and Web Services&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line7">7</a>     :program =&gt; &quot;USASearch Program&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line8">8</a>     :recalls =&gt; &quot;Product Recall Data API&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line9">9</a>     :search =&gt; &quot;Search.USA.gov&quot;,</pre></td>
+            <td><pre><a name="line6">6</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     :textsize =&gt; I18n.t(:need_larger_text),</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line11">11</a>     :tos =&gt; &quot;Terms of Service for USASearch's APIs and Web Services&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a>     :widgets =&gt; &quot;Widgets&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a>   }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a> </pre></td>
+            <td><pre><a name="line7">7</a>   def self.search(options)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   private</pre></td>
+            <td><pre><a name="line8">8</a>     search = Search.new(options)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>   def set_page_title</pre></td>
+            <td><pre><a name="line9">9</a>     api_cache_key = &quot;API:#{options[:affiliate].name}:#{search.cache_key}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>     @page_title = PAGE_TITLES[params[:id].to_sym]</pre></td>
+            <td><pre><a name="line10">10</a>     if cached = @@redis.get(api_cache_key) rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>       cached</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line12">12</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>       search.run</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>       result = search.to_json</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>       @@redis.setex(api_cache_key, CACHE_EXPIRATION_IN_SECONDS, result) rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>       result</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line17">17</a>     end</pre></td>
           </tr>
         
           
@@ -171,7 +171,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Feb 24 14:57:40 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Feb 24 14:57:41 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
