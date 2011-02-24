@@ -96,26 +96,7 @@ class SearchesController < ApplicationController
       affiliate.footer = affiliate.staged_footer
       affiliate.affiliate_template_id = affiliate.staged_affiliate_template_id
     end
-    @search_options = {
-      :page => (params[:page].to_i - 1),
-      :query => params["query"],
-      :query_limit => params["query-limit"],
-      :query_quote => params["query-quote"],
-      :query_quote_limit => params["query-quote-limit"],
-      :query_or => params["query-or"],
-      :query_or_limit => params["query-or-limit"],
-      :query_not => params["query-not"],
-      :query_not_limit => params["query-not-limit"],
-      :file_type => params["filetype"],
-      :site_limits => params["sitelimit"],
-      :site_excludes => params["siteexclude"],
-      :filter => params["filter"],
-      :fedstates => params["fedstates"] || nil,
-      :affiliate => affiliate,
-      :scope_id => params["scope_id"] || nil,
-      :results_per_page => params["per-page"],
-      :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
-    }
+    @search_options = search_options_from_params(params).merge(:affiliate => affiliate)
   end
   
   def set_form_search_options

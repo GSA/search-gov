@@ -36,6 +36,17 @@ describe BoostedContent do
       duplicate = BoostedContent.new(@valid_attributes.merge(:affiliate => affiliates(:basic_affiliate)))
       duplicate.should be_valid
     end
+
+  end
+
+  describe "#as_json" do
+    it "should include title, url, and description" do
+      hash = BoostedContent.create!(@valid_attributes).as_json
+      hash[:title].should == @valid_attributes[:title]
+      hash[:url].should == @valid_attributes[:url]
+      hash[:description].should == @valid_attributes[:description]
+      hash.keys.length.should == 3
+    end
   end
   
   context "when the affiliate associated with a particular Boosted Content is destroyed" do

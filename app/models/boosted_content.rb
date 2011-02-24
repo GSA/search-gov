@@ -68,4 +68,8 @@ class BoostedContent < ActiveRecord::Base
   def sunspot_index
     Sunspot.index(self)
   end
+
+  def as_json(options = {})
+    {:title => title, :url => url, :description => description}
+  end
 end

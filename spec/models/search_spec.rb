@@ -1038,6 +1038,9 @@ describe Search do
   describe "#as_json" do
     context "when converting search response to json" do
       before do
+        affiliate = affiliates(:basic_affiliate)
+        affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description")
+        BoostedContent.reindex
         @search = Search.new(:query => 'obama')
         @search.run
         allow_message_expectations_on_nil
@@ -1058,6 +1061,16 @@ describe Search do
         it "should output an error if an error is detected" do
           json = @search.to_json
           json.should contain(/"error":"Some error"/)
+        end
+      end
+
+      context "when boosted content is present" do
+        before do
+          @search.instance_variable_set(:@boosted_contents, Struct.new(:results).new([1,2,3]))
+        end
+
+        it "should output as boosted results" do
+          @search.as_json[:boosted_results].should == [1,2,3]
         end
       end
     end
