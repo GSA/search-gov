@@ -9,7 +9,7 @@ class FormSearch < Search
   end
 
   def populate_additional_results(response)
-    self.gov_forms = GovForm.search_for(query)
+    @gov_forms = GovForm.search_for(query)
   end
 
   def scope

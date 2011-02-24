@@ -61,7 +61,7 @@ describe ImageSearch do
 
       context "when an error occurs" do
         before do
-          @search.error_message = "Some error"
+          @search.instance_variable_set :@error_message, "Some error"
         end
 
         it "should output an error if an error is detected" do

@@ -18,12 +18,13 @@ class Search
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
   VALID_SCOPES = %w{ PatentClass }
 
-  attr_accessor :query,
+  attr_reader :query,
                 :page,
                 :error_message,
                 :affiliate,
                 :total,
                 :results,
+                :sources,
                 :extra_image_results,
                 :startrecord,
                 :endrecord,
@@ -36,6 +37,7 @@ class Search
                 :gov_forms,
                 :recalls,
                 :results_per_page,
+                :offset,
                 :filter_setting,
                 :fedstates,
                 :scope_id,
@@ -44,38 +46,40 @@ class Search
 
   def initialize(options = {})
     options ||= {}
-    self.query = build_query(options)
-    self.affiliate = options[:affiliate]
-    self.page = [options[:page].to_i, 0].max
-    self.results_per_page = options[:results_per_page] || DEFAULT_PER_PAGE
-    self.results_per_page = self.results_per_page.to_i unless self.results_per_page.is_a?(Integer)
-    self.results_per_page = MAX_PER_PAGE if results_per_page > MAX_PER_PAGE
-    self.fedstates = options[:fedstates] || nil
-    self.scope_id = options[:scope_id] || nil
-    self.filter_setting = options[:filter] || nil
-    self.results, self.related_search = [], []
-    self.queried_at_seconds = Time.now.to_i
-    self.enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
+    @query = build_query(options)
+    @affiliate = options[:affiliate]
+    @page = [options[:page].to_i, 0].max
+    @results_per_page = options[:results_per_page] || DEFAULT_PER_PAGE
+    @results_per_page = @results_per_page.to_i unless @results_per_page.is_a?(Integer)
+    @results_per_page = MAX_PER_PAGE if results_per_page > MAX_PER_PAGE
+    @offset = @page * @results_per_page
+    @fedstates = options[:fedstates] || nil
+    @scope_id = options[:scope_id] || nil
+    @filter_setting = options[:filter] || nil
+    @results, @related_search = [], []
+    @queried_at_seconds = Time.now.to_i
+    @enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
+    @sources = bing_sources
   end
 
   def run
-    self.error_message = (I18n.translate :too_long) and return false if query.length > MAX_QUERYTERM_LENGTH
-    self.error_message = (I18n.translate :empty_query) and return false if query.blank?
+    @error_message = (I18n.translate :too_long) and return false if query.length > MAX_QUERYTERM_LENGTH
+    @error_message = (I18n.translate :empty_query) and return false if query.blank?
 
     begin
-      response = parse(perform(formatted_query, offset, enable_highlighting))
+      response = parse(perform)
     rescue BingSearchError => error
       RAILS_DEFAULT_LOGGER.warn "Error getting search results from Bing server: #{error}"
       return false
     end
 
-    self.total = hits(response)
+    @total = hits(response)
     unless total.zero?
-      self.results = paginate(process_results(response))
-      self.spelling_suggestion = spelling_results(response)
-      self.related_search = related_search_results
-      self.startrecord = page * results_per_page + 1
-      self.endrecord = startrecord + results.size - 1
+      @results = paginate(process_results(response))
+      @spelling_suggestion = spelling_results(response)
+      @related_search = related_search_results
+      @startrecord = page * results_per_page + 1
+      @endrecord = startrecord + results.size - 1
       populate_additional_results(response)
     end
     log_impression
@@ -109,9 +113,13 @@ class Search
     return (search.results.present? && spelling_ok)
   end
 
-  def sources
+  def bing_sources
     query_for_images = page < 1 && affiliate.nil? && PopularImageQuery.find_by_query(query).present?
     query_for_images ?  "Spell+Web+Image" : "Spell+Web"
+  end
+
+  def cache_key
+    [formatted_query, sources, offset, results_per_page, enable_highlighting].join(':')
   end
 
   protected
@@ -143,23 +151,23 @@ class Search
   def spelling_results(response)
     did_you_mean_suggestion = response.spell.results.first.value rescue nil
     cleaned_suggestion_without_bing_highlights = strip_extra_chars_from(did_you_mean_suggestion)
-    cleaned_suggestion_without_bing_highlights == self.query ? nil : cleaned_suggestion_without_bing_highlights
+    cleaned_suggestion_without_bing_highlights == @query ? nil : cleaned_suggestion_without_bing_highlights
   end
 
   def populate_additional_results(response)
-    self.boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
+    @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
     unless affiliate
-      self.faqs = Faq.search_for(query, I18n.locale.to_s)
+      @faqs = Faq.search_for(query, I18n.locale.to_s)
       if english_locale?
-        self.spotlight = Spotlight.search_for(query)
-        self.gov_forms = GovForm.search_for(query)
+        @spotlight = Spotlight.search_for(query)
+        @gov_forms = GovForm.search_for(query)
       end
       if page < 1
-        self.recalls = Recall.recent(query)
+        @recalls = Recall.recent(query)
       end
     end
     if response.has?(:image) && response.image.total > 0
-      self.extra_image_results = process_image_results(response)
+      @extra_image_results = process_image_results(response)
     end
   end
 
@@ -168,15 +176,13 @@ class Search
     WillPaginate::Collection.create(page + 1, results_per_page, pagination_total) { |pager| pager.replace(items) }
   end
 
-  def perform(query_string, offset, enable_highlighting = true)
-    query_sources = sources
-    cache_key = [query_string, query_sources, offset, results_per_page, enable_highlighting].join(':')
+  def perform
     response_body = @@redis.get(cache_key) rescue nil
     return response_body unless response_body.nil?
 
     ActiveRecord::Base.benchmark("[Bing Search]", Logger::INFO) do
       begin
-        uri = URI.parse(bing_query(query_string, query_sources, offset, results_per_page, enable_highlighting))
+        uri = URI.parse(bing_query(formatted_query, sources, offset, results_per_page, enable_highlighting))
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Get.new(uri.request_uri)
         req["User-Agent"] = USER_AGENT
@@ -228,10 +234,6 @@ class Search
     else
       "#{field_name}#{term}"
     end
-  end
-
-  def offset
-    page * results_per_page
   end
 
   def scope

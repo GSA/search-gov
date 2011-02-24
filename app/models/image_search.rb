@@ -20,7 +20,7 @@ class ImageSearch < Search
     "#{JSON_SITE}?" + params.join('&')
   end
 
-  def sources
+  def bing_sources
     "Spell+Image"
   end
 

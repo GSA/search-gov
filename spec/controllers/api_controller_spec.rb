@@ -44,15 +44,34 @@ describe ApiController do
 
     describe "options" do
       before :each do
-        get :search, :affiliate_name => affiliates(:basic_affiliate).name, :api_key => users(:affiliate_manager).api_key, :query => "fish"
+        @auth_params = {:affiliate_name => affiliates(:basic_affiliate).name, :api_key => users(:affiliate_manager).api_key}
       end
 
       it "should set the affiliate" do
+        get :search,  @auth_params
         assigns[:search_options][:affiliate].should == affiliates(:basic_affiliate)
       end
 
       it "should set the query" do
+        get :search,  @auth_params.merge(:query => "fish")
         assigns[:search_options][:query].should == "fish"
+      end
+
+      describe "paging" do
+        it "should set the page to the zero indexed page" do
+          get :search,  @auth_params.merge(:page => 3)
+          assigns[:search_options][:page].to_i.should == 2
+        end
+
+        it "should default the page to -1" do
+          get :search,  @auth_params
+          assigns[:search_options][:page].to_i.should == -1
+        end
+
+        it "should set results_per_page from per-page" do
+          get :search,  @auth_params.merge("per-page" => 15)
+          assigns[:search_options][:results_per_page].to_i.should == 15
+        end
       end
     end
 

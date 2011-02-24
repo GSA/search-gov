@@ -3,9 +3,7 @@ class ApiController < ApplicationController
 
   def search
     @search_options = search_options_from_params(params).merge(:affiliate => @affiliate)
-    @search = Search.new(@search_options)
-    @search.run
-    render :json => @search
+    render :json => ApiSearch.search(@search_options)
   end
 
   def verify_api_key_and_load_affiliate

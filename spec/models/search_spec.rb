@@ -1055,7 +1055,7 @@ describe Search do
 
       context "when an error occurs" do
         before do
-          @search.error_message = "Some error"
+          @search.instance_variable_set(:@error_message,  "Some error")
         end
 
         it "should output an error if an error is detected" do
@@ -1079,27 +1079,28 @@ describe Search do
   describe "caching in #perform(query_string, offset, enable_highlighting)" do
     before do
       @redis                   = Search.send(:class_variable_get, :@@redis)
-      @search                  = Search.new
-      @search.results_per_page = 99
+      @search                  = Search.new(:query => "foo", :results_per_page => 40)
+    end
+
+    it "should have a cache_key with bing query, sources, offset, count, highlighting" do
+      @search.cache_key.should == "(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Web:0:40:true"
     end
 
     it "should attempt to get the results from the Redis cache" do
-      @redis.should_receive(:get).with("foo:Source1+Source2:10:99:true")
-      @search.should_receive(:sources).and_return("Source1+Source2")
-      @search.send(:perform, "foo", 10, true)
+      @redis.should_receive(:get).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Web:0:40:true")
+      @search.send(:perform)
     end
 
     it "should use the Spell+Image source for image searches" do
-      @redis.should_receive(:get).with("foo:Spell+Image:10:55:true")
-      image_search = ImageSearch.new
-      image_search.results_per_page = 55
-      image_search.send(:perform, "foo", 10, true)
+      @redis.should_receive(:get).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Image:75:25:true")
+      image_search = ImageSearch.new(:query => "foo", :results_per_page => 25, :page => 3)
+      image_search.send(:perform)
     end
 
     context "when no results in cache" do
       it "should store newly fetched results in cache with appropriate expiry" do
-        @redis.should_receive(:setex).with("foobar:Spell+Web:10:99:true", Search::BING_CACHE_DURATION_IN_SECONDS, an_instance_of(String))
-        @search.send(:perform, "foobar", 10, true)
+        @redis.should_receive(:setex).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Web:0:40:true", Search::BING_CACHE_DURATION_IN_SECONDS, an_instance_of(String))
+        @search.send(:perform)
       end
     end
   end
