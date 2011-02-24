@@ -13,7 +13,13 @@ Feature: Mobile Search
 
   Scenario: Visiting the home page with a mobile device
     Given I am on the homepage
-    Then I should see "Contact your Government"
+    When I follow "Español"
+    Then the host url should be m.gobiernousa.gov
+
+  Scenario: Visiting the Spanish home page with a mobile device
+    Given I am on the Spanish homepage
+    When I follow "Search in English"
+    Then I should be on the homepage
 
   Scenario: Toggling full mode
     Given I am on the search page
@@ -50,6 +56,17 @@ Feature: Mobile Search
     Then I should be on the search page
     And I should see "Social Security"
     And I should see 3 search results
+    When I follow "USASearch Home"
+    Then I should be on the homepage
+
+  Scenario: Visiting the Spanish mobile SERP
+    Given I am on the Spanish homepage
+    When I fill in "query" with "educación"
+    And I submit the search form
+    Then I should be on the search page
+    And I should see "educación"
+    When I follow "USASearch Home"
+    Then the host url should be m.gobiernousa.gov
 
   Scenario: An advanced search on the mobile home page
     When I am on the advanced search page
@@ -121,6 +138,10 @@ Feature: Mobile Search
     Then I should see "USA.gov Mobile Inquiry" in the email subject
     And I should see "[FORMGEN]" in the email body
 
+    When I go to the mobile contact form page
+    And I follow "USASearch Home"
+    Then I should be on the homepage
+
   Scenario: User does not provide some information for contact form
     Given I am on the mobile contact form page
     And I fill in "Email" with "mobileuser@usa.gov"
@@ -158,6 +179,10 @@ Feature: Mobile Search
     When I open the email
     Then I should see "GobiernoUSA.gov Mobile Inquiry" in the email subject
     And I should see "[FORMGEN]" in the email body
+
+    When I go to the Spanish mobile contact form page
+    And I follow "USASearch Home"
+    Then the host url should be m.gobiernousa.gov
 
   Scenario: Emailing from the Spanish home page with problem
     Given I am on the Spanish homepage

@@ -1,5 +1,5 @@
 #logoHome.center
-  = link_to image_tag("/m/i/logo_mobile.png"), root_path
+  = link_to image_tag("/m/i/logo_mobile.png", :alt =>"GobiernoUSA.gov logo"), root_path
 
 #searchHome.dvCenter
   %a{:id => "search_box", :name => "search_box"}
@@ -13,7 +13,7 @@
   .navHeader
     = t(:usagov_resources)
   = mobile_menu_item t(:call_1800FEDINFO), "tel:+1-800-333-4636"
-  = mobile_menu_item t(:email_us), contact_form_path(:locale => I18n.locale)
+  = mobile_menu_item t(:email_us), contact_form_path(:locale => I18n.locale, :m => params[:m])
   = mobile_menu_item t(:visit_our_blog), "http://m.info.gov/6036&t=f9ceb3ded94727d482bd7f5d31ea7904"
   = mobile_menu_item t(:specific_audiences), t(:specific_audiences_url)
   = mobile_menu_item t(:citizen_services), t(:citizen_services_url)
@@ -23,9 +23,8 @@
 
 .group.clear
 .mobileFooter.pad5
-  - if I18n.locale.to_s == 'es'
-    = link_to(t(:search_in), home_page_path(:locale => other_locale_str))
-    |
+  = link_to(t(:search_in), url_for_mobile_home_page(other_locale_str))
+  |
   %a{:title => "USA.gov", :href => "http://www.usa.gov"}
     = t(:usagov_full_site)
 

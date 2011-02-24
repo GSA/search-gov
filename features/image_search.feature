@@ -39,7 +39,7 @@ Feature: Image search
 
   Scenario: Visiting the image page as a Spanish speaker
     Given I am on the image search page
-    And I follow "Busque en español"
+    And I follow "Español"
     Then I should see "Contáctenos"
     And I should see "Sugiera un enlace"
 

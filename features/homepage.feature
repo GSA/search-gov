@@ -39,7 +39,7 @@ Feature: Homepage
 
   Scenario: Visiting the homepage as a Spanish speaker
     Given I am on the homepage
-    And I follow "Busque en español"
+    And I follow "Español"
     Then I should see "Contáctenos"
     And I should see "Sugiera un enlace"
 
@@ -65,7 +65,7 @@ Feature: Homepage
 
   Scenario: Visiting Homepage as a Spanish speaker and needing larger text
     Given I am on the homepage
-    And I follow "Busque en español"
+    And I follow "Español"
     And I follow "¿Necesita letra grande?"
     Then I should see "Cómo cambiar el tamaño del texto"
     And I should see "In English"
@@ -95,7 +95,7 @@ Feature: Homepage
     | 4         | Trending Search 4  |
     | 5         | Trending Search 5  |
     And I am on the homepage
-    And I follow "Busque en español"
+    And I follow "Español"
     Then I should not see "Search Trends"
     And I should not see "Trending Search 1"
     And I should not see "Trending Search 2"

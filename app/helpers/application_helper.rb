@@ -196,6 +196,10 @@ module ApplicationHelper
     content_tag(:div,trail, :class => 'breadcrumb')
   end
 
+  def url_for_mobile_home_page(locale = I18n.locale)
+    locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale => locale, :m => params[:m])
+  end
+
   private
 
   def ssl_protocol

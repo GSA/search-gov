@@ -54,6 +54,8 @@ module NavigationHelpers
       advanced_search_path(:affiliate => $1)
     when /the mobile contact form page/
       contact_form_path
+    when /the Spanish mobile contact form page/
+      contact_form_path(:locale => 'es')
     when /the query groups admin page/
       analytics_query_groups_path
     when /the bulk edit query groups page/

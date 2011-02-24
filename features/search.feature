@@ -22,7 +22,7 @@ Feature: Search
     | http://localhost:3000 | Who is the president of the United States?    | Barack Obama  | 1       | en      |
     | http://localhost:3000 | Who is the president of the Estados Unidos?   | Barack Obama  | 1       | es      |
     And I am on the homepage
-    And I follow "Busque en español"
+    And I follow "Español"
     And I fill in "query" with "president"
     And I press "Buscar"
     Then I should be on the search page
@@ -51,7 +51,7 @@ Feature: Search
     | hello | Some Unique Related Term  | en     |
     | obama | el presidente mas guapo   | es     |
     And I am on the homepage
-    And I follow "Busque en español"
+    And I follow "Español"
     And I fill in "query" with "obama"
     And I press "Buscar"
     Then I should be on the search page
@@ -91,7 +91,7 @@ Feature: Search
       | FAQ Emergency Page      | http://www.aff.gov/faq  | More information on the emergency         | en      |
       | Spanish Emergency Page  | http://www.aff.gov/ese  | Spanish Emergency                         | es      |
     And I am on the homepage
-    And I follow "Busque en español"
+    And I follow "Español"
     And I fill in "query" with "emergency"
     And I press "Buscar"
     Then I should be on the search page

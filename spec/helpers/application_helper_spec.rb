@@ -335,4 +335,25 @@ describe ApplicationHelper do
       helper.highlight_like_solr("no matches found", [irs_highlight]).should == "no matches found"
     end
   end
+
+  describe "#url_for_mobile_home_page" do
+    it "should return http://m.gobiernousa.gov if locale is set to 'es' and no arguments are given" do
+      I18n.should_receive(:locale).and_return('es')
+      helper.url_for_mobile_home_page.should == 'http://m.gobiernousa.gov'
+    end
+
+    it "should return /search?locale=en if locale is set to 'alocale' and no arguments are given" do
+      I18n.should_receive(:locale).at_least(:once).and_return('alocale')
+      helper.url_for_mobile_home_page.should == '/?locale=alocale'
+    end
+
+    it "should return http://m.gobiernousa.gov when locale argument set to 'es'" do
+      helper.url_for_mobile_home_page('es').should == 'http://m.gobiernousa.gov'
+    end
+
+    it "should return /search?locale=alocale when locale argument set to 'alocale'" do
+      I18n.should_receive(:locale).at_least(:once).and_return('alocale')
+      helper.url_for_mobile_home_page('alocale').should == '/?locale=alocale'
+    end
+  end
 end
