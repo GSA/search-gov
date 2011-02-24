@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-application_controller_rb.html">app/controllers/application_controller.rb</a></td>
-            <td class='right_align'><tt>97</tt></td>
-            <td class='right_align'><tt>79</tt></td>
+            <td class='right_align'><tt>118</tt></td>
+            <td class='right_align'><tt>100</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -632,14 +632,140 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line97">97</a>   def search_options_from_params(params)</pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line97">97</a> end</pre></td>
+            <td><pre><a name="line98">98</a>     {</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line99">99</a>         :page =&gt; (params[:page].to_i - 1),</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line100">100</a>         :query =&gt; params[&quot;query&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line101">101</a>         :query_limit =&gt; params[&quot;query-limit&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line102">102</a>         :query_quote =&gt; params[&quot;query-quote&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line103">103</a>         :query_quote_limit =&gt; params[&quot;query-quote-limit&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line104">104</a>         :query_or =&gt; params[&quot;query-or&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line105">105</a>         :query_or_limit =&gt; params[&quot;query-or-limit&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line106">106</a>         :query_not =&gt; params[&quot;query-not&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line107">107</a>         :query_not_limit =&gt; params[&quot;query-not-limit&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line108">108</a>         :file_type =&gt; params[&quot;filetype&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line109">109</a>         :site_limits =&gt; params[&quot;sitelimit&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line110">110</a>         :site_excludes =&gt; params[&quot;siteexclude&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line111">111</a>         :filter =&gt; params[&quot;filter&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line112">112</a>         :fedstates =&gt; params[&quot;fedstates&quot;] || nil,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line113">113</a>         :scope_id =&gt; params[&quot;scope_id&quot;] || nil,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line114">114</a>         :results_per_page =&gt; params[&quot;per-page&quot;],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line115">115</a>         :enable_highlighting =&gt; params[&quot;hl&quot;].present? &amp;&amp; params[&quot;hl&quot;] == &quot;false&quot; ? false : true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line116">116</a>     }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line117">117</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line118">118</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Feb 22 14:56:46 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Feb 23 17:12:59 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
