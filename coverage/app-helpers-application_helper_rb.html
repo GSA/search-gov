@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>208</tt></td>
-            <td class='right_align'><tt>178</tt></td>
+            <td class='right_align'><tt>212</tt></td>
+            <td class='right_align'><tt>181</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -1245,31 +1245,31 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line199">199</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line200">200</a> </pre></td>
+            <td><pre><a name="line199">199</a>   def url_for_mobile_home_page(locale = I18n.locale)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line201">201</a>   def ssl_protocol</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line202">202</a>     SSL_PROTOCOL</pre></td>
+            <td><pre><a name="line200">200</a>     locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale =&gt; locale, :m =&gt; params[:m])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line203">203</a>   end</pre></td>
+            <td><pre><a name="line201">201</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line202">202</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line203">203</a>   private</pre></td>
           </tr>
         
           
@@ -1281,13 +1281,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line205">205</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line205">205</a>   def ssl_protocol</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line206">206</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+            <td><pre><a name="line206">206</a>     SSL_PROTOCOL</pre></td>
           </tr>
         
           
@@ -1299,13 +1299,37 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line208">208</a> end</pre></td>
+            <td><pre><a name="line208">208</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line209">209</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line210">210</a>     links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line211">211</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line212">212</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Feb 23 17:12:59 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Feb 24 15:07:40 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
