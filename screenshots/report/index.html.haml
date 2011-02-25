@@ -1,10 +1,13 @@
 - require 'json'
+- require 'pp'
+
+- def gsub_base_name(filename) filename.gsub("/", ":").gsub(/-screenshot\.png$/, "").gsub(/[^\w:-]*/, ""); end
 
 - browser_dirs = Dir["#{File.dirname(__FILE__)}/*"].select{|name|File.directory?(name)}
-- image_file_names = browser_dirs.map{|subdirectory| Dir["#{subdirectory}/???-*.png"] }
+- image_file_names = Dir["#{File.dirname(__FILE__)}/**/*.png"]
 
 - browsers = browser_dirs.map{|dir|File.basename(dir).gsub(/[^\w-]*/, "")}
-- image_basenames = image_file_names.flatten.map{|filename|File.basename(filename).gsub(/-screenshot\.png$/, "").gsub(/[^\w-]*/, "")}.uniq.sort
+- steps = image_file_names.map{|filename| gsub_base_name(File.basename(filename)) }.uniq.sort
 
 !!!html
 %head
@@ -12,104 +15,157 @@
   %style
     == body {font-family:sans-serif;}
     == table {display: none;}
-    == h1 span {font-size: 0.5em;}
-    == #all img.thumbnail { max-width: 512px; }
-    == #image_store { visibility: hidden; height: 1px; overflow: hidden; }
-    == .nav { cursor: pointer; text-decoration: underline; }
+    == h1 span, h1 a {font-size: 0.5em;}
+    == h1 .logo {float: left;}
+    == #all_steps img.thumbnail { max-width: 512px; }
+    == #image_store { display: none; }
 
 %body
   %h1
-    searchdemo.usa.gov Screenshots
+    %a.logo(href = "#all")
+      %img(src = "logo.gif")
+    Screenshots
     %span= "generated with saucelabs on #{Time.new.strftime("%b %d, %Y")}"
-    %span.nav (view all)
+    %a(href = "#all") (view all)
 
-  %table#all
+  %table#all_steps
     %tr
       %th
       - browsers.each do |browser|
         %th
-          .nav{:browser => browser}= browser
-    - image_basenames.each do |basename|
+          %a.nav{:href => "#browser/#{browser}"}= browser
+    - steps.each do |step|
       %tr
         %td
-          .nav{:basename => basename}= basename
+          %a.nav{:href => "#step/#{step}"}= step
         - browsers.each do |browser|
-          %td{:class => "screenshot", :image_id => browser + basename}
-
+          %td.screenshot{:shot_id => browser + ":" + step}
 
   %table#browser
     %tr
       %th Step
-      %th#browser_name
-
-    - image_basenames.each do |basename|
+      %th.browser_name
+    - steps.each do |step|
       %tr
         %td
-          .nav{:basename => basename}= basename
-        %td{:class => "screenshot", :basename => basename}
+          %a.nav{:href => "#step/#{step}"}= step
+        %td.screenshot{:step => step}
 
   %table#step
     %tr
       %th Browser
-      %th#step_name
-
+      %th.step_name
     - browsers.each do |browser|
       %tr
         %td
-          .nav{:browser => browser}= browser
-        %td{:class => "screenshot", :browser => browser}
+          %a.nav{:href => "#browser/#{browser}"}= browser
+        %td.screenshot{:browser => browser}
+
+  %table#shot
+    %tr
+      %th &nbsp;
+      %th
+        %a.browser_name.nav{:href => ""}
+    %tr
+      %td
+        %a.step_name.nav{:href => ""}
+      %td.screenshot
 
 #image_store
   - image_file_names.flatten.each do |filename|
     - relative_path = filename.split('/')[-2..-1].join("/")
-    %img.thumbnail{:src => relative_path, :id => relative_path.gsub(/-screenshot\.png$/, "").gsub(/[^\w-]*/, "")}
+    - id = gsub_base_name(relative_path)
+    %a{:href => "#shot/#{id}", :id => id}
+      %img.thumbnail{:src => "", "data-src" => relative_path}
 
 :javascript
   $(function() {
+    var currentHash;
+    setInterval(function() {
+      var hash = window.location.hash;
+      if (hash != currentHash) {
+        currentHash = hash;
+        var match = currentHash.match(/#?(\w*)\/?(.*)/);
+        var method = manipulationFunctions[match[1]] || manipulationFunctions.all;
+        method.apply(null, [match[2]]);
+        scrollTo(0,0);
+      }
+    }, 100);
+
+    var manipulationFunctions = {
+      all: showAll,
+      browser: showBrowser,
+      step: showStep,
+      shot: showShot
+    }
+
+    function removeAll() {
+      $("#all_steps")
+        .find(".screenshot").each(function(){
+          $(this).append($("#" + $(this).attr('shot_id').replace(/:/, "\\:")));
+        });
+    }
+
     function showBrowser(name) {
-      showAll()
       $('table').hide();
+      removeAll()
       $("#browser")
         .show()
-        .find("#browser_name")
+        .find(".browser_name")
           .html(name)
-        .end().find(".screenshot").each(function() {
-          $(this).append($("#" + name + $(this).attr("basename")));
+          .end()
+        .find(".screenshot").each(function() {
+          $(this).append(loadImage(name + ":" + $(this).attr("step")));
         });
     }
 
     function showStep(name) {
-      showAll()
       $('table').hide();
+      removeAll()
       $("#step")
         .show()
-        .find("#step_name")
+        .find(".step_name")
           .html(name)
-        .end().find(".screenshot").each(function() {
-          $(this).append($("#" + $(this).attr("browser") + name));
+          .end()
+        .find(".screenshot").each(function() {
+          $(this).append(loadImage($(this).attr("browser") + ":" + name));
         });
     }
 
     function showAll() {
       $('table').hide();
-      $("#all")
+      $("#all_steps")
         .show()
         .find(".screenshot").each(function(){
-          $(this).append($('#'+$(this).attr('image_id')))
+          $(this).append(loadImage($(this).attr('shot_id')));
         });
-
     }
 
-    $('.nav').click(function() {
-      if (browser = $(this).attr('browser')) {
-        showBrowser(browser);
-      } else if (basename = $(this).attr('basename')) {
-        showStep(basename);
-      } else {
-        showAll();
+    function showShot(shotId) {
+      $('table').hide();
+      removeAll();
+      var browserName = shotId.split(":")[0];
+      var stepName = shotId.split(":")[1];
+      $("#shot")
+        .show()
+        .find(".browser_name")
+          .html(browserName)
+          .attr("href", "#browser/" + browserName)
+          .end()
+        .find(".step_name")
+          .html(stepName)
+          .attr("href", "#step/" + stepName)
+          .end()
+        .find(".screenshot")
+          .append(loadImage(shotId));
+    }
+
+    function loadImage(id) {
+      var anchor = $("#" + id.replace(/:/, "\\:"));
+      var image = anchor.find("img");
+      if ((image.attr("src") ||"").length == 0) {
+        image.attr("src", image.attr("data-src"));
       }
-    })
-
-    showAll();
+      return anchor;
+    }
   })
-
