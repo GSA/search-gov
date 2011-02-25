@@ -2,6 +2,6 @@
   = '<form method="get" action="http://search.usa.gov/search">'
   = "  <input type=\"hidden\" name=\"affiliate\" value=\"#{ @affiliate.name }\" />"
   = '  <label for="query-field">Enter Search Term(s): </label>'
-  = '  <input type="text" name="query" id="query-field"/>'
+  = "  <input type=\"text\" name=\"query\" id=\"query-field\" #{ @affiliate.is_sayt_disabled? ? '' : 'autocomplete="off" class="usagov-search-autocomplete ui-autocomplete-input ui-corner-all"' }/>"
   = '  <input type="submit" value="Search" />'
   = '</form>'
