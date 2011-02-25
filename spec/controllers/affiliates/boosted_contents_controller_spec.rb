@@ -95,19 +95,18 @@ describe Affiliates::BoostedContentsController do
   describe "update" do
     before :each do
       @affiliate = affiliates(:basic_affiliate)
-      @boosted_content = @affiliate.boosted_contents.create!(:url => "a url", :title => "a title", :description => "a description")
+      @boosted_content = @affiliate.boosted_contents.create!(:url => "a url", :title => "a title", :description => "a description", :keywords => 'one, two, three')
       UserSession.create(@affiliate.users.first)
     end
 
     it "should redirect back to new on success" do
-      post :update, :affiliate_id => @affiliate.to_param, :id => @boosted_content.to_param, :boosted_content => {:url => "new url", :title => "new title", :description => "new description"}
-
+      post :update, :affiliate_id => @affiliate.to_param, :id => @boosted_content.to_param, :boosted_content => {:url => "new url", :title => "new title", :description => "new description", :keywords => 'four, five, six'}
       response.should redirect_to new_affiliate_boosted_content_path
-
       @boosted_content.reload
       @boosted_content.url.should == "new url"
       @boosted_content.title.should == "new title"
       @boosted_content.description.should == "new description"
+      @boosted_content.keywords.should == "four, five, six"
     end
 
     it "should render if errors" do

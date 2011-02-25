@@ -15,6 +15,17 @@
     %tr
       %td= f.label :description
       %td= f.text_area :description
+    %tr
+      %td= f.label :keywords
+      %td
+        = f.text_field :keywords, :size => 50
+        %br
+        %p{:style => 'font-size: 12px;'}
+          Please provide a comma-delineated list of terms that should trigger this boosted content. 
+          %br
+          Use this to provide matches for terms not in the description above.
+          %br
+          (i.e. "taxes, 1099, IRS")
   = f.hidden_field :id
   = submit_tag "Save Boosted Content"
   = link_to content_tag(:button, "Cancel"), new_affiliate_boosted_content_path(@affiliate)

@@ -7,7 +7,8 @@ describe BoostedContent do
       :url => "http://www.someaffiliate.gov/foobar",
       :title => "The foobar page",
       :description => "All about foobar, boosted to the top",
-      :affiliate => affiliates(:power_affiliate)
+      :affiliate => affiliates(:power_affiliate),
+      :keywords => 'unrelated, terms'
     }
   end
 
@@ -36,7 +37,14 @@ describe BoostedContent do
       duplicate = BoostedContent.new(@valid_attributes.merge(:affiliate => affiliates(:basic_affiliate)))
       duplicate.should be_valid
     end
-
+    
+    it "should allow nil keywords" do
+      BoostedContent.create!(@valid_attributes.merge(:keywords => nil))
+    end
+    
+    it "should allow an empty keywords value" do
+      BoostedContent.create!(@valid_attributes.merge(:keywords => ""))
+    end
   end
 
   describe "#as_json" do
@@ -136,6 +144,19 @@ describe BoostedContent do
       counts[:created].should == 2
       counts[:updated].should == 0
     end
-
+  end
+  
+  describe "#search_for" do
+    before do
+      @boosted_content = BoostedContent.create!(@valid_attributes)
+      @affiliate = affiliates(:power_affiliate)
+      Sunspot.commit
+    end
+    
+    it "should find a boosted content by keyword even if the term is not mentioned in the description" do
+      search = BoostedContent.search_for('unrelated', @affiliate)
+      search.total.should == 1
+      search.results.first.should == @boosted_content
+    end
   end
 end

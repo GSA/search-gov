@@ -10,6 +10,9 @@ class BoostedContent < ActiveRecord::Base
 
   searchable :auto_index => false do
     text :title, :description
+    text :keywords do
+      keywords.split(',') unless keywords.nil?
+    end
     string :affiliate_name do |boosted_content|
       if boosted_content.affiliate_id.nil?
         Affiliate::USAGOV_AFFILIATE_NAME
@@ -24,7 +27,7 @@ class BoostedContent < ActiveRecord::Base
 
   def self.search_for(query, affiliate = nil, locale = I18n.default_locale)
     search do
-      keywords query, :highlight => true
+      fulltext query, :highlight => true
       with(:affiliate_name, affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
       with(:locale, locale.to_s) if locale
       paginate :page => 1, :per_page => 3

@@ -41,12 +41,14 @@
             %th Title
             %th URL
             %th Description
+            %th Keywords
             %th Actions
           - @boosted_contents.each do |boosted_content|
             %tr{:class => cycle('even', 'odd')}
               %td= truncate(boosted_content.title, :length => 50)
               %td= link_to(shorten_url(boosted_content.url, 20), boosted_content.url, :target => "_blank", :title => boosted_content.url)
               %td= truncate(boosted_content.description, :length => 50)
+              %td= truncate(boosted_content.keywords, :length => 50)
               %td.actions
                 = link_to("Edit", edit_affiliate_boosted_content_path(@affiliate, boosted_content))
                 %br
