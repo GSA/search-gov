@@ -7,13 +7,16 @@ describe Misspelling do
 
     should_validate_presence_of :wrong, :rite
     should_validate_uniqueness_of :wrong
+    should_validate_length_of :wrong, :within=> (3..80)
+    should_not_allow_values_for :wrong, "two words"
+    should_allow_values_for :wrong, "wwwgsa.gov", "español"
 
     it "should create a new instance given valid attributes" do
-      Misspelling.create!(:wrong => "value for wrong", :rite => "value for rite")
+      Misspelling.create!(:wrong => "valueforwrong", :rite => "value for rite")
     end
 
     it "should strip whitespace from wrong/rite before inserting in DB" do
-      wrong = " leading and traleing whitespaces "
+      wrong = " leadingandtraleingwhitespaces "
       rite = " leading and trailing whitespaces "
       misspelling = Misspelling.create!(:wrong=> wrong, :rite=>rite)
       misspelling.wrong.should == wrong.strip
@@ -26,11 +29,11 @@ describe Misspelling do
       Misspelling.find_by_wrong("caps").rite.should == "caps"
     end
 
-    it "should squish multiple whitespaces between words in wrong/rite before entering into DB" do
-      wrong = "two  spayces"
+    it "should squish multiple whitespaces between words in rite before entering into DB" do
+      wrong = "twospayces"
       rite = "two  spaces"
       misspelling = Misspelling.create!(:wrong=> wrong, :rite=>rite)
-      misspelling.wrong.should == "two spayces"
+      misspelling.wrong.should == "twospayces"
       misspelling.rite.should == "two spaces"
     end
   end

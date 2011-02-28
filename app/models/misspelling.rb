@@ -3,6 +3,8 @@ class Misspelling < ActiveRecord::Base
 
   validates_presence_of :wrong, :rite
   validates_uniqueness_of :wrong
+  validates_length_of :wrong, :within=> (3..80)
+  validates_format_of :wrong, :with=> /^[\w\.'-]+$/iu
 
   after_save :spell_check_existing_sayt_suggestions
 
