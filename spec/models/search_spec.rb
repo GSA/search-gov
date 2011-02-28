@@ -822,7 +822,21 @@ describe Search do
         @search.run
       end
 
-      it "should strip them all out, leaving site: terms in the suggestion" do
+      it "should not have a spelling suggestion" do
+        @search.spelling_suggestion.should be_nil
+      end
+    end
+
+    context "when the Bing spelling suggestion is identical to the original query except for a hyphen" do
+      before do
+        @search = Search.new(:query => 'bio-tech')
+        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_a_hyphen.json")
+        parsed  = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
+        @search.run
+      end
+
+      it "should not have a spelling suggestion" do
         @search.spelling_suggestion.should be_nil
       end
     end

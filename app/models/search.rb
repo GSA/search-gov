@@ -151,7 +151,8 @@ class Search
   def spelling_results(response)
     did_you_mean_suggestion = response.spell.results.first.value rescue nil
     cleaned_suggestion_without_bing_highlights = strip_extra_chars_from(did_you_mean_suggestion)
-    cleaned_suggestion_without_bing_highlights == @query ? nil : cleaned_suggestion_without_bing_highlights
+    cleaned_query = strip_extra_chars_from(@query)
+    cleaned_suggestion_without_bing_highlights == cleaned_query ? nil : cleaned_suggestion_without_bing_highlights
   end
 
   def populate_additional_results(response)
@@ -358,6 +359,6 @@ class Search
   end
 
   def strip_extra_chars_from(did_you_mean_suggestion)
-    did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').gsub(/\xEE\x80(\x80|\x81)/, '').strip.squish unless did_you_mean_suggestion.nil?
+    did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').gsub(/\xEE\x80(\x80|\x81)/, '').gsub('-', '').strip.squish unless did_you_mean_suggestion.nil?
   end
 end
