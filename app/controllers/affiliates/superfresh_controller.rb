@@ -31,7 +31,7 @@ class Affiliates::SuperfreshController < Affiliates::AffiliatesController
   
   def upload
     file = params[:superfresh_urls]
-    if VALID_CONTENT_TYPES.include?(file.content_type)
+    if file.present? and VALID_CONTENT_TYPES.include?(file.content_type)
       begin    
         uploaded_count = SuperfreshUrl.process_file(file, @affiliate)
         if uploaded_count > 0

@@ -99,3 +99,7 @@ Feature: Affiliate Superfresh Interface
     And I press "Upload"
     Then I should be on the affiliate superfresh page
     And I should see "Invalid file format"
+    
+    When I press "Upload"
+    Then I should be on the affiliate superfresh page
+    And I should see "Invalid file format"    
