@@ -315,4 +315,8 @@ describe Affiliate do
       affiliate.has_staged_content = false
     end
   end
+
+  describe "#ordered" do
+    it { should have_scope(:ordered) }
+  end
 end

@@ -16,6 +16,7 @@ class Affiliate < ActiveRecord::Base
   before_validation_on_create :set_default_name
   before_save :set_default_affiliate_template
   before_validation_on_create :set_default_search_results_page_title, :set_default_staged_search_results_page_title
+  named_scope :ordered, {:order => 'display_name ASC'}
   
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}

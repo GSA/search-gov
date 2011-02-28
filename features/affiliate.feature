@@ -79,6 +79,19 @@ Feature: Affiliate clients
     And I should not see "multibar.gov"
     And I should not see "other.gov"
 
+  Scenario: Visiting the affiliate center as an affiliate with multiple sites
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email            | contact_name        | has_staged_content |
+      | zzz site         | zzz.gov          | sorted@bar.gov           | Two Bar             | true               |
+      | aaa site         | aaa.gov          | sorted@bar.gov           | Two Bar             | false              |
+      | ccc site         | ccc.gov          | sorted@bar.gov           | Two Bar             | false              |
+      | 111 site         | 111.gov          | sorted@bar.gov           | Two Bar             | false              |
+      | bar site         | multibar.gov     | sorted@bar.gov           | Two Bar             | false              |
+    And I am logged in with email "sorted@bar.gov" and password "random_string"
+    When I am on the affiliate admin page
+    Then I should see sorted sites in the left navigation panel
+    Then I should see sorted sites in the site list
+
   Scenario: Adding a new affiliate
     Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
     When I go to the affiliate admin page

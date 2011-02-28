@@ -16,7 +16,7 @@
             Name
           %th 
             Manage
-        - @current_user.affiliates.each do |affiliate|
+        - @current_user.affiliates.ordered.each do |affiliate|
           %tr{:id => "site_#{affiliate.id}", :class => cycle('even', 'odd')}
             %td
               = link_to(h(affiliate.display_name), affiliate_path(affiliate))

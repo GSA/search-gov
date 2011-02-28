@@ -38,7 +38,7 @@
               .title-row
                 Selected Site
               .content-box
-                = select("affiliate", "id", current_user.affiliates.all.collect {|p| [ p.display_name, p.id ] }, {:prompt => 'Select site'}, :class =>"affiliate-dropdown")
+                = select("affiliate", "id", current_user.affiliates.ordered.all.collect {|p| [ p.display_name, p.id ] }, {:prompt => 'Select site'}, :class =>"affiliate-dropdown")
             - if current_user.affiliates.empty?
               %p= link_to "Add New Site", new_affiliate_path
             - else
