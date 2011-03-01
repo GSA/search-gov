@@ -342,10 +342,48 @@ Feature: Affiliate clients
     Then I should see "Site Information" within "title"
     And I should see "Site name can't be blank"
 
+  Scenario: Editing site information where staged/live domains are not sync and has_staged_content is false
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     | affiliate_template_name | search_results_page_title     | domains        | header      | footer      | staged_affiliate_template_name | staged_search_results_page_title   | staged_domains   | staged_header    | staged_footer  | has_staged_content |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | Default                 | Live Search Results           | data.gov       | Live header | Live footer | Basic Gray                     | Staged Search Results              | stagedagency.gov | Staged header    | Staged footer  | false              |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Site information"
+    Then the "Domains to search" field should contain "data.gov"
+    When I press "Save for Preview"
+    Then I should be on the "new aff site" affiliate page
+    And I should see "Staged changes to your site successfully"
+    When I follow "View staged"
+    Then I should see the page with affiliate stylesheet "default"
+    And I should not see the page with affiliate stylesheet "basic_gray"
+    And I should see 10 search results
+    And I should see "Live Search Results"
+    And I should see "Live header"
+    And I should see "Live footer"
+
+  Scenario: Editing site information where staged/live domains are not sync and has_staged_content is true
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     | affiliate_template_name | search_results_page_title     | domains        | header      | footer      | staged_affiliate_template_name | staged_search_results_page_title   | staged_domains   | staged_header    | staged_footer  | has_staged_content |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | Default                 | Live Search Results           | data.gov       | Live header | Live footer | Basic Gray                     | Staged Search Results              | stagedagency.gov | Staged header    | Staged footer  | true               |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Site information"
+    Then the "Domains to search" field should contain "stagedagency.gov"
+    When I press "Save for Preview"
+    Then I should be on the "new aff site" affiliate page
+    And I should see "Staged changes to your site successfully"
+    When I follow "View staged"
+    Then I should see the page with affiliate stylesheet "basic_gray"
+    And I should not see the page with affiliate stylesheet "default"
+    And I should see "Sorry, no results found"
+    And I should see "Staged Search Results"
+    And I should see "Staged header"
+    And I should see "Staged footer"
+
   Scenario: Visiting the look and feel page
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -363,7 +401,7 @@ Feature: Affiliate clients
   Scenario: Editing look and feel and saving it for preview
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -418,7 +456,7 @@ Feature: Affiliate clients
   Scenario: Editing look and feel and make it live
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer    |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -453,6 +491,50 @@ Feature: Affiliate clients
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see "Search results page title can't be blank"
 
+  Scenario: Editing look and feel where staged/live domains are not sync and has_staged_content is false
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     | affiliate_template_name | search_results_page_title     | domains        | header      | footer      | staged_affiliate_template_name | staged_search_results_page_title   | staged_domains   | staged_header    | staged_footer  | has_staged_content |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | Default                 | Live Search Results           | data.gov       | Live header | Live footer | Basic Gray                     | Staged Search Results              | stagedagency.gov | Staged header    | Staged footer  | false              |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    Then the "Search Results Page Title" field should contain "Live Search Results"
+    And the affiliate "Template" field should be set to use "Default" template
+    And the "Enter HTML to customize the top of your search results page." field should contain "Live header"
+    And the "Enter HTML to customize the bottom of your search results page." field should contain "Live footer"
+    When I press "Save for Preview"
+    Then I should be on the "new aff site" affiliate page
+    And I should see "Staged changes to your site successfully"
+    When I follow "View staged"
+    Then I should see the page with affiliate stylesheet "default"
+    And I should not see the page with affiliate stylesheet "basic_gray"
+    And I should see "Live Search Results"
+    And I should see 10 search results
+    And I should see "Live header"
+    And I should see "Live footer"
+
+  Scenario: Editing look and feel where staged/live domains are not sync and has_staged_content is true
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     | affiliate_template_name | search_results_page_title     | domains        | header      | footer      | staged_affiliate_template_name | staged_search_results_page_title   | staged_domains   | staged_header    | staged_footer  | has_staged_content |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | Default                 | Live Search Results           | data.gov       | Live header | Live footer | Basic Gray                     | Staged Search Results              | stagedagency.gov | Staged header    | Staged footer  | true               |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    Then the "Search Results Page Title" field should contain "Staged Search Results"
+    And the affiliate "Template" field should be set to use "Basic Gray" template
+    And the "Enter HTML to customize the top of your search results page." field should contain "Staged header"
+    And the "Enter HTML to customize the bottom of your search results page." field should contain "Staged footer"
+    When I press "Save for Preview"
+    Then I should be on the "new aff site" affiliate page
+    And I should see "Staged changes to your site successfully"
+    When I follow "View staged"
+    Then I should see the page with affiliate stylesheet "basic_gray"
+    And I should not see the page with affiliate stylesheet "default"
+    And I should see "Staged Search Results"
+    And I should see "Sorry, no results found"
+    And I should see "Staged header"
+    And I should see "Staged footer"
+
   Scenario: Cancelling staged changes from the Affiliate Center page
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        | has_staged_content | header     | staged_header |
@@ -470,7 +552,7 @@ Feature: Affiliate clients
   Scenario: Cancelling staged changes from the site specific Affiliate Center page
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
-      | foo site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | data.gov       | Old header  | Old footer  | data.gov        | Old header      | Old footer    |
+      | foo site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | data.gov       | Old header  | Old footer  | data.gov        | Old header       | Old footer     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "foo site" affiliate page
     And I follow "Site Information"
@@ -902,7 +984,7 @@ Feature: Affiliate clients
   Scenario: Uploading SAYT Suggestions for an affiliate
     Given the following Affiliates exist:
      | display_name     | name             | contact_email           | contact_name        | is_sayt_enabled | is_affiliate_suggestions_enabled |
-     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |  true            | true                             |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            | true            | true                             |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"

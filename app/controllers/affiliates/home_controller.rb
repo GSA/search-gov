@@ -2,6 +2,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :except=> [:index, :edit_site_information, :edit_look_and_feel, :how_it_works, :demo]
   before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel, :preview]
   before_filter :setup_affiliate, :only=> [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :preview, :push_content_for, :cancel_staged_changes_for, :destroy]
+  before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel]
 
   AFFILIATE_ADS = [
     {:display_name => "BROWARD.org",
@@ -177,5 +178,10 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     if params["said"].present?
       @affiliate = Affiliate.find(params["said"])
     end
+  end
+
+  protected
+  def sync_affiliate_staged_attributes
+    @affiliate.sync_staged_attributes
   end
 end

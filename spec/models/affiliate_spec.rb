@@ -319,4 +319,60 @@ describe Affiliate do
   describe "#ordered" do
     it { should have_scope(:ordered) }
   end
+
+  describe "#sync_staged_attributes" do
+    it "should overwrite staged attributes with live attributes if has_staged_content is false" do
+      affiliate = Affiliate.create!(@valid_create_attributes.merge(:has_staged_content => false,
+                                                                   :domains => "livedomain.gov",
+                                                                   :staged_domains => "stageddomain.gov",
+                                                                   :affiliate_template_id => affiliate_templates(:basic_gray).id,
+                                                                   :staged_affiliate_template_id => affiliate_templates(:default).id,
+                                                                   :search_results_page_title => "live SERP title",
+                                                                   :staged_search_results_page_title => "staged SERP title",
+                                                                   :header => "live header",
+                                                                   :staged_header => "staged header",
+                                                                   :footer => "live footer",
+                                                                   :staged_footer => "staged footer"))
+      affiliate.has_staged_content.should == false
+      affiliate.sync_staged_attributes
+      affiliate.has_staged_content.should == false
+      affiliate.domains.should == "livedomain.gov"
+      affiliate.staged_domains.should == "livedomain.gov"
+      affiliate.affiliate_template_id.should == affiliate_templates(:basic_gray).id
+      affiliate.staged_affiliate_template_id.should == affiliate_templates(:basic_gray).id
+      affiliate.search_results_page_title.should == "live SERP title"
+      affiliate.staged_search_results_page_title.should == "live SERP title"
+      affiliate.header.should == "live header"
+      affiliate.staged_header.should == "live header"
+      affiliate.footer.should == "live footer"
+      affiliate.staged_footer.should == "live footer"
+    end
+
+    it "should not overwrite staged attributes with live attributes if has_staged_content is true" do
+      affiliate = Affiliate.create!(@valid_create_attributes.merge(:has_staged_content => true,
+                                                                   :domains => "livedomain.gov",
+                                                                   :staged_domains => "stageddomain.gov",
+                                                                   :affiliate_template_id => affiliate_templates(:basic_gray).id,
+                                                                   :staged_affiliate_template_id => affiliate_templates(:default).id,
+                                                                   :search_results_page_title => "live SERP title",
+                                                                   :staged_search_results_page_title => "staged SERP title",
+                                                                   :header => "live header",
+                                                                   :staged_header => "staged header",
+                                                                   :footer => "live footer",
+                                                                   :staged_footer => "staged footer"))
+      affiliate.has_staged_content.should == true
+      affiliate.sync_staged_attributes
+      affiliate.has_staged_content.should == true
+      affiliate.domains.should == "livedomain.gov"
+      affiliate.staged_domains.should == "stageddomain.gov"
+      affiliate.affiliate_template_id.should == affiliate_templates(:basic_gray).id
+      affiliate.staged_affiliate_template_id.should == affiliate_templates(:default).id
+      affiliate.search_results_page_title.should == "live SERP title"
+      affiliate.staged_search_results_page_title.should == "staged SERP title"
+      affiliate.header.should == "live header"
+      affiliate.staged_header.should == "staged header"
+      affiliate.footer.should == "live footer"
+      affiliate.staged_footer.should == "staged footer"
+    end
+  end
 end

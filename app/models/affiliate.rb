@@ -114,6 +114,10 @@ class Affiliate < ActiveRecord::Base
     })
   end
 
+  def sync_staged_attributes
+    self.cancel_staged_changes unless self.has_staged_content?
+  end
+
   class << self
     def human_attribute_name(attribute_key_name, options = {})
       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super

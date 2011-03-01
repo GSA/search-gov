@@ -94,14 +94,25 @@ describe Affiliates::HomeController do
     end
 
     context "when logged in as the affiliate manager" do
-      integrate_views
       before do
         UserSession.create(users(:affiliate_manager))
+        @affiliate = affiliates(:basic_affiliate)
+        Affiliate.should_receive(:find).and_return(@affiliate)
       end
 
       it "should assign @title" do
         get :edit_site_information, :id => affiliates(:basic_affiliate).id
         assigns[:title].should_not be_blank
+      end
+
+      it "should assign @affiliate" do
+        get :edit_site_information, :id => affiliates(:basic_affiliate).id
+        assigns[:affiliate].should == @affiliate
+      end
+
+      it "should sync staged attributes on @affiliate" do
+        @affiliate.should_receive(:sync_staged_attributes)
+        get :edit_site_information, :id => affiliates(:basic_affiliate).id
       end
 
       it "should render the edit_site_information page" do
@@ -234,14 +245,25 @@ describe Affiliates::HomeController do
     end
 
     context "when logged in as the affiliate manager" do
-      integrate_views
       before do
         UserSession.create(users(:affiliate_manager))
+        @affiliate = affiliates(:basic_affiliate)
+        Affiliate.should_receive(:find).and_return(@affiliate)
+      end
+
+      it "should assign @affiliate" do
+        get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
+        assigns[:affiliate].should == @affiliate
       end
 
       it "should assign @title" do
         get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
         assigns[:title].should_not be_blank
+      end
+
+      it "should sync staged attributes on @affiliate" do
+        @affiliate.should_receive(:sync_staged_attributes)
+        get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
       end
 
       it "should render the edit_look_and_feel page" do
