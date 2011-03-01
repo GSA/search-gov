@@ -141,7 +141,7 @@ describe Search do
 
     context "when affiliate has domains specified and user does not specify site: in search" do
       before do
-        @affiliate     = Affiliate.new(:domains => %w(    foo.com bar.com    ).join("\r\n"))
+        @affiliate     = Affiliate.new(:domains => %w(     foo.com bar.com     ).join("\r\n"))
         @uriresult     = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -154,7 +154,7 @@ describe Search do
 
       context "when the domains are separated by only '\\n'" do
         before do
-          @affiliate.domains = %w(   foo.com bar.com   ).join("\n")
+          @affiliate.domains = %w(    foo.com bar.com    ).join("\n")
         end
 
         it "should split the domains the same way" do
@@ -187,7 +187,7 @@ describe Search do
 
     context "when affiliate has domains specified but user specifies site: in search" do
       before do
-        @affiliate     = Affiliate.new(:domains => %w(    foo.com bar.com    ).join("\n"))
+        @affiliate     = Affiliate.new(:domains => %w(     foo.com bar.com     ).join("\n"))
         @uriresult     = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -711,7 +711,7 @@ describe Search do
 
     context "when the query ends in OR" do
       before do
-        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{portland or | oregon | rain})
+        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{ portland or | oregon | rain })
         CalaisRelatedSearch.reindex
         @search = Search.new(:query => "Portland OR")
         @search.run
@@ -873,7 +873,7 @@ describe Search do
 
       it "should send the query to recall" do
         search = Search.new(@options_with_recall)
-        results = [1,2,3]
+        results = [1, 2, 3]
         Recall.should_receive(:recent).with('foo bar recall').and_return(results)
         search.run
         search.recalls.should == results
@@ -1069,7 +1069,7 @@ describe Search do
 
       context "when an error occurs" do
         before do
-          @search.instance_variable_set(:@error_message,  "Some error")
+          @search.instance_variable_set(:@error_message, "Some error")
         end
 
         it "should output an error if an error is detected" do
@@ -1080,11 +1080,11 @@ describe Search do
 
       context "when boosted content is present" do
         before do
-          @search.instance_variable_set(:@boosted_contents, Struct.new(:results).new([1,2,3]))
+          @search.instance_variable_set(:@boosted_contents, Struct.new(:results).new([1, 2, 3]))
         end
 
         it "should output as boosted results" do
-          @search.as_json[:boosted_results].should == [1,2,3]
+          @search.as_json[:boosted_results].should == [1, 2, 3]
         end
       end
     end
@@ -1138,12 +1138,24 @@ describe Search do
 
       context "when misspellings aren't allowed" do
         context "when Bing suggests a different spelling" do
-          before do
-            @search.stub!(:spelling_suggestion).and_return "sum term"
+          context "when it's a fuzzy match with the query term (ie., identical except for highlights and some punctuation)" do
+            before do
+              @search.stub!(:spelling_suggestion).and_return "some-term"
+            end
+
+            it "should return true" do
+              Search.results_present_for?("some term", @affiliate, false).should be_true
+            end
           end
 
-          it "should return false" do
-            Search.results_present_for?("some term", @affiliate, false).should be_false
+          context "when it's not a fuzzy match with the query term" do
+            before do
+              @search.stub!(:spelling_suggestion).and_return "sum term"
+            end
+
+            it "should return false" do
+              Search.results_present_for?("some term", @affiliate, false).should be_false
+            end
           end
         end
 
