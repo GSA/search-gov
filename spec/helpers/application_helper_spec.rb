@@ -5,7 +5,7 @@ describe ApplicationHelper do
     helper.stub!(:forms_search?).and_return false
     helper.stub!(:recalls_search?).and_return false
   end
-  
+
   describe "#other_locale_str" do
     it "should toggle between English and Spanish locales (both strings and symbols)" do
       I18n.locale = :es
@@ -22,7 +22,7 @@ describe ApplicationHelper do
   describe "time_ago_in_words" do
     it "should include 'ago'" do
       time_ago_in_words(4.hours.ago).should == "about 4 hours ago"
-      time_ago_in_words(1.month.ago).should == "about 1 month ago"
+      time_ago_in_words(33.days.ago).should == "about 1 month ago"
       time_ago_in_words(2.days.ago).should == "2 days ago"
       time_ago_in_words(1.day.ago).should == "1 day ago"
     end
@@ -36,7 +36,7 @@ describe ApplicationHelper do
       end
       it "should use the Aproximadamente form" do
         time_ago_in_words(4.hours.ago).should == "Aproximadamente desde hace 4 horas"
-        time_ago_in_words(1.month.ago).should == "Aproximadamente desde hace un mes"
+        time_ago_in_words(33.days.ago).should == "Aproximadamente desde hace un mes"
         time_ago_in_words(2.days.ago).should == "Desde hace 2 días"
         time_ago_in_words(1.day.ago).should == "Desde ayer"
       end
@@ -71,7 +71,7 @@ describe ApplicationHelper do
     it "should default to bgcolor for English locale" do
       helper.locale_dependent_background_color.should == ApplicationHelper::BACKGROUND_COLORS[:en]
       I18n.locale = :xx
-      helper.locale_dependent_background_color.should == ApplicationHelper::BACKGROUND_COLORS[:en]      
+      helper.locale_dependent_background_color.should == ApplicationHelper::BACKGROUND_COLORS[:en]
     end
 
     it "should return bgcolor for locale" do
@@ -79,60 +79,60 @@ describe ApplicationHelper do
       helper.locale_dependent_background_color.should == ApplicationHelper::BACKGROUND_COLORS[:es]
     end
   end
-  
+
   describe "#build_page_title" do
     context "for the English site" do
       before do
         I18n.locale = :en
       end
-      
+
       context "when a page title is not defined" do
         it "should return the English site title" do
           helper.build_page_title(nil) == (t :site_title)
         end
       end
-      
+
       context "when a page title is blank" do
         it "should return the English site title" do
           helper.build_page_title("").should == (t :site_title)
         end
       end
-      
+
       context "when a non-blank page title is defined" do
         it "should prefix the defined page title with the English site title" do
           helper.build_page_title("some title").should == "some title - #{t :site_title}"
         end
       end
-      
+
       context "when it's a forms page" do
         before do
           helper.stub!(:forms_search?).and_return true
         end
-        
+
         context "when the page title is not defined" do
           it "should return the forms title" do
             helper.build_page_title(nil).should == (t :forms_site_title)
           end
         end
-        
+
         context "when a non-blank page title is defined" do
           it "should prefix the defined page title with the English forms site title" do
             helper.build_page_title("some title").should == "some title - #{t :forms_site_title}"
           end
         end
       end
-      
+
       context "when it's a recalls page" do
         before do
           helper.stub!(:recalls_search?).and_return true
         end
-        
+
         context "when the page title is not defined" do
           it "should return the recalls title" do
             helper.build_page_title(nil).should == (t :recalls_site_title)
           end
         end
-        
+
         context "when a non-blank page title is defined" do
           it "should prefix the defined page title with the English recalls site title" do
             helper.build_page_title("some title").should == "some title - #{t :recalls_site_title}"
@@ -140,30 +140,30 @@ describe ApplicationHelper do
         end
       end
     end
-    
+
     context "for the Spanish site" do
       before do
         I18n.locale = :es
       end
-      
+
       context "when a page title is not defined" do
         it "should return the Spanish site title" do
           helper.build_page_title(nil) == (t :site_title)
         end
       end
-      
+
       context "when a page title is blank" do
         it "should return the Spanish site title" do
           helper.build_page_title("").should == (t :site_title)
         end
       end
-      
+
       context "when a non-blank page title is defined" do
         it "should prefix the defined page title with the Spanish site title" do
           helper.build_page_title("some title").should == "some title - #{t :site_title}"
         end
       end
-      
+
       after do
         I18n.locale = I18n.default_locale
       end
