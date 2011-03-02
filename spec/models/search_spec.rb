@@ -9,7 +9,6 @@ describe Search do
   end
 
   describe "#run" do
-
     context "when JSON cannot be parsed for some reason" do
       before do
         JSON.should_receive(:parse).once.and_raise(JSON::ParserError)
@@ -962,6 +961,38 @@ describe Search do
         search.run
         search.startrecord.should == Search::DEFAULT_PER_PAGE * page + 1
         search.endrecord.should == search.startrecord + search.results.size - 1
+      end
+    end
+    
+    context "when the query matches an agency name or abbreviation" do
+      before do
+        Agency.destroy_all
+        AgencyQuery.destroy_all
+        @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :url => 'http://www.irs.gov')
+        @agnecy_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
+        #@bing_json = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+      end
+      
+      it "should retrieve the associated agency record" do
+        search = Search.new(:query => 'irs')
+        search.run
+        search.agency.should == @agency
+      end
+      
+      context "when the query matches but the case is different" do
+        it "should match the agency anyway" do
+          search = Search.new(:query => 'IRS')
+          search.run
+          search.agency.should == @agency
+        end
+      end
+      
+      context "when there are leading or trailing spaces, but the query basically matches" do
+        it "should match the proper agency anyway" do
+          search = Search.new(:query => '     irs   ')
+          search.run
+          search.agency.should == @agency
+        end
       end
     end
   end

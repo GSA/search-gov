@@ -42,7 +42,8 @@ class Search
                 :fedstates,
                 :scope_id,
                 :queried_at_seconds,
-                :enable_highlighting
+                :enable_highlighting,
+                :agency
 
   def initialize(options = {})
     options ||= {}
@@ -165,6 +166,8 @@ class Search
       end
       if page < 1
         @recalls = Recall.recent(query)
+        agency_query = AgencyQuery.find_by_phrase(query)
+        @agency = agency_query.agency if agency_query
       end
     end
     if response.has?(:image) && response.image.total > 0

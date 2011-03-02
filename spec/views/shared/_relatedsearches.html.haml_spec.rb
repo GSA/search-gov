@@ -34,6 +34,7 @@ describe "shared/_relatedsearches.html.haml" do
       @search.stub!(:boosted_contents).and_return nil
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil
+      @search.stub!(:agency).and_return nil
 
       10.times { @search_results << @search_result }
     end

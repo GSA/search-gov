@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110225185031) do
+ActiveRecord::Schema.define(:version => 20110303021253) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -61,6 +61,26 @@ ActiveRecord::Schema.define(:version => 20110225185031) do
   add_index "affiliates_users", ["affiliate_id", "user_id"], :name => "index_affiliates_users_on_affiliate_id_and_user_id", :unique => true
   add_index "affiliates_users", ["user_id"], :name => "index_affiliates_users_on_user_id"
 
+  create_table "agencies", :force => true do |t|
+    t.string   "name"
+    t.string   "domain"
+    t.string   "phone"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "abbreviation"
+    t.text     "name_variants"
+  end
+
+  create_table "agency_queries", :force => true do |t|
+    t.string   "phrase"
+    t.integer  "agency_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "agency_queries", ["phrase"], :name => "index_agency_queries_on_phrase", :unique => true
+
   create_table "auto_recalls", :force => true do |t|
     t.integer  "recall_id"
     t.string   "make",                     :limit => 25
@@ -76,6 +96,13 @@ ActiveRecord::Schema.define(:version => 20110225185031) do
   end
 
   add_index "auto_recalls", ["recall_id"], :name => "index_auto_recalls_on_recall_id"
+
+  create_table "boosted_content_keywords", :force => true do |t|
+    t.string   "phrase"
+    t.integer  "boosted_content_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "boosted_contents", :force => true do |t|
     t.integer  "affiliate_id"

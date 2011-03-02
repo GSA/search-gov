@@ -1,6 +1,28 @@
-.searchresult.clearfix{:id => "searchresult#{index+1}"}
-  %h2= display_result_title(result, search, affiliate, index)
-  %h3= display_result_description(result)
-  %h3= display_result_links(result, search, affiliate, index)
-  - if affiliate == nil && index == 0 && search.page == 0
-    = display_deep_links_for(result)
+- if search.agency.present? and index == 0 and search.page == 0 and result['unescapedUrl'] == search.agency.url and I18n.locale == I18n.default_locale
+  .govbox
+    .searchresult.clearfix{:id => "searchresult#{index+1}"}
+      %h2= display_result_title(result, search, affiliate, index)
+      %h3
+        = display_result_links(result, search, affiliate, index, false)
+        |
+        Official Site
+      %h3{:style => 'width: 600px;'}
+        = display_result_description(result)
+      - if affiliate == nil && index == 0 && search.page == 0
+        = display_deep_links_for(result)
+      - if search.agency.phone.present?
+        %h3{:style => 'margin-top: 5px;'}
+          Contact: #{search.agency.phone}
+      %h3{:style => 'margin-top: 5px;'}
+        Search within #{search.agency.domain}
+        - form_tag search_path, :method => :get do
+          = hidden_field_tag 'sitelimit', search.agency.domain
+          = text_field_tag 'query'
+          = submit_tag 'Search'
+- else
+  .searchresult.clearfix{:id => "searchresult#{index+1}"}
+    %h2= display_result_title(result, search, affiliate, index)
+    %h3= display_result_description(result)
+    %h3= display_result_links(result, search, affiliate, index)
+    - if affiliate == nil && index == 0 && search.page == 0
+      = display_deep_links_for(result)

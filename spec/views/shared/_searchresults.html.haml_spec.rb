@@ -19,6 +19,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:scope_id)
     @search.stub!(:fedstates)
     @search.stub!(:recalls)
+    @search.stub!(:agency)
     @deepLink.stub!(:title).and_return 'A title'
     @deepLink.stub!(:url).and_return 'http://adeeplink.com'
     @search_result = {'title' => "some title",

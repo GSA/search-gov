@@ -17,6 +17,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:filter_setting).and_return nil
     @search.stub!(:scope_id).and_return nil
     @search.stub!(:fedstates).and_return nil
+    @search.stub!(:agency).and_return nil
     assigns[:search] = @search
   end
   
@@ -135,7 +136,6 @@ describe "searches/index.html.haml" do
     end
 
     context "when a filter parameter is specified" do
-
       context "when the filter parameter is set to 'strict'" do
         before do
           @search.stub!(:filter_setting).and_return 'strict'
@@ -214,6 +214,94 @@ describe "searches/index.html.haml" do
         response.should_not contain(/onmousedown/)
       end
     end
-
+    
+    context "when an agency record matches the query" do
+      before do
+        Agency.destroy_all
+        @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :url => 'http://www.irs.gov/')
+        @agency_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
+        @search.stub!(:query).and_return "irs"
+        @search_result = {'title' => "Internal Revenue Service",
+                          'unescapedUrl'=> "http://www.irs.gov/",
+                          'content'=> "The official page of the Internal Revenue Service",
+                          'cacheUrl'=> "http://www.cached.com/url"}
+        @search_results = [@search_result]
+        @search_results.stub!(:total_pages).and_return 1
+        @search.stub!(:results).and_return @search_results
+        @search.stub!(:agency).and_return @agency
+      end
+      
+      context "if the first result matches the URL in the agency query" do
+        it "should format the first result as a special agency result" do
+          render
+          response.should have_tag("div[class=govbox]")
+          response.should contain(/www.irs.gov\/ | Official Site/)
+          response.should_not contain(/www.irs.gov\/ - Cached/)
+          response.should contain(/Contact: 888-555-1040/)
+          response.should contain(/Search within irs.gov/)
+          response.should have_tag "form[action=/search]" do
+            with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
+          end
+        end
+      end
+      
+      context "when the page specified is greater than 0 (i.e. we're not on the first page)" do
+        before do
+          @search.stub!(:page).and_return 1
+        end
+        
+        it "should not render a special agency result, even if the first result matches" do
+          render
+          response.should_not have_tag "div[class=govbox]"
+          response.should_not contain(/Contact: 888-555-1040/)
+          response.should_not contain(/Search within irs.gov/)
+          response.should_not have_tag "form[action=/search]" do
+            with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
+          end
+        end
+      end
+      
+      context "when the locale is set to Spanish" do
+        before do
+          I18n.locale = :es
+        end
+        
+        it "should not render a special agency result, even if the first result matches" do
+          render
+          response.should_not have_tag "div[class=govbox]"
+          response.should_not contain(/Contact: 888-555-1040/)
+          response.should_not contain(/Search within irs.gov/)
+          response.should_not have_tag "form[action=/search]" do
+            with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
+          end
+        end
+        
+        after do
+          I18n.locale = I18n.default_locale
+        end
+      end  
+      
+      context "when the matching result is not the first result" do
+        before do
+          dummy_result = {'title' => "External Revenue Service",
+                          'unescapedUrl'=> "http://www.ers.gov/",
+                          'content'=> "The official page of the External Revenue Service",
+                          'cacheUrl'=> "http://www.cached.com/url"}
+          @search_results = [dummy_result, @search_result]
+          @search_results.stub!(:total_pages).and_return 1
+          @search.stub!(:results).and_return @search_results        
+        end
+        
+        it "should not render a special agency result, even if the first result matches" do
+          render
+          response.should_not have_tag "div[class=govbox]"
+          response.should_not contain(/Contact: 888-555-1040/)
+          response.should_not contain(/Search within irs.gov/)
+          response.should_not have_tag "form[action=/search]" do
+            with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
+          end
+        end
+      end         
+    end
   end
 end
