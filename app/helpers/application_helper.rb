@@ -1,14 +1,6 @@
 module ApplicationHelper
-  NON_CAPITALIZED = %w{a al an and ante as at bajo but by cabe con conmigo consigo contigo contra de del desde
-      durante e el en entre et etc for from hacia hasta in into la las los mediante ni nor o of off on onto or out
-      para pero por salvo según sin so sobre than the to tras u un una unas unos v versus via vs vía with y}
-
   def display_for(role)
     yield if (current_user && current_user.send("is_#{role}?"))
-  end
-
-  def sentence_case(str)
-    str.gsub(/\b[a-z]+/) { |w| NON_CAPITALIZED.include?(w) ? w : w.capitalize }.sub(/^[a-z]/) { |l| l.upcase }.sub(/\b[a-z][^\s]*?$/) { |l| l.capitalize }
   end
 
   def build_page_title(page_title)
