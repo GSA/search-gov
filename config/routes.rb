@@ -10,11 +10,11 @@ ActionController::Routing::Routes.draw do |map|
     affiliate.resources :type_ahead_search, :controller => 'affiliates/sayt', :only => [:index, :create, :destroy], :collection => { :upload => :post, :preferences => :post }
     affiliate.resources :analytics, :controller => 'affiliates/analytics', :only => [:index], :collection => {:monthly_reports => :get, :query_search => :get}
     affiliate.resources :related_topics, :controller => 'affiliates/related_topics', :only => [:index], :collection => {:preferences => :post}
+    affiliate.resources :api, :controller => 'affiliates/api', :only => [:index]
   end
   map.search '/search', :controller => "searches"
   map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get
   map.image_search "/search/images", :controller => "image_searches", :action => "index"
-   map.api_search "/api/search/:affiliate_name", :controller => "api", :action => "search"
   map.resources :recalls, :only => :index
   map.recalls_search "/search/recalls", :controller => "recalls", :action => "search"
   map.resources :forms, :only => :index
@@ -67,12 +67,16 @@ ActionController::Routing::Routes.draw do |map|
                 :only       => [:show]
   map.main_superfresh_feed '/superfresh', :controller => "superfresh", :action => "index"
   map.superfresh_feed '/superfresh/:feed_id', :controller => "superfresh", :action => "index"
-  map.api_docs '/api', :controller => "pages", :action => "show", :id => "api"
-  map.recalls_api_docs '/api/recalls', :controller => "pages", :action => "show", :id => "recalls"
-  map.recalls_tos_docs '/api/tos', :controller => "pages", :action => "show", :id => "tos"
   map.usa '/usa/:url_slug', :controller => 'usa', :action => 'show', :requirements => { :url_slug => /.*/ }
   map.program '/program', :controller => "pages", :action => "show", :id => "program"
   map.searchusagov '/searchusagov', :controller => "pages", :action => "show", :id => "search"
   map.contactus '/contactus', :controller => "pages", :action => "show", :id => "contactus"
+
+  map.api_search "/api/search/:affiliate_name", :controller => "affiliates/api", :action => "search"
+  map.search_api_docs '/api/search', :controller => "pages", :action => "show", :id => "search_api"
+  map.api_docs '/api', :controller => "pages", :action => "show", :id => "api"
+  map.recalls_api_docs '/api/recalls', :controller => "pages", :action => "show", :id => "recalls"
+  map.recalls_tos_docs '/api/tos', :controller => "pages", :action => "show", :id => "tos"
+   
   map.login '/login', :controller => "user_sessions", :action => "new"
 end

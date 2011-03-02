@@ -1,9 +1,16 @@
-class ApiController < ApplicationController
-  before_filter :verify_api_key_and_load_affiliate
+class Affiliates::ApiController < Affiliates::AffiliatesController
+  before_filter :require_affiliate_or_admin, :except => :search
+  before_filter :setup_affiliate, :except => :search
+  before_filter :verify_api_key_and_load_affiliate, :only => :search
 
   def search
     @search_options = search_options_from_params(params).merge(:affiliate => @affiliate)
     render :json => ApiSearch.search(@search_options)
+  end
+
+  def index
+    @page_title = "Search API"
+    render "pages/search_api"
   end
 
   def verify_api_key_and_load_affiliate

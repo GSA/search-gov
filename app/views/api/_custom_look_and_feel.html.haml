@@ -1,0 +1,11 @@
+.custom_look_and_feel
+  %h2
+    API Key
+  Control the look and feel of your search results pages by using the application program interface (API) for USASearch affiliates below.
+  %br
+  %br
+  .content-box
+    Your API key is:
+    %b= current_user.api_key
+    %br
+    = link_to("Search API Documentation", search_api_docs_path)

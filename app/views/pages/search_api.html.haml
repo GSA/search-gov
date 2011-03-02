@@ -1,0 +1,177 @@
+= breadcrumbs([link_to("APIs & Web Services", api_docs_path), "Search API"])
+%p
+  %a{ :name => "content" }
+= render "/shared/api_key"
+%h1
+  Search Data API
+%p
+  USASearch's Search Recall Data API returns search results, in json format, along with sections for summary stats, boosted sites, spelling suggestions, and related searches.
+%p
+  The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the recall of search results. First, the API searches all the fields in the database (the full text of the record). Second, the API stems (or performs prefix search) customers’ search terms (for example, allergic and allergy retrieve the same search results).
+
+- if @affiliate.present?
+  %p
+    %h3= "URL Example for Affiliate #{@affiliate.name}:"
+  %ul
+    %li
+      = "http://search.usa.gov/api/search/#{@affiliate.name}?api_key=#{current_user.api_key}&format=json&query=water&page=3"
+
+%p
+  %h3
+    Base URL:
+%ul
+  %li
+    http://search.usa.gov/api/search
+%p
+  %h3
+    Format:
+%ul
+  %li
+    JSON is currently the only response format.
+%p
+  %h3
+    Type:
+%ul
+  %li
+    HTTP GET
+%p
+  %h3
+    Authentication:
+%ul
+  %li
+    None required.
+%p
+  %h3
+    Parameters:
+%ul
+  %li
+    api_key: your API key.  You can get a key by signing up for an account at http://search.usa.gov/developers
+    %ul
+      %li
+        Example: http://search.usa.gov/api/search/{affiliate_name}?api_key=9c63bbbfcd985314b245ef92ab37a792
+  %li
+    format: json. This parameter is required. The most recent recalls are returned as the default if no other parameters are given.
+    %ul
+      %li
+        Example: http://search.usa.gov/api/search/{affiliate_name}?format=json
+  %li
+    query: keywords.  Query terms for the search.
+    %ul
+      %li
+        Example: http://search.usa.gov/api/search/{affiliate_name}?query=water
+  %li
+    page: Pagination of search results. Ten results are displayed on each search results page. Paginate search results pages by adding '&page=#' to the query string.
+    %ul
+      %li
+        Example: http://search.usa.gov/api/search/{affiliate_name}?page=3
+%p
+  %h3
+    Usage Notes
+  %ul
+    %li
+      Ten results are displayed on each search results page and defaults to page 1.  You can change the page by adding '&page=#' (for example, '&page=2') to the query string.
+
+%p
+  %h3
+    Response Fields
+%p
+  The response fields listed below are an aggregate of the data the feeds can return for queries. Note that not all response fields appear in all queries.
+  %ul
+    %li
+      success:
+      %ul
+        %li
+          total: Total number of results for  the query.
+        %li
+          startrecord: The index of the first search result with regard to all possible search results
+        %li
+          endrecord: The index of the last search result with regard to all possible search results
+        %li
+          spelling_suggestions: An array of spelling suggestions for the query terms specified
+        %li
+          related: An array of search query terms that are related to the query terms specified
+        %li
+          boosted_results: Array of boosted results for the query. Boosted results are created by the affiliate in their Boosted content section.
+          %ul
+            %li
+              title: The title of the boosted content
+            %li
+              url: The url for the boosted content
+            %li
+              description: The description for the boosted content
+        %li
+          results: Array of results for the query. Each array item contains the following data.
+          %ul
+            %li
+              title: The title of the result
+            %li
+              cacheUrl: A cached page for the result
+            %li
+              unescapedUrl: The direct url to the result page
+            %li
+              content: A snippet of content from the result page highlighting the query terms
+            %li
+              deepLinks:
+              %ul
+                %li Title: Title of the deep-linked page
+                %lo Url: Url to the deep-linked page
+
+
+%p
+  %h3
+    Response(JSON):
+%pre
+  :preserve
+    {
+      "related":[],
+      "boosted_results":[
+        {
+          "url": "http://www.boosted_water.com",
+          "description": "This is an example boosted site about water.",
+          "title":" A boosted site about water"
+        }
+      ],
+      "startrecord":21,
+      "total":65400,
+      "results":[
+        {
+          "title":"Publication 17 (2010), Your Federal Income Tax",
+          "deepLinks":null,
+          "cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4553228149131343&w=6228f8c9,2dcf99ee",
+          "content":"However, the rust and \ue000water\ue001 damage to rugs and drapes caused by the bursting of a \ue000water\ue001 heater does qualify as a casualty.",
+          "unescapedUrl":"http://www.irs.gov/publications/p17/ch25.html"
+        },{
+          "title":"Part III - Administrative, Procedural, and Miscellaneous",
+          "deepLinks":null,"cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4536005329682909&w=f31b4a6c,590617f3",
+          "content":"(4) Statement for energy efficient heating, cooling, ventilation, and hot \ue000water\ue001 property: The heating, cooling, ventilation, and hot \ue000water\ue001 systems that have been, or are ...",
+          "unescapedUrl":"http://www.irs.gov/pub/irs-drop/n-06-52.pdf"
+        },{
+          "title":"Local Standards: Housing and Utilities",
+          "deepLinks": [
+            {
+              "Title":"Individuals",
+              "Url":"http://www.irs.gov/individuals/index.html"
+            },{
+              "Title":"E-File",
+              "Url":"http://www.irs.gov/efile/index.html"
+            },{
+              "Title":"Contact IRS",
+              "Url":"http://www.irs.gov/contact/index.html"
+            },{
+              "Title":"Where To File",
+              "Url":"http://www.irs.gov/file/index.html"
+            }
+            ...
+          ],
+          "cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4608066291501781&w=e94447c9,486a0a05",
+          "content":"Disclaimer: IRS Collection Financial Standards are intended for use in calculating repayment of delinquent taxes. These Standards are effective on March 1, 2010 for ...",
+          "unescapedUrl":"http://www.irs.gov/businesses/small/article/0,,id=104696,00.html"
+        }
+        ...
+      ],
+      "spelling_suggestions":"water",
+      "endrecord":30
+    }
+
+
+
