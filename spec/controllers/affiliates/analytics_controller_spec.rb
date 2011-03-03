@@ -98,6 +98,13 @@ describe Affiliates::AnalyticsController do
           response.should redirect_to(home_page_path)
         end
 
+        it "should show most recent populated data if params[:day] is blank" do
+          day_being_shown = Date.today
+          DailyQueryStat.should_receive(:most_recent_populated_date).and_return(day_being_shown)
+          get :index, :affiliate_id => @user.affiliates.first.id, :day => ''
+          assigns[:day_being_shown].should == day_being_shown
+        end
+
         context "when rendering the page" do
           integrate_views
           before do

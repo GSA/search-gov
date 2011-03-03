@@ -75,6 +75,13 @@ describe Analytics::HomeController do
           end
         end
 
+        context "when date is blank" do
+          it "should assign the most recent day" do
+            get :queries, :day => ''
+            assigns[:day_being_shown].should == DailyQueryStat.most_recent_populated_date
+          end
+        end
+
         context "when user selects a date" do
           it "should use that date for the day being shown" do
             get :queries, :day => "July 21, 2009"

@@ -7,7 +7,7 @@ class Analytics::HomeController < Analytics::AnalyticsController
 
   def queries
     @page_title = 'Queries'
-    @day_being_shown = request["day"].nil? ? DailyQueryStat.most_recent_populated_date : request["day"].to_date
+    @day_being_shown = request["day"].blank? ? DailyQueryStat.most_recent_populated_date : request["day"].to_date
     @num_results_dqs = (request["num_results_dqs"] || "10").to_i
     @num_results_dqgs = (request["num_results_dqgs"] || "10").to_i
     @most_recent_day_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs)

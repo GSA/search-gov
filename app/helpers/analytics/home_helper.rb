@@ -40,7 +40,7 @@ module Analytics::HomeHelper
   end
 
   def analytics_path_prefix(affiliate)
-    affiliate ? "/affiliates/#{affiliate.id}/analytics" : "/analytics"
+    affiliate ? "/affiliates/#{affiliate.id}/analytics" : "/analytics/queries"
   end
 
   def monthly_report_filename(prefix, report_date)
