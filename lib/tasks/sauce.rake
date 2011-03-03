@@ -22,6 +22,29 @@ namespace :screenshots do
     %x{open screenshots/report/index.html}
   end
 
+  task :push do
+    require 'cloudfiles'
+    cf = CloudFiles::Connection.new(:username => "lorensiebert", :api_key => "***REMOVED***")
+    container = cf.container('SauceLabs Reports')
+
+    Dir["screenshots/report/**/*.png"].each do |filename|
+      image_obj = container.create_object filename.split('/')[-2..-1].join("/"), false
+      image_obj.write(open(filename))
+      puts image_obj.public_url
+    end
+
+    logo_obj = container.create_object "logo.gif", false
+    logo_obj.write(open('screenshots/report/logo.gif'))
+
+    js_obj = container.create_object "jquery-1.5.min.js", false
+    js_obj.write(open('screenshots/report/jquery-1.5.min.js'))
+
+    obj = container.create_object "saucelabs.html", false
+    obj.write(open('screenshots/report/index.html'))
+
+    puts obj.public_url
+  end
+
   task :run do
     Rake::Task["screenshots:clean"].invoke
     Rake::Task["screenshots:runtests"].invoke
