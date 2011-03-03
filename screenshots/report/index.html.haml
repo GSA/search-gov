@@ -62,21 +62,11 @@
           %a.nav{:href => "#browser/#{browser}"}= browser
         %td.screenshot{:browser => browser}
 
-  %table#shot
-    %tr
-      %th &nbsp;
-      %th
-        %a.browser_name.nav{:href => ""}
-    %tr
-      %td
-        %a.step_name.nav{:href => ""}
-      %td.screenshot
-
 #image_store
   - image_file_names.flatten.each do |filename|
     - relative_path = filename.split('/')[-2..-1].join("/")
     - id = gsub_base_name(relative_path)
-    %a{:href => "#shot/#{id}", :id => id}
+    %a.individual_screenshot{:href => "javascript: void(0);", :id => id}
       %img.thumbnail{:src => "", "data-src" => relative_path}
 
 :javascript
@@ -96,8 +86,7 @@
     var manipulationFunctions = {
       all: showAll,
       browser: showBrowser,
-      step: showStep,
-      shot: showShot
+      step: showStep
     }
 
     function removeAll() {
@@ -142,24 +131,12 @@
         });
     }
 
-    function showShot(shotId) {
-      $('table').hide();
-      removeAll();
-      var browserName = shotId.split(":")[0];
-      var stepName = shotId.split(":")[1];
-      $("#shot")
-        .show()
-        .find(".browser_name")
-          .html(browserName)
-          .attr("href", "#browser/" + browserName)
-          .end()
-        .find(".step_name")
-          .html(stepName)
-          .attr("href", "#step/" + stepName)
-          .end()
-        .find(".screenshot")
-          .append(loadImage(shotId));
-    }
+    $(".individual_screenshot").click(function() {
+      var img = $(this).find("img");
+      var newMaxWidth = img.css("max-width") == "512px" ? "1024px" : "512px"
+      img.css("max-width", newMaxWidth)
+      return;
+    })
 
     function loadImage(id) {
       var anchor = $("#" + id.replace(/:/, "\\:"));
