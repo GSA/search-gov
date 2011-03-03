@@ -970,7 +970,6 @@ describe Search do
         AgencyQuery.destroy_all
         @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :url => 'http://www.irs.gov')
         @agnecy_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
-        #@bing_json = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
       end
       
       it "should retrieve the associated agency record" do

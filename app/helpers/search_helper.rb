@@ -125,9 +125,9 @@ module SearchHelper
   
   def display_agency_phone_numbers(agency)
     html = ""
-    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_phone_label}: #{agency.phone}</h3><br/>" if agency.phone.present?
-    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_toll_free_phone_label}: #{agency.toll_free_phone}</h3><br/>" if agency.toll_free_phone.present?
-    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_tty_phone_label}: #{agency.tty_phone}</h3><br/>" if agency.tty_phone.present?
+    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_phone_label}: #{agency.phone}</h3>" if agency.phone.present?
+    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_toll_free_phone_label}: #{agency.toll_free_phone}</h3>" if agency.toll_free_phone.present?
+    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_tty_phone_label}: #{agency.tty_phone}</h3>" if agency.tty_phone.present?
     return html
   end
   
