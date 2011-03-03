@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110303021253) do
+ActiveRecord::Schema.define(:version => 20110303155705) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -64,12 +64,18 @@ ActiveRecord::Schema.define(:version => 20110303021253) do
   create_table "agencies", :force => true do |t|
     t.string   "name"
     t.string   "domain"
-    t.string   "phone"
+    t.string   "phone",             :limit => 15
     t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "abbreviation"
     t.text     "name_variants"
+    t.string   "toll_free_phone",   :limit => 15
+    t.string   "tty_phone",         :limit => 15
+    t.string   "twitter_username",  :limit => 18
+    t.string   "youtube_username",  :limit => 40
+    t.string   "facebook_username", :limit => 75
+    t.string   "flickr_username",   :limit => 50
   end
 
   create_table "agency_queries", :force => true do |t|

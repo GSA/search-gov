@@ -218,7 +218,7 @@ describe "searches/index.html.haml" do
     context "when an agency record matches the query" do
       before do
         Agency.destroy_all
-        @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :url => 'http://www.irs.gov/')
+        @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :url => 'http://www.irs.gov/', :twitter_username => 'IRSnews')
         @agency_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
         @search.stub!(:query).and_return "irs"
         @search_result = {'title' => "Internal Revenue Service",
@@ -238,10 +238,14 @@ describe "searches/index.html.haml" do
           response.should contain(/www.irs.gov\/ | Official Site/)
           response.should_not contain(/www.irs.gov\/ - Cached/)
           response.should contain(/Contact: 888-555-1040/)
+          response.should_not contain(/Toll-free:/)
+          response.should_not contain(/TTY:/)
           response.should contain(/Search within irs.gov/)
           response.should have_tag "form[action=/search]" do
             with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
           end
+          response.should have_tag("a[href=#{@agency.twitter_profile_link}]", :text => @agency.twitter_profile_link)
+          response.should_not have_tag("a[href=#{@agency.facebook_profile_link}]", :text => @agency.twitter_profile_link)
         end
       end
       

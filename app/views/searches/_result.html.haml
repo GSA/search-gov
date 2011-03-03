@@ -10,15 +10,14 @@
         = display_result_description(result)
       - if affiliate == nil && index == 0 && search.page == 0
         = display_deep_links_for(result)
-      - if search.agency.phone.present?
-        %h3{:style => 'margin-top: 5px;'}
-          #{t :agency_contact_label}: #{search.agency.phone}
+      = display_agency_phone_numbers(search.agency)
       %h3{:style => 'margin-top: 5px;'}
         #{t :agency_search_within_label} #{search.agency.domain}
-        - form_tag search_path, :method => :get do
+        - form_tag search_path, :method => :get, :style => 'margin-bottom: 0.5em' do
           = hidden_field_tag 'sitelimit', search.agency.domain
           = text_field_tag 'query'
           = submit_tag 'Search'
+      = display_agency_social_media_links(search.agency)
 - else
   .searchresult.clearfix{:id => "searchresult#{index+1}"}
     %h2= display_result_title(result, search, affiliate, index)

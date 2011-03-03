@@ -5,7 +5,24 @@ class Agency < ActiveRecord::Base
   after_save :generate_agency_queries
   
   NAME_QUERY_PREFIXES = ["the", "us", "u.s.", "united states"]
+  SOCIAL_MEDIA_SERVICES = %w{Twitter Facebook YouTube Flickr}
   
+  def twitter_profile_link
+    self.twitter_username.present? ? "http://twitter.com/#{self.twitter_username}" : nil
+  end
+  
+  def facebook_profile_link
+    self.facebook_username.present? ? "http://facebook.com/#{self.facebook_username}" : nil
+  end
+  
+  def youtube_profile_link
+    self.youtube_username.present? ? "http://youtube.com/#{self.youtube_username}" : nil
+  end
+  
+  def flickr_profile_link
+    self.flickr_username.present? ? "http://flickr.com/groups/#{self.flickr_username}" : nil
+  end
+    
   private
   
   def generate_agency_queries

@@ -122,6 +122,23 @@ module SearchHelper
     logo = show_logo ? image_tag("binglogo_#{I18n.locale}.gif", :style=>"float:right") : ""
     content_tag(:div, logo + p_sum, :id => "summary")
   end
+  
+  def display_agency_phone_numbers(agency)
+    html = ""
+    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_phone_label}: #{agency.phone}</h3><br/>" if agency.phone.present?
+    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_toll_free_phone_label}: #{agency.toll_free_phone}</h3><br/>" if agency.toll_free_phone.present?
+    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_tty_phone_label}: #{agency.tty_phone}</h3><br/>" if agency.tty_phone.present?
+    return html
+  end
+  
+  def display_agency_social_media_links(agency)
+    list_html = ""
+    Agency::SOCIAL_MEDIA_SERVICES.each do |service|
+      profile_link = agency.send("#{service.downcase}_profile_link".to_sym)
+      list_html << "<h3>#{service}: #{ link_to profile_link, profile_link, :target => "_blank" }</h3>" if profile_link
+    end
+    list_html
+  end
 
   def web_search?
     ["searches", "home"].include?(controller.controller_name) and controller.action_name == "index"
