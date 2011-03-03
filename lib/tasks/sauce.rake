@@ -23,7 +23,12 @@ namespace :screenshots do
   end
 
   task :push do
-    require 'cloudfiles'
+    begin
+      require 'cloudfiles'
+    rescue LoadError => e
+      $stderr.puts "Please run 'gem install cloudfiles'"
+      raise e
+    end
     cf = CloudFiles::Connection.new(:username => "lorensiebert", :api_key => "***REMOVED***")
     container = cf.container('SauceLabs Reports')
 

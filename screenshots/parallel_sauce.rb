@@ -1,5 +1,12 @@
 require File.dirname(__FILE__) + "/support/sauce.rb"
-require 'parallel'
+
+begin
+  gem 'parallel'
+  require 'parallel'
+rescue LoadError => e
+  $stderr.puts "Please run 'gem install parallel'"
+  raise e
+end
 
 BROWSERS = [
     Browser.new("Windows 2003", "iexplore", "6."),

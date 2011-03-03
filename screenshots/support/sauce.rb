@@ -10,7 +10,7 @@ begin
   gem 'sauce'
   require 'sauce'
 rescue LoadError => e
-  $stderr.puts "To enable sauce integration, run 'gem install sauce"
+  $stderr.puts "To enable sauce integration, run 'gem install sauce'"
   raise e
 end
 
