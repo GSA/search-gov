@@ -42,6 +42,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :top_forms, :only => [:index, :create, :update, :destroy]
     admin.resources :superfresh_urls, :active_scaffold => true
     admin.resources :site_pages, :active_scaffold => true
+    admin.resources :agencies, :active_scaffold => true
+    admin.resources :agency_queries, :active_scaffold => true
   end
   map.affiliate_analytics_redirect '/admin/affiliates/:id/analytics', :controller => 'admin/affiliates', :action => 'analytics'
   map.admin_home_page '/admin', :controller => "admin/home"

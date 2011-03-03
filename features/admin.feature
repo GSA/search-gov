@@ -20,6 +20,7 @@ Feature:  Administration
     And I should see "Top Searches"
     And I should see "Top Forms"
     And I should not see "Query Grouping"
+    And I should see "Agencies"
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
     And I should see "Sign Out"
