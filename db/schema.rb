@@ -103,13 +103,6 @@ ActiveRecord::Schema.define(:version => 20110303155705) do
 
   add_index "auto_recalls", ["recall_id"], :name => "index_auto_recalls_on_recall_id"
 
-  create_table "boosted_content_keywords", :force => true do |t|
-    t.string   "phrase"
-    t.integer  "boosted_content_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "boosted_contents", :force => true do |t|
     t.integer  "affiliate_id"
     t.string   "title",                                       :null => false
