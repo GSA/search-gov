@@ -5,16 +5,16 @@
       %h3
         = display_result_links(result, search, affiliate, index, false)
         |
-        Official Site
+        = t :agency_official_site
       %h3{:style => 'width: 600px;'}
         = display_result_description(result)
       - if affiliate == nil && index == 0 && search.page == 0
         = display_deep_links_for(result)
       - if search.agency.phone.present?
         %h3{:style => 'margin-top: 5px;'}
-          Contact: #{search.agency.phone}
+          #{t :agency_contact_label}: #{search.agency.phone}
       %h3{:style => 'margin-top: 5px;'}
-        Search within #{search.agency.domain}
+        #{t :agency_search_within_label} #{search.agency.domain}
         - form_tag search_path, :method => :get do
           = hidden_field_tag 'sitelimit', search.agency.domain
           = text_field_tag 'query'
