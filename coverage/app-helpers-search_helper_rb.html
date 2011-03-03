@@ -273,7 +273,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>   def display_result_links (result, search, affiliate, position)</pre></td>
+            <td><pre><a name="line37">37</a>   def display_result_links (result, search, affiliate, position, show_cache_link = true)</pre></td>
           </tr>
         
           
@@ -285,7 +285,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     unless result['cacheUrl'].blank?</pre></td>
+            <td><pre><a name="line39">39</a>     unless result['cacheUrl'].blank? or !show_cache_link</pre></td>
           </tr>
         
           
@@ -1965,7 +1965,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Wed Mar 02 17:57:13 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Wed Mar 02 22:30:31 -0500 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

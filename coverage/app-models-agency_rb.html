@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/helpers/affiliate_helper.rb</title>
+    <title>app/models/agency.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/helpers/affiliate_helper.rb</h2>
+    <h2>app/models/agency.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-helpers-affiliate_helper_rb.html">app/helpers/affiliate_helper.rb</a></td>
-            <td class='right_align'><tt>30</tt></td>
-            <td class='right_align'><tt>28</tt></td>
+            <td class="left_align"><a href="app-models-agency_rb.html">app/models/agency.rb</a></td>
+            <td class='right_align'><tt>27</tt></td>
+            <td class='right_align'><tt>24</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,181 +57,163 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> module AffiliateHelper</pre></td>
+            <td><pre><a name="line1">1</a> class Agency &lt; ActiveRecord::Base</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   def affiliate_center_breadcrumbs(crumbs)</pre></td>
+            <td><pre><a name="line2">2</a>   validates_presence_of :name, :domain, :url</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     aff_breadcrumbs =</pre></td>
+            <td><pre><a name="line3">3</a>   validates_uniqueness_of :domain</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>       [link_to(&quot;Affiliate Program&quot;, affiliates_path), link_to(&quot;Affiliate Center&quot;,home_affiliates_path), crumbs]</pre></td>
+            <td><pre><a name="line4">4</a>   has_many :agency_queries, :dependent =&gt; :destroy</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     breadcrumbs(aff_breadcrumbs.flatten)</pre></td>
+            <td><pre><a name="line5">5</a>   after_save :generate_agency_queries</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a>   end</pre></td>
+            <td><pre><a name="line6">6</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>   NAME_QUERY_PREFIXES = [&quot;the&quot;, &quot;us&quot;, &quot;u.s.&quot;, &quot;united states&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a> </pre></td>
+            <td><pre><a name="line8">8</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   def affiliate_template_options(affiliate)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>     options = &quot;&lt;option value=\&quot;\&quot;&gt;Default&lt;/option&gt;&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>     options &lt;&lt; &quot;&lt;optgroup label = \&quot;All Styles\&quot;&gt;&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     template_options = AffiliateTemplate.all.sort_by(&amp;:name).collect {|template| [&quot;#{template.name} (#{template.description})&quot;, template.id]}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>     options &lt;&lt; options_for_select(template_options, :selected =&gt; affiliate.staged_affiliate_template_id)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>     options &lt;&lt; &quot;&lt;/optgroup&gt;&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>     options</pre></td>
+            <td><pre><a name="line9">9</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>   end</pre></td>
+            <td><pre><a name="line10">10</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>   def generate_agency_queries</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     self.agency_queries.destroy_all</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; self.domain)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; &quot;www.#{self.domain}&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; self.name.downcase)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>     NAME_QUERY_PREFIXES.each do |prefix|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>       self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; &quot;#{prefix} #{self.name.downcase}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> </pre></td>
+            <td><pre><a name="line18">18</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>   def site_wizard_header(current_step)</pre></td>
+            <td><pre><a name="line19">19</a>     self.name_variants.split(',').each do |name_variant|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>     steps = [:edit_contact_information, :new_site_information, :get_the_code]</pre></td>
+            <td><pre><a name="line20">20</a>       self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; name_variant.downcase.strip)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>     step_contents = [&quot;Step 1. Enter contact information&quot;, &quot;Step 2. Set up site&quot;, &quot;Step 3. Get the code&quot;]</pre></td>
+            <td><pre><a name="line21">21</a>       NAME_QUERY_PREFIXES.each do |prefix|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>     header = ''</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>     steps.each_with_index do |step, index|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>       if step == current_step</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>         header &lt;&lt; content_tag('span', step_contents[index], :class =&gt; &quot;step current_step&quot;)</pre></td>
+            <td><pre><a name="line22">22</a>         self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; &quot;#{prefix} #{name_variant.downcase.strip}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>       else</pre></td>
+            <td><pre><a name="line23">23</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>         header &lt;&lt; content_tag('span', step_contents[index], :class =&gt; &quot;step&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line26">26</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line27">27</a>     end</pre></td>
+            <td><pre><a name="line24">24</a>     end unless self.name_variants.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>     header</pre></td>
+            <td><pre><a name="line25">25</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; self.abbreviation) if self.abbreviation.present?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>   end</pre></td>
+            <td><pre><a name="line26">26</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a> end</pre></td>
+            <td><pre><a name="line27">27</a> end</pre></td>
           </tr>
         
       </tbody>
