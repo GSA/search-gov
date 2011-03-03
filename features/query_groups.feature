@@ -68,7 +68,6 @@ Feature: Manage query_groups
 
   Scenario: Accessing the analytics dashboard as an analyst admin
     Given I am logged in with email "marilyn@fixtures.org" and password "admin"
-    When I am on the analytics homepage
-    Then I should see "Query Groups Admin"
-    When I follow "Query Groups Admin"
+    When I am on the admin home page
+    And I follow "Query Grouping"
     Then I should be on the query groups admin page

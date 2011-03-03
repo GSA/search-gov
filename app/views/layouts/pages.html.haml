@@ -5,6 +5,7 @@
     = favicon_link_tag
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
     = stylesheet_link_tag 'compiled/main.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/program.css', :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     = stylesheet_link_tag 'compiled/sayt.css'
     = stylesheet_link_tag 'jquery-ui/jquery-ui-1.8.5.custom.css'
@@ -16,6 +17,8 @@
     = javascript_include_tag "jquery/jquery.bgiframe.min.js"
     = javascript_include_tag "sayt-ui.js"
     = javascript_include_tag "application.js"
+    /[if IE]
+      = javascript_include_tag "iepngfix_tilebg.js"
     = javascript_include_tag "affiliates.js"
   %body
     = render "/shared/program_header"

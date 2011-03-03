@@ -31,7 +31,7 @@ Feature:  Administration
   Scenario: Clicking on program logo in the admin home page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
-    And  I follow "program_logo"
+    When I follow "USASearch Program" in the header
     Then I should be on the program welcome page
 
   Scenario: Clicking on USASearch breadcrumb link in the admin home page as an admin

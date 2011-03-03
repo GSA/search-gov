@@ -93,26 +93,18 @@ module ApplicationHelper
   def basic_header_navigation_for(cur_user)
     elements = []
     if cur_user
-      elements << cur_user.email
-      elements << link_to("My Account", account_path)
-      elements << link_to("Sign Out", url_for_logout, :method => :delete)
+      elements << "#{cur_user.email} |"
+      elements << link_to("My Account |", account_path)
+      elements << link_to("Sign Out |", url_for_logout, :method => :delete)
     else
-      elements << link_to("Sign In", url_for_login)
+      elements << link_to("Sign In |", url_for_login)
     end
     elements << link_to("Help Desk", "http://searchsupport.usa.gov/home", :target => "_blank")
-    elements.join(" | ")
-  end
 
-  def analytics_header_navigation_for(cur_user)
-    elements = []
-    if cur_user
-      elements << cur_user.email
-      elements << link_to("My Account", account_path)
-      elements << link_to("Query Groups Admin", analytics_query_groups_path) if cur_user.is_analyst_admin?
-      elements << link_to("Sign Out", url_for_logout, :method => :delete)
+    results = elements.collect do |element|
+      content_tag(:li, element)
     end
-    elements << link_to("Help Desk", "http://searchsupport.usa.gov/home", :target => "_blank")
-    elements.join(" | ")
+    content_tag(:ul, results.join)
   end
 
   def other_locale_str

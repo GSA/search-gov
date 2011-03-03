@@ -9,7 +9,7 @@ Feature: Program
     And I should see "APIs and other web services" within ".main"
     And I should see "Search.USA.gov" within ".main"
 
-    When I follow "program_logo"
+    When I follow "USASearch Program" in the header
     Then I should be on the program welcome page
 
     When I fill in "query" with "White House"
