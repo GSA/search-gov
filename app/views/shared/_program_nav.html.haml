@@ -8,16 +8,18 @@
             = link_to 'How it works', how_it_works_affiliates_path
           %li
             = link_to 'See it in action', demo_affiliates_path
-          %li
-            = link_to('Sign in', url_for_login) unless current_user
+          - unless current_user
+            %li
+              = link_to('Sign in', url_for_login)
         .clear
       %li#api_nav
         = link_to 'APIs & Web Services', api_docs_path
         %ul
           %li
             = link_to 'Recalls API', recalls_api_docs_path
-          %li
-            = link_to('Sign in', url_for_login) unless current_user
+          - unless current_user
+            %li
+              = link_to('Sign in', url_for_login)
         .clear
       %li
         = link_to 'Search.USA.gov', searchusagov_path
