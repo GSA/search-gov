@@ -17,6 +17,10 @@ Feature: Program
     Then I should be on the search page
     And I should see 10 search results
 
+    When I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And I am on the program welcome page
+    Then I should not see "Sign in"
+
   Scenario: Visiting Affiliate Program links
     Given I am on the program welcome page
     When I follow "learn_more_affiliates" within ".main"
@@ -38,10 +42,10 @@ Feature: Program
     And I should see "See the Affiliate Program in Action" within ".main"
 
     When I follow "sign up"
-    And I should see "Sign In to Use Our Services"
+    Then I should be on the new user_session page
 
     When I follow "Sign in" within "#affiliate_program_nav"
-    Then I should see "Sign In to Use Our Services"
+    Then I should be on the new user_session page
 
     When I follow "Affiliate Program" within ".admin-footer"
     Then I should be on the affiliates page
