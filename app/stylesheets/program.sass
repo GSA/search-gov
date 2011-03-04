@@ -1,7 +1,10 @@
 /* CSS Document
 
 /*html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
-.zheader-wrapper
+.newui-wrapper
+  line-height: 1
+  font-family: Arial, Helvetica, sans-serif
+  font-size: 16px
   min-width: 950px
   div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
     margin: 0
@@ -56,8 +59,6 @@
     behavior: url(/javascripts/iepngfix.htc)
 
   .zheader
-    line-height: 1
-    font-family: Arial, Helvetica, sans-serif
     width: 100%
     float: left
     background: url(/images/bg-header.jpg) repeat-x 0 0
@@ -324,7 +325,7 @@
   .outer-footer
     width: 100%
     float: left
-    background: url(../images/bg-footer.jpg) repeat-x 0 0
+    background: url(/images/bg-footer.jpg) repeat-x 0 0
     height: 121px
 
   .footer
@@ -363,4 +364,5 @@
       font-size: 13px
       text-decoration: none
     p.siteName
-      font-size: 15px
+      a
+        font-size: 15px

@@ -47,7 +47,7 @@ Feature: Program
     When I follow "Sign in" within "#affiliate_program_nav"
     Then I should be on the new user_session page
 
-    When I follow "Affiliate Program" within ".admin-footer"
+    When I follow "Affiliate Program" in the footer
     Then I should be on the affiliates page
 
   Scenario: Visiting APIs and other web services links
@@ -61,7 +61,7 @@ Feature: Program
     When I follow "APIs & Web Services" within ".nav"
     Then I should be on the api page
 
-    When I follow "APIs & Web Services" within ".admin-footer"
+    When I follow "APIs & Web Services" in the footer
     Then I should be on the api page
 
     When I follow "Terms of Service"
@@ -87,7 +87,7 @@ Feature: Program
     And I should see "USASearch > Search.USA.gov"
     And I should see "Search.USA.gov" within ".main"
 
-    When I follow "Search.USA.gov" within ".admin-footer"
+    When I follow "Search.USA.gov" in the footer
     Then I should be on the searchusagov page
 
     When I fill in "query" with "White House"
