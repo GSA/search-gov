@@ -123,6 +123,16 @@ module SearchHelper
     content_tag(:div, logo + p_sum, :id => "summary")
   end
   
+  def agency_url_matches_by_locale(result_url, agency, locale)
+    if locale == I18n.default_locale
+      return result_url == agency.url ? true : false
+    elsif locale == :es
+      return result_url == agency.es_url ? true : false
+    else
+      return false
+    end
+  end
+      
   def display_agency_phone_numbers(agency)
     html = ""
     html << "<h3 style=\"margin-top: 5px;\">#{t :agency_phone_label}: #{agency.phone}</h3>" if agency.phone.present?

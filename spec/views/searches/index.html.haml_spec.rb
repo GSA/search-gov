@@ -218,7 +218,7 @@ describe "searches/index.html.haml" do
     context "when an agency record matches the query" do
       before do
         Agency.destroy_all
-        @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :url => 'http://www.irs.gov/', :twitter_username => 'IRSnews')
+        @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :url => 'http://www.irs.gov/', :twitter_username => 'IRSnews', :es_url => 'http://www.irs.gov/es/')
         @agency_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
         @search.stub!(:query).and_return "irs"
         @search_result = {'title' => "Internal Revenue Service",
@@ -243,6 +243,7 @@ describe "searches/index.html.haml" do
           response.should contain(/Search within irs.gov/)
           response.should have_tag "form[action=/search]" do
             with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
+            with_tag "input[type=hidden][name=locale][value=en]"
           end
           response.should have_tag("a[href=#{@agency.twitter_profile_link}]", :text => @agency.twitter_profile_link)
           response.should_not have_tag("a[href=#{@agency.facebook_profile_link}]", :text => @agency.twitter_profile_link)
@@ -270,13 +271,38 @@ describe "searches/index.html.haml" do
           I18n.locale = :es
         end
         
-        it "should not render a special agency result, even if the first result matches" do
-          render
-          response.should_not have_tag "div[class=govbox]"
-          response.should_not contain(/Contact: 888-555-1040/)
-          response.should_not contain(/Search within irs.gov/)
-          response.should_not have_tag "form[action=/search]" do
-            with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
+        context "when the Spanish URL does not match the result url (and when the English URL does)" do
+          it "should not render a special agency result, even if the first result matches the English URL" do
+            render
+            response.should_not have_tag "div[class=govbox]"
+            response.should_not contain(/Contact: 888-555-1040/)
+            response.should_not contain(/Search within irs.gov/)
+            response.should_not have_tag "form[action=/search]" do
+              with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
+            end
+          end
+        end
+        
+        context "when the Spanish URL matches the result url" do
+          before do
+            @search_result = {'title' => "Internal Revenue Service - Spanish",
+                          'unescapedUrl'=> "http://www.irs.gov/es/",
+                          'content'=> "The official page of the Internal Revenue Service",
+                          'cacheUrl'=> "http://www.cached.com/url"}
+            @search_results = [@search_result]
+            @search_results.stub!(:total_pages).and_return 1
+            @search.stub!(:results).and_return @search_results
+          end
+          
+          it "should render the first result as a Spanish agency govbox" do
+            render
+            response.should have_tag "div[class=govbox]"
+            response.should contain(/Número de contacto: 888-555-1040/)
+            response.should contain(/Buscar en irs.gov/)
+            response.should have_tag "form[action=/search]" do
+              with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
+              with_tag "input[type=hidden][name=locale][value=es]"
+            end
           end
         end
         

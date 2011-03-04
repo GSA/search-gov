@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110303155705) do
+ActiveRecord::Schema.define(:version => 20110304145634) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20110303155705) do
     t.string   "youtube_username",  :limit => 40
     t.string   "facebook_username", :limit => 75
     t.string   "flickr_username",   :limit => 50
+    t.string   "es_url"
   end
 
   create_table "agency_queries", :force => true do |t|

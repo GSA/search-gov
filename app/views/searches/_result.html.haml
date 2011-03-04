@@ -1,4 +1,4 @@
-- if search.agency.present? and index == 0 and search.page == 0 and result['unescapedUrl'] == search.agency.url and I18n.locale == I18n.default_locale
+- if search.agency.present? and index == 0 and search.page == 0 and agency_url_matches_by_locale(result['unescapedUrl'], search.agency, I18n.locale)
   .govbox
     .searchresult.clearfix{:id => "searchresult#{index+1}"}
       %h2= display_result_title(result, search, affiliate, index)
@@ -15,6 +15,7 @@
         #{t :agency_search_within_label} #{search.agency.domain}
         - form_tag search_path, :method => :get, :style => 'margin-bottom: 0.5em' do
           = hidden_field_tag 'sitelimit', search.agency.domain
+          = hidden_field_tag 'locale', I18n.locale.to_s
           = text_field_tag 'query'
           = submit_tag 'Search'
       = display_agency_social_media_links(search.agency)
