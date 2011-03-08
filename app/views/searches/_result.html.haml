@@ -17,7 +17,7 @@
           = hidden_field_tag 'sitelimit', search.agency.domain
           = hidden_field_tag 'locale', I18n.locale.to_s
           = text_field_tag 'query'
-          = submit_tag 'Search'
+          = submit_tag t :search
       = display_agency_social_media_links(search.agency)
 - else
   .searchresult.clearfix{:id => "searchresult#{index+1}"}

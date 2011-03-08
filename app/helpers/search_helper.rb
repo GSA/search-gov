@@ -145,7 +145,7 @@ module SearchHelper
     list_html = ""
     Agency::SOCIAL_MEDIA_SERVICES.each do |service|
       profile_link = agency.send("#{service.downcase}_profile_link".to_sym)
-      list_html << "<h3>#{service}: #{ link_to profile_link, profile_link, :target => "_blank" }</h3>" if profile_link
+      list_html << "<h3>#{service}#{I18n.locale == I18n.default_locale ? ":" : " (en inglés):"} #{ link_to profile_link, profile_link, :target => "_blank" }</h3>" if profile_link
     end
     list_html
   end

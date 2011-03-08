@@ -241,9 +241,11 @@ describe "searches/index.html.haml" do
           response.should_not contain(/Toll-free:/)
           response.should_not contain(/TTY:/)
           response.should contain(/Search within irs.gov/)
+          response.should contain(/Twitter:/)
           response.should have_tag "form[action=/search]" do
             with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
             with_tag "input[type=hidden][name=locale][value=en]"
+            with_tag "input[type=submit][value=Search]"
           end
           response.should have_tag("a[href=#{@agency.twitter_profile_link}]", :text => @agency.twitter_profile_link)
           response.should_not have_tag("a[href=#{@agency.facebook_profile_link}]", :text => @agency.twitter_profile_link)
@@ -297,11 +299,13 @@ describe "searches/index.html.haml" do
           it "should render the first result as a Spanish agency govbox" do
             render
             response.should have_tag "div[class=govbox]"
-            response.should contain(/Número de contacto: 888-555-1040/)
+            response.should contain(/Contacto: 888-555-1040/)
             response.should contain(/Buscar en irs.gov/)
+            response.should contain(/Twitter \(en inglés\)/)
             response.should have_tag "form[action=/search]" do
               with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
               with_tag "input[type=hidden][name=locale][value=es]"
+              with_tag "input[type=submit][value=Buscar]"
             end
           end
         end
