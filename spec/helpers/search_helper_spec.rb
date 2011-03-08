@@ -152,5 +152,17 @@ describe SearchHelper do
         html.should match("<tr><td><a href=\"url 6\">title 6</a></td><td></td></tr>")
       end
     end
-  end  
+  end
+  
+  describe "#agency_url_matches_by_locale" do
+    before do
+      @agency = Agency.create(:name => 'My Agency', :domain => 'myagency.gov', :url => 'http://www.myagency.gov/')
+    end
+    
+    context "when the locale is neither english or spanish" do
+      it "should return false" do
+        helper.agency_url_matches_by_locale('http://www.myagency.gov/', @agency, :tk).should == false
+      end
+    end
+  end 
 end
