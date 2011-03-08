@@ -5,10 +5,11 @@ class SaytFilter < ActiveRecord::Base
 
   after_save :apply_filter_to_sayt_suggestions
 
-  def self.filter(inputs, key)
+  def self.filter(inputs, key = nil)
     filters = all
     inputs.reject do |candidate|
-      filters.detect { |filter| candidate[key] =~ /\b#{filter.phrase}\b/i }
+      phrase = key == nil ? candidate : candidate[key] 
+      filters.detect { |filter| phrase =~ /\b#{filter.phrase}\b/i }
     end unless inputs.nil?
   end
 

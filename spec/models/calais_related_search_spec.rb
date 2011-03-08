@@ -229,10 +229,11 @@ describe CalaisRelatedSearch do
 
       context "when there are Calais SocialTags for a term's corpus of titles and descriptions" do
         before do
-          related_terms = ["congress", "California", "CIA inquiry", "Pelosi", "Pelosi awards", "Pelosi award"]
+          related_terms = ["congress", "California", "CIA inquiry", "Pelosi", "Pelosi awards", "Pelosi award", "really bad offensiveterm"]
           social_tags = related_terms.collect { |rt| OpenStruct.new(:name=> rt) }
           m_calais = mock("calais", :socialtags => social_tags)
           Calais.stub!(:process_document).and_return(m_calais)
+          SaytFilter.create!(:phrase=> "offensiveterm")
         end
 
         it "should set the CalaisRelatedSearch's English-locale related terms for that term" do

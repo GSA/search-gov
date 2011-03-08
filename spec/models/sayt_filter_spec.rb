@@ -40,27 +40,37 @@ describe SaytFilter do
     end
   end
 
-  describe "#filter(results, key)" do
+  describe "#filter(results, key=nil)" do
     before do
       SaytFilter.create!(:phrase => "foo")
       SaytFilter.create!(:phrase => "blat baz")
       SaytFilter.create!(:phrase => "hyphenate-me")
-      queries = ["bar Foo", "bar blat", "blat", "baz blat", "baz loren", "food"]
-      @results = queries.collect {|q| { "somekey" => q } }
+      @queries = ["bar Foo", "bar blat", "blat", "baz blat", "baz loren", "food"]
+      @results = @queries.collect { |q| {"somekey" => q} }
     end
 
     it "should not filter out queries that contain blocked terms but do not end on a word boundary" do
       filtered_terms = SaytFilter.filter(@results, "somekey")
-      filtered_terms.detect {|ft| ft["somekey"] == "food" }.should_not be_nil
+      filtered_terms.detect { |ft| ft["somekey"] == "food" }.should_not be_nil
     end
 
-    it "should handle a nil results list by returning nil" do
-      SaytFilter.filter(nil, "somekey").should be_nil
+    context "when results list is nil" do
+      it "should return nil" do
+        SaytFilter.filter(nil, "somekey").should be_nil
+      end
     end
 
-    it "should handle an empty SaytFilter table" do
-      SaytFilter.delete_all
-      SaytFilter.filter(@results, "somekey").size.should == @results.size
+    context "when SaytFilter table is empty" do
+      it "should return the same list" do
+        SaytFilter.delete_all
+        SaytFilter.filter(@results, "somekey").size.should == @results.size
+      end
+    end
+
+    context "when no key is passed in" do
+      it "should operate on raw strings" do
+        SaytFilter.filter(@queries).should == SaytFilter.filter(@results, "somekey").collect { |ft| ft["somekey"] }
+      end
     end
   end
 end

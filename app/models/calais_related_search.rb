@@ -88,6 +88,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
           calais = Calais.process_document(:content => summary, :content_type => :raw, :license_id => CALAIS_LICENSE_ID, :metadata_enables=>['SocialTags'])
           downcased_term = term.downcase
           social_tags = calais.socialtags.collect { |st| st.name }
+          social_tags = SaytFilter.filter(social_tags)
           social_tags.delete_if do |tag|
             downcased_tag = tag.downcase
             downcased_tag.include?('_') or downcased_term.include?(downcased_tag.singularize) or
