@@ -15,16 +15,22 @@
   Available APIs and Web Services
 %p
   USASearch is committed to providing APIs to simplifying access to government information and services. We currently offer the following API (and we plan to offer several more soon).
-%p
-  %a{:href=>"/api/search"}
-    Search Data API
-  %br
-  Returns search results in json format, including sections for search results, summary stats, boosted sites, spelling suggestions, and related searches.
+
 %p
   %a{:href=>"/api/recalls"}
     Product Recall Data API
   %br
   Returns product recall data from three federal government agencies: (1) food safety data from the Centers for Disease Control and Prevention (CDC); (2) car safety data from the National Highway Traffic Safety Administration (NHTSA); and (3) product safety data from the Consumer Product Safety Commission (CPSC). Data include descriptions of recalled products, defect summaries, manufacturer information, and recall dates, among other fields.
+
+%p
+  = link_to_if(current_user && current_user.affiliates.present?, "Search Data API", affiliate_api_index_path(@affiliate || current_user.affiliates.first))
+  %br
+  (requires
+  = "#{link_to("registration", affiliates_path)};"
+  must be affiliated with a government agency)
+  %br
+  Returns data allowing USASearch Affiliates to control the look and feel of their search results pages.
+  Data include sections for search results, summary stats, boosted sites, spelling suggestions, and related searches, among other data.)
 
 %h2
   Terms of Service

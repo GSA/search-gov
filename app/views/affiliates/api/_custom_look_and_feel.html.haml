@@ -8,4 +8,8 @@
     Your API key is:
     %b= current_user.api_key
     %br
-    = link_to("Search API Documentation", search_api_docs_path)
+    = link_to_unless(affiliate.nil?, "Search API Documentation", affiliate_api_index_path(affiliate))
+    - if affiliate.nil?
+      (please
+      = link_to("register an affiliate", home_affiliates_path)
+      in order to use the Search API)

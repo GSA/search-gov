@@ -17,7 +17,13 @@
         %ul
           %li
             = link_to 'Recalls API', recalls_api_docs_path
-          - unless current_user
+          - if current_user
+            %li
+              - if current_user.affiliates.empty? && @affiliate.nil?
+                = link_to('Create Affiliate', home_affiliates_path)
+              - else
+                = link_to("Search API", affiliate_api_index_path(@affiliate || current_user.affiliates.first))
+          - else
             %li
               = link_to('Sign in', url_for_login)
         .clear

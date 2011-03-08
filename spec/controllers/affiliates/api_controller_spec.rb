@@ -10,37 +10,37 @@ describe Affiliates::ApiController do
   describe "#search" do
     describe "authentication" do
       it "should 401 when there is no api key" do
-        get :search, :affiliate_name => affiliates(:basic_affiliate).name
+        get :search, :affiliate => affiliates(:basic_affiliate).name
 
         response.code.should == "401"
       end
 
       it "should 401 when there is a blank api key" do
-        get :search, :affiliate_name => affiliates(:basic_affiliate).name, :api_key => ""
+        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => ""
 
         response.code.should == "401"
       end
 
       it "should 401 when there is an unknown api key" do
-        get :search, :affiliate_name => affiliates(:basic_affiliate).name, :api_key => "bad_api_key"
+        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => "bad_api_key"
 
         response.code.should == "401"
       end
 
       it "should 403 when there is a valid api key, but for the wrong affiliate" do
-        get :search, :affiliate_name => affiliates(:basic_affiliate).name, :api_key => users(:another_affiliate_manager).api_key
+        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => users(:another_affiliate_manager).api_key
 
         response.code.should == "403"
       end
 
       it "should 403 when there is a valid api key, but no affiliate found" do
-        get :search, :affiliate_name => "bad_affiliate_name", :api_key => users(:another_affiliate_manager).api_key
+        get :search, :affiliate => "bad_affiliate_name", :api_key => users(:another_affiliate_manager).api_key
 
         response.code.should == "403"
       end
 
       it "should be a success if correct affiliate name and api key" do
-        get :search, :affiliate_name => affiliates(:basic_affiliate).name, :api_key => users(:affiliate_manager).api_key
+        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => users(:affiliate_manager).api_key
 
         response.should be_success
       end
@@ -48,7 +48,7 @@ describe Affiliates::ApiController do
 
     describe "options" do
       before :each do
-        @auth_params = {:affiliate_name => affiliates(:basic_affiliate).name, :api_key => users(:affiliate_manager).api_key}
+        @auth_params = {:affiliate => affiliates(:basic_affiliate).name, :api_key => users(:affiliate_manager).api_key}
       end
 
       it "should set the affiliate" do
@@ -85,7 +85,7 @@ describe Affiliates::ApiController do
         affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description")
         BoostedContent.reindex
 
-        get :search, :affiliate_name => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "title"
+        get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "title"
 
         boosted_results = JSON.parse(response.body)["boosted_results"]
         boosted_results.should_not be_blank

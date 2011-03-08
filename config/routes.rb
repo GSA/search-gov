@@ -74,8 +74,7 @@ ActionController::Routing::Routes.draw do |map|
   map.searchusagov '/searchusagov', :controller => "pages", :action => "show", :id => "search"
   map.contactus '/contactus', :controller => "pages", :action => "show", :id => "contactus"
 
-  map.api_search "/api/search/:affiliate_name", :controller => "affiliates/api", :action => "search"
-  map.search_api_docs '/api/search', :controller => "pages", :action => "show", :id => "search_api"
+  map.api_search "/api/search", :controller => "affiliates/api", :action => "search"
   map.api_docs '/api', :controller => "pages", :action => "show", :id => "api"
   map.recalls_api_docs '/api/recalls', :controller => "pages", :action => "show", :id => "recalls"
   map.recalls_tos_docs '/api/tos', :controller => "pages", :action => "show", :id => "tos"

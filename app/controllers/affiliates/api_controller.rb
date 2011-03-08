@@ -9,8 +9,6 @@ class Affiliates::ApiController < Affiliates::AffiliatesController
   end
 
   def index
-    @page_title = "Search API"
-    render "pages/search_api"
   end
 
   def verify_api_key_and_load_affiliate
@@ -19,7 +17,7 @@ class Affiliates::ApiController < Affiliates::AffiliatesController
       return false
     end
 
-    unless @affiliate = user.affiliates.find_by_name(params[:affiliate_name])
+    unless @affiliate = user.affiliates.find_by_name(params[:affiliate])
       render :text => 'Unauthorized', :status => 403
       return false
     end

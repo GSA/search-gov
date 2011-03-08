@@ -10,4 +10,4 @@
     = f.submit "Make Live", :id => "make_live"
     = link_to "Cancel", affiliate_path(@affiliate)
 
-= render :partial => "api/custom_look_and_feel"
+= render :partial => "affiliates/api/custom_look_and_feel", :locals => {:affiliate => @affiliate}

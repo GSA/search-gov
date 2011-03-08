@@ -14,7 +14,7 @@
     %h3= "URL Example for Affiliate #{@affiliate.name}:"
   %ul
     %li
-      = "http://search.usa.gov/api/search/#{@affiliate.name}?api_key=#{current_user.api_key}&format=json&query=water&page=3"
+      = "http://search.usa.gov/api/search?affiliate=#{@affiliate.name}&api_key=#{current_user.api_key}&format=json&query=water&page=3"
 
 %p
   %h3
@@ -44,6 +44,12 @@
   %h3
     Parameters:
 %ul
+  %li
+    affiliate: The name of your affilite site
+    %ul
+      %li
+        Example: http://search.usa.gov/api/search?affiliate=usa.gov
+
   %li
     api_key: your API key.  You can get a key by #{ link_to 'signing up for an account', login_path}.
     %ul
