@@ -608,7 +608,7 @@ describe Search do
       end
 
       it "should not have the matching related topic in the array of strings" do
-        @search.related_search.should == ["big government", "ridiculous government grants", "whatever"]
+        @search.related_search.should == ["big government", "ridiculous government grants"]
       end
     end
 
@@ -621,7 +621,7 @@ describe Search do
       end
 
       it "should not have the matching related topic in the array of strings" do
-        @search.related_search.should == ["big government", "democracy", "whatever"]
+        @search.related_search.should == ["big government", "democracy"]
       end
     end
 
@@ -631,10 +631,10 @@ describe Search do
         CalaisRelatedSearch.reindex
       end
 
-      it "should have a related searches array of strings including the pivot term" do
+      it "should have a related searches array of strings not including the pivot term" do
         search = Search.new(@valid_options)
         search.run
-        search.related_search.should == ["big government", "democracy", "government grants", "pivot term"]
+        search.related_search.should == ["big government", "democracy", "government grants"]
       end
 
       context "when there are also related topics for the default affiliate" do
@@ -653,7 +653,7 @@ describe Search do
           it "should return the affiliate related topics" do
             search = Search.new(@valid_options)
             search.run
-            search.related_search.should == ["big government", "democracy", "government grants", "pivot term"]
+            search.related_search.should == ["big government", "democracy", "government grants"]
           end
         end
 
@@ -666,7 +666,7 @@ describe Search do
           it "should return the global related topics" do
             search = Search.new(@valid_options)
             search.run
-            search.related_search.should == ["fascism", "government health care", "pivot term", "small government"]
+            search.related_search.should == ["fascism", "government health care", "small government"]
           end
         end
 
@@ -963,7 +963,7 @@ describe Search do
         search.endrecord.should == search.startrecord + search.results.size - 1
       end
     end
-    
+
     context "when the query matches an agency name or abbreviation" do
       before do
         Agency.destroy_all
@@ -971,13 +971,13 @@ describe Search do
         @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :url => 'http://www.irs.gov')
         @agnecy_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
       end
-      
+
       it "should retrieve the associated agency record" do
         search = Search.new(:query => 'irs')
         search.run
         search.agency.should == @agency
       end
-      
+
       context "when the query matches but the case is different" do
         it "should match the agency anyway" do
           search = Search.new(:query => 'IRS')
@@ -985,7 +985,7 @@ describe Search do
           search.agency.should == @agency
         end
       end
-      
+
       context "when there are leading or trailing spaces, but the query basically matches" do
         it "should match the proper agency anyway" do
           search = Search.new(:query => '     irs   ')

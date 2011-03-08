@@ -142,7 +142,7 @@ class Search
     instance = solr.hits.first.instance rescue nil
     return [] if instance.nil?
     related_terms = instance.related_terms
-    related_terms_array = related_terms.split('|') << instance.term
+    related_terms_array = related_terms.split('|')
     related_terms_array.each{|t| t.strip!}
     related_terms_array.delete_if {|related_term| self.query.casecmp(related_term).zero? }
     related_terms_array.sort! {|x,y| y.length <=> x.length }
