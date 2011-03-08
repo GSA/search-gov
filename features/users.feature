@@ -19,11 +19,11 @@ Feature: Users
 
   Scenario: Registering as a new affiliate user who is a government employee or contractor
     Given I am on the login page
-    Then I should see "USASearch > Sign In to Use Our Services"
+    Then I should see "Sign In to Use Our Services"
     And I should see "Register for a New Account"
     And the "I am a government employee or contractor" checkbox should not be checked
     And the "I am not affiliated with a government agency" checkbox should not be checked
-    When I fill in the following within "#new_user":
+    When I fill in the following in the new user form:
     | Email                         | lorem.ipsum@agency.gov      |
     | Name                          | Lorem Ipsum                 |
     | Password                      | huge_secret                 |
@@ -36,8 +36,7 @@ Feature: Users
 
   Scenario: Registering as a new affiliate user who is not affiliated with a government agency
     Given I am on the login page
-    Then I should see "USASearch > Sign In to Use Our Services"
-    When I fill in the following within "#new_user":
+    When I fill in the following in the new user form:
     | Email                         | lorem.imsum@notagency.com   |
     | Name                          | Lorem Ipsum                 |
     | Password                      | huge_secret                 |
@@ -51,7 +50,7 @@ Feature: Users
 
   Scenario: Registering as a new affiliate user with a .mil email address
     Given I am on the login page
-    And I fill in the following within "#new_user":
+    And I fill in the following in the new user form:
     | Email                         | lorem.ipsum@agency.mil      |
     | Name                          | Lorem Ipsum                 |
     | Government organization       | The Agency                  |
@@ -70,7 +69,7 @@ Feature: Users
 
   Scenario: Registering without selecting government affiliation
     Given I am on the login page
-    When I fill in the following within "#new_user":
+    When I fill in the following in the new user form:
     | Email                         | lorem.imsum@notagency.com   |
     | Name                          | Lorem Ipsum                 |
     | Password                      | huge_secret                 |

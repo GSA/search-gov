@@ -14,7 +14,7 @@ class UsersController < SslController
       end
     else
       @user_session = UserSession.new
-      render :template => "user_sessions/new"
+      render :template => "user_sessions/new", :layout => "user_sessions"
     end
   end
 

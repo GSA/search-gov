@@ -1,5 +1,4 @@
 class UserSessionsController < SslController
-  layout "account"
   before_filter :require_no_user, :only => [:new, :create]
   before_filter :require_user, :only => :destroy
 

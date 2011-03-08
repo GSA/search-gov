@@ -1,10 +1,8 @@
-%dl
-  %dt
-    = form.label :email
-  %dd
-    = form.text_field :email, :class => "text"
-  %dt
-    = form.label :password
-  %dd
-    = form.password_field :password, :class => "text"
-= form.submit "Login"
+%li
+  = form.label :email
+  = form.text_field :email, :class => 'txt'
+%li
+  = form.label :password
+  = form.password_field :password, :class => 'txt'
+%li.fLeft
+  = form.submit 'Login', :class => 'submit btn-login'

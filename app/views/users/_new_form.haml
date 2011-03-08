@@ -1,0 +1,17 @@
+%li
+  = new_form.label :contact_name, "Name*"
+  = new_form.text_field :contact_name, :class => "txt"
+%li
+  = new_form.label :organization_name, "Government organization"
+  = new_form.text_field :organization_name, :class => "txt"
+%li
+  = new_form.label :email, "Email*"
+  = new_form.text_field :email, :class => "txt"
+%li
+  = new_form.label :password, 'Password*'
+  = new_form.password_field :password, :class => "txt"
+%li
+  = new_form.label :password_confirmation, "Password confirmation*"
+  = new_form.password_field :password_confirmation, :class => "txt"
+%li.required
+  = content_tag :label, '*Required'
