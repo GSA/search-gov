@@ -19,9 +19,7 @@
             = link_to 'Recalls API', recalls_api_docs_path
           - if current_user
             %li
-              - if current_user.affiliates.empty? && @affiliate.nil?
-                = link_to('Create Affiliate', home_affiliates_path)
-              - else
+              - if current_user.affiliates.present? || @affiliate.present?
                 = link_to("Search API", affiliate_api_index_path(@affiliate || current_user.affiliates.first))
           - else
             %li
