@@ -15,7 +15,7 @@ rescue LoadError => e
 end
 
 Sauce.config do |conf|
-  conf.browser_url = "http://demo:***REMOVED***@searchdemo.usa.gov"
+  conf.browser_url = "http://search.usa.gov"
   conf.username = "usa_search"
   conf.access_key = "5060039c-fa2b-403c-9fef-617142894173"
 end
