@@ -4,7 +4,7 @@ require 'capistrano/ext/multistage'
 
 set :application, "usasearch"
 set :scm,         "git"
-set :repository,  "git@github.com:loren/#{application}.git"
+set :repository,  "git@github.com:GSA-OCSIT/#{application}.git"
 set :use_sudo,    false
 
 before "deploy:restart", "deploy:migrate"
