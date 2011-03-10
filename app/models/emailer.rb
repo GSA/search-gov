@@ -53,6 +53,12 @@ class Emailer < ActionMailer::Base
     @subject += "Welcome to the USASearch Affiliate Program"
     body(:user => user, :affiliate => affiliate, :current_user => current_user)
   end
+
+  def saucelabs_report(admin_email, sauce_labs_link)
+    setup_email(admin_email)
+    @subject += "Sauce Labs Report"
+    body(:sauce_labs_link => sauce_labs_link)
+  end
   
   private
   

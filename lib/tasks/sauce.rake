@@ -22,7 +22,9 @@ namespace :screenshots do
     %x{open screenshots/report/index.html}
   end
 
-  task :push do
+  task :push, :email, :needs => :environment do |t, args|
+    args.with_defaults(:email => "loren@siebert.org")
+    
     begin
       require 'cloudfiles'
     rescue LoadError => e
@@ -35,7 +37,6 @@ namespace :screenshots do
     Dir["screenshots/report/**/*.png"].each do |filename|
       image_obj = container.create_object filename.split('/')[-2..-1].join("/"), false
       image_obj.write(open(filename))
-      puts image_obj.public_url
     end
 
     logo_obj = container.create_object "logo.gif", false
@@ -48,12 +49,19 @@ namespace :screenshots do
     obj.write(open('screenshots/report/index.html'))
 
     puts obj.public_url
+    Emailer.deliver_saucelabs_report(args.email, obj.public_url)
   end
 
   task :run do
     Rake::Task["screenshots:clean"].invoke
     Rake::Task["screenshots:runtests"].invoke
     Rake::Task["screenshots:report"].invoke
+  end
+
+  # Run the full report and email the link to someone: rake screenshots:run_and_report["email@example.com"]
+  task :run_and_report, :email, :needs => :environment do |t, args|
+    Rake::Task["screenshots:run"].invoke
+    Rake::Task["screenshots:push"].invoke(args.email)
   end
 end
 
