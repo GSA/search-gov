@@ -10,11 +10,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   AVAILABLE_LOCALES = [:en, :es]
   VALID_FORMATS = %w{html rss json xml mobile}
-  
+
   rescue_from ActionView::MissingTemplate, :with => :template_not_found
-  
+
   private
-  
+
   def template_not_found(error)
     if VALID_FORMATS.include?(request.format)
       raise error
@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_local_ip
-    @local_sever_ip_in_html_comment = "<!-- Served from #{LOCAL_IP} -->"
+    @rails_sever_location_in_html_comment_for_opsview = "<!-- #{SERVER_LOCATION} -->"
   end
 
   def determine_locale_from_url (locale_param)

@@ -10,5 +10,6 @@ def local_ip
 ensure
   Socket.do_not_reverse_lookup = orig
 end
-
-LOCAL_IP = local_ip
+HERNDON = "***REMOVED***"
+CHICAGO = "***REMOVED***"
+SERVER_LOCATION = local_ip =~ /^192.168.110/ ? HERNDON : CHICAGO
