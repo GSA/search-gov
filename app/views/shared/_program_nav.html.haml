@@ -1,45 +1,59 @@
-#program_nav.secondary-navbar
-  .sec-nav-left
-    %ul.nav{:style=>"display:inline"}
-      %li#affiliate_program_nav
+.wrap-navglobal
+  %ul.nav-global
+    %li.affiliate-li
+      .wrap-nav-content
+        %span.nav-left &nbsp;
         = link_to 'Affiliate Program', affiliates_path
-        %ul
-          %li
-            = link_to 'How it works', how_it_works_affiliates_path
-          %li
-            = link_to 'See it in action', demo_affiliates_path
-          - unless current_user
-            %li
-              = link_to('Sign in', url_for_login)
-        .clear
-      %li#api_nav
+      .submenu
+        %span.top
+          %p &nbsp;
+        %span
+          %p= link_to 'How it works', how_it_works_affiliates_path
+        - if current_user
+          %span.prev-last
+            %p= link_to 'See it in action', demo_affiliates_path
+        - else
+          %span
+            %p= link_to 'See it in action', demo_affiliates_path
+          %span.prev-last
+            %p= link_to('Sign in', url_for_login)
+        %span.last
+          %p &nbsp;
+    %li.api-li
+      .wrap-nav-content
+        %span.nav-left &nbsp;
         = link_to 'APIs & Web Services', api_docs_path
-        %ul
-          %li
-            = link_to 'Recalls API', recalls_api_docs_path
-          - if current_user
-            %li
-              - if current_user.affiliates.present? || @affiliate.present?
-                = link_to("Search API", affiliate_api_index_path(@affiliate || current_user.affiliates.first))
-          - else
-            %li
-              = link_to('Sign in', url_for_login)
-        .clear
-      %li
+      .submenu
+        %span.top
+          %p &nbsp;
+        - if current_user && (current_user.affiliates.present? || @affiliate.present?)
+          %span
+            %p= link_to 'Recalls API', recalls_api_docs_path
+          %span.prev-last
+            %p= link_to("Search API", affiliate_api_index_path(@affiliate || current_user.affiliates.first))
+        - elsif current_user
+          %span.prev-last
+            %p= link_to 'Recalls API', recalls_api_docs_path
+        - else
+          %span
+            %p= link_to 'Recalls API', recalls_api_docs_path
+          %span.prev-last
+            %p= link_to('Sign in', url_for_login)
+        %span.last
+          %p &nbsp;
+    %li.search-li
+      .wrap-nav-content
+        %span.nav-left &nbsp;
         = link_to 'Search.USA.gov', searchusagov_path
-        .clear
-  .sec-nav-right
-    %ul.nav{:style=>"display:inline"}
+
+  .user-nav
+    %ul
       - display_for(:affiliate_admin) do
         %li
-          = link_to 'Admin Center', admin_home_page_path
-          .clear
+          = link_to(image_tag('admin_center_flat.png', :alt => 'Admin Center', :title => 'Admin Center'), admin_home_page_path)
       - display_for(:analyst) do
         %li
-          = link_to 'Analytics Center', analytics_home_page_path
-          .clear
+          = link_to(image_tag('analytics_center_flat.png', :alt => 'Analytics Center', :title => 'Analytics Center'), analytics_home_page_path)
       - display_for(:affiliate) do
         %li
-          = link_to 'Affiliate Center', home_affiliates_path
-          .clear
-      .clear
+          = link_to(image_tag('affiliate_center_flat.png', :alt => 'Affiliate Center', :title => 'Affiliate Center'), home_affiliates_path)

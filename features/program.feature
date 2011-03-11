@@ -44,7 +44,7 @@ Feature: Program
     When I follow "sign up"
     Then I should be on the new user_session page
 
-    When I follow "Sign in" within "#affiliate_program_nav"
+    When I follow "Sign in" in the affiliate program dropdown menu
     Then I should be on the new user_session page
 
     When I follow "Affiliate Program" in the footer
@@ -58,7 +58,7 @@ Feature: Program
     And I should see "USASearch > APIs & Web Services"
     And I should see "APIs and Web Services" within ".main"
 
-    When I follow "APIs & Web Services" within ".nav"
+    When I follow "APIs & Web Services" in the main navigation bar
     Then I should be on the api page
 
     When I follow "APIs & Web Services" in the footer
@@ -70,13 +70,13 @@ Feature: Program
     And I should see "USASearch > APIs & Web Services > Terms of Service"
     And I should see "Terms of Service for USASearch's APIs and Web Services" within ".main"
 
-    When I follow "Recalls API" within ".nav"
+    When I follow "Recalls API" in the main navigation bar
     Then I should be on the recalls api page
     And I should see "Product Recall Data API" within "title"
     And I should see "USASearch > APIs & Web Services > Recalls API"
     And I should see "Product Recall Data API" within ".main"
 
-    When I follow "Sign in" within "#api_nav"
+    When I follow "Sign in" in the api dropdown menu
     Then I should see "Sign In to Use Our Services"
 
   Scenario: Search.USA.gov link should be on the searchusagov page
@@ -86,6 +86,9 @@ Feature: Program
     And I should see "Search.USA.gov" within "title"
     And I should see "USASearch > Search.USA.gov"
     And I should see "Search.USA.gov" within ".main"
+
+    When I follow "Search.USA.gov" in the main navigation bar
+    Then I should be on the searchusagov page
 
     When I follow "Search.USA.gov" in the footer
     Then I should be on the searchusagov page

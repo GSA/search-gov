@@ -12,7 +12,7 @@ Feature: Affiliate clients
     And I should see "Search.USA.gov"
     And I should not see "USA Search Program"
     And I should not see "Admin Center"
-    And I should not see "Analyst Center"
+    And I should not see "Analytics Center"
     And I should not see "Affiliate Center"
     And I should not see "Developer"
 
@@ -22,17 +22,17 @@ Feature: Affiliate clients
   Scenario: Visiting the affiliate welcome page as affiliate admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the affiliate welcome page
-    Then I should see "Admin Center"
-    And I should not see "Analyst Center"
-    And I should not see "Affiliate Center"
-    Then I should see "USASearch > Affiliate Program"
+    Then I should see "Admin Center" link in the main navigation bar
+    And I should not see "Analytics Center" link in the main navigation bar
+    And I should not see "Affiliate Center" link in the main navigation bar
+    And I should see "USASearch > Affiliate Program"
 
   Scenario: Visiting the affiliate welcome page as affiliate
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate welcome page
-    Then I should see "Affiliate Center" within ".secondary-navbar"
-    And I should not see "Admin Center"
-    And I should not see "Analyst Center"
+    Then I should see "Affiliate Center" link in the main navigation bar
+    And I should not see "Admin Center" link in the main navigation bar
+    And I should not see "Analytics Center" link in the main navigation bar
     And I should see "USASearch > Affiliate Program"
 
   Scenario: Visiting the affiliate admin page as affiliate with existing sites
@@ -43,6 +43,9 @@ Feature: Affiliate clients
     And I should see "USASearch > Affiliate Program > Affiliate Center"
     And I should see "Site List"
     And I should see "+ add new site"
+
+    When I follow "Affiliate Center" in the main navigation bar
+    Then I should be on the affiliate admin page
 
   Scenario: Visiting the affiliate admin page as affiliate without existing sites
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"

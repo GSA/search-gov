@@ -8,8 +8,10 @@ Feature: Analytics Homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And there is analytics data from "20090901" thru "20090911"
     When I am on the analytics homepage
-    Then I should see "Analytics Center" within ".secondary-navbar"
+    Then I should see "Analytics Center" link in the main navigation bar
     And I should see "USASearch > Search.USA.gov > Analytics Center"
+    When I follow "Analytics Center" in the main navigation bar
+    Then I should be on the analytics homepage
     When I follow "Queries"
     Then I should see "USASearch > Search.USA.gov > Analytics Center > Queries"
     And I should see "Data for September 11, 2009"

@@ -31,4 +31,11 @@ Then /^the host url should be (.+)$/ do |host|
   end
 end
 
+Then /^I should see "([^"]*)" link$/ do |title|
+  response.body.should have_tag("a img[title=#{title}]")
+end
+
+Then /^I should not see "([^"]*)" link$/ do |title|
+  response.body.should_not have_tag("a img[title=#{title}]")
+end
 

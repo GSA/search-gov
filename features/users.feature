@@ -32,7 +32,7 @@ Feature: Users
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
     And I should see "Thank you for registering for USA.gov Search Services"
-    And I should see "Affiliate Center" within "#program_nav"
+    And I should see "Affiliate Center" link in the main navigation bar
 
   Scenario: Registering as a new affiliate user who is not affiliated with a government agency
     Given I am on the login page
@@ -45,7 +45,7 @@ Feature: Users
     And I press "Register for a new account"
     Then I should be on the user account page
     And I should see "Thank you for registering for USA.gov Search Services"
-    And I should not see "Affiliate Center" within "#program_nav"
+    And I should not see "Affiliate Center" link in the main navigation bar
     And I should not see "Add New Affiliate"
 
   Scenario: Registering as a new affiliate user with a .mil email address

@@ -2,9 +2,9 @@ Feature:  Administration
   Scenario: Visiting the admin home page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
-    Then I should see "Affiliate Program" within ".nav"
-    And I should see "APIs & Web Services" within ".nav"
-    And I should see "Search.USA.gov" within ".nav"
+    Then I should see "Affiliate Program" in the main navigation bar
+    And I should see "APIs & Web Services" in the main navigation bar
+    And I should see "Search.USA.gov" in the main navigation bar
     And I should see "USASearch > Search.USA.gov > Admin Center"
     And I should see "Search.USA.gov Admin Center"
     And I should see "Users" within ".main"
@@ -24,6 +24,9 @@ Feature:  Administration
     And I should see "affiliate_admin@fixtures.org"
     And I should see "My Account"
     And I should see "Sign Out"
+
+    When I follow "Admin Center" in the main navigation bar
+    Then I should be on the admin home page
 
     When I follow "Sign Out"
     Then I should be on the login page

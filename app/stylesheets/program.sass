@@ -3,10 +3,12 @@
 
 /*html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
 .newui-wrapper
+  clear: both
   line-height: 1
   font-family: Arial, Helvetica, sans-serif
   font-size: 16px
-  min-width: 950px
+  min-width: 980px
+  width: 100%
   div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td
     margin: 0
     padding: 0
@@ -59,11 +61,14 @@
   img, div, span, ul
     behavior: url(/javascripts/iepngfix.htc)
 
-  .zheader
+  .header
     width: 100%
     float: left
     background: url(/images/bg-header.jpg) repeat-x 0 0
-    height: 119px
+    height: 170px
+    position: relative
+    z-index: 999
+    margin-bottom: 10px
 
   #wrapLogo
     height: 116px
@@ -105,21 +110,6 @@
         color: #fff
         text-decoration: none
 
-  .nav-global
-    float: left
-    width: 960px
-    padding-left: 25px
-    clear: both
-    li
-      float: left
-      margin-right: 45px
-      padding-top: 18px
-      a
-        font-size: 18px
-        color: #fff
-        text-decoration: none
-        line-height: 20px
-
   .outer-container
     width: 912px
     margin: 0 auto
@@ -130,11 +120,18 @@
     background: url(/images/bg-header-bottom.png) no-repeat 0 0
     width: 912px
 
+  .wraptitleBox
+    float: left
+    position: relative
+    z-index: 9
+    width: 100%
+
   .titleBox
     width: 100%
     float: left
     background: url(/images/bg-title.png) no-repeat 0 bottom
     padding-bottom: 40px
+    behavior: url(/javascripts/iepngfix.htc)
     h1
       font-size: 31px
       margin-bottom: 10px
@@ -389,3 +386,177 @@
       li
         line-height: 1.5
         margin: 0
+
+  .wrap-nav-content
+    float: left
+    a span
+      height: 37px
+      width: 19px
+      float: none
+      left: -19px
+      top: 0
+      position: absolute
+    span
+      height: 37px
+      width: 19px
+      float: left
+
+  .nav-global .wrap-nav-content-hover div
+    float: left
+    a
+      background: url(/images/bg-search.jpg) no-repeat right 0
+
+  .wrap-nav-content
+    a
+      float: left
+    .api a, .search-gov a
+      padding: 10px 20px
+    .affliate a
+      padding: 10px 20px
+      width: 130px
+      height: 17px
+
+  .nav-global .wrap-nav-content-hover
+    &.api a
+      background: url(/images/tab-top-1.jpg) no-repeat 0 0
+      height: 17px
+    .search-gov a
+      background: url(/images/bg-search.jpg) no-repeat 0 0
+      width: 130px
+      height: 17px
+
+  .wrap-navglobal
+    margin-top: 8px
+    /*margin: 8px 0 0 28px
+    float: left
+    width: 100%
+    clear: left
+    ul
+      float: left
+      position: relative
+      width: 100%
+      li
+        display: inline
+        float: left
+        margin-right: 15px
+        position: relative
+        .wrap-nav-content span.nav-left
+          width: 19px
+          height: 37px
+    ul.nav-global
+      width: auto
+    .wrap-nav-content-hover
+      span.nav-left
+        background: url(/images/tab-left.jpg) no-repeat 0 0
+      a
+        background: url(/images/tab-right.jpg) no-repeat right 0
+    ul li
+      a
+        display: block
+        color: #fff
+        text-decoration: none
+        font-size: 16px
+        font-weight: bold
+        line-height: 18px
+        padding: 10px 26px 10px 0
+      &.hover .wrap-nav-content a
+        color: #21548B
+
+  .wrap-navglobal
+    ul li .submenu
+      position: absolute
+      left: 16px !important
+      top: 37px !important
+      visibility: hidden
+      width: 189px
+      z-index: 999
+      padding: 0 0 11px
+    ul li
+      &.search-li .submenu, &.affiliate-li .submenu
+        left: 22px !important
+      &.api-li .submenu
+        left: 52px !important
+    ul li ul li.top-bg
+      background: url(/images/bg-drop-top.png) no-repeat 0 0
+      behavior: url(/javascripts/iepngfix.htc)
+    .submenu
+      p
+        display: list-item
+        float: left
+        width: 169px
+        padding: 0 10px
+        z-index: 9999
+        margin: 0
+      span
+        width: 189px
+        background: url(/images/bg-drop-mid.png) repeat-y 0 0
+        behavior: url(/javascripts/iepngfix.htc)
+        padding: 0
+        float: left
+        &.prev-last p
+          padding-bottom: 0
+        &.top
+          background: url(/images/bg-drop-top.png) no-repeat 0 0
+          border: 0
+          height: 12px
+          overflow: hidden
+          p
+            padding: 0
+        &.last
+          background: url(/images/bg-drop-bot.png) no-repeat 1px 0
+          height: 13px
+    ul li ul li.last div
+      background: url(/images/bg-drop-bot.png) no-repeat 0 0
+      padding: 0
+      width: 189px
+      height: 13px
+      behavior: url(/javascripts/iepngfix.htc)
+    .submenu
+      p a
+        font-size: 15px
+        font-weight: normal
+        width: 159px
+        /*width of sub menus
+        padding: 10px 5px
+        margin: 0
+        border-top-width: 0
+        border-bottom: 1px dotted #ccc
+        color: #3D3D3D
+      .prev-last p a
+        padding-bottom: 0
+      .last
+        p a, a
+          padding: 0
+      p a:hover
+        border-bottom: 1px dotted #fff
+      .prev-last p a, .prev-last p a:hover
+        border: none
+    ul li ul li
+      &.prev-last a
+        border: 0 !important
+      &.last a
+        border: 0
+        padding-bottom: 2px
+        &:hover
+          border: 0
+      a:hover
+        border-bottom: 1px solid #fff
+
+  .wrap-navglobal .user-nav
+    float: right
+    ul
+      width: auto
+      li
+        margin-right: 10px
+        a
+          padding: 0
+          width: 150px
+          img
+            margin-top: 2px
+
+  * html .wrap-navglobal
+    height: 1%
+
+* html .wrap-navglobal ul li a
+  /*IE6 hack to get sub menu links to behave correctly
+  display: inline-block
