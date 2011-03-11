@@ -16,7 +16,7 @@ class Search
   VALID_FILTER_VALUES = %w{strict off}
   DEFAULT_FILTER_SETTING = 'strict'
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
-  VALID_SCOPES = %w{ PatentClass }
+  VALID_SCOPES = %w{ PatentClass USPTOUSPC USPTOTMEP USPTOMPEP }
 
   attr_reader :query,
                 :page,
