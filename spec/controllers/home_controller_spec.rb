@@ -7,9 +7,9 @@ describe HomeController do
     assigns[:search].should_not be_nil
   end
 
-  it "should assign a local server IP variable" do
+  it "should assign a local server hash indicating which datacenter served the request" do
     get :index
-    assigns[:local_sever_ip_in_html_comment].should match(/Served from (\d{1,3}\.){3}\d{1,3}/)
+    assigns[:rails_sever_location_in_html_comment_for_opsview].should be_instance_of(String)
   end
 
   context "when no locale is specified" do
