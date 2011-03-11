@@ -2,6 +2,8 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 require 'ostruct'
 
 describe SearchHelper do
+  fixtures :affiliates
+
   describe "#display_result_links" do
     it "should shorten really long URLs" do
       result = {}
@@ -22,8 +24,19 @@ describe SearchHelper do
     end
   end
 
+  describe "#spelling_suggestion(search, affiliate)" do
+    it "should return HTML escaped output containing the initial query and the suggestion" do
+      affiliate = affiliates(:basic_affiliate)
+      search = Search.new(:query=>"<initialquery>", :affiliate=> affiliate)
+      search.stub!(:spelling_suggestion).and_return("<suggestion>")
+      html = helper.spelling_suggestion(search, affiliate)
+      html.should contain("We're including results for <suggestion>. Do you want results only for <initialquery>?")
+      html.should =~ /&lt;initialquery&gt;/
+      html.should =~ /&lt;suggestion&gt;/
+    end
+  end
+
   describe "#shunt_from_bing_to_usasearch" do
-    fixtures :affiliates
     before do
       @bingurl = "http://www.bing.com/search?q=Womans+Health"
     end
@@ -42,12 +55,12 @@ describe SearchHelper do
       before do
         @url = "http://www.foo.com/this/is/a/really/long/url/that/has/no/query/string.html"
       end
-      
+
       it "should ellipse the directories and just show the file" do
         helper.send(:shorten_url, @url).should == "http://www.foo.com/.../string.html"
       end
     end
-    
+
     context "when URL is more than 30 chars long and has at least one sublevel specified" do
       before do
         @url = "http://www.foo.com/this/goes/on/and/on/and/on/and/on/and/ends/with/XXXX.html?q=1&a=2&b=3"
@@ -153,16 +166,16 @@ describe SearchHelper do
       end
     end
   end
-  
+
   describe "#agency_url_matches_by_locale" do
     before do
       @agency = Agency.create(:name => 'My Agency', :domain => 'myagency.gov', :url => 'http://www.myagency.gov/')
     end
-    
+
     context "when the locale is neither english or spanish" do
       it "should return false" do
         helper.agency_url_matches_by_locale('http://www.myagency.gov/', @agency, :tk).should == false
       end
     end
-  end 
+  end
 end

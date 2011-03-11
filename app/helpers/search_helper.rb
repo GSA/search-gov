@@ -110,8 +110,8 @@ module SearchHelper
       opts.merge!(:query => "+#{search.query}")
       original_url = image_search? ? image_search_path(opts) : search_path(opts)
       did_you_mean = t :did_you_mean,
-                       :assumed_term => tracked_click_link(corrected_url, rendered_suggestion, search, affiliate, 0, 'BSPEL', "style='font-weight:bold'"),
-                       :term_as_typed => tracked_click_link(original_url, search.query, search, affiliate, 0, 'OVER', "style='font-style:italic'")
+                       :assumed_term => tracked_click_link(corrected_url, h(rendered_suggestion), search, affiliate, 0, 'BSPEL', "style='font-weight:bold'"),
+                       :term_as_typed => tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', "style='font-style:italic'")
       content_tag(:h4, did_you_mean)
     end
   end
@@ -122,7 +122,7 @@ module SearchHelper
     logo = show_logo ? image_tag("binglogo_#{I18n.locale}.gif", :style=>"float:right") : ""
     content_tag(:div, logo + p_sum, :id => "summary")
   end
-  
+
   def agency_url_matches_by_locale(result_url, agency, locale)
     if locale == I18n.default_locale
       return result_url == agency.url ? true : false
@@ -132,7 +132,7 @@ module SearchHelper
       return false
     end
   end
-      
+
   def display_agency_phone_numbers(agency)
     html = ""
     html << "<h3 style=\"margin-top: 5px;\">#{t :agency_phone_label}: #{agency.phone}</h3>" if agency.phone.present?
@@ -140,7 +140,7 @@ module SearchHelper
     html << "<h3 style=\"margin-top: 5px;\">#{t :agency_tty_phone_label}: #{agency.tty_phone}</h3>" if agency.tty_phone.present?
     return html
   end
-  
+
   def display_agency_social_media_links(agency)
     list_html = ""
     Agency::SOCIAL_MEDIA_SERVICES.each do |service|
