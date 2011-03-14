@@ -99,7 +99,7 @@ Feature: Boosted Content
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted Content"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Content"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Content
     Then I should see "aff site has no Boosted Content"
     And I should see "Bulk Upload Boosted Content for aff site"
 

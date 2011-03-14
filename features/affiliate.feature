@@ -5,7 +5,7 @@ Feature: Affiliate clients
 
   Scenario: Visiting the affiliate welcome/list page as a un-authenticated Affiliate
     When I go to the affiliate welcome page
-    Then I should see "USASearch > Affiliate Program"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program
     And I should see "Hosted Search Services"
     Then I should see "Affiliate Program"
     And I should see "APIs & Web Services"
@@ -25,7 +25,7 @@ Feature: Affiliate clients
     Then I should see "Admin Center" link in the main navigation bar
     And I should not see "Analytics Center" link in the main navigation bar
     And I should not see "Affiliate Center" link in the main navigation bar
-    And I should see "USASearch > Affiliate Program"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program
 
   Scenario: Visiting the affiliate welcome page as affiliate
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
@@ -33,14 +33,14 @@ Feature: Affiliate clients
     Then I should see "Affiliate Center" link in the main navigation bar
     And I should not see "Admin Center" link in the main navigation bar
     And I should not see "Analytics Center" link in the main navigation bar
-    And I should see "USASearch > Affiliate Program"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program
 
   Scenario: Visiting the affiliate admin page as affiliate with existing sites
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     Then I should see "Affiliate Dashboard" within "title"
     And I should see "Affiliate Dashboard" within ".main"
-    And I should see "USASearch > Affiliate Program > Affiliate Center"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center
     And I should see "Site List"
     And I should see "+ add new site"
 
@@ -51,7 +51,7 @@ Feature: Affiliate clients
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     Then I should see "Affiliate Dashboard"
-    And I should see "USASearch > Affiliate Program > Affiliate Center"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center
     And I should see "Add New Site"
 
   Scenario: Visiting the account page as a logged-in user with affiliates
@@ -100,7 +100,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page
     And I follow "Add New Site"
     Then I should see "Add a New Site" within "title"
-    And I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Add New Site
     And I should see "Add a New Site" within ".main"
     And I should see "Step 1. Enter contact information" within ".current_step"
     And I should see "Contact information"
@@ -134,7 +134,7 @@ Feature: Affiliate clients
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "Add New Site"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Add New Site
     And I should see "Add a New Site"
     And I should see "Step 1. Enter contact information" within ".current_step"
     And I should see "Contact information"
@@ -174,7 +174,7 @@ Feature: Affiliate clients
       | Site name                 | My awesome agency                |
     And I press "Next"
     And I follow "Adding additional sites"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > Add New Site"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Add New Site
 
   Scenario: Clicking on Customizing the look and feel in Step 3. Get the code
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
@@ -196,7 +196,7 @@ Feature: Affiliate clients
       | Site name                 | My awesome agency                |
     And I press "Next"
     And I follow "Setting up the type-ahead search"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > My awesome agency > Type-ahead Search"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > My awesome agency > Type-ahead Search
 
   Scenario: Clicking on Go to Affiliate Center in Step 3. Get the code
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
@@ -249,7 +249,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Site information"
     Then I should see "Site Information" within "title"
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Site Information"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Site Information
     And I should see "Site Information" within ".main"
     And the "Site name" field should contain "aff site"
     And the "HTTP parameter site name" field should contain "aff.gov"
@@ -391,7 +391,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then I should see "Look and Feel of the Search Results Page" within "title"
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page
     And I should see "Look and Feel of the Search Results Page" within ".main"
     And the "Search Results Page Title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the affiliate "Template" field should be set to use "Default" template
@@ -615,7 +615,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Preview"
     Then I should see "Preview" within "title"
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Preview"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Preview
     And I should see "Preview" within "h1"
     And I should see "Search on Live Site" button
     And I should not see "Preview Search on Staged Site" button
@@ -766,7 +766,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get Code"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Get Code"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Get Code
     And I should see "The following is the HTML code for your search box form. Copy and paste this code into your page(s) where the search box should appear."
     And I should see "Code for English-language sites"
     And I should see "Code for Spanish-language sites"
@@ -784,7 +784,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "aff site"
     Then I should see "Site: aff site" within "title"
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Site: aff site" within ".main"
     And I should see "Delete Site" button
     And I should see "Site information" within ".affiliate-nav"
@@ -813,7 +813,7 @@ Feature: Affiliate clients
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Query Logs"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Query Analytics"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Query Analytics
     And I should see "Query Logs for aff site"
     And I should not see "aff.gov"
     And I should see "Most Frequent Queries"
@@ -850,7 +850,7 @@ Feature: Affiliate clients
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
     And I press "Search"
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Query Search"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Query Search
     And I should see "Matches for 'pollution'"
     And I should not see "Matches for 'old pollution'"
     And I should not see "Matches for 'pollutant'"
@@ -871,7 +871,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Monthly Reports"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Monthly Reports"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Monthly Reports
     And I should see "Monthly Reports for aff site"
     And I should see "Monthly Usage Stats"
     And I should not see "aff.gov"
@@ -926,7 +926,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead Search"
     Then I should be on the affiliate sayt page
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Type-ahead Search"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Type-ahead Search
     And I should not see "aff.gov"
 
   Scenario: Setting SAYT Preferences for an affiliate
@@ -1017,7 +1017,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Related Topics"
     Then I should be on the affiliate related topics page
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Related Topics"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Related Topics
     And I should not see "aff.gov"
     When I follow "Preview Button"
     Then I should be on the preview affiliate page
@@ -1059,7 +1059,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Manage Users"
-    Then I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Manage Users"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Manage Users
     And I should see "Manage Users"
     And I should see "John Bar (aff@bar.gov)"
     And I should see "My Account"

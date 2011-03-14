@@ -3,6 +3,7 @@
   'in the affiliate program dropdown menu' => '.affiliate-li',
   'in the api dropdown menu' => '.api-li',
   'in the main navigation bar' => '.wrap-navglobal',
+  'in the breadcrumbs' => '.breadcrumbs',
   'in the footer' => '.outer-footer'
 }.
   each do |within, selector|

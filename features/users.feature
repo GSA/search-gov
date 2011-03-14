@@ -3,7 +3,7 @@ Feature: Users
   Scenario: Logged-in user visits account page
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the user account page
-    Then I should see "USASearch > My Account"
+    Then I should see the following breadcrumbs: USASearch > My Account
     And I should see "API Key"
     And I should see "Your API key is:"
     And I should see "Contact Information"
@@ -81,7 +81,7 @@ Feature: Users
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the user account page
     And I follow "edit your profile"
-    Then I should see "USASearch > My Account > Edit My Account"
+    Then I should see the following breadcrumbs: USASearch > My Account > Edit My Account
     And I should see "Edit My Account"
     And I should see "Name"
     And I should see "Government organization"
@@ -101,7 +101,7 @@ Feature: Users
     Given I am logged in with email "developer@fixtures.org" and password "admin"
     When I go to the user account page
     And I follow "edit your profile"
-    Then I should see "USASearch > My Account > Edit My Account"
+    Then I should see the following breadcrumbs: USASearch > My Account > Edit My Account
     And I should see "Edit My Account"
     And I should see "Name"
     And I should see "Government organization"

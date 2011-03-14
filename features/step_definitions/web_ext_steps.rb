@@ -39,3 +39,7 @@ Then /^I should not see "([^"]*)" link$/ do |title|
   response.body.should_not have_tag("a img[title=#{title}]")
 end
 
+Then /^I should see the following breadcrumbs: (.+)$/ do |breadcrumbs|
+  stripped_breadcrumbs = breadcrumbs.gsub(' > ', '')
+  Then %{I should see "#{stripped_breadcrumbs}" in the breadcrumbs}
+end

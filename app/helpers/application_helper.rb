@@ -176,8 +176,8 @@ module ApplicationHelper
 
   def breadcrumbs(breadcrumbs)
     trail = link_to('USASearch', program_path)
-    breadcrumbs.each { |breadcrumb| trail << ' > ' << breadcrumb }
-    content_tag(:div,trail, :class => 'breadcrumb')
+    breadcrumbs.each { |breadcrumb| trail << breadcrumb }
+    content_tag(:div,trail, :class => 'breadcrumbs')
   end
 
   def url_for_mobile_home_page(locale = I18n.locale)

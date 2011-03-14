@@ -26,19 +26,19 @@ Feature: Program
     When I follow "learn_more_affiliates" within ".main"
     Then I should be on the affiliates page
     And I should see "USASearch Affiliate Program" within "title"
-    And I should see "USASearch > Affiliate Program"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program
     And I should see "USASearch Affiliate Program" within ".main"
 
     When I follow "How It Works"
     Then I should see "How the Affiliate Program Works" within "title"
-    And I should see "USASearch > Affiliate Program > How it Works"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > How it Works
     And I should see "How the Affiliate Program Works" within ".main"
     When I follow "Register Now"
     Then I should see "Sign In to Use Our Services"
 
     When I follow "See it in action"
     Then I should see "See the Affiliate Program in Action" within "title"
-    And I should see "USASearch > Affiliate Program > See it in Action"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > See it in Action
     And I should see "See the Affiliate Program in Action" within ".main"
 
     When I follow "sign up"
@@ -55,7 +55,7 @@ Feature: Program
     When I follow "learn_more_api" within ".main"
     Then I should be on the api page
     And I should see "APIs and Web Services" within "title"
-    And I should see "USASearch > APIs & Web Services"
+    And I should see the following breadcrumbs: USASearch > APIs & Web Services
     And I should see "APIs and Web Services" within ".main"
 
     When I follow "APIs & Web Services" in the main navigation bar
@@ -67,13 +67,13 @@ Feature: Program
     When I follow "Terms of Service"
     Then I should be on the terms of service page
     And I should see "Terms of Service for USASearch's APIs and Web Services" within "title"
-    And I should see "USASearch > APIs & Web Services > Terms of Service"
+    And I should see the following breadcrumbs: USASearch > APIs & Web Services > Terms of Service
     And I should see "Terms of Service for USASearch's APIs and Web Services" within ".main"
 
     When I follow "Recalls API" in the main navigation bar
     Then I should be on the recalls api page
     And I should see "Product Recall Data API" within "title"
-    And I should see "USASearch > APIs & Web Services > Recalls API"
+    And I should see the following breadcrumbs: USASearch > APIs & Web Services > Recalls API
     And I should see "Product Recall Data API" within ".main"
 
     When I follow "Sign in" in the api dropdown menu
@@ -84,7 +84,7 @@ Feature: Program
     When I follow "learn_more_searchusagov" within ".main"
     Then I should be on the searchusagov page
     And I should see "Search.USA.gov" within "title"
-    And I should see "USASearch > Search.USA.gov"
+    And I should see the following breadcrumbs: USASearch > Search.USA.gov
     And I should see "Search.USA.gov" within ".main"
 
     When I follow "Search.USA.gov" in the main navigation bar

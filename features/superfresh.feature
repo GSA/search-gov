@@ -13,7 +13,7 @@ Feature: Affiliate Superfresh Interface
     Then I should see "Learn more about our Add to Bing™ feature by going to our new section in the Help Desk"
     And I should see "Another Way to Highlight Content"
     When I follow "Boosted Content" within ".right-sidebar"
-    Then I should see "aff site > Boosted Content"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Content
 
   Scenario: Submit a URL for on-demand indexing
     Given the following Affiliates exist:
@@ -23,7 +23,7 @@ Feature: Affiliate Superfresh Interface
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
-    And I should see "USASearch > Affiliate Program > Affiliate Center > aff site > Add to Bing"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add to Bing
     And I should see "Add to Bing"
     When I fill in "Single URL" with "http://new.url.com"
     And I press "Submit"
