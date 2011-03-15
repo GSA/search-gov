@@ -19,7 +19,6 @@ namespace :screenshots do
 
   task :report do
     %x{haml screenshots/report/index.html.haml > screenshots/report/index.html}
-    %x{open screenshots/report/index.html}
   end
 
   task :push, :email, :needs => :environment do |t, args|
