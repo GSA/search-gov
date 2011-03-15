@@ -43,3 +43,8 @@ config.gem "cucumber-rails",   :lib => false, :version => '>= 0.3.2'
 config.gem "rcov",             :lib => false
 config.gem 'email_spec',       :lib => 'email_spec'
 config.gem "resque_spec",      :version => '~> 0.2.0'
+
+# reCAPTCHA keys
+# reCAPTCHA is configured to automatically skip for test and cucumber environments but the code still refers to these values
+RECAPTCHA_PUBLIC_KEY  = 'PUBLIC_KEY'
+RECAPTCHA_PRIVATE_KEY = 'PRIVATE_KEY'

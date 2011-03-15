@@ -22,3 +22,7 @@ APP_URL = "localhost:3000"
 
 # protocol for login and logout url
 SSL_PROTOCOL = "http"
+
+# reCAPTCHA keys
+RECAPTCHA_PUBLIC_KEY  = '***REMOVED***'
+RECAPTCHA_PRIVATE_KEY = '***REMOVED***'

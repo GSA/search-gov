@@ -62,9 +62,6 @@ a
     border-collapse: collapse
     border-spacing: 0
 
-  img, div, span, ul
-    behavior: url(/javascripts/iepngfix.htc)
-
   .header
     width: 100%
     float: left
@@ -82,6 +79,8 @@ a
     float: left
     width: 283px
     padding-left: 5px
+    img
+      behavior: url(/javascripts/iepngfix.htc)
 
   .topLogo, .bottomLogo
     float: left
@@ -97,11 +96,13 @@ a
     .nav-left
       height: 40px
       background: url(/images/bg-nav-top-left.png) no-repeat left 0
+      behavior: url(/javascripts/iepngfix.htc)
       width: 46px
       float: left
     ul
       padding: 10px 41px 0 0
       background: url(/images/bg-nav-top-right.png) no-repeat right 0
+      behavior: url(/javascripts/iepngfix.htc)
       float: left
       height: 38px
     li
@@ -122,6 +123,7 @@ a
     float: left
     padding: 30px 0
     background: url(/images/bg-header-bottom.png) no-repeat 0 0
+    behavior: url(/javascripts/iepngfix.htc)
     width: 912px
 
   .wraptitleBox
@@ -195,6 +197,7 @@ a
         line-height: 18px
       .txt
         background: url(/images/txt-box.png) no-repeat 0 0
+        behavior: url(/javascripts/iepngfix.htc)
         width: 215px
         border: 0
         padding: 3px 5px
@@ -208,6 +211,7 @@ a
     li
       .btn-login
         background: url(/images/btn-login.png) no-repeat 0 0
+        behavior: url(/javascripts/iepngfix.htc)
         width: 100px
         height: 38px
         border: 0
@@ -239,17 +243,20 @@ a
 
   .registerboxTop
     background: url(/images/register-box-top.png) no-repeat 0 0
+    behavior: url(/javascripts/iepngfix.htc)
     width: 447px
     height: 15px
     float: left
 
   .registerboxMid
     background: url(/images/register-box-mid.png) repeat-y 0 0
+    behavior: url(/javascripts/iepngfix.htc)
     width: 447px
     float: left
 
   .registerboxBot
     background: url(/images/register-box-bottom.png) no-repeat 0 0
+    behavior: url(/javascripts/iepngfix.htc)
     width: 447px
     height: 34px
     float: left
@@ -309,6 +316,7 @@ a
 
   .btn-register
     background: url(/images/btn-register.png) no-repeat 0 0
+    behavior: url(/javascripts/iepngfix.htc)
     width: 250px
     height: 38px
     border: 0
@@ -559,6 +567,7 @@ a
           width: 150px
           img
             margin-top: 2px
+            behavior: url(/javascripts/iepngfix.htc)
 
   * html .wrap-navglobal
     height: 1%
@@ -577,3 +586,28 @@ a
 * html .wrap-navglobal ul li a
   /*IE6 hack to get sub menu links to behave correctly
   display: inline-block
+
+#dynamic_recaptcha
+  float: right
+  padding-right: 18px
+  font-family: Helvetica, sans-serif
+  color: black
+  font-size: 12px
+  .recaptchatable *
+    margin: 0
+    padding: 0
+    border: 0
+    font-family: helvetica,sans-serif
+    font-size: 8pt
+    color: black
+    position: static
+    top: auto
+    left: auto
+    right: auto
+    bottom: auto
+    text-align: left!important
+  #recaptcha_response_field
+    top: 21px
+    right: 1px
+    left: 0
+    bottom: 7px

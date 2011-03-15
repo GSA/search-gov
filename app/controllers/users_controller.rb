@@ -5,7 +5,7 @@ class UsersController < SslController
 
   def create
     @user = User.new(params[:user])
-    if @user.save
+    if verify_recaptcha(:model => @user, :message => 'Word verification is incorrect') && @user.save
       flash[:success] = "Thank you for registering for USA.gov Search Services"
       if @user.is_affiliate?
         redirect_to home_affiliates_path

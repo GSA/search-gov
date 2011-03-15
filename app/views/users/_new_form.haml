@@ -13,5 +13,8 @@
 %li
   = new_form.label :password_confirmation, "Password confirmation*"
   = new_form.password_field :password_confirmation, :class => "txt"
+%li
+  = label_tag :recaptcha_response_field, "Word verification*"
+  #dynamic_recaptcha
 %li.required
   = content_tag :label, '*Required'

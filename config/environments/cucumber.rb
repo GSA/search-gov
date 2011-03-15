@@ -32,3 +32,8 @@ config.gem 'webrat',           :lib => false, :version => '>=0.7.0' unless File.
 config.gem 'rspec',            :lib => false, :version => ['>=1.3.0', '< 2.0.0.beta.20'] unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec'))
 config.gem 'rspec-rails',      :lib => false, :version => ['>= 1.3.2', '< 2.0.0.beta.20'] unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
 config.gem 'email_spec',       :lib => 'email_spec'
+
+# reCAPTCHA keys
+# reCAPTCHA is configured to automatically skip for test and cucumber environments but the code still refers to these values
+RECAPTCHA_PUBLIC_KEY  = 'PUBLIC_KEY'
+RECAPTCHA_PRIVATE_KEY = 'PRIVATE_KEY'

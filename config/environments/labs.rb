@@ -31,3 +31,7 @@ SSL_PROTOCOL = "http"
 
 # Enable threaded mode
 # config.threadsafe!
+
+# reCAPTCHA keys
+RECAPTCHA_PUBLIC_KEY  = '***REMOVED***'
+RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
