@@ -60,6 +60,26 @@ Feature: Analytics Search
     Then I should be on the analytics query search results page
     And I should see "Please enter search term(s)"
 
+  Scenario: Visiting analytics search results page
+    Given I am logged in with email "marilyn@fixtures.org" and password "admin"
+    And the following DailyQueryStats exist:
+    | query                       | times   |  days_back  |
+    | obama health care           |    10   |     2       |
+    | president                   |     4   |     2       |
+    | ignore me                   |     1   |     2       |
+    And the following query groups exist:
+    | group     | queries            |
+    | hcreform  | medicaid           |
+    | hcreform  | obama health care  |
+    | no_dups   | blargh             |
+    When I am on the analytics queries page
+    And I fill in "query" with "health care"
+    And I press "Search"
+    Then I should be on the analytics query search results page
+    And I should see "obama health care"
+    When I follow "Query Group" in the query search results table header
+    Then I should be on the query groups admin page
+
   Scenario: Bulk adding query terms from analytics search results to an existing query group
     Given I am logged in with email "marilyn@fixtures.org" and password "admin"
     And the following DailyQueryStats exist:

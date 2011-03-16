@@ -4,7 +4,8 @@
   'in the api dropdown menu' => '.api-li',
   'in the main navigation bar' => '.wrap-navglobal',
   'in the breadcrumbs' => '.breadcrumbs',
-  'in the footer' => '.outer-footer'
+  'in the footer' => '.outer-footer',
+  'in the query search results table header' => '.query_search_results_table_header'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

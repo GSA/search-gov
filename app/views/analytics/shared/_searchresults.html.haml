@@ -11,11 +11,11 @@
       }
     - form_tag bulk_add_analytics_query_groups_path, :method => :post, :name => 'queries' do
       %table
-        %tr
+        %tr{:class => 'query_search_results_table_header'}
           %th Query term
           %th{:style=>"text-align: right;"} Frequency
           %th{:style => "text-align: center;"}
-            = "Add to Query Group"
+            = "Add to #{link_to 'Query Group', analytics_query_groups_path, :target => '_blank'}"
             %br
             = "(#{ link_to 'Select All', 'javascript:selectAllQueries();'})"
         - @search_results.each_pair do |query, count|
