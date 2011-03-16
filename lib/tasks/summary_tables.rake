@@ -23,5 +23,17 @@ namespace :usasearch do
       MovingQuery.compute_for(args.day)
     end
   end
-
+  
+  namespace :monthly_popular_queries do
+    desc "Total up the most popular queries for the month of the previous day"
+    task :calculate_monthly_popular_queries, :day, :needs => :environment do |t, args|
+      args.with_defaults(:day => Date.yesterday.to_s(:number))
+      day = Date.parse(args.day)
+      popular_terms = DailyQueryStat.most_popular_terms_for_year_month(day.year, day.month, 1000)
+      popular_terms.each do |popular_term|
+        monthly_popular_query = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query(day.year, day.month, popular_term.query)
+        monthly_popular_query.update_attributes(:times => popular_term.times, :is_grouped => popular_term.is_grouped)
+      end
+    end
+  end
 end

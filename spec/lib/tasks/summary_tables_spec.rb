@@ -90,4 +90,40 @@ describe "summary_tables rake tasks" do
     end
 
   end
+
+  describe "usasearch:monthly_popular_queries" do
+    describe "usasearch:monthly_popular_queries:calculate_monthly_popular_queries" do
+      before do
+        @task_name = "usasearch:monthly_popular_queries:calculate_monthly_popular_queries"
+        DailyQueryStat.create(:day => Date.yesterday, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create(:day => Date.yesterday.yesterday, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+      
+      context "when no parameters are passed" do
+        it "should calculate the popular queries for the month of the previous day" do
+          DailyQueryStat.should_receive(:most_popular_terms_for_year_month).with(Date.yesterday.year, Date.yesterday.month, 1000).and_return []
+          @rake[@task_name].invoke
+        end
+        
+        it "should create monthly popular query records for the monthly total" do
+          @rake[@task_name].invoke
+          mpq = MonthlyPopularQuery.find_all_by_year_and_month_and_query(Date.yesterday.year, Date.yesterday.month, "whatever")
+          mpq.should_not be_nil
+          mpq.size.should == 1
+          mpq.first.times.should == 20
+        end
+      end
+      
+      context "when a date parameter is passed" do
+        it "should calcukate the popular queries for the month associated with the date specified" do
+          DailyQueryStat.should_receive(:most_popular_terms_for_year_month).with(2011, 2, 1000).and_return []
+          @rake[@task_name].invoke('2011-02-11')
+        end
+      end
+    end
+  end
 end

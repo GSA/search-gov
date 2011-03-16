@@ -37,14 +37,10 @@ Feature: Monthly Reports
 
   Scenario: Viewing most popular queries across all affiliates and locales
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist in "February 2010"
-      | query                    | times | affiliate     | locale |
-      | term1                    | 100   | usasearch.gov | en     |
-      | term1                    | 300   | othergovy.gov | es     |
-    And the following DailyQueryStats exist in "March 2010"
-      | query                    | times | affiliate     | locale |
-      | term1                    | 300   | othergovy.gov | en     |
-      | term2                    | 200   | usasearch.gov | en     |
+    And the following MonthlyPopularQueries exist
+      | year  | month | query | times |
+      | 2010  | 2     | term1 | 400   |
+      | 2010  | 3     | term1 | 300   |
     When I am on the reports homepage
     And I select "February 2010" as the report date
     And I press "Get Usage Stats"

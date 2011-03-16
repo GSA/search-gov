@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110304145634) do
+ActiveRecord::Schema.define(:version => 20110316144126) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -235,6 +235,18 @@ ActiveRecord::Schema.define(:version => 20110304145634) do
   end
 
   add_index "misspellings", ["wrong"], :name => "index_misspellings_on_wrong"
+
+  create_table "monthly_popular_queries", :force => true do |t|
+    t.integer  "year"
+    t.integer  "month"
+    t.string   "query"
+    t.integer  "times"
+    t.boolean  "is_grouped", :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "monthly_popular_queries", ["year", "month"], :name => "index_monthly_popular_queries_on_year_and_month"
 
   create_table "moving_queries", :force => true do |t|
     t.date    "day",                    :null => false

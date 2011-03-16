@@ -5,6 +5,14 @@ Given /^the following DailyUsageStats exist for yesterday:$/ do |table|
   end
 end
 
+Given /^the following MonthlyPopularQueries exist$/ do |table|
+  MonthlyPopularQuery.destroy_all
+  table.hashes.each do |hash|
+    MonthlyPopularQuery.create(:year => hash["year"], :month => hash["month"], :query => hash["query"], :times => hash["times"], :is_grouped => hash["is_grouped"].present? ? hash["is_grouped"] : false)
+  end
+end
+
+
 Given /^the following DailyUsageStats exists for each day in yesterday's month$/ do |table|
   DailyUsageStat.delete_all
   yday = Date.yesterday
