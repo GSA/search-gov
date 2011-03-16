@@ -33,7 +33,7 @@ namespace :usasearch do
       popular_terms.each do |popular_term|
         monthly_popular_query = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query(day.year, day.month, popular_term.query)
         monthly_popular_query.update_attributes(:times => popular_term.times, :is_grouped => popular_term.is_grouped)
-      end
+      end unless popular_terms.is_a?(String)
     end
   end
 end

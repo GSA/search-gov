@@ -116,6 +116,14 @@ describe "summary_tables rake tasks" do
           mpq.size.should == 1
           mpq.first.times.should == 20
         end
+        
+        context "when a String is returned instead of a list of queries/counts" do
+          it "should not attempt to generate any monthly popular queries" do
+            DailyQueryStat.should_receive(:most_popular_terms_for_year_month).with(Date.yesterday.year, Date.yesterday.month, 1000).and_return "Not enough historic data to compute most popular"
+            MonthlyPopularQuery.should_not_receive(:find_or_create_by_year_and_month_and_query)
+            @rake[@task_name].invoke
+          end
+        end
       end
       
       context "when a date parameter is passed" do
