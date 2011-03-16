@@ -99,7 +99,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     @popular_queries_for_month = DailyQueryStat.most_popular_terms_for_year_month(@report_date.year, @report_date.month, @num_results_mpq)</pre></td>
+            <td><pre><a name="line8">8</a>     @popular_queries_for_month = MonthlyPopularQuery.find_all_by_year_and_month(@report_date.year, @report_date.month, :order =&gt; &quot;times DESC&quot;, :limit =&gt; @num_results_mpq)</pre></td>
           </tr>
         
           
@@ -171,7 +171,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Fri Mar 11 08:34:46 -0800 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Wed Mar 16 18:11:10 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
