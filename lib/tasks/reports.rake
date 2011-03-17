@@ -11,10 +11,11 @@ namespace :usasearch do
     end
 
     desc "Generate Top Queries reports (daily or monthly) on S3 from CTRL-A delimited input file containing group(e.g., affiliate or locale), query, total"
-    task :generate_top_queries_from_file, :file_name, :period, :max_entries_per_group, :needs => :environment do |t, args|
+    task :generate_top_queries_from_file, :file_name, :period, :max_entries_per_group, :date, :needs => :environment do |t, args|
       if args.file_name.nil? or args.period.nil? or args.max_entries_per_group.nil?
         RAILS_DEFAULT_LOGGER.error "usage: rake usasearch:reports:generate_top_queries_from_file[file_name,monthly|daily,1000]"
       else
+        day = args.date.nil? ? Date.yesterday : Date.parse(args.date)
         establish_aws_connection
         format = args.period == "monthly" ? '%Y%m' : '%Y%m%d'
         max_entries_per_group = args.max_entries_per_group.to_i
@@ -22,7 +23,7 @@ namespace :usasearch do
         File.open(args.file_name).each do |line|
           group, query, total = line.chomp.split(/\001/)
           if last_group.nil? || last_group != group
-            AWS::S3::S3Object.store(generate_report_filename(last_group, Date.yesterday, format), output, AWS_BUCKET_NAME) unless output.nil?
+            AWS::S3::S3Object.store(generate_report_filename(last_group, day, format), output, AWS_BUCKET_NAME) unless output.nil?
             output = "Query,Count\n"
             cnt = 0;
           end
@@ -32,7 +33,7 @@ namespace :usasearch do
           end
           last_group = group
         end
-        AWS::S3::S3Object.store(generate_report_filename(last_group, Date.yesterday, format), output, AWS_BUCKET_NAME) unless output.nil?
+        AWS::S3::S3Object.store(generate_report_filename(last_group, day, format), output, AWS_BUCKET_NAME) unless output.nil?
       end
     end
   end
