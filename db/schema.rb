@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110316144126) do
+ActiveRecord::Schema.define(:version => 20110317221114) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -296,9 +296,10 @@ ActiveRecord::Schema.define(:version => 20110316144126) do
   add_index "recalls", ["recall_number"], :name => "index_recalls_on_recall_number"
 
   create_table "sayt_filters", :force => true do |t|
-    t.string   "phrase",     :null => false
+    t.string   "phrase",                             :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "always_filtered", :default => false, :null => false
   end
 
   add_index "sayt_filters", ["phrase"], :name => "index_sayt_filters_on_phrase", :unique => true

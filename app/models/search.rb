@@ -107,8 +107,8 @@ class Search
     suggestions[0, num_suggestions]
   end
 
-  def self.results_present_for?(query, affiliate, is_misspelling_allowed = true)
-    search = new(:query => query, :affiliate => affiliate)
+  def self.results_present_for?(query, affiliate, is_misspelling_allowed = true, filter_setting = DEFAULT_FILTER_SETTING)
+    search = new(:query => query, :affiliate => affiliate, :filter_setting => filter_setting)
     search.run
     spelling_ok = is_misspelling_allowed ? true : (search.spelling_suggestion.nil? or search.spelling_suggestion.fuzzily_matches?(query))
     return (search.results.present? && spelling_ok)

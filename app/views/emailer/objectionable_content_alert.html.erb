@@ -1,0 +1,5 @@
+These searches turned up some results that you might not expect to be there:
+
+<%- @search_terms.each do |term| %>
+  <%= link_to term, search_url(:query => term, :filter => "off", :input_form => "advanced") -%>
+<% end %>

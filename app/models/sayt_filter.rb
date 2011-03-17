@@ -8,7 +8,7 @@ class SaytFilter < ActiveRecord::Base
   def self.filter(inputs, key = nil)
     filters = all
     inputs.reject do |candidate|
-      phrase = key == nil ? candidate : candidate[key] 
+      phrase = key == nil ? candidate : candidate[key]
       filters.detect { |filter| phrase =~ /\b#{filter.phrase}\b/i }
     end unless inputs.nil?
   end
