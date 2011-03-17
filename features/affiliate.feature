@@ -92,7 +92,7 @@ Feature: Affiliate clients
       | bar site         | multibar.gov     | sorted@bar.gov           | Two Bar             | false              |
     And I am logged in with email "sorted@bar.gov" and password "random_string"
     When I am on the affiliate admin page
-    Then I should see sorted sites in the left navigation panel
+    Then I should see sorted sites in the site dropdown list
     Then I should see sorted sites in the site list
 
   Scenario: Adding a new affiliate
@@ -787,13 +787,13 @@ Feature: Affiliate clients
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Site: aff site" within ".main"
     And I should see "Delete Site" button
-    And I should see "Site information" within ".affiliate-nav"
-    And I should see "Add new site" within ".affiliate-nav"
-    And I should see "My account" within ".affiliate-nav"
-    And I should see "Manage users" within ".affiliate-nav"
+    And I should see "Site information" in the site navigation bar
+    And I should see "Add new site" in the site navigation bar
+    And I should see "My account" in the site navigation bar
+    And I should see "Manage users" in the site navigation bar
     And I should not see "aff.gov"
 
-    When I follow "My account" within ".affiliate-nav"
+    When I follow "My account" in the site navigation bar
     Then I should be on the user account page"
 
   Scenario: Stats link on affiliate home page
@@ -803,7 +803,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the affiliate admin page with "aff.gov" selected
-    Then I should see "SITE ANALYTICS"
+    Then I should see "Site Analytics"
 
   Scenario: Getting stats for an affiliate
     Given the following Affiliates exist:

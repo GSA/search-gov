@@ -146,10 +146,10 @@ Then /^(.+) within site named "([^"]*)"$/ do |step, site_display_name|
   Then %{#{step} within "tr#site_#{site.id}"}
 end
 
-Then /^I should see sorted sites in the left navigation panel$/ do
+Then /^I should see sorted sites in the site dropdown list$/ do
   sites = User.find_by_email("sorted@bar.gov").affiliates.sort{|x,y| x.display_name <=> y.display_name}
   sites.each_with_index do |site, index|
-    response.body.should have_tag(".affiliate-dropdown option:nth-child(#{index + 1})", :value => site.id)
+    response.body.should have_tag("#affiliate_id option:nth-child(#{index + 1})", :value => site.id)
   end
 end
 

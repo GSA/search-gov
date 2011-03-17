@@ -69,7 +69,6 @@ a
     height: 170px
     position: relative
     z-index: 999
-    margin-bottom: 10px
 
   #wrapLogo
     height: 116px
@@ -115,6 +114,7 @@ a
         color: #fff
         text-decoration: none
 
+  /*** containers for login page ***/
   .outer-container
     width: 912px
     margin: 0 auto
@@ -573,13 +573,15 @@ a
     height: 1%
 
 .breadcrumbs
-  font-size: 0.9em
   font-family: Arial, Helvetica, sans-serif
   border-bottom: 1px solid #bdbdbd
-  margin-bottom: 12px
+  margin-bottom: 15px
+  padding-bottom: 8px
   a
     background: url(/images/breadcrumbs_separator.png) no-repeat right 0
     behavior: url(/javascripts/iepngfix.htc)
+    font-size: 16px
+    line-height: 18px
     margin-right: 5px
     padding-right: 16px
 
@@ -587,6 +589,114 @@ a
   /*IE6 hack to get sub menu links to behave correctly
   display: inline-block
 
+.outer-container
+  width: 97%
+  margin: 0 auto
+
+.inner-container
+  float: left
+  padding: 30px 0
+  background: url(/images/bg-header-bottom.png) no-repeat 0 0
+  width: 100%
+  behavior: url(/javascripts/iepngfix.htc)
+
+.add-new-site
+  float: left
+  width: 280px
+
+/*** content ***/
+.content
+  margin-left: 280px
+  width: 70%
+  padding: 10px 0 0 5px
+  .container
+    min-width: 700px
+
+/*** sidebar ***/
+.affiliate-sidebar
+  float: left
+  width: 280px
+  background: url(/images/menu-sep.png) no-repeat right 0
+  behavior: url(/javascripts/iepngfix.htc)
+  min-height: 730px
+  height: auto !important
+  height: 730px
+  padding-top: 10px
+  .side-top
+    background: url(/images/menu-top.png) no-repeat 0 0
+    behavior: url(/javascripts/iepngfix.htc)
+    width: 241px
+    height: 38px
+    float: left
+    &.side-top-blank
+      background: url(/images/menu-top-blank.png) no-repeat 0 0
+      a
+        position: relative
+        left: 20px
+        top: 15px
+  .side-mid
+    background: #f3f4f3
+    width: 219px
+    padding: 5px 10px
+    float: left
+    margin: 0
+    border-left: 1px solid #ebeaea
+    border-right: 1px solid #ebeaea
+    overflow: hidden
+    select
+      font-size: 1em
+      height: auto
+      width: 220px
+      margin-bottom: 17px
+      float: left
+  .side-block
+    float: left
+    width: 100%
+    h3
+      background: url(/images/menu-blue.png) no-repeat 0 0
+      behavior: url(/javascripts/iepngfix.htc)
+      height: 37px
+      float: left
+      margin-bottom: 10px
+      width: 100%
+      span 
+        color: #FFFFFF
+        float: left
+        font-size: 21px
+        font-weight: normal
+        padding: 8px 10px 0
+        text-decoration: none
+    ul
+      float: left
+      margin: 0
+      padding: 0 10px 10px
+      list-style: none outside none
+    li
+      margin-bottom: 10px
+      float: left
+      width: 100%
+      clear: both
+      &.last
+        margin-bottom: 0
+      a
+        text-decoration: none
+        color: #3e3e3e
+        font-size: 16px
+        &.new
+          padding-top: 3px
+        &:hover
+          text-decoration: underline
+      img.new
+        behavior: url(/javascripts/iepngfix.htc)
+  .side-bottom
+    background: url(/images/menu-bottom.png) no-repeat 0 0
+    behavior: url(/javascripts/iepngfix.htc)
+    width: 241px
+    height: 43px
+    float: left
+    clear: both
+
+/*** recaptcha ***/
 #dynamic_recaptcha
   float: right
   padding-right: 18px

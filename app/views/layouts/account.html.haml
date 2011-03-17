@@ -17,8 +17,6 @@
       = javascript_tag "var usagov_sayt_url = \"#{root_url}sayt?aid=#{@affiliate.id}&\";"
     - else
       = javascript_tag "var usagov_sayt_url = \"#{root_url}sayt?\";"
-    /[if IE]
-      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = javascript_include_tag "jquery/jquery-1.4.2.min.js"
     = javascript_include_tag "jquery/jquery-ui-1.8.5.custom.min.js"
     = javascript_include_tag "jquery/jquery.bgiframe.min.js"
@@ -33,72 +31,15 @@
     = calendar_date_select_includes
   %body
     = render "/shared/program_header"
-    .container
-      .main
-        .affiliate-nav
-          - display_for(:affiliate) do
-            - unless current_user.affiliates.empty?
-              .title-row
-                Selected Site
-              .content-box
-                = select("affiliate", "id", current_user.affiliates.ordered.all.collect {|p| [ p.display_name, p.id ] }, {:prompt => 'Select site'}, :class =>"affiliate-dropdown")
-            - if current_user.affiliates.empty?
-              %p= link_to "Add New Site", new_affiliate_path
-            - else
-              - if @affiliate && @affiliate.id.present?
-                .header-box
-                  = link_to(h(@affiliate.display_name), affiliate_path(@affiliate))
-                %table.admin-table.nav-links
-                  %tr
-                    %td
-                      %strong BASIC SETTINGS
-                      %ul{:style => 'list-style-type: none; margin: 0'}
-                        %li
-                          = link_to "Site information", edit_site_information_affiliate_path(@affiliate)
-                        %li
-                          = link_to "Look and feel", edit_look_and_feel_affiliate_path(@affiliate)
-                        %li
-                          = link_to "Preview", preview_affiliate_path(@affiliate)
-                        %li
-                          = link_to "Get code", embed_code_affiliate_path(@affiliate)
-                  %tr
-                    %td
-                      %strong FEATURES
-                      %ul{:style => 'list-style-type: none; margin: 0'}
-                        %li
-                          = link_to "Add to Bing", affiliate_superfresh_urls_path(@affiliate)
-                          = image_tag 'new.png'
-                        %li
-                          = link_to "Boosted content", new_affiliate_boosted_content_path(@affiliate)
-                        %li
-                          = link_to "Related topics", affiliate_related_topics_path(@affiliate)
-                        %li
-                          = link_to "Search API", affiliate_api_index_path(@affiliate)
-                          = image_tag 'new.png'
-                        %li
-                          = link_to "Type-ahead search", affiliate_type_ahead_search_index_path(@affiliate)
-                  %tr
-                    %td
-                      %strong SITE ANALYTICS
-                      %br
-                      = link_to "Query logs", affiliate_analytics_path(@affiliate)
-                      %br
-                      = link_to "Monthly reports", monthly_reports_affiliate_analytics_path(@affiliate)
-                  %tr
-                    %td
-                      %strong ACCOUNT SETTINGS
-                      %br
-                      = link_to "Add new site", new_affiliate_path
-                      %br
-                      = link_to "My account", account_path
-                      %br
-                      = link_to "Manage users", affiliate_users_path(@affiliate)
-        
-        .admin-content
-          .span-18.append-3= show_flash_messages
-          .clear
-          = yield
-        
-      .clear
-      %br
+    .outer-container
+      .inner-container
+        - display_for(:affiliate) do
+          = render "/shared/affiliate_sidebar"
+        .content
+          .container
+            .main
+              .admin-content
+                .span-18.append-3= show_flash_messages
+                .clear
+                = yield
     = render "/shared/program_footer"

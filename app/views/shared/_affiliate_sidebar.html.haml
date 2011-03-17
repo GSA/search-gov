@@ -1,0 +1,44 @@
+.affiliate-sidebar
+  - if current_user.affiliates.empty?
+    .side-top.side-top-blank
+      = link_to "Add New Site", new_affiliate_path
+  - else
+    .side-top &nbsp;
+    .side-mid
+      = select("affiliate", "id", current_user.affiliates.ordered.all.collect {|p| [ p.display_name, p.id ] }, {:prompt => 'Select site'})
+      - if @affiliate && @affiliate.id.present?
+        .side-block
+          %h3
+            %span Basic Settings
+          %ul
+            %li= link_to "Site information", edit_site_information_affiliate_path(@affiliate)
+            %li= link_to "Look and feel", edit_look_and_feel_affiliate_path(@affiliate)
+            %li= link_to "Preview", preview_affiliate_path(@affiliate)
+            %li.last= link_to "Get code", embed_code_affiliate_path(@affiliate)
+        .side-block
+          %h3
+            %span Features
+          %ul
+            %li
+              = link_to "Add to Bing", affiliate_superfresh_urls_path(@affiliate), :class => 'new'
+              = image_tag 'new.png', :class => 'new'
+            %li= link_to "Boosted content", new_affiliate_boosted_content_path(@affiliate)
+            %li= link_to "Related topics", affiliate_related_topics_path(@affiliate)
+            %li
+              = link_to "Search API", affiliate_api_index_path(@affiliate), :class => 'new'
+              = image_tag 'new.png', :class => 'new'
+            %li.last= link_to "Type-ahead search", affiliate_type_ahead_search_index_path(@affiliate)
+        .side-block
+          %h3
+            %span Site Analytics
+          %ul
+            %li= link_to "Query logs", affiliate_analytics_path(@affiliate)
+            %li.last= link_to "Monthly reports", monthly_reports_affiliate_analytics_path(@affiliate)
+        .side-block
+          %h3
+            %span Account Settings
+          %ul
+            %li= link_to "Add new site", new_affiliate_path
+            %li= link_to "My account", account_path
+            %li.last= link_to "Manage users", affiliate_users_path(@affiliate)
+  .side-bottom &nbsp;

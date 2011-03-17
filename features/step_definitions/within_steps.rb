@@ -3,6 +3,7 @@
   'in the affiliate program dropdown menu' => '.affiliate-li',
   'in the api dropdown menu' => '.api-li',
   'in the main navigation bar' => '.wrap-navglobal',
+  'in the site navigation bar' => '.affiliate-sidebar',
   'in the breadcrumbs' => '.breadcrumbs',
   'in the footer' => '.outer-footer',
   'in the query search results table header' => '.query_search_results_table_header'
