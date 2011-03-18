@@ -29,9 +29,9 @@ SSL_PROTOCOL = "http"
 config.gem 'cucumber-rails',   :lib => false, :version => '>=0.3.2' unless File.directory?(File.join(Rails.root, 'vendor/plugins/cucumber-rails'))
 config.gem 'database_cleaner', :lib => false, :version => '>=0.5.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/database_cleaner'))
 config.gem 'webrat',           :lib => false, :version => '>=0.7.0' unless File.directory?(File.join(Rails.root, 'vendor/plugins/webrat'))
-config.gem 'rspec',            :lib => false, :version => ['>=1.3.0', '< 2.0.0.beta.20'] unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec'))
-config.gem 'rspec-rails',      :lib => false, :version => ['>= 1.3.2', '< 2.0.0.beta.20'] unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
-config.gem 'email_spec',       :lib => 'email_spec'
+config.gem 'rspec',            :lib => false, :version => ['>=1.3.0', '<2.0.0'] unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec'))
+config.gem 'rspec-rails',      :lib => false, :version => ['>= 1.3.2', '<2.0.0'] unless File.directory?(File.join(Rails.root, 'vendor/plugins/rspec-rails'))
+config.gem 'email_spec',       :lib => 'email_spec', :version => '=0.6.5'
 
 # reCAPTCHA keys
 # reCAPTCHA is configured to automatically skip for test and cucumber environments but the code still refers to these values
