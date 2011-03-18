@@ -23,12 +23,17 @@
     = javascript_include_tag "affiliates.js"
   %body
     = render "/shared/program_header"
-    .container
-      .main    
-        .admin-content
-          .span-18.append-3= show_flash_messages
-          .clear
-          = yield
-      %br
+    .outer-container
+      .inner-container
+        - display_for(:affiliate) do
+          = render "/shared/affiliate_sidebar"
+        .content
+          .container
+            .main    
+              .admin-content
+                .span-18.append-3= show_flash_messages
+                .clear
+                = yield
+            %br
     = render "/shared/program_footer"
     = render_webtrends_code

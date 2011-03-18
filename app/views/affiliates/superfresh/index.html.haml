@@ -1,38 +1,34 @@
-= affiliate_center_breadcrumbs( [ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Add to Bing'] )
+.superfresh
+  = affiliate_center_breadcrumbs( [ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Add to Bing'] )
 
-%h1
-  Add to Bing&trade;
-%p
-  Are a few new, modified, or moved pages on your site not showing up in the Bing&trade; index?
-  Use our Add to Bing&trade; feature to include them in their index within 24 hours.
-%p
-  You can add up to 100 pages (URLs) per day.
+  .col-1
+    %h1.title
+      Add to Bing&trade;
+    %p
+      Are a few new, modified, or moved pages on your site not showing up in the Bing&trade; index?
+      Use our Add to Bing&trade; feature to include them in their index within 24 hours.
+    %p
+      You can add up to 100 pages (URLs) per day.
 
-.span-15
-  = link_to 'Single URL', "#singleurl"
-  |
-  = link_to 'Bulk Upload', "#bulkupload"
-  |
-  = link_to 'Status', "#status"
-  %br
-  %br
-  .content-box.pad20
-    %a{:name => "singleurl"}
-    - form_for @superfresh_url, {:url => affiliate_superfresh_urls_path(@affiliate)} do |f|
-      = f.label :url, "<h2>Single URL</h2>"
-      = f.text_field :url
-      = f.submit "Submit"
-    (for example, http://www.sample.gov/folder/mypage.html)
-  .clear
-  %br
-  .content-box.pad20
-    %a{:name => "bulkupload"}
-    #bulk-upload
-      %h2
-        Bulk Upload
+    %p.wrap-links
+      = link_to 'Single URL', "#singleurl"
+      = link_to 'Bulk Upload', "#bulkupload"
+      = link_to 'Status', "#status", :class => 'last'
+
+    .wrap-content
+      %a{:name => "singleurl"}
+      - form_for @superfresh_url, {:url => affiliate_superfresh_urls_path(@affiliate)} do |f|
+        = f.label :url, "<h3>Single URL</h3>"
+        = f.text_field :url, :class => 'txt'
+        = f.submit "Submit", :class => 'btn-submit submit'
+        %span.note (for example, http://www.sample.gov/folder/mypage.html)
+
+    .wrap-content
+      %a{:name => "bulkupload"}
+      %h3 Bulk Upload
       %p
         To upload a list of URLs to be crawled by Bing&trade;, follow these instructions:
-      %ul
+      %ul.bulk-upload-instructions
         %li
           Create a new text file following same format as the sample below.
         %li
@@ -53,82 +49,82 @@
             100 URLs
           per file.
       %p
-        Sample file format:
-        %ul{:style => 'list-style-type: none;'}
+        %strong
+          Sample file format:
+        %ul.sample-file-format
           %li
-            http://www.sample.gov/1.html
+            %span
+              http://www.sample.gov/1.html
           %li
-            http://www.sample.gov/2.html
+            %span
+              http://www.sample.gov/2.html
           %li
-            http://www.sample.gov/3.html
+            %span
+              http://www.sample.gov/3.html
+        - form_tag upload_affiliate_superfresh_urls_path(@affiliate), :multipart => true do
+          = file_field_tag 'superfresh_urls', :accept => 'text/plain', :class => 'file'
+          = submit_tag "Upload", :class => 'submit btn-upload'
 
-      - form_tag upload_affiliate_superfresh_urls_path(@affiliate), :multipart => true do
-        = file_field_tag 'superfresh_urls', :accept => 'text/plain'
-        = submit_tag "Upload"   
-  .clear
-  %br
-  %a{:name => "status"}
-  %h2
-    Status
-  %br
-  #uncrawled-urls.title-row
-    Uncrawled URLs (#{@uncrawled_urls.size})
-  %table.admin-table
-    %tr
-      %th
-        URL
-    - @uncrawled_urls.each do |uncrawled_url|
-      %tr{:class => cycle('even', 'odd')}
-        %td.uncrawled-url
-          = link_to uncrawled_url.url, uncrawled_url.url
-          |
-          = button_to "Remove URL", affiliate_superfresh_url_path(@affiliate, uncrawled_url), :title => "Remove URL", :confirm => "You are about to remove this URL. Are you sure?", :method => :delete
-  .clear
+    .wrap-content.status
+      %a{:name => "status"}
+      %h3 Status
+      .wrap-table
+        %table
+          %thead
+            %tr
+              %th{:colspan => 2} Uncrawled URLs (#{@uncrawled_urls.size})
+            %tr
+              %th.secondary-header URL
+              %th.secondary-header &nbsp;
+          %tbody
+            - @uncrawled_urls.each do |uncrawled_url|
+              %tr{:class => cycle('even', 'odd')}
+                %td.uncrawled-url
+                  = link_to uncrawled_url.url, uncrawled_url.url
+                %td
+                  = link_to "Remove URL", affiliate_superfresh_url_path(@affiliate, uncrawled_url), :title => "Remove URL", :confirm => "You are about to remove this URL. Are you sure?", :method => :delete, :class => 'remove-url'
+      .wrap-table
+        %table
+          %thead
+            %tr
+              %th{:colspan => 2} Previously Refreshed URLs
+            %tr
+              %th.secondary-header URL
+              %th.secondary-header Crawled At
+          %tbody
+            - @crawled_urls.each do |crawled_url|
+              %tr{:class => cycle('even', 'odd')}
+                %td.crawled-url
+                  = link_to crawled_url.url, crawled_url.url
+                %td
+                  = crawled_url.crawled_at
+      %div{:style => "text-align: center;"}
+        = will_paginate @crawled_urls
 
-  #crawled-urls.title-row
-    Previously Refreshed URLs
-  %table.admin-table
-    %tr
-      %th
-        URL
-      %th
-        Crawled At
-    - @crawled_urls.each do |crawled_url|
-      %tr{:class => cycle('even', 'odd')}
-        %td.crawled-url
-          = link_to crawled_url.url, crawled_url.url
-        %td
-          = crawled_url.crawled_at
-  %div{:style => "text-align: center;"}
-    = will_paginate @crawled_urls
-    
-  .clear
-.right.right-sidebar
-  .content-box.cross-promotion
-    %strong
-      Learn more
-    about our Add to Bing&trade; feature by going to our new section in the
-    = link_to "Help Desk", "http://searchsupport.usa.gov/forums/292892-add-to-bingtm-to-insert-new-content", :target => '_blank'
-  .content-box.cross-promotion
-    %strong
-      Not sure what the URLs are for your new or modified pages?
-    Email us at
-    %a{:href=>"mailto:USASearch@gsa.gov"}
-      USASearch@gsa.gov
-    and we can help you identify specific URLs that have recently changed on your site.
-
-  .content-box.cross-promotion
-    %strong
-      Please note
-    that you still need to register with Bing™ webmaster tools to have your site, and sitemap, indexed by Bing&trade;.
-    %br
-    %a{:href=>"http://www.bing.com/toolbox/webmasters/", :target=>"_blank"}
-      Register for Bing webmaster tools.
-
-  .content-box.cross-promotion
-    %strong
-      Another Way to Highlight Content
-    %p
-      = link_to "Boosted Content", new_affiliate_boosted_content_path(@affiliate)
-      \-- Display specific pages above the main search results.
+  .col-2
+    .side-note
+      %strong
+        Learn more
+      about our Add to Bing&trade; feature by going to our new section in the
+      = link_to "Help Desk", "http://searchsupport.usa.gov/forums/292892-add-to-bingtm-to-insert-new-content", :target => '_blank'
+    .side-note
+      %strong
+        Not sure what the URLs are for your new or modified pages?
+      Email us at
+      %a{:href=>"mailto:USASearch@gsa.gov"}
+        USASearch@gsa.gov
+      and we can help you identify specific URLs that have recently changed on your site.
+    .side-note
+      %strong
+        Please note
+      that you still need to register with Bing™ webmaster tools to have your site, and sitemap, indexed by Bing&trade;.
+      %br
+      %a{:href=>"http://www.bing.com/toolbox/webmasters/", :target=>"_blank"}
+        Register for Bing webmaster tools.
+    .side-note
+      %strong
+        Another Way to Highlight Content
+      %p
+        = link_to "Boosted Content", new_affiliate_boosted_content_path(@affiliate)
+        \-- Display specific pages above the main search results.
 

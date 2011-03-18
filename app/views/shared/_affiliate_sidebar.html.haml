@@ -1,9 +1,11 @@
 .affiliate-sidebar
   - if current_user.affiliates.empty?
-    .side-top.side-top-blank
+    .side-top
       = link_to "Add New Site", new_affiliate_path
   - else
-    .side-top &nbsp;
+    .side-top
+      %h3
+        %span Selected Site
     .side-mid
       = select("affiliate", "id", current_user.affiliates.ordered.all.collect {|p| [ p.display_name, p.id ] }, {:prompt => 'Select site'})
       - if @affiliate && @affiliate.id.present?

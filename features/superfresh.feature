@@ -12,7 +12,7 @@ Feature: Affiliate Superfresh Interface
     And I follow "Add to Bing"
     Then I should see "Learn more about our Add to Bing™ feature by going to our new section in the Help Desk"
     And I should see "Another Way to Highlight Content"
-    When I follow "Boosted Content" within ".right-sidebar"
+    When I follow "Boosted Content" in the callout boxes
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Content
 
   Scenario: Submit a URL for on-demand indexing
@@ -52,7 +52,7 @@ Feature: Affiliate Superfresh Interface
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
-    When I press "Remove URL"
+    When I follow "Remove URL"
     Then I should be on the affiliate superfresh page
     And I should see "Removed http://removeme.com"
 

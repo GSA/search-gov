@@ -25,6 +25,8 @@
     = calendar_date_select_includes
   %body
     = render "/shared/program_header"
-    .container  
-      .span-24.main
-        = yield
+    .outer-container
+      .inner-container
+        .container  
+          .span-24.main
+            = yield

@@ -6,7 +6,8 @@
   'in the site navigation bar' => '.affiliate-sidebar',
   'in the breadcrumbs' => '.breadcrumbs',
   'in the footer' => '.outer-footer',
-  'in the query search results table header' => '.query_search_results_table_header'
+  'in the query search results table header' => '.query_search_results_table_header',
+  'in the callout boxes' => '.col-2'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

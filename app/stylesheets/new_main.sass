@@ -573,6 +573,9 @@ a
     height: 1%
 
 .breadcrumbs
+  clear: both
+  font-size: 16px
+  line-height: 18px
   font-family: Arial, Helvetica, sans-serif
   border-bottom: 1px solid #bdbdbd
   margin-bottom: 15px
@@ -580,8 +583,6 @@ a
   a
     background: url(/images/breadcrumbs_separator.png) no-repeat right 0
     behavior: url(/javascripts/iepngfix.htc)
-    font-size: 16px
-    line-height: 18px
     margin-right: 5px
     padding-right: 16px
 
@@ -611,6 +612,190 @@ a
   padding: 10px 0 0 5px
   .container
     min-width: 700px
+  .col-1
+    float: left
+    width: 65%
+    margin-right: 13px
+    ol, ul
+      list-style: none outside none
+    h1.title
+      color: #1C3F94
+      font-size: 24px
+      font-weight: bold
+      float: left
+      margin: 0
+      padding-bottom: 0.5em
+      width: 100%
+      vertical-align: baseline
+    p
+      color: #4e4d4d
+      line-height: 20px
+      font-size: 14px
+      margin: 0 0 10px 0
+      float: left
+      width: 100%
+    strong
+      color: #333333
+      font-size: 14px
+      font-weight: bold
+      float: left
+    .fullwidth
+      width: 100%
+    p.wrap-links
+      margin-bottom: 15px
+      a
+        float: left
+        padding-right: 5px
+        margin-right: 5px
+        float: left
+        font-size: 14px
+        background: url(/images/bg-sep-blue.png) no-repeat right 3px
+        &.last
+          background: none
+    h3
+      float: left
+      width: 100%
+      font-size: 24px
+      font-weight: normal
+      color: #333
+      margin-bottom: 10px
+      padding: 0
+    .wrap-content
+      float: left
+      margin-bottom: 15px
+      width: 100%
+    ul
+      float: left
+      margin: 0 0 25px 0
+      width: 90%
+      &.bulk-upload-instructions
+        list-style: disc inside
+        li
+          margin: 0
+      &.sample-file-format
+        margin-left: 1em
+    li
+      width: 100%
+      clear: both
+      margin-bottom: 4px
+      &.last
+        margin-bottom: 0
+      span 
+        color: #333333
+        font-size: 14px
+        float: left
+        line-height: 18px
+        margin: 0
+    span
+      font-size: 12px
+      color: #333
+      margin-bottom: 10px
+      float: left
+    form
+      .note
+        font-size: 12px
+        color: #888888
+        float: left
+        margin-top: 5px
+        clear: both
+        a
+          font-size: 12px
+          color: #888888
+      .btn-upload
+        background: url(/images/btn-upload.png) no-repeat 0 0
+        width: 80px
+        height: 30px
+        margin-left: 5px
+        border: 0
+        &:hover
+          background-position: 0 -32px
+      .submit
+        font-size: 0
+        line-height: 0
+        text-indent: -999em
+        cursor: pointer
+      .btn-submit
+        background: url(/images/btn-submit.png) no-repeat 0 0
+        width: 91px
+        height: 30px
+        border: 0
+        &:hover
+          background-position: 0 -32px
+      .file
+        float: left
+        clear: both
+        margin-bottom: 5px
+      .txt
+        background: url(/images/txt-box.png) no-repeat 0 0
+        width: 214px
+        height: 25px
+        padding: 3px 5px
+        border: 0
+        float: left
+        margin: 0 5px 0 0
+    .wrap-table
+      float: left
+      width: 100%
+      margin-bottom: 20px
+    table
+      border-collapse: collapse
+      border: 1px solid #A9A9A9
+      width: 100%
+      th
+        font-size: 14px
+        font-weight: bold
+        color: #fff
+        background: url(/images/table-mid-bg.png) repeat-x 0 0
+        height: 30px
+        text-align: left
+        margin: 7px 5px 4px
+      thead
+        th
+          /*padding-bottom: 0
+          &.secondary-header
+            background: #E5E5E5 none
+            color: #3D3D3D
+      td
+        padding: 7px 5px 4px
+        text-align: left
+        font-size: 14px
+        color: #333
+  .col-2
+    float: left
+    width: 33%
+    .side-note
+      width: 90%
+      float: left
+      background: #FFFED7
+      border: 1px solid #DDD
+      padding: 5px 5px
+      margin-bottom: 25px
+      color: #4a4a4a
+      font-size: 14px
+      line-height: 16px
+      a
+        word-wrap: break-word
+
+  /*** Add Bing page customization ***/
+  .superfresh
+    width: 100%
+    .status
+      a
+        float: left
+      a.remove-url
+        float: right
+        display: inline
+        margin-left: 10px
+        background: url(/images/btn-remove-url.png) no-repeat 0 0
+        width: 124px
+        height: 30px
+        border: 0
+        font-size: 0
+        line-height: 0
+        text-indent: -999em
+        cursor: pointer
+        &:hover
+          background-position: 0 -33px
 
 /*** sidebar ***/
 .affiliate-sidebar
@@ -623,17 +808,21 @@ a
   height: 730px
   padding-top: 10px
   .side-top
-    background: url(/images/menu-top.png) no-repeat 0 0
+    background: url(/images/menu-top-blank.png) no-repeat 0 0
     behavior: url(/javascripts/iepngfix.htc)
     width: 241px
     height: 38px
     float: left
-    &.side-top-blank
-      background: url(/images/menu-top-blank.png) no-repeat 0 0
-      a
-        position: relative
-        left: 20px
-        top: 15px
+    text-align: left
+    a, span
+      position: relative
+      left: 20px
+      top: 15px
+    h3
+      color: #1C3F94
+      font-size: 21px
+      font-weight: bold
+      font-family: Arial, Helvetica, sans-serif
   .side-mid
     background: #f3f4f3
     width: 219px
@@ -685,7 +874,7 @@ a
         &.new
           padding-top: 3px
         &:hover
-          text-decoration: underline
+          color: #21548B
       img.new
         behavior: url(/javascripts/iepngfix.htc)
   .side-bottom
