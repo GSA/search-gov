@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-reports_rake.html">lib/tasks/reports.rake</a></td>
-            <td class='right_align'><tt>39</tt></td>
-            <td class='right_align'><tt>36</tt></td>
+            <td class='right_align'><tt>40</tt></td>
+            <td class='right_align'><tt>37</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -135,7 +135,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>     task :generate_top_queries_from_file, :file_name, :period, :max_entries_per_group, :needs =&gt; :environment do |t, args|</pre></td>
+            <td><pre><a name="line14">14</a>     task :generate_top_queries_from_file, :file_name, :period, :max_entries_per_group, :date, :needs =&gt; :environment do |t, args|</pre></td>
           </tr>
         
           
@@ -159,139 +159,145 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>         establish_aws_connection</pre></td>
+            <td><pre><a name="line18">18</a>         day = args.date.nil? ? Date.yesterday : Date.parse(args.date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>         format = args.period == &quot;monthly&quot; ? '%Y%m' : '%Y%m%d'</pre></td>
+            <td><pre><a name="line19">19</a>         establish_aws_connection</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>         max_entries_per_group = args.max_entries_per_group.to_i</pre></td>
+            <td><pre><a name="line20">20</a>         format = args.period == &quot;monthly&quot; ? '%Y%m' : '%Y%m%d'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>         last_group, cnt, output = nil, 0, nil</pre></td>
+            <td><pre><a name="line21">21</a>         max_entries_per_group = args.max_entries_per_group.to_i</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>         File.open(args.file_name).each do |line|</pre></td>
+            <td><pre><a name="line22">22</a>         last_group, cnt, output = nil, 0, nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>           group, query, total = line.chomp.split(/\001/)</pre></td>
+            <td><pre><a name="line23">23</a>         File.open(args.file_name).each do |line|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>           if last_group.nil? || last_group != group</pre></td>
+            <td><pre><a name="line24">24</a>           group, query, total = line.chomp.split(/\001/)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>             AWS::S3::S3Object.store(generate_report_filename(last_group, Date.yesterday, format), output, AWS_BUCKET_NAME) unless output.nil?</pre></td>
+            <td><pre><a name="line25">25</a>           if last_group.nil? || last_group != group</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>             output = &quot;Query,Count\n&quot;</pre></td>
+            <td><pre><a name="line26">26</a>             AWS::S3::S3Object.store(generate_report_filename(last_group, day, format), output, AWS_BUCKET_NAME) unless output.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>             cnt = 0;</pre></td>
+            <td><pre><a name="line27">27</a>             output = &quot;Query,Count\n&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>             cnt = 0;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>           end</pre></td>
+            <td><pre><a name="line29">29</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>           if cnt &lt; max_entries_per_group</pre></td>
+            <td><pre><a name="line30">30</a>           if cnt &lt; max_entries_per_group</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>             output &lt;&lt; &quot;#{query},#{total}\n&quot;</pre></td>
+            <td><pre><a name="line31">31</a>             output &lt;&lt; &quot;#{query},#{total}\n&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>             cnt += 1</pre></td>
+            <td><pre><a name="line32">32</a>             cnt += 1</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>           end</pre></td>
+            <td><pre><a name="line33">33</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>           last_group = group</pre></td>
+            <td><pre><a name="line34">34</a>           last_group = group</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>         end</pre></td>
+            <td><pre><a name="line35">35</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>         AWS::S3::S3Object.store(generate_report_filename(last_group, Date.yesterday, format), output, AWS_BUCKET_NAME) unless output.nil?</pre></td>
+            <td><pre><a name="line36">36</a>         AWS::S3::S3Object.store(generate_report_filename(last_group, day, format), output, AWS_BUCKET_NAME) unless output.nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>       end</pre></td>
+            <td><pre><a name="line37">37</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>     end</pre></td>
+            <td><pre><a name="line38">38</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>   end</pre></td>
+            <td><pre><a name="line39">39</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a> end</pre></td>
+            <td><pre><a name="line40">40</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Mar 16 18:11:10 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Mar 17 17:14:01 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

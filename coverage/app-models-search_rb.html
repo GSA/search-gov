@@ -711,13 +711,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line110">110</a>   def self.results_present_for?(query, affiliate, is_misspelling_allowed = true)</pre></td>
+            <td><pre><a name="line110">110</a>   def self.results_present_for?(query, affiliate, is_misspelling_allowed = true, filter_setting = DEFAULT_FILTER_SETTING)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line111">111</a>     search = new(:query =&gt; query, :affiliate =&gt; affiliate)</pre></td>
+            <td><pre><a name="line111">111</a>     search = new(:query =&gt; query, :affiliate =&gt; affiliate, :filter_setting =&gt; filter_setting)</pre></td>
           </tr>
         
           
@@ -2259,7 +2259,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Wed Mar 16 18:11:10 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Mar 17 17:14:01 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
