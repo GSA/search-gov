@@ -41,7 +41,7 @@ config.gem "nokogiri",         :lib => false
 config.gem "cucumber",         :lib => false, :version => '>= 0.10.0'
 config.gem "cucumber-rails",   :lib => false, :version => '>= 0.3.2'
 config.gem "rcov",             :lib => false
-config.gem 'email_spec',       :lib => 'email_spec', :version => '=0.4.0'
+config.gem 'email_spec',       :lib => 'email_spec', :version => '=0.6.5'
 config.gem "resque_spec",      :version => '~> 0.2.0'
 
 # reCAPTCHA keys
