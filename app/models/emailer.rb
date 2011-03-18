@@ -62,6 +62,7 @@ class Emailer < ActionMailer::Base
 
   def objectionable_content_alert(recipient, terms)
     setup_email(recipient)
+    content_type "text/html"
     @subject += "Objectionable Content Alert"
     body(:search_terms => terms)
   end
