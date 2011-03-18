@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110317221114) do
+ActiveRecord::Schema.define(:version => 20110318115823) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -302,6 +302,7 @@ ActiveRecord::Schema.define(:version => 20110317221114) do
     t.boolean  "always_filtered", :default => false, :null => false
   end
 
+  add_index "sayt_filters", ["always_filtered"], :name => "index_sayt_filters_on_always_filtered"
   add_index "sayt_filters", ["phrase"], :name => "index_sayt_filters_on_phrase", :unique => true
 
   create_table "sayt_suggestions", :force => true do |t|
