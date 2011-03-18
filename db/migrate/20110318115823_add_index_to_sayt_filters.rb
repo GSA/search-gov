@@ -4,6 +4,6 @@ class AddIndexToSaytFilters < ActiveRecord::Migration
   end
 
   def self.down
-    remove_index :sayt_filters, :always_filtere
+    remove_index :sayt_filters, :always_filtered
   end
 end
