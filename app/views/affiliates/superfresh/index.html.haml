@@ -21,7 +21,7 @@
         = f.label :url, "<h3>Single URL</h3>"
         = f.text_field :url, :class => 'txt'
         = f.submit "Submit", :class => 'btn-submit submit'
-        %span.note (for example, http://www.sample.gov/folder/mypage.html)
+      %span.note (for example, http://www.sample.gov/folder/mypage.html)
 
     .wrap-content
       %a{:name => "bulkupload"}
@@ -72,17 +72,16 @@
         %table
           %thead
             %tr
-              %th{:colspan => 2} Uncrawled URLs (#{@uncrawled_urls.size})
+              %th Uncrawled URLs (#{@uncrawled_urls.size})
             %tr
               %th.secondary-header URL
-              %th.secondary-header &nbsp;
           %tbody
             - @uncrawled_urls.each do |uncrawled_url|
               %tr{:class => cycle('even', 'odd')}
                 %td.uncrawled-url
-                  = link_to uncrawled_url.url, uncrawled_url.url
-                %td
-                  = link_to "Remove URL", affiliate_superfresh_url_path(@affiliate, uncrawled_url), :title => "Remove URL", :confirm => "You are about to remove this URL. Are you sure?", :method => :delete, :class => 'remove-url'
+                  = link_to "Remove URL", affiliate_superfresh_url_path(@affiliate, uncrawled_url), :title => "Remove URL", :confirm => "You are about to remove this URL. Are you sure?", :method => :delete, :class => 'remove-url-button'
+                  .remove-url-wrapper
+                    = link_to uncrawled_url.url, uncrawled_url.url, :class => 'remove-url'
       .wrap-table
         %table
           %thead

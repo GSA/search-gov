@@ -68,7 +68,6 @@ Feature: Program
     Then I should be on the terms of service page
     And I should see "Terms of Service for USASearch's APIs and Web Services" within "title"
     And I should see the following breadcrumbs: USASearch > APIs & Web Services > Terms of Service
-    And I should see "Terms of Service for USASearch's APIs and Web Services" within ".main"
 
     When I follow "Recalls API" in the main navigation bar
     Then I should be on the recalls api page

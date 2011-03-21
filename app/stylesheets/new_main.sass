@@ -121,7 +121,7 @@ a
 
   .inner-container
     float: left
-    padding: 30px 0
+    padding: 15px 0
     background: url(/images/bg-header-bottom.png) no-repeat 0 0
     behavior: url(/javascripts/iepngfix.htc)
     width: 912px
@@ -439,7 +439,6 @@ a
 
   .wrap-navglobal
     margin-top: 8px
-    /*margin: 8px 0 0 28px
     float: left
     width: 100%
     clear: left
@@ -574,11 +573,10 @@ a
 
 .breadcrumbs
   clear: both
-  font-size: 16px
-  line-height: 18px
+  font-size: 0.9em
   font-family: Arial, Helvetica, sans-serif
   border-bottom: 1px solid #bdbdbd
-  margin-bottom: 15px
+  margin-bottom: 12px
   padding-bottom: 8px
   a
     background: url(/images/breadcrumbs_separator.png) no-repeat right 0
@@ -596,7 +594,7 @@ a
 
 .inner-container
   float: left
-  padding: 30px 0
+  padding: 10px 0
   background: url(/images/bg-header-bottom.png) no-repeat 0 0
   width: 100%
   behavior: url(/javascripts/iepngfix.htc)
@@ -631,7 +629,7 @@ a
       color: #4e4d4d
       line-height: 20px
       font-size: 14px
-      margin: 0 0 10px 0
+      margin: 0 0 8px 0
       float: left
       width: 100%
     strong
@@ -662,11 +660,11 @@ a
       padding: 0
     .wrap-content
       float: left
-      margin-bottom: 15px
+      margin-bottom: 10px
       width: 100%
     ul
       float: left
-      margin: 0 0 25px 0
+      margin: 0 0 10px 0
       width: 90%
       &.bulk-upload-instructions
         list-style: disc inside
@@ -677,7 +675,6 @@ a
     li
       width: 100%
       clear: both
-      margin-bottom: 4px
       &.last
         margin-bottom: 0
       span 
@@ -692,15 +689,6 @@ a
       margin-bottom: 10px
       float: left
     form
-      .note
-        font-size: 12px
-        color: #888888
-        float: left
-        margin-top: 5px
-        clear: both
-        a
-          font-size: 12px
-          color: #888888
       .btn-upload
         background: url(/images/btn-upload.png) no-repeat 0 0
         width: 80px
@@ -724,7 +712,6 @@ a
       .file
         float: left
         clear: both
-        margin-bottom: 5px
       .txt
         background: url(/images/txt-box.png) no-repeat 0 0
         width: 214px
@@ -733,14 +720,23 @@ a
         border: 0
         float: left
         margin: 0 5px 0 0
+    .note
+      font-size: 12px
+      color: #888888
+      float: left
+      margin-top: 5px
+      clear: both
+
     .wrap-table
       float: left
       width: 100%
-      margin-bottom: 20px
+      margin-bottom: 10px
     table
       border-collapse: collapse
       border: 1px solid #A9A9A9
+      table-layout: fixed
       width: 100%
+      margin: 0
       th
         font-size: 14px
         font-weight: bold
@@ -751,7 +747,6 @@ a
         margin: 7px 5px 4px
       thead
         th
-          /*padding-bottom: 0
           &.secondary-header
             background: #E5E5E5 none
             color: #3D3D3D
@@ -782,12 +777,19 @@ a
     .status
       a
         float: left
-      a.remove-url
+      .remove-url-wrapper
+        line-height: 1
+        margin: 0 105px 0 0
+        padding: 0
+        word-wrap: break-word
+        a.remove-url
+          float: none
+      a.remove-url-button
         float: right
+        vertical-align: top
         display: inline
-        margin-left: 10px
         background: url(/images/btn-remove-url.png) no-repeat 0 0
-        width: 124px
+        width: 103px
         height: 30px
         border: 0
         font-size: 0
@@ -795,7 +797,9 @@ a
         text-indent: -999em
         cursor: pointer
         &:hover
-          background-position: 0 -33px
+          background-position: 0 -32px
+      td
+        width: 100%
 
 /*** sidebar ***/
 .affiliate-sidebar
@@ -836,7 +840,7 @@ a
       font-size: 1em
       height: auto
       width: 220px
-      margin-bottom: 17px
+      margin: 5px 0 15px 0
       float: left
   .side-block
     float: left
@@ -846,7 +850,7 @@ a
       behavior: url(/javascripts/iepngfix.htc)
       height: 37px
       float: left
-      margin-bottom: 10px
+      margin-bottom: 5px
       width: 100%
       span 
         color: #FFFFFF
@@ -861,7 +865,7 @@ a
       padding: 0 10px 10px
       list-style: none outside none
     li
-      margin-bottom: 10px
+      margin-bottom: 3px
       float: left
       width: 100%
       clear: both
@@ -870,7 +874,7 @@ a
       a
         text-decoration: none
         color: #3e3e3e
-        font-size: 16px
+        font-size: 14px
         &.new
           padding-top: 3px
         &:hover
