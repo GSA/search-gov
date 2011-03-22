@@ -43,3 +43,7 @@ Then /^I should see the following breadcrumbs: (.+)$/ do |breadcrumbs|
   stripped_breadcrumbs = breadcrumbs.gsub(' > ', '')
   Then %{I should see "#{stripped_breadcrumbs}" in the breadcrumbs}
 end
+
+Then /^I should see a link to "([^"]*)" with text "([^"]*)"$/ do |href, text|
+  response.body.should have_tag("a[href=#{href}]", "#{text}")
+end
