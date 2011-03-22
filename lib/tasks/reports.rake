@@ -7,7 +7,7 @@ namespace :usasearch do
     end
 
     def generate_report_filename(prefix, day, date_format)
-      "reports/#{prefix}_top_queries_#{day.strftime(date_format)}.csv"
+      "analytics/reports/#{prefix}/#{prefix}_top_queries_#{day.strftime(date_format)}.csv"
     end
 
     desc "Generate Top Queries reports (daily or monthly) on S3 from CTRL-A delimited input file containing group(e.g., affiliate or locale), query, total"

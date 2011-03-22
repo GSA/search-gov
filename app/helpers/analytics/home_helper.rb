@@ -44,11 +44,11 @@ module Analytics::HomeHelper
   end
 
   def monthly_report_filename(prefix, report_date)
-    "reports/#{prefix}_top_queries_#{report_date.strftime('%Y%m')}.csv"
+    "analytics/reports/#{prefix}/#{prefix}_top_queries_#{report_date.strftime('%Y%m')}.csv"
   end
 
   def daily_report_filename(prefix, report_date)
-    "reports/#{prefix}_top_queries_#{report_date.strftime('%Y%m%d')}.csv"
+    "analytics/reports/#{prefix}/#{prefix}_top_queries_#{report_date.strftime('%Y%m%d')}.csv"
   end
 
   def analytics_daily_report_link(report_date)

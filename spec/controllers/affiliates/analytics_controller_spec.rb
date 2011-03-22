@@ -129,7 +129,7 @@ describe Affiliates::AnalyticsController do
           context "when there is affiliate data" do
             before do
               DailyQueryStat.create(:query => 'test', :times => 12, :affiliate => @user.affiliates.first.name, :day => Date.yesterday, :locale => "en")
-              @filename = "reports/#{@user.affiliates.first.name}_top_queries_#{DailyQueryStat.most_recent_populated_date(@user.affiliates.first.name).strftime('%Y%m%d')}.csv"
+              @filename = "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_#{DailyQueryStat.most_recent_populated_date(@user.affiliates.first.name).strftime('%Y%m%d')}.csv"
             end
 
             it "should link to the report on Amazon using S3/SSL if it exists" do
@@ -232,7 +232,7 @@ describe Affiliates::AnalyticsController do
 
           context "when displaying the monthly reports" do
             before do
-              @filename = "reports/#{@user.affiliates.first.name}_top_queries_#{@report_date.strftime('%Y%m')}.csv"
+              @filename = "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_#{@report_date.strftime('%Y%m')}.csv"
             end
 
             it "should link to the report on Amazon using S3/SSL if the report exists on S3" do

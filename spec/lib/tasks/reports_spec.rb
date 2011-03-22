@@ -68,8 +68,8 @@ describe "Report generation rake tasks" do
       context "when period is set to monthly" do
         it "should set the report filenames using YYMM" do
           yymm = Date.yesterday.strftime('%Y%m')
-          AWS::S3::S3Object.should_receive(:store).with("reports/affiliate1_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
-          AWS::S3::S3Object.should_receive(:store).with("reports/affiliate2_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
+          AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
+          AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
           @rake[@task_name].invoke(@input_file_name, "monthly", "1000")
         end
       end
@@ -77,8 +77,8 @@ describe "Report generation rake tasks" do
       context "when period is set to daily" do
         it "should set the report filenames using YYMMDD" do
           yymmdd = Date.yesterday.strftime('%Y%m%d')
-          AWS::S3::S3Object.should_receive(:store).with("reports/affiliate1_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
-          AWS::S3::S3Object.should_receive(:store).with("reports/affiliate2_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
+          AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
+          AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
           @rake[@task_name].invoke(@input_file_name, "daily", "1000")
         end
       end
@@ -95,8 +95,8 @@ describe "Report generation rake tasks" do
         context "for a monthly report" do
           it "should set the report filename to the month specfieid" do
             yymm = Date.parse('2011-02-02').strftime('%Y%m')
-            AWS::S3::S3Object.should_receive(:store).with("reports/affiliate1_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
-            AWS::S3::S3Object.should_receive(:store).with("reports/affiliate2_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
+            AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
+            AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymm}.csv", anything(), anything()).once.ordered
             @rake[@task_name].invoke(@input_file_name, "monthly", "1000", '2011-02-02')
           end
         end
@@ -104,8 +104,8 @@ describe "Report generation rake tasks" do
         context "for a daily report" do
           it "should set the report filename to the date specified" do
             yymmdd = Date.parse('2011-02-01').strftime('%Y%m%d')
-            AWS::S3::S3Object.should_receive(:store).with("reports/affiliate1_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
-            AWS::S3::S3Object.should_receive(:store).with("reports/affiliate2_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
+            AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate1/affiliate1_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
+            AWS::S3::S3Object.should_receive(:store).with("analytics/reports/affiliate2/affiliate2_top_queries_#{yymmdd}.csv", anything(), anything()).once.ordered
             @rake[@task_name].invoke(@input_file_name, "daily", "1000", '2011-02-01')
           end
         end
