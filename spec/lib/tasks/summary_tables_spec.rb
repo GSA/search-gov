@@ -92,11 +92,13 @@ describe "summary_tables rake tasks" do
   end
 
   describe "usasearch:monthly_popular_queries" do
-    describe "usasearch:monthly_popular_queries:calculate_monthly_popular_queries" do
+    describe "usasearch:monthly_popular_queries:calculate" do
       before do
-        @task_name = "usasearch:monthly_popular_queries:calculate_monthly_popular_queries"
+        @task_name = "usasearch:monthly_popular_queries:calculate"
         DailyQueryStat.create(:day => Date.yesterday, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         DailyQueryStat.create(:day => Date.yesterday.yesterday, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        query_group = QueryGroup.create(:name => 'Group1')
+        query_group.grouped_queries << GroupedQuery.new(:query => "whatever")
       end
 
       it "should have 'environment' as a prereq" do
@@ -106,6 +108,7 @@ describe "summary_tables rake tasks" do
       context "when no parameters are passed" do
         it "should calculate the popular queries for the month of the previous day" do
           DailyQueryStat.should_receive(:most_popular_terms_for_year_month).with(Date.yesterday.year, Date.yesterday.month, 1000).and_return []
+          DailyQueryStat.should_receive(:most_popular_groups_for_year_month).with(Date.yesterday.year, Date.yesterday.month, 1000).and_return []
           @rake[@task_name].invoke
         end
         
@@ -117,10 +120,19 @@ describe "summary_tables rake tasks" do
           mpq.first.times.should == 20
         end
         
+        it "should create monthly popular query groups for the monthly total" do
+          @rake[@task_name].invoke
+          mpgq = MonthlyPopularQuery.find_all_by_year_and_month_and_is_grouped(Date.yesterday.year, Date.yesterday.month, "Group1")
+          mpgq.should_not be_nil
+          mpgq.size.should == 1
+          mpgq.first.times.should == 20
+        end
+        
         context "when a String is returned instead of a list of queries/counts" do
           it "should not attempt to generate any monthly popular queries" do
             DailyQueryStat.should_receive(:most_popular_terms_for_year_month).with(Date.yesterday.year, Date.yesterday.month, 1000).and_return "Not enough historic data to compute most popular"
-            MonthlyPopularQuery.should_not_receive(:find_or_create_by_year_and_month_and_query)
+            DailyQueryStat.should_receive(:most_popular_groups_for_year_month).with(Date.yesterday.year, Date.yesterday.month, 1000).and_return "Nothing"
+            MonthlyPopularQuery.should_not_receive(:find_or_create_by_year_and_month_and_query_and_is_grouped)
             @rake[@task_name].invoke
           end
         end
@@ -129,6 +141,7 @@ describe "summary_tables rake tasks" do
       context "when a date parameter is passed" do
         it "should calcukate the popular queries for the month associated with the date specified" do
           DailyQueryStat.should_receive(:most_popular_terms_for_year_month).with(2011, 2, 1000).and_return []
+          DailyQueryStat.should_receive(:most_popular_groups_for_year_month).with(2011, 2, 1000).and_return []
           @rake[@task_name].invoke('2011-02-11')
         end
       end
