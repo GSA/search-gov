@@ -51,19 +51,14 @@ Feature: Monthly Reports
 
   Scenario: Viewing queries that are part of query groups (i.e., semantic sets)
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist:
-    | query                       | times   |  days_back  |
-    | obama                       | 10000   |    1        |
-    | health care bill            |  1000   |    1        |
-    | health care reform          |   100   |    1        |
-    | obama health care           |    10   |    1        |
-    | president                   |     4   |    1        |
-    | do not ignore me            |     1   |    1        |
-    And the following query groups exist:
-    | group      | queries                                                 |
-    | POTUS      | obama, president, obama health care, do not ignore me   |
-    | hcreform   | health care bill, health care reform, obama health care |
+    And the following MonthlyPopularQueries exist
+    | year  | month   | query     | times | is_grouped  |
+    | 2010  | 2       | POTUS     | 10015 | true        |
+    | 2010  | 2       | hcreform  | 1110  | true        |
+    | 2010  | 2       | obama     | 100   | false       |
     When I am on the reports homepage
+    And I select "February 2010" as the report date
+    And I press "Get Usage Stats"
     Then in "pop_query_groups" I should see "hcreform"
     And in "pop_query_groups" I should see "1110"
     And in "pop_query_groups" I should see "POTUS"
