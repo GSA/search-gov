@@ -136,7 +136,7 @@ module GoogleVisualization
 
     def render_foot
       "var #{@name} = new google.visualization.AnnotatedTimeLine(document.getElementById('#{@name}'));" +
-        "#{@name}.draw(#{@name}_data, {displayAnnotations: true});\n</script>"
+        "#{@name}.draw(#{@name}_data, {#{Mappings.ruby_to_javascript_options(@options)}});\n</script>"
     end
 
     def render_headings
@@ -225,11 +225,40 @@ module GoogleVisualization
     def self.columns
       [:label, :time, :x, :y, :color, :bubble_size]
     end
+
+    # converts {:my_title=>'title', :my_width=>100} to "myTitle: 'title', myWidth: 100"
+    def self.ruby_to_javascript_options(options)
+      result = []
+      options.keys.map do |i|
+        if options[i].is_a?(Date)
+          result << "'#{i.to_s.camelize(:lower)}': #{ruby_to_javascript_object(options[i])}"
+        elsif options[i].is_a? String
+          result << "'#{i.to_s.camelize(:lower)}': '#{options[i]}'"
+        elsif options[i].is_a? Array
+          array_string = options[i].map{|j| "'#{j}'"}.join(",")
+          result << "'#{i.to_s.camelize(:lower)}': [#{array_string}]"
+        elsif options[i].is_a? Hash
+          h = options[i]
+          args = options[i].keys.map do |j|
+            if h[j].is_a? String
+              "'#{j}': '#{h[j]}'"
+            else
+              "'#{j}': #{h[j]}"
+            end
+          end
+          args = args.join(", ")
+          result << "'#{i.to_s.camelize(:lower)}': {#{args}}"
+        else
+          result << "'#{i.to_s.camelize(:lower)}': #{options[i]}"
+        end
+      end
+      result.join(", ")
+    end
   end
 
   module Helpers
     def setup_google_visualizations
-      "<script type=\"text/javascript\" src=\"http://www.google.com/jsapi\"></script>\n" +
+      "<script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>\n" +
       javascript_tag("google.load(\"visualization\", \"1\", {packages:[\"motionchart\", \"annotatedtimeline\"]});")
     end
 

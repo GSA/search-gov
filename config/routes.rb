@@ -56,6 +56,7 @@ ActionController::Routing::Routes.draw do |map|
   map.analytics_queries '/analytics/queries', :controller => 'analytics/home', :action => 'queries'
   map.analytics_query_search '/analytics/query_search', :controller => "analytics/query_searches"
   map.query_timeline '/analytics/timeline/:query', :controller => 'analytics/timeline', :action => 'show', :requirements => { :query => /.*/ }
+  map.affiliate_query_timeline '/affiliates/:id/analytics/timeline/:query', :controller => 'affiliates/timeline', :action => 'show'
   map.monthly_reports '/analytics/monthly_reports', :controller => 'analytics/monthly_reports'
   map.home_page '/', :controller => "home"
   map.contact_form '/contact_form', :controller => "home", :action => "contact_form"

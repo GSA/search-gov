@@ -31,6 +31,10 @@ describe Analytics::TimelineController do
       end
 
       context "when showing a timeline" do
+        let(:start_date) do
+          Date.yesterday.advance(:months => -13)
+        end
+
         before do
           DailyQueryStat.delete_all
           DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME )
@@ -51,6 +55,19 @@ describe Analytics::TimelineController do
           it "should assign the query term" do
             assigns[:query].should_not be_nil
           end
+
+          context "when daily query stat older than 13 months exists" do
+            before do
+              DailyQueryStat.create!(:day => Date.yesterday.advance(:months => -24), :query => "query1", :times => 20, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME )
+              DailyQueryStat.create!(:day => Date.yesterday.advance(:months => -24), :query => "query2", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME )
+            end
+
+            it "should not include data older than 13 months" do
+              get :show, :query => 'query1'
+              assigns[:timelines].size.should == 1
+              assigns[:timelines].first.dates.first.should == start_date
+            end
+          end
         end
       
         context "when a comparison query term is passed in" do
@@ -70,6 +87,20 @@ describe Analytics::TimelineController do
             assigns[:query].should == 'query1'
             assigns[:comparison_query].should_not be_nil
             assigns[:comparison_query].should == 'query2'
+          end
+
+          context "when daily query stat older than 13 months exists" do
+            before do
+              DailyQueryStat.create!(:day => Date.yesterday.advance(:months => -24), :query => "query1", :times => 20, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME )
+              DailyQueryStat.create!(:day => Date.yesterday.advance(:months => -24), :query => "query2", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME )
+              get :show, :query => 'query1', :comparison_query => 'query2'
+            end
+
+            it "should not include data older than 13 months" do
+              assigns[:timelines].size.should == 2
+              assigns[:timelines].first.dates.first.should == start_date
+              assigns[:timelines].last.dates.first.should == start_date
+            end
           end
         end
       
@@ -105,6 +136,19 @@ describe Analytics::TimelineController do
           it "should assign the query group" do
             get :show, :query=>"foo", :grouped=>1
             assigns[:query_group].name.should == "foo"
+          end
+
+          context "when daily query stat older than 13 months exists" do
+            before do
+              DailyQueryStat.create!(:day => Date.yesterday.advance(:months => -24), :query => "query1", :times => 20, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME )
+              DailyQueryStat.create!(:day => Date.yesterday.advance(:months => -24), :query => "query2", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME )
+            end
+
+            it "should not include data older than 13 months" do
+              get :show, :query=>"foo", :grouped=>1
+              assigns[:timelines].size.should == 1
+              assigns[:timelines].first.dates.first.should == start_date
+            end
           end
         end
       end

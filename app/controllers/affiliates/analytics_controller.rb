@@ -23,6 +23,7 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
   end
 
   def query_search
+    @title = "Query Search - "
     @search_query_term = params["query"]
     @start_date = Date.parse(params["analytics_search_start_date"]) rescue 1.month.ago.to_date
     @end_date = Date.parse(params["analytics_search_end_date"]) rescue Date.yesterday

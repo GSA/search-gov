@@ -1,13 +1,21 @@
 module Analytics::HomeHelper
-  def query_chart_link(query, is_grouped = false)
-    html = link_to(h(query), make_query_timeline_path(query, is_grouped))
+  def base_query_chart_link(query, path_for_query_timeline)
+    html = link_to(h(query), path_for_query_timeline)
     html << " "
     html << link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"),
-                    make_query_timeline_path(query, is_grouped),
+                    path_for_query_timeline,
                     :popup=>['_blank',
-                             'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=500,width=1000'],
+                             'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=500,width=1045'],
                     :title => "Open graph in new window")
     html
+  end
+
+  def query_chart_link(query, is_grouped = false)
+    base_query_chart_link(query, make_query_timeline_path(query, is_grouped))
+  end
+
+  def affiliate_query_chart_link(query, affiliate)
+    base_query_chart_link(query, affiliate_query_timeline_path(affiliate, query))
   end
 
   def display_most_recent_date_available(day, affiliate = nil)

@@ -40,3 +40,44 @@ Feature: Timeline for query
     Then I should be on the timeline page for "cenobitic"
     And I should see "Interest over time for 'cenobitic'"
     And I should not see "oxaluria"
+
+  Scenario: Viewing a chart for a given query group
+    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And the following DailyQueryStats exist:
+    | query                       | times |  days_back   |
+    | cenobitic                   | 100   |     1        |
+    | oxaluria                    | 90    |     1        |
+    | finochio                    | 80    |     1        |
+    | burmannia                   | 40    |     1        |
+    And the following query groups exist:
+      | group    | queries               |
+      | group1   | cenobitic, finochio   |
+    And I am on the analytics queries page
+    Then I should see "group1"
+    When I follow "group1"
+    Then I should see "Interest over time for 'group1'"
+    And I should see a query group comparison term form
+
+  Scenario: Adding a comparison term to a query group timeline
+    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And the following DailyQueryStats exist:
+    | query                       | times |  days_back   |
+    | cenobitic                   | 100   |     1        |
+    | oxaluria                    | 90    |     1        |
+    | finochio                    | 80    |     1        |
+    | burmannia                   | 40    |     1        |
+    And the following query groups exist:
+      | group    | queries               |
+      | group1   | cenobitic, finochio   |
+    And I am on the analytics queries page
+    Then I should see "group1"
+    When I follow "group1"
+    And I fill in "Add a comparison term" with "oxaluria"
+    And I press "Compare"
+    Then I should see "Interest over time for 'group1' compared to 'oxaluria'"
+    And the "Add a comparison term" field should contain "oxaluria"
+    And I should see "Remove: oxaluria"
+    When I follow "Remove: oxaluria"
+    Then I should see "Interest over time for 'group1'"
+    And I should not see "oxaluria"
+    And I should see a query group comparison term form

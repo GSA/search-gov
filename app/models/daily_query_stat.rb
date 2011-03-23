@@ -36,7 +36,7 @@ class DailyQueryStat < ActiveRecord::Base
     end
 
     def reversed_backfilled_series_since_2009_for(query, up_to_day = Date.yesterday.to_date)
-      timeline = Timeline.new(query)
+      timeline = Timeline.new(query, nil, nil, Date.new(2009, 1, 1))
       ary = []
       timeline.dates.each_with_index do |day, idx|
         ary << timeline.series[idx].y if day <= up_to_day
@@ -96,13 +96,17 @@ class DailyQueryStat < ActiveRecord::Base
       maximum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name, locale])
     end
 
-    def collect_query_group_named(name)
+    def collect_query_group_named(name, start_date)
       queries = QueryGroup.find_by_name(name).grouped_queries.collect { |gq| gq.query }
-      generic_collection(["query IN (?)", queries])
+      generic_collection(["day >= ? AND query IN (?)", start_date, queries])
     end
 
-    def collect_query(query)
-      generic_collection(["query = ?", query])
+    def collect_query(query, start_date)
+      generic_collection(["day >= ? AND query = ?", start_date, query])
+    end
+
+    def collect_affiliate_query(query, affiliate_name, start_date)
+      generic_collection(["day >= ? AND affiliate = ? AND query = ?", start_date, affiliate_name, query])
     end
 
     def generic_collection(conditions)

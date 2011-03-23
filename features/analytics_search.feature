@@ -48,6 +48,7 @@ Feature: Analytics Search
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
     And I press "Search"
     Then I should see "Matches for 'pollution'"
+    And I should see "Query Search" within "title"
     And I should see "social pollution"
     And I should not see "old pollution"
     And I should not see "pollutant"

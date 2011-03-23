@@ -249,23 +249,40 @@ describe DailyQueryStat do
   end
 
   describe "#collect_query_group_named" do
+    let(:start_date) do
+      Date.yesterday.advance(:months => -1)
+    end
+
+    let(:before_start_date) do
+      start_date.advance(:days => -1)
+    end
+
     before do
       DailyQueryStat.delete_all
-      DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-      DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-      DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => 'affiliate.gov')
-      DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => 'affiliate.gov')
-      DailyQueryStat.create!(:day => Date.yesterday, :query => "query1", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es')
-      DailyQueryStat.create!(:day => Date.yesterday, :query => "query2", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es')
+
+      DailyQueryStat.create!(:day => before_start_date, :query => "query1", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      DailyQueryStat.create!(:day => before_start_date, :query => "query2", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      DailyQueryStat.create!(:day => before_start_date, :query => "query1", :times => 10, :affiliate => 'affiliate.gov')
+      DailyQueryStat.create!(:day => before_start_date, :query => "query2", :times => 1, :affiliate => 'affiliate.gov')
+      DailyQueryStat.create!(:day => before_start_date, :query => "query1", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es')
+      DailyQueryStat.create!(:day => before_start_date, :query => "query2", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es')
+
+      DailyQueryStat.create!(:day => start_date, :query => "query1", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      DailyQueryStat.create!(:day => start_date, :query => "query2", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+      DailyQueryStat.create!(:day => start_date, :query => "query1", :times => 10, :affiliate => 'affiliate.gov')
+      DailyQueryStat.create!(:day => start_date, :query => "query2", :times => 1, :affiliate => 'affiliate.gov')
+      DailyQueryStat.create!(:day => start_date, :query => "query1", :times => 10, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es')
+      DailyQueryStat.create!(:day => start_date, :query => "query2", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'es')
+
       qg = QueryGroup.create!(:name=>"my query group")
       qg.grouped_queries << GroupedQuery.create!(:query=>"query1")
       qg.grouped_queries << GroupedQuery.create!(:query=>"query2")
     end
 
-    it "should return an array of DailyQueryStats that sums the frequencies for all queries in query group, combining other affiliates and locales" do
-      results = DailyQueryStat.collect_query_group_named("my query group")
+    it "should return an array of DailyQueryStats that sums the frequencies for all queries in query group, combining other affiliates and locales on or after start date" do
+      results = DailyQueryStat.collect_query_group_named("my query group", start_date)
       results.size.should == 1
-      results.first.day.should == Date.yesterday
+      results.first.day.should == start_date
       results.first.times.should == 33
     end
 
@@ -279,7 +296,7 @@ describe DailyQueryStat do
       end
 
       it "should return results normally" do
-        results = DailyQueryStat.collect_query_group_named("group2")
+        results = DailyQueryStat.collect_query_group_named("group2", start_date)
         results.size.should == 1
         results.first.day.should == Date.yesterday
         results.first.times.should == 45
@@ -287,4 +304,25 @@ describe DailyQueryStat do
     end
   end
 
+  describe "#collect_query" do
+    let(:start_date) do
+      Date.yesterday.advance(:months => -1)
+    end
+
+    it "should filter results using affiliate_name and query" do
+      DailyQueryStat.should_receive(:generic_collection).with(['day >= ? AND query = ?', start_date, 'foo'])
+      DailyQueryStat.collect_query('foo', start_date)
+    end
+  end
+
+  describe "#collect_affiliate_query" do
+    let(:start_date) do
+      Date.yesterday.advance(:months => -1)
+    end
+
+    it "should filter results using affiliate_name and query" do
+      DailyQueryStat.should_receive(:generic_collection).with(['day >= ? AND affiliate = ? AND query = ?', start_date, 'aff', 'foo'])
+      DailyQueryStat.collect_affiliate_query('foo', 'aff', start_date)
+    end
+  end
 end

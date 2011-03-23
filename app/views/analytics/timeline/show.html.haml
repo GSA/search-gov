@@ -1,12 +1,2 @@
 = analytics_center_breadcrumbs 'Query Timeline'
-%h2= "Interest over time for '#{h @query}'#{@comparison_query ? h(' compared to \'' + @comparison_query + '\'') : ''}"
-- annotated_timeline_for(@timelines.first.dates, :width => 940, :height => 300) do |atl|
-  - atl.add_line(@query, @timelines.first.series, :value => :y)
-  - atl.add_line(@comparison_query, @timelines.last.series, :value => :y) if @comparison_query
-
-- form_tag(query_timeline_path(@query), :method => :get, :id => "queries") do
-  = label_tag 'comparison_query', "Add a comparison term"
-  = text_field_tag 'comparison_query', @comparison_query
-  = submit_tag 'Compare'
-%p
-  = link_to "Remove: #{h @comparison_query}", query_timeline_path(@query) if @comparison_query
+= render :partial => 'analytics/shared/timeline', :locals => {:url_for_timeline => make_query_timeline_path(@query, params[:grouped]), :timeline_options => {:width => 940, :height => 300}}
