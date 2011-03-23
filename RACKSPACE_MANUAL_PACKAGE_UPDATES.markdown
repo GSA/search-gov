@@ -61,3 +61,7 @@ These are the steps to take in order to upgrade the non-automatically-updating p
     show slave status\G
 
 ### Disable alarm suppression on Opsview and Rackspace
+
+### Renable readability of Apache logs by search user if httpd package got updated
+    ssh web1,web2,drweb,staging,cron
+    sudo chmod -R a+rx /var/log/httpd
