@@ -9,14 +9,14 @@ class SaytFilter < ActiveRecord::Base
     filters = all
     inputs.reject do |candidate|
       phrase = key == nil ? candidate : candidate[key]
-      filters.detect { |filter| phrase =~ /\b#{filter.phrase}\b/i }
+      filters.detect { |filter| phrase =~ /\b#{Regexp.escape(filter.phrase)}\b/i }
     end unless inputs.nil?
   end
 
   private
   def apply_filter_to_sayt_suggestions
     SaytSuggestion.all.each do |suggestion|
-      suggestion.delete if suggestion.phrase =~ /\b#{phrase}\b/i
+      suggestion.delete if suggestion.phrase =~ /\b#{Regexp.escape(phrase)}\b/i
     end
   end
 

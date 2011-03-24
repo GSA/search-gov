@@ -38,6 +38,11 @@ describe SaytFilter do
       SaytFilter.create!(:phrase => "xxx")
       SaytSuggestion.find_by_phrase(@phrase).should be_nil
     end
+
+    it "should Regexp escape the filter before applying it" do
+      SaytFilter.create!(:phrase => "ought.")
+      SaytSuggestion.find_by_phrase(@phrase).should_not be_nil
+    end
   end
 
   describe "#filter(results, key=nil)" do
@@ -45,13 +50,19 @@ describe SaytFilter do
       SaytFilter.create!(:phrase => "foo")
       SaytFilter.create!(:phrase => "blat baz")
       SaytFilter.create!(:phrase => "hyphenate-me")
-      @queries = ["bar Foo", "bar blat", "blat", "baz blat", "baz loren", "food"]
+      SaytFilter.create!(:phrase => "sex.")
+      @queries = ["bar Foo", "bar blat", "blat", "baz blat", "baz loren", "food", "sex education"]
       @results = @queries.collect { |q| {"somekey" => q} }
     end
 
     it "should not filter out queries that contain blocked terms but do not end on a word boundary" do
       filtered_terms = SaytFilter.filter(@results, "somekey")
       filtered_terms.detect { |ft| ft["somekey"] == "food" }.should_not be_nil
+    end
+
+    it "should Regexp escape the filter before applying it" do
+      filtered_terms = SaytFilter.filter(@results, "somekey")
+      filtered_terms.detect { |ft| ft["somekey"] == "sex education" }.should_not be_nil
     end
 
     context "when results list is nil" do
