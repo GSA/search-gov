@@ -123,7 +123,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>       filters.detect { |filter| phrase =~ /\b#{filter.phrase}\b/i }</pre></td>
+            <td><pre><a name="line12">12</a>       filters.detect { |filter| phrase =~ /\b#{Regexp.escape(filter.phrase)}\b/i }</pre></td>
           </tr>
         
           
@@ -165,7 +165,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>       suggestion.delete if suggestion.phrase =~ /\b#{phrase}\b/i</pre></td>
+            <td><pre><a name="line19">19</a>       suggestion.delete if suggestion.phrase =~ /\b#{Regexp.escape(phrase)}\b/i</pre></td>
           </tr>
         
           
@@ -213,7 +213,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Mar 17 17:14:01 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Mar 24 13:59:59 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

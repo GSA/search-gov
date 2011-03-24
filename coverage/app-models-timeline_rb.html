@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-timeline_rb.html">app/models/timeline.rb</a></td>
-            <td class='right_align'><tt>35</tt></td>
-            <td class='right_align'><tt>32</tt></td>
+            <td class='right_align'><tt>47</tt></td>
+            <td class='right_align'><tt>43</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,211 +63,283 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   attr_accessor :series, :dates</pre></td>
+            <td><pre><a name="line2">2</a>   DEFAULT_RANGE_IN_MONTHS = -13</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>   attr_accessor :series, :dates</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   def initialize(query, grouped = nil)</pre></td>
+            <td><pre><a name="line5">5</a>   def self.load_affiliate_daily_query_stats(query, affiliate_name, start_date = Date.yesterday.advance(:months =&gt; DEFAULT_RANGE_IN_MONTHS))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     @series, @dates = [], []</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>     if grouped</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>       results = DailyQueryStat.collect_query_group_named(query)</pre></td>
+            <td><pre><a name="line6">6</a>     Timeline.new(query, nil, affiliate_name, start_date)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>       results = DailyQueryStat.collect_query(query)</pre></td>
+            <td><pre><a name="line7">7</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a>     end</pre></td>
+            <td><pre><a name="line8">8</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     date_marker = results.first.present? ? results.first.day : Date.yesterday</pre></td>
+            <td><pre><a name="line9">9</a>   def initialize(query, grouped = nil, affiliate_name = nil, start_date = Date.yesterday.advance(:months =&gt; DEFAULT_RANGE_IN_MONTHS))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     pad_with_zeroes_from_to(Date.new(2009, 1, 1), date_marker - 1.day)</pre></td>
+            <td><pre><a name="line10">10</a>     @series, @dates = [], []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>     results.each do |dqs|</pre></td>
+            <td><pre><a name="line11">11</a>     if affiliate_name</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>       while (dqs.day != date_marker)</pre></td>
+            <td><pre><a name="line12">12</a>       results = DailyQueryStat.collect_affiliate_query(query, affiliate_name, start_date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>         @series &lt;&lt; Datum.new(:y =&gt; 0)</pre></td>
+            <td><pre><a name="line13">13</a>     elsif grouped</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>         @dates &lt;&lt; date_marker</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>         date_marker += 1.day</pre></td>
+            <td><pre><a name="line14">14</a>       results = DailyQueryStat.collect_query_group_named(query, start_date)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>       end</pre></td>
+            <td><pre><a name="line15">15</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>       @series &lt;&lt; Datum.new( :y =&gt; dqs.times)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>       @dates &lt;&lt; dqs.day</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>       date_marker += 1.day</pre></td>
+            <td><pre><a name="line16">16</a>       results = DailyQueryStat.collect_query(query, start_date)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a>     end</pre></td>
+            <td><pre><a name="line17">17</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>     pad_with_zeroes_from_to(date_marker, DailyQueryStat.most_recent_populated_date) if DailyQueryStat.most_recent_populated_date</pre></td>
+            <td><pre><a name="line18">18</a>     date_marker = results.first.present? ? results.first.day : Date.yesterday</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>     pad_with_zeroes_from_to(start_date, date_marker - 1.day)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>     results.each do |dqs|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       while (dqs.day != date_marker)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>         @series &lt;&lt; Datum.new(:y =&gt; 0)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>         @dates &lt;&lt; date_marker</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>         date_marker += 1.day</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>   end</pre></td>
+            <td><pre><a name="line25">25</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>       @series &lt;&lt; Datum.new( :y =&gt; dqs.times)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       @dates &lt;&lt; dqs.day</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>       date_marker += 1.day</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a> </pre></td>
+            <td><pre><a name="line29">29</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>   private</pre></td>
+            <td><pre><a name="line30">30</a>     if affiliate_name</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>   def pad_with_zeroes_from_to(from_date, to_date)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>     return unless to_date &gt;= from_date</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>     from_date.upto(to_date) do |day|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>       @series &lt;&lt; Datum.new(:y =&gt; 0)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>       @dates &lt;&lt; day</pre></td>
+            <td><pre><a name="line31">31</a>       most_recent_populated_date = DailyQueryStat.most_recent_populated_date affiliate_name</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>     end</pre></td>
+            <td><pre><a name="line32">32</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>       most_recent_populated_date = DailyQueryStat.most_recent_populated_date</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>   end</pre></td>
+            <td><pre><a name="line34">34</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>     pad_with_zeroes_from_to(date_marker, most_recent_populated_date) if most_recent_populated_date</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a> </pre></td>
+            <td><pre><a name="line36">36</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a> end</pre></td>
+            <td><pre><a name="line37">37</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>   def pad_with_zeroes_from_to(from_date, to_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>     return unless to_date &gt;= from_date</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>     from_date.upto(to_date) do |day|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>       @series &lt;&lt; Datum.new(:y =&gt; 0)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>       @dates &lt;&lt; day</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line45">45</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line47">47</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Mar 17 17:14:01 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Mar 24 13:59:59 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

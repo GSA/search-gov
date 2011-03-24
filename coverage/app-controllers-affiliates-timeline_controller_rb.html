@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/pages_controller.rb</title>
+    <title>app/controllers/affiliates/timeline_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/pages_controller.rb</h2>
+    <h2>app/controllers/affiliates/timeline_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-pages_controller_rb.html">app/controllers/pages_controller.rb</a></td>
-            <td class='right_align'><tt>19</tt></td>
-            <td class='right_align'><tt>18</tt></td>
+            <td class="left_align"><a href="app-controllers-affiliates-timeline_controller_rb.html">app/controllers/affiliates/timeline_controller.rb</a></td>
+            <td class='right_align'><tt>14</tt></td>
+            <td class='right_align'><tt>13</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,115 +57,85 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class PagesController &lt; HighVoltage::PagesController</pre></td>
+            <td><pre><a name="line1">1</a> class Affiliates::TimelineController &lt; Affiliates::AffiliatesController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   layout 'pages'</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :require_affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   before_filter :set_page_title, :only =&gt; [:show]</pre></td>
+            <td><pre><a name="line3">3</a>   before_filter :setup_affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   PAGE_TITLES = {</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line5">5</a>     :accessibility =&gt; &quot;Accessibility&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line6">6</a>     :api =&gt; &quot;APIs and Web Services&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line7">7</a>     :program =&gt; &quot;USASearch Program&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line8">8</a>     :recalls =&gt; &quot;Product Recall Data API&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line9">9</a>     :search =&gt; &quot;Search.USA.gov&quot;,</pre></td>
+            <td><pre><a name="line5">5</a>   def show</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     :textsize =&gt; I18n.t(:need_larger_text),</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line11">11</a>     :tos =&gt; &quot;Terms of Service for USASearch's APIs and Web Services&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a>     :widgets =&gt; &quot;Widgets&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a>   }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a> </pre></td>
+            <td><pre><a name="line6">6</a>     @title = 'Query Timeline - '</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   private</pre></td>
+            <td><pre><a name="line7">7</a>     @query = params[:query]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>   def set_page_title</pre></td>
+            <td><pre><a name="line8">8</a>     @comparison_query = params[:comparison_query]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>     @page_title = PAGE_TITLES[params[:id].to_sym]</pre></td>
+            <td><pre><a name="line9">9</a>     @timelines = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>     @timelines &lt;&lt; Timeline.load_affiliate_daily_query_stats(@query, @affiliate.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     @timelines &lt;&lt; Timeline.load_affiliate_daily_query_stats(@comparison_query, @affiliate.name) if @comparison_query</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     @zoom_start_time = @timelines.first.dates.last.advance(:months =&gt; -1)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>   end</pre></td>
+            <td><pre><a name="line13">13</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a> end</pre></td>
+            <td><pre><a name="line14">14</a> end</pre></td>
           </tr>
         
       </tbody>

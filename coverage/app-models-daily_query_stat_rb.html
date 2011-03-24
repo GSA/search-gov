@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-daily_query_stat_rb.html">app/models/daily_query_stat.rb</a></td>
-            <td class='right_align'><tt>121</tt></td>
-            <td class='right_align'><tt>106</tt></td>
+            <td class='right_align'><tt>125</tt></td>
+            <td class='right_align'><tt>109</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -285,7 +285,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>       timeline = Timeline.new(query)</pre></td>
+            <td><pre><a name="line39">39</a>       timeline = Timeline.new(query, nil, nil, Date.new(2009, 1, 1))</pre></td>
           </tr>
         
           
@@ -645,7 +645,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line99">99</a>     def collect_query_group_named(name)</pre></td>
+            <td><pre><a name="line99">99</a>     def collect_query_group_named(name, start_date)</pre></td>
           </tr>
         
           
@@ -657,7 +657,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line101">101</a>       generic_collection([&quot;query IN (?)&quot;, queries])</pre></td>
+            <td><pre><a name="line101">101</a>       generic_collection([&quot;day &gt;= ? AND query IN (?)&quot;, start_date, queries])</pre></td>
           </tr>
         
           
@@ -675,13 +675,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line104">104</a>     def collect_query(query)</pre></td>
+            <td><pre><a name="line104">104</a>     def collect_query(query, start_date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line105">105</a>       generic_collection([&quot;query = ?&quot;, query])</pre></td>
+            <td><pre><a name="line105">105</a>       generic_collection([&quot;day &gt;= ? AND query = ?&quot;, start_date, query])</pre></td>
           </tr>
         
           
@@ -699,91 +699,115 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line108">108</a>     def generic_collection(conditions)</pre></td>
+            <td><pre><a name="line108">108</a>     def collect_affiliate_query(query, affiliate_name, start_date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line109">109</a>       results = sum(:times, :group =&gt; :day, :conditions =&gt; conditions, :order =&gt; &quot;day&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line110">110</a>       dqs=[]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line111">111</a>       results.each_pair { |day, times| dqs &lt;&lt; new(:day=&gt; day, :times =&gt; times) }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line112">112</a>       dqs</pre></td>
+            <td><pre><a name="line109">109</a>       generic_collection([&quot;day &gt;= ? AND affiliate = ? AND query = ?&quot;, start_date, affiliate_name, query])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line113">113</a>     end</pre></td>
+            <td><pre><a name="line110">110</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line114">114</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line115">115</a> </pre></td>
+            <td><pre><a name="line111">111</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line116">116</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line117">117</a> </pre></td>
+            <td><pre><a name="line112">112</a>     def generic_collection(conditions)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line118">118</a>   def squish_query</pre></td>
+            <td><pre><a name="line113">113</a>       results = sum(:times, :group =&gt; :day, :conditions =&gt; conditions, :order =&gt; &quot;day&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line119">119</a>     self.query.squish!</pre></td>
+            <td><pre><a name="line114">114</a>       dqs=[]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line115">115</a>       results.each_pair { |day, times| dqs &lt;&lt; new(:day=&gt; day, :times =&gt; times) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line116">116</a>       dqs</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line120">120</a>   end</pre></td>
+            <td><pre><a name="line117">117</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line121">121</a> end</pre></td>
+            <td><pre><a name="line118">118</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line119">119</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line120">120</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line121">121</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line122">122</a>   def squish_query</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line123">123</a>     self.query.squish!</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line124">124</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line125">125</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Mar 17 17:14:01 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Mar 24 13:59:59 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
