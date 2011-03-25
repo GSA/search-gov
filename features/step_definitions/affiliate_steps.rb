@@ -141,21 +141,21 @@ Then /^the affiliate "([^\"]*)" field should be set to use "([^\"]*)" template$/
   affiliate_template.name.should == template_name
 end
 
-Then /^(.+) within site named "([^"]*)"$/ do |step, site_display_name|
+Then /^(.+) for site named "([^"]*)"$/ do |step, site_display_name|
   site = Affiliate.find_by_display_name site_display_name
   Then %{#{step} within "tr#site_#{site.id}"}
 end
 
 Then /^I should see sorted sites in the site dropdown list$/ do
-  sites = User.find_by_email("sorted@bar.gov").affiliates.sort{|x,y| x.display_name <=> y.display_name}
+  sites = @current_user.affiliates.sort{|x,y| x.display_name <=> y.display_name}
   sites.each_with_index do |site, index|
     response.body.should have_tag("#affiliate_id option:nth-child(#{index + 1})", :value => site.id)
   end
 end
 
 Then /^I should see sorted sites in the site list$/ do
-  sites = User.find_by_email("sorted@bar.gov").affiliates.sort{|x,y| x.display_name <=> y.display_name}
+  sites = @current_user.affiliates.sort{|x,y| x.display_name <=> y.display_name}
   sites.each_with_index do |site, index|
-    response.body.should have_tag(".admin-table tr:nth-child(#{index + 2}) td a", :text =>site.display_name)
+    response.body.should have_tag(".generic-table tbody tr:nth-child(#{index + 1}) td.site-name a", :text =>site.display_name)
   end
 end

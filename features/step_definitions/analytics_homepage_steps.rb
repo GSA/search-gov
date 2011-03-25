@@ -25,7 +25,7 @@ end
 Given /^the following DailyQueryStats exist:$/ do |table|
   DailyQueryStat.delete_all
   table.hashes.each do |hash|
-    DailyQueryStat.create(:day => hash["days_back"].nil? ? Date.yesterday : hash["days_back"].to_i.day.ago,
+    DailyQueryStat.create(:day => hash["days_back"].nil? ? Date.yesterday : Date.today.advance(:days => -(hash["days_back"].to_i)),
                           :query => hash["query"],
                           :times => hash["times"],
                           :affiliate => hash["affiliate"].nil? ? Affiliate::USAGOV_AFFILIATE_NAME : hash["affiliate"],

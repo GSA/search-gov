@@ -38,11 +38,11 @@ Feature: Affiliate clients
   Scenario: Visiting the affiliate admin page as affiliate with existing sites
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    Then I should see "Affiliate Dashboard" within "title"
-    And I should see "Affiliate Dashboard" within ".main"
+    Then I should see "Affiliate Center" within "title"
+    And I should see "Affiliate Center" within ".main"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center
     And I should see "Site List"
-    And I should see "+ add new site"
+    And I should see "add new site"
 
     When I follow "Affiliate Center" in the main navigation bar
     Then I should be on the affiliate admin page
@@ -50,7 +50,8 @@ Feature: Affiliate clients
   Scenario: Visiting the affiliate admin page as affiliate without existing sites
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    Then I should see "Affiliate Dashboard"
+    Then I should see "Affiliate Center" within "title"
+    And I should see "Affiliate Center" within ".main"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center
     And I should see "Add New Site"
 
@@ -66,17 +67,18 @@ Feature: Affiliate clients
     And I should see "bar site"
     And I should not see "other site"
     When I follow "Affiliate Center"
-    Then I should see "foo site" within site named "foo site"
-    Then I should see "View current" within site named "foo site"
-    Then I should see "View staged" within site named "foo site"
-    Then I should see "Push Changes" button within site named "foo site"
-    Then I should see "Cancel Changes" button within site named "foo site"
-    Then I should see "Delete Site" button within site named "foo site"
-    Then I should see "bar site" within site named "bar site"
-    Then I should see "View current" within site named "bar site"
-    Then I should not see "View staged" within site named "bar site"
-    Then I should not see "Push Changes" button within site named "bar site"
-    Then I should see "Delete Site" button within site named "bar site"
+    Then I should see "foo site" for site named "foo site"
+    Then I should see "View Current" for site named "foo site"
+    Then I should see "View Staged" for site named "foo site"
+    Then I should see "Push Changes" button for site named "foo site"
+    Then I should see "Cancel Changes" button for site named "foo site"
+    Then I should see "Delete Site" button for site named "foo site"
+    Then I should see "bar site" for site named "bar site"
+    Then I should see "View Current" for site named "bar site"
+    Then I should not see "View Staged" for site named "bar site"
+    Then I should not see "Push Changes" button for site named "bar site"
+    Then I should not see "Cancel Changes" button for site named "bar site"
+    Then I should see "Delete Site" button for site named "bar site"
     And I should not see "other site"
     And I should not see "multifoo.gov"
     And I should not see "multibar.gov"
@@ -276,11 +278,11 @@ Feature: Affiliate clients
     And I should see "Site: new aff site"
     And I should see "www.aff.gov"
 
-    When I follow "View staged"
+    When I follow "View Staged"
     And I should see 10 search results
 
     When I go to the "new aff site" affiliate page
-    And I follow "Current Site"
+    And I follow "View Current"
     Then I should see "Sorry, no results found"
 
     When I go to the "new aff site" affiliate page
@@ -290,7 +292,7 @@ Feature: Affiliate clients
     When I go to the "new aff site" affiliate page
     And I press "Push Changes"
     And I go to the "new aff site" affiliate page
-    And I follow "Current Site"
+    And I follow "View Current"
     Then I should see 10 search results
 
   Scenario: Editing site information with problem and saving it for preview
@@ -325,9 +327,9 @@ Feature: Affiliate clients
     And I should see "Updated changes to your live site successfully"
     And I should see "Site: new aff site"
     And I should see "www.aff.gov"
-    And I should not see "View staged"
+    And I should not see "View Staged"
 
-    When I follow "Current Site"
+    When I follow "View Current"
     Then I should see 10 search results
 
    Scenario: Editing site information with problem and make it live
@@ -356,7 +358,7 @@ Feature: Affiliate clients
     When I press "Save for Preview"
     Then I should be on the "new aff site" affiliate page
     And I should see "Staged changes to your site successfully"
-    When I follow "View staged"
+    When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "default"
     And I should not see the page with affiliate stylesheet "basic_gray"
     And I should see 10 search results
@@ -375,7 +377,7 @@ Feature: Affiliate clients
     When I press "Save for Preview"
     Then I should be on the "new aff site" affiliate page
     And I should see "Staged changes to your site successfully"
-    When I follow "View staged"
+    When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "basic_gray"
     And I should not see the page with affiliate stylesheet "default"
     And I should see "Sorry, no results found"
@@ -418,7 +420,7 @@ Feature: Affiliate clients
     Then I should be on the "aff site" affiliate page
     And I should see "Staged changes to your site successfully"
 
-    When I follow "Current Site"
+    When I follow "View Current"
     Then I should see "gov - aff site Search Results"
     And I should see "Old header"
     And I should see "Old footer"
@@ -426,7 +428,7 @@ Feature: Affiliate clients
     And I should not see the page with affiliate stylesheet "basic_gray"
 
     When I go to the "aff site" affiliate page
-    And I follow "View staged"
+    And I follow "View Staged"
     Then I should see "aff site : gov"
     And I should see "New header"
     And I should see "New footer"
@@ -436,7 +438,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I press "Push Changes"
     And I go to the "aff site" affiliate page
-    And I follow "Current Site"
+    And I follow "View Current"
     Then I should see "aff site : gov"
     And I should see "New header"
     And I should see "New footer"
@@ -472,9 +474,9 @@ Feature: Affiliate clients
     And I press "Make Live"
     Then I should be on the "aff site" affiliate page
     And I should see "Updated changes to your live site successfully"
-    And I should not see "View staged"
+    And I should not see "View Staged"
 
-    When I follow "Current Site"
+    When I follow "View Current"
     Then I should see "aff site : gov"
     And I should see "New header"
     And I should see "New footer"
@@ -508,7 +510,7 @@ Feature: Affiliate clients
     When I press "Save for Preview"
     Then I should be on the "new aff site" affiliate page
     And I should see "Staged changes to your site successfully"
-    When I follow "View staged"
+    When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "default"
     And I should not see the page with affiliate stylesheet "basic_gray"
     And I should see "Live Search Results"
@@ -530,7 +532,7 @@ Feature: Affiliate clients
     When I press "Save for Preview"
     Then I should be on the "new aff site" affiliate page
     And I should see "Staged changes to your site successfully"
-    When I follow "View staged"
+    When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "basic_gray"
     And I should not see the page with affiliate stylesheet "default"
     And I should see "Staged Search Results"
@@ -547,9 +549,10 @@ Feature: Affiliate clients
     And I press "Cancel Changes"
     Then I should be on the affiliate page
     And I should see "Staged changes were successfully cancelled."
-    And I should not see "View staged"
+    And I should not see "View Staged"
     And I should not see "Push Changes" button
-    When I follow "Current Site"
+    And I should not see "Cancel Changes" button
+    When I follow "View Current"
     Then I should see "old header"
 
   Scenario: Cancelling staged changes from the site specific Affiliate Center page
@@ -572,7 +575,7 @@ Feature: Affiliate clients
     And I press "Save for Preview"
     And I should see "Staged changes to your site successfully"
     Then I should see "Cancel Changes" button
-    When I follow "View staged"
+    When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "basic_gray"
     And I should see "updated SERP title"
     And I should see "New header"
@@ -583,9 +586,10 @@ Feature: Affiliate clients
     And I press "Cancel Changes"
     Then I should be on the affiliate page
     And I should see "Staged changes were successfully cancelled."
-    And I should not see "View staged"
+    And I should not see "View Staged"
     And I should not see "Push Changes" button
-    When I follow "Current Site"
+    And I should not see "Cancel Changes" button
+    When I follow "View Current"
     Then I should see the page with affiliate stylesheet "default"
     And I should see "gov - foo site Search Results"
     And I should see "Old header"
@@ -602,9 +606,10 @@ Feature: Affiliate clients
     And I press "Cancel Staged Changes"
     Then I should be on the affiliate page
     And I should see "Staged changes were successfully cancelled."
-    And I should not see "View staged"
+    And I should not see "View Staged"
     And I should not see "Push Changes" button
-    When I follow "Current Site"
+    And I should not see "Cancel Changes" button
+    When I follow "View Current"
     Then I should see "old header"
 
   Scenario: Visiting the preview page

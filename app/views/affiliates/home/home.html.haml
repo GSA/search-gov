@@ -1,33 +1,24 @@
-= breadcrumbs([link_to("Affiliate Program", affiliates_path), "Affiliate Center"])
-%h1 Affiliate Dashboard  
-- if @current_user.is_affiliate?
-  .span-21
+.affiliate
+  = breadcrumbs([link_to("Affiliate Program", affiliates_path), "Affiliate Center"])
+  %h1 Affiliate Center  
+  - if @current_user.is_affiliate?
     -if @current_user.affiliates.empty?
       %p You currently have no sites.  To begin, please add a new site.
     -else
       %p Welcome to the affiliate section.  To begin, select a site from the left menu.
-      .title-row
-        .right
-          #{link_to "+ add new site", new_affiliate_path, :class => "small"}
-        Site List
-      %table.admin-table
-        %tr
-          %th 
-            Name
-          %th 
-            Manage
-        - @current_user.affiliates.ordered.each do |affiliate|
-          %tr{:id => "site_#{affiliate.id}", :class => cycle('even', 'odd')}
-            %td
-              = link_to(h(affiliate.display_name), affiliate_path(affiliate))
-            %td
-              = link_to "View current", search_url(:affiliate=> affiliate.name, :query=>"gov"), :target => "_blank"
-              - if affiliate.has_staged_content?
-                |
-                = link_to "View staged", search_url(:affiliate=> affiliate.name, :query=>"gov", :staged => 1), :target => "_blank"
-                |
-                = button_to "Push Changes", push_content_for_affiliate_path(affiliate, :affiliate_id => affiliate.id)
-                |
-                = button_to "Cancel Changes", cancel_staged_changes_for_affiliate_path(affiliate)
-              |
-              = button_to "Delete Site", affiliate_path(affiliate), :title => "Delete this site", :confirm => "You are about to delete this site. Are you sure?", :method => :delete
+      %table.generic-table
+        %thead
+          %tr
+            %th{:colspan => 2}
+              = link_to 'add new site', new_affiliate_path, :class => 'generic-button add-new-site-button'
+              Site List
+          %tr
+            %th.secondary-header Name
+            %th.secondary-header Actions
+        %tbody
+          - @current_user.affiliates.ordered.each do |affiliate|
+            %tr{:id => "site_#{affiliate.id}", :class => cycle('even', 'odd')}
+              %td.site-name
+                = link_to(h(affiliate.display_name), affiliate_path(affiliate))
+              %td
+                = render :partial => 'affiliate_actions', :locals => {:affiliate => affiliate}

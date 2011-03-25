@@ -750,6 +750,7 @@ a
         th
           &.secondary-header
             background: #E5E5E5 none
+            border: 1px solid #A9A9A9
             color: #3D3D3D
       td
         padding: 7px 5px 4px
@@ -889,6 +890,78 @@ a
     height: 43px
     float: left
     clear: both
+
+table.generic-table
+  border: 1px solid #A9A9A9
+  border-collapse: collapse
+  table-layout: fixed
+  margin: 0
+  th
+    background: url(/images/table-mid-bg.png) repeat-x 0 0
+    color: #fff
+    font-size: 14px
+    font-weight: bold
+    height: 30px
+    margin: 7px 5px 4px
+    text-align: left
+    &.secondary-header
+      background: #E5E5E5 none
+      border: 1px solid #A9A9A9
+      color: #3D3D3D
+  td
+    border: 1px solid #A9A9A9
+    padding: 7px 5px 4px
+    text-align: left
+    font-size: 14px
+    color: #333
+
+.generic-button
+  border: 0
+  cursor: pointer
+  float: left
+  font-size: 0
+  line-height: 0
+  margin: 0
+  padding: 0
+  text-indent: -999em
+
+.affiliate
+  .action-row
+    clear: both
+    float: left
+    width: 100%
+    a, input
+      float: left
+      margin-left: 8px
+  .current-site-row
+  .staged-site-row
+    margin-top: 5px
+  .add-new-site-button
+    background: url(/images/btn_add_new_site.png) no-repeat 0 0
+    behavior: url(/javascripts/iepngfix.htc)
+    float: right
+    height: 22px
+    width: 88px
+  .delete-site-button
+    background: url(/images/btn_delete_site.png) no-repeat 0 0
+    behavior: url(/javascripts/iepngfix.htc)
+    height: 24px
+    width: 84px
+  .push-changes-button
+    background: url(/images/btn_push_changes.png) no-repeat 0 0
+    behavior: url(/javascripts/iepngfix.htc)
+    height: 24px
+    width: 110px
+  .cancel-changes-button
+    background: url(/images/btn_cancel_changes.png) no-repeat 0 0
+    behavior: url(/javascripts/iepngfix.htc)
+    height: 24px
+    width: 119px
+  td.site-name
+    a
+      word-wrap: break-word
+  td.site-url
+    word-wrap: break-word
 
 /*** recaptcha ***/
 #dynamic_recaptcha

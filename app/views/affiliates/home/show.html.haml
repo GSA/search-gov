@@ -1,25 +1,16 @@
-= affiliate_center_breadcrumbs(h(@affiliate.display_name))
-
-%h1= "Site: #{h(@affiliate.display_name)}"
-
-.span-21
-  %table.admin-table
-    %tr
-      %th
-        Website URL
-      %th
-        Actions
-    %tr
-      %td
-        = h(@affiliate.website)
-      %td
-        = link_to 'Current Site', search_url(:affiliate=> @affiliate.name, :query => "gov"), :target => "_blank"
-        - if @affiliate.has_staged_content?
-          |
-          = link_to "View staged", search_url(:affiliate=> @affiliate.name, :query => "gov", :staged => 1), :target => "_blank"
-          |
-          = button_to "Push Changes", push_content_for_affiliate_path(@affiliate, :affiliate_id => @affiliate.id)
-          |
-          = button_to "Cancel Changes", cancel_staged_changes_for_affiliate_path(@affiliate)
-        |
-        = button_to "Delete Site", affiliate_path(@affiliate), :title => "Delete this site", :confirm => "You are about to delete this site. Are you sure?", :method => :delete
+.affiliate
+  = affiliate_center_breadcrumbs(h(@affiliate.display_name))
+  %h1= "Site: #{h(@affiliate.display_name)}"
+  %table.generic-table
+    %thead
+      %tr
+        %th.secondary-header
+          Website URL
+        %th.secondary-header
+          Actions
+    %tbody
+      %tr
+        %td.site-url
+          = h(@affiliate.website)
+        %td
+          = render :partial => 'affiliate_actions', :locals => {:affiliate => @affiliate}

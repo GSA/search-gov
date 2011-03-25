@@ -174,7 +174,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def home
-    @title = "Affiliate Dashboard - "
+    @title = "Affiliate Center - "
     if params["said"].present?
       @affiliate = Affiliate.find(params["said"])
     end
