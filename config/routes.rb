@@ -44,6 +44,10 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :site_pages, :active_scaffold => true
     admin.resources :agencies, :active_scaffold => true
     admin.resources :agency_queries, :active_scaffold => true
+    admin.resources :logfile_blocked_queries, :active_scaffold => true
+    admin.resources :logfile_blocked_ips, :active_scaffold => true
+    admin.resources :logfile_blocked_class_cs, :active_scaffold => true
+    admin.resources :logfile_blocked_regexps, :active_scaffold => true
   end
   map.affiliate_analytics_redirect '/admin/affiliates/:id/analytics', :controller => 'admin/affiliates', :action => 'analytics'
   map.admin_home_page '/admin', :controller => "admin/home"
@@ -79,6 +83,6 @@ ActionController::Routing::Routes.draw do |map|
   map.api_docs '/api', :controller => "pages", :action => "show", :id => "api"
   map.recalls_api_docs '/api/recalls', :controller => "pages", :action => "show", :id => "recalls"
   map.recalls_tos_docs '/api/tos', :controller => "pages", :action => "show", :id => "tos"
-   
+
   map.login '/login', :controller => "user_sessions", :action => "new"
 end

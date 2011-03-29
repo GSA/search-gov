@@ -69,6 +69,3 @@ BOT_USER_AGENTS = ["Googlebot", "Baiduspider", "DotBot", "crawler@evreka.com", "
                    "Sosospider", "Speedy Spider", "Tasapspider", "the.cyrus.hellborg.sharecrawler",
                    "TurnitinBot", "yacybot", "YaDirectBot", "Yeti", "compatible; ICS", "TVersity Media Robot",
                    "Java/1.6.0_16", "Pingdom.com_bot", "YandexBot", "SiteScope", "Jakarta Commons-HttpClient"]
-
-DEFAULT_EXCLUDED_QUERIES = ['enter keywords', 'cheesewiz' , 'cheeseman', 'clusty' ,' ', '1', 'test', 'search']
-DEFAULT_EXCLUDED_IPADDRESSES = ['192.107.175.226', '74.52.58.146' , '208.110.142.80' , '66.231.180.169', '66.231.180.174', '173.203.40.164', '95.168.191.93', '95.168.178.36', '95.168.191.81', '95.168.177.86', '95.168.191.33', '95.168.177.87', '95.168.178.37', '95.168.191.94', '95.168.178.35', '95.168.191.32']

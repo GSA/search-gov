@@ -312,10 +312,53 @@ EOF
       end
     end
 
-    context "when the query starts with an invalid sequence of characters, like a XSS injection" do
+    context "when the query comes from a blocked Class C network" do
       before do
+        LogfileBlockedClassC.create!(:classc => "1.2.248")
         @log_entry = <<'EOF'
-143.81.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?query=%22><a%20href&affiliate=noaa.gov&x=44&y=18&linked=2 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+1.2.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+      end
+
+      it "should ignore the record" do
+        LogFile.should_not_receive(:puts)
+        LogFile.parse_and_emit_line(@log_entry)
+      end
+    end
+
+    context "when the query comes from a blocked IP address" do
+      before do
+        LogfileBlockedIp.create!(:ip => "99.98.97.1")
+        @log_entry = <<'EOF'
+99.98.97.1 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery%20plus%26more&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+      end
+
+      it "should ignore the record" do
+        LogFile.should_not_receive(:puts)
+        LogFile.parse_and_emit_line(@log_entry)
+      end
+    end
+
+    context "when the query term is on the block list" do
+      before do
+        LogfileBlockedQuery.create!(:query => "verboten term")
+        @log_entry = <<'EOF'
+199.98.97.1 - - [08/Oct/2009:02:02:28 -0500] "GET /search?input-form=simple-firstgov&v%3Aproject=firstgov&query=verboten+term&affiliate=noaa.gov&x=44&y=18 HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
+EOF
+      end
+
+      it "should ignore the record" do
+        LogFile.should_not_receive(:puts)
+        LogFile.parse_and_emit_line(@log_entry)
+      end
+    end
+
+    context "when the entire query string matches some regular expression" do
+      before do
+        LogfileBlockedRegexp.create!(:regexp => "q(uery)=space&sitelimit=science\.")
+        @log_entry = <<'EOF'
+91.72.248.53 - - [08/Oct/2009:02:02:28 -0500] "GET /search?v%253aproject=firstgov&query=space&sitelimit=science.networkingsocial.info/&input-form=advanced-firstgov& HTTP/1.1" 200 165 36 "http://usasearch.gov/search?input-form=simple-firstgov&v%3Aproject=firstgov&query=delinquent+delivery&affiliate=noaa.gov&x=44&y=18" "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; InfoPath.2; .NET CLR 2.0.50727; .NET CLR 3.0.4506.2152; .NET CLR 3.5.30729)" cf28.clusty.com usasearch.gov
 EOF
       end
 

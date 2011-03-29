@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110318115823) do
+ActiveRecord::Schema.define(:version => 20110329050302) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -226,6 +226,38 @@ ActiveRecord::Schema.define(:version => 20110318115823) do
   end
 
   add_index "grouped_queries_query_groups", ["query_group_id", "grouped_query_id"], :name => "joinindex", :unique => true
+
+  create_table "logfile_blocked_class_cs", :force => true do |t|
+    t.string   "classc",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "logfile_blocked_class_cs", ["classc"], :name => "index_logfile_blocked_class_cs_on_classc", :unique => true
+
+  create_table "logfile_blocked_ips", :force => true do |t|
+    t.string   "ip",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "logfile_blocked_ips", ["ip"], :name => "index_logfile_blocked_ips_on_ip", :unique => true
+
+  create_table "logfile_blocked_queries", :force => true do |t|
+    t.string   "query",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "logfile_blocked_queries", ["query"], :name => "index_logfile_blocked_queries_on_query", :unique => true
+
+  create_table "logfile_blocked_regexps", :force => true do |t|
+    t.string   "regexp",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "logfile_blocked_regexps", ["regexp"], :name => "index_logfile_blocked_regexps_on_regexp", :unique => true
 
   create_table "misspellings", :force => true do |t|
     t.string   "wrong"

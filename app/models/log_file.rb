@@ -22,7 +22,7 @@ class LogFile
       query = params_hash["query"][0].gsub("\t", ' ')
       normalized_query = normalize(query)
       ipaddr = log.remote_ip
-      return if skippable_query(query) or skippable_query(normalized_query) or params_hash["noquery"][0] or skippable_ip(ipaddr)
+      return if skippable_query(query) or skippable_query(normalized_query) or params_hash["noquery"][0] or skippable_ip(ipaddr) or skippable_request_string(query_string)
       time_of_day = log.time.strftime("%H:%M:%S")
       referrer = log.referer rescue ''
       agent = log.agent rescue ''
@@ -43,12 +43,17 @@ class LogFile
       BOT_USER_AGENTS.detect { |bot| agent.downcase.include?(bot.downcase) }.present?
     end
 
+    def skippable_request_string(query_string)
+      LogfileBlockedRegexp.all.detect { |filter| query_string =~ /#{filter.regexp}/ }
+    end
+
     def skippable_query(query)
-      query.nil? || query.empty? || query[0..3] == '"><a' || DEFAULT_EXCLUDED_QUERIES.include?(query)
+      query.nil? || query.empty? || LogfileBlockedQuery.find_by_query(query)
     end
 
     def skippable_ip(ip)
-      DEFAULT_EXCLUDED_IPADDRESSES.include?(ip)
+      classc = ip.split('.')[0,3].join('.')
+      LogfileBlockedIp.find_by_ip(ip) or LogfileBlockedClassC.find_by_classc(classc)
     end
 
     def normalize(query)
