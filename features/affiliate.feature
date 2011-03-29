@@ -104,7 +104,7 @@ Feature: Affiliate clients
     Then I should see "Add a New Site" within "title"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Add New Site
     And I should see "Add a New Site" within ".main"
-    And I should see "Step 1. Enter contact information" within ".current_step"
+    And I should see "Step 1. Enter contact information" in the site wizards header
     And I should see "Contact information"
     And the "Name*" field should contain "A New Affiliate"
     And the "Email*" field should contain "affiliate_with_no_contact_info@fixtures.org"
@@ -118,7 +118,7 @@ Feature: Affiliate clients
     And I select "Virginia" from "State"
     And I press "Next"
     Then I should see "Add a New Site" within "title"
-    And I should see "Step 2. Set up site" within ".current_step"
+    And I should see "Step 2. Set up site" in the site wizards header
     And I should see "Site information"
     And I fill in the following:
       | Site name                 | My awesome agency                |
@@ -126,7 +126,7 @@ Feature: Affiliate clients
     And I press "Next"
     Then I should see "Add a New Site" within "title"
     And I should see "Site successfully created"
-    And I should see "Step 3. Get the code" within ".current_step"
+    And I should see "Step 3. Get the code" in the site wizards header
     And I should see "View search results page"
     When I fill in "query" with "White House"
     And I press "Search"
@@ -138,7 +138,7 @@ Feature: Affiliate clients
     And I follow "Add New Site"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Add New Site
     And I should see "Add a New Site"
-    And I should see "Step 1. Enter contact information" within ".current_step"
+    And I should see "Step 1. Enter contact information" in the site wizards header
     And I should see "Contact information"
     And the "Name*" field should contain "A New Manager"
     And the "Email*" field should contain "affiliate_manager_with_no_affiliates@fixtures.org"
@@ -150,7 +150,7 @@ Feature: Affiliate clients
     And the "State*" field should contain "VA"
     And the "Zip*" field should contain "20022"
     And I press "Next"
-    Then I should see "Step 2. Set up site" within ".current_step"
+    Then I should see "Step 2. Set up site" in the site wizards header
     
   Scenario: Affiliates receive confirmation email when creating a new affiliate
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
@@ -396,7 +396,7 @@ Feature: Affiliate clients
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page
     And I should see "Look and Feel of the Search Results Page" within ".main"
     And the "Search Results Page Title" field should contain "\{Query\} - \{SiteName\} Search Results"
-    And the affiliate "Template" field should be set to use "Default" template
+    And the "Default" template should be selected
     And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
     And I should see "Cancel"
@@ -415,7 +415,7 @@ Feature: Affiliate clients
       | Search results page title                                         | {SiteName} : {Query} |
       | Enter HTML to customize the top of your search results page.      | New header           |
       | Enter HTML to customize the bottom of your search results page.   | New footer           |
-    And I select "Basic Gray (A simple, clean gray page)" from "Template"
+    And I choose "Basic Gray"
     And I press "Save for Preview"
     Then I should be on the "aff site" affiliate page
     And I should see "Staged changes to your site successfully"
@@ -470,7 +470,7 @@ Feature: Affiliate clients
       | Search results page title                                         | {SiteName} : {Query} |
       | Enter HTML to customize the top of your search results page.      | New header           |
       | Enter HTML to customize the bottom of your search results page.   | New footer           |
-    And I select "Basic Gray (A simple, clean gray page)" from "Template"
+    And I choose "Basic Gray"
     And I press "Make Live"
     Then I should be on the "aff site" affiliate page
     And I should see "Updated changes to your live site successfully"
@@ -504,7 +504,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Search Results Page Title" field should contain "Live Search Results"
-    And the affiliate "Template" field should be set to use "Default" template
+    And the "Default" template should be selected
     And the "Enter HTML to customize the top of your search results page." field should contain "Live header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Live footer"
     When I press "Save for Preview"
@@ -526,7 +526,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Search Results Page Title" field should contain "Staged Search Results"
-    And the affiliate "Template" field should be set to use "Basic Gray" template
+    And the "Basic Gray" template should be selected
     And the "Enter HTML to customize the top of your search results page." field should contain "Staged header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Staged footer"
     When I press "Save for Preview"
@@ -571,7 +571,7 @@ Feature: Affiliate clients
       | Search results page title                                         | updated SERP title  |
       | Enter HTML to customize the top of your search results page.      | New header          |
       | Enter HTML to customize the bottom of your search results page.   | New footer          |
-    And I select "Basic Gray (A simple, clean gray page)" from "Template"
+    And I choose "Basic Gray"
     And I press "Save for Preview"
     And I should see "Staged changes to your site successfully"
     Then I should see "Cancel Changes" button

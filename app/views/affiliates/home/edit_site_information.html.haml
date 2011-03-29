@@ -1,10 +1,12 @@
-= affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Site Information'] )
-%h1 Site Information
-.span-20
-  - form_for @affiliate, :url => {:action => :update_site_information}, :html => {:class=>"bordered"} do |f|
-    = f.error_messages(:header_message => nil, :class => "error")
-    = render :partial => "site_information_form", :object => f
-    = f.submit "Save for Preview", :id => "save_for_preview"
-    = f.submit "Make Live", :id => "make_live"
-    = link_to "Cancel", affiliate_path(@affiliate)
+.site-specific
+  = affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Site Information'] )
+  %h1 Site Information
+  .site-info
+    - form_for @affiliate, :url => {:action => :update_site_information}, :html => {:class=>"generic-form"} do |f|
+      = f.error_messages(:header_message => nil, :class => "error")
+      = render :partial => "site_information_form", :object => f
+      .button-wrapper
+        = f.submit "Save for Preview", :id => "save_for_preview", :class => 'form-submit-button save-for-preview-button'
+        = f.submit "Make Live", :id => "make_live", :class => 'form-submit-button make-live-button'
+        = link_to "Cancel", affiliate_path(@affiliate), :class => 'cancel'
 

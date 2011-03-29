@@ -135,8 +135,8 @@ Then /^the affiliate "([^\"]*)" related topics should be disabled$/ do |affiliat
   affiliate.related_topics_setting.should == 'disabled'
 end
 
-Then /^the affiliate "([^\"]*)" field should be set to use "([^\"]*)" template$/ do |template_field, template_name|
-  actual_template_id =  field_labeled(template_field).value
+Then /^the "([^\"]*)" template should be selected$/ do |template_name|
+  actual_template_id =  field_labeled(template_name).value
   affiliate_template = AffiliateTemplate.find(actual_template_id)
   affiliate_template.name.should == template_name
 end
@@ -158,4 +158,8 @@ Then /^I should see sorted sites in the site list$/ do
   sites.each_with_index do |site, index|
     response.body.should have_tag(".generic-table tbody tr:nth-child(#{index + 1}) td.site-name a", :text =>site.display_name)
   end
+end
+
+Then /^I should see "([^"]*)" in the site wizards header$/ do |step|
+  response.body.should have_tag(".steps_header img[alt=#{step}]")
 end

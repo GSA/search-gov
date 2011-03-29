@@ -1,29 +1,28 @@
-%dl
-  %dt= site_information_form.label :display_name, "Site name"
-  %dd= site_information_form.text_field :display_name, :class => "text"
+%ul
+  %li
+    = site_information_form.label :display_name, "Site name"
+    = site_information_form.text_field :display_name, :class => 'txt'
   - unless @affiliate.new_record?
-    %dt= site_information_form.label :name, "HTTP parameter site name"
-    %dd= site_information_form.text_field :name, :class => "text", :disabled => true
-    %dt= site_information_form.label :website, "Site URL"
-    %dd
-      = site_information_form.text_field :website, :class => "text"
-      %br
-      = link_to "+ How Is This Site Information Used", "#how_site_information_used", :id => "how_site_information_used", :class => "sliding_trigger"
-      %div#how_site_information_used_content.sliding_content
-        %p
-          Site name: Used for display to end users, such as in the title of the search results page (for example, the page title Test - National Park Service Search Results).
-        %p
-          HTTP parameter site name: Used in the HTTP request to specify displaying your customized search results page and settings (for example, the affiliate parameter in the URL http://search.usa.gov/search?query=test&amp;affiliate=nps).
-        %p
-          Site URL: Used by the USASearch team to better manage your account (for example, it is useful for us to know that your site URL is www.nps.gov).
-      %br
-  %dt
+    %li
+      = site_information_form.label :name, "HTTP parameter site name"
+      = site_information_form.text_field :name, :class => 'txt', :disabled => true
+  %li
+    = site_information_form.label :website, "Site URL"
+    = site_information_form.text_field :website, :class => 'txt'
+  %li
+    = link_to "+ How Is This Site Information Used", "#how_site_information_used", :id => "how_site_information_used", :class => "sliding_trigger"
+    %div#how_site_information_used_content.sliding_content
+      %p
+        Site name: Used for display to end users, such as in the title of the search results page (for example, the page title Test - National Park Service Search Results).
+      %p
+        HTTP parameter site name: Used in the HTTP request to specify displaying your customized search results page and settings (for example, the affiliate parameter in the URL http://search.usa.gov/search?query=test&amp;affiliate=nps).
+      %p
+        Site URL: Used by the USASearch team to better manage your account (for example, it is useful for us to know that your site URL is www.nps.gov).
+  %li
     = site_information_form.label :staged_domains, "Domains to search"
-    %br
     %span.sublabel
       List one domain per line.
-  %dd
-    = site_information_form.text_area :staged_domains, :class => "text"
+    = site_information_form.text_area :staged_domains, :class => 'txt'
     %br
     %span.sublabel
       for example, yoursite.gov
@@ -41,5 +40,7 @@
         Invididual pages: List www.yoursite.gov/yourpage.html include only specific pages.
     %br
   - if @affiliate.new_record?
-    %dt= site_information_form.label :staged_affiliate_template_id, "Choose template"
-    %dd= site_information_form.select :staged_affiliate_template_id, affiliate_template_options(@affiliate)
+    %li
+      %h2.sub-title Choose template
+      .affiliate-template-wrapper
+        = render_choose_site_templates @affiliate

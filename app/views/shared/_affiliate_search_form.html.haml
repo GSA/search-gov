@@ -3,4 +3,4 @@
   = hidden_field_tag :m, params[:m]
   = hidden_field_tag :affiliate, @affiliate.name
   = text_field :search, :query, { :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete" }
-  = submit_tag("Search", :id => "search_button")
+  = submit_tag("Search", :id => "search_button", :class => 'generic-button search-button')
