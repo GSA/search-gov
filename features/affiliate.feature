@@ -155,7 +155,7 @@ Feature: Affiliate clients
   Scenario: Affiliates receive confirmation email when creating a new affiliate
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "new"
+    And I follow "Add New Site"
     And I press "Next"
     And I fill in the following:
       | Site name                 | My awesome agency                |
@@ -170,7 +170,7 @@ Feature: Affiliate clients
   Scenario: Clicking on Adding additional sites in Step 3. Get the code
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "new"
+    And I follow "Add New Site"
     And I press "Next"
     And I fill in the following:
       | Site name                 | My awesome agency                |
@@ -181,7 +181,7 @@ Feature: Affiliate clients
   Scenario: Clicking on Customizing the look and feel in Step 3. Get the code
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "new"
+    And I follow "Add New Site"
     And I press "Next"
     And I fill in the following:
       | Site name                 | My awesome agency                |
@@ -192,7 +192,7 @@ Feature: Affiliate clients
   Scenario: Clicking on Setting up the type-ahead search in Step 3. Get the code
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "new"
+    And I follow "Add New Site"
     And I press "Next"
     And I fill in the following:
       | Site name                 | My awesome agency                |
@@ -203,7 +203,7 @@ Feature: Affiliate clients
   Scenario: Clicking on Go to Affiliate Center in Step 3. Get the code
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "new"
+    And I follow "Add New Site"
     And I press "Next"
     And I fill in the following:
       | Site name                 | My awesome agency                |
@@ -214,7 +214,7 @@ Feature: Affiliate clients
    Scenario: Adding an affiliate without filling out contact information should fail
     Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "new"
+    And I follow "Add New Site"
     And I press "Next"
     Then I should see "Organization name can't be blank"
     Then I should see "Phone can't be blank"
@@ -225,7 +225,7 @@ Feature: Affiliate clients
   Scenario: Adding an affiliate without site display name should fail
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
-    And I follow "new"
+    And I follow "Add New Site"
     And I press "Next"
     And I press "Next"
     Then I should see "Site name can't be blank"
@@ -317,7 +317,7 @@ Feature: Affiliate clients
     Then I should see "Sorry, no results found"
 
     When I go to the "new aff site" affiliate page
-    And I follow "Site Information"
+    And I follow "Site information"
     Then the "HTTP parameter site name" field should contain "aff.gov"
 
     When I go to the "new aff site" affiliate page
@@ -387,7 +387,7 @@ Feature: Affiliate clients
     And I follow "Site information"
     Then the "Domains to search" field should contain "data.gov"
     When I press "Save for Preview"
-    Then I should be on the "new aff site" affiliate page
+    Then I should be on the "aff site" affiliate page
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "default"
@@ -406,7 +406,7 @@ Feature: Affiliate clients
     And I follow "Site information"
     Then the "Domains to search" field should contain "stagedagency.gov"
     When I press "Save for Preview"
-    Then I should be on the "new aff site" affiliate page
+    Then I should be on the "aff site" affiliate page
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "basic_gray"
@@ -426,7 +426,7 @@ Feature: Affiliate clients
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page
     And I should see "Look and Feel of the Search Results Page" within ".main"
-    And the "Search Results Page Title" field should contain "\{Query\} - \{SiteName\} Search Results"
+    And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the "Default" template should be selected
     And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
@@ -534,12 +534,12 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
-    Then the "Search Results Page Title" field should contain "Live Search Results"
+    Then the "Search results page title" field should contain "Live Search Results"
     And the "Default" template should be selected
     And the "Enter HTML to customize the top of your search results page." field should contain "Live header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Live footer"
     When I press "Save for Preview"
-    Then I should be on the "new aff site" affiliate page
+    Then I should be on the "aff site" affiliate page
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "default"
@@ -556,12 +556,12 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
-    Then the "Search Results Page Title" field should contain "Staged Search Results"
+    Then the "Search results page title" field should contain "Staged Search Results"
     And the "Basic Gray" template should be selected
     And the "Enter HTML to customize the top of your search results page." field should contain "Staged header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Staged footer"
     When I press "Save for Preview"
-    Then I should be on the "new aff site" affiliate page
+    Then I should be on the "aff site" affiliate page
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "basic_gray"
@@ -578,7 +578,7 @@ Feature: Affiliate clients
     And I am logged in with email "two@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I press "Cancel Changes"
-    Then I should be on the affiliate page
+    Then I should be on the "foo site" affiliate page
     And I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
@@ -592,7 +592,7 @@ Feature: Affiliate clients
       | foo site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | data.gov       | Old header  | Old footer  | data.gov        | Old header       | Old footer     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "foo site" affiliate page
-    And I follow "Site Information"
+    And I follow "Site information"
     And I fill in "Domains to search" with "invalid.org"
     And I press "Save for Preview"
     Then I should see "Staged changes to your site successfully"
@@ -615,7 +615,7 @@ Feature: Affiliate clients
 
     When I go to the "foo site" affiliate page
     And I press "Cancel Changes"
-    Then I should be on the affiliate page
+    Then I should be on the "foo site" affiliate page
     And I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
@@ -635,7 +635,7 @@ Feature: Affiliate clients
     When I go to the "foo site" affiliate page
     And I follow "Preview"
     And I press "Cancel Staged Changes"
-    Then I should be on the affiliate page
+    Then I should be on the "foo site" affiliate page
     And I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
@@ -809,7 +809,7 @@ Feature: Affiliate clients
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Get Code"
+    And I follow "Get code"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Get Code
     And I should see "The following is the HTML code for your search box form. Copy and paste this code into your page(s) where the search box should appear."
     And I should see "Code for English-language sites"
@@ -856,15 +856,13 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there is analytics data for affiliate "aff.gov" from "20100401" thru "20100415"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Query Logs"
+    And I follow "Query logs"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Query Analytics
     And I should see "Query Logs for aff site"
     And I should not see "aff.gov"
     And I should see "Most Frequent Queries"
     And I should see "Data for April 15, 2010"
-    And in "dqs1" I should not see "No queries matched"
-    And in "dqs7" I should not see "No queries matched"
-    And in "dqs30" I should not see "No queries matched"
+    And I should not see "No queries matched"
 
   Scenario: No daily query stats available for any time period
     Given the following Affiliates exist:
@@ -873,7 +871,7 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And there are no daily query stats
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Query Logs"
+    And I follow "Query logs"
     Then in "dqs1" I should see "Not enough historic data"
     And in "dqs7" I should see "Not enough historic data"
     And in "dqs30" I should see "Not enough historic data"
@@ -889,7 +887,7 @@ Feature: Affiliate clients
       | pollutant                   | 90    | usasearch.gov | en     |      1        |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Query Logs"
+    And I follow "Query logs"
     And I fill in "query" with "pollution"
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago
@@ -914,7 +912,7 @@ Feature: Affiliate clients
       | aff2.gov          | 5            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Monthly Reports"
+    And I follow "Monthly reports"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Monthly Reports
     And I should see "Monthly Reports for aff site"
     And I should see "Monthly Usage Stats"
@@ -937,7 +935,7 @@ Feature: Affiliate clients
       | aff2.gov          | 5            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Monthly Reports"
+    And I follow "Monthly reports"
     And I select "February 2010" as the report date
     And I press "Get Usage Stats"
     Then I should see the report header for "2010-02"
@@ -957,7 +955,7 @@ Feature: Affiliate clients
       | aff2.gov          | 5            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Monthly Reports"
+    And I follow "Monthly reports"
     And I select "December 2011" as the report date
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."
@@ -968,8 +966,8 @@ Feature: Affiliate clients
      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Type-ahead Search"
-    Then I should be on the affiliate sayt page
+    And I follow "Type-ahead search"
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Type-ahead Search
     And I should not see "aff.gov"
 
@@ -979,27 +977,27 @@ Feature: Affiliate clients
      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Type-ahead Search"
-    Then I should be on the affiliate sayt page
+    And I follow "Type-ahead search"
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Preferences"
     And the "sayt_preferences_disable" button should be checked
 
     When I choose "sayt_preferences_enable_affiliate"
     And I press "Set Preferences"
-    Then I should be on the affiliate sayt page
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Preferences updated"
     And the "sayt_preferences_enable_affiliate" button should be checked
     And the affiliate "aff.gov" should be set to use affiliate SAYT
 
     When I choose "sayt_preferences_enable_global"
     And I press "Set Preferences"
-    Then I should be on the affiliate sayt page
+    Then I should be on the affiliate sayt page for "aff.gov"
     And the "sayt_preferences_enable_global" button should be checked
     And the affiliate "aff.gov" should be set to use global SAYT
 
     When I choose "sayt_preferences_disable"
     And I press "Set Preferences"
-    Then I should be on the affiliate sayt page
+    Then I should be on the affiliate sayt page for "aff.gov"
     And the "sayt_preferences_disable" button should be checked
     And the affiliate "aff.gov" should be disabled
 
@@ -1009,22 +1007,22 @@ Feature: Affiliate clients
      | aff site         | aff.gov          | aff@bar.gov             | John Bar            | true            | true                             |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Type-ahead Search"
-    Then I should be on the affiliate sayt page
+    And I follow "Type-ahead search"
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Add a New Entry"
     When I fill in "Phrase" with "banana"
     And I press "Add"
-    Then I should be on the affiliate sayt page
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Successfully added: banana"
     And I should see "banana" within "#sayt-suggestions"
 
     When I fill in "Phrase" with "banana"
     And I press "Add"
-    Then I should be on the affiliate sayt page
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Unable to add: banana"
 
     When I press "Delete"
-    Then I should be on the affiliate sayt page
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Deleted phrase: banana"
     And I should not see "banana" within "#sayt-suggestions"
 
@@ -1037,12 +1035,12 @@ Feature: Affiliate clients
       | haus     | house   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Type-ahead Search"
-    Then I should be on the affiliate sayt page
+    And I follow "Type-ahead search"
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Add a New Entry"
     When I fill in "Phrase" with "haus"
     And I press "Add"
-    Then I should be on the affiliate sayt page
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Successfully added: haus"
     And I should see "haus" within "#sayt-suggestions"
 
@@ -1052,23 +1050,23 @@ Feature: Affiliate clients
      | aff site         | aff.gov          | aff@bar.gov             | John Bar            | true            | true                             |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Type-ahead Search"
-    Then I should be on the affiliate sayt page
+    And I follow "Type-ahead search"
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Bulk Upload"
 
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
     And I press "Upload"
-    Then I should be on the affiliate sayt page
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "5 Type-ahead Search suggestions uploaded successfully"
 
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
     And I press "Upload"
-    Then I should be on the affiliate sayt page
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "5 Type-ahead Search suggestions ignored"
 
     When I attach the file "features/support/cant_read_this.doc" to "txtfile"
     And I press "Upload"
-    Then I should be on the affiliate sayt page
+    Then I should be on the affiliate sayt page for "aff.gov"
     And I should see "Your file could not be processed."
 
   Scenario: Viewing Related Topics for an affiliate
@@ -1077,40 +1075,40 @@ Feature: Affiliate clients
      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Related Topics"
-    Then I should be on the affiliate related topics page
+    And I follow "Related topics"
+    Then I should be on the affiliate related topics page for "aff.gov"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Related Topics
     And I should not see "aff.gov"
     When I follow "Preview Button"
-    Then I should be on the preview affiliate page
-
+    Then I should be on the preview affiliate page for "aff.gov"
+    
   Scenario: Setting Related Topics Preferences for an affiliate
     Given the following Affiliates exist:
      | display_name     | name             | contact_email           | contact_name        |
      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Related Topics"
-    Then I should be on the affiliate related topics page
+    And I follow "Related topics"
+    Then I should be on the affiliate related topics page for "aff.gov"
     And I should see "Preferences"
     And the "related_topics_setting_affiliate_enabled" button should be checked
 
     When I choose "related_topics_setting_global_enabled"
     And I press "Set Preferences"
-    Then I should be on the affiliate related topics page
+    Then I should be on the affiliate related topics page for "aff.gov"
     And the "related_topics_setting_global_enabled" button should be checked
     And the affiliate "aff.gov" should be set to use global related topics
 
     When I choose "related_topics_setting_affiliate_enabled"
     And I press "Set Preferences"
-    Then I should be on the affiliate related topics page
+    Then I should be on the affiliate related topics page for "aff.gov"
     And I should see "Preferences updated"
     And the "related_topics_setting_affiliate_enabled" button should be checked
     And the affiliate "aff.gov" should be set to use affiliate related topics
 
     When I choose "related_topics_setting_disabled"
     And I press "Set Preferences"
-    Then I should be on the affiliate related topics page
+    Then I should be on the affiliate related topics page for "aff.gov"
     And the "related_topics_setting_disabled" button should be checked
     And the affiliate "aff.gov" related topics should be disabled
 
@@ -1120,7 +1118,7 @@ Feature: Affiliate clients
       | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Manage Users"
+    And I follow "Manage users"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Manage Users
     And I should see "Manage Users"
     And I should see "John Bar (aff@bar.gov)"
@@ -1137,7 +1135,7 @@ Feature: Affiliate clients
     And no emails have been sent
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Manage Users"
+    And I follow "Manage users"
     And I fill in "Email" with "existing@usa.gov"
     And I fill in "Name" with "Existing User"
     And I press "Add User"
@@ -1152,7 +1150,7 @@ Feature: Affiliate clients
     And no emails have been sent
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Manage Users"
+    And I follow "Manage users"
     And I fill in "Email" with "newuser@usa.gov"
     And I fill in "Name" with "New User"
     And I press "Add User"
@@ -1182,7 +1180,7 @@ Feature: Affiliate clients
       | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Manage Users"
+    And I follow "Manage users"
     And I fill in "Email" with "newuser@usa.gov"
     And I fill in "Name" with "New User"
     And I press "Add User"
@@ -1200,7 +1198,6 @@ Feature: Affiliate clients
     And I press "Complete registration for a new account"
     Then I should see "Contact name can't be blank"
     And I should see "Email can't be blank"
-    And I should see "Email is too short"
     And I should see "Email should look like an email address"
     And I should see "Password is too short"
     And I should see "Password confirmation is too short"
@@ -1213,8 +1210,7 @@ Feature: Affiliate clients
       | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Manage Users"
+    And I follow "Manage users"
     And I press "Add User"
     Then I should see "Email can't be blank"
     And I should see "Contact name can't be blank"
-

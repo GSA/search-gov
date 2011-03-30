@@ -1,6 +1,5 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-
 describe WidgetsController do
   before do
     @active_top_searches = []
@@ -22,7 +21,7 @@ describe WidgetsController do
 
     it "should render trending_searches partial" do
       get :trending_searches
-      response.should render_template('shared/_trending_searches')
+      response.should render_template('widgets/trending_searches')
     end
   end
 end

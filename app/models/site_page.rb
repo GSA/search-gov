@@ -19,7 +19,7 @@ class SitePage < ActiveRecord::Base
       while (queue.any?)
         page = queue.pop
         url = base_url + page
-        RAILS_DEFAULT_LOGGER.debug "Working on #{url}"
+        Rails.logger.debug "Working on #{url}"
         begin
           doc = open(url) { |f| Hpricot(f) }
           main_content = searchify_usagov_urls((doc/"#main_content").inner_html.squish.gsub(/<!--(.*?)-->/, ""))
@@ -38,7 +38,7 @@ class SitePage < ActiveRecord::Base
           end
           total += 1
         rescue Exception => e
-          RAILS_DEFAULT_LOGGER.error "Trouble fetching #{url}: #{e}"
+          Rails.logger.error "Trouble fetching #{url}: #{e}"
         end
       end
     end

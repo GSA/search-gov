@@ -1,8 +1,7 @@
 require 'rubygems'
-require 'test/unit'
-require 'action_controller'
-require 'action_controller/test_process'
-ActionController::Routing::Routes.reload rescue nil
+ENV["RAILS_ENV"] = "test"
+require File.expand_path('../../../../../config/environment', __FILE__)
+require 'rails/test_help'
 
 $: << File.dirname(__FILE__) + "/../lib"
 require File.dirname(__FILE__) + "/../init"

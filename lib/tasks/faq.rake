@@ -6,7 +6,7 @@ namespace :usasearch do
     desc "Load an XML file of FAQs into the database"
     task :load, :faq_file_name, :locale, :needs => :environment do |t, args|
       if !args.faq_file_name
-        RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:faq:load[ faq_file_name ]")
+        Rails.logger.error("usage: rake usasearch:faq:load[ faq_file_name ]")
       else
         locale = args.locale.present? ? args.locale : I18n.default_locale.to_s
         doc = REXML::Document.new(File.new(args.faq_file_name))

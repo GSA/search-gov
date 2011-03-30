@@ -12,21 +12,22 @@ describe Analytics::TimelineController do
     describe "#show" do
       describe "- route generation" do
         it "should map { :controller => 'analytics/timeline', :action => 'show', :query=>'foo.com 9/11' } to /analytics/timeline/foo.com%209%2F11" do
-          route_for(:controller => "analytics/timeline", :action => "show", :query=>"foo.com 9/11").should == "/analytics/timeline/foo.com%209%2F11"
+          {:get, "/analytics/timeline/foo.com%209%2F11"}.should route_to(:controller => "analytics/timeline", :action => "show", :query=>"foo.com 9/11")
+          {}
         end
 
         it "should map { :controller => 'analytics/timeline', :action => 'show', :query=>'9/11' } to /analytics/timeline/9%2F11" do
-          route_for(:controller => "analytics/timeline", :action => "show", :query=>"9/11").should == "/analytics/timeline/9%2F11"
+          { :get, "/analytics/timeline/9%2F11" }.should route_to(:controller => "analytics/timeline", :action => "show", :query=>"9/11")
         end
       end
 
       describe "- route recognition" do
         it "should generate params { :controller => 'analytics/timeline', :action => 'show', :query=>'foo.com 9/11'  } from GET /analytics/timeline/foo.com%209%2F11" do
-          params_from(:get, "/analytics/timeline/foo.com%209%2F11").should == { :controller => 'analytics/timeline', :action => 'show', :query=>'foo.com 9/11' }
+          { :get, "/analytics/timeline/foo.com%209%2F11"}.should route_to(:controller => 'analytics/timeline', :action => 'show', :query=>'foo.com 9/11')
         end
 
         it "should generate params { :controller => 'analytics/timeline', :action => 'show', :query=>'9/11', :grouped=>'1'  } from GET /analytics/timeline/9%2F11?grouped=1" do
-          params_from(:get, "/analytics/timeline/9%2F11?grouped=1").should == { :controller => 'analytics/timeline', :action => 'show', :query=>'9/11', :grouped=>'1' }
+          {:get, "/analytics/timeline/9%2F11?grouped=1"}.should route_to(:controller => 'analytics/timeline', :action => 'show', :query=>'9/11')
         end
       end
 
@@ -130,11 +131,11 @@ describe Analytics::TimelineController do
 
           it "should use the query group to create the timeline" do
             Timeline.should_receive(:new).with("foo", "1").and_return @timeline
-            get :show, :query => "foo", :grouped => 1
+            get :show, :query => "foo", :grouped => "1"
           end
 
           it "should assign the query group" do
-            get :show, :query=>"foo", :grouped=>1
+            get :show, :query=>"foo", :grouped => "1"
             assigns[:query_group].name.should == "foo"
           end
 

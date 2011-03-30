@@ -99,14 +99,14 @@ describe Affiliates::AnalyticsController do
         end
 
         it "should show most recent populated data if params[:day] is blank" do
-          day_being_shown = Date.today
+          day_being_shown = Date.current
           DailyQueryStat.should_receive(:most_recent_populated_date).and_return(day_being_shown)
           get :index, :affiliate_id => @user.affiliates.first.id, :day => ''
           assigns[:day_being_shown].should == day_being_shown
         end
 
         context "when rendering the page" do
-          integrate_views
+          render_views
           before do
             AWS::S3::Base.stub!(:establish_connection!).and_return true
           end
@@ -214,7 +214,7 @@ describe Affiliates::AnalyticsController do
         end
 
         context "when rendering the page" do
-          integrate_views
+          render_views
           before do
             AWS::S3::Base.stub!(:establish_connection!).and_return true
             @report_date = Date.yesterday

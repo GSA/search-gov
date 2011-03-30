@@ -37,14 +37,14 @@ describe Timeline do
     context "when there are no searches for a term on a given day" do
       before do
         DailyQueryStat.create!(:day => Date.yesterday, :query => "most recent query", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        [2, 9, 11, 12, 15].each { |x| DailyQueryStat.create!(:day => Date.today.to_date - x.days, :query => "foo", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME) }
+        [2, 9, 11, 12, 15].each { |x| DailyQueryStat.create!(:day => Date.current.to_date - x.days, :query => "foo", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME) }
       end
 
       it "should fill in missing dates from 13 months ago and zero them out" do
         timeline = Timeline.new("foo")
         num_days = 1 + (Date.yesterday - start_date).to_i
         timeline.series.size.should == num_days
-        [1, 3, 10, 13, 14].each { |x| timeline.series[timeline.dates.index(Date.today.to_date - x.days)].y.should == 0 }
+        [1, 3, 10, 13, 14].each { |x| timeline.series[timeline.dates.index(Date.current.to_date - x.days)].y.should == 0 }
       end
     end
 
@@ -101,7 +101,7 @@ describe Timeline do
     context "when data does extend forward to the most recently populated date" do
       before do
         DailyQueryStat.delete_all
-        DailyQueryStat.create!(:day => Time.now.yesterday.to_date, :query => "foo", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "foo", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       end
 
       it "should not append the data with zeros" do

@@ -18,9 +18,12 @@ describe DailyPopularQuery do
       @daily_popular_query = DailyPopularQuery.create!(@valid_attributes)
     end
       
-    should_belong_to :affiliate
-    should_validate_presence_of :day, :query, :times, :time_frame
-    should_validate_uniqueness_of :query, :scope => [:day, :affiliate_id, :is_grouped, :time_frame]  
+    it { should belong_to :affiliate }
+    it { should validate_presence_of :day }
+    it { should validate_presence_of :query }
+    it { should validate_presence_of :times }
+    it { should validate_presence_of :time_frame }
+    it { should validate_uniqueness_of(:query).scoped_to([:day, :affiliate_id, :is_grouped, :time_frame]) }
   end
   
   describe "#most_recent_populated_date" do

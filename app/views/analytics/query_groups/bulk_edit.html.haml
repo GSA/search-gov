@@ -19,7 +19,7 @@
       After update, queries will be resorted in alphabetical order.  
 %p{:style => "color: green;"}
   = flash[:notice]
-- form_tag bulk_edit_analytics_query_group_path do
+= form_tag bulk_edit_analytics_query_group_path do
   = label_tag 'grouped_queries_text', 'Queries'
   %br/
   = text_area_tag 'grouped_queries_text', @grouped_queries_text

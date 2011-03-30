@@ -25,7 +25,7 @@ Feature: Image search
 
   Scenario: Visiting Spanish image search homepage
     Given I am on the homepage
-    And I follow "Español"
+    And I follow "Busque en español"
     And I follow "Imágenes" in the search navigation
     Then I should be on the images page
     And I should see the browser page titled "el buscador oficial en español del Gobierno de los Estados Unidos"
@@ -106,7 +106,7 @@ Feature: Image search
 
   Scenario: Site visitor see SERP in English
     When I am on the homepage
-    And I follow "Español"
+    And I follow "Busque en español"
     And I follow "Imágenes" in the search navigation
     And I fill in "query" with "president"
     And I press "Buscar"

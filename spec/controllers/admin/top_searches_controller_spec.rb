@@ -2,13 +2,12 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Admin::TopSearchesController do
   fixtures :users
-
   before do
     activate_authlogic
   end
 
   it "should require login" do
-    get :new
+    get :index
     response.should redirect_to(login_path)
   end
 
@@ -21,7 +20,7 @@ describe Admin::TopSearchesController do
     describe "GET index" do
       it "should assign page title" do
         top_searches = [mock_model(TopSearch)]
-        TopSearch.should_receive(:find).and_return(top_searches)
+        TopSearch.should_receive(:order).and_return(top_searches)
         active_top_searches = []
         TopSearch.should_receive(:find_active_entries).and_return(active_top_searches)
         get :index

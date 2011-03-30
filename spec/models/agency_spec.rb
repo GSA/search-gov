@@ -19,15 +19,23 @@ describe Agency do
     }
   end
   
+  context "when creating a new agency" do
+    before do
+      Agency.create!(@valid_attributes)
+    end
+    
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :domain }
+    it { should validate_presence_of :url }
+    it { should validate_uniqueness_of :domain }
+  end
+  
   describe "#save" do
     context "when saving with valid attributes" do
       before do
         @agency = Agency.create!(@valid_attributes)
       end
      
-      should_validate_presence_of :name, :domain, :url
-      should_validate_uniqueness_of :domain
-  
       it "should create a bunch of agency queries on save" do
         @agency.agency_queries.should_not be_empty
         @agency.agency_queries.find_by_phrase("irs").should_not be_nil

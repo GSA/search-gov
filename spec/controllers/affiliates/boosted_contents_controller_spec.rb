@@ -38,9 +38,8 @@ describe Affiliates::BoostedContentsController do
       before do
         UserSession.create(users(:affiliate_manager))
         get :new, :affiliate_id => affiliates(:power_affiliate).id
+        response.should render_template 'affiliates/boosted_contents/new', :layout => 'account'
       end
-
-      should_render_template 'affiliates/boosted_contents/new.html.haml', :layout => 'account'
     end
   end
 
@@ -74,7 +73,7 @@ describe Affiliates::BoostedContentsController do
         @affiliate.reload
         @affiliate.boosted_contents.length.should == 1
 
-        assigns[:boosted_content].errors[:title].should == "can't be blank"
+        assigns[:boosted_content].errors[:title].first.should == "can't be blank"
         assigns[:boosted_contents].should == [existing_boosted_content]
       end
 
@@ -85,7 +84,7 @@ describe Affiliates::BoostedContentsController do
 
         response.should render_template(:new)
 
-        assigns[:boosted_content].errors[:url].should == "has already been boosted"
+        assigns[:boosted_content].errors[:url].first.should == "has already been boosted"
         flash[:error].should =~ /problem/
       end
 
@@ -114,7 +113,7 @@ describe Affiliates::BoostedContentsController do
 
       response.should render_template(:edit)
 
-      assigns[:boosted_content].errors[:description].should == "can't be blank"
+      assigns[:boosted_content].errors[:description].first.should == "can't be blank"
     end
 
 
@@ -125,7 +124,7 @@ describe Affiliates::BoostedContentsController do
 
       response.should render_template(:edit)
 
-      assigns[:boosted_content].errors[:url].should == "has already been boosted"
+      assigns[:boosted_content].errors[:url].first.should == "has already been boosted"
       flash[:error].should =~ /problem/
     end
 

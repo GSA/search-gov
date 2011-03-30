@@ -3,7 +3,7 @@
 %h1
   = "Monthly Reports for #{h(@affiliate.display_name)}"
 .span-20
-  - form_tag(monthly_reports_affiliate_analytics_path(@affiliate), :method => :get) do
+  = form_tag(monthly_reports_affiliate_analytics_path(@affiliate), :method => :get) do
     = select_date @report_date, { :discard_day => true, :start_year => 2010, :end_year => @most_recent_date.year }
     = submit_tag 'Get Usage Stats'
   %br

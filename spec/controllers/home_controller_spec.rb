@@ -64,18 +64,20 @@ describe HomeController do
 
   describe "#contact_form" do
     it "should display a form in mobile mode" do
+      iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
+      request.env["HTTP_USER_AGENT"] = iphone_user_agent
       get :contact_form, :m => "true"
       response.should be_success
     end
 
     it "should return 404 if not in mobile mode" do
       get :contact_form, :m => "false"
-      response.status.should == "404 Not Found"
+      response.status.should == 404
     end
 
     it "should return 404 if no mode is specified" do
       get :contact_form
-      response.status.should == "404 Not Found"
+      response.status.should == 404
     end
   end
 end

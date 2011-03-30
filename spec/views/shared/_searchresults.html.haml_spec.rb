@@ -33,29 +33,33 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:results).and_return @search_results
 
     20.times { @search_results << @search_result }
-    assigns[:search] = @search
+    assign(:search, @search)
   end
 
   context "when page is displayed" do
-
+    before do
+      view.stub!(:search).and_return @search
+    end
+    
     it "should show a results summary" do
-      render :locals => { :search => @search }
-      response.should contain("Results 1-10 of about 20 for 'tax forms'")
+      render
+      rendered.should contain("Results 1-10 of about 20 for 'tax forms'")
     end
 
     it "should show deep links on the first page only" do
-      render :locals => { :search => @search }
-      response.should have_tag('table', :class => 'deep_links', :count => 1 )
+      render
+      rendered.should have_selector('table', :class => 'deep_links', :count => 1)
     end
 
     context "when on anything but the first page" do
       before do
         @search.stub!(:page).and_return 1
+        view.stub!(:search).and_return @search
       end
 
       it "should not show any deep links" do
-        render :locals => { :search => @search }
-        response.should_not have_tag('table', :class => 'deep_links')
+        render
+        rendered.should_not have_selector('table', :class => 'deep_links')
       end
     end
 
@@ -67,12 +71,12 @@ describe "shared/_searchresults.html.haml" do
         boosted_contents_results = BoostedContent.search_for("test")
         boosted_contents_results.hits.first.instance.should be_nil
         @search.stub!(:boosted_contents).and_return boosted_contents_results
+        view.stub!(:search).and_return @search
       end
 
       it "should render the page without an error, and without boosted Contents" do
-        render :locals => { :search => @search }
-        response.should be_success
-        response.body.should have_tag('div#boosted', :text => "")
+        render
+        rendered.should have_selector('div#boosted', :content => "")
       end
     end
 
@@ -83,17 +87,13 @@ describe "shared/_searchresults.html.haml" do
         recall_without_recalled_on = Recall.create!(:recall_number => '23456', :organization => 'CDC')
         recall_without_recalled_on.create_food_recall(:url => "http://www.fda.gov/", :summary => "bad drugs", :description => "bad drugs details", :food_type => "drug")
         Recall.reindex
-
         @search.stub!(:recalls).and_return(Recall.search_for("details"))
+        view.stub!(:search).and_return @search
       end
 
       it "should render a govbox with recall links" do
-
-        render :locals => { :search => @search }
-
-        response.should be_success
-        response.body.should have_tag('.recalls-govbox .details a', /details/)
-
+        render
+        rendered.should have_selector('.recalls-govbox .details a', :content => "details")
       end
     end
   end

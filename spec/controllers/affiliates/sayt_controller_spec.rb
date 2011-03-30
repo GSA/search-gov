@@ -7,7 +7,7 @@ describe Affiliates::SaytController do
   end
 
   describe "#index" do
-    integrate_views
+    render_views
     context "when logged in as an affiliate" do
       before do
         @user = users("affiliate_manager")
@@ -27,13 +27,13 @@ describe Affiliates::SaytController do
         end
         
         it "should show the add, current entries and bulk upload portions of the page" do
-          response.should have_tag("div[id=add_a_new_entry]")
-          response.should have_tag("div[id=current_entries]")
-          response.should have_tag("div[id=bulk_upload]")
+          response.should have_selector("div[id=add_a_new_entry]")
+          response.should have_selector("div[id=current_entries]")
+          response.should have_selector("div[id=bulk_upload]")
         end
         
         it "should have an autocomplete-enabled search box" do
-          response.should have_tag("input[type=text][class=usagov-search-autocomplete]")
+          response.should have_selector("input[type=text][class=usagov-search-autocomplete]")
         end
         
         context "when a filter value is specified" do
@@ -48,13 +48,13 @@ describe Affiliates::SaytController do
           end
         
           it "should show only entries that are prefixed by the filter string" do
-            response.should have_tag("td[class=sayt_suggestion]", :text => "something")
-            response.should_not have_tag("td[class=sayt_suggestion]", :text => "thingsome")
+            response.should have_selector("td[class=sayt_suggestion]", :content => "something")
+            response.should_not have_selector("td[class=sayt_suggestion]", :content => "thingsome")
           end
           
           it "should fill in the filter field with the filter value and add a 'Remove Filter' link" do
-            response.should have_tag("input[name=filter][value=some]")
-            response.should have_tag("a", :text => "Remove Filter")
+            response.should have_selector("input[name=filter][value=some]")
+            response.should have_selector("a", :content => "Remove Filter")
           end
         end
       end
@@ -66,13 +66,13 @@ describe Affiliates::SaytController do
         end
         
         it "should not show the add, current entries and bulk upload portions of the page" do
-          response.should_not have_tag("div[id=add_a_new_entry]")
-          response.should_not have_tag("div[id=current_entries]")
-          response.should_not have_tag("div[id=bulk_upload]")
+          response.should_not have_selector("div[id=add_a_new_entry]")
+          response.should_not have_selector("div[id=current_entries]")
+          response.should_not have_selector("div[id=bulk_upload]")
         end
         
         it "should have an autocomplete-enabled search box" do
-          response.should have_tag("input[type=text][class=usagov-search-autocomplete]")
+          response.should have_selector("input[type=text][class=usagov-search-autocomplete]")
         end
       end
         
@@ -83,13 +83,13 @@ describe Affiliates::SaytController do
         end
         
         it "should not show the add, current entries and bulk upload portions of the page" do
-          response.should_not have_tag("div[id=add_a_new_entry]")
-          response.should_not have_tag("div[id=current_entries]")
-          response.should_not have_tag("div[id=bulk_upload]")
+          response.should_not have_selector("div[id=add_a_new_entry]")
+          response.should_not have_selector("div[id=current_entries]")
+          response.should_not have_selector("div[id=bulk_upload]")
         end
         
         it "should have an autocomplete-enabled search box" do
-          response.should have_tag("input[type=text][class=usagov-search]")
+          response.should have_selector("input[type=text][class=usagov-search]")
         end
       end      
     end

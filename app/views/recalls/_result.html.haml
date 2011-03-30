@@ -1,5 +1,5 @@
 .searchresult.recall[result]
-  = render "recalls/industry_icon", :recall => result
+  = render "industry_icon", :recall => result
   .details
     %h2= link_to highlight_like_solr(truncate_on_words(result.summary, 60), hit.highlights), result.recall_url
     .description

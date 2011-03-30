@@ -10,7 +10,7 @@ describe ApiSearch do
       @params = {:query => "foobar", :page => 2, :results_per_page => 10, :affiliate => @affiliate}
       @search_cache_key = Search.new(@params).cache_key
       @api_cache_key = "API:#{@affiliate.name}:#{@search_cache_key}"
-      @bing_json = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+      @bing_json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
     end
 
     describe "api search cache miss" do

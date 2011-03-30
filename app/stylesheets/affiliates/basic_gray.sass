@@ -1,15 +1,15 @@
 // Links
-!link_color = #316FA2
+$link_color: #316FA2
 
 // Search
-!search_header_background_color = #5B5B5B
+$search_header_background_color: #5B5B5B
 
 // Related
-!related_title_color = #333
+$related_title_color: #333
 
 // Results
-!result_title_color = #555
-!result_description_color = #999
+$result_title_color: #555
+$result_description_color: #999
 
 body
   background-color: #EEE
@@ -18,7 +18,7 @@ body
   margin: 0
 
 a
-  color = !link_color
+  :color $link_color
   text-decoration: none
 
 a img
@@ -196,11 +196,11 @@ h1, h2, h3
       font-family: "Lucida Grande Greg", Helvetica, sans-serif
       font-size: 18px
       font-weight: normal
-      color = !result_title_color
+      :color $result_title_color
     a:hover
-      color = !result_title_color - #222
+      :color $result_title_color - #222
     a:active
-      color = !result_title_color - #555
+      :color $result_title_color - #555
     img
       position: absolute
       right: -15px
@@ -212,20 +212,20 @@ h1, h2, h3
     font-family: "Lucida Grande", Helvetica, sans-serif
     font-size: 12px
     line-height: 2
-    color = !result_description_color
+    :color $result_description_color
 
 .pagination
   margin: 0
   padding: 0
   margin-bottom: 20px
-  color = !result_description_color
+  :color $result_description_color
   font-size: 16px
   text-align: center
 
   a, span.current
     padding: 5px 10px
   a:hover
-    background = !link_color
+    :background $link_color
     color: #FFF
     text-shadow: none
 

@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe SuperfreshController do
   describe "#index" do
-    integrate_views
+    render_views
     before do
       @first_uncrawled_url = SuperfreshUrl.create(:url => 'http://some.mil')
       @last_uncrawled_url = SuperfreshUrl.create(:url => 'http://another.mil')

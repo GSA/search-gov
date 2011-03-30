@@ -1,8 +1,9 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe TopSearch do
-  should_validate_presence_of :position
-  should_validate_numericality_of :position, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 5
+  it { should validate_presence_of :position }
+  it { should validate_numericality_of :position }
+  it { should ensure_inclusion_of(:position).in_range(1..5).with_low_message(/must be greater than or equal/).with_high_message(/must be less than or equal/) }
 
   describe "#save" do
     it "should set query to nil if query is blank" do

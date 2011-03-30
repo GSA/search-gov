@@ -27,7 +27,7 @@ EOF
       end
 
       it "should emit a warning" do
-        RAILS_DEFAULT_LOGGER.should_receive(:warn).once
+        Rails.logger.should_receive(:warn).once
         LogFile.transform_to_hive_queries_format(@logfile)
       end
     end

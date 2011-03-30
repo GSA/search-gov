@@ -7,7 +7,6 @@ Then /^the "([^\"]*)" field should be empty$/ do |field|
 end
 
 Then /^I should see a query group comparison term form$/ do
-  response.should have_tag "form#queries" do
-    with_tag "input[name=grouped][value=1]"
-  end
+  page.should have_selector "form#queries"
+  page.should have_selector "input[name='grouped'][value='1']"
 end

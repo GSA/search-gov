@@ -1,17 +1,27 @@
+# MySQL.  Versions 4.1 and 5.0 are recommended.
+#
+# Install the MySQL driver:
+#   gem install mysql2
+#
+# And be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
-  adapter: mysql
+  adapter: mysql2
   database: usasearch_development
   username: root
   encoding: utf8
 
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
 test: &TEST
-  adapter: mysql
+  adapter: mysql2
   database: usasearch_test
   username: root
   encoding: utf8
 
 production: &PROD
-  adapter: mysql
+  adapter: mysql2
   database: usasearch_production
   username: root
   password: usa.gov
@@ -19,13 +29,6 @@ production: &PROD
   pool: 5
   timeout: 5000
   reconnect: true
-
+  
 production_slave_database:
   <<: *PROD
-
-cucumber:
-  <<: *TEST
-
-labs:
-  <<: *PROD
-  database: usasearch_labs

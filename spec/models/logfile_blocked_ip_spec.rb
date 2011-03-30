@@ -10,6 +10,6 @@ describe LogfileBlockedIp do
     LogfileBlockedIp.create!(@valid_attributes)
   end
 
-  should_validate_presence_of :ip
-  should_validate_uniqueness_of :ip
+  it { should validate_presence_of :ip }
+  it { should validate_uniqueness_of :ip }
 end

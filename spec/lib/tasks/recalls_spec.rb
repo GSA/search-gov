@@ -22,7 +22,7 @@ describe "Recalls rake tasks" do
 
       context "when not given an RSS feed URL" do
         it "should print out an error message" do
-          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          Rails.logger.should_receive(:error)
           @rake[@task_name].invoke
         end
       end
@@ -30,7 +30,7 @@ describe "Recalls rake tasks" do
       context "when given an RSS Feed URL, but not a food type" do
         it "should print out an error message" do
           url = "foo"
-          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          Rails.logger.should_receive(:error)
           @rake[@task_name].invoke(url)
         end
       end
@@ -56,7 +56,7 @@ describe "Recalls rake tasks" do
 
       context "when not given an XML feed URL" do
         it "should print out an error message" do
-          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          Rails.logger.should_receive(:error)
           @rake[@task_name].invoke
         end
       end
@@ -81,7 +81,7 @@ describe "Recalls rake tasks" do
 
       context "when not given a CSV file" do
         it "should print out an error message" do
-          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          Rails.logger.should_receive(:error)
           @rake[@task_name].invoke
         end
       end
@@ -105,7 +105,7 @@ describe "Recalls rake tasks" do
 
       context "when not given a data file" do
         it "should print out an error message" do
-          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          Rails.logger.should_receive(:error)
           @rake[@task_name].invoke
         end
       end
@@ -129,7 +129,7 @@ describe "Recalls rake tasks" do
 
       context "when not given a feed URL" do
         it "should print out an error message" do
-          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          Rails.logger.should_receive(:error)
           @rake[@task_name].invoke
         end
       end
@@ -163,7 +163,7 @@ describe "Recalls rake tasks" do
 
       context "when not given a file name" do
         it "should print out an error message" do
-          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          Rails.logger.should_receive(:error)
           @rake[@task_name].invoke
         end
       end

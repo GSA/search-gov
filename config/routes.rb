@@ -1,92 +1,140 @@
-ActionController::Routing::Routes.draw do |map|
-  map.resource :account, :controller => "users", :except => [:new]
-  map.resources :users, :except => [:new]
-  map.resource :user_session
-  map.resources :password_resets
-  map.resources :email_verification, :only => :show
-  map.resources :complete_registration, :only => [:edit, :update]
-  map.resources :affiliates, :controller => 'affiliates/home', :member => { :push_content_for => :post, :embed_code => :get, :edit_site_information => :get, :update_site_information => :put, :edit_look_and_feel => :get, :update_look_and_feel => :put, :preview => :get, :cancel_staged_changes_for => :post }, :collection => { :home => :get, :how_it_works => :get, :demo => :get, :update_contact_information => :put }, :except => [:edit, :update] do |affiliate|
-    affiliate.resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy]
-    affiliate.resources :boosted_contents, :controller => 'affiliates/boosted_contents', :collection => {:bulk => :post, :destroy_all => :delete}
-    affiliate.resources :superfresh_urls, :controller => 'affiliates/superfresh', :only => [:index, :create, :destroy], :collection => { :upload => :post }
-    affiliate.resources :type_ahead_search, :controller => 'affiliates/sayt', :only => [:index, :create, :destroy], :collection => { :upload => :post, :preferences => :post }
-    affiliate.resources :analytics, :controller => 'affiliates/analytics', :only => [:index], :collection => {:monthly_reports => :get, :query_search => :get}
-    affiliate.resources :related_topics, :controller => 'affiliates/related_topics', :only => [:index], :collection => {:preferences => :post}
-    affiliate.resources :api, :controller => 'affiliates/api', :only => [:index]
+UsasearchRails3::Application.routes.draw do
+  resource :account, :controller => "users"
+  resources :users, :except => [:new]
+  resource :user_session
+  resources :password_resets
+  resources :email_verification, :only => :show
+  resources :complete_registration, :only => [:edit, :update]
+  resources :affiliates, :controller => "affiliates/home" do
+    member do
+      post :push_content_for
+      get :embed_code
+      get :edit_site_information
+      put :update_site_information
+      get :edit_look_and_feel
+      put :update_look_and_feel
+      get :preview
+      post :cancel_staged_changes_for
+    end
+    collection do
+      get :home
+      get :how_it_works
+      get :demo
+      put :update_contact_information
+    end
+    resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy]
+    resources :boosted_contents, :controller => "affiliates/boosted_contents" do
+      collection do
+        delete :destroy_all
+        post :bulk
+      end
+    end
+    resources :superfresh_urls, :controller => 'affiliates/superfresh', :only => [:index, :create, :destroy] do
+      collection do
+        post :upload
+      end
+    end
+    resources :type_ahead_search, :controller => "affiliates/sayt", :as => "type_ahead_search" do
+      collection do
+        post :upload
+        post :preferences
+      end
+    end
+    resources :analytics, :controller => "affiliates/analytics", :only => [:index] do
+      collection do
+        get :monthly_reports
+        get :query_search
+      end
+    end
+    resources :related_topics, :controller => "affiliates/related_topics" do
+      collection do
+        post :preferences
+      end
+    end
+    resources :api, :controller => "affiliates/api"
   end
-  map.search '/search', :controller => "searches"
-  map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get
-  map.image_search "/search/images", :controller => "image_searches", :action => "index"
-  map.images '/images', :controller => 'images', :action => "index"
-  map.resources :recalls, :only => :index
-  map.recalls_search "/search/recalls", :controller => "recalls", :action => "search"
-  map.resources :forms, :only => :index
-  map.forms_search "/search/forms", :controller => "searches", :action => 'forms'
-  map.resources :image_searches
-  map.namespace(:admin) do |admin|
-    admin.resources :affiliates, :active_scaffold => true
-    admin.resources :affiliate_templates, :active_scaffold => true
-    admin.resources :users, :active_scaffold => true
-    admin.resources :popular_image_queries, :active_scaffold => true
-    admin.resources :sayt_filters, :active_scaffold => true
-    admin.resources :sayt_suggestions, :active_scaffold => true
-    admin.resources :misspellings, :active_scaffold => true
-    admin.resource :sayt_suggestions_upload, :only => [:create, :new]
-    admin.resources :boosted_contents, :active_scaffold => true
-    admin.resources :affiliate_boosted_contents, :active_scaffold => true
-    admin.resources :spotlights, :active_scaffold => true
-    admin.resources :spotlight_keywords, :active_scaffold => true
-    admin.resources :affiliate_broadcasts, :only => [:new, :create]
-    admin.resources :faqs, :active_scaffold => true
-    admin.resources :gov_forms, :active_scaffold => true
-    admin.resources :clicks, :active_scaffold => true
-    admin.resources :calais_related_searches, :active_scaffold => true
-    admin.resources :top_searches, :only => [:index, :create, :new]
-    admin.resources :top_forms, :only => [:index, :create, :update, :destroy]
-    admin.resources :superfresh_urls, :active_scaffold => true
-    admin.resources :site_pages, :active_scaffold => true
-    admin.resources :agencies, :active_scaffold => true
-    admin.resources :agency_queries, :active_scaffold => true
-    admin.resources :logfile_blocked_queries, :active_scaffold => true
-    admin.resources :logfile_blocked_ips, :active_scaffold => true
-    admin.resources :logfile_blocked_class_cs, :active_scaffold => true
-    admin.resources :logfile_whitelisted_class_cs, :active_scaffold => true
-    admin.resources :logfile_blocked_regexps, :active_scaffold => true
+  match '/search' => 'searches#index', :as => :search
+  get '/search/advanced' => 'searches#advanced', :as => :advanced_search
+  match '/search/images' => 'image_searches#index', :as => :image_search
+  match '/images' => 'images#index', :as => :images
+  resources :recalls, :only => [:index]
+  match '/search/recalls' => 'recalls#search', :as => :recalls_search
+  resources :forms, :only => :index
+  match '/search/forms' => 'searches#forms', :as => :forms_search
+  resources :image_searches
+  namespace :admin do
+    resources :affiliates do as_routes end
+    resources :affiliate_templates do as_routes end
+    resources :users do as_routes end
+    resources :popular_image_queries do as_routes end
+    resources :sayt_filters do as_routes end
+    resources :sayt_suggestions do as_routes end
+    resources :misspellings do as_routes end
+    resource :sayt_suggestions_upload, :only => [:create, :new]
+    resources :boosted_contents do as_routes end
+    resources :affiliate_boosted_contents do as_routes end
+    resources :spotlights do as_routes end
+    resources :spotlight_keywords do as_routes end
+    resources :affiliate_broadcasts, :only => [:new, :create]
+    resources :faqs do as_routes end
+    resources :gov_forms do as_routes end
+    resources :clicks do as_routes end
+    resources :calais_related_searches do as_routes end
+    resources :top_searches, :only => [:index, :create, :new]
+    resources :top_forms, :only => [:index, :create, :update, :destroy]
+    resources :superfresh_urls do as_routes end
+    resources :site_pages do as_routes end
+    resources :agencies do as_routes end
+    resources :agency_queries do as_routes end
+    resources :logfile_blocked_queries do as_routes end
+    resources :logfile_blocked_ips do as_routes end
+    resources :logfile_blocked_class_cs do as_routes end
+    resources :logfile_whitelisted_class_cs do as_routes end
+    resources :logfile_blocked_regexps do as_routes end
   end
-  map.affiliate_analytics_redirect '/admin/affiliates/:id/analytics', :controller => 'admin/affiliates', :action => 'analytics'
-  map.admin_home_page '/admin', :controller => "admin/home"
-  map.namespace(:analytics) do |analytics|
-    analytics.resources :query_groups, :active_scaffold => true, :collection => { :bulk_add => :post }, :member => { :bulk_edit => [:get, :post]}
-    analytics.resources :grouped_queries, :active_scaffold => true
-  end
-  map.root :controller => "home"
-  map.analytics_home_page '/analytics', :controller => "analytics/home"
-  map.analytics_queries '/analytics/queries', :controller => 'analytics/home', :action => 'queries'
-  map.analytics_query_search '/analytics/query_search', :controller => "analytics/query_searches"
-  map.query_timeline '/analytics/timeline/:query', :controller => 'analytics/timeline', :action => 'show', :requirements => { :query => /.*/ }
-  map.affiliate_query_timeline '/affiliates/:id/analytics/timeline/:query', :controller => 'affiliates/timeline', :action => 'show'
-  map.monthly_reports '/analytics/monthly_reports', :controller => 'analytics/monthly_reports'
-  map.home_page '/', :controller => "home"
-  map.contact_form '/contact_form', :controller => "home", :action => "contact_form"
-  map.auto_complete ':controller/:action',
-                    :requirements => { :action => /auto_complete_for_\S+/ },
-                    :conditions => { :method => :get }
-  map.top_searches_widget '/widgets/top_searches', :controller => "widgets", :action => "top_searches"
-  map.trending_searches_widget '/widgets/trending_searches', :controller => "widgets", :action => "trending_searches"
-  map.resources :pages,
-                :controller => 'pages',
-                :only       => [:show]
-  map.main_superfresh_feed '/superfresh', :controller => "superfresh", :action => "index"
-  map.superfresh_feed '/superfresh/:feed_id', :controller => "superfresh", :action => "index"
-  map.usa '/usa/:url_slug', :controller => 'usa', :action => 'show', :requirements => { :url_slug => /.*/ }
-  map.program '/program', :controller => "pages", :action => "show", :id => "program"
-  map.searchusagov '/searchusagov', :controller => "pages", :action => "show", :id => "search"
-  map.contactus '/contactus', :controller => "pages", :action => "show", :id => "contactus"
 
-  map.api_search "/api/search", :controller => "affiliates/api", :action => "search"
-  map.api_docs '/api', :controller => "pages", :action => "show", :id => "api"
-  map.recalls_api_docs '/api/recalls', :controller => "pages", :action => "show", :id => "recalls"
-  map.recalls_tos_docs '/api/tos', :controller => "pages", :action => "show", :id => "tos"
+  match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
+  match '/admin' => 'admin/home#index', :as => :admin_home_page
+  namespace :analytics do
+    resources :query_groups do
+      as_routes
+      collection do
+        post :bulk_add
+      end
+      member do
+        get :bulk_edit
+        post :bulk_edit
+      end
+    end
+    resources :grouped_queries
+  end
 
-  map.login '/login', :controller => "user_sessions", :action => "new"
+  match '/' => 'home#index'
+  match '/analytics' => 'analytics/home#index', :as => :analytics_home_page
+  match '/analytics/queries' => 'analytics/home#queries', :as => :analytics_queries
+  match '/analytics/query_search' => 'analytics/query_searches#index', :as => :analytics_query_search
+  match '/analytics/timeline/:query' => 'analytics/timeline#show', :as => :query_timeline, :constraints => { :query => /.*/ }
+  match 'affiliates/:id/analytics/timeline/:query' => 'affiliates/timeline#show', :as => :affiliate_query_timeline
+  match '/analytics/monthly_reports' => 'analytics/monthly_reports#index', :as => :monthly_reports
+  match '/' => 'home#index', :as => :home_page
+  match '/contact_form' => 'home#contact_form', :as => :contact_form
+  #get ':controller/:action' => '#index', :as => :auto_complete, :constraints => { :action => /auto_complete_for_\S+/ }
+  get '/searches/auto_complete_for_search_query' => 'searches#auto_complete_for_search_query', :as => 'auto_complete_for_search_query'
+  match '/widgets/top_searches' => 'widgets#top_searches', :as => :top_searches_widget
+  match '/widgets/trending_searches' => 'widgets#trending_searches', :as => :trending_searches_widget
+  resources :pages
+  match '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
+  match '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
+  match '/usa/:url_slug' => 'usa#show', :as => :usa, :constraints => { :url_slug => /.*/ }
+  match '/program' => 'pages#show', :as => :program, :id => 'program'
+  match '/searchusagov' => 'pages#show', :as => :searchusagov, :id => 'search'
+  match '/contactus' => 'pages#show', :as => :contactus, :id => 'contactus'
+  match '/api/search' => 'affiliates/api#search', :as => :api_search
+  match '/api' => 'pages#show', :as => :api_docs, :id => 'api'
+  match '/api/recalls' => 'pages#show', :as => :recalls_api_docs, :id => 'recalls'
+  match '/api/tos' => 'pages#show', :as => :recalls_tos_docs, :id => 'tos'
+  match '/login' => 'user_sessions#new', :as => :login
+  match "/sayt" => "sayt#index"
+  match "/clicked" => "clicked#index"
+  root :to => "home#index"
 end

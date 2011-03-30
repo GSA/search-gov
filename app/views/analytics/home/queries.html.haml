@@ -13,7 +13,7 @@
   = render :partial => "analytics/shared/search", :locals => { :path => analytics_query_search_path, :affiliate => nil }
 
 .span-24
-  %h2= display_most_recent_date_available(@day_being_shown)
+  %h2= display_most_recent_daily_popular_query_date_available(@day_being_shown)
 
 - if @most_recent_day_no_results_queries.present?
   .span-24.header-box

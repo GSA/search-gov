@@ -34,15 +34,16 @@ describe User do
       :password_confirmation => "password",
       :government_affiliation => "1"
     }
+    @emailer = mock(Emailer)
+    @emailer.stub!(:deliver).and_return true
   end
 
   describe "when validating" do
-    should_validate_presence_of :email
-    should_validate_uniqueness_of :email
-    should_validate_presence_of :contact_name
-    should_validate_acceptance_of :terms_of_service
-
-    should_have_and_belong_to_many :affiliates
+    it { should validate_presence_of :email }
+    it { should validate_uniqueness_of :email }
+    it { should validate_presence_of :contact_name }
+    it { should validate_acceptance_of :terms_of_service }
+    it { should have_and_belong_to_many :affiliates }
 
     it "should create a new instance given valid attributes" do
       User.create!(@valid_attributes)
@@ -67,12 +68,12 @@ describe User do
     end
 
     it "should send the admins a notification email about the new user" do
-      Emailer.should_receive(:deliver_new_user_to_admin).with(an_instance_of(User))
+      Emailer.should_receive(:new_user_to_admin).with(an_instance_of(User)).and_return @emailer
       User.create!(@valid_attributes)
     end
 
     it "should send email verification to user with .gov or .mil email address" do
-      Emailer.should_receive(:deliver_new_user_email_verification).with(an_instance_of(User))
+      Emailer.should_receive(:new_user_email_verification).with(an_instance_of(User)).and_return @emailer
       User.create!(@valid_attributes)
     end
 
@@ -88,14 +89,14 @@ describe User do
 
     context "when the user is a developer" do
       it "should send the developer a welcome email" do
-        Emailer.should_receive(:deliver_welcome_to_new_developer).with(an_instance_of(User))
+        Emailer.should_receive(:welcome_to_new_developer).with(an_instance_of(User)).and_return @emailer
         User.create!(@valid_developer_attributes)
       end
     end
 
     context "when the flag to not send an email is set to true" do
       it "should not send any emails" do
-        Emailer.should_not_receive(:deliver_welcome_to_new_developer)
+        Emailer.should_not_receive(:welcome_to_new_developer)
         User.create!(@valid_attributes.merge(:skip_welcome_email => true))
       end
     end
@@ -169,7 +170,8 @@ describe User do
   end
 
   context "when saving/updating" do
-    it { should allow_mass_assignment_of(:crypted_password, :email) }
+    it { should allow_mass_assignment_of(:crypted_password) }
+    it { should allow_mass_assignment_of(:email) }
     it { should_not allow_mass_assignment_of(:is_affiliate_admin) }
     it { should_not allow_mass_assignment_of(:is_affiliate) }
     it { should_not allow_mass_assignment_of(:is_analyst) }
@@ -177,7 +179,10 @@ describe User do
     it { should_not allow_mass_assignment_of(:approval_status) }
     it { should_not allow_mass_assignment_of(:requires_manual_approval) }
     it { should_not allow_mass_assignment_of(:welcome_email_sent) }
-    it { should validate_inclusion_of :approval_status, :in => %w( pending_email_verification pending_approval approved not_approved ) }
+    it { should allow_value("pending_email_verification").for(:approval_status) }
+    it { should allow_value("pending_approval").for(:approval_status) }
+    it { should allow_value("approved").for(:approval_status) }
+    it { should allow_value("not_approved").for(:approval_status) }
   end
 
   describe "#to_label" do
@@ -340,7 +345,7 @@ describe User do
       end
 
       it "should deliver welcome email" do
-        Emailer.should_receive(:deliver_welcome_to_new_user).with(an_instance_of(User))
+        Emailer.should_receive(:welcome_to_new_user).with(an_instance_of(User)).and_return @emailer
         @user.save!
       end
 
@@ -357,7 +362,7 @@ describe User do
       end
 
       it "should not deliver welcome email" do
-        Emailer.should_not_receive(:deliver_welcome_to_new_user).with(an_instance_of(User))
+        Emailer.should_not_receive(:welcome_to_new_user).with(an_instance_of(User))
         @user.save!
       end
     end
@@ -383,10 +388,10 @@ describe User do
       end
 
       it "should receive welcome new user added by affiliate email verification" do
-        Emailer.should_receive(:deliver_welcome_to_new_user_added_by_affiliate)
-        Emailer.should_not_receive(:deliver_new_user_email_verification)
-        Emailer.should_not_receive(:deliver_welcome_to_new_developer)
-        new_user = User.new_invited_by_affiliate(@user, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+        Emailer.should_receive(:welcome_to_new_user_added_by_affiliate).and_return @emailer
+        Emailer.should_not_receive(:new_user_email_verification)
+        Emailer.should_not_receive(:welcome_to_new_developer)
+        new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
         new_user.save!
         new_user.email_verification_token.should_not be_blank
       end

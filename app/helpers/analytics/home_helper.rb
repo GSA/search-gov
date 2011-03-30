@@ -18,7 +18,22 @@ module Analytics::HomeHelper
     base_query_chart_link(query, affiliate_query_timeline_path(affiliate, query))
   end
 
-  def display_most_recent_date_available(day, affiliate = nil)
+  def display_most_recent_daily_popular_query_date_available(day, affiliate = nil)
+    return "Query data currently unavailable" if day.nil?
+    current_day = content_tag(:span, day.to_s(:long), :class=>"highlight")
+    html = "Data for #{current_day}"
+    conditions = affiliate.nil? ? ['ISNULL(affiliate_id) AND locale=?', I18n.default_locale.to_s] : ['affiliate_id=? and locale=?', affiliate.id, I18n.default_locale.to_s]
+    firstdate = DailyPopularQuery.minimum(:day, :conditions => conditions)
+    first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',')
+    lastdate = DailyPopularQuery.maximum(:day, :conditions => conditions)
+    last = [lastdate.year, (lastdate.month.to_i - 1), lastdate.day].join(',')
+    html<< calendar_date_select_tag("pop_up_hidden", "", :hidden => true, :image=>"change_date.png", :buttons => false,
+                                    :onchange => "location = '#{analytics_path_prefix(affiliate)}/?day='+$F(this);",
+                                    :valid_date_check => "date <= (new Date(#{last})).stripTime() && date >= (new Date(#{first})).stripTime()")
+    raw html    
+  end
+  
+  def display_most_recent_daily_query_stat_date_available(day, affiliate = nil)
     return "Query data currently unavailable" if day.nil?
     current_day = content_tag(:span, day.to_s(:long), :class=>"highlight")
     html = "Data for #{current_day}"
@@ -29,6 +44,7 @@ module Analytics::HomeHelper
     html<< calendar_date_select_tag("pop_up_hidden", "", :hidden => true, :image=>"change_date.png", :buttons => false,
                                     :onchange => "location = '#{analytics_path_prefix(affiliate)}/?day='+$F(this);",
                                     :valid_date_check => "date <= (new Date(#{last})).stripTime() && date >= (new Date(#{first})).stripTime()")
+    raw html
   end
 
   def display_select_for_window(window, num_results, day, affiliate = nil)
@@ -65,7 +81,7 @@ module Analytics::HomeHelper
       spanish_filename = daily_report_filename(other_locale_str, report_date)
       english_filename_exists = AWS::S3::S3Object.exists?(english_filename, AWS_BUCKET_NAME)
       spanish_filename_exists = AWS::S3::S3Object.exists?(spanish_filename, AWS_BUCKET_NAME)
-      "Download CSV of top queries for #{ report_date.to_s } (#{ link_to('English', s3_link(english_filename)) if english_filename_exists }#{ ", " if english_filename_exists && spanish_filename_exists }#{ link_to('Spanish', s3_link(spanish_filename)) if spanish_filename_exists })" if english_filename_exists || spanish_filename_exists
+      raw "Download CSV of top queries for #{ report_date.to_s } (#{ link_to('English', s3_link(english_filename)) if english_filename_exists }#{ ", " if english_filename_exists && spanish_filename_exists }#{ link_to('Spanish', s3_link(spanish_filename)) if spanish_filename_exists })" if english_filename_exists || spanish_filename_exists
     end
   end
 
@@ -74,7 +90,7 @@ module Analytics::HomeHelper
     spanish_filename = monthly_report_filename(other_locale_str, report_date)
     english_filename_exists = AWS::S3::S3Object.exists?(english_filename, AWS_BUCKET_NAME)
     spanish_filename_exists = AWS::S3::S3Object.exists?(spanish_filename, AWS_BUCKET_NAME)
-    "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to("English", s3_link(english_filename)) if english_filename_exists }#{ ", " if english_filename_exists && spanish_filename_exists }#{ link_to("Spanish", s3_link(spanish_filename)) if spanish_filename_exists })" if english_filename_exists || spanish_filename_exists
+    raw "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to("English", s3_link(english_filename)) if english_filename_exists }#{ ", " if english_filename_exists && spanish_filename_exists }#{ link_to("Spanish", s3_link(spanish_filename)) if spanish_filename_exists })" if english_filename_exists || spanish_filename_exists
   end
 
   def affiliate_analytics_daily_report_link(affiliate_name, report_date)
@@ -94,6 +110,7 @@ module Analytics::HomeHelper
   end
 
   private
+  
   def make_query_timeline_path(query, is_grouped)
     is_grouped ? query_timeline_path(query, :grouped => 1) : query_timeline_path(query)
   end

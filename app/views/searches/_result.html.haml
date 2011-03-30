@@ -13,7 +13,7 @@
       = display_agency_phone_numbers(search.agency)
       %h3{:style => 'margin-top: 5px;'}
         #{t :agency_search_within_label} #{search.agency.domain}
-        - form_tag search_path, :method => :get, :style => 'margin-bottom: 0.5em' do
+        = form_tag search_path, :method => :get, :style => 'margin-bottom: 0.5em' do
           = hidden_field_tag 'sitelimit', search.agency.domain
           = hidden_field_tag 'locale', I18n.locale.to_s
           = text_field_tag 'query'

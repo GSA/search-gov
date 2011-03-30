@@ -1,3 +1,5 @@
+require 'bundler/capistrano'
+
 set :stages, %w(staging production labs)
 set :default_stage, "staging"
 require 'capistrano/ext/multistage'
@@ -6,6 +8,7 @@ set :application, "usasearch"
 set :scm,         "git"
 set :repository,  "git@github.com:GSA-OCSIT/#{application}.git"
 set :use_sudo,    false
+set :deploy_via, :remote_cache
 
 before "deploy:restart", "deploy:migrate"
 before :deploy, "deploy:web:disable"
@@ -17,15 +20,6 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "touch #{current_path}/tmp/restart.txt"
   end
-end
-
-before "deploy:symlink", "install_gems"
-
-desc "Installs gems as specified in environment.rb"
-task :install_gems do
-  rake = fetch(:rake, 'rake')
-  rails_env = fetch(:rails_env, 'production')
-  run "cd #{release_path}; sudo #{rake} RAILS_ENV=#{rails_env} gems:install"
 end
 
 Dir[File.join(File.dirname(__FILE__), '..', 'vendor', 'gems', 'hoptoad_notifier-*')].each do |vendored_notifier|

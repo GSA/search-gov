@@ -14,7 +14,7 @@ class DailyQueryStat < ActiveRecord::Base
 
   class << self
 
-    def search_for(query, start_date = 1.year.ago, end_date = Date.today, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+    def search_for(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       search do
         with :affiliate, affiliate_name
         with :locale, locale
@@ -24,7 +24,7 @@ class DailyQueryStat < ActiveRecord::Base
       end rescue nil
     end
 
-    def query_counts_for_terms_like(query, start_date = 1.year.ago, end_date = Date.today, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+    def query_counts_for_terms_like(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       unless query.blank?
         solr_search_results = search_for query, start_date, end_date, affiliate_name, locale
         return sum(:times,

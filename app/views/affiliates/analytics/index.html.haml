@@ -4,7 +4,7 @@
 .span-24
   = render :partial => "analytics/shared/search", :locals => { :affiliate => @affiliate, :path => query_search_affiliate_analytics_path(@affiliate) }
 .span-24
-  = display_most_recent_date_available(@day_being_shown, @affiliate)
+  = display_most_recent_daily_query_stat_date_available(@day_being_shown, @affiliate)
 .clear
 %br
 .header-box

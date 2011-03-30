@@ -70,7 +70,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   def load_boosted_contents
     @boosted_content_count = @affiliate.boosted_contents.count
     @boosted_contents = @boosted_content_count > MAX_TO_DISPLAY ?
-        @affiliate.boosted_contents.find(:all, :limit => NUMBER_TO_DISPLAY_IF_ABOVE_MAX, :order => "updated_at desc, id desc") :
+        @affiliate.boosted_contents.order("updated_at desc, id desc").limit(NUMBER_TO_DISPLAY_IF_ABOVE_MAX) :
         @affiliate.boosted_contents
   end
 

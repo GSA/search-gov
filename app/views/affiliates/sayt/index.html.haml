@@ -17,7 +17,7 @@
     = link_to "Bulk Upload", "#bulk_upload"
 
   #preferences{:style => 'margin-bottom: 20px;'}
-    - form_tag preferences_affiliate_type_ahead_search_path(@affiliate) do
+    = form_tag preferences_affiliate_type_ahead_search_index_path(@affiliate) do
       %h2
         Preferences
       %ul{:style => 'list-style-type: none;'}
@@ -39,7 +39,7 @@
 
   - if @affiliate.is_affiliate_sayt_enabled?
     #add_a_new_entry{:style => 'margin-bottom: 25px;'}
-      - form_for @sayt_suggestion, {:url => affiliate_type_ahead_search_index_path(@affiliate)} do |f|
+      = form_for @sayt_suggestion, {:url => affiliate_type_ahead_search_index_path(@affiliate)} do |f|
         %h2
           Add a New Entry
         = f.label :phrase
@@ -49,7 +49,7 @@
     #current_entries{:style => "margin-bottom: 25px;"}
       %h2
         Current Entries
-      - form_tag affiliate_type_ahead_search_index_path(:anchor => "current_entries"), :method => :get do
+      = form_tag affiliate_type_ahead_search_index_path(:anchor => "current_entries"), :method => :get do
         = label_tag "Filter Entries:"
         = text_field_tag "filter", @filter
         = submit_tag "Filter"
@@ -71,8 +71,8 @@
         = will_paginate @sayt_suggestions
 
     #bulk_upload{:style => 'margin-bottom: 25px;'}
-      = render :partial => 'bulk_upload_form', :locals => { :upload_path => upload_affiliate_type_ahead_search_path(@affiliate) }
-
+      = render :partial => 'bulk_upload_form', :locals => { :upload_path => upload_affiliate_type_ahead_search_index_path(@affiliate) }
+  
 .span-6.last
   .content-box.cross-promotion
     %p

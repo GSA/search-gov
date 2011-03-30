@@ -2,7 +2,7 @@
   = affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Site Information'] )
   %h1 Site Information
   .site-info
-    - form_for @affiliate, :url => {:action => :update_site_information}, :html => {:class=>"generic-form"} do |f|
+    = form_for @affiliate, :url => {:action => :update_site_information}, :html => {:class=>"generic-form"} do |f|
       = f.error_messages(:header_message => nil, :class => "error")
       = render :partial => "site_information_form", :object => f
       .button-wrapper

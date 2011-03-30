@@ -17,17 +17,15 @@ class CalaisRelatedSearch < ActiveRecord::Base
       find_all_by_locale_and_gets_refreshed('en', true, :order => 'updated_at', :limit => daily_api_quota).each do |crs|
         affiliate_name = crs.affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : crs.affiliate.name
         Resque.enqueue(CalaisRelatedSearch, affiliate_name, crs.term)
-        break if @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.today.to_s) >= daily_api_quota
+        break if @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.current.to_s) >= daily_api_quota
       end
     end
 
     def populate_with_new_popular_terms
-      stats_with_yesterdays_active_affiliates = DailyQueryStat.find(:all,
-                                                                    :select=>"distinct(affiliate) affiliate",
-                                                                    :conditions=>["day = ? and locale='en'", Date.yesterday])
+      stats_with_yesterdays_active_affiliates = DailyQueryStat.select("distinct(affiliate) affiliate").where(:day => Date.yesterday, :locale => 'en')
       stats_with_yesterdays_active_affiliates.each do |dqs|
         populate_affiliate_with_new_popular_terms(dqs.affiliate)
-        break if @@redis.get(CRS_REDIS_KEY_PREFIX + Date.today.to_s).to_i >= daily_api_quota
+        break if @@redis.get(CRS_REDIS_KEY_PREFIX + Date.current.to_s).to_i >= daily_api_quota
       end
     end
 
@@ -39,15 +37,11 @@ class CalaisRelatedSearch < ActiveRecord::Base
       end
 
       yesterdays_popular_en_locale_terms_not_yet_in_related_searches_for_affiliate =
-        DailyQueryStat.find(:all,
-                            :select=>"daily_query_stats.query, sum(times) sum_times",
-                            :conditions=>["daily_query_stats.locale='en' and daily_query_stats.affiliate = ? and daily_query_stats.day = ? and daily_query_stats.query not in (#{sub_select})",
-                                          affiliate_name, Date.yesterday],
-                            :group=>"daily_query_stats.query",
-                            :order=>"sum_times desc")
+      DailyQueryStat.select("daily_query_stats.query, sum(times) sum_times").where("daily_query_stats.locale='en' and daily_query_stats.affiliate = ? and daily_query_stats.day = ? and daily_query_stats.query not in (#{sub_select})",
+                                          affiliate_name, Date.yesterday).group("daily_query_stats.query").order("sum_times desc")
       yesterdays_popular_en_locale_terms_not_yet_in_related_searches_for_affiliate.each do |dqs|
         Resque.enqueue(CalaisRelatedSearch, affiliate_name, dqs.query)
-        break if @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.today.to_s) >= daily_api_quota
+        break if @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.current.to_s) >= daily_api_quota
       end
     end
 
@@ -60,7 +54,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
           end
         end
         if not Search.results_present_for?(crs.term, crs.affiliate) or new_related_terms.empty?
-          RAILS_DEFAULT_LOGGER.info "Deleting #{crs.term} for affiliate #{crs.affiliate.name rescue Affiliate::USAGOV_AFFILIATE_NAME}"
+          Rails.logger.info "Deleting #{crs.term} for affiliate #{crs.affiliate.name rescue Affiliate::USAGOV_AFFILIATE_NAME}"
           crs.delete
         else
           new_related_terms_str = new_related_terms.join(' | ')
@@ -87,7 +81,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
         begin
           calais = Calais.process_document(:content => summary, :content_type => :raw, :license_id => CALAIS_LICENSE_ID, :metadata_enables=>['SocialTags'])
           downcased_term = term.downcase
-          social_tags = calais.socialtags.collect { |st| st.name }.uniq_by{|a| a.upcase}
+          social_tags = calais.socialtags.collect { |st| st.name }.custom_uniq_by{|a| a.upcase}
           social_tags = SaytFilter.filter(social_tags)
           social_tags.delete_if do |tag|
             downcased_tag = tag.downcase
@@ -106,7 +100,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
             calais_related_search.save!
           end
         rescue StandardError => error
-          RAILS_DEFAULT_LOGGER.warn "Problem getting Calais Socialtags for #{affiliate_name}:#{term}: #{error}"
+          Rails.logger.warn "Problem getting Calais Socialtags for #{affiliate_name}:#{term}: #{error}"
         end
       end
     end

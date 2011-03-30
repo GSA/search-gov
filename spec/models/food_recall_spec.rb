@@ -11,8 +11,11 @@ describe FoodRecall do
   end
 
   describe "creating new instance" do
-    should_validate_presence_of :url, :summary, :description, :food_type
-    should_belong_to :recall
+    it { should validate_presence_of :url }
+    it { should validate_presence_of :summary }
+    it { should validate_presence_of :description }    
+    it { should validate_presence_of :food_type }
+    it { should belong_to :recall }
 
     it "should create a new instance given valid attributes" do
       FoodRecall.create!(@valid_attributes)

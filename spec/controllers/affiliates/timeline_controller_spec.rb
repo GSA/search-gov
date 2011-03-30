@@ -38,7 +38,6 @@ describe Affiliates::TimelineController do
       before do
         UserSession.create(users(:affiliate_manager))
         @affiliate = affiliates(:power_affiliate)
-        Affiliate.should_receive(:find).and_return(@affiliate)
 
         @jobs_timeline = mock('jobs_timeline')
         Timeline.should_receive(:load_affiliate_daily_query_stats).with('jobs', @affiliate.name).and_return(@jobs_timeline)

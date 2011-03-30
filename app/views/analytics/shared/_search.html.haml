@@ -1,5 +1,5 @@
 .content-box
-  - form_tag(path, :method => :get, :id=>"query_search_form") do
+  = form_tag(path, :method => :get, :id=>"query_search_form") do
     = label :search, "Search for query term"
     = text_field_with_auto_complete :search, :query, {:size=>50, :name=>"query", :autocomplete => "off", :value=> @search_query_term}, {:url=> {:controller => "/searches", :action => "auto_complete_for_search_query"}, :method=> :get}
     from

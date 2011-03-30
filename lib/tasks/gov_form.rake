@@ -6,7 +6,7 @@ namespace :usasearch do
     desc "Load an XML file of FAQs into the database"
     task :load, :form_file_name, :needs => :environment do |t, args|
       if !args.form_file_name
-        RAILS_DEFAULT_LOGGER.error("usage: rake usasearch:faq:load[ form_file_name ]")
+        Rails.logger.error("usage: rake usasearch:faq:load[ form_file_name ]")
       else
         doc = REXML::Document.new(File.new(args.form_file_name))
         GovForm.delete_all

@@ -22,15 +22,16 @@
     %li.api-li
       .wrap-nav-content
         %span.nav-left &nbsp;
-        = link_to 'APIs &amp; Web Services', api_docs_path
+        = link_to 'APIs & Web Services', api_docs_path
       .submenu
         %span.top
           %p &nbsp;
-        - if current_user && (current_user.affiliates.present? || @affiliate.present?)
+        - if current_user
           %span
             %p= link_to 'Recalls API', recalls_api_docs_path
-          %span.prev-last
-            %p= link_to("Search API", affiliate_api_index_path(@affiliate || current_user.affiliates.first))
+          - if (@affiliate.present? and @affiliate.id.present?) || current_user.affiliates.first.present?
+            %span.prev-last
+              %p= link_to("Search API", affiliate_api_index_path((@affiliate.present? and @affiliate.id.present?) ? @affiliate : current_user.affiliates.first))
         - elsif current_user
           %span.prev-last
             %p= link_to 'Recalls API', recalls_api_docs_path

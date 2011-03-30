@@ -1,4 +1,5 @@
 require 'resque'
+require 'resque/failure/hoptoad'
 
 Resque::Failure::Hoptoad.configure do |config|
   config.api_key = '***REMOVED***'

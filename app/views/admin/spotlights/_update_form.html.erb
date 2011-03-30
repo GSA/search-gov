@@ -1,34 +1,11 @@
 <% url_options = params_for(:action => :update) -%>
 <%=
-if request.xhr?
-  if active_scaffold_config.update.multipart?  # file_uploads
-    form_remote_upload_tag url_options.merge({:iframe => true}),
-                           :onsubmit => onsubmit,
-                           :id => element_form_id(:action => :update),
-                           :loading => "$('#{loading_indicator_id(:action => :update, :id => params[:id])}').style.visibility = 'visible';",
-                           :class => 'update',
-                           :method => :put
-  else
-    form_remote_tag :url => url_options,
-                    :after => "$('#{loading_indicator_id(:action => :update, :id => params[:id])}').style.visibility = 'visible'; Form.disable('#{element_form_id(:action => :update)}');",
-                    :complete => "$('#{loading_indicator_id(:action => :update, :id => params[:id])}').style.visibility = 'hidden'; Form.enable('#{element_form_id(:action => :update)}');",
-                    :failure => "ActiveScaffold.report_500_response('#{active_scaffold_id}')",
-                    :html => {
-                      :href => url_for(url_options),
-                      :onsubmit => onsubmit,
-                      :id => element_form_id(:action => :update),
-                      :class => 'update',
-                      :method => :put
-                    }
-  end
-else
-  form_tag url_options,
-           :onsubmit => onsubmit,
-           :id => element_form_id(:action => :update),
-           :multipart => active_scaffold_config.update.multipart?,
-           :class => 'update',
-           :method => :put
-end
+form_tag url_options,
+         :onsubmit => onsubmit,
+         :id => element_form_id(:action => :update),
+         :multipart => active_scaffold_config.update.multipart?,
+         :class => 'update',
+         :method => :put
 %>
 
   <h4><%= @record.to_label.nil? ? active_scaffold_config.update.label : as_(:update_model, :model => clean_column_value(@record.to_label)) %></h4>

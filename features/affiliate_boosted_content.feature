@@ -9,8 +9,8 @@ Feature: Boosted Content
      | aff site         |aff.gov           | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted Content"
-    Then I should be on the new affiliate boosted content page
+    And I follow "Boosted content"
+    Then I should be on the new affiliate boosted content page for "aff.gov"
     And I should not see "aff.gov"
     And I fill in "Title" with "Test"
     And I fill in "Url" with "http://www.test.gov"
@@ -21,7 +21,7 @@ Feature: Boosted Content
     And I should see "Description can't be blank"
     Then I fill in "Description" with "Test Description"
     And I press "Save Boosted Content"
-    Then I should be on the new affiliate boosted content page
+    Then I should be on the new affiliate boosted content page for "aff.gov"
     And I should see "Boosted Content entry successfully added for affiliate 'aff site'"
     And I should see "Test" within "#boosted_contents"
     And I should see "http://www.test.gov" within "#boosted_contents"
@@ -38,14 +38,14 @@ Feature: Boosted Content
      | a title          | http://a.url.gov  | A description     | unrelated, terms  |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted Content"
+    And I follow "Boosted content"
     And I follow "Edit"
-    Then I should be on the edit affiliate boosted content page
+    Then I should be on the edit affiliate boosted content page for "aff.gov"
     And I fill in "Title" with "new title"
     And I fill in "Description" with "new description"
     And I fill in "Keywords" with "bananas, apples, oranges"
     And I press "Save Boosted Content"
-    Then I should be on the new affiliate boosted content page
+    Then I should be on the new affiliate boosted content page for "aff.gov"
     And I should see "new title" within "#boosted_contents"
     And I should not see "a title" within "#boosted_contents"
     And I should see "http://a.url.gov" within "#boosted_contents"
@@ -98,7 +98,7 @@ Feature: Boosted Content
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted Content"
+    And I follow "Boosted content"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Content
     Then I should see "aff site has no Boosted Content"
     And I should see "Bulk Upload Boosted Content for aff site"
@@ -109,14 +109,14 @@ Feature: Boosted Content
     Then I should see "2 Boosted Content entries successfully created."
 
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted Content"
+    And I follow "Boosted content"
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"
     And I should see "Bulk Upload Boosted Content for aff site"
 
     When I attach the file "features/support/new_boosted_content.xml" to "xml_file"
     And I press "Upload"
-    And I follow "Boosted Content"
+    And I follow "Boosted content"
     Then I should see "New results about Texas"
     And I should see "New results about hurricanes"
 
@@ -131,7 +131,7 @@ Feature: Boosted Content
       | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted Content"
+    And I follow "Boosted content"
     And I attach the file "features/support/missing_title_boosted_content.xml" to "xml_file"
     And I press "Upload"
     Then I should see "Your XML document could not be processed. Please check the format and try again."

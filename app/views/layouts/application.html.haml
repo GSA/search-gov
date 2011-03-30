@@ -16,12 +16,12 @@
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     /[if IE 8]
       = stylesheet_link_tag 'compiled/ie8.css', :media => 'screen, projection'
-    = javascript_tag "var usagov_sayt_url = \"#{root_url}sayt?\";"
-    = javascript_include_tag "jquery/jquery-1.4.2.min.js"
-    = javascript_include_tag "jquery/jquery-ui-1.8.12.custom.min.js"
-    = javascript_include_tag "jquery/jquery.bgiframe.min.js"
-    = javascript_include_tag "sayt-ui.js"
-    = javascript_include_tag "application.js"
+    = javascript_tag "var usagov_sayt_url = \"#{sayt_url}&amp;\";"
+    = (javascript_include_tag "jquery/jquery-1.4.2.min.js").html_safe
+    = (javascript_include_tag "jquery/jquery-ui-1.8.12.custom.min.js").html_safe
+    = (javascript_include_tag "jquery/jquery.bgiframe.min.js").html_safe
+    = (javascript_include_tag "sayt-ui.js").html_safe
+    = (javascript_include_tag "application.js").html_safe
 
   %body{ :class => I18n.locale }
     .container
@@ -57,4 +57,4 @@
       .span-24.bottom-wrap
         .bottom &nbsp;
     = render_webtrends_code
-    = @rails_sever_location_in_html_comment_for_opsview
+    = @rails_sever_location_in_html_comment_for_opsview.html_safe

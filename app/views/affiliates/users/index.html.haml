@@ -12,7 +12,7 @@
     - @affiliate.users.each do |user|
       %tr{:class => cycle('even', 'odd')}
         %td
-          = "#{user.contact_name} (#{mail_to user.email})"
+          #{user.contact_name} (#{mail_to user.email})
         %td
           - if current_user == user
             = link_to 'My Account', account_path
@@ -25,7 +25,7 @@
     Create Account for a New User
   %p
     Just enter a name and email address.  We'll create a new account (if one doesn't already exist) and send your new team member instructions on how to activate it.
-  - form_tag affiliate_users_path, :class => 'generic-form' do
+  = form_tag affiliate_users_path(@affiliate.id), :class => 'generic-form' do
     = error_messages_for 'user', :header_message => nil, :class => 'error'
     %ul.fields
       %li

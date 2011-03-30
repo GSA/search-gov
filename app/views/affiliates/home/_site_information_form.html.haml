@@ -48,4 +48,4 @@
     %li
       %h2.sub-title Choose template
       .affiliate-template-wrapper
-        = render_choose_site_templates @affiliate
+        = (render_choose_site_templates @affiliate).html_safe

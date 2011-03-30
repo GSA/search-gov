@@ -10,9 +10,9 @@ describe AffiliateBroadcast do
     }
   end
   
-  should_belong_to :user
-  should_validate_presence_of :subject
-  should_validate_presence_of :body
+  it { should belong_to :user }
+  it { should validate_presence_of :subject }
+  it { should validate_presence_of :body }
 
   it "should create a new instance given valid attributes" do
     AffiliateBroadcast.create!(@valid_attributes)

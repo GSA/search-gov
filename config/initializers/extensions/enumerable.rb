@@ -1,5 +1,5 @@
 module Enumerable
-  def uniq_by(& block)
+  def custom_uniq_by(& block)
     uniq = {}
     each_with_index do |val, idx|
       key = block.call(val)

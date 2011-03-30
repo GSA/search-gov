@@ -6,15 +6,15 @@ en:
   search: "Search"
   forms_search: "Search Forms"
   recalls_search: "Search Recalls"
-  did_you_mean: "We're including results for {{assumed_term}}. Do you want results only for {{term_as_typed}}?"
-  results_summary: "Results {{from}}-{{to}} of about {{total}} for '{{query}}'"
+  did_you_mean: "We're including results for %{assumed_term}. Do you want results only for %{term_as_typed}?"
+  results_summary: "Results %{from}-%{to} of about %{total} for '%{query}'"
   cached: "Cached"
   related_searches: "Related Topics"
   related_faqs_header: "Related Questions and Answers"
   related_gov_forms_header: "Related Federal Forms"
   prev_label: "Previous"
   next_label: "Next"
-  no_results_for: "Sorry, no results found for '{{query}}'. Try entering fewer or broader query terms."
+  no_results_for: "Sorry, no results found for '%{query}'. Try entering fewer or broader query terms."
   too_long: "That is too long a word. Try using a shorter word."
   empty_query: "Please enter search term(s)"
   search_results_for: "Search results for"
@@ -24,17 +24,17 @@ en:
   serp_title: "Search.USA.gov"
   advanced_search: "Advanced Search"
   images: "Images"
-  images_for: "Images for {{query}}"
+  images_for: "Images for %{query}"
   images_site_title: "Search.USA.gov Images"
   recalls: Recalls
-  recalls_for: "Recalls for {{query}}"
+  recalls_for: "Recalls for %{query}"
   recalls_site_title: "Search.USA.gov Recalls"
   in_english: ""
-  forms_for: "Federal Government Forms Catalog: {{query}}"
-  view_all_images_for: "View all images for {{query}}"
+  forms_for: "Federal Government Forms Catalog: %{query}"
+  view_all_images_for: "View all images for %{query}"
   government_web: "Government Web"
   recall_govbox_header: "Results from the U.S. Government's Recalls Database"
-  displaying_count_of_total_for_query: Displaying {{start}}-{{end}} of {{total}} for {{query}}
+  displaying_count_of_total_for_query: Displaying %{start}-%{end} of %{total} for %{query}
   view_more_recalls: View More Recalls
   industry:
     auto:
@@ -53,7 +53,7 @@ en:
   by_date: Date
   by_relevance: Relevance
   advanced_search_instruction: "Use the options on this page to create a very specific search."
-  advanced_affiliate_search_instruction: "Use the options on this page to create a very specific search for {{affiliate_name}}."
+  advanced_affiliate_search_instruction: "Use the options on this page to create a very specific search for %{affiliate_name}."
   advanced_search_show_results_header: "Show results with"
   advanced_search_query_label: "All of these words"
   advanced_search_query_quote_label: "This exact phrase"
@@ -77,7 +77,7 @@ en:
   advanced_search_results_per_page_label: "Results per Page"
   advanced_search_submit_button_image_path: "/images/search.gif"
   advanced_search_submit_button_image_alt_value: "Search the Government"
-  search_results_restriction_message_front: "This search was restricted to <b>{{scope_setting}}</b>."
+  search_results_restriction_message_front: "This search was restricted to <b>%{scope_setting}</b>."
   search_results_restriction_message_link: "Search again without the restriction."
 
   usagov_mobile: "USA.gov mobile"
@@ -108,7 +108,7 @@ en:
   contact_thank_you: "Thank you for contacting USA.gov. We will respond to you within two business days."
   contact_missing_required_fields: "Missing required fields (*)"
   contact_invalid_email: "Email address is not valid"
-  searches_related_to: "Searches related to '{{query}}'"
+  searches_related_to: "Searches related to '%{query}'"
 
   change_text_size: "Change Text Size"
   change_text_size_url: "http://www.usa.gov/About/Change_Text.shtml"
@@ -141,37 +141,37 @@ en:
       half_a_minute: "half a minute ago"
       less_than_x_seconds:
         one:   "less than 1 second ago"
-        other: "less than {{count}} seconds ago"
+        other: "less than %{count} seconds ago"
       x_seconds:
         one:   "1 second ago"
-        other: "{{count}} seconds ago"
+        other: "%{count} seconds ago"
       less_than_x_minutes:
         one:   "less than a minute ago"
-        other: "less than {{count}} minutes ago"
+        other: "less than %{count} minutes ago"
       x_minutes:
         one:   "1 minute ago"
-        other: "{{count}} minutes ago"
+        other: "%{count} minutes ago"
       about_x_hours:
         one:   "about 1 hour ago"
-        other: "about {{count}} hours ago"
+        other: "about %{count} hours ago"
       x_days:
         one:   "1 day ago"
-        other: "{{count}} days ago"
+        other: "%{count} days ago"
       about_x_months:
         one:   "about 1 month ago"
-        other: "about {{count}} months ago"
+        other: "about %{count} months ago"
       x_months:
         one:   "1 month ago"
-        other: "{{count}} months ago"
+        other: "%{count} months ago"
       about_x_years:
         one:   "about 1 year ago"
-        other: "about {{count}} years ago"
+        other: "about %{count} years ago"
       over_x_years:
         one:   "over 1 year ago"
-        other: "over {{count}} years ago"
+        other: "over %{count} years ago"
       almost_x_years:
         one:   "almost 1 year ago"
-        other: "almost {{count}} years ago"
+        other: "almost %{count} years ago"
     prompts:
       year:   "Year"
       month:  "Month"

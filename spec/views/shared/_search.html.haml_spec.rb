@@ -6,15 +6,15 @@ describe "shared/_search.html.haml" do
     @search.stub!(:filter_setting).and_return nil
     @search.stub!(:scope_id).and_return nil
     @search.stub!(:fedstates).and_return nil
-    template.stub!(:web_search?).and_return(true)
-    assigns[:search] = @search
+    assign(:search, @search)
+    view.stub!(:path).and_return search_path
+    view.stub!(:web_search?).and_return true
   end
 
   context "when page is displayed" do
-
     it "should display a link to the advanced search page" do
-      render :locals => { :path => search_path, :search => @search }
-      response.should contain(/Advanced Search/)
+      render
+      rendered.should contain(/Advanced Search/)
     end
 
     context "for an affiliate site" do
@@ -22,24 +22,24 @@ describe "shared/_search.html.haml" do
         @affiliate = stub('Affiliate')
         @affiliate.stub!(:name).and_return 'aff.gov'
         @affiliate.stub!(:is_sayt_enabled).and_return false
-        assigns[:affiliate] = @affiliate
+        assign(:affiliate, @affiliate)
       end
 
       it "should display a link to the advanced search page" do
-        render :locals => { :path => search_path, :search => @search, :affiliate => @affiliate }
-        response.should contain(/Advanced Search/)
+        render
+        rendered.should contain(/Advanced Search/)
       end
 
       context "when a scope id is specified" do
         before do
           @search.stub!(:scope_id).and_return "SomeScope"
-          assigns[:scope_id] = 'SomeScope'
+          assign(:scope_id, 'SomeScope')
         end
 
         it "should include a hidden tag with the scope id" do
           @search.scope_id.should == 'SomeScope'
-          render :locals => { :path => search_path, :search => @search, :affiliate => @affiliate, :scope_id => 'SomeScope'}
-          response.should have_tag('input[type=?][id=?][value=?]', 'hidden', 'scope_id', 'SomeScope')
+          render
+          rendered.should have_selector("input[type='hidden'][id='scope_id'][value='SomeScope']")
         end
       end
     end

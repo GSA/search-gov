@@ -43,7 +43,7 @@ class Analytics::QueryGroupsController < Analytics::AnalyticsAdminController
       end
       flash[:notice] = "#{update_count} queries added, #{remove_list.size} queries removed."
       @query_group.save
-    elsif request.method == :post
+    elsif request.method == "POST"
       flash[:notice] = "#{@query_group.grouped_queries.size} queries removed."
       @query_group.grouped_queries.delete_all
     end

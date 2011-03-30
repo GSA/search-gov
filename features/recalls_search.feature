@@ -35,7 +35,7 @@ Feature: Recalls search
     |10156        |Graco, Walmart, Martha Stewart |Bed     |Graco Cozy Glow-in-the-Dark Classic Toddler Beds            |Vomiting      |USA, Vietnam, China |25               |
     |10150        |Graco                          |Stroller|Graco Neck Restraint                                        |Decapitation  |Canada              |35               |
     Given I am on the homepage
-    And I follow "recalls"
+    And I follow "Recalls"
     Then I should be on the recalls landing page
     And I should not see "ROBOTS" meta tag
     And I should see "Latest Recalls"

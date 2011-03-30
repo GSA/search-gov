@@ -11,8 +11,12 @@ describe TopForm do
     TopForm.create!(@valid_options)
   end
   
-  should_validate_presence_of :name, :column_number, :sort_order
-  should_validate_uniqueness_of :sort_order, :scope => :column_number
-  should_validate_numericality_of :column_number, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 3
-  should_validate_numericality_of :sort_order, :greater_than_or_equal_to => 1  
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :column_number }
+  it { should validate_presence_of :sort_order }
+  it { should validate_uniqueness_of(:sort_order).scoped_to(:column_number) }
+  it { should validate_numericality_of :column_number }
+  it { should ensure_inclusion_of(:column_number).in_range(1..3).with_low_message(/must be greater than or equal/).with_high_message(/must be less than or equal/) }
+  it { should validate_numericality_of :sort_order }
+  it { should_not allow_value(0).for(:sort_order) }  
 end

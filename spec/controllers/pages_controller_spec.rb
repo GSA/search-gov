@@ -12,8 +12,10 @@ describe PagesController do
         assigns[:page_title].should_not be_nil
       end
 
-      should_respond_with :success
-      should_render_template page
+      it "should render the template" do
+        response.should be_success
+        response.should render_template page
+      end
     end
   end
 end

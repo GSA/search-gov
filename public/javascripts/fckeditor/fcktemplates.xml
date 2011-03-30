@@ -25,270 +25,79 @@
  * See FCKConfig.TemplatesXmlPath in the configuration file.
 -->
 <Templates imagesBasePath="fck_template/images/">
-	<Template title="1 column - bullets only" image="template1.gif">
+	<Template title="Image and Title" image="template1.gif">
+		<Description>One main image with a title and text that surround the image.</Description>
 		<Html>
 			<![CDATA[
-<div id="spotlight-simple">
-<table class="spotlight">
-<tbody>
-<tr>
-<td style="font-size:16px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Barney, the first dog</span></td>
-</tr>
-<tr>
-<td style="vertical-align: top;">
-<ul>
-<li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
-<li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
-<li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+				<img style="MARGIN-RIGHT: 10px" height="100" alt="" width="100" align="left"/>
+				<h3>Type the title here</h3>
+				Type the text here
 			]]>
 		</Html>
 	</Template>
-	<Template title="2 column - image with bullets" image="template1.gif">
+	<Template title="Strange Template" image="template2.gif">
+		<Description>A template that defines two colums, each one with a title, and some text.</Description>
 		<Html>
 			<![CDATA[
-<div id="spotlight-simple">
-<table class="spotlight">
-<tbody>
-<tr>
-<td colspan="2" style="font-size:16px; padding-bottom: 5px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Barney, the first dog</span></td>
-</tr>
-<tr>
-<td style="width:50px;"><img  style="width: 100px; padding:3px; border:1px solid #ddd;"  src="/javascripts/fckeditor/usa.jpg" alt="Photo of barney" /></td>
-<td style="vertical-align: top; padding-left: 10px;">
-<ul>
-<li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
-<li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
-<li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+				<table cellspacing="0" cellpadding="0" width="100%" border="0">
+					<tbody>
+						<tr>
+							<td width="50%">
+							<h3>Title 1</h3>
+							</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+							<td width="50%">
+							<h3>Title 2</h3>
+							</td>
+						</tr>
+						<tr>
+							<td>Text 1</td>
+							<td>&nbsp;</td>
+							<td>Text 2</td>
+						</tr>
+					</tbody>
+				</table>
+				More text goes here.
 			]]>
 		</Html>
 	</Template>
-	<Template title="2 column - Larger image" image="template1.gif">
+	<Template title="Text and Table" image="template3.gif">
+		<Description>A title with some text and a table.</Description>
 		<Html>
 			<![CDATA[
-<div id="spotlight-simple">
-<table class="spotlight">
-<tbody>
-<tr>
-<td colspan="2" style="font-size:16px; padding-bottom: 5px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Barney, the first dog</span></td>
-</tr>
-<tr>
-<td style="width:50px;"><img  style="width: 125px;padding:3px; border:1px solid #ddd;"  src="/javascripts/fckeditor/afflag-large.png" alt="Photo of barney" /></td>
-<td style="vertical-align: top; padding-left: 10px;">
-<ul>
-<li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
-<li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
-<li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+				<table align="left" width="80%" border="0" cellspacing="0" cellpadding="0"><tr><td>
+					<h3>Title goes here</h3>
+					<p>
+					<table style="FLOAT: right" cellspacing="0" cellpadding="0" width="150" border="1">
+						<tbody>
+							<tr>
+								<td align="center" colspan="3"><strong>Table title</strong></td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+							<tr>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+							</tr>
+						</tbody>
+					</table>
+					Type the text here</p>
+				</td></tr></table>
 			]]>
 		</Html>
 	</Template>
-	<Template title="3 column with middle IMAGE column" image="template1.gif">
-		<Html>
-			<![CDATA[
-			<div id="spotlight-simple">
-      <table class="spotlight">
-          <tbody>
-              <tr>
-                  <td colspan="3" style="font-size:16px; padding-bottom: 5px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Afghanistan</span></td>
-              </tr>
-              <tr>
-                  <td style="vertical-align: top; width: 250px;">
-                  <ul style="padding-left: 15px;">
-                      <li><a href="http://www.whitehouse.gov/barney/">History, Culture, Government, Society</a></li>
-                      <li><a href="http://www.whitehouse.gov/barney/archives.html">CIA World Factbook</a></li>
-                      <li><a href="#">U.S. State Dept. Country Notes</a></li>
-                      <li><a href="#">Trade, Investment, Reconstruction</a></li>
-                      <li><a href="">Constitution &amp; Legal Guides</a></li>
-                  </ul>
-                  </td>
-                  <td style="width:110px; vertical-align: top;"><img alt="Photo of barney" style="width: 100px; padding:3px; border:1px solid #ddd;" src="/javascripts/fckeditor/afflag.jpg" /></td>
-                  <td style="vertical-align: top; width: 250px;">
-                  <ul style="padding-left: 15px;">
-                      <li><a href="http://www.whitehouse.gov/barney/">Afghan War Diary, 2004-2010 (Wikileaks)</a></li>
-                      <li><a href="http://www.whitehouse.gov/barney/archives.html">President Obama's Reaction to Leaks</a></li>
-                      <li><a href="http://www.whitehouse.gov/interactive/interact_1.html">N.S.A. Gen. James Jones on Wikileaks</a></li>
-                      <li><a href="">Pentagon Launches Probe into Leaks</a></li>
-                      <li><a href="">War in Afghanistan (Congressional Research Service)</a></li>
-                  </ul>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-      </div>
-			]]>
-		</Html>
-	</Template>
-	<Template title="3 column - Larger Image" image="template1.gif">
-		<Html>
-			<![CDATA[
-			<div id="spotlight-simple">
-      <table class="spotlight">
-          <tbody>
-              <tr>
-                  <td colspan="3" style="font-size:16px; padding-bottom: 5px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Afghanistan</span></td>
-              </tr>
-              <tr>
-                  <td style="vertical-align: top; width: 230px;">
-                  <ul style="padding-left: 15px;">
-                      <li><a href="http://www.whitehouse.gov/barney/">History, Culture, Government, Society</a></li>
-                      <li><a href="http://www.whitehouse.gov/barney/archives.html">CIA World Factbook</a></li>
-                      <li><a href="#">U.S. State Dept. Country Notes</a></li>
-                      <li><a href="#">Trade, Investment, Reconstruction</a></li>
-                  </ul>
-                  </td>
-                  <td style="width:125px; vertical-align: top;"><img alt="Photo of barney" style="width: 125px;padding:3px; border:1px solid #ddd;" src="/javascripts/fckeditor/afflag-large.png" /></td>
-                  <td style="padding-left: 5px; vertical-align: top; width: 230px;">
-                  <ul style="padding-left: 15px;">
-                      <li><a href="http://www.whitehouse.gov/barney/">Afghan War Diary, 2004-2010 (Wikileaks)</a></li>
-                      <li><a href="http://www.whitehouse.gov/barney/archives.html">President Obama's Reaction to Leaks</a></li>
-                      <li><a href="http://www.whitehouse.gov/interactive/interact_1.html">N.S.A. Gen. James Jones on Wikileaks</a></li>
-                      <li><a href="">Pentagon Launches Probe into Leaks</a></li>
-                  </ul>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-      </div>
-			]]>
-		</Html>
-	</Template>
-	<Template title="4 column - images with bullets" image="template1.gif">
-		<Html>
-			<![CDATA[
-			<div id="spotlight-simple">
-      <table class="spotlight">
-          <tbody>
-              <tr>
-                  <td colspan="4" style="font-size:16px; padding-bottom: 5px;"><span style="font-size: 18px; font-weight: bold;color:#174578;">Barney, the first dog</span></td>
-              </tr>
-              <tr>
-                  <td style="width:50px; vertical-align: top; padding: 0 5px 0 0;"><img  style="padding:3px; border:1px solid #ddd;" alt="Photo of barney" src="/javascripts/fckeditor/usa_small.jpg" /></td>
-                  <td style="vertical-align: top; width: 200px;">
-                  <ul style="padding-left: 15px;">
-                      <li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
-                      <li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
-                      <li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
-                  </ul>
-                  </td>
-                  <td style="width:50px; vertical-align: top; padding: 0 0 0 5px;"><img  style="padding:3px; border:1px solid #ddd;" alt="Photo of barney" src="/javascripts/fckeditor/usa_small.jpg" /></td>
-                  <td style="vertical-align: top; width: 200px;">
-                  <ul style="padding-left: 15px;">
-                      <li><a href="http://www.whitehouse.gov/barney/">Barney's Official Site</a> - Barney cam, life story, photos</li>
-                      <li><a href="http://www.whitehouse.gov/barney/archives.html">Barney Answers Questions</a> - with help from friends</li>
-                      <li><a href="http://www.whitehouse.gov/interactive/interact_1.html">Write to Barney</a> - Send an email to Barney</li>
-                  </ul>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
-      </div>
-			]]>
-		</Html>
-	</Template>
-	<Template title="My TSA template" image="template1.gif">
-		<Html>
-			<![CDATA[
-			<div id="spotlight-simple">
-      <table class="spotlight">
-          <tbody>
-              <tr>
-                <td colspan="2" style="vertical-align:top;">
-      		        <span style="font-size: 18px; font-weight: bold;color:#174578;">
-      		          Looking for flight delay times?
-      		        </span>
-                </td>
-              </tr>
-              <tr>
-                <td>
-      		        <a href="http://apps.usa.gov/tsa-app" target="new"><img src="/images/my-tsa-app.png" style="border:0; padding:10px 20px 0 10px"></a>
-      		      </td>
-      		      <td style="padding-top: 10px;">
-      		        The new <strong>My TSA</strong> iPhone app and mobile website has up-to-the-minute information on flight times, schedules, and other time-sensitive airport information.
-      		        <br />
-      		        <span style="float:right;">
-      		        <a href="http://itunes.apple.com/us/app/my-tsa/id380200364?mt=8" target="_blank"><img src="/images/btn-iphone-download-now.png" style="border:0; padding:10px 10px 0 0;"></a> 
-      		        <a href="http://www.tsa.gov/mobile" target="_blank"><img src="/images/btn-mobileweb-visit-now.png" style="border:0; padding:5px 10px 0 0;"></a> 
-      		        <a href="http://apps.usa.gov/tsa-app" target="_blank"><img src="/images/btn-app-gallery.png" style="border:0; padding:5px 10px 0 0;"></a>
-    		        </span>
-      		      </td>
-              </tr>
-          </tbody>
-      </table>
-      </div>
-			]]>
-		</Html>
-	</Template>
-	<Template title="NOAA template" image="template1.gif">
-		<Html>
-			<![CDATA[
-      <div id="spotlight-custom" style="background: url('/images/spotlights/noaa.jpg');">
-        <div style="width: 200px; position:relative; top:60px; left:400px; margin: 0; padding: 0;">
-            <ul style="list-style-type: none;margin:0; padding:0;">
-              <li style="margin-bottom: 5px;"><a href="" style="color: #0a4595; text-decoration: none;">Higher Waves Increase Erosion and Flooding Along the Oregon Coast</a></li>
-              <li style="margin-bottom: 5px;"><a href="" style="color: #0a4595; text-decoration: none;">The Search for Oil in the Gulf</a></li>
-              <li><a href="" style="color: #0a4595; text-decoration: none;">NWS Serves Vital Role in Oil Spill Operations</a></li>
-            </ul>
-          </div>
-      </div>
-			]]>
-		</Html>
-	</Template>
-	<Template title="NASA template" image="template1.gif">
-		<Html>
-			<![CDATA[
-      <div id="spotlight-custom" style="background: url('/images/spotlights/nasa.jpg');">
-        <div style="width: 220px; position:relative; top:25px; left:25px; margin: 0; padding: 0;">
-          <ul style="list-style-type: none;margin:0; padding:0;">
-            <li style="margin-bottom: 5px;"><a class="spotlight-custom-link" href="">NASA Images Show Anatomy of Pakistan Flood Disaster</a></li>
-            <li style="margin-bottom: 5px;"><a class="spotlight-custom-link" href="">Drought Drives Decade-Long Decline in Plant Growth</a></li>
-            <li><a class="spotlight-custom-link" href="">NASA Sensors to Guide Spacecraft to Safe, Distant Landings</a></li>
-          </ul>
-        </div>
-      </div>
-			]]>
-		</Html>
-	</Template>
-	<Template title="Hurricane Danielle" image="template1.gif">
-		<Html>
-			<![CDATA[
-      <div id="spotlight-custom" style="width:618px; height: 255px;border: 1px solid black;">
-        <div style="float: left; height: 175px; width: 210px; background: url('/images/spotlights/spotlight_danielle.jpg') no-repeat; padding: 80px 0 0 20px;">
-        <ul style="color: white;margin:0; padding:0;">
-            <li><a style="color: white important!; text-decoration: none;" href="http://www.nhc.noaa.gov/index.shtml?"><span style="color: white; text-decoration: none;">News on Latest Atlantic Storms</span></a></li>
-            <li><a href="http://www.nasa.gov/mission_pages/hurricanes/archives/2010/h2010_08.html"><span style="color: white; text-decoration: none;">2010 Atlantic Hurricane Season</span></a>
-            <ul>
-            <ul style="color: white;margin:10px 0 0 0; padding:0;">
-                    <li><a style="color: white important!;" href="http://www.nhc.noaa.gov/text/refresh/MIATCPAT1+shtml/301448.shtml"><span style="color: white; text-decoration: none;">Danielle Advisories</span></a></li>
-                    <li><a href="http://www.nhc.noaa.gov/refresh/graphics_at1+shtml/144713.shtml?5-daynl#contents"><span style="color: white; text-decoration: none;">Danielle 5 Day Forecast Cone</span></a></li>
-                </ul>
-            </ul>
-            </li>
-        </ul>
-        </div>
-        <div style="float:right; width: 388px; height: 255px; background: #0b195e; overflow: hidden; position: relative;">
-          <div style="position:absolute;top:-30px;left:-25px;width:565; height:353px;"><img alt="" src="http://www.nhc.noaa.gov/overview_atl/atl_overview.gif" /></div>
-          </div>
-        </div>
-      </div>
-			]]>
-		</Html>
-	</Template>
-	
 </Templates>

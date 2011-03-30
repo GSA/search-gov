@@ -5,9 +5,9 @@
     - search.boosted_contents.hits(:verify => true).each_with_index do |hit, index|
       - boosted_content_url = hit.instance.url
       .searchresult{:id => "boostedresult#{index+1}"}
-        %h2= link_to highlight_hit(hit, :title), boosted_content_url
-        %h3= highlight_hit(hit, :description)
-        %h3= link_to h(shorten_url(boosted_content_url)), boosted_content_url
+        %h2= link_to highlight_hit(hit, :title).html_safe, boosted_content_url
+        %h3= highlight_hit(hit, :description).html_safe
+        %h3= link_to shorten_url(boosted_content_url), boosted_content_url
 %a{:name => "content"}
 - if search.results.present?
   = results_summary(search.startrecord, search.endrecord, search.total, h(search.query))

@@ -16,6 +16,9 @@ module ActiveScaffold::DataStructures
 
     # Whether this column set is collapsed by default in contexts where collapsing is supported
     attr_accessor :collapsed
+
+    # Whether to enable add_existing for this column
+    attr_accessor :allow_add_existing
     
     # Any extra parameters this particular column uses.  This is for create/update purposes.
     def params
@@ -49,9 +52,19 @@ module ActiveScaffold::DataStructures
     def required?
       @required
     end
+    
+    attr_reader :update_columns
+    
+    # update dependent columns after value change in form
+    #  update_columns = :name
+    #  update_columns = [:name, :age]
+    def update_columns=(column_names)
+      @update_columns = Array(column_names)
+    end
 
-    # column to be updated in a form when this column change
-    attr_accessor :update_column
+    # send all the form instead of only new value when this column change
+    cattr_accessor :send_form_on_update_column
+    attr_accessor :send_form_on_update_column
 
     # sorting on a column can be configured four ways:
     #   sort = true               default, uses intelligent sorting sql default
@@ -96,14 +109,7 @@ module ActiveScaffold::DataStructures
 
     attr_writer :search_ui
     def search_ui
-      @search_ui || @form_ui
-    end
-
-    # DEPRECATED
-    alias :ui_type :form_ui
-    def ui_type=(val)
-      ::ActiveSupport::Deprecation.warn("config.columns[:#{name}].ui_type will disappear in version 2.0. Please use config.columns[:#{name}].form_ui instead.", caller)
-      self.form_ui = val
+      @search_ui || @form_ui || (@association && !polymorphic_association? ? :select : nil)
     end
 
     # a place to store dev's column specific options
@@ -112,22 +118,14 @@ module ActiveScaffold::DataStructures
       @options ||= {}
     end
 
-    # associate an action_link with this column
-    attr_reader :link
-
-    # set an action_link to nested list or inline form in this column
-    def autolink?
-      @autolink and self.association.reverse
+    def link
+      @link = @link.call(self) if @link.is_a? Proc
+      @link
     end
 
-    # this should not only delete any existing link but also prevent column links from being automatically added by later routines
-    def clear_link
-      @link = nil
-      @autolink = false
-    end
-
+     # associate an action_link with this column
     def set_link(action, options = {})
-      if action.is_a? ActiveScaffold::DataStructures::ActionLink
+      if action.is_a?(ActiveScaffold::DataStructures::ActionLink) || (action.is_a? Proc)
         @link = action
       else
         options[:label] ||= self.label
@@ -135,6 +133,17 @@ module ActiveScaffold::DataStructures
         options[:type] ||= :member
         @link = ActiveScaffold::DataStructures::ActionLink.new(action, options)
       end
+    end
+
+    # set an action_link to nested list or inline form in this column
+    def autolink?
+      @autolink
+    end
+
+    # this should not only delete any existing link but also prevent column links from being automatically added by later routines
+    def clear_link
+      @link = nil
+      @autolink = false
     end
 
     # define a calculation for the column. anything that ActiveRecord::Calculations::ClassMethods#calculate accepts will do.
@@ -148,7 +157,10 @@ module ActiveScaffold::DataStructures
     # a collection of associations to pre-load when finding the records on a page
     attr_reader :includes
     def includes=(value)
-      @includes = value.is_a?(Array) ? value : [value] # automatically convert to an array
+      @includes = case value
+        when Array, Hash then value 
+        else [value] # automatically convert to an array
+      end
     end
 
     # a collection of columns to load when eager loading is disabled, if it's nil all columns will be loaded
@@ -188,9 +200,8 @@ module ActiveScaffold::DataStructures
     attr_writer :show_blank_record
     def show_blank_record?(associated)
       if @show_blank_record
-        return false if self.through_association?
-        return false unless self.association.klass.authorized_for?(:action => :create)
-        self.plural_association? or (self.singular_association? and associated.blank?)
+        return false unless self.association.klass.authorized_for?(:crud_type => :create)
+        self.plural_association? or (self.singular_association? and associated.empty?)
       end
     end
 
@@ -198,6 +209,9 @@ module ActiveScaffold::DataStructures
     cattr_accessor :actions_for_association_links
     @@actions_for_association_links = [:new, :edit, :show]
     attr_accessor :actions_for_association_links
+    
+    cattr_accessor :association_form_ui
+    @@association_form_ui = nil
 
     # ----------------------------------------------------------------- #
     # the below functionality is intended for internal consumption only #
@@ -219,6 +233,15 @@ module ActiveScaffold::DataStructures
     end
     def polymorphic_association?
       self.association and self.association.options.has_key? :polymorphic and self.association.options[:polymorphic]
+    end
+    def readonly_association?
+      if self.association
+        if self.association.options.has_key? :readonly
+          self.association.options[:readonly]
+        else
+          self.through_association?
+        end
+      end
     end
 
     # an interpreted property. the column is virtual if it isn't from the active record model or any associated models
@@ -248,19 +271,23 @@ module ActiveScaffold::DataStructures
       @autolink = !@association.nil?
       @active_record_class = active_record_class
       @table = active_record_class.table_name
-      @weight = 0
       @associated_limit = self.class.associated_limit
       @associated_number = self.class.associated_number
       @show_blank_record = self.class.show_blank_record
       @actions_for_association_links = self.class.actions_for_association_links.clone if @association
-      @search_ui = :select if @association and not polymorphic_association?
       @options = {:format => :i18n_number} if @column.try(:number?)
-
+      @form_ui = :checkbox if @column and @column.type == :boolean
+      @form_ui = :textarea if @column and @column.type == :text
+      @allow_add_existing = true
+      @form_ui = self.class.association_form_ui if @association && self.class.association_form_ui
+      
       # default all the configurable variables
       self.css_class = ''
-      self.required = false
+      self.required = active_record_class.validators_on(self.name).map(&:class).include? ActiveModel::Validations::PresenceValidator
       self.sort = true
       self.search_sql = true
+      
+      @weight = estimate_weight
 
       self.includes = (association and not polymorphic_association?) ? [association.name] : []
     end
@@ -292,7 +319,7 @@ module ActiveScaffold::DataStructures
         end
       end
     end
-
+    
     def initialize_search_sql
       self.search_sql = unless self.virtual?
         if association.nil?
@@ -311,6 +338,22 @@ module ActiveScaffold::DataStructures
     # the table.field name for this column, if applicable
     def field
       @field ||= [@active_record_class.connection.quote_column_name(@table), field_name].join('.')
+    end
+    
+    def estimate_weight
+      if singular_association?
+        400
+      elsif plural_association?
+        500
+      elsif [:created_at, :updated_at].include?(self.name) 
+        600
+      elsif [:name, :label, :title].include?(self.name)
+        100
+      elsif required?
+        200
+      else
+        300
+      end
     end
   end
 end

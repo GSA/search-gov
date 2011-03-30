@@ -3,7 +3,7 @@ require 'tmpdir'
 
 class FckeditorController < ActionController::Base
   UPLOADED = "/uploads"
-  UPLOADED_ROOT = RAILS_ROOT + "/public" + UPLOADED
+  UPLOADED_ROOT = Rails.root + "/public" + UPLOADED
   MIME_TYPES = [
     "image/jpg",
     "image/jpeg",
@@ -133,7 +133,7 @@ class FckeditorController < ActionController::Base
   end
   
   def upload_directory_path
-    uploaded = ActionController::Base.relative_url_root.to_s+"#{UPLOADED}/#{params[:Type]}"
+    uploaded = "#{UPLOADED}/#{params[:Type]}"
     "#{uploaded}#{params[:CurrentFolder]}"
   end
   

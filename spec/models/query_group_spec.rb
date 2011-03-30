@@ -6,9 +6,9 @@ describe QueryGroup do
     @valid_attributes = {:name=>"foo"}
   end
 
-  should_have_and_belong_to_many :grouped_queries, :order => 'query ASC'
-  should_validate_presence_of :name
-  should_validate_uniqueness_of :name
+  it { should have_and_belong_to_many :grouped_queries }
+  it { should validate_presence_of :name }
+  it { should validate_uniqueness_of :name }
 
   it "should create a new instance given valid attributes" do
     QueryGroup.create!(@valid_attributes)

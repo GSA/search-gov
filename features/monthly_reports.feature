@@ -20,16 +20,17 @@ Feature: Monthly Reports
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Monthly Reports
     And I select "February 2010" as the report date
     And I press "Get Usage Stats"
-    Then in "module_click_stats" I should see "FORM"
-    And in "module_click_stats" I should see "4,000"
-    And in "module_click_stats" I should see "FAQS"
-    And in "module_click_stats" I should see "300"
+    Then I should see "FORM"
+    And I should see "4,000"
+    And I should see "FAQS"
+    And I should see "300"
+    And I should not see "noblis"
     When I select "March 2010" as the report date
     And I press "Get Usage Stats"
-    Then in "module_click_stats" I should see "BWEB"
-    And in "module_click_stats" I should see "200"
-    And in "module_click_stats" I should see "BREL"
-    And in "module_click_stats" I should see "10"
+    Then I should see "BWEB"
+    And I should see "200"
+    And I should see "BREL"
+    And I should see "10"
 
   Scenario: Viewing most popular queries across all affiliates and locales
     Given I am logged in with email "analyst@fixtures.org" and password "admin"

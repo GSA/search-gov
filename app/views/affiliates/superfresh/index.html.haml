@@ -17,8 +17,8 @@
 
     .wrap-content
       %a{:name => "singleurl"}
-      - form_for @superfresh_url, {:url => affiliate_superfresh_urls_path(@affiliate)} do |f|
-        = f.label :url, "<h3>Single URL</h3>"
+      = form_for @superfresh_url, {:url => affiliate_superfresh_urls_path(@affiliate)} do |f|
+        = f.label :url, "<h3>Single URL</h3>".html_safe
         = f.text_field :url, :class => 'txt'
         = f.submit "Submit", :class => 'btn-submit submit'
       %span.note (for example, http://www.sample.gov/folder/mypage.html)
@@ -61,7 +61,7 @@
           %li
             %span
               http://www.sample.gov/3.html
-        - form_tag upload_affiliate_superfresh_urls_path(@affiliate), :multipart => true do
+        = form_tag upload_affiliate_superfresh_urls_path(@affiliate), :multipart => true do
           = file_field_tag 'superfresh_urls', :accept => 'text/plain', :class => 'file'
           = submit_tag "Upload", :class => 'submit btn-upload'
 

@@ -13,9 +13,17 @@ describe BoostedContent do
   end
 
   describe "Creating new instance of BoostedContent" do
-    should_validate_presence_of :url, :title, :description, :locale
-    should_validate_inclusion_of :locale, :in => SUPPORTED_LOCALES
-    should_belong_to :affiliate
+    it { should validate_presence_of :url }
+    it { should validate_presence_of :title }
+    it { should validate_presence_of :description }
+    it { should validate_presence_of :locale }
+    SUPPORTED_LOCALES.each do |locale|
+      it { should allow_value(locale).for(:locale) }
+    end
+    ["tz", "ps"].each do |locale|
+      it { should_not allow_value(locale).for(:locale) }
+    end
+    it { should belong_to :affiliate }
 
     it "should create a new instance given valid attributes" do
       BoostedContent.create!(@valid_attributes)
@@ -29,7 +37,7 @@ describe BoostedContent do
       BoostedContent.create!(@valid_attributes)
       duplicate = BoostedContent.new(@valid_attributes)
       duplicate.should_not be_valid
-      duplicate.errors[:url].should =~ /already been boosted/
+      duplicate.errors[:url].first.should =~ /already been boosted/
     end
 
     it "should allow a duplicate url for a different affiliate" do

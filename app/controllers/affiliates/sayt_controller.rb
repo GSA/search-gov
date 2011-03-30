@@ -6,14 +6,14 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
     @title = "Type-ahead Search - "
     @sayt_suggestion = SaytSuggestion.new
     @filter = params[:filter]
-    conditions = @filter.present? ? ["phrase LIKE ? AND ISNULL(deleted_at)", "#{@filter}%"] : ["ISNULL(deleted_at)"]
-    @sayt_suggestions = SaytSuggestion.paginate_by_affiliate_id(@affiliate.id, :conditions => conditions, :page => params[:page] || 1, :order => 'phrase ASC')
+    conditions = @filter.present? ? ["affiliate_id = ? AND phrase LIKE ? AND ISNULL(deleted_at)", @affiliate.id, "#{@filter}%"] : ["ISNULL(deleted_at)"]
+    @sayt_suggestions = SaytSuggestion.paginate(:conditions => conditions, :page => params[:page] || 1, :order => 'phrase ASC')
   end
   
   def create
     @sayt_suggestion = SaytSuggestion.find_or_initialize_by_affiliate_id_and_phrase(@affiliate.id, params[:sayt_suggestion][:phrase])
     if @sayt_suggestion.id.present? and @sayt_suggestion.deleted_at.nil?
-      flash[:error] = "Unable to add: <b>#{@sayt_suggestion.phrase}</b>; Please check the phrase and try again.  Note: <ul><li>Duplicate phrases are rejected.</li><li>Phrases must be at least 3 characters.</li></ul>"
+      flash[:error] = "Unable to add: <b>#{@sayt_suggestion.phrase}</b>; Please check the phrase and try again.  Note: <ul><li>Duplicate phrases are rejected.</li><li>Phrases must be at least 3 characters.</li></ul>".html_safe
     else
       @sayt_suggestion.is_protected = true
       @sayt_suggestion.popularity = SaytSuggestion::MAX_POPULARITY

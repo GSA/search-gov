@@ -16,7 +16,7 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
 
   def monthly_reports
     @title = "Monthly Reports - "
-    @most_recent_date = DailyUsageStat.most_recent_populated_date(@affiliate.name) || Date.today
+    @most_recent_date = DailyUsageStat.most_recent_populated_date(@affiliate.name) || Date.current
     @report_date = params[:date].blank? ? Date.yesterday : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)
     @monthly_totals = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month, @affiliate.name)
     @total_clicks = Click.monthly_totals_for_affiliate(@report_date.year, @report_date.month, @affiliate.name)

@@ -13,9 +13,9 @@ describe Spotlight do
   end
 
   describe "Creating new instance" do
-    should_validate_presence_of :title
-    should_validate_uniqueness_of :title
-    should_have_many :spotlight_keywords
+    it { should validate_presence_of :title }
+    it { should validate_uniqueness_of :title }
+    it { should have_many :spotlight_keywords }
 
     it "should create a new instance given valid attributes" do
       Spotlight.create!(@valid_attributes)

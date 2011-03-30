@@ -13,7 +13,7 @@ class Analytics::MonthlyReportsController < Analytics::AnalyticsController
   private
 
   def set_report_date
-    @most_recent_date = DailyUsageStat.most_recent_populated_date || Date.today
+    @most_recent_date = DailyUsageStat.most_recent_populated_date || Date.current
     @report_date = params[:date].blank? ? Date.yesterday : Date.civil(params[:date][:year].to_i, params[:date][:month].to_i)
   end
 end

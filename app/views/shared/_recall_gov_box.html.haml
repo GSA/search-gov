@@ -6,7 +6,7 @@
     .recall
       = render "recalls/industry_icon", :recall => hit.instance
       .details
-        = link_to highlight_like_solr(truncate_on_words(hit.instance.summary, 80), hit.highlights), hit.instance.recall_url
+        = link_to highlight_like_solr(truncate_on_words(hit.instance.summary, 80), hit.highlights).html_safe, hit.instance.recall_url
         = t(:in_english)
         .agency
           = t "industry.#{hit.instance.industry}.agency_name"

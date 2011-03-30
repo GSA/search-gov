@@ -13,7 +13,7 @@ Feature: Timeline for query
     | social pollution            | 70    | aff.gov       | en     |      1       |
     | jobs                        | 60    | aff.gov       | en     |      1       |
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Query Logs"
+    And I follow "Query logs"
     And I follow "social pollution"
     Then I should see "Query Timeline" within "title"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Query Timeline
@@ -35,7 +35,7 @@ Feature: Timeline for query
     | social pollution            | 70    | aff.gov       | en     |      1       |
     | irs                         | 50    | aff.gov       | en     |      1       |
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Query Logs"
+    And I follow "Query logs"
     And I fill in "query" with "pollution"
     And I press "Search"
     Then I should see "Matches for 'pollution'"

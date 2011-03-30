@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
 
 describe Admin::SaytSuggestionsUploadsController do
   fixtures :users
-  integrate_views
+  render_views
 
   before do
     activate_authlogic

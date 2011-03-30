@@ -15,8 +15,12 @@ describe Faq do
     Faq.create!(@valid_attributes)
   end
   
-  should_validate_presence_of :url, :question, :answer, :ranking, :locale
-  should_validate_numericality_of :ranking, :only_integer => true
+  it { should validate_presence_of :url }
+  it { should validate_presence_of :question }
+  it { should validate_presence_of :answer }
+  it { should validate_presence_of :ranking }
+  it { should validate_presence_of :locale }
+  it { should validate_numericality_of :ranking }
   
   describe "#search_for" do
     before do

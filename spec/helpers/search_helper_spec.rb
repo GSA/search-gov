@@ -184,8 +184,8 @@ describe SearchHelper do
       it "should return meta tags for the English site" do
         helper.should_receive(:english_locale?).and_return(true)
         content = helper.search_meta_tags
-        content.should have_tag("meta[name=description][content=Search.USA.gov is the U.S. government's official search engine.]")
-        content.should have_tag("meta[name=keywords][content=government images, government forms, government recalls, federal government, state government, american government, united states government, us government, government jobs, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web]")
+        content.should have_selector("meta[name='description'][content=\"Search.USA.gov is the U.S. government's official search engine.\"]")
+        content.should have_selector("meta[name='keywords'][content='government images, government forms, government recalls, federal government, state government, american government, united states government, us government, government jobs, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web']")
       end
     end
 
@@ -214,8 +214,8 @@ describe SearchHelper do
       it "should return meta tags for the English site" do
         helper.should_receive(:english_locale?).and_return(true)
         content = helper.image_search_meta_tags
-        content.should have_tag("meta[name=description][content=Search.USA.gov Images is the U.S. government's official search engine for images.]")
-        content.should have_tag("meta[name=keywords][content=government images, government imagery, government photographs, government photos, government photography, public domain images, copyright free images, satellite, american flag images, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web]")
+        content.should have_selector("meta[name='description'][content=\"Search.USA.gov Images is the U.S. government's official search engine for images.\"]")
+        content.should have_selector("meta[name='keywords'][content='government images, government imagery, government photographs, government photos, government photography, public domain images, copyright free images, satellite, american flag images, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web']")
       end
     end
 
@@ -306,7 +306,7 @@ describe SearchHelper do
 
     it "should return a link to the result url" do
       content = helper.tracked_click_thumbnail_image_link(@result, @onmousedown_attr)
-      content.should have_tag("a[href=aUrl][onmousedown=#{@onmousedown_attr}]")
+      content.should have_selector("a[href='aUrl'][onmousedown='#{@onmousedown_attr}']")
     end
   end
 
@@ -321,7 +321,7 @@ describe SearchHelper do
 
     it "should be a link to the result thumbnail url" do
       content = helper.tracked_click_thumbnail_link(@result, @onmousedown_attr)
-      content.should have_tag("a[href=aMediaUrl][onmousedown=#{@onmousedown_attr}]")
+      content.should have_selector("a[href='aMediaUrl'][onmousedown='#{@onmousedown_attr}']")
     end
   end
 

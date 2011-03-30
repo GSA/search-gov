@@ -4,9 +4,9 @@ describe SaytFilter do
   fixtures :sayt_filters
 
   describe "Creating new instance" do
-    should_validate_presence_of :phrase
-    should_validate_uniqueness_of :phrase
-
+    it { should validate_presence_of :phrase }
+    it { should validate_uniqueness_of :phrase }
+    
     it "should strip whitespace from phrase before inserting in DB" do
       phrase = " leading and trailing whitespaces "
       sf = SaytFilter.create!(:phrase => phrase)

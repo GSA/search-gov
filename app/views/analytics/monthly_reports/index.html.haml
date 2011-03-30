@@ -2,7 +2,7 @@
 #h1
   Monthly Usage
 
-- form_tag(monthly_reports_path, :method => :get) do
+= form_tag(monthly_reports_path, :method => :get) do
   = select_date @report_date, { :discard_day => true, :start_year => 2010, :end_year => @most_recent_date.year }
   = submit_tag 'Get Usage Stats'
 %br

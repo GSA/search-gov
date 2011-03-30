@@ -1,5 +1,5 @@
 .span-15
-  - form_for @user, :url => password_reset_path, :html => {:class=>"bordered", :method => :put} do |f|
+  = form_for @user, :url => password_reset_path, :html => {:class=>"bordered", :method => :put} do |f|
     %h1
       Change My Password
     = f.error_messages(:header_message => nil, :class => "error")

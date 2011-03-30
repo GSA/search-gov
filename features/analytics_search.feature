@@ -42,7 +42,7 @@ Feature: Analytics Search
     | social pollution             | 70    | aff.gov       | en     |      1       |
     | finochio                    | 80    | usasearch.gov | en     |      1       |
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Query Logs"
+    And I follow "Query logs"
     And I fill in "query" with "pollution"
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
     And I fill in "analytics_search_end_date" with a date representing "1" day ago

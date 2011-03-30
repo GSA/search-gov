@@ -11,7 +11,7 @@ module GoogleVisualization
         helpers.send(method, *args, &block)
       end
     end
-
+    
     def initialize(view_instance, collection, options={}, *args)
       @helpers = view_instance
       @collection = collection
@@ -76,11 +76,11 @@ module GoogleVisualization
       procedure = title_proc_tuple[1]
       "data.addColumn('#{google_type(procedure)}','#{title}');\n"
     end
-
+  
     def motion_chart_set_value(row, column, value)
       "data.setValue(#{row}, #{column}, #{Mappings.ruby_to_javascript_object(value)});\n"
     end
-
+  
     def google_type(procedure)
       Mappings.ruby_to_google_type(procedure.call(collection[0]).class)
     end
@@ -88,7 +88,7 @@ module GoogleVisualization
     def google_formatted_value(value)
       Mappings.ruby_to_javascript_object(value)
     end
-
+  
     def label_to_color(label)
       hashed_label = label.downcase.gsub(" |-","_").to_sym
       if @labels.has_key? hashed_label
@@ -136,7 +136,7 @@ module GoogleVisualization
 
     def render_foot
       "var #{@name} = new google.visualization.AnnotatedTimeLine(document.getElementById('#{@name}'));" +
-        "#{@name}.draw(#{@name}_data, {#{Mappings.ruby_to_javascript_options(@options)}});\n</script>"
+        "#{@name}.draw(#{@name}_data, {displayAnnotations: true});\n</script>"
     end
 
     def render_headings
@@ -197,7 +197,7 @@ module GoogleVisualization
       end
     end
 
-
+    
   end
 
   module Mappings
@@ -225,53 +225,24 @@ module GoogleVisualization
     def self.columns
       [:label, :time, :x, :y, :color, :bubble_size]
     end
-
-    # converts {:my_title=>'title', :my_width=>100} to "myTitle: 'title', myWidth: 100"
-    def self.ruby_to_javascript_options(options)
-      result = []
-      options.keys.map do |i|
-        if options[i].is_a?(Date)
-          result << "'#{i.to_s.camelize(:lower)}': #{ruby_to_javascript_object(options[i])}"
-        elsif options[i].is_a? String
-          result << "'#{i.to_s.camelize(:lower)}': '#{options[i]}'"
-        elsif options[i].is_a? Array
-          array_string = options[i].map{|j| "'#{j}'"}.join(",")
-          result << "'#{i.to_s.camelize(:lower)}': [#{array_string}]"
-        elsif options[i].is_a? Hash
-          h = options[i]
-          args = options[i].keys.map do |j|
-            if h[j].is_a? String
-              "'#{j}': '#{h[j]}'"
-            else
-              "'#{j}': #{h[j]}"
-            end
-          end
-          args = args.join(", ")
-          result << "'#{i.to_s.camelize(:lower)}': {#{args}}"
-        else
-          result << "'#{i.to_s.camelize(:lower)}': #{options[i]}"
-        end
-      end
-      result.join(", ")
-    end
   end
 
   module Helpers
     def setup_google_visualizations
-      "<script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>\n" +
-      javascript_tag("google.load(\"visualization\", \"1\", {packages:[\"motionchart\", \"annotatedtimeline\"]});")
+      ("<script type=\"text/javascript\" src=\"http://www.google.com/jsapi\"></script>\n" +
+      javascript_tag("google.load(\"visualization\", \"1\", {packages:[\"motionchart\", \"annotatedtimeline\"]});")).html_safe
     end
 
     def motion_chart_for(collection, options={}, *args, &block)
       motion_chart = MotionChart.new(self, collection, options)
       yield motion_chart
-      concat(motion_chart.render)
+      motion_chart.render.html_safe
     end
 
     def annotated_timeline_for(dates, options={}, *args, &block)
       annotated_timeline = AnnotatedTimeLine.new(self, dates, options)
       yield annotated_timeline
-      concat(annotated_timeline.render)
+      annotated_timeline.render.html_safe
     end
   end
 end

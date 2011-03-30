@@ -16,5 +16,9 @@ describe GovForm do
     GovForm.create!(@valid_attributes)
   end
   
-  should_validate_presence_of :name, :form_number, :agency, :description, :url
+  it { should validate_presence_of :name }
+  it { should validate_presence_of :form_number }
+  it { should validate_presence_of :agency }
+  it { should validate_presence_of :description }
+  it { should validate_presence_of :url }
 end

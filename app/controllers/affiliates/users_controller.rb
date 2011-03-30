@@ -18,7 +18,7 @@ class Affiliates::UsersController < Affiliates::AffiliatesController
         @affiliate.users << @user
         @email, @contact_name = nil, nil
         flash[:success] = "Successfully added #{@user.contact_name} (#{@user.email})"
-        Emailer.deliver_new_affiliate_user(@affiliate, @user, current_user)
+        Emailer.new_affiliate_user(@affiliate, @user, current_user).deliver
       end
     else
       @user = User.new_invited_by_affiliate(current_user, @affiliate, { :email => @email, :contact_name => @contact_name })

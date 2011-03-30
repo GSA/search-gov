@@ -1,5 +1,6 @@
 class Admin::SaytSuggestionsUploadsController < Admin::AdminController
   PAGE_TITLE = "SAYT Suggestions Bulk Upload"
+
   def new
     @page_title = PAGE_TITLE
   end

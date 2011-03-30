@@ -4,31 +4,51 @@ module ActiveScaffold::Actions
       base.class_eval do
         after_filter :clear_flashes
       end
+      base.helper_method :nested?
+      base.helper_method :beginning_of_chain
+      base.helper_method :new_model
     end
     def render_field
-      @record = if params[:in_place_editing]
-        active_scaffold_config.model.find params[:id]
-      else
-        active_scaffold_config.model.new
-      end
-      column = active_scaffold_config.columns[params[:column]]
       if params[:in_place_editing]
-        render :inline => "<%= active_scaffold_input_for(active_scaffold_config.columns[params[:update_column].to_sym]) %>"
-      elsif !column.nil?
-        value = column_value_from_param_value(@record, column, params[:value])
-        @record.send "#{column.name}=", value
-        @update_columns = Array(params[:update_column])
-        after_render_field(@record, column)
+        render_field_for_inplace_editing
+      else
+        render_field_for_update_columns
       end
     end
-
+    
     protected
+
+    def nested?
+      false
+    end
+
+    def render_field_for_inplace_editing
+      register_constraints_with_action_columns(nested.constrained_fields, active_scaffold_config.update.hide_nested_column ? [] : [:update]) if nested?
+      @record = find_if_allowed(params[:id], :update)
+      render :inline => "<%= active_scaffold_input_for(active_scaffold_config.columns[params[:update_column].to_sym]) %>"
+    end
+
+    def render_field_for_update_columns
+      @record = new_model
+      column = active_scaffold_config.columns[params[:column]]
+      unless column.nil?
+        if column.send_form_on_update_column
+          @record = update_record_from_params(@record, active_scaffold_config.update.columns, params[:record])
+        else
+          value = column_value_from_param_value(@record, column, params[:value])
+          @record.send "#{column.name}=", value
+        end
+        after_render_field(@record, column)
+        source_id = params.delete(:source_id)
+        render :partial => "render_field", :collection => Array(params[:update_columns]), :content_type => 'text/javascript', :locals => {:source_id => source_id}
+      end
+    end
     
     # override this method if you want to do something after render_field
     def after_render_field(record, column); end
 
-    def authorized_for?(*args)
-      active_scaffold_config.model.authorized_for?(*args)
+    def authorized_for?(options = {})
+      active_scaffold_config.model.authorized_for?(options)
     end
 
     def clear_flashes
@@ -105,10 +125,6 @@ module ActiveScaffold::Actions
   
     #Overide this method on your controller to provide model with named scopes
     def beginning_of_chain
-      if respond_to? :named_scopes_for_collection
-        ::ActiveSupport::Deprecation.warn(":named_scope_for_collection is deprecated, override beginning_of_chain instead", caller)
-        return model_with_named_scope
-      end
       active_scaffold_config.model
     end
         
@@ -125,12 +141,32 @@ module ActiveScaffold::Actions
       end
       conditions
     end
+
+    def new_model
+      model = beginning_of_chain
+      if model.columns_hash[model.inheritance_column]
+        build_options = {model.inheritance_column.to_sym => active_scaffold_config.model_id} if nested? && nested.association && nested.association.collection?
+        params = self.params # in new action inheritance_column must be in params
+        params = params[:record] || {} unless params[model.inheritance_column] # in create action must be inside record key
+        model = params.delete(model.inheritance_column).camelize.constantize if params[model.inheritance_column]
+      end
+      model.respond_to?(:build) ? model.build(build_options || {}) : model.new
+    end
+
     private
     def respond_to_action(action)
       respond_to do |type|
-        send("#{action}_formats").each do |format|
+        action_formats.each do |format|
           type.send(format){ send("#{action}_respond_to_#{format}") }
         end
+      end
+    end
+
+    def action_formats
+      @action_formats ||= if respond_to? "#{action_name}_formats"
+        send("#{action_name}_formats")
+      else
+        (default_formats + active_scaffold_config.formats).uniq
       end
     end
 

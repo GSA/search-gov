@@ -109,7 +109,7 @@ describe Affiliates::ApiController do
   end
 
   describe "#index" do
-    integrate_views
+    render_views
     before do
       @user = users(:affiliate_manager)
       UserSession.create(@user)

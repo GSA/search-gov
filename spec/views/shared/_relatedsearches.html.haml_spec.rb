@@ -5,7 +5,6 @@ describe "shared/_relatedsearches.html.haml" do
     @related_searches = ["first-1 keeps the hyphen", "second one is a string", "CIA stays capitalized", "utilización de gafas del sol durante el tiempo"]
     @search.stub!(:related_search).and_return @related_searches
     @search.stub!(:queried_at_seconds).and_return(1271978870)
-    assigns[:search] = @search
   end
 
   context "when page is displayed" do
@@ -37,42 +36,31 @@ describe "shared/_relatedsearches.html.haml" do
       @search.stub!(:agency).and_return nil
 
       10.times { @search_results << @search_result }
+      assign(:search, @search)
     end
 
     it "should display related search results" do
-      render :locals => { :search => @search }
-      response.should have_tag('h3', :text => 'Related Topics')
-      response.should have_tag('ul', :id => 'relatedsearch')
-      response.should have_tag('a', :text => 'CIA Stays Capitalized')
-      response.should have_tag('a', :text => 'First-1 Keeps the Hyphen')
-      response.should have_tag('a', :text => 'Second One Is a String')
-      response.should have_tag('a', :text => 'Utilización de Gafas del Sol durante el Tiempo')
+      render
+      rendered.should have_selector('h3', :content => 'Related Topics')
+      rendered.should have_selector('ul', :id => 'relatedsearch')
+      rendered.should have_selector('a', :content => 'CIA Stays Capitalized')
+      rendered.should have_selector('a', :content => 'First-1 Keeps the Hyphen')
+      rendered.should have_selector('a', :content => 'Second One Is a String')
+      rendered.should have_selector('a', :content => 'Utilización de Gafas del Sol durante el Tiempo')
     end
 
     context "when there are related FAQ results" do
       before do
         @faqs = Faq.search_for(@search.query)
+        @faqs.stub!(:total).and_return 3
         @search.stub!(:faqs).and_return @faqs
+        assign(:search, @search)
       end
 
       it "should display related FAQ results" do
-        render :locals => { :search => @search }
-        response.should have_tag('ul', :id => 'related_faqs')
+        render
+        rendered.should have_selector('ul', :id => 'related_faqs')
       end
     end
-
-    context "when there are related GovForm results" do
-      before do
-        @gov_forms = GovForm.search_for(@search.query)
-        @search.stub!(:gov_forms).and_return @gov_forms
-      end
-
-      it "should display related GovForm results" do
-        render :locals => { :search => @search }
-        response.should have_tag('ul', :id => 'related_gov_forms')
-      end
-    end
-
   end
-
 end

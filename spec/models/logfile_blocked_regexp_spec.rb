@@ -10,6 +10,6 @@ describe LogfileBlockedRegexp do
     LogfileBlockedRegexp.create!(@valid_attributes)
   end
 
-  should_validate_presence_of :regexp
-  should_validate_uniqueness_of :regexp
+  it { should validate_presence_of :regexp }
+  it { should validate_uniqueness_of :regexp }
 end

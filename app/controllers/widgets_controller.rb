@@ -6,7 +6,6 @@ class WidgetsController < ApplicationController
 
   def trending_searches
     @active_top_searches = TopSearch.find_active_entries
-    render :partial => 'shared/trending_searches', :layout => true
   end
 end
 

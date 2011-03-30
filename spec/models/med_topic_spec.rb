@@ -1,94 +1,92 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe MedTopic do
-
   before(:all) do
-
     MedTopic.destroy_all
     MedGroup.destroy_all
 
     @valid_attributes = {
-		:medline_title => "Supreme Paranoia", 
-		:medline_url => "#{MedTopic::MEDLINE_BASE_URL}spanish/huevos_rancheros.html",
-		:locale => "es",
-		:medline_tid => 42
+		  :medline_title => "Supreme Paranoia", 
+		  :medline_url => "#{MedTopic::MEDLINE_BASE_URL}spanish/huevos_rancheros.html",
+		  :locale => "es",
+		  :medline_tid => 42
     }
-
-	@medline_subset_tiny_vocab_xml = File.read( RAILS_ROOT + "/spec/fixtures/xml/medline_vocab_2011-04-23_tiny.xml")
-	@medline_subset_sample_vocab_xml = File.read( RAILS_ROOT + "/spec/fixtures/xml/medline_vocab_2011-04-23_sample.xml")
-	@medline_subset_sample_vocab_xml_1 = File.read( RAILS_ROOT + "/spec/fixtures/xml/medline_vocab_2011-04-23_sample_1.xml")
-    @medline_topic_ample_summaries_unlinted = MedTopic.medline_batch_from_json_file( RAILS_ROOT + "/spec/fixtures/json/medline_topic_summaries.json" ) 
-    @medline_topic_sample_summaries_linted = MedTopic.medline_batch_from_json_file( RAILS_ROOT + "/spec/fixtures/json/medline_topic_summaries_linted.json" ) 
-    @medline_topic_sample_summaries_unlinted = MedTopic.medline_batch_from_json_file( RAILS_ROOT + "/spec/fixtures/json/medline_topic_summaries.json" ) 
+    
+	  @medline_subset_tiny_vocab_xml = File.read( Rails.root.to_s + "/spec/fixtures/xml/medline_vocab_2011-04-23_tiny.xml")
+	  @medline_subset_sample_vocab_xml = File.read( Rails.root.to_s + "/spec/fixtures/xml/medline_vocab_2011-04-23_sample.xml")
+	  @medline_subset_sample_vocab_xml_1 = File.read( Rails.root.to_s + "/spec/fixtures/xml/medline_vocab_2011-04-23_sample_1.xml")
+    @medline_topic_ample_summaries_unlinted = MedTopic.medline_batch_from_json_file( Rails.root.to_s + "/spec/fixtures/json/medline_topic_summaries.json" ) 
+    @medline_topic_sample_summaries_linted = MedTopic.medline_batch_from_json_file( Rails.root.to_s + "/spec/fixtures/json/medline_topic_summaries_linted.json" ) 
+    @medline_topic_sample_summaries_unlinted = MedTopic.medline_batch_from_json_file( Rails.root.to_s + "/spec/fixtures/json/medline_topic_summaries.json" ) 
 
     @empty_vocab = { :topics => {}, :groups => {} }
 
-	@medline_subset_tiny_vocab = { 
-		:topics => {
-			1867 => {
-				:medline_title => "Agua potable", 
-				:synonyms => ["Agua para beber"],
-				:locale => "es",
-				:medline_url => "http://www.nlm.nih.gov/medlineplus/spanish/drinkingwater.html",
-				:summary_html => "<p>Todas las criaturas vivas necesitan agua sana y potable...</p>",
-				:related_groups => [26, 28],
-				:related_topics => [],
-				:lang_map => 1435
-			},
-			1435 => {
-				:medline_title => "Drinking Water", 
-				:synonyms => [],
-				:locale => "en",
-				:medline_url => "http://www.nlm.nih.gov/medlineplus/drinkingwater.html",
-				:summary_html => "<p>Every living creature needs clean and safe drinking water...</p>",
-				:related_groups => [26, 28],
-				:related_topics => [218],
-				:lang_map => 1867
-			},
-			218 => {
-				:medline_title => "Drowning", 
-				:synonyms => [],
-				:locale => "en",
-				:medline_url => "http://www.nlm.nih.gov/medlineplus/drowning.html",
-				:summary_html => "<p>If you are under water long enough, your lungs fill with water...</p>",
-				:related_groups => [19],
-				:related_topics => [],
-				:lang_map => nil
-			}	
-		}, 
-		:groups => {
-			19 => {
-				"en" => {
-					:medline_title => "Injuries and Wounds",
-					:medline_url => "http://www.nlm.nih.gov/medlineplus/injuriesandwounds.html"
-				}
-			},
-			28 => {
-				"en" => {
-					:medline_title => "Poisoning, Toxicology, Environmental Health",
-					:medline_url => "http://www.nlm.nih.gov/medlineplus/poisoningtoxicologyenvironmentalhealth.html"
-				},
-				"es" => {
-					:medline_title => "Envenenamientos, toxicología y salud ambiental",
-					:medline_url => "http://www.nlm.nih.gov/medlineplus/spanish/poisoningtoxicologyenvironmentalhealth.html"
-				}
-			},
-			26 => {
-				"en" => {
-					:medline_title => "Food and Nutrition",
-					:medline_url => "http://www.nlm.nih.gov/medlineplus/foodandnutrition.html"
-				},
-				"es" => {
-					:medline_title => "Alimentos y nutrición",
-					:medline_url => "http://www.nlm.nih.gov/medlineplus/spanish/foodandnutrition.html"
-				}
-			}
-		} 
-	}
+	  @medline_subset_tiny_vocab = { 
+		  :topics => {
+			  1867 => {
+				  :medline_title => "Agua potable", 
+				  :synonyms => ["Agua para beber"],
+				  :locale => "es",
+				  :medline_url => "http://www.nlm.nih.gov/medlineplus/spanish/drinkingwater.html",
+				  :summary_html => "<p>Todas las criaturas vivas necesitan agua sana y potable...</p>",
+				  :related_groups => [26, 28],
+				  :related_topics => [],
+				  :lang_map => 1435
+			  },
+			  1435 => {
+				  :medline_title => "Drinking Water", 
+				  :synonyms => [],
+				  :locale => "en",
+				  :medline_url => "http://www.nlm.nih.gov/medlineplus/drinkingwater.html",
+				  :summary_html => "<p>Every living creature needs clean and safe drinking water...</p>",
+				  :related_groups => [26, 28],
+				  :related_topics => [218],
+				  :lang_map => 1867
+			  },
+			  218 => {
+				  :medline_title => "Drowning", 
+				  :synonyms => [],
+				  :locale => "en",
+				  :medline_url => "http://www.nlm.nih.gov/medlineplus/drowning.html",
+				  :summary_html => "<p>If you are under water long enough, your lungs fill with water...</p>",
+				  :related_groups => [19],
+				  :related_topics => [],
+				  :lang_map => nil
+			  }	
+		  }, 
+		  :groups => {
+			  19 => {
+				  "en" => {
+					  :medline_title => "Injuries and Wounds",
+					  :medline_url => "http://www.nlm.nih.gov/medlineplus/injuriesandwounds.html"
+				  }
+			  },
+			  28 => {
+				  "en" => {
+					  :medline_title => "Poisoning, Toxicology, Environmental Health",
+					  :medline_url => "http://www.nlm.nih.gov/medlineplus/poisoningtoxicologyenvironmentalhealth.html"
+				  },
+				  "es" => {
+					  :medline_title => "Envenenamientos, toxicología y salud ambiental",
+					  :medline_url => "http://www.nlm.nih.gov/medlineplus/spanish/poisoningtoxicologyenvironmentalhealth.html"
+				  }
+			  },
+			  26 => {
+				  "en" => {
+					  :medline_title => "Food and Nutrition",
+					  :medline_url => "http://www.nlm.nih.gov/medlineplus/foodandnutrition.html"
+				  },
+				  "es" => {
+					  :medline_title => "Alimentos y nutrición",
+					  :medline_url => "http://www.nlm.nih.gov/medlineplus/spanish/foodandnutrition.html"
+				  }
+			  }
+		  } 
+	  }
 
-	@vocab_empty_to_tiny_delta = {
+	  @vocab_empty_to_tiny_delta = {
 		  :create_group => {
-			{ :medline_gid=>19, :locale=>"en" } => {
+			  { :medline_gid=>19, :locale=>"en" } => {
 				:medline_title => "Injuries and Wounds", 
 				:medline_url   => "http://www.nlm.nih.gov/medlineplus/injuriesandwounds.html"
 			}, 
@@ -110,159 +108,156 @@ describe MedTopic do
 			}
 		  },
 		  :create_topic => {
-			{ :medline_tid => 1867 } => {
-				:medline_title  => "Agua potable", 
-				:medline_url    => "http://www.nlm.nih.gov/medlineplus/spanish/drinkingwater.html", 
-				:synonyms       => ["Agua para beber"], 
-				:related_groups => [26, 28], 
-				:related_topics => [], 
-				:summary_html   => "<p>Todas las criaturas vivas necesitan agua sana y potable...</p>", 
-				:locale         => "es", 
-				:lang_map       => 1435
-			}, 
-			{ :medline_tid =>  218 } => {
-				:medline_title  => "Drowning", 
-				:medline_url    => "http://www.nlm.nih.gov/medlineplus/drowning.html", 
-				:synonyms       => [], 
-				:related_groups => [19], 
-				:related_topics => [], 
-				:summary_html   => "<p>If you are under water long enough, your lungs fill with water...</p>", 
-				:locale         => "en", 
-				:lang_map       => nil
-			}, 
-			{ :medline_tid => 1435 } => {
-				:medline_title  => "Drinking Water", 
-				:medline_url    => "http://www.nlm.nih.gov/medlineplus/drinkingwater.html", 
-				:synonyms       => [], 
-				:related_groups => [26, 28], 
-				:related_topics => [218], 
-				:summary_html   => "<p>Every living creature needs clean and safe drinking water...</p>", 
-				:locale         => "en", 
-				:lang_map       => 1867
-			}
+  			{ :medline_tid => 1867 } => {
+  				:medline_title  => "Agua potable", 
+  				:medline_url    => "http://www.nlm.nih.gov/medlineplus/spanish/drinkingwater.html", 
+  				:synonyms       => ["Agua para beber"], 
+  				:related_groups => [26, 28], 
+  				:related_topics => [], 
+  				:summary_html   => "<p>Todas las criaturas vivas necesitan agua sana y potable...</p>", 
+  				:locale         => "es", 
+  				:lang_map       => 1435
+  			}, 
+  			{ :medline_tid =>  218 } => {
+  				:medline_title  => "Drowning", 
+  				:medline_url    => "http://www.nlm.nih.gov/medlineplus/drowning.html", 
+  				:synonyms       => [], 
+  				:related_groups => [19], 
+  				:related_topics => [], 
+  				:summary_html   => "<p>If you are under water long enough, your lungs fill with water...</p>", 
+  				:locale         => "en", 
+  				:lang_map       => nil
+  			}, 
+  			{ :medline_tid => 1435 } => {
+  				:medline_title  => "Drinking Water", 
+  				:medline_url    => "http://www.nlm.nih.gov/medlineplus/drinkingwater.html", 
+  				:synonyms       => [], 
+  				:related_groups => [26, 28], 
+  				:related_topics => [218], 
+  				:summary_html   => "<p>Every living creature needs clean and safe drinking water...</p>", 
+  				:locale         => "en", 
+  				:lang_map       => 1867
+  			}
 		  }
-	}
+	  }
 
-	@vocab_tiny_to_empty_delta = {
-			:delete_topic => [
-				{ :medline_tid =>  218 },
-				{ :medline_tid => 1435 }, 
-				{ :medline_tid => 1867 } 
-			], 
-			:delete_group => [
-				{ :medline_gid => 19, :locale => "en" }, 
-				{ :medline_gid => 26, :locale => "en" },
-				{ :medline_gid => 26, :locale => "es" }, 
-				{ :medline_gid => 28, :locale => "en" }, 
-				{ :medline_gid => 28, :locale => "es" } 
-			]
-	}
+  	@vocab_tiny_to_empty_delta = {
+  			:delete_topic => [
+  				{ :medline_tid =>  218 },
+  				{ :medline_tid => 1435 }, 
+  				{ :medline_tid => 1867 } 
+  			], 
+  			:delete_group => [
+  				{ :medline_gid => 19, :locale => "en" }, 
+  				{ :medline_gid => 26, :locale => "en" },
+  				{ :medline_gid => 26, :locale => "es" }, 
+  				{ :medline_gid => 28, :locale => "en" }, 
+  				{ :medline_gid => 28, :locale => "es" } 
+  			]
+  	}
 
 
-	@small_sample_vocab = {
+  	@small_sample_vocab = {
 
-		:topics => {
+  		:topics => {
 
-			3 => { :medline_title => "tea", :synonyms => ["tea1", "tea2", "tea3"], 
-				:locale => "en",
-				:lang_map => 13,
-				:related_groups => [2, 3], 
-				:related_topics => []
-			},
+  			3 => { :medline_title => "tea", :synonyms => ["tea1", "tea2", "tea3"], 
+  				:locale => "en",
+  				:lang_map => 13,
+  				:related_groups => [2, 3], 
+  				:related_topics => []
+  			},
 
-			4 => { :medline_title => "teb", :synonyms => ["teb1"],                 
-				:locale => "en",
-				:lang_map => 14,
-				:related_groups => [2, 3],
-				:related_topics => [] 
-			},
+  			4 => { :medline_title => "teb", :synonyms => ["teb1"],                 
+  				:locale => "en",
+  				:lang_map => 14,
+  				:related_groups => [2, 3],
+  				:related_topics => [] 
+  			},
 
-			5 => { :medline_title => "tec", :synonyms => [],                       
-				:locale => "en",
-				:lang_map => 15,
-				:related_groups => [2, 3],
-				:related_topics => [] 
-			},
+  			5 => { :medline_title => "tec", :synonyms => [],                       
+  				:locale => "en",
+  				:lang_map => 15,
+  				:related_groups => [2, 3],
+  				:related_topics => [] 
+  			},
 
-			7 => { :medline_title => "tee", :synonyms => ["tee1", "tee2", "tee3"], 
-				:locale => "en",
-				:lang_map => nil,
-				:related_groups => [2, 3],
-				:related_topics => [] 
-			},
+  			7 => { :medline_title => "tee", :synonyms => ["tee1", "tee2", "tee3"], 
+  				:locale => "en",
+  				:lang_map => nil,
+  				:related_groups => [2, 3],
+  				:related_topics => [] 
+  			},
 
-			8 => { :medline_title => "txf", :synonyms => ["tef1", "tef2", "tef3"], 
-				:locale => "en",
-				:lang_map => 18,
-				:related_groups => [2, 3, 4],
-				:related_topics => [] 
-			},
+  			8 => { :medline_title => "txf", :synonyms => ["tef1", "tef2", "tef3"], 
+  				:locale => "en",
+  				:lang_map => 18,
+  				:related_groups => [2, 3, 4],
+  				:related_topics => [] 
+  			},
 
-			9 => { :medline_title => "teg", :synonyms => ["teg1", "teg2", "teg3"], 
-				:locale => "en",
-				:lang_map => 19,
-				:related_groups => [2, 3, 4, 5],
-				:related_topics => [] 
-			},
+  			9 => { :medline_title => "teg", :synonyms => ["teg1", "teg2", "teg3"], 
+  				:locale => "en",
+  				:lang_map => 19,
+  				:related_groups => [2, 3, 4, 5],
+  				:related_topics => [] 
+  			},
 
-			13 => { :medline_title => "tsa", :synonyms => ["tsa1", "tsa2", "tsa3"], 
-				:locale => "es",
-				:lang_map => 13,
-				:related_groups => [2, 3],
-				:related_topics => [] 
-			},
-			14 => { :medline_title => "tsb", :synonyms => ["tsb1"],                 
-				:locale => "es",
-				:lang_map => 4,
-				:related_groups => [2, 3],
-				:related_topics => [] 
-			},
-			15 => { :medline_title => "tsc", :synonyms => [],                       
-				:locale => "es",
-				:lang_map => 5,
-				:related_groups => [2, 3],
-				:related_topics => [] 
-			},
-			16 => { :medline_title => "tsd", :synonyms => ["tsd1", "tsd2", "tsd3"], 
-				:locale => "es",
-				:lang_map => nil,
-				:related_groups => [2, 3],
-				:related_topics => [] 
-			},
-			18 => { :medline_title => "txf", :synonyms => ["tsf1", "tsf2"],         
-				:locale => "es",
-				:lang_map => 8,
-				:related_groups => [2, 3, 4],
-				:related_topics => [] 
-			},
-			19 => { :medline_title => "tsg", :synonyms => ["tsg1", "tsg2", "tsg3", "teg"], 
-				:locale => "es",
-				:lang_map => 9,
-				:related_groups => [2, 3, 4, 5],
-				:related_topics => [] 
-			}
-	    },
+  			13 => { :medline_title => "tsa", :synonyms => ["tsa1", "tsa2", "tsa3"], 
+  				:locale => "es",
+  				:lang_map => 13,
+  				:related_groups => [2, 3],
+  				:related_topics => [] 
+  			},
+  			14 => { :medline_title => "tsb", :synonyms => ["tsb1"],                 
+  				:locale => "es",
+  				:lang_map => 4,
+  				:related_groups => [2, 3],
+  				:related_topics => [] 
+  			},
+  			15 => { :medline_title => "tsc", :synonyms => [],                       
+  				:locale => "es",
+  				:lang_map => 5,
+  				:related_groups => [2, 3],
+  				:related_topics => [] 
+  			},
+  			16 => { :medline_title => "tsd", :synonyms => ["tsd1", "tsd2", "tsd3"], 
+  				:locale => "es",
+  				:lang_map => nil,
+  				:related_groups => [2, 3],
+  				:related_topics => [] 
+  			},
+  			18 => { :medline_title => "txf", :synonyms => ["tsf1", "tsf2"],         
+  				:locale => "es",
+  				:lang_map => 8,
+  				:related_groups => [2, 3, 4],
+  				:related_topics => [] 
+  			},
+  			19 => { :medline_title => "tsg", :synonyms => ["tsg1", "tsg2", "tsg3", "teg"], 
+  				:locale => "es",
+  				:lang_map => 9,
+  				:related_groups => [2, 3, 4, 5],
+  				:related_topics => [] 
+  			}
+  	    },
 
-		:groups => {
-			2 => { "en" => { :medline_title => "gea" }, "es" => { :medline_title => "gsa" } },
-			3 => { "en" => { :medline_title => "geb" }, "es" => { :medline_title => "gsb" } },
-			4 => { "en" => { :medline_title => "gec" }, "es" => { :medline_title => "gsc" } },
-			5 => { "en" => { :medline_title => "ged" }, "es" => { :medline_title => "gsd" } },
-		}
+  		:groups => {
+  			2 => { "en" => { :medline_title => "gea" }, "es" => { :medline_title => "gsa" } },
+  			3 => { "en" => { :medline_title => "geb" }, "es" => { :medline_title => "gsb" } },
+  			4 => { "en" => { :medline_title => "gec" }, "es" => { :medline_title => "gsc" } },
+  			5 => { "en" => { :medline_title => "ged" }, "es" => { :medline_title => "gsd" } },
+  		}
 
-	} 
+  	} 
 
     @medline_lint_xml = "<MedicalTopics><MedicalTopic ID=\"T1867\" langcode=\"Spanish\"><ID>1867</ID><MedicalTopicName>Agua potable</MedicalTopicName><URL>http://www.nlm.nih.gov/medlineplus/spanish/drinkingwater.html</URL><FullSummary>&lt;o&gt;&lt;p&gt;Todas las criaturas vivas necesitan agua sana y potable...&lt;/p&gt;&lt;/o&gt;</FullSummary></MedicalTopic></MedicalTopics>"
-
   end
 
-
-
-  should_validate_presence_of :medline_title, :locale, :medline_tid
-
+  it { should validate_presence_of :medline_title }
+  it { should validate_presence_of :locale }
+  it { should validate_presence_of :medline_tid }
 
   describe "basic rails" do
-
     it "should create a new instance given valid attributes" do
       MedTopic.create!(@valid_attributes)
     end
@@ -377,7 +372,7 @@ describe MedTopic do
 #			linted_summaries[name] = MedTopic.lint_medline_topic_summary_html( summary ) { |msg| msgs << msg }
 #		  }
 #
-#		  File.open(File.join(RAILS_ROOT, "tmp", "medline_summaries.json"), "w") { |json| json << linted_summaries.to_json }
+#		  File.open(File.join(Rails.root.to_s, "tmp", "medline_summaries.json"), "w") { |json| json << linted_summaries.to_json }
 
 		  @medline_topic_sample_summaries_unlinted.each { |name, summary|
 			msgs = []
@@ -424,29 +419,31 @@ describe MedTopic do
 
 
   describe "medline_xml_for_date" do
-
     before(:all) do
-	  @cached_file_path = MedTopic.cached_file_path( "mplus_vocab_2011-04-23.xml" )
-	  File.delete( @cached_file_path ) if File.exist?( @cached_file_path )
-
-      response = mock("response")
-      Net::HTTP.stub!(:get_response).and_return(response)
-      @mock_sample_xml_content = File.read(RAILS_ROOT + "/spec/fixtures/xml/medline_vocab_2011-04-23_sample.xml")
-      response.stub!(:body).and_return(@mock_sample_xml_content)
+	    @cached_file_path = MedTopic.cached_file_path( "mplus_vocab_2011-04-23.xml" )
+	    File.delete( @cached_file_path ) if File.exist?( @cached_file_path )
     end
 
-    it "should cache the xml" do
-      starting_fetch_count = MedTopic.fetch_count
-	  File.exist?( @cached_file_path ).should be false
-      xml_a = MedTopic.medline_xml_for_date( Date.parse("2011-04-26") )  
-	  xml_a.should eql @mock_sample_xml_content
-      MedTopic.fetch_count.should eql(starting_fetch_count + 1)
-	  File.exist?( @cached_file_path ).should be true
-      xml_b = MedTopic.medline_xml_for_date( Date.parse("2011-04-26") ) 
-	  xml_b.should eql @mock_sample_xml_content
-      MedTopic.fetch_count.should eql(starting_fetch_count + 1)
+    context "when getting data from medline" do
+      before do
+        response = mock("response")
+        Net::HTTP.stub!(:get_response).and_return(response)
+        @mock_sample_xml_content = File.read(Rails.root.to_s + "/spec/fixtures/xml/medline_vocab_2011-04-23_sample.xml")
+        response.stub!(:body).and_return(@mock_sample_xml_content)
+      end
+      
+      it "should cache the xml" do
+        starting_fetch_count = MedTopic.fetch_count
+	      File.exist?( @cached_file_path ).should be false
+        xml_a = MedTopic.medline_xml_for_date( Date.parse("2011-04-26") )  
+	      xml_a.should eql @mock_sample_xml_content
+        MedTopic.fetch_count.should eql(starting_fetch_count + 1)
+	      File.exist?( @cached_file_path ).should be true
+        xml_b = MedTopic.medline_xml_for_date( Date.parse("2011-04-26") ) 
+	      xml_b.should eql @mock_sample_xml_content
+        MedTopic.fetch_count.should eql(starting_fetch_count + 1)
+      end
     end
-
   end
 
 

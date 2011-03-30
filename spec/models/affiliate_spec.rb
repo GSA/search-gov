@@ -15,18 +15,21 @@ describe Affiliate do
   end
 
   describe "Creating new instance of Affiliate" do
-    should_validate_presence_of :display_name
-    should_validate_uniqueness_of :name, :case_sensitive => false
-    should_validate_length_of :name, :within=> (3..33)
-    should_not_allow_values_for :name, "<IMG SRC=", "259771935505'", "spacey name", "NewAff"
-    should_allow_values_for :name, "data.gov", "ct-new", "some_aff", "123"
-    should_have_and_belong_to_many :users
-    should_have_many :boosted_contents
-    should_have_many :sayt_suggestions
-    should_have_many :superfresh_urls
-    should_have_many :calais_related_searches
-    should_belong_to :affiliate_template
-    should_belong_to :staged_affiliate_template
+    it { should validate_presence_of :display_name }
+    it { should validate_uniqueness_of(:name) }
+    it { should ensure_length_of(:name).is_at_least(3).is_at_most(33) }
+    ["<IMG SRC=", "259771935505'", "spacey name", "NewAff"].each do |value|
+      it { should_not allow_value(value).for(:name) }
+    end
+    ["data.gov", "ct-new", "some_aff", "123"].each do |value|
+      it { should allow_value(value).for(:name) }
+    end
+    it { should have_and_belong_to_many :users }
+    it { should have_many :boosted_contents }
+    it { should have_many :sayt_suggestions }
+    it { should have_many :calais_related_searches }
+    it { should belong_to :affiliate_template }
+    it { should belong_to :staged_affiliate_template }
 
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_create_attributes)
@@ -368,7 +371,9 @@ describe Affiliate do
   end
 
   describe "#ordered" do
-    it { should have_scope(:ordered) }
+    it "should include a scope called 'ordered'" do
+      Affiliate.scopes.include?(:ordered).should be_true
+    end
   end
 
   describe "#sync_staged_attributes" do

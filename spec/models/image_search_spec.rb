@@ -4,7 +4,7 @@ describe ImageSearch do
   before do
     # Image search for "White House"
     uri = "http://api.bing.net/json.aspx?image.offset=0&image.count=10&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Image+RelatedSearch&Options=EnableHighlighting&query=White%20House%20(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil)"
-    @body = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_image_results_for_white_house.json")
+    @body = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_image_results_for_white_house.json")
   end
 
   subject do
@@ -54,9 +54,9 @@ describe ImageSearch do
 
       it "should generate a JSON representation of total, start and end records, spelling suggestions, related searches and search results" do
         json = @search.to_json
-        json.should contain(/total/)
-        json.should contain(/startrecord/)
-        json.should contain(/endrecord/)
+        json.should =~ /total/
+        json.should =~ /startrecord/
+        json.should =~ /endrecord/
       end
 
       context "when an error occurs" do
@@ -66,7 +66,7 @@ describe ImageSearch do
 
         it "should output an error if an error is detected" do
           json = @search.to_json
-          json.should contain(/"error":"Some error"/)
+          json.should =~ /"error":"Some error"/
         end
       end
     end

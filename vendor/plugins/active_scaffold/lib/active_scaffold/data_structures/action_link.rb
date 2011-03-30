@@ -13,7 +13,11 @@ module ActiveScaffold::DataStructures
       self.crud_type = :create if [:create, :new].include?(action.to_sym)
       self.crud_type = :update if [:edit, :update].include?(action.to_sym)
       self.crud_type ||= :read
+      self.parameters = {}
       self.html_options = {}
+      self.column = nil
+      self.image = nil
+      self.dynamic_parameters = nil
 
       # apply quick properties
       options.each_pair do |k, v|
@@ -26,10 +30,22 @@ module ActiveScaffold::DataStructures
     attr_accessor :action
     
     # the controller for this action link. if nil, the current controller should be assumed.
-    attr_accessor :controller
+    attr_writer :controller
+
+    def controller
+      @controller = @controller.call if @controller.is_a?(Proc)
+      @controller
+    end
+
+    def static_controller?
+      !(@controller.is_a?(Proc) || (@controller == :polymorph))
+    end
 
     # a hash of request parameters
     attr_accessor :parameters
+
+    # a block for dynamic_parameters
+    attr_accessor :dynamic_parameters
 
     # the RESTful method
     attr_accessor :method
@@ -39,6 +55,9 @@ module ActiveScaffold::DataStructures
     def label
       @label.is_a?(Symbol) ? as_(@label) : @label
     end
+    
+    # image to use {:name => 'arrow.png', :size => '16x16'}
+    attr_accessor :image
 
     # if the action requires confirmation
     attr_writer :confirm
@@ -62,15 +81,17 @@ module ActiveScaffold::DataStructures
     # note that this is only the UI part of the security. to prevent URL hax0rz, you also need security on requests (e.g. don't execute update method unless authorized).
     attr_writer :security_method
     def security_method
-      @security_method || "#{self.label.underscore.downcase.gsub(/ /, '_')}_authorized?"
+      @security_method || "#{self.action}_authorized?"
     end
 
     def security_method_set?
       !!@security_method
     end
-
+    
+    attr_accessor :ignore_method
+    
     # the crud type of the (eventual?) action. different than :method, because this crud action may not be imminent.
-    # this is used to determine record-level authorization (e.g. record.authorized_for?(:action => link.crud_type).
+    # this is used to determine record-level authorization (e.g. record.authorized_for?(:crud_type => link.crud_type).
     # options are :create, :read, :update, and :delete
     attr_accessor :crud_type
 
@@ -134,19 +155,21 @@ module ActiveScaffold::DataStructures
 
     # what type of link this is. currently supported values are :collection and :member.
     attr_accessor :type
-    # deprecated
-    def type=(value)
-      old_value = value
-      value = case value
-        when :table then :collection
-        when :record then :member
-        else value
-      end
-      ::ActiveSupport::Deprecation.warn(":#{old_value} is deprecated, use :#{value} instead", caller) if old_value != value
-      @type = value
-    end
 
     # html options for the link
     attr_accessor :html_options
+    
+    # nested action_links are referencing a column
+    attr_accessor :column
+    
+    # indicates that this a nested_link
+    def nested_link?
+      @column || (parameters && parameters[:named_scope])
+    end
+    
+    # Internal use: generated eid for this action_link
+    attr_accessor :eid
+    
+    
   end
 end

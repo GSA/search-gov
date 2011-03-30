@@ -1,4 +1,4 @@
-- form_for(@boosted_content || :boosted_content, :url => @boosted_content.new_record? ? affiliate_boosted_contents_path(@affiliate) : affiliate_boosted_content_path(@affiliate, @boosted_content), :html => {:class=> "bordered"}) do |f|
+= form_for(@boosted_content || :boosted_content, :url => @boosted_content.new_record? ? affiliate_boosted_contents_path(@affiliate) : affiliate_boosted_content_path(@affiliate, @boosted_content), :html => {:class=> "bordered"}) do |f|
   %h2= @boosted_content.new_record? ? "Add a New Entry" : "Edit Boosted Content Entry"
   %p
     Fill out the metadata fields below to add a page as boosted content.

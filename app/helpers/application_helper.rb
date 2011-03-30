@@ -18,15 +18,23 @@ module ApplicationHelper
 
   def show_flash_messages
     unless (flash.nil? or flash.empty?)
-      html = content_tag(:div, flash.collect { |key, msg| content_tag(:div, msg, :class => key) }, :id => 'flash-message', :class => 'flash-message')
-      html << content_tag(:script, "setTimeout(\"new Effect.Fade('flash-message');\",15000)", :type => 'text/javascript')
-      html
+      html = ""
+      flash_msgs = content_tag(:div, :class => 'flash-message', :id => 'flash_message') do
+        flash.collect do |key, msg|
+          content_tag(:div, msg, :class => key).html_safe
+        end.join(" ").html_safe
+      end
+      html << flash_msgs
+      html << content_tag(:script, "setTimeout(\"new Effect.Fade('flash-message');\",15000)".html_safe, :type => 'text/javascript').html_safe
+      html.html_safe
+    else
+      ""
     end
   end
 
   def url_for_mobile_mode(new_mobile_mode)
     new_params = request.params.update({:m => new_mobile_mode.to_s})
-    url_for({:controller => params[:controller], :action => params[:action], :params => new_params})
+    url_for({:controller => controller.controller_name, :action => controller.action_name, :params => new_params})
   end
 
   def link_to_mobile_mode(text, new_mobile_mode)
@@ -61,20 +69,21 @@ module ApplicationHelper
   BACKGROUND_COLORS = {:en => "#003366", :es => "#A40000"}
 
   def header_links
-    iterate_links(HEADER_LINKS[I18n.locale.to_sym])
+    raw iterate_links(HEADER_LINKS[I18n.locale.to_sym])
   end
 
   def footer_links
-    iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone << [t(:mobile), url_for_mobile_home_page])
+    raw iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone << [t(:mobile), url_for_mobile_home_page])
   end
 
   def render_about_usasearch
     if english_locale?
-      content_tag(:div, :class => 'footer about') do
-        content = content_tag(:span, "ABOUT USASearch &nbsp; &gt;")
+      result = content_tag(:div, :class => 'footer about') do
+        content = content_tag(:span, "ABOUT USASearch   > ")
         content << about_usasearch_links
         content
       end
+      result
     end
   end
 
@@ -84,11 +93,11 @@ module ApplicationHelper
     links << link_to("Affiliate Program", affiliates_path)
     links << link_to("APIs and Web Services", api_docs_path)
     links << link_to("Search.USA.gov", searchusagov_path)
-    links
+    raw links
   end
 
   def render_webtrends_code
-    if params[:locale] == 'es'
+    if I18n.locale.to_s == 'es'
       render :partial => 'shared/webtrends_spanish'
     else
       render :partial => 'shared/webtrends_english'
@@ -96,7 +105,7 @@ module ApplicationHelper
   end
 
   def render_mobile_webtrends_code
-    if params[:locale] == 'es'
+    if I18n.locale.to_s == 'es'
       render :partial => 'shared/webtrends_mobile_spanish'
     else
       render :partial => 'shared/webtrends_mobile_english'
@@ -115,9 +124,9 @@ module ApplicationHelper
     elements << link_to("Help Desk", "http://searchsupport.usa.gov/home", :target => "_blank")
 
     results = elements.collect do |element|
-      content_tag(:li, element)
+      content_tag(:li, raw(element))
     end
-    content_tag(:ul, results.join)
+    raw content_tag(:ul, raw(results.join))
   end
 
   def other_locale_str
@@ -185,13 +194,13 @@ module ApplicationHelper
   end
 
   def render_trending_searches
-    render(:partial => 'shared/trending_searches') if params[:locale].blank? || params[:locale] == 'en'
+    render :partial => 'shared/trending_searches' if (params[:locale].blank? || params[:locale] == 'en')
   end
 
   def breadcrumbs(breadcrumbs)
     trail = link_to('USASearch', program_path)
     breadcrumbs.each { |breadcrumb| trail << breadcrumb }
-    content_tag(:div,trail, :class => 'breadcrumbs')
+    content_tag(:div, trail, :class => 'breadcrumbs')
   end
 
   def url_for_mobile_home_page(locale = I18n.locale)
@@ -199,7 +208,7 @@ module ApplicationHelper
   end
 
   def render_no_index_meta_tag
-    tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'}) if request.path =~ /^\/(image_searches|search|usa\/)/i
+    raw tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'}) if request.path =~ /^\/(image_searches|search|usa\/)/i
   end
 
   private

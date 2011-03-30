@@ -16,14 +16,13 @@ class SaytSuggestion < ActiveRecord::Base
     def like(affiliate_id, query, num_suggestions)
       equals_is = affiliate_id.nil? ? 'is' : '='
       clause = "phrase LIKE ? AND affiliate_id #{equals_is} ? AND ISNULL(deleted_at)"
-      find(:all, :conditions => [clause, query + '%', affiliate_id], :order => 'popularity DESC, phrase ASC',
-           :limit => num_suggestions, :select=> 'phrase')
+      where([clause, query + '%', affiliate_id]).order('popularity DESC, phrase ASC').limit(num_suggestions).select("phrase")
     end
 
     def prune_dead_ends
       all.each do |ss|
         unless Search.results_present_for?(ss.phrase, ss.affiliate)
-          RAILS_DEFAULT_LOGGER.info "Deleting #{ss.phrase} for affiliate #{ss.affiliate.name rescue Affiliate::USAGOV_AFFILIATE_NAME}"
+          Rails.logger.info "Deleting #{ss.phrase} for affiliate #{ss.affiliate.name rescue Affiliate::USAGOV_AFFILIATE_NAME}"
           ss.delete
         end
       end
@@ -61,7 +60,7 @@ class SaytSuggestion < ActiveRecord::Base
       valid_content_types = ['application/octet-stream', 'text/plain', 'txt']
       if valid_content_types.include? txtfile.content_type
         created, ignored = 0, 0
-        txtfile.readlines.each do |phrase|
+        txtfile.tempfile.readlines.each do |phrase|
           entry = phrase.chomp.strip
           unless entry.blank?
             create(:phrase => entry, :affiliate => affiliate, :is_protected => true, :popularity => MAX_POPULARITY).id.nil? ? (ignored += 1) : (created += 1)

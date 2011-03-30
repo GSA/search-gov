@@ -1,7 +1,7 @@
 class Admin::TopSearchesController < Admin::AdminController
   before_filter :assign_page_title
   def index
-    @top_searches = TopSearch.find(:all, :order => "position ASC")
+    @top_searches = TopSearch.order("position ASC")
     @active_top_searches = TopSearch.find_active_entries
   end
   

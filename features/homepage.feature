@@ -129,7 +129,7 @@ Feature: Homepage
     | 4         | Trending Search 4  |
     | 5         | Trending Search 5  |
     And I am on the homepage
-    And I follow "Español"
+    And I follow "Busque en español"
     Then I should not see "Search Trends"
     And I should not see "Trending Search 1"
     And I should not see "Trending Search 2"

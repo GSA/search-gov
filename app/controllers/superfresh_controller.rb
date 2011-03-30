@@ -1,4 +1,6 @@
 class SuperfreshController < ApplicationController
+  before_filter :set_request_format
+  
   def index
     @feed_id = (params[:feed_id] || "1").to_i
     if @feed_id == 1
@@ -11,6 +13,11 @@ class SuperfreshController < ApplicationController
     else
       @superfresh_urls = []
     end
+  end
+  
+  private
+  
+  def set_request_format
     request.format = :rss
   end
 end

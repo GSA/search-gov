@@ -35,7 +35,10 @@ describe Analytics::QuerySearchesController do
         it "should assign an alphabetized list of query groups" do
           assigns[:query_groups].should_not be_nil
         end
-        should_render_template 'analytics/query_searches/index.html.haml', :layout => 'analytics'
+        
+        it "should render the template" do
+         response.should render_template 'analytics/query_searches/index', :layout => 'analytics'
+        end
       end
       
       context "when there are query groups" do
@@ -63,7 +66,7 @@ describe Analytics::QuerySearchesController do
       end
 
       context "when some of the matching query terms contain HTML markup" do
-        integrate_views
+        render_views
         before do
           DailyQueryStat.create(:query => "<b>obama</b>", :day => Date.parse("August 12, 2010"), :times => 100, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => 'en')
           DailyQueryStat.reindex

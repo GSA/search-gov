@@ -82,13 +82,13 @@ class RecallsController < ApplicationController
   def convert_date_range_to_start_and_end_dates
     if params[:date_range].present?
       if params[:date_range] == "last_30"
-        @valid_params[:start_date], @valid_params[:end_date] = Date.today - 30.days, Date.today
+        @valid_params[:start_date], @valid_params[:end_date] = Date.current - 30.days, Date.current
       elsif params[:date_range] == "last_90"
-        @valid_params[:start_date], @valid_params[:end_date] = Date.today - 90.days, Date.today
+        @valid_params[:start_date], @valid_params[:end_date] = Date.current - 90.days, Date.current
       elsif params[:date_range] == "current_year"
-        @valid_params[:start_date], @valid_params[:end_date] = Date.parse("#{Date.today.year}-01-01"), Date.today
+        @valid_params[:start_date], @valid_params[:end_date] = Date.parse("#{Date.current.year}-01-01"), Date.current
       elsif params[:date_range] = "last_year"
-        @valid_params[:start_date], @valid_params[:end_date] = Date.parse("#{Date.today.year - 1}-01-01"), Date.parse("#{Date.today.year - 1}-12-31")
+        @valid_params[:start_date], @valid_params[:end_date] = Date.parse("#{Date.current.year - 1}-01-01"), Date.parse("#{Date.current.year - 1}-12-31")
       end
     end
   end

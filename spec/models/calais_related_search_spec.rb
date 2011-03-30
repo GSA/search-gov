@@ -83,10 +83,14 @@ describe CalaisRelatedSearch do
       crs.gets_refreshed.should be_false
     end
 
-    should_validate_presence_of :term, :related_terms, :locale
-    should_validate_uniqueness_of :term, :scope => [:affiliate_id, :locale]
-    should_validate_inclusion_of :locale, :in => SUPPORTED_LOCALES
-    should_belong_to :affiliate
+    it { should validate_presence_of :term }
+    it { should validate_presence_of :related_terms }
+    it { should validate_presence_of :locale }
+    it { should validate_uniqueness_of(:term).scoped_to([:affiliate_id, :locale]) }
+    SUPPORTED_LOCALES.each do |value|
+      it { should allow_value(value).for(:locale) }
+    end
+    it { should belong_to :affiliate }
   end
 
   describe "#refresh_stalest_entries" do
@@ -294,7 +298,7 @@ describe CalaisRelatedSearch do
         end
 
         it "should log the error" do
-          RAILS_DEFAULT_LOGGER.should_receive(:warn).once
+          Rails.logger.should_receive(:warn).once
           CalaisRelatedSearch.perform(@affiliate.name, @term)
         end
       end

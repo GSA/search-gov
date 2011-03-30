@@ -13,9 +13,9 @@ Given /^the following Top Forms exist:$/ do |table|
 end
 
 Then /^I should see "([^\"]*)" as a Top Form name$/ do |form_name|
-  response.body.should have_tag("input[id=top_form_name][value=#{form_name}]")
+  page.should have_selector("input[id='top_form_name'][value='#{form_name}']")
 end
 
 Then /^I should not see "([^\"]*)" as a Top Form name$/ do |form_name|
-  response.body.should_not have_tag("input[id=top_form_name][value=#{form_name}]")
+  page.should_not have_selector("input[id='top_form_name'][value='#{form_name}']")
 end

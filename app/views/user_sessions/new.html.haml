@@ -11,7 +11,7 @@
   %p
     Already have a USASearch account? Log in with your email address and password below.
   .clear
-  - form_for @user_session, :url => user_session_path  do |f|
+  = form_for @user_session, :url => user_session_path  do |f|
     = f.error_messages(:header_message => nil, :class => "error")
     %ul
       = render :partial => '/user_sessions/form', :object => f
@@ -25,7 +25,7 @@
     .registerboxTop
       &nbsp;
     .registerboxMid
-      - form_for @user, :url => account_path do |f|
+      = form_for @user, :url => account_path do |f|
         = f.error_messages(:header_message => nil, :class => "error")
         %ul
           = render :partial => "/users/new_form", :object => f

@@ -112,28 +112,37 @@ describe Affiliates::HomeController do
     context "when logged in as the affiliate manager" do
       before do
         UserSession.create(users(:affiliate_manager))
-        @affiliate = affiliates(:basic_affiliate)
-        Affiliate.should_receive(:find).and_return(@affiliate)
       end
+      
+      context "when editing one of the affiliate's affiliates" do
+        before do
+          @affiliate = affiliates(:basic_affiliate)
+        end
+        
+        it "should assign @title" do
+          get :edit_site_information, :id => @affiliate.id
+          assigns[:title].should_not be_blank
+        end
 
-      it "should assign @title" do
-        get :edit_site_information, :id => affiliates(:basic_affiliate).id
-        assigns[:title].should_not be_blank
-      end
+        it "should assign @affiliate" do
+          get :edit_site_information, :id => @affiliate.id
+          assigns[:affiliate].should == @affiliate
+        end
 
-      it "should assign @affiliate" do
-        get :edit_site_information, :id => affiliates(:basic_affiliate).id
-        assigns[:affiliate].should == @affiliate
-      end
+        it "should sync staged attributes on @affiliate" do
+          get :edit_site_information, :id => @affiliate.id
+          assigns[:affiliate].staged_domains.should == assigns[:affiliate].domains
+          assigns[:affiliate].staged_header.should == assigns[:affiliate].header
+          assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
+          assigns[:affiliate].staged_affiliate_template_id.should == assigns[:affiliate].affiliate_template_id
+          assigns[:affiliate].staged_search_results_page_title.should == assigns[:affiliate].search_results_page_title
+          assigns[:affiliate].has_staged_content.should == false
+        end
 
-      it "should sync staged attributes on @affiliate" do
-        @affiliate.should_receive(:sync_staged_attributes)
-        get :edit_site_information, :id => affiliates(:basic_affiliate).id
-      end
-
-      it "should render the edit_site_information page" do
-        get :edit_site_information, :id => affiliates(:basic_affiliate).id
-        response.should render_template("edit_site_information")
+        it "should render the edit_site_information page" do
+          get :edit_site_information, :id => @affiliate.id
+          response.should render_template("edit_site_information")
+        end
       end
     end
   end
@@ -152,83 +161,74 @@ describe Affiliates::HomeController do
       before do
         user = users(:affiliate_manager)
         UserSession.create(user)
-        Affiliate.should_receive(:find).and_return(@affiliate)
       end
 
-      it "should assign @affiliate" do
-        post :update_site_information, :id => @affiliate.id, :affiliate=> {}
-        assigns[:affiliate].should == @affiliate
-      end
-
-      it "should update @affiliate attributes" do
-        @affiliate.should_receive(:update_attributes)
+      it "should assign @affiliate and update @affiliate attributes" do
         post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}
+        assigns[:affiliate].should == @affiliate
+        assigns[:affiliate].display_name.should == "new display name"
       end
 
       context "when the affiliate update attributes successfully for 'Save for Preview' request" do
         before do
-          @affiliate.should_receive(:update_attributes_for_staging).and_return(true)
-        end
-
-        it "should set a flash[:success] message" do
           post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
+        end
+        
+        it "should upate the affiliate's staged fields" do
+          assigns[:affiliate].has_staged_content.should == true
+          assigns[:affiliate].display_name.should == "new display name"
+        end
+        
+        it "should set a flash[:success] message" do
           flash[:success].should_not be_blank
         end
 
         it "should redirect to affiliate specific page" do
-          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
           response.should redirect_to(affiliate_path(@affiliate))
         end
       end
 
-       context "when the affiliate failed to update attributes for 'Save for Preview' request" do
+      context "when the affiliate failed to update attributes for 'Save for Preview' request" do
         before do
-          @affiliate.should_receive(:update_attributes_for_staging).and_return(false)
+         post :update_site_information, :id => @affiliate.id, :affiliate=> { :display_name => nil }, :commit => "Save for Preview"
         end
 
         it "should assign @title" do
-          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
-          assigns[:title].should_not be_blank
+         assigns[:title].should_not be_blank
         end
 
         it "should redirect to edit site information page" do
-          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
-          response.should render_template(:edit_site_information)
+         response.should render_template(:edit_site_information)
         end
       end
 
       context "when the affiliate update attributes successfully for 'Make Live' request" do
         before do
-          @affiliate.should_receive(:update_attributes_for_current).and_return(true)
+          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
         end
 
         it "should set a flash[:success] message" do
-          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
           flash[:success].should_not be_blank
         end
 
         it "should redirect to affiliate specific page" do
-          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
           response.should redirect_to(affiliate_path(@affiliate))
         end
       end
 
-       context "when the affiliate failed update attributes for 'Make Live' request" do
+      context "when the affiliate failed update attributes for 'Make Live' request" do
         before do
-          @affiliate.should_receive(:update_attributes_for_current).and_return(false)
+          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => nil}, :commit => "Make Live"
         end
 
         it "should assign @title" do
-          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
           assigns[:title].should_not be_blank
         end
 
         it "should redirect to edit site information  page" do
-          post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
           response.should render_template(:edit_site_information)
         end
       end
-
     end
   end
 
@@ -264,26 +264,28 @@ describe Affiliates::HomeController do
       before do
         UserSession.create(users(:affiliate_manager))
         @affiliate = affiliates(:basic_affiliate)
-        Affiliate.should_receive(:find).and_return(@affiliate)
+        get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
       end
 
       it "should assign @affiliate" do
-        get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
         assigns[:affiliate].should == @affiliate
       end
 
       it "should assign @title" do
-        get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
         assigns[:title].should_not be_blank
       end
 
       it "should sync staged attributes on @affiliate" do
-        @affiliate.should_receive(:sync_staged_attributes)
         get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
+        assigns[:affiliate].staged_domains.should == assigns[:affiliate].domains
+        assigns[:affiliate].staged_header.should == assigns[:affiliate].header
+        assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
+        assigns[:affiliate].staged_affiliate_template_id.should == assigns[:affiliate].affiliate_template_id
+        assigns[:affiliate].staged_search_results_page_title.should == assigns[:affiliate].search_results_page_title
+        assigns[:affiliate].has_staged_content.should == false
       end
 
       it "should render the edit_look_and_feel page" do
-        get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
         response.should render_template("edit_look_and_feel")
       end
     end
@@ -303,79 +305,70 @@ describe Affiliates::HomeController do
       before do
         user = users(:affiliate_manager)
         UserSession.create(user)
-        Affiliate.should_receive(:find).and_return(@affiliate)
       end
 
-      it "should assign @affiliate" do
-        post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {}
-        assigns[:affiliate].should == @affiliate
-      end
-
-      it "should update @affiliate attributes" do
-        @affiliate.should_receive(:update_attributes)
-        post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}
+      context "when posting" do
+        before do
+          post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {}
+        end
+      
+        it "should assign @affiliate" do
+          assigns[:affiliate].should == @affiliate
+        end
       end
 
       context "when the affiliate update attributes successfully for 'Save for Preview' request" do
         before do
-          @affiliate.should_receive(:update_attributes_for_staging).and_return(true)
-        end
-
-        it "should set a flash[:success] message" do
           post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
+        end
+        
+        it "should set a flash[:success] message" do
           flash[:success].should_not be_blank
         end
 
         it "should redirect to affiliate specific page" do
-          post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
           response.should redirect_to(affiliate_path(@affiliate))
         end
       end
 
-       context "when the affiliate failed to update attributes for 'Save for Preview' request" do
-        before do
-          @affiliate.should_receive(:update_attributes_for_staging).and_return(false)
-        end
+     context "when the affiliate failed to update attributes for 'Save for Preview' request" do
+       before do
+         post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => nil}, :commit => "Save for Preview"
+       end
 
-        it "should assign @title" do
-          post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
-          assigns[:title].should_not be_blank
-        end
+       it "should assign @title" do
+         assigns[:title].should_not be_blank
+       end
 
-        it "should redirect to edit site information page" do
-          post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
-          response.should render_template(:edit_look_and_feel)
-        end
-      end
+       it "should redirect to edit site information page" do
+         response.should render_template(:edit_look_and_feel)
+       end
+     end
 
       context "when the affiliate update attributes successfully for 'Make Live' request" do
         before do
-          @affiliate.should_receive(:update_attributes_for_current).and_return(true)
+          post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
         end
 
         it "should set a flash[:success] message" do
-          post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
           flash[:success].should_not be_blank
         end
 
         it "should redirect to affiliate specific page" do
-          post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
           response.should redirect_to(affiliate_path(@affiliate))
         end
       end
 
        context "when the affiliate failed update attributes for 'Make Live' request" do
         before do
-          @affiliate.should_receive(:update_attributes_for_current).and_return(false)
+          post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => nil}, :commit => "Make Live"
         end
 
         it "should assign @title" do
-          post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
           assigns[:title].should_not be_blank
         end
 
         it "should redirect to edit site information  page" do
-          post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
           response.should render_template(:edit_look_and_feel)
         end
       end
@@ -525,13 +518,18 @@ describe Affiliates::HomeController do
       end
 
       context "when the affiliate saves successfully" do
+        before do
+          @emailer = mock(Emailer)
+          @emailer.stub!(:deliver).and_return true
+        end
+        
         it "should assign @current_step to :get_code" do
           post :create, :affiliate => {:display_name => 'new_affiliate'}
           assigns[:current_step].should == :get_the_code
         end
          
         it "should email the affiliate a confirmation email" do
-          Emailer.should_receive(:deliver_new_affiliate_site)
+          Emailer.should_receive(:new_affiliate_site).and_return @emailer
           post :create, :affiliate => {:display_name => 'new_affiliate'}
         end
 
@@ -548,7 +546,7 @@ describe Affiliates::HomeController do
         end
         
         it "should not send an email" do
-          Emailer.should_not_receive(:deliver_new_affiliate_site)
+          Emailer.should_not_receive(:new_affiliate_site)
           post :create
         end
 
@@ -563,32 +561,35 @@ describe Affiliates::HomeController do
   describe "do POST on #push_content_for" do
     before do
       @affiliate = affiliates(:power_affiliate)
+      @affiliate.update_attributes(:has_staged_content => true)
     end
 
-    it "should require affiliate login for push_content_for" do
-      post :push_content_for, :id => @affiliate.id
-      response.should redirect_to(login_path)
+    context "when not logged in" do
+      before do
+        post :push_content_for, :id => @affiliate.id
+      end
+      
+      it "should require affiliate login for push_content_for" do
+        response.should redirect_to(login_path)
+      end
     end
 
     context "when logged in as an affiliate manager" do
       before do
         user = users(:affiliate_manager)
         UserSession.create(user)
-        Affiliate.should_receive(:find).and_return(@affiliate)
+        post :push_content_for, :id => @affiliate.id
       end
 
       it "should assign @affiliate" do
-        post :push_content_for, :id => @affiliate.id
         assigns[:affiliate].should == @affiliate
       end
 
       it "should update @affiliate attributes for current" do
-        @affiliate.should_receive(:push_staged_changes)
-        post :push_content_for, :id => @affiliate.id
+        assigns[:affiliate].has_staged_content.should == false
       end
 
       it "should redirect to affiliate specific page" do
-        post :push_content_for, :id => @affiliate.id
         response.should redirect_to affiliate_path(@affiliate)
       end
     end
@@ -599,31 +600,38 @@ describe Affiliates::HomeController do
       @affiliate = affiliates(:power_affiliate)
     end
 
-    it "should require affiliate login for cancel_staged_changes_for" do
-      post :cancel_staged_changes_for, :id => @affiliate.id
-      response.should redirect_to(login_path)
+    context "when not logged in" do
+      before do
+        post :cancel_staged_changes_for, :id => @affiliate.id
+      end
+      
+      it "should require affiliate login for cancel_staged_changes_for" do
+        response.should redirect_to(login_path)
+      end
     end
 
     context "when logged in as an affiliate manager" do
       before do
         user = users(:affiliate_manager)
-        UserSession.create(user)
-        Affiliate.should_receive(:find).and_return(@affiliate)
+        user.affiliates.include?(@affiliate).should be_true
+        session = UserSession.create(user)
+        post :cancel_staged_changes_for, :id => @affiliate.id
       end
 
       it "should assign @affiliate" do
-        post :cancel_staged_changes_for, :id => @affiliate.id
         assigns[:affiliate].should == @affiliate
       end
 
       it "should update @affiliate attributes for current" do
-        staging_attributes = {}
-        @affiliate.should_receive(:cancel_staged_changes)
-        post :cancel_staged_changes_for, :id => @affiliate.id
+        assigns[:affiliate].staged_domains.should == "nga.mil\nusa.gov\nnoaa.gov"
+        assigns[:affiliate].staged_header.should == assigns[:affiliate].header
+        assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
+        assigns[:affiliate].staged_affiliate_template_id.should == assigns[:affiliate].affiliate_template_id
+        assigns[:affiliate].staged_search_results_page_title.should == assigns[:affiliate].search_results_page_title
+        assigns[:affiliate].has_staged_content.should == false      
       end
 
       it "should redirect to affiliate specific page" do
-        post :cancel_staged_changes_for, :id => @affiliate.id
         response.should redirect_to affiliate_path(@affiliate)
       end
     end
@@ -658,7 +666,7 @@ describe Affiliates::HomeController do
     end
 
     context "when logged in as the affiliate manager" do
-      integrate_views
+      render_views
       before do
         UserSession.create(users(:affiliate_manager))
       end

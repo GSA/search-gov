@@ -13,8 +13,10 @@ describe MovingQuery do
   end
 
   describe 'validations on create' do
-    should_validate_presence_of(:day, :query, :times)
-    should_validate_uniqueness_of :query, :scope => :day
+    it { should validate_presence_of :day }
+    it { should validate_presence_of :query }
+    it { should validate_presence_of :times }
+    it { should validate_uniqueness_of(:query).scoped_to(:day) }
 
     it "should create a new instance given valid attributes" do
       MovingQuery.create!(@valid_attributes)
@@ -94,8 +96,8 @@ describe MovingQuery do
 
   describe "#passes_minimum_thresholds?" do
     it "should return true when the MovingQuery exceeds thresholds for deviation from mean and number of queries for a given time window" do
-      MovingQuery.new(:query=> "query", :day => Date.today, :times => 16, :mean => 11.9, :std_dev => 1.0).passes_minimum_thresholds?.should be_true
-      MovingQuery.new(:query=> "query", :day => Date.today, :times => 16, :mean => 12.1, :std_dev => 1.0).passes_minimum_thresholds?.should be_false
+      MovingQuery.new(:query=> "query", :day => Date.current, :times => 16, :mean => 11.9, :std_dev => 1.0).passes_minimum_thresholds?.should be_true
+      MovingQuery.new(:query=> "query", :day => Date.current, :times => 16, :mean => 12.1, :std_dev => 1.0).passes_minimum_thresholds?.should be_false
     end
   end
 
@@ -126,7 +128,7 @@ describe MovingQuery do
       end
 
       it "should return an error string that no queries matched" do
-        MovingQuery.biggest_movers(Date.today.to_date).should == "No queries matched"
+        MovingQuery.biggest_movers(Date.current.to_date).should == "No queries matched"
       end
     end
 

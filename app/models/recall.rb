@@ -98,7 +98,7 @@ class Recall < ActiveRecord::Base
 
     def recent(query)
       if recall_query?(query)
-        this_month_results = search_for(query, {:start_date=>1.month.ago.to_date, :end_date=>Date.today, :sort => "date"}, 1, 3)
+        this_month_results = search_for(query, {:start_date=>1.month.ago.to_date, :end_date=>Date.current, :sort => "date"}, 1, 3)
         (this_month_results && this_month_results.total > 0) ? this_month_results : search_for(query, {:sort => "date"}, 1, 3)
       end
     end
@@ -111,7 +111,7 @@ class Recall < ActiveRecord::Base
       stripped_query = query.gsub(RECALL_RE_EN, '').gsub(RECALL_RE_ES, '').strip if query
       do_search(stripped_query, options, page, per_page)
     rescue RSolr::RequestError => error
-      RAILS_DEFAULT_LOGGER.warn "Error in searching for Recalls: #{error.to_s}"
+      Rails.logger.warn "Error in searching for Recalls: #{error.to_s}"
       nil
     end
 

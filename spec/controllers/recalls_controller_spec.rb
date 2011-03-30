@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe RecallsController do
   describe "#index" do
     context "when rendering the page" do
-      integrate_views
+      render_views
       before do
         get :index
       end
@@ -17,12 +17,12 @@ describe RecallsController do
       end
 
       it "should set the page title to 'Search.USA.gov Forms'" do
-        response.should have_tag("title", :content => 'Search.USA.gov Recalls')
+        response.should have_selector("title", :content => 'Search.USA.gov Recalls')
       end
 
       it "should have meta tags for description and keywords" do
-        response.should have_tag("meta[name=description]")
-        response.should have_tag("meta[name=keywords]")
+        response.should have_selector("meta[name=description]")
+        response.should have_selector("meta[name=keywords]")
       end
     end
 
@@ -36,12 +36,16 @@ describe RecallsController do
 
   describe "#search" do
     context "for a normal request" do
-      integrate_views
+      render_views
       before do
+        Recall.destroy_all
+        Recall.reindex
         get :search, :query => 'strollers'
       end
-
-      should_render_template 'recalls/search.html.haml', :layout => 'application'
+      
+      it "should render the template" do
+        response.should render_template 'recalls/search', :layout => 'application'
+      end
 
       it "should assign the query with a forms prefix as the page title" do
         assigns[:page_title].should == "strollers"
@@ -102,17 +106,17 @@ describe RecallsController do
       context "when a date range is supplied" do
         it "should set the start and end date to appropriate values for each of the values" do
           get :search, :date_range => 'last_30'
-          assigns[:valid_params][:start_date].should == Date.today - 30.days
-          assigns[:valid_params][:end_date].should == Date.today
+          assigns[:valid_params][:start_date].should == Date.current - 30.days
+          assigns[:valid_params][:end_date].should == Date.current
           get :search, :date_range => 'last_90'
-          assigns[:valid_params][:start_date].should == Date.today - 90.days
-          assigns[:valid_params][:end_date].should == Date.today
+          assigns[:valid_params][:start_date].should == Date.current - 90.days
+          assigns[:valid_params][:end_date].should == Date.current
           get :search, :date_range => 'current_year'
-          assigns[:valid_params][:start_date].should == Date.parse("#{Date.today.year}-01-01")
-          assigns[:valid_params][:end_date].should == Date.today
+          assigns[:valid_params][:start_date].should == Date.parse("#{Date.current.year}-01-01")
+          assigns[:valid_params][:end_date].should == Date.current
           get :search, :date_range => 'last_year'
-          assigns[:valid_params][:start_date].should == Date.parse("#{Date.today.year - 1}-01-01")
-          assigns[:valid_params][:end_date].should == Date.parse("#{Date.today.year - 1}-12-31")
+          assigns[:valid_params][:start_date].should == Date.parse("#{Date.current.year - 1}-01-01")
+          assigns[:valid_params][:end_date].should == Date.parse("#{Date.current.year - 1}-12-31")
         end
       end
 
@@ -209,7 +213,7 @@ describe RecallsController do
           it "should return empty results" do
             Recall.stub!(:search_for).and_return(nil)
 
-            get :search, :format => "json", :query => "no results", :page => 1
+            get :search, :format => "json", :query => "no results", :page => "1"
 
             response.should be_success
             parsed_response = JSON.parse(response.body)
@@ -226,6 +230,7 @@ describe RecallsController do
 
             response.should be_success
           end
+
         end
       end
 
@@ -342,7 +347,7 @@ describe RecallsController do
       end
 
       it "should not allow people to page past the MAX_PAGE limit" do
-        Recall.should_receive(:search_for).with("strollers", @valid_options_hash, @page.to_s).and_return(@search)
+        Recall.should_receive(:search_for).with("strollers", @valid_options_hash, @page).and_return(@search)
         WillPaginate::Collection.should_receive(:create).with(@page, @per_page, @max_pages * @per_page)
         get :search, :query => 'strollers', :page => @page
       end

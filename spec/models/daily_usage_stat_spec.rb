@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe DailyUsageStat do
   before(:each) do
     @valid_attributes = {
-      :day => Date.today,
+      :day => Date.current,
       :profile => "value for profile",
       :total_queries => 1,
       :total_page_views => 1,
@@ -16,8 +16,10 @@ describe DailyUsageStat do
       DailyUsageStat.create!(@valid_attributes)
     end
 
-    should_validate_presence_of :day, :profile, :affiliate
-    should_validate_uniqueness_of :day, :scope => [:profile, :affiliate]
+    it { should validate_presence_of :day }
+    it { should validate_presence_of :profile }
+    it { should validate_presence_of :affiliate }
+    it { should validate_uniqueness_of(:day).scoped_to([:profile, :affiliate]) }
   end
 
   describe "#update_webtrends_stats_for(day)" do

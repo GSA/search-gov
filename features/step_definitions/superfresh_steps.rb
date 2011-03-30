@@ -1,9 +1,6 @@
-When /^the user agent is the MSNbot$/ do
-  headers["User-Agent"] = SuperfreshUrl::MSNBOT_USER_AGENT
-end
- 
-When /^I call the superfresh feed$/ do
-  get '/superfresh', '', headers
+When /^the MSNbot visits the superfresh feed$/ do
+  page.driver.header "User-Agent", SuperfreshUrl::MSNBOT_USER_AGENT
+  visit main_superfresh_feed_path
 end
 
 Given /^the following SuperfreshUrls exist:$/ do |table|

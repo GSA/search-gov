@@ -15,7 +15,7 @@
 %h3
   Add new Top Form
 %br
-- form_for @top_form, :url => admin_top_forms_path, :as => :post do |f|
+= form_for @top_form, :url => admin_top_forms_path, :method => :post do |f|
   = hidden_field_tag 'column_number', @column_number
   %table
     %tr
@@ -54,7 +54,7 @@
       Actions
   - unless @top_forms.empty?
     - @top_forms.each do |top_form|
-      - form_for top_form, :url => admin_top_form_path(top_form) do |f|
+      = form_for top_form, :url => admin_top_form_path(top_form) do |f|
         = f.hidden_field :column_number
         = hidden_field_tag 'column_number', @column_number
         %tr

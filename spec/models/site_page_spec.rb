@@ -4,8 +4,8 @@ describe SitePage do
   fixtures :site_pages
 
   describe "Creating new instance" do
-    should_validate_uniqueness_of :url_slug
-    should_validate_presence_of :url_slug
+    it { should validate_uniqueness_of :url_slug }
+    it { should validate_presence_of :url_slug }
 
     it "should create a new instance given valid attributes" do
       SitePage.create!(:url_slug => "slug", :title=> "title", :breadcrumb => "breadcrumb", :main_content => "main_content")
@@ -14,10 +14,10 @@ describe SitePage do
 
   describe "#crawl_usa_gov" do
     before do
-      es_site_index_doc = Hpricot(File.open(RAILS_ROOT + "/spec/fixtures/html/usa_gov/site_index_es.html"))
-      en_site_index_doc = Hpricot(File.open(RAILS_ROOT + "/spec/fixtures/html/usa_gov/site_index.html"))
-      agencies_doc = Hpricot(File.open(RAILS_ROOT + "/spec/fixtures/html/usa_gov/agencies.html"))
-      audiences_doc = Hpricot(File.open(RAILS_ROOT + "/spec/fixtures/html/usa_gov/audiences.html"))
+      es_site_index_doc = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index_es.html"))
+      en_site_index_doc = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/site_index.html"))
+      agencies_doc = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/agencies.html"))
+      audiences_doc = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/usa_gov/audiences.html"))
       SitePage.should_receive(:open).and_return(es_site_index_doc, en_site_index_doc, agencies_doc, audiences_doc)
     end
 
@@ -61,7 +61,7 @@ describe SitePage do
       end
 
       it "should log the error and continue" do
-        RAILS_DEFAULT_LOGGER.should_receive(:error).twice
+        Rails.logger.should_receive(:error).twice
         SitePage.crawl_usa_gov
       end
     end

@@ -8,7 +8,10 @@ class AffiliateEmailer < ActionMailer::Base
     @sent_on = Time.now
     @headers['Content-Type'] = "text/plain; charset=utf-8; format=flowed"
     affiliate_ids = affiliate_user.affiliates.collect{|a| a.name}
-    body(:body => body, :name => affiliate_user.contact_name, :affiliate_ids => affiliate_ids, :email => affiliate_user.email)
+    @body_text = body
+    @name = affiliate_user.contact_name
+    @affiliate_ids = affiliate_ids
+    @email = affiliate_user.email
   end
 
 end

@@ -17,6 +17,7 @@ module ActiveScaffold::Config
       # inherit from global scope
       @empty_field_text = self.class.empty_field_text
       @pagination = self.class.pagination
+      @show_search_reset = true
     end
 
     # global level configuration
@@ -39,10 +40,6 @@ module ActiveScaffold::Config
     # * false: Disable pagination
     cattr_accessor :pagination
     @@pagination = true
-    def self.infinite_pagination=(value)
-      ::ActiveSupport::Deprecation.warn("infinite_pagination is deprecated, use pagination = :infinite instead", caller)
-      self.pagination = :infinite
-    end
 
     # instance-level configuration
     # ----------------------------
@@ -66,13 +63,12 @@ module ActiveScaffold::Config
     # * :infinite: Treat the source as having an infinite number of pages (i.e. don't count the records; useful for large tables where counting is slow and we don't really care anyway)
     # * false: Disable pagination
     attr_accessor :pagination
-    def infinite_pagination=(value)
-      ::ActiveSupport::Deprecation.warn("infinite_pagination is deprecated, use pagination = :infinite instead", caller)
-      self.pagination = :infinite
-    end
 
     # what string to use when a field is empty
     attr_accessor :empty_field_text
+
+    # show a link to reset the search next to filtered message
+    attr_accessor :show_search_reset
 
     # the default sorting. should be an array of hashes of {column_name => direction}, e.g. [{:a => 'desc'}, {:b => 'asc'}]. to just sort on one column, you can simply provide a hash, though, e.g. {:a => 'desc'}.
     def sorting=(val)
@@ -110,7 +106,6 @@ module ActiveScaffold::Config
     
     def search_partial
       return "search" if @core.actions.include?(:search)
-      return "live_search" if @core.actions.include?(:live_search)
       return "field_search" if @core.actions.include?(:field_search)
     end
     
@@ -119,6 +114,18 @@ module ActiveScaffold::Config
     def always_show_create
       @always_show_create && @core.actions.include?(:create)
     end
+
+    # if list view is nested hide nested_column
+    attr_writer :hide_nested_column
+    def hide_nested_column
+      @hide_nested_column.nil? ? true : @hide_nested_column
+    end
+    
+    # might be set to open nested_link automatically in view
+    # conf.nested.add_link(:players)
+    # conf.list.nested_auto_open = {:players => 2}
+    # will open nested players view if there are 2 or less records in parent
+    attr_accessor :nested_auto_open
     
     class UserSettings < UserSettings
       # This label has alread been localized.
@@ -140,6 +147,17 @@ module ActiveScaffold::Config
         @session['page'] = value
       end
 
+      attr_reader :nested_default_sorting
+
+      def nested_default_sorting=(options)
+        @nested_default_sorting ||= @conf.sorting.clone
+        @nested_default_sorting.set_nested_sorting(options[:table_name], options[:default_sorting])
+      end
+
+      def default_sorting
+        nested_default_sorting.nil? ? @conf.sorting : nested_default_sorting
+      end
+
       def sorting
         # we want to store as little as possible in the session, but we want to return a Sorting data structure. so we recreate it each page load based on session data.
         @session['sort'] = [@params['sort'], @params['sort_direction']] if @params['sort'] and @params['sort_direction']
@@ -150,7 +168,7 @@ module ActiveScaffold::Config
           sorting.set(*@session['sort'])
           return sorting
         else
-          return @conf.sorting
+          return default_sorting
         end
       end
       

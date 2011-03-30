@@ -10,6 +10,6 @@ describe LogfileWhitelistedClassC do
     LogfileWhitelistedClassC.create!(@valid_attributes)
   end
 
-  should_validate_presence_of :classc
-  should_validate_uniqueness_of :classc
+  it { should validate_presence_of :classc }
+  it { should validate_uniqueness_of :classc }
 end

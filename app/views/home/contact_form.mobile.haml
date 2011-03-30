@@ -7,7 +7,7 @@
   = flash[:notice] if flash[:notice]
 
 - unless @thank_you
-  - form_tag contact_form_path, :method => :post do
+  = form_tag contact_form_path(:m => true), :method => :post do
     = hidden_field_tag "locale", I18n.locale.to_s
     = hidden_field_tag "m", "true"
     %clear10 &nbsp;

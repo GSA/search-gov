@@ -44,7 +44,7 @@ describe Analytics::MonthlyReportsController do
       end
 
       context "when rendering the monthly reports page" do
-        integrate_views
+        render_views
         before do
           AWS::S3::Base.stub!(:establish_connection!).and_return true
         end

@@ -10,16 +10,16 @@ class User < ActiveRecord::Base
   validates_presence_of :city, :if => :strict_mode
   validates_presence_of :state, :if => :strict_mode
   validates_presence_of :zip, :if => :strict_mode
-  validate_on_create :validate_government_affiliation
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
   validates_acceptance_of :terms_of_service
+  validate :validate_government_affiliation, :on => :create
   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
   attr_protected :approval_status, :requires_manual_approval, :welcome_email_sent
   has_and_belongs_to_many :affiliates
   before_validation :generate_api_key
-  before_validation_on_create :set_initial_approval_status
-  after_validation_on_create :set_is_affiliate
-  after_validation_on_create :set_default_flags
+  before_validation :set_initial_approval_status, :on => :create
+  after_validation :set_is_affiliate, :on => :create
+  after_validation :set_default_flags, :on => :create
   after_create :ping_admin
   after_create :deliver_email_verification
   after_create :welcome_user
@@ -52,7 +52,7 @@ class User < ActiveRecord::Base
 
   def deliver_password_reset_instructions!
     reset_perishable_token!
-    Emailer.deliver_password_reset_instructions(self)
+    Emailer.password_reset_instructions(self).deliver
   end
 
   def to_label
@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
 
       self.email_verification_token = nil
       save!
-      Emailer.deliver_welcome_to_new_user(self) if is_approved?
+      Emailer.welcome_to_new_user(self).deliver if is_approved?
       true
     else
       false
@@ -125,7 +125,7 @@ class User < ActiveRecord::Base
   end
 
   def ping_admin
-    Emailer.deliver_new_user_to_admin(self)
+    Emailer.new_user_to_admin(self).deliver
   end
 
   def deliver_email_verification_after_contact_information_complete
@@ -142,12 +142,12 @@ class User < ActiveRecord::Base
 
   def deliver_new_user_email_verification
     reset_email_verification_token!
-    Emailer.deliver_new_user_email_verification(self)
+    Emailer.new_user_email_verification(self).deliver
   end
 
   def deliver_welcome_to_new_user_added_by_affiliate
     reset_email_verification_token!
-    Emailer.deliver_welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter)
+    Emailer.welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter).deliver
   end
 
   def reset_email_verification_token!
@@ -161,12 +161,12 @@ class User < ActiveRecord::Base
     if is_approved? and !welcome_email_sent?
       self.welcome_email_sent = true
       save!
-      Emailer.deliver_welcome_to_new_user(self)
+      Emailer.welcome_to_new_user(self).deliver
     end
   end
 
   def welcome_user
-    Emailer.deliver_welcome_to_new_developer(self) if is_developer? and !skip_welcome_email
+    Emailer.welcome_to_new_developer(self).deliver if is_developer? and !skip_welcome_email
   end
 
   def generate_api_key
@@ -181,7 +181,7 @@ class User < ActiveRecord::Base
 
   def validate_government_affiliation
     if self.government_affiliation.blank?
-      errors.add_to_base("An option for government affiliation must be selected")
+      errors.add(:base, "An option for government affiliation must be selected")
     end
   end
 

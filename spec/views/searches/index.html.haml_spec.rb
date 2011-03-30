@@ -18,23 +18,12 @@ describe "searches/index.html.haml" do
     @search.stub!(:scope_id).and_return nil
     @search.stub!(:fedstates).and_return nil
     @search.stub!(:agency).and_return nil
-    assigns[:search] = @search
+    assign(:search, @search)
   end
 
   it "should link to the medium sized search logo" do
     render
-    response.body.should have_tag("img[src^=/images/USAsearch_medium_en.gif]")
-  end
-
-  context "when rendered as a forms serp" do
-    before do
-      controller.action_name = "forms"
-      render
-    end
-
-    it "should link to the medium sized forms search logo" do
-      response.body.should have_tag("img[src^=/images/USAsearch_medium_en_forms.gif]")
-    end
+    rendered.should have_selector("img[src^='/images/USAsearch_medium_en.gif']")
   end
 
   context "when spelling suggestion is available" do
@@ -47,7 +36,7 @@ describe "searches/index.html.haml" do
 
     it "should show the spelling suggestion" do
       render
-      response.should contain("We're including results for #{@rite}. Do you want results only for #{@rong}?")
+      rendered.should contain("We're including results for #{@rite}. Do you want results only for #{@rong}?")
     end
   end
 
@@ -102,12 +91,12 @@ describe "searches/index.html.haml" do
 
     it "should not display a hidden filter parameter" do
       render
-      response.should_not have_tag('input[type=?][name=?]', 'hidden', 'filter')
+      rendered.should_not have_selector("input[type='hidden'][name='filter']")
     end
 
     it "should not display a hidden fedstates parameter" do
       render
-      response.should_not have_tag('input[type=?][name=?]', 'hidden', 'fedstates')
+      rendered.should_not have_selector("input[type='hidden'][name='fedstates']")
     end
 
     context "when a filter parameter is specified" do
@@ -118,7 +107,7 @@ describe "searches/index.html.haml" do
 
       it "should include a hidden input field in the search form with the filter parameter" do
         render
-        response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'filter', @filter_setting)
+        rendered.should have_selector("input[type='hidden'][name='filter'][value='#{@filter_setting}']")
       end
     end
 
@@ -129,18 +118,18 @@ describe "searches/index.html.haml" do
 
       it "should include a hidden input field in the search with the fedstates value set to the scope id" do
         render
-        response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'fedstates', 'MD')
+        rendered.should have_selector("input[type='hidden'][name='fedstates'][value='MD']")
       end
 
       it "should inform the user that the search was restricted" do
         5.times { @search_results << @search_result }
         render
-        response.should contain(/This search was restricted/)
+        rendered.should contain(/This search was restricted/)
       end
 
       it "should link to a unrestricted version of the search" do
         render
-        response.should_not have_tag('a[href=?]', /fedstates=MD/)
+        rendered.should_not have_selector("a[href~='fedstates=MD']")
       end
 
       context "when the scope id is set to 'all'" do
@@ -150,7 +139,7 @@ describe "searches/index.html.haml" do
 
         it "should not show a restriction message" do
           render
-          response.should_not contain(/This search was restricted/)
+          rendered.should_not contain(/This search was restricted/)
         end
       end
     end
@@ -174,7 +163,7 @@ describe "searches/index.html.haml" do
 
       it "should escape the url" do
         render
-        response.should_not contain(/onmousedown/)
+        rendered.should_not contain(/onmousedown/)
       end
     end
 
@@ -197,21 +186,20 @@ describe "searches/index.html.haml" do
       context "if the first result matches the URL in the agency query" do
         it "should format the first result as a special agency result" do
           render
-          response.should have_tag("div[class=govbox]")
-          response.should contain(/www.irs.gov\/ | Official Site/)
-          response.should_not contain(/www.irs.gov\/ - Cached/)
-          response.should contain(/Contact: 888-555-1040/)
-          response.should_not contain(/Toll-free:/)
-          response.should_not contain(/TTY:/)
-          response.should contain(/Search within irs.gov/)
-          response.should contain(/Twitter:/)
-          response.should have_tag "form[action=/search]" do
-            with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
-            with_tag "input[type=hidden][name=locale][value=en]"
-            with_tag "input[type=submit][value=Search]"
-          end
-          response.should have_tag("a[href=#{@agency.twitter_profile_link}]", :text => @agency.twitter_profile_link)
-          response.should_not have_tag("a[href=#{@agency.facebook_profile_link}]", :text => @agency.twitter_profile_link)
+          rendered.should have_selector("div[class='govbox']")
+          rendered.should contain("| Official Site")
+          rendered.should_not contain(/www.irs.gov\/ - Cached/)
+          rendered.should contain(/Contact: 888-555-1040/)
+          rendered.should_not contain(/Toll-free:/)
+          rendered.should_not contain(/TTY:/)
+          rendered.should contain(/Search within irs.gov/)
+          rendered.should contain(/Twitter:/)
+          rendered.should have_selector "form[action='/search']"
+          rendered.should have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
+          rendered.should have_selector "input[type='hidden'][name='locale'][value='en']"
+          rendered.should have_selector "input[type='submit'][value='Search']"
+          rendered.should have_selector("a", :href => @agency.twitter_profile_link, :target => "_blank", :content => @agency.twitter_profile_link)
+          rendered.should_not contain("Facebook:")
         end
       end
 
@@ -222,12 +210,11 @@ describe "searches/index.html.haml" do
 
         it "should not render a special agency result, even if the first result matches" do
           render
-          response.should_not have_tag "div[class=govbox]"
-          response.should_not contain(/Contact: 888-555-1040/)
-          response.should_not contain(/Search within irs.gov/)
-          response.should_not have_tag "form[action=/search]" do
-            with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
-          end
+          rendered.should_not have_selector "div[class=govbox]"
+          rendered.should_not contain(/Contact: 888-555-1040/)
+          rendered.should_not contain(/Search within irs.gov/)
+          rendered.should have_selector "form[action='/search']"
+          rendered.should_not have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
         end
       end
 
@@ -239,12 +226,11 @@ describe "searches/index.html.haml" do
         context "when the Spanish URL does not match the result url (and when the English URL does)" do
           it "should not render a special agency result, even if the first result matches the English URL" do
             render
-            response.should_not have_tag "div[class=govbox]"
-            response.should_not contain(/Contact: 888-555-1040/)
-            response.should_not contain(/Search within irs.gov/)
-            response.should_not have_tag "form[action=/search]" do
-              with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
-            end
+            rendered.should_not have_selector "div[class=govbox]"
+            rendered.should_not contain(/Contact: 888-555-1040/)
+            rendered.should_not contain(/Search within irs.gov/)
+            rendered.should have_selector "form[action='/search']"
+            rendered.should_not have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
           end
         end
 
@@ -261,15 +247,14 @@ describe "searches/index.html.haml" do
 
           it "should render the first result as a Spanish agency govbox" do
             render
-            response.should have_tag "div[class=govbox]"
-            response.should contain(/Contacto: 888-555-1040/)
-            response.should contain(/Buscar en irs.gov/)
-            response.should contain(/Twitter \(en inglés\)/)
-            response.should have_tag "form[action=/search]" do
-              with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
-              with_tag "input[type=hidden][name=locale][value=es]"
-              with_tag "input[type=submit][value=Buscar]"
-            end
+            rendered.should have_selector "div[class=govbox]"
+            rendered.should contain(/Contacto: 888-555-1040/)
+            rendered.should contain(/Buscar en irs.gov/)
+            rendered.should contain(/Twitter \(en inglés\)/)
+            rendered.should have_selector "form[action='/search']"
+            rendered.should have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
+            rendered.should have_selector "input[type='hidden'][name='locale'][value='es']"
+            rendered.should have_selector "input[type='submit'][value='Buscar']"
           end
         end
 
@@ -286,17 +271,16 @@ describe "searches/index.html.haml" do
                           'cacheUrl'=> "http://www.cached.com/url"}
           @search_results = [dummy_result, @search_result]
           @search_results.stub!(:total_pages).and_return 1
-          @search.stub!(:results).and_return @search_results
+          @search.stub!(:results).and_return @search_results     
         end
 
         it "should not render a special agency result, even if the first result matches" do
           render
-          response.should_not have_tag "div[class=govbox]"
-          response.should_not contain(/Contact: 888-555-1040/)
-          response.should_not contain(/Search within irs.gov/)
-          response.should_not have_tag "form[action=/search]" do
-            with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
-          end
+          rendered.should_not have_selector "div[class='govbox']"
+          rendered.should_not contain(/Contact: 888-555-1040/)
+          rendered.should_not contain(/Search within irs.gov/)
+          rendered.should have_selector "form[action='/search']"
+          rendered.should_not have_selector("input[type='hidden'][name='sitelimit'][value='irs.gov']")
         end
       end
     end

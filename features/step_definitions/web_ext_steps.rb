@@ -1,4 +1,4 @@
-When /^I fill in the following within "([^"]*)":$/ do |selector, fields|
+When /^I fill in the following within "([^\"]*)":$/ do |selector, fields|
   within(selector) do
     fields.rows_hash.each do |name, value|
       When %{I fill in "#{name}" with "#{value}"}
@@ -6,36 +6,36 @@ When /^I fill in the following within "([^"]*)":$/ do |selector, fields|
   end
 end
 
-Then /^(?:|I )should see "([^"]*)" button$/ do |value|
-  response.body.should have_tag("input[value=#{value}][type=submit]")
+Then /^(?:|I )should see "([^\"]*)" button$/ do |value|
+  page.should have_selector("input[value='#{value}'][type='submit']")
 end
 
-Then /^(?:|I )should not see "([^"]*)" button$/ do |value|
-  response.body.should_not have_tag("input[value=#{value}][type=submit]")
+Then /^(?:|I )should not see "([^\"]*)" button$/ do |value|
+  page.should_not have_selector("input[value='#{value}'][type='submit']")
 end
 
-Then /^(?:|I )should see "([^"]*)" button within "([^"]*)"$/ do |value, selector|
-  response.body.should have_tag("#{selector} input[value=#{value}][type=submit]")
+Then /^(?:|I )should see "([^\"]*)" button within "([^\"]*)"$/ do |value, selector|
+  page.should have_selector("#{selector} input[value='#{value}'][type='submit']")
 end
 
-Then /^(?:|I )should not see "([^"]*)" button within "([^"]*)"$/ do |value, selector|
-  response.body.should_not have_tag("#{selector} input[value=#{value}][type=submit]")
+Then /^(?:|I )should not see "([^\"]*)" button within "([^\"]*)"$/ do |value, selector|
+  page.should_not have_selector("#{selector} input[value='#{value}'][type='submit']")
 end
 
-Then /^I should see "([^"]*)" link$/ do |title|
-  response.should have_tag("a img[alt=#{title}]")
+Then /^I should see "([^\"]*)" link$/ do |title|
+  page.should have_selector("a img[alt='#{title}']")
 end
 
-Then /^I should not see "([^"]*)" link$/ do |title|
-  response.should_not have_tag("a img[alt=#{title}]")
+Then /^I should not see "([^\"]*)" link$/ do |title|
+  page.should_not have_selector("a img[alt='#{title}']")
 end
 
 Then /^I should see "([^"]*)" link within "([^"]*)"$/ do |title, selector|
-  response.should have_tag("#{selector} a img[alt=#{title}]")
+  page.should have_selector("#{selector} a img[alt='#{title}']")
 end
 
 Then /^I should not see "([^"]*)" link within "([^"]*)"$/ do |title, selector|
-  response.should_not have_tag("#{selector} a img[alt=#{title}]")
+  page.should_not have_selector("#{selector} a img[alt='#{title}']")
 end
 
 Then /^I should see the following breadcrumbs: (.+)$/ do |breadcrumbs|
@@ -44,28 +44,26 @@ Then /^I should see the following breadcrumbs: (.+)$/ do |breadcrumbs|
 end
 
 Then /^I should see a link to "([^"]*)" with url for "([^"]*)"$/ do |name, url|
-  response.should have_tag("a[href=#{url}]", "#{name}")
+  page.should have_selector("a[href='#{url}']", :content => name)
 end
 
-Then /^I should see a link to "([^"]*)" with url for "([^"]*)" within "([^"]*)"$/ do |name, url, selector|
-  response.should have_tag("#{selector} a[href=#{url}]", "#{name}")
+Then /^I should see a link to "([^\"]*)" with url for "([^\"]*)" within "([^\"]*)"$/ do |name, url, selector|
+  page.should have_selector("#{selector} a[href='#{url}']", :content => name)
 end
 
 Then /^I should see an image link to "([^"]*)" with url for "([^"]*)"$/ do |name, url|
-  response.should have_tag("a[href=#{url}] img[alt=#{name}]")
+  page.should have_selector("a[href='#{url}']")
+  page.should have_selector("img", :alt => "name")
 end
 
-Then /^I should see the browser page titled "([^"]*)"$/ do |title|
-  within("title") do |content|
-    regexp = Regexp.new("^#{title}$")
-    content.should contain(regexp)
-  end
+Then /^I should see the browser page titled "([^\"]*)"$/ do |title|
+  page.should have_selector("title", :content => title)
 end
 
-Then /^I should see "([^"]*)" in "([^"]*)" meta tag$/ do |content, name|
-  response.should have_tag("meta[name=?][content=?]", name, content)
+Then /^I should see "([^\"]*)" in "([^\"]*)" meta tag$/ do |content, name|
+  page.should have_selector("meta[name='#{name}'][content='#{content}']")
 end
 
-Then /^I should not see "([^"]*)" meta tag$/ do |name|
-  response.should_not have_tag("meta[name=?]", name)
+Then /^I should not see "([^\"]*)" meta tag$/ do |name|
+  page.should_not have_selector("meta[name='#{name}']")
 end

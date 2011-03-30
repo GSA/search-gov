@@ -55,7 +55,7 @@
                 = link_to("Delete", affiliate_boosted_content_path(@affiliate, boosted_content), :method => :delete, :confirm => "Are you sure you want to delete this Boosted Content entry?  ")
 
     #bulk_upload
-      - form_tag bulk_affiliate_boosted_contents_path(@affiliate), :multipart => true, :class=> "bordered" do
+      = form_tag bulk_affiliate_boosted_contents_path(@affiliate), :multipart => true, :class=> "bordered" do
         %h2="Bulk Upload Boosted Content for #{h(@affiliate.display_name)}"
         %h4 Instructions
         %ol

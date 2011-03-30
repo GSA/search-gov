@@ -10,6 +10,6 @@ describe LogfileBlockedQuery do
     LogfileBlockedQuery.create!(@valid_attributes)
   end
 
-  should_validate_presence_of :query
-  should_validate_uniqueness_of :query
+  it { should validate_presence_of :query }
+  it { should validate_uniqueness_of :query }
 end

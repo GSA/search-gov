@@ -136,7 +136,7 @@ Feature: Mobile Search
     And I fill in "Message" with "I love your site!"
     And I press "Submit"
     Then I should be on the mobile contact form page
-    And I should see "Thank you for contacting USA.gov. We will respond to you within two business days"
+    And I should see "Thank you for contacting USA.gov."
     And "musa.gov@mail.fedinfo.gov" should receive an email
     When I open the email
     Then I should see "USA.gov Mobile Inquiry" in the email subject

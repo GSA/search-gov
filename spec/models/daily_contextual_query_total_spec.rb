@@ -5,13 +5,13 @@ describe DailyContextualQueryTotal do
   
   before do
     @valid_attributes = {
-      :day => Date.today,
+      :day => Date.current,
       :total => 100
     }
   end
 
-  should_validate_numericality_of :total
-  should_validate_uniqueness_of :day
+  it { should validate_numericality_of :total }
+  it { should validate_uniqueness_of :day }
 
   it "should create a new instance given valid attributes" do
     DailyContextualQueryTotal.create!(@valid_attributes)
@@ -28,7 +28,7 @@ describe DailyContextualQueryTotal do
     end
 
     it "should return 0 if there's no record for that date" do
-      daily_total = DailyContextualQueryTotal.total_for(Date.today - 2.days)
+      daily_total = DailyContextualQueryTotal.total_for(Date.current - 2.days)
       daily_total.should == 0
     end
   end

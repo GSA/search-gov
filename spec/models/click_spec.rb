@@ -17,8 +17,11 @@ describe Click do
     Click.create!(@valid_attributes)
   end
 
-  should_validate_presence_of :queried_at, :url, :query, :results_source
-
+  it { should validate_presence_of :queried_at }
+  it { should validate_presence_of :url }
+  it { should validate_presence_of :query }
+  it { should validate_presence_of :results_source }
+  
   describe "#monthly_totals_for_affiliate" do
     it "should return total number of clicks for the given affiliate within the specified year and month" do
       year = 2011

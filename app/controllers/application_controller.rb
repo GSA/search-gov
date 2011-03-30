@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   before_filter :show_searchbox
   helper :all
   helper_method :current_user_session, :current_user
-  filter_parameter_logging :password, :password_confirmation
   protect_from_forgery
   AVAILABLE_LOCALES = [:en, :es]
   VALID_FORMATS = %w{html rss json xml mobile}
@@ -19,7 +18,7 @@ class ApplicationController < ActionController::Base
     if VALID_FORMATS.include?(request.format)
       raise error
     else
-      render :file => File.join(RAILS_ROOT, "public", "404.html"), :status => 404
+      render :file => File.join(Rails.root, "public", "404.html"), :status => 404
     end
   end
 
@@ -78,7 +77,7 @@ class ApplicationController < ActionController::Base
   end
 
   def store_location
-    session[:return_to] = request.request_uri
+    session[:return_to] = request.fullpath
   end
 
   def redirect_back_or_default(default)

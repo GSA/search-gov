@@ -131,10 +131,12 @@ describe Analytics::HomeController do
       end
 
       context "when rendering the monthly reports page" do
-        integrate_views
+        render_views
         before do
           AWS::S3::Base.stub!(:establish_connection!).and_return true
           DailyPopularQuery.stub!(:most_recent_populated_date).and_return Date.yesterday
+          DailyPopularQuery.stub!(:minimum).and_return Date.yesterday
+          DailyPopularQuery.stub!(:maximum).and_return Date.yesterday
         end
 
         it "should establish an AWS connection" do

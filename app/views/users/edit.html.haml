@@ -1,6 +1,6 @@
 = breadcrumbs([link_to("My Account", account_path), "Edit My Account"])
 .span-18
-  - form_for @user, :url => account_path, :html => {:class=>"bordered"} do |f|
+  = form_for @user, :url => account_path, :html => {:class=>"bordered"} do |f|
     %h1 Edit My Account
     = f.error_messages
     = render :partial => "form", :object => f

@@ -67,33 +67,33 @@ Given /^the following Misspelling exist:$/ do |table|
 end
 
 Then /^the search bar should have SAYT enabled$/ do
-  response.body.should have_tag("script[type=text/javascript][src^=/javascripts/sayt-ui.js]")
-  response.body.should have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")
-  response.body.should have_tag("script[type=text/javascript][src^=/javascripts/jquery/jquery-ui-1.8.12.custom.min.js]")
+  page.should have_selector("script[type='text/javascript'][src*='/javascripts/sayt-ui.js']")
+  page.should have_selector("input[id='search_query'][type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
+  page.should have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui-1.8.12.custom.min.js']")
 end
 
 Then /^the search bar should not have SAYT enabled$/ do
-  response.body.should_not have_tag("script[type=text/javascript][src^=/javascripts/sayt-ui.js]")
-  response.body.should_not have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")
-  response.body.should_not have_tag("script[type=text/javascript][src^=/javascripts/jquery/jquery-ui-1.8.12.custom.min.js]")
+  page.should_not have_selector("script[type='text/javascript'][src*='/javascripts/sayt-ui.js']")
+  page.should_not have_selector("input[id='search_query'][type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
+  page.should_not have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui-1.8.12.custom.min.js']")
 end
 
 Then /^I should see the page with affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
-  response.body.should have_tag("link[type=text/css][href*=#{stylesheet_name}]")
+  page.should have_selector("link[type='text/css'][href*='#{stylesheet_name}']")
 end
 
 Then /^I should not see the page with affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
-  response.body.should_not have_tag("link[type=text/css][href*=#{stylesheet_name}]")
+  page.should_not have_selector("link[type='text/css'][href*='#{stylesheet_name}']")
 end
 
 Then /^affiliate SAYT suggestions for "([^\"]*)" should be enabled$/ do |affiliate_name|
   affiliate = Affiliate.find_by_name(affiliate_name)
-  response.body.should have_tag("script[type=text/javascript]", :text => "\n    //\n    var usagov_sayt_url = \"#{root_url}sayt?aid=#{affiliate.id}&\";\n    //\n    ")
+  page.body.should match("&aid=#{affiliate.id}")
 end
 
 Then /^affiliate SAYT suggestions for "([^\"]*)" should be disabled$/ do |affiliate_name|
   affiliate = Affiliate.find_by_name(affiliate_name)
-  response.body.should_not have_tag("script[type=text/javascript]", :text => "\n    //\n    var usagov_sayt_url = \"#{root_url}sayt?aid=#{affiliate.id}&\";\n    //\n    ")
+  page.body.should_not match("&aid=#{affiliate.id}")
 end
 
 Given /^the following Calais Related Searches exist for affiliate "([^\"]*)":$/ do |affiliate_name, table|
@@ -124,7 +124,7 @@ Then /^the affiliate "([^\"]*)" should be disabled$/ do |affiliate_name|
 end
 
 Then /^the "([^\"]*)" button should be checked$/ do |field|
-  response_body.should have_selector "input[type=radio][checked=checked][id=#{field}]"
+  page.should have_selector "input[type='radio'][checked='checked'][id='#{field}']"
 end
 
 Then /^the affiliate "([^\"]*)" should be set to use global related topics$/ do |affiliate_name|
@@ -156,17 +156,17 @@ end
 Then /^I should see sorted sites in the site dropdown list$/ do
   sites = @current_user.affiliates.sort{|x,y| x.display_name <=> y.display_name}
   sites.each_with_index do |site, index|
-    response.body.should have_tag("#affiliate_id option:nth-child(#{index + 1})", :value => site.id)
+    page.should have_selector("#affiliate_id option:nth-child(#{index + 1})", :value => site.id)
   end
 end
 
 Then /^I should see sorted sites in the site list$/ do
   sites = @current_user.affiliates.sort{|x,y| x.display_name <=> y.display_name}
   sites.each_with_index do |site, index|
-    response.body.should have_tag(".generic-table tbody tr:nth-child(#{index + 1}) td.site-name a", :text =>site.display_name)
+    page.should have_selector(".generic-table tbody tr:nth-child(#{index + 1}) td.site-name a", :content => site.display_name)
   end
 end
 
-Then /^I should see "([^"]*)" in the site wizards header$/ do |step|
-  response.body.should have_tag(".steps_header img[alt=#{step}]")
+Then /^I should see "([^\"]*)" in the site wizards header$/ do |step|
+  page.should have_selector(".steps_header img[alt='#{step}']")
 end

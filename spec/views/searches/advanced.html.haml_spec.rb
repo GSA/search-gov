@@ -4,14 +4,14 @@ describe "searches/advanced.html.haml" do
   context "visiting the English language (default) page" do
     it "should display text via the I18n in English" do
       render
-      response.should contain(/Use the options on this page to create a very specific search./)
+      rendered.should contain(/Use the options on this page to create a very specific search./)
     end
 
     describe "adult filter options" do
       context "when no options are present" do
         it "should default to moderate for adult searches" do
           render
-          response.should have_tag('input[type=?][name=?][value=?][checked=?]', 'radio', 'filter', 'moderate','checked')
+          rendered.should have_selector("input[type='radio'][name='filter'][value='moderate'][checked='checked']")
         end
       end
 
@@ -22,7 +22,7 @@ describe "searches/advanced.html.haml" do
 
         it "should mark that option as selected" do
           render
-          response.should have_tag('input[type=?][name=?][value=?][checked=?]', 'radio', 'filter', 'strict','checked')
+          rendered.should have_selector("input[type='radio'][name='filter'][value='strict'][checked='checked']")
         end
       end
     end
@@ -40,12 +40,12 @@ describe "searches/advanced.html.haml" do
 
     it "should display a hidden input field with the locale" do
       render
-      response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'locale', 'es')
+      rendered.should have_selector("input[type='hidden'][name='locale'][value='es']")
     end
 
     it "should show options for adult searches, defaulting to moderate" do
       render
-      response.should have_tag('input[type=?][name=?][value=?][checked=?]', 'radio', 'filter', 'moderate','checked')
+      rendered.should have_selector("input[type='radio'][name='filter'][value='moderate'][checked='checked']")
     end
 
     after do
@@ -57,16 +57,16 @@ describe "searches/advanced.html.haml" do
     fixtures :affiliates
 
     it "should include a hidden input tag with the affiliate" do
-      assigns[:affiliate] = affiliates(:power_affiliate)
+      assign(:affiliate, affiliates(:power_affiliate))
       render
-      response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'affiliate', affiliates(:power_affiliate).name)
+      rendered.should have_selector("input[type='hidden'][name='affiliate'][value='#{affiliates(:power_affiliate).name}']")
     end
 
     it "should include a hidden input tag with the scope id if a scope id is passed" do
-      assigns[:affiliate] = affiliates(:power_affiliate)
-      assigns[:scope_id] = 'SomeScope'
+      assign(:affiliate, affiliates(:power_affiliate))
+      assign(:scope_id, 'SomeScope')
       render
-      response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'scope_id', 'SomeScope')
+      rendered.should have_selector("input[type='hidden'][name='scope_id'][value='SomeScope']")
     end
   end
 end

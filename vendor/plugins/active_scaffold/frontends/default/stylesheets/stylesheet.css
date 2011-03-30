@@ -35,8 +35,19 @@ text-decoration: none;
 color: #999;
 }
 
-.active-scaffold a:hover {
+.active-scaffold a:hover, .active-scaffold div.hover, .active-scaffold td span.hover {
 background-color: #ff8;
+}
+
+.active-scaffold div.actions a img,
+.active-scaffold td.actions a img {
+border: none;
+vertical-align: middle;
+}
+
+.active-scaffold div.actions a.disabled img,
+.active-scaffold td.actions a.disabled img {
+opacity: 0.5;
 }
 
 .active-scaffold .clear-fix {
@@ -75,7 +86,8 @@ color: #fff;
 padding: 2px 5px 4px 5px;
 }
 
-.active-scaffold-header div.actions a {
+.active-scaffold-header div.actions a,
+.active-scaffold-header div.actions {
 float: right;
 font: bold 14px arial;
 letter-spacing: -1px;
@@ -87,7 +99,38 @@ background-position: 1px 50%;
 background-repeat: no-repeat;
 }
 
-.view .active-scaffold-header div.actions a {
+.active-scaffold-header div.actions a {
+padding: 5px 5px;
+margin-left: 0px;
+}
+
+.active-scaffold .active-scaffold .active-scaffold-header div.actions > a {
+padding: 1px 5px;
+}
+
+.active-scaffold-header div.actions div.action_group {
+display: inline;
+float: right;
+}
+
+.active-scaffold-header div.actions div.action_group li a,
+.active-scaffold-header div.actions div.action_group li div {
+float: none;
+margin: 0;
+}
+
+.active-scaffold-header div.actions .action_group ul {
+line-height: 130%;
+top: 19px;
+}
+
+.active-scaffold .active-scaffold .active-scaffold-header div.actions .action_group ul {
+top: 14px;
+}
+
+.view .active-scaffold-header div.actions a,
+.view .active-scaffold-header div.actions div,
+.view .active-scaffold-header div.actions div.action_group {
 float: left;
 }
 
@@ -107,10 +150,32 @@ opacity: 0.5;
 
 .active-scaffold-header div.actions a.new,
 .active-scaffold-header div.actions a.new_existing,
-.active-scaffold-header div.actions a.show_search {
-padding-left: 19px;
+.active-scaffold-header div.actions a.show_search,
+.active-scaffold-header div.actions a.show_config_list,
+.active-scaffold-header div.actions div.action_group div {
+margin:0;  
+padding: 5px 5px 5px 25px;
+background-position: 5px 50%;
+background-repeat: no-repeat;
+}
+
+.active-scaffold .active-scaffold .active-scaffold-header div.actions > a.new,
+.active-scaffold .active-scaffold .active-scaffold-header div.actions > a.new_existing,
+.active-scaffold .active-scaffold .active-scaffold-header div.actions > a.show_search,
+.active-scaffold .active-scaffold .active-scaffold-header div.actions > a.show_config_list,
+.active-scaffold .active-scaffold .active-scaffold-header div.actions div.action_group > div {
+margin:0;
+padding: 1px 5px 1px 20px;
 background-position: 1px 50%;
 background-repeat: no-repeat;
+}
+
+.active-scaffold-header div.actions div.action_group div {
+  background-image: url(../../../images/active_scaffold/default/gears.png); /* default icon for actions or override with css */
+}
+
+.active-scaffold-header div.actions a.show_config_list {
+  background-image: url(../../../images/active_scaffold/default/config.png);
 }
 
 .active-scaffold-header div.actions a.new,
@@ -155,7 +220,7 @@ background-color: #555;
 
 .active-scaffold th a, .active-scaffold th a:visited {
 color: #fff;
-padding: 2px 15px 2px 5px;
+padding: 2px 2px 2px 5px;
 }
 
 .active-scaffold th p {
@@ -170,6 +235,10 @@ color: #ff8;
 
 .active-scaffold th.sorted {
 background-color: #333;
+}
+
+.active-scaffold th.sorted a {
+padding-right: 18px;
 }
 
 .active-scaffold th.asc a,
@@ -187,6 +256,10 @@ background: #333 url(../../../images/active_scaffold/default/arrow_down.gif) rig
 background: #333 url(../../../images/active_scaffold/default/indicator-small.gif) right 50% no-repeat;
 }
 
+.active-scaffold th .mark_heading {
+margin-left: 5px;
+}
+
 /* Table :: Record Rows
    ============================= */
 
@@ -200,6 +273,10 @@ font-family: Verdana, sans-serif;
 font-size: 11px;
 border-bottom: solid 1px #C5DBF7;
 border-left: solid 1px #C5DBF7;
+}
+
+.active-scaffold tr.record td.messages-container {
+padding: 0px;
 }
 
 .active-scaffold tr.even-record {
@@ -231,7 +308,6 @@ text-align: right;
 
 /* Table :: Actions (Edit, Delete)
    ============================= */
-
 .active-scaffold tr.record td.actions {
 border-right: solid 1px #ccc;
 padding: 0;
@@ -250,13 +326,88 @@ text-align: right;
 padding: 0 2px;
 }
 
-.active-scaffold tr.record td.actions a {
+.active-scaffold tr.record td.actions a,
+.active-scaffold tr.record td.actions div {
 font: bold 11px verdana, sans-serif;
 letter-spacing: -1px;
 padding: 2px;
 margin: 0 2px;
 line-height: 16px;
 white-space: nowrap;
+}
+
+.active-scaffold tr.record td.actions a.disabled {
+color: #666;
+opacity: 0.5;
+}
+
+.active-scaffold .actions .action_group div:hover {
+background-color: #ff8;
+}
+
+.active-scaffold .actions .action_group {
+position: relative;
+text-align: left;
+color: #0066CC;
+}
+
+.active-scaffold .actions .action_group ul {
+border: 2px solid #005CB8;
+list-style-type: none;
+margin: 0;
+padding: 0;
+position: absolute;
+line-height: 200%;
+display: none;
+width: 150px;
+right: 0px;
+}
+
+.active-scaffold .actions .action_group ul ul {
+display: none;
+position: absolute;
+top: 0;
+right: 150px;
+}
+
+.active-scaffold .actions .action_group ul li {
+background: none repeat scroll 0 0 #EEE;
+border-top: 1px dashed #222;
+display: block;
+position: relative;
+width: auto;
+z-index: 2;
+}
+
+.active-scaffold .actions .action_group ul li div {
+  margin: 0;
+  padding: 5px 5px 5px 25px;
+  background-position: 5px 50%;
+  background-repeat: no-repeat;
+}
+
+.active-scaffold .actions .action_group ul li a {
+  display: block;
+  color: #333;
+  margin: 0;
+  padding: 5px 5px 5px 25px;
+  background-position: 5px 50%;
+  background-repeat: no-repeat;
+}
+
+.active-scaffold .actions .action_group ul li.top {
+border-top: 0px solid #005CB8;
+}
+
+.active-scaffold .actions .action_group:hover ul ul,
+.active-scaffold .actions .action_group:hover ul ul ul {
+display: none;
+}
+
+.active-scaffold .actions .action_group:hover ul,
+.active-scaffold .actions .action_group ul li:hover > ul,
+.active-scaffold .actions .action_group ul ul li:hover ul {
+display: block;
 }
 
 /* Table :: Inline Adapter
@@ -313,9 +464,9 @@ top: 0px;
 right: 0px;
 }
 
-.active-scaffold .active-scaffold .active-scaffold-header div.actions a {
+.active-scaffold .active-scaffold .active-scaffold-header div.actions a,
+.active-scaffold .active-scaffold .active-scaffold-header div.actions div {
 font: bold 11px verdana, sans-serif;
-padding: 0 2px 1px 17px;
 }
 
 .blue-theme .active-scaffold .active-scaffold-header div.actions a,
@@ -325,6 +476,12 @@ color: #06c;
 
 .blue-theme .active-scaffold .active-scaffold-header div.actions a:hover {
 background-color: #ff8;
+}
+
+.active-scaffold .active-scaffold .view {
+background-color: transparent;
+padding: 0px;
+border: none;
 }
 
 .active-scaffold .active-scaffold  td {
@@ -337,6 +494,13 @@ border-left: solid 1px #CDF7C5;
 background-color: #FFFFBB;
 padding: 4px;
 border: solid 1px #DDDF37;
+border-top: none;
+}
+
+.active-scaffold .active-scaffold .active-scaffold td.inline-adapter-cell {
+background-color: #DAFFCD;
+padding: 4px;
+border: solid 1px #7FcF00;
 border-top: none;
 }
 
@@ -521,9 +685,6 @@ margin-bottom: 3px;
 .active-scaffold .show-view dl {
 margin-left: 5px;
 }
-.active-scaffold .show-view dl dl {
-margin-left: 0px;
-}
 
 .active-scaffold .show-view dt {
 width: 12em;
@@ -543,10 +704,6 @@ margin-bottom: 5px;
 
 /* Form
    ============================== */
-
-.active-scaffold dl {
-margin: 0;
-}
 
 .active-scaffold .submit {
 font-weight: bold;
@@ -594,7 +751,7 @@ list-style: none;
 clear: both;
 }
 
-.active-scaffold a.cancel,
+.active-scaffold a.as_cancel,
 .active-scaffold p.form-footer a {
 font: bold 14px arial, sans-serif;
 letter-spacing: 0;
@@ -605,7 +762,6 @@ letter-spacing: 0;
 
 .active-scaffold li.form-element {
 clear: both;
-padding-top: 2px;
 }
 
 .active-scaffold label {
@@ -623,12 +779,17 @@ padding: 6px 0;
 float: left;
 }
 
+.active-scaffold li.form-element dd input[type="checkbox"] {
+margin-top: 6px;
+}
+
 .active-scaffold .form dd {
 margin: 0;
 }
 
 
 .active-scaffold .description {
+display: inline-block;
 color: #999;
 font-size: 10px;
 margin-left: 5px;
@@ -656,8 +817,11 @@ padding: 2px;
 }
 
 .active-scaffold .fieldWithErrors input,
+.active-scaffold .field_with_errors input,
 .active-scaffold .fieldWithErrors textarea,
-.active-scaffold .fieldWithErrors select {
+.active-scaffold .field_with_errors textarea,
+.active-scaffold .fieldWithErrors select,
+.active-scaffold .field_with_errors select {
 border: solid 1px #f00;
 }
 
@@ -755,7 +919,7 @@ padding: 0 5px 0 1px;
 background: none;
 }
 
-.active-scaffold .horizontal-sub-form td label {
+.active-scaffold .horizontal-sub-form td dt label {
 display: none;
 }
 
@@ -830,4 +994,83 @@ font-size: 100%;
 
 .active-scaffold-found {
   float:left;
+}
+
+.as_touch a.inline-adapter-close {
+width: 32px;
+height: 34px;
+background: url(../../../images/active_scaffold/default/close_touch.png) 0 0 no-repeat;
+}
+
+.as_touch .as_paginate {
+font-size: 20px;
+padding: 3px 10px;
+}
+
+.as_touch .active-scaffold-header div.actions a {
+padding: 7px 5px;
+}
+
+.as_touch .active-scaffold .active-scaffold-header div.actions a {
+padding: 7px 5px;
+}
+
+.as_touch .active-scaffold-header div.actions .action_group ul {
+line-height: 130%;
+top: 23px;
+}
+
+.as_touch .active-scaffold .active-scaffold-header div.actions .action_group ul {
+top: 23px;
+}
+
+.as_touch .active-scaffold-header div.actions a.new,
+.as_touch .active-scaffold-header div.actions a.new_existing,
+.as_touch .active-scaffold-header div.actions a.show_search,
+.as_touch .active-scaffold-header div.actions a.show_config_list,
+.as_touch .active-scaffold-header div.actions div.action_group div {
+padding: 7px 5px 7px 25px;
+}
+
+.as_touch .active-scaffold .active-scaffold-header div.actions > a.new,
+.as_touch .active-scaffold .active-scaffold-header div.actions > a.new_existing,
+.as_touch .active-scaffold .active-scaffold-header div.actions > a.show_search,
+.as_touch .active-scaffold .active-scaffold-header div.actions > a.show_config_list,
+.as_touch .active-scaffold .active-scaffold-header div.actions div.action_group > div {
+padding: 7px 5px 7px 25px;
+background-position: 5px 50%;
+}
+
+.as_touch .actions .action_group ul li div {
+padding: 7px 5px 7px 25px;
+}
+
+.as_touch .actions .action_group ul li a {
+padding: 7px 5px 7px 25px;
+}
+
+.as_touch .active-scaffold-header h2 {
+padding: 4px 0px;
+}
+
+.as_touch .active-scaffold .active-scaffold-header div.actions a,
+.as_touch .active-scaffold .active-scaffold-header div.actions div {
+  font: bold 14px arial;
+}
+
+.as_touch .active-scaffold .active-scaffold-header div.actions {
+  right: 15px;
+}
+
+.as_touch tr.record {
+line-height: 130%;
+}
+
+.as_touch th a, .as_touch th a:visited {
+color: #fff;
+padding: 5px 2px 5px 5px;
+}
+
+.as_touch tr.record td {
+padding: 5px 10px;
 }

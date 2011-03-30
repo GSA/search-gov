@@ -11,7 +11,8 @@ describe Recall do
     }
   end
 
-  should_validate_presence_of :recall_number, :organization
+  it { should validate_presence_of :recall_number }
+  it { should validate_presence_of :organization }
 
   it "should create a new instance given valid attributes" do
     Recall.create!(@valid_attributes)
@@ -29,7 +30,7 @@ describe Recall do
     before do
       response = mock("response")
       Net::HTTP.stub!(:get_response).and_return(response)
-      content = File.read(RAILS_ROOT + "/spec/fixtures/rss/food_recalls.rss")
+      content = File.read(Rails.root.to_s + "/spec/fixtures/rss/food_recalls.rss")
       response.stub!(:body).and_return(content)
     end
 
@@ -80,7 +81,7 @@ describe Recall do
 
   describe "#load_cpsc_data_from_xml_feed" do
     before do
-      Net::HTTP.stub!(:get_response).and_return mock("response", :body => File.read(RAILS_ROOT + "/spec/fixtures/xml/cpsc.xml"))
+      Net::HTTP.stub!(:get_response).and_return mock("response", :body => File.read(Rails.root.to_s + "/spec/fixtures/xml/cpsc.xml"))
     end
 
     it "should process each result entry in the file" do
@@ -96,7 +97,7 @@ describe Recall do
 
   describe "#load_nhtsa_data_from_tab_delimited_feed" do
     before do
-      Net::HTTP.stub!(:get_response).and_return mock("response", :body => File.read(RAILS_ROOT + "/spec/fixtures/txt/nhtsa_recalls.txt"))
+      Net::HTTP.stub!(:get_response).and_return mock("response", :body => File.read(Rails.root.to_s + "/spec/fixtures/txt/nhtsa_recalls.txt"))
     end
 
     it "should process each result entry in the file" do
@@ -339,14 +340,14 @@ describe Recall do
     end
 
     it "should search within the last month" do
-      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.today, :sort => "date"}, 1, 3).and_return(Struct.new(:total).new(5))
+      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.current, :sort => "date"}, 1, 3).and_return(Struct.new(:total).new(5))
 
       Recall.recent("beef recall").total.should == 5
     end
 
     it "should retry with no date filter if 0 results in last month" do
       results = [1,2,3]
-      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.today, :sort => "date"}, 1, 3).and_return(Struct.new(:total).new(0))
+      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.current, :sort => "date"}, 1, 3).and_return(Struct.new(:total).new(0))
       Recall.should_receive(:search_for).with('beef recall', {:sort => "date"}, 1, 3).and_return(results)
 
       Recall.recent("beef recall").should == results
@@ -354,14 +355,14 @@ describe Recall do
 
     it "should retry with no date filter if nil results in last month" do
       results = [1,2,3]
-      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.today, :sort => "date"}, 1, 3).and_return(nil)
+      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.current, :sort => "date"}, 1, 3).and_return(nil)
       Recall.should_receive(:search_for).with('beef recall', {:sort => "date"}, 1, 3).and_return(results)
 
       Recall.recent("beef recall").should == results
     end
 
     it "should be nil if no results in either period" do
-      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.today, :sort => "date"}, 1, 3).and_return(nil)
+      Recall.should_receive(:search_for).with('beef recall', {:start_date=>1.month.ago.to_date, :end_date=>Date.current, :sort => "date"}, 1, 3).and_return(nil)
       Recall.should_receive(:search_for).with('beef recall', {:sort => "date"}, 1, 3).and_return(nil)
 
       Recall.recent("beef recall").should be_nil

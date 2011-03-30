@@ -1,5 +1,5 @@
 .span-13
-  - form_for [:admin, @affiliate_broadcast], :html=> {:class=> "bordered"} do |f|
+  = form_for [:admin, @affiliate_broadcast], :html=> {:class=> "bordered"} do |f|
     %h1 Send an email to all affiliates
     = f.error_messages(:header_message => nil, :class => "error")
     %dl

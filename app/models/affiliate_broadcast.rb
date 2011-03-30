@@ -8,7 +8,7 @@ class AffiliateBroadcast < ActiveRecord::Base
 
   def broadcast
     User.find_all_by_is_affiliate(true).each do |affiliate_user|
-      AffiliateEmailer.deliver_email(affiliate_user, self.subject, self.body)
+      AffiliateEmailer.email(affiliate_user, self.subject, self.body).deliver
     end
   end
 end

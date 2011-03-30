@@ -1,4 +1,10 @@
 module NavigationHelpers
+  # Maps a name to a path. Used by the
+  #
+  #   When /^I go to (.+)$/ do |page_name|
+  #
+  # step definition in web_steps.rb
+  #
   def path_to(page_name)
     case page_name
 
@@ -58,16 +64,16 @@ module NavigationHelpers
       contact_form_path(:locale => 'es')
     when /the query groups admin page/
       analytics_query_groups_path
-    when /the bulk edit query groups page/
-      bulk_edit_analytics_query_group_path
+    when /the bulk edit query groups page for "([^\"]*)"/
+      bulk_edit_analytics_query_group_path(QueryGroup.find_by_name($1))
     when /the boosted contents admin page/
       admin_boosted_contents_path
     when /the affiliate boosted contents admin page/
       admin_affiliate_boosted_contents_path
     when /the top search admin page/
       admin_top_searches_path
-    when /the affiliate superfresh page/
-      affiliate_superfresh_urls_path(:locale => nil, :m => nil)
+    when /the affiliate superfresh page for "([^\"]*)"/
+      affiliate_superfresh_urls_path(:locale => nil, :m => nil, :affiliate_id => Affiliate.find_by_name($1).id)
     when /the superfresh feed/
       main_superfresh_feed_path
     when /admin sayt suggestions upload/
@@ -84,8 +90,8 @@ module NavigationHelpers
       affiliate_path(Affiliate.find_by_display_name($1))
     when /the "([^\"]*)" affiliate users page$/
       affiliate_users_path(Affiliate.find_by_display_name($1))
-    when /the affiliate sayt page/
-      affiliate_type_ahead_search_index_path(:locale => nil, :m => nil)
+    when /the affiliate sayt page for "([^\"]*)"/
+      affiliate_type_ahead_search_index_path(Affiliate.find_by_name($1))
     when /the recalls landing page/
       recalls_path
     when /the recalls search page/
@@ -108,6 +114,14 @@ module NavigationHelpers
       admin_top_forms_path(:column_number => $1)
     when /the trending searches page/
       trending_searches_widget_path
+    when /the affiliate related topics page for "([^\"]*)"/
+      affiliate_related_topics_path(Affiliate.find_by_name($1))
+    when /the preview affiliate page for "([^\"]*)"/
+      preview_affiliate_path(Affiliate.find_by_name($1))
+    when /the new affiliate boosted content page for "([^\"]*)"/
+      new_affiliate_boosted_content_path(Affiliate.find_by_name($1))
+    when /the edit affiliate boosted content page for "([^\"]*)"/
+      edit_affiliate_boosted_content_path(Affiliate.find_by_name($1), Affiliate.find_by_name($1).boosted_contents.first)
     else
       begin
         page_name =~ /the (.*) page/

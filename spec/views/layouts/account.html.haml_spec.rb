@@ -4,17 +4,18 @@ describe "layouts/account.html.haml" do
   before do
     @webtrends_tag = 'var _tag=new WebTrends();'
     activate_authlogic
+    view.stub!(:current_user).and_return nil
   end
   
   context "when page is displayed" do
     it "should should not show webtrends javascript" do
       render
-      response.should_not contain(@webtrends_tag)
+      rendered.should_not contain(@webtrends_tag)
     end
     
     it "should show a global SAYT tag" do
       render
-      response.should have_tag("script", :text => "\n    //\n    var usagov_sayt_url = \"http://test.host/sayt?\";\n    //\n    ")
+      rendered.should contain('var usagov_sayt_url = "http://test.host/sayt?";')
     end
   end
   
@@ -26,7 +27,7 @@ describe "layouts/account.html.haml" do
     
     it "should output SAYT javascript and CSS tags" do
       render
-      response.should have_tag("script", :text => "\n    //\n    var usagov_sayt_url = \"http://test.host/sayt?\";\n    //\n    ")
+      rendered.should contain('var usagov_sayt_url = "http://test.host/sayt?";')
     end
   end
 end

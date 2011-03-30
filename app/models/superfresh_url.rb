@@ -15,13 +15,15 @@ class SuperfreshUrl < ActiveRecord::Base
     end
 
     def crawled_urls(affiliate = nil, page = 1)
-      paginate_by_affiliate_id(affiliate.id, :conditions => ['NOT ISNULL(crawled_at)'], :page => page, :order => 'crawled_at desc') if affiliate
+      if affiliate
+        paginate(:conditions => ['affiliate_id = ? AND NOT ISNULL(crawled_at)', affiliate.id], :page => page, :order => 'crawled_at desc')
+      end
     end
 
     def process_file(file, affiliate = nil)
       counter = 0
-      if file.lines.count <= MAX_URLS_PER_FILE_UPLOAD and file.open
-        file.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
+      if file.tempfile.lines.count <= MAX_URLS_PER_FILE_UPLOAD and file.tempfile.open
+        file.tempfile.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
         return counter
       else
         raise "Too many URLs in your file.  Please limit your file to #{MAX_URLS_PER_FILE_UPLOAD} URLs."

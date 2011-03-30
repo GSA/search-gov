@@ -93,7 +93,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
         :footer => @affiliate.staged_footer)
       @current_step = :get_the_code
       @affiliate.users.each do |user|
-        Emailer.deliver_new_affiliate_site(@affiliate, user)
+        Emailer.new_affiliate_site(@affiliate, user).deliver
       end
       flash.now[:success] = "Site successfully created"
     else
@@ -153,7 +153,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def update_contact_information_for_new_user
     if @user.update_attributes(params[:user])
-      flash[:success] = 'Thank you for providing us your contact information. <br /> To continue the signup process, check your inbox, so we may verify your email address.'
+      flash[:success] = 'Thank you for providing us your contact information. <br /> To continue the signup process, check your inbox, so we may verify your email address.'.html_safe
       redirect_to home_affiliates_path
     else
       render :action => :home
@@ -200,7 +200,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   protected
+  
   def sync_affiliate_staged_attributes
     @affiliate.sync_staged_attributes
   end
+  
 end

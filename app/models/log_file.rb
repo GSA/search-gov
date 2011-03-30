@@ -9,7 +9,7 @@ class LogFile
           parse_and_emit_line(log_entry) rescue failures << log_entry
         end
       end
-      RAILS_DEFAULT_LOGGER.warn("File #{filepath} has #{failures.size} errors:\n#{failures}") unless failures.empty?
+      Rails.logger.warn("File #{filepath} has #{failures.size} errors:\n#{failures}") unless failures.empty?
     end
 
     def parse_and_emit_line(log_entry)

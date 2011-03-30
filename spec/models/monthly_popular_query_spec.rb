@@ -14,10 +14,16 @@ describe MonthlyPopularQuery do
   end
 
   describe "creating a new instance" do
-    should_validate_presence_of :year, :month, :query, :times
-    should_validate_uniqueness_of :query, :scope => [:year, :month, :is_grouped]
-
-    it "should default to not grouped" do
+    before do
+      @monthly_popular_query = MonthlyPopularQuery.create(@valid_attributes)
+    end
+      
+    it { should validate_presence_of :year }
+    it { should validate_presence_of :month }
+    it { should validate_presence_of :query }
+    it { should validate_presence_of :times }
+  
+    it "should default the to not grouped" do
       MonthlyPopularQuery.new.is_grouped.should be_false
     end
   end

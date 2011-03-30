@@ -14,10 +14,11 @@ class Affiliate < ActiveRecord::Base
   has_many :superfresh_urls, :dependent => :destroy
   has_many :calais_related_searches, :dependent => :destroy
   after_destroy :remove_boosted_contents_from_index
-  before_validation_on_create :set_default_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title
+  before_validation :set_default_name, :on => :create
   before_save :set_default_affiliate_template, :normalize_domains
-  named_scope :ordered, {:order => 'display_name ASC'}
-
+  before_validation :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
+  scope :ordered, {:order => 'display_name ASC'}
+  
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"

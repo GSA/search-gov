@@ -9,16 +9,16 @@
           queriesForm.elements[i].checked = "checked";
         }
       }
-    - form_tag bulk_add_analytics_query_groups_path, :method => :post, :name => 'queries' do
+    = form_tag bulk_add_analytics_query_groups_path, :method => :post, :name => 'queries' do
       %table
         %tr{:class => 'query_search_results_table_header'}
           %th Query term
           %th{:style=>"text-align: right;"} Frequency
           - if @current_user.is_analyst_admin?
             %th{:style => "text-align: center;"}
-              = "Add to #{link_to 'Query Group', analytics_query_groups_path, :target => '_blank'}"
+              = "Add to #{link_to 'Query Group', analytics_query_groups_path, :target => '_blank'}".html_safe
               %br
-              = "(#{ link_to 'Select All', 'javascript:selectAllQueries();'})"
+              = "(#{ link_to 'Select All', 'javascript:selectAllQueries();'})".html_safe
         - @search_results.each_pair do |query, count|
           %tr
             %td= query_chart_link(query)

@@ -12,10 +12,12 @@ describe "affiliates/users/index.html.haml" do
   context "when affiliate user" do
     before do
       UserSession.create(@affiliate_user)
+      view.stub!(:current_user).and_return @affiliate_user
     end
     
     it "should not show the make owner action" do
-      render :path_parameters => {:affiliate_id => @affiliate.to_param}
+      assign(:affiliate_id, @affiliate.to_param)
+      render
     end
   end
 end

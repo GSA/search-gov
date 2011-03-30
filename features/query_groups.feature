@@ -10,7 +10,7 @@ Feature: Manage query_groups
     | hcreform  | medicaid, health care |
     And I am on the query groups admin page
     And I follow "Bulk Edit"
-    Then I should be on the bulk edit query groups page
+    Then I should be on the bulk edit query groups page for "hcreform"
     And I should see "Bulk Edit Query Group: hcreform"
     And the "Queries" field should contain "^health care\nmedicaid$"
 
@@ -20,7 +20,7 @@ Feature: Manage query_groups
       health care reform
       """
     And I press "Update Queries"
-    Then I should be on the bulk edit query groups page
+    Then I should be on the bulk edit query groups page for "hcreform"
     And I should see "2 queries added, 2 queries removed."
     And the "Queries" field should contain "^health care reform\nobama health care$"
 
@@ -33,13 +33,13 @@ Feature: Manage query_groups
       barack obama health care
       """
     And I press "Update Queries"
-    Then I should be on the bulk edit query groups page
+    Then I should be on the bulk edit query groups page for "hcreform"
     And I should see "2 queries added, 1 queries removed."
     And the "Queries" field should contain "^barack obama health care\nhealth care\nhealth care reform$"
 
-    When I fill in "grouped_queries_text" with ""
+    When I blank out the "grouped_queries_text" text area
     And I press "Update Queries"
-    Then I should be on the bulk edit query groups page
+    Then I should be on the bulk edit query groups page for "hcreform"
     And I should see "3 queries removed."
     And the "Queries" field should contain ""
 
@@ -50,7 +50,7 @@ Feature: Manage query_groups
     | hcreform  | medicaid, health care |
     And I am on the query groups admin page
     And I follow "Bulk Edit"
-    Then I should be on the bulk edit query groups page
+    Then I should be on the bulk edit query groups page for "hcreform"
     And I should see "Bulk Edit Query Group: hcreform"
     And I should see "Back to Query Groups Admin"
     When I follow "Back to Query Groups Admin"

@@ -1,2 +1,2 @@
-require 'components'
-ActionController::Base.send :include, Components
+RENDER_COMPONENT_INSTALLED = :plugin
+require 'render_component'

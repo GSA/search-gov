@@ -12,7 +12,7 @@ module SearchHelper
     query = search.spelling_suggestion ? search.spelling_suggestion : search.query
     onmousedown_attribute = onmousedown_attribute_for_image_click(query, result["MediaUrl"], index, affiliate_name, "IMAG", search.queried_at_seconds)
     html = tracked_click_thumbnail_image_link(result, onmousedown_attribute)
-    html << tracked_click_thumbnail_link(result, onmousedown_attribute)
+    raw html << tracked_click_thumbnail_link(result, onmousedown_attribute)
   end
 
   def display_thumbnail_image_link(result, search, index, max_width = nil, max_height = nil)
@@ -21,7 +21,7 @@ module SearchHelper
   end
 
   def tracked_click_thumbnail_image_link(result, onmousedown_attr, max_width = nil, max_height = nil)
-    link_to thumbnail_image_tag(result, max_width, max_height),
+    raw link_to thumbnail_image_tag(result, max_width, max_height),
             result["Url"],
             :onmousedown => onmousedown_attr,
             :alt => result["title"],
@@ -45,10 +45,15 @@ module SearchHelper
     ]
     reduction = reductions.min
 
-    image_tag result["Thumbnail"]["Url"],
+    raw image_tag result["Thumbnail"]["Url"],
               :width  => (width * reduction).to_i,
               :height => (height * reduction).to_i,
               :title  => result["title"]
+  end
+
+  def thumbnail_link(result)
+    link = URI.parse(result["Url"]).host rescue shorten_url(result["Url"])
+    raw link_to link, result["MediaUrl"], :rel => "no-follow"
   end
 
   def display_result_links (result, search, affiliate, position, show_cache_link = true)
@@ -57,7 +62,7 @@ module SearchHelper
       html << " - "
       html << link_to((t :cached), "#{h result['cacheUrl']}", :class => 'cache_link')
     end
-    html
+    raw html
   end
 
   def display_deep_links_for(result)
@@ -68,11 +73,11 @@ module SearchHelper
       row << content_tag(:td, row_pair[1].nil? ? "" : link_to((h row_pair[1].title), row_pair[1].url))
       rows << content_tag(:tr, row)
     end
-    content_tag(:table, rows, :class=>"deep_links")
+    content_tag(:table, raw(rows), :class=>"deep_links")
   end
 
   def display_result_title (result, search, affiliate, position)
-    tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB')
+    raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB')
   end
 
   def tracked_click_link(url, title, search, affiliate, position, source, opts = nil)
@@ -80,7 +85,7 @@ module SearchHelper
     query = search.spelling_suggestion ? search.spelling_suggestion : search.query
     query = query.gsub("'", "\\\\'")
     onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds)
-    "<a href=\"#{url}\" #{onmousedown} #{opts}>#{title}</a>"
+    raw "<a href=\"#{url}\" #{onmousedown} #{opts}>#{title}</a>"
   end
 
   def render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)
@@ -92,7 +97,7 @@ module SearchHelper
       onmousedown = onmousedown_for_click(query, idx, '', 'SPOT', queried_at_seconds)
       e.swap("<a href=\"#{url}\" #{onmousedown}>#{tag}</a>")
     end
-    doc.to_html
+    raw doc.to_html
   end
 
   def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at)
@@ -134,7 +139,7 @@ module SearchHelper
       did_you_mean = t :did_you_mean,
                        :assumed_term => tracked_click_link(corrected_url, h(rendered_suggestion), search, affiliate, 0, 'BSPEL', "style='font-weight:bold'"),
                        :term_as_typed => tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', "style='font-style:italic'")
-      content_tag(:h4, did_you_mean)
+      content_tag(:h4, raw(did_you_mean))
     end
   end
 
@@ -142,7 +147,7 @@ module SearchHelper
     summary = t :results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => q
     p_sum = content_tag(:p, summary)
     logo = show_logo ? image_tag("binglogo_#{I18n.locale}.gif", :style=>"float:right") : ""
-    content_tag(:div, logo + p_sum, :id => "summary")
+    content_tag(:div, raw(logo + p_sum), :id => "summary")
   end
 
   def agency_url_matches_by_locale(result_url, agency, locale)
@@ -160,7 +165,7 @@ module SearchHelper
     html << "<h3 style=\"margin-top: 5px;\">#{t :agency_phone_label}: #{agency.phone}</h3>" if agency.phone.present?
     html << "<h3 style=\"margin-top: 5px;\">#{t :agency_toll_free_phone_label}: #{agency.toll_free_phone}</h3>" if agency.toll_free_phone.present?
     html << "<h3 style=\"margin-top: 5px;\">#{t :agency_tty_phone_label}: #{agency.tty_phone}</h3>" if agency.tty_phone.present?
-    return html
+    return raw(html)
   end
 
   def display_agency_social_media_links(agency)
@@ -169,7 +174,7 @@ module SearchHelper
       profile_link = agency.send("#{service.downcase}_profile_link".to_sym)
       list_html << "<h3>#{service}#{I18n.locale == I18n.default_locale ? ":" : " (en inglés):"} #{ link_to profile_link, profile_link, :target => "_blank" }</h3>" if profile_link
     end
-    list_html
+    raw(list_html)
   end
 
   def advanced_search_link(search_options, affiliate = nil)
@@ -354,7 +359,7 @@ module SearchHelper
       content << tag(:meta, {:name => "description", :content => "Search.USA.gov is the U.S. government's official search engine."})
       content << tag(:meta, {:name => "keywords", :content => "government images, government forms, government recalls, federal government, state government, american government, united states government, us government, government jobs, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web"})
     end
-    content
+    raw content
   end
 
   def image_search_meta_tags
@@ -363,7 +368,7 @@ module SearchHelper
       content << tag(:meta, {:name => "description", :content => "Search.USA.gov Images is the U.S. government's official search engine for images."})
       content << tag(:meta, {:name => "keywords", :content => "government images, government imagery, government photographs, government photos, government photography, public domain images, copyright free images, satellite, american flag images, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web"})
     end
-    content
+    raw content
   end
 
   def path_to_search(search_params, path_to_landing_page, path_to_serp)

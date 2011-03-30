@@ -14,7 +14,7 @@ describe AutoRecall do
     }
   end
 
-  should_belong_to :recall
+  it { should belong_to :recall }
 
   it "should create a new instance given valid attributes" do
     AutoRecall.create!(@valid_attributes)

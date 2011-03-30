@@ -6,14 +6,14 @@ es:
   search: "Buscar"
   forms_search: "Buscar Formas"
   recalls_search: Buscar Retirados
-  did_you_mean: "Se incluyen resultados para {{assumed_term}}. ¿Deseas mostrar sólo los resultados para {{term_as_typed}}?"
-  results_summary: "Resultados {{from}}-{{to}} de aproximadamente {{total}} de '{{query}}'"
+  did_you_mean: "Se incluyen resultados para %{assumed_term}. ¿Deseas mostrar sólo los resultados para %{term_as_typed}?"
+  results_summary: "Resultados %{from}-%{to} de aproximadamente %{total} de '%{query}'"
   cached: "En caché"
   related_searches: "Temas relacionados"
   related_faqs_header: "Respuestas relacionadas"
   prev_label: "Anterior"
   next_label: "Siguiente"
-  no_results_for: "No hemos encontrado ningún resultado que contenga '{{query}}'. Intenta reformular las palabras clave o utilizar sinónimos."
+  no_results_for: "No hemos encontrado ningún resultado que contenga '%{query}'. Intenta reformular las palabras clave o utilizar sinónimos."
   too_long: "Es demasiado larga una palabra. Intente utilizar una palabra más corta."
   empty_query: "Por favor, introduzca los términos de búsqueda"
   search_results_for: "buscador.usa.gov: Resultados de"
@@ -23,15 +23,15 @@ es:
   serp_title: "el buscador oficial en español del Gobierno de los Estados Unidos"
   advanced_search: "Búsqueda Avanzada"
   images: "Imágenes"
-  images_for: "Imágenes de {{query}}"
+  images_for: "Imágenes de %{query}"
   images_site_title: "el buscador oficial en español del Gobierno de los Estados Unidos"
   recalls: Retirados
-  recalls_for: "Productos retirados: {{query}}"
+  recalls_for: "Productos retirados: %{query}"
   in_english: "(en inglés)"
-  view_all_images_for: "Ver todas las imágenes de {{query}}"
+  view_all_images_for: "Ver todas las imágenes de %{query}"
   government_web: "Todo el Gobierno"
   recall_govbox_header: "Resultados de la base de datos de productos retirados, Gobierno de EE. UU."
-  displaying_count_of_total_for_query: Mostrando {{start}}-{{end}} de {{total}} por {{query}}
+  displaying_count_of_total_for_query: Mostrando %{start}-%{end} de %{total} por %{query}
   view_more_recalls: Vea más productos retirados
   industry:
     auto:
@@ -105,7 +105,7 @@ es:
   contact_thank_you: "Gracias por contactar a GobiernoUSA.gov. Te responderemos en dos días hábiles."
   contact_missing_required_fields: "Faltan datos requeridos"
   contact_invalid_email: "Este e-mail no es válido"
-  searches_related_to: "Búsquedas relacionadas a '{{query}}'"
+  searches_related_to: "Búsquedas relacionadas a '%{query}'"
 
   change_text_size: "Cambiar el tamaño del texto"
   change_text_size_url: "http://www.usa.gov/gobiernousa/Tamano_Texto.shtml"
@@ -139,31 +139,31 @@ es:
       half_a_minute: "Medio minuto"
       less_than_x_seconds:
         one:  "Menos de un segundo"
-        other: "Menos de {{count}} segundos"
+        other: "Menos de %{count} segundos"
       x_seconds:
         one:  "Desde hace un segundo"
-        other: "Desde hace {{count}} segundos"
+        other: "Desde hace %{count} segundos"
       less_than_x_minutes:
         one:  "Menos de un minuto"
-        other: "Menos de {{count}} minutos"
+        other: "Menos de %{count} minutos"
       x_minutes:
         one:  "Desde hace un minuto"
-        other: "Desde hace {{count}} minutos"
+        other: "Desde hace %{count} minutos"
       about_x_hours:
         one:  "Aproximadamente desde hace una hora"
-        other: "Aproximadamente desde hace {{count}} horas"
+        other: "Aproximadamente desde hace %{count} horas"
       x_days:
         one:  "Desde ayer"
-        other: "Desde hace {{count}} días"
+        other: "Desde hace %{count} días"
       about_x_months:
         one:  "Aproximadamente desde hace un mes"
-        other: "Aproximadamente desde hace {{count}} meses"
+        other: "Aproximadamente desde hace %{count} meses"
       x_months:
         one:  "Desde hace un mes"
-        other: "Desde hace {{count}} meses"
+        other: "Desde hace %{count} meses"
       about_x_years:
         one:  " Aproximadamente desde hace un año"
-        other: "Aproximadamente desde hace {{count}} años"
+        other: "Aproximadamente desde hace %{count} años"
       over_x_years:
         one:  "Más de un año"
-        other: "Más de {{count}} años"
+        other: "Más de %{count} años"

@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe UsaController do
-  integrate_views
+  render_views
   
   describe "#show" do
     context "when page exists for a slug" do
@@ -19,7 +19,7 @@ describe UsaController do
         end
 
         it "should get url_slug param from URL" do
-          params_from(:get, "/usa/Some/Topic/index").should == {:controller => "usa", :action => "show", :url_slug => "Some/Topic/index"}
+          { :get => "/usa/Some/Topic/index"}.should route_to(:controller => "usa", :action => "show", :url_slug => "Some/Topic/index")
         end
 
         it "should assign the @search instance" do

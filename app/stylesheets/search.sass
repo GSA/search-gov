@@ -1,3 +1,7 @@
+$red: #990000
+$link: #2200CC
+$green: #008000
+
 #search_form
   ul.navigation
     list-style: none
@@ -7,7 +11,7 @@
 
     li
       font-weight: bold
-      color = !red
+      :color $red
       display: inline
       border-left: 2px solid #CCC
       padding: 0 5px 0 8px
@@ -32,14 +36,14 @@
       :font-size 1.4em
       :margin 0
       a, a:visited, a:hover
-        :color = !link
+        :color $link
     h3
       :font-size 1.1em
       :margin 0 0 0.3em 0
       a, a:visited, a:hover
-        :color= !green
+        :color $green
       a.cache_link, a.cache_link:visited, a.cache_link:hover
-        :color= gray
+        :color gray
 
   span.image_result, span.small_image_result
     width: 200px
@@ -86,8 +90,8 @@
     :text-transform uppercase
     :margin 10px 0 0 0
     :padding 0 20px 10px 20px
-    :background = -webkit-gradient(linear, 0% 30%, 0% 100%, from(#FFF), to(#D2D2D2))
-    :background = -moz-linear-gradient(0% 30% 270deg, #FFF, #D2D2D2)
+    :background -webkit-gradient(linear, 0% 30%, 0% 100%, from(#FFF), to(#D2D2D2))
+    :background -moz-linear-gradient(0% 30% 270deg, #FFF, #D2D2D2)
   .top-forms-column
     :margin 0 0 10px 0
     :background -moz-linear-gradient(top, #FFFFFF 0%, #D2D2D2 30%, #D2D2D2 70%, #FFFFFF 100%)

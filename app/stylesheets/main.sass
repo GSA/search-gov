@@ -1,15 +1,15 @@
-@import compass/reset.sass
-@import compass/utilities/links.sass
-@import blueprint.sass
-@import blueprint/modules/scaffolding.sass
-@import blueprint/modules/fancy_type.sass
-@import blueprint/modules/liquid.sass
+@import "compass/reset"
+@import "compass/utilities/links"
+@import "blueprint"
+@import "blueprint/scaffolding"
+@import "blueprint/fancy-type"
+@import "blueprint/liquid"
 @import trending_searches.sass
 +blueprint
 +blueprint-scaffolding
 +blueprint-liquid-grid
 +fancy-type
-!site_base_color= "#fff"
+$site_base_color: "#fff"
 
 .container
   :width 99%
@@ -70,12 +70,12 @@ hr
 
 div.headertitle
   :margin-bottom 0.25em
-  :background-color= !site_base_color
+  :background-color $site_base_color
 
 div.calendar_date_select div.cds_body td
   :padding 0
 div.calendar_date_select div.cds_body td:hover
-  :background-color= !site_base_color
+  :background-color $site_base_color
 div.calendar_date_select div.cds_body thead th
   :border-bottom 2px solid black
   :font-weight bold
@@ -169,7 +169,7 @@ form.bordered
 
 
 pre
-  :background-color= !site_base_color
+  :background-color $site_base_color
   :color darkslategray
   :padding 0 .2em
   :border 1px solid gainsboro
@@ -341,7 +341,7 @@ table.nav-links
     :color #fff
     :margin 0
   a
-    :color #fff !important
+    :color #fff $important
  
 .secondary-navbar
   :clear both

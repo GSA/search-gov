@@ -18,7 +18,7 @@ module AffiliateHelper
       content << radio_button(:affiliate, :staged_affiliate_template_id, template.id, :checked => checked)
       content << label(:affiliate, "staged_affiliate_template_id_#{template.id}", template.name)
       content << image_tag("affiliate_template_#{template.name.downcase.gsub(' ', '_').underscore}.png")
-      content_tag :div, content, :class => 'affiliate-template'
+      content_tag :div, raw(content), :class => 'affiliate-template'
     end
     templates.join
   end

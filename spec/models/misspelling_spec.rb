@@ -5,11 +5,14 @@ describe Misspelling do
 
   describe "Creating new instance" do
 
-    should_validate_presence_of :wrong, :rite
-    should_validate_uniqueness_of :wrong
-    should_validate_length_of :wrong, :within=> (3..80)
-    should_not_allow_values_for :wrong, "two words"
-    should_allow_values_for :wrong, "wwwgsa.gov", "español"
+    it { should validate_presence_of :wrong }
+    it { should validate_presence_of :rite }
+    it { should validate_uniqueness_of :wrong }
+    it { should ensure_length_of(:wrong).is_at_least(3).is_at_most(80) }
+    it { should_not allow_value("two words").for(:wrong) }
+    ["wwwgsa.gov", "español"].each do |value|
+      it { should allow_value(value).for(:wrong) }
+    end
 
     it "should create a new instance given valid attributes" do
       Misspelling.create!(:wrong => "valueforwrong", :rite => "value for rite")

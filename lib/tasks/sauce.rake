@@ -4,12 +4,14 @@ namespace :screenshots do
     FileUtils.rm  Dir["screenshots/report/**/*.html"]
   end
 
+=begin
   desc "" #hide from rake -T screenshots
   Spec::Rake::SpecTask.new :runtests_spec do |t|
     t.spec_opts = ['--options', "\"#{Rails.root.join('spec', 'spec.opts')}\""]
     spec_glob = ENV["SAUCE_SPEC_GLOB"] || "screenshots/**/*_spec.rb"
     t.spec_files = FileList[spec_glob]
   end
+=end
 
   task :runtests_parallel do
     %x{ruby screenshots/parallel_sauce.rb}

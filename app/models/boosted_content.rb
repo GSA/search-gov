@@ -63,7 +63,7 @@ class BoostedContent < ActiveRecord::Base
         end
       end
     rescue
-      RAILS_DEFAULT_LOGGER.warn "Problem processing boosted Content XML document: #{$!}"
+      Rails.logger.warn "Problem processing boosted Content XML document: #{$!}"
       Sunspot.index(affiliate.boosted_contents)
       return false
     end

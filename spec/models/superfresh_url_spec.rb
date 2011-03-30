@@ -8,9 +8,13 @@ describe SuperfreshUrl do
   end
 
   describe "Creating new instance" do
-    should_belong_to :affiliate
-    should_validate_presence_of :url
-    should_allow_values_for :url, "http://some.site.gov/url", "http://some.site.mil/url", "http://some.govsite.com/url", "http://some.govsite.us/url", "http://some.govsite.info/url"
+    it { should belong_to :affiliate }
+    it { should validate_presence_of :url }
+    it { should allow_value("http://some.site.gov/url").for(:url) }
+    it { should allow_value("http://some.site.mil/url").for(:url) }
+    it { should allow_value("http://some.govsite.com/url").for(:url) }
+    it { should allow_value("http://some.govsite.us/url").for(:url) }
+    it { should allow_value("http://some.govsite.info/url").for(:url) }
 
     context "when affiliate has site domains" do
       before do
@@ -96,12 +100,13 @@ describe SuperfreshUrl do
     context "when a file is passed in with 100 or fewer URLs" do
       before do
         @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
-        @file = Tempfile.new('urls.txt')
+        tempfile = Tempfile.new('urls.txt')
         @urls.each do |url|
-          @file.write(url + "\n")
+          tempfile.write(url + "\n")
         end
-        @file.close
-        @file.open
+        tempfile.close
+        tempfile.open
+        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)
       end
 
       it "should create a new SuperfreshUrl for each of the lines in the file" do
@@ -118,10 +123,11 @@ describe SuperfreshUrl do
 
     context "when a file is passed in with more than 100 URLs" do
       before do
-        @file = Tempfile.new('too_many_urls.txt')
-        101.times { |x| @file.write("http://search.usa.gov/#{x}\n") }
-        @file.close
-        @file.open
+        tempfile = Tempfile.new('too_many_urls.txt')
+        101.times { |x| tempfile.write("http://search.usa.gov/#{x}\n") }
+        tempfile.close
+        tempfile.open
+        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)
       end
 
       it "should raise an error that there are too many URLs in the file" do
@@ -133,10 +139,11 @@ describe SuperfreshUrl do
       before do
         @affiliate = affiliates(:basic_affiliate)
         @affiliate.update_attribute(:domains, "usa.com")
-        @file = Tempfile.new('urls.txt')
-        @file.puts(['http://search.usa.com', 'http://usa.com', 'http://data.gov'])
-        @file.close
-        @file.open
+        tempfile = Tempfile.new('urls.txt')
+        tempfile.puts(['http://search.usa.com', 'http://usa.com', 'http://data.gov'])
+        tempfile.close
+        tempfile.open
+        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)
       end
 
       it "should ignore them and not create SuperfreshUrls out of them" do

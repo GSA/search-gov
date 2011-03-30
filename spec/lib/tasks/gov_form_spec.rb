@@ -22,7 +22,7 @@ describe "gov_form rake tasks" do
       
       context "when not given an xml file" do
         it "should print out an error message" do
-          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          Rails.logger.should_receive(:error)
           @rake[@task_name].invoke
         end
       end

@@ -5,7 +5,7 @@ describe ImageSearchesController do
   describe "#index" do
     context "when searching as an affiliate" do
       fixtures :affiliates, :affiliate_templates
-      integrate_views
+      render_views
       
       before do
         @affiliate = affiliates(:power_affiliate)
@@ -14,21 +14,24 @@ describe ImageSearchesController do
         @page_title = assigns[:page_title]
       end
       
-      should_assign_to :affiliate
-      should_assign_to :page_title
+      
+      it { should assign_to :affiliate }
+      it { should assign_to :page_title }
 
-      should_render_template 'image_searches/affiliate_index.html.haml', :layout => 'affiliate'
+      it "should render the template" do
+        response.should render_template 'image_searches/affiliate_index', :layout => 'affiliate'
+      end 
       
       it "should set an affiliate page title" do
         @page_title.should == "Image search results for #{@affiliate.name}: #{@search.query}"
       end
 
       it "should render the header in the response" do
-        response.body.should match(/#{@affiliate.header}/)
+        response.body.should contain(/#{@affiliate.header}/)
       end
 
       it "should render the footer in the response" do
-        response.body.should match(/#{@affiliate.footer}/)
+        response.body.should contain(/#{@affiliate.footer}/)
       end
       
       context "when a scope id is provided do" do
@@ -43,7 +46,7 @@ describe ImageSearchesController do
     end
     
     context "when searching via the API" do
-      integrate_views
+      render_views
   
       context "when searching normally" do
         before do

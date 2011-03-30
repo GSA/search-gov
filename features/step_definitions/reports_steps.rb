@@ -40,41 +40,41 @@ Given /^the following DailyUsageStats exist for each day in "([^\"]*)"$/ do |mon
 end
 
 Then /^I should see the header for the report date$/ do
-  response.should contain("Monthly Usage Stats for #{Date::MONTHNAMES[Date.yesterday.month]} #{Date.yesterday.year}")
+  page.body.should match("Monthly Usage Stats for #{Date::MONTHNAMES[Date.yesterday.month]} #{Date.yesterday.year}")
 end
 
 Then /^I should see the "([^\"]*)" queries total within "([^\"]*)"$/ do |profile, selector|
   value = 1000 * Date.yesterday.day
-  response.should contain("Total Queries: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
+  page.body.should match("Total Queries: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
 end
 
 Then /^I should see the "([^\"]*)" page views total within "([^\"]*)"$/ do |profile, selector|
   value = 1000 * Date.yesterday.day
-  response.should contain("Total Page Views: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
+  page.body.should match("Total Page Views: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
 end
 
 Then /^I should see the "([^\"]*)" unique visitors total within "([^\"]*)"$/ do |profile, selector|
   value = 1000 * Date.yesterday.day
-  response.should contain("Total Unique Visitors: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
+  page.body.should match("Total Unique Visitors: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
 end
 
 Then /^I should see the "([^\"]*)" clicks total within "([^\"]*)"$/ do |profile, selector|
   value = 10 * Date.yesterday.day
-  response.should contain("Total Click Throughs: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
+  page.body.should match("Total Click Throughs: #{value.to_s.reverse.gsub(/...(?=.)/,'\&,').reverse}")
 end
 
 Then /^I should see the report header for "([^\"]*)"$/ do |month|
   date = Date.parse(month + "-01")
-  response.should contain("Monthly Usage Stats for #{Date::MONTHNAMES[date.month]} #{date.year}")
+  page.body.should match("Monthly Usage Stats for #{Date::MONTHNAMES[date.month]} #{date.year}")
 end
 
 Then /^I should see the "([^\"]*)" "([^\"]*)" total within "([^\"]*)" with a total of "([^\"]*)"$/ do |profile, stat_name, selector, total|
-  response.should contain("Total #{stat_name}: #{total}")
+  page.body.should match("Total #{stat_name}: #{total}")
 end
 
 Given /^I select "([^\"]*)" as the report date$/ do |date_string|
   date = Date.parse(date_string)
-  select date.year, :from => "date[year]"
+  select date.year.to_s, :from => "date[year]"
   select date.strftime('%B'), :from => "date[month]"
 end
 

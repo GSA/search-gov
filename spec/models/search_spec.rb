@@ -31,7 +31,7 @@ describe Search do
       end
 
       it "should log a warning" do
-        RAILS_DEFAULT_LOGGER.should_receive(:warn)
+        Rails.logger.should_receive(:warn)
         @search.run
       end
     end
@@ -777,7 +777,7 @@ describe Search do
     context "when results contain listing missing a title" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'Nas & Kelis'))
-        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_two_search_results_one_missing_title.json")
+        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_two_search_results_one_missing_title.json")
         parsed  = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
       end
@@ -791,7 +791,7 @@ describe Search do
     context "when results contain listing missing a description" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'data'))
-        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_some_missing_descriptions.json")
+        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_some_missing_descriptions.json")
         parsed  = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
       end
@@ -808,7 +808,7 @@ describe Search do
     context "when searching for misspelled terms" do
       before do
         @search = Search.new(@valid_options.merge(:query => "p'resident"))
-        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions_pres.json")
+        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions_pres.json")
         parsed  = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
@@ -822,7 +822,7 @@ describe Search do
     context "when suggestions for misspelled terms contain scopeid or parenthesis" do
       before do
         @search = Search.new(@valid_options.merge(:query => '(electro coagulation) site:uspto.gov'))
-        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
         parsed  = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
@@ -836,7 +836,7 @@ describe Search do
     context "when the Bing spelling suggestion is identical to the original query except for Bing highight characters" do
       before do
         @search = Search.new(:query => 'ct-w4')
-        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_highlight_characters.json")
+        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_highlight_characters.json")
         parsed  = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
@@ -850,7 +850,7 @@ describe Search do
     context "when the Bing spelling suggestion is identical to the original query except for a hyphen" do
       before do
         @search = Search.new(:query => 'bio-tech')
-        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_a_hyphen.json")
+        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_a_hyphen.json")
         parsed  = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
@@ -1027,7 +1027,7 @@ describe Search do
       end
 
       it "should log JSON info about the query, including locale, affiliate, timestamp, piped modules shown, and the query" do
-        RAILS_DEFAULT_LOGGER.should_receive(:info).with(/[Query Impression] \{.*\"modules\":\"BWEB|BSPEL\".*\}/)
+        Rails.logger.should_receive(:info).with(/[Query Impression] \{.*\"modules\":\"BWEB|BSPEL\".*\}/)
         @search.run
       end
     end
@@ -1129,9 +1129,9 @@ describe Search do
 
       it "should generate a JSON representation of total, start and end records, spelling suggestions, related searches and search results" do
         json = @search.to_json
-        json.should contain(/total/)
-        json.should contain(/startrecord/)
-        json.should contain(/endrecord/)
+        json.should =~ /total/
+        json.should =~ /startrecord/
+        json.should =~ /endrecord/
       end
 
       context "when an error occurs" do
@@ -1141,7 +1141,7 @@ describe Search do
 
         it "should output an error if an error is detected" do
           json = @search.to_json
-          json.should contain(/"error":"Some error"/)
+          json.should =~ /"error":"Some error"/
         end
       end
 

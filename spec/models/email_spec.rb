@@ -7,7 +7,7 @@ describe Emailer do
 
   describe "#objectionable_content_alert" do
     before(:all) do
-      @email = Emailer.deliver_objectionable_content_alert("foo@bar.com", %w{ baaaaad awful })
+      @email = Emailer.objectionable_content_alert("foo@bar.com", %w{ baaaaad awful }).deliver
     end
 
     it "should be set to be delivered to the email passed in" do
@@ -27,7 +27,7 @@ describe Emailer do
   describe "#saucelabs_report" do
     before(:all) do
       @url = "http://cdn.url"
-      @email = Emailer.deliver_saucelabs_report("foo@bar.com", @url)
+      @email = Emailer.saucelabs_report("foo@bar.com", @url).deliver
     end
 
     it "should be set to be delivered to the email passed in" do
@@ -45,7 +45,7 @@ describe Emailer do
   
   describe "#monthly_report" do
     before do
-      @email = Emailer.deliver_monthly_report(File.join(RAILS_ROOT, "README.markdown"), Date.current)
+      @email = Emailer.monthly_report(File.join(Rails.root, "README.markdown"), Date.current).deliver
     end
     
     it "should be sent to the monthly report recipients" do
@@ -56,11 +56,8 @@ describe Emailer do
       @email.should have_subject("[USASearch] Monthly Report data attached: README.markdown")
     end
     
-    it "should attach a file" do
-      @email.parts.should contain(/README.markdown/)
-    end
-    
     it "should have an attachment" do
+      @email.attachments.should_not be_nil
       @email.attachments.should_not be_empty
     end    
   end
@@ -68,7 +65,7 @@ describe Emailer do
   describe "#new_user_email_verification" do
     before do
       @user = mock(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token')
-      @email = Emailer.deliver_new_user_email_verification(@user)
+      @email = Emailer.new_user_email_verification(@user).deliver
     end
 
     it "should be sent to the new user email" do

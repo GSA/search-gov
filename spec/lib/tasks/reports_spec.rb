@@ -28,7 +28,7 @@ describe "Report generation rake tasks" do
 
       context "when file_name or period or max entries for each group is not set" do
         it "should log an error" do
-          RAILS_DEFAULT_LOGGER.should_receive(:error)
+          Rails.logger.should_receive(:error)
           @rake[@task_name].invoke
         end
       end

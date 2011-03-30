@@ -42,7 +42,7 @@ describe Affiliates::UsersController do
   end
 
   describe "#create" do
-    integrate_views
+    render_views
     context "when not logged in" do
       it "should redirect to the sign in page" do
         post :create, :affiliate_id => @affiliate.id, :email => 'newuser@usa.gov'
@@ -54,6 +54,8 @@ describe Affiliates::UsersController do
       before do
         @user = users(:affiliate_manager)
         UserSession.create(@user)
+        @emailer = mock(Emailer)
+        @emailer.stub!(:deliver).and_return true
       end
 
       context "when the user added is not an existing user" do
@@ -62,7 +64,7 @@ describe Affiliates::UsersController do
           User.should_receive(:new_invited_by_affiliate).and_return(new_user)
           new_user.should_receive(:save).and_return(true)
           post :create, :affiliate_id => @affiliate.id, :email => 'newuser@usa.gov', :name => 'New User'
-          flash[:success].should == "That user does not exist in the system. We've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
+          session[:flash][:success].should == "That user does not exist in the system. We've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
           response.should redirect_to affiliate_users_path(@affiliate)
         end
       end
@@ -89,7 +91,7 @@ describe Affiliates::UsersController do
 
         it "should associate the user and flash a success message" do
           @affiliate.users.include?(@another_user).should be_false
-          Emailer.should_receive(:deliver_new_affiliate_user).with(@affiliate, @another_user, @user)
+          Emailer.should_receive(:new_affiliate_user).with(@affiliate, @another_user, @user).and_return @emailer
           post :create, :affiliate_id => @affiliate.id, :email => @another_user.email
           assigns[:email].should be_nil
           assigns[:user].should == @another_user
@@ -116,7 +118,7 @@ describe Affiliates::UsersController do
   end
 
   describe "#destroy" do
-    integrate_views
+    render_views
     before do
       @another_affiliate_user = users(:marilyn)
       @affiliate.users << @another_affiliate_user

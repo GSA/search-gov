@@ -31,7 +31,7 @@ Feature: Program
     When I follow "Register Now"
     Then I should see "Sign In to Use Our Services"
 
-    When I follow "How It Works"
+    When I follow "How it works"
     Then I should see "How the Affiliate Program Works" within "title"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > How it Works
     And I should see "How the Affiliate Program Works" within ".main"

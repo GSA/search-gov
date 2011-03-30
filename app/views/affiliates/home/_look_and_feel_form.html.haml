@@ -5,7 +5,7 @@
   %li
     = look_and_feel_form.label :template
     .affiliate-template-wrapper
-      = render_choose_site_templates @affiliate
+      = (render_choose_site_templates @affiliate).html_safe
   %li
     = look_and_feel_form.label :staged_header, "Enter HTML to customize the top of your search results page."
     = look_and_feel_form.text_area :staged_header

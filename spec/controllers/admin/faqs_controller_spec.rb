@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::FaqsController do
   fixtures :users
-  integrate_views
+  render_views
 
   before do
     activate_authlogic

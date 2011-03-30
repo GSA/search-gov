@@ -7,7 +7,7 @@ describe SearchesController do
     it "should use query param to find terms starting with that param" do
       SaytSuggestion.create(:phrase=>"Lorem ipsum dolor sit amet")
       get :auto_complete_for_search_query, :query=>"lorem"
-      response.body.should match(/lorem/i)
+      response.body.should contain(/lorem/i)
     end
 
     it "should not completely melt down when strange characters are present" do
@@ -27,23 +27,14 @@ describe SearchesController do
 
     context "when searching in mobile mode" do
       before do
-        @there_must_be_a_better_way_to_stub_this = ActionController::MobileFu::MOBILE_USER_AGENTS
-        module ActionController::MobileFu
-          remove_const :MOBILE_USER_AGENTS
-        end
-        ActionController::MobileFu::MOBILE_USER_AGENTS = "."
+       iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
+        @regular_user_agent = request.env["HTTP_USER_AGENT"]
+        request.env["HTTP_USER_AGENT"] = iphone_user_agent
       end
 
       it "should return 6 suggestions" do
         Search.should_receive(:suggestions).with(nil, "lorem", 6)
         get :auto_complete_for_search_query, :query=>"lorem"
-      end
-
-      after do
-        module ActionController::MobileFu
-          remove_const :MOBILE_USER_AGENTS
-        end
-        ActionController::MobileFu::MOBILE_USER_AGENTS = @there_must_be_a_better_way_to_stub_this
       end
     end
 
@@ -58,7 +49,7 @@ describe SearchesController do
       it "should accept the 'q' parameter to work with jQuery's autocomplete syntax when style is set to 'jquery'" do
         SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
         get :auto_complete_for_search_query, :q =>"lorem", :mode => 'jquery'
-        response.body.should match(/lorem/i)
+        response.body.should contain(/lorem/i)
       end
 
       it "should return a carriagereturn separated list in jquery mode" do
@@ -77,14 +68,16 @@ describe SearchesController do
   end
 
   context "when showing a new search" do
-    integrate_views
+    render_views
     before do
       get :index, :query => "social security", :page => 4
       @search = assigns[:search]
       @page_title = assigns[:page_title]
     end
 
-    should_render_template 'searches/index.html.haml', :layout => 'application'
+    it "should render the template" do
+      response.should render_template 'index', :layout => 'application'
+    end
 
     it "should assign the query as the page title" do
       @page_title.should == "social security"
@@ -121,7 +114,7 @@ describe SearchesController do
   end
 
   context "when handling a valid affiliate search request" do
-    integrate_views
+    render_views
     before do
       @affiliate = affiliates(:power_affiliate)
       get :index, :affiliate=>@affiliate.name, :query => "weather"
@@ -129,31 +122,33 @@ describe SearchesController do
       @page_title = assigns[:page_title]
     end
 
-    should_assign_to :affiliate
-    should_assign_to :page_title
+    it { should assign_to :affiliate }
+    it { should assign_to :page_title }
 
-    should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'
+    it "should render the template" do
+      response.should render_template 'affiliate_index', :layout => 'affiliate'
+    end
 
     it "should set an affiliate page title" do
       @page_title.should == "Current weather - Noaa Site Search Results"
     end
 
     it "should render the header in the response" do
-      response.body.should match(/#{@affiliate.header}/)
+      response.body.should contain(/#{@affiliate.header}/)
     end
 
     it "should render the footer in the response" do
-      response.body.should match(/#{@affiliate.footer}/)
+      response.body.should contain(/#{@affiliate.footer}/)
     end
 
     it "should not search for FAQs" do
       @search.faqs.should be_nil
-      response.body.should_not match(/related_faqs/)
+      response.body.should_not contain(/related_faqs/)
     end
 
     it "should not search for GovForms" do
       @search.gov_forms.should be_nil
-      response.body.should_not match(/related_gov_forms/)
+      response.body.should_not contain(/related_gov_forms/)
     end
 
     context "when a scope id is provided do" do
@@ -168,14 +163,14 @@ describe SearchesController do
   end
 
   context "when handling a valid staged affiliate search request" do
-    integrate_views
+    render_views
     before do
       @affiliate = affiliates(:power_affiliate)
     end
 
     it "should maintain the staged parameter for future searches" do
       get :index, :affiliate => @affiliate.name, :query => "weather", :staged => 1
-      response.body.should have_tag("input[type=hidden][value=1][name=staged]")
+      response.body.should have_selector("input[type='hidden'][value='1'][name='staged']")
     end
 
     it "should set an affiliate page title" do
@@ -185,7 +180,7 @@ describe SearchesController do
   end
 
   context "when searching via the API" do
-    integrate_views
+    render_views
 
     context "when searching normally" do
       before do
@@ -219,12 +214,14 @@ describe SearchesController do
   end
 
   context "when handling any affiliate search request (mobile or otherwise)" do
-    integrate_views
+    render_views
     before do
       get :index, :affiliate=> affiliates(:power_affiliate).name, :query => "weather"
     end
-
-    should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'
+    
+    it "should render the template" do
+      response.should render_template 'affiliate_index', :layout => 'affiliate'
+    end
   end
 
   context "when handling an invalid affiliate search request" do
@@ -232,17 +229,21 @@ describe SearchesController do
       get :index, :affiliate=>"doesnotexist.gov", :query => "weather"
       @search = assigns[:search]
     end
-
-    should_render_template 'searches/index.html.haml', :layout => 'application'
+    
+    it "should render the template" do
+      response.should render_template 'index', :layout => 'application'
+    end
   end
 
   context "when handling any affiliate search request with a JSON format" do
-    integrate_views
+    render_views
     before do
       get :index, :affiliate => affiliates(:power_affiliate).name, :query => "weather", :format => "json"
     end
 
-    should_render_template 'searches/affiliate_index.html.haml', :layout => 'affiliate'
+    it "should render the template" do
+      response.should render_template 'affiliate_index', :layout => 'affiliate'
+    end
   end
 
   context "when handling a request that has FAQ results" do
@@ -258,7 +259,7 @@ describe SearchesController do
   end
 
   context "when handling a request that has FAQ results, but the FAQ records have been deleted from the database" do
-    integrate_views
+    render_views
     before do
       Faq.destroy_all
       Faq.reindex
@@ -290,7 +291,7 @@ describe SearchesController do
   end
 
   context "when handling a request that has GovForm results, but the GovForm records have been deleted from the database" do
-    integrate_views
+    render_views
     before do
       GovForm.destroy_all
       GovForm.reindex
@@ -388,7 +389,7 @@ describe SearchesController do
   end
 
   describe "#forms" do
-    integrate_views
+    render_views
 
     context "when the source parameter is not specified" do
       before do
@@ -400,7 +401,13 @@ describe SearchesController do
         @page_title = assigns[:page_title]
       end
 
-      should_render_template 'searches/index.html.haml', :layout => 'application'
+      it "should render the template" do
+        response.should render_template 'index', :layout => 'application'
+      end
+      
+      it "should show the forms logo" do
+        response.should have_selector("img[src^='/images/USAsearch_medium_en_forms.gif']")
+      end
 
       it "should assign the query with a forms prefix as the page title" do
         @page_title.should == "taxes"
@@ -439,7 +446,7 @@ describe SearchesController do
       end
 
       it "should render the search box with the form search path" do
-        response.body.should have_tag("form#search_form[method=get][action=/search/forms?locale=en&amp;m=false]")
+        response.body.should have_selector("form[id='search_form']", :method => 'get', :action => '/search/forms?locale=en&m=false')
       end
 
       it "should not show any related search results" do
@@ -447,19 +454,19 @@ describe SearchesController do
       end
 
       it "should have a Forms header at the top of the results, and link to Government Web and Images" do
-        response.body.should have_tag("a[href=/search?m=false&amp;query=taxes]", :text => "Web")
-        response.body.should have_tag("a[href=/search/images?m=false&amp;query=taxes]", :text => "Images")
-        response.body.should have_tag('span', :text => "Forms")
+        response.body.should have_selector("a", :href => "/search?m=false&query=taxes", :content => "Web")
+        response.body.should have_selector("a", :href => '/search/images?m=false&query=taxes', :content => "Images")
+        response.body.should have_selector("span", :content => "Forms")
       end
 
       it "should output a Forms GovBox with a link to more GovForm search results" do
-        response.body.should have_tag("div[class=govbox]")
-        response.body.should have_tag("a[href=/search/forms?locale=en&amp;m=false&amp;query=taxes&amp;source=gov_forms]", :text => "Federal Government Forms Catalog: taxes")
-        response.body.should have_tag("a[href=#{@gov_form.url}]", :text => "#{@gov_form.name} (#{@gov_form.form_number})")
+        response.body.should have_selector("div[class=govbox]")
+        response.body.should have_selector("a", :href => '/search/forms?locale=en&m=false&query=taxes&source=gov_forms', :content => "Federal Government Forms Catalog: <b>taxes</b>")
+        response.body.should have_selector("a", :href => "#{@gov_form.url}", :content => "<strong>Tax</strong> Form (#{@gov_form.form_number})")
       end
 
       it "should not have related Gov Forms" do
-        response.body.should_not have_tag("ul[id=related_gov_forms]")
+        response.body.should_not have_selector("ul[id=related_gov_forms]")
       end
     end
 
@@ -476,8 +483,10 @@ describe SearchesController do
         @page_title = assigns[:page_title]
       end
 
-      should_render_template 'searches/forms.html.haml', :layout => 'application'
-
+      it "should render the template" do
+        response.should render_template 'forms', :layout => 'application'
+      end
+      
       it "should assign the query with a forms prefix as the page title" do
         @page_title.should == "taxes"
       end
@@ -495,18 +504,18 @@ describe SearchesController do
       end
 
       it "should output a title with the query" do
-        response.body.should contain(/Federal Government Forms Catalog: taxes/)
+        response.body.should contain(/Federal Government Forms Catalog: <b>taxes<\/b>/)
       end
 
       it "should link back to the forms web results" do
-        response.body.should have_tag("a[href=/search/forms?locale=en&amp;m=false&amp;query=taxes]", :text => "<< Return to government web results for taxes")
+        response.body.should have_selector("a", :href => '/search/forms?locale=en&m=false&query=taxes', :content => "<< Return to government web results for <b>taxes</b>")
       end
 
       it "should output 10 GovForm results, linked to their URL" do
         1.upto(10) do |index|
-          response.body.should have_tag("a[href=http://forms.gov/#{index}.pdf]", :text => "Taxes Form ##{index} (#{index})")
+          response.body.should have_selector('a', :href => "http://forms.gov/#{index}.pdf", :content => "<strong>Taxes</strong> Form ##{index} (#{index})")
         end
-        response.body.should_not have_tag("a[href=http://forms.gov/11.pdf]", :text => "Taxes Form #11 (11)")
+        response.body.should_not have_selector("a", :href => 'http://forms.gov/11.pdf', :content => "Taxes Form #11 (11)")
       end
     end
 

@@ -239,15 +239,15 @@ describe ApplicationHelper do
     context "when user is not logged in" do
       it "should use generate Sign In link with predefined SSL_PROTOCOL" do
         content = helper.basic_header_navigation_for(nil)
-        content.should have_tag("a[href^=aprotocol]", "Sign In |")
+        content.should have_selector("a[href^='aprotocol']", :content => "Sign In |")
       end
 
       it "should contain Sign In and Help Desk links" do
         content = helper.basic_header_navigation_for(nil)
-        content.should have_tag("a", "Sign In |")
-        content.should have_tag("a", "Help Desk")
-        content.should_not have_tag("a", "My Account |")
-        content.should_not have_tag("a", "Sign Out |")
+        content.should have_selector("a", :content => "Sign In |")
+        content.should have_selector("a", :content => "Help Desk")
+        content.should_not have_selector("a", :content => "My Account |")
+        content.should_not have_selector("a", :content => "Sign Out |")
       end
     end
 
@@ -255,18 +255,18 @@ describe ApplicationHelper do
       it "should use generate Sign Out link with predefined SSL_PROTOCOL" do
         user = stub("User", :email => "user@fixtures.org")
         content = helper.basic_header_navigation_for(user)
-        content.should have_tag("a[href^=aprotocol]", "Sign Out |")
+        content.should have_selector("a[href^='aprotocol']", :content => "Sign Out |")
       end
     end
 
     it "should contain My Account and Sign Out links" do
       user = stub("User", :email => "user@fixtures.org")
       content = helper.basic_header_navigation_for(user)
-      content.should_not have_tag("a", "Sign In |")
+      content.should_not have_selector("a", :content => "Sign In |")
       content.should contain("user@fixtures.org")
-      content.should have_tag("a", "My Account |")
-      content.should have_tag("a", "Sign Out |")
-      content.should have_tag("a", "Help Desk")
+      content.should have_selector("a", :content => "My Account |")
+      content.should have_selector("a", :content => "Sign Out |")
+      content.should have_selector("a", :content => "Help Desk")
     end
   end
 
@@ -336,7 +336,7 @@ describe ApplicationHelper do
 
     it "should return /?locale=en if locale is set to 'alocale' and no arguments are given" do
       I18n.should_receive(:locale).at_least(:once).and_return('alocale')
-      helper.url_for_mobile_home_page.should == '/?locale=alocale&amp;m=true'
+      helper.url_for_mobile_home_page.should == '/?locale=alocale&m=true'
     end
 
     it "should return http://m.gobiernousa.gov when locale argument set to 'es'" do
@@ -344,8 +344,7 @@ describe ApplicationHelper do
     end
 
     it "should return /?locale=alocale when locale argument set to 'alocale'" do
-      I18n.should_receive(:locale).at_least(:once).and_return('alocale')
-      helper.url_for_mobile_home_page('alocale').should == '/?locale=alocale&amp;m=true'
+      helper.url_for_mobile_home_page('alocale').should == '/?locale=alocale&m=true'
     end
   end
 end
