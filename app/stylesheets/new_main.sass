@@ -1,7 +1,7 @@
 @import blueprint.sass
 a
   +link-colors(#21548B, #C81B2A, #21548B, #21548B, #21548B)
-  :text-decoration none
+  :text-decoration underline
 
 .newui-wrapper
   clear: both
@@ -515,7 +515,7 @@ a
         font-size: 15px
         font-weight: normal
         width: 159px
-        /*width of sub menus
+        /*width of sub menus */
         padding: 10px 5px
         margin: 0
         border-top-width: 0
@@ -572,7 +572,7 @@ a
     padding-right: 16px
 
 * html .wrap-navglobal ul li a
-  /*IE6 hack to get sub menu links to behave correctly
+  /*IE6 hack to get sub menu links to behave correctly*/
   display: inline-block
 
 .outer-container
@@ -1125,28 +1125,38 @@ table.generic-table
     textarea
       height: 191px
       width: 640px
+
+.search-form-wrapper
+  clear: both
+  display: inline
+  float: left
+  margin: 0 0 30px 0
+  width: 100%
   #search_form
     float: left
-    margin: 0 0 30px 0
-    width: 100%
+    margin: 0
     input
       float: left
     input[type=text]
-      margin: 0 8px 0 0
+      margin: 0
+      width: 250px
     .search-button
       background: url(/images/btn_search.png) no-repeat 0 0
       behavior: url(/javascripts/iepngfix.htc)
       height: 30px
       margin: 0 0 0 8px
-      width: 84px
-  .go-to-affiliate-center-button-wrapper
-    clear: both
-    height: 39px
-    margin: 0 auto
-    text-align: center
-    width: 220px
-    a
-      float: left
+      padding: 0
+      width: 67px
+
+
+.go-to-affiliate-center-button-wrapper
+  clear: both
+  height: 39px
+  margin: 0 auto
+  text-align: center
+  width: 220px
+  a
+    float: left
 
 .go-to-affiliate-center-button
   background: url(/images/btn_go_to_affiliate_center.png) no-repeat 0 0
@@ -1179,3 +1189,20 @@ table.generic-table
     right: 1px
     left: 0
     bottom: 7px
+
+.api
+  width: 100%
+  h3
+    color: #1C3F94
+    margin: 0
+    padding: 0
+  span
+    border: 0
+    margin: 0
+    padding: 0
+    color: #1C3F94
+  &.request
+    li ul li
+      color: #666
+      font-size: 14px
+

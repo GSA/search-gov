@@ -9,123 +9,134 @@
 %p
   The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the recall of search results. First, the API searches all the fields in the database (the full text of the record). Second, the API stems (or performs prefix search) customers’ search terms (for example, allergic and allergy retrieve the same search results).
 
-- if @affiliate.present?
-  %p
+.api
+  - if @affiliate.present?
     %h3= "URL Example for Affiliate #{@affiliate.name}:"
-  %ul
-    %li
-      = "http://search.usa.gov/api/search?affiliate=#{@affiliate.name}&api_key=#{current_user.api_key}&format=json&query=water&page=3"
+    %p= "http://search.usa.gov/api/search?affiliate=#{@affiliate.name}&api_key=#{current_user.api_key}&format=json&query=water&page=3"
 
-%p
   %h3
     Base URL:
-%ul
-  %li
+  %p
     http://search.usa.gov/api/search
-%p
   %h3
     Format:
-%ul
-  %li
+  %p
     JSON is currently the only response format.
-%p
   %h3
     Type:
-%ul
-  %li
+  %p
     HTTP GET
-%p
   %h3
     Authentication:
-%ul
-  %li
+  %p
     None required.
-%p
   %h3
     Parameters:
-%ul
-  %li
-    affiliate: The name of your affilite site
-    %ul
-      %li
-        Example: http://search.usa.gov/api/search?affiliate=usa.gov
+  %ul
+    %li
+      %span affiliate:
+      The name of your affilite site
+      %ul
+        %li
+          Example: http://search.usa.gov/api/search?affiliate=usa.gov
 
-  %li
-    api_key: your API key.  You can get a key by #{ link_to 'signing up for an account', login_path}.
-    %ul
-      %li
-        Example: http://search.usa.gov/api/search/{affiliate_name}?api_key=9c63bbbfcd985314b245ef92ab37a792
-  %li
-    format: json. This parameter is required. The most recent recalls are returned as the default if no other parameters are given.
-    %ul
-      %li
-        Example: http://search.usa.gov/api/search/{affiliate_name}?format=json
-  %li
-    query: keywords.  Query terms for the search.
-    %ul
-      %li
-        Example: http://search.usa.gov/api/search/{affiliate_name}?query=water
-  %li
-    page: Pagination of search results. Ten results are displayed on each search results page. Paginate search results pages by adding '&page=#' to the query string.
-    %ul
-      %li
-        Example: http://search.usa.gov/api/search/{affiliate_name}?page=3
-%p
+    %li
+      %span api_key:
+      your API key.  You can get a key by #{ link_to 'signing up for an account', login_path}.
+      %ul
+        %li
+          Example: http://search.usa.gov/api/search/{affiliate_name}?api_key=9c63bbbfcd985314b245ef92ab37a792
+    %li
+      %span format:
+      json. This parameter is required. The most recent recalls are returned as the default if no other parameters are given.
+      %ul
+        %li
+          Example: http://search.usa.gov/api/search/{affiliate_name}?format=json
+    %li
+      %span query:
+      keywords.  Query terms for the search.
+      %ul
+        %li
+          Example: http://search.usa.gov/api/search/{affiliate_name}?query=water
+    %li
+      %span page:
+      Pagination of search results. Ten results are displayed on each search results page. Paginate search results pages by adding '&page=#' to the query string.
+      %ul
+        %li
+          Example: http://search.usa.gov/api/search/{affiliate_name}?page=3
+
   %h3
     Usage Notes
   %ul
     %li
       Ten results are displayed on each search results page and defaults to page 1.  You can change the page by adding '&page=#' (for example, '&page=2') to the query string.
 
-%p
   %h3
     Response Fields
-%p
-  The response fields listed below are an aggregate of the data the feeds can return for queries. Note that not all response fields appear in all queries.
+  %p
+    The response fields listed below are an aggregate of the data the feeds can return for queries. Note that not all response fields appear in all queries.
   %ul
     %li
-      success:
+      %span success:
       %ul
         %li
-          total: Total number of results for  the query.
+          %span total:
+          Total number of results for  the query.
         %li
-          startrecord: The index of the first search result with regard to all possible search results
+          %span startrecord:
+          The index of the first search result with regard to all possible search results
         %li
-          endrecord: The index of the last search result with regard to all possible search results
+          %span endrecord:
+          The index of the last search result with regard to all possible search results
         %li
-          spelling_suggestions: An array of spelling suggestions for the query terms specified
+          %span spelling_suggestions:
+          An array of spelling suggestions for the query terms specified
         %li
-          related: An array of search query terms that are related to the query terms specified
+          %span related:
+          An array of search query terms that are related to the query terms specified
         %li
-          boosted_results: Array of boosted results for the query. Boosted results are created by the affiliate in their Boosted content section.
+          %span boosted_results:
+          Array of boosted results for the query. Boosted results are created by the affiliate in their Boosted content section.
           %ul
             %li
-              title: The title of the boosted content
+              %span title:
+              The title of the boosted content
             %li
-              url: The url for the boosted content
+              %span url:
+              The url for the boosted content
             %li
-              description: The description for the boosted content
+              %span description:
+              The description for the boosted content
         %li
-          results: Array of results for the query. Each array item contains the following data.
+          %span results:
+          Array of results for the query. Each array item contains the following data.
           %ul
             %li
-              title: The title of the result
+              %span title:
+              The title of the result
             %li
-              cacheUrl: A cached page for the result
+              %span cacheUrl:
+              A cached page for the result
             %li
-              unescapedUrl: The direct url to the result page
+              %span unescapedUrl:
+              The direct url to the result page
             %li
-              content: A snippet of content from the result page highlighting the query terms
+              %span content:
+              A snippet of content from the result page highlighting the query terms
             %li
-              deepLinks:
+              %span deepLinks:
               %ul
-                %li Title: Title of the deep-linked page
-                %lo Url: Url to the deep-linked page
+                %li
+                  %span Title:
+                  Title of the deep-linked page
+                %li
+                  %span Url:
+                  Url to the deep-linked page
 
 
-%p
-  %h3
-    Response(JSON):
+  %p
+    %h3
+      Response(JSON):
 %pre
   :preserve
     {

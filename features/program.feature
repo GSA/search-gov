@@ -28,6 +28,8 @@ Feature: Program
     And I should see "USASearch Affiliate Program" within "title"
     And I should see the following breadcrumbs: USASearch > Affiliate Program
     And I should see "USASearch Affiliate Program" within ".main"
+    When I follow "Register Now"
+    Then I should see "Sign In to Use Our Services"
 
     When I follow "How It Works"
     Then I should see "How the Affiliate Program Works" within "title"

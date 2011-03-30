@@ -1,19 +1,16 @@
 = breadcrumbs([ link_to('Affiliate Program', affiliates_path), 'How it Works'])
 
-.prepend-1.span-23.last
-  %h1 How the Affiliate Program Works
-.prepend-1.span-23.last
-  %p
-    The General Services Administration's USASearch program offers free search services to any federal, state, local, tribal, or territorial government agency through our Affiliates Program. As an affiliate, you can create a customized search experience that best fits your customers' needs through a simple, online administrative console.
+%h1 How the Affiliate Program Works
+%p
+  The General Services Administration's USASearch program offers free search services to any federal, state, local, tribal, or territorial government agency through our Affiliates Program. As an affiliate, you can create a customized search experience that best fits your customers' needs through a simple, online administrative console.
 
-.prepend-1.span-23.last
-  .right
-    = link_to(image_tag('register_now.png', :alt=>"Register Now"), url_for_login, :title => "Register Now")
-  .left
-    %img{:src=>"/images/affiliates/banner_how_it_works.png"}
+.left
+  %img{:src=>"/images/affiliates/banner_how_it_works.png"}
+.right
+  = link_to(image_tag('register_now.png', :alt => "Register Now"), url_for_login)
 
 .pad10.clear
-.prepend-1.span-20
+%div
   %h1 Use Our Infrastructure
   .clear
   .affiliate-marketing-left
@@ -53,7 +50,7 @@
           View dynamic charts and graphs.
 
 .clear.pad20
-.prepend-1.span-20
+%div
   %h1 Take Advantage of Our Features--All Industry Best Practices
 
   .pad10.clear

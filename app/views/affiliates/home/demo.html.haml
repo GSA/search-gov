@@ -1,17 +1,13 @@
 = breadcrumbs([ link_to('Affiliate Program', affiliates_path), 'See it in Action'])
 
-.prepend-1.span-23.last
-  %h1 See the Affiliate Program in Action
-.prepend-1.span-23.last
-  %p
-    We provide search services for over 300 government websites. Click on any organization's name in the list below to visit their website and see how they've been able to improve their customers' search experience by becoming an affiliate and leveraging our USASearch services.
-  %p
-    Once you've had a chance to see it in action on other sites, be sure to
-    = link_to 'learn how our affiliate program works', how_it_works_affiliates_path
-    and to
-    = link_to 'sign up', url_for_login
-    to become an affiliate.
+%h1 See the Affiliate Program in Action
+%p
+  We provide search services for over 300 government websites. Click on any organization's name in the list below to visit their website and see how they've been able to improve their customers' search experience by becoming an affiliate and leveraging our USASearch services.
+%p
+  Once you've had a chance to see it in action on other sites, be sure to
+  = link_to 'learn how our affiliate program works', how_it_works_affiliates_path
+  and to
+  = link_to 'sign up', url_for_login
+  to become an affiliate.
 
-.pad10.clear
-.prepend-1.span-20
-  = render :partial => "affiliate_ad", :collection => @affiliate_ads
+= render :partial => "affiliate_ad", :collection => @affiliate_ads
