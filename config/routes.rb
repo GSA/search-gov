@@ -47,6 +47,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :logfile_blocked_queries, :active_scaffold => true
     admin.resources :logfile_blocked_ips, :active_scaffold => true
     admin.resources :logfile_blocked_class_cs, :active_scaffold => true
+    admin.resources :logfile_whitelisted_class_cs, :active_scaffold => true
     admin.resources :logfile_blocked_regexps, :active_scaffold => true
   end
   map.affiliate_analytics_redirect '/admin/affiliates/:id/analytics', :controller => 'admin/affiliates', :action => 'analytics'

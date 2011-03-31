@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110329050302) do
+ActiveRecord::Schema.define(:version => 20110331213758) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -258,6 +258,12 @@ ActiveRecord::Schema.define(:version => 20110329050302) do
   end
 
   add_index "logfile_blocked_regexps", ["regexp"], :name => "index_logfile_blocked_regexps_on_regexp", :unique => true
+
+  create_table "logfile_whitelisted_class_cs", :force => true do |t|
+    t.string   "classc",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "misspellings", :force => true do |t|
     t.string   "wrong"
