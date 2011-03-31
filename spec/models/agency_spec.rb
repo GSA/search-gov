@@ -93,6 +93,7 @@ describe Agency do
     context "when the agency has a flickr username" do
       it "should be able to generate a flickr profile link" do
         @agency.flickr_profile_link.should_not be_nil
+        @agency.flickr_profile_link.should == @agency.flickr_username
       end
     end
     
