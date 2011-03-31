@@ -21,7 +21,6 @@ describe Emailer do
       @email.should have_body_text(/baaaaad/)
       @email.should have_body_text(/awful/)
     end
-
   end
 
   describe "#saucelabs_report" do
@@ -41,6 +40,23 @@ describe Emailer do
     it "should contain URL to report" do
       @email.should have_body_text(/#{@url}/)
     end
-
+  end
+  
+  describe "#monthly_report" do
+    before do
+      @email = Emailer.deliver_monthly_report(File.join(RAILS_ROOT, "README.markdown"))
+    end
+    
+    it "should be sent to the monthly report recipients" do
+      @email.should deliver_to(MONTHLY_REPORT_RECIPIENTS)
+    end
+    
+    it "should have a subject with the file name in it" do
+      @email.should have_subject("[USASearch] Monthly Report data attached: README.markdown")
+    end
+    
+    it "should attach a file" do
+      @email.parts.should contain(/README.markdown/)
+    end
   end
 end

@@ -66,6 +66,12 @@ class Emailer < ActionMailer::Base
     @subject += "Objectionable Content Alert"
     body(:search_terms => terms)
   end
+  
+  def monthly_report(zip_filename)
+    setup_email(MONTHLY_REPORT_RECIPIENTS.join(", "))
+    @subject += "Monthly Report data attached: #{File.basename(zip_filename)}"
+    attachment :content_type => "application/zip", :body => File.read(zip_filename), :filename => File.basename(zip_filename)
+  end
 
   private
 

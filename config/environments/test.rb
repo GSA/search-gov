@@ -48,3 +48,5 @@ config.gem "resque_spec",      :version => '~> 0.2.0'
 # reCAPTCHA is configured to automatically skip for test and cucumber environments but the code still refers to these values
 RECAPTCHA_PUBLIC_KEY  = 'PUBLIC_KEY'
 RECAPTCHA_PRIVATE_KEY = 'PRIVATE_KEY'
+
+MONTHLY_REPORT_RECIPIENTS = ['test@example.com', 'test2@example.com']

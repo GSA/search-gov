@@ -8,15 +8,13 @@ Feature: Monthly Reports
     and the most popular query groups for English locale and default affiliate.
 
   Scenario: Viewing module click stats on the the Reports homepage
-    Given the following Clicks per module exist in "February 2010"
-    | module  | total   |
-    | FORM    | 400     |
-    | FAQS    | 300     |
-    | noblis  | 9       |
-    And the following Clicks per module exist in "March 2010"
-    | module  | total   |
-    | BWEB    | 200     |
-    | BREL    | 10      |
+    Given the following MonthlyClickTotals exist
+    | year  | month | source  | total   |
+    | 2010  | 2     | FORM    | 400     |
+    | 2010  | 2     | FAQS    | 300     |
+    | 2010  | 2     | noblis  | 9       |
+    | 2010  | 3     | BWEB    | 200     |
+    | 2010  | 3     | BREL    | 10      |
     And I am logged in with email "analyst@fixtures.org" and password "admin"
     When I am on the analytics homepage
     And I follow "Monthly Reports"

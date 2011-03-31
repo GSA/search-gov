@@ -111,5 +111,39 @@ describe "Report generation rake tasks" do
         end
       end
     end
+    
+    describe "usasearch:reports:monthly_report" do
+      before do
+        @task_name = "usasearch:reports:monthly_report"
+        @start_date = Date.current.beginning_of_month - 1.day
+        @zip_filename = "/tmp/monthly_report_#{@start_date.strftime('%Y-%m')}.zip"
+      end
+      
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+      
+      context "when running the task" do
+        
+        it "should create a zip file in a temporary location, add a bunch of files to it, email it, and delete it after it's been sent" do
+          Emailer.should_receive(:deliver_monthly_report).with(@zip_filename).and_return true
+          File.should_receive(:delete).with(@zip_filename).and_return true
+          @rake[@task_name].invoke
+          Zip::ZipFile.open(@zip_filename) do |zip_file|
+            zip_file.get_entry('top_monthly_query_groups_en.txt')
+            zip_file.get_entry('top_monthly_query_groups_es.txt')
+            zip_file.get_entry('top_monthly_query_groups_affiliates.txt')
+            zip_file.get_entry('top_monthly_queries_en.txt')
+            zip_file.get_entry('top_monthly_queries_es.txt')
+            zip_file.get_entry('top_monthly_queries_affiliates.txt')
+            zip_file.get_entry('top_affiliates.txt')
+            zip_file.get_entry('affiliate_queries_by_month.txt')
+            zip_file.get_entry('click_totals.txt')
+            zip_file.get_entry('affiliate_report.txt')
+            zip_file.get_entry('total_queries_by_profile.txt')
+          end
+        end      
+      end
+    end
   end
 end

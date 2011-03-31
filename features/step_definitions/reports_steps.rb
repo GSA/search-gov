@@ -12,6 +12,14 @@ Given /^the following MonthlyPopularQueries exist$/ do |table|
   end
 end
 
+Given /^the following MonthlyClickTotals exist$/ do |table|
+  MonthlyClickTotal.destroy_all
+  table.hashes.each do |hash|
+    MonthlyClickTotal.create(:year => hash["year"], :month => hash["month"], :source => hash["source"], :total => hash["total"])
+  end
+end
+
+
 
 Given /^the following DailyUsageStats exists for each day in yesterday's month$/ do |table|
   DailyUsageStat.delete_all

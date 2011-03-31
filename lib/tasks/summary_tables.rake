@@ -39,6 +39,11 @@ namespace :usasearch do
         monthly_popular_group = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query_and_is_grouped(day.year, day.month, popular_group.query, true)
         monthly_popular_group.update_attributes(:times => popular_group.times)
       end unless popular_groups.is_a?(String)
+      click_totals = Click.monthly_totals_by_module(day.year, day.month)
+      click_totals.each_pair do |source, total|
+        monthly_click_total = MonthlyClickTotal.find_or_create_by_year_and_month_and_source(day.year, day.month, source)
+        monthly_click_total.update_attributes(:total => total)
+      end
     end
   end
 end
