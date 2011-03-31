@@ -273,6 +273,12 @@ describe ApplicationHelper do
       helper.truncate_on_words("asdfjkl, askjdn", 8).should == "asdfjkl..."
       helper.truncate_on_words("asdfjkl, askjdn", 9).should == "asdfjkl..."
     end
+
+    it "should be able to process multibyte characters" do
+      helper.truncate_on_words("Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble Gum", 60).should == "Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble..."
+      helper.truncate_on_words("Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble Gum", 51).should == "Candy Dynamics Recalls Toxic Waste® Short Circuits™..."
+      helper.truncate_on_words("Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble Gum", 50).should == "Candy Dynamics Recalls Toxic Waste® Short..."
+    end
   end
 
   describe "#highlight_like_solr" do

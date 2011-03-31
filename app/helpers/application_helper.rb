@@ -153,8 +153,9 @@ module ApplicationHelper
   end
 
   def truncate_on_words(text, length)
-    return text if text.length <= length
-    truncated = text[0..length]
+    mb_chars = text.mb_chars
+    return text if mb_chars.length <= length
+    truncated = mb_chars[0..length]
     last_space_index = (truncated.reverse.index(/\W/) || 0)
     last_word_character_index = truncated.length - (truncated.reverse.index(/\w/, last_space_index) || 0)
     truncated = truncated[0...last_word_character_index] unless last_space_index.nil?
