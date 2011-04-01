@@ -98,3 +98,12 @@ Feature: Search
     And I should not see "Our Emergency Page"
     And I should not see "FAQ Emergency Page"
     And I should see "Spanish Emergency"
+
+  Scenario: Site visitor sees shorten boosted content URL
+    Given the following Boosted Content entries exist:
+      | title              | url                                           | description                          | locale  |
+      | Our Emergency Page | http://www.aff.gov/mysuperawesomelongurl/911  | Updated information on the emergency | en      |
+    And I am on the homepage
+    And I fill in "query" with "emergency"
+    And I press "Search"
+    Then I should see "http://www.aff.gov/.../911"
