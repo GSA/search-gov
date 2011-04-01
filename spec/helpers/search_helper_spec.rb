@@ -178,4 +178,22 @@ describe SearchHelper do
       end
     end
   end
+
+  describe "#search_meta_tags" do
+    context "for the English site" do
+      it "should return meta tags for the English site" do
+        helper.should_receive(:english_locale?).and_return(true)
+        content = helper.search_meta_tags
+        content.should have_tag("meta[name=description][content=Search.USA.gov is the U.S. government's official search engine.]")
+        content.should have_tag("meta[name=keywords][content=government images, government forms, government recalls, federal government, state government, american government, united states government, us government, government jobs, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web]")
+      end
+    end
+
+    context "for the non English site" do
+      it "should return meta tags for the non English site" do
+        helper.should_receive(:english_locale?).and_return(false)
+        helper.search_meta_tags.should == ""
+      end
+    end
+  end
 end

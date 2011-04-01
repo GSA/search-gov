@@ -100,7 +100,7 @@ describe ApplicationHelper do
 
       context "when a non-blank page title is defined" do
         it "should prefix the defined page title with the English site title" do
-          helper.build_page_title("some title").should == "some title - #{t :site_title}"
+          helper.build_page_title("some title").should == "some title - #{t :serp_title}"
         end
       end
 
@@ -159,8 +159,8 @@ describe ApplicationHelper do
       end
 
       context "when a non-blank page title is defined" do
-        it "should prefix the defined page title with the Spanish site title" do
-          helper.build_page_title("some title").should == "some title - #{t :site_title}"
+        it "should prefix the defined page title with the Spanish serp title" do
+          helper.build_page_title("some title").should == "some title - #{t :serp_title}"
         end
       end
 

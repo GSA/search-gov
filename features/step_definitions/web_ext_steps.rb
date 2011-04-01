@@ -47,3 +47,10 @@ end
 Then /^I should see a link to "([^"]*)" with text "([^"]*)"$/ do |href, text|
   response.body.should have_tag("a[href=#{href}]", "#{text}")
 end
+
+Then /^I should see the browser page titled "([^"]*)"$/ do |title|
+  within("title") do |content|
+    regexp = Regexp.new("^#{title}$")
+    content.should contain(regexp)
+  end
+end

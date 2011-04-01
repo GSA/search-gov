@@ -319,6 +319,15 @@ module SearchHelper
     end
   end
 
+  def search_meta_tags
+    content = ''
+    if english_locale?
+      content << tag(:meta, {:name => "description", :content => "Search.USA.gov is the U.S. government's official search engine."})
+      content << tag(:meta, {:name => "keywords", :content => "government images, government forms, government recalls, federal government, state government, american government, united states government, us government, government jobs, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web"})
+    end
+    content
+  end
+
   private
 
   def shorten_url (url, length=30)

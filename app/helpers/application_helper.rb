@@ -9,7 +9,7 @@ module ApplicationHelper
     elsif recalls_search?
       site_title = (t :recalls_site_title)
     else
-      site_title = (t :site_title)
+      site_title = page_title.blank? ? (t :site_title) : (t :serp_title)
     end
     (page_title.blank? ? "" : "#{page_title} - ") + site_title
   end

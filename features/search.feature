@@ -3,6 +3,21 @@ Feature: Search
   As a site visitor
   I want to search for web pages
 
+  Scenario: Visiting English search homepage
+    When I am on the homepage
+    Then I should see the browser page titled "Search.USA.gov: The U.S. Government's Official Search Engine"
+    When I fill in "query" with "president"
+    And I press "Search"
+    Then I should see the browser page titled "president - Search.USA.gov"
+
+  Scenario: Visiting Spanish search homepage
+    When I am on the homepage
+    And I follow "Español"
+    Then I should see the browser page titled "el buscador oficial en español del Gobierno de los Estados Unidos"
+    When I fill in "query" with "president"
+    And I press "Buscar"
+    Then I should see the browser page titled "president - el buscador oficial en español del Gobierno de los Estados Unidos"
+
   Scenario: Viewing related English FAQs
     Given the following FAQs exist:
     | url                   | question                                      | answer        | ranking | locale  |

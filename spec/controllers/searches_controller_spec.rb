@@ -91,7 +91,7 @@ describe SearchesController do
     end
 
     it "should show a custom title for the results page" do
-      response.body.should contain("social security - The U.S. Government's Official Web Search")
+      response.body.should contain("social security - Search.USA.gov")
     end
 
     it "should set the query in the Search model" do
