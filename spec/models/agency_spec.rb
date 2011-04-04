@@ -17,30 +17,47 @@ describe Agency do
       :youtube_username => 'irs',
       :flickr_url => 'irs'
     }
-    @agency = Agency.create!(@valid_attributes)
   end
   
-  should_validate_presence_of :name, :domain, :url
-  should_validate_uniqueness_of :domain
-  
   describe "#save" do
-    it "should create a bunch of agency queries on save" do
-      @agency.agency_queries.should_not be_empty
-      @agency.agency_queries.find_by_phrase("irs").should_not be_nil
-      @agency.agency_queries.find_by_phrase("internal revenue service").should_not be_nil
-      @agency.agency_queries.find_by_phrase("the external revenue service").should_not be_nil
-      @agency.agency_queries.find_by_phrase("irs.gov").should_not be_nil
-      @agency.agency_queries.find_by_phrase("www.irs.gov").should_not be_nil
-      @agency.agency_queries.find_by_phrase("the man").should_not be_nil
+    context "when saving with valid attributes" do
+      before do
+        @agency = Agency.create!(@valid_attributes)
+      end
+     
+      should_validate_presence_of :name, :domain, :url
+      should_validate_uniqueness_of :domain
+  
+      it "should create a bunch of agency queries on save" do
+        @agency.agency_queries.should_not be_empty
+        @agency.agency_queries.find_by_phrase("irs").should_not be_nil
+        @agency.agency_queries.find_by_phrase("internal revenue service").should_not be_nil
+        @agency.agency_queries.find_by_phrase("the external revenue service").should_not be_nil
+        @agency.agency_queries.find_by_phrase("irs.gov").should_not be_nil
+        @agency.agency_queries.find_by_phrase("www.irs.gov").should_not be_nil
+        @agency.agency_queries.find_by_phrase("the man").should_not be_nil
+      end
     end
     
-    it "should allow for a long URL for Flickr" do
-      @agency.flickr_url = "http://www.flickr.com/photos/reallylonggroupnamethatismorethan50characters"
-      @agency.save!
+    context "when saving with a really long flickr url" do
+      it "should allow for a long URL for Flickr" do
+        agency = Agency.create!(@valid_attributes.merge(:flickr_url => "http://www.flickr.com/photos/reallylonggroupnamethatismorethan50characters"))
+        agency.flickr_url.should == "http://www.flickr.com/photos/reallylonggroupnamethatismorethan50characters"
+      end
+    end
+    
+    context "when the domain and name are the same value" do
+      it "should save without generating an error" do
+        Agency.create!(@valid_attributes.merge(:name => 'irs.gov', :domain => 'irs.gov'))
+      end
     end
   end
   
   describe "#twitter_profile_link" do
+    before do
+      @agency = Agency.create!(@valid_attributes)
+    end      
+    
     context "when the agency has a twitter username" do
       it "should be able to generate a Twitter profile link" do
         @agency.twitter_profile_link.should_not be_nil
@@ -59,6 +76,10 @@ describe Agency do
   end
   
   describe "#facebook_profile_link" do
+    before do
+      @agency = Agency.create!(@valid_attributes)
+    end
+    
     context "when the agency has a facebook username" do
       it "should be able to generate a facebook profile link" do
         @agency.facebook_profile_link.should_not be_nil
@@ -77,6 +98,10 @@ describe Agency do
   end
   
   describe "#youtube_profile_link" do
+    before do
+      @agency = Agency.create!(@valid_attributes)
+    end
+    
     context "when the agency has a youtube username" do
       it "should be able to generate a youtube profile link" do
         @agency.youtube_profile_link.should_not be_nil
@@ -95,6 +120,10 @@ describe Agency do
   end
   
   describe "#flickr_profile_link" do
+    before do
+      @agency = Agency.create!(@valid_attributes)
+    end
+    
     context "when the agency has a flickr username" do
       it "should be able to generate a flickr profile link" do
         @agency.flickr_profile_link.should_not be_nil
