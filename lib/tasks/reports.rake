@@ -100,7 +100,7 @@ namespace :usasearch do
       output = "#{start_date.strftime('%Y-%m')},#{monthly_totals['English'][:total_queries]},#{monthly_totals['Spanish'][:total_queries]},#{monthly_totals['Affiliates'][:total_queries]},#{monthly_totals['English'][:total_queries]+monthly_totals['Spanish'][:total_queries]+monthly_totals['Affiliates'][:total_queries]}"
       output_to_zipfile(zip_filename, "total_queries_by_profile.txt", "Month,English,Spanish,Affilitates,Total", output)
       
-      Emailer.deliver_monthly_report(zip_filename)
+      Emailer.deliver_monthly_report(zip_filename, start_date)
       
       File.delete(zip_filename)
     end

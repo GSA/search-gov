@@ -126,7 +126,7 @@ describe "Report generation rake tasks" do
       context "when running the task" do
         
         it "should create a zip file in a temporary location, add a bunch of files to it, email it, and delete it after it's been sent" do
-          Emailer.should_receive(:deliver_monthly_report).with(@zip_filename).and_return true
+          Emailer.should_receive(:deliver_monthly_report).with(@zip_filename, @start_date.beginning_of_month).and_return true
           File.should_receive(:delete).with(@zip_filename).and_return true
           @rake[@task_name].invoke
           Zip::ZipFile.open(@zip_filename) do |zip_file|
