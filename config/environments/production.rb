@@ -36,4 +36,4 @@ SSL_PROTOCOL = "https"
 RECAPTCHA_PUBLIC_KEY  = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
 
-MONTHLY_REPORT_RECIPIENTS = ['amy.farrajfeijoo@gsa.gov', 'erik@searchsi.com']
+MONTHLY_REPORT_RECIPIENTS = ['amy.farrajfeijoo@gsa.gov', 'erik@searchsi.com', 'greg@shelrick.com']

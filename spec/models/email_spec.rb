@@ -44,7 +44,7 @@ describe Emailer do
   
   describe "#monthly_report" do
     before do
-      @email = Emailer.deliver_monthly_report(File.join(RAILS_ROOT, "README.markdown"))
+      @email = Emailer.deliver_monthly_report(File.join(RAILS_ROOT, "README.markdown"), Date.current)
     end
     
     it "should be sent to the monthly report recipients" do
@@ -58,5 +58,9 @@ describe Emailer do
     it "should attach a file" do
       @email.parts.should contain(/README.markdown/)
     end
+    
+    it "should have an attachment" do
+      @email.attachments.should_not be_empty
+    end    
   end
 end
