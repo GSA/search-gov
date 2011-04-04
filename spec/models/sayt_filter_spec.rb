@@ -16,6 +16,10 @@ describe SaytFilter do
       SaytFilter.create!(:phrase => "some valid filter phrase")
     end
 
+    it "should not filter only exact phrase be default" do
+      SaytFilter.create!(:phrase => "some filter phrase").filter_only_exact_phrase.should be_false
+    end
+
     it "should downcase the phrase before entering into DB" do
       SaytFilter.create!(:phrase => "ALL CAPS")
       SaytFilter.find_by_phrase("all caps").phrase.should == "all caps"
@@ -45,13 +49,29 @@ describe SaytFilter do
     end
   end
 
+  context "after saving a SaytFilter with filter_only_exact_entry is true" do
+    before do
+      @should_be_deleted_phrase = "xxx"
+      SaytSuggestion.create!(:phrase => @should_be_deleted_phrase)
+      @should_not_be_deleted_phrase = "should not be deleted xxx"
+      SaytSuggestion.create!(:phrase => @should_not_be_deleted_phrase)
+    end
+
+    it "should run the filter against existing SaytSuggestions" do
+      SaytFilter.create!(:phrase => "xxx", :filter_only_exact_phrase => true)
+      SaytSuggestion.find_by_phrase(@should_be_deleted_phrase).should be_nil
+      SaytSuggestion.find_by_phrase(@should_not_be_deleted_phrase).should_not be_nil
+    end
+  end
+
   describe "#filter(results, key=nil)" do
     before do
       SaytFilter.create!(:phrase => "foo")
       SaytFilter.create!(:phrase => "blat baz")
       SaytFilter.create!(:phrase => "hyphenate-me")
       SaytFilter.create!(:phrase => "sex.")
-      @queries = ["bar Foo", "bar blat", "blat", "baz blat", "baz loren", "food", "sex education"]
+      SaytFilter.create!(:phrase => "bAd woRd", :filter_only_exact_phrase => true)
+      @queries = ["bar Foo", "bar blat", "blat", "baz blat", "baz loren", "food", "sex education", "Bad Word", "don't use bad word"]
       @results = @queries.collect { |q| {"somekey" => q} }
     end
 
@@ -63,6 +83,18 @@ describe SaytFilter do
     it "should Regexp escape the filter before applying it" do
       filtered_terms = SaytFilter.filter(@results, "somekey")
       filtered_terms.detect { |ft| ft["somekey"] == "sex education" }.should_not be_nil
+    end
+
+    context "when filter_only_exact_phrase is true" do
+      it "should filter exact phrase" do
+        filtered_terms = SaytFilter.filter(@results, "somekey")
+        filtered_terms.detect { |ft| ft["somekey"] == "bad word" }.should be_nil
+      end
+
+      it "should not filter phrase that is part of a longer phrase" do
+        filtered_terms = SaytFilter.filter(@results, "somekey")
+        filtered_terms.detect { |ft| ft["somekey"] == "don't use bad word" }.should_not be_nil
+      end
     end
 
     context "when results list is nil" do

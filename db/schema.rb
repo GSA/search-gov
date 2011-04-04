@@ -345,10 +345,11 @@ ActiveRecord::Schema.define(:version => 20110404130848) do
   add_index "recalls", ["recall_number"], :name => "index_recalls_on_recall_number"
 
   create_table "sayt_filters", :force => true do |t|
-    t.string   "phrase",                             :null => false
+    t.string   "phrase",                                      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "always_filtered", :default => false, :null => false
+    t.boolean  "always_filtered",          :default => false, :null => false
+    t.boolean  "filter_only_exact_phrase", :default => false, :null => false
   end
 
   add_index "sayt_filters", ["always_filtered"], :name => "index_sayt_filters_on_always_filtered"
