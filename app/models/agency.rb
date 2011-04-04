@@ -20,7 +20,7 @@ class Agency < ActiveRecord::Base
   end
   
   def flickr_profile_link
-    self.flickr_username.present? ? self.flickr_username : nil
+    self.flickr_url.present? ? self.flickr_url : nil
   end
     
   private

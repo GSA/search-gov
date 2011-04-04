@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110331213758) do
+ActiveRecord::Schema.define(:version => 20110404130848) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20110331213758) do
     t.string   "twitter_username",  :limit => 18
     t.string   "youtube_username",  :limit => 40
     t.string   "facebook_username", :limit => 75
-    t.string   "flickr_username",   :limit => 50
+    t.string   "flickr_url"
     t.string   "es_url"
   end
 
@@ -273,6 +273,17 @@ ActiveRecord::Schema.define(:version => 20110331213758) do
   end
 
   add_index "misspellings", ["wrong"], :name => "index_misspellings_on_wrong"
+
+  create_table "monthly_click_totals", :force => true do |t|
+    t.integer  "year"
+    t.integer  "month"
+    t.string   "source"
+    t.integer  "total"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "monthly_click_totals", ["year", "month"], :name => "index_monthly_click_totals_on_year_and_month"
 
   create_table "monthly_popular_queries", :force => true do |t|
     t.integer  "year"

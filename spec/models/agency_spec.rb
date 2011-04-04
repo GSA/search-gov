@@ -15,7 +15,7 @@ describe Agency do
       :twitter_username => 'irs',
       :facebook_username => 'irs',
       :youtube_username => 'irs',
-      :flickr_username => 'irs'
+      :flickr_url => 'irs'
     }
     @agency = Agency.create!(@valid_attributes)
   end
@@ -32,6 +32,11 @@ describe Agency do
       @agency.agency_queries.find_by_phrase("irs.gov").should_not be_nil
       @agency.agency_queries.find_by_phrase("www.irs.gov").should_not be_nil
       @agency.agency_queries.find_by_phrase("the man").should_not be_nil
+    end
+    
+    it "should allow for a long URL for Flickr" do
+      @agency.flickr_url = "http://www.flickr.com/photos/reallylonggroupnamethatismorethan50characters"
+      @agency.save!
     end
   end
   
@@ -93,13 +98,13 @@ describe Agency do
     context "when the agency has a flickr username" do
       it "should be able to generate a flickr profile link" do
         @agency.flickr_profile_link.should_not be_nil
-        @agency.flickr_profile_link.should == @agency.flickr_username
+        @agency.flickr_profile_link.should == @agency.flickr_url
       end
     end
     
     context "when the agency has no flickr username" do
       before do
-        @agency.update_attributes(:flickr_username => nil)
+        @agency.update_attributes(:flickr_url => nil)
       end
       
       it "should return a nil profile link" do
