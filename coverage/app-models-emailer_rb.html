@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-emailer_rb.html">app/models/emailer.rb</a></td>
-            <td class='right_align'><tt>85</tt></td>
-            <td class='right_align'><tt>71</tt></td>
+            <td class='right_align'><tt>86</tt></td>
+            <td class='right_align'><tt>72</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -471,7 +471,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>   def monthly_report(zip_filename)</pre></td>
+            <td><pre><a name="line70">70</a>   def monthly_report(zip_filename, report_date)</pre></td>
           </tr>
         
           
@@ -489,85 +489,91 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>     attachment :content_type =&gt; &quot;application/zip&quot;, :body =&gt; File.read(zip_filename), :filename =&gt; File.basename(zip_filename)</pre></td>
+            <td><pre><a name="line73">73</a>     content_type &quot;multipart/alternative&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line74">74</a>     attachment :content_type =&gt; &quot;application/zip&quot;, :body =&gt; File.read(zip_filename), :filename =&gt; File.basename(zip_filename)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a>   end</pre></td>
+            <td><pre><a name="line75">75</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line75">75</a> </pre></td>
+            <td><pre><a name="line76">76</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line76">76</a>   private</pre></td>
+            <td><pre><a name="line77">77</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line77">77</a> </pre></td>
+            <td><pre><a name="line78">78</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line78">78</a>   def setup_email(recipients)</pre></td>
+            <td><pre><a name="line79">79</a>   def setup_email(recipients)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>     @recipients = recipients</pre></td>
+            <td><pre><a name="line80">80</a>     @recipients = recipients</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>     @from       = APP_EMAIL_ADDRESS</pre></td>
+            <td><pre><a name="line81">81</a>     @from       = APP_EMAIL_ADDRESS</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>     @subject    = &quot;[USASearch] &quot;</pre></td>
+            <td><pre><a name="line82">82</a>     @subject    = &quot;[USASearch] &quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>     @sent_on    = Time.now</pre></td>
+            <td><pre><a name="line83">83</a>     @sent_on    = Time.now</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>     @headers['Content-Type'] = &quot;text/plain; charset=utf-8; format=flowed&quot;</pre></td>
+            <td><pre><a name="line84">84</a>     @headers['Content-Type'] = &quot;text/plain; charset=utf-8; format=flowed&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line84">84</a>   end</pre></td>
+            <td><pre><a name="line85">85</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line85">85</a> end</pre></td>
+            <td><pre><a name="line86">86</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Apr 04 12:15:52 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Apr 05 16:26:16 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
