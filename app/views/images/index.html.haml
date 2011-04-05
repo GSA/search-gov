@@ -1,0 +1,6 @@
+- content_for :head do
+  = image_search_meta_tags
+.prepend-6.span-15.append-3.homepage
+  %a{:name => "content"}
+  = link_to(image_tag("USAsearch_large_#{I18n.locale}_images.gif" , :alt => "USASearch Images Home"), images_path(:locale => I18n.locale))
+  = render "shared/search", :path => image_search_path

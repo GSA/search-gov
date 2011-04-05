@@ -5,13 +5,36 @@ Feature: Image search
 
   Scenario: Image search
     Given I am on the homepage
-    When I follow "Images" within "#search_form"
-    Then I should be on the image search page
+    When I follow "Images" in the search navigation
+    Then I should be on the images page
+    And I should see the browser page titled "Search.USA.gov Images"
+    When I follow "USASearch Images Home"
+    Then I should be on the images page
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the image search page
+    And I should see the browser page titled "White House - Search.USA.gov Images"
     And I should see 30 image results
     And I should see "Next"
+    When I follow "USASearch Images Home"
+    Then I should be on the images page
+
+  Scenario: Visiting Spanish image search homepage
+    Given I am on the homepage
+    And I follow "Español"
+    And I follow "Imágenes" in the search navigation
+    Then I should be on the images page
+    And I should see the browser page titled "el buscador oficial en español del Gobierno de los Estados Unidos"
+    When I follow "USASearch Images Home"
+    Then I should be on the images page
+    When I fill in "query" with "White House"
+    And I press "Buscar"
+    Then I should be on the image search page
+    And I should see the browser page titled "White House - el buscador oficial en español del Gobierno de los Estados Unidos"
+    And I should see 30 image results
+    And I should see "Siguiente"
+    When I follow "USASearch Images Home"
+    Then I should be on the images page
 
   Scenario: A nonsense search
     Given I am on the image search page
@@ -51,3 +74,13 @@ Feature: Image search
     When I follow "Government Web"
     Then I should be on the search page
     And I should see 10 search results
+
+  Scenario: Switching from web search to image search
+    Given I am on the homepage
+    When I fill in "query" with "White House"
+    And I press "Search"
+    Then I should be on the search page
+    When I follow "Images" in the search navigation
+    Then I should be on the image search page
+    And I should see 10 search results
+

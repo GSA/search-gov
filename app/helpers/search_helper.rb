@@ -155,7 +155,7 @@ module SearchHelper
   end
 
   def image_search?
-    controller.controller_name == "image_searches"
+    controller.controller_name == "image_searches" or controller.controller_name == "images"
   end
 
   def recalls_search?
@@ -326,6 +326,20 @@ module SearchHelper
       content << tag(:meta, {:name => "keywords", :content => "government images, government forms, government recalls, federal government, state government, american government, united states government, us government, government jobs, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web"})
     end
     content
+  end
+
+  def image_search_meta_tags
+    content = ''
+    if english_locale?
+      content << tag(:meta, {:name => "description", :content => "Search.USA.gov Images is the U.S. government's official search engine for images."})
+      content << tag(:meta, {:name => "keywords", :content => "government images, government imagery, government photographs, government photos, government photography, public domain images, copyright free images, satellite, american flag images, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web"})
+    end
+    content
+  end
+
+
+  def path_to_image_search(search_params)
+    search_params[:query].blank? ? images_path(search_params) : image_search_path(search_params)
   end
 
   private

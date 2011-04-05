@@ -84,5 +84,16 @@ describe ImageSearchesController do
         response.should be_success
       end
     end
+
+    context "when searching in desktop mode" do
+      before do
+        get :index, :query => 'obama'
+      end
+
+      it "assigns @page_title" do
+        assigns[:page_title].should_not be_blank
+      end
+      
+    end
   end
 end

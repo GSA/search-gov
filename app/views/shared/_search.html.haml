@@ -3,7 +3,7 @@
     - search_params = {:query => params[:query], :locale => params[:locale]}
     %ul.navigation
       %li.first= link_to_unless web_search?, t(:government_web), search_path(search_params)
-      %li= link_to_unless image_search?, t(:images), image_search_path(search_params)
+      %li= link_to_unless image_search?, t(:images), path_to_image_search(search_params)
       - if english_locale?
         %li= link_to_unless forms_search?, t(:forms), forms_search_path(search_params)
         %li= link_to_unless recalls_search?, t(:recalls), recalls_search_path(search_params)

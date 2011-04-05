@@ -3,6 +3,7 @@ require "#{File.dirname(__FILE__)}/../spec_helper"
 describe ApplicationHelper do
   before do
     helper.stub!(:forms_search?).and_return false
+    helper.stub!(:image_search?).and_return false
     helper.stub!(:recalls_search?).and_return false
   end
 
@@ -118,6 +119,24 @@ describe ApplicationHelper do
         context "when a non-blank page title is defined" do
           it "should prefix the defined page title with the English forms site title" do
             helper.build_page_title("some title").should == "some title - #{t :forms_site_title}"
+          end
+        end
+      end
+
+      context "when it's the images page" do
+        before do
+          helper.stub!(:image_search?).and_return true
+        end
+
+        context "when the page title is not defined" do
+          it "should return the image title" do
+            helper.build_page_title(nil).should == (t :images_site_title)
+          end
+        end
+
+        context "when a non-blank page title is defined" do
+          it "should prefix the defined page title with the English image site title" do
+            helper.build_page_title("some title").should == "some title - #{t :images_site_title}"
           end
         end
       end

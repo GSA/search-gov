@@ -190,9 +190,39 @@ describe SearchHelper do
     end
 
     context "for the non English site" do
-      it "should return meta tags for the non English site" do
+      it "should not return meta tags for the non English site" do
         helper.should_receive(:english_locale?).and_return(false)
         helper.search_meta_tags.should == ""
+      end
+    end
+  end
+
+  describe "#path_to_image_search" do
+    it "should return images_path if search_params query is blank" do
+      search_params = {:locale => I18n.locale}
+      helper.path_to_image_search(search_params).should =~ /^\/images/
+    end
+
+    it "should return image_searches_path if search_params contains query" do
+      search_params = {:query => 'gov', :locale => I18n.locale}
+      helper.path_to_image_search(search_params).should =~ /^\/search\/images/
+    end
+  end
+
+  describe "#image_search_meta_tags" do
+    context "for the English site" do
+      it "should return meta tags for the English site" do
+        helper.should_receive(:english_locale?).and_return(true)
+        content = helper.image_search_meta_tags
+        content.should have_tag("meta[name=description][content=Search.USA.gov Images is the U.S. government's official search engine for images.]")
+        content.should have_tag("meta[name=keywords][content=government images, government imagery, government photographs, government photos, government photography, public domain images, copyright free images, satellite, american flag images, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web]")
+      end
+    end
+
+    context "for the non English site" do
+      it "should not return meta tags for the non English site" do
+        helper.should_receive(:english_locale?).and_return(false)
+        helper.image_search_meta_tags.should == ""
       end
     end
   end

@@ -15,6 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.search '/search', :controller => "searches"
   map.advanced_search '/search/advanced', :controller => 'searches', :action => 'advanced', :method => :get
   map.image_search "/search/images", :controller => "image_searches", :action => "index"
+  map.images '/images', :controller => 'images', :action => "index"
   map.resources :recalls, :only => :index
   map.recalls_search "/search/recalls", :controller => "recalls", :action => "search"
   map.resources :forms, :only => :index

@@ -6,6 +6,8 @@ module ApplicationHelper
   def build_page_title(page_title)
     if forms_search?
       site_title = (t :forms_site_title)
+    elsif image_search?
+      site_title = (t :images_site_title)
     elsif recalls_search?
       site_title = (t :recalls_site_title)
     else

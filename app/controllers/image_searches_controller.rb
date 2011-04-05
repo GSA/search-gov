@@ -5,6 +5,7 @@ class ImageSearchesController < ApplicationController
   def index
     @search = ImageSearch.new(@search_options)
     @search.run
+    @page_title = @search.query
     handle_affiliate_search
     if @search_options[:affiliate]
       render :action => "affiliate_index", :layout => "affiliate"
