@@ -227,6 +227,20 @@ describe CalaisRelatedSearch do
         end
       end
 
+      context "when there are duplicate (ignoring case) Calais SocialTags" do
+        before do
+          related_terms = ["congress", "California", "CIA inquiry", "Congress"]
+          social_tags = related_terms.collect { |rt| OpenStruct.new(:name=> rt) }
+          m_calais = mock("calais", :socialtags => social_tags)
+          Calais.stub!(:process_document).and_return(m_calais)
+        end
+
+        it "should dedupe them" do
+          CalaisRelatedSearch.perform(@affiliate.name, @term)
+          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "California | CIA inquiry | Congress"
+        end
+      end
+
       context "when there are Calais SocialTags for a term's corpus of titles and descriptions" do
         before do
           related_terms = ["congress", "California", "CIA inquiry", "Pelosi", "Pelosi awards", "Pelosi award", "really bad offensiveterm"]
