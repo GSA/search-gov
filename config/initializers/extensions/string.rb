@@ -8,9 +8,7 @@ class String
   end
 
   def sentence_case
-    gsub(/(\b|')[a-z]+/) { |w| NON_CAPITALIZED.include?(w) ? w : w.capitalize }.
-      sub(/^[a-z]/) { |l| l.upcase }.
-      sub(/\b[a-z][^\s]*?$/) { |l| l.capitalize }
+    gsub(/(\b|')[a-z]+/) { |w| NON_CAPITALIZED.include?(w) ? w : w.capitalize }.sub(/^[a-z]/) { |l| l.upcase }
   end
 
 end
