@@ -17,7 +17,7 @@ Feature: Mobile Search
     Then the host url should be m.gobiernousa.gov
 
     When I am on the homepage
-    Then I should see a link to "http://www.usa.gov/?mobile-opt-out=true" with text "USA.gov Full Site"
+    Then I should see a link to "USA.gov Full Site" with url for "http://www.usa.gov/?mobile-opt-out=true"
 
   Scenario: Visiting the Spanish home page with a mobile device
     Given I am on the Spanish homepage

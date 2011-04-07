@@ -5,6 +5,10 @@ Feature: Homepage
 
   Scenario: A typical popular search from the home page
     Given I am on the homepage
+    And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml"
+    And I should see a link to "FAQs" with url for "http://answers.usa.gov/"
+    And I should see a link to "Email USA.gov" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"
+    And I should see a link to "Chat" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"
     When I fill in "query" with "visa lottery"
     And I submit the search form
     Then I should be on the search page
@@ -40,7 +44,9 @@ Feature: Homepage
   Scenario: Visiting the homepage as a Spanish speaker
     Given I am on the homepage
     And I follow "Español"
-    Then I should see "Contáctenos"
+    Then I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml"
+    And I should see a link to "Respuestas" with url for "http://respuestas.gobiernousa.gov/"
+    And I should see a link to "Contactos" with url for "http://www.usa.gov/gobiernousa/Contactenos.shtml"
     And I should see "Sugiera un enlace"
 
   Scenario: Switching to image search

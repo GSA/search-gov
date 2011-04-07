@@ -20,27 +20,39 @@ a:hover
   :text-decoration underline
 
 .header-wrap
-  :background url(/images/backgrounds/bg_top_left_long.gif) no-repeat 0 12px
+  :background url(/images/backgrounds/bg_top_right_long.gif) no-repeat right 17px
 
 .header
-  :float right
+  :float left
   :text-align right
-  :background url(/images/backgrounds/bg_top_right_long.gif) no-repeat right 12px
-  :height 23px
+  :background url(/images/backgrounds/bg_top_left_long.gif) no-repeat 0 17px
+  :height 28px
   :margin
-    :bottom 0
     :top 0
+    :bottom 0
   :padding
-    :right 1em
     :bottom 0.2em
+    :left 1em
   :width 90%
   a
     :color #25496B
+    :font
+      :family verdana, verdana, sans-serif
+      :size 10px
+      :weight normal
+    :padding
+      :right 12px
+      :left 10px
   a:visited
     :color #595959
 
 #headerlinks
-  :float right
+  :float left
+  a
+    :background url(/images/nav_link_divider.gif) no-repeat center left
+    &.first
+      :background none
+      :padding-left 0
 
 #skiplink
   :float right
@@ -96,7 +108,15 @@ a:hover
     :top 15px
   :text-align center
   a
+    :background url(/images/nav_link_divider.gif) no-repeat center left
     :color #25496B
+    :font
+      :family verdana, verdana, sans-serif
+    :padding
+      :right 12px
+      :left 10px
+    &.first
+      :background none
   a:visited
     :color #595959
 

@@ -35,19 +35,20 @@ module ApplicationHelper
 
   HEADER_LINKS = {
     :en => [
-      ["USA.gov", "http://usa.gov"],
-      ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
-      ["Email USA.gov", "http://www.usa.gov/questions"] ],
+      ["USA.gov", "http://www.usa.gov/index.shtml", "first"],
+      ["FAQs", "http://answers.usa.gov/"],
+      ["Email USA.gov", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"],
+      ["Chat", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"] ],
     :es => [
-      ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
-      ["USA.gov (en inglés)", "http://usa.gov"],
-      ["Contáctenos", "http://www.usa.gov/gobiernousa/Contactenos.shtml"]
+      ["GobiernoUSA.gov", "http://www.usa.gov/gobiernousa/index.shtml", "first"],
+      ["Respuestas", "http://respuestas.gobiernousa.gov/"],
+      ["Contactos", "http://www.usa.gov/gobiernousa/Contactenos.shtml"]
     ]
   }
 
   FOOTER_LINKS = {
     :en => [
-      ["Home", "http://www.usa.gov/index.shtml"],
+      ["Home", "http://www.usa.gov/index.shtml", "first"],
       ["About Us", "http://www.usa.gov/About.shtml"],
       ["Contact Us", "http://www.usa.gov/Contact_Us.shtml"],
       ["Contact Government", "http://www.usa.gov/Contact/Elected.shtml"],
@@ -59,7 +60,7 @@ module ApplicationHelper
       ["Accessibility", "/pages/accessibility"],
       ["API", "/api"] ],
     :es => [
-      ["GobiernoUSA.gov", "http://GobiernoUSA.gov"],
+      ["GobiernoUSA.gov", "http://GobiernoUSA.gov", "first"],
       ["Privacidad", "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"],
       ["Enlace su sitio al nuestro", "http://www.usa.gov/gobiernousa/link_to_us.shtml"],
       ["Sugiera un enlace", "http://www.usa.gov/feedback/sugieraunenlaceformulario.jsp"]
@@ -194,6 +195,6 @@ module ApplicationHelper
   end
 
   def iterate_links(links)
-    links.collect { |link| link_to(link[0], link[1]) }.join(' | ') unless links.nil?
+    links.collect { |link| link_to(link[0], link[1], :class => link[2]) }.join unless links.nil?
   end
 end

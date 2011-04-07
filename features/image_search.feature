@@ -60,12 +60,6 @@ Feature: Image search
     And I submit the search form
     Then I should see "That is too long a word. Try using a shorter word."
 
-  Scenario: Visiting the image page as a Spanish speaker
-    Given I am on the image search page
-    And I follow "Español"
-    Then I should see "Contáctenos"
-    And I should see "Sugiera un enlace"
-
   Scenario: Switching to web search
     Given I am on the image search page
     When I fill in "query" with "White House"
