@@ -13,8 +13,7 @@ Feature: Mobile Search
 
   Scenario: Visiting the home page with a mobile device
     Given I am on the homepage
-    When I follow "Español"
-    Then the host url should be m.gobiernousa.gov
+    Then I should see a link to "Español" with url for "http://m.gobiernousa.gov"
 
     When I am on the homepage
     Then I should see a link to "USA.gov Full Site" with url for "http://www.usa.gov/?mobile-opt-out=true"
@@ -34,17 +33,13 @@ Feature: Mobile Search
     Given I am on the search page
     When I follow "Classic"
     And I follow "Mobile"
-    Then I should be on the search page
-    And I should see "View site in:"
+    Then I should be on the homepage page
+    And I should see "USA.gov Full Site"
     
   Scenario: Going to mobile mode from Spanish web homepage
     Given I am using a desktop device
     And I am on the Spanish homepage
-    Then I should see "Móvil"
-    When I follow "Móvil"
-    Then I should be on the search page
-    And I should see "Por favor, introduzca los términos de búsqueda"
-    And I should see "Versión: Web | Móvil"
+    Then I should see a link to "Móvil" with url for "http://m.gobiernousa.gov"
 
   Scenario: Using mobile mode with a browser not identified as mobile
     Given I am using a desktop device
@@ -68,8 +63,7 @@ Feature: Mobile Search
     And I submit the search form
     Then I should be on the search page
     And I should see "educación"
-    When I follow "USASearch Home"
-    Then the host url should be m.gobiernousa.gov
+    And I should see an image link to "USASearch Home" with url for "http://m.gobiernousa.gov"
 
   Scenario: An advanced search on the mobile home page
     When I am on the advanced search page
@@ -184,8 +178,7 @@ Feature: Mobile Search
     And I should see "[FORMGEN]" in the email body
 
     When I go to the Spanish mobile contact form page
-    And I follow "USASearch Home"
-    Then the host url should be m.gobiernousa.gov
+    Then I should see an image link to "USASearch Home" with url for "http://m.gobiernousa.gov"
 
   Scenario: Emailing from the Spanish home page with problem
     Given I am on the Spanish homepage

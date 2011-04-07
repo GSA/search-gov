@@ -48,22 +48,13 @@ module ApplicationHelper
 
   FOOTER_LINKS = {
     :en => [
-      ["Home", "http://www.usa.gov/index.shtml", "first"],
-      ["About Us", "http://www.usa.gov/About.shtml"],
-      ["Contact Us", "http://www.usa.gov/Contact_Us.shtml"],
-      ["Contact Government", "http://www.usa.gov/Contact/Elected.shtml"],
-      ["FAQs", "http://www.usa.gov/Contact/Faq.shtml"],
+      ["USA.gov", "http://www.usa.gov/index.shtml", "first"],
       ["Website Policies", "http://www.usa.gov/About/Important_Notices.shtml"],
-      ["Privacy", "http://www.usa.gov/About/Privacy_Security.shtml"],
-      ["Suggest-A-Link", "http://www.usa.gov/feedback/SuggestLinkForm.jsp"],
-      ["Link to Us", "http://www.usa.gov/About/Usagov_Logos.shtml"],
-      ["Accessibility", "/pages/accessibility"],
-      ["API", "/api"] ],
+      ["Privacy", "http://www.usa.gov/About/Privacy_Security.shtml"] ],
     :es => [
-      ["GobiernoUSA.gov", "http://GobiernoUSA.gov", "first"],
-      ["Privacidad", "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"],
-      ["Enlace su sitio al nuestro", "http://www.usa.gov/gobiernousa/link_to_us.shtml"],
-      ["Sugiera un enlace", "http://www.usa.gov/feedback/sugieraunenlaceformulario.jsp"]
+      ["GobiernoUSA.gov", "http://www.usa.gov/gobiernousa/index.shtml", "first"],
+      ["Políticas del sitio", "http://www.usa.gov/gobiernousa/Politicas_Sitio.shtml"],
+      ["Privacidad", "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"]
     ]
   }
 
@@ -74,7 +65,26 @@ module ApplicationHelper
   end
 
   def footer_links
-    iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone << [t(:mobile), I18n.locale.to_s == 'es' ? search_path(:query => '', :locale => 'es', :m => 'true') :url_for_mobile_mode("true")])
+    iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone << [t(:mobile), url_for_mobile_home_page])
+  end
+
+  def render_about_usasearch
+    if english_locale?
+      content_tag(:div, :class => 'footer about') do
+        content = content_tag(:span, "ABOUT USASearch &nbsp; &gt;")
+        content << about_usasearch_links
+        content
+      end
+    end
+  end
+
+  def about_usasearch_links
+    links = ''
+    links << link_to("USASearch Program", program_path, :class => 'first')
+    links << link_to("Affiliate Program", affiliates_path)
+    links << link_to("APIs and Web Services", api_docs_path)
+    links << link_to("Search.USA.gov", searchusagov_path)
+    links
   end
 
   def render_webtrends_code
@@ -185,7 +195,7 @@ module ApplicationHelper
   end
 
   def url_for_mobile_home_page(locale = I18n.locale)
-    locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale => locale, :m => params[:m])
+    locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale => locale, :m => true)
   end
 
   private

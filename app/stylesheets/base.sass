@@ -99,19 +99,30 @@ a:hover
   position: relative
   min-height: 550px
 
-.footer-wrap
+.bottom-wrap
   :background url(/images/backgrounds/bg_bottom_left_long.gif) no-repeat
 
-.footer
+.bottom
   :background url(/images/backgrounds/bg_bottom_right_long.gif) no-repeat top right
+
+.footer-wrap
+  :background url(/images/backgrounds/bg_right.gif) repeat-y top right
+  :float right
   :padding
-    :top 15px
+    :bottom 0.7em
+  :position relative
+  :width 99%
+.footer
+  :font
+    :family verdana, verdana, sans-serif
+    :size 12px
+    :weight bold
+  :margin
+    :top 0.8em
   :text-align center
   a
     :background url(/images/nav_link_divider.gif) no-repeat center left
     :color #25496B
-    :font
-      :family verdana, verdana, sans-serif
     :padding
       :right 12px
       :left 10px
@@ -119,6 +130,11 @@ a:hover
       :background none
   a:visited
     :color #595959
+.tagline
+  :background url(/images/footer_line.gif) no-repeat center top
+  :font-size 12px
+  :padding-top 20px
+  :text-align center
 
 .homepage
   :margin

@@ -5,10 +5,18 @@ Feature: Homepage
 
   Scenario: A typical popular search from the home page
     Given I am on the homepage
-    And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml"
+    And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage header
     And I should see a link to "FAQs" with url for "http://answers.usa.gov/"
     And I should see a link to "Email USA.gov" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"
     And I should see a link to "Chat" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"
+    And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage footer
+    And I should see a link to "Website Policies" with url for "http://www.usa.gov/About/Important_Notices.shtml"
+    And I should see a link to "Privacy" with url for "http://www.usa.gov/About/Privacy_Security.shtml"
+    And I should see "Mobile"
+    And I should see "USASearch Program"
+    And I should see "Affiliate Program"
+    And I should see "APIs and Web Services"
+    And I should see "Search.USA.gov" in the homepage tagline
     When I fill in "query" with "visa lottery"
     And I submit the search form
     Then I should be on the search page
@@ -44,10 +52,14 @@ Feature: Homepage
   Scenario: Visiting the homepage as a Spanish speaker
     Given I am on the homepage
     And I follow "Español"
-    Then I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml"
+    Then I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml" in the homepage header
     And I should see a link to "Respuestas" with url for "http://respuestas.gobiernousa.gov/"
     And I should see a link to "Contactos" with url for "http://www.usa.gov/gobiernousa/Contactenos.shtml"
-    And I should see "Sugiera un enlace"
+    And I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml" in the homepage footer
+    And I should see a link to "Políticas del sitio" with url for "http://www.usa.gov/gobiernousa/Politicas_Sitio.shtml"
+    And I should see a link to "Privacidad" with url for "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"
+    And I should see "Móvil"
+    And I should see "Buscador.USA.gov" in the homepage tagline
 
   Scenario: Switching to image search
     Given I am on the search page
@@ -108,3 +120,20 @@ Feature: Homepage
     And I should not see "Trending Search 3"
     And I should not see "Trending Search 4"
     And I should not see "Trending Search 5"
+
+  Scenario: Visiting ABOUT USASearch links
+    Given I am on the homepage
+    When I follow "USASearch Program" in the homepage about section
+    Then I should be on the program welcome page
+
+    Given I am on the homepage
+    When I follow "Affiliate Program" in the homepage about section
+    Then I should be on the affiliates page
+
+    Given I am on the homepage
+    When I follow "APIs and Web Services" in the homepage about section
+    Then I should be on the api page
+
+    Given I am on the homepage
+    When I follow "Search.USA.gov" in the homepage about section
+    Then I should be on the searchusagov page

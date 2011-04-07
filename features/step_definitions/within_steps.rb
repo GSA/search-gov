@@ -8,12 +8,20 @@
   'in the footer' => '.outer-footer',
   'in the query search results table header' => '.query_search_results_table_header',
   'in the callout boxes' => '.col-2',
-  'in the search navigation' => '#search_form .navigation'
+  'in the search navigation' => '#search_form .navigation',
+  'in the homepage header' => '.header',
+  'in the homepage footer' => '.footer',
+  'in the homepage about section' => '.about',
+  'in the homepage tagline' => '.tagline'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|
-      within(selector) do
-        Then step
+      if step =~ /^I (should|should not) see/
+        Then %{#{step} within "#{selector}"}
+      else
+        within(selector) do
+          Then step
+        end
       end
     end
   end

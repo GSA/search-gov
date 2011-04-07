@@ -22,21 +22,20 @@ Then /^(?:|I )should not see "([^"]*)" button within "([^"]*)"$/ do |value, sele
   response.body.should_not have_tag("#{selector} input[value=#{value}][type=submit]")
 end
 
-Then /^the host url should be (.+)$/ do |host|
-  current_host = URI.parse(current_url).host
-  if current_host.respond_to? :should
-    current_host.should == host
-  else
-    assert_equal host, current_host
-  end
-end
-
 Then /^I should see "([^"]*)" link$/ do |title|
-  response.body.should have_tag("a img[alt=#{title}]")
+  response.should have_tag("a img[alt=#{title}]")
 end
 
 Then /^I should not see "([^"]*)" link$/ do |title|
-  response.body.should_not have_tag("a img[alt=#{title}]")
+  response.should_not have_tag("a img[alt=#{title}]")
+end
+
+Then /^I should see "([^"]*)" link within "([^"]*)"$/ do |title, selector|
+  response.should have_tag("#{selector} a img[alt=#{title}]")
+end
+
+Then /^I should not see "([^"]*)" link within "([^"]*)"$/ do |title, selector|
+  response.should_not have_tag("#{selector} a img[alt=#{title}]")
 end
 
 Then /^I should see the following breadcrumbs: (.+)$/ do |breadcrumbs|
@@ -45,7 +44,15 @@ Then /^I should see the following breadcrumbs: (.+)$/ do |breadcrumbs|
 end
 
 Then /^I should see a link to "([^"]*)" with url for "([^"]*)"$/ do |name, url|
-  response.body.should have_tag("a[href=#{url}]", "#{name}")
+  response.should have_tag("a[href=#{url}]", "#{name}")
+end
+
+Then /^I should see a link to "([^"]*)" with url for "([^"]*)" within "([^"]*)"$/ do |name, url, selector|
+  response.should have_tag("#{selector} a[href=#{url}]", "#{name}")
+end
+
+Then /^I should see an image link to "([^"]*)" with url for "([^"]*)"$/ do |name, url|
+  response.should have_tag("a[href=#{url}] img[alt=#{name}]")
 end
 
 Then /^I should see the browser page titled "([^"]*)"$/ do |title|

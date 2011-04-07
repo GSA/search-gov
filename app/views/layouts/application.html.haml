@@ -34,8 +34,13 @@
         .main
           #need-larger-text= link_to((t :need_larger_text), page_path(:id => 'textsize'), :locale => other_locale_str)
           = yield
-      .span-24.footer-wrap
-        .footer
-          = footer_links
+        .footer-wrap
+          .footer
+            = footer_links
+          = render_about_usasearch
+          .tagline
+            &= t(:site_tagline)
+      .span-24.bottom-wrap
+        .bottom &nbsp;
     = render_webtrends_code
     = @rails_sever_location_in_html_comment_for_opsview
