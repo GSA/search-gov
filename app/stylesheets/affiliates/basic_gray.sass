@@ -42,8 +42,10 @@ h1, h2, h3
     display: none
 
   form
-    margin-left: 20px
-    margin-bottom: 20px
+    display: inline
+    float: left
+    margin-left: 10px
+    margin-bottom: 15px
 
     input[type=text]
       font-family: "Times New Roman", Times, Georgia, serif
@@ -89,6 +91,8 @@ h1, h2, h3
   overflow: hidden
   display: inline
   width: 720px
+  margin: 0
+  padding: 0
   
   span.image_result
     width: 200px
@@ -110,33 +114,39 @@ h1, h2, h3
 
 #left_column
   float: left
-  min-width: 150px
+  display: inline
+  width: 200px
+  margin: 0 0 0 10px
   padding: 0 10px
     
   #related_searches
-    float: left
-    width: 200px
-    overflow: hidden
-    display: inline
-    margin: 81px 0 10px 10px
-    padding: 15px 20px
-    border: 1px solid #eee
-    box-shadow: 1px 1px 10px #eee
     -moz-box-shadow: 1px 1px 10px #eee
     -webkit-box-shadow: 1px 1px 10px #eee
+    border: 1px solid #eee
+    box-shadow: 1px 1px 10px #eee
+    display: inline
+    float: left
+    margin: 90px 0 0 0
+    overflow: hidden
+    padding: 0 0 0 10px
+    width: 185px
   
     h3
       color: #555
       font-family: 'Lucida Grande Greg', Helvetica, sans-serif
       font-size: 18px
       font-weight: normal
-      padding-bottom: 5px
+      margin: 1em 0 0.5em
+      padding: 0
     ul
-      padding: 0 0 0 18px
+      line-height: 1.5
+      margin: 0 1em 1em 1.5em
+      padding: 0
       list-style-type: disc
       li
         color: #aaa
-        margin: 7px 0
+        margin: 0
+        padding: 0
         a
           color: #036
         a:hover
@@ -144,12 +154,12 @@ h1, h2, h3
 
 #summary
   padding: 0
-  margin: 0 20px
+  margin: 0 10px
   overflow: hidden
   clear: both
 
   p
-    width: 495px
+    width: 480px
     float: left
     color: #999
     text-shadow: #FFF 0px 1px 1px
@@ -168,8 +178,8 @@ h1, h2, h3
   margin: 5px 20px 5px 0
   
 .searchresult
-  margin: 20px
-  padding: 10px 20px
+  margin: 10px
+  padding: 10px
   border: 1px solid #eee
   box-shadow: 1px 1px 10px #eee
   -moz-box-shadow: 1px 1px 10px #eee
