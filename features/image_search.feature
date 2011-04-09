@@ -8,12 +8,14 @@ Feature: Image search
     When I follow "Images" in the search navigation
     Then I should be on the images page
     And I should see the browser page titled "Search.USA.gov Images"
+    And I should not see "ROBOTS" meta tag
     When I follow "USASearch Images Home"
     Then I should be on the images page
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the image search page
     And I should see the browser page titled "White House - Search.USA.gov Images"
+    And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see 30 image results
     And I should see "Next"
     When I follow "USASearch Images Home"

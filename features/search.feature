@@ -9,6 +9,7 @@ Feature: Search
     When I fill in "query" with "president"
     And I press "Search"
     Then I should see the browser page titled "president - Search.USA.gov"
+    And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
 
   Scenario: Visiting Spanish search homepage
     When I am on the homepage

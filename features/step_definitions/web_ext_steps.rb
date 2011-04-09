@@ -61,3 +61,11 @@ Then /^I should see the browser page titled "([^"]*)"$/ do |title|
     content.should contain(regexp)
   end
 end
+
+Then /^I should see "([^"]*)" in "([^"]*)" meta tag$/ do |content, name|
+  response.should have_tag("meta[name=?][content=?]", name, content)
+end
+
+Then /^I should not see "([^"]*)" meta tag$/ do |name|
+  response.should_not have_tag("meta[name=?]", name)
+end

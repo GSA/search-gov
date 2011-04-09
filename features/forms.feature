@@ -7,10 +7,12 @@ Feature: Forms Home Page and Search
     Given I am on the homepage
     When I follow "Forms" within "#search_form"
     Then I should be on the forms home page
+    And I should not see "ROBOTS" meta tag
     And I should see "Federal Government Forms Catalog has moved and is different."
     When I fill in "query" with "White House"
     And I press "Search Forms"
     Then I should be on the forms search page
+    And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see 10 search results
     And I should see "Next"
 

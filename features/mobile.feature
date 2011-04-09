@@ -13,7 +13,8 @@ Feature: Mobile Search
 
   Scenario: Visiting the home page with a mobile device
     Given I am on the homepage
-    Then I should see a link to "Español" with url for "http://m.gobiernousa.gov"
+    Then I should not see "ROBOTS" meta tag
+    And I should see a link to "Español" with url for "http://m.gobiernousa.gov"
 
     When I am on the homepage
     Then I should see a link to "USA.gov Full Site" with url for "http://www.usa.gov/?mobile-opt-out=true"
@@ -52,6 +53,7 @@ Feature: Mobile Search
     When I fill in "query" with "social security"
     And I submit the search form
     Then I should be on the search page
+    And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see "Social Security"
     And I should see 3 search results
     When I follow "USASearch Home"
@@ -203,6 +205,7 @@ Feature: Mobile Search
     Then I should be on the search page
     When I follow "Images"
     Then I should be on the image search page
+    And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see 30 image results
     And I should see "Next"
 

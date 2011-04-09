@@ -706,13 +706,21 @@ Feature: Affiliate clients
     Then the search bar should not have SAYT enabled
     And affiliate SAYT suggestions for "yetanotheraff.gov" should be disabled
 
+  Scenario: Visiting an affiliate search page
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email            | contact_name        | has_staged_content |
+      | noindex site     | noindex.gov      | aff@aff.gov              | Two Bar             | true               |
+    When I go to noindex.gov's search page
+    Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        | domains        | header                | footer                |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            | usa.gov        | Affiliate Header      | Affiliate Footer      |
     When I go to aff.gov's search page
     And I follow "Advanced Search"
-    Then I should see "Header"
+    Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    And I should see "Header"
     And I should see "Footer"
     And I should see "Use the options on this page to create a very specific search for aff site"
     And I should not see "aff.gov"

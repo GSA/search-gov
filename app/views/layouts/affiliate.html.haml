@@ -3,6 +3,7 @@
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
   %head
     = favicon_link_tag
+    = render_no_index_meta_tag
     = javascript_include_tag "jquery/jquery-1.4.2.min.js"
     - if @affiliate
       = stylesheet_link_tag 'compiled/advanced.css'

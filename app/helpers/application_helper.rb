@@ -198,6 +198,10 @@ module ApplicationHelper
     locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale => locale, :m => true)
   end
 
+  def render_no_index_meta_tag
+    tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'}) if request.path =~ /^\/(image_searches|search|usa\/)/i
+  end
+
   private
 
   def ssl_protocol

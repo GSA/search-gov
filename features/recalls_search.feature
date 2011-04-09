@@ -8,6 +8,7 @@ Feature: Recalls search
     When I fill in "query" with "strollers"
     And I press "Search"
     Then I should be on the recalls search page
+    And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see "strollers"
     
   Scenario: A nonsense search
@@ -36,6 +37,7 @@ Feature: Recalls search
     Given I am on the homepage
     And I follow "recalls"
     Then I should be on the recalls landing page
+    And I should not see "ROBOTS" meta tag
     And I should see "Latest Recalls"
     And I should see "Graco E-Z Roller baby strollers, Graco Hard-to-Roll stroller"
     And I should see "Hasbro Window Stroller"
