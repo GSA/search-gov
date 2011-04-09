@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>210</tt></td>
-            <td class='right_align'><tt>179</tt></td>
+            <td class='right_align'><tt>214</tt></td>
+            <td class='right_align'><tt>182</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -1257,31 +1257,31 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line201">201</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line202">202</a> </pre></td>
+            <td><pre><a name="line201">201</a>   def render_no_index_meta_tag</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line203">203</a>   def ssl_protocol</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line204">204</a>     SSL_PROTOCOL</pre></td>
+            <td><pre><a name="line202">202</a>     tag(:meta, {:name =&gt; 'ROBOTS', :content =&gt; 'NOINDEX, NOFOLLOW'}) if request.path =~ /^\/(image_searches|search|usa\/)/i</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line205">205</a>   end</pre></td>
+            <td><pre><a name="line203">203</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line204">204</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line205">205</a>   private</pre></td>
           </tr>
         
           
@@ -1293,13 +1293,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line207">207</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line207">207</a>   def ssl_protocol</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line208">208</a>     links.collect { |link| link_to(link[0], link[1], :class =&gt; link[2]) }.join unless links.nil?</pre></td>
+            <td><pre><a name="line208">208</a>     SSL_PROTOCOL</pre></td>
           </tr>
         
           
@@ -1311,13 +1311,37 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line210">210</a> end</pre></td>
+            <td><pre><a name="line210">210</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line211">211</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line212">212</a>     links.collect { |link| link_to(link[0], link[1], :class =&gt; link[2]) }.join unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line213">213</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line214">214</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Apr 07 20:02:23 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Apr 09 12:11:47 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
