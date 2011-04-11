@@ -110,7 +110,7 @@ describe "summary_tables rake tasks" do
           [1, 7, 30].each do |time_frame|
             DailyQueryStat.should_receive(:most_popular_terms).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100)]
             pop_query = DailyPopularQuery.should_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", false, time_frame).and_return DailyPopularQuery.new
-            DailyQueryStat.should_receive(:most_popular_groups).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100)]
+            DailyQueryStat.should_receive(:most_popular_query_groups).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100)]
             pop_query_group = DailyPopularQuery.should_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", true, time_frame).and_return DailyPopularQuery.new
           end
           @rake[@task_name].invoke
@@ -126,7 +126,7 @@ describe "summary_tables rake tasks" do
           [1, 7, 30].each do |time_frame|
             DailyQueryStat.should_receive(:most_popular_terms).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100)]
             pop_query = DailyPopularQuery.should_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", false, time_frame).and_return DailyPopularQuery.new
-            DailyQueryStat.should_receive(:most_popular_groups).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100)]
+            DailyQueryStat.should_receive(:most_popular_query_groups).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100)]
             pop_query_group = DailyPopularQuery.should_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", true, time_frame).and_return DailyPopularQuery.new
           end
           @rake[@task_name].invoke('2011-04-01')
@@ -142,7 +142,7 @@ describe "summary_tables rake tasks" do
           [1, 7, 30].each do |time_frame|
             DailyQueryStat.should_receive(:most_popular_terms).with(@day, time_frame, 1000).and_return "Insufficient data"
             pop_query = DailyPopularQuery.should_not_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", false, time_frame).and_return DailyPopularQuery.new
-            DailyQueryStat.should_receive(:most_popular_groups).with(@day, time_frame, 1000).and_return "Insufficient data"
+            DailyQueryStat.should_receive(:most_popular_query_groups).with(@day, time_frame, 1000).and_return "Insufficient data"
             pop_query_group = DailyPopularQuery.should_not_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", true, time_frame).and_return DailyPopularQuery.new
           end
           @rake[@task_name].invoke
