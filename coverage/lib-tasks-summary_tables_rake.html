@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-summary_tables_rake.html">lib/tasks/summary_tables.rake</a></td>
-            <td class='right_align'><tt>49</tt></td>
-            <td class='right_align'><tt>45</tt></td>
+            <td class='right_align'><tt>70</tt></td>
+            <td class='right_align'><tt>65</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -213,13 +213,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>   namespace :monthly_popular_queries do</pre></td>
+            <td><pre><a name="line27">27</a>   namespace :daily_popular_queries do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>     desc &quot;Total up the most popular queries for the month of the previous day&quot;</pre></td>
+            <td><pre><a name="line28">28</a>     desc &quot;Total up the most popular queries for the previous day&quot;</pre></td>
           </tr>
         
           
@@ -243,115 +243,241 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>       popular_terms = DailyQueryStat.most_popular_terms_for_year_month(day.year, day.month, 1000)</pre></td>
+            <td><pre><a name="line32">32</a>       time_frames = [1, 7, 30]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>       time_frames.each do |time_frame|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>         popular_queries = DailyQueryStat.most_popular_terms(day, time_frame, 1000)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>       popular_terms.each do |popular_term|</pre></td>
+            <td><pre><a name="line35">35</a>         popular_queries.each do |popular_query|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>         monthly_popular_query = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query_and_is_grouped(day.year, day.month, popular_term.query, false)</pre></td>
+            <td><pre><a name="line36">36</a>           daily_popular_query = DailyPopularQuery.find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query.query, false, time_frame)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>         monthly_popular_query.update_attributes(:times =&gt; popular_term.times)</pre></td>
+            <td><pre><a name="line37">37</a>           daily_popular_query.update_attributes(:times =&gt; popular_query.times)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>       end unless popular_terms.is_a?(String)</pre></td>
+            <td><pre><a name="line38">38</a>         end unless popular_queries.is_a?(String)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>       popular_groups = DailyQueryStat.most_popular_groups_for_year_month(day.year, day.month, 1000)</pre></td>
+            <td><pre><a name="line39">39</a>         popular_query_groups = DailyQueryStat.most_popular_groups(day, time_frame, 1000)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>       popular_groups.each do |popular_group|</pre></td>
+            <td><pre><a name="line40">40</a>         popular_query_groups.each do |popular_query_group|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>         monthly_popular_group = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query_and_is_grouped(day.year, day.month, popular_group.query, true)</pre></td>
+            <td><pre><a name="line41">41</a>           daily_popular_query_group = DailyPopularQuery.find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query_group.query, true, time_frame)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>         monthly_popular_group.update_attributes(:times =&gt; popular_group.times)</pre></td>
+            <td><pre><a name="line42">42</a>           daily_popular_query_group.update_attributes(:times =&gt; popular_query_group.times)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line41">41</a>       end unless popular_groups.is_a?(String)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>       click_totals = Click.monthly_totals_by_module(day.year, day.month)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>       click_totals.each_pair do |source, total|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>         monthly_click_total = MonthlyClickTotal.find_or_create_by_year_and_month_and_source(day.year, day.month, source)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>         monthly_click_total.update_attributes(:total =&gt; total)</pre></td>
+            <td><pre><a name="line43">43</a>         end unless popular_query_groups.is_a?(String)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>       end</pre></td>
+            <td><pre><a name="line44">44</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>     end</pre></td>
+            <td><pre><a name="line45">45</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a>   end</pre></td>
+            <td><pre><a name="line46">46</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a> end</pre></td>
+            <td><pre><a name="line47">47</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>   namespace :monthly_popular_queries do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>     desc &quot;Total up the most popular queries for the month of the previous day&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line50">50</a>     task :calculate, :day, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>       day = Date.parse(args.day)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>       popular_terms = DailyQueryStat.most_popular_terms_for_year_month(day.year, day.month, 1000)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line54">54</a>       popular_terms.each do |popular_term|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>         monthly_popular_query = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query_and_is_grouped(day.year, day.month, popular_term.query, false)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>         monthly_popular_query.update_attributes(:times =&gt; popular_term.times)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>       end unless popular_terms.is_a?(String)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>       popular_groups = DailyQueryStat.most_popular_groups_for_year_month(day.year, day.month, 1000)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line59">59</a>       popular_groups.each do |popular_group|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>         monthly_popular_group = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query_and_is_grouped(day.year, day.month, popular_group.query, true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line61">61</a>         monthly_popular_group.update_attributes(:times =&gt; popular_group.times)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line62">62</a>       end unless popular_groups.is_a?(String)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>       click_totals = Click.monthly_totals_by_module(day.year, day.month)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>       click_totals.each_pair do |source, total|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>         monthly_click_total = MonthlyClickTotal.find_or_create_by_year_and_month_and_source(day.year, day.month, source)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line66">66</a>         monthly_click_total.update_attributes(:total =&gt; total)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line67">67</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line68">68</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line69">69</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line70">70</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Apr 11 06:19:48 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Mon Apr 11 14:20:34 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
