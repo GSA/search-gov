@@ -26,21 +26,23 @@ namespace :usasearch do
   
   namespace :daily_popular_queries do
     desc "Total up the most popular queries for the previous day"
-    task :calculate, :day, :needs => :environment do |t, args|
-      args.with_defaults(:day => Date.yesterday.to_s(:number))
-      day = Date.parse(args.day)
-      time_frames = [1, 7, 30]
-      time_frames.each do |time_frame|
-        popular_queries = DailyQueryStat.most_popular_terms(day, time_frame, 1000)
-        popular_queries.each do |popular_query|
-          daily_popular_query = DailyPopularQuery.find_or_create_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query.query, false, time_frame)
-          daily_popular_query.update_attributes(:times => popular_query.times)
-        end unless popular_queries.is_a?(String)
-        popular_query_groups = DailyQueryStat.most_popular_query_groups(day, time_frame, 1000)
-        popular_query_groups.each do |popular_query_group|
-          daily_popular_query_group = DailyPopularQuery.find_or_create_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query_group.query, true, time_frame)
-          daily_popular_query_group.update_attributes(:times => popular_query_group.times)
-        end unless popular_query_groups.is_a?(String)
+    task :calculate, :start_day, :end_day, :needs => :environment do |t, args|
+      args.with_defaults(:start_day => Date.yesterday.to_s(:number), :end_day => Date.yesterday.to_s(:number))
+      start_date, end_date = Date.parse(args.start_day), Date.parse(args.end_day)
+      start_date.upto(end_date) do |day|
+        time_frames = [1, 7, 30]
+        time_frames.each do |time_frame|
+          popular_queries = DailyQueryStat.most_popular_terms(day, time_frame, 1000)
+          popular_queries.each do |popular_query|
+            daily_popular_query = DailyPopularQuery.find_or_create_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query.query, false, time_frame)
+            daily_popular_query.update_attributes(:times => popular_query.times)
+          end unless popular_queries.is_a?(String)
+          popular_query_groups = DailyQueryStat.most_popular_query_groups(day, time_frame, 1000)
+          popular_query_groups.each do |popular_query_group|
+            daily_popular_query_group = DailyPopularQuery.find_or_create_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query_group.query, true, time_frame)
+            daily_popular_query_group.update_attributes(:times => popular_query_group.times)
+          end unless popular_query_groups.is_a?(String)
+        end
       end
     end
   end
