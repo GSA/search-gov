@@ -33,12 +33,12 @@ namespace :usasearch do
       time_frames.each do |time_frame|
         popular_queries = DailyQueryStat.most_popular_terms(day, time_frame, 1000)
         popular_queries.each do |popular_query|
-          daily_popular_query = DailyPopularQuery.find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query.query, false, time_frame)
+          daily_popular_query = DailyPopularQuery.find_or_create_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query.query, false, time_frame)
           daily_popular_query.update_attributes(:times => popular_query.times)
         end unless popular_queries.is_a?(String)
         popular_query_groups = DailyQueryStat.most_popular_query_groups(day, time_frame, 1000)
         popular_query_groups.each do |popular_query_group|
-          daily_popular_query_group = DailyPopularQuery.find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query_group.query, true, time_frame)
+          daily_popular_query_group = DailyPopularQuery.find_or_create_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query_group.query, true, time_frame)
           daily_popular_query_group.update_attributes(:times => popular_query_group.times)
         end unless popular_query_groups.is_a?(String)
       end
