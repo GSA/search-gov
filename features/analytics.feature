@@ -1,8 +1,9 @@
 Feature: Analytics Homepage
   In order to anticipate trends and topics of high public interest
   As an Analyst
-  I want to view analytics on usasearch query data. The analytics contains two sections: most popular queries,
-    and biggest mover queries. Each of these is broken down into different timeframes (1 day, 7 day, and 30 day).
+  I want to view analytics on usasearch query data. The analytics contains up to three sections: most popular queries,
+    queries getting no results, and biggest mover queries. The most popular queries section is broken down into
+    different timeframes (1 day, 7 day, and 30 day).
 
   Scenario: Viewing the homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
@@ -23,6 +24,10 @@ Feature: Analytics Homepage
     And in "qas0" I should see "aaaa"
     And in "qas1" I should see "aaah"
     And in "qas2" I should see "aaao"
+    And I should see "No Results Queries"
+    And in "nrq0" I should see "gobbledegook aaaa"
+    And in "nrq1" I should see "gobbledegook aaah"
+    And in "nrq2" I should see "gobbledegook aaao"
     When I follow "aaaa"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Query Timeline
 
@@ -42,7 +47,15 @@ Feature: Analytics Homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And there are no query accelerations stats
     When I am on the analytics homepage
+    And I follow "Queries"
     Then I should not see "Top Movers"
+
+  Scenario: No zero-result queries available
+    Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And there are no zero result query stats
+    When I am on the analytics homepage
+    And I follow "Queries"
+    Then I should not see "No Results Queries"
 
   Scenario: Viewing queries that are part of query groups (i.e., semantic sets)
     Given I am logged in with email "analyst@fixtures.org" and password "admin"

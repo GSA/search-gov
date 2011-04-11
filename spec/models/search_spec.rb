@@ -994,6 +994,22 @@ describe Search do
         end
       end
     end
+
+    context "on normal search runs" do
+      before do
+        @search = Search.new(@valid_options.merge(:query => 'data'))
+        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+        parsed  = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
+        @time = Time.now
+        Time.stub!(:now).and_return @time
+      end
+
+      it "should log JSON info about the query, including locale, affiliate, timestamp, piped modules shown, and the query" do
+        RAILS_DEFAULT_LOGGER.should_receive(:info).with(/[Query Impression] \{.*\"modules\":\"BWEB|BSPEL\".*\}/)
+        @search.run
+      end
+    end
   end
 
   describe "when new" do

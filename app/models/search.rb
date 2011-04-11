@@ -292,7 +292,12 @@ class Search
     modules << "FORM" unless self.gov_forms.nil? or self.gov_forms.total.zero?
     modules << "SPOT" unless self.spotlight.nil?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
-    RAILS_DEFAULT_LOGGER.info("[Search Impression] time: #{Time.now.to_formatted_s(:db)} , query: #{self.query}, modules: #{modules.inspect}")
+    query_impression_hash = {:time=> Time.now.to_formatted_s(:db),
+                       :affiliate => affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : affiliate.name,
+                       :locale => I18n.locale.to_s,
+                       :query=> self.query,
+                       :modules=> modules.join('|')}
+    RAILS_DEFAULT_LOGGER.info("[Query Impression] #{query_impression_hash.to_json}")
   end
 
   def hits(response)

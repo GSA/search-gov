@@ -1,10 +1,10 @@
 = analytics_center_breadcrumbs @page_title
 .qtip.qtip-stylename
   .qtip-tip{:rel => "cornerValue"}
-    .qtip-wrapper 
+    .qtip-wrapper
       .qtip-contentWrapper
-        .qtip-title 
-          .qtip-button 
+        .qtip-title
+          .qtip-button
           .qtip-content
 
 .span-24{:style => 'color: green;'}
@@ -15,7 +15,18 @@
 .span-24
   %h2= display_most_recent_date_available(@day_being_shown)
 
-- if @affiliate.nil? and @most_recent_day_biggest_movers.is_a? Array
+- if @most_recent_day_no_results_queries.present?
+  .span-24.header-box
+    .span-6
+      .topmovers-title
+        %h2 No Results Queries
+  - group_size = (@most_recent_day_no_results_queries.size / 3)+(@most_recent_day_no_results_queries.size % 3 == 0 ? 0 : 1)
+  - most_recent_day_noresults_queries_in_3_groups = @most_recent_day_no_results_queries.in_groups_of(group_size, false)
+  - most_recent_day_noresults_queries_in_3_groups.each_with_index do |col, idx|
+    .span-8{:id=>"nrq#{idx}"}
+      = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => col , :content_name => "nrq#{idx}", :heading => "", :affiliate => nil, :offset => most_recent_day_noresults_queries_in_3_groups.first.size * idx }
+
+- if @most_recent_day_biggest_movers.is_a? Array
   .span-24.header-box
     .span-6
       .topmovers-title
@@ -30,7 +41,7 @@
 
 .clear
 .header-box
-  .left 
+  .left
     Most Popular Queries
   .right.last
     %form
