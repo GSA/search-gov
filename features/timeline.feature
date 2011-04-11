@@ -11,6 +11,13 @@ Feature: Timeline for query
     | oxaluria                    | 90    |     1        |
     | finochio                    | 80    |     1        |
     | burmannia                   | 40    |     1        |
+    And the following DailyPopularQueries exist for yesterday:
+    | query     | times | is_grouped  | time_frame  |
+    | cenobitic | 100   | false       | 1           |
+    | oxaluria  | 90    | false       | 1           |
+    | finochio  | 80    | false       | 1           |
+    | burmannia | 40    | false       | 1           |
+    | group1    | 180   | true        | 1           |
     And I am on the analytics queries page
     Then I should see "cenobitic"
     And I should see "oxaluria"
@@ -52,6 +59,13 @@ Feature: Timeline for query
     And the following query groups exist:
       | group    | queries               |
       | group1   | cenobitic, finochio   |
+    And the following DailyPopularQueries exist for yesterday:
+    | query     | times | is_grouped  | time_frame  |
+    | cenobitic | 100   | false       | 1           |
+    | oxaluria  | 90    | false       | 1           |
+    | finochio  | 80    | false       | 1           |
+    | burmannia | 40    | false       | 1           |
+    | group1    | 180   | true        | 1           |    
     And I am on the analytics queries page
     Then I should see "group1"
     When I follow "group1"
@@ -69,6 +83,13 @@ Feature: Timeline for query
     And the following query groups exist:
       | group    | queries               |
       | group1   | cenobitic, finochio   |
+    And the following DailyPopularQueries exist for yesterday:
+    | query     | times | is_grouped  | time_frame  |
+    | cenobitic | 100   | false       | 1           |
+    | oxaluria  | 90    | false       | 1           |
+    | finochio  | 80    | false       | 1           |
+    | burmannia | 40    | false       | 1           |
+    | group1    | 180   | true        | 1           |
     And I am on the analytics queries page
     Then I should see "group1"
     When I follow "group1"

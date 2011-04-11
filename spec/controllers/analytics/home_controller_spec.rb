@@ -71,14 +71,14 @@ describe Analytics::HomeController do
         context "when no date is selected by user" do
           it "should assign the most recent day" do
             get :queries
-            assigns[:day_being_shown].should == DailyQueryStat.most_recent_populated_date
+            assigns[:day_being_shown].should == DailyPopularQuery.most_recent_populated_date
           end
         end
 
         context "when date is blank" do
           it "should assign the most recent day" do
             get :queries, :day => ''
-            assigns[:day_being_shown].should == DailyQueryStat.most_recent_populated_date
+            assigns[:day_being_shown].should == DailyPopularQuery.most_recent_populated_date
           end
         end
 
@@ -100,6 +100,16 @@ describe Analytics::HomeController do
         get :queries
         assigns[:start_date].should == 1.month.ago.to_date
         assigns[:end_date].should == Date.yesterday.to_date
+      end
+      
+      it "should not return nil for any of the popular queries or query groups" do
+        get :queries
+        assigns[:most_recent_day_popular_terms].should_not be_nil
+        assigns[:trailing_week_popular_terms].should_not be_nil
+        assigns[:trailing_month_popular_terms].should_not be_nil
+        assigns[:most_recent_day_popular_query_groups].should_not be_nil
+        assigns[:trailing_week_popular_query_groups].should_not be_nil
+        assigns[:trailing_month_popular_query_groups].should_not be_nil
       end
 
       context "when the number of results for the most popular queries is set by the user" do
@@ -124,7 +134,7 @@ describe Analytics::HomeController do
         integrate_views
         before do
           AWS::S3::Base.stub!(:establish_connection!).and_return true
-          DailyQueryStat.stub!(:most_recent_populated_date).and_return Date.yesterday
+          DailyPopularQuery.stub!(:most_recent_populated_date).and_return Date.yesterday
         end
 
         it "should establish an AWS connection" do
@@ -134,7 +144,7 @@ describe Analytics::HomeController do
 
         it "should link to the reports on Amazon S3 using SSL if the file exists on S3" do
           %w{en es}.each do |locale|
-            filename = "analytics/reports/#{locale}/#{locale}_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
+            filename = "analytics/reports/#{locale}/#{locale}_top_queries_#{DailyPopularQuery.most_recent_populated_date.strftime('%Y%m%d')}.csv"
             AWS::S3::S3Object.should_receive(:exists?).with(filename, AWS_BUCKET_NAME).and_return true
             AWS::S3::S3Object.should_receive(:url_for).with(filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
           end
@@ -144,10 +154,10 @@ describe Analytics::HomeController do
         end
 
         it "should not link to the English report on S3 if it doesn't exist" do
-          english_filename = "analytics/reports/en/en_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
+          english_filename = "analytics/reports/en/en_top_queries_#{DailyPopularQuery.most_recent_populated_date.strftime('%Y%m%d')}.csv"
           AWS::S3::S3Object.should_receive(:exists?).with(english_filename, AWS_BUCKET_NAME).and_return false
           AWS::S3::S3Object.should_not_receive(:url_for).with(english_filename, AWS_BUCKET_NAME, :use_ssl => true)
-          spanish_filename = "analytics/reports/es/es_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
+          spanish_filename = "analytics/reports/es/es_top_queries_#{DailyPopularQuery.most_recent_populated_date.strftime('%Y%m%d')}.csv"
           AWS::S3::S3Object.should_receive(:exists?).with(spanish_filename, AWS_BUCKET_NAME).and_return true
           AWS::S3::S3Object.should_receive(:url_for).with(spanish_filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
           get :queries
@@ -158,10 +168,10 @@ describe Analytics::HomeController do
         end
 
         it "should not link to the Spanish report on S3 if it doesn't exist" do
-          english_filename = "analytics/reports/en/en_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
+          english_filename = "analytics/reports/en/en_top_queries_#{DailyPopularQuery.most_recent_populated_date.strftime('%Y%m%d')}.csv"
           AWS::S3::S3Object.should_receive(:exists?).with(english_filename, AWS_BUCKET_NAME).and_return true
           AWS::S3::S3Object.should_receive(:url_for).with(english_filename, AWS_BUCKET_NAME, :use_ssl => true).once.and_return ""
-          spanish_filename = "analytics/reports/es/es_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
+          spanish_filename = "analytics/reports/es/es_top_queries_#{DailyPopularQuery.most_recent_populated_date.strftime('%Y%m%d')}.csv"
           AWS::S3::S3Object.should_receive(:exists?).with(spanish_filename, AWS_BUCKET_NAME).and_return false
           AWS::S3::S3Object.should_not_receive(:url_for).with(spanish_filename, AWS_BUCKET_NAME, :use_ssl => true)
           get :queries
@@ -173,7 +183,7 @@ describe Analytics::HomeController do
 
         it "should not link to the reports if neither exist" do
           %w{en es}.each do |locale|
-            filename = "analytics/reports/#{locale}/#{locale}_top_queries_#{DailyQueryStat.most_recent_populated_date.strftime('%Y%m%d')}.csv"
+            filename = "analytics/reports/#{locale}/#{locale}_top_queries_#{DailyPopularQuery.most_recent_populated_date.strftime('%Y%m%d')}.csv"
             AWS::S3::S3Object.should_receive(:exists?).with(filename, AWS_BUCKET_NAME).and_return false
             AWS::S3::S3Object.should_not_receive(:url_for).with(filename, AWS_BUCKET_NAME, :use_ssl => true)
           end

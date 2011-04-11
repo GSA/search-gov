@@ -27,6 +27,31 @@ Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
   DailyQueryStat.reindex
 end
 
+Given /^there is popular query data from "([^"]*)" thru "([^"]*)"$/ do |sd, ed|
+  DailyPopularQuery.delete_all
+  start_date, end_date = sd.to_date, ed.to_date
+  cnt = 10000
+  words = ("aaaa".."aaaz").to_a
+  start_date.upto(end_date) do |day|
+    words.each do |word|
+      cnt = cnt - 1
+      DailyPopularQuery.create(:day => day, :query => word, :times => cnt, :is_grouped => false, :time_frame => 1, :locale => I18n.default_locale.to_s)
+      DailyPopularQuery.create(:day => day, :query => word, :times => cnt, :is_grouped => false, :time_frame => 7, :locale => I18n.default_locale.to_s)
+      DailyPopularQuery.create(:day => day, :query => word, :times => cnt, :is_grouped => false, :time_frame => 30, :locale => I18n.default_locale.to_s)
+    end
+  end
+end
+
+
+Given /^the following DailyPopularQueries exist for yesterday:$/ do |table|
+  DailyPopularQuery.delete_all
+  table.hashes.each do |hash|
+    affiliate = Affiliate.find_by_name(hash["affiliate"]) if hash["affiliate"].present?
+    dd = DailyPopularQuery.create(:day => Date.yesterday, :query => hash["query"], :times => hash["times"], :time_frame => hash["time_frame"], :is_grouped => hash["is_grouped"] == "true" ? true : false, :locale => I18n.default_locale.to_s)
+  end
+end
+
+
 Given /^the following DailyQueryStats exist:$/ do |table|
   DailyQueryStat.delete_all
   table.hashes.each do |hash|

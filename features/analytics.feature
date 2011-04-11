@@ -8,6 +8,7 @@ Feature: Analytics Homepage
   Scenario: Viewing the homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And there is analytics data from "20090901" thru "20090911"
+    And there is popular query data from "20090901" thru "20090911"
     When I am on the analytics homepage
     Then I should see "Analytics Center" link in the main navigation bar
     And I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center
@@ -59,18 +60,10 @@ Feature: Analytics Homepage
 
   Scenario: Viewing queries that are part of query groups (i.e., semantic sets)
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist:
-    | query                       | times   |  days_back  |
-    | obama                       | 10000   |    1        |
-    | health care bill            |  1000   |    1        |
-    | health care reform          |   100   |    1        |
-    | obama health care           |    10   |    1        |
-    | president                   |     4   |    1        |
-    | do not ignore me            |     1   |    1        |
-    And the following query groups exist:
-    | group      | queries                                                 |
-    | POTUS      | obama, president, obama health care, do not ignore me   |
-    | hcreform   | health care bill, health care reform, obama health care |
+    And the following DailyPopularQueries exist for yesterday:
+    | query     | times | is_grouped | time_frame |
+    | hcreform  | 1110  | true       | 1          |
+    | POTUS     | 10015 | true       | 1          |
     When I am on the analytics homepage
     And I follow "Queries"
     Then in "dqgs1" I should see "hcreform"
@@ -87,9 +80,9 @@ Feature: Analytics Homepage
 
   Scenario: Viewing Daily Contextual Query Totals when data exists
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist:
-      | query                                                    | times   |
-      | sets most recent date to yesterday                       | 10000   |
+    And the following DailyPopularQueries exist for yesterday:
+    | query     | times | is_grouped | time_frame |
+    | america   | 1110  | false      | 1          |
     And the DailyContextualQueryTotal for yesterday is "100"
     When I am on the analytics homepage
     And I follow "Queries"

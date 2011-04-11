@@ -7,6 +7,10 @@
   - if query_counts.kind_of?(String)
     %tr
       %td.alt{:colspan=>3}=query_counts
+  -elsif query_counts.kind_of?(Array) and query_counts.empty?
+    %tr
+      %td.alt{:colspan=>3}
+        Not enough historic data.
   - else
     - query_counts.each_with_index do |query_count, idx|
       %tr

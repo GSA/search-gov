@@ -153,6 +153,20 @@ ActiveRecord::Schema.define(:version => 20110411123231) do
 
   add_index "daily_contextual_query_totals", ["day"], :name => "index_daily_contextual_query_totals_on_day", :unique => true
 
+  create_table "daily_popular_queries", :force => true do |t|
+    t.date     "day"
+    t.integer  "affiliate_id"
+    t.string   "locale",       :limit => 5
+    t.string   "query"
+    t.integer  "times"
+    t.boolean  "is_grouped",                :default => false
+    t.integer  "time_frame"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "daily_popular_queries", ["day", "affiliate_id", "locale", "is_grouped", "time_frame"], :name => "dalit_index"
+
   create_table "daily_query_noresults_stats", :force => true do |t|
     t.date    "day",       :null => false
     t.string  "affiliate", :null => false

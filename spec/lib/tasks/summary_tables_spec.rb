@@ -91,6 +91,66 @@ describe "summary_tables rake tasks" do
 
   end
 
+  describe "usasearch:daily_popular_queries" do
+    describe "usasearch:daily_popular_queries:calculate" do
+      before do
+        @task_name = "usasearch:daily_popular_queries:calculate"
+      end
+      
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+      
+      context "when no parameters are passed" do
+        before do
+          @day = Date.yesterday
+        end
+        
+        it "should calculate the daily popular queries and query groups for the previous day for each of the time frames, and create DailyPopularQuery records" do
+          [1, 7, 30].each do |time_frame|
+            DailyQueryStat.should_receive(:most_popular_terms).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100)]
+            pop_query = DailyPopularQuery.should_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", false, time_frame).and_return DailyPopularQuery.new
+            DailyQueryStat.should_receive(:most_popular_groups).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100)]
+            pop_query_group = DailyPopularQuery.should_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", true, time_frame).and_return DailyPopularQuery.new
+          end
+          @rake[@task_name].invoke
+        end          
+      end
+    
+      context "when a day is specified" do
+        before do
+          @day = Date.parse('2011-04-01')
+        end
+        
+        it "should calculate the daily popular queries and query groups for the previous day for each of the time frames, and create DailyPopularQuery records" do
+          [1, 7, 30].each do |time_frame|
+            DailyQueryStat.should_receive(:most_popular_terms).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100)]
+            pop_query = DailyPopularQuery.should_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", false, time_frame).and_return DailyPopularQuery.new
+            DailyQueryStat.should_receive(:most_popular_groups).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100)]
+            pop_query_group = DailyPopularQuery.should_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", true, time_frame).and_return DailyPopularQuery.new
+          end
+          @rake[@task_name].invoke('2011-04-01')
+        end        
+      end
+      
+      context "when the most popular terms/groups are strings, not arrays" do
+        before do
+          @day = Date.yesterday
+        end
+        
+        it "should calculate the daily popular queries and query groups for the previous day for each of the time frames, and create DailyPopularQuery records" do
+          [1, 7, 30].each do |time_frame|
+            DailyQueryStat.should_receive(:most_popular_terms).with(@day, time_frame, 1000).and_return "Insufficient data"
+            pop_query = DailyPopularQuery.should_not_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", false, time_frame).and_return DailyPopularQuery.new
+            DailyQueryStat.should_receive(:most_popular_groups).with(@day, time_frame, 1000).and_return "Insufficient data"
+            pop_query_group = DailyPopularQuery.should_not_receive(:find_or_create_by_day_and_affiliate_and_locale_and_query_and_is_grouped_and_time_frame).with(@day, nil, 'en', "query", true, time_frame).and_return DailyPopularQuery.new
+          end
+          @rake[@task_name].invoke
+        end
+      end          
+    end
+  end
+         
   describe "usasearch:monthly_popular_queries" do
     describe "usasearch:monthly_popular_queries:calculate" do
       before do
