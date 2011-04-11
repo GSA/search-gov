@@ -58,6 +58,18 @@ class UsaSearchScript < Script
 
     page.click "link=Recalls"
     page.capture_to_file("recalls_landing")
+
+    page.open "/search?affiliate=affiliatetemplate&query=gov"
+    page.capture_to_file("affiliate_default")
+
+    page.search_as_you_type("search_query", "bar")
+    page.capture_to_file("affiliate_default_sayt", false)
+
+    page.open "/search?affiliate=affiliatetemplate&query=gov&staged=1"
+    page.capture_to_file("affiliate_basic_gray")
+
+    page.search_as_you_type("search_query", "bar")
+    page.capture_to_file("affiliate_basic_gray_sayt", false)
   end
 end
 
