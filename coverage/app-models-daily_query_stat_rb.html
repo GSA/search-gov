@@ -573,7 +573,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line87">87</a>       results = find_by_sql [&quot;select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b &quot;+</pre></td>
+            <td><pre><a name="line87">87</a>       results = find_by_sql [&quot;select q.name, sum(d.times) cnt from daily_query_stats d FORCE INDEX (qdal), query_groups q, grouped_queries g, grouped_queries_query_groups b &quot;+</pre></td>
           </tr>
         
           
@@ -807,7 +807,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Mon Apr 11 14:20:34 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Apr 12 19:48:42 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
