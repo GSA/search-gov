@@ -27,7 +27,9 @@ class BoostedContent < ActiveRecord::Base
 
   def self.search_for(query, affiliate = nil, locale = I18n.default_locale)
     search do
-      fulltext query, :highlight => true
+      fulltext query do
+        highlight :title, :description, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
+      end
       with(:affiliate_name, affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
       with(:locale, locale.to_s) if locale
       paginate :page => 1, :per_page => 3

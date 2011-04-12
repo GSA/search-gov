@@ -100,6 +100,16 @@ Feature: Search
     And I should not see "Our Tourism Page" 
     And I should not see "Bar Emergency Page"
     
+  Scenario: Site visitor sees full boosted content
+    Given the following Boosted Content entries exist:
+    | title                               | url             | description                               | 
+    | FBI Releases 'Flying Saucers' Memo  | http://fbi.gov  | A newly-released memo, written by agent Guy Hottel, appears to support UFOs and aliens landing in Roswell, New Mexico, in 1947. |
+    And I am on the homepage
+    And I fill in "query" with "roswell"
+    And I press "Search"
+    Then I should be on the search page
+    And I should see "A newly-released memo, written by agent Guy Hottel, appears to support UFOs and aliens landing in Roswell, New Mexico, in 1947."    
+    
   Scenario: Site visitor does not see relevant boosted Content on Buscador
     Given the following Boosted Content entries exist:
       | title                   | url                     | description                               | locale  |
