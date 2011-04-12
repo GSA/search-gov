@@ -64,7 +64,6 @@
 .span-8{:id=>"dqgs7"}
   = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_query_groups , :content_name => "dqgs7", :heading => "Previous 7 Days", :affiliate => nil}
 .span-8.last{:id=>"dqgs30"}
-  - RAILS_DEFAULT_LOGGER.debug "HI: #{@trailing_month_popular_query_groups.inspect}"
   = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_query_groups , :content_name => "dqgs30", :heading => "Previous 30 Days", :affiliate => nil}
 
 #daily_top_queries.span-24
