@@ -12,3 +12,9 @@ Given /^the following Calais Related Searches exist:$/ do |table|
   Sunspot.commit
 end
 
+Given /^the following Popular Image Query entries exist:$/ do |table|
+  table.hashes.each do |hash|
+    PopularImageQuery.create!(:query => hash[:query])
+  end
+end
+

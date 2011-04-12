@@ -226,4 +226,102 @@ describe SearchHelper do
       end
     end
   end
+
+  describe "#display_image_result_links" do
+    before do
+      @result = { 'Url' => 'http://aHost.gov/aPath',
+                  'title' => 'aTitle',
+                  'Thumbnail' => { 'Url' => 'aThumbnailUrl', 'Width' => 40, 'Height' => 30 },
+                  'MediaUrl' => 'aMediaUrl' }
+      @query = "NASA's"
+      @affiliate = mock('affiliate', :name => 'special affiliate name')
+      @search = mock('search', {:query => @query, :queried_at_seconds => Time.now.to_i})
+      @index = 100
+      @onmousedown_attr = 'onmousedown attribute'
+    end
+
+    it "should generate onmousedown with affiliate name" do
+      helper.should_receive(:onmousedown_attribute_for_image_click).
+            with(@query, @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds).
+            and_return(@onmousedown_attr)
+      content = helper.display_image_result_links(@result, @search, @affiliate, @index)
+    end
+
+    it "should generate onmousedown with blank affiliate name if affiliate is nil" do
+      helper.should_receive(:onmousedown_attribute_for_image_click).
+            with(@query, @result['MediaUrl'], @index, "", "IMAG", @search.queried_at_seconds).
+            and_return(@onmousedown_attr)
+      content = helper.display_image_result_links(@result, @search, nil, @index)
+    end
+
+    it "should contain tracked links" do
+      helper.should_receive(:onmousedown_attribute_for_image_click).
+            with(@query, @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds).
+            and_return(@onmousedown_attr)
+      helper.should_receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr).and_return("thumbnail_image_link_content")
+      helper.should_receive(:tracked_click_thumbnail_link).with(@result, @onmousedown_attr).and_return("thumbnail_link_content")
+
+      content = helper.display_image_result_links(@result, @search, @affiliate, @index)
+
+      content.should contain("thumbnail_image_link_content")
+      content.should contain("thumbnail_link_content")
+    end
+  end
+
+  describe "#display_thumbnail_image_link" do
+    before do
+      @result = { 'Url' => 'http://aHost.gov/aPath',
+                  'title' => 'aTitle',
+                  'Thumbnail' => { 'Url' => 'aThumbnailUrl', 'Width' => 280, 'Height' => 180 },
+                  'MediaUrl' => 'aMediaUrl' }
+      @query = "NASA's"
+      @search = mock('search', {:query => @query, :queried_at_seconds => Time.now.to_i})
+      @index = 100
+      @onmousedown_attr = 'onmousedown attribute'
+    end
+
+    it "should contain tracked thumbnail image link" do
+      helper.should_receive(:onmousedown_attribute_for_image_click).
+            with(@query, @result['MediaUrl'], @index, nil, "IMAG", @search.queried_at_seconds).
+            and_return(@onmousedown_attr)
+      helper.should_receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr, 140, 90).and_return("thumbnail_image_link_content")
+      content = helper.display_thumbnail_image_link(@result, @search, @index, 140, 90)
+      content.should contain("thumbnail_image_link_content")
+    end
+  end
+
+  describe "#tracked_click_thumbnail_image_link" do
+    before do
+      @result = { 'Url' => 'aUrl', 'title' => 'aTitle', 'Thumbnail' => { 'Url' => 'ThumbnailUrl', 'Width' => 40, 'Height' => 30 } }
+      @onmousedown_attr = "onmousedown_attribute"
+    end
+
+    it "should return a link to the result url" do
+      content = helper.tracked_click_thumbnail_image_link(@result, @onmousedown_attr)
+      content.should have_tag("a[href=aUrl][onmousedown=#{@onmousedown_attr}]")
+    end
+  end
+
+  describe "#tracked_click_thumbnail_link" do
+    before do
+      @result = { 'Url' => 'http://aHost.gov/aPath',
+                  'title' => 'aTitle',
+                  'Thumbnail' => { 'Url' => 'aThumbnailUrl', 'Width' => 40, 'Height' => 30 },
+                  'MediaUrl' => 'aMediaUrl' }
+      @onmousedown_attr = "onmousedown_attribute"
+    end
+
+    it "should be a link to the result thumbnail url" do
+      content = helper.tracked_click_thumbnail_link(@result, @onmousedown_attr)
+      content.should have_tag("a[href=aMediaUrl][onmousedown=#{@onmousedown_attr}]")
+    end
+  end
+
+  describe "#onmousedown_attribute_for_image_click" do
+    it "should return with escaped query parameter and (index + 1) value" do
+      now = Time.now.to_i
+      content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "mediaUrl", 99, "affiliate name", "SOURCE", now)
+      content.should == "return clk('NASA\\'s Space Rock', 'mediaUrl', 100, 'affiliate name', 'SOURCE', #{now})"
+    end
+  end
 end

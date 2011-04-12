@@ -133,3 +133,14 @@ Feature: Search
     And I fill in "query" with "emergency"
     And I press "Search"
     Then I should see "http://www.aff.gov/.../911"
+
+  Scenario: Site visitor sees SERP with popular images
+    Given the following Popular Image Query entries exist:
+      | query           |
+      | space           |
+    And I am on the homepage
+    And I fill in "query" with "space"
+    And I press "Search"
+    Then I should see "Images for space"
+    When I follow "Images for space"
+    Then I should be on the image search page

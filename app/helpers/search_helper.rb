@@ -7,10 +7,31 @@ module SearchHelper
     end
   end
 
-  def thumbnail_image_link(result, max_width=nil, max_height=nil)
+  def display_image_result_links(result, search, affiliate, index)
+    affiliate_name = affiliate.name rescue ""
+    onmousedown_attribute = onmousedown_attribute_for_image_click(search.query, result["MediaUrl"], index, affiliate_name, "IMAG", search.queried_at_seconds)
+    html = tracked_click_thumbnail_image_link(result, onmousedown_attribute)
+    html << tracked_click_thumbnail_link(result, onmousedown_attribute)
+  end
+
+  def display_thumbnail_image_link(result, search, index, max_width = nil, max_height = nil)
+    onmousedown_attribute = onmousedown_attribute_for_image_click(search.query, result["MediaUrl"], index, nil, "IMAG", search.queried_at_seconds)
+    tracked_click_thumbnail_image_link(result, onmousedown_attribute, max_width, max_height)
+  end
+
+  def tracked_click_thumbnail_image_link(result, onmousedown_attr, max_width = nil, max_height = nil)
     link_to thumbnail_image_tag(result, max_width, max_height),
             result["Url"],
+            :onmousedown => onmousedown_attr,
             :alt => result["title"],
+            :rel => "no-follow"
+  end
+
+  def tracked_click_thumbnail_link(result, onmousedown_attr)
+    link = URI.parse(result["Url"]).host rescue shorten_url(result["Url"])
+    link_to link,
+            result["MediaUrl"],
+            :onmousedown => onmousedown_attr,
             :rel => "no-follow"
   end
 
@@ -27,11 +48,6 @@ module SearchHelper
               :width  => (width * reduction).to_i,
               :height => (height * reduction).to_i,
               :title  => result["title"]
-  end
-
-  def thumbnail_link(result)
-    link = URI.parse(result["Url"]).host rescue shorten_url(result["Url"])
-    link_to link, result["MediaUrl"], :rel => "no-follow"
   end
 
   def display_result_links (result, search, affiliate, position, show_cache_link = true)
@@ -79,6 +95,10 @@ module SearchHelper
 
   def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at)
     "onmousedown=\"return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at})\""
+  end
+
+  def onmousedown_attribute_for_image_click(query, media_url, zero_based_index, affiliate_name, source, queried_at)
+    "return clk('#{h(escape_javascript(query))}', '#{media_url}', #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at})"
   end
 
   def display_result_description (result)
