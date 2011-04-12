@@ -202,7 +202,7 @@ class Search
   def parse(response_body)
     begin
       json = JSON.parse(response_body)
-      ResponseData.new(json['SearchResponse'])
+      ResponseData.new(json['SearchResponse']) unless json.nil?
     rescue JSON::ParserError => error
       raise BingSearchError.new(error.to_s)
     end

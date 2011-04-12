@@ -9,6 +9,17 @@ describe Search do
   end
 
   describe "#run" do
+    context "when response body is nil from Bing" do
+      before do
+        JSON.should_receive(:parse).once.and_return nil
+        @search = Search.new(@valid_options)
+      end
+
+      it "should still return true when searching" do
+        @search.run.should be_true
+      end
+    end
+
     context "when JSON cannot be parsed for some reason" do
       before do
         JSON.should_receive(:parse).once.and_raise(JSON::ParserError)
@@ -140,7 +151,7 @@ describe Search do
 
     context "when affiliate has domains specified and user does not specify site: in search" do
       before do
-        @affiliate     = Affiliate.new(:domains => %w(     foo.com bar.com     ).join("\r\n"))
+        @affiliate     = Affiliate.new(:domains => %w(       foo.com bar.com       ).join("\r\n"))
         @uriresult     = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -153,7 +164,7 @@ describe Search do
 
       context "when the domains are separated by only '\\n'" do
         before do
-          @affiliate.domains = %w(    foo.com bar.com    ).join("\n")
+          @affiliate.domains = %w(      foo.com bar.com      ).join("\n")
         end
 
         it "should split the domains the same way" do
@@ -186,7 +197,7 @@ describe Search do
 
     context "when affiliate has domains specified but user specifies site: in search" do
       before do
-        @affiliate     = Affiliate.new(:domains => %w(     foo.com bar.com     ).join("\n"))
+        @affiliate     = Affiliate.new(:domains => %w(       foo.com bar.com       ).join("\n"))
         @uriresult     = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -710,7 +721,7 @@ describe Search do
 
     context "when the query ends in OR" do
       before do
-        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{ portland or | oregon | rain })
+        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{   portland or | oregon | rain   })
         CalaisRelatedSearch.reindex
         @search = Search.new(:query => "Portland OR")
         @search.run
