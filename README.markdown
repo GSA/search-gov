@@ -14,10 +14,10 @@ You will need Ruby 1.8.7. Verify that your path points to the correct version of
     lappy:usasearch loren$ which ruby
     /opt/local/bin/ruby
 
-You will need to install rubygems 1.3.5 (1.3.6 generates deprecation warnings) and set up your gem sources:
+You will need to install rubygems 1.4.1 and set up your gem sources:
 
     lappy:usasearch loren$ gem -v
-    1.3.5
+    1.4.1
     lappy:usasearch loren$ which gem
     /opt/local/bin/gem
     lappy:usasearch loren$ more ~/.gemrc
