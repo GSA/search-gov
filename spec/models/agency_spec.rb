@@ -48,7 +48,8 @@ describe Agency do
     
     context "when the domain and name are the same value" do
       it "should save without generating an error" do
-        Agency.create!(@valid_attributes.merge(:name => 'irs.gov', :domain => 'irs.gov'))
+        @agency = Agency.create!(@valid_attributes.merge(:name => 'Grants.gov', :domain => 'Grants.gov'))
+        @agency.id.should_not be_nil
       end
     end
   end

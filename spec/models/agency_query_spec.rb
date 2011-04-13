@@ -12,5 +12,5 @@ describe AgencyQuery do
   end
   
   should_validate_presence_of :phrase
-  should_validate_uniqueness_of :phrase
+  should_validate_uniqueness_of :phrase, :case_sensitive => false
 end
