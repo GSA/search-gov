@@ -1,7 +1,7 @@
 %div= flash[:notice] if flash[:notice]
 - if (@search_results.size > 0)
   %p= "Matches for '#{h @search_query_term}'"
-  - if @current_user.is_analyst_admin?
+  - if @affiliate.nil?
     :javascript
       function selectAllQueries() {
         var queriesForm = document.forms['queries'];
@@ -14,22 +14,25 @@
         %tr{:class => 'query_search_results_table_header'}
           %th Query term
           %th{:style=>"text-align: right;"} Frequency
-          %th{:style => "text-align: center;"}
-            = "Add to #{link_to 'Query Group', analytics_query_groups_path, :target => '_blank'}"
-            %br
-            = "(#{ link_to 'Select All', 'javascript:selectAllQueries();'})"
+          - if @current_user.is_analyst_admin?
+            %th{:style => "text-align: center;"}
+              = "Add to #{link_to 'Query Group', analytics_query_groups_path, :target => '_blank'}"
+              %br
+              = "(#{ link_to 'Select All', 'javascript:selectAllQueries();'})"
         - @search_results.each_pair do |query, count|
           %tr
             %td= query_chart_link(query)
             %td{:style=>"text-align: right;"}= count
+            - if @current_user.is_analyst_admin?
+              %td{:style => "text-align: center;"}
+                = check_box_tag("bulk_add_#{query.parameterize}", query)
+        - if @current_user.is_analyst_admin?
+          %tr
+            %td
+            %td
             %td{:style => "text-align: center;"}
-              = check_box_tag("bulk_add_#{query.parameterize}", query)
-        %tr
-          %td
-          %td
-          %td{:style => "text-align: center;"}
-            = select 'query_group', 'name', options_from_collection_for_select(@query_groups, 'name', 'name'), { :include_blank => true }
-            = submit_tag 'Add to Query Group'
+              = select 'query_group', 'name', options_from_collection_for_select(@query_groups, 'name', 'name'), { :include_blank => true }
+              = submit_tag 'Add to Query Group'
   - else
     %table
       %tr
