@@ -96,6 +96,17 @@ describe Affiliates::ApiController do
       end
     end
 
+    describe "jsonp support" do
+      it "should wrap response with predefined callback if callback is not blank" do
+        affiliate = affiliates(:basic_affiliate)
+        search_results = mock('search_results')
+        ApiSearch.should_receive(:search).and_return(search_results)
+        search_results.should_receive(:to_json).and_return('search_results_in_json_format')
+        get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "title", :callback => 'processData'
+        response.body.should == %{processData(search_results_in_json_format)}
+      end
+    end
+
   end
 
   describe "#index" do

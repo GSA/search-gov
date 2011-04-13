@@ -5,7 +5,11 @@ class Affiliates::ApiController < Affiliates::AffiliatesController
 
   def search
     @search_options = search_options_from_params(params).merge(:affiliate => @affiliate)
-    render :json => ApiSearch.search(@search_options)
+    if (params[:callback].blank?)
+      render :json => ApiSearch.search(@search_options)
+    else
+      render :json => "#{params[:callback]}(#{ApiSearch.search(@search_options).to_json})"
+    end
   end
 
   def index
