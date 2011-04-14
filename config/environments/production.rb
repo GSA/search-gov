@@ -37,3 +37,7 @@ RECAPTCHA_PUBLIC_KEY  = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
 
 MONTHLY_REPORT_RECIPIENTS = ['amy.farrajfeijoo@gsa.gov', 'erik@searchsi.com', 'greg@shelrick.com', 'jayvirdy@gmail.com']
+
+config.after_initialize do
+  MultiDb::ConnectionProxy.setup!
+end
