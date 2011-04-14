@@ -235,7 +235,7 @@ describe SearchHelper do
                   'MediaUrl' => 'aMediaUrl' }
       @query = "NASA's"
       @affiliate = mock('affiliate', :name => 'special affiliate name')
-      @search = mock('search', {:query => @query, :queried_at_seconds => Time.now.to_i})
+      @search = mock('search', {:query => @query, :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil})
       @index = 100
       @onmousedown_attr = 'onmousedown attribute'
     end
@@ -244,14 +244,14 @@ describe SearchHelper do
       helper.should_receive(:onmousedown_attribute_for_image_click).
             with(@query, @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds).
             and_return(@onmousedown_attr)
-      content = helper.display_image_result_links(@result, @search, @affiliate, @index)
+      helper.display_image_result_links(@result, @search, @affiliate, @index)
     end
 
     it "should generate onmousedown with blank affiliate name if affiliate is nil" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
             with(@query, @result['MediaUrl'], @index, "", "IMAG", @search.queried_at_seconds).
             and_return(@onmousedown_attr)
-      content = helper.display_image_result_links(@result, @search, nil, @index)
+      helper.display_image_result_links(@result, @search, nil, @index)
     end
 
     it "should contain tracked links" do
@@ -265,6 +265,14 @@ describe SearchHelper do
 
       content.should contain("thumbnail_image_link_content")
       content.should contain("thumbnail_link_content")
+    end
+
+    it "should use spelling suggestion as the query if one exists" do
+      @search = mock('search', {:query => 'satalate', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
+      helper.should_receive(:onmousedown_attribute_for_image_click).
+          with("satellite", @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds).
+          and_return(@onmousedown_attr)
+      helper.display_image_result_links(@result, @search, @affiliate, @index)
     end
   end
 
@@ -322,6 +330,20 @@ describe SearchHelper do
       now = Time.now.to_i
       content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "mediaUrl", 99, "affiliate name", "SOURCE", now)
       content.should == "return clk('NASA\\'s Space Rock', 'mediaUrl', 100, 'affiliate name', 'SOURCE', #{now})"
+    end
+  end
+
+  describe "#tracked_click_link" do
+    it "should track spelling suggestion as the query if one exists" do
+      search = mock('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
+      helper.should_receive(:onmousedown_for_click).with(search.spelling_suggestion, 100, '', 'BWEB', search.queried_at_seconds)
+      helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB')
+    end
+
+    it "should track query if spelling suggestion does not exist" do
+      search = mock('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil})
+      helper.should_receive(:onmousedown_for_click).with(search.query, 100, '', 'BWEB', search.queried_at_seconds)
+      helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB')
     end
   end
 end

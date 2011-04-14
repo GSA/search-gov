@@ -9,7 +9,8 @@ module SearchHelper
 
   def display_image_result_links(result, search, affiliate, index)
     affiliate_name = affiliate.name rescue ""
-    onmousedown_attribute = onmousedown_attribute_for_image_click(search.query, result["MediaUrl"], index, affiliate_name, "IMAG", search.queried_at_seconds)
+    query = search.spelling_suggestion ? search.spelling_suggestion : search.query
+    onmousedown_attribute = onmousedown_attribute_for_image_click(query, result["MediaUrl"], index, affiliate_name, "IMAG", search.queried_at_seconds)
     html = tracked_click_thumbnail_image_link(result, onmousedown_attribute)
     html << tracked_click_thumbnail_link(result, onmousedown_attribute)
   end
@@ -76,7 +77,8 @@ module SearchHelper
 
   def tracked_click_link(url, title, search, affiliate, position, source, opts = nil)
     aff_name = affiliate.name rescue ""
-    query = search.query.gsub("'", "\\\\'")
+    query = search.spelling_suggestion ? search.spelling_suggestion : search.query
+    query = query.gsub("'", "\\\\'")
     onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds)
     "<a href=\"#{url}\" #{onmousedown} #{opts}>#{title}</a>"
   end
