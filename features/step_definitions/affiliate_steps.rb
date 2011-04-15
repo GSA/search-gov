@@ -59,6 +59,12 @@ Given /^there is analytics data for affiliate "([^\"]*)" from "([^\"]*)" thru "(
   end
 end
 
+Given /^the following Misspelling exist:$/ do |table|
+  table.hashes.each do |hash|
+    Misspelling.create!(:wrong => hash["wrong"], :rite => hash["rite"])
+  end
+end
+
 Then /^the search bar should have SAYT enabled$/ do
   response.body.should have_tag("script[type=text/javascript][src^=/javascripts/sayt-ui.js]")
   response.body.should have_tag("input[id=search_query][type=text][class=usagov-search-autocomplete][autocomplete=off]")

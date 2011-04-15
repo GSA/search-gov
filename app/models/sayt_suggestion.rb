@@ -1,13 +1,14 @@
 class SaytSuggestion < ActiveRecord::Base
   @queue = :sayt_suggestion
-  before_validation :squish_whitespace_and_downcase_and_spellcheck
+  before_validation :squish_whitespace_and_downcase
+  before_validation :spellcheck, :unless => :affiliate
   belongs_to :affiliate
 
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :scope => :affiliate_id
   validates_length_of :phrase, :within=> (3..80)
   validates_format_of :phrase, :with=> /^[a-zA-Z0-9][\s\w\.'-]+[a-zA-Z0-9]$/iu
-  
+
   MAX_POPULARITY = 2**30
 
   class << self
@@ -75,7 +76,16 @@ class SaytSuggestion < ActiveRecord::Base
     end
   end
 
+  def squish_whitespace_and_downcase
+    self.phrase = self.phrase.squish.downcase unless self.phrase.nil?
+  end
+
+  def spellcheck
+    self.phrase = Misspelling.correct(self.phrase) unless self.phrase.nil?
+  end
+
   def squish_whitespace_and_downcase_and_spellcheck
-    self.phrase = Misspelling.correct(self.phrase.squish.downcase) unless self.phrase.nil?
+    squish_whitespace_and_downcase
+    spellcheck
   end
 end

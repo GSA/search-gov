@@ -22,7 +22,7 @@ class Misspelling < ActiveRecord::Base
     SaytSuggestion.all.each do |s|
       corrected = s.phrase.gsub(/\b#{wrong}\b/, rite)
       if corrected != s.phrase
-        s.delete
+        s.delete if s.affiliate.nil?
         SaytSuggestion.create(:phrase =>corrected)
       end
     end

@@ -1,7 +1,7 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe Misspelling do
-  fixtures :misspellings
+  fixtures :misspellings, :affiliates
 
   describe "Creating new instance" do
 
@@ -49,17 +49,22 @@ describe Misspelling do
   end
 
   context "after saving a Misspelling" do
-    before do
-      @phrase = "only one c is necccessary"
-      SaytSuggestion.create!(:phrase => @phrase)
-    end
-
     it "should apply the correction to existing SaytSuggestions" do
+      phrase = "only one c is necccessary"
+      SaytSuggestion.create!(:phrase => phrase)
       wrong = "necccessary"
       rite = "necessary"
       Misspelling.create!(:wrong=> wrong, :rite=>rite)
-      SaytSuggestion.find_by_phrase(@phrase).should be_nil
+      SaytSuggestion.find_by_phrase(phrase).should be_nil
       SaytSuggestion.find_by_phrase("only one c is necessary").should_not be_nil
+    end
+
+    it "should not apply the correction to existing SaytSuggestions that belong to an affiliate" do
+      SaytSuggestion.create!(:phrase => "haus", :affiliate => affiliates(:basic_affiliate))
+      wrong = "haus"
+      rite = "house"
+      Misspelling.create!(:wrong=> wrong, :rite=>rite)
+      SaytSuggestion.find_by_phrase("haus").should_not be_nil
     end
   end
 

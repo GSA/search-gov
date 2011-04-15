@@ -39,9 +39,14 @@ describe SaytSuggestion do
       SaytSuggestion.find_by_phrase("two spaces").phrase.should == "two spaces"
     end
 
-    it "should correct misspellings before entering in DB" do
+    it "should correct misspellings before entering in DB if skip spellcheck is not set" do
       SaytSuggestion.create!(:phrase => "barack ubama")
       SaytSuggestion.find_by_phrase("barack obama").should_not be_nil
+    end
+
+    it "should not correct misspellings before entering in DB if the suggestion belongs to an affiliate" do
+      SaytSuggestion.create!(:phrase => "barack ubama", :affiliate => affiliates(:basic_affiliate))
+      SaytSuggestion.find_by_phrase("barack ubama").should_not be_nil
     end
 
     it "should default popularity to 1 if not specified" do

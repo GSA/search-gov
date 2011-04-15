@@ -996,7 +996,25 @@ Feature: Affiliate clients
     Then I should be on the affiliate sayt page
     And I should see "Deleted phrase: banana"
     And I should not see "banana" within "#sayt-suggestions"
-    
+
+  Scenario: Adding a misspelled SAYT Suggestion to an affiliate
+    Given the following Affiliates exist:
+     | display_name     | name             | contact_email           | contact_name        | is_sayt_enabled | is_affiliate_suggestions_enabled |
+     | aff site         | aff.gov          | aff@bar.gov             | John Bar            | true            | true                             |
+    Given the following Misspelling exist:
+      | wrong    | rite    |
+      | haus     | house   |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Type-ahead Search"
+    Then I should be on the affiliate sayt page
+    And I should see "Add a New Entry"
+    When I fill in "Phrase" with "haus"
+    And I press "Add"
+    Then I should be on the affiliate sayt page
+    And I should see "Successfully added: haus"
+    And I should see "haus" within "#sayt-suggestions"
+
   Scenario: Uploading SAYT Suggestions for an affiliate
     Given the following Affiliates exist:
      | display_name     | name             | contact_email           | contact_name        | is_sayt_enabled | is_affiliate_suggestions_enabled |
