@@ -25,36 +25,36 @@ Feature: Affiliate Superfresh Interface
     Then I should be on the affiliate superfresh page
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add to Bing
     And I should see "Add to Bing"
-    When I fill in "Single URL" with "http://new.url.com"
+    When I fill in "Single URL" with "http://new.url.gov"
     And I press "Submit"
     Then I should be on the affiliate superfresh page
-    And I should see "Successfully added http://new.url.com."
+    And I should see "Successfully added http://new.url.gov."
     And I should see "Uncrawled URLs (1)"
-    And I should see "http://new.url.com" within ".uncrawled-url"
-  
+    And I should see "http://new.url.gov" within ".uncrawled-url"
+
     When the user agent is the MSNbot
     And I call the superfresh feed
-    Then I should see "http://new.url.com"
-    
+    Then I should see "http://new.url.gov"
+
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Add to Bing"
     Then I should see "Uncrawled URLs (0)"
-    And I should see "http://new.url.com" within ".crawled-url"
-    
+    And I should see "http://new.url.gov" within ".crawled-url"
+
   Scenario: Remove a URL to be crawled
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And the following SuperfreshUrls exist:
       | url                   | affiliate |
-      | http://removeme.com   | aff.gov   |        
+      | http://removeme.mil   | aff.gov   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
     When I follow "Remove URL"
     Then I should be on the affiliate superfresh page
-    And I should see "Removed http://removeme.com"
+    And I should see "Removed http://removeme.mil"
 
   Scenario: Submitting a bad URL for on-demand indexing
     Given the following Affiliates exist:
@@ -65,11 +65,11 @@ Feature: Affiliate Superfresh Interface
     And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
     And I should see "Add to Bing"
-    When I fill in "Single URL" with ""
+    When I fill in "Single URL" with "http://www.spammy.com"
     And I press "Submit"
     Then I should be on the affiliate superfresh page
     And I should see "There was an error adding the URL to be refreshed."
-    
+
   Scenario: Bulk-uploading URLs for on-demand indexing
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -79,27 +79,27 @@ Feature: Affiliate Superfresh Interface
     And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
     And I should see "Bulk Upload"
-    
+
     When I attach the file "features/support/superfresh_urls.txt" to "superfresh_urls"
     And I press "Upload"
     Then I should be on the affiliate superfresh page
     And I should see "Successfully uploaded 5 urls."
-    
+
     When I attach the file "features/support/too_many_superfresh_urls.txt" to "superfresh_urls"
     And I press "Upload"
     Then I should be on the affiliate superfresh page
     And I should see "Too many URLs in your file."
-    
+
     When I attach the file "features/support/no_superfresh_urls.txt" to "superfresh_urls"
     And I press "Upload"
     Then I should be on the affiliate superfresh page
     And I should see "No urls uploaded; please check your file and try again."
-    
+
     When I attach the file "features/support/invalid_superfresh_file.doc" to "superfresh_urls"
     And I press "Upload"
     Then I should be on the affiliate superfresh page
     And I should see "Invalid file format"
-    
+
     When I press "Upload"
     Then I should be on the affiliate superfresh page
-    And I should see "Invalid file format"    
+    And I should see "Invalid file format"

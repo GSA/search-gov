@@ -59,8 +59,8 @@ describe Affiliates::SuperfreshController do
 
         context "when viewing the page" do
           before do
-            SuperfreshUrl.create(:url => 'http://uncrawled.url', :affiliate => @user.affiliates.first)
-            SuperfreshUrl.create(:url => 'http://crawled.url', :crawled_at => Time.now, :affiliate => @user.affiliates.first)
+            SuperfreshUrl.create(:url => 'http://uncrawled.gov', :affiliate => @user.affiliates.first)
+            SuperfreshUrl.create(:url => 'http://crawled.gov', :crawled_at => Time.now, :affiliate => @user.affiliates.first)
           end
 
           it "should create a new superfresh url, and find all the uncrawled and the first 30 crawled superfresh urls" do

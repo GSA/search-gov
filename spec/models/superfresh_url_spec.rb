@@ -8,28 +8,33 @@ describe SuperfreshUrl do
       :url => "http://search.usa.gov/recently-updated-url"
     }
   end
-  
-  should_validate_presence_of :url
-  
+
+  describe "Creating new instance" do
+    should_belong_to :affiliate
+    should_validate_presence_of :url
+    should_not_allow_values_for :url, "http://some.spamsite.com/url", "http://some.spamsite.us/url", "http://some.spamsite.info/url"
+    should_allow_values_for :url, "http://some.site.gov/url", "http://some.site.mil/url"
+  end
+
   describe "#uncrawled_urls" do
     before do
-      @first_uncrawled_url = SuperfreshUrl.create(:url => 'http://some.url/')
-      @affiliate_uncrawled_url = SuperfreshUrl.create(:url => 'http://affiliate.uncrawled.url', :affiliate => affiliates(:basic_affiliate))
-      @last_uncrawled_url = SuperfreshUrl.create(:url => 'http://another.url')
-      @already_crawled_url = SuperfreshUrl.create(:url => 'http://already.crawled.url', :crawled_at => Time.now)
+      @first_uncrawled_url = SuperfreshUrl.create(:url => 'http://some.mil/')
+      @affiliate_uncrawled_url = SuperfreshUrl.create(:url => 'http://affiliate.uncrawled.mil', :affiliate => affiliates(:basic_affiliate))
+      @last_uncrawled_url = SuperfreshUrl.create(:url => 'http://another.mil')
+      @already_crawled_url = SuperfreshUrl.create(:url => 'http://already.crawled.mil', :crawled_at => Time.now)
     end
-    
+
     context "when looking up uncrawled URLs without an affiliate" do
       it "should limit the number of URLs returned if specified" do
         SuperfreshUrl.should_receive(:find_all_by_crawled_at).with(nil, {:limit => 500, :order => 'created_at asc'}).and_return []
         SuperfreshUrl.uncrawled_urls(500)
       end
-      
+
       it "should not limit the number of URLs returned if the value is not specified" do
         SuperfreshUrl.should_receive(:find_all_by_crawled_at).with(nil, {:order => 'created_at asc'}).and_return []
         SuperfreshUrl.uncrawled_urls
       end
-      
+
       it "should return all the uncrawled urls (i.e. where crawled_at == nil), including those for affiliates, ordered by created time ascending" do
         uncrawled_urls = SuperfreshUrl.uncrawled_urls
         uncrawled_urls.size.should == 3
@@ -38,7 +43,7 @@ describe SuperfreshUrl do
         uncrawled_urls.include?(@already_crawled_url).should be_false
       end
     end
-    
+
     context "when looking up crawled URLs with an affiliate" do
       it "should limit the number of URLs returned if specified" do
         SuperfreshUrl.should_receive(:find_all_by_crawled_at_and_affiliate_id).with(nil, affiliates(:basic_affiliate).id, {:order => 'created_at asc', :limit => 500}).and_return []
@@ -53,29 +58,29 @@ describe SuperfreshUrl do
       end
     end
   end
-  
+
   describe "#crawled_urls" do
     before do
       @affiliate = affiliates(:basic_affiliate)
-      @first_crawled_url = SuperfreshUrl.create(:url => 'http://crawled.url', :crawled_at => Time.now, :affiliate => @affiliate)
-      @last_crawled_url = SuperfreshUrl.create(:url => 'http://another.crawled.url', :crawled_at => Time.now, :affiliate => @affiliate)
+      @first_crawled_url = SuperfreshUrl.create(:url => 'http://crawled.mil', :crawled_at => Time.now, :affiliate => @affiliate)
+      @last_crawled_url = SuperfreshUrl.create(:url => 'http://another.crawled.mil', :crawled_at => Time.now, :affiliate => @affiliate)
     end
-    
+
     it "should return the first page of all crawled urls" do
       crawled_urls = SuperfreshUrl.crawled_urls(@affiliate)
       crawled_urls.size.should == 2
     end
-    
+
     it "should paginate the results if the page is passed in" do
       crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, 2)
       crawled_urls.size.should == 0
     end
-    
+
     it "should return nil if the affiliate is missing" do
       SuperfreshUrl.crawled_urls.should == nil
     end
-  end  
-  
+  end
+
   describe "#process_file" do
     context "when a file is passed in with 100 or less URLs" do
       before do
@@ -87,19 +92,19 @@ describe SuperfreshUrl do
         @file.close
         @file.open
       end
-      
+
       it "should create a new SuperfreshUrl for each of the lines in the file" do
         SuperfreshUrl.should_receive(:create).exactly(3).times
         SuperfreshUrl.process_file(@file)
       end
-      
+
       it "should use nil if no affiliate is provided" do
         @urls.each do |url|
           SuperfreshUrl.should_receive(:create).with(:url => url, :affiliate => nil).and_return true
         end
         SuperfreshUrl.process_file(@file)
       end
-      
+
       it "should use an affiliate if specified" do
         affiliate = affiliates(:basic_affiliate)
         @urls.each do |url|
@@ -108,7 +113,7 @@ describe SuperfreshUrl do
         SuperfreshUrl.process_file(@file, affiliate)
       end
     end
-    
+
     context "when a file is passed in with more than 100 URLs" do
       before do
         @file = Tempfile.new('too_many_urls.txt')
@@ -118,10 +123,10 @@ describe SuperfreshUrl do
         @file.close
         @file.open
       end
-      
+
       it "should raise an error that there are too many URLs in the file" do
         lambda { SuperfreshUrl.process_file(@file) }.should raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
-      end 
+      end
     end
-  end     
+  end
 end
