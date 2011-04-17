@@ -72,13 +72,26 @@ describe Search do
     end
 
     context "when Bing takes waaaaaaaaay to long to respond" do
-      before do
-        @search = Search.new(@valid_options)
-        Net::HTTP::Get.stub!(:new).and_raise Timeout::Error
+      context "and throws a Timeout::Error" do
+        before do
+          @search = Search.new(@valid_options)
+          Net::HTTP::Get.stub!(:new).and_raise Timeout::Error
+        end
+
+        it "should return false when searching" do
+          @search.run.should be_false
+        end
       end
 
-      it "should return false when searching" do
-        @search.run.should be_false
+      context "and throws a Errno::ETIMEDOUT error" do
+        before do
+          @search = Search.new(@valid_options)
+          Net::HTTP::Get.stub!(:new).and_raise Errno::ETIMEDOUT
+        end
+
+        it "should return false when searching" do
+          @search.run.should be_false
+        end
       end
 
     end
@@ -151,7 +164,7 @@ describe Search do
 
     context "when affiliate has domains specified and user does not specify site: in search" do
       before do
-        @affiliate     = Affiliate.new(:domains => %w(       foo.com bar.com       ).join("\r\n"))
+        @affiliate     = Affiliate.new(:domains => %w(        foo.com bar.com        ).join("\r\n"))
         @uriresult     = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -164,7 +177,7 @@ describe Search do
 
       context "when the domains are separated by only '\\n'" do
         before do
-          @affiliate.domains = %w(      foo.com bar.com      ).join("\n")
+          @affiliate.domains = %w(       foo.com bar.com       ).join("\n")
         end
 
         it "should split the domains the same way" do
@@ -197,7 +210,7 @@ describe Search do
 
     context "when affiliate has domains specified but user specifies site: in search" do
       before do
-        @affiliate     = Affiliate.new(:domains => %w(       foo.com bar.com       ).join("\n"))
+        @affiliate     = Affiliate.new(:domains => %w(        foo.com bar.com        ).join("\n"))
         @uriresult     = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -721,7 +734,7 @@ describe Search do
 
     context "when the query ends in OR" do
       before do
-        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{   portland or | oregon | rain   })
+        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{    portland or | oregon | rain    })
         CalaisRelatedSearch.reindex
         @search = Search.new(:query => "Portland OR")
         @search.run
