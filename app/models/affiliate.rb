@@ -11,13 +11,14 @@ class Affiliate < ActiveRecord::Base
   belongs_to :staged_affiliate_template, :class_name => 'AffiliateTemplate'
   has_many :boosted_contents, :dependent => :destroy
   has_many :sayt_suggestions, :dependent => :destroy
+  has_many :superfresh_urls, :dependent => :destroy
   has_many :calais_related_searches, :dependent => :destroy
   after_destroy :remove_boosted_contents_from_index
   before_validation_on_create :set_default_name
   before_save :set_default_affiliate_template
   before_validation_on_create :set_default_search_results_page_title, :set_default_staged_search_results_page_title
   named_scope :ordered, {:order => 'display_name ASC'}
-  
+
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
@@ -27,7 +28,7 @@ class Affiliate < ActiveRecord::Base
     :name => "HTTP parameter site name",
     :staged_search_results_page_title => "Search results page title"
   }
-  
+
   def name=(name)
     new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
   end
@@ -35,23 +36,23 @@ class Affiliate < ActiveRecord::Base
   def is_affiliate_sayt_enabled?
     self.is_sayt_enabled && self.is_affiliate_suggestions_enabled
   end
-  
+
   def is_global_sayt_enabled?
     self.is_sayt_enabled && !self.is_affiliate_suggestions_enabled
   end
-  
+
   def is_sayt_disabled?
     !self.is_sayt_enabled && !self.is_affiliate_suggestions_enabled
   end
-  
+
   def is_affiliate_related_topics_enabled?
     (self.related_topics_setting != 'global_enabled' && self.related_topics_setting != 'disabled') || self.related_topics_setting.nil?
   end
-  
+
   def is_global_related_topics_enabled?
     self.related_topics_setting == 'global_enabled'
   end
-  
+
   def is_related_topics_disabled?
     self.related_topics_setting == 'disabled'
   end
@@ -129,7 +130,7 @@ class Affiliate < ActiveRecord::Base
   def remove_boosted_contents_from_index
     boosted_contents.each { |bs| bs.remove_from_index }
   end
-  
+
   def set_default_affiliate_template
     self.staged_affiliate_template_id = AffiliateTemplate.default_id if staged_affiliate_template_id.blank?
     self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?

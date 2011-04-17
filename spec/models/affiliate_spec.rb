@@ -23,6 +23,7 @@ describe Affiliate do
     should_have_and_belong_to_many :users
     should_have_many :boosted_contents
     should_have_many :sayt_suggestions
+    should_have_many :superfresh_urls
     should_have_many :calais_related_searches
     should_belong_to :affiliate_template
     should_belong_to :staged_affiliate_template
@@ -160,7 +161,7 @@ describe Affiliate do
     it "should have Affiliate-specific SAYT suggestions enabled by default" do
       Affiliate.create!(@valid_create_attributes).is_affiliate_suggestions_enabled.should be_true
     end
-    
+
     it "should generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do
       Affiliate.create!(@valid_attributes)
       @duplicate_affiliate = Affiliate.new(@valid_attributes.merge(:name => @valid_attributes[:name].upcase))
@@ -200,18 +201,18 @@ describe Affiliate do
       Affiliate.find(affiliate.id).affiliate_template.should == affiliate_templates(:default)
     end
   end
-  
+
   describe "#is_affiliate_related_topics_enabled?" do
     it "should return true if the value of related_topics_setting is nil" do
       affiliate = Affiliate.create(@valid_create_attributes.merge(:related_topics_setting => nil))
       affiliate.is_affiliate_related_topics_enabled?.should be_true
     end
-    
+
     it "should return true if the value of related_topics_setting is 'affiliate_enabled'" do
       affiliate = Affiliate.create(@valid_create_attributes.merge(:related_topics_setting => 'affiliate_enabled'))
       affiliate.is_affiliate_related_topics_enabled?.should be_true
     end
-    
+
     it "should return true if the value is set to anything other than 'global_enabled' or 'disabled'" do
       affiliate = Affiliate.create(@valid_create_attributes.merge(:related_topics_setting => 'bananas'))
       affiliate.is_affiliate_related_topics_enabled?.should be_true
