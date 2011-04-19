@@ -3,13 +3,15 @@ Feature: Homepage
   As a site visitor
   I want to be able to search for information
 
-  Scenario: A typical popular search from the home page
+  Scenario: Visiting the home page
     Given I am on the homepage
     Then I should not see "ROBOTS" meta tag
     And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage header
     And I should see a link to "FAQs" with url for "http://answers.usa.gov/"
     And I should see a link to "Email USA.gov" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"
     And I should see a link to "Chat" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"
+    And I should see a link to "Change Text Size" with url for "http://www.usa.gov/About/Change_Text.shtml"
+    And I should see "GOVERNMENT" in the search navigation
     And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage footer
     And I should see a link to "Website Policies" with url for "http://www.usa.gov/About/Important_Notices.shtml"
     And I should see a link to "Privacy" with url for "http://www.usa.gov/About/Privacy_Security.shtml"
@@ -18,6 +20,9 @@ Feature: Homepage
     And I should see "Affiliate Program"
     And I should see "APIs and Web Services"
     And I should see "Search.USA.gov" in the homepage tagline
+
+  Scenario: A typical popular search from the home page
+    Given I am on the homepage
     When I fill in "query" with "visa lottery"
     And I submit the search form
     Then I should be on the search page
@@ -56,6 +61,8 @@ Feature: Homepage
     Then I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml" in the homepage header
     And I should see a link to "Respuestas" with url for "http://respuestas.gobiernousa.gov/"
     And I should see a link to "Contactos" with url for "http://www.usa.gov/gobiernousa/Contactenos.shtml"
+    And I should see "GOBIERNO" in the search navigation
+    And I should see a link to "Cambiar el tamaño del texto" with url for "http://www.usa.gov/gobiernousa/Tamano_Texto.shtml"
     And I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml" in the homepage footer
     And I should see a link to "Políticas del sitio" with url for "http://www.usa.gov/gobiernousa/Politicas_Sitio.shtml"
     And I should see a link to "Privacidad" with url for "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"
@@ -67,7 +74,7 @@ Feature: Homepage
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the search page
-    When I follow "Images" within "#search_form"
+    When I follow "Images" in the search navigation
     Then I should be on the image search page
     And I should see 30 image results
 
@@ -75,19 +82,6 @@ Feature: Homepage
     Given I am on the homepage
     And I follow "Advanced Search"
     Then I should see "Use the options on this page to create a very specific search."
-
-  Scenario: Clicking on 'Need Larger Text'
-    Given I am on the homepage
-    And I follow "Need Larger Text?"
-    Then I should see "Change Text Size"
-    And I should see "En Español"
-
-  Scenario: Visiting Homepage as a Spanish speaker and needing larger text
-    Given I am on the homepage
-    And I follow "Español"
-    And I follow "¿Necesita letra grande?"
-    Then I should see "Cómo cambiar el tamaño del texto"
-    And I should see "In English"
 
   Scenario: Visiting homepage and clicking on trending searches
     Given the following Top Searches exist:
@@ -138,3 +132,16 @@ Feature: Homepage
     Given I am on the homepage
     When I follow "Search.USA.gov" in the homepage about section
     Then I should be on the searchusagov page
+
+  Scenario: Visiting other verticals from the homepage
+    Given I am on the homepage
+    When I follow "Images" in the search navigation
+    Then I should be on the images page
+
+    Given I am on the homepage
+    When I follow "Recalls" in the search navigation
+    Then I should be on the recalls page
+
+    Given I am on the homepage
+    When I follow "Forms" in the search navigation
+    Then I should be on the forms page

@@ -1,14 +1,5 @@
 - form_tag(path, :method => :get, :id => "search_form") do
-  - if @affiliate.nil?
-    - search_params = {:query => params[:query], :locale => params[:locale]}
-    %ul.navigation
-      %li.first= link_to_unless web_search?, t(:government_web), search_path(search_params)
-      %li= link_to_unless image_search?, t(:images), path_to_image_search(search_params)
-      - if english_locale?
-        %li= link_to_unless forms_search?, t(:forms), forms_search_path(search_params)
-        %li= link_to_unless recalls_search?, t(:recalls), recalls_search_path(search_params)
-    %label{:for => "query", :class => "hidden"} Search
-  - if (@affiliate and not @affiliate.is_sayt_enabled) or @search.is_a?(ImageSearch)
+  - if (@affiliate and not @affiliate.is_sayt_enabled)
     = text_field :search, :query, {:size=>49, :name=>"query", :autocomplete => "off"}
   - else
     = hidden_field_tag :sc, 0

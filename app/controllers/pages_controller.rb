@@ -7,7 +7,6 @@ class PagesController < HighVoltage::PagesController
     :program => "USASearch Program",
     :recalls => "Product Recall Data API",
     :search => "Search.USA.gov",
-    :textsize => I18n.t(:need_larger_text),
     :tos => "Terms of Service for USASearch's APIs and Web Services",
     :widgets => "Widgets"
   }

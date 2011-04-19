@@ -447,9 +447,9 @@ describe SearchesController do
       end
 
       it "should have a Forms header at the top of the results, and link to Government Web and Images" do
-        response.body.should have_tag("a[href=/search?m=false&amp;query=taxes]", :text => "Government Web")
+        response.body.should have_tag("a[href=/search?m=false&amp;query=taxes]", :text => "Web")
         response.body.should have_tag("a[href=/search/images?m=false&amp;query=taxes]", :text => "Images")
-        response.body.should have_tag("li", :text => "Forms")
+        response.body.should have_tag('span', :text => "Forms")
       end
 
       it "should output a Forms GovBox with a link to more GovForm search results" do

@@ -80,7 +80,6 @@ a:hover
   a:hover
     :color = !red
   :padding
-    :top 2em
     :bottom 2em
   :background-color white
   p.noresults
@@ -98,6 +97,86 @@ a:hover
     :color= !site_theme_color
   position: relative
   min-height: 550px
+
+#main_nav_wrap
+  :margin-bottom 10px
+
+#main_nav
+  :background url(/images/backgrounds/gradient_header_en.gif) repeat-x left 19px
+  :font
+    :family verdana, verdana, sans-serif
+    :size 12px
+  :height 40px
+  :margin
+    :right 0.833em
+  :padding
+    :left 20px
+
+#navlinks
+  :display inline
+  :float left
+  a, span
+    :float left
+  a
+    :color #25496B
+    :margin 0
+    :padding 8px 15px
+    :text-decoration none
+    &:hover
+      :cursor pointer
+    span
+      :border none
+      :padding 0
+  span
+    :border-bottom 4px solid #627BB3
+    :font-weight normal
+    :padding 8px 15px
+    :text-decoration none
+    &.gov
+      :border 0
+
+* html
+  #navlinks
+    a span
+      :border none
+      :padding 0
+
+#secondary_links
+  :display inline
+  :float right
+  :margin
+    :right 10px
+
+#other_search_page
+  :display inline
+  :float right
+  :margin
+    :top 4px
+    :right 10px
+
+#change_text_size
+  :display inline
+  :float right
+  a
+    :color #25496B
+    :float left
+    :font-weight normal
+    :text-decoration none
+    :padding 8px 15px
+    &:hover
+      :cursor pointer
+
+#main_nav
+  :background url(/images/backgrounds/gradient_header_en.gif) repeat-x left 19px
+  #navlinks, #change_text_size
+    a:hover
+      :background url(/images/backgrounds/vertical_over_en.gif) repeat-x 0 -4px
+
+#main_nav.es
+  :background url(/images/backgrounds/gradient_header_es.gif) repeat-x left 19px
+  #navlinks, #change_text_size
+    a:hover
+      :background url(/images/backgrounds/vertical_over_es.gif) repeat-x 0 -4px
 
 .bottom-wrap
   :background url(/images/backgrounds/bg_bottom_left_long.gif) no-repeat
@@ -348,15 +427,6 @@ ul#related_gov_forms
 .docs td
   :margin 0
 
-#need-larger-text
-  float: right
-  margin-top: -20px
-  margin-right: 10px
-  color: #2200CC
-  font-size: 1.5em
-  position: absolute
-  top: 25px
-  right: 8px
 
 .homepage
   #search_form

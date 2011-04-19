@@ -366,6 +366,10 @@ module SearchHelper
     content
   end
 
+  def path_to_search(search_params, path_to_landing_page, path_to_serp)
+    search_params[:query].blank? ? path_to_landing_page : path_to_serp
+  end
+
 
   def path_to_image_search(search_params)
     search_params[:query].blank? ? images_path(search_params) : image_search_path(search_params)

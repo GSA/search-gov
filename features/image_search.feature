@@ -47,8 +47,7 @@ Feature: Image search
   Scenario: Doing a blank search
     Given I am on the image search page
     When I submit the search form
-    Then I should be on the image search page
-    And I should see "Please enter search term(s)"
+    Then I should be on the images page
 
   Scenario: A unicode search
     Given I am on the image search page
@@ -67,7 +66,7 @@ Feature: Image search
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the image search page
-    When I follow "Government Web"
+    When I follow "Web"
     Then I should be on the search page
     And I should see 10 search results
 
@@ -80,3 +79,15 @@ Feature: Image search
     Then I should be on the image search page
     And I should see 10 search results
 
+  Scenario: Visiting other verticals from the image search homepage
+    Given I am on the images page
+    When I follow "Web" in the search navigation
+    Then I should be on the homepage
+
+    Given I am on the images page
+    When I follow "Recalls" in the search navigation
+    Then I should be on the recalls page
+
+    Given I am on the images page
+    When I follow "Forms" in the search navigation
+    Then I should be on the forms page

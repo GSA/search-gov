@@ -8,7 +8,7 @@
   'in the footer' => '.outer-footer',
   'in the query search results table header' => '.query_search_results_table_header',
   'in the callout boxes' => '.col-2',
-  'in the search navigation' => '#search_form .navigation',
+  'in the search navigation' => '#main_nav',
   'in the homepage header' => '.header',
   'in the homepage footer' => '.footer',
   'in the homepage about section' => '.about',

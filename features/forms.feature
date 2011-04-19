@@ -5,7 +5,7 @@ Feature: Forms Home Page and Search
   
   Scenario: Forms search
     Given I am on the homepage
-    When I follow "Forms" within "#search_form"
+    When I follow "Forms" in the search navigation
     Then I should be on the forms home page
     And I should not see "ROBOTS" meta tag
     And I should see "Federal Government Forms Catalog has moved and is different."
@@ -58,7 +58,7 @@ Feature: Forms Home Page and Search
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the forms search page
-    When I follow "Government Web"
+    When I follow "Web"
     Then I should be on the search page
     And I should see 10 search results
     
@@ -67,7 +67,7 @@ Feature: Forms Home Page and Search
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the forms search page
-    When I follow "Images" within "#search_form"
+    When I follow "Images" in the search navigation
     Then I should be on the image search page
     And I should see 30 image results
   
@@ -76,13 +76,13 @@ Feature: Forms Home Page and Search
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the search page
-    When I follow "Forms" within "#search_form"
+    When I follow "Forms" in the search navigation
     Then I should be on the forms search page
     And I should see 10 search results
     
-    When I follow "Images" within "#search_form"
+    When I follow "Images" in the search navigation
     Then I should be on the image search page
-    When I follow "Forms" within "#search_form"
+    When I follow "Forms" in the search navigation
     Then I should be on the forms search page
     And I should see 10 search results
     

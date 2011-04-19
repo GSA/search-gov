@@ -3,6 +3,7 @@ class ImageSearchesController < ApplicationController
   has_mobile_fu
 
   def index
+    redirect_to images_path and return if @search_options[:query].blank? and !in_mobile_view?
     @search = ImageSearch.new(@search_options)
     @search.run
     @page_title = @search.query
