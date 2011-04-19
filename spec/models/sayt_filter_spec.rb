@@ -6,6 +6,7 @@ describe SaytFilter do
   describe "Creating new instance" do
     should_validate_presence_of :phrase
     should_validate_uniqueness_of :phrase
+
     it "should strip whitespace from phrase before inserting in DB" do
       phrase = " leading and trailing whitespaces "
       sf = SaytFilter.create!(:phrase => phrase)
@@ -16,7 +17,7 @@ describe SaytFilter do
       SaytFilter.create!(:phrase => "some valid filter phrase")
     end
 
-    it "should not filter only exact phrase be default" do
+    it "should default filter_only_exact_phrase to false" do
       SaytFilter.create!(:phrase => "some filter phrase").filter_only_exact_phrase.should be_false
     end
 
