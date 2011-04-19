@@ -1,17 +1,11 @@
 namespace :usasearch do
 
-  namespace :daily_query_stats do
-    desc "tell Solr to index the collection of most-recently-added DailyQueryStats (ideally yesterday's)"
-    task :index_most_recent_day_stats_in_solr => :environment do
-      Sunspot.index(DailyQueryStat.find_all_by_day(DailyQueryStat.most_recent_populated_date))
-    end
-  end
-
   namespace :moving_queries do
     desc "initial population of moving_queries data using every date available in daily_queries_stats table. Replaces any existing data in moving_queries table."
     task :populate => :environment do
-      min = DailyQueryStat.minimum(:day, :conditions => ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s])
-      max = DailyQueryStat.maximum(:day, :conditions => ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s])
+      conditions = ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s]
+      min = DailyQueryStat.minimum(:day, :conditions => conditions)
+      max = DailyQueryStat.maximum(:day, :conditions => conditions)
       days = []
       min.upto(max) {|day| days << day.to_s(:number) }
       days.reverse.each { |day| MovingQuery.compute_for(day) }
@@ -23,7 +17,7 @@ namespace :usasearch do
       MovingQuery.compute_for(args.day)
     end
   end
-  
+
   namespace :daily_popular_queries do
     desc "Total up the most popular queries for the previous day"
     task :calculate, :start_day, :end_day, :needs => :environment do |t, args|
@@ -46,7 +40,7 @@ namespace :usasearch do
       end
     end
   end
-  
+
   namespace :monthly_popular_queries do
     desc "Total up the most popular queries for the month of the previous day"
     task :calculate, :day, :needs => :environment do |t, args|
