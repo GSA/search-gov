@@ -233,6 +233,13 @@ Feature: Affiliate clients
     And I should not see "HTTP parameter site name is too short"
     And I should not see "HTTP parameter site name is invalid"
 
+  Scenario: Adding a new site as an affiliate user with pending_approval status
+    Given I am logged in with email "affiliate_manager_with_pending_approval_status@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "Add New Site"
+    Then I should be on the affiliate admin page
+    And I should see "Your account has not been approved. Please try again when you are setup."
+
   Scenario: Deleting an affiliate
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |

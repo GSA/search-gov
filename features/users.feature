@@ -34,7 +34,24 @@ Feature: Users
     And I should see "Thank you for registering for USA.gov Search Services"
     And I should see "Affiliate Center" link in the main navigation bar
 
-  Scenario: Registering as a new affiliate user who is not affiliated with a government agency
+  Scenario: Registering as a new affiliate user who is a government employee or contractor without .gov or .mil e-mail address
+    Given I am on the login page
+    Then I should see "Sign In to Use Our Services"
+    And I should see "Register for a New Account"
+    And the "I am a government employee or contractor" checkbox should not be checked
+    And the "I am not affiliated with a government agency" checkbox should not be checked
+    When I fill in the following in the new user form:
+    | Email                         | lorem.ipsum@corporate.com   |
+    | Name                          | Lorem Ipsum                 |
+    | Password                      | huge_secret                 |
+    | Password confirmation         | huge_secret                 |
+    And I choose "I am a government employee or contractor"
+    And I press "Register for a new account"
+    Then I should be on the affiliate admin page
+    And I should see "We do not recognize your email address as being affiliated with a government agency. Your account is pending approval. We will notify you when you are setup."
+    And I should see "Affiliate Center" link in the main navigation bar
+
+  Scenario: Registering as a new user who is not affiliated with a government agency
     Given I am on the login page
     When I fill in the following in the new user form:
     | Email                         | lorem.imsum@notagency.com   |

@@ -80,13 +80,13 @@ describe UsersController do
         end
 
         it "should redirect to affiliate home for affiliate user" do
-          @user.should_receive(:is_affiliate?).and_return(true)
+          @user.should_receive(:is_affiliate?).twice.and_return(true)
           post :create
           response.should redirect_to(home_affiliates_path)
         end
 
         it "should redirect to my account page for non affiliate user" do
-          @user.should_receive(:is_affiliate?).and_return(false)
+          @user.should_receive(:is_affiliate?).twice.and_return(false)
           post :create
           response.should redirect_to(account_path)
         end

@@ -19,6 +19,14 @@ class Affiliates::AffiliatesController < SslController
     end
   end
 
+  def require_approved_user
+    unless current_user.is_approved?
+      flash[:notice] = "Your account has not been approved. Please try again when you are setup."
+      redirect_to home_affiliates_path
+      return false
+    end
+  end
+
   def setup_affiliate
     affiliate_id = params[:affiliate_id] || params[:id]
     if current_user.is_affiliate_admin?

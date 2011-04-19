@@ -13,6 +13,7 @@ affiliate_admin:
   state: VA
   zip: 20022
   organization_name: Agency
+  approval_status: approved
 
 non_affiliate_admin:
   email: non_affiliate_admin@fixtures.org
@@ -29,6 +30,7 @@ non_affiliate_admin:
   state: VA
   zip: 20022
   organization_name: Agency
+  approval_status: approved
 
 affiliate_manager:
   email: affiliate_manager@fixtures.org
@@ -46,6 +48,7 @@ affiliate_manager:
   zip: 20022
   organization_name: Agency
   api_key: affiliate_manager_key
+  approval_status: approved
 
 another_affiliate_manager:
   email: another_affiliate_manager@fixtures.org
@@ -63,6 +66,7 @@ another_affiliate_manager:
   zip: 20022
   organization_name: Agency
   api_key: another_affiliate_manager_key
+  approval_status: approved
 
 affiliate_manager_with_no_affiliates:
   email: affiliate_manager_with_no_affiliates@fixtures.org
@@ -79,6 +83,7 @@ affiliate_manager_with_no_affiliates:
   state: VA
   zip: 20022
   organization_name: Agency
+  approval_status: approved
 
 affiliate_without_contact_info:
   email: affiliate_with_no_contact_info@fixtures.org
@@ -88,6 +93,7 @@ affiliate_without_contact_info:
   is_affiliate_admin: false
   is_affiliate: true
   contact_name: A New Affiliate
+  approval_status: approved
 
 analyst:
   email: analyst@fixtures.org
@@ -104,6 +110,7 @@ analyst:
   state: VA
   zip: 20022
   organization_name: Agency
+  approval_status: approved
 
 analyst_admin:
   email: analyst_admin@fixtures.org
@@ -120,6 +127,7 @@ analyst_admin:
   state: VA
   zip: 20022
   organization_name: Admin Agency
+  approval_status: approved
 
 marilyn:
   email: marilyn@fixtures.org
@@ -137,6 +145,7 @@ marilyn:
   state: VA
   zip: 20022
   organization_name: Super Agency
+  approval_status: approved
 
 developer:
   email: developer@fixtures.org
@@ -155,3 +164,38 @@ developer:
   zip: 20022
   organization_name: Developer Inc
   api_key: developerapikey
+  approval_status: approved
+
+affiliate_manager_with_pending_approval_status:
+  email: affiliate_manager_with_pending_approval_status@fixtures.org
+  crypted_password: $2a$10$a9rDgZ9ceVYzVVZjiQunpuQjqyokRETQm7N6tK1Fp1pBt4FiHxq7O
+  password_salt: GdQLXjUho6xxo8S43n7C
+  persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
+  is_affiliate_admin: false
+  is_affiliate: true
+  contact_name: Pending Approval Affiliate Manager
+  phone: 301-123-4567
+  address: 123 Penn Ave
+  address2: Ste 100
+  city: Reston
+  state: VA
+  zip: 20022
+  organization_name: Agency
+  approval_status: pending_approval
+
+affiliate_manager_with_not_approved_status:
+  email: affiliate_manager_with_not_approved_status@fixtures.org
+  crypted_password: $2a$10$a9rDgZ9ceVYzVVZjiQunpuQjqyokRETQm7N6tK1Fp1pBt4FiHxq7O
+  password_salt: GdQLXjUho6xxo8S43n7C
+  persistence_token: cedf2dac3e2d0e7223d8d1ae126c5a18e021ad9bc6dd0a2f01677e907b3e0a1802d82273fe3ac061b5fd80209ea39632c0a9e3081a1d43bb7ced9884d7754b62
+  is_affiliate_admin: false
+  is_affiliate: true
+  contact_name: Not Approved Affiliate Manager
+  phone: 301-123-4567
+  address: 123 Penn Ave
+  address2: Ste 100
+  city: Reston
+  state: VA
+  zip: 20022
+  organization_name: Agency
+  approval_status: not_approved

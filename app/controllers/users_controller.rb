@@ -6,7 +6,12 @@ class UsersController < SslController
   def create
     @user = User.new(params[:user])
     if verify_recaptcha(:model => @user, :message => 'Word verification is incorrect') && @user.save
-      flash[:success] = "Thank you for registering for USA.gov Search Services"
+      if @user.is_affiliate? and !@user.is_government_affiliated_email?
+        flash[:success] = "We do not recognize your email address as being affiliated with a government agency. Your account is pending approval. We will notify you when you are setup."
+      else
+        flash[:success] = "Thank you for registering for USA.gov Search Services"
+      end
+
       if @user.is_affiliate?
         redirect_to home_affiliates_path
       else

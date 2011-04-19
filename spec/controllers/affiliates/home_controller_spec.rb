@@ -43,7 +43,7 @@ describe Affiliates::HomeController do
       response.should redirect_to(login_path)
     end
 
-    context "when logged in" do
+    context "when logged in with approved user" do
       before do
         UserSession.create(users(:affiliate_manager_with_no_affiliates))
       end
@@ -61,6 +61,22 @@ describe Affiliates::HomeController do
       it "should assign @current_step to :edit_contact_information" do
         get :new
         assigns[:current_step].should == :edit_contact_information
+      end
+    end
+
+    context "when logged in with pending approval user" do
+      before do
+        UserSession.create(users(:affiliate_manager_with_pending_approval_status))
+      end
+
+      it "should redirect to affiliates home page" do
+        get :new
+        response.should redirect_to(home_affiliates_path)
+      end
+
+      it "should set flash[:notice] message" do
+        get :new
+        flash[:notice].should_not be_blank
       end
     end
   end

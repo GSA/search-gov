@@ -44,3 +44,12 @@ Feature: User sessions
       | Password                      | admin                             |
     And I press "Login"
     Then I should be on the affiliate admin page
+
+  Scenario: Affiliate manager with not approved status should not be able to login
+    Given I am on the login page
+    And I fill in the following in the login form:
+      | Email                         | affiliate_manager_with_not_approved_status@fixtures.org    |
+      | Password                      | admin                                                      |
+    And I press "Login"
+    Then I should be on the user session page
+    And I should see "Your account is not approved"
