@@ -39,8 +39,7 @@ Rails::Initializer.run do |config|
   config.gem "redis-namespace", :lib => false, :version => '= 0.10.0'
   config.gem "resque", :version => '= 1.10.0'
   config.gem "cloudfiles", :version => '= 1.4.15'
-  config.gem "sauce", :version => '= 0.17.7'
-  config.gem "parallel", :version => '= 0.5.2'
+  config.gem "rubyzip", :lib=>"zip/zip", :version=>"~>0.9.1"
 
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
