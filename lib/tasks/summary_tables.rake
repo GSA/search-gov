@@ -7,7 +7,7 @@ namespace :usasearch do
       min = DailyQueryStat.minimum(:day, :conditions => conditions)
       max = DailyQueryStat.maximum(:day, :conditions => conditions)
       days = []
-      min.upto(max) {|day| days << day.to_s(:number) }
+      min.upto(max) { |day| days << day.to_s(:number) }
       days.reverse.each { |day| MovingQuery.compute_for(day) }
     end
 
@@ -23,19 +23,19 @@ namespace :usasearch do
     task :calculate, :start_day, :end_day, :needs => :environment do |t, args|
       args.with_defaults(:start_day => Date.yesterday.to_s(:number), :end_day => Date.yesterday.to_s(:number))
       start_date, end_date = Date.parse(args.start_day), Date.parse(args.end_day)
+      combinations = [{:method => :most_popular_terms, :is_grouped => false}, {:method => :most_popular_query_groups, :is_grouped => true}]
       start_date.upto(end_date) do |day|
-        time_frames = [1, 7, 30]
-        time_frames.each do |time_frame|
-          popular_queries = DailyQueryStat.most_popular_terms(day, time_frame, 1000)
-          popular_queries.each do |popular_query|
-            daily_popular_query = DailyPopularQuery.find_or_create_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query.query, false, time_frame)
-            daily_popular_query.update_attributes(:times => popular_query.times)
-          end unless popular_queries.is_a?(String)
-          popular_query_groups = DailyQueryStat.most_popular_query_groups(day, time_frame, 1000)
-          popular_query_groups.each do |popular_query_group|
-            daily_popular_query_group = DailyPopularQuery.find_or_create_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query_group.query, true, time_frame)
-            daily_popular_query_group.update_attributes(:times => popular_query_group.times)
-          end unless popular_query_groups.is_a?(String)
+        DailyPopularQuery.transaction do
+          DailyPopularQuery.delete_all(["day = ?", day])
+          [1, 7, 30].each do |time_frame|
+            combinations.each do |combo|
+              query_counts = DailyQueryStat.send(combo[:method], day, time_frame, 1000)
+              query_counts.each do |query_count|
+                DailyPopularQuery.create!(:day => day, :affiliate_id => nil, :locale => 'en', :query => query_count.query,
+                                          :is_grouped => combo[:is_grouped], :time_frame => time_frame, :times => query_count.times)
+              end unless query_counts.is_a?(String)
+            end
+          end
         end
       end
     end
@@ -46,20 +46,20 @@ namespace :usasearch do
     task :calculate, :day, :needs => :environment do |t, args|
       args.with_defaults(:day => Date.yesterday.to_s(:number))
       day = Date.parse(args.day)
-      popular_terms = DailyQueryStat.most_popular_terms_for_year_month(day.year, day.month, 1000)
-      popular_terms.each do |popular_term|
-        monthly_popular_query = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query_and_is_grouped(day.year, day.month, popular_term.query, false)
-        monthly_popular_query.update_attributes(:times => popular_term.times)
-      end unless popular_terms.is_a?(String)
-      popular_groups = DailyQueryStat.most_popular_groups_for_year_month(day.year, day.month, 1000)
-      popular_groups.each do |popular_group|
-        monthly_popular_group = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query_and_is_grouped(day.year, day.month, popular_group.query, true)
-        monthly_popular_group.update_attributes(:times => popular_group.times)
-      end unless popular_groups.is_a?(String)
-      click_totals = Click.monthly_totals_by_module(day.year, day.month)
-      click_totals.each_pair do |source, total|
-        monthly_click_total = MonthlyClickTotal.find_or_create_by_year_and_month_and_source(day.year, day.month, source)
-        monthly_click_total.update_attributes(:total => total)
+      combinations = [{:method => :most_popular_terms_for_year_month, :is_grouped => false}, {:method => :most_popular_groups_for_year_month, :is_grouped => true}]
+      ActiveRecord::Base.transaction do
+        MonthlyPopularQuery.delete_all(["year = ? and month = ?", day.year, day.month])
+        combinations.each do |combo|
+          query_counts = DailyQueryStat.send(combo[:method], day.year, day.month, 1000)
+          query_counts.each do |query_count|
+            MonthlyPopularQuery.create!(:year => day.year, :month => day.month, :query => query_count.query, :is_grouped => combo[:is_grouped], :times => query_count.times)
+          end unless query_counts.is_a?(String)
+        end
+
+        MonthlyClickTotal.delete_all(["year = ? and month = ?", day.year, day.month])
+        Click.monthly_totals_by_module(day.year, day.month).each_pair do |source, total|
+          MonthlyClickTotal.create!(:year => day.year, :month => day.month, :source => source, :total => total)
+        end
       end
     end
   end
