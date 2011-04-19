@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-summary_tables_rake.html">lib/tasks/summary_tables.rake</a></td>
-            <td class='right_align'><tt>72</tt></td>
-            <td class='right_align'><tt>67</tt></td>
+            <td class='right_align'><tt>66</tt></td>
+            <td class='right_align'><tt>61</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -69,91 +69,91 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   namespace :daily_query_stats do</pre></td>
+            <td><pre><a name="line3">3</a>   namespace :moving_queries do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     desc &quot;tell Solr to index the collection of most-recently-added DailyQueryStats (ideally yesterday's)&quot;</pre></td>
+            <td><pre><a name="line4">4</a>     desc &quot;initial population of moving_queries data using every date available in daily_queries_stats table. Replaces any existing data in moving_queries table.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     task :index_most_recent_day_stats_in_solr =&gt; :environment do</pre></td>
+            <td><pre><a name="line5">5</a>     task :populate =&gt; :environment do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>       Sunspot.index(DailyQueryStat.find_all_by_day(DailyQueryStat.most_recent_populated_date))</pre></td>
+            <td><pre><a name="line6">6</a>       conditions = ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>       min = DailyQueryStat.minimum(:day, :conditions =&gt; conditions)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>       max = DailyQueryStat.maximum(:day, :conditions =&gt; conditions)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>       days = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>       min.upto(max) { |day| days &lt;&lt; day.to_s(:number) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>       days.reverse.each { |day| MovingQuery.compute_for(day) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a>     end</pre></td>
+            <td><pre><a name="line12">12</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line9">9</a> </pre></td>
+            <td><pre><a name="line13">13</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   namespace :moving_queries do</pre></td>
+            <td><pre><a name="line14">14</a>     desc &quot;compute moving queries for 1-, 7-, and 30-day windows for a given YYYYMMDD date (defaults to yesterday)&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     desc &quot;initial population of moving_queries data using every date available in daily_queries_stats table. Replaces any existing data in moving_queries table.&quot;</pre></td>
+            <td><pre><a name="line15">15</a>     task :compute, :day, :needs =&gt; :environment do |t, args|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     task :populate =&gt; :environment do</pre></td>
+            <td><pre><a name="line16">16</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       min = DailyQueryStat.minimum(:day, :conditions =&gt; ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>       max = DailyQueryStat.maximum(:day, :conditions =&gt; ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>       days = []</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>       min.upto(max) {|day| days &lt;&lt; day.to_s(:number) }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>       days.reverse.each { |day| MovingQuery.compute_for(day) }</pre></td>
+            <td><pre><a name="line17">17</a>       MovingQuery.compute_for(args.day)</pre></td>
           </tr>
         
           
@@ -165,331 +165,295 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>     desc &quot;compute moving queries for 1-, 7-, and 30-day windows for a given YYYYMMDD date (defaults to yesterday)&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>     task :compute, :day, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>       MovingQuery.compute_for(args.day)</pre></td>
+            <td><pre><a name="line19">19</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>     end</pre></td>
+            <td><pre><a name="line20">20</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>   namespace :daily_popular_queries do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>     desc &quot;Total up the most popular queries for the previous day&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>     task :calculate, :start_day, :end_day, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>       args.with_defaults(:start_day =&gt; Date.yesterday.to_s(:number), :end_day =&gt; Date.yesterday.to_s(:number))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       start_date, end_date = Date.parse(args.start_day), Date.parse(args.end_day)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>       combinations = [{:method =&gt; :most_popular_terms, :is_grouped =&gt; false}, {:method =&gt; :most_popular_query_groups, :is_grouped =&gt; true}]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       start_date.upto(end_date) do |day|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>         DailyPopularQuery.transaction do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>           DailyPopularQuery.delete_all([&quot;day = ?&quot;, day])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>           [1, 7, 30].each do |time_frame|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>             combinations.each do |combo|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>               query_counts = DailyQueryStat.send(combo[:method], day, time_frame, 1000)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>   end</pre></td>
+            <td><pre><a name="line33">33</a>               query_counts.each do |query_count|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>                 DailyPopularQuery.create!(:day =&gt; day, :affiliate_id =&gt; nil, :locale =&gt; 'en', :query =&gt; query_count.query,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>   </pre></td>
+            <td><pre><a name="line35">35</a>                                           :is_grouped =&gt; combo[:is_grouped], :time_frame =&gt; time_frame, :times =&gt; query_count.times)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>   namespace :daily_popular_queries do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>     desc &quot;Total up the most popular queries for the previous day&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>     task :calculate, :start_day, :end_day, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line30">30</a>       args.with_defaults(:start_day =&gt; Date.yesterday.to_s(:number), :end_day =&gt; Date.yesterday.to_s(:number))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>       start_date, end_date = Date.parse(args.start_day), Date.parse(args.end_day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>       start_date.upto(end_date) do |day|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>         time_frames = [1, 7, 30]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>         time_frames.each do |time_frame|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>           popular_queries = DailyQueryStat.most_popular_terms(day, time_frame, 1000)</pre></td>
+            <td><pre><a name="line36">36</a>               end unless query_counts.is_a?(String)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>           popular_queries.each do |popular_query|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>             daily_popular_query = DailyPopularQuery.find_or_create_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query.query, false, time_frame)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>             daily_popular_query.update_attributes(:times =&gt; popular_query.times)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>           end unless popular_queries.is_a?(String)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>           popular_query_groups = DailyQueryStat.most_popular_query_groups(day, time_frame, 1000)</pre></td>
+            <td><pre><a name="line37">37</a>             end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>           popular_query_groups.each do |popular_query_group|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>             daily_popular_query_group = DailyPopularQuery.find_or_create_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame(day, nil, 'en', popular_query_group.query, true, time_frame)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>             daily_popular_query_group.update_attributes(:times =&gt; popular_query_group.times)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>           end unless popular_query_groups.is_a?(String)</pre></td>
+            <td><pre><a name="line38">38</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>         end</pre></td>
+            <td><pre><a name="line39">39</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>       end</pre></td>
+            <td><pre><a name="line40">40</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>     end</pre></td>
+            <td><pre><a name="line41">41</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a>   end</pre></td>
+            <td><pre><a name="line42">42</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a>   </pre></td>
+            <td><pre><a name="line43">43</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>   namespace :monthly_popular_queries do</pre></td>
+            <td><pre><a name="line44">44</a>   namespace :monthly_popular_queries do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>     desc &quot;Total up the most popular queries for the month of the previous day&quot;</pre></td>
+            <td><pre><a name="line45">45</a>     desc &quot;Total up the most popular queries for the month of the previous day&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>     task :calculate, :day, :needs =&gt; :environment do |t, args|</pre></td>
+            <td><pre><a name="line46">46</a>     task :calculate, :day, :needs =&gt; :environment do |t, args|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
+            <td><pre><a name="line47">47</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>       day = Date.parse(args.day)</pre></td>
+            <td><pre><a name="line48">48</a>       day = Date.parse(args.day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>       popular_terms = DailyQueryStat.most_popular_terms_for_year_month(day.year, day.month, 1000)</pre></td>
+            <td><pre><a name="line49">49</a>       combinations = [{:method =&gt; :most_popular_terms_for_year_month, :is_grouped =&gt; false}, {:method =&gt; :most_popular_groups_for_year_month, :is_grouped =&gt; true}]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line50">50</a>       ActiveRecord::Base.transaction do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>         MonthlyPopularQuery.delete_all([&quot;year = ? and month = ?&quot;, day.year, day.month])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>         combinations.each do |combo|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>           query_counts = DailyQueryStat.send(combo[:method], day.year, day.month, 1000)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a>       popular_terms.each do |popular_term|</pre></td>
+            <td><pre><a name="line54">54</a>           query_counts.each do |query_count|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>         monthly_popular_query = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query_and_is_grouped(day.year, day.month, popular_term.query, false)</pre></td>
+            <td><pre><a name="line55">55</a>             MonthlyPopularQuery.create!(:year =&gt; day.year, :month =&gt; day.month, :query =&gt; query_count.query, :is_grouped =&gt; combo[:is_grouped], :times =&gt; query_count.times)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>         monthly_popular_query.update_attributes(:times =&gt; popular_term.times)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line59">59</a>       end unless popular_terms.is_a?(String)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>       popular_groups = DailyQueryStat.most_popular_groups_for_year_month(day.year, day.month, 1000)</pre></td>
+            <td><pre><a name="line56">56</a>           end unless query_counts.is_a?(String)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line61">61</a>       popular_groups.each do |popular_group|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line62">62</a>         monthly_popular_group = MonthlyPopularQuery.find_or_create_by_year_and_month_and_query_and_is_grouped(day.year, day.month, popular_group.query, true)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line63">63</a>         monthly_popular_group.update_attributes(:times =&gt; popular_group.times)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line64">64</a>       end unless popular_groups.is_a?(String)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line65">65</a>       click_totals = Click.monthly_totals_by_module(day.year, day.month)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line66">66</a>       click_totals.each_pair do |source, total|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line67">67</a>         monthly_click_total = MonthlyClickTotal.find_or_create_by_year_and_month_and_source(day.year, day.month, source)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line68">68</a>         monthly_click_total.update_attributes(:total =&gt; total)</pre></td>
+            <td><pre><a name="line57">57</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a>       end</pre></td>
+            <td><pre><a name="line58">58</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>         MonthlyClickTotal.delete_all([&quot;year = ? and month = ?&quot;, day.year, day.month])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>         Click.monthly_totals_by_module(day.year, day.month).each_pair do |source, total|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line61">61</a>           MonthlyClickTotal.create!(:year =&gt; day.year, :month =&gt; day.month, :source =&gt; source, :total =&gt; total)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line70">70</a>     end</pre></td>
+            <td><pre><a name="line62">62</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line71">71</a>   end</pre></td>
+            <td><pre><a name="line63">63</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line72">72</a> end</pre></td>
+            <td><pre><a name="line64">64</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line66">66</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Apr 17 23:21:53 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Tue Apr 19 12:17:12 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
