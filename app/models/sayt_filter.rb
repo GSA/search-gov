@@ -17,7 +17,7 @@ class SaytFilter < ActiveRecord::Base
     if filter_only_exact_phrase?
       target_phrase =~ /^#{Regexp.escape(phrase)}$/i
     else
-      target_phrase =~ /\b#{Regexp.escape(phrase)}\b/i
+      target_phrase =~ /\b ?#{Regexp.escape(phrase)}\b/i
     end
   end
 

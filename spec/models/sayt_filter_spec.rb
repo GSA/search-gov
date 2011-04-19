@@ -33,6 +33,22 @@ describe SaytFilter do
 
   end
 
+  describe "#match?(target_phrase)" do
+    context "when the filter phrase is '.com'" do
+      before do
+        @filter = SaytFilter.create!(:phrase => ".com")
+      end
+
+      it "should filter 'google .com'" do
+        @filter.match?("google .com").should be_true
+      end
+
+      it "should filter 'google.com'" do
+        @filter.match?("google.com").should be_true
+      end
+    end
+  end
+
   context "after saving a SaytFilter" do
     before do
       @phrase = "ought to get deleted xxx"
