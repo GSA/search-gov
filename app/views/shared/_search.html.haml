@@ -29,12 +29,12 @@
   = submit_tag((forms_search? ? t(:forms_search) : (recalls_search? ? t(:recalls_search) : t(:search))), :id => "search_button")
   - if @affiliate.nil?
     - unless forms_search? || recalls_search?
-      = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil ))) unless @affiliate
+      = advanced_search_link(@search_options)
       |
       = link_to(t(:search_in), home_page_path(:locale => other_locale_str))
   - else
     .advancedsearch
-      = link_to((t :advanced_search), advanced_search_path( request.parameters.merge( :action => 'advanced', :controller => 'searches', :format => nil, :affiliate => @affiliate.name )))
+      = advanced_search_link(@search_options, @affiliate)
 
 :javascript
   document.getElementById("search_query").focus();

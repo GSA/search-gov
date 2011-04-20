@@ -172,6 +172,13 @@ module SearchHelper
     list_html
   end
 
+  def advanced_search_link(search_options, affiliate = nil)
+    search_options ||= {}
+    search_options.merge!(:action => 'advanced', :controller => 'searches', :format => nil)
+    search_options.merge!(:affiliate => affiliate.name) if affiliate
+    link_to((t :advanced_search), advanced_search_path(search_options))
+  end
+
   def web_search?
     ["searches", "home"].include?(controller.controller_name) and controller.action_name == "index"
   end
@@ -194,9 +201,9 @@ module SearchHelper
 
   def search_results_logo
     if forms_search?
-      link_to image_tag("USAsearch_medium_#{I18n.locale}_forms.gif" , :alt => "USASearch Forms Home"), forms_path(:locale => I18n.locale)
+      link_to image_tag("USAsearch_medium_#{I18n.locale}_forms.gif", :alt => "USASearch Forms Home"), forms_path(:locale => I18n.locale)
     else
-      link_to image_tag("USAsearch_medium_#{I18n.locale}.gif" , :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
+      link_to image_tag("USAsearch_medium_#{I18n.locale}.gif", :alt => "USASearch Home"), home_page_path(:locale => I18n.locale)
     end
   end
 
