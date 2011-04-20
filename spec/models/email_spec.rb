@@ -63,4 +63,23 @@ describe Emailer do
       @email.attachments.should_not be_empty
     end    
   end
+
+  describe "#new_user_email_verification" do
+    before do
+      @user = mock(User, :email => 'admin@agency.gov', :contact_name => 'Admin', :email_verification_token => 'some_special_token')
+      @email = Emailer.deliver_new_user_email_verification(@user)
+    end
+
+    it "should be sent to the new user email" do
+      @email.should deliver_to('admin@agency.gov')
+    end
+
+    it "should have 'Email Verification' as the subject" do
+      @email.should have_subject(/Email Verification/)
+    end
+
+    it "should have 'Verify Now' link" do
+      @email.should have_body_text(/http:\/\/localhost:3000\/email_verification\/some_special_token/)
+    end
+  end
 end

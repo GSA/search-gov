@@ -1,0 +1,11 @@
+Dear <%= @user.contact_name %>,
+
+You have entered <%= @user.email %> as the contact email address for your USASearch Program registration.
+To complete the process, we just need to verify that this email address belongs to you.
+Simply click the link below and sign in using your email address and password.
+
+<%= email_verification_url(@user.email_verification_token) %>
+
+Thank you,
+The USASearch Team
+***REMOVED***

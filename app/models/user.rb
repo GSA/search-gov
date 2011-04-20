@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  APPROVAL_STATUSES = %w( pending_approval approved not_approved )
+  APPROVAL_STATUSES = %w( pending_email_verification pending_approval approved not_approved )
   validates_presence_of :email
   validates_presence_of :contact_name
   validates_presence_of :api_key
@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   before_validation_on_create :set_approval_status
   after_validation_on_create :set_is_affiliate
   after_create :ping_admin
+  after_create :deliver_email_verification
   after_create :welcome_user
   attr_accessor :government_affiliation
   attr_accessor :strict_mode
@@ -30,7 +31,13 @@ class User < ActiveRecord::Base
     c.perishable_token_valid_for 1.hour
     c.disable_perishable_token_maintenance(true)
   end
-  
+
+  APPROVAL_STATUSES.each do |status|
+    define_method "is_#{status}?" do
+      approval_status == status
+    end
+  end
+
   def deliver_password_reset_instructions!
     reset_perishable_token!
     Emailer.deliver_password_reset_instructions(self)
@@ -48,35 +55,51 @@ class User < ActiveRecord::Base
     !is_affiliate_or_higher
   end
 
-  def is_government_affiliated_email?
+  def has_government_affiliated_email?
     email =~ /(.gov|.mil)$/i
   end
 
-  def is_approved?
-    approval_status == 'approved'
-  end
-
-  def is_pending_approval?
-    approval_status == 'pending_approval'
+  def signed_up_to_be_an_affiliate?
+    government_affiliation == "1"
   end
 
   #authlogic magic state
   def approved?
     approval_status != 'not_approved'
   end
+
+  def verify_email(token)
+    return true if is_approved?
+    if is_pending_email_verification? and email_verification_token == token
+      self.approval_status = 'approved'
+      self.email_verification_token = nil
+      save!
+      Emailer.deliver_welcome_to_new_user self
+      return true
+    else
+      return false
+    end
+  end
+
   private
   
   def ping_admin
     Emailer.deliver_new_user_to_admin(self)
   end
 
+  def deliver_email_verification
+    if is_pending_email_verification?
+      current_perishable_token = perishable_token
+      self.email_verification_token = reset_perishable_token
+      self.perishable_token = current_perishable_token
+      save!
+      Emailer.deliver_new_user_email_verification(self)
+    end
+  end
+
   def welcome_user
     unless self.skip_welcome_email
-      if is_developer?
-        Emailer.deliver_welcome_to_new_developer(self)
-      else
-        Emailer.deliver_welcome_to_new_user(self)
-      end
+      Emailer.deliver_welcome_to_new_developer(self) if is_developer?
     end
   end
   
@@ -86,7 +109,7 @@ class User < ActiveRecord::Base
 
   def set_is_affiliate
     unless self.government_affiliation.blank?
-      self.is_affiliate = self.government_affiliation == "1" ? 1 : 0
+      self.is_affiliate = signed_up_to_be_an_affiliate? ? 1 : 0
     end
   end
 
@@ -97,7 +120,7 @@ class User < ActiveRecord::Base
   end
 
   def set_approval_status
-    self.approval_status = 'approved' if self.approval_status.blank? and self.government_affiliation != "1"
-    self.approval_status = (is_government_affiliated_email? ? 'approved' : 'pending_approval') if self.approval_status.blank?
+    self.approval_status = 'approved' if self.approval_status.blank? and !signed_up_to_be_an_affiliate?
+    self.approval_status = (has_government_affiliated_email? ? 'pending_email_verification' : 'pending_approval') if self.approval_status.blank?
   end
 end

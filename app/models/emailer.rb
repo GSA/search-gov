@@ -14,6 +14,12 @@ class Emailer < ActionMailer::Base
     body(:user => user)
   end
 
+  def new_user_email_verification(user)
+    setup_email(user.email)
+    @subject += 'Email Verification'
+    body(:user => user)
+  end
+
   def welcome_to_new_user(user)
     setup_email(user.email)
     @subject += "Welcome to the USASearch Affiliate Program"

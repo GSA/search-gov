@@ -240,6 +240,13 @@ Feature: Affiliate clients
     Then I should be on the affiliate admin page
     And I should see "Your account has not been approved. Please try again when you are setup."
 
+  Scenario: Adding a new site as an affiliate user with pending_email_verification status
+    Given I am logged in with email "affiliate_manager_with_pending_email_verification_status@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "Add New Site"
+    Then I should be on the affiliate admin page
+    And I should see "Your email address has not been verified. Please check your inbox so we may verify your email address."
+
   Scenario: Deleting an affiliate
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |

@@ -16,6 +16,7 @@ Given /^the following Affiliates exist:$/ do |table|
     }
     user = User.find_by_email(hash["contact_email"]) || User.create!( valid_options )
     user.update_attribute(:is_affiliate, true)
+    user.update_attribute(:approval_status, 'approved')
 
     default_affiliate_template = AffiliateTemplate.find_by_stylesheet("default")
 

@@ -21,7 +21,11 @@ class Affiliates::AffiliatesController < SslController
 
   def require_approved_user
     unless current_user.is_approved?
-      flash[:notice] = "Your account has not been approved. Please try again when you are setup."
+      if current_user.is_pending_email_verification?
+        flash[:notice] = "Your email address has not been verified. Please check your inbox so we may verify your email address."
+      elsif current_user.is_pending_approval?
+        flash[:notice] = "Your account has not been approved. Please try again when you are setup."
+      end
       redirect_to home_affiliates_path
       return false
     end

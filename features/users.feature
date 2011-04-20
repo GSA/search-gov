@@ -17,7 +17,7 @@ Feature: Users
     And I should see "State"
     And I should see "Zip"
 
-  Scenario: Registering as a new affiliate user who is a government employee or contractor
+  Scenario: Registering as a new affiliate user who is a government employee or contractor with .gov email address
     Given I am on the login page
     Then I should see "Sign In to Use Our Services"
     And I should see "Register for a New Account"
@@ -31,15 +31,43 @@ Feature: Users
     And I choose "I am a government employee or contractor"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
-    And I should see "Thank you for registering for USA.gov Search Services"
+    And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
     And I should see "Affiliate Center" link in the main navigation bar
+    When I follow "Sign Out"
+    Then I should be on the login page
+    And "lorem.ipsum@agency.gov" should receive an email
+    When I open the email
+    Then I should see "Email Verification" in the email subject
+    When I click the first link in the email
+    Then I should be on the login page
+    Given a clear email queue
+    When I fill in the following in the login form:
+      | Email                         | lorem.ipsum@agency.gov      |
+      | Password                      | huge_secret                 |
+    And I press "Login"
+    Then I should see "Thank you for verifying your email."
+    And "lorem.ipsum@agency.gov" should receive an email
+    When I open the email
+    Then I should see "Welcome to the USASearch Affiliate Program" in the email subject
+    When I follow "Add New Site"
+    Then I should be on the new affiliate page
 
-  Scenario: Registering as a new affiliate user who is a government employee or contractor without .gov or .mil e-mail address
+  Scenario: Registering as a new affiliate user with .gov email address and trying to add new site without email verification
     Given I am on the login page
-    Then I should see "Sign In to Use Our Services"
-    And I should see "Register for a New Account"
-    And the "I am a government employee or contractor" checkbox should not be checked
-    And the "I am not affiliated with a government agency" checkbox should not be checked
+    When I fill in the following in the new user form:
+    | Email                         | lorem.ipsum@agency.gov      |
+    | Name                          | Lorem Ipsum                 |
+    | Password                      | huge_secret                 |
+    | Password confirmation         | huge_secret                 |
+    And I choose "I am a government employee or contractor"
+    And I press "Register for a new account"
+    Then I should be on the affiliate admin page
+    When I follow "Add New Site"
+    Then I should be on the affiliate admin page
+    And I should see "Your email address has not been verified. Please check your inbox so we may verify your email address."
+
+  Scenario: Registering as a new affiliate user without .gov or .mil e-mail address
+    Given I am on the login page
     When I fill in the following in the new user form:
     | Email                         | lorem.ipsum@corporate.com   |
     | Name                          | Lorem Ipsum                 |
@@ -50,6 +78,20 @@ Feature: Users
     Then I should be on the affiliate admin page
     And I should see "We do not recognize your email address as being affiliated with a government agency. Your account is pending approval. We will notify you when you are setup."
     And I should see "Affiliate Center" link in the main navigation bar
+
+  Scenario: Registering as a new affiliate user without .gov or .mil email address and trying to add new site without being approved
+    Given I am on the login page
+    When I fill in the following in the new user form:
+    | Email                         | not.gov@agency.com          |
+    | Name                          | Lorem Ipsum                 |
+    | Password                      | huge_secret                 |
+    | Password confirmation         | huge_secret                 |
+    And I choose "I am a government employee or contractor"
+    And I press "Register for a new account"
+    Then I should be on the affiliate admin page
+    When I follow "Add New Site"
+    Then I should be on the affiliate admin page
+    And I should see "Your account has not been approved. Please try again when you are setup."
 
   Scenario: Registering as a new user who is not affiliated with a government agency
     Given I am on the login page
@@ -76,7 +118,8 @@ Feature: Users
     And I choose "I am a government employee or contractor"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
-    And I should see "Thank you for registering for USA.gov Search Services"
+    And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
+    And I should see "Affiliate Center" link in the main navigation bar
 
   Scenario: Failing registration as a new affiliate user
     Given I am on the login page

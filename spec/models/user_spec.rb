@@ -64,11 +64,16 @@ describe User do
       User.create!(@valid_attributes)
     end
 
-    it "should send the user a welcome email" do
-      Emailer.should_receive(:deliver_welcome_to_new_user).with(an_instance_of(User))
+    it "should send email verification to user with .gov or .mil email address" do
+      Emailer.should_receive(:deliver_new_user_email_verification).with(an_instance_of(User))
       User.create!(@valid_attributes)
     end
-    
+
+    it "should not send email verification to user without .gov or .mil email address" do
+      Emailer.should_not_receive(:deliver_new_user_email_verification).with(an_instance_of(User))
+      User.create!(@valid_attributes.merge(:email => 'not.gov@agency.com'))
+    end
+
     context "when the user is a developer" do
       it "should send the developer a welcome email" do
         Emailer.should_receive(:deliver_welcome_to_new_developer).with(an_instance_of(User))
@@ -101,29 +106,38 @@ describe User do
       user.approval_status.should_not be_blank
     end
 
-    it "should set approval status to approved if the affiliate user is government affiliated" do
-      %w(aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL).each do |email|
+    it "should set approval status to pending_email_verification if the affiliate user is government affiliated" do
+      %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
         user = User.create!(@valid_affiliate_attributes.merge({:email => email}))
-        user.is_government_affiliated_email?.should be_true
-        user.is_approved?.should be_true
+        user.has_government_affiliated_email?.should be_true
+        user.is_pending_email_verification?.should be_true
         user.is_pending_approval?.should be_false
+        user.is_approved?.should be_false
       end
     end
 
     it "should set approval status to pending_approval if the affiliate user is not government_affiliated" do
-      %w(aff@agency.COM aff@anotheragency.com admin@agency.org anotheradmin@agency.ORG).each do |email|
+      %w( aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG ).each do |email|
         user = User.create!(@valid_affiliate_attributes.merge({:email => email}))
-        user.is_government_affiliated_email?.should be_false
-        user.is_approved?.should be_false
+        user.has_government_affiliated_email?.should be_false
         user.is_pending_approval?.should be_true
+        user.is_pending_email_verification?.should be_false
+        user.is_approved?.should be_false
       end
     end
 
     it "should set approval status to approved if the user is a developer" do
       user = User.create!(@valid_developer_attributes.merge({:email => 'developer@company.com'}))
-      user.is_government_affiliated_email?.should be_false
+      user.has_government_affiliated_email?.should be_false
       user.is_approved?.should be_true
       user.is_pending_approval?.should be_false
+    end
+
+    it "should set email_verification_token if the user is pending_email_verification" do
+      user = User.create!(@valid_affiliate_attributes)
+      user.has_government_affiliated_email?.should be_true
+      user.is_pending_email_verification?.should be_true
+      user.email_verification_token.should_not be_blank
     end
   end
 
@@ -134,7 +148,7 @@ describe User do
     it { should_not allow_mass_assignment_of(:is_analyst) }
     it { should_not allow_mass_assignment_of(:strict_mode) }
     it { should_not allow_mass_assignment_of(:approval_status) }
-    it { should validate_inclusion_of :approval_status, :in => %w( pending_approval approved not_approved ) }
+    it { should validate_inclusion_of :approval_status, :in => %w( pending_email_verification pending_approval approved not_approved ) }
   end
 
   describe "#to_label" do
@@ -179,15 +193,44 @@ describe User do
     it "should return true if the e-mail address ends with .gov or .mil" do
       %w(aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL).each do |email|
         user = User.new(@valid_affiliate_attributes.merge({:email => email}))
-        user.is_government_affiliated_email?.should be_true
+        user.has_government_affiliated_email?.should be_true
       end
     end
 
     it "should return false if the e-mail adress does not end with .gov or .mil" do
       user = User.new(@valid_affiliate_attributes.merge({:email => 'affiliate@corp.com'}))
-      user.is_government_affiliated_email?.should be_false
+      user.has_government_affiliated_email?.should be_false
       user = User.new(@valid_affiliate_attributes.merge({:email => nil}))
-      user.is_government_affiliated_email?.should be_false
+      user.has_government_affiliated_email?.should be_false
+    end
+  end
+
+  describe "#verify_email" do
+    context "user with matching email_verification_token" do
+      it "should return true if the user has matching email_verification_token" do
+        user = User.create!(@valid_affiliate_attributes)
+        user.verify_email(user.email_verification_token).should be_true
+      end
+
+      it "should update the approval_status to approved if the user has government affiliated email" do
+        user = User.create!(@valid_affiliate_attributes.merge(:email => 'user@agency.gov'))
+        user.has_government_affiliated_email?.should be_true
+        user.is_pending_email_verification?.should be_true
+        user.verify_email(user.email_verification_token).should be_true
+        user.is_approved?.should be_true
+      end
+
+      it "should return true if the user is already approved" do
+        user = User.create!(@valid_affiliate_attributes)
+        user.approval_status = 'approved'
+        user.save!
+        user.verify_email('any token').should be_true
+      end
+
+      it "should return false if the user does not have matching email_verification_token" do
+        user = User.create!(@valid_affiliate_attributes)
+        user.verify_email('mismatchtoken').should be_false
+      end
     end
   end
 end

@@ -22,7 +22,7 @@ class Affiliates::UsersController < Affiliates::AffiliatesController
       end
     else
       random_password = Digest::MD5.hexdigest("#{@email}:#{Time.now.to_s}")[0..8]
-      @user = User.create(:email => @email, :contact_name => @contact_name, :government_affiliation => true, :password => random_password, :password_confirmation => random_password, :skip_welcome_email => true)
+      @user = User.create(:email => @email, :contact_name => @contact_name, :government_affiliation => '1', :password => random_password, :password_confirmation => random_password, :skip_welcome_email => true)
       @affiliate.users << @user
       flash.now[:success] = "That user does not exist in the system; we've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
       Emailer.deliver_welcome_to_new_user_added_by_affiliate(@affiliate, @user, current_user)
