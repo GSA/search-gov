@@ -2,6 +2,10 @@ class Admin::AdminController < SslController
   layout "admin"
   before_filter :require_affiliate_admin
 
+  ActiveScaffold.set_defaults do |config|
+    config.list.per_page = 100
+  end
+
   private
 
   def require_affiliate_admin

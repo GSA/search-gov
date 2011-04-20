@@ -5,6 +5,5 @@ class Admin::SpotlightsController < Admin::AdminController
     config.create.columns = writables
     config.update.columns = writables
     config.list.sorting = { :updated_at => :desc }
-    config.list.per_page = 100
   end
 end

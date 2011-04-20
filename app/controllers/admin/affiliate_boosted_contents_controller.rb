@@ -3,9 +3,8 @@ class Admin::AffiliateBoostedContentsController < Admin::AdminController
     config.label = 'Affiliate Boosted Content'
     config.actions.exclude :create, :update
     config.list.columns.exclude :locale
-    config.list.per_page = 100
   end
-  
+
   def conditions_for_collection
     ['NOT ISNULL(affiliate_id)']
   end
