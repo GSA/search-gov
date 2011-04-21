@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-emailer_rb.html">app/models/emailer.rb</a></td>
-            <td class='right_align'><tt>86</tt></td>
-            <td class='right_align'><tt>72</tt></td>
+            <td class='right_align'><tt>92</tt></td>
+            <td class='right_align'><tt>77</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -153,7 +153,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>   def welcome_to_new_user(user)</pre></td>
+            <td><pre><a name="line17">17</a>   def new_user_email_verification(user)</pre></td>
           </tr>
         
           
@@ -165,7 +165,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>     @subject += &quot;Welcome to the USASearch Affiliate Program&quot;</pre></td>
+            <td><pre><a name="line19">19</a>     @subject += 'Email Verification'</pre></td>
           </tr>
         
           
@@ -189,7 +189,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>   def welcome_to_new_developer(user)</pre></td>
+            <td><pre><a name="line23">23</a>   def welcome_to_new_user(user)</pre></td>
           </tr>
         
           
@@ -201,7 +201,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>     @subject += &quot;Welcome to the USASearch Program: APIs and Web Services&quot;</pre></td>
+            <td><pre><a name="line25">25</a>     @subject += &quot;Welcome to the USASearch Affiliate Program&quot;</pre></td>
           </tr>
         
           
@@ -225,85 +225,85 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>   def mobile_feedback(email, message)</pre></td>
+            <td><pre><a name="line29">29</a>   def welcome_to_new_developer(user)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>     @recipients = I18n.t(:mobile_feedback_contact_recipients)</pre></td>
+            <td><pre><a name="line30">30</a>     setup_email(user.email)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>     @from       = email</pre></td>
+            <td><pre><a name="line31">31</a>     @subject += &quot;Welcome to the USASearch Program: APIs and Web Services&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>     @subject    = I18n.t(:mobile_feedback_subject)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>     @sent_on    = Time.now</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>     @headers['Content-Type'] = &quot;text/plain; charset=iso-8859-1; format=flowed&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>     charset &quot;iso-8859-1&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>     body(:message =&gt; message)</pre></td>
+            <td><pre><a name="line32">32</a>     body(:user =&gt; user)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>   end</pre></td>
+            <td><pre><a name="line33">33</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a> </pre></td>
+            <td><pre><a name="line34">34</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>   def new_affiliate_site(affiliate, user)</pre></td>
+            <td><pre><a name="line35">35</a>   def mobile_feedback(email, message)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>     setup_email(user.email)</pre></td>
+            <td><pre><a name="line36">36</a>     @recipients = I18n.t(:mobile_feedback_contact_recipients)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line41">41</a>     @subject += &quot;Your new Affiliate site&quot;</pre></td>
+            <td><pre><a name="line37">37</a>     @from       = email</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>     body(:affiliate =&gt; affiliate, :user =&gt; user)</pre></td>
+            <td><pre><a name="line38">38</a>     @subject    = I18n.t(:mobile_feedback_subject)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>     @sent_on    = Time.now</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>     @headers['Content-Type'] = &quot;text/plain; charset=iso-8859-1; format=flowed&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>     charset &quot;iso-8859-1&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>     body(:message =&gt; message)</pre></td>
           </tr>
         
           
@@ -321,7 +321,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>   def new_affiliate_user(affiliate, user, current_user)</pre></td>
+            <td><pre><a name="line45">45</a>   def new_affiliate_site(affiliate, user)</pre></td>
           </tr>
         
           
@@ -333,13 +333,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>     @subject += &quot;USASearch Affiliate Program: You Were Added to #{affiliate.display_name}&quot;</pre></td>
+            <td><pre><a name="line47">47</a>     @subject += &quot;Your new Affiliate site&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>     body(:affiliate =&gt; affiliate, :user =&gt; user, :current_user =&gt; current_user)</pre></td>
+            <td><pre><a name="line48">48</a>     body(:affiliate =&gt; affiliate, :user =&gt; user)</pre></td>
           </tr>
         
           
@@ -357,7 +357,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>   def welcome_to_new_user_added_by_affiliate(affiliate, user, current_user)</pre></td>
+            <td><pre><a name="line51">51</a>   def new_affiliate_user(affiliate, user, current_user)</pre></td>
           </tr>
         
           
@@ -369,13 +369,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>     @subject += &quot;Welcome to the USASearch Affiliate Program&quot;</pre></td>
+            <td><pre><a name="line53">53</a>     @subject += &quot;USASearch Affiliate Program: You Were Added to #{affiliate.display_name}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>     body(:user =&gt; user, :affiliate =&gt; affiliate, :current_user =&gt; current_user)</pre></td>
+            <td><pre><a name="line54">54</a>     body(:affiliate =&gt; affiliate, :user =&gt; user, :current_user =&gt; current_user)</pre></td>
           </tr>
         
           
@@ -393,25 +393,25 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>   def saucelabs_report(admin_email, sauce_labs_link)</pre></td>
+            <td><pre><a name="line57">57</a>   def welcome_to_new_user_added_by_affiliate(affiliate, user, current_user)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>     setup_email(admin_email)</pre></td>
+            <td><pre><a name="line58">58</a>     setup_email(user.email)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>     @subject += &quot;Sauce Labs Report&quot;</pre></td>
+            <td><pre><a name="line59">59</a>     @subject += &quot;Welcome to the USASearch Affiliate Program&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line60">60</a>     body(:sauce_labs_link =&gt; sauce_labs_link)</pre></td>
+            <td><pre><a name="line60">60</a>     body(:user =&gt; user, :affiliate =&gt; affiliate, :current_user =&gt; current_user)</pre></td>
           </tr>
         
           
@@ -429,151 +429,187 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>   def objectionable_content_alert(recipient, terms)</pre></td>
+            <td><pre><a name="line63">63</a>   def saucelabs_report(admin_email, sauce_labs_link)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a>     setup_email(recipient)</pre></td>
+            <td><pre><a name="line64">64</a>     setup_email(admin_email)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>     content_type &quot;text/html&quot;</pre></td>
+            <td><pre><a name="line65">65</a>     @subject += &quot;Sauce Labs Report&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>     @subject += &quot;Objectionable Content Alert&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line67">67</a>     body(:search_terms =&gt; terms)</pre></td>
+            <td><pre><a name="line66">66</a>     body(:sauce_labs_link =&gt; sauce_labs_link)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line68">68</a>   end</pre></td>
+            <td><pre><a name="line67">67</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a>   </pre></td>
+            <td><pre><a name="line68">68</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>   def monthly_report(zip_filename, report_date)</pre></td>
+            <td><pre><a name="line69">69</a>   def objectionable_content_alert(recipient, terms)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line71">71</a>     setup_email(MONTHLY_REPORT_RECIPIENTS.join(&quot;, &quot;))</pre></td>
+            <td><pre><a name="line70">70</a>     setup_email(recipient)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>     @subject += &quot;Monthly Report data attached: #{File.basename(zip_filename)}&quot;</pre></td>
+            <td><pre><a name="line71">71</a>     content_type &quot;text/html&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>     content_type &quot;multipart/alternative&quot;</pre></td>
+            <td><pre><a name="line72">72</a>     @subject += &quot;Objectionable Content Alert&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>     attachment :content_type =&gt; &quot;application/zip&quot;, :body =&gt; File.read(zip_filename), :filename =&gt; File.basename(zip_filename)</pre></td>
+            <td><pre><a name="line73">73</a>     body(:search_terms =&gt; terms)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line75">75</a>   end</pre></td>
+            <td><pre><a name="line74">74</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line76">76</a> </pre></td>
+            <td><pre><a name="line75">75</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line77">77</a>   private</pre></td>
+            <td><pre><a name="line76">76</a>   def monthly_report(zip_filename, report_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>     setup_email(MONTHLY_REPORT_RECIPIENTS.join(&quot;, &quot;))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line78">78</a>     @subject += &quot;Monthly Report data attached: #{File.basename(zip_filename)}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line79">79</a>     content_type &quot;multipart/alternative&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line80">80</a>     attachment :content_type =&gt; &quot;application/zip&quot;, :body =&gt; File.read(zip_filename), :filename =&gt; File.basename(zip_filename)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line78">78</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line79">79</a>   def setup_email(recipients)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line80">80</a>     @recipients = recipients</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line81">81</a>     @from       = APP_EMAIL_ADDRESS</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line82">82</a>     @subject    = &quot;[USASearch] &quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line83">83</a>     @sent_on    = Time.now</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line84">84</a>     @headers['Content-Type'] = &quot;text/plain; charset=utf-8; format=flowed&quot;</pre></td>
+            <td><pre><a name="line81">81</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line85">85</a>   end</pre></td>
+            <td><pre><a name="line82">82</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line83">83</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line86">86</a> end</pre></td>
+            <td><pre><a name="line84">84</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line85">85</a>   def setup_email(recipients)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line86">86</a>     @recipients = recipients</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line87">87</a>     @from       = APP_EMAIL_ADDRESS</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line88">88</a>     @subject    = &quot;[USASearch] &quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line89">89</a>     @sent_on    = Time.now</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line90">90</a>     @headers['Content-Type'] = &quot;text/plain; charset=utf-8; format=flowed&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line91">91</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line92">92</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Apr 20 19:14:29 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Apr 21 17:01:09 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
