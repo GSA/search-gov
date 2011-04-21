@@ -225,9 +225,6 @@ describe RecallsController do
             get :search, :query => "no results", :page => 1
 
             response.should be_success
-            parsed_response = JSON.parse(response.body)
-            parsed_response["success"]["total"].should == 0
-            parsed_response["success"]["results"].should == []
           end
         end
       end

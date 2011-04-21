@@ -24,10 +24,11 @@ class RecallsController < ApplicationController
         @page = params[:page]
         @page = MAX_PAGES if @page && @page.to_i > MAX_PAGES
         @search = Recall.search_for(@query, @valid_params, @page)
-        pagination_total = [@search.results.total_pages, MAX_PAGES].min
-        @paginated_results = WillPaginate::Collection.create(@search.hits.current_page, @search.hits.per_page, pagination_total * @search.hits.per_page) { |pager| pager.replace(@search.hits) }
+        if @search
+          pagination_total = [@search.results.total_pages, MAX_PAGES].min
+          @paginated_results = WillPaginate::Collection.create(@search.hits.current_page, @search.hits.per_page, pagination_total * @search.hits.per_page) { |pager| pager.replace(@search.hits) }
+        end
         @page_title = @query
-
       }
       format.json {
         api_search
