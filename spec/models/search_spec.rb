@@ -164,7 +164,7 @@ describe Search do
 
     context "when affiliate has domains specified and user does not specify site: in search" do
       before do
-        @affiliate     = Affiliate.new(:domains => %w(        foo.com bar.com        ).join("\r\n"))
+        @affiliate     = Affiliate.new(:domains => %w(          foo.com bar.com          ).join("\r\n"))
         @uriresult     = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -177,7 +177,7 @@ describe Search do
 
       context "when the domains are separated by only '\\n'" do
         before do
-          @affiliate.domains = %w(       foo.com bar.com       ).join("\n")
+          @affiliate.domains = %w(         foo.com bar.com         ).join("\n")
         end
 
         it "should split the domains the same way" do
@@ -210,7 +210,7 @@ describe Search do
 
     context "when affiliate has domains specified but user specifies site: in search" do
       before do
-        @affiliate     = Affiliate.new(:domains => %w(        foo.com bar.com        ).join("\n"))
+        @affiliate     = Affiliate.new(:domains => %w(          foo.com bar.com          ).join("\n"))
         @uriresult     = URI::parse("http://localhost:3000/")
         @default_scope = /\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)/
       end
@@ -581,24 +581,18 @@ describe Search do
         end
       end
 
-      context "when a valid filter parameter is set" do
-        it "should set the Adult parameter in the query sent to Bing" do
-          search = Search.new(@valid_options.merge(:filter => 'off'))
-          URI.should_receive(:parse).with(/Adult=off/).and_return(@uriresult)
-          search.run
-        end
-
-        context "when the filter parameter is blank" do
-          it "should set the Adult parameter to the default value ('strict')" do
-            search = Search.new(@valid_options.merge(:filter => ''))
-            URI.should_receive(:parse).with(/Adult=#{Search::DEFAULT_FILTER_SETTING}/).and_return(@uriresult)
+      describe "adult content filters" do
+        context "when a valid filter parameter is present" do
+          it "should set the Adult parameter in the query sent to Bing" do
+            search = Search.new(@valid_options.merge(:filter => 'off'))
+            URI.should_receive(:parse).with(/Adult=off/).and_return(@uriresult)
             search.run
           end
         end
 
-        context "when the filter parameter is nil" do
+        context "when the filter parameter is blank" do
           it "should set the Adult parameter to the default value" do
-            search = Search.new(@valid_options)
+            search = Search.new(@valid_options.merge(:filter => ''))
             URI.should_receive(:parse).with(/Adult=#{Search::DEFAULT_FILTER_SETTING}/).and_return(@uriresult)
             search.run
           end
@@ -611,16 +605,16 @@ describe Search do
             search.run
           end
         end
-      end
 
-      context "when a filter parameter is not set" do
-        it "should set the Adult parameter to the default value ('strict')" do
-          search = Search.new(@valid_options)
-          URI.should_receive(:parse).with(/Adult=strict/).and_return(@uriresult)
-          search.run
+        context "when a filter parameter is not set" do
+          it "should set the Adult parameter to the default value ('moderate')" do
+            search = Search.new(@valid_options)
+            URI.should_receive(:parse).with(/Adult=moderate/i).and_return(@uriresult)
+            search.run
+          end
         end
-      end
 
+      end
     end
 
     context "when performing an uppercase search that has a downcased related topic" do
@@ -734,7 +728,7 @@ describe Search do
 
     context "when the query ends in OR" do
       before do
-        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{    portland or | oregon | rain    })
+        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{      portland or | oregon | rain      })
         CalaisRelatedSearch.reindex
         @search = Search.new(:query => "Portland OR")
         @search.run

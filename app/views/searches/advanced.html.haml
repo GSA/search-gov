@@ -15,7 +15,7 @@
         %span.query-label
           = label_tag "query-lbl", (t :advanced_search_query_label)
       .input
-        = text_field_tag 'query', params['query'], :size => 40, :id => 'query-lbl' 
+        = text_field_tag 'query', params['query'], :size => 40, :id => 'query-lbl'
         = select_tag 'query-limit', options_for_select([ [ (t :advanced_search_any_part_of_page_option), ''], [(t :advanced_search_in_title_only_option), 'intitle:'] ], params['query-limit'].blank? ? nil : params['query-limit']), :title => 'on what part of page', :id => 'query-limit-lbl'
     .element
       .query-label
@@ -71,17 +71,19 @@
           = label_tag 'per-page-lbl', (t :advanced_search_results_per_page_label)
       .input
         = select_tag 'per-page', options_for_select( [ ["10", "10"], ["20", "20"], ["30", "30"], ["40", "40"], ["50", "50"] ], params['per-page'].blank? ? '10' : params['per-page']), :id => 'per-page-lbl'
-    - if I18n.locale == I18n.default_locale
-      .element
-        .label
-          %span.label
-            = label_tag 'filter-lbl', (t :advanced_search_adult_filter_label)
-        .input
-          %span.radio-option
-            = radio_button_tag 'filter', 'off', (!params['filter'].blank? && params['filter'] == 'off') ? true : false, :id => 'filter1'
-            = label_tag 'filter1', 'No filter'
-          %span.radio-option
-            = radio_button_tag 'filter', 'strict', (!params['filter'].blank? && params['filter'] == 'off') ? false : true, :id => 'filter2'
-            = label_tag 'filter2', 'Filter adult content'
+    .element
+      .label
+        %span.label
+          = label_tag 'filter-lbl', (t :advanced_search_adult_filter_label)
+      .input
+        %span.radio-option
+          = radio_button_tag 'filter', 'off', params['filter'] == 'off', :id => 'filter0'
+          = label_tag 'filter0', (t :advanced_search_adult_filter_off_label)
+        %span.radio-option
+          = radio_button_tag 'filter', 'moderate', (params['filter'] || "moderate") == 'moderate', :id => 'filter1'
+          = label_tag 'filter1', (t :advanced_search_adult_filter_moderate_label)
+        %span.radio-option
+          = radio_button_tag 'filter', 'strict', params['filter'] == 'strict', :id => 'filter2'
+          = label_tag 'filter2', (t :advanced_search_adult_filter_strict_label)
   .submit
     = image_submit_tag((t :advanced_search_submit_button_image_path), :value => (t :advanced_search_submit_button_image_alt_value), :alt => (t :advanced_search_submit_button_image_alt_value))

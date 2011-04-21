@@ -13,8 +13,8 @@ class Search
   APP_ID = "A4C32FAE6F3DB386FC32ED1C4F3024742ED30906"
   USER_AGENT = "USASearch"
   DEFAULT_SCOPE = "(scopeid:usagovall OR site:gov OR site:mil)"
-  VALID_FILTER_VALUES = %w{strict off}
-  DEFAULT_FILTER_SETTING = 'strict'
+  VALID_FILTER_VALUES = %w{off moderate strict}
+  DEFAULT_FILTER_SETTING = 'moderate'
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
   VALID_SCOPES = %w{ PatentClass USPTOUSPC USPTOTMEP USPTOMPEP }
 
@@ -52,11 +52,11 @@ class Search
     @page = [options[:page].to_i, 0].max
     @results_per_page = options[:results_per_page] || DEFAULT_PER_PAGE
     @results_per_page = @results_per_page.to_i unless @results_per_page.is_a?(Integer)
-    @results_per_page = MAX_PER_PAGE if results_per_page > MAX_PER_PAGE
+    @results_per_page = [@results_per_page,MAX_PER_PAGE].min
     @offset = @page * @results_per_page
     @fedstates = options[:fedstates] || nil
     @scope_id = options[:scope_id] || nil
-    @filter_setting = options[:filter] || nil
+    @filter_setting =  VALID_FILTER_VALUES.include?(options[:filter] || "invalid adult filter") ? options[:filter] : DEFAULT_FILTER_SETTING
     @results, @related_search = [], []
     @queried_at_seconds = Time.now.to_i
     @enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
@@ -356,14 +356,10 @@ class Search
       "AppId=#{APP_ID}",
       "sources=#{query_sources}",
       "Options=#{ enable_highlighting ? "EnableHighlighting" : ""}",
-      "Adult=#{adult_filter_setting}",
+      "Adult=#{filter_setting}",
       "query=#{URI.escape(query_string, URI_REGEX)}"
     ]
     "#{JSON_SITE}?" + params.join('&')
-  end
-
-  def adult_filter_setting
-    self.filter_setting.blank? ? DEFAULT_FILTER_SETTING : VALID_FILTER_VALUES.include?(self.filter_setting) ? self.filter_setting : DEFAULT_FILTER_SETTING
   end
 
   def strip_extra_chars_from(did_you_mean_suggestion)

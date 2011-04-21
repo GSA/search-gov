@@ -20,23 +20,23 @@ describe "searches/index.html.haml" do
     @search.stub!(:agency).and_return nil
     assigns[:search] = @search
   end
-  
+
   it "should link to the medium sized search logo" do
     render
     response.body.should have_tag("img[src^=/images/USAsearch_medium_en.gif]")
   end
-  
+
   context "when rendered as a forms serp" do
     before do
       controller.action_name = "forms"
       render
     end
-    
+
     it "should link to the medium sized forms search logo" do
       response.body.should have_tag("img[src^=/images/USAsearch_medium_en_forms.gif]")
     end
   end
-  
+
   context "when spelling suggestion is available" do
     before do
       @rong = "U mispeled everytheeng"
@@ -85,9 +85,9 @@ describe "searches/index.html.haml" do
       @search.stub!(:total).and_return "don't care"
       @search.stub!(:page).and_return 0
       @search_result = {'title' => "some title",
-                       'unescapedUrl'=> "http://www.foo.com/url",
-                       'content'=> "This is a sample result",
-                       'cacheUrl'=> "http://www.cached.com/url"
+                        'unescapedUrl'=> "http://www.foo.com/url",
+                        'content'=> "This is a sample result",
+                        'cacheUrl'=> "http://www.cached.com/url"
       }
       @search_results = []
       @search_results.stub!(:total_pages).and_return 1
@@ -136,26 +136,14 @@ describe "searches/index.html.haml" do
     end
 
     context "when a filter parameter is specified" do
-      context "when the filter parameter is set to 'strict'" do
-        before do
-          @search.stub!(:filter_setting).and_return 'strict'
-        end
-
-        it "should include a hidden input field in the search form with the filter parameter" do
-          render
-          response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'filter', 'strict')
-        end
+      before do
+        @filter_setting = "moderate"
+        @search.stub!(:filter_setting).and_return @filter_setting
       end
 
-      context "when the filter parameter is set to 'off'" do
-        before do
-          @search.stub!(:filter_setting).and_return 'off'
-        end
-
-        it "should include a hidden input field in the search with the filter parameter set to 'off'" do
-          render
-          response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'filter', 'off')
-        end
+      it "should include a hidden input field in the search form with the filter parameter" do
+        render
+        response.should have_tag('input[type=?][name=?][value=?]', 'hidden', 'filter', @filter_setting)
       end
     end
 
@@ -199,9 +187,9 @@ describe "searches/index.html.haml" do
         @dangerous_title = "Dangerous Title"
         @dangerous_content = "Dangerous Content"
         @search_result = {'title' => @dangerous_title,
-                         'unescapedUrl'=> @dangerous_url,
-                         'content'=> @dangerous_content,
-                         'cacheUrl'=> @dangerous_url
+                          'unescapedUrl'=> @dangerous_url,
+                          'content'=> @dangerous_content,
+                          'cacheUrl'=> @dangerous_url
         }
         @search_results = []
         @search_results.stub!(:total_pages).and_return 1
@@ -214,7 +202,7 @@ describe "searches/index.html.haml" do
         response.should_not contain(/onmousedown/)
       end
     end
-    
+
     context "when an agency record matches the query" do
       before do
         Agency.destroy_all
@@ -230,7 +218,7 @@ describe "searches/index.html.haml" do
         @search.stub!(:results).and_return @search_results
         @search.stub!(:agency).and_return @agency
       end
-      
+
       context "if the first result matches the URL in the agency query" do
         it "should format the first result as a special agency result" do
           render
@@ -251,12 +239,12 @@ describe "searches/index.html.haml" do
           response.should_not have_tag("a[href=#{@agency.facebook_profile_link}]", :text => @agency.twitter_profile_link)
         end
       end
-      
+
       context "when the page specified is greater than 0 (i.e. we're not on the first page)" do
         before do
           @search.stub!(:page).and_return 1
         end
-        
+
         it "should not render a special agency result, even if the first result matches" do
           render
           response.should_not have_tag "div[class=govbox]"
@@ -267,12 +255,12 @@ describe "searches/index.html.haml" do
           end
         end
       end
-      
+
       context "when the locale is set to Spanish" do
         before do
           I18n.locale = :es
         end
-        
+
         context "when the Spanish URL does not match the result url (and when the English URL does)" do
           it "should not render a special agency result, even if the first result matches the English URL" do
             render
@@ -284,18 +272,18 @@ describe "searches/index.html.haml" do
             end
           end
         end
-        
+
         context "when the Spanish URL matches the result url" do
           before do
             @search_result = {'title' => "Internal Revenue Service - Spanish",
-                          'unescapedUrl'=> "http://www.irs.gov/es/",
-                          'content'=> "The official page of the Internal Revenue Service",
-                          'cacheUrl'=> "http://www.cached.com/url"}
+                              'unescapedUrl'=> "http://www.irs.gov/es/",
+                              'content'=> "The official page of the Internal Revenue Service",
+                              'cacheUrl'=> "http://www.cached.com/url"}
             @search_results = [@search_result]
             @search_results.stub!(:total_pages).and_return 1
             @search.stub!(:results).and_return @search_results
           end
-          
+
           it "should render the first result as a Spanish agency govbox" do
             render
             response.should have_tag "div[class=govbox]"
@@ -309,12 +297,12 @@ describe "searches/index.html.haml" do
             end
           end
         end
-        
+
         after do
           I18n.locale = I18n.default_locale
         end
-      end  
-      
+      end
+
       context "when the matching result is not the first result" do
         before do
           dummy_result = {'title' => "External Revenue Service",
@@ -323,9 +311,9 @@ describe "searches/index.html.haml" do
                           'cacheUrl'=> "http://www.cached.com/url"}
           @search_results = [dummy_result, @search_result]
           @search_results.stub!(:total_pages).and_return 1
-          @search.stub!(:results).and_return @search_results        
+          @search.stub!(:results).and_return @search_results
         end
-        
+
         it "should not render a special agency result, even if the first result matches" do
           render
           response.should_not have_tag "div[class=govbox]"
@@ -335,7 +323,7 @@ describe "searches/index.html.haml" do
             with_tag "input[type=hidden][name=sitelimit][value=irs.gov]"
           end
         end
-      end         
+      end
     end
   end
 end

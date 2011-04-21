@@ -780,7 +780,7 @@ Feature: Affiliate clients
     And I should see "Results 1-20"
 
     When I am on the affiliate advanced search page for "aff.gov"
-    And I choose "No filter"
+    And I choose "Off"
     And I press "Search"
     Then I should see "Affiliate Header"
     And I should see "Affiliate Footer"

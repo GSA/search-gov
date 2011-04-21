@@ -48,7 +48,7 @@ en:
       agency_name: Food and Drug Administration
   sort_by: Sort by
   by_date: Date
-  by_relevance: Relevance   
+  by_relevance: Relevance
   advanced_search_instruction: "Use the options on this page to create a very specific search."
   advanced_affiliate_search_instruction: "Use the options on this page to create a very specific search for {{affiliate_name}}."
   advanced_search_show_results_header: "Show results with"
@@ -59,6 +59,10 @@ en:
   advanced_search_any_part_of_page_option: "any part of the page"
   advanced_search_in_title_only_option: "in the title of the page"
   advanced_search_language_label: "Language"
+  advanced_search_adult_filter_label: "Safe Search"
+  advanced_search_adult_filter_strict_label: "Strict"
+  advanced_search_adult_filter_moderate_label: "Moderate"
+  advanced_search_adult_filter_off_label: "Off"
   advanced_search_file_type_label: "File Type"
   advanced_search_file_type_all_format_label: "All"
   advanced_search_file_type_txt_format_label: "Text"
@@ -68,7 +72,6 @@ en:
   advanced_search_site_excludes_example: "Enter URL(s) separated by spaces e.g. whitehouse.gov omb.gov"
   advanced_search_fedstates_label: "Search In"
   advanced_search_results_per_page_label: "Results per Page"
-  advanced_search_adult_filter_label: "Adult Filter"
   advanced_search_submit_button_image_path: "/images/search.gif"
   advanced_search_submit_button_image_alt_value: "Search the Government"
   search_results_restriction_message_front: "This search was restricted to <b>{{scope_setting}}</b>."
@@ -116,13 +119,13 @@ en:
   forms: Forms
   forms_home_page_message: "Federal Government Forms Catalog has moved and is different."
   forms_site_title: "Search.USA.gov Forms"
-  
+
   agency_official_site: Official Site
   agency_phone_label: Contact
   agency_toll_free_phone_label: Toll-free
   agency_tty_phone_label: TTY
   agency_search_within_label: Search within
-    
+
   activerecord:
     attributes:
       calais_related_search:
