@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-admin-users_controller_rb.html">app/controllers/admin/users_controller.rb</a></td>
-            <td class='right_align'><tt>19</tt></td>
-            <td class='right_align'><tt>19</tt></td>
+            <td class='right_align'><tt>18</tt></td>
+            <td class='right_align'><tt>18</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -93,85 +93,79 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     config.list.per_page = 100</pre></td>
+            <td><pre><a name="line7">7</a>     config.columns[:affiliates].form_ui = :select</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     config.columns[:affiliates].form_ui = :select</pre></td>
+            <td><pre><a name="line8">8</a>     config.columns[:affiliates].options = { :draggable_lists =&gt; true }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     config.columns[:affiliates].options = { :draggable_lists =&gt; true }</pre></td>
+            <td><pre><a name="line9">9</a>     config.columns[:state].form_ui = :select</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     config.columns[:state].form_ui = :select</pre></td>
+            <td><pre><a name="line10">10</a>     config.columns[:state].options = ActionView::Helpers::FormOptionsHelper::US_STATES</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     config.columns[:state].options = ActionView::Helpers::FormOptionsHelper::US_STATES</pre></td>
+            <td><pre><a name="line11">11</a>     config.columns[:is_affiliate_admin].description = &quot;Set this to true to make the user an Administrator, and give them access to the Admin Center.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     config.columns[:is_affiliate_admin].description = &quot;Set this to true to make the user an Administrator, and give them access to the Admin Center.&quot;</pre></td>
+            <td><pre><a name="line12">12</a>     config.columns[:is_analyst].description = &quot;Set this to true to make the user an Analyst, and give them access to the Analytics Center.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>     config.columns[:is_analyst].description = &quot;Set this to true to make the user an Analyst, and give them access to the Analytics Center.&quot;</pre></td>
+            <td><pre><a name="line13">13</a>     config.columns[:is_affiliate].description = &quot;Set this to true to make the user an Affiliate, and give them access to the Affiliate Center.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>     config.columns[:is_affiliate].description = &quot;Set this to true to make the user an Affiliate, and give them access to the Affiliate Center.&quot;</pre></td>
+            <td><pre><a name="line14">14</a>     config.columns[:is_analyst_admin].description = &quot;Set this to true to make the user an Analytics Admin, and give them the ability to create and edit Query Groups.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     config.columns[:is_analyst_admin].description = &quot;Set this to true to make the user an Analytics Admin, and give them the ability to create and edit Query Groups.&quot;</pre></td>
+            <td><pre><a name="line15">15</a>     config.columns[:approval_status].form_ui = :select</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     config.columns[:approval_status].form_ui = :select</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>     config.columns[:approval_status].options = { :options =&gt; User::APPROVAL_STATUSES }</pre></td>
+            <td><pre><a name="line16">16</a>     config.columns[:approval_status].options = { :options =&gt; User::APPROVAL_STATUSES }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>   end</pre></td>
+            <td><pre><a name="line17">17</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a> end</pre></td>
+            <td><pre><a name="line18">18</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Apr 20 08:28:35 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Apr 20 19:14:28 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
