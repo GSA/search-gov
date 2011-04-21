@@ -7,25 +7,25 @@ describe RecallsController do
       before do
         get :index
       end
-    
+
       it "should succeed" do
         response.should be_success
       end
-    
+
       it "should assign the page title to nothing" do
         assigns[:page_title].should be_nil
       end
-    
+
       it "should set the page title to 'Search.USA.gov Forms'" do
         response.should have_tag("title", :content => 'Search.USA.gov Recalls')
       end
-    
+
       it "should have meta tags for description and keywords" do
         response.should have_tag("meta[name=description]")
         response.should have_tag("meta[name=keywords]")
       end
     end
-        
+
     it "should fetch recent recalls" do
       search = ["latest recall", "second latest recall"]
       Recall.should_receive(:search_for).with("", {:sort => 'date'}).and_return(search)
@@ -40,7 +40,7 @@ describe RecallsController do
       before do
         get :search, :query => 'strollers'
       end
-      
+
       should_render_template 'recalls/search.html.haml', :layout => 'application'
 
       it "should assign the query with a forms prefix as the page title" do
@@ -51,18 +51,18 @@ describe RecallsController do
         response.body.should contain("strollers - Search.USA.gov Recalls")
       end
     end
-    
+
     context "when making a request for a request without a format (or HTML)" do
       it "should render the html template" do
         get :search, :query => 'strollers'
         response.should be_success
       end
-      
+
       it "should not care about an API key" do
         get :search, :query => 'strollers', :api_key => 'bad api key'
         response.should be_success
       end
-      
+
       context "when all parameters specified" do
         before do
           @query_string = 'stroller'
@@ -98,7 +98,7 @@ describe RecallsController do
           get :search, @valid_params
         end
       end
-      
+
       context "when a date range is supplied" do
         it "should set the start and end date to appropriate values for each of the values" do
           get :search, :date_range => 'last_30'
@@ -115,7 +115,7 @@ describe RecallsController do
           assigns[:valid_params][:end_date].should == Date.parse("#{Date.today.year - 1}-12-31")
         end
       end
-      
+
       context "when no sort value is defined" do
         it "should default to searching by date" do
           get :search, :query => "beef"
@@ -130,32 +130,32 @@ describe RecallsController do
         end
       end
     end
-    
+
     context "when requesting JSON results" do
       before do
         @developer = User.new(:email => 'developer@usa.gov', :contact_name => 'USA.gov Developer', :password => 'password', :password_confirmation => 'password', :government_affiliation => "0")
         @developer.save
       end
-      
+
       context "when an API key is specified" do
         it "should check that the API key belongs to a user, and process the request" do
           User.should_receive(:find_by_api_key).with(@developer.api_key).and_return @developer
           get :search, :query => 'stroller', :api_key => @developer.api_key, :format => 'json'
           response.should be_success
         end
-      
+
         it "should return a 401 error if the key is not found" do
           User.should_receive(:find_by_api_key).with('badkey').and_return nil
           get :search, :query => 'stroller', :api_key => 'badkey', :format => 'json'
           response.should_not be_success
         end
-      
+
         it "should not care if the API key is not specified" do
           get :search, :query => 'stroller', :format => 'json'
           response.should be_success
         end
       end
-    
+
       context "when all parameters specified" do
         before do
           @redis = RecallsController.send(:class_variable_get, :@@redis)
@@ -231,8 +231,8 @@ describe RecallsController do
           end
         end
       end
-      
-      context "when dates are submitted in an invalid format" do
+
+      context "when a date is submitted in an invalid format" do
         before do
           @good_date = '2010-5-20'
           @bad_date = '05-20-2010'
@@ -243,9 +243,29 @@ describe RecallsController do
           get :search, :query => @query, :end_date => @bad_date, :start_date => @good_date, :format => 'json'
           parsed_response = JSON.parse(response.body)
           parsed_response["error"].should == "Invalid date"
+          get :search, :query => @query, :end_date => @good_date, :start_date => @bad_date, :format => 'json'
+          parsed_response = JSON.parse(response.body)
+          parsed_response["error"].should == "Invalid date"
         end
       end
-    
+
+      context "when an invalid date is submitted" do
+        before do
+          @good_date = '2010-5-20'
+          @bad_date = '2010-0-23'
+          @query = "stroller"
+        end
+
+        it "should return a JSON error object" do
+          get :search, :query => @query, :end_date => @bad_date, :start_date => @good_date, :format => 'json'
+          parsed_response = JSON.parse(response.body)
+          parsed_response["error"].should == "Invalid date"
+          get :search, :query => @query, :end_date => @good_date, :start_date => @bad_date, :format => 'json'
+          parsed_response = JSON.parse(response.body)
+          parsed_response["error"].should == "Invalid date"
+        end
+      end
+
       context "when valid organizations are specified" do
         it "should not return a JSON error object" do
           Recall::VALID_ORGANIZATIONS.each do |organization|
@@ -287,7 +307,7 @@ describe RecallsController do
           parsed_response["error"].should == "Invalid page"
         end
       end
-      
+
       context "when an invalid date range is specified" do
         it "should return a JSON error object" do
           get :search, :date_range => 'all', :format => 'json'
@@ -296,7 +316,7 @@ describe RecallsController do
         end
       end
     end
-    
+
     context "when no sort value is specified" do
       it "should not set a sort value" do
         get :search, :format => 'json'

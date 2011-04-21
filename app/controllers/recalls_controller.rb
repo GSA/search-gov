@@ -3,12 +3,12 @@ class RecallsController < ApplicationController
   before_filter :setup_params
   before_filter :verify_params
   before_filter :convert_date_range_to_start_and_end_dates
-  
+
   @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
   MAX_PAGES = 100
   RECALLS_CACHE_DURATION_IN_SECONDS = 60 * 30
   VALID_OPTIONS = %w{start_date end_date date_range upc sort code organization make model year food_type}
-  
+
   def index
     @latest_recalls = Recall.search_for("", {:sort => "date"})
   end
@@ -34,7 +34,7 @@ class RecallsController < ApplicationController
       }
     end
   end
-  
+
   def api_search
     if @error_message
       render :json => { :error => @error_message }
@@ -48,30 +48,36 @@ class RecallsController < ApplicationController
         success_total_results_json = {:success => {:total => search.total, :results => search.results}}.to_json
         @@redis.setex(cache_key, RECALLS_CACHE_DURATION_IN_SECONDS, success_total_results_json) rescue nil
       end
-      render :text => success_total_results_json, :content_type => "application/json" 
+      render :text => success_total_results_json, :content_type => "application/json"
     end
   end
-  
+
   private
-  
+
   def validate_api_key
     render :text => 'Invalid API Key', :status => 401 if request.format == 'json' and params[:api_key].present? and User.find_by_api_key(params[:api_key]).nil?
   end
-  
+
   def setup_params
     @valid_params = params.reject { |k,| !VALID_OPTIONS.include? k.to_s }
   end
-  
+
   def verify_params
     @error_message = nil
-    @error_message = "Invalid date" if (params[:start_date] and not params[:start_date] =~ /^\d{4}-\d{1,2}-\d{1,2}$/) or (params[:end_date] and not params[:end_date] =~ /^\d{4}-\d{1,2}-\d{1,2}$/)
+    @error_message = "Invalid date" unless date_str_valid_or_nil?(params[:start_date]) and date_str_valid_or_nil?(params[:end_date])
     @error_message = "Invalid organization" if params[:organization] and not Recall::VALID_ORGANIZATIONS.include? params[:organization]
     @error_message = "Invalid code" if params[:code] and not %w{E V I T C X}.include? params[:code]
     @error_message = "Invalid year" if params[:year] and not params[:year] =~ /^\d{4}$/
     @error_message = "Invalid page" if params[:page] and not params[:page] =~ /^\d+$/
     @error_message = "Invalid date range" if params[:date_range] and not %w{last_30 last_90 current_year last_year}.include?(params[:date_range])
   end
-  
+
+  def date_str_valid_or_nil?(str)
+    return true if str.nil?
+    parsed = Date.parse(str) rescue nil
+    !parsed.nil?
+  end
+
   def convert_date_range_to_start_and_end_dates
     if params[:date_range].present?
       if params[:date_range] == "last_30"
@@ -84,5 +90,5 @@ class RecallsController < ApplicationController
         @valid_params[:start_date], @valid_params[:end_date] = Date.parse("#{Date.today.year - 1}-01-01"), Date.parse("#{Date.today.year - 1}-12-31")
       end
     end
-  end 
+  end
 end
