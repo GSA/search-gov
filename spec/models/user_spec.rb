@@ -58,7 +58,7 @@ describe User do
       affiliate_user.save.should be_true
       affiliate_user.is_developer?.should be_false
     end
-    
+
     it "should send the admins a notification email about the new user" do
       Emailer.should_receive(:deliver_new_user_to_admin).with(an_instance_of(User))
       User.create!(@valid_attributes)
@@ -80,7 +80,7 @@ describe User do
         User.create!(@valid_developer_attributes)
       end
     end
-    
+
     context "when the flag to not send an email is set to true" do
       it "should not send any emails" do
         Emailer.should_not_receive(:deliver_welcome_to_new_user)
@@ -88,12 +88,12 @@ describe User do
         User.create!(@valid_attributes.merge(:skip_welcome_email => true))
       end
     end
-    
+
     it "should generate an API Key when creating a new user" do
       user = User.create!(@valid_attributes)
       user.api_key.should_not be_nil
     end
-    
+
     it "should not allow duplicate API keys" do
       user = User.create!(@valid_attributes)
       User.create(@valid_attributes.merge(:api_key => user.api_key)).id.should be_nil
@@ -117,7 +117,7 @@ describe User do
     end
 
     it "should set approval status to pending_approval if the affiliate user is not government_affiliated" do
-      %w( aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG ).each do |email|
+      %w( aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
         user = User.create!(@valid_affiliate_attributes.merge({:email => email}))
         user.has_government_affiliated_email?.should be_false
         user.is_pending_approval?.should be_true
@@ -157,7 +157,7 @@ describe User do
       u.to_label.should == u.contact_name
     end
   end
-  
+
   describe "#is_developer?" do
     it "should return true when is_affiliate? and is_affiliate_admin? and is_analyst? are false" do
       users(:affiliate_admin).is_developer?.should be_false

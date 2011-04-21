@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   def to_label
     contact_name
   end
-  
+
   def is_affiliate_or_higher
     is_affiliate || is_affiliate_admin || is_analyst
   end
@@ -56,7 +56,7 @@ class User < ActiveRecord::Base
   end
 
   def has_government_affiliated_email?
-    email =~ /(.gov|.mil)$/i
+    email =~ /\.(gov|mil)$/i
   end
 
   def signed_up_to_be_an_affiliate?
@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
   end
 
   private
-  
+
   def ping_admin
     Emailer.deliver_new_user_to_admin(self)
   end
@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
       Emailer.deliver_welcome_to_new_developer(self) if is_developer?
     end
   end
-  
+
   def generate_api_key
     self.api_key = Digest::MD5.hexdigest("#{contact_name}:#{email}:#{Time.now.to_s}") if self.api_key.nil?
   end

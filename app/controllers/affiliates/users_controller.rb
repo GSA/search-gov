@@ -13,7 +13,7 @@ class Affiliates::UsersController < Affiliates::AffiliatesController
     @user = User.find_by_email(params[:email])
     if @user
       if @affiliate.users.include?(@user)
-        flash.now[:error] = "That user is already associated with this affiliate; you can not add them again."
+        flash.now[:error] = "That user is already associated with this affiliate. You cannot add them again."
       else
         @affiliate.users << @user
         @email, @contact_name = nil, nil
@@ -24,7 +24,7 @@ class Affiliates::UsersController < Affiliates::AffiliatesController
       random_password = Digest::MD5.hexdigest("#{@email}:#{Time.now.to_s}")[0..8]
       @user = User.create(:email => @email, :contact_name => @contact_name, :government_affiliation => '1', :password => random_password, :password_confirmation => random_password, :skip_welcome_email => true)
       @affiliate.users << @user
-      flash.now[:success] = "That user does not exist in the system; we've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
+      flash.now[:success] = "That user does not exist in the system. We've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
       Emailer.deliver_welcome_to_new_user_added_by_affiliate(@affiliate, @user, current_user)
     end
     redirect_to affiliate_users_path(@affiliate)

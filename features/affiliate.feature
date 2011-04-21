@@ -151,7 +151,7 @@ Feature: Affiliate clients
     And the "Zip*" field should contain "20022"
     And I press "Next"
     Then I should see "Step 2. Set up site" in the site wizards header
-    
+
   Scenario: Affiliates receive confirmation email when creating a new affiliate
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
@@ -238,7 +238,7 @@ Feature: Affiliate clients
     When I go to the affiliate admin page
     And I follow "Add New Site"
     Then I should be on the affiliate admin page
-    And I should see "Your account has not been approved. Please try again when you are setup."
+    And I should see "Your account has not been approved. Please try again when you are set up."
 
   Scenario: Adding a new site as an affiliate user with pending_email_verification status
     Given I am logged in with email "affiliate_manager_with_pending_email_verification_status@fixtures.org" and password "admin"
@@ -944,7 +944,7 @@ Feature: Affiliate clients
     And I select "December 2011" as the report date
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."
-    
+
   Scenario: Viewing SAYT Suggestions for an affiliate
     Given the following Affiliates exist:
      | display_name     | name             | contact_email           | contact_name        |
@@ -966,26 +966,26 @@ Feature: Affiliate clients
     Then I should be on the affiliate sayt page
     And I should see "Preferences"
     And the "sayt_preferences_disable" button should be checked
-    
+
     When I choose "sayt_preferences_enable_affiliate"
     And I press "Set Preferences"
     Then I should be on the affiliate sayt page
     And I should see "Preferences updated"
-    And the "sayt_preferences_enable_affiliate" button should be checked    
+    And the "sayt_preferences_enable_affiliate" button should be checked
     And the affiliate "aff.gov" should be set to use affiliate SAYT
-    
+
     When I choose "sayt_preferences_enable_global"
     And I press "Set Preferences"
     Then I should be on the affiliate sayt page
     And the "sayt_preferences_enable_global" button should be checked
     And the affiliate "aff.gov" should be set to use global SAYT
-    
+
     When I choose "sayt_preferences_disable"
     And I press "Set Preferences"
     Then I should be on the affiliate sayt page
     And the "sayt_preferences_disable" button should be checked
     And the affiliate "aff.gov" should be disabled
-    
+
   Scenario: Adding and removing a SAYT Suggestion to an affiliate
     Given the following Affiliates exist:
      | display_name     | name             | contact_email           | contact_name        | is_sayt_enabled | is_affiliate_suggestions_enabled |
@@ -1000,12 +1000,12 @@ Feature: Affiliate clients
     Then I should be on the affiliate sayt page
     And I should see "Successfully added: banana"
     And I should see "banana" within "#sayt-suggestions"
-    
+
     When I fill in "Phrase" with "banana"
     And I press "Add"
     Then I should be on the affiliate sayt page
     And I should see "Unable to add: banana"
-    
+
     When I press "Delete"
     Then I should be on the affiliate sayt page
     And I should see "Deleted phrase: banana"
@@ -1038,22 +1038,22 @@ Feature: Affiliate clients
     And I follow "Type-ahead Search"
     Then I should be on the affiliate sayt page
     And I should see "Bulk Upload"
-    
+
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
     And I press "Upload"
     Then I should be on the affiliate sayt page
     And I should see "5 Type-ahead Search suggestions uploaded successfully"
-    
+
     When I attach the file "features/support/sayt_suggestions.txt" to "txtfile"
     And I press "Upload"
     Then I should be on the affiliate sayt page
     And I should see "5 Type-ahead Search suggestions ignored"
-    
+
     When I attach the file "features/support/cant_read_this.doc" to "txtfile"
     And I press "Upload"
     Then I should be on the affiliate sayt page
     And I should see "Your file could not be processed."
-    
+
   Scenario: Viewing Related Topics for an affiliate
     Given the following Affiliates exist:
      | display_name     | name             | contact_email           | contact_name        |
@@ -1066,7 +1066,7 @@ Feature: Affiliate clients
     And I should not see "aff.gov"
     When I follow "Preview Button"
     Then I should be on the preview affiliate page
-    
+
   Scenario: Setting Related Topics Preferences for an affiliate
     Given the following Affiliates exist:
      | display_name     | name             | contact_email           | contact_name        |
@@ -1077,20 +1077,20 @@ Feature: Affiliate clients
     Then I should be on the affiliate related topics page
     And I should see "Preferences"
     And the "related_topics_setting_affiliate_enabled" button should be checked
-    
+
     When I choose "related_topics_setting_global_enabled"
     And I press "Set Preferences"
     Then I should be on the affiliate related topics page
     And the "related_topics_setting_global_enabled" button should be checked
     And the affiliate "aff.gov" should be set to use global related topics
-    
+
     When I choose "related_topics_setting_affiliate_enabled"
     And I press "Set Preferences"
     Then I should be on the affiliate related topics page
     And I should see "Preferences updated"
-    And the "related_topics_setting_affiliate_enabled" button should be checked    
+    And the "related_topics_setting_affiliate_enabled" button should be checked
     And the affiliate "aff.gov" should be set to use affiliate related topics
-    
+
     When I choose "related_topics_setting_disabled"
     And I press "Set Preferences"
     Then I should be on the affiliate related topics page
@@ -1109,7 +1109,7 @@ Feature: Affiliate clients
     And I should see "John Bar (aff@bar.gov)"
     And I should see "My Account"
     And I should not see "aff.gov"
-    
+
   Scenario: Adding an existing user to an affiliate
     Given the following Users exist:
       | contact_name  | email             |
@@ -1127,7 +1127,7 @@ Feature: Affiliate clients
     When "existing@usa.gov" opens the email
     And I should see "Dear Existing User" in the email body
     And I should see "You have been successfully added to aff site by John Bar" in the email body
-  
+
   Scenario: Adding a new user to an affiliate
     Given the following Affiliates exist:
       | display_name     | name             | contact_email           | contact_name        |

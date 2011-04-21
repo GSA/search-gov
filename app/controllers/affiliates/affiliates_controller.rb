@@ -2,7 +2,7 @@ class Affiliates::AffiliatesController < SslController
   layout "account"
 
   protected
-  
+
   def require_affiliate
     return false if require_user == false
     unless current_user.is_affiliate?
@@ -10,7 +10,7 @@ class Affiliates::AffiliatesController < SslController
       return false
     end
   end
-  
+
   def require_affiliate_or_admin
     return false if require_user == false
     unless current_user.is_affiliate? || current_user.is_affiliate_admin?
@@ -24,7 +24,7 @@ class Affiliates::AffiliatesController < SslController
       if current_user.is_pending_email_verification?
         flash[:notice] = "Your email address has not been verified. Please check your inbox so we may verify your email address."
       elsif current_user.is_pending_approval?
-        flash[:notice] = "Your account has not been approved. Please try again when you are setup."
+        flash[:notice] = "Your account has not been approved. Please try again when you are set up."
       end
       redirect_to home_affiliates_path
       return false
@@ -40,7 +40,7 @@ class Affiliates::AffiliatesController < SslController
     end
     return true
   end
-  
+
   def default_url_options(options={})
     {}
   end

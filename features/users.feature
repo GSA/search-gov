@@ -76,7 +76,7 @@ Feature: Users
     And I choose "I am a government employee or contractor"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
-    And I should see "We do not recognize your email address as being affiliated with a government agency. Your account is pending approval. We will notify you when you are setup."
+    And I should see "We do not recognize your email address as being affiliated with a government agency. Your account is pending approval. We will notify you when you are set up."
     And I should see "Affiliate Center" link in the main navigation bar
 
   Scenario: Registering as a new affiliate user without .gov or .mil email address and trying to add new site without being approved
@@ -91,7 +91,7 @@ Feature: Users
     Then I should be on the affiliate admin page
     When I follow "Add New Site"
     Then I should be on the affiliate admin page
-    And I should see "Your account has not been approved. Please try again when you are setup."
+    And I should see "Your account has not been approved. Please try again when you are set up."
 
   Scenario: Registering as a new user who is not affiliated with a government agency
     Given I am on the login page
@@ -176,7 +176,7 @@ Feature: Users
     And I should see "Password confirmation"
     And I should not see "I am a government employee or contractor"
     And I should not see "I am not affiliated with a government agency"
-    
+
   Scenario: Adding additional contacts to an affiliate from an account with a single affiliate
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Affiliates exist:
@@ -186,7 +186,7 @@ Feature: Users
     Then I should see "+ add an additional contact"
     When I follow "+ add an additional contact"
     Then I should be on the "aff site" affiliate users page
-    
+
   Scenario: Adding additional contacts to an affiliate from an account with multiple affiliates
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Affiliates exist:
@@ -200,7 +200,7 @@ Feature: Users
     And I should see "You have multiple sites associated with your account. To add an additional contact, follow these steps"
     When I follow "Affiliate Center"
     Then I should be on the the affiliate admin page
-    
+
   Scenario: User does not see "+ add additional contact when no affiliates are associated with the account"
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the user account page
