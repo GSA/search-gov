@@ -813,12 +813,15 @@ describe Search do
 
     context "when searching for misspelled terms" do
       before do
-        @search = Search.new(@valid_options.merge(:query => "o'bama"))
+        @search = Search.new(@valid_options.merge(:query => "p'resident"))
+        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions_pres.json")
+        parsed  = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
         @search.run
       end
 
       it "should have spelling suggestions" do
-        @search.spelling_suggestion.should == "obama"
+        @search.spelling_suggestion.should == "president"
       end
     end
 
