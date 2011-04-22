@@ -120,7 +120,7 @@ class Search
   end
 
   def cache_key
-    [formatted_query, sources, offset, results_per_page, enable_highlighting].join(':')
+    [formatted_query, sources, offset, results_per_page, enable_highlighting,filter_setting].join(':')
   end
 
   protected

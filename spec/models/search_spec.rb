@@ -1159,28 +1159,29 @@ describe Search do
 
   describe "caching in #perform(query_string, offset, enable_highlighting)" do
     before do
-      @redis                   = Search.send(:class_variable_get, :@@redis)
-      @search                  = Search.new(:query => "foo", :results_per_page => 40)
+      @redis = Search.send(:class_variable_get, :@@redis)
+      @search = Search.new(:query => "foo", :results_per_page => 40, :filter => "strict")
+      @cache_key = "(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Web:0:40:true:strict"
     end
 
-    it "should have a cache_key with bing query, sources, offset, count, highlighting" do
-      @search.cache_key.should == "(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Web:0:40:true"
+    it "should have a cache_key containing bing query, sources, offset, count, highlighting, adult filter" do
+      @search.cache_key.should == @cache_key
     end
 
     it "should attempt to get the results from the Redis cache" do
-      @redis.should_receive(:get).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Web:0:40:true")
+      @redis.should_receive(:get).with(@cache_key)
       @search.send(:perform)
     end
 
     it "should use the Spell+Image source for image searches" do
-      @redis.should_receive(:get).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Image:75:25:true")
+      @redis.should_receive(:get).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Image:75:25:true:moderate")
       image_search = ImageSearch.new(:query => "foo", :results_per_page => 25, :page => 3)
       image_search.send(:perform)
     end
 
     context "when no results in cache" do
       it "should store newly fetched results in cache with appropriate expiry" do
-        @redis.should_receive(:setex).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Web:0:40:true", Search::BING_CACHE_DURATION_IN_SECONDS, an_instance_of(String))
+        @redis.should_receive(:setex).with(@cache_key, Search::BING_CACHE_DURATION_IN_SECONDS, an_instance_of(String))
         @search.send(:perform)
       end
     end
