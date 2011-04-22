@@ -31,11 +31,16 @@
         %h3
           Select one:
         .wrapBox
-          = f.radio_button :government_affiliation, "1", :class => 'zradio'
+          = f.radio_button :government_affiliation, "1", :class => 'radio'
           = f.label :government_affiliation_1, "I am a government employee or contractor."
         .wrapBox
-          = f.radio_button :government_affiliation, "0", :class => 'zradio'
+          = f.radio_button :government_affiliation, "0", :class => 'radio'
           = f.label :government_affiliation_0, "I am not affiliated with a government agency."
+        .wrapBox
+          = f.check_box :terms_of_service, {:class => 'checkbox'}
+          = f.label :terms_of_service, "I have read and accept the &nbsp;", :class => 'tos-label'
+          = link_to 'Terms of Service', recalls_tos_docs_path, :target => 'blank'
+          \.
         = f.submit "Register for a new account", :class => 'btn-register submit'
     .registerboxBot
       &nbsp;

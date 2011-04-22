@@ -40,6 +40,7 @@ describe User do
     should_validate_presence_of :email
     should_validate_uniqueness_of :email
     should_validate_presence_of :contact_name
+    should_validate_acceptance_of :terms_of_service
 
     should_have_and_belong_to_many :affiliates
 

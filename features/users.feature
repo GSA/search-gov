@@ -23,12 +23,14 @@ Feature: Users
     And I should see "Register for a New Account"
     And the "I am a government employee or contractor" checkbox should not be checked
     And the "I am not affiliated with a government agency" checkbox should not be checked
+    And the "I have read and accept the" checkbox should not be checked
     When I fill in the following in the new user form:
     | Email                         | lorem.ipsum@agency.gov      |
     | Name                          | Lorem Ipsum                 |
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I choose "I am a government employee or contractor"
+    And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
     And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
@@ -60,6 +62,7 @@ Feature: Users
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I choose "I am a government employee or contractor"
+    And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
     When I follow "Add New Site"
@@ -74,6 +77,7 @@ Feature: Users
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I choose "I am a government employee or contractor"
+    And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
     And I should see "We do not recognize your email address as being affiliated with a government agency. Your account is pending approval. We will notify you when you are set up."
@@ -87,6 +91,7 @@ Feature: Users
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I choose "I am a government employee or contractor"
+    And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
     When I follow "Add New Site"
@@ -101,6 +106,7 @@ Feature: Users
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I choose "I am not affiliated with a government agency"
+    And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the user account page
     And I should see "Thank you for registering for USA.gov Search Services"
@@ -116,6 +122,7 @@ Feature: Users
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
     And I choose "I am a government employee or contractor"
+    And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
     And I should see "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
@@ -127,7 +134,7 @@ Feature: Users
     Then I should be on the account page
     And I should see "can't be blank"
 
-  Scenario: Registering without selecting government affiliation
+  Scenario: Registering without selecting government affiliation or accepting the Terms of Service
     Given I am on the login page
     When I fill in the following in the new user form:
     | Email                         | lorem.imsum@notagency.com   |
@@ -136,6 +143,12 @@ Feature: Users
     | Password confirmation         | huge_secret                 |
     And I press "Register for a new account"
     Then I should see "An option for government affiliation must be selected"
+    And I should see "Terms of service must be accepted"
+
+  Scenario: Clicking on the Terms of Service page
+    Given I am on the login page
+    When I follow "Terms of Service"
+    Then I should be on the terms of service page
 
   Scenario: Visiting edit my account profile page as an affiliate user
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

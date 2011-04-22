@@ -167,7 +167,6 @@ a
       width: 100%
     li
       float: left
-      margin-bottom: 15px
       width: 100%
       &.required label
         float: right
@@ -187,6 +186,7 @@ a
         behavior: url(/javascripts/iepngfix.htc)
         width: 215px
         border: 0
+        margin: 0.5em 0
         padding: 3px 5px
         height: 25px
         color: #000
@@ -283,21 +283,15 @@ a
         text-align: left
         width: 300px
         line-height: 18px
-    .wrapCheckbox
-      label
-        font-size: 13px
-        float: left
-        color: #5D5D5D
-        text-align: left
-        width: 365px
-        line-height: 18px
+        &.tos-label
+          width: auto
       a
-        color: #5D5D5D
-        font-size: 12px
-        float: none
+        display: inline
+        float: left
+        font-size: 15px
         margin: 0
 
-  .wrapBox .zradio, .wrapCheckbox .checkbox
+  .wrapBox .radio, .wrapBox .checkbox
     float: left
     position: inherit
 
@@ -989,7 +983,6 @@ table.generic-table
     a, input
       float: left
       margin-left: 8px
-  .current-site-row
   .staged-site-row
     margin-top: 5px
   .add-new-site-button

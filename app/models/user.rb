@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   validates_presence_of :zip, :if => :strict_mode
   validate_on_create :validate_government_affiliation
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
+  validates_acceptance_of :terms_of_service
   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
   attr_protected :approval_status
   has_and_belongs_to_many :affiliates
@@ -24,6 +25,7 @@ class User < ActiveRecord::Base
   attr_accessor :government_affiliation
   attr_accessor :strict_mode
   attr_accessor :skip_welcome_email
+  attr_accessor :terms_of_service
   attr_protected :strict_mode
 
   acts_as_authentic do |c|
