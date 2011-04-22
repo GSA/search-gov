@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-user_rb.html">app/models/user.rb</a></td>
-            <td class='right_align'><tt>126</tt></td>
-            <td class='right_align'><tt>107</tt></td>
+            <td class='right_align'><tt>128</tt></td>
+            <td class='right_align'><tt>109</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -141,421 +141,421 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst</pre></td>
+            <td><pre><a name="line15">15</a>   validates_acceptance_of :terms_of_service</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>   attr_protected :approval_status</pre></td>
+            <td><pre><a name="line16">16</a>   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>   has_and_belongs_to_many :affiliates</pre></td>
+            <td><pre><a name="line17">17</a>   attr_protected :approval_status</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>   before_validation :generate_api_key</pre></td>
+            <td><pre><a name="line18">18</a>   has_and_belongs_to_many :affiliates</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>   before_validation_on_create :set_approval_status</pre></td>
+            <td><pre><a name="line19">19</a>   before_validation :generate_api_key</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>   after_validation_on_create :set_is_affiliate</pre></td>
+            <td><pre><a name="line20">20</a>   before_validation_on_create :set_approval_status</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>   after_create :ping_admin</pre></td>
+            <td><pre><a name="line21">21</a>   after_validation_on_create :set_is_affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>   after_create :deliver_email_verification</pre></td>
+            <td><pre><a name="line22">22</a>   after_create :ping_admin</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>   after_create :welcome_user</pre></td>
+            <td><pre><a name="line23">23</a>   after_create :deliver_email_verification</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>   attr_accessor :government_affiliation</pre></td>
+            <td><pre><a name="line24">24</a>   after_create :welcome_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>   attr_accessor :strict_mode</pre></td>
+            <td><pre><a name="line25">25</a>   attr_accessor :government_affiliation</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>   attr_accessor :skip_welcome_email</pre></td>
+            <td><pre><a name="line26">26</a>   attr_accessor :strict_mode</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>   attr_protected :strict_mode</pre></td>
+            <td><pre><a name="line27">27</a>   attr_accessor :skip_welcome_email</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>   attr_accessor :terms_of_service</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>   attr_protected :strict_mode</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a> </pre></td>
+            <td><pre><a name="line30">30</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>   acts_as_authentic do |c|</pre></td>
+            <td><pre><a name="line31">31</a>   acts_as_authentic do |c|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>     c.crypto_provider = Authlogic::CryptoProviders::BCrypt</pre></td>
+            <td><pre><a name="line32">32</a>     c.crypto_provider = Authlogic::CryptoProviders::BCrypt</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>     c.perishable_token_valid_for 1.hour</pre></td>
+            <td><pre><a name="line33">33</a>     c.perishable_token_valid_for 1.hour</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>     c.disable_perishable_token_maintenance(true)</pre></td>
+            <td><pre><a name="line34">34</a>     c.disable_perishable_token_maintenance(true)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>   end</pre></td>
+            <td><pre><a name="line35">35</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a> </pre></td>
+            <td><pre><a name="line36">36</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>   APPROVAL_STATUSES.each do |status|</pre></td>
+            <td><pre><a name="line37">37</a>   APPROVAL_STATUSES.each do |status|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>     define_method &quot;is_#{status}?&quot; do</pre></td>
+            <td><pre><a name="line38">38</a>     define_method &quot;is_#{status}?&quot; do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>       approval_status == status</pre></td>
+            <td><pre><a name="line39">39</a>       approval_status == status</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>     end</pre></td>
+            <td><pre><a name="line40">40</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>   end</pre></td>
+            <td><pre><a name="line41">41</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a> </pre></td>
+            <td><pre><a name="line42">42</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line41">41</a>   def deliver_password_reset_instructions!</pre></td>
+            <td><pre><a name="line43">43</a>   def deliver_password_reset_instructions!</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line42">42</a>     reset_perishable_token!</pre></td>
+            <td><pre><a name="line44">44</a>     reset_perishable_token!</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     Emailer.deliver_password_reset_instructions(self)</pre></td>
+            <td><pre><a name="line45">45</a>     Emailer.deliver_password_reset_instructions(self)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line44">44</a>   end</pre></td>
+            <td><pre><a name="line46">46</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a> </pre></td>
+            <td><pre><a name="line47">47</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>   def to_label</pre></td>
+            <td><pre><a name="line48">48</a>   def to_label</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>     contact_name</pre></td>
+            <td><pre><a name="line49">49</a>     contact_name</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line48">48</a>   end</pre></td>
+            <td><pre><a name="line50">50</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a> </pre></td>
+            <td><pre><a name="line51">51</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>   def is_affiliate_or_higher</pre></td>
+            <td><pre><a name="line52">52</a>   def is_affiliate_or_higher</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line51">51</a>     is_affiliate || is_affiliate_admin || is_analyst</pre></td>
+            <td><pre><a name="line53">53</a>     is_affiliate || is_affiliate_admin || is_analyst</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>   end</pre></td>
+            <td><pre><a name="line54">54</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line53">53</a> </pre></td>
+            <td><pre><a name="line55">55</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>   def is_developer?</pre></td>
+            <td><pre><a name="line56">56</a>   def is_developer?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>     !is_affiliate_or_higher</pre></td>
+            <td><pre><a name="line57">57</a>     !is_affiliate_or_higher</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a>   end</pre></td>
+            <td><pre><a name="line58">58</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line57">57</a> </pre></td>
+            <td><pre><a name="line59">59</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>   def has_government_affiliated_email?</pre></td>
+            <td><pre><a name="line60">60</a>   def has_government_affiliated_email?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>     email =~ /\.(gov|mil)$/i</pre></td>
+            <td><pre><a name="line61">61</a>     email =~ /\.(gov|mil)$/i</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a>   end</pre></td>
+            <td><pre><a name="line62">62</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line61">61</a> </pre></td>
+            <td><pre><a name="line63">63</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>   def signed_up_to_be_an_affiliate?</pre></td>
+            <td><pre><a name="line64">64</a>   def signed_up_to_be_an_affiliate?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>     government_affiliation == &quot;1&quot;</pre></td>
+            <td><pre><a name="line65">65</a>     government_affiliation == &quot;1&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a>   end</pre></td>
+            <td><pre><a name="line66">66</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a> </pre></td>
+            <td><pre><a name="line67">67</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line66">66</a>   #authlogic magic state</pre></td>
+            <td><pre><a name="line68">68</a>   #authlogic magic state</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>   def approved?</pre></td>
+            <td><pre><a name="line69">69</a>   def approved?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line68">68</a>     approval_status != 'not_approved'</pre></td>
+            <td><pre><a name="line70">70</a>     approval_status != 'not_approved'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a>   end</pre></td>
+            <td><pre><a name="line71">71</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line70">70</a> </pre></td>
+            <td><pre><a name="line72">72</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line71">71</a>   def verify_email(token)</pre></td>
+            <td><pre><a name="line73">73</a>   def verify_email(token)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>     return true if is_approved?</pre></td>
+            <td><pre><a name="line74">74</a>     return true if is_approved?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>     if is_pending_email_verification? and email_verification_token == token</pre></td>
+            <td><pre><a name="line75">75</a>     if is_pending_email_verification? and email_verification_token == token</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>       self.approval_status = 'approved'</pre></td>
+            <td><pre><a name="line76">76</a>       self.approval_status = 'approved'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line75">75</a>       self.email_verification_token = nil</pre></td>
+            <td><pre><a name="line77">77</a>       self.email_verification_token = nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line76">76</a>       save!</pre></td>
+            <td><pre><a name="line78">78</a>       save!</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line77">77</a>       Emailer.deliver_welcome_to_new_user self</pre></td>
+            <td><pre><a name="line79">79</a>       Emailer.deliver_welcome_to_new_user self</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line78">78</a>       return true</pre></td>
+            <td><pre><a name="line80">80</a>       return true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line79">79</a>     else</pre></td>
+            <td><pre><a name="line81">81</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>       return false</pre></td>
+            <td><pre><a name="line82">82</a>       return false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line81">81</a>     end</pre></td>
+            <td><pre><a name="line83">83</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line82">82</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line83">83</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line84">84</a>   private</pre></td>
+            <td><pre><a name="line84">84</a>   end</pre></td>
           </tr>
         
           
@@ -567,253 +567,265 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line86">86</a>   def ping_admin</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line87">87</a>     Emailer.deliver_new_user_to_admin(self)</pre></td>
+            <td><pre><a name="line86">86</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line88">88</a>   end</pre></td>
+            <td><pre><a name="line87">87</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line88">88</a>   def ping_admin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line89">89</a>     Emailer.deliver_new_user_to_admin(self)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line89">89</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line90">90</a>   def deliver_email_verification</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line91">91</a>     if is_pending_email_verification?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line92">92</a>       current_perishable_token = perishable_token</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line93">93</a>       self.email_verification_token = reset_perishable_token</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line94">94</a>       self.perishable_token = current_perishable_token</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line95">95</a>       save!</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line96">96</a>       Emailer.deliver_new_user_email_verification(self)</pre></td>
+            <td><pre><a name="line90">90</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line97">97</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line98">98</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line99">99</a> </pre></td>
+            <td><pre><a name="line91">91</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line100">100</a>   def welcome_user</pre></td>
+            <td><pre><a name="line92">92</a>   def deliver_email_verification</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line101">101</a>     unless self.skip_welcome_email</pre></td>
+            <td><pre><a name="line93">93</a>     if is_pending_email_verification?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line102">102</a>       Emailer.deliver_welcome_to_new_developer(self) if is_developer?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line103">103</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line104">104</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line105">105</a> </pre></td>
+            <td><pre><a name="line94">94</a>       current_perishable_token = perishable_token</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line106">106</a>   def generate_api_key</pre></td>
+            <td><pre><a name="line95">95</a>       self.email_verification_token = reset_perishable_token</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line107">107</a>     self.api_key = Digest::MD5.hexdigest(&quot;#{contact_name}:#{email}:#{Time.now.to_s}&quot;) if self.api_key.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line108">108</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line109">109</a> </pre></td>
+            <td><pre><a name="line96">96</a>       self.perishable_token = current_perishable_token</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line110">110</a>   def set_is_affiliate</pre></td>
+            <td><pre><a name="line97">97</a>       save!</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line111">111</a>     unless self.government_affiliation.blank?</pre></td>
+            <td><pre><a name="line98">98</a>       Emailer.deliver_new_user_email_verification(self)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line99">99</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line100">100</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line101">101</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line112">112</a>       self.is_affiliate = signed_up_to_be_an_affiliate? ? 1 : 0</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line113">113</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line114">114</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line115">115</a> </pre></td>
+            <td><pre><a name="line102">102</a>   def welcome_user</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line116">116</a>   def validate_government_affiliation</pre></td>
+            <td><pre><a name="line103">103</a>     unless self.skip_welcome_email</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line117">117</a>     if self.government_affiliation.blank?</pre></td>
+            <td><pre><a name="line104">104</a>       Emailer.deliver_welcome_to_new_developer(self) if is_developer?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line105">105</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line106">106</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line107">107</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line118">118</a>       errors.add_to_base(&quot;An option for government affiliation must be selected&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line119">119</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line120">120</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line121">121</a> </pre></td>
+            <td><pre><a name="line108">108</a>   def generate_api_key</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line122">122</a>   def set_approval_status</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line123">123</a>     self.approval_status = 'approved' if self.approval_status.blank? and !signed_up_to_be_an_affiliate?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line124">124</a>     self.approval_status = (has_government_affiliated_email? ? 'pending_email_verification' : 'pending_approval') if self.approval_status.blank?</pre></td>
+            <td><pre><a name="line109">109</a>     self.api_key = Digest::MD5.hexdigest(&quot;#{contact_name}:#{email}:#{Time.now.to_s}&quot;) if self.api_key.nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line125">125</a>   end</pre></td>
+            <td><pre><a name="line110">110</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line126">126</a> end</pre></td>
+            <td><pre><a name="line111">111</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line112">112</a>   def set_is_affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line113">113</a>     unless self.government_affiliation.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line114">114</a>       self.is_affiliate = signed_up_to_be_an_affiliate? ? 1 : 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line115">115</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line116">116</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line117">117</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line118">118</a>   def validate_government_affiliation</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line119">119</a>     if self.government_affiliation.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line120">120</a>       errors.add_to_base(&quot;An option for government affiliation must be selected&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line121">121</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line122">122</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line123">123</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line124">124</a>   def set_approval_status</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line125">125</a>     self.approval_status = 'approved' if self.approval_status.blank? and !signed_up_to_be_an_affiliate?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line126">126</a>     self.approval_status = (has_government_affiliated_email? ? 'pending_email_verification' : 'pending_approval') if self.approval_status.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line127">127</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line128">128</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Apr 21 19:39:08 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Apr 22 16:12:56 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
