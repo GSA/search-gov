@@ -8,19 +8,13 @@ class SuperfreshUrl < ActiveRecord::Base
 
   class << self
     def uncrawled_urls(number_of_urls = nil, affiliate = nil)
-      sql_options = {}
+      sql_options = {:order => 'created_at asc'}
       sql_options.merge!(:limit => number_of_urls) if number_of_urls
-      if affiliate
-        find_all_by_crawled_at_and_affiliate_id(nil, affiliate.id, sql_options.merge(:order => 'created_at asc'))
-      else
-        find_all_by_crawled_at(nil, sql_options.merge(:order => 'created_at asc'))
-      end
+      affiliate ? find_all_by_crawled_at_and_affiliate_id(nil, affiliate.id, sql_options) : find_all_by_crawled_at(nil, sql_options)
     end
 
     def crawled_urls(affiliate = nil, page = 1)
-      if affiliate
-        paginate_by_affiliate_id(affiliate.id, :conditions => ['NOT ISNULL(crawled_at)'], :page => page, :order => 'crawled_at desc')
-      end
+      paginate_by_affiliate_id(affiliate.id, :conditions => ['NOT ISNULL(crawled_at)'], :page => page, :order => 'crawled_at desc') if affiliate
     end
 
     def process_file(file, affiliate = nil)

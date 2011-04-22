@@ -4,9 +4,7 @@ describe SuperfreshUrl do
   fixtures :affiliates
 
   before do
-    @valid_attributes = {
-      :url => "http://search.usa.gov/recently-updated-url"
-    }
+    @valid_attributes = {:url => "http://search.usa.gov/recently-updated-url"}
   end
 
   describe "Creating new instance" do
@@ -82,7 +80,7 @@ describe SuperfreshUrl do
   end
 
   describe "#process_file" do
-    context "when a file is passed in with 100 or less URLs" do
+    context "when a file is passed in with 100 or fewer URLs" do
       before do
         @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
         @file = Tempfile.new('urls.txt')
