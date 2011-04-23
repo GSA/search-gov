@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-affiliate_rb.html">app/models/affiliate.rb</a></td>
-            <td class='right_align'><tt>155</tt></td>
-            <td class='right_align'><tt>129</tt></td>
+            <td class='right_align'><tt>166</tt></td>
+            <td class='right_align'><tt>139</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -153,721 +153,721 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>   before_validation_on_create :set_default_name</pre></td>
+            <td><pre><a name="line17">17</a>   before_validation_on_create :set_default_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>   before_save :set_default_affiliate_template</pre></td>
+            <td><pre><a name="line18">18</a>   before_save :set_default_affiliate_template, :normalize_domains</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>   before_validation_on_create :set_default_search_results_page_title, :set_default_staged_search_results_page_title</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>   named_scope :ordered, {:order =&gt; 'display_name ASC'}</pre></td>
+            <td><pre><a name="line19">19</a>   named_scope :ordered, {:order =&gt; 'display_name ASC'}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a> </pre></td>
+            <td><pre><a name="line20">20</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>   USAGOV_AFFILIATE_NAME = 'usasearch.gov'</pre></td>
+            <td><pre><a name="line21">21</a>   USAGOV_AFFILIATE_NAME = 'usasearch.gov'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>   VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}</pre></td>
+            <td><pre><a name="line22">22</a>   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = &quot;{Query} - {SiteName} Search Results&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line25">25</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>   HUMAN_ATTRIBUTE_NAME_HASH = {</pre></td>
+            <td><pre><a name="line23">23</a>   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = &quot;{Query} - {SiteName} Search Results&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>     :display_name =&gt; &quot;Site name&quot;,</pre></td>
+            <td><pre><a name="line24">24</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>   HUMAN_ATTRIBUTE_NAME_HASH = {</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>     :name =&gt; &quot;HTTP parameter site name&quot;,</pre></td>
+            <td><pre><a name="line26">26</a>     :display_name =&gt; &quot;Site name&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>     :staged_search_results_page_title =&gt; &quot;Search results page title&quot;</pre></td>
+            <td><pre><a name="line27">27</a>     :name =&gt; &quot;HTTP parameter site name&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>   }</pre></td>
+            <td><pre><a name="line28">28</a>     :staged_search_results_page_title =&gt; &quot;Search results page title&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>   def name=(name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>     new_record? ? (write_attribute(:name, name)) : (raise &quot;This field cannot be changed.&quot;)</pre></td>
+            <td><pre><a name="line29">29</a>   }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>   end</pre></td>
+            <td><pre><a name="line30">30</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>   def name=(name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>     new_record? ? (write_attribute(:name, name)) : (raise &quot;This field cannot be changed.&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>   def is_affiliate_sayt_enabled?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>     self.is_sayt_enabled &amp;&amp; self.is_affiliate_suggestions_enabled</pre></td>
+            <td><pre><a name="line33">33</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>   end</pre></td>
+            <td><pre><a name="line34">34</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>   def is_affiliate_sayt_enabled?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>     self.is_sayt_enabled &amp;&amp; self.is_affiliate_suggestions_enabled</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>   def is_global_sayt_enabled?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>     self.is_sayt_enabled &amp;&amp; !self.is_affiliate_suggestions_enabled</pre></td>
+            <td><pre><a name="line37">37</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a>   end</pre></td>
+            <td><pre><a name="line38">38</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>   def is_global_sayt_enabled?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>     self.is_sayt_enabled &amp;&amp; !self.is_affiliate_suggestions_enabled</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line43">43</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>   def is_sayt_disabled?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line45">45</a>     !self.is_sayt_enabled &amp;&amp; !self.is_affiliate_suggestions_enabled</pre></td>
+            <td><pre><a name="line41">41</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a>   end</pre></td>
+            <td><pre><a name="line42">42</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>   def is_sayt_disabled?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>     !self.is_sayt_enabled &amp;&amp; !self.is_affiliate_suggestions_enabled</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>   def is_affiliate_related_topics_enabled?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>     (self.related_topics_setting != 'global_enabled' &amp;&amp; self.related_topics_setting != 'disabled') || self.related_topics_setting.nil?</pre></td>
+            <td><pre><a name="line45">45</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>   end</pre></td>
+            <td><pre><a name="line46">46</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>   def is_affiliate_related_topics_enabled?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>     (self.related_topics_setting != 'global_enabled' &amp;&amp; self.related_topics_setting != 'disabled') || self.related_topics_setting.nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line52">52</a>   def is_global_related_topics_enabled?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line53">53</a>     self.related_topics_setting == 'global_enabled'</pre></td>
+            <td><pre><a name="line49">49</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a>   end</pre></td>
+            <td><pre><a name="line50">50</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>   def is_global_related_topics_enabled?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>     self.related_topics_setting == 'global_enabled'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line55">55</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line56">56</a>   def is_related_topics_disabled?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line57">57</a>     self.related_topics_setting == 'disabled'</pre></td>
+            <td><pre><a name="line53">53</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line58">58</a>   end</pre></td>
+            <td><pre><a name="line54">54</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>   def is_related_topics_disabled?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>     self.related_topics_setting == 'disabled'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line59">59</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>   def template</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line61">61</a>     affiliate_template.presence || AffiliateTemplate.default_template</pre></td>
+            <td><pre><a name="line57">57</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line62">62</a>   end</pre></td>
+            <td><pre><a name="line58">58</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>   def template</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>     affiliate_template.presence || AffiliateTemplate.default_template</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line63">63</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line64">64</a>   def update_attributes_for_staging(attributes)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line65">65</a>     attributes[:has_staged_content] = true</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line66">66</a>     self.update_attributes(attributes)</pre></td>
+            <td><pre><a name="line61">61</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line67">67</a>   end</pre></td>
+            <td><pre><a name="line62">62</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>   def update_attributes_for_staging(attributes)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>     attributes[:has_staged_content] = true</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>     self.update_attributes(attributes)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line68">68</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line69">69</a>   def update_attributes_for_current(attributes)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line70">70</a>     attributes[:domains] = attributes[:staged_domains] if attributes.include?(:staged_domains)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line71">71</a>     attributes[:header] = attributes[:staged_header] if attributes.include?(:staged_header)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line72">72</a>     attributes[:footer] = attributes[:staged_footer] if attributes.include?(:staged_footer)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line73">73</a>     attributes[:affiliate_template_id] = attributes[:staged_affiliate_template_id] if attributes.include?(:staged_affiliate_template_id)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line74">74</a>     attributes[:search_results_page_title] = attributes[:staged_search_results_page_title] if attributes.include?(:staged_search_results_page_title)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line75">75</a>     attributes[:has_staged_content] = false</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line76">76</a>     self.update_attributes(attributes)</pre></td>
+            <td><pre><a name="line66">66</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line77">77</a>   end</pre></td>
+            <td><pre><a name="line67">67</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>   def update_attributes_for_current(attributes)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>     %w{ domains header footer affiliate_template_id search_results_page_title }.each do |field|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line70">70</a>       attributes[field.to_sym] = attributes[&quot;staged_#{field}&quot;.to_sym] if attributes.include?(&quot;staged_#{field}&quot;.to_sym)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line78">78</a> </pre></td>
+            <td><pre><a name="line71">71</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>   def build_search_results_page_title(query)</pre></td>
+            <td><pre><a name="line72">72</a>     attributes[:has_staged_content] = false</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>     build_page_title self.search_results_page_title, query</pre></td>
+            <td><pre><a name="line73">73</a>     self.update_attributes(attributes)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line81">81</a>   end</pre></td>
+            <td><pre><a name="line74">74</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line82">82</a> </pre></td>
+            <td><pre><a name="line75">75</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>   def build_staged_search_results_page_title(query)</pre></td>
+            <td><pre><a name="line76">76</a>   def build_search_results_page_title(query)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>     build_page_title self.staged_search_results_page_title, query</pre></td>
+            <td><pre><a name="line77">77</a>     build_page_title self.search_results_page_title, query</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line85">85</a>   end</pre></td>
+            <td><pre><a name="line78">78</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line86">86</a> </pre></td>
+            <td><pre><a name="line79">79</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line87">87</a>   def build_page_title(page_title, query)</pre></td>
+            <td><pre><a name="line80">80</a>   def build_staged_search_results_page_title(query)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>     query_string = query.blank? ? '' : query</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line89">89</a>     page_title = page_title.gsub(/\{query\}/i, query_string)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line90">90</a>     page_title.gsub(/\{sitename\}/i, self.display_name)</pre></td>
+            <td><pre><a name="line81">81</a>     build_page_title self.staged_search_results_page_title, query</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line91">91</a>   end</pre></td>
+            <td><pre><a name="line82">82</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line92">92</a> </pre></td>
+            <td><pre><a name="line83">83</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line93">93</a>   def staging_attributes</pre></td>
+            <td><pre><a name="line84">84</a>   def build_page_title(page_title, query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line85">85</a>     query_string = query.blank? ? '' : query</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line86">86</a>     page_title = page_title.gsub(/\{query\}/i, query_string)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line87">87</a>     page_title.gsub(/\{sitename\}/i, self.display_name)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line94">94</a>     {</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line95">95</a>       :staged_domains =&gt; self.staged_domains,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line96">96</a>       :staged_header =&gt; self.staged_header,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line97">97</a>       :staged_footer =&gt; self.staged_footer,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line98">98</a>       :staged_affiliate_template_id =&gt; self.staged_affiliate_template_id,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line99">99</a>       :staged_search_results_page_title =&gt; self.staged_search_results_page_title</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line100">100</a>     }</pre></td>
+            <td><pre><a name="line88">88</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line101">101</a>   end</pre></td>
+            <td><pre><a name="line89">89</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line90">90</a>   def staging_attributes</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line102">102</a> </pre></td>
+            <td><pre><a name="line91">91</a>     {</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line103">103</a>   def push_staged_changes</pre></td>
+            <td><pre><a name="line92">92</a>       :staged_domains =&gt; self.staged_domains,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line104">104</a>     self.update_attributes_for_current(self.staging_attributes)</pre></td>
+            <td><pre><a name="line93">93</a>       :staged_header =&gt; self.staged_header,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line94">94</a>       :staged_footer =&gt; self.staged_footer,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line95">95</a>       :staged_affiliate_template_id =&gt; self.staged_affiliate_template_id,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line96">96</a>       :staged_search_results_page_title =&gt; self.staged_search_results_page_title</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line97">97</a>     }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line105">105</a>   end</pre></td>
+            <td><pre><a name="line98">98</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line106">106</a> </pre></td>
+            <td><pre><a name="line99">99</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line107">107</a>   def cancel_staged_changes</pre></td>
+            <td><pre><a name="line100">100</a>   def push_staged_changes</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line108">108</a>     self.update_attributes({</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line109">109</a>       :staged_domains =&gt; self.domains,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line110">110</a>       :staged_header =&gt; self.header,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line111">111</a>       :staged_footer =&gt; self.footer,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line112">112</a>       :staged_affiliate_template_id =&gt; self.affiliate_template_id,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line113">113</a>       :staged_search_results_page_title =&gt; self.search_results_page_title,</pre></td>
+            <td><pre><a name="line101">101</a>     self.update_attributes_for_current(self.staging_attributes)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line114">114</a>       :has_staged_content =&gt; false</pre></td>
+            <td><pre><a name="line102">102</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line115">115</a>     })</pre></td>
+            <td><pre><a name="line103">103</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line104">104</a>   def cancel_staged_changes</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line105">105</a>     self.update_attributes({</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line106">106</a>       :staged_domains =&gt; self.domains,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line107">107</a>       :staged_header =&gt; self.header,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line108">108</a>       :staged_footer =&gt; self.footer,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line109">109</a>       :staged_affiliate_template_id =&gt; self.affiliate_template_id,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line110">110</a>       :staged_search_results_page_title =&gt; self.search_results_page_title,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line116">116</a>   end</pre></td>
+            <td><pre><a name="line111">111</a>       :has_staged_content =&gt; false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line117">117</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line118">118</a>   def sync_staged_attributes</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line119">119</a>     self.cancel_staged_changes unless self.has_staged_content?</pre></td>
+            <td><pre><a name="line112">112</a>     })</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line120">120</a>   end</pre></td>
+            <td><pre><a name="line113">113</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line121">121</a> </pre></td>
+            <td><pre><a name="line114">114</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line122">122</a>   class &lt;&lt; self</pre></td>
+            <td><pre><a name="line115">115</a>   def sync_staged_attributes</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line123">123</a>     def human_attribute_name(attribute_key_name, options = {})</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line124">124</a>       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super</pre></td>
+            <td><pre><a name="line116">116</a>     self.cancel_staged_changes unless self.has_staged_content?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line125">125</a>     end</pre></td>
+            <td><pre><a name="line117">117</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line126">126</a>   end</pre></td>
+            <td><pre><a name="line118">118</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line119">119</a>   def normalize_domains(staged = true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line120">120</a>     method = staged ? &quot;staged_domains&quot; : &quot;domains&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line121">121</a>     return if self.send(method).nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line122">122</a>     domain_list = self.send(method).gsub(/(https?:\/\/| )/, '').split.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line123">123</a>       select { |domain| domain =~ /^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,3}(\/.*)?$/ix }.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line124">124</a>       sort { |a, b| a.length &lt;=&gt; b.length }.uniq</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line125">125</a>     result = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line126">126</a>     while (domain_list.length &gt; 0)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line127">127</a>       result &lt;&lt; domain_list.first</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line128">128</a>       domain_list = domain_list.drop(1).delete_if { |domain| domain.start_with?(domain_list.first) or domain.include?(&quot;.#{domain_list.first}&quot;) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line127">127</a> </pre></td>
+            <td><pre><a name="line129">129</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line128">128</a>   private</pre></td>
+            <td><pre><a name="line130">130</a>     self.send(method + &quot;=&quot;, result.join(&quot;\n&quot;))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line129">129</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line130">130</a>   def remove_boosted_contents_from_index</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line131">131</a>     boosted_contents.each { |bs| bs.remove_from_index }</pre></td>
+            <td><pre><a name="line131">131</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line132">132</a>   end</pre></td>
+            <td><pre><a name="line132">132</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line133">133</a>   class &lt;&lt; self</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line134">134</a>     def human_attribute_name(attribute_key_name, options = {})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line135">135</a>       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line133">133</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line134">134</a>   def set_default_affiliate_template</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line135">135</a>     self.staged_affiliate_template_id = AffiliateTemplate.default_id if staged_affiliate_template_id.blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line136">136</a>     self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?</pre></td>
+            <td><pre><a name="line136">136</a>     end</pre></td>
           </tr>
         
           
@@ -885,109 +885,175 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line139">139</a>   def set_default_name</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line140">140</a>     if self.name.blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line141">141</a>       self.name = self.display_name.downcase.gsub(/[^a-z0-9._-]/, '')[0,33] unless self.display_name.blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line142">142</a>       self.name = nil if !self.name.blank? and self.name.length &lt; 3</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line143">143</a>       self.name = nil if !self.name.blank? and Affiliate.find_by_name(self.name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line144">144</a>       self.name = Digest::MD5.hexdigest(&quot;#{Time.now.to_s}&quot;)[0..8] if self.name.blank?</pre></td>
+            <td><pre><a name="line139">139</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line145">145</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line146">146</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line147">147</a> </pre></td>
+            <td><pre><a name="line140">140</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line148">148</a>   def set_default_search_results_page_title</pre></td>
+            <td><pre><a name="line141">141</a>   def remove_boosted_contents_from_index</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line149">149</a>     self.search_results_page_title = DEFAULT_SEARCH_RESULTS_PAGE_TITLE if self.search_results_page_title.blank?</pre></td>
+            <td><pre><a name="line142">142</a>     boosted_contents.each { |bs| bs.remove_from_index }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line150">150</a>   end</pre></td>
+            <td><pre><a name="line143">143</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line151">151</a> </pre></td>
+            <td><pre><a name="line144">144</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line152">152</a>   def set_default_staged_search_results_page_title</pre></td>
+            <td><pre><a name="line145">145</a>   def set_default_affiliate_template</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line153">153</a>     self.staged_search_results_page_title = DEFAULT_SEARCH_RESULTS_PAGE_TITLE if self.staged_search_results_page_title.blank?</pre></td>
+            <td><pre><a name="line146">146</a>     self.staged_affiliate_template_id = AffiliateTemplate.default_id if staged_affiliate_template_id.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line147">147</a>     self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line154">154</a>   end</pre></td>
+            <td><pre><a name="line148">148</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line155">155</a> end</pre></td>
+            <td><pre><a name="line149">149</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line150">150</a>   def set_default_name</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line151">151</a>     if self.name.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line152">152</a>       self.name = self.display_name.downcase.gsub(/[^a-z0-9._-]/, '')[0, 33] unless self.display_name.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line153">153</a>       self.name = nil if !self.name.blank? and self.name.length &lt; 3</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line154">154</a>       self.name = nil if !self.name.blank? and Affiliate.find_by_name(self.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line155">155</a>       self.name = Digest::MD5.hexdigest(&quot;#{Time.now.to_s}&quot;)[0..8] if self.name.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line156">156</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line157">157</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line158">158</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line159">159</a>   def set_default_search_results_page_title</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line160">160</a>     self.search_results_page_title = DEFAULT_SEARCH_RESULTS_PAGE_TITLE if self.search_results_page_title.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line161">161</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line162">162</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line163">163</a>   def set_default_staged_search_results_page_title</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line164">164</a>     self.staged_search_results_page_title = DEFAULT_SEARCH_RESULTS_PAGE_TITLE if self.staged_search_results_page_title.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line165">165</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line166">166</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Apr 22 16:12:55 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Apr 23 14:03:58 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
