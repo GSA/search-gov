@@ -1,9 +1,9 @@
 class Affiliates::SuperfreshController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin
   before_filter :setup_affiliate
-  
+
   VALID_CONTENT_TYPES = %w{text/plain txt}
-  
+
   def index
     @title = "Add to Bing - "
     @superfresh_url = SuperfreshUrl.new
@@ -17,22 +17,22 @@ class Affiliates::SuperfreshController < Affiliates::AffiliatesController
     if @superfresh_url.save
       flash[:success] = "Successfully added #{@superfresh_url.url}.  It will be refreshed soon."
     else
-      flash[:error] = "There was an error adding the URL to be refreshed.  Please check the URL and try again."
+      flash[:error] = @superfresh_url.errors.full_messages.to_sentence
     end
     redirect_to affiliate_superfresh_urls_path(@affiliate)
   end
-  
+
   def destroy
     if @superfresh_url = SuperfreshUrl.destroy(params[:id])
       flash[:success] = "Removed #{@superfresh_url.url} from list of uncrawled URLs."
     end
     redirect_to affiliate_superfresh_urls_path(@affiliate)
   end
-  
+
   def upload
     file = params[:superfresh_urls]
     if file.present? and VALID_CONTENT_TYPES.include?(file.content_type)
-      begin    
+      begin
         uploaded_count = SuperfreshUrl.process_file(file, @affiliate)
         if uploaded_count > 0
           flash[:success] = "Successfully uploaded #{uploaded_count} urls."
@@ -48,4 +48,4 @@ class Affiliates::SuperfreshController < Affiliates::AffiliatesController
     redirect_to affiliate_superfresh_urls_path(@affiliate)
   end
 end
-  
+

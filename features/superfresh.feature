@@ -65,10 +65,10 @@ Feature: Affiliate Superfresh Interface
     And I follow "Add to Bing"
     Then I should be on the affiliate superfresh page
     And I should see "Add to Bing"
-    When I fill in "Single URL" with "http://www.spammy.com"
+    When I fill in "Single URL" with "notanurl.html"
     And I press "Submit"
     Then I should be on the affiliate superfresh page
-    And I should see "There was an error adding the URL to be refreshed."
+    And I should see "Url is invalid"
 
   Scenario: Bulk-uploading URLs for on-demand indexing
     Given the following Affiliates exist:

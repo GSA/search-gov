@@ -10,8 +10,21 @@ describe SuperfreshUrl do
   describe "Creating new instance" do
     should_belong_to :affiliate
     should_validate_presence_of :url
-    should_not_allow_values_for :url, "http://some.spamsite.com/url", "http://some.spamsite.us/url", "http://some.spamsite.info/url"
-    should_allow_values_for :url, "http://some.site.gov/url", "http://some.site.mil/url"
+    should_allow_values_for :url, "http://some.site.gov/url", "http://some.site.mil/url", "http://some.govsite.com/url", "http://some.govsite.us/url", "http://some.govsite.info/url"
+
+    context "when affiliate has site domains" do
+      before do
+        @affiliate = affiliates(:basic_affiliate)
+        @affiliate.update_attribute(:domains, "usa.com")
+      end
+
+      it "should validate that the Superfresh URL belongs to one of the site domains" do
+        SuperfreshUrl.create(:url => 'http://affiliate.usa.com', :affiliate => @affiliate)
+        SuperfreshUrl.create(:url => 'http://affiliate.usa.gov', :affiliate => @affiliate)
+        SuperfreshUrl.find_by_affiliate_id_and_url(@affiliate.id, 'http://affiliate.usa.com').should_not be_nil
+        SuperfreshUrl.find_by_affiliate_id_and_url(@affiliate.id, 'http://affiliate.usa.gov').should be_nil
+      end
+    end
   end
 
   describe "#uncrawled_urls" do
@@ -92,38 +105,45 @@ describe SuperfreshUrl do
       end
 
       it "should create a new SuperfreshUrl for each of the lines in the file" do
-        SuperfreshUrl.should_receive(:create).exactly(3).times
         SuperfreshUrl.process_file(@file)
-      end
-
-      it "should use nil if no affiliate is provided" do
-        @urls.each do |url|
-          SuperfreshUrl.should_receive(:create).with(:url => url, :affiliate => nil).and_return true
-        end
-        SuperfreshUrl.process_file(@file)
+        @urls.each {|url| SuperfreshUrl.find_by_url_and_affiliate_id(url, nil).should_not be_nil}
       end
 
       it "should use an affiliate if specified" do
         affiliate = affiliates(:basic_affiliate)
-        @urls.each do |url|
-          SuperfreshUrl.should_receive(:create).with(:url => url, :affiliate => affiliate).and_return true
-        end
         SuperfreshUrl.process_file(@file, affiliate)
+        @urls.each {|url| SuperfreshUrl.find_by_url_and_affiliate_id(url, affiliate).should_not be_nil}
       end
     end
 
     context "when a file is passed in with more than 100 URLs" do
       before do
         @file = Tempfile.new('too_many_urls.txt')
-        1.upto(101) do
-          @file.write("http://search.usa.gov\n")
-        end
+        101.times { |x| @file.write("http://search.usa.gov/#{x}\n") }
         @file.close
         @file.open
       end
 
       it "should raise an error that there are too many URLs in the file" do
         lambda { SuperfreshUrl.process_file(@file) }.should raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
+      end
+    end
+
+    context "when a file contains URLs that aren't covered by the affiliate's site domain list" do
+      before do
+        @affiliate = affiliates(:basic_affiliate)
+        @affiliate.update_attribute(:domains, "usa.com")
+        @file = Tempfile.new('urls.txt')
+        @file.puts(['http://search.usa.com', 'http://usa.com', 'http://data.gov'])
+        @file.close
+        @file.open
+      end
+
+      it "should ignore them and not create SuperfreshUrls out of them" do
+        SuperfreshUrl.process_file(@file, @affiliate)
+        SuperfreshUrl.find_by_url("http://search.usa.com").should_not be_nil
+        SuperfreshUrl.find_by_url("http://usa.com").should_not be_nil
+        SuperfreshUrl.find_by_url("http://data.gov").should be_nil
       end
     end
   end
