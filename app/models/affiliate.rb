@@ -14,13 +14,12 @@ class Affiliate < ActiveRecord::Base
   has_many :superfresh_urls, :dependent => :destroy
   has_many :calais_related_searches, :dependent => :destroy
   after_destroy :remove_boosted_contents_from_index
-  before_validation_on_create :set_default_name
-  before_save :set_default_affiliate_template
-  before_validation_on_create :set_default_search_results_page_title, :set_default_staged_search_results_page_title
+  before_validation_on_create :set_default_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title
+  before_save :set_default_affiliate_template, :normalize_domains
   named_scope :ordered, {:order => 'display_name ASC'}
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
-  VALID_RELATED_TOPICS_SETTINGS = %w{affiliate_enabled global_enabled disabled}
+  VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
 
   HUMAN_ATTRIBUTE_NAME_HASH = {
@@ -67,11 +66,9 @@ class Affiliate < ActiveRecord::Base
   end
 
   def update_attributes_for_current(attributes)
-    attributes[:domains] = attributes[:staged_domains] if attributes.include?(:staged_domains)
-    attributes[:header] = attributes[:staged_header] if attributes.include?(:staged_header)
-    attributes[:footer] = attributes[:staged_footer] if attributes.include?(:staged_footer)
-    attributes[:affiliate_template_id] = attributes[:staged_affiliate_template_id] if attributes.include?(:staged_affiliate_template_id)
-    attributes[:search_results_page_title] = attributes[:staged_search_results_page_title] if attributes.include?(:staged_search_results_page_title)
+    %w{ domains header footer affiliate_template_id search_results_page_title }.each do |field|
+      attributes[field.to_sym] = attributes["staged_#{field}".to_sym] if attributes.include?("staged_#{field}".to_sym)
+    end
     attributes[:has_staged_content] = false
     self.update_attributes(attributes)
   end
@@ -119,6 +116,20 @@ class Affiliate < ActiveRecord::Base
     self.cancel_staged_changes unless self.has_staged_content?
   end
 
+  def normalize_domains(staged = true)
+    method = staged ? "staged_domains" : "domains"
+    return if self.send(method).nil?
+    domain_list = self.send(method).gsub(/(https?:\/\/| )/, '').split.
+      select { |domain| domain =~ /^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,3}(\/.*)?$/ix }.
+      sort { |a, b| a.length <=> b.length }.uniq
+    result = []
+    while (domain_list.length > 0)
+      result << domain_list.first
+      domain_list = domain_list.drop(1).delete_if { |domain| domain.start_with?(domain_list.first) or domain.include?(".#{domain_list.first}") }
+    end
+    self.send(method + "=", result.join("\n"))
+  end
+
   class << self
     def human_attribute_name(attribute_key_name, options = {})
       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
@@ -138,7 +149,7 @@ class Affiliate < ActiveRecord::Base
 
   def set_default_name
     if self.name.blank?
-      self.name = self.display_name.downcase.gsub(/[^a-z0-9._-]/, '')[0,33] unless self.display_name.blank?
+      self.name = self.display_name.downcase.gsub(/[^a-z0-9._-]/, '')[0, 33] unless self.display_name.blank?
       self.name = nil if !self.name.blank? and self.name.length < 3
       self.name = nil if !self.name.blank? and Affiliate.find_by_name(self.name)
       self.name = Digest::MD5.hexdigest("#{Time.now.to_s}")[0..8] if self.name.blank?

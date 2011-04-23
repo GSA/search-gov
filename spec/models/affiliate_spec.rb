@@ -140,7 +140,7 @@ describe Affiliate do
 
     it "should not change the name attribute on update" do
       affiliate = Affiliate.create!(@valid_create_attributes)
-      lambda {affiliate.update_attributes(:name => "")}.should raise_error("This field cannot be changed.")
+      lambda { affiliate.update_attributes(:name => "") }.should raise_error("This field cannot be changed.")
       affiliate.name.should == "myawesomesite"
     end
 
@@ -200,6 +200,56 @@ describe Affiliate do
       Affiliate.find(affiliate.id).update_attributes(:affiliate_template_id => "")
       Affiliate.find(affiliate.id).affiliate_template.should == affiliate_templates(:default)
     end
+
+    context "when input domains is nil" do
+      it "should return nil" do
+        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => nil))
+        affiliate.staged_domains.should be_nil
+      end
+    end
+
+    context "when input domains have leading http(s) protocols" do
+      it "should delete leading http(s) protocols from domains" do
+        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "http://foo.gov\nbar.gov/somepage.html\nhttps://blat.gov/somedir"))
+        affiliate.staged_domains.should == "foo.gov\nblat.gov/somedir\nbar.gov/somepage.html"
+      end
+    end
+
+    context "when input domains have blank/whitespace" do
+      it "should delete blank/whitespace from domains" do
+        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "do.gov\n\n\n bar.gov  \nblat.gov"))
+        affiliate.staged_domains.should == "do.gov\nbar.gov\nblat.gov"
+      end
+    end
+
+    context "when input domains have dupes" do
+      it "should delete dupes from domains" do
+        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "foo.gov\nfoo.gov"))
+        affiliate.staged_domains.should == "foo.gov"
+      end
+    end
+
+    context "when there is just one input domain" do
+      it "should return that input domain" do
+        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "foo.gov"))
+        affiliate.staged_domains.should == "foo.gov"
+      end
+    end
+
+    context "when input domains don't look like domains" do
+      it "should filter them out" do
+        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "foo.gov\nsomepage.html\nwhatisthis?\nbar.gov/somedir/"))
+        affiliate.staged_domains.should == "foo.gov\nbar.gov/somedir/"
+      end
+    end
+
+    context "when one input domain is covered by another" do
+      it "should filter it out" do
+        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "blat.gov\nblat.gov/s.html\nbar.gov/somedir/\nbar.gov\nwww.bar.gov\nxxbar.gov"))
+        affiliate.staged_domains.should == "bar.gov\nblat.gov\nxxbar.gov"
+      end
+    end
+
   end
 
   describe "#is_affiliate_related_topics_enabled?" do
