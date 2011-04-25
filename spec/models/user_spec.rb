@@ -84,7 +84,6 @@ describe User do
 
     context "when the flag to not send an email is set to true" do
       it "should not send any emails" do
-        Emailer.should_not_receive(:deliver_welcome_to_new_user)
         Emailer.should_not_receive(:deliver_welcome_to_new_developer)
         User.create!(@valid_attributes.merge(:skip_welcome_email => true))
       end
@@ -112,33 +111,31 @@ describe User do
         user = User.create!(@valid_affiliate_attributes.merge({:email => email}))
         user.has_government_affiliated_email?.should be_true
         user.is_pending_email_verification?.should be_true
-        user.is_pending_approval?.should be_false
-        user.is_approved?.should be_false
       end
     end
 
-    it "should set approval status to pending_approval if the affiliate user is not government_affiliated" do
+    it "should set approval status to pending_contact_information if the affiliate user is not  government_affiliated" do
       %w( aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
         user = User.create!(@valid_affiliate_attributes.merge({:email => email}))
         user.has_government_affiliated_email?.should be_false
-        user.is_pending_approval?.should be_true
-        user.is_pending_email_verification?.should be_false
-        user.is_approved?.should be_false
+        user.is_pending_contact_information?.should be_true
       end
     end
 
     it "should set approval status to approved if the user is a developer" do
       user = User.create!(@valid_developer_attributes.merge({:email => 'developer@company.com'}))
-      user.has_government_affiliated_email?.should be_false
       user.is_approved?.should be_true
-      user.is_pending_approval?.should be_false
     end
 
     it "should set email_verification_token if the user is pending_email_verification" do
       user = User.create!(@valid_affiliate_attributes)
-      user.has_government_affiliated_email?.should be_true
       user.is_pending_email_verification?.should be_true
       user.email_verification_token.should_not be_blank
+    end
+
+    it "should set requires_manual_approval if the email is not government_affiliated" do
+      user = User.create!(@valid_affiliate_attributes.merge({:email => "not.gov@corp.com"}))
+      user.requires_manual_approval?.should be_true
     end
   end
 
@@ -149,6 +146,8 @@ describe User do
     it { should_not allow_mass_assignment_of(:is_analyst) }
     it { should_not allow_mass_assignment_of(:strict_mode) }
     it { should_not allow_mass_assignment_of(:approval_status) }
+    it { should_not allow_mass_assignment_of(:requires_manual_approval) }
+    it { should_not allow_mass_assignment_of(:welcome_email_sent) }
     it { should validate_inclusion_of :approval_status, :in => %w( pending_email_verification pending_approval approved not_approved ) }
   end
 
@@ -207,30 +206,130 @@ describe User do
   end
 
   describe "#verify_email" do
-    context "user with matching email_verification_token" do
-      it "should return true if the user has matching email_verification_token" do
-        user = User.create!(@valid_affiliate_attributes)
-        user.verify_email(user.email_verification_token).should be_true
+    context "has matching email verification token and does not require manual approval" do
+      before do
+        @user = User.create!(@valid_affiliate_attributes.merge(:email => 'user@agency.gov'))
+        @user.is_pending_email_verification?.should be_true
+        @user.welcome_email_sent?.should be_false
+        @user.verify_email(@user.email_verification_token).should be_true
       end
 
-      it "should update the approval_status to approved if the user has government affiliated email" do
-        user = User.create!(@valid_affiliate_attributes.merge(:email => 'user@agency.gov'))
-        user.has_government_affiliated_email?.should be_true
-        user.is_pending_email_verification?.should be_true
-        user.verify_email(user.email_verification_token).should be_true
-        user.is_approved?.should be_true
+      it "should update the approval_status to approved" do
+        @user.is_approved?.should be_true
       end
 
-      it "should return true if the user is already approved" do
-        user = User.create!(@valid_affiliate_attributes)
-        user.approval_status = 'approved'
-        user.save!
-        user.verify_email('any token').should be_true
+      it "should update welcome_email_sent flag to true" do
+        @user.welcome_email_sent?.should be_true
+      end
+    end
+
+    context "has matching email verification token and requires manual approval" do
+      before do
+        @user = User.create!(@valid_affiliate_attributes.merge(:email => 'not.gov@agency.com'))
+        @user.strict_mode = true
+        @user.update_attributes(@valid_attributes.merge(:email => 'not.gov@agency.com'))
+        @user.is_pending_email_verification?.should be_true
+        @user = User.find_by_email('not.gov@agency.com')
+        @user.welcome_email_sent?.should be_false
+        @user.verify_email(@user.email_verification_token).should be_true
       end
 
-      it "should return false if the user does not have matching email_verification_token" do
-        user = User.create!(@valid_affiliate_attributes)
-        user.verify_email('mismatchtoken').should be_false
+      it "should update the approval_status to pending_approval" do
+        @user.is_pending_approval?.should be_true
+      end
+
+      it "should not update the welcome_email_sent flag" do
+        @user.welcome_email_sent?.should be_false
+      end
+    end
+
+    it "should return true if the user is already approved" do
+      user = users(:affiliate_manager)
+      user.is_approved?.should be_true
+      user.verify_email('any token').should be_true
+    end
+
+    it "should return false if the user does not have matching email_verification_token" do
+      user = users(:affiliate_manager_with_pending_email_verification_status)
+      user.verify_email('mismatched token').should be_false
+    end
+  end
+
+  describe "on update in strict_mode and pending_contact_information status" do
+    before do
+      @user = User.create!(:email => 'not.gov@agency.com', :contact_name => 'affiliate manager', :password => 'super secret', :password_confirmation => 'super secret', :government_affiliation => "1")
+      @user.strict_mode = true
+      @user.is_pending_contact_information?.should be_true
+    end
+
+    context "when it updates attributes successfully" do
+      before do
+        @update_attributes = {
+            :organization_name => "Agency",
+            :phone=> "301-123-4567",
+            :address=> "123 Penn Ave",
+            :address2=> "Ste 100",
+            :city=> "Reston",
+            :state=> "VA",
+            :zip=> "20022"
+        }
+        @user.update_attributes(@update_attributes).should be_true
+      end
+
+      it "should update the user approval status to pending_email_verification" do
+        @user.is_pending_email_verification?.should be_true
+      end
+
+      it "should set the email_verification_token" do
+        @user.email_verification_token.should_not be_blank
+      end
+    end
+
+    context "when it fails to update attributes" do
+      before do
+        @user.update_attributes({}).should be_false
+      end
+
+      it "should not update the approval status" do
+        @user.is_pending_contact_information?.should be_true
+      end
+
+      it "should not set email_verification_token" do
+        @user.email_verification_token.should be_blank
+      end
+    end
+  end
+
+  describe "on update from pending_approval to approved" do
+    before do
+      @user = users(:affiliate_manager_with_pending_approval_status)
+    end
+
+    context "when welcome_email_sent is false" do
+      before do
+        @user.set_approval_status_to_approved
+      end
+
+      it "should deliver welcome email" do
+        Emailer.should_receive(:deliver_welcome_to_new_user).with(an_instance_of(User))
+        @user.save!
+      end
+
+      it "should update welcome_email_sent to true" do
+        @user.save!
+        @user.welcome_email_sent?.should be_true
+      end
+    end
+
+    context "when welcome_email_sent is true" do
+      before do
+        @user.set_approval_status_to_approved
+        @user.welcome_email_sent = true
+      end
+
+      it "should not deliver welcome email" do
+        Emailer.should_not_receive(:deliver_welcome_to_new_user).with(an_instance_of(User))
+        @user.save!
       end
     end
   end

@@ -69,7 +69,7 @@ Feature: Users
     Then I should be on the affiliate admin page
     And I should see "Your email address has not been verified. Please check your inbox so we may verify your email address."
 
-  Scenario: Registering as a new affiliate user without .gov or .mil e-mail address
+  Scenario: Registering as a new affiliate user without government affiliated email address
     Given I am on the login page
     When I fill in the following in the new user form:
     | Email                         | lorem.ipsum@corporate.com   |
@@ -80,13 +80,42 @@ Feature: Users
     And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
-    And I should see "We do not recognize your email address as being affiliated with a government agency. Your account is pending approval. We will notify you when you are set up."
+    And I should see "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
     And I should see "Affiliate Center" link in the main navigation bar
+    And I should see "Contact information"
+    And the "Name*" field should contain "Lorem Ipsum"
+    And the "Email*" field should contain "lorem.ipsum@corporate.com"
+    And I fill in the following:
+      | Government organization                    | Awesome Agency             |
+      | Phone                                      | 202-123-4567               |
+      | Organization address                       | 123 Penn Avenue            |
+      | Address 2                                  | Ste 456                    |
+      | City                                       | Reston                     |
+      | Zip                                        | 20022                      |
+    And I select "Virginia" from "State"
+    And I press "Submit"
+    Then I should be on the affiliate admin page
+    And I should see "Thank you for providing us your contact information. To continue the signup process, check your inbox, so we may verify your email address."
+    When I follow "Sign Out"
+    Then I should be on the login page
+    And "lorem.ipsum@corporate.com" should receive an email
+    When I open the email
+    Then I should see "Email Verification" in the email subject
+    When I click the first link in the email
+    Then I should be on the login page
+    Given a clear email queue
+    When I fill in the following in the login form:
+      | Email                         | lorem.ipsum@corporate.com   |
+      | Password                      | huge_secret                 |
+    And I press "Login"
+    Then I should see "Thank you for verifying your email."
+    And I should see "Because you don't have a .gov or .mil email address, your account is pending approval."
+    And "lorem.ipsum@corporate.com" should receive no emails
 
-  Scenario: Registering as a new affiliate user without .gov or .mil email address and trying to add new site without being approved
+  Scenario: Registering as a new affiliate user without government affiliated email address and submitting the contact information form as is
     Given I am on the login page
     When I fill in the following in the new user form:
-    | Email                         | not.gov@agency.com          |
+    | Email                         | lorem.ipsum@corporate.com   |
     | Name                          | Lorem Ipsum                 |
     | Password                      | huge_secret                 |
     | Password confirmation         | huge_secret                 |
@@ -94,9 +123,17 @@ Feature: Users
     And I check "I have read and accept the"
     And I press "Register for a new account"
     Then I should be on the affiliate admin page
-    When I follow "Add New Site"
-    Then I should be on the affiliate admin page
-    And I should see "Your account has not been approved. Please try again when you are set up."
+    And I should see "Affiliate Center" link in the main navigation bar
+    And I should see "Contact information"
+    And the "Name*" field should contain "Lorem Ipsum"
+    And the "Email*" field should contain "lorem.ipsum@corporate.com"
+    When I press "Submit"
+    Then I should see "Affiliate Center" within ".main"
+    And I should see "Organization name can't be blank"
+    And I should see "Phone can't be blank"
+    And I should see "Address can't be blank"
+    And I should see "City can't be blank"
+    And I should see "Zip can't be blank"
 
   Scenario: Registering as a new user who is not affiliated with a government agency
     Given I am on the login page

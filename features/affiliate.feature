@@ -233,6 +233,23 @@ Feature: Affiliate clients
     And I should not see "HTTP parameter site name is too short"
     And I should not see "HTTP parameter site name is invalid"
 
+  Scenario: Adding a new site as an affiliate user with pending_contact_information status
+    Given I am on the login page
+    When I fill in the following in the new user form:
+    | Email                         | lorem.ipsum@corporate.com   |
+    | Name                          | Lorem Ipsum                 |
+    | Password                      | huge_secret                 |
+    | Password confirmation         | huge_secret                 |
+    And I choose "I am a government employee or contractor"
+    And I check "I have read and accept the"
+    And I press "Register for a new account"
+    Then I should be on the affiliate admin page
+    And I should see "Affiliate Center" link in the main navigation bar
+    And I should see "Contact information"
+    When I follow "Add New Site"
+    Then I should be on the affiliate admin page
+    And I should see "Your contact information is not complete."
+
   Scenario: Adding a new site as an affiliate user with pending_approval status
     Given I am logged in with email "affiliate_manager_with_pending_approval_status@fixtures.org" and password "admin"
     When I go to the affiliate admin page

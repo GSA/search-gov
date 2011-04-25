@@ -389,7 +389,7 @@ describe Affiliates::HomeController do
       response.should redirect_to(login_path)
     end
 
-    context "when logged in" do
+    context "when logged in with approved user" do
       before do
         UserSession.create(users(:affiliate_manager_with_no_affiliates))
         User.should_receive(:find_by_id).and_return(users(:affiliate_manager_with_no_affiliates))
@@ -444,6 +444,55 @@ describe Affiliates::HomeController do
           users(:affiliate_manager_with_no_affiliates).should_receive(:update_attributes).and_return(false)
           post :update_contact_information
           assigns[:current_step].should == :edit_contact_information
+        end
+      end
+    end
+
+    context "when logged in with pending contact information user" do
+      before do
+        UserSession.create(users(:affiliate_manager_with_pending_contact_information_status))
+        User.should_receive(:find_by_id).and_return(users(:affiliate_manager_with_pending_contact_information_status))
+      end
+
+      it "assigns @user" do
+        post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+        assigns[:user].should == users(:affiliate_manager_with_pending_contact_information_status)
+      end
+
+      it "sets @user.strict_mode to true" do
+        users(:affiliate_manager_with_pending_contact_information_status).should_receive(:strict_mode=).with(true)
+        post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+      end
+
+      it "updates the User attributes" do
+        users(:affiliate_manager_with_pending_contact_information_status).should_receive(:update_attributes)
+        post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+      end
+
+      context "when the user update attributes successfully" do
+        before do
+          users(:affiliate_manager_with_pending_contact_information_status).should_receive(:update_attributes).and_return(true)
+        end
+
+        it "assigns flash[:success]" do
+          post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+          flash[:success].should_not be_blank
+        end
+
+        it "redirects to affiliates landing page" do
+          post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+          response.should redirect_to(home_affiliates_path)
+        end
+      end
+
+      context "when the user fails to update_attributes" do
+        before do
+          users(:affiliate_manager_with_pending_contact_information_status).should_receive(:update_attributes).and_return(false)
+          post :update_contact_information, :user => {:email => "changed@foo.com", :contact_name => "BAR"}
+        end
+
+        it "renders the affiliates home page" do
+          response.should render_template("home")
         end
       end
     end

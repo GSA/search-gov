@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  APPROVAL_STATUSES = %w( pending_email_verification pending_approval approved not_approved )
+  APPROVAL_STATUSES = %w( pending_email_verification pending_contact_information pending_approval approved not_approved )
   validates_presence_of :email
   validates_presence_of :contact_name
   validates_presence_of :api_key
@@ -14,14 +14,17 @@ class User < ActiveRecord::Base
   validates_inclusion_of :approval_status, :in => APPROVAL_STATUSES
   validates_acceptance_of :terms_of_service
   attr_protected :is_affiliate, :is_affiliate_admin, :is_analyst
-  attr_protected :approval_status
+  attr_protected :approval_status, :requires_manual_approval, :welcome_email_sent
   has_and_belongs_to_many :affiliates
   before_validation :generate_api_key
-  before_validation_on_create :set_approval_status
+  before_validation_on_create :set_initial_approval_status
   after_validation_on_create :set_is_affiliate
+  after_validation_on_create :set_default_flags
   after_create :ping_admin
   after_create :deliver_email_verification
   after_create :welcome_user
+  after_update :deliver_email_verification_after_contact_information_complete
+  after_update :deliver_welcome_email
   attr_accessor :government_affiliation
   attr_accessor :strict_mode
   attr_accessor :skip_welcome_email
@@ -37,6 +40,10 @@ class User < ActiveRecord::Base
   APPROVAL_STATUSES.each do |status|
     define_method "is_#{status}?" do
       approval_status == status
+    end
+
+    define_method "set_approval_status_to_#{status}" do
+      self.approval_status = status
     end
   end
 
@@ -73,13 +80,19 @@ class User < ActiveRecord::Base
   def verify_email(token)
     return true if is_approved?
     if is_pending_email_verification? and email_verification_token == token
-      self.approval_status = 'approved'
+      if requires_manual_approval?
+        set_approval_status_to_pending_approval
+      else
+        set_approval_status_to_approved
+        self.welcome_email_sent = true
+      end
+
       self.email_verification_token = nil
       save!
-      Emailer.deliver_welcome_to_new_user self
-      return true
+      Emailer.deliver_welcome_to_new_user(self) if is_approved?
+      true
     else
-      return false
+      false
     end
   end
 
@@ -89,20 +102,35 @@ class User < ActiveRecord::Base
     Emailer.deliver_new_user_to_admin(self)
   end
 
+  def deliver_email_verification_after_contact_information_complete
+    if strict_mode and is_pending_contact_information?
+      set_approval_status_to_pending_email_verification
+      deliver_new_user_email_verification
+    end
+  end
+
   def deliver_email_verification
-    if is_pending_email_verification?
-      current_perishable_token = perishable_token
-      self.email_verification_token = reset_perishable_token
-      self.perishable_token = current_perishable_token
+    deliver_new_user_email_verification if is_pending_email_verification?
+  end
+
+  def deliver_new_user_email_verification
+    current_perishable_token = perishable_token
+    self.email_verification_token = reset_perishable_token
+    self.perishable_token = current_perishable_token
+    save!
+    Emailer.deliver_new_user_email_verification(self)
+  end
+
+  def deliver_welcome_email
+    if is_approved? and !welcome_email_sent?
+      self.welcome_email_sent = true
       save!
-      Emailer.deliver_new_user_email_verification(self)
+      Emailer.deliver_welcome_to_new_user(self)
     end
   end
 
   def welcome_user
-    unless self.skip_welcome_email
-      Emailer.deliver_welcome_to_new_developer(self) if is_developer?
-    end
+    Emailer.deliver_welcome_to_new_developer(self) if is_developer? and !skip_welcome_email
   end
 
   def generate_api_key
@@ -121,8 +149,13 @@ class User < ActiveRecord::Base
     end
   end
 
-  def set_approval_status
-    self.approval_status = 'approved' if self.approval_status.blank? and !signed_up_to_be_an_affiliate?
-    self.approval_status = (has_government_affiliated_email? ? 'pending_email_verification' : 'pending_approval') if self.approval_status.blank?
+  def set_initial_approval_status
+    set_approval_status_to_approved if self.approval_status.blank? and !signed_up_to_be_an_affiliate?
+    (has_government_affiliated_email? ? set_approval_status_to_pending_email_verification : set_approval_status_to_pending_contact_information) if self.approval_status.blank?
+  end
+
+  def set_default_flags
+    self.requires_manual_approval = true unless has_government_affiliated_email?
+    self.welcome_email_sent = true if is_developer? and !skip_welcome_email
   end
 end

@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::AdminController
   active_scaffold :user do |config|
     config.actions.exclude :create
     config.columns = [:email, :contact_name, :affiliates, :last_login_at, :last_login_ip, :last_request_at, :created_at]
-    config.update.columns = [:affiliates, :email, :contact_name, :organization_name, :address, :address2, :phone, :city, :state, :zip, :is_affiliate_admin, :is_analyst, :is_affiliate, :is_analyst_admin, :approval_status]
+    config.update.columns = [:affiliates, :email, :contact_name, :organization_name, :address, :address2, :phone, :city, :state, :zip, :is_affiliate_admin, :is_analyst, :is_affiliate, :is_analyst_admin, :approval_status, :welcome_email_sent]
     config.list.sorting = { :email => :asc }
     config.columns[:affiliates].form_ui = :select
     config.columns[:affiliates].options = { :draggable_lists => true }

@@ -1,7 +1,7 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :except=> [:index, :edit_site_information, :edit_look_and_feel, :how_it_works, :demo]
   before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel, :preview]
-  before_filter :require_approved_user, :except => [:index, :how_it_works, :demo, :home]
+  before_filter :require_approved_user, :except => [:index, :how_it_works, :demo, :home, :update_contact_information]
   before_filter :setup_affiliate, :only=> [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :preview, :push_content_for, :cancel_staged_changes_for, :destroy]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel]
 
@@ -131,9 +131,17 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def update_contact_information
-    @title = "Add a New Site - "
     @user = @current_user
     @user.strict_mode = true
+    if @user.is_approved?
+      update_contact_information_for_approved_user
+    else
+      update_contact_information_for_new_user
+    end
+  end
+
+  def update_contact_information_for_approved_user
+    @title = "Add a New Site - "
     if @user.update_attributes(params[:user])
       @affiliate = Affiliate.new
       @current_step = :new_site_information
@@ -141,6 +149,15 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
       @current_step = :edit_contact_information
     end
     render :action => :new
+  end
+
+  def update_contact_information_for_new_user
+    if @user.update_attributes(params[:user])
+      flash[:success] = 'Thank you for providing us your contact information. <br /> To continue the signup process, check your inbox, so we may verify your email address.'
+      redirect_to home_affiliates_path
+    else
+      render :action => :home
+    end
   end
 
   def show
@@ -179,6 +196,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     if params["said"].present?
       @affiliate = Affiliate.find(params["said"])
     end
+    @user = @current_user if @current_user.is_pending_contact_information?
   end
 
   protected

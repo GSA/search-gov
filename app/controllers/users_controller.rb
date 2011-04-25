@@ -10,7 +10,7 @@ class UsersController < SslController
         if @user.has_government_affiliated_email?
           flash[:success] = "Thank you for signing up. To continue the signup process, check your inbox, so we may verify your email address."
         else
-          flash[:success] = "We do not recognize your email address as being affiliated with a government agency. Your account is pending approval. We will notify you when you are set up."
+          flash[:success] = "Sorry! You don't have a .gov or .mil email address so we need some more information from you before approving your account."
         end
       else
         flash[:success] = 'Thank you for registering for USA.gov Search Services.'

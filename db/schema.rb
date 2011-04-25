@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423194742) do
+ActiveRecord::Schema.define(:version => 20110425182649) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -492,6 +492,8 @@ ActiveRecord::Schema.define(:version => 20110423194742) do
     t.string   "api_key",                  :limit => 32
     t.string   "approval_status",                                                                  :null => false
     t.string   "email_verification_token"
+    t.boolean  "welcome_email_sent",                     :default => false,                        :null => false
+    t.boolean  "requires_manual_approval",               :default => false
   end
 
   add_index "users", ["api_key"], :name => "index_users_on_api_key", :unique => true

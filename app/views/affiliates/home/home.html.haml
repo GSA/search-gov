@@ -2,7 +2,9 @@
   = breadcrumbs([link_to("Affiliate Program", affiliates_path), "Affiliate Center"])
   %h1 Affiliate Center  
   - if @current_user.is_affiliate?
-    -if @current_user.affiliates.empty?
+    -if @current_user.is_pending_contact_information?
+      = render :partial => 'edit_contact_information_for_new_user'
+    -elsif @current_user.affiliates.empty?
       %p You currently have no sites.  To begin, please add a new site.
     -else
       %p Welcome to the affiliate section.  To begin, select a site from the left menu.
