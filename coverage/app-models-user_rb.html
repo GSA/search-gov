@@ -999,7 +999,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line158">158</a>     self.requires_manual_approval = true unless has_government_affiliated_email?</pre></td>
+            <td><pre><a name="line158">158</a>     self.requires_manual_approval = true if is_affiliate? and !has_government_affiliated_email?</pre></td>
           </tr>
         
           
@@ -1023,7 +1023,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Apr 26 04:18:31 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Apr 26 08:24:16 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
