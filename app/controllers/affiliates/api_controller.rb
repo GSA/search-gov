@@ -8,7 +8,7 @@ class Affiliates::ApiController < Affiliates::AffiliatesController
     if (params[:callback].blank?)
       render :json => ApiSearch.search(@search_options)
     else
-      render :json => "#{params[:callback]}(#{ApiSearch.search(@search_options).to_json})"
+      render :json => ApiSearch.search(@search_options), :callback => params[:callback]
     end
   end
 
