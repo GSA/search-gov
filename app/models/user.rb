@@ -155,7 +155,7 @@ class User < ActiveRecord::Base
   end
 
   def set_default_flags
-    self.requires_manual_approval = true unless has_government_affiliated_email?
+    self.requires_manual_approval = true if is_affiliate? and !has_government_affiliated_email?
     self.welcome_email_sent = true if is_developer? and !skip_welcome_email
   end
 end

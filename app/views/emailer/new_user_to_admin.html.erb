@@ -1,4 +1,8 @@
 <%= @user.contact_name %> just signed up for USA Search Services with the following information:
 
 Email: <%= @user.email %>
-Organization name: <%= @user.organization_name %> 
+Organization name: <%= @user.organization_name %>
+
+<% if @user.requires_manual_approval? -%>
+  This user signed up as an affiliate, but the user doesn't have a .gov or .mil email address. Please verify and approve this user.
+<% end -%>

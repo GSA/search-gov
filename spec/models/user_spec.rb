@@ -48,16 +48,22 @@ describe User do
       User.create!(@valid_attributes)
     end
 
-    it "should create a user with a minimal set of attributes if the user is an affiliate" do
+    it "should create a user with a minimal set of attributes if the user is a developer" do
       developer_user = User.new(@valid_developer_attributes)
       developer_user.save.should be_true
       developer_user.is_developer?.should be_true
     end
 
-    it "should create a user with a minimal set of attributes if the user is a developer" do
+    it "should create a user with a minimal set of attributes if the user is a developer with .com email address" do
+      developer_user = User.new(@valid_developer_attributes.merge(:email => 'not.gov.user@agency.com'))
+      developer_user.save.should be_true
+      developer_user.is_developer?.should be_true
+     end
+
+    it "should create a user with a minimal set of attributes if the user is an affiliate" do
       affiliate_user = User.new(@valid_affiliate_attributes)
       affiliate_user.save.should be_true
-      affiliate_user.is_developer?.should be_false
+      affiliate_user.is_affiliate?.should be_true
     end
 
     it "should send the admins a notification email about the new user" do
@@ -123,19 +129,37 @@ describe User do
     end
 
     it "should set approval status to approved if the user is a developer" do
-      user = User.create!(@valid_developer_attributes.merge({:email => 'developer@company.com'}))
-      user.is_approved?.should be_true
+      %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
+        developer_user = User.create!(@valid_developer_attributes.merge(:email => email))
+        developer_user.is_approved?.should be_true
+      end
+    end
+
+    it "should not set requires_manual_approval if the user is an affiliate and the email is government_affiliated" do
+      %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL ).each do |email|
+        user = User.create!(@valid_affiliate_attributes.merge(:email => email))
+        user.requires_manual_approval?.should be_false
+      end
+    end
+
+    it "should set requires_manual_approval if the user is an affiliate and the email is not government_affiliated" do
+      %w( aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
+        user = User.create!(@valid_affiliate_attributes.merge(:email => email))
+        user.requires_manual_approval?.should be_true
+      end
+    end
+
+    it "should set requires_manual_approval to false if the user is a developer" do
+      %w( aff@agency.GOV aff@anotheragency.gov admin@agency.mil anotheradmin@agency.MIL aff@agency.COM aff@anotheragency.com admin.gov@agency.org anotheradmin.MIL@agency.ORG escape_the_dot@foo.xmil ).each do |email|
+        developer_user = User.create!(@valid_developer_attributes.merge(:email => email))
+        developer_user.requires_manual_approval?.should be_false
+      end
     end
 
     it "should set email_verification_token if the user is pending_email_verification" do
       user = User.create!(@valid_affiliate_attributes)
       user.is_pending_email_verification?.should be_true
       user.email_verification_token.should_not be_blank
-    end
-
-    it "should set requires_manual_approval if the email is not government_affiliated" do
-      user = User.create!(@valid_affiliate_attributes.merge({:email => "not.gov@corp.com"}))
-      user.requires_manual_approval?.should be_true
     end
   end
 

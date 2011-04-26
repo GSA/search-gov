@@ -82,4 +82,52 @@ describe Emailer do
       @email.should have_body_text(/http:\/\/localhost:3000\/email_verification\/some_special_token/)
     end
   end
+
+  describe "#new_user_to_admin" do
+    context "affiliate user has .com email address" do
+      before do
+        @user = mock(User,
+                     :email => 'not.gov.user@agency.com',
+                     :contact_name => 'Contractor Joe',
+                     :organization_name => 'Agency',
+                     :requires_manual_approval? => true)
+        @email = Emailer.deliver_new_user_to_admin @user
+      end
+
+      it "should be sent to the admin email" do
+        @email.should deliver_to('usagov@searchsi.com')
+      end
+
+      it "should have 'New user signed up for USA Search Services' as the subject" do
+        @email.should have_subject(/New user signed up for USA Search Services/)
+      end
+
+      it "should have 'This user signed up as an affiliate, but the user doesn't have a .gov or .mil email address. Please verify and approve this user.' text" do
+        @email.should have_body_text /This user signed up as an affiliate, but the user doesn't have a \.gov or \.mil email address\. Please verify and approve this user\./
+      end
+    end
+
+    context "affiliate user has .gov email address" do
+      before do
+        @user = mock(User,
+                     :email => 'not.com.user@agency.gov',
+                     :contact_name => 'Gov Employee Joe',
+                     :organization_name => 'Gov Agency',
+                     :requires_manual_approval? => false)
+        @email = Emailer.deliver_new_user_to_admin @user
+      end
+
+      it "should be sent to the admin email" do
+        @email.should deliver_to('usagov@searchsi.com')
+      end
+
+      it "should have 'New user signed up for USA Search Services' as the subject" do
+        @email.should have_subject(/New user signed up for USA Search Services/)
+      end
+
+      it "should not have 'This user signed up as an affiliate, but the user doesn't have a .gov or .mil email address. Please verify and approve this user.' text" do
+        @email.should_not have_body_text /This user signed up as an affiliate/
+      end
+    end
+  end
 end
