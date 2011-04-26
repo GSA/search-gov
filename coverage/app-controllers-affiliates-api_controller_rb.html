@@ -117,7 +117,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>       render :json =&gt; &quot;#{params[:callback]}(#{ApiSearch.search(@search_options).to_json})&quot;</pre></td>
+            <td><pre><a name="line11">11</a>       render :json =&gt; ApiSearch.search(@search_options), :callback =&gt; params[:callback]</pre></td>
           </tr>
         
           
@@ -237,7 +237,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Apr 26 08:24:15 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Apr 26 10:49:29 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
