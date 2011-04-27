@@ -16,22 +16,19 @@ class MovingQuery < ActiveRecord::Base
 
   def self.compute_for(yyyymmdd)
     reversed_backfilled_yearlong_series_hash = {}
-    transaction do
-      delete_all(["day = ?", yyyymmdd])
-      get_moving_query_candidates(yyyymmdd).each_pair do |query, sum_times|
-        reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]
-        if reversed_backfilled_yearlong_series.nil?
-          reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)
-          reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series
-        end
-        next if reversed_backfilled_yearlong_series.length < 2
-        next if reversed_backfilled_yearlong_series[0] <= reversed_backfilled_yearlong_series[1]
-        mean = reversed_backfilled_yearlong_series.sum / reversed_backfilled_yearlong_series.length.to_f
-        sum_of_squares = reversed_backfilled_yearlong_series.inject(0) { |acc, i| acc + (i - mean) ** 2 }
-        std_dev = Math.sqrt(sum_of_squares / reversed_backfilled_yearlong_series.length.to_f)
-        moving_query = new(:query=> query, :day => yyyymmdd, :times => sum_times, :mean => mean, :std_dev => std_dev)
-        moving_query.save if moving_query.passes_minimum_thresholds?
+    delete_all(["day = ?", yyyymmdd])
+    get_moving_query_candidates(yyyymmdd).each_pair do |query, sum_times|
+      reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]
+      if reversed_backfilled_yearlong_series.nil?
+        reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)
+        reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series
       end
+      next if reversed_backfilled_yearlong_series.length < 2 or reversed_backfilled_yearlong_series[0] <= reversed_backfilled_yearlong_series[1]
+      mean = reversed_backfilled_yearlong_series.sum / reversed_backfilled_yearlong_series.length.to_f
+      sum_of_squares = reversed_backfilled_yearlong_series.inject(0) { |acc, i| acc + (i - mean) ** 2 }
+      std_dev = Math.sqrt(sum_of_squares / reversed_backfilled_yearlong_series.length.to_f)
+      moving_query = new(:query=> query, :day => yyyymmdd, :times => sum_times, :mean => mean, :std_dev => std_dev)
+      moving_query.save if moving_query.passes_minimum_thresholds?
     end
   end
 
