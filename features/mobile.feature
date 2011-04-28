@@ -14,6 +14,7 @@ Feature: Mobile Search
   Scenario: Visiting the home page with a mobile device
     Given I am on the homepage
     Then I should not see "ROBOTS" meta tag
+    And I should see a link to "Visit Our Blog" with url for "http://blog.usa.gov"
     And I should see a link to "Español" with url for "http://m.gobiernousa.gov"
 
     When I am on the homepage
