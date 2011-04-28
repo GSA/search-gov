@@ -8,6 +8,8 @@
 
 body
   :background-color #F7F7F7
+  &.es
+    :background-color #F1ECDF
 
 a, a:visited, a:hover
   :text-decoration none
@@ -34,7 +36,7 @@ a:hover
     :bottom 0.2em
     :left 1em
   :width 90%
-  a
+  a, a:hover
     :color #25496B
     :font
       :family verdana, verdana, sans-serif
@@ -55,6 +57,7 @@ a:hover
       :padding-left 0
 
 #skiplink
+  :display none
   :float right
   a
     :color #F7F7F7
@@ -172,11 +175,24 @@ a:hover
     a:hover
       :background url(/images/backgrounds/vertical_over_en.gif) repeat-x 0 -4px
 
-#main_nav.es
-  :background url(/images/backgrounds/gradient_header_es.gif) repeat-x left 19px
-  #navlinks, #change_text_size
-    a:hover
-      :background url(/images/backgrounds/vertical_over_es.gif) repeat-x 0 -4px
+.es
+  .header-wrap
+    :background url(/images/backgrounds/bg_top_right_long_es.gif) no-repeat right 17px
+  .header
+    :background url(/images/backgrounds/bg_top_left_long_es.gif) no-repeat 0 17px
+  .main-wrap
+    :background #FFF url(/images/backgrounds/bg_left_es.gif) repeat-y
+  #main_nav
+    :background url(/images/backgrounds/gradient_header_es.gif) repeat-x left 19px
+    #navlinks, #change_text_size
+      a:hover
+        :background url(/images/backgrounds/vertical_over_es.gif) repeat-x 0 -4px
+  .main, .footer-wrap
+    :background url(/images/backgrounds/bg_right_es.gif) repeat-y top right
+  .bottom-wrap
+    :background url(/images/backgrounds/bg_bottom_left_long_es.gif) no-repeat
+  .bottom
+    :background url(/images/backgrounds/bg_bottom_right_long_es.gif) no-repeat top right
 
 .bottom-wrap
   :background url(/images/backgrounds/bg_bottom_left_long.gif) no-repeat

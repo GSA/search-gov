@@ -23,7 +23,7 @@
     = javascript_include_tag "sayt-ui.js"
     = javascript_include_tag "application.js"
 
-  %body
+  %body{ :class => I18n.locale }
     .container
       .span-24.header-wrap
         .header
@@ -34,9 +34,9 @@
       .span-24.main-wrap
         .main
           #main_nav_wrap.span-24
-            #main_nav{ :class => I18n.locale }
+            #main_nav
               #other_search_page= link_to(image_tag("search_usa_gov_red_#{other_locale_str}_button.gif", :alt => "Buscador.USA.gov"), home_page_path(:locale => other_locale_str))
-              #change_text_size= link_to((t :change_text_size), (t :change_text_size_url), :target => '_blank')
+              #change_text_size= link_to((t :change_text_size), (t :change_text_size_url))
               #navlinks
                 %span.gov
                   = t(:government)
