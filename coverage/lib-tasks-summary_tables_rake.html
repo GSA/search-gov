@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-summary_tables_rake.html">lib/tasks/summary_tables.rake</a></td>
-            <td class='right_align'><tt>66</tt></td>
-            <td class='right_align'><tt>61</tt></td>
+            <td class='right_align'><tt>62</tt></td>
+            <td class='right_align'><tt>57</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -219,241 +219,217 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>         DailyPopularQuery.transaction do</pre></td>
+            <td><pre><a name="line28">28</a>         DailyPopularQuery.delete_all([&quot;day = ?&quot;, day])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>           DailyPopularQuery.delete_all([&quot;day = ?&quot;, day])</pre></td>
+            <td><pre><a name="line29">29</a>         [1, 7, 30].each do |time_frame|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>           [1, 7, 30].each do |time_frame|</pre></td>
+            <td><pre><a name="line30">30</a>           combinations.each do |combo|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>             combinations.each do |combo|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>               query_counts = DailyQueryStat.send(combo[:method], day, time_frame, 1000)</pre></td>
+            <td><pre><a name="line31">31</a>             query_counts = DailyQueryStat.send(combo[:method], day, time_frame, 1000)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>               query_counts.each do |query_count|</pre></td>
+            <td><pre><a name="line32">32</a>             query_counts.each do |query_count|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>                 DailyPopularQuery.create!(:day =&gt; day, :affiliate_id =&gt; nil, :locale =&gt; 'en', :query =&gt; query_count.query,</pre></td>
+            <td><pre><a name="line33">33</a>               DailyPopularQuery.create!(:day =&gt; day, :affiliate_id =&gt; nil, :locale =&gt; 'en', :query =&gt; query_count.query,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>                                           :is_grouped =&gt; combo[:is_grouped], :time_frame =&gt; time_frame, :times =&gt; query_count.times)</pre></td>
+            <td><pre><a name="line34">34</a>                                         :is_grouped =&gt; combo[:is_grouped], :time_frame =&gt; time_frame, :times =&gt; query_count.times)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>               end unless query_counts.is_a?(String)</pre></td>
+            <td><pre><a name="line35">35</a>             end unless query_counts.is_a?(String)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>             end</pre></td>
+            <td><pre><a name="line36">36</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>           end</pre></td>
+            <td><pre><a name="line37">37</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>         end</pre></td>
+            <td><pre><a name="line38">38</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>       end</pre></td>
+            <td><pre><a name="line39">39</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>     end</pre></td>
+            <td><pre><a name="line40">40</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a>   end</pre></td>
+            <td><pre><a name="line41">41</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>   namespace :monthly_popular_queries do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>     desc &quot;Total up the most popular queries for the month of the previous day&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>     task :calculate, :day, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line46">46</a>       day = Date.parse(args.day)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>       combinations = [{:method =&gt; :most_popular_terms_for_year_month, :is_grouped =&gt; false}, {:method =&gt; :most_popular_groups_for_year_month, :is_grouped =&gt; true}]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>       MonthlyPopularQuery.delete_all([&quot;year = ? and month = ?&quot;, day.year, day.month])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>       combinations.each do |combo|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line50">50</a>         query_counts = DailyQueryStat.send(combo[:method], day.year, day.month, 1000)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line43">43</a> </pre></td>
+            <td><pre><a name="line51">51</a>         query_counts.each do |query_count|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>   namespace :monthly_popular_queries do</pre></td>
+            <td><pre><a name="line52">52</a>           MonthlyPopularQuery.create!(:year =&gt; day.year, :month =&gt; day.month, :query =&gt; query_count.query, :is_grouped =&gt; combo[:is_grouped], :times =&gt; query_count.times)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>     desc &quot;Total up the most popular queries for the month of the previous day&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>     task :calculate, :day, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>       args.with_defaults(:day =&gt; Date.yesterday.to_s(:number))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>       day = Date.parse(args.day)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>       combinations = [{:method =&gt; :most_popular_terms_for_year_month, :is_grouped =&gt; false}, {:method =&gt; :most_popular_groups_for_year_month, :is_grouped =&gt; true}]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line50">50</a>       ActiveRecord::Base.transaction do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line51">51</a>         MonthlyPopularQuery.delete_all([&quot;year = ? and month = ?&quot;, day.year, day.month])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line52">52</a>         combinations.each do |combo|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line53">53</a>           query_counts = DailyQueryStat.send(combo[:method], day.year, day.month, 1000)</pre></td>
+            <td><pre><a name="line53">53</a>         end unless query_counts.is_a?(String)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a>           query_counts.each do |query_count|</pre></td>
+            <td><pre><a name="line54">54</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line55">55</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>             MonthlyPopularQuery.create!(:year =&gt; day.year, :month =&gt; day.month, :query =&gt; query_count.query, :is_grouped =&gt; combo[:is_grouped], :times =&gt; query_count.times)</pre></td>
+            <td><pre><a name="line56">56</a>       MonthlyClickTotal.delete_all([&quot;year = ? and month = ?&quot;, day.year, day.month])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>           end unless query_counts.is_a?(String)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line57">57</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line58">58</a> </pre></td>
+            <td><pre><a name="line57">57</a>       Click.monthly_totals_by_module(day.year, day.month).each_pair do |source, total|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>         MonthlyClickTotal.delete_all([&quot;year = ? and month = ?&quot;, day.year, day.month])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line60">60</a>         Click.monthly_totals_by_module(day.year, day.month).each_pair do |source, total|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line61">61</a>           MonthlyClickTotal.create!(:year =&gt; day.year, :month =&gt; day.month, :source =&gt; source, :total =&gt; total)</pre></td>
+            <td><pre><a name="line58">58</a>         MonthlyClickTotal.create!(:year =&gt; day.year, :month =&gt; day.month, :source =&gt; source, :total =&gt; total)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line62">62</a>         end</pre></td>
+            <td><pre><a name="line59">59</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line63">63</a>       end</pre></td>
+            <td><pre><a name="line60">60</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line64">64</a>     end</pre></td>
+            <td><pre><a name="line61">61</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line66">66</a> end</pre></td>
+            <td><pre><a name="line62">62</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Apr 26 10:49:30 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Apr 28 16:35:37 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-moving_query_rb.html">app/models/moving_query.rb</a></td>
-            <td class='right_align'><tt>57</tt></td>
-            <td class='right_align'><tt>50</tt></td>
+            <td class='right_align'><tt>54</tt></td>
+            <td class='right_align'><tt>47</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -165,241 +165,223 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>     transaction do</pre></td>
+            <td><pre><a name="line19">19</a>     delete_all([&quot;day = ?&quot;, yyyymmdd])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>       delete_all([&quot;day = ?&quot;, yyyymmdd])</pre></td>
+            <td><pre><a name="line20">20</a>     get_moving_query_candidates(yyyymmdd).each_pair do |query, sum_times|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>       get_moving_query_candidates(yyyymmdd).each_pair do |query, sum_times|</pre></td>
+            <td><pre><a name="line21">21</a>       reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>         reversed_backfilled_yearlong_series = reversed_backfilled_yearlong_series_hash[query]</pre></td>
+            <td><pre><a name="line22">22</a>       if reversed_backfilled_yearlong_series.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>         if reversed_backfilled_yearlong_series.nil?</pre></td>
+            <td><pre><a name="line23">23</a>         reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>           reversed_backfilled_yearlong_series = DailyQueryStat.reversed_backfilled_series_since_2009_for(query, yyyymmdd.to_date)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>           reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series</pre></td>
+            <td><pre><a name="line24">24</a>         reversed_backfilled_yearlong_series_hash[query] = reversed_backfilled_yearlong_series</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>         end</pre></td>
+            <td><pre><a name="line25">25</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>         next if reversed_backfilled_yearlong_series.length &lt; 2</pre></td>
+            <td><pre><a name="line26">26</a>       next if reversed_backfilled_yearlong_series.length &lt; 2 or reversed_backfilled_yearlong_series[0] &lt;= reversed_backfilled_yearlong_series[1]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>         next if reversed_backfilled_yearlong_series[0] &lt;= reversed_backfilled_yearlong_series[1]</pre></td>
+            <td><pre><a name="line27">27</a>       mean = reversed_backfilled_yearlong_series.sum / reversed_backfilled_yearlong_series.length.to_f</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>         mean = reversed_backfilled_yearlong_series.sum / reversed_backfilled_yearlong_series.length.to_f</pre></td>
+            <td><pre><a name="line28">28</a>       sum_of_squares = reversed_backfilled_yearlong_series.inject(0) { |acc, i| acc + (i - mean) ** 2 }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>         sum_of_squares = reversed_backfilled_yearlong_series.inject(0) { |acc, i| acc + (i - mean) ** 2 }</pre></td>
+            <td><pre><a name="line29">29</a>       std_dev = Math.sqrt(sum_of_squares / reversed_backfilled_yearlong_series.length.to_f)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>         std_dev = Math.sqrt(sum_of_squares / reversed_backfilled_yearlong_series.length.to_f)</pre></td>
+            <td><pre><a name="line30">30</a>       moving_query = new(:query=&gt; query, :day =&gt; yyyymmdd, :times =&gt; sum_times, :mean =&gt; mean, :std_dev =&gt; std_dev)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>         moving_query = new(:query=&gt; query, :day =&gt; yyyymmdd, :times =&gt; sum_times, :mean =&gt; mean, :std_dev =&gt; std_dev)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>         moving_query.save if moving_query.passes_minimum_thresholds?</pre></td>
+            <td><pre><a name="line31">31</a>       moving_query.save if moving_query.passes_minimum_thresholds?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>       end</pre></td>
+            <td><pre><a name="line32">32</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>     end</pre></td>
+            <td><pre><a name="line33">33</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>   end</pre></td>
+            <td><pre><a name="line34">34</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>   def self.biggest_movers(end_date, num_results = RESULTS_SIZE)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>     return NO_QUERIES_MATCHED if end_date.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>     results= find_all_by_day(end_date.to_date, :order=&gt;&quot;times DESC&quot;, :limit =&gt; num_results)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>     return NO_QUERIES_MATCHED if results.empty?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>     return INSUFFICIENT_DATA if insufficient_data?(end_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>     results.collect { |res| QueryCount.new(res.query, res.times) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>   def self.biggest_movers(end_date, num_results = RESULTS_SIZE)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>     return NO_QUERIES_MATCHED if end_date.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>     results= find_all_by_day(end_date.to_date, :order=&gt;&quot;times DESC&quot;, :limit =&gt; num_results)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>     return NO_QUERIES_MATCHED if results.empty?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>     return INSUFFICIENT_DATA if insufficient_data?(end_date)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>     results.collect { |res| QueryCount.new(res.query, res.times) }</pre></td>
+            <td><pre><a name="line41">41</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line44">44</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line45">45</a> </pre></td>
+            <td><pre><a name="line42">42</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>   private</pre></td>
+            <td><pre><a name="line43">43</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a> </pre></td>
+            <td><pre><a name="line44">44</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>   def self.get_moving_query_candidates(yyyymmdd)</pre></td>
+            <td><pre><a name="line45">45</a>   def self.get_moving_query_candidates(yyyymmdd)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>     DailyQueryStat.sum(:times, :group=&gt;:query, :conditions=&gt;[&quot;day = ?&quot;, yyyymmdd], :having =&gt; &quot;sum_times &gt; #{MIN_NUM_QUERIES}&quot;)</pre></td>
+            <td><pre><a name="line46">46</a>     DailyQueryStat.sum(:times, :group=&gt;:query, :conditions=&gt;[&quot;day = ?&quot;, yyyymmdd], :having =&gt; &quot;sum_times &gt; #{MIN_NUM_QUERIES}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>   end</pre></td>
+            <td><pre><a name="line47">47</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a> </pre></td>
+            <td><pre><a name="line48">48</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>   def self.insufficient_data?(day)</pre></td>
+            <td><pre><a name="line49">49</a>   def self.insufficient_data?(day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>     available_periods = day - minimum(:day)</pre></td>
+            <td><pre><a name="line50">50</a>     available_periods = day - minimum(:day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>     available_periods &lt; MIN_ACCELERATION_PERIODS_REQUIRED</pre></td>
+            <td><pre><a name="line51">51</a>     available_periods &lt; MIN_ACCELERATION_PERIODS_REQUIRED</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line55">55</a>   end</pre></td>
+            <td><pre><a name="line52">52</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a> </pre></td>
+            <td><pre><a name="line53">53</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line57">57</a> end</pre></td>
+            <td><pre><a name="line54">54</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Apr 26 10:49:29 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Apr 28 16:35:36 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

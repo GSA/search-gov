@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-search_helper_rb.html">app/helpers/search_helper.rb</a></td>
-            <td class='right_align'><tt>397</tt></td>
-            <td class='right_align'><tt>359</tt></td>
+            <td class='right_align'><tt>401</tt></td>
+            <td class='right_align'><tt>362</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -2264,26 +2264,26 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line369">369</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line369">369</a>   def path_to_search(search_params, path_to_landing_page, path_to_serp)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line370">370</a>   def path_to_image_search(search_params)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line371">371</a>     search_params[:query].blank? ? images_path(search_params) : image_search_path(search_params)</pre></td>
+            <td><pre><a name="line370">370</a>     search_params[:query].blank? ? path_to_landing_page : path_to_serp</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line372">372</a>   end</pre></td>
+            <td><pre><a name="line371">371</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line372">372</a> </pre></td>
           </tr>
         
           
@@ -2295,151 +2295,175 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line374">374</a>   private</pre></td>
+            <td><pre><a name="line374">374</a>   def path_to_image_search(search_params)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line375">375</a>     search_params[:query].blank? ? images_path(search_params) : image_search_path(search_params)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line375">375</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line376">376</a>   def shorten_url (url, length=30)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line377">377</a>     return url if url.length &lt;= length</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line378">378</a>     if url.count('/') &gt;= 4</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line379">379</a>       if url.index('?')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line380">380</a>         arr = url[0..url.index('?')].split('/')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line381">381</a>         arr[arr.size - 1] += url[url.index('?') + 1..-1]</pre></td>
+            <td><pre><a name="line376">376</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line382">382</a>       else</pre></td>
+            <td><pre><a name="line377">377</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line383">383</a>         arr = url.split('/')</pre></td>
+            <td><pre><a name="line378">378</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line384">384</a>       end</pre></td>
+            <td><pre><a name="line379">379</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line385">385</a>       host = arr[0]+&quot;//&quot;+arr[2]</pre></td>
+            <td><pre><a name="line380">380</a>   def shorten_url (url, length=30)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line386">386</a>       if arr.last.index('?')</pre></td>
+            <td><pre><a name="line381">381</a>     return url if url.length &lt;= length</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line387">387</a>         doc_path = arr.last.split('?')</pre></td>
+            <td><pre><a name="line382">382</a>     if url.count('/') &gt;= 4</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line388">388</a>         doc = [doc_path.first, &quot;?&quot;, doc_path[1].split('&amp;').first, &quot;...&quot;].join</pre></td>
+            <td><pre><a name="line383">383</a>       if url.index('?')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line384">384</a>         arr = url[0..url.index('?')].split('/')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line385">385</a>         arr[arr.size - 1] += url[url.index('?') + 1..-1]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line389">389</a>       else</pre></td>
+            <td><pre><a name="line386">386</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line390">390</a>         doc = arr.last.split('?').first</pre></td>
+            <td><pre><a name="line387">387</a>         arr = url.split('/')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line391">391</a>       end</pre></td>
+            <td><pre><a name="line388">388</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line392">392</a>       [host, &quot;...&quot;, doc].join('/')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line393">393</a>     else</pre></td>
+            <td><pre><a name="line389">389</a>       host = arr[0]+&quot;//&quot;+arr[2]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line394">394</a>       url[0, length]+&quot;...&quot;</pre></td>
+            <td><pre><a name="line390">390</a>       if arr.last.index('?')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line391">391</a>         doc_path = arr.last.split('?')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line392">392</a>         doc = [doc_path.first, &quot;?&quot;, doc_path[1].split('&amp;').first, &quot;...&quot;].join</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line395">395</a>     end</pre></td>
+            <td><pre><a name="line393">393</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line394">394</a>         doc = arr.last.split('?').first</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line396">396</a>   end</pre></td>
+            <td><pre><a name="line395">395</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line396">396</a>       [host, &quot;...&quot;, doc].join('/')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line397">397</a> end</pre></td>
+            <td><pre><a name="line397">397</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line398">398</a>       url[0, length]+&quot;...&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line399">399</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line400">400</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line401">401</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Apr 26 10:49:29 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Apr 28 16:35:36 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
