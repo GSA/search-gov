@@ -1,9 +1,9 @@
 - form_tag(path, :method => :get, :id => "search_form") do
   - if (@affiliate and not @affiliate.is_sayt_enabled)
-    = text_field :search, :query, {:size=>49, :name=>"query", :autocomplete => "off"}
+    = text_field :search, :query, { :maxlength => 255, :size => 49, :name => "query", :autocomplete => "off" }
   - else
     = hidden_field_tag :sc, 0
-    = text_field_tag 'search', recalls_search? ? params[:query] : (@search ? @search.query : ""), { :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete", :id => "search_query" }
+    = text_field_tag 'search', recalls_search? ? params[:query] : (@search ? @search.query : ""), { :maxlength => 255, :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete", :id => "search_query" }
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
 
@@ -21,8 +21,7 @@
   - if @affiliate.nil?
     - unless forms_search? || recalls_search?
       = advanced_search_link(@search_options)
-      |
-      = link_to(t(:search_in), home_page_path(:locale => other_locale_str))
+      = link_to(t(:search_in), home_page_path(:locale => other_locale_str), :id => 'search_in_link')
   - else
     .advancedsearch
       = advanced_search_link(@search_options, @affiliate)

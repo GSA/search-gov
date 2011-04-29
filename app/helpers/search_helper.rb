@@ -176,7 +176,7 @@ module SearchHelper
     search_options ||= {}
     search_options.merge!(:action => 'advanced', :controller => 'searches', :format => nil)
     search_options.merge!(:affiliate => affiliate.name) if affiliate
-    link_to((t :advanced_search), advanced_search_path(search_options))
+    link_to((t :advanced_search), advanced_search_path(search_options), :id => 'advanced_search_link')
   end
 
   def web_search?

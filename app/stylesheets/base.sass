@@ -11,6 +11,10 @@ body
   &.es
     :background-color #F1ECDF
 
+body.en, body.es
+  .container
+    :min-width 1100px
+
 a, a:visited, a:hover
   :text-decoration none
   :font-weight bold
@@ -254,12 +258,12 @@ table.deep_links
         :color= #454545
 
 #results-wrap
-  :width 950px
+  :width 1100px
 
 #sidebar
   :width 250px
   :display inline
-  :padding-left 50px
+  :padding-left 10px
   :float left
   :overflow hidden
 
@@ -269,7 +273,7 @@ table.deep_links
 #results
   :display block
   :float left
-  :width 620px
+  :width 800px
 
 ul#relatedsearch
   :padding-left 0
@@ -347,6 +351,7 @@ ul#related_gov_forms
   +topfade
   :border 1px solid #ddd
   :padding 1em
+  :width 620px
   h3
     :font-size 1.5em
     :color rgb(23, 69, 120)
@@ -445,5 +450,58 @@ ul#related_gov_forms
 
 
 .homepage
+  #homepage_banner
+    :margin-left 125px
   #search_form
     margin-bottom: 0.5em
+.es
+  #homepage_banner
+    :margin-left 100px
+
+#search_form, #footer_search_form
+  :background url('/images/backgrounds/bg_search.gif') no-repeat
+  :border 0
+  :height 43px
+  :margin 0 0 2em 0
+  :padding 0
+  :width 800px
+  #search_query, #footer_search_query
+    :border 0
+    :display inline
+    :float left
+    :font
+      :family verdana, verdana, sans-serif
+      :size 14px
+    :margin 18px 0 0 50px
+    :outline 0
+    :padding 0
+    :width 460px
+  #search_button, #footer_search_button
+    :background url('/images//btn_search.gif') no-repeat 0 0
+    :border 0
+    :cursor pointer
+    :display inline
+    :float left
+    :font-size 0
+    :height 27px
+    :line-height 0
+    :margin 13px 0 0 40px
+    :padding 0
+    :text-indent -999em
+    :width 83px
+  #advanced_search_link, #search_in_link
+    :color #25496B
+    :display inline
+    :float left
+    :font
+      :family verdana, verdana, sans-serif
+      :size 11px
+      :weight normal
+    :text-decoration none
+    &:hover
+      :cursor pointer
+      :text-decoration underline
+  #advanced_search_link
+    :margin 5px 0 0 30px
+  #search_in_link
+    :margin 0 0 0 30px

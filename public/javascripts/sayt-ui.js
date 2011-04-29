@@ -46,11 +46,10 @@ jQuery(document).ready(function()  {
   		jQuery(this).closest('form').submit();
   	},
   	open: function() {
-  		jQuery( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );
+  		jQuery('.ui-autocomplete').removeClass('ui-corner-all').addClass('ui-corner-bottom');
+        jQuery('.ui-autocomplete').css({ width: '617px', 'padding-top': 0 });
   		jQuery.ui.keyCode;
   	},
-  	close: function() {
-  		jQuery( this ).removeClass( "ui-corner-top" ).addClass( "ui-corner-all" );
-  	} 
-  })
+    position: { my:"left top", at:"left bottom", of: "#search_form", offset: "15 -1", collision:"none" }
+  });
 });
