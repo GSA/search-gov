@@ -35,7 +35,7 @@ describe "searches/advanced.html.haml" do
 
     it "should display text in Spanish" do
       render
-      response.should contain(/Use las opciones a continuación para hacer una búsqueda específica./)
+      response.should contain(/Use las siguientes opciones para hacer una búsqueda específica\./)
     end
 
     it "should display a hidden input field with the locale" do
