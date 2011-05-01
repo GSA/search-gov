@@ -83,7 +83,7 @@ class Search
       @endrecord = startrecord + results.size - 1
       populate_additional_results(response)
     end
-    log_impression
+    log_serp_impressions if self.class == Search
     true
   end
 
@@ -283,7 +283,7 @@ class Search
 
   private
 
-  def log_impression
+  def log_serp_impressions
     modules = []
     modules << "BWEB" unless self.total.zero?
     modules << "BSPEL" unless self.spelling_suggestion.nil?
