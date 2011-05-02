@@ -144,8 +144,10 @@ describe "summary_tables rake tasks" do
     describe "usasearch:monthly_popular_queries:calculate" do
       before do
         @task_name = "usasearch:monthly_popular_queries:calculate"
-        DailyQueryStat.create(:day => Date.yesterday, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        DailyQueryStat.create(:day => Date.yesterday.yesterday, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        @first_stat_date = Date.today.advance(:day => -1)
+        @second_stat_date = @first_stat_date.day == 1 ? @first_stat_date : @first_stat_date.advance(:days => -1)
+        DailyQueryStat.create(:day => @first_stat_date, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+        DailyQueryStat.create(:day => @second_stat_date, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         query_group = QueryGroup.create(:name => 'Group1')
         query_group.grouped_queries << GroupedQuery.new(:query => "whatever")
       end
@@ -164,7 +166,7 @@ describe "summary_tables rake tasks" do
 
         it "should create monthly popular query records for the monthly total" do
           @rake[@task_name].invoke
-          mpq = MonthlyPopularQuery.find_all_by_year_and_month_and_query(Date.yesterday.year, Date.yesterday.month, "whatever")
+          mpq = MonthlyPopularQuery.find_all_by_year_and_month_and_query(@first_stat_date.year, @first_stat_date.month, "whatever")
           mpq.should_not be_nil
           mpq.size.should == 1
           mpq.first.times.should == 20
@@ -172,7 +174,7 @@ describe "summary_tables rake tasks" do
 
         it "should create monthly popular query groups for the monthly total" do
           @rake[@task_name].invoke
-          mpgq = MonthlyPopularQuery.find_all_by_year_and_month_and_is_grouped(Date.yesterday.year, Date.yesterday.month, "Group1")
+          mpgq = MonthlyPopularQuery.find_all_by_year_and_month_and_is_grouped(@first_stat_date.year, @first_stat_date.month, "Group1")
           mpgq.should_not be_nil
           mpgq.size.should == 1
           mpgq.first.times.should == 20
