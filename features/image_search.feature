@@ -9,6 +9,8 @@ Feature: Image search
     Then I should be on the images page
     And I should see the browser page titled "Search.USA.gov Images"
     And I should not see "ROBOTS" meta tag
+    And I should see "Busque en español"
+    And I should not see "Advanced Search"
     When I follow "USASearch Images Home"
     Then I should be on the images page
     When I fill in "query" with "White House"
@@ -37,6 +39,16 @@ Feature: Image search
     And I should see "Siguiente"
     When I follow "USASearch Images Home"
     Then I should be on the images page
+
+  Scenario: Visiting English image search homepage from the Spanish image search homepage
+    Given I am on the homepage
+    When I follow "Busque en español"
+    Then I should be on the homepage
+    When I follow "Imágenes" in the search navigation
+    Then I should be on the images page
+    When I follow "Search in English"
+    Then I should be on the images page
+    And I should see "Busque en español"
 
   Scenario: A nonsense search
     Given I am on the image search page
@@ -91,3 +103,27 @@ Feature: Image search
     Given I am on the images page
     When I follow "Forms" in the search navigation
     Then I should be on the forms page
+
+  Scenario: Site visitor see SERP in English
+    When I am on the homepage
+    And I follow "Español"
+    And I follow "Imágenes" in the search navigation
+    And I fill in "query" with "president"
+    And I press "Buscar"
+    Then I should be on the image search page
+    And I should see "president"
+    When I follow "Search in English"
+    Then I should be on the image search page
+    And I should see "Busque en español"
+    And I should see "president"
+
+  Scenario: Site visitor see SERP in Spanish
+    When I am on the images page
+    And I fill in "query" with "president"
+    And I press "Search"
+    Then I should be on the image search page
+    And I should see "president"
+    When I follow "Busque en español"
+    Then I should be on the image search page
+    And I should see "Search in English"
+    And I should see "president"

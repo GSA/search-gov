@@ -2,7 +2,7 @@
   #sidebar
     = link_to image_tag("USAsearch_medium_#{I18n.locale}_recalls.gif" , :alt => "USASearch Home"), recalls_path(:locale => I18n.locale)
     =# render "sidebar"
-  #results
+  #results.recalls
     = render "/shared/search", :path => recalls_search_path
     - if @search && @search.total > 0
       .recalls
@@ -24,5 +24,4 @@
         = @error_message
     - else
       = no_results_for params[:query]
-    = render "/shared/footer_search"
 

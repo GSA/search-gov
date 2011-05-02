@@ -375,6 +375,16 @@ module SearchHelper
     search_params[:query].blank? ? images_path(search_params) : image_search_path(search_params)
   end
 
+  def path_to_search_in_other_locale_for(query)
+    path = ''
+    if query.blank?
+      path = web_search? ? home_page_path(:locale => other_locale_str) : images_path(:locale => other_locale_str)
+    else
+      path = web_search? ? search_path(:locale => other_locale_str, :query => query) : image_search_path(:locale => other_locale_str, :query => query)
+    end
+    link_to(t(:search_in), path, :id => 'search_in_link')
+  end
+
   private
 
   def shorten_url (url, length=30)

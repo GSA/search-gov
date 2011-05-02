@@ -66,11 +66,10 @@ describe "searches/index.html.haml" do
       @search.stub!(:fedstates).and_return nil
     end
 
-    it "should show header search form but not show footer search form" do
+    it "should show header search form" do
       render
       response.should contain("Enter some search terms")
       response.should have_selector("#search_query")
-      response.should_not have_selector("#footer_search_form")
     end
   end
 
@@ -99,30 +98,6 @@ describe "searches/index.html.haml" do
       @search.stub!(:filter_setting).and_return nil
       @search.stub!(:scope_id).and_return nil
       @search.stub!(:fedstates).and_return nil
-    end
-
-    context "when there are fewer than five results" do
-      before do
-        4.times { @search_results << @search_result }
-      end
-
-      it "should show header search form but not show footer search form" do
-        render
-        response.should have_selector("#search_query")
-        response.should_not have_selector("#footer_search_form")
-      end
-    end
-
-    context "when there are five results" do
-      before do
-        5.times { @search_results << @search_result }
-      end
-
-      it "should show header search form and footer search form" do
-        render
-        response.should have_selector("#search_query")
-        response.should have_selector("#footer_search_form")
-      end
     end
 
     it "should not display a hidden filter parameter" do

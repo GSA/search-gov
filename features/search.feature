@@ -144,3 +144,27 @@ Feature: Search
     Then I should see "Images for space"
     When I follow "Images for space"
     Then I should be on the image search page
+
+  Scenario: Site visitor see SERP in English
+    When I am on the homepage
+    And I follow "Español"
+    And I fill in "query" with "president"
+    And I press "Buscar"
+    Then I should be on the search page
+    And I should see "president"
+    When I follow "Search in English"
+    Then I should be on the search page
+    And I should see "Busque en español"
+    And I should see "president"
+
+  Scenario: Site visitor see SERP in Spanish
+    When I am on the homepage
+    And I fill in "query" with "president"
+    And I press "Search"
+    Then I should be on the search page
+    And I should see "president"
+    When I follow "Busque en español"
+    Then I should be on the search page
+    And I should see "Search in English"
+    And I should see "president"
+

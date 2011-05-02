@@ -57,7 +57,7 @@ Feature: Homepage
 
   Scenario: Visiting the homepage as a Spanish speaker
     Given I am on the homepage
-    And I follow "Español"
+    And I follow "Busque en español"
     Then I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml" in the homepage header
     And I should see a link to "Respuestas" with url for "http://respuestas.gobiernousa.gov/"
     And I should see a link to "Contactos" with url for "http://www.usa.gov/gobiernousa/Contactenos.shtml"
@@ -68,6 +68,21 @@ Feature: Homepage
     And I should see a link to "Privacidad" with url for "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"
     And I should see "Móvil"
     And I should see "Buscador.USA.gov" in the homepage tagline
+    When I follow "Search in English"
+    Then I should be on the homepage
+
+  Scenario: Clicking on the red Buscador.USA.gov button
+    Given I am on the homepage
+    When I follow "Buscador.USA.gov" in the search navigation
+    Then I should be on the homepage
+    And I should see "Search in English"
+
+  Scenario: Clicking on the red Search.USA.gov button
+    Given I am on the homepage
+    When I follow "Buscador.USA.gov" in the search navigation
+    When I follow "Search.USA.gov" in the search navigation
+    Then I should be on the homepage
+    And I should see "Busque en español"
 
   Scenario: Switching to image search
     Given I am on the search page
@@ -85,7 +100,7 @@ Feature: Homepage
 
   Scenario: Clicking on Advanced Search on the Spanish homepage
     Given I am on the homepage
-    And I follow "Español"
+    And I follow "Busque en español"
     And I follow "Búsqueda avanzada"
     Then I should see "Use las siguientes opciones para hacer una búsqueda específica."
 

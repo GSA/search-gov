@@ -6,6 +6,7 @@ describe "shared/_search.html.haml" do
     @search.stub!(:filter_setting).and_return nil
     @search.stub!(:scope_id).and_return nil
     @search.stub!(:fedstates).and_return nil
+    template.stub!(:web_search?).and_return(true)
     assigns[:search] = @search
   end
 

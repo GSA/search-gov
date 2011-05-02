@@ -1,7 +1,7 @@
 #results-wrap
   #sidebar
     = search_results_logo
-  #results
+  #results.forms
     = render "/shared/search", :path => @form_path
     %div{:style => "font-size: 16px;"}
       = t(:forms_for, :query => "<b>#{h @search.query}</b>")
@@ -15,4 +15,3 @@
       = will_paginate(@gov_forms.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
     - else
       = no_results_for params[:query]
-    = render "/shared/footer_search", :search => @search

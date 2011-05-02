@@ -17,6 +17,13 @@ function monkeyPatchAutocomplete() {
 
 jQuery(document).ready(function()  {
   monkeyPatchAutocomplete();
+    var isSearchUsaDesktop = (jQuery('#affiliate').length == 0) && (jQuery('#m').val() != 'true');
+
+    var position = { my: "left top", at: "left bottom", collision: "none" };
+    if (isSearchUsaDesktop) {
+        position.of = "#search_form";
+        position.offset = "15 0";
+    }
   jQuery(".usagov-search-autocomplete").autocomplete({
   	source: function( request, response ) {
   		jQuery.ajax({
@@ -46,10 +53,13 @@ jQuery(document).ready(function()  {
   		jQuery(this).closest('form').submit();
   	},
   	open: function() {
-  		jQuery('.ui-autocomplete').removeClass('ui-corner-all').addClass('ui-corner-bottom');
-        jQuery('.ui-autocomplete').css({ width: '617px', 'padding-top': 0 });
+          jQuery('.ui-autocomplete').removeClass('ui-corner-all').addClass('ui-corner-bottom');
+          if (isSearchUsaDesktop) {
+              jQuery('.ui-autocomplete').addClass('search_usa_autocomplete');
+              jQuery('.ui-autocomplete').css({ width: '617px' });
+          }
   		jQuery.ui.keyCode;
   	},
-    position: { my:"left top", at:"left bottom", of: "#search_form", offset: "15 -1", collision:"none" }
+    position: position
   });
 });
