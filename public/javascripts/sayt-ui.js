@@ -17,7 +17,12 @@ function monkeyPatchAutocomplete() {
 
 jQuery(document).ready(function()  {
   monkeyPatchAutocomplete();
-    var isSearchUsaDesktop = (jQuery('#affiliate').length == 0) && (jQuery('#m').val() != 'true');
+    var isMobile = (jQuery('#m').val() == 'true');
+    var isDesktop = !isMobile;
+    var isSearchForm = (jQuery('#search_form').length > 0);
+    var isAffiliate = (jQuery('#affiliate').length > 0);
+    var isAffiliateDesktop = isAffiliate && isDesktop;
+    var isSearchUsaDesktop = isSearchForm && !isAffiliate && isDesktop;
 
     var position = { my: "left top", at: "left bottom", collision: "none" };
     if (isSearchUsaDesktop) {
@@ -57,6 +62,10 @@ jQuery(document).ready(function()  {
           if (isSearchUsaDesktop) {
               jQuery('.ui-autocomplete').addClass('search_usa_autocomplete');
               jQuery('.ui-autocomplete').css({ width: '617px' });
+          } else if (isAffiliateDesktop) {
+              jQuery('.ui-autocomplete').addClass('affiliate_autocomplete');
+          } else if (isMobile) {
+              jQuery('.ui-autocomplete').addClass('mobile_autocomplete');
           }
   		jQuery.ui.keyCode;
   	},

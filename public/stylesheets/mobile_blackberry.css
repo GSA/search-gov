@@ -22,11 +22,6 @@
   width: 290px;
 }
 
-  .dvSearchBox{
-    float: left;
-    width: 221px;
-  }
-
   .dvSearchClose {
     display: none;
   }
@@ -42,26 +37,25 @@
     .mobileSearchTextBox{
       background-image: none;
       border: 1px solid #ccc;
-      font-size: auto;
-      height: 27px;
-      padding: 4px 0 0 2px;
-      width: 246px;
+      height: 30px;
+      padding: 0 0 0 2px;
+      width: 256px;
     }
 
     .mobileSearchTextBoxResultsPage{
       background-image: none;
       background-color: #fff;
       border: 1px solid #ccc;
-      font-size: auto;
-      height: 27px;
-      padding: 4px 0 0 2px;
-      width: 246px;
+      height: 30px;
+      padding: 0 0 0 2px;
+      width: 256px;
     }
 
   .dvSearchBtn{
     border: none;
     float: right;
-    margin: -1px 0 0 0;
+    height: 32px;
+    margin: 0;
     width: 37px;
   }
 

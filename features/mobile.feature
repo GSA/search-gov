@@ -10,6 +10,10 @@ Feature: Mobile Search
     Given I am using a desktop device
     And I am on the homepage
     Then I should see "Mobile"
+    When I follow "Mobile"
+    And I follow "USASearch Home"
+    Then I should be on the homepage
+    And I should see "USA.gov Full Site"
 
   Scenario: Visiting the home page with a mobile device
     Given I am on the homepage
