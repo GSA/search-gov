@@ -26,10 +26,13 @@ class User < ActiveRecord::Base
   after_update :deliver_email_verification_after_contact_information_complete
   after_update :deliver_welcome_email
   attr_accessor :government_affiliation
-  attr_accessor :strict_mode
+  attr_accessor :strict_mode, :invited
   attr_accessor :skip_welcome_email
   attr_accessor :terms_of_service
-  attr_protected :strict_mode
+  attr_accessor :inviter
+  attr_accessor :require_password
+  attr_protected :strict_mode, :invited, :require_password
+  attr_protected :inviter
 
   acts_as_authentic do |c|
     c.crypto_provider = Authlogic::CryptoProviders::BCrypt
@@ -96,7 +99,30 @@ class User < ActiveRecord::Base
     end
   end
 
+  def complete_registration(attributes)
+    self.require_password = true
+    self.email_verification_token = nil
+    self.set_approval_status_to_approved
+    !self.requires_manual_approval? and self.update_attributes(attributes)
+  end
+
+  def self.new_invited_by_affiliate(inviter, affiliate, attributes)
+    default_attributes = {
+        :government_affiliation => "1"
+    }
+    new_user = User.new(attributes.merge(default_attributes))
+    new_user.randomize_password
+    new_user.inviter = inviter
+    new_user.invited = true
+    new_user.affiliates << affiliate
+    new_user
+  end
+
   private
+
+  def require_password?
+    require_password.nil? ? super : (require_password == true)
+  end
 
   def ping_admin
     Emailer.deliver_new_user_to_admin(self)
@@ -110,15 +136,25 @@ class User < ActiveRecord::Base
   end
 
   def deliver_email_verification
-    deliver_new_user_email_verification if is_pending_email_verification?
+    deliver_new_user_email_verification if is_pending_email_verification? and !invited
+    deliver_welcome_to_new_user_added_by_affiliate if is_pending_email_verification? and invited
   end
 
   def deliver_new_user_email_verification
+    reset_email_verification_token!
+    Emailer.deliver_new_user_email_verification(self)
+  end
+
+  def deliver_welcome_to_new_user_added_by_affiliate
+    reset_email_verification_token!
+    Emailer.deliver_welcome_to_new_user_added_by_affiliate(affiliates.first, self, inviter)
+  end
+
+  def reset_email_verification_token!
     current_perishable_token = perishable_token
     self.email_verification_token = reset_perishable_token
     self.perishable_token = current_perishable_token
     save!
-    Emailer.deliver_new_user_email_verification(self)
   end
 
   def deliver_welcome_email
@@ -152,10 +188,11 @@ class User < ActiveRecord::Base
   def set_initial_approval_status
     set_approval_status_to_approved if self.approval_status.blank? and !signed_up_to_be_an_affiliate?
     (has_government_affiliated_email? ? set_approval_status_to_pending_email_verification : set_approval_status_to_pending_contact_information) if self.approval_status.blank?
+    set_approval_status_to_pending_email_verification if invited
   end
 
   def set_default_flags
-    self.requires_manual_approval = true if is_affiliate? and !has_government_affiliated_email?
-    self.welcome_email_sent = true if is_developer? and !skip_welcome_email
+    self.requires_manual_approval = true if is_affiliate? and !has_government_affiliated_email? and !invited
+    self.welcome_email_sent = true if (is_developer? and !skip_welcome_email) or invited
   end
 end

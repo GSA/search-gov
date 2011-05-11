@@ -7,14 +7,14 @@ YOUR ACCOUNT
 Name: <%= @user.contact_name %>
 E-mail: <%= @user.email %>
 
+Now that you have an account for this site, complete your registration by creating a password at:
+
+<%= edit_complete_registration_url(@user.email_verification_token) %>
+
 SITE INFORMATION
 
 Site name: <%= @affiliate.display_name %>
 Manage site settings: <%= affiliate_url(@affiliate) %>
- 
-Now that you have an account for this site, get started now. Visit the Affiliate Center at 
-
-https://search.usa.gov/affiliates/
  
 Questions or comments? Visit our Help Desk at
  

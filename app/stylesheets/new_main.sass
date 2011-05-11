@@ -18,6 +18,7 @@ a
     font-size: 100%
     vertical-align: baseline
     background: transparent
+  +blueprint-interaction
 
 
   ol, ul
@@ -295,14 +296,7 @@ a
     float: left
     position: inherit
 
-  .btn-register
-    background: url(/images/btn-register.png) no-repeat 0 0
-    behavior: url(/javascripts/iepngfix.htc)
-    width: 250px
-    height: 38px
-    border: 0
-    &:hover
-      background-position: 0 -41px
+
 
   .registerboxMid
     .btn-register
@@ -916,6 +910,17 @@ form.generic-form
         float: left
         text-align: right
         width: 465px
+      &.tos
+        float: left
+        line-height: 16px
+        padding-left: 150px
+        input
+          float: left
+          margin: 0
+        label
+          margin: 0 0 0 10px
+          padding: 0
+          width: auto
   .form-submit-button
     border: 0
     cursor: pointer
@@ -1157,6 +1162,15 @@ table.generic-table
   behavior: url(/javascripts/iepngfix.htc)
   height: 39px
   width: 220px
+
+.btn-register
+  background: url(/images/btn-register.png) no-repeat 0 0
+  behavior: url(/javascripts/iepngfix.htc)
+  width: 250px
+  height: 38px
+  border: 0
+  &:hover
+    background-position: 0 -41px
 
 /*** recaptcha ***/
 #dynamic_recaptcha

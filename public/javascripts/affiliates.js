@@ -17,5 +17,14 @@ jQuery(document).ready(function() {
     }
     jQuery(this).html(content);
     return false;
-  })
+  });
+
+  jQuery('.sliding_content').each(function() {
+    if (jQuery(this).hasClass('expand')) {
+      var slidingContentId = jQuery(this).attr("id");
+      var slidingTriggerId = slidingContentId.replace(/\_content$/, "");
+      jQuery('#' + slidingTriggerId).trigger('click');
+      location.href = '#' + slidingContentId;
+    }
+  });
 });

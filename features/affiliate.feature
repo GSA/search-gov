@@ -1156,7 +1156,65 @@ Feature: Affiliate clients
     And I fill in "Email" with "newuser@usa.gov"
     And I fill in "Name" with "New User"
     And I press "Add User"
+    Then I should see "That user does not exist in the system."
+    When I follow "Sign Out"
+    Then I should be on the login page
     When "newuser@usa.gov" opens the email with text "Welcome to the USASearch Affiliate Program"
     Then I should see "Welcome to the USASearch Affiliate Program" in the email subject
     And I should see "Dear New User" in the email body
     And I should see "You have been successfully registered and added to aff site by John Bar with the following account information." in the email body
+    When I click the first link in the email
+    Then I should see "Complete Registration for a New Account"
+    And the "Name*" field should contain "New User"
+    And the "Email*" field should contain "newuser@usa.gov"
+    And the "I have read and accept the" checkbox should not be checked
+    When I fill in the following:
+      | Password                      | huge_secret                 |
+      | Password confirmation         | huge_secret                 |
+    And I check "I have read and accept the"
+    And I press "Complete registration for a new account"
+    Then I should be on the affiliate admin page
+    And I should see "You have successfully completed your account registration."
+
+  Scenario: Failed to complete registration
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email           | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Manage Users"
+    And I fill in "Email" with "newuser@usa.gov"
+    And I fill in "Name" with "New User"
+    And I press "Add User"
+    And I follow "Sign Out"
+    When "newuser@usa.gov" opens the email with text "Welcome to the USASearch Affiliate Program"
+    Then I should see "Welcome to the USASearch Affiliate Program" in the email subject
+    When I click the first link in the email
+    Then I should see "Complete Registration for a New Account"
+    And the "Name*" field should contain "New User"
+    And the "Email*" field should contain "newuser@usa.gov"
+    And the "I have read and accept the" checkbox should not be checked
+    When I fill in the following:
+      | Name             |                  |
+      | Email            |                  |
+    And I press "Complete registration for a new account"
+    Then I should see "Contact name can't be blank"
+    And I should see "Email can't be blank"
+    And I should see "Email is too short"
+    And I should see "Email should look like an email address"
+    And I should see "Password is too short"
+    And I should see "Password confirmation is too short"
+    And I should see "Password doesn't match confirmation"
+    And I should see "Terms of service must be accepted"
+
+  Scenario: Adding a new user to a site without filling out the form
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email           | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Manage Users"
+    And I press "Add User"
+    Then I should see "Email can't be blank"
+    And I should see "Contact name can't be blank"
+

@@ -3,6 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe Emailer do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
+  fixtures :affiliates
 
   describe "#objectionable_content_alert" do
     before(:all) do
@@ -128,6 +129,27 @@ describe Emailer do
       it "should not have 'This user signed up as an affiliate, but the user doesn't have a .gov or .mil email address. Please verify and approve this user.' text" do
         @email.should_not have_body_text /This user signed up as an affiliate/
       end
+    end
+  end
+
+  describe "#welcome_to_new_user_added_by_affiliate" do
+    before do
+      @user = mock(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token')
+      @current_user = mock(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane')
+      @affiliate = affiliates(:basic_affiliate)
+      @email = Emailer.deliver_welcome_to_new_user_added_by_affiliate(@affiliate, @user, @current_user)
+    end
+
+    it "should be sent to the invitee" do
+      @email.should deliver_to("invitee@agency.com")
+    end
+
+    it "should have Welcome to the USASearch Affiliate Program as the subject" do
+      @email.should have_subject(/Welcome to the USASearch Affiliate Program/)
+    end
+
+    it "should have complete registration link" do
+      @email.should have_body_text(/http:\/\/localhost:3000\/complete_registration\/some_special_token\/edit/)
     end
   end
 end

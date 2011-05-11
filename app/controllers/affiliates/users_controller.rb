@@ -13,19 +13,20 @@ class Affiliates::UsersController < Affiliates::AffiliatesController
     @user = User.find_by_email(params[:email])
     if @user
       if @affiliate.users.include?(@user)
-        flash.now[:error] = "That user is already associated with this affiliate. You cannot add them again."
+        flash[:error] = "That user is already associated with this affiliate. You cannot add them again."
       else
         @affiliate.users << @user
         @email, @contact_name = nil, nil
-        flash.now[:success] = "Successfully added #{@user.contact_name} (#{@user.email})"
+        flash[:success] = "Successfully added #{@user.contact_name} (#{@user.email})"
         Emailer.deliver_new_affiliate_user(@affiliate, @user, current_user)
       end
     else
-      random_password = Digest::MD5.hexdigest("#{@email}:#{Time.now.to_s}")[0..8]
-      @user = User.create(:email => @email, :contact_name => @contact_name, :government_affiliation => '1', :password => random_password, :password_confirmation => random_password, :skip_welcome_email => true)
-      @affiliate.users << @user
-      flash.now[:success] = "That user does not exist in the system. We've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
-      Emailer.deliver_welcome_to_new_user_added_by_affiliate(@affiliate, @user, current_user)
+      @user = User.new_invited_by_affiliate(current_user, @affiliate, { :email => @email, :contact_name => @contact_name })
+      if @user.save
+        flash[:success] = "That user does not exist in the system. We've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
+      else
+        render :action => :index and return
+      end
     end
     redirect_to affiliate_users_path(@affiliate)
   end

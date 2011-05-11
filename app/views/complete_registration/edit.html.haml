@@ -1,0 +1,30 @@
+.complete-registration
+  %h2
+    Complete Registration for a New Account
+
+  - form_for @user, :url => complete_registration_path, :html => { :class => 'generic-form' } do |f|
+    = f.error_messages(:header_message => nil, :class => "error")
+    %ul
+      %li
+        = f.label :contact_name, "Name*"
+        = f.text_field :contact_name, :class => "txt"
+      %li
+        = f.label :organization_name, "Government organization"
+        = f.text_field :organization_name, :class => "txt"
+      %li
+        = f.label :email, "Email*"
+        = f.text_field :email, :class => "txt"
+      %li
+        = f.label :password, 'Password*'
+        = f.password_field :password, :class => "txt"
+      %li
+        = f.label :password_confirmation, "Password confirmation*"
+        = f.password_field :password_confirmation, :class => "txt"
+      %li
+        = content_tag :span, '*Required', :class => 'required-note'
+      %li.tos
+        = f.check_box :terms_of_service, {:class => 'checkbox'}
+        = f.label :terms_of_service, "I have read and accept the &nbsp;", :class => 'tos-label'
+        = link_to 'Terms of Service', recalls_tos_docs_path, :target => 'blank'
+    = f.submit "Complete registration for a new account", :class => 'btn-register form-submit-button'
+

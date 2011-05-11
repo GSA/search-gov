@@ -58,17 +58,12 @@ describe Affiliates::UsersController do
 
       context "when the user added is not an existing user" do
         it "should assign the email address and contact name, create a user with that information, and send a welcome email" do
-          Emailer.should_receive(:deliver_welcome_to_new_user_added_by_affiliate)
-          Emailer.should_not_receive(:deliver_welcome_to_new_user)
-          Emailer.should_not_receive(:deliver_welcome_to_new_developer)
+          new_user = mock('user', :email => 'newuser@usa.gov', :contact_name => 'New User')
+          User.should_receive(:new_invited_by_affiliate).and_return(new_user)
+          new_user.should_receive(:save).and_return(true)
           post :create, :affiliate_id => @affiliate.id, :email => 'newuser@usa.gov', :name => 'New User'
-          assigns[:email].should == 'newuser@usa.gov'
-          assigns[:contact_name].should == 'New User'
-          assigns[:user].should_not be_nil
-          assigns[:user].email.should == 'newuser@usa.gov'
-          session[:flash][:success].should == "That user does not exist in the system. We've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
+          flash[:success].should == "That user does not exist in the system. We've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate."
           response.should redirect_to affiliate_users_path(@affiliate)
-          @affiliate.users.include?(assigns[:user]).should be_true
         end
       end
 
@@ -103,6 +98,20 @@ describe Affiliates::UsersController do
           @affiliate.users.include?(@another_user).should be_true
         end
       end
+
+      context "when the new user name or email is blank" do
+        before do
+          @user = users(:affiliate_manager)
+          UserSession.create(@user)
+        end
+
+        it "sets flash[:error] message" do
+          post :create, :affiliate_id => @affiliate.id, :email => "", :name => ""
+          flash[:success].should be_blank
+        end
+
+      end
+
     end
   end
 

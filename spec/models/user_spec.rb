@@ -1,7 +1,7 @@
 require "#{File.dirname(__FILE__)}/../spec_helper"
 
 describe User do
-  fixtures :users
+  fixtures :users, :affiliates
 
   before do
     @valid_attributes = {
@@ -79,6 +79,11 @@ describe User do
     it "should not send email verification to user without .gov or .mil email address" do
       Emailer.should_not_receive(:deliver_new_user_email_verification).with(an_instance_of(User))
       User.create!(@valid_attributes.merge(:email => 'not.gov@agency.com'))
+    end
+
+    it "should not receive welcome to new user add by affiliate" do
+      Emailer.should_not_receive(:deliver_welcome_to_new_user_added_by_affiliate)
+      User.create!(@valid_attributes)
     end
 
     context "when the user is a developer" do
@@ -355,6 +360,68 @@ describe User do
         Emailer.should_not_receive(:deliver_welcome_to_new_user).with(an_instance_of(User))
         @user.save!
       end
+    end
+  end
+
+  describe "#new_invited_by_affiliate" do
+    let(:inviter) {users(:affiliate_manager)}
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    context "when contact_name and email are provided" do
+
+      it "should initialize new user with assign affiliate, contact_name, and email" do
+        new_user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+        new_user.save!
+        new_user.affiliates.first.should == affiliate
+        new_user.contact_name.should == 'New User Name'
+        new_user.email.should == 'newuser@approvedagency.com'
+        new_user.is_affiliate?.should be_true
+        new_user.requires_manual_approval.should be_false
+        new_user.is_pending_email_verification?.should be_true
+        new_user.welcome_email_sent.should be_true
+        affiliate.users.should include(new_user)
+      end
+
+      it "should receive welcome new user added by affiliate email verification" do
+        Emailer.should_receive(:deliver_welcome_to_new_user_added_by_affiliate)
+        Emailer.should_not_receive(:deliver_new_user_email_verification)
+        Emailer.should_not_receive(:deliver_welcome_to_new_developer)
+        new_user = User.new_invited_by_affiliate(@user, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+        new_user.save!
+        new_user.email_verification_token.should_not be_blank
+      end
+    end
+  end
+
+  describe "#complete_registration" do
+    let(:inviter) { users(:affiliate_manager) }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    before do
+      @user = User.new_invited_by_affiliate(inviter, affiliate, { :contact_name => 'New User Name', :email => 'newuser@approvedagency.com' })
+      @user.save!
+    end
+
+    context "when executed" do
+      before do
+        @user.should_receive(:update_attributes)
+        Emailer.should_not_receive(:deliver_welcome_to_new_user)
+        @user.complete_registration({})
+      end
+
+      it { @user.should be_require_password }
+      it { @user.should be_is_approved }
+      it "should set email_verification_token to nil" do
+        @user.email_verification_token.should be_nil
+      end
+    end
+
+    context "when password and password_confirmation are blank" do
+      before do
+        @user.complete_registration({ :password => '', :password_confirmation => '' })
+      end
+
+      specify { @user.should_not be_valid }
     end
   end
 end
