@@ -133,4 +133,11 @@ describe SaytFilter do
       end
     end
   end
+
+  describe "#to_label" do
+    it "should return the phrase" do
+      SaytFilter.new(:phrase => 'dummy filter').to_label.should == 'dummy filter'
+    end
+  end
+
 end

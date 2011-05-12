@@ -21,6 +21,10 @@ class SaytFilter < ActiveRecord::Base
     end
   end
 
+  def to_label
+    phrase
+  end
+
   private
   def apply_filter_to_sayt_suggestions
     SaytSuggestion.all.each do |suggestion|

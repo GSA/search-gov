@@ -88,4 +88,8 @@ class SaytSuggestion < ActiveRecord::Base
     squish_whitespace_and_downcase
     spellcheck
   end
+
+  def to_label
+    phrase
+  end
 end

@@ -58,12 +58,12 @@ describe SaytSuggestion do
       SaytSuggestion.create!(:phrase => "popular")
       SaytSuggestion.find_by_phrase("popular").affiliate_id.should be_nil
     end
-    
+
     it "should default protected status to false" do
       suggestion = SaytSuggestion.create!(:phrase => "unprotected")
       suggestion.is_protected.should be_false
     end
-    
+
     it "should not create a new suggestion if one exists, but is marked as deleted" do
       SaytSuggestion.create!(:phrase => "deleted", :deleted_at => Time.now)
       SaytSuggestion.create(:phrase => 'deleted').id.should be_nil
@@ -129,7 +129,7 @@ describe SaytSuggestion do
         DailyQueryStat.create!(:day => Date.today, :query => "today term2", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         Search.stub!(:results_present_for?).and_return true
       end
-      
+
       it "should create unprotected suggestions" do
         SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
         SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term1", 2).is_protected.should be_false
@@ -141,13 +141,13 @@ describe SaytSuggestion do
         SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term2", 2).should_not be_nil
         SaytSuggestion.find_by_phrase("yesterday term1").should be_nil
       end
-      
+
       context "when suggestions exist that have been marked as deleted" do
         before do
           @suggestion = SaytSuggestion.create!(:phrase => 'today term1', :affiliate => nil, :deleted_at => Time.now, :is_protected => true, :popularity => SaytSuggestion::MAX_POPULARITY)
           @suggestion.should_not be_nil
         end
-        
+
         it "should not create a new suggestion, and leave the old suggestion alone" do
           SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.today)
           suggestion = SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "today term1")
@@ -322,4 +322,11 @@ describe SaytSuggestion do
       SaytSuggestion.process_sayt_suggestion_txt_upload(@file)
     end
   end
+
+  describe "#to_label" do
+    it "should return the phrase" do
+      SaytSuggestion.new(:phrase => 'dummy suggestion').to_label.should == 'dummy suggestion'
+    end
+  end
+
 end
