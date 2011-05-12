@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110425182649) do
+ActiveRecord::Schema.define(:version => 20110512160939) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -288,6 +288,57 @@ ActiveRecord::Schema.define(:version => 20110425182649) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "med_groups", :force => true do |t|
+    t.integer  "medline_gid"
+    t.string   "medline_title",                                  :null => false
+    t.string   "medline_url",   :limit => 120
+    t.string   "locale",        :limit => 5,   :default => "en"
+    t.boolean  "visible",                      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "med_groups", ["medline_gid"], :name => "index_med_groups_on_medline_gid"
+  add_index "med_groups", ["medline_title"], :name => "index_med_groups_on_medline_title"
+
+  create_table "med_synonyms", :force => true do |t|
+    t.string   "medline_title", :null => false
+    t.integer  "topic_id",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "med_synonyms", ["medline_title"], :name => "index_med_synonyms_on_medline_title"
+
+  create_table "med_topic_groups", :force => true do |t|
+    t.integer  "topic_id",   :null => false
+    t.integer  "group_id",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "med_topic_relateds", :force => true do |t|
+    t.integer  "topic_id",         :null => false
+    t.integer  "related_topic_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "med_topics", :force => true do |t|
+    t.integer  "medline_tid"
+    t.string   "medline_title",                                         :null => false
+    t.string   "medline_url",          :limit => 120
+    t.string   "locale",               :limit => 5,   :default => "en"
+    t.integer  "lang_mapped_topic_id"
+    t.text     "summary_html"
+    t.boolean  "visible",                             :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "med_topics", ["medline_tid"], :name => "index_med_topics_on_medline_tid"
+  add_index "med_topics", ["medline_title"], :name => "index_med_topics_on_medline_title"
 
   create_table "misspellings", :force => true do |t|
     t.string   "wrong"
