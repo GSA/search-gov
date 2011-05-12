@@ -9,7 +9,7 @@
     <script type="text/javascript" src="rcov.js"></script>
   </head>
   <body>
-    <h1>Usasearch C0 Coverage Information - RCov</h1>
+    <h1>Work2 C0 Coverage Information - RCov</h1>
     <h2>lib/tasks/daily_usage_stats.rake</h2>
 
     
@@ -63,31 +63,31 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   desc &quot;Runs nightly to compile webtrends usage stats for the previous day and update existing record in DB&quot;</pre></td>
+            <td><pre><a name="line2">2</a>   desc &quot;Runs nightly to compile webtrends usage stats for the previous few days, updating existing records in DB&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   task :update_webtrends_stats =&gt; :environment do</pre></td>
+            <td><pre><a name="line3">3</a>   task :update_webtrends_stats, :start_day, :end_day, :needs =&gt; :environment do |t, args|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     (Date.yesterday - 2.days).upto(Date.yesterday) do |date|</pre></td>
+            <td><pre><a name="line4">4</a>     args.with_defaults(:start_day =&gt; (Date.yesterday - 2.days).to_s(:number), :end_day =&gt; Date.yesterday.to_s(:number))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>       DailyUsageStat.update_webtrends_stats_for(date)</pre></td>
+            <td><pre><a name="line5">5</a>     start_date, end_date = Date.parse(args.start_day), Date.parse(args.end_day)</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line6">6</a>     end</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>     start_date.upto(end_date) { |date| DailyUsageStat.update_webtrends_stats_for(date) }</pre></td>
           </tr>
         
           
@@ -105,7 +105,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue May 03 13:02:55 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu May 12 11:09:28 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
