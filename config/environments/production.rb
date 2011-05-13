@@ -36,7 +36,7 @@ SSL_PROTOCOL = "https"
 RECAPTCHA_PUBLIC_KEY  = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
 
-MONTHLY_REPORT_RECIPIENTS = ['amy.farrajfeijoo@gsa.gov', 'erik@searchsi.com', 'greg@shelrick.com', 'jayvirdy@gmail.com', 'GSA@insomniacdesign.com', 'marina.tuttle@gsa.gov']
+MONTHLY_REPORT_RECIPIENTS = ['amy.farrajfeijoo@gsa.gov', 'erik@searchsi.com', 'greg@shelrick.com', 'jayvirdy@gmail.com', 'GSA@insomniacdesign.com', 'marina.tuttle@gsa.gov', 'loren@siebert.org']
 
 config.gem "sauce", :version => '= 0.17.7'
 config.gem "parallel", :version => '= 0.5.2'

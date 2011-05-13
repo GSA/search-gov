@@ -30,11 +30,11 @@
       %table{:id => "module_click_stats"}
         %tr
           %th Module
-          %th Clicks
+          %th{:style=>"text-align: right"} Clicks
         - @clicks.each do |monthly_click_total|
           %tr
             %td= monthly_click_total.source
-            %td= monthly_click_total.total
+            %td{:style=>"text-align: right"}= number_with_delimiter(monthly_click_total.total)
 
   .span-24.headertitle
     .span-21

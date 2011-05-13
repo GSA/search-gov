@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110512160939) do
+ActiveRecord::Schema.define(:version => 20110513001443) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -370,7 +370,7 @@ ActiveRecord::Schema.define(:version => 20110512160939) do
     t.datetime "updated_at"
   end
 
-  add_index "monthly_popular_queries", ["year", "month"], :name => "index_monthly_popular_queries_on_year_and_month"
+  add_index "monthly_popular_queries", ["year", "month", "is_grouped"], :name => "index_monthly_popular_queries_on_year_and_month_and_is_grouped"
 
   create_table "moving_queries", :force => true do |t|
     t.date    "day",                    :null => false

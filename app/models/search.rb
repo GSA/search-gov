@@ -146,7 +146,7 @@ class Search
     related_terms_array.each{|t| t.strip!}
     related_terms_array.delete_if {|related_term| self.query.casecmp(related_term).zero? }
     related_terms_array.sort! {|x,y| y.length <=> x.length }
-    return related_terms_array[0,5].sort
+    related_terms_array[0,5].sort
   end
 
   def spelling_results(response)
@@ -229,7 +229,7 @@ class Search
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
     query += " #{options[:site_limits].split.collect { |site| 'site:' + site }.join(' OR ')}" unless options[:site_limits].blank?
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
-    return query.strip
+    query.strip
   end
 
   def limit_field(field_name, term)

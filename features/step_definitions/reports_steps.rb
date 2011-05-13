@@ -1,32 +1,30 @@
 Given /^the following DailyUsageStats exist for yesterday:$/ do |table|
   DailyUsageStat.delete_all
   table.hashes.each do |hash|
-    DailyUsageStat.create(:day => Date.yesterday, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"])
+    DailyUsageStat.create!(:day => Date.yesterday, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"])
   end
 end
 
 Given /^the following MonthlyPopularQueries exist$/ do |table|
-  MonthlyPopularQuery.destroy_all
+  MonthlyPopularQuery.delete_all
   table.hashes.each do |hash|
-    MonthlyPopularQuery.create(:year => hash["year"], :month => hash["month"], :query => hash["query"], :times => hash["times"], :is_grouped => hash["is_grouped"].present? ? hash["is_grouped"] : false)
+    MonthlyPopularQuery.create!(:year => hash["year"], :month => hash["month"], :query => hash["query"], :times => hash["times"], :is_grouped => hash["is_grouped"].present? ? hash["is_grouped"] : false)
   end
 end
 
 Given /^the following MonthlyClickTotals exist$/ do |table|
-  MonthlyClickTotal.destroy_all
+  MonthlyClickTotal.delete_all
   table.hashes.each do |hash|
-    MonthlyClickTotal.create(:year => hash["year"], :month => hash["month"], :source => hash["source"], :total => hash["total"])
+    MonthlyClickTotal.create!(:year => hash["year"], :month => hash["month"], :source => hash["source"], :total => hash["total"])
   end
 end
-
-
 
 Given /^the following DailyUsageStats exists for each day in yesterday's month$/ do |table|
   DailyUsageStat.delete_all
   yday = Date.yesterday
   table.hashes.each do |hash|
     yday.day.times do |index|
-      DailyUsageStat.create(:day => yday - index, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :affiliate => hash["affiliate"])
+      DailyUsageStat.create!(:day => yday - index, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :affiliate => hash["affiliate"])
     end
   end
 end
@@ -36,7 +34,7 @@ Given /^the following DailyUsageStats exist for each day in "([^\"]*)"$/ do |mon
   month_date = Date.parse(month + "-01")
   table.hashes.each do |hash|
     (Date.new(Time.now.year,12,31).to_date<<(12-month_date.month)).day.times do |index|
-      DailyUsageStat.create(:day => month_date + index.days, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :affiliate => hash["affiliate"])
+      DailyUsageStat.create!(:day => month_date + index.days, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"], :affiliate => hash["affiliate"])
     end
   end
 end
@@ -83,7 +81,7 @@ end
 Given /^the following DailyQueryStats exist in "([^\"]*)"$/ do |month_year, table|
   time = Time.parse(month_year)
   table.hashes.each do |hash|
-    DailyQueryStat.create(:day => time, :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? Affiliate::USAGOV_AFFILIATE_NAME : hash["affiliate"], :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
+    DailyQueryStat.create!(:day => time, :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? Affiliate::USAGOV_AFFILIATE_NAME : hash["affiliate"], :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
   end
 end
 
