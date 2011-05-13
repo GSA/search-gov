@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates-users_controller_rb.html">app/controllers/affiliates/users_controller.rb</a></td>
-            <td class='right_align'><tt>43</tt></td>
-            <td class='right_align'><tt>40</tt></td>
+            <td class='right_align'><tt>44</tt></td>
+            <td class='right_align'><tt>41</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -147,7 +147,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>         flash.now[:error] = &quot;That user is already associated with this affiliate. You cannot add them again.&quot;</pre></td>
+            <td><pre><a name="line16">16</a>         flash[:error] = &quot;That user is already associated with this affiliate. You cannot add them again.&quot;</pre></td>
           </tr>
         
           
@@ -171,7 +171,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>         flash.now[:success] = &quot;Successfully added #{@user.contact_name} (#{@user.email})&quot;</pre></td>
+            <td><pre><a name="line20">20</a>         flash[:success] = &quot;Successfully added #{@user.contact_name} (#{@user.email})&quot;</pre></td>
           </tr>
         
           
@@ -195,127 +195,133 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>       random_password = Digest::MD5.hexdigest(&quot;#{@email}:#{Time.now.to_s}&quot;)[0..8]</pre></td>
+            <td><pre><a name="line24">24</a>       @user = User.new_invited_by_affiliate(current_user, @affiliate, { :email =&gt; @email, :contact_name =&gt; @contact_name })</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>       @user = User.create(:email =&gt; @email, :contact_name =&gt; @contact_name, :government_affiliation =&gt; '1', :password =&gt; random_password, :password_confirmation =&gt; random_password, :skip_welcome_email =&gt; true)</pre></td>
+            <td><pre><a name="line25">25</a>       if @user.save</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>       @affiliate.users &lt;&lt; @user</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>       flash.now[:success] = &quot;That user does not exist in the system. We've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>       Emailer.deliver_welcome_to_new_user_added_by_affiliate(@affiliate, @user, current_user)</pre></td>
+            <td><pre><a name="line26">26</a>         flash[:success] = &quot;That user does not exist in the system. We've created a temporary account and notified them via email on how to login. Once they login, they will have access to the affiliate.&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>     end</pre></td>
+            <td><pre><a name="line27">27</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>     redirect_to affiliate_users_path(@affiliate)</pre></td>
+            <td><pre><a name="line28">28</a>         render :action =&gt; :index and return</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>   end</pre></td>
+            <td><pre><a name="line29">29</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a> </pre></td>
+            <td><pre><a name="line30">30</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>   def destroy</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line34">34</a>     @user = User.find(params[:id])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>     @affiliate.users.delete(@user)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>     flash.now[:success] = &quot;Removed #{@user.contact_name} from affiliate.&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>     if @user == current_user</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>       redirect_to home_affiliates_path</pre></td>
+            <td><pre><a name="line31">31</a>     redirect_to affiliate_users_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>     else</pre></td>
+            <td><pre><a name="line32">32</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line33">33</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>       redirect_to affiliate_users_path(@affiliate)</pre></td>
+            <td><pre><a name="line34">34</a>   def destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>     @user = User.find(params[:id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>     @affiliate.users.delete(@user)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>     flash.now[:success] = &quot;Removed #{@user.contact_name} from affiliate.&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>     if @user == current_user</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>       redirect_to home_affiliates_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>     end</pre></td>
+            <td><pre><a name="line40">40</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>       redirect_to affiliate_users_path(@affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a>   end</pre></td>
+            <td><pre><a name="line42">42</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line43">43</a> end</pre></td>
+            <td><pre><a name="line43">43</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line44">44</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri May 13 07:56:35 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Fri May 13 13:30:13 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
