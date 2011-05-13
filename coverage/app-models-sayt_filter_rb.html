@@ -9,7 +9,7 @@
     <script type="text/javascript" src="rcov.js"></script>
   </head>
   <body>
-    <h1>Work2 C0 Coverage Information - RCov</h1>
+    <h1>Usasearch C0 Coverage Information - RCov</h1>
     <h2>app/models/sayt_filter.rb</h2>
 
     
@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-sayt_filter_rb.html">app/models/sayt_filter.rb</a></td>
-            <td class='right_align'><tt>34</tt></td>
-            <td class='right_align'><tt>29</tt></td>
+            <td class='right_align'><tt>38</tt></td>
+            <td class='right_align'><tt>32</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -195,55 +195,55 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>   private</pre></td>
+            <td><pre><a name="line24">24</a>   def to_label</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>   def apply_filter_to_sayt_suggestions</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>     SaytSuggestion.all.each do |suggestion|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>       suggestion.delete if match?(suggestion.phrase)</pre></td>
+            <td><pre><a name="line25">25</a>     phrase</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>     end</pre></td>
+            <td><pre><a name="line26">26</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>   end</pre></td>
+            <td><pre><a name="line27">27</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>   def apply_filter_to_sayt_suggestions</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>     SaytSuggestion.all.each do |suggestion|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>       suggestion.delete if match?(suggestion.phrase)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>   def squish_whitespace_and_downcase</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>     self.phrase = self.phrase.squish.downcase unless self.phrase.nil?</pre></td>
+            <td><pre><a name="line32">32</a>     end</pre></td>
           </tr>
         
           
@@ -255,13 +255,37 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a> end</pre></td>
+            <td><pre><a name="line34">34</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>   def squish_whitespace_and_downcase</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>     self.phrase = self.phrase.squish.downcase unless self.phrase.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line37">37</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line38">38</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu May 12 11:09:27 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Fri May 13 07:56:35 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
