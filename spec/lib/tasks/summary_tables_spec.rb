@@ -30,7 +30,7 @@ describe "summary_tables rake tasks" do
 
         it "should calculate moving queries for each day in that range, ignoring affiliates and non-English locales" do
           MovingQuery.should_receive(:compute_for).with(Date.yesterday.to_s(:number))
-          MovingQuery.should_receive(:compute_for).with(Date.today.to_s(:number))
+          MovingQuery.should_receive(:compute_for).with(Date.current.to_s(:number))
           MovingQuery.should_receive(:compute_for).with(Date.tomorrow.to_s(:number))
           @rake[@task_name].invoke
         end
@@ -55,8 +55,8 @@ describe "summary_tables rake tasks" do
 
       context "when target date is passed in" do
         it "should calculate moving queries for that date" do
-          MovingQuery.should_receive(:compute_for).once.with(Date.today.to_s(:number))
-          @rake[@task_name].invoke(Date.today.to_s(:number))
+          MovingQuery.should_receive(:compute_for).once.with(Date.current.to_s(:number))
+          @rake[@task_name].invoke(Date.current.to_s(:number))
         end
       end
     end
@@ -144,7 +144,7 @@ describe "summary_tables rake tasks" do
     describe "usasearch:monthly_popular_queries:calculate" do
       before do
         @task_name = "usasearch:monthly_popular_queries:calculate"
-        @first_stat_date = Date.today.advance(:day => -1)
+        @first_stat_date = Date.current.advance(:day => -1)
         @second_stat_date = @first_stat_date.day == 1 ? @first_stat_date : @first_stat_date.advance(:days => -1)
         DailyQueryStat.create(:day => @first_stat_date, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         DailyQueryStat.create(:day => @second_stat_date, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)

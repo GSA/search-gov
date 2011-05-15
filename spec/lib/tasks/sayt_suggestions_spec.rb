@@ -22,7 +22,7 @@ describe "SAYT suggestions rake tasks" do
 
       context "when target day is specified" do
         it "should populate sayt_suggestions for that given day" do
-          day = Date.today.to_s(:number).to_i
+          day = Date.current.to_s(:number).to_i
           SaytSuggestion.should_receive(:populate_for).with(day)
           @rake[@task_name].invoke(day)
         end

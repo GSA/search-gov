@@ -4,7 +4,7 @@ describe DailyQueryNoresultsStat do
   fixtures :daily_query_noresults_stats
   before(:each) do
     @valid_attributes = {
-      :day => Date.today,
+      :day => Date.current,
       :query => "nothing found",
       :times => 11,
       :affiliate => Affiliate::USAGOV_AFFILIATE_NAME,

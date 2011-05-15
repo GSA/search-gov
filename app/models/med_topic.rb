@@ -47,7 +47,7 @@ class MedTopic < ActiveRecord::Base
 
 
   	def xml_base_name_for_date( date = nil )
-    	most_recent_saturday = saturday_on_or_before( date || Date.today )
+    	most_recent_saturday = saturday_on_or_before( date || Date.current )
     	sat_s = most_recent_saturday.strftime( "%Y-%m-%d" )
     	return "mplus_vocab_#{sat_s}"
   	end
@@ -81,9 +81,9 @@ class MedTopic < ActiveRecord::Base
 		find(:all).each { |topic|
 			lm_topic = topic.lang_mapped_topic
 			topics[topic.medline_tid] = {
-				:medline_title => topic.medline_title, 
-				:medline_url => topic.medline_url, 
-				:summary_html => topic.summary_html,  
+				:medline_title => topic.medline_title,
+				:medline_url => topic.medline_url,
+				:summary_html => topic.summary_html,
 				:locale => topic.locale,
 				:synonyms => [],
 				:related_topics => [],
@@ -126,7 +126,7 @@ class MedTopic < ActiveRecord::Base
 
 
 	def delta_medline_vocab( have, want )
-	
+
 		have ||= { :topics => {}, :groups => {} }
 		want ||= { :topics => {}, :groups => {} }
 
@@ -143,7 +143,7 @@ class MedTopic < ActiveRecord::Base
 			if have_topic_atts.nil?
 				(todo[:create_topic] ||= {})[{:medline_tid => topic_tid}] = wanted_topic_atts
 			else
-				changed_atts = {} 
+				changed_atts = {}
 				wanted_topic_atts.each { |att_name, want_att_value|
 					have_att_value = have_topic_atts[att_name]
 					unless want_att_value === have_att_value
@@ -162,12 +162,12 @@ class MedTopic < ActiveRecord::Base
 				(todo[:delete_topic] ||= []) << { :medline_tid => topic_tid }
 			end
 		}
-		
+
 		wanted_group_tids.each { |group_gid|
 
 			wanted_group_locale_map = want[:groups][group_gid]
 			have_group_locale_map = have[:groups][group_gid]
-	
+
 			SUPPORTED_LOCALES.each { |locale|
 
 				have_group_atts = if have_group_locale_map.nil?
@@ -175,7 +175,7 @@ class MedTopic < ActiveRecord::Base
 				else
 					have_group_locale_map[locale]
 				end
-						
+
 				wanted_group_atts = wanted_group_locale_map[locale]
 
 				if have_group_atts.nil?
@@ -186,7 +186,7 @@ class MedTopic < ActiveRecord::Base
 					if wanted_group_atts.nil?
 						(todo[:delete_group] ||= []) << {:medline_gid => group_gid, :locale => locale}
 					else
-				    	changed_atts = {} 
+				    	changed_atts = {}
 				    	wanted_group_atts.each { |att_name, want_att_value|
 					    	have_att_value = have_group_atts[att_name]
 					    	unless want_att_value === have_att_value
@@ -199,7 +199,7 @@ class MedTopic < ActiveRecord::Base
 					end
 
 				end
-			
+
 			}
 		}
 
@@ -216,11 +216,11 @@ class MedTopic < ActiveRecord::Base
 		}
 
 		return todo
-		
+
     end
 
 
-    def parse_medline_xml_vocab( xml )  
+    def parse_medline_xml_vocab( xml )
 
 		xml_doc = Nokogiri::XML(xml)
 
@@ -248,16 +248,16 @@ class MedTopic < ActiveRecord::Base
 
     		syns_node = topic_node.at_xpath("Synonyms")
 			synonyms = []
-			unless syns_node.nil? 
+			unless syns_node.nil?
 				syns_node.xpath("Synonym").each { |syn| synonyms << syn.text.strip }
 				synonyms
 			end
 
     		groups_node = topic_node.at_xpath("Groups")
-			
+
 			related_gids = []
-			unless groups_node.nil? 
-				groups_node.xpath("Group").each { |group_node| 
+			unless groups_node.nil?
+				groups_node.xpath("Group").each { |group_node|
 					gid = group_node.at_xpath("GroupID").text.to_i rescue nil
 					group_name = group_node.at_xpath("GroupName").text.strip
 					group_url = group_node.at_xpath("GroupURL").text.strip
@@ -280,13 +280,13 @@ class MedTopic < ActiveRecord::Base
 			end
 
 			topics[tid] = {
-				:medline_title => medline_title, 
-				:locale => locale, 
-				:lang_map => lmtid, 
-				:synonyms => synonyms.sort, 
-				:summary_html => linted_summary, 
-				:medline_url => medline_url, 
-				:related_groups => related_gids.sort, 
+				:medline_title => medline_title,
+				:locale => locale,
+				:lang_map => lmtid,
+				:synonyms => synonyms.sort,
+				:summary_html => linted_summary,
+				:medline_url => medline_url,
+				:related_groups => related_gids.sort,
 				:related_topics => related_tids.sort
 			}
 
@@ -302,13 +302,13 @@ class MedTopic < ActiveRecord::Base
 		if o.is_a? Hash
 			new_hash = {}
 			o.each { |key, value|
-	
+
 				key = if key =~ /\d+/
 					key.to_i
-				else 
-					key.to_sym 
+				else
+					key.to_sym
 				end
-				
+
 				new_hash[key] = if value.kind_of? Hash
 					ensym_string_keys( value )
 				else
@@ -331,7 +331,7 @@ class MedTopic < ActiveRecord::Base
 	def lint_html_text_or_ent(children)
 		linted_xml = ""
 		children.each { |child|
-			if [Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE].include? child.node_type 
+			if [Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE].include? child.node_type
 				linted_xml << child.to_xml.gsub( /\s+/, " " )
 			else
 				yield("only text allowed here: #{child.to_s}") if block_given?
@@ -355,10 +355,10 @@ class MedTopic < ActiveRecord::Base
     def lint_html_body(children)
 		linted_xml = ""
 		children.each { |child|
-			if [Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE].include? child.node_type 
+			if [Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE].include? child.node_type
 				linted_xml << child.to_xml.gsub( /\s+/, " " )
 			elsif child.elem?
-				tag_name = child.name 
+				tag_name = child.name
 				if child.name == "a"
 					if child.attributes.size == 1 && child['href']
 						href_url = child['href']
@@ -397,25 +397,25 @@ class MedTopic < ActiveRecord::Base
     def lint_medline_topic_summary_node(xml_root)
 
 		return nil if xml_root.nil?
-		
+
 		if xml_root.children.size == 0
 			yield( "empty" ) if block_given?
 			return nil
 		end
 
 		linted_xml = ""
-	
+
 		xml_root.children.each { |child|
 			if child.text?
 				unless child.text.strip.empty?
 					yield( "ignored root text outside p or li: #{child.text}" ) if block_given?
 				end
 			elsif child.elem?
-				tag_name = child.name 
+				tag_name = child.name
 				if child.name == "p"
 					if child.attributes.size > 0
 						if child['style'].nil?
-							yield( "<p> should contain no attributes" ) if block_given? 
+							yield( "<p> should contain no attributes" ) if block_given?
 						end
 					else
 						linted_xml << "<p>"
@@ -424,7 +424,7 @@ class MedTopic < ActiveRecord::Base
 					end
 				elsif child.name == "ul"
 					if child.attributes.size > 0
-						yield( "<ul> should contain no attributes" ) 
+						yield( "<ul> should contain no attributes" )
 					end
 					linted_xml << "<ul>"
 					child.children.each { |li|
@@ -462,7 +462,7 @@ class MedTopic < ActiveRecord::Base
 
 		xml_root = nil
 
-		begin 
+		begin
 			xml_root = Nokogiri::XML.fragment(unlinted_xml)
 		rescue Exception => e
 			yield( "could not parse: #{e.message}" ) if block_given?
@@ -499,7 +499,7 @@ class MedTopic < ActiveRecord::Base
 					topic.delete
 				end
 		}
-		
+
 		(deltas[:create_group] || {}).each { |group_key, group_atts|
 			new_group_atts = group_key.clone
 			group_atts.each { |name, value| new_group_atts[name] = value }
@@ -515,11 +515,11 @@ class MedTopic < ActiveRecord::Base
 			topic_atts.each { |name, value|
 				case name
 				when :synonyms :
-					new_synonyms = value 
+					new_synonyms = value
 				when :related_topics :
-					new_related_topics = value 
+					new_related_topics = value
 				when :related_groups :
-					new_related_groups = value 
+					new_related_groups = value
 				when :lang_map :
 					new_lmtid = value unless value.nil?
 				else
@@ -581,7 +581,7 @@ class MedTopic < ActiveRecord::Base
 			topic.synonyms.delete_all
 			syns.each { |syn| topic.synonyms.create( { :medline_title => syn } ) }
 		}
-		
+
 
 		# patch up related topics
 
@@ -592,7 +592,7 @@ class MedTopic < ActiveRecord::Base
 				topic.topic_relatees.create( { :related_topic => related_topic } ) unless related_topic.nil?
 			}
 		}
-		
+
 
 		# patch up related groups
 
@@ -610,23 +610,23 @@ class MedTopic < ActiveRecord::Base
 			topic.lang_mapped_topic = MedTopic.find( :first, :conditions => { :medline_tid => lang_map_tid } )
 			topic.save!
 		}
-		
+
     end
 
 
-#	TODO: sub-optimal, should optimize once search interface details are known 
+#	TODO: sub-optimal, should optimize once search interface details are known
 #   for now, return ordered list of matches, given preference to locale match
 #   over direct tytle (as opposed to synonym) match
 
 	def search_for( title, locale = "en" )
-		
+
 		matched_topics = find( :all, :conditions => { :medline_title => title.strip } )
 		MedSynonym.find(:all, :conditions => { :medline_title => title.strip } ) .each { |syn|
 			topic = syn.topic
 			matched_topics << topic unless matched_topics.include?( topic )
 		}
 		return nil if matched_topics.empty?
-		matched_topics = matched_topics.sort_by { |topic| 
+		matched_topics = matched_topics.sort_by { |topic|
 
 			locale_match = if locale.nil?
 				1
@@ -636,7 +636,7 @@ class MedTopic < ActiveRecord::Base
 				0
 			end
 
-			title_match = if topic.medline_title == title 
+			title_match = if topic.medline_title == title
 				1
 			else
 				0
@@ -653,13 +653,13 @@ class MedTopic < ActiveRecord::Base
 	def lint_medline_xml_for_date( effective_date )
 
       xml = MedTopic.medline_xml_for_date( effective_date )
-      vocab = MedTopic.parse_medline_xml_vocab( xml ) { |where, what| yield("#{where}: #{what}") 
+      vocab = MedTopic.parse_medline_xml_vocab( xml ) { |where, what| yield("#{where}: #{what}")
 }
       yield "found #{vocab[:topics].size} topics / #{vocab[:groups].size} groups"
       topics_wo_langmap = {}
       topics_wo_groups = []
-      vocab[:topics].each { |tid, topic_atts|        
-		topics_wo_groups << [tid, topic_atts[:medline_title]] if topic_atts[:related_groups].nil? || topic_atts[:related_groups].empty?        
+      vocab[:topics].each { |tid, topic_atts|
+		topics_wo_groups << [tid, topic_atts[:medline_title]] if topic_atts[:related_groups].nil? || topic_atts[:related_groups].empty?
 		(topics_wo_langmap[topic_atts[:locale]] ||= []) << [tid, topic_atts[:medline_title]] if topic_atts[:lang_map].nil? || topic_atts[:lang_map] == 0
       }
 

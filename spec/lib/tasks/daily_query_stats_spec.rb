@@ -24,8 +24,8 @@ describe "daily_query_stats rake tasks" do
         before do
           DailyQueryStat.delete_all
           DailyQueryStat.create!(:day => Date.yesterday, :times => 10, :query => "ignore me", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-          @first = DailyQueryStat.create!(:day => Date.today, :times => 20, :query => "index me", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-          @second = DailyQueryStat.create!(:day => Date.today, :times => 20, :query => "index me too", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+          @first = DailyQueryStat.create!(:day => Date.current, :times => 20, :query => "index me", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
+          @second = DailyQueryStat.create!(:day => Date.current, :times => 20, :query => "index me too", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         end
 
         it "should call Sunspot.index on the most-recently-added DailyQueryStat models" do
