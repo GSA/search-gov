@@ -35,10 +35,7 @@ You will need to install rubygems 1.4.1 and set up your gem sources:
 
 ## Solr
 
-We're using Solr for fulltext search. You might need to install these gems separately due to a Catch-22 with the Rake gem installer.
-
-    sudo gem install sunspot --version '=1.1.0'
-    sudo gem install sunspot_rails --version '=1.1.0'
+We're using Solr for fulltext search.
 
 You can start/stop/reindex Solr like this:
 
@@ -52,8 +49,7 @@ If you are upgrading from a previous version of Sunspot/Solr (typically, this wo
     rake sunspot:solr:stop
     rake sunspot:solr:stop RAILS_ENV=test
     git pull
-    sudo gem install sunspot --version '=1.1.0'
-    sudo gem install sunspot_rails --version '=1.1.0'
+    bundle install
     rake sunspot:solr:start
     rake sunspot:solr:start RAILS_ENV=test
     rake sunspot:solr:reindex
@@ -61,16 +57,9 @@ If you are upgrading from a previous version of Sunspot/Solr (typically, this wo
 
 ## Gems
 
-You should be able to get all the rest of the gems needed for this project like this:
+For Rails 3, we use bundler; you should be able to get all the rest of the gems needed for this project like this:
 
-    sudo gem install cucumber hoptoad_notifier rspec rspec-rails capistrano capistrano-ext ruby-debug
-    sudo gem install sinatra --version '= 0.9.2'
-    sudo gem install redis redis-namespace yajl-ruby
-    sudo gem install resque
-    sudo gem install resque_spec --version '~> 0.2.0'
-    sudo rake gems:install
-    sudo rake gems:install RAILS_ENV=test
-    sudo rake gems:install RAILS_ENV=cucumber
+    bundle install
 
 # Database
 
@@ -95,7 +84,7 @@ Make sure the unit tests and functional tests run:
 
 Make sure the integration tests run.
 
-    script/cucumber
+    rake cucumber
 
 # Code Coverage
 
@@ -115,7 +104,10 @@ Make sure you commit any changes to the coverage directory back to git.
 
 Fire up a server and try it all out:
 
-    script/server
+    rails server
+or
+
+    rails s
 
 # Main areas of functionality
 
@@ -191,7 +183,7 @@ Now re-run that taxes search again and you should see content above the search r
 1. Run regression tests to make sure all prior functionality still passes tests
 
         rake spec
-        script/cucumber
+        rake cucumber
 
     The entire test suite should always be 100% green. If anything fails at any time, it's the new top priority to fix it, and no developer should check in code on top of broken tests.
 
@@ -222,7 +214,7 @@ Now re-run that taxes search again and you should see content above the search r
 
         git pull
         rake spec
-        script/cucumber
+        rake cucumber
         git push
 
 1. Mark story as "Finished" on Tracker. This means you are done testing/coding.
@@ -234,46 +226,3 @@ Now re-run that taxes search again and you should see content above the search r
 1. Mark story as "Delivered". This means it's ready and visible for acceptance testing on the demo environment. Add an acceptance test in the story comments so someone else can easily verify what you have done, including ways to highlight various scenarios and corner cases (e.g., "By searching on 'beef recalls', you can see how the UI looks when there are many recalls listed...", or "Go to this URL on staging to see how it behaves in Spanish for affiliates").
 
 1. Goto Step 1
-
-# Using Labs
-From time to time, a new feature will require testing and feedback from those outside of our development group.  We do not want to push experimental changes to our staging server, which is used for acceptance testing.  Instead, we have create a 'labs' deployment that is available for previewing experimental features.  The labs site is available at http://labs.searchdemo.usa.gov.  If that URL is not available, modify your /etc/hosts file to map the IP address of the searchdemo.usa.gov to labs.searchdemo.usa.gov.
-
-In order to begin developing for the labs branch, you'll need to make sure that no one else is using the branch, or that you are at least in touch with those that are using it.  If the branch has been out of use for a while, it will probably be easier to remove the contents of the remote labs branch and start with a fresh version of the current code.  To remove the remote branch:
-
-      git push origin :labs
-
-Make sure to check that no one is using the labs branch before doing this, otherwise you'll delete their work!  Now, checkout a new local branch called labs, and push it up as a new remote branch:
-
-      git checkout -b labs
-      git push origin labs
-
-If you want to begin using the labs branch as it is (for example, if you're working with someone else and they have already created the remote labs branch), you'll need to begin tracking the remote branch:
-
-      git branch --track labs origin/labs
-
-Now you can checkout the labs branch locally
-
-      git checkout labs
-
-and work together with other developers.
-
-You are now ready to begin developing on the labs branch.  You'll probably want to branch off the labs branch itself if you're working on a big feature, and merge your changes into the labs branch.
-
-When you are ready to deploy your experimental features on the labs.searchdemo.usa.gov site, push your latest commits up to the remote labs branch:
-
-    git push origin labs
-
-and do a deploy of the labs stage:
-
-    cap labs deploy
-
-Your experimental features are now on labs.searchdemo.usa.gov!  When your experimental features have been completed, and you're ready to merge them into the master branch so they can be deployed on searchdemo for acceptance testing, just treat your labs branch as your would any other feature branch:  rebase off of master, checkout master, and merge your changes into master.
-
-Note:  when working with the labs branch, it's your responsibility to keep it in sync with master; if you don't rebase labs on master frequently, it's possible that your branch will become very different from master, making the process of merging your experimental features back into the master branch a real hassle.  It is advisable to rebase on master regularly:
-
-      git checkout master
-      git pull
-      git checkout labs
-      git rebase master
-
-This will keep your labs branch in sync with the master branch, so when you're finished your experimental features, they'll integrate easily with the master branch.
