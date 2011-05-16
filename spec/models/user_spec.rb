@@ -78,12 +78,12 @@ describe User do
     end
 
     it "should not send email verification to user without .gov or .mil email address" do
-      Emailer.should_not_receive(:deliver_new_user_email_verification).with(an_instance_of(User))
+      Emailer.should_not_receive(:new_user_email_verification).with(an_instance_of(User))
       User.create!(@valid_attributes.merge(:email => 'not.gov@agency.com'))
     end
 
     it "should not receive welcome to new user add by affiliate" do
-      Emailer.should_not_receive(:deliver_welcome_to_new_user_added_by_affiliate)
+      Emailer.should_not_receive(:welcome_to_new_user_added_by_affiliate)
       User.create!(@valid_attributes)
     end
 
@@ -410,7 +410,7 @@ describe User do
     context "when executed" do
       before do
         @user.should_receive(:update_attributes)
-        Emailer.should_not_receive(:deliver_welcome_to_new_user)
+        Emailer.should_not_receive(:welcome_to_new_user)
         @user.complete_registration({})
       end
 

@@ -42,24 +42,24 @@ describe Emailer do
       @email.should have_body_text(/#{@url}/)
     end
   end
-  
+
   describe "#monthly_report" do
     before do
       @email = Emailer.monthly_report(File.join(Rails.root, "README.markdown"), Date.current).deliver
     end
-    
+
     it "should be sent to the monthly report recipients" do
       @email.should deliver_to(MONTHLY_REPORT_RECIPIENTS)
     end
-    
+
     it "should have a subject with the file name in it" do
       @email.should have_subject("[USASearch] Monthly Report data attached: README.markdown")
     end
-    
+
     it "should have an attachment" do
       @email.attachments.should_not be_nil
       @email.attachments.should_not be_empty
-    end    
+    end
   end
 
   describe "#new_user_email_verification" do
@@ -89,7 +89,7 @@ describe Emailer do
                      :contact_name => 'Contractor Joe',
                      :organization_name => 'Agency',
                      :requires_manual_approval? => true)
-        @email = Emailer.deliver_new_user_to_admin @user
+        @email = Emailer.new_user_to_admin @user
       end
 
       it "should be sent to the admin email" do
@@ -112,7 +112,7 @@ describe Emailer do
                      :contact_name => 'Gov Employee Joe',
                      :organization_name => 'Gov Agency',
                      :requires_manual_approval? => false)
-        @email = Emailer.deliver_new_user_to_admin @user
+        @email = Emailer.new_user_to_admin @user
       end
 
       it "should be sent to the admin email" do
@@ -134,7 +134,7 @@ describe Emailer do
       @user = mock(User, :email => "invitee@agency.com", :contact_name => 'Invitee Joe', :email_verification_token => 'some_special_token')
       @current_user = mock(User, :email => "inviter@agency.com", :contact_name => 'Inviter Jane')
       @affiliate = affiliates(:basic_affiliate)
-      @email = Emailer.deliver_welcome_to_new_user_added_by_affiliate(@affiliate, @user, @current_user)
+      @email = Emailer.welcome_to_new_user_added_by_affiliate(@affiliate, @user, @current_user)
     end
 
     it "should be sent to the invitee" do
