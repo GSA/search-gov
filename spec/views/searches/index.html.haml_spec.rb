@@ -57,8 +57,8 @@ describe "searches/index.html.haml" do
 
     it "should show header search form" do
       render
-      response.should contain("Enter some search terms")
-      response.should have_selector("#search_query")
+      rendered.should contain("Enter some search terms")
+      rendered.should have_selector("#search_query")
     end
   end
 
@@ -271,7 +271,7 @@ describe "searches/index.html.haml" do
                           'cacheUrl'=> "http://www.cached.com/url"}
           @search_results = [dummy_result, @search_result]
           @search_results.stub!(:total_pages).and_return 1
-          @search.stub!(:results).and_return @search_results     
+          @search.stub!(:results).and_return @search_results
         end
 
         it "should not render a special agency result, even if the first result matches" do
