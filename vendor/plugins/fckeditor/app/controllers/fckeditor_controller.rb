@@ -3,7 +3,7 @@ require 'tmpdir'
 
 class FckeditorController < ActionController::Base
   UPLOADED = "/uploads"
-  UPLOADED_ROOT = Rails.root + "/public" + UPLOADED
+  UPLOADED_ROOT = Rails.root.to_s + "/public" + UPLOADED
   MIME_TYPES = [
     "image/jpg",
     "image/jpeg",
@@ -140,7 +140,7 @@ class FckeditorController < ActionController::Base
   def check_file(file)
     # check that the file is a tempfile object
     # RAILS_DEFAULT_LOGGER.info "CLASS OF UPLOAD OBJECT: #{file.class}"
-    unless "#{file.class}" == "Tempfile" || "StringIO"
+    unless "#{file.class}" == ("Tempfile" || "StringIO")
       @errorNumber = 403
       throw Exception.new
     end
@@ -149,7 +149,7 @@ class FckeditorController < ActionController::Base
   
   def check_path(path)
     exp_path = File.expand_path path
-    if exp_path !~ %r[^#{File.expand_path(RAILS_ROOT)}/public#{UPLOADED}]
+    if exp_path !~ %r[^#{File.expand_path(Rails.root.to_s)}/public#{UPLOADED}]
       @errorNumber = 403
       throw Exception.new
     end

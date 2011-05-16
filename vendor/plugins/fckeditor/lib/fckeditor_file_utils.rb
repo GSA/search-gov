@@ -1,7 +1,7 @@
 require 'fileutils'
 
 module FckeditorFileUtils
-  FCKEDITOR_INSTALL_DIRECTORY = File.join(RAILS_ROOT, '/public/javascripts/fckeditor/')
+  FCKEDITOR_INSTALL_DIRECTORY = File.join(Rails.root.to_s, '/public/javascripts/fckeditor/')
     
   def FckeditorFileUtils.recursive_copy(options)
     source = options[:source]
@@ -30,8 +30,8 @@ module FckeditorFileUtils
   end
   
   def FckeditorFileUtils.backup_existing
-    source = File.join(RAILS_ROOT,'/public/javascripts/fckeditor')
-    dest = File.join(RAILS_ROOT,'/public/javascripts/fckeditor_bck')
+    source = File.join(Rails.root.to_s,'/public/javascripts/fckeditor')
+    dest = File.join(Rails.root.to_s,'/public/javascripts/fckeditor_bck')
     
     FileUtils.rm_r(dest) if File.exists? dest 
     FileUtils.mv source, dest
@@ -39,18 +39,18 @@ module FckeditorFileUtils
   
   def FckeditorFileUtils.copy_configuration
     # need to copy over the code if it doesn't already exist
-    config_file = File.join(RAILS_ROOT, '/vendor/plugins/fckeditor/public/javascripts/fckcustom.js')
-    dest = File.join(RAILS_ROOT, '/public/javascripts/fckcustom.js')
+    config_file = File.join(Rails.root.to_s, '/vendor/plugins/fckeditor/public/javascripts/fckcustom.js')
+    dest = File.join(Rails.root.to_s, '/public/javascripts/fckcustom.js')
     FileUtils.cp(config_file, dest) unless File.exist?(dest)
   end
   
   def FckeditorFileUtils.create_uploads_directory
-    uploads = File.join(RAILS_ROOT, '/public/uploads')
+    uploads = File.join(Rails.root.to_s, '/public/uploads')
     FileUtils.mkdir(uploads) unless File.exist?(uploads)    
   end
   
   def FckeditorFileUtils.install(log) 
-    directory = File.join(RAILS_ROOT, '/vendor/plugins/fckeditor/')
+    directory = File.join(Rails.root.to_s, '/vendor/plugins/fckeditor/')
     source = File.join(directory,'/public/javascripts/fckeditor/')
     FileUtils.mkdir(FCKEDITOR_INSTALL_DIRECTORY)     
     # recursively copy all our files over

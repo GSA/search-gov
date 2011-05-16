@@ -10,7 +10,7 @@ ActiveSupport::Dependencies.autoload_paths += %W(#{Fckeditor::PLUGIN_CONTROLLER_
 ActionView::Base.send(:include, Fckeditor::Helper)
 
 # require the controller
-require 'fckeditor_controller'
+#require 'fckeditor_controller'
 
 # add a route for spellcheck
 #class ActionController::Routing::RouteSet
