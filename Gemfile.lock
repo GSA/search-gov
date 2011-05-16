@@ -1,9 +1,8 @@
 GIT
   remote: git://github.com/paneq/calendar_date_select.git
-  revision: 8e7ec79435a68665df40b14bd90f47e6ac5e9135
-  branch: rails3test
+  revision: 977048211b94599fe0f08eb37a481f3d69df48f6
   specs:
-    calendar_date_select (1.16.1)
+    calendar_date_select (1.16.2)
 
 GIT
   remote: git://github.com/schoefmax/multi_db.git
@@ -58,12 +57,12 @@ GEM
       curb (>= 0.1.4)
       json (>= 1.1.3)
       nokogiri (>= 1.3.3)
-    capistrano (2.5.21)
+    capistrano (2.6.0)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
-      net-ssh-gateway (>= 1.0.0)
+      net-ssh-gateway (>= 1.1.0)
     capistrano-ext (1.2.1)
       capistrano (>= 1.0.0)
     capybara (0.4.1.2)
@@ -76,9 +75,9 @@ GEM
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.3)
     celerity (0.8.9)
-    childprocess (0.1.8)
+    childprocess (0.1.9)
       ffi (~> 1.0.6)
-    chunky_png (1.1.1)
+    chunky_png (1.2.0)
     cloudfiles (1.4.15)
       mime-types (>= 1.16)
     cmdparse (2.0.3)
@@ -107,14 +106,13 @@ GEM
       abstract (>= 1.0.0)
     escape (0.0.4)
     fastercsv (1.5.3)
-    ffi (1.0.7)
-      rake (>= 0.8.7)
+    ffi (1.0.8)
     fssm (0.2.7)
     gherkin (2.3.7)
       json (>= 1.4.6)
     haml (3.1.1)
     high_voltage (0.9.4)
-    highline (1.6.1)
+    highline (1.6.2)
     hoptoad_notifier (2.4.2)
       activesupport
       builder
@@ -183,19 +181,19 @@ GEM
       mime-types (>= 1.16)
     rsolr (0.12.1)
       builder (>= 2.1.2)
-    rspec (2.5.0)
-      rspec-core (~> 2.5.0)
-      rspec-expectations (~> 2.5.0)
-      rspec-mocks (~> 2.5.0)
-    rspec-core (2.5.1)
-    rspec-expectations (2.5.0)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-core (2.6.0)
+    rspec-expectations (2.6.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.5.0)
-    rspec-rails (2.5.0)
+    rspec-mocks (2.6.0)
+    rspec-rails (2.6.0)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
       railties (~> 3.0)
-      rspec (~> 2.5.0)
+      rspec (~> 2.6.0)
     rubyzip (0.9.4)
     sass (3.1.1)
     sauce (0.17.7)
@@ -215,7 +213,7 @@ GEM
     shoulda (2.11.3)
     sinatra (1.2.6)
       rack (~> 1.1)
-      tilt (< 2.0, >= 1.2.2)
+      tilt (>= 1.2.2, < 2.0)
     sunspot (1.2.1)
       escape (= 0.0.4)
       pr_geohash (~> 1.0)
