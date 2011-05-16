@@ -304,7 +304,7 @@ class Search
   end
 
   def hits(response)
-    (response.web.results.empty? ? 0 : response.web.total) rescue 0
+    (response.web.results.blank? ? 0 : response.web.total) rescue 0
   end
 
   def process_results(response)
