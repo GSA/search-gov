@@ -163,7 +163,7 @@ end
 Then /^I should see sorted sites in the site list$/ do
   sites = @current_user.affiliates.sort{|x,y| x.display_name <=> y.display_name}
   sites.each_with_index do |site, index|
-    page.should have_selector(".generic-table tbody tr:nth-child(#{index + 1}) td.site-name a", :content => site.display_name)
+    page.should have_selector(".generic-table tbody tr:nth-child(#{index + 1}) td.site-name a", :text => site.display_name)
   end
 end
 

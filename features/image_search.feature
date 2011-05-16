@@ -3,7 +3,7 @@ Feature: Image search
   As a site visitor
   I want to search for images
 
-  Scenario: Image search
+  Scenario: Image search landing page
     Given I am on the homepage
     When I follow "Images" in the search navigation
     Then I should be on the images page
