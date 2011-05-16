@@ -8,7 +8,7 @@ Feature: Homepage
     Then I should not see "ROBOTS" meta tag
     And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage header
     And I should see a link to "FAQs" with url for "http://answers.usa.gov/"
-    And I should see a link to "Email USA.gov" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"
+    And I should see a link to "E-mail USA.gov" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"
     And I should see a link to "Chat" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"
     And I should see a link to "Change Text Size" with url for "http://www.usa.gov/About/Change_Text.shtml"
     And I should see "GOVERNMENT" in the search navigation

@@ -47,7 +47,7 @@ module ApplicationHelper
     :en => [
       ["USA.gov", "http://www.usa.gov/index.shtml", "first"],
       ["FAQs", "http://answers.usa.gov/"],
-      ["Email USA.gov", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"],
+      ["E-mail USA.gov", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"],
       ["Chat", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"] ],
     :es => [
       ["GobiernoUSA.gov", "http://www.usa.gov/gobiernousa/index.shtml", "first"],
@@ -166,14 +166,6 @@ module ApplicationHelper
             :action => "destroy",
             :protocol => ssl_protocol,
             :only_path => false)
-  end
-
-  def favicon_link_tag
-    tag('link', {
-        :rel  => 'shortcut icon',
-        :type => 'image/vnd.microsoft.icon',
-        :href => path_to_image("/favicon.ico")
-    })
   end
 
   def truncate_on_words(text, length)

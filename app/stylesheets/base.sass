@@ -1,6 +1,7 @@
 @import "compass/utilities/tables"
 @import trending_searches.sass
 
+$blueprint-font-family: verdana, verdana, sans-serif
 $site_theme_color: #003366
 $red: #990000
 $link: #2200CC
@@ -14,6 +15,13 @@ body
 body.en, body.es
   .container
     :min-width 1100px
+
+* html body.en, body.es
+  .container
+    :width 1100px
+
+ul, ol
+  :margin 0 1.5em 1.5em 1.5em
 
 a, a:visited, a:hover
   :text-decoration none
@@ -78,6 +86,7 @@ a:hover
 
 .main
   :float right
+  :display inline
   :background url(/images/backgrounds/bg_right.gif) repeat-y top right
   :width 99%
   a, a:visited
@@ -417,6 +426,11 @@ ul#related_gov_forms
   :height 1px
   :overflow hidden
 
+.forms-tagline
+  :margin-top 5px
+  :color black
+  :font-weight bold
+
 .docs th[scope=row]
   :font-weight normal
 
@@ -550,3 +564,5 @@ ul#related_gov_forms
         :margin 13px 0 0 3px
         :width 156px
 
+#home_searchtrend
+  :margin-top 15px

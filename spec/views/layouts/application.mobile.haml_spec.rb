@@ -15,7 +15,12 @@ describe "layouts/application.mobile.haml" do
     before do
       I18n.stub!(:locale).and_return :en
     end
-    
+
+    it "should render the English version of the favicon" do
+      render
+      rendered.should have_selector("link[href^='/favicon_en.ico?'][rel='shortcut icon'][type='image/vnd.microsoft.icon']")
+    end
+
     it "should show the English version of the mobile webtrends javascript" do
       render
       rendered.should have_selector("script[src='/javascripts/webtrends_mobile_english.js'][type='text/javascript']")
@@ -25,6 +30,11 @@ describe "layouts/application.mobile.haml" do
   context "when locale is set to Spanish" do
     before do
       I18n.stub!(:locale).and_return :es
+    end
+
+    it "should render the Spanish version of the favicon" do
+      render
+      rendered.should have_selector("link[href^='/favicon_es.ico?'][rel='shortcut icon'][type='image/vnd.microsoft.icon']")
     end
 
     it "should show the Spanish version of the mobile webtrends javascript" do
