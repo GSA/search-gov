@@ -21,9 +21,9 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:recalls)
     @search.stub!(:agency)
 
-#   todo: figure out what the original intent of these following two lines was
-#   @deepLink.stub!(:title).and_return 'A title'
-#   @deepLink.stub!(:url).and_return 'http://adeeplink.com'
+    @deepLink = mock("deepLink")
+    @deepLink.stub!(:title).and_return 'A title'
+    @deepLink.stub!(:url).and_return 'http://adeeplink.com'
 
     @search_result = {'title' => "some title",
                      'unescapedUrl'=> "http://www.foo.com/url",
