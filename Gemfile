@@ -39,8 +39,6 @@ gem 'parallel', '= 0.5.2'
 gem 'aws-s3', :require => 'aws/s3'
 gem 'SystemTimer'
 gem 'high_voltage'
-gem "sauce", '=0.17.7'
-gem "parallel", '=0.5.2'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
