@@ -29,7 +29,7 @@ describe "gov_form rake tasks" do
 
       context "when given an xml file" do
         before do
-          @tmp_dir = "/tmp/mydir"
+          @tmp_dir = ::Rails.root.join('tmp', 'test')
           Dir.mkdir(@tmp_dir) unless File.exists?(@tmp_dir)
           @tmp_form1 = <<'EOF'
           <?xml version="1.0" encoding="UTF-8"?>

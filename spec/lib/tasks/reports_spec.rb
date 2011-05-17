@@ -16,7 +16,7 @@ describe "Report generation rake tasks" do
         AWS::S3::Base.stub!(:establish_connection).and_return true
         AWS::S3::Bucket.stub!(:find).and_return true
         AWS::S3::S3Object.stub!(:store).and_return true
-        @input_file_name = "/tmp/generate_top_queries_from_file_input_file.txt"
+        @input_file_name = ::Rails.root.to_s + "/generate_top_queries_from_file_input_file.txt"
         File.open(@input_file_name, 'w+') do |file|
           file.puts(%w{affiliate1 query1 11}.join("\001"))
           file.puts(%w{affiliate1 query2 10}.join("\001"))
@@ -109,6 +109,10 @@ describe "Report generation rake tasks" do
             @rake[@task_name].invoke(@input_file_name, "daily", "1000", '2011-02-01')
           end
         end
+
+        after do
+          File.delete(@input_file_name)
+        end
       end
     end
     
@@ -144,6 +148,7 @@ describe "Report generation rake tasks" do
           end
         end      
       end
+
     end
   end
 end
