@@ -18,13 +18,14 @@ describe "shared/_relatedsearches.html.haml" do
       @search.stub!(:total).and_return 20
       @search.stub!(:page).and_return 0
 
-      @deepLink.stub!(:title).and_return 'A title'
-      @deepLink.stub!(:url).and_return 'http://adeeplink.com'
+      @deep_link = mock("DeepLink")
+      @deep_link.stub!(:title).and_return 'A title'
+      @deep_link.stub!(:url).and_return 'http://adeeplink.com'
       @search_result = {'title' => "some title",
                        'unescapedUrl'=> "http://www.foo.com/url",
                        'content'=> "This is a sample result",
                        'cacheUrl'=> "http://www.cached.com/url",
-                       'deepLinks' => [ @deepLink ]
+                       'deepLinks' => [ @deep_link ]
       }
       @search_results = []
       @search_results.stub!(:total_pages).and_return 1

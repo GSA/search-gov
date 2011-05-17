@@ -1019,7 +1019,7 @@ describe Search do
     context "on normal search runs" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'data'))
-        json    = File.read(RAILS_ROOT + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+        json    = File.read(::Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
         parsed  = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @time = Time.now

@@ -20,16 +20,15 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:fedstates)
     @search.stub!(:recalls)
     @search.stub!(:agency)
-
-    @deepLink = mock("deepLink")
-    @deepLink.stub!(:title).and_return 'A title'
-    @deepLink.stub!(:url).and_return 'http://adeeplink.com'
+    @deep_link = mock("DeepLink")
+    @deep_link.stub!(:title).and_return 'A title'
+    @deep_link.stub!(:url).and_return 'http://adeeplink.com'
 
     @search_result = {'title' => "some title",
-                     'unescapedUrl'=> "http://www.foo.com/url",
-                     'content'=> "This is a sample result",
-                     'cacheUrl'=> "http://www.cached.com/url",
-                     'deepLinks' => [ @deepLink ]
+                      'unescapedUrl'=> "http://www.foo.com/url",
+                      'content'=> "This is a sample result",
+                      'cacheUrl'=> "http://www.cached.com/url",
+                      'deepLinks' => [@deep_link]
     }
     @search_results = []
     @search_results.stub!(:total_pages).and_return 1
@@ -43,7 +42,7 @@ describe "shared/_searchresults.html.haml" do
     before do
       view.stub!(:search).and_return @search
     end
-    
+
     it "should show a results summary" do
       render
       rendered.should contain("Results 1-10 of about 20 for 'tax forms'")
@@ -87,8 +86,6 @@ describe "shared/_searchresults.html.haml" do
       before do
         recall = Recall.create!(:recall_number => '23456', :recalled_on => Date.yesterday, :organization => 'CPSC')
         recall.recall_details << RecallDetail.new(:detail_type => 'Description', :detail_value => 'Recall details')
-        recall_without_recalled_on = Recall.create!(:recall_number => '23456', :organization => 'CDC')
-        recall_without_recalled_on.create_food_recall(:url => "http://www.fda.gov/", :summary => "bad drugs", :description => "bad drugs details", :food_type => "drug")
         Recall.reindex
         @search.stub!(:recalls).and_return(Recall.search_for("details"))
         view.stub!(:search).and_return @search
