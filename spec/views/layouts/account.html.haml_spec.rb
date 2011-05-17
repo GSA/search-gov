@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../../spec_helper"
+require 'spec/spec_helper'
 describe "layouts/account.html.haml" do
   fixtures :users, :affiliates
   before do

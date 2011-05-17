@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../../spec_helper"
+require 'spec/spec_helper'
 describe "layouts/analytics.html.haml" do
   before do
     @webtrends_tag = 'var _tag=new WebTrends();'

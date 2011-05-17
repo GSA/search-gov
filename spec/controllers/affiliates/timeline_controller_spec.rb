@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require 'spec/spec_helper'
 
 describe Affiliates::TimelineController do
   fixtures :users, :affiliates

@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require 'spec/spec_helper'
 require "rake"
 
 describe "Daily Usage Stats rake tasks" do

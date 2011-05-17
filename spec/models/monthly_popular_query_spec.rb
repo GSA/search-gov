@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require 'spec/spec_helper'
 
 describe MonthlyPopularQuery do
   fixtures :monthly_popular_queries

@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require 'spec/spec_helper'
 
 describe SaytSuggestion do
   fixtures :sayt_suggestions, :misspellings, :affiliates

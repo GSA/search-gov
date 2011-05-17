@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../../spec_helper"
+require 'spec/spec_helper'
 describe "layouts/application.mobile.haml" do
   before do
     view.stub!(:is_device?).and_return false

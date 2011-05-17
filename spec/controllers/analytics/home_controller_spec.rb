@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require 'spec/spec_helper'
 
 describe Analytics::HomeController do
   fixtures :users, :daily_query_stats

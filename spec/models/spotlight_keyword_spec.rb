@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require 'spec/spec_helper'
 
 describe SpotlightKeyword do
   fixtures :spotlights, :spotlight_keywords

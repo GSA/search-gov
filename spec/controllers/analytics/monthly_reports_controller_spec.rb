@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require 'spec/spec_helper'
 
 describe Analytics::MonthlyReportsController do
   fixtures :users

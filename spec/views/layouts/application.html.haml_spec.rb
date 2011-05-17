@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../../spec_helper"
+require 'spec/spec_helper'
 describe "layouts/application.html.haml" do
   before do
     assign(:active_top_searches, [])

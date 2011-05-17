@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../../spec_helper"
+require 'spec/spec_helper'
 describe "shared/_search.html.haml" do
   before do
     @search = stub("Search")

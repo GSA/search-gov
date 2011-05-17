@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/../../spec_helper')
+require 'spec/spec_helper'
 
 describe Affiliates::ApiController do
   fixtures :affiliates, :affiliate_templates, :users

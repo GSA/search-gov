@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require 'spec/spec_helper'
 describe Timeline do
   let(:start_date) do
     Date.yesterday.advance(:months => Timeline::DEFAULT_RANGE_IN_MONTHS)

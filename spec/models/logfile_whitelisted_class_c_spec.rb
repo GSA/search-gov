@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require 'spec/spec_helper'
 describe LogfileWhitelistedClassC do
   fixtures :logfile_whitelisted_class_cs
 

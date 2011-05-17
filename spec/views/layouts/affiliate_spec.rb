@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../../spec_helper"
+require 'spec/spec_helper'
 describe "layouts/affiliate" do
   before do
     affiliate_template = stub('affiliate template', :stylesheet => 'default')

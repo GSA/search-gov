@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../../spec_helper"
+require 'spec/spec_helper'
 describe "searches/advanced.html.haml" do
 
   context "visiting the English language (default) page" do

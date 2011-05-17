@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require 'spec/spec_helper'
 describe LogfileBlockedClassC do
   fixtures :logfile_blocked_class_cs
 

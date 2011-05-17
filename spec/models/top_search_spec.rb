@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../spec_helper"
+require 'spec/spec_helper'
 
 describe TopSearch do
   it { should validate_presence_of :position }

@@ -1,4 +1,4 @@
-require "#{File.dirname(__FILE__)}/../../spec_helper"
+require 'spec/spec_helper'
 require 'ostruct'
 
 describe Admin::SpotlightHelper do
