@@ -29,7 +29,7 @@ describe "faq rake tasks" do
 
       context "when given an xml file" do
         before do
-          @tmp_dir = "/tmp/mydir"
+          @tmp_dir = ::Rails.root.join('tmp', 'test')
           Dir.mkdir(@tmp_dir) unless File.exists?(@tmp_dir)
           @tmp_faq = <<'EOF'
           <?xml version="1.0" encoding="utf-8"?>
@@ -110,6 +110,33 @@ EOF
         
       end
          
+    end
+
+
+    describe "usasearch:faq:grab_and_load" do
+
+
+      before do
+        @task_name = "usasearch:faq:grab_and_load"
+      end
+
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+
+      context "when given an sftp config entry" do
+        before do
+          @tmp_dir = ::Rails.root.join('tmp', 'faq')
+          @config_file = ::Rails.root.join('tmp', 'faq')
+        end
+
+        it "should not do anything if the grab returns nil" do
+          Faq.stub!(:grab_latest_file).and_return nil
+          Faq.should_receive(:grab_latest_file).with("en")
+          @rake[@task_name].should_not_receive(:load_faqs_from_file)
+          @rake[@task_name].invoke
+        end
+      end
     end
     
     describe "usasearch:faq:clean" do
