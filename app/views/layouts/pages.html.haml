@@ -26,7 +26,7 @@
     = render "/shared/program_header"
     .outer-container
       .inner-container
-        - display_for(:affiliate) do
+        - if current_user_is?(:affiliate)
           = render "/shared/affiliate_sidebar"
         .content
           .container

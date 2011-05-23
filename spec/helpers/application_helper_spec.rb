@@ -189,46 +189,50 @@ describe ApplicationHelper do
     end
   end
 
-  describe "#display for specific role" do
+  describe "#current_user_is? for specific role" do
     context "when the current user is an affiliate_admin" do
-      it "display the content" do
+      it "should detect that" do
         user = stub('User', :is_affiliate_admin? => true)
         helper.stub(:current_user).and_return(user)
-        content = helper.display_for(:affiliate_admin) {"content"}
-        content.should == "content"
+        helper.current_user_is?(:affiliate_admin).should be_true 
       end
     end
 
     context "when the current user is an analyst_admin" do
-      it "display the content" do
+      it "should detect that" do
         user = stub('User', :is_analyst_admin? => true)
         helper.stub(:current_user).and_return(user)
-        content = helper.display_for(:analyst_admin) {"content"}
-        content.should == "content"
+        helper.current_user_is?(:analyst_admin).should be_true 
       end
     end
 
     context "when the current user is an affiliate" do
-      it "display the content" do
+      it "should detect that" do
         user = stub('User', :is_affiliate? => true)
         helper.stub(:current_user).and_return(user)
-        content = helper.display_for(:affiliate) {"content"}
-        content.should == "content"
+        helper.current_user_is?(:affiliate).should be_true 
       end
     end
 
     context "when the current user has no role" do
-      it "does not display the content" do
+      it "should detect that" do
         user = stub('User', :is_affiliate_admin? => false, :is_analyst_admin? => false, :is_affiliate? => false)
         helper.stub(:current_user).and_return(user)
-        content = helper.display_for(:affiliate_admin) {"content"}
-        content.should == nil
-        content = helper.display_for(:analyst_admin) {"content"}
-        content.should == nil
-        content = helper.display_for(:affiliate) {"content"}
-        content.should == nil
+        helper.current_user_is?(:affiliate).should be_false 
+        helper.current_user_is?(:affiliate_admin).should be_false 
+        helper.current_user_is?(:analyst_admin).should be_false 
       end
     end
+
+    context "when there is no current user" do
+      it "should detect that" do
+        helper.stub(:current_user).and_return(nil)
+        helper.current_user_is?(:affiliate).should be_false 
+        helper.current_user_is?(:affiliate_admin).should be_false 
+        helper.current_user_is?(:analyst_admin).should be_false 
+      end
+    end
+
   end
 
   describe "#basic_header_navigation_for" do

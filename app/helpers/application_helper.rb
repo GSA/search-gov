@@ -1,6 +1,7 @@
 module ApplicationHelper
-  def display_for(role)
-    yield if (current_user && current_user.send("is_#{role}?"))
+
+  def current_user_is?(role)
+    current_user && current_user.send("is_#{role}?")
   end
 
   def build_page_title(page_title)

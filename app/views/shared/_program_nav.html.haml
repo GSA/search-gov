@@ -49,12 +49,12 @@
 
   .user-nav
     %ul
-      - display_for(:affiliate_admin) do
+      - if current_user_is?(:affiliate_admin)
         %li
           = link_to(image_tag('admin_center_flat.png', :alt => 'Admin Center', :title => 'Admin Center'), admin_home_page_path)
-      - display_for(:analyst) do
+      - if current_user_is?(:analyst) 
         %li
           = link_to(image_tag('analytics_center_flat.png', :alt => 'Analytics Center', :title => 'Analytics Center'), analytics_home_page_path)
-      - display_for(:affiliate) do
+      - if current_user_is?(:affiliate) 
         %li
           = link_to(image_tag('affiliate_center_flat.png', :alt => 'Affiliate Center', :title => 'Affiliate Center'), home_affiliates_path)

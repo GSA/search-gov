@@ -1,4 +1,4 @@
-- form_tag(path, :method => :get, :id => "search_form") do
+= form_tag(path, :method => :get, :id => "search_form") do
   - if (@affiliate and not @affiliate.is_sayt_enabled)
     = text_field :search, :query, { :maxlength => 255, :size => 49, :name => "query", :autocomplete => "off" }
   - else
