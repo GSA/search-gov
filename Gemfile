@@ -37,7 +37,7 @@ gem 'resque', '=1.10.0'
 gem 'cloudfiles', '= 1.4.15'
 gem 'sauce', '= 0.17.7'
 gem 'parallel', '= 0.5.2'
-gem 'aws-s3', :require => 'aws/s3'
+gem 'aws-s3', :require => 'aws/s3', :git => 'git://github.com/GSA-OCSIT/aws-s3.git'
 gem 'SystemTimer'
 gem 'high_voltage'
 

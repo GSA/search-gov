@@ -1,4 +1,13 @@
 GIT
+  remote: git://github.com/GSA-OCSIT/aws-s3.git
+  revision: 96a4abc3f450672e2eb365faa9b9042e10b771eb
+  specs:
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
+
+GIT
   remote: git://github.com/paneq/calendar_date_select.git
   revision: 977048211b94599fe0f08eb37a481f3d69df48f6
   specs:
@@ -47,10 +56,6 @@ GEM
     authlogic (3.0.2)
       activerecord (~> 3.0.7)
       activerecord (~> 3.0.7)
-    aws-s3 (0.6.2)
-      builder
-      mime-types
-      xml-simple
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     calais (0.0.11)
@@ -246,7 +251,7 @@ PLATFORMS
 DEPENDENCIES
   SystemTimer
   authlogic (>= 3.0.2)
-  aws-s3
+  aws-s3!
   bcrypt-ruby (>= 2.1.1)
   calais (>= 0.0.11)
   calendar_date_select!
