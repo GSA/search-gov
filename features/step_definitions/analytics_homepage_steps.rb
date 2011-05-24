@@ -18,7 +18,7 @@ Given /^there is analytics data from "([^\"]*)" thru "([^\"]*)"$/ do |sd, ed|
   words = ("aaaa".."aaaz").to_a
   startdate.upto(enddate) do |day|
     words.each do |word|
-      cnt = cnt -1
+      cnt = cnt - 1
       DailyQueryStat.create!(:day => day, :query => word, :times => cnt, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       MovingQuery.create!(:day => day, :query => word, :times => cnt, :mean => 1.0, :std_dev => 0.001)
       DailyQueryNoresultsStat.create!(:day => day, :query => "gobbledegook #{word}", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale => "en", :times => cnt)
@@ -35,19 +35,18 @@ Given /^there is popular query data from "([^"]*)" thru "([^"]*)"$/ do |sd, ed|
   start_date.upto(end_date) do |day|
     words.each do |word|
       cnt = cnt - 1
-      DailyPopularQuery.create(:day => day, :query => word, :times => cnt, :is_grouped => false, :time_frame => 1, :locale => I18n.default_locale.to_s)
-      DailyPopularQuery.create(:day => day, :query => word, :times => cnt, :is_grouped => false, :time_frame => 7, :locale => I18n.default_locale.to_s)
-      DailyPopularQuery.create(:day => day, :query => word, :times => cnt, :is_grouped => false, :time_frame => 30, :locale => I18n.default_locale.to_s)
+      DailyPopularQuery.create!(:day => day, :query => word, :times => cnt, :is_grouped => false, :time_frame => 1, :locale => I18n.default_locale.to_s)
+      DailyPopularQuery.create!(:day => day, :query => word, :times => cnt, :is_grouped => false, :time_frame => 7, :locale => I18n.default_locale.to_s)
+      DailyPopularQuery.create!(:day => day, :query => word, :times => cnt, :is_grouped => false, :time_frame => 30, :locale => I18n.default_locale.to_s)
     end
   end
 end
 
-
 Given /^the following DailyPopularQueries exist for yesterday:$/ do |table|
   DailyPopularQuery.delete_all
   table.hashes.each do |hash|
-    affiliate = Affiliate.find_by_name(hash["affiliate"]) if hash["affiliate"].present?
-    dd = DailyPopularQuery.create(:day => Date.yesterday, :query => hash["query"], :times => hash["times"], :time_frame => hash["time_frame"], :is_grouped => hash["is_grouped"] == "true" ? true : false, :locale => I18n.default_locale.to_s)
+    Affiliate.find_by_name(hash["affiliate"]) if hash["affiliate"].present?
+    DailyPopularQuery.create!(:day => Date.yesterday, :query => hash["query"], :times => hash["times"], :time_frame => hash["time_frame"], :is_grouped => hash["is_grouped"] == "true" ? true : false, :locale => I18n.default_locale.to_s)
   end
 end
 
@@ -77,7 +76,7 @@ Then /^I should see the download prompt for yesterday$/ do
 end
 
 Given /^the DailyContextualQueryTotal for yesterday is "([^\"]*)"$/ do |total|
-  DailyContextualQueryTotal.create(:day => Date.yesterday, :total => total)
+  DailyContextualQueryTotal.create!(:day => Date.yesterday, :total => total)
 end
 
 Given /^no DailyContextualQueryTotals exist$/ do
