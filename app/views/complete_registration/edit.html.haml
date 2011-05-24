@@ -2,7 +2,7 @@
   %h2
     Complete Registration for a New Account
 
-  - form_for @user, :url => complete_registration_path, :html => { :class => 'generic-form' } do |f|
+  = form_for @user, :url => complete_registration_path, :html => { :class => 'generic-form' } do |f|
     = f.error_messages(:header_message => nil, :class => "error")
     %ul
       %li
