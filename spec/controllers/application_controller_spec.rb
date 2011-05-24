@@ -36,7 +36,7 @@ describe ExampleController do
     end
     
     context "when the format for the request is not a valid format" do
-      it "should render a 404" do
+      it "should render a 406" do
         get :missing_template, :format => "orig"
         response.code.should == "406"
       end

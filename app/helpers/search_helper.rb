@@ -51,11 +51,6 @@ module SearchHelper
               :title  => result["title"]
   end
 
-  def thumbnail_link(result)
-    link = URI.parse(result["Url"]).host rescue shorten_url(result["Url"])
-    raw link_to link, result["MediaUrl"], :rel => "no-follow"
-  end
-
   def display_result_links (result, search, affiliate, position, show_cache_link = true)
     html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, 'BWEB')
     unless result['cacheUrl'].blank? or !show_cache_link

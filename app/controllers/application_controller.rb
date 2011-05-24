@@ -17,8 +17,6 @@ class ApplicationController < ActionController::Base
   def template_not_found(error)
     if VALID_FORMATS.include?(request.format)
       raise error
-    else
-      render :file => File.join(Rails.root, "public", "404.html"), :status => 404
     end
   end
 

@@ -22,16 +22,20 @@ describe Faq do
   it { should validate_presence_of :locale }
   it { should validate_numericality_of :ranking }
 
+  describe "#cached_file_path" do
+    it "should return the path to a temporary file based on the parameter provided" do
+      Faq.cached_file_path('name.txt').to_s.should == Rails.root.to_s + "/tmp/faq/name.txt"
+    end
+  end
+      
+  
   describe "#faq_config" do
-
-
-    before do
-
-
-      @tmp_dir = ::Rails.root.join( 'tmp', 'faq_test' )
-      FileUtils.mkdir_p( @tmp_dir ) unless File.exist?(@tmp_dir)
-      @test_faq_config_yaml_path = File.join( @tmp_dir, 'faq_sftp_config.yml' )
-      File.open( @test_faq_config_yaml_path, "w") {|yml|
+    context "when a yaml file exists" do
+      before do
+        @tmp_dir = ::Rails.root.join( 'tmp', 'faq_test' )
+        FileUtils.mkdir_p( @tmp_dir ) unless File.exist?(@tmp_dir)
+        @test_faq_config_yaml_path = File.join( @tmp_dir, 'faq_sftp_config.yml' )
+        File.open( @test_faq_config_yaml_path, "w") { |yml|
         yml << <<EOF
 defaults: &defaults
   protocol: sftp
@@ -58,79 +62,86 @@ test:
     en: secretalice
     es: secretalicia
   <<: *defaults
-
-
 EOF
-      }
-      @expected_test_faq_config = {
-          :en => {
-              :protocol => 'sftp',
-              :host     => 'localhost',
-              :username => 'alice',
-              :password => 'secretalice',
-              :dir_path => 'outbox',
-              :file_name_pattern => '^english-faq-[0-9]+.xml$'
-          },
-          :es => {
-              :protocol => 'sftp',
-              :host     => 'localhost',
-              :username => 'alicia',
-              :password => 'secretalicia',
-              :dir_path => 'outbox',
-              :file_name_pattern => '^spanish-faq-[0-9]+.xml$'
-          }
-      }
-
-      @expected_faq_download_src = { :en => "outbox/english-faq-20110702.xml", :es => "outbox/spanish-faq-20110702.xml" }
-    end
-
-
-    it "should find the config yml on disk and interpret the config yml correctly given the locale" do
-       File.stub!(:join).and_return(@test_faq_config_yaml_path)
-       Faq.faq_config('en').should eql @expected_test_faq_config[:en]
-       Faq.faq_config('es').should eql @expected_test_faq_config[:es]
-    end
-
-    it "should throw a runtime error if the locale uses a bad protocol" do
-
-       lambda {
-         File.stub!(:join).and_return(@test_faq_config_yaml_path)
-         Faq.grab_latest_file( 'jp' )
-       }.should raise_error(RuntimeError, "unsupported faq fetch protocol: jungledrums")
-    end
-
-    [:en, :es].each { |locale|
-      it "should call sftp objects according to the config to retrieve the data for #{locale}" do
-         sftp = mock("stfp_session")
-         sftp_dir = mock("sftp dir")
-         smock0 = mock("ef1")
-         smock0.stub!(:name).and_return("README.txt")
-         smock1 = mock("ef2")
-         smock1.stub!(:name).and_return("english-faq-20110701.xml")
-         smock2 = mock("ef3")
-         smock2.stub!(:name).and_return("english-faq-20110702.xml")
-         smock3 = mock("ef4")
-         smock3.stub!(:name).and_return("spanish-faq-20110701.xml")
-         smock4 = mock("ef4")
-         smock4.stub!(:name).and_return("spanish-faq-20110702.xml")
-         smock5 = mock("ef4")
-         smock5.stub!(:name).and_return("toc.xml")
-         sftp_dir.should_receive(:foreach).with('outbox').and_yield(smock0).and_yield(smock1).and_yield(smock2).and_yield(smock3).and_yield(smock4).and_yield(smock5)
-         sftp.stub!(:dir).and_return(sftp_dir)
-         sftp_download = mock("sftp download")
-         sftp.should_receive(:download!).with(@expected_faq_download_src[locale], "xxx_inc")
-         Net::SFTP.stub!(:start).and_yield sftp
-         File.stub!(:join).and_return(@test_faq_config_yaml_path)
-         Faq.stub(:cached_file_path).and_return "xxx"
-         File.should_receive(:rename).with("xxx_inc", "xxx")
-         Faq.grab_latest_file( locale.to_s ).should eql "xxx"
+        }
+        @expected_test_faq_config = {
+            :en => {
+                :protocol => 'sftp',
+                :host     => 'localhost',
+                :username => 'alice',
+                :password => 'secretalice',
+                :dir_path => 'outbox',
+                :file_name_pattern => '^english-faq-[0-9]+.xml$'
+            },
+            :es => {
+                :protocol => 'sftp',
+                :host     => 'localhost',
+                :username => 'alicia',
+                :password => 'secretalicia',
+                :dir_path => 'outbox',
+                :file_name_pattern => '^spanish-faq-[0-9]+.xml$'
+            }
+        }
+        @expected_faq_download_src = { :en => "outbox/english-faq-20110702.xml", :es => "outbox/spanish-faq-20110702.xml" }
       end
-    }
 
-    after do
-        FileUtils.rm_r(@tmp_dir)
+      it "should find the config yml on disk and interpret the config yml correctly given the locale" do
+         File.stub!(:join).and_return(@test_faq_config_yaml_path)
+         Faq.faq_config('en').should eql @expected_test_faq_config[:en]
+         Faq.faq_config('es').should eql @expected_test_faq_config[:es]
+      end
+    
+      it "should throw a runtime error if the locale uses a bad protocol" do
+         lambda {
+           File.stub!(:join).and_return(@test_faq_config_yaml_path)
+           Faq.grab_latest_file( 'jp' )
+         }.should raise_error(RuntimeError, "unsupported faq fetch protocol: jungledrums")
+      end
+
+      [:en, :es].each do |locale|
+        it "should call sftp objects according to the config to retrieve the data for #{locale}" do
+           sftp = mock("stfp_session")
+           sftp_dir = mock("sftp dir")
+           smock0 = mock("ef1")
+           smock0.stub!(:name).and_return("README.txt")
+           smock1 = mock("ef2")
+           smock1.stub!(:name).and_return("english-faq-20110701.xml")
+           smock2 = mock("ef3")
+           smock2.stub!(:name).and_return("english-faq-20110702.xml")
+           smock3 = mock("ef4")
+           smock3.stub!(:name).and_return("spanish-faq-20110701.xml")
+           smock4 = mock("ef4")
+           smock4.stub!(:name).and_return("spanish-faq-20110702.xml")
+           smock5 = mock("ef4")
+           smock5.stub!(:name).and_return("toc.xml")
+           sftp_dir.should_receive(:foreach).with('outbox').and_yield(smock0).and_yield(smock1).and_yield(smock2).and_yield(smock3).and_yield(smock4).and_yield(smock5)
+           sftp.stub!(:dir).and_return(sftp_dir)
+           sftp_download = mock("sftp download")
+           sftp.should_receive(:download!).with(@expected_faq_download_src[locale], "xxx_inc")
+           Net::SFTP.stub!(:start).and_yield sftp
+           File.stub!(:join).and_return(@test_faq_config_yaml_path)
+           Faq.stub(:cached_file_path).and_return "xxx"
+           File.should_receive(:rename).with("xxx_inc", "xxx")
+           Faq.grab_latest_file( locale.to_s ).should eql "xxx"
+        end
+      end
+
+      after do
+          FileUtils.rm_r(@tmp_dir)
+      end
     end
-
+    
+    context "when a yaml file does not exist" do
+      before do
+        @test_not_found_path = File.join('not_found.yml')
+      end
+      
+      it "should return an empty hash if the file is not found" do
+        File.stub!(:join).and_return @test_not_found_path
+        Faq.faq_config('en').should == {}
+        Faq.faq_config('es').should == {}
+      end
+    end
   end
 
   describe "#search_for" do

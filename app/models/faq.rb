@@ -20,31 +20,23 @@ class Faq < ActiveRecord::Base
       end rescue nil
     end
 
-
     def faq_config(locale)
-
-
-      config_yml = ::Rails.root.join("config", "faq.yml")
-
-
+      config_yml = Rails.root.join("config", "faq.yml")
       @faq_config = if File.exist?(config_yml)
-                      faq_config = YAML.load(File.read(config_yml))[::Rails.env]
-                    else
-                      { }
-                    end
-
+        faq_config = YAML.load(File.read(config_yml))[::Rails.env]
+      else
+        { }
+      end
       fconf = {}
       @faq_config.each do |name, value|
         fconf[name.to_sym] = if value.kind_of?(Hash)
-                        value[locale]
-                      else
-                        value
-                      end
+          value[locale]
+        else
+          value
+        end
       end
       return fconf
-
     end
-
 
     def cached_file_path( name )
       tmp_dir = ::Rails.root.join("tmp", "faq")
@@ -52,17 +44,12 @@ class Faq < ActiveRecord::Base
       return tmp_dir.join( name )
     end
 
-
     def grab_latest_file(locale)
-
       fconf = faq_config(locale)
       new_file_path = nil
       return nil unless fconf.key?(:protocol)
-
       case fconf[:protocol]
-
-      when 'sftp' :
-
+      when 'sftp':
         Net::SFTP.start(fconf[:host], fconf[:username], :password => fconf[:password]) do |sftp|
           matching_file_names = []
           file_name_pattern = Regexp.compile(fconf[:file_name_pattern])
@@ -70,7 +57,6 @@ class Faq < ActiveRecord::Base
             entry_name = entry.name
             matching_file_names << entry_name unless file_name_pattern.match(entry_name).nil?
           end
-
           unless matching_file_names.empty?
             latest_file_name = matching_file_names.sort.last
             raise "bad faq file path name: #{latest_file_name}" unless latest_file_name =~ /[a-z0-9_]+\.xml/
@@ -83,18 +69,10 @@ class Faq < ActiveRecord::Base
             end
           end
         end
-
       else
-
         raise "unsupported faq fetch protocol: #{fconf[:protocol]}"
-
       end
-
       return new_file_path
-
     end
-
-
   end
-
 end

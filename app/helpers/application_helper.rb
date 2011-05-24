@@ -21,9 +21,10 @@ module ApplicationHelper
     unless (flash.nil? or flash.empty?)
       html = ""
       flash_msgs = content_tag(:div, :class => 'flash-message', :id => 'flash_message') do
-        flash.collect do |key, msg|
+        messages = flash.collect do |key, msg|
           content_tag(:div, msg, :class => key).html_safe
-        end.join(" ").html_safe
+        end
+        messages.join(" ").html_safe
       end
       html << flash_msgs
       html << content_tag(:script, "setTimeout(\"new Effect.Fade('flash-message');\",15000)".html_safe, :type => 'text/javascript').html_safe
