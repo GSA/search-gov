@@ -2,7 +2,7 @@
   Please fill out the following form so we can know more about you and your agency.
 %h2.sub-title
   Contact information
-- form_for @user, :url => {:action => "update_contact_information"}, :html => {:class => 'generic-form'} do |f|
+= form_for @user, :url => {:action => "update_contact_information"}, :html => {:class => 'generic-form'} do |f|
   = f.error_messages(:header_message => nil, :class => "error")
   = render :partial => 'edit_contact_information_form', :object => f
   = f.submit "Submit", :class => 'form-submit-button btn-submit'
