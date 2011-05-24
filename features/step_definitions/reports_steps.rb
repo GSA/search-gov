@@ -1,10 +1,3 @@
-Given /^the following DailyUsageStats exist for yesterday:$/ do |table|
-  DailyUsageStat.delete_all
-  table.hashes.each do |hash|
-    DailyUsageStat.create!(:day => Date.yesterday, :profile => hash["profile"], :total_queries => hash["total_queries"], :total_page_views => hash["total_page_views"], :total_unique_visitors => hash["total_unique_visitors"])
-  end
-end
-
 Given /^the following MonthlyPopularQueries exist$/ do |table|
   MonthlyPopularQuery.delete_all
   table.hashes.each do |hash|
@@ -76,22 +69,6 @@ Given /^I select "([^\"]*)" as the report date$/ do |date_string|
   date = Date.parse(date_string)
   select date.year.to_s, :from => "date[year]"
   select date.strftime('%B'), :from => "date[month]"
-end
-
-Given /^the following DailyQueryStats exist in "([^\"]*)"$/ do |month_year, table|
-  time = Time.parse(month_year)
-  table.hashes.each do |hash|
-    DailyQueryStat.create!(:day => time, :query => hash["query"], :times => hash["times"], :affiliate => hash["affiliate"].nil? ? Affiliate::USAGOV_AFFILIATE_NAME : hash["affiliate"], :locale => hash["locale"].nil? ? I18n.default_locale.to_s : hash["locale"])
-  end
-end
-
-Given /^the following Clicks per module exist in "([^\"]*)"$/ do |month_year, table|
-  time = Time.parse(month_year)
-  table.hashes.each do |hash|
-    hash["total"].to_i.times do
-      Click.create!(:query=>"foo", :queried_at=> time, :clicked_at=>time, :url=>"bar", :results_source => hash["module"])
-    end
-  end
 end
 
 Given /^the following Clicks exist for each day in yesterday's month$/ do |table|

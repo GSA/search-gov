@@ -22,9 +22,4 @@ namespace :rcov do
   desc "Run aggregate coverage from rspec and cucumber"
   task :all => ["rcov:clean_aggregate", "rcov:rspec_aggregate", "rcov:cucumber_aggregate"]
 
-  desc "Find unused cucumber step definitions"
-  Cucumber::Rake::Task.new(:steps) do |task|
-    task.rcov = true
-    task.rcov_opts = "--exclude osx/objc,spec,gems/,app/,lib/ --rails --only-uncovered"
-  end
 end
