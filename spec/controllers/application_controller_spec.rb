@@ -15,13 +15,15 @@ end
 describe ExampleController do
   render_views
   before do
-    Rails.application.routes.draw do |map|
+    routes = UsasearchRails3::Application.routes
+    routes.draw do
       resources :example, :only => [:index] do
         collection do
           get :missing_template
         end
-      end
+      end        
     end
+    ActiveSupport.on_load(:action_controller) { routes.finalize! }
   end
   
   after do
