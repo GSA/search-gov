@@ -49,12 +49,6 @@ Feature: Homepage
     And I submit the search form
     Then I should see "البيت الأبيض"
 
-  Scenario: A really long search from the home page
-    Given I am on the homepage
-    When I fill in "query" with a 10000 character string
-    And I submit the search form
-    Then I should see "That is too long a word. Try using a shorter word."
-
   Scenario: Visiting the homepage as a Spanish speaker
     Given I am on the homepage
     And I follow "Busque en español"

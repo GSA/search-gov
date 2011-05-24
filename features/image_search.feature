@@ -67,12 +67,6 @@ Feature: Image search
     And I submit the search form
     Then I should see "البيت الأبيض"
 
-  Scenario: A really long search
-    Given I am on the image search page
-    When I fill in "query" with a 10000 character string
-    And I submit the search form
-    Then I should see "That is too long a word. Try using a shorter word."
-
   Scenario: Switching to web search
     Given I am on the image search page
     When I fill in "query" with "White House"

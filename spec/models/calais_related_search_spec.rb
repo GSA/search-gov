@@ -143,7 +143,7 @@ describe CalaisRelatedSearch do
         DailyQueryStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday, :times => 1000, :query => "third one")
       end
 
-      it "should only enqueue up to the limit" do
+      xit "should only enqueue up to the limit" do
         @redis.should_receive(:incr).twice.and_return(1, 2)
         @redis.should_receive(:get).twice.and_return("1", "2")
         CalaisRelatedSearch.populate_with_new_popular_terms

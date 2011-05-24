@@ -741,7 +741,7 @@ describe Search do
 
     context "when searching with really long queries" do
       before do
-        @search = Search.new(@valid_options.merge(:query => "X"*10000))
+        @search = Search.new(@valid_options.merge(:query => "X" * (Search::MAX_QUERYTERM_LENGTH + 1)))
       end
 
       it "should return false when searching" do

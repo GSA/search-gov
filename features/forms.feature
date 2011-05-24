@@ -2,7 +2,7 @@ Feature: Forms Home Page and Search
   In order to find government related forms
   a U.S. Citizen
   wants to search for forms
-  
+
   Scenario: Forms search
     Given I am on the homepage
     When I follow "Forms" in the search navigation
@@ -38,21 +38,15 @@ Feature: Forms Home Page and Search
     And I submit the search form
     Then I should see "البيت الأبيض"
 
-  Scenario: A really long search
-    Given I am on the forms home page
-    When I fill in "query" with a 10000 character string
-    And I submit the search form
-    Then I should see "That is too long a word. Try using a shorter word."
-    
   Scenario: No Spanish or Advanced links
     Given I am on the forms home page
     Then I should not see "Advanced Search"
     And I should not see "Busque en español"
-    
+
     Given I am on the forms search page
     Then I should not see "Advanced Search"
     And I should not see "Busque en español"
-    
+
   Scenario: Switching to web search
     Given I am on the forms home page
     When I fill in "query" with "White House"
@@ -61,7 +55,7 @@ Feature: Forms Home Page and Search
     When I follow "Web"
     Then I should be on the search page
     And I should see 10 search results
-    
+
   Scenario: Switching to image search
     Given I am on the forms home page
     When I fill in "query" with "White House"
@@ -70,7 +64,7 @@ Feature: Forms Home Page and Search
     When I follow "Images" in the search navigation
     Then I should be on the image search page
     And I should see 30 image results
-  
+
   Scenario: Switching to Forms search from web or image search
     Given I am on the homepage
     When I fill in "query" with "White House"
@@ -79,13 +73,13 @@ Feature: Forms Home Page and Search
     When I follow "Forms" in the search navigation
     Then I should be on the forms search page
     And I should see 10 search results
-    
+
     When I follow "Images" in the search navigation
     Then I should be on the image search page
     When I follow "Forms" in the search navigation
     Then I should be on the forms search page
     And I should see 10 search results
-    
+
   Scenario: Viewing Top Forms on Forms Landing Page
     Given the following Top Forms exist:
     | name            | url                 | column_number | sort_order  |

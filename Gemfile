@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'rake', '~> 0.8.7'
 gem 'rails'
 
 # Bundle edge Rails instead:
@@ -47,6 +48,7 @@ gem 'high_voltage'
 group :development, :test, :cucumber do
   gem 'webrat'
   gem 'rspec'
+  gem 'rspec-core', '= 2.6.2'
   gem 'rspec-rails', '~> 2.4'
   gem 'remarkable_activerecord'
   gem 'email_spec'
