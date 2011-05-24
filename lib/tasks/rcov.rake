@@ -1,4 +1,3 @@
-require 'cucumber/rake/task' #I have to add this
 require 'rspec/core/rake_task'
 
 namespace :rcov do

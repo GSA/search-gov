@@ -1,10 +1,10 @@
 .govbox
   %h3
-    = link_to t(:forms_for, :query => "<b>#{h search.query}</b>"), forms_search_path(:query => search.query, :source => "gov_forms")
+    = link_to t(:forms_for, :query => "<b>#{h search.query}</b>").html_safe, forms_search_path(:query => search.query, :source => "gov_forms")
 
   - search.gov_forms.hits.each_with_index do |hit, index|
     .gov_form{:style => 'margin-bottom: 10px;'}
-      = link_to highlight_like_solr(truncate_on_words("#{hit.instance.name} (#{hit.instance.form_number})", 100), hit.highlights), hit.instance.url
+      = link_to highlight_like_solr(truncate_on_words("#{hit.instance.name} (#{hit.instance.form_number})", 100), hit.highlights).html_safe, hit.instance.url
       .gov_form_description
         - if hit.instance.description.present?
           = highlight_like_solr(truncate_on_words(hit.instance.description, 190), hit.highlights)
