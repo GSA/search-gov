@@ -26,6 +26,10 @@ describe Affiliates::SaytController do
           get :index, :affiliate_id => @affiliate.id
         end
         
+        it "should define an affiliate-specific SAYT url" do
+          response.should contain "var usagov_sayt_url = \"http://test.host/sayt?aid=#{@affiliate.id}&\";"
+        end
+        
         it "should show the add, current entries and bulk upload portions of the page" do
           response.should have_selector("div[id=add_a_new_entry]")
           response.should have_selector("div[id=current_entries]")
@@ -65,6 +69,10 @@ describe Affiliates::SaytController do
           get :index, :affiliate_id => @affiliate.id
         end
         
+        it "should define a global SAYT url" do
+          response.should contain 'var usagov_sayt_url = "http://test.host/sayt?";'
+        end
+                  
         it "should not show the add, current entries and bulk upload portions of the page" do
           response.should_not have_selector("div[id=add_a_new_entry]")
           response.should_not have_selector("div[id=current_entries]")

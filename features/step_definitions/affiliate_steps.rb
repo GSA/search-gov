@@ -88,12 +88,12 @@ end
 
 Then /^affiliate SAYT suggestions for "([^\"]*)" should be enabled$/ do |affiliate_name|
   affiliate = Affiliate.find_by_name(affiliate_name)
-  page.body.should match("&aid=#{affiliate.id}")
+  page.body.should match("aid=#{affiliate.id}")
 end
 
 Then /^affiliate SAYT suggestions for "([^\"]*)" should be disabled$/ do |affiliate_name|
   affiliate = Affiliate.find_by_name(affiliate_name)
-  page.body.should_not match("&aid=#{affiliate.id}")
+  page.body.should_not match("aid=#{affiliate.id}")
 end
 
 Given /^the following Calais Related Searches exist for affiliate "([^\"]*)":$/ do |affiliate_name, table|
