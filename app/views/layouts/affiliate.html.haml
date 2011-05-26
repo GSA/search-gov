@@ -11,7 +11,7 @@
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = stylesheet_link_tag "clearfix"
     - if @affiliate.is_sayt_enabled
-      = stylesheet_link_tag 'jquery-ui/jquery-ui-1.8.12.custom.css'
+      = stylesheet_link_tag 'jquery-ui/jquery-ui-1.8.5.custom.css'
       = stylesheet_link_tag 'compiled/sayt.css'
       - if @affiliate.is_affiliate_suggestions_enabled
         = javascript_tag "var usagov_sayt_url = \"#{sayt_url}&aid=#{@affiliate.id}&\";"
