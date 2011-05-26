@@ -7,10 +7,6 @@ class TopSearch < ActiveRecord::Base
     all(:conditions => "query IS NOT NULL", :order => "position ASC", :limit => 5)
   end
 
-  def link_url
-    self.url.present? ? self.url : "http://search.usa.gov/search?query=#{CGI::escape(self.query)}&linked=1&position=#{self.position}"
-  end
-
   private
   def set_query_to_nil_if_blank
     self.query = nil if self.query.blank?

@@ -385,6 +385,20 @@ module SearchHelper
     link_to(t(:search_in), path, :id => 'search_in_link')
   end
 
+  def top_search_link_for(top_search)
+    if top_search.url.blank?
+      query_params = {
+          :query => top_search.query,
+          :linked => 1,
+          :position => top_search.position
+      }
+      path_or_url = search_path(query_params)
+    else
+      path_or_url = top_search.url
+    end
+    link_to top_search.query, path_or_url, :target => '_top'
+  end
+
   private
 
   def shorten_url (url, length=30)

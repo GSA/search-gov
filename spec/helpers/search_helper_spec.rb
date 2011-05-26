@@ -346,4 +346,21 @@ describe SearchHelper do
       helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB')
     end
   end
+
+  describe "#top_search_link" do
+    before do
+      @top_search_with_url = stub_model(TopSearch, :position => 1, :query => 'query', :url => 'http://test.com/')
+      @top_search_without_url_params = { :position => 2, :query => 'another query', :linked => 1 }
+      @top_search_without_url = stub_model(TopSearch, @top_search_without_url_params)
+    end
+
+    it "should return the predefined url if one exists" do
+      helper.top_search_link_for(@top_search_with_url).should have_selector("a", :href => @top_search_with_url.url, :content => @top_search_with_url.query, :target => '_top')
+    end
+
+    it "should return a search link if url does not exist" do
+      helper.should_receive(:search_path).with(@top_search_without_url_params).and_return('/search')
+      helper.top_search_link_for(@top_search_without_url).should have_selector("a[href^='/search']", :content => @top_search_without_url.query, :target => '_top')
+    end
+  end
 end
