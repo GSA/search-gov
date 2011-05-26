@@ -4,8 +4,7 @@ module Analytics::HomeHelper
     html << " "
     html << link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"),
                     path_for_query_timeline,
-                    :popup=>['_blank',
-                             'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,height=500,width=1045'],
+                    :class => 'analytics-timeline-popup',
                     :title => "Open graph in new window")
     html
   end
