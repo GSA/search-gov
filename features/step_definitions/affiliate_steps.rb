@@ -69,13 +69,13 @@ end
 Then /^the search bar should have SAYT enabled$/ do
   page.should have_selector("script[type='text/javascript'][src*='/javascripts/sayt-ui.js']")
   page.should have_selector("input[id='search_query'][type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
-  page.should have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui-1.8.12.custom.min.js']")
+  page.should have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui.custom.min.js']")
 end
 
 Then /^the search bar should not have SAYT enabled$/ do
   page.should_not have_selector("script[type='text/javascript'][src*='/javascripts/sayt-ui.js']")
   page.should_not have_selector("input[id='search_query'][type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
-  page.should_not have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui-1.8.12.custom.min.js']")
+  page.should_not have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui.custom.min.js']")
 end
 
 Then /^I should see the page with affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
