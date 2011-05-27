@@ -28,11 +28,11 @@ describe ImageSearchesController do
       end
 
       it "should render the header in the response" do
-        response.body.should contain(/#{@affiliate.header}/)
+        response.body.should match(/#{@affiliate.header}/)
       end
 
       it "should render the footer in the response" do
-        response.body.should contain(/#{@affiliate.footer}/)
+        response.body.should match(/#{@affiliate.footer}/)
       end
 
       context "when a scope id is provided do" do

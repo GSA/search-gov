@@ -59,6 +59,7 @@ group :development, :test, :cucumber do
   gem 'cucumber'
   gem 'launchy'
   gem 'rcov'
+  gem 'webster'
 end
 
 group :test do

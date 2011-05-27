@@ -1,6 +1,6 @@
 module Analytics::HomeHelper
   def base_query_chart_link(query, path_for_query_timeline)
-    html = link_to(h(query), path_for_query_timeline)
+    html = link_to(query, path_for_query_timeline)
     html << " "
     html << link_to(image_tag("open_new_window.png", :alt => "Open graph in new window", :size => "8x8"),
                     path_for_query_timeline,
@@ -29,9 +29,9 @@ module Analytics::HomeHelper
     html<< calendar_date_select_tag("pop_up_hidden", "", :hidden => true, :image=>"change_date.png", :buttons => false,
                                     :onchange => "location = '#{analytics_path_prefix(affiliate)}/?day='+$F(this);",
                                     :valid_date_check => "date <= (new Date(#{last})).stripTime() && date >= (new Date(#{first})).stripTime()")
-    raw html    
+    raw html
   end
-  
+
   def display_most_recent_daily_query_stat_date_available(day, affiliate = nil)
     return "Query data currently unavailable" if day.nil?
     current_day = content_tag(:span, day.to_s(:long), :class=>"highlight")
@@ -109,7 +109,7 @@ module Analytics::HomeHelper
   end
 
   private
-  
+
   def make_query_timeline_path(query, is_grouped)
     is_grouped ? query_timeline_path(query, :grouped => 1) : query_timeline_path(query)
   end

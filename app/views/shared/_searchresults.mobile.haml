@@ -26,7 +26,7 @@
 
   - if (search && search.related_search.present?)
     #relatedsearch
-      %p= t :searches_related_to, :query=> h(search.query)
+      %p= t :searches_related_to, :query=> search.query
       %ul
         - search.related_search.each_with_index do |related_term, index|
           %li= tracked_click_link(search_path(:query=>related_term, :affiliate=> @affiliate ),h(related_term.titleize), search, nil, index, 'CREL')

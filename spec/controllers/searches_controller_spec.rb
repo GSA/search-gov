@@ -136,11 +136,11 @@ describe SearchesController do
     end
 
     it "should render the header in the response" do
-      response.body.should contain(/#{@affiliate.header}/)
+      response.body.should match(/#{@affiliate.header}/)
     end
 
     it "should render the footer in the response" do
-      response.body.should contain(/#{@affiliate.footer}/)
+      response.body.should match(/#{@affiliate.footer}/)
     end
 
     it "should not search for FAQs" do

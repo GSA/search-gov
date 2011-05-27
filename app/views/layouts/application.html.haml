@@ -1,7 +1,7 @@
 !!!strict
 %html
   %head
-    %title= h build_page_title(@page_title)
+    %title= build_page_title(@page_title)
     = favicon_link_tag "/favicon_#{I18n.locale}.ico"
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
     = render_no_index_meta_tag

@@ -196,7 +196,7 @@ module SearchHelper
   end
 
   def no_results_for(query)
-    content_tag(:p, (t :no_results_for, :query => h(query)), :class=>"noresults")
+    content_tag(:p, (t :no_results_for, :query => query), :class=>"noresults")
   end
 
   def search_results_logo

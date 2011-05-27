@@ -22,12 +22,12 @@
       = (javascript_include_tag "jquery/jquery.bgiframe.min.js").html_safe
     = (javascript_include_tag "application.js").html_safe
 
-    %title= h @page_title
+    %title= @page_title
   %body{ :class => @affiliate.affiliate_template.stylesheet }
     #container
-      #header= @affiliate.header if @affiliate
+      #header= @affiliate.header.html_safe if @affiliate and @affiliate.header
       #search.clearfix
         %h1 Search
         = yield
-      #footer= @affiliate.footer if @affiliate
+      #footer= @affiliate.footer.html_safe if @affiliate and @affiliate.footer
   = render "/shared/webtrends_affiliates"

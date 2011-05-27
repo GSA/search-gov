@@ -10,7 +10,7 @@
         %h3= link_to shorten_url(boosted_content_url), boosted_content_url
 %a{:name => "content"}
 - if search.results.present?
-  = results_summary(search.startrecord, search.endrecord, search.total, h(search.query))
+  = results_summary(search.startrecord, search.endrecord, search.total, search.query)
   - if (search && search.fedstates && search.fedstates != 'all')
     = "#{t :search_results_restriction_message_front, :scope_setting => search.fedstates}  #{ link_to((t :search_results_restriction_message_link), search_path( request.parameters.merge(:fedstates => nil) ) ) }"
   - if search.spotlight
