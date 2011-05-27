@@ -350,7 +350,7 @@ describe SearchHelper do
   describe "#top_search_link" do
     before do
       @top_search_with_url = stub_model(TopSearch, :position => 1, :query => 'query', :url => 'http://test.com/')
-      @top_search_without_url_params = { :position => 2, :query => 'another query', :linked => 1 }
+      @top_search_without_url_params = { :position => 2, :query => 'another query' }
       @top_search_without_url = stub_model(TopSearch, @top_search_without_url_params)
     end
 
@@ -359,7 +359,8 @@ describe SearchHelper do
     end
 
     it "should return a search link if url does not exist" do
-      helper.should_receive(:search_path).with(@top_search_without_url_params).and_return('/search')
+      extra_url_params = { :linked => 1, :locale => nil, :m => nil }
+      helper.should_receive(:search_path).with(@top_search_without_url_params.merge(extra_url_params)).and_return('/search')
       helper.top_search_link_for(@top_search_without_url).should have_selector("a[href^='/search']", :content => @top_search_without_url.query, :target => '_top')
     end
   end
