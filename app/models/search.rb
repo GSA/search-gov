@@ -37,7 +37,6 @@ class Search
                 :boosted_contents,
                 :spotlight,
                 :faqs,
-                :gov_forms,
                 :recalls,
                 :results_per_page,
                 :offset,
@@ -165,7 +164,6 @@ class Search
       @faqs = Faq.search_for(query, I18n.locale.to_s)
       if english_locale?
         @spotlight = Spotlight.search_for(query)
-        @gov_forms = GovForm.search_for(query)
       end
       if page < 1
         @recalls = Recall.recent(query)
@@ -292,7 +290,6 @@ class Search
     modules << "BSPEL" unless self.spelling_suggestion.nil?
     modules << "CREL" unless self.related_search.nil? or self.related_search.empty?
     modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
-    modules << "FORM" unless self.gov_forms.nil? or self.gov_forms.total.zero?
     modules << "SPOT" unless self.spotlight.nil?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
     query_impression_hash = {:time=> Time.now.to_formatted_s(:db),

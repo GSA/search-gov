@@ -42,9 +42,10 @@ describe RecallsController do
         Recall.reindex
         get :search, :query => 'strollers'
       end
-      
+
       it "should render the template" do
-        response.should render_template 'recalls/search', :layout => 'application'
+        response.should render_template 'recalls/search'
+        response.should render_template 'layouts/application'
       end
 
       it "should assign the query with a forms prefix as the page title" do

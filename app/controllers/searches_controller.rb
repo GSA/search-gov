@@ -30,20 +30,12 @@ class SearchesController < ApplicationController
   def forms
     redirect_to forms_path and return if @search_options[:query].blank?
     @search = FormSearch.new(@search_options)
-    if params[:source] == "gov_forms"
-      @gov_forms = GovForm.search_for(@search_options[:query], [@search_options[:page], 0].max + 1, @search_options[:results_per_page] || 10)
-    else
-      @search.run
-    end
+    @search.run
     @form_path = forms_search_path
     @page_title = @search.query
     respond_to do |format|
-      if @gov_forms
-        format.html
-      else
-        format.html { render :action => :index }
-        format.json { render :json => @search }
-      end
+      format.html { render :action => :index }
+      format.json { render :json => @search }
     end
   end
 
@@ -98,14 +90,14 @@ class SearchesController < ApplicationController
     end
     @search_options = search_options_from_params(params).merge(:affiliate => affiliate)
   end
-  
+
   def set_form_search_options
     @search_options = {
       :page => (params[:page].to_i - 1),
       :query => params["query"],
       :results_per_page => params["per-page"],
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
-    }    
+    }
   end
 
   def adjust_mobile_mode
@@ -116,7 +108,7 @@ class SearchesController < ApplicationController
   def is_advanced_search?
     params[:action] == "advanced"
   end
-  
+
   def is_forms_search?
     params[:action] == "forms"
   end

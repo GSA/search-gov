@@ -149,10 +149,9 @@ describe Search do
         search.run
       end
 
-      it "should not search for Spotlights or GovForms, but should search for FAQs" do
+      it "should not search for Spotlights, but should search for FAQs" do
         search = Search.new(@valid_options.merge(:affiliate => nil))
         Spotlight.should_not_receive(:search_for)
-        GovForm.should_not_receive(:search_for)
         Faq.should_receive(:search_for).with(@valid_options[:query], I18n.locale.to_s)
         search.run
       end
@@ -291,11 +290,6 @@ describe Search do
         @search.run
       end
 
-      it "should search for GovForms" do
-        GovForm.should_receive(:search_for).with('government')
-        @search.run
-      end
-
       context "when a scope id is specified" do
         it "should ignore the scope id" do
           uriresult = URI::parse("http://localhost:3000/")
@@ -313,11 +307,6 @@ describe Search do
         search.run
       end
 
-      it "should not search for GovForms" do
-        search = Search.new(@valid_options)
-        GovForm.should_not_receive(:search_for)
-        search.run
-      end
     end
 
     context "when page offset is specified" do

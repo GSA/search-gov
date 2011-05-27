@@ -76,7 +76,8 @@ describe SearchesController do
     end
 
     it "should render the template" do
-      response.should render_template 'index', :layout => 'application'
+      response.should render_template 'index'
+      response.should render_template 'layouts/application'
     end
 
     it "should assign the query as the page title" do
@@ -126,7 +127,8 @@ describe SearchesController do
     it { should assign_to :page_title }
 
     it "should render the template" do
-      response.should render_template 'affiliate_index', :layout => 'affiliate'
+      response.should render_template 'affiliate_index'
+      response.should render_template 'layouts/affiliate'
     end
 
     it "should set an affiliate page title" do
@@ -144,11 +146,6 @@ describe SearchesController do
     it "should not search for FAQs" do
       @search.faqs.should be_nil
       response.body.should_not contain(/related_faqs/)
-    end
-
-    it "should not search for GovForms" do
-      @search.gov_forms.should be_nil
-      response.body.should_not contain(/related_gov_forms/)
     end
 
     context "when a scope id is provided do" do
@@ -218,9 +215,10 @@ describe SearchesController do
     before do
       get :index, :affiliate=> affiliates(:power_affiliate).name, :query => "weather"
     end
-    
+
     it "should render the template" do
-      response.should render_template 'affiliate_index', :layout => 'affiliate'
+      response.should render_template 'affiliate_index'
+      response.should render_template 'layouts/affiliate'
     end
   end
 
@@ -229,9 +227,10 @@ describe SearchesController do
       get :index, :affiliate=>"doesnotexist.gov", :query => "weather"
       @search = assigns[:search]
     end
-    
+
     it "should render the template" do
-      response.should render_template 'index', :layout => 'application'
+      response.should render_template 'index'
+      response.should render_template 'layouts/application'
     end
   end
 
@@ -242,7 +241,8 @@ describe SearchesController do
     end
 
     it "should render the template" do
-      response.should render_template 'affiliate_index', :layout => 'affiliate'
+      response.should render_template 'affiliate_index'
+      response.should render_template 'layouts/affiliate'
     end
   end
 
@@ -274,38 +274,6 @@ describe SearchesController do
     end
 
     it "should display search results without Faq results" do
-      response.should be_success
-    end
-  end
-
-  context "when handling a request that has GovForm results" do
-    before do
-      get :index, :query => 'shell egg'
-      @search = assigns[:search]
-    end
-
-    it "should search for GovForm results" do
-      @search.should_not be_nil
-      @search.gov_forms.should_not be_nil
-    end
-  end
-
-  context "when handling a request that has GovForm results, but the GovForm records have been deleted from the database" do
-    render_views
-    before do
-      GovForm.destroy_all
-      GovForm.reindex
-      Sunspot.commit
-      GovForm.search_for('uspto').total.should == 0
-      @gov_form = GovForm.create(:name => 'uspto GovForm', :form_number => 12345, :agency => 'UPSTO', :bureau => 'USPTO', :description => 'Something to do with the USPTO', :url => 'http://uspto.gov')
-      Sunspot.commit
-      GovForm.search_for('uspto').total.should == 1
-      GovForm.delete_all
-      GovForm.search_for('uspto').total.should == 1
-      get :index, :query => 'uspto'
-    end
-
-    it "should display search results without GovForm results" do
       response.should be_success
     end
   end
@@ -393,18 +361,16 @@ describe SearchesController do
 
     context "when the source parameter is not specified" do
       before do
-        GovForm.destroy_all
-        @gov_form = GovForm.create(:name => "Tax Form", :form_number => "1040", :description => "A tax form", :agency => "IRS", :url => 'http://irs.gov/1040.pdf')
-        GovForm.reindex
         get :forms, :query => "taxes", :page => 2
         @search = assigns[:search]
         @page_title = assigns[:page_title]
       end
 
       it "should render the template" do
-        response.should render_template 'index', :layout => 'application'
+        response.should render_template 'index'
+        response.should render_template 'layouts/application'
       end
-      
+
       it "should show the forms logo" do
         response.should have_selector("img[src^='/images/USAsearch_medium_en_forms.gif']")
       end
@@ -436,15 +402,6 @@ describe SearchesController do
         get :forms, :query => "taxes", :page => 2
       end
 
-      it "should populate additional gov form results if the query matches" do
-        @search.gov_forms.should_not be_nil
-        @search.gov_forms.hits.should_not be_nil
-        @search.gov_forms.total.should == 1
-        @search.gov_forms.hits.first.instance.should_not be_nil
-        @search.gov_forms.results.should_not be_empty
-        @search.gov_forms.results.first.should == @gov_form
-      end
-
       it "should render the search box with the form search path" do
         response.body.should have_selector("form[id='search_form']", :method => 'get', :action => '/search/forms?locale=en&m=false')
       end
@@ -459,63 +416,8 @@ describe SearchesController do
         response.body.should have_selector("span", :content => "Forms")
       end
 
-      it "should output a Forms GovBox with a link to more GovForm search results" do
-        response.body.should have_selector("div[class=govbox]")
-        response.body.should have_selector("a", :href => '/search/forms?locale=en&m=false&query=taxes&source=gov_forms', :content => "Federal Government Forms Catalog: <b>taxes</b>")
-        response.body.should have_selector("a", :href => "#{@gov_form.url}", :content => "<strong>Tax</strong> Form (#{@gov_form.form_number})")
-      end
-
       it "should not have related Gov Forms" do
         response.body.should_not have_selector("ul[id=related_gov_forms]")
-      end
-    end
-
-    context "when the source parameter is set to 'gov_forms'" do
-      before do
-        GovForm.destroy_all
-        1.upto(12) do |index|
-          GovForm.create(:name => "Taxes Form ##{index}", :form_number => index, :agency => 'GSA', :url => "http://forms.gov/#{index}.pdf", :description => 'A Government Tax Form')
-        end
-        GovForm.reindex
-        get :forms, :query => "taxes", :source => 'gov_forms'
-        @search = assigns[:search]
-        @gov_forms = assigns[:gov_forms]
-        @page_title = assigns[:page_title]
-      end
-
-      it "should render the template" do
-        response.should render_template 'forms', :layout => 'application'
-      end
-      
-      it "should assign the query with a forms prefix as the page title" do
-        @page_title.should == "taxes"
-      end
-
-      it "should show a custom title for the results page" do
-        response.body.should contain("taxes - Search.USA.gov Forms")
-      end
-
-      it "should set the query in the Search model" do
-        @search.query.should == "taxes"
-      end
-
-      it "should assign results to the gov_forms variable" do
-        @gov_forms.should_not be_nil
-      end
-
-      it "should output a title with the query" do
-        response.body.should contain(/Federal Government Forms Catalog: <b>taxes<\/b>/)
-      end
-
-      it "should link back to the forms web results" do
-        response.body.should have_selector("a", :href => '/search/forms?locale=en&m=false&query=taxes', :content => "<< Return to government web results for <b>taxes</b>")
-      end
-
-      it "should output 10 GovForm results, linked to their URL" do
-        1.upto(10) do |index|
-          response.body.should have_selector('a', :href => "http://forms.gov/#{index}.pdf", :content => "<strong>Taxes</strong> Form ##{index} (#{index})")
-        end
-        response.body.should_not have_selector("a", :href => 'http://forms.gov/11.pdf', :content => "Taxes Form #11 (11)")
       end
     end
 
