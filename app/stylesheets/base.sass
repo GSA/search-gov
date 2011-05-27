@@ -1,7 +1,6 @@
 @import "compass/utilities/tables"
 @import trending_searches.sass
 
-$blueprint-font-family: verdana, verdana, sans-serif
 $site_theme_color: #003366
 $red: #990000
 $link: #2200CC
@@ -9,7 +8,6 @@ $green: #008000
 
 body
   :background-color #F7F7F7
-  :letter-spacing -1px
   &.es
     :background-color #F1ECDF
 
@@ -36,6 +34,8 @@ a:hover
 
 .header-wrap
   :background url(/images/backgrounds/bg_top_right_long.gif) no-repeat right 17px
+  :font
+    :family verdana, verdana, sans-serif
 
 .header
   :float left
@@ -52,7 +52,6 @@ a:hover
   a, a:hover
     :color #25496B
     :font
-      :family verdana, verdana, sans-serif
       :size 10px
       :weight normal
     :padding
@@ -217,13 +216,14 @@ a:hover
 .footer-wrap
   :background url(/images/backgrounds/bg_right.gif) repeat-y top right
   :float right
+  :font
+    :family verdana, verdana, sans-serif
   :padding
     :bottom 0.7em
   :position relative
   :width 99%
 .footer
   :font
-    :family verdana, verdana, sans-serif
     :size 12px
     :weight bold
   :margin
