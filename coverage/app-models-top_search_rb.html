@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-top_search_rb.html">app/models/top_search.rb</a></td>
-            <td class='right_align'><tt>18</tt></td>
-            <td class='right_align'><tt>15</tt></td>
+            <td class='right_align'><tt>14</tt></td>
+            <td class='right_align'><tt>12</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -111,61 +111,37 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   def link_url</pre></td>
+            <td><pre><a name="line10">10</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     self.url.present? ? self.url : &quot;http://search.usa.gov/search?query=#{CGI::escape(self.query)}&amp;linked=1&amp;position=#{self.position}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line12">12</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a> </pre></td>
+            <td><pre><a name="line11">11</a>   def set_query_to_nil_if_blank</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>   def set_query_to_nil_if_blank</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>     self.query = nil if self.query.blank?</pre></td>
+            <td><pre><a name="line12">12</a>     self.query = nil if self.query.blank?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>   end</pre></td>
+            <td><pre><a name="line13">13</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a> end</pre></td>
+            <td><pre><a name="line14">14</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue May 24 11:30:52 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri May 27 10:57:03 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
