@@ -5,7 +5,7 @@ class SaytController < ActionController::Metal
 
   def index
     Rails.logger.silence do
-      query, response = params['q'] || '', ''
+      query = params['q'] || ''
       sanitized_query = query.gsub('\\', '').squish.strip
       unless sanitized_query.empty?
         num_suggestions = mobile?(request.user_agent) ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE
