@@ -55,7 +55,7 @@ module SearchHelper
     html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, 'BWEB')
     unless result['cacheUrl'].blank? or !show_cache_link
       html << " - "
-      html << link_to((t :cached), "#{h result['cacheUrl']}", :class => 'cache_link')
+      html << link_to((t :cached), "#{result['cacheUrl']}", :class => 'cache_link')
     end
     raw html
   end
