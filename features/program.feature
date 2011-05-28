@@ -80,6 +80,12 @@ Feature: Program
     When I follow "Sign in" in the api dropdown menu
     Then I should see "Sign In to Use Our Services"
 
+  Scenario: Clicking on the registration link in APIs and Web Services page
+    Given I am on the api page
+    When I follow "registration"
+    And I follow "Register Now"
+    Then I should see "Register for a New Account"
+
   Scenario: Search.USA.gov link should be on the searchusagov page
     Given I am on the program welcome page
     When I follow "learn_more_searchusagov" within ".main"
