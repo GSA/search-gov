@@ -1,7 +1,7 @@
-%h1 
+%h1
   Query Timeline
 %h2
-  Interest over time for '#{h @query}'#{@comparison_query ? h(' compared to \'' + @comparison_query + '\'') : ''}
+  Interest over time for '#{@query}'#{@comparison_query ? (' compared to \'' + @comparison_query + '\'') : ''}
 
 = annotated_timeline_for(@timelines.first.dates, timeline_options) do |atl|
   - atl.add_line(@query, @timelines.first.series, :value => :y)
@@ -13,4 +13,4 @@
   = text_field_tag 'comparison_query', @comparison_query
   = submit_tag 'Compare'
 %p
-  = link_to "Remove: #{h @comparison_query}", url_for_timeline if @comparison_query
+  = link_to "Remove: #{@comparison_query}", url_for_timeline if @comparison_query

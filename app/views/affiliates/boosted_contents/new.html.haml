@@ -1,5 +1,5 @@
 .boosted-sites.span-24
-  = affiliate_center_breadcrumbs([link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), "Boosted Content"])
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Boosted Content"])
 
   .span-17.append-1.last
     %h1 Boosted Content
@@ -24,19 +24,19 @@
         = link_to(content_tag(:button, "Delete All"), destroy_all_affiliate_boosted_contents_path(@affiliate), :method => :delete, :confirm => "Are you sure you want to delete all of your Boosted Content?\nThis action can not be undone.", :style => "float: right;")
         ="Edit / Delete Current Boosted Entries"
       - if @boosted_content_count == 0
-        .content-box= "Affiliate #{h(@affiliate.display_name)} has no Boosted Content"
+        .content-box= "Affiliate #{@affiliate.display_name} has no Boosted Content"
       - else
         %table.admin-table#boosted_contents
           %tr
             %td{:colspan => 5}
               - if @boosted_contents.length < @boosted_content_count
-                = "Affiliate #{h(@affiliate.display_name)} has #{@boosted_content_count} Boosted Content entries."
+                = "Affiliate #{@affiliate.display_name} has #{@boosted_content_count} Boosted Content entries."
                 %br
                 = "Displayed below are the most recent #{Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX} entries."
                 %br
                 Please use the Delete All and Bulk Upload features to edit the rest of the entries.
               -else
-                = "Affiliate #{h(@affiliate.display_name)} has #{@boosted_content_count} Boosted Content entries."
+                = "Affiliate #{@affiliate.display_name} has #{@boosted_content_count} Boosted Content entries."
           %tr
             %th Title
             %th URL
@@ -56,7 +56,7 @@
 
     #bulk_upload
       = form_tag bulk_affiliate_boosted_contents_path(@affiliate), :multipart => true, :class=> "bordered" do
-        %h2="Bulk Upload Boosted Content for #{h(@affiliate.display_name)}"
+        %h2="Bulk Upload Boosted Content for #{@affiliate.display_name}"
         %h4 Instructions
         %ol
           %li

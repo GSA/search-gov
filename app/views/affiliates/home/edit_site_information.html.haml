@@ -1,5 +1,5 @@
 .site-specific
-  = affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Site Information'] )
+  = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Site Information'] )
   %h1 Site Information
   .site-info
     = form_for @affiliate, :url => {:action => :update_site_information}, :html => {:class=>"generic-form"} do |f|

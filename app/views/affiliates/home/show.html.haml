@@ -1,6 +1,6 @@
 .affiliate
-  = affiliate_center_breadcrumbs(h(@affiliate.display_name))
-  %h1= "Site: #{h(@affiliate.display_name)}"
+  = affiliate_center_breadcrumbs(@affiliate.display_name)
+  %h1= "Site: #{@affiliate.display_name}"
   %table.generic-table
     %thead
       %tr
@@ -10,7 +10,5 @@
           Actions
     %tbody
       %tr
-        %td.site-url
-          = h(@affiliate.website)
-        %td
-          = render :partial => 'affiliate_actions', :locals => {:affiliate => @affiliate}
+        %td.site-url= @affiliate.website
+        %td= render :partial => 'affiliate_actions', :locals => {:affiliate => @affiliate}

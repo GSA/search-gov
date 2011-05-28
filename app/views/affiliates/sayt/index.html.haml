@@ -1,5 +1,5 @@
 .span-24
-  = affiliate_center_breadcrumbs([ link_to(h(@affiliate.display_name), affiliate_path(@affiliate)), 'Type-ahead Search'])
+  = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Type-ahead Search'])
 
 .span-17.append-1.last
   %h1 Type-ahead Search
@@ -72,7 +72,7 @@
 
     #bulk_upload{:style => 'margin-bottom: 25px;'}
       = render :partial => 'bulk_upload_form', :locals => { :upload_path => upload_affiliate_type_ahead_search_index_path(@affiliate) }
-  
+
 .span-6.last
   .content-box.cross-promotion
     %p

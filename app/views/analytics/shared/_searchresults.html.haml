@@ -1,6 +1,6 @@
 %div= flash[:notice] if flash[:notice]
 - if (@search_results.size > 0)
-  %p= "Matches for '#{h @search_query_term}'"
+  %p= "Matches for '#{@search_query_term}'"
   - if @affiliate.nil?
     :javascript
       function selectAllQueries() {
@@ -50,4 +50,4 @@
 - elsif (@search_query_term.blank?)
   %p.noresults= "Please enter search term(s)"
 - else
-  %p.noresults= "Sorry, no results found for '#{h @search_query_term}'."
+  %p.noresults= "Sorry, no results found for '#{@search_query_term}'."

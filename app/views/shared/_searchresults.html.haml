@@ -12,10 +12,9 @@
 - if search.results.present?
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)
   - if (search && search.fedstates && search.fedstates != 'all')
-    = "#{t :search_results_restriction_message_front, :scope_setting => search.fedstates}  #{ link_to((t :search_results_restriction_message_link), search_path( request.parameters.merge(:fedstates => nil) ) ) }"
+    = results_restriction_message_for(search.fedstates, search_path(request.parameters.merge(:fedstates => nil)))
   - if search.spotlight
-    #spotlight
-      = render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds)
+    #spotlight= render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds)
   - if (search.recalls && search.recalls.total > 0)
     = render "shared/recall_gov_box", :search => search
   - search.results.each_with_index do |result, index|

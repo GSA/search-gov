@@ -401,6 +401,12 @@ module SearchHelper
     link_to top_search.query, path_or_url, :target => '_top'
   end
 
+  def results_restriction_message_for(fedstates, search_path)
+    heading = t :search_results_restriction_message_front, :scope_setting => fedstates
+    link = link_to((t :search_results_restriction_message_link), search_path)
+    raw(heading + ' ' + link)
+  end
+
   private
 
   def shorten_url (url, length=30)

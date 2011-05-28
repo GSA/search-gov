@@ -1,6 +1,6 @@
 .affiliate
   = breadcrumbs([link_to("Affiliate Program", affiliates_path), "Affiliate Center"])
-  %h1 Affiliate Center  
+  %h1 Affiliate Center
   - if @current_user.is_affiliate?
     -if @current_user.is_pending_contact_information?
       = render :partial => 'edit_contact_information_for_new_user'
@@ -21,6 +21,6 @@
           - @current_user.affiliates.ordered.each do |affiliate|
             %tr{:id => "site_#{affiliate.id}", :class => cycle('even', 'odd')}
               %td.site-name
-                = link_to(h(affiliate.display_name), affiliate_path(affiliate))
+                = link_to(affiliate.display_name, affiliate_path(affiliate))
               %td
                 = render :partial => 'affiliate_actions', :locals => {:affiliate => affiliate}
