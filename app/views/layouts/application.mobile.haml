@@ -22,7 +22,7 @@
     = (javascript_include_tag "application.js").html_safe
     = (javascript_include_tag "/m/j/close.js").html_safe
 
-  %body{:onload => "setTimeout(function() { window.scrollTo(0, 1) }, 100);"}
+  %body{:onload => "setTimeout(function() { window.scrollTo(0, 1) }, 100);", :class => 'mobile-web'}
     #container
       #contentWrapper
         = yield

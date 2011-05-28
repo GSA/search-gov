@@ -1,4 +1,4 @@
-.search-form-wrapper
+.search-form-wrapper.program
   = form_tag(search_path, :method => :get, :id => "search_form") do
     = hidden_field_tag :locale, I18n.locale
     = hidden_field_tag :m, params[:m]
