@@ -1,7 +1,7 @@
 = show_flash_messages
 .wraptitleBox
   .titleBox
-    %h1.title 
+    %h1.title
       Sign In to Use Our Services
     %p
       Access to our Affiliate Program, APIs, and web services requires authentication. Log in, or register for a new account below.
@@ -39,7 +39,7 @@
           = f.label :government_affiliation_0, "I am not affiliated with a government agency."
         .wrapBox
           = f.check_box :terms_of_service, {:class => 'checkbox'}
-          = f.label :terms_of_service, "I have read and accept the &nbsp;", :class => 'tos-label'
+          = f.label :terms_of_service, "I have read and accept the&nbsp".html_safe, :class => 'tos-label'
           = link_to 'Terms of Service', recalls_tos_docs_path, :target => 'blank'
           \.
         = f.submit "Register for a new account", :class => 'btn-register submit'
