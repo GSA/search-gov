@@ -10,8 +10,8 @@ before "deploy:symlink", "production_yaml_files"
 before "deploy:cleanup", "restart_resque_workers"
 
 task :restart_resque_workers, :roles => :resque_workers do
-  run "/home/jwynne/scripts/stop_resque_workers"
-  run "/home/jwynne/scripts/start_resque_workers"
+  run "sudo /home/jwynne/scripts/stop_resque_workers"
+  run "sudo /home/jwynne/scripts/start_resque_workers"
 end
 
 task :production_yaml_files, :except => { :no_release => true } do
