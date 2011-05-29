@@ -9,9 +9,8 @@
       :plain
         .ac_results {margin-top: -130px;}
 #homeNav.dvCenter
-  = @site_page.breadcrumb
-  = @site_page.main_content
+  != @site_page.breadcrumb
+  != @site_page.main_content
 .group.clear
 .mobileFooter.pad5
   %a{:title => "USA.gov", :href => "http://www.usa.gov"} USA.gov Full Site
-
