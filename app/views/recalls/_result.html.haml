@@ -1,8 +1,8 @@
 .searchresult.recall[result]
   = render "industry_icon", :recall => result
   .details
-    %h2= link_to highlight_like_solr(truncate_on_words(result.summary, 60), hit.highlights), result.recall_url
+    %h2= link_to (highlight_like_solr(truncate_on_words(result.summary, 60), hit.highlights)).html_safe, result.recall_url
     .description
       .recall-date= "#{(result.recalled_on || result.created_at).strftime("%b. %d, %Y")}:"
-      = highlight_like_solr(truncate_on_words(sanitize(result.description, :tags => []), 166), hit.highlights)
+      != highlight_like_solr(truncate_on_words(sanitize(result.description, :tags => []), 166), hit.highlights)
     .url= link_to shorten_url(result.recall_url), result.recall_url
