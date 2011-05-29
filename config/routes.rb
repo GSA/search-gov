@@ -126,6 +126,7 @@ UsasearchRails3::Application.routes.draw do
   match '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
   match '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
   match '/usa/:url_slug' => 'usa#show', :as => :usa, :constraints => { :url_slug => /.*/ }
+  match '/usa/' => 'home#index'
   match '/program' => 'pages#show', :as => :program, :id => 'program'
   match '/searchusagov' => 'pages#show', :as => :searchusagov, :id => 'search'
   match '/contactus' => 'pages#show', :as => :contactus, :id => 'contactus'
