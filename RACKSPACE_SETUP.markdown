@@ -109,21 +109,19 @@ Edit ~search/.gemrc and add this line:
 Verify everything looks sane
 
     gem environment
+    
+Update rubygems to version 1.4.2
 
-Get rails (could take several minutes)
+    sudo gem install rubygems-update -v='1.4.2'
+    sudo update_rubygems
+    
+Verify that the environment is using the correct version; you should see 1.4.2 as the version
 
-    sudo gem install rails -v=2.3.4
+    gem environment
+    
+Install bundler
 
-Compile mysql gem
-
-    sudo gem install mysql
-
-Install some other gems that seem to require manual installation
-
-    sudo gem install hoptoad_notifier rspec rspec-rails capistrano capistrano-ext ruby-debug calais
-    sudo gem install cucumber -v=0.6.1
-    sudo gem install sunspot --version '=1.1.0'
-    sudo gem install sunspot_rails --version '=1.1.0'
+    sudo gem install bundler -v="1.0.12"
 
 Setup usa/usalog helper aliases for ‘search’ user in ~/.bashrc
 
@@ -157,7 +155,6 @@ Then on staging
 Then on local dev workstation run
 
     cap deploy
-
 
 ### Production
 

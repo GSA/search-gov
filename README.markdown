@@ -14,8 +14,10 @@ You will need Ruby 1.8.7. Verify that your path points to the correct version of
     lappy:usasearch loren$ which ruby
     /opt/local/bin/ruby
 
-You will need to install rubygems 1.4.1 and set up your gem sources:
+You will need to install rubygems 1.4.2 and set up your gem sources:
 
+    gem install rubygems-update -v='1.4.2'
+    update_rubygems
     lappy:usasearch loren$ gem -v
     1.4.1
     lappy:usasearch loren$ which gem
@@ -32,6 +34,13 @@ You will need to install rubygems 1.4.1 and set up your gem sources:
     - http://gems.github.com
     - http://gems.rubyforge.org/
     - http://gemcutter.org
+    
+## Gems
+
+For Rails 3, we use bundler; you should be able to get all the rest of the gems needed for this project like this:
+
+    gem install bundler
+    bundle install
 
 ## Solr
 
@@ -54,12 +63,6 @@ If you are upgrading from a previous version of Sunspot/Solr (typically, this wo
     rake sunspot:solr:start RAILS_ENV=test
     rake sunspot:solr:reindex
     rake sunspot:solr:reindex RAILS_ENV=test
-
-## Gems
-
-For Rails 3, we use bundler; you should be able to get all the rest of the gems needed for this project like this:
-
-    bundle install
 
 # Database
 
@@ -139,7 +142,7 @@ development database with a month's worth of data for 100 query terms:
 
     rake usasearch:create_dummy_analytics_data DAYS=30 WORDCOUNT=100
 
-Give your user account priveleges to access analytics (and admin while you are at it). Here's how with script/console:
+Give your user account priveleges to access analytics (and admin while you are at it). Here's how with rails console:
 
     user = User.last
     user.update_attribute(:is_analyst, true)
