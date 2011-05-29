@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/usa_controller.rb</title>
+    <title>app/controllers/api_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/usa_controller.rb</h2>
+    <h2>app/controllers/api_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-usa_controller_rb.html">app/controllers/usa_controller.rb</a></td>
+            <td class="left_align"><a href="app-controllers-api_controller_rb.html">app/controllers/api_controller.rb</a></td>
+            <td class='right_align'><tt>26</tt></td>
             <td class='right_align'><tt>22</tt></td>
-            <td class='right_align'><tt>18</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,61 +57,61 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class UsaController &lt; ApplicationController</pre></td>
+            <td><pre><a name="line1">1</a> class ApiController &lt; ApplicationController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   has_mobile_fu</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line3">3</a>   before_filter :force_mobile_mode</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :override_locale_based_on_url</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :verify_api_key_and_load_affiliate</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a> </pre></td>
+            <td><pre><a name="line3">3</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   def show</pre></td>
+            <td><pre><a name="line4">4</a>   def search</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     @search = Search.new</pre></td>
+            <td><pre><a name="line5">5</a>     @search_options = search_options_from_params(params).merge(:affiliate =&gt; @affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     @site_page = SitePage.find_by_url_slug(params[&quot;url_slug&quot;])</pre></td>
+            <td><pre><a name="line6">6</a>     if (params[:callback].blank?)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     redirect_to home_page_path and return if @site_page.nil?</pre></td>
+            <td><pre><a name="line7">7</a>       render :json =&gt; ApiSearch.search(@search_options)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line8">8</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     @title = @site_page.title</pre></td>
+            <td><pre><a name="line9">9</a>       render :json =&gt; ApiSearch.search(@search_options), :callback =&gt; params[:callback]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line10">10</a>     end</pre></td>
           </tr>
         
           
@@ -134,56 +134,80 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>   def verify_api_key_and_load_affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   def override_locale_based_on_url</pre></td>
+            <td><pre><a name="line15">15</a>     unless user = params[:api_key].present? &amp;&amp; User.find_by_api_key(params[:api_key])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>     I18n.locale = request.url.include?(&quot;/gobiernousa&quot;) ? :es : I18n.default_locale</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line17">17</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line18">18</a>   </pre></td>
+            <td><pre><a name="line16">16</a>       render :text =&gt; 'Invalid API Key', :status =&gt; 401</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>   def force_mobile_mode</pre></td>
+            <td><pre><a name="line17">17</a>       return false</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line18">18</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line19">19</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>     request.format = 'mobile'</pre></td>
+            <td><pre><a name="line20">20</a>     unless @affiliate = user.affiliates.find_by_name(params[:affiliate])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       render :text =&gt; 'Unauthorized', :status =&gt; 403</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       return false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   end</pre></td>
+            <td><pre><a name="line23">23</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a> end</pre></td>
+            <td><pre><a name="line24">24</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line25">25</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line26">26</a> end</pre></td>
           </tr>
         
       </tbody>

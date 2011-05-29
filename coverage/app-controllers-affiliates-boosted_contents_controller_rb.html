@@ -28,7 +28,7 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-affiliates-boosted_contents_controller_rb.html">app/controllers/affiliates/boosted_contents_controller.rb</a></td>
-            <td class='right_align'><tt>77</tt></td>
+            <td class='right_align'><tt>78</tt></td>
             <td class='right_align'><tt>66</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
@@ -243,7 +243,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>       flash[:success] = &quot;Boosted Content entry successfully added for affiliate '#{ERB::Util.html_escape(@affiliate.display_name)}'&quot;</pre></td>
+            <td><pre><a name="line32">32</a>       flash[:success] = &quot;Boosted Content entry successfully added for affiliate '#{@affiliate.display_name}'&quot;</pre></td>
           </tr>
         
           
@@ -399,7 +399,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>       flash[:success] = &quot;Successful Bulk Import for affiliate '#{ERB::Util.html_escape(@affiliate.display_name)}':&lt;br/&gt;#{messages.join(&quot;&lt;br/&gt;&quot;)}&quot;</pre></td>
+            <td><pre><a name="line58">58</a>       flash[:success] = &quot;Successful Bulk Import for affiliate '#{@affiliate.display_name}':&lt;br/&gt;#{messages.join(&quot;&lt;br/&gt;&quot;)}&quot;</pre></td>
           </tr>
         
           
@@ -446,80 +446,86 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line66">66</a>   def find_boosted_content</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line66">66</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>     @boosted_content = BoostedContent.find(params[:id])</pre></td>
+            <td><pre><a name="line67">67</a>   def find_boosted_content</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>     @boosted_content = BoostedContent.find(params[:id])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line68">68</a>   end</pre></td>
+            <td><pre><a name="line69">69</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a> </pre></td>
+            <td><pre><a name="line70">70</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line70">70</a>   def load_boosted_contents</pre></td>
+            <td><pre><a name="line71">71</a>   def load_boosted_contents</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line71">71</a>     @boosted_content_count = @affiliate.boosted_contents.count</pre></td>
+            <td><pre><a name="line72">72</a>     @boosted_content_count = @affiliate.boosted_contents.count</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line72">72</a>     @boosted_contents = @boosted_content_count &gt; MAX_TO_DISPLAY ?</pre></td>
+            <td><pre><a name="line73">73</a>     @boosted_contents = @boosted_content_count &gt; MAX_TO_DISPLAY ?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>         @affiliate.boosted_contents.order(&quot;updated_at desc, id desc&quot;).limit(NUMBER_TO_DISPLAY_IF_ABOVE_MAX) :</pre></td>
+            <td><pre><a name="line74">74</a>         @affiliate.boosted_contents.order(&quot;updated_at desc, id desc&quot;).limit(NUMBER_TO_DISPLAY_IF_ABOVE_MAX) :</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>         @affiliate.boosted_contents</pre></td>
+            <td><pre><a name="line75">75</a>         @affiliate.boosted_contents</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line75">75</a>   end</pre></td>
+            <td><pre><a name="line76">76</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line76">76</a> </pre></td>
+            <td><pre><a name="line77">77</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line77">77</a> end</pre></td>
+            <td><pre><a name="line78">78</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri May 27 23:45:39 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sun May 29 16:43:18 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
