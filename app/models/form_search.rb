@@ -4,6 +4,9 @@ class FormSearch < Search
 
   protected
 
+  def populate_additional_results(response)
+  end
+  
   def related_search_results
     []
   end
