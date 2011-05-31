@@ -1,7 +1,7 @@
 require "base64"
 require "pp"
 require "rubygems"
-require "active_support"
+require "active_support/core_ext"
 
 I18n.load_path = Dir[File.dirname(__FILE__) + '/../../config/locales/*.yml']
 
@@ -38,10 +38,18 @@ module UsaSearch
     def search_as_you_type(locator, text)
       type(locator, firefox? ? "" : text)
       type_keys(locator, text)
+      begin
+        wait_for_visible('css=li.ui-menu-item', :timeout_in_seconds => 3) unless ie9?
+      rescue
+      end
     end
 
     def firefox?
       @config.browser == "firefox"
+    end
+
+    def ie9?
+      @config.browser == "iexplore" and @config.browser_version == "9."
     end
 
     def capture_to_file(name, wait=true)

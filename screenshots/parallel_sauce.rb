@@ -12,7 +12,9 @@ BROWSERS = [
     Browser.new("Windows 2003", "iexplore", "6."),
     Browser.new("Windows 2003", "iexplore", "7."),
     Browser.new("Windows 2003", "iexplore", "8."),
+    Browser.new("Windows 2008", "iexplore", "9."),
     Browser.new("Windows 2003", "firefox", "3."),
+    Browser.new("Windows 2008", "firefox", "4."),
     Browser.new("Windows 2003", "safari", "4."),
     Browser.new("Windows 2003", "googlechrome", ""),
 ]
