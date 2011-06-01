@@ -350,18 +350,18 @@ module SearchHelper
 
   def search_meta_tags
     content = ''
-    if english_locale?
-      content << tag(:meta, {:name => "description", :content => "Search.USA.gov is the U.S. government's official search engine."})
-      content << tag(:meta, {:name => "keywords", :content => "government images, government forms, government recalls, federal government, state government, american government, united states government, us government, government jobs, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web"})
+    if english_locale? or spanish_locale?
+      content << tag(:meta, {:name => "description", :content => t(:web_meta_description)})
+      content << tag(:meta, {:name => "keywords", :content => t(:web_meta_keywords)})
     end
     raw content
   end
 
   def image_search_meta_tags
     content = ''
-    if english_locale?
-      content << tag(:meta, {:name => "description", :content => "Search.USA.gov Images is the U.S. government's official search engine for images."})
-      content << tag(:meta, {:name => "keywords", :content => "government images, government imagery, government photographs, government photos, government photography, public domain images, copyright free images, satellite, american flag images, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web"})
+    if english_locale? or spanish_locale?
+      content << tag(:meta, {:name => "description", :content => t(:image_meta_description)})
+      content << tag(:meta, {:name => "keywords", :content => t(:image_meta_keywords)})
     end
     raw content
   end

@@ -139,6 +139,10 @@ module ApplicationHelper
     I18n.locale.to_s == "en"
   end
 
+  def spanish_locale?
+    I18n.locale.to_s == "es"
+  end
+
   def locale_dependent_background_color
     BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]
   end

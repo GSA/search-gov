@@ -28,13 +28,13 @@ Feature: Image search
     And I follow "Busque en español"
     And I follow "Imágenes" in the search navigation
     Then I should be on the images page
-    And I should see the browser page titled "el buscador oficial en español del Gobierno de los Estados Unidos"
+    And I should see the browser page titled "Buscador.USA.gov Imágenes"
     When I follow "USASearch Images Home"
     Then I should be on the images page
     When I fill in "query" with "White House"
     And I press "Buscar"
     Then I should be on the image search page
-    And I should see the browser page titled "White House - el buscador oficial en español del Gobierno de los Estados Unidos"
+    And I should see the browser page titled "White House - Buscador.USA.gov Imágenes"
     And I should see 30 image results
     And I should see "Siguiente"
     When I follow "USASearch Images Home"

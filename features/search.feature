@@ -14,10 +14,10 @@ Feature: Search
   Scenario: Visiting Spanish search homepage
     When I am on the homepage
     And I follow "Busque en español"
-    Then I should see the browser page titled "el buscador oficial en español del Gobierno de los Estados Unidos"
+    Then I should see the browser page titled "Buscador.USA.gov: el buscador oficial del Gobierno de los Estados Unidos en español"
     When I fill in "query" with "president"
     And I press "Buscar"
-    Then I should see the browser page titled "president - el buscador oficial en español del Gobierno de los Estados Unidos"
+    Then I should see the browser page titled "president - Buscador.USA.gov"
 
   Scenario: Viewing related English FAQs
     Given the following FAQs exist:

@@ -181,11 +181,25 @@ describe SearchHelper do
 
   describe "#search_meta_tags" do
     context "for the English site" do
-      it "should return meta tags for the English site" do
+      it "should return English meta tags" do
         helper.should_receive(:english_locale?).and_return(true)
+        helper.should_receive(:t).with(:web_meta_description).and_return('English meta description content')
+        helper.should_receive(:t).with(:web_meta_keywords).and_return('English meta keywords content')
         content = helper.search_meta_tags
-        content.should have_selector("meta[name='description'][content=\"Search.USA.gov is the U.S. government's official search engine.\"]")
-        content.should have_selector("meta[name='keywords'][content='government images, government forms, government recalls, federal government, state government, american government, united states government, us government, government jobs, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web']")
+        content.should have_selector("meta[name='description'][content='English meta description content']")
+        content.should have_selector("meta[name='keywords'][content='English meta keywords content']")
+      end
+    end
+
+    context "for Spanish site" do
+      it "should return Spanish meta tags" do
+        helper.should_receive(:english_locale?).and_return(false)
+        helper.should_receive(:spanish_locale?).and_return(true)
+        helper.should_receive(:t).with(:web_meta_description).and_return('Spanish meta description content')
+        helper.should_receive(:t).with(:web_meta_keywords).and_return('Spanish meta keywords content')
+        content = helper.search_meta_tags
+        content.should have_selector("meta[name='description'][content='Spanish meta description content']")
+        content.should have_selector("meta[name='keywords'][content='Spanish meta keywords content']")
       end
     end
 
@@ -210,18 +224,33 @@ describe SearchHelper do
   end
 
   describe "#image_search_meta_tags" do
-    context "for the English site" do
-      it "should return meta tags for the English site" do
+    context "for English site" do
+      it "should return English meta tags" do
         helper.should_receive(:english_locale?).and_return(true)
+        helper.should_receive(:t).with(:image_meta_description).and_return('English image meta description content')
+        helper.should_receive(:t).with(:image_meta_keywords).and_return('English image meta keywords content')
         content = helper.image_search_meta_tags
-        content.should have_selector("meta[name='description'][content=\"Search.USA.gov Images is the U.S. government's official search engine for images.\"]")
-        content.should have_selector("meta[name='keywords'][content='government images, government imagery, government photographs, government photos, government photography, public domain images, copyright free images, satellite, american flag images, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web']")
+        content.should have_selector("meta[name='description'][content='English image meta description content']")
+        content.should have_selector("meta[name='keywords'][content='English image meta keywords content']")
       end
     end
 
-    context "for the non English site" do
-      it "should not return meta tags for the non English site" do
+    context "for Spanish site" do
+      it "should return Spanish meta tags" do
         helper.should_receive(:english_locale?).and_return(false)
+        helper.should_receive(:spanish_locale?).and_return(true)
+        helper.should_receive(:t).with(:image_meta_description).and_return('Spanish image meta description content')
+        helper.should_receive(:t).with(:image_meta_keywords).and_return('Spanish image meta keywords content')
+        content = helper.image_search_meta_tags
+        content.should have_selector("meta[name='description'][content='Spanish image meta description content']")
+        content.should have_selector("meta[name='keywords'][content='Spanish image meta keywords content']")
+      end
+    end
+
+    context "for non English or Spanish site" do
+      it "should not return meta tags" do
+        helper.should_receive(:english_locale?).and_return(false)
+        helper.should_receive(:spanish_locale?).and_return(false)
         helper.image_search_meta_tags.should == ""
       end
     end
