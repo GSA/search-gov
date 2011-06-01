@@ -13,6 +13,7 @@
   .navHeader
     = t(:usagov_resources)
   = mobile_menu_item t(:call_1800FEDINFO), "tel:+1-800-333-4636"
+  = mobile_menu_item t(:sms_services), "http://search.usa.gov/usa/sms"
   = mobile_menu_item t(:email_us), contact_form_path(:locale => I18n.locale, :m => params[:m])
   = mobile_menu_item t(:visit_our_blog), "http://blog.usa.gov"
   = mobile_menu_item t(:specific_audiences), t(:specific_audiences_url)

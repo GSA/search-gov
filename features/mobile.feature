@@ -20,9 +20,8 @@ Feature: Mobile Search
     Then I should not see "ROBOTS" meta tag
     And I should see a link to "Visit Our Blog" with url for "http://blog.usa.gov"
     And I should see a link to "Español" with url for "http://m.gobiernousa.gov"
-
-    When I am on the homepage
-    Then I should see a link to "USA.gov Full Site" with url for "http://www.usa.gov/?mobile-opt-out=true"
+    And I should see a link to "SMS Services" with url for "http://search.usa.gov/usa/sms"
+    And I should see a link to "USA.gov Full Site" with url for "http://www.usa.gov/?mobile-opt-out=true"
 
   Scenario: Visiting the Spanish home page with a mobile device
     Given I am on the Spanish homepage
@@ -228,6 +227,3 @@ Feature: Mobile Search
     When I follow "Images"
     Then I should be on the image search page
     And I should see "Please enter search term(s)"
-
-
-
