@@ -1,8 +1,13 @@
-class Admin::BoostedContentsController < Admin::AdminController
+class Admin::GlobalBoostedContentsController < Admin::AdminController
   active_scaffold :boosted_content do |config|
+    config.label = 'Search.USA.gov Boosted Content'
     config.columns = [:description, :title, :url, :locale]
     config.columns[:locale].form_ui = :select
     config.columns[:locale].options = {:options => SUPPORTED_LOCALES.map{|locale| [locale.to_sym, locale]}}
+  end
+
+  def conditions_for_collection
+    ['ISNULL(affiliate_id)']
   end
 
   def after_create_save(boosted_content)

@@ -72,6 +72,7 @@ UsasearchRails3::Application.routes.draw do
     resources :misspellings do as_routes end
     resource :sayt_suggestions_upload, :only => [:create, :new]
     resources :boosted_contents do as_routes end
+    resources :global_boosted_contents do as_routes end
     resources :affiliate_boosted_contents do as_routes end
     resources :spotlights do as_routes end
     resources :spotlight_keywords do as_routes end
