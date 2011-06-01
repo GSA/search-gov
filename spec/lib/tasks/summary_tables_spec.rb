@@ -144,8 +144,8 @@ describe "summary_tables rake tasks" do
     describe "usasearch:monthly_popular_queries:calculate" do
       before do
         @task_name = "usasearch:monthly_popular_queries:calculate"
-        @first_stat_date = Date.current.advance(:days => -1)
-        @second_stat_date = @first_stat_date.day == 1 ? @first_stat_date : @first_stat_date.advance(:days => -1)
+        @first_stat_date = Date.yesterday
+        @second_stat_date = @first_stat_date.day == 1 ? @first_stat_date : @first_stat_date.yesterday
         DailyQueryStat.create(:day => @first_stat_date, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         DailyQueryStat.create(:day => @second_stat_date, :times => 10, :query => "whatever", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         query_group = QueryGroup.create(:name => 'Group1')
