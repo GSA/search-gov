@@ -29,3 +29,5 @@ FCKConfig.ToolbarSets["Default"] = [
 	['FontName','FontSize'],
 	['TextColor','BGColor']
 ] ;
+
+FCKConfig.TemplatesXmlPath = '/javascripts/fckeditor_custom/templates.xml';
