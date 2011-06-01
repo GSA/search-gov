@@ -2169,19 +2169,19 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line353">353</a>     if english_locale?</pre></td>
+            <td><pre><a name="line353">353</a>     if english_locale? or spanish_locale?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line354">354</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;description&quot;, :content =&gt; &quot;Search.USA.gov is the U.S. government's official search engine.&quot;})</pre></td>
+            <td><pre><a name="line354">354</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;description&quot;, :content =&gt; t(:web_meta_description)})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line355">355</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;keywords&quot;, :content =&gt; &quot;government images, government forms, government recalls, federal government, state government, american government, united states government, us government, government jobs, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web&quot;})</pre></td>
+            <td><pre><a name="line355">355</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;keywords&quot;, :content =&gt; t(:web_meta_keywords)})</pre></td>
           </tr>
         
           
@@ -2223,19 +2223,19 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line362">362</a>     if english_locale?</pre></td>
+            <td><pre><a name="line362">362</a>     if english_locale? or spanish_locale?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line363">363</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;description&quot;, :content =&gt; &quot;Search.USA.gov Images is the U.S. government's official search engine for images.&quot;})</pre></td>
+            <td><pre><a name="line363">363</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;description&quot;, :content =&gt; t(:image_meta_description)})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line364">364</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;keywords&quot;, :content =&gt; &quot;government images, government imagery, government photographs, government photos, government photography, public domain images, copyright free images, satellite, american flag images, SearchUSAgov, USASearch, USA Search, SearchUSA, Firstgov search, first gov search, USAGovSearch, USA gov search, government websites, government web&quot;})</pre></td>
+            <td><pre><a name="line364">364</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;keywords&quot;, :content =&gt; t(:image_meta_keywords)})</pre></td>
           </tr>
         
           
@@ -2655,7 +2655,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Sun May 29 16:43:18 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jun 01 02:33:05 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>217</tt></td>
-            <td class='right_align'><tt>185</tt></td>
+            <td class='right_align'><tt>221</tt></td>
+            <td class='right_align'><tt>188</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -903,13 +903,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line142">142</a>   def locale_dependent_background_color</pre></td>
+            <td><pre><a name="line142">142</a>   def spanish_locale?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line143">143</a>     BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]</pre></td>
+            <td><pre><a name="line143">143</a>     I18n.locale.to_s == &quot;es&quot;</pre></td>
           </tr>
         
           
@@ -927,277 +927,277 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line146">146</a>   def highlight_hit(hit, sym)</pre></td>
+            <td><pre><a name="line146">146</a>   def locale_dependent_background_color</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line147">147</a>     return hit.highlights(sym).first.format { |phrase| &quot;&lt;strong&gt;#{phrase}&lt;/strong&gt;&quot; } unless hit.highlights(sym).first.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line148">148</a>     hit.instance.send(sym)</pre></td>
+            <td><pre><a name="line147">147</a>     BACKGROUND_COLORS[I18n.locale.to_sym] || BACKGROUND_COLORS[:en]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line149">149</a>   end</pre></td>
+            <td><pre><a name="line148">148</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line150">150</a> </pre></td>
+            <td><pre><a name="line149">149</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line151">151</a>   def mobile_menu_item(link_text, target, is_footer = false)</pre></td>
+            <td><pre><a name="line150">150</a>   def highlight_hit(hit, sym)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line152">152</a>     arrow = content_tag(:div, '&gt;', :class=&gt; &quot;navFloatRight&quot;)</pre></td>
+            <td><pre><a name="line151">151</a>     return hit.highlights(sym).first.format { |phrase| &quot;&lt;strong&gt;#{phrase}&lt;/strong&gt;&quot; } unless hit.highlights(sym).first.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line153">153</a>     link = link_to link_text, target, :class =&gt; &quot;mobileNavLink&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line154">154</a>     content_tag(:div, arrow + link, :class=&gt; is_footer ? &quot;navFooter&quot; : &quot;navBodyItem&quot;)</pre></td>
+            <td><pre><a name="line152">152</a>     hit.instance.send(sym)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line155">155</a>   end</pre></td>
+            <td><pre><a name="line153">153</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line156">156</a> </pre></td>
+            <td><pre><a name="line154">154</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line157">157</a>   def url_for_login</pre></td>
+            <td><pre><a name="line155">155</a>   def mobile_menu_item(link_text, target, is_footer = false)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line156">156</a>     arrow = content_tag(:div, '&gt;', :class=&gt; &quot;navFloatRight&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line157">157</a>     link = link_to link_text, target, :class =&gt; &quot;mobileNavLink&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line158">158</a>     content_tag(:div, arrow + link, :class=&gt; is_footer ? &quot;navFooter&quot; : &quot;navBodyItem&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line158">158</a>     url_for(:controller =&gt; &quot;/user_sessions&quot;,</pre></td>
+            <td><pre><a name="line159">159</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line159">159</a>             :action =&gt; &quot;new&quot;,</pre></td>
+            <td><pre><a name="line160">160</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line160">160</a>             :protocol =&gt; ssl_protocol,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line161">161</a>             :only_path =&gt; false)</pre></td>
+            <td><pre><a name="line161">161</a>   def url_for_login</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line162">162</a>   end</pre></td>
+            <td><pre><a name="line162">162</a>     url_for(:controller =&gt; &quot;/user_sessions&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line163">163</a> </pre></td>
+            <td><pre><a name="line163">163</a>             :action =&gt; &quot;new&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line164">164</a>   def url_for_logout</pre></td>
+            <td><pre><a name="line164">164</a>             :protocol =&gt; ssl_protocol,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line165">165</a>             :only_path =&gt; false)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line165">165</a>     url_for(:controller =&gt; &quot;/user_sessions&quot;,</pre></td>
+            <td><pre><a name="line166">166</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line166">166</a>             :action =&gt; &quot;destroy&quot;,</pre></td>
+            <td><pre><a name="line167">167</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line167">167</a>             :protocol =&gt; ssl_protocol,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line168">168</a>             :only_path =&gt; false)</pre></td>
+            <td><pre><a name="line168">168</a>   def url_for_logout</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line169">169</a>   end</pre></td>
+            <td><pre><a name="line169">169</a>     url_for(:controller =&gt; &quot;/user_sessions&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line170">170</a> </pre></td>
+            <td><pre><a name="line170">170</a>             :action =&gt; &quot;destroy&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line171">171</a>   def truncate_on_words(text, length)</pre></td>
+            <td><pre><a name="line171">171</a>             :protocol =&gt; ssl_protocol,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line172">172</a>     mb_chars = text.mb_chars</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line173">173</a>     return text if mb_chars.length &lt;= length</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line174">174</a>     truncated = mb_chars[0..length]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line175">175</a>     last_space_index = (truncated.reverse.index(/\W/) || 0)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line176">176</a>     last_word_character_index = truncated.length - (truncated.reverse.index(/\w/, last_space_index) || 0)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line177">177</a>     truncated = truncated[0...last_word_character_index] unless last_space_index.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line178">178</a>     &quot;#{truncated}...&quot;</pre></td>
+            <td><pre><a name="line172">172</a>             :only_path =&gt; false)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line179">179</a>   end</pre></td>
+            <td><pre><a name="line173">173</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line180">180</a> </pre></td>
+            <td><pre><a name="line174">174</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line181">181</a>   def highlight_like_solr(text, highlights)</pre></td>
+            <td><pre><a name="line175">175</a>   def truncate_on_words(text, length)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line182">182</a>     highlights.each do |highlight|</pre></td>
+            <td><pre><a name="line176">176</a>     mb_chars = text.mb_chars</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line183">183</a>       highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).each do |term|</pre></td>
+            <td><pre><a name="line177">177</a>     return text if mb_chars.length &lt;= length</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line184">184</a>         text.gsub!(/\b(#{term})\b/, '&lt;strong&gt;\1&lt;/strong&gt;')</pre></td>
+            <td><pre><a name="line178">178</a>     truncated = mb_chars[0..length]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line179">179</a>     last_space_index = (truncated.reverse.index(/\W/) || 0)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line180">180</a>     last_word_character_index = truncated.length - (truncated.reverse.index(/\w/, last_space_index) || 0)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line181">181</a>     truncated = truncated[0...last_word_character_index] unless last_space_index.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line182">182</a>     &quot;#{truncated}...&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line185">185</a>       end</pre></td>
+            <td><pre><a name="line183">183</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line186">186</a>     end</pre></td>
+            <td><pre><a name="line184">184</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line187">187</a>     text</pre></td>
+            <td><pre><a name="line185">185</a>   def highlight_like_solr(text, highlights)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line186">186</a>     highlights.each do |highlight|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line187">187</a>       highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).each do |term|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line188">188</a>         text.gsub!(/\b(#{term})\b/, '&lt;strong&gt;\1&lt;/strong&gt;')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line188">188</a>   end</pre></td>
+            <td><pre><a name="line189">189</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line189">189</a> </pre></td>
+            <td><pre><a name="line190">190</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line190">190</a>   def render_trending_searches</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line191">191</a>     render :partial =&gt; 'shared/trending_searches' if (params[:locale].blank? || params[:locale] == 'en')</pre></td>
+            <td><pre><a name="line191">191</a>     text</pre></td>
           </tr>
         
           
@@ -1215,49 +1215,49 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line194">194</a>   def breadcrumbs(breadcrumbs)</pre></td>
+            <td><pre><a name="line194">194</a>   def render_trending_searches</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line195">195</a>     trail = link_to('USASearch', program_path)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line196">196</a>     breadcrumbs.each { |breadcrumb| trail &lt;&lt; breadcrumb }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line197">197</a>     content_tag(:div, trail, :class =&gt; 'breadcrumbs')</pre></td>
+            <td><pre><a name="line195">195</a>     render :partial =&gt; 'shared/trending_searches' if (params[:locale].blank? || params[:locale] == 'en')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line198">198</a>   end</pre></td>
+            <td><pre><a name="line196">196</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line199">199</a> </pre></td>
+            <td><pre><a name="line197">197</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line200">200</a>   def url_for_mobile_home_page(locale = I18n.locale)</pre></td>
+            <td><pre><a name="line198">198</a>   def breadcrumbs(breadcrumbs)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line201">201</a>     locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale =&gt; locale, :m =&gt; true)</pre></td>
+            <td><pre><a name="line199">199</a>     trail = link_to('USASearch', program_path)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line200">200</a>     breadcrumbs.each { |breadcrumb| trail &lt;&lt; breadcrumb }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line201">201</a>     content_tag(:div, trail, :class =&gt; 'breadcrumbs')</pre></td>
           </tr>
         
           
@@ -1275,13 +1275,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line204">204</a>   def render_no_index_meta_tag</pre></td>
+            <td><pre><a name="line204">204</a>   def url_for_mobile_home_page(locale = I18n.locale)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line205">205</a>     raw tag(:meta, {:name =&gt; 'ROBOTS', :content =&gt; 'NOINDEX, NOFOLLOW'}) if request.path =~ /^\/(image_searches|search|usa\/)/i</pre></td>
+            <td><pre><a name="line205">205</a>     locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale =&gt; locale, :m =&gt; true)</pre></td>
           </tr>
         
           
@@ -1299,31 +1299,31 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line208">208</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line209">209</a> </pre></td>
+            <td><pre><a name="line208">208</a>   def render_no_index_meta_tag</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line210">210</a>   def ssl_protocol</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line211">211</a>     SSL_PROTOCOL</pre></td>
+            <td><pre><a name="line209">209</a>     raw tag(:meta, {:name =&gt; 'ROBOTS', :content =&gt; 'NOINDEX, NOFOLLOW'}) if request.path =~ /^\/(image_searches|search|usa\/)/i</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line212">212</a>   end</pre></td>
+            <td><pre><a name="line210">210</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line211">211</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line212">212</a>   private</pre></td>
           </tr>
         
           
@@ -1335,13 +1335,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line214">214</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line214">214</a>   def ssl_protocol</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line215">215</a>     links.collect { |link| link_to(link[0], link[1], :class =&gt; link[2]) }.join unless links.nil?</pre></td>
+            <td><pre><a name="line215">215</a>     SSL_PROTOCOL</pre></td>
           </tr>
         
           
@@ -1353,13 +1353,37 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line217">217</a> end</pre></td>
+            <td><pre><a name="line217">217</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line218">218</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line219">219</a>     links.collect { |link| link_to(link[0], link[1], :class =&gt; link[2]) }.join unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line220">220</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line221">221</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun May 29 16:43:18 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jun 01 02:33:05 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
