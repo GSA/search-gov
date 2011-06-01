@@ -194,7 +194,7 @@ describe ApplicationHelper do
       it "should detect that" do
         user = stub('User', :is_affiliate_admin? => true)
         helper.stub(:current_user).and_return(user)
-        helper.current_user_is?(:affiliate_admin).should be_true 
+        helper.current_user_is?(:affiliate_admin).should be_true
       end
     end
 
@@ -202,7 +202,7 @@ describe ApplicationHelper do
       it "should detect that" do
         user = stub('User', :is_analyst_admin? => true)
         helper.stub(:current_user).and_return(user)
-        helper.current_user_is?(:analyst_admin).should be_true 
+        helper.current_user_is?(:analyst_admin).should be_true
       end
     end
 
@@ -210,7 +210,7 @@ describe ApplicationHelper do
       it "should detect that" do
         user = stub('User', :is_affiliate? => true)
         helper.stub(:current_user).and_return(user)
-        helper.current_user_is?(:affiliate).should be_true 
+        helper.current_user_is?(:affiliate).should be_true
       end
     end
 
@@ -218,18 +218,18 @@ describe ApplicationHelper do
       it "should detect that" do
         user = stub('User', :is_affiliate_admin? => false, :is_analyst_admin? => false, :is_affiliate? => false)
         helper.stub(:current_user).and_return(user)
-        helper.current_user_is?(:affiliate).should be_false 
-        helper.current_user_is?(:affiliate_admin).should be_false 
-        helper.current_user_is?(:analyst_admin).should be_false 
+        helper.current_user_is?(:affiliate).should be_false
+        helper.current_user_is?(:affiliate_admin).should be_false
+        helper.current_user_is?(:analyst_admin).should be_false
       end
     end
 
     context "when there is no current user" do
       it "should detect that" do
         helper.stub(:current_user).and_return(nil)
-        helper.current_user_is?(:affiliate).should be_false 
-        helper.current_user_is?(:affiliate_admin).should be_false 
-        helper.current_user_is?(:analyst_admin).should be_false 
+        helper.current_user_is?(:affiliate).should be_false
+        helper.current_user_is?(:affiliate_admin).should be_false
+        helper.current_user_is?(:analyst_admin).should be_false
       end
     end
 
@@ -319,6 +319,12 @@ describe ApplicationHelper do
       one_two_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@one@@@endhl@@@ @@@hl@@@two@@@endhl@@@")
       three_highlight = Sunspot::Search::Highlight.new(:field_name, "@@@hl@@@three@@@endhl@@@")
       helper.highlight_like_solr("zero one two three four", [one_two_highlight, three_highlight]).should == "zero <strong>one</strong> <strong>two</strong> <strong>three</strong> four"
+    end
+
+    it "should highlight redundant terms just once across multiple highlights" do
+      chicken_highlight1 = Sunspot::Search::Highlight.new(:field_name, "a @@@hl@@@chicken@@@endhl@@@ recall")
+      chicken_highlight2 = Sunspot::Search::Highlight.new(:field_name, "another @@@hl@@@chicken@@@endhl@@@ problem with all those @@@hl@@@chickens@@@endhl@@@")
+      helper.highlight_like_solr("Blah blah chicken is about chickens and the lastest chicken recall", [chicken_highlight1, chicken_highlight2]).should == "Blah blah <strong>chicken</strong> is about <strong>chickens</strong> and the lastest <strong>chicken</strong> recall"
     end
 
     it "should not highlight word fragements" do

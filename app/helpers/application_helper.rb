@@ -181,9 +181,13 @@ module ApplicationHelper
   end
 
   def highlight_like_solr(text, highlights)
+    done = {}
     highlights.each do |highlight|
       highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).each do |term|
-        text.gsub!(/\b(#{term})\b/, '<strong>\1</strong>')
+        unless done.include?(term)
+          text.gsub!(/\b(#{term})\b/, '<strong>\1</strong>')
+          done[term] = true
+        end
       end
     end
     text
