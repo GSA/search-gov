@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/analytics/grouped_queries_controller.rb</title>
+    <title>app/models/agency_url.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/analytics/grouped_queries_controller.rb</h2>
+    <h2>app/models/agency_url.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-analytics-grouped_queries_controller_rb.html">app/controllers/analytics/grouped_queries_controller.rb</a></td>
-            <td class='right_align'><tt>6</tt></td>
-            <td class='right_align'><tt>6</tt></td>
+            <td class="left_align"><a href="app-models-agency_url_rb.html">app/models/agency_url.rb</a></td>
+            <td class='right_align'><tt>5</tt></td>
+            <td class='right_align'><tt>5</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,43 +57,37 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Analytics::GroupedQueriesController &lt; Analytics::AnalyticsController</pre></td>
+            <td><pre><a name="line1">1</a> class AgencyUrl &lt; ActiveRecord::Base</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   active_scaffold :grouped_queries do |config|</pre></td>
+            <td><pre><a name="line2">2</a>   validates_presence_of :agency_id, :url, :locale</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     config.columns = [:query, :query_groups]</pre></td>
+            <td><pre><a name="line3">3</a>   validates_uniqueness_of :url, :scope =&gt; :locale</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     config.list.per_page = 100</pre></td>
+            <td><pre><a name="line4">4</a>   belongs_to :agency</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line6">6</a> end</pre></td>
+            <td><pre><a name="line5">5</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jun 02 12:26:54 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jun 02 12:26:55 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
