@@ -207,8 +207,14 @@ module ApplicationHelper
     locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale => locale, :m => true)
   end
 
-  def render_no_index_meta_tag
-    raw tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'}) if request.path =~ /^\/(image_searches|search|usa\/)/i
+  def render_robots_meta_tag
+    content = ''
+    if request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i
+      content = tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'})
+    elsif mobile_landing_page?
+      content = tag(:meta, {:name => 'ROBOTS', :content => 'INDEX, NOFOLLOW'})
+    end
+    raw content
   end
 
   private

@@ -4,7 +4,7 @@
     %title= build_page_title(@page_title)
     = favicon_link_tag "/favicon_#{I18n.locale}.ico"
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
-    = render_no_index_meta_tag
+    = render_robots_meta_tag
     = yield :head
     = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/base.css'

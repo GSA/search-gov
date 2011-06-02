@@ -5,7 +5,7 @@
       = t(:usagov_mobile)
     = favicon_link_tag "/favicon_#{I18n.locale}.ico"
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
-    = render_no_index_meta_tag
+    = render_robots_meta_tag
     = stylesheet_link_tag 'mobile.css'
     - if is_device? 'iphone'
       %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, minimum-scale = 1.0"}
