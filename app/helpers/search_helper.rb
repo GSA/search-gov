@@ -146,13 +146,7 @@ module SearchHelper
   end
 
   def agency_url_matches_by_locale(result_url, agency, locale)
-    if locale == I18n.default_locale
-      return result_url == agency.url ? true : false
-    elsif locale == :es
-      return result_url == agency.es_url ? true : false
-    else
-      return false
-    end
+    agency.agency_urls.find_by_url_and_locale(result_url, locale.to_s).nil? ? false : true
   end
 
   def display_agency_phone_numbers(agency)

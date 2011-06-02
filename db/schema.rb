@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110513001443) do
+ActiveRecord::Schema.define(:version => 20110602132347) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20110513001443) do
     t.string   "name"
     t.string   "domain"
     t.string   "phone",             :limit => 15
-    t.string   "url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "abbreviation"
@@ -77,7 +76,6 @@ ActiveRecord::Schema.define(:version => 20110513001443) do
     t.string   "youtube_username",  :limit => 40
     t.string   "facebook_username", :limit => 75
     t.string   "flickr_url"
-    t.string   "es_url"
   end
 
   create_table "agency_queries", :force => true do |t|
@@ -88,6 +86,14 @@ ActiveRecord::Schema.define(:version => 20110513001443) do
   end
 
   add_index "agency_queries", ["phrase"], :name => "index_agency_queries_on_phrase", :unique => true
+
+  create_table "agency_urls", :force => true do |t|
+    t.integer  "agency_id"
+    t.string   "url"
+    t.string   "locale"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "auto_recalls", :force => true do |t|
     t.integer  "recall_id"

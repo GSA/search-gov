@@ -978,7 +978,8 @@ describe Search do
       before do
         Agency.destroy_all
         AgencyQuery.destroy_all
-        @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :url => 'http://www.irs.gov')
+        @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040')
+        @agency.agency_urls << AgencyUrl.new(:url => 'http://www.myagency.gov/', :locale => 'en')
         @agnecy_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
       end
 

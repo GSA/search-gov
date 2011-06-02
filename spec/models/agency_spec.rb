@@ -6,7 +6,6 @@ describe Agency do
     @valid_attributes = {
       :name => 'Internal Revenue Service',
       :domain => 'irs.gov',
-      :url => 'http://www.irs.gov',
       :phone => '800-555-1234',
       :abbreviation => 'IRS',
       :name_variants => 'External Revenue Service, The Man',
@@ -26,7 +25,6 @@ describe Agency do
     
     it { should validate_presence_of :name }
     it { should validate_presence_of :domain }
-    it { should validate_presence_of :url }
     it { should validate_uniqueness_of :domain }
   end
   

@@ -169,7 +169,8 @@ describe SearchHelper do
 
   describe "#agency_url_matches_by_locale" do
     before do
-      @agency = Agency.create(:name => 'My Agency', :domain => 'myagency.gov', :url => 'http://www.myagency.gov/')
+      @agency = Agency.create(:name => 'My Agency', :domain => 'myagency.gov')
+      @agency.agency_urls << AgencyUrl.new(:url => 'http://www.myagency.gov/', :locale => 'en')
     end
 
     context "when the locale is neither english or spanish" do

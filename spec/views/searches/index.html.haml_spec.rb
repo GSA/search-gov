@@ -170,7 +170,9 @@ describe "searches/index.html.haml" do
     context "when an agency record matches the query" do
       before do
         Agency.destroy_all
-        @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :url => 'http://www.irs.gov/', :twitter_username => 'IRSnews', :es_url => 'http://www.irs.gov/es/')
+        @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :twitter_username => 'IRSnews')
+        @agency.agency_urls << AgencyUrl.new(:url => 'http://www.irs.gov/', :locale => 'en')
+        @agency.agency_urls << AgencyUrl.new(:url => 'http://www.irs.gov/es/', :locale => 'es')
         @agency_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
         @search.stub!(:query).and_return "irs"
         @search_result = {'title' => "Internal Revenue Service",

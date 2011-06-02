@@ -1,7 +1,8 @@
 class Agency < ActiveRecord::Base
-  validates_presence_of :name, :domain, :url
+  validates_presence_of :name, :domain
   validates_uniqueness_of :domain
   has_many :agency_queries, :dependent => :destroy
+  has_many :agency_urls, :dependent => :destroy
   after_save :generate_agency_queries
   
   NAME_QUERY_PREFIXES = ["the", "us", "u.s.", "united states"]
