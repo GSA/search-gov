@@ -81,7 +81,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
         begin
           calais = Calais.process_document(:content => summary, :content_type => :raw, :license_id => CALAIS_LICENSE_ID, :metadata_enables=>['SocialTags'])
           downcased_term = term.downcase
-          social_tags = calais.socialtags.collect { |st| st.name }.custom_uniq_by{|a| a.upcase}
+          social_tags = calais.socialtags.collect { |st| st.name }.uniq{|a| a.upcase}
           social_tags = SaytFilter.filter(social_tags)
           social_tags.delete_if do |tag|
             downcased_tag = tag.downcase
