@@ -9,6 +9,12 @@ describe Search do
   end
 
   describe "#run" do
+    it "should instrument the call to Bing with the proper action.service namespace and query param hash" do
+      ActiveSupport::Notifications.should_receive(:instrument).
+        with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String))))
+      Search.new(@valid_options).run
+    end
+
     context "when response body is nil from Bing" do
       before do
         JSON.should_receive(:parse).once.and_return nil
@@ -980,7 +986,7 @@ describe Search do
         AgencyQuery.destroy_all
         @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040')
         @agency.agency_urls << AgencyUrl.new(:url => 'http://www.myagency.gov/', :locale => 'en')
-        @agnecy_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
+        AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
       end
 
       it "should retrieve the associated agency record" do

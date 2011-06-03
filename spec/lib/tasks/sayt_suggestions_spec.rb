@@ -1,5 +1,4 @@
 require 'spec/spec_helper'
-require "rake"
 
 describe "SAYT suggestions rake tasks" do
   before do

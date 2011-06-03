@@ -1,5 +1,4 @@
 require 'spec/spec_helper'
-require "rake"
 
 describe "faq rake tasks" do
   before do
@@ -19,7 +18,7 @@ describe "faq rake tasks" do
       it "should have 'environment' as a prereq" do
         @rake[@task_name].prerequisites.should include("environment")
       end
-      
+
       context "when not given an xml file" do
         it "should print out an error message" do
           Rails.logger.should_receive(:error)
@@ -53,13 +52,13 @@ EOF
           File.open("#{@tmp_dir}/#{@xml_file_name}", "w+") {|f| f.write(@tmp_faq) }
           File.open("#{@tmp_dir}/b", "w+") {|f| f.write(@tmp_faq) }
         end
-        
+
         context "when no locale is specified" do
           it "should delete all the existing faqs in the table for the default locale" do
             Faq.should_receive(:delete_all).with(['locale=?', I18n.default_locale.to_s])
             @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
           end
-        
+
           it "should assign the proper values to the proper fields, including stripping HTML from the question field, for the default locale" do
             Faq.should_receive(:create).with(:url => 'http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/std_adp.php?p_faqid=32',
                                              :question => 'Authenticating Documents: Status Request',
@@ -69,17 +68,17 @@ EOF
             @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
           end
         end
-        
+
         context "when a locale is specified" do
           before do
             @locale = 'es'
           end
-          
+
           it "should delete all the existing faqs in the table" do
             Faq.should_receive(:delete_all).with(['locale=?', @locale])
             @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}", @locale)
           end
-        
+
           it "should assign the proper values to the proper fields, including stripping HTML from the question field" do
             Faq.should_receive(:create).with( :url => 'http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/std_adp.php?p_faqid=32',
                                               :question => 'Authenticating Documents: Status Request',
@@ -89,12 +88,12 @@ EOF
             @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}", @locale)
           end
         end
-        
+
         it "should create a Faq entry for each 'Row' in the file, except the first line" do
           Faq.should_receive(:create).exactly(1).times
           @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
         end
-        
+
         it "should skip the first line" do
           Faq.should_not_receive(:create).with(:url => 'Link to Content',
                                                :question => 'Question',
@@ -103,13 +102,13 @@ EOF
                                                :locale => I18n.default_locale.to_s)
           @rake[@task_name].invoke("#{@tmp_dir}/#{@xml_file_name}")
         end
-        
+
         after do
           FileUtils.rm_r(@tmp_dir)
         end
-        
+
       end
-         
+
     end
 
 
@@ -138,7 +137,7 @@ EOF
         end
       end
     end
-    
+
     describe "usasearch:faq:clean" do
       before do
         Faq.create!(:url =>  "http://www.usa.gov",
@@ -158,7 +157,7 @@ EOF
         Faq.count.should be_zero
       end
     end
-    
+
   end
 
 end

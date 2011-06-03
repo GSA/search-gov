@@ -93,6 +93,14 @@ describe CalaisRelatedSearch do
     it { should belong_to :affiliate }
   end
 
+  context "when performing a Solr search" do
+    it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
+      ActiveSupport::Notifications.should_receive(:instrument).
+        with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate_id => @affiliate.id, :model=>"CalaisRelatedSearch", :term => "foo", :locale=>"en")))
+      CalaisRelatedSearch.search_for("foo","en",@affiliate.id)
+    end
+  end
+
   describe "#refresh_stalest_entries" do
     before do
       ResqueSpec.reset!

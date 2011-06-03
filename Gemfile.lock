@@ -56,6 +56,7 @@ GEM
     authlogic (3.0.3)
       activerecord (>= 3.0.7)
       activerecord (>= 3.0.7)
+    backports (2.2.1)
     bcrypt-ruby (2.1.4)
     builder (2.1.2)
     calais (0.0.11)
@@ -250,6 +251,7 @@ DEPENDENCIES
   SystemTimer
   authlogic (>= 3.0.2)
   aws-s3!
+  backports
   bcrypt-ruby (>= 2.1.1)
   calais (>= 0.0.11)
   calendar_date_select!

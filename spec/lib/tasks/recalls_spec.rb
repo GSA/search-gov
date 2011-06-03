@@ -1,5 +1,4 @@
 require 'spec/spec_helper'
-require "rake"
 
 describe "Recalls rake tasks" do
   before do
@@ -34,7 +33,7 @@ describe "Recalls rake tasks" do
           @rake[@task_name].invoke(url)
         end
       end
-      
+
       context "when given an RSS feed URL and a food type" do
         it "should pass along the url for processing" do
           url = "foo"
@@ -151,12 +150,12 @@ describe "Recalls rake tasks" do
         Recall.find_by_recall_number('05586').upc.should == ['718103051743']
       end
     end
-    
+
     describe "usasearch:recalls:load_upc_data" do
       before do
         @task_name = "usasearch:recalls:load_upc_data"
       end
-      
+
       it "should have 'environment' as a prereq" do
         @rake[@task_name].prerequisites.should include("environment")
       end
@@ -167,7 +166,7 @@ describe "Recalls rake tasks" do
           @rake[@task_name].invoke
         end
       end
-      
+
       context "when given a file name" do
         before do
           Recall.destroy_all
@@ -179,17 +178,17 @@ describe "Recalls rake tasks" do
 EOF
           File.stub!(:open).and_return file
         end
-        
+
         it "should add the UPC value as a Recall Detail associated with the proper Recall" do
           @rake[@task_name].invoke("filename")
           RecallDetail.find(:all, :conditions => ['recall_id=? AND detail_type="UPC" AND detail_value="765456"', @recall.id]).should_not be_empty
         end
-      
+
         it "should not create records if the recall can not be found" do
           @rake[@task_name].invoke("filename")
           RecallDetail.find(:all, :conditions => ['detail_type="UPC" AND detail_value="764756"']).should be_empty
         end
-        
+
         it "should not create duplicate UPC values when run twice" do
           @rake[@task_name].invoke("filename")
           @rake[@task_name].invoke("filename")
@@ -198,6 +197,6 @@ EOF
           upc_detail.size.should == 1
         end
       end
-    end 
+    end
   end
 end

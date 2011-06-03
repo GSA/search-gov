@@ -22,7 +22,7 @@ class Recall < ActiveRecord::Base
     string :organization
     string :recall_number
     time :recalled_on
-    
+
     boost do |recall|
       boost_value = Time.parse(recall.recalled_on.to_s).to_i
       boost_value unless recall.recalled_on.blank?
@@ -86,12 +86,12 @@ class Recall < ActiveRecord::Base
     text :food_recall_description do
       food_recall.description unless organization != 'CDC' or food_recall.nil?
     end
-    
+
     string :food_type do
       food_recall.food_type unless organization != 'CDC' or food_recall.nil?
     end
   end
-  
+
   class << self
     RECALL_RE_EN = /\brecalls?\b/i
     RECALL_RE_ES = /\bretirad[oa]s?\b/i
@@ -116,39 +116,41 @@ class Recall < ActiveRecord::Base
     end
 
     def do_search(query, options, page, per_page)
-      Recall.search do
-        fulltext query do
-          highlight :fragment_size => 0
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query}.merge(options)) do
+        search do
+          fulltext query do
+            highlight :fragment_size => 0
+          end
+
+          # date range fields
+          with(:recalled_on).between(options[:start_date]..options[:end_date]) unless options[:start_date].blank? || options[:end_date].blank?
+
+          with(:organization).equal_to(options[:organization]) unless options[:organization].blank?
+
+          # CPSC fields
+          with(:upc).equal_to(options[:upc]) unless options[:upc].blank?
+
+          # NHTSA fields
+          with(:make_facet).equal_to(options[:make].downcase) unless options[:make].blank?
+          with(:model_facet).equal_to(options[:model].downcase) unless options[:model].blank?
+          with(:year_facet).equal_to(options[:year]) unless options[:year].blank?
+          with(:code).equal_to(options[:code]) unless options[:code].blank?
+
+          # CDC/Food/Drug fields
+          with(:food_type).equal_to(options[:food_type]) unless options[:food_type].blank?
+
+          facet :organization
+          facet :food_type
+
+          if options[:sort] == "date"
+            order_by :recalled_on, :desc
+          end
+
+          paginate :page => page, :per_page => per_page
         end
-
-        # date range fields
-        with(:recalled_on).between(options[:start_date]..options[:end_date]) unless options[:start_date].blank? || options[:end_date].blank?
-
-        with(:organization).equal_to(options[:organization]) unless options[:organization].blank?
-
-        # CPSC fields
-        with(:upc).equal_to(options[:upc]) unless options[:upc].blank?
-
-        # NHTSA fields
-        with(:make_facet).equal_to(options[:make].downcase) unless options[:make].blank?
-        with(:model_facet).equal_to(options[:model].downcase) unless options[:model].blank?
-        with(:year_facet).equal_to(options[:year]) unless options[:year].blank?
-        with(:code).equal_to(options[:code]) unless options[:code].blank?
-      
-        # CDC/Food/Drug fields
-        with(:food_type).equal_to(options[:food_type]) unless options[:food_type].blank?
-      
-        facet :organization
-        facet :food_type
-
-        if options[:sort] == "date"
-          order_by :recalled_on, :desc
-        end
-
-        paginate :page => page, :per_page => per_page
       end
     end
-    
+
     def load_cpsc_data_from_file(file_path)
       FasterCSV.foreach(file_path, :headers => true) { |row| process_cpsc_row(row) }
       Sunspot.commit
@@ -158,17 +160,17 @@ class Recall < ActiveRecord::Base
       require 'rexml/document'
       REXML::Document.new(Net::HTTP.get_response(URI.parse(url)).body).elements.each('message/results/result') do |element|
         process_cpsc_row([
-          element.attributes["recallNo"],
-          element.attributes["y2k"],
-          element.attributes["manufacturer"],
-          element.attributes["type"],
-          element.attributes["prname"],
-          element.attributes["UPC"],
-          nil,
-          element.attributes["hazard"],
-          element.attributes["country_mfg"],
-          element.attributes["recDate"]
-        ])
+                           element.attributes["recallNo"],
+                           element.attributes["y2k"],
+                           element.attributes["manufacturer"],
+                           element.attributes["type"],
+                           element.attributes["prname"],
+                           element.attributes["UPC"],
+                           nil,
+                           element.attributes["hazard"],
+                           element.attributes["country_mfg"],
+                           element.attributes["recDate"]
+                         ])
       end
       Sunspot.commit
     end
@@ -194,7 +196,7 @@ class Recall < ActiveRecord::Base
       RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|
         find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10],
                                         :recalled_on => item.pubDate.to_date, :organization => 'CDC',
-                                        :food_recall => FoodRecall.new(:url=>item.link, 
+                                        :food_recall => FoodRecall.new(:url=>item.link,
                                                                        :summary=> item.title,
                                                                        :description => item.description,
                                                                        :food_type => food_type))
@@ -205,7 +207,7 @@ class Recall < ActiveRecord::Base
 
   def to_json(options = {})
     recall_hash = { :organization => self.organization, :recall_number => self.recall_number,
-                    :recall_date => self.recalled_on.to_s, :recall_url => self.recall_url}
+                   :recall_date => self.recalled_on.to_s, :recall_url => self.recall_url}
     detail_hash = case self.organization
       when 'CPSC' then
         cpsc_hash
@@ -213,15 +215,15 @@ class Recall < ActiveRecord::Base
         nhtsa_hash
       when 'CDC' then
         cdc_hash
-    end
+                  end
     recall_hash.merge!(detail_hash) unless detail_hash.nil?
     recall_hash.to_json
   end
 
   def cpsc_hash
     { :upc => self.upc, :manufacturers => list_detail("Manufacturer"),
-      :descriptions => list_detail("Description"), :hazards => list_detail("Hazard"), :countries => list_detail("Country"),
-      :product_types => list_detail("ProductType")}
+     :descriptions => list_detail("Description"), :hazards => list_detail("Hazard"), :countries => list_detail("Country"),
+     :product_types => list_detail("ProductType")}
   end
 
   def nhtsa_hash
@@ -256,7 +258,7 @@ class Recall < ActiveRecord::Base
         nhtsa_summary
       when 'CDC' then
         cdc_summary
-    end
+              end
     summary.blank? ? "Click here to see products" : summary
   end
 
@@ -275,35 +277,35 @@ class Recall < ActiveRecord::Base
   end
 
   def description
-     case self.organization
-       when 'CPSC' then
+    case self.organization
+      when 'CPSC' then
          recall_details.select {|rd| rd.detail_type=="ProductType"}.collect{|rd| rd.detail_value}.join(', ')
-       when 'NHTSA' then
+      when 'NHTSA' then
         "Recall for model#{"s" if auto_recalls.length > 1}: #{auto_recalls.map(&:model).join(", ")}"
-       when 'CDC' then
-         food_recall.description
+      when 'CDC' then
+        food_recall.description
     end
   end
-  
+
   def upc
     if organization == 'CPSC'
       upc_details = recall_details.find_all_by_detail_type('UPC')
       upc_details.collect{|detail| detail.detail_value}
     else
-      return nil
+      nil
     end
   end
-  
+
   def is_food_recall?
-    return true if self.organization == 'CDC'
+    self.organization == 'CDC'
   end
-  
+
   def is_product_recall?
-    return true if self.organization == 'CPSC'
+    self.organization == 'CPSC'
   end
-  
+
   def is_auto_recall?
-    return true if self.organization == 'NHTSA'
+    self.organization == 'NHTSA'
   end
 
   def industry
@@ -318,7 +320,7 @@ class Recall < ActiveRecord::Base
   private
 
   def self.process_cpsc_row(row)
-    recall = Recall.find_or_initialize_by_recall_number(:recall_number => row[0], :y2k => row[1], :organization => 'CPSC')
+    recall = find_or_initialize_by_recall_number(:recall_number => row[0], :y2k => row[1], :organization => 'CPSC')
     recall.recalled_on ||= Date.parse(row[9]) rescue nil
     CPSC_FULL_TEXT_SEARCH_FIELDS.each_pair do |detail_type, column_index|
       conditions = ['detail_type = ? AND detail_value = ?', detail_type, row[column_index]]
@@ -331,7 +333,7 @@ class Recall < ActiveRecord::Base
 
   def self.process_nhtsa_row(row)
     date_string = row[24].blank? ? row[16] : row[24]
-    recall = Recall.find_or_create_by_recall_number(:recall_number => row[1], :organization => 'NHTSA',
+    recall = find_or_create_by_recall_number(:recall_number => row[1], :organization => 'NHTSA',
                                                     :recalled_on => Date.parse(date_string))
     if recall.recall_details.empty?
       NHTSA_DETAIL_FIELDS.each_pair do |detail_type, column_index|

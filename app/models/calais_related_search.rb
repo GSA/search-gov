@@ -37,8 +37,8 @@ class CalaisRelatedSearch < ActiveRecord::Base
       end
 
       yesterdays_popular_en_locale_terms_not_yet_in_related_searches_for_affiliate =
-      DailyQueryStat.select("daily_query_stats.query, sum(times) sum_times").where("daily_query_stats.locale='en' and daily_query_stats.affiliate = ? and daily_query_stats.day = ? and daily_query_stats.query not in (#{sub_select})",
-                                          affiliate_name, Date.yesterday).group("daily_query_stats.query").order("sum_times desc")
+        DailyQueryStat.select("daily_query_stats.query, sum(times) sum_times").where("daily_query_stats.locale='en' and daily_query_stats.affiliate = ? and daily_query_stats.day = ? and daily_query_stats.query not in (#{sub_select})",
+                                                                                     affiliate_name, Date.yesterday).group("daily_query_stats.query").order("sum_times desc")
       yesterdays_popular_en_locale_terms_not_yet_in_related_searches_for_affiliate.each do |dqs|
         Resque.enqueue(CalaisRelatedSearch, affiliate_name, dqs.query)
         break if @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.current.to_s) >= daily_api_quota
@@ -88,7 +88,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
             downcased_tag.include?('_') or downcased_term.include?(downcased_tag.singularize) or
               downcased_term.include?(downcased_tag.pluralize) or downcased_tag == downcased_term or
               downcased_tag == downcased_term.singularize or downcased_tag == downcased_term.pluralize or not
-              Search.results_present_for?(tag, affiliate)
+            Search.results_present_for?(tag, affiliate)
           end
           if social_tags.empty?
             delete_if_exists(term, 'en', affiliate_id)
@@ -110,12 +110,15 @@ class CalaisRelatedSearch < ActiveRecord::Base
     end
 
     def search_for(term, locale = I18n.default_locale.to_s, affiliate_id = nil)
-      search do
-        keywords term, :highlight=>true
-        with :locale, locale
-        with :affiliate_id, affiliate_id
-        paginate :page => 1, :per_page => 2
-      end rescue nil
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query =>
+        {:model => self.name, :term => term, :affiliate_id => affiliate_id, :locale => locale}) do
+        search do
+          keywords term, :highlight=>true
+          with :locale, locale
+          with :affiliate_id, affiliate_id
+          paginate :page => 1, :per_page => 2
+        end rescue nil
+      end
     end
 
   end

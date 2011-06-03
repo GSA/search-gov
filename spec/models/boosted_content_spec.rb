@@ -28,7 +28,7 @@ describe BoostedContent do
     it "should create a new instance given valid attributes" do
       BoostedContent.create!(@valid_attributes)
     end
-    
+
     it "should default the locale to 'en'" do
       BoostedContent.create!(@valid_attributes).locale.should == 'en'
     end
@@ -45,11 +45,11 @@ describe BoostedContent do
       duplicate = BoostedContent.new(@valid_attributes.merge(:affiliate => affiliates(:basic_affiliate)))
       duplicate.should be_valid
     end
-    
+
     it "should allow nil keywords" do
       BoostedContent.create!(@valid_attributes.merge(:keywords => nil))
     end
-    
+
     it "should allow an empty keywords value" do
       BoostedContent.create!(@valid_attributes.merge(:keywords => ""))
     end
@@ -64,7 +64,7 @@ describe BoostedContent do
       hash.keys.length.should == 3
     end
   end
-  
+
   context "when the affiliate associated with a particular Boosted Content is destroyed" do
     fixtures :affiliates
     before do
@@ -72,12 +72,12 @@ describe BoostedContent do
       BoostedContent.create(@valid_attributes.merge(:affiliate => affiliate))
       affiliate.destroy
     end
-    
+
     it "should also delete the boosted Content" do
       BoostedContent.find_by_url(@valid_attributes[:url]).should be_nil
     end
   end
-  
+
   context "when the affiliate associated with a particular Boosted Content is deleted, and BoostedContents are reindexed" do
     fixtures :affiliates
     before do
@@ -86,7 +86,7 @@ describe BoostedContent do
       affiliate.delete
       BoostedContent.reindex
     end
-    
+
     it "should not find the orphaned boosted Content while searching for Search.USA.gov boosted Contents" do
       BoostedContent.search_for("foobar").total.should == 0
     end
@@ -153,18 +153,41 @@ describe BoostedContent do
       counts[:updated].should == 0
     end
   end
-  
+
   describe "#search_for" do
     before do
-      @boosted_content = BoostedContent.create!(@valid_attributes)
       @affiliate = affiliates(:power_affiliate)
-      Sunspot.commit
     end
-    
-    it "should find a boosted content by keyword even if the term is not mentioned in the description" do
-      search = BoostedContent.search_for('unrelated', @affiliate)
-      search.total.should == 1
-      search.results.first.should == @boosted_content
+
+    context "when the term is not mentioned in the description" do
+      before do
+        @boosted_content = BoostedContent.create!(@valid_attributes)
+        Sunspot.commit
+        BoostedContent.reindex
+      end
+
+      it "should find a boosted content by keyword" do
+        search = BoostedContent.search_for('unrelated', @affiliate)
+        search.total.should == 1
+        search.results.first.should == @boosted_content
+      end
     end
+
+    context "when the affiliate is specified" do
+      it "should instrument the call to Solr with the proper action.service namespace, affiliate, and query param hash" do
+        ActiveSupport::Notifications.should_receive(:instrument).
+          with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => @affiliate.name, :model=>"BoostedContent", :term => "foo", :locale=>"en")))
+        BoostedContent.search_for('foo', @affiliate)
+      end
+    end
+
+    context "when the affiliate is not specified" do
+      it "should instrument the call to Solr with the proper action.service namespace, default affiliate, and query param hash" do
+        ActiveSupport::Notifications.should_receive(:instrument).
+          with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :model=>"BoostedContent", :term => "foo", :locale => "en")))
+        BoostedContent.search_for('foo')
+      end
+    end
+
   end
 end

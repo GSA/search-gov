@@ -1,5 +1,4 @@
 require 'spec/spec_helper'
-require "rake"
 
 describe "query_log rake tasks" do
   before do

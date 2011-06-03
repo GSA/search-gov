@@ -1,0 +1,78 @@
+Started GET "/sayt?q=passpor&callback=jsonp1307071011660&featureClass=P&style=full&maxRows=12&name_startsWith=passpor" for 98.160.236.36 at Fri Jun 03 03:17:38 +0000 2011
+
+Started GET "/search?utf8=%E2%9C%93&sc=0&query=gov" for 127.0.0.1 at Thu Jun 02 17:18:17 -0700 2011
+  Processing by SearchesController#index as HTML
+  Parameters: {"utf8"=>"✓", "sc"=>"0", "query"=>"gov"}
+  PopularImageQuery Load (0.3ms)  SELECT `popular_image_queries`.* FROM `popular_image_queries` WHERE `popular_image_queries`.`query` = 'gov' LIMIT 1
+  SQL (50.4ms)  describe `affiliates_users`
+  AgencyQuery Load (0.4ms)  SELECT `agency_queries`.* FROM `agency_queries` WHERE `agency_queries`.`phrase` = 'gov' LIMIT 1
+[Query Impression] {"query":"gov","modules":"BWEB","locale":"en","affiliate":"usasearch.gov","time":"2011-06-02 17:18:21"}
+Rendered shared/_relatedsearches.html.haml (6.6ms)
+Rendered shared/_search.html.haml (251.6ms)
+Rendered searches/_result.html.haml (8.6ms)
+Rendered searches/_result.html.haml (8.2ms)
+Rendered searches/_result.html.haml (140.7ms)
+Rendered searches/_result.html.haml (9.6ms)
+Rendered searches/_result.html.haml (11.1ms)
+Rendered searches/_result.html.haml (12.0ms)
+Rendered searches/_result.html.haml (10.6ms)
+Rendered searches/_result.html.haml (143.3ms)
+Rendered searches/_result.html.haml (7.9ms)
+Rendered searches/_result.html.haml (8.1ms)
+Rendered shared/_searchresults.html.haml (425.8ms)
+Rendered shared/_webtrends_english.html.erb (0.4ms)
+Rendered searches/index.html.haml within layouts/application (911.4ms)
+Completed 200 OK in 4258ms (Views: 964.0ms | ActiveRecord: 504.9ms)
+
+Started GET "/images/sidebar/images/leftbar_012.gif" for 74.236.151.26 at Fri Jun 03 03:17:14 +0000 2011
+
+ActionController::RoutingError (No route matches "/images/sidebar/images/leftbar_012.gif"):
+  actionpack (3.0.7) lib/action_dispatch/middleware/show_exceptions.rb:53:in `call'
+  railties (3.0.7) lib/rails/rack/logger.rb:13:in `call'
+  rack (1.2.3) lib/rack/runtime.rb:17:in `call'
+  rack (1.2.3) lib/rack/lock.rb:11:in `call'
+  rack (1.2.3) lib/rack/lock.rb:11:in `synchronize'
+  rack (1.2.3) lib/rack/lock.rb:11:in `call'
+  hoptoad_notifier (2.4.10) lib/hoptoad_notifier/user_informer.rb:12:in `call'
+  railties (3.0.7) lib/rails/application.rb:168:in `call'
+  railties (3.0.7) lib/rails/application.rb:77:in `send'
+  railties (3.0.7) lib/rails/application.rb:77:in `method_missing'
+  passenger (3.0.7) lib/phusion_passenger/rack/request_handler.rb:96:in `process_request'
+  passenger (3.0.7) lib/phusion_passenger/abstract_request_handler.rb:513:in `accept_and_process_next_request'
+  passenger (3.0.7) lib/phusion_passenger/abstract_request_handler.rb:274:in `main_loop'
+  passenger (3.0.7) lib/phusion_passenger/rack/application_spawner.rb:205:in `start_request_handler'
+  passenger (3.0.7) lib/phusion_passenger/rack/application_spawner.rb:170:in `send'
+  passenger (3.0.7) lib/phusion_passenger/rack/application_spawner.rb:170:in `handle_spawn_application'
+  passenger (3.0.7) lib/phusion_passenger/utils.rb:479:in `safe_fork'
+  passenger (3.0.7) lib/phusion_passenger/rack/application_spawner.rb:165:in `handle_spawn_application'
+  passenger (3.0.7) lib/phusion_passenger/abstract_server.rb:357:in `__send__'
+  passenger (3.0.7) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.7) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.7) lib/phusion_passenger/abstract_server.rb:180:in `start'
+  passenger (3.0.7) lib/phusion_passenger/rack/application_spawner.rb:128:in `start'
+  passenger (3.0.7) lib/phusion_passenger/spawn_manager.rb:253:in `spawn_rack_application'
+  passenger (3.0.7) lib/phusion_passenger/abstract_server_collection.rb:132:in `lookup_or_add'
+  passenger (3.0.7) lib/phusion_passenger/spawn_manager.rb:246:in `spawn_rack_application'
+  passenger (3.0.7) lib/phusion_passenger/abstract_server_collection.rb:82:in `synchronize'
+  passenger (3.0.7) lib/phusion_passenger/abstract_server_collection.rb:79:in `synchronize'
+  passenger (3.0.7) lib/phusion_passenger/spawn_manager.rb:244:in `spawn_rack_application'
+  passenger (3.0.7) lib/phusion_passenger/spawn_manager.rb:137:in `spawn_application'
+  passenger (3.0.7) lib/phusion_passenger/spawn_manager.rb:275:in `handle_spawn_application'
+  passenger (3.0.7) lib/phusion_passenger/abstract_server.rb:357:in `__send__'
+  passenger (3.0.7) lib/phusion_passenger/abstract_server.rb:357:in `server_main_loop'
+  passenger (3.0.7) lib/phusion_passenger/abstract_server.rb:206:in `start_synchronously'
+  passenger (3.0.7) helper-scripts/passenger-spawn-server:99
+
+
+Started GET "/?locale=en&m=false" for 127.0.0.1 at Thu Jun 02 18:10:45 -0700 2011
+  Processing by HomeController#index as HTML
+  Parameters: {"m"=>"false", "locale"=>"en"}
+  PopularImageQuery Load (0.2ms)  SELECT `popular_image_queries`.* FROM `popular_image_queries` WHERE `popular_image_queries`.`query` = '' LIMIT 1
+  TopSearch Load (54.7ms)  SELECT `top_searches`.* FROM `top_searches` WHERE (query IS NOT NULL) ORDER BY position ASC LIMIT 5
+Rendered shared/_search.html.haml (7.7ms)
+Rendered shared/_trending_searches.html.haml (13.8ms)
+Rendered shared/_webtrends_english.html.erb (0.3ms)
+Rendered home/index.html.haml within layouts/application (180.6ms)
+Completed 200 OK in 301ms (Views: 200.0ms | ActiveRecord: 55.3ms)
+
+Started GET "/sayt?q=passpor&callback=jsonp1307071011660&featureClass=P&style=full&maxRows=12&name_startsWith=passpor" for 98.160.236.36 at Fri Jun 03 03:17:38 +0000 2011
