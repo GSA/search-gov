@@ -555,13 +555,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>     content_type &quot;multipart/alternative&quot;</pre></td>
+            <td><pre><a name="line84">84</a>     attachments[File.basename(zip_filename)] = File.read(zip_filename)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>     attachment :content_type =&gt; &quot;application/zip&quot;, :body =&gt; File.read(zip_filename), :filename =&gt; File.basename(zip_filename)</pre></td>
+            <td><pre><a name="line85">85</a>     mail(:to =&gt; MONTHLY_REPORT_RECIPIENTS.join(&quot;, &quot;), :subject =&gt; @subject, :from =&gt; @from)</pre></td>
           </tr>
         
           
@@ -639,7 +639,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Fri Jun 03 13:28:07 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jun 03 14:58:30 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

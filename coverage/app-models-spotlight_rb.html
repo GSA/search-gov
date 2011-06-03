@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-spotlight_rb.html">app/models/spotlight.rb</a></td>
-            <td class='right_align'><tt>22</tt></td>
-            <td class='right_align'><tt>19</tt></td>
+            <td class='right_align'><tt>23</tt></td>
+            <td class='right_align'><tt>21</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -135,61 +135,67 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>     solr = Spotlight.search do</pre></td>
+            <td><pre><a name="line14">14</a>     ActiveSupport::Notifications.instrument(&quot;solr_search.usasearch&quot;, :query =&gt; {:model=&gt; self.name, :term =&gt; query}) do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>       with :is_active, true</pre></td>
+            <td><pre><a name="line15">15</a>       solr = Spotlight.search do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>       keywords query</pre></td>
+            <td><pre><a name="line16">16</a>         with :is_active, true</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       paginate :page =&gt; 1, :per_page =&gt; 1</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line18">18</a>     end rescue nil</pre></td>
+            <td><pre><a name="line17">17</a>         keywords query</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>     solr.results.first unless solr.nil? or solr.results.empty?</pre></td>
+            <td><pre><a name="line18">18</a>         paginate :page =&gt; 1, :per_page =&gt; 1</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>   end</pre></td>
+            <td><pre><a name="line19">19</a>       end rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       solr.results.first unless solr.nil? or solr.results.empty?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a> </pre></td>
+            <td><pre><a name="line21">21</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a> end</pre></td>
+            <td><pre><a name="line22">22</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jun 03 13:28:09 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jun 03 14:58:30 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

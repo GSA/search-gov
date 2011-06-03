@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/analytics/analytics_admin_controller.rb</title>
+    <title>lib/tasks/rails3_log.rake</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/analytics/analytics_admin_controller.rb</h2>
+    <h2>lib/tasks/rails3_log.rake</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-analytics-analytics_admin_controller_rb.html">app/controllers/analytics/analytics_admin_controller.rb</a></td>
-            <td class='right_align'><tt>19</tt></td>
-            <td class='right_align'><tt>16</tt></td>
+            <td class="left_align"><a href="lib-tasks-rails3_log_rake.html">lib/tasks/rails3_log.rake</a></td>
+            <td class='right_align'><tt>22</tt></td>
+            <td class='right_align'><tt>22</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,121 +57,139 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Analytics::AnalyticsAdminController &lt; SslController</pre></td>
+            <td><pre><a name="line1">1</a> namespace :usasearch do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   helper :all</pre></td>
+            <td><pre><a name="line2">2</a>   namespace :rails3_log do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   layout &quot;analytics&quot;</pre></td>
+            <td><pre><a name="line3">3</a>     desc &quot;Transform and filter a multi-line Rails3 log file into a single line format that can be used in a Hive table&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   before_filter :require_analyst_admin</pre></td>
+            <td><pre><a name="line4">4</a>     task :transform_to_hive_elapsed_times_format, :file_name, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>       if args.file_name.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>         Rails.logger.error &quot;usage: rake usasearch:query_log:transform_to_hive_elapsed_times_format[file_name]&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a> </pre></td>
+            <td><pre><a name="line7">7</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   private</pre></td>
+            <td><pre><a name="line8">8</a>         File.open(args.file_name) do |file|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>           file.each_line.map(&amp;:strip).reject(&amp;:empty?).slice_before(/Started (GET|POST|PUT|DELETE)/).each do |request_log_entry_array|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>             request_url, total_time, view_time, db_time = request_log_entry_array.join(' ').</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a> </pre></td>
+            <td><pre><a name="line11">11</a>               scan(/^[^&quot;]*&quot;([^&quot;]*)&quot; .* Completed 200 OK in (\d*)ms [^\d]*(\d*)\.\d[^\d]*(\d*)\.\d/).first</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   def require_analyst_admin</pre></td>
+            <td><pre><a name="line12">12</a>             if (request_url)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     return false if require_user == false</pre></td>
+            <td><pre><a name="line13">13</a>               hash = {}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     unless current_user.is_analyst_admin?</pre></td>
+            <td><pre><a name="line14">14</a>               %w{request_url total_time view_time db_time}.collect { |key| hash[key] = eval key }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>       redirect_to home_page_url</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>       return false</pre></td>
+            <td><pre><a name="line15">15</a>               puts hash.to_json</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>     end</pre></td>
+            <td><pre><a name="line16">16</a>             end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>   end</pre></td>
+            <td><pre><a name="line17">17</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>   def default_url_options(options={})</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>     {}</pre></td>
+            <td><pre><a name="line18">18</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>   end</pre></td>
+            <td><pre><a name="line19">19</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a> end</pre></td>
+            <td><pre><a name="line20">20</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jun 03 14:58:30 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jun 03 14:58:31 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
