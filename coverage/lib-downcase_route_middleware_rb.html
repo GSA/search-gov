@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/analytics/query_searches_controller.rb</title>
+    <title>lib/downcase_route_middleware.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/analytics/query_searches_controller.rb</h2>
+    <h2>lib/downcase_route_middleware.rb</h2>
 
     
 
@@ -27,8 +27,8 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-analytics-query_searches_controller_rb.html">app/controllers/analytics/query_searches_controller.rb</a></td>
-            <td class='right_align'><tt>9</tt></td>
+            <td class="left_align"><a href="lib-downcase_route_middleware_rb.html">lib/downcase_route_middleware.rb</a></td>
+            <td class='right_align'><tt>10</tt></td>
             <td class='right_align'><tt>9</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
@@ -57,61 +57,67 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Analytics::QuerySearchesController &lt; Analytics::AnalyticsController</pre></td>
+            <td><pre><a name="line1">1</a> class DowncaseRouteMiddleware</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   def index</pre></td>
+            <td><pre><a name="line2">2</a>   def initialize(app)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     @search_query_term = params[&quot;query&quot;]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>     @start_date = Date.parse(params[&quot;analytics_search_start_date&quot;]) rescue 1.month.ago.to_date</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>     @end_date = Date.parse(params[&quot;analytics_search_end_date&quot;]) rescue Date.yesterday</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>     @search_results = DailyQueryStat.query_counts_for_terms_like(@search_query_term, @start_date, @end_date)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>     @query_groups = QueryGroup.all(:order =&gt; 'name ASC')</pre></td>
+            <td><pre><a name="line3">3</a>     @app = app</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>   end</pre></td>
+            <td><pre><a name="line4">4</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a> end</pre></td>
+            <td><pre><a name="line5">5</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>   def call(env)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>     env['PATH_INFO'] = env['PATH_INFO'].downcase</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     @app.call(env)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line9">9</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line10">10</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jun 03 13:28:07 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jun 03 13:28:09 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
