@@ -1,5 +1,4 @@
 require 'spec/spec_helper'
-require "rake"
 
 describe "Daily Usage Stats rake tasks" do
   before do

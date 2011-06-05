@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-calais_related_search_rb.html">app/models/calais_related_search.rb</a></td>
-            <td class='right_align'><tt>134</tt></td>
-            <td class='right_align'><tt>117</tt></td>
+            <td class='right_align'><tt>137</tt></td>
+            <td class='right_align'><tt>120</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -291,13 +291,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>       DailyQueryStat.select(&quot;daily_query_stats.query, sum(times) sum_times&quot;).where(&quot;daily_query_stats.locale='en' and daily_query_stats.affiliate = ? and daily_query_stats.day = ? and daily_query_stats.query not in (#{sub_select})&quot;,</pre></td>
+            <td><pre><a name="line40">40</a>         DailyQueryStat.select(&quot;daily_query_stats.query, sum(times) sum_times&quot;).where(&quot;daily_query_stats.locale='en' and daily_query_stats.affiliate = ? and daily_query_stats.day = ? and daily_query_stats.query not in (#{sub_select})&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line41">41</a>                                           affiliate_name, Date.yesterday).group(&quot;daily_query_stats.query&quot;).order(&quot;sum_times desc&quot;)</pre></td>
+            <td><pre><a name="line41">41</a>                                                                                      affiliate_name, Date.yesterday).group(&quot;daily_query_stats.query&quot;).order(&quot;sum_times desc&quot;)</pre></td>
           </tr>
         
           
@@ -555,7 +555,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>           social_tags = calais.socialtags.collect { |st| st.name }.custom_uniq_by{|a| a.upcase}</pre></td>
+            <td><pre><a name="line84">84</a>           social_tags = calais.socialtags.collect { |st| st.name }.uniq{|a| a.upcase}</pre></td>
           </tr>
         
           
@@ -597,7 +597,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line91">91</a>               Search.results_present_for?(tag, affiliate)</pre></td>
+            <td><pre><a name="line91">91</a>             Search.results_present_for?(tag, affiliate)</pre></td>
           </tr>
         
           
@@ -729,139 +729,157 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line113">113</a>       search do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line114">114</a>         keywords term, :highlight=&gt;true</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line115">115</a>         with :locale, locale</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line116">116</a>         with :affiliate_id, affiliate_id</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line117">117</a>         paginate :page =&gt; 1, :per_page =&gt; 2</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line118">118</a>       end rescue nil</pre></td>
+            <td><pre><a name="line113">113</a>       ActiveSupport::Notifications.instrument(&quot;solr_search.usasearch&quot;, :query =&gt;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line119">119</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line120">120</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line121">121</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line122">122</a> </pre></td>
+            <td><pre><a name="line114">114</a>         {:model =&gt; self.name, :term =&gt; term, :affiliate_id =&gt; affiliate_id, :locale =&gt; locale}) do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line123">123</a>   searchable do</pre></td>
+            <td><pre><a name="line115">115</a>         search do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line124">124</a>     text :term, :boost =&gt; 5.0</pre></td>
+            <td><pre><a name="line116">116</a>           keywords term, :highlight=&gt;true</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line125">125</a>     text :related_terms</pre></td>
+            <td><pre><a name="line117">117</a>           with :locale, locale</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line126">126</a>     string :locale</pre></td>
+            <td><pre><a name="line118">118</a>           with :affiliate_id, affiliate_id</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line127">127</a>     integer :affiliate_id</pre></td>
+            <td><pre><a name="line119">119</a>           paginate :page =&gt; 1, :per_page =&gt; 2</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line120">120</a>         end rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line128">128</a>   end</pre></td>
+            <td><pre><a name="line121">121</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line129">129</a> </pre></td>
+            <td><pre><a name="line122">122</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line123">123</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line124">124</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line125">125</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line130">130</a>   def to_label</pre></td>
+            <td><pre><a name="line126">126</a>   searchable do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line131">131</a>     term</pre></td>
+            <td><pre><a name="line127">127</a>     text :term, :boost =&gt; 5.0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line128">128</a>     text :related_terms</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line129">129</a>     string :locale</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line130">130</a>     integer :affiliate_id</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line132">132</a>   end</pre></td>
+            <td><pre><a name="line131">131</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line133">133</a> </pre></td>
+            <td><pre><a name="line132">132</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line133">133</a>   def to_label</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line134">134</a>     term</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line134">134</a> end</pre></td>
+            <td><pre><a name="line135">135</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line136">136</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line137">137</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Jun 04 22:52:21 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Jun 04 23:19:32 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

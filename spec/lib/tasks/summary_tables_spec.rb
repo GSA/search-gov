@@ -1,5 +1,4 @@
 require 'spec/spec_helper'
-require "rake"
 
 describe "summary_tables rake tasks" do
   before do

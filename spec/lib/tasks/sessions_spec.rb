@@ -1,5 +1,4 @@
 require 'spec/spec_helper'
-require "rake"
 
 describe "Sessions rake tasks" do
   before do

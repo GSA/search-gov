@@ -11,12 +11,13 @@ class Spotlight < ActiveRecord::Base
   end
 
   def self.search_for(query)
-    solr = Spotlight.search do
-      with :is_active, true
-      keywords query
-      paginate :page => 1, :per_page => 1
-    end rescue nil
-    solr.results.first unless solr.nil? or solr.results.empty?
+    ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query}) do
+      solr = Spotlight.search do
+        with :is_active, true
+        keywords query
+        paginate :page => 1, :per_page => 1
+      end rescue nil
+      solr.results.first unless solr.nil? or solr.results.empty?
+    end
   end
-
 end

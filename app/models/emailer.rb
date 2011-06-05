@@ -81,8 +81,8 @@ class Emailer < ActionMailer::Base
   def monthly_report(zip_filename, report_date)
     setup_email(MONTHLY_REPORT_RECIPIENTS.join(", "))
     @subject += "Monthly Report data attached: #{File.basename(zip_filename)}"
-    content_type "multipart/alternative"
-    attachment :content_type => "application/zip", :body => File.read(zip_filename), :filename => File.basename(zip_filename)
+    attachments[File.basename(zip_filename)] = File.read(zip_filename)
+    mail(:to => MONTHLY_REPORT_RECIPIENTS.join(", "), :subject => @subject, :from => @from)
   end
 
   private

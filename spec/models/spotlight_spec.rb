@@ -48,6 +48,24 @@ describe Spotlight do
       end
     end
 
+    describe "#search_for" do
+      it "should instrument the call to Solr with the proper action.service namespace, and query param hash" do
+        ActiveSupport::Notifications.should_receive(:instrument).
+          with("solr_search.usasearch", hash_including(:query => hash_including(:model=>"Spotlight", :term => "foo")))
+        Spotlight.search_for('foo')
+      end
+
+      context "an exception is raised" do
+        before do
+          Spotlight.stub!(:search).and_raise SocketError
+        end
+
+        it "should return nil" do
+          Spotlight.search_for('foo').should be_nil
+        end
+      end
+    end
+
     after(:all) do
       Spotlight.remove_all_from_index!
     end

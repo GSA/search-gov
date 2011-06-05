@@ -93,6 +93,14 @@ describe CalaisRelatedSearch do
     it { should belong_to :affiliate }
   end
 
+  context "when performing a Solr search" do
+    it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
+      ActiveSupport::Notifications.should_receive(:instrument).
+        with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate_id => @affiliate.id, :model=>"CalaisRelatedSearch", :term => "foo", :locale=>"en")))
+      CalaisRelatedSearch.search_for("foo","en",@affiliate.id)
+    end
+  end
+
   describe "#refresh_stalest_entries" do
     before do
       ResqueSpec.reset!
@@ -233,7 +241,8 @@ describe CalaisRelatedSearch do
 
       context "when there are duplicate (ignoring case) Calais SocialTags" do
         before do
-          related_terms = ["congress", "California", "CIA inquiry", "Congress"]
+          @unique_related_terms = ["congress", "California", "CIA inquiry"]
+          related_terms = @unique_related_terms + ["Congress"]
           social_tags = related_terms.collect { |rt| OpenStruct.new(:name=> rt) }
           m_calais = mock("calais", :socialtags => social_tags)
           Calais.stub!(:process_document).and_return(m_calais)
@@ -241,7 +250,7 @@ describe CalaisRelatedSearch do
 
         it "should dedupe them" do
           CalaisRelatedSearch.perform(@affiliate.name, @term)
-          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "California | CIA inquiry | Congress"
+          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.split(" | ").should =~ @unique_related_terms
         end
       end
 
@@ -256,7 +265,7 @@ describe CalaisRelatedSearch do
 
         it "should set the CalaisRelatedSearch's English-locale related terms for that term" do
           CalaisRelatedSearch.perform(@affiliate.name, @term)
-          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "congress | California | CIA inquiry"
+          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.split(" | ").should =~ ["congress" , "California" , "CIA inquiry"]
         end
 
         it "should set the CalaisRelatedSearch's gets_refreshed flag to true for that term" do
@@ -271,7 +280,7 @@ describe CalaisRelatedSearch do
 
           it "should not include that SocialTag in the set of related terms for that pivot term" do
             CalaisRelatedSearch.perform(@affiliate.name, @term)
-            CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "California | CIA inquiry"
+            CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.split(" | ").should =~ ["California" , "CIA inquiry"]
           end
         end
       end
@@ -279,16 +288,16 @@ describe CalaisRelatedSearch do
       context "when there's an existing and differently-cased CalaisRelatedSearch to be updated" do
         before do
           CalaisRelatedSearch.create!(:term=> @term.upcase, :locale=>'en', :affiliate_id => @affiliate.id, :related_terms => "congress | California | CIA inquiry")
-          related_terms = ["totally", "new", "terms"]
-          social_tags = related_terms.collect { |rt| OpenStruct.new(:name=> rt) }
+          @related_terms = ["totally", "new", "terms"]
+          social_tags = @related_terms.collect { |rt| OpenStruct.new(:name=> rt) }
           m_calais = mock("calais", :socialtags => social_tags)
           Calais.stub!(:process_document).and_return(m_calais)
         end
 
         it "should update the CalaisRelatedSearch's English-locale related terms for that term" do
           CalaisRelatedSearch.perform(@affiliate.name, @term)
-          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.should == "totally | new | terms"
-          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term.upcase, 'en', @affiliate.id).related_terms.should == "totally | new | terms"
+          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term, 'en', @affiliate.id).related_terms.split(" | ").should =~ @related_terms
+          CalaisRelatedSearch.find_by_term_and_locale_and_affiliate_id(@term.upcase, 'en', @affiliate.id).related_terms.split(" | ").should =~ @related_terms
         end
       end
 

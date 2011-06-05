@@ -1,9 +1,6 @@
-#require 'active_support/benchmarkable'
-
 class Search
   class BingSearchError < RuntimeError;
   end
-  #include ActiveSupport::Benchmarkable
 
   @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
 
@@ -184,8 +181,7 @@ class Search
   def perform
     response_body = @@redis.get(cache_key) rescue nil
     return response_body unless response_body.nil?
-
-    #benchmark("[Bing Search]") do
+    ActiveSupport::Notifications.instrument("bing_search.usasearch", :query => {:term => formatted_query}) do
       begin
         uri = URI.parse(bing_query(formatted_query, sources, offset, results_per_page, enable_highlighting))
         http = Net::HTTP.new(uri.host, uri.port)
@@ -197,7 +193,7 @@ class Search
       rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error, EOFError, Errno::ETIMEDOUT => error
         raise BingSearchError.new(error.to_s)
       end
-    #end
+    end
   end
 
   def parse(response_body)

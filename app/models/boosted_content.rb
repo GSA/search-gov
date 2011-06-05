@@ -6,8 +6,6 @@ class BoostedContent < ActiveRecord::Base
   validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id"
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES
 
-  after_save :sunspot_index
-
   searchable :auto_index => false do
     text :title, :description
     text :keywords do
@@ -25,15 +23,18 @@ class BoostedContent < ActiveRecord::Base
     string :locale
   end
 
-  def self.search_for(query, affiliate = nil, locale = I18n.default_locale)
-    search do
-      fulltext query do
-        highlight :title, :description, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
-      end
-      with(:affiliate_name, affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
-      with(:locale, locale.to_s) if locale
-      paginate :page => 1, :per_page => 3
-    end rescue nil
+  def self.search_for(query, affiliate = nil, locale = I18n.default_locale.to_s)
+    affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
+    ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate_name, :locale => locale}) do
+      search do
+        fulltext query do
+          highlight :title, :description, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
+        end
+        with(:affiliate_name, affiliate_name)
+        with(:locale, locale)
+        paginate :page => 1, :per_page => 3
+      end rescue nil
+    end
   end
 
   def self.process_boosted_content_xml_upload_for(affiliate, xml_file)
@@ -68,10 +69,6 @@ class BoostedContent < ActiveRecord::Base
       return false
     end
     counts
-  end
-
-  def sunspot_index
-    Sunspot.index(self)
   end
 
   def as_json(options = {})

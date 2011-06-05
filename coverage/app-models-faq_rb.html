@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-faq_rb.html">app/models/faq.rb</a></td>
-            <td class='right_align'><tt>78</tt></td>
-            <td class='right_align'><tt>72</tt></td>
+            <td class='right_align'><tt>80</tt></td>
+            <td class='right_align'><tt>74</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -135,397 +135,409 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>       Faq.search do</pre></td>
+            <td><pre><a name="line14">14</a>       ActiveSupport::Notifications.instrument(&quot;solr_search.usasearch&quot;, :query =&gt; {:model=&gt; self.name, :term =&gt; query, :locale =&gt; locale}) do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>         fulltext query do</pre></td>
+            <td><pre><a name="line15">15</a>         search do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>           highlight :question, { :fragment_size =&gt; 255, :max_snippets =&gt; 1, :merge_continuous_fragments =&gt; true }</pre></td>
+            <td><pre><a name="line16">16</a>           fulltext query do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>             highlight :question, {:fragment_size =&gt; 255, :max_snippets =&gt; 1, :merge_continuous_fragments =&gt; true}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>         end</pre></td>
+            <td><pre><a name="line18">18</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>         with(:locale).equal_to(locale)</pre></td>
+            <td><pre><a name="line19">19</a>           with(:locale).equal_to(locale)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>         paginate :page =&gt; 1, :per_page =&gt; per_page</pre></td>
+            <td><pre><a name="line20">20</a>           paginate :page =&gt; 1, :per_page =&gt; per_page</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>       end rescue nil</pre></td>
+            <td><pre><a name="line21">21</a>         end rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>     end</pre></td>
+            <td><pre><a name="line22">22</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>     def faq_config(locale)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>       config_yml = Rails.root.join(&quot;config&quot;, &quot;faq.yml&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>       @faq_config = if File.exist?(config_yml)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line26">26</a>         faq_config = YAML.load(File.read(config_yml))[::Rails.env]</pre></td>
+            <td><pre><a name="line23">23</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>       else</pre></td>
+            <td><pre><a name="line24">24</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>         { }</pre></td>
+            <td><pre><a name="line25">25</a>     def faq_config(locale)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>       config_yml = Rails.root.join(&quot;config&quot;, &quot;faq.yml&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       @faq_config = if File.exist?(config_yml)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>         faq_config = YAML.load(File.read(config_yml))[::Rails.env]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>       end</pre></td>
+            <td><pre><a name="line29">29</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>       fconf = {}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>       @faq_config.each do |name, value|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>         fconf[name.to_sym] = if value.kind_of?(Hash)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>           value[locale]</pre></td>
+            <td><pre><a name="line30">30</a>         { }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>         else</pre></td>
+            <td><pre><a name="line31">31</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>           value</pre></td>
+            <td><pre><a name="line32">32</a>       fconf = {}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>       @faq_config.each do |name, value|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>         fconf[name.to_sym] = if value.kind_of?(Hash)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>           value[locale]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>         end</pre></td>
+            <td><pre><a name="line36">36</a>         else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>           value</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>       return fconf</pre></td>
+            <td><pre><a name="line38">38</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>     end</pre></td>
+            <td><pre><a name="line39">39</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line40">40</a>       fconf</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>     def cached_file_path( name )</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>       tmp_dir = ::Rails.root.join(&quot;tmp&quot;, &quot;faq&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line43">43</a>       FileUtils.mkdir( tmp_dir ) unless File.exist?(tmp_dir)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>       return tmp_dir.join( name )</pre></td>
+            <td><pre><a name="line41">41</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>     end</pre></td>
+            <td><pre><a name="line42">42</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>     def cached_file_path( name )</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>       tmp_dir = ::Rails.root.join(&quot;tmp&quot;, &quot;faq&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>       FileUtils.mkdir( tmp_dir ) unless File.exist?(tmp_dir)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line46">46</a>       tmp_dir.join( name )</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>     def grab_latest_file(locale)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>       fconf = faq_config(locale)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>       new_file_path = nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line50">50</a>       return nil unless fconf.key?(:protocol)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line51">51</a>       case fconf[:protocol]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line52">52</a>       when 'sftp':</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line53">53</a>         Net::SFTP.start(fconf[:host], fconf[:username], :password =&gt; fconf[:password]) do |sftp|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line54">54</a>           matching_file_names = []</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line55">55</a>           file_name_pattern = Regexp.compile(fconf[:file_name_pattern])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line56">56</a>           sftp.dir.foreach(fconf[:dir_path]) do |entry| </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line57">57</a>             entry_name = entry.name</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line58">58</a>             matching_file_names &lt;&lt; entry_name unless file_name_pattern.match(entry_name).nil?</pre></td>
+            <td><pre><a name="line47">47</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line59">59</a>           end</pre></td>
+            <td><pre><a name="line48">48</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line60">60</a>           unless matching_file_names.empty?</pre></td>
+            <td><pre><a name="line49">49</a>     def grab_latest_file(locale)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line61">61</a>             latest_file_name = matching_file_names.sort.last</pre></td>
+            <td><pre><a name="line50">50</a>       fconf = faq_config(locale)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line62">62</a>             raise &quot;bad faq file path name: #{latest_file_name}&quot; unless latest_file_name =~ /[a-z0-9_]+\.xml/</pre></td>
+            <td><pre><a name="line51">51</a>       new_file_path = nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>             cached_file = cached_file_path(latest_file_name)</pre></td>
+            <td><pre><a name="line52">52</a>       return nil unless fconf.key?(:protocol)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a>             unless File.exist?(cached_file)</pre></td>
+            <td><pre><a name="line53">53</a>       case fconf[:protocol]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>               inc_file_path = cached_file.to_s + &quot;_inc&quot;</pre></td>
+            <td><pre><a name="line54">54</a>       when 'sftp':</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line66">66</a>               sftp.download!(&quot;#{fconf[:dir_path]}/#{latest_file_name}&quot;, inc_file_path)</pre></td>
+            <td><pre><a name="line55">55</a>         Net::SFTP.start(fconf[:host], fconf[:username], :password =&gt; fconf[:password]) do |sftp|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line67">67</a>               File.rename(inc_file_path, cached_file)</pre></td>
+            <td><pre><a name="line56">56</a>           matching_file_names = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line68">68</a>               new_file_path = cached_file</pre></td>
+            <td><pre><a name="line57">57</a>           file_name_pattern = Regexp.compile(fconf[:file_name_pattern])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line58">58</a>           sftp.dir.foreach(fconf[:dir_path]) do |entry|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>             entry_name = entry.name</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>             matching_file_names &lt;&lt; entry_name unless file_name_pattern.match(entry_name).nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a>             end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line70">70</a>           end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line71">71</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line72">72</a>       else</pre></td>
+            <td><pre><a name="line61">61</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line73">73</a>         raise &quot;unsupported faq fetch protocol: #{fconf[:protocol]}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line74">74</a>       end</pre></td>
+            <td><pre><a name="line62">62</a>           unless matching_file_names.empty?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line75">75</a>       return new_file_path</pre></td>
+            <td><pre><a name="line63">63</a>             latest_file_name = matching_file_names.sort.last</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>             raise &quot;bad faq file path name: #{latest_file_name}&quot; unless latest_file_name =~ /[a-z0-9_]+\.xml/</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>             cached_file = cached_file_path(latest_file_name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line66">66</a>             unless File.exist?(cached_file)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line67">67</a>               inc_file_path = cached_file.to_s + &quot;_inc&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>               sftp.download!(&quot;#{fconf[:dir_path]}/#{latest_file_name}&quot;, inc_file_path)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>               File.rename(inc_file_path, cached_file)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line70">70</a>               new_file_path = cached_file</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line76">76</a>     end</pre></td>
+            <td><pre><a name="line71">71</a>             end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line77">77</a>   end</pre></td>
+            <td><pre><a name="line72">72</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line78">78</a> end</pre></td>
+            <td><pre><a name="line73">73</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line74">74</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line75">75</a>         raise &quot;unsupported faq fetch protocol: #{fconf[:protocol]}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line76">76</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>       return new_file_path</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line78">78</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line79">79</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line80">80</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sat Jun 04 22:52:21 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Jun 04 23:19:32 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

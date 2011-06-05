@@ -95,13 +95,13 @@ module Analytics::HomeHelper
   def affiliate_analytics_daily_report_link(affiliate_name, report_date)
     if report_date
       filename = daily_report_filename(affiliate_name.downcase, report_date)
-      "Download top queries for #{ report_date.to_s } (#{ link_to 'csv', s3_link(filename) })" if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
+      "Download top queries for #{ report_date.to_s } (#{ link_to 'csv', s3_link(filename) })".html_safe if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
     end
   end
 
   def affiliate_analytics_monthly_report_link(affiliate_name, report_date)
     filename = monthly_report_filename(affiliate_name.downcase, report_date)
-    "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to 'csv', s3_link(filename)})" if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
+    "Download top queries for #{Date::MONTHNAMES[report_date.month.to_i]} #{report_date.year} (#{link_to 'csv', s3_link(filename)})".html_safe if AWS::S3::S3Object.exists?(filename, AWS_BUCKET_NAME)
   end
 
   def analytics_center_breadcrumbs(page_title = nil)

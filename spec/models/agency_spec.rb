@@ -170,7 +170,7 @@ describe Agency do
       it "should have six displayable popular pages" do
         @pop_agency.instance_variable_defined?(:@cached_displayable_popular_urls).should be_false
         pop_pages = @pop_agency.displayable_popular_urls
-        pop_pages[0..4].collect { |pp| pp.rank }.should eql ((1.upto(5)).collect {|n| n})
+        pop_pages[0..4].collect { |pp| pp.rank }.should eql((1.upto(5)).collect {|n| n})
         pop_pages.size.should eql( @sample_pop_page_data.size )
         @pop_agency.instance_variable_defined?(:@cached_displayable_popular_urls).should be_true
         @pop_agency.displayable_popular_urls.should be pop_pages

@@ -152,7 +152,7 @@ class User < ActiveRecord::Base
 
   def reset_email_verification_token!
     current_perishable_token = perishable_token
-    self.email_verification_token = reset_perishable_token
+    self.email_verification_token = reset_perishable_token.downcase
     self.perishable_token = current_perishable_token
     save!
   end

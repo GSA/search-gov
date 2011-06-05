@@ -370,7 +370,7 @@ describe Recall do
 
   end
 
-  describe ".search_for" do
+  describe "#search_for" do
     before do
       Recall.destroy_all
       Recall.remove_all_from_index!
@@ -608,6 +608,12 @@ describe Recall do
         search = Recall.search_for("recall", :organization => "CDC", :food_type => "food")
         search.total.should == 1
       end
+    end
+
+    it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
+      ActiveSupport::Notifications.should_receive(:instrument).
+        with("solr_search.usasearch", hash_including(:query => hash_including(:model => "Recall", :term => "loren", :organization => "CDC", :food_type => "food")))
+      Recall.search_for('loren recall', :organization => "CDC", :food_type => "food")
     end
 
     after(:all) do

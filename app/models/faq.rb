@@ -11,13 +11,15 @@ class Faq < ActiveRecord::Base
   class << self
 
     def search_for(query, locale = I18n.default_locale.to_s, per_page = 3)
-      Faq.search do
-        fulltext query do
-          highlight :question, { :fragment_size => 255, :max_snippets => 1, :merge_continuous_fragments => true }
-        end
-        with(:locale).equal_to(locale)
-        paginate :page => 1, :per_page => per_page
-      end rescue nil
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :locale => locale}) do
+        search do
+          fulltext query do
+            highlight :question, {:fragment_size => 255, :max_snippets => 1, :merge_continuous_fragments => true}
+          end
+          with(:locale).equal_to(locale)
+          paginate :page => 1, :per_page => per_page
+        end rescue nil
+      end
     end
 
     def faq_config(locale)
@@ -35,13 +37,13 @@ class Faq < ActiveRecord::Base
           value
         end
       end
-      return fconf
+      fconf
     end
 
     def cached_file_path( name )
       tmp_dir = ::Rails.root.join("tmp", "faq")
       FileUtils.mkdir( tmp_dir ) unless File.exist?(tmp_dir)
-      return tmp_dir.join( name )
+      tmp_dir.join( name )
     end
 
     def grab_latest_file(locale)
@@ -53,7 +55,7 @@ class Faq < ActiveRecord::Base
         Net::SFTP.start(fconf[:host], fconf[:username], :password => fconf[:password]) do |sftp|
           matching_file_names = []
           file_name_pattern = Regexp.compile(fconf[:file_name_pattern])
-          sftp.dir.foreach(fconf[:dir_path]) do |entry| 
+          sftp.dir.foreach(fconf[:dir_path]) do |entry|
             entry_name = entry.name
             matching_file_names << entry_name unless file_name_pattern.match(entry_name).nil?
           end

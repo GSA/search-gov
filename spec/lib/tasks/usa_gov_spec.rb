@@ -1,5 +1,4 @@
 require 'spec/spec_helper'
-require "rake"
 
 describe "USA.gov rake tasks" do
   before do

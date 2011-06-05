@@ -104,8 +104,7 @@ ActiveRecord::Schema.define(:version => 20110603204350) do
     t.datetime "updated_at"
   end
 
-  add_index "agency_urls", ["agency_id"], :name => "index_agency_urls_on_agency_id"
-  add_index "agency_urls", ["url", "locale", "agency_id"], :name => "index_agency_urls_on_url_and_locale_and_agency_id", :unique => true
+  add_index "agency_urls", ["agency_id", "locale", "url"], :name => "index_agency_urls_on_agency_id_and_locale_and_url"
 
   create_table "auto_recalls", :force => true do |t|
     t.integer  "recall_id"
