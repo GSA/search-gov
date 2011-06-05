@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>223</tt></td>
-            <td class='right_align'><tt>190</tt></td>
+            <td class='right_align'><tt>229</tt></td>
+            <td class='right_align'><tt>196</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -1311,49 +1311,49 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line210">210</a>   def render_no_index_meta_tag</pre></td>
+            <td><pre><a name="line210">210</a>   def render_robots_meta_tag</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line211">211</a>     raw tag(:meta, {:name =&gt; 'ROBOTS', :content =&gt; 'NOINDEX, NOFOLLOW'}) if request.path =~ /^\/(image_searches|search|usa\/)/i</pre></td>
+            <td><pre><a name="line211">211</a>     content = ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line212">212</a>     if request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line213">213</a>       content = tag(:meta, {:name =&gt; 'ROBOTS', :content =&gt; 'NOINDEX, NOFOLLOW'})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line214">214</a>     elsif mobile_landing_page?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line215">215</a>       content = tag(:meta, {:name =&gt; 'ROBOTS', :content =&gt; 'INDEX, NOFOLLOW'})</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line212">212</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line213">213</a> </pre></td>
+            <td><pre><a name="line216">216</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line214">214</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line215">215</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line216">216</a>   def ssl_protocol</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line217">217</a>     SSL_PROTOCOL</pre></td>
+            <td><pre><a name="line217">217</a>     raw content</pre></td>
           </tr>
         
           
@@ -1371,31 +1371,67 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line220">220</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line220">220</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line221">221</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line221">221</a>     links.collect { |link| link_to(link[0], link[1], :class =&gt; link[2]) }.join unless links.nil?</pre></td>
+            <td><pre><a name="line222">222</a>   def ssl_protocol</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line223">223</a>     SSL_PROTOCOL</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line222">222</a>   end</pre></td>
+            <td><pre><a name="line224">224</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line223">223</a> end</pre></td>
+            <td><pre><a name="line225">225</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line226">226</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line227">227</a>     links.collect { |link| link_to(link[0], link[1], :class =&gt; link[2]) }.join unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line228">228</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line229">229</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jun 02 12:26:54 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Jun 04 22:52:21 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
