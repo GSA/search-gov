@@ -125,7 +125,7 @@ describe Agency do
       end
     end
   end
-  
+
   describe "#flickr_profile_link" do
     before do
       @agency = Agency.create!(@valid_attributes)
@@ -148,4 +148,37 @@ describe Agency do
       end
     end
   end
+
+  describe "#displayable_popular_urls" do
+
+      before do
+        @pop_agency = Agency.create!(@valid_attributes)
+        agency_base_url = "http://www.#{@valid_attributes[:domain]}/"
+        @sample_pop_page_data = [
+            ["", "Welcome to the IRS", 1],
+            ["forms/index.html", "IRS Forms", 2],
+            ["forms/1040.pdf", "1040NR", 4],
+            ["forms/1040-nr.pdf", "1040NR", 6],
+            ["forms/1041-nr.pdf", "1041NR, the form that nobody ever ever ever ever uses to file anything they would not want to be seen posted on a sandwich board in downtown NY", 3],
+            ["forms/1041.pdf", "1041", 5]
+        ]
+        @sample_pop_page_data.each_with_index { |values, rank|
+          @pop_agency.agency_popular_urls.create!( :url => agency_base_url +values[0], :title => values[1], :rank => values[2])
+        }
+      end
+
+      it "should have six displayable popular pages" do
+        @pop_agency.instance_variable_defined?(:@cached_displayable_popular_urls).should be_false
+        pop_pages = @pop_agency.displayable_popular_urls
+        pop_pages[0..4].collect { |pp| pp.rank }.should eql ((1.upto(5)).collect {|n| n})
+        pop_pages.size.should eql( @sample_pop_page_data.size )
+        @pop_agency.instance_variable_defined?(:@cached_displayable_popular_urls).should be_true
+        @pop_agency.displayable_popular_urls.should be pop_pages
+      end
+
+      after do
+        @pop_agency.destroy
+      end
+  end
+
 end 

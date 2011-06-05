@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110602164037) do
+ActiveRecord::Schema.define(:version => 20110603204350) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -77,6 +77,15 @@ ActiveRecord::Schema.define(:version => 20110602164037) do
     t.string   "facebook_username", :limit => 75
     t.string   "flickr_url"
   end
+
+  create_table "agency_popular_urls", :force => true do |t|
+    t.integer "agency_id", :null => false
+    t.string  "url",       :null => false
+    t.integer "rank",      :null => false
+    t.string  "title",     :null => false
+  end
+
+  add_index "agency_popular_urls", ["agency_id"], :name => "index_agency_popular_urls_on_agency_id"
 
   create_table "agency_queries", :force => true do |t|
     t.string   "phrase"

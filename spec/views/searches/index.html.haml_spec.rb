@@ -173,6 +173,8 @@ describe "searches/index.html.haml" do
         @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :twitter_username => 'IRSnews')
         @agency.agency_urls << AgencyUrl.new(:url => 'http://www.irs.gov/', :locale => 'en')
         @agency.agency_urls << AgencyUrl.new(:url => 'http://www.irs.gov/es/', :locale => 'es')
+        @agency.agency_popular_urls << AgencyPopularUrl.new( :url => 'http://www.irs.gov/forms/1040.pdf', :title => "Form 1040", :rank => 1)
+        @agency.agency_popular_urls << AgencyPopularUrl.new( :url => 'http://www.irs.gov/forms/1040nr.pdf', :title => "Form 1040-NR", :rank => 2)
         @agency_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
         @search.stub!(:query).and_return "irs"
         @search_result = {'title' => "Internal Revenue Service",
@@ -202,6 +204,10 @@ describe "searches/index.html.haml" do
           rendered.should have_selector "input[type='submit'][value='Search']"
           rendered.should have_selector("a", :href => @agency.twitter_profile_link, :target => "_blank", :content => @agency.twitter_profile_link)
           rendered.should_not contain("Facebook:")
+          rendered.should have_selector("div[class='popular']")
+          rendered.should contain(/Form 1040-NR/)
+          rendered.should_not contain(/Páginas populares/)
+          rendered.should contain(/Popular Pages/)
         end
       end
 
@@ -217,6 +223,8 @@ describe "searches/index.html.haml" do
           rendered.should_not contain(/Search within irs.gov/)
           rendered.should have_selector "form[action='/search']"
           rendered.should_not have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
+          rendered.should_not have_selector("div[class='popular']")
+          rendered.should_not contain(/Popular Pages/)
         end
       end
 
@@ -257,6 +265,10 @@ describe "searches/index.html.haml" do
             rendered.should have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
             rendered.should have_selector "input[type='hidden'][name='locale'][value='es']"
             rendered.should have_selector "input[type='submit'][value='Buscar']"
+            rendered.should have_selector("div[class='popular']")
+            rendered.should contain(/Form 1040-NR/)
+            rendered.should contain(/Páginas populares/)
+            rendered.should_not contain(/Popular Pages/)
           end
         end
 

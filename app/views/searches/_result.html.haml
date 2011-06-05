@@ -19,6 +19,14 @@
           = text_field_tag 'query'
           = submit_tag t :search
       = display_agency_social_media_links(search.agency)
+      - unless search.agency.displayable_popular_urls.empty?
+        .popular
+          .common_1
+            %p.toptitle= t:agency_popular_pages
+          %ul
+            - search.agency.displayable_popular_urls[0..4].each do |popular_page|
+              %li{:href => popular_page.url}= popular_page.title
+
 - else
   .searchresult.clearfix{:id => "searchresult#{index+1}"}
     %h2= display_result_title(result, search, affiliate, index)
