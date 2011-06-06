@@ -116,7 +116,7 @@ UsasearchRails3::Application.routes.draw do
   match '/analytics/queries' => 'analytics/home#queries', :as => :analytics_queries
   match '/analytics/query_search' => 'analytics/query_searches#index', :as => :analytics_query_search
   match '/analytics/timeline/:query' => 'analytics/timeline#show', :as => :query_timeline, :constraints => { :query => /.*/ }
-  match 'affiliates/:id/analytics/timeline/:query' => 'affiliates/timeline#show', :as => :affiliate_query_timeline
+  match 'affiliates/:id/analytics/timeline/(:query)' => 'affiliates/timeline#show', :as => :affiliate_query_timeline, :constraints => { :query => /.*/ }
   match '/analytics/monthly_reports' => 'analytics/monthly_reports#index', :as => :monthly_reports
   match '/' => 'home#index', :as => :home_page
   match '/contact_form' => 'home#contact_form', :as => :contact_form
