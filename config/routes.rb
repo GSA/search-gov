@@ -38,6 +38,7 @@ UsasearchRails3::Application.routes.draw do
       collection do
         post :upload
         post :preferences
+        get :demo
       end
     end
     resources :analytics, :controller => "affiliates/analytics", :only => [:index] do

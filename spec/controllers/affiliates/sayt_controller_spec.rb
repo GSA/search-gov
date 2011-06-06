@@ -156,4 +156,20 @@ describe Affiliates::SaytController do
       end
     end
   end
+
+  describe "#demo" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      Affiliate.should_receive(:find_by_id).and_return(@affiliate)
+      get :demo, :affiliate_id => @affiliate.id
+    end
+
+    it "assigns affiliate" do
+      assigns[:affiliate].should == @affiliate
+    end
+
+    it "renders affiliate_sayt layout" do
+      response.should render_template 'layouts/affiliate_sayt'
+    end
+  end
 end

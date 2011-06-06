@@ -1,6 +1,6 @@
 class Affiliates::SaytController < Affiliates::AffiliatesController
-  before_filter :require_affiliate_or_admin
-  before_filter :setup_affiliate
+  before_filter :require_affiliate_or_admin, :except => 'demo'
+  before_filter :setup_affiliate, :except => 'demo'
 
   def index
     @title = "Type-ahead Search - "
@@ -56,5 +56,10 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
     end
     flash[:success] = 'Preferences updated.'
     redirect_to affiliate_type_ahead_search_index_path(@affiliate)    
+  end
+
+  def demo
+    @affiliate = Affiliate.find_by_id(params[:affiliate_id])
+    render :layout => 'affiliate_sayt'
   end
 end
