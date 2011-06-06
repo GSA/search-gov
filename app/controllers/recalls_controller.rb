@@ -11,11 +11,13 @@ class RecallsController < ApplicationController
 
   def index
     @latest_recalls = Recall.search_for("", {:sort => "date"})
+    @search_vertical = :recall
   end
 
   def search
     respond_to do |format|
       format.html {
+        @search_vertical = :recall
         @query = params[:query] || ""
 
         redirect_to recalls_path and return if @query.blank?
@@ -29,6 +31,7 @@ class RecallsController < ApplicationController
           @paginated_results = WillPaginate::Collection.create(@search.hits.current_page, @search.hits.per_page, pagination_total * @search.hits.per_page) { |pager| pager.replace(@search.hits) }
         end
         @page_title = @query
+        log_serp_impressions
       }
       format.json {
         api_search
@@ -91,5 +94,11 @@ class RecallsController < ApplicationController
         @valid_params[:start_date], @valid_params[:end_date] = Date.parse("#{Date.current.year - 1}-01-01"), Date.parse("#{Date.current.year - 1}-12-31")
       end
     end
+  end
+
+  def log_serp_impressions
+    modules = []
+    modules << "RECALL" unless @search.nil? or @search.total.zero?
+    QueryImpression.log(:recall, Affiliate::USAGOV_AFFILIATE_NAME, @query, modules)
   end
 end

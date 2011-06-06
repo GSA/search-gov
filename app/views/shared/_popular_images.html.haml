@@ -1,6 +1,6 @@
 .govbox
-  %h3    
+  %h3
     = link_to t(:images_for, :query => "<b>#{search.query}</b>").html_safe, image_search_path({:query => params[:query], :locale => params[:locale]})
   - search.extra_image_results[0..3].each_with_index do |result, index|
     %span.small_image_result{:id => "searchresult#{index+1}"}
-      = display_thumbnail_image_link(result, search, index, 140, 90)
+      = display_thumbnail_image_link(result, search, index, @search_vertical, 140, 90)

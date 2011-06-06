@@ -1,7 +1,7 @@
-function clk(a, b, c, d, e, f) {
+function clk(a, b, c, d, e, f, g, h) {
   if (document.images) {
     var img = new Image;
-    img.src = ['/clicked?','u=',encodeURIComponent(b),'&q=',escape(a),'&p=',c,'&a=',d,'&s=',e,'&t=',f].join('');
+    img.src = ['/clicked?','u=',encodeURIComponent(b),'&q=',escape(a),'&p=',c,'&a=',d,'&s=',e,'&t=',f,'&v=',g,'&l=',h].join('');
   }
   return true;
 }
@@ -34,15 +34,15 @@ jQuery(document).ready(function() {
     jQuery('.share').share();
 });
 
-jQuery(document).ready(function () {	
+jQuery(document).ready(function () {
 	jQuery('.nav li').hover(
 		function () {
 			//show submenu
 			jQuery('ul', this).slideDown(100);
-		}, 
+		},
 		function () {
 			//hide submenu
-			jQuery('ul', this).slideUp(100);			
+			jQuery('ul', this).slideUp(100);
 		}
 	);
 });

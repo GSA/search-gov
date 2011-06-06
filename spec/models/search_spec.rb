@@ -1014,16 +1014,13 @@ describe Search do
 
     context "on normal search runs" do
       before do
-        @search = Search.new(@valid_options.merge(:query => 'data'))
-        json    = File.read(::Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
-        parsed  = JSON.parse(json)
+        @search = Search.new(@valid_options.merge(:query => 'logme'))
+        parsed  = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json"))
         JSON.stub!(:parse).and_return parsed
-        @time = Time.now
-        Time.stub!(:now).and_return @time
       end
 
-      it "should log JSON info about the query, including locale, affiliate, timestamp, piped modules shown, and the query" do
-        Rails.logger.should_receive(:info).with(/[Query Impression] \{.*\"modules\":\"BWEB|BSPEL\".*\}/)
+      it "should log info about the query" do
+        QueryImpression.should_receive(:log).with(:web, @affiliate.name, 'logme', %w{BWEB OVER BSPEL})
         @search.run
       end
     end

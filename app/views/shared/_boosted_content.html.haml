@@ -2,6 +2,6 @@
   - search.boosted_contents.hits(:verify => true).each_with_index do |hit, index|
     - boosted_content_url = hit.instance.url
     .searchresult{:id => "boostedresult#{index+1}"}
-      %h2= link_to highlight_hit(hit, :title).html_safe, boosted_content_url
+      %h2= boosted_content_link_with_click_tracking(highlight_hit(hit, :title).html_safe, boosted_content_url, @affiliate, search.query, index, @search_vertical)
       %h3= highlight_hit(hit, :description).html_safe
-      %h3= link_to shorten_url(boosted_content_url), boosted_content_url
+      %h3= boosted_content_link_with_click_tracking(h(shorten_url(boosted_content_url)), boosted_content_url, @affiliate, search.query, index, @search_vertical)

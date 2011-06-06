@@ -4,13 +4,13 @@ require 'ostruct'
 describe SearchHelper do
   fixtures :affiliates
 
-  describe "#display_result_links" do
+  describe "#display_bing_result_links" do
     it "should shorten really long URLs" do
       result = {}
       result['unescapedUrl'] = "actual content is..."
       result['cacheUrl'] = "...not important here"
       helper.should_receive(:shorten_url).once
-      helper.display_result_links(result, Search.new, Affiliate.new, 1)
+      helper.display_bing_result_links(result, Search.new, Affiliate.new, 1, :web)
     end
   end
 
@@ -56,17 +56,17 @@ describe SearchHelper do
       spotlight_html = "<li><a href='foo'>bar</a></li><li><a href='blat'>baz</a></li>"
       query = "bdd"
       queried_at_seconds = 1271978870
-      html = helper.render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)
-      html.should == "<li><a href=\"foo\" onmousedown=\"return clk('bdd',this.href, 1, '', 'SPOT', 1271978870)\">bar</a></li><li><a href=\"blat\" onmousedown=\"return clk('bdd',this.href, 2, '', 'SPOT', 1271978870)\">baz</a></li>"
+      html = helper.render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds, :web)
+      html.should == "<li><a href=\"foo\" onmousedown=\"return clk('bdd',this.href, 1, '', 'SPOT', 1271978870, 'web', 'en')\">bar</a></li><li><a href=\"blat\" onmousedown=\"return clk('bdd',this.href, 2, '', 'SPOT', 1271978870, 'web', 'en')\">baz</a></li>"
     end
   end
 
-  describe "#spelling_suggestion(search, affiliate)" do
+  describe "#bing_spelling_suggestion_for(search, affiliate, vertical)" do
     it "should return HTML escaped output containing the initial query and the suggestion" do
       affiliate = affiliates(:basic_affiliate)
       search = Search.new(:query=>"<initialquery>", :affiliate=> affiliate)
       search.stub!(:spelling_suggestion).and_return("<suggestion>")
-      html = helper.spelling_suggestion(search, affiliate)
+      html = helper.bing_spelling_suggestion_for(search, affiliate, :web)
       html.should contain("We're including results for <suggestion>. Do you want results only for <initialquery>?")
       html.should =~ /&lt;initialquery&gt;/
       html.should =~ /&lt;suggestion&gt;/
@@ -158,11 +158,13 @@ describe SearchHelper do
     end
   end
 
-  describe "#display_deep_links_for(result)" do
+  describe "#display_deep_links_for(result, search, affiliate, vertical)" do
     before do
       deep_links=[]
       8.times { |idx| deep_links << OpenStruct.new(:title=>"title #{idx}", :url => "url #{idx}") }
       @result = {"title"=>"my title", "deepLinks"=>deep_links, "cacheUrl"=>"cached", "content"=>"Some content", "unescapedUrl"=>"http://www.gsa.gov/someurl"}
+      @search = mock("Search", :query => "q", :spelling_suggestion => "x", :queried_at_seconds => Time.now.to_i)
+      @affiliate = affiliates(:power_affiliate)
     end
 
     context "when there are no deep links" do
@@ -170,14 +172,14 @@ describe SearchHelper do
         @result['deepLinks']=nil
       end
       it "should return nil" do
-        helper.display_deep_links_for(@result).should be_nil
+        helper.display_deep_links_for(@result, @search, @affiliate, :web).should be_nil
       end
     end
 
     context "when there are deep links" do
       it "should render deep links in two columns" do
-        html = helper.display_deep_links_for(@result)
-        html.should match("<tr><td><a href=\"url 0\">title 0</a></td><td><a href=\"url 1\">title 1</a></td></tr><tr><td><a href=\"url 2\">title 2</a></td><td><a href=\"url 3\">title 3</a></td></tr><tr><td><a href=\"url 4\">title 4</a></td><td><a href=\"url 5\">title 5</a></td></tr><tr><td><a href=\"url 6\">title 6</a></td><td><a href=\"url 7\">title 7</a></td></tr>")
+        html = helper.display_deep_links_for(@result, @search, @affiliate, :web)
+        html.should match("<tr><td><a href=\"url 0\".*>title 0</a></td><td><a href=\"url 1\".*>title 1</a></td></tr><tr><td><a href=\"url 2\".*>title 2</a></td><td><a href=\"url 3\".*>title 3</a></td></tr><tr><td><a href=\"url 4\".*>title 4</a></td><td><a href=\"url 5\".*>title 5</a></td></tr><tr><td><a href=\"url 6\".*>title 6</a></td><td><a href=\"url 7\".*>title 7</a></td></tr>")
       end
     end
 
@@ -187,7 +189,7 @@ describe SearchHelper do
       end
 
       it "should show a maximum of 8 deep links" do
-        html = helper.display_deep_links_for(@result)
+        html = helper.display_deep_links_for(@result, @search, @affiliate, :web)
         html.should_not match(/ninth/)
       end
     end
@@ -198,8 +200,8 @@ describe SearchHelper do
       end
 
       it "should have an empty last spot" do
-        html = helper.display_deep_links_for(@result)
-        html.should match("<tr><td><a href=\"url 6\">title 6</a></td><td></td></tr>")
+        html = helper.display_deep_links_for(@result, @search, @affiliate, :web)
+        html.should match("title 6</a></td><td></td></tr></table>")
       end
     end
   end
@@ -294,7 +296,7 @@ describe SearchHelper do
     end
   end
 
-  describe "#display_image_result_links" do
+  describe "#display_bing_image_result_links" do
     before do
       @result = { 'Url' => 'http://aHost.gov/aPath',
                   'title' => 'aTitle',
@@ -309,26 +311,26 @@ describe SearchHelper do
 
     it "should generate onmousedown with affiliate name" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds).
+            with(@query, @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
-      helper.display_image_result_links(@result, @search, @affiliate, @index)
+      helper.display_bing_image_result_links(@result, @search, @affiliate, @index, :image)
     end
 
     it "should generate onmousedown with blank affiliate name if affiliate is nil" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['MediaUrl'], @index, "", "IMAG", @search.queried_at_seconds).
+            with(@query, @result['MediaUrl'], @index, "", "IMAG", @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
-      helper.display_image_result_links(@result, @search, nil, @index)
+      helper.display_bing_image_result_links(@result, @search, nil, @index, :image)
     end
 
     it "should contain tracked links" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds).
+            with(@query, @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
       helper.should_receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr).and_return("thumbnail_image_link_content")
       helper.should_receive(:tracked_click_thumbnail_link).with(@result, @onmousedown_attr).and_return("thumbnail_link_content")
 
-      content = helper.display_image_result_links(@result, @search, @affiliate, @index)
+      content = helper.display_bing_image_result_links(@result, @search, @affiliate, @index, :image)
 
       content.should contain("thumbnail_image_link_content")
       content.should contain("thumbnail_link_content")
@@ -337,9 +339,9 @@ describe SearchHelper do
     it "should use spelling suggestion as the query if one exists" do
       @search = mock('search', {:query => 'satalate', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
       helper.should_receive(:onmousedown_attribute_for_image_click).
-          with("satellite", @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds).
+          with("satellite", @result['MediaUrl'], @index, @affiliate.name, "IMAG", @search.queried_at_seconds, :image).
           and_return(@onmousedown_attr)
-      helper.display_image_result_links(@result, @search, @affiliate, @index)
+      helper.display_bing_image_result_links(@result, @search, @affiliate, @index, :image)
     end
   end
 
@@ -357,10 +359,10 @@ describe SearchHelper do
 
     it "should contain tracked thumbnail image link" do
       helper.should_receive(:onmousedown_attribute_for_image_click).
-            with(@query, @result['MediaUrl'], @index, nil, "IMAG", @search.queried_at_seconds).
+            with(@query, @result['MediaUrl'], @index, nil, "IMAG", @search.queried_at_seconds, :image).
             and_return(@onmousedown_attr)
       helper.should_receive(:tracked_click_thumbnail_image_link).with(@result, @onmousedown_attr, 140, 90).and_return("thumbnail_image_link_content")
-      content = helper.display_thumbnail_image_link(@result, @search, @index, 140, 90)
+      content = helper.display_thumbnail_image_link(@result, @search, @index, :image, 140, 90)
       content.should contain("thumbnail_image_link_content")
     end
   end
@@ -395,22 +397,22 @@ describe SearchHelper do
   describe "#onmousedown_attribute_for_image_click" do
     it "should return with escaped query parameter and (index + 1) value" do
       now = Time.now.to_i
-      content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "mediaUrl", 99, "affiliate name", "SOURCE", now)
-      content.should == "return clk('NASA\\'s Space Rock', 'mediaUrl', 100, 'affiliate name', 'SOURCE', #{now})"
+      content = helper.onmousedown_attribute_for_image_click("NASA's Space Rock", "mediaUrl", 99, "affiliate name", "SOURCE", now, :image)
+      content.should == "return clk('NASA\\'s Space Rock', 'mediaUrl', 100, 'affiliate name', 'SOURCE', #{now}, 'image', 'en')"
     end
   end
 
   describe "#tracked_click_link" do
     it "should track spelling suggestion as the query if one exists" do
       search = mock('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => 'satellite'})
-      helper.should_receive(:onmousedown_for_click).with(search.spelling_suggestion, 100, '', 'BWEB', search.queried_at_seconds)
-      helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB')
+      helper.should_receive(:onmousedown_for_click).with(search.spelling_suggestion, 100, '', 'BWEB', search.queried_at_seconds, :image)
+      helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB', :image)
     end
 
     it "should track query if spelling suggestion does not exist" do
       search = mock('search', {:query => 'satalite', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil})
-      helper.should_receive(:onmousedown_for_click).with(search.query, 100, '', 'BWEB', search.queried_at_seconds)
-      helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB')
+      helper.should_receive(:onmousedown_for_click).with(search.query, 100, '', 'BWEB', search.queried_at_seconds, :image)
+      helper.tracked_click_link("aUrl", "aTitle", search, nil, 100, 'BWEB', :image)
     end
   end
 

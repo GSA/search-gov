@@ -4,12 +4,12 @@
     - @search.related_search.each_with_index do |related_term, index|
       - options = {:query=>related_term}
       - options[:affiliate] = @affiliate.name if @affiliate
-      %li= tracked_click_link(search_path(options),h(related_term.sentence_case), @search, @affiliate, index, 'CREL')
+      %li= tracked_click_link(search_path(options),h(related_term.sentence_case), @search, @affiliate, index, 'CREL', @search_vertical)
 - else
   &nbsp
 - if (@search && @search.faqs && @search.faqs.total > 0)
   %h3.alt= t :related_faqs_header
   %ul{:id => "related_faqs"}
     - @search.faqs.hits(:verify => true).each_with_index do |hit, index|
-      %li= tracked_click_link(hit.instance.url,highlight_hit(hit, :question), @search, nil, index, 'FAQS')
+      %li= tracked_click_link(hit.instance.url,highlight_hit(hit, :question), @search, nil, index, 'FAQS', @search_vertical)
   .more_results= link_to('Source: answers.usa.gov', 'http://answers.usa.gov')

@@ -1,5 +1,5 @@
 - result_partial = result_partial_for(search)
-= spelling_suggestion(search, @affiliate)
+= bing_spelling_suggestion_for(search, @affiliate, @search_vertical)
 - if (search.page == 0 and search.boosted_contents and search.boosted_contents.total > 0)
   = render 'shared/boosted_content', :search => search
 %a{:name => "content"}
@@ -9,11 +9,11 @@
     = results_restriction_message_for(search.fedstates, search_path(request.parameters.merge(:fedstates => nil)))
   - if search.page == 0
     - if search.spotlight
-      #spotlight= render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds)
+      #spotlight= render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds, @search_vertical)
     - elsif (search.recalls && search.recalls.total > 0)
       = render "shared/recall_gov_box", :search => search
     - elsif @search.extra_image_results.present?
-      = render "shared/popular_images", :search => @search
+      = render "shared/popular_images", :search => search
   - search.results.each_with_index do |result, index|
     = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
   = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

@@ -82,7 +82,7 @@ class Search
       @endrecord = startrecord + results.size - 1
       populate_additional_results(response)
     end
-    log_serp_impressions if self.class == Search
+    log_serp_impressions
     true
   end
 
@@ -282,18 +282,24 @@ class Search
 
   def log_serp_impressions
     modules = []
-    modules << "BWEB" unless self.total.zero?
-    modules << "BSPEL" unless self.spelling_suggestion.nil?
+    modules << (self.class.to_s == "ImageSearch" ? "IMAG" : "BWEB") unless self.total.zero?
+    modules << "IMAG" unless self.class.to_s == "ImageSearch" or self.extra_image_results.nil?
+    modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
     modules << "CREL" unless self.related_search.nil? or self.related_search.empty?
     modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
     modules << "SPOT" unless self.spotlight.nil?
+    modules << "RECALL" unless self.recalls.nil?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
-    query_impression_hash = {:time=> Time.now.to_formatted_s(:db),
-                       :affiliate => affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : affiliate.name,
-                       :locale => I18n.locale.to_s,
-                       :query=> self.query,
-                       :modules=> modules.join('|')}
-    Rails.logger.info("[Query Impression] #{query_impression_hash.to_json}")
+    vertical =
+      case self.class.to_s
+        when "ImageSearch"
+          :image
+        when "FormSearch"
+          :form
+        when "Search"
+          :web
+      end
+    QueryImpression.log(vertical, affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : affiliate.name, self.query, modules)
   end
 
   def hits(response)

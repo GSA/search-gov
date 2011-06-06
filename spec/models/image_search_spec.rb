@@ -1,15 +1,22 @@
 require 'spec/spec_helper'
 
 describe ImageSearch do
-  before do
-    # Image search for "White House"
-    uri = "http://api.bing.net/json.aspx?image.offset=0&image.count=10&AppId=A4C32FAE6F3DB386FC32ED1C4F3024742ED30906&sources=Spell+Image+RelatedSearch&Options=EnableHighlighting&query=White%20House%20(scopeid:usagovall%20OR%20site:.gov%20OR%20site:.mil)"
-    @body = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_image_results_for_white_house.json")
+  describe "#run" do
+    before do
+      @search = ImageSearch.new({:query => 'shuttle'})
+    end
+
+    it "should log info about the query" do
+      QueryImpression.should_receive(:log).with(:image, Affiliate::USAGOV_AFFILIATE_NAME, 'shuttle', ["IMAG"])
+      @search.run
+    end
+
   end
 
   subject do
     search = ImageSearch.new(:query => "White House")
-    search.stub!(:perform).and_return(@body)
+    body = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_image_results_for_white_house.json")
+    search.stub!(:perform).and_return(body)
     search.run
     search
   end

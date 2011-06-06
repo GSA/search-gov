@@ -1,14 +1,14 @@
 .govbox
   .searchresult.clearfix{:id => "searchresult#{index+1}"}
-    %h2= display_result_title(result, search, affiliate, index)
+    %h2= display_bing_result_title(result, search, affiliate, index, @search_vertical)
     %h3
-      = display_result_links(result, search, affiliate, index, false)
+      = display_bing_result_links(result, search, affiliate, index, @search_vertical, false)
       |
       = t :agency_official_site
     %h3{:style => 'width: 600px;'}
       = display_result_description(result)
     - if affiliate == nil && index == 0 && search.page == 0
-      = display_deep_links_for(result)
+      = display_deep_links_for(result, search, affiliate, @search_vertical)
     = display_agency_phone_numbers(search.agency)
     %h3{:style => 'margin-top: 5px;'}
       #{t :agency_search_within_label} #{search.agency.domain}

@@ -16,6 +16,7 @@ class SearchesController < ApplicationController
     @form_path = search_path
     @page_title = @search.query
     handle_affiliate_search
+    @search_vertical = :web
     if @search_options[:affiliate]
       render :action => "affiliate_index", :layout => "affiliate"
     else
@@ -33,6 +34,7 @@ class SearchesController < ApplicationController
     @search.run
     @form_path = forms_search_path
     @page_title = @search.query
+    @search_vertical = :form
     respond_to do |format|
       format.html { render :action => :index }
       format.json { render :json => @search }

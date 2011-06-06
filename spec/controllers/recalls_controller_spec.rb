@@ -57,7 +57,7 @@ describe RecallsController do
       end
     end
 
-    context "when making a request for a request without a format (or HTML)" do
+    context "when handling a request without a format (or format = HTML)" do
       it "should render the html template" do
         get :search, :query => 'strollers'
         response.should be_success
@@ -66,6 +66,34 @@ describe RecallsController do
       it "should not care about an API key" do
         get :search, :query => 'strollers', :api_key => 'bad api key'
         response.should be_success
+      end
+
+      context "when there are results" do
+        before do
+          @query_string = "strollers"
+          search = mock(Sunspot::Search)
+          search.stub!(:hits).and_return(stub("Hits", :current_page => 1, :per_page => 1))
+          search.stub!(:results).and_return(stub("Results", :total_pages => 1000))
+          search.stub!(:total).and_return(10000)
+          WillPaginate::Collection.stub!(:create).and_return([])
+          Recall.stub!(:search_for).and_return(search)
+        end
+
+        it "should log the module impression" do
+          QueryImpression.should_receive(:log).with(:recall, Affiliate::USAGOV_AFFILIATE_NAME, @query_string, ["RECALL"])
+          get :search, :query => @query_string
+        end
+      end
+
+      context "when there are no recall results" do
+        before do
+          @query_string = "I don't recall"
+        end
+
+        it "should log a no-results module impression" do
+          QueryImpression.should_receive(:log).with(:recall, Affiliate::USAGOV_AFFILIATE_NAME, @query_string, [])
+          get :search, :query => @query_string
+        end
       end
 
       context "when all parameters specified" do
@@ -334,15 +362,9 @@ describe RecallsController do
         @per_page = 10
 
         @search = mock(Sunspot::Search)
-
-        hits = stub("Hits")
-        hits.stub!(:current_page).and_return(@page)
-        hits.stub!(:per_page).and_return(@per_page)
-        @search.stub!(:hits).and_return(hits)
-
-        results = stub("Results")
-        results.stub!(:total_pages).and_return(1000)
-        @search.stub!(:results).and_return(results)
+        @search.stub!(:hits).and_return(stub("Hits", :current_page => @page, :per_page => @per_page))
+        @search.stub!(:results).and_return(stub("Results", :total_pages => 1000))
+        @search.stub!(:total).and_return(10000)
 
         @valid_options_hash = {"sort" => "rel"}
       end

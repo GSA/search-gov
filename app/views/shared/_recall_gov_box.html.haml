@@ -2,11 +2,11 @@
   %h3<
     = t :recall_govbox_header
     = link_to("#{t(:view_more_recalls)} #{t(:in_english)} >", recalls_search_path(:query => search.query, :locale => "en"), :id =>"view_more_recalls")
-  - search.recalls.hits.each do |hit|
+  - search.recalls.hits.each_with_index do |hit, index|
     .recall
       = render "recalls/industry_icon", :recall => hit.instance
       .details
-        = link_to highlight_like_solr(truncate_on_words(hit.instance.summary, 80), hit.highlights).html_safe, hit.instance.recall_url
+        = display_recall_result_title_with_click_tracking(hit.instance, hit, search.query, index, @search_vertical, 80)
         = t(:in_english)
         .agency
           = t "industry.#{hit.instance.industry}.agency_name"

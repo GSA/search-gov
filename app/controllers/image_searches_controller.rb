@@ -8,6 +8,7 @@ class ImageSearchesController < ApplicationController
     @search.run
     @page_title = @search.query
     handle_affiliate_search
+    @search_vertical = :image
     if @search_options[:affiliate]
       render :action => "affiliate_index", :layout => "affiliate"
     else
@@ -20,7 +21,7 @@ class ImageSearchesController < ApplicationController
   end
 
   private
-    
+
   def handle_affiliate_search
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
@@ -28,7 +29,7 @@ class ImageSearchesController < ApplicationController
       @page_title = "#{t :image_search_results_for} #{@affiliate.name}: #{@search.query}"
     end
   end
-  
+
   def set_search_options
     affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
     @search_options = {

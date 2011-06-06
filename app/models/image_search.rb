@@ -36,4 +36,8 @@ class ImageSearch < Search
   def populate_additional_results(response)
   end
 
+  def related_search_results
+    []
+  end
+
 end

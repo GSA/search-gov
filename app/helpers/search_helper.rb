@@ -10,16 +10,16 @@ module SearchHelper
     end
   end
 
-  def display_image_result_links(result, search, affiliate, index)
+  def display_bing_image_result_links(result, search, affiliate, index, vertical)
     affiliate_name = affiliate.name rescue ""
     query = search.spelling_suggestion ? search.spelling_suggestion : search.query
-    onmousedown_attribute = onmousedown_attribute_for_image_click(query, result["MediaUrl"], index, affiliate_name, "IMAG", search.queried_at_seconds)
+    onmousedown_attribute = onmousedown_attribute_for_image_click(query, result["MediaUrl"], index, affiliate_name, "IMAG", search.queried_at_seconds, vertical)
     html = tracked_click_thumbnail_image_link(result, onmousedown_attribute)
     raw html << tracked_click_thumbnail_link(result, onmousedown_attribute)
   end
 
-  def display_thumbnail_image_link(result, search, index, max_width = nil, max_height = nil)
-    onmousedown_attribute = onmousedown_attribute_for_image_click(search.query, result["MediaUrl"], index, nil, "IMAG", search.queried_at_seconds)
+  def display_thumbnail_image_link(result, search, index, vertical, max_width = nil, max_height = nil)
+    onmousedown_attribute = onmousedown_attribute_for_image_click(search.query, result["MediaUrl"], index, nil, "IMAG", search.queried_at_seconds, vertical)
     tracked_click_thumbnail_image_link(result, onmousedown_attribute, max_width, max_height)
   end
 
@@ -33,10 +33,7 @@ module SearchHelper
 
   def tracked_click_thumbnail_link(result, onmousedown_attr)
     link = URI.parse(result["Url"]).host rescue shorten_url(result["Url"])
-    link_to link,
-            result["MediaUrl"],
-            :onmousedown => onmousedown_attr,
-            :rel => "no-follow"
+    link_to link, result["MediaUrl"], :onmousedown => onmousedown_attr, :rel => "no-follow"
   end
 
   def thumbnail_image_tag(result, max_width=nil, max_height=nil)
@@ -54,8 +51,8 @@ module SearchHelper
               :title  => result["title"]
   end
 
-  def display_result_links (result, search, affiliate, position, show_cache_link = true)
-    html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, 'BWEB')
+  def display_bing_result_links (result, search, affiliate, position, vertical, show_cache_link = true)
+    html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, 'BWEB', vertical)
     unless result['cacheUrl'].blank? or !show_cache_link
       html << " - "
       html << link_to((t :cached), "#{result['cacheUrl']}", :class => 'cache_link')
@@ -63,12 +60,13 @@ module SearchHelper
     raw html
   end
 
-  def display_deep_links_for(result)
+  def display_deep_links_for(result, search, affiliate, vertical)
     return if result["deepLinks"].nil?
     rows = []
+    deep_links_are_all_pos_zero = 0
     result["deepLinks"].in_groups_of(2)[0, 4].each do |row_pair|
-      row = content_tag(:td, row_pair[0].nil? ? "" : link_to((h row_pair[0].title), row_pair[0].url))
-      row << content_tag(:td, row_pair[1].nil? ? "" : link_to((h row_pair[1].title), row_pair[1].url))
+      row =  content_tag(:td, row_pair[0].nil? ? "" : tracked_click_link(h(row_pair[0].url), h(row_pair[0].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))
+      row << content_tag(:td, row_pair[1].nil? ? "" : tracked_click_link(h(row_pair[1].url), h(row_pair[1].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))
       rows << content_tag(:tr, row)
     end
     content_tag(:table, raw(rows), :class=>"deep_links")
@@ -87,36 +85,53 @@ module SearchHelper
     end
   end
 
-  def display_result_title (result, search, affiliate, position)
-    raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB')
+  def display_bing_result_title(result, search, affiliate, position, vertical)
+    raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB', vertical)
   end
 
-  def tracked_click_link(url, title, search, affiliate, position, source, opts = nil)
+  def display_recall_result_url_with_click_tracking(recall_url, query, position, vertical)
+    onmousedown = onmousedown_for_click(query, position, nil, 'RECALL', Time.now.to_i, vertical)
+    raw "<a href=\"#{h recall_url}\" #{onmousedown}>#{shorten_url(recall_url)}</a>"
+  end
+
+  def display_recall_result_title_with_click_tracking(result, hit, query, position, vertical, summary_length)
+    title= (highlight_like_solr(truncate_on_words(result.summary, summary_length), hit.highlights)).html_safe
+    onmousedown = onmousedown_for_click(query, position, nil, 'RECALL', Time.now.to_i, vertical)
+    raw "<a href=\"#{h result.recall_url}\" #{onmousedown}>#{title}</a>"
+  end
+
+  def boosted_content_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)
+    aff_name = affiliate.name rescue ""
+    onmousedown = onmousedown_for_click(query, position, aff_name, 'BOOS', Time.now.to_i, vertical)
+    raw "<a href=\"#{h url}\" #{onmousedown}>#{html_safe_title}</a>"
+  end
+
+  def tracked_click_link(url, title, search, affiliate, position, source, vertical = :web, opts = nil)
     aff_name = affiliate.name rescue ""
     query = search.spelling_suggestion ? search.spelling_suggestion : search.query
     query = query.gsub("'", "\\\\'")
-    onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds)
+    onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds, vertical)
     raw "<a href=\"#{url}\" #{onmousedown} #{opts}>#{title}</a>"
   end
 
-  def render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)
+  def render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds, vertical)
     require 'hpricot'
     doc = Hpricot(spotlight_html)
     (doc/:a).each_with_index do |e, idx|
       url =  e.attributes['href']
       tag = e.inner_html
-      onmousedown = onmousedown_for_click(query, idx, '', 'SPOT', queried_at_seconds)
+      onmousedown = onmousedown_for_click(query, idx, '', 'SPOT', queried_at_seconds, vertical)
       e.swap("<a href=\"#{url}\" #{onmousedown}>#{tag}</a>")
     end
     raw doc.to_html
   end
 
-  def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at)
-    "onmousedown=\"return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at})\""
+  def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at, vertical)
+    "onmousedown=\"return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')\""
   end
 
-  def onmousedown_attribute_for_image_click(query, media_url, zero_based_index, affiliate_name, source, queried_at)
-    "return clk('#{h(escape_javascript(query))}', '#{media_url}', #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at})"
+  def onmousedown_attribute_for_image_click(query, media_url, zero_based_index, affiliate_name, source, queried_at, vertical)
+    "return clk('#{h(escape_javascript(query))}', '#{media_url}', #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
   end
 
   def display_result_description (result)
@@ -138,7 +153,7 @@ module SearchHelper
     search_path(opts)
   end
 
-  def spelling_suggestion(search, affiliate)
+  def bing_spelling_suggestion_for(search, affiliate, vertical)
     if (search.spelling_suggestion)
       rendered_suggestion = translate_bing_highlights(search.spelling_suggestion)
       suggestion_for_url = strip_bing_highlights(search.spelling_suggestion)
@@ -148,8 +163,8 @@ module SearchHelper
       opts.merge!(:query => "+#{search.query}")
       original_url = image_search? ? image_search_path(opts) : search_path(opts)
       did_you_mean = t :did_you_mean,
-                       :assumed_term => tracked_click_link(corrected_url, h(rendered_suggestion), search, affiliate, 0, 'BSPEL', "style='font-weight:bold'"),
-                       :term_as_typed => tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', "style='font-style:italic'")
+                       :assumed_term => tracked_click_link(corrected_url, h(rendered_suggestion), search, affiliate, 0, 'BSPEL', vertical, "style='font-weight:bold'"),
+                       :term_as_typed => tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', vertical, "style='font-style:italic'")
       content_tag(:h4, raw(did_you_mean))
     end
   end

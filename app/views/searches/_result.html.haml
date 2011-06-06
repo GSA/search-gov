@@ -4,8 +4,8 @@
   .searchresult.clearfix{:id => "searchresult#{index+1}"}
     %h2
       = display_result_extname_prefix(result)
-      = display_result_title(result, search, affiliate, index)
+      = display_bing_result_title(result, search, affiliate, index, @search_vertical)
     %h3= display_result_description(result)
-    %h3= display_result_links(result, search, affiliate, index)
+    %h3= display_bing_result_links(result, search, affiliate, index, @search_vertical, false)
     - if affiliate == nil && index == 0 && search.page == 0
-      = display_deep_links_for(result)
+      = display_deep_links_for(result, search, affiliate, @search_vertical)
