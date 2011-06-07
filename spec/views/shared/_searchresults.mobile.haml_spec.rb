@@ -22,6 +22,7 @@ describe "shared/_searchresults.mobile.haml" do
     @search.stub!(:recalls)
     @search.stub!(:agency)
     @search.stub!(:extra_image_results)
+    @search.stub!(:med_topic)
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'
     @deep_link.stub!(:url).and_return 'http://adeeplink.com'

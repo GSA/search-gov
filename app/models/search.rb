@@ -42,7 +42,8 @@ class Search
               :scope_id,
               :queried_at_seconds,
               :enable_highlighting,
-              :agency
+              :agency,
+              :med_topic
 
   def initialize(options = {})
     options ||= {}
@@ -166,6 +167,7 @@ class Search
         @recalls = Recall.recent(query)
         agency_query = AgencyQuery.find_by_phrase(query)
         @agency = agency_query.agency if agency_query
+        @med_topic = MedTopic.search_for(query, I18n.locale.to_s)
       end
     end
     if response.has?(:image) && response.image.total > 0
@@ -290,6 +292,7 @@ class Search
     modules << "SPOT" unless self.spotlight.nil?
     modules << "RECALL" unless self.recalls.nil?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
+    modules << "MEDL" unless self.med_topic.nil?
     vertical =
       case self.class.to_s
         when "ImageSearch"

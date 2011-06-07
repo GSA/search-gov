@@ -88,6 +88,24 @@ module SearchHelper
   def display_bing_result_title(result, search, affiliate, position, vertical)
     raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB', vertical)
   end
+  
+  def display_medline_result_title(search, affiliate, position)
+    raw tracked_click_link(h(search.med_topic.medline_url), highlight_string(h(search.med_topic.medline_title)), search, affiliate, position, "MEDL")
+  end
+  
+  def display_medline_url_with_click_tracking(url, query, position)
+    onmousedown = onmousedown_for_click(query, position, nil, 'MEDL', Time.now.to_i, :web)
+    raw "<a href=\"#{h url}\" #{onmousedown}>#{url}</a>"
+  end
+  
+  def display_medline_topic_with_click_tracking(med_topic, query, position)
+    onmousedown = onmousedown_for_click(query, position, nil, 'MEDL', Time.now.to_i, :web)
+    raw "<a style=\"text-decoration: none;\" href=\"#{h med_topic.medline_url}\" #{onmousedown}>#{med_topic.medline_title}</a>"
+  end
+  
+  def highlight_string(s)
+    "<strong>#{s}</strong>".html_safe
+  end
 
   def display_recall_result_url_with_click_tracking(recall_url, query, position, vertical)
     onmousedown = onmousedown_for_click(query, position, nil, 'RECALL', Time.now.to_i, vertical)
@@ -137,7 +155,11 @@ module SearchHelper
   def display_result_description (result)
     translate_bing_highlights(h(result['content']))
   end
-
+  
+  def display_medline_results_description(summary)
+    truncate(summary, :length => 300, :omission => '...</p>').html_safe
+  end
+  
   def translate_bing_highlights(body)
     body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
   end

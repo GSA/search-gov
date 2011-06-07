@@ -1041,6 +1041,74 @@ describe Search do
         end
       end
     end
+    
+    context "med topics" do
+      fixtures :med_topics
+      before do
+        @ulcerative_colitis_med_topic = med_topics(:ulcerative_colitis)
+        @ulcerative_colitis_es_med_topic = med_topics(:ulcerative_colitis_es)
+      end
+      
+      context "when the search matches a MedTopic record" do
+        before do
+          @search = Search.new(:query => 'ulcerative colitis')
+          @search.run
+        end
+        
+        it "should retrieve the associated Med Topic record" do
+          @search.med_topic.should == @ulcerative_colitis_med_topic
+        end
+      end
+      
+      context "when the locale is not the default" do
+        before do
+          I18n.locale = :es
+          @search = Search.new(:query => 'Colitis ulcerativa')
+          @search.run
+        end
+        
+        it "should retrieve the spanish version of the med topic" do
+          @search.med_topic.should == @ulcerative_colitis_es_med_topic
+        end
+        
+        after do
+          I18n.locale = I18n.default_locale
+        end
+      end
+      
+      context "when the page is not the first page" do
+        before do
+          @search = Search.new(:query => 'ulcerative colitis', :page => 3)
+          @search.run
+        end
+          
+        it "should not set the med topic" do
+          @search.med_topic.should be_nil
+        end
+      end
+    
+      context "when the query does not match a med topic" do
+        before do
+          @search = Search.new(:query => 'government')
+          @search.run
+        end
+        
+        it "should not set the med topic" do
+          @search.med_topic.should be_nil
+        end
+      end
+      
+      context "when the search matches a med topic, but includes an affiliate" do
+        before do
+          @search = Search.new(:query => 'ulcerative colitis', :affiliate => affiliates(:basic_affiliate))
+          @search.run
+        end
+        
+        it "should not set a med topic" do
+          @search.med_topic.should be_nil
+        end
+      end
+    end
 
     context "on normal search runs" do
       before do

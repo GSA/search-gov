@@ -19,6 +19,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:scope_id).and_return nil
     @search.stub!(:fedstates).and_return nil
     @search.stub!(:agency).and_return nil
+    @search.stub!(:med_topic).and_return nil
     assign(:search, @search)
   end
 
@@ -336,6 +337,55 @@ describe "searches/index.html.haml" do
           rendered.should_not contain(/Search within irs.gov/)
           rendered.should have_selector "form[action='/search']"
           rendered.should_not have_selector("input[type='hidden'][name='sitelimit'][value='irs.gov']")
+        end
+      end
+    end
+  
+    context "when a med topic record matches the query" do
+      fixtures :med_topics
+      before do
+        @med_topic = med_topics(:ulcerative_colitis)
+        @search.stub!(:query).and_return "ulcerative colitis"
+        @search_result = {'title' => "Ulcerative Colitis",
+                          'unescapedUrl' => "http://www.nlm.nih.gov/medlineplus/ulcerativecolitis.html",
+                          'content' => "I have ulcerative colitis.",
+                          'cacheUrl' => "http://www.cached.com/url"}
+        @search_results = [@search_result]
+        @search_results.stub!(:total_pages).and_return 1
+        @search.stub!(:results).and_return @search_results
+        @search.stub!(:med_topic).and_return @med_topic
+      end
+      
+      it "should format the result as a Medline Govbox" do
+        render
+        rendered.should contain(/Official result from MedlinePlus/)
+        rendered.should have_selector "img[src^='/images/medline.en.png']"
+        rendered.should contain(/Ulcerative colitis/)
+        rendered.should contain(/Ulcerative colitis is a disease that causes/)
+        rendered.should contain(/Ulcerative colitis can happen at any age, but.../)
+      end
+      
+      context "when the MedTopic has related med topics" do
+        before do
+          @med_topic.related_topics << med_topics(:crohns_disease)
+        end
+        
+        it "should include the related topics in the result" do
+          render
+          rendered.should contain(/Related MedlinePlus Topics/)
+          rendered.should have_selector "a", :href => 'http://www.nlm.nih.gov/medlineplus/crohnsdisease.html', :content => 'Crohn\'s Disease'
+        end
+      end
+      
+      context "when the MedTopic has an alternate language version" do
+        before do
+          @med_topic.lang_mapped_topic = med_topics(:ulcerative_colitis_es)
+        end
+        
+        it "should include a link to the alternate version" do
+          render
+          rendered.should contain(/Esta tema en espanol/)
+          rendered.should have_selector "a", :href => 'http://www.nlm.nih.gov/medlineplus/spanish/ulcerativecolitis.html', :content => 'Colitis ulcerativa'
         end
       end
     end
