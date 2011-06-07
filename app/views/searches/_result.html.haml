@@ -1,32 +1,5 @@
 - if search.agency.present? and index == 0 and search.page == 0 and agency_url_matches_by_locale(result['unescapedUrl'], search.agency, I18n.locale)
-  .govbox
-    .searchresult.clearfix{:id => "searchresult#{index+1}"}
-      %h2= display_result_title(result, search, affiliate, index)
-      %h3
-        = display_result_links(result, search, affiliate, index, false)
-        |
-        = t :agency_official_site
-      %h3{:style => 'width: 600px;'}
-        = display_result_description(result)
-      - if affiliate == nil && index == 0 && search.page == 0
-        = display_deep_links_for(result)
-      = display_agency_phone_numbers(search.agency)
-      %h3{:style => 'margin-top: 5px;'}
-        #{t :agency_search_within_label} #{search.agency.domain}
-        = form_tag search_path, :method => :get, :style => 'margin-bottom: 0.5em' do
-          = hidden_field_tag 'sitelimit', search.agency.domain
-          = hidden_field_tag 'locale', I18n.locale.to_s
-          = text_field_tag 'query'
-          = submit_tag t :search
-      = display_agency_social_media_links(search.agency)
-      - unless search.agency.displayable_popular_urls.empty?
-        .popular
-          .common_1
-            %p.toptitle= t:agency_popular_pages
-          %ul
-            - search.agency.displayable_popular_urls[0..4].each do |popular_page|
-              %li{:href => popular_page.url}= popular_page.title
-
+  = render 'shared/agency_gov_box', :result => result, :search => search, :affiliate => affiliate, :index => index
 - else
   .searchresult.clearfix{:id => "searchresult#{index+1}"}
     %h2= display_result_title(result, search, affiliate, index)

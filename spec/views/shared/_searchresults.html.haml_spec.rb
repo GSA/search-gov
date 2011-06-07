@@ -20,6 +20,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:fedstates)
     @search.stub!(:recalls)
     @search.stub!(:agency)
+    @search.stub!(:extra_image_results)
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'
     @deep_link.stub!(:url).and_return 'http://adeeplink.com'
@@ -62,6 +63,50 @@ describe "shared/_searchresults.html.haml" do
       it "should not show any deep links" do
         render
         rendered.should_not have_selector('table', :class => 'deep_links')
+      end
+      
+      context "when boosted contents are present" do
+        before do
+          @search.stub!(:boosted_contents).and_return [mock(BoostedContent)]
+        end
+        
+        it "should not show boosted contesnts" do
+          render
+          rendered.should_not have_selector('boosted_content')
+        end
+      end
+      
+      context "when a spotlight is present" do
+        before do
+          @search.stub!(:spotlight).and_return mock(Spotlight)
+        end
+        
+        it "should not show a spotlight" do
+          render
+          rendered.should_not have_selector('spotlight')
+        end
+      end
+      
+      context "when a recalls record is present" do
+        before do
+          @search.stub!(:recalls).and_return [mock(Recall)]
+        end
+        
+        it "should not show a recalls govbox" do
+          render
+          rendered.should_not have_selector('govbox')
+        end
+      end
+      
+      context "when extra image results are present" do
+        before do
+          @search.stub!(:extra_image_results).and_return "ExtraImageResults"
+        end
+        
+        it "should not show a popular image govbox" do
+          render
+          rendered.should_not have_selector('govbox')
+        end
       end
     end
 

@@ -1,22 +1,19 @@
 - result_partial = result_partial_for(search)
 = spelling_suggestion(search, @affiliate)
-- if (search.boosted_contents && search.boosted_contents.total > 0)
-  #boosted
-    - search.boosted_contents.hits(:verify => true).each_with_index do |hit, index|
-      - boosted_content_url = hit.instance.url
-      .searchresult{:id => "boostedresult#{index+1}"}
-        %h2= link_to highlight_hit(hit, :title).html_safe, boosted_content_url
-        %h3= highlight_hit(hit, :description).html_safe
-        %h3= link_to shorten_url(boosted_content_url), boosted_content_url
+- if (search.page == 0 and search.boosted_contents and search.boosted_contents.total > 0)
+  = render 'shared/boosted_content', :search => search
 %a{:name => "content"}
 - if search.results.present?
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)
   - if (search && search.fedstates && search.fedstates != 'all')
     = results_restriction_message_for(search.fedstates, search_path(request.parameters.merge(:fedstates => nil)))
-  - if search.spotlight
-    #spotlight= render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds)
-  - if (search.recalls && search.recalls.total > 0)
-    = render "shared/recall_gov_box", :search => search
+  - if search.page == 0
+    - if search.spotlight
+      #spotlight= render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds)
+    - elsif (search.recalls && search.recalls.total > 0)
+      = render "shared/recall_gov_box", :search => search
+    - elsif @search.extra_image_results.present?
+      = render "shared/popular_images", :search => @search
   - search.results.each_with_index do |result, index|
     = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
   = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

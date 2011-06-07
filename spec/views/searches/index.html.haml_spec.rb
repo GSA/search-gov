@@ -3,6 +3,7 @@ describe "searches/index.html.haml" do
   before do
     @search = stub("Search")
     @search.stub!(:query).and_return "test"
+    @search.stub!(:page).and_return 0
     @search.stub!(:spelling_suggestion).and_return nil
     @search.stub!(:related_search).and_return []
     @search.stub!(:queried_at_seconds).and_return(1271978870)
