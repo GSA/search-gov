@@ -11,6 +11,11 @@ Feature: Image search
     And I should not see "ROBOTS" meta tag
     And I should see "Busque en español"
     And I should not see "Advanced Search"
+    And I should see "Connect with USASearch" in the connect section
+    And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
+    And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
+    And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
+    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     When I follow "USASearch Images Home"
     Then I should be on the images page
     When I fill in "query" with "White House"
@@ -20,6 +25,11 @@ Feature: Image search
     And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see 30 image results
     And I should see "Next"
+    And I should see "Connect with USASearch" in the connect section
+    And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
+    And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
+    And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
+    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     When I follow "USASearch Images Home"
     Then I should be on the images page
 
@@ -29,6 +39,7 @@ Feature: Image search
     And I follow "Imágenes" in the search navigation
     Then I should be on the images page
     And I should see the browser page titled "Buscador.USA.gov Imágenes"
+    And I should not see "Connect with USASearch"
     When I follow "USASearch Images Home"
     Then I should be on the images page
     When I fill in "query" with "White House"
@@ -37,6 +48,7 @@ Feature: Image search
     And I should see the browser page titled "White House - Buscador.USA.gov Imágenes"
     And I should see 30 image results
     And I should see "Siguiente"
+    And I should not see "Connect with USASearch"
     When I follow "USASearch Images Home"
     Then I should be on the images page
 

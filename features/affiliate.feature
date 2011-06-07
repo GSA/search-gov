@@ -30,7 +30,11 @@ Feature: Affiliate clients
   Scenario: Visiting the affiliate welcome page as affiliate
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate welcome page
-    Then I should see "Affiliate Center" link in the main navigation bar
+    Then I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
+    And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
+    And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
+    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
+    And I should see "Affiliate Center" link in the main navigation bar
     And I should not see "Admin Center" link in the main navigation bar
     And I should not see "Analytics Center" link in the main navigation bar
     And I should see the following breadcrumbs: USASearch > Affiliate Program
@@ -39,6 +43,7 @@ Feature: Affiliate clients
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     Then I should see "Affiliate Center" within "title"
+    And I should not see a link to "Twitter"
     And I should see "Affiliate Center" within ".main"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center
     And I should see "Site List"

@@ -10,7 +10,8 @@ Feature: Analytics Homepage
     And there is analytics data from "20090901" thru "20090911"
     And there is popular query data from "20090901" thru "20090911"
     When I am on the analytics homepage
-    Then I should see "Analytics Center" link in the main navigation bar
+    Then I should not see a link to "Twitter"
+    And I should see "Analytics Center" link in the main navigation bar
     And I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center
     When I follow "Analytics Center" in the main navigation bar
     Then I should be on the analytics homepage

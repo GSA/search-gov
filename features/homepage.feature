@@ -10,12 +10,16 @@ Feature: Homepage
     And I should see a link to "FAQs" with url for "http://answers.usa.gov/"
     And I should see a link to "E-mail USA.gov" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"
     And I should see a link to "Chat" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"
-    And I should see a link to "Change Text Size" with url for "http://www.usa.gov/About/Change_Text.shtml"
     And I should see "GOVERNMENT" in the search navigation
+    And I should see a link to "Change Text Size" with url for "http://www.usa.gov/About/Change_Text.shtml"
+    And I should see "Connect with USASearch" in the connect section
+    And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
+    And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
+    And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
+    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage footer
     And I should see a link to "Website Policies" with url for "http://www.usa.gov/About/Important_Notices.shtml"
     And I should see a link to "Privacy" with url for "http://www.usa.gov/About/Privacy_Security.shtml"
-    And I should see "Mobile"
     And I should see "USASearch Program"
     And I should see "Affiliate Program"
     And I should see "APIs and Web Services"
@@ -30,6 +34,11 @@ Feature: Homepage
     And I should see "visa lottery"
     And I should see 10 search results
     And I should see "Next"
+    And I should see "Connect with USASearch" in the connect section
+    And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
+    And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
+    And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
+    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
 
   Scenario: A nonsense search from the home page
     Given I am on the homepage
@@ -57,6 +66,7 @@ Feature: Homepage
     And I should see a link to "Contactos" with url for "http://www.usa.gov/gobiernousa/Contactenos.shtml"
     And I should see "GOBIERNO" in the search navigation
     And I should see a link to "Cambiar el tamaño del texto" with url for "http://www.usa.gov/gobiernousa/Tamano_Texto.shtml"
+    And I should not see "Connect with USASearch"
     And I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml" in the homepage footer
     And I should see a link to "Políticas del sitio" with url for "http://www.usa.gov/gobiernousa/Politicas_Sitio.shtml"
     And I should see a link to "Privacidad" with url for "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"

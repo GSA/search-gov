@@ -28,7 +28,11 @@ Then /^I should see the following breadcrumbs: (.+)$/ do |breadcrumbs|
 end
 
 Then /^I should see a link to "([^"]*)" with url for "([^"]*)"$/ do |name, url|
-  page.should have_selector("a", :href => url, :text => name)
+  page.should have_selector("a[href='#{url}']", :text => name)
+end
+
+Then /^I should not see a link to "([^"]*)"$/ do |name|
+  page.should_not have_selector("a", :text => name)
 end
 
 Then /^I should see an image link to "([^"]*)" with url for "([^"]*)"$/ do |name, url|

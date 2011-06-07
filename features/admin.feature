@@ -5,6 +5,7 @@ Feature:  Administration
     Then I should see "Affiliate Program" in the main navigation bar
     And I should see "APIs & Web Services" in the main navigation bar
     And I should see "Search.USA.gov" in the main navigation bar
+    And I should not see a link to "Twitter"
     And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center
     And I should see "Search.USA.gov Admin Center"
     And I should see "Users" within ".main"

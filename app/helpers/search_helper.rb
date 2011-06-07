@@ -189,10 +189,6 @@ module SearchHelper
     link_to((t :advanced_search), advanced_search_path(search_options), :id => 'advanced_search_link')
   end
 
-  def mobile_landing_page?
-    controller.controller_name == "home" and request.format == :mobile
-  end
-
   def web_search?
     ["searches", "home"].include?(controller.controller_name) and controller.action_name == "index"
   end

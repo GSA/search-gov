@@ -36,7 +36,7 @@ module ApplicationHelper
 
   def url_for_mobile_mode(new_mobile_mode)
     new_params = request.params.update({:m => new_mobile_mode.to_s})
-    url_for({:controller => controller.controller_name, :action => controller.action_name, :params => new_params})
+    url_for({:controller => controller.controller_path, :action => controller.action_name, :params => new_params})
   end
 
   def link_to_mobile_mode(text, new_mobile_mode)
@@ -75,7 +75,9 @@ module ApplicationHelper
   end
 
   def footer_links
-    raw iterate_links(FOOTER_LINKS[I18n.locale.to_sym].clone << [t(:mobile), url_for_mobile_home_page])
+    links = FOOTER_LINKS[I18n.locale.to_sym].clone
+    (links << [I18n.translate(:mobile), "http://m.gobiernousa.gov"]) if spanish_locale?
+    raw iterate_links(links)
   end
 
   def render_about_usasearch
@@ -94,7 +96,7 @@ module ApplicationHelper
     links << link_to("USASearch Program", program_path, :class => 'first')
     links << link_to("Affiliate Program", affiliates_path)
     links << link_to("APIs and Web Services", api_docs_path)
-    links << link_to("Search.USA.gov", searchusagov_path)
+    links << link_to("Search.USA.gov", searchusagov_path, :class => 'last')
     raw links
   end
 
@@ -217,6 +219,33 @@ module ApplicationHelper
     raw content
   end
 
+  def mobile_landing_page?
+    controller.controller_path == "home" and request.format == :mobile
+  end
+
+  def render_connect_section
+    return unless english_locale?
+    content_tag(:div, :class => 'connect') do
+      tags = []
+      tags << content_tag(:span, "Connect with USASearch")
+      tags << connect_links
+      tags.join("\n").html_safe
+    end
+  end
+
+  def render_connect_links
+    connect_links if display_connect_links?
+  end
+
+  def connect_links
+    tags = []
+    tags << link_to('Twitter', "http://twitter.com/usasearch", :class => 'twitter', :title => 'Twitter')
+    tags << link_to('Mobile', "http://m.usa.gov", :class => 'mobile', :title => 'Mobile')
+    tags << link_to('Our Blog', "http://searchblog.usa.gov", :class => 'blog', :title => 'Our Blog')
+    tags << link_to('Share', "http://www.addthis.com/bookmark.php", :class => 'share last', :title => 'Share')
+    tags.join("\n").html_safe
+  end
+
   private
 
   def ssl_protocol
@@ -225,5 +254,10 @@ module ApplicationHelper
 
   def iterate_links(links)
     links.collect { |link| link_to(link[0], link[1], :class => link[2]) }.join unless links.nil?
+  end
+
+  def display_connect_links?
+    return true if %w{ home images recalls forms searches image_searches pages }.include?(controller.controller_path)
+    controller.controller_path == 'affiliates/home' and %w{ index demo how_it_works }.include?(controller.action_name)
   end
 end

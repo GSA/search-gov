@@ -6,15 +6,6 @@ Feature: Mobile Search
   Background:
     Given I am using a mobile device
 
-  Scenario: Visiting the home page from a desktop browser
-    Given I am using a desktop device
-    And I am on the homepage
-    Then I should see "Mobile"
-    When I follow "Mobile"
-    And I follow "USASearch Home"
-    Then I should be on the homepage
-    And I should see "USA.gov Full Site"
-
   Scenario: Visiting the home page with a mobile device
     Given I am on the homepage
     Then I should see "INDEX, NOFOLLOW" in "ROBOTS" meta tag
@@ -45,12 +36,6 @@ Feature: Mobile Search
     Given I am using a desktop device
     And I am on the Spanish homepage
     Then I should see a link to "Móvil" with url for "http://m.gobiernousa.gov"
-
-  Scenario: Using mobile mode with a browser not identified as mobile
-    Given I am using a desktop device
-    And I am on the homepage
-    When I follow "Mobile"
-    Then I should see "Contact your Government"
 
   Scenario: A search on the mobile home page
     Given I am on the homepage

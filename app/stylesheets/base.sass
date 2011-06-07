@@ -236,8 +236,73 @@ a:hover
       :left 10px
     &.first
       :background none
+    &.last
+      :padding-right 0
   a:visited
     :color #595959
+.connect
+  :height 40px
+  :margin 10px auto
+  :width 625px
+  $border-color: #DDE3E7
+  a
+    :background none
+    :border
+      :color $border-color
+      :style solid
+      :width 2px 0
+    :color #25496B
+    :float left
+    :font
+      :size 12px
+      :weight bold
+    :display inline
+    :line-height 36px
+    :margin 0
+    :padding-right 10px
+    :padding-left 40px
+    &.last
+      :border
+        :top-right-radius 5px
+        :bottom-right-radius 5px
+        :width 2px 2px 2px 0
+      :-moz-border-radius-topright 5px
+      :-moz-border-radius-bottomright 5px
+      :padding-right 15px
+    &.twitter
+      :background url(/images/connect/twitter_off.png) no-repeat 10px center
+      &:hover
+        :background url(/images/connect/twitter_on.png) no-repeat 10px center
+    &.mobile
+      :background url(/images/connect/mobile_off.png) no-repeat 10px center
+      &:hover
+        :background url(/images/connect/mobile_on.png) no-repeat 10px center
+    &.blog
+      :background url(/images/connect/blog_off.png) no-repeat 10px center
+      &:hover
+        :background url(/images/connect/blog_on.png) no-repeat 10px center
+    &.share
+      :background url(/images/connect/share_off.png) no-repeat 10px center
+      &:hover
+        :background url(/images/connect/share_on.png) no-repeat 10px center
+  span
+    :background-color $border-color
+    :border
+      :color $border-color
+      :style solid
+      :width 2px 0 2px 2px
+      :top-left-radius 5px
+      :bottom-left-radius 5px
+    :-moz-border-radius-topleft 5px
+    :-moz-border-radius-bottomleft 5px
+    :float left
+    :display inline
+    :font
+      :size 14px
+      :weight bold
+    :line-height 36px
+    :padding 0 15px
+    :margin 0
 .tagline
   :background url(/images/footer_line.gif) no-repeat center top
   :font-size 12px
