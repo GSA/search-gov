@@ -12,7 +12,9 @@
     - search.results.each_with_index do |search_result, index|
       .row{:id => "searchresult#{index+1}"}
         .searchResult
-          .title= display_result_title(search_result, search, affiliate_name, index)
+          .title
+            = display_result_extname_prefix(search_result)
+            = display_result_title(search_result, search, affiliate_name, index)
           .content
             = display_result_description(search_result)
           .links= shorten_url(search_result['unescapedUrl'])
