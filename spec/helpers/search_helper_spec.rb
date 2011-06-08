@@ -14,6 +14,43 @@ describe SearchHelper do
     end
   end
 
+  describe "#display_result_extname_prefix" do
+
+    before do
+      @urls_that_need_a_box = []
+      %w{http ftp}.each do |protocol|
+        ["www.irs.gov", "www2.offthemap.nasa.gov"].each do |host|
+          ["", ":8080"].each do |port|
+            %w{doc.pdf README.TXT readme.txt ~root/Resume.doc showme.pdf showme.pdf?include=all some/longer/path.pdf}.each do |path|
+               @urls_that_need_a_box << "#{protocol}://#{host}#{port}/#{path}"
+            end
+          end
+        end
+      end
+      @urls_that_dont_need_a_box = @urls_that_need_a_box.collect {|url| url.gsub( ".pdf", ".html").gsub( ".PDF", ".HTM").gsub( ".doc", ".html").gsub( ".TXT", ".HTML").gsub( ".txt", ".html") }
+      @urls_that_dont_need_a_box << ":"
+      @urls_that_dont_need_a_box << "http://www.usa.gov/"
+      @urls_that_dont_need_a_box << "http://www.usa.gov/faq"
+      @urls_that_dont_need_a_box << "http://www.usa.gov/faq?q=meaning+of+life"
+    end
+
+    it "should return empty string for most types of URLs" do
+      @urls_that_dont_need_a_box.each do |url|
+        helper.display_result_extname_prefix({'unescapedUrl' => url}).should == ""
+      end
+    end
+
+    it "should return [TYP] span for some URLs" do
+      @urls_that_need_a_box.each do |url|
+        path_extname = url.gsub(/.*\//,"").gsub(/\?.*/,"").gsub(/[a-zA-Z0-9_]+\./,"").upcase
+        prefix = "<span class=\"uext_type\">[#{path_extname.upcase}]</span> "
+        helper.display_result_extname_prefix({'unescapedUrl' => url}).should == prefix
+      end
+
+    end
+
+  end
+
   describe "#render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)" do
     it "should add indexed mousedowns to each link" do
       spotlight_html = "<li><a href='foo'>bar</a></li><li><a href='blat'>baz</a></li>"

@@ -2,7 +2,9 @@
   = render 'shared/agency_gov_box', :result => result, :search => search, :affiliate => affiliate, :index => index
 - else
   .searchresult.clearfix{:id => "searchresult#{index+1}"}
-    %h2= display_result_title(result, search, affiliate, index)
+    %h2
+      = display_result_extname_prefix(result)
+      = display_result_title(result, search, affiliate, index)
     %h3= display_result_description(result)
     %h3= display_result_links(result, search, affiliate, index)
     - if affiliate == nil && index == 0 && search.page == 0

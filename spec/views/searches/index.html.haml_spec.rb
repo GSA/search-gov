@@ -168,6 +168,46 @@ describe "searches/index.html.haml" do
       end
     end
 
+    context "when results link to a PDF" do
+      before do
+        @pdf_url = "http://www.army.mil/~bob/resume.pdf"
+        @search_result = {'title' => "Bob's resume",
+                          'unescapedUrl'=> @pdf_url,
+                          'content'=> "Bob is really good",
+                          'cacheUrl'=> @pdf_url
+        }
+        @search_results = []
+        @search_results.stub!(:total_pages).and_return 1
+        @search.stub!(:results).and_return @search_results
+        @search_results << @search_result
+      end
+
+      it "should insert a [PDF] before the link" do
+        render
+        rendered.should have_selector("span[class='uext_type']")
+      end
+    end
+
+    context "when results link to something not a PDF" do
+      before do
+        @non_pdf_url = "http://www.army.mil/~bob/resume/"
+        @search_result = {'title' => "Bob's resume",
+                          'unescapedUrl'=> @non_pdf_url,
+                          'content'=> "Bob is really good",
+                          'cacheUrl'=> @non_pdf_url
+        }
+        @search_results = []
+        @search_results.stub!(:total_pages).and_return 1
+        @search.stub!(:results).and_return @search_results
+        @search_results << @search_result
+      end
+
+      it "should insert a [PDF] before the link" do
+        render
+        rendered.should_not have_selector("span[class='uext_type']")
+      end
+    end
+
     context "when an agency record matches the query" do
       before do
         Agency.destroy_all

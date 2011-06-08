@@ -1,4 +1,7 @@
 module SearchHelper
+
+  SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls}
+
   def result_partial_for(search)
     if search.is_a?(ImageSearch)
       "/image_searches/result"
@@ -69,6 +72,19 @@ module SearchHelper
       rows << content_tag(:tr, row)
     end
     content_tag(:table, raw(rows), :class=>"deep_links")
+  end
+
+  def display_result_extname_prefix(result)
+    begin
+      path_extname = File.extname(URI.parse(result['unescapedUrl']).path)[1..-1]
+      if SPECIAL_URL_PATH_EXT_NAMES.include?( path_extname.downcase )
+        raw "<span class=\"uext_type\">[#{path_extname.upcase}]</span> "
+      else
+        ""
+      end
+    rescue
+      ""
+    end
   end
 
   def display_result_title (result, search, affiliate, position)
