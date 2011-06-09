@@ -5,5 +5,6 @@ Given /^the following active Spotlights exist:$/ do |table|
     spotty = Spotlight.new(valid_options)
     spotty.spotlight_keywords = spotlight_keywords
     spotty.save!
+    Sunspot.commit
   end
 end
