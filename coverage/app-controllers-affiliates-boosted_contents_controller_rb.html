@@ -399,7 +399,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>       flash[:success] = &quot;Successful Bulk Import for affiliate '#{@affiliate.display_name}':&lt;br/&gt;#{messages.join(&quot;&lt;br/&gt;&quot;)}&quot;</pre></td>
+            <td><pre><a name="line58">58</a>       flash[:success] = &quot;Successful Bulk Import for affiliate '#{ERB::Util.h(@affiliate.display_name)}':&lt;br/&gt;#{messages.join(&quot;&lt;br/&gt;&quot;)}&quot;.html_safe</pre></td>
           </tr>
         
           
@@ -525,7 +525,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Jun 09 04:41:56 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jun 09 13:06:19 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

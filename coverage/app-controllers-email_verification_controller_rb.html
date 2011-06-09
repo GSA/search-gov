@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-email_verification_controller_rb.html">app/controllers/email_verification_controller.rb</a></td>
-            <td class='right_align'><tt>20</tt></td>
-            <td class='right_align'><tt>18</tt></td>
+            <td class='right_align'><tt>21</tt></td>
+            <td class='right_align'><tt>19</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -99,7 +99,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>       flash[:notice] = '&lt;p&gt;Thank you for verifying your email.&lt;/p&gt;'</pre></td>
+            <td><pre><a name="line8">8</a>       notice_message = '&lt;p&gt;Thank you for verifying your email.&lt;/p&gt;'</pre></td>
           </tr>
         
           
@@ -111,19 +111,19 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>         flash[:notice] += &quot;&lt;p&gt;Because you don't have a .gov or .mil email address, your account is pending approval.&lt;/p&gt;&quot;</pre></td>
+            <td><pre><a name="line10">10</a>         notice_message &lt;&lt; &quot;&lt;p&gt;Because you don't have a .gov or .mil email address, your account is pending approval.&lt;/p&gt;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>         flash[:notice] += &quot;&lt;p&gt;We will be in touch with you within two business days to confirm that you are a government employee or contractor and to set up your account.&lt;/p&gt;&quot;</pre></td>
+            <td><pre><a name="line11">11</a>         notice_message &lt;&lt; &quot;&lt;p&gt;We will be in touch with you within two business days to confirm that you are a government employee or contractor and to set up your account.&lt;/p&gt;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>         flash[:notice] += &quot;&lt;p&gt;Regards,&lt;br /&gt;The USASearchTeam&lt;br /&gt;usasearch.gsa.gov&lt;/p&gt;&quot;</pre></td>
+            <td><pre><a name="line12">12</a>         notice_message &lt;&lt; &quot;&lt;p&gt;Regards,&lt;br /&gt;The USASearchTeam&lt;br /&gt;usasearch.gsa.gov&lt;/p&gt;&quot;</pre></td>
           </tr>
         
           
@@ -134,50 +134,56 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>       flash[:notice] = notice_message.html_safe</pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>     else</pre></td>
+            <td><pre><a name="line15">15</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>       flash[:notice] = 'Sorry! Your email verification is invalid. Are you sure you copied the right link from your email?'</pre></td>
+            <td><pre><a name="line16">16</a>       flash[:notice] = 'Sorry! Your email verification is invalid. Are you sure you copied the right link from your email?'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>     end</pre></td>
+            <td><pre><a name="line17">17</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>     redirect_to home_affiliates_path</pre></td>
+            <td><pre><a name="line18">18</a>     redirect_to home_affiliates_path</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>   end</pre></td>
+            <td><pre><a name="line19">19</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a> end</pre></td>
+            <td><pre><a name="line20">20</a> end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a> </pre></td>
+            <td><pre><a name="line21">21</a> </pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jun 09 04:41:56 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jun 09 13:06:19 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
