@@ -162,6 +162,13 @@ describe Affiliates::BoostedContentsController do
       flash[:success].should =~ /2 Boosted Content entries successfully updated/
     end
 
+    it "should send html_safe on flash[:success]" do
+      BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(@affiliate, @xml).and_return({:created => 4, :updated => 2})
+      post :bulk, :affiliate_id => @affiliate.to_param, :xml_file => @xml
+      response.should redirect_to new_affiliate_boosted_content_path
+      flash[:success].should be_html_safe
+    end
+
     it "should notify if errors" do
       @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
 

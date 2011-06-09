@@ -27,6 +27,10 @@ describe EmailVerificationController do
         flash[:notice].should =~ /Thank you/
       end
 
+      it "sends html_safe on flash[:notice]" do
+        flash[:notice].should be_html_safe
+      end
+
       it "redirects to affiliates landing page" do
         response.should redirect_to(home_affiliates_path)
       end

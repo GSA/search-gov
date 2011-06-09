@@ -55,7 +55,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
       messages = []
       messages << "#{results[:created]} Boosted Content entries successfully created." if results[:created] > 0
       messages << "#{results[:updated]} Boosted Content entries successfully updated." if results[:updated] > 0
-      flash[:success] = "Successful Bulk Import for affiliate '#{@affiliate.display_name}':<br/>#{messages.join("<br/>")}"
+      flash[:success] = "Successful Bulk Import for affiliate '#{ERB::Util.h(@affiliate.display_name)}':<br/>#{messages.join("<br/>")}".html_safe
     else
       flash[:error] = "Your XML document could not be processed. Please check the format and try again."
     end

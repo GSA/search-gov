@@ -95,24 +95,24 @@ Feature: Boosted Content
   Scenario: Uploading valid booster XML document as a logged in affiliate
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+      | aff <i>site</i>  | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted content"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Content
-    Then I should see "aff site has no Boosted Content"
-    And I should see "Bulk Upload Boosted Content for aff site"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff <i>site</i> > Boosted Content
+    Then I should see "aff <i>site</i> has no Boosted Content"
+    And I should see "Bulk Upload Boosted Content for aff <i>site</i>"
 
     When I attach the file "features/support/boosted_content.xml" to "xml_file"
     And I press "Upload"
-    Then I should see "Successful Bulk Import for affiliate 'aff site'"
+    Then I should see "Successful Bulk Import for affiliate 'aff <i>site</i>'"
     Then I should see "2 Boosted Content entries successfully created."
 
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted content"
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"
-    And I should see "Bulk Upload Boosted Content for aff site"
+    And I should see "Bulk Upload Boosted Content for aff <i>site</i>"
 
     When I attach the file "features/support/new_boosted_content.xml" to "xml_file"
     And I press "Upload"
