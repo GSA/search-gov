@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-clicked_controller_rb.html">app/controllers/clicked_controller.rb</a></td>
-            <td class='right_align'><tt>16</tt></td>
-            <td class='right_align'><tt>16</tt></td>
+            <td class='right_align'><tt>31</tt></td>
+            <td class='right_align'><tt>29</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -69,91 +69,181 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>     Rails.logger.silence do</pre></td>
+            <td><pre><a name="line3">3</a>     unless params['u'].blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>       Click.create(:url =&gt; CGI.unescape(params['u']).gsub(' ', '+'),</pre></td>
+            <td><pre><a name="line4">4</a>       url = CGI.unescape(params['u']).gsub(' ', '+')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>                    :query =&gt; params['q'],</pre></td>
+            <td><pre><a name="line5">5</a>       query = params['q']</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>                    :serp_position =&gt; params['p'],</pre></td>
+            <td><pre><a name="line6">6</a>       position = params['p']</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>                    :queried_at =&gt; Time.at(params['t'].to_i),</pre></td>
+            <td><pre><a name="line7">7</a>       queried_at = Time.at(params['t'].to_i)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>                    :affiliate =&gt; params['a'].blank? ? nil : params['a'],</pre></td>
+            <td><pre><a name="line8">8</a>       queried_at_gmt = queried_at.getgm.to_formatted_s(:db)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>                    :results_source =&gt; params['s'],</pre></td>
+            <td><pre><a name="line9">9</a>       affiliate_name = params['a'].blank? ? nil : params['a']</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>                    :clicked_at =&gt; DateTime.now,</pre></td>
+            <td><pre><a name="line10">10</a>       results_source = params['s']</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>                    :click_ip =&gt; env['REMOTE_ADDR'],</pre></td>
+            <td><pre><a name="line11">11</a>       vertical = params['v']</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>                    :user_agent =&gt; env['HTTP_USER_AGENT']) unless params['u'].blank?</pre></td>
+            <td><pre><a name="line12">12</a>       locale = params['l']</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       self.response_body = &quot;&quot;</pre></td>
+            <td><pre><a name="line13">13</a>       click_ip = env['REMOTE_ADDR']</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>       user_agent = env['HTTP_USER_AGENT']</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>     end</pre></td>
+            <td><pre><a name="line15">15</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>       clicked_at = DateTime.now</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>       Click.create(:url =&gt; url,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a>   end</pre></td>
+            <td><pre><a name="line18">18</a>                    :query =&gt; query,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> end</pre></td>
+            <td><pre><a name="line19">19</a>                    :serp_position =&gt; position,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line20">20</a>                    :queried_at =&gt; queried_at,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line21">21</a>                    :affiliate =&gt; affiliate_name,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a>                    :results_source =&gt; results_source,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a>                    :clicked_at =&gt; clicked_at,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line24">24</a>                    :click_ip =&gt; click_ip,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line25">25</a>                    :user_agent =&gt; user_agent)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line26">26</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       Click.log(url, query, queried_at_gmt, click_ip, affiliate_name, position, results_source, vertical, locale, user_agent)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line28">28</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>     self.response_body = &quot;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line30">30</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line31">31</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jun 09 13:06:19 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jun 09 12:43:14 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
