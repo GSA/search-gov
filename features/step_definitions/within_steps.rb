@@ -13,7 +13,8 @@
   'in the homepage header' => '.header',
   'in the homepage footer' => '.footer',
   'in the homepage about section' => '.about',
-  'in the homepage tagline' => '.tagline'
+  'in the homepage tagline' => '.tagline',
+  'in the popular urls section' => '#popular_urls'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

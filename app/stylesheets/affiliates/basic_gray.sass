@@ -93,7 +93,7 @@ h1, h2, h3
   display: inline
   width: 200px
   margin: 0 0 0 10px
-  padding: 0 10px
+  padding: 90px 10px 0
     
   #related_searches
     -moz-box-shadow: 1px 1px 10px #eee
@@ -102,7 +102,7 @@ h1, h2, h3
     box-shadow: 1px 1px 10px #eee
     display: inline
     float: left
-    margin: 90px 0 0 0
+    margin: 0
     overflow: hidden
     padding: 0 0 0 10px
     width: 185px
@@ -127,6 +127,9 @@ h1, h2, h3
           color: #036
         a:hover
           color: #036
+  #popular_urls
+    @extend #related_searches
+    margin-top: 10px
 
 #summary
   padding: 0

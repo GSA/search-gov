@@ -28,6 +28,7 @@ describe Affiliate do
     it { should have_many :boosted_contents }
     it { should have_many :sayt_suggestions }
     it { should have_many :calais_related_searches }
+    it { should have_many(:popular_urls).dependent(:destroy) }
     it { should belong_to :affiliate_template }
     it { should belong_to :staged_affiliate_template }
 

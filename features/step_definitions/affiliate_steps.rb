@@ -170,3 +170,17 @@ end
 Then /^I should see "([^\"]*)" in the site wizards header$/ do |step|
   page.should have_selector(".steps_header img[alt='#{step}']")
 end
+
+Given /^the following popular URLs exist:$/ do |table|
+  table.hashes.each do |hash|
+    affiliate = Affiliate.find_by_name hash['affiliate_name']
+    PopularUrl.create!(:affiliate => affiliate,
+                                :title => hash['title'],
+                                :url => hash['url'],
+                                :rank => hash['rank'])
+  end
+end
+
+Then /^I should see (\d+) popular URLs$/ do |count|
+  page.should have_selector("#popular_urls ul>li>a", :count => count)
+end

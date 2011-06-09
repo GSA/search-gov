@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110607192052) do
+ActiveRecord::Schema.define(:version => 20110609125539) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -407,6 +407,15 @@ ActiveRecord::Schema.define(:version => 20110607192052) do
   end
 
   add_index "popular_image_queries", ["query"], :name => "index_popular_image_queries_on_query", :unique => true
+
+  create_table "popular_urls", :force => true do |t|
+    t.integer  "affiliate_id", :null => false
+    t.string   "title",        :null => false
+    t.string   "url",          :null => false
+    t.integer  "rank",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "query_groups", :force => true do |t|
     t.string   "name",       :null => false

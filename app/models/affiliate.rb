@@ -14,6 +14,8 @@ class Affiliate < ActiveRecord::Base
   has_many :sayt_suggestions, :dependent => :destroy
   has_many :superfresh_urls, :dependent => :destroy
   has_many :calais_related_searches, :dependent => :destroy
+  has_many :popular_urls, :dependent => :destroy
+  validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   before_validation :set_default_name, :on => :create
   before_save :set_default_affiliate_template, :normalize_domains

@@ -1219,3 +1219,26 @@ Feature: Affiliate clients
     And I press "Add User"
     Then I should see "Email can't be blank"
     And I should see "Contact name can't be blank"
+
+  Scenario: Visiting the affiliate search page with popular urls
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email     | contact_name        | affiliate_template_name |
+      | aff site         | aff.gov          | aff@bar.gov       | John Bar            | Default                 |
+      | another site     | another.gov      | aff@another.gov   | Jane Doe            | Default                 |
+    And the following popular URLs exist:
+      | affiliate_name   | title                                                                                                  | url                              | rank   |
+      | aff.gov          | Awesome sixth blog post                                                                                | http://awesome.gov/blog/6        | 6      |
+      | aff.gov          | Awesome fourth blog post                                                                               | http://awesome.gov/blog/4        | 4      |
+      | aff.gov          | Awesome fifth blog post                                                                                | http://awesome.gov/blog/5        | 5      |
+      | aff.gov          | Awesome third blog post                                                                                | http://awesome.gov/blog/3        | 3      |
+      | aff.gov          | Space, NASA Information & News - Outer Space Flight Videos & Pictures - Astronomy, Solar System Images | http://awesome.gov/blog/1        | 1      |
+      | aff.gov          | Awesome second blog post                                                                               | http://awesome.gov/blog/2        | 2      |
+    When I go to aff.gov's search page
+    Then I should see 5 popular URLs
+    And I should see a link to "Space, NASA Information & News..." with url for "http://awesome.gov/blog/1" in the popular urls section
+    And I should see a link to "Awesome second blog post" with url for "http://awesome.gov/blog/2" in the popular urls section
+    And I should see a link to "Awesome third blog post" with url for "http://awesome.gov/blog/3" in the popular urls section
+    And I should see a link to "Awesome fourth blog post" with url for "http://awesome.gov/blog/4" in the popular urls section
+    And I should see a link to "Awesome fifth blog post" with url for "http://awesome.gov/blog/5" in the popular urls section
+    And I should not see a link to "Awesome sixth blog post"
+
