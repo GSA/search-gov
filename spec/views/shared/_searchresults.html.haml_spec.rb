@@ -54,6 +54,35 @@ describe "shared/_searchresults.html.haml" do
       rendered.should have_selector('table', :class => 'deep_links', :count => 1)
     end
 
+    it "should contain cache links" do
+      render
+      rendered.should contain('Cache')
+    end
+
+
+    context "when search is for an affiliate" do
+
+      before do
+        @affiliate = Affiliate.create!(
+          :display_name => "My Awesome Site",
+          :domains => "someaffiliate.gov",
+          :website => "http://www.someaffiliate.gov",
+          :header => "<table><tr><td>html layout from 1998</td></tr></table>",
+          :footer => "<center>gasp</center>",
+          :name => "someaffiliate"
+        )
+        @affiliate.affiliate_template = AffiliateTemplate.create!(:name => "basic_black", :stylesheet => "basic_black")
+        @search.stub!(:affiliate).and_return @affiliate
+        view.stub!(:search).and_return @search
+      end
+
+      it "should not show any deep links" do
+        render
+        rendered.should_not contain('Cache')
+      end
+
+    end
+
     context "when on anything but the first page" do
       before do
         @search.stub!(:page).and_return 1
