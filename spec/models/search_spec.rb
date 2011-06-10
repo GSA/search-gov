@@ -863,9 +863,9 @@ describe Search do
           @spotty = spotlights(:time)
         end
 
-        it "should assign the Spotlight" do
+        it "should assign the Spotlight without an affiliate" do
           @search = Search.new(@valid_options.merge(:query => 'walk time', :affiliate=> nil))
-          Spotlight.should_receive(:search_for).with('walk time').and_return(@spotty)
+          Spotlight.should_receive(:search_for).with('walk time', nil).and_return(@spotty)
           @search.run
           @search.spotlight.should == @spotty
         end
@@ -874,9 +874,39 @@ describe Search do
       context "when no relevant spotlight exists for the search term" do
         it "should assign a nil Spotlight" do
           @search = Search.new(@valid_options.merge(:query => 'nothing here', :affiliate=> nil))
-          Spotlight.should_receive(:search_for).with('nothing here').and_return(nil)
+          Spotlight.should_receive(:search_for).with('nothing here', nil).and_return(nil)
           @search.run
           @search.spotlight.should be_nil
+        end
+      end
+      
+      context "when an affiliate is present" do
+        before do
+          @affiliate = affiliates(:basic_affiliate)
+        end
+        
+        it "should assign a nil spotlight, even if other spotlights match the search term" do
+          @search = Search.new(@valid_options.merge(:query => 'walk time', :affiliate=> @affiliate))
+          Spotlight.should_receive(:search_for).with('walk time', @affiliate).and_return(nil)
+          @search.run
+          @search.spotlight.should be_nil
+        end
+      end
+      
+      context "when an affiliate is present, and matching spotlights exist for that affiliate" do
+        before do
+          @spotty = spotlights(:time)
+          @affiliate = affiliates(:basic_affiliate)
+          @spotty.affiliate = @affiliate
+          @spotty.save
+          Spotlight.reindex
+        end
+        
+        it "should assign the Spotlight for the affiliate" do
+          @search = Search.new(@valid_options.merge(:query => 'walk time', :affiliate=> @affiliate))
+          Spotlight.should_receive(:search_for).with('walk time', @affiliate).and_return(@spotty)
+          @search.run
+          @search.spotlight.should == @spotty
         end
       end
     end

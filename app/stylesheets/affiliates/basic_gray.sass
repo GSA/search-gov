@@ -252,3 +252,33 @@ h1, h2, h3
     -moz-border-radius: 5px
     -webkit-border-radius: 5px
     text-shadow: #FFF 0px 1px 1px
+   
+=topfade
+  :background #fff url(/images/bg.png) repeat-x scroll 0 -153px
+      
+#spotlight
+  :color black
+  :margin 1em 0
+  :padding 0
+  :width 620px
+
+  #spotlight-simple
+    :width 600px
+    :color black
+    :margin 0
+    +topfade
+    :border 1px solid #ddd
+    :padding 0.5em 0.5em 0 1em
+
+    table
+      td
+        :padding 0
+        ul
+          :margin 0
+          :list-style-type disc
+          :color gray
+
+  #spotlight-custom
+    :height 175px
+    .spotlight-custom-link
+      :color #000

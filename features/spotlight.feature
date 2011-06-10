@@ -25,3 +25,16 @@ Feature: Spotlight
     And I submit the search form
     Then I should be on the search page
     And in "spotlight" I should see "White House Content"
+    
+  Scenario: Spotlight results from an affiliate search
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following active Spotlights exist for "aff.gov":
+      | title                  | keywords                                         |  html                                          |
+      | White House            | casa blanca, contact mr obama, white house tour  | <div id="spotlight">White House Content</div>  |
+      | National Park Service  | annual park pass, federal park, fee free weekend | <div id="spotlight">NPS Content</div>          |
+    When I go to aff.gov's search page
+    And I fill in "query" with "tours of the white house"
+    And I press "Search"
+    Then in "spotlight" I should see "White House Content"

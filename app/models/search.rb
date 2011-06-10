@@ -19,30 +19,30 @@ class Search
   VALID_SCOPES = %w{ PatentClass USPTOUSPC USPTOTMEP USPTOMPEP }
 
   attr_reader :query,
-                :page,
-                :error_message,
-                :affiliate,
-                :total,
-                :results,
-                :sources,
-                :extra_image_results,
-                :startrecord,
-                :endrecord,
-                :images,
-                :related_search,
-                :spelling_suggestion,
-                :boosted_contents,
-                :spotlight,
-                :faqs,
-                :recalls,
-                :results_per_page,
-                :offset,
-                :filter_setting,
-                :fedstates,
-                :scope_id,
-                :queried_at_seconds,
-                :enable_highlighting,
-                :agency
+              :page,
+              :error_message,
+              :affiliate,
+              :total,
+              :results,
+              :sources,
+              :extra_image_results,
+              :startrecord,
+              :endrecord,
+              :images,
+              :related_search,
+              :spelling_suggestion,
+              :boosted_contents,
+              :spotlight,
+              :faqs,
+              :recalls,
+              :results_per_page,
+              :offset,
+              :filter_setting,
+              :fedstates,
+              :scope_id,
+              :queried_at_seconds,
+              :enable_highlighting,
+              :agency
 
   def initialize(options = {})
     options ||= {}
@@ -157,11 +157,11 @@ class Search
 
   def populate_additional_results(response)
     @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
+    if english_locale?
+      @spotlight = Spotlight.search_for(query, affiliate)
+    end
     unless affiliate
       @faqs = Faq.search_for(query, I18n.locale.to_s)
-      if english_locale?
-        @spotlight = Spotlight.search_for(query)
-      end
       if page < 1
         @recalls = Recall.recent(query)
         agency_query = AgencyQuery.find_by_phrase(query)

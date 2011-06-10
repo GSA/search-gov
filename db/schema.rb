@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110603204350) do
+ActiveRecord::Schema.define(:version => 20110607192052) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -491,12 +491,13 @@ ActiveRecord::Schema.define(:version => 20110603204350) do
   add_index "spotlight_keywords", ["spotlight_id"], :name => "index_spotlight_keywords_on_spotlight_id"
 
   create_table "spotlights", :force => true do |t|
-    t.string   "title",                        :null => false
+    t.string   "title",                          :null => false
     t.string   "notes"
-    t.text     "html",                         :null => false
-    t.boolean  "is_active",  :default => true, :null => false
+    t.text     "html",                           :null => false
+    t.boolean  "is_active",    :default => true, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "affiliate_id"
   end
 
   create_table "superfresh_urls", :force => true do |t|

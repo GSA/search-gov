@@ -10,6 +10,7 @@ class Affiliate < ActiveRecord::Base
   belongs_to :affiliate_template
   belongs_to :staged_affiliate_template, :class_name => 'AffiliateTemplate'
   has_many :boosted_contents, :dependent => :destroy
+  has_many :spotlights, :dependent => :destroy
   has_many :sayt_suggestions, :dependent => :destroy
   has_many :superfresh_urls, :dependent => :destroy
   has_many :calais_related_searches, :dependent => :destroy
