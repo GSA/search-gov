@@ -1,6 +1,8 @@
 class Analytics::QueryGroupsController < Analytics::AnalyticsAdminController
   active_scaffold :query_group do |config|
     config.columns = [:name, :updated_at, :grouped_queries]
+    config.columns[:grouped_queries].allow_add_existing = false
+    config.create.columns = [:name]
     config.list.sorting = { :name => :asc }
     config.list.per_page = 100
     config.action_links.add "bulk_edit", :label => "Bulk Edit", :type => :member, :page => true
