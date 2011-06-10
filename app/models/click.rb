@@ -21,7 +21,7 @@ class Click < ActiveRecord::Base
       click_hash = {:clicked_at=> Time.now.to_formatted_s(:db),
                     :url => url,
                     :queried_at => queried_at,
-                    :affiliate_name => affiliate_name,
+                    :affiliate_name => affiliate_name || Affiliate::USAGOV_AFFILIATE_NAME,
                     :click_ip => click_ip,
                     :position => position,
                     :results_source => results_source,

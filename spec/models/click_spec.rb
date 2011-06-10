@@ -52,5 +52,12 @@ describe Click do
       Click.log("http://www.fda.gov/foo.html","my query",queried_at_str, "12.34.56.789", "someaff","7","RECALL","web","en","mozilla")
     end
 
+    context "when affiliate_name is null" do
+      it "should assume it's the default affiliate and log that name" do
+        Rails.logger.should_receive(:info).with(/\"affiliate_name\":\"#{Affiliate::USAGOV_AFFILIATE_NAME}\"/)
+        Click.log("http://www.fda.gov/foo.html","my query",Time.now, "12.34.56.789", nil,"7","RECALL","web","en","mozilla")
+      end
+    end
+
   end
 end
