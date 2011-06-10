@@ -267,7 +267,7 @@ describe MedTopic do
       t = MedTopic.new(@valid_attributes)
       t.save!
       t.synonyms.create({ :medline_title => 'rushoes rancheros' })
-      syns = MedSynonym.find(:all)
+      syns = MedSynonym.all
       syns.should_not be_empty
       syns.each { |syn|
         topic = syn.topic
@@ -276,7 +276,7 @@ describe MedTopic do
         topic_title.should eql @valid_attributes[:medline_title]
       }
       t.destroy
-      MedSynonym.find(:all).should be_empty
+      MedSynonym.all.should be_empty
     end
 
   end
@@ -367,14 +367,6 @@ describe MedTopic do
     end
 
     it "should not complain about decent summaries" do
-      linted_summaries = { }
-#		  msgs = []
-#		  @medline_topic_sample_summaries_unlinted.each { |name, summary|
-#			linted_summaries[name] = MedTopic.lint_medline_topic_summary_html( summary ) { |msg| msgs << msg }
-#		  }
-#
-#		  File.open(File.join(Medline.tmp_dir, "medline_summaries.json"), "w") { |json| json << linted_summaries.to_json }
-
       @medline_topic_sample_summaries_unlinted.each { |name, summary|
         msgs                    = []
         linted_summary          = MedTopic.lint_medline_topic_summary_html(summary) { |msg| msgs << msg }
@@ -596,7 +588,7 @@ describe MedTopic do
     end
 
     it "should return nil unless there is a match" do
-      MedTopic.find(:all).collect { |topic| topic.medline_title }.sort.should eql ["tea", "teb", "tec", "tee", "teg", "tsa", "tsb", "tsc", "tsd", "tsg", "txf", "txf"]
+      MedTopic.all.collect { |topic| topic.medline_title }.sort.should eql ["tea", "teb", "tec", "tee", "teg", "tsa", "tsb", "tsc", "tsd", "tsg", "txf", "txf"]
       MedTopic.search_for("nothing").should be_nil
     end
 
@@ -652,12 +644,12 @@ describe MedTopic do
     end
 
     it "should return strongest match for nil locale search" do
-      tee = MedTopic.search_for("teg", "en").medline_tid.should eql 9
-      tee = MedTopic.search_for("teg", "es").medline_tid.should eql 19
-      tee = MedTopic.search_for("teg", nil).medline_tid.should eql 9
-      tee = MedTopic.search_for("tsg", nil).medline_tid.should eql 19
-      tee = MedTopic.search_for("tsg", "en").medline_tid.should eql 19
-      tee = MedTopic.search_for("tsg", "es").medline_tid.should eql 19
+      MedTopic.search_for("teg", "en").medline_tid.should eql 9
+      MedTopic.search_for("teg", "es").medline_tid.should eql 19
+      MedTopic.search_for("teg", nil).medline_tid.should eql 9
+      MedTopic.search_for("tsg", nil).medline_tid.should eql 19
+      MedTopic.search_for("tsg", "en").medline_tid.should eql 19
+      MedTopic.search_for("tsg", "es").medline_tid.should eql 19
     end
 
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110609125539) do
+ActiveRecord::Schema.define(:version => 20110610225954) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -206,6 +206,19 @@ ActiveRecord::Schema.define(:version => 20110609125539) do
   add_index "daily_query_stats", ["affiliate", "locale", "day", "query"], :name => "aldq", :unique => true
   add_index "daily_query_stats", ["day", "query"], :name => "dq"
   add_index "daily_query_stats", ["query", "day", "affiliate", "locale"], :name => "qdal", :unique => true
+
+  create_table "daily_search_module_stats", :force => true do |t|
+    t.date    "day",            :null => false
+    t.string  "affiliate_name", :null => false
+    t.string  "module_tag",     :null => false
+    t.string  "vertical",       :null => false
+    t.string  "locale",         :null => false
+    t.integer "impressions",    :null => false
+    t.integer "clicks",         :null => false
+  end
+
+  add_index "daily_search_module_stats", ["day", "affiliate_name", "module_tag", "vertical", "locale"], :name => "dics_unique", :unique => true
+  add_index "daily_search_module_stats", ["day", "module_tag"], :name => "day_module"
 
   create_table "daily_usage_stats", :force => true do |t|
     t.date     "day"
@@ -468,6 +481,15 @@ ActiveRecord::Schema.define(:version => 20110609125539) do
   end
 
   add_index "sayt_suggestions", ["affiliate_id", "phrase", "deleted_at", "popularity"], :name => "index_sayt_suggestions_on_aff_id_phrase_del_at_pop", :unique => true
+
+  create_table "search_modules", :force => true do |t|
+    t.string   "tag",          :null => false
+    t.string   "display_name", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "search_modules", ["tag"], :name => "index_search_modules_on_tag", :unique => true
 
   create_table "sessions", :force => true do |t|
     t.string   "session_id", :null => false

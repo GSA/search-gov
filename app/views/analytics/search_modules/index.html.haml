@@ -1,0 +1,21 @@
+= analytics_center_breadcrumbs @page_title
+
+.span-24
+  %h2= display_most_recent_daily_search_module_stats_date_available(@day_being_shown)
+
+- if @search_module_stats.present?
+  .span-8
+    %h3 Impressions and Clicks by Module
+    %table
+      %tr
+        %th Module
+        %th{:style=>"text-align: right"} Impressions
+        %th{:style=>"text-align: right"} Clicks
+        %th{:style=>"text-align: right"} Clickthru Rate
+      - @search_module_stats.each do |stat|
+        %tr
+          %td= stat.display_name
+          %td{:style=>"text-align: right"}= number_with_delimiter(stat.impressions)
+          %td{:style=>"text-align: right"}= number_with_delimiter(stat.clicks)
+          %td{:style=>"text-align: right"}= number_to_percentage(stat.clickthru_ratio, :precision => 0)
+

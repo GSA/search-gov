@@ -94,6 +94,7 @@ UsasearchRails3::Application.routes.draw do
     resources :logfile_blocked_class_cs do as_routes end
     resources :logfile_whitelisted_class_cs do as_routes end
     resources :logfile_blocked_regexps do as_routes end
+    resources :search_modules do as_routes end
   end
 
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
@@ -115,13 +116,13 @@ UsasearchRails3::Application.routes.draw do
   match '/' => 'home#index'
   match '/analytics' => 'analytics/home#index', :as => :analytics_home_page
   match '/analytics/queries' => 'analytics/home#queries', :as => :analytics_queries
+  match '/analytics/search_modules' => 'analytics/search_modules#index', :as => :analytics_search_modules
   match '/analytics/query_search' => 'analytics/query_searches#index', :as => :analytics_query_search
   match '/analytics/timeline/:query' => 'analytics/timeline#show', :as => :query_timeline, :constraints => { :query => /.*/ }
   match 'affiliates/:id/analytics/timeline/(:query)' => 'affiliates/timeline#show', :as => :affiliate_query_timeline, :constraints => { :query => /.*/ }
   match '/analytics/monthly_reports' => 'analytics/monthly_reports#index', :as => :monthly_reports
   match '/' => 'home#index', :as => :home_page
   match '/contact_form' => 'home#contact_form', :as => :contact_form
-  #get ':controller/:action' => '#index', :as => :auto_complete, :constraints => { :action => /auto_complete_for_\S+/ }
   get '/searches/auto_complete_for_search_query' => 'searches#auto_complete_for_search_query', :as => 'auto_complete_for_search_query'
   match '/widgets/top_searches' => 'widgets#top_searches', :as => :top_searches_widget
   match '/widgets/trending_searches' => 'widgets#trending_searches', :as => :trending_searches_widget

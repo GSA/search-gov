@@ -11,6 +11,6 @@ class CreatePopularUrls < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :affiliate_popular_urls
+    drop_table :popular_urls
   end
 end
