@@ -87,13 +87,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   after_save :reindex_spotlight</pre></td>
+            <td><pre><a name="line6">6</a>   after_save :index_parent_spotlight</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   after_destroy :reindex_spotlight</pre></td>
+            <td><pre><a name="line7">7</a>   after_destroy :index_parent_spotlight</pre></td>
           </tr>
         
           
@@ -111,13 +111,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   def reindex_spotlight</pre></td>
+            <td><pre><a name="line10">10</a>   def index_parent_spotlight</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     Spotlight.reindex</pre></td>
+            <td><pre><a name="line11">11</a>     spotlight.index</pre></td>
           </tr>
         
           
@@ -135,7 +135,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Jun 09 12:43:14 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jun 09 22:13:41 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

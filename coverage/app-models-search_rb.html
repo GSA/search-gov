@@ -183,145 +183,145 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a>                 :page,</pre></td>
+            <td><pre><a name="line22">22</a>               :page,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a>                 :error_message,</pre></td>
+            <td><pre><a name="line23">23</a>               :error_message,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>                 :affiliate,</pre></td>
+            <td><pre><a name="line24">24</a>               :affiliate,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>                 :total,</pre></td>
+            <td><pre><a name="line25">25</a>               :total,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>                 :results,</pre></td>
+            <td><pre><a name="line26">26</a>               :results,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>                 :sources,</pre></td>
+            <td><pre><a name="line27">27</a>               :sources,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>                 :extra_image_results,</pre></td>
+            <td><pre><a name="line28">28</a>               :extra_image_results,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>                 :startrecord,</pre></td>
+            <td><pre><a name="line29">29</a>               :startrecord,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>                 :endrecord,</pre></td>
+            <td><pre><a name="line30">30</a>               :endrecord,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>                 :images,</pre></td>
+            <td><pre><a name="line31">31</a>               :images,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>                 :related_search,</pre></td>
+            <td><pre><a name="line32">32</a>               :related_search,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>                 :spelling_suggestion,</pre></td>
+            <td><pre><a name="line33">33</a>               :spelling_suggestion,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>                 :boosted_contents,</pre></td>
+            <td><pre><a name="line34">34</a>               :boosted_contents,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>                 :spotlight,</pre></td>
+            <td><pre><a name="line35">35</a>               :spotlight,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>                 :faqs,</pre></td>
+            <td><pre><a name="line36">36</a>               :faqs,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a>                 :recalls,</pre></td>
+            <td><pre><a name="line37">37</a>               :recalls,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line38">38</a>                 :results_per_page,</pre></td>
+            <td><pre><a name="line38">38</a>               :results_per_page,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>                 :offset,</pre></td>
+            <td><pre><a name="line39">39</a>               :offset,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line40">40</a>                 :filter_setting,</pre></td>
+            <td><pre><a name="line40">40</a>               :filter_setting,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line41">41</a>                 :fedstates,</pre></td>
+            <td><pre><a name="line41">41</a>               :fedstates,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a>                 :scope_id,</pre></td>
+            <td><pre><a name="line42">42</a>               :scope_id,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line43">43</a>                 :queried_at_seconds,</pre></td>
+            <td><pre><a name="line43">43</a>               :queried_at_seconds,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line44">44</a>                 :enable_highlighting,</pre></td>
+            <td><pre><a name="line44">44</a>               :enable_highlighting,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>                 :agency</pre></td>
+            <td><pre><a name="line45">45</a>               :agency</pre></td>
           </tr>
         
           
@@ -1011,31 +1011,31 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line160">160</a>     unless affiliate</pre></td>
+            <td><pre><a name="line160">160</a>     if english_locale?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line161">161</a>       @faqs = Faq.search_for(query, I18n.locale.to_s)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line162">162</a>       if english_locale?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line163">163</a>         @spotlight = Spotlight.search_for(query)</pre></td>
+            <td><pre><a name="line161">161</a>       @spotlight = Spotlight.search_for(query, affiliate)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line164">164</a>       end</pre></td>
+            <td><pre><a name="line162">162</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line163">163</a>     unless affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line164">164</a>       @faqs = Faq.search_for(query, I18n.locale.to_s)</pre></td>
           </tr>
         
           
@@ -2277,7 +2277,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Jun 09 12:43:14 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jun 09 22:13:41 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
