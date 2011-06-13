@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/admin/agency_urls_controller.rb</title>
+    <title>app/controllers/analytics/search_modules_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/admin/agency_urls_controller.rb</h2>
+    <h2>app/controllers/analytics/search_modules_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-admin-agency_urls_controller_rb.html">app/controllers/admin/agency_urls_controller.rb</a></td>
-            <td class='right_align'><tt>3</tt></td>
-            <td class='right_align'><tt>3</tt></td>
+            <td class="left_align"><a href="app-controllers-analytics-search_modules_controller_rb.html">app/controllers/analytics/search_modules_controller.rb</a></td>
+            <td class='right_align'><tt>7</tt></td>
+            <td class='right_align'><tt>7</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,25 +57,49 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Admin::AgencyUrlsController &lt; Admin::AdminController</pre></td>
+            <td><pre><a name="line1">1</a> class Analytics::SearchModulesController &lt; Analytics::AnalyticsController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   active_scaffold :agency_urls</pre></td>
+            <td><pre><a name="line2">2</a>   def index</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>     @page_title = 'Search Module Stats'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>     @day_being_shown = request[&quot;day&quot;].blank? ? DailySearchModuleStat.most_recent_populated_date : request[&quot;day&quot;].to_date</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>     @search_module_stats = DailySearchModuleStat.module_stats_for_day(@day_being_shown)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> end</pre></td>
+            <td><pre><a name="line6">6</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line7">7</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Jun 12 20:15:55 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sun Jun 12 20:15:56 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/admin/affiliates_controller.rb</title>
+    <title>app/helpers/analytics/search_module_helper.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/admin/affiliates_controller.rb</h2>
+    <h2>app/helpers/analytics/search_module_helper.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-admin-affiliates_controller_rb.html">app/controllers/admin/affiliates_controller.rb</a></td>
-            <td class='right_align'><tt>20</tt></td>
-            <td class='right_align'><tt>17</tt></td>
+            <td class="left_align"><a href="app-helpers-analytics-search_module_helper_rb.html">app/helpers/analytics/search_module_helper.rb</a></td>
+            <td class='right_align'><tt>15</tt></td>
+            <td class='right_align'><tt>15</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,79 +57,79 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Admin::AffiliatesController &lt; Admin::AdminController</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line2">2</a> </pre></td>
+            <td><pre><a name="line1">1</a> module Analytics::SearchModuleHelper</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   active_scaffold :affiliate do |config|</pre></td>
+            <td><pre><a name="line2">2</a>   def display_most_recent_daily_search_module_stats_date_available(day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     config.columns = [:display_name, :name, :domains, :affiliate_template, :boosted_contents, :is_sayt_enabled, :is_affiliate_suggestions_enabled, :created_at, :updated_at]</pre></td>
+            <td><pre><a name="line3">3</a>     return &quot;Search module data currently unavailable&quot; if day.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     config.list.sorting = { :display_name =&gt; :asc }</pre></td>
+            <td><pre><a name="line4">4</a>     current_day = content_tag(:span, day.to_s(:long), :class=&gt;&quot;highlight&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     config.update.columns = [:display_name, :domains, :staged_domains, :search_results_page_title, :staged_search_results_page_title, :header, :staged_header, :footer, :staged_footer, :affiliate_template, :staged_affiliate_template, :is_sayt_enabled, :is_affiliate_suggestions_enabled, :has_staged_content, :popular_urls]</pre></td>
+            <td><pre><a name="line5">5</a>     html = &quot;Data for #{current_day}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     config.create.columns = [:display_name, :name, :domains, :header, :footer, :affiliate_template]</pre></td>
+            <td><pre><a name="line6">6</a>     firstdate = DailySearchModuleStat.minimum(:day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     config.columns[:staged_search_results_page_title].label = &quot;Staged search results page title&quot;</pre></td>
+            <td><pre><a name="line7">7</a>     first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     config.columns[:is_sayt_enabled].label = &quot;Enable SAYT&quot;</pre></td>
+            <td><pre><a name="line8">8</a>     lastdate = DailySearchModuleStat.maximum(:day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     config.columns[:is_affiliate_suggestions_enabled].label = &quot;Enable Affiliate SAYT Suggestions&quot;</pre></td>
+            <td><pre><a name="line9">9</a>     last = [lastdate.year, (lastdate.month.to_i - 1), lastdate.day].join(',')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     config.columns[:affiliate_template].form_ui= :select</pre></td>
+            <td><pre><a name="line10">10</a>     html &lt;&lt; calendar_date_select_tag(&quot;pop_up_hidden&quot;, &quot;&quot;, :hidden =&gt; true, :image=&gt;&quot;change_date.png&quot;, :buttons =&gt; false,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     config.columns[:staged_affiliate_template].form_ui= :select</pre></td>
+            <td><pre><a name="line11">11</a>                                      :onchange =&gt; &quot;location = '#{analytics_search_modules_path}/?day='+$F(this);&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>     config.action_links.add &quot;analytics&quot;, :label =&gt; &quot;Analytics&quot;, :type =&gt; :member, :page =&gt; true</pre></td>
+            <td><pre><a name="line12">12</a>                                      :valid_date_check =&gt; &quot;date &lt;= (new Date(#{last})).stripTime() &amp;&amp; date &gt;= (new Date(#{first})).stripTime()&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>     raw html</pre></td>
           </tr>
         
           
@@ -141,43 +141,13 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>   def analytics</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>     redirect_to affiliate_analytics_path(:affiliate_id =&gt; params[:id])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line18">18</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a> end</pre></td>
+            <td><pre><a name="line15">15</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Sun Jun 12 20:15:55 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sun Jun 12 20:15:56 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
