@@ -3,4 +3,4 @@
     %h3 Popular Links
     %ul
       - popular_urls.each do |url|
-        %li= link_to truncate_on_words(url.title, 30), url.url
+        %li= link_to truncate_on_words(url.title, 50), url.url

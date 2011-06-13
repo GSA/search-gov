@@ -1231,11 +1231,11 @@ Feature: Affiliate clients
       | aff.gov          | Awesome fourth blog post                                                                               | http://awesome.gov/blog/4        | 4      |
       | aff.gov          | Awesome fifth blog post                                                                                | http://awesome.gov/blog/5        | 5      |
       | aff.gov          | Awesome third blog post                                                                                | http://awesome.gov/blog/3        | 3      |
-      | aff.gov          | Space, NASA Information & News - Outer Space Flight Videos & Pictures - Astronomy, Solar System Images | http://awesome.gov/blog/1        | 1      |
+      | aff.gov          | Space, NASA Information & News, Outer Space Flight Videos & Pictures - Astronomy, Solar System Images | http://awesome.gov/blog/1        | 1      |
       | aff.gov          | Awesome second blog post                                                                               | http://awesome.gov/blog/2        | 2      |
     When I go to aff.gov's search page
     Then I should see 5 popular URLs
-    And I should see a link to "Space, NASA Information & News..." with url for "http://awesome.gov/blog/1" in the popular urls section
+    And I should see a link to "Space, NASA Information & News, Outer Space Flight..." with url for "http://awesome.gov/blog/1" in the popular urls section
     And I should see a link to "Awesome second blog post" with url for "http://awesome.gov/blog/2" in the popular urls section
     And I should see a link to "Awesome third blog post" with url for "http://awesome.gov/blog/3" in the popular urls section
     And I should see a link to "Awesome fourth blog post" with url for "http://awesome.gov/blog/4" in the popular urls section
