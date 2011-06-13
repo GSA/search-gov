@@ -4,8 +4,9 @@
   %h2= display_most_recent_daily_search_module_stats_date_available(@day_being_shown)
 
 - if @search_module_stats.present?
-  .span-8
-    %h3 Impressions and Clicks by Module
+  .span-10
+    .header-box
+      %h3 Impressions and Clicks by Module
     %table
       %tr
         %th Module
