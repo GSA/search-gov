@@ -14,7 +14,7 @@ class DailySearchModuleStat < ActiveRecord::Base
     return [] if results.nil?
     structs = results.collect do |stat|
       OpenStruct.new(:display_name => stat.search_module.display_name, :clicks => stat.clicks, :impressions => stat.impressions,
-                     :clickthru_ratio => 100*stat.clicks/stat.impressions) unless stat.search_module.nil?
+                     :clickthru_ratio => 100.0 * stat.clicks / stat.impressions) unless stat.search_module.nil?
     end
     structs.compact
   end

@@ -76,17 +76,17 @@ describe DailySearchModuleStat do
         stats[0].display_name.should == search_modules(:crel).display_name
         stats[0].impressions.should == 18516
         stats[0].clicks.should == 6876
-        stats[0].clickthru_ratio.should == 37
+        stats[0].clickthru_ratio.should be_within(0.001).of(37.135)
 
         stats[1].display_name.should == search_modules(:bweb).display_name
         stats[1].impressions.should == 16884
         stats[1].clicks.should == 6204
-        stats[1].clickthru_ratio.should == 36
+        stats[1].clickthru_ratio.should be_within(0.001).of(36.744)
 
         stats[2].display_name.should == search_modules(:video).display_name
         stats[2].impressions.should == 15252
         stats[2].clicks.should == 5532
-        stats[2].clickthru_ratio.should == 36
+        stats[2].clickthru_ratio.should be_within(0.001).of(36.270)
       end
 
       context "when search module stats references a non-existent search module name" do

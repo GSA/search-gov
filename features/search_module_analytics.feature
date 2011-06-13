@@ -25,8 +25,8 @@ Feature: Search Module Analytics
     And I should see "Impressions and Clicks by Module"
     And I should see the following table rows:
     | Module      | Impressions     | Clicks | Clickthru Rate |
-    | Foo Module  | 120             | 43     | 35%            |
-    | Bar Module  | 20              | 12     | 60%            |
+    | Foo Module  | 120             | 43     | 35.8%            |
+    | Bar Module  | 20              | 12     | 60.0%            |
 
   Scenario: Viewing the search module analytics page when data is available
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
