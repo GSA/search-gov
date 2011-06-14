@@ -18,15 +18,24 @@
       = render :partial => "form"
     %br
 
-
     #edit_delete_current_entries
-      .header-box
-        = link_to(content_tag(:button, "Delete All"), destroy_all_affiliate_boosted_contents_path(@affiliate), :method => :delete, :confirm => "Are you sure you want to delete all of your Boosted Content?\nThis action can not be undone.", :style => "float: right;")
-        ="Edit / Delete Current Boosted Entries"
-      - if @boosted_content_count == 0
-        .content-box= "Affiliate #{@affiliate.display_name} has no Boosted Content"
-      - else
-        %table.admin-table#boosted_contents
+      %table.admin-table#boosted_contents
+        %col{:class => 'title'}
+        %col{:class => 'url'}
+        %col{:class => 'description'}
+        %col{:class => 'keywords'}
+        %col{:class => 'actions'}
+        %thead
+          %tr
+            %th{:colspan => 5}
+              = link_to(content_tag(:button, "Delete All"), destroy_all_affiliate_boosted_contents_path(@affiliate), :method => :delete, :confirm => "Are you sure you want to delete all of your Boosted Content?\nThis action can not be undone.", :style => "float: right;")
+              ="Edit / Delete Current Boosted Entries"
+        %tbody
+        - if @boosted_content_count == 0
+          %tr
+            %td{:colspan => 5}
+              .content-box= "Affiliate #{@affiliate.display_name} has no Boosted Content"
+        - else
           %tr
             %td{:colspan => 5}
               - if @boosted_contents.length < @boosted_content_count
@@ -49,14 +58,15 @@
               %td= link_to(shorten_url(boosted_content.url, 20), boosted_content.url, :target => "_blank", :title => boosted_content.url)
               %td= truncate(boosted_content.description, :length => 50)
               %td= truncate(boosted_content.keywords, :length => 50)
-              %td.actions
+              %td
                 = link_to("Edit", edit_affiliate_boosted_content_path(@affiliate, boosted_content))
                 %br
                 = link_to("Delete", affiliate_boosted_content_path(@affiliate, boosted_content), :method => :delete, :confirm => "Are you sure you want to delete this Boosted Content entry?  ")
+    %br
 
     #bulk_upload
+      %h3="Bulk Upload Boosted Content for #{@affiliate.display_name}"
       = form_tag bulk_affiliate_boosted_contents_path(@affiliate), :multipart => true, :class=> "bordered" do
-        %h2="Bulk Upload Boosted Content for #{@affiliate.display_name}"
         %h4 Instructions
         %ol
           %li

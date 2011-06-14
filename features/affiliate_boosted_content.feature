@@ -13,7 +13,7 @@ Feature: Boosted Content
     Then I should be on the new affiliate boosted content page for "aff.gov"
     And I should not see "aff.gov"
     And I fill in "Title" with "Test"
-    And I fill in "Url" with "http://www.test.gov"
+    And I fill in "URL" with "http://www.test.gov"
     And I fill in "Description" with ""
     And I fill in "Keywords" with "unrelated, terms"
     And I press "Save Boosted Content"
@@ -41,6 +41,7 @@ Feature: Boosted Content
     And I follow "Boosted content"
     And I follow "Edit"
     Then I should be on the edit affiliate boosted content page for "aff.gov"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Edit Boosted Content Entry
     And I fill in "Title" with "new title"
     And I fill in "Description" with "new description"
     And I fill in "Keywords" with "bananas, apples, oranges"

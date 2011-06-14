@@ -187,15 +187,48 @@ pre
   form
     textarea#boosted_content_description
       :height 3em
-      :width 33em
-    input[type=text]
-      :width 33em
+      :width 95%
+    input#boosted_content_title, input#boosted_content_url, input#boosted_content_keywords
+      :width 95%
   h4
     :font-weight bold
     :margin 10px 0 5px 0
   pre
     :margin-top 0
     :font-size .7em
+    :word-wrap break-word
+  dt
+    :margin-top 10px
+    label
+      :color #5D5D5D
+      :font-weight normal
+  .admin-table
+    col
+      &.actions
+        :width 75px
+    thead tr th
+      :background-color #444444
+      :color white
+      a
+        :text-decoration none
+    tbody th
+      :color #3D3D3D
+    th, td
+      :padding 10px
+    .error
+      :display block
+  .field-value
+    :margin 0
+  #bulk_upload
+    h3
+      :background-color #444
+      :color white
+      :font
+        :size 15px
+        :weight bold
+      :padding 10px
+    h4
+      :margin-top 0
 
 /* begin rcr redesign classes */
 .main
@@ -247,6 +280,7 @@ table.admin-table
   :border-collapse collapse
   :border-style solid
   :border-color #bdbdbd
+  :table-layout fixed
   th
     :background-color #e5e5e5
     :padding 8px 5px
@@ -261,6 +295,7 @@ table.admin-table
     :border-width 1px 1px 0 0
     :border-style solid
     :border-color #bdbdbd
+    :word-wrap break-word
     form.button-to
       :display inline
     div

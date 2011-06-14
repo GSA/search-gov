@@ -1,31 +1,35 @@
-= form_for(@boosted_content || :boosted_content, :url => @boosted_content.new_record? ? affiliate_boosted_contents_path(@affiliate) : affiliate_boosted_content_path(@affiliate, @boosted_content), :html => {:class=> "bordered"}) do |f|
-  %h2= @boosted_content.new_record? ? "Add a New Entry" : "Edit Boosted Content Entry"
-  %p
-    Fill out the metadata fields below to add a page as boosted content.
-    %br
-    Title, URL, and description are required fields.
-  = f.error_messages(:header_message => nil, :class => "error")
-  %table
-    %tr
-      %td= f.label :title
-      %td= f.text_field :title, :size => 50
-    %tr
-      %td= f.label :url
-      %td= f.text_field :url, :size => 50
-    %tr
-      %td= f.label :description
-      %td= f.text_area :description
-    %tr
-      %td= f.label :keywords
-      %td
-        = f.text_field :keywords, :size => 50
-        %br
-        %p{:style => 'font-size: 12px;'}
-          Please provide a comma-delineated list of terms that should trigger this boosted content. 
-          %br
-          Use this to provide matches for terms not in the description above.
-          %br
-          (i.e. "taxes, 1099, IRS")
-  = f.hidden_field :id
-  = submit_tag "Save Boosted Content"
-  = link_to content_tag(:button, "Cancel"), new_affiliate_boosted_content_path(@affiliate)
+= form_for(@boosted_content || :boosted_content, :url => @boosted_content.new_record? ? affiliate_boosted_contents_path(@affiliate) : affiliate_boosted_content_path(@affiliate, @boosted_content)) do |f|
+  %table.admin-table
+    - if @boosted_content.new_record?
+      %thead
+        %tr
+          %th
+            = "Add a New Entry"
+    %tbody
+      %tr
+        %td
+          %p
+            Fill out the metadata fields below to add a page as boosted content.
+            %br
+            Title, URL, and description are required fields.
+          = f.error_messages(:header_message => nil, :class => "error")
+          %dl
+            %dt.field-name= f.label :title
+            %dd.field-value= f.text_field :title
+            %dt.field-name= f.label :url, "URL"
+            %dd.field-value= f.text_field :url
+            %dt.field-name= f.label :description
+            %dd.field-value= f.text_area :description
+            %dt.field-name= f.label :keywords
+            %dd.field-value
+              = f.text_field :keywords
+              %br
+              %p{:style => 'font-size: 12px;'}
+                Please provide a comma-delineated list of terms that should trigger this boosted content.
+                %br
+                Use this to provide matches for terms not in the description above.
+                %br
+                (i.e. "taxes, 1099, IRS")
+          = f.hidden_field :id
+          = submit_tag "Save Boosted Content"
+          = link_to "Cancel", new_affiliate_boosted_content_path(@affiliate)
