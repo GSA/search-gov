@@ -370,10 +370,10 @@ describe "searches/index.html.haml" do
           @med_topic.related_topics << med_topics(:crohns_disease)
         end
         
-        it "should include the related topics in the result" do
+        it "should include the related topics in the result, with links to search results pages" do
           render
           rendered.should contain(/Related MedlinePlus Topics/)
-          rendered.should have_selector "a", :href => 'http://www.nlm.nih.gov/medlineplus/crohnsdisease.html', :content => 'Crohn\'s Disease'
+          rendered.should have_selector "a", :href => "/search?locale=en&query=Crohn%27s+Disease", :content => 'Crohn\'s Disease'
         end
       end
       
@@ -382,10 +382,10 @@ describe "searches/index.html.haml" do
           @med_topic.lang_mapped_topic = med_topics(:ulcerative_colitis_es)
         end
         
-        it "should include a link to the alternate version" do
+        it "should include a link to the other language version" do
           render
           rendered.should contain(/Esta tema en espanol/)
-          rendered.should have_selector "a", :href => 'http://www.nlm.nih.gov/medlineplus/spanish/ulcerativecolitis.html', :content => 'Colitis ulcerativa'
+          rendered.should have_selector "a", :href => "/search?locale=es&query=Colitis+ulcerativa", :content => 'Colitis ulcerativa'
         end
       end
     end

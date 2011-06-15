@@ -98,9 +98,9 @@ module SearchHelper
     raw "<a href=\"#{h url}\" #{onmousedown}>#{url}</a>"
   end
   
-  def display_medline_topic_with_click_tracking(med_topic, query, position)
+  def display_medline_topic_with_click_tracking(med_topic, query, position, locale = "en")
     onmousedown = onmousedown_for_click(query, position, nil, 'MEDL', Time.now.to_i, :web)
-    raw "<a style=\"text-decoration: none;\" href=\"#{h med_topic.medline_url}\" #{onmousedown}>#{med_topic.medline_title}</a>"
+    raw "<a style=\"text-decoration: none;\" href=\"#{h search_path(:query => med_topic.medline_title, :locale => locale)}\" #{onmousedown}>#{med_topic.medline_title}</a>"
   end
   
   def highlight_string(s)
