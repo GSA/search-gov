@@ -49,7 +49,7 @@ gem 'backports'
 group :development, :test, :cucumber do
   gem 'webrat'
   gem 'rspec'
-  gem 'rspec-core', '= 2.6.2'
+  gem 'rspec-core', '= 2.6.4'
   gem 'rspec-rails', '~> 2.4'
   gem 'remarkable_activerecord'
   gem 'email_spec'
