@@ -783,19 +783,19 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line122">122</a>       elements &lt;&lt; &quot;#{cur_user.email} |&quot;</pre></td>
+            <td><pre><a name="line122">122</a>       elements &lt;&lt; &quot;#{cur_user.email}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line123">123</a>       elements &lt;&lt; link_to(&quot;My Account |&quot;, account_path)</pre></td>
+            <td><pre><a name="line123">123</a>       elements &lt;&lt; link_to(&quot;My Account&quot;, account_path)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line124">124</a>       elements &lt;&lt; link_to(&quot;Sign Out |&quot;, url_for_logout, :method =&gt; :delete)</pre></td>
+            <td><pre><a name="line124">124</a>       elements &lt;&lt; link_to(&quot;Sign Out&quot;, url_for_logout, :method =&gt; :delete)</pre></td>
           </tr>
         
           
@@ -807,7 +807,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line126">126</a>       elements &lt;&lt; link_to(&quot;Sign In |&quot;, url_for_login)</pre></td>
+            <td><pre><a name="line126">126</a>       elements &lt;&lt; link_to(&quot;Sign In&quot;, url_for_login)</pre></td>
           </tr>
         
           
@@ -818,32 +818,32 @@
         
           
           
+          <tr class="inferred">
+            <td><pre><a name="line128">128</a> </pre></td>
+          </tr>
+        
+          
+          
           <tr class="marked">
-            <td><pre><a name="line128">128</a>     elements &lt;&lt; link_to(&quot;Help Desk&quot;, &quot;http://searchsupport.usa.gov/home&quot;, :target =&gt; &quot;_blank&quot;)</pre></td>
+            <td><pre><a name="line129">129</a>     results = elements.collect do |element|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line130">130</a>       content_tag(:li, raw(element))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line129">129</a> </pre></td>
+            <td><pre><a name="line131">131</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line130">130</a>     results = elements.collect do |element|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line131">131</a>       content_tag(:li, raw(element))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line132">132</a>     end</pre></td>
+            <td><pre><a name="line132">132</a>     results &lt;&lt; content_tag(:li, link_to(&quot;Help Desk&quot;, &quot;http://searchsupport.usa.gov/home&quot;), :class =&gt; 'last')</pre></td>
           </tr>
         
           
@@ -1635,7 +1635,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Sun Jun 12 20:15:56 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jun 15 14:35:58 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
