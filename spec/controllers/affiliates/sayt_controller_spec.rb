@@ -12,7 +12,8 @@ describe Affiliates::SaytController do
       before do
         @user = users("affiliate_manager")
         UserSession.create(@user)
-        @affiliate = @user.affiliates.first
+        @affiliate = @user.affiliates[0]
+        @other_affiliate = @user.affiliates[1]
       end
       
       it "should set the title" do
@@ -39,26 +40,47 @@ describe Affiliates::SaytController do
         it "should have an autocomplete-enabled search box" do
           response.should have_selector("input[type=text][class=usagov-search-autocomplete]")
         end
-        
-        context "when a filter value is specified" do
+
+        context "when we have suggestions for several different affiliates" do
           before do
             SaytSuggestion.create(:phrase => 'something', :affiliate => @affiliate)
             SaytSuggestion.create(:phrase => 'thingsome', :affiliate => @affiliate)
-            get :index, :affiliate_id => @affiliate.id, :filter => "some"
+            SaytSuggestion.create(:phrase => 'someother', :affiliate => @other_affiliate)
+
           end
+
+          context "when a filter value is specified" do
+            before do
+              get :index, :affiliate_id => @affiliate.id, :filter => "some"
+            end
+
+            it "should assign the filter value" do
+             assigns[:filter].should == "some"
+            end
         
-          it "should assign the filter value" do
-            assigns[:filter].should == "some"
-          end
-        
-          it "should show only entries that are prefixed by the filter string" do
-            response.should have_selector("td[class=sayt_suggestion]", :content => "something")
-            response.should_not have_selector("td[class=sayt_suggestion]", :content => "thingsome")
-          end
+            it "should show only entries that are prefixed by the filter string and belong to this affiliate" do
+             response.should have_selector("td[class=sayt_suggestion]", :content => "something")
+             response.should_not have_selector("td[class=sayt_suggestion]", :content => "thingsome")
+             response.should_not have_selector("td[class=sayt_suggestion]", :content => "someother")
+            end
           
-          it "should fill in the filter field with the filter value and add a 'Remove Filter' link" do
-            response.should have_selector("input[name=filter][value=some]")
-            response.should have_selector("a", :content => "Remove Filter")
+            it "should fill in the filter field with the filter value and add a 'Remove Filter' link" do
+              response.should have_selector("input[name=filter][value=some]")
+              response.should have_selector("a", :content => "Remove Filter")
+            end
+          end
+
+          context "when no filter value is specified" do
+            before do
+              get :index, :affiliate_id => @affiliate.id
+            end
+
+            it "should show only entries that are prefixed by the filter string and belong to this affiliate" do
+              response.should have_selector("td[class=sayt_suggestion]", :content => "something")
+              response.should have_selector("td[class=sayt_suggestion]", :content => "thingsome")
+              response.should_not have_selector("td[class=sayt_suggestion]", :content => "someother")
+            end
+
           end
         end
       end

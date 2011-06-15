@@ -6,7 +6,7 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
     @title = "Type-ahead Search - "
     @sayt_suggestion = SaytSuggestion.new
     @filter = params[:filter]
-    conditions = @filter.present? ? ["affiliate_id = ? AND phrase LIKE ? AND ISNULL(deleted_at)", @affiliate.id, "#{@filter}%"] : ["ISNULL(deleted_at)"]
+    conditions = @filter.present? ? ["affiliate_id = ? AND phrase LIKE ? AND ISNULL(deleted_at)", @affiliate.id, "#{@filter}%"] : ["affiliate_id = ? AND ISNULL(deleted_at)", @affiliate.id]
     @sayt_suggestions = SaytSuggestion.paginate(:conditions => conditions, :page => params[:page] || 1, :order => 'phrase ASC')
   end
   
