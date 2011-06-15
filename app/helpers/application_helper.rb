@@ -119,17 +119,17 @@ module ApplicationHelper
   def basic_header_navigation_for(cur_user)
     elements = []
     if cur_user
-      elements << "#{cur_user.email} |"
-      elements << link_to("My Account |", account_path)
-      elements << link_to("Sign Out |", url_for_logout, :method => :delete)
+      elements << "#{cur_user.email}"
+      elements << link_to("My Account", account_path)
+      elements << link_to("Sign Out", url_for_logout, :method => :delete)
     else
-      elements << link_to("Sign In |", url_for_login)
+      elements << link_to("Sign In", url_for_login)
     end
-    elements << link_to("Help Desk", "http://searchsupport.usa.gov/home", :target => "_blank")
 
     results = elements.collect do |element|
       content_tag(:li, raw(element))
     end
+    results << content_tag(:li, link_to("Help Desk", "http://searchsupport.usa.gov/home"), :class => 'last')
     raw content_tag(:ul, raw(results.join))
   end
 

@@ -33,6 +33,8 @@
     = calendar_date_select_includes.html_safe
     = yield :head
   %body
+    #skiplink
+      %a{:href => "#content"} Skip to Main Content
     = render "/shared/program_header"
     .outer-container
       .inner-container

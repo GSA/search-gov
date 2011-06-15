@@ -1,6 +1,5 @@
 = breadcrumbs("APIs & Web Services")
-%p
-  %a{ :name => "content" }
+%a{ :id => "content" }
 = render "/shared/api_key"
 %h1
   APIs and Web Services
@@ -9,35 +8,38 @@
 %p
   Feedback is welcome regarding our APIs and services. Please send comments to 
   %a{:href=>"mailto:***REMOVED***"}
-    ***REMOVED***.
+    ***REMOVED***
+  \.
 
 %h2
   Available APIs and Web Services
 %p
-  USASearch is committed to providing APIs to simplifying access to government information and services. We currently offer the following API (and we plan to offer several more soon).
+  USASearch is committed to providing APIs to simplifying access to government information and services. We currently offer the following APIs (and we plan to offer several more soon).
 
-%p
+%h3.api-item
   %a{:href=>"/api/recalls"}
     Product Recall Data API
-  %br
+%p
   Returns product recall data from three federal government agencies: (1) food safety data from the Centers for Disease Control and Prevention (CDC); (2) car safety data from the National Highway Traffic Safety Administration (NHTSA); and (3) product safety data from the Consumer Product Safety Commission (CPSC). Data include descriptions of recalled products, defect summaries, manufacturer information, and recall dates, among other fields.
 
-%p
+%h3.api-item
   - if current_user && current_user.affiliates.present?
     = link_to("Search Data API", affiliate_api_index_path(@affiliate || current_user.affiliates.first))
   - else
     Search Data API
-  %br
+%p
   (requires
   != "#{link_to("registration", affiliates_path)};"
   must be affiliated with a government agency)
   %br
   Returns data allowing USASearch Affiliates to control the look and feel of their search results pages.
   Data include sections for search results, summary stats, boosted sites, spelling suggestions, and related searches, among other data.
+  %br
 
 %h2
   Terms of Service
 %p
   By using a USASearch API or web service, you agree to our 
   %a{:href=>"/api/tos"}
-    Terms of Service.
+    Terms of Service
+  \.

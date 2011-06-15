@@ -243,15 +243,15 @@ describe ApplicationHelper do
     context "when user is not logged in" do
       it "should use generate Sign In link with predefined SSL_PROTOCOL" do
         content = helper.basic_header_navigation_for(nil)
-        content.should have_selector("a[href^='aprotocol']", :content => "Sign In |")
+        content.should have_selector("a[href^='aprotocol']", :content => "Sign In")
       end
 
       it "should contain Sign In and Help Desk links" do
         content = helper.basic_header_navigation_for(nil)
-        content.should have_selector("a", :content => "Sign In |")
+        content.should have_selector("a", :content => "Sign In")
         content.should have_selector("a", :content => "Help Desk")
-        content.should_not have_selector("a", :content => "My Account |")
-        content.should_not have_selector("a", :content => "Sign Out |")
+        content.should_not have_selector("a", :content => "My Account")
+        content.should_not have_selector("a", :content => "Sign Out")
       end
     end
 
@@ -259,17 +259,17 @@ describe ApplicationHelper do
       it "should use generate Sign Out link with predefined SSL_PROTOCOL" do
         user = stub("User", :email => "user@fixtures.org")
         content = helper.basic_header_navigation_for(user)
-        content.should have_selector("a[href^='aprotocol']", :content => "Sign Out |")
+        content.should have_selector("a[href^='aprotocol']", :content => "Sign Out")
       end
     end
 
     it "should contain My Account and Sign Out links" do
       user = stub("User", :email => "user@fixtures.org")
       content = helper.basic_header_navigation_for(user)
-      content.should_not have_selector("a", :content => "Sign In |")
+      content.should_not have_selector("a", :content => "Sign In")
       content.should contain("user@fixtures.org")
-      content.should have_selector("a", :content => "My Account |")
-      content.should have_selector("a", :content => "Sign Out |")
+      content.should have_selector("a", :content => "My Account")
+      content.should have_selector("a", :content => "Sign Out")
       content.should have_selector("a", :content => "Help Desk")
     end
   end

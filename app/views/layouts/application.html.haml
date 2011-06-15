@@ -24,13 +24,13 @@
     = (javascript_include_tag "application.js").html_safe
 
   %body{ :class => I18n.locale }
+    #skiplink
+      %a{:href => "#content"} Skip to Main Content
     .container
       .span-24.header-wrap
         .header
           #headerlinks
             = header_links
-          #skiplink
-            %a{:href => "#content"} Skip to Main Content&nbsp;|&nbsp;
       .span-24.main-wrap
         .main
           #main_nav_wrap

@@ -1,10 +1,11 @@
+%a{ :id => "content" }
 %h1
   USASearch Program
 %p
   USASearch is a program of General Services Administration’s Office of Citizen Services and Information Technology (OCSIT). For over ten years, USASearch has improved the general public’s access to government information by providing hosted search services for more than 300 government affiliate organizations, sharing APIs and web services, and operating the U.S. government’s official search engine at Search.USA.gov.
 %div
   .affiliate-marketing-left
-    %img{:src=>"/images/program_affiliate.png"}
+    %img{ :src => "/images/program_affiliate.png", :alt => 'Affiliate Program' }
   .affiliate-marketing-right
     %h2
       Affiliate Program
@@ -13,7 +14,7 @@
       = link_to "Learn more", affiliates_path, :id => "learn_more_affiliates"
   .clear
   .affiliate-marketing-left
-    %img{:src=>"/images/program_api.png"}
+    %img{ :src => "/images/program_api.png", :alt => 'APIs and other web services' }
   .affiliate-marketing-right
     %h2
       APIs and other web services
@@ -22,7 +23,7 @@
       = link_to "Learn more", api_docs_path, :id => "learn_more_api"
   .clear
   .affiliate-marketing-left
-    %img{:src=>"/images/program_search.png"}
+    %img{ :src => "/images/program_search.png", :alt => 'Search.USA.gov' }
   .affiliate-marketing-right
     %h2
       Search.USA.gov

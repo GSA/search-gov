@@ -30,9 +30,12 @@
     = (javascript_include_tag "sayt-ui.js").html_safe
     = (calendar_date_select_includes).html_safe
   %body
+    #skiplink
+      %a{:href => "#content"} Skip to Main Content
     = render "/shared/program_header"
     .newui-wrapper
       .outer-container
         .inner-container
+          %a{ :id => "content" }
           = yield
     = render "/shared/program_footer"

@@ -93,10 +93,15 @@ a
       float: left
       height: 38px
     li
+      border-right: 1px solid white
       font-size: 18px
       color: #fff
       float: left
       margin-right: 5px
+      padding-right: 5px
+      &.last
+        border-right: none
+        margin-right: 0
       a
         font-size: 18px
         color: #fff
@@ -585,7 +590,7 @@ a
   width: 70%
   padding: 10px 0 0 5px
   .container
-    min-width: 700px
+    min-width: 790px
   .col-1
     float: left
     width: 65%
@@ -1176,6 +1181,20 @@ table.generic-table
   &:hover
     background-position: 0 -41px
 
+.register-now
+  height: 38px
+  margin: 0 auto
+  width: 143px
+.register-now-button
+  @extend .generic-button
+  background: url(/images/register_now.png) no-repeat 0 0
+  height: 38px
+  width: 143px
+
+.how-it-works-banner
+  float: left
+  margin-right: 20px
+
 /*** recaptcha ***/
 #dynamic_recaptcha
   float: right
@@ -1201,6 +1220,10 @@ table.generic-table
     right: 1px
     left: 0
     bottom: 7px
+
+h3.api-item
+  font-weight: bold
+  margin-bottom: 5px
 
 .api
   width: 100%

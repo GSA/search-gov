@@ -25,6 +25,8 @@
       = (javascript_include_tag "iepngfix_tilebg.js").html_safe
     = (javascript_include_tag "affiliates.js").html_safe
   %body
+    #skiplink
+      %a{:href => "#content"} Skip to Main Content
     = render "/shared/program_header"
     .outer-container
       .inner-container
