@@ -49,12 +49,13 @@
                   = link_to_unless forms_search?, content_tag(:span, t(:forms)), forms_search_path(search_params)
           = yield
         .footer-wrap
-          = render_connect_section
-          .footer
-            = footer_links
-          = render_about_usasearch
-          .tagline
-            &= t(:site_tagline)
+          .center-wrapper
+            = render_connect_section
+            .footer
+              = footer_links
+            = render_about_usasearch
+            .tagline
+              &= t(:site_tagline)
       .span-24.bottom-wrap
         .bottom &nbsp;
     = render_webtrends_code

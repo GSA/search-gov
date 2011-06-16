@@ -26,8 +26,9 @@ jQuery(document).ready(function() {
 
   var position = { my: "left top", at: "left bottom", collision: "none" };
   if (isSearchUsaDesktop) {
+    position.at = "left top";
     position.of = "#search_form";
-    position.offset = "15 0";
+    position.offset = "15 43";
   }
   jQuery(".usagov-search-autocomplete").autocomplete({
     source: function(request, response) {
