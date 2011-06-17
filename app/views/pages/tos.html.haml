@@ -1,6 +1,6 @@
 = breadcrumbs([link_to("APIs & Web Services", api_docs_path), "Terms of Service"])
 %a{ :id => "content" }
-= render "/shared/api_key"
+= render "/shared/api_key", :hide_tos_link => true
 %h1
   USASearch Terms of Service
 %p
@@ -19,6 +19,8 @@
   Secondary Use
 %p
   Data accessed through USASearch do not, and should not, include controls over its end use. However, as the data owners or authoritative sources, the Departments and Agencies providing the data retain version control. Once the data has been downloaded from Search.USA.gov, the U.S. Government cannot vouch for the quality and timeliness of any analyses conducted with data retrieved.
+%p
+  Affiliate Program users of the Search Data API cannot cache results.
 %h2
   Citing Data
 %p

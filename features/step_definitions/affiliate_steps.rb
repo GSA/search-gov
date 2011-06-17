@@ -132,6 +132,18 @@ Then /^the affiliate "([^\"]*)" should be set to use global related topics$/ do 
   affiliate.related_topics_setting.should == 'global_enabled'
 end
 
+Then /I should see the API key/ do
+  page.should have_selector(".content-box", :text => "Your API Key:")
+end
+
+Then /I should see the TOS link/ do
+  page.should have_selector(".admin-content p.tos-centered a", :text => "Terms of Service")
+end
+
+Then /I should not see the TOS link/ do
+  page.should_not have_selector(".admin-content p.tos-centered a", :text => "Terms of Service")
+end
+
 Then /^the affiliate "([^\"]*)" should be set to use affiliate related topics$/ do |affiliate_name|
   affiliate = Affiliate.find_by_name(affiliate_name)
   affiliate.related_topics_setting.should == 'affiliate_enabled'

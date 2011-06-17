@@ -39,6 +39,21 @@ Feature: Affiliate clients
     And I should not see "Analytics Center" link in the main navigation bar
     And I should see the following breadcrumbs: USASearch > Affiliate Program
 
+  Scenario: Visiting the Affiliate API Pages as affiliate
+    Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
+    When I go to the recalls api page
+    Then I should see the API key
+    And I should see the TOS link
+    And I should see "By using a USASearch API, you agree to our"
+    When I follow "Search API"
+    Then I should see the API key
+    And I should see the TOS link
+    And I should see "By using a USASearch API, you agree to our"
+    When I follow "Terms of Service"
+    Then I should see the API key
+    And I should not see the TOS link
+    And I should not see "By using a USASearch API, you agree to our"
+
   Scenario: Visiting the affiliate admin page as affiliate with existing sites
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
     When I go to the affiliate admin page

@@ -7,7 +7,7 @@
 %p
   USASearch's Search Recall Data API returns search results, in json format, along with sections for summary stats, boosted sites, spelling suggestions, and related searches.
 %p
-  The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the recall of search results. First, the API searches all the fields in the database (the full text of the record). Second, the API stems (or performs prefix search) customers’ search terms (for example, allergic and allergy retrieve the same search results).
+  The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the recall of search results. First, the API searches all the fields in the database (the full text of the record). Second, the API performs a stemmed search on customers’ search terms (for example, allergic and allergy retrieve the same search results).
 
 .api
   - if @affiliate.present?
@@ -192,3 +192,9 @@
 
 
 
+.api
+  %h3 Terms of Service
+  %p
+    By using a USASearch API, you agree to our
+    = link_to 'Terms of Service', recalls_tos_docs_path
+    \.
