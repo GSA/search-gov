@@ -182,6 +182,15 @@ module ApplicationHelper
     "#{truncated}..."
   end
 
+
+  def truncate_html_prose_on_words(html, length, max_paragraphs = nil)
+    html_root = Nokogiri::XML.fragment(html.strip) rescue nil
+    truncated_html = ""
+    append_html_prose(truncated_html, html_root, length, max_paragraphs) unless html_root.nil?
+    truncated_html
+  end
+
+
   def highlight_like_solr(text, highlights)
     done = {}
     highlights.each do |highlight|
@@ -260,4 +269,48 @@ module ApplicationHelper
     return true if %w{ home images recalls forms searches image_searches pages }.include?(controller.controller_path)
     controller.controller_path == 'affiliates/home' and %w{ index demo how_it_works }.include?(controller.action_name)
   end
+
+  def append_html_prose(buffer, node, max_chars, max_paragraphs)
+    return [max_chars, max_paragraphs] if max_chars <= 0
+    case node.node_type
+    when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE :
+      mb_chars = node.text.mb_chars
+      if mb_chars.length <= max_chars
+        buffer << mb_chars
+        max_chars -= mb_chars.length
+      else
+        last_space_index = (mb_chars.rindex(/\W/, max_chars) || 0)
+        truncated_text = mb_chars[0..(mb_chars.rindex(/\w/, last_space_index) || 0)] unless last_space_index.nil?
+        buffer << "#{truncated_text}..."
+        max_chars = 0
+      end
+    when Nokogiri::XML::Node::ELEMENT_NODE, Nokogiri::XML::Node::DOCUMENT_FRAG_NODE :
+      if (max_paragraphs.present? && max_paragraphs == 0)
+        max_paragraphs -= 1
+        buffer << "..."
+      elsif max_paragraphs.nil? || max_paragraphs > 0
+        if node.element?
+          buffer << "<#{node.name}"
+          node.attributes.each do |name, value|
+            buffer << " #{name}='#{value}'"
+          end
+          buffer << ">"
+
+        end
+        node.children.each do |child|
+          max_chars, max_paragraphs = append_html_prose(buffer, child, max_chars, max_paragraphs)
+        end
+
+        if node.element?
+          buffer << "</#{node.name}>"
+          if max_paragraphs.present? && %w{h1 h2 h3 p li div quote}.include?(node.name)
+            max_paragraphs -= 1
+          end
+        end
+      end
+    else
+    end
+    [max_chars, max_paragraphs]
+  end
+
 end
