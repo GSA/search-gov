@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>263</tt></td>
-            <td class='right_align'><tt>225</tt></td>
+            <td class='right_align'><tt>316</tt></td>
+            <td class='right_align'><tt>271</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -1160,374 +1160,374 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line185">185</a>   def highlight_like_solr(text, highlights)</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line185">185</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line186">186</a>     done = {}</pre></td>
+            <td><pre><a name="line186">186</a>   def truncate_html_prose_on_words(html, length, max_paragraphs = nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line187">187</a>     highlights.each do |highlight|</pre></td>
+            <td><pre><a name="line187">187</a>     html_root = Nokogiri::XML.fragment(html.strip) rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line188">188</a>       highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).each do |term|</pre></td>
+            <td><pre><a name="line188">188</a>     truncated_html = &quot;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line189">189</a>         unless done.include?(term)</pre></td>
+            <td><pre><a name="line189">189</a>     append_html_prose(truncated_html, html_root, length, max_paragraphs) unless html_root.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line190">190</a>           text.gsub!(/\b(#{term})\b/, '&lt;strong&gt;\1&lt;/strong&gt;')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line191">191</a>           done[term] = true</pre></td>
+            <td><pre><a name="line190">190</a>     truncated_html</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line192">192</a>         end</pre></td>
+            <td><pre><a name="line191">191</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line193">193</a>       end</pre></td>
+            <td><pre><a name="line192">192</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line194">194</a>     end</pre></td>
+            <td><pre><a name="line193">193</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line195">195</a>     text</pre></td>
+            <td><pre><a name="line194">194</a>   def highlight_like_solr(text, highlights)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line195">195</a>     done = {}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line196">196</a>     highlights.each do |highlight|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line197">197</a>       highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).each do |term|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line198">198</a>         unless done.include?(term)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line199">199</a>           text.gsub!(/\b(#{term})\b/, '&lt;strong&gt;\1&lt;/strong&gt;')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line200">200</a>           done[term] = true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line196">196</a>   end</pre></td>
+            <td><pre><a name="line201">201</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line197">197</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line198">198</a>   def render_trending_searches</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line199">199</a>     render :partial =&gt; 'shared/trending_searches' if (params[:locale].blank? || params[:locale] == 'en')</pre></td>
+            <td><pre><a name="line202">202</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line200">200</a>   end</pre></td>
+            <td><pre><a name="line203">203</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line204">204</a>     text</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line201">201</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line202">202</a>   def breadcrumbs(breadcrumbs)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line203">203</a>     trail = link_to('USASearch', program_path)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line204">204</a>     breadcrumbs.each { |breadcrumb| trail &lt;&lt; breadcrumb }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line205">205</a>     content_tag(:div, trail, :class =&gt; 'breadcrumbs')</pre></td>
+            <td><pre><a name="line205">205</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line206">206</a>   end</pre></td>
+            <td><pre><a name="line206">206</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line207">207</a>   def render_trending_searches</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line208">208</a>     render :partial =&gt; 'shared/trending_searches' if (params[:locale].blank? || params[:locale] == 'en')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line207">207</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line208">208</a>   def url_for_mobile_home_page(locale = I18n.locale)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line209">209</a>     locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale =&gt; locale, :m =&gt; true)</pre></td>
+            <td><pre><a name="line209">209</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line210">210</a>   end</pre></td>
+            <td><pre><a name="line210">210</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line211">211</a>   def breadcrumbs(breadcrumbs)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line212">212</a>     trail = link_to('USASearch', program_path)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line213">213</a>     breadcrumbs.each { |breadcrumb| trail &lt;&lt; breadcrumb }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line214">214</a>     content_tag(:div, trail, :class =&gt; 'breadcrumbs')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line211">211</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line212">212</a>   def render_robots_meta_tag</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line213">213</a>     content = ''</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line214">214</a>     if request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line215">215</a>       content = tag(:meta, {:name =&gt; 'ROBOTS', :content =&gt; 'NOINDEX, NOFOLLOW'})</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line216">216</a>     elsif mobile_landing_page?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line217">217</a>       content = tag(:meta, {:name =&gt; 'ROBOTS', :content =&gt; 'INDEX, NOFOLLOW'})</pre></td>
+            <td><pre><a name="line215">215</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line218">218</a>     end</pre></td>
+            <td><pre><a name="line216">216</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line219">219</a>     raw content</pre></td>
+            <td><pre><a name="line217">217</a>   def url_for_mobile_home_page(locale = I18n.locale)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line218">218</a>     locale.to_sym == :es ? 'http://m.gobiernousa.gov' : root_path(:locale =&gt; locale, :m =&gt; true)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line220">220</a>   end</pre></td>
+            <td><pre><a name="line219">219</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line221">221</a> </pre></td>
+            <td><pre><a name="line220">220</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line222">222</a>   def mobile_landing_page?</pre></td>
+            <td><pre><a name="line221">221</a>   def render_robots_meta_tag</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line223">223</a>     controller.controller_path == &quot;home&quot; and request.format == :mobile</pre></td>
+            <td><pre><a name="line222">222</a>     content = ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line223">223</a>     if request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line224">224</a>       content = tag(:meta, {:name =&gt; 'ROBOTS', :content =&gt; 'NOINDEX, NOFOLLOW'})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line225">225</a>     elsif mobile_landing_page?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line226">226</a>       content = tag(:meta, {:name =&gt; 'ROBOTS', :content =&gt; 'INDEX, NOFOLLOW'})</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line224">224</a>   end</pre></td>
+            <td><pre><a name="line227">227</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line228">228</a>     raw content</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line225">225</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line226">226</a>   def render_connect_section</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line227">227</a>     return unless english_locale?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line228">228</a>     content_tag(:div, :class =&gt; 'connect') do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line229">229</a>       tags = []</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line230">230</a>       tags &lt;&lt; content_tag(:span, &quot;Connect with USASearch&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line231">231</a>       tags &lt;&lt; connect_links</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line232">232</a>       tags.join(&quot;\n&quot;).html_safe</pre></td>
+            <td><pre><a name="line229">229</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line233">233</a>     end</pre></td>
+            <td><pre><a name="line230">230</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line231">231</a>   def mobile_landing_page?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line232">232</a>     controller.controller_path == &quot;home&quot; and request.format == :mobile</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line234">234</a>   end</pre></td>
+            <td><pre><a name="line233">233</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line235">235</a> </pre></td>
+            <td><pre><a name="line234">234</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line236">236</a>   def render_connect_links</pre></td>
+            <td><pre><a name="line235">235</a>   def render_connect_section</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line237">237</a>     connect_links if display_connect_links?</pre></td>
+            <td><pre><a name="line236">236</a>     return unless english_locale?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line237">237</a>     content_tag(:div, :class =&gt; 'connect') do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line238">238</a>       tags = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line239">239</a>       tags &lt;&lt; content_tag(:span, &quot;Connect with USASearch&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line240">240</a>       tags &lt;&lt; connect_links</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line241">241</a>       tags.join(&quot;\n&quot;).html_safe</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line238">238</a>   end</pre></td>
+            <td><pre><a name="line242">242</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line239">239</a> </pre></td>
+            <td><pre><a name="line243">243</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line244">244</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line240">240</a>   def connect_links</pre></td>
+            <td><pre><a name="line245">245</a>   def render_connect_links</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line241">241</a>     tags = []</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line242">242</a>     tags &lt;&lt; link_to('Twitter', &quot;http://twitter.com/usasearch&quot;, :class =&gt; 'twitter', :title =&gt; 'Twitter')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line243">243</a>     tags &lt;&lt; link_to('Mobile', &quot;http://m.usa.gov&quot;, :class =&gt; 'mobile', :title =&gt; 'Mobile')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line244">244</a>     tags &lt;&lt; link_to('Our Blog', &quot;http://searchblog.usa.gov&quot;, :class =&gt; 'blog', :title =&gt; 'Our Blog')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line245">245</a>     tags &lt;&lt; link_to('Share', &quot;http://www.addthis.com/bookmark.php&quot;, :class =&gt; 'share last', :title =&gt; 'Share')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line246">246</a>     tags.join(&quot;\n&quot;).html_safe</pre></td>
+            <td><pre><a name="line246">246</a>     connect_links if display_connect_links?</pre></td>
           </tr>
         
           
@@ -1545,79 +1545,79 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line249">249</a>   private</pre></td>
+            <td><pre><a name="line249">249</a>   def connect_links</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line250">250</a>     tags = []</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line251">251</a>     tags &lt;&lt; link_to('Twitter', &quot;http://twitter.com/usasearch&quot;, :class =&gt; 'twitter', :title =&gt; 'Twitter')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line252">252</a>     tags &lt;&lt; link_to('Mobile', &quot;http://m.usa.gov&quot;, :class =&gt; 'mobile', :title =&gt; 'Mobile')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line253">253</a>     tags &lt;&lt; link_to('Our Blog', &quot;http://searchblog.usa.gov&quot;, :class =&gt; 'blog', :title =&gt; 'Our Blog')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line254">254</a>     tags &lt;&lt; link_to('Share', &quot;http://www.addthis.com/bookmark.php&quot;, :class =&gt; 'share last', :title =&gt; 'Share')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line255">255</a>     tags.join(&quot;\n&quot;).html_safe</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line250">250</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line251">251</a>   def ssl_protocol</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line252">252</a>     SSL_PROTOCOL</pre></td>
+            <td><pre><a name="line256">256</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line253">253</a>   end</pre></td>
+            <td><pre><a name="line257">257</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line258">258</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line254">254</a> </pre></td>
+            <td><pre><a name="line259">259</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line255">255</a>   def iterate_links(links)</pre></td>
+            <td><pre><a name="line260">260</a>   def ssl_protocol</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line256">256</a>     links.collect { |link| link_to(link[0], link[1], :class =&gt; link[2]) }.join unless links.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line257">257</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line258">258</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line259">259</a>   def display_connect_links?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line260">260</a>     return true if %w{ home images recalls forms searches image_searches pages }.include?(controller.controller_path)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line261">261</a>     controller.controller_path == 'affiliates/home' and %w{ index demo how_it_works }.include?(controller.action_name)</pre></td>
+            <td><pre><a name="line261">261</a>     SSL_PROTOCOL</pre></td>
           </tr>
         
           
@@ -1629,13 +1629,331 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line263">263</a> end</pre></td>
+            <td><pre><a name="line263">263</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line264">264</a>   def iterate_links(links)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line265">265</a>     links.collect { |link| link_to(link[0], link[1], :class =&gt; link[2]) }.join unless links.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line266">266</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line267">267</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line268">268</a>   def display_connect_links?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line269">269</a>     return true if %w{ home images recalls forms searches image_searches pages }.include?(controller.controller_path)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line270">270</a>     controller.controller_path == 'affiliates/home' and %w{ index demo how_it_works }.include?(controller.action_name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line271">271</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line272">272</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line273">273</a>   def append_html_prose(buffer, node, max_chars, max_paragraphs)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line274">274</a>     return [max_chars, max_paragraphs] if max_chars &lt;= 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line275">275</a>     case node.node_type</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line276">276</a>     when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE :</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line277">277</a>       mb_chars = node.text.mb_chars</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line278">278</a>       if mb_chars.length &lt;= max_chars</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line279">279</a>         buffer &lt;&lt; mb_chars</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line280">280</a>         max_chars -= mb_chars.length</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line281">281</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line282">282</a>         last_space_index = (mb_chars.rindex(/\W/, max_chars) || 0)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line283">283</a>         truncated_text = mb_chars[0..(mb_chars.rindex(/\w/, last_space_index) || 0)] unless last_space_index.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line284">284</a>         buffer &lt;&lt; &quot;#{truncated_text}...&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line285">285</a>         max_chars = 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line286">286</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line287">287</a>     when Nokogiri::XML::Node::ELEMENT_NODE, Nokogiri::XML::Node::DOCUMENT_FRAG_NODE :</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line288">288</a>       if (max_paragraphs.present? &amp;&amp; max_paragraphs == 0)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line289">289</a>         max_paragraphs -= 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line290">290</a>         buffer &lt;&lt; &quot;...&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line291">291</a>       elsif max_paragraphs.nil? || max_paragraphs &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line292">292</a>         if node.element?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line293">293</a>           buffer &lt;&lt; &quot;&lt;#{node.name}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line294">294</a>           node.attributes.each do |name, value|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line295">295</a>             buffer &lt;&lt; &quot; #{name}='#{value}'&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line296">296</a>           end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line297">297</a>           buffer &lt;&lt; &quot;&gt;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line298">298</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line299">299</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line300">300</a>         node.children.each do |child|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line301">301</a>           max_chars, max_paragraphs = append_html_prose(buffer, child, max_chars, max_paragraphs)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line302">302</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line303">303</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line304">304</a>         if node.element?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line305">305</a>           buffer &lt;&lt; &quot;&lt;/#{node.name}&gt;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line306">306</a>           if max_paragraphs.present? &amp;&amp; %w{h1 h2 h3 p li div quote}.include?(node.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line307">307</a>             max_paragraphs -= 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line308">308</a>           end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line309">309</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line310">310</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line311">311</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line312">312</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line313">313</a>     [max_chars, max_paragraphs]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line314">314</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line315">315</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line316">316</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Jun 15 14:35:58 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jun 17 22:36:24 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
