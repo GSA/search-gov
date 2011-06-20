@@ -433,4 +433,27 @@ describe SearchHelper do
       helper.top_search_link_for(@top_search_without_url).should have_selector("a[href^='/search']", :content => @top_search_without_url.query, :target => '_top')
     end
   end
+
+  describe "#strip_url_protocol" do
+    it "should remove protocol from url" do
+      strip_url_protocol('http://www.whitehouse.gov').should == 'www.whitehouse.gov'
+    end
+
+    it "should remove only the matching prefix protocol" do
+      strip_url_protocol('http://www.whitehouse.govhttp://invalidurl').should == 'www.whitehouse.govhttp://invalidurl'
+    end
+
+    it "should not remove anything if no matching protocol found" do
+      strip_url_protocol('www.whitehouse.gov').should == 'www.whitehouse.gov'
+    end
+  end
+
+  describe "#display_agency_link" do
+    it "should remove url protocol" do
+      search = mock('search', { :query => 'space', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil })
+      result = { 'unescapedUrl' => 'http://www.whitehouse.gov' }
+      helper.should_receive(:tracked_click_link).with(result['unescapedUrl'], 'www.whitehouse.gov', search, nil, 0, 'BWEB', :web).and_return('tracked')
+      helper.display_agency_link(result, search, nil, 0, :web).should == 'tracked'
+    end
+  end
 end

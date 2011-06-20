@@ -60,6 +60,15 @@ module SearchHelper
     raw html
   end
 
+  def display_agency_link(result, search, affiliate, position, vertical)
+    link_title = strip_url_protocol(shorten_url(result['unescapedUrl']))
+    tracked_click_link(h(result['unescapedUrl']), h(link_title), search, affiliate, position, 'BWEB', vertical)
+  end
+
+  def strip_url_protocol(url)
+    url.gsub(/^http(s)?:\/\//, '')
+  end
+
   def display_deep_links_for(result, search, affiliate, vertical)
     return if result["deepLinks"].nil?
     rows = []
@@ -69,7 +78,7 @@ module SearchHelper
       row << content_tag(:td, row_pair[1].nil? ? "" : tracked_click_link(h(row_pair[1].url), h(row_pair[1].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))
       rows << content_tag(:tr, row)
     end
-    content_tag(:table, raw(rows), :class=>"deep_links")
+    content_tag(:table, raw(rows), :class=>"deep-links")
   end
 
   def display_result_extname_prefix(result)
@@ -198,20 +207,21 @@ module SearchHelper
   end
 
   def display_agency_phone_numbers(agency)
-    html = ""
-    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_phone_label}: #{agency.phone}</h3>" if agency.phone.present?
-    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_toll_free_phone_label}: #{agency.toll_free_phone}</h3>" if agency.toll_free_phone.present?
-    html << "<h3 style=\"margin-top: 5px;\">#{t :agency_tty_phone_label}: #{agency.tty_phone}</h3>" if agency.tty_phone.present?
-    return raw(html)
+    content = ""
+    content << content_tag(:li, "#{agency.phone} (#{t :agency_phone_label})") if agency.phone.present?
+    content << content_tag(:li, "#{agency.toll_free_phone} (#{t :agency_toll_free_phone_label})") if agency.toll_free_phone.present?
+    content << content_tag(:li, "#{agency.tty_phone} (#{t :agency_tty_phone_label})") if agency.tty_phone.present?
+    return content_tag :ul, content.html_safe
   end
 
   def display_agency_social_media_links(agency)
     list_html = ""
     Agency::SOCIAL_MEDIA_SERVICES.each do |service|
       profile_link = agency.send("#{service.downcase}_profile_link".to_sym)
-      list_html << "<h3>#{service}#{I18n.locale == I18n.default_locale ? ":" : " (en inglés):"} #{ link_to profile_link, profile_link, :target => "_blank" }</h3>" if profile_link
+      title = "#{service}#{spanish_locale? ? " (en inglés)" : ""}"
+      list_html << content_tag(:li, link_to(title, profile_link, :title => title, :class => service.downcase)) unless profile_link.blank?
     end
-    raw(list_html)
+    content_tag(:ul, list_html.html_safe, :class => 'social-media')
   end
 
   def advanced_search_link(search_options, affiliate = nil)

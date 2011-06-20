@@ -315,8 +315,9 @@ a:hover
 div.auto_complete ul li
   :color black
 
-table.deep_links
+table.deep-links
   :padding-left 2em
+  :table-layout fixed
   :margin-bottom 0
   tr td
     :padding 0
@@ -419,7 +420,7 @@ ul#related_gov_forms
   +topfade
   :border 1px solid #ddd
   :padding 1em
-  :width 594px
+  @include border-radius
   h3
     :font-size 1.5em
     :color rgb(23, 69, 120)
@@ -429,6 +430,101 @@ ul#related_gov_forms
     :padding-left 0.5em
     :list-style-type disc
     :color gray
+  &.agency
+    :line-height 1
+    h2
+      :line-height 1.5
+    h3
+      :color #C51432
+      :font
+        :size 13px
+        :weight bold
+    .link a
+      :color green
+      :border-right 1px solid #222222
+      :line-height 1.1
+      :padding-right 8px
+      :margin-right 3px
+    .official-tag
+      :color #C51432
+      :float right
+      :font
+        :size 13px
+        :weight normal
+    .description
+      :color #222222
+      :font-size 1.1em
+      :line-height 1
+      :margin 0.5em 0 0.3em
+    table.deep-links
+      :padding 0
+      :margin 0
+      :width 100%
+    .section
+      :float left
+      :margin
+        :top 0.4em
+      :width 50%
+    .stay-connected
+      @extend .section
+      .phone-wrapper
+        :float left
+        img, ul
+          :float left
+        img
+          :margin-top 0.3em
+        ul
+          :margin-left 7px
+          :width 270px
+      ul
+        :color #222222
+        :list-style none
+        :margin 0.3em 0 0
+        :padding 0
+        li
+          :line-height 1.2
+        &.social-media
+          :background none
+          :float left
+          :height 16px
+          li
+            :display inline
+            :float left
+          a
+            :float left
+            :font-size 0
+            :height 16px
+            :line-height 0
+            :padding 0 3px
+            :text-indent -999em
+            :width 16px
+            &.facebook
+              :background url('/images/govbox/facebook.gif') left top no-repeat
+            &.flickr
+              :background url('/images/govbox/flickr.gif') left top no-repeat
+            &.twitter
+              :background url('/images/govbox/twitter.gif') left top no-repeat
+            &.youtube
+              :background url('/images/govbox/youtube.gif') left top no-repeat
+    .popular-pages
+      @extend .section
+      ul
+        :margin 0.3em 0 0
+        :padding 0
+        li
+          :background url('/images/govbox/star.gif') left 1px no-repeat
+          :display block
+          :line-height 1.2
+          :list-style none
+          :padding-left 15px
+          a
+            :text-decoration none
+    .search-within
+      @extend .section
+      form
+        :margin 0.4em 0 0
+        #query
+          :width 230px
 
 .recalls-govbox, .recalls
   h3

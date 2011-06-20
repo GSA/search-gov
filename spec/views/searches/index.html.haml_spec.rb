@@ -232,21 +232,20 @@ describe "searches/index.html.haml" do
       context "if the first result matches the URL in the agency query" do
         it "should format the first result as a special agency result" do
           render
-          rendered.should have_selector("div[class='govbox']")
-          rendered.should contain("| Official Site")
-          rendered.should_not contain(/www.irs.gov\/ - Cached/)
-          rendered.should contain(/Contact: 888-555-1040/)
+          rendered.should have_selector "div[class='govbox agency']"
+          rendered.should contain("www.irs.gov/ Official Site")
+          rendered.should contain(/888-555-1040 \(Contact\)/)
           rendered.should_not contain(/Toll-free:/)
           rendered.should_not contain(/TTY:/)
           rendered.should contain(/Search within irs.gov/)
-          rendered.should contain(/Twitter:/)
+          rendered.should contain(/Twitter/)
           rendered.should have_selector "form[action='/search']"
           rendered.should have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
           rendered.should have_selector "input[type='hidden'][name='locale'][value='en']"
           rendered.should have_selector "input[type='submit'][value='Search']"
-          rendered.should have_selector("a", :href => @agency.twitter_profile_link, :target => "_blank", :content => @agency.twitter_profile_link)
+          rendered.should have_selector("a", :href => @agency.twitter_profile_link, :content => "Twitter")
           rendered.should_not contain("Facebook:")
-          rendered.should have_selector("div[class='popular']")
+          rendered.should have_selector("div[class='popular-pages']")
           rendered.should contain(/Form 1040-NR/)
           rendered.should_not contain(/Páginas populares/)
           rendered.should contain(/Popular Pages/)
@@ -260,7 +259,7 @@ describe "searches/index.html.haml" do
 
         it "should not render a special agency result, even if the first result matches" do
           render
-          rendered.should_not have_selector "div[class=govbox]"
+          rendered.should_not have_selector "div[class='govbox agency']"
           rendered.should_not contain(/Contact: 888-555-1040/)
           rendered.should_not contain(/Search within irs.gov/)
           rendered.should have_selector "form[action='/search']"
@@ -299,15 +298,15 @@ describe "searches/index.html.haml" do
 
           it "should render the first result as a Spanish agency govbox" do
             render
-            rendered.should have_selector "div[class=govbox]"
-            rendered.should contain(/Contacto: 888-555-1040/)
+            rendered.should have_selector "div[class='govbox agency']"
+            rendered.should contain(/888-555-1040 \(Contacto\)/)
             rendered.should contain(/Buscar en irs.gov/)
             rendered.should contain(/Twitter \(en inglés\)/)
             rendered.should have_selector "form[action='/search']"
             rendered.should have_selector "input[type='hidden'][name='sitelimit'][value='irs.gov']"
             rendered.should have_selector "input[type='hidden'][name='locale'][value='es']"
             rendered.should have_selector "input[type='submit'][value='Buscar']"
-            rendered.should have_selector("div[class='popular']")
+            rendered.should have_selector("div[class='popular-pages']")
             rendered.should contain(/Form 1040-NR/)
             rendered.should contain(/Páginas populares/)
             rendered.should_not contain(/Popular Pages/)

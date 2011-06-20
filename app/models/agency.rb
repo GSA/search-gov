@@ -7,7 +7,7 @@ class Agency < ActiveRecord::Base
   after_save :generate_agency_queries
   
   NAME_QUERY_PREFIXES = ["the", "us", "u.s.", "united states"]
-  SOCIAL_MEDIA_SERVICES = %w{Twitter Facebook YouTube Flickr}
+  SOCIAL_MEDIA_SERVICES = %w{Facebook Twitter YouTube Flickr}
   
   def twitter_profile_link
     self.twitter_username.present? ? "http://twitter.com/#{self.twitter_username}" : nil

@@ -52,7 +52,7 @@ describe "shared/_searchresults.html.haml" do
 
     it "should show deep links on the first page only" do
       render
-      rendered.should have_selector('table', :class => 'deep_links', :count => 1)
+      rendered.should have_selector('table', :class => 'deep-links', :count => 1)
     end
 
     it "should contain cache links" do
