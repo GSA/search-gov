@@ -1,31 +1,29 @@
 .searchresult.clearfix{:id => "searchresult#{index+1}"}
   .govbox{:style => 'float: left;'}
-    %h3{:style => 'float: right;'}
-      = t :medline_official_result
-      = image_tag "medline.#{I18n.locale.to_s}.png"
+    %h3{:style => 'float: right; color: #C51432; font-weight: bold;'}
+      = t :medline_official_result, :locale => search.med_topic.locale.to_sym
+      = image_tag "medline.#{search.med_topic.locale.to_sym}.png"
     %h2
       = display_medline_result_title(search, affiliate, index)
     %h3
-      = display_medline_url_with_click_tracking(search.med_topic.medline_url, search.query, index)
-    %h3
       :css
         p + p {
-          margin-top: 5px;
+          margin-top: 7px;
           text-indent: 0px;
         }
-      = display_medline_results_description(search.med_topic.summary_html)
+      = display_medline_results_description(search.med_topic.summary_html, search.query)
     .govbox-related{:style => 'float: left; width: 100%;'}
       - if search.med_topic.related_topics.size > 0
-        %span{:style => 'width: 30%; float: left;'}
+        %span{:style => 'width: 50%; float: left;'}
           %p{:style => 'color: #C51432; font-weight: bold;'}
-            = t :medline_related_topics
+            = t :medline_related_topics, :locale => search.med_topic.locale.to_sym
             %ul{:style => 'margin: 0px; padding: 0px;'}
-              - search.med_topic.related_topics.each do |related_medline_topic|
+              - search.med_topic.related_topics[0..3].each do |related_medline_topic|
                 %li{:style => 'list-style-type: none;'}
-                  = display_medline_topic_with_click_tracking(related_medline_topic, search.query, index)
+                  = display_medline_topic_with_click_tracking(related_medline_topic, search.query, index, I18n.locale.to_s)
       - if search.med_topic.lang_mapped_topic.present?   
         %span
           %p{:style => 'color: #C51432; margin: 0px; font-weight: bold;'}
-            = t :medline_term_for_locale
+            = t :medline_term_for_locale, :locale => search.med_topic.locale.to_sym
           %p{:style => 'margin: 0px;'}
             = display_medline_topic_with_click_tracking(search.med_topic.lang_mapped_topic, search.query, index, other_locale_str)        

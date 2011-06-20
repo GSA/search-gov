@@ -156,8 +156,8 @@ module SearchHelper
     translate_bing_highlights(h(result['content']))
   end
   
-  def display_medline_results_description(summary)
-    truncate(summary, :length => 300, :omission => '...</p>').html_safe
+  def display_medline_results_description(summary, query)
+    highlight(truncate_html_prose_on_words(summary, 300), query).html_safe
   end
   
   def translate_bing_highlights(body)

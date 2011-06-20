@@ -384,7 +384,7 @@ describe "searches/index.html.haml" do
         
         it "should include a link to the other language version" do
           render
-          rendered.should contain(/Esta tema en espanol/)
+          rendered.should contain(/Esta tema en español/)
           rendered.should have_selector "a", :href => "/search?locale=es&query=Colitis+ulcerativa", :content => 'Colitis ulcerativa'
         end
       end
