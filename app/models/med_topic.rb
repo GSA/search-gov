@@ -7,6 +7,9 @@ class MedTopic < ActiveRecord::Base
   DAYS_PER_WEEK                   = 7
   SUPPORTED_LOCALES               = ["en", "es"]
 
+  MESH_TITLE_SEPARATOR = ":"
+
+
   validates_presence_of :medline_tid, :medline_title, :locale
 
   has_many :synonyms, :class_name => "MedSynonym", :foreign_key => :topic_id, :dependent => :destroy
@@ -23,6 +26,14 @@ class MedTopic < ActiveRecord::Base
 
   @@fetch_count = 0
 
+
+  def has_mesh_titles?
+    not mesh_titles.empty?
+  end
+
+  def mesh_title_list
+    mesh_titles.split(MESH_TITLE_SEPARATOR)
+  end
 
   class << self
 
@@ -88,6 +99,7 @@ class MedTopic < ActiveRecord::Base
         topics[topic.medline_tid] = {
             :medline_title  => topic.medline_title,
             :medline_url    => topic.medline_url,
+            :mesh_titles    => topic.mesh_titles,
             :summary_html   => topic.summary_html,
             :locale         => topic.locale,
             :synonyms       => [],
@@ -223,6 +235,20 @@ class MedTopic < ActiveRecord::Base
     end
 
 
+    def parse_medline_xml_meshheads(root)
+      mesh_heads = []
+      unless root.nil?
+        root.xpath("MeshHeadingList").each do |mesh_headings_node|
+          mesh_headings_node.xpath("MeshHeading/Descriptor/DescriptorName").each do |descr_name_node|
+            descr_name = descr_name_node.text
+            mesh_heads << descr_name.strip unless descr_name.nil? || descr_name.strip.empty? || descr_name.index(MESH_TITLE_SEPARATOR)
+          end
+        end
+      end
+      return mesh_heads
+    end
+
+
     def parse_medline_xml_vocab(xml)
 
       xml_doc = Nokogiri::XML(xml)
@@ -282,6 +308,15 @@ class MedTopic < ActiveRecord::Base
                          rtids
                        end
 
+
+        mesh_heads = parse_medline_xml_meshheads(topic_node)
+        if mesh_heads.empty?
+          # note: only go after first SeeReference
+          mesh_heads = parse_medline_xml_meshheads(topic_node.xpath("SeeReferencesList/SeeReference"))
+        end
+
+        mesh_titles = mesh_heads.join(MESH_TITLE_SEPARATOR)
+
         topics[tid] = {
             :medline_title  => medline_title,
             :locale         => locale,
@@ -289,6 +324,7 @@ class MedTopic < ActiveRecord::Base
             :synonyms       => synonyms.sort,
             :summary_html   => linted_summary,
             :medline_url    => medline_url,
+            :mesh_titles    => mesh_titles,
             :related_groups => related_gids.sort,
             :related_topics => related_tids.sort
         }
@@ -649,8 +685,8 @@ class MedTopic < ActiveRecord::Base
     def lint_medline_xml_for_date(effective_date)
 
       xml   = MedTopic.medline_xml_for_date(effective_date)
-      vocab = MedTopic.parse_medline_xml_vocab(xml) { |where, what| yield("#{where}: #{what}")
-      }
+      vocab = MedTopic.parse_medline_xml_vocab(xml) { |where, what| yield("#{where}: #{what}") }
+
       yield "found #{vocab[:topics].size} topics / #{vocab[:groups].size} groups"
       topics_wo_langmap = { }
       topics_wo_groups  = []

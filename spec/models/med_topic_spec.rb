@@ -5,6 +5,9 @@ describe MedTopic do
 
     MedTopic.destroy_all
     MedGroup.destroy_all
+    MedSynonym.destroy_all
+    MedTopicGroup.destroy_all
+    MedTopicRelated.destroy_all
 
     @valid_attributes = {
         :medline_title => "Supreme Paranoia",
@@ -26,6 +29,7 @@ describe MedTopic do
         :topics => {
             1867 => {
                 :medline_title  => "Agua potable",
+                :mesh_titles    => "",
                 :synonyms       => ["Agua para beber"],
                 :locale         => "es",
                 :medline_url    => "http://www.nlm.nih.gov/medlineplus/spanish/drinkingwater.html",
@@ -36,6 +40,7 @@ describe MedTopic do
             },
             1435 => {
                 :medline_title  => "Drinking Water",
+                :mesh_titles    => "Water",
                 :synonyms       => [],
                 :locale         => "en",
                 :medline_url    => "http://www.nlm.nih.gov/medlineplus/drinkingwater.html",
@@ -46,6 +51,7 @@ describe MedTopic do
             },
             218  => {
                 :medline_title  => "Drowning",
+                :mesh_titles    => "Drowning",
                 :synonyms       => [],
                 :locale         => "en",
                 :medline_url    => "http://www.nlm.nih.gov/medlineplus/drowning.html",
@@ -117,6 +123,7 @@ describe MedTopic do
                 :related_topics => [],
                 :summary_html   => "<p>Todas las criaturas vivas necesitan agua sana y potable...</p>",
                 :locale         => "es",
+                :mesh_titles    => "",
                 :lang_map       => 1435
             },
             { :medline_tid => 218 }  => {
@@ -127,6 +134,7 @@ describe MedTopic do
                 :related_topics => [],
                 :summary_html   => "<p>If you are under water long enough, your lungs fill with water...</p>",
                 :locale         => "en",
+                :mesh_titles    => "Drowning",
                 :lang_map       => nil
             },
             { :medline_tid => 1435 } => {
@@ -137,6 +145,7 @@ describe MedTopic do
                 :related_topics => [218],
                 :summary_html   => "<p>Every living creature needs clean and safe drinking water...</p>",
                 :locale         => "en",
+                :mesh_titles    => "Water",
                 :lang_map       => 1867
             }
         }
@@ -523,6 +532,36 @@ describe MedTopic do
       MedTopic.apply_vocab_delta(delta)
       MedTopic.dump_db_vocab.should eql vocab
 
+      delta[:create_topic].keys.sort_by { |topic_key| topic_key[:medline_tid]}.collect { |topic_key| [topic_key[:medline_tid],delta[:create_topic][topic_key][:mesh_titles]] }.should eql [
+          [218, "Drowning"],
+          [364, "Poisoning"],
+          [422, "Stress, Psychological"],
+          [485, "Safety"],
+          [500, "Noise"],
+          [1330, "Asbestos:Asbestosis"],
+          [1435, "Water"],
+          [1456, "Caffeine"],
+          [1539, "Ozone"],
+          [1569, "Arsenic:Arsenic Poisoning"],
+          [1656, "Plague"],
+          [1756, ""],
+          [1758, ""],
+          [1793, ""],
+          [1867, ""],
+          [1868, ""],
+          [2055, ""],
+          [2070, ""],
+          [2095, ""],
+          [2131, ""],
+          [2175, ""],
+          [2258, ""],
+          [4361, "von Hippel-Lindau Disease"],
+          [4606, "Tsunamis"],
+          [4607, ""],
+          [5559, "Coma:Persistent Vegetative State"],
+          [5560, ""]
+      ]
+
       msgs = []
 
       vocab1 = MedTopic.parse_medline_xml_vocab(@medline_subset_sample_vocab_xml_1) { |tid, msg|
@@ -542,7 +581,8 @@ describe MedTopic do
               { :medline_tid => 1569 } => { :related_topics => [1435, 1758], :summary_html => nil, :lang_map => nil },
               { :medline_tid => 1758 } => { :synonyms => ["Amianto", "Amiantorillo"] },
               { :medline_tid => 1793 } => { :related_groups => [] },
-              { :medline_tid => 1867 } => { :related_groups => [28] }
+              { :medline_tid => 1867 } => { :related_groups => [28] },
+              { :medline_tid => 2055 } => { :mesh_titles => "Noise, Random:Noise, Pink:Noise, Purplish" },
           },
           :update_group => {
               { :medline_gid => 28, :locale => "en" } => { :medline_url => "http://www.nlm.nih.gov/medlineplus/poisoningandsuch.html" }
@@ -555,10 +595,37 @@ describe MedTopic do
       arsenic_en = MedTopic.search_for("arsenic", "en")
       arsenic_en.related_topics.collect { |related_topics| related_topics.medline_tid }.sort.should eql [1435, 1758]
 
+      arsenic_en.has_mesh_titles?.should be_true
+      arsenic_en.mesh_title_list.should == ["Arsenic", "Arsenic Poisoning"]
+
       negating_delta = MedTopic.delta_medline_vocab(vocab1, @empty_vocab)
       negating_delta.should_not eql []
       MedTopic.apply_vocab_delta(negating_delta)
       MedTopic.dump_db_vocab.should eql @empty_vocab
+    end
+
+  end
+
+
+  describe "#parse_medline_xml_meshheads" do
+
+    before(:all) do
+      @mesh_title_xml = Nokogiri::XML(File.read(Rails.root.to_s + "/spec/fixtures/xml/medline_meshtitles.xml"))
+    end
+
+    it "should deal with empty xml" do
+      MedTopic.parse_medline_xml_meshheads(nil).should eql []
+    end
+
+    it "should parse meshheading correctly" do
+      tests_run = 0
+      @mesh_title_xml.xpath("tests/test").each do |test_data|
+        test_stimulus = test_data.at_xpath("stimulus")
+        test_response = test_data.at_xpath("response").text.split(":")
+        MedTopic.parse_medline_xml_meshheads(test_stimulus).should eql test_response
+        tests_run += 1
+      end
+      tests_run.should == 2
     end
 
   end

@@ -92,6 +92,9 @@ field.
 the resulting expanded list of topic ids is printed to stdout.
 
 
+### meshs
 
-
+grabs the latest vocab XML (if necessary) and looks at the MeshHeading relationships.
+It creates a histogram showing how many topics have how many mesh heading references.
+It also shows which topic have no seeref meshheadings, no meshheadins, or neither type.
 

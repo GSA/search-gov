@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110610225954) do
+ActiveRecord::Schema.define(:version => 20110621205934) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -366,6 +366,7 @@ ActiveRecord::Schema.define(:version => 20110610225954) do
     t.boolean  "visible",                             :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "mesh_titles",                         :default => ""
   end
 
   add_index "med_topics", ["medline_tid"], :name => "index_med_topics_on_medline_tid"

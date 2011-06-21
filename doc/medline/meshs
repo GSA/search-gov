@@ -1,0 +1,183 @@
+#!/usr/bin/env ruby  
+
+require 'rubygems'
+require 'date'
+require 'json'
+require 'open-uri'
+require 'nokogiri' 
+
+
+MEDLINE_XML_BASE_URL = "http://www.nlm.nih.gov/medlineplus/xml/vocabulary/mplus_"
+
+# groups.xml
+# vocab.xml
+
+
+class MedlineVocab
+
+  SATURDAY = 6
+  DAYS_PER_WEEK = 7
+
+  CACHE_DATA_PATH = "."
+
+  def self.saturday_on_or_before( date )
+
+	day_of_week = date.wday 
+
+	most_recent_saturday = if day_of_week >= SATURDAY
+		date - day_of_week + SATURDAY
+	else
+		date - day_of_week - DAYS_PER_WEEK + SATURDAY
+	end
+
+  end
+
+  def initialize( xml_data )
+	@xml_data = xml_data
+	@doc = Nokogiri::XML( xml_data )
+  end
+
+  def self.for_date( date = nil )
+	most_recent_saturday = saturday_on_or_before( date || Date.today )
+	sat_s = most_recent_saturday.strftime( "%Y-%m-%d" )
+	vocab_xml_fns = "vocab_#{sat_s}.xml"
+	cached_data_path = File.join( CACHE_DATA_PATH, vocab_xml_fns )
+	xml_data = if File.exist?( cached_data_path )
+		File.open( cached_data_path ) { |cached_file| cached_file.read }	
+	else
+		vocab_xml_url = "#{MEDLINE_XML_BASE_URL}#{vocab_xml_fns}"
+		puts "fetching #{vocab_xml_url}"
+		remote_data = open( vocab_xml_url ) { |remote| remote.read }
+		File.open( cached_data_path, "w" ) { |cached_data_file| cached_data_file.write( remote_data ) }	
+		remote_data
+	end
+	return self.new( xml_data )
+  end
+
+  def doc
+	@doc
+  end
+
+
+
+
+end
+
+
+class MedlineTopic
+
+	attr_reader  :tid, :name, :language, :synonyms, :lmtid, :meshs, :srmeshs
+
+	def initialize( tid, language, name, synonyms, lmtid, meshs, srmeshs )
+		@tid = tid 
+		@name = name
+		@language = language 
+		@synonyms = synonyms
+		@lmtid = lmtid 
+		@meshs = meshs
+		@srmeshs = srmeshs
+	end
+
+	def umeshs
+		@meshs.uniq
+	end
+
+	def usrmeshs
+		@srmeshs.uniq
+	end
+end
+
+topics_by_lang = {}
+topics = []
+
+vocab = MedlineVocab.for_date
+vocab.doc.xpath("//MedicalTopic").each { |topic_node| 
+
+	tid  = topic_node.at_xpath('ID').text.to_i rescue nil
+	lang = topic_node["langcode"] rescue -1
+	name = topic_node.at_xpath("MedicalTopicName").text rescue ""
+	lmtid = topic_node.at_xpath('LanguageMappedTopicID').text.to_i rescue nil
+        srmeshs = []
+        meshs = []
+        topic_node.xpath("SeeReferencesList/SeeReference/MeshHeadingList/MeshHeading/Descriptor/DescriptorUI").each do |mui|
+		srmeshs << mui.text
+        end
+        topic_node.xpath("MeshHeadingList/MeshHeading/Descriptor/DescriptorUI").each do |mui|
+		meshs << mui.text
+        end
+
+	syns_node = topic_node.at_xpath("Synonyms") 
+	description = if syns_node.nil?
+		name
+	else
+		synonyms = [] 
+		syns_node.xpath('Synonyms').each { |syn_node| synonyms << syn_node.text }
+		"#{name} (#{synonyms.join(", ")})"
+	end
+
+	topic = MedlineTopic.new( tid, lang, name, synonyms, lmtid, meshs, srmeshs )
+
+#	puts "%4d %2s %4d %s" % [topic.tid, topic.language[0..1], topic.lmtid || -1, description]
+
+	topics << topic
+
+	topics_by_lang[lang] = (topics_by_lang[lang] || []) << topic
+}
+
+en_topics = {}
+es_topics = {}
+
+puts "\ntopic mesh relationship stats: "
+
+
+topics_by_lang.each { |lang, topics|
+
+  puts("\n#{lang} topics:\n") 
+
+  meshs_histo = []
+  srmeshs_histo = []
+  umeshs_histo = []
+  usrmeshs_histo = []
+  neither_meshs = []
+  no_meshs = []
+  no_srmeshs = []
+  topics.each { |topic|
+    meshs_histo[topic.meshs.size] = (meshs_histo[topic.meshs.size] || 0) + 1
+    umeshs_histo[topic.umeshs.size] = (umeshs_histo[topic.umeshs.size] || 0) + 1
+    srmeshs_histo[topic.srmeshs.size] = (srmeshs_histo[topic.srmeshs.size] || 0) + 1
+    usrmeshs_histo[topic.usrmeshs.size] = (usrmeshs_histo[topic.usrmeshs.size] || 0) + 1
+    if topic.meshs.size == 0
+      if topic.srmeshs.size == 0
+	neither_meshs << topic
+      else
+	no_meshs << topic
+      end
+    elsif topic.srmeshs.size == 0
+      no_srmeshs << topic
+    end
+  }
+
+  max_n = meshs_histo.size > srmeshs_histo.size ? meshs_histo.size : srmeshs_histo.size
+
+  puts "%2s%7s%7s%7s%7s" % %w{n mesh umesh srmesh usrmesh}
+
+  0.upto(max_n - 1) do |n|
+	puts "%2d%7d%7d%7d%7d" % [n, meshs_histo[n] ||  0, umeshs_histo[n] || 0, srmeshs_histo[n] || 0, usrmeshs_histo[n]]
+  end
+
+  puts ""
+
+  puts "topics without meshs (but with srmeshs): #{no_meshs.size}"
+  no_meshs[0..9].each { |topic| puts "%4d %s" % [topic.tid, topic.language[0..1], topic.lmtid || -1, topic.name] }
+  puts ""
+
+  puts "topics without srmeshs (but with meshs): #{no_srmeshs.size}"
+  no_srmeshs[0..9].each { |topic| puts "%4d %s" % [topic.tid, topic.language[0..1], topic.lmtid || -1, topic.name] }
+  puts ""
+
+  puts "topics without meshs or srmeshs: #{neither_meshs.size}"
+  neither_meshs[0..9].each { |topic| puts "%4d %s" % [topic.tid, topic.language[0..1], topic.lmtid || -1, topic.name] }
+  puts ""
+}
+
+
