@@ -18,6 +18,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
 
   def update
     if @boosted_content.update_attributes(params[:boosted_content])
+      index_boosted_content(@boosted_content)
       flash[:success] = "Boosted Content entry successfully updated"
       redirect_to new_affiliate_boosted_content_path
     else
@@ -29,6 +30,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   def create
     @boosted_content = BoostedContent.create(params[:boosted_content].merge(:affiliate => @affiliate))
     if @boosted_content.errors.empty?
+      index_boosted_content(@boosted_content)
       flash[:success] = "Boosted Content entry successfully added for affiliate '#{@affiliate.display_name}'"
       redirect_to new_affiliate_boosted_content_path
     else
@@ -74,5 +76,8 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
         @affiliate.boosted_contents.order("updated_at desc, id desc").limit(NUMBER_TO_DISPLAY_IF_ABOVE_MAX) :
         @affiliate.boosted_contents
   end
-
+  
+  def index_boosted_content(boosted_content)
+    Sunspot.index(boosted_content)
+  end
 end

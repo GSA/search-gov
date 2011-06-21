@@ -188,6 +188,5 @@ describe BoostedContent do
         BoostedContent.search_for('foo')
       end
     end
-
   end
 end

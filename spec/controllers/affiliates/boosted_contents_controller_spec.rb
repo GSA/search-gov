@@ -4,6 +4,8 @@ describe Affiliates::BoostedContentsController do
   fixtures :users, :affiliates
   before do
     activate_authlogic
+    BoostedContent.destroy_all
+    BoostedContent.reindex
   end
 
   describe "do GET on #new" do
@@ -87,7 +89,11 @@ describe Affiliates::BoostedContentsController do
         assigns[:boosted_content].errors[:url].first.should == "has already been boosted"
         flash[:error].should =~ /problem/
       end
-
+      
+      it "should index the new boosted content" do
+        post :create, :affiliate_id => @affiliate.to_param, :boosted_content => {:url => "a url", :title => "a unique title", :description => "a description"}
+        BoostedContent.search_for('unique', @affiliate).total.should == 1
+      end
     end
   end
 
@@ -127,7 +133,11 @@ describe Affiliates::BoostedContentsController do
       assigns[:boosted_content].errors[:url].first.should == "has already been boosted"
       flash[:error].should =~ /problem/
     end
-
+    
+    it "should index the updated boosted content" do
+      post :update, :affiliate_id => @affiliate.to_param, :id => @boosted_content.to_param, :boosted_content => {:url => "new url", :title => "new updated title", :description => "new description", :keywords => 'four, five, six'}
+      BoostedContent.search_for('updated', @affiliate).total.should == 1
+    end
   end
 
   describe "destroy" do
