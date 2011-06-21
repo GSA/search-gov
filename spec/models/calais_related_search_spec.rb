@@ -16,6 +16,34 @@ describe CalaisRelatedSearch do
     }
   end
 
+  context "when creating a new instance" do
+    it "should create a new instance given valid attributes" do
+      CalaisRelatedSearch.create!(@valid_attributes)
+    end
+
+    it "should default to being protected from automatic refreshes" do
+      crs = CalaisRelatedSearch.create!(:term => "debt relief", :related_terms => "whatevs")
+      crs.gets_refreshed.should be_false
+    end
+    
+    it "should downcase the term when saving via ActiveRecord" do
+      crs = CalaisRelatedSearch.create!(:term => 'Debt Relief', :related_terms => 'whatever')
+      crs.term.should == 'debt relief'
+      crs.term = "Debt Relief"
+      crs.save!
+      crs.term.should == "debt relief"
+    end
+
+    it { should validate_presence_of :term }
+    it { should validate_presence_of :related_terms }
+    it { should validate_presence_of :locale }
+    it { should validate_uniqueness_of(:term).scoped_to([:affiliate_id, :locale]) }
+    SUPPORTED_LOCALES.each do |value|
+      it { should allow_value(value).for(:locale) }
+    end
+    it { should belong_to :affiliate }
+  end
+  
   describe "#delete_if_exists(term, locale, affiliate_id)" do
     context "when a CalaisRelatedSearch exists matching the given term, locale, and affilaite_id" do
       it "should delete the CalaisRelatedSearch" do
@@ -73,34 +101,16 @@ describe CalaisRelatedSearch do
     end
   end
 
-  context "when creating a new instance" do
-    it "should create a new instance given valid attributes" do
-      CalaisRelatedSearch.create!(@valid_attributes)
-    end
-
-    it "should default to being protected from automatic refreshes" do
-      crs = CalaisRelatedSearch.create!(:term => "debt relief", :related_terms => "whatevs")
-      crs.gets_refreshed.should be_false
-    end
-
-    it { should validate_presence_of :term }
-    it { should validate_presence_of :related_terms }
-    it { should validate_presence_of :locale }
-    it { should validate_uniqueness_of(:term).scoped_to([:affiliate_id, :locale]) }
-    SUPPORTED_LOCALES.each do |value|
-      it { should allow_value(value).for(:locale) }
-    end
-    it { should belong_to :affiliate }
-  end
-
-  context "when performing a Solr search" do
-    it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
-      ActiveSupport::Notifications.should_receive(:instrument).
-        with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate_id => @affiliate.id, :model=>"CalaisRelatedSearch", :term => "foo", :locale=>"en")))
-      CalaisRelatedSearch.search_for("foo","en",@affiliate.id)
+  describe "#search_for" do
+    context "when performing a Solr search" do
+      it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
+        ActiveSupport::Notifications.should_receive(:instrument).
+          with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate_id => @affiliate.id, :model=>"CalaisRelatedSearch", :term => "foo", :locale=>"en")))
+        CalaisRelatedSearch.search_for("foo","en",@affiliate.id)
+      end
     end
   end
-
+  
   describe "#refresh_stalest_entries" do
     before do
       ResqueSpec.reset!

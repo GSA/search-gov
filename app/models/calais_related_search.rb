@@ -7,9 +7,11 @@ class CalaisRelatedSearch < ActiveRecord::Base
   CRS_REDIS_KEY_PREFIX = "calais_related_search_daily_count:"
 
   validates_presence_of :term, :related_terms, :locale
-  validates_uniqueness_of :term, :scope => [:locale, :affiliate_id]
+  validates_uniqueness_of :term, :scope => [:locale, :affiliate_id], :case_sensitive => true
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES
   belongs_to :affiliate
+  
+  before_save :downcase_term
 
   class << self
 
@@ -133,5 +135,10 @@ class CalaisRelatedSearch < ActiveRecord::Base
   def to_label
     term
   end
-
+  
+  private
+  
+  def downcase_term
+    self.term.downcase!
+  end
 end
