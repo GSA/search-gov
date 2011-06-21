@@ -258,32 +258,19 @@ describe MedTopic do
   it { should validate_presence_of :locale }
   it { should validate_presence_of :medline_tid }
 
-  describe "basic rails" do
-    it "should create a new instance given valid attributes" do
-      MedTopic.create!(@valid_attributes)
-    end
-
-    it "should delete MedTopicSyns associated with a MedTopic on deleting that MedTopic" do
-      t = MedTopic.new(@valid_attributes)
-      t.save!
-      t.synonyms.create({ :medline_title => 'rushoes rancheros' })
-      syns = MedSynonym.all
-      syns.should_not be_empty
-      syns.each { |syn|
-        topic = syn.topic
-        topic.should_not be_nil
-        topic_title = topic.medline_title
-        topic_title.should eql @valid_attributes[:medline_title]
-      }
-      t.destroy
-      MedSynonym.all.should be_empty
-    end
-
+  it "should create a new instance given valid attributes" do
+    MedTopic.create!(@valid_attributes)
   end
 
+  it "should delete MedTopicSyns associated with a MedTopic on deleting that MedTopic" do
+    t = MedTopic.new(@valid_attributes)
+    t.save!
+    t.synonyms.create({ :medline_title => 'rushoes rancheros' })
+    t.destroy
+    MedSynonym.find_by_medline_title('rushoes rancheros').should be_nil
+  end
 
   describe "summary html linting" do
-
     it "should not explode the json test rig" do
       expected_result = [{ 1 => 2, :a => { 3 => "4" } }]
       MedTopic.ensym_string_keys([{ "1" => 2, "a" => { "3" => "4" } }]).should eql expected_result
@@ -523,7 +510,6 @@ describe MedTopic do
     end
 
     it "should apply vocab deltas properly to the db" do
-
       vocab          = MedTopic.parse_medline_xml_vocab(@medline_subset_sample_vocab_xml)
       @current_state = MedTopic.dump_db_vocab
       delta          = MedTopic.delta_medline_vocab(@current_state, vocab)

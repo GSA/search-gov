@@ -81,10 +81,8 @@ class MedTopic < ActiveRecord::Base
 
 
     def dump_db_vocab()
-
       topics = { }
       groups = { }
-
       find(:all).each { |topic|
         lm_topic                  = topic.lang_mapped_topic
         topics[topic.medline_tid] = {
@@ -102,11 +100,9 @@ class MedTopic < ActiveRecord::Base
                                end
         }
       }
-
-      MedSynonym.find(:all).each { |synonym|
-        topics[synonym.topic.medline_tid][:synonyms] << synonym.medline_title
+      MedSynonym.all.each { |synonym|
+        topics[synonym.topic.medline_tid][:synonyms] << synonym.medline_title unless synonym.topic.nil?
       }
-
       MedTopicRelated.find(:all).each { |r|
         relator_medline_tid = r.topic.medline_tid
         related_medline_tid = r.related_topic.medline_tid
@@ -275,16 +271,16 @@ class MedTopic < ActiveRecord::Base
         end
 
         related_topics_node = topic_node.at_xpath("RelatedTopics")
-        related_tids        = if related_topics_node.nil?
-                                []
-                              else
-                                rtids = []
-                                related_topics_node.xpath("RelatedTopic").each { |related_topic_node|
-                                  rtid = related_topic_node['IDREF'][1..-1].to_i rescue nil
-                                  rtids << rtid unless rtid.nil?
-                                }
-                                rtids
-                              end
+        related_tids = if related_topics_node.nil?
+                         []
+                       else
+                         rtids = []
+                         related_topics_node.xpath("RelatedTopic").each { |related_topic_node|
+                           rtid = related_topic_node['IDREF'][1..-1].to_i rescue nil
+                           rtids << rtid unless rtid.nil?
+                         }
+                         rtids
+                       end
 
         topics[tid] = {
             :medline_title  => medline_title,
@@ -625,15 +621,13 @@ class MedTopic < ActiveRecord::Base
 #   over direct tytle (as opposed to synonym) match
 
     def search_for(title, locale = "en")
-
       matched_topics = find(:all, :conditions => { :medline_title => title.strip })
       MedSynonym.find(:all, :conditions => { :medline_title => title.strip }).each { |syn|
         topic = syn.topic
-        matched_topics << topic unless matched_topics.include?(topic)
+        matched_topics << topic unless topic.nil? or matched_topics.include?(topic)
       }
       return nil if matched_topics.empty?
       matched_topics = matched_topics.sort_by { |topic|
-
         locale_match = if locale.nil?
                          1
                        elsif locale == topic.locale
@@ -641,18 +635,14 @@ class MedTopic < ActiveRecord::Base
                        else
                          0
                        end
-
         title_match = if topic.medline_title == title
                         1
                       else
                         0
                       end
-
         0 - (locale_match * 2 + title_match)
       }
-
       return matched_topics.first
-
     end
 
 
