@@ -28,7 +28,7 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-med_synonym_rb.html">app/models/med_synonym.rb</a></td>
-            <td class='right_align'><tt>9</tt></td>
+            <td class='right_align'><tt>5</tt></td>
             <td class='right_align'><tt>4</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
@@ -56,26 +56,26 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line1">1</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line1">1</a> class MedSynonym &lt; ActiveRecord::Base</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a> class MedSynonym &lt; ActiveRecord::Base</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+            <td><pre><a name="line2">2</a>   validates_presence_of :medline_title, :topic</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   validates_presence_of :medline_title, :topic</pre></td>
+            <td><pre><a name="line3">3</a>   belongs_to :topic, :class_name =&gt; &quot;MedTopic&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line4">4</a> end</pre></td>
           </tr>
         
           
@@ -84,34 +84,10 @@
             <td><pre><a name="line5">5</a> </pre></td>
           </tr>
         
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>   belongs_to :topic, :class_name =&gt; &quot;MedTopic&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line7">7</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line8">8</a> end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line9">9</a> </pre></td>
-          </tr>
-        
       </tbody>
     </table>
 
-    <p>Generated on Fri Jun 17 22:36:24 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Jun 20 21:54:27 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
