@@ -1,0 +1,17 @@
+<%
+  fcsv_options = {
+    :row_sep => "\n",
+    :col_sep => params[:delimiter],
+    :force_quotes => @export_config.force_quotes,
+    :headers => @export_columns.collect { |column| format_export_column_header_name(column) }
+  }
+
+  data = CSV.generate(fcsv_options) do |csv|
+    csv << fcsv_options[:headers] unless params[:skip_header] == 'true'
+    @records.each do |record|
+      csv << @export_columns.collect { |column|
+        get_export_column_value(record, column)
+      }
+    end
+  end
+-%><%= data.html_safe -%>

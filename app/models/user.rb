@@ -118,6 +118,12 @@ class User < ActiveRecord::Base
     new_user
   end
 
+  def affiliate_names
+    names = []
+    names = affiliates.collect { |affiliate| affiliate.display_name } unless affiliates.empty?
+    names.join(',')
+  end
+
   private
 
   def require_password?

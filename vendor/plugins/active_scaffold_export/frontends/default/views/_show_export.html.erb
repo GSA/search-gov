@@ -1,0 +1,7 @@
+<%= render :partial => "base_form", :locals => {:xhr => false,
+                                                :form_action => :export,
+                                                :url_options => params_for(:action => :export, :format => 'csv'),
+                                                :method => :post,
+                                                :cancel_link => true,
+                                                :headline => as_('Columns to Export'),
+                                                :body_partial => 'export_form_body'} %>

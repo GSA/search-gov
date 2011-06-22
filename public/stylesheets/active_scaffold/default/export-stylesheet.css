@@ -1,0 +1,27 @@
+.active-scaffold-header div.actions a.show_export {
+  background-image: url(../../../images/active_scaffold/default/export.png);
+  background-position: 1px 50%;
+  background-repeat: no-repeat;
+  padding-left: 19px;
+}
+.active-scaffold div.show_export-view h3 {
+  font-weight: bold;
+}
+.active-scaffold div.show_export-view div.separator {
+  clear: both;
+  padding: .5em;
+}
+.active-scaffold div.show_export-view div.options div.separator {
+  padding: 0;
+}
+.active-scaffold div.show_export-view div.options div.checkbox-wrapper {
+  margin-bottom: .5em;
+}
+.active-scaffold div.show_export-view div div.checkbox-wrapper {
+  min-width: 20%;
+  margin-bottom: .25em;
+  float: left;
+}
+.active-scaffold div.show_export-view label #delimiter {
+  font-family: monospace;
+}

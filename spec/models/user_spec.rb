@@ -429,4 +429,20 @@ describe User do
       specify { @user.should_not be_valid }
     end
   end
+
+  describe "#affiliate_names" do
+    before do
+      @user = users(:affiliate_manager_with_no_affiliates)
+    end
+
+    it "returns all associated affiliate display names" do
+      affiliates(:power_affiliate).users << @user
+      affiliates(:basic_affiliate).users << @user
+      @user.affiliate_names.should == 'Noaa Site,NPS Site'
+    end
+
+    it "returns blank if there is no associated affiliate" do
+      @user.affiliate_names.should == ''
+    end
+  end
 end

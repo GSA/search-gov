@@ -14,5 +14,8 @@ class Admin::UsersController < Admin::AdminController
     config.columns[:is_analyst_admin].description = "Set this to true to make the user an Analytics Admin, and give them the ability to create and edit Query Groups."
     config.columns[:approval_status].form_ui = :select
     config.columns[:approval_status].options = { :options => User::APPROVAL_STATUSES }
+    actions.add :export
+    export.columns = [ :contact_name, :email, :phone, :organization_name, :is_affiliate, :approval_status, :last_login_at, :affiliate_names ]
+    export.default_deselected_columns = [ :last_login_at ]
   end
 end

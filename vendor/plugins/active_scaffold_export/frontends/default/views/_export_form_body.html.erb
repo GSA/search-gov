@@ -1,0 +1,28 @@
+<% export_config = active_scaffold_config.export %>
+<div class="columns checkbox-list">
+<% export_config.columns.each do |column| -%>
+  <div class="column checkbox-wrapper">
+    <%= content_tag(:label, check_box_tag("export_columns[#{column.name}]", 1, !export_config.default_deselected_columns.include?(column.name)) + "&nbsp;#{column.label}".html_safe) %>
+  </div>
+<% end -%>
+&nbsp;
+</div>
+<div class="separator"></div>
+<h3><%=as_('Options')%></h3>
+<div class="options checkbox-list">
+  <div class="option checkbox-wrapper">
+    <%= content_tag(:label, check_box_tag('skip_header', 1, export_config.default_skip_header) + " #{as_('Omit Header')}".html_safe) %>
+  </div>
+  <div class="option checkbox-wrapper">
+    <%= content_tag(:label, text_field_tag('delimiter', export_config.default_delimiter, :size => 1, :maxlength => 1) + " #{as_('Delimiter')}".html_safe) %>
+  </div>
+  <div class="separator"></div>
+  <div class="option checkbox-wrapper">
+    <%= content_tag(:label, radio_button_tag('full_download', false, !export_config.default_full_download) + " #{as_('This Page')}".html_safe) if export_config.allow_full_download %>
+  </div>
+  <div class="option checkbox-wrapper">
+    <%= content_tag(:label, radio_button_tag('full_download', true, export_config.default_full_download) + " #{as_('All Pages')}".html_safe) if export_config.allow_full_download %>
+  </div>
+  &nbsp;
+</div>
+<div class="separator"></div>
