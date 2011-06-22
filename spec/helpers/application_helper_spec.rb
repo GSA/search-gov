@@ -348,6 +348,15 @@ describe ApplicationHelper do
       helper.truncate_html_prose_on_words("<p>Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble Gum</p>", 51).should == "<p>Candy Dynamics Recalls Toxic Waste® Short Circuits™...</p>"
       helper.truncate_html_prose_on_words("<p>Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble Gum</p>", 50).should == "<p>Candy Dynamics Recalls Toxic Waste® Short...</p>"
     end
+
+    # see http://stackoverflow.com/questions/6206885/malformed-utf-8-character-when-calling-rindex-on-string-containing-trademark-sy
+    it "should deal with oil spills instead of throwing an exception due to mb character confusion" do
+      @oil_spill = "<p>On this page you&#x2019;ll find information about those possible effects and steps you can take to protect yourself and your family.</p>"
+      10.upto(11) { |n| helper.truncate_html_prose_on_words(@oil_spill, n).should eql "<p>On this...</p>" }
+      12.upto(16) { |n| helper.truncate_html_prose_on_words(@oil_spill, n).should eql "<p>On this page...</p>" }
+      17.upto(18) { |n| helper.truncate_html_prose_on_words(@oil_spill, n) }
+      19.upto(20) { |n| helper.truncate_html_prose_on_words(@oil_spill, n).should eql "<p>On this page you’ll...</p>" }
+    end
   end
 
   describe "#highlight_like_solr" do

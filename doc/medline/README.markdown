@@ -98,3 +98,20 @@ grabs the latest vocab XML (if necessary) and looks at the MeshHeading relations
 It creates a histogram showing how many topics have how many mesh heading references.
 It also shows which topic have no seeref meshheadings, no meshheadins, or neither type.
 
+
+## Checking HTML Topic Truncation
+
+If you are curious to see what the truncated HTML topic summaries are going to look like
+or to make sure that the truncation code will not raise any exceptions, you can use the
+rails console like this:
+
+ % ./script/rails console
+ include ApplicationHelper
+ File.open("medlinesums.html", "w") { |fp|
+   fp << "<html><head><title>Medline Summaries</title></head><body>"
+   MedTopic.all.each { |t|
+     puts t.medline_title
+     fp << "<h2>#{t.medline_title}</h2>"
+     fp << truncate_html_prose_on_words(t.summary_html, 300)
+   }
+ }

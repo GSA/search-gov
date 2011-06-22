@@ -184,7 +184,7 @@ module ApplicationHelper
 
 
   def truncate_html_prose_on_words(html, length, max_paragraphs = nil)
-    html_root = Nokogiri::XML.fragment(html.strip) rescue nil
+    html_root = Nokogiri::HTML.fragment(html.strip) rescue nil
     truncated_html = ""
     append_html_prose(truncated_html, html_root, length, max_paragraphs) unless html_root.nil?
     truncated_html
@@ -272,18 +272,28 @@ module ApplicationHelper
 
   def append_html_prose(buffer, node, max_chars, max_paragraphs)
     return [max_chars, max_paragraphs] if max_chars <= 0
+
     case node.node_type
+
+  # todo: should have separate case for entity refs but they will probably not work anyways until ruby 1.9
+
+  # we prefer to chop at word boundaries
+
     when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE :
       mb_chars = node.text.mb_chars
+
       if mb_chars.length <= max_chars
         buffer << mb_chars
         max_chars -= mb_chars.length
       else
-        last_space_index = (mb_chars.rindex(/\W/, max_chars) || 0)
+        last_space_index = (mb_chars.rindex(/\W/, max_chars) || 0) rescue 0
         truncated_text = mb_chars[0..(mb_chars.rindex(/\w/, last_space_index) || 0)] unless last_space_index.nil?
         buffer << "#{truncated_text}..."
         max_chars = 0
       end
+
+  # even if not all children are inserted, the parent tags need to be properly closed
+
     when Nokogiri::XML::Node::ELEMENT_NODE, Nokogiri::XML::Node::DOCUMENT_FRAG_NODE :
       if (max_paragraphs.present? && max_paragraphs == 0)
         max_paragraphs -= 1
