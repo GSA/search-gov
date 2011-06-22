@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-search_helper_rb.html">app/helpers/search_helper.rb</a></td>
-            <td class='right_align'><tt>475</tt></td>
-            <td class='right_align'><tt>423</tt></td>
+            <td class='right_align'><tt>485</tt></td>
+            <td class='right_align'><tt>431</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -429,217 +429,217 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>   def display_deep_links_for(result, search, affiliate, vertical)</pre></td>
+            <td><pre><a name="line63">63</a>   def display_agency_link(result, search, affiliate, position, vertical)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a>     return if result[&quot;deepLinks&quot;].nil?</pre></td>
+            <td><pre><a name="line64">64</a>     link_title = strip_url_protocol(shorten_url(result['unescapedUrl']))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line65">65</a>     rows = []</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line66">66</a>     deep_links_are_all_pos_zero = 0</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line67">67</a>     result[&quot;deepLinks&quot;].in_groups_of(2)[0, 4].each do |row_pair|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line68">68</a>       row =  content_tag(:td, row_pair[0].nil? ? &quot;&quot; : tracked_click_link(h(row_pair[0].url), h(row_pair[0].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line69">69</a>       row &lt;&lt; content_tag(:td, row_pair[1].nil? ? &quot;&quot; : tracked_click_link(h(row_pair[1].url), h(row_pair[1].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line70">70</a>       rows &lt;&lt; content_tag(:tr, row)</pre></td>
+            <td><pre><a name="line65">65</a>     tracked_click_link(h(result['unescapedUrl']), h(link_title), search, affiliate, position, 'BWEB', vertical)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line71">71</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line72">72</a>     content_tag(:table, raw(rows), :class=&gt;&quot;deep_links&quot;)</pre></td>
+            <td><pre><a name="line66">66</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line73">73</a>   end</pre></td>
+            <td><pre><a name="line67">67</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>   def strip_url_protocol(url)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>     url.gsub(/^http(s)?:\/\//, '')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line74">74</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line75">75</a>   def display_result_extname_prefix(result)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line76">76</a>     begin</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line77">77</a>       path_extname = File.extname(URI.parse(result['unescapedUrl']).path)[1..-1]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line78">78</a>       if SPECIAL_URL_PATH_EXT_NAMES.include?( path_extname.downcase )</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line79">79</a>         raw &quot;&lt;span class=\&quot;uext_type\&quot;&gt;[#{path_extname.upcase}]&lt;/span&gt; &quot;</pre></td>
+            <td><pre><a name="line70">70</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line80">80</a>       else</pre></td>
+            <td><pre><a name="line71">71</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>         &quot;&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line82">82</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line83">83</a>     rescue</pre></td>
+            <td><pre><a name="line72">72</a>   def display_deep_links_for(result, search, affiliate, vertical)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>       &quot;&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line85">85</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line86">86</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line87">87</a> </pre></td>
+            <td><pre><a name="line73">73</a>     return if result[&quot;deepLinks&quot;].nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>   def display_bing_result_title(result, search, affiliate, position, vertical)</pre></td>
+            <td><pre><a name="line74">74</a>     rows = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line89">89</a>     raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB', vertical)</pre></td>
+            <td><pre><a name="line75">75</a>     deep_links_are_all_pos_zero = 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line76">76</a>     result[&quot;deepLinks&quot;].in_groups_of(2)[0, 4].each do |row_pair|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>       row =  content_tag(:td, row_pair[0].nil? ? &quot;&quot; : tracked_click_link(h(row_pair[0].url), h(row_pair[0].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line78">78</a>       row &lt;&lt; content_tag(:td, row_pair[1].nil? ? &quot;&quot; : tracked_click_link(h(row_pair[1].url), h(row_pair[1].title), search, affiliate, deep_links_are_all_pos_zero, 'BWEB', vertical))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line79">79</a>       rows &lt;&lt; content_tag(:tr, row)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line90">90</a>   end</pre></td>
+            <td><pre><a name="line80">80</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line81">81</a>     content_tag(:table, raw(rows), :class=&gt;&quot;deep-links&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line91">91</a>   </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line92">92</a>   def display_medline_result_title(search, affiliate, position)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line93">93</a>     raw tracked_click_link(h(search.med_topic.medline_url), highlight_string(h(search.med_topic.medline_title)), search, affiliate, position, &quot;MEDL&quot;)</pre></td>
+            <td><pre><a name="line82">82</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line94">94</a>   end</pre></td>
+            <td><pre><a name="line83">83</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line84">84</a>   def display_result_extname_prefix(result)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line85">85</a>     begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line86">86</a>       path_extname = File.extname(URI.parse(result['unescapedUrl']).path)[1..-1]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line87">87</a>       if SPECIAL_URL_PATH_EXT_NAMES.include?( path_extname.downcase )</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line88">88</a>         raw &quot;&lt;span class=\&quot;uext_type\&quot;&gt;[#{path_extname.upcase}]&lt;/span&gt; &quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line95">95</a>   </pre></td>
+            <td><pre><a name="line89">89</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line96">96</a>   def display_medline_topic_with_click_tracking(med_topic, query, position, locale = &quot;en&quot;)</pre></td>
+            <td><pre><a name="line90">90</a>         &quot;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line91">91</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line92">92</a>     rescue</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line97">97</a>     onmousedown = onmousedown_for_click(query, position, nil, 'MEDL', Time.now.to_i, :web)</pre></td>
+            <td><pre><a name="line93">93</a>       &quot;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line94">94</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line95">95</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line96">96</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line98">98</a>     raw &quot;&lt;a style=\&quot;text-decoration: none;\&quot; href=\&quot;#{h search_path(:query =&gt; med_topic.medline_title, :locale =&gt; locale)}\&quot; #{onmousedown}&gt;#{med_topic.medline_title}&lt;/a&gt;&quot;</pre></td>
+            <td><pre><a name="line97">97</a>   def display_bing_result_title(result, search, affiliate, position, vertical)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line98">98</a>     raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB', vertical)</pre></td>
           </tr>
         
           
@@ -657,13 +657,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line101">101</a>   def highlight_string(s)</pre></td>
+            <td><pre><a name="line101">101</a>   def display_medline_result_title(search, affiliate, position)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line102">102</a>     &quot;&lt;strong&gt;#{s}&lt;/strong&gt;&quot;.html_safe</pre></td>
+            <td><pre><a name="line102">102</a>     raw tracked_click_link(h(search.med_topic.medline_url), highlight_string(h(search.med_topic.medline_title)), search, affiliate, position, &quot;MEDL&quot;)</pre></td>
           </tr>
         
           
@@ -675,25 +675,25 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line104">104</a> </pre></td>
+            <td><pre><a name="line104">104</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line105">105</a>   def display_recall_result_url_with_click_tracking(recall_url, query, position, vertical)</pre></td>
+            <td><pre><a name="line105">105</a>   def display_medline_topic_with_click_tracking(med_topic, query, position, locale = &quot;en&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line106">106</a>     onmousedown = onmousedown_for_click(query, position, nil, 'RECALL', Time.now.to_i, vertical)</pre></td>
+            <td><pre><a name="line106">106</a>     onmousedown = onmousedown_for_click(query, position, nil, 'MEDL', Time.now.to_i, :web)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line107">107</a>     raw &quot;&lt;a href=\&quot;#{h recall_url}\&quot; #{onmousedown}&gt;#{shorten_url(recall_url)}&lt;/a&gt;&quot;</pre></td>
+            <td><pre><a name="line107">107</a>     raw &quot;&lt;a style=\&quot;text-decoration: none;\&quot; href=\&quot;#{h search_path(:query =&gt; med_topic.medline_title, :locale =&gt; locale)}\&quot; #{onmousedown}&gt;#{med_topic.medline_title}&lt;/a&gt;&quot;</pre></td>
           </tr>
         
           
@@ -705,637 +705,637 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line109">109</a> </pre></td>
+            <td><pre><a name="line109">109</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line110">110</a>   def display_recall_result_title_with_click_tracking(result, hit, query, position, vertical, summary_length)</pre></td>
+            <td><pre><a name="line110">110</a>   def highlight_string(s)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line111">111</a>     title= (highlight_like_solr(truncate_on_words(result.summary, summary_length), hit.highlights)).html_safe</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line112">112</a>     onmousedown = onmousedown_for_click(query, position, nil, 'RECALL', Time.now.to_i, vertical)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line113">113</a>     raw &quot;&lt;a href=\&quot;#{h result.recall_url}\&quot; #{onmousedown}&gt;#{title}&lt;/a&gt;&quot;</pre></td>
+            <td><pre><a name="line111">111</a>     &quot;&lt;strong&gt;#{s}&lt;/strong&gt;&quot;.html_safe</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line114">114</a>   end</pre></td>
+            <td><pre><a name="line112">112</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line115">115</a> </pre></td>
+            <td><pre><a name="line113">113</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line116">116</a>   def boosted_content_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)</pre></td>
+            <td><pre><a name="line114">114</a>   def display_recall_result_url_with_click_tracking(recall_url, query, position, vertical)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line117">117</a>     aff_name = affiliate.name rescue &quot;&quot;</pre></td>
+            <td><pre><a name="line115">115</a>     onmousedown = onmousedown_for_click(query, position, nil, 'RECALL', Time.now.to_i, vertical)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line118">118</a>     onmousedown = onmousedown_for_click(query, position, aff_name, 'BOOS', Time.now.to_i, vertical)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line119">119</a>     raw &quot;&lt;a href=\&quot;#{h url}\&quot; #{onmousedown}&gt;#{html_safe_title}&lt;/a&gt;&quot;</pre></td>
+            <td><pre><a name="line116">116</a>     raw &quot;&lt;a href=\&quot;#{h recall_url}\&quot; #{onmousedown}&gt;#{shorten_url(recall_url)}&lt;/a&gt;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line120">120</a>   end</pre></td>
+            <td><pre><a name="line117">117</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line121">121</a> </pre></td>
+            <td><pre><a name="line118">118</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line122">122</a>   def tracked_click_link(url, title, search, affiliate, position, source, vertical = :web, opts = nil)</pre></td>
+            <td><pre><a name="line119">119</a>   def display_recall_result_title_with_click_tracking(result, hit, query, position, vertical, summary_length)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line123">123</a>     aff_name = affiliate.name rescue &quot;&quot;</pre></td>
+            <td><pre><a name="line120">120</a>     title= (highlight_like_solr(truncate_on_words(result.summary, summary_length), hit.highlights)).html_safe</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line124">124</a>     query = search.spelling_suggestion ? search.spelling_suggestion : search.query</pre></td>
+            <td><pre><a name="line121">121</a>     onmousedown = onmousedown_for_click(query, position, nil, 'RECALL', Time.now.to_i, vertical)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line125">125</a>     query = query.gsub(&quot;'&quot;, &quot;\\\\'&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line126">126</a>     onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds, vertical)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line127">127</a>     raw &quot;&lt;a href=\&quot;#{url}\&quot; #{onmousedown} #{opts}&gt;#{title}&lt;/a&gt;&quot;</pre></td>
+            <td><pre><a name="line122">122</a>     raw &quot;&lt;a href=\&quot;#{h result.recall_url}\&quot; #{onmousedown}&gt;#{title}&lt;/a&gt;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line128">128</a>   end</pre></td>
+            <td><pre><a name="line123">123</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line129">129</a> </pre></td>
+            <td><pre><a name="line124">124</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line130">130</a>   def render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds, vertical)</pre></td>
+            <td><pre><a name="line125">125</a>   def boosted_content_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line131">131</a>     require 'hpricot'</pre></td>
+            <td><pre><a name="line126">126</a>     aff_name = affiliate.name rescue &quot;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line132">132</a>     doc = Hpricot(spotlight_html)</pre></td>
+            <td><pre><a name="line127">127</a>     onmousedown = onmousedown_for_click(query, position, aff_name, 'BOOS', Time.now.to_i, vertical)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line133">133</a>     (doc/:a).each_with_index do |e, idx|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line134">134</a>       url =  e.attributes['href']</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line135">135</a>       tag = e.inner_html</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line136">136</a>       onmousedown = onmousedown_for_click(query, idx, '', 'SPOT', queried_at_seconds, vertical)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line137">137</a>       e.swap(&quot;&lt;a href=\&quot;#{url}\&quot; #{onmousedown}&gt;#{tag}&lt;/a&gt;&quot;)</pre></td>
+            <td><pre><a name="line128">128</a>     raw &quot;&lt;a href=\&quot;#{h url}\&quot; #{onmousedown}&gt;#{html_safe_title}&lt;/a&gt;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line138">138</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line139">139</a>     raw doc.to_html</pre></td>
+            <td><pre><a name="line129">129</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line140">140</a>   end</pre></td>
+            <td><pre><a name="line130">130</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line131">131</a>   def tracked_click_link(url, title, search, affiliate, position, source, vertical = :web, opts = nil)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line132">132</a>     aff_name = affiliate.name rescue &quot;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line133">133</a>     query = search.spelling_suggestion ? search.spelling_suggestion : search.query</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line134">134</a>     query = query.gsub(&quot;'&quot;, &quot;\\\\'&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line135">135</a>     onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds, vertical)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line136">136</a>     raw &quot;&lt;a href=\&quot;#{url}\&quot; #{onmousedown} #{opts}&gt;#{title}&lt;/a&gt;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line141">141</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line142">142</a>   def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at, vertical)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line143">143</a>     &quot;onmousedown=\&quot;return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')\&quot;&quot;</pre></td>
+            <td><pre><a name="line137">137</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line144">144</a>   end</pre></td>
+            <td><pre><a name="line138">138</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line139">139</a>   def render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds, vertical)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line140">140</a>     require 'hpricot'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line141">141</a>     doc = Hpricot(spotlight_html)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line142">142</a>     (doc/:a).each_with_index do |e, idx|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line143">143</a>       url =  e.attributes['href']</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line144">144</a>       tag = e.inner_html</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line145">145</a>       onmousedown = onmousedown_for_click(query, idx, '', 'SPOT', queried_at_seconds, vertical)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line146">146</a>       e.swap(&quot;&lt;a href=\&quot;#{url}\&quot; #{onmousedown}&gt;#{tag}&lt;/a&gt;&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line145">145</a> </pre></td>
+            <td><pre><a name="line147">147</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line146">146</a>   def onmousedown_attribute_for_image_click(query, media_url, zero_based_index, affiliate_name, source, queried_at, vertical)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line147">147</a>     &quot;return clk('#{h(escape_javascript(query))}', '#{media_url}', #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')&quot;</pre></td>
+            <td><pre><a name="line148">148</a>     raw doc.to_html</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line148">148</a>   end</pre></td>
+            <td><pre><a name="line149">149</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line149">149</a> </pre></td>
+            <td><pre><a name="line150">150</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line150">150</a>   def display_result_description (result)</pre></td>
+            <td><pre><a name="line151">151</a>   def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at, vertical)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line151">151</a>     translate_bing_highlights(h(result['content']))</pre></td>
+            <td><pre><a name="line152">152</a>     &quot;onmousedown=\&quot;return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')\&quot;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line152">152</a>   end</pre></td>
+            <td><pre><a name="line153">153</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line153">153</a>   </pre></td>
+            <td><pre><a name="line154">154</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line154">154</a>   def display_medline_results_description(summary, query)</pre></td>
+            <td><pre><a name="line155">155</a>   def onmousedown_attribute_for_image_click(query, media_url, zero_based_index, affiliate_name, source, queried_at, vertical)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line155">155</a>     highlight(truncate_html_prose_on_words(summary, 300), query).html_safe</pre></td>
+            <td><pre><a name="line156">156</a>     &quot;return clk('#{h(escape_javascript(query))}', '#{media_url}', #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line156">156</a>   end</pre></td>
+            <td><pre><a name="line157">157</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line157">157</a>   </pre></td>
+            <td><pre><a name="line158">158</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line158">158</a>   def translate_bing_highlights(body)</pre></td>
+            <td><pre><a name="line159">159</a>   def display_result_description (result)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line159">159</a>     body.gsub(/\xEE\x80\x80/, '&lt;strong&gt;').gsub(/\xEE\x80\x81/, '&lt;/strong&gt;')</pre></td>
+            <td><pre><a name="line160">160</a>     translate_bing_highlights(h(result['content']))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line160">160</a>   end</pre></td>
+            <td><pre><a name="line161">161</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line161">161</a> </pre></td>
+            <td><pre><a name="line162">162</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line162">162</a>   def strip_bing_highlights(body)</pre></td>
+            <td><pre><a name="line163">163</a>   def display_medline_results_description(summary, query)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line163">163</a>     body.gsub(/\xEE\x80\x80/, '').gsub(/\xEE\x80\x81/, '')</pre></td>
+            <td><pre><a name="line164">164</a>     highlight(truncate_html_prose_on_words(summary, 300), query).html_safe</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line164">164</a>   end</pre></td>
+            <td><pre><a name="line165">165</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line165">165</a> </pre></td>
+            <td><pre><a name="line166">166</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line166">166</a>   def shunt_from_bing_to_usasearch(bingurl, affiliate)</pre></td>
+            <td><pre><a name="line167">167</a>   def translate_bing_highlights(body)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line167">167</a>     query = CGI::unescape(bingurl.split(&quot;?q=&quot;).last)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line168">168</a>     opts = {:query=&gt; query}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line169">169</a>     opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line170">170</a>     search_path(opts)</pre></td>
+            <td><pre><a name="line168">168</a>     body.gsub(/\xEE\x80\x80/, '&lt;strong&gt;').gsub(/\xEE\x80\x81/, '&lt;/strong&gt;')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line171">171</a>   end</pre></td>
+            <td><pre><a name="line169">169</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line172">172</a> </pre></td>
+            <td><pre><a name="line170">170</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line173">173</a>   def bing_spelling_suggestion_for(search, affiliate, vertical)</pre></td>
+            <td><pre><a name="line171">171</a>   def strip_bing_highlights(body)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line174">174</a>     if (search.spelling_suggestion)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line175">175</a>       rendered_suggestion = translate_bing_highlights(search.spelling_suggestion)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line176">176</a>       suggestion_for_url = strip_bing_highlights(search.spelling_suggestion)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line177">177</a>       opts = {:query=&gt; suggestion_for_url}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line178">178</a>       opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line179">179</a>       corrected_url = image_search? ? image_search_path(opts) : search_path(opts)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line180">180</a>       opts.merge!(:query =&gt; &quot;+#{search.query}&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line181">181</a>       original_url = image_search? ? image_search_path(opts) : search_path(opts)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line182">182</a>       did_you_mean = t :did_you_mean,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line183">183</a>                        :assumed_term =&gt; tracked_click_link(corrected_url, h(rendered_suggestion), search, affiliate, 0, 'BSPEL', vertical, &quot;style='font-weight:bold'&quot;),</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line184">184</a>                        :term_as_typed =&gt; tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', vertical, &quot;style='font-style:italic'&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line185">185</a>       content_tag(:h4, raw(did_you_mean))</pre></td>
+            <td><pre><a name="line172">172</a>     body.gsub(/\xEE\x80\x80/, '').gsub(/\xEE\x80\x81/, '')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line186">186</a>     end</pre></td>
+            <td><pre><a name="line173">173</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line187">187</a>   end</pre></td>
+            <td><pre><a name="line174">174</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line175">175</a>   def shunt_from_bing_to_usasearch(bingurl, affiliate)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line176">176</a>     query = CGI::unescape(bingurl.split(&quot;?q=&quot;).last)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line177">177</a>     opts = {:query=&gt; query}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line178">178</a>     opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line179">179</a>     search_path(opts)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line188">188</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line189">189</a>   def results_summary(a, b, total, q, show_logo = true)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line190">190</a>     summary = t :results_summary, :from =&gt; a, :to =&gt; b, :total =&gt; number_with_delimiter(total), :query =&gt; q</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line191">191</a>     p_sum = content_tag(:p, summary)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line192">192</a>     logo = show_logo ? image_tag(&quot;binglogo_#{I18n.locale}.gif&quot;, :style=&gt;&quot;float:right&quot;) : &quot;&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line193">193</a>     content_tag(:div, raw(logo + p_sum), :id =&gt; &quot;summary&quot;)</pre></td>
+            <td><pre><a name="line180">180</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line194">194</a>   end</pre></td>
+            <td><pre><a name="line181">181</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line182">182</a>   def bing_spelling_suggestion_for(search, affiliate, vertical)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line183">183</a>     if (search.spelling_suggestion)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line184">184</a>       rendered_suggestion = translate_bing_highlights(search.spelling_suggestion)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line185">185</a>       suggestion_for_url = strip_bing_highlights(search.spelling_suggestion)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line186">186</a>       opts = {:query=&gt; suggestion_for_url}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line187">187</a>       opts.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line188">188</a>       corrected_url = image_search? ? image_search_path(opts) : search_path(opts)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line189">189</a>       opts.merge!(:query =&gt; &quot;+#{search.query}&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line190">190</a>       original_url = image_search? ? image_search_path(opts) : search_path(opts)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line191">191</a>       did_you_mean = t :did_you_mean,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line192">192</a>                        :assumed_term =&gt; tracked_click_link(corrected_url, h(rendered_suggestion), search, affiliate, 0, 'BSPEL', vertical, &quot;style='font-weight:bold'&quot;),</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line193">193</a>                        :term_as_typed =&gt; tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', vertical, &quot;style='font-style:italic'&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line194">194</a>       content_tag(:h4, raw(did_you_mean))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line195">195</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line196">196</a>   def agency_url_matches_by_locale(result_url, agency, locale)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line197">197</a>     agency.agency_urls.find_by_url_and_locale(result_url, locale.to_s).nil? ? false : true</pre></td>
+            <td><pre><a name="line195">195</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line198">198</a>   end</pre></td>
+            <td><pre><a name="line196">196</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line199">199</a> </pre></td>
+            <td><pre><a name="line197">197</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line200">200</a>   def display_agency_phone_numbers(agency)</pre></td>
+            <td><pre><a name="line198">198</a>   def results_summary(a, b, total, q, show_logo = true)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line201">201</a>     html = &quot;&quot;</pre></td>
+            <td><pre><a name="line199">199</a>     summary = t :results_summary, :from =&gt; a, :to =&gt; b, :total =&gt; number_with_delimiter(total), :query =&gt; q</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line202">202</a>     html &lt;&lt; &quot;&lt;h3 style=\&quot;margin-top: 5px;\&quot;&gt;#{t :agency_phone_label}: #{agency.phone}&lt;/h3&gt;&quot; if agency.phone.present?</pre></td>
+            <td><pre><a name="line200">200</a>     p_sum = content_tag(:p, summary)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line203">203</a>     html &lt;&lt; &quot;&lt;h3 style=\&quot;margin-top: 5px;\&quot;&gt;#{t :agency_toll_free_phone_label}: #{agency.toll_free_phone}&lt;/h3&gt;&quot; if agency.toll_free_phone.present?</pre></td>
+            <td><pre><a name="line201">201</a>     logo = show_logo ? image_tag(&quot;binglogo_#{I18n.locale}.gif&quot;, :style=&gt;&quot;float:right&quot;) : &quot;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line204">204</a>     html &lt;&lt; &quot;&lt;h3 style=\&quot;margin-top: 5px;\&quot;&gt;#{t :agency_tty_phone_label}: #{agency.tty_phone}&lt;/h3&gt;&quot; if agency.tty_phone.present?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line205">205</a>     return raw(html)</pre></td>
+            <td><pre><a name="line202">202</a>     content_tag(:div, raw(logo + p_sum), :id =&gt; &quot;summary&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line206">206</a>   end</pre></td>
+            <td><pre><a name="line203">203</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line207">207</a> </pre></td>
+            <td><pre><a name="line204">204</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line208">208</a>   def display_agency_social_media_links(agency)</pre></td>
+            <td><pre><a name="line205">205</a>   def agency_url_matches_by_locale(result_url, agency, locale)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line209">209</a>     list_html = &quot;&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line210">210</a>     Agency::SOCIAL_MEDIA_SERVICES.each do |service|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line211">211</a>       profile_link = agency.send(&quot;#{service.downcase}_profile_link&quot;.to_sym)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line212">212</a>       list_html &lt;&lt; &quot;&lt;h3&gt;#{service}#{I18n.locale == I18n.default_locale ? &quot;:&quot; : &quot; (en inglés):&quot;} #{ link_to profile_link, profile_link, :target =&gt; &quot;_blank&quot; }&lt;/h3&gt;&quot; if profile_link</pre></td>
+            <td><pre><a name="line206">206</a>     agency.agency_urls.find_by_url_and_locale(result_url, locale.to_s).nil? ? false : true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line213">213</a>     end</pre></td>
+            <td><pre><a name="line207">207</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line208">208</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line214">214</a>     raw(list_html)</pre></td>
+            <td><pre><a name="line209">209</a>   def display_agency_phone_numbers(agency)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line210">210</a>     content = &quot;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line211">211</a>     content &lt;&lt; content_tag(:li, &quot;#{agency.phone} (#{t :agency_phone_label})&quot;) if agency.phone.present?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line212">212</a>     content &lt;&lt; content_tag(:li, &quot;#{agency.toll_free_phone} (#{t :agency_toll_free_phone_label})&quot;) if agency.toll_free_phone.present?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line213">213</a>     content &lt;&lt; content_tag(:li, &quot;#{agency.tty_phone} (#{t :agency_tty_phone_label})&quot;) if agency.tty_phone.present?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line214">214</a>     return content_tag :ul, content.html_safe</pre></td>
           </tr>
         
           
@@ -1353,1267 +1353,1267 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line217">217</a>   def advanced_search_link(search_options, affiliate = nil)</pre></td>
+            <td><pre><a name="line217">217</a>   def display_agency_social_media_links(agency)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line218">218</a>     search_options ||= {}</pre></td>
+            <td><pre><a name="line218">218</a>     list_html = &quot;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line219">219</a>     search_options.merge!(:action =&gt; 'advanced', :controller =&gt; 'searches', :format =&gt; nil)</pre></td>
+            <td><pre><a name="line219">219</a>     Agency::SOCIAL_MEDIA_SERVICES.each do |service|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line220">220</a>     search_options.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
+            <td><pre><a name="line220">220</a>       profile_link = agency.send(&quot;#{service.downcase}_profile_link&quot;.to_sym)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line221">221</a>     link_to((t :advanced_search), advanced_search_path(search_options), :id =&gt; 'advanced_search_link')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line222">222</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line223">223</a> </pre></td>
+            <td><pre><a name="line221">221</a>       title = &quot;#{service}#{spanish_locale? ? &quot; (en inglés)&quot; : &quot;&quot;}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line224">224</a>   def web_search?</pre></td>
+            <td><pre><a name="line222">222</a>       list_html &lt;&lt; content_tag(:li, link_to(title, profile_link, :title =&gt; title, :class =&gt; service.downcase)) unless profile_link.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line223">223</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line225">225</a>     [&quot;searches&quot;, &quot;home&quot;].include?(controller.controller_name) and controller.action_name == &quot;index&quot;</pre></td>
+            <td><pre><a name="line224">224</a>     content_tag(:ul, list_html.html_safe, :class =&gt; 'social-media')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line226">226</a>   end</pre></td>
+            <td><pre><a name="line225">225</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line227">227</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line228">228</a>   def image_search?</pre></td>
+            <td><pre><a name="line226">226</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line229">229</a>     controller.controller_name == &quot;image_searches&quot; or controller.controller_name == &quot;images&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line230">230</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line231">231</a> </pre></td>
+            <td><pre><a name="line227">227</a>   def advanced_search_link(search_options, affiliate = nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line232">232</a>   def recalls_search?</pre></td>
+            <td><pre><a name="line228">228</a>     search_options ||= {}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line233">233</a>     controller.controller_name == &quot;recalls&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line234">234</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line235">235</a> </pre></td>
+            <td><pre><a name="line229">229</a>     search_options.merge!(:action =&gt; 'advanced', :controller =&gt; 'searches', :format =&gt; nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line236">236</a>   def forms_search?</pre></td>
+            <td><pre><a name="line230">230</a>     search_options.merge!(:affiliate =&gt; affiliate.name) if affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line237">237</a>     (controller.controller_name == &quot;searches&quot; and controller.action_name == &quot;forms&quot;) or controller.controller_name == &quot;forms&quot;</pre></td>
+            <td><pre><a name="line231">231</a>     link_to((t :advanced_search), advanced_search_path(search_options), :id =&gt; 'advanced_search_link')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line238">238</a>   end</pre></td>
+            <td><pre><a name="line232">232</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line239">239</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line240">240</a>   def no_results_for(query)</pre></td>
+            <td><pre><a name="line233">233</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line241">241</a>     content_tag(:p, (t :no_results_for, :query =&gt; query), :class=&gt;&quot;noresults&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line242">242</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line243">243</a> </pre></td>
+            <td><pre><a name="line234">234</a>   def web_search?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line244">244</a>   def search_results_logo</pre></td>
+            <td><pre><a name="line235">235</a>     [&quot;searches&quot;, &quot;home&quot;].include?(controller.controller_name) and controller.action_name == &quot;index&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line236">236</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line237">237</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line245">245</a>     if forms_search?</pre></td>
+            <td><pre><a name="line238">238</a>   def image_search?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line246">246</a>       link_to image_tag(&quot;USAsearch_medium_#{I18n.locale}_forms.gif&quot;, :alt =&gt; &quot;USASearch Forms Home&quot;), forms_path(:locale =&gt; I18n.locale)</pre></td>
+            <td><pre><a name="line239">239</a>     controller.controller_name == &quot;image_searches&quot; or controller.controller_name == &quot;images&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line247">247</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line248">248</a>       link_to image_tag(&quot;USAsearch_medium_#{I18n.locale}.gif&quot;, :alt =&gt; &quot;USASearch Home&quot;), home_page_path(:locale =&gt; I18n.locale)</pre></td>
+            <td><pre><a name="line240">240</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line249">249</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line250">250</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line251">251</a> </pre></td>
+            <td><pre><a name="line241">241</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line252">252</a>   EN_SCOPE_ID_OPTIONS = [</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line253">253</a>     ['All Government Domains', 'all'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line254">254</a>     ['Federally-Focused', 'federal'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line255">255</a>     ['Non-Federal', 'nonfed'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line256">256</a>     ['Tribal Sites', 'tribal'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line257">257</a>     ['US territories', 'territories'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line258">258</a>     ['Alabama', 'AL'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line259">259</a>     ['Alaska', 'AK'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line260">260</a>     ['Arizona', 'AZ'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line261">261</a>     ['Arkansas', 'AR'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line262">262</a>     ['California', 'CA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line263">263</a>     ['Colorado', 'CO'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line264">264</a>     ['Connecticut', 'CT'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line265">265</a>     ['D.C.', 'DC'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line266">266</a>     ['Delaware', 'DE'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line267">267</a>     ['Florida', 'FL'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line268">268</a>     ['Georgia', 'GA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line269">269</a>     ['Hawaii', 'HI'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line270">270</a>     ['Idaho', 'ID'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line271">271</a>     ['Illinois', 'IL'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line272">272</a>     ['Indiana', 'IN'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line273">273</a>     ['Iowa', 'IA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line274">274</a>     ['Kansas', 'KS'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line275">275</a>     ['Kentucky', 'KY'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line276">276</a>     ['Louisiana', 'LA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line277">277</a>     ['Maine', 'ME'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line278">278</a>     ['Maryland', 'MD'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line279">279</a>     ['Massachusetts', 'MA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line280">280</a>     ['Michigan', 'MI'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line281">281</a>     ['Minnesota', 'MN'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line282">282</a>     ['Mississippi', 'MS'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line283">283</a>     ['Missouri', 'MO'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line284">284</a>     ['Montana', 'MT'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line285">285</a>     ['Nebraska', 'NE'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line286">286</a>     ['Nevada', 'NV'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line287">287</a>     ['New Hampshire', 'NH'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line288">288</a>     ['New Jersey', 'NJ'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line289">289</a>     ['New Mexico', 'NM'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line290">290</a>     ['New York', 'NY'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line291">291</a>     ['North Carolina', 'NC'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line292">292</a>     ['North Dakota', 'ND'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line293">293</a>     ['Ohio', 'OH'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line294">294</a>     ['Oklahoma', 'OK'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line295">295</a>     ['Oregon', 'OR'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line296">296</a>     ['Pennsylvania', 'PA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line297">297</a>     ['Rhode Island', 'RI'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line298">298</a>     ['South Carolina', 'SC'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line299">299</a>     ['South Dakota', 'SD'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line300">300</a>     ['Tennessee', 'TN'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line301">301</a>     ['Texas', 'TX'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line302">302</a>     ['Utah', 'UT'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line303">303</a>     ['Vermont', 'VT'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line304">304</a>     ['Virginia', 'VA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line305">305</a>     ['Washington', 'WA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line306">306</a>     ['West Virginia', 'WV'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line307">307</a>     ['Wisconsin', 'WI'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line308">308</a>     ['Wyoming', 'WY'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line309">309</a>     ['American Samoa', 'SA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line310">310</a>     ['Guam', 'GU'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line311">311</a>     ['Mariana Islands', 'MP'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line312">312</a>     ['Marshall Islands', 'MH'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line313">313</a>     ['Micronesia', 'micronesia'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line314">314</a>     ['Puerto Rico', 'PR'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line315">315</a>     ['Virgin Islands', 'VI']</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line316">316</a>   ]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line317">317</a> </pre></td>
+            <td><pre><a name="line242">242</a>   def recalls_search?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line318">318</a>   ES_SCOPE_ID_OPTIONS = [</pre></td>
+            <td><pre><a name="line243">243</a>     controller.controller_name == &quot;recalls&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line319">319</a>     ['a nivel federal y estatal', 'all'],</pre></td>
+            <td><pre><a name="line244">244</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line320">320</a>     ['a nivel federal', 'federal'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line321">321</a>     ['a nivel estatal', 'nonfed'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line322">322</a>     ['a nivel territorial', 'territories'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line323">323</a>     ['Alabama', 'AL'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line324">324</a>     ['Alaska', 'AK'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line325">325</a>     ['Arizona', 'AZ'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line326">326</a>     ['Arkansas', 'AR'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line327">327</a>     ['California', 'CA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line328">328</a>     ['Carolina del Norte', 'NC'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line329">329</a>     ['Carolina del Sur', 'SC'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line330">330</a>     ['Colorado', 'CO'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line331">331</a>     ['Connecticut', 'CT'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line332">332</a>     ['Dakota del Norte', 'ND'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line333">333</a>     ['Dakota del Sur', 'SD'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line334">334</a>     ['D.C.', 'DC'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line335">335</a>     ['Delaware', 'DE'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line336">336</a>     ['Florida', 'FL'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line337">337</a>     ['Georgia', 'GA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line338">338</a>     ['Hawaii', 'HI'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line339">339</a>     ['Idaho', 'ID'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line340">340</a>     ['Illinois', 'IL'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line341">341</a>     ['Indiana', 'IN'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line342">342</a>     ['Iowa', 'IA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line343">343</a>     ['Kansas', 'KS'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line344">344</a>     ['Kentucky', 'KY'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line345">345</a>     ['Luisiana', 'LA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line346">346</a>     ['Maine', 'ME'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line347">347</a>     ['Maryland', 'MD'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line348">348</a>     ['Massachusets', 'MA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line349">349</a>     ['Michigan', 'MI'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line350">350</a>     ['Minesota', 'MN'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line351">351</a>     ['Misisipi', 'MS'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line352">352</a>     ['Misuri', 'MO'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line353">353</a>     ['Montana', 'MT'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line354">354</a>     ['Nebraska', 'NE'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line355">355</a>     ['Nevada', 'NV'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line356">356</a>     ['Nuevo Hampshire', 'NH'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line357">357</a>     ['Nuevo Jersey', 'NJ'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line358">358</a>     ['Nuevo Mexico', 'NM'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line359">359</a>     ['Nuevo York', 'NY'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line360">360</a>     ['Ohio', 'OH'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line361">361</a>     ['Oklahoma', 'OK'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line362">362</a>     ['Oregón', 'OR'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line363">363</a>     ['Pensilvania', 'PA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line364">364</a>     ['Rhode Island', 'RI'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line365">365</a>     ['South Carolina', 'SC'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line366">366</a>     ['South Dakota', 'SD'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line367">367</a>     ['Tennessee', 'TN'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line368">368</a>     ['Texas', 'TX'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line369">369</a>     ['Utah', 'UT'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line370">370</a>     ['Vermont', 'VT'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line371">371</a>     ['Virginia', 'VA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line372">372</a>     ['Virginia Occidental', 'WV'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line373">373</a>     ['Washington', 'WA'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line374">374</a>     ['Wisconsin', 'WI'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line375">375</a>     ['Wyoming', 'WY'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line376">376</a>     ['Estados Federados de Micronesia', 'micronesia'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line377">377</a>     ['Guam', 'GU'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line378">378</a>     ['Islas Mariana', 'MP'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line379">379</a>     ['Islas Marshall', 'MH'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line380">380</a>     ['Islas Vírgenes, EE.UU.', 'VI'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line381">381</a>     ['Puerto Rico', 'PR'],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line382">382</a>     ['Samoa Americana', 'SA']</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line383">383</a>   ]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line384">384</a> </pre></td>
+            <td><pre><a name="line245">245</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line385">385</a>   def scope_ids_as_options</pre></td>
+            <td><pre><a name="line246">246</a>   def forms_search?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line386">386</a>     if I18n.locale == :es</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line387">387</a>       ES_SCOPE_ID_OPTIONS</pre></td>
+            <td><pre><a name="line247">247</a>     (controller.controller_name == &quot;searches&quot; and controller.action_name == &quot;forms&quot;) or controller.controller_name == &quot;forms&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line388">388</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line389">389</a>       EN_SCOPE_ID_OPTIONS</pre></td>
+            <td><pre><a name="line248">248</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line390">390</a>     end</pre></td>
+            <td><pre><a name="line249">249</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line250">250</a>   def no_results_for(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line251">251</a>     content_tag(:p, (t :no_results_for, :query =&gt; query), :class=&gt;&quot;noresults&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line391">391</a>   end</pre></td>
+            <td><pre><a name="line252">252</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line392">392</a> </pre></td>
+            <td><pre><a name="line253">253</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line393">393</a>   def search_meta_tags</pre></td>
+            <td><pre><a name="line254">254</a>   def search_results_logo</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line394">394</a>     content = ''</pre></td>
+            <td><pre><a name="line255">255</a>     if forms_search?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line395">395</a>     if english_locale? or spanish_locale?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line396">396</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;description&quot;, :content =&gt; t(:web_meta_description)})</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line397">397</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;keywords&quot;, :content =&gt; t(:web_meta_keywords)})</pre></td>
+            <td><pre><a name="line256">256</a>       link_to image_tag(&quot;USAsearch_medium_#{I18n.locale}_forms.gif&quot;, :alt =&gt; &quot;USASearch Forms Home&quot;), forms_path(:locale =&gt; I18n.locale)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line398">398</a>     end</pre></td>
+            <td><pre><a name="line257">257</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line399">399</a>     raw content</pre></td>
+            <td><pre><a name="line258">258</a>       link_to image_tag(&quot;USAsearch_medium_#{I18n.locale}.gif&quot;, :alt =&gt; &quot;USASearch Home&quot;), home_page_path(:locale =&gt; I18n.locale)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line400">400</a>   end</pre></td>
+            <td><pre><a name="line259">259</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line401">401</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line402">402</a>   def image_search_meta_tags</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line403">403</a>     content = ''</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line404">404</a>     if english_locale? or spanish_locale?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line405">405</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;description&quot;, :content =&gt; t(:image_meta_description)})</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line406">406</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;keywords&quot;, :content =&gt; t(:image_meta_keywords)})</pre></td>
+            <td><pre><a name="line260">260</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line407">407</a>     end</pre></td>
+            <td><pre><a name="line261">261</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line408">408</a>     raw content</pre></td>
+            <td><pre><a name="line262">262</a>   EN_SCOPE_ID_OPTIONS = [</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line409">409</a>   end</pre></td>
+            <td><pre><a name="line263">263</a>     ['All Government Domains', 'all'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line410">410</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line411">411</a>   def path_to_search(search_params, path_to_landing_page, path_to_serp)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line412">412</a>     search_params[:query].blank? ? path_to_landing_page : path_to_serp</pre></td>
+            <td><pre><a name="line264">264</a>     ['Federally-Focused', 'federal'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line413">413</a>   end</pre></td>
+            <td><pre><a name="line265">265</a>     ['Non-Federal', 'nonfed'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line414">414</a> </pre></td>
+            <td><pre><a name="line266">266</a>     ['Tribal Sites', 'tribal'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line415">415</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line416">416</a>   def path_to_image_search(search_params)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line417">417</a>     search_params[:query].blank? ? images_path(search_params) : image_search_path(search_params)</pre></td>
+            <td><pre><a name="line267">267</a>     ['US territories', 'territories'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line418">418</a>   end</pre></td>
+            <td><pre><a name="line268">268</a>     ['Alabama', 'AL'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line419">419</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line420">420</a>   def path_to_search_in_other_locale_for(query)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line421">421</a>     path = ''</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line422">422</a>     if query.blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line423">423</a>       path = web_search? ? home_page_path(:locale =&gt; other_locale_str) : images_path(:locale =&gt; other_locale_str)</pre></td>
+            <td><pre><a name="line269">269</a>     ['Alaska', 'AK'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line424">424</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line425">425</a>       path = web_search? ? search_path(:locale =&gt; other_locale_str, :query =&gt; query) : image_search_path(:locale =&gt; other_locale_str, :query =&gt; query)</pre></td>
+            <td><pre><a name="line270">270</a>     ['Arizona', 'AZ'],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line426">426</a>     end</pre></td>
+            <td><pre><a name="line271">271</a>     ['Arkansas', 'AR'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line272">272</a>     ['California', 'CA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line273">273</a>     ['Colorado', 'CO'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line274">274</a>     ['Connecticut', 'CT'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line275">275</a>     ['D.C.', 'DC'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line276">276</a>     ['Delaware', 'DE'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line277">277</a>     ['Florida', 'FL'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line278">278</a>     ['Georgia', 'GA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line279">279</a>     ['Hawaii', 'HI'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line280">280</a>     ['Idaho', 'ID'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line281">281</a>     ['Illinois', 'IL'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line282">282</a>     ['Indiana', 'IN'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line283">283</a>     ['Iowa', 'IA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line284">284</a>     ['Kansas', 'KS'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line285">285</a>     ['Kentucky', 'KY'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line286">286</a>     ['Louisiana', 'LA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line287">287</a>     ['Maine', 'ME'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line288">288</a>     ['Maryland', 'MD'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line289">289</a>     ['Massachusetts', 'MA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line290">290</a>     ['Michigan', 'MI'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line291">291</a>     ['Minnesota', 'MN'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line292">292</a>     ['Mississippi', 'MS'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line293">293</a>     ['Missouri', 'MO'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line294">294</a>     ['Montana', 'MT'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line295">295</a>     ['Nebraska', 'NE'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line296">296</a>     ['Nevada', 'NV'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line297">297</a>     ['New Hampshire', 'NH'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line298">298</a>     ['New Jersey', 'NJ'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line299">299</a>     ['New Mexico', 'NM'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line300">300</a>     ['New York', 'NY'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line301">301</a>     ['North Carolina', 'NC'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line302">302</a>     ['North Dakota', 'ND'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line303">303</a>     ['Ohio', 'OH'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line304">304</a>     ['Oklahoma', 'OK'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line305">305</a>     ['Oregon', 'OR'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line306">306</a>     ['Pennsylvania', 'PA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line307">307</a>     ['Rhode Island', 'RI'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line308">308</a>     ['South Carolina', 'SC'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line309">309</a>     ['South Dakota', 'SD'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line310">310</a>     ['Tennessee', 'TN'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line311">311</a>     ['Texas', 'TX'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line312">312</a>     ['Utah', 'UT'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line313">313</a>     ['Vermont', 'VT'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line314">314</a>     ['Virginia', 'VA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line315">315</a>     ['Washington', 'WA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line316">316</a>     ['West Virginia', 'WV'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line317">317</a>     ['Wisconsin', 'WI'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line318">318</a>     ['Wyoming', 'WY'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line319">319</a>     ['American Samoa', 'SA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line320">320</a>     ['Guam', 'GU'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line321">321</a>     ['Mariana Islands', 'MP'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line322">322</a>     ['Marshall Islands', 'MH'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line323">323</a>     ['Micronesia', 'micronesia'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line324">324</a>     ['Puerto Rico', 'PR'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line325">325</a>     ['Virgin Islands', 'VI']</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line326">326</a>   ]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line327">327</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line427">427</a>     link_to(t(:search_in), path, :id =&gt; 'search_in_link')</pre></td>
+            <td><pre><a name="line328">328</a>   ES_SCOPE_ID_OPTIONS = [</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line329">329</a>     ['a nivel federal y estatal', 'all'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line330">330</a>     ['a nivel federal', 'federal'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line331">331</a>     ['a nivel estatal', 'nonfed'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line332">332</a>     ['a nivel territorial', 'territories'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line333">333</a>     ['Alabama', 'AL'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line334">334</a>     ['Alaska', 'AK'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line335">335</a>     ['Arizona', 'AZ'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line336">336</a>     ['Arkansas', 'AR'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line337">337</a>     ['California', 'CA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line338">338</a>     ['Carolina del Norte', 'NC'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line339">339</a>     ['Carolina del Sur', 'SC'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line340">340</a>     ['Colorado', 'CO'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line341">341</a>     ['Connecticut', 'CT'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line342">342</a>     ['Dakota del Norte', 'ND'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line343">343</a>     ['Dakota del Sur', 'SD'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line344">344</a>     ['D.C.', 'DC'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line345">345</a>     ['Delaware', 'DE'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line346">346</a>     ['Florida', 'FL'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line347">347</a>     ['Georgia', 'GA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line348">348</a>     ['Hawaii', 'HI'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line349">349</a>     ['Idaho', 'ID'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line350">350</a>     ['Illinois', 'IL'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line351">351</a>     ['Indiana', 'IN'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line352">352</a>     ['Iowa', 'IA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line353">353</a>     ['Kansas', 'KS'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line354">354</a>     ['Kentucky', 'KY'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line355">355</a>     ['Luisiana', 'LA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line356">356</a>     ['Maine', 'ME'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line357">357</a>     ['Maryland', 'MD'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line358">358</a>     ['Massachusets', 'MA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line359">359</a>     ['Michigan', 'MI'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line360">360</a>     ['Minesota', 'MN'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line361">361</a>     ['Misisipi', 'MS'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line362">362</a>     ['Misuri', 'MO'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line363">363</a>     ['Montana', 'MT'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line364">364</a>     ['Nebraska', 'NE'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line365">365</a>     ['Nevada', 'NV'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line366">366</a>     ['Nuevo Hampshire', 'NH'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line367">367</a>     ['Nuevo Jersey', 'NJ'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line368">368</a>     ['Nuevo Mexico', 'NM'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line369">369</a>     ['Nuevo York', 'NY'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line370">370</a>     ['Ohio', 'OH'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line371">371</a>     ['Oklahoma', 'OK'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line372">372</a>     ['Oregón', 'OR'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line373">373</a>     ['Pensilvania', 'PA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line374">374</a>     ['Rhode Island', 'RI'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line375">375</a>     ['South Carolina', 'SC'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line376">376</a>     ['South Dakota', 'SD'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line377">377</a>     ['Tennessee', 'TN'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line378">378</a>     ['Texas', 'TX'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line379">379</a>     ['Utah', 'UT'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line380">380</a>     ['Vermont', 'VT'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line381">381</a>     ['Virginia', 'VA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line382">382</a>     ['Virginia Occidental', 'WV'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line383">383</a>     ['Washington', 'WA'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line384">384</a>     ['Wisconsin', 'WI'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line385">385</a>     ['Wyoming', 'WY'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line386">386</a>     ['Estados Federados de Micronesia', 'micronesia'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line387">387</a>     ['Guam', 'GU'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line388">388</a>     ['Islas Mariana', 'MP'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line389">389</a>     ['Islas Marshall', 'MH'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line390">390</a>     ['Islas Vírgenes, EE.UU.', 'VI'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line391">391</a>     ['Puerto Rico', 'PR'],</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line392">392</a>     ['Samoa Americana', 'SA']</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line393">393</a>   ]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line394">394</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line395">395</a>   def scope_ids_as_options</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line396">396</a>     if I18n.locale == :es</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line397">397</a>       ES_SCOPE_ID_OPTIONS</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line398">398</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line399">399</a>       EN_SCOPE_ID_OPTIONS</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line400">400</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line401">401</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line402">402</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line403">403</a>   def search_meta_tags</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line404">404</a>     content = ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line405">405</a>     if english_locale? or spanish_locale?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line406">406</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;description&quot;, :content =&gt; t(:web_meta_description)})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line407">407</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;keywords&quot;, :content =&gt; t(:web_meta_keywords)})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line408">408</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line409">409</a>     raw content</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line410">410</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line411">411</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line412">412</a>   def image_search_meta_tags</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line413">413</a>     content = ''</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line414">414</a>     if english_locale? or spanish_locale?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line415">415</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;description&quot;, :content =&gt; t(:image_meta_description)})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line416">416</a>       content &lt;&lt; tag(:meta, {:name =&gt; &quot;keywords&quot;, :content =&gt; t(:image_meta_keywords)})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line417">417</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line418">418</a>     raw content</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line419">419</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line420">420</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line421">421</a>   def path_to_search(search_params, path_to_landing_page, path_to_serp)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line422">422</a>     search_params[:query].blank? ? path_to_landing_page : path_to_serp</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line423">423</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line424">424</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line425">425</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line426">426</a>   def path_to_image_search(search_params)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line427">427</a>     search_params[:query].blank? ? images_path(search_params) : image_search_path(search_params)</pre></td>
           </tr>
         
           
@@ -2631,283 +2631,343 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line430">430</a>   def top_search_link_for(top_search)</pre></td>
+            <td><pre><a name="line430">430</a>   def path_to_search_in_other_locale_for(query)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line431">431</a>     if top_search.url.blank?</pre></td>
+            <td><pre><a name="line431">431</a>     path = ''</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line432">432</a>       query_params = {</pre></td>
+            <td><pre><a name="line432">432</a>     if query.blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line433">433</a>           :query =&gt; top_search.query,</pre></td>
+            <td><pre><a name="line433">433</a>       path = web_search? ? home_page_path(:locale =&gt; other_locale_str) : images_path(:locale =&gt; other_locale_str)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line434">434</a>           :linked =&gt; 1,</pre></td>
+            <td><pre><a name="line434">434</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line435">435</a>           :position =&gt; top_search.position,</pre></td>
+            <td><pre><a name="line435">435</a>       path = web_search? ? search_path(:locale =&gt; other_locale_str, :query =&gt; query) : image_search_path(:locale =&gt; other_locale_str, :query =&gt; query)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line436">436</a>           :locale =&gt; nil,</pre></td>
+            <td><pre><a name="line436">436</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line437">437</a>     link_to(t(:search_in), path, :id =&gt; 'search_in_link')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line437">437</a>           :m =&gt; nil</pre></td>
+            <td><pre><a name="line438">438</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line438">438</a>       }</pre></td>
+            <td><pre><a name="line439">439</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line439">439</a>       path_or_url = search_path(query_params)</pre></td>
+            <td><pre><a name="line440">440</a>   def top_search_link_for(top_search)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line441">441</a>     if top_search.url.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line442">442</a>       query_params = {</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line443">443</a>           :query =&gt; top_search.query,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line440">440</a>     else</pre></td>
+            <td><pre><a name="line444">444</a>           :linked =&gt; 1,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line441">441</a>       path_or_url = top_search.url</pre></td>
+            <td><pre><a name="line445">445</a>           :position =&gt; top_search.position,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line442">442</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line443">443</a>     link_to top_search.query, path_or_url, :target =&gt; '_top'</pre></td>
+            <td><pre><a name="line446">446</a>           :locale =&gt; nil,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line444">444</a>   end</pre></td>
+            <td><pre><a name="line447">447</a>           :m =&gt; nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line445">445</a> </pre></td>
+            <td><pre><a name="line448">448</a>       }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line446">446</a>   def results_restriction_message_for(fedstates, search_path)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line447">447</a>     heading = t :search_results_restriction_message_front, :scope_setting =&gt; fedstates</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line448">448</a>     link = link_to((t :search_results_restriction_message_link), search_path)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line449">449</a>     raw(heading + ' ' + link)</pre></td>
+            <td><pre><a name="line449">449</a>       path_or_url = search_path(query_params)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line450">450</a>   end</pre></td>
+            <td><pre><a name="line450">450</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line451">451</a>       path_or_url = top_search.url</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line451">451</a> </pre></td>
+            <td><pre><a name="line452">452</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line452">452</a>   private</pre></td>
+            <td><pre><a name="line453">453</a>     link_to top_search.query, path_or_url, :target =&gt; '_top'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line453">453</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line454">454</a>   def shorten_url (url, length=30)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line455">455</a>     return url if url.length &lt;= length</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line456">456</a>     if url.count('/') &gt;= 4</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line457">457</a>       if url.index('?')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line458">458</a>         arr = url[0..url.index('?')].split('/')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line459">459</a>         arr[arr.size - 1] += url[url.index('?') + 1..-1]</pre></td>
+            <td><pre><a name="line454">454</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line460">460</a>       else</pre></td>
+            <td><pre><a name="line455">455</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line461">461</a>         arr = url.split('/')</pre></td>
+            <td><pre><a name="line456">456</a>   def results_restriction_message_for(fedstates, search_path)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line457">457</a>     heading = t :search_results_restriction_message_front, :scope_setting =&gt; fedstates</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line458">458</a>     link = link_to((t :search_results_restriction_message_link), search_path)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line459">459</a>     raw(heading + ' ' + link)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line462">462</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line463">463</a>       host = arr[0]+&quot;//&quot;+arr[2]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line464">464</a>       if arr.last.index('?')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line465">465</a>         doc_path = arr.last.split('?')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line466">466</a>         doc = [doc_path.first, &quot;?&quot;, doc_path[1].split('&amp;').first, &quot;...&quot;].join</pre></td>
+            <td><pre><a name="line460">460</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line467">467</a>       else</pre></td>
+            <td><pre><a name="line461">461</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line468">468</a>         doc = arr.last.split('?').first</pre></td>
+            <td><pre><a name="line462">462</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line469">469</a>       end</pre></td>
+            <td><pre><a name="line463">463</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line470">470</a>       [host, &quot;...&quot;, doc].join('/')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line471">471</a>     else</pre></td>
+            <td><pre><a name="line464">464</a>   def shorten_url (url, length=30)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line472">472</a>       url[0, length]+&quot;...&quot;</pre></td>
+            <td><pre><a name="line465">465</a>     return url if url.length &lt;= length</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line466">466</a>     if url.count('/') &gt;= 4</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line467">467</a>       if url.index('?')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line468">468</a>         arr = url[0..url.index('?')].split('/')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line469">469</a>         arr[arr.size - 1] += url[url.index('?') + 1..-1]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line473">473</a>     end</pre></td>
+            <td><pre><a name="line470">470</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line471">471</a>         arr = url.split('/')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line474">474</a>   end</pre></td>
+            <td><pre><a name="line472">472</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line473">473</a>       host = arr[0]+&quot;//&quot;+arr[2]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line474">474</a>       if arr.last.index('?')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line475">475</a>         doc_path = arr.last.split('?')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line476">476</a>         doc = [doc_path.first, &quot;?&quot;, doc_path[1].split('&amp;').first, &quot;...&quot;].join</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line475">475</a> end</pre></td>
+            <td><pre><a name="line477">477</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line478">478</a>         doc = arr.last.split('?').first</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line479">479</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line480">480</a>       [host, &quot;...&quot;, doc].join('/')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line481">481</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line482">482</a>       url[0, length]+&quot;...&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line483">483</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line484">484</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line485">485</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Jun 22 14:03:19 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jun 22 15:59:08 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

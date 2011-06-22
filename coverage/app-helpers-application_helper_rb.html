@@ -28,7 +28,7 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-application_helper_rb.html">app/helpers/application_helper.rb</a></td>
-            <td class='right_align'><tt>316</tt></td>
+            <td class='right_align'><tt>326</tt></td>
             <td class='right_align'><tt>271</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
@@ -1173,7 +1173,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line187">187</a>     html_root = Nokogiri::XML.fragment(html.strip) rescue nil</pre></td>
+            <td><pre><a name="line187">187</a>     html_root = Nokogiri::HTML.fragment(html.strip) rescue nil</pre></td>
           </tr>
         
           
@@ -1700,206 +1700,206 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line275">275</a>     case node.node_type</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line275">275</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line276">276</a>     when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE :</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line277">277</a>       mb_chars = node.text.mb_chars</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line278">278</a>       if mb_chars.length &lt;= max_chars</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line279">279</a>         buffer &lt;&lt; mb_chars</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line280">280</a>         max_chars -= mb_chars.length</pre></td>
+            <td><pre><a name="line276">276</a>     case node.node_type</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line281">281</a>       else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line282">282</a>         last_space_index = (mb_chars.rindex(/\W/, max_chars) || 0)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line283">283</a>         truncated_text = mb_chars[0..(mb_chars.rindex(/\w/, last_space_index) || 0)] unless last_space_index.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line284">284</a>         buffer &lt;&lt; &quot;#{truncated_text}...&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line285">285</a>         max_chars = 0</pre></td>
+            <td><pre><a name="line277">277</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line286">286</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line287">287</a>     when Nokogiri::XML::Node::ELEMENT_NODE, Nokogiri::XML::Node::DOCUMENT_FRAG_NODE :</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line288">288</a>       if (max_paragraphs.present? &amp;&amp; max_paragraphs == 0)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line289">289</a>         max_paragraphs -= 1</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line290">290</a>         buffer &lt;&lt; &quot;...&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line291">291</a>       elsif max_paragraphs.nil? || max_paragraphs &gt; 0</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line292">292</a>         if node.element?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line293">293</a>           buffer &lt;&lt; &quot;&lt;#{node.name}&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line294">294</a>           node.attributes.each do |name, value|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line295">295</a>             buffer &lt;&lt; &quot; #{name}='#{value}'&quot;</pre></td>
+            <td><pre><a name="line278">278</a>   # todo: should have separate case for entity refs but they will probably not work anyways until ruby 1.9</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line296">296</a>           end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line297">297</a>           buffer &lt;&lt; &quot;&gt;&quot;</pre></td>
+            <td><pre><a name="line279">279</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line298">298</a> </pre></td>
+            <td><pre><a name="line280">280</a>   # we prefer to chop at word boundaries</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line299">299</a>         end</pre></td>
+            <td><pre><a name="line281">281</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line300">300</a>         node.children.each do |child|</pre></td>
+            <td><pre><a name="line282">282</a>     when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE :</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line301">301</a>           max_chars, max_paragraphs = append_html_prose(buffer, child, max_chars, max_paragraphs)</pre></td>
+            <td><pre><a name="line283">283</a>       mb_chars = node.text.mb_chars</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line302">302</a>         end</pre></td>
+            <td><pre><a name="line284">284</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line285">285</a>       if mb_chars.length &lt;= max_chars</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line286">286</a>         buffer &lt;&lt; mb_chars</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line287">287</a>         max_chars -= mb_chars.length</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line303">303</a> </pre></td>
+            <td><pre><a name="line288">288</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line304">304</a>         if node.element?</pre></td>
+            <td><pre><a name="line289">289</a>         last_space_index = (mb_chars.rindex(/\W/, max_chars) || 0) rescue 0</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line305">305</a>           buffer &lt;&lt; &quot;&lt;/#{node.name}&gt;&quot;</pre></td>
+            <td><pre><a name="line290">290</a>         truncated_text = mb_chars[0..(mb_chars.rindex(/\w/, last_space_index) || 0)] unless last_space_index.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line306">306</a>           if max_paragraphs.present? &amp;&amp; %w{h1 h2 h3 p li div quote}.include?(node.name)</pre></td>
+            <td><pre><a name="line291">291</a>         buffer &lt;&lt; &quot;#{truncated_text}...&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line307">307</a>             max_paragraphs -= 1</pre></td>
+            <td><pre><a name="line292">292</a>         max_chars = 0</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line308">308</a>           end</pre></td>
+            <td><pre><a name="line293">293</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line294">294</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line295">295</a>   # even if not all children are inserted, the parent tags need to be properly closed</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line296">296</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line297">297</a>     when Nokogiri::XML::Node::ELEMENT_NODE, Nokogiri::XML::Node::DOCUMENT_FRAG_NODE :</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line298">298</a>       if (max_paragraphs.present? &amp;&amp; max_paragraphs == 0)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line299">299</a>         max_paragraphs -= 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line300">300</a>         buffer &lt;&lt; &quot;...&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line301">301</a>       elsif max_paragraphs.nil? || max_paragraphs &gt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line302">302</a>         if node.element?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line303">303</a>           buffer &lt;&lt; &quot;&lt;#{node.name}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line304">304</a>           node.attributes.each do |name, value|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line305">305</a>             buffer &lt;&lt; &quot; #{name}='#{value}'&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line306">306</a>           end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line307">307</a>           buffer &lt;&lt; &quot;&gt;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line308">308</a> </pre></td>
           </tr>
         
           
@@ -1910,50 +1910,110 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line310">310</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line311">311</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line312">312</a>     end</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line310">310</a>         node.children.each do |child|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line313">313</a>     [max_chars, max_paragraphs]</pre></td>
+            <td><pre><a name="line311">311</a>           max_chars, max_paragraphs = append_html_prose(buffer, child, max_chars, max_paragraphs)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line314">314</a>   end</pre></td>
+            <td><pre><a name="line312">312</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line315">315</a> </pre></td>
+            <td><pre><a name="line313">313</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line314">314</a>         if node.element?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line315">315</a>           buffer &lt;&lt; &quot;&lt;/#{node.name}&gt;&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line316">316</a>           if max_paragraphs.present? &amp;&amp; %w{h1 h2 h3 p li div quote}.include?(node.name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line317">317</a>             max_paragraphs -= 1</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line316">316</a> end</pre></td>
+            <td><pre><a name="line318">318</a>           end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line319">319</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line320">320</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line321">321</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line322">322</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line323">323</a>     [max_chars, max_paragraphs]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line324">324</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line325">325</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line326">326</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Jun 22 14:03:19 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jun 22 15:59:08 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
