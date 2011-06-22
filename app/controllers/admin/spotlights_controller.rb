@@ -6,4 +6,14 @@ class Admin::SpotlightsController < Admin::AdminController
     config.update.columns = writables
     config.list.sorting = { :updated_at => :desc }
   end
+  
+  before_filter :clean_params, :only => [:create, :update]
+  
+  def clean_params
+    params.each do |key,value|
+      if key =~ /record.*html_editor/
+        params.delete(key)
+      end
+    end
+  end
 end
