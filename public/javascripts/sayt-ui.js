@@ -46,7 +46,7 @@ jQuery(document).ready(function() {
       });
     },
     minLength: 2,
-    delay: 50,
+    delay: 250,
     select: function(event, ui) {
       jQuery(".usagov-search-autocomplete").val(ui.item.value.toString());
       jQuery("#sc").val("1");
