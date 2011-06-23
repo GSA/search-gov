@@ -657,10 +657,10 @@ class MedTopic < ActiveRecord::Base
 #   over direct tytle (as opposed to synonym) match
 
     def search_for(title, locale = "en")
-      matched_topics = find(:all, :conditions => { :medline_title => title.strip })
+      matched_topics = find(:all, :conditions => { :medline_title => title.strip, :visible => true })
       MedSynonym.find(:all, :conditions => { :medline_title => title.strip }).each { |syn|
         topic = syn.topic
-        matched_topics << topic unless topic.nil? or matched_topics.include?(topic)
+        matched_topics << topic unless topic.nil? or (not topic.visible) or matched_topics.include?(topic)
       }
       return nil if matched_topics.empty?
       matched_topics = matched_topics.sort_by { |topic|

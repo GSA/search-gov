@@ -128,6 +128,11 @@ Now populate your Faqs and Forms tables with files you can download from Github 
 
 Now re-run your search for taxes and you should see more content.
 
+If you are interested in helath related data, you can also load MedLinePlus data 
+from the XML retrieved from the MedLine website (see doc/medline for more details).
+
+    rake usasearch:medline:update
+
 ## Affiliate accounts
 Get yourself a user account
 

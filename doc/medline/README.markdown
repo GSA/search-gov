@@ -37,6 +37,17 @@ Other exceptions:
     - two of them (eg: Medication Errors) contain nested ul constructs
     - about 20 of them are english-only topics; there are no spanish-only topics
 
+## Data Life Cycle
+
+You can use the rake tasks below to load data into the database from medline.  
+After the data is loaded, you can set visibility to false on certain topics.
+These topics will stay invisible even if some of their attroibutes are changed
+in future medline data updates.  (ie: their group associations might change, 
+but they are not replaced by new visible objects when that happens).  This is
+because only the changed attributes are applied to the topics in the database.
+
+In the absense of a web interface for tweaking visibility, you can use the 
+rails console or an sql client on the production or staging dbs.
 
 ## Tasks
 

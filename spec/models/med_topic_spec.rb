@@ -705,6 +705,58 @@ describe MedTopic do
       MedTopic.search_for("tsg", "es").medline_tid.should eql 19
     end
 
+    it "should not find invisible topics" do
+      MedTopic.apply_vocab_delta( {
+            :create_topic => {
+              { :medline_tid => 12345 } => {
+                :medline_title  => "Armageddon",
+                :medline_url    => "http://www.nlm.nih.gov/medlineplus/armageddon.html",
+                :synonyms       => ["Apocolypse"],
+                :related_groups => [26, 28],
+                :related_topics => [],
+                :summary_html   => "<p>Coming any day now.</p>",
+                :locale         => "en",
+                :mesh_titles    => "riders",
+                :lang_map       => nil
+              },
+              { :medline_tid => 12346 } => {
+                :medline_title  => "Armageddon",
+                :medline_url    => "http://www.nlm.nih.gov/medlineplus/spanish/armageddon.html",
+                :synonyms       => ["Apocolypse", "los cuatro jinetes"],
+                :related_groups => [26, 28],
+                :related_topics => [],
+                :summary_html   => "<p>viniendo cualquie día ahora.</p>",
+                :locale         => "es",
+                :mesh_titles    => "riders",
+                :lang_map       => nil
+              }
+            }
+      })
+
+      en_armageddon = MedTopic.search_for("Armageddon")
+      en_armageddon.should_not be_nil
+      en_apocolypse = MedTopic.search_for("Apocolypse")
+      en_apocolypse.should eql en_armageddon
+      MedTopic.search_for("los cuatro jinetes").should_not eql en_armageddon
+      en_armageddon.should_not be_nil
+      en_armageddon.locale.should eql "en"
+      en_armageddon.visible = false
+      en_armageddon.save!
+
+      es_armageddon = MedTopic.search_for("Armageddon")
+      es_armageddon.should_not be_nil
+      es_apocolypse = MedTopic.search_for("Apocolypse")
+      es_apocolypse.should eql es_armageddon
+      MedTopic.search_for("los cuatro jinetes").should eql es_armageddon
+      es_armageddon.should_not be_nil
+      es_armageddon.locale.should eql "es"
+      es_armageddon.visible = false
+      es_armageddon.save!
+
+      MedTopic.search_for("Armageddon").should be_nil
+
+    end
+
   end
 
 end
