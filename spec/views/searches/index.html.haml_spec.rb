@@ -233,7 +233,7 @@ describe "searches/index.html.haml" do
         it "should format the first result as a special agency result" do
           render
           rendered.should have_selector "div[class='govbox agency']"
-          rendered.should contain("www.irs.gov/ Official Site")
+          rendered.should contain("www.irs.gov Official Site")
           rendered.should contain(/888-555-1040 \(Contact\)/)
           rendered.should_not contain(/Toll-free:/)
           rendered.should_not contain(/TTY:/)

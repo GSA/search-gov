@@ -88,23 +88,87 @@ describe SearchHelper do
   end
 
   describe "#shorten_url" do
-    context "when URL is more than 30 chars, has sublevels, but no query params" do
+
+    context "when no truncation length is specified, the URL is too long, has sublevels, but no query params" do
       before do
+        #       12345678901234567890123456789012345678901234567890
+        #       0        1         2         3         4         5
+        @url = "http://www.foo.com/this/is/a/b/c/d/e/f/string.html"
+      end
+
+      it "should should default to truncate at 42 characters" do
+        #                                          123456789012345678901234567890123456789012
+        helper.send(:shorten_url, @url).should == "www.foo.com/this/is/a/.../e/f/string.html"
+      end
+    end
+
+    context "when URL is too long, has sublevels, but no query params" do
+      before do
+        #       123456789012345678901234567890
+        #       0        1         2         3
         @url = "http://www.foo.com/this/is/a/really/long/url/that/has/no/query/string.html"
       end
 
       it "should ellipse the directories and just show the file" do
-        helper.send(:shorten_url, @url).should == "http://www.foo.com/.../string.html"
+        #                                          123456789012345678901234567890
+        helper.send(:shorten_url, @url, 30).should == "www.foo.com/.../string.html"
+      end
+
+
+      it "should replace path segments with ellipses to shorten the path as much as necessary" do
+        url_prefix = "http://www.foo.com/this/goes/on/"
+        url_middle = ""
+        url_suffix = "with/XXX.html"
+        0.upto(20) do |n|
+          url = url_prefix + url_middle + url_suffix
+          url_middle += "and/on/"
+          shorter_url = helper.send(:shorten_url, url, 30)
+          puts "#{url} => #{shorter_url}"
+          shorter_url.should == if url.length <= 30
+                                  url[7..-1]
+                                else
+                                  #1234567890123456789012345678901234
+                                  "www.foo.com/this/.../XXX.html"
+                                end
+        end
+      end
+
+      it "should replace path segments with ellipses to shorten the path as much as necessary (different path pattern)" do
+        url_prefix = "http://www.foo.com/on/"
+        url_middle = ""
+        url_suffix = "X.html"
+        0.upto(20) do |n|
+          url = url_prefix + url_middle + url_suffix
+          url_middle += "nd/on/"
+          shorter_url = helper.send(:shorten_url, url, 30)
+          puts "#{url} => #{shorter_url}"
+          shorter_url.should == if url.length <= 30
+                                  url[7..-1]
+                                else
+                                  #1234567890123456789012345678901234
+                                  "www.foo.com/on/.../on/X.html"
+                                end
+        end
       end
     end
 
-    context "when URL is more than 30 chars long and has at least one sublevel specified" do
+    it "should replace path segments with ellipses to shorten the path as much as necessary for various lengths" do
+        url = "http://www.foo.com/this/goes/on/and/on/and/on/with/XXX.html"
+        #                                             1234567890123456789012345678901234567890
+        helper.send(:shorten_url, url, 20).should == "www.foo.com/.../XXX.html"
+        32.upto(34) {|n| helper.send(:shorten_url, url, n).should == "www.foo.com/this/.../XXX.html"}
+        35.upto(39) {|n| helper.send(:shorten_url, url, n).should == "www.foo.com/this/.../with/XXX.html"}
+        40.upto(42) {|n| helper.send(:shorten_url, url, n).should == "www.foo.com/this/goes/.../with/XXX.html"}
+        43.upto(45) {|n| helper.send(:shorten_url, url, n).should == "www.foo.com/this/goes/.../on/with/XXX.html"}
+      end
+
+    context "when URL is too long and has at least one sublevel specified as well as a query parameter" do
       before do
         @url = "http://www.foo.com/this/goes/on/and/on/and/on/and/on/and/ends/with/XXXX.html?q=1&a=2&b=3"
       end
 
-      it "should replace everything between the hostname and the document with ellipses, and show only the first param, followed by ellipses" do
-        helper.send(:shorten_url, @url).should == "http://www.foo.com/.../XXXX.html?q=1..."
+      it "should replace path segments with ellipses to shgrten the path as much as necessary, and show only the first param, followed by ellipses" do
+        helper.send(:shorten_url, @url, 50).should == "www.foo.com/this/goes/.../with/XXXX.html?q=1..."
       end
     end
 
@@ -114,7 +178,64 @@ describe SearchHelper do
       end
 
       it "should truncate to 30 chars with ellipses" do
-        helper.send(:shorten_url, @url).should == "http://www.mass.gov/?pageID=tr..."
+        helper.send(:shorten_url, @url, 30).should == "www.mass.gov/?pageID=trepressrelease..."
+      end
+    end
+
+    context "when URL contains a really long host name and traialing filename" do
+      before do
+        @url = "http://www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com/some/path/test_of_the_mergency_broadcastingnet_work.html"
+      end
+
+      it "should not truncate the host name and still keep the last part of the path" do
+        helper.send(:shorten_url, @url, 30).should == "www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com/.../test_of_the_mergency_broadcastingnet_work.html"
+      end
+    end
+
+
+    context "when URL is really short and contains only the protocol http and hostname" do
+      it "should omit the protocol as well as trailing slash" do
+        helper.send(:shorten_url, "http://bit.ly/").should == "bit.ly"
+      end
+    end
+
+
+    context "when URL is really short and contains only the protocol http and hostname and a query parameter" do
+      it "should omit the protocol as well as trailing slash" do
+        helper.send(:shorten_url, "http://api.bit.ly/?cmd=boom&t=now&auth_token=f886c1c02896492577e92b550cd22b3c83b062").should == "api.bit.ly/?cmd=boom..."
+      end
+
+      it "should omit the protocol as well as trailing slash" do
+        helper.send(:shorten_url, "http://api.bit.ly/?cmd=boom&t=now").should == "api.bit.ly/?cmd=boom&t=now"
+      end
+    end
+
+    context "when the URL starts with something other than http://hostname/" do
+      before do
+        @long_urls = [
+            "https://www.mass.gov/",
+            "http://www.mass.gov:80/",
+            "http://user:secret@www.mass.gov/",
+            "https://www.mass.gov/?pageID=trepressrelease&L=4&L0=Home&L1=Media+%26+Publications&L2=Treasury+Press+Releases&L3=2006&sid=Ctre&b=pressrelease&f=2006_032706&csid=Ctre",
+            "http://www.mass.gov:80/?pageID=trepressrelease&L=4&L0=Home&L1=Media+%26+Publications&L2=Treasury+Press+Releases&L3=2006&sid=Ctre&b=pressrelease&f=2006_032706&csid=Ctre",
+            "http://user:secret@www.mass.gov/?pageID=trepressrelease&L=4&L0=Home&L1=Media+%26+Publications&L2=Treasury+Press+Releases&L3=2006&sid=Ctre&b=pressrelease&f=2006_032706&csid=Ctre",
+            "ftp://www.mass.gov/"
+        ]
+        @short_urls = [
+            "https://www.mass.gov/",
+            "http://www.mass.gov:80/",
+            "http://user:secret@www.mass.gov/",
+            "https://www.mass.gov/?pageID=trepressrelease...",
+            "http://www.mass.gov:80/?pageID=trepressrelease...",
+            "http://user:secret@www.mass.gov/?pageID=trepressrelease...",
+            "ftp://www.mass.gov/"
+        ]
+      end
+
+      it "should truncate to 30 chars with ellipses" do
+        @long_urls.each_with_index do |url, x|
+          helper.send(:shorten_url, url, 30).should == @short_urls[x]
+        end
       end
     end
   end

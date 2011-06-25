@@ -128,11 +128,11 @@ Feature: Search
   Scenario: Site visitor sees shorten boosted content URL
     Given the following Boosted Content entries exist:
       | title              | url                                           | description                          | locale  |
-      | Our Emergency Page | http://www.aff.gov/mysuperawesomelongurl/911  | Updated information on the emergency | en      |
+      | Our Emergency Page | http://www.aff.gov/mysuperduperawesomelongurl/911  | Updated information on the emergency | en      |
     And I am on the homepage
     And I fill in "query" with "emergency"
     And I press "Search"
-    Then I should see "http://www.aff.gov/.../911"
+    Then I should see "www.aff.gov/.../911"
 
   Scenario: Site visitor sees SERP with popular images
     Given the following Popular Image Query entries exist:
