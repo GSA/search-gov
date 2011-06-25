@@ -4011,7 +4011,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line660">660</a>       matched_topics = find(:all, :conditions =&gt; { :medline_title =&gt; title.strip })</pre></td>
+            <td><pre><a name="line660">660</a>       matched_topics = find(:all, :conditions =&gt; { :medline_title =&gt; title.strip, :visible =&gt; true })</pre></td>
           </tr>
         
           
@@ -4029,7 +4029,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line663">663</a>         matched_topics &lt;&lt; topic unless topic.nil? or matched_topics.include?(topic)</pre></td>
+            <td><pre><a name="line663">663</a>         matched_topics &lt;&lt; topic unless topic.nil? or (not topic.visible) or matched_topics.include?(topic)</pre></td>
           </tr>
         
           
@@ -4347,7 +4347,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Wed Jun 22 18:20:39 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Sat Jun 25 12:55:44 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
