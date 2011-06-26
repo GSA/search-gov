@@ -479,6 +479,9 @@ module SearchHelper
       if qx
         arr = url[0 .. qx - 1].split('/')
         q = ["?", url[qx + 1 .. -1].split('&').first, "..."].join
+        if q.length > length + 3
+          q = q[0...length] + "..."
+        end
       else
         arr = url.split('/')
         q = ""
@@ -504,6 +507,11 @@ module SearchHelper
               head = 0
               tail = doc_path.length - 1
               path_length = doc_path.last.length + 5
+
+              if path_length >= length + 5
+                path_length = length + 5
+                doc_path[tail] = doc_path[tail][0...length] + "..."
+              end
               path_max_length = length - (host.length + q.length)
 
               while head < tail && ((path_length + doc_path[head].length + 1) < path_max_length)

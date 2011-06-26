@@ -123,7 +123,6 @@ describe SearchHelper do
           url = url_prefix + url_middle + url_suffix
           url_middle += "and/on/"
           shorter_url = helper.send(:shorten_url, url, 30)
-          puts "#{url} => #{shorter_url}"
           shorter_url.should == if url.length <= 30
                                   url[7..-1]
                                 else
@@ -141,7 +140,6 @@ describe SearchHelper do
           url = url_prefix + url_middle + url_suffix
           url_middle += "nd/on/"
           shorter_url = helper.send(:shorten_url, url, 30)
-          puts "#{url} => #{shorter_url}"
           shorter_url.should == if url.length <= 30
                                   url[7..-1]
                                 else
@@ -182,13 +180,36 @@ describe SearchHelper do
       end
     end
 
-    context "when URL contains a really long host name and traialing filename" do
+
+    context "when the URL contains a really long host name and a long trailing filename" do
       before do
-        @url = "http://www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com/some/path/test_of_the_mergency_broadcastingnet_work.html"
+        @url = "http://www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com/some/path/1234567890123456789012345678901234test_of_the_mergency_broadcastingnet_work.html"
       end
 
-      it "should not truncate the host name and still keep the last part of the path" do
-        helper.send(:shorten_url, @url, 30).should == "www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com/.../test_of_the_mergency_broadcastingnet_work.html"
+      it "should not truncate the host name and truncated the last part of the path" do
+        helper.send(:shorten_url, @url, 30).should == "www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com/.../123456789012345678901234567890..."
+      end
+    end
+
+
+    context "when the URL contains a really long host name and is an http url and has an empty path" do
+      before do
+        @url = "http://www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com/"
+      end
+
+      it "should truncate the host name and have no trailing /" do
+          helper.send(:shorten_url, @url, 30).should == "www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com"
+      end
+    end
+
+
+    context "when the URL contains a really long host name and has a really long query parameter" do
+      before do
+        @url = "http://www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com/?cmd=1234567890123456789012345678901234&api_key=1234567890123456789012345678901234"
+      end
+
+      it "should not truncate the host name but truncate the query parameter" do
+          helper.send(:shorten_url, @url, 30).should == "www128376218.skjdhfskdjfhs.lqdkwjqlkwjdqlqwkjd.com/?cmd=1234567890123456789012345..."
       end
     end
 
