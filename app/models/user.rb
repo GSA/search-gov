@@ -120,7 +120,7 @@ class User < ActiveRecord::Base
 
   def affiliate_names
     names = []
-    names = affiliates.collect { |affiliate| affiliate.display_name } unless affiliates.empty?
+    names = affiliates.collect { |affiliate| affiliate.name } unless affiliates.empty?
     names.join(',')
   end
 

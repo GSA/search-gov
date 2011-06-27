@@ -438,7 +438,7 @@ describe User do
     it "returns all associated affiliate display names" do
       affiliates(:power_affiliate).users << @user
       affiliates(:basic_affiliate).users << @user
-      @user.affiliate_names.should == 'Noaa Site,NPS Site'
+      @user.affiliate_names.should == 'noaa.gov,nps.gov'
     end
 
     it "returns blank if there is no associated affiliate" do

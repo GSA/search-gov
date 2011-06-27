@@ -15,7 +15,6 @@ class Admin::UsersController < Admin::AdminController
     config.columns[:approval_status].form_ui = :select
     config.columns[:approval_status].options = { :options => User::APPROVAL_STATUSES }
     actions.add :export
-    export.columns = [ :contact_name, :email, :phone, :organization_name, :is_affiliate, :approval_status, :last_login_at, :affiliate_names ]
-    export.default_deselected_columns = [ :last_login_at ]
+    export.columns = [:email, :contact_name, :affiliate_names, :last_login_at, :last_login_ip, :last_request_at, :created_at, :organization_name, :address, :address2, :phone, :city, :state, :zip, :is_affiliate_admin, :is_analyst, :is_affiliate, :is_analyst_admin, :approval_status, :welcome_email_sent]
   end
 end
