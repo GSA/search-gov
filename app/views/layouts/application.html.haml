@@ -19,9 +19,9 @@
     = javascript_tag "var usagov_sayt_url = \"#{sayt_url}&\";"
     = (javascript_include_tag "jquery/jquery.min.js").html_safe
     = (javascript_include_tag "jquery/jquery-ui.custom.min.js").html_safe
+    = (javascript_include_tag "sayt-ui.js").html_safe
     != (javascript_include_tag "http://s9.addthis.com/js/widget.php?v=10")
     = (javascript_include_tag "application.js").html_safe
-    = (javascript_include_tag "sayt-ui.js").html_safe
 
   %body{ :class => I18n.locale }
     #skiplink
