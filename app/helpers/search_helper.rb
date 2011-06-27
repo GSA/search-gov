@@ -52,7 +52,7 @@ module SearchHelper
   end
 
   def display_bing_result_links (result, search, affiliate, position, vertical, show_cache_link = true)
-    html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, 'BWEB', vertical)
+    html = tracked_click_link(h(result['unescapedUrl']), h(shorten_url(result['unescapedUrl'])), search, affiliate, position, 'BWEB', vertical, "class='link-to-full-url'")
     unless result['cacheUrl'].blank? or !show_cache_link
       html << " - "
       html << link_to((t :cached), "#{result['cacheUrl']}", :class => 'cache_link')
@@ -62,7 +62,7 @@ module SearchHelper
 
   def display_agency_link(result, search, affiliate, position, vertical)
     link_title = strip_url_protocol(shorten_url(result['unescapedUrl']))
-    tracked_click_link(h(result['unescapedUrl']), h(link_title), search, affiliate, position, 'BWEB', vertical)
+    tracked_click_link(h(result['unescapedUrl']), h(link_title), search, affiliate, position, 'BWEB', vertical, "class='link-to-full-url'")
   end
 
   def strip_url_protocol(url)

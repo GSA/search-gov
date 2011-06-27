@@ -1,6 +1,7 @@
 $red: #990000
 $link: #2200CC
 $green: #008000
+$link-visited-color: gray
 
 #search_form
   ul.navigation
@@ -27,7 +28,7 @@ $green: #008000
 
 #results
   #summary
-    margin-bottom: 0.8em
+    margin-bottom: 1em
     :padding-left 1em
 
   div.searchresult
@@ -39,11 +40,23 @@ $green: #008000
       :padding-left 0
     a
       :text-decoration none
+      &:visited
+        :color $link-visited-color
+      &.link-to-full-url
+        :color green
+        &:visited
+          :color green
     h2
       :font-size 1.4em
       :margin 0
-      a, a:visited, a:hover
+      a
+        :text-decoration none
+      a:hover
+        :text-decoration underline
+      a, a:hover
         :color $link
+      a:visited
+        :color $link-visited-color
       span.uext_type
         :font-size 0.7em
     h3

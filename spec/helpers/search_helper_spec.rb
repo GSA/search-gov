@@ -594,7 +594,7 @@ describe SearchHelper do
     it "should remove url protocol" do
       search = mock('search', { :query => 'space', :queried_at_seconds => Time.now.to_i, :spelling_suggestion => nil })
       result = { 'unescapedUrl' => 'http://www.whitehouse.gov' }
-      helper.should_receive(:tracked_click_link).with(result['unescapedUrl'], 'www.whitehouse.gov', search, nil, 0, 'BWEB', :web).and_return('tracked')
+      helper.should_receive(:tracked_click_link).with(result['unescapedUrl'], 'www.whitehouse.gov', search, nil, 0, 'BWEB', :web, "class='link-to-full-url'").and_return('tracked')
       helper.display_agency_link(result, search, nil, 0, :web).should == 'tracked'
     end
   end
