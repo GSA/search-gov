@@ -302,6 +302,12 @@ describe ApplicationHelper do
       helper.truncate_on_words("Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble Gum", 51).should == "Candy Dynamics Recalls Toxic Waste® Short Circuits™..."
       helper.truncate_on_words("Candy Dynamics Recalls Toxic Waste® Short Circuits™ Bubble Gum", 50).should == "Candy Dynamics Recalls Toxic Waste® Short..."
     end
+
+    it "should be able to cope with questionable multibyte characters" do
+      promise = Nokogiri::HTML.fragment('You&#x2019;ll see').text
+      1.upto(8) { |n| lambda { helper.truncate_on_words(promise, n) }.should_not raise_error }
+    end
+
   end
 
   describe "#truncate_html_prose_on_words" do

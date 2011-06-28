@@ -177,7 +177,7 @@ module ApplicationHelper
   def truncate_on_words(text, length)
     mb_chars = text.mb_chars
     return text if mb_chars.length <= length
-    last_space_index = (mb_chars.rindex(/\W/, length) || 0)
+    last_space_index = ((mb_chars.rindex(/\W/, length) rescue 0) || 0)
     truncated = mb_chars[0..(mb_chars.rindex(/\w/, last_space_index) || 0)] unless last_space_index.nil?
     "#{truncated}..."
   end
