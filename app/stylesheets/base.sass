@@ -8,6 +8,7 @@ $red: #990000
 $link: #2200CC
 $green: #008000
 $link-visited-color: #595959
+$serp-link-visited-color: #551a8b
 
 body
   :background-color #F7F7F7
@@ -30,10 +31,10 @@ a, a:visited, a:hover
   :text-decoration none
   img
     :border-style none
-a:visited
-  :color $link-visited-color
 a:hover
   :text-decoration underline
+a:visited
+  :color $link-visited-color
 
 .header-wrap
   :background url(/images/backgrounds/bg_top_right_long.gif) no-repeat right 17px
@@ -60,6 +61,8 @@ a:hover
     :padding
       :right 12px
       :left 10px
+  a:visited
+    :color $link-visited-color
 
 #headerlinks
   :float left
@@ -77,12 +80,13 @@ a:hover
   :display inline
   :background url(/images/backgrounds/bg_right.gif) repeat-y top right
   :width 99%
-  a, a:visited
+  a
     :font-weight normal
-    :text-decoration underline
     :color $link
-  a:hover
-    :color $red
+    &:visited
+      :color $link-visited-color
+    &:hover
+      :color $red
   :padding
     :bottom 2em
   :background-color white
@@ -117,6 +121,8 @@ a:hover
     :left 20px
   a
     :color #25496B
+    &:visited
+      :color $link-visited-color
 
 #navlinks
   :display inline
@@ -228,7 +234,7 @@ a:hover
     &.last
       :padding-right 0
   a:visited
-    :color #595959
+    :color $link-visited-color
 .connect
   :height 40px
   :margin 10px auto
@@ -250,6 +256,8 @@ a:hover
     :margin 0
     :padding-right 10px
     :padding-left 40px
+    &:hover
+      :color #25496B
     &.last
       :border-width 2px 2px 2px 0
       @include border-top-right-radius
@@ -326,11 +334,11 @@ table.deep-links
       :text-decoration none
       &.more_results
         :color #454545
-    a:visited
-      :color $link-visited-color
 
 #results-wrap
   :width 100%
+  a:visited
+    :color $serp-link-visited-color
 
 #sidebar
   :width 250px
@@ -520,7 +528,7 @@ ul#related_gov_forms
           :line-height 1.2
           :list-style none
           :padding-left 15px
-          a
+          a:hover
             :text-decoration none
     .search-within
       @extend .section
