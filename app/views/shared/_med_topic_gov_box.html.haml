@@ -13,7 +13,7 @@
         }
       = display_medline_results_description(search.med_topic.summary_html, search.query)
     .govbox-related{:style => 'float: left; width: 100%;'}
-      - if search.med_topic.related_topics.size > 0
+      - unless search.med_topic.related_topics.empty?
         %span{:style => 'width: 50%; float: left;'}
           %p{:style => 'color: #C51432; font-weight: bold;'}
             = t :medline_related_topics, :locale => search.med_topic.locale.to_sym
@@ -21,6 +21,13 @@
               - search.med_topic.related_topics[0..3].each do |related_medline_topic|
                 %li{:style => 'list-style-type: none;'}
                   = display_medline_topic_with_click_tracking(related_medline_topic, search.query, index, I18n.locale.to_s)
+      - if search.med_topic.has_mesh_titles? and english_locale?
+        %p{:style => 'color: #C51432; font-weight: bold;'}
+          ClinicalTrials.gov
+          %ul{:style => 'margin: 0px; padding: 0px;'}
+            - search.med_topic.mesh_title_list[0..1].each do |mesh_title|
+              %li{:style => 'list-style-type: none;'}
+                = display_medline_clinical_trail_with_click_tracking(mesh_title, search.query, index, I18n.locale.to_s)
       - if search.med_topic.lang_mapped_topic.present?   
         %span
           %p{:style => 'color: #C51432; margin: 0px; font-weight: bold;'}

@@ -362,6 +362,10 @@ describe "searches/index.html.haml" do
         rendered.should contain(/Ulcerative colitis/)
         rendered.should contain(/Ulcerative colitis is a disease that causes/)
         rendered.should contain(/Ulcerative colitis can happen at any age, but.../)
+        
+        rendered.should_not contain(/Related MedlinePlus Topics/)
+        rendered.should_not contain(/Esta tema en español/)
+        rendered.should_not contain(/ClinicalTrials.gov/)
       end
       
       context "when the MedTopic has related med topics" do
@@ -385,6 +389,20 @@ describe "searches/index.html.haml" do
           render
           rendered.should contain(/Esta tema en español/)
           rendered.should have_selector "a", :href => "/search?locale=es&query=Colitis+ulcerativa", :content => 'Colitis ulcerativa'
+        end
+      end
+      
+      context "when the MedTopic has mesh titles" do
+        before do
+          @med_topic.mesh_titles = "Ulcerative Colitis:Crohn's Disease:Irritable Bowel Syndrome"
+        end
+        
+        it "should include links to the first two linked to clinicaltrials.gov" do
+          render
+          rendered.should contain(/ClinicalTrials.gov/)
+          rendered.should have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h("Ulcerative Colitis") + "\"")}"
+          rendered.should have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h("Crohn's Disease") + "\"")}"
+          rendered.should_not have_selector "a", :href => "http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h("Irritable Bowel Syndrome") + "\"")}"
         end
       end
     end

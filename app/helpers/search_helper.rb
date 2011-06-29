@@ -107,6 +107,11 @@ module SearchHelper
     raw "<a style=\"text-decoration: none;\" href=\"#{h search_path(:query => med_topic.medline_title, :locale => locale)}\" #{onmousedown}>#{med_topic.medline_title}</a>"
   end
   
+  def display_medline_clinical_trail_with_click_tracking(mesh_title, query, position, locale = "en")
+    onmousedown = onmousedown_for_click(query, position, nil, 'MEDL', Time.now.to_i, :web)
+    raw "<a style=\"text-decoration: none;\" href=\"http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h(mesh_title) + "\"")}\" #{onmousedown}>#{mesh_title}</a>"
+  end
+  
   def highlight_string(s)
     "<strong>#{s}</strong>".html_safe
   end
