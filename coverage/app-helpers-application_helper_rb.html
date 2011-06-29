@@ -1131,7 +1131,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line180">180</a>     last_space_index = (mb_chars.rindex(/\W/, length) || 0)</pre></td>
+            <td><pre><a name="line180">180</a>     last_space_index = ((mb_chars.rindex(/\W/, length) rescue 0) || 0)</pre></td>
           </tr>
         
           
@@ -2013,7 +2013,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Sat Jun 25 12:55:44 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jun 29 14:09:19 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
