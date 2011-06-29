@@ -13,6 +13,31 @@ function monkeyPatchAutocomplete() {
       .append("<a>" + t + "</a>")
       .appendTo(ul);
   };
+
+  jQuery.ui.menu.prototype.refresh = function() {
+    var self = this;
+    self.isMouseActive = false;
+
+    var items = this.element.children("li:not(.ui-menu-item):has(a)")
+        .addClass("ui-menu-item")
+        .attr("role", "menuitem");
+
+    items.children("a")
+        .addClass("ui-corner-all")
+        .attr("tabindex", -1)
+        .mousemove(function(event) {
+          if (!self.isMouseActive) {
+            self.activate(event, $(this).parent());
+          }
+          self.isMouseActive = true;
+        })
+        .mouseleave(function() {
+          if (self.isMouseActive) {
+            self.deactivate();
+          }
+          self.isMouseActive = false;
+    });
+  };
 }
 
 jQuery(document).ready(function() {
@@ -64,8 +89,9 @@ jQuery(document).ready(function() {
       } else if (isProgram) {
         jQuery('.ui-autocomplete').addClass('program_autocomplete');
       }
-      jQuery.ui.keyCode;
     },
     position: position
   });
+
+  jQuery("#search_query").focus();
 });
