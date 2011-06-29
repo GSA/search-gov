@@ -28,14 +28,14 @@ function monkeyPatchAutocomplete() {
         .mousemove(function(event) {
           if (!self.isMouseActive) {
             self.activate(event, $(this).parent());
+            self.isMouseActive = true;
           }
-          self.isMouseActive = true;
         })
         .mouseleave(function() {
           if (self.isMouseActive) {
             self.deactivate();
+            self.isMouseActive = false;
           }
-          self.isMouseActive = false;
     });
   };
 }
