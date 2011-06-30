@@ -1,0 +1,6 @@
+- if (@search && @search.faqs && @search.faqs.total > 0)
+  %h3.alt= t :related_faqs_header
+  %ul{:id => "related_faqs"}
+    - @search.faqs.hits(:verify => true).each_with_index do |hit, index|
+      %li= tracked_click_link(hit.instance.url,highlight_hit(hit, :question), @search, nil, index, 'FAQS', @search_vertical)
+  .more_results= link_to('Source: answers.usa.gov', 'http://answers.usa.gov')

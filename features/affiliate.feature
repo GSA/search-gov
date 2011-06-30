@@ -716,6 +716,7 @@ Feature: Affiliate clients
     And I fill in "query" with "obama"
     And I press "Search"
     Then I should see "Related Topics"
+    And I should not see "Related Topics to obama by USA.gov"
     And I should see "Some Unique Related Term"
     And I should not see "aff.gov"
 

@@ -1,5 +1,7 @@
+@import "compass/utilities/general/clearfix"
 @import "compass/utilities/tables"
 @import "compass/css3/border-radius"
+@import "blueprint/typography"
 @import trending_searches.sass
 @import skiplink.sass
 
@@ -9,6 +11,7 @@ $link: #2200CC
 $green: #008000
 $link-visited-color: #595959
 $serp-link-visited-color: #551a8b
+$results-padding-left-size: 15px
 
 body
   :background-color #F7F7F7
@@ -356,12 +359,58 @@ table.deep-links
   :float left
   :width 640px
 
+.related-topics-wrapper-top
+  :background url(/images/backgrounds/related_topics_top.png) no-repeat 0 0
+  :height 8px
+  :line-height 8px
+  :width 640px
+* html .related-topics-wrapper-top
+  :background none
+
+.related-topics-wrapper-bottom
+  :background url(/images/backgrounds/related_topics_bottom.png) no-repeat 0 0
+  :height 8px
+  :width 640px
+* html .related-topics-wrapper-bottom
+  :background none
+
+.related-topics-wrapper-middle
+  @include clearfix
+  :background url(/images/backgrounds/related_topics_middle.png) repeat-y 0 0
+  :padding 0 0 0.5em $results-padding-left-size
+  :width 625px
+  h3.alt
+    +blueprint-typography(true)
+    :color #C51432
+    :font
+      :size 1.2em
+      :style normal
+      :weight bold
+    :margin 0 0 0.5em 0
+    :padding-top 0.5em
+  span.by-usa-gov
+    :color gray
+    :font
+      :size 0.9em
+      :style italic
+      :weight normal
+* html .related-topics-wrapper-middle
+  :background none
+  :border 1px solid #DDD
+  :padding 0 0 0 $results-padding-left-size - 2
+
 ul#relatedsearch
+  :float left
+  :margin 0
   :padding-left 0
-  :list-style-type disc
+  :list-style none
   :color gray
   li
+    :float left
     :font-size 1.1em
+    :line-height 1.2
+    :margin-right 10px
+    :width 280px
     a, a:visited
       :text-decoration none
     a:hover
@@ -431,7 +480,7 @@ ul#related_gov_forms
   :margin 0
   +topfade
   :border 1px solid #ddd
-  :padding 1em
+  :padding $results-padding-left-size
   @include border-radius
   h3
     :font-size 1.5em
@@ -585,7 +634,7 @@ ul#related_gov_forms
 
 .recalls-govbox
   :margin-bottom 20px
-  :padding-left 1em
+  :padding-left $results-padding-left-size
   .recall
     .details
       :padding-top 0.5em

@@ -41,14 +41,25 @@ describe "shared/_relatedsearches.html.haml" do
       assign(:search, @search)
     end
 
-    it "should display related search results" do
+    it "should not display related search results" do
       render
-      rendered.should have_selector('h3', :content => 'Related Topics')
-      rendered.should have_selector('ul', :id => 'relatedsearch')
-      rendered.should have_selector('a', :content => 'CIA Stays Capitalized')
-      rendered.should have_selector('a', :content => 'First-1 Keeps the Hyphen')
-      rendered.should have_selector('a', :content => 'Second One Is a String')
-      rendered.should have_selector('a', :content => 'Utilización de Gafas del Sol durante el Tiempo')
+      rendered.should_not have_selector('h3', :content => 'Related Topics to tax forms by USA.gov')
+    end
+
+    context "when doing an affiliate search" do
+      before do
+        @affiliate = stub('affiliate', :name => 'test')
+      end
+
+      it  "should display related search results" do
+          render
+          rendered.should have_selector('h3', :content => 'Related Topics')
+          rendered.should have_selector('ul', :id => 'relatedsearch')
+          rendered.should have_selector('a', :content => 'CIA Stays Capitalized')
+          rendered.should have_selector('a', :content => 'First-1 Keeps the Hyphen')
+          rendered.should have_selector('a', :content => 'Second One Is a String')
+          rendered.should have_selector('a', :content => 'Utilización de Gafas del Sol durante el Tiempo')
+      end
     end
 
     context "when there are related FAQ results" do

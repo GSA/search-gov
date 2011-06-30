@@ -464,6 +464,11 @@ module SearchHelper
     raw(heading + ' ' + link)
   end
 
+  def related_topics_header(affiliate, query)
+    related_topics_suffix = content_tag :span, "#{I18n.t:related_topics_suffix}", :class => 'by-usa-gov'
+    affiliate ? I18n.t(:related_searches) : "#{I18n.t :related_topics_prefix} #{query} #{related_topics_suffix}".html_safe
+  end
+
   private
 
   def shorten_url (url, length=42)

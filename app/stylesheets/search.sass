@@ -2,6 +2,7 @@ $red: #990000
 $link: #2200CC
 $green: #008000
 $serp-link-visited-color: #551a8b
+$results-padding-left-size: 15px
 
 #search_form
   ul.navigation
@@ -29,13 +30,13 @@ $serp-link-visited-color: #551a8b
 #results
   #summary
     margin-bottom: 1em
-    :padding-left 1em
+    :padding-left $results-padding-left-size
 
   div.searchresult
     width: 640px
     :margin-bottom 0.75em
     clear: both
-    :padding-left 1em
+    :padding-left $results-padding-left-size
     &.blended
       :padding-left 0
     a.link-to-full-url
