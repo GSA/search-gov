@@ -53,6 +53,7 @@ Feature: Affiliate clients
     Then I should see the API key
     And I should not see the TOS link
     And I should not see "By using a USASearch API, you agree to our"
+    And I should see "Full Color and Reverse Color versions of the logo are the only two versions that should be used in user interfaces that include the Bing searchbox."
 
   Scenario: Visiting the affiliate admin page as affiliate with existing sites
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
