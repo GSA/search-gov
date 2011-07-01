@@ -55,7 +55,7 @@ Feature: Search
     And I fill in "query" with "obama"
     And I press "Search"
     Then I should be on the search page
-    And I should see "Related Topics to obama by USA.gov"
+    And I should see "Related Topics to obama by USA.gov" in the search results section
     And I should see "Some Unique Related Term"
     When I fill in "query" with "el paso"
     And I press "Search"
@@ -71,7 +71,7 @@ Feature: Search
     And I fill in "query" with "obama"
     And I press "Buscar"
     Then I should be on the search page
-    And I should see "Temas relacionados a obama de GobiernoUSA.gov"
+    And I should see "Temas relacionados a obama de GobiernoUSA.gov" in the search results section
     And I should see "El Presidente Mas Guapo"
     When I fill in "query" with "hello"
     And I press "Buscar"

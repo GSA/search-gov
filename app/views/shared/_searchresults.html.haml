@@ -16,7 +16,7 @@
       = render "shared/popular_images", :search => search
   - search.results.each_with_index do |result, index|
     = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
-  = render "/shared/related_topics_wrapper"
+  = render "/shared/related_topics_wrapper" unless @affiliate
   = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
 - elsif search.error_message
   %p.noresults #{search.error_message}
