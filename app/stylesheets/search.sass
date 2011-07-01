@@ -86,11 +86,27 @@ $results-padding-left-size: 15px
     width: 145px
 
   .pagination
-    :margin-left 200px
-    :margin-bottom 1em
-    :font-size 1.2em
+    :border-bottom 1px solid #DDD
+    :padding-left $results-padding-left-size - 7px
+    :padding-bottom 0.75em
+    :font-size 1em
+    :margin-top 3em
     .disabled
-      :visibility hidden
+      :display none
+    em
+      @include border-radius(3px)
+      :background #0b3c71
+      :color white
+      :font-style normal
+      :padding 2px 7px
+    a, a:visited
+      :color gray
+      :padding 2px 7px
+      :text-decoration none
+      &:hover
+        @include border-radius(3px)
+        :background #0b3c71
+        :color white
 
 
 #popular
