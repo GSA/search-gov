@@ -9,7 +9,7 @@ describe HomeController do
 
   it "should assign a local server hash indicating which datacenter served the request" do
     get :index
-    assigns[:rails_sever_location_in_html_comment_for_opsview].should be_instance_of(String)
+    assigns[:rails_server_location_in_html_comment_for_opsview].should be_instance_of(String)
   end
 
   context "when no locale is specified" do

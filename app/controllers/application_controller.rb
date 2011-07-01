@@ -25,7 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_local_ip
-    @rails_sever_location_in_html_comment_for_opsview = "<!-- #{SERVER_LOCATION} -->"
+    @rails_server_location_in_html_comment_for_opsview = "<!-- #{SERVER_LOCATION} -->"
   end
 
   def determine_locale_from_url (locale_param)
