@@ -133,6 +133,12 @@ describe SuperfreshUrl do
       it "should raise an error that there are too many URLs in the file" do
         lambda { SuperfreshUrl.process_file(@file) }.should raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
       end
+
+      context "when a max number of URLs is passed that is greater than the default max" do
+        it "should allow all of the urls" do
+          lambda { SuperfreshUrl.process_file(@file, nil, 1000)}.should_not raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
+        end
+      end
     end
 
     context "when a file contains URLs that aren't covered by the affiliate's site domain list" do

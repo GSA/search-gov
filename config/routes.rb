@@ -85,6 +85,11 @@ UsasearchRails3::Application.routes.draw do
     resources :top_searches, :only => [:index, :create, :new]
     resources :top_forms, :only => [:index, :create, :update, :destroy]
     resources :superfresh_urls do as_routes end
+    resources :superfresh_urls_bulk_upload, :only => :index do
+      collection do
+        post :upload
+      end
+    end
     resources :site_pages do as_routes end
     resources :agencies do as_routes end
     resources :agency_queries do as_routes end

@@ -20,13 +20,13 @@ class SuperfreshUrl < ActiveRecord::Base
       end
     end
 
-    def process_file(file, affiliate = nil)
+    def process_file(file, affiliate = nil, max_urls = MAX_URLS_PER_FILE_UPLOAD)
       counter = 0
-      if file.tempfile.lines.count <= MAX_URLS_PER_FILE_UPLOAD and file.tempfile.open
+      if file.tempfile.lines.count <= max_urls and file.tempfile.open
         file.tempfile.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
         return counter
       else
-        raise "Too many URLs in your file.  Please limit your file to #{MAX_URLS_PER_FILE_UPLOAD} URLs."
+        raise "Too many URLs in your file.  Please limit your file to #{max_urls} URLs."
       end
     end
   end

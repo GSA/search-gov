@@ -122,6 +122,8 @@ module NavigationHelpers
       new_affiliate_boosted_content_path(Affiliate.find_by_name($1))
     when /the edit affiliate boosted content page for "([^\"]*)"/
       edit_affiliate_boosted_content_path(Affiliate.find_by_name($1), Affiliate.find_by_name($1).boosted_contents.first)
+    when /the superfresh bulk upload admin page/
+      admin_superfresh_urls_bulk_upload_index_path
     else
       begin
         page_name =~ /the (.*) page/

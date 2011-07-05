@@ -1,0 +1,35 @@
+%h2
+  Superfresh Bulk Upload
+%p
+  To upload a list of URLs to be crawled by Bing&trade;, follow these instructions:
+  %ul.bulk-upload-instructions
+    %li
+      Create a new text file following same format as the sample below.
+    %li
+      Save the file as filename.txt on your computer; you can name the file whatever you like, as long as it's plain text.
+    %li
+      %b
+        Do not use Microsoft Word files
+      , or any other file type, except plain text.
+    %li
+      Add, modify or delete individual entries in the file.
+    %li
+      Browse for the file on your computer
+    %li
+      Upload the file to Search.USA.gov using the form below
+  %p
+    %strong
+      Sample file format:
+    %ul.sample-file-format
+      %li
+        %span
+          http://www.sample.gov/1.html
+      %li
+        %span
+          http://www.sample.gov/2.html
+      %li
+        %span
+          http://www.sample.gov/3.html
+    = form_tag upload_admin_superfresh_urls_bulk_upload_index_path, :multipart => true do
+      = file_field_tag 'superfresh_urls', :accept => 'text/plain', :class => 'file'
+      = submit_tag "Upload", :class => 'submit btn-upload'
