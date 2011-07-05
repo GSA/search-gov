@@ -359,27 +359,26 @@ table.deep-links
   :float left
   :width 640px
 
-.related-topics-wrapper-top
+.related-searches-wrapper-top
   :background url(/images/backgrounds/related_topics_top.png) no-repeat 0 0
+  :behavior url(/javascripts/iepngfix.htc)
   :height 8px
   :line-height 8px
   :margin-top 2em
   :width 640px
-* html .related-topics-wrapper-top
-  :background none
 
-.related-topics-wrapper-bottom
+.related-searches-wrapper-bottom
   :background url(/images/backgrounds/related_topics_bottom.png) no-repeat 0 0
+  :behavior url(/javascripts/iepngfix.htc)
   :height 8px
   :width 640px
-* html .related-topics-wrapper-bottom
-  :background none
 
-.related-topics-wrapper-middle
+.related-searches-wrapper-middle
   @include clearfix
   :background url(/images/backgrounds/related_topics_middle.png) repeat-y 0 0
-  :padding 0 0 0.5em $results-padding-left-size
-  :width 625px
+  :behavior url(/javascripts/iepngfix.htc)
+  :padding 0 0 0.5em 0
+  :width 640px
   h3.alt
     +blueprint-typography(true)
     :color #C51432
@@ -389,21 +388,18 @@ table.deep-links
       :weight bold
     :margin 0 0 0.5em 0
     :padding-top 0.5em
+    :padding-left $results-padding-left-size
   span.by-usa-gov
     :color gray
     :font
       :size 0.9em
       :style italic
       :weight normal
-* html .related-topics-wrapper-middle
-  :background none
-  :border 1px solid #DDD
-  :padding 0 0 0 $results-padding-left-size - 2
 
 ul#relatedsearch
   :float left
   :margin 0
-  :padding-left 0
+  :padding-left $results-padding-left-size
   :list-style none
   :color gray
   li
@@ -411,20 +407,30 @@ ul#relatedsearch
     :font-size 1.1em
     :line-height 1.2
     :margin-right 10px
-    :width 280px
+    :width 300px
     a, a:visited
       :text-decoration none
     a:hover
       :text-decoration underline
 
+.related-faqs-wrapper
+  .related-searches-wrapper-top
+    :margin-top 2em
+  .related-searches-wrapper-bottom
+    :margin-bottom 1em
+
 ul#related_faqs
-  :padding-left 0
-  :list-style-type disc
+  :margin 0
+  :padding-left $results-padding-left-size
+  :list-style none
   :color gray
   li
+    :background url('/images/backgrounds/star_large.png') left 1px no-repeat
+    :behavior url(/javascripts/iepngfix.htc)
+    :display block
     :font-size 1.1em
-    a, a:visited
-      :text-decoration none
+    :line-height 1.2
+    :padding-left 20px
     a:hover
       :text-decoration underline
 

@@ -1,7 +1,6 @@
 #results-wrap
   #sidebar
     = search_results_logo
-    = render "/shared/relatedsearches"
   #results{ :class => controller.action_name }
     = render "/shared/search", :path => @form_path
     = render "/shared/searchresults", :search => @search
