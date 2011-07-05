@@ -189,7 +189,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>     def process_file(file, affiliate = nil)</pre></td>
+            <td><pre><a name="line23">23</a>     def process_file(file, affiliate = nil, max_urls = MAX_URLS_PER_FILE_UPLOAD)</pre></td>
           </tr>
         
           
@@ -201,7 +201,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>       if file.tempfile.lines.count &lt;= MAX_URLS_PER_FILE_UPLOAD and file.tempfile.open</pre></td>
+            <td><pre><a name="line25">25</a>       if file.tempfile.lines.count &lt;= max_urls and file.tempfile.open</pre></td>
           </tr>
         
           
@@ -225,7 +225,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>         raise &quot;Too many URLs in your file.  Please limit your file to #{MAX_URLS_PER_FILE_UPLOAD} URLs.&quot;</pre></td>
+            <td><pre><a name="line29">29</a>         raise &quot;Too many URLs in your file.  Please limit your file to #{max_urls} URLs.&quot;</pre></td>
           </tr>
         
           
@@ -315,7 +315,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Wed Jun 29 14:09:21 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Jul 05 11:26:22 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
