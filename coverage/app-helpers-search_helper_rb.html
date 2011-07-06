@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-helpers-search_helper_rb.html">app/helpers/search_helper.rb</a></td>
-            <td class='right_align'><tt>551</tt></td>
-            <td class='right_align'><tt>485</tt></td>
+            <td class='right_align'><tt>556</tt></td>
+            <td class='right_align'><tt>489</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -2865,7 +2865,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line469">469</a>     affiliate ? I18n.t(:related_searches) : &quot;#{I18n.t :related_topics_prefix} #{query} #{related_topics_suffix}&quot;.html_safe</pre></td>
+            <td><pre><a name="line469">469</a>     affiliate ? I18n.t(:related_searches) : &quot;#{I18n.t :related_topics_prefix} #{h query} #{related_topics_suffix}&quot;.html_safe</pre></td>
           </tr>
         
           
@@ -2883,487 +2883,517 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line472">472</a>   private</pre></td>
+            <td><pre><a name="line472">472</a>   def related_faqs_header(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line473">473</a>     related_faqs_suffix = content_tag :span, &quot;#{I18n.t:related_faqs_header_suffix}&quot;, :class =&gt; 'by-usa-gov'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line474">474</a>     &quot;#{h(I18n.t :related_faqs_header_prefix)} #{h query} #{related_faqs_suffix}&quot;.html_safe</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line473">473</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line474">474</a>   def shorten_url (url, length=42)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line475">475</a>     if url.length &lt;= length</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line476">476</a>       if url =~ /^http:\/\/[-a-zA-Z0-9.]+\//i</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line477">477</a>         if url.last == '/'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line478">478</a>           url[7..-2]</pre></td>
+            <td><pre><a name="line475">475</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line479">479</a>         else</pre></td>
+            <td><pre><a name="line476">476</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line480">480</a>           url[7..-1]</pre></td>
+            <td><pre><a name="line477">477</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line481">481</a>         end</pre></td>
+            <td><pre><a name="line478">478</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line479">479</a>   def shorten_url (url, length=42)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line480">480</a>     if url.length &lt;= length</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line481">481</a>       if url =~ /^http:\/\/[-a-zA-Z0-9.]+\//i</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line482">482</a>         if url.last == '/'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line483">483</a>           url[7..-2]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line482">482</a>       else</pre></td>
+            <td><pre><a name="line484">484</a>         else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line483">483</a>         url</pre></td>
+            <td><pre><a name="line485">485</a>           url[7..-1]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line484">484</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line485">485</a>     elsif url.count('/') &gt;= 3</pre></td>
+            <td><pre><a name="line486">486</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line486">486</a> </pre></td>
+            <td><pre><a name="line487">487</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line487">487</a>       qx = url.index('?')</pre></td>
+            <td><pre><a name="line488">488</a>         url</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line488">488</a> </pre></td>
+            <td><pre><a name="line489">489</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line489">489</a>       if qx</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line490">490</a>         arr = url[0 .. qx - 1].split('/')</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line491">491</a>         q = [&quot;?&quot;, url[qx + 1 .. -1].split('&amp;').first, &quot;...&quot;].join</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line492">492</a>         if q.length &gt; length + 3</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line493">493</a>           q = q[0...length] + &quot;...&quot;</pre></td>
+            <td><pre><a name="line490">490</a>     elsif url.count('/') &gt;= 3</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line494">494</a>         end</pre></td>
+            <td><pre><a name="line491">491</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line492">492</a>       qx = url.index('?')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line495">495</a>       else</pre></td>
+            <td><pre><a name="line493">493</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line496">496</a>         arr = url.split('/')</pre></td>
+            <td><pre><a name="line494">494</a>       if qx</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line497">497</a>         q = &quot;&quot;</pre></td>
+            <td><pre><a name="line495">495</a>         arr = url[0 .. qx - 1].split('/')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line496">496</a>         q = [&quot;?&quot;, url[qx + 1 .. -1].split('&amp;').first, &quot;...&quot;].join</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line497">497</a>         if q.length &gt; length + 3</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line498">498</a>           q = q[0...length] + &quot;...&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line498">498</a>       end</pre></td>
+            <td><pre><a name="line499">499</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line499">499</a> </pre></td>
+            <td><pre><a name="line500">500</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line500">500</a>       if arr[0] == &quot;http:&quot; &amp;&amp; arr[2] =~ /^[-a-z0-9.]+$/i</pre></td>
+            <td><pre><a name="line501">501</a>         arr = url.split('/')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line501">501</a>         host = arr[2]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line502">502</a>         keep_protocol = false</pre></td>
+            <td><pre><a name="line502">502</a>         q = &quot;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line503">503</a>       else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line504">504</a>         host = arr[0]+&quot;//&quot;+arr[2]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line505">505</a>         keep_protocol = true</pre></td>
+            <td><pre><a name="line503">503</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line506">506</a>       end</pre></td>
+            <td><pre><a name="line504">504</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line505">505</a>       if arr[0] == &quot;http:&quot; &amp;&amp; arr[2] =~ /^[-a-z0-9.]+$/i</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line506">506</a>         host = arr[2]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line507">507</a>         keep_protocol = false</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line507">507</a> </pre></td>
+            <td><pre><a name="line508">508</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line508">508</a>       doc_path = arr[3..-1]</pre></td>
+            <td><pre><a name="line509">509</a>         host = arr[0]+&quot;//&quot;+arr[2]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line510">510</a>         keep_protocol = true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line509">509</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line510">510</a>       doc = if doc_path.size == 0</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line511">511</a>               if q.empty? &amp;&amp; !keep_protocol</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line512">512</a>                 &quot;&quot;</pre></td>
+            <td><pre><a name="line511">511</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line513">513</a>               else</pre></td>
+            <td><pre><a name="line512">512</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line514">514</a>                 &quot;/&quot;</pre></td>
+            <td><pre><a name="line513">513</a>       doc_path = arr[3..-1]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line515">515</a>               end</pre></td>
+            <td><pre><a name="line514">514</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line515">515</a>       doc = if doc_path.size == 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line516">516</a>               if q.empty? &amp;&amp; !keep_protocol</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line517">517</a>                 &quot;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line516">516</a>             else</pre></td>
+            <td><pre><a name="line518">518</a>               else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line517">517</a>               head = 0</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line518">518</a>               tail = doc_path.length - 1</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line519">519</a>               path_length = doc_path.last.length + 5</pre></td>
+            <td><pre><a name="line519">519</a>                 &quot;/&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line520">520</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line521">521</a>               if path_length &gt;= length + 5</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line522">522</a>                 path_length = length + 5</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line523">523</a>                 doc_path[tail] = doc_path[tail][0...length] + &quot;...&quot;</pre></td>
+            <td><pre><a name="line520">520</a>               end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line524">524</a>               end</pre></td>
+            <td><pre><a name="line521">521</a>             else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line525">525</a>               path_max_length = length - (host.length + q.length)</pre></td>
+            <td><pre><a name="line522">522</a>               head = 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line523">523</a>               tail = doc_path.length - 1</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line524">524</a>               path_length = doc_path.last.length + 5</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line526">526</a> </pre></td>
+            <td><pre><a name="line525">525</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line527">527</a>               while head &lt; tail &amp;&amp; ((path_length + doc_path[head].length + 1) &lt; path_max_length)</pre></td>
+            <td><pre><a name="line526">526</a>               if path_length &gt;= length + 5</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line528">528</a>                 path_length += doc_path[head].length + 1</pre></td>
+            <td><pre><a name="line527">527</a>                 path_length = length + 5</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line529">529</a>                 head += 1</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line530">530</a>                 if head &lt; tail &amp;&amp; ((path_length + doc_path[tail-1].length + 1) &lt; path_max_length)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line531">531</a>                   tail -= 1</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line532">532</a>                   path_length += doc_path[tail].length + 1</pre></td>
+            <td><pre><a name="line528">528</a>                 doc_path[tail] = doc_path[tail][0...length] + &quot;...&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line533">533</a>                 end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line534">534</a>               end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line535">535</a> </pre></td>
+            <td><pre><a name="line529">529</a>               end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line536">536</a>               if head == tail</pre></td>
+            <td><pre><a name="line530">530</a>               path_max_length = length - (host.length + q.length)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line531">531</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line537">537</a>                 &quot;/&quot; + doc_path.join(&quot;/&quot;)</pre></td>
+            <td><pre><a name="line532">532</a>               while head &lt; tail &amp;&amp; ((path_length + doc_path[head].length + 1) &lt; path_max_length)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line538">538</a>               elsif head == 0</pre></td>
+            <td><pre><a name="line533">533</a>                 path_length += doc_path[head].length + 1</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line539">539</a>                &quot;/&quot; + &quot;...&quot; + &quot;/&quot; + doc_path[tail..-1].join(&quot;/&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line540">540</a>               else</pre></td>
+            <td><pre><a name="line534">534</a>                 head += 1</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line541">541</a>                &quot;/&quot; + doc_path[0..head-1].join(&quot;/&quot;) + &quot;/.../&quot;+ doc_path[tail..-1].join(&quot;/&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line542">542</a>               end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line543">543</a>             end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line544">544</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line545">545</a> </pre></td>
+            <td><pre><a name="line535">535</a>                 if head &lt; tail &amp;&amp; ((path_length + doc_path[tail-1].length + 1) &lt; path_max_length)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line546">546</a>       host + doc + q</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line547">547</a>     else</pre></td>
+            <td><pre><a name="line536">536</a>                   tail -= 1</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line548">548</a>       url[0, length] + &quot;...&quot;</pre></td>
+            <td><pre><a name="line537">537</a>                   path_length += doc_path[tail].length + 1</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line549">549</a>     end</pre></td>
+            <td><pre><a name="line538">538</a>                 end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line550">550</a>   end</pre></td>
+            <td><pre><a name="line539">539</a>               end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line551">551</a> end</pre></td>
+            <td><pre><a name="line540">540</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line541">541</a>               if head == tail</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line542">542</a>                 &quot;/&quot; + doc_path.join(&quot;/&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line543">543</a>               elsif head == 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line544">544</a>                &quot;/&quot; + &quot;...&quot; + &quot;/&quot; + doc_path[tail..-1].join(&quot;/&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line545">545</a>               else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line546">546</a>                &quot;/&quot; + doc_path[0..head-1].join(&quot;/&quot;) + &quot;/.../&quot;+ doc_path[tail..-1].join(&quot;/&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line547">547</a>               end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line548">548</a>             end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line549">549</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line550">550</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line551">551</a>       host + doc + q</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line552">552</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line553">553</a>       url[0, length] + &quot;...&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line554">554</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line555">555</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line556">556</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Jul 05 11:26:22 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Jul 06 03:18:13 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
