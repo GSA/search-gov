@@ -97,21 +97,21 @@ module SearchHelper
   def display_bing_result_title(result, search, affiliate, position, vertical)
     raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB', vertical)
   end
-  
+
   def display_medline_result_title(search, affiliate, position)
     raw tracked_click_link(h(search.med_topic.medline_url), highlight_string(h(search.med_topic.medline_title)), search, affiliate, position, "MEDL")
   end
-  
+
   def display_medline_topic_with_click_tracking(med_topic, query, position, locale = "en")
     onmousedown = onmousedown_for_click(query, position, nil, 'MEDL', Time.now.to_i, :web)
     raw "<a style=\"text-decoration: none;\" href=\"#{h search_path(:query => med_topic.medline_title, :locale => locale)}\" #{onmousedown}>#{med_topic.medline_title}</a>"
   end
-  
+
   def display_medline_clinical_trail_with_click_tracking(mesh_title, query, position, locale = "en")
     onmousedown = onmousedown_for_click(query, position, nil, 'MEDL', Time.now.to_i, :web)
     raw "<a style=\"text-decoration: none;\" href=\"http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h(mesh_title) + "\"")}\" #{onmousedown}>#{mesh_title}</a>"
   end
-  
+
   def highlight_string(s)
     "<strong>#{s}</strong>".html_safe
   end
@@ -134,8 +134,8 @@ module SearchHelper
   end
 
   def tracked_click_link(url, title, search, affiliate, position, source, vertical = :web, opts = nil)
-    aff_name = affiliate.name rescue ""
-    query = search.spelling_suggestion ? search.spelling_suggestion : search.query
+    aff_name = affiliate.nil? ? "" : affiliate.name
+    query = search.spelling_suggestion || search.query
     query = query.gsub("'", "\\\\'")
     onmousedown = onmousedown_for_click(query, position, aff_name, source, search.queried_at_seconds, vertical)
     raw "<a href=\"#{url}\" #{onmousedown} #{opts}>#{title}</a>"
@@ -164,11 +164,11 @@ module SearchHelper
   def display_result_description (result)
     translate_bing_highlights(h(result['content']))
   end
-  
+
   def display_medline_results_description(summary, query)
     highlight(truncate_html_prose_on_words(summary, 300), query).html_safe
   end
-  
+
   def translate_bing_highlights(body)
     body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
   end
