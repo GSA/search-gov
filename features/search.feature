@@ -10,6 +10,7 @@ Feature: Search
     And I press "Search"
     Then I should see the browser page titled "president - Search.USA.gov"
     And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    And I should see "Web" in the selected vertical navigation
     And I should not see "<strong>President</strong>"
 
   Scenario: Visiting Spanish search homepage
@@ -19,6 +20,7 @@ Feature: Search
     When I fill in "query" with "president"
     And I press "Buscar"
     Then I should see the browser page titled "president - Buscador.USA.gov"
+    And I should see "Web" in the selected vertical navigation
     And I should not see "<strong>President</strong>"
 
   Scenario: Viewing related English FAQs

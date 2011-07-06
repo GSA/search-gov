@@ -23,6 +23,7 @@ Feature: Image search
     Then I should be on the image search page
     And I should see the browser page titled "White House - Search.USA.gov Images"
     And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    And I should see "Images" in the selected vertical navigation
     And I should see 30 image results
     And I should see "Next"
     And I should see "Connect with USASearch" in the connect section
@@ -46,6 +47,7 @@ Feature: Image search
     And I press "Buscar"
     Then I should be on the image search page
     And I should see the browser page titled "White House - Buscador.USA.gov Imágenes"
+    And I should see "Imágenes" in the selected vertical navigation
     And I should see 30 image results
     And I should see "Siguiente"
     And I should not see "Connect with USASearch"

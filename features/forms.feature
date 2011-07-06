@@ -18,6 +18,7 @@ Feature: Forms Home Page and Search
     And I press "Search Forms"
     Then I should be on the forms search page
     And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    And I should see "Forms" in the selected vertical navigation
     And I should see 10 search results
     And I should see "Next"
     And I should see "Connect with USASearch" in the connect section

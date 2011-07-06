@@ -1,6 +1,8 @@
 #results-wrap
   #sidebar
     = link_to image_tag("USAsearch_medium_#{I18n.locale}_recalls.gif" , :alt => "USASearch Home"), recalls_path(:locale => I18n.locale)
+    #recalls_vertical_navigation
+      = render "shared/vertical_navigation"
   #results.recalls
     = render "/shared/search", :path => recalls_search_path
     - if @search && @search.total > 0

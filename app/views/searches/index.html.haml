@@ -1,6 +1,8 @@
 #results-wrap
   #sidebar
     = search_results_logo
+    %div{ :id => web_search? ? "web_vertical_navigation" : "forms_vertical_navigation" }
+      = render "shared/vertical_navigation"
   #results{ :class => controller.action_name }
     = render "/shared/search", :path => @form_path
     = render "/shared/searchresults", :search => @search

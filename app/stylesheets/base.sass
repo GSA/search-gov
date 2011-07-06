@@ -339,16 +339,66 @@ table.deep-links
         :color #454545
 
 #results-wrap
+  @include clearfix
   :width 100%
   a:visited
     :color $serp-link-visited-color
 
 #sidebar
-  :width 250px
-  :display inline
+  :width 205px
+  :margin-right 5px
   :padding-left 10px
   :float left
   :overflow hidden
+.es
+  #sidebar
+    :width 230px
+
+.vertical-navigation-item
+  :clear right
+  :color #C51432
+  :float right
+  :font
+    :size 1.2em
+    :weight bold
+  :height 22px
+  :padding 8px 30px 8px 0
+  :width 100px
+
+.vertical-navigation
+  @include clearfix
+  :float right
+  :margin 28px 5px 0 0
+  :padding 25px 0
+  :text-align right
+  :width 150px
+  span
+    @extend .vertical-navigation-item
+  a, a:visited
+    @extend .vertical-navigation-item
+    :cursor pointer
+    :text-decoration none
+    :color #1C3F94
+
+#web_vertical_navigation
+  @extend .vertical-navigation
+  :background #fff url(/images/backgrounds/selected_vertical.png) no-repeat 15px -152px
+  :behavior url(/javascripts/iepngfix.htc)
+
+#images_vertical_navigation
+  @extend .vertical-navigation
+  :background #fff url(/images/backgrounds/selected_vertical.png) no-repeat 15px -114px
+  :behavior url(/javascripts/iepngfix.htc)
+
+#recalls_vertical_navigation
+  @extend .vertical-navigation
+  :background #fff url(/images/backgrounds/selected_vertical.png) no-repeat 15px -76px
+  :behavior url(/javascripts/iepngfix.htc)
+
+#forms_vertical_navigation
+  @extend .vertical-navigation
+  :background #fff url(/images/backgrounds/selected_vertical.png) no-repeat 15px -38px
+  :behavior url(/javascripts/iepngfix.htc)
 
 #summary
   :width 640px
@@ -641,9 +691,13 @@ ul#related_gov_forms
   :margin-bottom 20px
   :padding-left $results-padding-left-size
   .recall
+    :width 635px
     .details
       :padding-top 0.5em
-      
+
+#results .recalls
+  :padding-left $results-padding-left-size
+
 .hidden
   :position absolute
   :left -10000px

@@ -14,6 +14,7 @@ Feature: Recalls search
     And I press "Search"
     Then I should be on the recalls search page
     And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    And I should see "Recalls" in the selected vertical navigation
     And I should see "strollers"
     And I should see "Connect with USASearch" in the connect section
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
