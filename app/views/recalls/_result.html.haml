@@ -4,5 +4,5 @@
     %h2= display_recall_result_title_with_click_tracking(result, hit, @query, index, @search_vertical, 60)
     .description
       .recall-date= "#{(result.recalled_on || result.created_at).strftime("%b. %d, %Y")}:"
-      != highlight_like_solr(truncate_on_words(sanitize(result.description, :tags => []), 166), hit.highlights)
+      = highlight_like_solr(truncate_on_words(sanitize(result.description, :tags => []), 166), hit.highlights)
     .url= display_recall_result_url_with_click_tracking(result.recall_url, @query, index, @search_vertical)

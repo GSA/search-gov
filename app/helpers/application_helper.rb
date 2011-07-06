@@ -192,16 +192,17 @@ module ApplicationHelper
 
 
   def highlight_like_solr(text, highlights)
+    raw_text = text.to_str
     done = {}
     highlights.each do |highlight|
       highlight.instance_variable_get(:@highlight).scan(Sunspot::Search::Highlight::HIGHLIGHT_MATCHER).each do |term|
         unless done.include?(term)
-          text.gsub!(/\b(#{term})\b/, '<strong>\1</strong>')
+          raw_text.gsub!(/\b(#{term})\b/, '<strong>\1</strong>')
           done[term] = true
         end
       end
     end
-    text
+    raw raw_text
   end
 
   def render_trending_searches
