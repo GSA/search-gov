@@ -250,6 +250,22 @@ describe "searches/index.html.haml" do
           rendered.should_not contain(/Páginas populares/)
           rendered.should contain(/Popular Pages/)
         end
+        
+        context "when there are no phone numbers" do
+          before do
+            @agency.phone = nil
+          end
+          
+          it "should not show a phone icon or div" do
+            render
+            rendered.should_not have_selector "div[class='phone-wrapper']"
+            rendered.should_not have_selector "img[src^='/images/govbox/phone.gif']"
+          end
+          
+          after do
+            @agency.reload
+          end
+        end
       end
 
       context "when the page specified is greater than 0 (i.e. we're not on the first page)" do

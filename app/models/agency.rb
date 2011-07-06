@@ -28,8 +28,11 @@ class Agency < ActiveRecord::Base
   def displayable_popular_urls
     @cached_displayable_popular_urls ||= compute_displayable_popular_urls
   end
-
-    
+  
+  def has_phone_number?
+    self.phone.present? or self.toll_free_phone.present? or self.tty_phone.present?
+  end
+  
   private
   
   def generate_agency_queries

@@ -148,9 +148,69 @@ describe Agency do
       end
     end
   end
+  
+  describe "#has_phone_number" do
+    before do
+      @agency = Agency.create!(@valid_attributes)
+    end
+    
+    context "when all phones are present" do
+      it "should return true" do
+        @agency.has_phone_number?.should be_true
+      end
+    end
+    
+    context "when no phone number fields are present" do
+      before do
+        @agency.reload
+        @agency.phone = nil
+        @agency.toll_free_phone = nil
+        @agency.tty_phone = nil
+      end
+      
+      it "should return false" do
+        @agency.has_phone_number?.should be_false
+      end
+    end
+    
+    context "when only phone is present" do
+      before do
+        @agency.reload
+        @agency.toll_free_phone = nil
+        @agency.tty_phone = nil
+      end
+      
+      it "should return true" do
+        @agency.has_phone_number?.should be_true
+      end
+    end
+
+    context "when only a toll free phone is present" do
+      before do
+        @agency.reload
+        @agency.phone = nil
+        @agency.tty_phone = nil
+      end
+      
+      it "should return true" do
+        @agency.has_phone_number?.should be_true
+      end
+    end
+
+    context "when only tty phone is present" do
+      before do
+        @agency.reload
+        @agency.phone = nil
+        @agency.toll_free_phone = nil
+      end
+      
+      it "should return true" do
+        @agency.has_phone_number?.should be_true
+      end
+    end
+  end
 
   describe "#displayable_popular_urls" do
-
       before do
         @pop_agency = Agency.create!(@valid_attributes)
         agency_base_url = "http://www.#{@valid_attributes[:domain]}/"
