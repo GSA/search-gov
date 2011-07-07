@@ -93,5 +93,5 @@ jQuery(document).ready(function() {
     position: position
   });
 
-  jQuery("#search_query").focus();
+  jQuery(".homepage #search_query").focus();
 });
