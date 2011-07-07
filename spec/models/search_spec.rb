@@ -14,7 +14,22 @@ describe Search do
         with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String))))
       Search.new(@valid_options).run
     end
-
+    
+    context "when Bing returns zero results" do
+      before do
+        @search = Search.new(@valid_options.merge(:query => 'abydkldkd'))
+      end
+      
+      it "should still return true when searching" do
+        @search.run.should be_true
+      end
+      
+      it "should populate additional results" do
+        @search.should_receive(:populate_additional_results).and_return true
+        @search.run
+      end
+    end
+    
     context "when response body is nil from Bing" do
       before do
         JSON.should_receive(:parse).once.and_return nil
@@ -23,6 +38,11 @@ describe Search do
 
       it "should still return true when searching" do
         @search.run.should be_true
+      end
+      
+      it "should populate additional results" do
+        @search.should_receive(:populate_additional_results).and_return true
+        @search.run
       end
     end
 
@@ -312,7 +332,6 @@ describe Search do
         Faq.should_not_receive(:search_for)
         search.run
       end
-
     end
 
     context "when page offset is specified" do
@@ -1187,7 +1206,6 @@ describe Search do
       search = Search.new(:query => 'snowflake', :affiliate => @affiliate)
       search.sources.should == "Spell+Web"
     end
-
   end
 
   describe "#hits(response)" do

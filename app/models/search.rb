@@ -81,8 +81,8 @@ class Search
       @related_search = related_search_results
       @startrecord = page * results_per_page + 1
       @endrecord = startrecord + results.size - 1
-      populate_additional_results(response)
     end
+    populate_additional_results(response)
     log_serp_impressions
     true
   end
@@ -170,7 +170,7 @@ class Search
         @med_topic = MedTopic.search_for(query, I18n.locale.to_s)
       end
     end
-    if response.has?(:image) && response.image.total > 0
+    if response && response.has?(:image) && response.image.total > 0
       @extra_image_results = process_image_results(response)
     end
   end

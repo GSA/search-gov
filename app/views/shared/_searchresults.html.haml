@@ -1,19 +1,20 @@
 - result_partial = result_partial_for(search)
 = bing_spelling_suggestion_for(search, @affiliate, @search_vertical)
-- if (search.page == 0 and search.boosted_contents and search.boosted_contents.total > 0)
-  = render 'shared/boosted_content', :search => search
 %a{:name => "content"}
 - if search.results.present?
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)
-  - if (search && search.fedstates && search.fedstates != 'all')
+  - if (search.fedstates && search.fedstates != 'all')
     = results_restriction_message_for(search.fedstates, search_path(request.parameters.merge(:fedstates => nil)))
-  - if search.page == 0
-    - if search.spotlight
-      #spotlight= render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds, @search_vertical)
-    - elsif (search.recalls && search.recalls.total > 0)
-      = render "shared/recall_gov_box", :search => search
-    - elsif @search.extra_image_results.present?
-      = render "shared/popular_images", :search => search
+- if search.page == 0
+  - if search.spotlight
+    #spotlight= render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds, @search_vertical)
+  - if (search.boosted_contents and search.boosted_contents.total > 0)
+    = render 'shared/boosted_content', :search => search
+  - elsif (search.recalls && search.recalls.total > 0)
+    = render "shared/recall_gov_box", :search => search
+  - elsif @search.extra_image_results.present?
+    = render "shared/popular_images", :search => search
+- if search.results.present?
   - search.results.each_with_index do |result, index|
     = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
     = render "/shared/related_faqs" if index == 4
