@@ -32,7 +32,9 @@ Feature: Search
     Then I should be on the search page
     And I should see "Questions & Answers for president by USA.gov" after the 5th search result
     And I should see "Who is the president of the United States?" after the 5th search result
-    And I should not see "Who is the president of the Estados Unidos?" after the 5th search result
+    And I should not see "Who is the president of the Estados Unidos?"
+    When I follow "2" in the pagination
+    Then I should not see "Questions & Answers for president by USA.gov"
 
   Scenario: Viewing related Spanish FAQs
     Given the following FAQs exist:
@@ -45,8 +47,10 @@ Feature: Search
     And I press "Buscar"
     Then I should be on the search page
     And I should see "Respuestas para president de GobiernoUSA.gov" after the 5th search result
-    And I should not see "Who is the president of the United States?" after the 5th search result
     And I should see "Who is the president of the Estados Unidos?" after the 5th search result
+    And I should not see "Who is the president of the United States?"
+    When I follow "2" in the pagination
+    Then I should not see "Respuestas para president de GobiernoUSA.gov"
 
   Scenario: Related Topics on English SERPs
     Given the following Calais Related Searches exist:

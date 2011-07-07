@@ -16,7 +16,8 @@
   'in the homepage tagline' => '.tagline',
   'in the popular urls section' => '#popular_urls',
   'in the left column' => '#left_column',
-  'in the search results section' => '#results'
+  'in the search results section' => '#results',
+  'in the pagination' => '.pagination'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|
