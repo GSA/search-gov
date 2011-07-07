@@ -554,14 +554,14 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line84">84</a>       populate_additional_results(response)</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line84">84</a>     end</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line85">85</a>     end</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line85">85</a>     populate_additional_results(response)</pre></td>
           </tr>
         
           
@@ -1089,7 +1089,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line173">173</a>     if response.has?(:image) &amp;&amp; response.image.total &gt; 0</pre></td>
+            <td><pre><a name="line173">173</a>     if response &amp;&amp; response.has?(:image) &amp;&amp; response.image.total &gt; 0</pre></td>
           </tr>
         
           
@@ -1125,7 +1125,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line179">179</a>     pagination_total = [results_per_page * 20, total].min</pre></td>
+            <td><pre><a name="line179">179</a>     pagination_total = [results_per_page * 100, total].min</pre></td>
           </tr>
         
           
@@ -2295,7 +2295,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Wed Jul 06 03:18:13 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jul 07 13:29:24 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

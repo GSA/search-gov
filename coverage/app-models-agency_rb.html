@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-agency_rb.html">app/models/agency.rb</a></td>
-            <td class='right_align'><tt>56</tt></td>
-            <td class='right_align'><tt>45</tt></td>
+            <td class='right_align'><tt>59</tt></td>
+            <td class='right_align'><tt>48</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -237,163 +237,181 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a> </pre></td>
+            <td><pre><a name="line31">31</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>   def has_phone_number?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>     self.phone.present? or self.toll_free_phone.present? or self.tty_phone.present?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>     </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>   private</pre></td>
+            <td><pre><a name="line34">34</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>   </pre></td>
+            <td><pre><a name="line35">35</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>   def generate_agency_queries</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>     self.agency_queries.destroy_all</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line37">37</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; self.domain)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line38">38</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; &quot;www.#{self.domain}&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line39">39</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; self.name.downcase)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>     NAME_QUERY_PREFIXES.each do |prefix|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>       self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; &quot;#{prefix} #{self.name.downcase}&quot;)</pre></td>
+            <td><pre><a name="line36">36</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line42">42</a>     end</pre></td>
+            <td><pre><a name="line37">37</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line43">43</a>     self.name_variants.split(',').each do |name_variant|</pre></td>
+            <td><pre><a name="line38">38</a>   def generate_agency_queries</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>       self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; name_variant.downcase.strip)</pre></td>
+            <td><pre><a name="line39">39</a>     self.agency_queries.destroy_all</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>       NAME_QUERY_PREFIXES.each do |prefix|</pre></td>
+            <td><pre><a name="line40">40</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; self.domain)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line46">46</a>         self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; &quot;#{prefix} #{name_variant.downcase.strip}&quot;)</pre></td>
+            <td><pre><a name="line41">41</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; &quot;www.#{self.domain}&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; self.name.downcase)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>     NAME_QUERY_PREFIXES.each do |prefix|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>       self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; &quot;#{prefix} #{self.name.downcase}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line47">47</a>       end</pre></td>
+            <td><pre><a name="line45">45</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>     end unless self.name_variants.nil?</pre></td>
+            <td><pre><a name="line46">46</a>     self.name_variants.split(',').each do |name_variant|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; self.abbreviation) if self.abbreviation.present?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line50">50</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line51">51</a> </pre></td>
+            <td><pre><a name="line47">47</a>       self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; name_variant.downcase.strip)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>   def compute_displayable_popular_urls</pre></td>
+            <td><pre><a name="line48">48</a>       NAME_QUERY_PREFIXES.each do |prefix|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>     self.agency_popular_urls.sort_by { |pop_url| pop_url.rank }</pre></td>
+            <td><pre><a name="line49">49</a>         self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; &quot;#{prefix} #{name_variant.downcase.strip}&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a>   end</pre></td>
+            <td><pre><a name="line50">50</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line51">51</a>     end unless self.name_variants.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line52">52</a>     self.agency_queries &lt;&lt; AgencyQuery.new(:phrase =&gt; self.abbreviation) if self.abbreviation.present?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line55">55</a> </pre></td>
+            <td><pre><a name="line53">53</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a> end</pre></td>
+            <td><pre><a name="line54">54</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>   def compute_displayable_popular_urls</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>     self.agency_popular_urls.sort_by { |pop_url| pop_url.rank }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line57">57</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line58">58</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line59">59</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Jul 06 03:18:13 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jul 07 13:29:24 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -651,7 +651,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line100">100</a>   </pre></td>
+            <td><pre><a name="line100">100</a> </pre></td>
           </tr>
         
           
@@ -675,7 +675,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line104">104</a>   </pre></td>
+            <td><pre><a name="line104">104</a> </pre></td>
           </tr>
         
           
@@ -705,7 +705,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line109">109</a>   </pre></td>
+            <td><pre><a name="line109">109</a> </pre></td>
           </tr>
         
           
@@ -735,7 +735,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line114">114</a>   </pre></td>
+            <td><pre><a name="line114">114</a> </pre></td>
           </tr>
         
           
@@ -873,13 +873,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line137">137</a>     aff_name = affiliate.name rescue &quot;&quot;</pre></td>
+            <td><pre><a name="line137">137</a>     aff_name = affiliate.nil? ? &quot;&quot; : affiliate.name</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line138">138</a>     query = search.spelling_suggestion ? search.spelling_suggestion : search.query</pre></td>
+            <td><pre><a name="line138">138</a>     query = search.spelling_suggestion || search.query</pre></td>
           </tr>
         
           
@@ -1041,7 +1041,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line165">165</a>     translate_bing_highlights(h(result['content']))</pre></td>
+            <td><pre><a name="line165">165</a>     translate_bing_highlights(h(result['content'])).html_safe</pre></td>
           </tr>
         
           
@@ -1053,7 +1053,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line167">167</a>   </pre></td>
+            <td><pre><a name="line167">167</a> </pre></td>
           </tr>
         
           
@@ -1077,7 +1077,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line171">171</a>   </pre></td>
+            <td><pre><a name="line171">171</a> </pre></td>
           </tr>
         
           
@@ -3393,7 +3393,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Wed Jul 06 03:18:13 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jul 07 13:29:24 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
