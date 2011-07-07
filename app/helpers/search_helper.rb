@@ -162,7 +162,7 @@ module SearchHelper
   end
 
   def display_result_description (result)
-    translate_bing_highlights(h(result['content']))
+    translate_bing_highlights(h(result['content'])).html_safe
   end
 
   def display_medline_results_description(summary, query)

@@ -598,4 +598,13 @@ describe SearchHelper do
       helper.display_agency_link(result, search, nil, 0, :web).should == 'tracked'
     end
   end
+
+  describe "#display_result_description" do
+    before do
+      search = { 'content' => 'irs' }
+      @description = helper.display_result_description(search)
+    end
+
+    specify { @description.should be_html_safe }
+  end
 end
