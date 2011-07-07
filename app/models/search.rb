@@ -176,7 +176,7 @@ class Search
   end
 
   def paginate(items)
-    pagination_total = [results_per_page * 20, total].min
+    pagination_total = [results_per_page * 100, total].min
     WillPaginate::Collection.create(page + 1, results_per_page, pagination_total) { |pager| pager.replace(items) }
   end
 
