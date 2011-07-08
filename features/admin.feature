@@ -118,7 +118,6 @@ Feature:  Administration
     And they should see "multi1" in the email body
     And they should see "multi2" in the email body
 
-
   Scenario: Uploading, as a logged in admin, a SAYT suggestions text file containing:
             3 new SAYT suggestions, 1 that already exists exactly, 1 that exists in a different case, and a blank line
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
@@ -143,7 +142,7 @@ Feature:  Administration
     And I press "Upload"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > SAYT Suggestions Bulk Upload
     And I should see "Your file could not be processed."
-    
+
   Scenario: Viewing Boosted Content (both affiliate and Search.USA.gov)
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Boosted Content entries exist:
@@ -162,21 +161,21 @@ Feature:  Administration
     And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Boosted Content
     And I should see "Our Emergency Page"
     And I should not see "Bar Emergency Page"
-    
+
     When I go to the admin home page
     And I follow "Affiliate Boosted Content"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Affiliate Boosted Content
     And I should see "Bar Emergency Page"
     And I should not see "Our Emergency Page"
-    
+
   Scenario: Viewing Top Searches
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Top Searches exist:
     | position  | query         |
     | 1         | Top Search 1  |
-    | 2         | Top Search 2  |  
-    | 3         | Top Search 3  |  
-    | 4         | Top Search 4  |  
+    | 2         | Top Search 2  |
+    | 3         | Top Search 3  |
+    | 4         | Top Search 4  |
     | 5         |               |
     When I go to the admin home page
     And I follow "Top Searches"
@@ -235,12 +234,12 @@ Feature:  Administration
     Then I should see "You are viewing Column #1"
     And I should see "Form 1" as a Top Form name
     And I should not see "Form 2" as a Top Form name
-    
+
     When I go to the top forms admin page for column "2"
     Then I should see "You are viewing Column #2"
     And I should see "Form 2" as a Top Form name
     And I should not see "Form 1" as a Top Form name
-    
+
   Scenario: Adding a new Top Form
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the top forms admin page
@@ -251,7 +250,7 @@ Feature:  Administration
     Then I should be on the top forms admin page
     And I should see "Successfully added top form to Column 1 in position 1"
     And I should see "New Form" as a Top Form name
-    
+
   Scenario: Updating existing Top Forms
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Top Forms exist:
@@ -263,7 +262,7 @@ Feature:  Administration
     Then I should be on the top forms admin page
     And I should not see "New Forms" as a Top Form name
     And I should see "Newer Forms" as a Top Form name
-    
+
   Scenario: Deleting a Top Form
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Top Forms exist:
@@ -278,7 +277,7 @@ Feature:  Administration
     And I should see "Successfully Removed Top Form"
     And I should not see "New Forms" as a Top Form name
     And I should see "Form 1" as a Top Form name
-    
+
   Scenario: Adding a form in the same position as an existing form
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Top Forms exist:

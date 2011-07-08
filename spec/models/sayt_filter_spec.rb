@@ -6,7 +6,7 @@ describe SaytFilter do
   describe "Creating new instance" do
     it { should validate_presence_of :phrase }
     it { should validate_uniqueness_of :phrase }
-    
+
     it "should strip whitespace from phrase before inserting in DB" do
       phrase = " leading and trailing whitespaces "
       sf = SaytFilter.create!(:phrase => phrase)
@@ -31,6 +31,12 @@ describe SaytFilter do
       SaytFilter.find_by_phrase("two spaces").phrase.should == "two spaces"
     end
 
+    it "should enqueue the filtering of existing SaytSuggestions via Resque" do
+      ResqueSpec.reset!
+      SaytFilter.create!(:phrase => "some valid filter phrase")
+      FilterSaytSuggestions.should have_queued("some valid filter phrase")
+    end
+
   end
 
   describe "#match?(target_phrase)" do
@@ -46,38 +52,6 @@ describe SaytFilter do
       it "should filter 'google.com'" do
         @filter.match?("google.com").should be_true
       end
-    end
-  end
-
-  context "after saving a SaytFilter" do
-    before do
-      @phrase = "ought to get deleted xxx"
-      SaytSuggestion.create!(:phrase => @phrase)
-    end
-
-    it "should run the filter against existing SaytSuggestions" do
-      SaytFilter.create!(:phrase => "xxx")
-      SaytSuggestion.find_by_phrase(@phrase).should be_nil
-    end
-
-    it "should Regexp escape the filter before applying it" do
-      SaytFilter.create!(:phrase => "ought.")
-      SaytSuggestion.find_by_phrase(@phrase).should_not be_nil
-    end
-  end
-
-  context "after saving a SaytFilter with filter_only_exact_entry is true" do
-    before do
-      @should_be_deleted_phrase = "xxx"
-      SaytSuggestion.create!(:phrase => @should_be_deleted_phrase)
-      @should_not_be_deleted_phrase = "should not be deleted xxx"
-      SaytSuggestion.create!(:phrase => @should_not_be_deleted_phrase)
-    end
-
-    it "should run the filter against existing SaytSuggestions" do
-      SaytFilter.create!(:phrase => "xxx", :filter_only_exact_phrase => true)
-      SaytSuggestion.find_by_phrase(@should_be_deleted_phrase).should be_nil
-      SaytSuggestion.find_by_phrase(@should_not_be_deleted_phrase).should_not be_nil
     end
   end
 

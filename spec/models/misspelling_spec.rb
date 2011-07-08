@@ -21,14 +21,14 @@ describe Misspelling do
     it "should strip whitespace from wrong/rite before inserting in DB" do
       wrong = " leadingandtraleingwhitespaces "
       rite = " leading and trailing whitespaces "
-      misspelling = Misspelling.create!(:wrong=> wrong, :rite=>rite)
+      misspelling = Misspelling.create!(:wrong => wrong, :rite => rite)
       misspelling.wrong.should == wrong.strip
       misspelling.rite.should == rite.strip
     end
 
     it "should downcase wrong/rite before entering into DB" do
       upcased = "CAPS"
-      Misspelling.create!(:wrong=> upcased, :rite=>upcased)
+      Misspelling.create!(:wrong => upcased, :rite => upcased)
       Misspelling.find_by_wrong("caps").rite.should == "caps"
     end
 
@@ -39,6 +39,13 @@ describe Misspelling do
       misspelling.wrong.should == "twospayces"
       misspelling.rite.should == "two spaces"
     end
+
+    it "should enqueue the spellchecking of SaytSuggestions via Resque" do
+      ResqueSpec.reset!
+      Misspelling.create!(:wrong => "valueforwrong", :rite => "value for rite")
+      SpellcheckSaytSuggestions.should have_queued("valueforwrong", "value for rite")
+    end
+
   end
 
   describe "#correct(phrase)" do
@@ -48,26 +55,6 @@ describe Misspelling do
 
     it "should return nil if phrase is nil" do
       Misspelling.correct(nil).should be_nil
-    end
-  end
-
-  context "after saving a Misspelling" do
-    it "should apply the correction to existing SaytSuggestions" do
-      phrase = "only one c is necccessary"
-      SaytSuggestion.create!(:phrase => phrase)
-      wrong = "necccessary"
-      rite = "necessary"
-      Misspelling.create!(:wrong=> wrong, :rite=>rite)
-      SaytSuggestion.find_by_phrase(phrase).should be_nil
-      SaytSuggestion.find_by_phrase("only one c is necessary").should_not be_nil
-    end
-
-    it "should not apply the correction to existing SaytSuggestions that belong to an affiliate" do
-      SaytSuggestion.create!(:phrase => "haus", :affiliate => affiliates(:basic_affiliate))
-      wrong = "haus"
-      rite = "house"
-      Misspelling.create!(:wrong=> wrong, :rite=>rite)
-      SaytSuggestion.find_by_phrase("haus").should_not be_nil
     end
   end
 

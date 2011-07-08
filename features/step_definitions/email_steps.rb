@@ -42,6 +42,7 @@ World(EmailHelpers)
 
 Given /^(?:a clear email queue|no emails have been sent)$/ do
   reset_mailer
+#  Resque.remove_queue(:usasearch)
 end
 
 #
