@@ -1027,6 +1027,22 @@ describe Search do
         search.startrecord.should == Search::DEFAULT_PER_PAGE * page + 1
         search.endrecord.should == search.startrecord + search.results.size - 1
       end
+      
+      context "when the page is greater than the number of results" do
+        before do
+          @search = Search.new(@valid_options.merge(:query => 'data'))
+          json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_results_for_a_large_result_set.json")
+          parsed  = JSON.parse(json)
+          JSON.stub!(:parse).and_return parsed
+        end
+
+        it "should use Bing's info to set the pagination" do
+          search = Search.new(:query => 'government', :page => 97)
+          search.run.should be_true
+          search.startrecord.should == 621
+          search.endrecord.should == 622
+        end
+      end
     end
 
     context "when the query matches an agency name or abbreviation" do

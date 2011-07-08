@@ -76,17 +76,18 @@ class Search
 
     @total = hits(response)
     unless total.zero?
+      @startrecord = bing_offset(response) + 1
+      @page = [startrecord/10,page].min
       @results = paginate(process_results(response))
+      @endrecord = startrecord + results.size - 1
       @spelling_suggestion = spelling_results(response)
       @related_search = related_search_results
-      @startrecord = page * results_per_page + 1
-      @endrecord = startrecord + results.size - 1
     end
     populate_additional_results(response)
     log_serp_impressions
     true
   end
-
+  
   def as_json(options = {})
     if error_message
       {:error => error_message}
@@ -307,6 +308,10 @@ class Search
 
   def hits(response)
     (response.web.results.blank? ? 0 : response.web.total) rescue 0
+  end
+  
+  def bing_offset(response)
+    (response.web.results.blank? ? 0 : response.web.offset) rescue 0
   end
 
   def process_results(response)
