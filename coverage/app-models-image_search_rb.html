@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-image_search_rb.html">app/models/image_search.rb</a></td>
-            <td class='right_align'><tt>43</tt></td>
-            <td class='right_align'><tt>35</tt></td>
+            <td class='right_align'><tt>47</tt></td>
+            <td class='right_align'><tt>38</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -87,19 +87,19 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> </pre></td>
+            <td><pre><a name="line6">6</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   def process_results(response)</pre></td>
+            <td><pre><a name="line7">7</a>   def bing_offset(response)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     process_image_results(response)</pre></td>
+            <td><pre><a name="line8">8</a>     response.image.offset rescue 0</pre></td>
           </tr>
         
           
@@ -117,85 +117,85 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>   def bing_query(query_string, query_sources, offset, count, enable_highlighting = true)</pre></td>
+            <td><pre><a name="line11">11</a>   def process_results(response)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     params = [</pre></td>
+            <td><pre><a name="line12">12</a>     process_image_results(response)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>       &quot;image.offset=#{offset}&quot;,</pre></td>
+            <td><pre><a name="line13">13</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>       &quot;image.count=#{count}&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line15">15</a>       &quot;AppId=#{APP_ID}&quot;,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line16">16</a>       &quot;sources=#{query_sources}&quot;,</pre></td>
+            <td><pre><a name="line14">14</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       &quot;Options=#{ enable_highlighting ? &quot;EnableHighlighting&quot; : &quot;&quot;}&quot;,</pre></td>
+            <td><pre><a name="line15">15</a>   def bing_query(query_string, query_sources, offset, count, enable_highlighting = true)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>       &quot;query=#{URI.escape(query_string)}&quot;</pre></td>
+            <td><pre><a name="line16">16</a>     params = [</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>     ]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>     &quot;#{JSON_SITE}?&quot; + params.join('&amp;')</pre></td>
+            <td><pre><a name="line17">17</a>       &quot;image.offset=#{offset}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>   end</pre></td>
+            <td><pre><a name="line18">18</a>       &quot;image.count=#{count}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a> </pre></td>
+            <td><pre><a name="line19">19</a>       &quot;AppId=#{APP_ID}&quot;,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line20">20</a>       &quot;sources=#{query_sources}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>   def bing_sources</pre></td>
+            <td><pre><a name="line21">21</a>       &quot;Options=#{ enable_highlighting ? &quot;EnableHighlighting&quot; : &quot;&quot;}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>     &quot;Spell+Image&quot;</pre></td>
+            <td><pre><a name="line22">22</a>       &quot;query=#{URI.escape(query_string)}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a>     ]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>     &quot;#{JSON_SITE}?&quot; + params.join('&amp;')</pre></td>
           </tr>
         
           
@@ -213,66 +213,66 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>   def as_json(options = {})</pre></td>
+            <td><pre><a name="line27">27</a>   def bing_sources</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>     if self.error_message</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line29">29</a>       {:error =&gt; self.error_message}</pre></td>
+            <td><pre><a name="line28">28</a>     &quot;Spell+Image&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>     else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line31">31</a>       {:total =&gt; self.total, :startrecord =&gt; self.startrecord, :endrecord =&gt; self.endrecord, :results =&gt; self.results}</pre></td>
+            <td><pre><a name="line29">29</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>     end</pre></td>
+            <td><pre><a name="line30">30</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>   def as_json(options = {})</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>     if self.error_message</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>       {:error =&gt; self.error_message}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>   end</pre></td>
+            <td><pre><a name="line34">34</a>     else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>       {:total =&gt; self.total, :startrecord =&gt; self.startrecord, :endrecord =&gt; self.endrecord, :results =&gt; self.results}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a> </pre></td>
+            <td><pre><a name="line36">36</a>     end</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>   protected</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line36">36</a>   def populate_additional_results(response)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
+          <tr class="inferred">
             <td><pre><a name="line37">37</a>   end</pre></td>
           </tr>
         
@@ -285,18 +285,18 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>   def related_search_results</pre></td>
+            <td><pre><a name="line39">39</a>   protected</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>     []</pre></td>
+            <td><pre><a name="line40">40</a>   def populate_additional_results(response)</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
+          <tr class="marked">
             <td><pre><a name="line41">41</a>   end</pre></td>
           </tr>
         
@@ -308,14 +308,38 @@
         
           
           
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>   def related_search_results</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>     []</pre></td>
+          </tr>
+        
+          
+          
           <tr class="inferred">
-            <td><pre><a name="line43">43</a> end</pre></td>
+            <td><pre><a name="line45">45</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line46">46</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line47">47</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jul 07 19:00:16 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jul 08 15:34:37 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
