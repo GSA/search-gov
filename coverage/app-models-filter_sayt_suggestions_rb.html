@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/popular_url.rb</title>
+    <title>app/models/filter_sayt_suggestions.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/models/popular_url.rb</h2>
+    <h2>app/models/filter_sayt_suggestions.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-popular_url_rb.html">app/models/popular_url.rb</a></td>
-            <td class='right_align'><tt>11</tt></td>
-            <td class='right_align'><tt>10</tt></td>
+            <td class="left_align"><a href="app-models-filter_sayt_suggestions_rb.html">app/models/filter_sayt_suggestions.rb</a></td>
+            <td class='right_align'><tt>8</tt></td>
+            <td class='right_align'><tt>7</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,67 +57,49 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class PopularUrl &lt; ActiveRecord::Base</pre></td>
+            <td><pre><a name="line1">1</a> class FilterSaytSuggestions</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   validates_presence_of :title, :url, :rank</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line3">3</a>   validates_uniqueness_of :rank, :scope =&gt; :affiliate_id</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>   belongs_to :affiliate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>   scope :sorted, order(&quot;rank asc&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>   scope :top, lambda { |l| limit(l) }</pre></td>
+            <td><pre><a name="line2">2</a>   @queue = :usasearch</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a> </pre></td>
+            <td><pre><a name="line3">3</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   def self.top_urls(limit = 5)</pre></td>
+            <td><pre><a name="line4">4</a>   def self.perform(phrase)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     sorted.top(limit)</pre></td>
+            <td><pre><a name="line5">5</a>     sayt_filter = SaytFilter.find_by_phrase(phrase)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>     SaytSuggestion.all.each { |suggestion| suggestion.delete if sayt_filter.match?(suggestion.phrase) } if sayt_filter</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a>   end</pre></td>
+            <td><pre><a name="line7">7</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a> end</pre></td>
+            <td><pre><a name="line8">8</a> end</pre></td>
           </tr>
         
       </tbody>
