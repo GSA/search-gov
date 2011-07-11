@@ -22,8 +22,7 @@ Feature: Mobile Search
   Scenario: Toggling full mode
     Given I am on the search page
     When I follow "Classic"
-    Then I should be on the search page
-    And I should see "Mobile"
+    Then I should be on the homepage
 
   Scenario: Toggling back to mobile mode
     Given I am on the search page

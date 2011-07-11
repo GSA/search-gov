@@ -6,6 +6,7 @@ class SearchesController < ApplicationController
   before_filter :set_form_search_options, :only => :forms
   has_mobile_fu
   before_filter :adjust_mobile_mode
+  before_filter :check_for_blank_query, :only => :index
   SAYT_SUGGESTION_SIZE = 15
   SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
   ssl_allowed :auto_complete_for_search_query
@@ -100,6 +101,10 @@ class SearchesController < ApplicationController
       :results_per_page => params["per-page"],
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
     }
+  end
+  
+  def check_for_blank_query
+    redirect_to root_path if @search_options[:query].blank? and @search_options[:affiliate].nil? and params["input-form"] != "advanced" and request.format != :mobile
   end
 
   def adjust_mobile_mode

@@ -49,6 +49,19 @@ Feature: Homepage
   Scenario: Doing a blank search from the home page
     Given I am on the homepage
     When I submit the search form
+    Then I should be on the homepage
+
+  Scenario: Search with a blank query on an affiliate page
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
+    When I am on bar.gov's search page
+    And I press "Search"
+    Then I should see "Please enter search term(s)"
+    
+  Scenario: Entering a blank advanced search
+    When I am on the advanced search page
+    And I press "Search"
     Then I should be on the search page
     And I should see "Please enter search term(s)"
 
