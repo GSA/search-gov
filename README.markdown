@@ -7,21 +7,21 @@ working development environment for Rails up and running, including the database
 
 ## Ruby
 
-You will need Ruby 1.8.7. Verify that your path points to the correct version of Ruby:
+You will need Ruby Enterprise Edition 1.8.7. Verify that your path points to the correct version of Ruby:
 
     lappy:usasearch loren$ ruby -v
-    ruby 1.8.7 (2009-06-12 patchlevel 174) [i686-darwin10]
+    ruby 1.8.7 (2011-02-18 patchlevel 334) [i686-darwin10.7.0], MBARI 0x6770, Ruby Enterprise Edition 2011.03
     lappy:usasearch loren$ which ruby
-    /opt/local/bin/ruby
+    /Users/loren/.rvm/rubies/ree-1.8.7-2011.03/bin/ruby
 
-You will need to install rubygems 1.4.2 and set up your gem sources:
+You will need to install the latest rubygems and set up your gem sources:
 
-    gem install rubygems-update -v='1.4.2'
+    gem install rubygems-update
     update_rubygems
     lappy:usasearch loren$ gem -v
-    1.4.1
+    1.6.2
     lappy:usasearch loren$ which gem
-    /opt/local/bin/gem
+    /Users/loren/.rvm/rubies/ree-1.8.7-2011.03/bin/gem
     lappy:usasearch loren$ more ~/.gemrc
     ---
     gem: --no-ri --no-rdoc
@@ -34,7 +34,7 @@ You will need to install rubygems 1.4.2 and set up your gem sources:
     - http://gems.github.com
     - http://gems.rubyforge.org/
     - http://gemcutter.org
-    
+
 ## Gems
 
 For Rails 3, we use bundler; you should be able to get all the rest of the gems needed for this project like this:
@@ -53,16 +53,11 @@ You can start/stop/reindex Solr like this:
     rake sunspot:solr:run
     rake sunspot:solr:reindex
 
-If you are upgrading from a previous version of Sunspot/Solr (typically, this would be from Sunspot 0.11.5 and Solr 1.3 to Sunspot 1.1.0 and Solr 1.4), then you should take the following steps:
+## Redis
 
-    rake sunspot:solr:stop
-    rake sunspot:solr:stop RAILS_ENV=test
-    git pull
-    bundle install
-    rake sunspot:solr:start
-    rake sunspot:solr:start RAILS_ENV=test
-    rake sunspot:solr:reindex
-    rake sunspot:solr:reindex RAILS_ENV=test
+We're using the Redis key-value store for caching and for queue workflow via Resque. Download and install the Redis server:
+
+<http://redis.io/download>
 
 # Database
 
@@ -128,7 +123,7 @@ Now populate your Faqs and Forms tables with files you can download from Github 
 
 Now re-run your search for taxes and you should see more content.
 
-If you are interested in helath related data, you can also load MedLinePlus data 
+If you are interested in helath related data, you can also load MedLinePlus data
 from the XML retrieved from the MedLine website (see doc/medline for more details).
 
     rake usasearch:medline:update
@@ -164,6 +159,30 @@ Your user account should have admin priveleges set. Now go here and poke around.
 
 Create a Spotlight (hint: use the template to get started). For keywords, put in 'taxes'.
 Now re-run that taxes search again and you should see content above the search results.
+
+## Asynchronous tasks
+Several long-running tasks have been moved to the background for processing via Resque. Here is how to see this in
+action on your local machine, assuming you have installed the Redis server.
+
+1. Run the redis-server
+
+    % redis-server
+
+1. Launch the Sinatra app to see the queues and jobs
+
+    % resque-web
+
+1. In your app, assuming you have at least one affiliate in your development database, make an affiliate broadcast:
+
+    <http://localhost:3000/admin/affiliate_broadcasts/new>
+
+1. Look in the Resque web queue to see the job enqueued.
+
+1. Start a Resque worker to run the job:
+
+    % QUEUE=* rake environment resque:work
+
+At this point, you should see the queue empty in Resque web, and some email-like output in your development log.
 
 # Working on Stories
 
