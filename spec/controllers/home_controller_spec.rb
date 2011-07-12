@@ -70,14 +70,14 @@ describe HomeController do
       response.should be_success
     end
 
-    it "should return 404 if not in mobile mode" do
+    it "should redirect to errors#page_not_found if not in mobile mode" do
       get :contact_form, :m => "false"
-      response.status.should == 404
+      response.should redirect_to(page_not_found_path)
     end
 
-    it "should return 404 if no mode is specified" do
+    it "should redirect to errors#page_not_found if no mode is specified" do
       get :contact_form
-      response.status.should == 404
+      response.should redirect_to(page_not_found_path)
     end
   end
 end

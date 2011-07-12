@@ -124,6 +124,18 @@ module NavigationHelpers
       edit_affiliate_boosted_content_path(Affiliate.find_by_name($1), Affiliate.find_by_name($1).boosted_contents.first)
     when /the superfresh bulk upload admin page/
       admin_superfresh_urls_bulk_upload_index_path
+    when /the 404 page/
+      '/aninvalidurl'
+    when /the Spanish 404 page/
+      '/aninvalidurl?locale=es'
+    when /the (.*)'s 404 page$/
+      affiliate_page_not_found_path(:name => $1)
+    when /the (.*)'s Spanish 404 page$/
+      affiliate_page_not_found_path(:name => $1, :locale => 'es')
+    when /the (.*)'s staged 404 page$/
+      affiliate_page_not_found_path(:name => $1, :staged => 1)
+    when /the (.*)'s staged Spanish 404 page$/
+      affiliate_page_not_found_path(:name => $1, :locale => 'es', :staged => 1)
     else
       begin
         page_name =~ /the (.*) page/

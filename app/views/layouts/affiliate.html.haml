@@ -1,6 +1,6 @@
 !!! XML
 !!!
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => "en", :lang => "en"}
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => I18n.locale, :lang => I18n.locale }
   %head
     = favicon_link_tag
     = render_robots_meta_tag
@@ -22,11 +22,12 @@
     = (javascript_include_tag "application.js").html_safe
 
     %title= @page_title
-  %body{ :class => @affiliate.affiliate_template.stylesheet }
+  %body{ :class => "#{@affiliate.affiliate_template.stylesheet} #{I18n.locale}" }
     #container
       #header= @affiliate.header.html_safe if @affiliate and @affiliate.header
       #search.clearfix
-        %h1 Search
+        -unless error_page?
+          %h1 Search
         = yield
       #footer= @affiliate.footer.html_safe if @affiliate and @affiliate.footer
   = render "/shared/webtrends_affiliates"

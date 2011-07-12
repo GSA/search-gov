@@ -94,4 +94,5 @@ jQuery(document).ready(function() {
   });
 
   jQuery(".homepage #search_query").focus();
+  jQuery(".page-not-found #search_query").focus();
 });

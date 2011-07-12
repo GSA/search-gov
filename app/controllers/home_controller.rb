@@ -25,7 +25,7 @@ class HomeController < ApplicationController
       end
     end
     respond_to do |format|
-      format.html { render :file => File.join(Rails.root, "public", "404.html"), :status => 404 }
+      format.html { redirect_to(page_not_found_path) }
       format.mobile
     end
   end

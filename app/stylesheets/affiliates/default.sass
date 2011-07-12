@@ -152,3 +152,48 @@ img
   outline: 0
   padding: 2px 5px
   width: 335px
+
+.page-not-found
+  :margin 50px auto
+  :text-align center
+  :width 100%
+  $element-width: 754px
+  h3
+    :color #C30E2C
+    :line-height 26px
+    :font
+      :size 20px
+      :weight bold
+    &.message
+      :margin 30px auto
+      :text-align left
+      :width $element-width
+  .logo-wrapper
+    :background url(/images/footer_line.gif) no-repeat center bottom
+    :padding-bottom 15px
+  .what-to-do-wrapper
+    :color #222
+    :margin 0 auto 35px
+    :text-align left
+    :width $element-width
+    h3
+      :color #787677
+      :margin 10px 0
+    span
+      :font-size 15px
+    ul
+      :line-height 18px
+      :margin 0 0 35px 0
+      :padding 0
+      :text-align left
+    li
+      :font-size 15px
+      :list-style-position inside
+      :padding 0 0 0 3px
+  #search_form
+    :margin 10px auto 0
+    .advancedsearch
+      :display none
+.es .page-not-found
+  .message, .what-to-do-wrapper
+    :width 765px

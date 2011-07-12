@@ -1,5 +1,5 @@
 !!!strict
-%html
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => I18n.locale, :lang => I18n.locale }
   %head
     %title= build_page_title(@page_title)
     = favicon_link_tag "/favicon_#{I18n.locale}.ico"

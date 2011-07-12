@@ -147,5 +147,8 @@ UsasearchRails3::Application.routes.draw do
   match '/login' => 'user_sessions#new', :as => :login
   match "/sayt" => "sayt#index"
   match "/clicked" => "clicked#index"
+  match "/404/:name" => "errors#page_not_found", :constraints => { :name => /.+/ }, :as => 'affiliate_page_not_found'
+  match "/404" => "errors#page_not_found", :as => 'page_not_found'
+  match "*path" => "errors#page_not_found"
   root :to => "home#index"
 end

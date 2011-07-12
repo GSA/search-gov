@@ -270,6 +270,10 @@ module SearchHelper
     (controller.controller_name == "searches" and controller.action_name == "forms") or controller.controller_name == "forms"
   end
 
+  def error_page?
+    controller.controller_name == "errors"
+  end
+
   def no_results_for(query)
     content_tag(:p, (t :no_results_for, :query => query), :class=>"noresults")
   end

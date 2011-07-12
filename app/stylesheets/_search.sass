@@ -224,3 +224,45 @@ a.serp-link
       :line-height 1.6
       :list-style none
       :padding-left 15px
+
+.page-not-found
+  :margin 0
+  :padding-top 50px
+  :text-align center
+  :width 99%
+  h3
+    :color #C30E2C
+    :line-height 26px
+    :font
+      :size 20px
+      :weight bold
+    &.message
+      :margin 30px auto
+      :width 750px
+  .logo-wrapper
+    :background url(/images/footer_line.gif) no-repeat center bottom
+    :padding-bottom 15px
+  .what-to-do-wrapper
+    :margin 0 auto 35px
+    :width 575px
+    h3
+      :color #222
+      :margin 10px 0
+      :text-align left
+  ul
+    :line-height 18px
+    :list-style none
+    :margin 0
+    :padding 0
+    :text-align left
+  li
+    :background url('/images/backgrounds/star_large.gif') left 2px no-repeat
+    :color #222
+    :font-size 15px
+    :padding-left 20px
+    a
+      @extend .serp-link
+  #search_form
+    :margin 0 auto
+.es .page-not-found .what-to-do-wrapper
+  :width 635px
