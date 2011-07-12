@@ -67,8 +67,22 @@ Feature: Image search
   Scenario: A nonsense search
     Given I am on the image search page
     When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
-    And I submit the search form
-    Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
+    And I press "Search"
+    Then I should see "Oops! We can't find results for your search: kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I should see a link to "Official Government Flickr Photostreams" with url for "http://www.flickr.com/groups/usagov/" in the no results section
+    And I should see a link to "Contact USA.gov" with url for "http://www.usa.gov/Contact_Us.shtml" in the no results section
+    And I should see "Source:" in the no results section
+
+  Scenario: A nonsense Spanish search
+    Given I am on the homepage
+    And I follow "Busque en español"
+    And I follow "Imágenes" in the search navigation
+    When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I press "Buscar"
+    Then I should see "No hemos podido encontrar resultados que contengan: kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I should see a link to "galería oficial de USA.gov en Flickr" with url for "http://www.flickr.com/groups/usagov/" in the no results section
+    And I should see a link to "Comuníquese con nosotros" with url for "http://www.usa.gov/gobiernousa/Contactenos.shtml" in the no results section
+    And I should see "Fuente:" in the no results section
 
   Scenario: Doing a blank search
     Given I am on the image search page

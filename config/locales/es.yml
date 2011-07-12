@@ -17,6 +17,26 @@ es:
   prev_label: "Anterior"
   next_label: "Siguiente"
   no_results_for: "No hemos encontrado ningún resultado que contenga '%{query}'. Intenta reformular las palabras clave o utilizar sinónimos."
+  no_results:
+    cant_find_results: "No hemos podido encontrar resultados que contengan:"
+    what_should_you_do: "¿Qué puede hacer?"
+    basic_suggestions:
+      - Intente su búsqueda otra vez.
+      - Verifique que haya escrito correctamente las palabras de su búsqueda.
+      - Use palabras distintas que tengan el mismo significado.
+      - Use menos palabras.
+      - Use palabras con significado más general.
+      - No use comillas (“) en su búsqueda.
+    go_to_usa_gov: "Visite %{usa_gov_link} y busque entre nuestros temas la información que necesita."
+    usa_gov_url_text: "GobiernoUSA.gov"
+    usa_gov_url: "http://GobiernoUSA.gov"
+    browse_government_photostreams: "Visite la %{flickr_link} para encontrar más fotos y videos del Gobierno."
+    flickr_url_text: "galería oficial de USA.gov en Flickr"
+    flickr_url: "http://www.flickr.com/groups/usagov/"
+    contact_usa_gov: "¿Todavía no encuentra la información que necesita? %{contact_usa_gov_link} si necesita ayuda para encontrar información del Gobierno."
+    contact_usa_gov_url_text: "Comuníquese con nosotros"
+    contact_usa_gov_url: "http://www.usa.gov/gobiernousa/Contactenos.shtml"
+    source: "Fuente"
   too_long: "Es demasiado larga una palabra. Intente utilizar una palabra más corta."
   empty_query: "Por favor, introduzca los términos de búsqueda"
   search_results_for: "buscador.usa.gov: Resultados de"

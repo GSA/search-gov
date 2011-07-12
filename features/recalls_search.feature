@@ -22,11 +22,14 @@ Feature: Recalls search
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
     And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
 
-  Scenario: A nonsense search
+  Scenario: A nonsense search from the home page
     Given I am on the recalls search page
     When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
-    And I submit the search form
-    Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
+    And I press "Search"
+    Then I should see "Oops! We can't find results for your search: kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I should see a link to "Recalls.gov" with url for "http://www.recalls.gov" in the no results section
+    And I should see a link to "Contact USA.gov" with url for "http://www.usa.gov/Contact_Us.shtml" in the no results section
+    And I should see "Source:" in the no results section
 
   Scenario: Doing a blank search from the recalls home page
     Given I am on the recalls landing page

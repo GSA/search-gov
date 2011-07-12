@@ -18,6 +18,29 @@ en:
   prev_label: "Previous"
   next_label: "Next"
   no_results_for: "Sorry, no results found for '%{query}'. Try entering fewer or broader query terms."
+  no_results:
+    cant_find_results: "Oops! We can't find results for your search:"
+    what_should_you_do: "What should you do?"
+    basic_suggestions:
+      - Try your search again.
+      - Make sure all the words are spelled correctly.
+      - Try different words that mean the same thing.
+      - Try fewer words.
+      - Try more general words.
+      - Try the phrase without quotation marks.
+    go_to_usa_gov: "Or, go to %{usa_gov_link} and browse through our topics for the information you want."
+    usa_gov_url_text: "USA.gov"
+    usa_gov_url: "http://USA.gov"
+    browse_government_photostreams: "Or, browse USA.gov's list of %{flickr_link} to find more government photos and videos."
+    flickr_url_text: "Official Government Flickr Photostreams"
+    flickr_url: "http://www.flickr.com/groups/usagov/"
+    go_to_recalls_gov: "Or, go to %{recalls_gov_link} to obtain the latest recall information, to report a dangerous product, or to learn important safety tips by product type."
+    recalls_gov_url: "http://www.recalls.gov"
+    browse_government_forms: "Or, browse USA.gov's list of %{government_forms_link} to find federal forms and applications by agency name."
+    contact_usa_gov: "Still can't find what you're looking for? %{contact_usa_gov_link} about any government question you have."
+    contact_usa_gov_url_text: "Contact USA.gov"
+    contact_usa_gov_url: "http://www.usa.gov/Contact_Us.shtml"
+    source: "Source"
   too_long: "That is too long a word. Try using a shorter word."
   empty_query: "Please enter search term(s)"
   search_results_for: "Search results for"

@@ -1237,6 +1237,15 @@ Feature: Affiliate clients
     Then I should see "Email can't be blank"
     And I should see "Contact name can't be blank"
 
+  Scenario: A nonsense affiliate search
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email     | contact_name        | affiliate_template_name |
+      | aff site         | aff.gov          | aff@bar.gov       | John Bar            | Default                 |
+    When I go to aff.gov's search page
+    When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I press "Search"
+    Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
+
   Scenario: Visiting the affiliate search page with popular urls
     Given the following Affiliates exist:
       | display_name     | name             | contact_email     | contact_name        | affiliate_template_name |

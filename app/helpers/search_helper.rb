@@ -2,6 +2,24 @@ module SearchHelper
 
   SPECIAL_URL_PATH_EXT_NAMES = %w{doc pdf ppt ps rtf swf txt xls}
 
+  NO_RESULTS_BANNERS = [
+      { :image_path => 'no_results/no_results_1.jpg',
+        :url_text => 'Library of Congress',
+        :url => 'http://blogs.loc.gov/law/2010/09/do-you-remember-how-to-use-a-card-catalog/' },
+      { :image_path => 'no_results/no_results_2.jpg',
+        :url_text => 'Oregon State Library',
+        :url => 'http://www.oregon.gov/OSL/photos_1930_1941.shtml' },
+      { :image_path => 'no_results/no_results_3.jpg',
+        :url_text => 'NOAA Photo Library',
+        :url => 'http://www.photolib.noaa.gov/htmls/theb1805.htm' },
+      { :image_path => 'no_results/no_results_4.jpg',
+        :url_text => 'Oregon State Library',
+        :url => 'http://www.oregon.gov/OSL/photos_1930_1941.shtml' },
+      { :image_path => 'no_results/no_results_5.jpg',
+        :url_text => 'Naval Historical Center',
+        :url => 'http://www.history.navy.mil/photos/images/h97000/h97134c.htm' }
+  ]
+
   def result_partial_for(search)
     if search.is_a?(ImageSearch)
       "/image_searches/result"
@@ -472,6 +490,21 @@ module SearchHelper
   def related_faqs_header(query)
     related_faqs_suffix = content_tag :span, "#{I18n.t:related_faqs_header_suffix}", :class => 'by-usa-gov'
     "#{h(I18n.t :related_faqs_header_prefix)} #{h query} #{related_faqs_suffix}".html_safe
+  end
+
+  def render_no_results_banner
+    banner = NO_RESULTS_BANNERS.shuffle.first
+    content_tag(:div, :class => "no-results-banner") do
+      content = image_tag(banner[:image_path], :alt => '')
+      content << content_tag(:div, :class => 'no-results-banner-source') do
+        banner_source_content = []
+        banner_source_content << content_tag(:span, %{#{t :"no_results.source"}: })
+        banner_source_content << link_to(banner[:url_text], banner[:url])
+        banner_source_content << content_tag(:span, t(:"in_english"), :class => 'in-english')
+        banner_source_content.join("\n").html_safe
+      end
+      content
+    end
   end
 
   private

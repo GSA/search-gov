@@ -4,6 +4,11 @@ $green: #008000
 $serp-link-visited-color: #551a8b
 $results-padding-left-size: 15px
 
+a.serp-link
+  :color $link
+  &:visited
+    :color $serp-link-visited-color
+
 #search_form
   ul.navigation
     list-style: none
@@ -160,3 +165,62 @@ $results-padding-left-size: 15px
       .details
         width: 80%
         float: left
+
+.no-results
+  :padding-left $results-padding-left-size
+  a
+    :font
+      :size 14px
+      :weight normal
+  .no-results-header
+    :margin-bottom 1.5em
+    h3
+      background: none
+      color: #C30E2C
+      display: inline
+      :font
+        :size 18px
+        :weight bold
+    span.query
+      :color #010101
+      :font
+        :size 18px
+        :weight bold
+    span.source-label
+      :color #010101
+  .no-results-banner
+    :clear right
+    :float right
+    :text-align right
+    .no-results-banner-source
+      :font
+        :size 14px
+        :weight bold
+      a
+        @extend .serp-link
+      .in-english
+        :font-weight normal
+  .no-results-suggestions
+    :font
+      :size 13px
+    :width 315px
+    h4
+      :font
+        :weight bold
+      :margin-bottom 0.5em
+    ul
+      :color #222
+      :list-style none
+      :margin 0 0 12px 0
+      :padding 0
+      &.no-results-custom-suggestions
+        :border-top 1px solid #DDD
+        :padding-top 5px
+        a
+          @extend .serp-link
+    li
+      :background url('/images/govbox/star.gif') left 5px no-repeat
+      :display block
+      :line-height 1.6
+      :list-style none
+      :padding-left 15px

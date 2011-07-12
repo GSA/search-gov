@@ -43,8 +43,21 @@ Feature: Homepage
   Scenario: A nonsense search from the home page
     Given I am on the homepage
     When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
-    And I submit the search form
-    Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
+    And I press "Search"
+    Then I should see "Oops! We can't find results for your search: kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I should see a link to "USA.gov" with url for "http://USA.gov" in the no results section
+    And I should see a link to "Contact USA.gov" with url for "http://www.usa.gov/Contact_Us.shtml" in the no results section
+    And I should see "Source:" in the no results section
+
+  Scenario: A nonsense search from the Spanish home page
+    Given I am on the homepage
+    And I follow "Busque en español"
+    When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I press "Buscar"
+    Then I should see "No hemos podido encontrar resultados que contengan: kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I should see a link to "GobiernoUSA.gov" with url for "http://GobiernoUSA.gov" in the no results section
+    And I should see a link to "Comuníquese con nosotros" with url for "http://www.usa.gov/gobiernousa/Contactenos.shtml" in the no results section
+    And I should see "Fuente:" in the no results section
 
   Scenario: Doing a blank search from the home page
     Given I am on the homepage

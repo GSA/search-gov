@@ -30,8 +30,11 @@ Feature: Forms Home Page and Search
   Scenario: A nonsense search
     Given I am on the forms home page
     When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
-    And I submit the search form
-    Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
+    And I press "Search"
+    Then I should see "Oops! We can't find results for your search: kjdfgkljdhfgkldjshfglkjdsfhg"
+    And I should see a link to "Government Forms" with url for "http://www.usa.gov/Topics/Reference_Shelf/forms.shtml" in the no results section
+    And I should see a link to "Contact USA.gov" with url for "http://www.usa.gov/Contact_Us.shtml" in the no results section
+    And I should see "Source:" in the no results section
 
   Scenario: Doing a blank search from the forms home page
     Given I am on the forms home page
