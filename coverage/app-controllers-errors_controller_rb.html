@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/misspelling.rb</title>
+    <title>app/controllers/errors_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/models/misspelling.rb</h2>
+    <h2>app/controllers/errors_controller.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-misspelling_rb.html">app/models/misspelling.rb</a></td>
-            <td class='right_align'><tt>24</tt></td>
-            <td class='right_align'><tt>20</tt></td>
+            <td class="left_align"><a href="app-controllers-errors_controller_rb.html">app/controllers/errors_controller.rb</a></td>
+            <td class='right_align'><tt>25</tt></td>
+            <td class='right_align'><tt>23</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,79 +57,79 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Misspelling &lt; ActiveRecord::Base</pre></td>
+            <td><pre><a name="line1">1</a> class ErrorsController &lt; ApplicationController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   before_validation :squish_whitespace_and_downcase</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :setup_affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>   has_mobile_fu</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   validates_presence_of :wrong, :rite</pre></td>
+            <td><pre><a name="line5">5</a>   def page_not_found</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   validates_uniqueness_of :wrong</pre></td>
+            <td><pre><a name="line6">6</a>     @page_title = I18n.t(:&quot;page_not_found.title&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   validates_length_of :wrong, :within=&gt; (3..80)</pre></td>
+            <td><pre><a name="line7">7</a>     @page_title &lt;&lt; &quot; - #{@affiliate.display_name}&quot; if @affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   validates_format_of :wrong, :with=&gt; /^[\w\.'-]+$/iu</pre></td>
+            <td><pre><a name="line8">8</a>     respond_to do |format|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>       format.html do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>         render :layout =&gt; 'application', :status =&gt; 404 unless @affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>         render :layout =&gt; 'affiliate', :status =&gt; 404 if @affiliate</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a> </pre></td>
+            <td><pre><a name="line12">12</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>   def self.correct(phrase)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>     return if phrase.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     corrected = phrase.split.map do |word|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>       correction = find_by_wrong(word)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>       correction.nil? ? word : correction.rite</pre></td>
+            <td><pre><a name="line13">13</a>       format.mobile { render :file =&gt; File.join(Rails.root, &quot;public&quot;, &quot;simple_404.html&quot;), :status =&gt; 404 }</pre></td>
           </tr>
         
           
@@ -140,62 +140,68 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>     corrected.join(' ')</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line15">15</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line17">17</a> </pre></td>
+            <td><pre><a name="line16">16</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a> </pre></td>
+            <td><pre><a name="line17">17</a>   def setup_affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>   def squish_whitespace_and_downcase</pre></td>
+            <td><pre><a name="line18">18</a>     @affiliate = Affiliate.find_by_name(params[:name]) unless params[:name].blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>     self.wrong = self.wrong.squish.downcase unless self.wrong.nil?</pre></td>
+            <td><pre><a name="line19">19</a>     if @affiliate &amp;&amp; params[:staged]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>     self.rite = self.rite.squish.downcase unless self.rite.nil?</pre></td>
+            <td><pre><a name="line20">20</a>       @affiliate.header = @affiliate.staged_header</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       @affiliate.footer = @affiliate.staged_footer</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       @affiliate.affiliate_template_id = @affiliate.staged_affiliate_template_id</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a>   end</pre></td>
+            <td><pre><a name="line23">23</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a> end</pre></td>
+            <td><pre><a name="line24">24</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line25">25</a> end</pre></td>
           </tr>
         
       </tbody>

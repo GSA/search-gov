@@ -219,7 +219,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>       format.html { render :file =&gt; File.join(Rails.root, &quot;public&quot;, &quot;404.html&quot;), :status =&gt; 404 }</pre></td>
+            <td><pre><a name="line28">28</a>       format.html { redirect_to(page_not_found_path) }</pre></td>
           </tr>
         
           
@@ -249,7 +249,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Jul 12 12:42:12 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Jul 14 10:35:48 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
