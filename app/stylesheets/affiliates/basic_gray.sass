@@ -1,3 +1,4 @@
+@import "compass/css3/border-radius"
 @import "compass/utilities/general/clearfix"
 
 // Links
@@ -35,6 +36,7 @@ h1, h2, h3
   text-align: left
 
 #search
+  @include clearfix
   background: #FFF
   overflow: hidden
   clear: both
@@ -159,6 +161,8 @@ h1, h2, h3
   margin: 5px 20px 5px 0
   
 .searchresult
+  @include border-radius
+  clear: both
   margin: 10px
   padding: 10px
   border: 1px solid #eee
@@ -216,25 +220,34 @@ h1, h2, h3
     text-shadow: none
 
 #boosted
-  display: inline
-  float: left
-  padding-top: 10px
-  margin: 0 10px 10px
+  @include border-radius
+  clear: both
+  padding: 10px
+  margin: 10px 10px
   background: #f1f1f1
   border: 1px solid #d3d3d3
   box-shadow: 1px 1px 10px #d3d3d3
   -moz-box-shadow: 1px 1px 10px #d3d3d3
   -webkit-box-shadow: 1px 1px 10px #d3d3d3
+  h3.alt
+    color: #999
+    margin-top: 0
+    span.recommended-by
+      font:
+        size: 14px
+        weight: normal
 
   .searchresult
-    padding-top: 0
     border: 1px
     box-shadow: none
+    margin: 0
+    padding: 0
     -moz-box-shadow: none
     -webkit-box-shadow: none
 
 #search_form
   #search_query
+    @include border-radius
     border: 1px solid #AAAAAA
     float: left
     display: inline

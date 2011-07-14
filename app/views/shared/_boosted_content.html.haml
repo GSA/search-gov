@@ -3,8 +3,9 @@
   .related-searches-wrapper-middle
     %h3.alt
       Recommended
-      %span.by-usa-gov
-        by USA.gov
+      %span.recommended-by
+        by
+        = @affiliate ? @affiliate.display_name : "USA.gov"
     - search.boosted_contents.hits(:verify => true).each_with_index do |hit, index|
       - boosted_content_url = hit.instance.url
       .searchresult{:id => "boostedresult#{index+1}"}

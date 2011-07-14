@@ -73,7 +73,8 @@ Feature: Boosted Content
     When I go to aff.gov's search page
     And I fill in "query" with "emergency"
     And I submit the search form
-    Then I should see "Our Emergency Page" within "#boosted"
+    Then I should see "Recommended by aff site"
+    And I should see "Our Emergency Page" within "#boosted"
     And I should see "FAQ Emergency Page" within "#boosted"
     And I should not see "Our Tourism Page" within "#boosted"
     And I should not see "Bar Emergency Page" within "#boosted"

@@ -1,3 +1,6 @@
+@import "compass/utilities/general/clearfix"
+$results-padding-left-size: 11px
+
 body
   font: 0.8em Arial, Helvetica, Sans-Serif
   margin: 0
@@ -35,6 +38,9 @@ img
     a
       font-size: 0.8em
 
+#summary
+  padding-left: 10px
+
 #left_column
   float: left
   width: 200px
@@ -64,6 +70,7 @@ img
   padding: 0 0 0 5px
                   
 #search
+  @include clearfix
   h1
     color: Transparent
     font-size: 0
@@ -71,6 +78,7 @@ img
 
 .searchresult
   margin-bottom: 1em
+  padding-left: $results-padding-left-size
 
 .searchresult  h2
   font-size: 125%
@@ -120,9 +128,20 @@ img
 
 #boosted
   border: 1px lightgray solid
-  margin-top: 1em
-  padding: 1em 0.5em 0 1.0em
+  margin:
+    top: 1em
+    bottom: 1em
+  padding: 1em 0.5em 0 $results-padding-left-size
   background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
+  h3.alt
+    margin-top: 0
+    span.recommended-by
+      color: gray
+      font:
+        size: 0.9em
+        weight: normal
+  .searchresult
+    padding-left: 0
 
 
 #search_form
