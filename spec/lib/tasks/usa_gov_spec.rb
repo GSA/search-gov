@@ -21,7 +21,21 @@ describe "USA.gov rake tasks" do
       SitePage.should_receive(:crawl_usa_gov).once
       @rake[@task_name].invoke
     end
+  end
 
+  describe "usasearch:crawl_answers_usa_gov" do
+    before do
+      @task_name = "usasearch:crawl_answers_usa_gov"
+    end
+
+    it "should have 'environment' as a prereq" do
+      @rake[@task_name].prerequisites.should include("environment")
+    end
+
+    it "should initiate the crawling/scraping of USA.gov" do
+      SitePage.should_receive(:crawl_answers_usa_gov).once
+      @rake[@task_name].invoke
+    end
   end
 
   describe "usasearch:detect_objectionable_content" do

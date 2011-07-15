@@ -3,6 +3,11 @@ namespace :usasearch do
   task :crawl_usa_gov => :environment do
     SitePage.crawl_usa_gov
   end
+  
+  desc "Crawls answers.usa.gov and creates local mobile version of the site, erasing any prior answers"
+  task :crawl_answers_usa_gov => :environment do
+    SitePage.crawl_answers_usa_gov
+  end
 
   desc "Scan Bing results on gov/mil sites for objectionable content and notify recipient when found"
   task :detect_objectionable_content, :email, :needs => :environment do |t, args|
