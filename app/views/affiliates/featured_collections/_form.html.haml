@@ -1,0 +1,53 @@
+= form.error_messages(:header_message => nil, :class => "error")
+.basic-information
+  %ul
+    %li
+      = form.label :title, "Title*"
+      = form.text_field :title, { :class => 'text', :maxlength => 255, :size => nil }
+    %li
+      = form.label :title_url, "Title URL"
+      = form.text_field :title_url, { :class => 'text', :maxlength => 255, :size => nil }
+    %li
+      = form.label :locale, "Locale*", { :class => 'select' }
+      = form.select :locale, SUPPORTED_LOCALES.collect { |l| [SUPPORTED_LOCALE_WITH_NAMES[l], l] }, { :include_blank => 'Select a Locale' }
+    %li
+      = form.label :status, "Status*", { :class => 'select' }
+      = form.select :status, FeaturedCollection::STATUS.collect { |s| [s.humanize, s] }, { :include_blank => 'Select a Status' }
+= label_tag "Keywords"
+.keywords
+  %table
+    %colgroup
+      %col{ :class => 'value' }
+    %tbody
+      - index = 0
+      = form.fields_for :featured_collection_keywords do |keyword_form|
+        %tr.row-item
+          %td
+            = keyword_form.label :value, "Keyword #{index}", { :class => 'hide' }
+            - index += 1
+            = keyword_form.text_field :value, { :maxlength => 255, :size => nil }
+  = link_to 'Add another keyword', '#', :id => 'add_another_keyword'
+
+%h2 Links
+.links
+  %table
+    %colgroup
+      %col{ :class => 'title' }
+      %col{ :class => 'url' }
+    %tbody
+      %tr.column-header
+        %th Title
+        %th URL
+      - position = 0
+      = form.fields_for :featured_collection_links do |link_form|
+        %tr.row-item
+          %td
+            = link_form.hidden_field :position, { :value => position, :class => 'position' }
+            = link_form.label :title, "Link Title #{position}", { :class => 'hide' }
+            = link_form.text_field :title, { :class => 'title', :maxlength => 255, :size => nil }
+          %td
+            = link_form.label :url, "Link URL #{position}", { :class => 'hide' }
+            = link_form.text_field :url, { :class => 'url', :maxlength => 255, :size => nil }
+        - position += 1
+
+  = link_to "Add another link", '#', :id => 'add_another_link'

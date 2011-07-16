@@ -1,4 +1,6 @@
 @import "blueprint"
+@import "compass/css3/border-radius"
+@import "compass/utilities/general/clearfix"
 a
   +link-colors(#21548B, #C81B2A, #21548B, #21548B, #21548B)
   :text-decoration underline
@@ -1278,3 +1280,157 @@ h3.api-item
       :background url(/images/connect/share_off.png) no-repeat 0 0
       &:hover
         :background url(/images/connect/share_on.png) no-repeat 0 0
+
+.featured-collection-list
+  table
+    border: 1px solid #BDBDBD
+    table-layout: fixed
+  col.publish-date
+    width: 160px
+  col.status
+    width: 75px
+  col.actions
+    width: 110px
+  thead
+    th
+      background-color: #444
+  th
+    border: 1px solid #A9A9A9
+    padding: 5px
+    text-align: center
+  td
+    border: 1px solid #A9A9A9
+    padding: 4px 8px
+  .column-header
+    font:
+      weight: bold
+  a.add-link
+    color: white
+    float: right
+    font:
+      weight: bold
+  td.actions
+    a, form
+      float: left
+    a
+      margin-right: 5px
+
+.add-featured-collection, .edit-featured-collection
+  @include border-radius
+  border: 1px solid #BDBDBD
+  overflow: hidden
+  padding: 15px
+  width: 750px
+  ul
+    list-style: none
+    margin: 0
+  li
+    @include clearfix
+    width: 100%
+  label
+    clear: left
+    float: left
+    padding-top: 8px
+    text-align: left
+    width: 135px
+    &.select
+      padding-top: 4px
+  h2
+    font-size: 15px
+  table
+    margin-bottom: 0
+  .basic-information
+    @include clearfix
+    ul
+      padding: 0
+    li
+      input.text
+        float: left
+        width: 600px
+      select
+        float: left
+  .keywords
+    @include clearfix
+    width: 400px
+    table
+      float: left
+    .row-item
+      input
+        width: 385px
+    td
+      :padding 0
+  .links
+    @include clearfix
+    table
+      border: 1px solid #BDBDBD
+      table-layout: fixed
+    col.title
+      width: 40%
+    col.url
+      width: 60%
+    thead th
+      background-color: #444
+    th
+      border: 1px solid #A9A9A9
+      font-weight: bold
+      padding: 5px
+      text-align: center
+    td
+      border: 1px solid #A9A9A9
+      padding: 4px
+      text-align: center
+    .row-item
+      input, input[type=text]
+        font-size: 11px
+        line-height: 16px
+        margin: 0
+        &.title
+          width: 96%
+        &.url
+          width: 97%
+  #add_another_keyword, #add_another_link
+    float: right
+    font:
+      weight: normal
+
+.show-featured-collection
+  overflow: hidden
+  table
+    border: 1px solid #BDBDBD
+    table-layout: fixed
+  col.name
+    width: 135px
+  th
+    background-color: #444444
+    padding: 5px
+    .actions
+      float: right
+      a, form
+        float: left
+      a.edit-link
+        color: white
+        font-weight: bold
+        margin-right: 10px
+  td
+    border: 1px solid #A9A9A9
+    padding: 4px
+    &.name
+      font:
+        weight: bold
+    &.links
+      a
+        display: block
+  .keywords
+    span
+      @include border-radius
+      background-color: #EEE
+      border: 1px solid #BDBDBD
+      padding: 2px 4px
+  .add-link-wrapper
+    text-align: center
+    a
+      font:
+        size: 20px
+        weight: bold
+
+

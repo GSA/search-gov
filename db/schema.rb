@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110706013212) do
+ActiveRecord::Schema.define(:version => 20110715175201) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -243,6 +243,40 @@ ActiveRecord::Schema.define(:version => 20110706013212) do
     t.datetime "updated_at"
     t.string   "locale",     :limit => 5, :default => "en"
   end
+
+  create_table "featured_collection_keywords", :force => true do |t|
+    t.integer  "featured_collection_id", :null => false
+    t.string   "value",                  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "featured_collection_keywords", ["featured_collection_id"], :name => "index_featured_collection_keywords_on_featured_collection_id"
+
+  create_table "featured_collection_links", :force => true do |t|
+    t.integer  "featured_collection_id", :null => false
+    t.integer  "position",               :null => false
+    t.string   "title",                  :null => false
+    t.string   "url",                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "featured_collection_links", ["featured_collection_id"], :name => "index_featured_collection_links_on_featured_collection_id"
+
+  create_table "featured_collections", :force => true do |t|
+    t.integer  "affiliate_id"
+    t.string   "title",            :null => false
+    t.string   "title_url"
+    t.string   "locale",           :null => false
+    t.datetime "publish_start_at"
+    t.datetime "publish_end_at"
+    t.string   "status",           :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "featured_collections", ["affiliate_id"], :name => "index_featured_collections_on_affiliate_id"
 
   create_table "food_recalls", :force => true do |t|
     t.integer  "recall_id"

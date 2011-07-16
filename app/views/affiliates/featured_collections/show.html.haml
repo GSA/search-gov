@@ -1,0 +1,39 @@
+.show-featured-collection
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Featured Collection: #{@featured_collection.title}"])
+  %h1 Featured Collection: #{@featured_collection.title}
+  %table
+    %colgroup
+      %col{ :class => 'name' }
+      %col{ :class => 'value' }
+    %thead
+      %tr
+        %th{ :colspan => 2 }
+          .actions
+            = link_to("Edit", edit_affiliate_featured_collection_path(@affiliate, @feature_collection), { :class => 'edit-link' })
+            = button_to("Delete", [@affiliate, @feature_collection], :method => :delete, :confirm => "Are you sure you want to delete this Featured Collection?")
+    %tbody
+      %tr
+        %td.name Title
+        %td= link_to_unless(@featured_collection.title_url.blank?, @featured_collection.title, @featured_collection.title_url, { :target => '_blank' })
+      %tr
+        %td.name Title URL
+        %td= @featured_collection.title_url
+      %tr
+        %td.name Locale
+        %td= SUPPORTED_LOCALE_WITH_NAMES[@featured_collection.locale]
+      %tr
+        %td.name Status
+        %td= @featured_collection.status.humanize
+      %tr
+        %td.name Keywords
+        %td.keywords
+          - @featured_collection.featured_collection_keywords.each do |keyword|
+            %span= keyword.value
+      %tr
+        %td.name Links
+        %td.links
+          - @featured_collection.featured_collection_links.each do |link|
+            = link_to link.title, link.url, :target => '_blank'
+  .add-link-wrapper
+    = link_to "Add another Featured Collection", new_affiliate_featured_collection_path(@affiliate), :class => 'add-link'
+

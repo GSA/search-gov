@@ -52,3 +52,5 @@ end
 
 # This has to be up here for some reason; otherwise, tests fail.
 SUPPORTED_LOCALES = %w{en es}
+SUPPORTED_LOCALE_WITH_NAMES = { 'en' => 'English', 'es' => 'Spanish' }
+

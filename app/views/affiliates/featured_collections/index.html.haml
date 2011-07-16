@@ -1,0 +1,35 @@
+.featured-collections
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Featured Collections"])
+  %h1 Featured Collections
+  .featured-collection-list
+    %table
+      %colgroup
+        %col{ :class => 'title' }
+        %col{ :class => 'publish-date' }
+        %col{ :class => 'publish-date' }
+        %col{ :class => 'status' }
+        %col{ :class => 'actions' }
+      %thead
+        %tr
+          %th{ :colspan => 5 }
+            = link_to "Add new featured collection", new_affiliate_featured_collection_path(@affiliate), :class => 'add-link'
+      %tbody
+        %tr.column-header
+          %th Title
+          %th Publish Start
+          %th Publish End
+          %th Status
+          %th Actions
+        - unless @featured_collections.blank?
+          - @featured_collections.each do |feature_collection|
+            %tr.row-item
+              %td= truncate_on_words feature_collection.title, 30
+              %td.publish_date= render_datetime feature_collection.publish_start_at
+              %td.publish_date= render_datetime feature_collection.publish_end_at
+              %td.status= feature_collection.status
+              %td.actions
+                = link_to("Edit", edit_affiliate_featured_collection_path(@affiliate, feature_collection))
+                = button_to("Delete", [@affiliate, feature_collection], :method => :delete, :confirm => "Are you sure you want to delete this Featured Collection?")
+        - else
+          %tr
+            %th{ :colspan => 5 } Site #{@affiliate.display_name} has no Featured Collection
