@@ -107,6 +107,31 @@ Feature: Search
     And I should see "FAQ Emergency Page" 
     And I should not see "Our Tourism Page" 
     And I should not see "Bar Emergency Page"
+
+  Scenario: Spanish site visitor sees relevant boosted results for given search
+    Given the following Boosted Content entries exist:
+      | title                                  | url                    | description                          | keywords         | locale |
+      | Nuestra página de Emergencia           | http://www.aff.gov/911 | Updated information on the emergency | unrelated, terms | es     |
+      | Preguntas frecuentes emergencia página | http://www.aff.gov/faq | More information on the emergency    |                  | es     |
+      | Our Tourism Page                       | http://www.aff.gov/tou | Tourism information                  |                  | en     |
+    And the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
+    And the following Boosted Content entries exist for the affiliate "bar.gov"
+      | title                             | url                    | description                        | keywords | locale |
+      | la página de prueba de Emergencia | http://www.bar.gov/911 | This should not show up in results |          | es     |
+    When I go to the Spanish homepage
+    And I fill in "query" with "emergencia"
+    And I press "Buscar"
+    Then I should see "Recomendación de GobiernoUSA.gov"
+    And I should see "Nuestra página de Emergencia" within "#boosted"
+    And I should see "Preguntas frecuentes emergencia página" within "#boosted"
+    And I should not see "Our Tourism Page" within "#boosted"
+    And I should not see "la página de prueba de Emergencia" within "#boosted"
+
+    When I fill in "query" with "unrelated"
+    And I press "Buscar"
+    Then I should see "Nuestra página de Emergencia" within "#boosted"
     
   Scenario: Site visitor sees full boosted content
     Given the following Boosted Content entries exist:

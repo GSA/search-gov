@@ -94,6 +94,39 @@ Feature: Boosted Content
     And I submit the search form
     Then I should see "Our Emergency Page" within "#boosted"
 
+  Scenario: Spanish site visitor sees relevant boosted results for given affiliate search
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+    And the following Boosted Content entries exist for the affiliate "aff.gov"
+      | title                                  | url                    | description                          | keywords         | locale |
+      | Nuestra página de Emergencia           | http://www.aff.gov/911 | Updated information on the emergency | unrelated, terms | es     |
+      | Preguntas frecuentes emergencia página | http://www.aff.gov/faq | More information on the emergency    |                  | es     |
+      | Our Tourism Page                       | http://www.aff.gov/tou | Tourism information                  |                  | en     |
+    And the following Boosted Content entries exist for the affiliate "bar.gov"
+      | title                             | url                    | description                        | keywords | locale |
+      | la página de prueba de Emergencia | http://www.bar.gov/911 | This should not show up in results |          | es     |
+      | Pelosi falta de ortografía        | http://www.bar.gov/pel | Synonyms file test works           |          | es     |
+    When I go to aff.gov's Spanish search page
+    And I fill in "query" with "emergencia"
+    And I press "Buscar"
+    Then I should see "Recomendación de aff site"
+    And I should see "Nuestra página de Emergencia" within "#boosted"
+    And I should see "Preguntas frecuentes emergencia página" within "#boosted"
+    And I should not see "Our Tourism Page" within "#boosted"
+    And I should not see "la página de prueba de Emergencia" within "#boosted"
+
+    When I go to bar.gov's Spanish search page
+    And I fill in "query" with "Peloci"
+    And I press "Buscar"
+    Then I should see "Synonyms file test works" within "#boosted"
+
+    When I go to aff.gov's Spanish search page
+    And I fill in "query" with "unrelated"
+    And I press "Buscar"
+    Then I should see "Nuestra página de Emergencia" within "#boosted"
+
   Scenario: Uploading valid booster XML document as a logged in affiliate
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |

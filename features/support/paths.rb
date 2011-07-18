@@ -22,6 +22,8 @@ module NavigationHelpers
       image_search_path
     when /^(.*)'s search page$/
       search_path(:affiliate => $1)
+    when /^(.*)'s Spanish search page$/
+      search_path(:affiliate => $1, :locale => 'es')
     when /the analytics query search results page/
       analytics_query_search_path
     when /the FAQ page/
