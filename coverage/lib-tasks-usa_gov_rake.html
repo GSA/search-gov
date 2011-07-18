@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-usa_gov_rake.html">lib/tasks/usa_gov.rake</a></td>
-            <td class='right_align'><tt>15</tt></td>
-            <td class='right_align'><tt>14</tt></td>
+            <td class='right_align'><tt>20</tt></td>
+            <td class='right_align'><tt>18</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -87,67 +87,97 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a> </pre></td>
+            <td><pre><a name="line6">6</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   desc &quot;Scan Bing results on gov/mil sites for objectionable content and notify recipient when found&quot;</pre></td>
+            <td><pre><a name="line7">7</a>   desc &quot;Crawls answers.usa.gov and creates local mobile version of the site, erasing any prior answers&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   task :detect_objectionable_content, :email, :needs =&gt; :environment do |t, args|</pre></td>
+            <td><pre><a name="line8">8</a>   task :crawl_answers_usa_gov =&gt; :environment do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     args.with_defaults(:email =&gt; &quot;amy.farrajfeijoo@gsa.gov&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>     results = SaytFilter.find_all_by_always_filtered(true).find_all do |sf|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>       Search.results_present_for?(sf.phrase, nil, true, &quot;off&quot;)</pre></td>
+            <td><pre><a name="line9">9</a>     SitePage.crawl_answers_usa_gov</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a>     end</pre></td>
+            <td><pre><a name="line10">10</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line11">11</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>     Emailer.deliver_objectionable_content_alert(args.email, results.collect(&amp;:phrase)) if results.present?</pre></td>
+            <td><pre><a name="line12">12</a>   desc &quot;Scan Bing results on gov/mil sites for objectionable content and notify recipient when found&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>   task :detect_objectionable_content, :email, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>     args.with_defaults(:email =&gt; &quot;amy.farrajfeijoo@gsa.gov&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>     results = SaytFilter.find_all_by_always_filtered(true).find_all do |sf|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>       Search.results_present_for?(sf.phrase, nil, true, &quot;off&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>   end</pre></td>
+            <td><pre><a name="line17">17</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>     Emailer.deliver_objectionable_content_alert(args.email, results.collect(&amp;:phrase)) if results.present?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line15">15</a> end</pre></td>
+            <td><pre><a name="line19">19</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line20">20</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Jul 14 10:35:49 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Jul 18 18:23:22 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
