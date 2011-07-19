@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>lib/tasks/rails3_log.rake</title>
+    <title>app/models/search_api_log_file.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>lib/tasks/rails3_log.rake</h2>
+    <h2>app/models/search_api_log_file.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="lib-tasks-rails3_log_rake.html">lib/tasks/rails3_log.rake</a></td>
-            <td class='right_align'><tt>22</tt></td>
-            <td class='right_align'><tt>22</tt></td>
+            <td class="left_align"><a href="app-models-search_api_log_file_rb.html">app/models/search_api_log_file.rb</a></td>
+            <td class='right_align'><tt>27</tt></td>
+            <td class='right_align'><tt>24</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,133 +57,163 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> namespace :usasearch do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line2">2</a>   namespace :rails3_log do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line3">3</a>     desc &quot;Transform and filter a multi-line Rails3 log file into a single line format that can be used in a Hive table&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>     task :transform_to_hive_elapsed_times_format, :file_name, :needs =&gt; :environment do |t, args|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>       if args.file_name.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>         Rails.logger.error &quot;usage: rake usasearch:query_log:transform_to_hive_elapsed_times_format[file_name]&quot;</pre></td>
+            <td><pre><a name="line1">1</a> class SearchApiLogFile &lt; LogFile</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a>       else</pre></td>
+            <td><pre><a name="line2">2</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>         File.open(args.file_name) do |file|</pre></td>
+            <td><pre><a name="line3">3</a>   class &lt;&lt; self</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line4">4</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>           file.each_line.map(&amp;:strip).reject(&amp;:empty?).slice_before(/Started (GET|POST|PUT|DELETE)/).each do |request_log_entry_array|</pre></td>
+            <td><pre><a name="line5">5</a>     def parse_and_emit_line(api_log_entry)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>             request_url, total_time, view_time, db_time = request_log_entry_array.join(' ').</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line11">11</a>               scan(/^[^&quot;]*&quot;([^&quot;]*)&quot; .* Completed 200 OK in (\d*)ms [^\d]*(\d*)\.\d[^\d]*(\d*)\.\d/).first</pre></td>
+            <td><pre><a name="line6">6</a>       log = Apache::Log::Combined.parse(api_log_entry)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>             if (request_url)</pre></td>
+            <td><pre><a name="line7">7</a>       return unless log.path.include?('?')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>               hash = {}</pre></td>
+            <td><pre><a name="line8">8</a>       query_string = log.path.split('?')[1]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>               %w{request_url total_time view_time db_time}.collect { |key| hash[key] = eval key }</pre></td>
+            <td><pre><a name="line9">9</a>       return if query_string.blank?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>               puts hash.to_json</pre></td>
+            <td><pre><a name="line10">10</a>       params_hash = CGI.parse(query_string)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>       return unless params_hash[&quot;query&quot;][0].present? and</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>         params_hash[&quot;api_key&quot;][0].present? and</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>         params_hash[&quot;affiliate&quot;][0].present? and</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>         (User.find_by_api_key(params_hash[&quot;api_key&quot;][0]).affiliates.exists?(:name =&gt; params_hash[&quot;affiliate&quot;][0]) rescue false)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>       query = params_hash[&quot;query&quot;][0].gsub(&quot;\t&quot;, ' ')</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>       normalized_query = normalize(query)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>       ipaddr = log.remote_ip</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>       return if skippable_query(query) or skippable_query(normalized_query) or skippable_request_string(query_string)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>       time_of_day = log.time.strftime(&quot;%H:%M:%S&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       affiliate = params_hash[&quot;affiliate&quot;][0].downcase</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       locale = get_locale(params_hash[&quot;locale&quot;][0])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       line = [ipaddr, time_of_day, log.path, query, normalized_query, affiliate, locale]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>       puts line.join(&quot;\t&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>             end</pre></td>
+            <td><pre><a name="line24">24</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>           end</pre></td>
+            <td><pre><a name="line25">25</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>         end</pre></td>
+            <td><pre><a name="line26">26</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line21">21</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line22">22</a> end</pre></td>
+            <td><pre><a name="line27">27</a> end</pre></td>
           </tr>
         
       </tbody>
