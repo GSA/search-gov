@@ -2,7 +2,7 @@ $red: #990000
 $link: #2200CC
 $green: #008000
 $serp-link-visited-color: #551a8b
-$results-padding-left-size: 15px
+$results-padding-size: 15px
 
 a.serp-link
   :color $link
@@ -35,15 +35,17 @@ a.serp-link
 #results
   #summary
     margin-bottom: 1em
-    :padding-left $results-padding-left-size
+    :padding-left $results-padding-size
+
+  #boosted
+    :margin-bottom 0.5em
 
   div.searchresult
-    width: 640px
     :margin-bottom 0.75em
     clear: both
-    :padding-left $results-padding-left-size
+    :padding 0 $results-padding-size
     &.blended
-      :padding-left 0
+      :padding 0
     a.link-to-full-url
       :text-decoration none
       :color green
@@ -69,8 +71,8 @@ a.serp-link
         :color gray
 
   span.image_result, span.small_image_result
-    width: 200px
-    height: 200px
+    width: 210px
+    height: 210px
     margin: 0
     padding: 0
     text-align: center
@@ -88,11 +90,12 @@ a.serp-link
 
   span.small_image_result
     height: 100px
-    width: 145px
+    width: 150px
 
   .pagination
     :border-bottom 1px solid #DDD
-    :padding-left $results-padding-left-size - 7px
+    :clear both
+    :padding-left $results-padding-size - 7px
     :padding-bottom 0.75em
     :font-size 1em
     :margin-top 1.5em
@@ -167,7 +170,7 @@ a.serp-link
         float: left
 
 .no-results
-  :padding-left $results-padding-left-size
+  :padding-left $results-padding-size
   a
     :font
       :size 14px

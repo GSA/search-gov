@@ -1,4 +1,4 @@
-.searchresult.blended.clearfix{:id => "searchresult#{index+1}"}
+.searchresult.blended{:id => "searchresult#{index+1}"}
   .govbox.agency
     %span.official-tag
       = t :agency_feature_by
@@ -35,4 +35,3 @@
         = hidden_field_tag 'locale', I18n.locale.to_s
         = text_field_tag 'query', ''
         = submit_tag t :search
-    %div{:style => 'clear: both;'}

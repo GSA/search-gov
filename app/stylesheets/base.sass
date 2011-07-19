@@ -11,7 +11,7 @@ $link: #2200CC
 $green: #008000
 $link-visited-color: #595959
 $serp-link-visited-color: #551a8b
-$results-padding-left-size: 15px
+$results-padding-size: 15px
 
 body
   :background-color #F7F7F7
@@ -401,13 +401,12 @@ table.deep-links
   :behavior url(/javascripts/iepngfix.htc)
 
 #summary
-  :width 640px
   p
     :margin-bottom 0
 
 #results
   :float left
-  :width 640px
+  :width 650px
 
 .related-searches-wrapper-top
   :background url(/images/backgrounds/related_topics_top.png) no-repeat 0 0
@@ -415,20 +414,17 @@ table.deep-links
   :height 8px
   :line-height 8px
   :margin-top 0.75em
-  :width 640px
 
 .related-searches-wrapper-bottom
   :background url(/images/backgrounds/related_topics_bottom.png) no-repeat 0 0
   :behavior url(/javascripts/iepngfix.htc)
   :height 8px
-  :width 640px
 
 .related-searches-wrapper-middle
   @include clearfix
   :background url(/images/backgrounds/related_topics_middle.png) repeat-y 0 0
   :behavior url(/javascripts/iepngfix.htc)
   :padding 0 0 0.5em 0
-  :width 640px
   h3.alt
     +blueprint-typography(true)
     :color #C51432
@@ -438,7 +434,7 @@ table.deep-links
       :weight bold
     :margin 0 0 0.5em 0
     :padding-top 0.5em
-    :padding-left $results-padding-left-size
+    :padding-left $results-padding-size
   span.by-usa-gov, span.recommended-by
     :color gray
     :font
@@ -449,7 +445,7 @@ table.deep-links
 ul#relatedsearch
   :float left
   :margin 0
-  :padding-left $results-padding-left-size
+  :padding-left $results-padding-size
   :list-style none
   :color gray
   li
@@ -469,7 +465,7 @@ ul#relatedsearch
 
 ul#related_faqs
   :margin 0
-  :padding-left $results-padding-left-size
+  :padding-left $results-padding-size
   :list-style none
   :color gray
   li
@@ -507,7 +503,6 @@ ul#related_gov_forms
   :color black
   :margin 1em 0
   :padding 0
-  :width 640px
 
   #spotlight-simple
     :color black
@@ -531,11 +526,12 @@ ul#related_gov_forms
       :color #000
 
 .govbox
+  @include clearfix
   :color black
   :margin 0
   +topfade
   :border 1px solid #ddd
-  :padding $results-padding-left-size
+  :padding $results-padding-size
   @include border-radius
   h3
     :font-size 1.5em
@@ -671,6 +667,8 @@ ul#related_gov_forms
       :width 50px
       :padding 0
       :float left
+      span
+        :clear left
     .details
       :width 550px
       :float left
@@ -689,14 +687,19 @@ ul#related_gov_forms
 
 .recalls-govbox
   :margin-bottom 20px
-  :padding-left $results-padding-left-size
+  :padding-left $results-padding-size
   .recall
-    :width 635px
+    @include clearfix
+    margin-bottom: 0.75em
     .details
       :padding-top 0.5em
 
-#results .recalls
-  :padding-left $results-padding-left-size
+#results.recalls
+  .recalls
+    h3
+      :margin-left 0
+    .sort
+      :margin-left 15px
 
 .hidden
   :position absolute
