@@ -9,4 +9,15 @@ namespace :usasearch do
       end
     end
   end
+
+  namespace :search_api_query_log do
+    desc "Transform and filter a search API query log file into a format that can be imported into Hive's search_api_queries table"
+    task :transform_to_hive_queries_format, :file_name, :needs => :environment do |t, args|
+      if args.file_name.nil?
+        Rails.logger.error "usage: rake usasearch:search_api_query_log:transform_to_hive_queries_format[file_name]"
+      else
+        SearchApiLogFile.transform_to_hive_queries_format(args.file_name)
+      end
+    end
+  end
 end

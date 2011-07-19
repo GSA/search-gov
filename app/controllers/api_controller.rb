@@ -19,7 +19,7 @@ class ApiController < ApplicationController
 
     unless @affiliate = user.affiliates.find_by_name(params[:affiliate])
       render :text => 'Unauthorized', :status => 403
-      return false
+      false
     end
   end
 

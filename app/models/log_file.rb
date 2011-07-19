@@ -29,7 +29,7 @@ class LogFile
       affiliate = params_hash["affiliate"][0].blank? ? Affiliate::USAGOV_AFFILIATE_NAME : params_hash["affiliate"][0]
       return unless Affiliate.exists?(:name => affiliate) or affiliate == Affiliate::USAGOV_AFFILIATE_NAME
       affiliate.downcase!
-      locale = params_hash["locale"][0] == 'es' ? 'es' : I18n.default_locale.to_s
+      locale = get_locale(params_hash["locale"][0])
       is_bot = is_agent_a_bot?(agent) ? 1 : 0
       is_contextual = params_hash["linked"][0].present? ? 1 : 0
       line = [ipaddr, time_of_day, log.path, log.size, referrer, agent, query, normalized_query, affiliate, locale, is_bot, is_contextual]
@@ -52,12 +52,17 @@ class LogFile
     end
 
     def skippable_ip(ip)
-      classc = ip.split('.')[0,3].join('.')
+      classc = ip.split('.')[0, 3].join('.')
       LogfileBlockedIp.find_by_ip(ip) or LogfileBlockedClassC.find_by_classc(classc)
     end
 
     def normalize(query)
       query.gsub(",", ' ').squish.strip.downcase
     end
+
+    def get_locale(locale_str)
+      locale_str == 'es' ? 'es' : I18n.default_locale.to_s
+    end
+
   end
 end
