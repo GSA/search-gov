@@ -79,7 +79,9 @@ class SitePage < ActiveRecord::Base
               faq_doc = open(faq_url, headers) { |f| Hpricot(f) }
               title = faq_doc.search("div#main_content/h1").remove
               body = faq_doc.search("div#main_content/p").remove
-              content = title + body
+              links = faq_doc.search("div#main_content/ul").remove
+              links = Hpricot::Elements[links.last]
+              content = title + body + links
               title_text = title.inner_html
               faq_page = SitePage.find_or_initialize_by_url_slug("#{site[:url_slug_prefix]}#{title_text.parameterize}")
               faq_page.update_attributes(:title => title_text, :main_content => content.to_s)
@@ -105,7 +107,6 @@ class SitePage < ActiveRecord::Base
             SitePage.create(:url_slug => index_page_slug, :title => index_page_title, :main_content => index_page_content)
           end
         rescue Exception => e
-          puts e
           Rails.logger.error "Trouble fetching #{url}: #{e}"
           url = nil
         end
