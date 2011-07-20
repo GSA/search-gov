@@ -47,6 +47,13 @@ namespace :usasearch do
         end
       end
     end
+    
+    desc "Output dates for reprocessing the logs before running monthly reports"
+    task :reprocess_dates => :environment do
+      end_date = Date.current.beginning_of_month - 1.day
+      start_date = end_date.beginning_of_month
+      Kernel.puts "#{start_date.strftime('%Y%m%d')} #{end_date.strftime('%Y%m%d')}"
+    end
       
     desc "Generate various data outputs for a month and email to admins"
     task :monthly_report, :day, :needs => :environment do |t, args|

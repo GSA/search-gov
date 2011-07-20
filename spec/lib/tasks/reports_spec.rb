@@ -115,6 +115,23 @@ describe "Report generation rake tasks" do
       end
     end
 
+    describe "usasearch:reports:reprocess_dates" do
+      before do
+        @task_name = "usasearch:reports:reprocess_dates"
+      end
+      
+      it "should have 'environment' as a prereq" do
+        @rake[@task_name].prerequisites.should include("environment")
+      end
+      
+      it "should output the first and last day of the previous month" do
+        end_of_last_month = Date.current.beginning_of_month - 1.days
+        expected_output = "#{end_of_last_month.beginning_of_month.strftime('%Y%m%d')} #{end_of_last_month.strftime('%Y%m%d')}"
+        Kernel.should_receive(:puts).with(expected_output)
+        @rake[@task_name].invoke
+      end
+    end
+          
     describe "usasearch:reports:monthly_report" do
       before do
         @task_name = "usasearch:reports:monthly_report"
