@@ -29,10 +29,18 @@ describe SuperfreshUrl do
         SuperfreshUrl.find_by_affiliate_id_and_url(@affiliate.id, 'http://affiliate.usa.gov').should be_nil
       end
     end
+
+    it "should enqueue the creation of a BoostedContent entry via Resque" do
+      ResqueSpec.reset!
+      sf = SuperfreshUrl.create!(@valid_attributes)
+      SuperfreshUrlToBoostedContent.should have_queued(sf.url, sf.affiliate_id)
+    end
+
   end
 
   describe "#uncrawled_urls" do
     before do
+      SuperfreshUrl.delete_all
       @first_uncrawled_url = SuperfreshUrl.create(:url => 'http://some.mil/')
       @affiliate_uncrawled_url = SuperfreshUrl.create(:url => 'http://affiliate.uncrawled.mil', :affiliate => affiliates(:basic_affiliate))
       @last_uncrawled_url = SuperfreshUrl.create(:url => 'http://another.mil')

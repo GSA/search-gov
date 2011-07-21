@@ -5,7 +5,7 @@
     %h1 Boosted Content
     %p
       Boost content to make specific pages appear above the main search results displayed on your pages.
-      Boosted Content appears above other pages whenever words in a searcher's query match text in the page's title, URL, or description.
+      Boosted Content appears above other pages whenever words in a searcher's query match text in the page's title, description, or keywords.
 
     %p
       = link_to("Add a New Entry", "#add_a_new_entry")
@@ -24,33 +24,33 @@
         %col{:class => 'url'}
         %col{:class => 'description'}
         %col{:class => 'keywords'}
+        %col{:class => 'auto-generated'}
         %col{:class => 'actions'}
         %thead
           %tr
-            %th{:colspan => 5}
+            %th{:colspan => 6}
               = link_to(content_tag(:button, "Delete All"), destroy_all_affiliate_boosted_contents_path(@affiliate), :method => :delete, :confirm => "Are you sure you want to delete all of your Boosted Content?\nThis action can not be undone.", :style => "float: right;")
               ="Edit / Delete Current Boosted Entries"
         %tbody
         - if @boosted_content_count == 0
           %tr
-            %td{:colspan => 5}
+            %td{:colspan => 6}
               .content-box= "Affiliate #{@affiliate.display_name} has no Boosted Content"
         - else
           %tr
-            %td{:colspan => 5}
+            %td{:colspan => 6}
+              = "Affiliate #{@affiliate.display_name} has #{pluralize(@boosted_content_count, 'Boosted Content entry')}."
+              %br
               - if @boosted_contents.length < @boosted_content_count
-                = "Affiliate #{@affiliate.display_name} has #{@boosted_content_count} Boosted Content entries."
-                %br
                 = "Displayed below are the most recent #{Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX} entries."
                 %br
                 Please use the Delete All and Bulk Upload features to edit the rest of the entries.
-              -else
-                = "Affiliate #{@affiliate.display_name} has #{@boosted_content_count} Boosted Content entries."
           %tr
             %th Title
             %th URL
             %th Description
             %th Keywords
+            %th Auto-generated
             %th Actions
           - @boosted_contents.each do |boosted_content|
             %tr{:class => cycle('even', 'odd')}
@@ -58,6 +58,7 @@
               %td= link_to(shorten_url(boosted_content.url, 20), boosted_content.url, :target => "_blank", :title => boosted_content.url)
               %td= truncate(boosted_content.description, :length => 50)
               %td= truncate(boosted_content.keywords, :length => 50)
+              %td= boosted_content.auto_generated? ? "Yes" : "No"
               %td
                 = link_to("Edit", edit_affiliate_boosted_content_path(@affiliate, boosted_content))
                 %br

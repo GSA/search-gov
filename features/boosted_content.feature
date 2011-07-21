@@ -1,8 +1,8 @@
 Feature: Boosted Content
   In order to boost specific sites to the top of search results
-  And admin
-  wants to create boosted Content
-  
+  As an admin
+  I want to create boosted content
+
   Scenario: Create a new Boosted Content entry
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And I am on the boosted contents admin page
@@ -16,7 +16,7 @@ Feature: Boosted Content
     And I press "Search"
     Then I should be on the search page
     And I should see "Test" within "#boosted"
-    
+
   Scenario: Update a Boosted Content entry
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Boosted Content entries exist:
@@ -33,13 +33,13 @@ Feature: Boosted Content
     And I press "Search"
     Then I should be on the search page
     And I should not see "Test XYZ"
-    
+
     When I am on the homepage
     And I fill in "query" with "bananas"
     And I press "Search"
     Then I should be on the search page
     And I should see "Bananas" within "#boosted"
-  
+
   Scenario: Delete a Boosted Content entry
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Boosted Content entries exist:

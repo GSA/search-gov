@@ -31,10 +31,10 @@ Feature: Affiliate Superfresh Interface
     And I should see "Successfully added http://new.url.gov."
     And I should see "Uncrawled URLs (1)"
     And I should see "http://new.url.gov" within ".uncrawled-url"
-  
+
     When the MSNbot visits the superfresh feed
     Then I should see "http://new.url.gov"
-    
+
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Add to Bing"
     Then I should see "Uncrawled URLs (0)"

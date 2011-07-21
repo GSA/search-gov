@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110715175201) do
+ActiveRecord::Schema.define(:version => 20110722233615) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -124,13 +124,14 @@ ActiveRecord::Schema.define(:version => 20110715175201) do
 
   create_table "boosted_contents", :force => true do |t|
     t.integer  "affiliate_id"
-    t.string   "title",                                       :null => false
-    t.string   "url",                                         :null => false
-    t.string   "description",                                 :null => false
+    t.string   "title",                                          :null => false
+    t.string   "url",                                            :null => false
+    t.string   "description",                                    :null => false
     t.datetime "created_at"
-    t.string   "locale",       :limit => 6, :default => "en", :null => false
+    t.string   "locale",         :limit => 6, :default => "en",  :null => false
     t.datetime "updated_at"
     t.text     "keywords"
+    t.boolean  "auto_generated",              :default => false, :null => false
   end
 
   add_index "boosted_contents", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"

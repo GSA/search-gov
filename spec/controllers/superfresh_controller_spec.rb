@@ -4,6 +4,7 @@ describe SuperfreshController do
   describe "#index" do
     render_views
     before do
+      SuperfreshUrl.delete_all
       @first_uncrawled_url = SuperfreshUrl.create(:url => 'http://some.mil')
       @last_uncrawled_url = SuperfreshUrl.create(:url => 'http://another.mil')
       @already_crawled_url = SuperfreshUrl.create(:url => 'http://already.crawled.mil', :crawled_at => Time.now)

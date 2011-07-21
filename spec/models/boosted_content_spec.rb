@@ -8,7 +8,8 @@ describe BoostedContent do
       :title => "The foobar page",
       :description => "All about foobar, boosted to the top",
       :affiliate => affiliates(:power_affiliate),
-      :keywords => 'unrelated, terms'
+      :keywords => 'unrelated, terms',
+      :auto_generated => false
     }
   end
 
