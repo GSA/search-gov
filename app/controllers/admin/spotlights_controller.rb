@@ -5,6 +5,7 @@ class Admin::SpotlightsController < Admin::AdminController
     config.create.columns = writables
     config.update.columns = writables
     config.list.sorting = { :updated_at => :desc }
+    config.columns[:affiliate].form_ui= :select
   end
   
   before_filter :clean_params, :only => [:create, :update]
