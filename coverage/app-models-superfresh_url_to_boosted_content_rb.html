@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/admin/affiliate_broadcasts_controller.rb</title>
+    <title>app/models/superfresh_url_to_boosted_content.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/admin/affiliate_broadcasts_controller.rb</h2>
+    <h2>app/models/superfresh_url_to_boosted_content.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-admin-affiliate_broadcasts_controller_rb.html">app/controllers/admin/affiliate_broadcasts_controller.rb</a></td>
-            <td class='right_align'><tt>20</tt></td>
-            <td class='right_align'><tt>17</tt></td>
+            <td class="left_align"><a href="app-models-superfresh_url_to_boosted_content_rb.html">app/models/superfresh_url_to_boosted_content.rb</a></td>
+            <td class='right_align'><tt>23</tt></td>
+            <td class='right_align'><tt>22</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,13 +57,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Admin::AffiliateBroadcastsController &lt; Admin::AdminController</pre></td>
+            <td><pre><a name="line1">1</a> class SuperfreshUrlToBoostedContent</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   PAGE_TITLE = &quot;Affiliate Broadcast&quot;</pre></td>
+            <td><pre><a name="line2">2</a>   @queue = :usasearch</pre></td>
           </tr>
         
           
@@ -75,109 +75,127 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   def new</pre></td>
+            <td><pre><a name="line4">4</a>   def self.perform(url, affiliate_id)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     @affiliate_broadcast = AffiliateBroadcast.new</pre></td>
+            <td><pre><a name="line5">5</a>     return unless SuperfreshUrl.find_by_url_and_affiliate_id(url, affiliate_id)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     @page_title = PAGE_TITLE</pre></td>
+            <td><pre><a name="line6">6</a>     begin</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>       doc = Nokogiri::HTML(open(url))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>       title = doc.xpath(&quot;//title&quot;).first.content.squish.strip rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>       return if title.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>       description = doc.xpath(&quot;//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] &quot;).</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a>   end</pre></td>
+            <td><pre><a name="line11">11</a>         first.attributes[&quot;content&quot;].value.squish.strip rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>       if description.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>         doc.xpath('//script').each { |x| x.remove }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line14">14</a>         doc.xpath('//style').each { |x| x.remove }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>         description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(250, :separator =&gt; ' ')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a> </pre></td>
+            <td><pre><a name="line16">16</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>   def create</pre></td>
+            <td><pre><a name="line17">17</a>       boostedcontent = BoostedContent.create!(:url =&gt; url, :title=&gt; title, :description =&gt; description, :affiliate_id =&gt; affiliate_id, :auto_generated =&gt; true)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     @affiliate_broadcast = AffiliateBroadcast.new(params[:affiliate_broadcast].merge(:user=&gt;@current_user))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     if @affiliate_broadcast.save</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>       flash[:success] = &quot;Message broadcasted to all affiliates successfully&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line13">13</a>       redirect_to admin_affiliates_path</pre></td>
+            <td><pre><a name="line18">18</a>       Sunspot.index!(boostedcontent)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a>     else</pre></td>
+            <td><pre><a name="line19">19</a>     rescue Exception =&gt; e</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>       @page_title = PAGE_TITLE</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>       render :action =&gt; 'new'</pre></td>
+            <td><pre><a name="line20">20</a>       Rails.logger.error &quot;Trouble fetching #{url} for boosted content creation: #{e}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>     end</pre></td>
+            <td><pre><a name="line21">21</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>   end</pre></td>
+            <td><pre><a name="line22">22</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line20">20</a> end</pre></td>
+            <td><pre><a name="line23">23</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jul 22 17:49:08 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Jul 22 17:49:09 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
