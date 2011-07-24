@@ -10,22 +10,19 @@ Feature: Featured Collections
     And the following featured collections exist for the affiliate "site.gov":
       | title                                                                                                      | title_url                | locale | status   |
       | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at tincidunt erat. Sed sit amet massa massa. | http://site.gov/content5 | en     | active   |
-      | awesome content 4                                                                                          | http://site.gov/content4 | es     | active   |
-      | awesome content 3                                                                                          | http://site.gov/content3 | en     | inactive |
-      | awesome content 2                                                                                          | http://site.gov/content2 | es     | active   |
-      | awesome content 1                                                                                          | http://site.gov/content1 | en     | active   |
+    And there are 30 featured collections exist for the affiliate "site.gov":
+      | locale | status |
+      | en     | active |
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the site.gov's featured collections page
     Then I should see the browser page titled "Featured Collections"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collections
     And I should see "Featured Collections" in the page header
     And I should see "Add new featured collection"
-    And I should see "5" featured collections
+    And I should see "20" featured collections
     And I should see "Lorem ipsum dolor sit amet..."
-    And I should see "awesome content 4"
-    And I should see "awesome content 3"
-    And I should see "awesome content 2"
-    And I should see "awesome content 1"
+    When I follow "Next"
+    Then I should see "random title 20"
 
   Scenario: Adding Featured Collection
     Given the following Affiliates exist:
@@ -123,4 +120,3 @@ Feature: Featured Collections
     And I should see the browser page titled "Featured Collections"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collections
     And I should see "Featured Collections" in the page header
-

@@ -19,3 +19,16 @@ Then /^the following featured collection keywords exist for featured collection 
     featured_collection.featured_collection_keywords.create!(:value => hash['value'])
   end
 end
+
+Given /^there are (\d+) featured collections exist for the affiliate "([^"]*)":$/ do |count, affiliate_name, table|
+  affiliate = Affiliate.find_by_name(affiliate_name)
+  table.hashes.each do |hash|
+    count.to_i.times do |i|
+      FeaturedCollection.create!(:affiliate => affiliate,
+                                 :title => hash['title'] || "random title #{i + 1}",
+                                 :title_url => hash['title_url'] || "http://example/random_content#{i + 1}.html",
+                                 :locale => hash['locale'],
+                                 :status => hash['status'] || "active")
+    end
+  end
+end

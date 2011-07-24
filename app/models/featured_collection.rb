@@ -1,6 +1,9 @@
 class FeaturedCollection < ActiveRecord::Base
   STATUS = %w( active inactive )
 
+  cattr_reader :per_page
+  @@per_page = 20
+
   validates_presence_of :title
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   validates_inclusion_of :status, :in => STATUS, :message => 'must be selected'

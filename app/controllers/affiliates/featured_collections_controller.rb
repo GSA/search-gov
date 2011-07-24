@@ -5,7 +5,7 @@ class Affiliates::FeaturedCollectionsController < Affiliates::AffiliatesControll
 
   def index
     @title = 'Featured Collections - '
-    @featured_collections = @affiliate.featured_collections
+    @featured_collections = @affiliate.featured_collections.paginate(:all, :per_page => FeaturedCollection.per_page, :page => params[:page])
   end
 
   def new

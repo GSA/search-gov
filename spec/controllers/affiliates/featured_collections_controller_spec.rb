@@ -31,14 +31,23 @@ describe Affiliates::FeaturedCollectionsController do
 
     context "when logged in as an affiliate manager who belongs to the affiliate being requested" do
       let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+      let(:featured_collections) { mock('Featured Collections') }
+      let(:featured_collections_with_paginate) { mock('Featured Collections with paginate') }
 
       before do
-        UserSession.create(users(:affiliate_manager))
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_receive(:featured_collections).and_return(featured_collections)
+        featured_collections.should_receive(:paginate).with(:all, :per_page => FeaturedCollection.per_page, :page => nil).and_return(featured_collections_with_paginate)
+
         get :index, :affiliate_id => affiliate.id
       end
 
       it { should assign_to(:title).with_kind_of(String) }
-      it { should assign_to(:featured_collections).with(affiliate.featured_collections) }
+      it { should assign_to(:featured_collections).with(featured_collections_with_paginate) }
       it { should respond_with(:success) }
     end
   end
