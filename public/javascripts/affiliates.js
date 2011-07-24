@@ -59,5 +59,7 @@ jQuery(document).ready(function() {
     jQuery('.links .title').last().focus();
     return false;
   });
+
+  jQuery('.add-featured-collection #featured_collection_title').focus();
 });
 

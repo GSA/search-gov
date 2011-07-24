@@ -362,7 +362,7 @@ describe Affiliates::FeaturedCollectionsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.stub_chain(:featured_collections, :find_by_id).with(featured_collection.id).and_return(featured_collection)
-        featured_collection.should_receive(:update_attributes).and_return(true)
+        featured_collection.should_receive(:destroy_and_update_attributes).and_return(true)
 
         post :update, :affiliate_id => affiliate.id, :id => featured_collection.id, :featured_collection => { "title" => "hello" }
       end
@@ -379,7 +379,7 @@ describe Affiliates::FeaturedCollectionsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.stub_chain(:featured_collections, :find_by_id).with(featured_collection.id).and_return(featured_collection)
-        featured_collection.should_receive(:update_attributes).and_return(false)
+        featured_collection.should_receive(:destroy_and_update_attributes).and_return(false)
 
         featured_collection.should_receive(:featured_collection_keywords).twice.and_return(featured_collection_keywords)
         featured_collection_keywords.should_receive(:blank?).and_return(true)

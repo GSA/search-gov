@@ -9,11 +9,13 @@
       = form.text_field :title_url, { :class => 'text', :maxlength => 255, :size => nil }
     %li
       = form.label :locale, "Locale*", { :class => 'select' }
-      = form.select :locale, SUPPORTED_LOCALES.collect { |l| [SUPPORTED_LOCALE_WITH_NAMES[l], l] }, { :include_blank => 'Select a Locale' }
+      = form.select :locale, SUPPORTED_LOCALES.collect { |l| [SUPPORTED_LOCALE_WITH_NAMES[l], l] }, { :include_blank => 'Select a locale' }
     %li
       = form.label :status, "Status*", { :class => 'select' }
-      = form.select :status, FeaturedCollection::STATUS.collect { |s| [s.humanize, s] }, { :include_blank => 'Select a Status' }
-= label_tag "Keywords"
+      = form.select :status, FeaturedCollection::STATUS.collect { |s| [s.humanize, s] }, { :include_blank => 'Select a status' }
+%div
+  %hr
+%h2 Keywords
 .keywords
   %table
     %colgroup
@@ -27,7 +29,8 @@
             - index += 1
             = keyword_form.text_field :value, { :maxlength => 255, :size => nil }
   = link_to 'Add another keyword', '#', :id => 'add_another_keyword'
-
+%div
+  %hr
 %h2 Links
 .links
   %table

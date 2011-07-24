@@ -778,6 +778,12 @@ a
       td
         width: 100%
 
+* html
+  .outer-container
+    width: 1080px
+  .content .container
+    width: 790px
+
 .btn-submit
   background: url(/images/btn-submit.png) no-repeat 0 0
   width: 91px
@@ -1366,6 +1372,11 @@ h3.api-item
     font-size: 15px
   table
     margin-bottom: 0
+  hr
+    border: 0
+    height: 1px
+    margin: 1em 0 0.5em
+    width: auto
   .basic-information
     @include clearfix
     ul
@@ -1378,12 +1389,12 @@ h3.api-item
         float: left
   .keywords
     @include clearfix
-    width: 400px
+    width: 315px
     table
       float: left
     .row-item
       input
-        width: 385px
+        width: 300px
     td
       :padding 0
   .links
@@ -1395,9 +1406,8 @@ h3.api-item
       width: 40%
     col.url
       width: 60%
-    thead th
-      background-color: #444
     th
+      background-color: lightgray
       border: 1px solid #A9A9A9
       font-weight: bold
       padding: 5px
@@ -1407,7 +1417,7 @@ h3.api-item
       padding: 4px
       text-align: center
     .row-item
-      input, input[type=text]
+      input
         font-size: 11px
         line-height: 16px
         margin: 0

@@ -4,3 +4,4 @@
   = form_for([@affiliate, @featured_collection]) do |f|
     = render :partial => f
     = f.submit "Update"
+    = link_to 'Cancel', [@affiliate, @featured_collection]

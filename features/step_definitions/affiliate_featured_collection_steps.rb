@@ -32,3 +32,10 @@ Given /^there are (\d+) featured collections exist for the affiliate "([^"]*)":$
     end
   end
 end
+
+Given /^the following featured collection links exist for featured collection titled "([^"]*)":$/ do |featured_collection_title, table|
+  featured_collection = FeaturedCollection.find_by_title(featured_collection_title)
+  table.hashes.each_with_index do |hash, i|
+    featured_collection.featured_collection_links.create!(:title => hash['title'], :url => hash['url'], :position => i)
+  end
+end

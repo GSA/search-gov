@@ -14,7 +14,7 @@
     %tbody
       %tr
         %td.name Title
-        %td= link_to_unless(@featured_collection.title_url.blank?, @featured_collection.title, @featured_collection.title_url, { :target => '_blank' })
+        %td= link_to_unless(@featured_collection.title_url.blank?, @featured_collection.title, @featured_collection.title_url)
       %tr
         %td.name Title URL
         %td= @featured_collection.title_url
@@ -33,7 +33,7 @@
         %td.name Links
         %td.links
           - @featured_collection.featured_collection_links.each do |link|
-            = link_to link.title, link.url, :target => '_blank'
+            = link_to link.title, link.url
   .add-link-wrapper
     = link_to "Add another Featured Collection", new_affiliate_featured_collection_path(@affiliate), :class => 'add-link'
 

@@ -35,7 +35,7 @@ class Affiliates::FeaturedCollectionsController < Affiliates::AffiliatesControll
   end
 
   def update
-    if @featured_collection.update_attributes(params[:featured_collection])
+    if @featured_collection.destroy_and_update_attributes(params[:featured_collection])
       redirect_to [@affiliate, @featured_collection], :flash => { :success => 'Featured Collection successfully updated.' }
     else
       @title = 'Edit Featured Collection - '
