@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-featured_collection_rb.html">app/models/featured_collection.rb</a></td>
-            <td class='right_align'><tt>14</tt></td>
-            <td class='right_align'><tt>11</tt></td>
+            <td class='right_align'><tt>29</tt></td>
+            <td class='right_align'><tt>24</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,73 +75,163 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   validates_presence_of :title</pre></td>
+            <td><pre><a name="line4">4</a>   cattr_reader :per_page</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   validates_inclusion_of :locale, :in =&gt; SUPPORTED_LOCALES, :message =&gt; 'must be selected'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>   validates_inclusion_of :status, :in =&gt; STATUS, :message =&gt; 'must be selected'</pre></td>
+            <td><pre><a name="line5">5</a>   @@per_page = 20</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a> </pre></td>
+            <td><pre><a name="line6">6</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   belongs_to :affiliate</pre></td>
+            <td><pre><a name="line7">7</a>   validates_presence_of :title</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>   has_many :featured_collection_keywords, :dependent =&gt; :destroy</pre></td>
+            <td><pre><a name="line8">8</a>   validates_inclusion_of :locale, :in =&gt; SUPPORTED_LOCALES, :message =&gt; 'must be selected'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   has_many :featured_collection_links, :dependent =&gt; :destroy</pre></td>
+            <td><pre><a name="line9">9</a>   validates_inclusion_of :status, :in =&gt; STATUS, :message =&gt; 'must be selected'</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a> </pre></td>
+            <td><pre><a name="line10">10</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['value'].blank? }</pre></td>
+            <td><pre><a name="line11">11</a>   belongs_to :affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>   accepts_nested_attributes_for :featured_collection_links, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['title'].blank? and a['url'].blank? }</pre></td>
+            <td><pre><a name="line12">12</a>   has_many :featured_collection_keywords, :dependent =&gt; :destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>   has_many :featured_collection_links, :dependent =&gt; :destroy</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a> end</pre></td>
+            <td><pre><a name="line14">14</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['value'].blank? }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>   accepts_nested_attributes_for :featured_collection_links, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['title'].blank? and a['url'].blank? }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line17">17</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>   def destroy_and_update_attributes(params)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>     params[:featured_collection_keywords_attributes].each do |keyword_attributes|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       keyword = keyword_attributes[1]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       keyword[:_destroy] = true if keyword[:value].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line22">22</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>     params[:featured_collection_links_attributes].each do |link_attributes|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>       link = link_attributes[1]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       link[:_destroy] = true if link[:title].blank? and link[:url].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line26">26</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>     update_attributes(params)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line28">28</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line29">29</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jul 22 17:49:09 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Jul 25 08:17:13 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

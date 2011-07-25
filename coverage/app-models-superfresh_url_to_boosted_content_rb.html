@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-superfresh_url_to_boosted_content_rb.html">app/models/superfresh_url_to_boosted_content.rb</a></td>
+            <td class='right_align'><tt>24</tt></td>
             <td class='right_align'><tt>23</tt></td>
-            <td class='right_align'><tt>22</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -68,134 +68,140 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>   TRUNCATED_TITLE_LENGTH = 60</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   def self.perform(url, affiliate_id)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>     return unless SuperfreshUrl.find_by_url_and_affiliate_id(url, affiliate_id)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>     begin</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>       doc = Nokogiri::HTML(open(url))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line8">8</a>       title = doc.xpath(&quot;//title&quot;).first.content.squish.strip rescue nil</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>       return if title.nil?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>       description = doc.xpath(&quot;//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] &quot;).</pre></td>
+            <td><pre><a name="line4">4</a>   TRUNCATED_DESC_LENGTH = 250</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a>         first.attributes[&quot;content&quot;].value.squish.strip rescue nil</pre></td>
+            <td><pre><a name="line5">5</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>       if description.nil?</pre></td>
+            <td><pre><a name="line6">6</a>   def self.perform(url, affiliate_id)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>         doc.xpath('//script').each { |x| x.remove }</pre></td>
+            <td><pre><a name="line7">7</a>     return unless SuperfreshUrl.find_by_url_and_affiliate_id(url, affiliate_id)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>         doc.xpath('//style').each { |x| x.remove }</pre></td>
+            <td><pre><a name="line8">8</a>     begin</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>         description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(250, :separator =&gt; ' ')</pre></td>
+            <td><pre><a name="line9">9</a>       doc = Nokogiri::HTML(open(url))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>       return unless (title = doc.xpath(&quot;//title&quot;).first.content.squish.truncate(TRUNCATED_TITLE_LENGTH,:separator=&gt;&quot; &quot;) rescue nil)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>       description = doc.xpath(&quot;//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] &quot;).</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a>       end</pre></td>
+            <td><pre><a name="line12">12</a>         first.attributes[&quot;content&quot;].value.squish rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>       boostedcontent = BoostedContent.create!(:url =&gt; url, :title=&gt; title, :description =&gt; description, :affiliate_id =&gt; affiliate_id, :auto_generated =&gt; true)</pre></td>
+            <td><pre><a name="line13">13</a>       if description.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>       Sunspot.index!(boostedcontent)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line19">19</a>     rescue Exception =&gt; e</pre></td>
+            <td><pre><a name="line14">14</a>         doc.xpath('//script').each { |x| x.remove }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>       Rails.logger.error &quot;Trouble fetching #{url} for boosted content creation: #{e}&quot;</pre></td>
+            <td><pre><a name="line15">15</a>         doc.xpath('//style').each { |x| x.remove }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>         description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(TRUNCATED_DESC_LENGTH, :separator =&gt; ' ')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a>     end</pre></td>
+            <td><pre><a name="line17">17</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>       boostedcontent = BoostedContent.create!(:url =&gt; url, :title=&gt; title, :description =&gt; description, :affiliate_id =&gt; affiliate_id, :auto_generated =&gt; true)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>       Sunspot.index!(boostedcontent)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line22">22</a>   end</pre></td>
+            <td><pre><a name="line20">20</a>     rescue Exception =&gt; e</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       Rails.logger.error &quot;Trouble fetching #{url} for boosted content creation: #{e}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line23">23</a> end</pre></td>
+            <td><pre><a name="line22">22</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line23">23</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line24">24</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Jul 22 17:49:09 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Jul 25 08:17:13 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
