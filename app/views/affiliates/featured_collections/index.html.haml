@@ -26,7 +26,7 @@
               %td= truncate_on_words feature_collection.title, 30
               %td.publish_date= render_datetime feature_collection.publish_start_at
               %td.publish_date= render_datetime feature_collection.publish_end_at
-              %td.status= feature_collection.status
+              %td.status= feature_collection.display_status
               %td.actions
                 = link_to("Edit", edit_affiliate_featured_collection_path(@affiliate, feature_collection))
                 = button_to("Delete", [@affiliate, feature_collection], :method => :delete, :confirm => "Are you sure you want to delete this Featured Collection?")

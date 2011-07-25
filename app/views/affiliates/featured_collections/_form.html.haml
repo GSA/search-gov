@@ -12,7 +12,7 @@
       = form.select :locale, SUPPORTED_LOCALES.collect { |l| [SUPPORTED_LOCALE_WITH_NAMES[l], l] }, { :include_blank => 'Select a locale' }
     %li
       = form.label :status, "Status*", { :class => 'select' }
-      = form.select :status, FeaturedCollection::STATUS.collect { |s| [s.humanize, s] }, { :include_blank => 'Select a status' }
+      = form.select :status, FeaturedCollection::STATUS_OPTIONS, { :include_blank => 'Select a status' }
 %div
   %hr
 %h2 Keywords

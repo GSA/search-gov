@@ -1,12 +1,13 @@
 class FeaturedCollection < ActiveRecord::Base
-  STATUS = %w( active inactive )
+  STATUSES = %w( active inactive )
+  STATUS_OPTIONS = STATUSES.collect { |status| [status.humanize, status] }
 
   cattr_reader :per_page
   @@per_page = 20
 
   validates_presence_of :title
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
-  validates_inclusion_of :status, :in => STATUS, :message => 'must be selected'
+  validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
 
   belongs_to :affiliate
   has_many :featured_collection_keywords, :dependent => :destroy
@@ -25,5 +26,9 @@ class FeaturedCollection < ActiveRecord::Base
       link[:_destroy] = true if link[:title].blank? and link[:url].blank?
     end
     update_attributes(params)
+  end
+
+  def display_status
+    status.humanize
   end
 end
