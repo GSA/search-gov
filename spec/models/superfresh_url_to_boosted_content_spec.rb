@@ -27,6 +27,21 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
       BoostedContent.delete_all
     end
 
+    context "when the title is long" do
+      before do
+        doc = Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm'))
+        Nokogiri::HTML::Document.should_receive(:parse).and_return(doc)
+      end
+
+      it "should use the title, truncated to 60 characters on a word boundary" do
+        surl = superfresh_urls(:with_description_meta)
+        lambda { SuperfreshUrlToBoostedContent.perform(surl.url, @aff.id) }.should change(BoostedContent, :count).by(1)
+
+        bc = @aff.boosted_contents.find_by_url(surl.url)
+        bc.title.should == "Fire Island National Seashore - Fire Island Light Station..."
+      end
+    end
+
     context "when the page has a description meta tag" do
       before do
         doc = Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm'))
@@ -38,7 +53,6 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
         lambda { SuperfreshUrlToBoostedContent.perform(surl.url, @aff.id) }.should change(BoostedContent, :count).by(1)
 
         bc = @aff.boosted_contents.find_by_url(surl.url)
-        bc.title.should == "Fire Island National Seashore - Fire Island Light Station Fresnel Lens Building Opens July 23 (U.S. National Park Service)"
         bc.description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
         bc.auto_generated.should be_true
       end
@@ -69,7 +83,7 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
         surl = superfresh_urls(:without_description_meta)
         SuperfreshUrlToBoostedContent.perform(surl.url, @aff.id)
         bc = @aff.boosted_contents.find_by_url(surl.url)
-        bc.title.should == "Carribean Sea Regional Atlas - Map Service and Layer Descriptions"
+        bc.title.should == "Carribean Sea Regional Atlas - Map Service and Layer..."
         bc.description.should == "Carribean Sea Regional Atlas. -. Map Service and Layer Descriptions. Ocean Exploration and Research (OER) Digital Atlases. Caribbean Sea. Description. This map aids the public in locating surveys carried out by NOAA's Office of Exploration and..."
       end
     end
