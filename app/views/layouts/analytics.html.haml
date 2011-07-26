@@ -22,9 +22,9 @@
       = (javascript_include_tag "iepngfix_tilebg.js").html_safe
     = (javascript_include_tag "affiliates.js").html_safe
     != javascript_include_tag "analytics.js"
+    = calendar_date_select_includes.html_safe
     = active_scaffold_includes.html_safe
     = setup_google_visualizations.html_safe
-    = calendar_date_select_includes.html_safe
   %body
     = render "/shared/program_header"
     .outer-container

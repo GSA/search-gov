@@ -1473,4 +1473,41 @@ h3.api-item
         size: 20px
         weight: bold
 
+.analytics
+  form
+    @include clearfix
+    label, input, img
+      float: left
+    label
+      margin-left: 10px
+      padding: 5px 5px 0 0
+      &.query-term
+        margin-left: 5px
+    img
+      margin-left: 5px
+      padding-top: 8px
+    #search_query
+      margin: 5px 0
+      padding: 5px
+      width: 130px
+    #analytics_search_start_date, #analytics_search_end_date
+      margin: 5px 0
+      padding: 5px
+      width: 125px
+    #search_button
+      margin-top: 8px
+      margin-left: 10px
+  #busy
+    clear: both
+    margin: 1em 0
+    text-align: center
+#admin_analytics
+  label
+    margin-left: 15px
+    &.query-term
+      margin-left: 5px
+  #search_query
+    width: 200px
+  #analytics_search_start_date, #analytics_search_end_date
+    width: 130px
 
