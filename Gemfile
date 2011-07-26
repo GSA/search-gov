@@ -42,6 +42,7 @@ gem 'aws-s3', :require => 'aws/s3', :git => 'git://github.com/GSA-OCSIT/aws-s3.g
 gem 'SystemTimer'
 gem 'high_voltage'
 gem 'backports'
+gem 'mechanize'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
