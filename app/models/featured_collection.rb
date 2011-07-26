@@ -8,6 +8,8 @@ class FeaturedCollection < ActiveRecord::Base
   validates_presence_of :title
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
+  validate :minimum_keywords
+  validate :publish_start_and_end_dates
 
   belongs_to :affiliate
   has_many :featured_collection_keywords, :dependent => :destroy
@@ -30,5 +32,20 @@ class FeaturedCollection < ActiveRecord::Base
 
   def display_status
     status.humanize
+  end
+
+  private
+  def minimum_keywords
+    errors.add(:base, "One or more keywords are required") unless self.featured_collection_keywords.detect do |keyword|
+      keyword.value.present? and !keyword.marked_for_destruction?
+    end
+  end
+
+  def publish_start_and_end_dates
+    start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?
+    end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?
+    if start_date.present? and end_date.present? and start_date > end_date
+      errors.add(:base, "Publish end date can't be before publish start date")
+    end
   end
 end

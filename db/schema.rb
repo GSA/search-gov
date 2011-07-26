@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801220700) do
+ActiveRecord::Schema.define(:version => 20110802190508) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -256,11 +256,11 @@ ActiveRecord::Schema.define(:version => 20110801220700) do
     t.string   "title",            :null => false
     t.string   "title_url"
     t.string   "locale",           :null => false
-    t.datetime "publish_start_at"
-    t.datetime "publish_end_at"
     t.string   "status",           :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "publish_start_on"
+    t.date     "publish_end_on"
   end
 
   add_index "featured_collections", ["affiliate_id"], :name => "index_featured_collections_on_affiliate_id"

@@ -26,3 +26,5 @@ BOT_USER_AGENTS = ["Googlebot", "Baiduspider", "DotBot", "crawler@evreka.com", "
                    "Sosospider", "Speedy Spider", "Tasapspider", "the.cyrus.hellborg.sharecrawler",
                    "TurnitinBot", "yacybot", "YaDirectBot", "Yeti", "compatible; ICS", "TVersity Media Robot",
                    "Java/1.6.0_16", "Pingdom.com_bot", "YandexBot", "SiteScope", "Jakarta Commons-HttpClient"]
+
+CalendarDateSelect.format = :american

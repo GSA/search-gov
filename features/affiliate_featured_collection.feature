@@ -8,8 +8,12 @@ Feature: Featured Collections
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And the following featured collections exist for the affiliate "site.gov":
-      | title                                                                                                      | title_url                | locale | status   |
-      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at tincidunt erat. Sed sit amet massa massa. | http://site.gov/content5 | en     | active   |
+      | title                                                                                                      | title_url                | locale | status | publish_start_on | publish_end_on |
+      | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at tincidunt erat. Sed sit amet massa massa. | http://site.gov/content5 | en     | active | 07/01/2011       | 07/01/2012     |
+    And the following featured collection keywords exist for featured collection titled "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at tincidunt erat. Sed sit amet massa massa.":
+      | value |
+      | muspi |
+      | merol |
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the site.gov's featured collections page
     Then I should see the browser page titled "Featured Collections"
@@ -17,6 +21,8 @@ Feature: Featured Collections
     And I should see "Featured Collections" in the page header
     And I should see "Add new featured collection"
     And I should see "Lorem ipsum dolor sit amet,..."
+    And I should see "07/01/2011"
+    And I should see "07/01/2012"
     And I should see "Active"
     When there are 30 featured collections exist for the affiliate "site.gov":
       | locale | status |
@@ -42,11 +48,13 @@ Feature: Featured Collections
 
     When I follow "Add new featured collection"
     And I fill in the following:
-      | Title*       | 2010 Atlantic Hurricane Season                    |
-      | Title URL    | http://www.nhc.noaa.gov/2010atlan.shtml           |
-      | Keyword 0    | weather                                           |
-      | Link Title 0 | Hurricane Alex                                    |
-      | Link URL 0   | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf |
+      | Title*             | 2010 Atlantic Hurricane Season                    |
+      | Title URL          | http://www.nhc.noaa.gov/2010atlan.shtml           |
+      | Publish start date | 07/01/2011                                        |
+      | Publish end date   | 07/01/2012                                        |
+      | Keyword 0          | weather                                           |
+      | Link Title 0       | Hurricane Alex                                    |
+      | Link URL 0         | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf |
     And I select "English" from "Locale*"
     And I select "Active" from "Status*"
     And I press "Add"
@@ -58,6 +66,8 @@ Feature: Featured Collections
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see "English"
     And I should see "Active"
+    And I should see "07/01/2011"
+    And I should see "07/01/2012"
     And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
     When I follow "Edit"
     And I should see the browser page titled "Edit Featured Collection"
@@ -67,7 +77,7 @@ Feature: Featured Collections
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/2010atlan.shtml"
     And the "Keyword 0" field should contain "weather"
 
-  Scenario: Adding Featured Collection without filling out the required fields
+  Scenario: Validating Featured Collection on create
     Given the following Affiliates exist:
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
@@ -75,12 +85,16 @@ Feature: Featured Collections
     When I go to the site.gov's featured collections page
     And I follow "Add new featured collection"
     And I fill in the following:
-      | Link Title 0 | 2010 Atlantic Hurricane Season          |
-      | Link URL 1   | http://www.nhc.noaa.gov/2010atlan.shtml |
+      | Publish start date | 07/01/2012                              |
+      | Publish end date   | 07/01/2011                              |
+      | Link Title 0       | 2010 Atlantic Hurricane Season          |
+      | Link URL 1         | http://www.nhc.noaa.gov/2010atlan.shtml |
     And I press "Add"
     Then I should see "Title can't be blank"
     And I should see "Locale must be selected"
     And I should see "Status must be selected"
+    And I should see "One or more keywords are required"
+    And I should see "Publish end date can't be before publish start date"
     And I should see "Featured collection links title can't be blank"
     And I should see "Featured collection links url can't be blank"
 
@@ -132,7 +146,7 @@ Feature: Featured Collections
     And I should not see "Atlantic"
     And I should not see "Eastern North Pacific"
 
-  Scenario: Editing Featured Collection without filling out the required fields
+  Scenario: Validating Featured Collection on update
     Given the following Affiliates exist:
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
@@ -152,15 +166,22 @@ Feature: Featured Collections
     When I go to the site.gov's featured collections page
     And I follow "Edit"
     And I fill in the following:
-      | Title        |  |
-      | Link Title 0 |  |
-      | Link URL 1   |  |
+      | Title              |            |
+      | Publish start date | 07/01/2012 |
+      | Publish end date   | 07/01/2011 |
+      | Keyword 0          |            |
+      | Keyword 1          |            |
+      | Keyword 2          |            |
+      | Link Title 0       |            |
+      | Link URL 1         |            |
     And I select "Select a locale" from "Locale*"
     And I select "Select a status" from "Status*"
     And I press "Update"
     Then I should see "Title can't be blank"
     And I should see "Locale must be selected"
     And I should see "Status must be selected"
+    And I should see "Publish end date can't be before publish start date"
+    And I should see "One or more keywords are required"
     And I should see "Featured collection links title can't be blank"
     And I should see "Featured collection links url can't be blank"
 

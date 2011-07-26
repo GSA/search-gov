@@ -1295,8 +1295,10 @@ h3.api-item
     border: 1px solid #BDBDBD
     table-layout: fixed
   col.publish-date
-    width: 160px
+    text-align: center
+    width: 120px
   col.status
+    text-align: center
     width: 75px
   col.actions
     width: 110px
@@ -1311,6 +1313,8 @@ h3.api-item
     border: 1px solid #A9A9A9
     padding: 4px 8px
     &.empty
+      text-align: center
+    &.publish-date, &.status
       text-align: center
   .column-header
     font:
@@ -1388,6 +1392,12 @@ h3.api-item
       input.text
         float: left
         width: 600px
+      input.date
+        float: left
+        margin: 5px 0
+        width: 95px
+      img
+        padding: 8px 0 0 5px
       select
         float: left
   .keywords

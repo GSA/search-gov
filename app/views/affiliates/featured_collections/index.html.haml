@@ -23,9 +23,9 @@
         - unless @featured_collections.blank?
           - @featured_collections.each do |feature_collection|
             %tr.row-item
-              %td= feature_collection.title.truncate(30, :separator => " ")
-              %td.publish_date= render_datetime feature_collection.publish_start_at
-              %td.publish_date= render_datetime feature_collection.publish_end_at
+              %td= feature_collection.title.truncate(35, :separator => " ")
+              %td.publish-date= render_date feature_collection.publish_start_on
+              %td.publish-date= render_date feature_collection.publish_end_on
               %td.status= feature_collection.display_status
               %td.actions
                 = link_to("Edit", edit_affiliate_featured_collection_path(@affiliate, feature_collection))

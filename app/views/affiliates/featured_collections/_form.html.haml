@@ -13,9 +13,15 @@
     %li
       = form.label :status, "Status*", { :class => 'select' }
       = form.select :status, FeaturedCollection::STATUS_OPTIONS, { :include_blank => 'Select a status' }
+    %li
+      = form.label :publish_start_on, "Publish start date"
+      = form.calendar_date_select :publish_start_on, { :year_range => 0.years.ago..10.years.from_now, :class => 'date' }
+    %li
+      = form.label :publish_end_on, "Publish end date"
+      = form.calendar_date_select :publish_end_on, { :year_range => 0.years.ago..10.years.from_now, :class => 'date' }
 %div
   %hr
-%h2 Keywords
+%h2 Keywords*
 .keywords
   %table
     %colgroup

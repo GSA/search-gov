@@ -25,6 +25,12 @@
         %td.name Status
         %td= @featured_collection.display_status
       %tr
+        %td.name Publish start date
+        %td= render_date @featured_collection.publish_start_on
+      %tr
+        %td.name Publish end date
+        %td= render_date @featured_collection.publish_end_on
+      %tr
         %td.name Keywords
         %td.keywords
           - @featured_collection.featured_collection_keywords.each do |keyword|

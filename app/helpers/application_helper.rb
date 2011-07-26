@@ -247,8 +247,8 @@ module ApplicationHelper
     tags.join("\n").html_safe
   end
 
-  def render_datetime(datetime, time_zone = ActiveSupport::TimeZone["Eastern Time (US & Canada)"])
-    datetime.in_time_zone(time_zone).strftime("%m/%d/%y %H:%M %Z") unless datetime.nil?
+  def render_date(date)
+    date.strftime("%m/%d/%Y") unless date.nil?
   end
 
   private
