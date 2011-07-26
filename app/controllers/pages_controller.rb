@@ -2,7 +2,6 @@ class PagesController < HighVoltage::PagesController
   layout 'pages'
   before_filter :set_page_title, :only => [:show]
   PAGE_TITLES = {
-    :accessibility => "Accessibility",
     :api => "APIs and Web Services",
     :program => "USASearch Program",
     :recalls => "Product Recall Data API",

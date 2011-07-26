@@ -221,7 +221,7 @@ module ApplicationHelper
 
   def render_robots_meta_tag
     content = ''
-    if request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i
+    if (request.path =~ /^\/(image_searches|search(?!usagov)|usa\/)/i) or error_page?
       content = tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'})
     elsif mobile_landing_page?
       content = tag(:meta, {:name => 'ROBOTS', :content => 'INDEX, NOFOLLOW'})
