@@ -775,11 +775,23 @@ Feature: Affiliate clients
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see "Header"
     And I should see "Footer"
-    And I should see "Use the options on this page to create a very specific search for aff site"
+    And I should see "Use the options on this page to create a very specific search"
     And I should not see "aff.gov"
     When I fill in "query" with "emergency"
     And I press "Search"
     Then I should see "Results 1-10"
+    And I should see "emergency"
+
+    When I go to aff.gov's Spanish search page
+    And I follow "Búsqueda avanzada"
+    Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    And I should see "Header"
+    And I should see "Footer"
+    And I should see "Use las siguientes opciones para hacer una búsqueda específica."
+    And I should not see "aff.gov"
+    When I fill in "query" with "emergency"
+    And I press "Busque información del Gobierno"
+    Then I should see "Resultados 1-10"
     And I should see "emergency"
 
     When I am on the affiliate advanced search page for "aff.gov"
