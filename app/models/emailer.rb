@@ -78,11 +78,11 @@ class Emailer < ActionMailer::Base
     @search_terms = terms
   end
   
-  def monthly_report(zip_filename, report_date)
-    setup_email(MONTHLY_REPORT_RECIPIENTS.join(", "))
-    @subject += "Monthly Report data attached: #{File.basename(zip_filename)}"
+  def report(zip_filename, report_date, subject_header)
+    setup_email(REPORT_RECIPIENTS.join(", "))
+    @subject += "#{subject_header}: #{File.basename(zip_filename)}"
     attachments[File.basename(zip_filename)] = File.read(zip_filename)
-    mail(:to => MONTHLY_REPORT_RECIPIENTS.join(", "), :subject => @subject, :from => @from)
+    mail(:to => REPORT_RECIPIENTS.join(", "), :subject => @subject, :from => @from)
   end
 
   private

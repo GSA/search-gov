@@ -45,4 +45,4 @@ SSL_PROTOCOL = "http"
 RECAPTCHA_PUBLIC_KEY  = 'PUBLIC_KEY'
 RECAPTCHA_PRIVATE_KEY = 'PRIVATE_KEY'
 
-MONTHLY_REPORT_RECIPIENTS = ['test@example.com', 'test2@example.com']
+REPORT_RECIPIENTS = ['test@example.com', 'test2@example.com']

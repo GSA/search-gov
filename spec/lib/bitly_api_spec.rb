@@ -32,7 +32,7 @@ describe BitlyAPI do
 
       it "should default to yesterday" do
         date = Date.yesterday
-        @bitly_api.grab_csv_for_date.should =~ /allday-20110726-0000.csv/
+        @bitly_api.grab_csv_for_date.should =~ /allday-#{date.strftime("%Y%m%d-%H%M")}.csv/
       end
     
       it "should use a date if provided" do

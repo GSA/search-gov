@@ -34,4 +34,4 @@ SSL_PROTOCOL = "http"
 RECAPTCHA_PUBLIC_KEY  = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
 
-MONTHLY_REPORT_RECIPIENTS = ['developer@example.com']
+REPORT_RECIPIENTS = ['developer@example.com']
