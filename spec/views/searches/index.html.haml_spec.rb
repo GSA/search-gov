@@ -374,7 +374,7 @@ describe "searches/index.html.haml" do
         
         it "should truncate the title" do
           render
-          rendered.should contain(/This is a really long title that we are going t\.\.\./)
+          rendered.should contain(/This is a really long title that we are going\.\.\./)
         end
       end
     end

@@ -23,7 +23,7 @@
         - unless @featured_collections.blank?
           - @featured_collections.each do |feature_collection|
             %tr.row-item
-              %td= truncate_on_words feature_collection.title, 30
+              %td= feature_collection.title.truncate(30, :separator => " ")
               %td.publish_date= render_datetime feature_collection.publish_start_at
               %td.publish_date= render_datetime feature_collection.publish_end_at
               %td.status= feature_collection.display_status

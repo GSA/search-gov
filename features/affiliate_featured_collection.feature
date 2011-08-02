@@ -16,7 +16,7 @@ Feature: Featured Collections
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collections
     And I should see "Featured Collections" in the page header
     And I should see "Add new featured collection"
-    And I should see "Lorem ipsum dolor sit amet..."
+    And I should see "Lorem ipsum dolor sit amet,..."
     And I should see "Active"
     When there are 30 featured collections exist for the affiliate "site.gov":
       | locale | status |

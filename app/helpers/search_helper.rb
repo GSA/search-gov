@@ -92,14 +92,14 @@ module SearchHelper
       if duplicate_titles.include?(popular_url.title)
         dup_count = duplicate_counters[popular_url.title]
         if dup_count.nil?
-          title = truncate(popular_url.title, :length => 46) + " (1)"
+          title = popular_url.title.truncate(46, :separator => " ") + " (1)"
           duplicate_counters[popular_url.title] = 1
         else
-          title = truncate(popular_url.title, :length => 46) + " (#{dup_count + 1})"
+          title = popular_url.title.truncate(46, :separator => " ") + " (#{dup_count + 1})"
           duplicate_counters[popular_url.title] = dup_count + 1
         end          
       else
-        title = truncate(popular_url.title, :length => 50)
+        title = popular_url.title.truncate(50, :separator => " ")
       end
       popular_links << content_tag(:li, display_agency_popular_url(title, popular_url.url, search, affiliate, index, vertical))
     end
@@ -167,7 +167,7 @@ module SearchHelper
   end
 
   def display_recall_result_title_with_click_tracking(result, hit, query, position, vertical, summary_length)
-    title= (highlight_like_solr(truncate_on_words(result.summary, summary_length), hit.highlights)).html_safe
+    title= (highlight_like_solr(result.summary.truncate(summary_length, :separator => " "), hit.highlights)).html_safe
     onmousedown = onmousedown_for_click(query, position, nil, 'RECALL', Time.now.to_i, vertical)
     raw "<a href=\"#{h result.recall_url}\" #{onmousedown}>#{title}</a>"
   end

@@ -174,15 +174,6 @@ module ApplicationHelper
             :only_path => false)
   end
 
-  def truncate_on_words(text, length)
-    mb_chars = text.mb_chars
-    return text if mb_chars.length <= length
-    last_space_index = ((mb_chars.rindex(/\W/, length) rescue 0) || 0)
-    truncated = mb_chars[0..(mb_chars.rindex(/\w/, last_space_index) || 0)] unless last_space_index.nil?
-    "#{truncated}..."
-  end
-
-
   def truncate_html_prose_on_words(html, length, max_paragraphs = nil)
     html_root = Nokogiri::HTML.fragment(html.strip) rescue nil
     truncated_html = ""
