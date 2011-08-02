@@ -154,13 +154,6 @@ describe "summary_tables rake tasks" do
       end
 
       context "when no parameters are passed" do
-        it "should calculate the popular queries/clicks for the month of the previous day" do
-          DailyQueryStat.should_receive(:most_popular_terms_for_year_month).with(Date.yesterday.year, Date.yesterday.month, 1000).and_return []
-          DailyQueryStat.should_receive(:most_popular_groups_for_year_month).with(Date.yesterday.year, Date.yesterday.month, 1000).and_return []
-          Click.should_receive(:monthly_totals_by_module).with(Date.yesterday.year, Date.yesterday.month).and_return ActiveSupport::OrderedHash.new
-          @rake[@task_name].invoke
-        end
-
         it "should create monthly popular query records for the monthly total" do
           @rake[@task_name].invoke
           mpq = MonthlyPopularQuery.find_all_by_year_and_month_and_query(@first_stat_date.year, @first_stat_date.month, "whatever")
@@ -189,28 +182,12 @@ describe "summary_tables rake tasks" do
             MonthlyPopularQuery.count.should be_zero
           end
         end
-
-        context "for clicks" do
-          before do
-            @threshold_to_be_counted = 10
-            @threshold_to_be_counted.times { Click.create!(:clicked_at => Date.yesterday, :queried_at => Date.yesterday, :url => 'http://something.com', :query => 'something', :results_source => 'TEST')}
-          end
-
-          it "should update the monthly total clicks" do
-            @rake[@task_name].invoke
-            click_totals = MonthlyClickTotal.find_all_by_year_and_month(Date.yesterday.year, Date.yesterday.month)
-            click_totals.size.should == 1
-            click_totals.first.source.should == "TEST"
-            click_totals.first.total.should == @threshold_to_be_counted
-          end
-        end
       end
 
       context "when a date parameter is passed" do
         it "should calculate the popular queries for the month associated with the date specified" do
           DailyQueryStat.should_receive(:most_popular_terms_for_year_month).with(2011, 2, 1000).and_return []
           DailyQueryStat.should_receive(:most_popular_groups_for_year_month).with(2011, 2, 1000).and_return []
-          Click.should_receive(:monthly_totals_by_module).with(2011, 2).and_return ActiveSupport::OrderedHash.new
           @rake[@task_name].invoke('2011-02-11')
         end
       end

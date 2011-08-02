@@ -24,17 +24,8 @@
             Total Unique Visitors: #{number_with_delimiter @monthly_totals[profile_name][:total_unique_visitors]}
     %p
       = analytics_monthly_report_link(@report_date)
-  - if @clicks.present?
-    .span-6
-      %h3 Clicks by module
-      %table{:id => "module_click_stats"}
-        %tr
-          %th Module
-          %th{:style=>"text-align: right"} Clicks
-        - @clicks.each do |monthly_click_total|
-          %tr
-            %td= monthly_click_total.source
-            %td{:style=>"text-align: right"}= number_with_delimiter(monthly_click_total.total)
+  .span-6
+    = render :partial => "analytics/shared/search_modules_stats", :locals => { :search_module_stats => @search_module_stats }
 
   .span-24.headertitle
     .span-21

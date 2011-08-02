@@ -3,34 +3,60 @@ Feature: Monthly Reports
   As an Analyst
   I want to view the total number of queries,
     the total number of unique site visitors,
-    the total number of page views and total number of click throughs,
+    the total number of page views,
+    the total number of click throughs, impressions, and the click-thru rate,
     the most popular queries for English locale and default affiliate,
     and the most popular query groups for English locale and default affiliate.
 
   Scenario: Viewing module click stats on the the Reports homepage
-    Given the following MonthlyClickTotals exist
-    | year  | month | source  | total    |
-    | 2010  | 2     | FORM    | 4000     |
-    | 2010  | 2     | FAQS    | 300      |
-    | 2010  | 3     | BWEB    | 200      |
-    | 2010  | 3     | BREL    | 10       |
+    Given the following search modules exist:
+    | tag | display_name |
+    | FOO | Foo Module   |
+    | BAR | Bar Module   |
+    And the following search module data exists for "2011-06-10":
+    | affiliate_name | module_tag     | vertical| locale | impressions | clicks |
+    | usasearch.gov  | FOO            | web     | en     | 100         | 40     |
+    | usasearch.gov  | BAR            | web     | en     | 10          | 9      |
+    | usasearch.gov  | FOO            | form    | en     | 10          | 1      |
+    | usasearch.gov  | FOO            | image   | es     | 10          | 2      |
+    | otheraff.govy  | BAR            | web     | en     | 10          | 3      |
+    | otheraff.govy  | UNKNOWN        | recall  | en     | 1           | 1      |
+    And the following search module data exists for "2011-03-01":
+    | affiliate_name | module_tag     | vertical| locale | impressions | clicks |
+    | usasearch.gov  | FOO            | web     | en     | 100         | 40     |
+    | usasearch.gov  | BAR            | web     | en     | 10          | 9      |
+    | usasearch.gov  | FOO            | form    | en     | 10          | 1      |
+    | usasearch.gov  | FOO            | image   | es     | 10          | 2      |
+    | otheraff.govy  | BAR            | web     | en     | 10          | 3      |
+    | otheraff.govy  | UNKNOWN        | recall  | en     | 1           | 1      |
+    And the following search module data exists for "2011-03-30":
+    | affiliate_name | module_tag     | vertical| locale | impressions | clicks |
+    | usasearch.gov  | FOO            | web     | en     | 100         | 40     |
+    | usasearch.gov  | BAR            | web     | en     | 10          | 9      |
+    | usasearch.gov  | FOO            | form    | en     | 10          | 1      |
+    | usasearch.gov  | FOO            | image   | es     | 10          | 2      |
+    | otheraff.govy  | BAR            | web     | en     | 10          | 3      |
+    | otheraff.govy  | UNKNOWN        | recall  | en     | 1           | 1      |
+
     And I am logged in with email "analyst@fixtures.org" and password "admin"
     When I am on the analytics homepage
     And I follow "Monthly Reports"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Monthly Reports
-    And I select "February 2010" as the report date
+
+    When I select "June 2011" as the report date
     And I press "Get Usage Stats"
-    Then I should see "FORM"
-    And I should see "4,000"
-    And I should see "FAQS"
-    And I should see "300"
-    And I should not see "noblis"
-    When I select "March 2010" as the report date
+    Then I should see "Impressions and Clicks by Module"
+    And I should see the following table rows:
+    | Module      | Impressions     | Clicks | Clickthru Rate   |
+    | Foo Module  | 120             | 43     | 35.8%            |
+    | Bar Module  | 20              | 12     | 60.0%            |
+
+    When I select "March 2011" as the report date
     And I press "Get Usage Stats"
-    Then I should see "BWEB"
-    And I should see "200"
-    And I should see "BREL"
-    And I should see "10"
+    Then I should see the following table rows:
+    | Module      | Impressions     | Clicks | Clickthru Rate   |
+    | Foo Module  | 240             | 86     | 35.8%            |
+    | Bar Module  | 40              | 24     | 60.0%            |
 
   Scenario: Viewing most popular queries across all affiliates and locales
     Given I am logged in with email "analyst@fixtures.org" and password "admin"

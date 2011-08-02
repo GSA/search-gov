@@ -8,9 +8,9 @@ class DailySearchModuleStat < ActiveRecord::Base
     maximum(:day)
   end
 
-  def self.module_stats_for_day(day)
+  def self.module_stats_for_daterange(daterange)
     results = select('module_tag, SUM(clicks) AS clicks, SUM(impressions) AS impressions').includes(:search_module).
-      where(:day => day).group(:module_tag).order("impressions DESC")
+      where(:day => daterange).group(:module_tag).order("impressions DESC")
     return [] if results.nil?
     structs = results.collect do |stat|
       OpenStruct.new(:display_name => stat.search_module.display_name, :clicks => stat.clicks, :impressions => stat.impressions,

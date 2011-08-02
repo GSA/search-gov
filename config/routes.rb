@@ -81,7 +81,6 @@ UsasearchRails3::Application.routes.draw do
     resources :affiliate_broadcasts, :only => [:new, :create]
     resources :faqs do as_routes end
     resources :gov_forms do as_routes end
-    resources :clicks do as_routes end
     resources :calais_related_searches do as_routes end
     resources :top_searches, :only => [:index, :create, :new]
     resources :top_forms, :only => [:index, :create, :update, :destroy]

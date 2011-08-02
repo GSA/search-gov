@@ -54,25 +54,28 @@ describe DailySearchModuleStat do
     end
   end
 
-  describe "#module_stats_for_day(day)" do
-    context "when stats are available for the day" do
+  describe "#module_stats_for_daterange(daterange)" do
+    context "when at least some stats are available for the range" do
       before do
         impressions, clicks = 100, 10
-        %w{usasearch.gov nps noaa}.each do |affiliate_name|
-          %w{en es}.each do |locale|
-            %w{VIDEO BWEB CREL}.each do |tag|
-              %w{web recall image form}.each do |vertical|
-                DailySearchModuleStat.create!(:day => Date.current, :module_tag => tag, :vertical => vertical,
-                                              :locale => locale, :affiliate_name => affiliate_name, :impressions => impressions, :clicks => clicks)
-                impressions, clicks = impressions + 17, clicks + 7
+        @range = Date.yesterday..Date.today
+        @range.each do |day|
+          %w{usasearch.gov nps noaa}.each do |affiliate_name|
+            %w{en es}.each do |locale|
+              %w{VIDEO BWEB CREL}.each do |tag|
+                %w{web recall image form}.each do |vertical|
+                  DailySearchModuleStat.create!(:day => day, :module_tag => tag, :vertical => vertical,
+                                                :locale => locale, :affiliate_name => affiliate_name, :impressions => impressions, :clicks => clicks)
+                  impressions, clicks = impressions + 17, clicks + 7
+                end
               end
             end
           end
         end
       end
 
-      it "should return collection of structures grouped by module ordered by descending impression count that respond to display_name, impressions, clicks, clickthru_ratio" do
-        stats = DailySearchModuleStat.module_stats_for_day(Date.current)
+      it "should return collection of structures grouped by module, summed over the date range, ordered by descending impression count that respond to display_name, impressions, clicks, clickthru_ratio" do
+        stats = DailySearchModuleStat.module_stats_for_daterange(@range)
         stats[0].display_name.should == search_modules(:crel).display_name
         stats[0].impressions.should == 18516
         stats[0].clicks.should == 6876
@@ -91,22 +94,22 @@ describe DailySearchModuleStat do
 
       context "when search module stats references a non-existent search module name" do
         before do
-          DailySearchModuleStat.create!(:day => Date.current, :module_tag => "LOREN", :vertical => "web", :locale => "en", :affiliate_name => "nps", :impressions => 1, :clicks => 1)
+          DailySearchModuleStat.create!(:day => @range.first, :module_tag => "LOREN", :vertical => "web", :locale => "en", :affiliate_name => "nps", :impressions => 1, :clicks => 1)
         end
 
         it "should not include that module tag in the results" do
-          DailySearchModuleStat.module_stats_for_day(Date.current).count.should == 3
+          DailySearchModuleStat.module_stats_for_daterange(@range).count.should == 3
         end
       end
     end
 
-    context "when no stats are available for the day" do
+    context "when no stats are available for the daterange" do
       before do
         DailySearchModuleStat.delete_all
       end
 
       it "should return an empty array" do
-        DailySearchModuleStat.module_stats_for_day(Date.tomorrow).should == []
+        DailySearchModuleStat.module_stats_for_daterange(Date.tomorrow..Date.tomorrow).should == []
       end
     end
   end

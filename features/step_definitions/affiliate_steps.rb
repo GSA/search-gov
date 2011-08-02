@@ -196,3 +196,26 @@ end
 Then /^I should see (\d+) popular URLs$/ do |count|
   page.should have_selector("#popular_urls ul>li>a", :count => count)
 end
+
+Given /^the following DailySearchModuleStats exist for each day in yesterday's month$/ do |table|
+  end_date = Date.yesterday
+  start_date = end_date.beginning_of_month
+  table.hashes.each do |hash|
+    start_date.upto(end_date) do |day|
+      DailySearchModuleStat.create!(:day => day, :affiliate_name => hash['affiliate'], :locale => 'en', :vertical => 'web',
+                                    :module_tag => 'BWEB', :clicks => hash['total_clicks'], :impressions => hash['total_clicks'])
+    end
+  end
+end
+
+Given /^the following DailySearchModuleStats exist for each day in "([^\"]*)"$/ do |month_year, table|
+  start_date = Date.parse(month_year + "-01")
+  end_date = start_date.end_of_month
+  table.hashes.each do |hash|
+    start_date.upto(end_date) do |day|
+      DailySearchModuleStat.create!(:day => day, :affiliate_name => hash['affiliate'], :locale => 'en', :vertical => 'web',
+                                    :module_tag => 'BWEB', :clicks => hash['total_clicks'], :impressions => hash['total_clicks'])
+    end
+  end
+end
+

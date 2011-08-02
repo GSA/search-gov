@@ -28,7 +28,7 @@ Feature: Search Module Analytics
     | Foo Module  | 120             | 43     | 35.8%            |
     | Bar Module  | 20              | 12     | 60.0%            |
 
-  Scenario: Viewing the search module analytics page when data is available
+  Scenario: Viewing the search module analytics page when data is NOT available
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And no search module data exists
     When I am on the analytics homepage

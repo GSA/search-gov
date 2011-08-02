@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110727180259) do
+ActiveRecord::Schema.define(:version => 20110801220700) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -148,21 +148,6 @@ ActiveRecord::Schema.define(:version => 20110727180259) do
   end
 
   add_index "calais_related_searches", ["affiliate_id", "term"], :name => "index_calais_related_searches_on_affiliate_id_and_term"
-
-  create_table "clicks", :force => true do |t|
-    t.string   "query"
-    t.datetime "queried_at"
-    t.string   "url"
-    t.integer  "serp_position"
-    t.string   "affiliate",      :limit => 50
-    t.datetime "clicked_at"
-    t.string   "results_source"
-    t.string   "user_agent"
-    t.string   "click_ip"
-  end
-
-  add_index "clicks", ["clicked_at"], :name => "index_clicks_on_clicked_at"
-  add_index "clicks", ["results_source", "clicked_at"], :name => "index_clicks_on_results_source_and_clicked_at"
 
   create_table "daily_contextual_query_totals", :force => true do |t|
     t.date     "day"
@@ -416,17 +401,6 @@ ActiveRecord::Schema.define(:version => 20110727180259) do
   end
 
   add_index "misspellings", ["wrong"], :name => "index_misspellings_on_wrong"
-
-  create_table "monthly_click_totals", :force => true do |t|
-    t.integer  "year"
-    t.integer  "month"
-    t.string   "source"
-    t.integer  "total"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "monthly_click_totals", ["year", "month"], :name => "index_monthly_click_totals_on_year_and_month"
 
   create_table "monthly_popular_queries", :force => true do |t|
     t.integer  "year"

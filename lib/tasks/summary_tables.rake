@@ -52,11 +52,6 @@ namespace :usasearch do
           MonthlyPopularQuery.create!(:year => day.year, :month => day.month, :query => query_count.query, :is_grouped => combo[:is_grouped], :times => query_count.times)
         end unless query_counts.is_a?(String)
       end
-
-      MonthlyClickTotal.delete_all(["year = ? and month = ?", day.year, day.month])
-      Click.monthly_totals_by_module(day.year, day.month).each_pair do |source, total|
-        MonthlyClickTotal.create!(:year => day.year, :month => day.month, :source => source, :total => total)
-      end
     end
   end
 end

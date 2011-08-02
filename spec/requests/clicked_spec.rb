@@ -26,18 +26,6 @@ describe "Clicked" do
       get '/clicked', :u=> @url, :q=> @query, :t=> @timestamp, :a=> @affiliate_name, :p=> @position, :s=> @module, :v=> @vertical, :l=> @locale
     end
 
-    it "should record the click" do
-      get '/clicked', :u=> @url, :q=> @query, :t=> @timestamp, :a=> @affiliate_name, :p=> @position, :s=> @module, :v=> @vertical, :l=> @locale
-      click = Click.last
-      click.query.should == @query
-      click.url.should == @unescaped_url
-      click.serp_position.should == @position.to_i
-      click.results_source.should == @module
-      click.affiliate.should == @affiliate_name
-      click.queried_at.to_i.should == @timestamp.to_i
-      click.clicked_at.should_not be_nil
-      click.click_ip.should == '127.0.0.1'
-    end
   end
 
   context "when click url is missing" do

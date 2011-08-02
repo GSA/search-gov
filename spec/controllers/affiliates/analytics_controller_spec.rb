@@ -80,7 +80,7 @@ describe Affiliates::AnalyticsController do
           @user = users("affiliate_manager")
           UserSession.create(@user)
         end
-        
+
         it "should assign the page title" do
           get :index, :affiliate_id => @user.affiliates.first.id
           assigns[:title].should == "Query Logs - "
@@ -189,7 +189,7 @@ describe Affiliates::AnalyticsController do
           @user = users("affiliate_manager")
           UserSession.create(@user)
         end
-        
+
         it "should assign the page title" do
           get :monthly_reports, :affiliate_id => @user.affiliates.first.id
           assigns[:title].should == "Monthly Reports - "
@@ -208,7 +208,7 @@ describe Affiliates::AnalyticsController do
         end
 
         it "should assign @total_clicks" do
-          Click.should_receive(:monthly_totals_for_affiliate).and_return(100)
+          DailySearchModuleStat.stub_chain(:where,:sum).and_return(100)
           get :monthly_reports, :affiliate_id => @user.affiliates.first.id
           assigns[:total_clicks].should == 100
         end

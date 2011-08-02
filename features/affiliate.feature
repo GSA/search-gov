@@ -53,7 +53,6 @@ Feature: Affiliate clients
     Then I should see the API key
     And I should not see the TOS link
     And I should not see "By using a USASearch API, you agree to our"
-    And I should see "Full Color and Reverse Color versions of the logo are the only two versions that should be used in user interfaces that include the Bing searchbox."
 
   Scenario: Visiting the affiliate admin page as affiliate with existing sites
     Given I am logged in with email "affiliate_manager@fixtures.org" and password "admin"
@@ -940,7 +939,7 @@ Feature: Affiliate clients
     And the following DailyUsageStats exists for each day in yesterday's month
     | profile     | total_queries | affiliate |
     | Affiliates  | 1000          | aff.gov   |
-    And the following Clicks exist for each day in yesterday's month
+    And the following DailySearchModuleStats exist for each day in yesterday's month
       | affiliate         | total_clicks |
       | aff.gov           | 10           |
       | aff2.gov          | 5            |
@@ -963,7 +962,7 @@ Feature: Affiliate clients
     And the following DailyUsageStats exist for each day in "2010-02"
      | profile | total_queries  | affiliate  |
      | Affiliates | 1000        | aff.gov    |
-    And the following Clicks exist for each day in "2010-02"
+    And the following DailySearchModuleStats exist for each day in "2010-02"
       | affiliate         | total_clicks |
       | aff.gov           | 10           |
       | aff2.gov          | 5            |
@@ -983,7 +982,7 @@ Feature: Affiliate clients
     And the following DailyUsageStats exist for each day in "2019-02"
      | profile    | total_queries   | affiliate  |
      | Affiliates | 1000            | aff.gov    |
-    And the following Clicks exist for each day in "2019-02"
+    And the following DailySearchModuleStats exist for each day in "2019-02"
       | affiliate         | total_clicks |
       | aff.gov           | 10           |
       | aff2.gov          | 5            |
@@ -1115,7 +1114,7 @@ Feature: Affiliate clients
     And I should not see "aff.gov"
     When I follow "Preview Button"
     Then I should be on the preview affiliate page for "aff.gov"
-    
+
   Scenario: Setting Related Topics Preferences for an affiliate
     Given the following Affiliates exist:
      | display_name     | name             | contact_email           | contact_name        |
