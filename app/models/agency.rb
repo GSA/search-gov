@@ -3,7 +3,7 @@ class Agency < ActiveRecord::Base
   validates_uniqueness_of :domain
   has_many :agency_queries, :dependent => :destroy
   has_many :agency_urls, :dependent => :destroy
-  has_many :agency_popular_urls, :dependent => :destroy
+  has_many :agency_popular_urls, :dependent => :destroy, :order => 'source ASC, rank DESC'
   after_save :generate_agency_queries
   
   NAME_QUERY_PREFIXES = ["the", "us", "u.s.", "united states"]
@@ -53,7 +53,6 @@ class Agency < ActiveRecord::Base
   end
 
   def compute_displayable_popular_urls
-    self.agency_popular_urls.sort_by { |pop_url| pop_url.rank }
+    self.agency_popular_urls
   end
-
 end

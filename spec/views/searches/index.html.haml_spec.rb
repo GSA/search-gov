@@ -354,6 +354,29 @@ describe "searches/index.html.haml" do
           rendered.should_not have_selector("input[type='hidden'][name='sitelimit'][value='irs.gov']")
         end
       end
+    
+      context "when there are popular urls with identical titles" do
+        before do
+          @agency.agency_popular_urls << AgencyPopularUrl.new(:url => 'http://some.link', :title => 'Form 1040', :rank => 3)
+        end
+        
+        it "should modify the duplicate titles to include numbers" do
+          render
+          rendered.should have_selector "a[href='http://some.link']", :content => 'Form 1040 (1)'
+          rendered.should have_selector "a[href='http://www.irs.gov/forms/1040.pdf']", :content => 'Form 1040 (2)'
+        end
+      end
+      
+      context "when a title is longer than 50 characters" do
+        before do
+          @agency.agency_popular_urls << AgencyPopularUrl.new(:url => 'http://some.link', :title => 'This is a really long title that we are going to truncate so it is not so long.', :rank => 5)
+        end
+        
+        it "should truncate the title" do
+          render
+          rendered.should contain(/This is a really long title that we are going t\.\.\./)
+        end
+      end
     end
   
     context "when a med topic record matches the query" do

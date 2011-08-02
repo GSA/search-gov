@@ -23,10 +23,7 @@
       .popular-pages
         %h3
           = t:agency_popular_pages
-        %ul
-          - search.agency.displayable_popular_urls[0..4].each do |popular_page|
-            %li
-              = link_to popular_page.title, popular_page.url
+        = display_agency_popular_links(search.agency.displayable_popular_urls[0..4], search, affiliate, @search_vertical)
     .search-within{:style => "#{search.agency.displayable_popular_urls.empty? ? 'clear: none;' : 'clear: left;'}"}
       %h3
         #{t :agency_search_within_label} #{search.agency.domain}
