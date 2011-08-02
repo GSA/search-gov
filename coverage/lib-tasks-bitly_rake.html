@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/admin/agency_popular_urls_controller.rb</title>
+    <title>lib/tasks/bitly.rake</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/admin/agency_popular_urls_controller.rb</h2>
+    <h2>lib/tasks/bitly.rake</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-admin-agency_popular_urls_controller_rb.html">app/controllers/admin/agency_popular_urls_controller.rb</a></td>
-            <td class='right_align'><tt>3</tt></td>
-            <td class='right_align'><tt>3</tt></td>
+            <td class="left_align"><a href="lib-tasks-bitly_rake.html">lib/tasks/bitly.rake</a></td>
+            <td class='right_align'><tt>10</tt></td>
+            <td class='right_align'><tt>10</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,25 +57,67 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Admin::AgencyPopularUrlsController &lt; Admin::AdminController</pre></td>
+            <td><pre><a name="line1">1</a> namespace :usasearch do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   active_scaffold :agency_popular_urls</pre></td>
+            <td><pre><a name="line2">2</a>   namespace :bitly do    </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>     desc &quot;Compute most popular links for a given date&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>     task :compute_popular_urls, :date, :needs =&gt; :environment do |t, args|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>       args.with_defaults(:date =&gt; Date.yesterday.to_s(:number))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>       day = Date.parse(args.date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>       AgencyPopularUrl.compute_for_date(day)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a> end</pre></td>
+            <td><pre><a name="line8">8</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line9">9</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line10">10</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Aug 02 12:21:00 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 02 12:21:02 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

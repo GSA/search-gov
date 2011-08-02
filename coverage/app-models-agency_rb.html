@@ -28,7 +28,7 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-agency_rb.html">app/models/agency.rb</a></td>
-            <td class='right_align'><tt>59</tt></td>
+            <td class='right_align'><tt>58</tt></td>
             <td class='right_align'><tt>48</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
@@ -87,7 +87,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   has_many :agency_popular_urls, :dependent =&gt; :destroy</pre></td>
+            <td><pre><a name="line6">6</a>   has_many :agency_popular_urls, :dependent =&gt; :destroy, :order =&gt; 'source ASC, rank DESC'</pre></td>
           </tr>
         
           
@@ -387,7 +387,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>     self.agency_popular_urls.sort_by { |pop_url| pop_url.rank }</pre></td>
+            <td><pre><a name="line56">56</a>     self.agency_popular_urls</pre></td>
           </tr>
         
           
@@ -399,19 +399,13 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line58">58</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line59">59</a> end</pre></td>
+            <td><pre><a name="line58">58</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Jul 25 13:06:08 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 02 12:21:01 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -537,19 +537,19 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>   def monthly_report(zip_filename, report_date)</pre></td>
+            <td><pre><a name="line81">81</a>   def report(zip_filename, report_date, subject_header)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>     setup_email(MONTHLY_REPORT_RECIPIENTS.join(&quot;, &quot;))</pre></td>
+            <td><pre><a name="line82">82</a>     setup_email(REPORT_RECIPIENTS.join(&quot;, &quot;))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>     @subject += &quot;Monthly Report data attached: #{File.basename(zip_filename)}&quot;</pre></td>
+            <td><pre><a name="line83">83</a>     @subject += &quot;#{subject_header}: #{File.basename(zip_filename)}&quot;</pre></td>
           </tr>
         
           
@@ -561,7 +561,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>     mail(:to =&gt; MONTHLY_REPORT_RECIPIENTS.join(&quot;, &quot;), :subject =&gt; @subject, :from =&gt; @from)</pre></td>
+            <td><pre><a name="line85">85</a>     mail(:to =&gt; REPORT_RECIPIENTS.join(&quot;, &quot;), :subject =&gt; @subject, :from =&gt; @from)</pre></td>
           </tr>
         
           
@@ -639,7 +639,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Mon Jul 25 13:06:08 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 02 12:21:01 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
