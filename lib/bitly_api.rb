@@ -49,7 +49,7 @@ class BitlyAPI
         when 12 :
 	        unless row[0].nil? || (row[0].to_i rescue 0) == 0
 		        rank = row[COLUMN_MAP[:rank]].to_i
-		        title = row[COLUMN_MAP[:title]].to_s rescue nil
+		        title = CGI::unescapeHTML(row[COLUMN_MAP[:title]].to_s) rescue nil
 		        clicks = row[COLUMN_MAP[:clicks]].to_i 
 		        short_url = row[COLUMN_MAP[:short_url]]
 		        long_url = row[COLUMN_MAP[:long_url]].to_s rescue nil
