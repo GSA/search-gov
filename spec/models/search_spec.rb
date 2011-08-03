@@ -14,22 +14,22 @@ describe Search do
         with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String))))
       Search.new(@valid_options).run
     end
-    
+
     context "when Bing returns zero results" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'abydkldkd'))
       end
-      
+
       it "should still return true when searching" do
         @search.run.should be_true
       end
-      
+
       it "should populate additional results" do
         @search.should_receive(:populate_additional_results).and_return true
         @search.run
       end
     end
-    
+
     context "when response body is nil from Bing" do
       before do
         JSON.should_receive(:parse).once.and_return nil
@@ -39,7 +39,7 @@ describe Search do
       it "should still return true when searching" do
         @search.run.should be_true
       end
-      
+
       it "should populate additional results" do
         @search.should_receive(:populate_additional_results).and_return true
         @search.run
@@ -208,6 +208,18 @@ describe Search do
         it "should split the domains the same way" do
           search = Search.new(@valid_options.merge(:affiliate => @affiliate))
           URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(@uriresult)
+          search.run
+        end
+      end
+
+      context "when there are so many domains that the overall query exceeds Bing's limit, generating an error" do
+        before do
+          @affiliate.domains = "a".upto("z").collect { |x| "#{x*100}.gov"}.join("\n")
+        end
+
+        it "should use a subset of the affiliate's domains (order is unimportant) up to the predetermined limit" do
+          search = Search.new(@valid_options.merge(:affiliate => @affiliate))
+          URI.should_receive(:parse).with(/oooooo.gov\)$/).and_return(@uriresult)
           search.run
         end
       end
@@ -898,12 +910,12 @@ describe Search do
           @search.spotlight.should be_nil
         end
       end
-      
+
       context "when an affiliate is present" do
         before do
           @affiliate = affiliates(:basic_affiliate)
         end
-        
+
         it "should assign a nil spotlight, even if other spotlights match the search term" do
           @search = Search.new(@valid_options.merge(:query => 'walk time', :affiliate=> @affiliate))
           Spotlight.should_receive(:search_for).with('walk time', @affiliate).and_return(nil)
@@ -911,7 +923,7 @@ describe Search do
           @search.spotlight.should be_nil
         end
       end
-      
+
       context "when an affiliate is present, and matching spotlights exist for that affiliate" do
         before do
           @spotty = spotlights(:time)
@@ -920,7 +932,7 @@ describe Search do
           @spotty.save
           Spotlight.reindex
         end
-        
+
         it "should assign the Spotlight for the affiliate" do
           @search = Search.new(@valid_options.merge(:query => 'walk time', :affiliate=> @affiliate))
           Spotlight.should_receive(:search_for).with('walk time', @affiliate).and_return(@spotty)
@@ -1027,7 +1039,7 @@ describe Search do
         search.startrecord.should == Search::DEFAULT_PER_PAGE * page + 1
         search.endrecord.should == search.startrecord + search.results.size - 1
       end
-      
+
       context "when the page is greater than the number of results" do
         before do
           @search = Search.new(@valid_options.merge(:query => 'data'))
@@ -1076,69 +1088,69 @@ describe Search do
         end
       end
     end
-    
+
     context "med topics" do
       fixtures :med_topics
       before do
         @ulcerative_colitis_med_topic = med_topics(:ulcerative_colitis)
         @ulcerative_colitis_es_med_topic = med_topics(:ulcerative_colitis_es)
       end
-      
+
       context "when the search matches a MedTopic record" do
         before do
           @search = Search.new(:query => 'ulcerative colitis')
           @search.run
         end
-        
+
         it "should retrieve the associated Med Topic record" do
           @search.med_topic.should == @ulcerative_colitis_med_topic
         end
       end
-      
+
       context "when the locale is not the default" do
         before do
           I18n.locale = :es
           @search = Search.new(:query => 'Colitis ulcerativa')
           @search.run
         end
-        
+
         it "should retrieve the spanish version of the med topic" do
           @search.med_topic.should == @ulcerative_colitis_es_med_topic
         end
-        
+
         after do
           I18n.locale = I18n.default_locale
         end
       end
-      
+
       context "when the page is not the first page" do
         before do
           @search = Search.new(:query => 'ulcerative colitis', :page => 3)
           @search.run
         end
-          
+
         it "should not set the med topic" do
           @search.med_topic.should be_nil
         end
       end
-    
+
       context "when the query does not match a med topic" do
         before do
           @search = Search.new(:query => 'government')
           @search.run
         end
-        
+
         it "should not set the med topic" do
           @search.med_topic.should be_nil
         end
       end
-      
+
       context "when the search matches a med topic, but includes an affiliate" do
         before do
           @search = Search.new(:query => 'ulcerative colitis', :affiliate => affiliates(:basic_affiliate))
           @search.run
         end
-        
+
         it "should not set a med topic" do
           @search.med_topic.should be_nil
         end
@@ -1314,7 +1326,7 @@ describe Search do
 
   describe "#self.results_present_for?(query, affiliate, is_misspelling_allowed)" do
     before do
-      @search = Search.new(:affiliate => @affiliate.name, :query => "some term")
+      @search = Search.new(:affiliate => @affiliate, :query => "some term")
       Search.stub!(:new).and_return(@search)
       @search.stub!(:run).and_return(nil)
     end

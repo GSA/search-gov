@@ -17,6 +17,7 @@ class Search
   DEFAULT_FILTER_SETTING = 'moderate'
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
   VALID_SCOPES = %w{ PatentClass USPTOUSPC USPTOTMEP USPTOMPEP }
+  QUERY_STRING_ALLOCATION = 1800
 
   attr_reader :query,
               :page,
@@ -43,7 +44,8 @@ class Search
               :queried_at_seconds,
               :enable_highlighting,
               :agency,
-              :med_topic
+              :med_topic,
+              :formatted_query
 
   def initialize(options = {})
     options ||= {}
@@ -52,15 +54,16 @@ class Search
     @page = [options[:page].to_i, 0].max
     @results_per_page = options[:results_per_page] || DEFAULT_PER_PAGE
     @results_per_page = @results_per_page.to_i unless @results_per_page.is_a?(Integer)
-    @results_per_page = [@results_per_page,MAX_PER_PAGE].min
+    @results_per_page = [@results_per_page, MAX_PER_PAGE].min
     @offset = @page * @results_per_page
     @fedstates = options[:fedstates] || nil
     @scope_id = options[:scope_id] || nil
-    @filter_setting =  VALID_FILTER_VALUES.include?(options[:filter] || "invalid adult filter") ? options[:filter] : DEFAULT_FILTER_SETTING
+    @filter_setting = VALID_FILTER_VALUES.include?(options[:filter] || "invalid adult filter") ? options[:filter] : DEFAULT_FILTER_SETTING
     @results, @related_search = [], []
     @queried_at_seconds = Time.now.to_i
     @enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
     @sources = bing_sources
+    @formatted_query = generate_formatted_query
   end
 
   def run
@@ -77,7 +80,7 @@ class Search
     @total = hits(response)
     unless total.zero?
       @startrecord = bing_offset(response) + 1
-      @page = [startrecord/10,page].min
+      @page = [startrecord/10, page].min
       @results = paginate(process_results(response))
       @endrecord = startrecord + results.size - 1
       @spelling_suggestion = spelling_results(response)
@@ -87,7 +90,7 @@ class Search
     log_serp_impressions
     true
   end
-  
+
   def as_json(options = {})
     if error_message
       {:error => error_message}
@@ -117,11 +120,11 @@ class Search
 
   def bing_sources
     query_for_images = page < 1 && affiliate.nil? && PopularImageQuery.find_by_query(query).present?
-    query_for_images ?  "Spell+Web+Image" : "Spell+Web"
+    query_for_images ? "Spell+Web+Image" : "Spell+Web"
   end
 
   def cache_key
-    [formatted_query, sources, offset, results_per_page, enable_highlighting,filter_setting].join(':')
+    [formatted_query, sources, offset, results_per_page, enable_highlighting, filter_setting].join(':')
   end
 
   protected
@@ -144,10 +147,10 @@ class Search
     return [] if instance.nil?
     related_terms = instance.related_terms
     related_terms_array = related_terms.split('|')
-    related_terms_array.each{|t| t.strip!}
-    related_terms_array.delete_if {|related_term| self.query.casecmp(related_term).zero? }
-    related_terms_array.sort! {|x,y| y.length <=> x.length }
-    related_terms_array[0,5].sort
+    related_terms_array.each { |t| t.strip! }
+    related_terms_array.delete_if { |related_term| self.query.casecmp(related_term).zero? }
+    related_terms_array.sort! { |x, y| y.length <=> x.length }
+    related_terms_array[0, 5].sort
   end
 
   def spelling_results(response)
@@ -187,6 +190,7 @@ class Search
     ActiveSupport::Notifications.instrument("bing_search.usasearch", :query => {:term => formatted_query}) do
       begin
         uri = URI.parse(bing_query(formatted_query, sources, offset, results_per_page, enable_highlighting))
+        Rails.logger.debug("URI to Bing: #{uri}")
         http = Net::HTTP.new(uri.host, uri.port)
         req = Net::HTTP::Get.new(uri.request_uri)
         req["User-Agent"] = USER_AGENT
@@ -211,7 +215,7 @@ class Search
   def build_query(options)
     query = ''
     if options[:query].present?
-      options[:query].downcase! if options[:query][-3,options[:query].size] == " OR"
+      options[:query].downcase! if options[:query][-3, options[:query].size] == " OR"
       query += options[:query].split.collect { |term| limit_field(options[:query_limit], term) }.join(' ')
     end
 
@@ -240,27 +244,7 @@ class Search
     end
   end
 
-  def scope
-    if affiliate_scope
-      affiliate_scope
-    elsif self.fedstates && !self.fedstates.empty? && self.fedstates != 'all'
-      "(scopeid:usagov#{self.fedstates})"
-    else
-      DEFAULT_SCOPE
-    end
-  end
-
-  def affiliate_scope
-    return unless affiliate_scope?
-    if valid_scope_id?
-      "(scopeid:#{self.scope_id}) #{DEFAULT_SCOPE}"
-    else
-      scope = affiliate.domains.split.collect { |site| "site:#{site}" }.join(" OR ")
-      "(#{scope})"
-    end
-  end
-
-  def affiliate_scope?
+  def using_affiliate_scope?
     affiliate && ((affiliate.domains.present? && query !~ /site:/) || valid_scope_id?)
   end
 
@@ -277,8 +261,37 @@ class Search
     "language:#{I18n.locale}"
   end
 
-  def formatted_query
-    "(#{query}) #{scope} #{locale}".strip.squeeze(' ')
+  def generate_formatted_query
+    [query_plus_locale, scope].join(' ')
+  end
+
+  def scope
+    if using_affiliate_scope?
+      generate_affiliate_scope
+    elsif self.fedstates && !self.fedstates.empty? && self.fedstates != 'all'
+      "(scopeid:usagov#{self.fedstates})"
+    else
+      DEFAULT_SCOPE
+    end
+  end
+
+  def generate_affiliate_scope
+    valid_scope_id? ? "(scopeid:#{self.scope_id}) #{DEFAULT_SCOPE}" : fill_domains_to_remainder
+  end
+
+  def query_plus_locale
+    "(#{query}) #{locale}".strip.squeeze(' ')
+  end
+
+  def fill_domains_to_remainder
+    remaining_chars = QUERY_STRING_ALLOCATION - query_plus_locale.length
+    domains, delimiter = [], " OR "
+    affiliate.domains.split.each do |site|
+      site_str = "site:#{site}"
+      break if (remaining_chars -= (site_str.length + delimiter.length)) < 0
+      domains << site_str
+    end
+    "(#{domains.join(delimiter)})"
   end
 
   private
@@ -309,7 +322,7 @@ class Search
   def hits(response)
     (response.web.results.blank? ? 0 : response.web.total) rescue 0
   end
-  
+
   def bing_offset(response)
     (response.web.results.blank? ? 0 : response.web.offset) rescue 0
   end
@@ -320,24 +333,24 @@ class Search
 
   def process_image_results(response)
     response.image.results.collect do |result|
-       {
-         "title" => result.title,
-         "Width" => result.width,
-         "Height" => result.height,
-         "FileSize" => result.fileSize,
-         "ContentType" => result.contentType,
-         "Url" => result.Url,
-         "DisplayUrl" => result.displayUrl,
-         "MediaUrl" => result.mediaUrl,
-         "Thumbnail" => {
-           "Url" => result.thumbnail.url,
-           "FileSize" => result.thumbnail.fileSize,
-           "Width" => result.thumbnail.width,
-           "Height" => result.thumbnail.height,
-           "ContentType" => result.thumbnail.contentType
-         }
-       }
-     end
+      {
+        "title" => result.title,
+        "Width" => result.width,
+        "Height" => result.height,
+        "FileSize" => result.fileSize,
+        "ContentType" => result.contentType,
+        "Url" => result.Url,
+        "DisplayUrl" => result.displayUrl,
+        "MediaUrl" => result.mediaUrl,
+        "Thumbnail" => {
+          "Url" => result.thumbnail.url,
+          "FileSize" => result.thumbnail.fileSize,
+          "Width" => result.thumbnail.width,
+          "Height" => result.thumbnail.height,
+          "ContentType" => result.thumbnail.contentType
+        }
+      }
+    end
   end
 
   def process_web_results(response)
@@ -346,11 +359,11 @@ class Search
       content = result.description rescue ''
       if title.present?
         {
-          'title'         => title,
-          'unescapedUrl'  => result.url,
-          'content'       => content,
-          'cacheUrl'      => (result.CacheUrl rescue nil),
-          'deepLinks'     => result["DeepLinks"]
+          'title' => title,
+          'unescapedUrl' => result.url,
+          'content' => content,
+          'cacheUrl' => (result.CacheUrl rescue nil),
+          'deepLinks' => result["DeepLinks"]
         }
       else
         nil

@@ -25,7 +25,7 @@ describe CalaisRelatedSearch do
       crs = CalaisRelatedSearch.create!(:term => "debt relief", :related_terms => "whatevs")
       crs.gets_refreshed.should be_false
     end
-    
+
     it "should downcase the term when saving via ActiveRecord" do
       crs = CalaisRelatedSearch.create!(:term => 'Debt Relief', :related_terms => 'whatever')
       crs.term.should == 'debt relief'
@@ -43,7 +43,7 @@ describe CalaisRelatedSearch do
     end
     it { should belong_to :affiliate }
   end
-  
+
   describe "#delete_if_exists(term, locale, affiliate_id)" do
     context "when a CalaisRelatedSearch exists matching the given term, locale, and affilaite_id" do
       it "should delete the CalaisRelatedSearch" do
@@ -110,7 +110,7 @@ describe CalaisRelatedSearch do
       end
     end
   end
-  
+
   describe "#refresh_stalest_entries" do
     before do
       ResqueSpec.reset!
@@ -215,7 +215,7 @@ describe CalaisRelatedSearch do
     context "when there are no search results for a term" do
       before do
         @term = "no results found here"
-        search = Search.new(:affiliate => @affiliate.name, :query => @term)
+        search = Search.new(:affiliate => @affiliate, :query => @term)
         Search.stub!(:new).and_return(search)
         search.stub!(:run)
         search.stub!(:results).and_return([])
@@ -230,7 +230,7 @@ describe CalaisRelatedSearch do
     context "when there are search results for a term" do
       before do
         @term = "pelosi award"
-        search = Search.new(:affiliate => @affiliate.name, :query => @term)
+        search = Search.new(:affiliate => @affiliate, :query => @term)
         Search.stub!(:new).and_return(search)
         search.stub!(:run).and_return(nil)
         search.stub!(:results).and_return([{'title'=>'First title', 'content' => 'First content'},
