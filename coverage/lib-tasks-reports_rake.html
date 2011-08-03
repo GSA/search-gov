@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-reports_rake.html">lib/tasks/reports.rake</a></td>
-            <td class='right_align'><tt>133</tt></td>
-            <td class='right_align'><tt>103</tt></td>
+            <td class='right_align'><tt>134</tt></td>
+            <td class='right_align'><tt>104</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -285,7 +285,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a>     </pre></td>
+            <td><pre><a name="line39">39</a> </pre></td>
           </tr>
         
           
@@ -351,7 +351,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>     </pre></td>
+            <td><pre><a name="line50">50</a> </pre></td>
           </tr>
         
           
@@ -393,7 +393,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line57">57</a>     </pre></td>
+            <td><pre><a name="line57">57</a> </pre></td>
           </tr>
         
           
@@ -429,7 +429,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line63">63</a>       </pre></td>
+            <td><pre><a name="line63">63</a> </pre></td>
           </tr>
         
           
@@ -441,7 +441,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a>       </pre></td>
+            <td><pre><a name="line65">65</a> </pre></td>
           </tr>
         
           
@@ -471,7 +471,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line70">70</a>       </pre></td>
+            <td><pre><a name="line70">70</a> </pre></td>
           </tr>
         
           
@@ -483,7 +483,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line72">72</a>     </pre></td>
+            <td><pre><a name="line72">72</a> </pre></td>
           </tr>
         
           
@@ -501,7 +501,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line75">75</a>     </pre></td>
+            <td><pre><a name="line75">75</a> </pre></td>
           </tr>
         
           
@@ -537,7 +537,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line81">81</a>       </pre></td>
+            <td><pre><a name="line81">81</a> </pre></td>
           </tr>
         
           
@@ -549,7 +549,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line83">83</a>         </pre></td>
+            <td><pre><a name="line83">83</a> </pre></td>
           </tr>
         
           
@@ -603,7 +603,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line92">92</a>         </pre></td>
+            <td><pre><a name="line92">92</a> </pre></td>
           </tr>
         
           
@@ -657,13 +657,13 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line101">101</a>         </pre></td>
+            <td><pre><a name="line101">101</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line102">102</a>       </pre></td>
+            <td><pre><a name="line102">102</a> </pre></td>
           </tr>
         
           
@@ -687,7 +687,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line106">106</a>     </pre></td>
+            <td><pre><a name="line106">106</a> </pre></td>
           </tr>
         
           
@@ -699,7 +699,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line108">108</a>     months = 4.downto(0).collect{|index| (start_date - index.months).strftime('%Y-%m')} </pre></td>
+            <td><pre><a name="line108">108</a>     months = 4.downto(0).collect{|index| (start_date - index.months).strftime('%Y-%m')}</pre></td>
           </tr>
         
           
@@ -729,133 +729,139 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line113">113</a>       </pre></td>
+            <td><pre><a name="line113">113</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line114">114</a>     # clicks by module over the past month</pre></td>
+            <td><pre><a name="line114">114</a>     # clicks, impressions, CTR by module over the past month</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line115">115</a>     click_totals = MonthlyClickTotal.find_all_by_year_and_month(start_date.year, start_date.month)</pre></td>
+            <td><pre><a name="line115">115</a>     totals = DailySearchModuleStat.module_stats_for_daterange(start_date.beginning_of_month..start_date.end_of_month)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line116">116</a>     output_to_zipfile(zip_filename, &quot;click_totals.txt&quot;, &quot;Module,Total&quot;, click_totals.collect{|result| &quot;#{result.source},#{result.total}&quot;})</pre></td>
+            <td><pre><a name="line116">116</a>     output_to_zipfile(zip_filename, &quot;click_totals.txt&quot;, &quot;Module, Impressions, Clicks, Click-Thru Rate&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line117">117</a>   </pre></td>
+            <td><pre><a name="line117">117</a>       totals.collect{|result| &quot;#{result.module_tag},#{result.impressions},#{result.clicks},#{100*result.clicks/result.impressions}%&quot;})</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line118">118</a>     # affiliate report</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line119">119</a>     affiliate_report_sql = &quot;SELECT DISTINCT affiliate, total_queries FROM daily_usage_stats WHERE NOT ISNULL(affiliate) AND day BETWEEN ? AND ? GROUP BY affiliate ORDER BY 2 DESC&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line120">120</a>     affiliate_report = Affiliate.find_by_sql [affiliate_report_sql, start_date, end_date]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line121">121</a>     output_to_zipfile(zip_filename, &quot;affiliate_report.txt&quot;,&quot;Name,TotalQueries&quot;, affiliate_report.collect{|result| &quot;#{result.affiliate},#{result.total_queries}&quot;})</pre></td>
+            <td><pre><a name="line118">118</a> </pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line122">122</a>     </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line123">123</a>     # total queries by profile</pre></td>
+            <td><pre><a name="line119">119</a>     # affiliate report</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line124">124</a>     monthly_totals = DailyUsageStat.monthly_totals(start_date.year, start_date.month)</pre></td>
+            <td><pre><a name="line120">120</a>     affiliate_report_sql = &quot;SELECT DISTINCT affiliate, total_queries FROM daily_usage_stats WHERE NOT ISNULL(affiliate) AND day BETWEEN ? AND ? GROUP BY affiliate ORDER BY 2 DESC&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line125">125</a>     output = &quot;#{start_date.strftime('%Y-%m')},#{monthly_totals['English'][:total_queries]},#{monthly_totals['Spanish'][:total_queries]},#{monthly_totals['Affiliates'][:total_queries]},#{monthly_totals['English'][:total_queries]+monthly_totals['Spanish'][:total_queries]+monthly_totals['Affiliates'][:total_queries]}&quot;</pre></td>
+            <td><pre><a name="line121">121</a>     affiliate_report = Affiliate.find_by_sql [affiliate_report_sql, start_date, end_date]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line126">126</a>     output_to_zipfile(zip_filename, &quot;total_queries_by_profile.txt&quot;, &quot;Month,English,Spanish,Affilitates,Total&quot;, output)</pre></td>
+            <td><pre><a name="line122">122</a>     output_to_zipfile(zip_filename, &quot;affiliate_report.txt&quot;,&quot;Name,TotalQueries&quot;, affiliate_report.collect{|result| &quot;#{result.affiliate},#{result.total_queries}&quot;})</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line127">127</a>     </pre></td>
+            <td><pre><a name="line123">123</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line124">124</a>     # total queries by profile</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line128">128</a>     Emailer.deliver_report(zip_filename, start_date, &quot;Monthly Report data attached&quot;)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line129">129</a>     </pre></td>
+            <td><pre><a name="line125">125</a>     monthly_totals = DailyUsageStat.monthly_totals(start_date.year, start_date.month)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line130">130</a>     File.delete(zip_filename)</pre></td>
+            <td><pre><a name="line126">126</a>     output = &quot;#{start_date.strftime('%Y-%m')},#{monthly_totals['English'][:total_queries]},#{monthly_totals['Spanish'][:total_queries]},#{monthly_totals['Affiliates'][:total_queries]},#{monthly_totals['English'][:total_queries]+monthly_totals['Spanish'][:total_queries]+monthly_totals['Affiliates'][:total_queries]}&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line127">127</a>     output_to_zipfile(zip_filename, &quot;total_queries_by_profile.txt&quot;, &quot;Month,English,Spanish,Affilitates,Total&quot;, output)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line131">131</a>     end</pre></td>
+            <td><pre><a name="line128">128</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line129">129</a>     Emailer.deliver_report(zip_filename, start_date, &quot;Monthly Report data attached&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line132">132</a>   end</pre></td>
+            <td><pre><a name="line130">130</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line131">131</a>     File.delete(zip_filename)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line133">133</a> end</pre></td>
+            <td><pre><a name="line132">132</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line133">133</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line134">134</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Tue Aug 02 12:21:02 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 02 22:28:36 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

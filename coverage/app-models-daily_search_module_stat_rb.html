@@ -117,7 +117,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>   def self.module_stats_for_day(day)</pre></td>
+            <td><pre><a name="line11">11</a>   def self.module_stats_for_daterange(daterange)</pre></td>
           </tr>
         
           
@@ -129,7 +129,7 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>       where(:day =&gt; day).group(:module_tag).order(&quot;impressions DESC&quot;)</pre></td>
+            <td><pre><a name="line13">13</a>       where(:day =&gt; daterange).group(:module_tag).order(&quot;impressions DESC&quot;)</pre></td>
           </tr>
         
           
@@ -183,7 +183,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Aug 02 12:21:01 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 02 22:28:36 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

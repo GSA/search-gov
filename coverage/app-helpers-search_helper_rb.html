@@ -621,7 +621,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line95">95</a>           title = truncate(popular_url.title, :length =&gt; 46) + &quot; (1)&quot;</pre></td>
+            <td><pre><a name="line95">95</a>           title = popular_url.title.truncate(46, :separator =&gt; &quot; &quot;) + &quot; (1)&quot;</pre></td>
           </tr>
         
           
@@ -639,7 +639,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line98">98</a>           title = truncate(popular_url.title, :length =&gt; 46) + &quot; (#{dup_count + 1})&quot;</pre></td>
+            <td><pre><a name="line98">98</a>           title = popular_url.title.truncate(46, :separator =&gt; &quot; &quot;) + &quot; (#{dup_count + 1})&quot;</pre></td>
           </tr>
         
           
@@ -663,7 +663,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line102">102</a>         title = truncate(popular_url.title, :length =&gt; 50)</pre></td>
+            <td><pre><a name="line102">102</a>         title = popular_url.title.truncate(50, :separator =&gt; &quot; &quot;)</pre></td>
           </tr>
         
           
@@ -1071,7 +1071,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line170">170</a>     title= (highlight_like_solr(truncate_on_words(result.summary, summary_length), hit.highlights)).html_safe</pre></td>
+            <td><pre><a name="line170">170</a>     title= (highlight_like_solr(result.summary.truncate(summary_length, :separator =&gt; &quot; &quot;), hit.highlights)).html_safe</pre></td>
           </tr>
         
           
@@ -3777,7 +3777,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Aug 02 12:21:01 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 02 22:28:36 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

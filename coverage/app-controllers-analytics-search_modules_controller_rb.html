@@ -81,7 +81,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     @search_module_stats = DailySearchModuleStat.module_stats_for_day(@day_being_shown)</pre></td>
+            <td><pre><a name="line5">5</a>     @search_module_stats = DailySearchModuleStat.module_stats_for_daterange(@day_being_shown..@day_being_shown) unless @day_being_shown.nil?</pre></td>
           </tr>
         
           
@@ -99,7 +99,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Aug 02 12:21:01 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 02 22:28:36 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -183,7 +183,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>     @total_clicks = Click.monthly_totals_for_affiliate(@report_date.year, @report_date.month, @affiliate.name)</pre></td>
+            <td><pre><a name="line22">22</a>     @total_clicks = DailySearchModuleStat.where(:day =&gt; @report_date.beginning_of_month..@report_date.end_of_month, :affiliate_name=&gt; @affiliate.name).sum(:clicks)</pre></td>
           </tr>
         
           
@@ -249,7 +249,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Aug 02 12:21:00 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 02 22:28:35 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
