@@ -58,7 +58,7 @@ describe DailySearchModuleStat do
     context "when at least some stats are available for the range" do
       before do
         impressions, clicks = 100, 10
-        @range = Date.yesterday..Date.today
+        @range = Date.yesterday..Date.current
         @range.each do |day|
           %w{usasearch.gov nps noaa}.each do |affiliate_name|
             %w{en es}.each do |locale|
@@ -77,19 +77,19 @@ describe DailySearchModuleStat do
       it "should return collection of structures grouped by module, summed over the date range, ordered by descending impression count that respond to display_name, impressions, clicks, clickthru_ratio" do
         stats = DailySearchModuleStat.module_stats_for_daterange(@range)
         stats[0].display_name.should == search_modules(:crel).display_name
-        stats[0].impressions.should == 18516
-        stats[0].clicks.should == 6876
-        stats[0].clickthru_ratio.should be_within(0.001).of(37.135)
+        stats[0].impressions.should == 66408
+        stats[0].clicks.should == 25848
+        stats[0].clickthru_ratio.should be_within(0.001).of(38.923)
 
         stats[1].display_name.should == search_modules(:bweb).display_name
-        stats[1].impressions.should == 16884
-        stats[1].clicks.should == 6204
-        stats[1].clickthru_ratio.should be_within(0.001).of(36.744)
+        stats[1].impressions.should == 63144
+        stats[1].clicks.should == 24504
+        stats[1].clickthru_ratio.should be_within(0.001).of(38.806)
 
         stats[2].display_name.should == search_modules(:video).display_name
-        stats[2].impressions.should == 15252
-        stats[2].clicks.should == 5532
-        stats[2].clickthru_ratio.should be_within(0.001).of(36.270)
+        stats[2].impressions.should == 59880
+        stats[2].clicks.should == 23160
+        stats[2].clickthru_ratio.should be_within(0.001).of(38.677)
       end
 
       context "when search module stats references a non-existent search module name" do
