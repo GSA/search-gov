@@ -15,6 +15,7 @@
     :javascript
       jQuery.noConflict();
     = (javascript_include_tag :defaults, "fckeditor/fckeditor").html_safe
+    = (javascript_include_tag "rails-ext.js").html_safe
     /[if IE]
       = (javascript_include_tag "iepngfix_tilebg.js").html_safe
     = active_scaffold_includes.html_safe
