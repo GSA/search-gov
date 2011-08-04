@@ -1551,13 +1551,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line250">250</a>   def render_datetime(datetime, time_zone = ActiveSupport::TimeZone[&quot;Eastern Time (US &amp; Canada)&quot;])</pre></td>
+            <td><pre><a name="line250">250</a>   def render_date(date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line251">251</a>     datetime.in_time_zone(time_zone).strftime(&quot;%m/%d/%y %H:%M %Z&quot;) unless datetime.nil?</pre></td>
+            <td><pre><a name="line251">251</a>     date.strftime(&quot;%m/%d/%Y&quot;) unless date.nil?</pre></td>
           </tr>
         
           
@@ -1989,7 +1989,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Aug 02 22:28:36 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Wed Aug 03 21:43:25 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
