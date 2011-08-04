@@ -1279,3 +1279,15 @@ Feature: Affiliate clients
     And I should see a link to "Awesome fifth blog post" with url for "http://awesome.gov/blog/5" in the popular urls section
     And I should not see a link to "Awesome sixth blog post"
 
+  Scenario: Embedded affiliate search
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | header           | footer           |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Affiliate Header | Affiliate Footer |
+    When I go to aff.gov's embedded search page
+    Then I should not see "Affiliate Header"
+    And I should not see "Affiliate Footer"
+    When I fill in "query" with "weather"
+    And I press "Search"
+    Then I should not see "Affiliate Header"
+    And I should not see "Affiliate Footer"
+

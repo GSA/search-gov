@@ -109,7 +109,8 @@ class ApplicationController < ActionController::Base
         :fedstates => params["fedstates"] || nil,
         :scope_id => params["scope_id"] || nil,
         :results_per_page => params["per-page"],
-        :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
+        :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
+        :embedded => params["embedded"].present?
     }
   end
 end

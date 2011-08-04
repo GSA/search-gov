@@ -36,4 +36,24 @@ describe "shared/_related_topics.html.haml" do
       rendered.should_not have_selector('ul', :id => 'relatedsearch')
     end
   end
+
+  context "when there are related topics in affiliate embedded search mode" do
+    fixtures :affiliates
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    before do
+      @related_searches = ["first-1 keeps the hyphen", "second one is a string", "CIA stays capitalized", "utilización de gafas del sol durante el tiempo"]
+      @search.stub!(:related_search).and_return @related_searches
+      assign(:affiliate, affiliate)
+      assign(:search_options, {:embedded => true} )
+    end
+
+    it  "should display related topics" do
+      view.should_receive(:search_path).exactly(4).times.with(hash_including(:embedded => true))
+      render
+      rendered.should have_selector('ul', :id => 'relatedsearch')
+      rendered.should have_selector("#relatedsearch a", :count => 4)
+    end
+  end
+
 end
