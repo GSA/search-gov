@@ -214,12 +214,12 @@ describe Search do
 
       context "when there are so many domains that the overall query exceeds Bing's limit, generating an error" do
         before do
-          @affiliate.domains = "a".upto("z").collect { |x| "#{x*100}.gov"}.join("\n")
+          @affiliate.domains = "a10001".upto("a10100").collect { |x| "#{x}.gov"}.join("\n")
         end
 
-        it "should use a subset of the affiliate's domains (order is unimportant) up to the predetermined limit" do
+        it "should use a subset of the affiliate's domains (order is unimportant) up to the predetermined limit, accounting for URI encoding" do
           search = Search.new(@valid_options.merge(:affiliate => @affiliate))
-          URI.should_receive(:parse).with(/oooooo.gov\)$/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/a10071.gov\)$/).and_return(@uriresult)
           search.run
         end
       end

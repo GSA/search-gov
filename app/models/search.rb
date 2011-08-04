@@ -288,7 +288,8 @@ class Search
     domains, delimiter = [], " OR "
     affiliate.domains.split.each do |site|
       site_str = "site:#{site}"
-      break if (remaining_chars -= (site_str.length + delimiter.length)) < 0
+      encoded_str = URI.escape(site_str + delimiter, URI_REGEX)
+      break if (remaining_chars -= encoded_str.length) < 0
       domains << site_str
     end
     "(#{domains.join(delimiter)})"
