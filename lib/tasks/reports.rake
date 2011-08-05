@@ -68,7 +68,7 @@ namespace :usasearch do
       affiliate_report = Affiliate.find_by_sql [affiliate_report_sql, start_date, end_date]
       output_to_zipfile(zip_filename, "affiliate_report.txt","Name,TotalQueries", affiliate_report.collect{|result| "#{result.affiliate},#{result.total_queries}"})
 
-      Emailer.monthly_report(zip_filename, start_date, "Weekly Report data attached").deliver
+      Emailer.monthly_report(zip_filename, start_date).deliver
 
       File.delete(zip_filename)
     end
@@ -126,7 +126,7 @@ namespace :usasearch do
     output = "#{start_date.strftime('%Y-%m')},#{monthly_totals['English'][:total_queries]},#{monthly_totals['Spanish'][:total_queries]},#{monthly_totals['Affiliates'][:total_queries]},#{monthly_totals['English'][:total_queries]+monthly_totals['Spanish'][:total_queries]+monthly_totals['Affiliates'][:total_queries]}"
     output_to_zipfile(zip_filename, "total_queries_by_profile.txt", "Month,English,Spanish,Affilitates,Total", output)
 
-    Emailer.monthly_report(zip_filename, start_date, "Monthly Report data attached").deliver
+    Emailer.monthly_report(zip_filename, start_date).deliver
 
     File.delete(zip_filename)
     end
