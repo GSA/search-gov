@@ -117,23 +117,6 @@ describe "Report generation rake tasks" do
       end
     end
 
-    describe "usasearch:reports:reprocess_dates" do
-      before do
-        @task_name = "usasearch:reports:reprocess_dates"
-      end
-      
-      it "should have 'environment' as a prereq" do
-        @rake[@task_name].prerequisites.should include("environment")
-      end
-      
-      it "should output the first and last day of the previous month" do
-        end_of_last_month = Date.current.beginning_of_month - 1.days
-        expected_output = "#{end_of_last_month.beginning_of_month.strftime('%Y%m%d')} #{end_of_last_month.strftime('%Y%m%d')}"
-        Kernel.should_receive(:puts).with(expected_output)
-        @rake[@task_name].invoke
-      end
-    end
-    
     describe "usasearch:reports:weekly_report" do
       before do
         @task_name = "usasearch:reports:weekly_report"
@@ -144,7 +127,7 @@ describe "Report generation rake tasks" do
       it "should have 'environment' as a prereq" do
         @rake[@task_name].prerequisites.should include("environment")
       end
-    
+
       context "when running the task" do
         it "should create a zip file in a temporary location, add a bunch of files to it, email it, and delete it after it's been sent" do
           Emailer.should_receive(:monthly_report).with(@zip_filename, @start_date.beginning_of_week).and_return @emailer
@@ -156,7 +139,7 @@ describe "Report generation rake tasks" do
         end
       end
     end
-    
+
     describe "usasearch:reports:monthly_report" do
       before do
         @task_name = "usasearch:reports:monthly_report"

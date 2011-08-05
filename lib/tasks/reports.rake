@@ -48,13 +48,6 @@ namespace :usasearch do
       end
     end
 
-    desc "Output dates for reprocessing the logs before running monthly reports"
-    task :reprocess_dates => :environment do
-      end_date = Date.current.beginning_of_month - 1.day
-      start_date = end_date.beginning_of_month
-      Kernel.puts "#{start_date.strftime('%Y%m%d')} #{end_date.strftime('%Y%m%d')}"
-    end
-
     desc "Generate affiliate report on a weekly basis and email to admins"
     task :weekly_report, :day, :needs => :environment do |t, args|
       args.with_defaults(:day => Date.yesterday.to_s(:number))
