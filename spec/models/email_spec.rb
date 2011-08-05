@@ -43,9 +43,9 @@ describe Emailer do
     end
   end
 
-  describe "#report" do
+  describe "#monthly_report" do
     before do
-      @email = Emailer.report(File.join(Rails.root, "README.markdown"), Date.current, "HEADER").deliver
+      @email = Emailer.monthly_report(File.join(Rails.root, "README.markdown"), Date.current).deliver
     end
 
     it "should be sent to the monthly report recipients" do
@@ -53,7 +53,7 @@ describe Emailer do
     end
 
     it "should have a subject with the file name in it" do
-      @email.should have_subject("[USASearch] HEADER: README.markdown")
+      @email.should have_subject("[USASearch] Report data attached: README.markdown")
     end
 
     it "should have an attachment" do

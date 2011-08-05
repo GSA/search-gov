@@ -6,6 +6,8 @@ describe "Report generation rake tasks" do
     Rake.application = @rake
     Rake.application.rake_require "lib/tasks/reports"
     Rake::Task.define_task(:environment)
+    @emailer = mock(Emailer)
+    @emailer.stub!(:deliver).and_return true
   end
 
   describe "usasearch:reports" do
@@ -145,7 +147,7 @@ describe "Report generation rake tasks" do
     
       context "when running the task" do
         it "should create a zip file in a temporary location, add a bunch of files to it, email it, and delete it after it's been sent" do
-          Emailer.should_receive(:deliver_report).with(@zip_filename, @start_date.beginning_of_week, "Weekly Report data attached").and_return true
+          Emailer.should_receive(:monthly_report).with(@zip_filename, @start_date.beginning_of_week, "Weekly Report data attached").and_return @emailer
           File.should_receive(:delete).with(@zip_filename).and_return true
           @rake[@task_name].invoke
           Zip::ZipFile.open(@zip_filename) do |zip_file|
@@ -168,7 +170,7 @@ describe "Report generation rake tasks" do
 
       context "when running the task" do
         it "should create a zip file in a temporary location, add a bunch of files to it, email it, and delete it after it's been sent" do
-          Emailer.should_receive(:deliver_report).with(@zip_filename, @start_date.beginning_of_month, "Monthly Report data attached").and_return true
+          Emailer.should_receive(:monthly_report).with(@zip_filename, @start_date.beginning_of_month, "Monthly Report data attached").and_return @emailer
           File.should_receive(:delete).with(@zip_filename).and_return true
           @rake[@task_name].invoke
           Zip::ZipFile.open(@zip_filename) do |zip_file|
