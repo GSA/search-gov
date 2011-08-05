@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-search_rb.html">app/models/search.rb</a></td>
-            <td class='right_align'><tt>391</tt></td>
-            <td class='right_align'><tt>349</tt></td>
+            <td class='right_align'><tt>392</tt></td>
+            <td class='right_align'><tt>350</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -500,7 +500,7 @@
         
           
           
-          <tr class="inferred">
+          <tr class="marked">
             <td><pre><a name="line75">75</a>     rescue BingSearchError =&gt; error</pre></td>
           </tr>
         
@@ -1797,613 +1797,619 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line291">291</a>       break if (remaining_chars -= (site_str.length + delimiter.length)) &lt; 0</pre></td>
+            <td><pre><a name="line291">291</a>       encoded_str = URI.escape(site_str + delimiter, URI_REGEX)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line292">292</a>       domains &lt;&lt; site_str</pre></td>
+            <td><pre><a name="line292">292</a>       break if (remaining_chars -= encoded_str.length) &lt; 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line293">293</a>       domains &lt;&lt; site_str</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line293">293</a>     end</pre></td>
+            <td><pre><a name="line294">294</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line294">294</a>     &quot;(#{domains.join(delimiter)})&quot;</pre></td>
+            <td><pre><a name="line295">295</a>     &quot;(#{domains.join(delimiter)})&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line295">295</a>   end</pre></td>
+            <td><pre><a name="line296">296</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line296">296</a> </pre></td>
+            <td><pre><a name="line297">297</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line297">297</a>   private</pre></td>
+            <td><pre><a name="line298">298</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line298">298</a> </pre></td>
+            <td><pre><a name="line299">299</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line299">299</a>   def log_serp_impressions</pre></td>
+            <td><pre><a name="line300">300</a>   def log_serp_impressions</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line300">300</a>     modules = []</pre></td>
+            <td><pre><a name="line301">301</a>     modules = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line301">301</a>     modules &lt;&lt; (self.class.to_s == &quot;ImageSearch&quot; ? &quot;IMAG&quot; : &quot;BWEB&quot;) unless self.total.zero?</pre></td>
+            <td><pre><a name="line302">302</a>     modules &lt;&lt; (self.class.to_s == &quot;ImageSearch&quot; ? &quot;IMAG&quot; : &quot;BWEB&quot;) unless self.total.zero?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line302">302</a>     modules &lt;&lt; &quot;IMAG&quot; unless self.class.to_s == &quot;ImageSearch&quot; or self.extra_image_results.nil?</pre></td>
+            <td><pre><a name="line303">303</a>     modules &lt;&lt; &quot;IMAG&quot; unless self.class.to_s == &quot;ImageSearch&quot; or self.extra_image_results.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line303">303</a>     modules &lt;&lt; &quot;OVER&quot; &lt;&lt; &quot;BSPEL&quot; unless self.spelling_suggestion.nil?</pre></td>
+            <td><pre><a name="line304">304</a>     modules &lt;&lt; &quot;OVER&quot; &lt;&lt; &quot;BSPEL&quot; unless self.spelling_suggestion.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line304">304</a>     modules &lt;&lt; &quot;CREL&quot; unless self.related_search.nil? or self.related_search.empty?</pre></td>
+            <td><pre><a name="line305">305</a>     modules &lt;&lt; &quot;CREL&quot; unless self.related_search.nil? or self.related_search.empty?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line305">305</a>     modules &lt;&lt; &quot;FAQS&quot; unless self.faqs.nil? or self.faqs.total.zero?</pre></td>
+            <td><pre><a name="line306">306</a>     modules &lt;&lt; &quot;FAQS&quot; unless self.faqs.nil? or self.faqs.total.zero?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line306">306</a>     modules &lt;&lt; &quot;SPOT&quot; unless self.spotlight.nil?</pre></td>
+            <td><pre><a name="line307">307</a>     modules &lt;&lt; &quot;SPOT&quot; unless self.spotlight.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line307">307</a>     modules &lt;&lt; &quot;RECALL&quot; unless self.recalls.nil?</pre></td>
+            <td><pre><a name="line308">308</a>     modules &lt;&lt; &quot;RECALL&quot; unless self.recalls.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line308">308</a>     modules &lt;&lt; &quot;BOOS&quot; unless self.boosted_contents.nil? or self.boosted_contents.total.zero?</pre></td>
+            <td><pre><a name="line309">309</a>     modules &lt;&lt; &quot;BOOS&quot; unless self.boosted_contents.nil? or self.boosted_contents.total.zero?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line309">309</a>     modules &lt;&lt; &quot;MEDL&quot; unless self.med_topic.nil?</pre></td>
+            <td><pre><a name="line310">310</a>     modules &lt;&lt; &quot;MEDL&quot; unless self.med_topic.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line310">310</a>     vertical =</pre></td>
+            <td><pre><a name="line311">311</a>     vertical =</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line311">311</a>       case self.class.to_s</pre></td>
+            <td><pre><a name="line312">312</a>       case self.class.to_s</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line312">312</a>         when &quot;ImageSearch&quot;</pre></td>
+            <td><pre><a name="line313">313</a>         when &quot;ImageSearch&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line313">313</a>           :image</pre></td>
+            <td><pre><a name="line314">314</a>           :image</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line314">314</a>         when &quot;FormSearch&quot;</pre></td>
+            <td><pre><a name="line315">315</a>         when &quot;FormSearch&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line315">315</a>           :form</pre></td>
+            <td><pre><a name="line316">316</a>           :form</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line316">316</a>         when &quot;Search&quot;</pre></td>
+            <td><pre><a name="line317">317</a>         when &quot;Search&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line317">317</a>           :web</pre></td>
+            <td><pre><a name="line318">318</a>           :web</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line318">318</a>       end</pre></td>
+            <td><pre><a name="line319">319</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line319">319</a>     QueryImpression.log(vertical, affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : affiliate.name, self.query, modules)</pre></td>
+            <td><pre><a name="line320">320</a>     QueryImpression.log(vertical, affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : affiliate.name, self.query, modules)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line320">320</a>   end</pre></td>
+            <td><pre><a name="line321">321</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line321">321</a> </pre></td>
+            <td><pre><a name="line322">322</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line322">322</a>   def hits(response)</pre></td>
+            <td><pre><a name="line323">323</a>   def hits(response)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line323">323</a>     (response.web.results.blank? ? 0 : response.web.total) rescue 0</pre></td>
+            <td><pre><a name="line324">324</a>     (response.web.results.blank? ? 0 : response.web.total) rescue 0</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line324">324</a>   end</pre></td>
+            <td><pre><a name="line325">325</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line325">325</a> </pre></td>
+            <td><pre><a name="line326">326</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line326">326</a>   def bing_offset(response)</pre></td>
+            <td><pre><a name="line327">327</a>   def bing_offset(response)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line327">327</a>     (response.web.results.blank? ? 0 : response.web.offset) rescue 0</pre></td>
+            <td><pre><a name="line328">328</a>     (response.web.results.blank? ? 0 : response.web.offset) rescue 0</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line328">328</a>   end</pre></td>
+            <td><pre><a name="line329">329</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line329">329</a> </pre></td>
+            <td><pre><a name="line330">330</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line330">330</a>   def process_results(response)</pre></td>
+            <td><pre><a name="line331">331</a>   def process_results(response)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line331">331</a>     process_web_results(response)</pre></td>
+            <td><pre><a name="line332">332</a>     process_web_results(response)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line332">332</a>   end</pre></td>
+            <td><pre><a name="line333">333</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line333">333</a> </pre></td>
+            <td><pre><a name="line334">334</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line334">334</a>   def process_image_results(response)</pre></td>
+            <td><pre><a name="line335">335</a>   def process_image_results(response)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line335">335</a>     response.image.results.collect do |result|</pre></td>
+            <td><pre><a name="line336">336</a>     response.image.results.collect do |result|</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line336">336</a>       {</pre></td>
+            <td><pre><a name="line337">337</a>       {</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line337">337</a>         &quot;title&quot; =&gt; result.title,</pre></td>
+            <td><pre><a name="line338">338</a>         &quot;title&quot; =&gt; result.title,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line338">338</a>         &quot;Width&quot; =&gt; result.width,</pre></td>
+            <td><pre><a name="line339">339</a>         &quot;Width&quot; =&gt; result.width,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line339">339</a>         &quot;Height&quot; =&gt; result.height,</pre></td>
+            <td><pre><a name="line340">340</a>         &quot;Height&quot; =&gt; result.height,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line340">340</a>         &quot;FileSize&quot; =&gt; result.fileSize,</pre></td>
+            <td><pre><a name="line341">341</a>         &quot;FileSize&quot; =&gt; result.fileSize,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line341">341</a>         &quot;ContentType&quot; =&gt; result.contentType,</pre></td>
+            <td><pre><a name="line342">342</a>         &quot;ContentType&quot; =&gt; result.contentType,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line342">342</a>         &quot;Url&quot; =&gt; result.Url,</pre></td>
+            <td><pre><a name="line343">343</a>         &quot;Url&quot; =&gt; result.Url,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line343">343</a>         &quot;DisplayUrl&quot; =&gt; result.displayUrl,</pre></td>
+            <td><pre><a name="line344">344</a>         &quot;DisplayUrl&quot; =&gt; result.displayUrl,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line344">344</a>         &quot;MediaUrl&quot; =&gt; result.mediaUrl,</pre></td>
+            <td><pre><a name="line345">345</a>         &quot;MediaUrl&quot; =&gt; result.mediaUrl,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line345">345</a>         &quot;Thumbnail&quot; =&gt; {</pre></td>
+            <td><pre><a name="line346">346</a>         &quot;Thumbnail&quot; =&gt; {</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line346">346</a>           &quot;Url&quot; =&gt; result.thumbnail.url,</pre></td>
+            <td><pre><a name="line347">347</a>           &quot;Url&quot; =&gt; result.thumbnail.url,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line347">347</a>           &quot;FileSize&quot; =&gt; result.thumbnail.fileSize,</pre></td>
+            <td><pre><a name="line348">348</a>           &quot;FileSize&quot; =&gt; result.thumbnail.fileSize,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line348">348</a>           &quot;Width&quot; =&gt; result.thumbnail.width,</pre></td>
+            <td><pre><a name="line349">349</a>           &quot;Width&quot; =&gt; result.thumbnail.width,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line349">349</a>           &quot;Height&quot; =&gt; result.thumbnail.height,</pre></td>
+            <td><pre><a name="line350">350</a>           &quot;Height&quot; =&gt; result.thumbnail.height,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line350">350</a>           &quot;ContentType&quot; =&gt; result.thumbnail.contentType</pre></td>
+            <td><pre><a name="line351">351</a>           &quot;ContentType&quot; =&gt; result.thumbnail.contentType</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line351">351</a>         }</pre></td>
+            <td><pre><a name="line352">352</a>         }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line352">352</a>       }</pre></td>
+            <td><pre><a name="line353">353</a>       }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line353">353</a>     end</pre></td>
+            <td><pre><a name="line354">354</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line354">354</a>   end</pre></td>
+            <td><pre><a name="line355">355</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line355">355</a> </pre></td>
+            <td><pre><a name="line356">356</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line356">356</a>   def process_web_results(response)</pre></td>
+            <td><pre><a name="line357">357</a>   def process_web_results(response)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line357">357</a>     processed = response.web.results.collect do |result|</pre></td>
+            <td><pre><a name="line358">358</a>     processed = response.web.results.collect do |result|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line358">358</a>       title = result.title rescue nil</pre></td>
+            <td><pre><a name="line359">359</a>       title = result.title rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line359">359</a>       content = result.description rescue ''</pre></td>
+            <td><pre><a name="line360">360</a>       content = result.description rescue ''</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line360">360</a>       if title.present?</pre></td>
+            <td><pre><a name="line361">361</a>       if title.present?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line361">361</a>         {</pre></td>
+            <td><pre><a name="line362">362</a>         {</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line362">362</a>           'title' =&gt; title,</pre></td>
+            <td><pre><a name="line363">363</a>           'title' =&gt; title,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line363">363</a>           'unescapedUrl' =&gt; result.url,</pre></td>
+            <td><pre><a name="line364">364</a>           'unescapedUrl' =&gt; result.url,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line364">364</a>           'content' =&gt; content,</pre></td>
+            <td><pre><a name="line365">365</a>           'content' =&gt; content,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line365">365</a>           'cacheUrl' =&gt; (result.CacheUrl rescue nil),</pre></td>
+            <td><pre><a name="line366">366</a>           'cacheUrl' =&gt; (result.CacheUrl rescue nil),</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line366">366</a>           'deepLinks' =&gt; result[&quot;DeepLinks&quot;]</pre></td>
+            <td><pre><a name="line367">367</a>           'deepLinks' =&gt; result[&quot;DeepLinks&quot;]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line367">367</a>         }</pre></td>
+            <td><pre><a name="line368">368</a>         }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line368">368</a>       else</pre></td>
+            <td><pre><a name="line369">369</a>       else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line369">369</a>         nil</pre></td>
+            <td><pre><a name="line370">370</a>         nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line370">370</a>       end</pre></td>
+            <td><pre><a name="line371">371</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line371">371</a>     end</pre></td>
+            <td><pre><a name="line372">372</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line372">372</a>     processed.compact</pre></td>
+            <td><pre><a name="line373">373</a>     processed.compact</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line373">373</a>   end</pre></td>
+            <td><pre><a name="line374">374</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line374">374</a> </pre></td>
+            <td><pre><a name="line375">375</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line375">375</a>   def bing_query(query_string, query_sources, offset, count, enable_highlighting = true)</pre></td>
+            <td><pre><a name="line376">376</a>   def bing_query(query_string, query_sources, offset, count, enable_highlighting = true)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line376">376</a>     params = [</pre></td>
+            <td><pre><a name="line377">377</a>     params = [</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line377">377</a>       &quot;web.offset=#{offset}&quot;,</pre></td>
+            <td><pre><a name="line378">378</a>       &quot;web.offset=#{offset}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line378">378</a>       &quot;web.count=#{count}&quot;,</pre></td>
+            <td><pre><a name="line379">379</a>       &quot;web.count=#{count}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line379">379</a>       &quot;AppId=#{APP_ID}&quot;,</pre></td>
+            <td><pre><a name="line380">380</a>       &quot;AppId=#{APP_ID}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line380">380</a>       &quot;sources=#{query_sources}&quot;,</pre></td>
+            <td><pre><a name="line381">381</a>       &quot;sources=#{query_sources}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line381">381</a>       &quot;Options=#{ enable_highlighting ? &quot;EnableHighlighting&quot; : &quot;&quot;}&quot;,</pre></td>
+            <td><pre><a name="line382">382</a>       &quot;Options=#{ enable_highlighting ? &quot;EnableHighlighting&quot; : &quot;&quot;}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line382">382</a>       &quot;Adult=#{filter_setting}&quot;,</pre></td>
+            <td><pre><a name="line383">383</a>       &quot;Adult=#{filter_setting}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line383">383</a>       &quot;query=#{URI.escape(query_string, URI_REGEX)}&quot;</pre></td>
+            <td><pre><a name="line384">384</a>       &quot;query=#{URI.escape(query_string, URI_REGEX)}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line384">384</a>     ]</pre></td>
+            <td><pre><a name="line385">385</a>     ]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line385">385</a>     &quot;#{JSON_SITE}?&quot; + params.join('&amp;')</pre></td>
+            <td><pre><a name="line386">386</a>     &quot;#{JSON_SITE}?&quot; + params.join('&amp;')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line386">386</a>   end</pre></td>
+            <td><pre><a name="line387">387</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line387">387</a> </pre></td>
+            <td><pre><a name="line388">388</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line388">388</a>   def strip_extra_chars_from(did_you_mean_suggestion)</pre></td>
+            <td><pre><a name="line389">389</a>   def strip_extra_chars_from(did_you_mean_suggestion)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line389">389</a>     did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').gsub(/\xEE\x80(\x80|\x81)/, '').gsub('-', '').strip.squish unless did_you_mean_suggestion.nil?</pre></td>
+            <td><pre><a name="line390">390</a>     did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').gsub(/\xEE\x80(\x80|\x81)/, '').gsub('-', '').strip.squish unless did_you_mean_suggestion.nil?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line390">390</a>   end</pre></td>
+            <td><pre><a name="line391">391</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line391">391</a> end</pre></td>
+            <td><pre><a name="line392">392</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Aug 03 21:43:26 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Fri Aug 05 14:53:07 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
