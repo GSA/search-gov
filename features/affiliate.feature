@@ -1291,3 +1291,13 @@ Feature: Affiliate clients
     Then I should not see "Affiliate Header"
     And I should not see "Affiliate Footer"
 
+ Scenario: Embedded advanced affiliate search
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | header           | footer           |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Affiliate Header | Affiliate Footer |
+    When I go to aff.gov's embedded search page
+    And I follow "Advanced Search"
+    And I press "Search"
+    Then I should not see "Affiliate Header"
+    And I should not see "Affiliate Footer"
+

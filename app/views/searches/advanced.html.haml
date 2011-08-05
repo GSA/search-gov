@@ -5,6 +5,7 @@
   = hidden_field_tag 'locale', I18n.locale unless (I18n.locale == I18n.default_locale)
   = hidden_field_tag 'affiliate', @affiliate.name if @affiliate
   = hidden_field_tag 'scope_id', @scope_id if @affiliate && @scope_id
+  = hidden_field_tag 'embedded', params[:embedded] if params[:embedded]
   #advanced-form-intro
     %strong= t :advanced_search_instruction
   .elements
