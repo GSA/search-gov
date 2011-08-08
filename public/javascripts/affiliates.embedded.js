@@ -1,8 +1,8 @@
 jQuery(document).ready(function() {
-  var height = document.body.clientHeight || document.body.offsetHeight || document.body.scrollHeight;
-  var width = document.body.clientWidth || document.body.offsetWidth || document.body.scrollWidth;
-  parent.socket.postMessage(width + " " + height);
-
+  parent.iframe.style.visibility = "visible";
   jQuery('#popular_urls a').targetTop();
   jQuery('.searchresult a').targetTop();
+  var width = jQuery(document.body).width();
+  var height = jQuery(document.body).height();
+  parent.socket.postMessage(width + " " + height);
 });
