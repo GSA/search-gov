@@ -7,7 +7,7 @@ describe AgencyUrl do
 
   describe "#to_label" do
     it "returns url" do
-      AgencyUrl.new(:url => 'http://search.usa.gov').to_label.should == 'http://search.usa.gov'
+      AgencyUrl.new(:url => 'http://search.usa.gov').to_label.should == 'error'
     end
   end
 end
