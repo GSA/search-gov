@@ -91,9 +91,9 @@ Install Ruby 1.8.7
 Install Rubygems
 
     cd ..
-    wget http://rubyforge.org/frs/download.php/60718/rubygems-1.3.5.tgz
-    tar xvfz rubygems-1.3.5.tgz
-    cd rubygems-1.3.5
+    wget http://production.cf.rubygems.org/rubygems/rubygems-1.8.7.tgz
+    tar xvfz rubygems-1.8.7.tgz
+    cd rubygems-1.8.7
     sudo ruby setup.rb
     which gem
     gem -v
@@ -109,16 +109,16 @@ Edit ~search/.gemrc and add this line:
 Verify everything looks sane
 
     gem environment
-    
+
 Update rubygems to version 1.4.2
 
     sudo gem install rubygems-update -v='1.4.2'
     sudo update_rubygems
-    
+
 Verify that the environment is using the correct version; you should see 1.4.2 as the version
 
     gem environment
-    
+
 Install bundler
 
     sudo gem install bundler -v="1.0.12"
