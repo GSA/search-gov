@@ -14,7 +14,7 @@ describe PopularUrl do
       PopularUrl.create!(:affiliate => @affiliate, :title => 'awesome third post', :url => 'http://example/blog/1', :rank => 1)
     end
 
-    it { should validate_uniqueness_of(:rank).scoped_to(:affiliate_id) }
+    it { should validate_uniqueness_of(:url).scoped_to(:affiliate_id) }
   end
 
   describe "#top_urls" do
@@ -27,9 +27,9 @@ describe PopularUrl do
     end
 
     it "returns top N urls sorted by rank" do
-      @affiliate.popular_urls.top_urls[0].should == @first_url
+      @affiliate.popular_urls.top_urls[2].should == @first_url
       @affiliate.popular_urls.top_urls[1].should == @second_url
-      @affiliate.popular_urls.top_urls[2].should == @third_url
+      @affiliate.popular_urls.top_urls[0].should == @third_url
     end
   end
 end

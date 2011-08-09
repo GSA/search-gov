@@ -1,6 +1,9 @@
 require 'spec/spec_helper'
 
 describe AgencyPopularUrl do
+  before do
+    Affiliate.destroy_all
+  end
 
   it { should validate_presence_of :agency_id }
   it { should validate_presence_of :url }
@@ -71,6 +74,35 @@ describe AgencyPopularUrl do
             @agency.agency_popular_urls.size.should == 2
             @agency.agency_popular_urls.last.title.should == "Test"
             @agency.agency_popular_urls.last.rank.should == 99
+          end
+        end
+      end
+      
+      context "when an affiliat is present" do
+        before do
+          @affiliate = Affiliate.create(:display_name => 'USA.gov', :name => 'usa.gov', :search_results_page_title => 'Test', :staged_search_results_page_title => 'Test', :domains => "usa.gov\nsearch.usa.gov")
+          @affiliate.popular_urls << PopularUrl.new(:url => 'http://test.com', :title => 'Test.com', :rank => 100)
+          @affiliate.popular_urls << PopularUrl.new(:url => 'http://test.com/2', :title => 'Test 2', :rank => 99)
+        end
+        
+        it "should delete all existing popular urls and add in those returned" do
+          AgencyPopularUrl.compute_for_date
+          @affiliate.reload
+          @affiliate.popular_urls.size.should == 1
+          @affiliate.popular_urls.first.url.should == "http://search.usa.gov"
+        end
+        
+        context "when the link is already in the list" do
+          before do
+            @affiliate.popular_urls << PopularUrl.new(:url => 'http://search.usa.gov', :title => "Test", :rank => 99)
+          end
+          
+          it "should update it" do
+            AgencyPopularUrl.compute_for_date
+            @affiliate.reload
+            @affiliate.popular_urls.size.should == 1
+            @affiliate.popular_urls.last.title.should == "Search.USA.gov"
+            @affiliate.popular_urls.last.rank.should == 100
           end
         end
       end

@@ -1,6 +1,6 @@
 class AgencyPopularUrl < ActiveRecord::Base
   validates_presence_of :agency_id, :title, :url, :source
-  validates_uniqueness_of :url
+  validates_uniqueness_of :url, :scope => :agency_id
   belongs_to :agency
 
   class << self
@@ -14,6 +14,18 @@ class AgencyPopularUrl < ActiveRecord::Base
           popular_links = bitly_api.get_popular_links_for_domain(agency.domain)
           popular_links.each do |link|
             agency.agency_popular_urls << AgencyPopularUrl.new(:url => link[:long_url], :title => link[:title], :rank => link[:clicks], :source => 'bitly')
+          end
+        end
+      end
+      PopularUrl.transaction do
+        Affiliate.all.each do |affiliate|
+          PopularUrl.destroy_all(["affiliate_id = ?", affiliate.id])
+          popular_links = []
+          affiliate.domains_as_array.each do |domain|
+            popular_links += bitly_api.get_popular_links_for_domain(domain)
+          end
+          popular_links.each do |link|
+            affiliate.popular_urls << PopularUrl.new(:url => link[:long_url], :title => link[:title], :rank => link[:clicks])
           end
         end
       end

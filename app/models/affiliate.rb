@@ -36,6 +36,10 @@ class Affiliate < ActiveRecord::Base
   def name=(name)
     new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
   end
+  
+  def domains_as_array
+    self.domains.nil? ? [] : self.domains.split
+  end
 
   def is_affiliate_sayt_enabled?
     self.is_sayt_enabled && self.is_affiliate_suggestions_enabled

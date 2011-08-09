@@ -433,4 +433,30 @@ describe Affiliate do
       affiliate.staged_footer.should == "staged footer"
     end
   end
+  
+  describe "#domains_as_array" do
+    before do
+      @affiliate = Affiliate.new(:domains => "domain.com\nanother.domain.com")
+    end
+    
+    it "should return an array" do
+      @affiliate.domains_as_array.is_a?(Array).should be_true
+    end
+    
+    it "should have two entries split on line break" do
+      @affiliate.domains_as_array.size.should == 2
+      @affiliate.domains_as_array.first.should == "domain.com"
+      @affiliate.domains_as_array.last.should == "another.domain.com"
+    end
+    
+    context "when domains is nil" do
+      before do
+        @affiliate.domains = nil
+      end
+      
+      it "should not error when called, and return empty" do
+        @affiliate.domains_as_array.should == []
+      end
+    end
+  end
 end
