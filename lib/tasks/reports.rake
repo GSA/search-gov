@@ -56,10 +56,10 @@ namespace :usasearch do
 
       zip_filename = "/tmp/weekly_report_#{start_date.strftime('%Y-%m-%d')}.zip"
 
-      # affiliate report
+        # affiliate report
       affiliate_report_sql = "SELECT DISTINCT affiliate, total_queries FROM daily_usage_stats WHERE NOT ISNULL(affiliate) AND day BETWEEN ? AND ? GROUP BY affiliate ORDER BY 2 DESC"
       affiliate_report = Affiliate.find_by_sql [affiliate_report_sql, start_date, end_date]
-      output_to_zipfile(zip_filename, "affiliate_report.txt","Name,TotalQueries", affiliate_report.collect{|result| "#{result.affiliate},#{result.total_queries}"})
+      output_to_zipfile(zip_filename, "affiliate_report.txt", "Name,TotalQueries", affiliate_report.collect { |result| "#{result.affiliate},#{result.total_queries}" })
 
       Emailer.monthly_report(zip_filename, start_date).deliver
 
@@ -74,54 +74,54 @@ namespace :usasearch do
 
       zip_filename = "/tmp/monthly_report_#{start_date.strftime('%Y-%m')}.zip"
 
-      # top monthly query groups
+        # top monthly query groups
       top_monthy_query_groups_sql = "select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b where day between ? AND ? AND affiliate = 'usasearch.gov' AND locale = ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id group by q.name order by cnt desc limit 50"
       top_monthly_query_groups_en = DailyQueryStat.find_by_sql [top_monthy_query_groups_sql, start_date, end_date, "en"]
       top_monthly_query_groups_es = DailyQueryStat.find_by_sql [top_monthy_query_groups_sql, start_date, end_date, "es"]
       top_monthly_query_groups_affiliates = DailyQueryStat.find_by_sql ["select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b where day between ? AND ? AND affiliate != 'usasearch.gov' and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id group by q.name order by cnt desc limit 50", start_date, end_date]
-      output_to_zipfile(zip_filename, "top_monthly_query_groups_en.txt", "Name,Count", top_monthly_query_groups_en.collect{|result| "#{result.name},#{result.cnt}"})
-      output_to_zipfile(zip_filename, "top_monthly_query_groups_es.txt", "Name,Count", top_monthly_query_groups_es.collect{|result| "#{result.name},#{result.cnt}"})
-      output_to_zipfile(zip_filename, "top_monthly_query_groups_affiliates.txt", "Name,Count", top_monthly_query_groups_affiliates.collect{|result| "#{result.name},#{result.cnt}"})
+      output_to_zipfile(zip_filename, "top_monthly_query_groups_en.txt", "Name,Count", top_monthly_query_groups_en.collect { |result| "#{result.name},#{result.cnt}" })
+      output_to_zipfile(zip_filename, "top_monthly_query_groups_es.txt", "Name,Count", top_monthly_query_groups_es.collect { |result| "#{result.name},#{result.cnt}" })
+      output_to_zipfile(zip_filename, "top_monthly_query_groups_affiliates.txt", "Name,Count", top_monthly_query_groups_affiliates.collect { |result| "#{result.name},#{result.cnt}" })
 
-      # top monthly queries
+        # top monthly queries
       top_monthly_queries_sql = "SELECT query, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` FORCE INDEX (aldq) WHERE (day between ? AND ? AND affiliate = 'usasearch.gov' AND locale = ?) GROUP BY query ORDER BY cnt desc LIMIT 50"
       top_monthly_queries_en = DailyQueryStat.find_by_sql [top_monthly_queries_sql, start_date, end_date, "en"]
       top_monthly_queries_es = DailyQueryStat.find_by_sql [top_monthly_queries_sql, start_date, end_date, "es"]
       top_monthly_queries_affiliates = DailyQueryStat.find_by_sql ["SELECT query, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` FORCE INDEX (aldq) WHERE (day between ? AND ? AND affiliate != 'usasearch.gov' ) GROUP BY query  ORDER BY cnt desc LIMIT 50", start_date, end_date]
-    output_to_zipfile(zip_filename, "top_monthly_queries_en.txt", "Query,Count", top_monthly_queries_en.collect{|result| "#{result.query},#{result.cnt}"})
-    output_to_zipfile(zip_filename, "top_monthly_queries_es.txt", "Query,Count", top_monthly_queries_es.collect{|result| "#{result.query},#{result.cnt}"})
-    output_to_zipfile(zip_filename, "top_monthly_queries_affiliates.txt", "Query,Count", top_monthly_queries_affiliates.collect{|result| "#{result.query},#{result.cnt}"})
+      output_to_zipfile(zip_filename, "top_monthly_queries_en.txt", "Query,Count", top_monthly_queries_en.collect { |result| "#{result.query},#{result.cnt}" })
+      output_to_zipfile(zip_filename, "top_monthly_queries_es.txt", "Query,Count", top_monthly_queries_es.collect { |result| "#{result.query},#{result.cnt}" })
+      output_to_zipfile(zip_filename, "top_monthly_queries_affiliates.txt", "Query,Count", top_monthly_queries_affiliates.collect { |result| "#{result.query},#{result.cnt}" })
 
 
-    # top affiliates
-    top_affiliates = Affiliate.find_by_sql ["SELECT affiliate, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` WHERE day between ? AND ? GROUP BY affiliate ORDER BY cnt desc LIMIT 50", start_date, end_date]
-    output_to_zipfile(zip_filename, "top_affiliates.txt", "Name,Count", top_affiliates.collect{|result| "#{result.affiliate},#{result.cnt}"})
+        # top affiliates
+      top_affiliates = Affiliate.find_by_sql ["SELECT affiliate, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` WHERE day between ? AND ? GROUP BY affiliate ORDER BY cnt desc LIMIT 50", start_date, end_date]
+      output_to_zipfile(zip_filename, "top_affiliates.txt", "Name,Count", top_affiliates.collect { |result| "#{result.affiliate},#{result.cnt}" })
 
-    # affiliate queries for the past five months
-    months = 4.downto(0).collect{|index| (start_date - index.months).strftime('%Y-%m')}
-    months_cases_sql = months.collect{|month| "SUM( CASE month WHEN '#{month}' THEN cnt ELSE 0 END ) AS '#{month}'"}.join(",")
-    affiliate_queries_by_month_sql = "SELECT affiliate, #{months_cases_sql}, SUM( cnt ) AS Total FROM ( SELECT affiliate, left(day, 7) month, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` WHERE day between ? and ? GROUP BY affiliate, month having cnt > 50000 ) AS stats  GROUP BY affiliate WITH ROLLUP"
-    affiliate_queries_by_month = Affiliate.find_by_sql [affiliate_queries_by_month_sql, (start_date - 4.months).beginning_of_month, end_date]
-    output_to_zipfile(zip_filename, "affiliate_queries_by_month.txt", "Affiliate,#{months.join(",")},Total", affiliate_queries_by_month.collect{|result| "#{result.affiliate},#{months.collect{|month| result[month]}.join(',')}"})
+        # affiliate queries for the past five months
+      months = 4.downto(0).collect { |index| (start_date - index.months).strftime('%Y-%m') }
+      months_cases_sql = months.collect { |month| "SUM( CASE month WHEN '#{month}' THEN cnt ELSE 0 END ) AS '#{month}'" }.join(",")
+      affiliate_queries_by_month_sql = "SELECT affiliate, #{months_cases_sql}, SUM( cnt ) AS Total FROM ( SELECT affiliate, left(day, 7) month, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` WHERE day between ? and ? GROUP BY affiliate, month having cnt > 50000 ) AS stats  GROUP BY affiliate WITH ROLLUP"
+      affiliate_queries_by_month = Affiliate.find_by_sql [affiliate_queries_by_month_sql, (start_date - 4.months).beginning_of_month, end_date]
+      output_to_zipfile(zip_filename, "affiliate_queries_by_month.txt", "Affiliate,#{months.join(",")},Total", affiliate_queries_by_month.collect { |result| "#{result.affiliate},#{months.collect { |month| result[month] }.join(',')}" })
 
-    # clicks, impressions, CTR by module over the past month
-    totals = DailySearchModuleStat.module_stats_for_daterange(start_date.beginning_of_month..start_date.end_of_month)
-    output_to_zipfile(zip_filename, "click_totals.txt", "Module, Impressions, Clicks, Click-Thru Rate",
-      totals.collect{|result| "#{result.module_tag},#{result.impressions},#{result.clicks},#{100*result.clicks/result.impressions}%"})
+        # clicks, impressions, CTR by module over the past month
+      totals = DailySearchModuleStat.module_stats_for_daterange(start_date.beginning_of_month..start_date.end_of_month)
+      output_to_zipfile(zip_filename, "click_totals.txt", "Module, Impressions, Clicks, Click-Thru Rate",
+                        totals.collect { |result| "#{result.module_tag},#{result.impressions},#{result.clicks},#{100*result.clicks/result.impressions}%" })
 
-    # affiliate report
-    affiliate_report_sql = "SELECT DISTINCT affiliate, total_queries FROM daily_usage_stats WHERE NOT ISNULL(affiliate) AND day BETWEEN ? AND ? GROUP BY affiliate ORDER BY 2 DESC"
-    affiliate_report = Affiliate.find_by_sql [affiliate_report_sql, start_date, end_date]
-    output_to_zipfile(zip_filename, "affiliate_report.txt","Name,TotalQueries", affiliate_report.collect{|result| "#{result.affiliate},#{result.total_queries}"})
+        # affiliate report
+      affiliate_report_sql = "SELECT DISTINCT affiliate, total_queries FROM daily_usage_stats WHERE NOT ISNULL(affiliate) AND day BETWEEN ? AND ? GROUP BY affiliate ORDER BY 2 DESC"
+      affiliate_report = Affiliate.find_by_sql [affiliate_report_sql, start_date, end_date]
+      output_to_zipfile(zip_filename, "affiliate_report.txt", "Name,TotalQueries", affiliate_report.collect { |result| "#{result.affiliate},#{result.total_queries}" })
 
-    # total queries by profile
-    monthly_totals = DailyUsageStat.monthly_totals(start_date.year, start_date.month)
-    output = "#{start_date.strftime('%Y-%m')},#{monthly_totals['English'][:total_queries]},#{monthly_totals['Spanish'][:total_queries]},#{monthly_totals['Affiliates'][:total_queries]},#{monthly_totals['English'][:total_queries]+monthly_totals['Spanish'][:total_queries]+monthly_totals['Affiliates'][:total_queries]}"
-    output_to_zipfile(zip_filename, "total_queries_by_profile.txt", "Month,English,Spanish,Affilitates,Total", output)
+        # total queries by profile
+      monthly_totals = DailyUsageStat.monthly_totals(start_date.year, start_date.month)
+      output = "#{start_date.strftime('%Y-%m')},#{monthly_totals['English'][:total_queries]},#{monthly_totals['Spanish'][:total_queries]},#{monthly_totals['Affiliates'][:total_queries]},#{monthly_totals['English'][:total_queries]+monthly_totals['Spanish'][:total_queries]+monthly_totals['Affiliates'][:total_queries]}"
+      output_to_zipfile(zip_filename, "total_queries_by_profile.txt", "Month,English,Spanish,Affilitates,Total", output)
 
-    Emailer.monthly_report(zip_filename, start_date).deliver
+      Emailer.monthly_report(zip_filename, start_date).deliver
 
-    File.delete(zip_filename)
+      File.delete(zip_filename)
     end
   end
 end
