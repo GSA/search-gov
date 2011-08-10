@@ -52,7 +52,7 @@ RSpec.configure do |config|
     redis_options = {
       "daemonize" => 'yes',
       "pidfile" => REDIS_PID,
-      "port" => 9736,
+      "port" => 6380,
       "timeout" => 300,
       "save 900" => 1,
       "save 300" => 1,
@@ -66,12 +66,17 @@ RSpec.configure do |config|
     `echo '#{redis_options}' | redis-server -`
   end
 
+  config.before(:each) do
+    Redis.new(:host => REDIS_HOST, :port => REDIS_PORT).flushall
+  end
+
   config.after(:suite) do
     %x{
-      cat #{REDIS_PID} | xargs kill -QUIT
+      cat #{REDIS_PID} | xargs kill -9
       rm -f #{REDIS_CACHE_PATH}dump.rdb
     }
   end
+
 end
 
 Webrat.configure do |config|
