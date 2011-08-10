@@ -62,7 +62,7 @@ RSpec.configure do |config|
       "loglevel" => "debug",
       "logfile" => "stdout",
       "databases" => 16
-    }.map { |k, v| "#{k} #{v}" }.join('\n')
+    }.map { |k, v| "#{k} #{v}" }.join("\n")
     `echo '#{redis_options}' | redis-server -`
   end
 
