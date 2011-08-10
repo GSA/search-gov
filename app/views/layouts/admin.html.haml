@@ -19,6 +19,7 @@
     /[if IE]
       = (javascript_include_tag "iepngfix_tilebg.js").html_safe
     = active_scaffold_includes.html_safe
+    = stylesheet_link_tag 'compiled/active_scaffold_overrides.css', :media => 'screen'
 
   %body
     = render "/shared/program_header"
