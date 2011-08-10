@@ -35,7 +35,7 @@ module ActionController
         else
           before_filter :check_mobile_param
           before_filter :set_mobile_format
-          after_filter :clear_mobile_session
+          after_filter :clear_mobile_session        
         end
 
         helper_method :is_mobile_device?
@@ -100,7 +100,7 @@ module ActionController
       # request is either :mobile or not.
       
       def in_mobile_view?
-        request.format.to_sym == :mobile
+        request.format.present? and request.format.to_sym == :mobile
       end
       
       # Returns either true or false depending on whether or not the user agent of
