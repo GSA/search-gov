@@ -91,11 +91,11 @@ class MedTopic < ActiveRecord::Base
     end
 
 
-    def dump_db_vocab()
+    def dump_db_vocab
       topics = { }
       groups = { }
-      find(:all).each { |topic|
-        lm_topic                  = topic.lang_mapped_topic
+      all.each { |topic|
+        lm_topic = topic.lang_mapped_topic
         topics[topic.medline_tid] = {
             :medline_title  => topic.medline_title,
             :medline_url    => topic.medline_url,
