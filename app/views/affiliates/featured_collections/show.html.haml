@@ -9,12 +9,12 @@
       %tr
         %th{ :colspan => 2 }
           .actions
-            = link_to("Edit", edit_affiliate_featured_collection_path(@affiliate, @feature_collection), { :class => 'edit-link' })
-            = button_to("Delete", [@affiliate, @feature_collection], :method => :delete, :confirm => "Are you sure you want to delete this Featured Collection?")
+            = link_to("Edit", edit_affiliate_featured_collection_path(@affiliate, @featured_collection), { :class => 'edit-link' })
+            = button_to("Delete", [@affiliate, @featured_collection], :method => :delete, :confirm => "Are you sure you want to delete this Featured Collection?")
     %tbody
       %tr
         %td.name Title
-        %td= link_to_unless(@featured_collection.title_url.blank?, @featured_collection.title, @featured_collection.title_url)
+        %td= @featured_collection.title
       %tr
         %td.name Title URL
         %td= @featured_collection.title_url
@@ -35,6 +35,19 @@
         %td.keywords
           - @featured_collection.featured_collection_keywords.each do |keyword|
             %span= keyword.value
+      %tr
+        %td.name Image
+        %td.image
+          = image_tag(@featured_collection.image.url(:medium), :alt => @featured_collection.image_alt_text) if @featured_collection.image?
+      %tr
+        %td.name Image alt text
+        %td.image_alt_text= @featured_collection.image_alt_text
+      %tr
+        %td.name Image attribution
+        %td.image_attribution= @featured_collection.image_attribution
+      %tr
+        %td.name Image attribution url
+        %td.image_attribution= @featured_collection.image_attribution_url
       %tr
         %td.name Links
         %td.links

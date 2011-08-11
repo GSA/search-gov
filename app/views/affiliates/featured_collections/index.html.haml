@@ -21,15 +21,15 @@
           %th Status
           %th Actions
         - unless @featured_collections.blank?
-          - @featured_collections.each do |feature_collection|
+          - @featured_collections.each do |featured_collection|
             %tr.row-item
-              %td= feature_collection.title.truncate(35, :separator => " ")
-              %td.publish-date= render_date feature_collection.publish_start_on
-              %td.publish-date= render_date feature_collection.publish_end_on
-              %td.status= feature_collection.display_status
+              %td= link_to featured_collection.title.truncate(35, :separator => " "), [@affiliate, featured_collection]
+              %td.publish-date= render_date featured_collection.publish_start_on
+              %td.publish-date= render_date featured_collection.publish_end_on
+              %td.status= featured_collection.display_status
               %td.actions
-                = link_to("Edit", edit_affiliate_featured_collection_path(@affiliate, feature_collection))
-                = button_to("Delete", [@affiliate, feature_collection], :method => :delete, :confirm => "Are you sure you want to delete this Featured Collection?")
+                = link_to("Edit", edit_affiliate_featured_collection_path(@affiliate, featured_collection))
+                = button_to("Delete", [@affiliate, featured_collection], :method => :delete, :confirm => "Are you sure you want to delete this Featured Collection?")
         - else
           %tr
             %td.empty{ :colspan => 5 } Site #{@affiliate.display_name} has no Featured Collection

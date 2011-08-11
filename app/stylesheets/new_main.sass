@@ -1372,36 +1372,79 @@ h3.api-item
     float: left
     padding-top: 8px
     text-align: left
-    width: 135px
+    width: 155px
     &.select
       padding-top: 4px
+    &.mark-image-for-deletion
+      clear: none
+      float: left
+      font-weight: normal
+      width: auto
   h2
     font-size: 15px
   table
     margin-bottom: 0
-  hr
-    border: 0
-    height: 1px
-    margin: 1em 0 0.5em
-    width: auto
   .basic-information
     @include clearfix
+    margin-bottom: 10px
     ul
       padding: 0
-    li
-      input.text
-        float: left
-        width: 600px
-      input.date
-        float: left
-        margin: 5px 0
-        width: 95px
+      li
+        input.text
+          float: left
+          width: 580px
+        input.date
+          float: left
+          margin: 5px 0
+          width: 95px
+        input.file
+          clear: both
+          float: left
+          margin-left: 0
+          padding: 0
+      &.image-columns
+        li
+          div.image
+            @include clearfix
+            //border: 1px solid blue
+            margin: 0 0 0 155px
+            padding-top: 8px
+            text-align: left
+          img
+            float: left
+            padding: 8px 0
+          .delete-image-subsection
+            float: left
+            margin: 10px
+            label
+              margin: 0
+              padding: 0
+            input.mark-image-for-deletion
+              margin: 5px 8px 8px
+              padding: 0
+              float: left
+          #featured_collection_image
+            float: left
+          span
+            clear: left
+            color: #909090
+            float: left
+            font-size: 12px
+            width: 400px
       img
         padding: 8px 0 0 5px
       select
         float: left
+  .keywords-section
+    @include clearfix
+    padding: 10px 0
+    border-top: 1px solid #DDD
+  #keywords_header
+    float: left
+    width: 155px
   .keywords
     @include clearfix
+    float: left
     width: 315px
     table
       float: left
@@ -1410,6 +1453,14 @@ h3.api-item
         width: 300px
     td
       :padding 0
+  .image-section
+    @include clearfix
+    border-top: 1px solid #DDD
+    padding: 0 0 10px 0
+  .links-section
+    @include clearfix
+    border-top: 1px solid #DDD
+    padding: 10px 0
   .links
     @include clearfix
     table
@@ -1442,6 +1493,8 @@ h3.api-item
     float: right
     font:
       weight: normal
+  a.cancel
+    margin-left: 10px
 
 .show-featured-collection
   overflow: hidden
@@ -1449,7 +1502,7 @@ h3.api-item
     border: 1px solid #BDBDBD
     table-layout: fixed
   col.name
-    width: 135px
+    width: 165px
   th
     background-color: #444444
     padding: 5px

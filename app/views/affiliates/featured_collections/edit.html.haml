@@ -1,7 +1,7 @@
 = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Edit Featured Collection"])
 %h1 Edit Featured Collection
 .edit-featured-collection
-  = form_for([@affiliate, @featured_collection]) do |f|
+  = form_for([@affiliate, @featured_collection], :html => { :multipart => true }) do |f|
     = render :partial => f
     = f.submit "Update"
-    = link_to 'Cancel', [@affiliate, @featured_collection]
+    = link_to 'Cancel', [@affiliate, @featured_collection], :class => 'cancel'

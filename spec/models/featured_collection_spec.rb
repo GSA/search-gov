@@ -3,6 +3,8 @@ require 'spec/spec_helper'
 describe FeaturedCollection do
   fixtures :affiliates
   it { should validate_presence_of :title }
+  it { should have_attached_file :image }
+  it { should validate_attachment_content_type(:image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
   SUPPORTED_LOCALES.each do |locale|
     it { should allow_value(locale).for(:locale) }
@@ -48,7 +50,57 @@ describe FeaturedCollection do
       inactive_featured_collection.save!
       inactive_featured_collection
     }
-    specify { active_featured_collection.display_status.should == 'Active' }
-    specify { inactive_featured_collection.display_status.should == 'Inactive' }
+
+    context "when status is active" do
+      specify { active_featured_collection.display_status.should == 'Active' }
+    end
+
+    context "when status is inactive" do
+      specify { inactive_featured_collection.display_status.should == 'Inactive' }
+    end
+  end
+
+  describe "#update_attributes" do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:image) { mock('image') }
+    let(:featured_collection) do
+      featured_collection = affiliate.featured_collections.build(:title => 'My awesome featured collection',
+                                                                 :locale => 'en',
+                                                                 :status => 'active')
+      featured_collection.featured_collection_keywords.build(:value => 'test')
+      featured_collection.save!
+      featured_collection
+    end
+
+    context "when there is an existing image" do
+      before do
+        featured_collection.should_receive(:image?).and_return(true)
+        featured_collection.should_receive(:image).at_least(:once).and_return(image)
+      end
+
+      context "when marking an existing image for deletion" do
+        it "should clear existing image" do
+          image.should_receive(:dirty?).and_return(false)
+          image.should_receive(:clear)
+          featured_collection.update_attributes({ :mark_image_for_deletion => '1'})
+        end
+      end
+
+      context "when uploading a new image" do
+        it "should not clear the existing image" do
+          image.should_receive(:dirty?).and_return(true)
+          image.should_not_receive(:clear)
+          featured_collection.update_attributes({ :title => 'updated'})
+        end
+      end
+    end
+
+    context "when there is no existing image" do
+      it "should not clear image" do
+        featured_collection.should_receive(:image?).and_return(false)
+        image.should_not_receive(:clear)
+        featured_collection.update_attributes(:title => 'new title')
+      end
+    end
   end
 end

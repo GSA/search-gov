@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110802190508) do
+ActiveRecord::Schema.define(:version => 20110811165030) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -253,14 +253,21 @@ ActiveRecord::Schema.define(:version => 20110802190508) do
 
   create_table "featured_collections", :force => true do |t|
     t.integer  "affiliate_id"
-    t.string   "title",            :null => false
+    t.string   "title",                 :null => false
     t.string   "title_url"
-    t.string   "locale",           :null => false
-    t.string   "status",           :null => false
+    t.string   "locale",                :null => false
+    t.string   "status",                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "publish_start_on"
     t.date     "publish_end_on"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "image_alt_text"
+    t.string   "image_attribution"
+    t.string   "image_attribution_url"
   end
 
   add_index "featured_collections", ["affiliate_id"], :name => "index_featured_collections_on_affiliate_id"

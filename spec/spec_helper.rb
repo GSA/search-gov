@@ -10,6 +10,7 @@ require "authlogic/test_case"
 require 'webrat'
 require 'sunspot/rails/spec_helper'
 require 'shoulda/integrations/rspec2'
+require 'paperclip/matchers'
 
 include Authlogic::TestCase
 
@@ -44,6 +45,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.use_transactional_fixtures = true
+  config.include Paperclip::Shoulda::Matchers
 
   REDIS_PID = "#{Rails.root}/tmp/pids/redis-test.pid"
   REDIS_CACHE_PATH = "#{Rails.root}/tmp/cache/"

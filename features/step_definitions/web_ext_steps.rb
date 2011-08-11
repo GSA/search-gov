@@ -50,3 +50,11 @@ end
 Then /^I should not see "([^\"]*)" meta tag$/ do |name|
   page.should_not have_selector("meta[name='#{name}']")
 end
+
+Then /^I should see an image with alt text "([^"]*)"$/ do |alt|
+  page.should have_selector("img[alt='#{alt}']")
+end
+
+Then /^I should not see an image with alt text "([^"]*)"$/ do |alt|
+  page.should_not have_selector("img[alt='#{alt}']")
+end
