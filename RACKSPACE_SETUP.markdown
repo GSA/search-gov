@@ -355,7 +355,7 @@ Set the 'Execute Shell' section to the following:
     rm -rf tmp
     mkdir tmp
     rm -rf coverage/
-    cp ~/database.yml config/database.yml
+    cp /home/jwynne/database.yml config/database.yml
     bin/rake db:schema:load RAILS_ENV=test
     bin/rake sunspot:solr:start RAILS_ENV=test
     rm -rf tmp/cache
