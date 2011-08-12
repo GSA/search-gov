@@ -319,6 +319,12 @@ Follow the instructions for installing Jenkins here:
 
     https://wiki.jenkins-ci.org/display/JENKINS/Tomcat
     
+When you start up the Tomcat service, start it using:
+
+    service tomcat start
+    
+Note: do not use 'sudo' here, as we want Tomcat to run as the 'search' user.  You may need to adjust the permissions on some log directories if you run into problems.
+    
 Setup user security:
   
     https://wiki.jenkins-ci.org/display/JENKINS/Standard+Security+Setup
