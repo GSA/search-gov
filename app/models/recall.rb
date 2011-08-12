@@ -258,7 +258,7 @@ class Recall < ActiveRecord::Base
         nhtsa_summary
       when 'CDC' then
         cdc_summary
-              end
+    end
     summary.blank? ? "Click here to see products" : summary
   end
 
@@ -273,7 +273,7 @@ class Recall < ActiveRecord::Base
   end
 
   def cdc_summary
-    food_recall.summary
+    food_recall.nil? ? "Click here to see food recall" : food_recall.summary
   end
 
   def description

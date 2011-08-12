@@ -884,6 +884,16 @@ describe Recall do
           @recall.industry.should == :drug
         end
       end
+      
+      context "when for some reason a food recall is not present" do
+        before do
+          @recall.food_recall = nil
+        end
+        
+        it "should output a generic summary" do
+          @recall.summary.should == "Click here to see food recall"
+        end
+      end
     end
 
     context "when unknown organization" do
