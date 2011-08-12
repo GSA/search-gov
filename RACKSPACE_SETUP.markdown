@@ -302,3 +302,76 @@ Restart apache
     sudo service httpd restart
 
 Setup log rotation for apache and rails/passenger in /etc/logrotate.d/{httpd,passenger}
+
+##Installing and Setting up Jenkins
+
+Jenkins is a Continuous Integration tool that runs as a web service inside a servlet engine.  Tomcat 5 is recommended.
+
+Download and install Tomcat 5:
+
+    http://tomcat.apache.org/download-55.cgi
+    
+Install with the following instructions:
+
+    http://it.megocollector.com/?p=1283
+    
+Follow the instructions for installing Jenkins here:
+
+    https://wiki.jenkins-ci.org/display/JENKINS/Tomcat
+    
+Setup user security:
+  
+    https://wiki.jenkins-ci.org/display/JENKINS/Standard+Security+Setup
+    
+Using matrix based security, setup a new user using Jenkins own security database, and give it all the permissions.  Leave the anonymous user with no permissions.  Once you save the configuration, you'll be logged out.  Create a new user using the sign up form with the username you authorized.  Then log in with that user.
+
+You'll need to install some plugins.  Click on Manage Jenkins->Manage Plugins, and install the following plugins from the 'Available' tab:
+
+    Jenkins GIT plugin
+    GitHub plugin
+    Jenkins Rake plugin
+    Jenkins ruby metrics plugin
+    Hudson ruby plugin
+    Github Authentication plugin
+    
+Update any of the plugins that are already installed to the latest version.
+
+Setup a new job, using this:
+
+    https://wiki.jenkins-ci.org/display/JENKINS/Configuring+a+Rails+build
+    
+Skip all the gem stuff, and just start from where it says 'Jenkins.'
+
+Github project should be set to: http://github.com/GSA-OCSIT/usasearch/
+
+For Source Code Management, select git, and use: git@github.com:GSA-OCSIT/usasearch.git for the repository url.
+
+For Build Triggers, select 'Build when a change is pushed to Github' and 'Poll SCM'  Set the Poll SCM schedule to:
+
+    */5 * * * *
+    
+Set the 'Execute Shell' section to the following:
+
+    rm -rf tmp
+    mkdir tmp
+    rm -rf coverage/
+    cp ~/database.yml config/database.yml
+    bin/rake db:schema:load RAILS_ENV=test
+    bin/rake sunspot:solr:start RAILS_ENV=test
+    rm -rf tmp/cache
+    mkdir tmp/cache
+    bin/rake rcov:all
+    bin/rake sunspot:solr:stop RAILS_ENV=test
+    
+From the post build actions, select the following:
+
+    Publish Rails Notes report
+    Publish Rails stats report
+    Publish Rcov report (set the rcov directory to 'coverage/' and the total coverage and code coverage to 100/0/0)
+    Email notification, and put in the emails for all developers, check send email for every unstable build, and send separate emails to indiviudals who broke the build.
+    
+Save the configuration.
+
+On the staging server, create a copy of the project database.yml in the /home/jwynne/ directory, and set the test environment to use the MySQL root password.
+
+Go back to Jenkins, you should be able to select your job and click 'Build Now'.  View the console output on the build to watch as it builds, and when hopefully all tests pass.
