@@ -19,20 +19,15 @@ namespace :usasearch do
   end
 
   namespace :daily_popular_queries do
-    desc "Total up the most popular queries for the previous day"
+    desc "Total up the most popular queries and query groups for the given date range (defaults to yesterday)"
     task :calculate, :start_day, :end_day, :needs => :environment do |t, args|
       args.with_defaults(:start_day => Date.yesterday.to_s(:number), :end_day => Date.yesterday.to_s(:number))
       start_date, end_date = Date.parse(args.start_day), Date.parse(args.end_day)
       combinations = [{:method => :most_popular_terms, :is_grouped => false}, {:method => :most_popular_query_groups, :is_grouped => true}]
       start_date.upto(end_date) do |day|
-        DailyPopularQuery.delete_all(["day = ?", day])
         [1, 7, 30].each do |time_frame|
           combinations.each do |combo|
-            query_counts = DailyQueryStat.send(combo[:method], day, time_frame, 1000)
-            query_counts.each do |query_count|
-              DailyPopularQuery.create!(:day => day, :affiliate_id => nil, :locale => 'en', :query => query_count.query,
-                                        :is_grouped => combo[:is_grouped], :time_frame => time_frame, :times => query_count.times)
-            end unless query_counts.is_a?(String)
+            DailyPopularQuery.calculate(day, time_frame, combo[:method], combo[:is_grouped])
           end
         end
       end
@@ -40,7 +35,7 @@ namespace :usasearch do
   end
 
   namespace :monthly_popular_queries do
-    desc "Total up the most popular queries for the month of the previous day"
+    desc "Total up the most popular queries and query groups for the month of the given day (defaults to yesterday)"
     task :calculate, :day, :needs => :environment do |t, args|
       args.with_defaults(:day => Date.yesterday.to_s(:number))
       day = Date.parse(args.day)

@@ -4,6 +4,7 @@ class DailyQueryStat < ActiveRecord::Base
   before_save :squish_query
   RESULTS_SIZE = 10
   INSUFFICIENT_DATA = "Not enough historic data to compute most popular"
+  MAX_ORPHANS_PER_PASS = 250000
 
   searchable do
     text :query
@@ -13,6 +14,20 @@ class DailyQueryStat < ActiveRecord::Base
   end
 
   class << self
+    def reindex_day(day)
+      clean_index_orphans_for_day(day)
+      Sunspot.index(all(:select => 'id', :conditions=>["day=?", day]))
+    end
+
+    def clean_index_orphans_for_day(day)
+      db_ids = all(:select => 'id', :conditions=>["day=?", day]).collect(&:id).to_set
+      indexed_ids = solr_search_ids { with :day, day; paginate(:page => 1, :per_page => MAX_ORPHANS_PER_PASS) }.to_set
+      (indexed_ids - db_ids).each do |id|
+        new do |fake_instance|
+          fake_instance.id = id
+        end.solr_remove_from_index
+      end
+    end
 
     def search_for(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       search do
@@ -59,8 +74,8 @@ class DailyQueryStat < ActiveRecord::Base
     end
 
     def most_popular_terms_for_year_month(year, month, num_results = RESULTS_SIZE)
-      start_date = Date.civil(year,month,1)
-      end_date = Date.civil(year,month,-1)
+      start_date = Date.civil(year, month, 1)
+      end_date = Date.civil(year, month, -1)
       results = sum(:times,
                     :group => :query,
                     :conditions => ['day between ? AND ?', start_date, end_date],
@@ -72,11 +87,11 @@ class DailyQueryStat < ActiveRecord::Base
     end
 
     def most_popular_groups_for_year_month(year, month, num_results = RESULTS_SIZE)
-      start_date = Date.civil(year,month,1)
-      end_date = Date.civil(year,month,-1)
+      start_date = Date.civil(year, month, 1)
+      end_date = Date.civil(year, month, -1)
       results = find_by_sql ["select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b "+
-        "where day between ? AND ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id "+
-        "group by q.name order by cnt desc limit ?", start_date, end_date, num_results]
+                               "where day between ? AND ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id "+
+                               "group by q.name order by cnt desc limit ?", start_date, end_date, num_results]
       return INSUFFICIENT_DATA if results.empty?
       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }
     end
@@ -85,8 +100,8 @@ class DailyQueryStat < ActiveRecord::Base
       return INSUFFICIENT_DATA if end_date.nil?
       start_date = end_date - days_back.days + 1.day
       results = find_by_sql ["select q.name, sum(d.times) cnt from daily_query_stats d FORCE INDEX (qdal), query_groups q, grouped_queries g, grouped_queries_query_groups b "+
-        "where day between ? AND ? AND affiliate = ? AND locale = ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id "+
-        "group by q.name order by cnt desc limit ?",
+                               "where day between ? AND ? AND affiliate = ? AND locale = ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id "+
+                               "group by q.name order by cnt desc limit ?",
                              start_date, end_date, affiliate_name, locale, num_results]
       return INSUFFICIENT_DATA if results.empty?
       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }

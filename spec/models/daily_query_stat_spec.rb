@@ -1,8 +1,7 @@
 require 'spec/spec_helper'
 
 describe DailyQueryStat do
-  fixtures :daily_query_stats
-  fixtures :affiliates
+  fixtures :daily_query_stats, :affiliates
   before(:each) do
     @valid_attributes = {
       :day => "20090830",
@@ -329,4 +328,29 @@ describe DailyQueryStat do
       DailyQueryStat.collect_affiliate_query('foo', 'aff', start_date)
     end
   end
+
+  describe "#clean_index_orphans_for_day(day)" do
+    before do
+      @orphaned_id = DailyQueryStat.create!(@valid_attributes).id
+      @ignored_id = DailyQueryStat.create!(@valid_attributes.merge(:day=>Date.current)).id
+      Sunspot.commit
+      DailyQueryStat.connection.execute("delete from daily_query_stats")
+    end
+
+    it "should remove orphans from index for specified day" do
+      cleaned = DailyQueryStat.clean_index_orphans_for_day(@valid_attributes[:day])
+      cleaned.should include(@orphaned_id)
+      cleaned.should_not include(@ignored_id)
+    end
+
+  end
+
+  describe "#reindex_day(day)" do
+    it "should de-orphan from Solr and index from DB all records for a given day" do
+      DailyQueryStat.should_receive(:clean_index_orphans_for_day).with daily_query_stats(:sample).day
+      Sunspot.should_receive(:index).with([daily_query_stats(:sample)])
+      DailyQueryStat.reindex_day(daily_query_stats(:sample).day)
+    end
+  end
+
 end

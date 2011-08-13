@@ -44,5 +44,3 @@ SSL_PROTOCOL = "http"
 # reCAPTCHA is configured to automatically skip for test and cucumber environments but the code still refers to these values
 RECAPTCHA_PUBLIC_KEY  = 'PUBLIC_KEY'
 RECAPTCHA_PRIVATE_KEY = 'PRIVATE_KEY'
-
-REPORT_RECIPIENTS = ['test@example.com', 'test2@example.com']

@@ -3,7 +3,7 @@ require 'spec/spec_helper'
 describe Emailer do
   include EmailSpec::Helpers
   include EmailSpec::Matchers
-  fixtures :affiliates
+  fixtures :affiliates, :report_recipients
 
   describe "#objectionable_content_alert" do
     before(:all) do
@@ -43,13 +43,13 @@ describe Emailer do
     end
   end
 
-  describe "#monthly_report" do
+  describe "#report" do
     before do
-      @email = Emailer.monthly_report(File.join(Rails.root, "README.markdown"), Date.current).deliver
+      @email = Emailer.report(File.join(Rails.root, "README.markdown")).deliver
     end
 
     it "should be sent to the monthly report recipients" do
-      @email.should deliver_to(REPORT_RECIPIENTS)
+      @email.should deliver_to(ReportRecipient.all.collect(&:email))
     end
 
     it "should have a subject with the file name in it" do

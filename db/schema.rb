@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110811165030) do
+ActiveRecord::Schema.define(:version => 20110815164006) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -342,6 +342,12 @@ ActiveRecord::Schema.define(:version => 20110811165030) do
 
   add_index "logfile_blocked_regexps", ["regexp"], :name => "index_logfile_blocked_regexps_on_regexp", :unique => true
 
+  create_table "logfile_blocked_user_agents", :force => true do |t|
+    t.string   "agent",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "logfile_whitelisted_class_cs", :force => true do |t|
     t.string   "classc",     :null => false
     t.datetime "created_at"
@@ -478,6 +484,12 @@ ActiveRecord::Schema.define(:version => 20110811165030) do
   end
 
   add_index "recalls", ["recall_number"], :name => "index_recalls_on_recall_number"
+
+  create_table "report_recipients", :force => true do |t|
+    t.string   "email",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sayt_filters", :force => true do |t|
     t.string   "phrase",                                      :null => false

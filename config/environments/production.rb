@@ -57,5 +57,3 @@ SSL_PROTOCOL = "https"
 # reCAPTCHA keys
 RECAPTCHA_PUBLIC_KEY  = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
-
-REPORT_RECIPIENTS = ['amy.farrajfeijoo@gsa.gov', 'erik@searchsi.com', 'greg@shelrick.com', 'jayvirdy@gmail.com', 'GSA@insomniacdesign.com', 'marina.tuttle@gsa.gov', 'loren@siebert.org', 'ammie.feijoo@gmail.com']

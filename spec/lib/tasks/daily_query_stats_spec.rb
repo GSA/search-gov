@@ -10,26 +10,18 @@ describe "daily_query_stats rake tasks" do
 
   describe "usasearch:daily_query_stats" do
 
-    describe "usasearch:daily_query_stats:index_most_recent_day_stats_in_solr" do
-      before do
-        @task_name = "usasearch:daily_query_stats:index_most_recent_day_stats_in_solr"
+    describe "usasearch:daily_query_stats:reindex_day" do
+      let(:task_name) { "usasearch:daily_query_stats:reindex_day" }
+
+      it "should call #reindex for the given day" do
+        DailyQueryStat.should_receive(:reindex_day).with("2011-08-13")
+        @rake[task_name].invoke("2011-08-13")
       end
 
-      it "should have 'environment' as a prereq" do
-        @rake[@task_name].prerequisites.should include("environment")
-      end
-
-      context "when daily_query_stats data is available over some date range" do
-        before do
-          DailyQueryStat.delete_all
-          DailyQueryStat.create!(:day => Date.yesterday, :times => 10, :query => "ignore me", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-          @first = DailyQueryStat.create!(:day => Date.current, :times => 20, :query => "index me", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-          @second = DailyQueryStat.create!(:day => Date.current, :times => 20, :query => "index me too", :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        end
-
-        it "should call Sunspot.index on the most-recently-added DailyQueryStat models" do
-          Sunspot.should_receive(:index).with([@first, @second])
-          @rake[@task_name].invoke
+      context "when no date is given" do
+        it "should complain" do
+          Rails.logger.should_receive(:error)
+          @rake[task_name].invoke
         end
       end
     end

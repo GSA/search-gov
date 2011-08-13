@@ -1,9 +1,14 @@
 namespace :usasearch do
 
   namespace :daily_query_stats do
-    desc "tell Solr to index the collection of most-recently-added DailyQueryStats (ideally yesterday's)"
-    task :index_most_recent_day_stats_in_solr => :environment do
-      Sunspot.index(DailyQueryStat.find_all_by_day(DailyQueryStat.most_recent_populated_date))
+    desc "tell Solr to index and de-orphan one day's worth of DailyQueryStats"
+    task :reindex_day, :day, :needs => :environment do |t, args|
+      day = args[:day]
+      if day.blank?
+        Rails.logger.error("usage: rake usasearch:daily_query_stats:reindex_day[yyyy-mm-dd]")
+      else
+        DailyQueryStat.reindex_day(day)
+      end
     end
   end
 

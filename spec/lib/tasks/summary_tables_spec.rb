@@ -64,78 +64,51 @@ describe "summary_tables rake tasks" do
 
   describe "usasearch:daily_popular_queries" do
     describe "usasearch:daily_popular_queries:calculate" do
-      before do
-        @task_name = "usasearch:daily_popular_queries:calculate"
-      end
+      let(:task_name) { "usasearch:daily_popular_queries:calculate"}
 
       it "should have 'environment' as a prereq" do
-        @rake[@task_name].prerequisites.should include("environment")
+        @rake[task_name].prerequisites.should include("environment")
       end
 
       context "when no parameters are passed" do
-        before do
-          @day = Date.yesterday
-          @deleteme = DailyPopularQuery.create!(:day => @day, :query => "existing queries should be deleted", :times => 666, :time_frame => 1)
-        end
-
-        it "should calculate the daily popular queries and query groups for the previous day for each of the time frames, and create DailyPopularQuery records" do
+        it "should call #calculate with the previous day for each of the time frames" do
           [1, 7, 30].each do |time_frame|
-            DailyQueryStat.should_receive(:most_popular_terms).with(@day, time_frame, 1000).and_return [QueryCount.new("query", 100 * time_frame)]
-            DailyQueryStat.should_receive(:most_popular_query_groups).with(@day, time_frame, 1000).and_return [QueryCount.new("querygroup", 100 * time_frame)]
+            DailyPopularQuery.should_receive(:calculate).with(Date.yesterday, time_frame, :most_popular_terms, false)
+            DailyPopularQuery.should_receive(:calculate).with(Date.yesterday, time_frame, :most_popular_query_groups, true)
           end
-          @rake[@task_name].invoke
-          [1, 7, 30].each do |time_frame|
-            DailyPopularQuery.find_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame_and_times(
-              @day, nil, 'en', "query", false, time_frame, time_frame * 100).should_not be_nil
-            DailyPopularQuery.find_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame_and_times(
-              @day, nil, 'en', "querygroup", true, time_frame, time_frame * 100).should_not be_nil
-          end
-          DailyPopularQuery.find_by_query("existing queries should be deleted").should be_nil
+          @rake[task_name].invoke
         end
       end
 
-      context "when a day is specified" do
-        before do
-          @day = Date.yesterday - 2.days
-        end
+      context "when a single day is specified" do
+        let(:start_day) { Date.yesterday - 2.days }
 
-        it "should calculate the daily popular queries and query groups for the date specified up to the previous day for each of the time frames, and create DailyPopularQuery records" do
-          @day.upto(Date.yesterday) do |day|
+        it "should call #calculate with the date specified up to the previous day for each of the time frames" do
+          start_day.upto(Date.yesterday) do |day|
             [1, 7, 30].each do |time_frame|
-              DailyQueryStat.should_receive(:most_popular_terms).with(day, time_frame, 1000).and_return [QueryCount.new("query", time_frame * 100)]
-              DailyQueryStat.should_receive(:most_popular_query_groups).with(day, time_frame, 1000).and_return [QueryCount.new("querygroup", time_frame * 100)]
+              DailyPopularQuery.should_receive(:calculate).with(day, time_frame, :most_popular_terms, false)
+              DailyPopularQuery.should_receive(:calculate).with(day, time_frame, :most_popular_query_groups, true)
             end
           end
-          @rake[@task_name].invoke(@day.to_s)
-          @day.upto(Date.yesterday) do |day|
-            [1, 7, 30].each do |time_frame|
-              DailyPopularQuery.find_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame_and_times(
-                day, nil, 'en', "query", false, time_frame, time_frame * 100).should_not be_nil
-              DailyPopularQuery.find_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame_and_times(
-                day, nil, 'en', "querygroup", true, time_frame, time_frame * 100).should_not be_nil
-            end
-          end
+          @rake[task_name].invoke(start_day.to_s)
         end
       end
 
-      context "when there is insufficient data for the dates specified" do
-        before do
-          @start_date = Date.yesterday - 3.days
-          @end_date = Date.yesterday - 1.days
-          DailyPopularQuery.delete_all
-        end
+      context "when both a start day and end day are specified" do
+        let(:start_day) { Date.yesterday - 4.days }
+        let(:end_day) { Date.yesterday - 2.days }
 
-        it "should calculate the daily popular queries and query groups for the dates specified for each time frame, and create DailyPopularQuery records" do
-          @start_date.upto(@end_date) do |day|
+        it "should call #calculate with the start/end dates specified for each of the time frames" do
+          start_day.upto(end_day) do |day|
             [1, 7, 30].each do |time_frame|
-              DailyQueryStat.should_receive(:most_popular_terms).with(day, time_frame, 1000).and_return "Insufficient data"
-              DailyQueryStat.should_receive(:most_popular_query_groups).with(day, time_frame, 1000).and_return "Insufficient data"
+              DailyPopularQuery.should_receive(:calculate).with(day, time_frame, :most_popular_terms, false)
+              DailyPopularQuery.should_receive(:calculate).with(day, time_frame, :most_popular_query_groups, true)
             end
           end
-          @rake[@task_name].invoke(@start_date.to_s, @end_date.to_s)
-          DailyPopularQuery.count.should be_zero
+          @rake[task_name].invoke(start_day.to_s, end_day.to_s)
         end
       end
+
     end
   end
 

@@ -100,6 +100,8 @@ UsasearchRails3::Application.routes.draw do
     resources :logfile_blocked_class_cs do as_routes end
     resources :logfile_whitelisted_class_cs do as_routes end
     resources :logfile_blocked_regexps do as_routes end
+    resources :logfile_blocked_user_agents do as_routes end
+    resources :report_recipients do as_routes end
     resources :search_modules do as_routes end
   end
 

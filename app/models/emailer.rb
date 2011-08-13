@@ -77,12 +77,13 @@ class Emailer < ActionMailer::Base
     @subject += "Objectionable Content Alert"
     @search_terms = terms
   end
-  
-  def monthly_report(zip_filename, report_date)
-    setup_email(REPORT_RECIPIENTS.join(", "))
+
+  def report(zip_filename)
+    comma_list = ReportRecipient.all.collect(&:email).join(', ')
+    setup_email(comma_list)
     @subject += "Report data attached: #{File.basename(zip_filename)}"
     attachments[File.basename(zip_filename)] = File.read(zip_filename)
-    mail(:to => REPORT_RECIPIENTS.join(", "), :subject => @subject, :from => @from)
+    mail(:to => comma_list, :subject => @subject, :from => @from)
   end
 
   private

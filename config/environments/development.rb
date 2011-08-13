@@ -33,5 +33,3 @@ SSL_PROTOCOL = "http"
 # reCAPTCHA keys
 RECAPTCHA_PUBLIC_KEY  = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
-
-REPORT_RECIPIENTS = ['developer@example.com']
