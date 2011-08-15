@@ -69,7 +69,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   validates_uniqueness_of :rank, :scope =&gt; :affiliate_id</pre></td>
+            <td><pre><a name="line3">3</a>   validates_uniqueness_of :url, :scope =&gt; :affiliate_id</pre></td>
           </tr>
         
           
@@ -81,7 +81,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   scope :sorted, order(&quot;rank asc&quot;)</pre></td>
+            <td><pre><a name="line5">5</a>   scope :sorted, order(&quot;rank desc&quot;)</pre></td>
           </tr>
         
           
@@ -99,7 +99,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   def self.top_urls(limit = 5)</pre></td>
+            <td><pre><a name="line8">8</a>   def self.top_urls(limit = 3)</pre></td>
           </tr>
         
           
@@ -123,7 +123,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Fri Aug 05 14:53:07 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Aug 15 01:59:14 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

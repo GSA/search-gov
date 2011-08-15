@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-featured_collection_rb.html">app/models/featured_collection.rb</a></td>
-            <td class='right_align'><tt>51</tt></td>
-            <td class='right_align'><tt>43</tt></td>
+            <td class='right_align'><tt>78</tt></td>
+            <td class='right_align'><tt>66</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,91 +63,91 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   STATUSES = %w( active inactive )</pre></td>
+            <td><pre><a name="line2">2</a>   CLOUD_FILES_CONTAINER = 'Featured Collections'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line3">3</a>   STATUS_OPTIONS = STATUSES.collect { |status| [status.humanize, status] }</pre></td>
+            <td><pre><a name="line3">3</a>   MAXIMUM_IMAGE_SIZE_IN_KB = 512</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line4">4</a>   STATUSES = %w( active inactive )</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>   STATUS_OPTIONS = STATUSES.collect { |status| [status.humanize, status] }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line4">4</a> </pre></td>
+            <td><pre><a name="line6">6</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>   cattr_reader :per_page</pre></td>
+            <td><pre><a name="line7">7</a>   cattr_reader :per_page</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   @@per_page = 20</pre></td>
+            <td><pre><a name="line8">8</a>   @@per_page = 20</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a> </pre></td>
+            <td><pre><a name="line9">9</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   validates_presence_of :title</pre></td>
+            <td><pre><a name="line10">10</a>   validates_presence_of :title</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>   validates_inclusion_of :locale, :in =&gt; SUPPORTED_LOCALES, :message =&gt; 'must be selected'</pre></td>
+            <td><pre><a name="line11">11</a>   validates_inclusion_of :locale, :in =&gt; SUPPORTED_LOCALES, :message =&gt; 'must be selected'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>   validates_inclusion_of :status, :in =&gt; STATUSES, :message =&gt; 'must be selected'</pre></td>
+            <td><pre><a name="line12">12</a>   validates_inclusion_of :status, :in =&gt; STATUSES, :message =&gt; 'must be selected'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>   validate :minimum_keywords</pre></td>
+            <td><pre><a name="line13">13</a>   validate :minimum_keywords</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>   validate :publish_start_and_end_dates</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line13">13</a> </pre></td>
+            <td><pre><a name="line14">14</a>   validate :publish_start_and_end_dates</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>   belongs_to :affiliate</pre></td>
+            <td><pre><a name="line15">15</a>   validates_attachment_size :image, :in =&gt; (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message =&gt; &quot;must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>   has_many :featured_collection_keywords, :dependent =&gt; :destroy</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>   has_many :featured_collection_links, :dependent =&gt; :destroy</pre></td>
+            <td><pre><a name="line16">16</a>   validates_attachment_content_type :image, :content_type =&gt; %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message =&gt; &quot;must be GIF, JPG, or PNG&quot;</pre></td>
           </tr>
         
           
@@ -159,109 +159,109 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['value'].blank? }</pre></td>
+            <td><pre><a name="line18">18</a>   belongs_to :affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>   accepts_nested_attributes_for :featured_collection_links, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['title'].blank? and a['url'].blank? }</pre></td>
+            <td><pre><a name="line19">19</a>   has_many :featured_collection_keywords, :dependent =&gt; :destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>   has_many :featured_collection_links, :dependent =&gt; :destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>   has_attached_file :image,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>   def destroy_and_update_attributes(params)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>     params[:featured_collection_keywords_attributes].each do |keyword_attributes|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>       keyword = keyword_attributes[1]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>       keyword[:_destroy] = true if keyword[:value].blank?</pre></td>
+            <td><pre><a name="line22">22</a>                     :styles =&gt; { :medium =&gt; &quot;200x200&quot;, :small =&gt; &quot;150x150&quot; },</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>     end</pre></td>
+            <td><pre><a name="line23">23</a>                     :storage =&gt; :cloud_files,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>     params[:featured_collection_links_attributes].each do |link_attributes|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>       link = link_attributes[1]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line28">28</a>       link[:_destroy] = true if link[:title].blank? and link[:url].blank?</pre></td>
+            <td><pre><a name="line24">24</a>                     :cloudfiles_credentials =&gt; &quot;#{Rails.root}/config/rackspace_cloudfiles.yml&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>     end</pre></td>
+            <td><pre><a name="line25">25</a>                     :container =&gt; CLOUD_FILES_CONTAINER,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>     update_attributes(params)</pre></td>
+            <td><pre><a name="line26">26</a>                     :path =&gt; &quot;#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>   end</pre></td>
+            <td><pre><a name="line27">27</a>                     :ssl =&gt; true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a> </pre></td>
+            <td><pre><a name="line28">28</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>   def display_status</pre></td>
+            <td><pre><a name="line29">29</a>   before_post_process :check_image_validation</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line34">34</a>     status.humanize</pre></td>
+            <td><pre><a name="line30">30</a>   before_update :clear_existing_image</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line35">35</a>   end</pre></td>
+            <td><pre><a name="line31">31</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line32">32</a>   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['value'].blank? }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line33">33</a>   accepts_nested_attributes_for :featured_collection_links, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['title'].blank? and a['url'].blank? }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line34">34</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>   attr_accessor :mark_image_for_deletion</pre></td>
           </tr>
         
           
@@ -273,25 +273,25 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line37">37</a>   private</pre></td>
+            <td><pre><a name="line37">37</a>   def destroy_and_update_attributes(params)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>   def minimum_keywords</pre></td>
+            <td><pre><a name="line38">38</a>     params[:featured_collection_keywords_attributes].each do |keyword_attributes|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     errors.add(:base, &quot;One or more keywords are required&quot;) unless self.featured_collection_keywords.detect do |keyword|</pre></td>
+            <td><pre><a name="line39">39</a>       keyword = keyword_attributes[1]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>       keyword.value.present? and !keyword.marked_for_destruction?</pre></td>
+            <td><pre><a name="line40">40</a>       keyword[:_destroy] = true if keyword[:value].blank?</pre></td>
           </tr>
         
           
@@ -302,68 +302,230 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line42">42</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line43">43</a> </pre></td>
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>     params[:featured_collection_links_attributes].each do |link_attributes|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>   def publish_start_and_end_dates</pre></td>
+            <td><pre><a name="line43">43</a>       link = link_attributes[1]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line45">45</a>     start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>     end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>     if start_date.present? and end_date.present? and start_date &gt; end_date</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>       errors.add(:base, &quot;Publish end date can't be before publish start date&quot;)</pre></td>
+            <td><pre><a name="line44">44</a>       link[:_destroy] = true if link[:title].blank? and link[:url].blank?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a>     end</pre></td>
+            <td><pre><a name="line45">45</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line46">46</a>     update_attributes(params)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>   end</pre></td>
+            <td><pre><a name="line47">47</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a> end</pre></td>
+            <td><pre><a name="line48">48</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>   def display_status</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line50">50</a>     status.humanize</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line51">51</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line54">54</a>   def minimum_keywords</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line55">55</a>     errors.add(:base, &quot;One or more keywords are required&quot;) unless self.featured_collection_keywords.detect do |keyword|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line56">56</a>       keyword.value.present? and !keyword.marked_for_destruction?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line57">57</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line58">58</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line59">59</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>   def publish_start_and_end_dates</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line61">61</a>     start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line62">62</a>     end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>     if start_date.present? and end_date.present? and start_date &gt; end_date</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>       errors.add(:base, &quot;Publish end date can't be before publish start date&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line65">65</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line66">66</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line67">67</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>   def check_image_validation</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line69">69</a>     valid?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line70">70</a>     errors[:image_file_size].blank? and errors[:image_content_type].blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line71">71</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line72">72</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line73">73</a>   def clear_existing_image</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line74">74</a>     if image? and !image.dirty? and mark_image_for_deletion == '1'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line75">75</a>       image.clear</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line76">76</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line77">77</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line78">78</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Fri Aug 05 14:53:07 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Aug 15 01:59:14 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
