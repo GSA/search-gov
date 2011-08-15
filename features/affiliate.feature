@@ -765,6 +765,24 @@ Feature: Affiliate clients
     When I go to noindex.gov's search page
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
 
+  Scenario: Visiting an affiliate advanced search page
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email            | contact_name        | has_staged_content |
+      | noindex site     | noindex.gov      | aff@aff.gov              | Two Bar             | true               |
+    When I go to noindex.gov's search page
+    And I follow "Advanced Search"
+    Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    And I should see the browser page titled "Advanced Search"
+
+  Scenario: Visiting an affiliate Spanish advanced search page
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email            | contact_name        | has_staged_content |
+      | noindex site     | noindex.gov      | aff@aff.gov              | Two Bar             | true               |
+    When I go to noindex.gov's Spanish search page
+    And I follow "Búsqueda avanzada"
+    Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    And I should see the browser page titled "Búsqueda avanzada"
+
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        | domains        | header                | footer                |

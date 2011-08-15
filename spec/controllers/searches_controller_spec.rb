@@ -353,6 +353,22 @@ describe SearchesController do
   end
 
   describe "#advanced" do
+    context "when viewing advanced search page" do
+      before do
+        get :advanced
+      end
+
+      it { should assign_to(:page_title).with_kind_of(String) }
+    end
+
+    context "when viewing an affiliate advanced search page" do
+      before do
+        get :advanced, :affiliate => affiliates(:basic_affiliate).name
+      end
+
+      it { should assign_to(:page_title).with_kind_of(String) }
+    end
+
     context "when an affiliate advanced search form is displayed" do
       context "when a valid scope id is specified" do
         before do

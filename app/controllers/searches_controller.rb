@@ -55,6 +55,7 @@ class SearchesController < ApplicationController
   end
 
   def advanced
+    @page_title = t :advanced_search
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
       @scope_id = @search_options[:scope_id]

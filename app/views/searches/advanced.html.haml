@@ -76,7 +76,7 @@
     .element
       .label
         %span.label
-          = label_tag 'filter-lbl', (t :advanced_search_adult_filter_label)
+          = (t :advanced_search_adult_filter_label)
       .input
         %span.radio-option
           = radio_button_tag 'filter', 'off', params['filter'] == 'off', :id => 'filter0'

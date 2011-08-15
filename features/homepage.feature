@@ -126,13 +126,15 @@ Feature: Homepage
   Scenario: Clicking on Advanced Search on the homepage
     Given I am on the homepage
     And I follow "Advanced Search"
-    Then I should see "Use the options on this page to create a very specific search."
+    Then I should see the browser page titled "Advanced Search"
+    And I should see "Use the options on this page to create a very specific search."
 
   Scenario: Clicking on Advanced Search on the Spanish homepage
     Given I am on the homepage
     And I follow "Busque en español"
     And I follow "Búsqueda avanzada"
-    Then I should see "Use las siguientes opciones para hacer una búsqueda específica."
+    Then I should see the browser page titled "Búsqueda avanzada"
+    And I should see "Use las siguientes opciones para hacer una búsqueda específica."
 
   Scenario: Visiting homepage and clicking on trending searches
     Given the following Top Searches exist:
