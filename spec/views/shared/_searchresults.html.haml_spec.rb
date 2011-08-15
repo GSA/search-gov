@@ -22,6 +22,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:agency)
     @search.stub!(:extra_image_results)
     @search.stub!(:med_topic)
+    @search.stub!(:featured_collections)
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'
     @deep_link.stub!(:url).and_return 'http://adeeplink.com'
@@ -74,6 +75,10 @@ describe "shared/_searchresults.html.haml" do
         )
         @affiliate.affiliate_template = AffiliateTemplate.create!(:name => "basic_black", :stylesheet => "basic_black")
         @search.stub!(:affiliate).and_return @affiliate
+
+        stub_template "shared/_featured_collections.html.haml" => "featured collections"
+        @search.stub!(:featured_collections).and_return(mock('solr', :total => 1, :hits => [@hit]))
+
         view.stub!(:search).and_return @search
       end
 
@@ -82,6 +87,10 @@ describe "shared/_searchresults.html.haml" do
         rendered.should_not contain('Cache')
       end
 
+      it "should show featured collection" do
+        render
+        rendered.should contain('featured collections')
+      end
     end
 
     context "when on anything but the first page" do
@@ -100,13 +109,25 @@ describe "shared/_searchresults.html.haml" do
           @search.stub!(:boosted_contents).and_return [mock(BoostedContent)]
         end
         
-        it "should not show boosted contesnts" do
+        it "should not show boosted contents" do
           render
           rendered.should_not have_selector('boosted_content')
         end
       end
-      
-      context "when a spotlight is present" do
+
+      context "when featured collections are present" do
+        before do
+          @search.stub!(:featured_collections).and_return(mock('solr', :total => 1, :hits => [mock('hit')]))
+          stub_template "shared/_featured_collections.html.haml" => "featured collections"
+        end
+
+        it "should not show featured collections" do
+          render
+          rendered.should_not contain('featured collections')
+        end
+      end
+
+    context "when a spotlight is present" do
         before do
           @search.stub!(:spotlight).and_return mock(Spotlight)
         end

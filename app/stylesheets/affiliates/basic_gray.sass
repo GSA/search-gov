@@ -248,6 +248,72 @@ h1, h2, h3
     -moz-box-shadow: none
     -webkit-box-shadow: none
 
+.featured-collection
+  @include clearfix
+  background: #f1f1f1
+  h2
+    color: #999
+    font-size: 18px
+    font-weight: normal
+    margin: 0 0 10px
+    span.recommended-by
+      font:
+        size: 14px
+        weight: normal
+  .image
+    float: left
+    img
+      display: block
+      margin-bottom: 5px
+    span
+      font-weight: bold
+      width: auto
+      word-wrap: break-word
+      &.attribution
+        font-weight: normal
+    a
+      display: inline
+      word-wrap: break-word
+  ul
+    color: #AAA
+    float: left
+    margin: 0
+    padding: 0
+  &.one-column-with-image
+    .image
+      width: 200px
+    ul
+      margin: 0 0 0 10px
+      width: 465px
+    li
+      margin: 0 0 0 15px
+  &.one-column-without-image
+    ul
+      margin: 0
+    li
+      margin: 0 0 0 15px
+  &.two-column-with-image
+    .image
+      width: 150px
+    ul
+      margin: 0 0 0 10px
+      width: 515px
+    li
+      float: left
+      margin: 0 0 0 15px
+      width: 240px
+      &.left
+        clear: left
+  &.two-column-without-image
+    ul
+      margin: 0
+    li
+      float: left
+      margin: 0 0 0 15px
+      width: 320px
+      &.left
+        clear: left
+
 #search_form
   #search_query
     @include border-radius

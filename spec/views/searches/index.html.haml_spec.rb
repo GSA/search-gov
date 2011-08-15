@@ -20,6 +20,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:fedstates).and_return nil
     @search.stub!(:agency).and_return nil
     @search.stub!(:med_topic).and_return nil
+    @search.stub!(:featured_collections).and_return nil
     assign(:search, @search)
   end
 

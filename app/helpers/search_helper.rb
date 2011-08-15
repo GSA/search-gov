@@ -538,6 +538,15 @@ module SearchHelper
     end
   end
 
+  def featured_collection_css_classes(featured_collection, initial_classes = %w( featured-collection searchresult ))
+    css_classes = initial_classes
+    css_class = ''
+    css_class << featured_collection.layout.parameterize
+    css_class << (featured_collection.image.present? ? '-with-image' : '-without-image')
+    css_classes << css_class
+    css_classes.join("\n")
+  end
+
   private
 
   def shorten_url (url, length=42)

@@ -2,6 +2,7 @@ require 'spec/spec_helper'
 
 describe FeaturedCollection do
   fixtures :affiliates
+
   it { should validate_presence_of :title }
   it { should have_attached_file :image }
   it { should validate_attachment_content_type(:image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
@@ -14,14 +15,27 @@ describe FeaturedCollection do
   FeaturedCollection::STATUSES.each do |status|
     it { should allow_value(status).for(:status) }
   end
-  it { should_not allow_value("bogus status").for(:locale) }
+  it { should_not allow_value("bogus status").for(:status) }
+
+  specify { FeaturedCollection.new(:status => 'active').should be_is_active }
+  specify { FeaturedCollection.new(:status => 'active').should_not be_is_inactive }
+  specify { FeaturedCollection.new(:status => 'inactive').should be_is_inactive }
+  specify { FeaturedCollection.new(:status => 'inactive').should_not be_is_active }
+
+  FeaturedCollection::LAYOUTS.each do |layout|
+    it { should allow_value(layout).for(:layout) }
+  end
+  it { should_not allow_value("bogus layout").for(:layout) }
+
+  specify { FeaturedCollection.new(:layout => 'one column').should be_has_one_column_layout }
+  specify { FeaturedCollection.new(:layout => 'two column').should be_has_two_column_layout }
 
   it { should belong_to :affiliate }
   it { should have_many(:featured_collection_keywords).dependent(:destroy) }
   it { should have_many(:featured_collection_links).dependent(:destroy) }
 
   it "should have one or more keywords" do
-    featured_collection = FeaturedCollection.create(:title => 'test title', :locale => 'en', :status => 'active')
+    featured_collection = FeaturedCollection.create(:title => 'test title', :locale => 'en', :status => 'active', :layout => 'one column')
     featured_collection.errors.full_messages.join.should =~ /One or more keywords are required/
   end
 
@@ -29,34 +43,21 @@ describe FeaturedCollection do
     featured_collection = FeaturedCollection.create(:title => 'test title',
                                                     :locale => 'en',
                                                     :status => 'active',
+                                                    :layout => 'one column',
                                                     :publish_start_on => '07/01/2012',
                                                     :publish_end_on => '07/01/2011')
     featured_collection.errors.full_messages.join.should =~ /Publish end date can't be before publish start date/
   end
 
   describe "#display_status" do
-    let(:affiliate) { affiliates(:basic_affiliate) }
-    let(:active_featured_collection) { active_featured_collection = affiliate.featured_collections.build(:title => 'My awesome featured collection',
-                                                                                                         :locale => 'en',
-                                                                                                         :status => 'active')
-      active_featured_collection.featured_collection_keywords.build(:value => 'test')
-      active_featured_collection.save!
-      active_featured_collection
-    }
-    let(:inactive_featured_collection) { inactive_featured_collection = affiliate.featured_collections.build(:title => 'My awesome featured collection',
-                                                                                                             :locale => 'en',
-                                                                                                             :status => 'inactive')
-      inactive_featured_collection.featured_collection_keywords.build(:value => 'another test')
-      inactive_featured_collection.save!
-      inactive_featured_collection
-    }
-
-    context "when status is active" do
-      specify { active_featured_collection.display_status.should == 'Active' }
+    context "when status is set to active" do
+      subject { FeaturedCollection.new(:status => 'active') }
+      its(:display_status) { should == 'Active' }
     end
 
-    context "when status is inactive" do
-      specify { inactive_featured_collection.display_status.should == 'Inactive' }
+    context "when status is set to inactive" do
+      subject { FeaturedCollection.new(:status => 'inactive') }
+      its(:display_status) { should == 'Inactive' }
     end
   end
 
@@ -66,7 +67,8 @@ describe FeaturedCollection do
     let(:featured_collection) do
       featured_collection = affiliate.featured_collections.build(:title => 'My awesome featured collection',
                                                                  :locale => 'en',
-                                                                 :status => 'active')
+                                                                 :status => 'active',
+                                                                 :layout => 'one column')
       featured_collection.featured_collection_keywords.build(:value => 'test')
       featured_collection.save!
       featured_collection
@@ -100,6 +102,220 @@ describe FeaturedCollection do
         featured_collection.should_receive(:image?).and_return(false)
         image.should_not_receive(:clear)
         featured_collection.update_attributes(:title => 'new title')
+      end
+    end
+  end
+
+  describe ".search_for" do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    context "when there is an active English featured collection without date range" do
+      before do
+        @featured_collection = affiliate.featured_collections.build(:title => 'Tropical Hurricane Names',
+                                                                    :description => 'names include Arlene, Bret, Cindy, etc',
+                                                                    :locale => 'en',
+                                                                    :status => 'active',
+                                                                    :layout => 'one column')
+        @featured_collection.featured_collection_keywords.build(:value => 'typhoon')
+        @featured_collection.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names',
+                                                             :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                                             :position => '0')
+        @featured_collection.save!
+
+        inactive_featured_collection = affiliate.featured_collections.build(:title => 'Retired Hurricane names',
+                                                                            :description => 'names include Gustav, Ike, Paloma, etc',
+                                                                            :locale => 'en',
+                                                                            :status => 'inactive',
+                                                                            :layout => 'one column')
+        inactive_featured_collection.featured_collection_keywords.build(:value => 'typhoon')
+        inactive_featured_collection.featured_collection_links.build(:title => 'Retired Hurricane Names Since 1954',
+                                                                     :url => 'http://www.nhc.noaa.gov/retirednames.shtml',
+                                                                     :position => '0')
+        inactive_featured_collection.save!
+
+        FeaturedCollection.reindex
+      end
+
+      it "should return only active Featured Collections" do
+        FeaturedCollection.search_for('tropical', affiliate, :en).results.each do |result|
+          result.should be_is_active
+        end
+      end
+
+      it "should return Featured Collection when searching for query term that exists in the title" do
+        FeaturedCollection.search_for('tropical', affiliate, :en).results.first.should == @featured_collection
+      end
+
+      it "should return Featured Collection when searching for query term that exists in the description" do
+        FeaturedCollection.search_for('Arlene', affiliate, :en).results.first.should == @featured_collection
+      end
+
+      it "should return Featured Collection when searching for query term that exists in featured collection keywords" do
+        FeaturedCollection.search_for('typhoon', affiliate, :en).results.first.should == @featured_collection
+      end
+
+      it "should return Featured Collection when searching for query term that exists in the link title" do
+        FeaturedCollection.search_for('cyclone', affiliate, :en).results.first.should == @featured_collection
+      end
+
+      it "should not return any result when searching for Spanish Featured Collection" do
+        FeaturedCollection.search_for('tropical', affiliate, :es).results.should be_empty
+      end
+    end
+
+    context "when there is an active English featured collection and current date is within publish date range" do
+      before do
+        @featured_collection_params = [
+          { :title => 'past_publish_start_date',
+            :publish_start_on => Date.current.prev_month },
+          { :title => 'today',
+            :publish_start_on => Date.current,
+            :publish_end_on => Date.current },
+          { :title => 'within_publish_date_range',
+            :publish_start_on => Date.current.prev_month,
+            :publish_end_on => Date.current.next_month },
+          { :title => 'future_publish_end_date',
+            :publish_end_on => Date.current.next_month }
+        ]
+        @featured_collection_params.each_with_index do |params, index|
+          featured_collection = affiliate.featured_collections.build(:title => "Featured collection #{params[:title]}",
+                                                                                 :locale => 'en',
+                                                                                 :status => 'active',
+                                                                                 :layout => 'one column',
+                                                                                 :publish_start_on => params[:publish_start_on],
+                                                                                 :publish_end_on => params[:publish_end_on])
+          featured_collection.featured_collection_keywords.build(:value => "keyword#{index + 1}")
+          featured_collection.save!
+
+        end
+        FeaturedCollection.reindex
+      end
+
+      it "should return featured_collections with past publish start date" do
+        FeaturedCollection.search_for('past_publish_start_date', affiliate, :en).results.first.should_not be_blank
+      end
+
+      it "should return featured_collections with publish date range today" do
+        FeaturedCollection.search_for('today', affiliate, :en).results.first.should_not be_blank
+      end
+
+      it "should return featured_collections within publish date range" do
+        FeaturedCollection.search_for('within_publish_date_range', affiliate, :en).results.first.should_not be_blank
+      end
+
+      it "should return featured_collections with future publish end date" do
+        FeaturedCollection.search_for('with_future_publish_end_date', affiliate, :en).results.first.should_not be_blank
+      end
+    end
+
+    context "when there is an active English featured collection and current date is not within publish date range" do
+      before do
+        featured_collection_params = [
+          { :title => 'past_publish_end_date',
+            :publish_end_on => Date.current.yesterday },
+          { :title => 'past_publish_date_range',
+            :publish_start_on => Date.current.prev_year,
+            :publish_end_on => Date.current.yesterday },
+          { :title => 'future_publish_date_range',
+            :publish_start_on => Date.current.tomorrow,
+            :publish_end_on => Date.current.next_month },
+          { :title => 'future_publish_start_date',
+            :publish_start_on => Date.current.tomorrow }
+        ]
+        featured_collection_params.each_with_index do |params, index|
+          featured_collection = affiliate.featured_collections.build(:title => "Featured collection #{params[:title]}",
+                                                                                 :locale => 'en',
+                                                                                 :status => 'active',
+                                                                                 :layout => 'one column',
+                                                                                 :publish_start_on => params[:publish_start_on],
+                                                                                 :publish_end_on => params[:publish_end_on])
+          featured_collection.featured_collection_keywords.build(:value => "keyword#{index + 1}")
+          featured_collection.save!
+
+        end
+        FeaturedCollection.reindex
+      end
+
+      it "should not return featured_collections with past publish end date" do
+        FeaturedCollection.search_for('past_publish_end_date', affiliate, :en).results.should be_empty
+      end
+
+      it "should not return featured_collections with past publish date range" do
+        FeaturedCollection.search_for('past_publish_date_range', affiliate, :en).results.should be_empty
+      end
+
+      it "should not return featured_collections with future publish date range" do
+        FeaturedCollection.search_for('future_publish_date_range', affiliate, :en).results.should be_empty
+      end
+
+      it "should not return featured_collections with future publish start date" do
+        FeaturedCollection.search_for('future_publish_start_date', affiliate, :en).results.should be_empty
+      end
+    end
+
+    context "when there is an active Spanish featured collection" do
+      before do
+        @featured_collection = affiliate.featured_collections.build(:title => 'Nombres de huracanes tropicales',
+                                                                    :description => 'Arlene, Bret, Cindy, ...',
+                                                                    :locale => 'es',
+                                                                    :status => 'active',
+                                                                    :layout => 'one column')
+        @featured_collection.featured_collection_keywords.build(:value => 'tifón')
+        @featured_collection.featured_collection_links.build(:title => 'Nombres de ciclones tropicales en todo el mundo',
+                                                             :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                                             :position => '0')
+        @featured_collection.save!
+
+        inactive_featured_collection = affiliate.featured_collections.build(:title => 'Retiró los nombres de huracán',
+                                                                            :description => 'Gustav, Ike, Paloma, ...',
+                                                                            :locale => 'en',
+                                                                            :status => 'inactive',
+                                                                            :layout => 'one column')
+        inactive_featured_collection.featured_collection_keywords.build(:value => 'tifón')
+        inactive_featured_collection.featured_collection_links.build(:title => 'Se retiró nombres de huracanes desde 1954',
+                                                                     :url => 'http://www.nhc.noaa.gov/retirednames.shtml',
+                                                                     :position => '0')
+        inactive_featured_collection.save!
+
+        inactive_featured_collection = affiliate.featured_collections.build(:title => 'inactive tropicales',
+                                                                    :locale => 'es',
+                                                                    :status => 'inactive',
+                                                                    :layout => 'one column')
+        inactive_featured_collection.featured_collection_keywords.build(:value => 'tifón')
+        FeaturedCollection.reindex
+      end
+
+      it "should return only active Featured Collections" do
+        FeaturedCollection.search_for('tropicales', affiliate, :es).results.each do |result|
+          result.should be_is_active
+        end
+      end
+
+      it "should return Featured Collection when searching for query term that exists in the title" do
+        FeaturedCollection.search_for('tropicales', affiliate, :es).results.first.should == @featured_collection
+      end
+
+      it "should return Featured Collection when searching for query term that exists in the description" do
+        FeaturedCollection.search_for('Arlene', affiliate, :es).results.first.should == @featured_collection
+      end
+
+      it "should return Featured Collection when searching for query term that exists in featured collection keywords" do
+        FeaturedCollection.search_for('tifón', affiliate, :es).results.first.should == @featured_collection
+      end
+
+      it "should return Featured Collection when searching for query term that exists in the link title" do
+        FeaturedCollection.search_for('ciclones', affiliate, :es).results.first.should == @featured_collection
+      end
+
+      it "should not return any result when searching for English Featured Collection" do
+        FeaturedCollection.search_for('tropicales', affiliate, :en).results.should be_blank
+      end
+    end
+
+    context "when .search raise an exception" do
+      it "should return nil" do
+        FeaturedCollection.should_receive(:search).and_raise("exception")
+        FeaturedCollection.search_for('tropicales', affiliate, :en).should be_nil
       end
     end
   end

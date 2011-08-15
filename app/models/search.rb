@@ -45,7 +45,8 @@ class Search
               :enable_highlighting,
               :agency,
               :med_topic,
-              :formatted_query
+              :formatted_query,
+              :featured_collections
 
   def initialize(options = {})
     options ||= {}
@@ -162,6 +163,7 @@ class Search
 
   def populate_additional_results(response)
     @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
+    @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale) if affiliate and first_page?
     if english_locale?
       @spotlight = Spotlight.search_for(query, affiliate)
     end
@@ -388,5 +390,9 @@ class Search
 
   def strip_extra_chars_from(did_you_mean_suggestion)
     did_you_mean_suggestion.split(/ \(scopeid/).first.gsub(/[()]/, '').gsub(/\xEE\x80(\x80|\x81)/, '').gsub('-', '').strip.squish unless did_you_mean_suggestion.nil?
+  end
+
+  def first_page?
+    page == 0
   end
 end

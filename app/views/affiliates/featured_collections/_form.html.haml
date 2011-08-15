@@ -8,11 +8,17 @@
       = form.label :title_url, "Title URL"
       = form.text_field :title_url, { :class => 'text', :maxlength => 255, :size => nil }
     %li
+      = form.label :description
+      = form.text_area :description, { :maxlength => 255, :size => nil }
+    %li
       = form.label :locale, "Locale*", { :class => 'select' }
       = form.select :locale, SUPPORTED_LOCALES.collect { |l| [SUPPORTED_LOCALE_WITH_NAMES[l], l] }, { :include_blank => 'Select a locale' }
     %li
       = form.label :status, "Status*", { :class => 'select' }
       = form.select :status, FeaturedCollection::STATUS_OPTIONS, { :include_blank => 'Select a status' }
+    %li
+      = form.label :layout, "Layout*", { :class => 'select' }
+      = form.select :layout, FeaturedCollection::LAYOUT_OPTIONS, { :include_blank => 'Select a layout' }
     %li
       = form.label :publish_start_on, "Publish start date"
       = form.calendar_date_select :publish_start_on, { :year_range => 0.years.ago..10.years.from_now, :class => 'date' }

@@ -3,6 +3,8 @@ class FeaturedCollection < ActiveRecord::Base
   MAXIMUM_IMAGE_SIZE_IN_KB = 512
   STATUSES = %w( active inactive )
   STATUS_OPTIONS = STATUSES.collect { |status| [status.humanize, status] }
+  LAYOUTS = ['one column', 'two column']
+  LAYOUT_OPTIONS = LAYOUTS.collect { |layout| [layout.humanize, layout]}
 
   cattr_reader :per_page
   @@per_page = 20
@@ -10,6 +12,7 @@ class FeaturedCollection < ActiveRecord::Base
   validates_presence_of :title
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
+  validates_inclusion_of :layout, :in => LAYOUTS, :message => 'must be selected'
   validate :minimum_keywords
   validate :publish_start_and_end_dates
   validates_attachment_size :image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
@@ -33,6 +36,62 @@ class FeaturedCollection < ActiveRecord::Base
   accepts_nested_attributes_for :featured_collection_links, :allow_destroy => true, :reject_if => proc { |a| a['title'].blank? and a['url'].blank? }
 
   attr_accessor :mark_image_for_deletion
+
+  STATUSES.each do |status|
+    define_method "is_#{status}?" do
+      self.status == status
+    end
+  end
+
+  LAYOUTS.each do |layout|
+    define_method "has_#{layout.parameterize('_')}_layout?" do
+      self.layout == layout
+    end
+  end
+
+  searchable do
+    integer :affiliate_id
+    string :locale
+    string :status
+    date :publish_start_on
+    date :publish_end_on
+    text :title, :boost => 10.0
+    text :description, :boost => 4.0
+    text :link_titles, :boost => 1.5 do
+      featured_collection_links.map { |link| link.title }
+    end
+    text :keyword_values do
+      featured_collection_keywords.map { |keyword| keyword.value }
+    end
+  end
+
+  def self.search_for(query, affiliate, locale)
+    affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
+    ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate_name, :locale => locale}) do
+      begin
+        search do
+          with :affiliate_id, affiliate.id
+          with :locale, locale
+          with :status, "active"
+          any_of do
+            with(:publish_start_on).less_than(Time.current)
+            with :publish_start_on, nil
+          end
+          any_of do
+            with(:publish_end_on).greater_than(Time.current)
+            with :publish_end_on, nil
+          end
+          keywords query do
+            highlight :title
+          end
+          paginate :page => 1, :per_page => 2
+        end
+      rescue => e
+        Rails.logger.error "#{e.message}\n#{e.backtrace.join("\n")}" if Rails.env.development?
+        nil
+      end
+    end
+  end
 
   def destroy_and_update_attributes(params)
     params[:featured_collection_keywords_attributes].each do |keyword_attributes|

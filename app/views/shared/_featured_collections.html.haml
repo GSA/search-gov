@@ -1,0 +1,18 @@
+.featured-collections
+  - search.featured_collections.hits(:verify => true).each do |hit|
+    - result = hit.instance
+    %div{ :class => "#{featured_collection_css_classes(result)}" }
+      %h2
+        = link_to_unless result.title_url.blank?, highlight_hit(hit, :title).html_safe, result.title_url
+        %span.recommended-by
+          = t(:by)
+          = @affiliate.display_name
+      -if result.image.present?
+        .image
+          = image_tag(result.image.url(result.has_one_column_layout? ? :medium : :small), :alt => result.image_alt_text)
+          - if result.image_attribution.present?
+            %span #{t :image}:
+            = link_to_unless result.image_attribution_url.blank?, content_tag(:span, result.image_attribution, :class => 'attribution'), result.image_attribution_url
+      %ul
+        - result.featured_collection_links.each do |link|
+          %li{ :class => "#{cycle('left', 'right')}" }= link_to link.title, link.url

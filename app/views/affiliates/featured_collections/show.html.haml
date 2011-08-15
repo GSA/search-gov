@@ -19,11 +19,17 @@
         %td.name Title URL
         %td= @featured_collection.title_url
       %tr
+        %td.name Description
+        %td= @featured_collection.description
+      %tr
         %td.name Locale
         %td= SUPPORTED_LOCALE_WITH_NAMES[@featured_collection.locale]
       %tr
         %td.name Status
         %td= @featured_collection.display_status
+      %tr
+        %td.name Layout
+        %td= @featured_collection.layout.humanize
       %tr
         %td.name Publish start date
         %td= render_date @featured_collection.publish_start_on

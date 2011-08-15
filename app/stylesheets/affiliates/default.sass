@@ -147,6 +147,84 @@ img
   .searchresult
     padding-left: 0
 
+.featured-collection
+  @include clearfix
+  border: 1px solid #D3D3D3
+  margin:
+    top: 1em
+    bottom: 1em
+  padding: 1em $results-padding-left-size
+  background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
+  h2
+    margin: 0 0 10px
+    span.recommended-by
+      color: gray
+      font:
+        size: 0.9em
+        weight: normal
+  .image
+    float: left
+    img
+      display: block
+      margin-bottom: 5px
+    span
+      font-weight: bold
+      width: auto
+      word-wrap: break-word
+      &.attribution
+        font-weight: normal
+    a
+      display: inline
+      word-wrap: break-word
+  ul
+    color: #AAA
+    float: left
+    margin: 0
+    padding: 0
+    li
+      float: left
+      line-height: 1.2
+      margin: 0
+      padding: 0
+  a, a:visited
+    color: #2200CC
+  a:hover
+    color: #900
+  &.one-column-with-image
+    .image
+      width: 200px
+    ul
+      margin: 0 0 0 10px
+      width: 425px
+    li
+      clear: left
+      margin: 0 0 0 15px
+  &.one-column-without-image
+    ul
+      margin: 0
+    li
+      clear: left
+      margin: 0 0 0 15px
+  &.two-column-with-image
+    .image
+      width: 150px
+    ul
+      margin: 0 0 0 10px
+      width: 470px
+    li
+      margin: 0 0 0 15px
+      width: 220px
+    li.left
+      clear: left
+  &.two-column-without-image
+    ul
+      margin: 0
+      width: 630px
+    li
+      margin: 0 0 0 15px
+      width: 300px
+    li.left
+      clear: left
 
 #search_form
   ul.navigation

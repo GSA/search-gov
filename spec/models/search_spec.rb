@@ -1157,6 +1157,50 @@ describe Search do
       end
     end
 
+    context "featured collection" do
+      context "searching for non affiliate results" do
+        let(:search) { Search.new(:query => 'cyclone') }
+
+        before do
+          FeaturedCollection.should_not_receive(:search_for)
+        end
+
+        it "should not assign featured collection" do
+          search.run
+          search.featured_collections.should be_nil
+        end
+      end
+
+      context "searching for affiliate results" do
+        context "on the first page" do
+          let(:affiliate) { affiliates(:basic_affiliate) }
+          let(:search) { Search.new(:affiliate => affiliate, :query => 'cyclone') }
+          let(:featured_collections) { mock('featured collections') }
+
+          before do
+            FeaturedCollection.should_receive(:search_for).and_return(featured_collections)
+          end
+
+          it "should assign featured collection on first page" do
+            search.run
+            search.featured_collections.should == featured_collections
+          end
+        end
+
+        context "not on the first page" do
+          let(:affiliate) { affiliates(:basic_affiliate) }
+          let(:search) { Search.new(:affiliate => affiliate, :query => 'cyclone', :page => 2) }
+
+          before do
+            FeaturedCollection.should_not_receive(:search_for)
+            search.run
+          end
+
+          specify { search.featured_collections.should be_blank }
+        end
+      end
+    end
+
     context "on normal search runs" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'logme'))

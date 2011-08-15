@@ -10,6 +10,8 @@
     #spotlight= render_spotlight_with_click_tracking(search.spotlight.html, search.query, search.queried_at_seconds, @search_vertical)
   - if (search.boosted_contents and search.boosted_contents.total > 0)
     = render 'shared/boosted_content', :search => search
+  - elsif (search.featured_collections and search.featured_collections.total > 0)
+    = render 'shared/featured_collections', :search => search
   - elsif (search.recalls && search.recalls.total > 0)
     = render "shared/recall_gov_box", :search => search
   - elsif @search.extra_image_results.present?

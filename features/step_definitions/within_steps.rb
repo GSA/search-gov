@@ -20,6 +20,7 @@
   'in the selected vertical navigation' => '#sidebar span',
   'in the search results section' => '#results',
   'in the no results section' => '.no-results',
+  'in the featured collections section' => '.featured-collections',
   'in the pagination' => '.pagination'
 }.
   each do |within, selector|
