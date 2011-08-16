@@ -59,6 +59,7 @@ class SearchesController < ApplicationController
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
       @scope_id = @search_options[:scope_id]
+      @page_title += " - #{@affiliate.display_name}"
       render :layout => "affiliate"
     end
   end

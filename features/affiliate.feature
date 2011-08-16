@@ -772,7 +772,7 @@ Feature: Affiliate clients
     When I go to noindex.gov's search page
     And I follow "Advanced Search"
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
-    And I should see the browser page titled "Advanced Search"
+    And I should see the browser page titled "Advanced Search - noindex site"
 
   Scenario: Visiting an affiliate Spanish advanced search page
     Given the following Affiliates exist:
@@ -781,7 +781,7 @@ Feature: Affiliate clients
     When I go to noindex.gov's Spanish search page
     And I follow "Búsqueda avanzada"
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
-    And I should see the browser page titled "Búsqueda avanzada"
+    And I should see the browser page titled "Búsqueda avanzada - noindex site"
 
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:
