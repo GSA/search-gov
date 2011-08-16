@@ -30,7 +30,7 @@ class SitePage < ActiveRecord::Base
           create!(:url_slug => url_slug, :title=> title, :breadcrumb => breadcrumb, :main_content => main_content)
           links = (doc/"#main_content//a") + (doc/"#breadcrumbs_dl//a")
           links.each do |link|
-            href = link.attributes['href']
+            href = link.attributes['href'].squish
             if href.start_with?('/') and href.end_with?('.shtml') and !marked.include?(href)
               queue.push href
               marked.add href
@@ -43,19 +43,19 @@ class SitePage < ActiveRecord::Base
       end
     end
   end
-  
+
   def self.crawl_answers_usa_gov
     answer_sites = []
     answer_sites << { :locale => "en",
                       :host => "answers.usa.gov",
-                      :base_url => "http://answers.usa.gov/system/", 
+                      :base_url => "http://answers.usa.gov/system/",
                       :home_path => "selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=STARTPAGE&USERTYPE=1&LANGUAGE=en&COUNTRY=us",
                       :search_start_page_path => "selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
                       :url_slug_prefix => "answers/"
                     }
     answer_sites << { :locale => "es",
                       :host => "respuestas.gobiernousa.gov",
-                      :base_url => "http://respuestas.gobiernousa.gov/system/", 
+                      :base_url => "http://respuestas.gobiernousa.gov/system/",
                       :home_path => "selfservice.controller?CONFIGURATION=1001&PARTITION_ID=1&CMD=STARTPAGE&USERTYPE=1&LANGUAGE=en&COUNTRY=us",
                       :search_start_page_path => "selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
                       :url_slug_prefix => "respuestas/"
@@ -115,12 +115,12 @@ class SitePage < ActiveRecord::Base
   end
 
   private
-  
+
   def self.searchify_usagov_urls(str)
     str.gsub(".shtml", "").gsub("href=\"http://www.usa.gov/", "href=\"/").gsub("href=\"/", "href=\"/usa/").
       gsub("\"/usa/index\"", "\"/\"").gsub("\"/usa/gobiernousa/index\"", "\"/?locale=es\"")
   end
-  
+
   def self.get_cookies(url, host)
     http = Net::HTTP.new(host, 80)
     response = http.post(url,{})

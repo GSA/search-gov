@@ -31,7 +31,7 @@ describe SitePage do
         first.main_content.should match(/^<h1 id.*<\/span> <\/li> <\/ul> <\/div> $/)
         second = SitePage.find_by_url_slug "Agencies/Federal/All_Agencies/index"
         second.title.should == "A-Z Index of U.S. Government Departments and Agencies"
-        second.breadcrumb.should == "<a href=\"/\">Home</a> &gt; <a href=\"/usa/Topics/Audiences\">A-Z Index</a> &gt; A-Z Index of U.S. Government Departments and Agencies"
+        second.breadcrumb.should == "<a href=\"/\">Home</a> &gt; <a href=\"/usa/Topics/Audiences \">A-Z Index with a whitespace at the end</a> &gt; A-Z Index of U.S. Government Departments and Agencies"
         second.main_content.should match(/^<h1 id.*make sure the crawler follows the breadcrumb links.*<\/script>$/)
         third = SitePage.find_by_url_slug "Topics/Audiences"
         third.title.should == "Especially for Specific Audiences"
@@ -66,7 +66,7 @@ describe SitePage do
       end
     end
   end
-  
+
   describe "#crawl_answers_usa_gov" do
     context "when crawling" do
       before do
@@ -79,7 +79,7 @@ describe SitePage do
         es_page_two = Hpricot(File.open(Rails.root.to_s + "/spec/fixtures/html/answers_usa_gov/2_es.html"))
         SitePage.stub!(:open).and_return(en_page_one, en_faq, en_page_two, en_faq, es_page_one, es_faq, es_page_two, es_faq)
       end
-    
+
       it "should delete all existing answers, and crawl both English and Spanish sites" do
         SitePage.should_receive(:delete_all).with(["url_slug LIKE ?", "answers/%"])
         SitePage.should_receive(:delete_all).with(["url_slug LIKE ?", "respuestas/%"])
@@ -95,12 +95,12 @@ describe SitePage do
         SitePage.find_by_url_slug('respuestas/3').should be_nil
       end
     end
-    
+
     context "when an error occurs crawling" do
       before do
         SitePage.stub!(:open).and_raise(Exception)
       end
-      
+
       it "should log the error" do
         Rails.logger.should_receive(:error).twice
         SitePage.crawl_answers_usa_gov
