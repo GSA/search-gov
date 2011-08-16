@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-daily_popular_query_rb.html">app/models/daily_popular_query.rb</a></td>
-            <td class='right_align'><tt>13</tt></td>
-            <td class='right_align'><tt>11</tt></td>
+            <td class='right_align'><tt>29</tt></td>
+            <td class='right_align'><tt>24</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,79 +63,175 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   belongs_to :affiliate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line3">3</a>   validates_presence_of :day, :query, :times, :time_frame</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line4">4</a>   validates_uniqueness_of :query, :scope =&gt; [:day, :affiliate_id, :is_grouped, :time_frame]</pre></td>
+            <td><pre><a name="line2">2</a>   @queue = :usasearch</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a>   </pre></td>
+            <td><pre><a name="line3">3</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   class &lt;&lt; self</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line7">7</a>     </pre></td>
+            <td><pre><a name="line4">4</a>   belongs_to :affiliate</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     def most_recent_populated_date(affiliate = nil, locale = I18n.default_locale.to_s)</pre></td>
+            <td><pre><a name="line5">5</a>   validates_presence_of :day, :query, :times, :time_frame</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>       conditions = affiliate.nil? ? [&quot;ISNULL(affiliate_id) AND locale=?&quot;, locale] : [&quot;affiliate_id=? AND locale=?&quot;, affiliate.id, locale]</pre></td>
+            <td><pre><a name="line6">6</a>   validates_uniqueness_of :query, :scope =&gt; [:day, :affiliate_id, :is_grouped, :time_frame]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line7">7</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>       maximum(:day, :conditions =&gt; conditions)</pre></td>
+            <td><pre><a name="line8">8</a>   class &lt;&lt; self</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a>     end</pre></td>
+            <td><pre><a name="line9">9</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>     def most_recent_populated_date(affiliate = nil, locale = I18n.default_locale.to_s)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>       conditions = affiliate.nil? ? [&quot;ISNULL(affiliate_id) AND locale=?&quot;, locale] : [&quot;affiliate_id=? AND locale=?&quot;, affiliate.id, locale]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>       maximum(:day, :conditions =&gt; conditions)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a>   end</pre></td>
+            <td><pre><a name="line13">13</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a> end</pre></td>
+            <td><pre><a name="line14">14</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line15">15</a>     def calculate(day, time_frame, method, is_grouped)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>       Resque.enqueue(DailyPopularQuery, day, time_frame, method, is_grouped)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line17">17</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line18">18</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>     def perform(day_string, time_frame, method, is_grouped)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>       day = Date.parse(day_string)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       delete_all([&quot;day = ? and time_frame = ? and is_grouped = ?&quot;, day, time_frame, is_grouped])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       query_counts = DailyQueryStat.send(method, day, time_frame, 1000)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>       query_counts.each do |query_count|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line24">24</a>         create!(:day =&gt; day, :affiliate_id =&gt; nil, :locale =&gt; 'en', :query =&gt; query_count.query,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>                 :is_grouped =&gt; is_grouped, :time_frame =&gt; time_frame, :times =&gt; query_count.times)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>       end unless query_counts.is_a?(String)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line27">27</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line28">28</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line29">29</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Aug 15 18:55:25 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Aug 15 19:17:55 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/datum.rb</title>
+    <title>app/models/logfile_blocked_user_agent.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/models/datum.rb</h2>
+    <h2>app/models/logfile_blocked_user_agent.rb</h2>
 
     
 
@@ -27,9 +27,9 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-datum_rb.html">app/models/datum.rb</a></td>
-            <td class='right_align'><tt>7</tt></td>
-            <td class='right_align'><tt>6</tt></td>
+            <td class="left_align"><a href="app-models-logfile_blocked_user_agent_rb.html">app/models/logfile_blocked_user_agent.rb</a></td>
+            <td class='right_align'><tt>4</tt></td>
+            <td class='right_align'><tt>4</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -57,43 +57,25 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Datum</pre></td>
+            <td><pre><a name="line1">1</a> class LogfileBlockedUserAgent &lt; ActiveRecord::Base</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   attr_accessor :label, :time, :x, :y, :extra, :extra_2</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line3">3</a> </pre></td>
+            <td><pre><a name="line2">2</a>   validates_presence_of :agent</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   def initialize(attributes)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>     attributes.each {|key, value| self.send((key.to_s + &quot;=&quot;).to_sym, value)}</pre></td>
+            <td><pre><a name="line3">3</a>   validates_uniqueness_of :agent</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line7">7</a> end</pre></td>
+            <td><pre><a name="line4">4</a> end</pre></td>
           </tr>
         
       </tbody>

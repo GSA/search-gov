@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-daily_query_stat_rb.html">app/models/daily_query_stat.rb</a></td>
-            <td class='right_align'><tt>125</tt></td>
-            <td class='right_align'><tt>109</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class='right_align'><tt>140</tt></td>
+            <td class='right_align'><tt>123</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>97.86%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:98px"></div>
+            <div class="uncovered" style="width:2px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>97.56%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:98px"></div>
+            <div class="uncovered" style="width:2px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -92,542 +92,542 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line7">7</a> </pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line8">8</a>   searchable do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line9">9</a>     text :query</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>     string :affiliate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     string :locale</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>     time :day</pre></td>
+            <td><pre><a name="line7">7</a>   MAX_ORPHANS_PER_PASS = 250000</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>   end</pre></td>
+            <td><pre><a name="line8">8</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>   searchable do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>     text :query</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     string :affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>     string :locale</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line13">13</a>     time :day</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line14">14</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>   class &lt;&lt; self</pre></td>
+            <td><pre><a name="line14">14</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line16">16</a> </pre></td>
+            <td><pre><a name="line15">15</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>     def search_for(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
+            <td><pre><a name="line16">16</a>   class &lt;&lt; self</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line18">18</a>       search do</pre></td>
+            <td><pre><a name="line17">17</a>     def reindex_day(day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>         with :affiliate, affiliate_name</pre></td>
+            <td><pre><a name="line18">18</a>       clean_index_orphans_for_day(day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>         with :locale, locale</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>         with(:day).between(start_date..end_date)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>         keywords query</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>         paginate :page =&gt; 1, :per_page =&gt; 3000</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line24">24</a>       end rescue nil</pre></td>
+            <td><pre><a name="line19">19</a>       Sunspot.index(all(:select =&gt; 'id', :conditions=&gt;[&quot;day=?&quot;, day]))</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>     end</pre></td>
+            <td><pre><a name="line20">20</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a> </pre></td>
+            <td><pre><a name="line21">21</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>     def query_counts_for_terms_like(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
+            <td><pre><a name="line22">22</a>     def clean_index_orphans_for_day(day)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>       unless query.blank?</pre></td>
+            <td><pre><a name="line23">23</a>       db_ids = all(:select =&gt; 'id', :conditions=&gt;[&quot;day=?&quot;, day]).collect(&amp;:id).to_set</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>         solr_search_results = search_for query, start_date, end_date, affiliate_name, locale</pre></td>
+            <td><pre><a name="line24">24</a>       indexed_ids = solr_search_ids { with :day, day; paginate(:page =&gt; 1, :per_page =&gt; MAX_ORPHANS_PER_PASS) }.to_set</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line30">30</a>         return sum(:times,</pre></td>
+            <td><pre><a name="line25">25</a>       (indexed_ids - db_ids).each do |id|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line26">26</a>         new do |fake_instance|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>           fake_instance.id = id</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line28">28</a>         end.solr_remove_from_index</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line29">29</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line30">30</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>                    :group =&gt; :query,</pre></td>
+            <td><pre><a name="line31">31</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line32">32</a>                    :conditions =&gt; &quot;id in (#{solr_search_results.results.collect(&amp; :id).join(',')})&quot;,</pre></td>
+            <td><pre><a name="line32">32</a>     def search_for(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>                    :order =&gt; &quot;sum_times desc&quot;) unless solr_search_results.total.zero?</pre></td>
+            <td><pre><a name="line33">33</a>       search do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line34">34</a>         with :affiliate, affiliate_name</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>         with :locale, locale</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line36">36</a>         with(:day).between(start_date..end_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>         keywords query</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line38">38</a>         paginate :page =&gt; 1, :per_page =&gt; 3000</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line39">39</a>       end rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>       return []</pre></td>
+            <td><pre><a name="line40">40</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line36">36</a>     end</pre></td>
+            <td><pre><a name="line41">41</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>     def query_counts_for_terms_like(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>       unless query.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line44">44</a>         solr_search_results = search_for query, start_date, end_date, affiliate_name, locale</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line45">45</a>         return sum(:times,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a> </pre></td>
+            <td><pre><a name="line46">46</a>                    :group =&gt; :query,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>     def reversed_backfilled_series_since_2009_for(query, up_to_day = Date.yesterday.to_date)</pre></td>
+            <td><pre><a name="line47">47</a>                    :conditions =&gt; &quot;id in (#{solr_search_results.results.collect(&amp; :id).join(',')})&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>       timeline = Timeline.new(query, nil, nil, Date.new(2009, 1, 1))</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line40">40</a>       ary = []</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>       timeline.dates.each_with_index do |day, idx|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>         ary &lt;&lt; timeline.series[idx].y if day &lt;= up_to_day</pre></td>
+            <td><pre><a name="line48">48</a>                    :order =&gt; &quot;sum_times desc&quot;) unless solr_search_results.total.zero?</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line43">43</a>       end</pre></td>
+            <td><pre><a name="line49">49</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line44">44</a>       ary.reverse</pre></td>
+            <td><pre><a name="line50">50</a>       return []</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a>     end</pre></td>
+            <td><pre><a name="line51">51</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line46">46</a> </pre></td>
+            <td><pre><a name="line52">52</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line47">47</a>     def most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
+            <td><pre><a name="line53">53</a>     def reversed_backfilled_series_since_2009_for(query, up_to_day = Date.yesterday.to_date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line48">48</a>       return INSUFFICIENT_DATA if end_date.nil?</pre></td>
+            <td><pre><a name="line54">54</a>       timeline = Timeline.new(query, nil, nil, Date.new(2009, 1, 1))</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line49">49</a>       start_date = end_date - days_back.days + 1.day</pre></td>
+            <td><pre><a name="line55">55</a>       ary = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line50">50</a>       results = sum(:times,</pre></td>
+            <td><pre><a name="line56">56</a>       timeline.dates.each_with_index do |day, idx|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line57">57</a>         ary &lt;&lt; timeline.series[idx].y if day &lt;= up_to_day</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a>                     :group =&gt; :query,</pre></td>
+            <td><pre><a name="line58">58</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line59">59</a>       ary.reverse</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>                     :conditions =&gt; ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line53">53</a>                     :having =&gt; &quot;sum_times &gt; #{ affiliate_name == Affiliate::USAGOV_AFFILIATE_NAME ? &quot;3&quot; : &quot;0&quot;}&quot;,</pre></td>
+            <td><pre><a name="line60">60</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line54">54</a>                     :joins =&gt; 'FORCE INDEX (aldq)',</pre></td>
+            <td><pre><a name="line61">61</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line62">62</a>     def most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>       return INSUFFICIENT_DATA if end_date.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>       start_date = end_date - days_back.days + 1.day</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>       results = sum(:times,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line55">55</a>                     :order =&gt; &quot;sum_times desc&quot;,</pre></td>
+            <td><pre><a name="line66">66</a>                     :group =&gt; :query,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a>                     :limit =&gt; num_results)</pre></td>
+            <td><pre><a name="line67">67</a>                     :conditions =&gt; ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line58">58</a>       results.collect { |hash| QueryCount.new(hash.first, hash.last) }</pre></td>
+            <td><pre><a name="line68">68</a>                     :having =&gt; &quot;sum_times &gt; #{ affiliate_name == Affiliate::USAGOV_AFFILIATE_NAME ? &quot;3&quot; : &quot;0&quot;}&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line59">59</a>     end</pre></td>
+            <td><pre><a name="line69">69</a>                     :joins =&gt; 'FORCE INDEX (aldq)',</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line61">61</a>     def most_popular_terms_for_year_month(year, month, num_results = RESULTS_SIZE)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line62">62</a>       start_date = Date.civil(year,month,1)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line63">63</a>       end_date = Date.civil(year,month,-1)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line64">64</a>       results = sum(:times,</pre></td>
+            <td><pre><a name="line70">70</a>                     :order =&gt; &quot;sum_times desc&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line65">65</a>                     :group =&gt; :query,</pre></td>
+            <td><pre><a name="line71">71</a>                     :limit =&gt; num_results)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line72">72</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line73">73</a>       results.collect { |hash| QueryCount.new(hash.first, hash.last) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line66">66</a>                     :conditions =&gt; ['day between ? AND ?', start_date, end_date],</pre></td>
+            <td><pre><a name="line74">74</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line67">67</a>                     :joins =&gt; 'FORCE INDEX (dq)',</pre></td>
+            <td><pre><a name="line75">75</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line76">76</a>     def most_popular_terms_for_year_month(year, month, num_results = RESULTS_SIZE)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line77">77</a>       start_date = Date.civil(year, month, 1)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line78">78</a>       end_date = Date.civil(year, month, -1)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line79">79</a>       results = sum(:times,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line68">68</a>                     :order =&gt; &quot;sum_times desc&quot;,</pre></td>
+            <td><pre><a name="line80">80</a>                     :group =&gt; :query,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line69">69</a>                     :limit =&gt; num_results)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line70">70</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line71">71</a>       results.collect { |hash| QueryCount.new(hash.first, hash.last) }</pre></td>
+            <td><pre><a name="line81">81</a>                     :conditions =&gt; ['day between ? AND ?', start_date, end_date],</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line72">72</a>     end</pre></td>
+            <td><pre><a name="line82">82</a>                     :joins =&gt; 'FORCE INDEX (dq)',</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line73">73</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line74">74</a>     def most_popular_groups_for_year_month(year, month, num_results = RESULTS_SIZE)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line75">75</a>       start_date = Date.civil(year,month,1)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line76">76</a>       end_date = Date.civil(year,month,-1)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line77">77</a>       results = find_by_sql [&quot;select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b &quot;+</pre></td>
+            <td><pre><a name="line83">83</a>                     :order =&gt; &quot;sum_times desc&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line78">78</a>         &quot;where day between ? AND ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id &quot;+</pre></td>
+            <td><pre><a name="line84">84</a>                     :limit =&gt; num_results)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line79">79</a>         &quot;group by q.name order by cnt desc limit ?&quot;, start_date, end_date, num_results]</pre></td>
+            <td><pre><a name="line85">85</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line80">80</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line81">81</a>       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }</pre></td>
+            <td><pre><a name="line86">86</a>       results.collect { |hash| QueryCount.new(hash.first, hash.last) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line82">82</a>     end</pre></td>
+            <td><pre><a name="line87">87</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line83">83</a> </pre></td>
+            <td><pre><a name="line88">88</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>     def most_popular_query_groups(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
+            <td><pre><a name="line89">89</a>     def most_popular_groups_for_year_month(year, month, num_results = RESULTS_SIZE)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>       return INSUFFICIENT_DATA if end_date.nil?</pre></td>
+            <td><pre><a name="line90">90</a>       start_date = Date.civil(year, month, 1)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line86">86</a>       start_date = end_date - days_back.days + 1.day</pre></td>
+            <td><pre><a name="line91">91</a>       end_date = Date.civil(year, month, -1)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line87">87</a>       results = find_by_sql [&quot;select q.name, sum(d.times) cnt from daily_query_stats d FORCE INDEX (qdal), query_groups q, grouped_queries g, grouped_queries_query_groups b &quot;+</pre></td>
+            <td><pre><a name="line92">92</a>       results = find_by_sql [&quot;select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b &quot;+</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line88">88</a>         &quot;where day between ? AND ? AND affiliate = ? AND locale = ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id &quot;+</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line89">89</a>         &quot;group by q.name order by cnt desc limit ?&quot;,</pre></td>
+            <td><pre><a name="line93">93</a>                                &quot;where day between ? AND ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id &quot;+</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line90">90</a>                              start_date, end_date, affiliate_name, locale, num_results]</pre></td>
+            <td><pre><a name="line94">94</a>                                &quot;group by q.name order by cnt desc limit ?&quot;, start_date, end_date, num_results]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line91">91</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
+            <td><pre><a name="line95">95</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line92">92</a>       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line93">93</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line94">94</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line95">95</a>     def most_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line96">96</a>       maximum(:day, :conditions =&gt; ['affiliate = ? AND locale = ?', affiliate_name, locale])</pre></td>
+            <td><pre><a name="line96">96</a>       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }</pre></td>
           </tr>
         
           
@@ -645,109 +645,109 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line99">99</a>     def collect_query_group_named(name, start_date)</pre></td>
+            <td><pre><a name="line99">99</a>     def most_popular_query_groups(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line100">100</a>       queries = QueryGroup.find_by_name(name).grouped_queries.collect { |gq| gq.query }</pre></td>
+            <td><pre><a name="line100">100</a>       return INSUFFICIENT_DATA if end_date.nil?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line101">101</a>       generic_collection([&quot;day &gt;= ? AND query IN (?)&quot;, start_date, queries])</pre></td>
+            <td><pre><a name="line101">101</a>       start_date = end_date - days_back.days + 1.day</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line102">102</a>       results = find_by_sql [&quot;select q.name, sum(d.times) cnt from daily_query_stats d FORCE INDEX (qdal), query_groups q, grouped_queries g, grouped_queries_query_groups b &quot;+</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line102">102</a>     end</pre></td>
+            <td><pre><a name="line103">103</a>                                &quot;where day between ? AND ? AND affiliate = ? AND locale = ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id &quot;+</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line103">103</a> </pre></td>
+            <td><pre><a name="line104">104</a>                                &quot;group by q.name order by cnt desc limit ?&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line104">104</a>     def collect_query(query, start_date)</pre></td>
+            <td><pre><a name="line105">105</a>                              start_date, end_date, affiliate_name, locale, num_results]</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line105">105</a>       generic_collection([&quot;day &gt;= ? AND query = ?&quot;, start_date, query])</pre></td>
+            <td><pre><a name="line106">106</a>       return INSUFFICIENT_DATA if results.empty?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line107">107</a>       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line106">106</a>     end</pre></td>
+            <td><pre><a name="line108">108</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line107">107</a> </pre></td>
+            <td><pre><a name="line109">109</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line108">108</a>     def collect_affiliate_query(query, affiliate_name, start_date)</pre></td>
+            <td><pre><a name="line110">110</a>     def most_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line109">109</a>       generic_collection([&quot;day &gt;= ? AND affiliate = ? AND query = ?&quot;, start_date, affiliate_name, query])</pre></td>
+            <td><pre><a name="line111">111</a>       maximum(:day, :conditions =&gt; ['affiliate = ? AND locale = ?', affiliate_name, locale])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line110">110</a>     end</pre></td>
+            <td><pre><a name="line112">112</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line111">111</a> </pre></td>
+            <td><pre><a name="line113">113</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line112">112</a>     def generic_collection(conditions)</pre></td>
+            <td><pre><a name="line114">114</a>     def collect_query_group_named(name, start_date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line113">113</a>       results = sum(:times, :group =&gt; :day, :conditions =&gt; conditions, :order =&gt; &quot;day&quot;)</pre></td>
+            <td><pre><a name="line115">115</a>       queries = QueryGroup.find_by_name(name).grouped_queries.collect { |gq| gq.query }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line114">114</a>       dqs=[]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line115">115</a>       results.each_pair { |day, times| dqs &lt;&lt; new(:day=&gt; day, :times =&gt; times) }</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line116">116</a>       dqs</pre></td>
+            <td><pre><a name="line116">116</a>       generic_collection([&quot;day &gt;= ? AND query IN (?)&quot;, start_date, queries])</pre></td>
           </tr>
         
           
@@ -759,55 +759,145 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line118">118</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line119">119</a> </pre></td>
+            <td><pre><a name="line118">118</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line120">120</a>   private</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line121">121</a> </pre></td>
+            <td><pre><a name="line119">119</a>     def collect_query(query, start_date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line122">122</a>   def squish_query</pre></td>
+            <td><pre><a name="line120">120</a>       generic_collection([&quot;day &gt;= ? AND query = ?&quot;, start_date, query])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line121">121</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line122">122</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line123">123</a>     self.query.squish!</pre></td>
+            <td><pre><a name="line123">123</a>     def collect_affiliate_query(query, affiliate_name, start_date)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line124">124</a>       generic_collection([&quot;day &gt;= ? AND affiliate = ? AND query = ?&quot;, start_date, affiliate_name, query])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line124">124</a>   end</pre></td>
+            <td><pre><a name="line125">125</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line125">125</a> end</pre></td>
+            <td><pre><a name="line126">126</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line127">127</a>     def generic_collection(conditions)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line128">128</a>       results = sum(:times, :group =&gt; :day, :conditions =&gt; conditions, :order =&gt; &quot;day&quot;)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line129">129</a>       dqs=[]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line130">130</a>       results.each_pair { |day, times| dqs &lt;&lt; new(:day=&gt; day, :times =&gt; times) }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line131">131</a>       dqs</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line132">132</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line133">133</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line134">134</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line135">135</a>   private</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line136">136</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line137">137</a>   def squish_query</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line138">138</a>     self.query.squish!</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line139">139</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line140">140</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Aug 15 18:55:25 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Aug 15 19:17:55 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

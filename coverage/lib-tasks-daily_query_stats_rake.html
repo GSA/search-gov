@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="lib-tasks-daily_query_stats_rake.html">lib/tasks/daily_query_stats.rake</a></td>
-            <td class='right_align'><tt>10</tt></td>
-            <td class='right_align'><tt>8</tt></td>
+            <td class='right_align'><tt>15</tt></td>
+            <td class='right_align'><tt>13</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,49 +75,79 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     desc &quot;tell Solr to index the collection of most-recently-added DailyQueryStats (ideally yesterday's)&quot;</pre></td>
+            <td><pre><a name="line4">4</a>     desc &quot;tell Solr to index and de-orphan one day's worth of DailyQueryStats&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     task :index_most_recent_day_stats_in_solr =&gt; :environment do</pre></td>
+            <td><pre><a name="line5">5</a>     task :reindex_day, :day, :needs =&gt; :environment do |t, args|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>       Sunspot.index(DailyQueryStat.find_all_by_day(DailyQueryStat.most_recent_populated_date))</pre></td>
+            <td><pre><a name="line6">6</a>       day = args[:day]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>       if day.blank?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>         Rails.logger.error(&quot;usage: rake usasearch:daily_query_stats:reindex_day[yyyy-mm-dd]&quot;)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a>     end</pre></td>
+            <td><pre><a name="line9">9</a>       else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>         DailyQueryStat.reindex_day(day)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line8">8</a>   end</pre></td>
+            <td><pre><a name="line11">11</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a> </pre></td>
+            <td><pre><a name="line12">12</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a> end</pre></td>
+            <td><pre><a name="line13">13</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line14">14</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line15">15</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Aug 15 18:55:26 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Aug 15 19:17:55 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

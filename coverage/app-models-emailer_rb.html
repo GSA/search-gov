@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-emailer_rb.html">app/models/emailer.rb</a></td>
-            <td class='right_align'><tt>97</tt></td>
-            <td class='right_align'><tt>82</tt></td>
+            <td class='right_align'><tt>98</tt></td>
+            <td class='right_align'><tt>83</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -531,115 +531,121 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line80">80</a>   </pre></td>
+            <td><pre><a name="line80">80</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>   def monthly_report(zip_filename, report_date)</pre></td>
+            <td><pre><a name="line81">81</a>   def report(zip_filename)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line82">82</a>     setup_email(REPORT_RECIPIENTS.join(&quot;, &quot;))</pre></td>
+            <td><pre><a name="line82">82</a>     comma_list = ReportRecipient.all.collect(&amp;:email).join(', ')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>     @subject += &quot;Report data attached: #{File.basename(zip_filename)}&quot;</pre></td>
+            <td><pre><a name="line83">83</a>     setup_email(comma_list)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line84">84</a>     attachments[File.basename(zip_filename)] = File.read(zip_filename)</pre></td>
+            <td><pre><a name="line84">84</a>     @subject += &quot;Report data attached: #{File.basename(zip_filename)}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>     mail(:to =&gt; REPORT_RECIPIENTS.join(&quot;, &quot;), :subject =&gt; @subject, :from =&gt; @from)</pre></td>
+            <td><pre><a name="line85">85</a>     attachments[File.basename(zip_filename)] = File.read(zip_filename)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line86">86</a>     mail(:to =&gt; comma_list, :subject =&gt; @subject, :from =&gt; @from)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line86">86</a>   end</pre></td>
+            <td><pre><a name="line87">87</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line87">87</a> </pre></td>
+            <td><pre><a name="line88">88</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line88">88</a>   private</pre></td>
+            <td><pre><a name="line89">89</a>   private</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line89">89</a> </pre></td>
+            <td><pre><a name="line90">90</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line90">90</a>   def setup_email(recipients)</pre></td>
+            <td><pre><a name="line91">91</a>   def setup_email(recipients)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line91">91</a>     @recipients = recipients</pre></td>
+            <td><pre><a name="line92">92</a>     @recipients = recipients</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line92">92</a>     @from       = APP_EMAIL_ADDRESS</pre></td>
+            <td><pre><a name="line93">93</a>     @from       = APP_EMAIL_ADDRESS</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line93">93</a>     @subject    = &quot;[USASearch] &quot;</pre></td>
+            <td><pre><a name="line94">94</a>     @subject    = &quot;[USASearch] &quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line94">94</a>     @sent_on    = Time.now</pre></td>
+            <td><pre><a name="line95">95</a>     @sent_on    = Time.now</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line95">95</a>     @headers['Content-Type'] = &quot;text/plain; charset=utf-8; format=flowed&quot;</pre></td>
+            <td><pre><a name="line96">96</a>     @headers['Content-Type'] = &quot;text/plain; charset=utf-8; format=flowed&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line96">96</a>   end</pre></td>
+            <td><pre><a name="line97">97</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line97">97</a> end</pre></td>
+            <td><pre><a name="line98">98</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Mon Aug 15 18:55:25 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Mon Aug 15 19:17:55 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
