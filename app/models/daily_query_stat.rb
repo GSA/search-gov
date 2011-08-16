@@ -23,9 +23,10 @@ class DailyQueryStat < ActiveRecord::Base
       db_ids = all(:select => 'id', :conditions=>["day=?", day]).collect(&:id).to_set
       indexed_ids = solr_search_ids { with :day, day; paginate(:page => 1, :per_page => MAX_ORPHANS_PER_PASS) }.to_set
       (indexed_ids - db_ids).each do |id|
-        new do |fake_instance|
+        daily_query_stat = new do |fake_instance|
           fake_instance.id = id
-        end.solr_remove_from_index
+        end
+        daily_query_stat.solr_remove_from_index
       end
     end
 
