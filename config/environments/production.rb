@@ -46,6 +46,11 @@ UsasearchRails3::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  config.after_initialize do
+    MultiDb::ConnectionProxy.setup!
+  end
+
 end
 
 # Sent in emails to users
