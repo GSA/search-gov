@@ -8,18 +8,18 @@ GIT
       xml-simple
 
 GIT
-  remote: git://github.com/paneq/calendar_date_select.git
-  revision: 977048211b94599fe0f08eb37a481f3d69df48f6
-  specs:
-    calendar_date_select (1.16.2)
-
-GIT
-  remote: git://github.com/schoefmax/multi_db.git
-  revision: 251806a16b1e03279c774a841d371bda1533ebe7
+  remote: git://github.com/GSA-OCSIT/multi_db.git
+  revision: d9ced6feacfc62cf62782e99c12a0638d88dc79e
   specs:
     multi_db (0.3.0)
       activerecord (>= 2.1.0)
       tlattr_accessors (>= 0.0.3)
+
+GIT
+  remote: git://github.com/paneq/calendar_date_select.git
+  revision: 977048211b94599fe0f08eb37a481f3d69df48f6
+  specs:
+    calendar_date_select (1.16.2)
 
 GEM
   remote: http://rubygems.org/
