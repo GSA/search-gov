@@ -16,7 +16,7 @@ class DailyQueryStat < ActiveRecord::Base
   class << self
     def reindex_day(day)
       clean_index_orphans_for_day(day)
-      Sunspot.index(all(:select => 'id', :conditions=>["day=?", day]))
+      Sunspot.index(all(:conditions=>["day=?", day]))
     end
 
     def clean_index_orphans_for_day(day)
