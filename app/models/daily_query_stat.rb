@@ -1,4 +1,5 @@
 class DailyQueryStat < ActiveRecord::Base
+  @queue = :usasearch
   validates_presence_of :day, :query, :times, :affiliate, :locale
   validates_uniqueness_of :query, :scope => [:day, :affiliate, :locale]
   before_save :squish_query
@@ -15,6 +16,10 @@ class DailyQueryStat < ActiveRecord::Base
 
   class << self
     def reindex_day(day)
+      Resque.enqueue(DailyQueryStat, day)
+    end
+
+    def perform(day)
       clean_index_orphans_for_day(day)
       Sunspot.index(all(:conditions=>["day=?", day]))
     end

@@ -346,10 +346,21 @@ describe DailyQueryStat do
   end
 
   describe "#reindex_day(day)" do
+    before do
+      ResqueSpec.reset!
+    end
+
+    it "should enqueue reindexing" do
+      DailyQueryStat.reindex_day(Date.current)
+      DailyQueryStat.should have_queued(Date.current)
+    end
+  end
+
+  describe "#perform(day)" do
     it "should de-orphan from Solr and index from DB all records for a given day" do
       DailyQueryStat.should_receive(:clean_index_orphans_for_day).with daily_query_stats(:sample).day
       Sunspot.should_receive(:index).with([daily_query_stats(:sample)])
-      DailyQueryStat.reindex_day(daily_query_stats(:sample).day)
+      DailyQueryStat.perform(daily_query_stats(:sample).day)
     end
   end
 
