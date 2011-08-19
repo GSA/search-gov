@@ -61,7 +61,7 @@ describe Affiliates::BoostedContentsController do
         post :create, :affiliate_id => @affiliate.to_param, :boosted_content => {:url => "a url", :title => "a title", :description => "a description"}
 
         response.should redirect_to new_affiliate_boosted_content_path
-        
+
         @affiliate.reload
         @affiliate.boosted_contents.length.should == 1
       end
@@ -89,7 +89,7 @@ describe Affiliates::BoostedContentsController do
         assigns[:boosted_content].errors[:url].first.should == "has already been boosted"
         flash[:error].should =~ /problem/
       end
-      
+
       it "should index the new boosted content" do
         post :create, :affiliate_id => @affiliate.to_param, :boosted_content => {:url => "a url", :title => "a unique title", :description => "a description"}
         BoostedContent.search_for('unique', @affiliate).total.should == 1
@@ -133,7 +133,7 @@ describe Affiliates::BoostedContentsController do
       assigns[:boosted_content].errors[:url].first.should == "has already been boosted"
       flash[:error].should =~ /problem/
     end
-    
+
     it "should index the updated boosted content" do
       post :update, :affiliate_id => @affiliate.to_param, :id => @boosted_content.to_param, :boosted_content => {:url => "new url", :title => "new updated title", :description => "new description", :keywords => 'four, five, six'}
       BoostedContent.search_for('updated', @affiliate).total.should == 1
@@ -141,17 +141,37 @@ describe Affiliates::BoostedContentsController do
   end
 
   describe "destroy" do
-    it "should delete, flash, and redirect" do
+    it "should delete (including from Solr), flash, and redirect" do
       affiliate = affiliates(:basic_affiliate)
       boosted_content = affiliate.boosted_contents.create!(:url => "a url", :title => "a title", :description => "a description")
       UserSession.create(affiliate.users.first)
+      Sunspot.index(boosted_content)
+      Sunspot.commit
+      BoostedContent.solr_search_ids { with :affiliate_name, affiliate.name; paginate(:page => 1, :per_page => 10) }.should_not be_empty
 
       post :destroy, :affiliate_id => affiliate.to_param, :id => boosted_content.to_param
 
       response.should redirect_to new_affiliate_boosted_content_path
       affiliate.reload.boosted_contents.should be_empty
+      BoostedContent.solr_search_ids { with :affiliate_name, affiliate.name; paginate(:page => 1, :per_page => 10) }.should be_empty
     end
+  end
 
+  describe "delete all" do
+    it "should delete all BoostedContent (including from Solr) and redirect to new" do
+      affiliate = affiliates(:basic_affiliate)
+      UserSession.create(affiliate.users.first)
+      Sunspot.index(affiliate.boosted_contents.create(:title => "first title", :description => "first description", :url => "http://url1.com"))
+      Sunspot.index(affiliate.boosted_contents.create(:title => "second title", :description => "second description", :url => "http://url2.com"))
+      Sunspot.commit
+
+      post :destroy_all, :affiliate_id => affiliate.to_param
+
+      response.should redirect_to(new_affiliate_boosted_content_path)
+
+      affiliate.reload.boosted_contents.should be_empty
+      BoostedContent.solr_search_ids { with :affiliate_name, affiliate.name; paginate(:page => 1, :per_page => 10) }.should be_empty
+    end
   end
 
   describe "bulk upload" do
@@ -231,17 +251,4 @@ describe Affiliates::BoostedContentsController do
     end
   end
 
-  describe "delete all" do
-    it "should delete all BoostedContent and redirect to new" do
-      affiliate = affiliates(:basic_affiliate)
-      UserSession.create(affiliate.users.first)
-      3.times { |i| affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url#{i}.com") }
-
-      post :destroy_all, :affiliate_id => affiliate.to_param
-
-      response.should redirect_to(new_affiliate_boosted_content_path)
-
-      affiliate.reload.boosted_contents.should be_empty
-    end
-  end
 end

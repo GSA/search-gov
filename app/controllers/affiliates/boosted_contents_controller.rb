@@ -42,12 +42,16 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
 
   def destroy
     @boosted_content.destroy
+    @boosted_content.solr_remove_from_index
     flash[:success] = "Boosted Content entry successfully deleted"
     redirect_to new_affiliate_boosted_content_path
   end
 
   def destroy_all
-    @affiliate.boosted_contents.delete_all
+    @affiliate.boosted_contents.each do |bc|
+      bc.delete
+      bc.solr_remove_from_index
+    end
     flash[:success] = "All Boosted Content successfully deleted"
     redirect_to new_affiliate_boosted_content_path
   end
@@ -76,7 +80,7 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
         @affiliate.boosted_contents.order("updated_at desc, id desc").limit(NUMBER_TO_DISPLAY_IF_ABOVE_MAX) :
         @affiliate.boosted_contents
   end
-  
+
   def index_boosted_content(boosted_content)
     Sunspot.index(boosted_content)
   end
