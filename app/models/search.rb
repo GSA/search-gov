@@ -16,7 +16,7 @@ class Search
   VALID_FILTER_VALUES = %w{off moderate strict}
   DEFAULT_FILTER_SETTING = 'moderate'
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
-  VALID_SCOPES = %w{ PatentClass USPTOUSPC USPTOTMEP USPTOMPEP }
+  VALID_SCOPES = %w{ usagovaffLA usagovaffNC usagovaffusbr PatentClass usagovUSPTOOG1995 usagovUSPTOOG1996 usagovUSPTOOG1997 usagovUSPTOOG1998 usagovUSPTOOG1999 usagovUSPTOOG2000 usagovUSPTOOG2001 usagovUSPTOOG2002 usagovUSPTOOG2003 usagovUSPTOOG2004 usagovUSPTOOG2005 usagovUSPTOOG2006 usagovUSPTOOG2007 usagovUSPTOOG2008 usagovUSPTOOG2009 usagovUSPTOOG2010 usagovUSPTOOG2011 USPTOMPEP USPTOTMEP USPTOUSPC usagovaffwheo usagovaffwhmemo usagovaffwhproc usagovaffwhvisitor usagovaffwhforms usagovaffwhrec2012 usagovaffwhrec2011 usagovaffwhrec2010 usagovaffwhrec2009 usagovaffwhceq usagovaffwhnsc usagovaffwhoa usagovaffwhdpc usagovaffwhonap usagovaffwhofbnp usagovaffwhsicp usagovaffwhnec }
   QUERY_STRING_ALLOCATION = 1800
 
   attr_reader :query,
