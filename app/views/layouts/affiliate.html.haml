@@ -34,4 +34,4 @@
           %h1 Search
         = yield
       #footer= @affiliate.footer.html_safe if @affiliate and @affiliate.footer and (@search_options.nil? or !@search_options[:embedded])
-    = render "/shared/webtrends_affiliates"
+    = render "/shared/webtrends_affiliates" unless @affiliate.exclude_webtrends?

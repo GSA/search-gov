@@ -1319,3 +1319,17 @@ Feature: Affiliate clients
     Then I should not see "Affiliate Header"
     And I should not see "Affiliate Footer"
 
+  Scenario: Affiliate without exclude webtrends
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    When I go to aff.gov's search page
+    Then I should see the page with Webtrends tag
+
+ Scenario: Affiliate with exclude webtrends
+   Given the following Affiliates exist:
+     | display_name | name    | contact_email | contact_name | exclude_webtrends |
+     | aff site     | aff.gov | aff@bar.gov   | John Bar     | true              |
+   When I go to aff.gov's search page
+   Then I should not see the page with Webtrends tag
+

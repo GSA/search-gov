@@ -38,7 +38,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :is_affiliate_suggestions_enabled => hash["is_affiliate_suggestions_enabled"],
       :search_results_page_title => hash["search_results_page_title"],
       :staged_search_results_page_title => hash["staged_search_results_page_title"],
-      :has_staged_content => hash["has_staged_content"] || false
+      :has_staged_content => hash["has_staged_content"] || false,
+      :exclude_webtrends => hash["exclude_webtrends"] || false
     )
     affiliate.users << user
   end
@@ -219,3 +220,10 @@ Given /^the following DailySearchModuleStats exist for each day in "([^\"]*)"$/ 
   end
 end
 
+Then /^I should see the page with Webtrends tag$/ do
+  page.should have_selector("script[src*='/javascripts/webtrends_affiliates.js'][type='text/javascript']")
+end
+
+Then /^I should not see the page with Webtrends tag$/ do
+  page.should_not have_selector("script[src*='/javascripts/webtrends_affiliates.js'][type='text/javascript']")
+end
