@@ -893,6 +893,10 @@ describe Recall do
         it "should output a generic summary" do
           @recall.summary.should == "Click here to see food recall"
         end
+        
+        it "should return an nil url" do
+          @recall.recall_url.should be_nil
+        end
       end
     end
 

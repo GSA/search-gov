@@ -246,7 +246,7 @@ class Recall < ActiveRecord::Base
       when 'NHTSA' then
         "http://www-odi.nhtsa.dot.gov/recalls/recallresults.cfm?start=1&SearchType=QuickSearch&rcl_ID=#{self.recall_number}&summary=true&PrintVersion=YES"
       when 'CDC' then
-        food_recall.url
+        food_recall.url rescue nil
     end
   end
 
