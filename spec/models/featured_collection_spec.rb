@@ -112,18 +112,19 @@ describe FeaturedCollection do
     context "when there is an active English featured collection without date range" do
       before do
         @featured_collection = affiliate.featured_collections.build(:title => 'Tropical Hurricane Names',
-                                                                    :description => 'names include Arlene, Bret, Cindy, etc',
                                                                     :locale => 'en',
                                                                     :status => 'active',
                                                                     :layout => 'one column')
         @featured_collection.featured_collection_keywords.build(:value => 'typhoon')
-        @featured_collection.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names',
+        @featured_collection.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',
+                                                             :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
+                                                             :position => '0')
+        @featured_collection.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part2',
                                                              :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
                                                              :position => '0')
         @featured_collection.save!
 
         inactive_featured_collection = affiliate.featured_collections.build(:title => 'Retired Hurricane names',
-                                                                            :description => 'names include Gustav, Ike, Paloma, etc',
                                                                             :locale => 'en',
                                                                             :status => 'inactive',
                                                                             :layout => 'one column')
@@ -146,16 +147,23 @@ describe FeaturedCollection do
         FeaturedCollection.search_for('tropical', affiliate, :en).results.first.should == @featured_collection
       end
 
-      it "should return Featured Collection when searching for query term that exists in the description" do
-        FeaturedCollection.search_for('Arlene', affiliate, :en).results.first.should == @featured_collection
-      end
-
       it "should return Featured Collection when searching for query term that exists in featured collection keywords" do
         FeaturedCollection.search_for('typhoon', affiliate, :en).results.first.should == @featured_collection
       end
 
       it "should return Featured Collection when searching for query term that exists in the link title" do
         FeaturedCollection.search_for('cyclone', affiliate, :en).results.first.should == @featured_collection
+      end
+
+      it "should highlight matching Featured Collection title" do
+        highlighted_title = FeaturedCollection.search_for('tropical', affiliate, :en).hits.first.highlights(:title).first.format
+        highlighted_title.should == "<em>Tropical</em> Hurricane Names"
+      end
+
+      it "should highlight matching Featured Collection link titles" do
+        highlighted_link_titles = FeaturedCollection.search_for('tropical', affiliate, :en).hits.first.highlights(:link_titles).first.format.split(FeaturedCollection::LINK_TITLE_SEPARATOR)
+        highlighted_link_titles.should include("Worldwide <em>Tropical</em> Cyclone Names Part1")
+        highlighted_link_titles.should include("Worldwide <em>Tropical</em> Cyclone Names Part2")
       end
 
       it "should not return any result when searching for Spanish Featured Collection" do
@@ -256,7 +264,6 @@ describe FeaturedCollection do
     context "when there is an active Spanish featured collection" do
       before do
         @featured_collection = affiliate.featured_collections.build(:title => 'Nombres de huracanes tropicales',
-                                                                    :description => 'Arlene, Bret, Cindy, ...',
                                                                     :locale => 'es',
                                                                     :status => 'active',
                                                                     :layout => 'one column')
@@ -267,7 +274,6 @@ describe FeaturedCollection do
         @featured_collection.save!
 
         inactive_featured_collection = affiliate.featured_collections.build(:title => 'Retiró los nombres de huracán',
-                                                                            :description => 'Gustav, Ike, Paloma, ...',
                                                                             :locale => 'en',
                                                                             :status => 'inactive',
                                                                             :layout => 'one column')
@@ -293,10 +299,6 @@ describe FeaturedCollection do
 
       it "should return Featured Collection when searching for query term that exists in the title" do
         FeaturedCollection.search_for('tropicales', affiliate, :es).results.first.should == @featured_collection
-      end
-
-      it "should return Featured Collection when searching for query term that exists in the description" do
-        FeaturedCollection.search_for('Arlene', affiliate, :es).results.first.should == @featured_collection
       end
 
       it "should return Featured Collection when searching for query term that exists in featured collection keywords" do

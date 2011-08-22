@@ -51,7 +51,6 @@ Feature: Featured Collections
     And I fill in the following:
       | Title*                | 2010 Atlantic Hurricane Season                    |
       | Title URL             | http://www.nhc.noaa.gov/2010atlan.shtml           |
-      | Description           | Another awesome hurricane season                  |
       | Publish start date    | 07/01/2011                                        |
       | Publish end date      | 07/01/2012                                        |
       | Keyword 0             | weather                                           |
@@ -71,7 +70,6 @@ Feature: Featured Collections
     And I should see "Featured Collection: 2010 Atlantic Hurricane Season" in the page header
     And I should see "2010 Atlantic Hurricane Season"
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
-    And I should see "Another awesome hurricane season"
     And I should see "English"
     And I should see "Active"
     And I should see "07/01/2011"
@@ -129,8 +127,8 @@ Feature: Featured Collections
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And the following featured collections exist for the affiliate "site.gov":
-      | title                            | title_url                                | description                      | locale | status | layout     |
-      | Worldwide Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | listing of all tropical cyclones | en     | active | one column |
+      | title                            | title_url                                | locale | status | layout     |
+      | Worldwide Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active | one column |
     And the following featured collection keywords exist for featured collection titled "Worldwide Tropical Cyclone Names":
       | value        |
       | weather      |
@@ -148,7 +146,6 @@ Feature: Featured Collections
     And I should see "Edit Featured Collection" in the page header
     And the "Title*" field should contain "Worldwide Tropical Cyclone Names"
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/aboutnames.shtml"
-    And the "Description" field should contain "listing of all tropical cyclones"
     And the "Locale*" field should contain "en"
     And the "Status*" field should contain "active"
     And the "Layout*" field should contain "one column"
@@ -160,7 +157,6 @@ Feature: Featured Collections
     And I fill in the following:
       | Title        | Australian Tropical Cyclone                                                                                |
       | Title URL    | http://australiasevereweather.com/cyclones/                                                                |
-      | Description  | listing of all Australian tropical cyclones                                                                |
       | Keyword 0    | typhoon                                                                                                    |
       | Keyword 1    | cyclone                                                                                                    |
       | Keyword 2    |                                                                                                            |
@@ -174,7 +170,7 @@ Feature: Featured Collections
     And I should see the browser page titled "Featured Collection: Australian Tropical Cyclone"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection: Australian Tropical Cyclone
     And I should see "Featured Collection: Australian Tropical Cyclone" in the page header
-    And I should see "listing of all Australian tropical cyclones"
+    And I should see "Two column"
     And I should see "typhoon"
     And I should see "cyclone"
     And I should not see "thunderstorm"
@@ -282,13 +278,13 @@ Feature: Featured Collections
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collections
     And I should see "Featured Collections" in the page header
 
-  Scenario: Affiliate search user sees featured collection
+  Scenario: Affiliate search user sees featured collection with an image
     Given the following Affiliates exist:
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And the following featured collections exist for the affiliate "site.gov":
-      | title                            | title_url                                | description                      | locale | status | image_file_name | image_alt_text | image_attribution | image_attribution_url |
-      | Worldwide Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | listing of all tropical cyclones | en     | active | cyclone.jpg     | cyclone image  | NOAA              | http://www.noaa.gov   |
+      | title                            | title_url                                | locale | status | image_file_name | image_alt_text | image_attribution | image_attribution_url |
+      | Worldwide Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active | cyclone.jpg     | cyclone image  | NOAA              | http://www.noaa.gov   |
     And the following featured collection keywords exist for featured collection titled "Worldwide Tropical Cyclone Names":
       | value        |
       | weather      |
@@ -302,10 +298,24 @@ Feature: Featured Collections
     And I fill in "query" with "Worldwide"
     And I press "Search"
     Then I should see a link to "Worldwide Tropical Cyclone Names" with url for "http://www.nhc.noaa.gov/aboutnames.shtml" in the featured collections section
+    And I should see a featured collection image section
     And I should see an image with alt text "cyclone image" in the featured collections section
     And I should see a link to "NOAA" with url for "http://www.noaa.gov" in the featured collections section
     And I should see a link to "Atlantic" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#atl" in the featured collections section
     And I should see a link to "Eastern North Pacific" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#enp" in the featured collections section
+
+  Scenario: Affiliate search user sees featured collection without an image
+    Given the following Affiliates exist:
+      | display_name | name     | contact_email              | contact_name |
+      | site         | site.gov | affiliate_manager@site.gov | John Bar     |
+    And the following featured collections exist for the affiliate "site.gov":
+      | title                            | title_url                                | locale | status | image_file_name | image_content_type | image_file_size | image_updated_at |
+      | Worldwide Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active |                 |                    |                 |                  |
+    When I go to site.gov's search page
+    And I fill in "query" with "Worldwide"
+    And I press "Search"
+    Then I should see a link to "Worldwide Tropical Cyclone Names" with url for "http://www.nhc.noaa.gov/aboutnames.shtml" in the featured collections section
+    And I should not see a featured collection image section
 
   Scenario: Affiliate search user should see featured collection within publish date range
     Given the following Affiliates exist:
@@ -356,48 +366,29 @@ Feature: Featured Collections
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And the following featured collections exist for the affiliate "site.gov":
-      | title                     | description      | locale | status |
-      | high 1 weight             |                  | en     | active |
-      | high 2 weight             |                  | en     | active |
-      | medium 1                  | medium weight  1 | en     | active |
+      | title                   | locale | status |
+      | high 1 weight           | en     | active |
+      | high 2 weight           | en     | active |
+      | lower 1 with link title | en     | active |
+    And the following featured collection links exist for featured collection titled "lower 1 with link title":
+      | title          | url                     |
+      | lower 1 weight | http://www.agency.org/1 |
     When I go to site.gov's search page
     And I fill in "query" with "weight"
     And I press "Search"
     Then I should see "high 1 weight" in the featured collections section
     And I should see "high 2 weight" in the featured collections section
-    And I should not see "medium 1" in the featured collections section
-
-  Scenario: Affiliate search user should see featured collections with medium weight
-    Given the following Affiliates exist:
-      | display_name | name     | contact_email              | contact_name |
-      | site         | site.gov | affiliate_manager@site.gov | John Bar     |
-    And the following featured collections exist for the affiliate "site.gov":
-      | title    | description     | locale | status |
-      | high 1   |                 | en     | active |
-      | medium 2 | medium 2 weight | en     | active |
-      | medium 3 | medium 3 weight | en     | active |
-      | lower 4  |                 | en     | active |
-    And the following featured collection links exist for featured collection titled "lower 4":
-      | title          | url                     |
-      | lower 4 weight | http://www.agency.org/4 |
-    When I go to site.gov's search page
-    And I fill in "query" with "weight"
-    And I press "Search"
-    Then I should see "medium 2" in the featured collections section
-    And I should see "medium 3" in the featured collections section
-    And I should not see "high 1" in the featured collections section
-    And I should not see "lower 4" in the featured collections section
+    And I should not see "lower 1" in the featured collections section
 
   Scenario: Affiliate search user should see featured collections with lower weight
     Given the following Affiliates exist:
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And the following featured collections exist for the affiliate "site.gov":
-      | title                     | description | locale | status |
-      | lowest 1 with keywords    | lowest 1    | en     | active |
-      | lower 1 with link title   | lower 1     | en     | active |
-      | lower 2 with link title   | lower 2     | en     | active |
-      | medium 1 with description | medium 1    | en     | active |
+      | title                   | locale | status |
+      | lowest 1 with keywords  | en     | active |
+      | lower 1 with link title | en     | active |
+      | lower 2 with link title | en     | active |
     And the following featured collection keywords exist for featured collection titled "lowest 1 with keywords":
       | value           |
       | lowest weight 1 |
@@ -413,7 +404,6 @@ Feature: Featured Collections
     And I press "Search"
     Then I should see "lower 1" in the featured collections section
     And I should see "lower 2" in the featured collections section
-    And I should not see "medium 1" in the featured collections section
     And I should not see "lowest 1" in the featured collections section
 
   Scenario: Affiliate search user should see featured collections with lowest weight
@@ -421,11 +411,10 @@ Feature: Featured Collections
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And the following featured collections exist for the affiliate "site.gov":
-      | title                     | description | locale | status |
-      | medium 1 with description | medium 1    | en     | active |
-      | lower 1 with link title   | lower 1     | en     | active |
-      | lowest 1 with keywords    | lowest 1    | en     | active |
-      | lowest 2 with keywords    | lowest 2    | en     | active |
+      | title                   | locale | status |
+      | lower 1 with link title | en     | active |
+      | lowest 1 with keywords  | en     | active |
+      | lowest 2 with keywords  | en     | active |
     And the following featured collection keywords exist for featured collection titled "lowest 1 with keywords":
       | value           |
       | lowest weight 1 |
@@ -441,17 +430,41 @@ Feature: Featured Collections
     And I press "Search"
     Then I should see "lowest 1" in the featured collections section
     And I should see "lowest 2" in the featured collections section
-    And I should not see "medium 1" in the featured collections section
     And I should not see "lower 1" in the featured collections section
+
+  Scenario: Affiliate search user should see featured collections with highlighted title and link titles
+    Given the following Affiliates exist:
+      | display_name | name     | contact_email              | contact_name |
+      | site         | site.gov | affiliate_manager@site.gov | John Bar     |
+    And the following featured collections exist for the affiliate "site.gov":
+      | title            | title_url                                       | locale | status |
+      | Nature & Science | http://www.nps.gov/maca/naturescience/index.htm | en     | active |
+    And the following featured collection links exist for featured collection titled "Nature & Science":
+      | title                         | url                                                                    |
+      | Animals                       | http://www.nps.gov/maca/naturescience/animals.htm                      |
+      | Environmental Factors         | http://www.nps.gov/maca/naturescience/environmentalfactors.htm         |
+      | Plants                        | http://www.nps.gov/maca/naturescience/plants.htm                       |
+      | Natural Features & Ecosystems | http://www.nps.gov/maca/naturescience/naturalfeaturesandecosystems.htm |
+    And all featured collections are indexed
+    When I go to site.gov's search page
+    And I fill in "query" with "Nature"
+    And I press "Search"
+    Then I should see a featured collection title with "Nature" highlighted
+    And I should see a featured collection link title with "Natural" highlighted
+
+    When I fill in "query" with "Animal and Plant"
+    And I press "Search"
+    Then I should see a featured collection link title with "Animals" highlighted
+    And I should see a featured collection link title with "Plants" highlighted
 
   Scenario: Affiliate Spanish search user sees featured collection
     Given the following Affiliates exist:
       | display_name | name     | contact_email              | contact_name |
       | Spanish site | site.gov | affiliate_manager@site.gov | John Bar     |
     And the following featured collections exist for the affiliate "site.gov":
-      | title                                           | title_url                                | description                      | locale | status | image_file_name | image_alt_text | image_attribution | image_attribution_url |
-      | Nombres de ciclones tropicales en todo el mundo | http://www.nhc.noaa.gov/aboutnames.shtml | listing of all tropical cyclones | es     | active | cyclones.jpg    | ciclones       | NOAA              | http://www.noaa.gov   |
-      | Cyclones (ciclones in Spanish)                  | http://www.nhc.noaa.gov/aboutnames.shtml | listing of all tropical cyclones | en     | active | cyclones.jpg    | cyclones       | NOAA              | http://www.noaa.gov   |
+      | title                                           | title_url                                | locale | status | image_file_name | image_alt_text | image_attribution | image_attribution_url |
+      | Nombres de ciclones tropicales en todo el mundo | http://www.nhc.noaa.gov/aboutnames.shtml | es     | active | cyclones.jpg    | ciclones       | NOAA              | http://www.noaa.gov   |
+      | Cyclones (ciclones in Spanish)                  | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active | cyclones.jpg    | cyclones       | NOAA              | http://www.noaa.gov   |
     When I go to site.gov's Spanish search page
     And I fill in "query" with "ciclones"
     And I press "Buscar"

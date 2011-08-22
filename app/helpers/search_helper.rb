@@ -544,7 +544,12 @@ module SearchHelper
     css_class << featured_collection.layout.parameterize
     css_class << (featured_collection.image.present? ? '-with-image' : '-without-image')
     css_classes << css_class
-    css_classes.join("\n")
+    css_classes.join(" ")
+  end
+
+  def render_featured_collection_link_title(link, index, highlighted_link_titles)
+    return link.title if highlighted_link_titles.blank? or highlighted_link_titles[index].blank?
+    highlighted_link_titles[index].html_safe
   end
 
   private

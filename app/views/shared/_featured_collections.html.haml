@@ -7,12 +7,14 @@
         %span.recommended-by
           = t(:by)
           = @affiliate.display_name
-      -if result.image.present?
+      - if result.image.present?
         .image
           = image_tag(result.image.url(result.has_one_column_layout? ? :medium : :small), :alt => result.image_alt_text)
           - if result.image_attribution.present?
             %span #{t :image}:
             = link_to_unless result.image_attribution_url.blank?, content_tag(:span, result.image_attribution, :class => 'attribution'), result.image_attribution_url
-      %ul
-        - result.featured_collection_links.each do |link|
-          %li{ :class => "#{cycle('left', 'right')}" }= link_to link.title, link.url
+      - unless result.featured_collection_links.blank?
+        %ul
+          - highlighted_link_titles = highlight_hit(hit, :link_titles).split(FeaturedCollection::LINK_TITLE_SEPARATOR) if hit.highlights(:link_titles).present?
+          - result.featured_collection_links.each_with_index do |link, index|
+            %li{ :class => "#{cycle('left', 'right')}" }= link_to render_featured_collection_link_title(link, index, highlighted_link_titles), link.url

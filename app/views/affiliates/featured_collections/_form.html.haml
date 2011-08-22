@@ -8,9 +8,6 @@
       = form.label :title_url, "Title URL"
       = form.text_field :title_url, { :class => 'text', :maxlength => 255, :size => nil }
     %li
-      = form.label :description
-      = form.text_area :description, { :maxlength => 255, :size => nil }
-    %li
       = form.label :locale, "Locale*", { :class => 'select' }
       = form.select :locale, SUPPORTED_LOCALES.collect { |l| [SUPPORTED_LOCALE_WITH_NAMES[l], l] }, { :include_blank => 'Select a locale' }
     %li

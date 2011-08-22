@@ -5,6 +5,7 @@ class FeaturedCollection < ActiveRecord::Base
   STATUS_OPTIONS = STATUSES.collect { |status| [status.humanize, status] }
   LAYOUTS = ['one column', 'two column']
   LAYOUT_OPTIONS = LAYOUTS.collect { |layout| [layout.humanize, layout]}
+  LINK_TITLE_SEPARATOR = " !!!sep!!! "
 
   cattr_reader :per_page
   @@per_page = 20
@@ -56,9 +57,8 @@ class FeaturedCollection < ActiveRecord::Base
     date :publish_start_on
     date :publish_end_on
     text :title, :boost => 10.0
-    text :description, :boost => 4.0
-    text :link_titles, :boost => 1.5 do
-      featured_collection_links.map { |link| link.title }
+    text :link_titles, :boost => 4.0 do
+      featured_collection_links.map { |link| link.title }.join(LINK_TITLE_SEPARATOR)
     end
     text :keyword_values do
       featured_collection_keywords.map { |keyword| keyword.value }
@@ -82,7 +82,7 @@ class FeaturedCollection < ActiveRecord::Base
             with :publish_end_on, nil
           end
           keywords query do
-            highlight :title
+            highlight :title, :link_titles, :fragment_size => 0
           end
           paginate :page => 1, :per_page => 2
         end
