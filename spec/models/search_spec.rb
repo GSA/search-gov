@@ -337,7 +337,25 @@ describe Search do
         end
       end
     end
-
+    
+    context "when there are excluded domains" do
+      before do
+        ExcludedDomain.create(:domain => 'excludeme.com')
+        ExcludedDomain.create(:domain => 'excludemetoo.com')
+      end
+      
+      it "should add the excluded domains to the query as negative sites" do
+        uriresult = URI::parse("http://localhost:3000/")
+        search = Search.new(@valid_options)
+        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)%20-site%3Aexcludeme.com%20-site%3Aexcludemetoo.com$/).and_return uriresult
+        search.run
+      end
+      
+      after do
+        ExcludedDomain.destroy_all
+      end
+    end
+    
     context "when affiliate is not nil" do
       it "should not search for FAQs" do
         search = Search.new(@valid_options)

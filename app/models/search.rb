@@ -271,16 +271,24 @@ class Search
     if using_affiliate_scope?
       generate_affiliate_scope
     elsif self.fedstates && !self.fedstates.empty? && self.fedstates != 'all'
-      "(scopeid:usagov#{self.fedstates})"
+      "(scopeid:usagov#{self.fedstates}) #{generate_excluded_scope}"
     else
-      DEFAULT_SCOPE
+      generate_default_scope
     end
   end
 
   def generate_affiliate_scope
     valid_scope_id? ? "(scopeid:#{self.scope_id}) #{DEFAULT_SCOPE}" : fill_domains_to_remainder
   end
-
+  
+  def generate_default_scope
+    generate_excluded_scope.size > 0 ? "#{DEFAULT_SCOPE} #{generate_excluded_scope}" : DEFAULT_SCOPE
+  end
+  
+  def generate_excluded_scope
+    @exlcuded_domains ||= ExcludedDomain.all.collect{|excluded_domain| "-site:#{excluded_domain.domain}"}.join(" ")
+  end
+  
   def query_plus_locale
     "(#{query}) #{locale}".strip.squeeze(' ')
   end

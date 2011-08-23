@@ -222,6 +222,12 @@ ActiveRecord::Schema.define(:version => 20110822160220) do
   add_index "daily_usage_stats", ["affiliate", "profile", "day"], :name => "apd", :unique => true
   add_index "daily_usage_stats", ["day", "profile", "affiliate"], :name => "index_daily_usage_stats_on_day_and_profile_and_affiliate", :unique => true
 
+  create_table "excluded_domains", :force => true do |t|
+    t.string   "domain"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "faqs", :force => true do |t|
     t.string   "url"
     t.text     "question"
