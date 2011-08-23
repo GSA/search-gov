@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/controllers/admin/search_modules_controller.rb</title>
+    <title>app/models/excluded_domain.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Usasearch C0 Coverage Information - RCov</h1>
-    <h2>app/controllers/admin/search_modules_controller.rb</h2>
+    <h2>app/models/excluded_domain.rb</h2>
 
     
 
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-controllers-admin-search_modules_controller_rb.html">app/controllers/admin/search_modules_controller.rb</a></td>
+            <td class="left_align"><a href="app-models-excluded_domain_rb.html">app/models/excluded_domain.rb</a></td>
             <td class='right_align'><tt>3</tt></td>
             <td class='right_align'><tt>3</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
@@ -57,13 +57,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Admin::SearchModulesController &lt; Admin::AdminController</pre></td>
+            <td><pre><a name="line1">1</a> class ExcludedDomain &lt; ActiveRecord::Base</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   active_scaffold :search_modules</pre></td>
+            <td><pre><a name="line2">2</a>   validates_presence_of :domain</pre></td>
           </tr>
         
           
@@ -75,7 +75,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Tue Aug 23 02:42:26 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 23 02:42:27 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

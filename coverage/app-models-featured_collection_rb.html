@@ -98,326 +98,326 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line8">8</a> </pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line9">9</a>   cattr_reader :per_page</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line10">10</a>   @@per_page = 20</pre></td>
+            <td><pre><a name="line8">8</a>   LINK_TITLE_SEPARATOR = &quot; !!!sep!!! &quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a> </pre></td>
+            <td><pre><a name="line9">9</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>   validates_presence_of :title</pre></td>
+            <td><pre><a name="line10">10</a>   cattr_reader :per_page</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>   validates_inclusion_of :locale, :in =&gt; SUPPORTED_LOCALES, :message =&gt; 'must be selected'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line14">14</a>   validates_inclusion_of :status, :in =&gt; STATUSES, :message =&gt; 'must be selected'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line15">15</a>   validates_inclusion_of :layout, :in =&gt; LAYOUTS, :message =&gt; 'must be selected'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line16">16</a>   validate :minimum_keywords</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line17">17</a>   validate :publish_start_and_end_dates</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line18">18</a>   validates_attachment_size :image, :in =&gt; (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message =&gt; &quot;must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB&quot;</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line19">19</a>   validates_attachment_content_type :image, :content_type =&gt; %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message =&gt; &quot;must be GIF, JPG, or PNG&quot;</pre></td>
+            <td><pre><a name="line11">11</a>   @@per_page = 20</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a> </pre></td>
+            <td><pre><a name="line12">12</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>   belongs_to :affiliate</pre></td>
+            <td><pre><a name="line13">13</a>   validates_presence_of :title</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>   has_many :featured_collection_keywords, :dependent =&gt; :destroy</pre></td>
+            <td><pre><a name="line14">14</a>   validates_inclusion_of :locale, :in =&gt; SUPPORTED_LOCALES, :message =&gt; 'must be selected'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>   has_many :featured_collection_links, :dependent =&gt; :destroy</pre></td>
+            <td><pre><a name="line15">15</a>   validates_inclusion_of :status, :in =&gt; STATUSES, :message =&gt; 'must be selected'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>   has_attached_file :image,</pre></td>
+            <td><pre><a name="line16">16</a>   validates_inclusion_of :layout, :in =&gt; LAYOUTS, :message =&gt; 'must be selected'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>   validate :minimum_keywords</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>   validate :publish_start_and_end_dates</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>   validates_attachment_size :image, :in =&gt; (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message =&gt; &quot;must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB&quot;</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>   validates_attachment_content_type :image, :content_type =&gt; %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message =&gt; &quot;must be GIF, JPG, or PNG&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>                     :styles =&gt; { :medium =&gt; &quot;200x200&quot;, :small =&gt; &quot;150x150&quot; },</pre></td>
+            <td><pre><a name="line21">21</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>   belongs_to :affiliate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>   has_many :featured_collection_keywords, :dependent =&gt; :destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>   has_many :featured_collection_links, :dependent =&gt; :destroy</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>   has_attached_file :image,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>                     :storage =&gt; :cloud_files,</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line27">27</a>                     :cloudfiles_credentials =&gt; &quot;#{Rails.root}/config/rackspace_cloudfiles.yml&quot;,</pre></td>
+            <td><pre><a name="line26">26</a>                     :styles =&gt; { :medium =&gt; &quot;200x200&quot;, :small =&gt; &quot;150x150&quot; },</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>                     :container =&gt; CLOUD_FILES_CONTAINER,</pre></td>
+            <td><pre><a name="line27">27</a>                     :storage =&gt; :cloud_files,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>                     :path =&gt; &quot;#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension&quot;,</pre></td>
+            <td><pre><a name="line28">28</a>                     :cloudfiles_credentials =&gt; &quot;#{Rails.root}/config/rackspace_cloudfiles.yml&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>                     :ssl =&gt; true</pre></td>
+            <td><pre><a name="line29">29</a>                     :container =&gt; CLOUD_FILES_CONTAINER,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line30">30</a>                     :path =&gt; &quot;#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension&quot;,</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line32">32</a>   before_post_process :check_image_validation</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line33">33</a>   before_update :clear_existing_image</pre></td>
+            <td><pre><a name="line31">31</a>                     :ssl =&gt; true</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a> </pre></td>
+            <td><pre><a name="line32">32</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line35">35</a>   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['value'].blank? }</pre></td>
+            <td><pre><a name="line33">33</a>   before_post_process :check_image_validation</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line36">36</a>   accepts_nested_attributes_for :featured_collection_links, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['title'].blank? and a['url'].blank? }</pre></td>
+            <td><pre><a name="line34">34</a>   before_update :clear_existing_image</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line37">37</a> </pre></td>
+            <td><pre><a name="line35">35</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>   attr_accessor :mark_image_for_deletion</pre></td>
+            <td><pre><a name="line36">36</a>   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['value'].blank? }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line37">37</a>   accepts_nested_attributes_for :featured_collection_links, :allow_destroy =&gt; true, :reject_if =&gt; proc { |a| a['title'].blank? and a['url'].blank? }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line39">39</a> </pre></td>
+            <td><pre><a name="line38">38</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>   STATUSES.each do |status|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line41">41</a>     define_method &quot;is_#{status}?&quot; do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line42">42</a>       self.status == status</pre></td>
+            <td><pre><a name="line39">39</a>   attr_accessor :mark_image_for_deletion</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line43">43</a>     end</pre></td>
+            <td><pre><a name="line40">40</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line41">41</a>   STATUSES.each do |status|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line42">42</a>     define_method &quot;is_#{status}?&quot; do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line43">43</a>       self.status == status</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line44">44</a>   end</pre></td>
+            <td><pre><a name="line44">44</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line45">45</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>   LAYOUTS.each do |layout|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>     define_method &quot;has_#{layout.parameterize('_')}_layout?&quot; do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>       self.layout == layout</pre></td>
+            <td><pre><a name="line45">45</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line49">49</a>     end</pre></td>
+            <td><pre><a name="line46">46</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line47">47</a>   LAYOUTS.each do |layout|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line48">48</a>     define_method &quot;has_#{layout.parameterize('_')}_layout?&quot; do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line49">49</a>       self.layout == layout</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line50">50</a>   end</pre></td>
+            <td><pre><a name="line50">50</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line51">51</a> </pre></td>
+            <td><pre><a name="line51">51</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line52">52</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line52">52</a>   searchable do</pre></td>
+            <td><pre><a name="line53">53</a>   searchable do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line53">53</a>     integer :affiliate_id</pre></td>
+            <td><pre><a name="line54">54</a>     integer :affiliate_id</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line54">54</a>     string :locale</pre></td>
+            <td><pre><a name="line55">55</a>     string :locale</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>     string :status</pre></td>
+            <td><pre><a name="line56">56</a>     string :status</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line56">56</a>     date :publish_start_on</pre></td>
+            <td><pre><a name="line57">57</a>     date :publish_start_on</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line57">57</a>     date :publish_end_on</pre></td>
+            <td><pre><a name="line58">58</a>     date :publish_end_on</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line58">58</a>     text :title, :boost =&gt; 10.0</pre></td>
+            <td><pre><a name="line59">59</a>     text :title, :boost =&gt; 10.0</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>     text :description, :boost =&gt; 4.0</pre></td>
+            <td><pre><a name="line60">60</a>     text :link_titles, :boost =&gt; 4.0 do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line60">60</a>     text :link_titles, :boost =&gt; 1.5 do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line61">61</a>       featured_collection_links.map { |link| link.title }</pre></td>
+            <td><pre><a name="line61">61</a>       featured_collection_links.map { |link| link.title }.join(LINK_TITLE_SEPARATOR)</pre></td>
           </tr>
         
           
@@ -561,7 +561,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line85">85</a>             highlight :title</pre></td>
+            <td><pre><a name="line85">85</a>             highlight :title, :link_titles, :fragment_size =&gt; 0</pre></td>
           </tr>
         
           
@@ -879,7 +879,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Fri Aug 19 20:12:41 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Aug 23 02:42:27 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
