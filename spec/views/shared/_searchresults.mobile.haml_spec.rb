@@ -51,7 +51,6 @@ describe "shared/_searchresults.mobile.haml" do
   end
 
   context "when page is displayed" do
-
     before do
       view.stub!(:search).and_return @search
     end
@@ -61,7 +60,6 @@ describe "shared/_searchresults.mobile.haml" do
       rendered.should contain("some title")
       rendered.should contain("[PDF] some pdf title")
     end
-
   end
 
 end

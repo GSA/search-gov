@@ -58,6 +58,42 @@ Feature: Mobile Search
   Scenario: An advanced search on the mobile home page
     When I am on the advanced search page
     Then I should see "Use the options on this page to create a very specific search"
+    
+  Scenario: Boosted contents on the mobile site
+    Given the following Boosted Content entries exist:
+      | title               | url                     | description                               | 
+      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      | 
+      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         | 
+      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
+    And the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
+    And the following Boosted Content entries exist for the affiliate "bar.gov"
+      | title               | url                     | description                               |
+      | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
+      | Pelosi misspelling  | http://www.bar.gov/pel  | Synonyms file test works                  |
+      | all about agencies  | http://www.bar.gov/pe2  | Stemming works                            |
+    And I am on the homepage
+    And I fill in "query" with "emergency"
+    And I press "Search"
+    Then I should be on the search page
+    And I should see "Our Emergency Page" 
+    And I should see "FAQ Emergency Page" 
+    And I should not see "Our Tourism Page" 
+    And I should not see "Bar Emergency Page"
+    
+  Scenario: Boosted contents on the Spanish mobile site
+    Given the following Boosted Content entries exist:
+      | title               | url                     | description                               | locale  | 
+      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      | es      |
+      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         | es      |
+      | Tour Emergency Page | http://www.aff.gov/tou  | Emergency tourism information             | en      |
+    And I am on the Spanish homepage
+    And I fill in "query" with "emergency"
+    And I press "Search"
+    And I should see "Our Emergency Page"
+    And I should see "FAQ Emergency Page"
+    And I should not see "Tour Emergency Page"
 
   Scenario: A search with results containing recalls on multiple days
     Given the following Product Recalls exist:
