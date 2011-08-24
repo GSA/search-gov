@@ -5,13 +5,13 @@
       %h2
         = link_to_unless result.title_url.blank?, highlight_hit(hit, :title).html_safe, result.title_url
         %span.recommended-by
-          = t(:by)
+          = t :by_site
           = @affiliate.display_name
       - if result.image.present?
         .image
           = image_tag(result.image.url(result.has_one_column_layout? ? :medium : :small), :alt => result.image_alt_text)
           - if result.image_attribution.present?
-            %span #{t :image}:
+            %span #{t :image}
             = link_to_unless result.image_attribution_url.blank?, content_tag(:span, result.image_attribution, :class => 'attribution'), result.image_attribution_url
       - unless result.featured_collection_links.blank?
         %ul

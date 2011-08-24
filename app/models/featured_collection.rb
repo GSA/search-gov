@@ -23,7 +23,7 @@ class FeaturedCollection < ActiveRecord::Base
   has_many :featured_collection_keywords, :dependent => :destroy
   has_many :featured_collection_links, :dependent => :destroy
   has_attached_file :image,
-                    :styles => { :medium => "200x200", :small => "150x150" },
+                    :styles => { :medium => "125x125", :small => "100x100" },
                     :storage => :cloud_files,
                     :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
                     :container => CLOUD_FILES_CONTAINER,

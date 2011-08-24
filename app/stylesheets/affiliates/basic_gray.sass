@@ -252,13 +252,15 @@ h1, h2, h3
   @include clearfix
   background: #f1f1f1
   h2
-    color: #999
+    color: #C51432
     font-size: 18px
     font-weight: normal
     margin: 0 0 10px
     span.recommended-by
+      color: #999
       font:
         size: 14px
+        style: italic
         weight: normal
   .image
     float: left
@@ -266,14 +268,19 @@ h1, h2, h3
       display: block
       margin-bottom: 5px
     span
-      font-weight: bold
+      color: #999
+      font-weight: normal
       width: auto
       word-wrap: break-word
       &.attribution
+        color: #C51432
         font-weight: normal
     a
+      color: #555
       display: inline
       word-wrap: break-word
+      span.attribution
+        color: #555
   ul
     color: #AAA
     float: left
@@ -281,10 +288,10 @@ h1, h2, h3
     padding: 0
   &.one-column-with-image
     .image
-      width: 200px
+      width: 125px
     ul
       margin: 0 0 0 10px
-      width: 465px
+      width: 540px
     li
       margin: 0 0 0 15px
   &.one-column-without-image
@@ -294,14 +301,14 @@ h1, h2, h3
       margin: 0 0 0 15px
   &.two-column-with-image
     .image
-      width: 150px
+      width: 100px
     ul
       margin: 0 0 0 10px
-      width: 515px
+      width: 565px
     li
       float: left
       margin: 0 0 0 15px
-      width: 240px
+      width: 265px
       &.left
         clear: left
   &.two-column-without-image
