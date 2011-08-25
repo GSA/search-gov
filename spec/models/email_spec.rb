@@ -43,9 +43,9 @@ describe Emailer do
     end
   end
 
-  describe "#report" do
+  describe "#monthly_report" do
     before do
-      @email = Emailer.report(File.join(Rails.root, "README.markdown")).deliver
+      @email = Emailer.monthly_report(File.join(Rails.root, "README.markdown")).deliver
     end
 
     it "should be sent to the monthly report recipients" do

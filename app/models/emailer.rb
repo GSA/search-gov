@@ -78,7 +78,9 @@ class Emailer < ActionMailer::Base
     @search_terms = terms
   end
 
-  def report(zip_filename)
+  # For some odd reason, if this method name is changed to anything other than 'monthly_report' the attachment comes out garbled.
+  # We don't know why this is, but beware.
+  def monthly_report(zip_filename)
     comma_list = ReportRecipient.all.collect(&:email).join(', ')
     setup_email(comma_list)
     @subject += "Report data attached: #{File.basename(zip_filename)}"
