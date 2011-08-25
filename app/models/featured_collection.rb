@@ -70,7 +70,11 @@ class FeaturedCollection < ActiveRecord::Base
     ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate_name, :locale => locale}) do
       begin
         search do
-          with :affiliate_id, affiliate.id
+          if affiliate.nil?
+            with :affiliate_id, nil
+          else
+            with :affiliate_id, affiliate.id
+          end
           with :locale, locale
           with :status, "active"
           any_of do

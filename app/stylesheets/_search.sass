@@ -269,3 +269,68 @@ a.serp-link
     :margin 0 auto
 .es .page-not-found .what-to-do-wrapper
   :width 635px
+
+#results .featured-collections
+  .featured-collection.searchresult
+    @extend .govbox
+    padding: 15px
+    margin-bottom:  0.75em
+    h2
+      color: #C51432
+      margin: 0 0 10px
+    span.by-usa-gov, span.recommended-by
+      :color gray
+      :font
+        :size 0.75em
+        :style italic
+        :weight normal
+    .image
+      float: left
+      img
+        display: block
+        margin-bottom: 5px
+    ul
+      float: left
+      list-style-type: none
+      margin: 0
+      padding: 0
+    li
+      background: url('/images/govbox/star.gif') left 5px no-repeat
+      line-height: 1.6
+      list-style-type: none
+      padding-left: 15px
+    &.one-column-with-image
+      .image
+        width: 125px
+      ul
+        margin: 0 0 0 10px
+        width: 480px
+    &.one-column-without-image
+      ul
+        margin: 0
+        padding: 0
+    &.two-column-with-image
+      .image
+        width: 100px
+      ul
+        margin: 0 0 0 10px
+        width: 505px
+      li
+        float: left
+        width: 233px
+      li.left
+        clear: left
+      li.right
+        margin-left: 7px
+    &.two-column-without-image
+      ul
+        margin: 0
+        padding: 0
+      li
+        float: left
+        width: 290px
+      li.left
+        clear: left
+      li.right
+        margin-left: 7px
+

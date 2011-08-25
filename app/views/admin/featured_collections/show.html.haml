@@ -1,0 +1,16 @@
+.show-featured-collection
+  %h1 Featured Collection: #{@featured_collection.title}
+  %table
+    %colgroup
+      %col{ :class => 'name' }
+      %col{ :class => 'value' }
+    %thead
+      %tr
+        %th{ :colspan => 2 }
+          .actions
+            = link_to("Edit", edit_admin_featured_collection_path(@featured_collection), { :class => 'edit-link' })
+            = button_to("Delete", [:admin, @featured_collection], :method => :delete, :confirm => "Are you sure you want to delete this Featured Collection?")
+    = render :partial => 'shared/featured_collections/show'
+  .add-link-wrapper
+    = link_to "Add another Featured Collection", new_admin_featured_collection_path, :class => 'add-link'
+

@@ -6,7 +6,7 @@
         = link_to_unless result.title_url.blank?, highlight_hit(hit, :title).html_safe, result.title_url
         %span.recommended-by
           = t :by_site
-          = @affiliate.display_name
+          = @affiliate ? @affiliate.display_name : t(:usa_gov)
       - if result.image.present?
         .image
           = image_tag(result.image.url(result.has_one_column_layout? ? :medium : :small), :alt => result.image_alt_text)

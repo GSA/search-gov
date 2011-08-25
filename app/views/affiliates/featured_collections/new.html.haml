@@ -2,7 +2,7 @@
 %h1 Add a new Featured Collection
 .add-featured-collection
   = form_for([@affiliate, @featured_collection], :html => { :multipart => true }) do |f|
-    = render :partial => f
+    = render :partial => 'shared/featured_collections/form', :locals => { :form => f }
     = f.submit "Add"
     = link_to 'Cancel', affiliate_featured_collections_path(@affiliate), :class => 'cancel'
 

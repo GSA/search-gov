@@ -2,6 +2,6 @@
 %h1 Edit Featured Collection
 .edit-featured-collection
   = form_for([@affiliate, @featured_collection], :html => { :multipart => true }) do |f|
-    = render :partial => f
+    = render :partial => 'shared/featured_collections/form', :locals => { :form => f }
     = f.submit "Update"
     = link_to 'Cancel', [@affiliate, @featured_collection], :class => 'cancel'

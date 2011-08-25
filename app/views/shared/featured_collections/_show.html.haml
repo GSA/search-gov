@@ -1,0 +1,45 @@
+%tbody
+  %tr
+    %td.name Title
+    %td= @featured_collection.title
+  %tr
+    %td.name Title URL
+    %td= @featured_collection.title_url
+  %tr
+    %td.name Locale
+    %td= SUPPORTED_LOCALE_WITH_NAMES[@featured_collection.locale]
+  %tr
+    %td.name Status
+    %td= @featured_collection.display_status
+  %tr
+    %td.name Layout
+    %td= @featured_collection.layout.humanize
+  %tr
+    %td.name Publish start date
+    %td= render_date @featured_collection.publish_start_on
+  %tr
+    %td.name Publish end date
+    %td= render_date @featured_collection.publish_end_on
+  %tr
+    %td.name Keywords
+    %td.keywords
+      - @featured_collection.featured_collection_keywords.each do |keyword|
+        %span= keyword.value
+  %tr
+    %td.name Image
+    %td.image
+      = image_tag(@featured_collection.image.url(:medium), :alt => @featured_collection.image_alt_text) if @featured_collection.image?
+  %tr
+    %td.name Image alt text
+    %td.image_alt_text= @featured_collection.image_alt_text
+  %tr
+    %td.name Image attribution
+    %td.image_attribution= @featured_collection.image_attribution
+  %tr
+    %td.name Image attribution url
+    %td.image_attribution= @featured_collection.image_attribution_url
+  %tr
+    %td.name Links
+    %td.links
+      - @featured_collection.featured_collection_links.each do |link|
+        = link_to link.title, link.url

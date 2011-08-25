@@ -1178,14 +1178,15 @@ describe Search do
     context "featured collection" do
       context "searching for non affiliate results" do
         let(:search) { Search.new(:query => 'cyclone') }
+        let(:featured_collections) { mock('featured collections') }
 
         before do
-          FeaturedCollection.should_not_receive(:search_for)
+          FeaturedCollection.should_receive(:search_for).and_return(featured_collections)
         end
 
-        it "should not assign featured collection" do
+        it "should assign featured collection" do
           search.run
-          search.featured_collections.should be_nil
+          search.featured_collections.should_not be_nil
         end
       end
 

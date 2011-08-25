@@ -1,0 +1,35 @@
+.featured-collections
+  %h1 #{@page_title}
+  .featured-collection-list
+    %table
+      %colgroup
+        %col{ :class => 'title' }
+        %col{ :class => 'publish-date' }
+        %col{ :class => 'publish-date' }
+        %col{ :class => 'status' }
+        %col{ :class => 'actions' }
+      %thead
+        %tr
+          %th{ :colspan => 5 }
+            = link_to "Add new featured collection", new_admin_featured_collection_path, :class => 'add-link'
+      %tbody
+        %tr.column-header
+          %th Title
+          %th Publish Start
+          %th Publish End
+          %th Status
+          %th Actions
+        - unless @featured_collections.blank?
+          - @featured_collections.each do |featured_collection|
+            %tr.row-item
+              %td= link_to featured_collection.title.truncate(63, :separator => " "), [:admin, featured_collection]
+              %td.publish-date= render_date featured_collection.publish_start_on
+              %td.publish-date= render_date featured_collection.publish_end_on
+              %td.status= featured_collection.display_status
+              %td.actions
+                = link_to("Edit", edit_admin_featured_collection_path(featured_collection))
+                = button_to("Delete", [:admin, featured_collection], :method => :delete, :confirm => "Are you sure you want to delete this Featured Collection?")
+        - else
+          %tr
+            %td.empty{ :colspan => 5 } Search.USA.gov has no Featured Collection
+    = will_paginate @featured_collections
