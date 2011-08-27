@@ -496,9 +496,7 @@ module SearchHelper
       query_params = {
           :query => top_search.query,
           :linked => 1,
-          :position => top_search.position,
-          :locale => nil,
-          :m => nil
+          :position => top_search.position
       }
       path_or_url = search_path(query_params)
     else

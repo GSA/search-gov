@@ -24,6 +24,17 @@ Feature: Mobile Search
     When I follow "Classic"
     Then I should be on the homepage
 
+  Scenario: Clicking on trending searches
+    Given the following Top Searches exist:
+      | position | query               |
+      | 1        | Hurricane iRene     |
+      | 2        | Virginia Earthquake |
+      | 3        | debt limit          |
+    When I am on the search page
+    And I follow "Classic"
+    And I follow "Hurricane iRene"
+    Then I should see "Results 1-10"
+
   Scenario: Toggling back to mobile mode
     Given I am on the search page
     When I follow "Classic"
