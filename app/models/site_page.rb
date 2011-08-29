@@ -2,6 +2,22 @@ require 'hpricot'
 require 'set'
 
 class SitePage < ActiveRecord::Base
+  ANSWER_SITE_CONFIG = {
+      :en => {
+          :locale => 'en',
+          :host => "answers.usa.gov",
+          :base_url => "http://answers.usa.gov/system/",
+          :home_path => "selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=STARTPAGE&USERTYPE=1&LANGUAGE=en&COUNTRY=us",
+          :search_start_page_path => "selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
+          :url_slug_prefix => "answers/" },
+      :es => {
+          :locale => 'es',
+          :host => "respuestas.gobiernousa.gov",
+          :base_url => "http://respuestas.gobiernousa.gov/system/",
+          :home_path => "selfservice.controller?CONFIGURATION=1001&PARTITION_ID=1&CMD=STARTPAGE&USERTYPE=1&LANGUAGE=en&COUNTRY=us",
+          :search_start_page_path => "selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
+          :url_slug_prefix => "respuestas/" }
+  }
   validates_uniqueness_of :url_slug
   validates_presence_of :url_slug
 
@@ -46,20 +62,8 @@ class SitePage < ActiveRecord::Base
 
   def self.crawl_answers_usa_gov
     answer_sites = []
-    answer_sites << { :locale => "en",
-                      :host => "answers.usa.gov",
-                      :base_url => "http://answers.usa.gov/system/",
-                      :home_path => "selfservice.controller?CONFIGURATION=1000&PARTITION_ID=1&CMD=STARTPAGE&USERTYPE=1&LANGUAGE=en&COUNTRY=us",
-                      :search_start_page_path => "selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
-                      :url_slug_prefix => "answers/"
-                    }
-    answer_sites << { :locale => "es",
-                      :host => "respuestas.gobiernousa.gov",
-                      :base_url => "http://respuestas.gobiernousa.gov/system/",
-                      :home_path => "selfservice.controller?CONFIGURATION=1001&PARTITION_ID=1&CMD=STARTPAGE&USERTYPE=1&LANGUAGE=en&COUNTRY=us",
-                      :search_start_page_path => "selfservice.controller?pageSize=10&CMD=DFAQ&KEYWORDS=&TOPIC_NAME=All+topics&SUBTOPIC_NAME=All+Subtopics&subTopicType=0&BOOL_SEARCHSTRING=&SIDE_LINK_TOPIC_ID=&SIDE_LINK_SUB_TOPIC_ID=&SUBTOPIC=-1&searchString=",
-                      :url_slug_prefix => "respuestas/"
-                    }
+    answer_sites << ANSWER_SITE_CONFIG[:en]
+    answer_sites << ANSWER_SITE_CONFIG[:es]
     answer_sites.each do |site|
       delete_all(["url_slug LIKE ?", "#{site[:url_slug_prefix]}%"])
       cookies = get_cookies(site[:base_url] + site[:home_path], site[:host])
@@ -74,18 +78,11 @@ class SitePage < ActiveRecord::Base
           unless doc.blank?
             counter += 1
             pages = []
-            doc.search("div#main_content/ul.one_column_bullet/li/a").each do |content|
-              faq_url = site[:base_url] + content.attributes['href']
-              faq_doc = open(faq_url, headers) { |f| Hpricot(f) }
-              title = faq_doc.search("div#main_content/h1").remove
-              body = faq_doc.search("div#main_content/p").remove
-              links = faq_doc.search("div#main_content/ul").remove
-              links = Hpricot::Elements[links.last]
-              content = title + body + links
-              title_text = title.inner_html
-              faq_page = SitePage.find_or_initialize_by_url_slug("#{site[:url_slug_prefix]}#{title_text.parameterize}")
-              faq_page.update_attributes(:title => title_text, :main_content => content.to_s)
-              pages << faq_page
+            doc.search("div#main_content/ul.one_column_bullet/li/a").each do |link|
+              url = site[:base_url] + link.attributes['href']
+              faq_page = extract_page url, headers, site
+              url = nil
+              pages << faq_page unless faq_page.blank?
             end
             # get next page of links
             unless doc.search("span.NextSelected").blank?
@@ -94,23 +91,58 @@ class SitePage < ActiveRecord::Base
             end
             # create the index page
             index_page_title = "FAQs (page #{counter})"
-            index_page_content = "<ul>"
+            index_page_content = "<h1 class='answer-title'>#{I18n.t(:top_questions, :locale => site[:locale])}</h1>"
+            index_page_content += "<ul>"
             pages.each do |page|
               index_page_content += "<li><a href='/usa/#{page.url_slug}'>#{page.title}</a></li>"
             end
             index_page_content += "</ul>"
+            if counter == 1
+              featured_content = extract_featured_content(headers, site[:locale])
+              index_page_content += featured_content unless featured_content.blank?
+            end
             index_page_content += "<p>"
-            index_page_content += "<a href='/usa/#{site[:url_slug_prefix]}#{counter - 1}'>Previous</a>&nbsp;" unless counter == 1
-            index_page_content += "<a href='/usa/#{site[:url_slug_prefix]}#{counter + 1}'>Next</a>" unless url.nil?
+            index_page_content += "<a href='/usa/#{site[:url_slug_prefix]}#{counter - 1}'>#{I18n.t(:prev_label, :locale => site[:locale])}</a>&nbsp;" unless counter == 1
+            index_page_content += "<a href='/usa/#{site[:url_slug_prefix]}#{counter + 1}'>#{I18n.t(:next_label, :locale => site[:locale])}</a>" unless url.nil?
             index_page_content += "</p>"
             index_page_slug = "#{site[:url_slug_prefix]}#{counter}"
             SitePage.create(:url_slug => index_page_slug, :title => index_page_title, :main_content => index_page_content)
           end
         rescue Exception => e
-          Rails.logger.error "Trouble fetching #{url}: #{e}"
+          Rails.logger.error "Trouble fetching #{url}\n#{e.message}\n#{e.backtrace.join("\n")}"
           url = nil
         end
       end
+    end
+  end
+
+  def self.extract_featured_content(headers, locale)
+    begin
+      answer_site = ANSWER_SITE_CONFIG[locale.to_sym]
+      url = answer_site[:base_url] + answer_site[:home_path]
+      doc = open(url, headers) { |f| Hpricot(f) }
+      url = nil
+      unless doc.blank?
+        pages = []
+        home_features = doc.search("div#home_features").last
+        home_features.search('a').each do |link|
+          url = "http://" + answer_site[:host] + link.attributes['href']
+          link_page = extract_page(url, headers, answer_site)
+          pages << link_page unless link_page.blank?
+        end
+        # create the index page
+        return nil if pages.blank?
+        index_page_content = "<h1 class='answer-title'>#{I18n.t(:featured_content, :locale => answer_site[:locale])}</h1>"
+        index_page_content += "<ul>"
+        pages.each do |page|
+          index_page_content += "<li><a href='/usa/#{page.url_slug}'>#{page.title}</a></li>"
+        end
+        index_page_content += "</ul>"
+        index_page_content
+      end
+    rescue => e
+      Rails.logger.error "Trouble fetching #{url}\n#{e.message}\n#{e.backtrace.join("\n")}"
+      nil
     end
   end
 
@@ -126,5 +158,24 @@ class SitePage < ActiveRecord::Base
     response = http.post(url,{})
     cookies = ""
     cookies = response['set-cookie']
+  end
+
+  def self.extract_page(url, headers, answer_site)
+    begin
+      link_doc = open(url, headers) { |f| Hpricot(f) }
+      url = nil
+      title = link_doc.search("div#main_content/h1").remove
+      body = link_doc.search("div#main_content/p").remove
+      links = link_doc.search("div#main_content/ul").remove
+      links = Hpricot::Elements[links.last]
+      content = title + body + links
+      title_text = title.inner_html
+      link_page = SitePage.find_or_initialize_by_url_slug("#{answer_site[:url_slug_prefix]}#{title_text.parameterize}")
+      link_page.update_attributes!(:title => title_text, :main_content => content.to_s)
+      link_page
+    rescue => e
+      Rails.logger.error "Trouble fetching #{url}\n#{e.message}\n#{e.backtrace.join("\n")}"
+      nil
+    end
   end
 end
