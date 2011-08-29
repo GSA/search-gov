@@ -1,5 +1,5 @@
 - if search_module_stats.present?
-  .span-10
+  .span-12
     .header-box
       %h3 Impressions and Clicks by Module
     %table
@@ -10,7 +10,11 @@
         %th{:style=>"text-align: right"} Clickthru Rate
       - search_module_stats.each do |stat|
         %tr
-          %td= stat.display_name
-          %td{:style=>"text-align: right"}= number_with_delimiter(stat.impressions)
-          %td{:style=>"text-align: right"}= number_with_delimiter(stat.clicks)
-          %td{:style=>"text-align: right"}= number_to_percentage(stat.clickthru_ratio, :precision => 1)
+          %td{:class => ("total" if stat.display_name == "Total")}= stat.display_name
+          %td{:class => ("total" if stat.display_name == "Total"), :style=>"text-align: right"}= number_with_delimiter(stat.impressions)
+          %td{:class => ("total" if stat.display_name == "Total"), :style=>"text-align: right"}= number_with_delimiter(stat.clicks)
+          %td{:class => ("total" if stat.display_name == "Total"), :style=>"text-align: right"}
+            = number_to_percentage(stat.clickthru_ratio, :precision => 1)
+            = image_tag Gchart.sparkline(:data => stat.historical_ctr, :size => '70x17', :line_colors => '0077CC', :max_value => 100, :min_value => 0 )
+- else
+  %h3 No data matched your filters

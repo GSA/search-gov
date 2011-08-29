@@ -5,6 +5,10 @@ Feature: Search Module Analytics
 
   Scenario: Viewing the search module analytics page when data is available
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
+    And the following Affiliates exist:
+    | display_name   | name              | contact_email | contact_name  | has_staged_content |
+    | usasearch.gov  | usasearch.gov     | two@bar.gov   | Two Bar       | true               |
+    | otheraff.govy  | otheraff.govy     | two@bar.gov   | Two Bar       | false              |
     And the following search modules exist:
     | tag | display_name |
     | FOO | Foo Module   |
@@ -17,16 +21,49 @@ Feature: Search Module Analytics
     | usasearch.gov  | FOO            | image   | es     | 10          | 2      |
     | otheraff.govy  | BAR            | web     | en     | 10          | 3      |
     | otheraff.govy  | UNKNOWN        | recall  | en     | 1           | 1      |
+    And the following search module data exists for "2011-06-11":
+    | affiliate_name | module_tag     | vertical| locale | impressions | clicks |
+    | usasearch.gov  | FOO            | web     | en     | 100         | 40     |
+    | usasearch.gov  | BAR            | web     | en     | 10          | 9      |
+    | usasearch.gov  | FOO            | form    | en     | 10          | 1      |
+    | usasearch.gov  | FOO            | image   | es     | 10          | 2      |
+    | otheraff.govy  | BAR            | web     | en     | 10          | 3      |
+    | otheraff.govy  | UNKNOWN        | recall  | en     | 1           | 1      |
+    And the following search module data exists for "2011-06-12":
+    | affiliate_name | module_tag     | vertical| locale | impressions | clicks |
+    | usasearch.gov  | FOO            | web     | en     | 100         | 40     |
+    | usasearch.gov  | BAR            | web     | en     | 10          | 9      |
+    | usasearch.gov  | FOO            | form    | en     | 10          | 1      |
+    | usasearch.gov  | FOO            | image   | es     | 10          | 2      |
+    | otheraff.govy  | BAR            | web     | en     | 10          | 3      |
+    | otheraff.govy  | UNKNOWN        | recall  | en     | 1           | 1      |
     When I am on the analytics homepage
     And I follow "Search Module Stats"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Search Module Stats
-    And I should see "Data for June 10, 2011"
     And I should see "Search Module Stats"
     And I should see "Impressions and Clicks by Module"
     And I should see the following table rows:
-    | Module      | Impressions     | Clicks | Clickthru Rate |
-    | Foo Module  | 120             | 43     | 35.8%            |
-    | Bar Module  | 20              | 12     | 60.0%            |
+    | Module      | Impressions     | Clicks | Clickthru Rate   |
+    | Foo Module  | 360             | 129    | 35.8%            |
+    | Bar Module  | 60              | 36     | 60.0%            |
+    | Total       | 420             | 165    | 39.3%            |
+    When I fill in "start_date" with "2011-06-10"
+    And I fill in "end_date" with "2011-06-11"
+    And I select "Spanish" from "Locale"
+    And I select "Image" from "Vertical"
+    And I select "usasearch.gov" from "Affiliate"
+    And I press "Submit"
+    Then I should see the following table rows:
+    | Module      | Impressions     | Clicks | Clickthru Rate   |
+    | Foo Module  | 20              | 4      | 20.0%            |
+    | Total       | 20              | 4      | 20.0%            |
+    When I fill in "start_date" with "2011-06-10"
+    And I fill in "end_date" with "2011-06-10"
+    And I select "Spanish" from "Locale"
+    And I select "usasearch.gov" from "Affiliate"
+    And I select "Recall" from "Vertical"
+    And I press "Submit"
+    Then I should see "No data matched your filters"
 
   Scenario: Viewing the search module analytics page when data is NOT available
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
@@ -34,5 +71,4 @@ Feature: Search Module Analytics
     When I am on the analytics homepage
     And I follow "Search Module Stats"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Search Module Stats
-    And I should see "Search module data currently unavailable"
-    And I should not see "Impressions and Clicks by Module"
+    And I should see "No data matched your filters"

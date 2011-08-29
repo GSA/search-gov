@@ -105,7 +105,7 @@ namespace :usasearch do
       output_to_zipfile(zip_filename, "affiliate_queries_by_month.txt", "Affiliate,#{months.join(",")},Total", affiliate_queries_by_month.collect { |result| "#{result.affiliate},#{months.collect { |month| result[month] }.join(',')}" })
 
         # clicks, impressions, CTR by module over the past month
-      totals = DailySearchModuleStat.module_stats_for_daterange(start_date.beginning_of_month..start_date.end_of_month)
+      totals = DailySearchModuleStat.module_stats_for_daterange_and_affiliate_and_locale(start_date.beginning_of_month..start_date.end_of_month)
       output_to_zipfile(zip_filename, "click_totals.txt", "Module, Impressions, Clicks, Click-Thru Rate",
                         totals.collect { |result| "#{result.module_tag},#{result.impressions},#{result.clicks},#{100*result.clicks/result.impressions}%" })
 

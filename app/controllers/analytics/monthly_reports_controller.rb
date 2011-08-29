@@ -3,7 +3,7 @@ class Analytics::MonthlyReportsController < Analytics::AnalyticsController
 
   def index
     @monthly_totals = DailyUsageStat.monthly_totals(@report_date.year, @report_date.month)
-    @search_module_stats = DailySearchModuleStat.module_stats_for_daterange(@report_date.beginning_of_month..@report_date.end_of_month)
+    @search_module_stats = DailySearchModuleStat.module_stats_for_daterange_and_affiliate_and_locale(@report_date.beginning_of_month..@report_date.end_of_month)
     @num_results_mpq = (request["num_results_mpq"] || "10").to_i
     @popular_queries_for_month = MonthlyPopularQuery.find_all_by_year_and_month_and_is_grouped(@report_date.year, @report_date.month, false, :order => "times DESC", :limit => @num_results_mpq)
     @num_results_mpqg = (request["num_results_mpqg"] || "10").to_i

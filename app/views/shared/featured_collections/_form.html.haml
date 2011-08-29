@@ -9,7 +9,7 @@
       = form.text_field :title_url, { :class => 'text', :maxlength => 255, :size => nil }
     %li
       = form.label :locale, "Locale*", { :class => 'select' }
-      = form.select :locale, SUPPORTED_LOCALES.collect { |l| [SUPPORTED_LOCALE_WITH_NAMES[l], l] }, { :include_blank => 'Select a locale' }
+      = form.select :locale, SUPPORTED_LOCALE_WITH_NAMES.collect {|sl| [sl[1],sl[0]]}, { :include_blank => 'Select a locale' }
     %li
       = form.label :status, "Status*", { :class => 'select' }
       = form.select :status, FeaturedCollection::STATUS_OPTIONS, { :include_blank => 'Select a status' }

@@ -1,6 +1,25 @@
 = analytics_center_breadcrumbs @page_title
 
-.span-24
-  %h2= display_most_recent_daily_search_module_stats_date_available(@day_being_shown)
+.span-12
+  .content-box.analytics
+    = form_tag(analytics_search_modules_path) do
+      %ul
+        %li
+          = label_tag :analytics_search_start_date, "Showing data from"
+          = calendar_date_select_tag("start_date", @start_date)
+          = label_tag :analytics_search_end_date, "to"
+          = calendar_date_select_tag("end_date", @end_date)
+        %li
+          = label_tag :analytics_affiliate_pick, "Affiliate"
+          = select nil, :affiliate_pick, Affiliate.all.collect{|aff| [aff.display_name, aff.name]}, {:include_blank => 'All affiliates', :selected=> @affiliate_pick}, {:id=>"Affiliate"}
+        %li
+          = label_tag :analytics_locale_pick, "Locale"
+          = select nil, :locale_pick, SUPPORTED_LOCALE_WITH_NAMES.collect {|sl| [sl[1],sl[0]]}, {:include_blank => 'All locales', :selected=> @locale_pick}, {:id=>"Locale"}
+        %li
+          = label_tag :analytics_vertical_pick, "Vertical"
+          = select nil, :vertical_pick, SUPPORTED_VERTICALS.collect {|v| [v.capitalize, v]}, {:include_blank => 'All verticals', :selected=> @vertical_pick}, {:id=>"Vertical"}
+        %li
+          = submit_tag "Submit"
 
+.span-24
   = render :partial => "analytics/shared/search_modules_stats", :locals => { :search_module_stats => @search_module_stats }
