@@ -24,6 +24,7 @@ GIT
 GEM
   remote: http://rubygems.org/
   specs:
+    Ascii85 (1.0.1)
     SystemTimer (1.2.3)
     abstract (1.0.0)
     actionmailer (3.0.9)
@@ -158,6 +159,8 @@ GEM
       activerecord
       activesupport
     parallel (0.5.5)
+    pdf-reader (0.10.0)
+      Ascii85 (~> 1.0.0)
     polyglot (0.3.1)
     pr_geohash (1.0.0)
     rack (1.2.3)
@@ -298,6 +301,7 @@ DEPENDENCIES
   paperclip
   paperclip-cloudfiles
   parallel
+  pdf-reader
   rails (= 3.0.9)
   rake (~> 0.8.7)
   rcov
