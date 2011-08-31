@@ -35,7 +35,7 @@ class SuperfreshUrlToBoostedContent
   end
   
   def self.crawl_pdf(url)
-    pdf_io = IO.open(url)
+    pdf_io = open(url)
     reader = PDF::Reader.new
     pdf_string = StringIO.new
     receiver = PDF::Reader::TextReceiver.new(pdf_string)

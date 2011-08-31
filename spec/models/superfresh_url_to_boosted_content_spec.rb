@@ -94,7 +94,7 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
     before do
       @superfresh_url = superfresh_urls(:pdf)
       @raw_pdf = File.open(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
-      IO.stub!(:open).and_return @raw_pdf
+      SuperfreshUrlToBoostedContent.stub!(:open).and_return @raw_pdf
     end
 
     it "should open the pdf file" do
