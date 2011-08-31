@@ -10,7 +10,7 @@ class SuperfreshUrlToBoostedContent
     else
       boosted_content = crawl_html(url)
     end
-    if boosted_content
+    if boosted_content and boosted_content.is_a?(BoostedContent)
       boosted_content.affiliate_id = affiliate_id
       boosted_content.save!
       Sunspot.index!(boosted_content)
