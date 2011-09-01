@@ -78,7 +78,12 @@ describe ApiController do
     describe "boosted content" do
       it "should include boosted content if found" do
         affiliate = affiliates(:basic_affiliate)
-        affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description")
+        affiliate.boosted_contents.create!(:title => "title",
+                                           :url => "http://example.com",
+                                           :description => "description",
+                                           :locale => 'en',
+                                           :status => 'active',
+                                           :publish_start_on => Date.current)
         BoostedContent.reindex
 
         get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "title"

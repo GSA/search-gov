@@ -9,7 +9,10 @@ describe BoostedContent do
       :description => "All about foobar, boosted to the top",
       :affiliate => affiliates(:power_affiliate),
       :keywords => 'unrelated, terms',
-      :auto_generated => false
+      :locale => 'en',
+      :auto_generated => false,
+      :status => 'active',
+      :publish_start_on => Date.current
     }
   end
 
@@ -24,6 +27,18 @@ describe BoostedContent do
     ["tz", "ps"].each do |locale|
       it { should_not allow_value(locale).for(:locale) }
     end
+    it { should validate_presence_of :publish_start_on }
+
+    BoostedContent::STATUSES.each do |status|
+      it { should allow_value(status).for(:status) }
+    end
+    it { should_not allow_value("bogus status").for(:status) }
+
+    specify { BoostedContent.new(:status => 'active').should be_is_active }
+    specify { BoostedContent.new(:status => 'active').should_not be_is_inactive }
+    specify { BoostedContent.new(:status => 'inactive').should be_is_inactive }
+    specify { BoostedContent.new(:status => 'inactive').should_not be_is_active }
+
     it { should belong_to :affiliate }
 
     it "should create a new instance given valid attributes" do
@@ -54,6 +69,17 @@ describe BoostedContent do
     it "should allow an empty keywords value" do
       BoostedContent.create!(@valid_attributes.merge(:keywords => ""))
     end
+
+    it "should not allow publish start date before publish end date" do
+      boosted_content = BoostedContent.create(@valid_attributes.merge({ :publish_start_on => '07/01/2012', :publish_end_on => '07/01/2011' }))
+      boosted_content.errors.full_messages.join.should =~ /Publish end date can't be before publish start date/
+    end
+  end
+
+  describe "#human_attribute_name" do
+    specify { BoostedContent.human_attribute_name("publish_start_on").should == "Publish start date" }
+    specify { BoostedContent.human_attribute_name("publish_end_on").should == "Publish end date" }
+    specify { BoostedContent.human_attribute_name("url").should == "URL" }
   end
 
   describe "#as_json" do
@@ -130,7 +156,7 @@ describe BoostedContent do
 
     it "should update existing boosted Contents if the url match" do
       basic_affiliate = affiliates(:basic_affiliate)
-      basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description")
+      basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
 
       counts = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
 
@@ -143,7 +169,7 @@ describe BoostedContent do
 
     it "should merge with preexisting boosted Contents" do
       basic_affiliate = affiliates(:basic_affiliate)
-      basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description")
+      basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
 
       counts = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
 
@@ -188,6 +214,18 @@ describe BoostedContent do
           with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :model=>"BoostedContent", :term => "foo", :locale => "en")))
         BoostedContent.search_for('foo')
       end
+    end
+  end
+
+  describe "#display_status" do
+    context "when status is set to active" do
+      subject { BoostedContent.new(:status => 'active') }
+      its(:display_status) { should == 'Active' }
+    end
+
+    context "when status is set to inactive" do
+      subject { BoostedContent.new(:status => 'inactive') }
+      its(:display_status) { should == 'Inactive' }
     end
   end
 end

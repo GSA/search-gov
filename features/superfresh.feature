@@ -12,8 +12,13 @@ Feature: Affiliate Superfresh Interface
     And I follow "Add to Bing"
     Then I should see "Learn more about our Add to Bing™ feature by going to our new section in the Help Desk"
     And I should see "Another Way to Highlight Content"
-    When I follow "Boosted Content" in the callout boxes
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Content
+
+    When I follow "boosted content"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Contents
+
+    When I follow "Add to Bing"
+    And I follow "Boosted Content" in the callout boxes
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Contents
 
   Scenario: Submit a URL for on-demand indexing
     Given the following Affiliates exist:

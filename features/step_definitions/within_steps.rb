@@ -21,7 +21,8 @@
   'in the search results section' => '#results',
   'in the no results section' => '.no-results',
   'in the featured collections section' => '.featured-collections',
-  'in the pagination' => '.pagination'
+  'in the pagination' => '.pagination',
+  'in the boosted contents section' => '#boosted'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

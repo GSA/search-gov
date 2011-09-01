@@ -58,3 +58,7 @@ end
 Then /^I should not see an image with alt text "([^"]*)"$/ do |alt|
   page.should_not have_selector("img[alt='#{alt}']")
 end
+
+Then /^the "([^"]*)" field should contain today's date$/ do |field|
+  Then %{the "#{field}" field should contain "#{Date.current.strftime(%Q{%m/%d/%Y})}"}
+end

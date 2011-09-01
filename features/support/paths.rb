@@ -124,6 +124,8 @@ module NavigationHelpers
       affiliate_related_topics_path(Affiliate.find_by_name($1))
     when /the preview affiliate page for "([^\"]*)"/
       preview_affiliate_path(Affiliate.find_by_name($1))
+    when /the (.*)'s boosted contents page$/
+      affiliate_boosted_contents_path(Affiliate.find_by_name($1))
     when /the new affiliate boosted content page for "([^\"]*)"/
       new_affiliate_boosted_content_path(Affiliate.find_by_name($1))
     when /the edit affiliate boosted content page for "([^\"]*)"/

@@ -1,13 +1,23 @@
 class BoostedContent < ActiveRecord::Base
   require 'rexml/document'
+
+  STATUSES = %w( active inactive )
+  STATUS_OPTIONS = STATUSES.collect { |status| [status.humanize, status] }
+
+  cattr_reader :per_page
+  @@per_page = 20
+
   belongs_to :affiliate
 
-  validates_presence_of :title, :url, :description, :locale
+  validates_presence_of :title, :url, :description, :locale, :publish_start_on
   validates_uniqueness_of :url, :message => "has already been boosted", :scope => "affiliate_id"
-  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES
+  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
+  validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
+  validate :publish_start_and_end_dates
 
   searchable :auto_index => false do
-    text :title, :description
+    text :title, :boost => 10.0
+    text :description, :boost => 4.0
     text :keywords do
       keywords.split(',') unless keywords.nil?
     end
@@ -21,7 +31,22 @@ class BoostedContent < ActiveRecord::Base
       end
     end
     string :locale
+    string :status
+    date :publish_start_on
+    date :publish_end_on
   end
+
+  STATUSES.each do |status|
+    define_method "is_#{status}?" do
+      self.status == status
+    end
+  end
+
+  HUMAN_ATTRIBUTE_NAME_HASH = {
+      :publish_start_on => "Publish start date",
+      :publish_end_on => "Publish end date",
+      :url => "URL"
+  }
 
   def self.search_for(query, affiliate = nil, locale = I18n.default_locale.to_s)
     affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
@@ -32,6 +57,12 @@ class BoostedContent < ActiveRecord::Base
         end
         with(:affiliate_name, affiliate_name)
         with(:locale, locale)
+        with(:status, 'active')
+        with(:publish_start_on).less_than(Time.current)
+        any_of do
+          with(:publish_end_on).greater_than(Time.current)
+          with :publish_end_on, nil
+        end
         paginate :page => 1, :per_page => 3
       end rescue nil
     end
@@ -52,7 +83,10 @@ class BoostedContent < ActiveRecord::Base
             :url => entry.elements["url"].first.to_s,
             :title => entry.elements["title"].first.to_s,
             :description => entry.elements["description"].first.to_s,
-            :affiliate => affiliate
+            :affiliate => affiliate,
+            :locale => 'en',
+            :status => 'active',
+            :publish_start_on => Date.current
           }
           if matching = existing[info[:url]]
             matching.update_attributes(info)
@@ -71,7 +105,24 @@ class BoostedContent < ActiveRecord::Base
     counts
   end
 
+  def self.human_attribute_name(attribute_key_name, options = {})
+    HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
+  end
+
   def as_json(options = {})
     {:title => title, :url => url, :description => description}
+  end
+
+  def display_status
+    status.humanize
+  end
+
+  private
+  def publish_start_and_end_dates
+    start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?
+    end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?
+    if start_date.present? and end_date.present? and start_date > end_date
+      errors.add(:base, "Publish end date can't be before publish start date")
+    end
   end
 end
