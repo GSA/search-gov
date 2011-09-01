@@ -89,18 +89,23 @@ class SitePage < ActiveRecord::Base
               next_search_page_path = doc.search("span.NextSelected").first.search('a').first.attributes['href']
               url = site[:base_url] + next_search_page_path
             end
+
+            index_page_content = ''
+
+            if counter == 1
+              featured_content = extract_featured_content(headers, site[:locale])
+              index_page_content += featured_content unless featured_content.blank?
+            end
+
             # create the index page
             index_page_title = "FAQs (page #{counter})"
-            index_page_content = "<h1 class='answer-title'>#{I18n.t(:top_questions, :locale => site[:locale])}</h1>"
+            index_page_content += "<h1 class='answer-title'>#{I18n.t(:top_questions, :locale => site[:locale])}</h1>"
             index_page_content += "<ul>"
             pages.each do |page|
               index_page_content += "<li><a href='/usa/#{page.url_slug}'>#{page.title}</a></li>"
             end
             index_page_content += "</ul>"
-            if counter == 1
-              featured_content = extract_featured_content(headers, site[:locale])
-              index_page_content += featured_content unless featured_content.blank?
-            end
+
             index_page_content += "<p>"
             index_page_content += "<a href='/usa/#{site[:url_slug_prefix]}#{counter - 1}'>#{I18n.t(:prev_label, :locale => site[:locale])}</a>&nbsp;" unless counter == 1
             index_page_content += "<a href='/usa/#{site[:url_slug_prefix]}#{counter + 1}'>#{I18n.t(:next_label, :locale => site[:locale])}</a>" unless url.nil?
