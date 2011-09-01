@@ -11,7 +11,7 @@
           = calendar_date_select_tag("end_date", @end_date)
         %li
           = label_tag :analytics_affiliate_pick, "Affiliate"
-          = select nil, :affiliate_pick, @affiliate_picklist || [[]], {:include_blank => 'All affiliates', :selected=> @affiliate_pick}, {:id=>"Affiliate"}
+          = select nil, :affiliate_pick, @affiliate_picklist, {:include_blank => 'All affiliates', :selected=> @affiliate_pick}, {:id=>"Affiliate"}
         %li
           = label_tag :analytics_locale_pick, "Locale"
           = select nil, :locale_pick, SUPPORTED_LOCALE_WITH_NAMES.collect {|sl| [sl[1],sl[0]]}, {:include_blank => 'All locales', :selected=> @locale_pick}, {:id=>"Locale"}
