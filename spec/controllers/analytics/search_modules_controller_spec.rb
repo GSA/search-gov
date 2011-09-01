@@ -97,6 +97,15 @@ describe Analytics::SearchModulesController do
         end
       end
 
+      describe "affiliate picklist" do
+        it "should contain arrays of all affiliates ordered by name, with the fake usasearch.gov affiliate at the top" do
+          get :index
+          assigns[:affiliate_picklist].size.should == Affiliate.count + 1
+          assigns[:affiliate_picklist].first.should == ["usasearch.gov","usasearch.gov"]
+          assigns[:affiliate_picklist].last.should == ["nps.gov","nps.gov"]
+        end
+      end
+
       describe "vertical" do
         context "when no vertical is specified by user" do
           it "should show data from all verticals" do
