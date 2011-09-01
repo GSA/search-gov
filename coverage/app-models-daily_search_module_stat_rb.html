@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-daily_search_module_stat_rb.html">app/models/daily_search_module_stat.rb</a></td>
-            <td class='right_align'><tt>21</tt></td>
-            <td class='right_align'><tt>19</tt></td>
+            <td class='right_align'><tt>33</tt></td>
+            <td class='right_align'><tt>31</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -86,104 +86,176 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line6">6</a> </pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line7">7</a>   def self.most_recent_populated_date</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line8">8</a>     maximum(:day)</pre></td>
+            <td><pre><a name="line6">6</a>   SPARKLINE_MONTHS_TO_SHOW = 2</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>   end</pre></td>
+            <td><pre><a name="line7">7</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>   def self.most_recent_populated_date</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>     maximum(:day)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line10">10</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>   def self.module_stats_for_daterange(daterange)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>     results = select('module_tag, SUM(clicks) AS clicks, SUM(impressions) AS impressions').includes(:search_module).</pre></td>
+            <td><pre><a name="line10">10</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>       where(:day =&gt; daterange).group(:module_tag).order(&quot;impressions DESC&quot;)</pre></td>
+            <td><pre><a name="line11">11</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>     return [] if results.nil?</pre></td>
+            <td><pre><a name="line12">12</a>   def self.module_stats_for_daterange_and_affiliate_and_locale(daterange, affiliate_name = nil, locale = nil, vertical = nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>     structs = results.collect do |stat|</pre></td>
+            <td><pre><a name="line13">13</a>     conditions = {:day =&gt; daterange}</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>       OpenStruct.new(:display_name =&gt; stat.search_module.display_name, :clicks =&gt; stat.clicks, :impressions =&gt; stat.impressions,</pre></td>
+            <td><pre><a name="line14">14</a>     conditions.merge!(:affiliate_name =&gt; affiliate_name) if affiliate_name</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line17">17</a>                      :clickthru_ratio =&gt; 100.0 * stat.clicks / stat.impressions) unless stat.search_module.nil?</pre></td>
+            <td><pre><a name="line15">15</a>     conditions.merge!(:locale =&gt; locale) if locale</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line16">16</a>     conditions.merge!(:vertical =&gt; vertical) if vertical</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line17">17</a>     sparkline_range = daterange.last-SPARKLINE_MONTHS_TO_SHOW.month..daterange.last</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line18">18</a>     results = select('module_tag, display_name, SUM(clicks) AS clicks, SUM(impressions) AS impressions').where(conditions).group(:module_tag).order(&quot;clicks DESC&quot;).joins(:search_module)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line19">19</a>     total_clicks, total_impressions = 0, 0</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line20">20</a>     stats = results.collect do |stat|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line21">21</a>       historical_ctr = select('day, 100.0*clicks/impressions ctr').where(conditions.merge(:module_tag=&gt;stat.module_tag, :day=&gt; sparkline_range)).group(:day).collect { |r| r.ctr.to_f }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       total_clicks += stat.clicks</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>       total_impressions += stat.impressions</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>       OpenStruct.new(:display_name =&gt; stat.display_name, :clicks =&gt; stat.clicks, :impressions =&gt; stat.impressions, :clickthru_ratio =&gt; 100.0 * stat.clicks / stat.impressions, :historical_ctr =&gt; historical_ctr)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>     end</pre></td>
+            <td><pre><a name="line25">25</a>     end.compact</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>     structs.compact</pre></td>
+            <td><pre><a name="line26">26</a>     unless stats.empty?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>       historical_ctr = select('day, 100.0*clicks/impressions ctr').where(conditions.merge(:day=&gt; sparkline_range)).group(:day).collect { |r| r.ctr.to_f }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>       stats &lt;&lt; OpenStruct.new(:display_name =&gt; &quot;Total&quot;, :clicks =&gt; total_clicks, :impressions =&gt; total_impressions,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line29">29</a>                               :clickthru_ratio =&gt; 100.0 * total_clicks / total_impressions, :historical_ctr =&gt; historical_ctr)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line20">20</a>   end</pre></td>
+            <td><pre><a name="line30">30</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line31">31</a>     stats</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line21">21</a> end</pre></td>
+            <td><pre><a name="line32">32</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line33">33</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Aug 31 20:23:11 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Sep 01 09:27:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

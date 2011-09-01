@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-controllers-analytics-search_modules_controller_rb.html">app/controllers/analytics/search_modules_controller.rb</a></td>
-            <td class='right_align'><tt>7</tt></td>
-            <td class='right_align'><tt>7</tt></td>
+            <td class='right_align'><tt>13</tt></td>
+            <td class='right_align'><tt>13</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -75,31 +75,67 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>     @day_being_shown = request[&quot;day&quot;].blank? ? DailySearchModuleStat.most_recent_populated_date : request[&quot;day&quot;].to_date</pre></td>
+            <td><pre><a name="line4">4</a>     @affiliate_picklist = Affiliate.select(:name).order(:name).collect{|aff| [aff.name, aff.name]}.insert(0,['usasearch.gov','usasearch.gov'])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     @search_module_stats = DailySearchModuleStat.module_stats_for_daterange(@day_being_shown..@day_being_shown) unless @day_being_shown.nil?</pre></td>
+            <td><pre><a name="line5">5</a>     return unless @end_date = request[&quot;end_date&quot;].blank? ? DailySearchModuleStat.most_recent_populated_date : request[&quot;end_date&quot;].to_date</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>     @start_date = request[&quot;start_date&quot;].blank? ? @end_date.beginning_of_month : request[&quot;start_date&quot;].to_date</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line7">7</a>     @locale_pick = request[&quot;locale_pick&quot;].blank? ? nil : request[&quot;locale_pick&quot;]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>     @affiliate_pick = request[&quot;affiliate_pick&quot;].blank? ? nil : request[&quot;affiliate_pick&quot;]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>     @vertical_pick = request[&quot;vertical_pick&quot;].blank? ? nil : request[&quot;vertical_pick&quot;]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line10">10</a>     @search_module_stats = DailySearchModuleStat.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>       module_stats_for_daterange_and_affiliate_and_locale(@start_date..@end_date, @affiliate_pick, @locale_pick, @vertical_pick)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line6">6</a>   end</pre></td>
+            <td><pre><a name="line12">12</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line7">7</a> end</pre></td>
+            <td><pre><a name="line13">13</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Wed Aug 31 20:23:11 -0400 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Thu Sep 01 09:27:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
