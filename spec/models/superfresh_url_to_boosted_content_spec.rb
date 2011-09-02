@@ -109,6 +109,43 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
       boosted_content.description.should == "This is a pdf file.  It’s here to test out our PDF code."
       boosted_content.url.should == @superfresh_url.url
     end
+    
+    context "when the pdf body is blank" do
+      before do
+        @raw_pdf = File.open(Rails.root.to_s + "/spec/fixtures/pdf/badtitle.pdf")
+        SuperfreshUrlToBoostedContent.stub!(:open).and_return @raw_pdf
+      end
+      
+      it "should generate a title using the last part of the filename" do
+        SuperfreshUrlToBoostedContent.perform(@superfresh_url.url, @aff.id)
+        boosted_content = @aff.boosted_contents.find_by_url(@superfresh_url.url)
+        boosted_content.should_not be_nil
+        boosted_content.title.should == "3-2-07-III H.pdf"
+      end
+    end
+    
+    context "when the description is blank" do
+      before do
+        @pdf_reader = PDF::Reader.new
+        @pdf_reader.stub!(:parse).and_return true
+        PDF::Reader.stub!(:new).and_return @pdf_reader
+      end
+      
+      it "should not create a boosted content" do
+        lambda { SuperfreshUrlToBoostedContent.perform(@superfresh_url.url, @aff.id) }.should_not change(BoostedContent, :count)
+      end
+    end
+    
+    context "when some exception is raised while fetching or parsing the PDF file" do
+      before do
+        SuperfreshUrlToBoostedContent.stub!(:crawl_pdf).and_raise "Some Error"
+      end
+      
+      it "should log an error" do
+        Rails.logger.should_receive(:error).with(/Some Error/)
+        SuperfreshUrlToBoostedContent.perform(@superfresh_url.url, @aff.id)
+      end
+    end
   end
   
   describe "#is_pdf?" do

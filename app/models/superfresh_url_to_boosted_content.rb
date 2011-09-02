@@ -5,15 +5,19 @@ class SuperfreshUrlToBoostedContent
 
   def self.perform(url, affiliate_id)
     return unless SuperfreshUrl.find_by_url_and_affiliate_id(url, affiliate_id)
-    if is_pdf?(url)
-      boosted_content = crawl_pdf(url)
-    else
-      boosted_content = crawl_html(url)
-    end
-    if boosted_content and boosted_content.is_a?(BoostedContent)
-      boosted_content.affiliate_id = affiliate_id
-      boosted_content.save!
-      Sunspot.index!(boosted_content)
+    begin
+      if is_pdf?(url)
+        boosted_content = crawl_pdf(url)
+      else
+        boosted_content = crawl_html(url)
+      end
+      if boosted_content and boosted_content.is_a?(BoostedContent)
+        boosted_content.affiliate_id = affiliate_id
+        boosted_content.save!
+        Sunspot.index!(boosted_content)
+      end
+    rescue Exception => e
+      Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
     end
   end
   
@@ -41,19 +45,23 @@ class SuperfreshUrlToBoostedContent
       pdf_string = StringIO.new
       receiver = PDF::Reader::TextReceiver.new(pdf_string)
       reader.parse(pdf_io, receiver)
-      BoostedContent.new(:url => url, :title => title_from_pdf(pdf_string.string), :description => pdf_string.string, :auto_generated => true)
+      BoostedContent.new(:url => url, :title => title_from_pdf(pdf_string.string, url), :description => pdf_string.string, :auto_generated => true)
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
     end
   end
   
-  def self.title_from_pdf(body)
-    first_linebreak_index = body.index("\n") || body.size
-    first_sentence_index = body.index(".")
-    end_index = [first_linebreak_index, first_sentence_index].min - 1
-    body[0..end_index]
+  def self.title_from_pdf(body, url)
+    begin
+      first_linebreak_index = body.index("\n") || body.size
+      first_sentence_index = body.index(".")
+      end_index = [first_linebreak_index, first_sentence_index].min - 1
+      return body[0..end_index]
+    rescue
+      return URI.decode(url[url.rindex("/") + 1..-1])
+    end
   end
-    
+  
   def self.is_pdf?(url)
     url.ends_with(".pdf").present?
   end
