@@ -53,10 +53,10 @@ class SuperfreshUrlToBoostedContent
   
   def self.title_from_pdf(body, url)
     begin
-      first_linebreak_index = body.index("\n") || body.size
-      first_sentence_index = body.index(".")
+      first_linebreak_index = body.strip.index("\n") || body.size
+      first_sentence_index = body.strip.index(".")
       end_index = [first_linebreak_index, first_sentence_index].min - 1
-      return body[0..end_index]
+      return body.strip[0..end_index]
     rescue
       return URI.decode(url[url.rindex("/") + 1..-1])
     end
