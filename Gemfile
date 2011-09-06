@@ -45,7 +45,7 @@ gem 'SystemTimer'
 gem 'high_voltage'
 gem 'backports'
 gem 'mechanize'
-gem 'pdf-reader'
+gem 'pdf-toolkit'
 gem 'googlecharts'
 
 # Bundle gems for the local environment. Make sure to

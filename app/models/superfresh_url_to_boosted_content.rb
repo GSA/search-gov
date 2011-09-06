@@ -1,3 +1,5 @@
+require 'pdf/toolkit'
+
 class SuperfreshUrlToBoostedContent
   @queue = :usasearch
   TRUNCATED_TITLE_LENGTH = 60
@@ -41,18 +43,20 @@ class SuperfreshUrlToBoostedContent
   def self.crawl_pdf(url)
     begin
       pdf_io = open(url)
-      reader = PDF::Reader.new
-      pdf_string = StringIO.new
-      receiver = PDF::Reader::TextReceiver.new(pdf_string)
-      reader.parse(pdf_io, receiver)
-      BoostedContent.new(:url => url, :title => title_from_pdf(pdf_string.string, url), :description => pdf_string.string, :auto_generated => true)
+      pdf = PDF::Toolkit.open(pdf_io)
+      puts pdf.inspect
+      puts pdf.title
+      puts pdf.to_text.read
+      BoostedContent.new(:url => url, :title => title_from_pdf(pdf, url), :description => pdf.to_text.read, :auto_generated => true)    
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
     end
   end
   
-  def self.title_from_pdf(body, url)
+  def self.title_from_pdf(pdf, url)
+    return pdf.title unless pdf.title.blank?
     begin
+      body = pdf.to_text.read
       first_linebreak_index = body.strip.index("\n") || body.size
       first_sentence_index = body.strip.index(".")
       end_index = [first_linebreak_index, first_sentence_index].min - 1

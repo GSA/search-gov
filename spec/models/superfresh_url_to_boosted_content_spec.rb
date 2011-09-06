@@ -106,7 +106,7 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
       boosted_content = @aff.boosted_contents.find_by_url(@superfresh_url.url)
       boosted_content.should_not be_nil
       boosted_content.title.should == "This is a pdf file"
-      boosted_content.description.should == "This is a pdf file.  It’s here to test out our PDF code."
+      boosted_content.description.should == "This is a pdf file. It's here to test out our PDF code.\n\n\f"
       boosted_content.url.should == @superfresh_url.url
     end
     
@@ -121,18 +121,6 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
         boosted_content = @aff.boosted_contents.find_by_url(@superfresh_url.url)
         boosted_content.should_not be_nil
         boosted_content.title.should == "3-2-07-III H.pdf"
-      end
-    end
-    
-    context "when the description is blank" do
-      before do
-        @pdf_reader = PDF::Reader.new
-        @pdf_reader.stub!(:parse).and_return true
-        PDF::Reader.stub!(:new).and_return @pdf_reader
-      end
-      
-      it "should not create a boosted content" do
-        lambda { SuperfreshUrlToBoostedContent.perform(@superfresh_url.url, @aff.id) }.should_not change(BoostedContent, :count)
       end
     end
     
