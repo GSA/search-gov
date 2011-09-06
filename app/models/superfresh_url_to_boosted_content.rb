@@ -44,9 +44,6 @@ class SuperfreshUrlToBoostedContent
     begin
       pdf_io = open(url)
       pdf = PDF::Toolkit.open(pdf_io)
-      puts pdf.inspect
-      puts pdf.title
-      puts pdf.to_text.read
       BoostedContent.new(:url => url, :title => title_from_pdf(pdf, url), :description => pdf.to_text.read, :auto_generated => true)    
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
