@@ -303,6 +303,14 @@ Restart apache
 
 Setup log rotation for apache and rails/passenger in /etc/logrotate.d/{httpd,passenger}
 
+##Installing and Setting up pdftk
+
+Follow the instructions here:
+
+    http://www.pdflabs.com/docs/build-pdftk/
+    
+Compilation worked on staging without modification to any of the default settings/build files.
+
 ##Installing and Setting up Jenkins
 
 Jenkins is a Continuous Integration tool that runs as a web service inside a servlet engine.  Tomcat 5 is recommended.
