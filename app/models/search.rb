@@ -264,21 +264,23 @@ class Search
   end
 
   def generate_formatted_query
-    [query_plus_locale, scope].join(' ')
+    [query_plus_locale, scope].join(' ').strip
   end
 
   def scope
-    if using_affiliate_scope?
-      generate_affiliate_scope
-    elsif self.fedstates && !self.fedstates.empty? && self.fedstates != 'all'
-      "(scopeid:usagov#{self.fedstates}) #{generate_excluded_scope}"
+    if affiliate
+      generate_affiliate_scope if using_affiliate_scope?
     else
-      generate_default_scope
+      if self.fedstates && !self.fedstates.empty? && self.fedstates != 'all'
+        "(scopeid:usagov#{self.fedstates}) #{generate_excluded_scope}"
+      else
+        generate_default_scope
+      end
     end
   end
 
   def generate_affiliate_scope
-    valid_scope_id? ? "(scopeid:#{self.scope_id}) #{DEFAULT_SCOPE}" : fill_domains_to_remainder
+    valid_scope_id? ? "(scopeid:#{self.scope_id})" : fill_domains_to_remainder
   end
   
   def generate_default_scope
