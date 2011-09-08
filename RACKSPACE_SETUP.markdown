@@ -303,12 +303,18 @@ Restart apache
 
 Setup log rotation for apache and rails/passenger in /etc/logrotate.d/{httpd,passenger}
 
-##Installing and Setting up pdftk
+##Installing and Setting up pdftk and xpdf
 
-Follow the instructions here:
+Install xpdf using yum:
+
+    sudo yum install xpdf
+
+I had to disable the opsera/opsview repo, which was timing out, to get this to work.
+
+Then install pdftk. Follow the instructions here:
 
     http://www.pdflabs.com/docs/build-pdftk/
-    
+
 Compilation worked on staging without modification to any of the default settings/build files.
 
 ##Installing and Setting up Jenkins
