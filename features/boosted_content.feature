@@ -9,7 +9,7 @@ Feature: Boosted Content
     And I follow "Create New"
     And I fill in "Description" with "Test"
     And I fill in "Title" with "Test"
-    And I fill in "Url" with "http://www.test.gov"
+    And I fill in "URL" with "http://www.test.gov"
     And I press "Create"
     When I am on the homepage
     And I fill in "query" with "test"
@@ -26,7 +26,7 @@ Feature: Boosted Content
     And I follow "Edit"
     And I fill in "Description" with "Bananas"
     And I fill in "Title" with "Bananas"
-    And I fill in "Url" with "http://www.bananas.gov"
+    And I fill in "URL" with "http://www.bananas.gov"
     And I press "Update"
     When I am on the homepage
     And I fill in "query" with "test"

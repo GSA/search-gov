@@ -163,7 +163,7 @@ describe "shared/_searchresults.html.haml" do
 
     context "when a boosted Content is returned as a hit, but that boosted Content is not in the database" do
       before do
-        boosted_content = BoostedContent.create(:title => 'test', :url => 'http://test.gov', :description => 'test')
+        boosted_content = BoostedContent.create(:title => 'test', :url => 'http://test.gov', :description => 'test', :locale => 'en', :status => 'active', :publish_start_on => Date.current)
         BoostedContent.reindex
         boosted_content.delete
         boosted_contents_results = BoostedContent.search_for("test")

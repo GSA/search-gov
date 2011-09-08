@@ -1,0 +1,44 @@
+.show-boosted-content
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Boosted Content"])
+  %h1 Boosted Content
+  %table
+    %colgroup
+      %col{ :class => 'name' }
+      %col{ :class => 'value' }
+    %thead
+      %tr
+        %th{ :colspan => 2 }
+          .actions
+            = link_to("Edit", edit_affiliate_boosted_content_path(@affiliate, @boosted_content), { :class => 'edit-link' })
+            = button_to("Delete", [@affiliate, @boosted_content], :method => :delete, :confirm => "Are you sure you want to delete this Boosted Content?")
+    %tbody
+      %tr
+        %td.name Title
+        %td= @boosted_content.title
+      %tr
+        %td.name URL
+        %td= @boosted_content.url
+      %tr
+        %td.name Description
+        %td= @boosted_content.description
+      %tr
+        %td.name Locale
+        %td= SUPPORTED_LOCALE_WITH_NAMES[@boosted_content.locale]
+      %tr
+        %td.name Status
+        %td= @boosted_content.display_status
+      %tr
+        %td.name Publish start date
+        %td= render_date @boosted_content.publish_start_on
+      %tr
+        %td.name Publish end date
+        %td= render_date @boosted_content.publish_end_on
+      %tr
+        %td.name Keywords
+        %td.keywords
+          - unless @boosted_content.keywords.blank?
+            - @boosted_content.keywords.split.each do |keyword|
+              %span= keyword
+  .add-link-wrapper
+    = link_to "Add another Boosted Content", new_affiliate_boosted_content_path(@affiliate), :class => 'add-link'
+

@@ -1290,7 +1290,10 @@ h3.api-item
       &:hover
         :background url(/images/connect/share_on.png) no-repeat 0 0
 
-.featured-collection-list
+.boosted-contents, .boosted-sites
+  @include clearfix
+
+.featured-collection-list, .boosted-content-list
   table
     border: 1px solid #BDBDBD
     table-layout: fixed
@@ -1305,6 +1308,10 @@ h3.api-item
   thead
     th
       background-color: #444
+    span
+      color: white
+      float: left
+      font-weight: bold
   th
     border: 1px solid #A9A9A9
     padding: 5px
@@ -1329,6 +1336,8 @@ h3.api-item
       weight: bold
     padding: 2px 8px
     text-decoration: none
+    &.last
+      margin-right: 5px
   td.actions
     a, form
       float: left
@@ -1355,7 +1364,10 @@ h3.api-item
         :background url(/images/backgrounds/bg_blue_gradient.gif) repeat-x 0 0
         :color white
 
-.add-featured-collection, .edit-featured-collection
+.boosted-content-list
+  clear: both
+
+.add-featured-collection, .edit-featured-collection, .add-boosted-content, .edit-boosted-content
   @include border-radius
   border: 1px solid #BDBDBD
   overflow: hidden
@@ -1402,6 +1414,10 @@ h3.api-item
           float: left
           margin-left: 0
           padding: 0
+        textarea
+          float: left
+          width: 580px
+          height: 3em
       &.image-columns
         li
           div.image
@@ -1439,6 +1455,11 @@ h3.api-item
     @include clearfix
     padding: 10px 0
     border-top: 1px solid #DDD
+  .tips
+    color: #909090
+    font-size: 12px
+    margin-bottom: 0.5em
+    margin-left: 155px
   #keywords_header
     float: left
     width: 155px
@@ -1496,7 +1517,7 @@ h3.api-item
   a.cancel
     margin-left: 10px
 
-.show-featured-collection
+.show-featured-collection, .show-boosted-content
   overflow: hidden
   table
     border: 1px solid #BDBDBD

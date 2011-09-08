@@ -1316,7 +1316,8 @@ describe Search do
     context "when converting search response to json" do
       before do
         affiliate = affiliates(:basic_affiliate)
-        affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description")
+        affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description",                                            :locale => 'en',
+                                           :locale => 'en', :status => 'active', :publish_start_on => Date.current)
         BoostedContent.reindex
         @search = Search.new(:query => 'obama')
         @search.run

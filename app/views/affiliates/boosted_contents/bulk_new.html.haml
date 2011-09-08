@@ -1,0 +1,45 @@
+= affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Bulk Upload Boosted Contents"])
+%h1 Bulk Upload Boosted Contents
+= form_tag bulk_affiliate_boosted_contents_path(@affiliate), :multipart => true, :class=> "bordered" do
+  %h4 Instructions
+  %ol
+    %li
+      Create a new XML file using the format in the example below.
+    %li
+      Save the XML file as {filename}.xml on your computer.
+    %li
+      Add, modify, or delete individual entries in the file.
+    %li
+      Browse for the file on your computer.
+    %li
+      Upload the file to GSA's server.
+
+  %h4 Example Boosted Content XML
+  %pre
+    = preserve do
+      :escaped
+        <xml>
+          <entries>
+            <entry>
+              <title>This is a listing about Texas</title>
+              <url>http://some.url</url>
+              <description>This is the description of the listing</description>
+            </entry>
+            <entry>
+              <title>Some other listing about hurricanes</title>
+              <url>http://some.other.url</url>
+              <description>Another description for another listing</description>
+            </entry>
+          </entries>
+        </xml>
+
+  %h4 Important Notes
+  %p
+    :escaped
+      Note that the fields in your XML file are case sensitive and everything must be lower case so enter them as <title>, <url>, and <description>. (The system will prevent you from uploading files using title case or all caps so do not use <Title>, <URL>, <Description>, for example.)
+  %p
+    Also, be sure to enter a title, url, and description field for every entry. (They are mandatory so the system will prevent you from uploading files without a field for every entry.)
+
+  %h4 Select Boosted Content XML
+  = file_field_tag 'xml_file', :accept => 'text/xml'
+  = submit_tag "Upload"

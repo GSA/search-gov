@@ -34,7 +34,7 @@ class SuperfreshUrlToBoostedContent
           doc.xpath('//style').each { |x| x.remove }
           description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
         end
-        BoostedContent.new(:url => url, :title=> title, :description => description, :auto_generated => true)
+        BoostedContent.new(:url => url, :title=> title, :description => description, :auto_generated => true, :locale => 'en', :status => 'active', :publish_start_on => Date.current)
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
     end
@@ -44,7 +44,7 @@ class SuperfreshUrlToBoostedContent
     begin
       pdf_io = open(url)
       pdf = PDF::Toolkit.open(pdf_io)
-      BoostedContent.new(:url => url, :title => title_from_pdf(pdf, url), :description => pdf.to_text.read, :auto_generated => true)    
+      BoostedContent.new(:url => url, :title => title_from_pdf(pdf, url), :description => pdf.to_text.read, :auto_generated => true, :locale => 'en', :status => 'active', :publish_start_on => Date.current)
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
     end

@@ -26,6 +26,7 @@ UsasearchRails3::Application.routes.draw do
     resources :boosted_contents, :controller => "affiliates/boosted_contents" do
       collection do
         delete :destroy_all
+        get :bulk_new
         post :bulk
       end
     end

@@ -1,35 +1,33 @@
-= form_for(@boosted_content || :boosted_content, :url => @boosted_content.new_record? ? affiliate_boosted_contents_path(@affiliate) : affiliate_boosted_content_path(@affiliate, @boosted_content)) do |f|
-  %table.admin-table
-    - if @boosted_content.new_record?
-      %thead
-        %tr
-          %th
-            = "Add a New Entry"
-    %tbody
-      %tr
-        %td
-          %p
-            Fill out the metadata fields below to add a page as boosted content.
-            %br
-            Title, URL, and description are required fields.
-          = f.error_messages(:header_message => nil, :class => "error")
-          %dl
-            %dt.field-name= f.label :title
-            %dd.field-value= f.text_field :title
-            %dt.field-name= f.label :url, "URL"
-            %dd.field-value= f.text_field :url
-            %dt.field-name= f.label :description
-            %dd.field-value= f.text_area :description
-            %dt.field-name= f.label :keywords
-            %dd.field-value
-              = f.text_field :keywords
-              %br
-              %p{:style => 'font-size: 12px;'}
-                Please provide a comma-delineated list of terms that should trigger this boosted content.
-                %br
-                Use this to provide matches for terms not in the description above.
-                %br
-                (i.e. "taxes, 1099, IRS")
-          = f.hidden_field :id
-          = submit_tag "Save Boosted Content"
-          = link_to "Cancel", new_affiliate_boosted_content_path(@affiliate)
+= form.error_messages(:header_message => nil, :class => "error")
+.basic-information
+  %ul
+    %li
+      = form.label :title, "Title*"
+      = form.text_field :title, { :class => 'text', :maxlength => 255, :size => nil }
+    %li
+      = form.label :url, "URL*"
+      = form.text_field :url, { :class => 'text', :maxlength => 255, :size => nil }
+    %li
+      = form.label :description, "Description*"
+      = form.text_area :description, { :maxlength => 255, :size => nil }
+    %li
+      = form.label :locale, "Locale*", { :class => 'select' }
+      = form.select :locale, SUPPORTED_LOCALE_OPTIONS, { :include_blank => 'Select a locale' }
+    %li
+      = form.label :status, "Status*", { :class => 'select' }
+      = form.select :status, BoostedContent::STATUS_OPTIONS, { :include_blank => 'Select a status' }
+    %li
+      = form.label :keywords
+      = form.text_field :keywords, { :class => 'text', :maxlength => 255, :size => nil }
+      %p.tips
+        Please provide a comma-delimited list of terms that should trigger this boosted content.
+        %br
+        Use this to provide matches for terms not in the description above.
+        %br
+        (i.e. "taxes, 1099, IRS")
+    %li
+      = form.label :publish_start_on, "Publish start date*"
+      = form.calendar_date_select :publish_start_on, { :year_range => 0.years.ago..10.years.from_now, :class => 'date' }
+    %li
+      = form.label :publish_end_on, "Publish end date"
+      = form.calendar_date_select :publish_end_on, { :year_range => 0.years.ago..10.years.from_now, :class => 'date' }

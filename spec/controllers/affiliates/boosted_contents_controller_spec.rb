@@ -8,40 +8,101 @@ describe Affiliates::BoostedContentsController do
     BoostedContent.reindex
   end
 
-  describe "do GET on #new" do
-    it "should require affiliate login for new" do
-      get :new, :affiliate_id => affiliates(:power_affiliate).id
-      response.should redirect_to(login_path)
+  describe "#index" do
+    context "when affiliate manager is not logged in" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      before do
+        get :index, :affiliate_id => affiliate.id
+      end
+
+      it { should redirect_to(login_path) }
     end
+
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:another_affiliate) { affiliates(:another_affiliate) }
+
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :index, :affiliate_id => another_affiliate.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+      let(:boosted_contents) { mock('Boosted Contents') }
+      let(:boosted_contents_with_paginate) { mock('Boosted Contents with paginate') }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_receive(:boosted_contents).and_return(boosted_contents)
+        boosted_contents.should_receive(:paginate).with(:all, :per_page => BoostedContent.per_page, :page => nil, :order => 'updated_at DESC, id DESC').and_return(boosted_contents_with_paginate)
+
+        get :index, :affiliate_id => affiliate.id
+      end
+
+      it { should assign_to(:title).with_kind_of(String) }
+      it { should assign_to(:boosted_contents).with(boosted_contents_with_paginate) }
+      it { should respond_with(:success) }
+    end
+  end
+
+  describe "do GET on #new" do
+    context "when affiliate manager is not logged in" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      before do
+        get :new, :affiliate_id => affiliate.id
+      end
+
+      it { should redirect_to(login_path) }
+     end
 
     context "when logged in but not an affiliate manager" do
       before do
         UserSession.create(users(:affiliate_admin))
+        get :new, :affiliate_id => affiliates(:power_affiliate).id
       end
 
-      it "should require affiliate login for #new" do
-        get :new, :affiliate_id => affiliates(:power_affiliate).id
-        response.should redirect_to(home_page_path)
-      end
+      it { should redirect_to(home_page_path) }
     end
 
     context "when logged in as an affiliate manager who doesn't own the affiliate" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:another_affiliate) { affiliates(:another_affiliate) }
+
       before do
         UserSession.create(users(:affiliate_manager))
+        get :new, :affiliate_id => another_affiliate.id
       end
 
-      it "should redirect to home page" do
-        get :new, :affiliate_id => affiliates(:another_affiliate).id
-        response.should redirect_to(home_page_path)
-      end
+      it { should redirect_to(home_page_path) }
     end
 
     context "when logged in as an affiliate manager who owns the affiliate" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+      let(:boosted_content) { mock('boosted_content') }
+
       before do
-        UserSession.create(users(:affiliate_manager))
-        get :new, :affiliate_id => affiliates(:power_affiliate).id
-        response.should render_template 'affiliates/boosted_contents/new', :layout => 'account'
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:boosted_contents, :new).with(:publish_start_on => Date.current).and_return(boosted_content)
+        get :new, :affiliate_id => affiliate.id
       end
+
+      it { should assign_to(:title).with_kind_of(String) }
+      it { should assign_to(:boosted_content).with(boosted_content) }
+      it { should respond_with(:success) }
     end
   end
 
@@ -51,204 +112,484 @@ describe Affiliates::BoostedContentsController do
       response.should redirect_to(login_path)
     end
 
-    context "logged in" do
-      before :each do
-        @affiliate = affiliates(:basic_affiliate)
-        UserSession.create(@affiliate.users.first)
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:another_affiliate) { affiliates(:another_affiliate) }
+
+      before do
+        UserSession.create(users(:affiliate_manager))
+        post :create, :affiliate_id => another_affiliate.id, :boosted_content => {:url => "a url", :title => "a title", :description => "a description", :status => 'active'}
       end
 
-      it "should redirect back to new if a new site is added" do
-        post :create, :affiliate_id => @affiliate.to_param, :boosted_content => {:url => "a url", :title => "a title", :description => "a description"}
+      it { should redirect_to(home_page_path) }
+    end
 
-        response.should redirect_to new_affiliate_boosted_content_path
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested and successfully added a boosted content" do
+      let(:current_user) { users(:affiliate_manager) }
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:boosted_content) { mock_model(BoostedContent) }
 
-        @affiliate.reload
-        @affiliate.boosted_contents.length.should == 1
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+
+        affiliate.stub_chain(:boosted_contents, :build).and_return(boosted_content)
+        boosted_content.should_receive(:save).and_return(true)
+        Sunspot.should_receive(:index).with(boosted_content)
+
+        post :create, :affiliate_id => affiliate.id, :boosted_content => {:url => "a url", :title => "a title", :description => "a description", :status => 'active'}
       end
 
-      it "should render if errors" do
-        existing_boosted_content = @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
+      it { should assign_to(:boosted_content).with(boosted_content) }
+      it { should set_the_flash }
+      it { should redirect_to([affiliate, boosted_content]) }
+    end
 
-        post :create, :affiliate_id => @affiliate.to_param, :boosted_content => {:url => "a url", :description => "a description"}
-        response.should render_template(:new)
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested and failed to add a boosted content" do
+      let(:current_user) { users(:affiliate_manager) }
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:boosted_content) { mock('boosted_content') }
 
-        @affiliate.reload
-        @affiliate.boosted_contents.length.should == 1
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
 
-        assigns[:boosted_content].errors[:title].first.should == "can't be blank"
-        assigns[:boosted_contents].should == [existing_boosted_content]
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+
+        affiliate.stub_chain(:boosted_contents, :build).and_return(boosted_content)
+        boosted_content.should_receive(:save).and_return(false)
+
+        post :create, :affiliate_id => affiliate.id, :boosted_content => {:url => "a url", :title => "a title", :description => "a description", :status => 'active'}
       end
 
-      it "should render new and flash an error if adding a duplicate url" do
-        @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
-
-        post :create, :affiliate_id => @affiliate.to_param, :boosted_content => {:url => "existing url", :title => "new title", :description => "a description"}
-
-        response.should render_template(:new)
-
-        assigns[:boosted_content].errors[:url].first.should == "has already been boosted"
-        flash[:error].should =~ /problem/
-      end
-
-      it "should index the new boosted content" do
-        post :create, :affiliate_id => @affiliate.to_param, :boosted_content => {:url => "a url", :title => "a unique title", :description => "a description"}
-        BoostedContent.search_for('unique', @affiliate).total.should == 1
-      end
+      it { should assign_to(:boosted_content).with(boosted_content) }
+      it { should assign_to(:title).with_kind_of(String) }
+      it { should render_template(:new) }
     end
   end
 
-  describe "update" do
-    before :each do
-      @affiliate = affiliates(:basic_affiliate)
-      @boosted_content = @affiliate.boosted_contents.create!(:url => "a url", :title => "a title", :description => "a description", :keywords => 'one, two, three')
-      UserSession.create(@affiliate.users.first)
+  describe "#show" do
+    let(:current_user) { users(:affiliate_manager) }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:another_affiliate) { affiliates(:another_affiliate) }
+    let(:boosted_content) { mock_model(BoostedContent, { :title => 'aBoostedContent'}) }
+    let(:another_boosted_content) { mock_model(BoostedContent, { :title => 'anotherBoostedContent' }) }
+
+    context "when affiliate manager is not logged in" do
+      before do
+        get :show, :affiliate_id => affiliate.id, :id => boosted_content.id
+      end
+
+      it { should redirect_to(login_path) }
     end
 
-    it "should redirect back to new on success" do
-      post :update, :affiliate_id => @affiliate.to_param, :id => @boosted_content.to_param, :boosted_content => {:url => "new url", :title => "new title", :description => "new description", :keywords => 'four, five, six'}
-      response.should redirect_to new_affiliate_boosted_content_path
-      @boosted_content.reload
-      @boosted_content.url.should == "new url"
-      @boosted_content.title.should == "new title"
-      @boosted_content.description.should == "new description"
-      @boosted_content.keywords.should == "four, five, six"
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :show, :affiliate_id => another_affiliate.id, :id => boosted_content.id
+      end
+
+      it { should redirect_to(home_page_path) }
     end
 
-    it "should render if errors" do
-      post :update, :affiliate_id => @affiliate.to_param, :id => @boosted_content.to_param, :boosted_content => {:url => "new url", :title => "new title", :description => ""}
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested" do
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:boosted_contents, :find_by_id).and_return(boosted_content)
 
-      response.should render_template(:edit)
+        get :show, :affiliate_id => affiliate.id, :id => boosted_content.id
+      end
 
-      assigns[:boosted_content].errors[:description].first.should == "can't be blank"
+      it { should assign_to(:boosted_content).with(boosted_content) }
+      it { should assign_to(:title).with_kind_of(String) }
+      it { should respond_with(:success) }
     end
 
+    context "when logged in as an affiliate manager who belongs to the affiliate but does not have access to the boosted content" do
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:boosted_contents, :find_by_id).and_return(nil)
 
-    it "should alert error and render edit if updating to a duplicate url" do
-      @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
+        get :show, :affiliate_id => affiliate.id, :id => another_boosted_content.id
+      end
 
-      post :update, :affiliate_id => @affiliate.to_param, :id => @boosted_content.to_param, :boosted_content => {:url => "existing url", :title => "new title", :description => "a description"}
-
-      response.should render_template(:edit)
-
-      assigns[:boosted_content].errors[:url].first.should == "has already been boosted"
-      flash[:error].should =~ /problem/
-    end
-
-    it "should index the updated boosted content" do
-      post :update, :affiliate_id => @affiliate.to_param, :id => @boosted_content.to_param, :boosted_content => {:url => "new url", :title => "new updated title", :description => "new description", :keywords => 'four, five, six'}
-      BoostedContent.search_for('updated', @affiliate).total.should == 1
+      it { should redirect_to(affiliate_boosted_contents_path(affiliate)) }
     end
   end
 
-  describe "destroy" do
-    it "should delete (including from Solr), flash, and redirect" do
-      affiliate = affiliates(:basic_affiliate)
-      boosted_content = affiliate.boosted_contents.create!(:url => "a url", :title => "a title", :description => "a description")
-      UserSession.create(affiliate.users.first)
-      Sunspot.index(boosted_content)
-      Sunspot.commit
-      BoostedContent.solr_search_ids { with :affiliate_name, affiliate.name; paginate(:page => 1, :per_page => 10) }.should_not be_empty
+  describe "#edit" do
+    let(:current_user) { users(:affiliate_manager) }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:another_affiliate) { affiliates(:another_affiliate) }
+    let(:boosted_content) { mock_model(BoostedContent, { :title => 'aBoostedContent'}) }
+    let(:another_boosted_content) { mock_model(BoostedContent, { :title => 'anotherBoostedContent' }) }
 
-      post :destroy, :affiliate_id => affiliate.to_param, :id => boosted_content.to_param
+    context "when affiliate manager is not logged in" do
+      before do
+        get :edit, :affiliate_id => affiliate.id, :id => boosted_content.id
+      end
 
-      response.should redirect_to new_affiliate_boosted_content_path
-      affiliate.reload.boosted_contents.should be_empty
-      BoostedContent.solr_search_ids { with :affiliate_name, affiliate.name; paginate(:page => 1, :per_page => 10) }.should be_empty
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :edit, :affiliate_id => another_affiliate.id, :id => boosted_content.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate but does not have access to the boosted content" do
+      before do
+        UserSession.create(current_user)
+        get :edit, :affiliate_id => affiliate.id, :id => another_boosted_content.id
+      end
+
+      it { should redirect_to(affiliate_boosted_contents_path(affiliate)) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested" do
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id).and_return(boosted_content)
+
+        get :edit, :affiliate_id => affiliate.id, :id => boosted_content.id
+      end
+
+      it { should assign_to(:title).with_kind_of(String) }
+      it { should assign_to(:boosted_content).with(boosted_content) }
+    end
+  end
+
+  describe "#update" do
+    let(:current_user) { users(:affiliate_manager) }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:another_affiliate) { affiliates(:another_affiliate) }
+    let(:boosted_content) { mock_model(BoostedContent, { :title => 'aBoostedContent' }) }
+    let(:another_boosted_content) { mock_model(BoostedContent, { :title => 'anotherBoostedContent' }) }
+
+    context "when affiliate manager is not logged in" do
+      before do
+        post :update, :affiliate_id => affiliate.id, :id => boosted_content.id
+      end
+
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        post :update, :affiliate_id => another_affiliate.id, :id => boosted_content.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate but does not have access to the boosted content" do
+      before do
+        UserSession.create(current_user)
+        post :update, :affiliate_id => affiliate.id, :id => another_boosted_content.id
+      end
+
+      it { should redirect_to(affiliate_boosted_contents_path(affiliate)) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested and successfully update a boosted content" do
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id).and_return(boosted_content)
+        boosted_content.should_receive(:update_attributes).and_return(true)
+        Sunspot.should_receive(:index).with(boosted_content)
+
+        post :update, :affiliate_id => affiliate.id, :id => boosted_content.id, :boosted_content => { "title" => "hello" }
+      end
+
+      it { should assign_to(:boosted_content).with(boosted_content) }
+      it { should set_the_flash }
+      it { should redirect_to([affiliate, boosted_content]) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested and failed to update a boosted content" do
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id).and_return(boosted_content)
+        boosted_content.should_receive(:update_attributes).and_return(false)
+
+        post :update, :affiliate_id => affiliate.id, :id => boosted_content.id, :boosted_content => { "title" => "hello" }
+      end
+
+      it { should assign_to(:boosted_content).with(boosted_content) }
+      it { should assign_to(:title).with_kind_of(String) }
+      it { should render_template(:edit) }
+    end
+  end
+
+  describe "#destroy" do
+    let(:current_user) { users(:affiliate_manager) }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:another_affiliate) { affiliates(:another_affiliate) }
+    let(:boosted_content) { mock_model(BoostedContent, { :title => 'aBoostedContent' }) }
+    let(:another_boosted_content) { mock_model(BoostedContent, { :title => 'anotherBoostedContent' }) }
+
+    context "when affiliate manager is not logged in" do
+      before do
+        delete :destroy, :affiliate_id => affiliate.id, :id => boosted_content.id
+      end
+
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        delete :destroy, :affiliate_id => another_affiliate.id, :id => boosted_content.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate but does not have access to the boosted content" do
+      before do
+        UserSession.create(current_user)
+        delete :destroy, :affiliate_id => affiliate.id, :id => another_boosted_content.id
+      end
+
+      it { should redirect_to(affiliate_boosted_contents_path(affiliate)) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested and successfully delete a boosted content" do
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:boosted_contents, :find_by_id).with(boosted_content.id).and_return(boosted_content)
+        boosted_content.should_receive(:destroy)
+        boosted_content.should_receive(:solr_remove_from_index)
+
+        delete :destroy, :affiliate_id => affiliate.id, :id => boosted_content.id
+      end
+
+      it { should redirect_to(affiliate_boosted_contents_path(affiliate)) }
+      it { should set_the_flash }
+    end
+
+    context "when working with solr index" do
+      before do
+        boosted_content = affiliate.boosted_contents.create!(:url => "a url",
+                                                             :title => "a title",
+                                                             :description => "a description",
+                                                             :locale => 'en',
+                                                             :status => 'active',
+                                                             :publish_start_on => Date.current)
+        UserSession.create(affiliate.users.first)
+        Sunspot.index(boosted_content)
+        Sunspot.commit
+        BoostedContent.solr_search_ids { with :affiliate_name, affiliate.name; paginate(:page => 1, :per_page => 10) }.should_not be_empty
+
+        post :destroy, :affiliate_id => affiliate.id, :id => boosted_content.id
+      end
+
+      specify { affiliate.reload.boosted_contents.should be_empty }
+      specify { BoostedContent.solr_search_ids { with :affiliate_name, affiliate.name; paginate(:page => 1, :per_page => 10) }.should be_empty }
     end
   end
 
   describe "delete all" do
-    it "should delete all BoostedContent (including from Solr) and redirect to new" do
-      affiliate = affiliates(:basic_affiliate)
-      UserSession.create(affiliate.users.first)
-      Sunspot.index(affiliate.boosted_contents.create(:title => "first title", :description => "first description", :url => "http://url1.com"))
-      Sunspot.index(affiliate.boosted_contents.create(:title => "second title", :description => "second description", :url => "http://url2.com"))
-      Sunspot.commit
+    let(:current_user) { users(:affiliate_manager) }
+    let(:affiliate) { affiliates(:basic_affiliate) }
+    let(:another_affiliate) { affiliates(:another_affiliate) }
+    let(:boosted_content) { mock_model(BoostedContent, { :title => 'aBoostedContent' }) }
+    let(:another_boosted_content) { mock_model(BoostedContent, { :title => 'anotherBoostedContent' }) }
 
-      post :destroy_all, :affiliate_id => affiliate.to_param
+    context "when affiliate manager is not logged in" do
+      before do
+        post :destroy_all, :affiliate_id => affiliate.id
+      end
 
-      response.should redirect_to(new_affiliate_boosted_content_path)
+      it { should redirect_to(login_path) }
+    end
 
-      affiliate.reload.boosted_contents.should be_empty
-      BoostedContent.solr_search_ids { with :affiliate_name, affiliate.name; paginate(:page => 1, :per_page => 10) }.should be_empty
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        post :destroy_all, :affiliate_id => another_affiliate.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested and successfully delete all boosted contents" do
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:boosted_contents, :each).once.and_yield(boosted_content)
+        boosted_content.should_receive(:delete)
+        boosted_content.should_receive(:solr_remove_from_index)
+
+        post :destroy_all, :affiliate_id => another_affiliate.id
+      end
+
+      it { should redirect_to(affiliate_boosted_contents_path(affiliate)) }
+      it { should set_the_flash }
+    end
+
+    context "when working with solr index" do
+      before do
+        UserSession.create(affiliate.users.first)
+        Sunspot.index(affiliate.boosted_contents.create!(:title => "first title",
+                                                         :description => "first description",
+                                                         :url => "http://url1.com",
+                                                         :locale => 'en',
+                                                         :status => 'active',
+                                                         :publish_start_on => Date.current))
+        Sunspot.index(affiliate.boosted_contents.create!(:title => "second title",
+                                                         :description => "second description",
+                                                         :url => "http://url2.com",
+                                                         :locale => 'en',
+                                                         :status => 'active',
+                                                         :publish_start_on => Date.current))
+        Sunspot.commit
+
+        post :destroy_all, :affiliate_id => affiliate.to_param
+      end
+
+      specify { affiliate.reload.boosted_contents.should be_empty }
+      specify { BoostedContent.solr_search_ids { with :affiliate_name, affiliate.name; paginate(:page => 1, :per_page => 10) }.should be_empty }
+    end
+  end
+
+  describe "do GET on #bulk_new" do
+    context "when affiliate manager is not logged in" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      before do
+        get :bulk_new, :affiliate_id => affiliate.id
+      end
+
+      it { should redirect_to(login_path) }
+     end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+        get :bulk_new, :affiliate_id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who doesn't own the affiliate" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:another_affiliate) { affiliates(:another_affiliate) }
+
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :bulk_new, :affiliate_id => another_affiliate.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who owns the affiliate" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        get :bulk_new, :affiliate_id => affiliate.id
+      end
+
+      it { should assign_to(:title).with_kind_of(String) }
+      it { should respond_with(:success) }
     end
   end
 
   describe "bulk upload" do
-    before :each do
-      @affiliate = affiliates(:basic_affiliate)
-      UserSession.create(@affiliate.users.first)
-      @xml = StringIO.new("xml")
+    context "when affiliate manager is not logged in" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:xml) { StringIO.new("xml") }
+
+      before do
+        post :bulk, :affiliate_id => affiliate.id, :xml_file => xml
+      end
+
+      it { should redirect_to(login_path) }
+     end
+
+    context "when logged in but not an affiliate manager" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:xml) { StringIO.new("xml") }
+
+      before do
+        UserSession.create(users(:affiliate_admin))
+        post :bulk, :affiliate_id => affiliate.id, :xml_file => xml
+      end
+
+      it { should redirect_to(home_page_path) }
     end
 
-    it "should process the xml file and redirect to new" do
-      BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(@affiliate, @xml).and_return({:created => 4, :updated => 2})
+    context "when logged in as an affiliate manager who doesn't own the affiliate" do
+      let(:another_affiliate) { affiliates(:another_affiliate) }
+      let(:xml) { StringIO.new("xml") }
 
-      post :bulk, :affiliate_id => @affiliate.to_param, :xml_file => @xml
+      before do
+        UserSession.create(users(:affiliate_manager))
+        post :bulk, :affiliate_id => another_affiliate.id, :xml_file => xml
+      end
 
-      response.should redirect_to new_affiliate_boosted_content_path
-
-      flash[:success].should =~ /4 Boosted Content entries successfully created/
-      flash[:success].should =~ /2 Boosted Content entries successfully updated/
+      it { should redirect_to(home_page_path) }
     end
 
-    it "should send html_safe on flash[:success]" do
-      BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(@affiliate, @xml).and_return({:created => 4, :updated => 2})
-      post :bulk, :affiliate_id => @affiliate.to_param, :xml_file => @xml
-      response.should redirect_to new_affiliate_boosted_content_path
-      flash[:success].should be_html_safe
+    context "when logged in as an affiliate manager who owns the affiliate and successfully bulk upload boosted contents" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:xml) { StringIO.new("xml") }
+
+      before do
+        UserSession.create(users(:affiliate_manager))
+        BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(affiliate, xml).and_return({:created => 4, :updated => 2})
+        post :bulk, :affiliate_id => affiliate.id, :xml_file => xml
+      end
+
+      it { should redirect_to(affiliate_boosted_contents_path(affiliate)) }
+      it { should set_the_flash.to(/4 Boosted Content entries successfully created/) }
+      it { should set_the_flash.to(/2 Boosted Content entries successfully updated/) }
     end
 
-    it "should notify if errors" do
-      @affiliate.boosted_contents.create!(:url => "existing url", :title => "a title", :description => "a description")
+    context "when logged in as an affiliate manager who owns the affiliate and failed to bulk upload boosted contents" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:xml) { StringIO.new("xml") }
 
-      BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(@affiliate, @xml).and_return(false)
+      before do
+        UserSession.create(users(:affiliate_manager))
+        BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(affiliate, xml).and_return(false)
+        post :bulk, :affiliate_id => affiliate.id, :xml_file => xml
+      end
 
-      post :bulk, :affiliate_id => @affiliate.to_param, :xml_file => @xml
-
-      response.should redirect_to(new_affiliate_boosted_content_path)
-      flash[:error].should =~ /could not be processed/
+      it { should render_template(:bulk_new) }
+      it { should set_the_flash.to(/could not be processed/) }
     end
   end
-
-  describe "lots of bulk content" do
-    before :each do
-      @affiliate = affiliates(:basic_affiliate)
-      UserSession.create(@affiliate.users.first)
-      @original_max = Affiliates::BoostedContentsController::MAX_TO_DISPLAY
-      @original_to_display = Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX
-      silently do
-        Affiliates::BoostedContentsController::MAX_TO_DISPLAY = 3
-        Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX = 2
-      end
-    end
-
-    after :each do
-      silently do
-        Affiliates::BoostedContentsController::MAX_TO_DISPLAY = @original_max_boosted_content
-        Affiliates::BoostedContentsController::NUMBER_TO_DISPLAY_IF_ABOVE_MAX = @original_to_display
-      end
-    end
-
-    it "should load limited content if the total exceeds the max" do
-      boosted_contents = (0..3).collect { |i| @affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url#{i}.com") }
-
-      get :new, :affiliate_id => @affiliate.to_param
-      response.should be_success
-
-      assigns(:boosted_content_count).should == 4
-      assigns(:boosted_contents).should == [boosted_contents[3], boosted_contents[2]]
-    end
-
-    it "load all if below the max" do
-      boosted_contents = (0..2).collect { |i| @affiliate.boosted_contents.create(:title => "a title", :description => "a description", :url => "http://url#{i}.com") }
-
-      get :new, :affiliate_id => @affiliate.to_param
-      response.should be_success
-
-      assigns(:boosted_content_count).should == 3
-      assigns(:boosted_contents).should =~ boosted_contents
-    end
-  end
-
 end
