@@ -128,6 +128,14 @@ class Search
     [formatted_query, sources, offset, results_per_page, enable_highlighting, filter_setting].join(':')
   end
 
+  def has_boosted_contents?
+    self.boosted_contents and self.boosted_contents.total > 0
+  end
+
+  def has_featured_collections?
+    self.featured_collections and self.featured_collections.total > 0
+  end
+
   protected
 
   def related_search_results

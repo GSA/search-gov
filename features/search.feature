@@ -84,7 +84,26 @@ Feature: Search
     When I fill in "query" with "hello"
     And I press "Buscar"
     And I should not see "Some Unique Related Term"
-    
+
+  Scenario: Site visitor sees both boosted result and featured collection for a given search
+    Given the following Boosted Content entries exist:
+      | title              | url                    | description                          |
+      | Our Emergency Page | http://www.aff.gov/911 | Updated information on the emergency |
+      | FAQ Emergency Page | http://www.aff.gov/faq | More information on the emergency    |
+    Given the following featured collections exist:
+      | title                    | locale | status |
+      | Emergency & Safety Pages | en     | active |
+    And the following featured collection links exist for featured collection titled "Emergency & Safety Pages":
+      | title          | url                               |
+      | Emergency Info | http://www.agency.org/emergency/1 |
+      | Safety Info    | http://www.agency.org/safety/1    |
+    And I am on the homepage
+    And I fill in "query" with "emergency"
+    And I press "Search"
+    Then I should see "Our Emergency Page" in the boosted contents section
+    And I should see "FAQ Emergency Page" in the boosted contents section
+    And I should see "Emergency & Safety Pages" in the featured collections section
+
   Scenario: Site visitor sees relevant boosted results for given search  
     Given the following Boosted Content entries exist:
       | title               | url                     | description                               | 

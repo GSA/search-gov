@@ -10,7 +10,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:recalls)
     @search.stub!(:extra_image_results)
     @search.stub!(:results).and_return []
-    @search.stub!(:boosted_contents).and_return nil
+    @search.stub!(:has_boosted_contents?).and_return false
     @search.stub!(:faqs).and_return nil
     @search.stub!(:gov_forms).and_return nil
     @search.stub!(:spotlight).and_return nil
@@ -20,7 +20,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:fedstates).and_return nil
     @search.stub!(:agency).and_return nil
     @search.stub!(:med_topic).and_return nil
-    @search.stub!(:featured_collections).and_return nil
+    @search.stub!(:has_featured_collections?).and_return false
     assign(:search, @search)
   end
 

@@ -1333,3 +1333,24 @@ Feature: Affiliate clients
    When I go to aff.gov's search page
    Then I should not see the page with Webtrends tag
 
+  Scenario: Site visitor sees both boosted result and featured collection for a given search
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | exclude_webtrends |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true              |
+    And the following Boosted Content entries exist for the affiliate "aff.gov"
+      | title              | url                    | description                          |
+      | Our Emergency Page | http://www.aff.gov/911 | Updated information on the emergency |
+      | FAQ Emergency Page | http://www.aff.gov/faq | More information on the emergency    |
+    Given the following featured collections exist for the affiliate "aff.gov":
+      | title                    | locale | status |
+      | Emergency & Safety Pages | en     | active |
+    And the following featured collection links exist for featured collection titled "Emergency & Safety Pages":
+      | title          | url                               |
+      | Emergency Info | http://www.agency.org/emergency/1 |
+      | Safety Info    | http://www.agency.org/safety/1    |
+    And I am on aff.gov's search page
+    And I fill in "query" with "emergency"
+    And I press "Search"
+    Then I should see "Our Emergency Page" in the boosted contents section
+    And I should see "FAQ Emergency Page" in the boosted contents section
+    And I should see "Emergency & Safety Pages" in the featured collections section

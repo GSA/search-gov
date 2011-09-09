@@ -13,7 +13,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:total).and_return 20
     @search.stub!(:page).and_return 0
     @search.stub!(:spotlight)
-    @search.stub!(:boosted_contents)
+    @search.stub!(:has_boosted_contents?)
     @search.stub!(:faqs)
     @search.stub!(:gov_forms)
     @search.stub!(:scope_id)
@@ -22,7 +22,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:agency)
     @search.stub!(:extra_image_results)
     @search.stub!(:med_topic)
-    @search.stub!(:featured_collections)
+    @search.stub!(:has_featured_collections?)
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'
     @deep_link.stub!(:url).and_return 'http://adeeplink.com'
@@ -77,7 +77,8 @@ describe "shared/_searchresults.html.haml" do
         @search.stub!(:affiliate).and_return @affiliate
 
         stub_template "shared/_featured_collections.html.haml" => "featured collections"
-        @search.stub!(:featured_collections).and_return(mock('solr', :total => 1, :hits => [@hit]))
+        @search.stub!(:has_boosted_contents?).and_return(false)
+        @search.stub!(:has_featured_collections?).and_return(true)
 
         view.stub!(:search).and_return @search
       end
@@ -106,7 +107,7 @@ describe "shared/_searchresults.html.haml" do
       
       context "when boosted contents are present" do
         before do
-          @search.stub!(:boosted_contents).and_return [mock(BoostedContent)]
+          @search.should_not_receive(:has_boosted_contents?)
         end
         
         it "should not show boosted contents" do
@@ -117,8 +118,7 @@ describe "shared/_searchresults.html.haml" do
 
       context "when featured collections are present" do
         before do
-          @search.stub!(:featured_collections).and_return(mock('solr', :total => 1, :hits => [mock('hit')]))
-          stub_template "shared/_featured_collections.html.haml" => "featured collections"
+          @search.should_not_receive(:has_featured_collections?)
         end
 
         it "should not show featured collections" do
@@ -168,6 +168,7 @@ describe "shared/_searchresults.html.haml" do
         boosted_content.delete
         boosted_contents_results = BoostedContent.search_for("test")
         boosted_contents_results.hits.first.instance.should be_nil
+        @search.stub!(:has_boosted_contents?).and_return(true)
         @search.stub!(:boosted_contents).and_return boosted_contents_results
         view.stub!(:search).and_return @search
       end
@@ -175,6 +176,7 @@ describe "shared/_searchresults.html.haml" do
       it "should render the page without an error, and without boosted Contents" do
         render
         rendered.should have_selector('div#boosted', :content => "")
+        rendered.should_not have_selector('div#boosted .searchresult')
       end
     end
 
