@@ -301,15 +301,24 @@ Feature: Featured Collections
     And I press "Search"
     Then I should see "featured collection with publish_end_date"
 
-  Scenario: Search.USA.gov user should not see featured collection outside publish date range
+  Scenario: Search.USA.gov user should see only active featured collection within publish date range
     Given the following featured collections exist:
       | title                        | locale | status | publish_start_on | publish_end_on |
       | expired1 featured collection | en     | active |                  | yesterday      |
       | expired2 featured collection | en     | active | prev_month       | yesterday      |
       | future1 featured collection  | en     | active | tomorrow         | next_month     |
       | future2 featured collection  | en     | active | tomorrow         |                |
+      | current1 weather             | en     | active | today            |                |
+      | current2                     | en     | active | today            |                |
+    And the following featured collection links exist for featured collection titled "current2":
+      | title            | url                     |
+      | current2 weather | http://www.agency.gov/1 |
     When I go to the homepage
-    And I fill in "query" with "expired1"
+    And I fill in "query" with "weather"
+    And I press "Search"
+    Then I should see "current1 weather" in the featured collections section
+    And I should not see "current2" in the featured collections section
+    When I fill in "query" with "expired1"
     And I press "Search"
     Then I should not see "expired1 featured collection"
     When I fill in "query" with "expired2"
@@ -326,7 +335,6 @@ Feature: Featured Collections
     Given the following featured collections exist:
       | title                   | locale | status |
       | high 1 weight           | en     | active |
-      | high 2 weight           | en     | active |
       | lower 1 with link title | en     | active |
     And the following featured collection links exist for featured collection titled "lower 1 with link title":
       | title          | url                     |
@@ -335,7 +343,6 @@ Feature: Featured Collections
     And I fill in "query" with "weight"
     And I press "Search"
     Then I should see "high 1 weight" in the featured collections section
-    And I should see "high 2 weight" in the featured collections section
     And I should not see "lower 1" in the featured collections section
 
   Scenario: Search.USA.gov user should see featured collections with lower weight
@@ -343,22 +350,17 @@ Feature: Featured Collections
       | title                   | locale | status |
       | lowest 1 with keywords  | en     | active |
       | lower 1 with link title | en     | active |
-      | lower 2 with link title | en     | active |
     And the following featured collection keywords exist for featured collection titled "lowest 1 with keywords":
       | value           |
       | lowest weight 1 |
     And the following featured collection links exist for featured collection titled "lower 1 with link title":
       | title          | url                     |
       | lower weight 1 | http://www.agency.org/1 |
-    And the following featured collection links exist for featured collection titled "lower 2 with link title":
-      | title          | url                     |
-      | lower weight 2 | http://www.agency.org/2 |
     And all featured collections are indexed
     When I go to the homepage
     And I fill in "query" with "weight"
     And I press "Search"
     Then I should see "lower 1" in the featured collections section
-    And I should see "lower 2" in the featured collections section
     And I should not see "lowest 1" in the featured collections section
 
   Scenario: Search.USA.gov user should see featured collections with lowest weight
@@ -366,13 +368,9 @@ Feature: Featured Collections
       | title                   | locale | status |
       | lower 1 with link title | en     | active |
       | lowest 1 with keywords  | en     | active |
-      | lowest 2 with keywords  | en     | active |
     And the following featured collection keywords exist for featured collection titled "lowest 1 with keywords":
       | value           |
       | lowest weight 1 |
-    And the following featured collection keywords exist for featured collection titled "lowest 2 with keywords":
-      | value           |
-      | lowest weight 2 |
     And the following featured collection links exist for featured collection titled "lower 1 with link title":
       | title   | url                     |
       | lower 1 | http://www.agency.org/1 |
@@ -381,7 +379,6 @@ Feature: Featured Collections
     And I fill in "query" with "weight"
     And I press "Search"
     Then I should see "lowest 1" in the featured collections section
-    And I should see "lowest 2" in the featured collections section
     And I should not see "lower 1" in the featured collections section
 
   Scenario: Search.USA.gov user should see featured collections with highlighted title and link titles

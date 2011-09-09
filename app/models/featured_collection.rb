@@ -88,7 +88,7 @@ class FeaturedCollection < ActiveRecord::Base
           keywords query do
             highlight :title, :link_titles, :fragment_size => 0
           end
-          paginate :page => 1, :per_page => 2
+          paginate :page => 1, :per_page => 1
         end
       rescue => e
         Rails.logger.error "#{e.message}\n#{e.backtrace.join("\n")}" if Rails.env.development?

@@ -368,7 +368,6 @@ Feature: Featured Collections
     And the following featured collections exist for the affiliate "site.gov":
       | title                   | locale | status |
       | high 1 weight           | en     | active |
-      | high 2 weight           | en     | active |
       | lower 1 with link title | en     | active |
     And the following featured collection links exist for featured collection titled "lower 1 with link title":
       | title          | url                     |
@@ -377,7 +376,6 @@ Feature: Featured Collections
     And I fill in "query" with "weight"
     And I press "Search"
     Then I should see "high 1 weight" in the featured collections section
-    And I should see "high 2 weight" in the featured collections section
     And I should not see "lower 1" in the featured collections section
 
   Scenario: Affiliate search user should see featured collections with lower weight
@@ -388,22 +386,17 @@ Feature: Featured Collections
       | title                   | locale | status |
       | lowest 1 with keywords  | en     | active |
       | lower 1 with link title | en     | active |
-      | lower 2 with link title | en     | active |
     And the following featured collection keywords exist for featured collection titled "lowest 1 with keywords":
       | value           |
       | lowest weight 1 |
     And the following featured collection links exist for featured collection titled "lower 1 with link title":
       | title          | url                     |
       | lower weight 1 | http://www.agency.org/1 |
-    And the following featured collection links exist for featured collection titled "lower 2 with link title":
-      | title          | url                     |
-      | lower weight 2 | http://www.agency.org/2 |
     And all featured collections are indexed
     When I go to site.gov's search page
     And I fill in "query" with "weight"
     And I press "Search"
     Then I should see "lower 1" in the featured collections section
-    And I should see "lower 2" in the featured collections section
     And I should not see "lowest 1" in the featured collections section
 
   Scenario: Affiliate search user should see featured collections with lowest weight
@@ -414,13 +407,9 @@ Feature: Featured Collections
       | title                   | locale | status |
       | lower 1 with link title | en     | active |
       | lowest 1 with keywords  | en     | active |
-      | lowest 2 with keywords  | en     | active |
     And the following featured collection keywords exist for featured collection titled "lowest 1 with keywords":
       | value           |
       | lowest weight 1 |
-    And the following featured collection keywords exist for featured collection titled "lowest 2 with keywords":
-      | value           |
-      | lowest weight 2 |
     And the following featured collection links exist for featured collection titled "lower 1 with link title":
       | title   | url                     |
       | lower 1 | http://www.agency.org/1 |
@@ -429,7 +418,6 @@ Feature: Featured Collections
     And I fill in "query" with "weight"
     And I press "Search"
     Then I should see "lowest 1" in the featured collections section
-    And I should see "lowest 2" in the featured collections section
     And I should not see "lower 1" in the featured collections section
 
   Scenario: Affiliate search user should see featured collections with highlighted title and link titles

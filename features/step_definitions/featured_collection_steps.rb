@@ -1,10 +1,12 @@
 Given /^the following featured collections exist:$/ do |table|
   table.hashes.each_with_index do |hash, index|
     publish_start_on = hash['publish_start_on']
-    publish_start_on = Date.current.send(publish_start_on.to_sym) if publish_start_on.present? and publish_start_on =~ /^[a-zA-Z]*$/
+    publish_start_on = Date.current if publish_start_on == 'today'
+    publish_start_on = Date.current.send(publish_start_on.to_sym) if publish_start_on.present? and publish_start_on =~ /^[a-zA-Z_]*$/
 
     publish_end_on = hash['publish_end_on']
-    publish_end_on = Date.current.send(publish_end_on.to_sym) if publish_end_on.present? and publish_end_on =~ /^[a-zA-Z]*$/
+    publish_end_on = Date.current if publish_end_on == 'today'
+    publish_end_on = Date.current.send(publish_end_on.to_sym) if publish_end_on.present? and publish_end_on =~ /^[a-zA-Z_]*$/
 
     featured_collection = FeaturedCollection.new(:title => hash['title'],
                                                  :title_url => hash['title_url'],
@@ -29,10 +31,12 @@ Given /^the following featured collections exist for the affiliate "([^"]*)":$/ 
   affiliate = Affiliate.find_by_name(affiliate_name)
   table.hashes.each_with_index do |hash, index|
     publish_start_on = hash['publish_start_on']
-    publish_start_on = Date.current.send(publish_start_on.to_sym) if publish_start_on.present? and publish_start_on =~ /^[a-zA-Z]*$/
+    publish_start_on = Date.current if publish_start_on == 'today'
+    publish_start_on = Date.current.send(publish_start_on.to_sym) if publish_start_on.present? and publish_start_on =~ /^[a-zA-Z_]*$/
 
     publish_end_on = hash['publish_end_on']
-    publish_end_on = Date.current.send(publish_end_on.to_sym) if publish_end_on.present? and publish_end_on =~ /^[a-zA-Z]*$/
+    publish_end_on = Date.current if publish_end_on == 'today'
+    publish_end_on = Date.current.send(publish_end_on.to_sym) if publish_end_on.present? and publish_end_on =~ /^[a-zA-Z_]*$/
 
     featured_collection = affiliate.featured_collections.build(:title => hash['title'],
                                                                :title_url => hash['title_url'],
