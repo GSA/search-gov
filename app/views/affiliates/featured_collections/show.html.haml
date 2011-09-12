@@ -1,6 +1,6 @@
 .show-featured-collection
-  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Featured Collection: #{@featured_collection.title}"])
-  %h1 Featured Collection: #{@featured_collection.title}
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Featured Collection"])
+  %h1 Featured Collection
   %table
     %colgroup
       %col{ :class => 'name' }

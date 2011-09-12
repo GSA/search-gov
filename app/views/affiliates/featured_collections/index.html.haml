@@ -13,6 +13,8 @@
         %tr
           %th{ :colspan => 5 }
             = link_to "Add new featured collection", new_affiliate_featured_collection_path(@affiliate), :class => 'add-link'
+            - unless @featured_collections.blank?
+              %span= page_entries_info @featured_collections, :html => false
       %tbody
         %tr.column-header
           %th Title

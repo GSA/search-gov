@@ -20,6 +20,7 @@ Feature: Featured Collections
     Then I should see the browser page titled "Featured Collections"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collections
     And I should see "Featured Collections" in the page header
+    And I should see "Displaying 1 featured collection"
     And I should see "Add new featured collection"
     And I should see "Lorem ipsum dolor sit amet,..."
     And I should see "07/01/2011"
@@ -29,7 +30,8 @@ Feature: Featured Collections
       | locale | status |
       | en     | active |
     And I go to the site.gov's featured collections page
-    Then I should see "20" featured collections
+    Then I should see "Displaying featured collections 1 - 20 of 31 in total"
+    And I should see "20" featured collections
     When I follow "Next"
     Then I should see "random title 20"
 
@@ -66,8 +68,8 @@ Feature: Featured Collections
     And I press "Add"
     Then I should see "Feature Collection successfully created"
     And I should see the browser page titled "Featured Collection: 2010 Atlantic Hurricane Season"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection: 2010 Atlantic Hurricane Season
-    And I should see "Featured Collection: 2010 Atlantic Hurricane Season" in the page header
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
+    And I should see "Featured Collection" in the page header
     And I should see "2010 Atlantic Hurricane Season"
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see "English"
@@ -112,7 +114,6 @@ Feature: Featured Collections
     And I should see "Locale must be selected"
     And I should see "Status must be selected"
     And I should see "Layout must be selected"
-    And I should see "One or more keywords are required"
     And I should see "Publish end date can't be before publish start date"
     And I should see "Image file size must be under 512 KB"
     And I should see "Featured collection links title can't be blank"
@@ -151,7 +152,7 @@ Feature: Featured Collections
     And the "Layout*" field should contain "one column"
 
     When I follow "Cancel"
-    Then I should see "Featured Collection: Worldwide Tropical Cyclone Names" in the page header
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
 
     When I follow "Edit"
     And I fill in the following:
@@ -168,8 +169,8 @@ Feature: Featured Collections
     And I press "Update"
     Then I should see "Featured Collection successfully updated."
     And I should see the browser page titled "Featured Collection: Australian Tropical Cyclone"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection: Australian Tropical Cyclone
-    And I should see "Featured Collection: Australian Tropical Cyclone" in the page header
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
+    And I should see "Featured Collection" in the page header
     And I should see "Two column"
     And I should see "typhoon"
     And I should see "cyclone"
@@ -238,7 +239,6 @@ Feature: Featured Collections
     And I should see "Status must be selected"
     And I should see "Layout must be selected"
     And I should see "Publish end date can't be before publish start date"
-    And I should see "One or more keywords are required"
     And I should see "Image file size must be under 512 KB"
     And I should see "Featured collection links title can't be blank"
     And I should see "Featured collection links url can't be blank"

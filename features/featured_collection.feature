@@ -20,6 +20,7 @@ Feature: Featured Collections
     And I follow "Search.USA.gov Featured Collections"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections
     And I should see "Search.USA.gov Featured Collections" in the page header
+    And I should see "Displaying 1 featured collection"
     And I should see "Add new featured collection"
     And I should see "Lorem ipsum dolor sit amet, consectetur adipiscing elit cras..."
     And I should see "07/01/2011"
@@ -30,7 +31,8 @@ Feature: Featured Collections
       | locale | status |
       | en     | active |
     And I go to the admin featured collections page
-    Then I should see "20" featured collections
+    Then I should see "Displaying featured collections 1 - 20 of 31 in total"
+    And I should see "20" featured collections
     When I follow "Next"
     Then I should see "random title 20"
 
@@ -104,7 +106,6 @@ Feature: Featured Collections
     And I should see "Locale must be selected"
     And I should see "Status must be selected"
     And I should see "Layout must be selected"
-    And I should see "One or more keywords are required"
     And I should see "Publish end date can't be before publish start date"
     And I should see "Image file size must be under 512 KB"
     And I should see "Featured collection links title can't be blank"
@@ -219,7 +220,6 @@ Feature: Featured Collections
     And I should see "Status must be selected"
     And I should see "Layout must be selected"
     And I should see "Publish end date can't be before publish start date"
-    And I should see "One or more keywords are required"
     And I should see "Image file size must be under 512 KB"
     And I should see "Featured collection links title can't be blank"
     And I should see "Featured collection links url can't be blank"

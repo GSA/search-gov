@@ -14,7 +14,6 @@ class FeaturedCollection < ActiveRecord::Base
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
   validates_inclusion_of :layout, :in => LAYOUTS, :message => 'must be selected'
-  validate :minimum_keywords
   validate :publish_start_and_end_dates
   validates_attachment_size :image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   validates_attachment_content_type :image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
@@ -114,12 +113,6 @@ class FeaturedCollection < ActiveRecord::Base
   end
 
   private
-  def minimum_keywords
-    errors.add(:base, "One or more keywords are required") unless self.featured_collection_keywords.detect do |keyword|
-      keyword.value.present? and !keyword.marked_for_destruction?
-    end
-  end
-
   def publish_start_and_end_dates
     start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?
     end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?

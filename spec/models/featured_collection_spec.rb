@@ -34,11 +34,6 @@ describe FeaturedCollection do
   it { should have_many(:featured_collection_keywords).dependent(:destroy) }
   it { should have_many(:featured_collection_links).dependent(:destroy) }
 
-  it "should have one or more keywords" do
-    featured_collection = FeaturedCollection.create(:title => 'test title', :locale => 'en', :status => 'active', :layout => 'one column')
-    featured_collection.errors.full_messages.join.should =~ /One or more keywords are required/
-  end
-
   it "should not allow publish start date before publish end date" do
     featured_collection = FeaturedCollection.create(:title => 'test title',
                                                     :locale => 'en',
