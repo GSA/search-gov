@@ -105,8 +105,8 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
       SuperfreshUrlToBoostedContent.perform(@superfresh_url.url, @aff.id)
       boosted_content = @aff.boosted_contents.find_by_url(@superfresh_url.url)
       boosted_content.should_not be_nil
-      boosted_content.title.should == "This is a pdf file"
-      boosted_content.description.should == "This is a pdf file. It's here to test out our PDF code.\n\n\f"
+      boosted_content.title.should == "This is a test PDF to test our PDF parsing"
+      boosted_content.description.should == "This is a test PDF to test our PDF parsing.\n\n\f"
       boosted_content.url.should == @superfresh_url.url
     end
     
