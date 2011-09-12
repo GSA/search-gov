@@ -6,10 +6,10 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
   def index
     @title = "Query Logs - "
     @num_results_dqs = (request["num_results_dqs"] || "10").to_i
-    @day_being_shown = request["day"].blank? ? DailyQueryStat.most_recent_populated_date(@affiliate.name) : request["day"].to_date
-    @most_recent_day_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs, @affiliate.name)
-    @trailing_week_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 7, @num_results_dqs, @affiliate.name)
-    @trailing_month_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 30, @num_results_dqs, @affiliate.name)
+    @day_being_shown = request["day"].blank? ? DailyPopularQuery.most_recent_populated_date(@affiliate) : request["day"].to_date
+    @most_recent_day_popular_terms = DailyPopularQuery.find_all_by_affiliate_id_and_day_and_time_frame_and_is_grouped(@affiliate.id, @day_being_shown, 1, false, :limit => @num_results_dqs, :order => 'times DESC')
+    @trailing_week_popular_terms = DailyPopularQuery.find_all_by_affiliate_id_and_day_and_time_frame_and_is_grouped(@affiliate.id, @day_being_shown, 7, false, :limit => @num_results_dqs, :order => 'times DESC')
+    @trailing_month_popular_terms = DailyPopularQuery.find_all_by_affiliate_id_and_day_and_time_frame_and_is_grouped(@affiliate.id, @day_being_shown, 30, false, :limit => @num_results_dqs, :order => 'times DESC')
     @start_date = 1.month.ago.to_date
     @end_date = Date.yesterday
   end

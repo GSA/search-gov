@@ -7,11 +7,9 @@ Feature: Analytics Homepage
 
   Scenario: Viewing the homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And there is analytics data from "20090901" thru "20090911"
-    And there is popular query data from "20090901" thru "20090911"
+    And there is analytics data from "20090901" thru "20090911" for affiliate "usasearch.gov"
     When I am on the analytics homepage
-    Then I should not see a link to "Twitter"
-    And I should see "Analytics Center" link in the main navigation bar
+    Then I should see "Analytics Center" link in the main navigation bar
     And I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center
     When I follow "Analytics Center" in the main navigation bar
     Then I should be on the analytics homepage
@@ -19,23 +17,23 @@ Feature: Analytics Homepage
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Queries
     And I should see "Data for September 11, 2009"
     And I should see "Most Popular Queries"
-    And in "dqs1" I should see "aaaa"
-    And in "dqs7" I should see "aaaa"
-    And in "dqs30" I should see "aaaa"
+    And in "dqs1" I should see "most popular 1 aaaa"
+    And in "dqs7" I should see "most popular 7 aaaa"
+    And in "dqs30" I should see "most popular 30 aaaa"
     And I should see "Top Movers"
-    And in "qas0" I should see "aaaa"
-    And in "qas1" I should see "aaah"
-    And in "qas2" I should see "aaao"
+    And in "qas0" I should see "top mover aaaa"
+    And in "qas1" I should see "top mover aaah"
+    And in "qas2" I should see "top mover aaao"
     And I should see "No Results Queries"
     And in "nrq0" I should see "gobbledegook aaaa"
     And in "nrq1" I should see "gobbledegook aaah"
     And in "nrq2" I should see "gobbledegook aaao"
-    When I follow "aaaa"
+    When I follow "most popular 1 aaaa"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Query Timeline
 
   Scenario: No daily query stats available for any time period
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And there are no daily query stats
+    And there are no daily popular query stats
     When I am on the analytics homepage
     And I follow "Queries"
     Then in "dqs1" I should see "Not enough historic data"

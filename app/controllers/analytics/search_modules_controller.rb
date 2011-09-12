@@ -8,6 +8,6 @@ class Analytics::SearchModulesController < Analytics::AnalyticsController
     @affiliate_pick = request["affiliate_pick"].blank? ? nil : request["affiliate_pick"]
     @vertical_pick = request["vertical_pick"].blank? ? nil : request["vertical_pick"]
     @search_module_stats = DailySearchModuleStat.
-      module_stats_for_daterange_and_affiliate_and_locale(@start_date..@end_date, @affiliate_pick, @locale_pick, @vertical_pick)
+      module_stats_for_daterange(@start_date..@end_date, @affiliate_pick, @locale_pick, @vertical_pick)
   end
 end

@@ -135,7 +135,7 @@ describe Analytics::SearchModulesController do
         affiliate = "usasearch.gov"
         locale = "en"
         vertical = "web"
-        DailySearchModuleStat.should_receive(:module_stats_for_daterange_and_affiliate_and_locale).with(start_date.to_date..end_date.to_date, affiliate, locale, vertical).and_return "foo"
+        DailySearchModuleStat.should_receive(:module_stats_for_daterange).with(start_date.to_date..end_date.to_date, affiliate, locale, vertical).and_return "foo"
         get :index, :start_date => start_date, :end_date => end_date, :affiliate_pick => affiliate, :locale_pick => locale, :vertical_pick => vertical
         assigns[:search_module_stats].should == "foo"
       end

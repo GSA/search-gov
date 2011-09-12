@@ -1,9 +1,9 @@
 Then /^in "(.*)" I should see "(.*)"$/ do |id, text|
-  page.should have_selector("##{id}", :content => text)
+  page.should have_selector("##{id}", :text => text)
 end
 
 Then /^in "(.*)" I should not see "(.*)"$/ do |id, text|
-  page.should_not have_selector("##{id}", :content => text)
+  page.should_not have_selector("##{id}", :text => text)
 end
 
 Then /^I should land on (.+)$/ do |page_name|

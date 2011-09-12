@@ -208,7 +208,8 @@ ActiveRecord::Schema.define(:version => 20110912222019) do
     t.integer "clicks",         :null => false
   end
 
-  add_index "daily_search_module_stats", ["module_tag", "day"], :name => "index_daily_search_module_stats_on_module_tag_and_day"
+  add_index "daily_search_module_stats", ["day", "affiliate_name", "module_tag", "vertical", "locale"], :name => "dics_unique", :unique => true
+  add_index "daily_search_module_stats", ["day", "module_tag"], :name => "day_module"
 
   create_table "daily_usage_stats", :force => true do |t|
     t.date     "day"

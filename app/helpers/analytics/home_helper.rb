@@ -32,20 +32,6 @@ module Analytics::HomeHelper
     raw html
   end
 
-  def display_most_recent_daily_query_stat_date_available(day, affiliate = nil)
-    return "Query data currently unavailable" if day.nil?
-    current_day = content_tag(:span, day.to_s(:long), :class=>"highlight")
-    html = "Data for #{current_day}"
-    firstdate = DailyQueryStat.minimum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name(affiliate), I18n.default_locale.to_s])
-    first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',')
-    lastdate = DailyQueryStat.maximum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name(affiliate), I18n.default_locale.to_s])
-    last = [lastdate.year, (lastdate.month.to_i - 1), lastdate.day].join(',')
-    html<< calendar_date_select_tag("pop_up_hidden", "", :hidden => true, :image=>"change_date.png", :buttons => false,
-                                    :onchange => "location = '#{analytics_path_prefix(affiliate)}/?day='+$F(this);",
-                                    :valid_date_check => "date <= (new Date(#{last})).stripTime() && date >= (new Date(#{first})).stripTime()")
-    raw html
-  end
-
   def display_select_for_window(window, num_results, day, affiliate = nil)
     options = [10, 50, 100, 500, 1000].collect { |x| ["Show #{x} results", x] }
     select_tag("num_results_select#{window}", options_for_select(options, num_results), {

@@ -100,7 +100,7 @@ describe Affiliates::AnalyticsController do
 
         it "should show most recent populated data if params[:day] is blank" do
           day_being_shown = Date.current
-          DailyQueryStat.should_receive(:most_recent_populated_date).and_return(day_being_shown)
+          DailyPopularQuery.should_receive(:most_recent_populated_date).with(@user.affiliates.first).and_return(day_being_shown)
           get :index, :affiliate_id => @user.affiliates.first.id, :day => ''
           assigns[:day_being_shown].should == day_being_shown
         end
@@ -128,8 +128,9 @@ describe Affiliates::AnalyticsController do
 
           context "when there is affiliate data" do
             before do
-              DailyQueryStat.create(:query => 'test', :times => 12, :affiliate => @user.affiliates.first.name, :day => Date.yesterday, :locale => "en")
-              @filename = "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_#{DailyQueryStat.most_recent_populated_date(@user.affiliates.first.name).strftime('%Y%m%d')}.csv"
+              DailyPopularQuery.create!(:day => Date.yesterday, :query => 'test', :times => 12, :time_frame => 1,
+                                        :is_grouped => false, :locale => I18n.default_locale.to_s, :affiliate => @user.affiliates.first)
+              @filename = "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_#{DailyPopularQuery.most_recent_populated_date(@user.affiliates.first).strftime('%Y%m%d')}.csv"
             end
 
             it "should link to the report on Amazon using S3/SSL if it exists" do

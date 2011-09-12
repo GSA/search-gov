@@ -9,7 +9,7 @@ class DailySearchModuleStat < ActiveRecord::Base
     maximum(:day)
   end
 
-  def self.module_stats_for_daterange_and_affiliate_and_locale(daterange, affiliate_name = nil, locale = nil, vertical = nil)
+  def self.module_stats_for_daterange(daterange, affiliate_name = nil, locale = nil, vertical = nil)
     conditions = {:day => daterange}
     conditions.merge!(:affiliate_name => affiliate_name) if affiliate_name
     conditions.merge!(:locale => locale) if locale
@@ -17,14 +17,15 @@ class DailySearchModuleStat < ActiveRecord::Base
     sparkline_range = daterange.last-SPARKLINE_MONTHS_TO_SHOW.month..daterange.last
     results = select('module_tag, display_name, SUM(clicks) AS clicks, SUM(impressions) AS impressions').where(conditions).group(:module_tag).order("clicks DESC").joins(:search_module)
     total_clicks, total_impressions = 0, 0
+    ctr_query = 'day, 100.0*sum(clicks)/sum(impressions) ctr'
     stats = results.collect do |stat|
-      historical_ctr = select('day, 100.0*clicks/impressions ctr').where(conditions.merge(:module_tag=>stat.module_tag, :day=> sparkline_range)).group(:day).collect { |r| r.ctr.to_f }
+      historical_ctr = select(ctr_query).where(conditions.merge(:module_tag=>stat.module_tag, :day=> sparkline_range)).group(:day).collect { |r| r.ctr }
       total_clicks += stat.clicks
       total_impressions += stat.impressions
       OpenStruct.new(:display_name => stat.display_name, :clicks => stat.clicks, :impressions => stat.impressions, :clickthru_ratio => 100.0 * stat.clicks / stat.impressions, :historical_ctr => historical_ctr)
     end.compact
     unless stats.empty?
-      historical_ctr = select('day, 100.0*clicks/impressions ctr').where(conditions.merge(:day=> sparkline_range)).group(:day).collect { |r| r.ctr.to_f }
+      historical_ctr = select(ctr_query).where(conditions.merge(:day=> sparkline_range)).group(:day).collect { |r| r.ctr }
       stats << OpenStruct.new(:display_name => "Total", :clicks => total_clicks, :impressions => total_impressions,
                               :clickthru_ratio => 100.0 * total_clicks / total_impressions, :historical_ctr => historical_ctr)
     end

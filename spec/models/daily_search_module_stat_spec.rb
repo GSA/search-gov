@@ -57,6 +57,7 @@ describe DailySearchModuleStat do
   describe "#module_stats_for_daterange_and_affiliate_and_locale(daterange, affiliate_name, locale, vertical)" do
     context "when at least some stats are available for the range" do
       before do
+        DailySearchModuleStat.delete_all
         impressions, clicks = 100, 10
         (@range = Date.yesterday..Date.current).each do |day|
           %w{usasearch.gov nps noaa}.each do |affiliate_name|
@@ -74,39 +75,39 @@ describe DailySearchModuleStat do
       end
 
       it "should return collection of structures including all locales/verticals/affiliates, grouped by module, summed over the date range, ordered by descending impression count that respond to display_name, impressions, clicks, clickthru_ratio, and historical_ctr" do
-        stats = DailySearchModuleStat.module_stats_for_daterange_and_affiliate_and_locale(@range)
+        stats = DailySearchModuleStat.module_stats_for_daterange(@range)
         stats[0].display_name.should == search_modules(:crel).display_name
         stats[0].impressions.should == 66408
         stats[0].clicks.should == 25848
         stats[0].clickthru_ratio.should be_within(0.001).of(38.923)
-        stats[0].historical_ctr[0].should be_within(0.001).of(38.349)
-        stats[0].historical_ctr[1].should be_within(0.001).of(39.836)
+        stats[0].historical_ctr[0].should be_within(0.001).of(37.135)
+        stats[0].historical_ctr[1].should be_within(0.001).of(39.614)
 
         stats[1].display_name.should == search_modules(:bweb).display_name
         stats[1].impressions.should == 63144
         stats[1].clicks.should == 24504
         stats[1].clickthru_ratio.should be_within(0.001).of(38.806)
-        stats[1].historical_ctr[0].should be_within(0.001).of(38.164)
-        stats[1].historical_ctr[1].should be_within(0.001).of(39.796)
+        stats[1].historical_ctr[0].should be_within(0.001).of(36.744)
+        stats[1].historical_ctr[1].should be_within(0.001).of(39.559)
 
         stats[2].display_name.should == search_modules(:video).display_name
         stats[2].impressions.should == 59880
         stats[2].clicks.should == 23160
         stats[2].clickthru_ratio.should be_within(0.001).of(38.677)
-        stats[2].historical_ctr[0].should be_within(0.001).of(37.952)
-        stats[2].historical_ctr[1].should be_within(0.001).of(39.753)
+        stats[2].historical_ctr[0].should be_within(0.001).of(36.270)
+        stats[2].historical_ctr[1].should be_within(0.001).of(39.499)
 
         stats[3].display_name.should == "Total"
         stats[3].impressions.should == 189432
         stats[3].clicks.should == 73512
         stats[3].clickthru_ratio.should be_within(0.001).of(38.806)
-        stats[3].historical_ctr[0].should be_within(0.001).of(38.164)
-        stats[3].historical_ctr[1].should be_within(0.001).of(39.796)
+        stats[3].historical_ctr[0].should be_within(0.001).of(36.744)
+        stats[3].historical_ctr[1].should be_within(0.001).of(39.559)
       end
 
       context "when locale/vertical/affiliate are specified" do
         it "should return collection of structures filtered by locale/vertical/affiliate, grouped by module, summed over the date range, ordered by descending impression count that respond to display_name, impressions, clicks, clickthru_ratio" do
-          stats = DailySearchModuleStat.module_stats_for_daterange_and_affiliate_and_locale(@range, "usasearch.gov", "en", "web")
+          stats = DailySearchModuleStat.module_stats_for_daterange(@range, "usasearch.gov", "en", "web")
           stats[0].display_name.should == search_modules(:crel).display_name
           stats[0].impressions.should == 1696
           stats[0].clicks.should == 636
@@ -143,7 +144,7 @@ describe DailySearchModuleStat do
         end
 
         it "should not include that module tag in the results" do
-          DailySearchModuleStat.module_stats_for_daterange_and_affiliate_and_locale(@range).collect(&:module_tag).should_not include("LOREN")
+          DailySearchModuleStat.module_stats_for_daterange(@range).collect(&:module_tag).should_not include("LOREN")
         end
       end
     end
@@ -154,7 +155,7 @@ describe DailySearchModuleStat do
       end
 
       it "should return an empty array" do
-        DailySearchModuleStat.module_stats_for_daterange_and_affiliate_and_locale(Date.tomorrow..Date.tomorrow).should == []
+        DailySearchModuleStat.module_stats_for_daterange(Date.tomorrow..Date.tomorrow).should == []
       end
     end
   end
