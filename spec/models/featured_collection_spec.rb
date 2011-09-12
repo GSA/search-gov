@@ -4,6 +4,7 @@ describe FeaturedCollection do
   fixtures :affiliates
 
   it { should validate_presence_of :title }
+  it { should validate_presence_of :publish_start_on }
   it { should have_attached_file :image }
   it { should validate_attachment_content_type(:image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
@@ -34,6 +35,34 @@ describe FeaturedCollection do
   it { should have_many(:featured_collection_keywords).dependent(:destroy) }
   it { should have_many(:featured_collection_links).dependent(:destroy) }
 
+  describe "title URL should have http(s):// prefix" do
+    context "when the title URL does not start with http(s):// prefix" do
+      title_url = 'searchblog.usa.gov/post/9866782725/did-you-mean-roes-or-rose'
+      prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
+      prefixes.each do |prefix|
+        specify { FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
+                                             :title_url => "#{prefix}#{title_url}",
+                                             :locale => 'en',
+                                             :status => 'active',
+                                             :layout => 'one column',
+                                             :publish_start_on => '07/01/2011').title_url.should == "http://#{prefix}#{title_url}" }
+      end
+    end
+
+    context "when the title URL starts with http(s):// prefix" do
+      title_url = 'searchblog.usa.gov/post/9866782725/did-you-mean-roes-or-rose'
+      prefixes = %w( http:// https:// HTTP:// HTTPS:// )
+      prefixes.each do |prefix|
+        specify { FeaturedCollection.create!(:title => 'Did You Mean Roes or Rose?',
+                                             :title_url => "#{prefix}#{title_url}",
+                                             :locale => 'en',
+                                             :status => 'active',
+                                             :layout => 'one column',
+                                             :publish_start_on => '07/01/2011').title_url.should == "#{prefix}#{title_url}" }
+      end
+    end
+  end
+
   it "should not allow publish start date before publish end date" do
     featured_collection = FeaturedCollection.create(:title => 'test title',
                                                     :locale => 'en',
@@ -63,7 +92,8 @@ describe FeaturedCollection do
       featured_collection = affiliate.featured_collections.build(:title => 'My awesome featured collection',
                                                                  :locale => 'en',
                                                                  :status => 'active',
-                                                                 :layout => 'one column')
+                                                                 :layout => 'one column',
+                                                                 :publish_start_on => Date.current)
       featured_collection.featured_collection_keywords.build(:value => 'test')
       featured_collection.save!
       featured_collection
@@ -108,7 +138,8 @@ describe FeaturedCollection do
           @featured_collection = FeaturedCollection.new(:title => 'Tropical Hurricane Names',
                                                         :locale => 'en',
                                                         :status => 'active',
-                                                        :layout => 'one column')
+                                                        :layout => 'one column',
+                                                        :publish_start_on => Date.current)
           @featured_collection.featured_collection_keywords.build(:value => 'typhoon')
           @featured_collection.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',
                                                                :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
@@ -121,7 +152,8 @@ describe FeaturedCollection do
           inactive_featured_collection = FeaturedCollection.new(:title => 'Retired Hurricane names',
                                                                 :locale => 'en',
                                                                 :status => 'inactive',
-                                                                :layout => 'one column')
+                                                                :layout => 'one column',
+                                                                :publish_start_on => Date.current)
           inactive_featured_collection.featured_collection_keywords.build(:value => 'typhoon')
           inactive_featured_collection.featured_collection_links.build(:title => 'Retired Hurricane Names Since 1954',
                                                                        :url => 'http://www.nhc.noaa.gov/retirednames.shtml',
@@ -176,8 +208,6 @@ describe FeaturedCollection do
             { :title => 'within_publish_date_range',
               :publish_start_on => Date.current.prev_month,
               :publish_end_on => Date.current.next_month },
-            { :title => 'future_publish_end_date',
-              :publish_end_on => Date.current.next_month }
           ]
           @featured_collection_params.each_with_index do |params, index|
             featured_collection = FeaturedCollection.new(:title => "Featured collection #{params[:title]}",
@@ -204,17 +234,11 @@ describe FeaturedCollection do
         it "should return featured_collections within publish date range" do
           FeaturedCollection.search_for('within_publish_date_range', nil, :en).results.first.should_not be_blank
         end
-
-        it "should return featured_collections with future publish end date" do
-          FeaturedCollection.search_for('with_future_publish_end_date', nil, :en).results.first.should_not be_blank
-        end
       end
 
       context "when there is an active English featured collection and current date is not within publish date range" do
         before do
           featured_collection_params = [
-            { :title => 'past_publish_end_date',
-              :publish_end_on => Date.current.yesterday },
             { :title => 'past_publish_date_range',
               :publish_start_on => Date.current.prev_year,
               :publish_end_on => Date.current.yesterday },
@@ -238,10 +262,6 @@ describe FeaturedCollection do
           FeaturedCollection.reindex
         end
 
-        it "should not return featured_collections with past publish end date" do
-          FeaturedCollection.search_for('past_publish_end_date', nil, :en).results.should be_empty
-        end
-
         it "should not return featured_collections with past publish date range" do
           FeaturedCollection.search_for('past_publish_date_range', nil, :en).results.should be_empty
         end
@@ -260,7 +280,8 @@ describe FeaturedCollection do
           @featured_collection = FeaturedCollection.new(:title => 'Nombres de huracanes tropicales',
                                                         :locale => 'es',
                                                         :status => 'active',
-                                                        :layout => 'one column')
+                                                        :layout => 'one column',
+                                                        :publish_start_on => Date.current)
           @featured_collection.featured_collection_keywords.build(:value => 'tifón')
           @featured_collection.featured_collection_links.build(:title => 'Nombres de ciclones tropicales en todo el mundo',
                                                                :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
@@ -270,7 +291,8 @@ describe FeaturedCollection do
           inactive_featured_collection = FeaturedCollection.new(:title => 'Retiró los nombres de huracán',
                                                                 :locale => 'en',
                                                                 :status => 'inactive',
-                                                                :layout => 'one column')
+                                                                :layout => 'one column',
+                                                                :publish_start_on => Date.current)
           inactive_featured_collection.featured_collection_keywords.build(:value => 'tifón')
           inactive_featured_collection.featured_collection_links.build(:title => 'Se retiró nombres de huracanes desde 1954',
                                                                        :url => 'http://www.nhc.noaa.gov/retirednames.shtml',
@@ -280,7 +302,8 @@ describe FeaturedCollection do
           inactive_featured_collection = FeaturedCollection.new(:title => 'inactive tropicales',
                                                                 :locale => 'es',
                                                                 :status => 'inactive',
-                                                                :layout => 'one column')
+                                                                :layout => 'one column',
+                                                                :publish_start_on => Date.current)
           inactive_featured_collection.featured_collection_keywords.build(:value => 'tifón')
           FeaturedCollection.reindex
         end
@@ -324,7 +347,8 @@ describe FeaturedCollection do
           @featured_collection = affiliate.featured_collections.build(:title => 'Tropical Hurricane Names',
                                                                       :locale => 'en',
                                                                       :status => 'active',
-                                                                      :layout => 'one column')
+                                                                      :layout => 'one column',
+                                                                      :publish_start_on => Date.current)
           @featured_collection.featured_collection_keywords.build(:value => 'typhoon')
           @featured_collection.featured_collection_links.build(:title => 'Worldwide Tropical Cyclone Names Part1',
                                                                :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
@@ -337,7 +361,8 @@ describe FeaturedCollection do
           inactive_featured_collection = affiliate.featured_collections.build(:title => 'Retired Hurricane names',
                                                                               :locale => 'en',
                                                                               :status => 'inactive',
-                                                                              :layout => 'one column')
+                                                                              :layout => 'one column',
+                                                                              :publish_start_on => Date.current)
           inactive_featured_collection.featured_collection_keywords.build(:value => 'typhoon')
           inactive_featured_collection.featured_collection_links.build(:title => 'Retired Hurricane Names Since 1954',
                                                                        :url => 'http://www.nhc.noaa.gov/retirednames.shtml',
@@ -384,16 +409,12 @@ describe FeaturedCollection do
       context "when there is an active English featured collection and current date is within publish date range" do
         before do
           @featured_collection_params = [
-            { :title => 'past_publish_start_date',
-              :publish_start_on => Date.current.prev_month },
             { :title => 'today',
               :publish_start_on => Date.current,
               :publish_end_on => Date.current },
             { :title => 'within_publish_date_range',
               :publish_start_on => Date.current.prev_month,
               :publish_end_on => Date.current.next_month },
-            { :title => 'future_publish_end_date',
-              :publish_end_on => Date.current.next_month }
           ]
           @featured_collection_params.each_with_index do |params, index|
             featured_collection = affiliate.featured_collections.build(:title => "Featured collection #{params[:title]}",
@@ -409,10 +430,6 @@ describe FeaturedCollection do
           FeaturedCollection.reindex
         end
 
-        it "should return featured_collections with past publish start date" do
-          FeaturedCollection.search_for('past_publish_start_date', affiliate, :en).results.first.should_not be_blank
-        end
-
         it "should return featured_collections with publish date range today" do
           FeaturedCollection.search_for('today', affiliate, :en).results.first.should_not be_blank
         end
@@ -420,17 +437,11 @@ describe FeaturedCollection do
         it "should return featured_collections within publish date range" do
           FeaturedCollection.search_for('within_publish_date_range', affiliate, :en).results.first.should_not be_blank
         end
-
-        it "should return featured_collections with future publish end date" do
-          FeaturedCollection.search_for('with_future_publish_end_date', affiliate, :en).results.first.should_not be_blank
-        end
       end
 
       context "when there is an active English featured collection and current date is not within publish date range" do
         before do
           featured_collection_params = [
-            { :title => 'past_publish_end_date',
-              :publish_end_on => Date.current.yesterday },
             { :title => 'past_publish_date_range',
               :publish_start_on => Date.current.prev_year,
               :publish_end_on => Date.current.yesterday },
@@ -454,10 +465,6 @@ describe FeaturedCollection do
           FeaturedCollection.reindex
         end
 
-        it "should not return featured_collections with past publish end date" do
-          FeaturedCollection.search_for('past_publish_end_date', affiliate, :en).results.should be_empty
-        end
-
         it "should not return featured_collections with past publish date range" do
           FeaturedCollection.search_for('past_publish_date_range', affiliate, :en).results.should be_empty
         end
@@ -476,7 +483,8 @@ describe FeaturedCollection do
           @featured_collection = affiliate.featured_collections.build(:title => 'Nombres de huracanes tropicales',
                                                                       :locale => 'es',
                                                                       :status => 'active',
-                                                                      :layout => 'one column')
+                                                                      :layout => 'one column',
+                                                                      :publish_start_on => Date.current)
           @featured_collection.featured_collection_keywords.build(:value => 'tifón')
           @featured_collection.featured_collection_links.build(:title => 'Nombres de ciclones tropicales en todo el mundo',
                                                                :url => 'http://www.nhc.noaa.gov/aboutnames.shtml',
@@ -486,7 +494,8 @@ describe FeaturedCollection do
           inactive_featured_collection = affiliate.featured_collections.build(:title => 'Retiró los nombres de huracán',
                                                                               :locale => 'en',
                                                                               :status => 'inactive',
-                                                                              :layout => 'one column')
+                                                                              :layout => 'one column',
+                                                                              :publish_start_on => Date.current)
           inactive_featured_collection.featured_collection_keywords.build(:value => 'tifón')
           inactive_featured_collection.featured_collection_links.build(:title => 'Se retiró nombres de huracanes desde 1954',
                                                                        :url => 'http://www.nhc.noaa.gov/retirednames.shtml',
@@ -531,5 +540,9 @@ describe FeaturedCollection do
         end
       end
     end
+  end
+
+  describe ".human_attribute_name" do
+    specify { FeaturedCollection.human_attribute_name("publish_start_on").should == "Publish start date" }
   end
 end

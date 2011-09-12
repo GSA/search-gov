@@ -15,6 +15,8 @@ class BoostedContent < ActiveRecord::Base
   validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
   validate :publish_start_and_end_dates
 
+  before_save :ensure_http_prefix_on_url
+
   searchable :auto_index => false do
     text :title, :boost => 10.0
     text :description, :boost => 4.0
@@ -124,5 +126,9 @@ class BoostedContent < ActiveRecord::Base
     if start_date.present? and end_date.present? and start_date > end_date
       errors.add(:base, "Publish end date can't be before publish start date")
     end
+  end
+
+  def ensure_http_prefix_on_url
+    self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^http(s?)://}i
   end
 end

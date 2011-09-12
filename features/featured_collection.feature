@@ -91,6 +91,29 @@ Feature: Featured Collections
     And I press "Search"
     Then I should see "2010 Atlantic Hurricane Season by USA.gov" in the featured collections section
 
+  Scenario: Adding Featured Collection's URLs without http prefix
+    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin featured collections page
+    And I follow "Add new featured collection"
+    And I fill in the following:
+      | Title*             | 2010 Atlantic Hurricane Season             |
+      | Title URL          | www.nhc.noaa.gov/2010atlan.shtml           |
+      | Publish start date | 07/01/2011                                 |
+      | Link Title 0       | Hurricane Alex                             |
+      | Link URL 0         | www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf |
+    And I select "English" from "Locale*"
+    And I select "Active" from "Status*"
+    And I select "One column" from "Layout*"
+    And I press "Add"
+    Then I should see "Featured Collection successfully created"
+    And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
+    And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
+    When I follow "Edit"
+    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections > Edit Featured Collection
+    And I should see "Edit Featured Collection" in the page header
+    And the "Title URL" field should contain "http://www.nhc.noaa.gov/2010atlan.shtml"
+    And the "Link URL 0" field should contain "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
+
   Scenario: Validating Featured Collection on create
     When I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And I go to the admin featured collections page
@@ -165,6 +188,32 @@ Feature: Featured Collections
     And I should see a link to "2010-2011 Season Southern Hemisphere Summary" with url for "http://australiasevereweather.com/tropical_cyclones/oper_2010_2011_australian_region_tropical_cyclones.htm"
     And I should not see "Atlantic"
     And I should not see "Eastern North Pacific"
+
+  Scenario: Editing Featured Collection's URLs without http prefix
+     Given the following featured collections exist:
+       | title                            | title_url                                | locale | status | layout     |
+       | Worldwide Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active | one column |
+    And the following featured collection links exist for featured collection titled "Worldwide Tropical Cyclone Names":
+      | title                 | url                                          |
+      | Atlantic              | http://www.nhc.noaa.gov/aboutnames.shtml#atl |
+    And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin featured collections page
+    And I follow "Edit"
+    Then the "Title URL" field should contain "http://www.nhc.noaa.gov/aboutnames.shtml"
+    And the "Link URL 0" field should contain "http://www.nhc.noaa.gov/aboutnames.shtml#atl"
+    When I fill in the following:
+      | Title*             | 2010 Atlantic Hurricane Season             |
+      | Title URL          | www.nhc.noaa.gov/2010atlan.shtml           |
+      | Publish start date | 07/01/2011                                 |
+      | Link Title 0       | Hurricane Alex                             |
+      | Link URL 0         | www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf |
+    And I select "English" from "Locale*"
+    And I select "Active" from "Status*"
+    And I select "One column" from "Layout*"
+    And I press "Update"
+    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections > Featured Collection
+    And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
+    And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
 
   Scenario: Deleting a featured collection image
     Given the following featured collections exist:
@@ -289,7 +338,6 @@ Feature: Featured Collections
       | title                                                | locale | status | publish_start_on | publish_end_on |
       | featured collection with publish_start_date          | en     | active | yesterday        |                |
       | featured collection with publish_start_and_end_dates | en     | active | yesterday        | next_month     |
-      | featured collection with publish_end_date            | en     | active |                  | next_month     |
     When I go to the homepage
     And I fill in "query" with "publish_start_date"
     And I press "Search"
@@ -297,19 +345,15 @@ Feature: Featured Collections
     When I fill in "query" with "publish_start_and_end_dates"
     And I press "Search"
     Then I should see "featured collection with publish_start_and_end_dates"
-    When I fill in "query" with "publish_end_date"
-    And I press "Search"
-    Then I should see "featured collection with publish_end_date"
 
   Scenario: Search.USA.gov user should see only active featured collection within publish date range
     Given the following featured collections exist:
-      | title                        | locale | status | publish_start_on | publish_end_on |
-      | expired1 featured collection | en     | active |                  | yesterday      |
-      | expired2 featured collection | en     | active | prev_month       | yesterday      |
-      | future1 featured collection  | en     | active | tomorrow         | next_month     |
-      | future2 featured collection  | en     | active | tomorrow         |                |
-      | current1 weather             | en     | active | today            |                |
-      | current2                     | en     | active | today            |                |
+      | title                       | locale | status | publish_start_on | publish_end_on |
+      | expired featured collection | en     | active | prev_month       | yesterday      |
+      | future1 featured collection | en     | active | tomorrow         | next_month     |
+      | future2 featured collection | en     | active | tomorrow         |                |
+      | current1 weather            | en     | active | today            |                |
+      | current2                    | en     | active | today            |                |
     And the following featured collection links exist for featured collection titled "current2":
       | title            | url                     |
       | current2 weather | http://www.agency.gov/1 |
@@ -318,12 +362,9 @@ Feature: Featured Collections
     And I press "Search"
     Then I should see "current1 weather" in the featured collections section
     And I should not see "current2" in the featured collections section
-    When I fill in "query" with "expired1"
+    When I fill in "query" with "expired"
     And I press "Search"
-    Then I should not see "expired1 featured collection"
-    When I fill in "query" with "expired2"
-    And I press "Search"
-    Then I should not see "expired2 featured collection"
+    Then I should not see "expired featured collection"
     When I fill in "query" with "future1"
     And I press "Search"
     Then I should not see "future1 featured collection"

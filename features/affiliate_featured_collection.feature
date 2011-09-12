@@ -50,7 +50,8 @@ Feature: Featured Collections
     Then I should see "Featured Collections" in the page header
 
     When I follow "Add new featured collection"
-    And I fill in the following:
+    Then the "Publish start date" field should contain today's date
+    When I fill in the following:
       | Title*                | 2010 Atlantic Hurricane Season                    |
       | Title URL             | http://www.nhc.noaa.gov/2010atlan.shtml           |
       | Publish start date    | 07/01/2011                                        |
@@ -66,8 +67,8 @@ Feature: Featured Collections
     And I select "Active" from "Status*"
     And I select "One column" from "Layout*"
     And I press "Add"
-    Then I should see "Feature Collection successfully created"
-    And I should see the browser page titled "Featured Collection: 2010 Atlantic Hurricane Season"
+    Then I should see "Featured Collection successfully created"
+    And I should see the browser page titled "Featured Collection"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
     And I should see "Featured Collection" in the page header
     And I should see "2010 Atlantic Hurricane Season"
@@ -96,6 +97,33 @@ Feature: Featured Collections
     And I press "Search"
     Then I should see "2010 Atlantic Hurricane Season by site" in the featured collections section
 
+  Scenario: Adding Featured Collection's URLs without http prefix
+    Given the following Affiliates exist:
+      | display_name | name     | contact_email              | contact_name |
+      | site         | site.gov | affiliate_manager@site.gov | John Bar     |
+    And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
+    When I go to the site.gov's featured collections page
+    And I follow "Add new featured collection"
+    And I fill in the following:
+      | Title*             | 2010 Atlantic Hurricane Season             |
+      | Title URL          | www.nhc.noaa.gov/2010atlan.shtml           |
+      | Publish start date | 07/01/2011                                 |
+      | Link Title 0       | Hurricane Alex                             |
+      | Link URL 0         | www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf |
+    And I select "English" from "Locale*"
+    And I select "Active" from "Status*"
+    And I select "One column" from "Layout*"
+    And I press "Add"
+    Then I should see "Featured Collection successfully created"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
+    And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
+    And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
+    When I follow "Edit"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Edit Featured Collection
+    And I should see "Edit Featured Collection" in the page header
+    And the "Title URL" field should contain "http://www.nhc.noaa.gov/2010atlan.shtml"
+    And the "Link URL 0" field should contain "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
+
   Scenario: Validating Featured Collection on create
     Given the following Affiliates exist:
       | display_name | name     | contact_email              | contact_name |
@@ -119,9 +147,11 @@ Feature: Featured Collections
     And I should see "Featured collection links title can't be blank"
     And I should see "Featured collection links url can't be blank"
 
-    When I attach the file "features/support/not_image.txt" to "Image"
+    When I fill in "Publish start date" with ""
+    And I attach the file "features/support/not_image.txt" to "Image"
     And I press "Add"
-    Then I should see "Image content type must be GIF, JPG, or PNG"
+    Then I should see "Publish start date can't be blank"
+    And I should see "Image content type must be GIF, JPG, or PNG"
 
   Scenario: Editing Featured Collection
     Given the following Affiliates exist:
@@ -168,7 +198,7 @@ Feature: Featured Collections
     And I select "Two column" from "Layout*"
     And I press "Update"
     Then I should see "Featured Collection successfully updated."
-    And I should see the browser page titled "Featured Collection: Australian Tropical Cyclone"
+    And I should see the browser page titled "Featured Collection"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
     And I should see "Featured Collection" in the page header
     And I should see "Two column"
@@ -178,6 +208,40 @@ Feature: Featured Collections
     And I should see a link to "2010-2011 Season Southern Hemisphere Summary" with url for "http://australiasevereweather.com/tropical_cyclones/oper_2010_2011_australian_region_tropical_cyclones.htm"
     And I should not see "Atlantic"
     And I should not see "Eastern North Pacific"
+
+  Scenario: Editing Featured Collection's URLs without http prefix
+    Given the following Affiliates exist:
+      | display_name | name     | contact_email              | contact_name |
+      | site         | site.gov | affiliate_manager@site.gov | John Bar     |
+    And the following featured collections exist for the affiliate "site.gov":
+      | title                            | title_url                                | locale | status | layout     |
+      | Worldwide Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active | one column |
+    And the following featured collection keywords exist for featured collection titled "Worldwide Tropical Cyclone Names":
+      | value        |
+      | weather      |
+      | hurricane    |
+      | thunderstorm |
+    And the following featured collection links exist for featured collection titled "Worldwide Tropical Cyclone Names":
+      | title                 | url                                          |
+      | Atlantic              | http://www.nhc.noaa.gov/aboutnames.shtml#atl |
+    And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
+    When I go to the site.gov's featured collections page
+    And I follow "Edit"
+    Then the "Title URL" field should contain "http://www.nhc.noaa.gov/aboutnames.shtml"
+    And the "Link URL 0" field should contain "http://www.nhc.noaa.gov/aboutnames.shtml#atl"
+    When I fill in the following:
+      | Title*             | 2010 Atlantic Hurricane Season             |
+      | Title URL          | www.nhc.noaa.gov/2010atlan.shtml           |
+      | Publish start date | 07/01/2011                                 |
+      | Link Title 0       | Hurricane Alex                             |
+      | Link URL 0         | www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf |
+    And I select "English" from "Locale*"
+    And I select "Active" from "Status*"
+    And I select "One column" from "Layout*"
+    And I press "Update"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
+    And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
+    And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
 
   Scenario: Deleting a featured collection image
     Given the following Affiliates exist:
@@ -324,8 +388,7 @@ Feature: Featured Collections
     And the following featured collections exist for the affiliate "site.gov":
       | title                                                | locale | status | publish_start_on | publish_end_on |
       | featured collection with publish_start_date          | en     | active | yesterday        |                |
-      | featured collection with publish_start_and_end_dates | en     | active | yesterday        | next_month     |
-      | featured collection with publish_end_date            | en     | active |                  | next_month     |
+      | featured collection with publish_start_and_end_dates | en     | active | prev_month       | next_month     |
     When I go to site.gov's search page
     And I fill in "query" with "publish_start_date"
     And I press "Search"
@@ -333,27 +396,23 @@ Feature: Featured Collections
     When I fill in "query" with "publish_start_and_end_dates"
     And I press "Search"
     Then I should see "featured collection with publish_start_and_end_dates"
-    When I fill in "query" with "publish_end_date"
+    When I fill in "query" with "past_publish_start_date"
     And I press "Search"
-    Then I should see "featured collection with publish_end_date"
+    Then I should not see "featured collection with past_publish_dates"
 
   Scenario: Affiliate search user should not see featured collection outside publish date range
     Given the following Affiliates exist:
       | display_name | name     | contact_email              | contact_name |
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And the following featured collections exist for the affiliate "site.gov":
-      | title                        | locale | status | publish_start_on | publish_end_on |
-      | expired1 featured collection | en     | active |                  | yesterday      |
-      | expired2 featured collection | en     | active | prev_month       | yesterday      |
-      | future1 featured collection  | en     | active | tomorrow         | next_month     |
-      | future2 featured collection  | en     | active | tomorrow         |                |
+      | title                       | locale | status | publish_start_on | publish_end_on |
+      | expired featured collection | en     | active | prev_month       | yesterday      |
+      | future1 featured collection | en     | active | tomorrow         | next_month     |
+      | future2 featured collection | en     | active | tomorrow         |                |
     When I go to site.gov's search page
-    And I fill in "query" with "expired1"
+    And I fill in "query" with "expired"
     And I press "Search"
-    Then I should not see "expired1 featured collection"
-    When I fill in "query" with "expired2"
-    And I press "Search"
-    Then I should not see "expired2 featured collection"
+    Then I should not see "expired featured collection"
     When I fill in "query" with "future1"
     And I press "Search"
     Then I should not see "future1 featured collection"

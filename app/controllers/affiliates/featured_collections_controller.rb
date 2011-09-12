@@ -10,14 +10,14 @@ class Affiliates::FeaturedCollectionsController < Affiliates::AffiliatesControll
 
   def new
     @title = 'Add a new Featured Collection - '
-    @featured_collection = @affiliate.featured_collections.build
+    @featured_collection = @affiliate.featured_collections.build(:publish_start_on => Date.current)
     setup_blank_keywords_and_links
   end
 
   def create
     @featured_collection = @affiliate.featured_collections.build(params[:featured_collection])
     if @featured_collection.save
-      redirect_to [@affiliate, @featured_collection], :flash => { :success => 'Feature Collection successfully created.' }
+      redirect_to [@affiliate, @featured_collection], :flash => { :success => 'Featured Collection successfully created.' }
     else
       @title = 'Add a new Featured Collection - '
       setup_blank_keywords_and_links
@@ -26,7 +26,7 @@ class Affiliates::FeaturedCollectionsController < Affiliates::AffiliatesControll
   end
 
   def show
-    @title = "Featured Collection: #{@featured_collection.title} - "
+    @title = "Featured Collection - "
   end
 
   def edit

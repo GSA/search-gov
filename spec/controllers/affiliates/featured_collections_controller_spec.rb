@@ -87,7 +87,7 @@ describe Affiliates::FeaturedCollectionsController do
         User.should_receive(:find_by_id).and_return(current_user)
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.stub_chain(:featured_collections, :build).and_return(featured_collection)
+        affiliate.stub_chain(:featured_collections, :build).with(:publish_start_on => Date.current).and_return(featured_collection)
 
         featured_collection.should_receive(:featured_collection_keywords).twice.and_return(featured_collection_keywords)
         featured_collection_keywords.should_receive(:blank?).and_return(true)

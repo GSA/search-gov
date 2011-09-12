@@ -74,6 +74,24 @@ describe BoostedContent do
       boosted_content = BoostedContent.create(@valid_attributes.merge({ :publish_start_on => '07/01/2012', :publish_end_on => '07/01/2011' }))
       boosted_content.errors.full_messages.join.should =~ /Publish end date can't be before publish start date/
     end
+
+    it "should save URL with http:// prefix when it does not start with http(s)://" do
+      url = 'searchblog.usa.gov/post/9866782725/did-you-mean-roes-or-rose'
+      prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
+      prefixes.each do |prefix|
+        boosted_content = BoostedContent.create!(@valid_attributes.merge(:url => "#{prefix}#{url}"))
+        boosted_content.url.should == "http://#{prefix}#{url}"
+      end
+    end
+
+    it "should save URL as is when it starts with http(s)://" do
+      url = 'searchblog.usa.gov/post/9866782725/did-you-mean-roes-or-rose'
+      prefixes = %w( http:// https:// HTTP:// HTTPS:// )
+      prefixes.each do |prefix|
+        boosted_content = BoostedContent.create!(@valid_attributes.merge(:url => "#{prefix}#{url}"))
+        boosted_content.url.should == "#{prefix}#{url}"
+      end
+    end
   end
 
   describe "#human_attribute_name" do

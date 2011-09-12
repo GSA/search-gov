@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110901045151) do
+ActiveRecord::Schema.define(:version => 20110912222019) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -268,7 +268,7 @@ ActiveRecord::Schema.define(:version => 20110901045151) do
     t.string   "status",                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "publish_start_on"
+    t.date     "publish_start_on",      :null => false
     t.date     "publish_end_on"
     t.string   "image_file_name"
     t.string   "image_content_type"

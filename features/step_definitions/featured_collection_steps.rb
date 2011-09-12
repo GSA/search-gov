@@ -3,6 +3,7 @@ Given /^the following featured collections exist:$/ do |table|
     publish_start_on = hash['publish_start_on']
     publish_start_on = Date.current if publish_start_on == 'today'
     publish_start_on = Date.current.send(publish_start_on.to_sym) if publish_start_on.present? and publish_start_on =~ /^[a-zA-Z_]*$/
+    publish_start_on = Date.current if publish_start_on.blank?
 
     publish_end_on = hash['publish_end_on']
     publish_end_on = Date.current if publish_end_on == 'today'
@@ -33,6 +34,7 @@ Given /^the following featured collections exist for the affiliate "([^"]*)":$/ 
     publish_start_on = hash['publish_start_on']
     publish_start_on = Date.current if publish_start_on == 'today'
     publish_start_on = Date.current.send(publish_start_on.to_sym) if publish_start_on.present? and publish_start_on =~ /^[a-zA-Z_]*$/
+    publish_start_on = Date.current if publish_start_on.blank?
 
     publish_end_on = hash['publish_end_on']
     publish_end_on = Date.current if publish_end_on == 'today'
@@ -94,7 +96,8 @@ When /^there are (\d+) featured collections exist with the following attributes:
           :title_url => hash['title_url'] || "http://example/random_content#{i + 1}.html",
           :locale => hash['locale'],
           :status => hash['status'] || "active",
-          :layout => hash['layout'] || 'one column')
+          :layout => hash['layout'] || 'one column',
+          :publish_start_on => Date.current)
       featured_collection.featured_collection_keywords.build(:value => "keyword value #{i + 1}")
       featured_collection.save!
     end
@@ -110,7 +113,8 @@ Given /^there are (\d+) featured collections exist for the affiliate "([^"]*)":$
           :title_url => hash['title_url'] || "http://example/random_content#{i + 1}.html",
           :locale => hash['locale'],
           :status => hash['status'] || "active",
-          :layout => hash['layout'] || 'one column')
+          :layout => hash['layout'] || 'one column',
+          :publish_start_on => Date.current)
       featured_collection.featured_collection_keywords.build(:value => "keyword value #{i + 1}")
       featured_collection.save!
     end

@@ -10,7 +10,7 @@ class FeaturedCollection < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 20
 
-  validates_presence_of :title
+  validates_presence_of :title, :publish_start_on
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
   validates_inclusion_of :layout, :in => LAYOUTS, :message => 'must be selected'
@@ -29,6 +29,7 @@ class FeaturedCollection < ActiveRecord::Base
                     :path => "#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension",
                     :ssl => true
 
+  before_save :ensure_http_prefix_on_title_url
   before_post_process :check_image_validation
   before_update :clear_existing_image
 
@@ -48,6 +49,10 @@ class FeaturedCollection < ActiveRecord::Base
       self.layout == layout
     end
   end
+
+  HUMAN_ATTRIBUTE_NAME_HASH = {
+      :publish_start_on => "Publish start date",
+  }
 
   searchable do
     integer :affiliate_id
@@ -78,7 +83,6 @@ class FeaturedCollection < ActiveRecord::Base
           with :status, "active"
           any_of do
             with(:publish_start_on).less_than(Time.current)
-            with :publish_start_on, nil
           end
           any_of do
             with(:publish_end_on).greater_than(Time.current)
@@ -94,6 +98,10 @@ class FeaturedCollection < ActiveRecord::Base
         nil
       end
     end
+  end
+
+  def self.human_attribute_name(attribute_key_name, options = {})
+    HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
   end
 
   def destroy_and_update_attributes(params)
@@ -119,6 +127,10 @@ class FeaturedCollection < ActiveRecord::Base
     if start_date.present? and end_date.present? and start_date > end_date
       errors.add(:base, "Publish end date can't be before publish start date")
     end
+  end
+
+  def ensure_http_prefix_on_title_url
+    self.title_url = "http://#{self.title_url}" unless self.title_url.blank? or self.title_url =~ %r{^http(s?)://}i
   end
 
   def check_image_validation

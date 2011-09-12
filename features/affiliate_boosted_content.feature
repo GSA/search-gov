@@ -80,6 +80,28 @@ Feature: Boosted Content
     When I follow "Cancel"
     Then I should see "Boosted Contents" in the page header
 
+  Scenario: Create Boosted Content with URL without http:// prefix
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Boosted content"
+    Then I should see "aff site has no Boosted Content"
+    When I follow "Add new boosted content"
+    Then I should see the browser page titled "Add a new Boosted Content"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Boosted Content
+    And I should see "Add a new Boosted Content" in the page header
+    And the "Publish start date" field should contain today's date
+    And I fill in "Title" with "Test"
+    And I fill in "URL" with "www.test.gov"
+    And I fill in "Description" with "Test Description"
+    And I select "English" from "Locale*"
+    And I select "Active" from "Status*"
+    And I press "Add"
+    Then I should see "Boosted Content entry successfully added"
+    And I should see "http://www.test.gov"
+
   Scenario: Validating Affiliate Boosted Content on create
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
@@ -138,6 +160,23 @@ Feature: Boosted Content
     When I follow "Edit"
     And I follow "Cancel"
     Then I should see "Boosted Contents" in the page header
+
+  Scenario: Edit a Boosted Content's URL without http:// prefix
+    Given the following Affiliates exist:
+     | display_name     | name             | contact_email           | contact_name        |
+     | aff site         |aff.gov           | aff@bar.gov             | John Bar            |
+    And the following Boosted Content entries exist for the affiliate "aff.gov"
+     | title            | url               | description       | keywords          |
+     | a title          | http://a.url.gov  | A description     | unrelated, terms  |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Boosted content"
+    And I follow "Edit"
+    Then the "URL" field should contain "http://a.url.gov"
+    When I fill in "URL" with "b.url.gov"
+    And I press "Update"
+    Then I should see "Boosted Content entry successfully updated"
+    And I should see "http://b.url.gov"
 
   Scenario: Validating Affiliate Boosted Content on update
     Given the following Affiliates exist:
