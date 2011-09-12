@@ -40,7 +40,7 @@
         %td.name Keywords
         %td.keywords
           - unless @boosted_content.keywords.blank?
-            - @boosted_content.keywords.split.each do |keyword|
+            - @boosted_content.keywords.split(',').each do |keyword|
               %span= keyword
   .add-link-wrapper
     = link_to "Add another Boosted Content", new_affiliate_boosted_content_path(@affiliate), :class => 'add-link'

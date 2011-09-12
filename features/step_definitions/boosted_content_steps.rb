@@ -82,3 +82,7 @@ end
 Then /^I should see (\d+) Boosted Content Entries$/ do |count|
   page.should have_selector(".boosted-content-list .row-item", :count => count)
 end
+
+And /^I should see boosted content keyword "([^"]*)"$/ do |keyword|
+  page.should have_selector(".keywords span", :text => keyword)
+end
