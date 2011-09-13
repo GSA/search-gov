@@ -590,6 +590,38 @@ Feature: Affiliate clients
     And I should see "Sorry, no results found"
     And I should see "Staged header"
     And I should see "Staged footer"
+    
+  Scenario: Enabling/Disabling popular urls
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains          | header      | footer      | staged_domains  | staged_header    | staged_footer  | is_popular_links_enabled  |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | whitehouse.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer     | true                      |
+    And the following popular URLs exist:
+      | affiliate_name  | title         | url                 | rank  |
+      | aff.gov         | popurl title  | http://popurl.gov/  | 1     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to aff.gov's search page
+    And I fill in "query" with "obama"
+    And I press "Search"
+    Then I should see "Popular Links"
+    
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Popular Links"
+    And I uncheck "Enable Popular Links?"
+    And I press "Set Preferences"
+    Then I should see "Popular Links DISABLED"
+    
+    When I go to aff.gov's search page
+    And I fill in "query" with "obama"
+    And I press "Search"
+    Then I should not see "Popular Links"
+    
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Popular Links"
+    And I check "Enable Popular Links?"
+    And I press "Set Preferences"
+    Then I should see "Popular Links ENABLED"
 
   Scenario: Cancelling staged changes from the Affiliate Center page
     Given the following Affiliates exist:

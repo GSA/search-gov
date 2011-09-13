@@ -39,7 +39,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :search_results_page_title => hash["search_results_page_title"],
       :staged_search_results_page_title => hash["staged_search_results_page_title"],
       :has_staged_content => hash["has_staged_content"] || false,
-      :exclude_webtrends => hash["exclude_webtrends"] || false
+      :exclude_webtrends => hash["exclude_webtrends"] || false,
+      :is_popular_links_enabled => hash["is_popular_links_enabled"] || true
     )
     affiliate.users << user
   end

@@ -1,0 +1,16 @@
+= affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Popular Links'])
+
+%h1
+  Popular Links
+%p
+  The 'Popular Links' section shows the most recent popular links clicked by internet users.
+  
+.span-24{:style => 'margin-bottom: 21px;'}
+  = form_tag preferences_affiliate_popular_links_path(@affiliate), :class=> "bordered" do
+    %h1
+      Preferences
+    %ul{:style => 'list-style-type: none;'}
+      %li
+        = check_box_tag :is_popular_links_enabled, 'true', @affiliate.is_popular_links_enabled
+        = label_tag :is_popular_links_enabled, "Enable Popular Links?"
+    = submit_tag "Set Preferences"

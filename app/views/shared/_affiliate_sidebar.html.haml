@@ -29,7 +29,10 @@
             %li
               = link_to "Search API", affiliate_api_index_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
-            %li.last= link_to "Type-ahead search", affiliate_type_ahead_search_index_path(@affiliate)
+            %li= link_to "Type-ahead search", affiliate_type_ahead_search_index_path(@affiliate)
+            %li.last
+              = link_to "Popular Links", affiliate_popular_links_path(@affiliate)
+              = image_tag 'new.png', :class => 'new'
         .side-block
           %h3
             %span Site Analytics

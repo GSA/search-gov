@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20110913050747) do
     t.string   "search_results_page_title",                                                       :null => false
     t.string   "staged_search_results_page_title",                                                :null => false
     t.boolean  "exclude_webtrends",                              :default => false,               :null => false
+    t.boolean  "is_popular_links_enabled",                       :default => true
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -206,8 +207,7 @@ ActiveRecord::Schema.define(:version => 20110913050747) do
     t.integer "clicks",         :null => false
   end
 
-  add_index "daily_search_module_stats", ["day", "affiliate_name", "module_tag", "vertical", "locale"], :name => "dics_unique", :unique => true
-  add_index "daily_search_module_stats", ["day", "module_tag"], :name => "day_module"
+  add_index "daily_search_module_stats", ["module_tag", "day"], :name => "index_daily_search_module_stats_on_module_tag_and_day"
 
   create_table "daily_usage_stats", :force => true do |t|
     t.date     "day"

@@ -2,7 +2,8 @@
   - if (english_locale? && @search && @search.related_search.size > 0)
     #related_searches
       = render "/shared/related_topics"
-  = render "/shared/popular_urls", :popular_urls => @affiliate.popular_urls.top_urls
+  - if @affiliate.is_popular_links_enabled
+    = render "/shared/popular_urls", :popular_urls => @affiliate.popular_urls.top_urls
   &nbsp;
 #results
   = render "shared/search", :path => search_path

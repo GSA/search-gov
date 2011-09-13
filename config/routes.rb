@@ -53,6 +53,11 @@ UsasearchRails3::Application.routes.draw do
         post :preferences
       end
     end
+    resources :popular_links, :controller => "affiliates/popular_links", :only => [:index] do
+      collection do
+        post :preferences
+      end
+    end
     resources :api, :controller => "affiliates/api"
     resources :featured_collections, :controller => "affiliates/featured_collections"
   end
