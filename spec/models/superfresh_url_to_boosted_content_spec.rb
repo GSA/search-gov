@@ -134,6 +134,17 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
         SuperfreshUrlToBoostedContent.perform(@superfresh_url.url, @aff.id)
       end
     end
+    
+    context "when some exception is raised while opening the PDF file" do
+      before do
+        SuperfreshUrlToBoostedContent.stub!(:open).and_raise 'Some Error'
+      end
+      
+      it "should log an error" do
+        Rails.logger.should_receive(:error).with(/Some Error/)
+        SuperfreshUrlToBoostedContent.perform(@superfresh_url.url, @aff.id)
+      end
+    end        
   end
   
   describe "#is_pdf?" do
