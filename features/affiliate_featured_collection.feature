@@ -16,7 +16,8 @@ Feature: Featured Collections
       | muspi |
       | merol |
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
-    When I go to the site.gov's featured collections page
+    When I go to the affiliate admin page with "site.gov" selected
+    And I follow "Featured Collections"
     Then I should see the browser page titled "Featured Collections"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collections
     And I should see "Featured Collections" in the page header
