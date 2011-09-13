@@ -44,10 +44,6 @@ module Analytics::HomeHelper
       :onchange => "location = '#{monthly_reports_path}/?date[month]=#{report_date.month}&date[year]=#{report_date.year}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
   end
 
-  def affiliate_name(affiliate)
-    affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME
-  end
-
   def analytics_path_prefix(affiliate)
     affiliate ? "/affiliates/#{affiliate.id}/analytics" : "/analytics/queries"
   end
