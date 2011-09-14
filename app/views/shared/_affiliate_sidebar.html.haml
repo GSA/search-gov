@@ -22,10 +22,11 @@
             %span Features
           %ul
             %li
-              = link_to "Add to Bing", affiliate_superfresh_urls_path(@affiliate), :class => 'new'
-              = image_tag 'new.png', :class => 'new'
+              = link_to "Add to Bing", affiliate_superfresh_urls_path(@affiliate)
             %li= link_to "Boosted contents", affiliate_boosted_contents_path(@affiliate)
-            %li= link_to "Featured Collections", affiliate_featured_collections_path(@affiliate)
+            %li
+              = link_to "Featured Collections", affiliate_featured_collections_path(@affiliate), :class => 'new'
+              = image_tag 'new.png', :class => 'new'
             %li= link_to "Related topics", affiliate_related_topics_path(@affiliate)
             %li
               = link_to "Search API", affiliate_api_index_path(@affiliate), :class => 'new'
