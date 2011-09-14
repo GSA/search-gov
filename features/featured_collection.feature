@@ -458,3 +458,23 @@ Feature: Featured Collections
     And I should see a link to "NOAA" with url for "http://www.noaa.gov" in the featured collections section
     And I should see "Imagen de NOAA" in the featured collections section
     And I should not see "Cyclones (ciclones in Spanish)"
+
+  Scenario: Search.USA.gov searchers see newspaper style list of two column featured collection links
+    Given the following featured collections exist:
+      | title            | title_url                                       | locale | status | layout     |
+      | Nature & Science | http://www.nps.gov/maca/naturescience/index.htm | en     | active | two column |
+    And the following featured collection links exist for featured collection titled "Nature & Science":
+      | title                         | url                                                                    |
+      | Animals                       | http://www.nps.gov/maca/naturescience/animals.htm                      |
+      | Environmental Factors         | http://www.nps.gov/maca/naturescience/environmentalfactors.htm         |
+      | Plants                        | http://www.nps.gov/maca/naturescience/plants.htm                       |
+      | Natural Features & Ecosystems | http://www.nps.gov/maca/naturescience/naturalfeaturesandecosystems.htm |
+      | Forests                       | http://www.nps.gov/maca/naturescience/forests.htm                      |
+    When I go to the homepage
+    And I fill in "query" with "Nature"
+    And I press "Search"
+    Then I should see a link to "Animals" with url for "http://www.nps.gov/maca/naturescience/animals.htm" on the left featured collection link list
+    And I should see a link to "Environmental Factors" with url for "http://www.nps.gov/maca/naturescience/environmentalfactors.htm" on the left featured collection link list
+    And I should see a link to "Plants" with url for "http://www.nps.gov/maca/naturescience/plants.htm" on the left featured collection link list
+    And I should see a link to "Natural Features & Ecosystems" with url for "http://www.nps.gov/maca/naturescience/naturalfeaturesandecosystems.htm" on the right featured collection link list
+    And I should see a link to "Forests" with url for "http://www.nps.gov/maca/naturescience/forests.htm" on the right featured collection link list

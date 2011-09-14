@@ -73,11 +73,11 @@ Then /^the following featured collection keywords exist for featured collection 
 end
 
 Then /^I should see a featured collection title with "([^"]*)" highlighted$/ do |highlighted|
-  page.should have_selector(".featured-collection h2 strong", :content => highlighted)
+  page.should have_selector(".featured-collection h2 strong", :text => highlighted)
 end
 
 Then /^I should see a featured collection link title with "([^"]*)" highlighted$/ do |highlighted|
-  page.should have_selector(".featured-collection ul strong", :content => highlighted)
+  page.should have_selector(".featured-collection ul strong", :text => highlighted)
 end
 
 Then /^I should see a featured collection image section$/ do
@@ -131,4 +131,8 @@ end
 
 Given /^all featured collections are indexed$/ do
   FeaturedCollection.reindex
+end
+
+Then /^I should see a link to "([^"]*)" with url for "([^"]*)" on the (left|right) featured collection link list$/ do |link_title, url, position|
+  page.should have_selector(".featured-collection li.#{position} a", :text => link_title, :href => url)
 end

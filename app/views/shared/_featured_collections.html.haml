@@ -13,8 +13,4 @@
           - if result.image_attribution.present?
             %span #{t :image}
             = link_to_unless result.image_attribution_url.blank?, content_tag(:span, result.image_attribution, :class => 'attribution'), result.image_attribution_url
-      - unless result.featured_collection_links.blank?
-        %ul
-          - highlighted_link_titles = highlight_hit(hit, :link_titles).split(FeaturedCollection::LINK_TITLE_SEPARATOR) if hit.highlights(:link_titles).present?
-          - result.featured_collection_links.each_with_index do |link, index|
-            %li{ :class => "#{cycle('left', 'right')}" }= link_to render_featured_collection_link_title(link, index, highlighted_link_titles), link.url
+      = render :partial => 'shared/featured_collection_links', :locals => { :hit => hit, :result => result } unless result.featured_collection_links.blank?

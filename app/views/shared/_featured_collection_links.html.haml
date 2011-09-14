@@ -1,0 +1,16 @@
+- highlighted_link_titles = highlight_hit(hit, :link_titles).split(FeaturedCollection::LINK_TITLE_SEPARATOR) if hit.highlights(:link_titles).present?
+%ul
+  - if result.has_one_column_layout?
+    - result.featured_collection_links.each_with_index do |link, index|
+      %li= link_to render_featured_collection_link_title(link, index, highlighted_link_titles), link.url
+  - else
+    - total_links = result.featured_collection_links.count
+    - total_links_on_the_left = (total_links / 2) + (total_links % 2)
+    - total_links_on_the_left.times do |i|
+      - index = i
+      - link = result.featured_collection_links[index]
+      %li.left= link_to render_featured_collection_link_title(link, index, highlighted_link_titles), link.url
+      - index = i + total_links_on_the_left
+      - if index < total_links
+        - link = result.featured_collection_links[index]
+        %li.right= link_to render_featured_collection_link_title(link, index, highlighted_link_titles), link.url
