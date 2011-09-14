@@ -213,8 +213,8 @@ describe Agency do
   describe "#agency_popular_urls" do
     before do
       @agency = Agency.create!(@valid_attributes)
-      @agency.agency_popular_urls.create!(:url => '1', :title => '1', :rank => 1, :source => 'admin')
-      @agency.agency_popular_urls.create!(:url => '2', :title => '2', :rank => 2, :source => 'bitly')
+      @agency.agency_popular_urls.create!(:url => '1', :title => '1', :rank => 1, :source => 'admin', :locale => 'en')
+      @agency.agency_popular_urls.create!(:url => '2', :title => '2', :rank => 2, :source => 'bitly', :locale => 'en')
     end
     
     it "should sort the admin urls above the bitly urls" do
@@ -239,9 +239,12 @@ describe Agency do
           ["forms/1041-nr.pdf", "1041NR, the form that nobody ever ever ever ever uses to file anything they would not want to be seen posted on a sandwich board in downtown NY", 3],
           ["forms/1041.pdf", "1041", 5]
       ]
-      @sample_pop_page_data.each_with_index { |values, rank|
-        @pop_agency.agency_popular_urls.create!( :url => agency_base_url +values[0], :title => values[1], :rank => values[2])
-      }
+      @sample_pop_page_data.each do |values|
+        @pop_agency.agency_popular_urls.create!(:url => "#{agency_base_url}#{values[0]}",
+                                                :title => values[1],
+                                                :rank => values[2],
+                                                :locale => 'en')
+      end
     end
 
     it "should have six displayable popular pages" do

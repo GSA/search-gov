@@ -9,13 +9,39 @@ describe AgencyPopularUrl do
   it { should validate_presence_of :url }
   it { should validate_presence_of :title }
   it { should validate_presence_of :source }
-  
+  it { should validate_presence_of :locale }
+
+  SUPPORTED_LOCALES.each do |locale|
+    it { should allow_value(locale).for(:locale) }
+  end
+  it { should_not allow_value("invalid_locale").for(:locale) }
+
   it "should default source to 'admin'" do
     agency = Agency.create!(:name => 'test.gov', :domain => 'test.gov')
-    agency_popular_url = AgencyPopularUrl.create!(:url => 'http://test.gov', :title => 'Test', :rank => 12, :agency => agency)
+    agency_popular_url = AgencyPopularUrl.create!(:url => 'http://test.gov', :title => 'Test', :rank => 12, :agency => agency, :locale => 'en')
     agency_popular_url.source.should == 'admin'
   end
-  
+
+  describe ".with_locale" do
+    let(:agency) { Agency.create!(:name => 'test', :domain => 'test.gov') }
+    let(:en_agency_popular_url) do
+      agency.agency_popular_urls.create!(:title => 'First Blog Post',
+                                         :url => 'http://test.gov/en/blog/1',
+                                         :rank => 12,
+                                         :locale => 'en')
+    end
+
+    let(:es_agency_popular_url) do
+      agency.agency_popular_urls.create!(:title => 'Primero Blog Post',
+                                         :url => 'http://test.gov/es/blog/1',
+                                         :rank => 12,
+                                         :locale => 'es')
+    end
+    subject { agency }
+    specify { agency.agency_popular_urls.with_locale('en').should == [en_agency_popular_url] }
+    specify { agency.agency_popular_urls.with_locale('es').should == [es_agency_popular_url] }
+  end
+
   describe "#compute_for_date" do
     before do
       @bitly_api = mock(BitlyAPI)
@@ -51,8 +77,8 @@ describe AgencyPopularUrl do
         before do
           Agency.destroy_all
           @agency = Agency.create!(:name => "Usa.gov", :domain => "usa.gov")
-          @agency.agency_popular_urls << AgencyPopularUrl.new(:url => 'http://test.com', :title => "Test", :rank => 99, :source => 'bitly')
-          @agency.agency_popular_urls << AgencyPopularUrl.new(:url => 'http://test.com/admin', :title => "Test", :rank => 99, :source => 'admin')
+          @agency.agency_popular_urls.create!(:url => 'http://test.com', :title => "Test", :rank => 99, :source => 'bitly', :locale => 'en')
+          @agency.agency_popular_urls.create!(:url => 'http://test.com/admin', :title => "Test", :rank => 99, :source => 'admin', :locale => 'en')
           @agency.agency_popular_urls.size.should == 2
         end
       
@@ -65,7 +91,7 @@ describe AgencyPopularUrl do
         
         context "when the link is already in the list" do
           before do
-            @agency.agency_popular_urls << AgencyPopularUrl.new(:url => 'http://search.usa.gov', :title => "Test", :rank => 99, :source => 'admin')
+            @agency.agency_popular_urls.create!(:url => 'http://search.usa.gov', :title => "Test", :rank => 99, :source => 'admin', :locale => 'en')
           end
           
           it "should leave it as is" do

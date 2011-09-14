@@ -25,8 +25,8 @@ class Agency < ActiveRecord::Base
     self.flickr_url.present? ? self.flickr_url : nil
   end
 
-  def displayable_popular_urls
-    @cached_displayable_popular_urls ||= compute_displayable_popular_urls
+  def displayable_popular_urls(locale = I18n.locale)
+    @cached_displayable_popular_urls ||= compute_displayable_popular_urls(locale)
   end
   
   def has_phone_number?
@@ -52,7 +52,8 @@ class Agency < ActiveRecord::Base
     self.agency_queries << AgencyQuery.new(:phrase => self.abbreviation) if self.abbreviation.present?
   end
 
-  def compute_displayable_popular_urls
-    self.agency_popular_urls
+  def compute_displayable_popular_urls(locale)
+    locale.blank? ? self.agency_popular_urls : self.agency_popular_urls.with_locale(locale)
+    #self.agency_popular_urls
   end
 end

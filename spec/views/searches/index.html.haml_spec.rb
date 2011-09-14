@@ -216,8 +216,9 @@ describe "searches/index.html.haml" do
         @agency = Agency.create!(:name => 'Internal Revenue Service', :domain => 'irs.gov', :phone => '888-555-1040', :twitter_username => 'IRSnews')
         @agency.agency_urls << AgencyUrl.new(:url => 'http://www.irs.gov/', :locale => 'en')
         @agency.agency_urls << AgencyUrl.new(:url => 'http://www.irs.gov/es/', :locale => 'es')
-        @agency.agency_popular_urls << AgencyPopularUrl.new( :url => 'http://www.irs.gov/forms/1040.pdf', :title => "Form 1040", :rank => 1)
-        @agency.agency_popular_urls << AgencyPopularUrl.new( :url => 'http://www.irs.gov/forms/1040nr.pdf', :title => "Form 1040-NR", :rank => 2)
+        @agency.agency_popular_urls.create!( :url => 'http://www.irs.gov/forms/1040.pdf', :title => "Form 1040", :rank => 1, :locale => 'en')
+        @agency.agency_popular_urls.create!( :url => 'http://www.irs.gov/forms/1040nr.pdf', :title => "Form 1040-NR", :rank => 2, :locale => 'en')
+        @agency.agency_popular_urls.create!( :url => 'http://www.irs.gov/pub/irs-pdf/f1040.pdf', :title => "Formulario 1040 U.S. Individual Income Tax Return", :rank => 2, :locale => 'es')
         @agency_query = AgencyQuery.create!(:phrase => 'irs', :agency => @agency)
         @search.stub!(:query).and_return "irs"
         @search_result = {'title' => "Internal Revenue Service",
@@ -324,7 +325,7 @@ describe "searches/index.html.haml" do
             rendered.should have_selector "input[type='hidden'][name='locale'][value='es']"
             rendered.should have_selector "input[type='submit'][value='Buscar']"
             rendered.should have_selector("div[class='popular-pages']")
-            rendered.should contain(/Form 1040-NR/)
+            rendered.should contain("Formulario 1040 U.S. Individual Income Tax Return")
             rendered.should contain(/Páginas populares/)
             rendered.should_not contain(/Popular Pages/)
           end
@@ -358,7 +359,7 @@ describe "searches/index.html.haml" do
     
       context "when there are popular urls with identical titles" do
         before do
-          @agency.agency_popular_urls << AgencyPopularUrl.new(:url => 'http://some.link', :title => 'Form 1040', :rank => 3)
+          @agency.agency_popular_urls.create!(:url => 'http://some.link', :title => 'Form 1040', :rank => 3, :locale => 'en')
         end
         
         it "should modify the duplicate titles to include numbers" do
@@ -370,7 +371,7 @@ describe "searches/index.html.haml" do
       
       context "when a title is longer than 50 characters" do
         before do
-          @agency.agency_popular_urls << AgencyPopularUrl.new(:url => 'http://some.link', :title => 'This is a really long title that we are going to truncate so it is not so long.', :rank => 5)
+          @agency.agency_popular_urls.create!(:url => 'http://some.link', :title => 'This is a really long title that we are going to truncate so it is not so long.', :rank => 5, :locale => 'en')
         end
         
         it "should truncate the title" do

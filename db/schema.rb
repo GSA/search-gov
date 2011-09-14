@@ -81,11 +81,12 @@ ActiveRecord::Schema.define(:version => 20110915172744) do
   end
 
   create_table "agency_popular_urls", :force => true do |t|
-    t.integer "agency_id",                      :null => false
-    t.string  "url",                            :null => false
-    t.integer "rank",                           :null => false
-    t.string  "title",                          :null => false
-    t.string  "source",    :default => "admin"
+    t.integer "agency_id",                                   :null => false
+    t.string  "url",                                         :null => false
+    t.integer "rank",                                        :null => false
+    t.string  "title",                                       :null => false
+    t.string  "source",                 :default => "admin"
+    t.string  "locale",    :limit => 6,                      :null => false
   end
 
   add_index "agency_popular_urls", ["agency_id"], :name => "index_agency_popular_urls_on_agency_id"
