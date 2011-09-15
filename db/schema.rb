@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110913050747) do
+ActiveRecord::Schema.define(:version => 20110915172744) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -207,8 +207,7 @@ ActiveRecord::Schema.define(:version => 20110913050747) do
     t.integer "clicks",         :null => false
   end
 
-  add_index "daily_search_module_stats", ["day", "affiliate_name", "module_tag", "vertical", "locale"], :name => "dics_unique", :unique => true
-  add_index "daily_search_module_stats", ["day", "module_tag"], :name => "day_module"
+  add_index "daily_search_module_stats", ["module_tag", "day"], :name => "index_daily_search_module_stats_on_module_tag_and_day"
 
   create_table "daily_usage_stats", :force => true do |t|
     t.date     "day"
