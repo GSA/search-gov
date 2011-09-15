@@ -63,5 +63,6 @@ These are the steps to take in order to upgrade the non-automatically-updating p
 ### Disable alarm suppression on Opsview and Rackspace
 
 ### Renable readability of Apache logs by search user if httpd package got updated
-    ssh web1,web2,drweb,staging,cron
+    ssh staging
     sudo chmod -R a+rx /var/log/httpd
+    pdsh -w ssh:search@web[1-2],slave[1-2],cron,master,drweb,drmaster sudo chmod -R a+rx /var/log/httpd
