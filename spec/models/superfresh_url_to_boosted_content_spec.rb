@@ -94,7 +94,7 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
     before do
       @superfresh_url = superfresh_urls(:pdf)
       @raw_pdf = File.open(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
-      SuperfreshUrlToBoostedContent.stub!(:open).and_return @raw_pdf
+      PdfDocument.stub!(:open).and_return @raw_pdf
     end
 
     it "should open the pdf file" do
@@ -113,7 +113,7 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
     context "when the pdf body is blank" do
       before do
         @raw_pdf = File.open(Rails.root.to_s + "/spec/fixtures/pdf/badtitle.pdf")
-        SuperfreshUrlToBoostedContent.stub!(:open).and_return @raw_pdf
+        PdfDocument.stub!(:open).and_return @raw_pdf
       end
       
       it "should generate a title using the last part of the filename" do
@@ -126,7 +126,7 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
     
     context "when some exception is raised while fetching or parsing the PDF file" do
       before do
-        SuperfreshUrlToBoostedContent.stub!(:crawl_pdf).and_raise "Some Error"
+        PdfDocument.stub!(:crawl_pdf).and_raise "Some Error"
       end
       
       it "should log an error" do
@@ -137,7 +137,7 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
     
     context "when some exception is raised while opening the PDF file" do
       before do
-        SuperfreshUrlToBoostedContent.stub!(:open).and_raise 'Some Error'
+        PdfDocument.stub!(:open).and_raise 'Some Error'
       end
       
       it "should log an error" do
@@ -145,15 +145,5 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
         SuperfreshUrlToBoostedContent.perform(@superfresh_url.url, @aff.id)
       end
     end        
-  end
-  
-  describe "#is_pdf?" do
-    it "should return true if the URL ends in '.pdf'" do
-      SuperfreshUrlToBoostedContent.is_pdf?("something.pdf").should be_true
-    end
-    
-    it "should return false if the URL does not end in .pdf" do
-      SuperfreshUrlToBoostedContent.is_pdf?('not a pdf').should be_false
-    end
   end
 end

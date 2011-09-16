@@ -1,5 +1,3 @@
-require 'pdf/toolkit'
-
 class SuperfreshUrlToBoostedContent
   @queue = :usasearch
   TRUNCATED_TITLE_LENGTH = 60
@@ -8,8 +6,8 @@ class SuperfreshUrlToBoostedContent
   def self.perform(url, affiliate_id)
     return unless SuperfreshUrl.find_by_url_and_affiliate_id(url, affiliate_id)
     begin
-      if is_pdf?(url)
-        pdf_document = crawl_pdf(url)
+      if PdfDocument.is_pdf?(url)
+        pdf_document = PdfDocument.crawl_pdf(url)
         if pdf_document and pdf_document.is_a?(PdfDocument)
           pdf_document.affiliate_id = affiliate_id
           pdf_document.save!
@@ -42,32 +40,5 @@ class SuperfreshUrlToBoostedContent
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
     end
-  end
-  
-  def self.crawl_pdf(url)
-    begin
-      pdf_io = open(url)
-      pdf = PDF::Toolkit.open(pdf_io)
-      PdfDocument.new(:url => url, :title => title_from_pdf(pdf, url), :description => pdf.to_text.read)
-    rescue Exception => e
-      Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
-    end
-  end
-  
-  def self.title_from_pdf(pdf, url)
-    return pdf.title unless pdf.title.blank?
-    begin
-      body = pdf.to_text.read
-      first_linebreak_index = body.strip.index("\n") || body.size
-      first_sentence_index = body.strip.index(".")
-      end_index = [first_linebreak_index, first_sentence_index].min - 1
-      return body.strip[0..end_index]
-    rescue
-      return URI.decode(url[url.rindex("/") + 1..-1])
-    end
-  end
-  
-  def self.is_pdf?(url)
-    url.ends_with(".pdf").present?
   end
 end

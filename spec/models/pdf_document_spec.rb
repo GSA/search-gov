@@ -71,4 +71,15 @@ describe PdfDocument do
       end
     end
   end
+  
+  describe "#is_pdf?" do
+    it "should return true if the URL ends in '.pdf'" do
+      PdfDocument.is_pdf?("something.pdf").should be_true
+    end
+    
+    it "should return false if the URL does not end in .pdf" do
+      PdfDocument.is_pdf?('not a pdf').should be_false
+    end
+  end
+
 end
