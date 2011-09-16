@@ -28,7 +28,7 @@ class BitlyAPI
       File.delete(csv_file_name)
     end
     sign_in unless signed_in?
-    csv_url = "http://bit.ly/pro/visited?hour-selector=all-day&ts=#{date.to_time.to_i}&resolution=day&export_type=csv&export=1"
+    csv_url = "http://bit.ly/pro/visited?hour-selector=all-day&ts=#{date.to_time.to_i}&resolution=day&export_type=csv&export=true"
     csv = @browser.get(csv_url)
     temp_file_path = File.join(Rails.root.to_s, "tmp", csv_file_name)
     File.open(temp_file_path, "w" ){ |csv_file| csv_file.write( csv.csv_body) }

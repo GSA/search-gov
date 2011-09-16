@@ -15,7 +15,7 @@ class AgencyPopularUrl < ActiveRecord::Base
           AgencyPopularUrl.destroy_all(["agency_id = ? AND source = ?", agency.id, 'bitly'])
           popular_links = bitly_api.get_popular_links_for_domain(agency.domain)
           popular_links.each do |link|
-            agency.agency_popular_urls << AgencyPopularUrl.new(:url => link[:long_url], :title => link[:title], :rank => link[:clicks], :source => 'bitly', :locale => 'en')
+            agency.agency_popular_urls << AgencyPopularUrl.new(:url => CGI.unescapeHTML(link[:long_url]), :title => link[:title], :rank => link[:clicks], :source => 'bitly', :locale => 'en')
           end
         end
       end
@@ -27,7 +27,7 @@ class AgencyPopularUrl < ActiveRecord::Base
             popular_links += bitly_api.get_popular_links_for_domain(domain)
           end
           popular_links.each do |link|
-            affiliate.popular_urls << PopularUrl.new(:url => link[:long_url], :title => link[:title], :rank => link[:clicks])
+            affiliate.popular_urls << PopularUrl.new(:url => CGI.unescapeHTML(link[:long_url]), :title => link[:title], :rank => link[:clicks])
           end
         end
       end

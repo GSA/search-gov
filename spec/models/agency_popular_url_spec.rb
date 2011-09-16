@@ -68,7 +68,7 @@ describe AgencyPopularUrl do
     
     context "when popular links are returned" do
       before do
-        @bitly_api.stub!(:get_popular_links_for_domain).and_return [{:long_url => 'http://search.usa.gov', :clicks => 100, :title => 'Search.USA.gov'}]
+        @bitly_api.stub!(:get_popular_links_for_domain).and_return [{:long_url => 'http://search.usa.gov/search?query=test&amp;locale=en', :clicks => 100, :title => 'Search.USA.gov'}]
         @bitly_api.stub!(:grab_csv_for_date).and_return "filename"
         @bitly_api.stub!(:parse_csv).and_return true
       end
@@ -86,12 +86,12 @@ describe AgencyPopularUrl do
           AgencyPopularUrl.compute_for_date
           @agency.reload
           @agency.agency_popular_urls.size.should == 2
-          @agency.agency_popular_urls.last.url.should == "http://search.usa.gov"
+          @agency.agency_popular_urls.last.url.should == "http://search.usa.gov/search?query=test&locale=en"
         end
         
         context "when the link is already in the list" do
           before do
-            @agency.agency_popular_urls.create!(:url => 'http://search.usa.gov', :title => "Test", :rank => 99, :source => 'admin', :locale => 'en')
+            @agency.agency_popular_urls.create!(:url => 'http://search.usa.gov/search?query=test&locale=en', :title => "Test", :rank => 99, :source => 'admin', :locale => 'en')
           end
           
           it "should leave it as is" do
@@ -115,12 +115,12 @@ describe AgencyPopularUrl do
           AgencyPopularUrl.compute_for_date
           @affiliate.reload
           @affiliate.popular_urls.size.should == 1
-          @affiliate.popular_urls.first.url.should == "http://search.usa.gov"
+          @affiliate.popular_urls.first.url.should == "http://search.usa.gov/search?query=test&locale=en"
         end
         
         context "when the link is already in the list" do
           before do
-            @affiliate.popular_urls << PopularUrl.new(:url => 'http://search.usa.gov', :title => "Test", :rank => 99)
+            @affiliate.popular_urls.create!(:url => 'http://search.usa.gov/search?query=test&locale=en', :title => "Test", :rank => 99)
           end
           
           it "should update it" do
@@ -128,6 +128,7 @@ describe AgencyPopularUrl do
             @affiliate.reload
             @affiliate.popular_urls.size.should == 1
             @affiliate.popular_urls.last.title.should == "Search.USA.gov"
+            @affiliate.popular_urls.last.url.should == "http://search.usa.gov/search?query=test&locale=en"
             @affiliate.popular_urls.last.rank.should == 100
           end
         end
