@@ -23,6 +23,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:extra_image_results)
     @search.stub!(:med_topic)
     @search.stub!(:has_featured_collections?)
+    @search.stub!(:pdf_documents)
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'
     @deep_link.stub!(:url).and_return 'http://adeeplink.com'

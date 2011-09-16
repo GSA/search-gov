@@ -1228,6 +1228,32 @@ describe Search do
         @search.run
       end
     end
+    
+    context "when an affiliate has PDF documents" do
+      before do
+        @affiliate.pdf_documents.destroy_all
+        @affiliate.pdf_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf1.pdf')
+        @affiliate.pdf_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf2.pdf')
+        PdfDocument.reindex
+      end
+      
+      it "should find PDF documents that match the query if this is the first page" do
+        search = Search.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 0))
+        search.run
+        search.pdf_documents.should_not be_nil
+        search.pdf_documents.total.should == 2
+      end
+      
+      it "should not find any PDF documents if it's not the first page" do
+        search = Search.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 2))
+        search.run
+        search.pdf_documents.should be_nil
+      end
+      
+      after do
+        @affiliate.pdf_documents.destroy_all
+      end
+    end
   end
 
   describe "when new" do

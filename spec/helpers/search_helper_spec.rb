@@ -14,8 +14,7 @@ describe SearchHelper do
     end
   end
 
-  describe "#display_result_extname_prefix" do
-
+  describe "#display_bing_result_extname_prefix" do
     before do
       @urls_that_need_a_box = []
       %w{http ftp}.each do |protocol|
@@ -36,7 +35,7 @@ describe SearchHelper do
 
     it "should return empty string for most types of URLs" do
       @urls_that_dont_need_a_box.each do |url|
-        helper.display_result_extname_prefix({'unescapedUrl' => url}).should == ""
+        helper.display_bing_result_extname_prefix({'unescapedUrl' => url}).should == ""
       end
     end
 
@@ -44,11 +43,9 @@ describe SearchHelper do
       @urls_that_need_a_box.each do |url|
         path_extname = url.gsub(/.*\//,"").gsub(/\?.*/,"").gsub(/[a-zA-Z0-9_]+\./,"").upcase
         prefix = "<span class=\"uext_type\">[#{path_extname.upcase}]</span> "
-        helper.display_result_extname_prefix({'unescapedUrl' => url}).should == prefix
+        helper.display_bing_result_extname_prefix({'unescapedUrl' => url}).should == prefix
       end
-
     end
-
   end
 
   describe "#render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)" do

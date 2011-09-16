@@ -9,14 +9,18 @@ class SuperfreshUrlToBoostedContent
     return unless SuperfreshUrl.find_by_url_and_affiliate_id(url, affiliate_id)
     begin
       if is_pdf?(url)
-        boosted_content = crawl_pdf(url)
+        pdf_document = crawl_pdf(url)
+        if pdf_document and pdf_document.is_a?(PdfDocument)
+          pdf_document.affiliate_id = affiliate_id
+          pdf_document.save!
+        end
       else
         boosted_content = crawl_html(url)
-      end
-      if boosted_content and boosted_content.is_a?(BoostedContent)
-        boosted_content.affiliate_id = affiliate_id
-        boosted_content.save!
-        Sunspot.index!(boosted_content)
+        if boosted_content and boosted_content.is_a?(BoostedContent)
+          boosted_content.affiliate_id = affiliate_id
+          boosted_content.save!
+          Sunspot.index!(boosted_content)
+        end
       end
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
@@ -44,7 +48,7 @@ class SuperfreshUrlToBoostedContent
     begin
       pdf_io = open(url)
       pdf = PDF::Toolkit.open(pdf_io)
-      BoostedContent.new(:url => url, :title => title_from_pdf(pdf, url), :description => pdf.to_text.read, :auto_generated => true, :locale => 'en', :status => 'active', :publish_start_on => Date.current)
+      PdfDocument.new(:url => url, :title => title_from_pdf(pdf, url), :description => pdf.to_text.read)
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
     end

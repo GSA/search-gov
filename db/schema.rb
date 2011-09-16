@@ -447,6 +447,16 @@ ActiveRecord::Schema.define(:version => 20110916015126) do
 
   add_index "moving_queries", ["day", "times"], :name => "index_moving_queries_on_day_and_times"
 
+  create_table "pdf_documents", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "keywords"
+    t.string   "url"
+    t.integer  "affiliate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "popular_image_queries", :force => true do |t|
     t.string   "query"
     t.datetime "created_at"

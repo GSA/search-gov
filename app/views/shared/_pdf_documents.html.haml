@@ -1,0 +1,11 @@
+- if search.pdf_documents and search.pdf_documents.total > 0
+  .related_pdfs
+    #related_pdfs_summary{:style => 'padding-left: 11px; margin-top: 13px; margin-bottom: 13px;'}
+      = "PDF Results from #{@affiliate.display_name}"
+    - search.pdf_documents.hits(:verify => true).each_with_index do |hit, index|
+      .pdfresult.searchresult.clearfix{:id => "pdfresult#{index+1}"}
+        %h2
+          = display_result_extname_prefix(hit.instance.url)
+          = tracked_click_link(hit.instance.url,highlight_hit(hit, :title), @search, nil, index, 'APDF', @search_vertical)
+        %h3= highlight_hit(hit, :description).html_safe
+        %h3= tracked_click_link(hit.instance.url, h(shorten_url(hit.instance.url)), @search, nil, index, 'APDF', @search_vertical)

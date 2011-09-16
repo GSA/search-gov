@@ -5,7 +5,7 @@
 - else
   .searchresult.clearfix{:id => "searchresult#{index+1}"}
     %h2
-      = display_result_extname_prefix(result)
+      = display_bing_result_extname_prefix(result)
       = display_bing_result_title(result, search, affiliate, index, @search_vertical)
     %h3= display_result_description(result)
     %h3= display_bing_result_links(result, search, affiliate, index, @search_vertical, affiliate.nil?)

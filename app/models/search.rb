@@ -46,7 +46,8 @@ class Search
               :agency,
               :med_topic,
               :formatted_query,
-              :featured_collections
+              :featured_collections,
+              :pdf_documents
 
   def initialize(options = {})
     options ||= {}
@@ -171,7 +172,10 @@ class Search
 
   def populate_additional_results(response)
     @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
-    @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale) if first_page?
+    if first_page?
+      @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale)
+      @pdf_documents = PdfDocument.search_for(query, affiliate) if affiliate
+    end
     if english_locale?
       @spotlight = Spotlight.search_for(query, affiliate)
     end

@@ -19,6 +19,7 @@
   - search.results.each_with_index do |result, index|
     = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
     = render "/shared/related_faqs" if index == 4 and search.page == 0
+  = render "/shared/pdf_documents", :search => @search, :affiliate => @affiliate if @affiliate
   = render "/shared/related_topics_wrapper" unless @affiliate
   = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
 - elsif search.error_message

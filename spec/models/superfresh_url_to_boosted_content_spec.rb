@@ -103,11 +103,11 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
     
     it "should create a boosted content that has a title and description from the pdf" do
       SuperfreshUrlToBoostedContent.perform(@superfresh_url.url, @aff.id)
-      boosted_content = @aff.boosted_contents.find_by_url(@superfresh_url.url)
-      boosted_content.should_not be_nil
-      boosted_content.title.should == "This is a test PDF to test our PDF parsing"
-      boosted_content.description.should == "This is a test PDF to test our PDF parsing.\n\n\f"
-      boosted_content.url.should == @superfresh_url.url
+      pdf_document = @aff.pdf_documents.find_by_url(@superfresh_url.url)
+      pdf_document.should_not be_nil
+      pdf_document.title.should == "This is a test PDF to test our PDF parsing"
+      pdf_document.description.should == "This is a test PDF to test our PDF parsing.\n\n\f"
+      pdf_document.url.should == @superfresh_url.url
     end
     
     context "when the pdf body is blank" do
@@ -118,9 +118,9 @@ describe SuperfreshUrlToBoostedContent, "#perform(url, affiliate_id)" do
       
       it "should generate a title using the last part of the filename" do
         SuperfreshUrlToBoostedContent.perform(@superfresh_url.url, @aff.id)
-        boosted_content = @aff.boosted_contents.find_by_url(@superfresh_url.url)
-        boosted_content.should_not be_nil
-        boosted_content.title.should == "3-2-07-III H.pdf"
+        pdf_document = @aff.pdf_documents.find_by_url(@superfresh_url.url)
+        pdf_document.should_not be_nil
+        pdf_document.title.should == "3-2-07-III H.pdf"
       end
     end
     

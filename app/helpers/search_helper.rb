@@ -125,10 +125,14 @@ module SearchHelper
     end
     content_tag(:table, raw(rows), :class=>"deep-links")
   end
-
-  def display_result_extname_prefix(result)
+  
+  def display_bing_result_extname_prefix(bing_result)
+    display_result_extname_prefix(bing_result['unescapedUrl'])
+  end
+  
+  def display_result_extname_prefix(url)
     begin
-      path_extname = File.extname(URI.parse(result['unescapedUrl']).path)[1..-1]
+      path_extname = File.extname(URI.parse(url).path)[1..-1]
       if SPECIAL_URL_PATH_EXT_NAMES.include?( path_extname.downcase )
         raw "<span class=\"uext_type\">[#{path_extname.upcase}]</span> "
       else
