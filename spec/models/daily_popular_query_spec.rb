@@ -4,6 +4,7 @@ describe DailyPopularQuery do
   fixtures :affiliates
   before do
     @valid_attributes = {
+      :affiliate => affiliates(:basic_affiliate),
       :day => Date.yesterday,
       :locale => nil,
       :query => 'america',
@@ -50,16 +51,17 @@ describe DailyPopularQuery do
       ResqueSpec.reset!
     end
 
-    it "should enqueue calculation" do
+    it "should enqueue calculation of popular queries for each affiliate, including the default/null USASearch affiliate" do
       DailyPopularQuery.calculate(Date.current, 7, :most_popular_terms, false)
       DailyPopularQuery.should have_queued(Date.current, 7, :most_popular_terms, false)
+      Affiliate.all.each {|affiliate| DailyPopularQuery.should have_queued(Date.current, 7, :most_popular_terms, false, affiliate.id) }
     end
   end
 
-  describe "#perform(day, time_frame, method, is_grouped)" do
-    it "should remove existing records from the DB for that day/time_frame/grouping" do
-      DailyPopularQuery.should_receive(:delete_all).once.with(["day = ? and time_frame = ? and is_grouped = ?", @valid_attributes[:day], @valid_attributes[:time_frame], @valid_attributes[:is_grouped]])
-      DailyPopularQuery.perform(@valid_attributes[:day].to_s, @valid_attributes[:time_frame], "most_popular_terms", @valid_attributes[:is_grouped])
+  describe "#perform(day, time_frame, method, is_grouped, affiliate_id)" do
+    it "should remove existing records from the DB for that day/time_frame/grouping/affiliate" do
+      DailyPopularQuery.should_receive(:delete_all).once.with(["day = ? and time_frame = ? and is_grouped = ? and affiliate_id = ?", @valid_attributes[:day], @valid_attributes[:time_frame], @valid_attributes[:is_grouped], @valid_attributes[:affiliate].id])
+      DailyPopularQuery.perform(@valid_attributes[:day].to_s, @valid_attributes[:time_frame], "most_popular_terms", @valid_attributes[:is_grouped], @valid_attributes[:affiliate].id)
     end
 
     context "when there is sufficient data for the dates specified" do
@@ -67,11 +69,25 @@ describe DailyPopularQuery do
       let(:time_frame) { 7 }
       let(:is_grouped) { false }
 
-      it "should calculate the daily popular queries for the given day, time frame, and grouping using the specified DailyQueryStat method" do
-        DailyQueryStat.should_receive(:most_popular_terms).with(day, time_frame, 1000).and_return [QueryCount.new("query", 100 * time_frame)]
-        DailyPopularQuery.perform(day.to_s, time_frame, "most_popular_terms", is_grouped)
-        DailyPopularQuery.find_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame_and_times(
-          day, nil, 'en', "query", is_grouped, time_frame, time_frame * 100).should_not be_nil
+      context "when it's a real affiliate" do
+        let(:affiliate) { affiliates(:basic_affiliate) }
+
+        it "should calculate the affiliate's daily popular queries for the given day, time frame, and grouping using the specified DailyQueryStat method" do
+          DailyQueryStat.should_receive(:most_popular_terms).with(day, time_frame, 1000, affiliate.name).and_return [QueryCount.new("someterm", 100 * time_frame)]
+          DailyPopularQuery.perform(day.to_s, time_frame, "most_popular_terms", is_grouped, affiliate.id)
+          DailyPopularQuery.find_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame_and_times(
+            day, affiliate.id, 'en', "someterm", is_grouped, time_frame, time_frame * 100).should_not be_nil
+        end
+      end
+
+      context "when it's the default USASearch null affiliate" do
+
+        it "should calculate the USASearch affiliate's daily popular queries for the given day, time frame, and grouping using the specified DailyQueryStat method" do
+          DailyQueryStat.should_receive(:most_popular_terms).with(day, time_frame, 1000, Affiliate::USAGOV_AFFILIATE_NAME).and_return [QueryCount.new("someterm", 100 * time_frame)]
+          DailyPopularQuery.perform(day.to_s, time_frame, "most_popular_terms", is_grouped, nil)
+          DailyPopularQuery.find_by_day_and_affiliate_id_and_locale_and_query_and_is_grouped_and_time_frame_and_times(
+            day, nil, 'en', "someterm", is_grouped, time_frame, time_frame * 100).should_not be_nil
+        end
       end
     end
 
@@ -85,7 +101,7 @@ describe DailyPopularQuery do
       let(:is_grouped) { false }
 
       it "should not create a DailyPopularQuery record" do
-        DailyQueryStat.should_receive(:most_popular_terms).with(day, time_frame, 1000).and_return "Insufficient data"
+        DailyQueryStat.should_receive(:most_popular_terms).with(day, time_frame, 1000, Affiliate::USAGOV_AFFILIATE_NAME).and_return "Insufficient data"
         DailyPopularQuery.perform(day.to_s, time_frame, "most_popular_terms", is_grouped)
         DailyPopularQuery.count.should be_zero
       end
