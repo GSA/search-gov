@@ -18,7 +18,7 @@ describe SaytSuggestion do
     ["citizenship[", "email@address.com", "\"over quoted\"", "colon: here", "http:something", "site:something", "intitle:something", "passports'", ".mp3", "' pictures"].each do |phrase|
       it { should_not allow_value(phrase).for(:phrase) }
     end
-    ["basic phrase", "my-name", "1099 form", "Senator Frank S. Farley State Marina", "Oswald West State Park's Smuggler Cove", "en español"].each do |phrase|
+    ["basic phrase", "my-name", "1099 form", "Senator Frank S. Farley State Marina", "Oswald West State Park's Smuggler Cove", "en español", "último pronóstico", "¿Qué"].each do |phrase|
       it { should allow_value(phrase).for(:phrase) }
     end
 

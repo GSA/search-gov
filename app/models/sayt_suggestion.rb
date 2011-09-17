@@ -1,4 +1,5 @@
 class SaytSuggestion < ActiveRecord::Base
+  LETTERS_WITH_DIACRITIC = "áéíóúÁÉÍÓÚüÜñÑ¿¡"
   @queue = :sayt_suggestion
   before_validation :squish_whitespace_and_downcase
   before_validation :spellcheck, :unless => :affiliate
@@ -7,7 +8,7 @@ class SaytSuggestion < ActiveRecord::Base
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :scope => :affiliate_id
   validates_length_of :phrase, :within=> (3..80)
-  validates_format_of :phrase, :with=> /^[a-zA-Z0-9][\s\w\.'-]+[a-zA-Z0-9]$/iu
+  validates_format_of :phrase, :with=> /^[a-zA-Z0-9#{LETTERS_WITH_DIACRITIC}][\s\w\.'-]+[a-zA-Z0-9#{LETTERS_WITH_DIACRITIC}]$/iu
 
   MAX_POPULARITY = 2**30
 
