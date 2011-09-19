@@ -14,7 +14,7 @@ class DailyPopularQuery < ActiveRecord::Base
 
     def calculate(day, time_frame, method, is_grouped)
       Resque.enqueue(DailyPopularQuery, day, time_frame, method, is_grouped)
-      Affiliate.all.each {|affiliate| Resque.enqueue(DailyPopularQuery, day, time_frame, method, is_grouped, affiliate.id) }
+      Affiliate.all.each {|affiliate| Resque.enqueue(DailyPopularQuery, day, time_frame, method, is_grouped, affiliate.id) } unless is_grouped
     end
 
     def perform(day_string, time_frame, method, is_grouped, affiliate_id = nil)

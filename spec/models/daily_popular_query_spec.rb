@@ -51,10 +51,24 @@ describe DailyPopularQuery do
       ResqueSpec.reset!
     end
 
-    it "should enqueue calculation of popular queries for each affiliate, including the default/null USASearch affiliate" do
-      DailyPopularQuery.calculate(Date.current, 7, :most_popular_terms, false)
-      DailyPopularQuery.should have_queued(Date.current, 7, :most_popular_terms, false)
-      Affiliate.all.each {|affiliate| DailyPopularQuery.should have_queued(Date.current, 7, :most_popular_terms, false, affiliate.id) }
+    context "when is_grouped is false" do
+      let(:is_grouped) { false }
+
+      it "should enqueue calculation of popular queries for each affiliate, including the default/null USASearch affiliate" do
+        DailyPopularQuery.calculate(Date.current, 7, :most_popular_terms, is_grouped)
+        DailyPopularQuery.should have_queued(Date.current, 7, :most_popular_terms, is_grouped)
+        Affiliate.all.each { |affiliate| DailyPopularQuery.should have_queued(Date.current, 7, :most_popular_terms, is_grouped, affiliate.id) }
+      end
+    end
+
+    context "when is_grouped is true" do
+      let(:is_grouped) { true }
+
+      it "should enqueue calculation of popular queries for just the default/null USASearch affiliate" do
+        DailyPopularQuery.calculate(Date.current, 7, :most_popular_terms, is_grouped)
+        DailyPopularQuery.should have_queued(Date.current, 7, :most_popular_terms, is_grouped)
+        DailyPopularQuery.should have_queue_size_of(1)
+      end
     end
   end
 
