@@ -517,7 +517,7 @@ Feature: Featured Collections
     And I fill in "query" with "ciclones"
     And I press "Buscar"
     Then I should see a link to "Nombres de ciclones tropicales en todo el mundo" with url for "http://www.nhc.noaa.gov/aboutnames.shtml" in the featured collections section
-    And I should see "Nombres de ciclones tropicales en todo el mundo destacada por Spanish site" in the featured collections section
+    And I should see "Nombres de ciclones tropicales en todo el mundo página destacada por Spanish site" in the featured collections section
     And I should see an image with alt text "ciclones" in the featured collections section
     And I should see a link to "NOAA" with url for "http://www.noaa.gov" in the featured collections section
     And I should see "Imagen de NOAA" in the featured collections section
