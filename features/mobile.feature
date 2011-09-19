@@ -140,11 +140,11 @@ Feature: Mobile Search
 
   Scenario: A search with results containing food recalls
     Given the following Food Recalls exist:
-    |recalled_days_ago|summary                                      |description                                              | url                                                                     |
-    |1                |Stay Puft recalls marshmallows               |These are just too creepy for kids                       | http://www.fda.gov/Safety/Recalls/ucm207251.htm                         |
-    |18               |The Fizz recalls Screw-on Ice Cream Float Cup|The cup is reusable, but not dishwasher safe.            | http://www.fda.gov/Safety/Recalls/ucm207252.htm                         |
-    |25               |Curry recalled due to unlisted allergens     |It contains the ghost curry as well as raw marshmallows  | http://www.fsis.usda.gov/News_&_Events/Recall_061_2009_Release/index.asp|
-    |35               |Old Marshmallow Recall news                  |These were recalled a very long time ago due to staleness| http://www.fsis.usda.gov/News_&_Events/Recall_062_2009_Release/index.asp|
+    |recalled_days_ago  | summary                                       | description                                               | url                                                                     |
+    |1                  | Stay Puft recalls marshmallows                | These are just too creepy for kids                        | http://www.fda.gov/Safety/Recalls/ucm207251.htm                         |
+    |18                 | The Fizz recalls Screw-on Ice Cream Float Cup | The cup is reusable, but not dishwasher safe.             | http://www.fda.gov/Safety/Recalls/ucm207252.htm                         |
+    |25                 | Curry recalled due to unlisted allergens      | It contains the ghost curry as well as raw marshmallows   | http://www.fsis.usda.gov/News_&_Events/Recall_061_2009_Release/index.asp|
+    |35                 | Old Marshmallow Recall news                   | These were recalled a very long time ago due to staleness | http://www.fsis.usda.gov/News_&_Events/Recall_062_2009_Release/index.asp|
     And I am on the homepage
     When I fill in "query" with "recall of marshmallows"
     And I submit the search form
@@ -153,6 +153,30 @@ Feature: Mobile Search
     And I should see "Curry recalled due to unlisted allergens"
     And I should not see "The Fizz recalls Screw-on Ice Cream Float Cup"
     And I should not see "Old Marshmallow Recall news"
+    
+  Scenario: A search with results containing English FAQs
+    Given the following FAQs exist:
+    | url                   | question                                      | answer        | ranking | locale  |
+    | http://localhost:3000 | Who is the president of the United States?    | Barack Obama  | 1       | en      |
+    | http://localhost:3000 | Who is the president of the Estados Unidos?   | Barack Obama  | 1       | es      |
+    And I am on the homepage
+    When I fill in "query" with "president"
+    And I submit the search form
+    Then I should be on the search page
+    And I should see "Who is the president of the United States"
+    And I should not see "Who is the president of the Estados Unidos"
+    
+  Scenario: A search with results containing English FAQs
+    Given the following FAQs exist:
+    | url                   | question                                      | answer        | ranking | locale  |
+    | http://localhost:3000 | Who is the president of the United States?    | Barack Obama  | 1       | en      |
+    | http://localhost:3000 | Who is the president of the Estados Unidos?   | Barack Obama  | 1       | es      |
+    And I am on the Spanish homepage
+    When I fill in "query" with "president"
+    And I submit the search form
+    Then I should be on the search page
+    And I should not see "Who is the president of the United States"
+    And I should see "Who is the president of the Estados Unidos"
 
   Scenario: Emailing from the home page
     Given I am on the homepage

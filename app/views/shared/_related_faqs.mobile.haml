@@ -1,0 +1,8 @@
+.group{:id => 'faq_results'}
+  %h1{:style => 'margin-bottom: -5px; color: #C51432'}
+    = related_faqs_header search.query
+  - search.faqs.hits(:verify => true).each_with_index do |hit, index|
+    - faq_url = hit.instance.url
+    .row{:id => "faqresult#{index+1}", :style => 'border: none; padding-bottom: 1px; padding-top: 10px;'}
+      .searchResult
+        = tracked_click_link(hit.instance.url,highlight_hit(hit, :question), @search, nil, index, 'FAQS', @search_vertical)
