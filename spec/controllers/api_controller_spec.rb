@@ -4,42 +4,93 @@ describe ApiController do
   fixtures :affiliates, :affiliate_templates, :users
 
   describe "#search" do
-    describe "authentication" do
-      it "should 401 when there is no api key" do
+    context "when there is no api key parameter" do
+      before do
         get :search, :affiliate => affiliates(:basic_affiliate).name
-
-        response.code.should == "401"
       end
 
-      it "should 401 when there is a blank api key" do
-        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => ""
+      it { should respond_with :unauthorized }
+    end
 
-        response.code.should == "401"
+    context "when the api key is blank" do
+      before do
+        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => ''
       end
 
-      it "should 401 when there is an unknown api key" do
-        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => "bad_api_key"
+      it { should respond_with :unauthorized }
+    end
 
-        response.code.should == "401"
+    context "when the api key is invalid" do
+      before do
+        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => 'bad_api_key'
       end
 
-      it "should 403 when there is a valid api key, but for the wrong affiliate" do
+      it { should respond_with :unauthorized }
+    end
+
+    context "when the api key is valid, but for the wrong affiliate" do
+      before do
         get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => users(:another_affiliate_manager).api_key
-
-        response.code.should == "403"
       end
 
-      it "should 403 when there is a valid api key, but no affiliate found" do
-        get :search, :affiliate => "bad_affiliate_name", :api_key => users(:another_affiliate_manager).api_key
+      it { should respond_with :forbidden }
+    end
 
-        response.code.should == "403"
+    context "when the affiliate does not match the api_key affiliate" do
+      before do
+        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => users(:another_affiliate_manager).api_key
       end
 
-      it "should be a success if correct affiliate name and api key" do
-        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => users(:affiliate_manager).api_key
+      it { should respond_with :forbidden }
+    end
 
-        response.should be_success
+    describe "with format=json" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:api_key) { users(:affiliate_manager).api_key }
+
+      before do
+        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'json', :query => 'solar'
       end
+
+      it { should respond_with_content_type :json }
+      it { should respond_with :success }
+
+      describe "response body" do
+        subject { JSON.parse(response.body) }
+        its(['total']) { should be > 0 }
+        its(['startrecord']) { should == 1}
+        its(['endrecord']) { should == 10 }
+        its(['results']) { should_not be_empty }
+      end
+    end
+
+    context "with format=xml" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:api_key) { users(:affiliate_manager).api_key }
+
+      before do
+        get :search, :affiliate => affiliate.name, :api_key => api_key, :format => 'xml', :query => 'solar'
+      end
+
+      it { should respond_with_content_type :xml }
+      it { should respond_with :success }
+
+      describe "response body" do
+        subject { Hash.from_xml(response.body)["search"] }
+
+        its(['total']) { should be > 0 }
+        its(['startrecord']) { should == 1}
+        its(['endrecord']) { should == 10 }
+        its(['results']) { should_not be_empty }
+      end
+    end
+
+    context "with format=html" do
+      before do
+        get :search, :affiliate => affiliates(:basic_affiliate).name, :api_key => users(:affiliate_manager).api_key, :format => :html
+      end
+
+      it { should respond_with :not_acceptable }
     end
 
     describe "options" do
@@ -86,7 +137,7 @@ describe ApiController do
                                            :publish_start_on => Date.current)
         BoostedContent.reindex
 
-        get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "title"
+        get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "title", :format => 'json'
 
         boosted_results = JSON.parse(response.body)["boosted_results"]
         boosted_results.should_not be_blank
@@ -102,7 +153,7 @@ describe ApiController do
         affiliate = affiliates(:basic_affiliate)
         search_results = {:spelling_suggestions=> "house"}.to_json
         ApiSearch.should_receive(:search).and_return(search_results)
-        get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "haus", :callback => 'processData'
+        get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "haus", :callback => 'processData', :format => 'json'
         response.body.should == %{processData({"spelling_suggestions":"house"})}
       end
     end

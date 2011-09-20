@@ -110,6 +110,16 @@ describe BoostedContent do
     end
   end
 
+  describe "#to_xml" do
+    it "should include title, url, and description" do
+      hash = Hash.from_xml(BoostedContent.create!(@valid_attributes).to_xml)['boosted_result']
+      hash['title'].should == @valid_attributes[:title]
+      hash['url'].should == @valid_attributes[:url]
+      hash['description'].should == @valid_attributes[:description]
+      hash.keys.length.should == 3
+    end
+  end
+
   context "when the affiliate associated with a particular Boosted Content is destroyed" do
     fixtures :affiliates
     before do

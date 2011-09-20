@@ -5,15 +5,11 @@
 %h1
   Search Data API
 %p
-  USASearch's Search Recall Data API returns search results, in json format, along with sections for summary stats, boosted sites, spelling suggestions, and related searches.
+  USASearch's Search Data API returns search results, in JSON or XML format, along with sections for summary stats, boosted sites, and related searches.
 %p
-  The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the recall of search results. First, the API searches all the fields in the database (the full text of the record). Second, the API performs a stemmed search on customers’ search terms (for example, allergic and allergy retrieve the same search results).
+  The API has two important features of note, both of which are intended to minimize customers’ need to input complex queries while maximizing the search results. First, the API searches all the fields in the database (the full text of the record). Second, the API performs a stemmed search on customers’ search terms (for example, allergic and allergy retrieve the same search results).
 
 .api
-  - if @affiliate.present?
-    %h3= "URL Example for Affiliate #{@affiliate.name}:"
-    %p= "http://search.usa.gov/api/search?affiliate=#{@affiliate.name}&api_key=#{current_user.api_key}&format=json&query=water&page=3"
-
   %h3
     Base URL:
   %p
@@ -21,7 +17,7 @@
   %h3
     Format:
   %p
-    JSON is currently the only response format.
+    JSON or XML
   %h3
     Type:
   %p
@@ -35,41 +31,33 @@
   %ul
     %li
       %span affiliate:
-      The name of your affilite site
-      %ul
-        %li
-          Example: http://search.usa.gov/api/search?affiliate=usa.gov
-
+      The name of your affiliate site. This parameter is required.
     %li
       %span api_key:
-      your API key.  You can get a key by #{ link_to 'signing up for an account', login_path}.
-      %ul
-        %li
-          Example: http://search.usa.gov/api/search/{affiliate_name}?api_key=9c63bbbfcd985314b245ef92ab37a792
+      your API key. This parameter is required.
     %li
       %span format:
-      json. This parameter is required. The most recent recalls are returned as the default if no other parameters are given.
-      %ul
-        %li
-          Example: http://search.usa.gov/api/search/{affiliate_name}?format=json
+      json or xml. This parameter is required.
     %li
       %span query:
       keywords.  Query terms for the search.
-      %ul
-        %li
-          Example: http://search.usa.gov/api/search/{affiliate_name}?query=water
     %li
       %span page:
-      Pagination of search results. Ten results are displayed on each search results page. Paginate search results pages by adding '&page=#' to the query string.
-      %ul
-        %li
-          Example: http://search.usa.gov/api/search/{affiliate_name}?page=3
-
+      Pagination of search results. Ten results are displayed on each search results page and defaults to page 1.
+    %li
+      %span hl:
+      Query highlighting on search results. Possible values are "true" or "false". Default is "true".
   %h3
-    Usage Notes
+    Examples
   %ul
     %li
-      Ten results are displayed on each search results page and defaults to page 1.  You can change the page by adding '&page=#' (for example, '&page=2') to the query string.
+      %span Search for "fire" with response in JSON format
+      %br
+      = api_search_url(:affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire')
+    %li
+      %span Search for page 3 of "water" with query highlighting turned off and response in XML format
+      %br
+      = api_search_url(:affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false')
 
   %h3
     Response Fields
@@ -88,9 +76,6 @@
         %li
           %span endrecord:
           The index of the last search result with regard to all possible search results
-        %li
-          %span spelling_suggestions:
-          An array of spelling suggestions for the query terms specified
         %li
           %span related:
           An array of search query terms that are related to the query terms specified
@@ -133,65 +118,112 @@
                   %span Url:
                   Url to the deep-linked page
 
+  %p
+    %h3
+      Response (JSON):
+  %pre
+    :preserve
+      {
+        "related":[],
+        "boosted_results":[
+          {
+            "url": "http://www.boosted_water.com",
+            "description": "This is an example boosted site about water.",
+            "title":" A boosted site about water"
+          }
+        ],
+        "startrecord":21,
+        "endrecord":30,
+        "total":65400,
+        "spelling_suggestions":null,
+        "results":[
+          {
+            "title":"Publication 17 (2010), Your Federal Income Tax",
+            "deepLinks":null,
+            "cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4553228149131343&w=6228f8c9,2dcf99ee",
+            "content":"However, the rust and \ue000water\ue001 damage to rugs and drapes caused by ...",
+            "unescapedUrl":"http://www.irs.gov/publications/p17/ch25.html"
+          },{
+            "title":"Part III - Administrative, Procedural, and Miscellaneous",
+            "deepLinks":null,"cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4536005329682909",
+            "content":"(4) Statement for energy efficient heating, cooling, ventilation, and hot ...",
+            "unescapedUrl":"http://www.irs.gov/pub/irs-drop/n-06-52.pdf"
+          },{
+            "title":"Local Standards: Housing and Utilities",
+            "deepLinks": [
+              {
+                "Title":"Individuals",
+                "Url":"http://www.irs.gov/individuals/index.html"
+              },{
+                "Title":"E-File",
+                "Url":"http://www.irs.gov/efile/index.html"
+              },{
+                "Title":"Contact IRS",
+                "Url":"http://www.irs.gov/contact/index.html"
+              },{
+                "Title":"Where To File",
+                "Url":"http://www.irs.gov/file/index.html"
+              }
+              ...
+            ],
+            "cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4608066291501781&w=e94447c9,486a0a05",
+            "content":"Disclaimer: IRS Collection Financial Standards are intended for use in ...",
+            "unescapedUrl":"http://www.irs.gov/businesses/small/article/0,,id=104696,00.html"
+          }
+          ...
+        ]
+      }
 
   %p
     %h3
-      Response(JSON):
-%pre
-  :preserve
-    {
-      "related":[],
-      "boosted_results":[
-        {
-          "url": "http://www.boosted_water.com",
-          "description": "This is an example boosted site about water.",
-          "title":" A boosted site about water"
-        }
-      ],
-      "startrecord":21,
-      "total":65400,
-      "results":[
-        {
-          "title":"Publication 17 (2010), Your Federal Income Tax",
-          "deepLinks":null,
-          "cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4553228149131343&w=6228f8c9,2dcf99ee",
-          "content":"However, the rust and \ue000water\ue001 damage to rugs and drapes caused by the bursting of a \ue000water\ue001 heater does qualify as a casualty.",
-          "unescapedUrl":"http://www.irs.gov/publications/p17/ch25.html"
-        },{
-          "title":"Part III - Administrative, Procedural, and Miscellaneous",
-          "deepLinks":null,"cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4536005329682909&w=f31b4a6c,590617f3",
-          "content":"(4) Statement for energy efficient heating, cooling, ventilation, and hot \ue000water\ue001 property: The heating, cooling, ventilation, and hot \ue000water\ue001 systems that have been, or are ...",
-          "unescapedUrl":"http://www.irs.gov/pub/irs-drop/n-06-52.pdf"
-        },{
-          "title":"Local Standards: Housing and Utilities",
-          "deepLinks": [
-            {
-              "Title":"Individuals",
-              "Url":"http://www.irs.gov/individuals/index.html"
-            },{
-              "Title":"E-File",
-              "Url":"http://www.irs.gov/efile/index.html"
-            },{
-              "Title":"Contact IRS",
-              "Url":"http://www.irs.gov/contact/index.html"
-            },{
-              "Title":"Where To File",
-              "Url":"http://www.irs.gov/file/index.html"
-            }
-            ...
-          ],
-          "cacheUrl":"http://cc.bingj.com/cache.aspx?q=waater&d=4608066291501781&w=e94447c9,486a0a05",
-          "content":"Disclaimer: IRS Collection Financial Standards are intended for use in calculating repayment of delinquent taxes. These Standards are effective on March 1, 2010 for ...",
-          "unescapedUrl":"http://www.irs.gov/businesses/small/article/0,,id=104696,00.html"
-        }
-        ...
-      ],
-      "spelling_suggestions":"water",
-      "endrecord":30
-    }
-
-
-
+      Response (XML):
+  %pre.xml
+    :preserve
+      &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+      &lt;search&gt;
+        &lt;startrecord type=&quot;integer&quot;&gt;21&lt;/startrecord&gt;
+        &lt;endrecord type=&quot;integer&quot;&gt;30&lt;/endrecord&gt;
+        &lt;spelling-suggestions nil=&quot;true&quot;&gt;&lt;/spelling-suggestions&gt;
+        &lt;related-searches type=&quot;array&quot;&gt;&lt;related-search&gt;space&lt;/related-search&gt;&lt;/related-searches&gt;
+        &lt;total type=&quot;integer&quot;&gt;1390000000&lt;/total&gt;
+        &lt;boosted-results type=&quot;array&quot;&gt;
+          &lt;boosted-result&gt;
+            &lt;title&gt;Water on, in, and above the Earth - USGS Water Science for Schools&lt;/title&gt;
+            &lt;description&gt;Earth's water: How much water is there? Where is it located? ...&lt;/description&gt;
+            &lt;url&gt;http://ga.water.usgs.gov/edu/mearth.html&lt;/url&gt;
+          &lt;/boosted-result&gt;
+        &lt;/boosted-results&gt;
+        &lt;results type=&quot;array&quot;&gt;
+          &lt;result&gt;
+            &lt;title&gt;Bottled &amp;#57344;Water&amp;#57345; Information ...&lt;/title&gt;
+            &lt;deepLinks nil=&quot;true&quot;&gt;&lt;/deepLinks&gt;
+            &lt;cacheUrl&gt;http://cc.bingj.com/cache.aspx?q=water&amp;amp;d=4844560191981002&lt;/cacheUrl&gt;
+            &lt;content&gt;Get bottled &amp;#57344;water&amp;#57345; and industry info ...&lt;/content&gt;
+            &lt;unescapedUrl&gt;http://www.myspringwater.com/Default.aspx&lt;/unescapedUrl&gt;
+          &lt;/result&gt;
+          &lt;result&gt;
+            &lt;title&gt;California &amp;#57344;Water&amp;#57345; Service Company: Home&lt;/title&gt;
+            &lt;deepLinks type=&quot;array&quot;&gt;
+              &lt;deepLink&gt;
+                &lt;Title&gt;Account&lt;/Title&gt;
+                &lt;Url&gt;http://www.calwater.com/your_account/index.php&lt;/Url&gt;
+              &lt;/deepLink&gt;
+              &lt;deepLink&gt;
+                &lt;Title&gt;Contact Us&lt;/Title&gt;
+                &lt;Url&gt;http://www.calwater.com/contact/index.php&lt;/Url&gt;
+              &lt;/deepLink&gt;
+              &lt;deepLink&gt;
+                &lt;Title&gt;Your District&lt;/Title&gt;
+                &lt;Url&gt;http://www.calwater.com/your_district/index.php&lt;/Url&gt;
+              &lt;/deepLink&gt;
+            &lt;/deepLinks&gt;
+            &lt;cacheUrl&gt;http://cc.bingj.com/cache.aspx?q=water&amp;amp;d=4531968189268674&amp;amp;&lt;/cacheUrl&gt;
+            &lt;content&gt;Holding company of two subsidiaries: California &amp;#57344;Water&amp;#57345; ...&lt;/content&gt;
+            &lt;unescapedUrl&gt;http://www.calwater.com/&lt;/unescapedUrl&gt;
+          &lt;/result&gt;
+          &lt;!-- ... --&gt;
+        &lt;/results&gt;
+      &lt;/search&gt;
 .api
   %h3 Terms of Service
   %p

@@ -1472,4 +1472,30 @@ describe Search do
       end
     end
   end
+
+  describe "#to_xml" do
+    let(:search) { Search.new(:query => 'solar') }
+    let(:error_in_xml) { "<search><error>error_message</error></search>" }
+
+    context "when error message exists" do
+      before do
+        search.run
+        search.stub!(:error_message).and_return('error_message')
+      end
+
+      specify { search.to_xml.should =~ /#{error_in_xml}/ }
+    end
+
+    context "when error message does not exist" do
+      let(:keys) { %w(total startrecord endrecord spelling_suggestions related_searches results boosted_results).sort }
+      before do
+        search.stub!(:total).and_return(100)
+        search.stub!(:startrecord).and_return(1)
+        search.stub!(:endrecord).and_return(10)
+        search.stub!(:results).and_return('results_in_xml')
+      end
+
+      specify { Hash.from_xml(search.to_xml)['search'].keys.sort.should == keys }
+    end
+  end
 end

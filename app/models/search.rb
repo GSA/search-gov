@@ -107,6 +107,20 @@ class Search
     end
   end
 
+  def to_xml(options = { :indent => 0, :root => :search })
+    if error_message
+      { :error => error_message }.to_xml(options)
+    else
+      { :total => total,
+        :startrecord => startrecord,
+        :endrecord => endrecord,
+        :spelling_suggestions => spelling_suggestion,
+        :related_searches => related_search,
+        :results => results,
+        :boosted_results => boosted_contents.try(:results) }.to_xml(options)
+    end
+  end
+
   def self.suggestions(affiliate_id, sanitized_query, num_suggestions = 15)
     corrected_query = Misspelling.correct(sanitized_query)
     suggestions = SaytSuggestion.like(affiliate_id, corrected_query, num_suggestions) || []

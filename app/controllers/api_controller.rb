@@ -2,11 +2,11 @@ class ApiController < ApplicationController
   before_filter :verify_api_key_and_load_affiliate
 
   def search
-    @search_options = search_options_from_params(params).merge(:affiliate => @affiliate)
-    if (params[:callback].blank?)
-      render :json => ApiSearch.search(@search_options)
-    else
-      render :json => ApiSearch.search(@search_options), :callback => params[:callback]
+    @search_options = search_options_from_params(params).merge(:affiliate => @affiliate, :format => params[:format])
+    @search = ApiSearch.search(@search_options)
+    respond_to do |format|
+      format.xml { render :xml => @search }
+      format.json { params[:callback].blank? ? render(:json => @search) : render(:json => @search, :callback => params[:callback]) }
     end
   end
 

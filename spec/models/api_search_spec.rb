@@ -1,58 +1,122 @@
 require 'spec/spec_helper'
 
 describe ApiSearch do
-  describe "caching" do
-    fixtures :affiliates
-    before :each do
-      @api_redis = ApiSearch.redis
-      @search_redis = Search.send(:class_variable_get, :@@redis)
-      @affiliate = affiliates(:basic_affiliate)
-      @params = {:query => "foobar", :page => 2, :results_per_page => 10, :affiliate => @affiliate}
-      @search_cache_key = Search.new(@params).cache_key
-      @api_cache_key = "API:#{@affiliate.name}:#{@search_cache_key}"
-      @bing_json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
-    end
+  fixtures :affiliates
 
-    describe "api search cache miss" do
-      it "should store the new result in the api cache" do
-        @api_redis.should_receive(:get).with(@api_cache_key).and_return(nil)
-        @api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, an_instance_of(String))
+  describe ".search" do
+    context "format is json" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:api_redis) { ApiSearch.redis }
+      let(:format) { 'json' }
+      let(:params) { { :query => "foobar", :page => 2, :results_per_page => 10, :affiliate => affiliate, :format => format } }
+      let(:search) { mock('search') }
+      let(:search_result_in_json) { mock('search_result_in_json') }
 
-        @search_redis.should_receive(:get).with(@search_cache_key).and_return(@bing_json)
-        @search_redis.should_not_receive(:setex)
+      before :each do
+        Search.should_receive(:new).with(params).and_return(search)
+        search.should_receive(:cache_key).and_return("search_cache_key")
+        @api_cache_key = "API:#{affiliate.name}:search_cache_key:#{format.to_s}"
+      end
 
-        result = ApiSearch.search(@params)
-        parsed_results = JSON.parse(result)
-        parsed_results.keys.should =~ %w{results spelling_suggestions startrecord related total endrecord boosted_results}
+      context "api search cache miss" do
+        it "should run search and cache the result" do
+          api_redis.should_receive(:get).with(@api_cache_key).and_return(nil)
+          search.should_receive(:run)
+          search.should_receive(:to_json).and_return(search_result_in_json)
+          api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_json)
+
+          ApiSearch.search(params).should == search_result_in_json
+        end
+      end
+
+      context "api search cache hit" do
+        it "should not run search" do
+          api_redis.should_receive(:get).with(@api_cache_key).and_return(search_result_in_json)
+          api_redis.should_not_receive(:setex)
+          search.should_not_receive(:run)
+
+          ApiSearch.search(params).should == search_result_in_json
+        end
+      end
+
+      context "when retrieving from cache raises Error" do
+        it "should run search and cache the result" do
+          api_redis.should_receive(:get).with(@api_cache_key).and_raise(StandardError)
+          search.should_receive(:run)
+          search.should_receive(:to_json).and_return(search_result_in_json)
+          api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_json)
+
+          ApiSearch.search(params).should == search_result_in_json
+        end
+      end
+
+      context "when caching result raises Error" do
+        it "should run search and cache the result" do
+          api_redis.should_receive(:get).with(@api_cache_key).and_return(nil)
+          search.should_receive(:run)
+          search.should_receive(:to_json).and_return(search_result_in_json)
+          api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_json).and_raise(StandardError)
+
+          ApiSearch.search(params).should == search_result_in_json
+        end
       end
     end
 
-    describe "api search cache hit" do
-      it "should save the search's json in the cache" do
-        @api_redis.should_receive(:get).with(@api_cache_key).and_return("result")
-        @api_redis.should_not_receive(:setex)
+    context "format is xml" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:api_redis) { ApiSearch.redis }
+      let(:format) { 'xml' }
+      let(:params) { { :query => "foobar", :page => 2, :results_per_page => 10, :affiliate => affiliate, :format => format } }
+      let(:search) { mock('search') }
+      let(:search_result_in_xml) { mock('search_result_in_xml') }
 
-        @search_redis.should_not_receive(:get)
-        @search_redis.should_not_receive(:setex)
-        ApiSearch.search(@params).should == "result"
-      end
-    end
-
-    describe "redis errors" do
-      it "should ignore get errors" do
-        @api_redis.should_receive(:get).and_raise(Errno::ECONNREFUSED)
-        @api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, an_instance_of(String))
-        @search_redis.should_receive(:get).with(@search_cache_key).and_return(@bing_json)
-
-        JSON.parse(ApiSearch.search(@params)).keys.length.should == 7
+      before :each do
+        Search.should_receive(:new).with(params).and_return(search)
+        search.should_receive(:cache_key).and_return("search_cache_key")
+        @api_cache_key = "API:#{affiliate.name}:search_cache_key:#{format.to_s}"
       end
 
-      it "should ignore setex errors" do
-        @api_redis.should_receive(:get).with(@api_cache_key).and_return(nil)
-        @api_redis.should_receive(:setex).and_raise(Errno::ECONNREFUSED)
-        @search_redis.should_receive(:get).with(@search_cache_key).and_return(@bing_json)
+      context "api search cache miss" do
+        it "should run search and cache the result" do
+          api_redis.should_receive(:get).with(@api_cache_key).and_return(nil)
+          search.should_receive(:run)
+          search.should_receive(:to_xml).and_return(search_result_in_xml)
+          api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_xml)
 
-        JSON.parse(ApiSearch.search(@params)).keys.length.should == 7
+          ApiSearch.search(params).should == search_result_in_xml
+        end
+      end
+
+      context "api search cache hit" do
+        it "should not run search" do
+          api_redis.should_receive(:get).with(@api_cache_key).and_return(search_result_in_xml)
+          api_redis.should_not_receive(:setex)
+          search.should_not_receive(:run)
+
+          ApiSearch.search(params).should == search_result_in_xml
+        end
+      end
+
+      context "when retrieving from cache raises Error" do
+        it "should run search and cache the result" do
+          api_redis.should_receive(:get).with(@api_cache_key).and_raise(StandardError)
+          search.should_receive(:run)
+          search.should_receive(:to_xml).and_return(search_result_in_xml)
+          api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_xml)
+
+          ApiSearch.search(params).should == search_result_in_xml
+        end
+      end
+
+      context "when caching result raises Error" do
+        it "should run search and cache the result" do
+          api_redis.should_receive(:get).with(@api_cache_key).and_return(nil)
+          search.should_receive(:run)
+          search.should_receive(:to_xml).and_return(search_result_in_xml)
+          api_redis.should_receive(:setex).with(@api_cache_key, ApiSearch::CACHE_EXPIRATION_IN_SECONDS, search_result_in_xml).and_raise(StandardError)
+
+          ApiSearch.search(params).should == search_result_in_xml
+        end
       end
     end
   end

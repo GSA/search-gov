@@ -115,6 +115,10 @@ class BoostedContent < ActiveRecord::Base
     {:title => title, :url => url, :description => description}
   end
 
+  def to_xml(options = { :indent => 0, :root => 'boosted-result' })
+    { :title => title, :url => url, :description => description }.to_xml(options)
+  end
+
   def display_status
     status.humanize
   end
