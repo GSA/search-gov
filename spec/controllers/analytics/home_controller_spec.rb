@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe Analytics::HomeController do
-  fixtures :users, :daily_query_stats
+  fixtures :users, :daily_query_stats, :affiliates
 
   describe "do GET on #index" do
     context "when not logged in" do
@@ -101,15 +101,48 @@ describe Analytics::HomeController do
         assigns[:start_date].should == 1.month.ago.to_date
         assigns[:end_date].should == Date.yesterday.to_date
       end
-      
-      it "should not return nil for any of the popular queries or query groups" do
-        get :queries
-        assigns[:most_recent_day_popular_terms].should_not be_nil
-        assigns[:trailing_week_popular_terms].should_not be_nil
-        assigns[:trailing_month_popular_terms].should_not be_nil
-        assigns[:most_recent_day_popular_query_groups].should_not be_nil
-        assigns[:trailing_week_popular_query_groups].should_not be_nil
-        assigns[:trailing_month_popular_query_groups].should_not be_nil
+
+      context "when no data is available" do
+        it "should return an empty array for the popular queries or query groups" do
+          get :queries
+          assigns[:most_recent_day_popular_terms].should == []
+          assigns[:trailing_week_popular_terms].should == []
+          assigns[:trailing_month_popular_terms].should == []
+          assigns[:most_recent_day_popular_query_groups].should == []
+          assigns[:trailing_week_popular_query_groups].should == []
+          assigns[:trailing_month_popular_query_groups].should == []
+        end
+      end
+
+      context "when data for multiple affiliates is available" do
+        before do
+          @six_entries = []
+          [false, true].each do |is_grouped|
+            [1, 7, 30].each do |time_frame|
+              @six_entries << DailyPopularQuery.create!(:day => Date.yesterday, :query => "most popular #{time_frame}", :times => 10,
+                                        :is_grouped => is_grouped, :time_frame => time_frame, :locale => I18n.default_locale.to_s, :affiliate => nil)
+              DailyPopularQuery.create!(:day => Date.yesterday, :query => "filter this #{time_frame}", :times => 11,
+                                        :is_grouped => is_grouped, :time_frame => time_frame, :locale => I18n.default_locale.to_s, :affiliate => affiliates(:basic_affiliate))
+            end
+          end
+        end
+
+        it "should only get the data for the default affiliate" do
+          get :queries
+          assigns[:most_recent_day_popular_terms].size.should == 1
+          assigns[:trailing_week_popular_terms].size.should == 1
+          assigns[:trailing_month_popular_terms].size.should == 1
+          assigns[:most_recent_day_popular_query_groups].size.should == 1
+          assigns[:trailing_week_popular_query_groups].size.should == 1
+          assigns[:trailing_month_popular_query_groups].size.should == 1
+
+          assigns[:most_recent_day_popular_terms].first.should == @six_entries[0]
+          assigns[:trailing_week_popular_terms].first.should == @six_entries[1]
+          assigns[:trailing_month_popular_terms].first.should == @six_entries[2]
+          assigns[:most_recent_day_popular_query_groups].first.should == @six_entries[3]
+          assigns[:trailing_week_popular_query_groups].first.should == @six_entries[4]
+          assigns[:trailing_month_popular_query_groups].first.should == @six_entries[5]
+        end
       end
 
       context "when the number of results for the most popular queries is set by the user" do
