@@ -1,0 +1,6 @@
+.pdfresult.searchresult.clearfix{:id => "pdfresult#{index+1}"}
+  %h2
+    = display_result_extname_prefix(hit.instance.url)
+    = link_with_click_tracking(highlight_hit(hit, :title).html_safe, hit.instance.url, @affiliate, @search_options[:query], index, 'APDF', @search_vertical)
+  %h3= highlight_hit(hit, :description).html_safe
+  %h3= link_with_click_tracking(h(shorten_url(hit.instance.url)), hit.instance.url, @affiliate, @search_options[:query], index, 'APDF', @search_vertical)

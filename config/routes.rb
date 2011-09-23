@@ -69,6 +69,7 @@ UsasearchRails3::Application.routes.draw do
   match '/search/recalls' => 'recalls#search', :as => :recalls_search
   resources :forms, :only => :index
   match '/search/forms' => 'searches#forms', :as => :forms_search
+  match '/search/pdf' => 'searches#pdf', :as => :pdf_search
   resources :image_searches
   namespace :admin do
     resources :affiliates do as_routes end

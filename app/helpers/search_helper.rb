@@ -176,10 +176,14 @@ module SearchHelper
     raw "<a href=\"#{h result.recall_url}\" #{onmousedown}>#{title}</a>"
   end
 
-  def boosted_content_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)
+  def link_with_click_tracking(html_safe_title, url, affiliate, query, position, source, vertical, html_opts = nil)
     aff_name = affiliate.name rescue ""
-    onmousedown = onmousedown_for_click(query, position, aff_name, 'BOOS', Time.now.to_i, vertical)
-    raw "<a href=\"#{h url}\" #{onmousedown}>#{html_safe_title}</a>"
+    onmousedown = onmousedown_for_click(query, position, aff_name, source, Time.now.to_i, vertical)
+    raw "<a href=\"#{h url}\" #{onmousedown} #{html_opts}>#{html_safe_title}</a>"
+  end
+  
+  def boosted_content_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)
+    link_with_click_tracking(html_safe_title, url, affiliate, query, position, source, vertical)
   end
 
   def tracked_click_link(url, title, search, affiliate, position, source, vertical = :web, opts = nil)
@@ -254,6 +258,13 @@ module SearchHelper
     p_sum = content_tag(:p, summary)
     logo = show_logo ? image_tag("binglogo_#{I18n.locale}.gif", :style=>"float:right") : ""
     content_tag(:div, raw(logo + p_sum), :id => "summary")
+  end
+  
+  def pdf_results_summary(a, b, total, query, affiliate_name)
+    summary = t :results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => query
+    p_sum = content_tag(:p, summary)
+    p_back = content_tag(:p, link_to("Back to all #{affiliate_name} results >>", search_path(:query => query, :affiliate => affiliate_name)))
+    content_tag(:div, raw(p_sum + p_back), :id => "summary")
   end
 
   def agency_url_matches_by_locale(result_url, agency, locale)

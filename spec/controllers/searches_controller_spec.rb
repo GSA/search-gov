@@ -454,4 +454,59 @@ describe SearchesController do
       end
     end
   end
+
+  describe "#pdf" do
+    render_views
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      @affiliate.pdf_documents << PdfDocument.new(:title => "Affiliate PDF 1", :url => 'http://affiliate.gov/1.pdf', :description => 'a pdf')
+      @affiliate.pdf_documents << PdfDocument.new(:title => "Affiliate PDF 2", :url => 'http://affiliate.gov/2.pdf', :description => 'a pdf')     
+      affiliates(:power_affiliate).pdf_documents << PdfDocument.new(:title => "Other Affiliate PDF 1", :url => 'http://otheraffiliate.gov/1.pdf', :description => 'a pdf')
+      PdfDocument.reindex
+    end
+
+    it "should render the template" do
+      get :pdf, :query => "pdf", :affiliate => @affiliate.name
+      response.should render_template 'pdf'
+      response.should render_template 'layouts/affiliate'
+    end
+    
+    it "should assign various variables" do
+      get :pdf, :query => "pdf", :affiliate => @affiliate.name
+      assigns[:page_title].should == "pdf"
+      assigns[:search_vertical].should == :pdf
+      assigns[:form_path].should == pdf_search_path
+      assigns[:search].should_not be_nil
+    end
+    
+    it "should default to page 1" do
+      get :pdf, :query => "pdf", :affiliate => @affiliate.name
+      assigns[:search_options][:page].should == 1
+    end
+    
+    it "should find PDF files that match the query for the affiliate" do
+      get :pdf, :query => "pdf", :affiliate => @affiliate.name
+      assigns[:search].total.should == 2
+      assigns[:search].results.first.url.should_not == "http://otheraffiliate.gov/1.pdf"
+      assigns[:search].results.last.url.should_not == "http://otheraffiliate.gov/1.pdf"
+    end
+    
+    it "should output a page that summarizes the results and links back to the affiliate results page" do
+      get :pdf, :query => "pdf", :affiliate => @affiliate.name
+      response.body.should contain("Results 1-2 of about 2 for 'pdf'")
+      response.should have_selector("a", :href=> '/search?affiliate=NPS+Site&locale=en&m=false&query=pdf', :content => 'Back to all NPS Site results >>')
+    end
+    
+    context "when the page number is specified" do
+      before do
+        get :pdf, :query => "pdf", :affiliate => @affiliate.name, :page => 2
+      end
+      
+      it "should page the results" do
+        assigns[:search_options][:page].should == 2
+        assigns[:search].total.should == 2
+        assigns[:search].results.should be_empty
+      end
+    end
+  end
 end

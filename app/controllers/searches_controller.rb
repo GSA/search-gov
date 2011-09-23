@@ -2,8 +2,10 @@ class SearchesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_filter :handle_old_advanced_form, :only => [ :index ]
   before_filter :grab_format
-  before_filter :set_search_options, :except => :forms
+  before_filter :set_affiliate_options, :except => [ :forms ]
+  before_filter :set_search_options, :except => [ :forms, :pdf ]
   before_filter :set_form_search_options, :only => :forms
+  before_filter :set_pdf_search_options, :only => :pdf
   has_mobile_fu
   before_filter :adjust_mobile_mode
   before_filter :check_for_blank_query, :only => :index
@@ -41,7 +43,17 @@ class SearchesController < ApplicationController
       format.json { render :json => @search }
     end
   end
-
+  
+  def pdf
+    unless @search_options[:query].blank?
+      @search = PdfDocument.search_for(@search_options[:query], @search_options[:affiliate], @search_options[:page], 10)
+      @form_path = pdf_search_path
+      @page_title = @search_options[:query]
+      @search_vertical = :pdf
+      render :action => :pdf, :layout => "affiliate"
+    end
+  end
+  
   def auto_complete_for_search_query
     query = params["mode"] == "jquery" ? params["q"] : params["query"]
     sanitized_query = query.nil? ? "" : query.squish.strip.gsub('\\', '')
@@ -86,14 +98,7 @@ class SearchesController < ApplicationController
 
   # TODO This could be cleaned up into search.rb
   def set_search_options
-    affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
-    if affiliate && params["staged"]
-      affiliate.domains = affiliate.staged_domains
-      affiliate.header = affiliate.staged_header
-      affiliate.footer = affiliate.staged_footer
-      affiliate.affiliate_template_id = affiliate.staged_affiliate_template_id
-    end
-    @search_options = search_options_from_params(params).merge(:affiliate => affiliate)
+    @search_options = search_options_from_params(params).merge(:affiliate => @affiliate)
   end
 
   def set_form_search_options
@@ -103,6 +108,27 @@ class SearchesController < ApplicationController
       :results_per_page => params["per-page"],
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
     }
+  end
+  
+  def set_pdf_search_options
+    @search_options = {
+      :page => (params[:page] || "1").to_i,
+      :query => params["query"],
+      :results_per_page => params["per-page"],
+      :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
+    }
+    @search_options.merge!(:affiliate => @affiliate)
+  end
+  
+  def set_affiliate_options
+    @affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
+    if @affiliate && params["staged"]
+      @affiliate.domains = @affiliate.staged_domains
+      @affiliate.header = @affiliate.staged_header
+      @affiliate.footer = @affiliate.staged_footer
+      @affiliate.affiliate_template_id = @affiliate.staged_affiliate_template_id
+    end
+    @affiliate
   end
   
   def check_for_blank_query
@@ -120,5 +146,9 @@ class SearchesController < ApplicationController
 
   def is_forms_search?
     params[:action] == "forms"
+  end
+  
+  def is_pdf_search?
+    params[:action] == "pdf"
   end
 end
