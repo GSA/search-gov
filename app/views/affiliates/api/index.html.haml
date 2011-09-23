@@ -47,22 +47,26 @@
     %li
       %span hl:
       Query highlighting on search results. Possible values are "true" or "false". Default is "true".
+      %br
+      When query highlighting is set to "true", matching text in search results title and content are wrapped with unicode characters "U+E000" and "U+E001".
+      %br
+      Examples: \ue000water\ue001 for JSON format and &amp;#57344;water&amp;#57345; for HTML format.
   %h3
     Examples
   %ul
     %li
       %span Search for "fire" with response in JSON format
       %br
-      = api_search_url(:affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'json', :query => 'fire')
     %li
       %span Search for page 3 of "water" with query highlighting turned off and response in XML format
       %br
-      = api_search_url(:affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false')
+      = api_search_url(:protocol => 'http', :affiliate => @affiliate.name, :api_key => current_user.api_key, :format => 'xml', :query => 'water', :page => 3, :hl => 'false')
 
   %h3
     Response Fields
   %p
-    The response fields listed below are an aggregate of the data the feeds can return for queries. Note that not all response fields appear in all queries.
+    Note that not all response fields appear in all queries.
   %ul
     %li
       %span success:
