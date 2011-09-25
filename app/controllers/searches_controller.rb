@@ -21,7 +21,9 @@ class SearchesController < ApplicationController
     handle_affiliate_search
     @search_vertical = :web
     if @search_options[:affiliate]
-      render :action => "affiliate_index", :layout => "affiliate"
+      respond_to do |format|
+        format.any(:html, :mobile) { render :action => "affiliate_index", :layout => "affiliate" }
+      end
     else
       respond_to do |format|
         format.html
@@ -136,7 +138,7 @@ class SearchesController < ApplicationController
   end
 
   def adjust_mobile_mode
-    request.format = :html if @search_options[:affiliate].present? or is_advanced_search? or is_forms_search?
+    request.format = :html if is_advanced_search? or is_forms_search?
     request.format = :json if @original_format == 'application/json' and @search_options[:affiliate].blank?
   end
 

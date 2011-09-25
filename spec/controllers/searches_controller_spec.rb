@@ -176,6 +176,20 @@ describe SearchesController do
     end
   end
 
+  context "when handling a valid affiliate search request with mobile device" do
+    let(:affiliate) { affiliates(:power_affiliate) }
+
+    before do
+      iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
+      request.env["HTTP_USER_AGENT"] = iphone_user_agent
+      get :index, :affiliate => affiliate.name, :query => "weather"
+    end
+
+    it { should respond_with(:success) }
+    it { should render_template 'layouts/affiliate' }
+    it { should render_template 'searches/affiliate_index' }
+  end
+
   context "when searching via the API" do
     render_views
 
@@ -240,10 +254,7 @@ describe SearchesController do
       get :index, :affiliate => affiliates(:power_affiliate).name, :query => "weather", :format => "json"
     end
 
-    it "should render the template" do
-      response.should render_template 'affiliate_index'
-      response.should render_template 'layouts/affiliate'
-    end
+    it { should respond_with :not_acceptable }
   end
 
   context "when handling embedded affiliate search request" do

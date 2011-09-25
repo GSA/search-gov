@@ -35,8 +35,8 @@ module ApplicationHelper
   end
 
   def url_for_mobile_mode(new_mobile_mode)
-    new_params = request.params.update({:m => new_mobile_mode.to_s})
-    url_for({:controller => controller.controller_path, :action => controller.action_name, :params => new_params})
+    new_params = request.params.update({:format => nil, :m => new_mobile_mode.to_s})
+    url_for({ :controller => controller.controller_path, :action => controller.action_name }.reverse_merge(new_params))
   end
 
   def link_to_mobile_mode(text, new_mobile_mode)

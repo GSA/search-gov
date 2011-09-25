@@ -1,6 +1,7 @@
 = form_tag(search_path(:m => "true"), :method => :get, :id=>"search_form") do
   = hidden_field_tag :locale, I18n.locale
   = hidden_field_tag :m, params[:m]
+  = hidden_field_tag(:affiliate, @affiliate.name) if @affiliate
   .search
     .searchBoxContainer.dvCenter
       .dvSearchBox.results
@@ -8,7 +9,7 @@
         .dvSearchClose.results
           = image_tag "/m/i/close.png", :style => "display: none;"
       .dvSearchBtn.results
-        = image_submit_tag "/m/i/btnSearchSkin_ResultsPage.png"
+        = image_submit_tag "/m/i/btnSearchSkin_ResultsPage.png", :id => 'Search'
       .clear
 - if js_enabled_mobile_device?
   :javascript

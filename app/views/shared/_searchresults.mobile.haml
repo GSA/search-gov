@@ -1,5 +1,5 @@
 = bing_spelling_suggestion_for(search, @affiliate, @search_vertical) if (search)
-- if (search.boosted_contents and search.boosted_contents.total > 0)
+- if (search.page == 0 and search.boosted_contents and search.boosted_contents.total > 0)
   = render 'shared/boosted_content', :search => search
 - elsif (search.faqs and search.faqs.total > 0)
   = render 'shared/related_faqs', :search => search
@@ -12,13 +12,12 @@
         .row{:id => "recall#{index+1}"}
           .links= (link_to "#{highlight_like_solr(hit.instance.summary, hit.highlights)}, #{hit.instance.recalled_on.to_formatted_s(:short).strip}".html_safe, hit.instance.recall_url)
   .group
-    - affiliate_name = @affiliate.present? ? @affiliate.name : nil
     - search.results.each_with_index do |search_result, index|
       .row{:id => "searchresult#{index+1}"}
         .searchResult
           .title
             = display_bing_result_extname_prefix(search_result)
-            = display_bing_result_title(search_result, search, affiliate_name, index, @search_vertical)
+            = display_bing_result_title(search_result, search, @affiliate, index, @search_vertical)
           .content
             = display_result_description(search_result)
           .links= shorten_url(search_result['unescapedUrl'])
@@ -28,7 +27,7 @@
         %hr
   .group
     .row.center
-      = will_paginate search.results, :page_links => false, :previous_label => "", :next_label => t(:next_page)
+      = will_paginate search.results, :previous_label => (t :prev_label), :next_label => (t :next_label), :inner_window => 1, :outer_window => 0
 
   - if (search && search.related_search.present?)
     #relatedsearch

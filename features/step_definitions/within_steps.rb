@@ -6,6 +6,7 @@
   'in the site navigation bar' => '.affiliate-sidebar',
   'in the breadcrumbs' => '.breadcrumbs',
   'in the page header' => 'h1',
+  'in the mobile page header' => 'h1.page-title',
   'in the connect section' => '.connect',
   'in the footer' => '.outer-footer',
   'in the query search results table header' => '.query_search_results_table_header',
@@ -22,7 +23,8 @@
   'in the no results section' => '.no-results',
   'in the featured collections section' => '.featured-collections',
   'in the pagination' => '.pagination',
-  'in the boosted contents section' => '#boosted'
+  'in the boosted contents section' => '#boosted',
+  'in the mobile boosted contents section' => '#boostedresults'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

@@ -22,6 +22,8 @@ module NavigationHelpers
       image_search_path
     when /^(.*)'s search page$/
       search_path(:affiliate => $1)
+    when /^(.*)'s mobile search page$/
+      search_path(:affiliate => $1, :m => 'true')
     when /^(.*)'s Spanish search page$/
       search_path(:affiliate => $1, :locale => 'es')
     when /^(.*)'s embedded search page$/

@@ -1,0 +1,30 @@
+!!!strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => I18n.locale, :lang => I18n.locale}
+  %head
+    %title
+      #{@affiliate.display_name} #{t(:mobile)}
+    %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
+    = render_robots_meta_tag
+    = stylesheet_link_tag 'compiled/affiliates/default_mobile.css'
+    %meta{:name => "viewport", :content => "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, minimum-scale = 1.0"}/
+    %meta{:name => "apple-mobile-web-app-capable", :content => "yes"}/
+    %meta{:name => "format-detection", :content => "telephone=no" }/
+
+    != javascript_include_tag "jquery/jquery.min.js"
+    - if @affiliate.is_sayt_enabled
+      - if @affiliate.is_affiliate_suggestions_enabled
+        = javascript_tag "var usagov_sayt_url = \"#{sayt_url(:aid => @affiliate.id)}&\";"
+      - else
+        = javascript_tag "var usagov_sayt_url = \"#{sayt_url}&\";"
+      != javascript_include_tag "jquery/jquery-ui.custom.min.js"
+      != javascript_include_tag "sayt-ui.js"
+    != javascript_include_tag "application"
+    != javascript_include_tag "application.mobile"
+    != javascript_include_tag "/m/j/close.js"
+
+  %body
+    #container
+      #contentWrapper
+        %h1.page-title #{@affiliate.display_name} #{t(:mobile)}
+        = yield
+    = render "/shared/webtrends_affiliates.html.haml" unless @affiliate.exclude_webtrends?
