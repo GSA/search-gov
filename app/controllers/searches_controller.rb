@@ -146,9 +146,5 @@ class SearchesController < ApplicationController
 
   def is_forms_search?
     params[:action] == "forms"
-  end
-  
-  def is_pdf_search?
-    params[:action] == "pdf"
-  end
+  end  
 end
