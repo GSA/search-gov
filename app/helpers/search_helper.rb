@@ -183,7 +183,7 @@ module SearchHelper
   end
   
   def boosted_content_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)
-    link_with_click_tracking(html_safe_title, url, affiliate, query, position, source, vertical)
+    link_with_click_tracking(html_safe_title, url, affiliate, query, position, "BOOS", vertical)
   end
 
   def tracked_click_link(url, title, search, affiliate, position, source, vertical = :web, opts = nil)
