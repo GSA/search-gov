@@ -438,8 +438,8 @@ Feature: Affiliate clients
 
   Scenario: Visiting the look and feel page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer     |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | external_css_url          | staged_domains | staged_header | staged_footer | staged_external_css_url   |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/custom.css | oldagency.gov  | Old header    | Old footer    | cdn.agency.gov/custom.css |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -448,6 +448,7 @@ Feature: Affiliate clients
     And I should see "Look and Feel of the Search Results Page" within ".main"
     And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the "Default" template should be selected
+    And the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
     And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
     And I should see "Cancel"
@@ -456,16 +457,17 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel and saving it for preview
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer     |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
     And I fill in the following:
-      | Search results page title                                         | {SiteName} : {Query} |
-      | Enter HTML to customize the top of your search results page.      | New header           |
-      | Enter HTML to customize the bottom of your search results page.   | New footer           |
+      | Search results page title                                       | {SiteName} : {Query}             |
+      | External CSS URL                                                | cdn.agency.gov/staged_custom.css |
+      | Enter HTML to customize the top of your search results page.    | New header                       |
+      | Enter HTML to customize the bottom of your search results page. | New footer                       |
     And I choose "Basic Gray"
     And I press "Save for Preview"
     Then I should be on the "aff site" affiliate page
@@ -476,7 +478,9 @@ Feature: Affiliate clients
     And I should see "Old header"
     And I should see "Old footer"
     And I should see the page with affiliate stylesheet "default"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
     And I should not see the page with affiliate stylesheet "basic_gray"
+    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
@@ -484,7 +488,9 @@ Feature: Affiliate clients
     And I should see "New header"
     And I should see "New footer"
     And I should see the page with affiliate stylesheet "basic_gray"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with affiliate stylesheet "default"
+    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
     When I go to the "aff site" affiliate page
     And I press "Push Changes"
@@ -494,7 +500,9 @@ Feature: Affiliate clients
     And I should see "New header"
     And I should see "New footer"
     And I should see the page with affiliate stylesheet "basic_gray"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with affiliate stylesheet "default"
+    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
   Scenario: Editing look and feel with problem and saving it for preview
     Given the following Affiliates exist:
@@ -511,16 +519,17 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel and make it live
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | oldagency.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer     |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
     And I fill in the following:
-      | Search results page title                                         | {SiteName} : {Query} |
-      | Enter HTML to customize the top of your search results page.      | New header           |
-      | Enter HTML to customize the bottom of your search results page.   | New footer           |
+      | Search results page title                                       | {SiteName} : {Query}             |
+      | External CSS URL                                                | cdn.agency.gov/staged_custom.css |
+      | Enter HTML to customize the top of your search results page.    | New header                       |
+      | Enter HTML to customize the bottom of your search results page. | New footer                       |
     And I choose "Basic Gray"
     And I press "Make Live"
     Then I should be on the "aff site" affiliate page
@@ -532,7 +541,9 @@ Feature: Affiliate clients
     And I should see "New header"
     And I should see "New footer"
     And I should see the page with affiliate stylesheet "basic_gray"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with affiliate stylesheet "default"
+    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
   Scenario: Editing look and feel with problem and make it live
     Given the following Affiliates exist:

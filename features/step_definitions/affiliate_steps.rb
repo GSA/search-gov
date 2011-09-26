@@ -40,7 +40,9 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_search_results_page_title => hash["staged_search_results_page_title"],
       :has_staged_content => hash["has_staged_content"] || false,
       :exclude_webtrends => hash["exclude_webtrends"] || false,
-      :is_popular_links_enabled => hash["is_popular_links_enabled"] || true
+      :is_popular_links_enabled => hash["is_popular_links_enabled"] || true,
+      :external_css_url => hash["external_css_url"],
+      :staged_external_css_url => hash["staged_external_css_url"]
     )
     affiliate.users << user
   end
@@ -70,6 +72,14 @@ end
 
 Then /^I should not see the page with affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
   page.should_not have_selector("link[type='text/css'][href*='#{stylesheet_name}']")
+end
+
+Then /^I should see the page with external affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
+  page.should have_selector("link[type='text/css'][href='#{stylesheet_name}']")
+end
+
+Then /^I should not see the page with external affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|
+  page.should_not have_selector("link[type='text/css'][href='#{stylesheet_name}']")
 end
 
 Then /^affiliate SAYT suggestions for "([^\"]*)" should be enabled$/ do |affiliate_name|

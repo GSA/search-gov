@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110916141952) do
+ActiveRecord::Schema.define(:version => 20110926194832) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(:version => 20110916141952) do
     t.string   "staged_search_results_page_title",                                                :null => false
     t.boolean  "exclude_webtrends",                              :default => false,               :null => false
     t.boolean  "is_popular_links_enabled",                       :default => true
+    t.string   "external_css_url"
+    t.string   "staged_external_css_url"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

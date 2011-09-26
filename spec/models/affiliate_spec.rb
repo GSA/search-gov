@@ -109,6 +109,24 @@ describe Affiliate do
         affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
         affiliate.staged_search_results_page_title.should == @update_params[:staged_search_results_page_title]
       end
+
+      it "should save staged external CSS URL with http:// prefix when it does not start with http(s)://" do
+        url = 'cdn.agency.gov/custom.css'
+        prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
+        prefixes.each do |prefix|
+          affiliate.update_attributes_for_staging(@update_params.merge(:staged_external_css_url => "#{prefix}#{url}")).should be_true
+          affiliate.staged_external_css_url.should == "http://#{prefix}#{url}"
+        end
+      end
+
+      it "should save staged external CSS URL as is when it starts with http(s)://" do
+        url = 'cdn.agency.gov/custom.css'
+        prefixes = %w( http:// https:// HTTP:// HTTPS:// )
+        prefixes.each do |prefix|
+          affiliate.update_attributes_for_staging(@update_params.merge(:staged_external_css_url => "#{prefix}#{url}")).should be_true
+          affiliate.staged_external_css_url.should == "#{prefix}#{url}"
+        end
+      end
     end
 
     describe "on update_attributes_for_current" do
@@ -140,6 +158,26 @@ describe Affiliate do
         affiliate.staged_footer.should == @update_params[:staged_footer]
         affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
         affiliate.staged_search_results_page_title.should == @update_params[:staged_search_results_page_title]
+      end
+
+      it "should save external CSS URL with http:// prefix when it does not start with http(s)://" do
+        url = 'cdn.agency.gov/custom.css'
+        prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
+        prefixes.each do |prefix|
+          affiliate.update_attributes_for_current(@update_params.merge(:staged_external_css_url => "#{prefix}#{url}")).should be_true
+          affiliate.staged_external_css_url.should == "http://#{prefix}#{url}"
+          affiliate.external_css_url.should == "http://#{prefix}#{url}"
+        end
+      end
+
+      it "should save external CSS URL as is when it starts with http(s)://" do
+        url = 'cdn.agency.gov/custom.css'
+        prefixes = %w( http:// https:// HTTP:// HTTPS:// )
+        prefixes.each do |prefix|
+          affiliate.update_attributes_for_current(@update_params.merge(:staged_external_css_url => "#{prefix}#{url}")).should be_true
+          affiliate.staged_external_css_url.should == "#{prefix}#{url}"
+          affiliate.external_css_url.should == "#{prefix}#{url}"
+        end
       end
     end
 
@@ -336,11 +374,13 @@ describe Affiliate do
       affiliate.staging_attributes.include?(:staged_footer).should be_true
       affiliate.staging_attributes.include?(:staged_affiliate_template_id).should be_true
       affiliate.staging_attributes.include?(:staged_search_results_page_title).should be_true
+      affiliate.staging_attributes.include?(:staged_external_css_url).should be_true
       affiliate.staging_attributes[:staged_domains].should == affiliate.staged_domains
       affiliate.staging_attributes[:staged_header].should == affiliate.staged_header
       affiliate.staging_attributes[:staged_footer].should == affiliate.staged_footer
       affiliate.staging_attributes[:staged_affiliate_template_id] == affiliate.staged_affiliate_template_id
       affiliate.staging_attributes[:staged_search_results_page_title] == affiliate.staged_search_results_page_title
+      affiliate.staging_attributes[:staged_external_css_url] == affiliate.staged_external_css_url
     end
   end
 
@@ -352,8 +392,9 @@ describe Affiliate do
                         :staged_header => "<span>header</span>",
                         :staged_footer => "<span>footer</span>",
                         :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
-                        :staged_search_results_page_title => "updated - {query} - {sitename} Search Results"}
-      affiliate.update_attributes_for_staging(@update_params)
+                        :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
+                        :staged_external_css_url => "http://cdn.agency.gov/staged_custom.css"}
+      affiliate.update_attributes_for_staging(@update_params).should be_true
     end
 
     it "should overwrite all staged attributes with non staged attributes" do
@@ -363,6 +404,7 @@ describe Affiliate do
       affiliate.staged_footer.should_not == @update_params[:staged_footer]
       affiliate.staged_affiliate_template_id.should_not == @update_params[:staged_affiliate_template_id]
       affiliate.staged_search_results_page_title.should_not == @update_params[:staged_search_results_page_title]
+      affiliate.staged_external_css_url.should_not == @update_params[:staged_external_css_url]
     end
 
     it "should not have staged content" do
@@ -390,7 +432,9 @@ describe Affiliate do
                                                                    :header => "live header",
                                                                    :staged_header => "staged header",
                                                                    :footer => "live footer",
-                                                                   :staged_footer => "staged footer"))
+                                                                   :staged_footer => "staged footer",
+                                                                   :external_css_url => 'http://cdn.agency.gov/custom.css',
+                                                                   :staged_external_css_url => 'http://cdn.agency.gov/staged_custom.css'))
       affiliate.has_staged_content.should == false
       affiliate.sync_staged_attributes
       affiliate.has_staged_content.should == false
@@ -404,6 +448,8 @@ describe Affiliate do
       affiliate.staged_header.should == "live header"
       affiliate.footer.should == "live footer"
       affiliate.staged_footer.should == "live footer"
+      affiliate.external_css_url.should == 'http://cdn.agency.gov/custom.css'
+      affiliate.staged_external_css_url.should == 'http://cdn.agency.gov/custom.css'
     end
 
     it "should not overwrite staged attributes with live attributes if has_staged_content is true" do

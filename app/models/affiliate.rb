@@ -20,7 +20,7 @@ class Affiliate < ActiveRecord::Base
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   before_validation :set_default_name, :on => :create
-  before_save :set_default_affiliate_template, :normalize_domains
+  before_save :set_default_affiliate_template, :normalize_domains, :ensure_http_prefix_on_external_css_url
   before_validation :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   scope :ordered, {:order => 'display_name ASC'}
   
@@ -76,7 +76,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def update_attributes_for_current(attributes)
-    %w{ domains header footer affiliate_template_id search_results_page_title }.each do |field|
+    %w{ domains header footer affiliate_template_id search_results_page_title external_css_url }.each do |field|
       attributes[field.to_sym] = attributes["staged_#{field}".to_sym] if attributes.include?("staged_#{field}".to_sym)
     end
     attributes[:has_staged_content] = false
@@ -103,7 +103,8 @@ class Affiliate < ActiveRecord::Base
       :staged_header => self.staged_header,
       :staged_footer => self.staged_footer,
       :staged_affiliate_template_id => self.staged_affiliate_template_id,
-      :staged_search_results_page_title => self.staged_search_results_page_title
+      :staged_search_results_page_title => self.staged_search_results_page_title,
+      :staged_external_css_url => self.staged_external_css_url
     }
   end
 
@@ -118,6 +119,7 @@ class Affiliate < ActiveRecord::Base
       :staged_footer => self.footer,
       :staged_affiliate_template_id => self.affiliate_template_id,
       :staged_search_results_page_title => self.search_results_page_title,
+      :staged_external_css_url => self.external_css_url,
       :has_staged_content => false
     })
   end
@@ -172,5 +174,10 @@ class Affiliate < ActiveRecord::Base
 
   def set_default_staged_search_results_page_title
     self.staged_search_results_page_title = DEFAULT_SEARCH_RESULTS_PAGE_TITLE if self.staged_search_results_page_title.blank?
+  end
+
+  def ensure_http_prefix_on_external_css_url
+    self.external_css_url = "http://#{self.external_css_url}" unless self.external_css_url.blank? or self.external_css_url =~ %r{^http(s?)://}i
+    self.staged_external_css_url = "http://#{self.staged_external_css_url}" unless self.staged_external_css_url.blank? or self.staged_external_css_url =~ %r{^http(s?)://}i
   end
 end
