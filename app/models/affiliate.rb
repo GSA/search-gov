@@ -17,13 +17,14 @@ class Affiliate < ActiveRecord::Base
   has_many :popular_urls, :dependent => :destroy
   has_many :featured_collections, :dependent => :destroy
   has_many :pdf_documents, :dependent => :destroy
+  has_many :rss_feeds, :dependent => :destroy
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   before_validation :set_default_name, :on => :create
   before_save :set_default_affiliate_template, :normalize_domains, :ensure_http_prefix_on_external_css_url
   before_validation :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   scope :ordered, {:order => 'display_name ASC'}
-  
+
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
   DEFAULT_SEARCH_RESULTS_PAGE_TITLE = "{Query} - {SiteName} Search Results"
@@ -37,7 +38,7 @@ class Affiliate < ActiveRecord::Base
   def name=(name)
     new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
   end
-  
+
   def domains_as_array
     self.domains.nil? ? [] : self.domains.split
   end

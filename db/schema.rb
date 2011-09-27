@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110926194832) do
+ActiveRecord::Schema.define(:version => 20110926233554) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(:version => 20110926194832) do
     t.string   "staged_search_results_page_title",                                                :null => false
     t.boolean  "exclude_webtrends",                              :default => false,               :null => false
     t.boolean  "is_popular_links_enabled",                       :default => true
+    t.boolean  "local_index_active",                             :default => false,               :null => false
     t.string   "external_css_url"
     t.string   "staged_external_css_url"
   end
@@ -449,6 +450,18 @@ ActiveRecord::Schema.define(:version => 20110926194832) do
 
   add_index "moving_queries", ["day", "times"], :name => "index_moving_queries_on_day_and_times"
 
+  create_table "news_items", :force => true do |t|
+    t.integer  "rss_feed_id",  :null => false
+    t.string   "link",         :null => false
+    t.string   "title",        :null => false
+    t.string   "guid",         :null => false
+    t.text     "description",  :null => false
+    t.datetime "published_at", :null => false
+    t.datetime "created_at"
+  end
+
+  add_index "news_items", ["rss_feed_id", "guid"], :name => "index_news_items_on_rss_feed_id_and_guid"
+
   create_table "pdf_documents", :force => true do |t|
     t.string   "title"
     t.text     "description"
@@ -513,6 +526,16 @@ ActiveRecord::Schema.define(:version => 20110926194832) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "rss_feeds", :force => true do |t|
+    t.integer  "affiliate_id", :null => false
+    t.string   "url",          :null => false
+    t.string   "name",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rss_feeds", ["affiliate_id"], :name => "index_rss_feeds_on_affiliate_id"
 
   create_table "sayt_filters", :force => true do |t|
     t.string   "phrase",                                      :null => false

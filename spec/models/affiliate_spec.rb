@@ -9,7 +9,8 @@ describe Affiliate do
       :domains => "someaffiliate.gov",
       :website => "http://www.someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
-      :footer => "<center>gasp</center>"
+      :footer => "<center>gasp</center>",
+      :local_index_active => true
     }
     @valid_attributes = @valid_create_attributes.merge(:name => "someaffiliate.gov")
   end
@@ -30,6 +31,7 @@ describe Affiliate do
     it { should have_many :calais_related_searches }
     it { should have_many(:popular_urls).dependent(:destroy) }
     it { should have_many(:featured_collections).dependent(:destroy) }
+    it { should have_many(:rss_feeds).dependent(:destroy) }
     it { should belong_to :affiliate_template }
     it { should belong_to :staged_affiliate_template }
 
@@ -479,27 +481,27 @@ describe Affiliate do
       affiliate.staged_footer.should == "staged footer"
     end
   end
-  
+
   describe "#domains_as_array" do
     before do
       @affiliate = Affiliate.new(:domains => "domain.com\nanother.domain.com")
     end
-    
+
     it "should return an array" do
       @affiliate.domains_as_array.is_a?(Array).should be_true
     end
-    
+
     it "should have two entries split on line break" do
       @affiliate.domains_as_array.size.should == 2
       @affiliate.domains_as_array.first.should == "domain.com"
       @affiliate.domains_as_array.last.should == "another.domain.com"
     end
-    
+
     context "when domains is nil" do
       before do
         @affiliate.domains = nil
       end
-      
+
       it "should not error when called, and return empty" do
         @affiliate.domains_as_array.should == []
       end
