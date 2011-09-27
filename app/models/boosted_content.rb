@@ -50,7 +50,7 @@ class BoostedContent < ActiveRecord::Base
       :url => "URL"
   }
 
-  def self.search_for(query, affiliate = nil, locale = I18n.default_locale.to_s)
+  def self.search_for(query, affiliate = nil, locale = I18n.default_locale.to_s, page = 1, per_page = 3)
     affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
     ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate_name, :locale => locale}) do
       search do
@@ -65,7 +65,7 @@ class BoostedContent < ActiveRecord::Base
           with(:publish_end_on).greater_than(Time.current)
           with :publish_end_on, nil
         end
-        paginate :page => 1, :per_page => 3
+        paginate :page => page, :per_page => per_page
       end rescue nil
     end
   end

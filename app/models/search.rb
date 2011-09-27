@@ -80,7 +80,15 @@ class Search
     end
 
     @total = hits(response)
-    unless total.zero?
+    if total.zero?
+      if @affiliate
+        @boosted_results = BoostedContent.search_for(query, affiliate, I18n.locale, page + 1, 10)
+        @total = @boosted_results.total
+        @startrecord = (page * 10) + 1
+        @results = paginate(process_boosted_results(@boosted_results))
+        @endrecord = startrecord + @results.size - 1
+      end
+    else total.zero?
       @startrecord = bing_offset(response) + 1
       @page = [startrecord/10, page].min
       @results = paginate(process_results(response))
@@ -185,7 +193,7 @@ class Search
   end
 
   def populate_additional_results(response)
-    @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
+    @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale) if @boosted_results.nil?
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale)
       @pdf_documents = PdfDocument.search_for(query, affiliate) if affiliate
@@ -410,7 +418,26 @@ class Search
     end
     processed.compact
   end
-
+  
+  def process_boosted_results(boosted_results)
+    processed = boosted_results.results.collect do |result|
+      title = result.title rescue nil
+      content = result.description rescue ''
+      if title.present?
+        {
+          'title' => title,
+          'unescapedUrl' => result.url,
+          'content' => content,
+          'cacheUrl' => nil,
+          'deepLinks' => nil
+        }
+      else
+        nil
+      end
+    end
+    processed.compact
+  end
+  
   def bing_query(query_string, query_sources, offset, count, enable_highlighting = true)
     params = [
       "web.offset=#{offset}",

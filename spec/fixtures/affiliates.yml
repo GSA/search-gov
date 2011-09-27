@@ -40,3 +40,18 @@ admin_affiliate:
   affiliate_template: :default
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
+  
+non_existant_affiliate:
+  display_name: Nonsense Domain
+  name: laksjdflkjasldkjfalskdjf.gov
+  domains: "laksjdflkjasldkjfalskdjf.gov"
+  users: [:another_affiliate_manager]
+  affiliate_template: :default
+  is_sayt_enabled: false
+  is_affiliate_suggestions_enabled: false
+  search_results_page_title: Current {Query} - {SiteName} Search Results
+  staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
+  header: Live header
+  footer: Live footer
+  staged_header: Staged header
+  staged_footer: Staged footer

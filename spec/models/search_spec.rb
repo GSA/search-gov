@@ -1254,6 +1254,32 @@ describe Search do
         @affiliate.pdf_documents.destroy_all
       end
     end
+  
+    context "when the affiliate has no Bing results, and has boosted contents" do
+      before do
+        @non_affiliate = affiliates(:non_existant_affiliate)
+        @non_affiliate.boosted_contents.destroy_all
+        1.upto(15) do |index|
+          @non_affiliate.boosted_contents << BoostedContent.new(:title => "Boosted Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is a boosted result.', :status => 'active', :keywords => 'boosted', :publish_start_on => Date.yesterday, :locale => 'en')
+        end
+        BoostedContent.reindex
+        @non_affiliate.boosted_contents.size.should == 15
+        BoostedContent.search_for('boosted', @non_affiliate, 'en').total.should == 15
+      end
+      
+      it "should fill the results with paged boosted results" do
+        search = Search.new(:query => 'boosted', :affiliate => @non_affiliate)
+        search.run
+        search.results.should_not be_nil
+        search.results.should_not be_empty
+        search.total.should == 15
+        search.startrecord.should == 1
+        search.endrecord.should == 10
+        search.results.first['unescapedUrl'].should == "http://nonsense.com/1.html"
+        search.results.last['unescapedUrl'].should == "http://nonsense.com/10.html"
+        search.boosted_contents.should be_nil
+      end
+    end
   end
 
   describe "when new" do
