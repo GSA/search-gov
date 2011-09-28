@@ -421,19 +421,13 @@ class Search
   
   def process_boosted_results(boosted_results)
     processed = boosted_results.results.collect do |result|
-      title = result.title rescue nil
-      content = result.description rescue ''
-      if title.present?
-        {
-          'title' => title,
-          'unescapedUrl' => result.url,
-          'content' => content,
-          'cacheUrl' => nil,
-          'deepLinks' => nil
-        }
-      else
-        nil
-      end
+      {
+        'title' => result.title,
+        'unescapedUrl' => result.url,
+        'content' => result.description,
+        'cacheUrl' => nil,
+        'deepLinks' => nil
+      }
     end
     processed.compact
   end
