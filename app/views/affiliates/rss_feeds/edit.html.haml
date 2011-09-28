@@ -1,0 +1,7 @@
+= affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Edit RSS Feed"])
+%h1 Edit RSS Feed
+.edit-rss-feed
+  = form_for([@affiliate, @rss_feed], :html => { :multipart => true }) do |f|
+    = render :partial => 'form', :locals => { :form => f }
+    = f.submit "Update"
+    = link_to 'Cancel', [@affiliate, @rss_feed], :class => 'cancel'

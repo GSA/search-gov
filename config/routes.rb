@@ -60,6 +60,7 @@ UsasearchRails3::Application.routes.draw do
     end
     resources :api, :controller => "affiliates/api"
     resources :featured_collections, :controller => "affiliates/featured_collections"
+    resources :rss_feeds, :controller => "affiliates/rss_feeds"
   end
   match '/search' => 'searches#index', :as => :search
   get '/search/advanced' => 'searches#advanced', :as => :advanced_search

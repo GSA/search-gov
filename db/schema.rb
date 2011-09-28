@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110926233554) do
+ActiveRecord::Schema.define(:version => 20110928173111) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(:version => 20110926233554) do
     t.string   "staged_search_results_page_title",                                                :null => false
     t.boolean  "exclude_webtrends",                              :default => false,               :null => false
     t.boolean  "is_popular_links_enabled",                       :default => true
-    t.boolean  "local_index_active",                             :default => false,               :null => false
     t.string   "external_css_url"
     t.string   "staged_external_css_url"
+    t.boolean  "local_index_active",                             :default => false,               :null => false
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -528,11 +528,12 @@ ActiveRecord::Schema.define(:version => 20110926233554) do
   end
 
   create_table "rss_feeds", :force => true do |t|
-    t.integer  "affiliate_id", :null => false
-    t.string   "url",          :null => false
-    t.string   "name",         :null => false
+    t.integer  "affiliate_id",                    :null => false
+    t.string   "url",                             :null => false
+    t.string   "name",                            :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_active",    :default => false
   end
 
   add_index "rss_feeds", ["affiliate_id"], :name => "index_rss_feeds_on_affiliate_id"
