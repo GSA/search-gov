@@ -88,7 +88,7 @@ describe RssFeed do
       end
 
       it "should ignore them" do
-        NewsItem.should_receive(:create!).twice
+        NewsItem.should_receive(:create).twice
         feed.freshen
       end
     end
