@@ -103,6 +103,10 @@ class Search
     true
   end
 
+  def related_search_results
+    CalaisRelatedSearch.related_search(@query, @affiliate)
+  end
+
   def as_json(options = {})
     if error_message
       {:error => error_message}
@@ -162,30 +166,6 @@ class Search
   end
 
   protected
-
-  def related_search_results
-    affiliate_id = self.affiliate.nil? ? nil : self.affiliate.id
-    if affiliate_id
-      affiliate = Affiliate.find(affiliate_id)
-      if affiliate.is_related_topics_disabled?
-        return []
-      elsif affiliate.is_affiliate_related_topics_enabled?
-        solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s, affiliate_id)
-      elsif affiliate.is_global_related_topics_enabled?
-        solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s)
-      end
-    else
-      solr = CalaisRelatedSearch.search_for(self.query, I18n.locale.to_s)
-    end
-    instance = solr.hits.first.instance rescue nil
-    return [] if instance.nil?
-    related_terms = instance.related_terms
-    related_terms_array = related_terms.split('|')
-    related_terms_array.each { |t| t.strip! }
-    related_terms_array.delete_if { |related_term| self.query.casecmp(related_term).zero? }
-    related_terms_array.sort! { |x, y| y.length <=> x.length }
-    related_terms_array[0, 5].sort
-  end
 
   def spelling_results(response)
     did_you_mean_suggestion = response.spell.results.first.value rescue nil
@@ -318,15 +298,15 @@ class Search
   def generate_affiliate_scope
     valid_scope_id? ? "(scopeid:#{self.scope_id})" : fill_domains_to_remainder
   end
-  
+
   def generate_default_scope
     generate_excluded_scope.size > 0 ? "#{DEFAULT_SCOPE} #{generate_excluded_scope}" : DEFAULT_SCOPE
   end
-  
+
   def generate_excluded_scope
     @exlcuded_domains ||= ExcludedDomain.all.collect{|excluded_domain| "-site:#{excluded_domain.domain}"}.join(" ")
   end
-  
+
   def query_plus_locale
     "(#{query}) #{locale}".strip.squeeze(' ')
   end
@@ -420,7 +400,7 @@ class Search
     end
     processed.compact
   end
-  
+
   def process_boosted_results(boosted_results)
     processed = boosted_results.results.collect do |result|
       {
@@ -433,7 +413,7 @@ class Search
     end
     processed.compact
   end
-  
+
   def bing_query(query_string, query_sources, offset, count, enable_highlighting = true)
     params = [
       "web.offset=#{offset}",

@@ -2,14 +2,17 @@ class NewsItem < ActiveRecord::Base
   validates_presence_of :title, :description, :link, :published_at, :guid, :rss_feed_id
   validates_uniqueness_of :guid, :scope => :rss_feed_id
   belongs_to :rss_feed
+  TIME_BASED_SEARCH_OPTIONS = ActiveSupport::OrderedHash.new
+  TIME_BASED_SEARCH_OPTIONS["h"] = :hour
+  TIME_BASED_SEARCH_OPTIONS["d"] = :day
+  TIME_BASED_SEARCH_OPTIONS["w"] = :week
+  TIME_BASED_SEARCH_OPTIONS["m"] = :month
+  TIME_BASED_SEARCH_OPTIONS["y"] = :year
 
   searchable do
     integer :rss_feed_id
     time :published_at
-    text :title
-    text :description do
-      Nokogiri::HTML(description).inner_text.gsub(/[\t\n\r]/, ' ').squish
-    end
+    text :title, :description
   end
 
   class << self
@@ -28,6 +31,7 @@ class NewsItem < ActiveRecord::Base
         end rescue nil
       end
     end
+
   end
 
 end

@@ -15,7 +15,7 @@ class PdfDocument < ActiveRecord::Base
     end
     integer :affiliate_id
   end
-  
+
   class << self
     def search_for(query, affiliate = nil, page = 1, per_page = 3)
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate.name}) do
@@ -31,21 +31,20 @@ class PdfDocument < ActiveRecord::Base
 
     def crawl_pdf(url)
       begin
-        pdf_io = open(url)
-        pdf = PDF::Toolkit.open(pdf_io)
+        pdf = PDF::Toolkit.open(open(url))
         PdfDocument.new(:url => url, :title => generate_title(pdf, url), :description => generate_description(pdf.to_text.read), :body => pdf.to_text.read)
       rescue Exception => e
-        Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
+        Rails.logger.error "Trouble fetching #{url} for PDF document creation: #{e}"
       end
     end
-  
+
     def is_pdf?(url)
       url.ends_with(".pdf").present?
     end
   end
 
   private
-  
+
   class << self
     def generate_title(pdf, url)
       return pdf.title unless pdf.title.blank?
@@ -59,7 +58,7 @@ class PdfDocument < ActiveRecord::Base
         return URI.decode(url[url.rindex("/") + 1..-1])
       end
     end
-    
+
     def generate_description(body)
       body.truncate(500, :separator => " ")
     end

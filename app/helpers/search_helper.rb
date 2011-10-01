@@ -82,7 +82,7 @@ module SearchHelper
     link_title = strip_url_protocol(shorten_url(result['unescapedUrl']))
     tracked_click_link(h(result['unescapedUrl']), h(link_title), search, affiliate, position, 'BWEB', vertical, "class='link-to-full-url'")
   end
-  
+
   def display_agency_popular_links(popular_urls, search, affiliate, vertical)
     titles = popular_urls.collect{|popular_url| popular_url.title }
     duplicate_titles = titles.inject({}) {|h,v| h[v]=h[v].to_i+1; h}.reject{|k,v| v==1}.keys
@@ -97,7 +97,7 @@ module SearchHelper
         else
           title = popular_url.title.truncate(46, :separator => " ") + " (#{dup_count + 1})"
           duplicate_counters[popular_url.title] = dup_count + 1
-        end          
+        end
       else
         title = popular_url.title.truncate(50, :separator => " ")
       end
@@ -105,7 +105,7 @@ module SearchHelper
     end
     html = content_tag(:ul, raw(popular_links))
   end
-  
+
   def display_agency_popular_url(title, url, search, affiliate, position, vertical)
     tracked_click_link(h(url), h(title), search, affiliate, position, 'APOP', vertical)
   end
@@ -125,11 +125,11 @@ module SearchHelper
     end
     content_tag(:table, raw(rows), :class=>"deep-links")
   end
-  
+
   def display_bing_result_extname_prefix(bing_result)
     display_result_extname_prefix(bing_result['unescapedUrl'])
   end
-  
+
   def display_result_extname_prefix(url)
     begin
       path_extname = File.extname(URI.parse(url).path)[1..-1]
@@ -181,7 +181,7 @@ module SearchHelper
     onmousedown = onmousedown_for_click(query, position, aff_name, source, Time.now.to_i, vertical)
     raw "<a href=\"#{h url}\" #{onmousedown} #{html_opts}>#{html_safe_title}</a>"
   end
-  
+
   def boosted_content_link_with_click_tracking(html_safe_title, url, affiliate, query, position, vertical)
     link_with_click_tracking(html_safe_title, url, affiliate, query, position, "BOOS", vertical)
   end
@@ -222,6 +222,10 @@ module SearchHelper
     highlight(truncate_html_prose_on_words(summary, 300), query).html_safe
   end
 
+  def news_description(hit)
+    truncate_html_prose_on_words(highlight_hit(hit, :description), 255).sub(/^([^A-Z<])/,'...\1').html_safe
+  end
+
   def translate_bing_highlights(body)
     body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
   end
@@ -254,17 +258,19 @@ module SearchHelper
   end
 
   def results_summary(a, b, total, q, show_logo = true)
-    summary = t :results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => q
-    p_sum = content_tag(:p, summary)
+    p_sum = make_summary_p(a, b, total, q)
     logo = show_logo ? image_tag("binglogo_#{I18n.locale}.gif", :style=>"float:right") : ""
     content_tag(:div, raw(logo + p_sum), :id => "summary")
   end
-  
+
   def pdf_results_summary(a, b, total, query, affiliate_name)
-    summary = t :results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => query
-    p_sum = content_tag(:p, summary)
+    p_sum = make_summary_p(a, b, total, query)
     p_back = content_tag(:p, link_to("Back to all #{affiliate_name} results >>", search_path(:query => query, :affiliate => affiliate_name)))
     content_tag(:div, raw(p_sum + p_back), :id => "summary")
+  end
+
+  def make_summary_p(a, b, total, query)
+    content_tag(:p, t(:results_summary, :from => a, :to => b, :total => number_with_delimiter(total), :query => query))
   end
 
   def agency_url_matches_by_locale(result_url, agency, locale)

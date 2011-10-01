@@ -143,6 +143,14 @@ class Affiliate < ActiveRecord::Base
     self.send(method + "=", result.join("\n"))
   end
 
+  def active_rss_feeds
+    rss_feeds.where(:is_active => true)
+  end
+
+  def has_active_rss_feeds?
+    active_rss_feeds.count > 0
+  end
+
   class << self
     def human_attribute_name(attribute_key_name, options = {})
       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
@@ -181,4 +189,5 @@ class Affiliate < ActiveRecord::Base
     self.external_css_url = "http://#{self.external_css_url}" unless self.external_css_url.blank? or self.external_css_url =~ %r{^http(s?)://}i
     self.staged_external_css_url = "http://#{self.staged_external_css_url}" unless self.staged_external_css_url.blank? or self.staged_external_css_url =~ %r{^http(s?)://}i
   end
+
 end

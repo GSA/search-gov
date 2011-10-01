@@ -9,8 +9,7 @@ describe Affiliate do
       :domains => "someaffiliate.gov",
       :website => "http://www.someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
-      :footer => "<center>gasp</center>",
-      :local_index_active => true
+      :footer => "<center>gasp</center>"
     }
     @valid_attributes = @valid_create_attributes.merge(:name => "someaffiliate.gov")
   end

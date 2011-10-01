@@ -1,9 +1,9 @@
 class SearchesController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  before_filter :handle_old_advanced_form, :only => [ :index ]
+  before_filter :handle_old_advanced_form, :only => [:index]
   before_filter :grab_format
-  before_filter :set_affiliate_options, :except => [ :forms ]
-  before_filter :set_search_options, :except => [ :forms, :pdf ]
+  before_filter :set_affiliate_options, :except => [:forms]
+  before_filter :set_search_options, :only => [:advanced, :index]
   before_filter :set_form_search_options, :only => :forms
   before_filter :set_pdf_search_options, :only => :pdf
   has_mobile_fu
@@ -45,7 +45,7 @@ class SearchesController < ApplicationController
       format.json { render :json => @search }
     end
   end
-  
+
   def pdf
     unless @search_options[:query].blank?
       @search = PdfDocument.search_for(@search_options[:query], @search_options[:affiliate], @search_options[:page], 10)
@@ -55,14 +55,23 @@ class SearchesController < ApplicationController
       render :action => :pdf, :layout => "affiliate"
     end
   end
-  
+
+  def news
+    @search = NewsSearch.new(@affiliate, params)
+    @search.run
+    @form_path = news_search_path
+    @page_title = params[:query]
+    @search_vertical = :news
+    render :action => :news, :layout => "affiliate"
+  end
+
   def auto_complete_for_search_query
     query = params["mode"] == "jquery" ? params["q"] : params["query"]
     sanitized_query = query.nil? ? "" : query.squish.strip.gsub('\\', '')
     render :inline => "" and return if sanitized_query.empty?
     @auto_complete_options = Search.suggestions(nil, sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
     if params["mode"] == "jquery"
-      render :json => "#{params['callback']}(#{@auto_complete_options.map{|option| option.phrase }.to_json})"
+      render :json => "#{params['callback']}(#{@auto_complete_options.map { |option| option.phrase }.to_json})"
     else
       render :inline => "<%= auto_complete_result(@auto_complete_options, 'phrase', '#{sanitized_query.gsub("'", "\\\\'")}') %>"
     end
@@ -98,9 +107,21 @@ class SearchesController < ApplicationController
     @original_format = request.format
   end
 
-  # TODO This could be cleaned up into search.rb
   def set_search_options
+    params.delete("tbs")
+    params.delete("channel")
     @search_options = search_options_from_params(params).merge(:affiliate => @affiliate)
+  end
+
+  def set_affiliate_options
+    @affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
+    if @affiliate && params["staged"]
+      @affiliate.domains = @affiliate.staged_domains
+      @affiliate.header = @affiliate.staged_header
+      @affiliate.footer = @affiliate.staged_footer
+      @affiliate.affiliate_template_id = @affiliate.staged_affiliate_template_id
+      @affiliate.external_css_url = @affiliate.staged_external_css_url
+    end
   end
 
   def set_form_search_options
@@ -111,29 +132,17 @@ class SearchesController < ApplicationController
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
     }
   end
-  
+
   def set_pdf_search_options
     @search_options = {
       :page => (params[:page] || "1").to_i,
       :query => params["query"],
       :results_per_page => params["per-page"],
-      :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
+      :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
+      :affiliate => @affiliate
     }
-    @search_options.merge!(:affiliate => @affiliate)
   end
-  
-  def set_affiliate_options
-    @affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
-    if @affiliate && params["staged"]
-      @affiliate.domains = @affiliate.staged_domains
-      @affiliate.header = @affiliate.staged_header
-      @affiliate.footer = @affiliate.staged_footer
-      @affiliate.affiliate_template_id = @affiliate.staged_affiliate_template_id
-      @affiliate.external_css_url = @affiliate.staged_external_css_url
-    end
-    @affiliate
-  end
-  
+
   def check_for_blank_query
     redirect_to root_path if @search_options[:query].blank? and @search_options[:affiliate].nil? and params["input-form"] != "advanced" and request.format != :mobile
   end
@@ -149,5 +158,5 @@ class SearchesController < ApplicationController
 
   def is_forms_search?
     params[:action] == "forms"
-  end  
+  end
 end

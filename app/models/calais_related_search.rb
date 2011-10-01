@@ -10,7 +10,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
   validates_uniqueness_of :term, :scope => [:locale, :affiliate_id], :case_sensitive => true
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES
   belongs_to :affiliate
-  
+
   before_save :downcase_term
 
   class << self
@@ -123,6 +123,26 @@ class CalaisRelatedSearch < ActiveRecord::Base
       end
     end
 
+    def related_search(query, affiliate)
+      if affiliate and not affiliate.is_global_related_topics_enabled?
+        if affiliate.is_related_topics_disabled?
+          return []
+        elsif affiliate.is_affiliate_related_topics_enabled?
+          solr = search_for(query, I18n.locale.to_s, affiliate.id)
+        end
+      else
+        solr = search_for(query, I18n.locale.to_s)
+      end
+      instance = solr.hits.first.instance rescue nil
+      return [] if instance.nil?
+      related_terms = instance.related_terms
+      related_terms_array = related_terms.split('|')
+      related_terms_array.each { |t| t.strip! }
+      related_terms_array.delete_if { |related_term| query.casecmp(related_term).zero? }
+      related_terms_array.sort! { |x, y| y.length <=> x.length }
+      related_terms_array[0, 5].sort
+    end
+
   end
 
   searchable do
@@ -135,9 +155,9 @@ class CalaisRelatedSearch < ActiveRecord::Base
   def to_label
     term
   end
-  
+
   private
-  
+
   def downcase_term
     self.term.downcase!
   end

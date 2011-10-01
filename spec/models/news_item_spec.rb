@@ -6,7 +6,7 @@ describe NewsItem do
     @valid_attributes = {
       :link => 'http://www.whitehouse.gov/latest_story.html',
       :title => "Big story here",
-      :description => "<![CDATA[<p>Corps volunteers have promoted blah blah blah.</p>]]",
+      :description => "Corps volunteers have promoted blah blah blah.",
       :published_at => DateTime.parse("2011-09-26 21:33:05"),
       :guid => '80798 at www.whitehouse.gov',
       :rss_feed_id => rss_feeds(:white_house_blog).id
@@ -28,6 +28,7 @@ describe NewsItem do
 
   describe "#search_for(query, rss_feeds, since)" do
     before do
+      NewsItem.delete_all
       @blog = rss_feeds(:white_house_blog)
       @gallery = rss_feeds(:white_house_press_gallery)
       @blog_item = NewsItem.create!(:rss_feed_id => @blog.id, :guid => "unique to feed", :published_at => 3.days.ago,
@@ -51,10 +52,6 @@ describe NewsItem do
       search = NewsItem.search_for("policy", [@blog, @gallery])
       search.total.should == 2
       search.results.first.should == @gallery_item
-    end
-
-    it "should ignore HTML in the description" do
-      NewsItem.search_for("href", [@blog]).total.should be_zero
     end
 
     it "should instrument the call to Solr with the proper action.service namespace and query param hash" do

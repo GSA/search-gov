@@ -2,6 +2,6 @@ item1:
   rss_feed: :white_house_blog
   link: http://some.agency.gov/news/1
   title: News element 1
-  description: <p>News element 1 has a description</p>
+  description: News element 1 has a description
   guid: This is a unique string per RSS feed and we are requiring it to be present
-  published_at: DateTime.parse("2010-09-26 21:33:04")
+  published_at: <%= 5.day.ago.to_s(:db) %>

@@ -19,39 +19,39 @@ describe RssFeed do
   it "should create a new instance given valid attributes" do
     RssFeed.create!(@valid_attributes)
   end
-  
+
   context "when creating" do
     context "when the RSS feed is a valid feed" do
       before do
         rss = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
         Kernel.stub!(:open).and_return rss
       end
-      
+
       it "should validate" do
         rss_feed = RssFeed.new(@valid_attributes)
         rss_feed.valid?.should be_true
         rss_feed.errors.should be_empty
       end
     end
-    
+
     context "when the URL does not point to an RSS feed" do
       before do
         rss = File.read(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html')
         Kernel.stub!(:open).and_return rss
       end
-      
+
       it "should not validate" do
         rss_feed = RssFeed.new(@valid_attributes)
         rss_feed.valid?.should be_false
         rss_feed.errors.should_not be_empty
       end
     end
-    
+
     context "when some error is raised in checking the RSS feed" do
       before do
         Kernel.stub!(:open).and_raise 'Some exception'
       end
-      
+
       it "should not validate" do
         rss_feed = RssFeed.new(@valid_attributes)
         rss_feed.valid?.should be_false
@@ -59,7 +59,7 @@ describe RssFeed do
       end
     end
   end
-  
+
   describe "#refresh_all" do
     before do
       @blog = rss_feeds(:white_house_blog)
@@ -86,7 +86,7 @@ describe RssFeed do
         feed.news_items.delete_all
       end
 
-      it "should populate news items from the RSS feed source" do
+      it "should populate news items from the RSS feed source with HTML stripped from the description" do
         feed.freshen
         feed.reload
         feed.news_items.count.should == 3
@@ -94,6 +94,8 @@ describe RssFeed do
         newest.guid.should == "80731 at http://www.whitehouse.gov"
         newest.link.should == "http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution"
         newest.published_at.should == DateTime.parse("26 Sep 2011 21:33:05 +0000")
+        newest.description[0,40].should == "Dr. Biden and David Letterman refer to a"
+        newest.title.should == "Famine in the Horn of Africa: Be a Part of the Solution"
       end
     end
 
@@ -102,7 +104,7 @@ describe RssFeed do
         NewsItem.delete_all
         NewsItem.create!(:link => 'http://www.whitehouse.gov/latest_story.html',
                          :title => "Big story here",
-                         :description => "<![CDATA[<p>Corps volunteers have promoted blah blah blah.</p>]]",
+                         :description => "Corps volunteers have promoted blah blah blah.",
                          :published_at => DateTime.parse("26 Sep 2011 18:31:23 +0000"),
                          :guid => 'unique',
                          :rss_feed_id => feed.id
@@ -120,7 +122,7 @@ describe RssFeed do
         NewsItem.delete_all
         NewsItem.create!(:link => 'http://www.whitehouse.gov/latest_story.html',
                          :title => "Big story here",
-                         :description => "<![CDATA[<p>Corps volunteers have promoted blah blah blah.</p>]]",
+                         :description => "Corps volunteers have promoted blah blah blah.",
                          :published_at => DateTime.parse("26 Sep 2011 18:31:21 +0000"),
                          :guid => '80653 at http://www.whitehouse.gov',
                          :rss_feed_id => feed.id
@@ -131,6 +133,11 @@ describe RssFeed do
         NewsItem.should_receive(:create).twice
         feed.freshen
       end
+    end
+
+    it "should commit the news items to Solr" do
+      Sunspot.should_receive(:commit).once
+      feed.freshen
     end
   end
 

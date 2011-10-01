@@ -8,13 +8,15 @@ class RssFeed < ActiveRecord::Base
     most_recently = news_items.present? ? news_items.first.published_at : nil
     Nokogiri::XML(open(url)).xpath('//item').each do |item|
       published_at = DateTime.parse(item.xpath('pubDate').inner_text)
-      return if most_recently and published_at < most_recently
+      break if most_recently and published_at < most_recently
       link = item.xpath('link').inner_text
       title = item.xpath('title').inner_text
       guid = item.xpath('guid').inner_text
-      description = item.xpath('description').inner_text
+      raw_description = item.xpath('description').inner_text
+      description = Nokogiri::HTML(raw_description).inner_text.gsub(/[\t\n\r]/, ' ').squish
       NewsItem.create(:rss_feed => self, :link => link, :title => title, :description => description, :published_at => published_at, :guid => guid) unless news_items.exists?(:guid => guid)
     end
+    Sunspot.commit
   end
 
   def self.refresh_all

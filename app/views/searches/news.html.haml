@@ -1,0 +1,30 @@
+#left_column
+  = render "shared/affiliate_news_vertical_navigation"
+  %br
+  - if (english_locale? && @search && @search.related_search.size > 0)
+    #related_searches
+      = render "/shared/related_topics"
+  - if @affiliate.is_popular_links_enabled
+    = render "/shared/popular_urls", :popular_urls => @affiliate.popular_urls.top_urls
+
+#results
+  = form_tag(@form_path, :method => :get, :id => "search_form") do
+    = label_tag :search_query, nil, :class => 'hide'
+    = hidden_field_tag :sc, 0
+    = text_field_tag 'search', @search.query, { :maxlength => 255, :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete", :id => "search_query" }
+    = hidden_field_tag :locale, I18n.locale
+    = hidden_field_tag :m, params[:m]
+    = hidden_field_tag :tbs, params[:tbs] if params[:tbs]
+    = hidden_field_tag :channel, @search.rss_feed.id if @search.rss_feed
+    = hidden_field_tag :affiliate, @affiliate.name
+    = submit_tag('Search News', :id => "search_button")
+  %a{:name => "content"}
+  - if @search.results.present?
+    = results_summary(start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search.query, false)
+    - @search.hits.each_with_index do |hit, index|
+      = render 'shared/news_item', :hit => hit, :index => index
+    = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+  - elsif @search.error_message
+    %p.noresults #{@search.error_message}
+  - else
+    = no_results_for @search.query

@@ -11,8 +11,8 @@ describe SearchesController do
     end
 
     it "should not completely melt down when strange characters are present" do
-      lambda {get :auto_complete_for_search_query, :query=>"foo\\"}.should_not raise_error
-      lambda {get :auto_complete_for_search_query, :query=>"foo's"}.should_not raise_error
+      lambda { get :auto_complete_for_search_query, :query=>"foo\\" }.should_not raise_error
+      lambda { get :auto_complete_for_search_query, :query=>"foo's" }.should_not raise_error
     end
 
     it "should return empty result if no search param present" do
@@ -27,7 +27,7 @@ describe SearchesController do
 
     context "when searching in mobile mode" do
       before do
-       iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
+        iphone_user_agent = "Mozilla/5.0 (iPhone; U; CPU like Mac OS X; en) AppleWebKit/420+ (KHTML, like Gecko) Version/3.0 Mobile/1A543a Safari/419.3"
         @regular_user_agent = request.env["HTTP_USER_AGENT"]
         request.env["HTTP_USER_AGENT"] = iphone_user_agent
       end
@@ -471,7 +471,7 @@ describe SearchesController do
     before do
       @affiliate = affiliates(:basic_affiliate)
       @affiliate.pdf_documents << PdfDocument.new(:title => "Affiliate PDF 1", :url => 'http://affiliate.gov/1.pdf', :description => 'a pdf')
-      @affiliate.pdf_documents << PdfDocument.new(:title => "Affiliate PDF 2", :url => 'http://affiliate.gov/2.pdf', :description => 'a pdf')     
+      @affiliate.pdf_documents << PdfDocument.new(:title => "Affiliate PDF 2", :url => 'http://affiliate.gov/2.pdf', :description => 'a pdf')
       affiliates(:power_affiliate).pdf_documents << PdfDocument.new(:title => "Other Affiliate PDF 1", :url => 'http://otheraffiliate.gov/1.pdf', :description => 'a pdf')
       PdfDocument.reindex
     end
@@ -481,7 +481,7 @@ describe SearchesController do
       response.should render_template 'pdf'
       response.should render_template 'layouts/affiliate'
     end
-    
+
     it "should assign various variables" do
       get :pdf, :query => "pdf", :affiliate => @affiliate.name
       assigns[:page_title].should == "pdf"
@@ -489,30 +489,30 @@ describe SearchesController do
       assigns[:form_path].should == pdf_search_path
       assigns[:search].should_not be_nil
     end
-    
+
     it "should default to page 1" do
       get :pdf, :query => "pdf", :affiliate => @affiliate.name
       assigns[:search_options][:page].should == 1
     end
-    
+
     it "should find PDF files that match the query for the affiliate" do
       get :pdf, :query => "pdf", :affiliate => @affiliate.name
       assigns[:search].total.should == 2
       assigns[:search].results.first.url.should_not == "http://otheraffiliate.gov/1.pdf"
       assigns[:search].results.last.url.should_not == "http://otheraffiliate.gov/1.pdf"
     end
-    
+
     it "should output a page that summarizes the results and links back to the affiliate results page" do
       get :pdf, :query => "pdf", :affiliate => @affiliate.name
       response.body.should contain("Results 1-2 of about 2 for 'pdf'")
       response.should have_selector("a", :href=> '/search?affiliate=NPS+Site&locale=en&m=false&query=pdf', :content => 'Back to all NPS Site results >>')
     end
-    
+
     context "when the page number is specified" do
       before do
         get :pdf, :query => "pdf", :affiliate => @affiliate.name, :page => 2
       end
-      
+
       it "should page the results" do
         assigns[:search_options][:page].should == 2
         assigns[:search].total.should == 2
@@ -520,4 +520,45 @@ describe SearchesController do
       end
     end
   end
+
+  describe "#news" do
+    fixtures :affiliates, :rss_feeds, :news_items, :calais_related_searches
+
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    before do
+      NewsItem.reindex
+      CalaisRelatedSearch.reindex
+    end
+
+    it "should assign page title, vertical, form_path, and search members" do
+      get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
+      assigns[:page_title].should == "element"
+      assigns[:search_vertical].should == :news
+      assigns[:form_path].should == news_search_path
+      assigns[:search].should be_an_instance_of(NewsSearch)
+    end
+
+    it "should find news items that match the query for the affiliate" do
+      get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
+      assigns[:search].total.should == 1
+      assigns[:search].results.first.should == news_items(:item1)
+    end
+
+    describe "rendering the view" do
+      render_views
+
+      it "should render the template" do
+        get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
+        response.should render_template 'news'
+        response.should render_template 'layouts/affiliate'
+      end
+
+      it "should output a page that summarizes the results" do
+        get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
+        response.body.should contain("Results 1-1 of about 1 for 'element'")
+      end
+    end
+  end
+
 end
