@@ -83,10 +83,12 @@ class Search
     if total.zero?
       if @affiliate
         @boosted_results = BoostedContent.search_for(query, affiliate, I18n.locale, page + 1, 10)
-        @total = @boosted_results.total
-        @startrecord = (page * 10) + 1
-        @results = paginate(process_boosted_results(@boosted_results))
-        @endrecord = startrecord + @results.size - 1
+        unless @boosted_results.nil?
+          @total = @boosted_results.total
+          @startrecord = (page * 10) + 1
+          @results = paginate(process_boosted_results(@boosted_results))
+          @endrecord = startrecord + @results.size - 1
+        end
       end
     else
       @startrecord = bing_offset(response) + 1

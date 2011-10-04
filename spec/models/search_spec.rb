@@ -1280,6 +1280,25 @@ describe Search do
         search.boosted_contents.should be_nil
       end
     end
+    
+    context "when affiliate has no Bing results and BoostedContent search returns nil" do
+      before do
+        @non_affiliate = affiliates(:non_existant_affiliate)
+        @non_affiliate.boosted_contents.destroy_all
+        BoostedContent.reindex
+        BoostedContent.stub!(:search_for).and_return nil
+      end
+      
+      it "should return a search with a zero total" do
+        search = Search.new(:query => 'some bogus + + query', :affiliate => @non_affiliate)
+        search.run
+        search.total.should == 0
+        search.results.should_not be_nil
+        search.results.should be_empty
+        search.startrecord.should be_nil
+        search.endrecord.should be_nil
+      end
+    end
   end
 
   describe "when new" do
