@@ -144,7 +144,7 @@ describe Affiliates::RssFeedsController do
     context "when logged in as an affiliate manager who belongs to the affiliate being requested and failed to create a RSS feed" do
       let(:current_user) { users(:affiliate_manager) }
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:rss_feed) { mock('rss_feed') }
+      let(:rss_feed) { rss_feeds(:basic) }
 
       before do
         UserSession.create(current_user)
@@ -159,6 +159,7 @@ describe Affiliates::RssFeedsController do
       end
 
       it { should assign_to(:rss_feed).with(rss_feed) }
+      it { should set_the_flash }
       it { should redirect_to(new_affiliate_rss_feed_path(affiliate)) }
     end
   end
@@ -320,6 +321,7 @@ describe Affiliates::RssFeedsController do
       end
 
       it { should assign_to(:rss_feed).with(rss_feed) }
+      it { should set_the_flash }
       it { should redirect_to(edit_affiliate_rss_feed_path(affiliate, rss_feed)) }
     end
   end

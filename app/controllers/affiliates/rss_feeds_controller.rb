@@ -3,7 +3,6 @@ class Affiliates::RssFeedsController < Affiliates::AffiliatesController
   before_filter :setup_affiliate
   before_filter :setup_rss_feed, :only => [:show, :edit, :update, :destroy]
 
-
   def index
     @title = 'RSS Feeds - '
     @rss_feeds = @affiliate.rss_feeds.paginate(:all, :per_page => 10, :page => params[:page])
@@ -19,7 +18,7 @@ class Affiliates::RssFeedsController < Affiliates::AffiliatesController
     if @rss_feed.save
       redirect_to [@affiliate, @rss_feed], :flash => { :success => 'RSS feed successfully created.' }
     else
-      redirect_to new_affiliate_rss_feed_path(@affiliate)
+      redirect_to new_affiliate_rss_feed_path(@affiliate), :flash => { :error => @rss_feed.errors.collect{ |e| e.last }.join('\n') }
     end
   end
   
@@ -31,7 +30,7 @@ class Affiliates::RssFeedsController < Affiliates::AffiliatesController
     if @rss_feed.update_attributes(params[:rss_feed])
       redirect_to [@affiliate, @rss_feed], :flash => { :success => 'RSS feed successfully updated.' }
     else
-      redirect_to edit_affiliate_rss_feed_path(@affiliate, @rss_feed)
+      redirect_to edit_affiliate_rss_feed_path(@affiliate, @rss_feed), :flash => { :error => @rss_feed.errors.collect{ |e| e.last }.join('\n') }
     end
   end
   
