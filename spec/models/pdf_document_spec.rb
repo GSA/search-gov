@@ -32,7 +32,6 @@ describe PdfDocument do
   it "should allow a duplicate url for a different affiliate" do
     doc = PdfDocument.create!(@valid_attributes)
     duplicate = PdfDocument.new(@valid_attributes.merge(:affiliate_id => affiliates(:power_affiliate).id))
-    puts duplicate.valid?
     duplicate.should be_valid
   end
 

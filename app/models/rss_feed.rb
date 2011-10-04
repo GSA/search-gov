@@ -1,5 +1,7 @@
 class RssFeed < ActiveRecord::Base
   validates_presence_of :url, :name, :affiliate_id
+  validates_format_of :url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
+  validate :is_valid_rss_feed?
   belongs_to :affiliate
   has_many :news_items, :dependent => :destroy, :order => "published_at DESC"
 
@@ -19,5 +21,14 @@ class RssFeed < ActiveRecord::Base
   def self.refresh_all
     all.each(&:freshen)
   end
-
+  
+  private
+  
+  def is_valid_rss_feed?
+    begin
+      errors.add(:url, "The RSS feed URL specified does not appear to be a valid RSS feed.") if Nokogiri::XML(Kernel.open(url)).xpath('//channel').empty?
+    rescue Exception => e
+      errors.add(:url, "The RSS feed URL specified does not appear to be a valid RSS feed.  Additional information: " + e.message)
+    end
+  end  
 end

@@ -19,7 +19,47 @@ describe RssFeed do
   it "should create a new instance given valid attributes" do
     RssFeed.create!(@valid_attributes)
   end
-
+  
+  context "when creating" do
+    context "when the RSS feed is a valid feed" do
+      before do
+        rss = File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml')
+        Kernel.stub!(:open).and_return rss
+      end
+      
+      it "should validate" do
+        rss_feed = RssFeed.new(@valid_attributes)
+        rss_feed.valid?.should be_true
+        rss_feed.errors.should be_empty
+      end
+    end
+    
+    context "when the URL does not point to an RSS feed" do
+      before do
+        rss = File.read(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html')
+        Kernel.stub!(:open).and_return rss
+      end
+      
+      it "should not validate" do
+        rss_feed = RssFeed.new(@valid_attributes)
+        rss_feed.valid?.should be_false
+        rss_feed.errors.should_not be_empty
+      end
+    end
+    
+    context "when some error is raised in checking the RSS feed" do
+      before do
+        Kernel.stub!(:open).and_raise 'Some exception'
+      end
+      
+      it "should not validate" do
+        rss_feed = RssFeed.new(@valid_attributes)
+        rss_feed.valid?.should be_false
+        rss_feed.errors.should_not be_empty
+      end
+    end
+  end
+  
   describe "#refresh_all" do
     before do
       @blog = rss_feeds(:white_house_blog)
