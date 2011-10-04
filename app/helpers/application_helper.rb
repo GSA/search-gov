@@ -129,7 +129,7 @@ module ApplicationHelper
     results = elements.collect do |element|
       content_tag(:li, raw(element))
     end
-    results << content_tag(:li, link_to("Help Desk", "http://searchsupport.usa.gov/home"), :class => 'last')
+    results << content_tag(:li, mail_to("***REMOVED***", "Help Desk", :subject => "USASearch HelpDesk Request"), :class => 'last')
     raw content_tag(:ul, raw(results.join))
   end
 
