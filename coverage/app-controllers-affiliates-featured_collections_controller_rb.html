@@ -129,7 +129,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>     @featured_collection = @affiliate.featured_collections.build</pre></td>
+            <td><pre><a name="line13">13</a>     @featured_collection = @affiliate.featured_collections.build(:publish_start_on =&gt; Date.current)</pre></td>
           </tr>
         
           
@@ -171,7 +171,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>       redirect_to [@affiliate, @featured_collection], :flash =&gt; { :success =&gt; 'Feature Collection successfully created.' }</pre></td>
+            <td><pre><a name="line20">20</a>       redirect_to [@affiliate, @featured_collection], :flash =&gt; { :success =&gt; 'Featured Collection successfully created.' }</pre></td>
           </tr>
         
           
@@ -225,7 +225,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>     @title = &quot;Featured Collection: #{@featured_collection.title} - &quot;</pre></td>
+            <td><pre><a name="line29">29</a>     @title = &quot;Featured Collection - &quot;</pre></td>
           </tr>
         
           
@@ -429,7 +429,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Sep 01 09:27:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Oct 04 16:44:44 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

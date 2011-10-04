@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-api_search_rb.html">app/models/api_search.rb</a></td>
-            <td class='right_align'><tt>19</tt></td>
-            <td class='right_align'><tt>17</tt></td>
+            <td class='right_align'><tt>20</tt></td>
+            <td class='right_align'><tt>18</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -99,79 +99,85 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>     search = Search.new(options)</pre></td>
+            <td><pre><a name="line8">8</a>     format = options[:format] =~ /xml/i ? :xml : :json</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     api_cache_key = &quot;API:#{options[:affiliate].name}:#{search.cache_key}&quot;</pre></td>
+            <td><pre><a name="line9">9</a>     search = Search.new(options)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     if cached = @@redis.get(api_cache_key) rescue nil</pre></td>
+            <td><pre><a name="line10">10</a>     api_cache_key = &quot;API:#{options[:affiliate].name}:#{search.cache_key}:#{format}&quot;</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>       cached</pre></td>
+            <td><pre><a name="line11">11</a>     if cached = @@redis.get(api_cache_key) rescue nil</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>       cached</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a>     else</pre></td>
+            <td><pre><a name="line13">13</a>     else</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       search.run</pre></td>
+            <td><pre><a name="line14">14</a>       search.run</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>       result = search.to_json</pre></td>
+            <td><pre><a name="line15">15</a>       result = format == :xml ? search.to_xml : search.to_json</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>       @@redis.setex(api_cache_key, CACHE_EXPIRATION_IN_SECONDS, result) rescue nil</pre></td>
+            <td><pre><a name="line16">16</a>       @@redis.setex(api_cache_key, CACHE_EXPIRATION_IN_SECONDS, result) rescue nil</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>       result</pre></td>
+            <td><pre><a name="line17">17</a>       result</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>     end</pre></td>
+            <td><pre><a name="line18">18</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>   end</pre></td>
+            <td><pre><a name="line19">19</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a> end</pre></td>
+            <td><pre><a name="line20">20</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Sep 01 09:27:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Oct 04 16:44:44 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

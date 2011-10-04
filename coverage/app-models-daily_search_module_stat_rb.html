@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-daily_search_module_stat_rb.html">app/models/daily_search_module_stat.rb</a></td>
-            <td class='right_align'><tt>33</tt></td>
-            <td class='right_align'><tt>31</tt></td>
+            <td class='right_align'><tt>34</tt></td>
+            <td class='right_align'><tt>32</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -123,7 +123,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>   def self.module_stats_for_daterange_and_affiliate_and_locale(daterange, affiliate_name = nil, locale = nil, vertical = nil)</pre></td>
+            <td><pre><a name="line12">12</a>   def self.module_stats_for_daterange(daterange, affiliate_name = nil, locale = nil, vertical = nil)</pre></td>
           </tr>
         
           
@@ -171,91 +171,97 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>     stats = results.collect do |stat|</pre></td>
+            <td><pre><a name="line20">20</a>     ctr_query = 'day, 100.0*sum(clicks)/sum(impressions) ctr'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>       historical_ctr = select('day, 100.0*clicks/impressions ctr').where(conditions.merge(:module_tag=&gt;stat.module_tag, :day=&gt; sparkline_range)).group(:day).collect { |r| r.ctr.to_f }</pre></td>
+            <td><pre><a name="line21">21</a>     stats = results.collect do |stat|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>       total_clicks += stat.clicks</pre></td>
+            <td><pre><a name="line22">22</a>       historical_ctr = select(ctr_query).where(conditions.merge(:module_tag=&gt;stat.module_tag, :day=&gt; sparkline_range)).group(:day).collect { |r| r.ctr }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>       total_impressions += stat.impressions</pre></td>
+            <td><pre><a name="line23">23</a>       total_clicks += stat.clicks</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>       OpenStruct.new(:display_name =&gt; stat.display_name, :clicks =&gt; stat.clicks, :impressions =&gt; stat.impressions, :clickthru_ratio =&gt; 100.0 * stat.clicks / stat.impressions, :historical_ctr =&gt; historical_ctr)</pre></td>
+            <td><pre><a name="line24">24</a>       total_impressions += stat.impressions</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       OpenStruct.new(:display_name =&gt; stat.display_name, :clicks =&gt; stat.clicks, :impressions =&gt; stat.impressions, :clickthru_ratio =&gt; 100.0 * stat.clicks / stat.impressions, :historical_ctr =&gt; historical_ctr)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line25">25</a>     end.compact</pre></td>
+            <td><pre><a name="line26">26</a>     end.compact</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>     unless stats.empty?</pre></td>
+            <td><pre><a name="line27">27</a>     unless stats.empty?</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>       historical_ctr = select('day, 100.0*clicks/impressions ctr').where(conditions.merge(:day=&gt; sparkline_range)).group(:day).collect { |r| r.ctr.to_f }</pre></td>
+            <td><pre><a name="line28">28</a>       historical_ctr = select(ctr_query).where(conditions.merge(:day=&gt; sparkline_range)).group(:day).collect { |r| r.ctr }</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>       stats &lt;&lt; OpenStruct.new(:display_name =&gt; &quot;Total&quot;, :clicks =&gt; total_clicks, :impressions =&gt; total_impressions,</pre></td>
+            <td><pre><a name="line29">29</a>       stats &lt;&lt; OpenStruct.new(:display_name =&gt; &quot;Total&quot;, :clicks =&gt; total_clicks, :impressions =&gt; total_impressions,</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line29">29</a>                               :clickthru_ratio =&gt; 100.0 * total_clicks / total_impressions, :historical_ctr =&gt; historical_ctr)</pre></td>
+            <td><pre><a name="line30">30</a>                               :clickthru_ratio =&gt; 100.0 * total_clicks / total_impressions, :historical_ctr =&gt; historical_ctr)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>     end</pre></td>
+            <td><pre><a name="line31">31</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line31">31</a>     stats</pre></td>
+            <td><pre><a name="line32">32</a>     stats</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>   end</pre></td>
+            <td><pre><a name="line33">33</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a> end</pre></td>
+            <td><pre><a name="line34">34</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Sep 01 09:27:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Oct 04 16:44:44 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

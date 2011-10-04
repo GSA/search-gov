@@ -81,31 +81,31 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     @search_options = search_options_from_params(params).merge(:affiliate =&gt; @affiliate)</pre></td>
+            <td><pre><a name="line5">5</a>     @search_options = search_options_from_params(params).merge(:affiliate =&gt; @affiliate, :format =&gt; params[:format])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>     if (params[:callback].blank?)</pre></td>
+            <td><pre><a name="line6">6</a>     @search = ApiSearch.search(@search_options)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>       render :json =&gt; ApiSearch.search(@search_options)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line8">8</a>     else</pre></td>
+            <td><pre><a name="line7">7</a>     respond_to do |format|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>       render :json =&gt; ApiSearch.search(@search_options), :callback =&gt; params[:callback]</pre></td>
+            <td><pre><a name="line8">8</a>       format.xml { render :xml =&gt; @search }</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>       format.json { params[:callback].blank? ? render(:json =&gt; @search) : render(:json =&gt; @search, :callback =&gt; params[:callback]) }</pre></td>
           </tr>
         
           
@@ -213,7 +213,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Sep 01 09:27:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Oct 04 16:44:44 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -279,13 +279,13 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line38">38</a>     new_params = request.params.update({:m =&gt; new_mobile_mode.to_s})</pre></td>
+            <td><pre><a name="line38">38</a>     new_params = request.params.update({:format =&gt; nil, :m =&gt; new_mobile_mode.to_s})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>     url_for({:controller =&gt; controller.controller_path, :action =&gt; controller.action_name, :params =&gt; new_params})</pre></td>
+            <td><pre><a name="line39">39</a>     url_for({ :controller =&gt; controller.controller_path, :action =&gt; controller.action_name }.reverse_merge(new_params))</pre></td>
           </tr>
         
           
@@ -1989,7 +1989,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Sep 01 09:27:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Oct 04 16:44:44 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

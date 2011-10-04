@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-daily_popular_query_rb.html">app/models/daily_popular_query.rb</a></td>
-            <td class='right_align'><tt>29</tt></td>
-            <td class='right_align'><tt>24</tt></td>
+            <td class='right_align'><tt>31</tt></td>
+            <td class='right_align'><tt>26</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -152,86 +152,98 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line17">17</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line18">18</a> </pre></td>
-          </tr>
-        
-          
-          
           <tr class="marked">
-            <td><pre><a name="line19">19</a>     def perform(day_string, time_frame, method, is_grouped)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line20">20</a>       day = Date.parse(day_string)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line21">21</a>       delete_all([&quot;day = ? and time_frame = ? and is_grouped = ?&quot;, day, time_frame, is_grouped])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line22">22</a>       query_counts = DailyQueryStat.send(method, day, time_frame, 1000)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line23">23</a>       query_counts.each do |query_count|</pre></td>
+            <td><pre><a name="line17">17</a>       Affiliate.all.each {|affiliate| Resque.enqueue(DailyPopularQuery, day, time_frame, method, is_grouped, affiliate.id) } unless is_grouped</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line24">24</a>         create!(:day =&gt; day, :affiliate_id =&gt; nil, :locale =&gt; 'en', :query =&gt; query_count.query,</pre></td>
+            <td><pre><a name="line18">18</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line19">19</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>                 :is_grouped =&gt; is_grouped, :time_frame =&gt; time_frame, :times =&gt; query_count.times)</pre></td>
+            <td><pre><a name="line20">20</a>     def perform(day_string, time_frame, method, is_grouped, affiliate_id = nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line26">26</a>       end unless query_counts.is_a?(String)</pre></td>
+            <td><pre><a name="line21">21</a>       day = Date.parse(day_string)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line22">22</a>       delete_all([&quot;day = ? and time_frame = ? and is_grouped = ? and affiliate_id = ?&quot;, day, time_frame, is_grouped, affiliate_id])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line23">23</a>       affiliate_name = affiliate_id.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : Affiliate.find(affiliate_id).name</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line24">24</a>       query_counts = DailyQueryStat.send(method, day, time_frame, 1000, affiliate_name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line25">25</a>       query_counts.each do |query_count|</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line27">27</a>     end</pre></td>
+            <td><pre><a name="line26">26</a>         create!(:day =&gt; day, :affiliate_id =&gt; affiliate_id, :locale =&gt; 'en', :query =&gt; query_count.query,</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line27">27</a>                 :is_grouped =&gt; is_grouped, :time_frame =&gt; time_frame, :times =&gt; query_count.times)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line28">28</a>       end unless query_counts.is_a?(String)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line28">28</a>   end</pre></td>
+            <td><pre><a name="line29">29</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a> end</pre></td>
+            <td><pre><a name="line30">30</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line31">31</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Sep 01 09:27:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Oct 04 16:44:44 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

@@ -28,8 +28,8 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-agency_popular_url_rb.html">app/models/agency_popular_url.rb</a></td>
-            <td class='right_align'><tt>34</tt></td>
-            <td class='right_align'><tt>33</tt></td>
+            <td class='right_align'><tt>36</tt></td>
+            <td class='right_align'><tt>35</tt></td>
             <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:100px"></div>
@@ -63,7 +63,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   validates_presence_of :agency_id, :title, :url, :source</pre></td>
+            <td><pre><a name="line2">2</a>   validates_presence_of :agency_id, :title, :url, :source, :locale</pre></td>
           </tr>
         
           
@@ -75,193 +75,205 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   belongs_to :agency</pre></td>
+            <td><pre><a name="line4">4</a>   validates_inclusion_of :locale, :in =&gt; SUPPORTED_LOCALES, :message =&gt; 'must be selected'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line5">5</a>   belongs_to :agency</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a>   scope :with_locale, lambda { |locale| where(:locale =&gt; locale) }</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line5">5</a> </pre></td>
+            <td><pre><a name="line7">7</a> </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a>   class &lt;&lt; self</pre></td>
+            <td><pre><a name="line8">8</a>   class &lt;&lt; self</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a>     def compute_for_date(date = Date.yesterday)</pre></td>
+            <td><pre><a name="line9">9</a>     def compute_for_date(date = Date.yesterday)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>       bitly_api = BitlyAPI.new(:username =&gt; 'usagov', :password =&gt; '***REMOVED***', :api_key =&gt; 'R_8e9e6b912573a6c8b7bd013f1f4f68e6')</pre></td>
+            <td><pre><a name="line10">10</a>       bitly_api = BitlyAPI.new(:username =&gt; 'usagov', :password =&gt; '***REMOVED***', :api_key =&gt; 'R_8e9e6b912573a6c8b7bd013f1f4f68e6')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>       csv_file = bitly_api.grab_csv_for_date(date)</pre></td>
+            <td><pre><a name="line11">11</a>       csv_file = bitly_api.grab_csv_for_date(date)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>       bitly_api.parse_csv(csv_file)</pre></td>
+            <td><pre><a name="line12">12</a>       bitly_api.parse_csv(csv_file)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>       AgencyPopularUrl.transaction do</pre></td>
+            <td><pre><a name="line13">13</a>       AgencyPopularUrl.transaction do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>         Agency.all.each do |agency|</pre></td>
+            <td><pre><a name="line14">14</a>         Agency.all.each do |agency|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>           AgencyPopularUrl.destroy_all([&quot;agency_id = ? AND source = ?&quot;, agency.id, 'bitly'])</pre></td>
+            <td><pre><a name="line15">15</a>           AgencyPopularUrl.destroy_all([&quot;agency_id = ? AND source = ?&quot;, agency.id, 'bitly'])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line14">14</a>           popular_links = bitly_api.get_popular_links_for_domain(agency.domain)</pre></td>
+            <td><pre><a name="line16">16</a>           popular_links = bitly_api.get_popular_links_for_domain(agency.domain)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>           popular_links.each do |link|</pre></td>
+            <td><pre><a name="line17">17</a>           popular_links.each do |link|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line16">16</a>             agency.agency_popular_urls &lt;&lt; AgencyPopularUrl.new(:url =&gt; link[:long_url], :title =&gt; link[:title], :rank =&gt; link[:clicks], :source =&gt; 'bitly')</pre></td>
+            <td><pre><a name="line18">18</a>             agency.agency_popular_urls &lt;&lt; AgencyPopularUrl.new(:url =&gt; CGI.unescapeHTML(link[:long_url]), :title =&gt; link[:title], :rank =&gt; link[:clicks], :source =&gt; 'bitly', :locale =&gt; 'en')</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line17">17</a>           end</pre></td>
+            <td><pre><a name="line19">19</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line18">18</a>         end</pre></td>
+            <td><pre><a name="line20">20</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line19">19</a>       end</pre></td>
+            <td><pre><a name="line21">21</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line20">20</a>       PopularUrl.transaction do</pre></td>
+            <td><pre><a name="line22">22</a>       PopularUrl.transaction do</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line21">21</a>         Affiliate.all.each do |affiliate|</pre></td>
+            <td><pre><a name="line23">23</a>         Affiliate.all.each do |affiliate|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line22">22</a>           PopularUrl.destroy_all([&quot;affiliate_id = ?&quot;, affiliate.id])</pre></td>
+            <td><pre><a name="line24">24</a>           PopularUrl.destroy_all([&quot;affiliate_id = ?&quot;, affiliate.id])</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line23">23</a>           popular_links = []</pre></td>
+            <td><pre><a name="line25">25</a>           popular_links = []</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>           affiliate.domains_as_array.each do |domain|</pre></td>
+            <td><pre><a name="line26">26</a>           affiliate.domains_as_array.each do |domain|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line25">25</a>             popular_links += bitly_api.get_popular_links_for_domain(domain)</pre></td>
+            <td><pre><a name="line27">27</a>             popular_links += bitly_api.get_popular_links_for_domain(domain)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line26">26</a>           end</pre></td>
+            <td><pre><a name="line28">28</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line27">27</a>           popular_links.each do |link|</pre></td>
+            <td><pre><a name="line29">29</a>           popular_links.each do |link|</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line28">28</a>             affiliate.popular_urls &lt;&lt; PopularUrl.new(:url =&gt; link[:long_url], :title =&gt; link[:title], :rank =&gt; link[:clicks])</pre></td>
+            <td><pre><a name="line30">30</a>             affiliate.popular_urls &lt;&lt; PopularUrl.new(:url =&gt; CGI.unescapeHTML(link[:long_url]), :title =&gt; link[:title], :rank =&gt; link[:clicks])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line29">29</a>           end</pre></td>
+            <td><pre><a name="line31">31</a>           end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line30">30</a>         end</pre></td>
+            <td><pre><a name="line32">32</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line31">31</a>       end</pre></td>
+            <td><pre><a name="line33">33</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line32">32</a>     end</pre></td>
+            <td><pre><a name="line34">34</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line33">33</a>   end</pre></td>
+            <td><pre><a name="line35">35</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a> end</pre></td>
+            <td><pre><a name="line36">36</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Sep 01 09:27:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Oct 04 16:44:44 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>

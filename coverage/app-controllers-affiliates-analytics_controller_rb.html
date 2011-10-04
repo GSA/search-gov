@@ -105,25 +105,25 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     @day_being_shown = request[&quot;day&quot;].blank? ? DailyQueryStat.most_recent_populated_date(@affiliate.name) : request[&quot;day&quot;].to_date</pre></td>
+            <td><pre><a name="line9">9</a>     @day_being_shown = request[&quot;day&quot;].blank? ? DailyPopularQuery.most_recent_populated_date(@affiliate) : request[&quot;day&quot;].to_date</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>     @most_recent_day_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 1, @num_results_dqs, @affiliate.name)</pre></td>
+            <td><pre><a name="line10">10</a>     @most_recent_day_popular_terms = DailyPopularQuery.find_all_by_affiliate_id_and_day_and_time_frame_and_is_grouped(@affiliate.id, @day_being_shown, 1, false, :limit =&gt; @num_results_dqs, :order =&gt; 'times DESC')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>     @trailing_week_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 7, @num_results_dqs, @affiliate.name)</pre></td>
+            <td><pre><a name="line11">11</a>     @trailing_week_popular_terms = DailyPopularQuery.find_all_by_affiliate_id_and_day_and_time_frame_and_is_grouped(@affiliate.id, @day_being_shown, 7, false, :limit =&gt; @num_results_dqs, :order =&gt; 'times DESC')</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line12">12</a>     @trailing_month_popular_terms = DailyQueryStat.most_popular_terms(@day_being_shown, 30, @num_results_dqs, @affiliate.name)</pre></td>
+            <td><pre><a name="line12">12</a>     @trailing_month_popular_terms = DailyPopularQuery.find_all_by_affiliate_id_and_day_and_time_frame_and_is_grouped(@affiliate.id, @day_being_shown, 30, false, :limit =&gt; @num_results_dqs, :order =&gt; 'times DESC')</pre></td>
           </tr>
         
           
@@ -249,7 +249,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Sep 01 09:27:50 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
+    <p>Generated on Tue Oct 04 16:44:44 -0700 2011 with <a href="http://github.com/relevance/rcov">rcov 0.9.8</a></p>
 
   </body>
 </html>
