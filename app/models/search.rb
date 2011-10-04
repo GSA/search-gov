@@ -88,7 +88,7 @@ class Search
         @results = paginate(process_boosted_results(@boosted_results))
         @endrecord = startrecord + @results.size - 1
       end
-    else total.zero?
+    else
       @startrecord = bing_offset(response) + 1
       @page = [startrecord/10, page].min
       @results = paginate(process_results(response))
