@@ -10,6 +10,7 @@ Feature: Homepage
     And I should see a link to "FAQs" with url for "http://answers.usa.gov/"
     And I should see a link to "E-mail USA.gov" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"
     And I should see a link to "Chat" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"
+    And I should see a link to "Publications" with url for "http://publications.usa.gov/"
     And I should see "GOVERNMENT" in the search navigation
     And I should see a link to "Change Text Size" with url for "http://www.usa.gov/About/Change_Text.shtml"
     And I should see "Connect with USASearch" in the connect section

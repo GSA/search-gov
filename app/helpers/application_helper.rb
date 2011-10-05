@@ -48,7 +48,8 @@ module ApplicationHelper
       ["USA.gov", "http://www.usa.gov/index.shtml", "first"],
       ["FAQs", "http://answers.usa.gov/"],
       ["E-mail USA.gov", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"],
-      ["Chat", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"] ],
+      ["Chat", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"],
+      ["Publications", "http://publications.usa.gov/"] ],
     :es => [
       ["GobiernoUSA.gov", "http://www.usa.gov/gobiernousa/index.shtml", "first"],
       ["Respuestas", "http://respuestas.gobiernousa.gov/"],
