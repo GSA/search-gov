@@ -33,7 +33,7 @@ describe SuperfreshUrl do
     it "should enqueue the creation of a BoostedContent entry via Resque" do
       ResqueSpec.reset!
       sf = SuperfreshUrl.create!(@valid_attributes)
-      SuperfreshUrlToBoostedContent.should have_queued(sf.url, sf.affiliate_id)
+      SuperfreshUrlToIndexedDocument.should have_queued(sf.url, sf.affiliate_id)
     end
 
   end

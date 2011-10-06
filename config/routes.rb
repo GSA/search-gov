@@ -70,7 +70,7 @@ UsasearchRails3::Application.routes.draw do
   match '/search/recalls' => 'recalls#search', :as => :recalls_search
   resources :forms, :only => :index
   match '/search/forms' => 'searches#forms', :as => :forms_search
-  match '/search/pdf' => 'searches#pdf', :as => :pdf_search
+  match '/search/docs' => 'searches#docs', :as => :docs_search
   match '/search/news' => 'searches#news', :as => :news_search
   resources :image_searches
   namespace :admin do

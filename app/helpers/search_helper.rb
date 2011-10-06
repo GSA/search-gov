@@ -263,7 +263,7 @@ module SearchHelper
     content_tag(:div, raw(logo + p_sum), :id => "summary")
   end
 
-  def pdf_results_summary(a, b, total, query, affiliate_name)
+  def indexed_docs_results_summary(a, b, total, query, affiliate_name)
     p_sum = make_summary_p(a, b, total, query)
     p_back = content_tag(:p, link_to("Back to all #{affiliate_name} results >>", search_path(:query => query, :affiliate => affiliate_name)))
     content_tag(:div, raw(p_sum + p_back), :id => "summary")

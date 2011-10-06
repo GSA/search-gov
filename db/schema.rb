@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111004150929) do
+ActiveRecord::Schema.define(:version => 20111007140523) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -322,6 +322,19 @@ ActiveRecord::Schema.define(:version => 20111004150929) do
 
   add_index "grouped_queries_query_groups", ["query_group_id", "grouped_query_id"], :name => "joinindex", :unique => true
 
+  create_table "indexed_documents", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.text     "keywords"
+    t.string   "url"
+    t.integer  "affiliate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "body",         :limit => 2147483647
+    t.string   "doctype",      :limit => 10,         :default => "html"
+    t.string   "locale",       :limit => 6,          :default => "en",   :null => false
+  end
+
   create_table "logfile_blocked_class_cs", :force => true do |t|
     t.string   "classc",     :null => false
     t.datetime "created_at"
@@ -460,17 +473,6 @@ ActiveRecord::Schema.define(:version => 20111004150929) do
   end
 
   add_index "news_items", ["rss_feed_id", "guid"], :name => "index_news_items_on_rss_feed_id_and_guid"
-
-  create_table "pdf_documents", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.text     "keywords"
-    t.string   "url"
-    t.integer  "affiliate_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "body"
-  end
 
   create_table "popular_image_queries", :force => true do |t|
     t.string   "query"

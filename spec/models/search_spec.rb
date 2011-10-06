@@ -1231,44 +1231,44 @@ describe Search do
     
     context "when an affiliate has PDF documents" do
       before do
-        @affiliate.pdf_documents.destroy_all
-        @affiliate.pdf_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf1.pdf')
-        @affiliate.pdf_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf2.pdf')
-        PdfDocument.reindex
+        @affiliate.indexed_documents.destroy_all
+        @affiliate.indexed_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf1.pdf', :doctype => 'pdf')
+        @affiliate.indexed_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf2.pdf', :doctype => 'pdf')
+        IndexedDocument.reindex
       end
       
       it "should find PDF documents that match the query if this is the first page" do
         search = Search.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 0))
         search.run
-        search.pdf_documents.should_not be_nil
-        search.pdf_documents.total.should == 2
+        search.indexed_documents.should_not be_nil
+        search.indexed_documents.total.should == 2
       end
       
       it "should not find any PDF documents if it's not the first page" do
         search = Search.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 2))
         search.run
-        search.pdf_documents.should be_nil
+        search.indexed_documents.should be_nil
       end
       
       after do
-        @affiliate.pdf_documents.destroy_all
+        @affiliate.indexed_documents.destroy_all
       end
     end
   
     context "when the affiliate has no Bing results, and has boosted contents" do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
-        @non_affiliate.boosted_contents.destroy_all
+        @non_affiliate.indexed_documents.destroy_all
         1.upto(15) do |index|
-          @non_affiliate.boosted_contents << BoostedContent.new(:title => "Boosted Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is a boosted result.', :status => 'active', :keywords => 'boosted', :publish_start_on => Date.yesterday, :locale => 'en')
+          @non_affiliate.indexed_documents << IndexedDocument.new(:title => "Indexed Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is an indexed result.')
         end
-        BoostedContent.reindex
-        @non_affiliate.boosted_contents.size.should == 15
-        BoostedContent.search_for('boosted', @non_affiliate, 'en').total.should == 15
+        IndexedDocument.reindex
+        @non_affiliate.indexed_documents.size.should == 15
+        IndexedDocument.search_for('indexed', @non_affiliate).total.should == 15
       end
       
       it "should fill the results with paged boosted results" do
-        search = Search.new(:query => 'boosted', :affiliate => @non_affiliate)
+        search = Search.new(:query => 'indexed', :affiliate => @non_affiliate)
         search.run
         search.results.should_not be_nil
         search.results.should_not be_empty
@@ -1277,16 +1277,16 @@ describe Search do
         search.endrecord.should == 10
         search.results.first['unescapedUrl'].should == "http://nonsense.com/1.html"
         search.results.last['unescapedUrl'].should == "http://nonsense.com/10.html"
-        search.boosted_contents.should be_nil
+        search.indexed_documents.should be_nil
       end
     end
     
-    context "when affiliate has no Bing results and BoostedContent search returns nil" do
+    context "when affiliate has no Bing results and IndexedDocuments search returns nil" do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
         @non_affiliate.boosted_contents.destroy_all
-        BoostedContent.reindex
-        BoostedContent.stub!(:search_for).and_return nil
+        IndexedDocument.reindex
+        IndexedDocument.stub!(:search_for).and_return nil
       end
       
       it "should return a search with a zero total" do

@@ -11,9 +11,9 @@
     = submit_tag('Search PDFs', :id => "search_button")
   %a{:name => "content"}
   - if @search.results.present?
-    = pdf_results_summary start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search_options[:query], @affiliate.display_name
+    = indexed_docs_results_summary start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search_options[:query], @affiliate.display_name
     - @search.hits(:verify => true).each_with_index do |hit, index|
-      = render 'shared/pdf_document', :hit => hit, :index => index
+      = render 'shared/indexed_document', :hit => hit, :index => index
     = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
   - elsif @error_message
     %p.noresults #{@search.error_message}

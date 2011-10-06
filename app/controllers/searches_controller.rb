@@ -5,7 +5,7 @@ class SearchesController < ApplicationController
   before_filter :set_affiliate_options, :except => [:forms]
   before_filter :set_search_options, :only => [:advanced, :index]
   before_filter :set_form_search_options, :only => :forms
-  before_filter :set_pdf_search_options, :only => :pdf
+  before_filter :set_docs_search_options, :only => :docs
   has_mobile_fu
   before_filter :adjust_mobile_mode
   before_filter :check_for_blank_query, :only => :index
@@ -46,13 +46,13 @@ class SearchesController < ApplicationController
     end
   end
 
-  def pdf
+  def docs
     unless @search_options[:query].blank?
-      @search = PdfDocument.search_for(@search_options[:query], @search_options[:affiliate], @search_options[:page], 10)
-      @form_path = pdf_search_path
+      @search = IndexedDocument.search_for(@search_options[:query], @search_options[:affiliate], I18n.locale.to_s, @search_options[:page], 10)
+      @form_path = docs_search_path
       @page_title = @search_options[:query]
-      @search_vertical = :pdf
-      render :action => :pdf, :layout => "affiliate"
+      @search_vertical = :docs
+      render :action => :docs, :layout => "affiliate"
     end
   end
 
@@ -133,7 +133,7 @@ class SearchesController < ApplicationController
     }
   end
 
-  def set_pdf_search_options
+  def set_docs_search_options
     @search_options = {
       :page => (params[:page] || "1").to_i,
       :query => params["query"],

@@ -47,7 +47,7 @@ class Search
               :med_topic,
               :formatted_query,
               :featured_collections,
-              :pdf_documents
+              :indexed_documents
 
   def initialize(options = {})
     options ||= {}
@@ -82,11 +82,11 @@ class Search
     @total = hits(response)
     if total.zero?
       if @affiliate
-        @boosted_results = BoostedContent.search_for(query, affiliate, I18n.locale, page + 1, 10)
-        unless @boosted_results.nil?
-          @total = @boosted_results.total
+        @indexed_results = IndexedDocument.search_for(query, affiliate, I18n.locale, page + 1, 10)
+        unless @indexed_results.nil?
+          @total = @indexed_results.total
           @startrecord = (page * 10) + 1
-          @results = paginate(process_boosted_results(@boosted_results))
+          @results = paginate(process_indexed_results(@indexed_results))
           @endrecord = startrecord + @results.size - 1
         end
       end
@@ -175,10 +175,10 @@ class Search
   end
 
   def populate_additional_results(response)
-    @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale) if @boosted_results.nil?
+    @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale)
-      @pdf_documents = PdfDocument.search_for(query, affiliate) if affiliate
+      @indexed_documents = IndexedDocument.search_for(query, affiliate) if affiliate and @indexed_results.nil?
     end
     if english_locale?
       @spotlight = Spotlight.search_for(query, affiliate)
@@ -401,8 +401,8 @@ class Search
     processed.compact
   end
 
-  def process_boosted_results(boosted_results)
-    processed = boosted_results.results.collect do |result|
+  def process_indexed_results(indexed_results)
+    processed = indexed_results.results.collect do |result|
       {
         'title' => result.title,
         'unescapedUrl' => result.url,
