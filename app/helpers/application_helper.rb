@@ -252,6 +252,15 @@ module ApplicationHelper
     date.strftime("%m/%d/%Y") unless date.nil?
   end
 
+  def attribution
+    txt = []
+    txt << "<!-- ----------------------------------------------------------------------------------- -->"
+    txt << "<!--                                  Powered by USASearch.                              -->"
+    txt << "<!-- Register for the USASearch Affiliate Program at http://search.usa.gov/affiliates/   -->"
+    txt << txt.first
+    txt.join("\n").html_safe
+  end
+
   private
 
   def ssl_protocol

@@ -1,6 +1,7 @@
 !!!strict
 %html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => I18n.locale, :lang => I18n.locale }
   %head
+    = attribution
     %title= build_page_title(@page_title)
     = favicon_link_tag "/favicon_#{I18n.locale}.ico"
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}/
