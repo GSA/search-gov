@@ -102,7 +102,7 @@ Feature: Image search
     Then I should be on the image search page
     When I follow "Web"
     Then I should be on the search page
-    And I should see 10 search results
+    And I should see at least 8 search results
 
   Scenario: Switching from web search to image search
     Given I am on the homepage

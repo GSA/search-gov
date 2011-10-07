@@ -17,7 +17,7 @@ Feature: Widgets
     And I should see "Trending Search 4"
     When I follow "White House"
     Then I should be on the search page
-    And I should see 10 search results
+    And I should see at least 8 search results
 
   Scenario: Visiting top searches widget page
     Given the following Top Searches exist:
@@ -36,4 +36,4 @@ Feature: Widgets
     And I should see "Trending Search 4"
     When I follow "White House"
     Then I should be on the search page
-    And I should see 10 search results
+    And I should see at least 8 search results

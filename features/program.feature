@@ -20,7 +20,7 @@ Feature: Program
     When I fill in "query" with "White House"
     Then I press "Search"
     Then I should be on the search page
-    And I should see 10 search results
+    And I should see at least 8 search results
 
     When I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And I am on the program welcome page
@@ -144,7 +144,7 @@ Feature: Program
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should be on the search page
-    And I should see 10 search results
+    And I should see at least 8 search results
 
   Scenario: Visiting API pages as a logged in user
     Given I am logged in with email "developer@fixtures.org" and password "admin"
