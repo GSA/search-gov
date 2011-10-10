@@ -1,6 +1,5 @@
 #left_column
   = render "shared/affiliate_news_vertical_navigation"
-  %br
   - if (english_locale? && @search && @search.related_search.size > 0)
     #related_searches
       = render "/shared/related_topics"

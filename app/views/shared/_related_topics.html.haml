@@ -6,6 +6,6 @@
       - options = {:query=>related_term}
       - options[:affiliate] = @affiliate.name if @affiliate
       - options[:embedded] = @search_options[:embedded] if @search_options and @search_options[:embedded]
-      %li= tracked_click_link(search_path(options),h(related_term.sentence_case), @search, @affiliate, index, 'CREL', @search_vertical)
+      %li{ :class => (related_term == @search.related_search.last ? 'last' : nil) }= tracked_click_link(search_path(options),h(related_term.sentence_case), @search, @affiliate, index, 'CREL', @search_vertical)
 - else
   &nbsp

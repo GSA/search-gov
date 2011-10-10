@@ -109,10 +109,10 @@ h1, h2, h3
     box-shadow: 1px 1px 10px #eee
     display: inline
     float: left
-    margin: 0
+    margin: 17px 0 0 0
     overflow: hidden
     padding: 0 0 0 10px
-    width: 185px
+    width: 188px
 
     h3
       color: #555
@@ -136,7 +136,27 @@ h1, h2, h3
           color: #036
   #popular_urls
     @extend #related_searches
-    margin-top: 10px
+  ul.time-filters, ul.rss-feeds
+    -moz-box-shadow: 1px 1px 10px #eee
+    -webkit-box-shadow: 1px 1px 10px #eee
+    border: 1px solid #eee
+    box-shadow: 1px 1px 10px #eee
+    line-height: 1.5
+    margin: 17px 0 1px 0
+    padding: 10px 0 10px 31px
+    list-style-type: disc
+    li
+      color: #aaa
+      margin: 0
+      padding: 0
+      a
+        color: #036
+      a:hover
+        color: #036
+      span
+        color: #555
+  ul.rss-feeds
+    margin-top: 0
 
 #summary
   padding: 0

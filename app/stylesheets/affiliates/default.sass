@@ -55,8 +55,10 @@ img
     h3
       color: #333
       font-size: 15px
+      margin-top: 0
     ul
-      padding: 0 0 0 18px
+      margin: 0
+      padding: 0 0 20px 18px
       list-style-type: disc
       li
         color: #aaa
@@ -68,6 +70,21 @@ img
           color: #900
   #popular_urls
     @extend #related_searches
+  ul.rss-feeds, ul.time-filters
+    margin: 0
+    padding: 0 0 20px 18px
+    list-style-type: disc
+    li
+      color: #aaa
+      margin: 7px 0
+      a
+        color: #20C
+        font-weight: normal
+      a:hover
+        color: #900
+      span
+        color: #C51432
+        font-weight: bold
 
 .advancedsearch
   display: inline
@@ -105,6 +122,9 @@ img
 .searchresult h3 a, .searchresult h3 a:visited, .searchresult h3 a:hover
   color: #008000
 
+.searchresult h4
+  color: #595959
+  margin: 3px 0
 
 .pagination
   margin-left: 200px
