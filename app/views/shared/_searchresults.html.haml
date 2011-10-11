@@ -2,7 +2,7 @@
 = bing_spelling_suggestion_for(search, @affiliate, @search_vertical)
 %a{:name => "content"}
 - if search.results.present?
-  = results_summary(search.startrecord, search.endrecord, search.total, search.query)
+  = results_summary(search.startrecord, search.endrecord, search.total, search.query, search.are_results_by_bing?)
   - if (search.fedstates && search.fedstates != 'all')
     = results_restriction_message_for(search.fedstates, search_path(request.parameters.merge(:fedstates => nil)))
 - if search.page == 0

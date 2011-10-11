@@ -1278,6 +1278,7 @@ describe Search do
         search.results.first['unescapedUrl'].should == "http://nonsense.com/1.html"
         search.results.last['unescapedUrl'].should == "http://nonsense.com/10.html"
         search.indexed_documents.should be_nil
+        search.are_results_by_bing?.should be_false
       end
     end
     
@@ -1541,6 +1542,30 @@ describe Search do
       end
 
       specify { Hash.from_xml(search.to_xml)['search'].keys.sort.should == keys }
+    end
+  end
+  
+  describe "#are_results_by_bing?" do
+    context "when doing a normal search with normal results" do
+      it "should return true" do
+        search = Search.new(:query => 'white house')
+        search.run
+        search.are_results_by_bing?.should be_true
+      end
+    end
+    
+    context "when the Bing results are empty and there are instead locally indexed results" do
+      before do
+        affiliate = affiliates(:non_existant_affiliate)
+        affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'White House Indexed Doc', :description => 'This is an indexed document for the White House.')
+        IndexedDocument.reindex
+        @search = Search.new(:query => 'white house', :affiliate => affiliate)
+        @search.run
+      end
+      
+      it "should return false" do
+        @search.are_results_by_bing?.should be_false
+      end
     end
   end
 end

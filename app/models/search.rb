@@ -47,7 +47,8 @@ class Search
               :med_topic,
               :formatted_query,
               :featured_collections,
-              :indexed_documents
+              :indexed_documents,
+              :indexed_results
 
   def initialize(options = {})
     options ||= {}
@@ -163,6 +164,10 @@ class Search
 
   def has_featured_collections?
     self.featured_collections and self.featured_collections.total > 0
+  end
+  
+  def are_results_by_bing?
+    self.indexed_results.nil? ? true : false
   end
 
   protected

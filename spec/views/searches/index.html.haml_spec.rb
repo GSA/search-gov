@@ -21,6 +21,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:agency).and_return nil
     @search.stub!(:med_topic).and_return nil
     @search.stub!(:has_featured_collections?).and_return false
+    @search.stub!(:are_results_by_bing?).and_return true
     assign(:search, @search)
   end
 

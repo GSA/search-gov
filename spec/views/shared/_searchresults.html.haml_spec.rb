@@ -24,6 +24,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:med_topic)
     @search.stub!(:has_featured_collections?)
     @search.stub!(:indexed_documents)
+    @search.stub!(:are_results_by_bing?).and_return true
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'
     @deep_link.stub!(:url).and_return 'http://adeeplink.com'
