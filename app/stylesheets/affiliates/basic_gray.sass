@@ -102,7 +102,7 @@ h1, h2, h3
   margin: 0 0 0 10px
   padding: 90px 10px 0
 
-  #related_searches
+  #popular_urls
     -moz-box-shadow: 1px 1px 10px #eee
     -webkit-box-shadow: 1px 1px 10px #eee
     border: 1px solid #eee
@@ -134,8 +134,6 @@ h1, h2, h3
           color: #036
         a:hover
           color: #036
-  #popular_urls
-    @extend #related_searches
   ul.time-filters, ul.rss-feeds
     -moz-box-shadow: 1px 1px 10px #eee
     -webkit-box-shadow: 1px 1px 10px #eee
@@ -249,7 +247,7 @@ h1, h2, h3
     color: #FFF
     text-shadow: none
 
-#boosted
+#boosted, #indexed_documents
   @include border-radius
   clear: both
   padding: 10px
@@ -347,6 +345,28 @@ h1, h2, h3
       width: 320px
       &.left
         clear: left
+
+.related-searches-wrapper-middle
+  @include clearfix
+  @include border-radius
+  background: #f1f1f1
+  border: 1px solid #eee
+  margin: 10px
+  padding: 10px
+  h3
+    color: #555
+    font-size: 18px
+    font-weight: normal
+    margin: 0 0 10px
+  ul
+    color: #AAA
+    float: left
+    margin: 0
+    padding: 0
+    li
+      float: left
+      margin: 0 0 0 15px
+      width: 320px
 
 #search_form
   #search_query

@@ -47,7 +47,7 @@ Feature: Affiliate Search
     And I should see "Next news item for the feed"
     And I should not see "More news items for the feed"
     And I should not see "Last news item for the feed"
-    And I should see "Search News" button
+    And I should see "Search" button
 
     When I follow "Last hour"
     Then I should see "no results found for 'item'"

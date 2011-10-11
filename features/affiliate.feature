@@ -757,8 +757,7 @@ Feature: Affiliate clients
     When I go to aff.gov's search page
     And I fill in "query" with "obama"
     And I press "Search"
-    Then I should see "Related Topics" in the left column
-    And I should not see "Related Topics" in the search results section
+    Then I should see "Related Topics" in the search results section
     And I should see "Some Unique Related Term"
     And I should not see "aff.gov"
 

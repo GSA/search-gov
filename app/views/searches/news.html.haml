@@ -16,7 +16,7 @@
     = hidden_field_tag :tbs, params[:tbs] if params[:tbs]
     = hidden_field_tag :channel, @search.rss_feed.id if @search.rss_feed
     = hidden_field_tag :affiliate, @affiliate.name
-    = submit_tag('Search News', :id => "search_button")
+    = submit_tag('Search', :id => "search_button")
   %a{:name => "content"}
   - if @search.results.present?
     = results_summary(start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search.query, false)

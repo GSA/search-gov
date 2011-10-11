@@ -1,6 +1,6 @@
 #boosted
-  .related-searches-wrapper-top
-  .related-searches-wrapper-middle
+  .boosted-contents-wrapper-top
+  .boosted-contents-wrapper-middle
     %h3.alt
       = t(:recommended)
       %span.recommended-by
@@ -15,4 +15,4 @@
           = highlight_hit(hit, :description).html_safe
         %h3
           = boosted_content_link_with_click_tracking(h(shorten_url(boosted_content_url)), boosted_content_url, @affiliate, search.query, index, @search_vertical)
-  .related-searches-wrapper-bottom
+  .boosted-contents-wrapper-bottom

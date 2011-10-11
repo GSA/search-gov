@@ -51,7 +51,7 @@ img
   overflow: hidden
   display: inline
   padding: 47px 20px 0 10px
-  #related_searches
+  #popular_urls
     h3
       color: #333
       font-size: 15px
@@ -68,8 +68,6 @@ img
           font-weight: normal
         a:hover
           color: #900
-  #popular_urls
-    @extend #related_searches
   ul.rss-feeds, ul.time-filters
     margin: 0
     padding: 0 0 20px 18px
@@ -138,6 +136,35 @@ img
 .disabled
   color: white
 
+.related-searches-wrapper-middle
+  @include clearfix
+  border: 1px solid #D3D3D3
+  margin:
+    top: 1em
+    bottom: 1em
+  padding: 1em $results-padding-left-size
+  background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
+  h3
+    color: #333
+    font-size: 15px
+    margin: 0
+  ul
+    color: #AAA
+    float: left
+    margin: 0
+    padding: 0
+    width: 630px
+    li
+      float: left
+      line-height: 1.2
+      margin: 0 0 0 15px
+      padding: 0
+      width: 300px
+  a, a:visited
+    color: #2200CC
+  a:hover
+    color: #900
+
 #footer
   margin-top: 2em
 
@@ -148,7 +175,7 @@ img
   padding-right: 5em
   padding-top:   1em
 
-#boosted
+#boosted, #indexed_documents
   border: 1px lightgray solid
   margin:
     top: 1em

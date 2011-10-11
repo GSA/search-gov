@@ -1,7 +1,7 @@
 - if search.indexed_documents and search.indexed_documents.total > 0
-  #boosted
-    .related-searches-wrapper-top
-    .related-searches-wrapper-middle
+  #indexed_documents
+    .indexed-documents-wrapper-top
+    .indexed-documents-wrapper-middle
       %h3.alt
         Document Results for
         %span.recommended-by
@@ -11,4 +11,4 @@
           = render 'shared/indexed_document', :hit => hit, :index => index
       %div{:style => 'margin-bottom: 10px;'}
         = link_to "See more document results for <strong>#{@search.query}</strong> >>".html_safe, docs_search_path(:query => @search.query, :affiliate => @affiliate.name)
-    .related-searches-wrapper-bottom
+    .indexed-documents-wrapper-bottom
