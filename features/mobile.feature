@@ -41,7 +41,7 @@ Feature: Mobile Search
     And I follow "Mobile"
     Then I should be on the homepage page
     And I should see "USA.gov Full Site"
-    
+
   Scenario: Going to mobile mode from Spanish web homepage
     Given I am using a desktop device
     And I am on the Spanish homepage
@@ -69,12 +69,12 @@ Feature: Mobile Search
   Scenario: An advanced search on the mobile home page
     When I am on the advanced search page
     Then I should see "Use the options on this page to create a very specific search"
-    
+
   Scenario: Boosted contents on the mobile site
     Given the following Boosted Content entries exist:
-      | title               | url                     | description                               | 
-      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      | 
-      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         | 
+      | title               | url                     | description                               |
+      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
+      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
       | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -88,14 +88,14 @@ Feature: Mobile Search
     And I fill in "query" with "emergency"
     And I press "Search"
     Then I should be on the search page
-    And I should see "Our Emergency Page" 
-    And I should see "FAQ Emergency Page" 
-    And I should not see "Our Tourism Page" 
+    And I should see "Our Emergency Page"
+    And I should see "FAQ Emergency Page"
+    And I should not see "Our Tourism Page"
     And I should not see "Bar Emergency Page"
-    
+
   Scenario: Boosted contents on the Spanish mobile site
     Given the following Boosted Content entries exist:
-      | title               | url                     | description                               | locale  | 
+      | title               | url                     | description                               | locale  |
       | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      | es      |
       | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         | es      |
       | Tour Emergency Page | http://www.aff.gov/tou  | Emergency tourism information             | en      |
@@ -153,7 +153,7 @@ Feature: Mobile Search
     And I should see "Curry recalled due to unlisted allergens"
     And I should not see "The Fizz recalls Screw-on Ice Cream Float Cup"
     And I should not see "Old Marshmallow Recall news"
-    
+
   Scenario: A search with results containing English FAQs
     Given the following FAQs exist:
     | url                   | question                                      | answer        | ranking | locale  |
@@ -165,7 +165,7 @@ Feature: Mobile Search
     Then I should be on the search page
     And I should see "Who is the president of the United States"
     And I should not see "Who is the president of the Estados Unidos"
-    
+
   Scenario: A search with results containing English FAQs
     Given the following FAQs exist:
     | url                   | question                                      | answer        | ranking | locale  |
@@ -186,7 +186,7 @@ Feature: Mobile Search
     And I should see "Contact your Government"
     And I should see "Email"
     And I should see "Message"
-    And I fill in "Email" with "mobileuser@usa.gov"
+    When I fill in "Email" with "mobileuser@usa.gov"
     And I fill in "Message" with "I love your site!"
     And I press "Submit"
     Then I should be on the mobile contact form page

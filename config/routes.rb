@@ -62,16 +62,16 @@ UsasearchRails3::Application.routes.draw do
     resources :featured_collections, :controller => "affiliates/featured_collections"
     resources :rss_feeds, :controller => "affiliates/rss_feeds"
   end
-  match '/search' => 'searches#index', :as => :search
+  get '/search' => 'searches#index', :as => :search
   get '/search/advanced' => 'searches#advanced', :as => :advanced_search
-  match '/search/images' => 'image_searches#index', :as => :image_search
-  match '/images' => 'images#index', :as => :images
+  get '/search/images' => 'image_searches#index', :as => :image_search
+  get '/images' => 'images#index', :as => :images
   resources :recalls, :only => [:index]
-  match '/search/recalls' => 'recalls#search', :as => :recalls_search
+  get '/search/recalls' => 'recalls#search', :as => :recalls_search
   resources :forms, :only => :index
-  match '/search/forms' => 'searches#forms', :as => :forms_search
-  match '/search/docs' => 'searches#docs', :as => :docs_search
-  match '/search/news' => 'searches#news', :as => :news_search
+  get '/search/forms' => 'searches#forms', :as => :forms_search
+  get '/search/docs' => 'searches#docs', :as => :docs_search
+  get '/search/news' => 'searches#news', :as => :news_search
   resources :image_searches
   namespace :admin do
     resources :affiliates do as_routes end
@@ -132,7 +132,6 @@ UsasearchRails3::Application.routes.draw do
     resources :grouped_queries
   end
 
-  match '/' => 'home#index'
   match '/analytics' => 'analytics/home#index', :as => :analytics_home_page
   match '/analytics/queries' => 'analytics/home#queries', :as => :analytics_queries
   match '/analytics/search_modules' => 'analytics/search_modules#index', :as => :analytics_search_modules
@@ -140,29 +139,29 @@ UsasearchRails3::Application.routes.draw do
   match '/analytics/timeline/:query' => 'analytics/timeline#show', :as => :query_timeline, :constraints => { :query => /.*/ }
   match 'affiliates/:id/analytics/timeline/(:query)' => 'affiliates/timeline#show', :as => :affiliate_query_timeline, :constraints => { :query => /.*/ }
   match '/analytics/monthly_reports' => 'analytics/monthly_reports#index', :as => :monthly_reports
-  match '/' => 'home#index', :as => :home_page
-  match '/contact_form' => 'home#contact_form', :as => :contact_form
+  get '/' => 'home#index', :as => :home_page
+  get '/contact_form' => 'home#contact_form', :as => :contact_form
   get '/searches/auto_complete_for_search_query' => 'searches#auto_complete_for_search_query', :as => 'auto_complete_for_search_query'
-  match '/widgets/top_searches' => 'widgets#top_searches', :as => :top_searches_widget
-  match '/widgets/trending_searches' => 'widgets#trending_searches', :as => :trending_searches_widget
+  get '/widgets/top_searches' => 'widgets#top_searches', :as => :top_searches_widget
+  get '/widgets/trending_searches' => 'widgets#trending_searches', :as => :trending_searches_widget
   resources :pages
-  match '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
-  match '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
-  match '/usa/:url_slug' => 'usa#show', :as => :usa, :constraints => { :url_slug => /.*/ }
-  match '/usa/' => 'home#index', :as => :usa_mobile_home_redirect
-  match '/program' => 'pages#show', :as => :program, :id => 'program'
-  match '/searchusagov' => 'pages#show', :as => :searchusagov, :id => 'search'
-  match '/contactus' => 'pages#show', :as => :contactus, :id => 'contactus'
-  match '/api/search' => 'api#search', :as => :api_search
-  match '/api' => 'pages#show', :as => :api_docs, :id => 'api'
-  match '/api/recalls' => 'pages#show', :as => :recalls_api_docs, :id => 'recalls'
-  match '/api/tos' => 'pages#show', :as => :recalls_tos_docs, :id => 'tos'
-  match '/login' => 'user_sessions#new', :as => :login
-  match "/sayt" => "sayt#index"
-  match "/clicked" => "clicked#index"
-  match "/embedded_search" => "embedded_searches#index"
-  match "/404/:name" => "errors#page_not_found", :constraints => { :name => /.+/ }, :as => 'affiliate_page_not_found'
-  match "/404" => "errors#page_not_found", :as => 'page_not_found'
-  match "*path" => "errors#page_not_found"
+  get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
+  get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
+  get '/usa/:url_slug' => 'usa#show', :as => :usa, :constraints => { :url_slug => /.*/ }
+  get '/usa/' => 'home#index', :as => :usa_mobile_home_redirect
+  get '/program' => 'pages#show', :as => :program, :id => 'program'
+  get '/searchusagov' => 'pages#show', :as => :searchusagov, :id => 'search'
+  get '/contactus' => 'pages#show', :as => :contactus, :id => 'contactus'
+  get '/api/search' => 'api#search', :as => :api_search
+  get '/api' => 'pages#show', :as => :api_docs, :id => 'api'
+  get '/api/recalls' => 'pages#show', :as => :recalls_api_docs, :id => 'recalls'
+  get '/api/tos' => 'pages#show', :as => :recalls_tos_docs, :id => 'tos'
+  get '/login' => 'user_sessions#new', :as => :login
+  get "/sayt" => "sayt#index"
+  get "/clicked" => "clicked#index"
+  get "/embedded_search" => "embedded_searches#index"
+  get "/404/:name" => "errors#page_not_found", :constraints => { :name => /.+/ }, :as => 'affiliate_page_not_found'
+  get "/404" => "errors#page_not_found", :as => 'page_not_found'
+  get "*path" => "errors#page_not_found"
   root :to => "home#index"
 end
