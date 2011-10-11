@@ -59,6 +59,12 @@ describe NewsSearch do
       end
     end
 
+    context "when the query param isn't set" do
+      it "should set 'query' to a blank string" do
+        NewsSearch.new(affiliate,"channel" => affiliate.rss_feeds.first.id).query.should be_blank
+      end
+    end
+
   end
 
   describe "#run" do

@@ -14,7 +14,7 @@ class NewsSearch
 
   def initialize(affiliate, options)
     options ||= {}
-    @query = options["query"].squish
+    @query = (options["query"] || '').squish
     @query.downcase! if @query.ends_with? " OR"
     @affiliate = affiliate
     @since = since_when(options["tbs"])
