@@ -13,6 +13,6 @@
           = boosted_content_link_with_click_tracking(highlight_hit(hit, :title).html_safe, boosted_content_url, @affiliate, search.query, index, @search_vertical)
         %h3
           = highlight_hit(hit, :description).html_safe
-        %h3
+        %h3.result-url
           = boosted_content_link_with_click_tracking(h(shorten_url(boosted_content_url)), boosted_content_url, @affiliate, search.query, index, @search_vertical)
   .boosted-contents-wrapper-bottom
