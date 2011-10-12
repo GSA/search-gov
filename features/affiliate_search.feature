@@ -66,3 +66,35 @@ Feature: Affiliate Search
     When I follow "Everything"
     Then I should see "Advanced Search"
     And I should see "Search" button
+
+  Scenario: No results when searching with active RSS feeds
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+    And affiliate "bar.gov" has the following RSS feeds:
+      | name          | url                                                | is_active |
+      | Press         | http://www.whitehouse.gov/feed/press               | true      |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true      |
+    And feed "Photo Gallery" has the following news items:
+      | link                             | title       | guid  | published_ago | description                  |
+      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
+      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
+    When I am on bar.gov's search page
+    And I fill in "query" with "item"
+    And I press "Search"
+    Then I should see "Results 1-10"
+
+    When I follow "Press"
+    Then I should see "Sorry, no results found for 'item'. Remove all filters or try entering fewer or broader query terms."
+    When I follow "Remove all filters"
+    Then I should see "Results 1-10"
+
+    When I fill in "query" with "item"
+    And I press "Search"
+    And I follow "Photo Gallery"
+    Then I should see "More news items for the feed"
+    When I follow "Last day"
+    Then I should see "Sorry, no results found for 'item' in the last day. Remove all filters or try entering fewer or broader query terms."
+    When I follow "Remove all filters"
+    Then I should see "Results 1-10"
+
