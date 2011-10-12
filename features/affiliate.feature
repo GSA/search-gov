@@ -33,6 +33,7 @@ Feature: Affiliate clients
     Then I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
+    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see "Affiliate Center" link in the main navigation bar
     And I should not see "Admin Center" link in the main navigation bar
     And I should not see "Analytics Center" link in the main navigation bar

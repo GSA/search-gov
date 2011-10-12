@@ -19,19 +19,22 @@ function getParameterByName( name )
 }
 
 (function($) {
-    $.fn.share = function() {
-        this.click(function() {
-            var addthis_pub = 'usagov';
-            var addthis_clickout = true;
-            var addthis_url =  location.href;
-            var addthis_title = document.title;
-            return addthis_click(this);
-        });
-    }
+  $.fn.share = function() {
+    var shareLinks = this;
+    $.getScript("https://s9.addthis.com/js/widget.php?v=10", function() {
+      shareLinks.click(function() {
+        var addthis_pub = 'usagov';
+        var addthis_clickout = true;
+        var addthis_url =  location.href;
+        var addthis_title = document.title;
+        return addthis_click(this);
+      });
+    });
+  }
 })(jQuery);
 
 jQuery(document).ready(function() {
-    jQuery('.share').share();
+  jQuery('.share').share();
 });
 
 jQuery(document).ready(function () {
