@@ -407,11 +407,11 @@ class Search
   end
 
   def process_indexed_results(indexed_results)
-    processed = indexed_results.results.collect do |result|
+    processed = indexed_results.hits.collect do |hit|
       {
-        'title' => result.title,
-        'unescapedUrl' => result.url,
-        'content' => result.description,
+        'title' => highlight_solr_hit_like_bing(hit, :title),
+        'unescapedUrl' => hit.instance.url,
+        'content' => highlight_solr_hit_like_bing(hit, :description),
         'cacheUrl' => nil,
         'deepLinks' => nil
       }
@@ -438,5 +438,10 @@ class Search
 
   def first_page?
     page == 0
+  end
+  
+  def highlight_solr_hit_like_bing(hit, field_symbol)
+    return hit.highlights(field_symbol).first.format { |phrase| "\xEE\x80\x80#{phrase}\xEE\x80\x81" } unless hit.highlights(field_symbol).first.nil?
+    hit.instance.send(field_symbol)
   end
 end
