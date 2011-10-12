@@ -16,24 +16,27 @@ Feature: Affiliate Search
       | display_name     | name             | contact_email         | contact_name        |
       | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
     And affiliate "bar.gov" has the following RSS feeds:
-    | name    | url                                                | is_active  |
-    | Blog    | http://www.whitehouse.gov/feed/blog                | true       |
-    | Press   | http://www.whitehouse.gov/feed/media/photo-gallery | true       |
-    | Hide Me | http://www.whitehouse.gov/feed/media/photo-gallery | false      |
-    And feed "Blog" has the following news items:
+      | name          | url                                                | is_active |
+      | Press         | http://www.whitehouse.gov/feed/press               | true      |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true      |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery | false     |
+    And feed "Press" has the following news items:
     | link                             | title       | guid  | published_ago | description                  |
     | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | First news item for the feed |
     | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | Next news item for the feed  |
-    And feed "Press" has the following news items:
+    And feed "Photo Gallery" has the following news items:
     | link                             | title       | guid  | published_ago | description                  |
     | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
     | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
+    And the following Calais Related Searches exist for affiliate "bar.gov":
+      | term | related_terms            | locale |
+      | item | Some Unique Related Term | en     |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Search"
     Then I should see "Everything"
-    And I should see "Blog"
     And I should see "Press"
+    And I should see "Photo Gallery"
     And I should not see "Hide Me"
     And I should see "All Time"
     And I should see "Last hour"
@@ -47,12 +50,13 @@ Feature: Affiliate Search
     And I should see "Next news item for the feed"
     And I should not see "More news items for the feed"
     And I should not see "Last news item for the feed"
+    And I should see "Related Topics" in the search results section
     And I should see "Search" button
 
     When I follow "Last hour"
     Then I should see "no results found for 'item'"
 
-    When I follow "Press"
+    When I follow "Photo Gallery"
     Then I should see "no results found for 'item'"
 
     When I follow "All Time"
