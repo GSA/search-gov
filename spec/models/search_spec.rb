@@ -1568,4 +1568,40 @@ describe Search do
       end
     end
   end
+  
+  describe "#highlight_solr_hit_like_bing" do
+    before do
+      @affiliate = affiliates(:non_existant_affiliate)
+      @affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'Highlight me!', :description => 'This doc has highlights.', :body => 'This will match other keywords that are not to be bold.')
+      IndexedDocument.reindex
+    end
+    
+    context "when the title or description have matches to the query searched" do
+      before do
+        @search = Search.new(:query => 'highlight', :affiliate => @affiliate)
+        @search.run
+      end
+      
+      it "should highlight in Bing-style any matches" do
+        @search.results.first['title'].should =~ /\xEE\x80\x80/
+        @search.results.first['title'].should =~ /\xEE\x80\x81/
+        @search.results.first['content'].should =~ /\xEE\x80\x80/
+        @search.results.first['content'].should =~ /\xEE\x80\x81/
+      end
+    end
+    
+    context "when the title or description don't match the keyword queried" do
+      before do
+        @search = Search.new(:query => 'bold', :affiliate => @affiliate)
+        @search.run
+      end
+      
+      it "should not highlight anything" do
+        @search.results.first['title'].should_not =~ /\xEE\x80\x80/
+        @search.results.first['title'].should_not =~ /\xEE\x80\x81/
+        @search.results.first['content'].should_not =~ /\xEE\x80\x80/
+        @search.results.first['content'].should_not =~ /\xEE\x80\x81/
+      end
+    end
+  end
 end
