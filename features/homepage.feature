@@ -17,7 +17,6 @@ Feature: Homepage
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage footer
     And I should see a link to "Website Policies" with url for "http://www.usa.gov/About/Important_Notices.shtml"
     And I should see a link to "Privacy" with url for "http://www.usa.gov/About/Privacy_Security.shtml"
@@ -39,7 +38,6 @@ Feature: Homepage
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
 
   Scenario: A nonsense search from the home page
     Given I am on the homepage

@@ -243,8 +243,7 @@ module ApplicationHelper
     tags = []
     tags << link_to('Twitter', "http://twitter.com/usasearch", :class => 'twitter', :title => 'Twitter')
     tags << link_to('Mobile', "http://m.usa.gov", :class => 'mobile', :title => 'Mobile')
-    tags << link_to('Our Blog', "http://searchblog.usa.gov", :class => 'blog', :title => 'Our Blog')
-    tags << link_to('Share', "http://www.addthis.com/bookmark.php", :class => 'share last', :title => 'Share')
+    tags << link_to('Our Blog', "http://searchblog.usa.gov", :class => 'blog last', :title => 'Our Blog')
     tags.join("\n").html_safe
   end
 
