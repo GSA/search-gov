@@ -2,14 +2,13 @@ Feature: Recalls search
   In order to get government-related recalls
   As a site visitor
   I want to search for recalls
-  
+
   Scenario: Recalls Search
     Given I am on the recalls search page
     Then I should see "Connect with USASearch" in the connect section
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     When I fill in "query" with "strollers"
     And I press "Search"
     Then I should be on the recalls search page
@@ -20,7 +19,6 @@ Feature: Recalls search
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
 
   Scenario: A nonsense search from the home page
     Given I am on the recalls search page

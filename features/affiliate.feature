@@ -33,7 +33,6 @@ Feature: Affiliate clients
     Then I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see "Affiliate Center" link in the main navigation bar
     And I should not see "Admin Center" link in the main navigation bar
     And I should not see "Analytics Center" link in the main navigation bar
@@ -601,7 +600,7 @@ Feature: Affiliate clients
     And I should see "Sorry, no results found"
     And I should see "Staged header"
     And I should see "Staged footer"
-    
+
   Scenario: Enabling/Disabling popular urls
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains          | header      | footer      | staged_domains  | staged_header    | staged_footer  | is_popular_links_enabled  |
@@ -614,19 +613,19 @@ Feature: Affiliate clients
     And I fill in "query" with "obama"
     And I press "Search"
     Then I should see "Popular Links"
-    
+
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Popular Links"
     And I uncheck "Enable Popular Links?"
     And I press "Set Preferences"
     Then I should see "Popular Links DISABLED"
-    
+
     When I go to aff.gov's search page
     And I fill in "query" with "obama"
     And I press "Search"
     Then I should not see "Popular Links"
-    
+
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Popular Links"

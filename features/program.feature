@@ -9,7 +9,6 @@ Feature: Program
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see "Affiliate Program" within ".main"
     And I should see "APIs and other web services" within ".main"
     And I should see "Search.USA.gov" within ".main"
@@ -35,7 +34,6 @@ Feature: Program
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see the following breadcrumbs: USASearch > Affiliate Program
     And I should see "USASearch Affiliate Program" within ".main"
     When I follow "Register Now"
@@ -47,7 +45,6 @@ Feature: Program
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see the following breadcrumbs: USASearch > Affiliate Program > How it Works
     And I should see "How the Affiliate Program Works" within ".main"
     When I follow "Register Now"
@@ -59,7 +56,6 @@ Feature: Program
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see the following breadcrumbs: USASearch > Affiliate Program > See it in Action
     And I should see "See the Affiliate Program in Action" within ".main"
 
@@ -81,7 +77,6 @@ Feature: Program
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see the following breadcrumbs: USASearch > APIs & Web Services
     And I should see "APIs and Web Services" within ".main"
 
@@ -99,7 +94,6 @@ Feature: Program
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see the following breadcrumbs: USASearch > APIs & Web Services > Terms of Service
 
     When I follow "Recalls API" in the main navigation bar
@@ -109,7 +103,6 @@ Feature: Program
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see the following breadcrumbs: USASearch > APIs & Web Services > Recalls API
     And I should see "Product Recall Data API" within ".main"
 
@@ -131,7 +124,6 @@ Feature: Program
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     And I should see the following breadcrumbs: USASearch > Search.USA.gov
     And I should see "Search.USA.gov" within ".main"
 

@@ -13,7 +13,6 @@ Feature: Forms Home Page and Search
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
     When I fill in "query" with "White House"
     And I press "Search Forms"
     Then I should be on the forms search page
@@ -25,7 +24,6 @@ Feature: Forms Home Page and Search
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
     And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
 
   Scenario: A nonsense search
     Given I am on the forms home page
@@ -106,11 +104,11 @@ Feature: Forms Home Page and Search
     And I should see "Link 1.1" within "#top-forms-column-1"
     And I should see "Link 1.2" within "#top-forms-column-1"
     And I should see "Column 3" within "#top-forms-column-3"
-    
+
   Scenario: A forms search that matches a spotlight
     Given the following active Spotlights exist:
     | title             | keywords  |  html                                       |
-    | Automobile Tires  | tires     | <div id="spotlight">Automobile Tires</div>  |    
+    | Automobile Tires  | tires     | <div id="spotlight">Automobile Tires</div>  |
     And I am on the forms home page
     When I fill in "query" with "tires"
     And I press "Search"
