@@ -156,19 +156,17 @@ describe CalaisRelatedSearch do
         ResqueSpec.reset!
         CalaisRelatedSearch.stub!(:daily_api_quota).and_return(2)
         @redis = CalaisRelatedSearch.send(:class_variable_get, :@@redis)
-        DailyQueryStat.create!(:affiliate => @second_affiliate.name, :day => Date.yesterday, :times => 1000, :query => "first one")
-        DailyQueryStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday, :times => 1000, :query => "second one")
+        DailyQueryStat.create!(:affiliate => @second_affiliate.name, :day => Date.yesterday, :times => 2001, :query => "first one")
+        DailyQueryStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday, :times => 999, :query => "second one")
         DailyQueryStat.create!(:affiliate => @affiliate.name, :day => Date.yesterday, :times => 1000, :query => "third one")
       end
 
-      it "should only enqueue up to the limit" do
-        @redis.should_receive(:incr).twice.and_return(1, 2)
-        @redis.should_receive(:get).twice.and_return("1", "2")
+      it "should only enqueue up to the limit, starting with most trafficked terms of most trafficked affiliates" do
         CalaisRelatedSearch.populate_with_new_popular_terms
-        sleep(5)
+        CalaisRelatedSearch.should have_queue_size_of 2
         CalaisRelatedSearch.should have_queued(@second_affiliate.name, "first one")
-        CalaisRelatedSearch.should have_queued(@affiliate.name, "second one")
-        CalaisRelatedSearch.should_not have_queued(@affiliate.name, "third one")
+        CalaisRelatedSearch.should_not have_queued(@affiliate.name, "second one")
+        CalaisRelatedSearch.should have_queued(@affiliate.name, "third one")
       end
     end
   end

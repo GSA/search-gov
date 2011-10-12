@@ -19,15 +19,14 @@ class CalaisRelatedSearch < ActiveRecord::Base
       find_all_by_locale_and_gets_refreshed('en', true, :order => 'updated_at', :limit => daily_api_quota).each do |crs|
         affiliate_name = crs.affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : crs.affiliate.name
         Resque.enqueue(CalaisRelatedSearch, affiliate_name, crs.term)
-        break if @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.current.to_s) >= daily_api_quota
+        break if adding_one_too_many?
       end
     end
 
     def populate_with_new_popular_terms
-      stats_with_yesterdays_active_affiliates = DailyQueryStat.select("distinct(affiliate) affiliate").where(:day => Date.yesterday, :locale => 'en')
-      stats_with_yesterdays_active_affiliates.each do |dqs|
-        populate_affiliate_with_new_popular_terms(dqs.affiliate)
-        break if @@redis.get(CRS_REDIS_KEY_PREFIX + Date.current.to_s).to_i >= daily_api_quota
+      DailyQueryStat.sum(:times, :group=> :affiliate, :conditions=> ["day = ? and locale = 'en'", Date.yesterday], :order => "sum_times desc").each do |affiliate_name|
+        populate_affiliate_with_new_popular_terms(affiliate_name[0])
+        break if had_one_too_many?
       end
     end
 
@@ -43,7 +42,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
                                                                                      affiliate_name, Date.yesterday).group("daily_query_stats.query").order("sum_times desc")
       yesterdays_popular_en_locale_terms_not_yet_in_related_searches_for_affiliate.each do |dqs|
         Resque.enqueue(CalaisRelatedSearch, affiliate_name, dqs.query)
-        break if @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.current.to_s) >= daily_api_quota
+        break if adding_one_too_many?
       end
     end
 
@@ -83,7 +82,7 @@ class CalaisRelatedSearch < ActiveRecord::Base
         begin
           calais = Calais.process_document(:content => summary, :content_type => :raw, :license_id => CALAIS_LICENSE_ID, :metadata_enables=>['SocialTags'])
           downcased_term = term.downcase
-          social_tags = calais.socialtags.collect { |st| st.name }.uniq{|a| a.upcase}
+          social_tags = calais.socialtags.collect { |st| st.name }.uniq { |a| a.upcase }
           social_tags = SaytFilter.filter(social_tags)
           social_tags.delete_if do |tag|
             downcased_tag = tag.downcase
@@ -109,6 +108,14 @@ class CalaisRelatedSearch < ActiveRecord::Base
 
     def daily_api_quota
       DAILY_API_QUOTA
+    end
+
+    def adding_one_too_many?
+      @@redis.incr(CRS_REDIS_KEY_PREFIX + Date.current.to_s) >= daily_api_quota
+    end
+
+    def had_one_too_many?
+      @@redis.get(CRS_REDIS_KEY_PREFIX + Date.current.to_s).to_i >= daily_api_quota
     end
 
     def search_for(term, locale = I18n.default_locale.to_s, affiliate_id = nil)
