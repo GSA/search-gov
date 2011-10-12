@@ -165,6 +165,7 @@ describe CalaisRelatedSearch do
         @redis.should_receive(:incr).twice.and_return(1, 2)
         @redis.should_receive(:get).twice.and_return("1", "2")
         CalaisRelatedSearch.populate_with_new_popular_terms
+        sleep(5)
         CalaisRelatedSearch.should have_queued(@second_affiliate.name, "first one")
         CalaisRelatedSearch.should have_queued(@affiliate.name, "second one")
         CalaisRelatedSearch.should_not have_queued(@affiliate.name, "third one")
