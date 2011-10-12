@@ -19,7 +19,7 @@
     = submit_tag('Search', :id => "search_button")
   %a{:name => "content"}
   - if @search.results.present?
-    = results_summary(start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search.query, false)
+    = results_summary(start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search.query)
     - @search.hits.each_with_index do |hit, index|
       = render 'shared/news_item', :hit => hit, :index => index
     = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

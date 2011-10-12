@@ -2,7 +2,7 @@
 = bing_spelling_suggestion_for(search, @affiliate, @search_vertical)
 %a{:name => "content"}
 - if search.results.present?
-  = results_summary(search.startrecord, search.endrecord, search.total, search.query, search.are_results_by_bing?)
+  = results_summary(search.startrecord, search.endrecord, search.total, search.query)
   - if (search.fedstates && search.fedstates != 'all')
     = results_restriction_message_for(search.fedstates, search_path(request.parameters.merge(:fedstates => nil)))
 - if search.page == 0
@@ -22,6 +22,7 @@
     = render "/shared/related_faqs" if index == 4 and search.page == 0
   = render "/shared/related_topics_wrapper"
   = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+  = image_tag("binglogo_#{I18n.locale}.gif", :class => 'bing-logo') if search.are_results_by_bing?
 - elsif search.error_message
   %p.noresults #{search.error_message}
 - else

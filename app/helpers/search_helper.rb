@@ -257,10 +257,9 @@ module SearchHelper
     end
   end
 
-  def results_summary(a, b, total, q, show_logo = true)
+  def results_summary(a, b, total, q)
     p_sum = make_summary_p(a, b, total, q)
-    logo = show_logo ? image_tag("binglogo_#{I18n.locale}.gif", :style=>"float:right") : ""
-    content_tag(:div, raw(logo + p_sum), :id => "summary")
+    content_tag(:div, raw(p_sum), :id => "summary")
   end
 
   def indexed_docs_results_summary(a, b, total, query, affiliate_name)
