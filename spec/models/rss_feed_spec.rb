@@ -130,7 +130,18 @@ describe RssFeed do
       end
 
       it "should ignore them" do
-        NewsItem.should_receive(:create).twice
+        NewsItem.should_receive(:create!).twice
+        feed.freshen
+      end
+    end
+
+    context "when an exception is raised somewhere along the way" do
+      before do
+        Sunspot.stub!(:commit).and_raise Exception
+      end
+
+      it "should report it to Hoptoad/Airbrake" do
+        HoptoadNotifier.should_receive(:notify).with(an_instance_of(Exception))
         feed.freshen
       end
     end
