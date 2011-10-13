@@ -94,7 +94,7 @@ describe RssFeed do
         newest.guid.should == "80731 at http://www.whitehouse.gov"
         newest.link.should == "http://www.whitehouse.gov/blog/2011/09/26/famine-horn-africa-be-part-solution"
         newest.published_at.should == DateTime.parse("26 Sep 2011 21:33:05 +0000")
-        newest.description[0,40].should == "Dr. Biden and David Letterman refer to a"
+        newest.description[0, 40].should == "Dr. Biden and David Letterman refer to a"
         newest.title.should == "Famine in the Horn of Africa: Be a Part of the Solution"
       end
     end
@@ -111,9 +111,18 @@ describe RssFeed do
         )
       end
 
-      it "should populate news items with the news ones from the RSS feed source based on the pubDate" do
-        feed.freshen
-        feed.news_items.count.should == 3
+      context "when ignore_older_items set to true (default)" do
+        it "should populate news items with only the new ones from the RSS feed source based on the pubDate" do
+          feed.freshen
+          feed.news_items.count.should == 3
+        end
+      end
+
+      context "when ignore_older_items set to false" do
+        it "should populate news items with both the new and old ones from the RSS feed source based on the pubDate" do
+          feed.freshen(false)
+          feed.news_items.count.should == 4
+        end
       end
     end
 

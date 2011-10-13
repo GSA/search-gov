@@ -4,12 +4,12 @@ class RssFeed < ActiveRecord::Base
   belongs_to :affiliate
   has_many :news_items, :dependent => :destroy, :order => "published_at DESC"
 
-  def freshen
+  def freshen(ignore_older_items = true)
     begin
       most_recently = news_items.present? ? news_items.first.published_at : nil
       Nokogiri::XML(open(url)).xpath('//item').each do |item|
         published_at = DateTime.parse(item.xpath('pubDate').inner_text)
-        break if most_recently and published_at < most_recently
+        break if most_recently and published_at < most_recently and ignore_older_items
         link = item.xpath('link').inner_text
         title = item.xpath('title').inner_text
         guid = item.xpath('guid').inner_text
