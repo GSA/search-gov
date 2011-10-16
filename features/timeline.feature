@@ -11,13 +11,6 @@ Feature: Timeline for query
     | oxaluria                    | 90    |     1        |
     | finochio                    | 80    |     1        |
     | burmannia                   | 40    |     1        |
-    And the following DailyPopularQueries exist for yesterday:
-    | query     | times | is_grouped  | time_frame  |
-    | cenobitic | 100   | false       | 1           |
-    | oxaluria  | 90    | false       | 1           |
-    | finochio  | 80    | false       | 1           |
-    | burmannia | 40    | false       | 1           |
-    | group1    | 180   | true        | 1           |
     And I am on the analytics queries page
     Then I should see "cenobitic"
     And I should see "oxaluria"
@@ -40,49 +33,43 @@ Feature: Timeline for query
 
   Scenario: Viewing a chart for a given query group
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist:
-    | query                       | times |  days_back   |
-    | cenobitic                   | 100   |     1        |
-    | oxaluria                    | 90    |     1        |
-    | finochio                    | 80    |     1        |
-    | burmannia                   | 40    |     1        |
+    And the following DailyQueryStats exist for affiliate "usasearch.gov":
+    | query                       | times |  day        |
+    | cenobitic                   | 100   |  2011-08-30 |
+    | oxaluria                    | 90    |  2011-08-30 |
+    | finochio                    | 80    |  2011-08-30 |
+    | burmannia                   | 40    |  2011-08-30 |
     And the following query groups exist:
-      | group    | queries               |
-      | group1   | cenobitic, finochio   |
-    And the following DailyPopularQueries exist for yesterday:
-    | query     | times | is_grouped  | time_frame  |
-    | cenobitic | 100   | false       | 1           |
-    | oxaluria  | 90    | false       | 1           |
-    | finochio  | 80    | false       | 1           |
-    | burmannia | 40    | false       | 1           |
-    | group1    | 180   | true        | 1           |
-    And I am on the analytics queries page
-    Then I should see "group1"
-    When I follow "group1"
+    | group    | queries               |
+    | Group1   | cenobitic, finochio   |
+    And the following DailyPopularQueryGroups exist for "2011-08-30":
+    | query_group | times | time_frame  |
+    | Group2      | 90    | 1           |
+    | Group1      | 180   | 1           |
+    And I am on the analytics groups and trends page
+    Then I should see "Group1"
+    And I should see "Group2"
+    When I follow "Group1"
     Then I should see "Interest over time for 'group1'"
     And I should see a query group comparison term form
 
   Scenario: Adding a comparison term to a query group timeline
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyQueryStats exist:
-    | query                       | times |  days_back   |
-    | cenobitic                   | 100   |     1        |
-    | oxaluria                    | 90    |     1        |
-    | finochio                    | 80    |     1        |
-    | burmannia                   | 40    |     1        |
+    And the following DailyQueryStats exist for affiliate "usasearch.gov":
+    | query                       | times |  day        |
+    | cenobitic                   | 100   |  2011-08-30 |
+    | oxaluria                    | 90    |  2011-08-30 |
+    | finochio                    | 80    |  2011-08-30 |
+    | burmannia                   | 40    |  2011-08-30 |
     And the following query groups exist:
-      | group    | queries               |
-      | group1   | cenobitic, finochio   |
-    And the following DailyPopularQueries exist for yesterday:
-    | query     | times | is_grouped  | time_frame  |
-    | cenobitic | 100   | false       | 1           |
-    | oxaluria  | 90    | false       | 1           |
-    | finochio  | 80    | false       | 1           |
-    | burmannia | 40    | false       | 1           |
-    | group1    | 180   | true        | 1           |
-    And I am on the analytics queries page
-    Then I should see "group1"
-    When I follow "group1"
+    | group    | queries               |
+    | Group1   | cenobitic, finochio   |
+    And the following DailyPopularQueryGroups exist for "2011-08-30":
+    | query_group | times | time_frame  |
+    | Group2      | 90    | 1           |
+    | Group1      | 180   | 1           |
+    And I am on the analytics groups and trends page
+    When I follow "Group1"
     And I fill in "Add a comparison term" with "oxaluria"
     And I press "Compare"
     Then I should see "Interest over time for 'group1' compared to 'oxaluria'"

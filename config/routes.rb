@@ -139,6 +139,7 @@ UsasearchRails3::Application.routes.draw do
   match '/analytics/timeline/:query' => 'analytics/timeline#show', :as => :query_timeline, :constraints => { :query => /.*/ }
   match 'affiliates/:id/analytics/timeline/(:query)' => 'affiliates/timeline#show', :as => :affiliate_query_timeline, :constraints => { :query => /.*/ }
   match '/analytics/monthly_reports' => 'analytics/monthly_reports#index', :as => :monthly_reports
+  match '/analytics/groups_trends' => 'analytics/groups_trends#index', :as => :analytics_groups_trends
   get '/' => 'home#index', :as => :home_page
   match '/contact_form' => 'home#contact_form', :as => :contact_form
   get '/searches/auto_complete_for_search_query' => 'searches#auto_complete_for_search_query', :as => 'auto_complete_for_search_query'

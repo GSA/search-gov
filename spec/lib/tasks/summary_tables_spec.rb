@@ -62,9 +62,9 @@ describe "summary_tables rake tasks" do
 
   end
 
-  describe "usasearch:daily_popular_queries" do
-    describe "usasearch:daily_popular_queries:calculate" do
-      let(:task_name) { "usasearch:daily_popular_queries:calculate"}
+  describe "usasearch:daily_popular_query_groups" do
+    describe "usasearch:daily_popular_query_groups:calculate" do
+      let(:task_name) { "usasearch:daily_popular_query_groups:calculate"}
 
       it "should have 'environment' as a prereq" do
         @rake[task_name].prerequisites.should include("environment")
@@ -73,8 +73,7 @@ describe "summary_tables rake tasks" do
       context "when no parameters are passed" do
         it "should call #calculate with the previous day for each of the time frames" do
           [1, 7, 30].each do |time_frame|
-            DailyPopularQuery.should_receive(:calculate).with(Date.yesterday, time_frame, :most_popular_terms, false)
-            DailyPopularQuery.should_receive(:calculate).with(Date.yesterday, time_frame, :most_popular_query_groups, true)
+            DailyPopularQueryGroup.should_receive(:calculate).with(Date.yesterday, time_frame)
           end
           @rake[task_name].invoke
         end
@@ -86,8 +85,7 @@ describe "summary_tables rake tasks" do
         it "should call #calculate with the date specified up to the previous day for each of the time frames" do
           start_day.upto(Date.yesterday) do |day|
             [1, 7, 30].each do |time_frame|
-              DailyPopularQuery.should_receive(:calculate).with(day, time_frame, :most_popular_terms, false)
-              DailyPopularQuery.should_receive(:calculate).with(day, time_frame, :most_popular_query_groups, true)
+              DailyPopularQueryGroup.should_receive(:calculate).with(day, time_frame)
             end
           end
           @rake[task_name].invoke(start_day.to_s)
@@ -101,8 +99,7 @@ describe "summary_tables rake tasks" do
         it "should call #calculate with the start/end dates specified for each of the time frames" do
           start_day.upto(end_day) do |day|
             [1, 7, 30].each do |time_frame|
-              DailyPopularQuery.should_receive(:calculate).with(day, time_frame, :most_popular_terms, false)
-              DailyPopularQuery.should_receive(:calculate).with(day, time_frame, :most_popular_query_groups, true)
+              DailyPopularQueryGroup.should_receive(:calculate).with(day, time_frame)
             end
           end
           @rake[task_name].invoke(start_day.to_s, end_day.to_s)

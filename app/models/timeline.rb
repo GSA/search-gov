@@ -3,10 +3,10 @@ class Timeline
   attr_accessor :series, :dates
 
   def self.load_affiliate_daily_query_stats(query, affiliate_name, start_date = Date.yesterday.advance(:months => DEFAULT_RANGE_IN_MONTHS))
-    Timeline.new(query, nil, affiliate_name, start_date)
+    Timeline.new(query, false, affiliate_name, start_date)
   end
 
-  def initialize(query, grouped = nil, affiliate_name = nil, start_date = Date.yesterday.advance(:months => DEFAULT_RANGE_IN_MONTHS))
+  def initialize(query, grouped = false, affiliate_name = nil, start_date = Date.yesterday.advance(:months => DEFAULT_RANGE_IN_MONTHS))
     @series, @dates = [], []
     if affiliate_name
       results = DailyQueryStat.collect_affiliate_query(query, affiliate_name, start_date)

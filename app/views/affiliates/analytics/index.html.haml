@@ -3,25 +3,13 @@
 %h1&= "Query Logs for #{@affiliate.display_name}"
 .span-24
   = render :partial => "analytics/shared/search", :locals => { :affiliate => @affiliate, :path => query_search_affiliate_analytics_path(@affiliate) }
-.span-24
-  = display_most_recent_daily_popular_query_date_available(@day_being_shown, @affiliate)
+.span-14
+  = render :partial => "analytics/shared/date_range_select", :locals => { :path => affiliate_analytics_path(@affiliate), :affiliate => @affiliate, :start_date => @start_date, :end_date => @end_date, :available_dates => @available_dates}
 .clear
+
 %br
-.header-box
-  .left
-    Most Frequent Queries
-  .right
-    %form
-      = display_select_for_window("dqs", @num_results_dqs, @day_being_shown, @affiliate)
 
-.clear
+= render :partial => "analytics/shared/popular_queries_table", :locals => { :affiliate => @affiliate, :start_date => @start_date, :end_date => @end_date, :query_counts => @popular_terms, :num_results => @num_results_dqs}
 
-.span-8{:id=>"dqs1"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @most_recent_day_popular_terms , :content_name => "dqs1", :heading => "Previous Day", :affiliate => @affiliate }
-.span-8{:id=>"dqs7"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_week_popular_terms , :content_name => "dqs7", :heading => "Previous 7 Days", :affiliate => @affiliate}
-.span-8.last{:id=>"dqs30"}
-  = render :partial => "analytics/shared/query_counts_table", :locals => { :query_counts => @trailing_month_popular_terms , :content_name => "dqs30", :heading => "Previous 30 Days", :affiliate => @affiliate}
-
-#daily_top_queries
-  = affiliate_analytics_daily_report_link(@affiliate.name, @day_being_shown)
+#daily_top_queries.span-24
+  = affiliate_analytics_daily_report_link(@affiliate.name, @end_date)

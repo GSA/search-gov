@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111007140523) do
+ActiveRecord::Schema.define(:version => 20111015010710) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -157,15 +157,6 @@ ActiveRecord::Schema.define(:version => 20111007140523) do
 
   add_index "calais_related_searches", ["affiliate_id", "term"], :name => "index_calais_related_searches_on_affiliate_id_and_term"
 
-  create_table "daily_contextual_query_totals", :force => true do |t|
-    t.date     "day"
-    t.integer  "total"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "daily_contextual_query_totals", ["day"], :name => "index_daily_contextual_query_totals_on_day", :unique => true
-
   create_table "daily_popular_queries", :force => true do |t|
     t.date    "day"
     t.integer "affiliate_id"
@@ -178,6 +169,15 @@ ActiveRecord::Schema.define(:version => 20111007140523) do
 
   add_index "daily_popular_queries", ["day", "affiliate_id", "locale", "is_grouped", "time_frame"], :name => "dalit_index"
 
+  create_table "daily_popular_query_groups", :force => true do |t|
+    t.date    "day"
+    t.integer "time_frame"
+    t.string  "query_group_name"
+    t.integer "times"
+  end
+
+  add_index "daily_popular_query_groups", ["day"], :name => "index_daily_popular_query_groups_on_day"
+
   create_table "daily_query_noresults_stats", :force => true do |t|
     t.date    "day",       :null => false
     t.string  "affiliate", :null => false
@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(:version => 20111007140523) do
     t.integer "times",     :null => false
   end
 
-  add_index "daily_query_noresults_stats", ["day", "affiliate", "locale", "query"], :name => "dalq", :unique => true
+  add_index "daily_query_noresults_stats", ["affiliate", "day"], :name => "index_daily_query_noresults_stats_on_affiliate_and_day"
 
   create_table "daily_query_stats", :force => true do |t|
     t.date    "day",                                                   :null => false
@@ -196,9 +196,9 @@ ActiveRecord::Schema.define(:version => 20111007140523) do
     t.string  "locale",    :limit => 5,   :default => "en"
   end
 
-  add_index "daily_query_stats", ["affiliate", "locale", "day", "query"], :name => "aldq", :unique => true
-  add_index "daily_query_stats", ["day", "query"], :name => "dq"
-  add_index "daily_query_stats", ["query", "day", "affiliate", "locale"], :name => "qdal", :unique => true
+  add_index "daily_query_stats", ["affiliate", "day"], :name => "ad"
+  add_index "daily_query_stats", ["day", "affiliate"], :name => "da"
+  add_index "daily_query_stats", ["query", "day"], :name => "qd"
 
   create_table "daily_search_module_stats", :force => true do |t|
     t.date    "day",            :null => false

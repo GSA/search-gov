@@ -28,6 +28,8 @@ module NavigationHelpers
       search_path(:affiliate => $1, :locale => 'es')
     when /^(.*)'s embedded search page$/
       search_path(:affiliate => $1, :embedded => "1")
+    when /the analytics groups and trends page/
+      analytics_groups_trends_path
     when /the analytics query search results page/
       analytics_query_search_path
     when /the FAQ page/
@@ -111,7 +113,7 @@ module NavigationHelpers
     when /the recalls api page/
       recalls_api_docs_path(:locale => nil, :m => nil)
     when /the terms of service page/
-      recalls_tos_docs_path(:locale => nil, :m => nil) 
+      recalls_tos_docs_path(:locale => nil, :m => nil)
     when /the searchusagov page/
       searchusagov_path(:locale => nil, :m => nil)
     when /the forms home page/

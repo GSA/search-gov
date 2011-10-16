@@ -1,35 +1,24 @@
 namespace :usasearch do
 
   namespace :moving_queries do
-    desc "initial population of moving_queries data using every date available in daily_queries_stats table. Replaces any existing data in moving_queries table."
+    desc "initial population of moving_queries data using every date available (most recent first) in daily_queries_stats table. Replaces any existing data in moving_queries table."
     task :populate => :environment do
-      conditions = ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s]
-      min = DailyQueryStat.minimum(:day, :conditions => conditions)
-      max = DailyQueryStat.maximum(:day, :conditions => conditions)
-      days = []
-      min.upto(max) { |day| days << day.to_s(:number) }
-      days.reverse.each { |day| MovingQuery.compute_for(day) }
+      DailyQueryStat.available_dates_range.to_a.reverse.each { |day| MovingQuery.compute_for(day.to_s(:number)) }
     end
 
-    desc "compute moving queries for 1-, 7-, and 30-day windows for a given YYYYMMDD date (defaults to yesterday)"
+    desc "compute moving queries for a given YYYYMMDD date (defaults to yesterday)"
     task :compute, :day, :needs => :environment do |t, args|
       args.with_defaults(:day => Date.yesterday.to_s(:number))
       MovingQuery.compute_for(args.day)
     end
   end
 
-  namespace :daily_popular_queries do
-    desc "Total up the most popular queries and query groups for the given date range (defaults to yesterday)"
+  namespace :daily_popular_query_groups do
+    desc "Total up the most popular query groups for the given date range (defaults to yesterday)"
     task :calculate, :start_day, :end_day, :needs => :environment do |t, args|
       args.with_defaults(:start_day => Date.yesterday.to_s(:number), :end_day => Date.yesterday.to_s(:number))
-      start_date, end_date = Date.parse(args.start_day), Date.parse(args.end_day)
-      combinations = [{:method => :most_popular_terms, :is_grouped => false}, {:method => :most_popular_query_groups, :is_grouped => true}]
-      start_date.upto(end_date) do |day|
-        [1, 7, 30].each do |time_frame|
-          combinations.each do |combo|
-            DailyPopularQuery.calculate(day, time_frame, combo[:method], combo[:is_grouped])
-          end
-        end
+      Date.parse(args.start_day).upto(Date.parse(args.end_day)) do |day|
+        [1, 7, 30].each { |time_frame| DailyPopularQueryGroup.calculate(day, time_frame) }
       end
     end
   end

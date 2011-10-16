@@ -32,11 +32,11 @@ class MovingQuery < ActiveRecord::Base
     end
   end
 
-  def self.biggest_movers(end_date, num_results = RESULTS_SIZE)
-    return NO_QUERIES_MATCHED if end_date.nil?
-    results= find_all_by_day(end_date.to_date, :order=>"times DESC", :limit => num_results)
+  def self.biggest_movers(day, num_results = RESULTS_SIZE)
+    return NO_QUERIES_MATCHED if day.nil?
+    results= find_all_by_day(day.to_date, :order=>"times DESC", :limit => num_results)
     return NO_QUERIES_MATCHED if results.empty?
-    return INSUFFICIENT_DATA if insufficient_data?(end_date)
+    return INSUFFICIENT_DATA if insufficient_data?(day)
     results.collect { |res| QueryCount.new(res.query, res.times) }
   end
 

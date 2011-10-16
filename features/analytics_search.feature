@@ -6,13 +6,13 @@ Feature: Analytics Search
   Scenario: Doing a fulltext search for a query term to see query counts for usasearch.gov in English locale for a given date range
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
     And the following DailyQueryStats exist:
-    | query                       | times | affiliate     | locale |   days_back   |
+    | query                        | times | affiliate     | locale |   days_back   |
     | pollution                    | 100   | usasearch.gov | en     |      1        |
     | old pollution                | 10    | usasearch.gov | en     |      30       |
-    | pollutant                  | 90    | usasearch.gov | en     |      1        |
+    | pollutant                    | 90    | usasearch.gov | en     |      1        |
     | el pollution                 | 88    | usasearch.gov | es     |      1        |
     | social pollution             | 70    | noaa.gov      | en     |      1        |
-    | finochio                    | 80    | usasearch.gov | en     |      1        |
+    | finochio                     | 80    | usasearch.gov | en     |      1        |
     And I am on the analytics queries page
     When I fill in "query" with "pollution"
     And I fill in "analytics_search_start_date" with a date representing "29" days ago
@@ -34,13 +34,13 @@ Feature: Analytics Search
      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And the following DailyQueryStats exist:
-    | query                       | times | affiliate     | locale |  days_back   |
+    | query                        | times | affiliate     | locale |  days_back   |
     | pollution                    | 100   | usasearch.gov | en     |      1       |
     | old pollution                | 10    | usasearch.gov | en     |      30      |
-    | pollutant                  | 90    | usasearch.gov | en     |      1       |
+    | pollutant                    | 90    | usasearch.gov | en     |      1       |
     | el pollution                 | 88    | usasearch.gov | es     |      1       |
     | social pollution             | 70    | aff.gov       | en     |      1       |
-    | finochio                    | 80    | usasearch.gov | en     |      1       |
+    | finochio                     | 80    | usasearch.gov | en     |      1       |
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Query logs"
     And I fill in "query" with "pollution"

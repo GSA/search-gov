@@ -105,17 +105,19 @@ describe DailyQueryStat do
         DailyQueryStat.create!(:day => 11.days.ago.to_date, :query => "sparse term", :times => 1, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
       end
 
-      it "should calculate popularity sums based on the target date and number of days parameter, ignoring terms with a frequency of less than 4" do
-        yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1)
+      let(:recent_date) { DailyQueryStat.most_recent_populated_date }
+
+      it "should calculate popularity sums based on the start/end date, ignoring terms with a frequency of less than 4" do
+        yday = DailyQueryStat.most_popular_terms(recent_date, recent_date, 1)
         yday.first.query.should == "recent day most popular"
         yday.first.times.should == 4
-        twodaysago = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 2)
+        twodaysago = DailyQueryStat.most_popular_terms(recent_date-1.day, recent_date, 2)
         twodaysago.first.query.should == "older most popular"
         twodaysago.first.times.should == 10
       end
 
       it "should use the num_results parameter to determine result set size" do
-        DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1, 1).size.should == 1
+        DailyQueryStat.most_popular_terms(recent_date, recent_date, 1).size.should == 1
       end
 
       context "when data exists for more than the default affiliate" do
@@ -127,10 +129,10 @@ describe DailyQueryStat do
         end
 
         it "should use the affiliate parameter if set to scope the results" do
-          yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1, 10, "other_affiliate")
+          yday = DailyQueryStat.most_popular_terms(recent_date, recent_date, 10, "other_affiliate")
           yday.first.query.should == "recent day most popular"
           yday.first.times.should == 5
-          twodaysago = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 2, 10, "other_affiliate")
+          twodaysago = DailyQueryStat.most_popular_terms(recent_date-2.days, recent_date, 10, "other_affiliate")
           twodaysago.first.query.should == "older most popular"
           twodaysago.first.times.should == 12
         end
@@ -142,7 +144,8 @@ describe DailyQueryStat do
         end
 
         it "should return those results for affiliates" do
-          most_popular_terms = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date("tiny_affiliate"), 1, 10, "tiny_affiliate")
+          mrd=DailyQueryStat.most_recent_populated_date("tiny_affiliate")
+          most_popular_terms = DailyQueryStat.most_popular_terms(mrd, mrd, 10, "tiny_affiliate")
           most_popular_terms.class.should == Array
           most_popular_terms.size.should == 1
         end
@@ -157,19 +160,19 @@ describe DailyQueryStat do
         end
 
         it "should use the default locale when not specified" do
-          yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1)
+          yday = DailyQueryStat.most_popular_terms(recent_date, recent_date)
           yday.first.query.should == "recent day most popular"
           yday.first.times.should == 4
-          twodaysago = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 2)
+          twodaysago = DailyQueryStat.most_popular_terms(recent_date - 2.days, recent_date)
           twodaysago.first.query.should == "older most popular"
           twodaysago.first.times.should == 10
         end
 
         it "should use the locale parameter if set to scope the results" do
-          yday = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1, 10, Affiliate::USAGOV_AFFILIATE_NAME, 'es')
+          yday = DailyQueryStat.most_popular_terms(recent_date, recent_date, 10, Affiliate::USAGOV_AFFILIATE_NAME, 'es')
           yday.first.query.should == "recent day most popular"
           yday.first.times.should == 10
-          twodaysago = DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 2, 10, Affiliate::USAGOV_AFFILIATE_NAME, 'es')
+          twodaysago = DailyQueryStat.most_popular_terms(recent_date - 2.days, recent_date, 10, Affiliate::USAGOV_AFFILIATE_NAME, 'es')
           twodaysago.first.query.should == "older most popular"
           twodaysago.first.times.should == 24
         end
@@ -177,12 +180,8 @@ describe DailyQueryStat do
     end
 
     context "when the table has no data for the time period specified" do
-      before do
-        DailyQueryStat.delete_all
-      end
-
       it "should return an error string that no queries matched" do
-        DailyQueryStat.most_popular_terms(DailyQueryStat.most_recent_populated_date, 1).should == "Not enough historic data to compute most popular"
+        DailyQueryStat.most_popular_terms(Date.tomorrow, Date.tomorrow).should == "Not enough historic data to compute most popular"
       end
     end
   end

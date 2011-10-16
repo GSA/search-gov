@@ -8,10 +8,6 @@ Feature: Timeline for query
      | display_name     | name             | contact_email           | contact_name        |
      | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    And the following DailyPopularQueries exist for yesterday:
-    | query     | times | is_grouped | time_frame | affiliate |
-    | social pollution  | 70  | false       | 1          | aff.gov |
-    | jobs     | 60 | false       | 1          | aff.gov |
     And the following DailyQueryStats exist:
     | query                       | times | affiliate     | locale |  days_back   |
     | social pollution            | 70    | aff.gov       | en     |      1       |

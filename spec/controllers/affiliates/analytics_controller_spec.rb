@@ -11,11 +11,12 @@ describe Affiliates::AnalyticsController do
       before do
         @user = users("affiliate_manager")
         UserSession.create(@user)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => 'test', :times => 12, :locale => I18n.default_locale.to_s, :affiliate => @user.affiliates.first.name)
       end
 
       it "should assign reasonable defaults for start/end dates" do
         get :index, :affiliate_id => @user.affiliates.first.id
-        assigns[:start_date].should == 1.month.ago.to_date
+        assigns[:start_date].should == Date.yesterday.to_date
         assigns[:end_date].should == Date.yesterday.to_date
       end
 
@@ -98,11 +99,10 @@ describe Affiliates::AnalyticsController do
           response.should redirect_to(home_page_path)
         end
 
-        it "should show most recent populated data if params[:day] is blank" do
-          day_being_shown = Date.current
-          DailyPopularQuery.should_receive(:most_recent_populated_date).with(@user.affiliates.first).and_return(day_being_shown)
-          get :index, :affiliate_id => @user.affiliates.first.id, :day => ''
-          assigns[:day_being_shown].should == day_being_shown
+        it "should show most recent populated data if params[:end_date] is blank" do
+          DailyQueryStat.create!(:day => Date.current, :query => 'test', :times => 12, :locale => I18n.default_locale.to_s, :affiliate => @user.affiliates.first.name)
+          get :index, :affiliate_id => @user.affiliates.first.id, :end_date => ''
+          assigns[:end_date].should == Date.current
         end
 
         context "when rendering the page" do
@@ -128,9 +128,8 @@ describe Affiliates::AnalyticsController do
 
           context "when there is affiliate data" do
             before do
-              DailyPopularQuery.create!(:day => Date.yesterday, :query => 'test', :times => 12, :time_frame => 1,
-                                        :is_grouped => false, :locale => I18n.default_locale.to_s, :affiliate => @user.affiliates.first)
-              @filename = "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_#{DailyPopularQuery.most_recent_populated_date(@user.affiliates.first).strftime('%Y%m%d')}.csv"
+              DailyQueryStat.create!(:day => Date.yesterday, :query => 'test', :times => 12, :locale => I18n.default_locale.to_s, :affiliate => @user.affiliates.first.name)
+              @filename = "analytics/reports/#{@user.affiliates.first.name}/#{@user.affiliates.first.name}_top_queries_#{DailyQueryStat.most_recent_populated_date(@user.affiliates.first.name).strftime('%Y%m%d')}.csv"
             end
 
             it "should link to the report on Amazon using S3/SSL if it exists" do

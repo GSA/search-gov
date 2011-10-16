@@ -1,13 +1,24 @@
 Feature: Analytics Homepage
   In order to anticipate trends and topics of high public interest
   As an Analyst
-  I want to view analytics on usasearch query data. The analytics contains up to three sections: most popular queries,
-    queries getting no results, and biggest mover queries. The most popular queries section is broken down into
-    different timeframes (1 day, 7 day, and 30 day).
+  I want to view analytics on usasearch query data. The analytics contains most popular queries, and
+    queries getting no results in the web vertical (if any exist).
 
   Scenario: Viewing the homepage
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And there is analytics data from "20090901" thru "20090911" for affiliate "usasearch.gov"
+    And the following DailyQueryStats exist for affiliate "usasearch.gov":
+      | query    | times  | day        |
+      | query 1  | 1110   | 2009-09-01 |
+      | query 2  | 111    | 2009-09-01 |
+      | query 3  | 1111   | 2009-09-01 |
+      | query 3  | 1112   | 2009-09-11 |
+      | query 4  | 1113   | 2009-09-11 |
+    And the following NoResultsStats exist for affiliate "usasearch.gov":
+      | query           | times  | day        |
+      | gobbledegook 1  | 101    | 2009-09-01 |
+      | gobbledegook 2  | 102    | 2009-09-01 |
+      | gobbledegook 1  | 103    | 2009-09-11 |
+      | gobbledegook 3  | 104    | 2009-09-11 |
     When I am on the analytics homepage
     Then I should see "Analytics Center" link in the main navigation bar
     And I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center
@@ -15,40 +26,41 @@ Feature: Analytics Homepage
     Then I should be on the analytics homepage
     When I follow "Queries"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Queries
-    And I should see "Data for September 11, 2009"
-    And I should see "Most Popular Queries"
-    And in "dqs1" I should see "most popular 1 aaaa"
-    And in "dqs7" I should see "most popular 7 aaaa"
-    And in "dqs30" I should see "most popular 30 aaaa"
-    And I should see "Top Movers"
-    And in "qas0" I should see "top mover aaaa"
-    And in "qas1" I should see "top mover aaah"
-    And in "qas2" I should see "top mover aaao"
     And I should see "No Results Queries"
-    And in "nrq0" I should see "gobbledegook aaaa"
-    And in "nrq1" I should see "gobbledegook aaah"
-    And in "nrq2" I should see "gobbledegook aaao"
-    When I follow "most popular 1 aaaa"
+    And I should see the following table rows:
+    | Query           | Frequency |
+    | gobbledegook 3  | 104       |
+    | gobbledegook 1  | 103       |
+    And I should see "Most Popular Queries"
+    And I should see the following table rows:
+    | Query       | Frequency |
+    | query 4     | 1113      |
+    | query 3     | 1112      |
+    When I fill in "start_date" with "2009-09-01"
+    And I fill in "end_date" with "2009-09-11"
+    And I press "Submit"
+    Then I should see "Most Popular Queries"
+    And I should see the following table rows:
+    | Query       | Frequency |
+    | query 3     | 2223      |
+    | query 4     | 1113      |
+    | query 1     | 1110      |
+    | query 2     | 111       |
+    And I should see "No Results Queries"
+    And I should see the following table rows:
+    | Query           | Frequency |
+    | gobbledegook 1  | 204       |
+    | gobbledegook 3  | 104       |
+    | gobbledegook 2  | 102       |
+    When I follow "query 3"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Analytics Center > Query Timeline
 
   Scenario: No daily query stats available for any time period
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And there are no daily popular query stats
+    And there are no daily query stats
     When I am on the analytics homepage
     And I follow "Queries"
-    Then in "dqs1" I should see "Not enough historic data"
-    And in "dqs7" I should see "Not enough historic data"
-    And in "dqs30" I should see "Not enough historic data"
-    And in "dqgs1" I should see "Not enough historic data"
-    And in "dqgs7" I should see "Not enough historic data"
-    And in "dqgs30" I should see "Not enough historic data"
-
-  Scenario: No query accelerations (biggest movers) available
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And there are no query accelerations stats
-    When I am on the analytics homepage
-    And I follow "Queries"
-    Then I should not see "Top Movers"
+    Then I should see "Not enough historic data"
 
   Scenario: No zero-result queries available
     Given I am logged in with email "analyst@fixtures.org" and password "admin"
@@ -56,33 +68,3 @@ Feature: Analytics Homepage
     When I am on the analytics homepage
     And I follow "Queries"
     Then I should not see "No Results Queries"
-
-  Scenario: Viewing queries that are part of query groups (i.e., semantic sets)
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyPopularQueries exist for yesterday:
-    | query     | times | is_grouped | time_frame |
-    | hcreform  | 1110  | true       | 1          |
-    | POTUS     | 10015 | true       | 1          |
-    When I am on the analytics homepage
-    And I follow "Queries"
-    Then in "dqgs1" I should see "hcreform"
-    And in "dqgs1" I should see "1110"
-    And in "dqgs1" I should see "POTUS"
-    And in "dqgs1" I should see "10015"
-
-  Scenario: Viewing Daily Contextual Query Totals when no data exists
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And no DailyContextualQueryTotals exist
-    When I am on the analytics homepage
-    And I follow "Queries"
-    Then I should see "Total USA.gov Most Popular Clickthrus: 0"
-
-  Scenario: Viewing Daily Contextual Query Totals when data exists
-    Given I am logged in with email "analyst@fixtures.org" and password "admin"
-    And the following DailyPopularQueries exist for yesterday:
-    | query     | times | is_grouped | time_frame |
-    | america   | 1110  | false      | 1          |
-    And the DailyContextualQueryTotal for yesterday is "100"
-    When I am on the analytics homepage
-    And I follow "Queries"
-    Then I should see "Total USA.gov Most Popular Clickthrus: 100"

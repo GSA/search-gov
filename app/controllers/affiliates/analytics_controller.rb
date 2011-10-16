@@ -6,12 +6,10 @@ class Affiliates::AnalyticsController < Affiliates::AffiliatesController
   def index
     @title = "Query Logs - "
     @num_results_dqs = (request["num_results_dqs"] || "10").to_i
-    @day_being_shown = request["day"].blank? ? DailyPopularQuery.most_recent_populated_date(@affiliate) : request["day"].to_date
-    @most_recent_day_popular_terms = DailyPopularQuery.find_all_by_affiliate_id_and_day_and_time_frame_and_is_grouped(@affiliate.id, @day_being_shown, 1, false, :limit => @num_results_dqs, :order => 'times DESC')
-    @trailing_week_popular_terms = DailyPopularQuery.find_all_by_affiliate_id_and_day_and_time_frame_and_is_grouped(@affiliate.id, @day_being_shown, 7, false, :limit => @num_results_dqs, :order => 'times DESC')
-    @trailing_month_popular_terms = DailyPopularQuery.find_all_by_affiliate_id_and_day_and_time_frame_and_is_grouped(@affiliate.id, @day_being_shown, 30, false, :limit => @num_results_dqs, :order => 'times DESC')
-    @start_date = 1.month.ago.to_date
-    @end_date = Date.yesterday
+    @available_dates = DailyQueryStat.available_dates_range(@affiliate.name)
+    @end_date = request["end_date"].blank? ? DailyQueryStat.most_recent_populated_date(@affiliate.name) : request["end_date"].to_date
+    @start_date = request["start_date"].blank? ? @end_date : request["start_date"].to_date
+    @popular_terms = DailyQueryStat.most_popular_terms(@start_date, @end_date, @num_results_dqs, @affiliate.name)
   end
 
   def monthly_reports

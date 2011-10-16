@@ -17,31 +17,20 @@ module Analytics::HomeHelper
     base_query_chart_link(query, affiliate_query_timeline_path(affiliate, query))
   end
 
-  def display_most_recent_daily_popular_query_date_available(day, affiliate = nil)
+  def date_in_javascript_format(day)
+    [day.year, (day.month.to_i - 1), day.day].join(',')
+  end
+
+  def display_most_recent_date_available(day, date_range)
     return "Query data currently unavailable" if day.nil?
     current_day = content_tag(:span, day.to_s(:long), :class=>"highlight")
     html = "Data for #{current_day}"
-    conditions = affiliate.nil? ? ['ISNULL(affiliate_id) AND locale=?', I18n.default_locale.to_s] : ['affiliate_id=? and locale=?', affiliate.id, I18n.default_locale.to_s]
-    firstdate = DailyPopularQuery.minimum(:day, :conditions => conditions)
-    first = [firstdate.year, (firstdate.month.to_i - 1), firstdate.day].join(',')
-    lastdate = DailyPopularQuery.maximum(:day, :conditions => conditions)
-    last = [lastdate.year, (lastdate.month.to_i - 1), lastdate.day].join(',')
+    first = date_in_javascript_format(date_range.first)
+    last = date_in_javascript_format(date_range.last)
     html<< calendar_date_select_tag("pop_up_hidden", "", :hidden => true, :image=>"change_date.png", :buttons => false,
-                                    :onchange => "location = '#{analytics_path_prefix(affiliate)}/?day='+$F(this);",
+                                    :onchange => "location = '#{analytics_queries_path}/?day='+$F(this);",
                                     :valid_date_check => "date <= (new Date(#{last})).stripTime() && date >= (new Date(#{first})).stripTime()")
     raw html
-  end
-
-  def display_select_for_window(window, num_results, day, affiliate = nil)
-    options = [10, 50, 100, 500, 1000].collect { |x| ["Show #{x} results", x] }
-    select_tag("num_results_select#{window}", options_for_select(options, num_results), {
-      :onchange => "location = '#{analytics_path_prefix(affiliate)}/?day=#{day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
-  end
-
-  def display_select_for_monthly_reports_window(window, num_results, report_date)
-    options = [10, 50, 100, 500, 1000].collect { |x| ["Show #{x} results", x] }
-    select_tag("num_results_select#{window}", options_for_select(options, num_results), {
-      :onchange => "location = '#{monthly_reports_path}/?date[month]=#{report_date.month}&date[year]=#{report_date.year}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
   end
 
   def analytics_path_prefix(affiliate)
@@ -57,7 +46,7 @@ module Analytics::HomeHelper
   end
 
   def analytics_daily_report_link(report_date)
-    if report_date.present?
+    if report_date
       english_filename = daily_report_filename(I18n.default_locale.to_s, report_date)
       spanish_filename = daily_report_filename(other_locale_str, report_date)
       english_filename_exists = AWS::S3::S3Object.exists?(english_filename, AWS_BUCKET_NAME)
@@ -90,7 +79,24 @@ module Analytics::HomeHelper
     page_title.blank? ? breadcrumbs([link_to('Search.USA.gov', searchusagov_path), "Analytics Center"]) : breadcrumbs([link_to('Search.USA.gov', searchusagov_path), link_to("Analytics Center", analytics_home_page_path), page_title])
   end
 
+  def display_select_for_window_on_query_groups(window, num_results, day)
+    display_select_for_window("num_results_select#{window}", num_results, {:onchange => "location = '#{analytics_groups_trends_path}/?day=#{day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
+  end
+
+  def display_select_for_date_range_window(window, num_results, start_day, end_day, affiliate = nil)
+    display_select_for_window("num_results_select#{window}", num_results, {:onchange => "location = '#{analytics_path_prefix(affiliate)}/?start_date=#{start_day}&end_date=#{end_day}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
+  end
+
+  def display_select_for_monthly_reports_window(window, num_results, report_date)
+    display_select_for_window("num_results_select#{window}", num_results, {:onchange => "location = '#{monthly_reports_path}/?date[month]=#{report_date.month}&date[year]=#{report_date.year}&num_results_#{window}='+this.options[this.selectedIndex].value;"})
+  end
+
   private
+
+  def display_select_for_window(tag_name, num_results, options_hash)
+    options = [10, 50, 100, 500, 1000].collect { |x| ["Show #{x} results", x] }
+    select_tag(tag_name, options_for_select(options, num_results), options_hash)
+  end
 
   def make_query_timeline_path(query, is_grouped)
     is_grouped ? query_timeline_path(query, :grouped => 1) : query_timeline_path(query)

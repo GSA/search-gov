@@ -65,14 +65,13 @@ class DailyQueryStat < ActiveRecord::Base
       ary.reverse
     end
 
-    def most_popular_terms(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
-      return INSUFFICIENT_DATA if end_date.nil?
-      start_date = end_date - days_back.days + 1.day
+    def most_popular_terms(start_date, end_date, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+      return INSUFFICIENT_DATA if end_date.nil? or start_date.nil?
       results = sum(:times,
                     :group => :query,
                     :conditions => ['day between ? AND ? AND affiliate = ? AND locale = ?', start_date, end_date, affiliate_name, locale],
                     :having => "sum_times > #{ affiliate_name == Affiliate::USAGOV_AFFILIATE_NAME ? "3" : "0"}",
-                    :joins => 'FORCE INDEX (aldq)',
+                    :joins => 'FORCE INDEX (ad)',
                     :order => "sum_times desc",
                     :limit => num_results)
       return INSUFFICIENT_DATA if results.empty?
@@ -85,7 +84,7 @@ class DailyQueryStat < ActiveRecord::Base
       results = sum(:times,
                     :group => :query,
                     :conditions => ['day between ? AND ?', start_date, end_date],
-                    :joins => 'FORCE INDEX (dq)',
+                    :joins => 'FORCE INDEX (da)',
                     :order => "sum_times desc",
                     :limit => num_results)
       return INSUFFICIENT_DATA if results.empty?
@@ -105,16 +104,27 @@ class DailyQueryStat < ActiveRecord::Base
     def most_popular_query_groups(end_date, days_back, num_results = RESULTS_SIZE, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       return INSUFFICIENT_DATA if end_date.nil?
       start_date = end_date - days_back.days + 1.day
-      results = find_by_sql ["select q.name, sum(d.times) cnt from daily_query_stats d FORCE INDEX (qdal), query_groups q, grouped_queries g, grouped_queries_query_groups b "+
+      results = find_by_sql ["select q.name, sum(d.times) cnt from daily_query_stats d, query_groups q, grouped_queries g, grouped_queries_query_groups b "+
                                "where day between ? AND ? AND affiliate = ? AND locale = ? and d.query = g.query and q.id = b.query_group_id and g.id = b.grouped_query_id "+
-                               "group by q.name order by cnt desc limit ?",
-                             start_date, end_date, affiliate_name, locale, num_results]
+                               "group by q.name order by cnt desc limit ?", start_date, end_date, affiliate_name, locale, num_results]
       return INSUFFICIENT_DATA if results.empty?
       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }
     end
 
     def most_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
       maximum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name, locale])
+    end
+
+    def least_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
+      minimum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name, locale])
+    end
+
+    def available_dates_range(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
+      if (lrpd = least_recent_populated_date(affiliate_name))
+        lrpd..most_recent_populated_date(affiliate_name)
+      else
+        Date.yesterday..Date.yesterday
+      end
     end
 
     def collect_query_group_named(name, start_date)

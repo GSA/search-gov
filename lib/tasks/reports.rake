@@ -84,10 +84,10 @@ namespace :usasearch do
       output_to_zipfile(zip_filename, "top_monthly_query_groups_affiliates.txt", "Name,Count", top_monthly_query_groups_affiliates.collect { |result| "#{result.name},#{result.cnt}" })
 
         # top monthly queries
-      top_monthly_queries_sql = "SELECT query, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` FORCE INDEX (aldq) WHERE (day between ? AND ? AND affiliate = 'usasearch.gov' AND locale = ?) GROUP BY query ORDER BY cnt desc LIMIT 50"
+      top_monthly_queries_sql = "SELECT query, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` WHERE (day between ? AND ? AND affiliate = 'usasearch.gov' AND locale = ?) GROUP BY query ORDER BY cnt desc LIMIT 50"
       top_monthly_queries_en = DailyQueryStat.find_by_sql [top_monthly_queries_sql, start_date, end_date, "en"]
       top_monthly_queries_es = DailyQueryStat.find_by_sql [top_monthly_queries_sql, start_date, end_date, "es"]
-      top_monthly_queries_affiliates = DailyQueryStat.find_by_sql ["SELECT query, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` FORCE INDEX (aldq) WHERE (day between ? AND ? AND affiliate != 'usasearch.gov' ) GROUP BY query  ORDER BY cnt desc LIMIT 50", start_date, end_date]
+      top_monthly_queries_affiliates = DailyQueryStat.find_by_sql ["SELECT query, sum(`daily_query_stats`.times) AS cnt FROM `daily_query_stats` WHERE (day between ? AND ? AND affiliate != 'usasearch.gov' ) GROUP BY query  ORDER BY cnt desc LIMIT 50", start_date, end_date]
       output_to_zipfile(zip_filename, "top_monthly_queries_en.txt", "Query,Count", top_monthly_queries_en.collect { |result| "#{result.query},#{result.cnt}" })
       output_to_zipfile(zip_filename, "top_monthly_queries_es.txt", "Query,Count", top_monthly_queries_es.collect { |result| "#{result.query},#{result.cnt}" })
       output_to_zipfile(zip_filename, "top_monthly_queries_affiliates.txt", "Query,Count", top_monthly_queries_affiliates.collect { |result| "#{result.query},#{result.cnt}" })
