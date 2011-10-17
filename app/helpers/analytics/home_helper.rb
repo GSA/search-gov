@@ -28,7 +28,7 @@ module Analytics::HomeHelper
     first = date_in_javascript_format(date_range.first)
     last = date_in_javascript_format(date_range.last)
     html<< calendar_date_select_tag("pop_up_hidden", "", :hidden => true, :image=>"change_date.png", :buttons => false,
-                                    :onchange => "location = '#{analytics_queries_path}/?day='+$F(this);",
+                                    :onchange => "location = '#{analytics_groups_trends_path}/?day='+$F(this);",
                                     :valid_date_check => "date <= (new Date(#{last})).stripTime() && date >= (new Date(#{first})).stripTime()")
     raw html
   end
