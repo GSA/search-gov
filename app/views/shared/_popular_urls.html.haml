@@ -3,4 +3,4 @@
     %h3 Popular Links
     %ul
       - popular_urls.each do |url|
-        %li{ :class => url == popular_urls.last ? 'last' : nil }= link_to url.title.truncate(50, :separator => " "), url.url
+        %li{ :class => url == popular_urls.last ? 'last' : nil }= link_to url.title.truncate(73, :separator => " "), url.url

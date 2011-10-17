@@ -8,9 +8,9 @@
   = hidden_field_tag 'scope_id', @scope_id if @affiliate && @scope_id
   = hidden_field_tag 'embedded', params[:embedded] if params[:embedded]
   #advanced-form-intro
-    %strong= t :advanced_search_instruction
+    %h1= t :advanced_search_instruction
   .elements
-    %div
+    %div.show-results-with
       %strong= t :advanced_search_show_results_header
     .element
       .query-label

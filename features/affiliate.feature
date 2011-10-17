@@ -1203,21 +1203,21 @@ Feature: Affiliate clients
       | aff site         | aff.gov          | aff@bar.gov       | John Bar            | Default                 |
       | another site     | another.gov      | aff@another.gov   | Jane Doe            | Default                 |
     And the following popular URLs exist:
-      | affiliate_name   | title                                                                                                  | url                              | rank   |
-      | aff.gov          | Awesome sixth blog post                                                                                | http://awesome.gov/blog/6        | 6      |
-      | aff.gov          | Awesome fourth blog post                                                                               | http://awesome.gov/blog/4        | 4      |
-      | aff.gov          | Awesome fifth blog post                                                                                | http://awesome.gov/blog/5        | 5      |
-      | aff.gov          | Awesome third blog post                                                                                | http://awesome.gov/blog/3        | 3      |
-      | aff.gov          | Space, NASA Information & News, Outer Space Flight Videos & Pictures - Astronomy, Solar System Images | http://awesome.gov/blog/1        | 1      |
-      | aff.gov          | Awesome second blog post                                                                               | http://awesome.gov/blog/2        | 2      |
+      | affiliate_name | title                                                                                                 | url                       | rank |
+      | aff.gov        | Space, NASA Information & News, Outer Space Flight Videos & Pictures - Astronomy, Solar System Images | http://awesome.gov/blog/7 | 7    |
+      | aff.gov        | Awesome sixth blog post                                                                               | http://awesome.gov/blog/6 | 6    |
+      | aff.gov        | Awesome fourth blog post                                                                              | http://awesome.gov/blog/4 | 4    |
+      | aff.gov        | Awesome fifth blog post                                                                               | http://awesome.gov/blog/5 | 5    |
+      | aff.gov        | Awesome third blog post                                                                               | http://awesome.gov/blog/3 | 3    |
+      | aff.gov        | Awesome second blog post                                                                              | http://awesome.gov/blog/2 | 2    |
     When I go to aff.gov's search page
     Then I should see 3 popular URLs
-    And I should not see a link to "Space, NASA Information & News, Outer Space..."
+    And I should see a link to "Space, NASA Information & News, Outer Space Flight Videos & Pictures -..." with url for "http://awesome.gov/blog/7" in the popular urls section
+    And I should see a link to "Awesome sixth blog post" with url for "http://awesome.gov/blog/6" in the popular urls section
+    And I should see a link to "Awesome fifth blog post" with url for "http://awesome.gov/blog/5" in the popular urls section
+    And I should not see a link to "Awesome fourth blog post"
     And I should not see a link to "Awesome second blog post"
     And I should not see a link to "Awesome third blog post"
-    And I should see a link to "Awesome fourth blog post" with url for "http://awesome.gov/blog/4" in the popular urls section
-    And I should see a link to "Awesome fifth blog post" with url for "http://awesome.gov/blog/5" in the popular urls section
-    And I should see a link to "Awesome sixth blog post" with url for "http://awesome.gov/blog/6" in the popular urls section
 
   Scenario: Embedded affiliate search
     Given the following Affiliates exist:

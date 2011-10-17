@@ -5,7 +5,7 @@
 
 form.advanced
   margin-top: 20px
-  margin-bottom: 10px
+  margin-bottom: 20px
 
 
 div
@@ -18,6 +18,8 @@ div
 
 
 form.advanced
+  .show-results-with
+    font-size: 14px
   div
     &#logo img
       border: 0 none
@@ -30,13 +32,16 @@ form.advanced
 
     &.label
       border-top: 1px solid #F5F5F5
-      width: 180px
+      padding: 10px 3px 10px
+      margin: 0 0 5px 0
+      width: 190px
 
     &.query-label
       background: #FFFFFF none repeat scroll 0 0
       display: block
       float: left
-      padding: 6px 3px 3px
+      padding: 10px 3px 16px
+      margin: 0 0 5px 0
       width: 190px
 
     &.query-label-top
@@ -47,14 +52,20 @@ form.advanced
       width: 150px
 
     &.submit
-      text-align: center
-
-  span.query-label
-    padding-left: 15px
+      text-align: left
+      input
+        margin-left: 199px
 
   div.submit select.psearch
     display: inline
 
+#search
+  #advanced-form-intro
+    h1
+      color: #000
+      display: block
+      font-size: 1.5em
+      margin: 0 0 15px 0
 
 div
   &.submit, &.elements
