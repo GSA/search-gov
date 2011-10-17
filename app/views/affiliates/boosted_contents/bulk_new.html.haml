@@ -1,12 +1,12 @@
 = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Bulk Upload Boosted Contents"])
 %h1 Bulk Upload Boosted Contents
-= form_tag bulk_affiliate_boosted_contents_path(@affiliate), :multipart => true, :class=> "bordered" do
+= form_tag bulk_affiliate_boosted_contents_path(@affiliate), :multipart => true, :class=> "bordered", :id => 'boosted_content_bulk_upload_form' do
   %h4 Instructions
   %ol
     %li
-      Create a new XML file using the format in the example below.
+      Create a new XML or CSV file using the format in the example below.
     %li
-      Save the XML file as {filename}.xml on your computer.
+      Save the XML file as {filename}.xml or the CSV file as {filename}.csv on your computer.
     %li
       Add, modify, or delete individual entries in the file.
     %li
@@ -14,32 +14,41 @@
     %li
       Upload the file to GSA's server.
 
-  %h4 Example Boosted Content XML
-  %pre
-    = preserve do
+  = link_to "+ Formatting Tips", "#formatting_tips", :id => "formatting_tips", :class => "sliding_trigger"
+  %div#formatting_tips_content.sliding_content
+    %h4 Example Boosted Content in XML format
+    %pre
+      = preserve do
+        :escaped
+          <xml>
+            <entries>
+              <entry>
+                <title>This is a listing about Texas</title>
+                <url>http://some.url</url>
+                <description>This is the description of the listing</description>
+              </entry>
+              <entry>
+                <title>Some other listing about hurricanes</title>
+                <url>http://some.other.url</url>
+                <description>Another description for another listing</description>
+              </entry>
+            </entries>
+          </xml>
+    %p
       :escaped
-        <xml>
-          <entries>
-            <entry>
-              <title>This is a listing about Texas</title>
-              <url>http://some.url</url>
-              <description>This is the description of the listing</description>
-            </entry>
-            <entry>
-              <title>Some other listing about hurricanes</title>
-              <url>http://some.other.url</url>
-              <description>Another description for another listing</description>
-            </entry>
-          </entries>
-        </xml>
+        Note that the fields in your XML file are case sensitive and everything must be lower case so enter them as <title>, <url>, and <description>. (The system will prevent you from uploading files using title case or all caps so do not use <Title>, <URL>, <Description>, for example.)
+    %p
+      Also, be sure to enter a title, url, and description field for every entry. (They are mandatory so the system will prevent you from uploading files without a field for every entry.)
 
-  %h4 Important Notes
-  %p
-    :escaped
-      Note that the fields in your XML file are case sensitive and everything must be lower case so enter them as <title>, <url>, and <description>. (The system will prevent you from uploading files using title case or all caps so do not use <Title>, <URL>, <Description>, for example.)
-  %p
-    Also, be sure to enter a title, url, and description field for every entry. (They are mandatory so the system will prevent you from uploading files without a field for every entry.)
+    %h4 Example Boosted Content in CSV format
+    %pre
+      = preserve do
+        :escaped
+          This is a listing about Texas,http://some.url,This is the description
+            Some other listing about hurricanes,http://some.other.url,Another description
+    %p
+      The fields should be title, url, and description.
 
-  %h4 Select Boosted Content XML
-  = file_field_tag 'xml_file', :accept => 'text/xml'
+  %h4.select-boosted-content-file Select Boosted Content File
+  = file_field_tag 'bulk_upload_file', :accept => 'text/csv,application/xml'
   = submit_tag "Upload"

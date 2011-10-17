@@ -329,7 +329,7 @@ Feature: Boosted Content
     Then I should see the browser page titled "Bulk Upload Boosted Contents"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff <i>site</i> > Bulk Upload Boosted Contents
     And I should see "Bulk Upload Boosted Contents" in the page header
-    And I attach the file "features/support/boosted_content.xml" to "xml_file"
+    And I attach the file "features/support/boosted_content.xml" to "bulk_upload_file"
     And I press "Upload"
     Then I should see "Successful Bulk Import for affiliate 'aff <i>site</i>'"
     Then I should see "2 Boosted Content entries successfully created."
@@ -340,7 +340,7 @@ Feature: Boosted Content
     And I should see "Some other listing about hurricanes"
 
     When I follow "Bulk upload boosted contents"
-    And I attach the file "features/support/new_boosted_content.xml" to "xml_file"
+    And I attach the file "features/support/new_boosted_content.xml" to "bulk_upload_file"
     And I press "Upload"
     And I follow "Boosted content"
     Then I should see "New results about Texas"
@@ -359,7 +359,7 @@ Feature: Boosted Content
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Boosted content"
     And I follow "Bulk upload boosted contents"
-    And I attach the file "features/support/missing_title_boosted_content.xml" to "xml_file"
+    And I attach the file "features/support/missing_title_boosted_content.xml" to "bulk_upload_file"
     And I press "Upload"
     Then I should see "Your XML document could not be processed. Please check the format and try again."
 
@@ -367,6 +367,73 @@ Feature: Boosted Content
     And I fill in "query" with "tourism"
     And I submit the search form
     Then I should see "Our Tourism Page" within "#boosted"
+
+  Scenario: Uploading valid boosted CSV document as a logged in affiliate
+    Given the following Affiliates exist:
+      | display_name    | name    | contact_email | contact_name |
+      | aff <i>site</i> | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Boosted content"
+    And I follow "Bulk upload boosted contents"
+    Then I should see the browser page titled "Bulk Upload Boosted Contents"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff <i>site</i> > Bulk Upload Boosted Contents
+    And I should see "Bulk Upload Boosted Contents" in the page header
+    And I attach the file "features/support/boosted_content.csv" to "bulk_upload_file"
+    And I press "Upload"
+    Then I should see "Successful Bulk Import for affiliate 'aff <i>site</i>'"
+    Then I should see "2 Boosted Content entries successfully created."
+
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Boosted content"
+    Then I should see "This is a listing about Texas"
+    And I should see "Some other listing about hurricanes"
+
+    When I follow "Bulk upload boosted contents"
+    And I attach the file "features/support/new_boosted_content.csv" to "bulk_upload_file"
+    And I press "Upload"
+    And I follow "Boosted content"
+    Then I should see "New results about Texas"
+    And I should see "New results about hurricanes"
+
+  Scenario: Uploading invalid booster CSV document as a logged in affiliate
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         |aff.gov           | aff@bar.gov           | John Bar            |
+    And the following Boosted Content entries exist for the affiliate "aff.gov"
+      | title               | url                     | description                               |
+      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
+      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
+      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Boosted content"
+    And I follow "Bulk upload boosted contents"
+    And I attach the file "features/support/missing_title_boosted_content.csv" to "bulk_upload_file"
+    And I press "Upload"
+    Then I should see "Your CSV document could not be processed. Please check the format and try again."
+
+    When I go to aff.gov's search page
+    And I fill in "query" with "tourism"
+    And I submit the search form
+    Then I should see "Our Tourism Page" within "#boosted"
+
+   Scenario: Uploading unsupported boosted content document as a logged in affiliate
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         |aff.gov           | aff@bar.gov           | John Bar            |
+    And the following Boosted Content entries exist for the affiliate "aff.gov"
+      | title               | url                     | description                               |
+      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
+      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
+      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Boosted content"
+    And I follow "Bulk upload boosted contents"
+    And I attach the file "features/support/not_image.txt" to "bulk_upload_file"
+    And I press "Upload"
+    Then I should see "Your filename should have .xml or .csv extension"
 
   Scenario: Affiliate search user should see only active boosted contents within publish date range
     Given the following Affiliates exist:

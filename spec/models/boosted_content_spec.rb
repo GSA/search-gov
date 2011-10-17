@@ -147,11 +147,66 @@ describe BoostedContent do
     end
   end
 
-  context "bulk uploads" do
+  context ".process_boosted_content_bulk_upload_for" do
+    context "when uploading xml file" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:xml_file) { mock('xml_file', { :original_filename => "boosted_content.xml" }) }
+
+      before do
+        BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(affiliate, xml_file).and_return({ :success => true, :created => 1, :updated => 0 })
+        @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, xml_file)
+      end
+
+      subject { @results }
+      specify { @results[:success].should be_true }
+      specify { @results[:created].should == 1 }
+      specify { @results[:updated].should == 0 }
+    end
+
+    context "when the uploaded file has text/csv content type" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:csv_file) { mock('csv_file', { :original_filename => 'boosted_content.csv' }) }
+
+      before do
+        BoostedContent.should_receive(:process_boosted_content_csv_upload_for).with(affiliate, csv_file).and_return({ :success => true, :created => 1, :updated => 0 })
+        @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, csv_file)
+      end
+
+      subject { @results }
+      specify { @results[:success].should be_true }
+      specify { @results[:created].should == 1 }
+      specify { @results[:updated].should == 0 }
+    end
+
+    context "when the uploaded file has .txt extension" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:txt_file) { mock('txt_file', { :original_filename => "boosted_content.txt" }) }
+
+      before do
+        @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, txt_file)
+      end
+
+      subject { @results }
+      specify { @results[:success].should be_false }
+    end
+
+    context "when the bulk upload file parameter is nil" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      before do
+        @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, nil)
+      end
+
+      subject { @results }
+      specify { @results[:success].should be_false }
+    end
+  end
+
+  context ".process_boosted_content_xml_upload_for" do
     fixtures :affiliates
 
-    before :each do
-      @site_xml = <<-XML
+    let(:site_xml) {
+      <<-XML
         <xml>
           <entries>
             <entry>
@@ -167,45 +222,102 @@ describe BoostedContent do
           </entries>
         </xml>
       XML
-    end
+    }
 
     it "should create and index boosted Contents from an xml document" do
       basic_affiliate = affiliates(:basic_affiliate)
 
-      counts = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
+      results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 2
       basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url"]
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
-      counts[:created].should == 2
-      counts[:updated].should == 0
+      results[:success].should be_true
+      results[:created].should == 2
+      results[:updated].should == 0
     end
 
     it "should update existing boosted Contents if the url match" do
       basic_affiliate = affiliates(:basic_affiliate)
       basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
 
-      counts = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
+      results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 2
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.url" }.title.should == "This is a listing about Texas"
-      counts[:created].should == 1
-      counts[:updated].should == 1
+      results[:success].should be_true
+      results[:created].should == 1
+      results[:updated].should == 1
     end
 
     it "should merge with preexisting boosted Contents" do
       basic_affiliate = affiliates(:basic_affiliate)
       basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
 
-      counts = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(@site_xml))
+      results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 3
       basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url", "http://a.different.url"]
-      counts[:created].should == 2
-      counts[:updated].should == 0
+      results[:success].should be_true
+      results[:created].should == 2
+      results[:updated].should == 0
+    end
+  end
+
+  context ".process_boosted_content_csv_upload_for" do
+    fixtures :affiliates
+    let(:csv_file) {
+      <<-CSV
+This is a listing about Texas,http://some.url,This is the description of the listing
+
+Some other listing about hurricanes,http://some.other.url,Another description for another listing
+
+      CSV
+    }
+
+    it "should create and index boosted Contents from an csv document" do
+      basic_affiliate = affiliates(:basic_affiliate)
+
+      results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
+
+      basic_affiliate.reload
+      basic_affiliate.boosted_contents.length.should == 2
+      basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url"]
+      basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
+      results[:success].should be_true
+      results[:created].should == 2
+      results[:updated].should == 0
+    end
+
+    it "should update existing boosted Contents if the url match" do
+      basic_affiliate = affiliates(:basic_affiliate)
+      basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
+
+      results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
+
+      basic_affiliate.reload
+      basic_affiliate.boosted_contents.length.should == 2
+      basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.url" }.title.should == "This is a listing about Texas"
+      results[:success].should be_true
+      results[:created].should == 1
+      results[:updated].should == 1
+    end
+
+    it "should merge with preexisting boosted Contents" do
+      basic_affiliate = affiliates(:basic_affiliate)
+      basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
+
+      results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
+
+      basic_affiliate.reload
+      basic_affiliate.boosted_contents.length.should == 3
+      basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url", "http://a.different.url"]
+      results[:success].should be_true
+      results[:created].should == 2
+      results[:updated].should == 0
     end
   end
 

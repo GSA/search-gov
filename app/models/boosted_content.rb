@@ -70,41 +70,14 @@ class BoostedContent < ActiveRecord::Base
     end
   end
 
-  def self.process_boosted_content_xml_upload_for(affiliate, xml_file)
-    existing = affiliate.boosted_contents.inject({}) do |hash, bc|
-      hash[bc.url] = bc
-      hash
+  def self.process_boosted_content_bulk_upload_for(affiliate, bulk_upload_file)
+    filename = bulk_upload_file.original_filename.downcase unless bulk_upload_file.blank?
+    return { :success => false, :error_message => "Your filename should have .xml or .csv extension."} unless filename =~ /\.(xml|csv)$/
+    if filename =~ /xml$/
+      BoostedContent.process_boosted_content_xml_upload_for affiliate,  bulk_upload_file
+    else
+      BoostedContent.process_boosted_content_csv_upload_for affiliate,  bulk_upload_file
     end
-
-    counts = {:created => 0, :updated => 0}
-    begin
-      doc=REXML::Document.new(xml_file.read)
-      transaction do
-        doc.root.each_element('//entry') do |entry|
-          info = {
-            :url => entry.elements["url"].first.to_s,
-            :title => entry.elements["title"].first.to_s,
-            :description => entry.elements["description"].first.to_s,
-            :affiliate => affiliate,
-            :locale => 'en',
-            :status => 'active',
-            :publish_start_on => Date.current
-          }
-          if matching = existing[info[:url]]
-            matching.update_attributes(info)
-            counts[:updated] += 1
-          else
-            create!(info)
-            counts[:created] += 1
-          end
-        end
-      end
-    rescue
-      Rails.logger.warn "Problem processing boosted Content XML document: #{$!}"
-      Sunspot.index(affiliate.boosted_contents)
-      return false
-    end
-    counts
   end
 
   def self.human_attribute_name(attribute_key_name, options = {})
@@ -121,6 +94,78 @@ class BoostedContent < ActiveRecord::Base
 
   def display_status
     status.humanize
+  end
+
+  protected
+  def self.process_boosted_content_xml_upload_for(affiliate, xml_file)
+    existing = affiliate.boosted_contents.inject({}) do |hash, bc|
+      hash[bc.url] = bc
+      hash
+    end
+
+    results = { :created => 0, :updated => 0, :success => false }
+    begin
+      doc=REXML::Document.new(xml_file.read)
+      transaction do
+        doc.root.each_element('//entry') do |entry|
+          info = {
+            :url => entry.elements["url"].first.to_s,
+            :title => entry.elements["title"].first.to_s,
+            :description => entry.elements["description"].first.to_s,
+            :affiliate => affiliate
+          }
+          import_boosted_content results, existing, info
+        end
+      end
+      results[:success] = true
+    rescue
+      results[:error_message] = "Your XML document could not be processed. Please check the format and try again."
+      Rails.logger.warn "Problem processing boosted Content XML document: #{$!}"
+      Sunspot.index(affiliate.boosted_contents)
+    end
+    results
+  end
+
+  def self.process_boosted_content_csv_upload_for(affiliate, csv_file)
+    existing = affiliate.boosted_contents.inject({}) do |hash, bc|
+      hash[bc.url] = bc
+      hash
+    end
+
+    results = { :created => 0, :updated => 0, :success => false }
+    begin
+      transaction do
+        FasterCSV.parse(csv_file.read, :skip_blanks => true) do |row|
+          info = {
+              :title => row[0],
+              :url => row[1],
+              :description => row[2],
+              :affiliate => affiliate
+          }
+          import_boosted_content results, existing, info
+        end
+      end
+      results[:success] = true
+    rescue
+      results[:error_message] = "Your CSV document could not be processed. Please check the format and try again."
+      Rails.logger.warn "Problem processing boosted Content CSV document: #{$!}"
+      Sunspot.index(affiliate.boosted_contents)
+    end
+    results
+  end
+
+  def self.import_boosted_content(results, existing, attributes)
+
+    new_boosted_content_attributes = attributes.merge({ :locale => 'en',
+                                                        :status => 'active',
+                                                        :publish_start_on => Date.current })
+    if matching = existing[new_boosted_content_attributes[:url]]
+      matching.update_attributes(new_boosted_content_attributes)
+      results[:updated] += 1
+    else
+      create!(new_boosted_content_attributes)
+      results[:created] += 1
+    end
   end
 
   private

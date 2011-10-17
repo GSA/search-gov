@@ -530,10 +530,10 @@ describe Affiliates::BoostedContentsController do
   describe "bulk upload" do
     context "when affiliate manager is not logged in" do
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:xml) { StringIO.new("xml") }
+      let(:xml) { mock("xml_file") }
 
       before do
-        post :bulk, :affiliate_id => affiliate.id, :xml_file => xml
+        post :bulk, :affiliate_id => affiliate.id, :bulk_upload_file => xml
       end
 
       it { should redirect_to(login_path) }
@@ -541,11 +541,11 @@ describe Affiliates::BoostedContentsController do
 
     context "when logged in but not an affiliate manager" do
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:xml) { StringIO.new("xml") }
+      let(:xml) { mock("xml_file") }
 
       before do
         UserSession.create(users(:affiliate_admin))
-        post :bulk, :affiliate_id => affiliate.id, :xml_file => xml
+        post :bulk, :affiliate_id => affiliate.id, :bulk_upload_file => xml
       end
 
       it { should redirect_to(home_page_path) }
@@ -553,11 +553,11 @@ describe Affiliates::BoostedContentsController do
 
     context "when logged in as an affiliate manager who doesn't own the affiliate" do
       let(:another_affiliate) { affiliates(:another_affiliate) }
-      let(:xml) { StringIO.new("xml") }
+      let(:xml) { mock("xml_file") }
 
       before do
         UserSession.create(users(:affiliate_manager))
-        post :bulk, :affiliate_id => another_affiliate.id, :xml_file => xml
+        post :bulk, :affiliate_id => another_affiliate.id, :bulk_upload_file => xml
       end
 
       it { should redirect_to(home_page_path) }
@@ -565,12 +565,12 @@ describe Affiliates::BoostedContentsController do
 
     context "when logged in as an affiliate manager who owns the affiliate and successfully bulk upload boosted contents" do
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:xml) { StringIO.new("xml") }
+      let(:xml) { mock("xml_file") }
 
       before do
         UserSession.create(users(:affiliate_manager))
-        BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(affiliate, xml).and_return({:created => 4, :updated => 2})
-        post :bulk, :affiliate_id => affiliate.id, :xml_file => xml
+        BoostedContent.should_receive(:process_boosted_content_bulk_upload_for).with(affiliate, xml).and_return({:success => true, :created => 4, :updated => 2})
+        post :bulk, :affiliate_id => affiliate.id, :bulk_upload_file => xml
       end
 
       it { should redirect_to(affiliate_boosted_contents_path(affiliate)) }
@@ -580,12 +580,12 @@ describe Affiliates::BoostedContentsController do
 
     context "when logged in as an affiliate manager who owns the affiliate and failed to bulk upload boosted contents" do
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:xml) { StringIO.new("xml") }
+      let(:xml) { mock("xml_file") }
 
       before do
         UserSession.create(users(:affiliate_manager))
-        BoostedContent.should_receive(:process_boosted_content_xml_upload_for).with(affiliate, xml).and_return(false)
-        post :bulk, :affiliate_id => affiliate.id, :xml_file => xml
+        BoostedContent.should_receive(:process_boosted_content_bulk_upload_for).with(affiliate, xml).and_return({ :success => false, :error_message => 'Your XML document could not be processed.' })
+        post :bulk, :affiliate_id => affiliate.id, :bulk_upload_file => xml
       end
 
       it { should render_template(:bulk_new) }
