@@ -235,19 +235,15 @@ describe DailyQueryStat do
 
   describe "#most_recent_populated_date" do
     it "should return the most recent date entered into the table for the default affiliate and locale" do
-      DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, I18n.default_locale.to_s])
+      DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ?', Affiliate::USAGOV_AFFILIATE_NAME])
       DailyQueryStat.most_recent_populated_date
     end
 
     it "should return the most recent date for an affiliate if an affiliate is passed in" do
-      DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ? AND locale = ?', 'nps.gov', I18n.default_locale.to_s])
+      DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ?', 'nps.gov'])
       DailyQueryStat.most_recent_populated_date('nps.gov')
     end
 
-    it "should return the most recent date for a locale if specified" do
-      DailyQueryStat.should_receive(:maximum).with(:day, :conditions => ['affiliate = ? AND locale = ?', Affiliate::USAGOV_AFFILIATE_NAME, 'es'])
-      DailyQueryStat.most_recent_populated_date(Affiliate::USAGOV_AFFILIATE_NAME, 'es')
-    end
   end
 
   describe "#collect_query_group_named" do

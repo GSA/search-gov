@@ -111,12 +111,12 @@ class DailyQueryStat < ActiveRecord::Base
       results.collect { |res| QueryCount.new(res.name, res.cnt, true) }
     end
 
-    def most_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
-      maximum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name, locale])
+    def most_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
+      maximum(:day, :conditions => ['affiliate = ?', affiliate_name])
     end
 
-    def least_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s)
-      minimum(:day, :conditions => ['affiliate = ? AND locale = ?', affiliate_name, locale])
+    def least_recent_populated_date(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
+      minimum(:day, :conditions => ['affiliate = ?', affiliate_name])
     end
 
     def available_dates_range(affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME)
