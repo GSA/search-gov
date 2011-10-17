@@ -8,7 +8,6 @@ Feature: Forms Home Page and Search
     When I follow "Forms" in the search navigation
     Then I should be on the forms home page
     And I should not see "ROBOTS" meta tag
-    And I should see "Federal Government Forms Catalog has moved and is different."
     And I should see "Connect with USASearch" in the connect section
     And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
     And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
