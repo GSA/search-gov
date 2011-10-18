@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017155756) do
+ActiveRecord::Schema.define(:version => 20111017175410) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -196,7 +196,7 @@ ActiveRecord::Schema.define(:version => 20111017155756) do
     t.string  "locale",    :limit => 5,   :default => "en"
   end
 
-  add_index "daily_query_stats", ["affiliate", "day", "locale"], :name => "adl"
+  add_index "daily_query_stats", ["affiliate", "day"], :name => "ad"
   add_index "daily_query_stats", ["day", "affiliate"], :name => "da"
   add_index "daily_query_stats", ["query", "day"], :name => "qd"
 
