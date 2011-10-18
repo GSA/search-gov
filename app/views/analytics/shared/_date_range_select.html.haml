@@ -5,4 +5,4 @@
     = calendar_date_select_tag("start_date", @start_date, :buttons => false, :valid_date_check => validity)
     = label_tag :analytics_search_end_date, "to"
     = calendar_date_select_tag("end_date", @end_date, :buttons => false, :valid_date_check => validity)
-    = submit_tag "Submit"
+    = submit_tag "Submit", :class => 'submit'
