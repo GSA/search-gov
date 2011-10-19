@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111017175410) do
+ActiveRecord::Schema.define(:version => 20111019184243) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -156,18 +156,6 @@ ActiveRecord::Schema.define(:version => 20111017175410) do
   end
 
   add_index "calais_related_searches", ["affiliate_id", "term"], :name => "index_calais_related_searches_on_affiliate_id_and_term"
-
-  create_table "daily_popular_queries", :force => true do |t|
-    t.date    "day"
-    t.integer "affiliate_id"
-    t.string  "locale",       :limit => 5
-    t.string  "query"
-    t.integer "times"
-    t.boolean "is_grouped",                :default => false
-    t.integer "time_frame"
-  end
-
-  add_index "daily_popular_queries", ["day", "affiliate_id", "locale", "is_grouped", "time_frame"], :name => "dalit_index"
 
   create_table "daily_popular_query_groups", :force => true do |t|
     t.date    "day"
