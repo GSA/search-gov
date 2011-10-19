@@ -33,6 +33,8 @@ a.serp-link
       border-left: 0
 
 #results
+  .did-you-mean
+    :padding-left $results-padding-size
   #summary
     margin-bottom: 1em
     :padding-left $results-padding-size
@@ -92,13 +94,18 @@ a.serp-link
     height: 100px
     width: 150px
 
-  .pagination
+
+  .pagination-and-logo
     :border-bottom 1px solid #DDD
-    :clear both
-    :padding-left $results-padding-size - 7px
+    clear: both
+    height: 30px
+    margin-top: 1.5em
+    padding-left: $results-padding-size - 7px
     :padding-bottom 0.75em
+
+  .pagination
     :font-size 1em
-    :margin-top 1.5em
+    float: left
     .disabled
       :display none
     em
@@ -118,7 +125,6 @@ a.serp-link
 
   .bing-logo
     float: right
-    margin-top: -30px
 
 #popular
   :margin 20px 0

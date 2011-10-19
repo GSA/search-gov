@@ -253,7 +253,7 @@ module SearchHelper
       did_you_mean = t :did_you_mean,
                        :assumed_term => tracked_click_link(corrected_url, h(rendered_suggestion), search, affiliate, 0, 'BSPEL', vertical, "style='font-weight:bold'"),
                        :term_as_typed => tracked_click_link(original_url, h(search.query), search, affiliate, 0, 'OVER', vertical, "style='font-style:italic'")
-      content_tag(:h4, raw(did_you_mean))
+      content_tag(:h4, raw(did_you_mean), :class => 'did-you-mean')
     end
   end
 
