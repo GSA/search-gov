@@ -187,5 +187,20 @@ describe RssFeed do
         end
       end
     end
+    
+    context "when the RSS feed format can not be determined" do
+      before do
+        @feed = rss_feeds(:atom_feed)
+        doc = Nokogiri::XML(open(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html'))
+        Nokogiri::XML::Document.should_receive(:parse).and_return(doc)
+        @feed.news_items.destroy_all
+      end
+      
+      it "should not change the number of news items" do
+        @feed.freshen
+        @feed.reload
+        @feed.news_items.count.should == 0
+      end
+    end 
   end
 end
