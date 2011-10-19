@@ -48,12 +48,6 @@ class RssFeed < ActiveRecord::Base
   end
   
   def detect_feed_type(document)
-    if document.root.name == "rss"
-      :rss
-    elsif document.root.name == "feed"
-      :atom
-    else
-      nil
-    end
+    document.root.name == "feed" ? :atom : :rss
   end
 end
