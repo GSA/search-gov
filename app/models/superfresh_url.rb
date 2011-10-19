@@ -2,7 +2,6 @@ class SuperfreshUrl < ActiveRecord::Base
   belongs_to :affiliate
   validates_presence_of :url
   validates_format_of :url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
-  before_save :validate_belongs_to_site_domain
 
   MSNBOT_USER_AGENT = "msnbot-UDiscovery/2.0b (+http://search.msn.com/msnbot.htm)"
   MAX_URLS_PER_FILE_UPLOAD = 100
@@ -28,16 +27,6 @@ class SuperfreshUrl < ActiveRecord::Base
       else
         raise "Too many URLs in your file.  Please limit your file to #{max_urls} URLs."
       end
-    end
-  end
-
-  protected
-  def validate_belongs_to_site_domain
-    if self.affiliate.nil? or self.affiliate.domains.nil? or self.affiliate.domains.split.detect { |domain| self.url.include?(domain) }
-      return true
-    else
-      self.errors.add(:url, "must refer to one of your site domains.")
-      return false
     end
   end
 end

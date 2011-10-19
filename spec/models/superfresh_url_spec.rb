@@ -16,26 +16,11 @@ describe SuperfreshUrl do
     it { should allow_value("http://some.govsite.us/url").for(:url) }
     it { should allow_value("http://some.govsite.info/url").for(:url) }
 
-    context "when affiliate has site domains" do
-      before do
-        @affiliate = affiliates(:basic_affiliate)
-        @affiliate.update_attribute(:domains, "usa.com")
-      end
-
-      it "should validate that the Superfresh URL belongs to one of the site domains" do
-        SuperfreshUrl.create(:url => 'http://affiliate.usa.com', :affiliate => @affiliate)
-        SuperfreshUrl.create(:url => 'http://affiliate.usa.gov', :affiliate => @affiliate)
-        SuperfreshUrl.find_by_affiliate_id_and_url(@affiliate.id, 'http://affiliate.usa.com').should_not be_nil
-        SuperfreshUrl.find_by_affiliate_id_and_url(@affiliate.id, 'http://affiliate.usa.gov').should be_nil
-      end
-    end
-
     it "should enqueue the creation of a BoostedContent entry via Resque" do
       ResqueSpec.reset!
       sf = SuperfreshUrl.create!(@valid_attributes)
       SuperfreshUrlToIndexedDocument.should have_queued(sf.url, sf.affiliate_id)
     end
-
   end
 
   describe "#uncrawled_urls" do
@@ -146,25 +131,6 @@ describe SuperfreshUrl do
         it "should allow all of the urls" do
           lambda { SuperfreshUrl.process_file(@file, nil, 1000)}.should_not raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
         end
-      end
-    end
-
-    context "when a file contains URLs that aren't covered by the affiliate's site domain list" do
-      before do
-        @affiliate = affiliates(:basic_affiliate)
-        @affiliate.update_attribute(:domains, "usa.com")
-        tempfile = Tempfile.new('urls.txt')
-        tempfile.puts(['http://search.usa.com', 'http://usa.com', 'http://data.gov'])
-        tempfile.close
-        tempfile.open
-        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)
-      end
-
-      it "should ignore them and not create SuperfreshUrls out of them" do
-        SuperfreshUrl.process_file(@file, @affiliate)
-        SuperfreshUrl.find_by_url("http://search.usa.com").should_not be_nil
-        SuperfreshUrl.find_by_url("http://usa.com").should_not be_nil
-        SuperfreshUrl.find_by_url("http://data.gov").should be_nil
       end
     end
   end
