@@ -57,6 +57,7 @@ class SearchesController < ApplicationController
   end
 
   def news
+    redirect_to root_path and return if @affiliate.nil?
     @search = NewsSearch.new(@affiliate, params)
     @search.run
     @form_path = news_search_path

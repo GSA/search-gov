@@ -545,6 +545,13 @@ describe SearchesController do
       assigns[:search].results.first.should == news_items(:item1)
     end
 
+    context "when the affiliate does not exist" do
+      before do
+        get :news, :query => "element", :affiliate => "donotexist", :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
+      end
+      it { should redirect_to root_path }
+    end
+
     describe "rendering the view" do
       render_views
 
