@@ -47,7 +47,8 @@ Feature: Featured Collections
     Then I should see "Search.USA.gov Featured Collections" in the page header
 
     When I follow "Add new featured collection"
-    And I fill in the following:
+    Then the "Publish start date" field should contain today's date
+    When I fill in the following:
       | Title*                | 2010 Atlantic Hurricane Season                    |
       | Title URL             | http://www.nhc.noaa.gov/2010atlan.shtml           |
       | Publish start date    | 07/01/2011                                        |
@@ -299,6 +300,30 @@ Feature: Featured Collections
     Then I should see "Featured Collection successfully deleted"
     And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Featured Collections
     And I should see "Featured Collections" in the page header
+
+  Scenario: Deleting a link from a featured collection
+    Given the following featured collections exist:
+      | title                            | title_url                                | locale | status |
+      | Worldwide Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active |
+    And the following featured collection links exist for featured collection titled "Worldwide Tropical Cyclone Names":
+      | title                 | url                                          |
+      | Atlantic              | http://www.nhc.noaa.gov/aboutnames.shtml#atl |
+      | Eastern North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#enp |
+      | Central North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#cnp |
+    And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the admin featured collections page
+    And I follow "Edit"
+    And I fill in the following:
+      | Link Title 2 |  |
+      | Link URL 2   |  |
+    And I press "Update"
+    Then I should see "Featured Collection successfully updated"
+    When I go to the homepage
+    And I fill in "query" with "Pacific"
+    And I press "Search"
+    Then I should see "Worldwide Tropical Cyclone Names"
+    And I should not see "Central North Pacific"
+    And I should not see "!!!sep!!!"
 
   Scenario: Search.USA.gov user sees featured collection with an image
     Given the following featured collections exist:

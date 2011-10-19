@@ -5,7 +5,7 @@ class FeaturedCollection < ActiveRecord::Base
   STATUS_OPTIONS = STATUSES.collect { |status| [status.humanize, status] }
   LAYOUTS = ['one column', 'two column']
   LAYOUT_OPTIONS = LAYOUTS.collect { |layout| [layout.humanize, layout]}
-  LINK_TITLE_SEPARATOR = " !!!sep!!! "
+  LINK_TITLE_SEPARATOR = "!!!sep!!!"
 
   cattr_reader :per_page
   @@per_page = 20

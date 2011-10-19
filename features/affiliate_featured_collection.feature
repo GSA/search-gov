@@ -266,6 +266,33 @@ Feature: Featured Collections
     And I press "Update"
     Then I should not see an image with alt text "tornado & hurricane"
 
+  Scenario: Deleting a link from a featured collection
+    Given the following Affiliates exist:
+      | display_name | name     | contact_email              | contact_name |
+      | site         | site.gov | affiliate_manager@site.gov | John Bar     |
+    Given the following featured collections exist for the affiliate "site.gov":
+      | title                            | title_url                                | locale | status |
+      | Worldwide Tropical Cyclone Names | http://www.nhc.noaa.gov/aboutnames.shtml | en     | active |
+    And the following featured collection links exist for featured collection titled "Worldwide Tropical Cyclone Names":
+      | title                 | url                                          |
+      | Atlantic              | http://www.nhc.noaa.gov/aboutnames.shtml#atl |
+      | Eastern North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#enp |
+      | Central North Pacific | http://www.nhc.noaa.gov/aboutnames.shtml#cnp |
+    And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
+    When I go to the site.gov's featured collections page
+    And I follow "Edit"
+    And I fill in the following:
+      | Link Title 2 |  |
+      | Link URL 2   |  |
+    And I press "Update"
+    Then I should see "Featured Collection successfully updated"
+    When I go to site.gov's search page
+    And I fill in "query" with "Pacific"
+    And I press "Search"
+    Then I should see "Worldwide Tropical Cyclone Names" in the featured collections section
+    And I should not see "Central North Pacific"
+    And I should not see "!!!sep!!!"
+
   Scenario: Validating Featured Collection on update
     Given the following Affiliates exist:
       | display_name | name     | contact_email              | contact_name |

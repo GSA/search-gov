@@ -9,7 +9,7 @@ class Admin::FeaturedCollectionsController < Admin::AffiliatesController
 
   def new
     @page_title = 'Add a new Featured Collection'
-    @featured_collection = FeaturedCollection.new
+    @featured_collection = FeaturedCollection.new(:publish_start_on => Date.current)
     setup_blank_keywords_and_links
   end
 
