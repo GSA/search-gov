@@ -139,9 +139,6 @@ class Recall < ActiveRecord::Base
           # CDC/Food/Drug fields
           with(:food_type).equal_to(options[:food_type]) unless options[:food_type].blank?
 
-          facet :organization
-          facet :food_type
-
           if options[:sort] == "date"
             order_by :recalled_on, :desc
           end
