@@ -330,7 +330,7 @@ Feature: Affiliate clients
     And I should see "www.aff.gov"
 
     When I follow "View Staged"
-    And I should see 10 search results
+    Then I should see at least 5 search results
 
     When I go to the "new aff site" affiliate page
     And I follow "View Current"
@@ -344,7 +344,7 @@ Feature: Affiliate clients
     And I press "Push Changes"
     And I go to the "new aff site" affiliate page
     And I follow "View Current"
-    Then I should see 10 search results
+    Then I should see at least 5 search results
 
   Scenario: Editing site information with problem and saving it for preview
     Given the following Affiliates exist:
