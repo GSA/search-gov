@@ -186,7 +186,7 @@ describe Search do
         I18n.locale = I18n.default_locale
       end
     end
-    
+
     context "when affiliate is not nil" do
       it "should not search for FAQs" do
         search = Search.new(@valid_options.merge(:affiliate => @affiliate))
@@ -316,7 +316,7 @@ describe Search do
         end
       end
     end
-    
+
     context "when affiliate is nil" do
       before do
         @search = Search.new(@valid_options.merge(:affiliate => nil))
@@ -342,25 +342,25 @@ describe Search do
         end
       end
     end
-    
+
     context "when there are excluded domains" do
       before do
         ExcludedDomain.create(:domain => 'excludeme.com')
         ExcludedDomain.create(:domain => 'excludemetoo.com')
       end
-      
+
       it "should add the excluded domains to the query as negative sites" do
         uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options)
         URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)%20-site%3Aexcludeme.com%20-site%3Aexcludemetoo.com$/).and_return uriresult
         search.run
       end
-      
+
       after do
         ExcludedDomain.destroy_all
       end
     end
-    
+
     context "when page offset is specified" do
       it "should specify the offset in the query to Bing" do
         uriresult = URI::parse("http://localhost:3000/")
@@ -662,6 +662,7 @@ describe Search do
       before do
         CalaisRelatedSearch.create!(:term=> "whatever", :related_terms => "ridiculous government grants | big government | democracy")
         CalaisRelatedSearch.reindex
+        Sunspot.commit
         @search = Search.new(:query=>"Democracy")
         @search.run
       end
@@ -675,6 +676,7 @@ describe Search do
       before do
         CalaisRelatedSearch.create!(:term=> "whatever", :related_terms => "Fred Espenak | big government | democracy")
         CalaisRelatedSearch.reindex
+        Sunspot.commit
         @search = Search.new(:query=>"Fred Espenak")
         @search.run
       end
@@ -688,6 +690,7 @@ describe Search do
       before do
         CalaisRelatedSearch.create!(:term => "pivot term", :related_terms => "government grants | big government | democracy", :affiliate => @affiliate)
         CalaisRelatedSearch.reindex
+        Sunspot.commit
       end
 
       it "should have a related searches array of strings not including the pivot term" do
@@ -700,6 +703,7 @@ describe Search do
         before do
           CalaisRelatedSearch.create!(:term => "pivot term", :related_terms => "government health care | small government | fascism")
           CalaisRelatedSearch.reindex
+          Sunspot.commit
         end
 
         context "when the affiliate has affiliate related topics enabled" do
@@ -747,6 +751,7 @@ describe Search do
       before do
         CalaisRelatedSearch.create!(:term=> @valid_options[:query], :related_terms => "government grants | big government | democracy")
         CalaisRelatedSearch.reindex
+        Sunspot.commit
         @search = Search.new(@valid_options.merge(:affiliate => @affiliate))
         @search.run
       end
@@ -770,6 +775,7 @@ describe Search do
       before do
         CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{      portland or | oregon | rain      })
         CalaisRelatedSearch.reindex
+        Sunspot.commit
         @search = Search.new(:query => "Portland OR")
         @search.run
       end
@@ -945,6 +951,7 @@ describe Search do
           @spotty.affiliate = @affiliate
           @spotty.save
           Spotlight.reindex
+          Sunspot.commit
         end
 
         it "should assign the Spotlight for the affiliate" do
@@ -1228,33 +1235,34 @@ describe Search do
         @search.run
       end
     end
-    
+
     context "when an affiliate has PDF documents" do
       before do
         @affiliate.indexed_documents.destroy_all
         @affiliate.indexed_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf1.pdf', :doctype => 'pdf')
         @affiliate.indexed_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf2.pdf', :doctype => 'pdf')
         IndexedDocument.reindex
+        Sunspot.commit
       end
-      
+
       it "should find PDF documents that match the query if this is the first page" do
         search = Search.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 0))
         search.run
         search.indexed_documents.should_not be_nil
         search.indexed_documents.total.should == 2
       end
-      
+
       it "should not find any PDF documents if it's not the first page" do
         search = Search.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 2))
         search.run
         search.indexed_documents.should be_nil
       end
-      
+
       after do
         @affiliate.indexed_documents.destroy_all
       end
     end
-  
+
     context "when the affiliate has no Bing results, and has boosted contents" do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
@@ -1263,10 +1271,11 @@ describe Search do
           @non_affiliate.indexed_documents << IndexedDocument.new(:title => "Indexed Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is an indexed result.')
         end
         IndexedDocument.reindex
+        Sunspot.commit
         @non_affiliate.indexed_documents.size.should == 15
         IndexedDocument.search_for('indexed', @non_affiliate).total.should == 15
       end
-      
+
       it "should fill the results with paged boosted results" do
         search = Search.new(:query => 'indexed', :affiliate => @non_affiliate)
         search.run
@@ -1281,15 +1290,16 @@ describe Search do
         search.are_results_by_bing?.should be_false
       end
     end
-    
+
     context "when affiliate has no Bing results and IndexedDocuments search returns nil" do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
         @non_affiliate.boosted_contents.destroy_all
         IndexedDocument.reindex
+        Sunspot.commit
         IndexedDocument.stub!(:search_for).and_return nil
       end
-      
+
       it "should return a search with a zero total" do
         search = Search.new(:query => 'some bogus + + query', :affiliate => @non_affiliate)
         search.run
@@ -1391,6 +1401,7 @@ describe Search do
         affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description",                                            :locale => 'en',
                                            :locale => 'en', :status => 'active', :publish_start_on => Date.current)
         BoostedContent.reindex
+        Sunspot.commit
         @search = Search.new(:query => 'obama')
         @search.run
         allow_message_expectations_on_nil
@@ -1544,7 +1555,7 @@ describe Search do
       specify { Hash.from_xml(search.to_xml)['search'].keys.sort.should == keys }
     end
   end
-  
+
   describe "#are_results_by_bing?" do
     context "when doing a normal search with normal results" do
       it "should return true" do
@@ -1553,35 +1564,37 @@ describe Search do
         search.are_results_by_bing?.should be_true
       end
     end
-    
+
     context "when the Bing results are empty and there are instead locally indexed results" do
       before do
         affiliate = affiliates(:non_existant_affiliate)
         affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'White House Indexed Doc', :description => 'This is an indexed document for the White House.')
         IndexedDocument.reindex
+        Sunspot.commit
         @search = Search.new(:query => 'white house', :affiliate => affiliate)
         @search.run
       end
-      
+
       it "should return false" do
         @search.are_results_by_bing?.should be_false
       end
     end
   end
-  
+
   describe "#highlight_solr_hit_like_bing" do
     before do
       @affiliate = affiliates(:non_existant_affiliate)
       @affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'Highlight me!', :description => 'This doc has highlights.', :body => 'This will match other keywords that are not to be bold.')
       IndexedDocument.reindex
+      Sunspot.commit
     end
-    
+
     context "when the title or description have matches to the query searched" do
       before do
         @search = Search.new(:query => 'highlight', :affiliate => @affiliate)
         @search.run
       end
-      
+
       it "should highlight in Bing-style any matches" do
         @search.results.first['title'].should =~ /\xEE\x80\x80/
         @search.results.first['title'].should =~ /\xEE\x80\x81/
@@ -1589,13 +1602,13 @@ describe Search do
         @search.results.first['content'].should =~ /\xEE\x80\x81/
       end
     end
-    
+
     context "when the title or description don't match the keyword queried" do
       before do
         @search = Search.new(:query => 'bold', :affiliate => @affiliate)
         @search.run
       end
-      
+
       it "should not highlight anything" do
         @search.results.first['title'].should_not =~ /\xEE\x80\x80/
         @search.results.first['title'].should_not =~ /\xEE\x80\x81/
