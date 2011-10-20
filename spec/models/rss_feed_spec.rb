@@ -150,8 +150,8 @@ describe RssFeed do
           Sunspot.stub!(:commit).and_raise Exception
         end
 
-        it "should report it to Hoptoad/Airbrake" do
-          HoptoadNotifier.should_receive(:notify).with(an_instance_of(Exception))
+        it "should log it and move on" do
+          Rails.logger.should_receive(:warn).once.with(an_instance_of(Exception))
           @feed.freshen
         end
       end
@@ -161,7 +161,7 @@ describe RssFeed do
         @feed.freshen
       end
     end
-    
+
     context "when the feed is in the Atom format" do
       before do
         @feed = rss_feeds(:atom_feed)
@@ -187,7 +187,7 @@ describe RssFeed do
         end
       end
     end
-    
+
     context "when the RSS feed format can not be determined" do
       before do
         @feed = rss_feeds(:atom_feed)
@@ -195,12 +195,12 @@ describe RssFeed do
         Nokogiri::XML::Document.should_receive(:parse).and_return(doc)
         @feed.news_items.destroy_all
       end
-      
+
       it "should not change the number of news items" do
         @feed.freshen
         @feed.reload
         @feed.news_items.count.should == 0
       end
-    end 
+    end
   end
 end

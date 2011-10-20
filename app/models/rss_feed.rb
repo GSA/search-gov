@@ -24,7 +24,7 @@ class RssFeed < ActiveRecord::Base
       end unless feed_type.nil?
       Sunspot.commit
     rescue Exception => e
-      HoptoadNotifier.notify(e)
+      Rails.logger.warn(e)
     end
   end
 
@@ -46,7 +46,7 @@ class RssFeed < ActiveRecord::Base
       end
     end
   end
-  
+
   def detect_feed_type(document)
     document.root.name == "feed" ? :atom : :rss
   end
