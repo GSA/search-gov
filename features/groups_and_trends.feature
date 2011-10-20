@@ -9,6 +9,7 @@ Feature: Groups and Trends
     And the following DailyQueryStats exist for affiliate "usasearch.gov":
       | query                       | times |  day        |
       | abcdef 10                   | 100   |  2011-09-11 |
+      | just dqs here               | 100   |  2011-09-12 |
     And the following DailyPopularQueryGroups exist for "2011-09-11":
       | query_group    | times  | time_frame |
       | Hcreform1      | 1110   | 1          |

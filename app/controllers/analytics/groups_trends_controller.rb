@@ -3,7 +3,7 @@ class Analytics::GroupsTrendsController < Analytics::AnalyticsController
 
   def index
     @page_title = 'Groups & Trends'
-    @day_being_shown = request["day"].blank? ? DailyQueryStat.most_recent_populated_date : request["day"].to_date
+    @day_being_shown = request["day"].blank? ? DailyPopularQueryGroup.maximum(:day) : request["day"].to_date
     @available_dates = DailyQueryStat.available_dates_range
     @num_results_dqgs = (request["num_results_dqgs"] || "10").to_i
     @most_recent_day_biggest_movers = MovingQuery.biggest_movers(@day_being_shown, MAX_NUMBER_OF_BIG_MOVERS_TO_SHOW)
