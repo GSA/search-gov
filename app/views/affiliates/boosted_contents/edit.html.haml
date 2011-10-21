@@ -1,6 +1,6 @@
 .boosted-sites.span-24
-  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Edit Boosted Content Entry"])
-  %h1 Edit Boosted Content Entry
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Edit Best Bets: Text Entry"])
+  %h1 Edit Best Bets: Text Entry
 .edit-boosted-content
   = form_for([@affiliate, @boosted_content]) do |f|
     = render :partial => f

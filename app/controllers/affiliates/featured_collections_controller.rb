@@ -4,12 +4,12 @@ class Affiliates::FeaturedCollectionsController < Affiliates::AffiliatesControll
   before_filter :setup_featured_collection, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @title = 'Featured Collections - '
+    @title = 'Best Bets: Graphics - '
     @featured_collections = @affiliate.featured_collections.paginate(:all, :per_page => FeaturedCollection.per_page, :page => params[:page])
   end
 
   def new
-    @title = 'Add a new Featured Collection - '
+    @title = 'Add a new Best Bets: Graphics - '
     @featured_collection = @affiliate.featured_collections.build(:publish_start_on => Date.current)
     setup_blank_keywords_and_links
   end
@@ -17,28 +17,28 @@ class Affiliates::FeaturedCollectionsController < Affiliates::AffiliatesControll
   def create
     @featured_collection = @affiliate.featured_collections.build(params[:featured_collection])
     if @featured_collection.save
-      redirect_to [@affiliate, @featured_collection], :flash => { :success => 'Featured Collection successfully created.' }
+      redirect_to [@affiliate, @featured_collection], :flash => { :success => 'Best Bets: Graphics entry successfully added.' }
     else
-      @title = 'Add a new Featured Collection - '
+      @title = 'Add a new Best Bets: Graphics - '
       setup_blank_keywords_and_links
       render :action => :new
     end
   end
 
   def show
-    @title = "Featured Collection - "
+    @title = "Best Bets: Graphics - "
   end
 
   def edit
-    @title = 'Edit Featured Collection - '
+    @title = 'Edit Best Bets: Graphics entry - '
     setup_blank_keywords_and_links
   end
 
   def update
     if @featured_collection.destroy_and_update_attributes(params[:featured_collection])
-      redirect_to [@affiliate, @featured_collection], :flash => { :success => 'Featured Collection successfully updated.' }
+      redirect_to [@affiliate, @featured_collection], :flash => { :success => 'Best Bets: Graphics entry successfully updated.' }
     else
-      @title = 'Edit Featured Collection - '
+      @title = 'Edit Best Bets: Graphics entry - '
       setup_blank_keywords_and_links
       render :action => :edit
     end
@@ -46,7 +46,7 @@ class Affiliates::FeaturedCollectionsController < Affiliates::AffiliatesControll
 
   def destroy
     @featured_collection.destroy
-    redirect_to affiliate_featured_collections_path(@affiliate), :flash => { :success => 'Featured Collection successfully deleted.' }
+    redirect_to affiliate_featured_collections_path(@affiliate), :flash => { :success => 'Best Bets: Graphics entry successfully deleted.' }
   end
 
   private

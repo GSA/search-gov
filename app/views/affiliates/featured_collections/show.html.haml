@@ -1,6 +1,6 @@
 .show-featured-collection
-  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Featured Collection"])
-  %h1 Featured Collection
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Best Bets: Graphics"])
+  %h1 Best Bets: Graphics
   %table
     %colgroup
       %col{ :class => 'name' }
@@ -10,7 +10,7 @@
         %th{ :colspan => 2 }
           .actions
             = link_to("Edit", edit_affiliate_featured_collection_path(@affiliate, @featured_collection), { :class => 'edit-link' })
-            = button_to("Delete", [@affiliate, @featured_collection], :method => :delete, :confirm => "Are you sure you want to delete this Featured Collection?")
+            = button_to("Delete", [@affiliate, @featured_collection], :method => :delete, :confirm => "Are you sure you want to delete this Best Bets: Graphics entry?")
     = render :partial => 'shared/featured_collections/show'
   .add-link-wrapper
     = link_to "Add another Featured Collection", new_affiliate_featured_collection_path(@affiliate), :class => 'add-link'

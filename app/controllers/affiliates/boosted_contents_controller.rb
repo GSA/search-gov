@@ -7,25 +7,25 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
   NUMBER_TO_DISPLAY_IF_ABOVE_MAX = 10
 
   def index
-    @title = 'Boosted Contents - '
+    @title = 'Best Bets: Text - '
     @boosted_contents = @affiliate.boosted_contents.paginate(:all, :per_page => BoostedContent.per_page, :page => params[:page], :order => 'updated_at DESC, id DESC')
   end
 
   def new
-    @title = "Add a new Boosted Content - "
+    @title = "Add a new Best Bets: Text - "
     @boosted_content = @affiliate.boosted_contents.new(:publish_start_on => Date.current)
   end
 
   def edit
-    @title = "Edit Boosted Content Entry"
+    @title = "Edit Best Bets: Text entry"
   end
 
   def update
     if @boosted_content.update_attributes(params[:boosted_content])
       index_boosted_content(@boosted_content)
-      redirect_to [@affiliate, @boosted_content], :flash => { :success => 'Boosted Content entry successfully updated' }
+      redirect_to [@affiliate, @boosted_content], :flash => { :success => 'Best Bets: Text entry successfully updated' }
     else
-      @title = "Edit Boosted Content Entry"
+      @title = "Edit Best Bets: Text entry"
       render :action => :edit
     end
   end
@@ -34,21 +34,21 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
     @boosted_content = @affiliate.boosted_contents.build(params[:boosted_content])
     if @boosted_content.save
       index_boosted_content(@boosted_content)
-      redirect_to [@affiliate, @boosted_content], :flash => { :success => 'Boosted Content entry successfully added' }
+      redirect_to [@affiliate, @boosted_content], :flash => { :success => 'Best Bets: Text entry successfully added' }
     else
-      @title = "Edit Boosted Content Entry"
+      @title = "Edit Best Bets: Text entry"
       render :action => :new
     end
   end
 
   def show
-    @title = "Boosted Content - "
+    @title = "Best Bets: Text - "
   end
 
   def destroy
     @boosted_content.destroy
     @boosted_content.solr_remove_from_index
-    redirect_to affiliate_boosted_contents_path(@affiliate), :flash => { :success => "Boosted Content entry successfully deleted" }
+    redirect_to affiliate_boosted_contents_path(@affiliate), :flash => { :success => "Best Bets: Text entry successfully deleted" }
   end
 
   def destroy_all
@@ -56,20 +56,20 @@ class Affiliates::BoostedContentsController < Affiliates::AffiliatesController
       bc.delete
       bc.solr_remove_from_index
     end
-    flash[:success] = "All Boosted Content entries successfully deleted"
+    flash[:success] = "All Best Bets: Text entries successfully deleted"
     redirect_to affiliate_boosted_contents_path(@affiliate)
   end
 
   def bulk_new
-    @title = "Bulk Upload Boosted Contents - "
+    @title = "Bulk Upload Best Bets: Text - "
   end
 
   def bulk
     results = BoostedContent.process_boosted_content_bulk_upload_for(@affiliate, params[:bulk_upload_file])
     if (results[:success])
       messages = []
-      messages << "#{results[:created]} Boosted Content entries successfully created." if results[:created] > 0
-      messages << "#{results[:updated]} Boosted Content entries successfully updated." if results[:updated] > 0
+      messages << "#{results[:created]} Best Bets: Text entries successfully created." if results[:created] > 0
+      messages << "#{results[:updated]} Best Bets: Text entries successfully updated." if results[:updated] > 0
       flash[:success] = "Successful Bulk Import for affiliate '#{ERB::Util.h(@affiliate.display_name)}':<br/>#{messages.join("<br/>")}".html_safe
       redirect_to affiliate_boosted_contents_path(@affiliate)
     else

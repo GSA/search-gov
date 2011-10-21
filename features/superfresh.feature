@@ -9,16 +9,8 @@ Feature: Affiliate Superfresh Interface
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "On-demand Indexing"
-    Then I should see "Learn more about our On-demand Indexing™ feature by going to our new section in the Help Desk"
-    And I should see "Another Way to Highlight Content"
-
-    When I follow "boosted content"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Contents
-
-    When I follow "On-demand Indexing"
-    And I follow "Boosted Content" in the callout boxes
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Contents
+    And I follow "URLs"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs
 
   Scenario: Submit a URL for on-demand indexing
     Given the following Affiliates exist:
@@ -26,10 +18,9 @@ Feature: Affiliate Superfresh Interface
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "On-demand Indexing"
+    And I follow "URLs"
     Then I should be on the affiliate superfresh page for "aff.gov"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > On-demand Indexing
-    And I should see "On-demand Indexing"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs
     When I fill in "Single URL" with "http://new.url.gov"
     And I press "Submit"
     Then I should be on the affiliate superfresh page for "aff.gov"
@@ -41,7 +32,7 @@ Feature: Affiliate Superfresh Interface
     Then I should see "http://new.url.gov"
 
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "On-demand Indexing"
+    And I follow "URLs"
     Then I should see "Uncrawled URLs (0)"
     And I should see "http://new.url.gov" within ".crawled-url"
 
@@ -54,7 +45,7 @@ Feature: Affiliate Superfresh Interface
       | http://removeme.mil   | aff.gov   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "On-demand Indexing"
+    And I follow "URLs"
     Then I should be on the affiliate superfresh page for "aff.gov"
     When I follow "Remove URL"
     Then I should be on the affiliate superfresh page for "aff.gov"
@@ -66,10 +57,8 @@ Feature: Affiliate Superfresh Interface
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "On-demand Indexing"
-    Then I should be on the affiliate superfresh page for "aff.gov"
-    And I should see "On-demand Indexing"
-    When I fill in "Single URL" with "notanurl.html"
+    And I follow "URLs"
+    And I fill in "Single URL" with "notanurl.html"
     And I press "Submit"
     Then I should be on the affiliate superfresh page for "aff.gov"
     And I should see "Url is invalid"
@@ -80,7 +69,7 @@ Feature: Affiliate Superfresh Interface
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "On-demand Indexing"
+    And I follow "URLs"
     Then I should be on the affiliate superfresh page for "aff.gov"
     And I should see "Bulk Upload"
 

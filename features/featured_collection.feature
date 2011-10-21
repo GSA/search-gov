@@ -132,8 +132,8 @@ Feature: Featured Collections
     And I should see "Layout must be selected"
     And I should see "Publish end date can't be before publish start date"
     And I should see "Image file size must be under 512 KB"
-    And I should see "Featured collection links title can't be blank"
-    And I should see "Featured collection links url can't be blank"
+    And I should see "Best bets: graphics links title can't be blank"
+    And I should see "Best bets: graphics links url can't be blank"
 
     When I attach the file "features/support/not_image.txt" to "Image"
     And I press "Add"
@@ -271,8 +271,8 @@ Feature: Featured Collections
     And I should see "Layout must be selected"
     And I should see "Publish end date can't be before publish start date"
     And I should see "Image file size must be under 512 KB"
-    And I should see "Featured collection links title can't be blank"
-    And I should see "Featured collection links url can't be blank"
+    And I should see "Best bets: graphics links title can't be blank"
+    And I should see "Best bets: graphics links url can't be blank"
 
     When I attach the file "features/support/not_image.txt" to "Image"
     And I press "Update"

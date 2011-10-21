@@ -1231,7 +1231,7 @@ Feature: Affiliate clients
     Then I should not see "Affiliate Header"
     And I should not see "Affiliate Footer"
 
- Scenario: Embedded advanced affiliate search
+  Scenario: Embedded advanced affiliate search
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | header           | footer           |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | Affiliate Header | Affiliate Footer |
@@ -1248,7 +1248,7 @@ Feature: Affiliate clients
     When I go to aff.gov's search page
     Then I should see the page with Webtrends tag
 
- Scenario: Affiliate with exclude webtrends
+  Scenario: Affiliate with exclude webtrends
    Given the following Affiliates exist:
      | display_name | name    | contact_email | contact_name | exclude_webtrends |
      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true              |
@@ -1276,3 +1276,20 @@ Feature: Affiliate clients
     Then I should see "Our Emergency Page" in the boosted contents section
     And I should see "FAQ Emergency Page" in the boosted contents section
     And I should see "Emergency & Safety Pages" in the featured collections section
+
+  Scenario: Visiting Best Bets index page
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Best bets"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets
+
+    When I follow "Text"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Text
+
+    When I follow "Best bets"
+    And I follow "Graphics"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Graphics
+

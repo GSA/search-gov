@@ -1,0 +1,20 @@
+.best-bets
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Best Bets"])
+  .column-1
+    %h1 Best Bets
+    %p
+      Want to highlight specific pages or information?
+      Create Best Bets, which appear above the standard web results when searchers' queries match text its metadata (e.g., title, description, or keywords).
+    %p
+      Consider creating best bets in the following circumstances, among others: (1) to respond to an emerging or sudden interest, such as a weather emergency or (2) to showcase select pages, such as in anticipation of events/holidays or following a site redesign.
+    There are two types of best bets.
+    %ol
+      %li
+        = link_to "Text", affiliate_boosted_contents_path(@affiliate)
+        Have the same visual look as a standard web result
+      %li
+        = link_to "Graphics", affiliate_featured_collections_path(@affiliate)
+        Have one or two-column layouts and the ability to add an image
+  .column-2
+    .side-note-image= image_tag "side_notes/best_bets.png"
+

@@ -1,6 +1,6 @@
 .show-boosted-content
-  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Boosted Content"])
-  %h1 Boosted Content
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Best Bets: Text"])
+  %h1 Best Bets: Text
   %table
     %colgroup
       %col{ :class => 'name' }
@@ -43,5 +43,5 @@
             - @boosted_content.keywords.split(',').each do |keyword|
               %span= keyword
   .add-link-wrapper
-    = link_to "Add another Boosted Content", new_affiliate_boosted_content_path(@affiliate), :class => 'add-link'
+    = link_to "Add another Best Bets: Text", new_affiliate_boosted_content_path(@affiliate), :class => 'add-link'
 

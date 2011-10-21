@@ -29,6 +29,7 @@ class FeaturedCollection < ActiveRecord::Base
                     :path => "#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension",
                     :ssl => true
 
+  after_validation :update_errors_keys
   before_save :ensure_http_prefix_on_title_url
   before_post_process :check_image_validation
   before_update :clear_existing_image
@@ -141,6 +142,17 @@ class FeaturedCollection < ActiveRecord::Base
   def clear_existing_image
     if image? and !image.dirty? and mark_image_for_deletion == '1'
       image.clear
+    end
+  end
+
+  def update_errors_keys
+    if self.errors.include?(:"featured_collection_links.title")
+      error_value = self.errors.delete(:"featured_collection_links.title")
+      self.errors.add(:"best_bets:_graphics_links.title", error_value)
+    end
+    if self.errors.include?(:"featured_collection_links.url")
+      error_value = self.errors.delete(:"featured_collection_links.url")
+      self.errors.add(:"best_bets:_graphics_links.url", error_value)
     end
   end
 end

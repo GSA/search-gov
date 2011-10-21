@@ -1,5 +1,5 @@
-= affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Bulk Upload Boosted Contents"])
-%h1 Bulk Upload Boosted Contents
+= affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Bulk Upload Best Bets: Text"])
+%h1 Bulk Upload Best Bets: Text
 = form_tag bulk_affiliate_boosted_contents_path(@affiliate), :multipart => true, :class=> "bordered", :id => 'boosted_content_bulk_upload_form' do
   %h4 Instructions
   %ol
@@ -16,7 +16,7 @@
 
   = link_to "+ Formatting Tips", "#formatting_tips", :id => "formatting_tips", :class => "sliding_trigger"
   %div#formatting_tips_content.sliding_content
-    %h4 Example Boosted Content in XML format
+    %h4 Example Best Bets: Text in XML format
     %pre
       = preserve do
         :escaped
@@ -40,7 +40,7 @@
     %p
       Also, be sure to enter a title, url, and description field for every entry. (They are mandatory so the system will prevent you from uploading files without a field for every entry.)
 
-    %h4 Example Boosted Content in CSV format
+    %h4 Example Best Bets: Text in CSV format
     %pre
       = preserve do
         :escaped
@@ -49,6 +49,6 @@
     %p
       The fields should be title, url, and description.
 
-  %h4.select-boosted-content-file Select Boosted Content File
+  %h4.select-boosted-content-file Select Best Bets: Text File
   = file_field_tag 'bulk_upload_file', :accept => 'text/csv,application/xml'
   = submit_tag "Upload"

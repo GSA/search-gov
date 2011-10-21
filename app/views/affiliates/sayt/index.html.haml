@@ -1,7 +1,7 @@
 .span-24
   = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Type-ahead Search'])
 
-.span-17.append-1.last
+.span-16.last
   %h1 Type-ahead Search
   %p
     Enable type-ahead search to provide your customers with suggestions as they type their search in your site's search box.
@@ -73,7 +73,8 @@
     #bulk_upload{:style => 'margin-bottom: 25px;'}
       = render :partial => 'bulk_upload_form', :locals => { :upload_path => upload_affiliate_type_ahead_search_index_path(@affiliate) }
 
-.span-6.last
+.span-8.last
+  .content-box.image= image_tag "side_notes/sayt.png"
   .content-box.cross-promotion
     %p
       Do you want to have type-ahead search suggestions in the search box on your home page and/or in your banner?

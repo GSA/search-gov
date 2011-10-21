@@ -574,8 +574,8 @@ describe Affiliates::BoostedContentsController do
       end
 
       it { should redirect_to(affiliate_boosted_contents_path(affiliate)) }
-      it { should set_the_flash.to(/4 Boosted Content entries successfully created/) }
-      it { should set_the_flash.to(/2 Boosted Content entries successfully updated/) }
+      it { should set_the_flash.to(/4 Best Bets: Text entries successfully created/) }
+      it { should set_the_flash.to(/2 Best Bets: Text entries successfully updated/) }
     end
 
     context "when logged in as an affiliate manager who owns the affiliate and failed to bulk upload boosted contents" do

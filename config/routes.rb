@@ -15,6 +15,7 @@ UsasearchRails3::Application.routes.draw do
       put :update_look_and_feel
       get :preview
       post :cancel_staged_changes_for
+      get :best_bets
     end
     collection do
       get :home

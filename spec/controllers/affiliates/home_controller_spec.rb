@@ -12,14 +12,14 @@ describe Affiliates::HomeController do
       response.should be_success
     end
   end
-  
+
   describe "do GET on #how_it_works" do
     it "should have a title" do
       get :how_it_works
       response.should be_success
     end
   end
-  
+
   describe "do GET on #demo" do
     it "should have a title" do
       get :demo
@@ -113,12 +113,12 @@ describe Affiliates::HomeController do
       before do
         UserSession.create(users(:affiliate_manager))
       end
-      
+
       context "when editing one of the affiliate's affiliates" do
         before do
           @affiliate = affiliates(:basic_affiliate)
         end
-        
+
         it "should assign @title" do
           get :edit_site_information, :id => @affiliate.id
           assigns[:title].should_not be_blank
@@ -173,12 +173,12 @@ describe Affiliates::HomeController do
         before do
           post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
         end
-        
+
         it "should upate the affiliate's staged fields" do
           assigns[:affiliate].has_staged_content.should == true
           assigns[:affiliate].display_name.should == "new display name"
         end
-        
+
         it "should set a flash[:success] message" do
           flash[:success].should_not be_blank
         end
@@ -311,7 +311,7 @@ describe Affiliates::HomeController do
         before do
           post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {}
         end
-      
+
         it "should assign @affiliate" do
           assigns[:affiliate].should == @affiliate
         end
@@ -321,7 +321,7 @@ describe Affiliates::HomeController do
         before do
           post :update_look_and_feel, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Save for Preview"
         end
-        
+
         it "should set a flash[:success] message" do
           flash[:success].should_not be_blank
         end
@@ -522,12 +522,12 @@ describe Affiliates::HomeController do
           @emailer = mock(Emailer)
           @emailer.stub!(:deliver).and_return true
         end
-        
+
         it "should assign @current_step to :get_code" do
           post :create, :affiliate => {:display_name => 'new_affiliate'}
           assigns[:current_step].should == :get_the_code
         end
-         
+
         it "should email the affiliate a confirmation email" do
           Emailer.should_receive(:new_affiliate_site).and_return @emailer
           post :create, :affiliate => {:display_name => 'new_affiliate'}
@@ -544,7 +544,7 @@ describe Affiliates::HomeController do
           post :create
           assigns[:current_step].should == :new_site_information
         end
-        
+
         it "should not send an email" do
           Emailer.should_not_receive(:new_affiliate_site)
           post :create
@@ -568,7 +568,7 @@ describe Affiliates::HomeController do
       before do
         post :push_content_for, :id => @affiliate.id
       end
-      
+
       it "should require affiliate login for push_content_for" do
         response.should redirect_to(login_path)
       end
@@ -604,7 +604,7 @@ describe Affiliates::HomeController do
       before do
         post :cancel_staged_changes_for, :id => @affiliate.id
       end
-      
+
       it "should require affiliate login for cancel_staged_changes_for" do
         response.should redirect_to(login_path)
       end
@@ -628,7 +628,7 @@ describe Affiliates::HomeController do
         assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
         assigns[:affiliate].staged_affiliate_template_id.should == assigns[:affiliate].affiliate_template_id
         assigns[:affiliate].staged_search_results_page_title.should == assigns[:affiliate].search_results_page_title
-        assigns[:affiliate].has_staged_content.should == false      
+        assigns[:affiliate].has_staged_content.should == false
       end
 
       it "should redirect to affiliate specific page" do
@@ -680,6 +680,43 @@ describe Affiliates::HomeController do
         get :preview, :id => affiliates(:basic_affiliate).id
         response.should render_template("preview")
       end
+    end
+  end
+
+  describe "do GET on #best_bets" do
+    context "when not logged in" do
+      before do
+        get :best_bets, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to login_path }
+    end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+        get :best_bets, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as an affiliate manager who doesn't own the affiliate being previewed" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :best_bets, :id => affiliates(:another_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as the affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :best_bets, :id => affiliates(:basic_affiliate).id
+      end
+
+      it { should assign_to :title }
     end
   end
 

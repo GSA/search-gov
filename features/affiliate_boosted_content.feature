@@ -13,13 +13,14 @@ Feature: Boosted Content
       | fresnel lens                                                                                               | http://www.hello.gov/fresnels.htm | fresnels description |          | true          | es     | inactive | 09/01/2011       |                |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
-    Then I should see the browser page titled "Boosted Contents"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Contents
-    And I should see "Boosted Contents" in the page header
-    And I should see "Displaying all 2 boosted contents"
+    And I follow "Best bets"
+    And I follow "Text"
+    Then I should see the browser page titled "Best Bets: Text"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Text
+    And I should see "Best Bets: Text" in the page header
+    And I should see "Displaying all 2 Best Bets: Text entries"
     And I should see 2 Boosted Content Entries
-    And I should see "Add new boosted content"
+    And I should see "Add new text"
     And I should see the following table rows:
       | Title                          | URL                        | Publish Start | Status   |
       | fresnel lens                   | www.hello.gov/fresnels.htm | 09/01/2011    | Inactive |
@@ -36,11 +37,14 @@ Feature: Boosted Content
       | locale | status |
       | en     | active |
     And I go to the aff.gov's boosted contents page
-    And I should see "Displaying boosted contents 1 - 20 of 32 in total"
+    And I should see "Displaying Best Bets: Text entries 1 - 20 of 32 in total"
     And I should see 20 Boosted Content Entries
     When I follow "Next"
-    Then I should see "Displaying boosted contents 21 - 32 of 32 in total"
+    Then I should see "Displaying Best Bets: Text entries 21 - 32 of 32 in total"
     And I should see "title 10"
+
+    When I follow "URLs" in the affiliate boosted contents section
+    Then I should see the browser page titled "URLs"
 
   Scenario: Create a new Boosted Content entry
     Given the following Affiliates exist:
@@ -48,12 +52,13 @@ Feature: Boosted Content
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
-    Then I should see "aff site has no Boosted Content"
-    When I follow "Add new boosted content"
-    Then I should see the browser page titled "Add a new Boosted Content"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Boosted Content
-    And I should see "Add a new Boosted Content" in the page header
+    And I follow "Best bets"
+    And I follow "Text"
+    Then I should see "aff site has no Best Bets: Text"
+    When I follow "Add new text"
+    Then I should see the browser page titled "Add a new Best Bets: Text"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Best Bets: Text
+    And I should see "Add a new Best Bets: Text" in the page header
     And the "Publish start date" field should contain today's date
     And I fill in "Title" with "Test"
     And I fill in "URL" with "http://www.test.gov"
@@ -62,10 +67,10 @@ Feature: Boosted Content
     And I select "English" from "Locale*"
     And I select "Active" from "Status*"
     And I press "Add"
-    Then I should see "Boosted Content entry successfully added"
-    And I should see the browser page titled "Boosted Content"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Boosted Content
-    And I should see "Boosted Content" in the page header
+    Then I should see "Best Bets: Text entry successfully added"
+    And I should see the browser page titled "Best Bets: Text"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Text
+    And I should see "Best Bets: Text" in the page header
     And I should see "Test"
     And I should see "http://www.test.gov"
     And I should see "Test Description"
@@ -75,10 +80,10 @@ Feature: Boosted Content
     And I should see boosted content keyword "unrelated"
     And I should see boosted content keyword "terms"
     And I should not see "unrelated, terms"
-    When I follow "Add another Boosted Content"
-    Then I should see the browser page titled "Add a new Boosted Content"
+    When I follow "Add another Best Bets: Text"
+    Then I should see the browser page titled "Add a new Best Bets: Text"
     When I follow "Cancel"
-    Then I should see "Boosted Contents" in the page header
+    Then I should see "Best Bets: Text" in the page header
 
   Scenario: Create Boosted Content with URL without http:// prefix
     Given the following Affiliates exist:
@@ -86,20 +91,16 @@ Feature: Boosted Content
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
-    Then I should see "aff site has no Boosted Content"
-    When I follow "Add new boosted content"
-    Then I should see the browser page titled "Add a new Boosted Content"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Boosted Content
-    And I should see "Add a new Boosted Content" in the page header
-    And the "Publish start date" field should contain today's date
+    And I follow "Best bets"
+    And I follow "Text"
+    And I follow "Add new text"
     And I fill in "Title" with "Test"
     And I fill in "URL" with "www.test.gov"
     And I fill in "Description" with "Test Description"
     And I select "English" from "Locale*"
     And I select "Active" from "Status*"
     And I press "Add"
-    Then I should see "Boosted Content entry successfully added"
+    Then I should see "Best Bets: Text entry successfully added"
     And I should see "http://www.test.gov"
 
   Scenario: Validating Affiliate Boosted Content on create
@@ -111,8 +112,9 @@ Feature: Boosted Content
       | fresnel lens | http://www.hello.gov/there.htm | fire island | lens     | true          | active |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
-    And I follow "Add new boosted content"
+    And I follow "Best bets"
+    And I follow "Text"
+    And I follow "Add new text"
     And I fill in the following:
       | Publish start date | 07/01/2012                              |
       | Publish end date   | 07/01/2011                              |
@@ -139,15 +141,16 @@ Feature: Boosted Content
      | a title          | http://a.url.gov  | A description     | unrelated, terms  |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
+    And I follow "Best bets"
+    And I follow "Text"
     And I follow "Edit"
     Then I should be on the edit affiliate boosted content page for "aff.gov"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Edit Boosted Content Entry
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Edit Best Bets: Text Entry
     And I fill in "Title" with "new title"
     And I fill in "Description" with "new description"
     And I fill in "Keywords" with "bananas, apples, oranges"
     And I press "Update"
-    Then I should see "Boosted Content entry successfully updated"
+    Then I should see "Best Bets: Text entry successfully updated"
     And I should see "new title"
     And I should not see "a title"
     And I should see "http://a.url.gov"
@@ -159,7 +162,7 @@ Feature: Boosted Content
     And I should not see "unrelated, terms"
     When I follow "Edit"
     And I follow "Cancel"
-    Then I should see "Boosted Contents" in the page header
+    Then I should see "Best Bets: Text" in the page header
 
   Scenario: Edit a Boosted Content's URL without http:// prefix
     Given the following Affiliates exist:
@@ -170,12 +173,13 @@ Feature: Boosted Content
      | a title          | http://a.url.gov  | A description     | unrelated, terms  |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
+    And I follow "Best bets"
+    And I follow "Text"
     And I follow "Edit"
     Then the "URL" field should contain "http://a.url.gov"
     When I fill in "URL" with "b.url.gov"
     And I press "Update"
-    Then I should see "Boosted Content entry successfully updated"
+    Then I should see "Best Bets: Text entry successfully updated"
     And I should see "http://b.url.gov"
 
   Scenario: Validating Affiliate Boosted Content on update
@@ -187,9 +191,9 @@ Feature: Boosted Content
      | a title          | http://a.url.gov  | A description     | unrelated, terms  |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
+    And I follow "Best bets"
+    And I follow "Text"
     And I follow "Edit"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Edit Boosted Content Entry
     And I fill in "Title" with ""
     And I fill in "URL" with ""
     And I fill in "Description" with ""
@@ -215,14 +219,15 @@ Feature: Boosted Content
       | one more title | http://a.url.gov/3 | A description | unrelated, terms |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
-    Then I should see "Displaying all 3 boosted contents"
+    And I follow "Best bets"
+    And I follow "Text"
+    Then I should see "Displaying all 3 Best Bets: Text entries"
     And I should see "a title"
     And I should see "another title"
     And I should see "one more title"
     When I press "Delete" on the 2nd boosted content entry
-    Then I should see "Boosted Content entry successfully deleted"
-    And I should see "Displaying all 2 boosted contents"
+    Then I should see "Best Bets: Text entry successfully deleted"
+    And I should see "Displaying all 2 Best Bets: Text entries"
     And I should see "a title"
     And I should see "one more title"
 
@@ -237,13 +242,14 @@ Feature: Boosted Content
       | one more title | http://a.url.gov/3 | A description | unrelated, terms |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
+    And I follow "Best bets"
+    And I follow "Text"
     Then I should see "a title"
     And I should see "another title"
     And I should see "one more title"
     When I press "Delete all"
-    Then I should see "All Boosted Content entries successfully deleted"
-    And I should see "aff site has no Boosted Content"
+    Then I should see "All Best Bets: Text entries successfully deleted"
+    And I should see "aff site has no Best Bets: Text entry"
     And I should not see "Delete all" button
 
   Scenario: Site visitor sees relevant boosted results for given affiliate search
@@ -324,25 +330,28 @@ Feature: Boosted Content
       | aff <i>site</i>  | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
-    And I follow "Bulk upload boosted contents"
-    Then I should see the browser page titled "Bulk Upload Boosted Contents"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff <i>site</i> > Bulk Upload Boosted Contents
-    And I should see "Bulk Upload Boosted Contents" in the page header
+    And I follow "Best bets"
+    And I follow "Text"
+    And I follow "Bulk upload"
+    Then I should see the browser page titled "Bulk Upload Best Bets: Text"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff <i>site</i> > Bulk Upload Best Bets: Text
+    And I should see "Bulk Upload Best Bets: Text" in the page header
     And I attach the file "features/support/boosted_content.xml" to "bulk_upload_file"
     And I press "Upload"
     Then I should see "Successful Bulk Import for affiliate 'aff <i>site</i>'"
-    Then I should see "2 Boosted Content entries successfully created."
+    Then I should see "2 Best Bets: Text entries successfully created."
 
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
+    And I follow "Best bets"
+    And I follow "Text"
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"
 
-    When I follow "Bulk upload boosted contents"
+    When I follow "Bulk upload"
     And I attach the file "features/support/new_boosted_content.xml" to "bulk_upload_file"
     And I press "Upload"
-    And I follow "Boosted content"
+    And I follow "Best bets"
+    And I follow "Text"
     Then I should see "New results about Texas"
     And I should see "New results about hurricanes"
 
@@ -357,8 +366,9 @@ Feature: Boosted Content
       | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
-    And I follow "Bulk upload boosted contents"
+    And I follow "Best bets"
+    And I follow "Text"
+    And I follow "Bulk upload"
     And I attach the file "features/support/missing_title_boosted_content.xml" to "bulk_upload_file"
     And I press "Upload"
     Then I should see "Your XML document could not be processed. Please check the format and try again."
@@ -374,25 +384,25 @@ Feature: Boosted Content
       | aff <i>site</i> | aff.gov | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
-    And I follow "Bulk upload boosted contents"
-    Then I should see the browser page titled "Bulk Upload Boosted Contents"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff <i>site</i> > Bulk Upload Boosted Contents
-    And I should see "Bulk Upload Boosted Contents" in the page header
+    And I follow "Best bets"
+    And I follow "Text"
+    And I follow "Bulk upload"
     And I attach the file "features/support/boosted_content.csv" to "bulk_upload_file"
     And I press "Upload"
     Then I should see "Successful Bulk Import for affiliate 'aff <i>site</i>'"
-    Then I should see "2 Boosted Content entries successfully created."
+    Then I should see "2 Best Bets: Text entries successfully created."
 
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
+    And I follow "Best bets"
+    And I follow "Text"
     Then I should see "This is a listing about Texas"
     And I should see "Some other listing about hurricanes"
 
-    When I follow "Bulk upload boosted contents"
+    When I follow "Bulk upload"
     And I attach the file "features/support/new_boosted_content.csv" to "bulk_upload_file"
     And I press "Upload"
-    And I follow "Boosted content"
+    And I follow "Best bets"
+    And I follow "Text"
     Then I should see "New results about Texas"
     And I should see "New results about hurricanes"
 
@@ -407,8 +417,9 @@ Feature: Boosted Content
       | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
-    And I follow "Bulk upload boosted contents"
+    And I follow "Best bets"
+    And I follow "Text"
+    And I follow "Bulk upload"
     And I attach the file "features/support/missing_title_boosted_content.csv" to "bulk_upload_file"
     And I press "Upload"
     Then I should see "Your CSV document could not be processed. Please check the format and try again."
@@ -429,8 +440,9 @@ Feature: Boosted Content
       | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Boosted content"
-    And I follow "Bulk upload boosted contents"
+    And I follow "Best bets"
+    And I follow "Text"
+    And I follow "Bulk upload"
     And I attach the file "features/support/not_image.txt" to "bulk_upload_file"
     And I press "Upload"
     Then I should see "Your filename should have .xml or .csv extension"

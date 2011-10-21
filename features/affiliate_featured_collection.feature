@@ -17,12 +17,13 @@ Feature: Featured Collections
       | merol |
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the affiliate admin page with "site.gov" selected
-    And I follow "Featured Collections"
-    Then I should see the browser page titled "Featured Collections"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collections
-    And I should see "Featured Collections" in the page header
-    And I should see "Displaying 1 featured collection"
-    And I should see "Add new featured collection"
+    And I follow "Best bets"
+    And I follow "Graphics"
+    Then I should see the browser page titled "Best Bets: Graphics"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    And I should see "Best Bets: Graphics" in the page header
+    And I should see "Displaying 1 Best Bets: Graphics entry"
+    And I should see "Add new graphics"
     And I should see "Lorem ipsum dolor sit amet,..."
     And I should see "07/01/2011"
     And I should see "07/01/2012"
@@ -31,7 +32,7 @@ Feature: Featured Collections
       | locale | status |
       | en     | active |
     And I go to the site.gov's featured collections page
-    Then I should see "Displaying featured collections 1 - 20 of 31 in total"
+    Then I should see "Displaying Best Bets: Graphics entries 1 - 20 of 31 in total"
     And I should see "20" featured collections
     When I follow "Next"
     Then I should see "random title 20"
@@ -42,15 +43,15 @@ Feature: Featured Collections
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the site.gov's featured collections page
-    Then I should see "Site site has no Featured Collection"
-    When I follow "Add new featured collection"
-    Then I should see the browser page titled "Add a new Featured Collection"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Add a new Featured Collection
-    And I should see "Add a new Featured Collection" in the page header
+    Then I should see "Site site has no Best Bets: Graphics entry"
+    When I follow "Add new graphics"
+    Then I should see the browser page titled "Add a new Best Bets: Graphics"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Add a new Best Bets: Graphics
+    And I should see "Add a new Best Bets: Graphics" in the page header
     When I follow "Cancel"
-    Then I should see "Featured Collections" in the page header
+    Then I should see "Best Bets: Graphics" in the page header
 
-    When I follow "Add new featured collection"
+    When I follow "Add new graphics"
     Then the "Publish start date" field should contain today's date
     When I fill in the following:
       | Title*                | 2010 Atlantic Hurricane Season                    |
@@ -68,10 +69,10 @@ Feature: Featured Collections
     And I select "Active" from "Status*"
     And I select "One column" from "Layout*"
     And I press "Add"
-    Then I should see "Featured Collection successfully created"
-    And I should see the browser page titled "Featured Collection"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
-    And I should see "Featured Collection" in the page header
+    Then I should see "Best Bets: Graphics entry successfully added"
+    And I should see the browser page titled "Best Bets: Graphics"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    And I should see "Best Bets: Graphics" in the page header
     And I should see "2010 Atlantic Hurricane Season"
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see "English"
@@ -86,9 +87,9 @@ Feature: Featured Collections
     And I should see "http://www.noaa.gov/hurricane.html"
     And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
     When I follow "Edit"
-    And I should see the browser page titled "Edit Featured Collection"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Edit Featured Collection
-    And I should see "Edit Featured Collection" in the page header
+    And I should see the browser page titled "Edit Best Bets: Graphics entry"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Edit Best Bets: Graphics
+    And I should see "Edit Best Bets: Graphics" in the page header
     And the "Title*" field should contain "2010 Atlantic Hurricane Season"
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/2010atlan.shtml"
     And the "Keyword 0" field should contain "weather"
@@ -104,7 +105,7 @@ Feature: Featured Collections
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the site.gov's featured collections page
-    And I follow "Add new featured collection"
+    And I follow "Add new graphics"
     And I fill in the following:
       | Title*             | 2010 Atlantic Hurricane Season             |
       | Title URL          | www.nhc.noaa.gov/2010atlan.shtml           |
@@ -115,13 +116,11 @@ Feature: Featured Collections
     And I select "Active" from "Status*"
     And I select "One column" from "Layout*"
     And I press "Add"
-    Then I should see "Featured Collection successfully created"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
+    Then I should see "Best Bets: Graphics entry successfully added"
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
     When I follow "Edit"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Edit Featured Collection
-    And I should see "Edit Featured Collection" in the page header
+    Then I should see "Edit Best Bets: Graphics entry" in the page header
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/2010atlan.shtml"
     And the "Link URL 0" field should contain "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
 
@@ -131,7 +130,7 @@ Feature: Featured Collections
       | site         | site.gov | affiliate_manager@site.gov | John Bar     |
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the site.gov's featured collections page
-    And I follow "Add new featured collection"
+    And I follow "Add new graphics"
     And I fill in the following:
       | Publish start date | 07/01/2012                              |
       | Publish end date   | 07/01/2011                              |
@@ -145,8 +144,8 @@ Feature: Featured Collections
     And I should see "Layout must be selected"
     And I should see "Publish end date can't be before publish start date"
     And I should see "Image file size must be under 512 KB"
-    And I should see "Featured collection links title can't be blank"
-    And I should see "Featured collection links url can't be blank"
+    And I should see "Best bets: graphics links title can't be blank"
+    And I should see "Best bets: graphics links url can't be blank"
 
     When I fill in "Publish start date" with ""
     And I attach the file "features/support/not_image.txt" to "Image"
@@ -173,9 +172,9 @@ Feature: Featured Collections
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the site.gov's featured collections page
     And I follow "Edit"
-    And I should see the browser page titled "Edit Featured Collection"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Edit Featured Collection
-    And I should see "Edit Featured Collection" in the page header
+    And I should see the browser page titled "Edit Best Bets: Graphics"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Edit Best Bets: Graphics
+    And I should see "Edit Best Bets: Graphics" in the page header
     And the "Title*" field should contain "Worldwide Tropical Cyclone Names"
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/aboutnames.shtml"
     And the "Locale*" field should contain "en"
@@ -183,7 +182,7 @@ Feature: Featured Collections
     And the "Layout*" field should contain "one column"
 
     When I follow "Cancel"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
 
     When I follow "Edit"
     And I fill in the following:
@@ -198,10 +197,10 @@ Feature: Featured Collections
       | Link URL 1   |                                                                                                            |
     And I select "Two column" from "Layout*"
     And I press "Update"
-    Then I should see "Featured Collection successfully updated."
-    And I should see the browser page titled "Featured Collection"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
-    And I should see "Featured Collection" in the page header
+    Then I should see "Best Bets: Graphics entry successfully updated."
+    And I should see the browser page titled "Best Bets: Graphics"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    And I should see "Best Bets: Graphics" in the page header
     And I should see "Two column"
     And I should see "typhoon"
     And I should see "cyclone"
@@ -240,7 +239,7 @@ Feature: Featured Collections
     And I select "Active" from "Status*"
     And I select "One column" from "Layout*"
     And I press "Update"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collection
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
     And I should see a link to "Hurricane Alex" with url for "http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf"
 
@@ -285,7 +284,7 @@ Feature: Featured Collections
       | Link Title 2 |  |
       | Link URL 2   |  |
     And I press "Update"
-    Then I should see "Featured Collection successfully updated"
+    Then I should see "Best Bets: Graphics entry successfully updated"
     When I go to site.gov's search page
     And I fill in "query" with "Pacific"
     And I press "Search"
@@ -332,8 +331,8 @@ Feature: Featured Collections
     And I should see "Layout must be selected"
     And I should see "Publish end date can't be before publish start date"
     And I should see "Image file size must be under 512 KB"
-    And I should see "Featured collection links title can't be blank"
-    And I should see "Featured collection links url can't be blank"
+    And I should see "Best bets: graphics links title can't be blank"
+    And I should see "Best bets: graphics links url can't be blank"
 
     When I attach the file "features/support/not_image.txt" to "Image"
     And I press "Update"
@@ -349,10 +348,10 @@ Feature: Featured Collections
     And I am logged in with email "affiliate_manager@site.gov" and password "random_string"
     When I go to the site.gov's featured collections page
     And I press "Delete"
-    Then I should see "Featured Collection successfully deleted"
-    And I should see the browser page titled "Featured Collections"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collections
-    And I should see "Featured Collections" in the page header
+    Then I should see "Best Bets: Graphics entry successfully deleted"
+    And I should see the browser page titled "Best Bets: Graphics"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    And I should see "Best Bets: Graphics" in the page header
 
   Scenario: Deleting Featured Collection from the individual featured collection page
     Given the following Affiliates exist:
@@ -365,10 +364,10 @@ Feature: Featured Collections
     When I go to the site.gov's featured collections page
     And I follow "Lorem ipsum dolor sit amet"
     And I press "Delete"
-    Then I should see "Featured Collection successfully deleted"
-    And I should see the browser page titled "Featured Collections"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Featured Collections
-    And I should see "Featured Collections" in the page header
+    Then I should see "Best Bets: Graphics entry successfully deleted"
+    And I should see the browser page titled "Best Bets: Graphics"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > site > Best Bets: Graphics
+    And I should see "Best Bets: Graphics" in the page header
 
   Scenario: Affiliate search user sees featured collection with an image
     Given the following Affiliates exist:

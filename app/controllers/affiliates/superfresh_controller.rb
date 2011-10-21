@@ -5,7 +5,7 @@ class Affiliates::SuperfreshController < Affiliates::AffiliatesController
   VALID_CONTENT_TYPES = %w{text/plain txt}
 
   def index
-    @title = "On-demand Indexing - "
+    @title = "URLs - "
     @superfresh_url = SuperfreshUrl.new
     @uncrawled_urls = SuperfreshUrl.uncrawled_urls(nil, @affiliate)
     @crawled_urls = SuperfreshUrl.crawled_urls(@affiliate, params[:page])

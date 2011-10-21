@@ -11,6 +11,7 @@
   'in the footer' => '.outer-footer',
   'in the query search results table header' => '.query_search_results_table_header',
   'in the callout boxes' => '.col-2',
+  'in the side note boxes' => '.column-2',
   'in the search navigation' => '#main_nav',
   'in the homepage header' => '.header',
   'in the homepage footer' => '.footer',
@@ -23,6 +24,7 @@
   'in the no results section' => '.no-results',
   'in the featured collections section' => '.featured-collections',
   'in the pagination' => '.pagination',
+  'in the affiliate boosted contents section' => '.boosted-contents',
   'in the boosted contents section' => '#boosted',
   'in the mobile boosted contents section' => '#boostedresults'
 }.

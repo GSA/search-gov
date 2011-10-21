@@ -658,6 +658,7 @@ a
           margin: 0
       &.sample-file-format
         margin-left: 1em
+        padding: 0
     li
       width: 100%
       clear: both
@@ -738,6 +739,8 @@ a
   .col-2
     float: left
     width: 33%
+    .side-note-image
+      margin-bottom: 25px
     .side-note
       width: 90%
       float: left
@@ -1297,6 +1300,37 @@ h3.api-item
 .boosted-contents, .boosted-sites
   @include clearfix
 
+.column-1
+  float: left
+  margin-right: 10px
+  width: 65%
+.column-2
+  float: left
+  width: 32%
+  .side-note-image
+    margin-bottom: 25px
+  .side-note
+    width: 90%
+    float: left
+    background: #FFFED7
+    border: 1px solid #DDD
+    padding: 8px
+    margin-bottom: 25px
+    color: #4a4a4a
+    font-size: 14px
+    line-height: 16px
+    h5
+      line-height: 16px
+      margin: 0 0 8px 0
+      font:
+        size: 14px
+        weight: bold
+    a
+      word-wrap: break-word
+    ul
+      margin: 0.5em 0 0
+      padding: 0 0 0 1em
+
 .featured-collection-list, .boosted-content-list, .rss-feed-list
   table
     border: 1px solid #BDBDBD
@@ -1606,3 +1640,9 @@ h3.api-item
   #analytics_search_start_date, #analytics_search_end_date
     width: 130px
 
+.related-topics
+  margin-bottom: 21px
+  ul
+    list-style: none
+    margin: 0 0 1.5em 0
+    padding: 0
