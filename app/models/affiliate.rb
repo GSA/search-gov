@@ -40,7 +40,16 @@ class Affiliate < ActiveRecord::Base
   end
 
   def domains_as_array
-    self.domains.nil? ? [] : self.domains.split
+    @domains_as_array ||= (self.domains.nil? ? [] : self.domains.split)
+  end
+
+  def has_multiple_domains?
+    @has_multiple_domains ||= self.domains_as_array.length > 1
+  end
+
+  def get_matching_domain(url)
+    return unless I18n.locale == :en
+    url.blank? ? nil : domains_as_array.detect { |domain| url =~ /#{Regexp.escape(domain)}/i }
   end
 
   def is_affiliate_sayt_enabled?

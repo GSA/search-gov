@@ -81,6 +81,7 @@ describe "shared/_searchresults.html.haml" do
         stub_template "shared/_featured_collections.html.haml" => "featured collections"
         @search.stub!(:has_boosted_contents?).and_return(false)
         @search.stub!(:has_featured_collections?).and_return(true)
+        @search.stub!(:matching_site_limit).and_return("someaffiliate.gov")
 
         view.stub!(:search).and_return @search
       end
@@ -106,12 +107,12 @@ describe "shared/_searchresults.html.haml" do
         render
         rendered.should_not have_selector('table', :class => 'deep_links')
       end
-      
+
       context "when boosted contents are present" do
         before do
           @search.should_not_receive(:has_boosted_contents?)
         end
-        
+
         it "should not show boosted contents" do
           render
           rendered.should_not have_selector('boosted_content')
@@ -133,29 +134,29 @@ describe "shared/_searchresults.html.haml" do
         before do
           @search.stub!(:spotlight).and_return mock(Spotlight)
         end
-        
+
         it "should not show a spotlight" do
           render
           rendered.should_not have_selector('spotlight')
         end
       end
-      
+
       context "when a recalls record is present" do
         before do
           @search.stub!(:recalls).and_return [mock(Recall)]
         end
-        
+
         it "should not show a recalls govbox" do
           render
           rendered.should_not have_selector('govbox')
         end
       end
-      
+
       context "when extra image results are present" do
         before do
           @search.stub!(:extra_image_results).and_return "ExtraImageResults"
         end
-        
+
         it "should not show a popular image govbox" do
           render
           rendered.should_not have_selector('govbox')

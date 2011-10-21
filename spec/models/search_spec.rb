@@ -284,6 +284,40 @@ describe Search do
         end
       end
 
+      context "when affiliate has more than one domains specified and sitelimit contains one matching domain" do
+        let(:affiliate) { mock('affiliate', :domains => %w(          foo.com bar.com          ).join("\r\n")) }
+        let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'www.foo.com'))}
+
+        before do
+          affiliate.should_receive(:get_matching_domain).with("www.foo.com").and_return("foo.com")
+          uri_result = URI::parse("http://localhost:3000/")
+          URI.should_receive(:parse).with(/#{Regexp.escape("(government)%20(site%3Awww.foo.com)")}/).and_return(uri_result)
+          search.run
+        end
+
+        subject { search }
+        its(:query) { should == 'government' }
+        its(:formatted_query) { should == '(government) (site:www.foo.com)' }
+        its(:matching_site_limit) { should == 'www.foo.com' }
+      end
+
+      context "when affiliate has more than one domains specified and sitelimit does not contain matching domain" do
+        let(:affiliate) { mock('affiliate', :domains => %w(          foo.com bar.com          ).join("\r\n")) }
+        let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'doesnotexist.gov'))}
+
+        before do
+          affiliate.should_receive(:get_matching_domain).with("doesnotexist.gov").and_return(nil)
+          uri_result = URI::parse("http://localhost:3000/")
+          URI.should_receive(:parse).with(/#{Regexp.escape("(government)%20(site%3Afoo.com%20OR%20site%3Abar.com)")}/).and_return(uri_result)
+          search.run
+        end
+
+        subject { search }
+        its(:query) { should == 'government' }
+        its(:formatted_query) { should == '(government) (site:foo.com OR site:bar.com)' }
+        its(:matching_site_limit) { should be_blank }
+      end
+
       context "when affiliate has no domains specified" do
         before do
           @uriresult     = URI::parse("http://localhost:3000/")

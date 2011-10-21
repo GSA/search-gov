@@ -22,15 +22,17 @@ Given /^the following Affiliates exist:$/ do |table|
 
     affiliate_template = hash["affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["affiliate_template_name"])
     staged_affiliate_template = hash["staged_affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["staged_affiliate_template_name"])
+    domains = hash[:domains].split(',').join("\n") unless hash[:domains].blank?
+    staged_domains = hash[:staged_domains].split(',').join("\n") unless hash[:staged_domains].blank?
 
     affiliate = Affiliate.create(
       :display_name => hash["display_name"],
       :name => hash["name"],
-      :domains => hash["domains"],
+      :domains => domains,
       :affiliate_template_id => affiliate_template.id,
       :header => hash["header"],
       :footer => hash["footer"],
-      :staged_domains => hash["staged_domains"],
+      :staged_domains => staged_domains,
       :staged_affiliate_template_id => staged_affiliate_template.id,
       :staged_header => hash["staged_header"],
       :staged_footer => hash["staged_footer"],

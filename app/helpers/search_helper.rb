@@ -75,6 +75,20 @@ module SearchHelper
       html << " - "
       html << link_to((t :cached), "#{result['cacheUrl']}", :class => 'cache_link')
     end
+    html << display_search_within_this_site_link(result, search, affiliate)
+    raw html
+  end
+
+  def display_search_within_this_site_link(result, search, affiliate)
+    return '' if affiliate.nil? or I18n.locale == :es or search.matching_site_limit.present? or !affiliate.has_multiple_domains?
+    site_limit = URI.parse(result['unescapedUrl']).host rescue nil
+    html = ''
+    site_limit.blank? ? '' : html << ' - ' << link_to('Search this site',
+                                                      search_path(params.merge(:affiliate => affiliate.name,
+                                                                               :locale => I18n.locale,
+                                                                               :query => search.query,
+                                                                               :sitelimit => site_limit)),
+                                                      :class => 'search-this-site')
     raw html
   end
 
@@ -578,6 +592,15 @@ module SearchHelper
   def render_featured_collection_link_title(link, index, highlighted_link_titles)
     return link.title if highlighted_link_titles.blank? or highlighted_link_titles[index].blank?
     highlighted_link_titles[index].html_safe
+  end
+
+  def display_search_all_affiliate_sites_suggestion(search, affiliate)
+    return unless affiliate and search.matching_site_limit.present?
+    html = "We're including results for '#{h search.query}' from only #{h search.matching_site_limit}. "
+    html << "Do you want to see results for "
+    html << link_to("'#{h search.query}' from all sites", search_path(params.except(:sitelimit)))
+    html << "?"
+    raw content_tag(:h4, html.html_safe, :class => 'search-all-sites-suggestion')
   end
 
   private

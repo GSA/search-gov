@@ -12,6 +12,77 @@ describe SearchHelper do
       helper.should_receive(:shorten_url).once
       helper.display_bing_result_links(result, Search.new, Affiliate.new, 1, :web)
     end
+
+    context "when affiliate exists" do
+      let(:result) { { 'unescapedUrl' => 'http://some.url' } }
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:search) { Search.new }
+
+      it "should display search within this site link" do
+        helper.should_receive(:display_search_within_this_site_link).with(result, search, affiliate).and_return('search_within_this_site_link')
+        content = helper.display_bing_result_links(result, search, affiliate, 1, :web)
+        content.should =~ /search_within_this_site_link/
+      end
+    end
+  end
+
+  describe "#display_search_within_this_site_link" do
+    context "when affiliate is nil" do
+      let(:result) { { 'unescapedUrl' => 'http://WWW.NPS.GOV/blog/1' } }
+      let(:search) { mock('search', { :query => 'item' }) }
+      let(:affiliate) { nil }
+
+      specify { helper.display_search_within_this_site_link(result, search, affiliate).should be_blank }
+    end
+
+    context "when affiliate is not nil" do
+      let(:result) { { 'unescapedUrl' => 'http://WWW1.NPS.GOV/blog/1' } }
+      let(:affiliate) { mock('affiliate', :name => 'nps') }
+      let(:search) { mock('search', { :query => 'item' }) }
+      let(:params_hash) { { :affiliate => affiliate.name,
+                            :locale => I18n.locale,
+                            :query => search.query,
+                            :sitelimit => 'WWW1.NPS.GOV' } }
+      let(:search_path_with_params) { "/search?#{params_hash.to_param}" }
+
+      context "when site_limits present" do
+        before do
+          search.should_receive(:matching_site_limit).and_return('WWW1.NPS.GOV')
+        end
+
+        specify { helper.display_search_within_this_site_link(result, search, affiliate).should be_blank }
+      end
+
+      context "when affiliate does not have multiple domains" do
+        before do
+          search.should_receive(:matching_site_limit).and_return(nil)
+          affiliate.should_receive(:has_multiple_domains?).and_return(false)
+        end
+
+        specify { helper.display_search_within_this_site_link(result, search, affiliate).should be_blank }
+      end
+
+      context "when matching affiliate domain is blank, affiliate has multiple domains" do
+        before do
+          search.should_receive(:matching_site_limit).and_return(nil)
+          affiliate.should_receive(:has_multiple_domains?).and_return(true)
+          helper.should_receive(:search_path).with(params_hash).and_return(search_path_with_params)
+        end
+
+        it "should generate a search this site link" do
+          content = helper.display_search_within_this_site_link(result, search, affiliate)
+          content.should have_selector("a[href='#{search_path_with_params}']", :content => 'Search this site')
+        end
+      end
+
+      context "when locale is :es" do
+        before do
+          I18n.stub(:locale).with(no_args).and_return(:es)
+        end
+
+        specify { helper.display_search_within_this_site_link(result, search, affiliate).should be_blank }
+      end
+    end
   end
 
   describe "#display_bing_result_extname_prefix" do
@@ -603,5 +674,39 @@ describe SearchHelper do
     end
 
     specify { @description.should be_html_safe }
+  end
+
+  describe "#display_search_all_affiliate_sites_suggestion" do
+
+    context "when affiliate is nil" do
+      specify { helper.display_search_all_affiliate_sites_suggestion(Search.new, nil).should be_blank }
+    end
+
+    context "when affiliate is present and matching_site_limit is blank" do
+      let(:matching_site_limit) { mock('matching_site_limit') }
+      let(:search) { mock('search') }
+      let(:affiliate) { mock('affiliate', :name => 'nps') }
+
+      before do
+        search.should_receive(:matching_site_limit).and_return(matching_site_limit)
+        matching_site_limit.should_receive(:present?).and_return(false)
+      end
+
+      specify { helper.display_search_all_affiliate_sites_suggestion(search, affiliate).should be_blank }
+    end
+
+    context "when affiliate is present and matching_site_limit is present" do
+      let(:search) { mock('search', :query => 'Yosemite', :site_limits => 'WWW1.NPS.GOV') }
+      let(:affiliate) { mock('affiliate', :name => 'nps') }
+
+      it "should display a link to 'Yosemite from all sites'" do
+        search.should_receive(:matching_site_limit).twice.and_return('WWW1.NPS.GOV')
+        helper.should_receive(:search_path).with(hash_not_including(:sitelimit)).and_return('search_path_with_params')
+        content =  helper.display_search_all_affiliate_sites_suggestion(search, affiliate)
+        content.should match /#{Regexp.escape("We're including results for 'Yosemite' from only WWW1.NPS.GOV.")}/
+        content.should have_selector("a[href='search_path_with_params']", :content => "'Yosemite' from all sites")
+        content.should be_html_safe
+      end
+    end
   end
 end

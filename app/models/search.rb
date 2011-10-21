@@ -48,12 +48,15 @@ class Search
               :formatted_query,
               :featured_collections,
               :indexed_documents,
-              :indexed_results
+              :indexed_results,
+              :matching_site_limit
 
   def initialize(options = {})
     options ||= {}
     @query = build_query(options)
+    @site_limits = options[:site_limits]
     @affiliate = options[:affiliate]
+    @matching_site_limit = retrieve_matching_site_limit
     @page = [options[:page].to_i, 0].max
     @results_per_page = options[:results_per_page] || DEFAULT_PER_PAGE
     @results_per_page = @results_per_page.to_i unless @results_per_page.is_a?(Integer)
@@ -165,7 +168,7 @@ class Search
   def has_featured_collections?
     self.featured_collections and self.featured_collections.total > 0
   end
-  
+
   def are_results_by_bing?
     self.indexed_results.nil? ? true : false
   end
@@ -254,7 +257,7 @@ class Search
       query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ')
     end
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
-    query += " #{options[:site_limits].split.collect { |site| 'site:' + site }.join(' OR ')}" unless options[:site_limits].blank?
+    query += " #{options[:site_limits].split.collect { |site| 'site:' + site }.join(' OR ')}" unless options[:site_limits].blank? or options[:affiliate]
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
     query.strip
   end
@@ -265,6 +268,10 @@ class Search
     else
       "#{field_name}#{term}"
     end
+  end
+
+  def retrieve_matching_site_limit
+    @site_limits.strip if I18n.locale == :en and @affiliate and @site_limits.present? and @site_limits.split.size == 1 and @affiliate.get_matching_domain(@site_limits).present?
   end
 
   def using_affiliate_scope?
@@ -317,6 +324,7 @@ class Search
   end
 
   def fill_domains_to_remainder
+    return "(site:#{@matching_site_limit})" unless @matching_site_limit.blank?
     remaining_chars = QUERY_STRING_ALLOCATION - query_plus_locale.length
     domains, delimiter = [], " OR "
     affiliate.domains.split.each do |site|
@@ -439,7 +447,7 @@ class Search
   def first_page?
     page == 0
   end
-  
+
   def highlight_solr_hit_like_bing(hit, field_symbol)
     return hit.highlights(field_symbol).first.format { |phrase| "\xEE\x80\x80#{phrase}\xEE\x80\x81" } unless hit.highlights(field_symbol).first.nil?
     hit.instance.send(field_symbol)

@@ -98,3 +98,26 @@ Feature: Affiliate Search
     When I follow "Remove all filters"
     Then I should see "Results 1-10"
 
+  Scenario: Visiting English affiliate search with multiple domains
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | domains                |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov |
+    When I am on bar.gov's search page
+    And I fill in "query" with "president"
+    And I press "Search"
+    Then I should see "Results 1-10"
+    When I follow "Search this site"
+    Then I should see "Do you want to see results for 'president' from all sites?"
+    And I should not see "Search this site"
+    When I follow "'president' from all sites"
+    Then I should see "Search this site"
+
+  Scenario: Visiting Spanish affiliate search with multiple domains
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | domains                |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov,usa.gov |
+    When I am on bar.gov's Spanish search page
+    And I fill in "query" with "president"
+    And I press "Buscar"
+    Then I should see "Resultados 1-10"
+    And I should not see "Search this site"
