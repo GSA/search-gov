@@ -1,0 +1,20 @@
+%tbody
+  %tr.column-header
+    %th Title
+    %th URL
+    %th Publish Start
+    %th Status
+    %th Actions
+  - unless @boosted_contents.blank?
+    - @boosted_contents.each do |boosted_content|
+      %tr.row-item
+        %td= link_to boosted_content.title.truncate(35, :separator => " "), [@affiliate, boosted_content]
+        %td= link_to(shorten_url(boosted_content.url, 20), boosted_content.url, :target => "_blank", :title => boosted_content.url)
+        %td.publish-date= render_date boosted_content.publish_start_on
+        %td.status= boosted_content.display_status
+        %td.actions
+          = link_to("Edit", edit_affiliate_boosted_content_path(@affiliate, boosted_content))
+          = button_to("Delete", [@affiliate, boosted_content], :method => :delete, :confirm => "Are you sure you want to delete this Best Bets: Text entry?")
+  - else
+    %tr
+      %td.empty{ :colspan => 5 } Site #{@affiliate.display_name} has no Best Bets: Text entry

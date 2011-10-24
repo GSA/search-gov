@@ -33,6 +33,7 @@ class FeaturedCollection < ActiveRecord::Base
   before_save :ensure_http_prefix_on_title_url
   before_post_process :check_image_validation
   before_update :clear_existing_image
+  scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
 
   accepts_nested_attributes_for :featured_collection_keywords, :allow_destroy => true, :reject_if => proc { |a| a['value'].blank? }
   accepts_nested_attributes_for :featured_collection_links, :allow_destroy => true, :reject_if => proc { |a| a['title'].blank? and a['url'].blank? }

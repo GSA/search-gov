@@ -1293,3 +1293,24 @@ Feature: Affiliate clients
     And I follow "Graphics"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Graphics
 
+    When I follow "Best bets"
+    And I follow "View all" in the affiliate boosted contents section
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Text
+
+    When I follow "Best bets"
+    And I follow "Add new text" in the affiliate boosted contents section
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Best Bets: Text
+
+    When I follow "Best bets"
+    And I follow "Bulk upload" in the affiliate boosted contents section
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Bulk Upload Best Bets: Text
+
+    When I follow "Best bets"
+    And I follow "View all" in the featured collections section
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Best Bets: Graphics
+
+    When I follow "Best bets"
+    And I follow "Add new graphics" in the featured collections section
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Best Bets: Graphics
+
+

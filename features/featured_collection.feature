@@ -34,7 +34,7 @@ Feature: Featured Collections
     Then I should see "Displaying featured collections 1 - 20 of 31 in total"
     And I should see "20" featured collections
     When I follow "Next"
-    Then I should see "random title 20"
+    Then I should see "random title 9"
 
   Scenario: Adding Featured Collection
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

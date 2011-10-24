@@ -41,7 +41,7 @@ describe Affiliates::FeaturedCollectionsController do
 
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_receive(:featured_collections).and_return(featured_collections)
-        featured_collections.should_receive(:paginate).with(:all, :per_page => FeaturedCollection.per_page, :page => nil).and_return(featured_collections_with_paginate)
+        featured_collections.should_receive(:paginate).with(:all, :per_page => FeaturedCollection.per_page, :page => nil, :order => 'updated_at DESC, id DESC').and_return(featured_collections_with_paginate)
 
         get :index, :affiliate_id => affiliate.id
       end

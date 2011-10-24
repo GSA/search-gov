@@ -17,6 +17,8 @@ class BoostedContent < ActiveRecord::Base
 
   before_save :ensure_http_prefix_on_url
 
+  scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
+
   searchable :auto_index => false do
     text :title, :boost => 10.0
     text :description, :boost => 4.0

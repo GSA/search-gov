@@ -35,7 +35,7 @@ Feature: Featured Collections
     Then I should see "Displaying Best Bets: Graphics entries 1 - 20 of 31 in total"
     And I should see "20" featured collections
     When I follow "Next"
-    Then I should see "random title 20"
+    Then I should see "random title 9"
 
   Scenario: Adding Featured Collection
     Given the following Affiliates exist:

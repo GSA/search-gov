@@ -5,7 +5,8 @@ class Affiliates::FeaturedCollectionsController < Affiliates::AffiliatesControll
 
   def index
     @title = 'Best Bets: Graphics - '
-    @featured_collections = @affiliate.featured_collections.paginate(:all, :per_page => FeaturedCollection.per_page, :page => params[:page])
+    @featured_collections = @affiliate.featured_collections.paginate(:all, :per_page => FeaturedCollection.per_page, :page => params[:page], :order => 'updated_at DESC, id DESC')
+
   end
 
   def new

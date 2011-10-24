@@ -4,7 +4,7 @@ class Admin::FeaturedCollectionsController < Admin::AffiliatesController
 
   def index
     @page_title = 'Search.USA.gov Featured Collections'
-    @featured_collections = FeaturedCollection.where(:affiliate_id => nil).paginate(:per_page => FeaturedCollection.per_page, :page => params[:page])
+    @featured_collections = FeaturedCollection.where(:affiliate_id => nil).paginate(:per_page => FeaturedCollection.per_page, :page => params[:page], :order => 'updated_at DESC, id DESC')
   end
 
   def new

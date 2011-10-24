@@ -15,24 +15,5 @@
             = link_to "Add new graphics", new_affiliate_featured_collection_path(@affiliate), :class => 'add-link'
             - unless @featured_collections.blank?
               %span= page_entries_info @featured_collections, :entry_name => 'Best Bets: Graphics entry', :html => false
-      %tbody
-        %tr.column-header
-          %th Title
-          %th Publish Start
-          %th Publish End
-          %th Status
-          %th Actions
-        - unless @featured_collections.blank?
-          - @featured_collections.each do |featured_collection|
-            %tr.row-item
-              %td= link_to featured_collection.title.truncate(35, :separator => " "), [@affiliate, featured_collection]
-              %td.publish-date= render_date featured_collection.publish_start_on
-              %td.publish-date= render_date featured_collection.publish_end_on
-              %td.status= featured_collection.display_status
-              %td.actions
-                = link_to("Edit", edit_affiliate_featured_collection_path(@affiliate, featured_collection))
-                = button_to("Delete", [@affiliate, featured_collection], :method => :delete, :confirm => "Are you sure you want to delete this Best Bets: Graphics entry?")
-        - else
-          %tr
-            %td.empty{ :colspan => 5 } Site #{@affiliate.display_name} has no Best Bets: Graphics entry
+      = render 'shared/featured_collections/affiliate_featured_collection_rows'
     = will_paginate @featured_collections

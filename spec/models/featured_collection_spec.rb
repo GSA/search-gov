@@ -35,6 +35,12 @@ describe FeaturedCollection do
   it { should have_many(:featured_collection_keywords).dependent(:destroy) }
   it { should have_many(:featured_collection_links).dependent(:destroy) }
 
+  describe ".recent" do
+    it "should include a scope called 'recent'" do
+      FeaturedCollection.scopes.include?(:recent).should be_true
+    end
+  end
+
   describe "title URL should have http(s):// prefix" do
     context "when the title URL does not start with http(s):// prefix" do
       title_url = 'searchblog.usa.gov/post/9866782725/did-you-mean-roes-or-rose'

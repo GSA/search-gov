@@ -94,6 +94,12 @@ describe BoostedContent do
     end
   end
 
+  describe ".recent" do
+    it "should include a scope called 'recent'" do
+      BoostedContent.scopes.include?(:recent).should be_true
+    end
+  end
+
   describe "#human_attribute_name" do
     specify { BoostedContent.human_attribute_name("publish_start_on").should == "Publish start date" }
     specify { BoostedContent.human_attribute_name("publish_end_on").should == "Publish end date" }

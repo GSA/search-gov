@@ -201,6 +201,8 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def best_bets
     @title = "Best Bets - "
+    @featured_collections = @affiliate.featured_collections.recent
+    @boosted_contents = @affiliate.boosted_contents.recent
   end
 
   protected

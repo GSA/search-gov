@@ -23,7 +23,7 @@ describe Admin::FeaturedCollectionsController do
       before do
         UserSession.create(current_user)
         FeaturedCollection.should_receive(:where).with(:affiliate_id => nil).and_return(featured_collections)
-        featured_collections.should_receive(:paginate).with(:per_page => FeaturedCollection.per_page, :page => nil).and_return(featured_collections_with_paginate)
+        featured_collections.should_receive(:paginate).with(:per_page => FeaturedCollection.per_page, :page => nil, :order => 'updated_at DESC, id DESC').and_return(featured_collections_with_paginate)
 
         get :index
       end

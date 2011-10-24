@@ -711,13 +711,32 @@ describe Affiliates::HomeController do
     end
 
     context "when logged in as the affiliate manager" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+      let(:boosted_contents) { mock('Boosted Contents') }
+      let(:recent_boosted_contents) { mock('recent Boosted Contents') }
+      let(:featured_collections) { mock('Featured Collections') }
+      let(:recent_featured_collections) { mock('recent Featured Collections') }
+
       before do
-        UserSession.create(users(:affiliate_manager))
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+
+        affiliate.should_receive(:boosted_contents).and_return(boosted_contents)
+        boosted_contents.should_receive(:recent).and_return(recent_boosted_contents)
+
+        affiliate.should_receive(:featured_collections).and_return(featured_collections)
+        featured_collections.should_receive(:recent).and_return(recent_featured_collections)
+
         get :best_bets, :id => affiliates(:basic_affiliate).id
       end
 
       it { should assign_to :title }
+      it { should assign_to(:boosted_contents).with(recent_boosted_contents) }
+      it { should assign_to(:featured_collections).with(recent_featured_collections) }
+      it { should respond_with(:success) }
     end
   end
-
 end
