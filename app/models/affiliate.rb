@@ -4,7 +4,7 @@ class Affiliate < ActiveRecord::Base
   validates_presence_of :search_results_page_title
   validates_presence_of :staged_search_results_page_title
   validates_uniqueness_of :name, :case_sensitive => false
-  validates_length_of :name, :within=> (3..33)
+  validates_length_of :name, :within=> (2..33)
   validates_format_of :name, :with=> /^[a-z0-9._-]+$/
   has_and_belongs_to_many :users
   belongs_to :affiliate_template

@@ -17,7 +17,7 @@ describe Affiliate do
   describe "Creating new instance of Affiliate" do
     it { should validate_presence_of :display_name }
     it { should validate_uniqueness_of(:name) }
-    it { should ensure_length_of(:name).is_at_least(3).is_at_most(33) }
+    it { should ensure_length_of(:name).is_at_least(2).is_at_most(33) }
     ["<IMG SRC=", "259771935505'", "spacey name", "NewAff"].each do |value|
       it { should_not allow_value(value).for(:name) }
     end
