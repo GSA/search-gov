@@ -4,10 +4,10 @@ class IndexedDocument < ActiveRecord::Base
   belongs_to :affiliate
   validates_presence_of :title, :url, :description, :doctype, :affiliate_id, :locale
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
-  validate :doctype, :inclusion => { :in => %w(html pdf), :message => "must be either 'html' or 'pdf.'" }
-  validate :locale, :inclusion => { :in => %w(en es), :message => "must be either 'en' or 'es.'" }
+  validate :doctype, :inclusion => {:in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"}
+  validate :locale, :inclusion => {:in => %w(en es), :message => "must be either 'en' or 'es.'"}
   before_save :ensure_http_prefix_on_url
-  
+
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 250
 
@@ -37,40 +37,37 @@ class IndexedDocument < ActiveRecord::Base
         end rescue nil
       end
     end
-    
-    def crawl(url)
-      is_pdf?(url) ? crawl_pdf(url) : crawl_html(url) rescue nil
-    end
-    
-    def crawl_html(url)
-      begin
-        doc = Nokogiri::HTML(open(url))
-        return unless (title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH,:separator=>" ") rescue nil)
-        description = doc.xpath("//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] ").first.attributes["content"].value.squish rescue nil
-        if description.nil?
-          doc.xpath('//script').each { |x| x.remove }
-          doc.xpath('//style').each { |x| x.remove }
-          description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
-        end
-        body = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
-        IndexedDocument.new(:url => url, :title=> title, :description => description, :body => body, :doctype => 'html')
-      rescue Exception => e
-        Rails.logger.error "Trouble fetching #{url} for boosted content creation: #{e}"
-      end      
-    end
 
-    def crawl_pdf(url)
+    def fetch(url, affiliate_id)
       begin
-        pdf = PDF::Toolkit.open(open(url))
-        IndexedDocument.new(:url => url, :title => generate_pdf_title(pdf, url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf')
+        url.ends_with?(".pdf") ? fetch_pdf(url, affiliate_id) : fetch_html(url, affiliate_id)
       rescue Exception => e
-        Rails.logger.error "Trouble fetching #{url} for PDF document creation: #{e}"
+        Rails.logger.error "Trouble fetching #{url} for indexed document creation: #{e}"
       end
     end
 
-    def is_pdf?(url)
-      url.ends_with(".pdf").present?
+    def fetch_html(url, affiliate_id)
+      doc = Nokogiri::HTML(open(url))
+      return unless (title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator=>" ") rescue nil)
+      description = doc.xpath("//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] ").first.attributes["content"].value.squish rescue nil
+      if description.nil?
+        doc.xpath('//script').each { |x| x.remove }
+        doc.xpath('//style').each { |x| x.remove }
+        description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
+      end
+      body = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
+      indexed_document = find_or_initialize_by_url_and_affiliate_id(url, affiliate_id)
+      indexed_document.update_attributes(:title=> title, :description => description, :body => body, :doctype => 'html')
+      indexed_document.save!
     end
+
+    def fetch_pdf(url, affiliate_id)
+      pdf = PDF::Toolkit.open(open(url))
+      indexed_document = find_or_initialize_by_url_and_affiliate_id(url, affiliate_id)
+      indexed_document.update_attributes(:title => generate_pdf_title(pdf, url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf')
+      indexed_document.save!
+    end
+
   end
 
   private
