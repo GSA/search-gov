@@ -24,7 +24,7 @@ describe IndexedDocument do
   it { should allow_value("http://some.govsite.us/url").for(:url) }
   it { should allow_value("http://some.govsite.info/url").for(:url) }
   it { should belong_to :affiliate }
-  
+
   it "should create a new instance given valid attributes" do
     IndexedDocument.create!(@valid_attributes)
   end
@@ -86,43 +86,71 @@ describe IndexedDocument do
 
   describe "#fetch" do
     before do
-      @indexed_document = IndexedDocument.create(@min_valid_attributes)
-      @indexed_document.stub!(:open).and_raise Exception.new("ERROR!")
+      File.stub!(:delete)
     end
-    
+
+    let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
+
     context "when there is a problem fetching the URL content" do
+      before do
+        indexed_document.stub!(:open).and_raise Exception.new("ERROR!")
+      end
+
       it "should update the url with last crawled date and error message" do
-        @indexed_document.fetch
-        @indexed_document.last_crawled_at.should_not be_nil
-        @indexed_document.last_crawl_status.should == "Error"
+        indexed_document.fetch
+        indexed_document.last_crawled_at.should_not be_nil
+        indexed_document.last_crawl_status.should == "Error"
+      end
+
+      it "should not attempt to clean up the nil file descriptor" do
+        File.should_not_receive(:delete)
+        indexed_document.fetch
       end
     end
 
     context "when the URL ends in PDF" do
       before do
-        @indexed_document.url = 'http://something.gov/something.pdf'
+        indexed_document.url = 'http://something.gov/something.pdf'
+        @io = open(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
+        indexed_document.stub!(:open).and_return @io
       end
-      
+
       it "should call fetch_pdf" do
-        @indexed_document.should_receive(:fetch_pdf)
-        @indexed_document.fetch
+        indexed_document.should_receive(:index_pdf).with(@io)
+        indexed_document.fetch
+      end
+
+      it "should delete the downloaded temporary PDF file" do
+        File.should_receive(:delete).with(@io)
+        indexed_document.fetch
       end
     end
 
     context "when the URL doesn't end in PDF" do
+      before do
+        indexed_document.url = 'http://something.gov/something.html'
+        @io = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
+        indexed_document.stub!(:open).and_return @io
+      end
+
       it "should call fetch_html" do
-        @indexed_document.should_receive(:fetch_html)
-        @indexed_document.fetch
+        indexed_document.should_receive(:index_html).with(@io)
+        indexed_document.fetch
+      end
+
+      it "should delete the downloaded temporary HTML file" do
+        File.should_receive(:delete).with(@io)
+        indexed_document.fetch
       end
     end
   end
 
-  describe "#fetch_html" do
+  describe "#index_html(file)" do
     context "when the page has a HTML title" do
       before do
-        @indexed_document = IndexedDocument.create(@min_valid_attributes)
-        @indexed_document.stub!(:open).and_return File.read(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
-        @indexed_document.fetch_html
+        @indexed_document = IndexedDocument.create!(@min_valid_attributes)
+        file = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
+        @indexed_document.index_html(file)
       end
 
       context "when the title is long" do
@@ -145,8 +173,7 @@ describe IndexedDocument do
 
       context "when the page does not have a description meta tag" do
         before do
-          @indexed_document.stub!(:open).and_return File.read(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
-          @indexed_document.fetch_html
+          @indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
         end
 
         it "should use the initial subset of non-HTML words of the web page as the description" do
@@ -157,12 +184,12 @@ describe IndexedDocument do
     end
   end
 
-  describe "#fetch_pdf" do
+  describe "#fetch_pdf(file)" do
     context "for a normal PDF file" do
       before do
-        @indexed_document = IndexedDocument.create(@min_valid_attributes)
-        @indexed_document.stub!(:open).and_return File.open(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
-        @indexed_document.fetch_pdf
+        @indexed_document = IndexedDocument.create!(@min_valid_attributes)
+        file = open(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
+        @indexed_document.index_pdf(file)
       end
 
       it "should create an indexed document that has a title and description from the pdf" do
@@ -175,9 +202,8 @@ describe IndexedDocument do
 
     context "when the pdf body is blank" do
       before do
-        @indexed_document = IndexedDocument.create(@min_valid_attributes.merge(:url => 'http://www.state.nj.us/bpu/pdf/boardorders/3-2-07-III%20H.pdf'))
-        @indexed_document.stub!(:open).and_return File.open(Rails.root.to_s + "/spec/fixtures/pdf/badtitle.pdf")
-        @indexed_document.fetch_pdf
+        @indexed_document = IndexedDocument.create!(@min_valid_attributes.merge(:url => 'http://www.state.nj.us/bpu/pdf/boardorders/3-2-07-III%20H.pdf'))
+        @indexed_document.index_pdf open(Rails.root.to_s + "/spec/fixtures/pdf/badtitle.pdf")
       end
 
       it "should generate a title using the last part of the filename" do
@@ -186,15 +212,15 @@ describe IndexedDocument do
       end
     end
   end
-  
+
   describe "#uncrawled_urls" do
     before do
       IndexedDocument.destroy_all
       @affiliate = affiliates(:basic_affiliate)
-      @first_uncrawled_url = IndexedDocument.create(:url => 'http://some.mil/', :affiliate => @affiliate)
-      @last_uncrawled_url = IndexedDocument.create(:url => 'http://another.mil', :affiliate => @affiliate)
-      @other_affiliate_uncrawled_url = IndexedDocument.create(:url => 'http://other.mil', :affiliate => affiliates(:power_affiliate))
-      @already_crawled_url = IndexedDocument.create(:url => 'http://already.crawled.mil', :affiliate => @affiliate, :last_crawled_at => Time.now)
+      @first_uncrawled_url = IndexedDocument.create!(:url => 'http://some.mil/', :affiliate => @affiliate)
+      @last_uncrawled_url = IndexedDocument.create!(:url => 'http://another.mil', :affiliate => @affiliate)
+      @other_affiliate_uncrawled_url = IndexedDocument.create!(:url => 'http://other.mil', :affiliate => affiliates(:power_affiliate))
+      @already_crawled_url = IndexedDocument.create!(:url => 'http://already.crawled.mil', :affiliate => @affiliate, :last_crawled_at => Time.now)
     end
 
     context "when looking up uncrawled URLs" do
@@ -218,13 +244,13 @@ describe IndexedDocument do
       end
     end
   end
-  
+
   describe "#crawled_urls" do
     before do
       @affiliate = affiliates(:basic_affiliate)
-      @first_crawled_url = IndexedDocument.create(:url => 'http://crawled.mil', :last_crawled_at => Time.now, :affiliate => @affiliate)
-      @last_crawled_url = IndexedDocument.create(:url => 'http://another.crawled.mil', :last_crawled_at => Time.now, :affiliate => @affiliate)
-      IndexedDocument.create(:url => 'http://anotheraffiliate.mil', :last_crawled_at => Time.now, :affiliate => affiliates(:power_affiliate))
+      @first_crawled_url = IndexedDocument.create!(:url => 'http://crawled.mil', :last_crawled_at => Time.now, :affiliate => @affiliate)
+      @last_crawled_url = IndexedDocument.create!(:url => 'http://another.crawled.mil', :last_crawled_at => Time.now, :affiliate => @affiliate)
+      IndexedDocument.create!(:url => 'http://anotheraffiliate.mil', :last_crawled_at => Time.now, :affiliate => affiliates(:power_affiliate))
     end
 
     it "should return the first page of all crawled urls" do
@@ -239,12 +265,12 @@ describe IndexedDocument do
       crawled_urls.size.should == 0
     end
   end
-  
+
   describe "#process_file" do
     before do
       @affiliate = affiliates(:basic_affiliate)
     end
-    
+
     context "when a file is passed in with 100 or fewer URLs" do
       before do
         @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
@@ -259,7 +285,7 @@ describe IndexedDocument do
 
       it "should create a new IndexedDocument for each of the lines in the file" do
         IndexedDocument.process_file(@file, @affiliate)
-        @urls.each {|url| IndexedDocument.find_by_url_and_affiliate_id(url, @affiliate.id).should_not be_nil}
+        @urls.each { |url| IndexedDocument.find_by_url_and_affiliate_id(url, @affiliate.id).should_not be_nil }
       end
     end
 
@@ -278,7 +304,7 @@ describe IndexedDocument do
 
       context "when a max number of URLs is passed that is greater than the default max" do
         it "should allow all of the urls" do
-          lambda { IndexedDocument.process_file(@file, nil, 1000)}.should_not raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
+          lambda { IndexedDocument.process_file(@file, nil, 1000) }.should_not raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
         end
       end
     end

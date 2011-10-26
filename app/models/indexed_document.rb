@@ -24,37 +24,37 @@ class IndexedDocument < ActiveRecord::Base
     string :locale
     integer :affiliate_id
   end
-  
+
   def fetch
-    url.ends_with?(".pdf") ? fetch_pdf : fetch_html
-  end
-  
-  def fetch_html
     begin
-      doc = Nokogiri::HTML(open(url))
-      title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator => " ") rescue nil
-      description = doc.xpath("//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] ").first.attributes["content"].value.squish rescue nil
-      if description.nil?
-        doc.xpath('//script').each { |x| x.remove }
-        doc.xpath('//style').each { |x| x.remove }
-        description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
-      end
-      body = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
-      self.update_attributes!(:title=> title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => "OK")
+      file = open(url)
+      url.ends_with?(".pdf") ? index_pdf(file) : index_html(file)
     rescue Exception => e
-      self.update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Error")
+      Rails.logger.error "Trouble fetching #{url} to index: #{e}"
+      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Error")
+    ensure
+      File.delete(file) unless file.nil?
     end
   end
 
-  def fetch_pdf
-    begin
-      pdf = PDF::Toolkit.open(open(url))
-      self.update_attributes!(:title => generate_pdf_title(pdf, self.url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf')
-    rescue Exception => e
-      self.update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Error")
+  def index_html(file)
+    doc = Nokogiri::HTML(file)
+    title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator => " ") rescue nil
+    description = doc.xpath("//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] ").first.attributes["content"].value.squish rescue nil
+    if description.nil?
+      doc.xpath('//script').each { |x| x.remove }
+      doc.xpath('//style').each { |x| x.remove }
+      description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
     end
+    body = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
+    update_attributes!(:title=> title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => "OK")
   end
-  
+
+  def index_pdf(file)
+    pdf = PDF::Toolkit.open(file)
+    update_attributes!(:title => generate_pdf_title(pdf, self.url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf')
+  end
+
   class << self
     def search_for(query, affiliate = nil, locale = I18n.default_locale.to_s, page = 1, per_page = 3)
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate.name}) do
@@ -68,7 +68,7 @@ class IndexedDocument < ActiveRecord::Base
         end rescue nil
       end
     end
-    
+
     def uncrawled_urls(affiliate, number_of_urls = nil)
       sql_options = {:order => 'created_at asc'}
       sql_options.merge!(:limit => number_of_urls) if number_of_urls

@@ -29,7 +29,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I should see "http://new.url.gov" within ".uncrawled-url"
 
     When the url "http://new.url.gov" has been crawled
-    When I go to the affiliate admin page with "aff.gov" selected
+    And I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs"
     Then I should see "Uncrawled URLs (0)"
     And I should see "http://new.url.gov" within ".crawled-url"
