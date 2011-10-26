@@ -67,6 +67,7 @@ group :development, :test, :cucumber do
   gem 'rcov'
   gem 'webster'
 #  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
+  gem 'no_peeping_toms', :git => 'git://github.com/alindeman/no_peeping_toms.git'
 end
 
 group :test do

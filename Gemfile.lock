@@ -27,6 +27,14 @@ GIT
       tlattr_accessors (>= 0.0.3)
 
 GIT
+  remote: git://github.com/alindeman/no_peeping_toms.git
+  revision: 83dbd4cb993ae8e78a38a0f5cad784ca58bb0dcd
+  specs:
+    no_peeping_toms (2.1.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
+GIT
   remote: git://github.com/paneq/calendar_date_select.git
   revision: 977048211b94599fe0f08eb37a481f3d69df48f6
   specs:
@@ -304,6 +312,7 @@ DEPENDENCIES
   mechanize
   multi_db!
   mysql2 (< 0.3)
+  no_peeping_toms!
   nokogiri (>= 1.4.4)
   paperclip
   paperclip-cloudfiles

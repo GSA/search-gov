@@ -10,9 +10,11 @@ Given /^the following SuperfreshUrls exist:$/ do |table|
 end
 
 Given /^the following IndexedDocuments exist:$/ do |table|
+  ActiveRecord::Observer.disable_observers
   table.hashes.each do |hash|
-    IndexedDocument.create(:url => hash["url"], :affiliate => Affiliate.find_by_name(hash["affiliate"]))
+    IndexedDocument.create!(:url => hash["url"], :affiliate => Affiliate.find_by_name(hash["affiliate"]))
   end
+  ActiveRecord::Observer.enable_observers
 end
 
 When /^the url "([^\"]*)" has been crawled$/ do |url|

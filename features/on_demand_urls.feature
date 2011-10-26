@@ -25,8 +25,6 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I press "Submit"
     Then I should be on the affiliate on-demand urls page for "aff.gov"
     And I should see "Successfully added http://new.url.gov."
-    And I should see "Uncrawled URLs (1)"
-    And I should see "http://new.url.gov" within ".uncrawled-url"
 
     When the url "http://new.url.gov" has been crawled
     And I go to the affiliate admin page with "aff.gov" selected
