@@ -9,19 +9,21 @@
       :plain
         .ac_results {margin-top: -130px;}
 
-#homeNav.dvCenter
-  .navHeader
-    = t(:usagov_resources)
-  = mobile_menu_item t(:call_1800FEDINFO), "tel:+1-800-333-4636"
-  = mobile_menu_item t(:sms_services), "http://search.usa.gov/usa/sms"
-  = mobile_menu_item t(:email_us), contact_form_path(:locale => I18n.locale, :m => params[:m])
-  = mobile_menu_item t(:visit_our_blog), "http://blog.usa.gov"
-  = mobile_menu_item t(:specific_audiences), t(:specific_audiences_url)
-  = mobile_menu_item t(:citizen_services), t(:citizen_services_url)
-  = mobile_menu_item t(:explore_topics), t(:explore_topics_url)
-  = mobile_menu_item t(:explore_faqs), t(:explore_faqs_url)
-  = mobile_menu_item t(:contact_your_government), t(:contact_your_government_url)
-  = mobile_menu_item t(:find_government_agencies), t(:find_government_agencies_url), true
+#home
+  %ul.list-box
+    %li.list-header= t(:usagov_resources)
+    = mobile_menu_item t(:explore_topics), t(:explore_topics_url)
+    = mobile_menu_item t(:specific_audiences), t(:specific_audiences_url)
+    = mobile_menu_item t(:find_government_agencies), t(:find_government_agencies_url)
+    = mobile_menu_item t(:contact_your_government), t(:contact_your_government_url)
+    = mobile_menu_item t(:citizen_services), t(:citizen_services_url)
+    = mobile_menu_item t(:explore_faqs), t(:explore_faqs_url)
+    = mobile_menu_item t(:visit_our_blog), "http://blog.usa.gov"
+    = mobile_menu_item t(:sms_services), "http://search.usa.gov/usa/sms"
+  %ul.list-box
+    %li.list-header= t(:contact_us)
+    = mobile_menu_item t(:call_1800FEDINFO), "tel:+1-800-333-4636"
+    = mobile_menu_item t(:email_us), contact_form_path(:locale => I18n.locale, :m => params[:m])
 
 .group.clear
 .mobileFooter.pad5

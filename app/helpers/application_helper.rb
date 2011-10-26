@@ -155,10 +155,8 @@ module ApplicationHelper
     hit.instance.send(sym)
   end
 
-  def mobile_menu_item(link_text, target, is_footer = false)
-    arrow = content_tag(:div, '>', :class=> "navFloatRight")
-    link = link_to link_text, target, :class => "mobileNavLink"
-    content_tag(:div, arrow + link, :class=> is_footer ? "navFooter" : "navBodyItem")
+  def mobile_menu_item(link_text, target)
+    content_tag(:li, link_to(content_tag(:div, link_text), target), :class => 'list-item')
   end
 
   def url_for_login

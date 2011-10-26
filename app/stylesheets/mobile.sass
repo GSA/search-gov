@@ -1,3 +1,5 @@
+@import "compass/css3/border-radius"
+
 body, html, div, p, h1, h2, h3, h4, a, span, ul, li
   background: none
   border: #ffffff none 0
@@ -215,7 +217,7 @@ img
 .mobileFooter
   float: right
   font-size: .8em
-  padding: 0 0 15px 0
+  padding: 0 0 30px 0
 
 .floatRight
   float: right
@@ -459,3 +461,33 @@ li
     padding: 5px
   .disabled
     display: none
+
+#home
+  .list-box
+    @include border-radius(8px)
+    background: url(/m/i/header_gradient.png) repeat-x 0 0
+    border: 1px solid #d8d8d8
+    margin: 0 auto 25px
+    li
+      border-bottom: 1px solid #d8d8d8
+      font-family: Verdana, Helvetica, sans-serif
+  .list-header
+    color: #24496B
+    font:
+      size: 15px
+      weight: bold
+    padding: 8px 15px
+  .list-item
+    background: url(/m/i/arrow.png) no-repeat right center
+    font:
+      size: 15px
+      weight: normal
+    padding: 0
+    div
+      color: #636363
+      padding: 8px 15px
+    &:last-of-type
+      border-bottom: none
+    span
+      width: 100%
+

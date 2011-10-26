@@ -10,8 +10,8 @@ Feature: Mobile Search
     Given I am on the homepage
     Then I should see "INDEX, NOFOLLOW" in "ROBOTS" meta tag
     And I should see a link to "Visit Our Blog" with url for "http://blog.usa.gov"
+    And I should see a link to "Text/SMS Services" with url for "http://search.usa.gov/usa/sms"
     And I should see a link to "Español" with url for "http://m.gobiernousa.gov"
-    And I should see a link to "SMS Services" with url for "http://search.usa.gov/usa/sms"
     And I should see a link to "USA.gov Full Site" with url for "http://www.usa.gov/?mobile-opt-out=true"
 
   Scenario: Visiting the Spanish home page with a mobile device
@@ -180,8 +180,7 @@ Feature: Mobile Search
 
   Scenario: Emailing from the home page
     Given I am on the homepage
-    Then I should see "E-mail Us"
-    When I follow "E-mail Us"
+    When I follow "E-mail us"
     Then I should be on the mobile contact form page
     And I should see "Contact your Government"
     And I should see "Email"
