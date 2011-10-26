@@ -19,20 +19,16 @@ class DailyQueryStat < ActiveRecord::Base
       Resque.enqueue(DailyQueryStat, day)
     end
 
-    def perform(day)
-      clean_index_orphans_for_day(day)
-      Sunspot.index(all(:conditions=>["day=?", day]))
+    def perform(day_string)
+      day = Date.parse(day_string)
+      bulk_remove_solr_records_for_day(day)
+      Sunspot.index!(all(:conditions=>["day=?", day]))
     end
 
-    def clean_index_orphans_for_day(day)
-      db_ids = all(:select => 'id', :conditions=>["day=?", day]).collect(&:id).to_set
-      indexed_ids = solr_search_ids { with :day, day; paginate(:page => 1, :per_page => MAX_ORPHANS_PER_PASS) }.to_set
-      (indexed_ids - db_ids).each do |id|
-        daily_query_stat = new do |fake_instance|
-          fake_instance.id = id
-        end
-        daily_query_stat.solr_remove_from_index
-      end
+    def bulk_remove_solr_records_for_day(day)
+      datetime = day.beginning_of_day
+      Sunspot.remove(DailyQueryStat) { with(:day).between(datetime..(datetime + 1.day)) }
+      Sunspot.commit
     end
 
     def search_for(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s, per_page = 3000)

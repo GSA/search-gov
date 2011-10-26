@@ -1,7 +1,7 @@
 namespace :usasearch do
 
   namespace :daily_query_stats do
-    desc "tell Solr to index and de-orphan one day's worth of DailyQueryStats"
+    desc "tell Solr to clean and reindex one day's worth of DailyQueryStats"
     task :reindex_day, :day, :needs => :environment do |t, args|
       day = args[:day]
       if day.blank?

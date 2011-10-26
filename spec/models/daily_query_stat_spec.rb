@@ -324,18 +324,20 @@ describe DailyQueryStat do
     end
   end
 
-  describe "#clean_index_orphans_for_day(day)" do
+  describe "#bulk_remove_solr_records_for_day(day)" do
     before do
-      @orphaned_id = DailyQueryStat.create!(@valid_attributes).id
-      @ignored_id = DailyQueryStat.create!(@valid_attributes.merge(:day=>Date.current)).id
+      DailyQueryStat.delete_all
+      @first = DailyQueryStat.create!(:day => "20110828", :query => "government", :times => 314)
+      DailyQueryStat.create!(:day => "20110829", :query => "government", :times => 314)
+      DailyQueryStat.create!(:day => "20110829", :query => "government loan", :times => 314)
+      @last = DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314)
+      DailyQueryStat.reindex
       Sunspot.commit
-      DailyQueryStat.connection.execute("delete from daily_query_stats")
     end
 
-    it "should remove orphans from index for specified day" do
-      cleaned = DailyQueryStat.clean_index_orphans_for_day(@valid_attributes[:day])
-      cleaned.should include(@orphaned_id)
-      cleaned.should_not include(@ignored_id)
+    it "should remove records from index for specified day" do
+      DailyQueryStat.bulk_remove_solr_records_for_day(Date.parse("20110829"))
+      DailyQueryStat.search_for("government", Date.parse("20110828")).should == [@first.id, @last.id]
     end
 
   end
@@ -351,11 +353,11 @@ describe DailyQueryStat do
     end
   end
 
-  describe "#perform(day)" do
-    it "should de-orphan from Solr and index from DB all records for a given day" do
-      DailyQueryStat.should_receive(:clean_index_orphans_for_day).with daily_query_stats(:sample).day
-      Sunspot.should_receive(:index).with([daily_query_stats(:sample)])
-      DailyQueryStat.perform(daily_query_stats(:sample).day)
+  describe "#perform(day_string)" do
+    it "should bulk remove the day's records from Solr and then index from DB all records for a given day" do
+      DailyQueryStat.should_receive(:bulk_remove_solr_records_for_day).with daily_query_stats(:sample).day
+      Sunspot.should_receive(:index!).with([daily_query_stats(:sample)])
+      DailyQueryStat.perform(daily_query_stats(:sample).day.to_s)
     end
   end
 
