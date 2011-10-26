@@ -80,7 +80,7 @@
             - @crawled_urls.each do |crawled_url|
               %tr{:class => cycle('even', 'odd')}
                 %td.crawled-url
-                  = link_to crawled_url.url, crawled_url.url
+                  = link_to shorten_url(crawled_url.url), crawled_url.url
                 %td
                   = crawled_url.last_crawled_at
                 %td
