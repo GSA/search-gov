@@ -15,12 +15,6 @@ describe SuperfreshUrl do
     it { should allow_value("http://some.govsite.com/url").for(:url) }
     it { should allow_value("http://some.govsite.us/url").for(:url) }
     it { should allow_value("http://some.govsite.info/url").for(:url) }
-
-    it "should enqueue the creation of a BoostedContent entry via Resque" do
-      ResqueSpec.reset!
-      sf = SuperfreshUrl.create!(@valid_attributes)
-      SuperfreshUrlToIndexedDocument.should have_queued(sf.url, sf.affiliate_id)
-    end
   end
 
   describe "#uncrawled_urls" do

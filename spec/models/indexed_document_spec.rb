@@ -29,6 +29,12 @@ describe IndexedDocument do
     IndexedDocument.create!(@valid_attributes)
   end
 
+  it "should enqueue the creation of a BoostedContent entry via Resque" do
+    ResqueSpec.reset!
+    indexed_document = IndexedDocument.create!(@min_valid_attributes)
+    IndexedDocumentFetcher.should have_queued(indexed_document.id)
+  end
+
   it "should validate unique url" do
     IndexedDocument.create!(@valid_attributes)
     duplicate = IndexedDocument.new(@valid_attributes)
@@ -88,7 +94,7 @@ describe IndexedDocument do
       it "should update the url with last crawled date and error message" do
         @indexed_document.fetch
         @indexed_document.last_crawled_at.should_not be_nil
-        @indexed_document.last_crawl_status.should == "ERROR!"
+        @indexed_document.last_crawl_status.should == "Error"
       end
     end
 
