@@ -26,8 +26,8 @@ class DailyQueryStat < ActiveRecord::Base
     end
 
     def bulk_remove_solr_records_for_day(day)
-      datetime = day.beginning_of_day
-      Sunspot.remove(DailyQueryStat) { with(:day).between(datetime..(datetime + 1.day)) }
+      starttime, endtime = day.beginning_of_day, day.end_of_day
+      Sunspot.remove(DailyQueryStat) { with(:day).between(starttime..endtime) }
       Sunspot.commit
     end
 
