@@ -14,7 +14,7 @@
 
     .wrap-content
       %a{:name => "singleurl"}
-      = form_for @superfresh_url, {:url => affiliate_superfresh_urls_path(@affiliate)} do |f|
+      = form_for @indexed_document, {:url => affiliate_on_demand_urls_path(@affiliate)} do |f|
         = f.label :url, "<h3>Single URL</h3>".html_safe
         = f.text_field :url, :class => 'txt'
         = f.submit "Submit", :class => 'btn-submit submit'
@@ -46,8 +46,8 @@
       %p
         NOTE: You may only submit URLs once.
 
-      = form_tag upload_affiliate_superfresh_urls_path(@affiliate), :multipart => true do
-        = file_field_tag 'superfresh_urls', :accept => 'text/plain', :class => 'file'
+      = form_tag upload_affiliate_on_demand_urls_path(@affiliate), :multipart => true do
+        = file_field_tag 'indexed_documents', :accept => 'text/plain', :class => 'file'
         = submit_tag "Upload", :class => 'submit btn-upload'
 
     .wrap-content.status
@@ -64,24 +64,27 @@
             - @uncrawled_urls.each do |uncrawled_url|
               %tr{:class => cycle('even', 'odd')}
                 %td.uncrawled-url
-                  = link_to "Remove URL", affiliate_superfresh_url_path(@affiliate, uncrawled_url), :title => "Remove URL", :confirm => "You are about to remove this URL. Are you sure?", :method => :delete, :class => 'remove-url-button'
+                  = link_to "Remove URL", affiliate_on_demand_url_path(@affiliate, uncrawled_url), :title => "Remove URL", :confirm => "You are about to remove this URL. Are you sure?", :method => :delete, :class => 'remove-url-button'
                   .remove-url-wrapper
                     = link_to uncrawled_url.url, uncrawled_url.url, :class => 'remove-url'
       .wrap-table
         %table
           %thead
             %tr
-              %th{:colspan => 2} Previously Refreshed URLs
+              %th{:colspan => 3} Previously Crawled URLs
             %tr
               %th.secondary-header URL
-              %th.secondary-header Crawled At
+              %th.secondary-header Last Crawled At
+              %th.secondary-header Last Crawl Status
           %tbody
             - @crawled_urls.each do |crawled_url|
               %tr{:class => cycle('even', 'odd')}
                 %td.crawled-url
                   = link_to crawled_url.url, crawled_url.url
                 %td
-                  = crawled_url.crawled_at
+                  = crawled_url.last_crawled_at
+                %td
+                  = crawled_url.last_crawl_status
       %div{:style => "text-align: center;"}
         = will_paginate @crawled_urls
 

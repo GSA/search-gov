@@ -3,6 +3,10 @@ require 'spec/spec_helper'
 describe IndexedDocument do
   fixtures :affiliates, :superfresh_urls
   before do
+    @min_valid_attributes = {
+      :url => "http://min.usa.gov/link.html",
+      :affiliate_id => affiliates(:basic_affiliate).id
+    }
     @valid_attributes = {
       :title => 'PDF Title',
       :description => 'This is a PDF document.',
@@ -12,12 +16,15 @@ describe IndexedDocument do
     }
   end
 
-  it { should validate_presence_of :title }
-  it { should validate_presence_of :description }
   it { should validate_presence_of :url }
   it { should validate_presence_of :affiliate_id }
+  it { should allow_value("http://some.site.gov/url").for(:url) }
+  it { should allow_value("http://some.site.mil/url").for(:url) }
+  it { should allow_value("http://some.govsite.com/url").for(:url) }
+  it { should allow_value("http://some.govsite.us/url").for(:url) }
+  it { should allow_value("http://some.govsite.info/url").for(:url) }
   it { should belong_to :affiliate }
-
+  
   it "should create a new instance given valid attributes" do
     IndexedDocument.create!(@valid_attributes)
   end
@@ -71,127 +78,202 @@ describe IndexedDocument do
     end
   end
 
-  describe "#fetch(url, affiliate_id)" do
+  describe "#fetch" do
+    before do
+      @indexed_document = IndexedDocument.create(@min_valid_attributes)
+      @indexed_document.stub!(:open).and_raise Exception.new("ERROR!")
+    end
+    
     context "when there is a problem fetching the URL content" do
-      before do
-        IndexedDocument.stub!(:open).and_raise Errno::ECONNRESET
-      end
-
-      it "should log an error and exit" do
-        Rails.logger.should_receive(:error).with instance_of(String)
-        surl = superfresh_urls(:with_description_meta)
-        IndexedDocument.fetch(surl.url, surl.affiliate.id)
+      it "should update the url with last crawled date and error message" do
+        @indexed_document.fetch
+        @indexed_document.last_crawled_at.should_not be_nil
+        @indexed_document.last_crawl_status.should == "ERROR!"
       end
     end
 
     context "when the URL ends in PDF" do
-      it "should call fetch_pdf with the url and affiliate_id" do
-        surl = superfresh_urls(:pdf)
-        IndexedDocument.should_receive(:fetch_pdf).with(surl.url, surl.affiliate.id)
-        IndexedDocument.fetch(surl.url, surl.affiliate.id)
+      before do
+        @indexed_document.url = 'http://something.gov/something.pdf'
+      end
+      
+      it "should call fetch_pdf" do
+        @indexed_document.should_receive(:fetch_pdf)
+        @indexed_document.fetch
       end
     end
 
     context "when the URL doesn't end in PDF" do
-      it "should call fetch_html with the url and affiliate_id" do
-        surl = superfresh_urls(:with_description_meta)
-        IndexedDocument.should_receive(:fetch_html).with(surl.url, surl.affiliate.id)
-        IndexedDocument.fetch(surl.url, surl.affiliate.id)
+      it "should call fetch_html" do
+        @indexed_document.should_receive(:fetch_html)
+        @indexed_document.fetch
       end
     end
   end
 
-  describe "#fetch_html(url, affiliate_id)" do
-
+  describe "#fetch_html" do
     context "when the page has a HTML title" do
-      context "when the title is long" do
-        before do
-          doc = Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm'))
-          Nokogiri::HTML::Document.should_receive(:parse).and_return(doc)
-        end
+      before do
+        @indexed_document = IndexedDocument.create(@min_valid_attributes)
+        @indexed_document.stub!(:open).and_return File.read(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
+        @indexed_document.fetch_html
+      end
 
+      context "when the title is long" do
         it "should use the title, truncated to 60 characters on a word boundary" do
-          surl = superfresh_urls(:with_description_meta)
-          lambda { IndexedDocument.fetch_html(surl.url, surl.affiliate.id) }.should change(IndexedDocument, :count).by(1)
-          surl.affiliate.indexed_documents.find_by_url(surl.url).title.should == "Fire Island National Seashore - Fire Island Light Station..."
+          @indexed_document.title.should == "Fire Island National Seashore - Fire Island Light Station..."
         end
       end
 
       context "when the page has a description meta tag" do
-        before do
-          doc = Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm'))
-          Nokogiri::HTML::Document.should_receive(:parse).and_return(doc)
-        end
-
         it "should use it when creating the boosted content" do
-          surl = superfresh_urls(:with_description_meta)
-          lambda { IndexedDocument.fetch_html(surl.url, surl.affiliate.id) }.should change(IndexedDocument, :count).by(1)
-          surl.affiliate.indexed_documents.find_by_url(surl.url).description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
+          @indexed_document.description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
         end
-
       end
 
       context "when the page has a differently capitalized DeScriPtioN meta tag" do
-        before do
-          doc = Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23-caps.htm'))
-          Nokogiri::HTML::Document.should_receive(:parse).and_return(doc)
-        end
-
         it "should still find it and use it" do
-          surl = superfresh_urls(:with_description_meta)
-          IndexedDocument.fetch_html(surl.url, surl.affiliate.id)
-          surl.affiliate.indexed_documents.find_by_url(surl.url).description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
+          @indexed_document.description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
         end
       end
 
       context "when the page does not have a description meta tag" do
         before do
-          doc = Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html'))
-          Nokogiri::HTML::Document.should_receive(:parse).and_return(doc)
+          @indexed_document.stub!(:open).and_return File.read(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
+          @indexed_document.fetch_html
         end
 
         it "should use the initial subset of non-HTML words of the web page as the description" do
-          surl = superfresh_urls(:without_description_meta)
-          IndexedDocument.fetch_html(surl.url, surl.affiliate.id)
-          idoc = surl.affiliate.indexed_documents.find_by_url(surl.url)
-          idoc.title.should == "Carribean Sea Regional Atlas - Map Service and Layer..."
-          idoc.description.should == "Carribean Sea Regional Atlas. -. Map Service and Layer Descriptions. Ocean Exploration and Research (OER) Digital Atlases. Caribbean Sea. Description. This map aids the public in locating surveys carried out by NOAA's Office of Exploration and..."
+          @indexed_document.title.should == "Carribean Sea Regional Atlas - Map Service and Layer..."
+          @indexed_document.description.should == "Carribean Sea Regional Atlas. -. Map Service and Layer Descriptions. Ocean Exploration and Research (OER) Digital Atlases. Caribbean Sea. Description. This map aids the public in locating surveys carried out by NOAA's Office of Exploration and..."
         end
       end
     end
   end
 
-  describe "#fetch_pdf(url, affiliate_id)" do
-    before do
-      @superfresh_url = superfresh_urls(:pdf)
-      @raw_pdf = File.open(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
-      IndexedDocument.stub!(:open).and_return @raw_pdf
-    end
+  describe "#fetch_pdf" do
+    context "for a normal PDF file" do
+      before do
+        @indexed_document = IndexedDocument.create(@min_valid_attributes)
+        @indexed_document.stub!(:open).and_return File.open(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
+        @indexed_document.fetch_pdf
+      end
 
-    it "should open the pdf file" do
-      IndexedDocument.fetch_pdf(@superfresh_url.url, @superfresh_url.affiliate.id)
-    end
-
-    it "should create an indexed document that has a title and description from the pdf" do
-      IndexedDocument.fetch_pdf(@superfresh_url.url, @superfresh_url.affiliate.id)
-      indexed_document = @superfresh_url.affiliate.indexed_documents.find_by_url(@superfresh_url.url)
-      indexed_document.should_not be_nil
-      indexed_document.title.should == "This is a test PDF to test our PDF parsing"
-      indexed_document.description.should == "This is a test PDF to test our PDF parsing.\n\n\f"
-      indexed_document.url.should == @superfresh_url.url
+      it "should create an indexed document that has a title and description from the pdf" do
+        @indexed_document.id.should_not be_nil
+        @indexed_document.title.should == "This is a test PDF to test our PDF parsing"
+        @indexed_document.description.should == "This is a test PDF to test our PDF parsing.\n\n\f"
+        @indexed_document.url.should == @min_valid_attributes[:url]
+      end
     end
 
     context "when the pdf body is blank" do
       before do
-        @raw_pdf = File.open(Rails.root.to_s + "/spec/fixtures/pdf/badtitle.pdf")
-        IndexedDocument.stub!(:open).and_return @raw_pdf
+        @indexed_document = IndexedDocument.create(@min_valid_attributes.merge(:url => 'http://www.state.nj.us/bpu/pdf/boardorders/3-2-07-III%20H.pdf'))
+        @indexed_document.stub!(:open).and_return File.open(Rails.root.to_s + "/spec/fixtures/pdf/badtitle.pdf")
+        @indexed_document.fetch_pdf
       end
 
       it "should generate a title using the last part of the filename" do
-        IndexedDocument.fetch_pdf(@superfresh_url.url, @superfresh_url.affiliate.id)
-        indexed_document = @superfresh_url.affiliate.indexed_documents.find_by_url(@superfresh_url.url)
-        indexed_document.should_not be_nil
-        indexed_document.title.should == "3-2-07-III H.pdf"
+        @indexed_document.id.should_not be_nil
+        @indexed_document.title.should == "3-2-07-III H.pdf"
+      end
+    end
+  end
+  
+  describe "#uncrawled_urls" do
+    before do
+      IndexedDocument.destroy_all
+      @affiliate = affiliates(:basic_affiliate)
+      @first_uncrawled_url = IndexedDocument.create(:url => 'http://some.mil/', :affiliate => @affiliate)
+      @last_uncrawled_url = IndexedDocument.create(:url => 'http://another.mil', :affiliate => @affiliate)
+      @other_affiliate_uncrawled_url = IndexedDocument.create(:url => 'http://other.mil', :affiliate => affiliates(:power_affiliate))
+      @already_crawled_url = IndexedDocument.create(:url => 'http://already.crawled.mil', :affiliate => @affiliate, :last_crawled_at => Time.now)
+    end
+
+    context "when looking up uncrawled URLs" do
+      it "should limit the number of URLs returned if specified" do
+        IndexedDocument.should_receive(:find_all_by_last_crawled_at_and_affiliate_id).with(nil, @affiliate.id, {:limit => 500, :order => 'created_at asc'}).and_return []
+        IndexedDocument.uncrawled_urls(@affiliate, 500)
+      end
+
+      it "should not limit the number of URLs returned if the value is not specified" do
+        IndexedDocument.should_receive(:find_all_by_last_crawled_at_and_affiliate_id).with(nil, @affiliate.id, {:order => 'created_at asc'}).and_return []
+        IndexedDocument.uncrawled_urls(@affiliate)
+      end
+
+      it "should return all the uncrawled urls (i.e. where crawled_at == nil) for an affiliate, ordered by created time ascending" do
+        uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate)
+        uncrawled_urls.size.should == 2
+        uncrawled_urls.first.should == @first_uncrawled_url
+        uncrawled_urls.last.should == @last_uncrawled_url
+        uncrawled_urls.include?(@already_crawled_url).should be_false
+        uncrawled_urls.include?(@other_affiliate_uncrawled_url).should be_false
+      end
+    end
+  end
+  
+  describe "#crawled_urls" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      @first_crawled_url = IndexedDocument.create(:url => 'http://crawled.mil', :last_crawled_at => Time.now, :affiliate => @affiliate)
+      @last_crawled_url = IndexedDocument.create(:url => 'http://another.crawled.mil', :last_crawled_at => Time.now, :affiliate => @affiliate)
+      IndexedDocument.create(:url => 'http://anotheraffiliate.mil', :last_crawled_at => Time.now, :affiliate => affiliates(:power_affiliate))
+    end
+
+    it "should return the first page of all crawled urls" do
+      crawled_urls = IndexedDocument.crawled_urls(@affiliate)
+      crawled_urls.size.should == 2
+      crawled_urls.include?(@first_crawled_url).should be_true
+      crawled_urls.include?(@last_crawled_url).should be_true
+    end
+
+    it "should paginate the results if the page is passed in" do
+      crawled_urls = IndexedDocument.crawled_urls(@affiliate, 2)
+      crawled_urls.size.should == 0
+    end
+  end
+  
+  describe "#process_file" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+    end
+    
+    context "when a file is passed in with 100 or fewer URLs" do
+      before do
+        @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
+        tempfile = Tempfile.new('urls.txt')
+        @urls.each do |url|
+          tempfile.write(url + "\n")
+        end
+        tempfile.close
+        tempfile.open
+        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)
+      end
+
+      it "should create a new IndexedDocument for each of the lines in the file" do
+        IndexedDocument.process_file(@file, @affiliate)
+        @urls.each {|url| IndexedDocument.find_by_url_and_affiliate_id(url, @affiliate.id).should_not be_nil}
+      end
+    end
+
+    context "when a file is passed in with more than 100 URLs" do
+      before do
+        tempfile = Tempfile.new('too_many_urls.txt')
+        101.times { |x| tempfile.write("http://search.usa.gov/#{x}\n") }
+        tempfile.close
+        tempfile.open
+        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)
+      end
+
+      it "should raise an error that there are too many URLs in the file" do
+        lambda { IndexedDocument.process_file(@file, @affiliate) }.should raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
+      end
+
+      context "when a max number of URLs is passed that is greater than the default max" do
+        it "should allow all of the urls" do
+          lambda { IndexedDocument.process_file(@file, nil, 1000)}.should_not raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
+        end
       end
     end
   end

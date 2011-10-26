@@ -2,15 +2,16 @@ require 'pdf/toolkit'
 
 class IndexedDocument < ActiveRecord::Base
   belongs_to :affiliate
-  validates_presence_of :title, :url, :description, :doctype, :affiliate_id, :locale
+  validates_presence_of :url, :affiliate_id
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
+  validates_format_of :url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
   validate :doctype, :inclusion => {:in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"}
   validate :locale, :inclusion => {:in => %w(en es), :message => "must be either 'en' or 'es.'"}
-  before_save :ensure_http_prefix_on_url
+  before_validation :ensure_http_prefix_on_url
 
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 250
-
+  MAX_URLS_PER_FILE_UPLOAD = 100
 
   searchable do
     text :title, :boost => 10.0
@@ -23,7 +24,37 @@ class IndexedDocument < ActiveRecord::Base
     string :locale
     integer :affiliate_id
   end
+  
+  def fetch
+    url.ends_with?(".pdf") ? fetch_pdf : fetch_html
+  end
+  
+  def fetch_html
+    begin
+      doc = Nokogiri::HTML(open(url))
+      title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator => " ") rescue nil
+      description = doc.xpath("//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] ").first.attributes["content"].value.squish rescue nil
+      if description.nil?
+        doc.xpath('//script').each { |x| x.remove }
+        doc.xpath('//style').each { |x| x.remove }
+        description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
+      end
+      body = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
+      self.update_attributes!(:title=> title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => "OK")
+    rescue Exception => e
+      self.update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Error")
+    end
+  end
 
+  def fetch_pdf
+    begin
+      pdf = PDF::Toolkit.open(open(url))
+      self.update_attributes!(:title => generate_pdf_title(pdf, self.url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf')
+    rescue Exception => e
+      self.update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Error")
+    end
+  end
+  
   class << self
     def search_for(query, affiliate = nil, locale = I18n.default_locale.to_s, page = 1, per_page = 3)
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate.name}) do
@@ -37,58 +68,45 @@ class IndexedDocument < ActiveRecord::Base
         end rescue nil
       end
     end
+    
+    def uncrawled_urls(affiliate, number_of_urls = nil)
+      sql_options = {:order => 'created_at asc'}
+      sql_options.merge!(:limit => number_of_urls) if number_of_urls
+      find_all_by_last_crawled_at_and_affiliate_id(nil, affiliate.id, sql_options)
+    end
 
-    def fetch(url, affiliate_id)
-      begin
-        url.ends_with?(".pdf") ? fetch_pdf(url, affiliate_id) : fetch_html(url, affiliate_id)
-      rescue Exception => e
-        Rails.logger.error "Trouble fetching #{url} for indexed document creation: #{e}"
+    def crawled_urls(affiliate, page = 1)
+      paginate(:conditions => ['affiliate_id = ? AND NOT ISNULL(last_crawled_at)', affiliate.id], :page => page, :order => 'last_crawled_at desc')
+    end
+
+    def process_file(file, affiliate, max_urls = MAX_URLS_PER_FILE_UPLOAD)
+      counter = 0
+      if file.tempfile.lines.count <= max_urls and file.tempfile.open
+        file.tempfile.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
+        return counter
+      else
+        raise "Too many URLs in your file.  Please limit your file to #{max_urls} URLs."
       end
     end
-
-    def fetch_html(url, affiliate_id)
-      doc = Nokogiri::HTML(open(url))
-      return unless (title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator=>" ") rescue nil)
-      description = doc.xpath("//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] ").first.attributes["content"].value.squish rescue nil
-      if description.nil?
-        doc.xpath('//script').each { |x| x.remove }
-        doc.xpath('//style').each { |x| x.remove }
-        description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
-      end
-      body = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
-      indexed_document = find_or_initialize_by_url_and_affiliate_id(url, affiliate_id)
-      indexed_document.update_attributes(:title=> title, :description => description, :body => body, :doctype => 'html')
-      indexed_document.save!
-    end
-
-    def fetch_pdf(url, affiliate_id)
-      pdf = PDF::Toolkit.open(open(url))
-      indexed_document = find_or_initialize_by_url_and_affiliate_id(url, affiliate_id)
-      indexed_document.update_attributes(:title => generate_pdf_title(pdf, url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf')
-      indexed_document.save!
-    end
-
   end
 
   private
 
-  class << self
-    def generate_pdf_title(pdf, url)
-      return pdf.title unless pdf.title.blank?
-      begin
-        body = pdf.to_text.read
-        first_linebreak_index = body.strip.index("\n") || body.size
-        first_sentence_index = body.strip.index(".")
-        end_index = [first_linebreak_index, first_sentence_index].min - 1
-        return body.strip[0..end_index]
-      rescue
-        return URI.decode(url[url.rindex("/") + 1..-1])
-      end
+  def generate_pdf_title(pdf, url)
+    return pdf.title unless pdf.title.blank?
+    begin
+      body = pdf.to_text.read
+      first_linebreak_index = body.strip.index("\n") || body.size
+      first_sentence_index = body.strip.index(".")
+      end_index = [first_linebreak_index, first_sentence_index].min - 1
+      return body.strip[0..end_index]
+    rescue
+      return URI.decode(url[url.rindex("/") + 1..-1])
     end
+  end
 
-    def generate_pdf_description(body)
-      body.truncate(500, :separator => " ")
-    end
+  def generate_pdf_description(body)
+    body.truncate(500, :separator => " ")
   end
 
   def ensure_http_prefix_on_url

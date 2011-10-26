@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111019184243) do
+ActiveRecord::Schema.define(:version => 20111025135656) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -318,10 +318,14 @@ ActiveRecord::Schema.define(:version => 20111019184243) do
     t.integer  "affiliate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "body",         :limit => 2147483647
-    t.string   "doctype",      :limit => 10,         :default => "html"
-    t.string   "locale",       :limit => 6,          :default => "en",   :null => false
+    t.text     "body",              :limit => 2147483647
+    t.string   "doctype",           :limit => 10,         :default => "html"
+    t.string   "locale",            :limit => 6,          :default => "en",   :null => false
+    t.datetime "last_crawled_at"
+    t.string   "last_crawl_status"
   end
+
+  add_index "indexed_documents", ["affiliate_id"], :name => "index_indexed_documents_on_affiliate_id"
 
   create_table "logfile_blocked_class_cs", :force => true do |t|
     t.string   "classc",     :null => false

@@ -31,7 +31,7 @@ UsasearchRails3::Application.routes.draw do
         post :bulk
       end
     end
-    resources :superfresh_urls, :controller => 'affiliates/superfresh', :only => [:index, :create, :destroy] do
+    resources :on_demand_urls, :controller => 'affiliates/on_demand_urls', :only => [:index, :create, :destroy] do
       collection do
         post :upload
       end
