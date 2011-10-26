@@ -33,7 +33,7 @@ class IndexedDocument < ActiveRecord::Base
       Rails.logger.error "Trouble fetching #{url} to index: #{e}"
       update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Error")
     ensure
-      File.delete(file) unless file.nil?
+      File.delete(file) unless file.nil? rescue Rails.logger.error("Unable to delete file: #{file}")
     end
   end
 

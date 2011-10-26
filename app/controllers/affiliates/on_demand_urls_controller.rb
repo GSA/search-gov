@@ -48,4 +48,3 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
     redirect_to affiliate_on_demand_urls_path(@affiliate)
   end
 end
-

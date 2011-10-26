@@ -106,6 +106,17 @@ describe IndexedDocument do
         File.should_not_receive(:delete)
         indexed_document.fetch
       end
+      
+      context "when deleteing the file raises an exception for some reason" do
+        before do
+          File.stub!(:delete).and_raise "Some Exception"
+        end
+        
+        it "should log the error" do
+          Rails.logger.should_receive(:error)
+          indexed_document.fetch
+        end
+      end
     end
 
     context "when the URL ends in PDF" do
