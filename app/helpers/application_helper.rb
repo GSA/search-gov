@@ -233,16 +233,12 @@ module ApplicationHelper
     end
   end
 
-  def render_connect_links
-    connect_links if display_connect_links?
-  end
-
   def connect_links
     tags = []
     tags << link_to('Twitter', "http://twitter.com/usasearch", :class => 'twitter', :title => 'Twitter')
-    tags << link_to('Mobile', "http://m.usa.gov", :class => 'mobile', :title => 'Mobile')
+    tags << link_to('Mobile', "http://m.usa.gov", :class => 'mobile', :title => 'Mobile') if display_mobile_or_add_this_link?
     tags << link_to('Our Blog', "http://searchblog.usa.gov", :class => 'blog', :title => 'Our Blog')
-    tags << link_to('Share', "http://www.addthis.com/bookmark.php", :class => 'share last', :title => 'Share')
+    tags << link_to('Share', "http://www.addthis.com/bookmark.php", :class => 'share last', :title => 'Share') if display_mobile_or_add_this_link?
     tags.join("\n").html_safe
   end
 
@@ -269,7 +265,7 @@ module ApplicationHelper
     links.collect { |link| link_to(link[0], link[1], :class => link[2]) }.join unless links.nil?
   end
 
-  def display_connect_links?
+  def display_mobile_or_add_this_link?
     return true if %w{ home images recalls forms searches image_searches pages }.include?(controller.controller_path)
     controller.controller_path == 'affiliates/home' and %w{ index demo how_it_works }.include?(controller.action_name)
   end
