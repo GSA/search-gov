@@ -184,7 +184,7 @@ describe IndexedDocument do
     end
   end
 
-  describe "#fetch_pdf(file)" do
+  describe "#index_pdf(file)" do
     context "for a normal PDF file" do
       before do
         @indexed_document = IndexedDocument.create!(@min_valid_attributes)
@@ -197,6 +197,11 @@ describe IndexedDocument do
         @indexed_document.title.should == "This is a test PDF to test our PDF parsing"
         @indexed_document.description.should == "This is a test PDF to test our PDF parsing.\n\n\f"
         @indexed_document.url.should == @min_valid_attributes[:url]
+      end
+      
+      it "should set the the time and status from the crawl" do
+        @indexed_document.last_crawled_at.should_not be_nil
+        @indexed_document.last_crawl_status.should == "OK"
       end
     end
 

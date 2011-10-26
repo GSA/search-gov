@@ -52,7 +52,7 @@ class IndexedDocument < ActiveRecord::Base
 
   def index_pdf(file)
     pdf = PDF::Toolkit.open(file)
-    update_attributes!(:title => generate_pdf_title(pdf, self.url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf')
+    update_attributes!(:title => generate_pdf_title(pdf, self.url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => "OK")
   end
 
   class << self
