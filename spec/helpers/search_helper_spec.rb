@@ -18,10 +18,9 @@ describe SearchHelper do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:search) { Search.new }
 
-      it "should display search within this site link" do
-        helper.should_receive(:display_search_within_this_site_link).with(result, search, affiliate).and_return('search_within_this_site_link')
-        content = helper.display_bing_result_links(result, search, affiliate, 1, :web)
-        content.should =~ /search_within_this_site_link/
+      it "should not display search within this site link" do
+        helper.should_not_receive(:display_search_within_this_site_link).with(result, search, affiliate).and_return('search_within_this_site_link')
+        helper.display_bing_result_links(result, search, affiliate, 1, :web)
       end
     end
   end

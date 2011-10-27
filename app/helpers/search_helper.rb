@@ -75,7 +75,6 @@ module SearchHelper
       html << " - "
       html << link_to((t :cached), "#{result['cacheUrl']}", :class => 'cache_link')
     end
-    html << display_search_within_this_site_link(result, search, affiliate)
     raw html
   end
 
