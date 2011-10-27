@@ -106,17 +106,6 @@ Feature:  Administration
     And I press "Send to all affiliates"
     Then I should be on the affiliate admin home page
     And I should see "Message broadcasted to all affiliates successfully"
-    And "one@foo.gov" should receive 1 email
-    And "two@bar.gov" should receive 1 email
-    When "one@foo.gov" opens the email with subject "some title"
-    Then they should see "This is the email body" in the email body
-    And they should see "One Foo" in the email body
-    And they should see "single" in the email body
-    When "two@bar.gov" opens the email with subject "some title"
-    Then they should see "This is the email body" in the email body
-    And they should see "Two Bar" in the email body
-    And they should see "multi1" in the email body
-    And they should see "multi2" in the email body
 
   Scenario: Uploading, as a logged in admin, a SAYT suggestions text file containing:
             3 new SAYT suggestions, 1 that already exists exactly, 1 that exists in a different case, and a blank line
