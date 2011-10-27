@@ -34,6 +34,12 @@ describe IndexedDocument do
     indexed_document = IndexedDocument.create!(@min_valid_attributes)
     IndexedDocumentFetcher.should have_queued(indexed_document.id)
   end
+  
+  it "should create a SuperfreshUrl entry for the affiliate" do
+    SuperfreshUrl.find_by_url_and_affiliate_id(@min_valid_attributes[:url], @min_valid_attributes[:affiliate_id]).should be_nil
+    IndexedDocument.create!(@min_valid_attributes)
+    SuperfreshUrl.find_by_url_and_affiliate_id(@min_valid_attributes[:url], @min_valid_attributes[:affiliate_id]).should_not be_nil
+  end
 
   it "should validate unique url" do
     IndexedDocument.create!(@valid_attributes)
