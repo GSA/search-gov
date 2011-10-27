@@ -106,11 +106,7 @@ Feature: Affiliate Search
     And I fill in "query" with "president"
     And I press "Search"
     Then I should see "Results 1-10"
-    When I follow "Search this site"
-    Then I should see "Do you want to see results for 'president' from all sites?"
     And I should not see "Search this site"
-    When I follow "'president' from all sites"
-    Then I should see "Search this site"
 
   Scenario: Visiting Spanish affiliate search with multiple domains
     Given the following Affiliates exist:
