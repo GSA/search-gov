@@ -348,7 +348,7 @@ describe DailyQueryStat do
 
     it "should bulk remove the day's records from Solr for each affiliate and then index from the DB all the affiliate's records for a given day" do
       DailyQueryStat.should_receive(:bulk_remove_solr_records_for_day_and_affiliate).with(@sample.day, @sample.affiliate)
-      Sunspot.should_receive(:index!).with([@sample])
+      Sunspot.should_receive(:index).with([@sample])
       DailyQueryStat.perform(@sample.day.to_s, @sample.affiliate)
     end
   end
