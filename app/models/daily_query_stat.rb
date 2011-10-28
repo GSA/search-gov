@@ -24,7 +24,7 @@ class DailyQueryStat < ActiveRecord::Base
     def perform(day_string, affiliate_name)
       day = Date.parse(day_string)
       bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)
-      Sunspot.index!(all(:conditions=>["day=? and affiliate = ?", day, affiliate_name]))
+      Sunspot.index(all(:conditions=>["day=? and affiliate = ?", day, affiliate_name]))
     end
 
     def bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)
