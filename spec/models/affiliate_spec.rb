@@ -506,4 +506,58 @@ describe Affiliate do
       end
     end
   end
+
+  describe "#has_multiple_domains?" do
+    context "when Affiliate has more than 1 domain" do
+      let(:affiliate) { Affiliate.new(:domains => "   foo.com\n  bar.com") }
+      subject { affiliate }
+      its(:has_multiple_domains?) { should be_true }
+    end
+
+    context "when Affiliate has no domain" do
+      let(:affiliate) { Affiliate.new }
+      subject { affiliate }
+      its(:has_multiple_domains?) { should be_false }
+    end
+
+    context "when Affiliate has 1 domain" do
+      let(:affiliate) { Affiliate.new(:domains => "  foo.com \n\n") }
+      subject { affiliate }
+      its(:has_multiple_domains?) { should be_false }
+    end
+  end
+
+  describe "#get_matching_domain" do
+    let(:affiliate) { Affiliate.new(:domains => "   foo.com\n  bar.com") }
+    let(:url_within_domain) { "http://www.bar.com/blogs/1" }
+    let(:url_outside_domain) { "http://www.outsider.com/blogs/1" }
+
+    context "when locale is :en" do
+      before do
+        I18n.stub(:locale).and_return(:en)
+      end
+
+      context "and url is in the same domain" do
+        specify { affiliate.get_matching_domain(url_within_domain).should == "bar.com" }
+      end
+
+      context "and url is not in the same domain" do
+        specify { affiliate.get_matching_domain(url_outside_domain).should be_blank }
+      end
+    end
+
+    context "when locale is :es" do
+       before do
+        I18n.stub(:locale).and_return(:es)
+      end
+
+      context "and url is within the domain" do
+        specify { affiliate.get_matching_domain(url_within_domain).should be_blank }
+      end
+
+      context "and url is outside the domain" do
+        specify { affiliate.get_matching_domain(url_outside_domain).should be_blank }
+      end
+    end
+  end
 end
