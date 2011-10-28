@@ -16,19 +16,23 @@ class DailyQueryStat < ActiveRecord::Base
 
   class << self
     def reindex_day(day)
-      Resque.enqueue(DailyQueryStat, day)
+      sum(:times, :group=> :affiliate, :conditions=> ["day = ?", day], :order => "sum_times desc").each do | dqs |
+        Resque.enqueue(DailyQueryStat, day, dqs[0])
+      end
     end
 
-    def perform(day_string)
+    def perform(day_string, affiliate_name)
       day = Date.parse(day_string)
-      bulk_remove_solr_records_for_day(day)
-      Sunspot.index!(all(:conditions=>["day=?", day]))
+      bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)
+      Sunspot.index!(all(:conditions=>["day=? and affiliate = ?", day, affiliate_name]))
     end
 
-    def bulk_remove_solr_records_for_day(day)
+    def bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)
       starttime, endtime = day.beginning_of_day, day.end_of_day
-      Sunspot.remove(DailyQueryStat) { with(:day).between(starttime..endtime) }
-      Sunspot.commit
+      Sunspot.remove(DailyQueryStat) do
+        with(:day).between(starttime..endtime)
+        with(:affiliate, affiliate_name)
+      end
     end
 
     def search_for(query, start_date = 1.year.ago, end_date = Date.current, affiliate_name = Affiliate::USAGOV_AFFILIATE_NAME, locale = I18n.default_locale.to_s, per_page = 3000)

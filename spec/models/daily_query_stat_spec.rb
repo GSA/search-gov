@@ -324,41 +324,54 @@ describe DailyQueryStat do
     end
   end
 
-  describe "#bulk_remove_solr_records_for_day(day)" do
+  describe "#reindex_day(day)" do
+    before do
+      ResqueSpec.reset!
+      DailyQueryStat.delete_all
+      DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314)
+      DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314, :affiliate => affiliates(:power_affiliate).name)
+    end
+
+    it "should enqueue reindexing for each trafficked affiliate for the day" do
+      DailyQueryStat.reindex_day("20110830")
+      DailyQueryStat.should have_queued("20110830", Affiliate::USAGOV_AFFILIATE_NAME)
+      DailyQueryStat.should have_queued("20110830", affiliates(:power_affiliate).name)
+    end
+  end
+
+  describe "#perform(day_string, affiliate_name)" do
+    before do
+      DailyQueryStat.delete_all
+      DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314)
+      @sample = DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314, :affiliate => affiliates(:power_affiliate).name)
+    end
+
+    it "should bulk remove the day's records from Solr for each affiliate and then index from the DB all the affiliate's records for a given day" do
+      DailyQueryStat.should_receive(:bulk_remove_solr_records_for_day_and_affiliate).with(@sample.day, @sample.affiliate)
+      Sunspot.should_receive(:index!).with([@sample])
+      DailyQueryStat.perform(@sample.day.to_s, @sample.affiliate)
+    end
+  end
+
+  describe "#bulk_remove_solr_records_for_day_and_affiliate(day, affiliate_name)" do
     before do
       DailyQueryStat.delete_all
       @first = DailyQueryStat.create!(:day => "20110828", :query => "government", :times => 314)
       DailyQueryStat.create!(:day => "20110829", :query => "government", :times => 314)
+      @other = DailyQueryStat.create!(:day => "20110829", :query => "government", :times => 314, :affiliate => affiliates(:power_affiliate).name)
       DailyQueryStat.create!(:day => "20110829", :query => "government loan", :times => 314)
       @last = DailyQueryStat.create!(:day => "20110830", :query => "government", :times => 314)
       DailyQueryStat.reindex
       Sunspot.commit
     end
 
-    it "should remove records from index for specified day" do
-      DailyQueryStat.bulk_remove_solr_records_for_day(Date.parse("20110829"))
+    it "should remove records from index for specified day and affiliate" do
+      DailyQueryStat.bulk_remove_solr_records_for_day_and_affiliate(Date.parse("20110829"), Affiliate::USAGOV_AFFILIATE_NAME)
+      Sunspot.commit
       DailyQueryStat.search_for("government", Date.parse("20110828")).should == [@first.id, @last.id]
+      DailyQueryStat.search_for("government", Date.parse("20110828"), Date.parse("20110901"), affiliates(:power_affiliate).name).should == [@other.id]
     end
 
-  end
-
-  describe "#reindex_day(day)" do
-    before do
-      ResqueSpec.reset!
-    end
-
-    it "should enqueue reindexing" do
-      DailyQueryStat.reindex_day(Date.current)
-      DailyQueryStat.should have_queued(Date.current)
-    end
-  end
-
-  describe "#perform(day_string)" do
-    it "should bulk remove the day's records from Solr and then index from DB all records for a given day" do
-      DailyQueryStat.should_receive(:bulk_remove_solr_records_for_day).with daily_query_stats(:sample).day
-      Sunspot.should_receive(:index!).with([daily_query_stats(:sample)])
-      DailyQueryStat.perform(daily_query_stats(:sample).day.to_s)
-    end
   end
 
 end

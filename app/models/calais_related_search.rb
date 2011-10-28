@@ -24,8 +24,8 @@ class CalaisRelatedSearch < ActiveRecord::Base
     end
 
     def populate_with_new_popular_terms
-      DailyQueryStat.sum(:times, :group=> :affiliate, :conditions=> ["day = ? and locale = 'en'", Date.yesterday], :order => "sum_times desc").each do |affiliate_name|
-        populate_affiliate_with_new_popular_terms(affiliate_name[0])
+      DailyQueryStat.sum(:times, :group=> :affiliate, :conditions=> ["day = ? and locale = 'en'", Date.yesterday], :order => "sum_times desc").each do | dqs |
+        populate_affiliate_with_new_popular_terms(dqs[0])
         break if had_one_too_many?
       end
     end
