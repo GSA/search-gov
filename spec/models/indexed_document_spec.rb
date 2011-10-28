@@ -112,51 +112,46 @@ describe IndexedDocument do
         File.should_not_receive(:delete)
         indexed_document.fetch
       end
-      
-      context "when deleteing the file raises an exception for some reason" do
-        before do
-          File.stub!(:delete).and_raise "Some Exception"
-        end
-        
-        it "should log the error" do
-          Rails.logger.should_receive(:error)
-          indexed_document.fetch
-        end
-      end
     end
 
     context "when the URL ends in PDF" do
       before do
         indexed_document.url = 'http://something.gov/something.pdf'
-        @io = open(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
-        indexed_document.stub!(:open).and_return @io
+        @pdf_io = StringIO.new(File.read(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf"))
+        indexed_document.stub!(:open).and_return @pdf_io
+        @tempfile = Tempfile.new(Time.now.to_s)
+        Tempfile.stub!(:new).and_return @tempfile
       end
 
-      it "should call fetch_pdf" do
-        indexed_document.should_receive(:index_pdf).with(@io)
+      it "should call index_pdf" do
+        indexed_document.should_receive(:index_pdf).with(@tempfile.path)
         indexed_document.fetch
       end
 
       it "should delete the downloaded temporary PDF file" do
-        File.should_receive(:delete).with(@io)
+        File.should_receive(:delete)
         indexed_document.fetch
-      end
+      end      
     end
 
     context "when the URL doesn't end in PDF" do
       before do
         indexed_document.url = 'http://something.gov/something.html'
-        @io = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
-        indexed_document.stub!(:open).and_return @io
+        @html_io = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
+        indexed_document.stub!(:open).and_return @html_io
+      end
+      
+      it "should not try to create a tempfile" do
+        Tempfile.should_not_receive(:new)
       end
 
       it "should call fetch_html" do
-        indexed_document.should_receive(:index_html).with(@io)
+        indexed_document.should_receive(:index_html).with(@html_io)
         indexed_document.fetch
       end
 
       it "should delete the downloaded temporary HTML file" do
-        File.should_receive(:delete).with(@io)
+        File.should_receive(:delete).with(@html_io)
         indexed_document.fetch
       end
     end

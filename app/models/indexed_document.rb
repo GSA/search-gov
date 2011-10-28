@@ -28,12 +28,18 @@ class IndexedDocument < ActiveRecord::Base
   def fetch
     begin
       file = open(url)
-      url.ends_with?(".pdf") ? index_pdf(file) : index_html(file)
+      if file.is_a?(StringIO)
+        tempfile = Tempfile.new(Time.now.to_s)
+        tempfile.write(file.string)
+        tempfile.close
+        file = tempfile
+      end
+      url.ends_with?(".pdf") ? index_pdf(file.path) : index_html(file)
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} to index: #{e}"
       update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Error")
     ensure
-      File.delete(file) unless file.nil? rescue Rails.logger.error("Unable to delete file: #{file}")
+      File.delete(file) unless file.nil?
     end
   end
 
