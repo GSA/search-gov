@@ -121,6 +121,7 @@ class SearchesController < ApplicationController
       @affiliate.header = @affiliate.staged_header
       @affiliate.footer = @affiliate.staged_footer
       @affiliate.affiliate_template_id = @affiliate.staged_affiliate_template_id
+      @affiliate.favicon_url = @affiliate.staged_favicon_url
       @affiliate.external_css_url = @affiliate.staged_external_css_url
     end
   end

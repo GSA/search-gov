@@ -7,6 +7,9 @@
     .affiliate-template-wrapper
       = (render_choose_site_templates @affiliate).html_safe
   %li
+    = look_and_feel_form.label :staged_favicon_url, "Favicon URL"
+    = look_and_feel_form.text_field :staged_favicon_url, :class => "txt", :maxlength => 255
+  %li
     = look_and_feel_form.label :staged_external_css_url, "External CSS URL"
     = look_and_feel_form.text_field :staged_external_css_url, :class => "txt", :maxlength => 255
   %li

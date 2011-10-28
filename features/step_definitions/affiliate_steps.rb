@@ -44,7 +44,9 @@ Given /^the following Affiliates exist:$/ do |table|
       :exclude_webtrends => hash["exclude_webtrends"] || false,
       :is_popular_links_enabled => hash["is_popular_links_enabled"] || true,
       :external_css_url => hash["external_css_url"],
-      :staged_external_css_url => hash["staged_external_css_url"]
+      :staged_external_css_url => hash["staged_external_css_url"],
+      :favicon_url => hash["favicon_url"],
+      :staged_favicon_url => hash["staged_favicon_url"]
     )
     affiliate.users << user
   end
@@ -66,6 +68,14 @@ Then /^the search bar should not have SAYT enabled$/ do
   page.should_not have_selector("script[type='text/javascript'][src*='/javascripts/sayt-ui.js']")
   page.should_not have_selector("input[id='search_query'][type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
   page.should_not have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui.custom.min.js']")
+end
+
+Then /^I should see the page with favicon "([^"]*)"$/ do |favicon_url|
+  page.should have_selector("link[rel='shortcut icon'][href='#{favicon_url}']")
+end
+
+Then /^I should not see the page with favicon "([^"]*)"$/ do |favicon_url|
+  page.should_not have_selector("link[rel='shortcut icon'][href='#{favicon_url}']")
 end
 
 Then /^I should see the page with affiliate stylesheet "([^\"]*)"/ do |stylesheet_name|

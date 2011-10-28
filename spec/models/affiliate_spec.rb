@@ -111,6 +111,24 @@ describe Affiliate do
         affiliate.staged_search_results_page_title.should == @update_params[:staged_search_results_page_title]
       end
 
+      it "should save staged favicon URL with http:// prefix when it does not start with http(s)://" do
+        url = 'cdn.agency.gov/staged_favicon.ico'
+        prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
+        prefixes.each do |prefix|
+          affiliate.update_attributes_for_staging(@update_params.merge(:staged_favicon_url => "#{prefix}#{url}")).should be_true
+          affiliate.staged_favicon_url.should == "http://#{prefix}#{url}"
+        end
+      end
+
+      it "should save staged favicon URL as is when it starts with http(s)://" do
+        url = 'cdn.agency.gov/staged_favicon.ico'
+        prefixes = %w( http:// https:// HTTP:// HTTPS:// )
+        prefixes.each do |prefix|
+          affiliate.update_attributes_for_staging(@update_params.merge(:staged_favicon_url => "#{prefix}#{url}")).should be_true
+          affiliate.staged_favicon_url.should == "#{prefix}#{url}"
+        end
+      end
+
       it "should save staged external CSS URL with http:// prefix when it does not start with http(s)://" do
         url = 'cdn.agency.gov/custom.css'
         prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
@@ -159,6 +177,26 @@ describe Affiliate do
         affiliate.staged_footer.should == @update_params[:staged_footer]
         affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
         affiliate.staged_search_results_page_title.should == @update_params[:staged_search_results_page_title]
+      end
+
+      it "should save favicon URL with http:// prefix when it does not start with http(s)://" do
+        url = 'cdn.agency.gov/favicon.ico'
+        prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
+        prefixes.each do |prefix|
+          affiliate.update_attributes_for_current(@update_params.merge(:staged_favicon_url => "#{prefix}#{url}")).should be_true
+          affiliate.staged_favicon_url.should == "http://#{prefix}#{url}"
+          affiliate.favicon_url.should == "http://#{prefix}#{url}"
+        end
+      end
+
+      it "should save favicon URL as is when it starts with http(s)://" do
+        url = 'cdn.agency.gov/favicon.ico'
+        prefixes = %w( http:// https:// HTTP:// HTTPS:// )
+        prefixes.each do |prefix|
+          affiliate.update_attributes_for_current(@update_params.merge(:staged_favicon_url => "#{prefix}#{url}")).should be_true
+          affiliate.staged_favicon_url.should == "#{prefix}#{url}"
+          affiliate.favicon_url.should == "#{prefix}#{url}"
+        end
       end
 
       it "should save external CSS URL with http:// prefix when it does not start with http(s)://" do
@@ -368,20 +406,31 @@ describe Affiliate do
   end
 
   describe "#staging_attributes" do
-    it "should return all staging attributes" do
-      affiliate = Affiliate.create(@valid_create_attributes)
-      affiliate.staging_attributes.include?(:staged_domains).should be_true
-      affiliate.staging_attributes.include?(:staged_header).should be_true
-      affiliate.staging_attributes.include?(:staged_footer).should be_true
-      affiliate.staging_attributes.include?(:staged_affiliate_template_id).should be_true
-      affiliate.staging_attributes.include?(:staged_search_results_page_title).should be_true
-      affiliate.staging_attributes.include?(:staged_external_css_url).should be_true
-      affiliate.staging_attributes[:staged_domains].should == affiliate.staged_domains
-      affiliate.staging_attributes[:staged_header].should == affiliate.staged_header
-      affiliate.staging_attributes[:staged_footer].should == affiliate.staged_footer
-      affiliate.staging_attributes[:staged_affiliate_template_id] == affiliate.staged_affiliate_template_id
-      affiliate.staging_attributes[:staged_search_results_page_title] == affiliate.staged_search_results_page_title
-      affiliate.staging_attributes[:staged_external_css_url] == affiliate.staged_external_css_url
+    let(:create_staged_attributes) {
+      { :staged_domains => 'agency.gov',
+        :staged_header => '<h1>staged header</h1>',
+        :staged_footer => '<h1>staged footer</h1>',
+        :staged_affiliate_template => affiliate_templates(:basic_gray),
+        :staged_search_results_page_title => 'custom serp title',
+        :staged_favicon_url => 'http://cdn.agency.gov/favicon.ico',
+        :staged_external_css_url => 'http://cdn.agency.gov/custom.css' } }
+
+    let(:staged_attributes) {
+      create_staged_attributes.merge(:staged_affiliate_template_id => affiliate_templates(:basic_gray).id).except(:staged_affiliate_template)
+    }
+
+    let(:affiliate) { Affiliate.create(@valid_create_attributes.merge(create_staged_attributes)) }
+
+    context "when initialized" do
+      it "should return all staging attributes" do
+        [:staged_domains, :staged_header, :staged_footer,
+         :staged_affiliate_template_id, :staged_search_results_page_title,
+         :staged_favicon_url, :staged_external_css_url].each do |key|
+          affiliate.staging_attributes.should include(key)
+        end
+      end
+
+      specify { affiliate.staging_attributes.should == staged_attributes }
     end
   end
 
@@ -389,12 +438,13 @@ describe Affiliate do
     let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
 
     before do
-      @update_params = {:staged_domains => "updated.domain.gov",
-                        :staged_header => "<span>header</span>",
-                        :staged_footer => "<span>footer</span>",
-                        :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
-                        :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
-                        :staged_external_css_url => "http://cdn.agency.gov/staged_custom.css"}
+      @update_params = { :staged_domains => "updated.domain.gov",
+                         :staged_header => "<span>header</span>",
+                         :staged_footer => "<span>footer</span>",
+                         :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
+                         :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
+                         :staged_favicon_url => 'http://cdn.agency.gov/staged_favicon.ico',
+                         :staged_external_css_url => "http://cdn.agency.gov/staged_custom.css" }
       affiliate.update_attributes_for_staging(@update_params).should be_true
     end
 
@@ -405,6 +455,7 @@ describe Affiliate do
       affiliate.staged_footer.should_not == @update_params[:staged_footer]
       affiliate.staged_affiliate_template_id.should_not == @update_params[:staged_affiliate_template_id]
       affiliate.staged_search_results_page_title.should_not == @update_params[:staged_search_results_page_title]
+      affiliate.staged_favicon_url.should_not == @update_params[:staged_favicon_url]
       affiliate.staged_external_css_url.should_not == @update_params[:staged_external_css_url]
     end
 

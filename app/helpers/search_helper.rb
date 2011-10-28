@@ -602,6 +602,11 @@ module SearchHelper
     raw content_tag(:h4, html.html_safe, :class => 'search-all-sites-suggestion')
   end
 
+  def display_affiliate_favicon(affiliate)
+    favicon_url = affiliate.favicon_url
+    favicon_url.blank? ? '/favicon.ico' : favicon_url
+  end
+
   private
 
   def shorten_url (url, length=42)

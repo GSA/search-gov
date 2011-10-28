@@ -312,7 +312,7 @@ Feature: Affiliate clients
     And the "Domains to search" field should contain "example.org"
     And I should see "Cancel"
     When I follow "Cancel"
-    Then I should be on the "aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
 
   Scenario: Editing site information and saving it for preview
     Given the following Affiliates exist:
@@ -327,7 +327,7 @@ Feature: Affiliate clients
       | Site URL                   | www.aff.gov         |
       | Domains to search          | data.gov            |
     And I press "Save for Preview"
-    Then I should be on the "new aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > new aff site
     And I should see "Staged changes to your site successfully"
     And I should see "Site: new aff site"
     And I should see "www.aff.gov"
@@ -377,7 +377,7 @@ Feature: Affiliate clients
       | Site URL                   | www.aff.gov         |
       | Domains to search          | data.gov            |
     And I press "Make Live"
-    Then I should be on the "new aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > new aff site
     And I should see "Updated changes to your live site successfully"
     And I should see "Site: new aff site"
     And I should see "www.aff.gov"
@@ -410,7 +410,7 @@ Feature: Affiliate clients
     And I follow "Site information"
     Then the "Domains to search" field should contain "data.gov"
     When I press "Save for Preview"
-    Then I should be on the "aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "default"
@@ -429,7 +429,7 @@ Feature: Affiliate clients
     And I follow "Site information"
     Then the "Domains to search" field should contain "stagedagency.gov"
     When I press "Save for Preview"
-    Then I should be on the "aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
     Then I should see the page with affiliate stylesheet "basic_gray"
@@ -441,8 +441,8 @@ Feature: Affiliate clients
 
   Scenario: Visiting the look and feel page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | external_css_url          | staged_domains | staged_header | staged_footer | staged_external_css_url   |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/custom.css | oldagency.gov  | Old header    | Old footer    | cdn.agency.gov/custom.css |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -451,37 +451,41 @@ Feature: Affiliate clients
     And I should see "Look and Feel of the Search Results Page" within ".main"
     And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the "Default" template should be selected
+    And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
     And the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
     And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
     And I should see "Cancel"
     When I follow "Cancel"
-    Then I should be on the "aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
 
   Scenario: Editing look and feel and saving it for preview
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
     And I fill in the following:
-      | Search results page title                                       | {SiteName} : {Query}             |
-      | External CSS URL                                                | cdn.agency.gov/staged_custom.css |
-      | Enter HTML to customize the top of your search results page.    | New header                       |
-      | Enter HTML to customize the bottom of your search results page. | New footer                       |
+      | Search results page title                                       | {SiteName} : {Query}              |
+      | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
+      | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
+      | Enter HTML to customize the top of your search results page.    | New header                        |
+      | Enter HTML to customize the bottom of your search results page. | New footer                        |
     And I choose "Basic Gray"
     And I press "Save for Preview"
-    Then I should be on the "aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I follow "View Current"
     Then I should see "gov - aff site Search Results"
     And I should see "Old header"
     And I should see "Old footer"
+    And I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should see the page with affiliate stylesheet "default"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+    And I should not see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should not see the page with affiliate stylesheet "basic_gray"
     And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
 
@@ -490,8 +494,10 @@ Feature: Affiliate clients
     Then I should see "aff site : gov"
     And I should see "New header"
     And I should see "New footer"
+    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "basic_gray"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
+    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
     And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
@@ -502,8 +508,10 @@ Feature: Affiliate clients
     Then I should see "aff site : gov"
     And I should see "New header"
     And I should see "New footer"
+    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "basic_gray"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
+    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
     And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
@@ -522,20 +530,21 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
     And I fill in the following:
-      | Search results page title                                       | {SiteName} : {Query}             |
-      | External CSS URL                                                | cdn.agency.gov/staged_custom.css |
-      | Enter HTML to customize the top of your search results page.    | New header                       |
-      | Enter HTML to customize the bottom of your search results page. | New footer                       |
+      | Search results page title                                       | {SiteName} : {Query}              |
+      | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
+      | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
+      | Enter HTML to customize the top of your search results page.    | New header                        |
+      | Enter HTML to customize the bottom of your search results page. | New footer                        |
     And I choose "Basic Gray"
     And I press "Make Live"
-    Then I should be on the "aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Updated changes to your live site successfully"
     And I should not see "View Staged"
 
@@ -543,8 +552,10 @@ Feature: Affiliate clients
     Then I should see "aff site : gov"
     And I should see "New header"
     And I should see "New footer"
+    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "basic_gray"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
+    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
     And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
@@ -563,20 +574,24 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel where staged/live domains are not sync and has_staged_content is false
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     | affiliate_template_name | search_results_page_title     | domains        | header      | footer      | staged_affiliate_template_name | staged_search_results_page_title   | staged_domains   | staged_header    | staged_footer  | has_staged_content |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | Default                 | Live Search Results           | data.gov       | Live header | Live footer | Basic Gray                     | Staged Search Results              | stagedagency.gov | Staged header    | Staged footer  | false              |
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_domains   | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | stagedagency.gov | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | false              |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Search results page title" field should contain "Live Search Results"
     And the "Default" template should be selected
+    And the "Favicon URL" field should contain "http://cdn.agency.gov/favicon.ico"
+    And the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
     And the "Enter HTML to customize the top of your search results page." field should contain "Live header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Live footer"
     When I press "Save for Preview"
-    Then I should be on the "aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
-    Then I should see the page with affiliate stylesheet "default"
+    Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should see the page with affiliate stylesheet "default"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
     And I should not see the page with affiliate stylesheet "basic_gray"
     And I should see "Live Search Results"
     And I should see 10 search results
@@ -585,20 +600,24 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel where staged/live domains are not sync and has_staged_content is true
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     | affiliate_template_name | search_results_page_title     | domains        | header      | footer      | staged_affiliate_template_name | staged_search_results_page_title   | staged_domains   | staged_header    | staged_footer  | has_staged_content |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | Default                 | Live Search Results           | data.gov       | Live header | Live footer | Basic Gray                     | Staged Search Results              | stagedagency.gov | Staged header    | Staged footer  | true               |
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_domains   | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | stagedagency.gov | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Search results page title" field should contain "Staged Search Results"
     And the "Basic Gray" template should be selected
+    And the "Favicon URL" field should contain "http://cdn.agency.gov/staged_favicon.ico"
+    And the "External CSS URL" field should contain "http://cdn.agency.gov/staged_custom.css"
     And the "Enter HTML to customize the top of your search results page." field should contain "Staged header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Staged footer"
     When I press "Save for Preview"
-    Then I should be on the "aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
-    Then I should see the page with affiliate stylesheet "basic_gray"
+    Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should see the page with affiliate stylesheet "basic_gray"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with affiliate stylesheet "default"
     And I should see "Staged Search Results"
     And I should see "Sorry, no results found"
@@ -639,25 +658,29 @@ Feature: Affiliate clients
 
   Scenario: Cancelling staged changes from the Affiliate Center page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        | has_staged_content | header     | staged_header |
-      | foo site         | multifoo.gov     | two@bar.gov           | Two Bar             | true               | old header | new header    |
-    And I am logged in with email "two@bar.gov" and password "random_string"
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_domains   | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | stagedagency.gov | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I press "Cancel Changes"
-    Then I should be on the "foo site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > bar site
     And I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
     And I should not see "Cancel Changes" button
     When I follow "View Current"
-    Then I should see "old header"
+    Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should see the page with affiliate stylesheet "default"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+    And I should see "Live header"
+    And I should see "Live footer"
 
   Scenario: Cancelling staged changes from the site specific Affiliate Center page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains        | header      | footer      | staged_domains  | staged_header    | staged_footer  |
-      | foo site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | data.gov       | Old header  | Old footer  | data.gov        | Old header       | Old footer     |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains  | header     | footer     | favicon_url                       | external_css_url                 |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | data.gov | Old header | Old footer | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "foo site" affiliate page
+    When I go to the "bar site" affiliate page
     And I follow "Site information"
     And I fill in "Domains to search" with "invalid.org"
     And I press "Save for Preview"
@@ -665,49 +688,60 @@ Feature: Affiliate clients
     And I should see "Cancel Changes" button
     When I follow "Look and feel"
     And I fill in the following:
-      | Search results page title                                         | updated SERP title  |
-      | Enter HTML to customize the top of your search results page.      | New header          |
-      | Enter HTML to customize the bottom of your search results page.   | New footer          |
+      | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
+      | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
+      | Search results page title                                       | updated SERP title                |
+      | Enter HTML to customize the top of your search results page.    | New header                        |
+      | Enter HTML to customize the bottom of your search results page. | New footer                        |
     And I choose "Basic Gray"
     And I press "Save for Preview"
     And I should see "Staged changes to your site successfully"
     Then I should see "Cancel Changes" button
     When I follow "View Staged"
-    Then I should see the page with affiliate stylesheet "basic_gray"
+    Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should see the page with affiliate stylesheet "basic_gray"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should see "updated SERP title"
     And I should see "New header"
     And I should see "New footer"
     And I should see "Sorry, no results found"
 
-    When I go to the "foo site" affiliate page
+    When I go to the "bar site" affiliate page
     And I press "Cancel Changes"
-    Then I should be on the "foo site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > bar site
     And I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
     And I should not see "Cancel Changes" button
     When I follow "View Current"
-    Then I should see the page with affiliate stylesheet "default"
-    And I should see "gov - foo site Search Results"
+    Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should see the page with affiliate stylesheet "default"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+    And I should see "gov - bar site Search Results"
     And I should see "Old header"
     And I should see "Old footer"
     And I should see 10 search results
 
   Scenario: Cancelling staged changes from the Preview page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        | has_staged_content | header     | staged_header |
-      | foo site         | multifoo.gov     | two@bar.gov           | Two Bar             | true               | old header | new header    |
-    And I am logged in with email "two@bar.gov" and password "random_string"
-    When I go to the "foo site" affiliate page
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_domains   | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
+      | aff site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | stagedagency.gov | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
     And I follow "Preview"
     And I press "Cancel Staged Changes"
-    Then I should be on the "foo site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes were successfully cancelled."
     And I should not see "View Staged"
     And I should not see "Push Changes" button
     And I should not see "Cancel Changes" button
     When I follow "View Current"
-    Then I should see "old header"
+    Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should see the page with affiliate stylesheet "default"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+    And I should see "Live Search Results"
+    And I should see "Live header"
+    And I should see "Live footer"
 
   Scenario: Visiting the preview page
     Given the following Affiliates exist:
@@ -742,7 +776,7 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Preview"
     And I press "Make Live"
-    Then I should be on the "aff site" affiliate page
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged content is now visible"
     And I follow "Preview"
     And I fill in the following within "#live_site_search_form":
