@@ -2,6 +2,6 @@
 %h1 Add a new Best Bets: Text
 .add-boosted-content
   = form_for([@affiliate, @boosted_content]) do |f|
-    = render :partial => f
+    = render :partial => 'shared/boosted_contents/form', :locals => { :form => f }
     = f.submit "Add"
     = link_to "Cancel", affiliate_boosted_contents_path(@affiliate), :class => 'cancel'

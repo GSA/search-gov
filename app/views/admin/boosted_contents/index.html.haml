@@ -1,0 +1,38 @@
+.boosted-contents
+  %h1 #{@page_title}
+  .boosted-content-list
+    %table
+      %colgroup
+        %col{ :class => 'title' }
+        %col{ :class => 'url' }
+        %col{ :class => 'publish-date' }
+        %col{ :class => 'status' }
+        %col{ :class => 'actions' }
+      %thead
+        %tr
+          %th{ :colspan => 5 }
+            = link_to "Bulk upload", bulk_new_admin_boosted_contents_path, :class => 'add-link'
+            = link_to "Add new text", new_admin_boosted_content_path, :class => 'add-link last'
+            - unless @boosted_contents.blank?
+              %span= page_entries_info @boosted_contents, :entry_name => 'Best Bets: Text entry', :html => false
+      %tbody
+        %tr.column-header
+          %th Title
+          %th URL
+          %th Publish Start
+          %th Status
+          %th Actions
+        - unless @boosted_contents.blank?
+          - @boosted_contents.each do |boosted_content|
+            %tr.row-item
+              %td= link_to boosted_content.title.truncate(35, :separator => " "), [:admin, boosted_content]
+              %td= link_to(shorten_url(boosted_content.url, 20), boosted_content.url, :target => "_blank", :title => boosted_content.url)
+              %td.publish-date= render_date boosted_content.publish_start_on
+              %td.status= boosted_content.display_status
+              %td.actions
+                = link_to("Edit", edit_admin_boosted_content_path(boosted_content))
+                = button_to("Delete", [:admin, boosted_content], :method => :delete, :confirm => "Are you sure you want to delete this Best Bets: Text entry?")
+        - else
+          %tr
+            %td.empty{ :colspan => 5 } Search.USA.gov has no Best Bets: Text entry
+    = will_paginate @boosted_contents

@@ -63,6 +63,7 @@ describe Admin::FeaturedCollectionsController do
         get :new
       end
 
+      it { should assign_to(:parent_page_title).with_kind_of(String) }
       it { should assign_to(:page_title).with_kind_of(String) }
       it { should assign_to(:featured_collection).with(featured_collection) }
       it { should respond_with(:success) }
@@ -118,6 +119,7 @@ describe Admin::FeaturedCollectionsController do
         post :create, :featured_collection => { :title => 'aTitle', :title_url => 'aTitleUrl', :locale => 'en', :status => 'Draft' }
       end
 
+      it { should assign_to(:parent_page_title).with_kind_of(String) }
       it { should assign_to(:featured_collection).with(featured_collection) }
       it { should assign_to(:page_title).with_kind_of(String) }
       it { should render_template(:new) }
@@ -148,6 +150,7 @@ describe Admin::FeaturedCollectionsController do
              :featured_collection_links_attributes => { '0' => { :title => 'link title', :url => 'link url' } }
       end
 
+      it { should assign_to(:parent_page_title).with_kind_of(String) }
       it { should assign_to(:featured_collection).with(featured_collection) }
       it { should assign_to(:page_title).with_kind_of(String) }
       it { should render_template(:new) }
@@ -177,13 +180,14 @@ describe Admin::FeaturedCollectionsController do
       it { should redirect_to(admin_featured_collections_path) }
     end
 
-    context "when logged in as an affiliate admin" do
+    context "when logged in as an affiliate admin and the featured collection belongs to Search.USA.gov" do
       before do
         UserSession.create(current_user)
         FeaturedCollection.stub_chain(:where, :first).and_return(featured_collection)
         get :show, :id => featured_collection.id.to_s
       end
 
+      it { should assign_to(:parent_page_title).with_kind_of(String) }
       it { should assign_to(:featured_collection).with(featured_collection) }
       it { should assign_to(:page_title).with_kind_of(String) }
     end
@@ -229,6 +233,7 @@ describe Admin::FeaturedCollectionsController do
         get :edit, :id => featured_collection.id
       end
 
+      it { should assign_to(:parent_page_title).with_kind_of(String) }
       it { should assign_to(:page_title).with_kind_of(String) }
       it { should assign_to(:featured_collection).with(featured_collection) }
     end
@@ -290,6 +295,7 @@ describe Admin::FeaturedCollectionsController do
         post :update, :id => featured_collection.id, :featured_collection => { "title" => "" }
       end
 
+      it { should assign_to(:parent_page_title).with_kind_of(String) }
       it { should assign_to(:featured_collection).with(featured_collection) }
       it { should assign_to(:page_title).with_kind_of(String) }
       it { should render_template(:edit) }

@@ -13,7 +13,7 @@ Feature:  Administration
     And I should see "Calais Related Searches"
     And I should see "SAYT Filters"
     And I should see "SAYT Suggestions Bulk Upload"
-    And I should see "Search.USA.gov Boosted Content"
+    And I should see "Search.USA.gov Best Bets: Text"
     And I should see "Affiliate Boosted"
     And I should see "Spotlights"
     And I should see "FAQs"
@@ -145,8 +145,8 @@ Feature:  Administration
     | title               | url                     | description                               |
     | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
     When I go to the admin home page
-    And I follow "Search.USA.gov Boosted Content"
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Boosted Content
+    And I follow "Search.USA.gov Best Bets: Text"
+    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Best Bets: Text
     And I should see "Our Emergency Page"
     And I should not see "Bar Emergency Page"
 

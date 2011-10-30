@@ -100,12 +100,8 @@ class BoostedContent < ActiveRecord::Base
 
   protected
   def self.process_boosted_content_xml_upload_for(affiliate, xml_file)
-    existing = affiliate.boosted_contents.inject({}) do |hash, bc|
-      hash[bc.url] = bc
-      hash
-    end
-
     results = { :created => 0, :updated => 0, :success => false }
+    boosted_contents = []
     begin
       doc=REXML::Document.new(xml_file.read)
       transaction do
@@ -116,24 +112,21 @@ class BoostedContent < ActiveRecord::Base
             :description => entry.elements["description"].first.to_s,
             :affiliate => affiliate
           }
-          import_boosted_content results, existing, info
+          boosted_contents << import_boosted_content(results, info)
         end
       end
+      Sunspot.index(boosted_contents)
+      Sunspot.commit
       results[:success] = true
     rescue
       results[:error_message] = "Your XML document could not be processed. Please check the format and try again."
       Rails.logger.warn "Problem processing boosted Content XML document: #{$!}"
-      Sunspot.index(affiliate.boosted_contents)
     end
     results
   end
 
   def self.process_boosted_content_csv_upload_for(affiliate, csv_file)
-    existing = affiliate.boosted_contents.inject({}) do |hash, bc|
-      hash[bc.url] = bc
-      hash
-    end
-
+    boosted_contents = []
     results = { :created => 0, :updated => 0, :success => false }
     begin
       transaction do
@@ -144,30 +137,33 @@ class BoostedContent < ActiveRecord::Base
               :description => row[2],
               :affiliate => affiliate
           }
-          import_boosted_content results, existing, info
+          boosted_contents << import_boosted_content(results, info)
         end
       end
+      Sunspot.index(boosted_contents)
+      Sunspot.commit
       results[:success] = true
     rescue
       results[:error_message] = "Your CSV document could not be processed. Please check the format and try again."
       Rails.logger.warn "Problem processing boosted Content CSV document: #{$!}"
-      Sunspot.index(affiliate.boosted_contents)
     end
     results
   end
 
-  def self.import_boosted_content(results, existing, attributes)
+  def self.import_boosted_content(results, attributes)
 
-    new_boosted_content_attributes = attributes.merge({ :locale => 'en',
-                                                        :status => 'active',
-                                                        :publish_start_on => Date.current })
-    if matching = existing[new_boosted_content_attributes[:url]]
-      matching.update_attributes(new_boosted_content_attributes)
-      results[:updated] += 1
-    else
-      create!(new_boosted_content_attributes)
+    boosted_content_attributes = attributes.merge({ :locale => 'en',
+                                                    :status => 'active',
+                                                    :publish_start_on => Date.current })
+    boosted_content = BoostedContent.find_or_initialize_by_url(boosted_content_attributes)
+    if boosted_content.new_record?
+      boosted_content.save!
       results[:created] += 1
+    else
+      boosted_content.update_attributes!(boosted_content_attributes)
+      results[:updated] += 1
     end
+    boosted_content
   end
 
   private

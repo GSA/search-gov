@@ -230,22 +230,29 @@ describe BoostedContent do
       XML
     }
 
-    it "should create and index boosted Contents from an xml document" do
-      basic_affiliate = affiliates(:basic_affiliate)
+    let(:basic_affiliate) { affiliates(:basic_affiliate) }
 
+    before do
+      basic_affiliate.boosted_contents.destroy_all
+      BoostedContent.reindex
+      Sunspot.commit
+    end
+
+    it "should create and index boosted Contents from an xml document" do
+      puts "BoostedContent ids: #{BoostedContent.solr_search_ids}"
       results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 2
       basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url"]
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
+      BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.should == basic_affiliate.boosted_content_ids
       results[:success].should be_true
       results[:created].should == 2
       results[:updated].should == 0
     end
 
     it "should update existing boosted Contents if the url match" do
-      basic_affiliate = affiliates(:basic_affiliate)
       basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
 
       results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
@@ -259,7 +266,6 @@ describe BoostedContent do
     end
 
     it "should merge with preexisting boosted Contents" do
-      basic_affiliate = affiliates(:basic_affiliate)
       basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
 
       results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
@@ -270,6 +276,31 @@ describe BoostedContent do
       results[:success].should be_true
       results[:created].should == 2
       results[:updated].should == 0
+    end
+
+    it "should not update existing boosted Contents if one of the import failed" do
+      basic_affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
+      BoostedContent.reindex
+      Sunspot.commit
+
+      BoostedContent.should_receive(:find_or_initialize_by_url).
+          with(hash_including(:url => 'http://some.url')).
+          and_return(BoostedContent.new(:title => 'This is a listing about Texas',
+                                        :url => 'http://some.url',
+                                        :description => 'This is the description of the listing',
+                                        :locale => 'en', :status => 'active', :publish_start_on => Date.current))
+
+      BoostedContent.should_receive(:find_or_initialize_by_url).
+          with(hash_including(:url => 'http://some.other.url')).
+          and_raise(ActiveRecord::RecordInvalid)
+
+      results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
+
+      results[:success].should be_false
+      basic_affiliate.reload
+      basic_affiliate.boosted_contents.length.should == 1
+      basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.title.should == "an old title"
+      BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.length.should == 1
     end
   end
 
@@ -284,22 +315,28 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
       CSV
     }
 
-    it "should create and index boosted Contents from an csv document" do
-      basic_affiliate = affiliates(:basic_affiliate)
+    let(:basic_affiliate) { affiliates(:basic_affiliate) }
 
+    before do
+      basic_affiliate.boosted_contents.destroy_all
+      BoostedContent.reindex
+      Sunspot.commit
+    end
+
+    it "should create and index boosted Contents from an csv document" do
       results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
 
       basic_affiliate.reload
       basic_affiliate.boosted_contents.length.should == 2
       basic_affiliate.boosted_contents.map(&:url).should =~ ["http://some.url", "http://some.other.url"]
       basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.description.should == "Another description for another listing"
+      BoostedContent.solr_search_ids { with :affiliate_name, basic_affiliate.name; paginate(:page => 1, :per_page => 10) }.should == basic_affiliate.boosted_content_ids
       results[:success].should be_true
       results[:created].should == 2
       results[:updated].should == 0
     end
 
     it "should update existing boosted Contents if the url match" do
-      basic_affiliate = affiliates(:basic_affiliate)
       basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
 
       results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
@@ -313,7 +350,6 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
     end
 
     it "should merge with preexisting boosted Contents" do
-      basic_affiliate = affiliates(:basic_affiliate)
       basic_affiliate.boosted_contents.create!(:url => "http://a.different.url", :title => "title", :description => "description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
 
       results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
@@ -324,6 +360,28 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
       results[:success].should be_true
       results[:created].should == 2
       results[:updated].should == 0
+    end
+
+    it "should not update existing boosted Contents if one of the import failed" do
+      basic_affiliate.boosted_contents.create!(:url => "http://some.other.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
+
+      BoostedContent.should_receive(:find_or_initialize_by_url).
+          with(hash_including(:url => 'http://some.url')).
+          and_return(BoostedContent.new(:title => 'This is a listing about Texas',
+                                        :url => 'http://some.url',
+                                        :description => 'This is the description of the listing',
+                                        :locale => 'en', :status => 'active', :publish_start_on => Date.current))
+
+      BoostedContent.should_receive(:find_or_initialize_by_url).
+          with(hash_including(:url => 'http://some.other.url')).
+          and_raise(ActiveRecord::RecordInvalid)
+
+      results = BoostedContent.process_boosted_content_csv_upload_for(basic_affiliate, StringIO.new(csv_file))
+
+      results[:success].should be_false
+      basic_affiliate.reload
+      basic_affiliate.boosted_contents.length.should == 1
+      basic_affiliate.boosted_contents.all.find { |b| b.url == "http://some.other.url" }.title.should == "an old title"
     end
   end
 

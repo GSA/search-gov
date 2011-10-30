@@ -1,6 +1,6 @@
 class Admin::FeaturedCollectionsController < Admin::AffiliatesController
   before_filter :setup_featured_collection, :only => [:show, :edit, :update, :destroy]
-  before_filter :setup_page_parent_title, :only => [:new, :create, :show, :edit, :update]
+  before_filter :setup_parent_page_title, :only => [:new, :create, :show, :edit, :update]
 
   def index
     @page_title = 'Search.USA.gov Featured Collections'
@@ -63,7 +63,7 @@ class Admin::FeaturedCollectionsController < Admin::AffiliatesController
     (2 - (@featured_collection.featured_collection_links.size)).times { @featured_collection.featured_collection_links.build }
   end
 
-  def setup_page_parent_title
-    @page_parent_title = "Search.USA.gov Featured Collections"
+  def setup_parent_page_title
+    @parent_page_title = "Search.USA.gov Featured Collections"
   end
 end
