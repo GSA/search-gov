@@ -3,6 +3,8 @@ class RecallsController < ApplicationController
   before_filter :setup_params
   before_filter :verify_params
   before_filter :convert_date_range_to_start_and_end_dates
+  ssl_allowed :index, :search, :api_search
+
 
   @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
   MAX_PAGES = 100

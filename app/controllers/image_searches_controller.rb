@@ -1,5 +1,6 @@
 class ImageSearchesController < ApplicationController
   before_filter :set_search_options
+  ssl_allowed :index
   has_mobile_fu
 
   def index

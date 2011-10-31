@@ -11,7 +11,7 @@ class SearchesController < ApplicationController
   before_filter :check_for_blank_query, :only => :index
   SAYT_SUGGESTION_SIZE = 15
   SAYT_SUGGESTION_SIZE_FOR_MOBILE = 6
-  ssl_allowed :auto_complete_for_search_query
+  ssl_allowed :auto_complete_for_search_query, :index, :forms, :news, :docs, :advanced
 
   def index
     @search = Search.new(@search_options)
