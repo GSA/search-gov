@@ -60,7 +60,7 @@ describe Affiliates::OnDemandUrlsController do
         context "when viewing the page" do
           before do
             IndexedDocument.create(:url => 'http://uncrawled.gov', :affiliate => @user.affiliates.first)
-            IndexedDocument.create(:url => 'http://crawled.gov', :title => "Title", :body => "Body", :description => "Description", :last_crawled_at => Time.now, :last_crawl_status => "OK", :affiliate => @user.affiliates.first)
+            IndexedDocument.create(:url => 'http://crawled.gov', :title => "Title", :body => "Body", :description => "Description", :last_crawled_at => Time.now, :last_crawl_status => IndexedDocument::OK_STATUS, :affiliate => @user.affiliates.first)
           end
 
           it "should create a new IndexedDocument, and find all the uncrawled and the first 30 crawled IndexedDocuments urls" do

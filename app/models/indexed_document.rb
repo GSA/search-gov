@@ -12,14 +12,13 @@ class IndexedDocument < ActiveRecord::Base
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 250
   MAX_URLS_PER_FILE_UPLOAD = 100
+  OK_STATUS = "OK"
 
   searchable do
     text :title, :boost => 10.0
     text :description, :boost => 4.0
     text :body
-    text :keywords do
-      keywords.split(',') unless keywords.nil?
-    end
+    string :last_crawl_status
     string :doctype
     string :locale
     integer :affiliate_id
@@ -37,7 +36,7 @@ class IndexedDocument < ActiveRecord::Base
       url.ends_with?(".pdf") ? index_pdf(file.path) : index_html(file)
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} to index: #{e}"
-      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Error")
+      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => e.message)
     ensure
       File.delete(file) unless file.nil?
     end
@@ -53,12 +52,12 @@ class IndexedDocument < ActiveRecord::Base
       description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
     end
     body = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
-    update_attributes!(:title=> title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => "OK")
+    update_attributes!(:title=> title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
   end
 
   def index_pdf(file)
     pdf = PDF::Toolkit.open(file)
-    update_attributes!(:title => generate_pdf_title(pdf, self.url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => "OK")
+    update_attributes!(:title => generate_pdf_title(pdf, self.url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
   end
 
   class << self
@@ -70,6 +69,7 @@ class IndexedDocument < ActiveRecord::Base
           end
           with(:affiliate_id, affiliate.id)
           with(:locale, locale)
+          with(:last_crawl_status, OK_STATUS)
           paginate :page => page, :per_page => per_page
         end rescue nil
       end
@@ -93,6 +93,10 @@ class IndexedDocument < ActiveRecord::Base
       else
         raise "Too many URLs in your file.  Please limit your file to #{max_urls} URLs."
       end
+    end
+
+    def refresh_all
+      all(:select=>:id).each { |indexed_document_fragment| Resque.enqueue(IndexedDocumentFetcher, indexed_document_fragment.id) }
     end
   end
 

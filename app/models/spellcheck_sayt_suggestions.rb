@@ -1,5 +1,5 @@
 class SpellcheckSaytSuggestions
-  @queue = :usasearch
+  @queue = :high
 
   def self.perform(wrong, rite)
     SaytSuggestion.all.each do |s|

@@ -11,7 +11,7 @@ describe IndexedDocument do
       :title => 'PDF Title',
       :description => 'This is a PDF document.',
       :url => 'http://something.gov/pdf.pdf',
-      :keywords => 'pdf,usa',
+      :last_crawl_status => IndexedDocument::OK_STATUS,
       :affiliate_id => affiliates(:basic_affiliate).id
     }
   end
@@ -34,7 +34,7 @@ describe IndexedDocument do
     indexed_document = IndexedDocument.create!(@min_valid_attributes)
     IndexedDocumentFetcher.should have_queued(indexed_document.id)
   end
-  
+
   it "should create a SuperfreshUrl entry for the affiliate" do
     SuperfreshUrl.find_by_url_and_affiliate_id(@min_valid_attributes[:url], @min_valid_attributes[:affiliate_id]).should be_nil
     IndexedDocument.create!(@min_valid_attributes)
@@ -54,31 +54,9 @@ describe IndexedDocument do
     duplicate.should be_valid
   end
 
-  it "should allow nil keywords" do
-    IndexedDocument.create!(@valid_attributes.merge(:keywords => nil))
-  end
-
-  it "should allow an empty keywords value" do
-    IndexedDocument.create!(@valid_attributes.merge(:keywords => ""))
-  end
-
   describe "#search_for" do
     before do
       @affiliate = affiliates(:basic_affiliate)
-    end
-
-    context "when the term is not mentioned in the description" do
-      before do
-        @pdf_document = IndexedDocument.create!(@valid_attributes)
-        Sunspot.commit
-        IndexedDocument.reindex
-      end
-
-      it "should find a PDF by keyword" do
-        search = IndexedDocument.search_for('usa', @affiliate)
-        search.total.should == 1
-        search.results.first.should == @pdf_document
-      end
     end
 
     context "when the affiliate is specified" do
@@ -86,6 +64,22 @@ describe IndexedDocument do
         ActiveSupport::Notifications.should_receive(:instrument).
           with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => @affiliate.name, :model=>"IndexedDocument", :term => "foo")))
         IndexedDocument.search_for('foo', @affiliate)
+      end
+    end
+
+    context "when some documents have non-OK statuses" do
+      before do
+        IndexedDocument.delete_all
+        IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'HTML Title', :description => 'This is a HTML document.', :url => 'http://something.gov/html.html', :affiliate_id => affiliates(:basic_affiliate).id)
+        IndexedDocument.create!(:last_crawl_status => "Broken", :title => 'PDF Title', :description => 'This is a PDF document.', :url => 'http://something.gov/pdf.pdf', :affiliate_id => affiliates(:basic_affiliate).id)
+        IndexedDocument.reindex
+        Sunspot.commit
+      end
+
+      it "should only return the OK ones" do
+        search = IndexedDocument.search_for('document', affiliates(:basic_affiliate))
+        search.total.should == 1
+        search.results.first.last_crawl_status.should == IndexedDocument::OK_STATUS
       end
     end
   end
@@ -99,13 +93,13 @@ describe IndexedDocument do
 
     context "when there is a problem fetching the URL content" do
       before do
-        indexed_document.stub!(:open).and_raise Exception.new("ERROR!")
+        indexed_document.stub!(:open).and_raise Exception.new("404 Document Not Found")
       end
 
       it "should update the url with last crawled date and error message" do
         indexed_document.fetch
         indexed_document.last_crawled_at.should_not be_nil
-        indexed_document.last_crawl_status.should == "Error"
+        indexed_document.last_crawl_status.should == "404 Document Not Found"
       end
 
       it "should not attempt to clean up the nil file descriptor" do
@@ -131,7 +125,7 @@ describe IndexedDocument do
       it "should delete the downloaded temporary PDF file" do
         File.should_receive(:delete)
         indexed_document.fetch
-      end      
+      end
     end
 
     context "when the URL doesn't end in PDF" do
@@ -140,7 +134,7 @@ describe IndexedDocument do
         @html_io = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
         indexed_document.stub!(:open).and_return @html_io
       end
-      
+
       it "should not try to create a tempfile" do
         Tempfile.should_not_receive(:new)
       end
@@ -210,10 +204,10 @@ describe IndexedDocument do
         @indexed_document.description.should == "This is a test PDF to test our PDF parsing.\n\n\f"
         @indexed_document.url.should == @min_valid_attributes[:url]
       end
-      
+
       it "should set the the time and status from the crawl" do
         @indexed_document.last_crawled_at.should_not be_nil
-        @indexed_document.last_crawl_status.should == "OK"
+        @indexed_document.last_crawl_status.should == IndexedDocument::OK_STATUS
       end
     end
 

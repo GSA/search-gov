@@ -1,5 +1,5 @@
 class CalaisRelatedSearch < ActiveRecord::Base
-  @queue = :calais_related_search
+  @queue = :low
   @@redis = Redis.new(:host => REDIS_HOST, :port => REDIS_PORT)
 
   DAILY_API_QUOTA = 49000

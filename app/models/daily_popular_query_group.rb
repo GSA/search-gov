@@ -1,5 +1,5 @@
 class DailyPopularQueryGroup < ActiveRecord::Base
-  @queue = :usasearch
+  @queue = :medium
 
   validates_presence_of :query_group_name, :day, :times, :time_frame
   validates_uniqueness_of :query_group_name, :scope => [:day, :time_frame]

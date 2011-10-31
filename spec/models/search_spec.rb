@@ -379,8 +379,8 @@ describe Search do
 
     context "when there are excluded domains" do
       before do
-        ExcludedDomain.create(:domain => 'excludeme.com')
-        ExcludedDomain.create(:domain => 'excludemetoo.com')
+        ExcludedDomain.create!(:domain => 'excludeme.com')
+        ExcludedDomain.create!(:domain => 'excludemetoo.com')
       end
 
       it "should add the excluded domains to the query as negative sites" do
@@ -390,9 +390,6 @@ describe Search do
         search.run
       end
 
-      after do
-        ExcludedDomain.destroy_all
-      end
     end
 
     context "when page offset is specified" do
@@ -1273,8 +1270,8 @@ describe Search do
     context "when an affiliate has PDF documents" do
       before do
         @affiliate.indexed_documents.destroy_all
-        @affiliate.indexed_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf1.pdf', :doctype => 'pdf')
-        @affiliate.indexed_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf2.pdf', :doctype => 'pdf')
+        @affiliate.indexed_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
+        @affiliate.indexed_documents.create(:title => "PDF Title", :description => "PDF Description", :url => 'http://something.gov/pdf2.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
         IndexedDocument.reindex
         Sunspot.commit
       end
@@ -1291,18 +1288,15 @@ describe Search do
         search.run
         search.indexed_documents.should be_nil
       end
-
-      after do
-        @affiliate.indexed_documents.destroy_all
-      end
     end
 
     context "when the affiliate has no Bing results, and has boosted contents" do
       before do
+        IndexedDocument.delete_all
         @non_affiliate = affiliates(:non_existant_affiliate)
         @non_affiliate.indexed_documents.destroy_all
         1.upto(15) do |index|
-          @non_affiliate.indexed_documents << IndexedDocument.new(:title => "Indexed Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is an indexed result.')
+          @non_affiliate.indexed_documents << IndexedDocument.new(:title => "Indexed Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is an indexed result.', :last_crawl_status => IndexedDocument::OK_STATUS)
         end
         IndexedDocument.reindex
         Sunspot.commit
@@ -1617,8 +1611,9 @@ describe Search do
 
   describe "#highlight_solr_hit_like_bing" do
     before do
+      IndexedDocument.delete_all
       @affiliate = affiliates(:non_existant_affiliate)
-      @affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'Highlight me!', :description => 'This doc has highlights.', :body => 'This will match other keywords that are not to be bold.')
+      @affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'Highlight me!', :description => 'This doc has highlights.', :body => 'This will match other keywords that are not to be bold.', :last_crawl_status => IndexedDocument::OK_STATUS)
       IndexedDocument.reindex
       Sunspot.commit
     end

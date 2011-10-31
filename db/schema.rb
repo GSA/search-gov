@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111028041409) do
+ActiveRecord::Schema.define(:version => 20111031142229) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -315,7 +315,6 @@ ActiveRecord::Schema.define(:version => 20111028041409) do
   create_table "indexed_documents", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.text     "keywords"
     t.string   "url"
     t.integer  "affiliate_id"
     t.datetime "created_at"

@@ -38,8 +38,8 @@ describe NewsItem do
       @gallery_item = NewsItem.create!(:rss_feed_id => @gallery.id, :guid => "unique to feed", :published_at => 1.day.ago,
                                        :link => "http://www.wh.gov/ns2", :title => "Obama adopts some more things",
                                        :description => "<p>that is the policy.</p>")
-      Sunspot.commit
       NewsItem.reindex
+      Sunspot.commit
     end
 
     it "should restrict results to the collection of RSS feeds specified" do

@@ -1,5 +1,5 @@
 class SendAffiliateBroadcast
-  @queue = :usasearch
+  @queue = :urgent
 
   def self.perform(subject, body)
     User.where(:is_affiliate=>true).each do |affiliate_user|

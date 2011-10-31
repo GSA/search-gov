@@ -1,5 +1,5 @@
 class DailyQueryStat < ActiveRecord::Base
-  @queue = :usasearch
+  @queue = :high
   validates_presence_of :day, :query, :times, :affiliate, :locale
   validates_uniqueness_of :query, :scope => [:day, :affiliate, :locale]
   before_save :squish_query

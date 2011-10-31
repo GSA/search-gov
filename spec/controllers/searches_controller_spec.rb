@@ -469,11 +469,13 @@ describe SearchesController do
   describe "#docs" do
     render_views
     before do
+      IndexedDocument.delete_all
       @affiliate = affiliates(:basic_affiliate)
-      @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 1", :url => 'http://affiliate.gov/1.pdf', :description => 'a pdf', :doctype => 'pdf')
-      @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 2", :url => 'http://affiliate.gov/2.pdf', :description => 'a pdf', :doctype => 'pdf')
-      affiliates(:power_affiliate).indexed_documents << IndexedDocument.new(:title => "Other Affiliate PDF 1", :url => 'http://otheraffiliate.gov/1.pdf', :description => 'a pdf', :doctype => 'pdf')
+      @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 1", :url => 'http://affiliate.gov/1.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
+      @affiliate.indexed_documents << IndexedDocument.new(:title => "Affiliate PDF 2", :url => 'http://affiliate.gov/2.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
+      affiliates(:power_affiliate).indexed_documents << IndexedDocument.new(:title => "Other Affiliate PDF 1", :url => 'http://otheraffiliate.gov/1.pdf', :description => 'a pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
       IndexedDocument.reindex
+      Sunspot.commit
     end
 
     it "should render the template" do

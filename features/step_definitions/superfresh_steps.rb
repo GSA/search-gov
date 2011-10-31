@@ -18,5 +18,5 @@ Given /^the following IndexedDocuments exist:$/ do |table|
 end
 
 When /^the url "([^\"]*)" has been crawled$/ do |url|
-  IndexedDocument.find_by_url(url).update_attributes(:last_crawled_at => Time.now, :last_crawl_status => "OK")
+  IndexedDocument.find_by_url(url).update_attributes(:last_crawled_at => Time.now, :last_crawl_status => IndexedDocument::OK_STATUS)
 end

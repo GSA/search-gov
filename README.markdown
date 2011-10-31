@@ -184,6 +184,10 @@ action on your local machine, assuming you have installed the Redis server.
 
 At this point, you should see the queue empty in Resque web, and some email-like output in your development log.
 
+### Queue names & priorities
+Each Resque job runs in the context of a named queue. We have queues named :low, :medium, :high, and :urgent. When creating a new
+background job model, consider the priorities of the existing jobs to determine where your jobs should go. When in doubt, use :medium.
+
 # Working on Stories
 
 1. Pick the next story off the top of the queue on Tracker and make sure you understand the intent behind it. Click the "Start" button so nobody else starts working on it. But before you click "Start", do you have a firm idea of what you will need to do in order to clck "Finished"? How will you know when you are done?

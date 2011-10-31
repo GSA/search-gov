@@ -1,6 +1,6 @@
 class SaytSuggestion < ActiveRecord::Base
   LETTERS_WITH_DIACRITIC = "áéíóúÁÉÍÓÚüÜñÑ¿¡"
-  @queue = :sayt_suggestion
+  @queue = :medium
   before_validation :squish_whitespace_and_downcase
   before_validation :spellcheck, :unless => :affiliate
   belongs_to :affiliate

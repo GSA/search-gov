@@ -1,5 +1,5 @@
 class FilterSaytSuggestions
-  @queue = :usasearch
+  @queue = :high
 
   def self.perform(phrase)
     sayt_filter = SaytFilter.find_by_phrase(phrase)
