@@ -330,9 +330,9 @@ describe IndexedDocument do
     end
 
     it "should enqueue a fetch call for all available indexed docs" do
-      Resque.should_receive(:enqueue).with(IndexedDocumentFetcher, @first.id)
-      Resque.should_receive(:enqueue).with(IndexedDocumentFetcher, @last.id)
       IndexedDocument.refresh_all
+      IndexedDocumentFetcher.should have_queued(@first.id)
+      IndexedDocumentFetcher.should have_queued(@last.id)
     end
   end
 end
