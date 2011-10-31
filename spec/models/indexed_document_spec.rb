@@ -320,4 +320,19 @@ describe IndexedDocument do
       end
     end
   end
+
+  describe "#refresh_all" do
+    before do
+      ResqueSpec.reset!
+      IndexedDocument.delete_all
+      @first = IndexedDocument.create!(:url => 'http://some.mil/', :affiliate => affiliates(:power_affiliate))
+      @last = IndexedDocument.create!(:url => 'http://another.mil', :affiliate => affiliates(:power_affiliate))
+    end
+
+    it "should enqueue a fetch call for all available indexed docs" do
+      Resque.should_receive(:enqueue).with(IndexedDocumentFetcher, @first.id)
+      Resque.should_receive(:enqueue).with(IndexedDocumentFetcher, @last.id)
+      IndexedDocument.refresh_all
+    end
+  end
 end
