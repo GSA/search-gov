@@ -200,8 +200,8 @@ describe IndexedDocument do
 
       it "should create an indexed document that has a title and description from the pdf" do
         @indexed_document.id.should_not be_nil
-        @indexed_document.title.should == "This is a test PDF to test our PDF parsing"
-        @indexed_document.description.should == "This is a test PDF to test our PDF parsing.\n\n\f"
+        @indexed_document.title.should == "This is a test PDF file, we are use it to test our PDF parsing technology"
+        @indexed_document.description.should == "This is a test PDF file, we are use it to test our PDF parsing technology. We want it to be at least 250 characters long so that we can test the description generator and see that it cuts off the description, meaning truncates it, in the right..."
         @indexed_document.url.should == @min_valid_attributes[:url]
       end
 
