@@ -375,7 +375,7 @@ Set the 'Execute Shell' section to the following:
     rm -rf tmp
     mkdir tmp
     rm -rf coverage/
-    cp /home/jwynne/database.yml config/database.yml
+    cp /home/jwynne/jenkins/database.yml config/database.yml
     bin/rake db:schema:load RAILS_ENV=test
     bin/rake sunspot:solr:start RAILS_ENV=test
     rm -rf tmp/cache
@@ -392,6 +392,6 @@ From the post build actions, select the following:
     
 Save the configuration.
 
-On the staging server, create a copy of the project database.yml in the /home/jwynne/ directory, and set the test environment to use the MySQL root password.
+On the staging server, create a copy of the project database.yml in the /home/jwynne/jenkins directory (you may have to create that directory), and set the test environment to use the MySQL root password.
 
 Go back to Jenkins, you should be able to select your job and click 'Build Now'.  View the console output on the build to watch as it builds, and when hopefully all tests pass.
