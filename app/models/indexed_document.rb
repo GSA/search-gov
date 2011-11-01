@@ -22,6 +22,7 @@ class IndexedDocument < ActiveRecord::Base
     string :doctype
     string :locale
     integer :affiliate_id
+    string :url
   end
 
   def fetch
@@ -68,6 +69,7 @@ class IndexedDocument < ActiveRecord::Base
             highlight :title, :description, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
           end
           with(:affiliate_id, affiliate.id)
+          without(:url).any_of affiliate.excluded_urls.collect{|excluded_url| excluded_url.url } unless affiliate.nil? or affiliate.excluded_urls.empty?
           with(:locale, locale)
           with(:last_crawl_status, OK_STATUS)
           paginate :page => page, :per_page => per_page

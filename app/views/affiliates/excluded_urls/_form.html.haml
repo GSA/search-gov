@@ -1,0 +1,6 @@
+= form.error_messages(:header_message => nil, :class => "error")
+.basic-information
+  %ul
+    %li
+      = form.label :url, "URL*"
+      = form.text_field :url, { :class => 'text', :maxlength => 255, :size => nil }

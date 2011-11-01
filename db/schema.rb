@@ -222,6 +222,15 @@ ActiveRecord::Schema.define(:version => 20111031142229) do
     t.datetime "updated_at"
   end
 
+  create_table "excluded_urls", :force => true do |t|
+    t.text     "url"
+    t.integer  "affiliate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "excluded_urls", ["affiliate_id"], :name => "index_excluded_urls_on_affiliate_id"
+
   create_table "faqs", :force => true do |t|
     t.string   "url"
     t.text     "question"

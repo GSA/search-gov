@@ -18,6 +18,7 @@ class Affiliate < ActiveRecord::Base
   has_many :featured_collections, :dependent => :destroy
   has_many :indexed_documents, :dependent => :destroy
   has_many :rss_feeds, :dependent => :destroy
+  has_many :excluded_urls, :dependent => :destroy
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   before_validation :set_default_name, :on => :create

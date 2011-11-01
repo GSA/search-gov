@@ -1349,5 +1349,47 @@ Feature: Affiliate clients
     When I follow "Best bets"
     And I follow "Add new graphics" in the featured collections section
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Best Bets: Graphics
-
-
+    
+  Scenario: Excluding a URL from affiliate SERPs
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | domains         |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | whitehouse.gov  |
+    And the following IndexedDocuments exist:
+      | url                                       | affiliate | title                             | description         |
+      | http://www.whitehouse.gov/our-government  | aff.gov   | Our Government \| The White House  | white house cabinet |
+    And the url "http://www.whitehouse.gov/our-government" has been crawled
+    And the following RSS feeds exist:
+    | affiliate | url                                             | name    |
+    | aff.gov   | http://www.whitehouse.gov/feed/blog/white-house | WH Blog |
+    And the following News Items exist:
+    | link                                      | title               | guid  | description         | feed_name |
+    | http://www.whitehouse.gov/our-government  | White House Cabinet | 12345 | white house cabinet | WH Blog   |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Emergency Delete"
+    And I fill in "URL*" with "http://www.whitehouse.gov/our-government"
+    And I press "Add"
+    
+    When I go to aff.gov's search page
+    And I fill in "query" with "white house cabinet"
+    And I press "Search"
+    Then I should not see "Our Government | The White House"
+    And I should not see "Document Results for aff site"
+    
+    When I follow "WH Blog"
+    Then I should not see "Our Government"
+    And I should see "Sorry, no results found for 'white house cabinet'"
+    
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Emergency Delete"
+    And I press "Delete"
+    
+    When I go to aff.gov's search page
+    And I fill in "query" with "white house cabinet"
+    And I press "Search"
+    Then I should see "Our Government | The White House"
+    And I should see "Document Results for aff site"
+    
+    When I follow "WH Blog"
+    Then I should see "Results 1-1 of about 1 for 'white house cabinet'"
+    And I should see "White House Cabinet"

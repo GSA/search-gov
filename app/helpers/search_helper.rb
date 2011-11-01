@@ -686,4 +686,9 @@ module SearchHelper
       url[0, length] + "..."
     end
   end
+  
+  def url_is_excluded(url, affiliate)
+    return false unless affiliate
+    return affiliate.excluded_urls.collect{|excluded_url| excluded_url.url}.include?(url)
+  end
 end

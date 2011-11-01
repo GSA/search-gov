@@ -12,8 +12,9 @@ end
 Given /^the following IndexedDocuments exist:$/ do |table|
   ActiveRecord::Observer.disable_observers
   table.hashes.each do |hash|
-    IndexedDocument.create!(:url => hash["url"], :affiliate => Affiliate.find_by_name(hash["affiliate"]))
+    IndexedDocument.create!(:url => hash["url"], :affiliate => Affiliate.find_by_name(hash["affiliate"]), :title => hash["title"], :description => hash["description"])
   end
+  Sunspot.commit
   ActiveRecord::Observer.enable_observers
 end
 

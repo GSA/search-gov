@@ -28,7 +28,8 @@ class NewsSearch
     @error_message = (I18n.translate :too_long) and return false if @query.length > Search::MAX_QUERYTERM_LENGTH
     @error_message = (I18n.translate :empty_query) and return false if @query.blank?
     rss_feeds = @rss_feed ? [@rss_feed] : @affiliate.active_rss_feeds
-    news_search = NewsItem.search_for(@query, rss_feeds, @since, @page)
+    excluded_urls = @affiliate.nil? ? [] : @affiliate.excluded_urls.collect{|url| url.url}
+    news_search = NewsItem.search_for(@query, rss_feeds, @since, @page, excluded_urls)
     if news_search
       @results = news_search.results
       @hits = news_search.hits
@@ -53,5 +54,4 @@ class NewsSearch
     modules << "CREL" unless @related_search.nil? or @related_search.empty?
     QueryImpression.log(:news, @affiliate.name, @query, modules)
   end
-
 end

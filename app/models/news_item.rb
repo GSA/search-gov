@@ -13,10 +13,11 @@ class NewsItem < ActiveRecord::Base
     integer :rss_feed_id
     time :published_at
     text :title, :description
+    string :link
   end
 
   class << self
-    def search_for(query, rss_feeds, since = nil, page = 1)
+    def search_for(query, rss_feeds, since = nil, page = 1, excluded_urls = [])
       instrument_hash = {:model=> self.name, :term => query, :rss_feeds => rss_feeds.collect(&:name).join(',')}
       instrument_hash.merge!(:since => since) if since
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do
@@ -26,12 +27,11 @@ class NewsItem < ActiveRecord::Base
           end
           with(:rss_feed_id, rss_feeds.collect(&:id))
           with(:published_at).greater_than(since) if since
+          without(:link).any_of excluded_urls unless excluded_urls.empty?
           order_by :published_at, :desc
           paginate :page => page, :per_page => 10
         end rescue nil
       end
     end
-
   end
-
 end

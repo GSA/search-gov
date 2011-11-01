@@ -64,7 +64,6 @@ describe NewsSearch do
         NewsSearch.new(affiliate,"channel" => affiliate.rss_feeds.first.id).query.should be_blank
       end
     end
-
   end
 
   describe "#run" do
@@ -120,7 +119,7 @@ describe NewsSearch do
       it "should only search for news items from that feed" do
         feed = affiliate.rss_feeds.first
         search = NewsSearch.new(affiliate, {"query" => 'element', "channel" => feed.id})
-        NewsItem.should_receive(:search_for).with('element', [feed], nil, 1)
+        NewsItem.should_receive(:search_for).with('element', [feed], nil, 1, [])
         search.run.should be_true
       end
     end
@@ -130,7 +129,7 @@ describe NewsSearch do
         feed = affiliate.rss_feeds.first
         feed.update_attribute(:is_active, false)
         search = NewsSearch.new(affiliate, {"query" => 'element', "channel" => feed.id, "page" => 2})
-        NewsItem.should_receive(:search_for).with('element', affiliate.active_rss_feeds, nil, 2)
+        NewsItem.should_receive(:search_for).with('element', affiliate.active_rss_feeds, nil, 2, [])
         search.run
       end
     end
@@ -138,10 +137,9 @@ describe NewsSearch do
     context "when no RSS feed is specified" do
       it "should search for news items from all active feeds for the affiliate" do
         search = NewsSearch.new(affiliate, {"query" => 'element', "tbs" => "w"})
-        NewsItem.should_receive(:search_for).with('element', affiliate.active_rss_feeds, an_instance_of(ActiveSupport::TimeWithZone), 1)
+        NewsItem.should_receive(:search_for).with('element', affiliate.active_rss_feeds, an_instance_of(ActiveSupport::TimeWithZone), 1, [])
         search.run
       end
     end
-
   end
 end
