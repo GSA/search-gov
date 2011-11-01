@@ -13,7 +13,7 @@ class Affiliates::ExcludedUrlsController < Affiliates::AffiliatesController
     if @excluded_url.save
       redirect_to affiliate_excluded_urls_path(@affiliate), :flash => { :success => 'Emergency Delete Url successfully created.' }
     else
-      redirect_to affiliate_excluded_urls_path(@affiliate), :flash => { :error => @excluded_url.errors.collect{ |e| e.last }.join('\n') }
+      redirect_to affiliate_excluded_urls_path(@affiliate), :flash => { :error => @excluded_url.errors.collect{ |e| "#{e.first.to_s.capitalize} #{e.last}" }.join('\n') }
     end
   end
   

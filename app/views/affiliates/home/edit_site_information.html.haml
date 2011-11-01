@@ -9,4 +9,6 @@
         = f.submit "Save for Preview", :id => "save_for_preview", :class => 'form-submit-button save-for-preview-button'
         = f.submit "Make Live", :id => "make_live", :class => 'form-submit-button make-live-button'
         = link_to "Cancel", affiliate_path(@affiliate), :class => 'cancel'
+  .emergency-delete{:style => 'padding-top: 30px; clear: both;'}
+    = link_to 'Emergency Delete', affiliate_excluded_urls_path(@affiliate)
 

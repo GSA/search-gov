@@ -1366,6 +1366,7 @@ Feature: Affiliate clients
     | http://www.whitehouse.gov/our-government  | White House Cabinet | 12345 | white house cabinet | WH Blog   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Site information"
     And I follow "Emergency Delete"
     And I fill in "URL*" with "http://www.whitehouse.gov/our-government"
     And I press "Add"
@@ -1381,6 +1382,7 @@ Feature: Affiliate clients
     And I should see "Sorry, no results found for 'white house cabinet'"
     
     When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Site information"
     And I follow "Emergency Delete"
     And I press "Delete"
     
@@ -1393,3 +1395,15 @@ Feature: Affiliate clients
     When I follow "WH Blog"
     Then I should see "Results 1-1 of about 1 for 'white house cabinet'"
     And I should see "White House Cabinet"
+    
+  Scenario: Inputing a bad Excluded Url
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | domains         |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | whitehouse.gov  |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Site information"
+    And I follow "Emergency Delete"
+    And I fill in "URL*" with "www.whitehouse.gov/our-government"
+    And I press "Add"
+    Then I should see "Url is invalid"
