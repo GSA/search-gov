@@ -12,7 +12,7 @@
     = (javascript_include_tag "jquery/jquery.min.js").html_safe
     = (javascript_include_tag "jquery/jquery-ui.custom.min.js").html_safe
     = (javascript_include_tag "jquery/jquery.dropdownPlain.js").html_safe
-    = (javascript_include_tag "featured_collections.js").html_safe
+    != javascript_include_tag "jquery/jquery.tablednd_0_5.js"
     = (javascript_include_tag "admin_affiliates_shared.js").html_safe
     :javascript
       jQuery.noConflict();

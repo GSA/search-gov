@@ -68,13 +68,13 @@
         %col{ :class => 'title' }
         %col{ :class => 'url' }
       %tbody
-        %tr.column-header
+        %tr.column-header.nodrag
           %th Title
           %th URL
         - position = 0
         = form.fields_for :featured_collection_links do |link_form|
           %tr.row-item
-            %td
+            %td.link-title
               = link_form.hidden_field :position, { :value => position, :class => 'position' }
               = link_form.label :title, "Link Title #{position}", { :class => 'hide' }
               = link_form.text_field :title, { :class => 'title', :maxlength => 255, :size => nil }

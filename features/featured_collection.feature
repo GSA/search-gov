@@ -489,12 +489,12 @@ Feature: Featured Collections
       | title            | title_url                                       | locale | status | layout     |
       | Nature & Science | http://www.nps.gov/maca/naturescience/index.htm | en     | active | two column |
     And the following featured collection links exist for featured collection titled "Nature & Science":
-      | title                         | url                                                                    |
-      | Animals                       | http://www.nps.gov/maca/naturescience/animals.htm                      |
-      | Environmental Factors         | http://www.nps.gov/maca/naturescience/environmentalfactors.htm         |
-      | Plants                        | http://www.nps.gov/maca/naturescience/plants.htm                       |
-      | Natural Features & Ecosystems | http://www.nps.gov/maca/naturescience/naturalfeaturesandecosystems.htm |
-      | Forests                       | http://www.nps.gov/maca/naturescience/forests.htm                      |
+      | title                         | url                                                                    | position |
+      | Forests                       | http://www.nps.gov/maca/naturescience/forests.htm                      | 4        |
+      | Natural Features & Ecosystems | http://www.nps.gov/maca/naturescience/naturalfeaturesandecosystems.htm | 3        |
+      | Plants                        | http://www.nps.gov/maca/naturescience/plants.htm                       | 2        |
+      | Environmental Factors         | http://www.nps.gov/maca/naturescience/environmentalfactors.htm         | 1        |
+      | Animals                       | http://www.nps.gov/maca/naturescience/animals.htm                      | 0        |
     When I go to the homepage
     And I fill in "query" with "Nature"
     And I press "Search"

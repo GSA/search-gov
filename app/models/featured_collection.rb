@@ -20,7 +20,7 @@ class FeaturedCollection < ActiveRecord::Base
 
   belongs_to :affiliate
   has_many :featured_collection_keywords, :dependent => :destroy
-  has_many :featured_collection_links, :dependent => :destroy
+  has_many :featured_collection_links, :order => 'position ASC', :dependent => :destroy
   has_attached_file :image,
                     :styles => { :medium => "125x125", :small => "100x100" },
                     :storage => :cloud_files,
