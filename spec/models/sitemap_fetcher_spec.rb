@@ -19,12 +19,12 @@ describe SitemapFetcher, "#perform(sitemap_id)" do
     end
   end
 
-  context "when it can locate the Superfresh URL entry for a given url & affiliate_id" do
+  context "when it can locate the Sitemap for an affiliate" do
     before do
       Sitemap.stub!(:find_by_id).and_return @sitemap
     end
 
-    it "should attempt to fetch and index the document" do
+    it "should attempt to fetch the sitemap and create indexed_document entries" do
       @sitemap.should_receive(:fetch)
       SitemapFetcher.perform(@sitemap.id)
     end
