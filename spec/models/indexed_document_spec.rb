@@ -29,7 +29,7 @@ describe IndexedDocument do
     IndexedDocument.create!(@valid_attributes)
   end
 
-  it "should enqueue the creation of a BoostedContent entry via Resque" do
+  it "should enqueue the creation of a IndexedDocument entry via Resque" do
     ResqueSpec.reset!
     indexed_document = IndexedDocument.create!(@min_valid_attributes)
     IndexedDocumentFetcher.should have_queued(indexed_document.id)

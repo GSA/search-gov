@@ -22,8 +22,11 @@
             %span Content Sources
           %ul
             %li= link_to "URLs", affiliate_on_demand_urls_path(@affiliate)
-            %li.last
+            %li
               = link_to "RSS", affiliate_rss_feeds_path(@affiliate), :class => 'new'
+              = image_tag 'new.png', :class => 'new'
+            %li.last
+              = link_to "Sitemaps", affiliate_sitemaps_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
         .side-block
           %h3

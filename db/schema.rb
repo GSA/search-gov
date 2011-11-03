@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031142229) do
+ActiveRecord::Schema.define(:version => 20111103131805) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -593,6 +593,16 @@ ActiveRecord::Schema.define(:version => 20111031142229) do
   end
 
   add_index "site_pages", ["url_slug"], :name => "index_site_pages_on_url_slug", :unique => true
+
+  create_table "sitemaps", :force => true do |t|
+    t.string   "url"
+    t.integer  "affiliate_id"
+    t.datetime "last_crawled_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sitemaps", ["affiliate_id"], :name => "index_sitemaps_on_affiliate_id"
 
   create_table "spotlight_keywords", :force => true do |t|
     t.integer  "spotlight_id", :null => false
