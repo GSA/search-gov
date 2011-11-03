@@ -534,18 +534,22 @@ module SearchHelper
     link_to(t(:search_in), path, :id => 'search_in_link')
   end
 
-  def top_search_link_for(top_search)
+  def top_search_url_for(top_search)
     if top_search.url.blank?
       query_params = {
           :query => top_search.query,
           :linked => 1,
           :position => top_search.position
       }
-      path_or_url = search_path(query_params)
+      url = search_url(query_params)
     else
-      path_or_url = top_search.url
+      url = top_search.url
     end
-    link_to top_search.query, path_or_url, :target => '_top'
+    url
+  end
+
+  def top_search_link_for(top_search)
+    link_to top_search.query, top_search_url_for(top_search), :target => '_top'
   end
 
   def results_restriction_message_for(fedstates, search_path)
@@ -686,7 +690,7 @@ module SearchHelper
       url[0, length] + "..."
     end
   end
-  
+
   def url_is_excluded(url, affiliate)
     return false unless affiliate
     return affiliate.excluded_urls.collect{|excluded_url| excluded_url.url}.include?(url)
