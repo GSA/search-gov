@@ -42,7 +42,6 @@ describe "Bulk Import rake tasks" do
           first_affiliate.display_name.should == "Test 1"
           first_affiliate.domains.should == "domain1.gov\ndomain2.gov"
           (second_affiliate = Affiliate.find_by_name('test2')).should_not be_nil
-          puts second_affiliate.users.inspect
           second_affiliate.users.count.should == 2
           second_affiliate.users.include?(users(:affiliate_manager)).should be_true
           second_affiliate.users.include?(users(:another_affiliate_manager)).should be_true

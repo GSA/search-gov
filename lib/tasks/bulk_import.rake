@@ -18,7 +18,6 @@ namespace :usasearch do
             }
             affiliate = Affiliate.new(affiliate_attributes)
             users = row[6].split(",").collect{|email| User.find_by_email(email)}
-            puts users.inspect
             affiliate.users << users
             affiliate.save! 
           rescue 
