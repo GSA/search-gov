@@ -1,0 +1,12 @@
+%tbody
+  %tr.column-header
+    %th URL
+    %th Last Crawled
+    %th Status
+  - @crawled_urls.each do |crawled_url|
+    %tr{:class => cycle('even', 'odd')}
+      %td
+        = link_to shorten_url(crawled_url.url, shorten_url_length), crawled_url.url
+      %td
+        = render_date crawled_url.last_crawled_at
+      %td= render_last_crawl_status crawled_url

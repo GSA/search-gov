@@ -721,7 +721,7 @@ a
         font-size: 14px
         font-weight: bold
         color: #fff
-        background: url(/images/table-mid-bg.png) repeat-x 0 0
+        background: #444 url(/images/table-mid-bg.png) repeat-x 0 0
         height: 30px
         text-align: left
         margin: 7px 5px 4px
@@ -1331,7 +1331,7 @@ h3.api-item
       margin: 0.5em 0 0
       padding: 0 0 0 1em
 
-.featured-collection-list, .boosted-content-list, .rss-feed-list, .excluded-url-list, .sitemap-list
+.featured-collection-list, .boosted-content-list, .rss-feed-list, .excluded-url-list, .sitemap-list, .crawled-url-list
   clear: both
   table
     border: 1px solid #BDBDBD
@@ -1366,7 +1366,7 @@ h3.api-item
   .column-header
     font:
       weight: bold
-  a.add-link
+  a.add-link, a.header-link
     @include border-radius
     background: url(/images/backgrounds/bg_red_gradient.gif) repeat-x 0 0
     color: white
@@ -1406,6 +1406,44 @@ h3.api-item
 
 .boosted-content-list
   clear: both
+
+.crawled-url-list
+  tr.column-header
+    background-color: #D3D3D3
+  thead th
+    text-align: left
+    span
+      color: #FFF
+  tbody th
+    background: none
+    color: #333
+    font:
+      size: 14px
+      weight: normal
+  td a
+    float: left
+  a.header-link
+    float: right
+  col.last-crawled-at
+    width: 100px
+  col.last-crawl-status
+    width: 70px
+  .crawled-url-error-message
+    display: none
+
+.content .superfresh .status
+  table
+    table-layout: fixed
+    width: 100%
+  td
+    padding: 4px 8px
+    width: auto
+    word-wrap: break-word
+    a
+      word-wrap: break-word
+      width: auto
+  .crawled-url-list
+    @extend .crawled-url-list
 
 .add-featured-collection, .edit-featured-collection, .add-boosted-content, .edit-boosted-content, .add-rss-feed, .edit-rss-feed, .add-excluded-url, .add-sitemap
   @include border-radius
@@ -1655,3 +1693,9 @@ h3.api-item
     list-style: none
     margin: 0 0 1.5em 0
     padding: 0
+
+.url-error-message-dialog.ui-widget
+  font:
+    size: 14px
+  .ui-dialog-titlebar
+    padding: 0.3em 1em

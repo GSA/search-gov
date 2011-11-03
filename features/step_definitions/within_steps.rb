@@ -26,7 +26,8 @@
   'in the pagination' => '.pagination',
   'in the affiliate boosted contents section' => '.boosted-contents',
   'in the boosted contents section' => '#boosted',
-  'in the mobile boosted contents section' => '#boostedresults'
+  'in the mobile boosted contents section' => '#boostedresults',
+  'in the previously crawled URL list' => '.crawled-url-list'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

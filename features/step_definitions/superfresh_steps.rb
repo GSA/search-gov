@@ -12,7 +12,12 @@ end
 Given /^the following IndexedDocuments exist:$/ do |table|
   ActiveRecord::Observer.disable_observers
   table.hashes.each do |hash|
-    IndexedDocument.create!(:url => hash["url"], :affiliate => Affiliate.find_by_name(hash["affiliate"]), :title => hash["title"], :description => hash["description"])
+    IndexedDocument.create!(:title => hash[:title],
+                            :description => hash[:description],
+                            :url => hash[:url],
+                            :affiliate => Affiliate.find_by_name(hash[:affiliate]),
+                            :last_crawled_at => hash[:last_crawled_at],
+                            :last_crawl_status => hash[:last_crawl_status])
   end
   Sunspot.commit
   ActiveRecord::Observer.enable_observers
@@ -20,4 +25,15 @@ end
 
 When /^the url "([^\"]*)" has been crawled$/ do |url|
   IndexedDocument.find_by_url(url).update_attributes(:last_crawled_at => Time.now, :last_crawl_status => IndexedDocument::OK_STATUS)
+end
+
+When /^there are (\d+) crawled IndexedDocuments for "([^"]*)"$/ do |count, aff_name|
+  affiliate = Affiliate.find_by_name(aff_name)
+  count.to_i.times do |index|
+    affiliate.indexed_documents.create!(:title => "crawled document #{index + 1}",
+                                        :description => "crawled document description #{index + 1}",
+                                        :url => "http://aff.gov/crawled/#{index + 1}",
+                                        :last_crawled_at => Time.current,
+                                        :last_crawl_status => 'OK')
+  end
 end

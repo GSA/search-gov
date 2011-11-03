@@ -34,7 +34,9 @@ function getParameterByName( name )
 })(jQuery);
 
 jQuery(document).ready(function() {
-  jQuery('.share').share();
+  jQuery('.share').each(function() {
+    jQuery('.share').share();
+  });
 });
 
 jQuery(document).ready(function () {

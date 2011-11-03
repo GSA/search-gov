@@ -83,8 +83,8 @@ class IndexedDocument < ActiveRecord::Base
       find_all_by_last_crawled_at_and_affiliate_id(nil, affiliate.id, sql_options)
     end
 
-    def crawled_urls(affiliate, page = 1)
-      paginate(:conditions => ['affiliate_id = ? AND NOT ISNULL(last_crawled_at)', affiliate.id], :page => page, :order => 'last_crawled_at desc')
+    def crawled_urls(affiliate, page = 1, per_page = 30)
+      paginate(:conditions => ['affiliate_id = ? AND NOT ISNULL(last_crawled_at)', affiliate.id], :page => page, :order => 'last_crawled_at desc, id desc', :per_page => per_page)
     end
 
     def process_file(file, affiliate, max_urls = MAX_URLS_PER_FILE_UPLOAD)

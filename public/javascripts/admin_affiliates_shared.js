@@ -69,4 +69,29 @@ jQuery(document).ready(function() {
     });
     return true;
   });
+
+  var currentErrorMessageDialogId = null;
+
+  jQuery('.crawled-url-error-message').each(function() {
+    jQuery(this).dialog({
+      autoOpen: false,
+      dialogClass: 'url-error-message-dialog',
+      modal: true,
+      stack: false,
+      title: 'Last Crawl Error Message',
+      minWidth: 512 });
+  });
+
+  jQuery('.ui-widget-overlay').live('click', function() {
+    jQuery(currentErrorMessageDialogId).dialog('close');
+  });
+
+  jQuery('.crawled-url-dialog-link').each(function() {
+    jQuery(this).click(function() {
+      var dialogId = jQuery(this).attr('dialog_id');
+      currentErrorMessageDialogId = '#' + dialogId;
+      jQuery(currentErrorMessageDialogId).dialog('open');
+      return false;
+    });
+  });
 });

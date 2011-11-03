@@ -8,7 +8,7 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
     @title = "URLs - "
     @indexed_document = IndexedDocument.new
     @uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, nil)
-    @crawled_urls = IndexedDocument.crawled_urls(@affiliate, params[:page])
+    @crawled_urls = IndexedDocument.crawled_urls(@affiliate, 1, 5)
   end
 
   def create
@@ -46,5 +46,10 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
       flash[:error] = "Invalid file format; please upload a plain text file (.txt)."
     end
     redirect_to affiliate_on_demand_urls_path(@affiliate)
+  end
+
+  def crawled
+    @title = 'Previously Crawled URLs - '
+    @crawled_urls = IndexedDocument.crawled_urls(@affiliate, params[:page])
   end
 end

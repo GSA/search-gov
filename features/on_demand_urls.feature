@@ -7,10 +7,30 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following IndexedDocuments exist:
+      | title                | description                     | url                       | affiliate | last_crawled_at | last_crawl_status |
+      | Space Suit Evolution | description text for space suit | http://aff.gov/space-suit | aff.gov   | 11/02/2011      | OK                |
+      | Rocket Evolution     | description text for rocket     | http://aff.gov/rocket     | aff.gov   | 11/01/2011      | 404 Not Found     |
+    And there are 40 crawled IndexedDocuments for "aff.gov"
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs
+    And I should see "aff.gov/.../36"
+    And I should not see "aff.gov/.../35"
+    And I should not see "aff.gov/space-suit"
+
+    When I follow "View all"
+    Then I should see the browser page titled "Previously Crawled URLs"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Previously Crawled URLs
+    And I should see "Previously Crawled URLs" in the page header
+    And I should see "aff.gov/crawled/40"
+    When I follow "Next"
+    Then I should see "aff.gov/crawled/10"
+    And I should see the following table rows:
+      | URL                | Last Crawled | Status |
+      | aff.gov/space-suit | 11/02/2011   | OK     |
+      | aff.gov/rocket     | 11/01/2011   | Error  |
 
   Scenario: Submit a URL for on-demand indexing
     Given the following Affiliates exist:
@@ -30,7 +50,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs"
     Then I should see "Uncrawled URLs (0)"
-    And I should see "http://new.url.gov" within ".crawled-url"
+    And I should see "http://new.url.gov" in the previously crawled URL list
 
   Scenario: Remove a URL to be crawled
     Given the following Affiliates exist:

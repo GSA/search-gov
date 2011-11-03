@@ -34,6 +34,7 @@ UsasearchRails3::Application.routes.draw do
     resources :on_demand_urls, :controller => 'affiliates/on_demand_urls', :only => [:index, :create, :destroy] do
       collection do
         post :upload
+        get :crawled
       end
     end
     resources :type_ahead_search, :controller => "affiliates/sayt", :as => "type_ahead_search" do

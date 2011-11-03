@@ -22,4 +22,18 @@ module AffiliateHelper
     end
     templates.join
   end
+
+  def render_last_crawl_status(indexed_document)
+    return indexed_document.last_crawl_status if indexed_document.last_crawl_status == IndexedDocument::OK_STATUS or indexed_document.last_crawl_status.blank?
+
+    content = ''
+    dialog_id = "crawled-url-error-message-#{indexed_document.id}"
+    content << link_to('Error', '#', :class => 'crawled-url-dialog-link', :dialog_id => dialog_id)
+    content << link_to(content_tag(:span, nil, :class => 'ui-icon ui-icon-newwin'), '#', :class => 'crawled-url-dialog-link', :dialog_id => dialog_id)
+    error_message_text = h(indexed_document.url)
+    error_message_text << tag(:br)
+    error_message_text << h(indexed_document.last_crawl_status)
+    content << content_tag(:div, error_message_text.html_safe, :class => 'crawled-url-error-message', :id => dialog_id)
+    content.html_safe
+  end
 end

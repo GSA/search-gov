@@ -69,13 +69,49 @@ describe Affiliates::OnDemandUrlsController do
             assigns[:uncrawled_urls].size.should == 1
             assigns[:crawled_urls].size.should == 1
           end
-
-          it "should paginate the crawled urls using the page parameter" do
-            get :index, :affiliate_id => @user.affiliates.first.id, :page => 2
-            assigns[:crawled_urls].should be_empty
-          end
         end
       end
+    end
+  end
+
+  describe "#crawled" do
+    context "when affiliate manager is not logged in" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      before do
+        get :crawled, :affiliate_id => affiliate.id
+      end
+
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:another_affiliate) { affiliates(:another_affiliate) }
+
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :crawled, :affiliate_id => another_affiliate.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+      let(:crawled_urls) { mock('crawled urls') }
+
+      before do
+        UserSession.create(current_user)
+        IndexedDocument.should_receive(:crawled_urls).and_return(crawled_urls)
+
+        get :crawled, :affiliate_id => affiliate.id
+      end
+
+      it { should assign_to(:title).with_kind_of(String) }
+      it { should assign_to(:crawled_urls).with(crawled_urls) }
+      it { should respond_with(:success) }
     end
   end
 end
