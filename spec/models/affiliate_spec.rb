@@ -240,10 +240,6 @@ describe Affiliate do
       Affiliate.create!(@valid_create_attributes).is_sayt_enabled.should be_true
     end
 
-    it "should have Affiliate-specific SAYT suggestions enabled by default" do
-      Affiliate.create!(@valid_create_attributes).is_affiliate_suggestions_enabled.should be_true
-    end
-
     it "should generate a database-level error when attempting to add an affiliate with the same name as an existing affiliate, but with different case; instead it should return false" do
       Affiliate.create!(@valid_attributes)
       @duplicate_affiliate = Affiliate.new(@valid_attributes.merge(:name => @valid_attributes[:name].upcase))

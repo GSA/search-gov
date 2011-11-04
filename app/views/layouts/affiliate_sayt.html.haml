@@ -2,8 +2,7 @@
 %html
   %head
     %title Type-ahead Search Demo - USASearch
-    - if @affiliate and @affiliate.is_affiliate_suggestions_enabled
-      = javascript_tag "var usagov_sayt_url = \"#{sayt_url(:aid => @affiliate.id)}&\";"
+    = javascript_tag "var usagov_sayt_url = \"#{sayt_url(:aid => @affiliate.id)}&\";"
     != javascript_include_tag 'jquery/jquery.min', 'jquery/jquery.bgiframe.min', 'jquery/jquery.autocomplete.min', 'sayt'
     = stylesheet_link_tag 'compiled/sayt'
   %body

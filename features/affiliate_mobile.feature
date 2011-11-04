@@ -8,8 +8,9 @@ Feature: Mobile Search for Affiliate
 
   Scenario: A search on affiliate
     Given the following Affiliates exist:
-      | display_name | name       | contact_email  | contact_name | domains | header           | footer           |
-      | agency site  | agency.gov | aff@agency.gov | John Bar     |         | Affiliate Header | Affiliate Footer |
+      | display_name | name              | contact_email  | contact_name | domains | header           | footer           | is_sayt_enabled |
+      | agency site  | agency.gov        | aff@agency.gov | John Bar     |         | Affiliate Header | Affiliate Footer | true            |
+      | no sayt site | nosayt.agency.gov | aff@agency.gov | John Bar     |         | Affiliate Header | Affiliate Footer | false           |
     And the following Boosted Content entries exist for the affiliate "agency.gov"
       | title              | url                       | description                          |
       | Our Emergency Page | http://www.agency.gov/911 | Updated information on the emergency |
@@ -17,6 +18,7 @@ Feature: Mobile Search for Affiliate
       | Our Tourism Page   | http://www.agency.gov/tou | Tourism information                  |
     And I am on agency.gov's mobile search page
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    And affiliate SAYT suggestions for "agency.gov" should be enabled
     And I should see the browser page titled "agency site Mobile"
     And I should see "agency site Mobile" in the mobile page header
     When I fill in "query" with "emergency"
@@ -26,6 +28,9 @@ Feature: Mobile Search for Affiliate
     And I should see "Our Emergency Page" in the mobile boosted contents section
     When I follow "Next"
     Then I should not see "Our Emergency Page"
+
+    When I go to nosayt.agency.gov's mobile search page
+    Then affiliate SAYT suggestions for "nosayt.agency.gov" should be disabled
 
   Scenario: Toggling back to classic mode
     Given the following Affiliates exist:

@@ -800,18 +800,16 @@ Feature: Affiliate clients
 
   Scenario: Affiliate SAYT
     Given the following Affiliates exist:
-      | display_name      | name            | contact_email             | contact_name          | domains        | is_sayt_enabled | is_affiliate_suggestions_enabled |
-      | aff site          | aff.gov           | aff@bar.gov             | John Bar              | usa.gov        | true            | false                            |
-      | other site        | otheraff.gov      | otheraff@bar.gov        | Other John Bar        | usa.gov        | false           | false                            |
-      | another site      | anotheraff.gov    | anotheraff@bar.gov      | Another John Bar      | usa.gov        | true            | true                             |
-      | yet another site  | yetanotheraff.gov | yetanotheraff@bar.gov   | Yet Another John Bar  | usa.gov        | false           | true                             |
+      | display_name | name         | contact_email    | contact_name   | domains | is_sayt_enabled |
+      | aff site     | aff.gov      | aff@bar.gov      | John Bar       | usa.gov | true            |
+      | other site   | otheraff.gov | otheraff@bar.gov | Other John Bar | usa.gov | false           |
     When I go to aff.gov's search page
     Then the search bar should have SAYT enabled
-    And affiliate SAYT suggestions for "aff.gov" should be disabled
+    And affiliate SAYT suggestions for "aff.gov" should be enabled
     And I fill in "query" with "emergency"
     And I submit the search form
     Then the search bar should have SAYT enabled
-    And affiliate SAYT suggestions for "aff.gov" should be disabled
+    And affiliate SAYT suggestions for "aff.gov" should be enabled
 
     When I go to otheraff.gov's search page
     Then the search bar should not have SAYT enabled
@@ -821,21 +819,13 @@ Feature: Affiliate clients
     Then the search bar should not have SAYT enabled
     And affiliate SAYT suggestions for "otheraff.gov" should be disabled
 
-    When I go to anotheraff.gov's search page
-    Then the search bar should have SAYT enabled
-    And affiliate SAYT suggestions for "anotheraff.gov" should be enabled
-    And I fill in "query" with "emergency"
-    And I submit the search form
-    Then the search bar should have SAYT enabled
-    And affiliate SAYT suggestions for "anotheraff.gov" should be enabled
-
-    When I go to yetanotheraff.gov's search page
-    Then the search bar should not have SAYT enabled
-    And affiliate SAYT suggestions for "yetanotheraff.gov" should be disabled
-    And I fill in "query" with "emergency"
-    And I submit the search form
-    Then the search bar should not have SAYT enabled
-    And affiliate SAYT suggestions for "yetanotheraff.gov" should be disabled
+  Scenario: Visiting Affiliate SAYT demo page
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | domains | is_sayt_enabled |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | usa.gov | false           |
+    When I go to the affiliate sayt demo page for aff.gov
+    Then the affiliate search bar should have SAYT enabled
+    And affiliate SAYT suggestions for "aff.gov" should be enabled
 
   Scenario: Visiting an affiliate search page
     Given the following Affiliates exist:
@@ -947,8 +937,7 @@ Feature: Affiliate clients
     And I should see "Do you want to have Type-ahead Search box on your home page and/or in your banner?"
     And I should see "How To Implement Type-ahead Search"
     When I follow "Type-ahead Search" within ".cross-promotion"
-    Then I should see "Add a New Entry"
-    And I should not see "aff.gov"
+    And I should see "Type-ahead Search" in the page header
 
   Scenario: Navigating to an Affiliate page for a particular Affiliate
     Given the following Affiliates exist:
@@ -970,51 +959,28 @@ Feature: Affiliate clients
     When I follow "My account" in the site navigation bar
     Then I should be on the user account page"
 
-  Scenario: Viewing SAYT Suggestions for an affiliate
-    Given the following Affiliates exist:
-     | display_name     | name             | contact_email           | contact_name        |
-     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "Type-ahead search"
-    Then I should be on the affiliate sayt page for "aff.gov"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Type-ahead Search
-    And I should not see "aff.gov"
-
   Scenario: Setting SAYT Preferences for an affiliate
     Given the following Affiliates exist:
-     | display_name     | name             | contact_email           | contact_name        |
-     | aff site         | aff.gov          | aff@bar.gov             | John Bar            |
+      | display_name | name    | contact_email | contact_name | is_sayt_enabled |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead search"
-    Then I should be on the affiliate sayt page for "aff.gov"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Type-ahead Search
+    And I should see "Type-ahead Search" in the page header
     And I should see "Preferences"
-    And the "sayt_preferences_disable" button should be checked
+    And the "is_sayt_enabled" checkbox should be checked
 
-    When I choose "sayt_preferences_enable_affiliate"
+    When I uncheck "is_sayt_enabled"
     And I press "Set Preferences"
-    Then I should be on the affiliate sayt page for "aff.gov"
-    And I should see "Preferences updated"
-    And the "sayt_preferences_enable_affiliate" button should be checked
-    And the affiliate "aff.gov" should be set to use affiliate SAYT
-
-    When I choose "sayt_preferences_enable_global"
-    And I press "Set Preferences"
-    Then I should be on the affiliate sayt page for "aff.gov"
-    And the "sayt_preferences_enable_global" button should be checked
-    And the affiliate "aff.gov" should be set to use global SAYT
-
-    When I choose "sayt_preferences_disable"
-    And I press "Set Preferences"
-    Then I should be on the affiliate sayt page for "aff.gov"
-    And the "sayt_preferences_disable" button should be checked
-    And the affiliate "aff.gov" should be disabled
+    Then I should see "Preferences updated"
+    And I should see "Type-ahead Search" in the page header
+    And the "is_sayt_enabled" checkbox should not be checked
 
   Scenario: Adding and removing a SAYT Suggestion to an affiliate
     Given the following Affiliates exist:
-     | display_name     | name             | contact_email           | contact_name        | is_sayt_enabled | is_affiliate_suggestions_enabled |
-     | aff site         | aff.gov          | aff@bar.gov             | John Bar            | true            | true                             |
+      | display_name | name    | contact_email | contact_name | is_sayt_enabled |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead search"
@@ -1038,8 +1004,8 @@ Feature: Affiliate clients
 
   Scenario: Adding a misspelled SAYT Suggestion to an affiliate
     Given the following Affiliates exist:
-     | display_name     | name             | contact_email           | contact_name        | is_sayt_enabled | is_affiliate_suggestions_enabled |
-     | aff site         | aff.gov          | aff@bar.gov             | John Bar            | true            | true                             |
+      | display_name | name    | contact_email | contact_name | is_sayt_enabled |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true            |
     Given the following Misspelling exist:
       | wrong    | rite    |
       | haus     | house   |
@@ -1056,8 +1022,8 @@ Feature: Affiliate clients
 
   Scenario: Uploading SAYT Suggestions for an affiliate
     Given the following Affiliates exist:
-     | display_name     | name             | contact_email           | contact_name        | is_sayt_enabled | is_affiliate_suggestions_enabled |
-     | aff site         | aff.gov          | aff@bar.gov             | John Bar            | true            | true                             |
+      | display_name | name    | contact_email | contact_name | is_sayt_enabled |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | true            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Type-ahead search"
@@ -1349,7 +1315,7 @@ Feature: Affiliate clients
     When I follow "Best bets"
     And I follow "Add new graphics" in the featured collections section
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Best Bets: Graphics
-    
+
   Scenario: Excluding a URL from affiliate SERPs
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains         |
@@ -1370,32 +1336,32 @@ Feature: Affiliate clients
     And I follow "Emergency Delete"
     And I fill in "URL*" with "http://www.whitehouse.gov/our-government"
     And I press "Add"
-    
+
     When I go to aff.gov's search page
     And I fill in "query" with "white house cabinet"
     And I press "Search"
     Then I should not see "Our Government | The White House"
     And I should not see "Document Results for aff site"
-    
+
     When I follow "WH Blog"
     Then I should not see "Our Government"
     And I should see "Sorry, no results found for 'white house cabinet'"
-    
+
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Site information"
     And I follow "Emergency Delete"
     And I press "Delete"
-    
+
     When I go to aff.gov's search page
     And I fill in "query" with "white house cabinet"
     And I press "Search"
     Then I should see "Our Government | The White House"
     And I should see "Document Results for aff site"
-    
+
     When I follow "WH Blog"
     Then I should see "Results 1-1 of about 1 for 'white house cabinet'"
     And I should see "White House Cabinet"
-    
+
   Scenario: Inputing a bad Excluded Url
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains         |

@@ -100,6 +100,8 @@ module NavigationHelpers
       affiliate_users_path(Affiliate.find_by_display_name($1))
     when /the affiliate sayt page for "([^\"]*)"/
       affiliate_type_ahead_search_index_path(Affiliate.find_by_name($1))
+    when /the affiliate sayt demo page for ([^\"]*)/
+      demo_affiliate_type_ahead_search_index_path(Affiliate.find_by_name($1))
     when /the (.*)'s featured collections page$/
       affiliate_featured_collections_path(Affiliate.find_by_name($1))
     when /the recalls landing page/

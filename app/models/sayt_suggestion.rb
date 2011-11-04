@@ -15,6 +15,7 @@ class SaytSuggestion < ActiveRecord::Base
   class << self
 
     def like(affiliate_id, query, num_suggestions)
+      return [] if affiliate_id.present? and Affiliate.find_by_id_and_is_sayt_enabled(affiliate_id, false)
       equals_is = affiliate_id.nil? ? 'is' : '='
       clause = "phrase LIKE ? AND affiliate_id #{equals_is} ? AND ISNULL(deleted_at)"
       where([clause, query + '%', affiliate_id]).order('popularity DESC, phrase ASC').limit(num_suggestions).select("phrase")

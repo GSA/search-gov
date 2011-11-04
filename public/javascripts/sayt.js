@@ -1,8 +1,10 @@
 if (usagov_sayt_url === undefined) {
-    var usagov_sayt_url = "http://search.usa.gov/sayt";
+    var usagov_sayt_url = '';
 }
 
 $(document).ready(function() {
+  if (usagov_sayt_url == '')
+    return;
   $(".usagov-search-autocomplete").autocomplete(usagov_sayt_url, {
     dataType: "jsonp",
     parse: function(data) {

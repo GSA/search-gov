@@ -54,18 +54,6 @@ class Affiliate < ActiveRecord::Base
     url.blank? ? nil : domains_as_array.detect { |domain| url =~ /#{Regexp.escape(domain)}/i }
   end
 
-  def is_affiliate_sayt_enabled?
-    self.is_sayt_enabled && self.is_affiliate_suggestions_enabled
-  end
-
-  def is_global_sayt_enabled?
-    self.is_sayt_enabled && !self.is_affiliate_suggestions_enabled
-  end
-
-  def is_sayt_disabled?
-    !self.is_sayt_enabled && !self.is_affiliate_suggestions_enabled
-  end
-
   def is_affiliate_related_topics_enabled?
     (self.related_topics_setting != 'global_enabled' && self.related_topics_setting != 'disabled') || self.related_topics_setting.nil?
   end

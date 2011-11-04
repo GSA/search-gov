@@ -11,11 +11,8 @@
     %meta{:name => "format-detection", :content => "telephone=no" }/
 
     != javascript_include_tag "jquery/jquery.min.js"
-    - if @affiliate.is_sayt_enabled
-      - if @affiliate.is_affiliate_suggestions_enabled
-        = javascript_tag "var usagov_sayt_url = \"#{sayt_url(:aid => @affiliate.id)}&\";"
-      - else
-        = javascript_tag "var usagov_sayt_url = \"#{sayt_url}&\";"
+    - if @affiliate.is_sayt_enabled?
+      = javascript_tag "var usagov_sayt_url = \"#{sayt_url(:aid => @affiliate.id)}&\";"
       != javascript_include_tag "jquery/jquery-ui.custom.min.js"
       != javascript_include_tag "sayt-ui.js"
     != javascript_include_tag "application"

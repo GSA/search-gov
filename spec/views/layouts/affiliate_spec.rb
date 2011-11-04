@@ -2,7 +2,7 @@ require 'spec/spec_helper'
 describe "layouts/affiliate" do
   before do
     affiliate_template = stub('affiliate template', :stylesheet => 'default')
-    affiliate = stub('affiliate', :exclude_webtrends? => false, :header => 'header', :footer => 'footer', :is_sayt_enabled => false, :is_affiliate_suggestions_enabled => false, :affiliate_template => affiliate_template, :favicon_url => 'http://cdn.agency.gov/favicon.ico', :external_css_url => 'http://cdn.agency.gov/custom.css')
+    affiliate = stub('affiliate', :exclude_webtrends? => false, :header => 'header', :footer => 'footer', :is_sayt_enabled => false, :affiliate_template => affiliate_template, :favicon_url => 'http://cdn.agency.gov/favicon.ico', :external_css_url => 'http://cdn.agency.gov/custom.css')
     assign(:affiliate, affiliate)
   end
   context "when page is displayed" do
@@ -15,7 +15,7 @@ describe "layouts/affiliate" do
   context "when exclude_webtrends flag is set to true" do
     before do
       affiliate_template = stub('affiliate template', :stylesheet => 'default')
-      affiliate = stub('affiliate', :exclude_webtrends? => true, :header => 'header', :footer => 'footer', :is_sayt_enabled => false, :is_affiliate_suggestions_enabled => false, :affiliate_template => affiliate_template, :favicon_url => 'http://cdn.agency.gov/favicon.ico', :external_css_url => 'http://cdn.agency.gov/custom.css')
+      affiliate = stub('affiliate', :exclude_webtrends? => true, :header => 'header', :footer => 'footer', :is_sayt_enabled => false, :affiliate_template => affiliate_template, :favicon_url => 'http://cdn.agency.gov/favicon.ico', :external_css_url => 'http://cdn.agency.gov/custom.css')
       assign(:affiliate, affiliate)
     end
 

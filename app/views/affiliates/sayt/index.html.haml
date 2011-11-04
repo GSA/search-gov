@@ -5,39 +5,34 @@
   %h1 Type-ahead Search
   %p
     Enable type-ahead search to provide your customers with suggestions as they type their search in your site's search box.
-  %p
-    = link_to "Preferences", "#preferences"
-    &nbsp; | &nbsp;
-    = link_to "Preview", "#preview"
-    &nbsp; | &nbsp;
-    = link_to "Add a New Entry", "#add_a_new_entry"
-    &nbsp; | &nbsp;
-    = link_to "Current Entries", "#current_entries"
-    &nbsp; | &nbsp;
-    = link_to "Bulk Upload", "#bulk_upload"
+  - if @affiliate.is_sayt_enabled?
+    %p
+      = link_to "Preferences", "#preferences"
+      &nbsp; | &nbsp;
+      = link_to "Preview", "#preview"
+      &nbsp; | &nbsp;
+      = link_to "Add a New Entry", "#add_a_new_entry"
+      &nbsp; | &nbsp;
+      = link_to "Current Entries", "#current_entries"
+      &nbsp; | &nbsp;
+      = link_to "Bulk Upload", "#bulk_upload"
 
   #preferences{:style => 'margin-bottom: 20px;'}
-    = form_tag preferences_affiliate_type_ahead_search_index_path(@affiliate) do
+    = form_tag preferences_affiliate_type_ahead_search_index_path(@affiliate), :class => 'bordered' do
       %h2
         Preferences
       %ul{:style => 'list-style-type: none;'}
         %li
-          = radio_button_tag 'sayt_preferences', 'enable_affiliate', @affiliate.is_affiliate_sayt_enabled?
-          Enable type-ahead search based on your site's search analytics
-        %li
-          = radio_button_tag 'sayt_preferences', 'enable_global', @affiliate.is_global_sayt_enabled?
-          Enable type-ahead search based on Search.USA.gov's government-wide search analytics
-        %li
-          = radio_button_tag 'sayt_preferences', 'disable', @affiliate.is_sayt_disabled?
-          Disable type-ahead search
+          = check_box_tag 'is_sayt_enabled', '1', @affiliate.is_sayt_enabled?
+          Enable type-ahead search
       = submit_tag "Set Preferences"
 
-  #preview{:style => 'margin-bottom: 25px;'}
-    %h2
-      Preview
-    = text_field_tag 'search', nil, { :size => 49, :name => "query", :autocomplete => "off", :class => (@affiliate.is_sayt_disabled? ? "usagov-search" : "usagov-search-autocomplete") }
+  - if @affiliate.is_sayt_enabled?
+    #preview{:style => 'margin-bottom: 25px;'}
+      %h2
+        Preview
+      = text_field_tag 'search', nil, { :size => 49, :name => "query", :autocomplete => "off", :class => "usagov-search-autocomplete" }
 
-  - if @affiliate.is_affiliate_sayt_enabled?
     #add_a_new_entry{:style => 'margin-bottom: 25px;'}
       = form_for @sayt_suggestion, {:url => affiliate_type_ahead_search_index_path(@affiliate)} do |f|
         %h2

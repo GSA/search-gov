@@ -37,7 +37,6 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_header => hash["staged_header"],
       :staged_footer => hash["staged_footer"],
       :is_sayt_enabled => hash["is_sayt_enabled"],
-      :is_affiliate_suggestions_enabled => hash["is_affiliate_suggestions_enabled"],
       :search_results_page_title => hash["search_results_page_title"],
       :staged_search_results_page_title => hash["staged_search_results_page_title"],
       :has_staged_content => hash["has_staged_content"] || false,
@@ -68,6 +67,14 @@ Then /^the search bar should not have SAYT enabled$/ do
   page.should_not have_selector("script[type='text/javascript'][src*='/javascripts/sayt-ui.js']")
   page.should_not have_selector("input[id='search_query'][type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
   page.should_not have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery-ui.custom.min.js']")
+end
+
+Then /^the affiliate search bar should have SAYT enabled$/ do
+  page.should have_selector("script[type='text/javascript'][src*='/javascripts/sayt.js']")
+  page.should have_selector("input[type='text'][class='usagov-search-autocomplete'][autocomplete='off']")
+  page.should have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery.min.js']")
+  page.should have_selector("script[type='text/javascript'][src^='/javascripts/jquery/jquery.bgiframe.min.js']")
+  page.should have_selector("script[type='text/javascript'][src^='/javascripts/sayt.js']")
 end
 
 Then /^I should see the page with favicon "([^"]*)"$/ do |favicon_url|
@@ -111,24 +118,6 @@ Given /^the following Calais Related Searches exist for affiliate "([^\"]*)":$/ 
     CalaisRelatedSearch.create!(:term => hash["term"], :related_terms => hash["related_terms"], :locale => hash["locale"], :affiliate => affiliate)
   end
   CalaisRelatedSearch.reindex
-end
-
-Then /^the affiliate "([^\"]*)" should be set to use affiliate SAYT$/ do |affiliate_name|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  affiliate.is_sayt_enabled.should be_true
-  affiliate.is_affiliate_suggestions_enabled.should be_true
-end
-
-Then /^the affiliate "([^\"]*)" should be set to use global SAYT$/ do |affiliate_name|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  affiliate.is_sayt_enabled.should be_true
-  affiliate.is_affiliate_suggestions_enabled.should be_false
-end
-
-Then /^the affiliate "([^\"]*)" should be disabled$/ do |affiliate_name|
-  affiliate = Affiliate.find_by_name(affiliate_name)
-  affiliate.is_sayt_enabled.should be_false
-  affiliate.is_affiliate_suggestions_enabled.should be_false
 end
 
 Then /^the "([^\"]*)" button should be checked$/ do |field|

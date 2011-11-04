@@ -9,7 +9,7 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
     conditions = @filter.present? ? ["affiliate_id = ? AND phrase LIKE ? AND ISNULL(deleted_at)", @affiliate.id, "#{@filter}%"] : ["affiliate_id = ? AND ISNULL(deleted_at)", @affiliate.id]
     @sayt_suggestions = SaytSuggestion.paginate(:conditions => conditions, :page => params[:page] || 1, :order => 'phrase ASC')
   end
-  
+
   def create
     @sayt_suggestion = SaytSuggestion.find_or_initialize_by_affiliate_id_and_phrase(@affiliate.id, params[:sayt_suggestion][:phrase])
     if @sayt_suggestion.id.present? and @sayt_suggestion.deleted_at.nil?
@@ -24,7 +24,7 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
     end
     redirect_to affiliate_type_ahead_search_index_path(@affiliate)
   end
-  
+
   def destroy
     @sayt_suggestion = SaytSuggestion.find(params[:id])
     if @sayt_suggestion
@@ -33,7 +33,7 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
     end
     redirect_to affiliate_type_ahead_search_index_path(@affiliate)
   end
-  
+
   def upload
     result = SaytSuggestion.process_sayt_suggestion_txt_upload(params[:txtfile], @affiliate)
     if result
@@ -45,17 +45,10 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
     end
     redirect_to affiliate_type_ahead_search_index_path(@affiliate)
   end
-  
+
   def preferences
-    if params[:sayt_preferences] == 'enable_affiliate'
-      @affiliate.update_attributes(:is_sayt_enabled => true, :is_affiliate_suggestions_enabled => true)
-    elsif params[:sayt_preferences] == 'enable_global'
-      @affiliate.update_attributes(:is_sayt_enabled => true, :is_affiliate_suggestions_enabled => false)
-    elsif params[:sayt_preferences] == 'disable'
-      @affiliate.update_attributes(:is_sayt_enabled => false, :is_affiliate_suggestions_enabled => false)
-    end
-    flash[:success] = 'Preferences updated.'
-    redirect_to affiliate_type_ahead_search_index_path(@affiliate)    
+    @affiliate.update_attribute(:is_sayt_enabled, params[:is_sayt_enabled] == '1')
+    redirect_to affiliate_type_ahead_search_index_path(@affiliate), :flash => { :success => 'Preferences updated.' }
   end
 
   def demo

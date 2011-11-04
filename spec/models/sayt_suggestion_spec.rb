@@ -238,65 +238,80 @@ describe SaytSuggestion do
       end
     end
 
-    context "when affiliate_id is specified" do
+    context "when affiliate_id is specified and is_sayt_enabled is true" do
       before do
+        Affiliate.should_receive(:find_by_id_and_is_sayt_enabled).with(@affiliate.id, false).and_return(nil)
+      end
+
+      it "should return records for that affiliate_id" do
         SaytSuggestion.create!(:phrase => "child", :popularity => 10, :affiliate_id => @affiliate.id)
         SaytSuggestion.create!(:phrase => "child care", :popularity => 1, :affiliate_id => @affiliate.id)
         SaytSuggestion.create!(:phrase => "children", :popularity => 100, :affiliate_id => @affiliate.id)
         SaytSuggestion.create!(:phrase => "child default", :popularity => 100)
         @array = SaytSuggestion.like(@affiliate.id, "child", 10)
-      end
-
-      it "should return records for that affiliate_id" do
         @array.size.should == 3
       end
-    end
 
-    context "when there are more than num_suggestions results available" do
-      before do
-        SaytSuggestion.create!(:phrase => "child", :popularity => 10, :affiliate_id => @affiliate.id)
-        SaytSuggestion.create!(:phrase => "child care", :popularity => 1, :affiliate_id => @affiliate.id)
-        SaytSuggestion.create!(:phrase => "children", :popularity => 100, :affiliate_id => @affiliate.id)
-        @array = SaytSuggestion.like(@affiliate.id, "child", 2)
-      end
+      context "when there are more than num_suggestions results available" do
+        before do
+          SaytSuggestion.create!(:phrase => "child", :popularity => 10, :affiliate_id => @affiliate.id)
+          SaytSuggestion.create!(:phrase => "child care", :popularity => 1, :affiliate_id => @affiliate.id)
+          SaytSuggestion.create!(:phrase => "children", :popularity => 100, :affiliate_id => @affiliate.id)
+          @array = SaytSuggestion.like(@affiliate.id, "child", 2)
+        end
 
-      it "should return at most num_suggestions results" do
-        @array.all.size.should == 2
-      end
-    end
-
-    context "when there are multiple suggestions available" do
-      before do
-        SaytSuggestion.create!(:phrase => "child", :popularity => 10, :affiliate_id => @affiliate.id)
-        SaytSuggestion.create!(:phrase => "child care", :popularity => 1, :affiliate_id => @affiliate.id)
-        SaytSuggestion.create!(:phrase => "children", :popularity => 100, :affiliate_id => @affiliate.id)
-        @array = SaytSuggestion.like(@affiliate.id, "child", 10)
-      end
-
-      it "should return an array of SAYT suggestions" do
-        @array.all.class.should == Array
-        @array.each do |phrase|
-          phrase.class.should == SaytSuggestion
+        it "should return at most num_suggestions results" do
+          @array.all.size.should == 2
         end
       end
 
-      it "should return results in order of popularity" do
-        @array.first.phrase.should == "children"
-        @array.last.phrase.should == "child care"
+      context "when there are multiple suggestions available" do
+        before do
+          SaytSuggestion.create!(:phrase => "child", :popularity => 10, :affiliate_id => @affiliate.id)
+          SaytSuggestion.create!(:phrase => "child care", :popularity => 1, :affiliate_id => @affiliate.id)
+          SaytSuggestion.create!(:phrase => "children", :popularity => 100, :affiliate_id => @affiliate.id)
+          @array = SaytSuggestion.like(@affiliate.id, "child", 10)
+        end
+
+        it "should return an array of SAYT suggestions" do
+          @array.all.class.should == Array
+          @array.each do |phrase|
+            phrase.class.should == SaytSuggestion
+          end
+        end
+
+        it "should return results in order of popularity" do
+          @array.first.phrase.should == "children"
+          @array.last.phrase.should == "child care"
+        end
+      end
+
+      context "when multiple suggestions have the same popularity" do
+        before do
+          SaytSuggestion.create!(:phrase => "eliz hhh", :popularity => 100, :affiliate_id => @affiliate.id)
+          SaytSuggestion.create!(:phrase => "eliz aaa", :popularity => 100, :affiliate_id => @affiliate.id)
+          SaytSuggestion.create!(:phrase => "eliz ggg", :popularity => 100, :affiliate_id => @affiliate.id)
+        end
+
+        it "should return results in alphabetical order" do
+          @array = SaytSuggestion.like(@affiliate.id, "eliz", 3)
+          @array.first.phrase.should == "eliz aaa"
+          @array.last.phrase.should == "eliz hhh"
+        end
       end
     end
 
-    context "when multiple suggestions have the same popularity" do
+    context "when affiliate_id is specified and is_sayt_enabled is false" do
       before do
-        SaytSuggestion.create!(:phrase => "eliz hhh", :popularity => 100, :affiliate_id => @affiliate.id)
-        SaytSuggestion.create!(:phrase => "eliz aaa", :popularity => 100, :affiliate_id => @affiliate.id)
-        SaytSuggestion.create!(:phrase => "eliz ggg", :popularity => 100, :affiliate_id => @affiliate.id)
+        Affiliate.should_receive(:find_by_id_and_is_sayt_enabled).with(@affiliate.id, false).and_return(@affiliate)
       end
 
-      it "should return results in alphabetical order" do
-        @array = SaytSuggestion.like(@affiliate.id, "eliz", 3)
-        @array.first.phrase.should == "eliz aaa"
-        @array.last.phrase.should == "eliz hhh"
+      it "should return empty array" do
+        SaytSuggestion.create!(:phrase => "child", :popularity => 10, :affiliate_id => @affiliate.id)
+        SaytSuggestion.create!(:phrase => "child care", :popularity => 1, :affiliate_id => @affiliate.id)
+        SaytSuggestion.create!(:phrase => "children", :popularity => 100, :affiliate_id => @affiliate.id)
+        SaytSuggestion.create!(:phrase => "child default", :popularity => 100)
+        SaytSuggestion.like(@affiliate.id, "child", 10).should be_blank
       end
     end
   end
