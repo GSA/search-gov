@@ -197,8 +197,7 @@ describe IndexedDocument do
     
     context "for a normal PDF file" do
       before do
-        file = open(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
-        @indexed_document.index_pdf(file)
+        @indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
       end
 
       it "should create an indexed document that has a title and description from the pdf" do
@@ -218,7 +217,7 @@ describe IndexedDocument do
     context "when the pdf body is blank" do
       before do
         @indexed_document = IndexedDocument.create!(@min_valid_attributes.merge(:url => 'http://www.state.nj.us/bpu/pdf/boardorders/3-2-07-III%20H.pdf'))
-        @indexed_document.index_pdf open(Rails.root.to_s + "/spec/fixtures/pdf/badtitle.pdf")
+        @indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/badtitle.pdf")
       end
 
       it "should generate a title using the last part of the filename" do
@@ -229,8 +228,7 @@ describe IndexedDocument do
     
     context "for a PDF that, when parsed, has garbage characters in the description" do
       before do
-        file = open(Rails.root.to_s + "/spec/fixtures/pdf/garbage_chars.pdf")
-        @indexed_document.index_pdf(file)
+        @indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/garbage_chars.pdf")
       end
       
       it "should remove the garbage characters from the description" do

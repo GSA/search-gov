@@ -56,9 +56,11 @@ class IndexedDocument < ActiveRecord::Base
     update_attributes!(:title=> title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
   end
 
-  def index_pdf(file)
-    pdf = PDF::Toolkit.open(file)
-    update_attributes!(:title => generate_pdf_title(pdf, self.url), :description => generate_pdf_description(pdf.to_text.read), :body => pdf.to_text.read, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
+  def index_pdf(pdf_file_path)
+    pdf_text = PDF::Toolkit.pdftotext(pdf_file_path) do |io|
+      io.read
+    end
+    update_attributes!(:title => generate_pdf_title(pdf_file_path, self.url), :description => generate_pdf_description(pdf_text), :body => pdf_text, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
   end
 
   class << self
@@ -104,8 +106,9 @@ class IndexedDocument < ActiveRecord::Base
 
   private
 
-  def generate_pdf_title(pdf, url)
-    return pdf.title unless pdf.title.blank?
+  def generate_pdf_title(pdf_file_path, url)
+    pdf = PDF::Toolkit.open(pdf_file_path) rescue nil
+    return pdf.title unless pdf.nil? or pdf.title.blank?
     begin
       body = pdf.to_text.read
       first_linebreak_index = body.strip.index("\n") || body.size
