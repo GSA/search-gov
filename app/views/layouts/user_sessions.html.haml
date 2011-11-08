@@ -12,8 +12,6 @@
     = stylesheet_link_tag 'compiled/new_main.css', :media => 'screen, projection'
     = stylesheet_link_tag 'compiled/print.css', :media => 'print'
     = stylesheet_link_tag 'jquery-ui/jquery-ui.custom.css'
-    = stylesheet_link_tag 'compiled/sayt.css'
-    = javascript_tag "var usagov_sayt_url = \"#{sayt_url(:aid => @affiliate.id)}&\";" if @affiliate and @affiliate.is_sayt_enabled?
     = (javascript_include_tag "jquery/jquery.min.js").html_safe
     = (javascript_include_tag "jquery/jquery-ui.custom.min.js").html_safe
     = (javascript_include_tag "jquery/jquery.dropdownPlain.js").html_safe
@@ -24,7 +22,6 @@
     /[if IE]
       = (javascript_include_tag "iepngfix_tilebg.js").html_safe
     = (javascript_include_tag "affiliates.js").html_safe
-    = (javascript_include_tag "sayt-ui.js").html_safe
     = (calendar_date_select_includes).html_safe
   %body
     #skiplink

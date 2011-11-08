@@ -223,3 +223,8 @@ end
 Then /^I should not see the page with Webtrends tag$/ do
   page.should_not have_selector("script[src*='/javascripts/webtrends_affiliates.js'][type='text/javascript']")
 end
+
+Then /^I should see the code for (English|Spanish) language sites$/ do |locale|
+  locales = { 'English' => 'en', 'Spanish' => 'es' }
+  page.should have_selector("#embed_code_textarea_#{locales[locale]}")
+end

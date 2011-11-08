@@ -1,7 +1,21 @@
-%textarea{ :readonly => true, :id => "embed_code_textarea", :onclick => "document.getElementById('embed_code_textarea').focus(); document.getElementById('embed_code_textarea').select();" }
-  = '<form method="get" action="http://search.usa.gov/search">'
-  = "  <input type=\"hidden\" name=\"affiliate\" value=\"#{ @affiliate.name }\" />"
-  = '  <label for="query-field">Enter Search Term(s): </label>'
-  = '  <input type="text" name="query" id="query-field" autocomplete="off" class="usagov-search-autocomplete ui-autocomplete-input ui-corner-all" />'
-  = '  <input type="submit" value="Search" />'
-  = '</form>'
+%textarea{ :readonly => true, :id => "embed_code_textarea_#{locale}" }
+  :escaped
+    <html>
+      <head>
+        #{javascript_tag %{var usagov_sayt_url = "#{sayt_url(:aid => @affiliate.id)}&";}}
+        #{javascript_include_tag "#{root_url}javascripts/jquery/jquery.min.js"}
+        #{javascript_include_tag "#{root_url}javascripts/jquery/jquery.bgiframe.min.js"}
+        #{javascript_include_tag "#{root_url}javascripts/jquery/jquery.autocomplete.min.js"}
+        #{javascript_include_tag "#{root_url}javascripts/sayt.js"}
+        #{stylesheet_link_tag "#{root_url}stylesheets/compiled/sayt.css"}
+      </head>
+      <body>
+        #{form_tag search_url, :method => :get}
+          #{hidden_field_tag :affiliate, @affiliate.name}
+          #{hidden_field_tag :locale, locale}
+          #{label_tag :query, "Enter Search Term(s):"}
+          #{text_field_tag :query, nil, :autocomplete => 'off', :class => 'usagov-search-autocomplete'}
+          #{submit_tag 'Search'}
+        </form>
+      </body>
+    </html>

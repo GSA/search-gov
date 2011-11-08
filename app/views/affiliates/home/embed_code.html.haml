@@ -2,21 +2,13 @@
 
 %h1 Get Code
 
-%p== The following is the HTML code for your search box form. Copy and paste this code into your page(s) where the search box should appear.
+%p== The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear.
 = find_and_preserve do
-  #embed_code_english.span-15
+  #embed_code_english.span-24
     %h2 Code for English-language sites
-    = render 'embed_code_text_area'
+    = render :partial => 'embed_code_text_area', :locals => { :locale => 'en' }
 
-.span-8.last
-  .content-box.cross-promotion
-    %p
-      Do you want to have
-      = link_to "Type-ahead Search", affiliate_type_ahead_search_index_path(@affiliate)
-      box on your home page and/or in your banner? Read our detailed instructions,
-      = link_to "How To Implement Type-ahead Search", "http://searchsupport.usa.gov/entries/219044-how-to-implement-search-as-you-type-say", :target => '_blank'
-
-.span-14
-  %h2 Code for Spanish-language sites
-  %p Use the same code as shown above for English-language sites. Add one additional line to specify Spanish localization.
-  %code&= '<input type="hidden" value="es" name="locale" />'
+= find_and_preserve do
+  #embed_code_spanish.span-24
+    %h2 Code for Spanish-language sites
+    = render :partial => 'embed_code_text_area', :locals => { :locale => 'es' }

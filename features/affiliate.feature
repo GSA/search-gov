@@ -150,6 +150,10 @@ Feature: Affiliate clients
     Then I should see "Add a New Site" within "title"
     And I should see "Site successfully created"
     And I should see "Step 3. Get the code" in the site wizards header
+    And I should see "Code for English-language sites"
+    And I should see the code for English language sites
+    And I should see "Code for Spanish-language sites"
+    And I should see the code for Spanish language sites
     And I should see "View search results page"
     When I fill in "query" with "White House"
     And I press "Search"
@@ -745,12 +749,18 @@ Feature: Affiliate clients
 
   Scenario: Visiting the preview page
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
+      | display_name    | name           | contact_email | contact_name | is_sayt_enabled |
+      | aff site        | aff.gov        | aff@aff.gov   | John Bar     | true            |
+      | nosayt aff site | nosayt.aff.gov | aff@aff.gov   | John Bar     | false           |
+    And I am logged in with email "aff@aff.gov" and password "random_string"
+    When I go to the "nosayt aff site" affiliate page
+    And I follow "Preview"
+    Then affiliate SAYT suggestions for "aff.gov" should be disabled
+
     When I go to the "aff site" affiliate page
     And I follow "Preview"
     Then I should see "Preview" within "title"
+    And affiliate SAYT suggestions for "aff.gov" should be enabled
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Preview
     And I should see "Preview" within "h1"
     And I should see "Search on Live Site" button
@@ -931,13 +941,11 @@ Feature: Affiliate clients
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Get code"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Get Code
-    And I should see "The following is the HTML code for your search box form. Copy and paste this code into your page(s) where the search box should appear."
+    And I should see "The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear."
     And I should see "Code for English-language sites"
+    And I should see the code for English language sites
     And I should see "Code for Spanish-language sites"
-    And I should see "Do you want to have Type-ahead Search box on your home page and/or in your banner?"
-    And I should see "How To Implement Type-ahead Search"
-    When I follow "Type-ahead Search" within ".cross-promotion"
-    And I should see "Type-ahead Search" in the page header
+    And I should see the code for Spanish language sites
 
   Scenario: Navigating to an Affiliate page for a particular Affiliate
     Given the following Affiliates exist:
