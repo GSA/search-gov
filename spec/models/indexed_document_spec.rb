@@ -191,9 +191,12 @@ describe IndexedDocument do
   end
 
   describe "#index_pdf(file)" do
+    before do
+      @indexed_document = IndexedDocument.create!(@min_valid_attributes)
+    end
+    
     context "for a normal PDF file" do
       before do
-        @indexed_document = IndexedDocument.create!(@min_valid_attributes)
         file = open(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
         @indexed_document.index_pdf(file)
       end
@@ -221,6 +224,17 @@ describe IndexedDocument do
       it "should generate a title using the last part of the filename" do
         @indexed_document.id.should_not be_nil
         @indexed_document.title.should == "3-2-07-III H.pdf"
+      end
+    end
+    
+    context "for a PDF that, when parsed, has garbage characters in the description" do
+      before do
+        file = open(Rails.root.to_s + "/spec/fixtures/pdf/garbage_chars.pdf")
+        @indexed_document.index_pdf(file)
+      end
+      
+      it "should remove the garbage characters from the description" do
+        @indexed_document.description.should == "Global Positioning System Standard Positioning ServiceJ!a p i wWmm ! o1 ASSISTANT 6000SECRETARYDEFENSEOFPENTAGON 203316000 1993DEFENSE2 brx 1WASHINGTON DecemberDC 834LETTEROF PROMULGATIONSUBJECTGlobal Positioning System GPS Standard Positioning..."
       end
     end
   end
