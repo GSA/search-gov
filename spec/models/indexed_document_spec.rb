@@ -234,7 +234,7 @@ describe IndexedDocument do
       end
       
       it "should remove the garbage characters from the description" do
-        @indexed_document.description.should == "Global Positioning System Standard Positioning ServiceJ!a p i wWmm ! o1 ASSISTANT 6000SECRETARYDEFENSEOFPENTAGON 203316000 1993DEFENSE2 brx 1WASHINGTON DecemberDC 834LETTEROF PROMULGATIONSUBJECTGlobal Positioning System GPS Standard Positioning..."
+        @indexed_document.description.should == "Global Positioning System Standard Positioning Service J! a p i wWmm ! o 1 ASSISTANT 6000 SECRETARY DEFENSE OF PENTAGON 203316000 1993 DEFENSE 2 b rx 1 WASHINGTON December DC 8 3 4 LETTER OF PROMULGATION SUBJECT Global Positioning System GPS..."
       end
     end
   end
