@@ -1,6 +1,6 @@
 %ul
   %li
-    = site_information_form.label :display_name, "Site name"
+    = site_information_form.label :display_name, "Site name (Required)"
     = site_information_form.text_field :display_name, :class => 'txt'
   - unless @affiliate.new_record?
     %li
@@ -33,7 +33,7 @@
         You do not need to include http:// as we recognize URLs with or without it.
         You also do not need to include subdirectories that are covered by higher level subdirectories. For instance,
         if you have yoursite.gov/pages as a domain, you don't need to also specify yoursite.gov/pages/es and yoursite.gov/pages/en,
-        as they are both covered by the less specific entry. 
+        as they are both covered by the less specific entry.
       %p
         Entire domain: List yoursite.gov (without www) to search your entire site, including all subdomains.
       %p
@@ -42,6 +42,18 @@
       %p
         Individual pages: List www.yoursite.gov/yourpage.html to include only specific pages.
       %p
+  %li
+    = site_information_form.label :facebook_username, "Facebook username"
+    = site_information_form.text_field :facebook_username, :class => 'txt'
+  %li
+    = site_information_form.label :flickr_url, "Flickr URL"
+    = site_information_form.text_field :flickr_url, :class => 'txt'
+  %li
+    = site_information_form.label :twitter_username, "Twitter username"
+    = site_information_form.text_field :twitter_username, :class => 'txt'
+  %li
+    = site_information_form.label :youtube_username, "YouTube username"
+    = site_information_form.text_field :youtube_username, :class => 'txt'
 
     %br
   - if @affiliate.new_record?

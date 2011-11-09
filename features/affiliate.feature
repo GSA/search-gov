@@ -144,8 +144,12 @@ Feature: Affiliate clients
     And I should see "Step 2. Set up site" in the site wizards header
     And I should see "Site information"
     And I fill in the following:
-      | Site name                 | My awesome agency                |
-      | Domains to search         | www.awesomeagency.gov            |
+      | Site name         | My awesome agency                    |
+      | Domains to search | www.awesomeagency.gov                |
+      | Facebook username | FBAgency                             |
+      | Flickr URL        | http://www.flickr.com/groups/usagov/ |
+      | Twitter username  | TwitterAgency                        |
+      | YouTube username  | YouTubeAgency                        |
     And I press "Next"
     Then I should see "Add a New Site" within "title"
     And I should see "Site successfully created"
@@ -158,6 +162,14 @@ Feature: Affiliate clients
     When I fill in "query" with "White House"
     And I press "Search"
     Then I should see "White House - My awesome agency Search Results"
+    When I go to the "My awesome agency" affiliate page
+    And I follow "Site information"
+    Then the "Site name" field should contain "My awesome agency"
+    And the "Domains to search" field should contain "www.awesomeagency.gov"
+    And the "Facebook username" field should contain "FBAgency"
+    And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
+    And the "Twitter username" field should contain "TwitterAgency"
+    And the "YouTube username" field should contain "YouTubeAgency"
 
   Scenario: Affiliate user who filled out contact information should not have to fill out the form again
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
@@ -327,9 +339,13 @@ Feature: Affiliate clients
     And I follow "aff site"
     And I follow "Site information"
     And I fill in the following:
-      | Site name                  | new aff site        |
-      | Site URL                   | www.aff.gov         |
-      | Domains to search          | data.gov            |
+      | Site name         | new aff site                         |
+      | Site URL          | www.aff.gov                          |
+      | Domains to search | data.gov                             |
+      | Facebook username | FBAgency                             |
+      | Flickr URL        | http://www.flickr.com/groups/usagov/ |
+      | Twitter username  | TwitterAgency                        |
+      | YouTube username  | YouTubeAgency                        |
     And I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > new aff site
     And I should see "Staged changes to your site successfully"
@@ -345,7 +361,11 @@ Feature: Affiliate clients
 
     When I go to the "new aff site" affiliate page
     And I follow "Site information"
-    Then the "HTTP parameter site name" field should contain "aff.gov"
+    Then the "Site name" field should contain "new aff site"
+    And the "Facebook username" field should contain "FBAgency"
+    And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
+    And the "Twitter username" field should contain "TwitterAgency"
+    And the "YouTube username" field should contain "YouTubeAgency"
 
     When I go to the "new aff site" affiliate page
     And I press "Push Changes"
@@ -377,9 +397,13 @@ Feature: Affiliate clients
     And I follow "aff site"
     And I follow "Site information"
     And I fill in the following:
-      | Site name                  | new aff site        |
-      | Site URL                   | www.aff.gov         |
-      | Domains to search          | data.gov            |
+      | Site name         | new aff site                         |
+      | Site URL          | www.aff.gov                          |
+      | Domains to search | data.gov                             |
+      | Facebook username | FBAgency                             |
+      | Flickr URL        | http://www.flickr.com/groups/usagov/ |
+      | Twitter username  | TwitterAgency                        |
+      | YouTube username  | YouTubeAgency                        |
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > new aff site
     And I should see "Updated changes to your live site successfully"
@@ -389,6 +413,13 @@ Feature: Affiliate clients
 
     When I follow "View Current"
     Then I should see 10 search results
+
+    When I go to the "new aff site" affiliate page
+    And I follow "Site information"
+    Then the "Facebook username" field should contain "FBAgency"
+    And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
+    And the "Twitter username" field should contain "TwitterAgency"
+    And the "YouTube username" field should contain "YouTubeAgency"
 
    Scenario: Editing site information with problem and make it live
     Given the following Affiliates exist:

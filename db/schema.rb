@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111107164015) do
+ActiveRecord::Schema.define(:version => 20111109175611) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -54,6 +54,10 @@ ActiveRecord::Schema.define(:version => 20111107164015) do
     t.string   "staged_external_css_url"
     t.string   "favicon_url"
     t.string   "staged_favicon_url"
+    t.string   "facebook_username"
+    t.string   "flickr_url"
+    t.string   "twitter_username"
+    t.string   "youtube_username"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
