@@ -41,5 +41,4 @@ class ImageSearchesController < ApplicationController
       :results_per_page => 30
     }
   end
-
 end

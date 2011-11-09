@@ -1,6 +1,8 @@
 require 'spec/spec_helper'
 
 describe ImageSearch do
+  fixtures :affiliates
+  
   describe "#run" do
     before do
       @search = ImageSearch.new({:query => 'shuttle'})
@@ -49,6 +51,20 @@ describe ImageSearch do
       @result["Thumbnail"]["Width"].should == 146
       @result["Thumbnail"]["Height"].should == 160
       @result["Thumbnail"]["ContentType"].should == "image/jpeg"
+    end
+    
+    context "when doing an affiliate Image Search" do
+      context "when the affiliate specified has no results for the given query" do
+        before do
+          @affiliate = affiliates(:non_existant_affiliate)
+          @search = ImageSearch.new(:query => 'obama', :affiliate => @affiliate)
+        end
+        
+        it "should not attempt to backfill the results from locally-indexed documents" do
+          IndexedDocument.should_not_receive(:search_for)
+          @search.run
+        end
+      end
     end
   end
 
