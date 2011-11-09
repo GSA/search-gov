@@ -3,7 +3,7 @@
     - result = hit.instance
     %div{ :class => "#{featured_collection_css_classes(result)}" }
       %h2
-        = link_to_unless result.title_url.blank?, highlight_hit(hit, :title).html_safe, result.title_url
+        = featured_collection_link_with_click_tracking(highlight_hit(hit, :title).html_safe, result.title_url, @affiliate, search.query, 0, @search_vertical)
         %span.recommended-by
           = t :by_site
           = @affiliate ? @affiliate.display_name : t(:usa_gov)
@@ -13,4 +13,4 @@
           - if result.image_attribution.present?
             %span #{t :image}
             = link_to_unless result.image_attribution_url.blank?, content_tag(:span, result.image_attribution, :class => 'attribution'), result.image_attribution_url
-      = render :partial => 'shared/featured_collection_links', :locals => { :hit => hit, :result => result } unless result.featured_collection_links.blank?
+      = render :partial => 'shared/featured_collection_links', :locals => { :search => search, :hit => hit, :result => result } unless result.featured_collection_links.blank?
