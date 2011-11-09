@@ -155,9 +155,15 @@ module SearchHelper
       ""
     end
   end
-
+  
+  def excluded_highlight_terms(affiliate, query)
+    excluded = affiliate.present? ? affiliate.domains_as_array : []
+    excluded.reject!{|domain| query =~ /#{domain}/ } if query.present?
+    excluded
+  end
+  
   def display_bing_result_title(result, search, affiliate, position, vertical)
-    raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title'])), search, affiliate, position, 'BWEB', vertical)
+    raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title']), excluded_highlight_terms(affiliate, search.query)), search, affiliate, position, 'BWEB', vertical)
   end
 
   def display_medline_result_title(search, affiliate, position)
@@ -227,8 +233,8 @@ module SearchHelper
     "return clk('#{h(escape_javascript(query))}', '#{media_url}', #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')"
   end
 
-  def display_result_description (result)
-    translate_bing_highlights(h(result['content'])).html_safe
+  def display_result_description(result, query = nil, affiliate = nil)
+    translate_bing_highlights(h(result['content']), excluded_highlight_terms(affiliate, query)).html_safe
   end
 
   def display_medline_results_description(summary, query)
@@ -239,7 +245,12 @@ module SearchHelper
     truncate_html_prose_on_words(highlight_hit(hit, :description), 255).sub(/^([^A-Z<])/,'...\1').html_safe
   end
 
-  def translate_bing_highlights(body)
+  def translate_bing_highlights(body, excluded_terms = [])
+    excluded_terms.each do |term|
+      body.scan(/#{term}/i).each do |term_variant|
+        body.gsub!(/\xEE\x80\x80#{term_variant}\xEE\x80\x81/, term_variant)
+      end
+    end
     body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
   end
 

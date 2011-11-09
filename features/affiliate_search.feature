@@ -117,3 +117,18 @@ Feature: Affiliate Search
     And I press "Buscar"
     Then I should see "Resultados 1-10"
     And I should not see "Search this site"
+    
+  Scenario: Highlighting query terms
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | domains         |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov  |
+    When I am on bar.gov's search page
+    And I fill in "query" with "change has come"
+    And I press "Search"
+    Then I should see "WhiteHouse.gov"
+    And I should not see "WhiteHouse.gov" in bold font
+    
+    When I fill in "query" with "whitehouse.gov"
+    And I press "Search"
+    Then show me the page
+    Then I should see "WhiteHouse.gov" in bold font

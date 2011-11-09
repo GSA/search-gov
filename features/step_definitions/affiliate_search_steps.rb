@@ -14,3 +14,12 @@ Given /^feed "([^"]*)" has the following news items:$/ do |feed_name, table|
   end
   Sunspot.commit
 end
+
+Then /^I should not see "([^\"]*)" in bold font$/ do |text|
+  page.should_not have_selector("strong", :text => text)
+end
+
+Then /^I should see "([^\"]*)" in bold font$/ do |text|
+  page.should have_selector("strong", :text => text)
+end
+
