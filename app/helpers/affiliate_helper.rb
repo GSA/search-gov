@@ -36,4 +36,14 @@ module AffiliateHelper
     content << content_tag(:div, error_message_text.html_safe, :class => 'crawled-url-error-message', :id => dialog_id)
     content.html_safe
   end
+
+  def javascript_include_tag_with_full_path(*sources)
+    sources_with_full_path = sources.collect { |source| "#{URI.parse(root_url(:protocol => 'http')).merge("/javascripts/#{source}")}" }
+    javascript_include_tag sources_with_full_path
+  end
+
+  def stylesheet_link_tag_with_full_path(*sources)
+    sources_with_full_path = sources.collect { |source| "#{URI.parse(root_url(:protocol => 'http')).merge("/stylesheets/#{source}")}" }
+    stylesheet_link_tag sources_with_full_path
+  end
 end

@@ -2,12 +2,9 @@
   :escaped
     <html>
       <head>
-        #{javascript_tag %{var usagov_sayt_url = "#{sayt_url(:aid => @affiliate.id)}&";}}
-        #{javascript_include_tag "#{root_url}javascripts/jquery/jquery.min.js"}
-        #{javascript_include_tag "#{root_url}javascripts/jquery/jquery.bgiframe.min.js"}
-        #{javascript_include_tag "#{root_url}javascripts/jquery/jquery.autocomplete.min.js"}
-        #{javascript_include_tag "#{root_url}javascripts/sayt.js"}
-        #{stylesheet_link_tag "#{root_url}stylesheets/compiled/sayt.css"}
+        #{javascript_tag %{var usagov_sayt_url = "#{sayt_url(:aid => @affiliate.id, :protocol => 'http')}&";}}
+        #{javascript_include_tag_with_full_path 'jquery/jquery.min.js', 'jquery/jquery.bgiframe.min.js', 'jquery/jquery.autocomplete.min.js', 'sayt.js'}
+        #{stylesheet_link_tag_with_full_path 'compiled/sayt.css'}
       </head>
       <body>
         #{form_tag search_url, :method => :get}
