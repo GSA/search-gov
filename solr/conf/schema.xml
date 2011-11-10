@@ -7,6 +7,7 @@
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
         <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
         <filter class="solr.SynonymFilterFactory" synonyms="syn.txt" ignoreCase="true" expand="false"/>
         <filter class="solr.EnglishPorterFilterFactory" protected="protwords.txt"/>

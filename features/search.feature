@@ -263,3 +263,19 @@ Feature: Search
     And I should see a link to "Solicite beneficios de incapacidad" with url for "http://www.ssa.gov/espanol/soliciteporincapacidad/" on the popular pages list
     And I should not see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
     And I should not see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
+    
+  Scenario: Searching for a Spanish word without diacritics
+    Given the following Boosted Content entries exist:
+      | title              | url                                                            | description                               |
+      | Día de los Muertos | http://www.latino.si.edu/education/LVMDayoftheDeadFestival.htm | The Smithsonian Latino Center presents... |
+    And I am on the homepage
+    And I fill in "query" with "dia"
+    And I press "Search"
+    Then I should see "Día de los Muertos"
+    And I should see "The Smithsonian Latino Center presents"
+    
+    When I am on the homepage
+    And I fill in "query" with "Día"
+    And I press "Search"
+    Then I should see "Día de los Muertos"
+    And I should see "The Smithsonian Latino Center presents"
