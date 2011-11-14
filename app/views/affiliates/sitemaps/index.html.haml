@@ -29,7 +29,7 @@
             - @sitemaps.each do |sitemap|
               %tr.row-item
                 %td
-                  = sitemap.url.truncate(35, :omission => '...' )
+                  = link_to sitemap.url.truncate(35, :omission => '...' ), sitemap.url, :title => sitemap.url
                 %td.actions
                   = button_to("Delete", [@affiliate, sitemap], :method => :delete, :confirm => "Are you sure you want to delete this sitemap?")
           - else
