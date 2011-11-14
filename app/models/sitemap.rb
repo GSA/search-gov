@@ -21,7 +21,10 @@ class Sitemap < ActiveRecord::Base
     sitemap_doc = Nokogiri::XML(file)
     sitemap_doc.xpath("//xmlns:url").each do |url|
       IndexedDocument.create(:url => url.xpath("xmlns:loc").inner_text, :affiliate => self.affiliate)
-    end
+    end if sitemap_doc.root.name == "urlset"
+    sitemap_doc.xpath("//xmlns:sitemap").each do |sitemap|
+      Sitemap.create(:url => sitemap.xpath("xmlns:loc").inner_text, :affiliate => self.affiliate)
+    end if sitemap_doc.root.name == "sitemapindex"
   end
   
   private
@@ -29,7 +32,7 @@ class Sitemap < ActiveRecord::Base
   def is_valid_sitemap?
     begin
       sitemap_doc = Nokogiri::XML(Kernel.open(url))
-      errors.add(:url, "The Sitemap URL specified does not appear to be a valid Sitemap.") unless sitemap_doc.root.name == "urlset"
+      errors.add(:url, "The Sitemap URL specified does not appear to be a valid Sitemap.") unless sitemap_doc.root.name == "urlset" or sitemap_doc.root.name == "sitemapindex"
     rescue Exception => e
       errors.add(:url, "The Sitemap URL specified does not appear to be a valid Sitemap.  Additional information: " + e.message)
     end

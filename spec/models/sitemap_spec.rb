@@ -72,7 +72,7 @@ describe Sitemap do
       end
     end
     
-    context "when the URL is valid" do
+    context "when the URL points to a valid sitemap" do
       before do
         @sitemap_io = open(Rails.root.to_s + '/spec/fixtures/xml/sitemap.xml')
         @sitemap.stub!(:open).and_return @sitemap_io
@@ -94,28 +94,44 @@ describe Sitemap do
     before do
       @sitemap = Sitemap.new(@valid_attributes)
       @sitemap.stub!(:is_valid_sitemap?).and_return true
-      @file = open(Rails.root.to_s + '/spec/fixtures/xml/sitemap.xml')
     end
     
-    context "when the sitemap has never been seen before" do
+    context "when the sitemap is a valid sitemap" do
       before do
-        @sitemap.parse(@file)
-      end
-
-      it "should create IndexedDocuments for the affiliate for each entry in the sitemap" do
-        @sitemap.affiliate.indexed_documents.size.should == 1
-        @sitemap.affiliate.indexed_documents.first.url.should == "http://www.example.gov/"
-      end
-    end
-    
-    context "when the sitemap has been parsed before" do
-      before do
-        IndexedDocument.create!(:url => "http://www.example.gov/", :affiliate => affiliates(:basic_affiliate))
-        @sitemap.parse(@file)
+        @file = open(Rails.root.to_s + '/spec/fixtures/xml/sitemap.xml')
       end
       
-      it "should ignore urls that are already known" do
-        @sitemap.affiliate.indexed_documents.size.should == 1
+      context "when the sitemap has never been seen before" do
+        before do
+          @sitemap.parse(@file)
+        end
+
+        it "should create IndexedDocuments for the affiliate for each entry in the sitemap" do
+          @sitemap.affiliate.indexed_documents.size.should == 1
+          @sitemap.affiliate.indexed_documents.first.url.should == "http://www.example.gov/"
+        end
+      end
+    
+      context "when the sitemap has been parsed before" do
+        before do
+          IndexedDocument.create!(:url => "http://www.example.gov/", :affiliate => affiliates(:basic_affiliate))
+          @sitemap.parse(@file)
+        end
+      
+        it "should ignore urls that are already known" do
+          @sitemap.affiliate.indexed_documents.size.should == 1
+        end
+      end
+    end
+    
+    context "when the sitemap is a valid sitemap index" do
+      before do
+        @file = open(Rails.root.to_s + '/spec/fixtures/xml/sitemapindex.xml')
+      end
+      
+      it "should create sitemaps for each sitemap listed in the index" do
+        Sitemap.should_receive(:create).exactly(3).times
+        @sitemap.parse(@file)
       end
     end
   end
