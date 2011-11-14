@@ -7,7 +7,7 @@
         #{stylesheet_link_tag_with_full_path 'compiled/sayt.css'}
       </head>
       <body>
-        #{form_tag search_url, :method => :get}
+        #{form_tag search_url, :method => :get, :id => 'search_form' }
           #{hidden_field_tag :affiliate, @affiliate.name}
           #{hidden_field_tag :locale, locale}
           #{label_tag :query, "Enter Search Term(s):"}
