@@ -42,6 +42,7 @@ UsasearchRails3::Application.routes.draw do
         post :upload
         post :preferences
         get :demo
+        delete :destroy_all
       end
     end
     resources :analytics, :controller => "affiliates/analytics", :only => [:index] do

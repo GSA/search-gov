@@ -55,4 +55,9 @@ class Affiliates::SaytController < Affiliates::AffiliatesController
     @affiliate = Affiliate.find_by_id(params[:affiliate_id])
     render :layout => 'affiliate_sayt'
   end
+
+  def destroy_all
+    @affiliate.sayt_suggestions.destroy_all
+    redirect_to affiliate_type_ahead_search_index_path(@affiliate), :flash => { :success => 'All type-ahead search suggestions successfully deleted.' }
+  end
 end

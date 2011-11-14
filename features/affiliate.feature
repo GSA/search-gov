@@ -1041,6 +1041,23 @@ Feature: Affiliate clients
     And I should see "Deleted phrase: banana"
     And I should not see "banana" within "#sayt-suggestions"
 
+  Scenario: Deleting all SAYT suggestions
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | is_sayt_enabled |
+      | agency       | aff.gov | aff@bar.gov   | John Bar     | true            |
+    And the following SAYT Suggestions exist for aff.gov:
+      | phrase     |
+      | education  |
+      | healthcare |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Type-ahead search"
+    And I should see 2 type-ahead search suggestions
+    When I press "Delete all"
+    Then I should see "All type-ahead search suggestions successfully deleted."
+    And I should see "Site agency has no type-ahead search suggestions"
+    And I should not see any type-ahead search suggestion
+
   Scenario: Adding a misspelled SAYT Suggestion to an affiliate
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | is_sayt_enabled |

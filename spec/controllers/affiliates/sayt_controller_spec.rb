@@ -203,4 +203,48 @@ describe Affiliates::SaytController do
       it { should set_the_flash }
     end
   end
+
+  describe "#delete_all" do
+    context "when affiliate manager is not logged in" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+
+      before do
+        delete :destroy_all, :affiliate_id => affiliate.id
+      end
+
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in as an affiliate manager who doesn't belong to the affiliate being requested" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:another_affiliate) { affiliates(:another_affiliate) }
+
+      before do
+        UserSession.create(users(:affiliate_manager))
+        delete :destroy_all, :affiliate_id => another_affiliate.id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who belongs to the affiliate being requested" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+      let(:sayt_suggestions) { mock('SAYT suggestions') }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_receive(:sayt_suggestions).and_return(sayt_suggestions)
+        sayt_suggestions.should_receive(:destroy_all)
+
+        delete :destroy_all, :affiliate_id => affiliate.id
+      end
+
+      it { should set_the_flash }
+      it { should redirect_to(affiliate_type_ahead_search_index_path(affiliate)) }
+    end
+  end
 end

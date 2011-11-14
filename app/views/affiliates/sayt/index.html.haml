@@ -56,12 +56,20 @@
             Type-ahead suggestion
           %th
             Actions
-        - @sayt_suggestions.each do |sayt_suggestion|
-          %tr{:class => cycle('even', 'odd')}
-            %td.sayt_suggestion
-              = sayt_suggestion.phrase
-            %td.sayt_actions
-              = button_to "Delete", affiliate_type_ahead_search_path(@affiliate, sayt_suggestion), :title => "Remove", :confirm => "You are about to remove this phrase. Are you sure?", :method => :delete
+        - if @sayt_suggestions.blank?
+          %tr
+            %td{ :colspan => 2 } Site #{@affiliate.display_name} has no type-ahead search suggestions
+        - else
+          - @sayt_suggestions.each do |sayt_suggestion|
+            %tr{:class => cycle('even', 'odd')}
+              %td.sayt_suggestion
+                = sayt_suggestion.phrase
+              %td.sayt_actions
+                = button_to "Delete", affiliate_type_ahead_search_path(@affiliate, sayt_suggestion), :title => "Remove", :confirm => "You are about to remove this type-ahead suggestion. Are you sure?", :method => :delete
+        - if @sayt_suggestions.count > 1
+          %tr#delete_all
+            %th{ :colspan => 2 }
+              = button_to "Delete all", destroy_all_affiliate_type_ahead_search_index_path(@affiliate), :confirm => "You are about to delete all of your type-ahead suggestions. Are you sure?", :method => :delete
       %div{:style => "text-align: center; margin-bottom: 10px;"}
         = will_paginate @sayt_suggestions
 
@@ -70,8 +78,3 @@
 
 .span-8.last
   .content-box.image= image_tag "side_notes/sayt.png"
-  .content-box.cross-promotion
-    %p
-      Do you want to have type-ahead search suggestions in the search box on your home page and/or in your banner?
-    %p
-      Read our detailed instructions: #{link_to 'How To Implement Type-ahead Search', 'http://searchsupport.usa.gov/entries/219044-how-to-implement-search-as-you-type-sayt'}
