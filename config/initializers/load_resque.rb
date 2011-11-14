@@ -1,6 +1,6 @@
-require 'resque/failure/hoptoad'
+require 'resque/failure/airbrake'
 
-HoptoadNotifier.configure do |config|
+Airbrake.configure do |config|
   config.api_key = '***REMOVED***'
   config.secure = true
 end

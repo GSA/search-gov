@@ -1,4 +1,4 @@
-HoptoadNotifier.configure do |config|
+Airbrake.configure do |config|
   config.api_key = '***REMOVED***'
   config.ignore << ActionController::MethodNotAllowed
   config.ignore << ActionController::UnknownHttpMethod

@@ -21,7 +21,7 @@ describe "Bitly Rake Tasks" do
       AgencyPopularUrl.should_receive(:compute_for_date).with(Date.yesterday).and_return true
       @rake[@task_name].invoke
     end
-    
+
     it "should compute popular urls for the date specified" do
       AgencyPopularUrl.should_receive(:compute_for_date).with(Date.parse('2011-07-01')).and_return true
       @rake[@task_name].invoke("2011-07-01")
@@ -32,8 +32,8 @@ describe "Bitly Rake Tasks" do
         AgencyPopularUrl.should_receive(:compute_for_date).and_raise
       end
 
-      it "should notify Hoptoad and raise an exception" do
-        HoptoadNotifier.should_receive(:notify)
+      it "should notify Airbrake and raise an exception" do
+        Airbrake.should_receive(:notify)
         lambda { @rake[@task_name].invoke }.should raise_exception
       end
     end
