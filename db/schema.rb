@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111109202025) do
+ActiveRecord::Schema.define(:version => 20111115140559) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -339,6 +339,7 @@ ActiveRecord::Schema.define(:version => 20111109202025) do
   end
 
   add_index "indexed_documents", ["affiliate_id"], :name => "index_indexed_documents_on_affiliate_id"
+  add_index "indexed_documents", ["url", "affiliate_id"], :name => "index_indexed_documents_on_url_and_affiliate_id", :unique => true
 
   create_table "logfile_blocked_class_cs", :force => true do |t|
     t.string   "classc",     :null => false
