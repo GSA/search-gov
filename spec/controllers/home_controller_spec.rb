@@ -26,6 +26,11 @@ describe HomeController do
     assigns[:active_top_searches].should == top_searches
   end
 
+  it "should assign widget_source" do
+    get :index
+    assigns[:widget_source].should == 'test.host'
+  end
+
   context "when valid locale is specified" do
     it "should assign a locale" do
       get :index, :locale=> "es"

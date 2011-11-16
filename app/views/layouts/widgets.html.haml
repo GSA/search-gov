@@ -2,6 +2,9 @@
 %html
   %head
     = tag(:meta, {:name => 'ROBOTS', :content => 'NOINDEX, NOFOLLOW'})
+    :javascript
+      var widgetSource = '#{@widget_source}';
+    != javascript_include_tag 'jquery/jquery.min.js', 'jquery/jquery.trendingsearches.js'
     = stylesheet_link_tag 'compiled/widgets.css'
   %body
     = yield

@@ -637,9 +637,9 @@ describe SearchHelper do
     end
 
     it "should return a search link if url does not exist" do
-      extra_url_params = { :linked => 1 }
-      helper.should_receive(:search_url).with(@top_search_without_url_params.merge(extra_url_params)).and_return('http://test.host/search')
-      helper.top_search_link_for(@top_search_without_url).should have_selector("a[href^='http://test.host/search']", :content => @top_search_without_url.query, :target => '_top')
+      url_params = { :linked => 1, :widget_source => 'usa.gov' }
+      helper.should_receive(:search_url).with(@top_search_without_url_params.merge(url_params)).and_return('url_with_query_and_source_params')
+      helper.top_search_link_for(@top_search_without_url, :widget_source => 'usa.gov').should have_selector("a[href^='url_with_query_and_source_params']", :content => @top_search_without_url.query, :target => '_top')
     end
   end
 

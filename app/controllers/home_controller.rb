@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @search = Search.new
     @title = "Home - "
     @active_top_searches = TopSearch.find_active_entries
+    @widget_source = request.host
   end
 
   def contact_form

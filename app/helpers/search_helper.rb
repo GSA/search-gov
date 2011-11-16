@@ -155,13 +155,13 @@ module SearchHelper
       ""
     end
   end
-  
+
   def excluded_highlight_terms(affiliate, query)
     excluded = affiliate.present? ? affiliate.domains_as_array : []
     excluded.reject!{|domain| query =~ /#{domain}/ } if query.present?
     excluded
   end
-  
+
   def display_bing_result_title(result, search, affiliate, position, vertical)
     raw tracked_click_link(h(result['unescapedUrl']), translate_bing_highlights(h(result['title']), excluded_highlight_terms(affiliate, search.query)), search, affiliate, position, 'BWEB', vertical)
   end
@@ -550,22 +550,22 @@ module SearchHelper
     link_to(t(:search_in), path, :id => 'search_in_link')
   end
 
-  def top_search_url_for(top_search)
+  def top_search_url_for(top_search, url_options = {})
     if top_search.url.blank?
       query_params = {
           :query => top_search.query,
           :linked => 1,
           :position => top_search.position
       }
-      url = search_url(query_params)
+      url = search_url(query_params.merge(url_options))
     else
       url = top_search.url
     end
     url
   end
 
-  def top_search_link_for(top_search)
-    link_to top_search.query, top_search_url_for(top_search), :target => '_top'
+  def top_search_link_for(top_search, url_options = {}, html_options = {})
+    link_to top_search.query, top_search_url_for(top_search, url_options), html_options.merge(:target => '_top')
   end
 
   def results_restriction_message_for(fedstates, search_path)

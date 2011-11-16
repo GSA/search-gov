@@ -2,4 +2,4 @@
   - @active_top_searches.each do |top_search|
     %trending-search
       %query= top_search.query
-      %url= top_search_url_for top_search
+      %url= top_search_url_for top_search, :widget_source => @widget_source

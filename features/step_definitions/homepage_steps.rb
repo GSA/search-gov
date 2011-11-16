@@ -9,3 +9,7 @@ end
 When /^I submit the search form$/ do
   click_button('Search')
 end
+
+Then /^I should (\d+) trending searches$/ do |count|
+  page.should have_selector(".trending-search-link", :count => count)
+end

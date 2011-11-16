@@ -7,6 +7,7 @@ describe "widgets/trending_searches.xml.haml" do
 
   before do
     assign(:active_top_searches, active_top_searches)
+    assign(:widget_source, 'agency')
   end
 
   it "should have trending_searches" do
@@ -14,7 +15,7 @@ describe "widgets/trending_searches.xml.haml" do
     rendered.should have_selector(:"trending-searches") do |trending_searches|
       trending_searches.should have_selector(:"trending-search") do |trending_search|
         trending_search.should have_selector(:query, :content => 'hurricane')
-        trending_search.should have_selector(:url, :content => 'http://test.host/search')
+        trending_search.should have_selector(:url, :content => 'http://test.host/search?linked=1&position=1&query=hurricane&widget_source=agency')
         trending_search.should have_selector(:query, :content => 'storm')
         trending_search.should have_selector(:url, :content => 'http://www.agency.gov/storm')
       end
