@@ -82,6 +82,8 @@ module NavigationHelpers
       admin_top_searches_path
     when /the affiliate on-demand urls page for "([^\"]*)"/
       affiliate_on_demand_urls_path(:locale => nil, :m => nil, :affiliate_id => Affiliate.find_by_name($1).id)
+    when /the affiliate crawled on-demand urls page for "([^\"]*)"/
+      crawled_affiliate_on_demand_urls_path(:locale => nil, :m => nil, :affiliate_id => Affiliate.find_by_name($1).id)
     when /the superfresh feed/
       main_superfresh_feed_path
     when /admin sayt suggestions upload/

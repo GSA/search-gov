@@ -1,5 +1,5 @@
 .crawled-urls
-  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Previously Crawled URLs"])
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), link_to('URLs', affiliate_on_demand_urls_path(@affiliate)), "Previously Crawled URLs"])
   %h1 Previously Crawled URLs
   .crawled-url-list
     %table
@@ -7,9 +7,10 @@
         %col{ :class => 'url' }
         %col{ :class => 'last-crawled-at' }
         %col{ :class => 'last-crawl-status' }
+        %col{ :class => 'actions' }
       %thead
         %tr
-          %th{ :colspan => 3 }
+          %th{ :colspan => 4 }
             - unless @crawled_urls.blank?
               %span= page_entries_info @crawled_urls, :entry_name => 'Previously crawled URL', :html => false
       = render :partial => 'crawled_urls', :locals => { :shorten_url_length => 30 }

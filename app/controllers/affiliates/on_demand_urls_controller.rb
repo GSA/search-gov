@@ -24,9 +24,9 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
 
   def destroy
     if @indexed_document = IndexedDocument.destroy(params[:id])
-      flash[:success] = "Removed #{@indexed_document.url} from list of uncrawled URLs."
+      flash[:success] = "Removed #{@indexed_document.url}."
     end
-    redirect_to affiliate_on_demand_urls_path(@affiliate)
+    redirect_to :back
   end
 
   def upload
@@ -51,5 +51,5 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
   def crawled
     @title = 'Previously Crawled URLs - '
     @crawled_urls = IndexedDocument.crawled_urls(@affiliate, params[:page])
-  end
+  end  
 end

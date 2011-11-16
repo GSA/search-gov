@@ -57,7 +57,7 @@
         %table
           %thead
             %tr
-              %th Uncrawled URLs (#{@uncrawled_urls.size})
+              %th Uncrawled URLs (#{@affiliate.uncrawled_urls_count})
             %tr
               %th.secondary-header URL
           %tbody
@@ -73,11 +73,12 @@
             %col{ :class => 'url' }
             %col{ :class => 'last-crawled-at' }
             %col{ :class => 'last-crawl-status' }
+            %col{ :class => 'actions' }
           %thead
             %tr
-              %th{:colspan => 3}
+              %th{:colspan => 4}
                 = link_to("View all", crawled_affiliate_on_demand_urls_path, :class => 'header-link') unless @crawled_urls.empty?
-                Previously Crawled URLs
+                Previously Crawled URLs (#{@affiliate.crawled_urls_count})
           = render :partial => 'crawled_urls', :locals => { :shorten_url_length => 20 }
 
   .col-2

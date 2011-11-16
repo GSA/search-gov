@@ -22,7 +22,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
 
     When I follow "View all"
     Then I should see the browser page titled "Previously Crawled URLs"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Previously Crawled URLs
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs > Previously Crawled URLs
     And I should see "Previously Crawled URLs" in the page header
     And I should see "aff.gov/crawled/40"
     When I follow "Next"
@@ -112,3 +112,25 @@ Feature: Affiliate On-Demand Url Indexing Interface
     When I press "Upload"
     Then I should be on the affiliate on-demand urls page for "aff.gov"
     And I should see "Invalid file format"
+    
+  Scenario: Deleting a previously crawled url
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following IndexedDocuments exist:
+      | url                   | affiliate | last_crawled_at |
+      | http://removeme2.mil   | aff.gov   | 2011-11-01      |
+      | http://removeme.mil  | aff.gov   | 2011-11-01      |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "URLs"
+    Then I should be on the affiliate on-demand urls page for "aff.gov"
+    When I press "Delete"
+    Then I should be on the affiliate on-demand urls page for "aff.gov"
+    And I should see "Removed http://removeme.mil"
+    When I follow "View all"
+    Then I should see "http://removeme2.mil"
+    When I press "Delete"
+    Then I should be on the affiliate crawled on-demand urls page for "aff.gov"
+    And I should see "Removed http://removeme2.mil"
+    
