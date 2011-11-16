@@ -137,6 +137,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   def update
     if params[:commit] == "Make Live"
       if @affiliate.update_attributes_for_current(params[:affiliate])
+        Emailer.affiliate_header_footer_change(@affiliate).deliver if @affiliate.has_changed_header_or_footer
         flash[:success]= "Updated changes to your live site successfully."
         redirect_to affiliate_path(@affiliate)
       else

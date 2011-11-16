@@ -568,6 +568,7 @@ Feature: Affiliate clients
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    |
     And I am logged in with email "aff@bar.gov" and password "random_string"
+    And no emails have been sent
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
@@ -582,6 +583,12 @@ Feature: Affiliate clients
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Updated changes to your live site successfully"
     And I should not see "View Staged"
+    When "aff@bar.gov" opens the email
+    And I should see "The header and/or footer for aff site have been updated" in the email body
+    And I should see "Old header" in the email body
+    And I should see "Old footer" in the email body
+    And I should see "New header" in the email body
+    And I should see "New footer" in the email body
 
     When I follow "View Current"
     Then I should see "aff site : gov"

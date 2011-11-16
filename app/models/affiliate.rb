@@ -76,6 +76,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def update_attributes_for_current(attributes)
+    attributes.merge!(:previous_header => self.header, :previous_footer => self.footer)
     %w{ domains header footer affiliate_template_id search_results_page_title favicon_url external_css_url }.each do |field|
       attributes[field.to_sym] = attributes["staged_#{field}".to_sym] if attributes.include?("staged_#{field}".to_sym)
     end
@@ -151,6 +152,10 @@ class Affiliate < ActiveRecord::Base
   def has_active_rss_feeds?
     active_rss_feeds.count > 0
   end
+  
+  def has_changed_header_or_footer
+    self.header != self.previous_header or self.footer != self.previous_footer
+  end
 
   class << self
     def human_attribute_name(attribute_key_name, options = {})
@@ -191,6 +196,5 @@ class Affiliate < ActiveRecord::Base
     self.staged_favicon_url = "http://#{self.staged_favicon_url}" unless self.staged_favicon_url.blank? or self.staged_favicon_url =~ %r{^http(s?)://}i
     self.external_css_url = "http://#{self.external_css_url}" unless self.external_css_url.blank? or self.external_css_url =~ %r{^http(s?)://}i
     self.staged_external_css_url = "http://#{self.staged_external_css_url}" unless self.staged_external_css_url.blank? or self.staged_external_css_url =~ %r{^http(s?)://}i
-  end
-
+  end  
 end

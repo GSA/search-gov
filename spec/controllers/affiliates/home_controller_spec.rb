@@ -202,17 +202,24 @@ describe Affiliates::HomeController do
         end
       end
 
-      context "when the affiliate update attributes successfully for 'Make Live' request" do
-        before do
+      context "when the affiliate updates attributes successfully for 'Make Live' request" do
+        it "should not send an email, set a flash[:success] message and redirect to affiliate specific page" do
+          Emailer.should_not_receive(:affiliate_header_footer_change)
           post :update_site_information, :id => @affiliate.id, :affiliate=> {:display_name => "new display name"}, :commit => "Make Live"
-        end
-
-        it "should set a flash[:success] message" do
           flash[:success].should_not be_blank
-        end
-
-        it "should redirect to affiliate specific page" do
           response.should redirect_to(affiliate_path(@affiliate))
+        end
+      end
+      
+      context "when the affiliate updates the header and footer" do
+        before do
+          @emailer = mock(Emailer)
+          @emailer.stub!(:deliver).and_return true
+        end
+        
+        it "should send an email to the affiliate's users notifying them of the update" do
+          Emailer.should_receive(:affiliate_header_footer_change).with(@affiliate).and_return @emailer
+          post :update_site_information, :id => @affiliate.id, :affiliate => { :header => 'New Header', :footer => 'New Footer' }, :commit => 'Make Live'
         end
       end
 

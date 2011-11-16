@@ -87,6 +87,13 @@ class Emailer < ActionMailer::Base
     attachments[File.basename(zip_filename)] = File.read(zip_filename)
     mail(:to => comma_list, :subject => @subject, :from => @from)
   end
+  
+  def affiliate_header_footer_change(affiliate)
+    recipients = affiliate.users.collect(&:email).join(', ') + ", developers@searchsi.com"
+    setup_email(recipients)
+    @subject += "The header and footer for #{affiliate.display_name} have been changed"
+    @affiliate = affiliate
+  end
 
   private
 

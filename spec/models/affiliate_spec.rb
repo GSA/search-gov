@@ -158,7 +158,14 @@ describe Affiliate do
                           :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
                           :staged_search_results_page_title => "updated - {query} - {sitename} Search Results"}
       end
-
+      
+      it "should store a copy of the previous version of the header and footer" do
+        original_header, original_footer = affiliate.header, affiliate.footer
+        affiliate.update_attributes_for_current(@update_params).should be_true
+        affiliate.previous_header.should == original_header
+        affiliate.previous_footer.should == original_footer
+      end
+      
       it "should set has_staged_content to false" do
         affiliate.has_staged_content.should be_false
         affiliate.update_attributes_for_current(@update_params).should be_true
