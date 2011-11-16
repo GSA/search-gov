@@ -6,11 +6,11 @@
     = render_robots_meta_tag
     = (javascript_include_tag "jquery/jquery.min.js").html_safe
     = stylesheet_link_tag 'compiled/advanced.css'
-    = stylesheet_link_tag "compiled/affiliates/#{@affiliate.affiliate_template.stylesheet}"
+    = render_affiliate_stylesheet @affiliate
     /[if lt IE 8]
       = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = stylesheet_link_tag "clearfix"
-    - if @affiliate.is_sayt_enabled
+    - if @affiliate.is_sayt_enabled?
       = stylesheet_link_tag 'jquery-ui/jquery-ui.custom.css'
       = stylesheet_link_tag 'compiled/sayt.css'
       = javascript_tag "var usagov_sayt_url = \"#{sayt_url(:aid => @affiliate.id)}&\";"
@@ -21,10 +21,11 @@
       = (javascript_include_tag "easyXDM/easyXDM.min.js").html_safe
       = (javascript_include_tag "jquery/jquery.targettop.js").html_safe
       = (javascript_include_tag "affiliates.embedded.js").html_safe
+    = render_affiliate_css_overrides @affiliate
     = stylesheet_link_tag "#{@affiliate.external_css_url}" unless @affiliate.external_css_url.blank?
 
     %title= @page_title
-  %body{ :class => "#{@affiliate.affiliate_template.stylesheet} #{I18n.locale}" }
+  %body{ :class => render_affiliate_body_class(@affiliate) }
     #container
       #header= @affiliate.header.html_safe if @affiliate and @affiliate.header and (@search_options.nil? or !@search_options[:embedded])
       #search.clearfix

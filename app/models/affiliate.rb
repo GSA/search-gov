@@ -23,9 +23,13 @@ class Affiliate < ActiveRecord::Base
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   before_validation :set_default_name, :on => :create
-  before_save :set_default_affiliate_template, :normalize_domains, :ensure_http_prefix
+  validate :validate_css_property_hash
+  before_create :set_uses_one_serp
+  before_save :set_default_affiliate_template, :normalize_domains, :ensure_http_prefix, :set_css_properties
   before_validation :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   scope :ordered, {:order => 'display_name ASC'}
+  attr_writer :css_property_hash, :staged_css_property_hash
+  attr_protected :uses_one_serp
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
@@ -35,6 +39,16 @@ class Affiliate < ActiveRecord::Base
     :display_name => "Site name",
     :name => "HTTP parameter site name",
     :staged_search_results_page_title => "Search results page title"
+  }
+
+  DEFAULT_CSS_PROPERTIES = {
+    :link_color => '#2200CC',
+    :visited_link_color => '#2200CC',
+    :hover_link_color => '#990000',
+    :description_text_color => '#000000',
+    :url_link_color => '#008000',
+    :visited_url_link_color => '#008000',
+    :hover_url_link_color => '#008000'
   }
 
   def name=(name)
@@ -77,7 +91,7 @@ class Affiliate < ActiveRecord::Base
 
   def update_attributes_for_current(attributes)
     attributes.merge!(:previous_header => self.header, :previous_footer => self.footer)
-    %w{ domains header footer affiliate_template_id search_results_page_title favicon_url external_css_url }.each do |field|
+    %w{ domains header footer affiliate_template_id search_results_page_title favicon_url external_css_url css_properties css_property_hash }.each do |field|
       attributes[field.to_sym] = attributes["staged_#{field}".to_sym] if attributes.include?("staged_#{field}".to_sym)
     end
     attributes[:has_staged_content] = false
@@ -106,7 +120,8 @@ class Affiliate < ActiveRecord::Base
       :staged_affiliate_template_id => self.staged_affiliate_template_id,
       :staged_search_results_page_title => self.staged_search_results_page_title,
       :staged_favicon_url => self.staged_favicon_url,
-      :staged_external_css_url => self.staged_external_css_url
+      :staged_external_css_url => self.staged_external_css_url,
+      :staged_css_properties => self.staged_css_properties
     }
   end
 
@@ -123,6 +138,7 @@ class Affiliate < ActiveRecord::Base
       :staged_search_results_page_title => self.search_results_page_title,
       :staged_favicon_url => self.favicon_url,
       :staged_external_css_url => self.external_css_url,
+      :staged_css_properties => self.css_properties,
       :has_staged_content => false
     })
   end
@@ -152,15 +168,15 @@ class Affiliate < ActiveRecord::Base
   def has_active_rss_feeds?
     active_rss_feeds.count > 0
   end
-  
+
   def has_changed_header_or_footer
     self.header != self.previous_header or self.footer != self.previous_footer
   end
-  
+
   def uncrawled_urls_count
     self.indexed_documents.count(:conditions => ['ISNULL(last_crawled_at)'])
   end
-  
+
   def crawled_urls_count
     self.indexed_documents.count(:conditions => ['NOT ISNULL(last_crawled_at)'])
   end
@@ -171,6 +187,14 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
+  def css_property_hash
+    @css_property_hash ||= (css_properties.blank? ? {} : JSON.parse(css_properties, :symbolize_keys => true))
+  end
+
+  def staged_css_property_hash
+    @staged_css_property_hash ||= (staged_css_properties.blank? ? {} : JSON.parse(staged_css_properties, :symbolize_keys => true))
+  end
+
   private
 
   def remove_boosted_contents_from_index
@@ -178,6 +202,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_default_affiliate_template
+    return if self.uses_one_serp?
     self.staged_affiliate_template_id = AffiliateTemplate.default_id if staged_affiliate_template_id.blank?
     self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?
   end
@@ -204,5 +229,30 @@ class Affiliate < ActiveRecord::Base
     self.staged_favicon_url = "http://#{self.staged_favicon_url}" unless self.staged_favicon_url.blank? or self.staged_favicon_url =~ %r{^http(s?)://}i
     self.external_css_url = "http://#{self.external_css_url}" unless self.external_css_url.blank? or self.external_css_url =~ %r{^http(s?)://}i
     self.staged_external_css_url = "http://#{self.staged_external_css_url}" unless self.staged_external_css_url.blank? or self.staged_external_css_url =~ %r{^http(s?)://}i
-  end  
+  end
+
+  def validate_css_property_hash
+    validate_color_in_css_property_hash @css_property_hash unless @css_property_hash.blank?
+    validate_color_in_css_property_hash @staged_css_property_hash unless @staged_css_property_hash.blank?
+  end
+
+  def validate_color_in_css_property_hash(hash)
+    unless hash.blank?
+      DEFAULT_CSS_PROPERTIES.keys.each do |key|
+        next unless key.to_s =~ /color$/
+        value = hash[key.to_s]
+        next if value.blank?
+        errors.add(:base, "#{key.to_s.humanize} should consist of a # character followed by 3 or 6 hexadecimal digits") unless value =~ /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+      end
+    end
+  end
+
+  def set_css_properties
+    self.css_properties = @css_property_hash.to_json unless @css_property_hash.blank?
+    self.staged_css_properties = @staged_css_property_hash.to_json unless @staged_css_property_hash.blank?
+  end
+
+  def set_uses_one_serp
+    self.uses_one_serp = true if self.uses_one_serp.nil?
+  end
 end

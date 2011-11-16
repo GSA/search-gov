@@ -110,11 +110,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @affiliate = Affiliate.new(params[:affiliate])
     @affiliate.users << @current_user
     if @affiliate.save
-      @affiliate.update_attributes(
-        :domains => @affiliate.staged_domains,
-        :affiliate_template_id => @affiliate.staged_affiliate_template_id,
-        :header => @affiliate.staged_header,
-        :footer => @affiliate.staged_footer)
+      @affiliate.push_staged_changes
       @current_step = :get_the_code
       @affiliate.users.each do |user|
         Emailer.new_affiliate_site(@affiliate, user).deliver

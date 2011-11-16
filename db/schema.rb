@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111116000953) do
+ActiveRecord::Schema.define(:version => 20111121160027) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -60,6 +60,9 @@ ActiveRecord::Schema.define(:version => 20111116000953) do
     t.string   "youtube_username"
     t.text     "previous_header"
     t.text     "previous_footer"
+    t.text     "css_properties"
+    t.text     "staged_css_properties"
+    t.boolean  "uses_one_serp"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

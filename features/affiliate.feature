@@ -171,6 +171,10 @@ Feature: Affiliate clients
     And the "Twitter username" field should contain "TwitterAgency"
     And the "YouTube username" field should contain "YouTubeAgency"
 
+    When I go to myawesomeagency's search page
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see the affiliate custom css
+
   Scenario: Affiliate user who filled out contact information should not have to fill out the form again
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
@@ -474,7 +478,34 @@ Feature: Affiliate clients
     And I should see "Staged header"
     And I should see "Staged footer"
 
-  Scenario: Visiting the look and feel page
+  Scenario: Visiting the look and feel page on a site with one serp
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    Then I should see "Look and Feel of the Search Results Page" within "title"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page
+    And I should see "Look and Feel of the Search Results Page" within ".main"
+    And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
+    And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
+    And the "Link color" field should contain "#2200CC"
+    And the "Visited link color" field should contain "#2200CC"
+    And the "Hover link color" field should contain "#990000"
+    And the "Description text color" field should contain "#000000"
+    And the "URL link color" field should contain "#008000"
+    And the "Visited URL link color" field should contain "#008000"
+    And the "Hover URL link color" field should contain "#008000"
+    And the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
+    And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
+    And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
+    And I should not see "Template"
+    And I should see "Cancel"
+    When I follow "Cancel"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+
+  Scenario: Visiting the look and feel page on a site with legacy template
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css |
@@ -490,14 +521,107 @@ Feature: Affiliate clients
     And the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
     And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
     And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
-    And I should see "Cancel"
+    And I should not see "Link color"
+    And I should not see "Visited link color"
     When I follow "Cancel"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
 
-  Scenario: Editing look and feel and saving it for preview
+  Scenario: Editing look and feel and saving it for preview on a site with one serp
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | link_color | visited_link_color | hover_link_color | description_text_color | url_link_color | visited_url_link_color | hover_url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | staged_link_color | staged_visited_link_color | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | #33ff33    | #0000ff            | #ff0000          | #CCCCCC                | #008000        | #800000                | #000080              | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | #888888           | #00ff00                   | true          |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Look and feel"
+    Then the "Link color" field should contain "#33ff33"
+    And the "Visited link color" field should contain "#0000ff"
+    And the "Hover link color" field should contain "#ff0000"
+    And the "Description text color" field should contain "#CCCCCC"
+    And the "URL link color" field should contain "#008000"
+    And the "Visited URL link color" field should contain "#800000"
+    And the "Hover URL link color" field should contain "#000080"
+    When I fill in the following:
+      | Search results page title                                       | {SiteName} : {Query}              |
+      | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
+      | Link color                                                      | #888888                           |
+      | Visited link color                                              | #0000f0                           |
+      | Hover link color                                                | #f00000                           |
+      | Description text color                                          | #DDDDDD                           |
+      | URL link color                                                  | #007000                           |
+      | Visited URL link color                                          | #700000                           |
+      | Hover URL link color                                            | #000070                           |
+      | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
+      | Enter HTML to customize the top of your search results page.    | New header                        |
+      | Enter HTML to customize the bottom of your search results page. | New footer                        |
+    And I press "Save for Preview"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Staged changes to your site successfully"
+
+    When I follow "View Current"
+    Then I should see "gov - aff site Search Results"
+    And I should see "Old header"
+    And I should see "Old footer"
+    And I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should see the page with affiliate stylesheet "one_serp"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+    And I should not see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should not see the page with affiliate stylesheet "default"
+    And I should not see the page with affiliate stylesheet "basic_gray"
+    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    Then I should see "aff site : gov"
+    And I should see "New header"
+    And I should see "New footer"
+    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should see the page with affiliate stylesheet "one_serp"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
+    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should not see the page with affiliate stylesheet "default"
+    And I should not see the page with affiliate stylesheet "basic_gray"
+    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    Then the "Link color" field should contain "#888888"
+    And the "Visited link color" field should contain "#0000f0"
+    And the "Hover link color" field should contain "#f00000"
+    And the "Description text color" field should contain "#DDDDDD"
+    And the "URL link color" field should contain "#007000"
+    And the "Visited URL link color" field should contain "#700000"
+    And the "Hover URL link color" field should contain "#000070"
+
+    When I go to the "aff site" affiliate page
+    And I press "Push Changes"
+    And I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see "aff site : gov"
+    And I should see "New header"
+    And I should see "New footer"
+    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should see the page with affiliate stylesheet "one_serp"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
+    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should not see the page with affiliate stylesheet "default"
+    And I should not see the page with affiliate stylesheet "basic_gray"
+    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    Then the "Link color" field should contain "#888888"
+    And the "Visited link color" field should contain "#0000f0"
+    And the "Hover link color" field should contain "#f00000"
+    And the "Description text color" field should contain "#DDDDDD"
+    And the "URL link color" field should contain "#007000"
+    And the "Visited URL link color" field should contain "#700000"
+    And the "Hover URL link color" field should contain "#000070"
+
+  Scenario: Editing look and feel and saving it for preview on a site with legacy template
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | staged_link_color | staged_visited_link_color | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | #888888           | #00ff00                   | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -552,21 +676,82 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel with problem and saving it for preview
     Given the following Affiliates exist:
-      | display_name     | name            | domains       | contact_email         | contact_name        |
-      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+      | display_name | name    | domains     | contact_email | contact_name | uses_one_serp |
+      | aff site     | aff.gov | example.org | aff@bar.gov   | John Bar     | true          |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     And I fill in the following:
-      | Search results page title                                         |     |
+      | Search results page title |                       |
+      | Link color                | invalid color         |
+      | Visited link color        | invalid visited color |
+      | Hover link color          | invalid hover color   |
     And I press "Save for Preview"
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see "Search results page title can't be blank"
+    And I should see "Link color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Visited link color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Hover link color should consist of a # character followed by 3 or 6 hexadecimal digits"
 
-  Scenario: Editing look and feel and make it live
+  Scenario: Editing look and feel and make it live on a site with one serp
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | link_color | visited_link_color | hover_link_color | description_text_color | url_link_color | visited_url_link_color | hover_url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | staged_link_color | staged_visited_link_color | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | #33ff33    | #0000ff            | #ff0000          | #CCCCCC                | #008000        | #800000                | #000080              | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | #888888           | #00ff00                   | true          |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And no emails have been sent
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Look and feel"
+    And I fill in the following:
+      | Search results page title                                       | {SiteName} : {Query}              |
+      | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
+      | Link color                                                      | #888888                           |
+      | Visited link color                                              | #0000f0                           |
+      | Hover link color                                                | #f00000                           |
+      | Description text color                                          | #DDDDDD                           |
+      | URL link color                                                  | #007000                           |
+      | Visited URL link color                                          | #700000                           |
+      | Hover URL link color                                            | #000070                           |
+      | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
+      | Enter HTML to customize the top of your search results page.    | New header                        |
+      | Enter HTML to customize the bottom of your search results page. | New footer                        |
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+    And I should not see "View Staged"
+    When "aff@bar.gov" opens the email
+    And I should see "The header and/or footer for aff site have been updated" in the email body
+    And I should see "Old header" in the email body
+    And I should see "Old footer" in the email body
+    And I should see "New header" in the email body
+    And I should see "New footer" in the email body
+
+    When I follow "View Current"
+    Then I should see "aff site : gov"
+    And I should see "New header"
+    And I should see "New footer"
+    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should see the page with affiliate stylesheet "one_serp"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
+    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should not see the page with affiliate stylesheet "default"
+    And I should not see the page with affiliate stylesheet "basic_gray"
+    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    Then the "Link color" field should contain "#888888"
+    And the "Visited link color" field should contain "#0000f0"
+    And the "Hover link color" field should contain "#f00000"
+    And the "Description text color" field should contain "#DDDDDD"
+    And the "URL link color" field should contain "#007000"
+    And the "Visited URL link color" field should contain "#700000"
+    And the "Hover URL link color" field should contain "#000070"
+
+   Scenario: Editing look and feel and make it live on a site with legacy template
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | staged_link_color | staged_visited_link_color | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | #888888           | #00ff00                   | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And no emails have been sent
     When I go to the affiliate admin page
@@ -603,16 +788,30 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel with problem and make it live
     Given the following Affiliates exist:
-      | display_name     | name            | domains       | contact_email         | contact_name        |
-      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+      | display_name     | name            | domains       | contact_email         | contact_name        | uses_one_serp |
+      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            | true          |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     And I fill in the following:
-      | Search results page title                                         |     |
+      | Search results page title |                       |
+      | Link color                | invalid color         |
+      | Visited link color        | invalid visited color |
+      | Hover link color          | invalid hover color   |
+      | Description text color    | invalid color         |
+      | URL link color            | invalid color         |
+      | Visited URL link color    | invalid visited color |
+      | Hover URL link color      | invalid hover color   |
     And I press "Make Live"
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see "Search results page title can't be blank"
+    And I should see "Link color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Visited link color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Hover link color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Description text color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Url link color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Visited url link color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Hover url link color should consist of a # character followed by 3 or 6 hexadecimal digits"
 
   Scenario: Editing look and feel where staged/live domains are not sync and has_staged_content is false
     Given the following Affiliates exist:
@@ -665,6 +864,42 @@ Feature: Affiliate clients
     And I should see "Sorry, no results found"
     And I should see "Staged header"
     And I should see "Staged footer"
+
+  Scenario: Resetting style on a site with one serp
+     Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | link_color | visited_link_color | hover_link_color | description_text_color | url_link_color | visited_url_link_color | hover_url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | staged_link_color | staged_visited_link_color | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | #33ff33    | #0000ff            | #ff0000          | #CCCCCC                | #007000        | #800000                | #000080              | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | #888888           | #00ff00                   | true          |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Look and feel"
+    Then the "Link color" field should contain "#33ff33"
+    And the "Visited link color" field should contain "#0000ff"
+    And the "Hover link color" field should contain "#ff0000"
+    And the "Description text color" field should contain "#CCCCCC"
+    And the "URL link color" field should contain "#007000"
+    And the "Visited URL link color" field should contain "#800000"
+    And the "Hover URL link color" field should contain "#000080"
+    When I fill in the following:
+      | Link color             |  |
+      | Visited link color     |  |
+      | Hover link color       |  |
+      | Description text color |  |
+      | URL link color         |  |
+      | Visited URL link color |  |
+      | Hover URL link color   |  |
+    And I press "Save for Preview"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Staged changes to your site successfully"
+
+    When I follow "Look and feel"
+    Then the "Link color" field should contain "#2200CC"
+    And the "Visited link color" field should contain "#2200CC"
+    And the "Hover link color" field should contain "#990000"
+    And the "Description text color" field should contain "#000000"
+    And the "URL link color" field should contain "#008000"
+    And the "Visited URL link color" field should contain "#008000"
+    And the "Hover URL link color" field should contain "#008000"
 
   Scenario: Enabling/Disabling popular urls
     Given the following Affiliates exist:
@@ -1265,9 +1500,9 @@ Feature: Affiliate clients
 
   Scenario: Visiting the affiliate search page with popular urls
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email     | contact_name        | affiliate_template_name |
-      | aff site         | aff.gov          | aff@bar.gov       | John Bar            | Default                 |
-      | another site     | another.gov      | aff@another.gov   | Jane Doe            | Default                 |
+      | display_name | name      | contact_email | contact_name | affiliate_template_name |
+      | aff site     | aff.gov   | aff@bar.gov   | John Bar     | Default                 |
+      | another site | other.gov | aff@other.gov | Jane Doe     | Default                 |
     And the following popular URLs exist:
       | affiliate_name | title                                                                                                 | url                       | rank |
       | aff.gov        | Space, NASA Information & News, Outer Space Flight Videos & Pictures - Astronomy, Solar System Images | http://awesome.gov/blog/7 | 7    |

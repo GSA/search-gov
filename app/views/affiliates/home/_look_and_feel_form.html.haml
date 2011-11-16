@@ -2,13 +2,48 @@
   %li
     = look_and_feel_form.label :staged_search_results_page_title, "Search results page title"
     = look_and_feel_form.text_field :staged_search_results_page_title, :class => "txt"
-  %li
-    = look_and_feel_form.label :template
-    .affiliate-template-wrapper
-      = (render_choose_site_templates @affiliate).html_safe
+  - unless @affiliate.uses_one_serp?
+    %li
+      = look_and_feel_form.label :template
+      .affiliate-template-wrapper
+        = (render_choose_site_templates @affiliate).html_safe
   %li
     = look_and_feel_form.label :staged_favicon_url, "Favicon URL"
     = look_and_feel_form.text_field :staged_favicon_url, :class => "txt", :maxlength => 255
+
+  - if @affiliate.uses_one_serp?
+    %li.css-overrides
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][link_color]', 'Link color'
+        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :link_color
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][visited_link_color]', 'Visited link color'
+        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :visited_link_color
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][hover_link_color]', 'Hover link color'
+        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :hover_link_color
+    %li.css-overrides
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][description_text_color]', 'Description text color'
+        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :description_text_color
+    %li.css-overrides
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][url_link_color]', 'URL link color'
+        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :url_link_color
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][visited_url_link_color]', 'Visited URL link color'
+        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :visited_url_link_color
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][hover_url_link_color]', 'Hover URL link color'
+        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :hover_url_link_color
+    %li
+      = link_to "+ Custom color tips", "#custom_style_tips", :id => "custom_style_tips", :class => "sliding_trigger"
+      %div#custom_style_tips_content.sliding_content
+        %p
+          Selecting color: Click on the color picker text field and click anywhere inside the color picker window.
+          When you are done, click anywhere outside the color picker window.
+        %p
+          Resetting to default value: Leave the color picker text field blank to reset it back to the default value.
   %li
     = look_and_feel_form.label :staged_external_css_url, "External CSS URL"
     = look_and_feel_form.text_field :staged_external_css_url, :class => "txt", :maxlength => 255

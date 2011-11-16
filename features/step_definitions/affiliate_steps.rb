@@ -20,20 +20,30 @@ Given /^the following Affiliates exist:$/ do |table|
 
     default_affiliate_template = AffiliateTemplate.find_by_stylesheet("default")
 
-    affiliate_template = hash["affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["affiliate_template_name"])
-    staged_affiliate_template = hash["staged_affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["staged_affiliate_template_name"])
+    if hash[:uses_one_serp]
+      affiliate_template = nil
+      staged_affiliate_template = nil
+    else
+      affiliate_template = hash["affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["affiliate_template_name"])
+      staged_affiliate_template = hash["staged_affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["staged_affiliate_template_name"])
+    end
     domains = hash[:domains].split(',').join("\n") unless hash[:domains].blank?
     staged_domains = hash[:staged_domains].split(',').join("\n") unless hash[:staged_domains].blank?
 
-    affiliate = Affiliate.create(
+    css_properties = ActiveSupport::OrderedHash.new
+    Affiliate::DEFAULT_CSS_PROPERTIES.keys.each do |css_property|
+      css_properties[css_property] = hash[css_property] unless hash[css_property].blank?
+    end
+
+    affiliate = Affiliate.new(
       :display_name => hash["display_name"],
       :name => hash["name"],
       :domains => domains,
-      :affiliate_template_id => affiliate_template.id,
+      :affiliate_template_id => affiliate_template.nil? ? nil : affiliate_template.id,
       :header => hash["header"],
       :footer => hash["footer"],
       :staged_domains => staged_domains,
-      :staged_affiliate_template_id => staged_affiliate_template.id,
+      :staged_affiliate_template_id => staged_affiliate_template.nil? ? nil : staged_affiliate_template.id,
       :staged_header => hash["staged_header"],
       :staged_footer => hash["staged_footer"],
       :is_sayt_enabled => hash["is_sayt_enabled"],
@@ -45,8 +55,11 @@ Given /^the following Affiliates exist:$/ do |table|
       :external_css_url => hash["external_css_url"],
       :staged_external_css_url => hash["staged_external_css_url"],
       :favicon_url => hash["favicon_url"],
-      :staged_favicon_url => hash["staged_favicon_url"]
+      :staged_favicon_url => hash["staged_favicon_url"],
+      :css_properties => css_properties.to_json
     )
+    affiliate.uses_one_serp = hash[:uses_one_serp] || false
+    affiliate.save!
     affiliate.users << user
   end
 end
@@ -227,4 +240,8 @@ end
 Then /^I should see the code for (English|Spanish) language sites$/ do |locale|
   locales = { 'English' => 'en', 'Spanish' => 'es' }
   page.should have_selector("#embed_code_textarea_#{locales[locale]}")
+end
+
+Then /^I should see the affiliate custom css$/ do
+  page.should have_selector("head style")
 end

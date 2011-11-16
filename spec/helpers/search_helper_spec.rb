@@ -748,4 +748,23 @@ describe SearchHelper do
       specify { helper.featured_collection_link_with_click_tracking('link title', url, nil, 'query term', 1, :web).should == 'link with click tracking' }
     end
   end
+
+  describe "#render_affiliate_css_overrides" do
+    context "when the affiliate uses one serp" do
+      let(:affiliate) { mock_model(Affiliate, :uses_one_serp? => true) }
+      let(:css_property_hash) { mock('css property hash') }
+      before do
+        affiliate.should_receive(:css_property_hash).and_return(css_property_hash)
+        helper.should_receive(:render).with(hash_including(:partial => 'searches/affiliate_css_overrides',
+                                                           :locals => { :css_property_hash => css_property_hash })).and_return('affiliate_css_overrides')
+      end
+
+      specify { helper.render_affiliate_css_overrides(affiliate).should == 'affiliate_css_overrides' }
+    end
+
+    context "when the affiliate does not use one serp" do
+      let(:affiliate) { mock_model(Affiliate, :uses_one_serp? => false) }
+      specify { helper.render_affiliate_css_overrides(affiliate).should be_blank }
+    end
+  end
 end

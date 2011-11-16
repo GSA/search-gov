@@ -46,4 +46,23 @@ module AffiliateHelper
     sources_with_full_path = sources.collect { |source| "#{URI.parse(root_url(:protocol => 'http')).merge("/stylesheets/#{source}")}" }
     stylesheet_link_tag sources_with_full_path
   end
+
+  def render_affiliate_css_property_value(css_property_hash, property)
+    css_property_hash[property].blank? ? Affiliate::DEFAULT_CSS_PROPERTIES[property] : css_property_hash[property]
+  end
+
+  def render_affiliate_stylesheet(affiliate)
+    stylesheet_source = affiliate.uses_one_serp? ? "compiled/affiliates/one_serp" : "compiled/affiliates/#{@affiliate.affiliate_template.stylesheet}"
+    stylesheet_link_tag stylesheet_source
+  end
+
+  def render_affiliate_body_class(affiliate)
+    affiliate.uses_one_serp? ? "default #{I18n.locale}" : "#{@affiliate.affiliate_template.stylesheet} #{I18n.locale}"
+  end
+
+  def render_staged_color_text_field_tag(css_property_hash, field_name_symbol)
+    text_field_tag "affiliate[staged_css_property_hash][#{field_name_symbol}]",
+                   render_affiliate_css_property_value(css_property_hash, field_name_symbol),
+                   :class => 'color { hash:true, adjust:false }'
+  end
 end

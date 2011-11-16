@@ -627,6 +627,10 @@ module SearchHelper
     favicon_url.blank? ? '/favicon.ico' : favicon_url
   end
 
+  def render_affiliate_css_overrides(affiliate)
+    render(:partial => 'searches/affiliate_css_overrides', :locals => { :css_property_hash => affiliate.css_property_hash }) if affiliate.uses_one_serp?
+  end
+
   private
 
   def shorten_url (url, length=42)

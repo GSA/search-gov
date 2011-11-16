@@ -210,13 +210,13 @@ describe Affiliates::HomeController do
           response.should redirect_to(affiliate_path(@affiliate))
         end
       end
-      
+
       context "when the affiliate updates the header and footer" do
         before do
           @emailer = mock(Emailer)
           @emailer.stub!(:deliver).and_return true
         end
-        
+
         it "should send an email to the affiliate's users notifying them of the update" do
           Emailer.should_receive(:affiliate_header_footer_change).with(@affiliate).and_return @emailer
           post :update_site_information, :id => @affiliate.id, :affiliate => { :header => 'New Header', :footer => 'New Footer' }, :commit => 'Make Live'
@@ -528,6 +528,11 @@ describe Affiliates::HomeController do
         before do
           @emailer = mock(Emailer)
           @emailer.stub!(:deliver).and_return true
+        end
+
+        it "should push staged changes to current" do
+          post :create, :affiliate => {:display_name => 'new_affiliate', :staged_css_property_hash => { 'link_color' => '#ffffff', 'visited_link_color' => '#888888' } }
+          JSON.parse(assigns[:affiliate].css_properties).should == { 'link_color' => '#ffffff', 'visited_link_color' => '#888888' }
         end
 
         it "should assign @current_step to :get_code" do
