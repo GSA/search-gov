@@ -248,25 +248,16 @@ describe IndexedDocument do
       @already_crawled_url = IndexedDocument.create!(:url => 'http://already.crawled.mil', :affiliate => @affiliate, :last_crawled_at => Time.now)
     end
 
-    context "when looking up uncrawled URLs" do
-      it "should limit the number of URLs returned if specified" do
-        IndexedDocument.should_receive(:find_all_by_last_crawled_at_and_affiliate_id).with(nil, @affiliate.id, {:limit => 500, :order => 'created_at asc'}).and_return []
-        IndexedDocument.uncrawled_urls(@affiliate, 500)
-      end
+    it "should return the first page of all crawled urls" do
+      uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate)
+      uncrawled_urls.size.should == 2
+      uncrawled_urls.include?(@first_uncrawled_url).should be_true
+      uncrawled_urls.include?(@last_uncrawled_url).should be_true
+    end
 
-      it "should not limit the number of URLs returned if the value is not specified" do
-        IndexedDocument.should_receive(:find_all_by_last_crawled_at_and_affiliate_id).with(nil, @affiliate.id, {:order => 'created_at asc'}).and_return []
-        IndexedDocument.uncrawled_urls(@affiliate)
-      end
-
-      it "should return all the uncrawled urls (i.e. where crawled_at == nil) for an affiliate, ordered by created time ascending" do
-        uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate)
-        uncrawled_urls.size.should == 2
-        uncrawled_urls.first.should == @first_uncrawled_url
-        uncrawled_urls.last.should == @last_uncrawled_url
-        uncrawled_urls.include?(@already_crawled_url).should be_false
-        uncrawled_urls.include?(@other_affiliate_uncrawled_url).should be_false
-      end
+    it "should paginate the results if the page is passed in" do
+      uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, 2)
+      uncrawled_urls.size.should == 0
     end
   end
 

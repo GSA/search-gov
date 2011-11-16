@@ -7,7 +7,7 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
   def index
     @title = "URLs - "
     @indexed_document = IndexedDocument.new
-    @uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, nil)
+    @uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, 1, 5)
     @crawled_urls = IndexedDocument.crawled_urls(@affiliate, 1, 5)
   end
 
@@ -51,5 +51,10 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
   def crawled
     @title = 'Previously Crawled URLs - '
     @crawled_urls = IndexedDocument.crawled_urls(@affiliate, params[:page])
-  end  
+  end
+  
+  def uncrawled
+    @title = 'Uncrawled URLs - '
+    @uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, params[:page])
+  end
 end

@@ -35,6 +35,7 @@ UsasearchRails3::Application.routes.draw do
       collection do
         post :upload
         get :crawled
+        get :uncrawled
       end
     end
     resources :type_ahead_search, :controller => "affiliates/sayt", :as => "type_ahead_search" do

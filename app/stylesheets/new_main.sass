@@ -1321,7 +1321,7 @@ h3.api-item
       margin: 0.5em 0 0
       padding: 0 0 0 1em
 
-.featured-collection-list, .boosted-content-list, .rss-feed-list, .excluded-url-list, .sitemap-list, .crawled-url-list
+.featured-collection-list, .boosted-content-list, .rss-feed-list, .excluded-url-list, .sitemap-list, .crawled-url-list, .uncrawled-url-list
   clear: both
   table
     border: 1px solid #BDBDBD
@@ -1397,7 +1397,7 @@ h3.api-item
 .boosted-content-list
   clear: both
 
-.crawled-url-list
+.crawled-url-list, .uncrawled-url-list
   tr.column-header
     background-color: #D3D3D3
   thead th
@@ -1432,10 +1432,11 @@ h3.api-item
     a
       word-wrap: break-word
       width: auto
-  .crawled-url-list
+  .crawled-url-list, .uncrawled-url-list
     thead tr th
       padding: 0 5px
     @extend .crawled-url-list
+    @extend .uncrawled-url-list
 
 .add-featured-collection, .edit-featured-collection, .add-boosted-content, .edit-boosted-content, .add-rss-feed, .edit-rss-feed, .add-excluded-url, .add-sitemap
   @include border-radius

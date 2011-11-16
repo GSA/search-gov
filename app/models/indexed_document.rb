@@ -79,10 +79,8 @@ class IndexedDocument < ActiveRecord::Base
       end
     end
 
-    def uncrawled_urls(affiliate, number_of_urls = nil)
-      sql_options = {:order => 'created_at asc'}
-      sql_options.merge!(:limit => number_of_urls) if number_of_urls
-      find_all_by_last_crawled_at_and_affiliate_id(nil, affiliate.id, sql_options)
+    def uncrawled_urls(affiliate, page = 1, per_page = 30)
+      paginate(:conditions => ['affiliate_id = ? AND ISNULL(last_crawled_at)', affiliate.id], :page => page, :order => 'last_crawled_at DESC', :per_page => per_page)
     end
 
     def crawled_urls(affiliate, page = 1, per_page = 30)

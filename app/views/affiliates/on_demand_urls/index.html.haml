@@ -53,21 +53,18 @@
     .wrap-content.status
       %a{:name => "status"}
       %h3 Status
-      .wrap-table
+      .uncrawled-url-list
         %table
+          %colgroup
+            %col{ :class => 'url' }
+            %col{ :class => 'actions' }
           %thead
             %tr
-              %th Uncrawled URLs (#{@affiliate.uncrawled_urls_count})
-            %tr
-              %th.secondary-header URL
-          %tbody
-            - @uncrawled_urls.each do |uncrawled_url|
-              %tr{:class => cycle('even', 'odd')}
-                %td.uncrawled-url
-                  = link_to "Remove URL", affiliate_on_demand_url_path(@affiliate, uncrawled_url), :title => "Remove URL", :confirm => "You are about to remove this URL. Are you sure?", :method => :delete, :class => 'remove-url-button'
-                  .remove-url-wrapper
-                    = link_to uncrawled_url.url, uncrawled_url.url, :class => 'remove-url'
-      .crawled-url-list
+              %th{:colspan => 2} 
+                = link_to("View all", uncrawled_affiliate_on_demand_urls_path, :class => 'header-link') unless @uncrawled_urls.empty?
+                Uncrawled URLs (#{@affiliate.uncrawled_urls_count})
+          = render :partial => 'uncrawled_urls', :locals => { :shorten_url_length => 20 }
+      .crawled-url-list{:style => 'margin-top: 10px;'}
         %table
           %colgroup
             %col{ :class => 'url' }

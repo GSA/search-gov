@@ -59,13 +59,19 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And the following IndexedDocuments exist:
       | url                   | affiliate |
       | http://removeme.mil   | aff.gov   |
+      | http://removeme2.mil   | aff.gov  |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs"
     Then I should be on the affiliate on-demand urls page for "aff.gov"
-    When I follow "Remove URL"
+    When I press "Delete"
     Then I should be on the affiliate on-demand urls page for "aff.gov"
     And I should see "Removed http://removeme.mil"
+    When I follow "View all"
+    Then I should see "http://removeme2.mil"
+    When I press "Delete"
+    Then I should be on the affiliate uncrawled on-demand urls page for "aff.gov"
+    And I should see "Removed http://removeme2.mil"    
 
   Scenario: Submitting a bad URL for on-demand indexing
     Given the following Affiliates exist:
