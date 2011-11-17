@@ -576,7 +576,7 @@ Feature: Affiliate clients
       | Search results page title                                       | {SiteName} : {Query}              |
       | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
       | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
-      | Enter HTML to customize the top of your search results page.    | New header                        |
+      | Enter HTML to customize the top of your search results page.    | <b>New header</b>                 |
       | Enter HTML to customize the bottom of your search results page. | New footer                        |
     And I choose "Basic Gray"
     And I press "Make Live"
@@ -587,7 +587,7 @@ Feature: Affiliate clients
     And I should see "The header and/or footer for aff site have been updated" in the email body
     And I should see "Old header" in the email body
     And I should see "Old footer" in the email body
-    And I should see "New header" in the email body
+    And I should see "<b>New header</b>" in the email body
     And I should see "New footer" in the email body
 
     When I follow "View Current"
