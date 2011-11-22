@@ -143,7 +143,7 @@ Feature: Affiliate clients
     Then I should see "Add a New Site" within "title"
     And I should see "Step 2. Set up site" in the site wizards header
     And I should see "Site information"
-    And I fill in the following:
+    When I fill in the following:
       | Site name         | My awesome agency                    |
       | Domains to search | www.awesomeagency.gov                |
       | Facebook username | FBAgency                             |

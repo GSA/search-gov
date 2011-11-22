@@ -54,10 +54,3 @@
   %li
     = site_information_form.label :youtube_username, "YouTube username"
     = site_information_form.text_field :youtube_username, :class => 'txt'
-
-    %br
-  - if @affiliate.new_record?
-    %li
-      %h2.sub-title Choose template
-      .affiliate-template-wrapper
-        = (render_choose_site_templates @affiliate).html_safe
