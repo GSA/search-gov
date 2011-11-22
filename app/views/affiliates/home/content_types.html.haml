@@ -1,0 +1,13 @@
+.content-types
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Content Types"])
+  .column-1
+    %h1 Primary Content Types
+    %ul{:style => 'list-style-type: none;'}
+      = form_tag update_content_types_affiliate_path
+      %li
+        = check_box_tag 'everything', '1', true, :disabled => true
+        = label_tag 'everything', 'Everything'
+      %li
+        = check_box_tag 'images', '1', @affiliate.is_image_search_enabled
+        = label_tag 'images', 'Images'
+      = submit_tag 'Update'     

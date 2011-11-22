@@ -28,6 +28,8 @@ module NavigationHelpers
       search_path(:affiliate => $1, :locale => 'es')
     when /^(.*)'s embedded search page$/
       search_path(:affiliate => $1, :embedded => "1")
+    when /^(.*)'s image search page$/
+      image_search_path(:affiliate => $1)
     when /the analytics groups and trends page/
       analytics_groups_trends_path
     when /the analytics query search results page/

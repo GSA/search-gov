@@ -1,8 +1,8 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :except=> [:index, :edit_site_information, :edit_look_and_feel, :how_it_works, :demo, :best_bets]
-  before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel, :preview, :best_bets]
-  before_filter :require_approved_user, :except => [:index, :how_it_works, :demo, :home, :update_contact_information]
-  before_filter :setup_affiliate, :only=> [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :preview, :push_content_for, :cancel_staged_changes_for, :destroy, :best_bets]
+  before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel, :preview, :best_bets, :content_types]
+  before_filter :require_approved_user, :except => [:index, :how_it_works, :demo, :home, :update_contact_information, :update_content_types]
+  before_filter :setup_affiliate, :only=> [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :preview, :push_content_for, :cancel_staged_changes_for, :destroy, :best_bets, :content_types, :update_content_types]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel]
 
   AFFILIATE_ADS = [
@@ -224,6 +224,15 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @title = "Best Bets - "
     @featured_collections = @affiliate.featured_collections.recent
     @boosted_contents = @affiliate.boosted_contents.recent
+  end
+  
+  def content_types
+    @title = "Content Types - "
+  end
+  
+  def update_content_types
+    @affiliate.update_attributes(:is_image_search_enabled => params["images"] == "1" ? true : false)
+    redirect_to content_types_affiliate_path(@affiliate)
   end
 
   protected

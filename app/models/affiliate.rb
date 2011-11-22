@@ -168,7 +168,11 @@ class Affiliate < ActiveRecord::Base
   def has_active_rss_feeds?
     active_rss_feeds.count > 0
   end
-
+  
+  def is_image_search_enabled?
+    self.is_image_search_enabled
+  end
+  
   def has_changed_header_or_footer
     self.header != self.previous_header or self.footer != self.previous_footer
   end

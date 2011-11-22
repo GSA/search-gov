@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111121160027) do
+ActiveRecord::Schema.define(:version => 20111121201602) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20111121160027) do
     t.string   "youtube_username"
     t.text     "previous_header"
     t.text     "previous_footer"
+    t.boolean  "is_image_search_enabled",                        :default => true
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"

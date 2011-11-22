@@ -4,18 +4,23 @@
 - search_params.merge!(:tbs => params[:tbs]) if params[:tbs]
 %ul.rss-feeds
   %li
-    = link_to_if(rss_feed, "Everything", params[:tbs] ? news_search_path(search_params.remove(:channel)) : search_path(search_params.remove(:channel))) do |everything|
+    = link_to_if(@search.instance_of?(Search) == false, "Everything", params[:tbs] ? news_search_path(search_params.remove(:channel)) : search_path(search_params.remove(:channel))) do |everything|
       = content_tag :span, everything
+  - if @affiliate.is_image_search_enabled?
+    %li
+      = link_to_if(@search.instance_of?(ImageSearch) == false, "Images", image_search_path(search_params.remove(:channel, :tbs))) do |images|
+        = content_tag :span, images
   - @affiliate.active_rss_feeds.each do |feed|
     %li{ :class => (feed == @affiliate.active_rss_feeds.last ? 'last' : nil) }
       = link_to_unless((rss_feed && rss_feed.id == feed.id), feed.name, news_search_path(search_params.merge(:channel => feed.id))) do |channel_name|
         = content_tag :span, channel_name
 
-%ul.time-filters
-  %li
-    = link_to_if(params[:tbs], "All Time", rss_feed ? news_search_path(search_params.remove(:tbs)) : search_path(search_params.remove(:tbs))) do |everything|
-      = content_tag :span, everything
-  - NewsItem::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
-    %li{ :class => (extent == :year ? 'last' : nil) }
-      = link_to_unless((params[:tbs] == tbs), "Last #{extent}", news_search_path(search_params.merge(:tbs => tbs))) do |last_time|
-        = content_tag :span, last_time
+- unless @search.instance_of?(ImageSearch)
+  %ul.time-filters
+    %li
+      = link_to_if(params[:tbs], "All Time", rss_feed ? news_search_path(search_params.remove(:tbs)) : search_path(search_params.remove(:tbs))) do |everything|
+        = content_tag :span, everything
+    - NewsItem::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
+      %li{ :class => (extent == :year ? 'last' : nil) }
+        = link_to_unless((params[:tbs] == tbs), "Last #{extent}", news_search_path(search_params.merge(:tbs => tbs))) do |last_time|
+          = content_tag :span, last_time

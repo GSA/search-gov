@@ -35,6 +35,7 @@ Feature: Affiliate Search
     And I fill in "query" with "item"
     And I press "Search"
     Then I should see "Everything"
+    And I should see "Images"
     And I should see "Press"
     And I should see "Photo Gallery"
     And I should not see "Hide Me"
@@ -130,5 +131,4 @@ Feature: Affiliate Search
     
     When I fill in "query" with "whitehouse.gov"
     And I press "Search"
-    Then show me the page
     Then I should see "WhiteHouse.gov" in bold font
