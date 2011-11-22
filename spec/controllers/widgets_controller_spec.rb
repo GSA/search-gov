@@ -6,13 +6,6 @@ describe WidgetsController do
     TopSearch.should_receive(:find_active_entries).and_return(active_top_searches)
   end
 
-  describe "#top_searches" do
-    it "should assign the top searches to the top 5 positions" do
-      get :top_searches
-      assigns[:active_top_searches].should == active_top_searches
-    end
-  end
-
   describe "#trending_searches" do
     context "when format=html" do
       before do

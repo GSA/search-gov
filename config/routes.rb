@@ -155,7 +155,6 @@ UsasearchRails3::Application.routes.draw do
   get '/' => 'home#index', :as => :home_page
   match '/contact_form' => 'home#contact_form', :as => :contact_form
   get '/searches/auto_complete_for_search_query' => 'searches#auto_complete_for_search_query', :as => 'auto_complete_for_search_query'
-  get '/widgets/top_searches' => 'widgets#top_searches', :as => :top_searches_widget
   get '/widgets/trending_searches' => 'widgets#trending_searches', :as => :trending_searches_widget
   resources :pages
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
