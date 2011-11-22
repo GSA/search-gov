@@ -13,6 +13,15 @@ Feature: Mobile Search
     And I should see a link to "Text/SMS Services" with url for "http://search.usa.gov/usa/sms"
     And I should see a link to "Español" with url for "http://m.gobiernousa.gov"
     And I should see a link to "USA.gov Full Site" with url for "http://www.usa.gov/?mobile-opt-out=true"
+    
+  Scenario: Visiting the home page with a tablet (e.g. iPad) device
+    Given I am using a tablet device
+    And I am on the homepage
+    Then I should not see "ROBOTS" meta tag
+    And I should not see "Visit Our Blog"
+    And I should not see "Text/SMS Services"
+    And I should not see "Español"
+    And I should not see "USA.gov Full Site"
 
   Scenario: Visiting the Spanish home page with a mobile device
     Given I am on the Spanish homepage
@@ -57,6 +66,15 @@ Feature: Mobile Search
     And I should see 3 search results
     When I follow "USASearch Home"
     Then I should be on the homepage
+    
+  Scenario: A search on the home page from a tablet
+    Given I am using a tablet device
+    And I am on the homepage
+    When I fill in "query" with "social security"
+    And I submit the search form
+    Then I should be on the search page
+    Then show me the page
+    And I should not see "Classic | Mobile"
 
   Scenario: Visiting the Spanish mobile SERP
     Given I am on the Spanish homepage
