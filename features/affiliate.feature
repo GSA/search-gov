@@ -748,7 +748,7 @@ Feature: Affiliate clients
     And the "Visited URL link color" field should contain "#700000"
     And the "Hover URL link color" field should contain "#000070"
 
-   Scenario: Editing look and feel and make it live on a site with legacy template
+   Scenario: Editing look and feel and make it live on a site with legacy template and existing header/footer
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | staged_link_color | staged_visited_link_color | uses_one_serp |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | #888888           | #00ff00                   | false         |
@@ -774,6 +774,41 @@ Feature: Affiliate clients
     And I should see "Old footer" in the email body
     And I should see "<b>New header</b>" in the email body
     And I should see "New footer" in the email body
+
+    When I follow "View Current"
+    Then I should see "aff site : gov"
+    And I should see "New header"
+    And I should see "New footer"
+    And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
+    And I should see the page with affiliate stylesheet "basic_gray"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
+    And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
+    And I should not see the page with affiliate stylesheet "default"
+    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+
+    Scenario: Editing look and feel and make it live on a site with legacy template without existing header/footer
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | staged_domains | staged_header | staged_footer | staged_link_color | staged_visited_link_color | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | oldagency.gov  | Old header    | Old footer    | #888888           | #00ff00                   | false         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And no emails have been sent
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Look and feel"
+    And I fill in the following:
+      | Search results page title                                       | {SiteName} : {Query}              |
+      | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
+      | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
+      | Enter HTML to customize the top of your search results page.    | New header                        |
+      | Enter HTML to customize the bottom of your search results page. | <b>New footer</b>                 |
+    And I choose "Basic Gray"
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+    And I should not see "View Staged"
+    When "aff@bar.gov" opens the email
+    And I should see "The header and/or footer for aff site have been updated" in the email body
+    And I should see "<b>New footer</b>" in the email body
 
     When I follow "View Current"
     Then I should see "aff site : gov"

@@ -3,10 +3,10 @@ The header and/or footer for <%= @affiliate.display_name %> have been updated.  
 If you need to revert your changes, copy the previous versions of the header or footer and visit the following page to manage your affiliate settings: <%= affiliate_url(@affiliate) %>
 
 Your previous header was:
-<%= @affiliate.previous_header.html_safe %>
+<%= @affiliate.previous_header.html_safe unless @affiliate.previous_header.blank? %>
 
 Your previous footer was:
-<%= @affiliate.previous_footer.html_safe %>
+<%= @affiliate.previous_footer.html_safe unless @affiliate.previous_footer.blank? %>
 
 Your current header is:
 <%= @affiliate.header.html_safe %>
