@@ -139,7 +139,7 @@ Feature: Homepage
     | 5         | Trending Search 5         |
     And I am on the homepage
     Then I should see "Search Trends"
-    And I should 4 trending searches
+    And I should see 4 trending searches
     And I should see "<i>Trending</i> Search 1"
     And I should see "Trending Search 2"
     And I should see "Trending Search 3"

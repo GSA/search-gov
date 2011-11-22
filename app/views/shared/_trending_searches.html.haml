@@ -4,5 +4,5 @@
   %ul
     - @active_top_searches.each_with_index do |top_search, index|
       %li{:class => index == 0 && "first"}
-        = top_search_link_for top_search, { :widget_source => @widget_source }, { :class => 'trending-search-link' }
+        = top_search_link_for top_search, { :widget_source => @widget_source }
 

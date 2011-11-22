@@ -10,6 +10,6 @@ When /^I submit the search form$/ do
   click_button('Search')
 end
 
-Then /^I should (\d+) trending searches$/ do |count|
-  page.should have_selector(".trending-search-link", :count => count)
+Then /^I should see (\d+) trending searches$/ do |count|
+  page.should have_selector("#home_searchtrend a", :count => count)
 end
