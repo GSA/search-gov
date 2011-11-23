@@ -165,7 +165,9 @@ describe "Report generation rake tasks" do
             zip_file.get_entry('top_monthly_queries_affiliates.txt')
             zip_file.get_entry('top_affiliates.txt')
             zip_file.get_entry('affiliate_queries_by_month.txt')
-            zip_file.get_entry('click_totals.txt')
+            zip_file.get_entry('usa_click_totals_en.txt')
+            zip_file.get_entry('usa_click_totals_es.txt')
+            zip_file.get_entry('affiliate_click_totals.txt')
             zip_file.get_entry('affiliate_report.txt')
             zip_file.get_entry('total_queries_by_profile.txt')
           end
