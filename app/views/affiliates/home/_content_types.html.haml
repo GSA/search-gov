@@ -1,0 +1,8 @@
+.custom_look_and_feel
+  %h2.sub-title
+    Content Types
+  = form_tag update_content_types_affiliate_path do 
+    = check_box_tag 'images', '1', @affiliate.is_image_search_enabled
+    = label_tag 'images', 'Show Image Search?'
+    %br
+    = submit_tag 'Update'

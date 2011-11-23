@@ -226,13 +226,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @boosted_contents = @affiliate.boosted_contents.recent
   end
   
-  def content_types
-    @title = "Content Types - "
-  end
-  
   def update_content_types
     @affiliate.update_attributes(:is_image_search_enabled => params["images"] == "1" ? true : false)
-    redirect_to content_types_affiliate_path(@affiliate)
+    redirect_to edit_look_and_feel_affiliate_path(@affiliate)
   end
 
   protected

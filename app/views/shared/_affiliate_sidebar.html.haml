@@ -21,9 +21,6 @@
           %h3
             %span Content Sources
           %ul
-            %li
-              = link_to "Content Types", content_types_affiliate_path(@affiliate), :class => 'new'
-              = image_tag 'new.png', :class => 'new'            
             %li= link_to "URLs", affiliate_on_demand_urls_path(@affiliate)
             %li
               = link_to "RSS", affiliate_rss_feeds_path(@affiliate), :class => 'new'

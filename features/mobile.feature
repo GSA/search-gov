@@ -73,7 +73,6 @@ Feature: Mobile Search
     When I fill in "query" with "social security"
     And I submit the search form
     Then I should be on the search page
-    Then show me the page
     And I should not see "Classic | Mobile"
 
   Scenario: Visiting the Spanish mobile SERP

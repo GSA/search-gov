@@ -25,9 +25,9 @@ Feature: Affiliate Search
       | bar site         | bar.gov          | aff@bar.gov           | John Bar            | 
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "bar.gov" selected
-    And I follow "Content Types"
-    Then the "Images" checkbox should be checked
-    And I uncheck "Images"
+    And I follow "Look and feel"
+    Then the "Show Image Search?" checkbox should be checked
+    And I uncheck "Show Image Search?"
     And I press "Update"
     
     When I am on bar.gov's search page
@@ -36,8 +36,8 @@ Feature: Affiliate Search
     Then I should not see "Images"
     
     When I go to the affiliate admin page with "bar.gov" selected
-    And I follow "Content Types"
-    And I check "Images"
+    And I follow "Look and feel"
+    And I check "Show Image Search?"
     And I press "Update"
     
     When I am on bar.gov's search page
