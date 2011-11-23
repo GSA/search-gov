@@ -169,9 +169,9 @@ action on your local machine, assuming you have installed the Redis server.
 
     % resque-web
 
-1. In your app, assuming you have at least one affiliate in your development database, make an affiliate broadcast:
+1. In your admin center, create a SAYT suggestion "delete me". Now create a SAYT filter on the word "delete":
 
-    <http://localhost:3000/admin/affiliate_broadcasts/new>
+    <http://localhost:3000/admin/>
 
 1. Look in the Resque web queue to see the job enqueued.
 
@@ -179,7 +179,7 @@ action on your local machine, assuming you have installed the Redis server.
 
     % QUEUE=* rake environment resque:work
 
-At this point, you should see the queue empty in Resque web, and some email-like output in your development log.
+At this point, you should see the queue empty in Resque web, and the suggestion "delete me" should be gone from the sayt_suggestions table.
 
 ### Queue names & priorities
 Each Resque job runs in the context of a named queue. We have queues named :low, :medium, :high, and :urgent. When creating a new

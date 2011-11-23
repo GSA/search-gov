@@ -9,7 +9,6 @@ Feature:  Administration
     And I should see "Search.USA.gov Admin Center"
     And I should see "Users" within ".main"
     And I should see "Affiliates"
-    And I should see "Affiliate Broadcast"
     And I should see "Calais Related Searches"
     And I should see "SAYT Filters"
     And I should see "SAYT Suggestions Bulk Upload"
@@ -76,34 +75,12 @@ Feature:  Administration
     Then I should be on the users admin page
     And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Users
 
-  Scenario: Visiting the Affiliate Broadcast admin page as an admin
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the admin home page
-    And I follow "Affiliate Broadcast" within ".main"
-    Then I should be on the affiliate admin broadcast page
-    And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Affiliate Broadcast
-
   Scenario: Visiting the SAYT Filters admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the admin home page
     And I follow "SAYT Filters" within ".main"
     Then I should be on the sayt filters admin page
     And I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > SaytFilters
-
-  Scenario: Sending a welcome email to all affiliates
-    Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    And the following Affiliates exist:
-    | display_name     | name             | contact_email         | contact_name        |
-    | single site      | single           | one@foo.gov           | One Foo             |
-    | multi1 site      | multi1           | two@bar.gov           | Two Bar             |
-    | multi2 site      | multi2           | two@bar.gov           | Two Bar             |
-    And a clear email queue
-    When I go to the affiliate admin broadcast page
-    And I fill in "Subject" with "some title"
-    And I fill in "Body" with "This is the email body"
-    And I press "Send to all affiliates"
-    Then I should be on the affiliate admin home page
-    And I should see "Message broadcasted to all affiliates successfully"
 
   Scenario: Uploading, as a logged in admin, a SAYT suggestions text file containing:
             3 new SAYT suggestions, 1 that already exists exactly, 1 that exists in a different case, and a blank line

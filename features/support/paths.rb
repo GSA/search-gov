@@ -50,8 +50,6 @@ module NavigationHelpers
       admin_users_path
     when /sayt filters admin page/
       admin_sayt_filters_path
-    when /the affiliate admin broadcast page/
-      new_admin_affiliate_broadcast_path
     when /the login page/
       login_path
     when /the password reset page/
