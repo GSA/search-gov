@@ -15,7 +15,7 @@
       = link_to_unless((rss_feed && rss_feed.id == feed.id), feed.name, news_search_path(search_params.merge(:channel => feed.id))) do |channel_name|
         = content_tag :span, channel_name
 
-- unless @search.instance_of?(ImageSearch)
+- unless @search.instance_of?(ImageSearch) or !@affiliate.has_active_rss_feeds?
   %ul.time-filters
     %li
       = link_to_if(params[:tbs], "All Time", rss_feed ? news_search_path(search_params.remove(:tbs)) : search_path(search_params.remove(:tbs))) do |everything|

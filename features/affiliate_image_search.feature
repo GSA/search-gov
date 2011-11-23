@@ -12,12 +12,15 @@ Feature: Affiliate Search
     And I fill in "query" with "camels"
     And I press "Search"
     Then I should see "Images"
+    And I should not see "Last hour"
   
     When I follow "Images"
     Then I should see "Everything"
+    And I should not see "Last hour"
   
     When I follow "Everything"
     Then I should see "Images"
+    And I should not see "Last hour"
     
   Scenario: Enabling/disabling affiliate image search
     Given the following Affiliates exist:
