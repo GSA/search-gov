@@ -224,7 +224,7 @@ class Search
         response = http.request(req)
         @@redis.setex(cache_key, BING_CACHE_DURATION_IN_SECONDS, response.body) rescue nil
         response.body
-      rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Timeout::Error, EOFError, Errno::ETIMEDOUT => error
+      rescue SocketError, Errno::ECONNREFUSED, Errno::ECONNRESET, Errno::ENETUNREACH, Errno::EHOSTUNREACH, Timeout::Error, EOFError, Errno::ETIMEDOUT => error
         raise BingSearchError.new(error.to_s)
       end
     end

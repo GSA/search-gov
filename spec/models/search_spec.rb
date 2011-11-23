@@ -85,6 +85,18 @@ describe Search do
 
     end
 
+    context "when Akamai DNS sends us to an unreachable IP address for api.bing.net" do
+      before do
+        @search = Search.new(@valid_options)
+        Net::HTTP::Get.stub!(:new).and_raise Errno::EHOSTUNREACH
+      end
+
+      it "should return false when searching" do
+        @search.run.should be_false
+      end
+
+    end
+
     context "when Bing kicks us to the curb" do
       before do
         @search = Search.new(@valid_options)
