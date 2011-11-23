@@ -102,6 +102,16 @@ describe Affiliate do
         affiliate.uses_one_serp?.should be_true
       end
 
+      it "should be valid when FONT_FAMILIES includes font_family in css property hash" do
+        Affiliate::FONT_FAMILIES.each do |font_family|
+          Affiliate.new(@valid_create_attributes.merge(:css_property_hash => { 'font_family' => font_family })).should be_valid
+        end
+      end
+
+      it "should not be valid when FONT_FAMILIES does not include font_family in css property hash" do
+        Affiliate.new(@valid_create_attributes.merge(:css_property_hash => { 'font_family' => 'Comic Sans MS' })).should_not be_valid
+      end
+
       it "should be valid when color property in css property hash consists of a # character followed by 3 or 6 hexadecimal digits " do
         %w{ #333 #FFF #fff #12F #666666 #666FFF #FFFfff #ffffff }.each do |valid_color|
           Affiliate.new(@valid_create_attributes.merge(
@@ -139,7 +149,6 @@ describe Affiliate do
       it "should validate color property in staged css property hash" do
         affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_css_property_hash => { 'link_color' => 'invalid', 'visited_link_color' => '#err' }))
         affiliate.save.should be_false
-        puts "errors: #{affiliate.errors.inspect}"
         affiliate.errors[:base].should include("Link color should consist of a # character followed by 3 or 6 hexadecimal digits")
         affiliate.errors[:base].should include("Visited link color should consist of a # character followed by 3 or 6 hexadecimal digits")
       end
@@ -147,13 +156,22 @@ describe Affiliate do
 
     describe "on update_attributes_for_staging" do
       let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+      let(:staged_css_property_hash) { { 'font_family' => 'Verdana, sans-serif',
+                                         'link_color' => '#111',
+                                         'visited_link_color' => '#222',
+                                         'hover_link_color' => '#333',
+                                         'description_text_color' => '#444',
+                                         'url_link_color' => '#555',
+                                         'visited_url_link_color' => '#666',
+                                         'hover_url_link_color' => '#777' } }
 
       before do
-        @update_params = {:staged_domains => "updated.domain.gov",
-                          :staged_header => "<span>header</span>",
-                          :staged_footer => "<span>footer</span>",
-                          :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
-                          :staged_search_results_page_title => "updated - {query} - {sitename} Search Results"}
+        @update_params = { :staged_domains => "updated.domain.gov",
+                           :staged_header => "<span>header</span>",
+                           :staged_footer => "<span>footer</span>",
+                           :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
+                           :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
+                           :staged_css_property_hash =>  staged_css_property_hash }
       end
 
       it "should set has_staged_content to true" do
@@ -169,6 +187,7 @@ describe Affiliate do
         affiliate.staged_footer.should == @update_params[:staged_footer]
         affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
         affiliate.staged_search_results_page_title.should == @update_params[:staged_search_results_page_title]
+        JSON.parse(affiliate.staged_css_properties).should == @update_params[:staged_css_property_hash]
       end
 
       it "should save staged favicon URL with http:// prefix when it does not start with http(s)://" do
@@ -505,9 +524,16 @@ describe Affiliate do
 
   describe "#cancel_staged_changes" do
     let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+    let(:staged_css_properties) { { 'font_family' => 'Verdana, sans-serif',
+                                    'link_color' => '#111',
+                                    'visited_link_color' => '#222',
+                                    'hover_link_color' => '#333',
+                                    'description_text_color' => '#444',
+                                    'url_link_color' => '#555',
+                                    'visited_url_link_color' => '#666',
+                                    'hover_url_link_color' => '#777' }.to_json }
 
     before do
-      @staged_css_properties = { 'link_color' => '#ffffff' }.to_json
       @update_params = { :staged_domains => "updated.domain.gov",
                          :staged_header => "<span>header</span>",
                          :staged_footer => "<span>footer</span>",
@@ -515,7 +541,7 @@ describe Affiliate do
                          :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
                          :staged_favicon_url => 'http://cdn.agency.gov/staged_favicon.ico',
                          :staged_external_css_url => "http://cdn.agency.gov/staged_custom.css",
-                         :staged_css_properties => @staged_css_properties }
+                         :staged_css_properties => staged_css_properties }
       affiliate.update_attributes_for_staging(@update_params).should be_true
     end
 

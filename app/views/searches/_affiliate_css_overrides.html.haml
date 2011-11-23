@@ -1,6 +1,11 @@
 %style{ :type => 'text/css' }
   :sass
-    #left_column, #results
+    .default .affiliate_autocomplete .ui-menu-item
+      a, span
+        font-family: #{render_affiliate_css_property_value(css_property_hash, :font_family)}
+    #search, #search_query
+      font-family: #{render_affiliate_css_property_value(css_property_hash, :font_family)}
+    #search
       a
         color: #{render_affiliate_css_property_value(css_property_hash, :link_color)}
         &:visited

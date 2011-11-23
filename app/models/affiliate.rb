@@ -40,7 +40,11 @@ class Affiliate < ActiveRecord::Base
     :staged_search_results_page_title => "Search results page title"
   }
 
+  FONT_FAMILIES = ['Arial, sans-serif', 'Helvetica, sans-serif', '"Trebuchet MS", sans-serif', 'Verdana, sans-serif',
+                   'Georgia, serif', 'Times, serif']
+
   DEFAULT_CSS_PROPERTIES = {
+    :font_family => FONT_FAMILIES[0],
     :link_color => '#2200CC',
     :visited_link_color => '#2200CC',
     :hover_link_color => '#990000',
@@ -235,8 +239,18 @@ class Affiliate < ActiveRecord::Base
   end
 
   def validate_css_property_hash
-    validate_color_in_css_property_hash @css_property_hash unless @css_property_hash.blank?
-    validate_color_in_css_property_hash @staged_css_property_hash unless @staged_css_property_hash.blank?
+    unless @css_property_hash.blank?
+      validate_font_family @css_property_hash
+      validate_color_in_css_property_hash @css_property_hash
+    end
+    unless @staged_css_property_hash.blank?
+      validate_font_family @staged_css_property_hash
+      validate_color_in_css_property_hash @staged_css_property_hash
+    end
+  end
+
+  def validate_font_family(hash)
+    errors.add(:base, "Font family selection is invalid") if hash['font_family'].present? and !FONT_FAMILIES.include?(hash['font_family'])
   end
 
   def validate_color_in_css_property_hash(hash)
