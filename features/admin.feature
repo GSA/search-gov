@@ -15,7 +15,6 @@ Feature:  Administration
     And I should see "SAYT Suggestions Bulk Upload"
     And I should see "Search.USA.gov Best Bets: Text"
     And I should see "Affiliate Boosted"
-    And I should see "Spotlights"
     And I should see "FAQs"
     And I should see "Top Searches"
     And I should see "Top Forms"

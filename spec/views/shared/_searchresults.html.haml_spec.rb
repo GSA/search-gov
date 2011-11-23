@@ -12,7 +12,6 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:endrecord).and_return 10
     @search.stub!(:total).and_return 20
     @search.stub!(:page).and_return 0
-    @search.stub!(:spotlight)
     @search.stub!(:has_boosted_contents?)
     @search.stub!(:faqs)
     @search.stub!(:gov_forms)
@@ -127,17 +126,6 @@ describe "shared/_searchresults.html.haml" do
         it "should not show featured collections" do
           render
           rendered.should_not contain('featured collections')
-        end
-      end
-
-    context "when a spotlight is present" do
-        before do
-          @search.stub!(:spotlight).and_return mock(Spotlight)
-        end
-
-        it "should not show a spotlight" do
-          render
-          rendered.should_not have_selector('spotlight')
         end
       end
 

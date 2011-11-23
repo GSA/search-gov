@@ -218,18 +218,6 @@ module SearchHelper
     raw "<a href=\"#{url}\" #{onmousedown} #{opts}>#{title}</a>"
   end
 
-  def render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds, vertical)
-    require 'hpricot'
-    doc = Hpricot(spotlight_html)
-    (doc/:a).each_with_index do |e, idx|
-      url =  e.attributes['href']
-      tag = e.inner_html
-      onmousedown = onmousedown_for_click(query, idx, '', 'SPOT', queried_at_seconds, vertical)
-      e.swap("<a href=\"#{url}\" #{onmousedown}>#{tag}</a>")
-    end
-    raw doc.to_html
-  end
-
   def onmousedown_for_click(query, zero_based_index, affiliate_name, source, queried_at, vertical)
     "onmousedown=\"return clk('#{h query}',this.href, #{zero_based_index + 1}, '#{affiliate_name}', '#{source}', #{queried_at}, '#{vertical}', '#{I18n.locale.to_s}')\""
   end

@@ -13,7 +13,6 @@ describe "searches/index.html.haml" do
     @search.stub!(:has_boosted_contents?).and_return false
     @search.stub!(:faqs).and_return nil
     @search.stub!(:gov_forms).and_return nil
-    @search.stub!(:spotlight).and_return nil
     @search.stub!(:error_message).and_return "Ignore me"
     @search.stub!(:filter_setting).and_return nil
     @search.stub!(:scope_id).and_return nil
@@ -52,7 +51,6 @@ describe "searches/index.html.haml" do
       @search.stub!(:boosted_contents).and_return nil
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil
-      @search.stub!(:spotlight).and_return nil
       @search.stub!(:error_message).and_return "Enter some search terms"
       @search.stub!(:filter_setting).and_return nil
       @search.stub!(:scope_id).and_return nil
@@ -84,7 +82,6 @@ describe "searches/index.html.haml" do
       @search_results = []
       @search_results.stub!(:total_pages).and_return 1
       @search.stub!(:results).and_return @search_results
-      @search.stub!(:spotlight).and_return nil
       @search.stub!(:boosted_contents).and_return nil
       @search.stub!(:faqs).and_return nil
       @search.stub!(:gov_forms).and_return nil
@@ -253,18 +250,18 @@ describe "searches/index.html.haml" do
           rendered.should_not contain(/Páginas populares/)
           rendered.should contain(/Popular Pages/)
         end
-        
+
         context "when there are no phone numbers" do
           before do
             @agency.phone = nil
           end
-          
+
           it "should not show a phone icon or div" do
             render
             rendered.should_not have_selector "div[class='phone-wrapper']"
             rendered.should_not have_selector "img[src^='/images/govbox/phone.gif']"
           end
-          
+
           after do
             @agency.reload
           end
@@ -357,31 +354,31 @@ describe "searches/index.html.haml" do
           rendered.should_not have_selector("input[type='hidden'][name='sitelimit'][value='irs.gov']")
         end
       end
-    
+
       context "when there are popular urls with identical titles" do
         before do
           @agency.agency_popular_urls.create!(:url => 'http://some.link', :title => 'Form 1040', :rank => 3, :locale => 'en')
         end
-        
+
         it "should modify the duplicate titles to include numbers" do
           render
           rendered.should have_selector "a[href='http://some.link']", :content => 'Form 1040 (1)'
           rendered.should have_selector "a[href='http://www.irs.gov/forms/1040.pdf']", :content => 'Form 1040 (2)'
         end
       end
-      
+
       context "when a title is longer than 50 characters" do
         before do
           @agency.agency_popular_urls.create!(:url => 'http://some.link', :title => 'This is a really long title that we are going to truncate so it is not so long.', :rank => 5, :locale => 'en')
         end
-        
+
         it "should truncate the title" do
           render
           rendered.should contain(/This is a really long title that we are going\.\.\./)
         end
       end
     end
-  
+
     context "when a med topic record matches the query" do
       fixtures :med_topics
       before do
@@ -396,7 +393,7 @@ describe "searches/index.html.haml" do
         @search.stub!(:results).and_return @search_results
         @search.stub!(:med_topic).and_return @med_topic
       end
-      
+
       it "should format the result as a Medline Govbox" do
         render
         rendered.should contain(/Official result from MedlinePlus/)
@@ -404,41 +401,41 @@ describe "searches/index.html.haml" do
         rendered.should contain(/Ulcerative colitis/)
         rendered.should contain(/Ulcerative colitis is a disease that causes/)
         rendered.should contain(/Ulcerative colitis can happen at any age, but.../)
-        
+
         rendered.should_not contain(/Related MedlinePlus Topics/)
         rendered.should_not contain(/Esta tema en español/)
         rendered.should_not contain(/ClinicalTrials.gov/)
       end
-      
+
       context "when the MedTopic has related med topics" do
         before do
           @med_topic.related_topics << med_topics(:crohns_disease)
         end
-        
+
         it "should include the related topics in the result, with links to search results pages" do
           render
           rendered.should contain(/Related MedlinePlus Topics/)
           rendered.should have_selector "a", :href => "/search?locale=en&query=Crohn%27s+Disease", :content => 'Crohn\'s Disease'
         end
       end
-      
+
       context "when the MedTopic has an alternate language version" do
         before do
           @med_topic.lang_mapped_topic = med_topics(:ulcerative_colitis_es)
         end
-        
+
         it "should include a link to the other language version" do
           render
           rendered.should contain(/Esta tema en español/)
           rendered.should have_selector "a", :href => "/search?locale=es&query=Colitis+ulcerativa", :content => 'Colitis ulcerativa'
         end
       end
-      
+
       context "when the MedTopic has mesh titles" do
         before do
           @med_topic.mesh_titles = "Ulcerative Colitis:Crohn's Disease:Irritable Bowel Syndrome"
         end
-        
+
         it "should include links to the first two linked to clinicaltrials.gov" do
           render
           rendered.should contain(/ClinicalTrials.gov/)

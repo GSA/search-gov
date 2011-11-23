@@ -118,16 +118,6 @@ describe SearchHelper do
     end
   end
 
-  describe "#render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds)" do
-    it "should add indexed mousedowns to each link" do
-      spotlight_html = "<li><a href='foo'>bar</a></li><li><a href='blat'>baz</a></li>"
-      query = "bdd"
-      queried_at_seconds = 1271978870
-      html = helper.render_spotlight_with_click_tracking(spotlight_html, query, queried_at_seconds, :web)
-      html.should == "<li><a href=\"foo\" onmousedown=\"return clk('bdd',this.href, 1, '', 'SPOT', 1271978870, 'web', 'en')\">bar</a></li><li><a href=\"blat\" onmousedown=\"return clk('bdd',this.href, 2, '', 'SPOT', 1271978870, 'web', 'en')\">baz</a></li>"
-    end
-  end
-
   describe "#bing_spelling_suggestion_for(search, affiliate, vertical)" do
     it "should return HTML escaped output containing the initial query and the suggestion" do
       affiliate = affiliates(:basic_affiliate)

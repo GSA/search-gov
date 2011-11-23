@@ -105,13 +105,3 @@ Feature: Forms Home Page and Search
     And I should see "Link 1.1" within "#top-forms-column-1"
     And I should see "Link 1.2" within "#top-forms-column-1"
     And I should see "Column 3" within "#top-forms-column-3"
-
-  Scenario: A forms search that matches a spotlight
-    Given the following active Spotlights exist:
-    | title             | keywords  |  html                                       |
-    | Automobile Tires  | tires     | <div id="spotlight">Automobile Tires</div>  |
-    And I am on the forms home page
-    When I fill in "query" with "tires"
-    And I press "Search"
-    Then I should be on the forms search page
-    And in "spotlight" I should not see "Automobile Tires"

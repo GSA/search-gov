@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111121201602) do
+ActiveRecord::Schema.define(:version => 20111123194534) do
 
   create_table "affiliate_broadcasts", :force => true do |t|
     t.integer  "user_id",    :null => false
@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(:version => 20111121201602) do
     t.string   "youtube_username"
     t.text     "previous_header"
     t.text     "previous_footer"
-    t.boolean  "is_image_search_enabled",                        :default => true
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"
+    t.boolean  "is_image_search_enabled",                        :default => true
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -613,25 +613,6 @@ ActiveRecord::Schema.define(:version => 20111121201602) do
   end
 
   add_index "sitemaps", ["affiliate_id"], :name => "index_sitemaps_on_affiliate_id"
-
-  create_table "spotlight_keywords", :force => true do |t|
-    t.integer  "spotlight_id", :null => false
-    t.string   "name",         :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "spotlight_keywords", ["spotlight_id"], :name => "index_spotlight_keywords_on_spotlight_id"
-
-  create_table "spotlights", :force => true do |t|
-    t.string   "title",                          :null => false
-    t.string   "notes"
-    t.text     "html",                           :null => false
-    t.boolean  "is_active",    :default => true, :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "affiliate_id"
-  end
 
   create_table "superfresh_urls", :force => true do |t|
     t.text     "url"

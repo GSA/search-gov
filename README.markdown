@@ -157,9 +157,6 @@ Your user account should have admin priveleges set. Now go here and poke around.
 
 <http://127.0.0.1:3000/admin>
 
-Create a Spotlight (hint: use the template to get started). For keywords, put in 'taxes'.
-Now re-run that taxes search again and you should see content above the search results.
-
 ## Asynchronous tasks
 Several long-running tasks have been moved to the background for processing via Resque. Here is how to see this in
 action on your local machine, assuming you have installed the Redis server.

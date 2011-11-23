@@ -33,7 +33,6 @@ class Search
               :related_search,
               :spelling_suggestion,
               :boosted_contents,
-              :spotlight,
               :faqs,
               :recalls,
               :results_per_page,
@@ -187,9 +186,6 @@ class Search
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale)
       @indexed_documents = IndexedDocument.search_for(query, affiliate) if affiliate and @indexed_results.nil?
-    end
-    if english_locale?
-      @spotlight = Spotlight.search_for(query, affiliate)
     end
     unless affiliate
       @faqs = Faq.search_for(query, I18n.locale.to_s)
@@ -346,7 +342,6 @@ class Search
     modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
     modules << "CREL" unless self.related_search.nil? or self.related_search.empty?
     modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
-    modules << "SPOT" unless self.spotlight.nil?
     modules << "RECALL" unless self.recalls.nil?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
     modules << "MEDL" unless self.med_topic.nil?

@@ -97,8 +97,6 @@ UsasearchRails3::Application.routes.draw do
       end
     end
     resources :affiliate_boosted_contents do as_routes end
-    resources :spotlights do as_routes end
-    resources :spotlight_keywords do as_routes end
     resources :affiliate_broadcasts, :only => [:new, :create]
     resources :faqs do as_routes end
     resources :gov_forms do as_routes end

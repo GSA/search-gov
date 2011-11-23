@@ -13,7 +13,6 @@ describe "shared/_searchresults.mobile.haml" do
     @search.stub!(:endrecord).and_return 10
     @search.stub!(:total).and_return 20
     @search.stub!(:page).and_return 0
-    @search.stub!(:spotlight)
     @search.stub!(:boosted_contents)
     @search.stub!(:faqs)
     @search.stub!(:gov_forms)

@@ -187,13 +187,6 @@ describe Search do
         search.run
       end
 
-      it "should not search for Spotlights, but should search for FAQs" do
-        search = Search.new(@valid_options.merge(:affiliate => nil))
-        Spotlight.should_not_receive(:search_for)
-        Faq.should_receive(:search_for).with(@valid_options[:query], I18n.locale.to_s)
-        search.run
-      end
-
       after do
         I18n.locale = I18n.default_locale
       end
@@ -947,62 +940,6 @@ describe Search do
 
       it "should not have a spelling suggestion" do
         @search.spelling_suggestion.should be_nil
-      end
-    end
-
-    context "spotlight searches" do
-      fixtures :spotlights
-      context "when a spotlight is set up for something relevant to the search term" do
-        before do
-          @spotty = spotlights(:time)
-        end
-
-        it "should assign the Spotlight without an affiliate" do
-          @search = Search.new(@valid_options.merge(:query => 'walk time', :affiliate=> nil))
-          Spotlight.should_receive(:search_for).with('walk time', nil).and_return(@spotty)
-          @search.run
-          @search.spotlight.should == @spotty
-        end
-      end
-
-      context "when no relevant spotlight exists for the search term" do
-        it "should assign a nil Spotlight" do
-          @search = Search.new(@valid_options.merge(:query => 'nothing here', :affiliate=> nil))
-          Spotlight.should_receive(:search_for).with('nothing here', nil).and_return(nil)
-          @search.run
-          @search.spotlight.should be_nil
-        end
-      end
-
-      context "when an affiliate is present" do
-        before do
-          @affiliate = affiliates(:basic_affiliate)
-        end
-
-        it "should assign a nil spotlight, even if other spotlights match the search term" do
-          @search = Search.new(@valid_options.merge(:query => 'walk time', :affiliate=> @affiliate))
-          Spotlight.should_receive(:search_for).with('walk time', @affiliate).and_return(nil)
-          @search.run
-          @search.spotlight.should be_nil
-        end
-      end
-
-      context "when an affiliate is present, and matching spotlights exist for that affiliate" do
-        before do
-          @spotty = spotlights(:time)
-          @affiliate = affiliates(:basic_affiliate)
-          @spotty.affiliate = @affiliate
-          @spotty.save
-          Spotlight.reindex
-          Sunspot.commit
-        end
-
-        it "should assign the Spotlight for the affiliate" do
-          @search = Search.new(@valid_options.merge(:query => 'walk time', :affiliate=> @affiliate))
-          Spotlight.should_receive(:search_for).with('walk time', @affiliate).and_return(@spotty)
-          @search.run
-          @search.spotlight.should == @spotty
-        end
       end
     end
 

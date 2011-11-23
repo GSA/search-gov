@@ -44,8 +44,6 @@ module NavigationHelpers
       admin_affiliates_path
     when /the admin home page/
       admin_home_page_path
-    when /the spotlights admin homepage/
-      admin_spotlights_path
     when /admin site pages page/
       admin_site_pages_path
     when /users admin page/
