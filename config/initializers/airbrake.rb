@@ -3,4 +3,5 @@ Airbrake.configure do |config|
   config.ignore << ActionController::MethodNotAllowed
   config.ignore << ActionController::UnknownHttpMethod
   config.ignore << REXML::ParseException
+  config.secure = false
 end

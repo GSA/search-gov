@@ -2,7 +2,7 @@ require 'resque/failure/airbrake'
 
 Airbrake.configure do |config|
   config.api_key = '***REMOVED***'
-  config.secure = true
+  config.secure = false
 end
 
 config = YAML::load(File.open("#{Rails.root}/config/redis.yml"))[Rails.env]
