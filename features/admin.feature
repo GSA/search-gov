@@ -64,7 +64,7 @@ Feature:  Administration
     And I follow "Affiliates" within ".main"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Affiliates
     And I should see "Site name"
-    And I should see "HTTP parameter site name"
+    And I should see "Site Handle (visible to searchers in the URL)"
     And I should see "single site"
     And I should see "single.gov"
 

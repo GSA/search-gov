@@ -39,25 +39,25 @@ describe Affiliate do
       Affiliate.create!(@valid_create_attributes)
     end
 
-    it "should generate HTTP parameter site name based on display name" do
+    it "should generate Site Handle based on display name" do
       affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "Affiliate site"))
       affiliate.name.should == "affiliatesite"
     end
 
     describe "on create" do
-      it "should generate HTTP parameter site name based on MD5 hash value when the display name is too short" do
+      it "should generate Site Handle based on MD5 hash value when the display name is too short" do
         Digest::MD5.should_receive(:hexdigest).and_return("hexvalue")
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "A"))
         affiliate.name.should == "hexvalue"
       end
 
-      it "should generate HTTP parameter site name based on MD5 hash value if display name contains less than 3 valid characters" do
+      it "should generate Site Handle based on MD5 hash value if display name contains less than 3 valid characters" do
         Digest::MD5.should_receive(:hexdigest).and_return("hexvalue")
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "3!!"))
         affiliate.name.should == "hexvalue"
       end
 
-      it "should generate HTTP parameter site name using MD5 hash value when the candidate HTTP parameter site name already exists" do
+      it "should generate Site Handle using MD5 hash value when the candidate Site Handle already exists" do
         Digest::MD5.should_receive(:hexdigest).and_return("hexvalue")
         first_affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "Affiliate site123___----...."))
         first_affiliate.name.should == "affiliatesite123___----...."
@@ -65,12 +65,12 @@ describe Affiliate do
         second_affiliate.name.should == "hexvalue"
       end
 
-      it "should generate HTTP parameter site name with 33 characters if display name is greater than 33 characters" do
+      it "should generate Site Handle with 33 characters if display name is greater than 33 characters" do
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "1234567890!!1234567890!!1234567890!!123456"))
         affiliate.name.should == "123456789012345678901234567890123"
       end
 
-      it "should generate HTTP parameter site name with 3 characters if display name is 3 characters" do
+      it "should generate Site Handle with 3 characters if display name is 3 characters" do
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "123"))
         affiliate.name.should == "123"
       end
@@ -444,7 +444,7 @@ describe Affiliate do
 
   describe "#human_attribute_name" do
     Affiliate.human_attribute_name("display_name").should == "Site name"
-    Affiliate.human_attribute_name("name").should == "HTTP parameter site name"
+    Affiliate.human_attribute_name("name").should == "Site Handle (visible to searchers in the URL)"
     Affiliate.human_attribute_name("staged_search_results_page_title").should == "Search results page title"
   end
 

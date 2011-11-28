@@ -36,7 +36,7 @@ class Affiliate < ActiveRecord::Base
 
   HUMAN_ATTRIBUTE_NAME_HASH = {
     :display_name => "Site name",
-    :name => "HTTP parameter site name",
+    :name => "Site Handle (visible to searchers in the URL)",
     :staged_search_results_page_title => "Search results page title"
   }
 

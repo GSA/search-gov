@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(:version => 20111123212028) do
     t.string   "youtube_username"
     t.text     "previous_header"
     t.text     "previous_footer"
+    t.boolean  "is_image_search_enabled",                        :default => true
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"
-    t.boolean  "is_image_search_enabled",                        :default => true
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

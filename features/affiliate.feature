@@ -272,9 +272,9 @@ Feature: Affiliate clients
     And I press "Next"
     And I press "Next"
     Then I should see "Site name can't be blank"
-    And I should not see "HTTP parameter site name can't be blank"
-    And I should not see "HTTP parameter site name is too short"
-    And I should not see "HTTP parameter site name is invalid"
+    And I should not see "Site Handle (visible to searchers in the URL) can't be blank"
+    And I should not see "Site Handle (visible to searchers in the URL) is too short"
+    And I should not see "Site Handle (visible to searchers in the URL) is invalid"
 
   Scenario: Adding a new site as an affiliate user with pending_contact_information status
     Given I am on the login page
@@ -328,7 +328,7 @@ Feature: Affiliate clients
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Site Information
     And I should see "Site Information" within ".main"
     And the "Site name" field should contain "aff site"
-    And the "HTTP parameter site name" field should contain "aff.gov"
+    And the "Site Handle (visible to searchers in the URL)" field should contain "aff.gov"
     And the "Domains to search" field should contain "example.org"
     And I should see "Cancel"
     When I follow "Cancel"

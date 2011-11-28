@@ -4,7 +4,7 @@
     = site_information_form.text_field :display_name, :class => 'txt'
   - unless @affiliate.new_record?
     %li
-      = site_information_form.label :name, "HTTP parameter site name"
+      = site_information_form.label :name, "Site Handle (visible to searchers in the URL)"
       = site_information_form.text_field :name, :class => 'txt', :disabled => true
   %li
     = site_information_form.label :website, "Site URL"
@@ -15,7 +15,7 @@
       %p
         Site name: Used for display to end users, such as in the title of the search results page (for example, the page title Test - National Park Service Search Results).
       %p
-        HTTP parameter site name: Used in the HTTP request to specify displaying your customized search results page and settings (for example, the affiliate parameter in the URL http://search.usa.gov/search?query=test&amp;affiliate=nps).
+        Site Handle: Used in the HTTP request to specify displaying your customized search results page and settings (for example, the affiliate parameter in the URL http://search.usa.gov/search?query=test&amp;affiliate=nps).
       %p
         Site URL: Used by the USASearch team to better manage your account (for example, it is useful for us to know that your site URL is www.nps.gov).
   %li
