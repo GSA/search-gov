@@ -25,7 +25,18 @@ describe RecallsController do
         response.should have_selector("meta[name=keywords]")
       end
     end
-
+    
+    context "when the format is set to 'rss'" do
+      render_views
+      before do
+        get :index, :format => :rss
+      end
+    
+      it "should render the latest recalls as an rss feed" do
+        response.content_type.should == 'application/rss+xml'
+      end
+    end   
+    
     it "should fetch recent recalls" do
       search = ["latest recall", "second latest recall"]
       Recall.should_receive(:search_for).with("", {:sort => 'date'}).and_return(search)

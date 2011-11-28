@@ -14,6 +14,10 @@ class RecallsController < ApplicationController
   def index
     @latest_recalls = Recall.search_for("", {:sort => "date"})
     @search_vertical = :recall
+    respond_to do |format|
+      format.html
+      format.rss
+    end
   end
 
   def search

@@ -75,6 +75,7 @@ UsasearchRails3::Application.routes.draw do
   get '/search/images' => 'image_searches#index', :as => :image_search
   get '/images' => 'images#index', :as => :images
   resources :recalls, :only => [:index]
+  get '/recalls/index.xml' => 'recalls#index', :defaults => { :format => 'rss' }
   get '/search/recalls' => 'recalls#search', :as => :recalls_search
   resources :forms, :only => :index
   get '/search/forms' => 'searches#forms', :as => :forms_search
