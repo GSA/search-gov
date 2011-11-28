@@ -30,7 +30,11 @@ Feature: Affiliate Search
     | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
     And the following Calais Related Searches exist for affiliate "bar.gov":
       | term | related_terms            | locale |
-      | item | Some Unique Related Term | en     |
+      | item | Some Unique item | en     |
+    And the following SAYT Suggestions exist for bar.gov:
+    | phrase                 |
+    | Some Unique item |
+    | el paso term           |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Search"
@@ -51,7 +55,7 @@ Feature: Affiliate Search
     And I should see "Next news item for the feed"
     And I should not see "More news items for the feed"
     And I should not see "Last news item for the feed"
-    And I should see "Related Topics" in the search results section
+    And I should see "Related Searches" in the search results section
     And I should see "Search" button
 
     When I follow "Last hour"
@@ -134,7 +138,7 @@ Feature: Affiliate Search
     And I should see "Imágenes"
     And I should not see "Images"
     And I should not see "Search this site"
-    
+
   Scenario: Highlighting query terms
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains         |
@@ -144,7 +148,7 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should see "WhiteHouse.gov"
     And I should not see "WhiteHouse.gov" in bold font
-    
+
     When I fill in "query" with "whitehouse.gov"
     And I press "Search"
     Then I should see "WhiteHouse.gov" in bold font

@@ -36,7 +36,7 @@ module ApplicationHelper
 
   def url_for_mobile_mode(new_mobile_mode)
     new_params = request.params.update({:format => nil, :m => new_mobile_mode.to_s})
-    url_for({ :controller => controller.controller_path, :action => controller.action_name }.reverse_merge(new_params))
+    url_for({:controller => controller.controller_path, :action => controller.action_name}.reverse_merge(new_params))
   end
 
   def link_to_mobile_mode(text, new_mobile_mode)
@@ -49,7 +49,7 @@ module ApplicationHelper
       ["FAQs", "http://answers.usa.gov/"],
       ["E-mail USA.gov", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"],
       ["Chat", "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/chat.php"],
-      ["Publications", "http://publications.usa.gov/"] ],
+      ["Publications", "http://publications.usa.gov/"]],
     :es => [
       ["GobiernoUSA.gov", "http://www.usa.gov/gobiernousa/index.shtml", "first"],
       ["Respuestas", "http://respuestas.gobiernousa.gov/"],
@@ -61,7 +61,7 @@ module ApplicationHelper
     :en => [
       ["USA.gov", "http://www.usa.gov/index.shtml", "first"],
       ["Website Policies", "http://www.usa.gov/About/Important_Notices.shtml"],
-      ["Privacy", "http://www.usa.gov/About/Privacy_Security.shtml"] ],
+      ["Privacy", "http://www.usa.gov/About/Privacy_Security.shtml"]],
     :es => [
       ["GobiernoUSA.gov", "http://www.usa.gov/gobiernousa/index.shtml", "first"],
       ["Políticas del sitio", "http://www.usa.gov/gobiernousa/Politicas_Sitio.shtml"],
@@ -151,7 +151,7 @@ module ApplicationHelper
   end
 
   def highlight_hit(hit, sym)
-    return hit.highlights(sym).first.format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlights(sym).first.nil?
+    return hit.highlight(sym).format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlight(sym).nil?
     hit.instance.send(sym)
   end
 
@@ -275,50 +275,50 @@ module ApplicationHelper
 
     case node.node_type
 
-  # todo: should have separate case for entity refs but they will probably not work anyways until ruby 1.9
+      # todo: should have separate case for entity refs but they will probably not work anyways until ruby 1.9
 
-  # we prefer to chop at word boundaries
+      # we prefer to chop at word boundaries
 
-    when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE :
-      mb_chars = node.text.mb_chars
+      when Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE :
+        mb_chars = node.text.mb_chars
 
-      if mb_chars.length <= max_chars
-        buffer << mb_chars
-        max_chars -= mb_chars.length
+        if mb_chars.length <= max_chars
+          buffer << mb_chars
+          max_chars -= mb_chars.length
+        else
+          last_space_index = (mb_chars.rindex(/\W/, max_chars) || 0) rescue 0
+          truncated_text = mb_chars[0..(mb_chars.rindex(/\w/, last_space_index) || 0)] unless last_space_index.nil?
+          buffer << "#{truncated_text}..."
+          max_chars = 0
+        end
+
+      # even if not all children are inserted, the parent tags need to be properly closed
+
+      when Nokogiri::XML::Node::ELEMENT_NODE, Nokogiri::XML::Node::DOCUMENT_FRAG_NODE :
+        if (max_paragraphs.present? && max_paragraphs == 0)
+          max_paragraphs -= 1
+          buffer << "..."
+        elsif max_paragraphs.nil? || max_paragraphs > 0
+          if node.element?
+            buffer << "<#{node.name}"
+            node.attributes.each do |name, value|
+              buffer << " #{name}='#{value}'"
+            end
+            buffer << ">"
+
+          end
+          node.children.each do |child|
+            max_chars, max_paragraphs = append_html_prose(buffer, child, max_chars, max_paragraphs)
+          end
+
+          if node.element?
+            buffer << "</#{node.name}>"
+            if max_paragraphs.present? && %w{h1 h2 h3 p li div quote}.include?(node.name)
+              max_paragraphs -= 1
+            end
+          end
+        end
       else
-        last_space_index = (mb_chars.rindex(/\W/, max_chars) || 0) rescue 0
-        truncated_text = mb_chars[0..(mb_chars.rindex(/\w/, last_space_index) || 0)] unless last_space_index.nil?
-        buffer << "#{truncated_text}..."
-        max_chars = 0
-      end
-
-  # even if not all children are inserted, the parent tags need to be properly closed
-
-    when Nokogiri::XML::Node::ELEMENT_NODE, Nokogiri::XML::Node::DOCUMENT_FRAG_NODE :
-      if (max_paragraphs.present? && max_paragraphs == 0)
-        max_paragraphs -= 1
-        buffer << "..."
-      elsif max_paragraphs.nil? || max_paragraphs > 0
-        if node.element?
-          buffer << "<#{node.name}"
-          node.attributes.each do |name, value|
-            buffer << " #{name}='#{value}'"
-          end
-          buffer << ">"
-
-        end
-        node.children.each do |child|
-          max_chars, max_paragraphs = append_html_prose(buffer, child, max_chars, max_paragraphs)
-        end
-
-        if node.element?
-          buffer << "</#{node.name}>"
-          if max_paragraphs.present? && %w{h1 h2 h3 p li div quote}.include?(node.name)
-            max_paragraphs -= 1
-          end
-        end
-      end
-    else
     end
     [max_chars, max_paragraphs]
   end

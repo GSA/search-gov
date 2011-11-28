@@ -1,4 +1,4 @@
-- if (@search && @search.related_search.size > 0)
+- if (@search && @search.has_related_searches?)
   .related-searches-wrapper-top
   .related-searches-wrapper-middle
     = render "/shared/related_topics"

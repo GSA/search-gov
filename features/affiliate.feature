@@ -1114,12 +1114,16 @@ Feature: Affiliate clients
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And the following Calais Related Searches exist for affiliate "aff.gov":
       | term    | related_terms             | locale |
-      | obama   | Some Unique Related Term  | en     |
+      | obama   | Some Unique Obama Term    | en     |
+    And the following SAYT Suggestions exist for aff.gov:
+    | phrase                 |
+    | Some Unique Obama Term |
+    | el paso term           |
     When I go to aff.gov's search page
     And I fill in "query" with "obama"
     And I press "Search"
-    Then I should see "Related Topics" in the search results section
-    And I should see "Some Unique Related Term"
+    Then I should see "Related Searches" in the search results section
+    And I should see "Some Unique Obama Term"
     And I should not see "aff.gov"
 
   Scenario: Affiliate SAYT

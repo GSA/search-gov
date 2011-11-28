@@ -4,6 +4,7 @@ class NewsSearch
               :affiliate,
               :rss_feed,
               :related_search,
+              :related_search_class,
               :results,
               :hits,
               :page,
@@ -35,9 +36,14 @@ class NewsSearch
       @hits = news_search.hits
       @total = news_search.total
       @related_search = CalaisRelatedSearch.related_search(@query, @affiliate)
+      @related_search_class = CalaisRelatedSearch.name
     end
     log_serp_impressions
     true
+  end
+
+  def has_related_searches?
+    @related_search && @related_search.size > 0
   end
 
   private

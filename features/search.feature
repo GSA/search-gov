@@ -57,30 +57,38 @@ Feature: Search
   Scenario: Related Topics on English SERPs
     Given the following Calais Related Searches exist:
     | term    | related_terms             | locale |
-    | obama   | Some Unique Related Term  | en     |
+    | obama   | Some Unique Obama Term    | en     |
     | el paso | el presidente mas guapo   | es     |
+    And the following SAYT Suggestions exist:
+    | phrase                 |
+    | Some Unique Obama Term |
+    | el paso term           |
     And I am on the homepage
     And I fill in "query" with "obama"
     And I press "Search"
     Then I should be on the search page
-    And I should see "Related Topics to obama by USA.gov" in the search results section
-    And I should see "Some Unique Related Term"
+    And I should see "Related Searches for obama by USA.gov" in the search results section
+    And I should see "Some Unique Obama Term"
     When I fill in "query" with "el paso"
     And I press "Search"
     Then I should not see "El Presidente Mas Guapo"
 
   Scenario: Related Topics on Spanish SERPs
     Given the following Calais Related Searches exist:
-    | term  | related_terms             | locale |
-    | hello | Some Unique Related Term  | en     |
-    | obama | el presidente mas guapo   | es     |
+    | term  | related_terms                   | locale |
+    | hello | Some Unique Related Term        | en     |
+    | obama | el presidente obama mas guapo   | es     |
+    And the following SAYT Suggestions exist:
+    | phrase                        |
+    | El Presidente Obama Mas Guapo |
+    | el paso term                  |
     And I am on the homepage
     And I follow "Busque en español"
     And I fill in "query" with "obama"
     And I press "Buscar"
     Then I should be on the search page
-    And I should see "Temas relacionados a obama de GobiernoUSA.gov" in the search results section
-    And I should see "El Presidente Mas Guapo"
+    And I should see "Búsquedas relacionadas a obama de GobiernoUSA.gov" in the search results section
+    And I should see "El Presidente Obama Mas Guapo"
     When I fill in "query" with "hello"
     And I press "Buscar"
     And I should not see "Some Unique Related Term"
@@ -104,11 +112,11 @@ Feature: Search
     And I should see "FAQ Emergency Page" in the boosted contents section
     And I should see "Emergency & Safety Pages" in the featured collections section
 
-  Scenario: Site visitor sees relevant boosted results for given search  
+  Scenario: Site visitor sees relevant boosted results for given search
     Given the following Boosted Content entries exist:
-      | title               | url                     | description                               | 
-      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      | 
-      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         | 
+      | title               | url                     | description                               |
+      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
+      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
       | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
     And the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -122,9 +130,9 @@ Feature: Search
     And I fill in "query" with "emergency"
     And I press "Search"
     Then I should be on the search page
-    And I should see "Our Emergency Page" 
-    And I should see "FAQ Emergency Page" 
-    And I should not see "Our Tourism Page" 
+    And I should see "Our Emergency Page"
+    And I should see "FAQ Emergency Page"
+    And I should not see "Our Tourism Page"
     And I should not see "Bar Emergency Page"
 
   Scenario: Spanish site visitor sees relevant boosted results for given search
@@ -151,17 +159,17 @@ Feature: Search
     When I fill in "query" with "unrelated"
     And I press "Buscar"
     Then I should see "Nuestra página de Emergencia" within "#boosted"
-    
+
   Scenario: Site visitor sees full boosted content
     Given the following Boosted Content entries exist:
-    | title                               | url             | description                               | 
+    | title                               | url             | description                               |
     | FBI Releases 'Flying Saucers' Memo  | http://fbi.gov  | A newly-released memo, written by agent Guy Hottel, appears to support UFOs and aliens landing in Roswell, New Mexico, in 1947. |
     And I am on the homepage
     And I fill in "query" with "roswell"
     And I press "Search"
     Then I should be on the search page
-    And I should see "A newly-released memo, written by agent Guy Hottel, appears to support UFOs and aliens landing in Roswell, New Mexico, in 1947."    
-    
+    And I should see "A newly-released memo, written by agent Guy Hottel, appears to support UFOs and aliens landing in Roswell, New Mexico, in 1947."
+
   Scenario: Site visitor does not see relevant boosted Content on Buscador
     Given the following Boosted Content entries exist:
       | title                   | url                     | description                               | locale  |
@@ -263,7 +271,7 @@ Feature: Search
     And I should see a link to "Solicite beneficios de incapacidad" with url for "http://www.ssa.gov/espanol/soliciteporincapacidad/" on the popular pages list
     And I should not see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
     And I should not see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
-    
+
   Scenario: Searching for a Spanish word without diacritics
     Given the following Boosted Content entries exist:
       | title              | url                                                            | description                               |
@@ -273,7 +281,7 @@ Feature: Search
     And I press "Search"
     Then I should see "Día de los Muertos"
     And I should see "The Smithsonian Latino Center presents"
-    
+
     When I am on the homepage
     And I fill in "query" with "Día"
     And I press "Search"

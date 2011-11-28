@@ -4,7 +4,7 @@ describe Search do
   fixtures :affiliates, :misspellings, :popular_image_queries
 
   before do
-    @affiliate     = affiliates(:basic_affiliate)
+    @affiliate = affiliates(:basic_affiliate)
     @valid_options = {:query => 'government', :page => 3}
   end
 
@@ -160,7 +160,7 @@ describe Search do
     context "when enable highlighting is set to true" do
       it "should pass the enable highlighting parameter to Bing as an option" do
         uriresult = URI::parse("http://localhost:3000")
-        search    = Search.new(@valid_options.merge(:enable_highlighting => true))
+        search = Search.new(@valid_options.merge(:enable_highlighting => true))
         URI.should_receive(:parse).with(/EnableHighlighting/).and_return(uriresult)
         search.run
       end
@@ -169,7 +169,7 @@ describe Search do
     context "when enable highlighting is set to false" do
       it "should not pass enable highlighting parameter to Bing as an option" do
         uriresult = URI::parse("http://localhost:3000")
-        search    = Search.new(@valid_options.merge(:enable_highlighting => false))
+        search = Search.new(@valid_options.merge(:enable_highlighting => false))
         URI.should_receive(:parse).with(/Options=&/).and_return(uriresult)
         search.run
       end
@@ -182,7 +182,7 @@ describe Search do
 
       it "should pass a language filter to Bing" do
         uriresult = URI::parse("http://localhost:3000/")
-        search    = Search.new(@valid_options)
+        search = Search.new(@valid_options)
         URI.should_receive(:parse).with(/%20language%3Aes/).and_return(uriresult)
         search.run
       end
@@ -201,8 +201,8 @@ describe Search do
 
       context "when affiliate has domains specified and user does not specify site: in search" do
         before do
-          @affiliate     = Affiliate.new(:domains => %w(          foo.com bar.com          ).join("\r\n"))
-          @uriresult     = URI::parse("http://localhost:3000/")
+          @affiliate = Affiliate.new(:domains => %w(          foo.com bar.com          ).join("\r\n"))
+          @uriresult = URI::parse("http://localhost:3000/")
         end
 
         it "should use affiliate domains in query to Bing without passing ScopeID" do
@@ -225,7 +225,7 @@ describe Search do
 
         context "when there are so many domains that the overall query exceeds Bing's limit, generating an error" do
           before do
-            @affiliate.domains = "a10001".upto("a10100").collect { |x| "#{x}.gov"}.join("\n")
+            @affiliate.domains = "a10001".upto("a10100").collect { |x| "#{x}.gov" }.join("\n")
           end
 
           it "should use a subset of the affiliate's domains (order is unimportant) up to the predetermined limit, accounting for URI encoding" do
@@ -258,8 +258,8 @@ describe Search do
 
       context "when affiliate has domains specified but user specifies site: in search" do
         before do
-          @affiliate     = Affiliate.new(:domains => %w(          foo.com bar.com          ).join("\n"))
-          @uriresult     = URI::parse("http://localhost:3000/")
+          @affiliate = Affiliate.new(:domains => %w(          foo.com bar.com          ).join("\n"))
+          @uriresult = URI::parse("http://localhost:3000/")
         end
 
         it "should override affiliate domains in query to Bing and use ScopeID/gov/mil combo" do
@@ -291,7 +291,7 @@ describe Search do
 
       context "when affiliate has more than one domains specified and sitelimit contains one matching domain" do
         let(:affiliate) { mock('affiliate', :domains => %w(          foo.com bar.com          ).join("\r\n")) }
-        let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'www.foo.com'))}
+        let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'www.foo.com')) }
 
         before do
           affiliate.should_receive(:get_matching_domain).with("www.foo.com").and_return("foo.com")
@@ -308,7 +308,7 @@ describe Search do
 
       context "when affiliate has more than one domains specified and sitelimit does not contain matching domain" do
         let(:affiliate) { mock('affiliate', :domains => %w(          foo.com bar.com          ).join("\r\n")) }
-        let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'doesnotexist.gov'))}
+        let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'doesnotexist.gov')) }
 
         before do
           affiliate.should_receive(:get_matching_domain).with("doesnotexist.gov").and_return(nil)
@@ -325,7 +325,7 @@ describe Search do
 
       context "when affiliate has no domains specified" do
         before do
-          @uriresult     = URI::parse("http://localhost:3000/")
+          @uriresult = URI::parse("http://localhost:3000/")
         end
 
         it "should use just query string and ScopeID/gov/mil combo" do
@@ -375,7 +375,7 @@ describe Search do
       context "when a scope id is specified" do
         it "should ignore the scope id" do
           uriresult = URI::parse("http://localhost:3000/")
-          @search   = Search.new(@valid_options.merge(:affiliate => nil, :scope_id => 'PatentClass'))
+          @search = Search.new(@valid_options.merge(:affiliate => nil, :scope_id => 'PatentClass'))
           URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(uriresult)
           @search.run
         end
@@ -400,7 +400,7 @@ describe Search do
     context "when page offset is specified" do
       it "should specify the offset in the query to Bing" do
         uriresult = URI::parse("http://localhost:3000/")
-        search    = Search.new(@valid_options.merge(:page => 7))
+        search = Search.new(@valid_options.merge(:page => 7))
         URI.should_receive(:parse).with(/web\.offset=70/).and_return(uriresult)
         search.run
       end
@@ -643,16 +643,16 @@ describe Search do
 
       context "when multiple or all of the advanced query parameters are specified" do
         it "should construct a query string that incorporates all of them with the proper spacing" do
-          search = Search.new(@valid_options.merge(:query_limit       => 'intitle:',
-                                                   :query_quote       => 'barack obama',
+          search = Search.new(@valid_options.merge(:query_limit => 'intitle:',
+                                                   :query_quote => 'barack obama',
                                                    :query_quote_limit => '',
-                                                   :query_or          => 'cars stimulus',
-                                                   :query_or_limit    => '',
-                                                   :query_not         => 'clunkers',
-                                                   :query_not_limit   => 'intitle:',
-                                                   :file_type         => 'pdf',
-                                                   :site_limits       => 'whitehouse.gov omb.gov',
-                                                   :site_excludes     => 'nasa.gov noaa.gov'))
+                                                   :query_or => 'cars stimulus',
+                                                   :query_or_limit => '',
+                                                   :query_not => 'clunkers',
+                                                   :query_not_limit => 'intitle:',
+                                                   :file_type => 'pdf',
+                                                   :site_limits => 'whitehouse.gov omb.gov',
+                                                   :site_excludes => 'nasa.gov noaa.gov'))
           URI.should_receive(:parse).with(/query=\(intitle%3Agovernment%20%22barack%20obama%22%20cars%20OR%20stimulus%20-intitle%3Aclunkers%20filetype%3Apdf%20site%3Awhitehouse.gov%20OR%20site%3Aomb.gov%20-site%3Anasa.gov%20-site%3Anoaa.gov\)/).and_return(@uriresult)
           search.run
         end
@@ -694,114 +694,123 @@ describe Search do
       end
     end
 
-    context "when performing an uppercase search that has a downcased related topic" do
-      before do
-        CalaisRelatedSearch.create!(:term=> "whatever", :related_terms => "ridiculous government grants | big government | democracy")
-        CalaisRelatedSearch.reindex
-        Sunspot.commit
-        @search = Search.new(:query=>"Democracy")
-        @search.run
-      end
-
-      it "should not have the matching related topic in the array of strings" do
-        @search.related_search.should == ["big government", "ridiculous government grants"]
-      end
-    end
-
-    context "when performing a search that has a uppercased related topic" do
-      before do
-        CalaisRelatedSearch.create!(:term=> "whatever", :related_terms => "Fred Espenak | big government | democracy")
-        CalaisRelatedSearch.reindex
-        Sunspot.commit
-        @search = Search.new(:query=>"Fred Espenak")
-        @search.run
-      end
-
-      it "should not have the matching related topic in the array of strings" do
-        @search.related_search.should == ["big government", "democracy"]
-      end
-    end
-
-    context "when performing an affiliate search that has related topics" do
-      before do
-        CalaisRelatedSearch.create!(:term => "pivot term", :related_terms => "government grants | big government | democracy", :affiliate => @affiliate)
-        CalaisRelatedSearch.reindex
-        Sunspot.commit
-      end
-
-      it "should have a related searches array of strings not including the pivot term" do
-        search = Search.new(@valid_options.merge(:affiliate => @affiliate))
-        search.run
-        search.related_search.should == ["big government", "democracy", "government grants"]
-      end
-
-      context "when there are also related topics for the default affiliate" do
+    describe "Calais Related Searches" do
+      context "when performing an uppercase search that has a downcased related topic" do
         before do
-          CalaisRelatedSearch.create!(:term => "pivot term", :related_terms => "government health care | small government | fascism")
+          CalaisRelatedSearch.create!(:term=> "whatever", :related_terms => "ridiculous government grants | big government | democracy")
+          CalaisRelatedSearch.reindex
+          Sunspot.commit
+          @search = Search.new(:query=>"Democracy")
+          @search.stub!(:coin_toss_heads?).and_return true
+          @search.run
+        end
+
+        it "should not have the matching related topic in the array of strings" do
+          @search.related_search.should == ["big government", "ridiculous government grants"]
+        end
+      end
+
+      context "when performing a search that has a uppercased related topic" do
+        before do
+          CalaisRelatedSearch.create!(:term=> "whatever", :related_terms => "Fred Espenak | big government | democracy")
+          CalaisRelatedSearch.reindex
+          Sunspot.commit
+          @search = Search.new(:query=>"Fred Espenak")
+          @search.stub!(:coin_toss_heads?).and_return true
+          @search.run
+        end
+
+        it "should not have the matching related topic in the array of strings" do
+          @search.related_search.should == ["big government", "democracy"]
+        end
+      end
+
+      context "when performing an affiliate search that has related topics" do
+        before do
+          CalaisRelatedSearch.create!(:term => "pivot term", :related_terms => "government grants | big government | democracy", :affiliate => @affiliate)
           CalaisRelatedSearch.reindex
           Sunspot.commit
         end
 
-        context "when the affiliate has affiliate related topics enabled" do
-          before do
-            @affiliate.related_topics_setting = 'affiliate_enabled'
-            @affiliate.save
-          end
-
-          it "should return the affiliate related topics" do
-            search = Search.new(@valid_options.merge(:affiliate => @affiliate))
-            search.run
-            search.related_search.should == ["big government", "democracy", "government grants"]
-          end
+        it "should have a related searches array of strings not including the pivot term" do
+          search = Search.new(@valid_options.merge(:affiliate => @affiliate))
+          search.stub!(:coin_toss_heads?).and_return true
+          search.run
+          search.related_search.should == ["big government", "democracy", "government grants"]
         end
 
-        context "when the affiliate has global related topics enabled" do
+        context "when there are also related topics for the default affiliate" do
           before do
-            @affiliate.related_topics_setting = 'global_enabled'
-            @affiliate.save
+            CalaisRelatedSearch.create!(:term => "pivot term", :related_terms => "government health care | small government | fascism")
+            CalaisRelatedSearch.reindex
+            Sunspot.commit
           end
 
-          it "should return the global related topics" do
-            search = Search.new(@valid_options.merge(:affiliate => @affiliate))
-            search.run
-            search.related_search.should == ["fascism", "government health care", "small government"]
-          end
-        end
+          context "when the affiliate has affiliate related topics enabled" do
+            before do
+              @affiliate.related_topics_setting = 'affiliate_enabled'
+              @affiliate.save
+            end
 
-        context "when the affiliate has related topics disabled" do
-          before do
-            @affiliate.related_topics_setting = 'disabled'
-            @affiliate.save
+            it "should return the affiliate related topics" do
+              search = Search.new(@valid_options.merge(:affiliate => @affiliate))
+              search.stub!(:coin_toss_heads?).and_return true
+              search.run
+              search.related_search.should == ["big government", "democracy", "government grants"]
+            end
           end
 
-          it "should return the affiliate related topics" do
-            search = Search.new(@valid_options.merge(:affiliate => @affiliate))
-            search.run
-            search.related_search.should == []
+          context "when the affiliate has global related topics enabled" do
+            before do
+              @affiliate.related_topics_setting = 'global_enabled'
+              @affiliate.save
+            end
+
+            it "should return the global related topics" do
+              search = Search.new(@valid_options.merge(:affiliate => @affiliate))
+              search.stub!(:coin_toss_heads?).and_return true
+              search.run
+              search.related_search.should == ["fascism", "government health care", "small government"]
+            end
+          end
+
+          context "when the affiliate has related topics disabled" do
+            before do
+              @affiliate.related_topics_setting = 'disabled'
+              @affiliate.save
+            end
+
+            it "should return the affiliate related topics" do
+              search = Search.new(@valid_options.merge(:affiliate => @affiliate))
+              search.stub!(:coin_toss_heads?).and_return true
+              search.run
+              search.related_search.should == []
+            end
           end
         end
       end
-    end
 
-    context "when performing an affiliate search that does not have related topics while the default affiliate does" do
-      before do
-        CalaisRelatedSearch.create!(:term=> @valid_options[:query], :related_terms => "government grants | big government | democracy")
-        CalaisRelatedSearch.reindex
-        Sunspot.commit
-        @search = Search.new(@valid_options.merge(:affiliate => @affiliate))
-        @search.run
-      end
+      context "when performing an affiliate search that does not have related topics while the default affiliate does" do
+        before do
+          CalaisRelatedSearch.create!(:term=> @valid_options[:query], :related_terms => "government grants | big government | democracy")
+          CalaisRelatedSearch.reindex
+          Sunspot.commit
+          @search = Search.new(@valid_options.merge(:affiliate => @affiliate))
+          @search.stub!(:coin_toss_heads?).and_return true
+          @search.run
+        end
 
-      it "should not fall back to the result for the default affiliate" do
-        @search.related_search.size.should == 0
+        it "should not fall back to the result for the default affiliate" do
+          @search.related_search.size.should == 0
+        end
       end
     end
 
     context "when the query contains an '&' character" do
       it "should pass a url-escaped query string to Bing" do
         @uriresult = URI::parse('http://localhost:3000')
-        query      = "Pros & Cons Physician Assisted Suicide"
-        search     = Search.new(@valid_options.merge(:query => query))
+        query = "Pros & Cons Physician Assisted Suicide"
+        search = Search.new(@valid_options.merge(:query => query))
         URI.should_receive(:parse).with(/Pros%20%26%20Cons%20Physician%20Assisted%20Suicide/).and_return(@uriresult)
         search.run
       end
@@ -809,10 +818,11 @@ describe Search do
 
     context "when the query ends in OR" do
       before do
-        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{      portland or | oregon | rain      })
+        CalaisRelatedSearch.create!(:term=> "portland or", :related_terms => %w{ portland or | oregon | rain })
         CalaisRelatedSearch.reindex
         Sunspot.commit
         @search = Search.new(:query => "Portland OR")
+        @search.stub!(:coin_toss_heads?).and_return true
         @search.run
       end
 
@@ -859,8 +869,8 @@ describe Search do
     context "when results contain listing missing a title" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'Nas & Kelis'))
-        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_two_search_results_one_missing_title.json")
-        parsed  = JSON.parse(json)
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_two_search_results_one_missing_title.json")
+        parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
       end
 
@@ -873,8 +883,8 @@ describe Search do
     context "when results contain listing missing a description" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'data'))
-        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_some_missing_descriptions.json")
-        parsed  = JSON.parse(json)
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_some_missing_descriptions.json")
+        parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
       end
 
@@ -890,8 +900,8 @@ describe Search do
     context "when searching for misspelled terms" do
       before do
         @search = Search.new(@valid_options.merge(:query => "p'resident"))
-        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions_pres.json")
-        parsed  = JSON.parse(json)
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions_pres.json")
+        parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
       end
@@ -904,8 +914,8 @@ describe Search do
     context "when suggestions for misspelled terms contain scopeid or parenthesis" do
       before do
         @search = Search.new(@valid_options.merge(:query => '(electro coagulation) site:uspto.gov'))
-        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
-        parsed  = JSON.parse(json)
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+        parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
       end
@@ -918,8 +928,8 @@ describe Search do
     context "when the Bing spelling suggestion is identical to the original query except for Bing highight characters" do
       before do
         @search = Search.new(:query => 'ct-w4')
-        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_highlight_characters.json")
-        parsed  = JSON.parse(json)
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_highlight_characters.json")
+        parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
       end
@@ -932,8 +942,8 @@ describe Search do
     context "when the Bing spelling suggestion is identical to the original query except for a hyphen" do
       before do
         @search = Search.new(:query => 'bio-tech')
-        json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_a_hyphen.json")
-        parsed  = JSON.parse(json)
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestion_containing_a_hyphen.json")
+        parsed = JSON.parse(json)
         JSON.stub!(:parse).and_return parsed
         @search.run
       end
@@ -1034,7 +1044,7 @@ describe Search do
       end
 
       it "should set startrecord/endrecord" do
-        page   = 7
+        page = 7
         search = Search.new(@valid_options.merge(:page => page))
         search.run
         search.startrecord.should == Search::DEFAULT_PER_PAGE * page + 1
@@ -1044,8 +1054,8 @@ describe Search do
       context "when the page is greater than the number of results" do
         before do
           @search = Search.new(@valid_options.merge(:query => 'data'))
-          json    = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_results_for_a_large_result_set.json")
-          parsed  = JSON.parse(json)
+          json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_results_for_a_large_result_set.json")
+          parsed = JSON.parse(json)
           JSON.stub!(:parse).and_return parsed
         end
 
@@ -1206,7 +1216,7 @@ describe Search do
     context "on normal search runs" do
       before do
         @search = Search.new(@valid_options.merge(:query => 'logme', :affiliate => @affiliate))
-        parsed  = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json"))
+        parsed = JSON.parse(File.read(::Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json"))
         JSON.stub!(:parse).and_return parsed
       end
 
@@ -1307,7 +1317,7 @@ describe Search do
 
   describe "#suggestions(affiliate_id, sanitized_query, num_suggestions)" do
     before do
-      phrase     = "aaaazy"
+      phrase = "aaaazy"
       popularity = 10
       16.times { SaytSuggestion.create!(:phrase => phrase.succ!, :popularity => (popularity = popularity.succ)) }
     end
@@ -1357,9 +1367,9 @@ describe Search do
   describe "#hits(response)" do
     context "when Bing reports a total > 0 but gives no results whatsoever" do
       before do
-        @search   = Search.new
+        @search = Search.new
         @response = mock("response")
-        web       = mock("web")
+        web = mock("web")
         @response.stub!(:web).and_return(web)
         web.stub!(:results).and_return(nil)
         web.stub!(:total).and_return(4000)
@@ -1375,7 +1385,7 @@ describe Search do
     context "when converting search response to json" do
       before do
         affiliate = affiliates(:basic_affiliate)
-        affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description",                                            :locale => 'en',
+        affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description", :locale => 'en',
                                            :locale => 'en', :status => 'active', :publish_start_on => Date.current)
         BoostedContent.reindex
         Sunspot.commit

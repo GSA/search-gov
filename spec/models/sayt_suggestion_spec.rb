@@ -347,4 +347,57 @@ describe SaytSuggestion do
     end
   end
 
+  describe "#search_for" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      SaytSuggestion.delete_all
+      SaytSuggestion.create!(:affiliate_id => @affiliate.id, :phrase => "suggest me", :popularity => 30)
+      SaytSuggestion.create!(:affiliate_id => nil, :phrase => "also suggest this", :popularity => 31)
+      SaytSuggestion.reindex
+      Sunspot.commit
+    end
+
+    it "should instrument the call to Solr with the proper action.service namespace and query param hash" do
+      ActiveSupport::Notifications.should_receive(:instrument).
+        with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate_id => @affiliate.id, :model=>"SaytSuggestion", :term => "foo")))
+      SaytSuggestion.search_for("foo", @affiliate.id)
+    end
+
+    it "should ignore exact matches regardless of case" do
+      SaytSuggestion.search_for("suggest me", @affiliate.id).total.should be_zero
+      SaytSuggestion.search_for("Suggest Me", @affiliate.id).total.should be_zero
+    end
+
+    it "should return suggestions for a given affiliate" do
+      SaytSuggestion.search_for("suggestion", @affiliate.id).total.should == 1
+      SaytSuggestion.search_for("suggestion", @affiliate.id).results.first.popularity.should == 30
+    end
+  end
+
+  describe "#related_search" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      @affiliate.update_attribute(:related_topics_setting, "affiliate_enabled")
+      SaytSuggestion.delete_all
+      SaytSuggestion.create!(:affiliate_id => @affiliate.id, :phrase => "suggest me", :popularity => 30)
+      SaytSuggestion.reindex
+      Sunspot.commit
+    end
+
+    it "should return an array of highlighted strings" do
+      SaytSuggestion.related_search("suggest", @affiliate).should == ["<strong>suggest</strong> me"]
+    end
+
+    context "when affiliate has all related topic options diabled" do
+      before do
+        @affiliate.update_attribute(:related_topics_setting, "disabled")
+      end
+
+      it "should return an empty array" do
+        SaytSuggestion.related_search("suggest", @affiliate).should == []
+      end
+    end
+  end
+
+
 end

@@ -6,6 +6,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:page).and_return 0
     @search.stub!(:spelling_suggestion).and_return nil
     @search.stub!(:related_search).and_return []
+    @search.stub!(:has_related_searches?).and_return false
     @search.stub!(:queried_at_seconds).and_return(1271978870)
     @search.stub!(:recalls)
     @search.stub!(:extra_image_results)

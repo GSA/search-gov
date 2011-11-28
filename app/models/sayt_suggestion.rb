@@ -12,7 +12,45 @@ class SaytSuggestion < ActiveRecord::Base
 
   MAX_POPULARITY = 2**30
 
+  searchable do
+    integer :affiliate_id
+    text :phrase
+    string :phrase
+    integer :popularity
+    time :deleted_at
+  end
+
   class << self
+    def search_for(query_str, affiliate_id = nil)
+      query = query_str.downcase
+      instrument_hash = {:model=> self.name, :term => query_str, :affiliate_id => affiliate_id}
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do
+        search do
+          fulltext query do
+            highlight :phrase
+          end
+          with(:affiliate_id, affiliate_id)
+          with(:deleted_at, nil)
+          without(:phrase, query)
+          order_by :popularity, :desc
+          paginate :page => 1, :per_page => 5
+        end rescue nil
+      end
+    end
+
+    def related_search(query, affiliate)
+      solr = nil
+      if affiliate and not affiliate.is_global_related_topics_enabled?
+        if affiliate.is_related_topics_disabled?
+          return []
+        elsif affiliate.is_affiliate_related_topics_enabled?
+          solr = search_for(query, affiliate.id)
+        end
+      else
+         solr = search_for(query)
+      end
+      solr.hits.collect { |hit| hit.highlight(:phrase).format { |phrase| "<strong>#{phrase}</strong>" } } if solr and solr.results
+    end
 
     def like(affiliate_id, query, num_suggestions)
       return [] if affiliate_id.present? and Affiliate.find_by_id_and_is_sayt_enabled(affiliate_id, false)

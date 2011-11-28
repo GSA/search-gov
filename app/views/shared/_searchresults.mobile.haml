@@ -29,12 +29,18 @@
     .row.center
       = will_paginate search.results, :previous_label => (t :prev_label), :next_label => (t :next_label), :inner_window => 1, :outer_window => 0
 
-  - if (search && search.related_search.present?)
+  - if (search && search.has_related_searches?)
     #relatedsearch
       %p= t :searches_related_to, :query=> search.query
       %ul
-        - search.related_search.each_with_index do |related_term, index|
-          %li= tracked_click_link(search_path(:query=>related_term, :affiliate=> @affiliate, :m => true ),h(related_term.titleize), search, nil, index, 'CREL')
+        - if search.related_search_class == "CalaisRelatedSearch"
+          - search.related_search.each_with_index do |related_term, index|
+            %li= tracked_click_link(search_path({:query=>related_term, :affiliate=> @affiliate, :m => true }),h(related_term.titleize), search, @affiliate, index, 'CREL')
+        - else
+          - index = 0
+          - search.related_search.each_hit_with_result do |hit, sayt_suggestion|
+            %li= tracked_click_link(search_path({:query=>sayt_suggestion.phrase, :affiliate=> @affiliate, :m => true }),highlight_hit(hit,:phrase).html_safe.sentence_case, search, @affiliate, index, 'SREL')
+            - index = index + 1
 
 - elsif search.error_message
   %p.noresults #{search.error_message}

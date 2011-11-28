@@ -8,7 +8,7 @@ class SuperfreshUrl < ActiveRecord::Base
 
   class << self
     def uncrawled_urls(number_of_urls = nil, affiliate = nil)
-      sql_options = {:order => 'created_at asc'}
+      sql_options = {:order => 'id asc'}
       sql_options.merge!(:limit => number_of_urls) if number_of_urls
       affiliate ? find_all_by_crawled_at_and_affiliate_id(nil, affiliate.id, sql_options) : find_all_by_crawled_at(nil, sql_options)
     end

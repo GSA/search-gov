@@ -1,11 +1,9 @@
-- if (@search && @search.related_search.size > 0)
-  %h3.alt
-    = related_topics_header @affiliate, @search.query
-  %ul{:id => "relatedsearch"}
-    - @search.related_search.each_with_index do |related_term, index|
-      - options = {:query=>related_term}
-      - options[:affiliate] = @affiliate.name if @affiliate
-      - options[:embedded] = @search_options[:embedded] if @search_options and @search_options[:embedded]
-      %li= tracked_click_link(search_path(options),h(related_term.sentence_case), @search, @affiliate, index, 'CREL', @search_vertical)
-- else
-  &nbsp
+%h3.alt
+  = related_topics_header @affiliate, @search.query
+%ul{:id => "relatedsearch"}
+  - @search.related_search.each_with_index do |related_term, index|
+    - options = {:query=>strip_tags(related_term)}
+    - options[:affiliate] = @affiliate.name if @affiliate
+    - options[:embedded] = @search_options[:embedded] if @search_options and @search_options[:embedded]
+    - module_name = (@search.related_search_class == "CalaisRelatedSearch" ? 'CREL' : 'SREL')
+    %li= tracked_click_link(search_path(options),related_term.html_safe.sentence_case, @search, @affiliate, index, module_name, @search_vertical)

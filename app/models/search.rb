@@ -31,6 +31,7 @@ class Search
               :endrecord,
               :images,
               :related_search,
+              :related_search_class,
               :spelling_suggestion,
               :boosted_contents,
               :faqs,
@@ -107,7 +108,21 @@ class Search
   end
 
   def related_search_results
-    CalaisRelatedSearch.related_search(@query, @affiliate)
+    if coin_toss_heads?
+      @related_search_class = CalaisRelatedSearch.name
+      CalaisRelatedSearch.related_search(@query, @affiliate)
+    else
+      @related_search_class = SaytSuggestion.name
+      SaytSuggestion.related_search(@query, @affiliate)
+    end
+  end
+
+  def coin_toss_heads?
+    rand(2).zero?
+  end
+
+  def has_related_searches?
+    @related_search && @related_search.size > 0
   end
 
   def as_json(options = {})
@@ -124,17 +139,17 @@ class Search
     end
   end
 
-  def to_xml(options = { :indent => 0, :root => :search })
+  def to_xml(options = {:indent => 0, :root => :search})
     if error_message
-      { :error => error_message }.to_xml(options)
+      {:error => error_message}.to_xml(options)
     else
-      { :total => total,
-        :startrecord => startrecord,
-        :endrecord => endrecord,
-        :spelling_suggestions => spelling_suggestion,
-        :related_searches => related_search,
-        :results => results,
-        :boosted_results => boosted_contents.try(:results) }.to_xml(options)
+      {:total => total,
+       :startrecord => startrecord,
+       :endrecord => endrecord,
+       :spelling_suggestions => spelling_suggestion,
+       :related_searches => related_search,
+       :results => results,
+       :boosted_results => boosted_contents.try(:results)}.to_xml(options)
     end
   end
 
@@ -313,7 +328,7 @@ class Search
   end
 
   def generate_excluded_scope
-    @exlcuded_domains ||= ExcludedDomain.all.collect{|excluded_domain| "-site:#{excluded_domain.domain}"}.join(" ")
+    @exlcuded_domains ||= ExcludedDomain.all.collect { |excluded_domain| "-site:#{excluded_domain.domain}" }.join(" ")
   end
 
   def query_plus_locale
@@ -340,7 +355,10 @@ class Search
     modules << (self.class.to_s == "ImageSearch" ? "IMAG" : "BWEB") unless self.total.zero?
     modules << "IMAG" unless self.class.to_s == "ImageSearch" or self.extra_image_results.nil?
     modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
-    modules << "CREL" unless self.related_search.nil? or self.related_search.empty?
+    unless self.related_search.nil? or self.related_search.empty?
+      modules << "CREL" if @related_search_class == "CalaisRelatedSearch"
+      modules << "SREL" if @related_search_class == "SaytSuggestion"
+    end
     modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
     modules << "RECALL" unless self.recalls.nil?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
