@@ -70,7 +70,7 @@ namespace :usasearch do
     task :monthly_report, :day, :needs => :environment do |t, args|
       args.with_defaults(:day => (Date.current.beginning_of_month - 1.day).to_s(:number))
       start_date = Date.parse(args.day).beginning_of_month
-      end_date = Date.parse(args.day).end_of_month + 1.day
+      end_date = Date.parse(args.day).end_of_month
 
       zip_filename = "/tmp/monthly_report_#{start_date.strftime('%Y-%m')}.zip"
 
