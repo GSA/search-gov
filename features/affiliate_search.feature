@@ -117,6 +117,10 @@ Feature: Affiliate Search
     And I fill in "query" with "president"
     And I press "Buscar"
     Then I should see "Resultados 1-10"
+    And I should see "Todo"
+    And I should not see "Everything"
+    And I should see "Imágenes"
+    And I should not see "Images"
     And I should not see "Search this site"
     
   Scenario: Highlighting query terms
