@@ -29,11 +29,18 @@ describe RecallsController do
     context "when the format is set to 'rss'" do
       render_views
       before do
+        @recall = Recall.create!(:recall_number => '123456', :recalled_on => Date.parse('2011-11-29'), :organization => 'CDC')
+        FoodRecall.create!(:recall_id => @recall.id, :summary => 'Test Food Recall', :description => 'This is a test food recall.', :url => 'http://search.usa.gov/recalls/test.html', :food_type => 'food')
+        Sunspot.commit
         get :index, :format => :rss
       end
     
       it "should render the latest recalls as an rss feed" do
         response.content_type.should == 'application/rss+xml'
+      end
+      
+      it "should output a date that matches the actual date in the database" do
+        response.body.should =~ /Tue\, 29 Nov 2011 05\:00\:00 \+0000/
       end
     end   
     

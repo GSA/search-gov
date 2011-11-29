@@ -292,6 +292,10 @@ class Recall < ActiveRecord::Base
       nil
     end
   end
+  
+  def recalled_on_est
+    self.recalled_on + 5.hours
+  end
 
   def is_food_recall?
     self.organization == 'CDC'
