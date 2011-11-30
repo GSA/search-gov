@@ -67,6 +67,18 @@ Feature: Affiliate Search
     When I follow "Everything"
     Then I should see "Advanced Search"
     And I should see "Search" button
+    
+    When I am on bar.gov's Spanish search page
+    And I fill in "query" with "president"
+    And I press "Buscar"
+    Then I should see "Resultados 1-10"
+    And I should see "Todo"
+    And I should not see "Everything"
+    And I should see "Imágenes"
+    And I should not see "Images"
+    And I should not see "Search this site"
+    And I should see "Cualquier fecha"
+    And I should not see "All Time"
 
   Scenario: No results when searching with active RSS feeds
     Given the following Affiliates exist:
