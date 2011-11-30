@@ -757,4 +757,46 @@ describe SearchHelper do
       specify { helper.render_affiliate_css_overrides(affiliate).should be_blank }
     end
   end
+
+  describe "#render_featured_collection_image" do
+    context "when the featured collection has an image and successfully retrieve the image" do
+      context "with one column layout" do
+        let(:image) { mock('image') }
+        let(:featured_collection) { mock_model(FeaturedCollection, { :has_one_column_layout? => true,
+                                                                     :image => image,
+                                                                     :image_file_name => 'test.png',
+                                                                     :image_alt_text => 'alt text',
+                                                                     :image_attribution => 'attribution',
+                                                                     :image_attribution_url => 'http://image.attribution.url' }) }
+
+        before do
+          image.should_receive(:url).with(:medium).and_return('http://medium.image.url')
+        end
+
+        subject { helper.render_featured_collection_image(featured_collection) }
+
+        it { should have_selector ".image img[src='http://medium.image.url'][alt='alt text']" }
+        it { should have_selector ".image span", :content => 'Image:' }
+        it { should have_selector ".image a[href='http://image.attribution.url'] span.attribution", :content => 'attribution' }
+      end
+    end
+
+    context "when the featured collection has an image and an exception occurs when trying to retrieve the image" do
+      context "with one column layout" do
+        let(:image) { mock('image') }
+        let(:featured_collection) { mock_model(FeaturedCollection, { :has_one_column_layout? => true,
+                                                                     :image => image,
+                                                                     :image_file_name => 'test.png',
+                                                                     :image_alt_text => 'alt text',
+                                                                     :image_attribution => 'attribution',
+                                                                     :image_attribution_url => 'http://image.attribution.url' }) }
+
+        before do
+          image.should_receive(:url).with(:medium).and_raise
+        end
+
+        specify { helper.render_featured_collection_image(featured_collection).should be_blank }
+      end
+    end
+  end
 end

@@ -392,6 +392,7 @@ Feature: Featured Collections
     And I should see a featured collection image section
     And I should see an image with alt text "cyclone image" in the featured collections section
     And I should see a link to "NOAA" with url for "http://www.noaa.gov" in the featured collections section
+    And I should see "Image: NOAA" in the featured collections section
     And I should see a link to "Atlantic" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#atl" in the featured collections section
     And I should see a link to "Eastern North Pacific" with url for "http://www.nhc.noaa.gov/aboutnames.shtml#enp" in the featured collections section
 

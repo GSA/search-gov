@@ -620,6 +620,20 @@ module SearchHelper
     render(:partial => 'searches/affiliate_css_overrides', :locals => { :css_property_hash => affiliate.css_property_hash }) if affiliate.uses_one_serp?
   end
 
+  def render_featured_collection_image(fc)
+    begin
+      unless fc.image_file_name.blank?
+        content = image_tag(fc.image.url(fc.has_one_column_layout? ? :medium : :small), :alt => fc.image_alt_text)
+        content << content_tag(:span, I18n.t(:image))
+        content << "\n"
+        content << link_to_unless(fc.image_attribution_url.blank?, content_tag(:span, fc.image_attribution, :class => 'attribution'), fc.image_attribution_url)
+        content_tag(:div, content, :class => 'image')
+      end
+    rescue Exception
+      nil
+    end
+  end
+
   private
 
   def shorten_url (url, length=42)
