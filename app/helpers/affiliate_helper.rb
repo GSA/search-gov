@@ -65,4 +65,24 @@ module AffiliateHelper
                    render_affiliate_css_property_value(css_property_hash, field_name_symbol),
                    :class => 'color { hash:true, adjust:false }'
   end
+
+  def render_new_site_themes(affiliate)
+    themes = Affiliate::THEMES.keys.collect do |theme|
+      selected = affiliate.theme.blank? ? theme == :default : affiliate.theme.to_sym == theme
+      content = radio_button(:affiliate, :theme, theme, :checked => selected)
+      content << label(:affiliate, "theme_#{theme}", theme.to_s.humanize)
+      content << image_tag("affiliates/themes/#{theme}.png")
+      content_tag :div, content.html_safe, :class => 'theme'
+    end
+    content_tag(:div, themes.join.html_safe, :class => 'themes')
+  end
+
+  def render_site_themes
+     themes = Affiliate::THEMES.keys.collect do |theme|
+      content = link_to(theme.to_s.humanize, '#', :class => 'update_css_properties_trigger')
+      content << image_tag("affiliates/themes/#{theme}.png", :class => 'update_css_properties_trigger')
+      content_tag :div, content.html_safe, :class => 'theme', :data => Affiliate::THEMES[theme].to_json
+    end
+    content_tag(:div, themes.join.html_safe, :class => 'themes')
+  end
 end

@@ -16,6 +16,13 @@
       %div
         = label_tag 'affiliate[staged_css_property_hash][font_family]', 'Font family'
         = select_tag 'affiliate[staged_css_property_hash][font_family]', options_for_select(Affiliate::FONT_FAMILIES, render_affiliate_css_property_value(@affiliate.staged_css_property_hash, :font_family))
+    %li.use-colors-from-theme
+      %span Use colors from a theme
+      = render_site_themes
+    %li.css-overrides
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][left_tab_text_color]', 'Left tab text color'
+        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :left_tab_text_color
     %li.css-overrides
       %div
         = label_tag 'affiliate[staged_css_property_hash][link_color]', 'Link color'

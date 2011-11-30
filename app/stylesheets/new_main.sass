@@ -1705,3 +1705,46 @@ h3.api-item
 #sayt-suggestions #delete_all
   th
     text-align: right
+
+.themes
+  @include clearfix
+  .theme
+    float: left
+    margin-right: 25px
+    padding-top: 5px
+    width: 102px
+    &:hover
+      cursor: pointer
+    input
+      float: left
+      margin: 0
+      padding: 0
+      position: relative
+      top: 0
+      width: auto
+    label
+      float: left
+      font-weight: normal
+      line-height: 16px
+      margin: 0 0 0 5px
+      padding: 0
+      width: auto
+    img
+      margin-top: 5px
+  #default_theme
+    background: url(/images/affiliates/themes/default.png) no-repeat 0 0
+  #elegant_theme
+    background: url(/images/affiliates/themes/elegant.png) no-repeat 0 0
+  #fun_blue_theme
+    background: url(/images/affiliates/themes/fun_blue.png) no-repeat 0 0
+  #gray_theme
+    background: url(/images/affiliates/themes/gray.png) no-repeat 0 0
+  #natural_theme
+    background: url(/images/affiliates/themes/natural.png) no-repeat 0 0
+
+.use-colors-from-theme
+  span
+    color: #5D5D5D
+    font-size: 15px
+  .theme
+    padding-top: 0

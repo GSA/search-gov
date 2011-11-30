@@ -24,12 +24,13 @@ class Affiliate < ActiveRecord::Base
   after_destroy :remove_boosted_contents_from_index
   before_validation :set_default_name, :on => :create
   validate :validate_css_property_hash
-  before_create :set_uses_one_serp
+  before_create :set_uses_one_serp, :translate_theme_to_css_properties
   before_save :set_default_affiliate_template, :normalize_domains, :ensure_http_prefix, :set_css_properties
   before_validation :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :uses_one_serp
+  attr_accessor :theme
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
@@ -44,16 +45,49 @@ class Affiliate < ActiveRecord::Base
   FONT_FAMILIES = ['Arial, sans-serif', 'Helvetica, sans-serif', '"Trebuchet MS", sans-serif', 'Verdana, sans-serif',
                    'Georgia, serif', 'Times, serif']
 
-  DEFAULT_CSS_PROPERTIES = {
-    :font_family => FONT_FAMILIES[0],
-    :link_color => '#2200CC',
-    :visited_link_color => '#2200CC',
-    :hover_link_color => '#990000',
-    :description_text_color => '#000000',
-    :url_link_color => '#008000',
-    :visited_url_link_color => '#008000',
-    :hover_url_link_color => '#008000'
-  }
+  THEMES = ActiveSupport::OrderedHash.new
+  THEMES[:default] = { :left_tab_text_color => '#9E3030',
+                       :link_color => '#2200CC',
+                       :visited_link_color => '#2200CC',
+                       :hover_link_color => '#990000',
+                       :description_text_color => '#000000',
+                       :url_link_color => '#008000',
+                       :visited_url_link_color => '#008000',
+                       :hover_url_link_color => '#008000' }
+  THEMES[:elegant] = { :left_tab_text_color => '#C71D2E',
+                       :link_color => '#336699',
+                       :visited_link_color => '#336699',
+                       :hover_link_color => '#336699',
+                       :description_text_color => '#595959',
+                       :url_link_color => '#007F00',
+                       :visited_url_link_color => '#007F00',
+                       :hover_url_link_color => '#007F00' }
+  THEMES[:fun_blue] = { :left_tab_text_color => '#87CB00',
+                        :link_color => '#0CA5D8',
+                       :visited_link_color => '#0CA5D8',
+                       :hover_link_color => '#0CA5D8',
+                       :description_text_color => '#444444',
+                       :url_link_color => '#3DB7E0',
+                       :visited_url_link_color => '#3DB7E0',
+                       :hover_url_link_color => '#3DB7E0' }
+  THEMES[:gray] = { :left_tab_text_color => '#A10000',
+                    :link_color => '#555555',
+                    :visited_link_color => '#555555',
+                    :hover_link_color => '#555555',
+                    :description_text_color => '#999999',
+                    :url_link_color => '#2C5D80',
+                    :visited_url_link_color => '#2C5D80',
+                    :hover_url_link_color => '#2C5D80' }
+  THEMES[:natural] = { :left_tab_text_color => '#B58100',
+                       :link_color => '#B58100',
+                       :visited_link_color => '#B58100',
+                       :hover_link_color => '#B58100',
+                       :description_text_color => '#333333',
+                       :url_link_color => '#B58100',
+                       :visited_url_link_color => '#B58100',
+                       :hover_url_link_color => '#B58100' }
+
+  DEFAULT_CSS_PROPERTIES = { :font_family => FONT_FAMILIES[0] }.merge(THEMES[:default])
 
   def name=(name)
     new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
@@ -202,7 +236,7 @@ class Affiliate < ActiveRecord::Base
   def staged_css_property_hash
     @staged_css_property_hash ||= (staged_css_properties.blank? ? {} : JSON.parse(staged_css_properties, :symbolize_keys => true))
   end
-  
+
   def active_top_searches
     self.top_searches.all(:conditions => 'NOT ISNULL(query)')
   end
@@ -276,5 +310,9 @@ class Affiliate < ActiveRecord::Base
 
   def set_uses_one_serp
     self.uses_one_serp = true if self.uses_one_serp.nil?
+  end
+
+  def translate_theme_to_css_properties
+    self.staged_css_properties = THEMES[@theme.to_sym].to_json unless @theme.nil?
   end
 end

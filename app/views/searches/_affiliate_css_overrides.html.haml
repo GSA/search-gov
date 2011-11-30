@@ -1,5 +1,8 @@
 %style{ :type => 'text/css' }
   :sass
+    .rss-feeds, .time-filters
+      span
+        color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
     .default .affiliate_autocomplete .ui-menu-item
       a, span
         font-family: #{render_affiliate_css_property_value(css_property_hash, :font_family)}

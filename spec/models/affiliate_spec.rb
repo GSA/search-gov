@@ -152,6 +152,13 @@ describe Affiliate do
         affiliate.errors[:base].should include("Link color should consist of a # character followed by 3 or 6 hexadecimal digits")
         affiliate.errors[:base].should include("Visited link color should consist of a # character followed by 3 or 6 hexadecimal digits")
       end
+
+      it "should translate theme to css properties" do
+        Affiliate::THEMES.keys.each do |theme|
+          affiliate = Affiliate.create!(@valid_create_attributes.merge(:name => theme.to_s, :theme => theme.to_s))
+          affiliate.staged_css_property_hash.should == Affiliate::THEMES[theme]
+        end
+      end
     end
 
     describe "on update_attributes_for_staging" do
