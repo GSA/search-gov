@@ -592,7 +592,7 @@ module SearchHelper
     css_classes = initial_classes
     css_class = ''
     css_class << featured_collection.layout.parameterize
-    css_class << (featured_collection.image.present? ? '-with-image' : '-without-image')
+    css_class << (featured_collection.image_file_name.present? ? '-with-image' : '-without-image')
     css_classes << css_class
     css_classes.join(" ")
   end
