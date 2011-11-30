@@ -1,14 +1,14 @@
 class Admin::TopSearchesController < Admin::AdminController
   before_filter :assign_page_title
   def index
-    @top_searches = TopSearch.order("position ASC")
+    @top_searches = TopSearch.where("affiliate_id IS NULL").order("position ASC")
     @active_top_searches = TopSearch.find_active_entries
   end
   
   def create
     @top_searches = []
     1.upto(5) do |index|
-      top_search = TopSearch.find_by_position(index)
+      top_search = TopSearch.find_or_initialize_by_position_and_affiliate_id(index, nil)
       top_search.query = params["query#{index}"]
       top_search.url = params["url#{index}"].present? ? params["url#{index}"] : nil
       top_search.save

@@ -1,51 +1,70 @@
 require 'spec/spec_helper'
 
 describe WidgetsController do
+  fixtures :affiliates
   let(:active_top_searches) { mock('active top searches') }
   before do
-    TopSearch.should_receive(:find_active_entries).and_return(active_top_searches)
+    @affiliate = affiliates(:basic_affiliate)
   end
 
   describe "#trending_searches" do
-    context "when format=html" do
+    context "when no affiliate id is specified do" do
       before do
-        get :trending_searches, :widget_source => 'usa.gov'
+        TopSearch.should_receive(:find_active_entries).and_return(active_top_searches)
+      end
+      
+      context "when format=html" do
+        before do
+          get :trending_searches, :widget_source => 'usa.gov'
+        end
+
+        it { should assign_to(:active_top_searches).with(active_top_searches) }
+        it { should assign_to(:widget_source).with('usa.gov') }
+        it { should respond_with_content_type :html }
+        it { should respond_with :success }
       end
 
-      it { should assign_to(:active_top_searches).with(active_top_searches) }
-      it { should assign_to(:widget_source).with('usa.gov') }
-      it { should respond_with_content_type :html }
-      it { should respond_with :success }
+      context "when format=xml and widget_source is blank" do
+        before do
+          get :trending_searches, :format => 'xml'
+        end
+
+        it { should assign_to(:active_top_searches).with(active_top_searches) }
+        it { should assign_to(:widget_source).with('xml') }
+        it { should respond_with_content_type :xml }
+        it { should respond_with :success }
+      end
+
+      context "when format=xml and widget source is not blank" do
+        before do
+          get :trending_searches, :format => 'xml', :widget_source => 'agency'
+        end
+
+        it { should assign_to(:active_top_searches).with(active_top_searches) }
+        it { should assign_to(:widget_source).with('agency') }
+        it { should respond_with_content_type :xml }
+        it { should respond_with :success }
+      end
+
+      context "when format=json" do
+        before do
+          get :trending_searches, :format => 'json'
+        end
+
+        it { should respond_with :not_acceptable }
+      end
     end
-
-    context "when format=xml and widget_source is blank" do
+    
+    context "when an affiliate id is specified" do
       before do
-        get :trending_searches, :format => 'xml'
+        Affiliate.stub!(:find_by_id).and_return @affiliate
+        @affiliate.should_receive(:active_top_searches).and_return []
+        get :trending_searches, :aid => @affiliate.id
       end
-
-      it { should assign_to(:active_top_searches).with(active_top_searches) }
-      it { should assign_to(:widget_source).with('xml') }
-      it { should respond_with_content_type :xml }
-      it { should respond_with :success }
-    end
-
-    context "when format=xml and widget source is not blank" do
-      before do
-        get :trending_searches, :format => 'xml', :widget_source => 'agency'
+      
+      it "should show the top searches for the specified affiliate" do
+        assigns[:active_top_searches].should == []
       end
-
-      it { should assign_to(:active_top_searches).with(active_top_searches) }
-      it { should assign_to(:widget_source).with('agency') }
-      it { should respond_with_content_type :xml }
-      it { should respond_with :success }
-    end
-
-    context "when format=json" do
-      before do
-        get :trending_searches, :format => 'json'
-      end
-
-      it { should respond_with :not_acceptable }
     end
   end
 end

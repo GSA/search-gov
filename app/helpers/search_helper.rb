@@ -545,6 +545,7 @@ module SearchHelper
           :linked => 1,
           :position => top_search.position
       }
+      query_params.merge!(:affiliate => top_search.affiliate.name) if top_search.affiliate
       url = search_url(query_params.merge(url_options))
     else
       url = top_search.url

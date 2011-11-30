@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111123212028) do
+ActiveRecord::Schema.define(:version => 20111130175117) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20111123212028) do
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"
+    t.string   "top_searches_label",                             :default => "Search Trends"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -633,9 +634,11 @@ ActiveRecord::Schema.define(:version => 20111123212028) do
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "affiliate_id"
   end
 
-  add_index "top_searches", ["position"], :name => "index_top_searches_on_position", :unique => true
+  add_index "top_searches", ["affiliate_id"], :name => "index_top_searches_on_affiliate_id"
+  add_index "top_searches", ["position", "affiliate_id"], :name => "index_top_searches_on_position_and_affiliate_id", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                                                            :null => false

@@ -69,6 +69,7 @@ UsasearchRails3::Application.routes.draw do
     resources :rss_feeds, :controller => "affiliates/rss_feeds"
     resources :excluded_urls, :controller => "affiliates/excluded_urls", :only => [:index, :create, :destroy]
     resources :sitemaps, :controller => "affiliates/sitemaps", :only => [:index, :create, :destroy]
+    resources :top_searches, :controller => "affiliates/top_searches", :only => [:index, :create]
   end
   get '/search' => 'searches#index', :as => :search
   get '/search/advanced' => 'searches#advanced', :as => :advanced_search

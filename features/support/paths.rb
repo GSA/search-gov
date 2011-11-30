@@ -128,6 +128,8 @@ module NavigationHelpers
       admin_top_forms_path(:column_number => $1)
     when /the trending searches page/
       trending_searches_widget_path
+    when /^(.*)'s trending searches page$/
+      trending_searches_widget_path(:aid => Affiliate.find_by_name($1).id)
     when /the affiliate related topics page for "([^\"]*)"/
       affiliate_related_topics_path(Affiliate.find_by_name($1))
     when /the preview affiliate page for "([^\"]*)"/

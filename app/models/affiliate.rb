@@ -19,6 +19,7 @@ class Affiliate < ActiveRecord::Base
   has_many :rss_feeds, :dependent => :destroy
   has_many :excluded_urls, :dependent => :destroy
   has_many :sitemaps, :dependent => :destroy
+  has_many :top_searches, :dependent => :destroy, :order => 'position ASC', :limit => 5
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   before_validation :set_default_name, :on => :create
@@ -200,6 +201,10 @@ class Affiliate < ActiveRecord::Base
 
   def staged_css_property_hash
     @staged_css_property_hash ||= (staged_css_properties.blank? ? {} : JSON.parse(staged_css_properties, :symbolize_keys => true))
+  end
+  
+  def active_top_searches
+    self.top_searches.all(:conditions => 'NOT ISNULL(query)')
   end
 
   private

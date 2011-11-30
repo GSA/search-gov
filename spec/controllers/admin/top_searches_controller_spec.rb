@@ -20,13 +20,23 @@ describe Admin::TopSearchesController do
     describe "GET index" do
       it "should assign page title" do
         top_searches = [mock_model(TopSearch)]
-        TopSearch.should_receive(:order).and_return(top_searches)
+        top_searches.stub!(:order).and_return top_searches
+        TopSearch.should_receive(:where).and_return(top_searches)
         active_top_searches = []
         TopSearch.should_receive(:find_active_entries).and_return(active_top_searches)
         get :index
         assigns[:top_searches].should == top_searches
         assigns[:active_top_searches].should == active_top_searches
         assigns[:page_title].should == "Top Searches"
+      end
+      
+      context "when rendering the index page" do
+        render_views
+        
+        it "should show the page and form fields even if there are no top searches with affiliate_id=nil" do
+          get :index
+          response.body.should have_selector("input[id='query5']")
+        end
       end
     end
 
@@ -39,7 +49,7 @@ describe Admin::TopSearchesController do
           top_search.should_receive(:url=)
           top_search.should_receive(:save)
           @top_searches << top_search
-          TopSearch.stub(:find_by_position).with(index).and_return(@top_searches[index - 1])
+          TopSearch.stub(:find_or_initialize_by_position_and_affiliate_id).with(index, nil).and_return(@top_searches[index - 1])
         end
       end
 

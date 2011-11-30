@@ -1,10 +1,15 @@
+- form_path = @affiliate ? affiliate_top_searches_path(@affiliate) : admin_top_searches_path
+- widget_url = @affiliate ? trending_searches_widget_url(:aid => @affiliate.id) : trending_searches_widget_url 
 %h2
   Top Searches
 %p
   Update the top searches using the form below.  Note: your changes will be live as soon as you press 'Update Top Searches', so carefully review your changes.
   Leave the 'URL' field blank to link to the corresponding search results page on search.usa.gov.
   If you want to override this and have the link point elsewhere, fill in the 'URL' field with the desired url.
-= form_tag admin_top_searches_path, :method => :post do
+= form_tag form_path, :method => :post do
+  - if @affiliate
+    = label_tag 'top_searches_label', 'Top Searches Label'
+    = text_field_tag 'top_searches_label', @affiliate.top_searches_label
   %table
     %tr
       %th
@@ -13,16 +18,16 @@
         Query
       %th
         URL
-    - @top_searches.each_with_index do |top_search, index|
+    - 0.upto(4).each do |index|
       %tr
         %td
           Top Search ##{index + 1}:
         %td
           = label_tag "query#{index + 1}", nil, :style => "display: none;" 
-          = text_field_tag "query#{index + 1}", top_search.query
+          = text_field_tag "query#{index + 1}", @top_searches[index] ? @top_searches[index].query : ""
         %td
           = label_tag "url#{index + 1}", nil, :style => "display: none;"
-          = text_field_tag "url#{index + 1}", top_search.url
+          = text_field_tag "url#{index + 1}", @top_searches[index] ? @top_searches[index].url : ""
   = submit_tag 'Update Top Searches'
 
 %br
@@ -30,3 +35,12 @@
   Current Trending Searches
 = render_trending_searches
 
+%br{:style => 'clear: both;'}
+%h2
+  Widget Code
+%p
+  Copy and paste the following snippet into your site to display your Top Searches:
+%p
+  %textarea{ :readonly => true }
+    :escaped
+      <iframe width="650" scrolling="no" height="30" frameborder="0" src="#{widget_url}"></iframe>

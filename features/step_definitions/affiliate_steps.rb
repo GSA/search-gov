@@ -56,7 +56,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_external_css_url => hash["staged_external_css_url"],
       :favicon_url => hash["favicon_url"],
       :staged_favicon_url => hash["staged_favicon_url"],
-      :css_properties => css_properties.to_json
+      :css_properties => css_properties.to_json,
+      :top_searches_label => hash["top_searches_label"] || 'Search Trends'
     )
     affiliate.uses_one_serp = hash[:uses_one_serp] || false
     affiliate.save!

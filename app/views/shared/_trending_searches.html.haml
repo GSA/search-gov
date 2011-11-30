@@ -1,6 +1,6 @@
 %div#home_searchtrend
   %h2
-    Search Trends
+    = @affiliate ? @affiliate.top_searches_label : 'Search Trends'
   %ul
     - @active_top_searches.each_with_index do |top_search, index|
       %li{:class => index == 0 && "first"}

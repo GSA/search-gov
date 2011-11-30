@@ -18,3 +18,17 @@ Feature: Widgets
     When I follow "White House"
     Then I should be on the search page
     And I should see at least 8 search results
+    
+  Scenario: Visiting trending searches widget for an affiliate
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | top_searches_label  | header          |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Top Searches        | Bar.gov Header  |
+    And the following Top Searches exist:
+      | position  | query         | url                 | affiliate_name  |
+      | 1         | Top Search 1  |                     | aff.gov         |
+    And I am on aff.gov's trending searches page
+    Then I should not see "Search Trends"
+    And I should see "Top Searches"
+    And I should see "Top Search 1"
+    When I follow "Top Search 1"
+    Then I should see "Bar.gov Header"
