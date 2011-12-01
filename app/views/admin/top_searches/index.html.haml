@@ -3,43 +3,45 @@
 %h2
   Top Searches
 %p
-  Update the top searches using the form below.  Note: your changes will be live as soon as you press 'Update Top Searches', so carefully review your changes.
-  Leave the 'URL' field blank to link to the corresponding search results page on search.usa.gov.
-  If you want to override this and have the link point elsewhere, fill in the 'URL' field with the desired url.
+  Many websites list top or trending search terms (see, for example, #{ link_to 'USA.gov', 'http://www.usa.gov' }, #{ link_to 'Google Trends', 'http://www.google.com/trends' }, and #{ link_to 'Twitter', 'http://www.twitter.com/search' }). Use this Top Searches widget to list top or trending terms on your website.
+  %br
+  First, copy and paste the widget code where you'd like it to appear on your site (e.g., your home page, search results page, or all pages).
+  %br
+  Then, select a label for the widget and update the terms listed by entering terms and URLs. Note that, if you leave the 'URL' field blank, it links to a corresponding search results page on your site. To override this default, simply fill in the 'URL' field with the desired URL. 
 = form_tag form_path, :method => :post do
   - if @affiliate
-    = label_tag 'top_searches_label', 'Top Searches Label'
+    = label_tag 'top_searches_label', 'Label'
     = text_field_tag 'top_searches_label', @affiliate.top_searches_label
   %table
     %tr
       %th
         Position
       %th
-        Query
+        Term
       %th
         URL
     - 0.upto(4).each do |index|
       %tr
         %td
-          Top Search ##{index + 1}:
+          Term ##{index + 1}:
         %td
           = label_tag "query#{index + 1}", nil, :style => "display: none;" 
           = text_field_tag "query#{index + 1}", @top_searches[index] ? @top_searches[index].query : ""
         %td
           = label_tag "url#{index + 1}", nil, :style => "display: none;"
           = text_field_tag "url#{index + 1}", @top_searches[index] ? @top_searches[index].url : ""
-  = submit_tag 'Update Top Searches'
+  = submit_tag 'Update Widget'
 
 %br
 %h2
-  Current Trending Searches
+  Preview Widget
 = render_trending_searches
 
 %br{:style => 'clear: both;'}
 %h2
   Widget Code
 %p
-  Copy and paste the following snippet into your site to display your Top Searches:
+  Copy and paste the following snippet onto any page you want to display the Top Searches on your website:
 %p
   %textarea{ :readonly => true }
     :escaped
