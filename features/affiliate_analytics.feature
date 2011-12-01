@@ -108,16 +108,16 @@ Feature: Affiliate analytics
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     |
-    And the following DailyUsageStats exist for each day in "2019-02"
+    And the following DailyUsageStats exist for each day in "2021-02"
       | profile    | total_queries | affiliate |
       | Affiliates | 1000          | aff.gov   |
-    And the following DailySearchModuleStats exist for each day in "2019-02"
+    And the following DailySearchModuleStats exist for each day in "2021-02"
       | affiliate | total_clicks |
       | aff.gov   | 10           |
       | aff2.gov  | 5            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Monthly reports"
-    And I select "December 2011" as the report date
+    And I select "December 2019" as the report date
     And I press "Get Usage Stats"
     Then I should see "Report information not available for the future."
