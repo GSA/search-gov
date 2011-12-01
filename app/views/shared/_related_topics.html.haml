@@ -6,4 +6,4 @@
     - options[:affiliate] = @affiliate.name if @affiliate
     - options[:embedded] = @search_options[:embedded] if @search_options and @search_options[:embedded]
     - module_name = (@search.related_search_class == "CalaisRelatedSearch" ? 'CREL' : 'SREL')
-    %li= tracked_click_link(search_path(options),related_term.html_safe, @search, @affiliate, index, module_name, @search_vertical)
+    %li= tracked_click_link(search_path(options),related_term.html_safe.downcase, @search, @affiliate, index, module_name, @search_vertical)

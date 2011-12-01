@@ -1123,7 +1123,7 @@ Feature: Affiliate clients
     And I fill in "query" with "obama"
     And I press "Search"
     Then I should see "Related Searches" in the search results section
-    And I should see "Some Unique Obama Term"
+    And I should see "some unique obama term"
     And I should not see "aff.gov"
 
   Scenario: Affiliate SAYT

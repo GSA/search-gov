@@ -68,19 +68,19 @@ Feature: Search
     And I press "Search"
     Then I should be on the search page
     And I should see "Related Searches for obama by USA.gov" in the search results section
-    And I should see "Some Unique Obama Term"
+    And I should see "some unique obama term"
     When I fill in "query" with "el paso"
     And I press "Search"
-    Then I should not see "El Presidente Mas Guapo"
+    Then I should not see "el presidente mas guapo"
 
   Scenario: Related Topics on Spanish SERPs
     Given the following Calais Related Searches exist:
     | term  | related_terms                   | locale |
-    | hello | Some Unique Related Term        | en     |
+    | hello | some unique related term        | en     |
     | obama | el presidente obama mas guapo   | es     |
     And the following SAYT Suggestions exist:
     | phrase                        |
-    | El Presidente Obama Mas Guapo |
+    | el presidente obama mas guapo |
     | el paso term                  |
     And I am on the homepage
     And I follow "Busque en español"
@@ -88,10 +88,10 @@ Feature: Search
     And I press "Buscar"
     Then I should be on the search page
     And I should see "Búsquedas relacionadas a obama de GobiernoUSA.gov" in the search results section
-    And I should see "El Presidente Obama Mas Guapo"
+    And I should see "el presidente obama mas guapo"
     When I fill in "query" with "hello"
     And I press "Buscar"
-    And I should not see "Some Unique Related Term"
+    And I should not see "some unique related term"
 
   Scenario: Site visitor sees both boosted result and featured collection for a given search
     Given the following Boosted Content entries exist:

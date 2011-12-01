@@ -35,7 +35,7 @@
       %ul
         - search.related_search.each_with_index do |related_term, index|
           - module_name = (search.related_search_class == "CalaisRelatedSearch" ? 'CREL' : 'SREL')
-          %li= tracked_click_link(search_path({:query=>strip_tags(related_term), :affiliate=> @affiliate, :m => true }),related_term.html_safe, search, @affiliate, index, module_name)
+          %li= tracked_click_link(search_path({:query=>strip_tags(related_term), :affiliate=> @affiliate, :m => true }),related_term.html_safe.downcase, search, @affiliate, index, module_name)
 
 - elsif search.error_message
   %p.noresults #{search.error_message}
