@@ -1685,9 +1685,11 @@ Feature: Affiliate clients
       | display_name | name    | contact_email | contact_name | domains         |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | whitehouse.gov  |
     And the following IndexedDocuments exist:
-      | url                                       | affiliate | title                             | description         |
-      | http://www.whitehouse.gov/our-government  | aff.gov   | Our Government \| The White House  | white house cabinet |
+      | url                                      | affiliate | title                             | description         |
+      | http://www.whitehouse.gov/our-government | aff.gov   | Our Government \| The White House | white house cabinet |
+      | http://www.whitehouse.gov/fake-page      | aff.gov   | Fake page                         | white house cabinet |
     And the url "http://www.whitehouse.gov/our-government" has been crawled
+    And the url "http://www.whitehouse.gov/fake-page" has been crawled
     And the following RSS feeds exist:
     | affiliate | url                                             | name    |
     | aff.gov   | http://www.whitehouse.gov/feed/blog/white-house | WH Blog |
@@ -1700,11 +1702,14 @@ Feature: Affiliate clients
     And I follow "Emergency Delete"
     And I fill in "URL*" with "http://www.whitehouse.gov/our-government"
     And I press "Add"
+    And I fill in "URL*" with "http://www.whitehouse.gov/fake-page"
+    And I press "Add"
 
     When I go to aff.gov's search page
     And I fill in "query" with "white house cabinet"
     And I press "Search"
-    Then I should not see "Our Government | The White House"
+    Then I should see 9 Bing search results
+    And I should not see "Our Government | The White House"
     And I should not see "Document Results for aff site"
 
     When I follow "WH Blog"
@@ -1715,12 +1720,15 @@ Feature: Affiliate clients
     And I follow "Site information"
     And I follow "Emergency Delete"
     And I press "Delete"
+    And I press "Delete"
 
     When I go to aff.gov's search page
     And I fill in "query" with "white house cabinet"
     And I press "Search"
-    Then I should see "Our Government | The White House"
+    Then I should see 10 Bing search results
     And I should see "Document Results for aff site"
+    And I should see "Fake page" in the indexed documents section
+    And I should not see "Our Government | The White House" in the indexed documents section
 
     When I follow "WH Blog"
     Then I should see "Results 1-1 of about 1 for 'white house cabinet'"

@@ -1239,13 +1239,39 @@ describe Search do
         search = Search.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 0))
         search.run
         search.indexed_documents.should_not be_nil
-        search.indexed_documents.total.should == 2
+        search.indexed_documents.count.should == 2
       end
 
       it "should not find any PDF documents if it's not the first page" do
         search = Search.new(@valid_options.merge(:query => 'pdf', :affiliate => @affiliate, :page => 2))
         search.run
         search.indexed_documents.should be_nil
+      end
+    end
+
+    context "when an affiliate has Bing results that are duplicated in indexed documents" do
+      before do
+        @affiliate.indexed_documents.destroy_all
+        @affiliate.indexed_documents.create!(:title => "Hack Day - USA.gov Blog",
+                                             :description => "Hack Day description",
+                                             :url => 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day',
+                                             :last_crawl_status => IndexedDocument::OK_STATUS)
+        @affiliate.indexed_documents.create!(:title => "Projects created - USA.gov Blog",
+                                             :description => "Projects created description",
+                                             :url => 'http://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day/',
+                                             :last_crawl_status => IndexedDocument::OK_STATUS)
+        IndexedDocument.reindex
+        Sunspot.commit
+      end
+
+      it "should not contain any indexed documents" do
+        search = Search.new(@valid_options.merge(:query => 'USA.gov blog', :affiliate => @affiliate, :page => 0))
+        search.should_receive(:process_results).and_return([{ 'title' => 'bing title 1', 'unescapedUrl' => 'http://blog.usa.gov/' },
+                                                            { 'title' => 'bing title 2', 'unescapedUrl' => 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day/' },
+                                                            { 'title' => 'bing title 3', 'unescapedUrl' => 'http://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day' }])
+        search.run
+        search.results.count == 3
+        search.indexed_documents.count.should == 0
       end
     end
 

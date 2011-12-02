@@ -246,3 +246,7 @@ end
 Then /^I should see the affiliate custom css$/ do
   page.should have_selector("head style")
 end
+
+Then /^I should see (\d+) Bing search results$/ do |count|
+  page.should have_selector("#results > .searchresult", :count => count)
+end

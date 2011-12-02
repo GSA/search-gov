@@ -201,6 +201,7 @@ class Search
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale)
       @indexed_documents = IndexedDocument.search_for(query, affiliate) if affiliate and @indexed_results.nil?
+      remove_duplicate_indexed_documents if @indexed_documents
     end
     unless affiliate
       @faqs = Faq.search_for(query, I18n.locale.to_s)
@@ -465,5 +466,17 @@ class Search
   def highlight_solr_hit_like_bing(hit, field_symbol)
     return hit.highlights(field_symbol).first.format { |phrase| "\xEE\x80\x80#{phrase}\xEE\x80\x81" } unless hit.highlights(field_symbol).first.nil?
     hit.instance.send(field_symbol)
+  end
+
+  def remove_duplicate_indexed_documents
+    @indexed_documents = @indexed_documents.hits(:verify => true)
+    @indexed_documents.delete_if do |indexed_document|
+      url = indexed_document.instance.url
+      url = url.end_with?('/') ? url[0..-2] : url
+      regex_escaped_url = Regexp.escape("#{url}")
+      matching_url_found = false
+      @results.each { |result| matching_url_found = true and break if result['unescapedUrl'] =~ /#{regex_escaped_url}\/?/i }
+      matching_url_found
+    end
   end
 end

@@ -71,7 +71,7 @@ Feature: Affiliate Search
     When I follow "Everything"
     Then I should see "Advanced Search"
     And I should see "Search" button
-    
+
     When I am on bar.gov's Spanish search page
     And I fill in "query" with "president"
     And I press "Buscar"
@@ -152,3 +152,15 @@ Feature: Affiliate Search
     When I fill in "query" with "whitehouse.gov"
     And I press "Search"
     Then I should see "WhiteHouse.gov" in bold font
+
+  Scenario: Filtering indexed documents when they are duplicated in Bing search results
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email  | contact_name |
+      | agency site  | agency.gov | aff@agency.gov | John Bar     |
+    And the following IndexedDocuments exist:
+      | title        | description                                                                         | url                 | affiliate  | last_crawl_status |
+      | USA.gov Blog | We help you find official U.S. government information and services on the Internet. | http://blog.usa.gov | agency.gov | OK                |
+    When I am on agency.gov's search page
+    And I fill in "query" with "usa.gov blog"
+    And I press "Search"
+    Then I should not see "Document Results for agency site"

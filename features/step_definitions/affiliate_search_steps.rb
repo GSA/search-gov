@@ -23,3 +23,6 @@ Then /^I should see "([^\"]*)" in bold font$/ do |text|
   page.should have_selector("strong", :text => text)
 end
 
+Then /^I should not see the indexed documents section$/ do
+  page.should_not have_selector("#indexed_documents")
+end
