@@ -4,7 +4,7 @@ set :branch,      "production"
 role :app, "192.168.100.164", "192.168.100.165", "192.168.100.166", "192.168.110.10", "192.168.100.161", "192.168.110.11"
 role :web, "192.168.100.164", "192.168.100.165", "192.168.100.166", "192.168.110.10", "192.168.100.161", "192.168.110.11"
 role :db,  "192.168.100.161", :primary => true
-role :resque_workers,  "192.168.100.164"
+role :resque_workers,  "192.168.100.164", "192.168.100.165", "192.168.100.166"
 
 before "deploy:symlink", "production_yaml_files"
 before "deploy:cleanup", "restart_resque_workers"
