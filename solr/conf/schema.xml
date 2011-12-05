@@ -13,6 +13,17 @@
         <filter class="solr.EnglishPorterFilterFactory" protected="protwords.txt"/>
       </analyzer>
     </fieldtype>
+    <fieldtype class="solr.TextField" positionIncrementGap="100" name="text_es">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StandardFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+        <filter class="solr.SynonymFilterFactory" synonyms="syn.txt" ignoreCase="true" expand="false"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Spanish" />
+      </analyzer>
+    </fieldtype>
     <fieldtype class="solr.RandomSortField" name="rand"/>
     <fieldtype name="boolean" class="solr.BoolField" omitNorms="true"/>
     <fieldtype name="sfloat" class="solr.SortableFloatField" omitNorms="true"/>
@@ -39,6 +50,7 @@
     <field name="class_name" type="string" indexed="true" stored="false" multiValued="false"/>
     <!-- *** This field is used by Sunspot! *** -->
     <field name="text" type="text" indexed="true" stored="true" multiValued="true"/>
+    <field name="text_es" type="text_es" indexed="true" stored="true" multiValued="true"/>
     <!-- *** This field is used by Sunspot! *** -->
     <field name="lat" type="sdouble" indexed="true" stored="true" multiValued="false"/>
     <field name="long" type="sdouble" indexed="true" stored="true" multiValued="false"/>
@@ -46,6 +58,10 @@
     <dynamicField name="*_text" type="text" indexed="true" stored="true" multiValued="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="*_texts" type="text" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_text_es" type="text_es" indexed="true" stored="true" multiValued="true"/>
+    <!-- *** This dynamicField is used by Sunspot! *** -->
+    <dynamicField name="*_texts_es" type="text_es" indexed="true" stored="true" multiValued="true"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->
     <dynamicField name="random_*" type="rand" indexed="true" stored="false" multiValued="false"/>
     <!-- *** This dynamicField is used by Sunspot! *** -->

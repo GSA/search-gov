@@ -70,7 +70,7 @@ class IndexedDocument < ActiveRecord::Base
           fulltext query do
             highlight :title, :description, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
           end
-          with(:affiliate_id, affiliate.id)
+          with(:affiliate_id, affiliate.id) if affiliate
           without(:url).any_of affiliate.excluded_urls.collect{|excluded_url| excluded_url.url } unless affiliate.nil? or affiliate.excluded_urls.empty?
           with(:locale, locale)
           with(:last_crawl_status, OK_STATUS)

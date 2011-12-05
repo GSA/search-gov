@@ -20,10 +20,23 @@ class BoostedContent < ActiveRecord::Base
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
 
   searchable :auto_index => false do
-    text :title, :boost => 10.0
-    text :description, :boost => 4.0
-    text :keywords do
-      keywords.split(',') unless keywords.nil?
+    text :title, :boost => 10.0 do |boosted_content|
+      boosted_content.title if boosted_content.locale == "en"
+    end
+    text :description, :boost => 4.0 do |boosted_content|
+      boosted_content.description if boosted_content.locale == "en"
+    end
+    text :keywords do |boosted_content|
+      boosted_content.keywords.split(',') unless boosted_content.keywords.nil? or boosted_content.locale != "en"
+    end
+    text :title_es, :boost => 10.0, :as => "title_text_es" do |boosted_content|
+      boosted_content.title if boosted_content.locale == "es"
+    end
+    text :description_es, :boost => 4.0, :as => "description_text_es" do |boosted_content|
+      boosted_content.description if boosted_content.locale == "es"
+    end
+    text :keywords_es, :as => "keywords_text_es" do |boosted_content|
+      boosted_content.keywords.split(',') unless boosted_content.keywords.nil? or boosted_content.locale != "es"
     end
     string :affiliate_name do |boosted_content|
       if boosted_content.affiliate_id.nil?
@@ -57,7 +70,7 @@ class BoostedContent < ActiveRecord::Base
     ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate_name, :locale => locale}) do
       search do
         fulltext query do
-          highlight :title, :description, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
+          highlight :title, :description, :title_es, :description_es, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
         end
         with(:affiliate_name, affiliate_name)
         with(:locale, locale)

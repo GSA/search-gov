@@ -239,7 +239,6 @@ describe BoostedContent do
     end
 
     it "should create and index boosted Contents from an xml document" do
-      puts "BoostedContent ids: #{BoostedContent.solr_search_ids}"
       results = BoostedContent.process_boosted_content_xml_upload_for(basic_affiliate, StringIO.new(site_xml))
 
       basic_affiliate.reload
@@ -417,6 +416,42 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
         ActiveSupport::Notifications.should_receive(:instrument).
           with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :model=>"BoostedContent", :term => "foo", :locale => "en")))
         BoostedContent.search_for('foo')
+      end
+    end
+    
+    context "when the Boosted Content is in English" do
+      before do
+        @boosted_content = BoostedContent.create!(@valid_attributes.merge(:title => 'sports', :description => 'speak', :keywords => 'dance'))
+        Sunspot.commit
+        BoostedContent.reindex
+      end
+      
+      it "should find by title, description and keywords, and highlight terms in the title and description" do
+        title_search = BoostedContent.search_for('sports', @affiliate)
+        title_search.total.should == 1
+        title_search.hits.first.highlight(:title).should_not be_nil
+        description_search = BoostedContent.search_for('speak', @affiliate)
+        description_search.total.should == 1
+        description_search.hits.first.highlight(:description).should_not be_nil
+        BoostedContent.search_for('dance', @affiliate).total.should == 1
+      end
+    end
+    
+    context "when the Boosted Content is in Spanish" do
+      before do
+        @boosted_content = BoostedContent.create!(@valid_attributes.merge(:title => 'jugar', :description => 'hablar', :keywords => 'caminar', :locale => 'es'))
+        Sunspot.commit
+        BoostedContent.reindex
+      end
+      
+      it "should find stemmed equivalents for the title, description and keywords, and highlight terms in the title and description" do
+        title_search = BoostedContent.search_for('jugando', @affiliate, "es")
+        title_search.total.should == 1
+        title_search.hits.first.highlight(:title_text).should_not be_nil
+        description_search = BoostedContent.search_for('hablando', @affiliate, "es")
+        description_search.total.should == 1
+        description_search.hits.first.highlight(:description_text).should_not be_nil
+        BoostedContent.search_for('caminando', @affiliate, "es").total.should == 1
       end
     end
   end

@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(:version => 20111205205515) do
     t.string   "youtube_username"
     t.text     "previous_header"
     t.text     "previous_footer"
+    t.boolean  "is_image_search_enabled",                        :default => true
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"
-    t.boolean  "is_image_search_enabled",                        :default => true
     t.string   "top_searches_label",                             :default => "Search Trends"
     t.string   "theme"
     t.string   "staged_theme"
