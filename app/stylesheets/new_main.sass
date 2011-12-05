@@ -1720,9 +1720,11 @@ h3.api-item
   @include clearfix
   .theme
     float: left
-    margin-right: 25px
+    margin: 0 15px 10px 1px
     padding-top: 5px
-    width: 102px
+    width: 115px
+    &.hidden-custom-theme
+      display: none
     &:hover
       cursor: pointer
     input
@@ -1732,10 +1734,13 @@ h3.api-item
       position: relative
       top: 0
       width: auto
+      &.customize-theme-button
+        width: 88%
     label
       float: left
+      font-size: 12px
       font-weight: normal
-      line-height: 16px
+      line-height: 15px
       margin: 0 0 0 5px
       padding: 0
       width: auto
@@ -1756,5 +1761,3 @@ h3.api-item
   span
     color: #5D5D5D
     font-size: 15px
-  .theme
-    padding-top: 0

@@ -9,7 +9,8 @@ describe Affiliate do
       :domains => "someaffiliate.gov",
       :website => "http://www.someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
-      :footer => "<center>gasp</center>"
+      :footer => "<center>gasp</center>",
+      :theme => "elegant"
     }
     @valid_attributes = @valid_create_attributes.merge(:name => "someaffiliate.gov")
   end
@@ -86,13 +87,13 @@ describe Affiliate do
       end
 
       it "should update css_properties with json string from css property hash" do
-        css_property_hash = { 'link_color' => '#33ff33', 'visited_link_color' => '#0000ff' }
+        css_property_hash = { 'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff' }
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
         JSON.parse(affiliate.css_properties, :symbolize_names => true).should == css_property_hash
       end
 
       it "should update staged_css_properties with json string from staged_css property hash" do
-        staged_css_property_hash = { 'link_color' => '#33ff33', 'visited_link_color' => '#0000ff' }
+        staged_css_property_hash = { 'title_link_color' => '#33ff33', 'visited_title_link_color' => '#0000ff' }
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_css_property_hash => staged_css_property_hash))
         JSON.parse(affiliate.staged_css_properties).should == staged_css_property_hash
       end
@@ -115,62 +116,45 @@ describe Affiliate do
       it "should be valid when color property in css property hash consists of a # character followed by 3 or 6 hexadecimal digits " do
         %w{ #333 #FFF #fff #12F #666666 #666FFF #FFFfff #ffffff }.each do |valid_color|
           Affiliate.new(@valid_create_attributes.merge(
-                            :css_property_hash => { 'link_color' => "#{valid_color}",
-                                                    'visited_link_color' => "#{valid_color}",
-                                                    'hover_link_color' => "#{valid_color}",
+                            :css_property_hash => { 'left_tab_text_color' => "#{valid_color}",
+                                                    'title_link_color' => "#{valid_color}",
+                                                    'visited_title_link_color' => "#{valid_color}",
                                                     'description_text_color' => "#{valid_color}",
-                                                    'url_link_color' => "#{valid_color}",
-                                                    'visited_url_link_color' => "#{valid_color}",
-                                                    'hover_url_link_color' => "#{valid_color}" })).should be_valid
+                                                    'url_link_color' => "#{valid_color}" })).should be_valid
         end
       end
 
       it "should be invalid when color property in css property hash does not consist of a # character followed by 3 or 6 hexadecimal digits " do
         %w{ 333 invalid #err #1 #22 #4444 #55555 ffffff 1 22 4444 55555 666666 }.each do |invalid_color|
           affiliate = Affiliate.new(@valid_create_attributes.merge(
-                                        :css_property_hash => { 'link_color' => "#{invalid_color}",
-                                                                'visited_link_color' => "#{invalid_color}",
-                                                                'hover_link_color' => "#{invalid_color}",
+                                        :css_property_hash => { 'left_tab_text_color' => "#{invalid_color}",
+                                                                'title_link_color' => "#{invalid_color}",
+                                                                'visited_title_link_color' => "#{invalid_color}",
                                                                 'description_text_color' => "#{invalid_color}",
-                                                                'url_link_color' => "#{invalid_color}",
-                                                                'visited_url_link_color' => "#{invalid_color}",
-                                                                'hover_url_link_color' => "#{invalid_color}" }))
+                                                                'url_link_color' => "#{invalid_color}" }))
           affiliate.should_not be_valid
-          affiliate.errors[:base].should include("Link color should consist of a # character followed by 3 or 6 hexadecimal digits")
-          affiliate.errors[:base].should include("Visited link color should consist of a # character followed by 3 or 6 hexadecimal digits")
-          affiliate.errors[:base].should include("Hover link color should consist of a # character followed by 3 or 6 hexadecimal digits")
+          affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
+          affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
           affiliate.errors[:base].should include("Description text color should consist of a # character followed by 3 or 6 hexadecimal digits")
           affiliate.errors[:base].should include("Url link color should consist of a # character followed by 3 or 6 hexadecimal digits")
-          affiliate.errors[:base].should include("Visited url link color should consist of a # character followed by 3 or 6 hexadecimal digits")
-          affiliate.errors[:base].should include("Hover url link color should consist of a # character followed by 3 or 6 hexadecimal digits")
         end
       end
 
       it "should validate color property in staged css property hash" do
-        affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_css_property_hash => { 'link_color' => 'invalid', 'visited_link_color' => '#err' }))
+        affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_css_property_hash => { 'title_link_color' => 'invalid', 'visited_title_link_color' => '#err' }))
         affiliate.save.should be_false
-        affiliate.errors[:base].should include("Link color should consist of a # character followed by 3 or 6 hexadecimal digits")
-        affiliate.errors[:base].should include("Visited link color should consist of a # character followed by 3 or 6 hexadecimal digits")
-      end
-
-      it "should translate theme to css properties" do
-        Affiliate::THEMES.keys.each do |theme|
-          affiliate = Affiliate.create!(@valid_create_attributes.merge(:name => theme.to_s, :theme => theme.to_s))
-          affiliate.staged_css_property_hash.should == Affiliate::THEMES[theme]
-        end
+        affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
+        affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
       end
     end
 
     describe "on update_attributes_for_staging" do
       let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
       let(:staged_css_property_hash) { { 'font_family' => 'Verdana, sans-serif',
-                                         'link_color' => '#111',
-                                         'visited_link_color' => '#222',
-                                         'hover_link_color' => '#333',
+                                         'title_link_color' => '#111',
+                                         'visited_title_link_color' => '#222',
                                          'description_text_color' => '#444',
-                                         'url_link_color' => '#555',
-                                         'visited_url_link_color' => '#666',
-                                         'hover_url_link_color' => '#777' } }
+                                         'url_link_color' => '#555' } }
 
       before do
         @update_params = { :staged_domains => "updated.domain.gov",
@@ -178,6 +162,7 @@ describe Affiliate do
                            :staged_footer => "<span>footer</span>",
                            :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
                            :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
+                           :staged_theme => Affiliate::THEMES.keys.first.to_s,
                            :staged_css_property_hash =>  staged_css_property_hash }
       end
 
@@ -194,6 +179,7 @@ describe Affiliate do
         affiliate.staged_footer.should == @update_params[:staged_footer]
         affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
         affiliate.staged_search_results_page_title.should == @update_params[:staged_search_results_page_title]
+        affiliate.staged_theme.should == @update_params[:staged_theme]
         JSON.parse(affiliate.staged_css_properties).should == @update_params[:staged_css_property_hash]
       end
 
@@ -243,7 +229,8 @@ describe Affiliate do
                           :staged_footer => "<span>footer</span>",
                           :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
                           :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
-                          :staged_css_properties => { 'link_color' => '#ffffff', 'visited_link_color' => '00ff00' }.to_json }
+                          :staged_theme => Affiliate::THEMES.keys.first,
+                          :staged_css_properties => { 'title_link_color' => '#ffffff', 'visited_title_link_color' => '00ff00' }.to_json }
       end
 
       it "should store a copy of the previous version of the header and footer" do
@@ -266,12 +253,14 @@ describe Affiliate do
         affiliate.footer.should == @update_params[:staged_footer]
         affiliate.affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
         affiliate.search_results_page_title.should == @update_params[:staged_search_results_page_title]
+        affiliate.theme.should == @update_params[:staged_theme]
         affiliate.css_properties.should == @update_params[:staged_css_properties]
         affiliate.staged_domains.should == @update_params[:staged_domains]
         affiliate.staged_header.should == @update_params[:staged_header]
         affiliate.staged_footer.should == @update_params[:staged_footer]
         affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
         affiliate.staged_search_results_page_title.should == @update_params[:staged_search_results_page_title]
+        affiliate.staged_theme.should == @update_params[:staged_theme]
         affiliate.staged_css_properties.should == @update_params[:staged_css_properties]
       end
 
@@ -508,7 +497,8 @@ describe Affiliate do
         :staged_search_results_page_title => 'custom serp title',
         :staged_favicon_url => 'http://cdn.agency.gov/favicon.ico',
         :staged_external_css_url => 'http://cdn.agency.gov/custom.css',
-        :staged_css_properties => { 'link_color' => '#888888' }.to_json } }
+        :staged_theme => Affiliate::THEMES.keys.first.to_s,
+        :staged_css_properties => { 'title_link_color' => '#888888' }.to_json } }
 
     let(:staged_attributes) {
       create_staged_attributes.merge(:staged_affiliate_template_id => affiliate_templates(:basic_gray).id).except(:staged_affiliate_template)
@@ -520,7 +510,7 @@ describe Affiliate do
       it "should return all staging attributes" do
         [:staged_domains, :staged_header, :staged_footer,
          :staged_affiliate_template_id, :staged_search_results_page_title,
-         :staged_favicon_url, :staged_external_css_url, :staged_css_properties].each do |key|
+         :staged_favicon_url, :staged_external_css_url, :staged_theme, :staged_css_properties].each do |key|
           affiliate.staging_attributes.should include(key)
         end
       end
@@ -532,13 +522,10 @@ describe Affiliate do
   describe "#cancel_staged_changes" do
     let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
     let(:staged_css_properties) { { 'font_family' => 'Verdana, sans-serif',
-                                    'link_color' => '#111',
-                                    'visited_link_color' => '#222',
-                                    'hover_link_color' => '#333',
+                                    'title_link_color' => '#111',
+                                    'visited_title_link_color' => '#222',
                                     'description_text_color' => '#444',
-                                    'url_link_color' => '#555',
-                                    'visited_url_link_color' => '#666',
-                                    'hover_url_link_color' => '#777' }.to_json }
+                                    'url_link_color' => '#555' }.to_json }
 
     before do
       @update_params = { :staged_domains => "updated.domain.gov",
@@ -548,6 +535,7 @@ describe Affiliate do
                          :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
                          :staged_favicon_url => 'http://cdn.agency.gov/staged_favicon.ico',
                          :staged_external_css_url => "http://cdn.agency.gov/staged_custom.css",
+                         :staged_theme => Affiliate::THEMES.keys.first.to_s,
                          :staged_css_properties => staged_css_properties }
       affiliate.update_attributes_for_staging(@update_params).should be_true
     end
@@ -561,6 +549,7 @@ describe Affiliate do
       affiliate.staged_search_results_page_title.should_not == @update_params[:staged_search_results_page_title]
       affiliate.staged_favicon_url.should_not == @update_params[:staged_favicon_url]
       affiliate.staged_external_css_url.should_not == @update_params[:staged_external_css_url]
+      affiliate.staged_theme.should_not == @update_params[:staged_theme]
       affiliate.staged_css_properties.should_not == @update_params[:staged_css_properties]
     end
 
@@ -676,6 +665,43 @@ describe Affiliate do
       context "and url is outside the domain" do
         specify { affiliate.get_matching_domain(url_outside_domain).should be_blank }
       end
+    end
+  end
+
+  describe "#css_property_hash" do
+    context "when theme is custom" do
+      let(:css_property_hash) { { :title_link_color => '#33ff33', :visited_title_link_color => '#0000ff' } }
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes.merge(:theme => 'custom', :css_properties => css_property_hash.to_json)) }
+
+      specify { affiliate.css_property_hash.should == css_property_hash }
+    end
+
+    context "when theme is not custom" do
+      let(:css_property_hash) { { :font_family => Affiliate::FONT_FAMILIES.last } }
+      let(:affiliate) { Affiliate.create!(
+          @valid_create_attributes.merge(:theme => 'elegant',
+                                         :css_properties => css_property_hash.to_json)) }
+
+      specify { affiliate.css_property_hash.should == Affiliate::THEMES[:elegant].merge(css_property_hash) }
+    end
+  end
+
+  describe "#staged_css_property_hash" do
+    context "when theme is custom" do
+      let(:staged_css_property_hash) { { :title_link_color => '#33ff33', :visited_title_link_color => '#0000ff' } }
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes.merge(:theme => 'natural', :staged_theme => 'custom', :staged_css_properties => staged_css_property_hash.to_json)) }
+
+      specify { affiliate.staged_css_property_hash.should == staged_css_property_hash }
+    end
+
+    context "when theme is not custom" do
+      let(:staged_css_property_hash) { { :font_family => Affiliate::FONT_FAMILIES.last } }
+      let(:affiliate) { Affiliate.create!(
+          @valid_create_attributes.merge(:theme => 'natural',
+                                         :staged_theme => 'elegant',
+                                         :staged_css_properties => staged_css_property_hash.to_json)) }
+
+      specify { affiliate.staged_css_property_hash.should == Affiliate::THEMES[:elegant].merge(staged_css_property_hash) }
     end
   end
 end

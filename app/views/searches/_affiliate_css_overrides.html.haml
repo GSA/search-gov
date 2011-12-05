@@ -10,17 +10,11 @@
       font-family: #{render_affiliate_css_property_value(css_property_hash, :font_family)}
     #search
       a
-        color: #{render_affiliate_css_property_value(css_property_hash, :link_color)}
+        color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
         &:visited
-          color: #{render_affiliate_css_property_value(css_property_hash, :visited_link_color)}
-        &:hover
-          color: #{render_affiliate_css_property_value(css_property_hash, :hover_link_color)}
+          color: #{render_affiliate_css_property_value(css_property_hash, :visited_title_link_color)}
     #results .searchresult h3
       color: #{render_affiliate_css_property_value(css_property_hash, :description_text_color)}
       a
         color: #{render_affiliate_css_property_value(css_property_hash, :url_link_color)}
-        &:visited
-          color: #{render_affiliate_css_property_value(css_property_hash, :visited_url_link_color)}
-        &:hover
-          color: #{render_affiliate_css_property_value(css_property_hash, :hover_url_link_color)}
 

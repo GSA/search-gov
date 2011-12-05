@@ -80,4 +80,14 @@ describe AffiliateHelper do
       it { should have_selector "div", :class => 'crawled-url-error-message', :id => 'crawled-url-error-message-12345' }
     end
   end
+
+  describe "#render_staged_color_text_field_tag" do
+    let(:affiliate) { mock_model(Affiliate, :staged_theme => 'natural', :staged_css_property_hash => { :left_tab_text_color => Affiliate::THEMES[:natural][:left_tab_text_color] }) }
+
+    context "when staged_theme is not custom" do
+      subject { helper.render_staged_color_text_field_tag(affiliate, :left_tab_text_color) }
+
+      it { should have_selector "input", :disabled => 'disabled', :value => '#B58100' }
+    end
+  end
 end

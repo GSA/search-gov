@@ -123,6 +123,7 @@ class SearchesController < ApplicationController
       @affiliate.affiliate_template_id = @affiliate.staged_affiliate_template_id
       @affiliate.favicon_url = @affiliate.staged_favicon_url
       @affiliate.external_css_url = @affiliate.staged_external_css_url
+      @affiliate.theme = @affiliate.staged_theme
       @affiliate.css_properties = @affiliate.staged_css_properties
     end
   end

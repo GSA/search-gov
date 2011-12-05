@@ -24,13 +24,12 @@ class Affiliate < ActiveRecord::Base
   after_destroy :remove_boosted_contents_from_index
   before_validation :set_default_name, :on => :create
   validate :validate_css_property_hash
-  before_create :set_uses_one_serp, :translate_theme_to_css_properties
+  before_create :set_uses_one_serp
   before_save :set_default_affiliate_template, :normalize_domains, :ensure_http_prefix, :set_css_properties
   before_validation :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :uses_one_serp
-  attr_accessor :theme
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
@@ -46,46 +45,37 @@ class Affiliate < ActiveRecord::Base
                    'Georgia, serif', 'Times, serif']
 
   THEMES = ActiveSupport::OrderedHash.new
-  THEMES[:default] = { :left_tab_text_color => '#9E3030',
-                       :link_color => '#2200CC',
-                       :visited_link_color => '#2200CC',
-                       :hover_link_color => '#990000',
+  THEMES[:default] = { :display_name => 'Liberty Bell',
+                       :left_tab_text_color => '#9E3030',
+                       :title_link_color => '#2200CC',
+                       :visited_title_link_color => '#800080',
                        :description_text_color => '#000000',
-                       :url_link_color => '#008000',
-                       :visited_url_link_color => '#008000',
-                       :hover_url_link_color => '#008000' }
-  THEMES[:elegant] = { :left_tab_text_color => '#C71D2E',
-                       :link_color => '#336699',
-                       :visited_link_color => '#336699',
-                       :hover_link_color => '#336699',
+                       :url_link_color => '#008000' }
+  THEMES[:elegant] = { :display_name => 'Gettysburg',
+                       :left_tab_text_color => '#C71D2E',
+                       :title_link_color => '#336699',
+                       :visited_title_link_color => '#8F5576',
                        :description_text_color => '#595959',
-                       :url_link_color => '#007F00',
-                       :visited_url_link_color => '#007F00',
-                       :hover_url_link_color => '#007F00' }
-  THEMES[:fun_blue] = { :left_tab_text_color => '#87CB00',
-                        :link_color => '#0CA5D8',
-                       :visited_link_color => '#0CA5D8',
-                       :hover_link_color => '#0CA5D8',
+                       :url_link_color => '#007F00' }
+  THEMES[:fun_blue] = { :display_name => 'Virgin Islands',
+                        :left_tab_text_color => '#87CB00',
+                        :title_link_color => '#0CA5D8',
+                       :visited_title_link_color => '#A972AB',
                        :description_text_color => '#444444',
-                       :url_link_color => '#3DB7E0',
-                       :visited_url_link_color => '#3DB7E0',
-                       :hover_url_link_color => '#3DB7E0' }
-  THEMES[:gray] = { :left_tab_text_color => '#A10000',
-                    :link_color => '#555555',
-                    :visited_link_color => '#555555',
-                    :hover_link_color => '#555555',
-                    :description_text_color => '#999999',
-                    :url_link_color => '#2C5D80',
-                    :visited_url_link_color => '#2C5D80',
-                    :hover_url_link_color => '#2C5D80' }
-  THEMES[:natural] = { :left_tab_text_color => '#B58100',
-                       :link_color => '#B58100',
-                       :visited_link_color => '#B58100',
-                       :hover_link_color => '#B58100',
+                       :url_link_color => '#3DB7E0' }
+  THEMES[:gray] = { :display_name => 'Mount Rushmore',
+                    :left_tab_text_color => '#A10000',
+                    :title_link_color => '#555555',
+                    :visited_title_link_color => '#854268',
+                    :description_text_color => '#595959',
+                    :url_link_color => '#2C5D80' }
+  THEMES[:natural] = { :display_name => 'Grand Canyon',
+                       :left_tab_text_color => '#B58100',
+                       :title_link_color => '#B58100',
+                       :visited_title_link_color => '#008EB5',
                        :description_text_color => '#333333',
-                       :url_link_color => '#B58100',
-                       :visited_url_link_color => '#B58100',
-                       :hover_url_link_color => '#B58100' }
+                       :url_link_color => '#B58100' }
+  THEMES[:custom] = { :display_name => 'Custom' }
 
   DEFAULT_CSS_PROPERTIES = { :font_family => FONT_FAMILIES[0] }.merge(THEMES[:default])
 
@@ -129,7 +119,7 @@ class Affiliate < ActiveRecord::Base
 
   def update_attributes_for_current(attributes)
     attributes.merge!(:previous_header => self.header, :previous_footer => self.footer)
-    %w{ domains header footer affiliate_template_id search_results_page_title favicon_url external_css_url css_properties css_property_hash }.each do |field|
+    %w{ domains header footer affiliate_template_id search_results_page_title favicon_url external_css_url theme css_properties css_property_hash }.each do |field|
       attributes[field.to_sym] = attributes["staged_#{field}".to_sym] if attributes.include?("staged_#{field}".to_sym)
     end
     attributes[:has_staged_content] = false
@@ -159,6 +149,7 @@ class Affiliate < ActiveRecord::Base
       :staged_search_results_page_title => self.staged_search_results_page_title,
       :staged_favicon_url => self.staged_favicon_url,
       :staged_external_css_url => self.staged_external_css_url,
+      :staged_theme => self.staged_theme,
       :staged_css_properties => self.staged_css_properties
     }
   end
@@ -176,6 +167,7 @@ class Affiliate < ActiveRecord::Base
       :staged_search_results_page_title => self.search_results_page_title,
       :staged_favicon_url => self.favicon_url,
       :staged_external_css_url => self.external_css_url,
+      :staged_theme => self.theme,
       :staged_css_properties => self.css_properties,
       :has_staged_content => false
     })
@@ -230,11 +222,19 @@ class Affiliate < ActiveRecord::Base
   end
 
   def css_property_hash
-    @css_property_hash ||= (css_properties.blank? ? {} : JSON.parse(css_properties, :symbolize_keys => true))
+    if self.theme.to_sym == :custom
+      @css_property_hash ||= (css_properties.blank? ? {} : JSON.parse(css_properties, :symbolize_keys => true))
+    else
+      @css_property_hash ||= css_properties.blank? ? THEMES[self.theme.to_sym] : THEMES[self.theme.to_sym].merge(JSON.parse(css_properties, :symbolize_keys => true))
+    end
   end
 
   def staged_css_property_hash
-    @staged_css_property_hash ||= (staged_css_properties.blank? ? {} : JSON.parse(staged_css_properties, :symbolize_keys => true))
+    if self.staged_theme.to_sym == :custom
+      @staged_css_property_hash ||= (staged_css_properties.blank? ? {} : JSON.parse(staged_css_properties, :symbolize_keys => true))
+    else
+      @staged_css_property_hash ||= staged_css_properties.blank? ? THEMES[self.staged_theme.to_sym] : THEMES[self.staged_theme.to_sym].merge(JSON.parse(staged_css_properties, :symbolize_keys => true))
+    end
   end
 
   def active_top_searches
@@ -310,9 +310,5 @@ class Affiliate < ActiveRecord::Base
 
   def set_uses_one_serp
     self.uses_one_serp = true if self.uses_one_serp.nil?
-  end
-
-  def translate_theme_to_css_properties
-    self.staged_css_properties = THEMES[@theme.to_sym].to_json unless @theme.nil?
   end
 end

@@ -18,42 +18,39 @@
         = select_tag 'affiliate[staged_css_property_hash][font_family]', options_for_select(Affiliate::FONT_FAMILIES, render_affiliate_css_property_value(@affiliate.staged_css_property_hash, :font_family))
     %li.use-colors-from-theme
       %span Use colors from a theme
-      = render_site_themes
+      = render_site_themes @affiliate
     %li.css-overrides
       %div
         = label_tag 'affiliate[staged_css_property_hash][left_tab_text_color]', 'Left tab text color'
-        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :left_tab_text_color
+        = render_staged_color_text_field_tag @affiliate, :left_tab_text_color
     %li.css-overrides
       %div
-        = label_tag 'affiliate[staged_css_property_hash][link_color]', 'Link color'
-        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :link_color
+        = label_tag 'affiliate[staged_css_property_hash][title_link_color]', 'Title link color'
+        = render_staged_color_text_field_tag @affiliate, :title_link_color
       %div
-        = label_tag 'affiliate[staged_css_property_hash][visited_link_color]', 'Visited link color'
-        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :visited_link_color
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][hover_link_color]', 'Hover link color'
-        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :hover_link_color
+        = label_tag 'affiliate[staged_css_property_hash][visited_title_link_color]', 'Visited title link color'
+        = render_staged_color_text_field_tag @affiliate, :visited_title_link_color
     %li.css-overrides
       %div
         = label_tag 'affiliate[staged_css_property_hash][description_text_color]', 'Description text color'
-        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :description_text_color
+        = render_staged_color_text_field_tag @affiliate, :description_text_color
     %li.css-overrides
       %div
         = label_tag 'affiliate[staged_css_property_hash][url_link_color]', 'URL link color'
-        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :url_link_color
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][visited_url_link_color]', 'Visited URL link color'
-        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :visited_url_link_color
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][hover_url_link_color]', 'Hover URL link color'
-        = render_staged_color_text_field_tag @affiliate.staged_css_property_hash, :hover_url_link_color
+        = render_staged_color_text_field_tag @affiliate, :url_link_color
     %li
-      = link_to "+ Custom color tips", "#custom_style_tips", :id => "custom_style_tips", :class => "sliding_trigger"
-      %div#custom_style_tips_content.sliding_content
+      %div
+        %h2 Custom color tips
         %p
-          Choose a theme by clicking on one of the predefined themes.
+          To customize a predefined theme, click on one of the 'Customize' buttons.
         %p
-          Customize color by clicking on the color picker text field and click anywhere inside the color picker window.
+          Customize color by clicking on the color picker text field and drag the crosshair icon
+          = image_tag '/javascripts/jscolor/cross.gif', :alt => 'crosshair icon'
+          inside the color picker window.
+          %br/
+          Drag the triangle icon
+          = image_tag '/javascripts/jscolor/arrow.gif', :alt => 'arrow icon'
+          to control the color saturation.
           When you are done, click anywhere outside the color picker window.
   %li
     = look_and_feel_form.label :staged_external_css_url, "External CSS URL"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111130175117) do
+ActiveRecord::Schema.define(:version => 20111205205515) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(:version => 20111130175117) do
     t.boolean  "uses_one_serp"
     t.boolean  "is_image_search_enabled",                        :default => true
     t.string   "top_searches_label",                             :default => "Search Trends"
+    t.string   "theme"
+    t.string   "staged_theme"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

@@ -23,9 +23,13 @@ Given /^the following Affiliates exist:$/ do |table|
     if hash[:uses_one_serp]
       affiliate_template = nil
       staged_affiliate_template = nil
+      theme = hash[:theme] || 'custom'
+      staged_theme = hash[:theme] || 'custom'
     else
       affiliate_template = hash["affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["affiliate_template_name"])
       staged_affiliate_template = hash["staged_affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["staged_affiliate_template_name"])
+      theme = nil
+      staged_theme = nil
     end
     domains = hash[:domains].split(',').join("\n") unless hash[:domains].blank?
     staged_domains = hash[:staged_domains].split(',').join("\n") unless hash[:staged_domains].blank?
@@ -56,6 +60,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :staged_external_css_url => hash["staged_external_css_url"],
       :favicon_url => hash["favicon_url"],
       :staged_favicon_url => hash["staged_favicon_url"],
+      :theme => theme,
+      :staged_theme => staged_theme,
       :css_properties => css_properties.to_json,
       :top_searches_label => hash["top_searches_label"] || 'Search Trends'
     )
@@ -254,3 +260,21 @@ end
 Then /^I should see (\d+) Bing search results$/ do |count|
   page.should have_selector("#results > .searchresult", :count => count)
 end
+
+Then /^the "([^"]*)" theme should be selected$/ do |theme|
+  field_labeled(theme)['checked'].should be_true
+end
+
+Then /^the "([^"]*)" field should be disabled$/ do |label|
+  field_labeled(label)['disabled'].should == 'disabled'
+end
+
+Then /^the "Custom" theme should be visible$/ do
+  page.should_not have_selector(".hidden-custom-theme")
+end
+
+Then /^the "Custom" theme should not be visible$/ do
+  page.should have_selector(".hidden-custom-theme")
+end
+
+
