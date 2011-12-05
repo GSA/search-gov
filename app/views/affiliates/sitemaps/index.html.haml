@@ -6,7 +6,7 @@
       Sitemaps are an easy way for webmasters to inform search engines about pages on their sites that are available for crawling.  Web crawlers usually discover pages from links within the site and from other sites and sitemaps are recommended for content that is not represented in commercial search engines.
     %p
       USASearch uses sitemaps to supplement any URLs that may not be found in Bing.
-    .add-sitemap{:style => "width: 570px;"}
+    .add-sitemap
       = form_for([@affiliate, @sitemap], :html => { :multipart => true }) do |f|
         %h2 Add a Sitemap
         = render :partial => 'form', :locals => { :form => f }
@@ -16,10 +16,10 @@
         %colgroup
           %col{ :class => 'url' }
           %col{ :class => 'actions' }
-        %thead
-          %tr
-            %th{ :colspan => 2 }
-              - unless @sitemaps.blank?
+        - unless @sitemaps.blank?
+          %thead
+            %tr
+              %th{ :colspan => 2 }
                 %span= page_entries_info @sitemaps, :html => false
         %tbody
           %tr.column-header
