@@ -9,9 +9,9 @@ namespace :usasearch do
         FasterCSV.parse(File.open(args.csv_file).read, :skip_blanks => true, :headers => true) do |row|
           begin
             affiliate_attributes = {
-                :display_name => row[0],
-                :name => row[1],
-                :domains => row[2].gsub(/,/, "\n"),
+                :display_name => row[1],
+                :name => row[0].downcase,
+                :domains => row[2].gsub(/,/, "\n").gsub(/http\:\/\/www\./, "").gsub(/\//, ""),
                 :header => row[3],
                 :footer => row[4],
                 :website => row[5]
@@ -19,8 +19,8 @@ namespace :usasearch do
             affiliate = Affiliate.new(affiliate_attributes)
             users = row[6].split(",").collect{|email| User.find_by_email(email)}
             affiliate.users << users
-            affiliate.save! 
-          rescue 
+            affiliate.save!
+          rescue Exception => e
             Rails.logger.error("Unable to create affiliate with name: #{affiliate_attributes[:name]}.")
             Rails.logger.error("Additional information: #{affiliate.errors.full_messages.to_sentence}") if affiliate and affiliate.errors.empty? == false
           end
