@@ -313,7 +313,7 @@ class Search
       generate_affiliate_scope if using_affiliate_scope?
     else
       if self.fedstates && !self.fedstates.empty? && self.fedstates != 'all'
-        "(scopeid:usagov#{self.fedstates}) #{generate_excluded_scope}"
+        "(scopeid:usagov#{self.fedstates})"
       else
         generate_default_scope
       end
@@ -325,11 +325,7 @@ class Search
   end
 
   def generate_default_scope
-    generate_excluded_scope.size > 0 ? "#{DEFAULT_SCOPE} #{generate_excluded_scope}" : DEFAULT_SCOPE
-  end
-
-  def generate_excluded_scope
-    @exlcuded_domains ||= ExcludedDomain.all.collect { |excluded_domain| "-site:#{excluded_domain.domain}" }.join(" ")
+    DEFAULT_SCOPE
   end
 
   def query_plus_locale

@@ -715,7 +715,7 @@ module SearchHelper
   end
 
   def url_is_excluded(url, affiliate)
-    return false unless affiliate
-    return affiliate.excluded_urls.collect{|excluded_url| excluded_url.url}.include?(url)
+    ExcludedDomain.all.each{|excluded_domain| return true if URI::parse(url).host.ends_with(excluded_domain.domain) }
+    affiliate ? affiliate.excluded_urls.collect{|excluded_url| excluded_url.url}.include?(url) : false
   end
 end

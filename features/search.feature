@@ -287,3 +287,12 @@ Feature: Search
     And I press "Search"
     Then I should see "Día de los Muertos"
     And I should see "The Smithsonian Latino Center presents"
+    
+  Scenario: When search results have results that are from excluded domains
+    Given the following Excluded Domains exist:
+    | domain          |
+    | windstream.net  |
+    And I am on the homepage
+    And I fill in "query" with "windstream"
+    And I press "Search"
+    Then I should not see "windstream.net"
