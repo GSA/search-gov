@@ -401,6 +401,28 @@ describe MedTopic do
       MedTopic.xml_base_name_for_date(date).should eql "mplus_vocab_2011-04-21"
     end
   end
+  
+  describe "#saturday_on_or_before(date)" do
+    context "when the date is a Saturday" do
+      before do
+        @date = Date.parse("2011-12-03")
+      end
+      
+      it "should return that day" do
+        MedTopic.saturday_on_or_before(@date).to_s.should == "2011-12-03"
+      end
+    end
+    
+    context "when the date is a Saturday" do
+      before do
+        @date = Date.parse("2011-12-07")
+      end
+      
+      it "should return the previous Saturday" do
+        MedTopic.saturday_on_or_before(@date).to_s.should == "2011-12-03"
+      end
+    end
+  end
 
   describe "medline_xml_for_date" do
     before(:all) do
