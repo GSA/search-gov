@@ -5,4 +5,4 @@
         var affiliate = "#{@affiliate.name}";
       //]]>
     </script>
-    <script src="http://search.usa.gov/javascripts/stats.js" type="text/javascript"></script>
+    #{javascript_include_tag_with_full_path 'stats.js'}
