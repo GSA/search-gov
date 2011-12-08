@@ -236,9 +236,9 @@ describe Search do
         end
 
         context "when a scope id parameter is passed" do
-          it "should use the scope id with the default scope and ignore any domains if the scope id is valid" do
+          it "should use the scope id with the default scope and any domains if the scope id is valid" do
             search = Search.new(@valid_options.merge(:affiliate => @affiliate, :scope_id => 'PatentClass'))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass\)$/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass%20OR%20site%3Afoo.com%20OR%20site%3Abar.com\)$/).and_return(@uriresult)
             search.run
           end
 
@@ -269,9 +269,9 @@ describe Search do
         end
 
         context "and the affiliate specifies a scope id" do
-          it "should use the scope id with the default scope if the scope is valid" do
+          it "should use the scope id with the default scope and domains if the scope is valid" do
             search = Search.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov", :scope_id => 'PatentClass'))
-            URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3APatentClass\)$/).and_return @uriresult
+            URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3APatentClass%20OR%20site%3Afoo.com%20OR%20site%3Abar.com\)$/).and_return @uriresult
             search.run
           end
 

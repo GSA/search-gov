@@ -321,11 +321,16 @@ class Search
   end
 
   def generate_affiliate_scope
-    valid_scope_id? ? "(scopeid:#{self.scope_id})" : fill_domains_to_remainder
+    valid_scope_id? ? "(#{scoped_affiliate_query})" : "(#{fill_domains_to_remainder})"
   end
 
   def generate_default_scope
     DEFAULT_SCOPE
+  end
+  
+  def scoped_affiliate_query
+    domains = fill_domains_to_remainder
+    "scopeid:#{self.scope_id}#{" OR " + domains if domains.any?}"
   end
 
   def query_plus_locale
@@ -333,7 +338,7 @@ class Search
   end
 
   def fill_domains_to_remainder
-    return "(site:#{@matching_site_limit})" unless @matching_site_limit.blank?
+    return "site:#{@matching_site_limit}" unless @matching_site_limit.blank?
     remaining_chars = QUERY_STRING_ALLOCATION - query_plus_locale.length
     domains, delimiter = [], " OR "
     affiliate.domains.split.each do |site|
@@ -341,8 +346,8 @@ class Search
       encoded_str = URI.escape(site_str + delimiter, URI_REGEX)
       break if (remaining_chars -= encoded_str.length) < 0
       domains << site_str
-    end
-    "(#{domains.join(delimiter)})"
+    end if affiliate.domains
+    "#{domains.join(delimiter)}"
   end
 
   private
