@@ -1,0 +1,8 @@
+%textarea{ :readonly => true, :id => "embed_stats_code_textarea" }
+  :escaped
+    <script type="text/javascript">
+      //<![CDATA[
+        var affiliate = "#{@affiliate.name}";
+      //]]>
+    </script>
+    <script src="http://search.usa.gov/javascripts/stats.js" type="text/javascript"></script>

@@ -1285,6 +1285,8 @@ Feature: Affiliate clients
     And I should see the code for English language sites
     And I should see "Code for Spanish-language sites"
     And I should see the code for Spanish language sites
+    And I should see "Code for content discovery and indexing"
+    And I should see the stats code
 
   Scenario: Navigating to an Affiliate page for a particular Affiliate
     Given the following Affiliates exist:

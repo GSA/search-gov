@@ -243,6 +243,10 @@ Then /^I should see the code for (English|Spanish) language sites$/ do |locale|
   page.should have_selector("#embed_code_textarea_#{locales[locale]}")
 end
 
+Then /^I should see the stats code$/ do
+  page.should have_selector("#embed_stats_code_textarea")
+end
+
 Then /^I should see the affiliate custom css$/ do
   page.should have_selector("head style")
 end
