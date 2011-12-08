@@ -390,29 +390,17 @@ describe MedTopic do
 
   end
 
-
   describe "xml_base_name_for_date" do
-
     it "should know the right medline vocab xml file name to fetch" do
-      [
-          ["2011-04-21", "mplus_vocab_2011-04-16"],
-          ["2011-04-22", "mplus_vocab_2011-04-16"],
-          ["2011-04-23", "mplus_vocab_2011-04-23"],
-          ["2011-04-24", "mplus_vocab_2011-04-23"],
-          ["2011-04-25", "mplus_vocab_2011-04-23"],
-          ["2011-04-26", "mplus_vocab_2011-04-23"],
-          ["2011-04-27", "mplus_vocab_2011-04-23"],
-          ["2011-04-28", "mplus_vocab_2011-04-23"],
-          ["2011-04-29", "mplus_vocab_2011-04-23"],
-          ["2011-04-30", "mplus_vocab_2011-04-30"],
-      ].each { |date_s, basename|
-        MedTopic.xml_base_name_for_date(Date.parse(date_s)).should eql basename
-      }
-
+      MedTopic.stub!(:saturday_on_or_before).and_return Date.parse("2011-04-16")
+      MedTopic.xml_base_name_for_date(nil).should eql "mplus_vocab_2011-04-16"
     end
-
+    
+    it "should create a filename based on the date" do
+      date = Date.parse("2011-04-21")
+      MedTopic.xml_base_name_for_date(date).should eql "mplus_vocab_2011-04-21"
+    end
   end
-
 
   describe "medline_xml_for_date" do
     before(:all) do
@@ -431,11 +419,11 @@ describe MedTopic do
       it "should cache the xml" do
         starting_fetch_count = MedTopic.fetch_count
         File.exist?(@cached_file_path).should be false
-        xml_a = MedTopic.medline_xml_for_date(Date.parse("2011-04-26"))
+        xml_a = MedTopic.medline_xml_for_date(Date.parse("2011-04-23"))
         xml_a.should eql @mock_sample_xml_content
         MedTopic.fetch_count.should eql(starting_fetch_count + 1)
         File.exist?(@cached_file_path).should be true
-        xml_b = MedTopic.medline_xml_for_date(Date.parse("2011-04-26"))
+        xml_b = MedTopic.medline_xml_for_date(Date.parse("2011-04-23"))
         xml_b.should eql @mock_sample_xml_content
         MedTopic.fetch_count.should eql(starting_fetch_count + 1)
       end
@@ -444,7 +432,6 @@ describe MedTopic do
 
 
   describe "#parse_medline_xml_vocab" do
-
     it "should parse an empty vocab" do
       v = MedTopic.parse_medline_xml_vocab("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE MedicalTopics PUBLIC \"-//NLM//DTD MedicalTopics //EN\" \"http://www.nlm.nih.gov/medlineplus/xml/vocabulary/mplus_vocab.dtd\">\n<MedicalTopics total=\"0\" totalEnglish=\"0\" totalSpanish=\"0\" dategenerated=\"04/23/2011 12:07:53\"></MedicalTopics>")
       v.should eql @empty_vocab
@@ -454,7 +441,6 @@ describe MedTopic do
       v = MedTopic.parse_medline_xml_vocab(@medline_subset_tiny_vocab_xml)
       v.should eql @medline_subset_tiny_vocab
     end
-
   end
 
 

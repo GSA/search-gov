@@ -48,26 +48,19 @@ class MedTopic < ActiveRecord::Base
       return dir_path
     end
 
-
     def saturday_on_or_before(date)
-
       day_of_week = date.wday
-
       most_recent_saturday = if day_of_week >= SATURDAY
                                date - day_of_week + SATURDAY
                              else
                                date - day_of_week - DAYS_PER_WEEK + SATURDAY
                              end
-
       return most_recent_saturday
-
     end
 
-
     def xml_base_name_for_date(date = nil)
-      most_recent_saturday = saturday_on_or_before(date || Date.current)
-      sat_s                = most_recent_saturday.strftime("%Y-%m-%d")
-      return "mplus_vocab_#{sat_s}"
+      effective_date = date.nil? ? saturday_on_or_before(Date.current) : date
+      return "mplus_vocab_#{effective_date.strftime("%Y-%m-%d")}"
     end
 
 
