@@ -632,6 +632,12 @@ module SearchHelper
     end
   end
 
+  def url_is_excluded(url, affiliate)
+    parsed_url = URI::parse(url) rescue nil
+    ExcludedDomain.all.each{|excluded_domain| return true if parsed_url.host.ends_with(excluded_domain.domain) } if parsed_url
+    affiliate ? affiliate.excluded_urls.collect{|excluded_url| excluded_url.url}.include?(url) : false
+  end
+
   private
 
   def shorten_url (url, length=42)
@@ -710,10 +716,5 @@ module SearchHelper
     else
       url[0, length] + "..."
     end
-  end
-
-  def url_is_excluded(url, affiliate)
-    ExcludedDomain.all.each{|excluded_domain| return true if URI::parse(url).host.ends_with(excluded_domain.domain) }
-    affiliate ? affiliate.excluded_urls.collect{|excluded_url| excluded_url.url}.include?(url) : false
   end
 end
