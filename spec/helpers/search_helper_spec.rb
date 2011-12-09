@@ -799,4 +799,20 @@ describe SearchHelper do
       end
     end
   end
+
+  describe "#url_is_excluded(url, affiliate)" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+    end
+    
+    context "when an unparseable URL is passed" do
+      before do
+        @url = "http://water.weather.gov/ahps2/hydrograph.php?wfo=lzk&gage=bkra4&view=1,1,1,1,1,1,1,1\""
+      end
+      
+      it "should not fail, and not exclude the url" do
+        helper.url_is_excluded(@url, @affiliate).should be_false
+      end
+    end
+  end
 end
