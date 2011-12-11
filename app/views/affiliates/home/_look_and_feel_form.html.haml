@@ -53,8 +53,12 @@
           to control the color saturation.
           When you are done, click anywhere outside the color picker window.
   %li
-    = look_and_feel_form.label :staged_external_css_url, "External CSS URL"
-    = look_and_feel_form.text_field :staged_external_css_url, :class => "txt", :maxlength => 255
+    = look_and_feel_form.label :staged_header_footer_css, "Enter CSS to customize the top and bottom of your search results page."
+    = look_and_feel_form.text_area :staged_header_footer_css
+  - if @affiliate.external_css_url.present? or (@affiliate.has_staged_content? and @affiliate.staged_external_css_url.present?)
+    %li
+      = look_and_feel_form.label :staged_external_css_url, "External CSS URL"
+      = look_and_feel_form.text_field :staged_external_css_url, :class => "txt", :maxlength => 255
   %li
     = look_and_feel_form.label :staged_header, "Enter HTML to customize the top of your search results page."
     = look_and_feel_form.text_area :staged_header

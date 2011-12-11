@@ -59,6 +59,10 @@ ActiveRecord::Schema.define(:version => 20111220080239) do
     t.string   "theme"
     t.string   "staged_theme"
     t.string   "locale",                                         :default => "en",                :null => false
+    t.text     "header_footer_sass"
+    t.text     "staged_header_footer_sass"
+    t.text     "header_footer_css"
+    t.text     "staged_header_footer_css"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

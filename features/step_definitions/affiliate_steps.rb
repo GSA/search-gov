@@ -44,10 +44,12 @@ Given /^the following Affiliates exist:$/ do |table|
       :name => hash["name"],
       :domains => domains,
       :affiliate_template_id => affiliate_template.nil? ? nil : affiliate_template.id,
+      :header_footer_css => hash["header_footer_css"],
       :header => hash["header"],
       :footer => hash["footer"],
       :staged_domains => staged_domains,
       :staged_affiliate_template_id => staged_affiliate_template.nil? ? nil : staged_affiliate_template.id,
+      :staged_header_footer_css => hash["staged_header_footer_css"],
       :staged_header => hash["staged_header"],
       :staged_footer => hash["staged_footer"],
       :is_sayt_enabled => hash["is_sayt_enabled"],
@@ -277,4 +279,6 @@ Then /^the "Custom" theme should not be visible$/ do
   page.should have_selector(".hidden-custom-theme")
 end
 
-
+Then /^I should see the page with internal CSS "([^"]*)"$/ do |css|
+  page.body.should match(css)
+end

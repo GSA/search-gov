@@ -62,3 +62,7 @@ end
 Then /^the "([^"]*)" field should contain today's date$/ do |field|
   Then %{the "#{field}" field should contain "#{Date.current.strftime(%Q{%m/%d/%Y})}"}
 end
+
+Then /^I should not see a field labeled "([^"]*)"$/ do |label|
+  page.should_not have_field(label)
+end

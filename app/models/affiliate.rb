@@ -1,3 +1,5 @@
+require 'sass/css'
+
 class Affiliate < ActiveRecord::Base
   validates_presence_of :display_name,:name,:search_results_page_title,:staged_search_results_page_title, :locale
   validates_uniqueness_of :name, :case_sensitive => false
@@ -21,13 +23,13 @@ class Affiliate < ActiveRecord::Base
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   before_validation :set_default_name, :on => :create
-  validate :validate_css_property_hash
+  validate :validate_css_property_hash, :validate_header_footer_css
   before_create :set_uses_one_serp
-  before_save :set_default_affiliate_template, :normalize_domains, :ensure_http_prefix, :set_css_properties
+  before_save :set_default_affiliate_template, :normalize_domains, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass
   before_validation :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
-  attr_protected :uses_one_serp
+  attr_protected :uses_one_serp, :header_footer_sass, :staged_header_footer_sass
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
@@ -117,7 +119,7 @@ class Affiliate < ActiveRecord::Base
 
   def update_attributes_for_current(attributes)
     attributes.merge!(:previous_header => self.header, :previous_footer => self.footer)
-    %w{ domains header footer affiliate_template_id search_results_page_title favicon_url external_css_url theme css_properties css_property_hash }.each do |field|
+    %w{ domains header_footer_css header footer affiliate_template_id search_results_page_title favicon_url external_css_url theme css_properties css_property_hash }.each do |field|
       attributes[field.to_sym] = attributes["staged_#{field}".to_sym] if attributes.include?("staged_#{field}".to_sym)
     end
     attributes[:has_staged_content] = false
@@ -141,6 +143,7 @@ class Affiliate < ActiveRecord::Base
   def staging_attributes
     {
       :staged_domains => self.staged_domains,
+      :staged_header_footer_css => self.staged_header_footer_css,
       :staged_header => self.staged_header,
       :staged_footer => self.staged_footer,
       :staged_affiliate_template_id => self.staged_affiliate_template_id,
@@ -159,6 +162,7 @@ class Affiliate < ActiveRecord::Base
   def cancel_staged_changes
     self.update_attributes({
       :staged_domains => self.domains,
+      :staged_header_footer_css => self.header_footer_css,
       :staged_header => self.header,
       :staged_footer => self.footer,
       :staged_affiliate_template_id => self.affiliate_template_id,
@@ -309,4 +313,25 @@ class Affiliate < ActiveRecord::Base
   def set_uses_one_serp
     self.uses_one_serp = true if self.uses_one_serp.nil?
   end
+
+  def set_header_footer_sass
+    self.staged_header_footer_sass = parse_css(staged_header_footer_css) unless staged_header_footer_css.blank?
+    self.header_footer_sass = parse_css(header_footer_css) unless header_footer_css.blank?
+  end
+
+  def validate_header_footer_css
+    begin
+      parse_css(header_footer_css)
+      parse_css(staged_header_footer_css)
+    rescue Sass::SyntaxError => err
+      errors.add(:base, "CSS for the top and bottom of your search results page: #{err}")
+    end
+  end
+
+  def parse_css(css)
+    return if css.blank?
+    sass_values = Sass::CSS.new(css).render(:sass).split("\n")
+    sass_values.collect { |sass_value| "  #{sass_value}" }.join("\n")
+  end
+
 end

@@ -118,6 +118,7 @@ class SearchesController < ApplicationController
     @affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
     if @affiliate && params["staged"]
       @affiliate.domains = @affiliate.staged_domains
+      @affiliate.header_footer_sass = @affiliate.staged_header_footer_sass
       @affiliate.header = @affiliate.staged_header
       @affiliate.footer = @affiliate.staged_footer
       @affiliate.affiliate_template_id = @affiliate.staged_affiliate_template_id

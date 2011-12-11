@@ -21,16 +21,17 @@
       = (javascript_include_tag "easyXDM/easyXDM.min.js").html_safe
       = (javascript_include_tag "jquery/jquery.targettop.js").html_safe
       = (javascript_include_tag "affiliates.embedded.js").html_safe
+    = render(:partial => 'searches/affiliate_nested_css', :locals => { :affiliate => @affiliate })
     = render(:partial => 'searches/affiliate_css_overrides', :locals => { :css_property_hash => @affiliate.css_property_hash }) if @affiliate.uses_one_serp?
     = stylesheet_link_tag "#{@affiliate.external_css_url}" unless @affiliate.external_css_url.blank?
 
     %title= @page_title
   %body{ :class => render_affiliate_body_class(@affiliate) }
     #container
-      #header= @affiliate.header.html_safe if @affiliate and @affiliate.header and (@search_options.nil? or !@search_options[:embedded])
+      #header.header-footer= @affiliate.header.html_safe if @affiliate and @affiliate.header and (@search_options.nil? or !@search_options[:embedded])
       #search.clearfix
         -unless error_page?
           %h1 Search
         = yield
-      #footer= @affiliate.footer.html_safe if @affiliate and @affiliate.footer and (@search_options.nil? or !@search_options[:embedded])
+      #footer.header-footer= @affiliate.footer.html_safe if @affiliate and @affiliate.footer and (@search_options.nil? or !@search_options[:embedded])
     = render "/shared/webtrends_affiliates" unless @affiliate.exclude_webtrends?

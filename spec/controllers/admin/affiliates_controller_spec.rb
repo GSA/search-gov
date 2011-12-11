@@ -21,7 +21,7 @@ describe Admin::AffiliatesController do
       response.should redirect_to(login_path)
     end
   end
-  
+
   describe "#analytics" do
     context "when logged in as an affiliate admin" do
       before do
@@ -29,11 +29,26 @@ describe Admin::AffiliatesController do
         UserSession.create(:email => users("affiliate_admin").email, :password => "admin")
         @affiliate = affiliates("basic_affiliate")
       end
-    
+
       it "should redirect to the affiliate analytics page for the affiliate id passed" do
         get :analytics, :id => @affiliate.id
         response.should redirect_to affiliate_analytics_path(:affiliate_id => @affiliate.id)
       end
+    end
+  end
+
+  describe "#edit" do
+    context "When logged in as an affiliate admin" do
+      render_views
+      let(:affiliate) { affiliates("basic_affiliate") }
+
+      before do
+        activate_authlogic
+        UserSession.create(:email => users("affiliate_admin").email, :password => "admin")
+        get :edit, :id => affiliate.id
+      end
+
+      it { should respond_with :success }
     end
   end
 end

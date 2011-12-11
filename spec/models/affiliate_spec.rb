@@ -41,6 +41,8 @@ describe Affiliate do
     it { should belong_to :affiliate_template }
     it { should belong_to :staged_affiliate_template }
     it { should_not allow_mass_assignment_of(:uses_one_serp) }
+    it { should_not allow_mass_assignment_of(:header_footer_sass) }
+    it { should_not allow_mass_assignment_of(:staged_header_footer_sass) }
 
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_create_attributes)
@@ -152,6 +154,14 @@ describe Affiliate do
         affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
         affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
       end
+
+      it "should validate header_footer_css" do
+        { :header_footer_css => "h1 { invalid: }", :staged_header_footer_css => "h1 { invalid: }" }.each do |key, value|
+        affiliate = Affiliate.new(@valid_create_attributes.merge(key => value))
+        affiliate.save.should be_false
+        affiliate.errors[:base].first.should match(/CSS for the top and bottom of your search results page: Invalid CSS/)
+        end
+      end
     end
 
     describe "on update_attributes_for_staging" do
@@ -164,6 +174,7 @@ describe Affiliate do
 
       before do
         @update_params = { :staged_domains => "updated.domain.gov",
+                           :staged_header_footer_css => ".staged h1 { color: blue; }",
                            :staged_header => "<span>header</span>",
                            :staged_footer => "<span>footer</span>",
                            :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
@@ -181,6 +192,7 @@ describe Affiliate do
       it "should update staged attributes" do
         affiliate.update_attributes_for_staging(@update_params).should be_true
         affiliate.staged_domains.should == @update_params[:staged_domains]
+        affiliate.staged_header_footer_css.should == @update_params[:staged_header_footer_css]
         affiliate.staged_header.should == @update_params[:staged_header]
         affiliate.staged_footer.should == @update_params[:staged_footer]
         affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
@@ -224,6 +236,11 @@ describe Affiliate do
           affiliate.staged_external_css_url.should == "#{prefix}#{url}"
         end
       end
+
+      it "should set staged header and footer sass" do
+        affiliate.update_attributes_for_staging(@update_params)
+        affiliate.staged_header_footer_sass.should == "  .staged h1\n    color: blue"
+      end
     end
 
     describe "on update_attributes_for_current" do
@@ -231,6 +248,7 @@ describe Affiliate do
 
       before do
         @update_params = {:staged_domains => "updated.domain.gov",
+                          :staged_header_footer_css => ".staged h1 { color: blue; }",
                           :staged_header => "<span>header</span>",
                           :staged_footer => "<span>footer</span>",
                           :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
@@ -255,6 +273,7 @@ describe Affiliate do
       it "should update current attributes" do
         affiliate.update_attributes_for_current(@update_params).should be_true
         affiliate.domains.should == @update_params[:staged_domains]
+        affiliate.header_footer_css.should == @update_params[:staged_header_footer_css]
         affiliate.header.should == @update_params[:staged_header]
         affiliate.footer.should == @update_params[:staged_footer]
         affiliate.affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
@@ -262,6 +281,7 @@ describe Affiliate do
         affiliate.theme.should == @update_params[:staged_theme]
         affiliate.css_properties.should == @update_params[:staged_css_properties]
         affiliate.staged_domains.should == @update_params[:staged_domains]
+        affiliate.staged_header_footer_css.should == @update_params[:staged_header_footer_css]
         affiliate.staged_header.should == @update_params[:staged_header]
         affiliate.staged_footer.should == @update_params[:staged_footer]
         affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
@@ -308,6 +328,11 @@ describe Affiliate do
           affiliate.staged_external_css_url.should == "#{prefix}#{url}"
           affiliate.external_css_url.should == "#{prefix}#{url}"
         end
+      end
+
+      it "should set header footer sass" do
+        affiliate.update_attributes_for_current(@update_params)
+        affiliate.header_footer_sass.should == "  .staged h1\n    color: blue"
       end
     end
 
@@ -497,6 +522,7 @@ describe Affiliate do
   describe "#staging_attributes" do
     let(:create_staged_attributes) {
       { :staged_domains => 'agency.gov',
+        :staged_header_footer_css => ".staged h1 { color: blue; }",
         :staged_header => '<h1>staged header</h1>',
         :staged_footer => '<h1>staged footer</h1>',
         :staged_affiliate_template => affiliate_templates(:basic_gray),
@@ -514,7 +540,7 @@ describe Affiliate do
 
     context "when initialized" do
       it "should return all staging attributes" do
-        [:staged_domains, :staged_header, :staged_footer,
+        [:staged_domains, :staged_header_footer_css, :staged_header, :staged_footer,
          :staged_affiliate_template_id, :staged_search_results_page_title,
          :staged_favicon_url, :staged_external_css_url, :staged_theme, :staged_css_properties].each do |key|
           affiliate.staging_attributes.should include(key)
@@ -535,6 +561,7 @@ describe Affiliate do
 
     before do
       @update_params = { :staged_domains => "updated.domain.gov",
+                         :staged_header_footer_css => ".staged h1 { color: blue; }",
                          :staged_header => "<span>header</span>",
                          :staged_footer => "<span>footer</span>",
                          :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
@@ -549,6 +576,7 @@ describe Affiliate do
     it "should overwrite all staged attributes with non staged attributes" do
       affiliate.cancel_staged_changes
       affiliate.staged_domains.should_not == @update_params[:staged_domains]
+      affiliate.staged_header_footer_css.should_not == @update_params[:staged_header_footer_css]
       affiliate.staged_header.should_not == @update_params[:staged_header]
       affiliate.staged_footer.should_not == @update_params[:staged_footer]
       affiliate.staged_affiliate_template_id.should_not == @update_params[:staged_affiliate_template_id]
