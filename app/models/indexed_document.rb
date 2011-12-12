@@ -28,13 +28,15 @@ class IndexedDocument < ActiveRecord::Base
   def fetch
     begin
       file = open(url)
+      content_type = file.content_type
+      puts content_type
       if file.is_a?(StringIO)
-        tempfile = Tempfile.new(Time.now.to_s)
+        tempfile = Tempfile.new(Time.now.to_i)
         tempfile.write(file.string)
         tempfile.close
         file = tempfile
       end
-      url.ends_with?(".pdf") ? index_pdf(file.path) : index_html(file)
+      index_document(file, content_type)
     rescue Exception => e
       Rails.logger.error "Trouble fetching #{url} to index: #{e}"
       update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => e.message)
@@ -43,7 +45,18 @@ class IndexedDocument < ActiveRecord::Base
     end
   end
 
+  def index_document(file, content_type)
+    if content_type =~ /pdf/
+      index_pdf(file.path)
+    elsif content_type =~ /html/
+      index_html(file)
+    else
+      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Unsupported document type: #{file.content_type}")
+    end
+  end
+  
   def index_html(file)
+    file.open if file.closed?
     doc = Nokogiri::HTML(file)
     title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator => " ") rescue nil
     description = doc.xpath("//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] ").first.attributes["content"].value.squish rescue nil

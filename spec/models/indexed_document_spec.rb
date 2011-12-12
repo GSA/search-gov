@@ -112,13 +112,14 @@ describe IndexedDocument do
       before do
         indexed_document.url = 'http://something.gov/something.pdf'
         @pdf_io = StringIO.new(File.read(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf"))
+        @pdf_io.stub!(:content_type).and_return 'application/pdf'
         indexed_document.stub!(:open).and_return @pdf_io
-        @tempfile = Tempfile.new(Time.now.to_s)
+        @tempfile = Tempfile.new(Time.now.to_i)
         Tempfile.stub!(:new).and_return @tempfile
       end
 
-      it "should call index_pdf" do
-        indexed_document.should_receive(:index_pdf).with(@tempfile.path)
+      it "should call index_document" do
+        indexed_document.should_receive(:index_document).with(anything(), 'application/pdf')
         indexed_document.fetch
       end
 
@@ -139,8 +140,8 @@ describe IndexedDocument do
         Tempfile.should_not_receive(:new)
       end
 
-      it "should call fetch_html" do
-        indexed_document.should_receive(:index_html).with(@html_io)
+      it "should call index_document" do
+        indexed_document.should_receive(:index_document).with(@html_io, 'text/html')
         indexed_document.fetch
       end
 
@@ -150,7 +151,50 @@ describe IndexedDocument do
       end
     end
   end
+  
+  describe "#index_document(file)" do
+    before do
+      @indexed_document = IndexedDocument.create!(@min_valid_attributes)
+      @file = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
+    end
+    
+    context "whent the content type of the fetched document contains 'pdf'" do
+      before do
+        @file.stub!(:content_type).and_return 'application/pdf'
+      end
+      
+      it "should call index_pdf if the content type contains 'pdf'" do
+        @indexed_document.should_receive(:index_pdf).with(@file.path).and_return true
+        @indexed_document.index_document(@file, @file.content_type)
+      end
+    end
 
+    context "whent the content type of the fetched document contains 'html'" do
+      before do
+        @file.stub!(:content_type).and_return 'text/html'
+      end
+      
+      it "should call index_html if the content type contains 'pdf'" do
+        @indexed_document.should_receive(:index_html).with(@file).and_return true
+        @indexed_document.index_document(@file, @file.content_type)
+      end
+    end
+    
+    context "whent the content type of the fetched document contains neither 'pdf' or 'html'" do
+      before do
+        @file.stub!(:content_type).and_return 'application/msword'
+        @now = Time.now
+        Time.stub!(:now).and_return @now
+      end
+      
+      it "should update the document with the current time and an error message indicating that the document type is not yet supported." do
+        @indexed_document.index_document(@file, @file.content_type)
+        @indexed_document.last_crawled_at.should == @now
+        @indexed_document.last_crawl_status.should == "Unsupported document type: application/msword"
+      end
+    end
+  end
+  
   describe "#index_html(file)" do
     context "when the page has a HTML title" do
       before do
