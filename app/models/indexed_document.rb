@@ -29,7 +29,6 @@ class IndexedDocument < ActiveRecord::Base
     begin
       file = open(url)
       content_type = file.content_type
-      puts content_type
       if file.is_a?(StringIO)
         tempfile = Tempfile.new(Time.now.to_i)
         tempfile.write(file.string)
