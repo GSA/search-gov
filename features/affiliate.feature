@@ -1715,7 +1715,6 @@ Feature: Affiliate clients
     And I press "Search"
     Then I should see 9 Bing search results
     And I should not see "Our Government | The White House"
-    And I should not see "Document Results for aff site"
 
     When I follow "WH Blog"
     Then I should not see "Our Government"
@@ -1731,7 +1730,6 @@ Feature: Affiliate clients
     And I fill in "query" with "white house cabinet"
     And I press "Search"
     Then I should see 10 Bing search results
-    And I should see "Document Results for aff site"
     And I should see "Fake page" in the indexed documents section
     And I should not see "Our Government | The White House" in the indexed documents section
 

@@ -2,13 +2,9 @@
   #indexed_documents
     .indexed-documents-wrapper-top
     .indexed-documents-wrapper-middle
-      %h3.alt
-        Document Results for
-        %span.recommended-by
-          = @affiliate.display_name
       .related_indexeddocs
         - search.indexed_documents.each_with_index do |hit, index|
           = render 'shared/indexed_document', :hit => hit, :index => index
       .see-more-documents
-        = link_to "See more document results for <strong>#{@search.query}</strong> >>".html_safe, docs_search_path(:query => @search.query, :affiliate => @affiliate.name)
+        = link_to t(:more_results_for_query, :query => @search.query), docs_search_path(:query => @search.query, :affiliate => @affiliate.name)
     .indexed-documents-wrapper-bottom

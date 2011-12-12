@@ -115,6 +115,36 @@ Feature: Affiliate Search
     When I follow "Remove all filters"
     Then I should see "Results 1-10"
 
+  Scenario: No results when searching with active RSS feeds in Spanish
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     |
+    And affiliate "bar.gov" has the following RSS feeds:
+      | name          | url                                                | is_active |
+      | Press         | http://www.whitehouse.gov/feed/press               | true      |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true      |
+    And feed "Photo Gallery" has the following news items:
+      | link                             | title       | guid  | published_ago | description                  |
+      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
+      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
+    When I am on bar.gov's Spanish search page
+    And I fill in "query" with "item"
+    And I press "Buscar"
+    Then I should see "Resultados 1-10"
+
+    When I follow "Press"
+    Then I should see "No hemos encontrado ningún resultado que contenga 'item'. Elimine los filtros de su búsqueda, use otras palabras clave o intente usando sinónimos."
+    When I follow "Elimine los filtros"
+    Then I should see "Resultados 1-10"
+
+    When I fill in "query" with "item"
+    And I press "Buscar"
+    And I follow "Photo Gallery"
+    And I follow "Último día"
+    Then I should see "No hemos encontrado ningún resultado que contenga 'item' en el último día. Elimine los filtros de su búsqueda, use otras palabras clave o intente usando sinónimos."
+    When I follow "Elimine los filtros"
+    Then I should see "Resultados 1-10"
+
   Scenario: Visiting English affiliate search with multiple domains
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains                |
@@ -163,4 +193,4 @@ Feature: Affiliate Search
     When I am on agency.gov's search page
     And I fill in "query" with "usa.gov blog"
     And I press "Search"
-    Then I should not see "Document Results for agency site"
+    Then I should not see "See more document results"

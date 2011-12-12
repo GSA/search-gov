@@ -339,17 +339,17 @@ module SearchHelper
   end
 
   def no_results_for(query)
-    content_tag(:p, (t :no_results_for, :query => query), :class=>"noresults")
+    content_tag(:p, (t :no_results_for_and_try, :query => query), :class => "noresults")
   end
 
   def no_news_results_for(search)
-    reset_filters_link = link_to("Remove all filters", search_path(:affiliate => search.affiliate.name, :query => search.query))
+    reset_filters_link = link_to(t(:remove_all_filters), search_path(:affiliate => search.affiliate.name, :query => search.query))
     time_filter = NewsItem::TIME_BASED_SEARCH_OPTIONS[params[:tbs]]
-    time_filter_message = time_filter.blank? ? '' : " in the last #{time_filter}"
-    no_results_message = "Sorry, no results found for '#{h search.query}'#{time_filter_message}. "
+    time_filter_message = time_filter.blank? ? '' : " #{t("the_last_#{time_filter.to_s}".to_sym)}"
+    no_results_message = "#{t(:no_results_for_query, :query => search.query)}#{time_filter_message}. "
     no_results_message << reset_filters_link.html_safe
-    no_results_message << " or try entering fewer or broader query terms."
-    content_tag(:p, no_results_message.html_safe, :class=>"noresults")
+    no_results_message << " #{t(:or_try_broader)}"
+    content_tag(:p, no_results_message.html_safe, :class => "noresults")
   end
 
   def search_results_logo

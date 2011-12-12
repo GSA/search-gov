@@ -1,6 +1,7 @@
 - unless popular_urls.empty?
   #popular_urls
-    %h3 Popular Links
+    %h3
+      = t(:popular_links)
     %ul
       - popular_urls.each do |url|
         %li{ :class => url == popular_urls.last ? 'last' : nil }= link_to url.title.truncate(73, :separator => " "), url.url
