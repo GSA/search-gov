@@ -8,6 +8,7 @@ class IndexedDocument < ActiveRecord::Base
   validate :doctype, :inclusion => {:in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"}
   validate :locale, :inclusion => {:in => %w(en es), :message => "must be either 'en' or 'es.'"}
   before_validation :ensure_http_prefix_on_url
+  before_validation :escape_url
 
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 250
@@ -136,5 +137,9 @@ class IndexedDocument < ActiveRecord::Base
 
   def ensure_http_prefix_on_url
     self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^http(s?)://}i
+  end
+  
+  def escape_url
+    self.url = URI::escape(URI::unescape(self.url)) unless self.url.blank?
   end
 end

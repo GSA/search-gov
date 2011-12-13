@@ -28,6 +28,26 @@ describe IndexedDocument do
   it "should create a new instance given valid attributes" do
     IndexedDocument.create!(@valid_attributes)
   end
+  
+  context "when the url has some URI-encoded characters, but some that are not URI-encoded" do
+    before do
+      @url = "http://something.gov/let's%20make a really%20horrible path for this url.html"
+    end
+    
+    it "should save a version of the url that is completely URI-escaped" do
+      IndexedDocument.create!(@min_valid_attributes.merge(:url => @url)).url.should == "http://something.gov/let's%20make%20a%20really%20horrible%20path%20for%20this%20url.html"
+    end
+  end
+  
+  context "when the url is un-URI-encoded" do
+    before do
+      @url = "http://something.gov/i-am-a-badly-encoded url.pdf"
+    end
+    
+    it "should save it URI-encoded" do
+      IndexedDocument.create!(@min_valid_attributes.merge(:url => @url)).url.should == "http://something.gov/i-am-a-badly-encoded%20url.pdf"
+    end
+  end
 
   it "should enqueue the creation of a IndexedDocument entry via Resque" do
     ResqueSpec.reset!
