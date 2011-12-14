@@ -63,7 +63,7 @@ class IndexedDocument < ActiveRecord::Base
     if description.nil?
       doc.xpath('//script').each { |x| x.remove }
       doc.xpath('//style').each { |x| x.remove }
-      description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').gsub(/ /, "").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
+      description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').gsub(/ /, "").gsub(/\.{2,}/, ".").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
     end
     body = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
     update_attributes!(:title=> title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
