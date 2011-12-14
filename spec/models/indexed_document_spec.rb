@@ -298,6 +298,7 @@ describe IndexedDocument do
       it "should remove the garbage characters from the description" do
         @indexed_document.description.should_not =~ /[“’‘”]/
         @indexed_document.description[0..-4].should_not =~ /[^\w_ ]/
+        @indexed_document.description.should_not =~ / /
       end
     end
   end

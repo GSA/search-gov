@@ -132,7 +132,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def generate_pdf_description(body)
-    body.squish.gsub(/[^\w_ ]/, "").gsub(/[“’‘”]/, "").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => " ")
+    body.squish.gsub(/[^\w_ ]/, "").gsub(/[“’‘”]/, "").gsub(/ /, "").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => " ")
   end
 
   def ensure_http_prefix_on_url
