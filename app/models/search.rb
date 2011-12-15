@@ -86,7 +86,7 @@ class Search
     @total = hits(response)
     if total.zero?
       if @affiliate and self.class == Search
-        @indexed_results = IndexedDocument.search_for(query, affiliate, I18n.locale, page + 1, 10)
+        @indexed_results = IndexedDocument.search_for(query, affiliate, page + 1, 10)
         unless @indexed_results.nil?
           @total = @indexed_results.total
           @startrecord = (page * 10) + 1

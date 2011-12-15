@@ -48,7 +48,7 @@ class SearchesController < ApplicationController
 
   def docs
     unless @search_options[:query].blank?
-      @search = IndexedDocument.search_for(@search_options[:query], @search_options[:affiliate], I18n.locale.to_s, @search_options[:page], 10)
+      @search = IndexedDocument.search_for(@search_options[:query], @search_options[:affiliate], @search_options[:page], 10)
       @form_path = docs_search_path
       @page_title = @search_options[:query]
       @search_vertical = :docs

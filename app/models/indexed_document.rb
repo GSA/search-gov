@@ -77,7 +77,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   class << self
-    def search_for(query, affiliate = nil, locale = I18n.default_locale.to_s, page = 1, per_page = 3)
+    def search_for(query, affiliate = nil, page = 1, per_page = 3)
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate.name}) do
         search do
           fulltext query do
@@ -85,7 +85,6 @@ class IndexedDocument < ActiveRecord::Base
           end
           with(:affiliate_id, affiliate.id) if affiliate
           without(:url).any_of affiliate.excluded_urls.collect{|excluded_url| excluded_url.url } unless affiliate.nil? or affiliate.excluded_urls.empty?
-          with(:locale, locale)
           with(:last_crawl_status, OK_STATUS)
           paginate :page => page, :per_page => per_page
         end rescue nil
