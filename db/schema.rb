@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111205205515) do
+ActiveRecord::Schema.define(:version => 20111214230059) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -51,13 +51,14 @@ ActiveRecord::Schema.define(:version => 20111205205515) do
     t.string   "youtube_username"
     t.text     "previous_header"
     t.text     "previous_footer"
-    t.boolean  "is_image_search_enabled",                        :default => true
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"
+    t.boolean  "is_image_search_enabled",                        :default => true
     t.string   "top_searches_label",                             :default => "Search Trends"
     t.string   "theme"
     t.string   "staged_theme"
+    t.string   "locale",                                         :default => "en",                :null => false
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -333,7 +334,6 @@ ActiveRecord::Schema.define(:version => 20111205205515) do
     t.datetime "updated_at"
     t.text     "body",              :limit => 2147483647
     t.string   "doctype",           :limit => 10,         :default => "html"
-    t.string   "locale",            :limit => 6,          :default => "en",   :null => false
     t.datetime "last_crawled_at"
     t.string   "last_crawl_status"
   end

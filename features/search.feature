@@ -287,7 +287,7 @@ Feature: Search
     And I press "Search"
     Then I should see "Día de los Muertos"
     And I should see "The Smithsonian Latino Center presents"
-    
+
   Scenario: When search results have results that are from excluded domains
     Given the following Excluded Domains exist:
     | domain          |

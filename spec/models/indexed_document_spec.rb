@@ -28,22 +28,22 @@ describe IndexedDocument do
   it "should create a new instance given valid attributes" do
     IndexedDocument.create!(@valid_attributes)
   end
-  
+
   context "when the url has some URI-encoded characters, but some that are not URI-encoded" do
     before do
       @url = "http://something.gov/let's%20make a really%20horrible path for this url.html"
     end
-    
+
     it "should save a version of the url that is completely URI-escaped" do
       IndexedDocument.create!(@min_valid_attributes.merge(:url => @url)).url.should == "http://something.gov/let's%20make%20a%20really%20horrible%20path%20for%20this%20url.html"
     end
   end
-  
+
   context "when the url is un-URI-encoded" do
     before do
       @url = "http://something.gov/i-am-a-badly-encoded url.pdf"
     end
-    
+
     it "should save it URI-encoded" do
       IndexedDocument.create!(@min_valid_attributes.merge(:url => @url)).url.should == "http://something.gov/i-am-a-badly-encoded%20url.pdf"
     end
@@ -79,6 +79,18 @@ describe IndexedDocument do
       @affiliate = affiliates(:basic_affiliate)
     end
 
+    context "when the affiliate is not specified" do
+      it "should return nil" do
+        IndexedDocument.search_for('foo', nil).should be_nil
+      end
+    end
+
+    context "when the query is blank" do
+      it "should return nil" do
+        IndexedDocument.search_for('', @affiliate).should be_nil
+      end
+    end
+
     context "when the affiliate is specified" do
       it "should instrument the call to Solr with the proper action.service namespace, affiliate, and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
@@ -102,6 +114,53 @@ describe IndexedDocument do
         search.results.first.last_crawl_status.should == IndexedDocument::OK_STATUS
       end
     end
+
+    context "when the parent affiliate's locale is English" do
+      before do
+        @affiliate = affiliates(:basic_affiliate)
+        IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'pollution is bad', :description => 'speaking', :url => 'http://something.gov/html.html', :body => "something about swimming", :affiliate_id => @affiliate.id)
+        IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'pollution is bad', :description => 'speaking', :url => 'http://something.gov/html.html', :body => "something about swimming", :affiliate_id => affiliates(:power_affiliate).id)
+        Sunspot.commit
+        IndexedDocument.reindex
+      end
+
+      it "should find by title, description, and body for that affiliate, and highlight only the terms in the title and description" do
+        title_search = IndexedDocument.search_for('swim pollutant', @affiliate)
+        title_search.total.should == 1
+        title_search.hits.first.highlight(:title).should_not be_nil
+        description_search = IndexedDocument.search_for('speak', @affiliate)
+        description_search.total.should == 1
+        description_search.hits.first.highlight(:description).should_not be_nil
+        body_search = IndexedDocument.search_for('swim', @affiliate)
+        body_search.total.should == 1
+        body_search.hits.first.highlight(:body).should be_nil
+      end
+    end
+
+    context "when the parent affiliate's locale is Spanish" do
+      before do
+        @affiliate = affiliates(:basic_affiliate)
+        @affiliate.update_attribute(:locale, 'es')
+        affiliates(:power_affiliate).update_attribute(:locale, 'es')
+        IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'jugar', :description => 'hablar', :url => 'http://something.gov/html.html', :body => "Declaraciones", :affiliate_id => @affiliate.id)
+        IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'jugar', :description => 'hablar', :url => 'http://something.gov/html.html', :body => "Declaraciones", :affiliate_id => affiliates(:power_affiliate).id)
+        Sunspot.commit
+        IndexedDocument.reindex
+      end
+
+      it "should find by title, description, and body for that affiliate, and highlight only the terms in the title and description" do
+        title_search = IndexedDocument.search_for('jugando', @affiliate)
+        title_search.total.should == 1
+        title_search.hits.first.highlight(:title_text).should_not be_nil
+        description_search = IndexedDocument.search_for('hablando', @affiliate)
+        description_search.total.should == 1
+        description_search.hits.first.highlight(:description_text).should_not be_nil
+        body_search = IndexedDocument.search_for('Declaraciones', @affiliate)
+        body_search.total.should == 1
+        body_search.hits.first.highlight(:body_text).should be_nil
+      end
+    end
+
   end
 
   describe "#fetch" do
@@ -171,18 +230,18 @@ describe IndexedDocument do
       end
     end
   end
-  
+
   describe "#index_document(file)" do
     before do
       @indexed_document = IndexedDocument.create!(@min_valid_attributes)
       @file = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
     end
-    
+
     context "whent the content type of the fetched document contains 'pdf'" do
       before do
         @file.stub!(:content_type).and_return 'application/pdf'
       end
-      
+
       it "should call index_pdf if the content type contains 'pdf'" do
         @indexed_document.should_receive(:index_pdf).with(@file.path).and_return true
         @indexed_document.index_document(@file, @file.content_type)
@@ -193,20 +252,20 @@ describe IndexedDocument do
       before do
         @file.stub!(:content_type).and_return 'text/html'
       end
-      
+
       it "should call index_html if the content type contains 'pdf'" do
         @indexed_document.should_receive(:index_html).with(@file).and_return true
         @indexed_document.index_document(@file, @file.content_type)
       end
     end
-    
+
     context "whent the content type of the fetched document contains neither 'pdf' or 'html'" do
       before do
         @file.stub!(:content_type).and_return 'application/msword'
         @now = Time.now
         Time.stub!(:now).and_return @now
       end
-      
+
       it "should update the document with the current time and an error message indicating that the document type is not yet supported." do
         @indexed_document.index_document(@file, @file.content_type)
         @indexed_document.last_crawled_at.should == @now
@@ -214,7 +273,7 @@ describe IndexedDocument do
       end
     end
   end
-  
+
   describe "#index_html(file)" do
     context "when the page has a HTML title" do
       before do
@@ -258,7 +317,7 @@ describe IndexedDocument do
     before do
       @indexed_document = IndexedDocument.create!(@min_valid_attributes)
     end
-    
+
     context "for a normal PDF file" do
       before do
         @indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
@@ -289,12 +348,12 @@ describe IndexedDocument do
         @indexed_document.title.should == "3-2-07-III H.pdf"
       end
     end
-    
+
     context "for a PDF that, when parsed, has garbage characters in the description" do
       before do
         @indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/garbage_chars.pdf")
       end
-      
+
       it "should remove the garbage characters from the description" do
         @indexed_document.description.should_not =~ /[“’‘”]/
         @indexed_document.description[0..-4].should_not =~ /[^\w_ ]/
@@ -403,6 +462,27 @@ describe IndexedDocument do
       IndexedDocument.refresh_all
       IndexedDocumentFetcher.should have_queued(@first.id)
       IndexedDocumentFetcher.should have_queued(@last.id)
+    end
+  end
+
+  describe "#index_unindexed" do
+    before do
+      ResqueSpec.reset!
+      IndexedDocument.delete_all
+      common = "insert into indexed_documents (title,description,url,affiliate_id,last_crawled_at) values ('these get created outside of AR','via mysqlimport'"
+      sql = "#{common}, 'http://www.usa.gov',#{affiliates(:power_affiliate).id}, null);"
+      ActiveRecord::Base.connection.execute(sql)
+      sql = "#{common}, 'http://www.usa.gov/more',#{affiliates(:power_affiliate).id}, null);"
+      ActiveRecord::Base.connection.execute(sql)
+      sql = "#{common}, 'http://www.usa.gov/already_crawled',#{affiliates(:power_affiliate).id},now());"
+      ActiveRecord::Base.connection.execute(sql)
+    end
+
+    it "should enqueue a fetch call for all unfetched indexed docs" do
+      IndexedDocument.index_unindexed
+      IndexedDocumentFetcher.should have_queue_size_of(2)
+      IndexedDocumentFetcher.should have_queued(IndexedDocument.find_by_url("http://www.usa.gov").id)
+      IndexedDocumentFetcher.should have_queued(IndexedDocument.find_by_url("http://www.usa.gov/more").id)
     end
   end
 end

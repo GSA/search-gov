@@ -10,13 +10,19 @@ describe Affiliate do
       :website => "http://www.someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
       :footer => "<center>gasp</center>",
-      :theme => "elegant"
+      :theme => "elegant",
+      :locale => 'es'
     }
     @valid_attributes = @valid_create_attributes.merge(:name => "someaffiliate.gov")
   end
 
   describe "Creating new instance of Affiliate" do
     it { should validate_presence_of :display_name }
+    SUPPORTED_LOCALES.each do |locale|
+      it { should allow_value(locale).for(:locale) }
+    end
+    it { should_not allow_value("invalid_locale").for(:locale) }
+    it { should validate_presence_of :locale }
     it { should validate_uniqueness_of(:name) }
     it { should ensure_length_of(:name).is_at_least(2).is_at_most(33) }
     ["<IMG SRC=", "259771935505'", "spacey name", "NewAff"].each do |value|

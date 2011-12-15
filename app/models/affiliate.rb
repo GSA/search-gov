@@ -1,11 +1,9 @@
 class Affiliate < ActiveRecord::Base
-  validates_presence_of :display_name
-  validates_presence_of :name
-  validates_presence_of :search_results_page_title
-  validates_presence_of :staged_search_results_page_title
+  validates_presence_of :display_name,:name,:search_results_page_title,:staged_search_results_page_title, :locale
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within=> (2..33)
   validates_format_of :name, :with=> /^[a-z0-9._-]+$/
+  validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   has_and_belongs_to_many :users
   belongs_to :affiliate_template
   belongs_to :staged_affiliate_template, :class_name => 'AffiliateTemplate'

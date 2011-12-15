@@ -327,7 +327,7 @@ class Search
   def generate_default_scope
     DEFAULT_SCOPE
   end
-  
+
   def scoped_affiliate_query
     domains = fill_domains_to_remainder
     "scopeid:#{self.scope_id}#{" OR " + domains if domains.any?}"

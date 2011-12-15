@@ -1251,9 +1251,9 @@ describe Search do
 
       it "should not contain any indexed documents" do
         search = Search.new(@valid_options.merge(:query => 'USA.gov blog', :affiliate => @affiliate, :page => 0))
-        search.should_receive(:process_results).and_return([{ 'title' => 'bing title 1', 'unescapedUrl' => 'http://blog.usa.gov/' },
-                                                            { 'title' => 'bing title 2', 'unescapedUrl' => 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day/' },
-                                                            { 'title' => 'bing title 3', 'unescapedUrl' => 'http://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day' }])
+        search.should_receive(:process_results).and_return([{'title' => 'bing title 1', 'unescapedUrl' => 'http://blog.usa.gov/'},
+                                                            {'title' => 'bing title 2', 'unescapedUrl' => 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day/'},
+                                                            {'title' => 'bing title 3', 'unescapedUrl' => 'http://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day'}])
         search.run
         search.results.count == 3
         search.indexed_documents.count.should == 0
@@ -1602,7 +1602,7 @@ describe Search do
       end
     end
 
-    context "when the title or description don't match the keyword queried" do
+    context "when the title or description doesn't match the keyword queried" do
       before do
         @search = Search.new(:query => 'bold', :affiliate => @affiliate)
         @search.run

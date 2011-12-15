@@ -157,6 +157,17 @@ describe SearchesController do
         assigns[:scope_id].should == 'SomeScope'
       end
     end
+
+    context "when the affiliate locale is set to Spanish" do
+      before do
+        @affiliate.update_attribute(:locale, 'es')
+        get :index, :affiliate => @affiliate.name, :query => 'weather', :scope_id => 'SomeScope', :locale => 'en'
+      end
+
+      it "should override/ignore the HTTP locale param and set locale to Spanish" do
+        I18n.locale.to_s.should == 'es'
+      end
+    end
   end
 
   context "when handling a valid staged affiliate search request" do

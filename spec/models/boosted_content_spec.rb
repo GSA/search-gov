@@ -418,14 +418,14 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
         BoostedContent.search_for('foo')
       end
     end
-    
+
     context "when the Boosted Content is in English" do
       before do
         @boosted_content = BoostedContent.create!(@valid_attributes.merge(:title => 'sports', :description => 'speak', :keywords => 'dance'))
         Sunspot.commit
         BoostedContent.reindex
       end
-      
+
       it "should find by title, description and keywords, and highlight terms in the title and description" do
         title_search = BoostedContent.search_for('sports', @affiliate)
         title_search.total.should == 1
@@ -436,14 +436,14 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
         BoostedContent.search_for('dance', @affiliate).total.should == 1
       end
     end
-    
+
     context "when the Boosted Content is in Spanish" do
       before do
         @boosted_content = BoostedContent.create!(@valid_attributes.merge(:title => 'jugar', :description => 'hablar', :keywords => 'caminar', :locale => 'es'))
         Sunspot.commit
         BoostedContent.reindex
       end
-      
+
       it "should find stemmed equivalents for the title, description and keywords, and highlight terms in the title and description" do
         title_search = BoostedContent.search_for('jugando', @affiliate, "es")
         title_search.total.should == 1

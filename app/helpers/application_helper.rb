@@ -151,15 +151,14 @@ module ApplicationHelper
   end
 
   def highlight_hit(hit, field_name)
-    if hit.instance.is_a?(BoostedContent)
-      sym = hit.instance.locale == I18n.default_locale.to_s ? field_name.to_sym : "#{field_name}_text".to_sym
-    else
-      sym = field_name.to_sym
+    sym = field_name.to_sym
+    if (hit.instance.is_a?(BoostedContent) and hit.instance.locale == 'es') or (hit.instance.is_a?(IndexedDocument) and hit.instance.affiliate.locale == 'es')
+      sym = "#{field_name}_text".to_sym
     end
     return hit.highlight(sym).format { |phrase| "<strong>#{phrase}</strong>" } unless hit.highlight(sym).nil?
     hit.instance.send(field_name)
   end
-  
+
   def mobile_menu_item(link_text, target)
     content_tag(:li, link_to(content_tag(:div, link_text), target), :class => 'list-item')
   end

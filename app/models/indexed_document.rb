@@ -6,7 +6,6 @@ class IndexedDocument < ActiveRecord::Base
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
   validates_format_of :url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
   validate :doctype, :inclusion => {:in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"}
-  validate :locale, :inclusion => {:in => %w(en es), :message => "must be either 'en' or 'es.'"}
   before_validation :ensure_http_prefix_on_url
   before_validation :escape_url
 
@@ -16,12 +15,26 @@ class IndexedDocument < ActiveRecord::Base
   OK_STATUS = "OK"
 
   searchable do
-    text :title, :boost => 10.0
-    text :description, :boost => 4.0
-    text :body
+    text :title, :boost => 10.0 do |idoc|
+      idoc.title if idoc.affiliate.locale == "en"
+    end
+    text :title_es, :boost => 10.0, :as => "title_text_es" do |idoc|
+      idoc.title if idoc.affiliate.locale == "es"
+    end
+    text :description, :boost => 4.0 do |idoc|
+      idoc.description if idoc.affiliate.locale == "en"
+    end
+    text :description_es, :boost => 4.0, :as => "description_text_es" do |idoc|
+      idoc.description if idoc.affiliate.locale == "es"
+    end
+    text :body do |idoc|
+      idoc.body if idoc.affiliate.locale == "en"
+    end
+    text :body_es, :as => "body_text_es" do |idoc|
+      idoc.body if idoc.affiliate.locale == "es"
+    end
     string :last_crawl_status
     string :doctype
-    string :locale
     integer :affiliate_id
     string :url
   end
@@ -54,7 +67,7 @@ class IndexedDocument < ActiveRecord::Base
       update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Unsupported document type: #{file.content_type}")
     end
   end
-  
+
   def index_html(file)
     file.open if file.closed?
     doc = Nokogiri::HTML(file)
@@ -77,14 +90,15 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   class << self
-    def search_for(query, affiliate = nil, page = 1, per_page = 3)
+    def search_for(query, affiliate, page = 1, per_page = 3)
+      return if affiliate.nil? or query.blank?
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate.name}) do
         search do
           fulltext query do
-            highlight :title, :description, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
+            highlight :title, :description, :title_es, :description_es, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
           end
-          with(:affiliate_id, affiliate.id) if affiliate
-          without(:url).any_of affiliate.excluded_urls.collect{|excluded_url| excluded_url.url } unless affiliate.nil? or affiliate.excluded_urls.empty?
+          with(:affiliate_id, affiliate.id)
+          without(:url).any_of affiliate.excluded_urls.collect { |excluded_url| excluded_url.url } unless affiliate.excluded_urls.empty?
           with(:last_crawl_status, OK_STATUS)
           paginate :page => page, :per_page => per_page
         end rescue nil
@@ -103,7 +117,7 @@ class IndexedDocument < ActiveRecord::Base
       counter = 0
       if file.tempfile.lines.count <= max_urls and file.tempfile.open
         file.tempfile.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
-        return counter
+        counter
       else
         raise "Too many URLs in your file.  Please limit your file to #{max_urls} URLs."
       end
@@ -111,6 +125,15 @@ class IndexedDocument < ActiveRecord::Base
 
     def refresh_all
       all(:select=>:id).each { |indexed_document_fragment| Resque.enqueue(IndexedDocumentFetcher, indexed_document_fragment.id) }
+    end
+
+    def index_unindexed
+      ids=[]
+      all(:select=>:id, :conditions => "ISNULL(last_crawled_at)").each do |indexed_document_fragment|
+        Resque.enqueue(IndexedDocumentFetcher, indexed_document_fragment.id)
+        ids << indexed_document_fragment.id
+      end
+      update_all("created_at = now()", "id in (#{ids.join(',')})")
     end
   end
 
@@ -137,7 +160,7 @@ class IndexedDocument < ActiveRecord::Base
   def ensure_http_prefix_on_url
     self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^http(s?)://}i
   end
-  
+
   def escape_url
     self.url = URI::escape(URI::unescape(self.url)) unless self.url.blank?
   end

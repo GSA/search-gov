@@ -23,4 +23,19 @@ describe "Indexed document rake tasks" do
     end
   end
 
+  describe "usasearch:indexed_document:index_unindexed" do
+    before do
+      @task_name = "usasearch:indexed_document:index_unindexed"
+    end
+
+    it "should have 'environment' as a prereq" do
+      @rake[@task_name].prerequisites.should include("environment")
+    end
+
+    it "should index all unindexed affiliate documents" do
+      IndexedDocument.should_receive(:index_unindexed).once
+      @rake[@task_name].invoke
+    end
+  end
+
 end

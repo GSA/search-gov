@@ -126,6 +126,7 @@ class SearchesController < ApplicationController
       @affiliate.theme = @affiliate.staged_theme
       @affiliate.css_properties = @affiliate.staged_css_properties
     end
+    I18n.locale = 'es' if @affiliate && @affiliate.locale == 'es'
   end
 
   def set_form_search_options
