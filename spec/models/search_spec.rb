@@ -1393,44 +1393,52 @@ describe Search do
   end
 
   describe "#as_json" do
-    context "when converting search response to json" do
+    before do
+      affiliate = affiliates(:basic_affiliate)
+      affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description", :locale => 'en',
+                                         :locale => 'en', :status => 'active', :publish_start_on => Date.current)
+      BoostedContent.reindex
+      Sunspot.commit
+      @search = Search.new(:query => 'obama')
+      @search.run
+      allow_message_expectations_on_nil
+    end
+
+    it "should generate a JSON representation of total, start and end records, spelling suggestions, related searches and search results" do
+      json = @search.to_json
+      json.should =~ /total/
+      json.should =~ /startrecord/
+      json.should =~ /endrecord/
+    end
+
+    context "when an error occurs" do
       before do
-        affiliate = affiliates(:basic_affiliate)
-        affiliate.boosted_contents.create!(:title => "title", :url => "http://example.com", :description => "description", :locale => 'en',
-                                           :locale => 'en', :status => 'active', :publish_start_on => Date.current)
-        BoostedContent.reindex
-        Sunspot.commit
-        @search = Search.new(:query => 'obama')
-        @search.run
-        allow_message_expectations_on_nil
+        @search.instance_variable_set(:@error_message, "Some error")
       end
 
-      it "should generate a JSON representation of total, start and end records, spelling suggestions, related searches and search results" do
+      it "should output an error if an error is detected" do
         json = @search.to_json
-        json.should =~ /total/
-        json.should =~ /startrecord/
-        json.should =~ /endrecord/
+        json.should =~ /"error":"Some error"/
+      end
+    end
+
+    context "when boosted content is present" do
+      before do
+        @search.instance_variable_set(:@boosted_contents, Struct.new(:results).new([1, 2, 3]))
       end
 
-      context "when an error occurs" do
-        before do
-          @search.instance_variable_set(:@error_message, "Some error")
-        end
+      it "should output as boosted results" do
+        @search.as_json[:boosted_results].should == [1, 2, 3]
+      end
+    end
 
-        it "should output an error if an error is detected" do
-          json = @search.to_json
-          json.should =~ /"error":"Some error"/
-        end
+    context "when related searches are present" do
+      before do
+        @search.instance_variable_set(:@related_search, ["<strong>foo</strong>", "<strong>foo</strong> is here <strong>again</strong>"])
       end
 
-      context "when boosted content is present" do
-        before do
-          @search.instance_variable_set(:@boosted_contents, Struct.new(:results).new([1, 2, 3]))
-        end
-
-        it "should output as boosted results" do
-          @search.as_json[:boosted_results].should == [1, 2, 3]
-        end
+      it "should remove <strong> HTML formatting" do
+        @search.as_json[:related].should == ["foo", "foo is here again"]
       end
     end
   end

@@ -133,7 +133,7 @@ class Search
        :startrecord => startrecord,
        :endrecord => endrecord,
        :spelling_suggestions => spelling_suggestion,
-       :related => related_search,
+       :related => remove_strong(related_search),
        :results => results,
        :boosted_results => boosted_contents.try(:results)}
     end
@@ -472,12 +472,12 @@ class Search
   def remove_duplicate_indexed_documents
     @indexed_documents = @indexed_documents.hits(:verify => true)
     @indexed_documents.delete_if do |indexed_document|
-      url = indexed_document.instance.url
-      url = url.end_with?('/') ? url[0..-2] : url
-      regex_escaped_url = Regexp.escape("#{url}")
-      matching_url_found = false
-      @results.each { |result| matching_url_found = true and break if result['unescapedUrl'] =~ /#{regex_escaped_url}\/?/i }
-      matching_url_found
+      regex_escaped_url_minus_trailing_slash = Regexp.escape(indexed_document.instance.url.sub(/\/$/,''))
+      @results.any? { |result| result['unescapedUrl'] =~ /#{regex_escaped_url_minus_trailing_slash}\/?/i }
     end
+  end
+
+  def remove_strong(string_array)
+    string_array.map {|entry| entry.gsub(/<\/?strong>/,'')} if string_array.kind_of?(Array)
   end
 end
