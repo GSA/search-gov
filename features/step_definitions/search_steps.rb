@@ -56,11 +56,3 @@ end
 Then /^I should not see a link to "([^"]*)" with url for "([^"]*)" on the popular pages list$/ do |link_title, url|
   page.should_not have_selector(".popular-pages a", :text => link_title, :href => url)
 end
-
-Given /^the following Excluded Domains exist:$/ do |table|
-  table.hashes.each do |hash|
-    ExcludedDomain.create(:domain => hash[:domain])
-  end
-end
-
-

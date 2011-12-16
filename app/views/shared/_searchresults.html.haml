@@ -17,8 +17,7 @@
   = render "/shared/indexed_documents", :search => @search, :affiliate => @affiliate if @affiliate
 - if search.results.present?
   - search.results.each_with_index do |result, index|
-    - unless url_is_excluded(result['unescapedUrl'], @affiliate)
-      = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
+    = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
     = render "/shared/related_faqs" if index == 4 and search.page == 0
   = render "/shared/related_topics_wrapper"
   .pagination-and-logo

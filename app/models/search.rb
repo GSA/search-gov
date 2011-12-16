@@ -415,7 +415,7 @@ class Search
     processed = response.web.results.collect do |result|
       title = result.title rescue nil
       content = result.description rescue ''
-      if title.present?
+      if title.present? and not url_is_excluded(result.url)
         {
           'title' => title,
           'unescapedUrl' => result.url,
@@ -428,6 +428,12 @@ class Search
       end
     end
     processed.compact
+  end
+
+  def url_is_excluded(url)
+    parsed_url = URI::parse(url) rescue nil
+    return true if parsed_url and ExcludedDomain.all.any? {|excluded_domain| parsed_url.host.ends_with(excluded_domain.domain) }
+    @affiliate ? @affiliate.excluded_urls.any? {|excluded_url| url.match(excluded_url.url)} : false
   end
 
   def process_indexed_results(indexed_results)

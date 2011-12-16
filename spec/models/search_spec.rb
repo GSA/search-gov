@@ -882,6 +882,27 @@ describe Search do
       end
     end
 
+    context "when Bing results contain excluded URLs" do
+      before do
+        @url1 = "http://www.uspto.gov/web.html"
+        @url2 = "http://www.windstream.net/web.html"
+        affiliate = affiliates(:power_affiliate)
+        ExcludedDomain.create!(:domain => "windstream.net")
+        ExcludedUrl.create!(:url => @url1, :affiliate => affiliate)
+        @search = Search.new(@valid_options.merge(:query => '(electro coagulation) site:uspto.gov', :affiliate => affiliate))
+        json = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_results_with_spelling_suggestions.json")
+        parsed = JSON.parse(json)
+        JSON.stub!(:parse).and_return parsed
+        @search.run
+      end
+
+      it "should filter out the excluded URLs" do
+        @search.results.any? {|result| result['unescapedUrl'] == @url1 or result['unescapedUrl'] == @url2 }.should be_false
+        @search.results.size.should == 4
+      end
+
+    end
+
     context "when searching for misspelled terms" do
       before do
         @search = Search.new(@valid_options.merge(:query => "p'resident"))
@@ -1621,6 +1642,17 @@ describe Search do
         @search.results.first['title'].should_not =~ /\xEE\x80\x81/
         @search.results.first['content'].should_not =~ /\xEE\x80\x80/
         @search.results.first['content'].should_not =~ /\xEE\x80\x81/
+      end
+    end
+  end
+
+  describe "#url_is_excluded(url)" do
+    context "when an URL is unparseable" do
+      let(:url) { "http://water.weather.gov/ahps2/hydrograph.php?wfo=lzk&gage=bkra4&view=1,1,1,1,1,1,1,1\"" }
+
+      it "should not fail, and not exclude the url" do
+        search = Search.new(:query => 'bold', :affiliate => @affiliate)
+        search.send(:url_is_excluded,url).should be_false
       end
     end
   end
