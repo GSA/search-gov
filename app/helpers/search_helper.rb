@@ -634,8 +634,8 @@ module SearchHelper
 
   def url_is_excluded(url, affiliate)
     parsed_url = URI::parse(url) rescue nil
-    ExcludedDomain.all.each{|excluded_domain| return true if parsed_url.host.ends_with(excluded_domain.domain) } if parsed_url
-    affiliate ? affiliate.excluded_urls.collect{|excluded_url| excluded_url.url}.include?(url) : false
+    return true if parsed_url and ExcludedDomain.all.any? {|excluded_domain| parsed_url.host.ends_with(excluded_domain.domain) }
+    affiliate ? affiliate.excluded_urls.any? {|excluded_url| url.match(excluded_url.url)} : false
   end
 
   private

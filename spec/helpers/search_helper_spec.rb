@@ -842,17 +842,50 @@ describe SearchHelper do
   end
 
   describe "#url_is_excluded(url, affiliate)" do
-    before do
-      @affiliate = affiliates(:basic_affiliate)
-    end
-    
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
     context "when an unparseable URL is passed" do
-      before do
-        @url = "http://water.weather.gov/ahps2/hydrograph.php?wfo=lzk&gage=bkra4&view=1,1,1,1,1,1,1,1\""
-      end
-      
+      let(:url) { "http://water.weather.gov/ahps2/hydrograph.php?wfo=lzk&gage=bkra4&view=1,1,1,1,1,1,1,1\"" }
+
       it "should not fail, and not exclude the url" do
-        helper.url_is_excluded(@url, @affiliate).should be_false
+        helper.url_is_excluded(url, affiliate).should be_false
+      end
+    end
+
+    context "when the domain of the url matches an excluded domain" do
+      let(:url) { "http://water.windstream.net/ahps2/hydrograph.php" }
+
+      before do
+        ExcludedDomain.create!(:domain => "windstream.net")
+      end
+
+      it "should return true" do
+        helper.url_is_excluded(url, affiliate).should be_true
+      end
+    end
+
+    context "when the url matches an excluded url for the affiliate" do
+      let(:url) { "http://water.windstream.net/ahps2/hydrograph.php" }
+
+      before do
+        ExcludedUrl.create!(:url => url, :affiliate => affiliate)
+      end
+
+      it "should return true" do
+        helper.url_is_excluded(url, affiliate).should be_true
+      end
+    end
+
+    context "when the domain of the URL doesn't match an excluded domain or an affiliate's excluded url" do
+      let(:url) { "http://water.windstream.net/ahps2/hydrograph.php" }
+
+      before do
+        ExcludedUrl.create!(:url => "http://water.windstream.net/ahps2/different_url.php", :affiliate => affiliate)
+        ExcludedDomain.create!(:domain => "windstream.gov")
+      end
+
+      it "should return false" do
+        helper.url_is_excluded(url, affiliate).should be_false
       end
     end
   end
