@@ -15,6 +15,6 @@
           %td{:class => ("total" if stat.display_name == "Total"), :style=>"text-align: right"}= number_with_delimiter(stat.clicks)
           %td{:class => ("total" if stat.display_name == "Total"), :style=>"text-align: right"}
             = number_to_percentage(stat.clickthru_ratio, :precision => 1)
-            = image_tag Gchart.sparkline(:data => stat.historical_ctr, :size => '70x17', :line_colors => '0077CC', :max_value => 100, :min_value => 0 )
+            = image_tag Gchart.sparkline(:data => stat.historical_ctr, :size => '70x17', :line_colors => '0077CC')
 - else
   %h3 No data matched your filters
