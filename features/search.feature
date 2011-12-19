@@ -32,8 +32,8 @@ Feature: Search
     And I fill in "query" with "president"
     And I press "Search"
     Then I should be on the search page
-    And I should see "Questions & Answers for president by USA.gov" after the 5th search result
-    And I should see "Who is the president of the United States?" after the 5th search result
+    And I should see "Questions & Answers for president by USA.gov" after the 3th search result
+    And I should see "Who is the president of the United States?" after the 3th search result
     And I should not see "Who is the president of the Estados Unidos?"
     When I follow "2" in the pagination
     Then I should not see "Questions & Answers for president by USA.gov"
@@ -48,8 +48,8 @@ Feature: Search
     And I fill in "query" with "president"
     And I press "Buscar"
     Then I should be on the search page
-    And I should see "Respuestas para president de GobiernoUSA.gov" after the 5th search result
-    And I should see "Who is the president of the Estados Unidos?" after the 5th search result
+    And I should see "Respuestas para president de GobiernoUSA.gov" after the 3th search result
+    And I should see "Who is the president of the Estados Unidos?" after the 3th search result
     And I should not see "Who is the president of the United States?"
     When I follow "2" in the pagination
     Then I should not see "Respuestas para president de GobiernoUSA.gov"

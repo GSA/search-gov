@@ -18,7 +18,7 @@
 - if search.results.present?
   - search.results.each_with_index do |result, index|
     = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
-    = render "/shared/related_faqs" if index == 4 and search.page == 0
+    = render "/shared/related_faqs" if index == 2 and search.page == 0
   = render "/shared/related_topics_wrapper"
   .pagination-and-logo
     = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
