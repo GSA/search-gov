@@ -5,7 +5,7 @@ class SuperfreshController < ApplicationController
     @feed_id = (params[:feed_id] || "1").to_i
     if @feed_id == 1
       @superfresh_urls = SuperfreshUrl.uncrawled_urls(500)
-      SuperfreshUrl.delete_all("id in (#{@superfresh_urls.collect(&:id).join(',')})") if request.user_agent == SuperfreshUrl::MSNBOT_USER_AGENT
+      SuperfreshUrl.delete_all("id in (#{@superfresh_urls.collect(&:id).join(',')})") if request.user_agent == SuperfreshUrl::MSNBOT_USER_AGENT  and @superfresh_urls.present?
     else
       @superfresh_urls = []
     end
