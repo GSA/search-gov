@@ -465,24 +465,20 @@ describe IndexedDocument do
     end
   end
 
-  describe "#index_unindexed" do
+  describe "#bulk_load_urls" do
     before do
-      ResqueSpec.reset!
       IndexedDocument.delete_all
-      common = "insert into indexed_documents (title,description,url,affiliate_id,last_crawled_at) values ('these get created outside of AR','via mysqlimport'"
-      sql = "#{common}, 'http://www.usa.gov',#{affiliates(:power_affiliate).id}, null);"
-      ActiveRecord::Base.connection.execute(sql)
-      sql = "#{common}, 'http://www.usa.gov/more',#{affiliates(:power_affiliate).id}, null);"
-      ActiveRecord::Base.connection.execute(sql)
-      sql = "#{common}, 'http://www.usa.gov/already_crawled',#{affiliates(:power_affiliate).id},now());"
-      ActiveRecord::Base.connection.execute(sql)
+      @file = File.new('aid_urls.txt', 'w+')
+      @aff = affiliates(:power_affiliate)
+      2.times { @file.puts([@aff.id, 'http://www.usa.gov'].join('\t')) }
+      @file.puts([@aff.id, 'http://www.usa.z/invalid'].join('\t'))
+      @file.close
     end
 
-    it "should enqueue a fetch call for all unfetched indexed docs" do
-      IndexedDocument.index_unindexed
-      IndexedDocumentFetcher.should have_queue_size_of(2)
-      IndexedDocumentFetcher.should have_queued(IndexedDocument.find_by_url("http://www.usa.gov").id)
-      IndexedDocumentFetcher.should have_queued(IndexedDocument.find_by_url("http://www.usa.gov/more").id)
+    it "should create new, valid IndexedDocument entries" do
+      IndexedDocument.bulk_load_urls(@file.path)
+      IndexedDocument.count.should == 1
+      IndexedDocument.find_by_url("http://www.usa.gov", @aff.id).should_not be_nil
     end
   end
 end

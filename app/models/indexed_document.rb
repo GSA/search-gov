@@ -4,7 +4,7 @@ class IndexedDocument < ActiveRecord::Base
   belongs_to :affiliate
   validates_presence_of :url, :affiliate_id
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
-  validates_format_of :url, :with => /(^$)|(^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
+  validates_format_of :url, :with => /(^$)|(^https?:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
   validate :doctype, :inclusion => {:in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"}
   before_validation :ensure_http_prefix_on_url
   before_validation :escape_url
@@ -127,13 +127,11 @@ class IndexedDocument < ActiveRecord::Base
       all(:select=>:id).each { |indexed_document_fragment| Resque.enqueue(IndexedDocumentFetcher, indexed_document_fragment.id) }
     end
 
-    def index_unindexed
-      ids=[]
-      all(:select=>:id, :conditions => "ISNULL(last_crawled_at)").each do |indexed_document_fragment|
-        Resque.enqueue(IndexedDocumentFetcher, indexed_document_fragment.id)
-        ids << indexed_document_fragment.id
+    def bulk_load_urls(file_path)
+      File.open(file_path).each do |line|
+        affiliate_id, url = line.chomp.split('\t')
+        create(:url => url, :affiliate_id => affiliate_id)
       end
-      update_all("created_at = now()", "id in (#{ids.join(',')})")
     end
   end
 
