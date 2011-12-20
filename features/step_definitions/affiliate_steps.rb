@@ -65,7 +65,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :theme => theme,
       :staged_theme => staged_theme,
       :css_properties => css_properties.to_json,
-      :top_searches_label => hash["top_searches_label"] || 'Search Trends'
+      :top_searches_label => hash["top_searches_label"] || 'Search Trends',
+      :locale => hash["locale"] || 'en'
     )
     affiliate.uses_one_serp = hash[:uses_one_serp] || false
     affiliate.save!

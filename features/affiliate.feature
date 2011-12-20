@@ -156,10 +156,7 @@ Feature: Affiliate clients
     Then I should see "Add a New Site" within "title"
     And I should see "Site successfully created"
     And I should see "Step 3. Get the code" in the site wizards header
-    And I should see "Code for English-language sites"
     And I should see the code for English language sites
-    And I should see "Code for Spanish-language sites"
-    And I should see the code for Spanish language sites
     And I should see "View search results page"
     When I fill in "query" with "White House"
     And I press "Search"
@@ -188,6 +185,34 @@ Feature: Affiliate clients
     When I go to myawesomeagency's search page
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should see the affiliate custom css
+    
+  Scenario: Adding a new Spanish affiliate
+    Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
+    When I go to the affiliate admin page
+    And I follow "Add New Site"
+    And I fill in the following:
+      | Government organization                    | Awesome Agency             |
+      | Phone                                      | 202-123-4567               |
+      | Organization address                       | 123 Penn Avenue            |
+      | Address 2                                  | Ste 456                    |
+      | City                                       | Reston                     |
+      | Zip                                        | 20022                      |
+    And I select "Virginia" from "State"
+    And I press "Next"
+    When I fill in the following:
+      | Site name         | My awesome agency                    |
+      | Domains to search | www.awesomeagency.gov                |
+    And I choose "Spanish"
+    And I press "Next"
+    Then I should see the code for Spanish language sites
+    And I should see "View search results page"
+    When I fill in "query" with "White House"
+    And I press "Search"
+    Then I should see "White House - My awesome agency Search Results"
+    And I should see "Búsqueda avanzada"
+    When I go to the "My awesome agency" affiliate page
+    And I follow "Site information"
+    Then the "Spanish" checkbox should be checked
 
   Scenario: Affiliate user who filled out contact information should not have to fill out the form again
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
@@ -1313,13 +1338,23 @@ Feature: Affiliate clients
     And I follow "Get code"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Get Code
     And I should see "The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear."
-    And I should see "Code for English-language sites"
     And I should see the code for English language sites
-    And I should see "Code for Spanish-language sites"
+    And I should see "Code for content discovery and indexing"
+    And I should see the stats code
+  
+  Scenario: Getting an embed code for my affiliate site search in Spanish
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        | locale  |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            | es      |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "Get code"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Get Code
+    And I should see "The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear."
     And I should see the code for Spanish language sites
     And I should see "Code for content discovery and indexing"
     And I should see the stats code
-
+  
   Scenario: Navigating to an Affiliate page for a particular Affiliate
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |

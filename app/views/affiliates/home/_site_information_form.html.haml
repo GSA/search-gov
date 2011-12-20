@@ -7,6 +7,13 @@
       = site_information_form.label :name, "Site Handle (visible to searchers in the URL)"
       = site_information_form.text_field :name, :class => 'txt', :disabled => true
   %li
+    = site_information_form.label :locale, "Site Language"
+    - radio_button_options = @affiliate.new_record? ? {} : { :disabled => true }
+    = site_information_form.radio_button :locale, "en", radio_button_options
+    = site_information_form.label :locale, 'English', :value => 'en', :style => 'float: none;'
+    = site_information_form.radio_button :locale, "es", radio_button_options
+    = site_information_form.label :locale, 'Spanish', :value => 'es', :style => 'float: none;'
+  %li
     = site_information_form.label :website, "Site URL"
     = site_information_form.text_field :website, :class => 'txt'
   %li

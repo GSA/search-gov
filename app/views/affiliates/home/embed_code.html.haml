@@ -5,13 +5,7 @@
 %p The following is the HTML code for your search page. Copy and paste this code into your page(s) where the search box should appear.
 = find_and_preserve do
   #embed_code_english.span-24
-    %h2 Code for English-language sites
-    = render :partial => 'embed_code_text_area', :locals => { :locale => 'en' }
-
-= find_and_preserve do
-  #embed_code_spanish.span-24
-    %h2 Code for Spanish-language sites
-    = render :partial => 'embed_code_text_area', :locals => { :locale => 'es' }
+    = render :partial => 'embed_code_text_area', :locals => { :locale => @affiliate.locale }
 
 %h2 Code for content discovery and indexing
 %p
