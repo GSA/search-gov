@@ -45,6 +45,17 @@ describe SuperfreshController, "#index" do
         response.body.should contain(/some.mil/)
         response.body.should contain(/another.mil/)
       end
+
+      context "when there are no uncrawled URLs" do
+        before do
+          SuperfreshUrl.delete_all
+        end
+
+        it "should return an empty array" do
+          get :index
+          assigns[:superfresh_urls].should == []
+        end
+      end
     end
 
     context "when the request is not from the MSNbot" do
