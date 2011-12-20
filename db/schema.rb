@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214230059) do
+ActiveRecord::Schema.define(:version => 20111220080239) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -326,9 +326,9 @@ ActiveRecord::Schema.define(:version => 20111214230059) do
   add_index "grouped_queries_query_groups", ["query_group_id", "grouped_query_id"], :name => "joinindex", :unique => true
 
   create_table "indexed_documents", :force => true do |t|
-    t.string   "title"
+    t.text     "title"
     t.text     "description"
-    t.string   "url"
+    t.string   "url",               :limit => 2000
     t.integer  "affiliate_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -338,8 +338,7 @@ ActiveRecord::Schema.define(:version => 20111214230059) do
     t.string   "last_crawl_status"
   end
 
-  add_index "indexed_documents", ["affiliate_id"], :name => "index_indexed_documents_on_affiliate_id"
-  add_index "indexed_documents", ["url", "affiliate_id"], :name => "index_indexed_documents_on_url_and_affiliate_id", :unique => true
+  add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"url"=>50, "affiliate_id"=>nil}
 
   create_table "logfile_blocked_class_cs", :force => true do |t|
     t.string   "classc",     :null => false
