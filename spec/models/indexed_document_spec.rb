@@ -23,6 +23,7 @@ describe IndexedDocument do
   it { should allow_value("http://some.govsite.com/url").for(:url) }
   it { should allow_value("http://some.govsite.us/url").for(:url) }
   it { should allow_value("http://some.govsite.info/url").for(:url) }
+  it { should_not allow_value("https://some.govsite.info/url").for(:url) }
   it { should belong_to :affiliate }
 
   it "should create a new instance given valid attributes" do

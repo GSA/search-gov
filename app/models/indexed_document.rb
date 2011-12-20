@@ -4,7 +4,7 @@ class IndexedDocument < ActiveRecord::Base
   belongs_to :affiliate
   validates_presence_of :url, :affiliate_id
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
-  validates_format_of :url, :with => /(^$)|(^https?:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
+  validates_format_of :url, :with => /(^$)|(^http:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
   validate :doctype, :inclusion => {:in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"}
   before_validation :ensure_http_prefix_on_url
   before_validation :escape_url
@@ -156,7 +156,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def ensure_http_prefix_on_url
-    self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^http(s?)://}i
+    self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^http://}i
   end
 
   def escape_url
