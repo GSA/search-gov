@@ -12,6 +12,7 @@ describe IndexedDocument do
       :description => 'This is a PDF document.',
       :url => 'http://something.gov/pdf.pdf',
       :last_crawl_status => IndexedDocument::OK_STATUS,
+      :body => "this is the doc body",
       :affiliate_id => affiliates(:basic_affiliate).id
     }
   end
@@ -24,29 +25,27 @@ describe IndexedDocument do
   it { should allow_value("http://some.govsite.us/url").for(:url) }
   it { should allow_value("http://some.govsite.info/url").for(:url) }
   it { should_not allow_value("https://some.govsite.info/url").for(:url) }
+  it { should_not allow_value("http://something.gov/there_is_a_space_in_this url.pdf").for(:url) }
+  it { should_not allow_value("http://www.ssa.gov./trailing-period-in-domain.pdf").for(:url) }
   it { should belong_to :affiliate }
 
   it "should create a new instance given valid attributes" do
     IndexedDocument.create!(@valid_attributes)
   end
 
-  context "when the url has some URI-encoded characters, but some that are not URI-encoded" do
-    before do
-      @url = "http://something.gov/let's%20make a really%20horrible path for this url.html"
+  describe "normalizing URLs when saving" do
+    context "when URL doesn't have a protocol" do
+      let(:url) { "www.foo.gov/sdfsdf" }
+      it "should prepend it with http://" do
+        IndexedDocument.create!(@valid_attributes.merge(:url=>url)).url.should == "http://www.foo.gov/sdfsdf"
+      end
     end
 
-    it "should save a version of the url that is completely URI-escaped" do
-      IndexedDocument.create!(@min_valid_attributes.merge(:url => @url)).url.should == "http://something.gov/let's%20make%20a%20really%20horrible%20path%20for%20this%20url.html"
-    end
-  end
-
-  context "when the url is un-URI-encoded" do
-    before do
-      @url = "http://something.gov/i-am-a-badly-encoded url.pdf"
-    end
-
-    it "should save it URI-encoded" do
-      IndexedDocument.create!(@min_valid_attributes.merge(:url => @url)).url.should == "http://something.gov/i-am-a-badly-encoded%20url.pdf"
+    context "when an URL contains an anchor tag" do
+      let(:url) { "http://www.foo.gov/sdfsdf#anchorme" }
+      it "should remove it" do
+        IndexedDocument.create!(@valid_attributes.merge(:url=>url)).url.should == "http://www.foo.gov/sdfsdf"
+      end
     end
   end
 
@@ -72,6 +71,16 @@ describe IndexedDocument do
   it "should allow a duplicate url for a different affiliate" do
     IndexedDocument.create!(@valid_attributes)
     duplicate = IndexedDocument.new(@valid_attributes.merge(:affiliate_id => affiliates(:power_affiliate).id))
+    duplicate.should be_valid
+  end
+
+  it "should validate unique content hash across URLs for a given affiliate" do
+    attrs = @valid_attributes.merge(:content_hash => '92ebcfafee3260a041f9624525a45328')
+    IndexedDocument.create!(attrs)
+    duplicate = IndexedDocument.new(attrs.merge(:url=>"http://www.otherone.gov/"))
+    duplicate.should_not be_valid
+    duplicate.errors[:content_hash].first.should =~ /Identical content/
+    duplicate = IndexedDocument.new(attrs.merge(:affiliate_id => affiliates(:power_affiliate).id))
     duplicate.should be_valid
   end
 
@@ -169,17 +178,27 @@ describe IndexedDocument do
       File.stub!(:delete)
     end
 
-    let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
+    let(:indexed_document) { IndexedDocument.create!(@valid_attributes) }
 
-    context "when there is a problem fetching the URL content" do
+    it "should set the content hash for the entry" do
+      mockfile = mock("File")
+      indexed_document.stub!(:open).and_return mockfile
+      mockfile.stub!(:content_type).and_return "foo"
+      indexed_document.stub!(:index_document)
+      indexed_document.stub!(:build_content_hash).and_return 'somehash'
+      indexed_document.should_receive(:update_attribute).with(:content_hash, 'somehash')
+      indexed_document.fetch
+    end
+
+    context "when there is a problem fetching and indexing the URL content" do
       before do
-        indexed_document.stub!(:open).and_raise Exception.new("404 Document Not Found")
+        indexed_document.stub!(:open).and_raise IndexedDocument::IndexedDocumentError.new("bummer")
       end
 
       it "should update the url with last crawled date and error message" do
         indexed_document.fetch
         indexed_document.last_crawled_at.should_not be_nil
-        indexed_document.last_crawl_status.should == "404 Document Not Found"
+        indexed_document.last_crawl_status.should == "bummer"
       end
 
       it "should not attempt to clean up the nil file descriptor" do
@@ -199,6 +218,7 @@ describe IndexedDocument do
       end
 
       it "should call index_document" do
+        indexed_document.stub!(:update_attribute)
         indexed_document.should_receive(:index_document).with(anything(), 'application/pdf')
         indexed_document.fetch
       end
@@ -221,6 +241,7 @@ describe IndexedDocument do
       end
 
       it "should call index_document" do
+        indexed_document.stub!(:update_attribute)
         indexed_document.should_receive(:index_document).with(@html_io, 'text/html')
         indexed_document.fetch
       end
@@ -238,7 +259,7 @@ describe IndexedDocument do
       @file = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
     end
 
-    context "whent the content type of the fetched document contains 'pdf'" do
+    context "when the content type of the fetched document contains 'pdf'" do
       before do
         @file.stub!(:content_type).and_return 'application/pdf'
       end
@@ -249,9 +270,10 @@ describe IndexedDocument do
       end
     end
 
-    context "whent the content type of the fetched document contains 'html'" do
+    context "when the content type of the fetched document contains 'html'" do
       before do
         @file.stub!(:content_type).and_return 'text/html'
+        @indexed_document.stub!(:update_attribute)
       end
 
       it "should call index_html if the content type contains 'pdf'" do
@@ -260,105 +282,107 @@ describe IndexedDocument do
       end
     end
 
-    context "whent the content type of the fetched document contains neither 'pdf' or 'html'" do
+    context "when the content type of the fetched document contains neither 'pdf' or 'html'" do
       before do
         @file.stub!(:content_type).and_return 'application/msword'
-        @now = Time.now
-        Time.stub!(:now).and_return @now
       end
 
-      it "should update the document with the current time and an error message indicating that the document type is not yet supported." do
-        @indexed_document.index_document(@file, @file.content_type)
-        @indexed_document.last_crawled_at.should == @now
-        @indexed_document.last_crawl_status.should == "Unsupported document type: application/msword"
+      it "should raise an IndexedDocumentError error indicating that the document type is not yet supported" do
+        lambda { @indexed_document.index_document(@file, @file.content_type) }.should raise_error(IndexedDocument::IndexedDocumentError, "Unsupported document type: application/msword")
       end
     end
   end
 
   describe "#index_html(file)" do
     context "when the page has a HTML title" do
-      before do
-        @indexed_document = IndexedDocument.create!(@min_valid_attributes)
-        file = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
-        @indexed_document.index_html(file)
-      end
+      let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
+      let(:file) { open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm') }
 
       context "when the title is long" do
         it "should use the title, truncated to 60 characters on a word boundary" do
-          @indexed_document.title.should == "Fire Island National Seashore - Fire Island Light Station..."
+          indexed_document.index_html(file)
+          indexed_document.title.should == "Fire Island National Seashore - Fire Island Light Station..."
         end
       end
 
       context "when the page has a description meta tag" do
         it "should use it when creating the boosted content" do
-          @indexed_document.description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
+          indexed_document.index_html(file)
+          indexed_document.description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
         end
       end
 
       context "when the page has a differently capitalized DeScriPtioN meta tag" do
         it "should still find it and use it" do
-          @indexed_document.description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
+          indexed_document.index_html(file)
+          indexed_document.description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
         end
       end
 
       context "when the page does not have a description meta tag" do
         before do
-          @indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
+          indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html')
         end
 
         it "should use the initial subset of non-HTML words of the web page as the description" do
-          @indexed_document.title.should == "Carribean Sea Regional Atlas - Map Service and Layer..."
-          @indexed_document.description.should == "Carribean Sea Regional Atlas. -. Map Service and Layer Descriptions. Ocean Exploration and Research (OER) Digital Atlases. Caribbean Sea. Description. This map aids the public in locating surveys carried out by NOAA's Office of Exploration and..."
+          indexed_document.title.should == "Carribean Sea Regional Atlas - Map Service and Layer..."
+          indexed_document.description.should == "Carribean Sea Regional Atlas. -. Map Service and Layer Descriptions. Ocean Exploration and Research (OER) Digital Atlases. Caribbean Sea. Description. This map aids the public in locating surveys carried out by NOAA's Office of Exploration and..."
+        end
+      end
+
+      context "when the page body (inner text) is empty" do
+        before do
+          indexed_document.stub!(:scrub_inner_text)
+        end
+
+        it "should raise an IndexedDocumentError" do
+          lambda { indexed_document.index_html(file) }.should raise_error(IndexedDocument::IndexedDocumentError)
         end
       end
     end
   end
 
   describe "#index_pdf(file)" do
-    before do
-      @indexed_document = IndexedDocument.create!(@min_valid_attributes)
-    end
+    let(:indexed_document) { IndexedDocument.create!(@min_valid_attributes) }
 
     context "for a normal PDF file" do
       before do
-        @indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
+        indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf")
       end
 
       it "should create an indexed document that has a title and description from the pdf" do
-        @indexed_document.id.should_not be_nil
-        @indexed_document.title.should == "This is a test PDF file, we are use it to test our PDF parsing technology"
-        @indexed_document.description.should =~ /This is a test PDF file/
-        @indexed_document.description.should =~ /in the right.../
-        @indexed_document.url.should == @min_valid_attributes[:url]
+        indexed_document.id.should_not be_nil
+        indexed_document.title.should == "This is a test PDF file, we are use it to test our PDF parsing technology"
+        indexed_document.description.should =~ /This is a test PDF file/
+        indexed_document.description.should =~ /in the right.../
+        indexed_document.url.should == @min_valid_attributes[:url]
       end
 
       it "should set the the time and status from the crawl" do
-        @indexed_document.last_crawled_at.should_not be_nil
-        @indexed_document.last_crawl_status.should == IndexedDocument::OK_STATUS
-      end
-    end
-
-    context "when the pdf body is blank" do
-      before do
-        @indexed_document = IndexedDocument.create!(@min_valid_attributes.merge(:url => 'http://www.state.nj.us/bpu/pdf/boardorders/3-2-07-III%20H.pdf'))
-        @indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/badtitle.pdf")
-      end
-
-      it "should generate a title using the last part of the filename" do
-        @indexed_document.id.should_not be_nil
-        @indexed_document.title.should == "3-2-07-III H.pdf"
+        indexed_document.last_crawled_at.should_not be_nil
+        indexed_document.last_crawl_status.should == IndexedDocument::OK_STATUS
       end
     end
 
     context "for a PDF that, when parsed, has garbage characters in the description" do
       before do
-        @indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/garbage_chars.pdf")
+        indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/garbage_chars.pdf")
       end
 
       it "should remove the garbage characters from the description" do
-        @indexed_document.description.should_not =~ /[“’‘”]/
-        @indexed_document.description[0..-4].should_not =~ /[^\w_ ]/
-        @indexed_document.description.should_not =~ / /
+        indexed_document.description.should_not =~ /[“’‘”]/
+        indexed_document.description[0..-4].should_not =~ /[^\w_ ]/
+        indexed_document.description.should_not =~ / /
+      end
+    end
+
+    context "when the page content is empty" do
+      before do
+        PDF::Toolkit.stub!(:pdftotext).and_return ""
+      end
+
+      it "should raise an IndexedDocumentError" do
+        lambda { indexed_document.index_pdf(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf") }.should raise_error(IndexedDocument::IndexedDocumentError)
       end
     end
   end
@@ -480,6 +504,18 @@ describe IndexedDocument do
       IndexedDocument.bulk_load_urls(@file.path)
       IndexedDocument.count.should == 1
       IndexedDocument.find_by_url("http://www.usa.gov", @aff.id).should_not be_nil
+    end
+  end
+
+  describe "#build_content_hash" do
+    it "should build it from the title and body" do
+      IndexedDocument.new(@valid_attributes).build_content_hash.should == '92ebcfafee3260a041f9624525a45327'
+    end
+
+    context "when title is empty" do
+      it "should just use the body" do
+        IndexedDocument.new(@valid_attributes.merge(:title => nil)).build_content_hash.should == '0a56786098d4b95f93ebff6070b0a24f'
+      end
     end
   end
 end

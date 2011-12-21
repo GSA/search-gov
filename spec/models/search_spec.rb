@@ -201,7 +201,7 @@ describe Search do
 
       context "when affiliate has domains specified and user does not specify site: in search" do
         before do
-          @affiliate = Affiliate.new(:domains => %w(          foo.com bar.com          ).join("\r\n"))
+          @affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\r\n"))
           @uriresult = URI::parse("http://localhost:3000/")
         end
 
@@ -258,7 +258,7 @@ describe Search do
 
       context "when affiliate has domains specified but user specifies site: in search" do
         before do
-          @affiliate = Affiliate.new(:domains => %w(          foo.com bar.com          ).join("\n"))
+          @affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
           @uriresult = URI::parse("http://localhost:3000/")
         end
 
@@ -290,7 +290,7 @@ describe Search do
       end
 
       context "when affiliate has more than one domains specified and sitelimit contains one matching domain" do
-        let(:affiliate) { mock('affiliate', :domains => %w(          foo.com bar.com          ).join("\r\n")) }
+        let(:affiliate) { mock('affiliate', :domains => %w(foo.com bar.com).join("\r\n")) }
         let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'www.foo.com')) }
 
         before do
@@ -307,7 +307,7 @@ describe Search do
       end
 
       context "when affiliate has more than one domains specified and sitelimit does not contain matching domain" do
-        let(:affiliate) { mock('affiliate', :domains => %w(          foo.com bar.com          ).join("\r\n")) }
+        let(:affiliate) { mock('affiliate', :domains => %w(foo.com bar.com).join("\r\n")) }
         let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'doesnotexist.gov')) }
 
         before do
@@ -1258,26 +1258,25 @@ describe Search do
     context "when an affiliate has Bing results that are duplicated in indexed documents" do
       before do
         @affiliate.indexed_documents.destroy_all
-        @affiliate.indexed_documents.create!(:title => "Hack Day - USA.gov Blog",
-                                             :description => "Hack Day description",
-                                             :url => 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day',
-                                             :last_crawl_status => IndexedDocument::OK_STATUS)
-        @affiliate.indexed_documents.create!(:title => "Projects created - USA.gov Blog",
-                                             :description => "Projects created description",
-                                             :url => 'http://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day/',
-                                             :last_crawl_status => IndexedDocument::OK_STATUS)
+        @affiliate.indexed_documents.create!(:title => "Hack Day - USA.gov Blog", :description => "Hack Day description, sometimes with a trailing slash",
+                                             :url => 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day', :last_crawl_status => IndexedDocument::OK_STATUS)
+        @affiliate.indexed_documents.create!(:title => "Projects created - USA.gov Blog", :description => "Sometimes served up via SSL!",
+                                             :url => 'http://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day/', :last_crawl_status => IndexedDocument::OK_STATUS)
+        @affiliate.indexed_documents.create!(:title => "another one", :description => "Projects created description",
+                                             :url => 'http://same-title-and-uri-but-different-host.gov/more?x=4', :last_crawl_status => IndexedDocument::OK_STATUS)
         IndexedDocument.reindex
         Sunspot.commit
       end
 
-      it "should not contain any indexed documents" do
+      it "should remove the matching indexed documents" do
         search = Search.new(@valid_options.merge(:query => 'USA.gov blog', :affiliate => @affiliate, :page => 0))
-        search.should_receive(:process_results).and_return([{'title' => 'bing title 1', 'unescapedUrl' => 'http://blog.usa.gov/'},
-                                                            {'title' => 'bing title 2', 'unescapedUrl' => 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day/'},
-                                                            {'title' => 'bing title 3', 'unescapedUrl' => 'http://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day'}])
+        search.should_receive(:process_results).and_return([{'title' => 'another one', 'unescapedUrl' => 'http://blog.usa.gov/more?x=4#anchor'},
+                                                            {'title' => 'Hack Day - USA.gov Blog', 'unescapedUrl' => 'http://usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day/subdir'},
+                                                            {'title' => 'Projects created - USA.gov Blog', 'unescapedUrl' => 'https://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day'}])
         search.run
-        search.results.count == 3
-        search.indexed_documents.count.should == 0
+        search.results.count.should == 3
+        search.indexed_documents.count.should == 1
+        search.indexed_documents.first.instance.url.should == 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day'
       end
     end
 

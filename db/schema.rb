@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220080239) do
+ActiveRecord::Schema.define(:version => 20111221214128) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -340,8 +340,10 @@ ActiveRecord::Schema.define(:version => 20111220080239) do
     t.string   "doctype",           :limit => 10,         :default => "html"
     t.datetime "last_crawled_at"
     t.string   "last_crawl_status"
+    t.string   "content_hash",      :limit => 32
   end
 
+  add_index "indexed_documents", ["affiliate_id", "content_hash"], :name => "index_indexed_documents_on_affiliate_id_and_content_hash", :unique => true
   add_index "indexed_documents", ["affiliate_id", "url"], :name => "by_aid_url", :length => {"url"=>50, "affiliate_id"=>nil}
 
   create_table "logfile_blocked_class_cs", :force => true do |t|

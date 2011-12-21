@@ -185,7 +185,7 @@ Feature: Affiliate clients
     When I go to myawesomeagency's search page
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should see the affiliate custom css
-    
+
   Scenario: Adding a new Spanish affiliate
     Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
     When I go to the affiliate admin page
@@ -1341,7 +1341,7 @@ Feature: Affiliate clients
     And I should see the code for English language sites
     And I should see "Code for content discovery and indexing"
     And I should see the stats code
-  
+
   Scenario: Getting an embed code for my affiliate site search in Spanish
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        | locale  |
@@ -1354,7 +1354,7 @@ Feature: Affiliate clients
     And I should see the code for Spanish language sites
     And I should see "Code for content discovery and indexing"
     And I should see the stats code
-  
+
   Scenario: Navigating to an Affiliate page for a particular Affiliate
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -1763,8 +1763,8 @@ Feature: Affiliate clients
     | affiliate | url                                             | name    |
     | aff.gov   | http://www.whitehouse.gov/feed/blog/white-house | WH Blog |
     And the following News Items exist:
-    | link                                      | title               | guid  | description         | feed_name |
-    | http://www.whitehouse.gov/our-government  | White House Cabinet | 12345 | white house cabinet | WH Blog   |
+    | link                                      | title                              | guid  | description         | feed_name |
+    | http://www.whitehouse.gov/our-government  |  Our Government \| The White House | 12345 | white house cabinet | WH Blog   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Site information"
@@ -1799,7 +1799,7 @@ Feature: Affiliate clients
 
     When I follow "WH Blog"
     Then I should see "Results 1-1 of about 1 for 'white house cabinet'"
-    And I should see "White House Cabinet"
+    And I should see "white house cabinet"
 
   Scenario: Inputing a bad Excluded Url
     Given the following Affiliates exist:

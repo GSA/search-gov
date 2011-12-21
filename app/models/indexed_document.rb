@@ -1,18 +1,21 @@
 require 'pdf/toolkit'
 
 class IndexedDocument < ActiveRecord::Base
+  class IndexedDocumentError < RuntimeError;
+  end
   belongs_to :affiliate
   validates_presence_of :url, :affiliate_id
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
-  validates_format_of :url, :with => /(^$)|(^http:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/].*)?$)/ix
+  validates_uniqueness_of :content_hash, :message => "is not unique: Identical content (title and body) already indexed", :scope => :affiliate_id, :allow_nil => true
+  validates_format_of :url, :with => /^http:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
   validate :doctype, :inclusion => {:in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"}
-  before_validation :ensure_http_prefix_on_url
-  before_validation :escape_url
+  before_validation :normalize_url
 
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 250
   MAX_URLS_PER_FILE_UPLOAD = 100
   OK_STATUS = "OK"
+  EMPTY_BODY_STATUS = "No content found in document"
 
   searchable do
     text :title, :boost => 10.0 do |idoc|
@@ -50,8 +53,8 @@ class IndexedDocument < ActiveRecord::Base
         file = tempfile
       end
       index_document(file, content_type)
+      update_attribute(:content_hash, build_content_hash)
     rescue Exception => e
-      Rails.logger.error "Trouble fetching #{url} to index: #{e}"
       update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => e.message)
     ensure
       File.delete(file) unless file.nil?
@@ -64,7 +67,7 @@ class IndexedDocument < ActiveRecord::Base
     elsif content_type =~ /html/
       index_html(file)
     else
-      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => "Unsupported document type: #{file.content_type}")
+      raise IndexedDocumentError.new "Unsupported document type: #{file.content_type}"
     end
   end
 
@@ -73,20 +76,26 @@ class IndexedDocument < ActiveRecord::Base
     doc = Nokogiri::HTML(file)
     title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator => " ") rescue nil
     description = doc.xpath("//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] ").first.attributes["content"].value.squish rescue nil
-    if description.nil?
-      doc.xpath('//script').each { |x| x.remove }
-      doc.xpath('//style').each { |x| x.remove }
-      description = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ').gsub(/ /, "").gsub(/\.{2,}/, ".").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
-    end
-    body = doc.inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
+    doc.xpath('//script').each { |x| x.remove }
+    doc.xpath('//style').each { |x| x.remove }
+    body = scrub_inner_text(doc.inner_text)
+    raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
+    description ||= body.gsub(/ /, "").gsub(/\.{2,}/, ".").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
     update_attributes!(:title=> title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
   end
 
+  def scrub_inner_text(inner_text)
+    inner_text.strip.gsub(/[\t\n\r]/, ' ').gsub(/(\s)\1+/, '. ')
+  end
+
   def index_pdf(pdf_file_path)
-    pdf_text = PDF::Toolkit.pdftotext(pdf_file_path) do |io|
-      io.read
-    end
-    update_attributes!(:title => generate_pdf_title(pdf_file_path, self.url), :description => generate_pdf_description(pdf_text), :body => pdf_text, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
+    pdf_text = PDF::Toolkit.pdftotext(pdf_file_path) { |io| io.read }
+    raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if pdf_text.blank?
+    update_attributes!(:title => generate_pdf_title(pdf_file_path), :description => generate_pdf_description(pdf_text), :body => pdf_text, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
+  end
+
+  def build_content_hash
+    Digest::MD5.hexdigest((self.title || '') + self.body)
   end
 
   class << self
@@ -137,29 +146,30 @@ class IndexedDocument < ActiveRecord::Base
 
   private
 
-  def generate_pdf_title(pdf_file_path, url)
+  def generate_pdf_title(pdf_file_path)
     pdf = PDF::Toolkit.open(pdf_file_path) rescue nil
     return pdf.title unless pdf.nil? or pdf.title.blank?
-    begin
-      body = pdf.to_text.read
-      first_linebreak_index = body.strip.index("\n") || body.size
-      first_sentence_index = body.strip.index(".")
-      end_index = [first_linebreak_index, first_sentence_index].min - 1
-      return body.strip[0..end_index]
-    rescue
-      return URI.decode(url[url.rindex("/") + 1..-1])
-    end
+    body = pdf.to_text.read
+    first_linebreak_index = body.strip.index("\n") || body.size
+    first_sentence_index = body.strip.index(".")
+    end_index = [first_linebreak_index, first_sentence_index].min - 1
+    body[0..end_index].strip
   end
 
-  def generate_pdf_description(body)
-    body.squish.gsub(/[^\w_ ]/, "").gsub(/[“’‘”]/, "").gsub(/ /, "").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => " ")
+  def generate_pdf_description(pdf_text)
+    pdf_text.squish.gsub(/[^\w_ ]/, "").gsub(/[“’‘”]/, "").gsub(/ /, "").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => " ")
+  end
+
+  def normalize_url
+    ensure_http_prefix_on_url
+    remove_anchor_tags_from_url
   end
 
   def ensure_http_prefix_on_url
     self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^http://}i
   end
 
-  def escape_url
-    self.url = URI::escape(URI::unescape(self.url)) unless self.url.blank?
+  def remove_anchor_tags_from_url
+    self.url.sub!(/#.*$/, '') unless self.url.blank?
   end
 end

@@ -200,12 +200,15 @@ class Search
     @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale)
-      @indexed_documents = IndexedDocument.search_for(query, affiliate) if affiliate and @indexed_results.nil?
-      remove_duplicate_indexed_documents if @indexed_documents
+      documents = (affiliate and @indexed_results.nil?) ? IndexedDocument.search_for(query, affiliate) : nil
+      if documents
+        @indexed_documents = documents.hits(:verify => true)
+        remove_bing_matches_from_indexed_documents
+      end
     end
     unless affiliate
       @faqs = Faq.search_for(query, I18n.locale.to_s)
-      if page < 1
+      if first_page?
         @recalls = Recall.recent(query)
         agency_query = AgencyQuery.find_by_phrase(query)
         @agency = agency_query.agency if agency_query
@@ -432,8 +435,8 @@ class Search
 
   def url_is_excluded(url)
     parsed_url = URI::parse(url) rescue nil
-    return true if parsed_url and ExcludedDomain.all.any? {|excluded_domain| parsed_url.host.ends_with(excluded_domain.domain) }
-    @affiliate ? @affiliate.excluded_urls.any? {|excluded_url| url.match(excluded_url.url)} : false
+    return true if parsed_url and ExcludedDomain.all.any? { |excluded_domain| parsed_url.host.ends_with(excluded_domain.domain) }
+    @affiliate ? @affiliate.excluded_urls.any? { |excluded_url| url.match(excluded_url.url) } : false
   end
 
   def process_indexed_results(indexed_results)
@@ -475,15 +478,15 @@ class Search
     hit.instance.send(field_symbol)
   end
 
-  def remove_duplicate_indexed_documents
-    @indexed_documents = @indexed_documents.hits(:verify => true)
+  def remove_bing_matches_from_indexed_documents
     @indexed_documents.delete_if do |indexed_document|
-      regex_escaped_url_minus_trailing_slash = Regexp.escape(indexed_document.instance.url.sub(/\/$/,''))
-      @results.any? { |result| result['unescapedUrl'] =~ /#{regex_escaped_url_minus_trailing_slash}\/?/i }
+      local_request_uri = URI.parse(indexed_document.instance.url.sub(/\/$/,'')).request_uri
+      local_title = indexed_document.instance.title || ''
+      @results.any? { |result| URI.parse(result['unescapedUrl'].sub(/\/$/,'')).request_uri == local_request_uri and local_title == result['title'].gsub(/\xEE\x80(\x80|\x81)/, '') }
     end
   end
 
   def remove_strong(string_array)
-    string_array.map {|entry| entry.gsub(/<\/?strong>/,'')} if string_array.kind_of?(Array)
+    string_array.map { |entry| entry.gsub(/<\/?strong>/, '') } if string_array.kind_of?(Array)
   end
 end
