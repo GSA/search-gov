@@ -28,7 +28,8 @@ class FeaturedCollection < ActiveRecord::Base
                     :container => CLOUD_FILES_CONTAINER,
                     :path => "#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension",
                     :ssl => true
-
+  
+  before_validation :set_locale
   after_validation :update_errors_keys
   before_save :ensure_http_prefix_on_title_url
   before_post_process :check_image_validation
@@ -123,6 +124,11 @@ class FeaturedCollection < ActiveRecord::Base
   end
 
   private
+  
+  def set_locale
+    self.locale = self.affiliate.locale if self.affiliate and self.locale.nil?
+  end
+  
   def publish_start_and_end_dates
     start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?
     end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?

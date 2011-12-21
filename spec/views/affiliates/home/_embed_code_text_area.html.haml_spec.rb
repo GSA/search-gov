@@ -22,7 +22,6 @@ describe "affiliates/home/_embed_code_text_area.html.haml" do
     it "displays search form" do
       rendered.should contain %{<form accept-charset="UTF-8" action="http://test.host/search" id="search_form" method="get">}
       rendered.should contain %{<input id="affiliate" name="affiliate" type="hidden" value="#{affiliate.name}" />}
-      rendered.should contain %{<input id="locale" name="locale" type="hidden" value="en" />}
       rendered.should contain %{<input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="text" />}
       rendered.should contain %{<input name="commit" type="submit" value="Search" />}
     end
@@ -46,7 +45,6 @@ describe "affiliates/home/_embed_code_text_area.html.haml" do
     it "displays search form" do
       rendered.should contain %{<form accept-charset="UTF-8" action="http://test.host/search" id="search_form" method="get">}
       rendered.should contain %{<input id="affiliate" name="affiliate" type="hidden" value="#{affiliate.name}" />}
-      rendered.should contain %{<input id="locale" name="locale" type="hidden" value="es" />}
       rendered.should contain %{<input autocomplete="off" class="usagov-search-autocomplete" id="query" name="query" type="text" />}
       rendered.should contain %{<input name="commit" type="submit" value="Search" />}
     end

@@ -65,7 +65,6 @@ Feature: Featured Collections
       | Link Title 0          | Hurricane Alex                                    |
       | Link URL 0            | http://www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf |
     And I attach the file "features/support/small.jpg" to "Image"
-    And I select "English" from "Locale*"
     And I select "Active" from "Status*"
     And I select "One column" from "Layout*"
     And I press "Add"
@@ -75,7 +74,6 @@ Feature: Featured Collections
     And I should see "Best Bets: Graphics" in the page header
     And I should see "2010 Atlantic Hurricane Season"
     And I should see "http://www.nhc.noaa.gov/2010atlan.shtml"
-    And I should see "English"
     And I should see "Active"
     And I should see "07/01/2011"
     And I should see "07/01/2012"
@@ -112,7 +110,6 @@ Feature: Featured Collections
       | Publish start date | 07/01/2011                                 |
       | Link Title 0       | Hurricane Alex                             |
       | Link URL 0         | www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf |
-    And I select "English" from "Locale*"
     And I select "Active" from "Status*"
     And I select "One column" from "Layout*"
     And I press "Add"
@@ -139,7 +136,6 @@ Feature: Featured Collections
     And I attach the file "features/support/very_large.jpg" to "Image"
     And I press "Add"
     Then I should see "Title can't be blank"
-    And I should see "Locale must be selected"
     And I should see "Status must be selected"
     And I should see "Layout must be selected"
     And I should see "Publish end date can't be before publish start date"
@@ -177,7 +173,6 @@ Feature: Featured Collections
     And I should see "Edit Best Bets: Graphics" in the page header
     And the "Title*" field should contain "Worldwide Tropical Cyclone Names"
     And the "Title URL" field should contain "http://www.nhc.noaa.gov/aboutnames.shtml"
-    And the "Locale*" field should contain "en"
     And the "Status*" field should contain "active"
     And the "Layout*" field should contain "one column"
 
@@ -235,7 +230,6 @@ Feature: Featured Collections
       | Publish start date | 07/01/2011                                 |
       | Link Title 0       | Hurricane Alex                             |
       | Link URL 0         | www.nhc.noaa.gov/pdf/TCR-AL012010_Alex.pdf |
-    And I select "English" from "Locale*"
     And I select "Active" from "Status*"
     And I select "One column" from "Layout*"
     And I press "Update"
@@ -320,13 +314,11 @@ Feature: Featured Collections
       | Keyword 2          |            |
       | Link Title 0       |            |
       | Link URL 1         |            |
-    And I select "Select a locale" from "Locale*"
     And I select "Select a status" from "Status*"
     And I select "Select a layout" from "Layout*"
     And I attach the file "features/support/very_large.jpg" to "Image"
     And I press "Update"
     Then I should see "Title can't be blank"
-    And I should see "Locale must be selected"
     And I should see "Status must be selected"
     And I should see "Layout must be selected"
     And I should see "Publish end date can't be before publish start date"

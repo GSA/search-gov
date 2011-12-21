@@ -7,9 +7,10 @@
     %li
       = form.label :title_url, "Title URL"
       = form.text_field :title_url, { :class => 'text', :maxlength => 255, :size => nil }
-    %li
-      = form.label :locale, "Locale*", { :class => 'select' }
-      = form.select :locale, SUPPORTED_LOCALE_OPTIONS, { :include_blank => 'Select a locale' }
+    - if controller.class.name =~ /Admin/  
+      %li
+        = form.label :locale, "Locale*", { :class => 'select' }
+        = form.select :locale, SUPPORTED_LOCALE_OPTIONS, { :include_blank => 'Select a locale' }
     %li
       = form.label :status, "Status*", { :class => 'select' }
       = form.select :status, FeaturedCollection::STATUS_OPTIONS, { :include_blank => 'Select a status' }

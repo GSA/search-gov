@@ -34,6 +34,14 @@ describe FeaturedCollection do
   it { should belong_to :affiliate }
   it { should have_many(:featured_collection_keywords).dependent(:destroy) }
   it { should have_many(:featured_collection_links).dependent(:destroy) }
+  
+  it "should default the locale to the locale of the affiliate" do
+    FeaturedCollection.create!(:title => 'Title', :publish_start_on => Date.current, :affiliate => affiliates(:spanish_affiliate), :status => 'active', :layout => 'one column').locale.should == "es"
+  end
+  
+  it "should fail to create if no affiliate is specified and no locale is specified" do
+    FeaturedCollection.create(:title => 'Title', :publish_start_on => Date.current, :status => 'active', :layout => 'one column').errors.should_not be_empty
+  end
 
   describe ".recent" do
     it "should include a scope called 'recent'" do

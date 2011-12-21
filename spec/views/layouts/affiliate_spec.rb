@@ -12,7 +12,8 @@ describe "layouts/affiliate" do
                            :favicon_url => 'http://cdn.agency.gov/favicon.ico',
                            :external_css_url => 'http://cdn.agency.gov/custom.css',
                            :css_property_hash => {},
-                           :uses_one_serp? => true)
+                           :uses_one_serp? => true,
+                           :locale => 'en')
     assign(:affiliate, affiliate)
   end
 
@@ -36,7 +37,8 @@ describe "layouts/affiliate" do
                              :favicon_url => 'http://cdn.agency.gov/favicon.ico',
                              :external_css_url => 'http://cdn.agency.gov/custom.css',
                              :css_property_hash => {},
-                             :uses_one_serp? => true)
+                             :uses_one_serp? => true,
+                             :locale => 'en')
       assign(:affiliate, affiliate)
     end
 

@@ -5,9 +5,10 @@
   %tr
     %td.name Title URL
     %td= @featured_collection.title_url
-  %tr
-    %td.name Locale
-    %td= SUPPORTED_LOCALE_WITH_NAMES[@featured_collection.locale]
+  - if controller.class.name =~ /Admin/
+    %tr
+      %td.name Locale
+      %td= SUPPORTED_LOCALE_WITH_NAMES[@featured_collection.locale]
   %tr
     %td.name Status
     %td= @featured_collection.display_status

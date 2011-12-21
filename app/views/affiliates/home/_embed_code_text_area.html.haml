@@ -9,7 +9,6 @@
       <body>
         #{form_tag search_url, :method => :get, :id => 'search_form' }
           #{hidden_field_tag :affiliate, @affiliate.name}
-          #{hidden_field_tag :locale, locale}
           #{label_tag :query, "Enter Search Term(s):"}
           #{text_field_tag :query, nil, :autocomplete => 'off', :class => 'usagov-search-autocomplete'}
           #{submit_tag 'Search'}

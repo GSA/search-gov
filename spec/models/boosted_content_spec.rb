@@ -9,7 +9,6 @@ describe BoostedContent do
       :description => "All about foobar, boosted to the top",
       :affiliate => affiliates(:power_affiliate),
       :keywords => 'unrelated, terms',
-      :locale => 'en',
       :auto_generated => false,
       :status => 'active',
       :publish_start_on => Date.current
@@ -45,8 +44,12 @@ describe BoostedContent do
       BoostedContent.create!(@valid_attributes)
     end
 
-    it "should default the locale to 'en'" do
-      BoostedContent.create!(@valid_attributes).locale.should == 'en'
+    it "should default the locale to the locale of the affiliate" do
+      BoostedContent.create!(@valid_attributes.merge(:affiliate => affiliates(:spanish_affiliate))).locale.should == "es"
+    end
+    
+    it "should fail to create a new record if no locale is specified if there is no affiliate" do
+      BoostedContent.create(@valid_attributes.reject{|k,v| k == :affiliate}).errors.should_not be_empty
     end
 
     it "should validate unique url" do
@@ -334,7 +337,17 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
       results[:created].should == 2
       results[:updated].should == 0
     end
-
+    
+    it "should set the locale to the locale of the affiliate if specified" do
+      results = BoostedContent.process_boosted_content_csv_upload_for(affiliates(:spanish_affiliate), StringIO.new(csv_file))
+      affiliates(:spanish_affiliate).boosted_contents.map(&:locale).should == ['es', 'es']
+    end
+    
+    it "should set the locale to English if no affiliate is specified" do
+      results = BoostedContent.process_boosted_content_csv_upload_for(nil, StringIO.new(csv_file))
+      BoostedContent.find_all_by_affiliate_id(nil).map(&:locale).should == ['en', 'en']
+    end
+      
     it "should update existing boosted Contents if the url match" do
       basic_affiliate.boosted_contents.create!(:url => "http://some.url", :title => "an old title", :description => "an old description", :locale => 'en', :status => 'active', :publish_start_on => Date.current)
 

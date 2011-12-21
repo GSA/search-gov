@@ -1,5 +1,5 @@
 !!!strict
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => I18n.locale, :lang => I18n.locale}
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => @affiliate.locale.to_sym, :lang => @affiliate.locale.to_sym}
   %head
     %title
       #{@affiliate.display_name} #{t(:mobile)}

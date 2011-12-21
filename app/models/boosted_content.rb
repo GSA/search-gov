@@ -14,7 +14,7 @@ class BoostedContent < ActiveRecord::Base
   validates_inclusion_of :locale, :in => SUPPORTED_LOCALES, :message => 'must be selected'
   validates_inclusion_of :status, :in => STATUSES, :message => 'must be selected'
   validate :publish_start_and_end_dates
-
+  before_validation :set_locale
   before_save :ensure_http_prefix_on_url
 
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
@@ -112,6 +112,7 @@ class BoostedContent < ActiveRecord::Base
   end
 
   protected
+  
   def self.process_boosted_content_xml_upload_for(affiliate, xml_file)
     results = { :created => 0, :updated => 0, :success => false }
     boosted_contents = []
@@ -123,7 +124,8 @@ class BoostedContent < ActiveRecord::Base
             :url => entry.elements["url"].first.to_s,
             :title => entry.elements["title"].first.to_s,
             :description => entry.elements["description"].first.to_s,
-            :affiliate => affiliate
+            :affiliate => affiliate,
+            :locale => affiliate.nil? ? 'en' : affiliate.locale
           }
           boosted_contents << import_boosted_content(results, info)
         end
@@ -148,7 +150,8 @@ class BoostedContent < ActiveRecord::Base
               :title => row[0],
               :url => row[1],
               :description => row[2],
-              :affiliate => affiliate
+              :affiliate => affiliate,
+              :locale => affiliate.nil? ? 'en' : affiliate.locale
           }
           boosted_contents << import_boosted_content(results, info)
         end
@@ -165,8 +168,7 @@ class BoostedContent < ActiveRecord::Base
 
   def self.import_boosted_content(results, attributes)
 
-    boosted_content_attributes = attributes.merge({ :locale => 'en',
-                                                    :status => 'active',
+    boosted_content_attributes = attributes.merge({ :status => 'active',
                                                     :publish_start_on => Date.current })
     boosted_content = BoostedContent.find_or_initialize_by_url(boosted_content_attributes)
     if boosted_content.new_record?
@@ -180,6 +182,11 @@ class BoostedContent < ActiveRecord::Base
   end
 
   private
+  
+  def set_locale
+    self.locale = self.affiliate.locale if self.affiliate and self.locale.nil?
+  end
+  
   def publish_start_and_end_dates
     start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?
     end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?

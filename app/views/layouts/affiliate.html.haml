@@ -1,6 +1,6 @@
 !!! XML
 !!!
-%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => I18n.locale, :lang => I18n.locale }
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xml:lang" => @affiliate.locale.to_sym, :lang => @affiliate.locale.to_sym }
   %head
     = favicon_link_tag @affiliate.favicon_url.blank? ? '/favicon.ico' : @affiliate.favicon_url
     = render_robots_meta_tag

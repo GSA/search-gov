@@ -8,9 +8,10 @@
   %tr
     %td.name Description
     %td= @boosted_content.description
-  %tr
-    %td.name Locale
-    %td= SUPPORTED_LOCALE_WITH_NAMES[@boosted_content.locale]
+  - if controller.class.name =~ /Admin/
+    %tr
+      %td.name Locale
+      %td= SUPPORTED_LOCALE_WITH_NAMES[@boosted_content.locale]
   %tr
     %td.name Status
     %td= @boosted_content.display_status
