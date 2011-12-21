@@ -14,13 +14,12 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And there are 40 crawled IndexedDocuments for "aff.gov"
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "URLs"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs
-    And I should see "aff.gov/.../36"
+    And I follow "URLs & Sitemaps"
+    Then I should see "aff.gov/.../36"
     And I should not see "aff.gov/.../35"
     And I should not see "aff.gov/space-suit"
 
-    When I follow "View all"
+    When I follow "View all" in the previously crawled URL list
     Then I should see the browser page titled "Previously Crawled URLs"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs > Previously Crawled URLs
     And I should see "Previously Crawled URLs" in the page header
@@ -32,25 +31,37 @@ Feature: Affiliate On-Demand Url Indexing Interface
       | aff.gov/space-suit | 11/02/2011   | OK     |
       | aff.gov/rocket     | 11/01/2011   | Error  |
 
+    When there are 40 uncrawled IndexedDocuments for "aff.gov"
+    And I go to the "aff site" affiliate page
+    And I follow "URLs & Sitemaps"
+    And I follow "View all" in the uncrawled URL list
+    Then I should see "aff.gov/uncrawled/36"
+    And I should not see "aff.gov/uncrawled/10"
+
   Scenario: Submit a URL for on-demand indexing
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "URLs"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs
-    When I fill in "Single URL" with "http://new.url.gov"
-    And I press "Submit"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
+    And I follow "URLs & Sitemaps"
+    And I follow "Add new URL"
+    Then I should see the browser page titled "Add a new URL"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new URL
+    And I should see "Add a new URL" in the page header
+    When I fill in "URL" with "http://new.url.gov"
+    And I press "Add"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Uncrawled URLs
     And I should see "Successfully added http://new.url.gov."
 
     When the url "http://new.url.gov" has been crawled
     And I go to the affiliate admin page with "aff.gov" selected
-    And I follow "URLs"
+    And I follow "URLs & Sitemaps"
     Then I should see "Uncrawled URLs (0)"
     And I should see "http://new.url.gov" in the previously crawled URL list
+
+    When I follow "View all" in the previously crawled URL list
+    Then I should see "http://new.url.gov"
 
   Scenario: Remove a URL to be crawled
     Given the following Affiliates exist:
@@ -62,16 +73,16 @@ Feature: Affiliate On-Demand Url Indexing Interface
       | http://removeme2.mil   | aff.gov  |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "URLs"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
-    When I press "Delete"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
-    And I should see "Removed http://removeme.mil"
+    And I follow "URLs & Sitemaps"
+    When I press "Delete" in the uncrawled URL list
+    Then I should see "Removed http://removeme2.mil"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs & Sitemaps
     When I follow "View all"
-    Then I should see "http://removeme2.mil"
+    And I should see "http://removeme.mil"
     When I press "Delete"
-    Then I should be on the affiliate uncrawled on-demand urls page for "aff.gov"
-    And I should see "Removed http://removeme2.mil"    
+    Then I should see "Removed http://removeme.mil"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Uncrawled URLs
+    And I should see "Site aff site has no uncrawled URLs"
 
   Scenario: Submitting a bad URL for on-demand indexing
     Given the following Affiliates exist:
@@ -79,10 +90,11 @@ Feature: Affiliate On-Demand Url Indexing Interface
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "URLs"
-    And I fill in "Single URL" with "notanurl"
-    And I press "Submit"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
+    And I follow "URLs & Sitemaps"
+    And I follow "Add new URL"
+    And I fill in "URL" with "notanurl"
+    And I press "Add"
+    Then I should see the browser page titled "Add a new URL"
     And I should see "Url is invalid"
 
   Scenario: Bulk-uploading URLs for on-demand indexing
@@ -91,34 +103,37 @@ Feature: Affiliate On-Demand Url Indexing Interface
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "URLs"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
-    And I should see "Bulk Upload"
+    And I follow "URLs & Sitemaps"
+    And I follow "Bulk upload"
+    Then I should see the browser page titled "Bulk Upload URLs"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Bulk Upload URLs
+    And I should see "Bulk Upload URLs" in the page header
 
     When I attach the file "features/support/superfresh_urls.txt" to "indexed_documents"
     And I press "Upload"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
+    Then I should see the browser page titled "Uncrawled URLs"
     And I should see "Successfully uploaded 5 urls."
 
-    When I attach the file "features/support/too_many_superfresh_urls.txt" to "indexed_documents"
+    When I follow "Bulk upload"
+    And I attach the file "features/support/too_many_superfresh_urls.txt" to "indexed_documents"
     And I press "Upload"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
+    Then I should see the browser page titled "Bulk Upload URLs"
     And I should see "Too many URLs in your file."
 
     When I attach the file "features/support/no_superfresh_urls.txt" to "indexed_documents"
     And I press "Upload"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
-    And I should see "No urls uploaded; please check your file and try again."
+    Then I should see the browser page titled "Bulk Upload URLs"
+    And I should see "No URLs uploaded; please check your file and try again."
 
     When I attach the file "features/support/invalid_superfresh_file.doc" to "indexed_documents"
     And I press "Upload"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
+    Then I should see the browser page titled "Bulk Upload URLs"
     And I should see "Invalid file format"
 
     When I press "Upload"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
+    Then I should see the browser page titled "Bulk Upload URLs"
     And I should see "Invalid file format"
-    
+
   Scenario: Deleting a previously crawled url
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -129,14 +144,12 @@ Feature: Affiliate On-Demand Url Indexing Interface
       | http://removeme.mil  | aff.gov   | 2011-11-01      |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page with "aff.gov" selected
-    And I follow "URLs"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
-    When I press "Delete"
-    Then I should be on the affiliate on-demand urls page for "aff.gov"
+    And I follow "URLs & Sitemaps"
+    And I press "Delete"
+    Then I should see the browser page titled "URLs & Sitemaps"
     And I should see "Removed http://removeme.mil"
     When I follow "View all"
     Then I should see "http://removeme2.mil"
     When I press "Delete"
-    Then I should be on the affiliate crawled on-demand urls page for "aff.gov"
+    Then I should see the browser page titled "Previously Crawled URLs"
     And I should see "Removed http://removeme2.mil"
-    

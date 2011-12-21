@@ -43,7 +43,7 @@ Feature: Boosted Content
     And I should see "title 10"
 
     When I follow "URLs" in the affiliate boosted contents section
-    Then I should see the browser page titled "URLs"
+    Then I should see the browser page titled "URLs & Sitemaps"
 
   Scenario: Create a new Boosted Content entry
     Given the following Affiliates exist:

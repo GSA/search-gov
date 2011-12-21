@@ -27,6 +27,7 @@
   'in the affiliate boosted contents section' => '.boosted-contents',
   'in the boosted contents section' => '#boosted',
   'in the mobile boosted contents section' => '#boostedresults',
+  'in the uncrawled URL list' => '.uncrawled-url-list',
   'in the previously crawled URL list' => '.crawled-url-list',
   'in the indexed documents section' => '#indexed_documents'
 }.

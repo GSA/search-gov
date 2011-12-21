@@ -1447,7 +1447,7 @@ h3.api-item
     @extend .crawled-url-list
     @extend .uncrawled-url-list
 
-.add-featured-collection, .edit-featured-collection, .add-boosted-content, .edit-boosted-content, .add-rss-feed, .edit-rss-feed, .add-excluded-url, .add-sitemap
+.add-featured-collection, .edit-featured-collection, .add-boosted-content, .edit-boosted-content, .add-rss-feed, .edit-rss-feed, .add-excluded-url, .add-sitemap, .add-url
   @include border-radius
   border: 1px solid #BDBDBD
   overflow: hidden
@@ -1601,16 +1601,8 @@ h3.api-item
       weight: normal
   a.cancel
     margin-left: 10px
-
-.add-sitemap
-  width: auto
-  label
-    width: 80px
-  #sitemap_url
-    margin-top: 8px
-    width: 380px
-  #sitemap_submit
-    margin-left: 80px
+  .submit
+    margin-left: 155px
 
 .show-featured-collection, .show-boosted-content, .show-rss-feed
   overflow: hidden
@@ -1761,3 +1753,7 @@ h3.api-item
   span
     color: #5D5D5D
     font-size: 15px
+
+#bulk_upload_urls
+  p
+    margin-bottom: 0.5em

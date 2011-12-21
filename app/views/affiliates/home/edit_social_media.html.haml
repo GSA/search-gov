@@ -1,0 +1,22 @@
+.site-specific
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Social Media"])
+  %h1 Social Media
+  .site-info
+    = form_for @affiliate, :html => {:class=>"generic-form"} do |f|
+      = f.error_messages(:header_message => nil, :class => "error")
+      %ul
+        %li
+          = f.label :facebook_username, "Facebook username"
+          = f.text_field :facebook_username, :class => 'txt'
+        %li
+          = f.label :flickr_url, "Flickr URL"
+          = f.text_field :flickr_url, :class => 'txt'
+        %li
+          = f.label :twitter_username, "Twitter username"
+          = f.text_field :twitter_username, :class => 'txt'
+        %li
+          = f.label :youtube_username, "YouTube username"
+          = f.text_field :youtube_username, :class => 'txt'
+        %li
+          = f.submit "Save", :id => "save"
+          = link_to "Cancel", affiliate_path(@affiliate)

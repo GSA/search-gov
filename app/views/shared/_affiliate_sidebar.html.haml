@@ -21,12 +21,14 @@
           %h3
             %span Content Sources
           %ul
-            %li= link_to "URLs", affiliate_on_demand_urls_path(@affiliate)
+            %li
+              = link_to "URLs & Sitemaps", urls_and_sitemaps_affiliate_path(@affiliate)
+              = image_tag 'new.png', :class => 'new'
             %li
               = link_to "RSS", affiliate_rss_feeds_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
             %li.last
-              = link_to "Sitemaps", affiliate_sitemaps_path(@affiliate), :class => 'new'
+              = link_to "Social Media", edit_social_media_affiliate_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
         .side-block
           %h3
@@ -45,7 +47,7 @@
               = image_tag 'new.png', :class => 'new'
             %li
               = link_to "Top Searches", affiliate_top_searches_path(@affiliate), :class => 'new'
-              = image_tag 'new.png', :class => 'new'              
+              = image_tag 'new.png', :class => 'new'
         .side-block
           %h3
             %span Site Analytics

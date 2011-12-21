@@ -1,8 +1,8 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
-  before_filter :require_affiliate_or_admin, :except=> [:index, :edit_site_information, :edit_look_and_feel, :how_it_works, :demo, :best_bets]
-  before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel, :preview, :best_bets, :content_types]
+  before_filter :require_affiliate_or_admin, :except=> [:index, :edit_site_information, :edit_look_and_feel, :how_it_works, :demo, :best_bets, :edit_social_media, :update_social_media]
+  before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel, :preview, :best_bets, :content_types, :edit_social_media, :update_social_media]
   before_filter :require_approved_user, :except => [:index, :how_it_works, :demo, :home, :update_contact_information, :update_content_types]
-  before_filter :setup_affiliate, :only=> [:edit_site_information, :update_site_information, :edit_look_and_feel, :update_look_and_feel, :show, :preview, :push_content_for, :cancel_staged_changes_for, :destroy, :best_bets, :content_types, :update_content_types]
+  before_filter :setup_affiliate, :except => [:index, :how_it_works, :demo, :new, :create, :update_contact_information, :home]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel]
 
   AFFILIATE_ADS = [
@@ -71,7 +71,10 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
       :edit_action => :edit_site_information },
     :update_look_and_feel => {
       :title => "Look and Feel of the Search Results Page - ",
-      :edit_action => :edit_look_and_feel }
+      :edit_action => :edit_look_and_feel },
+    :update_social_media => {
+      :title => "Social Media - ",
+      :edit_action => :edit_social_media }
   }
 
   def index
@@ -130,23 +133,29 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     update
   end
 
+  def update_social_media
+    update
+  end
+
   def update
-    if params[:commit] == "Make Live"
+    if params[:commit] == "Save"
+      if @affiliate.update_attributes(params[:affiliate])
+        redirect_to @affiliate, :flash => { :success => 'Site was successfully updated.' }
+      else
+        set_title_and_render_with_action
+      end
+    elsif params[:commit] == "Make Live"
       if @affiliate.update_attributes_for_current(params[:affiliate])
         Emailer.affiliate_header_footer_change(@affiliate).deliver if @affiliate.has_changed_header_or_footer
-        flash[:success]= "Updated changes to your live site successfully."
-        redirect_to affiliate_path(@affiliate)
+        redirect_to @affiliate, :flash => { :success => "Updated changes to your live site successfully." }
       else
-        @title = UPDATE_ACTION_HASH[params[:action].to_sym][:title]
-        render :action => UPDATE_ACTION_HASH[params[:action].to_sym][:edit_action]
+        set_title_and_render_with_action
       end
     else
       if @affiliate.update_attributes_for_staging(params[:affiliate])
-        flash[:success]= "Staged changes to your site successfully."
-        redirect_to affiliate_path(@affiliate)
+        redirect_to @affiliate, :flash => { :success => "Staged changes to your site successfully." }
       else
-        @title = UPDATE_ACTION_HASH[params[:action].to_sym][:title]
-        render :action => UPDATE_ACTION_HASH[params[:action].to_sym][:edit_action]
+        set_title_and_render_with_action
       end
     end
   end
@@ -209,7 +218,6 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def embed_code
     @title = "Embed Search Code - "
-    @affiliate = Affiliate.find(params[:id])
   end
 
   def home
@@ -225,16 +233,32 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @featured_collections = @affiliate.featured_collections.recent
     @boosted_contents = @affiliate.boosted_contents.recent
   end
-  
+
   def update_content_types
     @affiliate.update_attributes(:is_image_search_enabled => params["images"] == "1" ? true : false)
     redirect_to edit_look_and_feel_affiliate_path(@affiliate)
+  end
+
+  def edit_social_media
+    @title = "Social Media - "
+  end
+
+  def urls_and_sitemaps
+    @title = "URLs & Sitemaps - "
+    @sitemaps = @affiliate.sitemaps.paginate(:all, :per_page => 5, :page => 1)
+    @uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, 1, 5)
+    @crawled_urls = IndexedDocument.crawled_urls(@affiliate, 1, 5)
   end
 
   protected
 
   def sync_affiliate_staged_attributes
     @affiliate.sync_staged_attributes
+  end
+
+  def set_title_and_render_with_action
+    @title = UPDATE_ACTION_HASH[params[:action].to_sym][:title]
+    render :action => UPDATE_ACTION_HASH[params[:action].to_sym][:edit_action]
   end
 
 end

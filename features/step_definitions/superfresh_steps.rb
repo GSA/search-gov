@@ -27,6 +27,15 @@ When /^the url "([^\"]*)" has been crawled$/ do |url|
   IndexedDocument.find_by_url(url).update_attributes(:last_crawled_at => Time.now, :last_crawl_status => IndexedDocument::OK_STATUS)
 end
 
+When /^there are (\d+) uncrawled IndexedDocuments for "([^"]*)"$/ do |count, aff_name|
+  affiliate = Affiliate.find_by_name(aff_name)
+  count.to_i.times do |index|
+    affiliate.indexed_documents.create!(:title => "uncrawled document #{index + 1}",
+                                        :description => "uncrawled document description #{index + 1}",
+                                        :url => "http://aff.gov/uncrawled/#{index + 1}")
+  end
+end
+
 When /^there are (\d+) crawled IndexedDocuments for "([^"]*)"$/ do |count, aff_name|
   affiliate = Affiliate.find_by_name(aff_name)
   count.to_i.times do |index|

@@ -15,4 +15,4 @@ Feature: Affiliate RSS
     And I should see a link to "Atom syndication format" with url for "http://www.atomenabled.org/developers/syndication/"
 
     When I follow "URLs" in the side note boxes
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs
+    Then I should see the browser page titled "URLs & Sitemaps"

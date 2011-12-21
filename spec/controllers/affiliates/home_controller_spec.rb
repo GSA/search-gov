@@ -751,4 +751,198 @@ describe Affiliates::HomeController do
       it { should respond_with(:success) }
     end
   end
+
+  describe "do GET on #edit_social_media" do
+    context "when not logged in" do
+      before do
+        get :edit_social_media, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to login_path }
+    end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+        get :edit_social_media, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as an affiliate manager who doesn't own the affiliate being previewed" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :edit_social_media, :id => affiliates(:another_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as the affiliate manager" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        get :edit_social_media, :id => affiliate.id
+      end
+
+      it { should assign_to :title }
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should respond_with(:success) }
+    end
+  end
+
+  describe "do PUT on #update_social_media" do
+    context "when not logged in" do
+      before do
+        put :update_social_media, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to login_path }
+    end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+        put :update_social_media, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as an affiliate manager who doesn't own the affiliate being previewed" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        put :update_social_media, :id => affiliates(:another_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as the affiliate manager and successfully updated the site" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_not_receive(:update_attributes_for_current)
+        affiliate.should_not_receive(:update_attributes_for_staging)
+        affiliate.should_receive(:update_attributes).with(hash_including(:facebook_username => 'FBAgency')).and_return(true)
+
+        put :update_social_media, :id => affiliate.id, :affiliate => { :facebook_username => 'FBAgency' }, :commit => 'Save'
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should set_the_flash }
+      it { should redirect_to(affiliate_path(affiliate)) }
+    end
+
+    context "when logged in as the affiliate manager and failed to update the site" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_not_receive(:update_attributes_for_current)
+        affiliate.should_not_receive(:update_attributes_for_staging)
+        affiliate.should_receive(:update_attributes).with(hash_including(:facebook_username => 'FBAgency')).and_return(false)
+
+        put :update_social_media, :id => affiliate.id, :affiliate => { :facebook_username => 'FBAgency' }, :commit => 'Save'
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to :title }
+      it { should render_template("affiliates/home/edit_social_media") }
+    end
+  end
+
+  describe "do GET on #urls_and_sitemaps" do
+    context "when not logged in" do
+      before do
+        get :urls_and_sitemaps, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to login_path }
+    end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:developer))
+        get :urls_and_sitemaps, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as an affiliate manager who doesn't own the affiliate being previewed" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :urls_and_sitemaps, :id => affiliates(:another_affiliate).id
+      end
+
+      it { should redirect_to home_page_path }
+    end
+
+    context "when logged in as the USA admin" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_admin) }
+      let(:recent_sitemaps) { mock('recent sitemaps') }
+      let(:recent_uncrawled_urls) { mock('recent uncrawled urls') }
+      let(:recent_crawled_urls) { mock('recent crawled urls') }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        affiliate.stub_chain(:sitemaps, :paginate).and_return(recent_sitemaps)
+        Affiliate.should_receive(:find).and_return(affiliate)
+        IndexedDocument.should_receive(:uncrawled_urls).with(affiliate, 1, 5).and_return(recent_uncrawled_urls)
+        IndexedDocument.should_receive(:crawled_urls).with(affiliate, 1, 5).and_return(recent_crawled_urls)
+
+        get :urls_and_sitemaps, :id => affiliate.id
+      end
+
+      it { should assign_to :title }
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to(:sitemaps).with(recent_sitemaps) }
+      it { should assign_to(:uncrawled_urls).with(recent_uncrawled_urls) }
+      it { should assign_to(:crawled_urls).with(recent_crawled_urls) }
+      it { should respond_with(:success) }
+    end
+
+    context "when logged in as the affiliate manager" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+      let(:recent_sitemaps) { mock('recent sitemaps') }
+      let(:recent_uncrawled_urls) { mock('recent uncrawled urls') }
+      let(:recent_crawled_urls) { mock('recent crawled urls') }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.stub_chain(:sitemaps, :paginate).and_return(recent_sitemaps)
+        IndexedDocument.should_receive(:uncrawled_urls).with(affiliate, 1, 5).and_return(recent_uncrawled_urls)
+        IndexedDocument.should_receive(:crawled_urls).with(affiliate, 1, 5).and_return(recent_crawled_urls)
+
+        get :urls_and_sitemaps, :id => affiliate.id
+      end
+
+      it { should assign_to :title }
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should assign_to(:sitemaps).with(recent_sitemaps) }
+      it { should assign_to(:uncrawled_urls).with(recent_uncrawled_urls) }
+      it { should assign_to(:crawled_urls).with(recent_crawled_urls) }
+      it { should respond_with(:success) }
+    end
+
+
+  end
 end

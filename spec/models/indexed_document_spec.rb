@@ -455,6 +455,37 @@ describe IndexedDocument do
       @affiliate = affiliates(:basic_affiliate)
     end
 
+    context "when file format is not text/plain or txt" do
+      before do
+        @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
+        tempfile = Tempfile.new('urls.xml')
+        @urls.each do |url|
+          tempfile.write(url + "\n")
+        end
+        tempfile.close
+        tempfile.open
+        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/xml')
+      end
+
+      it "should return with error_message" do
+        IndexedDocument.process_file(@file, @affiliate).should == { :success => false, :error_message => 'Invalid file format; please upload a plain text file (.txt).' }
+      end
+    end
+
+    context "when a file is passed in without any URLs" do
+      before do
+        @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
+        tempfile = Tempfile.new('urls.txt')
+        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
+      end
+
+      it "should return with success = false, and error message" do
+        result = IndexedDocument.process_file(@file, @affiliate)
+        result[:success].should be_false
+        result[:error_message].should == 'No URLs uploaded; please check your file and try again.'
+      end
+    end
+
     context "when a file is passed in with 100 or fewer URLs" do
       before do
         @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
@@ -464,12 +495,17 @@ describe IndexedDocument do
         end
         tempfile.close
         tempfile.open
-        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)
+        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
+        @result = IndexedDocument.process_file(@file, @affiliate)
       end
 
       it "should create a new IndexedDocument for each of the lines in the file" do
-        IndexedDocument.process_file(@file, @affiliate)
         @urls.each { |url| IndexedDocument.find_by_url_and_affiliate_id(url, @affiliate.id).should_not be_nil }
+      end
+
+      it "should return with success = true, and count" do
+        @result[:success].should be_true
+        @result[:count].should == 3
       end
     end
 
@@ -479,17 +515,19 @@ describe IndexedDocument do
         101.times { |x| tempfile.write("http://search.usa.gov/#{x}\n") }
         tempfile.close
         tempfile.open
-        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile)
+        @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
       end
 
-      it "should raise an error that there are too many URLs in the file" do
-        lambda { IndexedDocument.process_file(@file, @affiliate) }.should raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
+      it "should return with success = false and error message if max URLs is set below the number of URLs in the file" do
+        result = IndexedDocument.process_file(@file, @affiliate)
+        result[:success].should be_false
+        result[:error_message].should == 'Too many URLs in your file.  Please limit your file to 100 URLs.'
       end
 
-      context "when a max number of URLs is passed that is greater than the default max" do
-        it "should allow all of the urls" do
-          lambda { IndexedDocument.process_file(@file, nil, 1000) }.should_not raise_error('Too many URLs in your file.  Please limit your file to 100 URLs.')
-        end
+      it "should return with success = true if max URLs is set above the number of URLs in the file" do
+        result = IndexedDocument.process_file(@file, @affiliate, 1000)
+        result[:success].should be_true
+        result[:count].should == 101
       end
     end
   end

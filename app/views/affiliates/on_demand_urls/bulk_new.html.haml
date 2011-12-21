@@ -1,0 +1,29 @@
+#bulk_upload_urls
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Bulk Upload URLs"])
+  %h1 Bulk Upload URLs
+  = form_tag upload_affiliate_on_demand_urls_path(@affiliate), :multipart => true, :class=> "bordered" do
+    %p
+      Bulk upload up to 100 URLs following the sample format below.
+    %p
+      Save the file in .txt format on your computer. Do not use Microsoft Word files.
+      You can name the file whatever you like, as long as it is a plain text file.
+    %p
+      Browse for the file on your computer. Upload the file using the browse and upload option below.
+    %p
+      %strong Sample file format:
+    %ul.sample-file-format
+      %li
+        %span
+          http://www.sample.gov/1.html
+      %li
+        %span
+          http://www.sample.gov/2.html
+      %li
+        %span
+          http://www.sample.gov/3.html
+    %p
+      NOTE: You may only submit URLs once.
+
+    = file_field_tag 'indexed_documents', :accept => 'text/plain', :class => 'file'
+    = submit_tag "Upload", :class => 'submit btn-upload'
+    = link_to "Cancel", urls_and_sitemaps_affiliate_path(@affiliate), :class => 'cancel'

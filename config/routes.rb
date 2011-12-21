@@ -18,6 +18,9 @@ UsasearchRails3::Application.routes.draw do
       get :best_bets
       get :content_types
       post :update_content_types
+      get :edit_social_media
+      put :update_social_media
+      get :urls_and_sitemaps
     end
     collection do
       get :home
@@ -33,11 +36,12 @@ UsasearchRails3::Application.routes.draw do
         post :bulk
       end
     end
-    resources :on_demand_urls, :controller => 'affiliates/on_demand_urls', :only => [:index, :create, :destroy] do
+    resources :on_demand_urls, :controller => 'affiliates/on_demand_urls', :only => [:new, :create, :destroy] do
       collection do
         post :upload
         get :crawled
         get :uncrawled
+        get :bulk_new
       end
     end
     resources :type_ahead_search, :controller => "affiliates/sayt", :as => "type_ahead_search" do
@@ -68,7 +72,7 @@ UsasearchRails3::Application.routes.draw do
     resources :featured_collections, :controller => "affiliates/featured_collections"
     resources :rss_feeds, :controller => "affiliates/rss_feeds"
     resources :excluded_urls, :controller => "affiliates/excluded_urls", :only => [:index, :create, :destroy]
-    resources :sitemaps, :controller => "affiliates/sitemaps", :only => [:index, :create, :destroy]
+    resources :sitemaps, :controller => "affiliates/sitemaps", :only => [:index, :new, :create, :destroy]
     resources :top_searches, :controller => "affiliates/top_searches", :only => [:index, :create]
   end
   get '/search' => 'searches#index', :as => :search

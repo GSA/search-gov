@@ -1,48 +1,21 @@
 .sitemaps
   = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Sitemaps"])
-  .column-1
-    %h1 Sitemaps
+  %h1 Sitemaps
+  %p
+    Sitemaps are an easy way for webmasters to inform search engines about pages on their sites that are available for crawling.  Web crawlers usually discover pages from links within the site and from other sites and sitemaps are recommended for content that is not represented in commercial search engines.
+  %p
+    USASearch uses sitemaps to supplement any URLs that may not be found in Bing.
+  .sitemap-list{:style => 'margin-top: 10px;'}
+    %table
+      %colgroup
+        %col{ :class => 'url' }
+        %col{ :class => 'actions' }
+      %thead
+        %tr
+          %th{ :colspan => 2 }
+            = link_to "Add new Sitemap", new_affiliate_sitemap_path(@affiliate), :class => 'add-link last'
+            %span= page_entries_info @sitemaps, :html => false
+      = render :partial => 'affiliates/sitemaps/list'
+    = will_paginate @sitemaps
     %p
-      Sitemaps are an easy way for webmasters to inform search engines about pages on their sites that are available for crawling.  Web crawlers usually discover pages from links within the site and from other sites and sitemaps are recommended for content that is not represented in commercial search engines.
-    %p
-      USASearch uses sitemaps to supplement any URLs that may not be found in Bing.
-    .add-sitemap
-      = form_for([@affiliate, @sitemap], :html => { :multipart => true }) do |f|
-        %h2 Add a Sitemap
-        = render :partial => 'form', :locals => { :form => f }
-        = f.submit "Add"
-    .sitemap-list{:style => 'margin-top: 10px;'}
-      %table
-        %colgroup
-          %col{ :class => 'url' }
-          %col{ :class => 'actions' }
-        - unless @sitemaps.blank?
-          %thead
-            %tr
-              %th{ :colspan => 2 }
-                %span= page_entries_info @sitemaps, :html => false
-        %tbody
-          %tr.column-header
-            %th Url
-            %th Actions
-          - unless @sitemaps.blank?
-            - @sitemaps.each do |sitemap|
-              %tr.row-item
-                %td
-                  = link_to sitemap.url.truncate(35, :omission => '...' ), sitemap.url, :title => sitemap.url
-                %td.actions
-                  = button_to("Delete", [@affiliate, sitemap], :method => :delete, :confirm => "Are you sure you want to delete this sitemap?")
-          - else
-            %tr
-              %td.empty{ :colspan => 2 } Site #{@affiliate.display_name} has no sitemaps
-      = will_paginate @sitemaps
-      %p
-        Additional information, including sitemap validators may be found at #{ link_to 'http://sitemaps.org', 'http://sitemaps.org' }.
-  .column-2
-    .side-note-image= image_tag "side_notes/urls.png"
-    .side-note
-      %strong Did you know?
-      %br
-      We notify Bing&trade; about the URLs you add.
-      They will appear in the results on your website immediately (PDF and HTML).
-      They will appear in Bing.com within 24 hours (HTML only).
+      Additional information, including sitemap validators may be found at #{ link_to 'http://sitemaps.org', 'http://sitemaps.org' }.

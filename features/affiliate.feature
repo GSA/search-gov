@@ -165,10 +165,6 @@ Feature: Affiliate clients
     And I follow "Site information"
     Then the "Site name" field should contain "My awesome agency"
     And the "Domains to search" field should contain "www.awesomeagency.gov"
-    And the "Facebook username" field should contain "FBAgency"
-    And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
-    And the "Twitter username" field should contain "TwitterAgency"
-    And the "YouTube username" field should contain "YouTubeAgency"
     When I follow "Look and feel"
     Then the "Gettysburg" theme should be selected
     And the "Left tab text color" field should contain "#C71D2E"
@@ -181,6 +177,11 @@ Feature: Affiliate clients
     And the "Description text color" field should be disabled
     And the "URL link color" field should contain "#007F00"
     And the "URL link color" field should be disabled
+    When I follow "Social Media"
+    Then the "Facebook username" field should contain "FBAgency"
+    And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
+    And the "Twitter username" field should contain "TwitterAgency"
+    And the "YouTube username" field should contain "YouTubeAgency"
 
     When I go to myawesomeagency's search page
     Then I should see the page with affiliate stylesheet "one_serp"
@@ -385,10 +386,6 @@ Feature: Affiliate clients
       | Site name         | new aff site                         |
       | Site URL          | www.aff.gov                          |
       | Domains to search | data.gov                             |
-      | Facebook username | FBAgency                             |
-      | Flickr URL        | http://www.flickr.com/groups/usagov/ |
-      | Twitter username  | TwitterAgency                        |
-      | YouTube username  | YouTubeAgency                        |
     And I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > new aff site
     And I should see "Staged changes to your site successfully"
@@ -405,10 +402,6 @@ Feature: Affiliate clients
     When I go to the "new aff site" affiliate page
     And I follow "Site information"
     Then the "Site name" field should contain "new aff site"
-    And the "Facebook username" field should contain "FBAgency"
-    And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
-    And the "Twitter username" field should contain "TwitterAgency"
-    And the "YouTube username" field should contain "YouTubeAgency"
 
     When I go to the "new aff site" affiliate page
     And I press "Push Changes"
@@ -443,10 +436,6 @@ Feature: Affiliate clients
       | Site name         | new aff site                         |
       | Site URL          | www.aff.gov                          |
       | Domains to search | data.gov                             |
-      | Facebook username | FBAgency                             |
-      | Flickr URL        | http://www.flickr.com/groups/usagov/ |
-      | Twitter username  | TwitterAgency                        |
-      | YouTube username  | YouTubeAgency                        |
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > new aff site
     And I should see "Updated changes to your live site successfully"
@@ -456,13 +445,6 @@ Feature: Affiliate clients
 
     When I follow "View Current"
     Then I should see 10 search results
-
-    When I go to the "new aff site" affiliate page
-    And I follow "Site information"
-    Then the "Facebook username" field should contain "FBAgency"
-    And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
-    And the "Twitter username" field should contain "TwitterAgency"
-    And the "YouTube username" field should contain "YouTubeAgency"
 
    Scenario: Editing site information with problem and make it live
     Given the following Affiliates exist:
@@ -1812,3 +1794,56 @@ Feature: Affiliate clients
     And I fill in "URL*" with "www.whitehouse.gov/our-government"
     And I press "Add"
     Then I should see "Url is invalid"
+
+  Scenario: Visiting the social media page
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | facebook_username | flickr_url                           | twitter_username | youtube_username |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | FBAgency          | http://www.flickr.com/groups/usagov/ | TwitterAgency    | YouTubeAgency    |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Social Media"
+    Then I should see the browser page titled "Social Media"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Social Media
+    And I should see "Social Media" in the page header
+    And the "Facebook username" field should contain "FBAgency"
+    And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
+    And the "Twitter username" field should contain "TwitterAgency"
+    And the "YouTube username" field should contain "YouTubeAgency"
+    When I fill in the following:
+      | Facebook username | UpdatedFBAgency                             |
+      | Flickr URL        | http://www.flickr.com/groups/updatedusagov/ |
+      | Twitter username  | UpdatedTwitterAgency                        |
+      | YouTube username  | UpdatedYouTubeAgency                        |
+    And I press "Save"
+    Then I should see "Site was successfully updated."
+    When I follow "Social Media"
+    Then the "Facebook username" field should contain "UpdatedFBAgency"
+    And the "Flickr URL" field should contain "http://www.flickr.com/groups/updatedusagov/"
+    And the "Twitter username" field should contain "UpdatedTwitterAgency"
+    And the "YouTube username" field should contain "UpdatedYouTubeAgency"
+    When I follow "Cancel"
+    Then I should see the browser page titled "Site: aff site"
+
+  Scenario: Visiting the URLs & Sitemaps page
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "URLs & Sitemaps"
+    Then I should see the browser page titled "URLs & Sitemaps"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs & Sitemaps
+    And I should see "URLs & Sitemaps for USASearch Index" in the page header
+    And I should see a link to "sitemaps.org/protocol.html" with url for "http://www.sitemaps.org/protocol.html"
+    And I should see "Sitemaps (0)"
+    And I should see "Site aff site has no sitemaps"
+    And I should see "Uncrawled URLs (0)"
+    And I should see "Crawled URLs (0)"
+
+    When there are 8 uncrawled IndexedDocuments for "aff.gov"
+    And there are 10 crawled IndexedDocuments for "aff.gov"
+    And I go to the "aff site" affiliate page
+    And I follow "URLs & Sitemaps"
+    Then I should see "Uncrawled URLs (8)"
+    And I should see "Crawled URLs (10)"
+

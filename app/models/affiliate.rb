@@ -209,14 +209,6 @@ class Affiliate < ActiveRecord::Base
     self.header != self.previous_header or self.footer != self.previous_footer
   end
 
-  def uncrawled_urls_count
-    self.indexed_documents.count(:conditions => ['ISNULL(last_crawled_at)'])
-  end
-
-  def crawled_urls_count
-    self.indexed_documents.count(:conditions => ['NOT ISNULL(last_crawled_at)'])
-  end
-
   class << self
     def human_attribute_name(attribute_key_name, options = {})
       HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super

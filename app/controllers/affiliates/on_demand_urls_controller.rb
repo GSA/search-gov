@@ -2,57 +2,49 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin
   before_filter :setup_affiliate
 
-  VALID_CONTENT_TYPES = %w{text/plain txt}
+  def new
+    @title = "Add a new URL - "
+    @indexed_document = @affiliate.indexed_documents.build
+  end
 
-  def index
-    @title = "URLs - "
-    @indexed_document = IndexedDocument.new
-    @uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, 1, 5)
-    @crawled_urls = IndexedDocument.crawled_urls(@affiliate, 1, 5)
+  def bulk_new
+    @title = "Bulk Upload URLs - "
   end
 
   def create
-    @indexed_document = IndexedDocument.new(params[:indexed_document])
-    @indexed_document.affiliate = @affiliate
+    @indexed_document = @affiliate.indexed_documents.build(params[:indexed_document])
     if @indexed_document.save
-      flash[:success] = "Successfully added #{@indexed_document.url}.  It will be indexed soon."
+      redirect_to uncrawled_affiliate_on_demand_urls_path(@affiliate), :flash => { :success => "Successfully added #{@indexed_document.url}. It will be indexed soon." }
     else
-      flash[:error] = @indexed_document.errors.full_messages.to_sentence
+      @title = "Add a new URL - "
+      render :action => :new
     end
-    redirect_to affiliate_on_demand_urls_path(@affiliate)
   end
 
   def destroy
-    if @indexed_document = IndexedDocument.destroy(params[:id])
-      flash[:success] = "Removed #{@indexed_document.url}."
-    end
-    redirect_to :back
+    @indexed_document = @affiliate.indexed_documents.find_by_id(params[:id])
+    redirect_to urls_and_sitemaps_affiliate_path(@affiliate) and return unless @indexed_document
+    @indexed_document.destroy
+    redirect_to :back, :flash => { :success => "Removed #{@indexed_document.url}." }
   end
 
   def upload
     file = params[:indexed_documents]
-    if file.present? and VALID_CONTENT_TYPES.include?(file.content_type)
-      begin
-        uploaded_count = IndexedDocument.process_file(file, @affiliate)
-        if uploaded_count > 0
-          flash[:success] = "Successfully uploaded #{uploaded_count} urls."
-        else
-          flash[:error] = "No urls uploaded; please check your file and try again."
-        end
-      rescue Exception => e
-        flash[:error] = e.message
-      end
+    result = IndexedDocument.process_file(file, @affiliate)
+    if result[:success]
+      redirect_to uncrawled_affiliate_on_demand_urls_path(@affiliate), :flash => { :success => "Successfully uploaded #{result[:count]} urls." }
     else
-      flash[:error] = "Invalid file format; please upload a plain text file (.txt)."
+      @title = "Bulk Upload URLs - "
+      flash.now[:error] = result[:error_message]
+      render :action => :bulk_new
     end
-    redirect_to affiliate_on_demand_urls_path(@affiliate)
   end
 
   def crawled
     @title = 'Previously Crawled URLs - '
     @crawled_urls = IndexedDocument.crawled_urls(@affiliate, params[:page])
   end
-  
+
   def uncrawled
     @title = 'Uncrawled URLs - '
     @uncrawled_urls = IndexedDocument.uncrawled_urls(@affiliate, params[:page])

@@ -19,6 +19,7 @@ class IndexedDocument < ActiveRecord::Base
   MAX_URLS_PER_FILE_UPLOAD = 100
   OK_STATUS = "OK"
   EMPTY_BODY_STATUS = "No content found in document"
+  VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
 
   searchable do
     text :title, :boost => 10.0 do |idoc|
@@ -118,7 +119,7 @@ class IndexedDocument < ActiveRecord::Base
     end
 
     def uncrawled_urls(affiliate, page = 1, per_page = 30)
-      paginate(:conditions => ['affiliate_id = ? AND ISNULL(last_crawled_at)', affiliate.id], :page => page, :order => 'last_crawled_at DESC', :per_page => per_page)
+      paginate(:conditions => ['affiliate_id = ? AND ISNULL(last_crawled_at)', affiliate.id], :page => page, :order => 'id DESC', :per_page => per_page)
     end
 
     def crawled_urls(affiliate, page = 1, per_page = 30)
@@ -126,12 +127,16 @@ class IndexedDocument < ActiveRecord::Base
     end
 
     def process_file(file, affiliate, max_urls = MAX_URLS_PER_FILE_UPLOAD)
+      if file.blank? or !VALID_BULK_UPLOAD_CONTENT_TYPES.include?(file.content_type)
+        return { :success => false, :error_message => 'Invalid file format; please upload a plain text file (.txt).'}
+      end
+
       counter = 0
       if file.tempfile.lines.count <= max_urls and file.tempfile.open
         file.tempfile.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
-        counter
+        counter > 0 ?  { :success => true, :count => counter } : { :success => false, :error_message => 'No URLs uploaded; please check your file and try again.' }
       else
-        raise "Too many URLs in your file.  Please limit your file to #{max_urls} URLs."
+        { :success => false, :error_message => "Too many URLs in your file.  Please limit your file to #{max_urls} URLs." }
       end
     end
 

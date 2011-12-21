@@ -1,0 +1,8 @@
+= affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Add a new Sitemap"])
+%h1 Add a new Sitemap
+.add-sitemap
+  = form_for([@affiliate, @sitemap]) do |f|
+    = render :partial => 'form', :locals => { :form => f }
+    = f.submit "Add", :class => 'submit'
+    = link_to "Cancel", urls_and_sitemaps_affiliate_path(@affiliate), :class => 'cancel'
+
