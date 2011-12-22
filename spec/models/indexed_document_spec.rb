@@ -495,8 +495,8 @@ describe IndexedDocument do
       IndexedDocument.delete_all
       @file = File.new('aid_urls.txt', 'w+')
       @aff = affiliates(:power_affiliate)
-      2.times { @file.puts([@aff.id, 'http://www.usa.gov'].join('\t')) }
-      @file.puts([@aff.id, 'http://www.usa.z/invalid'].join('\t'))
+      2.times { @file.puts([@aff.id, 'http://www.usa.gov'].join("\t")) }
+      @file.puts([@aff.id, 'http://www.usa.z/invalid'].join("\t"))
       @file.close
     end
 

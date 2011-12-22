@@ -138,7 +138,7 @@ class IndexedDocument < ActiveRecord::Base
 
     def bulk_load_urls(file_path)
       File.open(file_path).each do |line|
-        affiliate_id, url = line.chomp.split('\t')
+        affiliate_id, url = line.chomp.split("\t")
         create(:url => url, :affiliate_id => affiliate_id)
       end
     end
