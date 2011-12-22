@@ -3,12 +3,15 @@ require 'pdf/toolkit'
 class IndexedDocument < ActiveRecord::Base
   class IndexedDocumentError < RuntimeError;
   end
+  attr_reader :url_extension
+
   belongs_to :affiliate
   validates_presence_of :url, :affiliate_id
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
   validates_uniqueness_of :content_hash, :message => "is not unique: Identical content (title and body) already indexed", :scope => :affiliate_id, :allow_nil => true
   validates_format_of :url, :with => /^http:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
-  validate :doctype, :inclusion => {:in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"}
+  validates_exclusion_of :url_extension, :in => %w(json xml rss csv css js png gif jpg jpeg txt ico wsdl htc swf), :message => "extension '%{value}' is not supported"
+  validates_inclusion_of :doctype, :in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"
   before_validation :normalize_url
 
   TRUNCATED_TITLE_LENGTH = 60
@@ -142,9 +145,14 @@ class IndexedDocument < ActiveRecord::Base
         create(:url => url, :affiliate_id => affiliate_id)
       end
     end
+
   end
 
   private
+
+  def url_extension
+    URI::parse(url).path.split('.').last rescue nil
+  end
 
   def generate_pdf_title(pdf_file_path)
     pdf = PDF::Toolkit.open(pdf_file_path) rescue nil

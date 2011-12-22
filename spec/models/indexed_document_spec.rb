@@ -34,6 +34,23 @@ describe IndexedDocument do
     IndexedDocument.create!(@valid_attributes)
   end
 
+  describe "handling file extensions for URLs" do
+    it "should not allow unsupported extensions" do
+      base_url = "http://www.nps.gov/honey-badger."
+      %w{json xml rss csv css js png gif jpg jpeg txt ico wsdl htc swf}.each do |ext|
+        IndexedDocument.new(@valid_attributes.merge(:url => base_url + ext)).should_not be_valid
+      end
+    end
+  end
+
+  describe "handling document types for content" do
+    it "should not allow unsupported types" do
+      IndexedDocument.new(@valid_attributes.merge(:doctype => "pdf")).should be_valid
+      IndexedDocument.new(@valid_attributes.merge(:doctype => "html")).should be_valid
+      IndexedDocument.new(@valid_attributes.merge(:doctype => "vrml")).should_not be_valid
+    end
+  end
+
   describe "normalizing URLs when saving" do
     context "when URL doesn't have a protocol" do
       let(:url) { "www.foo.gov/sdfsdf" }
@@ -495,7 +512,7 @@ describe IndexedDocument do
   describe "#bulk_load_urls" do
     before do
       IndexedDocument.delete_all
-      @file = File.new('aid_urls.txt', 'w+')
+      @file = Tempfile.new('aid_urls.txt')
       @aff = affiliates(:power_affiliate)
       2.times { @file.puts([@aff.id, 'http://www.usa.gov'].join("\t")) }
       @file.puts([@aff.id, 'http://www.usa.z/invalid'].join("\t"))
@@ -507,6 +524,7 @@ describe IndexedDocument do
       IndexedDocument.count.should == 1
       IndexedDocument.find_by_url("http://www.usa.gov", @aff.id).should_not be_nil
     end
+
   end
 
   describe "#build_content_hash" do
