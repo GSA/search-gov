@@ -13,7 +13,8 @@ describe IndexedDocument do
       :url => 'http://something.gov/pdf.pdf',
       :last_crawl_status => IndexedDocument::OK_STATUS,
       :body => "this is the doc body",
-      :affiliate_id => affiliates(:basic_affiliate).id
+      :affiliate_id => affiliates(:basic_affiliate).id,
+      :content_hash => "a6e450cc50ac3b3b7788b50b3b73e8b0b7c197c8"
     }
   end
 
@@ -195,10 +196,11 @@ describe IndexedDocument do
         indexed_document.stub!(:open).and_raise IndexedDocument::IndexedDocumentError.new("bummer")
       end
 
-      it "should update the url with last crawled date and error message" do
+      it "should update the url with last crawled date and error message and set the hash to nil in case it's a duplicate" do
         indexed_document.fetch
         indexed_document.last_crawled_at.should_not be_nil
         indexed_document.last_crawl_status.should == "bummer"
+        indexed_document.content_hash.should be_nil
       end
 
       it "should not attempt to clean up the nil file descriptor" do
