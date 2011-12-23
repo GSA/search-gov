@@ -57,7 +57,7 @@ class IndexedDocument < ActiveRecord::Base
         file = tempfile
       end
       index_document(file, content_type)
-      update_attribute(:content_hash, build_content_hash)
+      update_content_hash
     rescue Exception => e
       update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => e.message, :content_hash => nil)
     ensure
@@ -96,6 +96,15 @@ class IndexedDocument < ActiveRecord::Base
     pdf_text = PDF::Toolkit.pdftotext(pdf_file_path) { |io| io.read }
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if pdf_text.blank?
     update_attributes!(:title => generate_pdf_title(pdf_file_path), :description => generate_pdf_description(pdf_text), :body => pdf_text, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
+  end
+
+  def update_content_hash
+    begin
+      self.content_hash = build_content_hash
+      save!
+    rescue ActiveRecord::RecordInvalid
+      raise IndexedDocumentError.new(errors.full_messages.to_s)
+    end
   end
 
   def build_content_hash

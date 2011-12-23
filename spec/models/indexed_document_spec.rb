@@ -204,19 +204,19 @@ describe IndexedDocument do
       mockfile.stub!(:content_type).and_return "foo"
       indexed_document.stub!(:index_document)
       indexed_document.stub!(:build_content_hash).and_return 'somehash'
-      indexed_document.should_receive(:update_attribute).with(:content_hash, 'somehash')
+      indexed_document.should_receive(:update_content_hash)
       indexed_document.fetch
     end
 
     context "when there is a problem fetching and indexing the URL content" do
       before do
-        indexed_document.stub!(:open).and_raise IndexedDocument::IndexedDocumentError.new("bummer")
+        indexed_document.stub!(:open).and_raise Exception.new("404 Document Not Found")
       end
 
-      it "should update the url with last crawled date and error message and set the hash to nil in case it's a duplicate" do
+      it "should update the url with last crawled date and error message and set the hash to nil" do
         indexed_document.fetch
         indexed_document.last_crawled_at.should_not be_nil
-        indexed_document.last_crawl_status.should == "bummer"
+        indexed_document.last_crawl_status.should == "404 Document Not Found"
         indexed_document.content_hash.should be_nil
       end
 
@@ -268,6 +268,21 @@ describe IndexedDocument do
       it "should delete the downloaded temporary HTML file" do
         File.should_receive(:delete).with(@html_io)
         indexed_document.fetch
+      end
+    end
+  end
+
+  describe "#update_content_hash" do
+    let(:indexed_document) { IndexedDocument.create!(@valid_attributes) }
+    context "when the content hash is a duplicate" do
+      before do
+        @dupe = indexed_document.clone
+        @dupe.update_attributes!(:title=>"new title", :content_hash => "temp", :url => "http://www.gov.gov/newurl")
+        @dupe.stub!(:build_content_hash).and_return(indexed_document.content_hash)
+      end
+
+      it "should raise an IndexedDocumentError with the validation error as the message" do
+        lambda { @dupe.update_content_hash}.should raise_error(IndexedDocument::IndexedDocumentError, "Content hash is not unique: Identical content (title and body) already indexed")
       end
     end
   end
