@@ -155,19 +155,23 @@ class Recall < ActiveRecord::Base
 
     def load_cpsc_data_from_xml_feed(url)
       require 'rexml/document'
-      REXML::Document.new(Net::HTTP.get_response(URI.parse(url)).body).elements.each('message/results/result') do |element|
-        process_cpsc_row([
-                           element.attributes["recallNo"],
-                           element.attributes["y2k"],
-                           element.attributes["manufacturer"],
-                           element.attributes["type"],
-                           element.attributes["prname"],
-                           element.attributes["UPC"],
-                           nil,
-                           element.attributes["hazard"],
-                           element.attributes["country_mfg"],
-                           element.attributes["recDate"]
-                         ])
+      begin
+        REXML::Document.new(Net::HTTP.get_response(URI.parse(url)).body).elements.each('message/results/result') do |element|
+          process_cpsc_row([
+                             element.attributes["recallNo"],
+                             element.attributes["y2k"],
+                             element.attributes["manufacturer"],
+                             element.attributes["type"],
+                             element.attributes["prname"],
+                             element.attributes["UPC"],
+                             nil,
+                             element.attributes["hazard"],
+                             element.attributes["country_mfg"],
+                             element.attributes["recDate"]
+                           ])
+        end
+      rescue Exception => e
+        Rails.logger.error(e.message)
       end
       Sunspot.commit
     end
@@ -182,23 +186,31 @@ class Recall < ActiveRecord::Base
     end
 
     def load_nhtsa_data_from_tab_delimited_feed(url)
-      file = Tempfile.new("nhtsa")
-      file.write(Net::HTTP.get_response(URI.parse(url)).body)
-      file.close
-      load_nhtsa_data_from_file(file.path)
+      begin
+        file = Tempfile.new("nhtsa")
+        file.write(Net::HTTP.get_response(URI.parse(url)).body)
+        file.close
+        load_nhtsa_data_from_file(file.path)
+      rescue Exception => e
+        Rails.logger.error(e.message)
+      end
     end
 
     def load_cdc_data_from_rss_feed(url, food_type)
       require 'rss/2.0'
-      RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|
-        find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10],
-                                        :recalled_on => item.pubDate.to_date, :organization => 'CDC',
-                                        :food_recall => FoodRecall.new(:url=>item.link,
-                                                                       :summary=> item.title,
-                                                                       :description => item.description,
-                                                                       :food_type => food_type))
+      begin
+        RSS::Parser.parse(Net::HTTP.get_response(URI.parse(url)).body, false).items.each do |item|
+          find_or_create_by_recall_number(:recall_number => Digest::MD5.hexdigest(item.link.downcase)[0, 10],
+                                          :recalled_on => item.pubDate.to_date, :organization => 'CDC',
+                                          :food_recall => FoodRecall.new(:url=>item.link,
+                                                                         :summary=> item.title,
+                                                                         :description => item.description,
+                                                                         :food_type => food_type))
+        end
+        Sunspot.commit
+      rescue Exception => e
+        Rails.logger.error(e.message)
       end
-      Sunspot.commit
     end
   end
 
