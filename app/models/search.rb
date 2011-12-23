@@ -480,9 +480,14 @@ class Search
 
   def remove_bing_matches_from_indexed_documents
     @indexed_documents.delete_if do |indexed_document|
-      local_request_uri = URI.parse(indexed_document.instance.url.sub(/\/$/,'')).request_uri
+      local_url_minus_slash = indexed_document.instance.url.sub(/\/$/, '')
+      local_request_uri = URI.parse(local_url_minus_slash).request_uri
       local_title = indexed_document.instance.title || ''
-      @results.any? { |result| URI.parse(result['unescapedUrl'].sub(/\/$/,'')).request_uri == local_request_uri and local_title == result['title'].gsub(/\xEE\x80(\x80|\x81)/, '') }
+      @results.any? do |result|
+      bing_url_minus_slash = result['unescapedUrl'].sub(/\/$/, '')
+        (URI.parse(bing_url_minus_slash).request_uri == local_request_uri and local_title == result['title'].gsub(/\xEE\x80(\x80|\x81)/, '')) or
+          bing_url_minus_slash == local_url_minus_slash
+      end
     end
   end
 

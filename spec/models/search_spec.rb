@@ -1264,6 +1264,8 @@ describe Search do
                                              :url => 'http://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day/', :last_crawl_status => IndexedDocument::OK_STATUS)
         @affiliate.indexed_documents.create!(:title => "another one", :description => "Projects created description",
                                              :url => 'http://same-title-and-uri-but-different-host.gov/more?x=4', :last_crawl_status => IndexedDocument::OK_STATUS)
+        @affiliate.indexed_documents.create!(:title => "exact url match except for trailing slash", :description => "Projects created description",
+                                             :url => 'http://www.gov.gov', :last_crawl_status => IndexedDocument::OK_STATUS)
         IndexedDocument.reindex
         Sunspot.commit
       end
@@ -1272,9 +1274,10 @@ describe Search do
         search = Search.new(@valid_options.merge(:query => 'USA.gov blog', :affiliate => @affiliate, :page => 0))
         search.should_receive(:process_results).and_return([{'title' => 'another one', 'unescapedUrl' => 'http://blog.usa.gov/more?x=4#anchor'},
                                                             {'title' => 'Hack Day - USA.gov Blog', 'unescapedUrl' => 'http://usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day/subdir'},
+                                                            {'title' => 'exact url match', 'unescapedUrl' => 'http://www.gov.gov/'},
                                                             {'title' => 'Projects created - USA.gov Blog', 'unescapedUrl' => 'https://blog.usa.gov/post/8522383948/projects-created-at-the-1-usa-gov-hack-day'}])
         search.run
-        search.results.count.should == 3
+        search.results.count.should == 4
         search.indexed_documents.count.should == 1
         search.indexed_documents.first.instance.url.should == 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day'
       end
