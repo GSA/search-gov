@@ -831,9 +831,9 @@ describe Affiliates::HomeController do
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_not_receive(:update_attributes_for_current)
         affiliate.should_not_receive(:update_attributes_for_staging)
-        affiliate.should_receive(:update_attributes).with(hash_including(:facebook_username => 'FBAgency')).and_return(true)
+        affiliate.should_receive(:update_attributes).with(hash_including(:facebook_handle => 'FBAgency')).and_return(true)
 
-        put :update_social_media, :id => affiliate.id, :affiliate => { :facebook_username => 'FBAgency' }, :commit => 'Save'
+        put :update_social_media, :id => affiliate.id, :affiliate => { :facebook_handle => 'FBAgency' }, :commit => 'Save'
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
@@ -851,9 +851,9 @@ describe Affiliates::HomeController do
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
         affiliate.should_not_receive(:update_attributes_for_current)
         affiliate.should_not_receive(:update_attributes_for_staging)
-        affiliate.should_receive(:update_attributes).with(hash_including(:facebook_username => 'FBAgency')).and_return(false)
+        affiliate.should_receive(:update_attributes).with(hash_including(:facebook_handle => 'FBAgency')).and_return(false)
 
-        put :update_social_media, :id => affiliate.id, :affiliate => { :facebook_username => 'FBAgency' }, :commit => 'Save'
+        put :update_social_media, :id => affiliate.id, :affiliate => { :facebook_handle => 'FBAgency' }, :commit => 'Save'
       end
 
       it { should assign_to(:affiliate).with(affiliate) }

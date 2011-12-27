@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111221214128) do
+ActiveRecord::Schema.define(:version => 20111227193551) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -45,10 +45,10 @@ ActiveRecord::Schema.define(:version => 20111221214128) do
     t.string   "staged_external_css_url"
     t.string   "favicon_url"
     t.string   "staged_favicon_url"
-    t.string   "facebook_username"
+    t.string   "facebook_handle"
     t.string   "flickr_url"
-    t.string   "twitter_username"
-    t.string   "youtube_username"
+    t.string   "twitter_handle"
+    t.string   "youtube_handle"
     t.text     "previous_header"
     t.text     "previous_footer"
     t.text     "css_properties"

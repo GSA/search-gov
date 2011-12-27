@@ -6,17 +6,17 @@
       = f.error_messages(:header_message => nil, :class => "error")
       %ul
         %li
-          = f.label :facebook_username, "Facebook username"
-          = f.text_field :facebook_username, :class => 'txt'
+          = f.label :facebook_handle, "Facebook handle"
+          = f.text_field :facebook_handle, :class => 'txt'
         %li
           = f.label :flickr_url, "Flickr URL"
           = f.text_field :flickr_url, :class => 'txt'
         %li
-          = f.label :twitter_username, "Twitter username"
-          = f.text_field :twitter_username, :class => 'txt'
+          = f.label :twitter_handle, "Twitter handle"
+          = f.text_field :twitter_handle, :class => 'txt'
         %li
-          = f.label :youtube_username, "YouTube username"
-          = f.text_field :youtube_username, :class => 'txt'
+          = f.label :youtube_handle, "YouTube handle"
+          = f.text_field :youtube_handle, :class => 'txt'
         %li
           = f.submit "Save", :id => "save"
           = link_to "Cancel", affiliate_path(@affiliate)

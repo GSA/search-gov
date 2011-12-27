@@ -147,10 +147,10 @@ Feature: Affiliate clients
     When I fill in the following:
       | Site name         | My awesome agency                    |
       | Domains to search | www.awesomeagency.gov                |
-      | Facebook username | FBAgency                             |
+      | Facebook handle   | FBAgency                             |
       | Flickr URL        | http://www.flickr.com/groups/usagov/ |
-      | Twitter username  | TwitterAgency                        |
-      | YouTube username  | YouTubeAgency                        |
+      | Twitter handle    | TwitterAgency                        |
+      | YouTube handle    | YouTubeAgency                        |
     And I choose "Gettysburg"
     And I press "Next"
     Then I should see "Add a New Site" within "title"
@@ -178,10 +178,10 @@ Feature: Affiliate clients
     And the "URL link color" field should contain "#007F00"
     And the "URL link color" field should be disabled
     When I follow "Social Media"
-    Then the "Facebook username" field should contain "FBAgency"
+    Then the "Facebook handle" field should contain "FBAgency"
     And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
-    And the "Twitter username" field should contain "TwitterAgency"
-    And the "YouTube username" field should contain "YouTubeAgency"
+    And the "Twitter handle" field should contain "TwitterAgency"
+    And the "YouTube handle" field should contain "YouTubeAgency"
 
     When I go to myawesomeagency's search page
     Then I should see the page with affiliate stylesheet "one_serp"
@@ -1797,30 +1797,30 @@ Feature: Affiliate clients
 
   Scenario: Visiting the social media page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | facebook_username | flickr_url                           | twitter_username | youtube_username |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | FBAgency          | http://www.flickr.com/groups/usagov/ | TwitterAgency    | YouTubeAgency    |
+      | display_name | name    | contact_email | contact_name | facebook_handle | flickr_url                           | twitter_handle | youtube_handle |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | FBAgency        | http://www.flickr.com/groups/usagov/ | TwitterAgency  | YouTubeAgency  |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Social Media"
     Then I should see the browser page titled "Social Media"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Social Media
     And I should see "Social Media" in the page header
-    And the "Facebook username" field should contain "FBAgency"
+    And the "Facebook handle" field should contain "FBAgency"
     And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
-    And the "Twitter username" field should contain "TwitterAgency"
-    And the "YouTube username" field should contain "YouTubeAgency"
+    And the "Twitter handle" field should contain "TwitterAgency"
+    And the "YouTube handle" field should contain "YouTubeAgency"
     When I fill in the following:
-      | Facebook username | UpdatedFBAgency                             |
-      | Flickr URL        | http://www.flickr.com/groups/updatedusagov/ |
-      | Twitter username  | UpdatedTwitterAgency                        |
-      | YouTube username  | UpdatedYouTubeAgency                        |
+      | Facebook handle | UpdatedFBAgency                             |
+      | Flickr URL      | http://www.flickr.com/groups/updatedusagov/ |
+      | Twitter handle  | UpdatedTwitterAgency                        |
+      | YouTube handle  | UpdatedYouTubeAgency                        |
     And I press "Save"
     Then I should see "Site was successfully updated."
     When I follow "Social Media"
-    Then the "Facebook username" field should contain "UpdatedFBAgency"
+    Then the "Facebook handle" field should contain "UpdatedFBAgency"
     And the "Flickr URL" field should contain "http://www.flickr.com/groups/updatedusagov/"
-    And the "Twitter username" field should contain "UpdatedTwitterAgency"
-    And the "YouTube username" field should contain "UpdatedYouTubeAgency"
+    And the "Twitter handle" field should contain "UpdatedTwitterAgency"
+    And the "YouTube handle" field should contain "UpdatedYouTubeAgency"
     When I follow "Cancel"
     Then I should see the browser page titled "Site: aff site"
 

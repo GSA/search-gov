@@ -50,17 +50,17 @@
         Individual pages: List www.yoursite.gov/yourpage.html to include only specific pages.
   - if @affiliate.new_record?
     %li
-      = site_information_form.label :facebook_username, "Facebook username"
-      = site_information_form.text_field :facebook_username, :class => 'txt'
+      = site_information_form.label :facebook_handle, "Facebook handle"
+      = site_information_form.text_field :facebook_handle, :class => 'txt'
     %li
       = site_information_form.label :flickr_url, "Flickr URL"
       = site_information_form.text_field :flickr_url, :class => 'txt'
     %li
-      = site_information_form.label :twitter_username, "Twitter username"
-      = site_information_form.text_field :twitter_username, :class => 'txt'
+      = site_information_form.label :twitter_handle, "Twitter handle"
+      = site_information_form.text_field :twitter_handle, :class => 'txt'
     %li
-      = site_information_form.label :youtube_username, "YouTube username"
-      = site_information_form.text_field :youtube_username, :class => 'txt'
+      = site_information_form.label :youtube_handle, "YouTube handle"
+      = site_information_form.text_field :youtube_handle, :class => 'txt'
     %li
       %h2.sub-title Choose a theme
       = render_new_site_themes @affiliate

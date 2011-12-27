@@ -4,7 +4,7 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns = [:display_name, :name, :domains, :affiliate_template, :boosted_contents, :is_sayt_enabled, :created_at, :updated_at]
     config.list.sorting = { :display_name => :asc }
     config.update.columns = [:display_name, :domains, :staged_domains, :search_results_page_title, :staged_search_results_page_title,
-                             :facebook_username, :flickr_url, :twitter_username, :youtube_username,
+                             :facebook_handle, :flickr_url, :twitter_handle, :youtube_handle,
                              :uses_one_serp, :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :header_footer_sass, :staged_header_footer_sass, :header_footer_css, :staged_header_footer_css,
                              :header, :staged_header, :footer, :staged_footer,
