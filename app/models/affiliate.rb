@@ -19,12 +19,13 @@ class Affiliate < ActiveRecord::Base
   has_many :excluded_urls, :dependent => :destroy
   has_many :sitemaps, :dependent => :destroy
   has_many :top_searches, :dependent => :destroy, :order => 'position ASC', :limit => 5
+  has_many :site_domains, :dependent => :destroy
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   before_validation :set_default_name, :on => :create
   validate :validate_css_property_hash, :validate_header_footer_css
   before_create :set_uses_one_serp
-  before_save :set_default_affiliate_template, :normalize_domains, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass
+  before_save :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass
   before_validation :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
@@ -82,8 +83,8 @@ class Affiliate < ActiveRecord::Base
     new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
   end
 
-  def domains_as_array
-    @domains_as_array ||= (self.domains.nil? ? [] : self.domains.split)
+  def domains_as_array(reload = false)
+    @domains_as_array ||= site_domains(reload).ordered.collect { |site_domain| site_domain.domain }
   end
 
   def scope_ids_as_array
@@ -91,7 +92,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def has_multiple_domains?
-    @has_multiple_domains ||= self.domains_as_array.length > 1
+    site_domains.count > 1
   end
 
   def get_matching_domain(url)
@@ -122,7 +123,7 @@ class Affiliate < ActiveRecord::Base
 
   def update_attributes_for_current(attributes)
     attributes.merge!(:previous_header => self.header, :previous_footer => self.footer)
-    %w{ domains header_footer_css header footer affiliate_template_id search_results_page_title favicon_url external_css_url theme css_properties css_property_hash }.each do |field|
+    %w{ header_footer_css header footer affiliate_template_id search_results_page_title favicon_url external_css_url theme css_properties css_property_hash }.each do |field|
       attributes[field.to_sym] = attributes["staged_#{field}".to_sym] if attributes.include?("staged_#{field}".to_sym)
     end
     attributes[:has_staged_content] = false
@@ -145,7 +146,6 @@ class Affiliate < ActiveRecord::Base
 
   def staging_attributes
     {
-      :staged_domains => self.staged_domains,
       :staged_header_footer_css => self.staged_header_footer_css,
       :staged_header => self.staged_header,
       :staged_footer => self.staged_footer,
@@ -164,7 +164,6 @@ class Affiliate < ActiveRecord::Base
 
   def cancel_staged_changes
     self.update_attributes({
-      :staged_domains => self.domains,
       :staged_header_footer_css => self.header_footer_css,
       :staged_header => self.header,
       :staged_footer => self.footer,
@@ -180,20 +179,6 @@ class Affiliate < ActiveRecord::Base
 
   def sync_staged_attributes
     self.cancel_staged_changes unless self.has_staged_content?
-  end
-
-  def normalize_domains(staged = true)
-    method = staged ? "staged_domains" : "domains"
-    return if self.send(method).nil?
-    domain_list = self.send(method).gsub(/(https?:\/\/| )/, '').split.
-      select { |domain| domain =~ /^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,3}(\/.*)?$/ix }.
-      sort { |a, b| a.length <=> b.length }.uniq
-    result = []
-    while (domain_list.length > 0)
-      result << domain_list.first
-      domain_list = domain_list.drop(1).delete_if { |domain| domain.start_with?(domain_list.first) or domain.include?(".#{domain_list.first}") }
-    end
-    self.send(method + "=", result.join("\n"))
   end
 
   def active_rss_feeds
@@ -236,6 +221,51 @@ class Affiliate < ActiveRecord::Base
 
   def active_top_searches
     self.top_searches.all(:conditions => 'NOT ISNULL(query)')
+  end
+
+  def add_site_domains(site_domain_param_hash)
+    candidate_site_domains = []
+    site_domain_hash = Hash[*site_domains.collect { |site_domain| [site_domain.domain, site_domain] }.flatten]
+    transaction do
+      site_domain_param_hash.each do |domain, site_name|
+        site_domain = site_domains.build(:domain => domain, :site_name => site_name)
+        if site_domain.valid?
+          candidate_site_domains << site_domain
+          site_domain_hash[site_domain.domain] = site_domain
+        end
+      end
+      normalize_site_domains site_domain_hash
+    end
+  end
+
+  def update_site_domain(site_domain, site_domain_attributes)
+    transaction do
+      if site_domain.update_attributes(site_domain_attributes)
+        site_domain_hash = Hash[*site_domains(true).collect { |site_domain| [site_domain.domain, site_domain] }.flatten]
+        normalize_site_domains site_domain_hash
+      end
+    end
+  end
+
+  def normalize_site_domains(site_domain_hash)
+    added_or_updated_site_domains = []
+    domain_list = site_domain_hash.keys.sort { |a, b| a.length == b.length ? (a <=> b) : (a.length <=> b.length) }
+    while (domain_list.length > 0)
+      site_domain = site_domain_hash[domain_list.first]
+
+      added_or_updated_site_domains << site_domain if site_domain.new_record? and site_domain.save
+
+      domain_list = domain_list.drop(1).delete_if do |domain|
+        if  domain.start_with?(domain_list.first) or domain.include?(".#{domain_list.first}")
+          site_domain = site_domain_hash[domain]
+          site_domain.destroy unless site_domain.new_record?
+          true
+        else
+          false
+        end
+      end
+    end
+    added_or_updated_site_domains
   end
 
   private

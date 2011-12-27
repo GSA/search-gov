@@ -146,7 +146,6 @@ Feature: Affiliate clients
     And I should not see "Custom"
     When I fill in the following:
       | Site name         | My awesome agency                    |
-      | Domains to search | www.awesomeagency.gov                |
       | Facebook handle   | FBAgency                             |
       | Flickr URL        | http://www.flickr.com/groups/usagov/ |
       | Twitter handle    | TwitterAgency                        |
@@ -164,7 +163,6 @@ Feature: Affiliate clients
     When I go to the "My awesome agency" affiliate page
     And I follow "Site information"
     Then the "Site name" field should contain "My awesome agency"
-    And the "Domains to search" field should contain "www.awesomeagency.gov"
     When I follow "Look and feel"
     Then the "Gettysburg" theme should be selected
     And the "Left tab text color" field should contain "#C71D2E"
@@ -202,7 +200,6 @@ Feature: Affiliate clients
     And I press "Next"
     When I fill in the following:
       | Site name         | My awesome agency                    |
-      | Domains to search | www.awesomeagency.gov                |
     And I choose "Spanish"
     And I press "Next"
     Then I should see the code for Spanish language sites
@@ -359,8 +356,8 @@ Feature: Affiliate clients
 
   Scenario: Visiting the site information page
     Given the following Affiliates exist:
-      | display_name     | name        | domains       | staged_domains       | contact_email         | contact_name        |
-      | aff site         | aff.gov     | example.org   | example.org          | aff@bar.gov           | John Bar            |
+      | display_name | name    | domains     | contact_email | contact_name |
+      | aff site     | aff.gov | example.org | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Site information"
@@ -369,12 +366,11 @@ Feature: Affiliate clients
     And I should see "Site Information" within ".main"
     And the "Site name" field should contain "aff site"
     And the "Site Handle (visible to searchers in the URL)" field should contain "aff.gov"
-    And the "Domains to search" field should contain "example.org"
     And I should see "Cancel"
     When I follow "Cancel"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
 
-  Scenario: Editing site information and saving it for preview
+  Scenario: Editing site information and saving it
     Given the following Affiliates exist:
       | display_name     | name            | domains       | contact_email         | contact_name        |
       | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
@@ -385,119 +381,28 @@ Feature: Affiliate clients
     And I fill in the following:
       | Site name         | new aff site                         |
       | Site URL          | www.aff.gov                          |
-      | Domains to search | data.gov                             |
-    And I press "Save for Preview"
+    And I press "Save"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > new aff site
-    And I should see "Staged changes to your site successfully"
+    And I should see "Site was successfully updated."
     And I should see "Site: new aff site"
     And I should see "www.aff.gov"
-
-    When I follow "View Staged"
-    Then I should see at least 5 search results
-
-    When I go to the "new aff site" affiliate page
-    And I follow "View Current"
-    Then I should see "Sorry, no results found"
-
-    When I go to the "new aff site" affiliate page
-    And I follow "Site information"
-    Then the "Site name" field should contain "new aff site"
-
-    When I go to the "new aff site" affiliate page
-    And I press "Push Changes"
-    And I go to the "new aff site" affiliate page
-    And I follow "View Current"
-    Then I should see at least 5 search results
-
-  Scenario: Editing site information with problem and saving it for preview
-    Given the following Affiliates exist:
-      | display_name     | name            | domains       | contact_email         | contact_name        |
-      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    And I follow "Site information"
-    And I fill in the following:
-      | Site name                  |                     |
-      | Site URL                   |                     |
-      | Domains to search          |                     |
-    And I press "Save for Preview"
-    Then I should see "Site Information" within "title"
-    And I should see "Site name can't be blank"
-
-  Scenario: Editing site information and make it live
-    Given the following Affiliates exist:
-      | display_name     | name            | domains       | contact_email         | contact_name        |
-      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the affiliate admin page
-    And I follow "aff site"
-    And I follow "Site information"
-    And I fill in the following:
-      | Site name         | new aff site                         |
-      | Site URL          | www.aff.gov                          |
-      | Domains to search | data.gov                             |
-    And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > new aff site
-    And I should see "Updated changes to your live site successfully"
-    And I should see "Site: new aff site"
-    And I should see "www.aff.gov"
-    And I should not see "View Staged"
 
     When I follow "View Current"
-    Then I should see 10 search results
+    Then I should see the browser page titled "gov - new aff site Search Results"
 
-   Scenario: Editing site information with problem and make it live
+  Scenario: Editing site information with problem and saving it
     Given the following Affiliates exist:
-      | display_name     | name            | domains       | contact_email         | contact_name        |
-      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+      | display_name | name    | domains     | contact_email | contact_name |
+      | aff site     | aff.gov | example.org | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Site information"
     And I fill in the following:
-      | Site name                  |                     |
-      | Site URL                   |                     |
-      | Domains to search          |                     |
-    And I press "Make Live"
+      | Site name |  |
+      | Site URL  |  |
+    And I press "Save"
     Then I should see "Site Information" within "title"
     And I should see "Site name can't be blank"
-
-  Scenario: Editing site information where staged/live domains are not sync and has_staged_content is false
-    Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     | affiliate_template_name | search_results_page_title     | domains        | header      | footer      | staged_affiliate_template_name | staged_search_results_page_title   | staged_domains   | staged_header    | staged_footer  | has_staged_content |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | Default                 | Live Search Results           | data.gov       | Live header | Live footer | Basic Gray                     | Staged Search Results              | stagedagency.gov | Staged header    | Staged footer  | false              |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    And I follow "Site information"
-    Then the "Domains to search" field should contain "data.gov"
-    When I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
-    And I should see "Staged changes to your site successfully"
-    When I follow "View Staged"
-    Then I should see the page with affiliate stylesheet "default"
-    And I should not see the page with affiliate stylesheet "basic_gray"
-    And I should see 10 search results
-    And I should see "Live Search Results"
-    And I should see "Live header"
-    And I should see "Live footer"
-
-  Scenario: Editing site information where staged/live domains are not sync and has_staged_content is true
-    Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     | affiliate_template_name | search_results_page_title     | domains        | header      | footer      | staged_affiliate_template_name | staged_search_results_page_title   | staged_domains   | staged_header    | staged_footer  | has_staged_content |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | Default                 | Live Search Results           | data.gov       | Live header | Live footer | Basic Gray                     | Staged Search Results              | stagedagency.gov | Staged header    | Staged footer  | true               |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    And I follow "Site information"
-    Then the "Domains to search" field should contain "stagedagency.gov"
-    When I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
-    And I should see "Staged changes to your site successfully"
-    When I follow "View Staged"
-    Then I should see the page with affiliate stylesheet "basic_gray"
-    And I should not see the page with affiliate stylesheet "default"
-    And I should see "Sorry, no results found"
-    And I should see "Staged Search Results"
-    And I should see "Staged header"
-    And I should see "Staged footer"
 
   Scenario: Visiting the look and feel page on a site with one serp
     Given the following Affiliates exist:
@@ -663,8 +568,8 @@ Feature: Affiliate clients
 
   Scenario: Updating theme and saving it for preview
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | true          |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -678,8 +583,8 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel and saving it for preview on a site with legacy template
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | false         |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -751,8 +656,8 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel and make it live on a site with one serp
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | true          |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And no emails have been sent
     When I go to the affiliate admin page
@@ -806,8 +711,8 @@ Feature: Affiliate clients
 
   Scenario: Updating theme and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | uses_one_serp | theme   | staged_theme |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | true          | natural | gray         |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp | theme   | staged_theme |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          | natural | gray         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -822,8 +727,8 @@ Feature: Affiliate clients
 
    Scenario: Editing look and feel and make it live on a site with legacy template and existing header/footer
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | false         |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And no emails have been sent
     When I go to the affiliate admin page
@@ -862,8 +767,8 @@ Feature: Affiliate clients
 
     Scenario: Editing look and feel and make it live on a site with legacy template without existing header/footer
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | staged_domains | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | oldagency.gov  | Old header    | Old footer    | false         |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | staged_header | staged_footer | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header    | Old footer    | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And no emails have been sent
     When I go to the affiliate admin page
@@ -918,10 +823,10 @@ Feature: Affiliate clients
     And I should see "Description text color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Url link color should consist of a # character followed by 3 or 6 hexadecimal digits"
 
-  Scenario: Editing look and feel where staged/live domains are not sync and has_staged_content is false
+  Scenario: Editing look and feel where staged and live sites are out of sync and has_staged_content is false
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header_footer_css            | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_domains   | staged_header_footer_css     | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | .current h1 { color: blue; } | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | stagedagency.gov | .staged h1 { color: green; } | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | false              |
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header_footer_css            | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header_footer_css     | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | .current h1 { color: blue; } | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | .staged h1 { color: green; } | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | false              |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -945,10 +850,10 @@ Feature: Affiliate clients
     And I should see "Live header"
     And I should see "Live footer"
 
-  Scenario: Editing look and feel where staged/live domains are not sync and has_staged_content is true
+  Scenario: Editing look and feel where staged and live sites are out sync and has_staged_content is true
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header_footer_css            | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_domains   | staged_header_footer_css     | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | .current h1 { color: blue; } | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | stagedagency.gov | .staged h1 { color: green; } | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header_footer_css            | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header_footer_css     | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | .current h1 { color: blue; } | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | .staged h1 { color: green; } | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -968,14 +873,13 @@ Feature: Affiliate clients
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with affiliate stylesheet "default"
     And I should see "Staged Search Results"
-    And I should see "Sorry, no results found"
     And I should see "Staged header"
     And I should see "Staged footer"
 
   Scenario: Resetting style on a site with one serp
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_domains | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #007000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | oldagency.gov  | Old header    | Old footer    | true          |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #007000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -1004,8 +908,8 @@ Feature: Affiliate clients
 
   Scenario: Enabling/Disabling popular urls
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     | search_results_page_title               | domains          | header      | footer      | staged_domains  | staged_header    | staged_footer  | is_popular_links_enabled  |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | {Query} - {SiteName} Search Results     | whitehouse.gov  | Old header  | Old footer  | oldagency.gov    | Old header      | Old footer     | true                      |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains        | header     | footer     | staged_header | staged_footer | is_popular_links_enabled |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov | Old header | Old footer | Old header    | Old footer    | true                     |
     And the following popular URLs exist:
       | affiliate_name  | title         | url                 | rank  |
       | aff.gov         | popurl title  | http://popurl.gov/  | 1     |
@@ -1036,8 +940,8 @@ Feature: Affiliate clients
 
   Scenario: Cancelling staged changes from the Affiliate Center page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_domains   | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | stagedagency.gov | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I press "Cancel Changes"
@@ -1059,12 +963,7 @@ Feature: Affiliate clients
       | bar site     | bar.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | data.gov | Old header | Old footer | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "bar site" affiliate page
-    And I follow "Site information"
-    And I fill in "Domains to search" with "invalid.org"
-    And I press "Save for Preview"
-    Then I should see "Staged changes to your site successfully"
-    And I should see "Cancel Changes" button
-    When I follow "Look and feel"
+    And I follow "Look and feel"
     And I fill in the following:
       | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
       | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
@@ -1082,7 +981,6 @@ Feature: Affiliate clients
     And I should see "updated SERP title"
     And I should see "New header"
     And I should see "New footer"
-    And I should see "Sorry, no results found"
 
     When I go to the "bar site" affiliate page
     And I press "Cancel Changes"
@@ -1102,8 +1000,8 @@ Feature: Affiliate clients
 
   Scenario: Cancelling staged changes from the Preview page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_domains   | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
-      | aff site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | stagedagency.gov | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
+      | aff site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Preview"
@@ -1843,4 +1741,3 @@ Feature: Affiliate clients
     And I follow "URLs & Sitemaps"
     Then I should see "Uncrawled URLs (8)"
     And I should see "Crawled URLs (10)"
-

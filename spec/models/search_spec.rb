@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe Search do
-  fixtures :affiliates, :misspellings, :popular_image_queries
+  fixtures :affiliates, :misspellings, :popular_image_queries, :site_domains
 
   before do
     @affiliate = affiliates(:basic_affiliate)
@@ -201,31 +201,21 @@ describe Search do
 
       context "when affiliate has domains specified and user does not specify site: in search" do
         before do
-          @affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\r\n"))
+          @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
           @uriresult = URI::parse("http://localhost:3000/")
         end
 
         it "should use affiliate domains in query to Bing without passing ScopeID" do
           search = Search.new(@valid_options.merge(:affiliate => @affiliate))
-          URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(@uriresult)
+          URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Abar\.com%20OR%20site%3Afoo\.com\)$/).and_return(@uriresult)
           search.run
-        end
-
-        context "when the domains are separated by only '\\n'" do
-          before do
-            @affiliate.domains = %w(         foo.com bar.com         ).join("\n")
-          end
-
-          it "should split the domains the same way" do
-            search = Search.new(@valid_options.merge(:affiliate => @affiliate))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Afoo\.com%20OR%20site%3Abar\.com\)$/).and_return(@uriresult)
-            search.run
-          end
         end
 
         context "when there are so many domains that the overall query exceeds Bing's limit, generating an error" do
           before do
-            @affiliate.domains = "a10001".upto("a10100").collect { |x| "#{x}.gov" }.join("\n")
+            site_domain_hash = Hash[*"a10001".upto("a10100").collect { |x| ["#{x}.gov", nil] }.flatten]
+            site_domain_hash
+            @affiliate.add_site_domains(site_domain_hash)
           end
 
           it "should use a subset of the affiliate's domains (order is unimportant) up to the predetermined limit, accounting for URI encoding" do
@@ -242,7 +232,7 @@ describe Search do
 
           it "should use the scope id and any domains associated with the affiliate" do
             search = Search.new(@valid_options.merge(:affiliate => @affiliate))
-            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass%20OR%20site%3Afoo.com%20OR%20site%3Abar.com\)$/).and_return(@uriresult)
+            URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass%20OR%20site%3Abar.com%20OR%20site%3Afoo.com\)$/).and_return(@uriresult)
             search.run
           end
         end
@@ -250,7 +240,7 @@ describe Search do
 
       context "when affiliate has domains specified but user specifies site: in search" do
         before do
-          @affiliate = Affiliate.new(:domains => %w(foo.com bar.com).join("\n"))
+          @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
           @uriresult = URI::parse("http://localhost:3000/")
         end
 
@@ -274,7 +264,7 @@ describe Search do
       end
 
       context "when affiliate has more than one domain specified and sitelimit contains one matching domain" do
-        let(:affiliate) { mock('affiliate', :domains => %w(foo.com bar.com).join("\r\n"), :scope_ids => nil, :scope_ids_as_array => []) }
+        let(:affiliate) { mock('affiliate', :scope_ids => nil, :scope_ids_as_array => []) }
         let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'www.foo.com')) }
 
         before do
@@ -295,15 +285,16 @@ describe Search do
         let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'doesnotexist.gov')) }
 
         before do
+          affiliate.should_receive(:domains_as_array).twice.and_return(%w( bar.com foo.com ))
           affiliate.should_receive(:get_matching_domain).with("doesnotexist.gov").and_return(nil)
           uri_result = URI::parse("http://localhost:3000/")
-          URI.should_receive(:parse).with(/#{Regexp.escape("(government)%20(site%3Afoo.com%20OR%20site%3Abar.com)")}/).and_return(uri_result)
+          URI.should_receive(:parse).with(/#{Regexp.escape("(government)%20(site%3Abar.com%20OR%20site%3Afoo.com)")}/).and_return(uri_result)
           search.run
         end
 
         subject { search }
         its(:query) { should == 'government' }
-        its(:formatted_query) { should == '(government) (site:foo.com OR site:bar.com)' }
+        its(:formatted_query) { should == '(government) (site:bar.com OR site:foo.com)' }
         its(:matching_site_limit) { should be_blank }
       end
 

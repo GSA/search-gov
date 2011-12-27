@@ -1,0 +1,10 @@
+= content_for :title do
+  Add a new domain -
+= affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Add a new domain"])
+%h1 Add a new domain
+.add-new-entry
+  = form_for([@affiliate, @site_domain], :html => { :multipart => true }) do |f|
+    = render :partial => 'form', :locals => { :form => f }
+    = f.submit "Add", :class => 'submit'
+    = link_to "Cancel", affiliate_site_domains_path(@affiliate), :class => 'cancel'
+

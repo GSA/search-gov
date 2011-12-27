@@ -326,12 +326,12 @@ class Search
     return "site:#{@matching_site_limit}" unless @matching_site_limit.blank?
     remaining_chars = QUERY_STRING_ALLOCATION - query_plus_locale.length
     domains, delimiter = [], " OR "
-    affiliate.domains.split.each do |site|
+    affiliate.domains_as_array.each do |site|
       site_str = "site:#{site}"
       encoded_str = URI.escape(site_str + delimiter, URI_REGEX)
       break if (remaining_chars -= encoded_str.length) < 0
       domains << site_str
-    end if affiliate.domains
+    end unless affiliate.domains_as_array.blank?
     "#{domains.join(delimiter)}"
   end
 

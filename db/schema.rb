@@ -581,6 +581,16 @@ ActiveRecord::Schema.define(:version => 20111231170242) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
+  create_table "site_domains", :force => true do |t|
+    t.integer  "affiliate_id", :null => false
+    t.string   "site_name",    :null => false
+    t.string   "domain",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "site_domains", ["affiliate_id"], :name => "index_site_domains_on_affiliate_id"
+
   create_table "site_pages", :force => true do |t|
     t.string   "url_slug"
     t.string   "title"

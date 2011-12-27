@@ -31,8 +31,6 @@ Given /^the following Affiliates exist:$/ do |table|
       theme = nil
       staged_theme = nil
     end
-    domains = hash[:domains].split(',').join("\n") unless hash[:domains].blank?
-    staged_domains = hash[:staged_domains].split(',').join("\n") unless hash[:staged_domains].blank?
 
     css_properties = ActiveSupport::OrderedHash.new
     Affiliate::DEFAULT_CSS_PROPERTIES.keys.each do |css_property|
@@ -42,12 +40,10 @@ Given /^the following Affiliates exist:$/ do |table|
     affiliate = Affiliate.new(
       :display_name => hash["display_name"],
       :name => hash["name"],
-      :domains => domains,
       :affiliate_template_id => affiliate_template.nil? ? nil : affiliate_template.id,
       :header_footer_css => hash["header_footer_css"],
       :header => hash["header"],
       :footer => hash["footer"],
-      :staged_domains => staged_domains,
       :staged_affiliate_template_id => staged_affiliate_template.nil? ? nil : staged_affiliate_template.id,
       :staged_header_footer_css => hash["staged_header_footer_css"],
       :staged_header => hash["staged_header"],
@@ -75,6 +71,8 @@ Given /^the following Affiliates exist:$/ do |table|
     affiliate.uses_one_serp = hash[:uses_one_serp] || false
     affiliate.save!
     affiliate.users << user
+
+    hash[:domains].split(',').each { |domain| affiliate.site_domains.create!(:domain => domain) } unless hash[:domains].blank?
   end
 end
 

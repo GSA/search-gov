@@ -74,6 +74,12 @@ UsasearchRails3::Application.routes.draw do
     resources :excluded_urls, :controller => "affiliates/excluded_urls", :only => [:index, :create, :destroy]
     resources :sitemaps, :controller => "affiliates/sitemaps", :only => [:index, :new, :create, :destroy]
     resources :top_searches, :controller => "affiliates/top_searches", :only => [:index, :create]
+    resources :site_domains, :controller => "affiliates/site_domains" do
+      collection do
+        get :bulk_new
+        post :upload
+      end
+    end
   end
   get '/search' => 'searches#index', :as => :search
   get '/search/advanced' => 'searches#advanced', :as => :advanced_search

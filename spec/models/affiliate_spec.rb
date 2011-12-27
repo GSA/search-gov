@@ -6,7 +6,6 @@ describe Affiliate do
   before(:each) do
     @valid_create_attributes = {
       :display_name => "My Awesome Site",
-      :domains => "someaffiliate.gov",
       :website => "http://www.someaffiliate.gov",
       :header => "<table><tr><td>html layout from 1998</td></tr></table>",
       :footer => "<center>gasp</center>",
@@ -37,6 +36,7 @@ describe Affiliate do
     it { should have_many(:popular_urls).dependent(:destroy) }
     it { should have_many(:featured_collections).dependent(:destroy) }
     it { should have_many(:rss_feeds).dependent(:destroy) }
+    it { should have_many(:site_domains).dependent(:destroy)}
     it { should belong_to :affiliate_template }
     it { should belong_to :staged_affiliate_template }
     it { should_not allow_mass_assignment_of(:uses_one_serp) }
@@ -172,8 +172,7 @@ describe Affiliate do
                                          'url_link_color' => '#555' } }
 
       before do
-        @update_params = { :staged_domains => "updated.domain.gov",
-                           :staged_header_footer_css => ".staged h1 { color: blue; }",
+        @update_params = { :staged_header_footer_css => ".staged h1 { color: blue; }",
                            :staged_header => "<span>header</span>",
                            :staged_footer => "<span>footer</span>",
                            :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
@@ -190,7 +189,6 @@ describe Affiliate do
 
       it "should update staged attributes" do
         affiliate.update_attributes_for_staging(@update_params).should be_true
-        affiliate.staged_domains.should == @update_params[:staged_domains]
         affiliate.staged_header_footer_css.should == @update_params[:staged_header_footer_css]
         affiliate.staged_header.should == @update_params[:staged_header]
         affiliate.staged_footer.should == @update_params[:staged_footer]
@@ -246,8 +244,7 @@ describe Affiliate do
       let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
 
       before do
-        @update_params = {:staged_domains => "updated.domain.gov",
-                          :staged_header_footer_css => ".staged h1 { color: blue; }",
+        @update_params = {:staged_header_footer_css => ".staged h1 { color: blue; }",
                           :staged_header => "<span>header</span>",
                           :staged_footer => "<span>footer</span>",
                           :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
@@ -271,7 +268,6 @@ describe Affiliate do
 
       it "should update current attributes" do
         affiliate.update_attributes_for_current(@update_params).should be_true
-        affiliate.domains.should == @update_params[:staged_domains]
         affiliate.header_footer_css.should == @update_params[:staged_header_footer_css]
         affiliate.header.should == @update_params[:staged_header]
         affiliate.footer.should == @update_params[:staged_footer]
@@ -279,7 +275,6 @@ describe Affiliate do
         affiliate.search_results_page_title.should == @update_params[:staged_search_results_page_title]
         affiliate.theme.should == @update_params[:staged_theme]
         affiliate.css_properties.should == @update_params[:staged_css_properties]
-        affiliate.staged_domains.should == @update_params[:staged_domains]
         affiliate.staged_header_footer_css.should == @update_params[:staged_header_footer_css]
         affiliate.staged_header.should == @update_params[:staged_header]
         affiliate.staged_footer.should == @update_params[:staged_footer]
@@ -396,54 +391,7 @@ describe Affiliate do
       Affiliate.find(affiliate.id).affiliate_template.should == affiliate_templates(:default)
     end
 
-    context "when input domains is nil" do
-      it "should return nil" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => nil))
-        affiliate.staged_domains.should be_nil
-      end
-    end
 
-    context "when input domains have leading http(s) protocols" do
-      it "should delete leading http(s) protocols from domains" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "http://foo.gov\nbar.gov/somepage.html\nhttps://blat.gov/somedir"))
-        affiliate.staged_domains.should == "foo.gov\nblat.gov/somedir\nbar.gov/somepage.html"
-      end
-    end
-
-    context "when input domains have blank/whitespace" do
-      it "should delete blank/whitespace from domains" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "do.gov\n\n\n bar.gov  \nblat.gov"))
-        affiliate.staged_domains.should == "do.gov\nbar.gov\nblat.gov"
-      end
-    end
-
-    context "when input domains have dupes" do
-      it "should delete dupes from domains" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "foo.gov\nfoo.gov"))
-        affiliate.staged_domains.should == "foo.gov"
-      end
-    end
-
-    context "when there is just one input domain" do
-      it "should return that input domain" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "foo.gov"))
-        affiliate.staged_domains.should == "foo.gov"
-      end
-    end
-
-    context "when input domains don't look like domains" do
-      it "should filter them out" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "foo.gov\nsomepage.html\nwhatisthis?\nbar.gov/somedir/"))
-        affiliate.staged_domains.should == "foo.gov\nbar.gov/somedir/"
-      end
-    end
-
-    context "when one input domain is covered by another" do
-      it "should filter it out" do
-        affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_domains => "blat.gov\nblat.gov/s.html\nbar.gov/somedir/\nbar.gov\nwww.bar.gov\nxxbar.gov"))
-        affiliate.staged_domains.should == "bar.gov\nblat.gov\nxxbar.gov"
-      end
-    end
 
   end
 
@@ -520,8 +468,7 @@ describe Affiliate do
 
   describe "#staging_attributes" do
     let(:create_staged_attributes) {
-      { :staged_domains => 'agency.gov',
-        :staged_header_footer_css => ".staged h1 { color: blue; }",
+      { :staged_header_footer_css => ".staged h1 { color: blue; }",
         :staged_header => '<h1>staged header</h1>',
         :staged_footer => '<h1>staged footer</h1>',
         :staged_affiliate_template => affiliate_templates(:basic_gray),
@@ -539,7 +486,7 @@ describe Affiliate do
 
     context "when initialized" do
       it "should return all staging attributes" do
-        [:staged_domains, :staged_header_footer_css, :staged_header, :staged_footer,
+        [:staged_header_footer_css, :staged_header, :staged_footer,
          :staged_affiliate_template_id, :staged_search_results_page_title,
          :staged_favicon_url, :staged_external_css_url, :staged_theme, :staged_css_properties].each do |key|
           affiliate.staging_attributes.should include(key)
@@ -559,8 +506,7 @@ describe Affiliate do
                                     'url_link_color' => '#555' }.to_json }
 
     before do
-      @update_params = { :staged_domains => "updated.domain.gov",
-                         :staged_header_footer_css => ".staged h1 { color: blue; }",
+      @update_params = { :staged_header_footer_css => ".staged h1 { color: blue; }",
                          :staged_header => "<span>header</span>",
                          :staged_footer => "<span>footer</span>",
                          :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
@@ -574,7 +520,6 @@ describe Affiliate do
 
     it "should overwrite all staged attributes with non staged attributes" do
       affiliate.cancel_staged_changes
-      affiliate.staged_domains.should_not == @update_params[:staged_domains]
       affiliate.staged_header_footer_css.should_not == @update_params[:staged_header_footer_css]
       affiliate.staged_header.should_not == @update_params[:staged_header]
       affiliate.staged_footer.should_not == @update_params[:staged_footer]
@@ -623,7 +568,8 @@ describe Affiliate do
 
   describe "#domains_as_array" do
     before do
-      @affiliate = Affiliate.new(:domains => "domain.com\nanother.domain.com")
+      @affiliate = Affiliate.create!(@valid_create_attributes)
+      @affiliate.add_site_domains('one.domain.com' => nil, 'two.domain.com' => nil)
     end
 
     it "should return an array" do
@@ -632,13 +578,12 @@ describe Affiliate do
 
     it "should have two entries split on line break" do
       @affiliate.domains_as_array.size.should == 2
-      @affiliate.domains_as_array.first.should == "domain.com"
-      @affiliate.domains_as_array.last.should == "another.domain.com"
+      @affiliate.domains_as_array.should == %w( one.domain.com two.domain.com )
     end
 
     context "when domains is nil" do
       before do
-        @affiliate.domains = nil
+        @affiliate = Affiliate.create!(@valid_create_attributes)
       end
 
       it "should not error when called, and return empty" do
@@ -648,32 +593,36 @@ describe Affiliate do
   end
 
   describe "#has_multiple_domains?" do
+    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+
     context "when Affiliate has more than 1 domain" do
-      let(:affiliate) { Affiliate.new(:domains => "   foo.com\n  bar.com") }
-      subject { affiliate }
-      its(:has_multiple_domains?) { should be_true }
+      before do
+        affiliate.add_site_domains('foo.gov' => nil, 'bar.gov' => nil)
+      end
+
+      specify { affiliate.should have_multiple_domains }
     end
 
     context "when Affiliate has no domain" do
-      let(:affiliate) { Affiliate.new }
-      subject { affiliate }
-      its(:has_multiple_domains?) { should be_false }
+      specify { affiliate.should_not have_multiple_domains }
     end
 
     context "when Affiliate has 1 domain" do
-      let(:affiliate) { Affiliate.new(:domains => "  foo.com \n\n") }
-      subject { affiliate }
-      its(:has_multiple_domains?) { should be_false }
+      before do
+        affiliate.add_site_domains('foo.gov' => nil)
+      end
+      specify { affiliate.should_not have_multiple_domains }
     end
   end
 
   describe "#get_matching_domain" do
-    let(:affiliate) { Affiliate.new(:domains => "   foo.com\n  bar.com") }
+    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
     let(:url_within_domain) { "http://www.bar.com/blogs/1" }
     let(:url_outside_domain) { "http://www.outsider.com/blogs/1" }
 
     context "when locale is :en" do
       before do
+        affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
         I18n.stub(:locale).and_return(:en)
       end
 
@@ -766,6 +715,112 @@ describe Affiliate do
 
       it "should return an empty array" do
         @affiliate.scope_ids_as_array.should == []
+      end
+    end
+  end
+
+  describe "#add_site_domains" do
+    let(:affiliate) { affiliate = Affiliate.create!(@valid_create_attributes) }
+
+    context "when input domains have leading http(s) protocols" do
+      it "should delete leading http(s) protocols from domains" do
+        site_domain_hash = ActiveSupport::OrderedHash["http://foo.gov", nil, "bar.gov/somepage.html", nil, "https://blat.gov/somedir", nil]
+        added_site_domains = affiliate.add_site_domains(site_domain_hash)
+
+        affiliate.site_domains(true).should == added_site_domains
+        affiliate.site_domains[0].domain.should == "foo.gov"
+        affiliate.site_domains[1].domain.should == "blat.gov/somedir"
+        affiliate.site_domains[2].domain.should == "bar.gov/somepage.html"
+      end
+    end
+
+    context "when input domains have blank/whitespace" do
+      it "should delete blank/whitespace from domains" do
+        site_domain_hash = ActiveSupport::OrderedHash[" do.gov ", nil, " bar.gov", nil, "blat.gov ", nil]
+        added_site_domains = affiliate.add_site_domains(site_domain_hash)
+
+        affiliate.site_domains(true).should == added_site_domains
+        affiliate.site_domains[0].domain.should == "do.gov"
+        affiliate.site_domains[1].domain.should == "bar.gov"
+        affiliate.site_domains[2].domain.should == "blat.gov"
+      end
+    end
+
+    context "when input domains have dupes" do
+      before do
+        affiliate.add_site_domains("foo.gov" => nil)
+
+        affiliate.site_domains(true).count.should == 1
+        affiliate.site_domains.first.domain.should == 'foo.gov'
+      end
+
+      it "should delete dupes from domains" do
+        affiliate.add_site_domains('foo.gov' => nil).should be_empty
+        affiliate.site_domains(true).count.should == 1
+        affiliate.site_domains.first.domain.should == 'foo.gov'
+      end
+    end
+
+    context "when input domains don't look like domains" do
+      it "should filter them out" do
+        site_domain_hash = ActiveSupport::OrderedHash['foo.gov', nil, 'somepage.html', nil, 'whatisthis?', nil, 'bar.gov/somedir/', nil]
+        added_site_domains = affiliate.add_site_domains(site_domain_hash)
+
+        affiliate.site_domains(true).should == added_site_domains
+        affiliate.site_domains.count.should == 2
+        affiliate.site_domains[0].domain.should == 'foo.gov'
+        affiliate.site_domains[1].domain.should == 'bar.gov/somedir/'
+      end
+    end
+
+    context "when one input domain is covered by another" do
+      it "should filter it out" do
+        site_domain_hash = ActiveSupport::OrderedHash['blat.gov', nil, 'blat.gov/s.html', nil, 'bar.gov/somedir/', nil, 'bar.gov', nil, 'www.bar.gov', nil, 'xxbar.gov', nil]
+        added_site_domains = affiliate.add_site_domains(site_domain_hash)
+
+        affiliate.site_domains(true).should == added_site_domains
+        affiliate.site_domains.count.should == 3
+        affiliate.site_domains[0].domain.should == 'bar.gov'
+        affiliate.site_domains[1].domain.should == 'blat.gov'
+        affiliate.site_domains[2].domain.should == 'xxbar.gov'
+      end
+    end
+
+    context "when existing domains are covered by new ones" do
+      let(:domains) { %w( a.foo.gov b.foo.gov y.bar.gov z.bar.gov c.foo.gov agency.gov ) }
+
+      before do
+        site_domain_hash = Hash[*domains.collect { |domain| [domain, nil] }.flatten]
+        affiliate.add_site_domains(site_domain_hash).count.should == domains.count
+        affiliate.site_domains(true).count.should == 6
+      end
+
+      it "should filter out existing domains" do
+        added_site_domains = affiliate.add_site_domains({ 'foo.gov' => nil, 'bar.gov' => nil })
+
+        added_site_domains.count.should == 2
+        affiliate.site_domains(true).count.should == 3
+        affiliate.site_domains[0].domain.should == 'agency.gov'
+        affiliate.site_domains[1].domain.should == 'bar.gov'
+        affiliate.site_domains[2].domain.should == 'foo.gov'
+      end
+    end
+  end
+
+  describe "#update_site_domain" do
+    let(:affiliate) { affiliate = Affiliate.create!(@valid_create_attributes) }
+
+    context "when existing domain is covered by new ones" do
+      before do
+        affiliate.add_site_domains({ 'www1.usa.gov' => nil, 'www2.usa.gov' => nil, 'www.gsa.gov' => nil })
+        affiliate.site_domains(true).count.should == 3
+        site_domain = affiliate.site_domains.find_by_domain('www.gsa.gov')
+        affiliate.update_site_domain(site_domain, { :domain => 'usa.gov', :site_name => nil }).should be_true
+      end
+
+      it "should filter out existing domains" do
+        affiliate.site_domains(true).count.should == 1
+        affiliate.site_domains.first.domain.should == 'usa.gov'
       end
     end
   end

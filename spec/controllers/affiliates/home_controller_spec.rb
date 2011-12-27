@@ -131,7 +131,6 @@ describe Affiliates::HomeController do
 
         it "should sync staged attributes on @affiliate" do
           get :edit_site_information, :id => @affiliate.id
-          assigns[:affiliate].staged_domains.should == assigns[:affiliate].domains
           assigns[:affiliate].staged_header.should == assigns[:affiliate].header
           assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
           assigns[:affiliate].staged_affiliate_template_id.should == assigns[:affiliate].affiliate_template_id
@@ -284,7 +283,6 @@ describe Affiliates::HomeController do
 
       it "should sync staged attributes on @affiliate" do
         get :edit_look_and_feel, :id => affiliates(:basic_affiliate).id
-        assigns[:affiliate].staged_domains.should == assigns[:affiliate].domains
         assigns[:affiliate].staged_header.should == assigns[:affiliate].header
         assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
         assigns[:affiliate].staged_affiliate_template_id.should == assigns[:affiliate].affiliate_template_id
@@ -635,7 +633,6 @@ describe Affiliates::HomeController do
       end
 
       it "should update @affiliate attributes for current" do
-        assigns[:affiliate].staged_domains.should == "nga.mil\nusa.gov\nnoaa.gov"
         assigns[:affiliate].staged_header.should == assigns[:affiliate].header
         assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
         assigns[:affiliate].staged_affiliate_template_id.should == assigns[:affiliate].affiliate_template_id
