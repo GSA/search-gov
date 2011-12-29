@@ -4,5 +4,7 @@ class Admin::AffiliateScopeIdsController < Admin::AdminController
     config.list.sorting = { :display_name => :asc }
     config.update.columns = [:scope_ids]
     config.columns[:scope_ids].description = "Enter one or more scope ids separated by commas."
+    config.actions.exclude :create, :delete
+
   end
 end
