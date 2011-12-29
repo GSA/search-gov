@@ -750,6 +750,16 @@ describe Affiliate do
       end
     end
     
+    context "when the scope_ids have spaces near the commas" do
+      before do
+        @affiliate = Affiliate.new(:scope_ids => "Scope1, Scope2, Scope3")
+      end
+      
+      it "should strip out whitespace" do
+        @affiliate.scope_ids_as_array.should == ['Scope1', 'Scope2', 'Scope3']
+      end
+    end
+    
     context "when an affiliate has a nil scope_ids attribute" do
       before do
         @affiliate = Affiliate.new

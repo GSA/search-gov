@@ -88,7 +88,7 @@ class Affiliate < ActiveRecord::Base
   end
   
   def scope_ids_as_array
-    @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(','))
+    @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each{|scope| scope.strip!})
   end
 
   def has_multiple_domains?
