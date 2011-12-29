@@ -240,7 +240,7 @@ describe Search do
             @affiliate.scope_ids = "PatentClass"
           end
           
-          it "should use the scope id with the default scope and any domains" do
+          it "should use the scope id and any domains associated with the affiliate" do
             search = Search.new(@valid_options.merge(:affiliate => @affiliate))
             URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass%20OR%20site%3Afoo.com%20OR%20site%3Abar.com\)$/).and_return(@uriresult)
             search.run
@@ -265,7 +265,7 @@ describe Search do
             @affiliate.scope_ids = "PatentClass"
           end
           
-          it "should use the scope id with the default scope and domains" do
+          it "should use the query along with the scope id" do
             search = Search.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov"))
             URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3APatentClass\)$/).and_return @uriresult
             search.run
@@ -273,7 +273,7 @@ describe Search do
         end
       end
 
-      context "when affiliate has more than one domains specified and sitelimit contains one matching domain" do
+      context "when affiliate has more than one domain specified and sitelimit contains one matching domain" do
         let(:affiliate) { mock('affiliate', :domains => %w(foo.com bar.com).join("\r\n"), :scope_ids => nil, :scope_ids_as_array => []) }
         let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'www.foo.com')) }
 
@@ -290,7 +290,7 @@ describe Search do
         its(:matching_site_limit) { should == 'www.foo.com' }
       end
 
-      context "when affiliate has more than one domains specified and sitelimit does not contain matching domain" do
+      context "when affiliate has more than one domain specified and sitelimit does not contain matching domain" do
         let(:affiliate) { mock('affiliate', :domains => %w(foo.com bar.com).join("\r\n"), :scope_ids => nil, :scope_ids_as_array => []) }
         let(:search) { Search.new(@valid_options.merge(:affiliate => affiliate, :site_limits => 'doesnotexist.gov')) }
 
@@ -319,7 +319,7 @@ describe Search do
         end
 
         context "when a scope id is provided" do
-          it "should use the scope id with the default scope" do
+          it "should use the query with the scope provided" do
             search = Search.new(@valid_options.merge(:affiliate => Affiliate.new(:scope_ids => 'PatentClass')))
             URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass\)$/).and_return(@uriresult)
             search.run
