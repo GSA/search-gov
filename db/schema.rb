@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20111227193551) do
     t.text     "staged_header_footer_sass"
     t.text     "header_footer_css"
     t.text     "staged_header_footer_css"
+    t.text     "scope_ids"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

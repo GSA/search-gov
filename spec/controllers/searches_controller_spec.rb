@@ -100,18 +100,6 @@ describe SearchesController do
       @search.should_not be_nil
       @search.results.should_not be_nil
     end
-
-    context "when a scope id is provided" do
-      before do
-        get :index, :query => 'obama', :scope_id => 'Scope'
-      end
-
-      it "should set the scope id parameter in the search options and the search, but not set a variable to be passed to the view" do
-        assigns[:search_options][:scope_id].should == 'Scope'
-        assigns[:search].scope_id.should == 'Scope'
-        assigns[:scope_id].should be_nil
-      end
-    end
   end
 
   context "when handling a valid affiliate search request" do

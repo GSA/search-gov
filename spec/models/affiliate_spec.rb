@@ -738,4 +738,26 @@ describe Affiliate do
       specify { affiliate.staged_css_property_hash.should == Affiliate::THEMES[:elegant].merge(staged_css_property_hash) }
     end
   end
+  
+  describe "scope_ids_as_array" do
+    context "when an affiliate has a non-null scope_ids attribute" do
+      before do
+        @affiliate = Affiliate.new(:scope_ids => 'Scope1,Scope2,Scope3')
+      end
+      
+      it "should return the scopes as an array" do
+        @affiliate.scope_ids_as_array.should == ['Scope1', 'Scope2', 'Scope3']
+      end
+    end
+    
+    context "when an affiliate has a nil scope_ids attribute" do
+      before do
+        @affiliate = Affiliate.new
+      end
+      
+      it "should return an empty array" do
+        @affiliate.scope_ids_as_array.should == []
+      end
+    end
+  end
 end

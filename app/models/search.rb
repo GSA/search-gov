@@ -16,7 +16,6 @@ class Search
   VALID_FILTER_VALUES = %w{off moderate strict}
   DEFAULT_FILTER_SETTING = 'moderate'
   URI_REGEX = Regexp.new("[^#{URI::PATTERN::UNRESERVED}]")
-  VALID_SCOPES = %w{ usagovaffLA usagovaffNC usagovaffusbr PatentClass usagovUSPTOOG1995 usagovUSPTOOG1996 usagovUSPTOOG1997 usagovUSPTOOG1998 usagovUSPTOOG1999 usagovUSPTOOG2000 usagovUSPTOOG2001 usagovUSPTOOG2002 usagovUSPTOOG2003 usagovUSPTOOG2004 usagovUSPTOOG2005 usagovUSPTOOG2006 usagovUSPTOOG2007 usagovUSPTOOG2008 usagovUSPTOOG2009 usagovUSPTOOG2010 usagovUSPTOOG2011 USPTOMPEP USPTOTMEP USPTOUSPC usagovaffwheo usagovaffwhmemo usagovaffwhproc usagovaffwhvisitor usagovaffwhforms usagovaffwhrec2012 usagovaffwhrec2011 usagovaffwhrec2010 usagovaffwhrec2009 usagovaffwhceq usagovaffwhnsc usagovaffwhoa usagovaffwhdpc usagovaffwhonap usagovaffwhofbnp usagovaffwhsicp usagovaffwhnec }
   QUERY_STRING_ALLOCATION = 1800
 
   attr_reader :query,
@@ -40,7 +39,6 @@ class Search
               :offset,
               :filter_setting,
               :fedstates,
-              :scope_id,
               :queried_at_seconds,
               :enable_highlighting,
               :agency,
@@ -63,7 +61,6 @@ class Search
     @results_per_page = [@results_per_page, MAX_PER_PAGE].min
     @offset = @page * @results_per_page
     @fedstates = options[:fedstates] || nil
-    @scope_id = options[:scope_id] || nil
     @filter_setting = VALID_FILTER_VALUES.include?(options[:filter] || "invalid adult filter") ? options[:filter] : DEFAULT_FILTER_SETTING
     @results, @related_search = [], []
     @queried_at_seconds = Time.now.to_i
@@ -290,14 +287,6 @@ class Search
     @site_limits.strip if I18n.locale == :en and @affiliate and @site_limits.present? and @site_limits.split.size == 1 and @affiliate.get_matching_domain(@site_limits).present?
   end
 
-  def using_affiliate_scope?
-    affiliate && ((affiliate.domains.present? && query !~ /site:/) || valid_scope_id?)
-  end
-
-  def valid_scope_id?
-    self.scope_id.present? && VALID_SCOPES.include?(self.scope_id)
-  end
-
   def english_locale?
     I18n.locale.to_s == 'en'
   end
@@ -313,7 +302,7 @@ class Search
 
   def scope
     if affiliate
-      generate_affiliate_scope if using_affiliate_scope?
+      generate_affiliate_scope
     else
       if self.fedstates && !self.fedstates.empty? && self.fedstates != 'all'
         "(scopeid:usagov#{self.fedstates})"
@@ -324,16 +313,20 @@ class Search
   end
 
   def generate_affiliate_scope
-    valid_scope_id? ? "(#{scoped_affiliate_query})" : "(#{fill_domains_to_remainder})"
+    domains = fill_domains_to_remainder unless query =~ /site:/
+    scopes = affiliate.scope_ids_as_array.collect{|scope| "scopeid:" + scope}.join(" OR ")
+    affiliate_scope = ""
+    affiliate_scope = "(" unless scopes.blank? and domains.blank?
+    affiliate_scope += scopes
+    affiliate_scope += " OR " if affiliate_scope.length > 1 and domains.present?
+    affiliate_scope += domains unless domains.blank?
+    affiliate_scope += ")" unless scopes.blank? and domains.blank?
+    affiliate_scope += " #{generate_default_scope}" if (query =~ /site:/ and scopes.blank?) or (scopes.blank? and domains.blank?)
+    affiliate_scope.strip
   end
 
   def generate_default_scope
     DEFAULT_SCOPE
-  end
-
-  def scoped_affiliate_query
-    domains = fill_domains_to_remainder
-    "scopeid:#{self.scope_id}#{" OR " + domains if domains.any?}"
   end
 
   def query_plus_locale

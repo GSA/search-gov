@@ -129,6 +129,7 @@ UsasearchRails3::Application.routes.draw do
     resources :search_modules do as_routes end
     resources :excluded_domains do as_routes end
     resources :featured_collections
+    resources :affiliate_scope_ids do as_routes end
   end
 
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
