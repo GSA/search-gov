@@ -239,7 +239,7 @@ describe Search do
           before do
             @affiliate.scope_ids = "PatentClass"
           end
-          
+
           it "should use the scope id and any domains associated with the affiliate" do
             search = Search.new(@valid_options.merge(:affiliate => @affiliate))
             URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass%20OR%20site%3Afoo.com%20OR%20site%3Abar.com\)$/).and_return(@uriresult)
@@ -264,7 +264,7 @@ describe Search do
           before do
             @affiliate.scope_ids = "PatentClass"
           end
-          
+
           it "should use the query along with the scope id" do
             search = Search.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov"))
             URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3APatentClass\)$/).and_return @uriresult
@@ -1252,6 +1252,15 @@ describe Search do
         search.results.count.should == 4
         search.indexed_documents.count.should == 1
         search.indexed_documents.first.instance.url.should == 'http://blog.usa.gov/post/7054661537/1-usa-gov-open-data-and-hack-day'
+      end
+
+      context "when one of those URLs is unparsable because it's invalid" do
+        it "should just leave it in there" do
+          search = Search.new(@valid_options.merge(:query => 'USA.gov blog', :affiliate => @affiliate, :page => 0))
+          search.should_receive(:process_results).and_return([{'title' => 'another one', 'unescapedUrl' => 'http://www.wsdot.wa.gov/acct/library/reports-studies/2010TransitPlan[1].pdf'}])
+          search.run
+          search.results.count.should == 1
+        end
       end
     end
 

@@ -314,7 +314,7 @@ class Search
 
   def generate_affiliate_scope
     domains = fill_domains_to_remainder unless query =~ /site:/
-    scopes = affiliate.scope_ids_as_array.collect{|scope| "scopeid:" + scope}.join(" OR ")
+    scopes = affiliate.scope_ids_as_array.collect { |scope| "scopeid:" + scope }.join(" OR ")
     affiliate_scope = ""
     affiliate_scope = "(" unless scopes.blank? and domains.blank?
     affiliate_scope += scopes
@@ -473,13 +473,17 @@ class Search
 
   def remove_bing_matches_from_indexed_documents
     @indexed_documents.delete_if do |indexed_document|
-      local_url_minus_slash = indexed_document.instance.url.sub(/\/$/, '')
-      local_request_uri = URI.parse(local_url_minus_slash).request_uri
-      local_title = indexed_document.instance.title || ''
-      @results.any? do |result|
-      bing_url_minus_slash = result['unescapedUrl'].sub(/\/$/, '')
-        (URI.parse(bing_url_minus_slash).request_uri == local_request_uri and local_title == result['title'].gsub(/\xEE\x80(\x80|\x81)/, '')) or
-          bing_url_minus_slash == local_url_minus_slash
+      begin
+        local_url_minus_slash = indexed_document.instance.url.sub(/\/$/, '')
+        local_request_uri = URI.parse(local_url_minus_slash).request_uri
+        local_title = indexed_document.instance.title || ''
+        @results.any? do |result|
+          bing_url_minus_slash = result['unescapedUrl'].sub(/\/$/, '')
+          (URI.parse(bing_url_minus_slash).request_uri == local_request_uri and local_title == result['title'].gsub(/\xEE\x80(\x80|\x81)/, '')) or
+            bing_url_minus_slash == local_url_minus_slash
+        end
+      rescue URI::InvalidURIError
+        false
       end
     end
   end
