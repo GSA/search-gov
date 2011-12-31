@@ -13,7 +13,6 @@
   %li=link_to("Government Forms", admin_gov_forms_path)
   - if @current_user.is_analyst_admin?
     %li=link_to("Query Grouping", analytics_query_groups_path)
-  %li=link_to("Calais Related Searches", admin_calais_related_searches_path)
   %li=link_to("Top Searches", admin_top_searches_path)
   %li=link_to("Top Forms", admin_top_forms_path)
   %li=link_to("Superfresh Urls", admin_superfresh_urls_path)

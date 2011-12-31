@@ -35,8 +35,7 @@ class NewsSearch
       @results = news_search.results
       @hits = news_search.hits
       @total = news_search.total
-      @related_search = CalaisRelatedSearch.related_search(@query, @affiliate)
-      @related_search_class = CalaisRelatedSearch.name
+      @related_search = SaytSuggestion.related_search(@query, @affiliate)
     end
     log_serp_impressions
     true
@@ -57,7 +56,7 @@ class NewsSearch
   def log_serp_impressions
     modules = []
     modules << "NEWS" unless @total.zero?
-    modules << "CREL" unless @related_search.nil? or @related_search.empty?
+    modules << "SREL" unless @related_search.nil? or @related_search.empty?
     QueryImpression.log(:news, @affiliate.name, @query, modules)
   end
 end

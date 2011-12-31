@@ -523,13 +523,12 @@ describe SearchesController do
   end
 
   describe "#news" do
-    fixtures :affiliates, :rss_feeds, :news_items, :calais_related_searches
+    fixtures :affiliates, :rss_feeds, :news_items
 
     let(:affiliate) { affiliates(:basic_affiliate) }
 
     before do
       NewsItem.reindex
-      CalaisRelatedSearch.reindex
     end
 
     it "should assign page title, vertical, form_path, and search members" do

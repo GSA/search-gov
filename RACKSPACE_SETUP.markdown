@@ -219,7 +219,7 @@ Verify it's working:
 
 ## Resque workers
 
-The cron machine should have 5 Resque processes ready to work through the Calais related search work queue.
+The cron machine should have some number of Resque processes ready to work through the various work queues.
 
 To see how many are there, run this from cron:
 

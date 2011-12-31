@@ -9,7 +9,6 @@ Feature:  Administration
     And I should see "Search.USA.gov Admin Center"
     And I should see "Users" within ".main"
     And I should see "Affiliates"
-    And I should see "Calais Related Searches"
     And I should see "SAYT Filters"
     And I should see "SAYT Suggestions Bulk Upload"
     And I should see "Search.USA.gov Best Bets: Text"

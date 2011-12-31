@@ -12,7 +12,6 @@ class Affiliate < ActiveRecord::Base
   has_many :boosted_contents, :dependent => :destroy
   has_many :sayt_suggestions, :dependent => :destroy
   has_many :superfresh_urls, :dependent => :destroy
-  has_many :calais_related_searches, :dependent => :destroy
   has_many :popular_urls, :dependent => :destroy
   has_many :featured_collections, :dependent => :destroy
   has_many :indexed_documents, :dependent => :destroy
@@ -86,7 +85,7 @@ class Affiliate < ActiveRecord::Base
   def domains_as_array
     @domains_as_array ||= (self.domains.nil? ? [] : self.domains.split)
   end
-  
+
   def scope_ids_as_array
     @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each{|scope| scope.strip!})
   end

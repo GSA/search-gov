@@ -1172,9 +1172,6 @@ Feature: Affiliate clients
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
       | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
-    And the following Calais Related Searches exist for affiliate "aff.gov":
-      | term    | related_terms             | locale |
-      | obama   | Some Unique Obama Term    | en     |
     And the following SAYT Suggestions exist for aff.gov:
     | phrase                 |
     | Some Unique Obama Term |

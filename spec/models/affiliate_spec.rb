@@ -34,7 +34,6 @@ describe Affiliate do
     it { should have_and_belong_to_many :users }
     it { should have_many :boosted_contents }
     it { should have_many :sayt_suggestions }
-    it { should have_many :calais_related_searches }
     it { should have_many(:popular_urls).dependent(:destroy) }
     it { should have_many(:featured_collections).dependent(:destroy) }
     it { should have_many(:rss_feeds).dependent(:destroy) }
@@ -738,33 +737,33 @@ describe Affiliate do
       specify { affiliate.staged_css_property_hash.should == Affiliate::THEMES[:elegant].merge(staged_css_property_hash) }
     end
   end
-  
+
   describe "scope_ids_as_array" do
     context "when an affiliate has a non-null scope_ids attribute" do
       before do
         @affiliate = Affiliate.new(:scope_ids => 'Scope1,Scope2,Scope3')
       end
-      
+
       it "should return the scopes as an array" do
         @affiliate.scope_ids_as_array.should == ['Scope1', 'Scope2', 'Scope3']
       end
     end
-    
+
     context "when the scope_ids have spaces near the commas" do
       before do
         @affiliate = Affiliate.new(:scope_ids => "Scope1, Scope2, Scope3")
       end
-      
+
       it "should strip out whitespace" do
         @affiliate.scope_ids_as_array.should == ['Scope1', 'Scope2', 'Scope3']
       end
     end
-    
+
     context "when an affiliate has a nil scope_ids attribute" do
       before do
         @affiliate = Affiliate.new
       end
-      
+
       it "should return an empty array" do
         @affiliate.scope_ids_as_array.should == []
       end

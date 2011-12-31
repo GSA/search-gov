@@ -55,11 +55,7 @@ Feature: Search
     Then I should not see "Respuestas para president de GobiernoUSA.gov"
 
   Scenario: Related Topics on English SERPs
-    Given the following Calais Related Searches exist:
-    | term    | related_terms             | locale |
-    | obama   | Some Unique Obama Term    | en     |
-    | el paso | el presidente mas guapo   | es     |
-    And the following SAYT Suggestions exist:
+    Given the following SAYT Suggestions exist:
     | phrase                 |
     | Some Unique Obama Term |
     | el paso term           |
@@ -74,11 +70,7 @@ Feature: Search
     Then I should not see "el presidente mas guapo"
 
   Scenario: Related Topics on Spanish SERPs
-    Given the following Calais Related Searches exist:
-    | term  | related_terms                   | locale |
-    | hello | some unique related term        | en     |
-    | obama | el presidente obama mas guapo   | es     |
-    And the following SAYT Suggestions exist:
+    Given the following SAYT Suggestions exist:
     | phrase                        |
     | el presidente obama mas guapo |
     | el paso term                  |

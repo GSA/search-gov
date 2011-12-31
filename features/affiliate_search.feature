@@ -28,9 +28,6 @@ Feature: Affiliate Search
     | link                             | title       | guid  | published_ago | description                  |
     | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
     | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
-    And the following Calais Related Searches exist for affiliate "bar.gov":
-      | term | related_terms            | locale |
-      | item | Some Unique item | en     |
     And the following SAYT Suggestions exist for bar.gov:
     | phrase                 |
     | Some Unique item |

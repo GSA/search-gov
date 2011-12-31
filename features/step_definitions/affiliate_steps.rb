@@ -138,15 +138,6 @@ Then /^affiliate SAYT suggestions for "([^\"]*)" should be disabled$/ do |affili
   page.body.should_not match("aid=#{affiliate.id}")
 end
 
-Given /^the following Calais Related Searches exist for affiliate "([^\"]*)":$/ do |affiliate_name, table|
-  affiliate = Affiliate.find_by_name affiliate_name
-  CalaisRelatedSearch.delete_all
-  table.hashes.each do |hash|
-    CalaisRelatedSearch.create!(:term => hash["term"], :related_terms => hash["related_terms"], :locale => hash["locale"], :affiliate => affiliate)
-  end
-  CalaisRelatedSearch.reindex
-end
-
 Then /^the "([^\"]*)" button should be checked$/ do |field|
   page.should have_selector "input[type='radio'][checked='checked'][id='#{field}']"
 end

@@ -30,7 +30,6 @@ class Search
               :endrecord,
               :images,
               :related_search,
-              :related_search_class,
               :spelling_suggestion,
               :boosted_contents,
               :faqs,
@@ -105,17 +104,7 @@ class Search
   end
 
   def related_search_results
-    if coin_toss_heads?
-      @related_search_class = CalaisRelatedSearch.name
-      CalaisRelatedSearch.related_search(@query, @affiliate)
-    else
-      @related_search_class = SaytSuggestion.name
-      SaytSuggestion.related_search(@query, @affiliate)
-    end
-  end
-
-  def coin_toss_heads?
-    rand(2).zero?
+    SaytSuggestion.related_search(@query, @affiliate)
   end
 
   def has_related_searches?
@@ -353,10 +342,7 @@ class Search
     modules << (self.class.to_s == "ImageSearch" ? "IMAG" : "BWEB") unless self.total.zero?
     modules << "IMAG" unless self.class.to_s == "ImageSearch" or self.extra_image_results.nil?
     modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
-    unless self.related_search.nil? or self.related_search.empty?
-      modules << "CREL" if @related_search_class == "CalaisRelatedSearch"
-      modules << "SREL" if @related_search_class == "SaytSuggestion"
-    end
+    modules << "SREL" unless self.related_search.nil? or self.related_search.empty?
     modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
     modules << "RECALL" unless self.recalls.nil?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111227193551) do
+ActiveRecord::Schema.define(:version => 20111231170242) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -155,18 +155,6 @@ ActiveRecord::Schema.define(:version => 20111227193551) do
   end
 
   add_index "boosted_contents", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"
-
-  create_table "calais_related_searches", :force => true do |t|
-    t.string   "term"
-    t.string   "related_terms",  :limit => 4096
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "locale",                         :default => "en",  :null => false
-    t.integer  "affiliate_id"
-    t.boolean  "gets_refreshed",                 :default => false, :null => false
-  end
-
-  add_index "calais_related_searches", ["affiliate_id", "term"], :name => "index_calais_related_searches_on_affiliate_id_and_term"
 
   create_table "daily_popular_query_groups", :force => true do |t|
     t.date    "day"

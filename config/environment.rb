@@ -10,6 +10,4 @@ AWS_ACCESS_KEY_ID = "***REMOVED***"
 AWS_SECRET_ACCESS_KEY = "***REMOVED***"
 AWS_BUCKET_NAME = "***REMOVED***"
 
-CALAIS_LICENSE_ID = 'v2yuue4bm3aqkd7w793f834b'
-
 CalendarDateSelect.format = :american

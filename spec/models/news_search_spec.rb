@@ -1,13 +1,12 @@
 require 'spec/spec_helper'
 
 describe NewsSearch do
-  fixtures :affiliates, :rss_feeds, :news_items, :calais_related_searches
+  fixtures :affiliates, :rss_feeds, :news_items
 
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   before do
     NewsItem.reindex
-    CalaisRelatedSearch.reindex
   end
 
   describe "#initialize(affiliate, options)" do
@@ -68,8 +67,9 @@ describe NewsSearch do
 
   describe "#run" do
     it "should log info about the query and module impressions" do
+      SaytSuggestion.stub!(:related_search).and_return %{some array}
       search = NewsSearch.new(affiliate, {"query" => 'element'})
-      QueryImpression.should_receive(:log).with(:news, affiliate.name, 'element', ["NEWS", 'CREL'])
+      QueryImpression.should_receive(:log).with(:news, affiliate.name, 'element', ["NEWS", 'SREL'])
       search.run
     end
 

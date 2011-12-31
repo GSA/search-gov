@@ -5,13 +5,6 @@ Given /^the following FAQs exist:$/ do |table|
   Sunspot.commit
 end
 
-Given /^the following Calais Related Searches exist:$/ do |table|
-  table.hashes.each do |hash|
-    CalaisRelatedSearch.create!(:term => hash["term"], :related_terms => hash["related_terms"], :locale => hash["locale"])
-  end
-  Sunspot.commit
-end
-
 Given /^the following Popular Image Query entries exist:$/ do |table|
   table.hashes.each do |hash|
     PopularImageQuery.create!(:query => hash[:query])

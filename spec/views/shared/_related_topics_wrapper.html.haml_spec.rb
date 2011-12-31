@@ -12,7 +12,6 @@ describe "shared/_related_topics_wrapper.html.haml" do
     before do
       @related_searches = ["first-1 keeps the hyphen", "second one is a string", "CIA gets downcased", "utilización de gafas del sol durante el tiempo"]
       @search.stub!(:related_search).and_return @related_searches
-      @search.stub!(:related_search_class).and_return "SaytSuggestion"
       @search.stub!(:has_related_searches?).and_return true
     end
 
@@ -47,7 +46,6 @@ describe "shared/_related_topics_wrapper.html.haml" do
     before do
       @related_searches = ["first-1 keeps the hyphen", "second one is a string", "CIA gets downcased", "utilización de gafas del sol durante el tiempo"]
       @search.stub!(:related_search).and_return @related_searches
-      @search.stub!(:related_search_class).and_return "SaytSuggestion"
       @search.stub!(:has_related_searches?).and_return true
       assign(:affiliate, affiliate)
       assign(:search_options, {:embedded => true} )
