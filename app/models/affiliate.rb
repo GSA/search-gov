@@ -27,9 +27,13 @@ class Affiliate < ActiveRecord::Base
   before_create :set_uses_one_serp
   before_save :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass
   before_validation :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
+  after_validation :update_error_keys
+  after_create :normalize_site_domains
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :uses_one_serp, :header_footer_sass, :staged_header_footer_sass
+
+  accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
@@ -224,13 +228,11 @@ class Affiliate < ActiveRecord::Base
   end
 
   def add_site_domains(site_domain_param_hash)
-    candidate_site_domains = []
-    site_domain_hash = Hash[*site_domains.collect { |site_domain| [site_domain.domain, site_domain] }.flatten]
+    site_domain_hash = existing_site_domain_hash
     transaction do
       site_domain_param_hash.each do |domain, site_name|
         site_domain = site_domains.build(:domain => domain, :site_name => site_name)
         if site_domain.valid?
-          candidate_site_domains << site_domain
           site_domain_hash[site_domain.domain] = site_domain
         end
       end
@@ -240,14 +242,11 @@ class Affiliate < ActiveRecord::Base
 
   def update_site_domain(site_domain, site_domain_attributes)
     transaction do
-      if site_domain.update_attributes(site_domain_attributes)
-        site_domain_hash = Hash[*site_domains(true).collect { |site_domain| [site_domain.domain, site_domain] }.flatten]
-        normalize_site_domains site_domain_hash
-      end
+      normalize_site_domains if site_domain.update_attributes(site_domain_attributes)
     end
   end
 
-  def normalize_site_domains(site_domain_hash)
+  def normalize_site_domains(site_domain_hash = existing_site_domain_hash)
     added_or_updated_site_domains = []
     domain_list = site_domain_hash.keys.sort { |a, b| a.length == b.length ? (a <=> b) : (a.length <=> b.length) }
     while (domain_list.length > 0)
@@ -271,11 +270,11 @@ class Affiliate < ActiveRecord::Base
   def is_agency_govbox_enabled?
     false
   end
-  
+
   def is_medline_govbox_enabled?
     false
   end
-  
+
   private
 
   def remove_boosted_contents_from_index
@@ -367,4 +366,14 @@ class Affiliate < ActiveRecord::Base
     sass_values.collect { |sass_value| "  #{sass_value}" }.join("\n")
   end
 
+  def existing_site_domain_hash
+    Hash[site_domains(true).collect { |current_site_domain| [current_site_domain.domain, current_site_domain] }]
+  end
+
+  def update_error_keys
+    if self.errors.include?(:"site_domains.domain")
+      error_value = self.errors.delete(:"site_domains.domain")
+      self.errors.add(:domain, error_value)
+    end
+  end
 end

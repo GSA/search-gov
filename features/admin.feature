@@ -57,15 +57,22 @@ Feature:  Administration
   Scenario: Visiting the affiliate admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     And the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | single site      | single.gov       | one@foo.gov           | One Foo             |
+      | display_name | name       | contact_email | contact_name |
+      | agency site  | agency.gov | one@foo.gov   | One Foo      |
+    And the following site domains exist for the affiliate agency.gov:
+      | domain               | site_name      |
+      | www1.agency-site.gov | Agency Website |
     When I go to the admin home page
     And I follow "Affiliates" within ".main"
     Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Affiliates
     And I should see "Site name"
     And I should see "Site Handle (visible to searchers in the URL)"
-    And I should see "single site"
-    And I should see "single.gov"
+    And I should see "agency site"
+    And I should see "agency.gov"
+    And I should see "www1.agency-site.gov"
+
+    When I follow "www1.agency-site.gov"
+    Then I should see "Agency Website"
 
   Scenario: Visiting the users admin page as an admin
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"

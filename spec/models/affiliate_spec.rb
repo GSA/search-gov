@@ -161,6 +161,15 @@ describe Affiliate do
         affiliate.errors[:base].first.should match(/CSS for the top and bottom of your search results page: Invalid CSS/)
         end
       end
+
+      it "should normalize site domains" do
+        affiliate = Affiliate.create!(@valid_create_attributes.merge(
+                                          :site_domains_attributes => { '0' => { :domain => 'www1.usa.gov' },
+                                                                        '1' => { :domain => 'www2.usa.gov' },
+                                                                        '2' => { :domain => 'usa.gov' } }))
+        affiliate.site_domains(true).count.should == 1
+        affiliate.site_domains.first.domain.should == 'usa.gov'
+      end
     end
 
     describe "on update_attributes_for_staging" do
@@ -727,10 +736,11 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash["http://foo.gov", nil, "bar.gov/somepage.html", nil, "https://blat.gov/somedir", nil]
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
-        affiliate.site_domains(true).should == added_site_domains
-        affiliate.site_domains[0].domain.should == "foo.gov"
-        affiliate.site_domains[1].domain.should == "blat.gov/somedir"
-        affiliate.site_domains[2].domain.should == "bar.gov/somepage.html"
+        site_domains = affiliate.site_domains(true)
+        site_domains.should == added_site_domains
+        site_domains[0].domain.should == "foo.gov"
+        site_domains[1].domain.should == "blat.gov/somedir"
+        site_domains[2].domain.should == "bar.gov/somepage.html"
       end
     end
 
@@ -739,25 +749,25 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash[" do.gov ", nil, " bar.gov", nil, "blat.gov ", nil]
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
-        affiliate.site_domains(true).should == added_site_domains
-        affiliate.site_domains[0].domain.should == "do.gov"
-        affiliate.site_domains[1].domain.should == "bar.gov"
-        affiliate.site_domains[2].domain.should == "blat.gov"
+        site_domains = affiliate.site_domains(true)
+        site_domains.should == added_site_domains
+        site_domains[0].domain.should == "do.gov"
+        site_domains[1].domain.should == "bar.gov"
+        site_domains[2].domain.should == "blat.gov"
       end
     end
 
     context "when input domains have dupes" do
       before do
         affiliate.add_site_domains("foo.gov" => nil)
-
-        affiliate.site_domains(true).count.should == 1
-        affiliate.site_domains.first.domain.should == 'foo.gov'
       end
 
       it "should delete dupes from domains" do
         affiliate.add_site_domains('foo.gov' => nil).should be_empty
-        affiliate.site_domains(true).count.should == 1
-        affiliate.site_domains.first.domain.should == 'foo.gov'
+
+        site_domains = affiliate.site_domains(true)
+        site_domains.count.should == 1
+        site_domains.first.domain.should == 'foo.gov'
       end
     end
 
@@ -766,10 +776,11 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash['foo.gov', nil, 'somepage.html', nil, 'whatisthis?', nil, 'bar.gov/somedir/', nil]
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
-        affiliate.site_domains(true).should == added_site_domains
-        affiliate.site_domains.count.should == 2
-        affiliate.site_domains[0].domain.should == 'foo.gov'
-        affiliate.site_domains[1].domain.should == 'bar.gov/somedir/'
+        site_domains = affiliate.site_domains(true)
+        site_domains.should == added_site_domains
+        site_domains.count.should == 2
+        site_domains[0].domain.should == 'foo.gov'
+        site_domains[1].domain.should == 'bar.gov/somedir/'
       end
     end
 
@@ -778,11 +789,12 @@ describe Affiliate do
         site_domain_hash = ActiveSupport::OrderedHash['blat.gov', nil, 'blat.gov/s.html', nil, 'bar.gov/somedir/', nil, 'bar.gov', nil, 'www.bar.gov', nil, 'xxbar.gov', nil]
         added_site_domains = affiliate.add_site_domains(site_domain_hash)
 
-        affiliate.site_domains(true).should == added_site_domains
-        affiliate.site_domains.count.should == 3
-        affiliate.site_domains[0].domain.should == 'bar.gov'
-        affiliate.site_domains[1].domain.should == 'blat.gov'
-        affiliate.site_domains[2].domain.should == 'xxbar.gov'
+        site_domains = affiliate.site_domains(true)
+        site_domains.should == added_site_domains
+        site_domains.count.should == 3
+        site_domains[0].domain.should == 'bar.gov'
+        site_domains[1].domain.should == 'blat.gov'
+        site_domains[2].domain.should == 'xxbar.gov'
       end
     end
 
@@ -790,37 +802,40 @@ describe Affiliate do
       let(:domains) { %w( a.foo.gov b.foo.gov y.bar.gov z.bar.gov c.foo.gov agency.gov ) }
 
       before do
-        site_domain_hash = Hash[*domains.collect { |domain| [domain, nil] }.flatten]
-        affiliate.add_site_domains(site_domain_hash).count.should == domains.count
-        affiliate.site_domains(true).count.should == 6
+        site_domain_hash = Hash[domains.collect { |domain| [domain, nil] }]
+        affiliate.add_site_domains(site_domain_hash)
+        SiteDomain.where(:affiliate_id => affiliate.id).count.should == 6
       end
 
       it "should filter out existing domains" do
         added_site_domains = affiliate.add_site_domains({ 'foo.gov' => nil, 'bar.gov' => nil })
 
         added_site_domains.count.should == 2
-        affiliate.site_domains(true).count.should == 3
-        affiliate.site_domains[0].domain.should == 'agency.gov'
-        affiliate.site_domains[1].domain.should == 'bar.gov'
-        affiliate.site_domains[2].domain.should == 'foo.gov'
+        site_domains = affiliate.site_domains(true)
+        site_domains.count.should == 3
+        site_domains[0].domain.should == 'agency.gov'
+        site_domains[1].domain.should == 'bar.gov'
+        site_domains[2].domain.should == 'foo.gov'
       end
     end
   end
 
   describe "#update_site_domain" do
     let(:affiliate) { affiliate = Affiliate.create!(@valid_create_attributes) }
+    let(:site_domain) { SiteDomain.find_by_affiliate_id_and_domain(affiliate.id, 'www.gsa.gov') }
 
     context "when existing domain is covered by new ones" do
       before do
         affiliate.add_site_domains({ 'www1.usa.gov' => nil, 'www2.usa.gov' => nil, 'www.gsa.gov' => nil })
-        affiliate.site_domains(true).count.should == 3
-        site_domain = affiliate.site_domains.find_by_domain('www.gsa.gov')
-        affiliate.update_site_domain(site_domain, { :domain => 'usa.gov', :site_name => nil }).should be_true
+        SiteDomain.where(:affiliate_id => affiliate.id).count.should == 3
       end
 
       it "should filter out existing domains" do
-        affiliate.site_domains(true).count.should == 1
-        affiliate.site_domains.first.domain.should == 'usa.gov'
+        affiliate.update_site_domain(site_domain, { :domain => 'usa.gov', :site_name => nil }).should be_true
+
+        site_domains = affiliate.site_domains(true)
+        site_domains.count.should == 1
+        site_domains.first.domain.should == 'usa.gov'
       end
     end
   end

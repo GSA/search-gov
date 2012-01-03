@@ -27,6 +27,7 @@ UsasearchRails3::Application.routes.draw do
       get :how_it_works
       get :demo
       put :update_contact_information
+      get :new_site_domain_fields
     end
     resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy]
     resources :boosted_contents, :controller => "affiliates/boosted_contents" do
@@ -135,6 +136,7 @@ UsasearchRails3::Application.routes.draw do
     resources :excluded_domains do as_routes end
     resources :featured_collections
     resources :affiliate_scope_ids do as_routes end
+    resources :site_domains do as_routes end
   end
 
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect

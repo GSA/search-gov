@@ -7,12 +7,6 @@ class CreateSiteDomains < ActiveRecord::Migration
       t.timestamps
     end
     add_index :site_domains, :affiliate_id
-
-    Affiliate.all.each do |affiliate|
-      affiliate.domains_as_array.each do |domain|
-        affiliate.site_domains.create!(:site_name => domain, :domain => domain)
-      end
-    end
   end
 
   def self.down

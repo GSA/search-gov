@@ -146,6 +146,7 @@ Feature: Affiliate clients
     And I should not see "Custom"
     When I fill in the following:
       | Site name         | My awesome agency                    |
+      | Domain 0          | agency.gov                           |
       | Facebook handle   | FBAgency                             |
       | Flickr URL        | http://www.flickr.com/groups/usagov/ |
       | Twitter handle    | TwitterAgency                        |
@@ -175,6 +176,10 @@ Feature: Affiliate clients
     And the "Description text color" field should be disabled
     And the "URL link color" field should contain "#007F00"
     And the "URL link color" field should be disabled
+    When I follow "Domains"
+    Then I should see the following table rows:
+      | Site Name       | Domain         |
+      | agency.gov      | agency.gov     |
     When I follow "Social Media"
     Then the "Facebook handle" field should contain "FBAgency"
     And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
@@ -302,16 +307,25 @@ Feature: Affiliate clients
     Then I should see "City can't be blank"
     Then I should see "Zip can't be blank"
 
-  Scenario: Adding an affiliate without site display name should fail
+  Scenario: Adding an affiliate without valid site information should fail
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "Add New Site"
     And I press "Next"
+    And I fill in "Domain 0" with "notavaliddomain"
     And I press "Next"
     Then I should see "Site name can't be blank"
+    And I should see "Domain is invalid"
     And I should not see "Site Handle (visible to searchers in the URL) can't be blank"
     And I should not see "Site Handle (visible to searchers in the URL) is too short"
     And I should not see "Site Handle (visible to searchers in the URL) is invalid"
+
+    When I fill in the following:
+      | Site name | My awesome agency |
+      | Domain 0  | www1.mydomain.gov |
+      | Domain 1  | www2.mydomain.gov |
+    And I press "Next"
+    And I should see "Site successfully created"
 
   Scenario: Adding a new site as an affiliate user with pending_contact_information status
     Given I am on the login page

@@ -6,21 +6,7 @@
       = form.text_field :domain, { :class => 'text', :maxlength => 255, :size => nil }
       %p.tips
         (for example, yoursite.gov)
-      %p.tips
-        = link_to "+ Domain Tips", "#formatting_tips", :id => "formatting_tips", :class => "sliding_trigger"
-        %div#formatting_tips_content.sliding_content
-          %p.tips
-            You do not need to include http:// as we recognize URLs with or without it.
-            You also do not need to include subdirectories that are covered by higher level subdirectories. For instance,
-            if you have yoursite.gov/pages as a domain, you don't need to also specify yoursite.gov/pages/es and yoursite.gov/pages/en,
-            as they are both covered by the less specific entry.
-          %p.tips
-            Entire domain: List yoursite.gov (without www) to search your entire site, including all subdomains.
-          %p.tips
-            Part of site: List www.yoursite.gov to include only the top-level domain.
-            List subagency.yoursite.gov to include lower-level domains
-          %p.tips
-            Individual pages: List www.yoursite.gov/yourpage.html to include only specific pages.
+      = render :partial => 'domain_tips'
     %li
       = form.label :site_name
       = form.text_field :site_name, { :class => 'text', :maxlength => 255, :size => nil }

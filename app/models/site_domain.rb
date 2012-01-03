@@ -22,6 +22,10 @@ class SiteDomain < ActiveRecord::Base
     added_site_domains.count > 0 ? { :success => true, :added => added_site_domains.count } : { :success => false, :error_message => 'No domains uploaded; please check your file and try again.' }
   end
 
+  def to_label
+    domain
+  end
+
   protected
   def filter_domain
     self.domain = domain.gsub(/(https?:\/\/| )/, '').downcase unless domain.blank?

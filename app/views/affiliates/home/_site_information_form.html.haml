@@ -27,6 +27,17 @@
         Site URL: Used by the USASearch team to better manage your account (for example, it is useful for us to know that your site URL is www.nps.gov).
   - if @affiliate.new_record?
     %li
+      = label_tag :site_domains, "Domains to search"
+      .site-domains
+        - @affiliate.site_domains.each_with_index do |site_domain, index|
+          = site_information_form.fields_for :site_domains, site_domain do |site_domain_form|
+            = render 'site_domain_fields', :f => site_domain_form, :index => index
+      %span.tips
+        (for example, yoursite.gov)
+      .add-domain-wrapper
+        = link_to 'Add domain', new_site_domain_fields_affiliates_path, :remote => true, :id => 'add_domain'
+      = render :partial => '/affiliates/site_domains/domain_tips'
+    %li
       = site_information_form.label :facebook_handle, "Facebook handle"
       = site_information_form.text_field :facebook_handle, :class => 'txt'
     %li

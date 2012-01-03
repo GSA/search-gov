@@ -2,7 +2,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :except=> [:index, :edit_site_information, :edit_look_and_feel, :how_it_works, :demo, :best_bets, :edit_social_media, :update_social_media]
   before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel, :preview, :best_bets, :content_types, :edit_social_media, :update_social_media]
   before_filter :require_approved_user, :except => [:index, :how_it_works, :demo, :home, :update_contact_information, :update_content_types]
-  before_filter :setup_affiliate, :except => [:index, :how_it_works, :demo, :new, :create, :update_contact_information, :home]
+  before_filter :setup_affiliate, :except => [:index, :how_it_works, :demo, :new, :create, :update_contact_information, :home, :new_site_domain_fields]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel]
 
   AFFILIATE_ADS = [
@@ -120,6 +120,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
       end
       flash.now[:success] = "Site successfully created"
     else
+      @affiliate.site_domains.build
       @current_step = :new_site_information
     end
     render :action => :new
@@ -175,6 +176,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     if @user.update_attributes(params[:user])
       @affiliate = Affiliate.new
       @current_step = :new_site_information
+      @affiliate.site_domains.build
     else
       @current_step = :edit_contact_information
     end
@@ -250,6 +252,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @crawled_urls = IndexedDocument.crawled_urls(@affiliate, 1, 5)
   end
 
+  def new_site_domain_fields
+  end
+
   protected
 
   def sync_affiliate_staged_attributes
@@ -260,5 +265,4 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @title = UPDATE_ACTION_HASH[params[:action].to_sym][:title]
     render :action => UPDATE_ACTION_HASH[params[:action].to_sym][:edit_action]
   end
-
 end

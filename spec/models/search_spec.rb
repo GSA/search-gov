@@ -213,7 +213,7 @@ describe Search do
 
         context "when there are so many domains that the overall query exceeds Bing's limit, generating an error" do
           before do
-            site_domain_hash = Hash[*"a10001".upto("a10100").collect { |x| ["#{x}.gov", nil] }.flatten]
+            site_domain_hash = Hash["a10001".upto("a10100").collect { |x| ["#{x}.gov", nil] }]
             site_domain_hash
             @affiliate.add_site_domains(site_domain_hash)
           end
@@ -957,7 +957,7 @@ describe Search do
 
         it "should retrieve the associated Med Topic record" do
           @search.med_topic.should == @ulcerative_colitis_med_topic
-        end        
+        end
       end
 
       context "when the locale is not the default" do
@@ -1003,7 +1003,7 @@ describe Search do
           @search = Search.new(:query => 'ulcerative colitis', :affiliate => affiliates(:basic_affiliate))
           @search.run
         end
-        
+
         it "should not set a med topic" do
           @search.med_topic.should be_nil
         end
