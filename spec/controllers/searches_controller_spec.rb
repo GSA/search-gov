@@ -136,20 +136,10 @@ describe SearchesController do
       response.body.should_not contain(/related_faqs/)
     end
 
-    context "when a scope id is provided do" do
-      before do
-        get :index, :affiliate => @affiliate.name, :query => 'weather', :scope_id => 'SomeScope'
-      end
-
-      it "should set the scope id variable" do
-        assigns[:scope_id].should == 'SomeScope'
-      end
-    end
-
     context "when the affiliate locale is set to Spanish" do
       before do
         @affiliate.update_attribute(:locale, 'es')
-        get :index, :affiliate => @affiliate.name, :query => 'weather', :scope_id => 'SomeScope', :locale => 'en'
+        get :index, :affiliate => @affiliate.name, :query => 'weather', :locale => 'en'
       end
 
       it "should override/ignore the HTTP locale param and set locale to Spanish" do
@@ -377,18 +367,6 @@ describe SearchesController do
       end
 
       it { should assign_to(:page_title).with_kind_of(String) }
-    end
-
-    context "when an affiliate advanced search form is displayed" do
-      context "when a valid scope id is specified" do
-        before do
-          get :index, :affiliate=> affiliates(:power_affiliate).name, :query => "weather", :scope_id => 'PatentClass'
-        end
-
-        it "should assign the scope id" do
-          assigns[:scope_id].should == 'PatentClass'
-        end
-      end
     end
   end
 
