@@ -957,7 +957,7 @@ describe Search do
 
         it "should retrieve the associated Med Topic record" do
           @search.med_topic.should == @ulcerative_colitis_med_topic
-        end
+        end        
       end
 
       context "when the locale is not the default" do
@@ -998,12 +998,12 @@ describe Search do
         end
       end
 
-      context "when the search matches a med topic, but includes an affiliate" do
+      context "when an affiliate search matches a med topic" do
         before do
           @search = Search.new(:query => 'ulcerative colitis', :affiliate => affiliates(:basic_affiliate))
           @search.run
         end
-
+        
         it "should not set a med topic" do
           @search.med_topic.should be_nil
         end

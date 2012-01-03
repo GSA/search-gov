@@ -268,6 +268,14 @@ class Affiliate < ActiveRecord::Base
     added_or_updated_site_domains
   end
 
+  def is_agency_govbox_enabled?
+    false
+  end
+  
+  def is_medline_govbox_enabled?
+    false
+  end
+  
   private
 
   def remove_boosted_contents_from_index

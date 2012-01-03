@@ -389,7 +389,11 @@ describe "searches/index.html.haml" do
                           'unescapedUrl' => "http://www.nlm.nih.gov/medlineplus/ulcerativecolitis.html",
                           'content' => "I have ulcerative colitis.",
                           'cacheUrl' => "http://www.cached.com/url"}
-        @search_results = [@search_result]
+        another_search_result = {'title' => "Ulcerative Colitis",
+                                 'unescapedUrl' => "http://ulcerativecolitis.gov",
+                                 'content' => "I have ulcerative colitis.",
+                                 'cacheUrl' => "http://www.cached.com/url" }
+        @search_results = [another_search_result, @search_result]
         @search_results.stub!(:total_pages).and_return 1
         @search.stub!(:results).and_return @search_results
         @search.stub!(:med_topic).and_return @med_topic
@@ -406,6 +410,11 @@ describe "searches/index.html.haml" do
         rendered.should_not contain(/Related MedlinePlus Topics/)
         rendered.should_not contain(/Esta tema en español/)
         rendered.should_not contain(/ClinicalTrials.gov/)
+      end
+      
+      it "should not display a regular result with the same Medline URL/information" do
+        render
+        rendered.should_not =~ /Ulcerative colitis is a disease.*Ulcerative colitis is a disease/
       end
 
       context "when the MedTopic has related med topics" do

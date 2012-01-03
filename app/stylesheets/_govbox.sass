@@ -1,0 +1,174 @@
+=topfade
+  :background #fff url(/images/bg.png) repeat-x scroll 0 -153px
+
+.govbox
+  @include clearfix
+  :color black
+  :margin 0
+  +topfade
+  :border 1px solid #ddd
+  :padding $results-padding-size
+  @include border-radius
+  h3
+    :font-size 1.5em
+    :color rgb(23, 69, 120)
+    :margin 0 0 1em 0
+  ul
+    :margin 0 0 0 1em
+    :padding-left 0.5em
+    :list-style-type disc
+    :color gray
+  p
+    :margin-top 0
+    :margin-bottom .2em
+  &.agency
+    :line-height 1
+    h2
+      :line-height 1.5
+    h3
+      :color #C51432
+      :font
+        :size 13px
+        :weight bold
+    a.link-to-full-url
+      :border-right 1px solid #222222
+      :line-height 1.1
+      :padding-right 8px
+      :margin-right 3px
+    .official-tag
+      :color #C51432
+      :float right
+      :font
+        :size 13px
+        :weight normal
+    .description
+      :color #222222
+      :font-size 1.1em
+      :line-height 1
+      :margin 0.5em 0 0.3em
+    table.deep-links
+      :padding 0
+      :margin 0
+      :width 100%
+    .section
+      :float left
+      :margin
+        :top 0.4em
+      :width 50%
+    .stay-connected
+      @extend .section
+      .phone-wrapper
+        :float left
+        img, ul
+          :float left
+        img
+          :margin-top 0.3em
+        ul
+          :margin-left 7px
+          :width 270px
+      ul
+        :color #222222
+        :list-style none
+        :margin 0.3em 0 0
+        :padding 0
+        li
+          :line-height 1.2
+        &.social-media
+          :background none
+          :float left
+          :height 16px
+          li
+            :display inline
+            :float left
+          a
+            :float left
+            :font-size 0
+            :height 16px
+            :line-height 0
+            :padding 0 3px
+            :text-indent -999em
+            :width 16px
+            &.facebook
+              :background url('/images/govbox/facebook.gif') left top no-repeat
+            &.flickr
+              :background url('/images/govbox/flickr.gif') left top no-repeat
+            &.twitter
+              :background url('/images/govbox/twitter.gif') left top no-repeat
+            &.youtube
+              :background url('/images/govbox/youtube.gif') left top no-repeat
+    .popular-pages
+      @extend .section
+      ul
+        :margin 0.3em 0 0
+        :padding 0
+        li
+          :background url('/images/govbox/star.gif') left 1px no-repeat
+          :display block
+          :line-height 1.2
+          :list-style none
+          :padding-left 15px
+          a:hover
+            :text-decoration none
+    .search-within
+      @extend .section
+      form
+        :margin 0.4em 0 0
+        #query
+          :width 230px
+
+.recalls-govbox, .recalls
+  h3
+    :font-size 1.3em
+    :line-height 19px
+    :color $red
+    :padding-left 15px
+    :margin 0 0 0 -15px
+    :background white url('/images/red_triangle.png') left top no-repeat
+    a, a:visited, .recall_stats
+      :font-size 0.75em
+      :display block
+      :color $red
+      :text-decoration none
+      :font-style italic
+  .sort
+    :margin-bottom 0.5em
+    a
+      :text-decoration none
+  .recall
+    :overflow hidden
+    :margin-bottom 1em
+    .agency
+      :color #222
+    .industry-icon
+      :text-align center
+      :color gray
+      :font-weight bold
+      :width 50px
+      :padding 0
+      :float left
+      span
+        :clear left
+    .details
+      :width 550px
+      :float left
+      :padding-left 15px
+      a
+        :text-decoration none
+      .recall-date
+        :color gray
+        :font-style italic
+      .description
+        .recall-date
+          :display inline
+      .url
+        a
+          :color $green
+
+.recalls-govbox
+  :margin-bottom 20px
+  :padding-left $results-padding-size
+  .recall
+    @include clearfix
+    margin-bottom: 0.75em
+    .details
+      :padding-top 0.5em

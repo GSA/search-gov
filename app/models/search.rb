@@ -184,6 +184,7 @@ class Search
 
   def populate_additional_results(response)
     @boosted_contents = BoostedContent.search_for(query, affiliate, I18n.locale)
+    @faqs = Faq.search_for(query, I18n.locale.to_s) unless affiliate
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale)
       documents = (affiliate and @indexed_results.nil?) ? IndexedDocument.search_for(query, affiliate) : nil
@@ -191,15 +192,12 @@ class Search
         @indexed_documents = documents.hits(:verify => true)
         remove_bing_matches_from_indexed_documents
       end
-    end
-    unless affiliate
-      @faqs = Faq.search_for(query, I18n.locale.to_s)
-      if first_page?
-        @recalls = Recall.recent(query)
+      if affiliate.nil? or (affiliate and affiliate.is_agency_govbox_enabled?)
         agency_query = AgencyQuery.find_by_phrase(query)
         @agency = agency_query.agency if agency_query
-        @med_topic = MedTopic.search_for(query, I18n.locale.to_s)
       end
+      @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.nil? or (affiliate and affiliate.is_medline_govbox_enabled?)
+      @recalls = Recall.recent(query) unless affiliate
     end
     if response && response.has?(:image) && response.image.total > 0
       @extra_image_results = process_image_results(response)
