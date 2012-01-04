@@ -22,11 +22,10 @@ class Affiliate < ActiveRecord::Base
   has_many :site_domains, :dependent => :destroy
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
-  before_validation :set_default_name, :on => :create
   validate :validate_css_property_hash, :validate_header_footer_css
   before_create :set_uses_one_serp
   before_save :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass
-  before_validation :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
+  before_validation :set_default_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   after_validation :update_error_keys
   after_create :normalize_site_domains
   scope :ordered, {:order => 'display_name ASC'}
@@ -232,9 +231,7 @@ class Affiliate < ActiveRecord::Base
     transaction do
       site_domain_param_hash.each do |domain, site_name|
         site_domain = site_domains.build(:domain => domain, :site_name => site_name)
-        if site_domain.valid?
-          site_domain_hash[site_domain.domain] = site_domain
-        end
+        site_domain_hash[site_domain.domain] = site_domain if site_domain.valid?
       end
       normalize_site_domains site_domain_hash
     end

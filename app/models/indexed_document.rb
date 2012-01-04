@@ -6,19 +6,21 @@ class IndexedDocument < ActiveRecord::Base
   attr_reader :url_extension
 
   belongs_to :affiliate
+  before_validation :normalize_url
   validates_presence_of :url, :affiliate_id
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
   validates_uniqueness_of :content_hash, :message => "is not unique: Identical content (title and body) already indexed", :scope => :affiliate_id, :allow_nil => true
   validates_format_of :url, :with => /^http:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
   validates_exclusion_of :url_extension, :in => %w(json xml rss csv css js png gif jpg jpeg txt ico wsdl htc swf), :message => "'%{value}' is not a supported file type"
   validates_inclusion_of :doctype, :in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"
-  before_validation :normalize_url
+  validate :site_domain_matches
 
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 250
   MAX_URLS_PER_FILE_UPLOAD = 100
   OK_STATUS = "OK"
   EMPTY_BODY_STATUS = "No content found in document"
+  DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
 
   searchable do
@@ -47,6 +49,8 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def fetch
+    site_domain_matches
+    delete and return unless errors.empty?
     begin
       file = open(url)
       content_type = file.content_type
@@ -193,5 +197,10 @@ class IndexedDocument < ActiveRecord::Base
 
   def remove_anchor_tags_from_url
     self.url.sub!(/#.*$/, '') unless self.url.blank?
+  end
+
+  def site_domain_matches
+    return if self.affiliate.nil? or self.affiliate.site_domains.empty?
+    errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? { |sd| self.url.include?(sd.domain)}
   end
 end

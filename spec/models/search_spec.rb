@@ -1128,10 +1128,10 @@ describe Search do
       end
     end
 
-    context "when the affiliate has no Bing results, and has boosted contents" do
+    context "when the affiliate has no Bing results, and has indexed documents" do
       before do
-        IndexedDocument.delete_all
         @non_affiliate = affiliates(:non_existant_affiliate)
+        @non_affiliate.site_domains.create(:domain=>"nonsense.com")
         @non_affiliate.indexed_documents.destroy_all
         1.upto(15) do |index|
           @non_affiliate.indexed_documents << IndexedDocument.new(:title => "Indexed Result #{index}", :url => "http://nonsense.com/#{index}.html", :description => 'This is an indexed result.', :last_crawl_status => IndexedDocument::OK_STATUS)
@@ -1459,6 +1459,7 @@ describe Search do
     before do
       IndexedDocument.delete_all
       @affiliate = affiliates(:non_existant_affiliate)
+      @affiliate.site_domains.create(:domain=>"url.gov")
       @affiliate.indexed_documents << IndexedDocument.new(:url => 'http://some.url.gov/', :title => 'Highlight me!', :description => 'This doc has highlights.', :body => 'This will match other keywords that are not to be bold.', :last_crawl_status => IndexedDocument::OK_STATUS)
       IndexedDocument.reindex
       Sunspot.commit

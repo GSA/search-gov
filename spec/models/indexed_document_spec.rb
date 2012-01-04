@@ -30,6 +30,24 @@ describe IndexedDocument do
   it { should_not allow_value("http://www.ssa.gov./trailing-period-in-domain.pdf").for(:url) }
   it { should belong_to :affiliate }
 
+  context "when associated affiliate has a site domain list" do
+    before do
+      SiteDomain.create!(:affiliate=>affiliates(:basic_affiliate), :domain => "whitelist.gov")
+    end
+
+    context "when URL of indexed document doen't match anything in affiliate's site domain list" do
+      it "should find the record invalid" do
+        IndexedDocument.new(@valid_attributes.merge(:url=>"http://www.blacklisted.gov")).valid?.should be_false
+      end
+    end
+
+    context "when URL of indexed document matches something in affiliate's site domain list" do
+      it "should find the record valid given all other attributes are valid" do
+        IndexedDocument.new(@valid_attributes.merge(:url=>"http://www.whitelist.gov/someurl")).valid?.should be_true
+      end
+    end
+  end
+
   it "should create a new instance given valid attributes" do
     IndexedDocument.create!(@valid_attributes)
   end
@@ -198,6 +216,18 @@ describe IndexedDocument do
 
     let(:indexed_document) { IndexedDocument.create!(@valid_attributes) }
 
+    context "when the URL isn't a match for existing site domain entries for the affiliate" do
+      before do
+        indexed_document.affiliate.site_domains.destroy_all
+        indexed_document.affiliate.site_domains.create!(:domain=>"somethingelse.gov")
+      end
+
+      it "should delete the entry and stop processing" do
+        indexed_document.fetch
+        IndexedDocument.exists?(indexed_document.id).should be_false
+      end
+    end
+
     it "should set the content hash for the entry" do
       mockfile = mock("File")
       indexed_document.stub!(:open).and_return mockfile
@@ -282,7 +312,7 @@ describe IndexedDocument do
       end
 
       it "should raise an IndexedDocumentError with the validation error as the message" do
-        lambda { @dupe.update_content_hash}.should raise_error(IndexedDocument::IndexedDocumentError, "Content hash is not unique: Identical content (title and body) already indexed")
+        lambda { @dupe.update_content_hash }.should raise_error(IndexedDocument::IndexedDocumentError, "Content hash is not unique: Identical content (title and body) already indexed")
       end
     end
   end
@@ -483,7 +513,7 @@ describe IndexedDocument do
       end
 
       it "should return with error_message" do
-        IndexedDocument.process_file(@file, @affiliate).should == { :success => false, :error_message => 'Invalid file format; please upload a plain text file (.txt).' }
+        IndexedDocument.process_file(@file, @affiliate).should == {:success => false, :error_message => 'Invalid file format; please upload a plain text file (.txt).'}
       end
     end
 
