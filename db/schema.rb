@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111231231620) do
+ActiveRecord::Schema.define(:version => 20120103164925) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -560,7 +560,7 @@ ActiveRecord::Schema.define(:version => 20111231231620) do
     t.datetime "deleted_at"
   end
 
-  add_index "sayt_suggestions", ["affiliate_id", "phrase", "deleted_at", "popularity"], :name => "index_sayt_suggestions_on_aff_id_phrase_del_at_pop", :unique => true
+  add_index "sayt_suggestions", ["affiliate_id", "phrase"], :name => "index_sayt_suggestions_on_affiliate_id_and_phrase", :unique => true
 
   create_table "search_modules", :force => true do |t|
     t.string   "tag",          :null => false
