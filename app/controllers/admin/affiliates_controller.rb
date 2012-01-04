@@ -5,7 +5,8 @@ class Admin::AffiliatesController < Admin::AdminController
     config.list.sorting = { :display_name => :asc }
     config.update.columns = [:display_name, :search_results_page_title, :staged_search_results_page_title,
                              :facebook_handle, :flickr_url, :twitter_handle, :youtube_handle,
-                             :uses_one_serp, :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
+                             :uses_one_serp, :theme, :staged_theme,
+                             :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
                              :header_footer_sass, :staged_header_footer_sass, :header_footer_css, :staged_header_footer_css,
                              :header, :staged_header, :footer, :staged_footer,
                              :affiliate_template, :staged_affiliate_template, :is_sayt_enabled, :has_staged_content, :exclude_webtrends, :popular_urls, :locale]
@@ -14,6 +15,11 @@ class Admin::AffiliatesController < Admin::AdminController
     config.columns[:is_sayt_enabled].label = "Enable SAYT"
     config.columns[:affiliate_template].form_ui= :select
     config.columns[:staged_affiliate_template].form_ui= :select
+    config.columns[:theme].form_ui = :select
+    config.columns[:staged_theme].form_ui = :select
+    theme_options = Affiliate::THEMES.keys.collect { |key| [Affiliate::THEMES[key][:display_name], key.to_s] }
+    config.columns[:theme].options = { :include_blank => '', :options => theme_options }
+    config.columns[:staged_theme].options = { :include_blank => '', :options => theme_options }
     config.action_links.add "analytics", :label => "Analytics", :type => :member, :page => true
     config.show.columns << :domains
   end

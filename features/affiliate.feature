@@ -449,8 +449,8 @@ Feature: Affiliate clients
 
   Scenario: Visiting the look and feel page on a site with legacy template
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -839,8 +839,8 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel where staged and live sites are out of sync and has_staged_content is false
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header_footer_css            | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header_footer_css     | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | .current h1 { color: blue; } | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | .staged h1 { color: green; } | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | false              |
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header_footer_css            | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header_footer_css     | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | .current h1 { color: blue; } | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | .staged h1 { color: green; } | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | false              | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -866,8 +866,8 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel where staged and live sites are out sync and has_staged_content is true
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header_footer_css            | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header_footer_css     | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | .current h1 { color: blue; } | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | .staged h1 { color: green; } | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header_footer_css            | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header_footer_css     | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | .current h1 { color: blue; } | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | .staged h1 { color: green; } | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -954,8 +954,8 @@ Feature: Affiliate clients
 
   Scenario: Cancelling staged changes from the Affiliate Center page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content | uses_one_serp |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I press "Cancel Changes"
@@ -973,8 +973,8 @@ Feature: Affiliate clients
 
   Scenario: Cancelling staged changes from the site specific Affiliate Center page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains  | header     | footer     | favicon_url                       | external_css_url                 |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | data.gov | Old header | Old footer | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains  | header     | footer     | favicon_url                       | external_css_url                 | uses_one_serp |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | data.gov | Old header | Old footer | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "bar site" affiliate page
     And I follow "Look and feel"
@@ -1014,8 +1014,8 @@ Feature: Affiliate clients
 
   Scenario: Cancelling staged changes from the Preview page
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content |
-      | aff site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               |
+      | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content | uses_one_serp |
+      | aff site     | bar.gov | aff@bar.gov   | John Bar     | Default                 | Live Search Results       | data.gov | Live header | Live footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | Basic Gray                     | Staged Search Results            | Staged header | Staged footer | cdn.agency.gov/staged_favicon.ico | cdn.agency.gov/staged_custom.css | true               | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Preview"

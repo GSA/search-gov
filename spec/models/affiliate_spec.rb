@@ -400,8 +400,24 @@ describe Affiliate do
       Affiliate.find(affiliate.id).affiliate_template.should == affiliate_templates(:default)
     end
 
+    context "when affiliate does not use serp" do
+      let(:affiliate) { Affiliate.new(@valid_create_attributes.merge(:theme => nil)) }
 
+      before do
+        affiliate.uses_one_serp = false
+        affiliate.save!
+        affiliate.uses_one_serp.should_not be_true
+        affiliate.theme.should be_blank
+        affiliate.staged_theme.should be_blank
+      end
 
+      it "should set theme when uses_one_serp is set to true" do
+        affiliate.uses_one_serp = true
+        affiliate.save!
+        affiliate.theme.should == 'default'
+        affiliate.staged_theme.should == 'default'
+      end
+    end
   end
 
   describe "#is_affiliate_related_topics_enabled?" do

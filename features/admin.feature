@@ -263,3 +263,33 @@ Feature:  Administration
     And I press "Add Top Form"
     Then I should be on the top forms admin page
     And I should see "The Top Form could not be saved."
+
+  Scenario: Updating affiliate uses_one_serp flag from Admin Center
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email                | contact_name | uses_one_serp |
+      | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     | false         |
+    And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the agency.gov's admin edit affiliate page
+    Then the "Uses one serp" checkbox should not be checked
+    And the "Theme" field should be blank
+    And the "Staged theme" field should be blank
+    When I check "Uses one serp"
+    And I press "Update"
+    And I go to the agency.gov's admin edit affiliate page
+    Then the "Uses one serp" checkbox should be checked
+    And the "Theme" field should contain "default"
+    And the "Staged theme" field should contain "default"
+
+  Scenario: Updating affiliate uses_one_serp flag and theme from Admin Center
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email                | contact_name | uses_one_serp |
+      | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     | false         |
+    When I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    And I go to the agency.gov's admin edit affiliate page
+    And I check "Uses one serp"
+    And I select "Gettysburg" from "Theme"
+    And I press "Update"
+    And I go to the agency.gov's admin edit affiliate page
+    Then the "Uses one serp" checkbox should be checked
+    And the "Theme" field should contain "elegant"
+    And the "Staged theme" field should contain "default"

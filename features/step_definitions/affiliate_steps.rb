@@ -20,7 +20,8 @@ Given /^the following Affiliates exist:$/ do |table|
 
     default_affiliate_template = AffiliateTemplate.find_by_stylesheet("default")
 
-    if hash[:uses_one_serp]
+    uses_one_serp = hash[:uses_one_serp].blank? ? true : hash[:uses_one_serp] == 'true' ? true : false
+    if uses_one_serp
       affiliate_template = nil
       staged_affiliate_template = nil
       theme = hash[:theme] || 'custom'
@@ -68,7 +69,7 @@ Given /^the following Affiliates exist:$/ do |table|
       :top_searches_label => hash["top_searches_label"] || 'Search Trends',
       :locale => hash["locale"] || 'en'
     )
-    affiliate.uses_one_serp = hash[:uses_one_serp] || false
+    affiliate.uses_one_serp = uses_one_serp
     affiliate.save!
     affiliate.users << user
 

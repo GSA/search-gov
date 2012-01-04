@@ -24,7 +24,7 @@ class Affiliate < ActiveRecord::Base
   after_destroy :remove_boosted_contents_from_index
   validate :validate_css_property_hash, :validate_header_footer_css
   before_create :set_uses_one_serp
-  before_save :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass
+  before_save :set_default_theme, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass
   before_validation :set_default_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   after_validation :update_error_keys
   after_create :normalize_site_domains
@@ -371,6 +371,13 @@ class Affiliate < ActiveRecord::Base
     if self.errors.include?(:"site_domains.domain")
       error_value = self.errors.delete(:"site_domains.domain")
       self.errors.add(:domain, error_value)
+    end
+  end
+
+  def set_default_theme
+    if uses_one_serp?
+      self.theme = THEMES.keys.first.to_s if theme.blank?
+      self.staged_theme = THEMES.keys.first.to_s if staged_theme.blank?
     end
   end
 end

@@ -66,3 +66,9 @@ end
 Then /^I should not see a field labeled "([^"]*)"$/ do |label|
   page.should_not have_field(label)
 end
+
+And /^the "([^"]*)" field should be blank$/ do |field|
+  field = find_field(field)
+  field_value = (field.tag_name == 'textarea') ? field.text : field.value
+  field_value.should be_blank
+end
