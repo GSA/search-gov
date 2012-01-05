@@ -119,6 +119,18 @@ describe Recall do
         Recall.load_cpsc_data_from_xml_feed("foo")
       end
     end
+    
+    context "when Sunspot returns an error" do
+      before do
+        Net::HTTP.stub!(:get_response).and_return mock("response", :body => File.read(Rails.root.to_s + "/spec/fixtures/xml/cpsc.xml"))
+        Sunspot.stub!(:commit).and_raise "Some Exception"
+      end
+      
+      it "should log an error" do
+        Rails.logger.should_receive(:error).with("Some Exception")
+        Recall.load_cpsc_data_from_xml_feed("foo")
+      end
+    end
   end
 
   describe "#load_nhtsa_data_from_tab_delimited_feed" do

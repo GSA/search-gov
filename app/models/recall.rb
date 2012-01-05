@@ -170,10 +170,10 @@ class Recall < ActiveRecord::Base
                              element.attributes["recDate"]
                            ])
         end
+        Sunspot.commit
       rescue Exception => e
         Rails.logger.error(e.message)
       end
-      Sunspot.commit
     end
 
     def load_nhtsa_data_from_file(file_path)
