@@ -18,14 +18,17 @@ module UsasearchRails3
     config.autoload_paths += %W(#{config.root}/extras #{Rails.root}/lib)
 
     config.middleware.use "DowncaseRouteMiddleware"
-#    config.middleware.use ::Rack::PerftoolsProfiler
+    #    config.middleware.use ::Rack::PerftoolsProfiler
 
     # Only load the plugins named here, in the order given (default is alphabetical).
     # :all can be used as a placeholder for all plugins not explicitly named.
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
-    # Activate observers that should always be running.
-    config.active_record.observers = :sayt_filter_observer, :misspelling_observer, :indexed_document_observer, :sitemap_observer, :site_domain_observer
+    # Activate observers that should always be running, except during DB migrations.
+    unless File.basename($0) == "rake" && ARGV.include?("db:migrate")
+      config.active_record.observers = :sayt_filter_observer, :misspelling_observer, :indexed_document_observer,
+        :sitemap_observer, :site_domain_observer
+    end
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
@@ -52,7 +55,7 @@ end
 
 # This has to be up here for some reason; otherwise, tests fail.
 SUPPORTED_LOCALES = %w{en es}
-SUPPORTED_LOCALE_WITH_NAMES = { 'en' => 'English', 'es' => 'Spanish' }
+SUPPORTED_LOCALE_WITH_NAMES = {'en' => 'English', 'es' => 'Spanish'}
 SUPPORTED_LOCALE_OPTIONS = SUPPORTED_LOCALES.collect { |locale| [SUPPORTED_LOCALE_WITH_NAMES[locale], locale] }
 SUPPORTED_VERTICALS = %w{web form image recall}
 
