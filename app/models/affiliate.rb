@@ -98,11 +98,10 @@ class Affiliate < ActiveRecord::Base
     site_domains.count > 1
   end
 
-  def get_matching_domain(url)
-    return unless I18n.locale == :en
-    url.blank? ? nil : domains_as_array.detect { |domain| url =~ /#{Regexp.escape(domain)}/i }
+  def includes_domain?(domain)
+    domains_as_array.detect{ |affiliate_domain| domain =~ /#{Regexp.escape(affiliate_domain)}/i }.nil? ? false : true
   end
-
+  
   def is_affiliate_related_topics_enabled?
     (self.related_topics_setting != 'global_enabled' && self.related_topics_setting != 'disabled') || self.related_topics_setting.nil?
   end

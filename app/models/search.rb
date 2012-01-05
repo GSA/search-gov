@@ -50,10 +50,8 @@ class Search
 
   def initialize(options = {})
     options ||= {}
-    @query = build_query(options)
-    @site_limits = options[:site_limits]
     @affiliate = options[:affiliate]
-    @matching_site_limit = retrieve_matching_site_limit
+    @query = build_query(options)
     @page = [options[:page].to_i, 0].max
     @results_per_page = options[:results_per_page] || DEFAULT_PER_PAGE
     @results_per_page = @results_per_page.to_i unless @results_per_page.is_a?(Integer)
@@ -257,7 +255,11 @@ class Search
       query += ' ' + options[:query_not].split.collect { |term| "-#{limit_field(options[:query_not_limit], term)}" }.join(' ')
     end
     query += " filetype:#{options[:file_type]}" unless options[:file_type].blank? || options[:file_type].downcase == 'all'
-    query += " #{options[:site_limits].split.collect { |site| 'site:' + site }.join(' OR ')}" unless options[:site_limits].blank? or options[:affiliate]
+    if @affiliate
+      query += " #{options[:site_limits].split.collect { |site| 'site:' + site if @affiliate.includes_domain?(site) }.join(' OR ')}" unless options[:site_limits].blank?
+    else
+      query += " #{options[:site_limits].split.collect { |site| 'site:' + site }.join(' OR ')}" unless options[:site_limits].blank?
+    end
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
     query.strip
   end
@@ -268,10 +270,6 @@ class Search
     else
       "#{field_name}#{term}"
     end
-  end
-
-  def retrieve_matching_site_limit
-    @site_limits.strip if I18n.locale == :en and @affiliate and @site_limits.present? and @site_limits.split.size == 1 and @affiliate.get_matching_domain(@site_limits).present?
   end
 
   def english_locale?
@@ -300,7 +298,7 @@ class Search
   end
 
   def generate_affiliate_scope
-    domains = fill_domains_to_remainder unless query =~ /site:/
+    domains = fill_domains_to_remainder unless @query =~ /site:/
     scopes = affiliate.scope_ids_as_array.collect { |scope| "scopeid:" + scope }.join(" OR ")
     affiliate_scope = ""
     affiliate_scope = "(" unless scopes.blank? and domains.blank?
@@ -308,7 +306,7 @@ class Search
     affiliate_scope += " OR " if affiliate_scope.length > 1 and domains.present?
     affiliate_scope += domains unless domains.blank?
     affiliate_scope += ")" unless scopes.blank? and domains.blank?
-    affiliate_scope += " #{generate_default_scope}" if (query =~ /site:/ and scopes.blank?) or (scopes.blank? and domains.blank?)
+    affiliate_scope += " #{generate_default_scope}" if (scopes.blank? and domains.blank? and (@query =~ /site:/).nil?)
     affiliate_scope.strip
   end
 
@@ -321,7 +319,6 @@ class Search
   end
 
   def fill_domains_to_remainder
-    return "site:#{@matching_site_limit}" unless @matching_site_limit.blank?
     remaining_chars = QUERY_STRING_ALLOCATION - query_plus_locale.length
     domains, delimiter = [], " OR "
     affiliate.domains_as_array.each do |site|

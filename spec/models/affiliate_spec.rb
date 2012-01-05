@@ -640,41 +640,6 @@ describe Affiliate do
     end
   end
 
-  describe "#get_matching_domain" do
-    let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
-    let(:url_within_domain) { "http://www.bar.com/blogs/1" }
-    let(:url_outside_domain) { "http://www.outsider.com/blogs/1" }
-
-    context "when locale is :en" do
-      before do
-        affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
-        I18n.stub(:locale).and_return(:en)
-      end
-
-      context "and url is in the same domain" do
-        specify { affiliate.get_matching_domain(url_within_domain).should == "bar.com" }
-      end
-
-      context "and url is not in the same domain" do
-        specify { affiliate.get_matching_domain(url_outside_domain).should be_blank }
-      end
-    end
-
-    context "when locale is :es" do
-       before do
-        I18n.stub(:locale).and_return(:es)
-      end
-
-      context "and url is within the domain" do
-        specify { affiliate.get_matching_domain(url_within_domain).should be_blank }
-      end
-
-      context "and url is outside the domain" do
-        specify { affiliate.get_matching_domain(url_outside_domain).should be_blank }
-      end
-    end
-  end
-
   describe "#css_property_hash" do
     context "when theme is custom" do
       let(:css_property_hash) { { :title_link_color => '#33ff33', :visited_title_link_color => '#0000ff' } }
