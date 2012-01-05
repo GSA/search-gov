@@ -6,6 +6,7 @@ describe Search do
   before do
     @affiliate = affiliates(:basic_affiliate)
     @valid_options = {:query => 'government', :page => 3}
+    @uriresult = URI::parse("http://localhost:3000/")
   end
 
   describe "#run" do
@@ -159,18 +160,16 @@ describe Search do
 
     context "when enable highlighting is set to true" do
       it "should pass the enable highlighting parameter to Bing as an option" do
-        uriresult = URI::parse("http://localhost:3000")
         search = Search.new(@valid_options.merge(:enable_highlighting => true))
-        URI.should_receive(:parse).with(/EnableHighlighting/).and_return(uriresult)
+        URI.should_receive(:parse).with(/EnableHighlighting/).and_return(@uriresult)
         search.run
       end
     end
 
     context "when enable highlighting is set to false" do
       it "should not pass enable highlighting parameter to Bing as an option" do
-        uriresult = URI::parse("http://localhost:3000")
         search = Search.new(@valid_options.merge(:enable_highlighting => false))
-        URI.should_receive(:parse).with(/Options=&/).and_return(uriresult)
+        URI.should_receive(:parse).with(/Options=&/).and_return(@uriresult)
         search.run
       end
     end
@@ -181,9 +180,8 @@ describe Search do
       end
 
       it "should pass a language filter to Bing" do
-        uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options)
-        URI.should_receive(:parse).with(/%20language%3Aes/).and_return(uriresult)
+        URI.should_receive(:parse).with(/%20language%3Aes/).and_return(@uriresult)
         search.run
       end
 
@@ -202,7 +200,6 @@ describe Search do
       context "when affiliate has domains specified and user does not specify site: in search" do
         before do
           @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
-          @uriresult = URI::parse("http://localhost:3000/")
         end
 
         it "should use affiliate domains in query to Bing without passing ScopeID" do
@@ -241,8 +238,7 @@ describe Search do
       context "when affiliate has domains specified but user specifies site: in search" do
         before do
           @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
-          @uriresult = URI::parse("http://localhost:3000/")
-        end
+                  end
 
         it "should override affiliate domains in query to Bing and use ScopeID/gov/mil combo" do
           search = Search.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov"))
@@ -299,10 +295,6 @@ describe Search do
       end
 
       context "when affiliate has no domains specified" do
-        before do
-          @uriresult = URI::parse("http://localhost:3000/")
-        end
-
         it "should use just query string and ScopeID/gov/mil combo" do
           search = Search.new(@valid_options.merge(:affiliate => Affiliate.new))
           URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
@@ -325,8 +317,7 @@ describe Search do
       end
 
       it "should use just query string and ScopeID/gov/mil combo" do
-        uriresult = URI::parse("http://localhost:3000/")
-        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(uriresult)
+                URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
         @search.run
       end
 
@@ -337,9 +328,8 @@ describe Search do
 
       context "when a scope id is specified" do
         it "should ignore the scope id" do
-          uriresult = URI::parse("http://localhost:3000/")
           @search = Search.new(@valid_options.merge(:affiliate => nil, :scope_id => 'PatentClass'))
-          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(uriresult)
+          URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
           @search.run
         end
       end
@@ -347,18 +337,13 @@ describe Search do
 
     context "when page offset is specified" do
       it "should specify the offset in the query to Bing" do
-        uriresult = URI::parse("http://localhost:3000/")
         search = Search.new(@valid_options.merge(:page => 7))
-        URI.should_receive(:parse).with(/web\.offset=70/).and_return(uriresult)
+        URI.should_receive(:parse).with(/web\.offset=70/).and_return(@uriresult)
         search.run
       end
     end
 
     context "when advanced query parameters are passed" do
-      before do
-        @uriresult = URI::parse('http://localhost:3000')
-      end
-
       context "when query is limited to search only in titles" do
         it "should construct a query string with the intitle: limits on the query parameter" do
           search = Search.new(@valid_options.merge(:query_limit => "intitle:"))
@@ -644,7 +629,6 @@ describe Search do
 
     context "when the query contains an '&' character" do
       it "should pass a url-escaped query string to Bing" do
-        @uriresult = URI::parse('http://localhost:3000')
         query = "Pros & Cons Physician Assisted Suicide"
         search = Search.new(@valid_options.merge(:query => query))
         URI.should_receive(:parse).with(/Pros%20%26%20Cons%20Physician%20Assisted%20Suicide/).and_return(@uriresult)
