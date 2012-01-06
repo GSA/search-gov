@@ -7,7 +7,12 @@ describe SiteDomain do
 
   describe "#create" do
     let(:affiliate) { affiliates(:basic_affiliate) }
-    specify { affiliate.site_domains.create(:domain => '').should_not be_valid }
+    ['','foo..gov','weird.tldee'].each do |bad|
+      it { should_not allow_value(bad).for(:domain) }
+    end
+    ['.gov','usa.gov','some.gov/url'].each do |good|
+      it { should allow_value(good).for(:domain) }
+    end
     specify { affiliate.site_domains.create!(:domain => 'usa.gov').site_name.should == 'usa.gov' }
 
     context "when domain starts with /https?/" do

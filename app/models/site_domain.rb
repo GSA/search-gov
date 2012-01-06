@@ -2,7 +2,7 @@ class SiteDomain < ActiveRecord::Base
   VALID_UPLOAD_FILE_CONTENT_TYPE = %w( text/csv text/comma-separated-values )
 
   before_validation :filter_domain
-  validates_format_of :domain, :with => /^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,3}(\/.*)?$/ix
+  validates_format_of :domain, :with => /^([a-z0-9]+)?([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,3}(\/.*)?$/ix
   validates_uniqueness_of :domain, :scope => :affiliate_id
   before_save :set_site_name
 
