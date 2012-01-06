@@ -194,8 +194,8 @@ Feature: Affiliate Search
     
   Scenario: Searchers see agency popular pages in English
     Given the following Affiliates exist:
-      | display_name | name       | contact_email  | contact_name | domains |
-      | agency site  | ssa.gov    | aff@agency.gov | John Bar     | ssa.gov |
+      | display_name | name       | contact_email  | contact_name | domains | is_agency_govbox_enabled  |
+      | agency site  | ssa.gov    | aff@agency.gov | John Bar     | ssa.gov | true                      |
     And the following Agency entries exist:
       | name | domain  |
       | SSA  | ssa.gov |
@@ -209,10 +209,49 @@ Feature: Affiliate Search
       | SSA  | en     | 10   | Apply online for retirement benefits  | http://www.ssa.gov/planners/about.htm              |
       | SSA  | es     | 20   | Solicite beneficios de jubilación     | http://www.ssa.gov/espanol/plan/sobreelplan.htm    |
       | SSA  | es     | 10   | Solicite beneficios de incapacidad    | http://www.ssa.gov/espanol/soliciteporincapacidad/ |
+    And I am logged in with email "aff@agency.gov" and password "random_string"
+    When I am on ssa.gov's search page
+    And I fill in "query" with "ssa"
+    And I press "Search"
+    Then I should see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
+    And I should see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
+    And I should not see a link to "Solicite beneficios de jubilación" with url for "http://www.ssa.gov/espanol/plan/sobreelplan.htm" on the popular pages list
+    And I should not see a link to "Solicite beneficios de incapacidad" with url for "http://www.ssa.gov/espanol/soliciteporincapacidad/" on the popular pages list
+    
+    When I go to the affiliate admin page with "ssa.gov" selected
+    And I follow "Look and feel"
+    And I uncheck "Show Agency Govbox?"
+    And I press "Update"
+    
     When I am on ssa.gov's search page
     And I fill in "query" with "ssa"
     And I press "Search"
     Then I should not see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
     And I should not see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
-    And I should not see a link to "Solicite beneficios de jubilación" with url for "http://www.ssa.gov/espanol/plan/sobreelplan.htm" on the popular pages list
-    And I should not see a link to "Solicite beneficios de incapacidad" with url for "http://www.ssa.gov/espanol/soliciteporincapacidad/" on the popular pages list
+    
+  Scenario: Searchers see Medline Govbox
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | domains | is_medline_govbox_enabled  |
+      | agency site  | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | true                      |
+    And I am on nih.gov's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
+    
+    Given I am logged in with email "aff@bar.gov" and password "random_string"
+    And the following Medline Topics exist:
+      | medline_title                        | medline_tid | locale  | summary_html                                                     |
+      | Hippopotomonstrosesquippedaliophobia | 12345       | en      | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
+    When I am on nih.gov's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Search"
+    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
+    
+    When I go to the affiliate admin page with "nih.gov" selected
+    And I follow "Look and feel"
+    And I uncheck "Show Medline Govbox?"
+    And I press "Update"
+    
+    When I am on nih.gov's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Search"
+    Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"

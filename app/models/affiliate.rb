@@ -264,11 +264,11 @@ class Affiliate < ActiveRecord::Base
   end
 
   def is_agency_govbox_enabled?
-    false
+    is_agency_govbox_enabled
   end
 
   def is_medline_govbox_enabled?
-    false
+    is_medline_govbox_enabled
   end
 
   private

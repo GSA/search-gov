@@ -1,31 +1,23 @@
 class MedTopic < ActiveRecord::Base
-
   MEDLINE_BASE_URL                = "http://www.nlm.nih.gov/medlineplus/"
   MEDLINE_BASE_VOCAB_URL          = MEDLINE_BASE_URL + "xml/vocabulary/"
   ACCEPTABLE_SYMMARY_URL_PREFIXES = [MEDLINE_BASE_URL]
   SATURDAY                        = 6
   DAYS_PER_WEEK                   = 7
   SUPPORTED_LOCALES               = ["en", "es"]
-
   MESH_TITLE_SEPARATOR = ":"
 
-
   validates_presence_of :medline_tid, :medline_title, :locale
-
   has_many :synonyms, :class_name => "MedSynonym", :foreign_key => :topic_id, :dependent => :destroy
-
   has_many :group_relatees, :class_name => "MedTopicGroup", :foreign_key => :topic_id, :dependent => :destroy
   has_many :related_groups, :through => :group_relatees, :source => :group
-
   has_many :topic_relatees, :class_name => "MedTopicRelated", :foreign_key => :topic_id, :dependent => :destroy
   has_many :topic_relaters, :class_name => "MedTopicRelated", :foreign_key => :related_topic_id, :dependent => :destroy
   has_many :related_topics, :through => :topic_relatees, :source => :related_topic
-
   belongs_to :lang_mapped_topic, :class_name => "MedTopic"
   has_many :lang_mapping_topics, :class_name => "MedTopic", :foreign_key => :lang_mapped_topic_id, :dependent => :nullify
 
   @@fetch_count = 0
-
 
   def has_mesh_titles?
     not mesh_titles.empty?
@@ -40,7 +32,6 @@ class MedTopic < ActiveRecord::Base
     def fetch_count
       @@fetch_count
     end
-
 
     def tmp_dir
       dir_path = ::Rails.root.join('tmp', 'medline')
@@ -63,7 +54,6 @@ class MedTopic < ActiveRecord::Base
       return "mplus_vocab_#{effective_date.strftime("%Y-%m-%d")}"
     end
 
-
     def medline_xml_for_date(date = nil)
       vocab_xml_fns             = "#{xml_base_name_for_date(date)}.xml"
       cached_data_path_incoming = cached_file_path("#{vocab_xml_fns}-incoming")
@@ -78,11 +68,9 @@ class MedTopic < ActiveRecord::Base
       remote_data
     end
 
-
     def cached_file_path(name)
       File.join(tmp_dir, name)
     end
-
 
     def dump_db_vocab
       topics = { }
@@ -131,7 +119,6 @@ class MedTopic < ActiveRecord::Base
 
       { :topics => topics, :groups => groups }
     end
-
 
     def delta_medline_vocab(have, want)
 
@@ -224,9 +211,7 @@ class MedTopic < ActiveRecord::Base
       }
 
       return todo
-
     end
-
 
     def parse_medline_xml_meshheads(root)
       mesh_heads = []
@@ -241,25 +226,18 @@ class MedTopic < ActiveRecord::Base
       return mesh_heads
     end
 
-
     def parse_medline_xml_vocab(xml)
-
       xml_doc = Nokogiri::XML(xml)
-
       topics = { }
       groups = { }
-
       xml_doc.xpath("//MedicalTopic").each { |topic_node|
-
         tid = topic_node.at_xpath('ID').text.to_i rescue nil
         lang = topic_node["langcode"] rescue "English"
         locale = { "Spanish" => 'es', "English" => 'en' }[lang] || 'en'
         medline_title = topic_node.at_xpath("MedicalTopicName").text rescue nil
         medline_url = topic_node.at_xpath("URL").text rescue nil
         lmtid = topic_node.at_xpath('LanguageMappedTopicID').text.to_i rescue nil
-
         summary = topic_node.at_xpath("FullSummary")
-
         linted_summary = if summary.nil?
                            nil
                          else
@@ -267,16 +245,13 @@ class MedTopic < ActiveRecord::Base
                              yield(tid, msg) if block_given?
                            }
                          end
-
         syns_node = topic_node.at_xpath("Synonyms")
         synonyms  = []
         unless syns_node.nil?
           syns_node.xpath("Synonym").each { |syn| synonyms << syn.text.strip }
           synonyms
         end
-
         groups_node = topic_node.at_xpath("Groups")
-
         related_gids = []
         unless groups_node.nil?
           groups_node.xpath("Group").each { |group_node|
@@ -288,7 +263,6 @@ class MedTopic < ActiveRecord::Base
             related_gids << gid
           }
         end
-
         related_topics_node = topic_node.at_xpath("RelatedTopics")
         related_tids = if related_topics_node.nil?
                          []
@@ -300,16 +274,12 @@ class MedTopic < ActiveRecord::Base
                          }
                          rtids
                        end
-
-
         mesh_heads = parse_medline_xml_meshheads(topic_node)
         if mesh_heads.empty?
           # note: only go after first SeeReference
           mesh_heads = parse_medline_xml_meshheads(topic_node.xpath("SeeReferencesList/SeeReference"))
         end
-
         mesh_titles = mesh_heads.join(MESH_TITLE_SEPARATOR)
-
         topics[tid] = {
             :medline_title  => medline_title,
             :locale         => locale,
@@ -321,13 +291,9 @@ class MedTopic < ActiveRecord::Base
             :related_groups => related_gids.sort,
             :related_topics => related_tids.sort
         }
-
       }
-
       return { :topics => topics, :groups => groups }
-
     end
-
 
     def ensym_string_keys(o)
       if o.is_a? Hash

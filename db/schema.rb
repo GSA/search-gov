@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120103164925) do
+ActiveRecord::Schema.define(:version => 20120105184148) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(:version => 20120103164925) do
     t.text     "header_footer_css"
     t.text     "staged_header_footer_css"
     t.text     "scope_ids"
+    t.boolean  "is_agency_govbox_enabled",                       :default => false
+    t.boolean  "is_medline_govbox_enabled",                      :default => false
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

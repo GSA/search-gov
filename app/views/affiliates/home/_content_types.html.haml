@@ -5,4 +5,10 @@
     = check_box_tag 'images', '1', @affiliate.is_image_search_enabled
     = label_tag 'images', 'Show Image Search?'
     %br
+    = check_box_tag 'agency_govbox', '1', @affiliate.is_agency_govbox_enabled
+    = label_tag 'agency_govbox', 'Show Agency Govbox?'
+    %br
+    = check_box_tag 'medline_govbox', '1', @affiliate.is_medline_govbox_enabled
+    = label_tag 'medline_govbox', 'Show Medline Govbox?'
+    %br
     = submit_tag 'Update'

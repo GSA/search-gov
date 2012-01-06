@@ -26,3 +26,13 @@ end
 Then /^I should not see the indexed documents section$/ do
   page.should_not have_selector("#indexed_documents")
 end
+
+When /^(.*)'s agency govbox is disabled$/ do |affiliate_name|
+  Affiliate.find_by_name(affiliate_name).update_attributes(:is_agency_govbox_enabled => false)
+end
+
+Given /^the following Medline Topics exist:$/ do |table|
+  table.hashes.each do |hash|
+    MedTopic.create!(:medline_title => hash['medline_title'], :medline_tid => hash['medline_tid'].to_i, :locale => hash['locale'], :summary_html => hash['summary_html'])
+  end
+end

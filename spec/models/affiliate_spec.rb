@@ -170,6 +170,12 @@ describe Affiliate do
         affiliate.site_domains(true).count.should == 1
         affiliate.site_domains.first.domain.should == 'usa.gov'
       end
+      
+      it "should default the govbox fields to OFF" do
+        affiliate = Affiliate.create!(@valid_create_attributes)
+        affiliate.is_agency_govbox_enabled.should == false
+        affiliate.is_medline_govbox_enabled.should == false
+      end
     end
 
     describe "on update_attributes_for_staging" do

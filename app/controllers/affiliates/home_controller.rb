@@ -237,7 +237,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def update_content_types
-    @affiliate.update_attributes(:is_image_search_enabled => params["images"] == "1" ? true : false)
+    @affiliate.update_attributes(:is_image_search_enabled => params["images"] == "1" ? true : false,
+                                 :is_agency_govbox_enabled => params["agency_govbox"] == "1" ? true : false,
+                                 :is_medline_govbox_enabled => params["medline_govbox"] == "1" ? true : false)
     redirect_to edit_look_and_feel_affiliate_path(@affiliate)
   end
 
