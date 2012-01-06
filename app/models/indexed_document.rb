@@ -90,6 +90,17 @@ class IndexedDocument < ActiveRecord::Base
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
     description ||= body.gsub(/ /, "").gsub(/\.{2,}/, ".").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
     update_attributes!(:title=> title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
+    discover_nested_pdfs(doc)
+  end
+
+  def discover_nested_pdfs(doc)
+    doc.css('a').collect { |link| link['href'] }.compact.select do |link_url|
+      link_url.ends_with(".pdf")
+    end.map do |relative_pdf_url|
+      URI.parse(self.url).merge(URI.parse(relative_pdf_url)).to_s
+    end.uniq.each do |pdf_url|
+      IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url)
+    end
   end
 
   def scrub_inner_text(inner_text)

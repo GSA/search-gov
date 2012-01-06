@@ -403,6 +403,30 @@ describe IndexedDocument do
           lambda { indexed_document.index_html(file) }.should raise_error(IndexedDocument::IndexedDocumentError)
         end
       end
+
+      it "should try to find and index nested PDFs" do
+        indexed_document.should_receive(:discover_nested_pdfs).with(an_instance_of(Nokogiri::HTML::Document))
+        indexed_document.index_html(file)
+      end
+    end
+  end
+
+  describe "#discover_nested_pdfs(doc)" do
+    context "when the HTML document contains PDF links" do
+      before do
+        @aff = affiliates(:basic_affiliate)
+        @aff.site_domains.destroy_all
+        @aff.site_domains.create(:domain=>"agency.gov")
+        @indexed_document = IndexedDocument.new(:affiliate => @aff, :url => "http://www.agency.gov/index.html")
+        @doc = Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/page_with_pdf_links.html'))
+      end
+
+      it "should create new IndexedDocuments with absolute URLs for PDF docs with matching site domains" do
+        @indexed_document.discover_nested_pdfs(@doc)
+        @aff.indexed_documents.count.should == 2
+        @aff.indexed_documents.find_by_url("http://www.agency.gov/relative.pdf").should_not be_nil
+        @aff.indexed_documents.find_by_url("http://www.agency.gov/absolute.pdf").should_not be_nil
+      end
     end
   end
 
