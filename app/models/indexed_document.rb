@@ -211,7 +211,9 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def site_domain_matches
-    return if self.affiliate.nil? or self.affiliate.site_domains.empty?
-    errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? { |sd| self.url.include?(sd.domain)}
+    uri = URI.parse(self.url) rescue nil
+    return if self.affiliate.nil? or self.affiliate.site_domains.empty? or uri.nil?
+    host_path = (uri.host + uri.path).downcase
+    errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? { |sd| host_path.include?(sd.domain) }
   end
 end

@@ -37,13 +37,13 @@ describe IndexedDocument do
 
     context "when URL of indexed document doen't match anything in affiliate's site domain list" do
       it "should find the record invalid" do
-        IndexedDocument.new(@valid_attributes.merge(:url=>"http://www.blacklisted.gov")).valid?.should be_false
+        IndexedDocument.new(@valid_attributes.merge(:url=>"http://www.blacklisted.gov/foo?cache_url=http://www.whitelist.gov/someurl")).valid?.should be_false
       end
     end
 
     context "when URL of indexed document matches something in affiliate's site domain list" do
       it "should find the record valid given all other attributes are valid" do
-        IndexedDocument.new(@valid_attributes.merge(:url=>"http://www.whitelist.gov/someurl")).valid?.should be_true
+        IndexedDocument.new(@valid_attributes.merge(:url=>"http://www.WHITELIST.gov/someurl")).valid?.should be_true
       end
     end
   end
