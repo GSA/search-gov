@@ -110,7 +110,7 @@ class IndexedDocument < ActiveRecord::Base
   def index_pdf(pdf_file_path)
     pdf_text = PDF::Toolkit.pdftotext(pdf_file_path) { |io| io.read }
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if pdf_text.blank?
-    update_attributes!(:title => generate_pdf_title(pdf_file_path), :description => generate_pdf_description(pdf_text), :body => pdf_text, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
+    update_attributes!(:title => generate_pdf_title(pdf_file_path, pdf_text), :description => generate_pdf_description(pdf_text), :body => pdf_text, :doctype => 'pdf', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
   end
 
   def update_content_hash
@@ -183,10 +183,9 @@ class IndexedDocument < ActiveRecord::Base
     URI::parse(url).path.split('.').last rescue nil
   end
 
-  def generate_pdf_title(pdf_file_path)
+  def generate_pdf_title(pdf_file_path, body)
     pdf = PDF::Toolkit.open(pdf_file_path) rescue nil
     return pdf.title unless pdf.nil? or pdf.title.blank?
-    body = pdf.to_text.read
     first_linebreak_index = body.strip.index("\n") || body.size
     first_sentence_index = body.strip.index(".")
     end_index = [first_linebreak_index, first_sentence_index].min - 1
