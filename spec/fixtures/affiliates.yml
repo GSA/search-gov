@@ -2,8 +2,6 @@ power_affiliate:
   display_name: Noaa Site
   name: noaa.gov
   website: http://www.noaa.gov
-  header: <center>
-  footer: </center>
   users: [:affiliate_manager]
   affiliate_template: :basic_gray
   staged_affiliate_template: [:basic_gray]
@@ -18,10 +16,6 @@ basic_affiliate:
   is_sayt_enabled: false
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
-  header: Live header
-  footer: Live footer
-  staged_header: Staged header
-  staged_footer: Staged footer
 
 another_affiliate:
   display_name: Another Gov Site
@@ -47,10 +41,6 @@ non_existant_affiliate:
   is_sayt_enabled: false
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
-  header: Live header
-  footer: Live footer
-  staged_header: Staged header
-  staged_footer: Staged footer
 
 spanish_affiliate:
   display_name: NPEspanol Site
@@ -60,8 +50,4 @@ spanish_affiliate:
   is_sayt_enabled: false
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
-  header: Live header
-  footer: Live footer
-  staged_header: Staged header
-  staged_footer: Staged footer
   locale: es

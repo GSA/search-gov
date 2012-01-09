@@ -35,8 +35,6 @@ describe ErrorsController do
       let(:affiliate) { affiliates(:basic_affiliate) }
 
       before do
-        affiliate.header.should_not == affiliate.staged_header
-        affiliate.footer.should_not == affiliate.staged_footer
         Affiliate.should_receive(:find_by_name).and_return(affiliate)
         get :page_not_found, :name => affiliate.name, :staged => "1"
       end
@@ -44,8 +42,6 @@ describe ErrorsController do
       it { should assign_to(:affiliate).with(affiliate) }
 
       it "should copy staged fields" do
-        assigns[:affiliate].staged_header.should == assigns[:affiliate].header
-        assigns[:affiliate].staged_footer.should == assigns[:affiliate].footer
         assigns[:affiliate].affiliate_template_id.should == assigns[:affiliate].staged_affiliate_template_id
       end
 

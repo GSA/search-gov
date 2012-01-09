@@ -40,8 +40,9 @@ describe Affiliate do
     it { should belong_to :affiliate_template }
     it { should belong_to :staged_affiliate_template }
     it { should_not allow_mass_assignment_of(:uses_one_serp) }
-    it { should_not allow_mass_assignment_of(:header_footer_sass) }
-    it { should_not allow_mass_assignment_of(:staged_header_footer_sass) }
+    it { should_not allow_mass_assignment_of(:previous_fields_json) }
+    it { should_not allow_mass_assignment_of(:live_fields_json) }
+    it { should_not allow_mass_assignment_of(:staged_fields_json) }
 
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_create_attributes)
@@ -170,7 +171,7 @@ describe Affiliate do
         affiliate.site_domains(true).count.should == 1
         affiliate.site_domains.first.domain.should == 'usa.gov'
       end
-      
+
       it "should default the govbox fields to OFF" do
         affiliate = Affiliate.create!(@valid_create_attributes)
         affiliate.is_agency_govbox_enabled.should == false
@@ -252,6 +253,13 @@ describe Affiliate do
       it "should set staged header and footer sass" do
         affiliate.update_attributes_for_staging(@update_params)
         affiliate.staged_header_footer_sass.should == "  .staged h1\n    color: blue"
+      end
+
+      it "should set blank staged header and footer sass" do
+        affiliate.update_attributes_for_staging(@update_params)
+        affiliate.staged_header_footer_sass.should =~ /blue/
+        affiliate.update_attributes_for_staging(:staged_header_footer_css => '')
+        affiliate.staged_header_footer_sass.should be_blank
       end
     end
 
@@ -342,6 +350,13 @@ describe Affiliate do
       it "should set header footer sass" do
         affiliate.update_attributes_for_current(@update_params)
         affiliate.header_footer_sass.should == "  .staged h1\n    color: blue"
+      end
+
+      it "should set blank staged header and footer sass" do
+        affiliate.update_attributes_for_current(@update_params)
+        affiliate.header_footer_sass.should =~ /blue/
+        affiliate.update_attributes_for_current(:staged_header_footer_css => '')
+        affiliate.header_footer_sass.should be_blank
       end
     end
 
@@ -552,8 +567,8 @@ describe Affiliate do
     it "should overwrite all staged attributes with non staged attributes" do
       affiliate.cancel_staged_changes
       affiliate.staged_header_footer_css.should_not == @update_params[:staged_header_footer_css]
-      affiliate.staged_header.should_not == @update_params[:staged_header]
-      affiliate.staged_footer.should_not == @update_params[:staged_footer]
+      affiliate.staged_header.should == "<table><tr><td>html layout from 1998</td></tr></table>"
+      affiliate.staged_footer.should == "<center>gasp</center>"
       affiliate.staged_affiliate_template_id.should_not == @update_params[:staged_affiliate_template_id]
       affiliate.staged_search_results_page_title.should_not == @update_params[:staged_search_results_page_title]
       affiliate.staged_favicon_url.should_not == @update_params[:staged_favicon_url]

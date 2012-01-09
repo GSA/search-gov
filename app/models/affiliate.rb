@@ -24,13 +24,13 @@ class Affiliate < ActiveRecord::Base
   after_destroy :remove_boosted_contents_from_index
   validate :validate_css_property_hash, :validate_header_footer_css
   before_create :set_uses_one_serp
-  before_save :set_default_theme, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass
+  before_save :set_default_theme, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :set_json_fields
   before_validation :set_default_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   after_validation :update_error_keys
   after_create :normalize_site_domains
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
-  attr_protected :uses_one_serp, :header_footer_sass, :staged_header_footer_sass
+  attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
 
@@ -82,6 +82,25 @@ class Affiliate < ActiveRecord::Base
 
   DEFAULT_CSS_PROPERTIES = { :font_family => FONT_FAMILIES[0] }.merge(THEMES[:default])
 
+  def self.define_json_columns_accessors(args)
+    column_name_method = args[:column_name_method]
+    fields = args[:fields]
+
+    fields.each do |field|
+      define_method field do
+        self.send(column_name_method).send("[]", field)
+      end
+
+      define_method :"#{field}=" do |arg|
+        self.send(column_name_method).send("[]=", field, arg)
+      end
+    end
+  end
+
+  define_json_columns_accessors :column_name_method => :previous_fields, :fields => [:previous_header, :previous_footer]
+  define_json_columns_accessors :column_name_method => :live_fields, :fields => [:header, :footer, :header_footer_sass, :header_footer_css]
+  define_json_columns_accessors :column_name_method => :staged_fields, :fields => [:staged_header, :staged_footer, :staged_header_footer_sass, :staged_header_footer_css]
+
   def name=(name)
     new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
   end
@@ -101,7 +120,7 @@ class Affiliate < ActiveRecord::Base
   def includes_domain?(domain)
     domains_as_array.detect{ |affiliate_domain| domain =~ /#{Regexp.escape(affiliate_domain)}/i }.nil? ? false : true
   end
-  
+
   def is_affiliate_related_topics_enabled?
     (self.related_topics_setting != 'global_enabled' && self.related_topics_setting != 'disabled') || self.related_topics_setting.nil?
   end
@@ -343,8 +362,8 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_header_footer_sass
-    self.staged_header_footer_sass = parse_css(staged_header_footer_css) unless staged_header_footer_css.blank?
-    self.header_footer_sass = parse_css(header_footer_css) unless header_footer_css.blank?
+    self.staged_header_footer_sass = staged_header_footer_css.blank? ? nil : parse_css(staged_header_footer_css)
+    self.header_footer_sass = header_footer_css.blank? ? nil : parse_css(header_footer_css)
   end
 
   def validate_header_footer_css
@@ -378,5 +397,23 @@ class Affiliate < ActiveRecord::Base
       self.theme = THEMES.keys.first.to_s if theme.blank?
       self.staged_theme = THEMES.keys.first.to_s if staged_theme.blank?
     end
+  end
+
+  def previous_fields
+    @previous_fields ||= previous_fields_json.blank? ? {} : JSON.parse(previous_fields_json, :symbolize_keys => true)
+  end
+
+  def live_fields
+    @live_fields ||= live_fields_json.blank? ? {} : JSON.parse(live_fields_json, :symbolize_keys => true)
+  end
+
+  def staged_fields
+    @staged_fields ||= staged_fields_json.blank? ? {} : JSON.parse(staged_fields_json, :symbolize_keys => true)
+  end
+
+  def set_json_fields
+    self.previous_fields_json = previous_fields.to_json
+    self.live_fields_json = live_fields.to_json
+    self.staged_fields_json = staged_fields.to_json
   end
 end

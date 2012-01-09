@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120105184148) do
+ActiveRecord::Schema.define(:version => 20120110175025) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -22,14 +22,8 @@ ActiveRecord::Schema.define(:version => 20120105184148) do
 
   create_table "affiliates", :force => true do |t|
     t.string   "name",                                                                            :null => false
-    t.text     "domains"
-    t.text     "header"
-    t.text     "footer"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "staged_domains"
-    t.text     "staged_header"
-    t.text     "staged_footer"
     t.boolean  "has_staged_content",                             :default => false,               :null => false
     t.string   "website"
     t.integer  "affiliate_template_id"
@@ -49,8 +43,6 @@ ActiveRecord::Schema.define(:version => 20120105184148) do
     t.string   "flickr_url"
     t.string   "twitter_handle"
     t.string   "youtube_handle"
-    t.text     "previous_header"
-    t.text     "previous_footer"
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"
@@ -59,13 +51,12 @@ ActiveRecord::Schema.define(:version => 20120105184148) do
     t.string   "theme"
     t.string   "staged_theme"
     t.string   "locale",                                         :default => "en",                :null => false
-    t.text     "header_footer_sass"
-    t.text     "staged_header_footer_sass"
-    t.text     "header_footer_css"
-    t.text     "staged_header_footer_css"
     t.text     "scope_ids"
     t.boolean  "is_agency_govbox_enabled",                       :default => false
     t.boolean  "is_medline_govbox_enabled",                      :default => false
+    t.text     "previous_fields_json"
+    t.text     "live_fields_json"
+    t.text     "staged_fields_json"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

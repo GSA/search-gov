@@ -69,7 +69,6 @@ describe "shared/_searchresults.html.haml" do
       before do
         @affiliate = Affiliate.create!(
           :display_name => "My Awesome Site",
-          :domains => "someaffiliate.gov",
           :website => "http://www.someaffiliate.gov",
           :header => "<table><tr><td>html layout from 1998</td></tr></table>",
           :footer => "<center>gasp</center>",
