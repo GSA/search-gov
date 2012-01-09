@@ -12,7 +12,7 @@ Feature: Affiliate Sitemaps
     And I follow "URLs & Sitemaps"
     And I follow "Add new Sitemap"
     Then I should see the browser page titled "Add a new Sitemap"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Add a new Sitemap
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs and Sitemaps > Add a new Sitemap
     And I should see "Add a new Sitemap" in the page header
     When I fill in "URL*" with "http://www.dol.gov/TMP/Decisions.xml"
     And I press "Add"

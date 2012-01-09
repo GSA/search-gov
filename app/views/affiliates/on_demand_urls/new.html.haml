@@ -1,4 +1,4 @@
-= affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Add a new URL"])
+= affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), link_to('URLs and Sitemaps', urls_and_sitemaps_affiliate_path(@affiliate)), "Add a new URL"])
 %h1 Add a new URL
 .add-url
   = form_for(@indexed_document, { :url => affiliate_on_demand_urls_path(@affiliate) }) do |f|

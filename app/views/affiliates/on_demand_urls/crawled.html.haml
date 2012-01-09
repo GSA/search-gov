@@ -1,5 +1,5 @@
 .crawled-urls
-  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), link_to('URLs', affiliate_on_demand_urls_path(@affiliate)), "Previously Crawled URLs"])
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), link_to('URLs and Sitemaps', urls_and_sitemaps_affiliate_path(@affiliate)), "Previously Crawled URLs"])
   %h1 Previously Crawled URLs
   .crawled-url-list
     %table
