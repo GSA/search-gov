@@ -484,7 +484,7 @@ describe SearchesController do
     it "should output a page that summarizes the results and links back to the affiliate results page" do
       get :docs, :query => "pdf", :affiliate => @affiliate.name
       response.body.should contain("Results 1-2 of about 2 for 'pdf'")
-      response.should have_selector("a", :href=> '/search?affiliate=NPS+Site&locale=en&m=false&query=pdf', :content => 'Back to all NPS Site results >>')
+      response.should have_selector("a", :href=> '/search?affiliate=nps.gov&locale=en&m=false&query=pdf', :content => 'Back to all NPS Site results >>')
     end
 
     context "when the page number is specified" do
