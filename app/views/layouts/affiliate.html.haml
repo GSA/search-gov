@@ -28,7 +28,7 @@
     %title= @page_title
   %body{ :class => render_affiliate_body_class(@affiliate) }
     #container
-      #header.header-footer= @affiliate.header.html_safe if @affiliate and @affiliate.header and (@search_options.nil? or !@search_options[:embedded])
+      #header.header-footer= render_affiliate_header(@affiliate, @search_options)
       #search.clearfix
         -unless error_page?
           %h1 Search

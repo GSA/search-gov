@@ -926,7 +926,21 @@ Feature: Affiliate clients
     And the "Visited title link color" field should contain "#800080"
     And the "Description text color" field should contain "#000000"
     And the "URL link color" field should contain "#008000"
-
+    
+  Scenario: Visiting an affiliate SERP without a header
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains        |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov |
+    When I go to aff.gov's search page
+    Then show me the page
+    Then I should see "aff site" as a header
+    
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name | search_results_page_title           | domains        | header  |
+      | aff2 site     | aff2.gov  | aff2@bar.gov    | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov |         |
+    When I go to aff2.gov's search page
+    Then I should see "aff2 site" as a header
+    
   Scenario: Enabling/Disabling popular urls
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains        | header     | footer     | staged_header | staged_footer | is_popular_links_enabled |

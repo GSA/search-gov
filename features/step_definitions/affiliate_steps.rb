@@ -279,3 +279,7 @@ end
 Then /^I should see the page with internal CSS "([^"]*)"$/ do |css|
   page.body.should match(css)
 end
+
+Then /^I should see "([^"]*)" as a header$/ do |header|
+  page.should have_selector("#default-header", :text => header)
+end
