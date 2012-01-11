@@ -13,8 +13,7 @@ class NewsSearch
               :queried_at_seconds,
               :spelling_suggestion
 
-  def initialize(affiliate, options)
-    options ||= {}
+  def initialize(affiliate, options = {})
     @query = (options["query"] || '').squish
     @query.downcase! if @query.ends_with? " OR"
     @affiliate = affiliate

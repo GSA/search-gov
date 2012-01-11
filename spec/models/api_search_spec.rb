@@ -15,7 +15,7 @@ describe ApiSearch do
       before :each do
         Search.should_receive(:new).with(params).and_return(search)
         search.should_receive(:cache_key).and_return("search_cache_key")
-        @api_cache_key = "API:#{affiliate.name}:search_cache_key:#{format.to_s}"
+        @api_cache_key = "API:#{affiliate.name}:bing:search_cache_key:#{format.to_s}"
       end
 
       context "api search cache miss" do
@@ -73,7 +73,7 @@ describe ApiSearch do
       before :each do
         Search.should_receive(:new).with(params).and_return(search)
         search.should_receive(:cache_key).and_return("search_cache_key")
-        @api_cache_key = "API:#{affiliate.name}:search_cache_key:#{format.to_s}"
+        @api_cache_key = "API:#{affiliate.name}:bing:search_cache_key:#{format.to_s}"
       end
 
       context "api search cache miss" do
@@ -117,6 +117,29 @@ describe ApiSearch do
 
           ApiSearch.search(params).should == search_result_in_xml
         end
+      end
+    end
+    
+    context "source is 'odie'" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:api_redis) { ApiSearch.redis }
+      let(:format) { 'json' }
+      let(:index) { 'odie' }
+      let(:params) { { :query => "foobar", :page => 0, :results_per_page => 10, :affiliate => affiliate, :format => format, :index => index } }
+      let(:search) { mock(OdieSearch) }
+      let(:search_result_in_json) { mock('search_result_in_json') }
+      
+      before do
+        search.stub!(:cache_key).and_return("search_cache_key")
+        search.stub!(:run)
+        search.stub!(:to_json).and_return search_result_in_json
+      end
+      
+      it "should not create a new Search object, but create an OdieSearch object instead" do
+        api_redis.should_receive(:get).with("API:#{affiliate.name}:odie:search_cache_key:#{format.to_s}").and_return(nil)
+        Search.should_not_receive(:new)
+        OdieSearch.should_receive(:new).with(params.merge(:page => 1)).and_return(search)
+        ApiSearch.search(params)
       end
     end
   end
