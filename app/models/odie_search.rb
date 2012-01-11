@@ -54,12 +54,7 @@ class OdieSearch
     if @error_message
       {:error => @error_message}.to_xml(options)
     else
-      {
-        :total => @total,
-        :startrecord => @startrecord,
-        :endrecord => @endrecord,
-        :results => @results
-      }.to_xml(options)
+      { :total => @total, :startrecord => @startrecord, :endrecord => @endrecord, :results => @results }.to_xml(options)
     end
   end
 
