@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.adobe.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+  <site-control permitted-cross-domain-policies="all"/>
+  <allow-access-from domain="*.campbell-ewald.com" secure="false"/>
+  <allow-access-from domain="*.doubleclick.net" secure="false"/>
+  <allow-access-from domain="*.2mdn.net" secure="false"/>
+  <allow-access-from domain="*.dartmotif.net" secure="false"/>
+  <allow-access-from domain="*.doubleclick.net" secure="true"/>
+  <allow-access-from domain="*.doubleclick.com" secure="true"/>
+  <allow-access-from domain="*.doubleclick.com" secure="false"/>
+  <allow-access-from domain="*.2mdn.net" secure="true"/>
+  <allow-access-from domain="*.dartmotif.net" secure="true"/>
+  <allow-access-from domain="*.gstatic.com" secure="false"/>
+  <allow-access-from domain="*.advertising.com" to-ports="*" secure="false"/>
+  <allow-access-from domain="*.optmd.com" to-ports="*" secure="false"/>
+  <allow-access-from domain="*.interclick.com" to-ports="*" secure="false"/>
+  <allow-access-from domain="*.specificclick.net" to-ports="*" secure="false"/>
+  <allow-access-from domain="*.tribalfusion.com" to-ports="*" secure="false"/>
+  <allow-access-from domain="*.intellitxt.com" to-ports="*" secure="false"/>
+</cross-domain-policy>
