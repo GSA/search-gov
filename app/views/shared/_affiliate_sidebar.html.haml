@@ -28,6 +28,9 @@
               = link_to "URLs & Sitemaps", urls_and_sitemaps_affiliate_path(@affiliate)
               = image_tag 'new.png', :class => 'new'
             %li
+              = link_to "Hosted Sitemaps", hosted_sitemaps_affiliate_path(@affiliate)
+              = image_tag 'new.png', :class => 'new'
+            %li
               = link_to "RSS", affiliate_rss_feeds_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
             %li.last

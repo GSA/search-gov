@@ -20,6 +20,7 @@ class Affiliate < ActiveRecord::Base
   has_many :sitemaps, :dependent => :destroy
   has_many :top_searches, :dependent => :destroy, :order => 'position ASC', :limit => 5
   has_many :site_domains, :dependent => :destroy
+  has_many :indexed_domains, :dependent => :destroy
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   validate :validate_css_property_hash, :validate_header_footer_css

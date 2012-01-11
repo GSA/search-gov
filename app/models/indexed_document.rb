@@ -6,7 +6,9 @@ class IndexedDocument < ActiveRecord::Base
   attr_reader :url_extension
 
   belongs_to :affiliate
+  belongs_to :indexed_domain
   before_validation :normalize_url
+  before_save :set_indexed_domain
   validates_presence_of :url, :affiliate_id
   validates_presence_of :title, :description, :if => :last_crawl_status_ok?
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
@@ -179,6 +181,10 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   private
+
+  def set_indexed_domain
+    self.indexed_domain = IndexedDomain.find_or_create_by_affiliate_id_and_domain(self.affiliate.id, URI.parse(self.url).host) if last_crawl_status_ok?
+  end
 
   def url_extension
     URI::parse(url).path.split('.').last rescue nil

@@ -37,6 +37,7 @@ describe Affiliate do
     it { should have_many(:featured_collections).dependent(:destroy) }
     it { should have_many(:rss_feeds).dependent(:destroy) }
     it { should have_many(:site_domains).dependent(:destroy)}
+    it { should have_many(:indexed_domains).dependent(:destroy)}
     it { should belong_to :affiliate_template }
     it { should belong_to :staged_affiliate_template }
     it { should_not allow_mass_assignment_of(:uses_one_serp) }

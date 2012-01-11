@@ -1,0 +1,25 @@
+#urls_and_sitemaps
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Hosted Sitemaps"])
+  %h1= "Hosted Sitemaps for USASearch Index"
+
+  .column-1
+    %p
+      USASearch can host a sitemap for each of the domains where we have fetched and indexed content.
+      It is meant to be used by affiliates who have the discovery script running on their sites.
+
+    - if @affiliate.indexed_domains.present?
+      %h2 Edit your robots.txt file
+      %p
+        Put a sitemap line in the appropriate robots.txt file that you control on your domain.
+        This lets search engine crawlers know that you authorize these sitemaps.
+        You can reference multiple sitemaps from a robots.txt file, so you don't need to remove any other sitemap references
+        that you may already have in place.
+      - @affiliate.indexed_domains.each do |indexed_domain|
+        %p
+          In the robots.txt file for
+          %strong= indexed_domain.domain
+          add this line:
+          %pre Sitemap: #{hosted_sitemap_url(indexed_domain.id)}
+    - else
+      %p
+        The hosted sitemap URL will only be available for a domain once USASearch has begun fetching and indexing the content for that domain.

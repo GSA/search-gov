@@ -52,6 +52,11 @@ describe IndexedDocument do
     IndexedDocument.create!(@valid_attributes)
   end
 
+  it "should assign/create an associated indexed_domain" do
+    IndexedDocument.create!(@valid_attributes)
+    IndexedDomain.find_by_affiliate_id_and_domain(affiliates(:basic_affiliate).id,"something.gov").should_not be_nil
+  end
+
   describe "handling file extensions for URLs" do
     it "should not allow unsupported extensions" do
       base_url = "http://www.nps.gov/honey-badger."
