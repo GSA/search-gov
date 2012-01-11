@@ -7,7 +7,12 @@ class ApiSearch
   def self.search(options)
     format = options[:format] =~ /xml/i ? :xml : :json
     index = options[:index] == "odie" ? :odie : :bing
-    search = index == :odie ? OdieSearch.new(options.merge(:page => options[:page] + 1)) : Search.new(options) 
+    if index == :odie
+      options[:page] = options[:page] + 1 if options[:page]
+      search = OdieSearch.new(options)
+    else
+      search = Search.new(options)
+    end
     api_cache_key = "API:#{options[:affiliate].name}:#{index}:#{search.cache_key}:#{format}"
     if cached = @@redis.get(api_cache_key) rescue nil
       cached

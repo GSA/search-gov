@@ -33,7 +33,7 @@ class OdieSearch
   end
   
   def cache_key
-    [@query, @affiliate.name, @startrecord].join(':')
+    [@query, @affiliate.name, @page].join(':')
   end
 
   
