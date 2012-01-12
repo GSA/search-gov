@@ -8,6 +8,7 @@ class IndexedDocument < ActiveRecord::Base
   belongs_to :affiliate
   before_validation :normalize_url
   validates_presence_of :url, :affiliate_id
+  validates_presence_of :title, :description, :if => :last_crawl_status_ok?
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
   validates_uniqueness_of :content_hash, :message => "is not unique: Identical content (title and body) already indexed", :scope => :affiliate_id, :allow_nil => true
   validates_format_of :url, :with => /^http:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
@@ -50,7 +51,7 @@ class IndexedDocument < ActiveRecord::Base
 
   def fetch
     site_domain_matches
-    delete and return unless errors.empty?
+    destroy and return unless errors.empty?
     begin
       file = open(url)
       content_type = file.content_type
@@ -214,5 +215,9 @@ class IndexedDocument < ActiveRecord::Base
     return if self.affiliate.nil? or self.affiliate.site_domains.empty? or uri.nil?
     host_path = (uri.host + uri.path).downcase
     errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? { |sd| host_path.include?(sd.domain) }
+  end
+
+  def last_crawl_status_ok?
+    last_crawl_status == OK_STATUS
   end
 end

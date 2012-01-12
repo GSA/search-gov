@@ -6,7 +6,7 @@ describe OdieSearch do
   let(:affiliate) { affiliates(:basic_affiliate) }
 
   before do
-    affiliate.indexed_documents.create!(:url => 'http://nps.gov/something.pdf', :title => 'The Fifth Element', :last_crawled_at => Time.now, :last_crawl_status => "OK")
+    affiliate.indexed_documents.create!(:url => 'http://nps.gov/something.pdf', :title => 'The Fifth Element', :description => 'Leeloo the supreme being', :last_crawled_at => Time.now, :last_crawl_status => "OK")
     IndexedDocument.reindex
   end
 
@@ -76,25 +76,25 @@ describe OdieSearch do
       end
     end
   end
-  
+
   describe "#cache_key" do
     before do
       @search = OdieSearch.new(:query => 'element', :affiliate => affiliate)
       @search.run
       puts @search.startrecord
     end
-    
+
     it "should output a key based on the parameters" do
       @search.cache_key.should == "element:nps.gov:1"
     end
   end
-  
+
   describe "#as_json" do
     before do
       @search = OdieSearch.new(:query => 'element', :affiliate => affiliate)
       @search.run
     end
-    
+
     it "should generate a JSON representation of total, start and end records and search results" do
       json = @search.to_json
       json.should =~ /total/
@@ -113,7 +113,7 @@ describe OdieSearch do
       end
     end
   end
-  
+
   describe "#to_xml" do
     before do
       @search = OdieSearch.new(:query => 'element', :affiliate => affiliate)
@@ -136,6 +136,6 @@ describe OdieSearch do
         xml = @search.to_xml
         xml.should =~ /<error>Some error<\/error>/
       end
-    end    
+    end
   end
 end

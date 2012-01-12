@@ -414,7 +414,7 @@ class Search
   end
 
   def process_indexed_results(indexed_results)
-    processed = indexed_results.hits.collect do |hit|
+    processed = indexed_results.hits(:verify => true).collect do |hit|
       {
         'title' => highlight_solr_hit_like_bing(hit, :title),
         'unescapedUrl' => hit.instance.url,

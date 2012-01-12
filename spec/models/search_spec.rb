@@ -282,7 +282,7 @@ describe Search do
           @search = Search.new(@valid_options.merge(:affiliate => @affiliate, :site_limits => 'doesnotexist.gov'))
           @search.run
         end
-        
+
         it "should query the affiliates normal domains" do
           @search.query.should == 'government'
           @search.formatted_query.should == '(government) (site:bar.com OR site:foo.com)'
@@ -1153,6 +1153,29 @@ describe Search do
         search.results.should be_empty
         search.startrecord.should be_nil
         search.endrecord.should be_nil
+      end
+    end
+
+    context "when affiliate has no Bing results and there is an orphan indexed document" do
+      before do
+        @non_affiliate = affiliates(:non_existant_affiliate)
+        @non_affiliate.indexed_documents.destroy_all
+        IndexedDocument.reindex
+        odie = @non_affiliate.indexed_documents.create!(:title => "PDF Title", :description => "PDF Description", :url => 'http://laksjdflkjasldkjfalskdjf.gov/pdf1.pdf', :doctype => 'pdf', :last_crawl_status => IndexedDocument::OK_STATUS)
+        Sunspot.commit
+        odie.delete
+        IndexedDocument.solr_search_ids { with :affiliate_id, affiliates(:non_existant_affiliate).id }.first.should == odie.id
+      end
+
+      it "should return with zero results" do
+        search = Search.new(:query => 'PDF', :affiliate => @non_affiliate)
+        search.should_not_receive(:highlight_solr_hit_like_bing)
+        search.run
+        search.results.should be_blank
+      end
+
+      after do
+        IndexedDocument.reindex
       end
     end
   end

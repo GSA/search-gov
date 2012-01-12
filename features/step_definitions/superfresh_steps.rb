@@ -24,7 +24,13 @@ Given /^the following IndexedDocuments exist:$/ do |table|
 end
 
 When /^the url "([^\"]*)" has been crawled$/ do |url|
-  IndexedDocument.find_by_url(url).update_attributes(:last_crawled_at => Time.now, :last_crawl_status => IndexedDocument::OK_STATUS)
+  idoc = IndexedDocument.find_by_url(url)
+  title = idoc.title.blank? ? 'some title' : idoc.title
+  description = idoc.description.blank? ? 'some description' : idoc.description
+  idoc.update_attributes!(:title => title,
+                          :description => description,
+                          :last_crawled_at => Time.now,
+                          :last_crawl_status => IndexedDocument::OK_STATUS)
 end
 
 When /^there are (\d+) uncrawled IndexedDocuments for "([^"]*)"$/ do |count, aff_name|

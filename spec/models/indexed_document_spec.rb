@@ -120,6 +120,18 @@ describe IndexedDocument do
     duplicate.should be_valid
   end
 
+  it "should not allow setting last_crawl_status to OK if the title is blank" do
+    odie = IndexedDocument.create!(@min_valid_attributes)
+    odie.update_attributes(:title => nil, :description => 'bogus description', :last_crawl_status => IndexedDocument::OK_STATUS).should be_false
+    odie.errors[:title].first.should =~ /can't be blank/
+  end
+
+  it "should not allow setting last_crawl_status to OK if the description is blank" do
+    odie = IndexedDocument.create!(@min_valid_attributes)
+    odie.update_attributes(:title => 'bogus title', :description => ' ', :last_crawl_status => IndexedDocument::OK_STATUS).should be_false
+    odie.errors[:description].first.should =~ /can't be blank/
+  end
+
   describe "#search_for" do
     before do
       @affiliate = affiliates(:basic_affiliate)
@@ -223,6 +235,7 @@ describe IndexedDocument do
       end
 
       it "should delete the entry and stop processing" do
+        indexed_document.should_receive(:remove_from_index)
         indexed_document.fetch
         IndexedDocument.exists?(indexed_document.id).should be_false
       end

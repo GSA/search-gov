@@ -2,8 +2,8 @@ require 'spec/spec_helper'
 
 describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
   fixtures :affiliates
+  let(:aff) { affiliates(:basic_affiliate) }
   before do
-    aff = affiliates(:basic_affiliate)
     aff.indexed_documents.destroy_all
     aff.site_domains.destroy_all
     @idoc = aff.indexed_documents.create!(
@@ -27,8 +27,14 @@ describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
         @idoc.affiliate.site_domains.create!(:domain=>"somethingelse.gov")
       end
 
-      it "should delete the IndexedDocument" do
-        @idoc.should_receive(:delete)
+      it "should destroy the IndexedDocument" do
+        @idoc.should_receive(:destroy)
+        IndexedDocumentValidator.perform(@idoc.id)
+      end
+
+      it "should remove IndexedDocument from solr" do
+        IndexedDocument.solr_search_ids { with :affiliate_id, aff.id }.should_not be_blank
+        @idoc.should_receive(:remove_from_index)
         IndexedDocumentValidator.perform(@idoc.id)
       end
     end
