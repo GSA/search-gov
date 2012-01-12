@@ -6,7 +6,7 @@ UsasearchRails3::Application.configure do
   config.cache_classes = true
 
   # Full error reports are disabled and caching is turned on
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Specifies the header that your server uses for sending files
@@ -47,10 +47,11 @@ UsasearchRails3::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.after_initialize do
-    MultiDb::ConnectionProxy.setup!
+  unless File.basename($0) == "rake" && ARGV.include?("db:migrate")
+    config.after_initialize do
+      MultiDb::ConnectionProxy.setup!
+    end
   end
-
 end
 
 # Sent in emails to users
@@ -60,5 +61,5 @@ APP_URL = "search.usa.gov"
 SSL_PROTOCOL = "https"
 
 # reCAPTCHA keys
-RECAPTCHA_PUBLIC_KEY  = '***REMOVED***'
+RECAPTCHA_PUBLIC_KEY = '***REMOVED***'
 RECAPTCHA_PRIVATE_KEY = '***REMOVED***'
