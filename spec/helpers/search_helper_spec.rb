@@ -84,6 +84,14 @@ describe SearchHelper do
     end
   end
 
+  describe "#no_news_results_for(search)" do
+    let(:search) { NewsSearch.new(affiliates(:basic_affiliate), {"query" => '<XSS>', "tbs" => "w"}) }
+
+    it "should HTML escape the query string" do
+      helper.no_news_results_for(search).should include("&lt;XSS&gt;")
+    end
+  end
+
   describe "#display_bing_result_extname_prefix" do
     before do
       @urls_that_need_a_box = []
