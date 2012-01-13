@@ -1,6 +1,6 @@
 require 'spec/spec_helper'
 
-describe IndexedDocumentSiteDomainValidator, "#perform(indexed_document_id)" do
+describe IndexedDocumentValidator, "#perform(indexed_document_id)" do
   fixtures :affiliates
   before do
     aff = affiliates(:basic_affiliate)
@@ -29,7 +29,7 @@ describe IndexedDocumentSiteDomainValidator, "#perform(indexed_document_id)" do
 
       it "should delete the IndexedDocument" do
         @idoc.should_receive(:delete)
-        IndexedDocumentSiteDomainValidator.perform(@idoc.id)
+        IndexedDocumentValidator.perform(@idoc.id)
       end
     end
 
@@ -40,7 +40,7 @@ describe IndexedDocumentSiteDomainValidator, "#perform(indexed_document_id)" do
 
       it "should not delete the IndexedDocument" do
         @idoc.should_not_receive(:delete)
-        IndexedDocumentSiteDomainValidator.perform(@idoc.id)
+        IndexedDocumentValidator.perform(@idoc.id)
       end
     end
   end

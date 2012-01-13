@@ -1,4 +1,4 @@
-class IndexedDocumentSiteDomainValidator
+class IndexedDocumentValidator
   @queue = :high
 
   def self.perform(indexed_document_id)

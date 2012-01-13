@@ -14,25 +14,25 @@ describe SiteDomainObserver do
   it "should enqueue the revalidation of an affiliate's indexed documents after the deletion of all but the last SiteDomain for an affiliate" do
     ResqueSpec.reset!
     affiliate.site_domains.first.destroy
-    affiliate.indexed_documents.each { |idoc| IndexedDocumentSiteDomainValidator.should have_queued(idoc.id) }
+    affiliate.indexed_documents.each { |idoc| IndexedDocumentValidator.should have_queued(idoc.id) }
     ResqueSpec.reset!
     affiliate.site_domains.first.destroy
-    affiliate.indexed_documents.each { |idoc| IndexedDocumentSiteDomainValidator.should_not have_queued(idoc.id) }
+    affiliate.indexed_documents.each { |idoc| IndexedDocumentValidator.should_not have_queued(idoc.id) }
   end
 
   it "should enqueue the revalidation of an affiliate's indexed documents after the alteration of a SiteDomain" do
     ResqueSpec.reset!
     affiliate.site_domains.first.update_attribute(:domain, "third.gov")
-    affiliate.indexed_documents.each { |idoc| IndexedDocumentSiteDomainValidator.should have_queued(idoc.id) }
+    affiliate.indexed_documents.each { |idoc| IndexedDocumentValidator.should have_queued(idoc.id) }
   end
 
   it "should enqueue the revalidation of an affiliate's indexed documents after the creation of an affiliate's first SiteDomain" do
     affiliate.site_domains.destroy_all
     ResqueSpec.reset!
     affiliate.site_domains.create!(:domain => "newone.gov")
-    affiliate.indexed_documents.each { |idoc| IndexedDocumentSiteDomainValidator.should have_queued(idoc.id) }
+    affiliate.indexed_documents.each { |idoc| IndexedDocumentValidator.should have_queued(idoc.id) }
     ResqueSpec.reset!
     affiliate.site_domains.create!(:domain => "anotherone.gov")
-    affiliate.indexed_documents.each { |idoc| IndexedDocumentSiteDomainValidator.should_not have_queued(idoc.id) }
+    affiliate.indexed_documents.each { |idoc| IndexedDocumentValidator.should_not have_queued(idoc.id) }
   end
 end
