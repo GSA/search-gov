@@ -69,7 +69,7 @@ Given /^the following Affiliates exist:$/ do |table|
       :top_searches_label => hash["top_searches_label"] || 'Search Trends',
       :locale => hash["locale"] || 'en',
       :is_agency_govbox_enabled => hash["is_agency_govbox_enabled"] || false,
-      :is_medline_govbox_enabled => hash["is_medline_govbox_enabled"] || false      
+      :is_medline_govbox_enabled => hash["is_medline_govbox_enabled"] || false
     )
     affiliate.uses_one_serp = uses_one_serp
     affiliate.save!
@@ -256,8 +256,8 @@ Then /^I should see the affiliate custom css$/ do
   page.should have_selector("head style")
 end
 
-Then /^I should see (\d+) Bing search results$/ do |count|
-  page.should have_selector("#results > .searchresult", :count => count)
+Then /^I should see some Bing search results$/ do
+  page.should have_selector("#results > .searchresult")
 end
 
 Then /^the "([^"]*)" theme should be selected$/ do |theme|
