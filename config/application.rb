@@ -58,4 +58,3 @@ SUPPORTED_LOCALES = %w{en es}
 SUPPORTED_LOCALE_WITH_NAMES = {'en' => 'English', 'es' => 'Spanish'}
 SUPPORTED_LOCALE_OPTIONS = SUPPORTED_LOCALES.collect { |locale| [SUPPORTED_LOCALE_WITH_NAMES[locale], locale] }
 SUPPORTED_VERTICALS = %w{web form image recall}
-

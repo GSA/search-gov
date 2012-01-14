@@ -1,5 +1,5 @@
 = bing_spelling_suggestion_for(search, @affiliate, @search_vertical) if (search)
-- if (search.page == 0 and search.boosted_contents and search.boosted_contents.total > 0)
+- if (search.first_page? and search.boosted_contents and search.boosted_contents.total > 0)
   = render 'shared/boosted_content', :search => search
 - elsif (search.faqs and search.faqs.total > 0)
   = render 'shared/related_faqs', :search => search

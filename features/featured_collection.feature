@@ -1,4 +1,3 @@
-@featured_collection
 Feature: Featured Collections
   As a USAAdmin
   I want to manage feature collections

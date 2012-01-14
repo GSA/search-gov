@@ -109,19 +109,19 @@ describe ApiController do
       end
 
       describe "paging" do
-        it "should set the page to the zero indexed page" do
+        it "should set the page" do
           get :search,  @auth_params.merge(:page => 3)
-          assigns[:search_options][:page].to_i.should == 2
+          assigns[:search_options][:page].to_i.should == 3
         end
 
-        it "should default the page to -1" do
+        it "should default the page to 1" do
           get :search,  @auth_params
-          assigns[:search_options][:page].to_i.should == -1
+          assigns[:search_options][:page].to_i.should == 1
         end
 
         it "should set results_per_page from per-page" do
           get :search,  @auth_params.merge("per-page" => 15)
-          assigns[:search_options][:results_per_page].to_i.should == 15
+          assigns[:search_options][:per_page].to_i.should == 15
         end
       end
     end

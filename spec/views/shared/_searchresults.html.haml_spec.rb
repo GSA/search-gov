@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 describe "shared/_searchresults.html.haml" do
   before do
-    @search = stub("Search")
+    @search = stub("WebSearch")
     @search.stub!(:related_search).and_return []
     @search.stub!(:has_related_searches?).and_return false
     @search.stub!(:queried_at_seconds).and_return(1271978870)
@@ -12,7 +12,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:startrecord).and_return 1
     @search.stub!(:endrecord).and_return 10
     @search.stub!(:total).and_return 20
-    @search.stub!(:page).and_return 0
+    @search.stub!(:page).and_return 1
     @search.stub!(:has_boosted_contents?)
     @search.stub!(:faqs)
     @search.stub!(:gov_forms)
@@ -25,6 +25,7 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:has_featured_collections?)
     @search.stub!(:indexed_documents)
     @search.stub!(:are_results_by_bing?).and_return true
+    @search.stub!(:first_page?).and_return true
     @deep_link = mock("DeepLink")
     @deep_link.stub!(:title).and_return 'A title'
     @deep_link.stub!(:url).and_return 'http://adeeplink.com'
@@ -98,7 +99,8 @@ describe "shared/_searchresults.html.haml" do
 
     context "when on anything but the first page" do
       before do
-        @search.stub!(:page).and_return 1
+        @search.stub!(:page).and_return 2
+        @search.stub!(:first_page?).and_return false
         view.stub!(:search).and_return @search
       end
 

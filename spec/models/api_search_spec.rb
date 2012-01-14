@@ -8,12 +8,12 @@ describe ApiSearch do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'json' }
-      let(:params) { { :query => "foobar", :page => 2, :results_per_page => 10, :affiliate => affiliate, :format => format } }
-      let(:search) { mock('search') }
+      let(:params) { { :query => "foobar", :page => 2, :per_page => 10, :affiliate => affiliate, :format => format } }
+      let(:search) { mock(WebSearch) }
       let(:search_result_in_json) { mock('search_result_in_json') }
 
       before :each do
-        Search.should_receive(:new).with(params).and_return(search)
+        WebSearch.should_receive(:new).with(params).and_return(search)
         search.should_receive(:cache_key).and_return("search_cache_key")
         @api_cache_key = "API:#{affiliate.name}:bing:search_cache_key:#{format.to_s}"
       end
@@ -66,12 +66,12 @@ describe ApiSearch do
       let(:affiliate) { affiliates(:basic_affiliate) }
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'xml' }
-      let(:params) { { :query => "foobar", :page => 2, :results_per_page => 10, :affiliate => affiliate, :format => format } }
-      let(:search) { mock('search') }
+      let(:params) { { :query => "foobar", :page => 2, :per_page => 10, :affiliate => affiliate, :format => format } }
+      let(:search) { mock(WebSearch) }
       let(:search_result_in_xml) { mock('search_result_in_xml') }
 
       before :each do
-        Search.should_receive(:new).with(params).and_return(search)
+        WebSearch.should_receive(:new).with(params).and_return(search)
         search.should_receive(:cache_key).and_return("search_cache_key")
         @api_cache_key = "API:#{affiliate.name}:bing:search_cache_key:#{format.to_s}"
       end
@@ -125,7 +125,7 @@ describe ApiSearch do
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'json' }
       let(:index) { 'odie' }
-      let(:params) { { :query => "foobar", :page => 0, :results_per_page => 10, :affiliate => affiliate, :format => format, :index => index } }
+      let(:params) { { :query => "foobar", :page => 0, :per_page => 10, :affiliate => affiliate, :format => format, :index => index } }
       let(:search) { mock(OdieSearch) }
       let(:search_result_in_json) { mock('search_result_in_json') }
       
@@ -137,7 +137,7 @@ describe ApiSearch do
       
       it "should not create a new Search object, but create an OdieSearch object instead" do
         api_redis.should_receive(:get).with("API:#{affiliate.name}:odie:search_cache_key:#{format.to_s}").and_return(nil)
-        Search.should_not_receive(:new)
+        WebSearch.should_not_receive(:new)
         OdieSearch.should_receive(:new).with(params.merge(:page => 1)).and_return(search)
         ApiSearch.search(params)
       end

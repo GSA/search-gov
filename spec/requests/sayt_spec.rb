@@ -32,27 +32,27 @@ describe SaytController do
   end
 
   it "should call Search.suggestions with a whitespace-normalized string" do
-    Search.should_receive(:suggestions).with(nil, 'does torture', an_instance_of(Fixnum)).and_return []
+    WebSearch.should_receive(:suggestions).with(nil, 'does torture', an_instance_of(Fixnum)).and_return []
     get '/sayt', :q=>"does  torture ", :callback => 'jsonp1276290049647'
   end
 
   context "when searching in non-mobile mode" do
     it "should return 15 suggestions" do
-      Search.should_receive(:suggestions).with(nil, "lorem", 15).and_return([@suggestion])
+      WebSearch.should_receive(:suggestions).with(nil, "lorem", 15).and_return([@suggestion])
       get '/sayt', :q=>"lorem", :callback => 'jsonp1276290049647'
     end
   end
 
   context "when affiliate id parameter (aid) is specified" do
     it "should use it to find suggestions for that affiliate" do
-      Search.should_receive(:suggestions).with("370", "lorem", 15).and_return([@suggestion])
+      WebSearch.should_receive(:suggestions).with("370", "lorem", 15).and_return([@suggestion])
       get '/sayt', :aid=> "370", :q=>"lorem", :callback => 'jsonp1276290049647'
     end
   end
 
   context "when affiliate id parameter (aid) is not specified" do
     it "should use a null affiliate id to get the generic site-wide suggestions" do
-      Search.should_receive(:suggestions).with(nil, "lorem", 15).and_return([@suggestion])
+      WebSearch.should_receive(:suggestions).with(nil, "lorem", 15).and_return([@suggestion])
       get '/sayt', :q=>"lorem", :callback => 'jsonp1276290049647'
     end
   end
@@ -60,7 +60,7 @@ describe SaytController do
   context "when searching in mobile mode" do
     it "should return 6 suggestions" do
       SaytController.class_eval { def mobile?(ua); true; end }
-      Search.should_receive(:suggestions).with(nil, "lorem", 6).and_return([@suggestion])
+      WebSearch.should_receive(:suggestions).with(nil, "lorem", 6).and_return([@suggestion])
       get '/sayt', :q => "lorem", :callback => 'jsonp1276290049647'
     end
   end

@@ -10,13 +10,13 @@ describe SearchHelper do
       result['unescapedUrl'] = "actual content is..."
       result['cacheUrl'] = "...not important here"
       helper.should_receive(:shorten_url).once
-      helper.display_bing_result_links(result, Search.new, Affiliate.new, 1, :web)
+      helper.display_bing_result_links(result, WebSearch.new, Affiliate.new, 1, :web)
     end
 
     context "when affiliate exists" do
       let(:result) { { 'unescapedUrl' => 'http://some.url' } }
       let(:affiliate) { affiliates(:basic_affiliate) }
-      let(:search) { Search.new }
+      let(:search) { WebSearch.new }
 
       it "should not display search within this site link" do
         helper.should_not_receive(:display_search_within_this_site_link).with(result, search, affiliate).and_return('search_within_this_site_link')
@@ -85,7 +85,7 @@ describe SearchHelper do
   end
 
   describe "#no_news_results_for(search)" do
-    let(:search) { NewsSearch.new(affiliates(:basic_affiliate), {"query" => '<XSS>', "tbs" => "w"}) }
+    let(:search) { NewsSearch.new(:query => '<XSS>', :tbs => "w", :affiliate => affiliates(:basic_affiliate)) }
 
     it "should HTML escape the query string" do
       helper.no_news_results_for(search).should include("&lt;XSS&gt;")
@@ -129,7 +129,7 @@ describe SearchHelper do
   describe "#bing_spelling_suggestion_for(search, affiliate, vertical)" do
     it "should return HTML escaped output containing the initial query and the suggestion" do
       affiliate = affiliates(:basic_affiliate)
-      search = Search.new(:query=>"<initialquery>", :affiliate=> affiliate)
+      search = WebSearch.new(:query=>"<initialquery>", :affiliate=> affiliate)
       search.stub!(:spelling_suggestion).and_return("<suggestion>")
       html = helper.bing_spelling_suggestion_for(search, affiliate, :web)
       html.should contain("We're including results for <suggestion>. Do you want results only for <initialquery>?")
@@ -676,7 +676,7 @@ describe SearchHelper do
   describe "#display_search_all_affiliate_sites_suggestion" do
 
     context "when affiliate is nil" do
-      specify { helper.display_search_all_affiliate_sites_suggestion(Search.new, nil).should be_blank }
+      specify { helper.display_search_all_affiliate_sites_suggestion(WebSearch.new, nil).should be_blank }
     end
 
     context "when affiliate is present and matching_site_limit is blank" do

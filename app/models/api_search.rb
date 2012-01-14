@@ -11,7 +11,7 @@ class ApiSearch
       options[:page] = options[:page] + 1 if options[:page]
       search = OdieSearch.new(options)
     else
-      search = Search.new(options)
+      search = WebSearch.new(options)
     end
     api_cache_key = "API:#{options[:affiliate].name}:#{index}:#{search.cache_key}:#{format}"
     if cached = @@redis.get(api_cache_key) rescue nil

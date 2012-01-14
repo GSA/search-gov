@@ -9,9 +9,13 @@ describe NewsSearch do
     NewsItem.reindex
   end
 
-  describe "#initialize(affiliate, options)" do
-    let(:search) { NewsSearch.new(affiliate, {"query" => '   element   OR', "tbs" => "w"}) }
-
+  describe "#initialize(options)" do
+    let(:search) { NewsSearch.new(:query => '   element   OR', :tbs => "w", :affiliate => affiliate) }
+    
+    before do
+      search.class.name.should == 'NewsSearch'
+    end
+    
     it "should set the time-based search parameter" do
       (search.since - 1.week.ago).should be_within(0.5).of(0)
     end
@@ -26,20 +30,20 @@ describe NewsSearch do
 
     context "when the tbs param isn't set" do
       it "should set 'since' to nil" do
-        NewsSearch.new(affiliate, {"query" => 'element'}).since.should be_nil
+        NewsSearch.new(:query => 'element', :affiliate => affiliate).since.should be_nil
       end
     end
 
     context "when the tbs param isn't valid" do
       it "should set 'since' to nil" do
-        NewsSearch.new(affiliate, {"query" => 'element', "tbs" => "invalid"}).since.should be_nil
+        NewsSearch.new(:query => 'element', :tbs => "invalid", :affiliate => affiliate).since.should be_nil
       end
     end
 
     context "when a valid and active RSS feed is specified" do
       it "should set the rss_feed member" do
         feed = affiliate.rss_feeds.first
-        NewsSearch.new(affiliate, {"query" => 'element', "channel" => feed.id}).rss_feed.should == feed
+        NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate).rss_feed.should == feed
       end
     end
 
@@ -47,20 +51,20 @@ describe NewsSearch do
       it "should set the rss_feed member to nil" do
         feed = affiliate.rss_feeds.first
         feed.update_attribute(:is_active, false)
-        NewsSearch.new(affiliate, {"query" => 'element', "channel" => feed.id}).rss_feed.should be_nil
+        NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate).rss_feed.should be_nil
       end
     end
 
     context "when another affiliate's RSS feed is specified" do
       it "should set the rss_feed member to nil" do
         feed = rss_feeds(:another)
-        NewsSearch.new(affiliate, {"query" => 'element', "channel" => feed.id}).rss_feed.should be_nil
+        NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate).rss_feed.should be_nil
       end
     end
 
     context "when the query param isn't set" do
       it "should set 'query' to a blank string" do
-        NewsSearch.new(affiliate,"channel" => affiliate.rss_feeds.first.id).query.should be_blank
+        NewsSearch.new(:channel => affiliate.rss_feeds.first.id, :affiliate => affiliate).query.should be_blank
       end
     end
   end
@@ -68,14 +72,14 @@ describe NewsSearch do
   describe "#run" do
     it "should log info about the query and module impressions" do
       SaytSuggestion.stub!(:related_search).and_return %{some array}
-      search = NewsSearch.new(affiliate, {"query" => 'element'})
+      search = NewsSearch.new(:query => 'element', :affiliate => affiliate)
       QueryImpression.should_receive(:log).with(:news, affiliate.name, 'element', ["NEWS", 'SREL'])
       search.run
     end
 
     context "when searching with really long queries" do
       before do
-        @search = NewsSearch.new(affiliate, {"query" => "X" * (Search::MAX_QUERYTERM_LENGTH + 1)})
+        @search = NewsSearch.new(:query => "X" * (Search::MAX_QUERYTERM_LENGTH + 1), :affiliate => affiliate)
       end
 
       it "should return false when searching" do
@@ -97,7 +101,7 @@ describe NewsSearch do
 
     context "when searching with a blank query" do
       before do
-        @search = NewsSearch.new(affiliate, {"query" => "   "})
+        @search = NewsSearch.new(:query => "   ", :affiliate => affiliate)
       end
 
       it "should return false when searching" do
@@ -118,7 +122,7 @@ describe NewsSearch do
     context "when a valid active RSS feed is specified" do
       it "should only search for news items from that feed" do
         feed = affiliate.rss_feeds.first
-        search = NewsSearch.new(affiliate, {"query" => 'element', "channel" => feed.id})
+        search = NewsSearch.new(:query => 'element', :channel => feed.id, :affiliate => affiliate)
         NewsItem.should_receive(:search_for).with('element', [feed], nil, 1, [])
         search.run.should be_true
       end
@@ -128,7 +132,7 @@ describe NewsSearch do
       it "should search for news items from all active feeds for the affiliate" do
         feed = affiliate.rss_feeds.first
         feed.update_attribute(:is_active, false)
-        search = NewsSearch.new(affiliate, {"query" => 'element', "channel" => feed.id, "page" => 2})
+        search = NewsSearch.new(:query => 'element', :channel => feed.id, :page => 2, :affiliate => affiliate)
         NewsItem.should_receive(:search_for).with('element', affiliate.active_rss_feeds, nil, 2, [])
         search.run
       end
@@ -136,7 +140,7 @@ describe NewsSearch do
 
     context "when no RSS feed is specified" do
       it "should search for news items from all active feeds for the affiliate" do
-        search = NewsSearch.new(affiliate, {"query" => 'element', "tbs" => "w"})
+        search = NewsSearch.new(:query => 'element', :tbs => "w", :affiliate => affiliate)
         NewsItem.should_receive(:search_for).with('element', affiliate.active_rss_feeds, an_instance_of(ActiveSupport::TimeWithZone), 1, [])
         search.run
       end

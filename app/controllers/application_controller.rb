@@ -93,7 +93,7 @@ class ApplicationController < ActionController::Base
 
   def search_options_from_params(params)
     {
-        :page => (params[:page].to_i - 1),
+        :page => [(params[:page] || "1").to_i, 1].max,
         :query => params["query"],
         :query_limit => params["query-limit"],
         :query_quote => params["query-quote"],
@@ -107,8 +107,7 @@ class ApplicationController < ActionController::Base
         :site_excludes => params["siteexclude"],
         :filter => params["filter"],
         :fedstates => params["fedstates"] || nil,
-        :scope_id => params["scope_id"] || nil,
-        :results_per_page => params["per-page"],
+        :per_page => (params["per-page"] || Search::DEFAULT_PER_PAGE).to_i,
         :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
         :embedded => params["embedded"].present?
     }

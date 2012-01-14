@@ -1,4 +1,4 @@
-- if search.agency.present? and index == 0 and search.page == 0 and agency_url_matches_by_locale(result['unescapedUrl'], search.agency, I18n.locale)
+- if search.agency.present? and index == 0 and search.first_page? and agency_url_matches_by_locale(result['unescapedUrl'], search.agency, I18n.locale)
   = render 'shared/agency_gov_box', :result => result, :search => search, :affiliate => affiliate, :index => index
 - else
   .searchresult.clearfix{:id => "searchresult#{index+1}"}
@@ -7,5 +7,5 @@
       = display_bing_result_title(result, search, affiliate, index, @search_vertical)
     %h3= display_result_description(result, search.query, affiliate)
     %h3.result-url= display_bing_result_links(result, search, affiliate, index, @search_vertical, affiliate.nil?)
-    - if affiliate == nil && index == 0 && search.page == 0
+    - if affiliate == nil && index == 0 && search.first_page?
       = display_deep_links_for(result, search, affiliate, @search_vertical)

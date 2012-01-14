@@ -1,5 +1,9 @@
-class FormSearch < Search
+class FormSearch < WebSearch
 
+  def initialize(options = {})
+    super(options)
+  end
+  
   DEFAULT_SCOPE = "(form OR forms) (site:gov OR site:mil OR site:usps.com) (filetype:pdf OR contains:pdf)"
 
   protected

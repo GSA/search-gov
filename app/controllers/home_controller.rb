@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   has_mobile_fu
 
   def index
-    @search = Search.new
+    @search = WebSearch.new
     @title = "Home - "
     @active_top_searches = TopSearch.find_active_entries
     @widget_source = request.host

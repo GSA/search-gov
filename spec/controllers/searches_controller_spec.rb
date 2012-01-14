@@ -5,7 +5,7 @@ describe SearchesController do
 
   describe "#auto_complete_for_search_query" do
     it "should use query param to find terms starting with that param" do
-      SaytSuggestion.create(:phrase=>"Lorem ipsum dolor sit amet")
+      SaytSuggestion.create(:phrase => "Lorem ipsum dolor sit amet")
       get :auto_complete_for_search_query, :query=>"lorem"
       response.body.should contain(/lorem/i)
     end
@@ -33,14 +33,14 @@ describe SearchesController do
       end
 
       it "should return 6 suggestions" do
-        Search.should_receive(:suggestions).with(nil, "lorem", 6)
+        WebSearch.should_receive(:suggestions).with(nil, "lorem", 6)
         get :auto_complete_for_search_query, :query=>"lorem"
       end
     end
 
     context "when searching in nonmobile mode" do
       it "should return 15 suggestions" do
-        Search.should_receive(:suggestions).with(nil, "lorem", 15)
+        WebSearch.should_receive(:suggestions).with(nil, "lorem", 15)
         get :auto_complete_for_search_query, :query=>"lorem"
       end
     end
@@ -92,8 +92,8 @@ describe SearchesController do
       @search.query.should == "social security"
     end
 
-    it "should offset the start page in the Search model by one" do
-      @search.page.should == 3
+    it "should set the page" do
+      @search.page.should == 4
     end
 
     it "should load results for a keyword query" do
@@ -401,8 +401,8 @@ describe SearchesController do
         @search.query.should == "taxes"
       end
 
-      it "should offset the start page in the Search model by one" do
-        @search.page.should == 1
+      it "should set the page" do
+        @search.page.should == 2
       end
 
       it "should load results for a keyword query" do
@@ -412,7 +412,7 @@ describe SearchesController do
 
       it "should use the FormSearch model to do the search" do
         form_search_results = FormSearch.new(:query => 'taxes')
-        FormSearch.should_receive(:new).with(:results_per_page => nil, :query => "taxes", :enable_highlighting => true, :page => 1).and_return form_search_results
+        FormSearch.should_receive(:new).with(:per_page => 10, :query => "taxes", :enable_highlighting => true, :page => 2).and_return form_search_results
         get :forms, :query => "taxes", :page => 2
       end
 

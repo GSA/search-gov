@@ -6,7 +6,7 @@
   = results_summary(search.startrecord, search.endrecord, search.total, search.query)
   - if (search.fedstates && search.fedstates != 'all')
     = results_restriction_message_for(search.fedstates, search_path(request.parameters.merge(:fedstates => nil)))
-- if search.page == 0
+- if search.first_page?
   - if search.has_boosted_contents? or search.has_featured_collections?
     = render('shared/boosted_content', :search => search) if search.has_boosted_contents?
     = render('shared/featured_collections', :search => search) if search.has_featured_collections?
@@ -21,7 +21,7 @@
   - search.results.each_with_index do |result, index|
     - unless search.med_topic.present? and search.med_topic.medline_url == result['unescapedUrl']
       = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
-    = render "/shared/related_faqs" if index == 2 and search.page == 0
+    = render "/shared/related_faqs" if index == 2 and search.first_page?
   = render "/shared/related_topics_wrapper"
   .pagination-and-logo
     = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

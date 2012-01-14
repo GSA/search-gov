@@ -1,9 +1,9 @@
 require 'spec/spec_helper'
 describe "searches/index.html.haml" do
   before do
-    @search = stub("Search")
+    @search = stub("WebSearch")
     @search.stub!(:query).and_return "test"
-    @search.stub!(:page).and_return 0
+    @search.stub!(:page).and_return 1
     @search.stub!(:spelling_suggestion).and_return nil
     @search.stub!(:related_search).and_return []
     @search.stub!(:has_related_searches?).and_return false
@@ -22,6 +22,7 @@ describe "searches/index.html.haml" do
     @search.stub!(:med_topic).and_return nil
     @search.stub!(:has_featured_collections?).and_return false
     @search.stub!(:are_results_by_bing?).and_return true
+    @search.stub!(:first_page?).and_return true
     assign(:search, @search)
   end
 
@@ -74,7 +75,7 @@ describe "searches/index.html.haml" do
       @search.stub!(:startrecord).and_return 1
       @search.stub!(:endrecord).and_return "don't care"
       @search.stub!(:total).and_return "don't care"
-      @search.stub!(:page).and_return 0
+      @search.stub!(:page).and_return 1
       @search_result = {'title' => "some title",
                         'unescapedUrl'=> "http://www.foo.com/url",
                         'content'=> "This is a sample result",
@@ -271,7 +272,8 @@ describe "searches/index.html.haml" do
 
       context "when the page specified is greater than 0 (i.e. we're not on the first page)" do
         before do
-          @search.stub!(:page).and_return 1
+          @search.stub!(:page).and_return 2
+          @search.stub!(:first_page?).and_return false
         end
 
         it "should not render a special agency result, even if the first result matches" do

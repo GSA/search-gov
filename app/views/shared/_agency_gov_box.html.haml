@@ -8,7 +8,7 @@
       = t :agency_official_site
     %p.description
       = display_result_description(result)
-    - if affiliate.nil? && index == 0 && search.page == 0
+    - if affiliate.nil? && index == 0 && search.first_page?
       %div
         = display_deep_links_for(result, search, affiliate, @search_vertical)
     .stay-connected

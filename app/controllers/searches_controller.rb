@@ -3,7 +3,7 @@ class SearchesController < ApplicationController
   before_filter :handle_old_advanced_form, :only => [:index]
   before_filter :grab_format
   before_filter :set_affiliate_options, :except => [:forms]
-  before_filter :set_search_options, :only => [:advanced, :index]
+  before_filter :set_web_search_options, :only => [:advanced, :index]
   before_filter :set_form_search_options, :only => :forms
   before_filter :set_docs_search_options, :only => :docs
   has_mobile_fu
@@ -14,7 +14,7 @@ class SearchesController < ApplicationController
   ssl_allowed :auto_complete_for_search_query, :index, :forms, :news, :docs, :advanced
 
   def index
-    @search = Search.new(@search_options)
+    @search = WebSearch.new(@search_options)
     @search.run
     @form_path = search_path
     @page_title = @search.query
@@ -58,7 +58,7 @@ class SearchesController < ApplicationController
 
   def news
     redirect_to root_path and return if @affiliate.nil?
-    @search = NewsSearch.new(@affiliate, params)
+    @search = NewsSearch.new(params.merge(:affiliate => @affiliate))
     @search.run
     @form_path = news_search_path
     @page_title = params[:query]
@@ -70,7 +70,7 @@ class SearchesController < ApplicationController
     query = params["mode"] == "jquery" ? params["q"] : params["query"]
     sanitized_query = query.nil? ? "" : query.squish.strip.gsub('\\', '')
     render :inline => "" and return if sanitized_query.empty?
-    @auto_complete_options = Search.suggestions(nil, sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
+    @auto_complete_options = WebSearch.suggestions(nil, sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
     if params["mode"] == "jquery"
       render :json => "#{params['callback']}(#{@auto_complete_options.map { |option| option.phrase }.to_json})"
     else
@@ -107,12 +107,6 @@ class SearchesController < ApplicationController
     @original_format = request.format
   end
 
-  def set_search_options
-    params.delete("tbs")
-    params.delete("channel")
-    @search_options = search_options_from_params(params).merge(:affiliate => @affiliate)
-  end
-
   def set_affiliate_options
     @affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
     if @affiliate && params["staged"]
@@ -128,20 +122,26 @@ class SearchesController < ApplicationController
     I18n.locale = 'es' if @affiliate && @affiliate.locale == 'es'
   end
 
+  def set_web_search_options
+    params.delete("tbs")
+    params.delete("channel")
+    @search_options = search_options_from_params(params).merge(:affiliate => @affiliate)
+  end
+
   def set_form_search_options
     @search_options = {
-      :page => (params[:page].to_i - 1),
+      :page => [(params[:page] || "1").to_i, 1].max,
       :query => params["query"],
-      :results_per_page => params["per-page"],
+      :per_page => (params["per-page"] || Search::DEFAULT_PER_PAGE).to_i,
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true
     }
   end
 
   def set_docs_search_options
     @search_options = {
-      :page => (params[:page] || "1").to_i,
+      :page => [(params[:page] || "1").to_i, 1].max,
       :query => params["query"],
-      :results_per_page => params["per-page"],
+      :per_page => (params["per-page"] || Search::DEFAULT_PER_PAGE).to_i,
       :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
       :affiliate => @affiliate
     }

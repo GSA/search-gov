@@ -34,11 +34,10 @@ class ImageSearchesController < ApplicationController
   def set_search_options
     affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
     @search_options = {
-      :page => (params[:page].to_i - 1),
+      :page => [(params[:page] || "1").to_i, 1].max,
       :query => params["query"],
       :affiliate => affiliate,
-      :scope_id => params["scope_id"] || nil,
-      :results_per_page => 30
+      :per_page => 30
     }
   end
 end

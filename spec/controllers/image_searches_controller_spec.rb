@@ -34,16 +34,6 @@ describe ImageSearchesController do
       it "should render the footer in the response" do
         response.body.should match(/#{@affiliate.footer}/)
       end
-
-      context "when a scope id is provided do" do
-        before do
-          get :index, :affiliate => @affiliate.name, :query => 'weather', :scope_id => 'SomeScope'
-        end
-
-        it "should set the scope id variable" do
-          assigns[:scope_id].should == 'SomeScope'
-        end
-      end
     end
 
     context "when searching via the API" do

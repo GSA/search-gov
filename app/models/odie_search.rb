@@ -1,37 +1,25 @@
-class OdieSearch
-  attr_reader :query,
-              :affiliate,
-              :page,
-              :results,
-              :error_message,
-              :total,
-              :startrecord,
-              :endrecord,
-              :queried_at_seconds
+class OdieSearch < Search
               
   def initialize(options = {})
-    @query = (options[:query] || '').squish
+    super(options)
+    @query = (@query || '').squish
     @query.downcase! if @query.ends_with? " OR"
-    @affiliate = options[:affiliate]
-    @page = (options[:page] || "1").to_i
-    @results, @hits, @total = [], [], 0
-    @queried_at_seconds = Time.now.to_i
+    @hits, @total = [], 0
+  end
+
+  def search
+    IndexedDocument.search_for(@query, @affiliate, @page, 10)
   end
   
-  def run
-    @error_message = (I18n.translate :too_long) and return false if @query.length > Search::MAX_QUERYTERM_LENGTH
-    @error_message = (I18n.translate :empty_query) and return false if @query.blank?
-    search = IndexedDocument.search_for(@query, @affiliate, @page, 10)
-    if search 
-      @total = search.total
+  def handle_response(response)
+    if response 
+      @total = response.total
       @startrecord = ((@page - 1) * 10) + 1
-      @results = process_results(search)
+      @results = process_results(response)
       @endrecord = @startrecord + @results.size - 1
     end
-    log_serp_impressions
-    true
   end
-  
+    
   def cache_key
     [@query, @affiliate.name, @page].join(':')
   end
@@ -58,7 +46,7 @@ class OdieSearch
     end
   end
 
-  private
+  protected
 
   def process_results(results)
     processed = results.hits.collect do |hit|
@@ -72,13 +60,7 @@ class OdieSearch
     end
     processed.compact
   end
-  
-  def highlight_solr_hit_like_bing(hit, field_symbol)
-    return hit.highlights(field_symbol).first.format { |phrase| "\xEE\x80\x80#{phrase}\xEE\x80\x81" } unless hit.highlights(field_symbol).first.nil?
-    hit.instance.send(field_symbol)
-  end
 
-  
   def log_serp_impressions
     modules = []
     modules << "ODIE" unless @total.zero?
