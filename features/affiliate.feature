@@ -932,7 +932,6 @@ Feature: Affiliate clients
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains        |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov |
     When I go to aff.gov's search page
-    Then show me the page
     Then I should see "aff site" as a header
     
     Given the following Affiliates exist:

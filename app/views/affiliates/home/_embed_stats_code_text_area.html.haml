@@ -3,6 +3,9 @@
     <script type="text/javascript">
       //<![CDATA[
         var aid = "#{@affiliate.name}";
+        var script = document.createElement('script');
+        script.type = "text/javascript";
+        script.src = "#{javascript_full_path 'stats.js'}";
+        document.getElementsByTagName("head")[0].appendChild(script);
       //]]>
     </script>
-    #{javascript_include_tag_with_full_path 'stats.js'}

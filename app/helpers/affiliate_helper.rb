@@ -38,8 +38,12 @@ module AffiliateHelper
   end
 
   def javascript_include_tag_with_full_path(*sources)
-    sources_with_full_path = sources.collect { |source| "#{URI.parse(root_url(:protocol => 'http')).merge("/javascripts/#{source}")}" }
+    sources_with_full_path = sources.collect { |source| javascript_full_path(source) }
     javascript_include_tag sources_with_full_path
+  end
+
+  def javascript_full_path(source)
+    "#{URI.parse(root_url(:protocol => 'http')).merge("/javascripts/#{source}")}"
   end
 
   def stylesheet_link_tag_with_full_path(*sources)
