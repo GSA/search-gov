@@ -1651,12 +1651,6 @@ Feature: Affiliate clients
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | domains         |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | whitehouse.gov  |
-    And the following IndexedDocuments exist:
-      | url                                      | affiliate | title                             | description         |
-      | http://www.whitehouse.gov/our-government | aff.gov   | Our Government \| The White House | white house cabinet |
-      | http://www.whitehouse.gov/fake-page      | aff.gov   | Fake page                         | white house cabinet |
-    And the url "http://www.whitehouse.gov/our-government" has been crawled
-    And the url "http://www.whitehouse.gov/fake-page" has been crawled
     And the following RSS feeds exist:
     | affiliate | url                                             | name    |
     | aff.gov   | http://www.whitehouse.gov/feed/blog/white-house | WH Blog |
@@ -1676,11 +1670,9 @@ Feature: Affiliate clients
     And I fill in "query" with "white house cabinet"
     And I press "Search"
     Then I should see some Bing search results
-    And I should not see "Our Government | The White House"
 
     When I follow "WH Blog"
-    Then I should not see "Our Government"
-    And I should see "Sorry, no results found for 'white house cabinet'"
+    Then I should see "Sorry, no results found for 'white house cabinet'"
 
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "Site information"
@@ -1692,8 +1684,6 @@ Feature: Affiliate clients
     And I fill in "query" with "white house cabinet"
     And I press "Search"
     Then I should see some Bing search results
-    And I should see "Fake page" in the indexed documents section
-    And I should not see "Our Government | The White House" in the indexed documents section
 
     When I follow "WH Blog"
     Then I should see "Results 1-1 of about 1 for 'white house cabinet'"
