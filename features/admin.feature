@@ -264,6 +264,19 @@ Feature:  Administration
     Then I should be on the top forms admin page
     And I should see "The Top Form could not be saved."
 
+  Scenario: Viewing affiliate edit page from the Admin Center
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email                | contact_name | header_footer_css     | staged_header_footer_css | header          | staged_header          | footer          | staged_footer          |
+      | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     | #live { color: blue } | #staged { color: green } | <h1>header</h1> | <h1>staged header</h1> | <h1>footer</h1> | <h1>staged footer</h1> |
+    And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
+    When I go to the agency.gov's admin edit affiliate page
+    Then the textarea labeled "Header footer css" should contain "#live { color: blue }"
+    And the textarea labeled "Staged header footer css" should contain "#staged { color: green }"
+    And the textarea labeled "Header" should contain "<h1>header</h1>"
+    And the textarea labeled "Staged header" should contain "<h1>staged header</h1>"
+    And the textarea labeled "Footer" should contain "<h1>footer</h1>"
+    And the textarea labeled "Staged footer" should contain "<h1>staged footer</h1>"
+
   Scenario: Updating affiliate uses_one_serp flag from Admin Center
     Given the following Affiliates exist:
       | display_name | name       | contact_email                | contact_name | uses_one_serp |

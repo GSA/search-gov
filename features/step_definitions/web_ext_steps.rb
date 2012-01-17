@@ -72,3 +72,9 @@ And /^the "([^"]*)" field should be blank$/ do |field|
   field_value = (field.tag_name == 'textarea') ? field.text : field.value
   field_value.should be_blank
 end
+
+Then /^the textarea labeled "([^"]*)" should contain "([^"]*)"$/ do |label, value|
+  field = find_field(label)
+  field.tag_name.should == 'textarea'
+  field.text.should == value
+end
