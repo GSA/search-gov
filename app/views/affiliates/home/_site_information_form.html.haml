@@ -14,9 +14,6 @@
     = site_information_form.radio_button :locale, "es", radio_button_options
     = site_information_form.label :locale, 'Spanish', :value => 'es', :style => 'float: none;'
   %li
-    = site_information_form.label :website, "Site URL"
-    = site_information_form.text_field :website, :class => 'txt'
-  %li
     = link_to "+ How Is This Site Information Used", "#how_site_information_used", :id => "how_site_information_used", :class => "sliding_trigger"
     %div#how_site_information_used_content.sliding_content
       %p

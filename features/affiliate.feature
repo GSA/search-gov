@@ -368,6 +368,16 @@ Feature: Affiliate clients
     Then I should be on the affiliate admin page
     And I should see "Site deleted"
 
+  Scenario: Visiting the site specific Affiliate Center
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    When I am logged in with email "aff@bar.gov" and password "random_string"
+    And I go to the "aff site" affiliate page
+    And I should see the following table row:
+      | Site name |
+      | aff site  |
+
   Scenario: Visiting the site information page
     Given the following Affiliates exist:
       | display_name | name    | domains     | contact_email | contact_name |
@@ -386,20 +396,18 @@ Feature: Affiliate clients
 
   Scenario: Editing site information and saving it
     Given the following Affiliates exist:
-      | display_name     | name            | domains       | contact_email         | contact_name        |
-      | aff site         | aff.gov         | example.org   | aff@bar.gov           | John Bar            |
+      | display_name | name    | domains     | contact_email | contact_name |
+      | aff site     | aff.gov | example.org | aff@bar.gov   | John Bar     |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Site information"
     And I fill in the following:
-      | Site name         | new aff site                         |
-      | Site URL          | www.aff.gov                          |
+      | Site name | new aff site |
     And I press "Save"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > new aff site
     And I should see "Site was successfully updated."
     And I should see "Site: new aff site"
-    And I should see "www.aff.gov"
 
     When I follow "View Current"
     Then I should see the browser page titled "gov - new aff site Search Results"
@@ -413,7 +421,6 @@ Feature: Affiliate clients
     And I follow "Site information"
     And I fill in the following:
       | Site name |  |
-      | Site URL  |  |
     And I press "Save"
     Then I should see "Site Information" within "title"
     And I should see "Site name can't be blank"

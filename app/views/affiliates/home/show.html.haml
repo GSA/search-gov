@@ -5,10 +5,10 @@
     %thead
       %tr
         %th.secondary-header
-          Website URL
+          Site name
         %th.secondary-header
           Actions
     %tbody
       %tr
-        %td.site-url= @affiliate.website
+        %td.site-url= @affiliate.display_name
         %td= render :partial => 'affiliate_actions', :locals => {:affiliate => @affiliate}
