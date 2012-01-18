@@ -49,6 +49,32 @@ img
   .did-you-mean, .search-all-sites-suggestion
     padding-left: 10px
 
+  .pagination-and-logo
+    border-top: 1px solid #CACACA
+    clear: both
+    height: 35px
+    margin: 1.5em 0
+    padding: 14px 0 14px $results-padding-left-size - 6px
+
+  .pagination
+    float: left
+    font-size: 1em
+    margin: 0
+    padding: 0
+    .disabled
+      display: none
+    em
+      @include border-radius(3px)
+      background-color: #DDD
+      font-style: normal
+      padding: 3px 6px
+    a, a:visited
+      padding: 3px 6px
+      text-decoration: none
+      &:hover
+        @include border-radius(3px)
+        background-color: #DDD
+
 #summary
   padding-left: 10px
 
@@ -117,14 +143,7 @@ img
   color: #595959
   margin: 3px 0
 
-.pagination-and-logo
-  clear: both
-  height: 35px
-  margin: 1.5em 0
-  padding: 0 0 0 11px
 
-.pagination
-  float: left
 
 .bing-logo
   float: right
