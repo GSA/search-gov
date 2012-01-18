@@ -2,13 +2,13 @@ require 'spec/spec_helper'
 
 describe HostedSitemapController, "#show" do
   it "should set the request fomat to :xml" do
-    get :show, :id => "3"
+    get :show, :id => "3", :protocol => "http://"
     response.content_type.should == 'application/xml'
   end
 
   context "when the indexed domain can't be found" do
     it "should not assign @indexed_documents" do
-      get :show, :id => "314159"
+      get :show, :id => "314159", :protocol => "http://"
       assigns[:indexed_documents].should be_nil
     end
   end
@@ -33,10 +33,10 @@ describe HostedSitemapController, "#show" do
 
       context "when a valid page parameter is specified" do
         it "should return an individual sitemap file for that page of indexed document URLs" do
-          get :show, :id => @indexed_domain.id.to_s, :page => "1"
+          get :show, :id => @indexed_domain.id.to_s, :page => "1", :protocol => "http://"
           doc = Hpricot.XML(response.body.to_s)
           (doc/:urlset/:url).size.should == 2
-          get :show, :id => @indexed_domain.id.to_s, :page => "2"
+          get :show, :id => @indexed_domain.id.to_s, :page => "2", :protocol => "http://"
           doc = Hpricot.XML(response.body.to_s)
           (doc/:urlset/:url).size.should == 1
         end
@@ -44,7 +44,7 @@ describe HostedSitemapController, "#show" do
 
       context "when an invalid page parameter is specified" do
         it "should return an individual sitemap file for the first page of indexed document URLs" do
-          get :show, :id => @indexed_domain.id.to_s, :page => "0"
+          get :show, :id => @indexed_domain.id.to_s, :page => "0", :protocol => "http://"
           doc = Hpricot.XML(response.body.to_s)
           (doc/:urlset/:url).size.should == 2
         end
@@ -52,7 +52,7 @@ describe HostedSitemapController, "#show" do
 
       context "when no page parameter is specified" do
         it "should return a sitemap index file" do
-          get :show, :id => @indexed_domain.id.to_s
+          get :show, :id => @indexed_domain.id.to_s, :protocol => "http://"
           doc = Hpricot.XML(response.body.to_s)
           (doc/:sitemapindex/:sitemap).size.should == 2
           urls = (doc/:sitemapindex/:sitemap/:loc).collect(&:inner_html)
@@ -64,7 +64,7 @@ describe HostedSitemapController, "#show" do
 
     context "when there aren't too many indexed documents in the domain" do
       it "should return a valid sitemap with all urls for that domain" do
-        get :show, :id => @indexed_domain.id.to_s
+        get :show, :id => @indexed_domain.id.to_s, :protocol => "http://"
         doc = Hpricot.XML(response.body.to_s)
         (doc/:urlset/:url).size.should == 3
         urls = (doc/:urlset/:url/:loc).collect(&:inner_html)
