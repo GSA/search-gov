@@ -443,7 +443,7 @@ describe IndexedDocument do
         @indexed_document.discover_nested_pdfs(@doc)
         @aff.indexed_documents.count.should == 2
         @aff.indexed_documents.find_by_url("http://www.agency.gov/relative.pdf").should_not be_nil
-        @aff.indexed_documents.find_by_url("http://www.agency.gov/absolute.pdf").should_not be_nil
+        @aff.indexed_documents.find_by_url("http://www.agency.gov/absolute.pdf").doctype.should == 'pdf'
       end
     end
   end

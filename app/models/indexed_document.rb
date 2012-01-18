@@ -102,7 +102,7 @@ class IndexedDocument < ActiveRecord::Base
     end.map do |relative_pdf_url|
       URI.parse(self.url).merge(URI.parse(relative_pdf_url)).to_s
     end.uniq.each do |pdf_url|
-      IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url)
+      IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url, :doctype => 'pdf')
     end
   end
 
