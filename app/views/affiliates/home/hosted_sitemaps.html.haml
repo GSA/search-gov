@@ -19,7 +19,7 @@
           In the robots.txt file for
           %strong= indexed_domain.domain
           add this line:
-          %pre Sitemap: #{hosted_sitemap_url(indexed_domain.id)}
+          %pre Sitemap: #{hosted_sitemap_url(indexed_domain.id, :protocol => 'http')}
     - else
       %p
         The hosted sitemap URL will only be available for a domain once USASearch has begun fetching and indexing the content for that domain.
