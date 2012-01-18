@@ -171,7 +171,9 @@ UsasearchRails3::Application.routes.draw do
   resources :pages
   get '/superfresh' => 'superfresh#index', :as => :main_superfresh_feed
   get '/superfresh/:feed_id' => 'superfresh#index', :as => :superfresh_feed
-  get '/usasearch_hosted_sitemap/:id.xml' => 'hosted_sitemap#show', :as => :hosted_sitemap
+  scope :protocol => 'http://', :constraints => {:protocol => 'http://'} do
+    get '/usasearch_hosted_sitemap/:id.xml' => 'hosted_sitemap#show', :as => :hosted_sitemap
+  end
   get '/usa/:url_slug' => 'usa#show', :as => :usa, :constraints => { :url_slug => /.*/ }
   get '/usa/' => 'home#index', :as => :usa_mobile_home_redirect
   get '/program' => 'pages#show', :as => :program, :id => 'program'

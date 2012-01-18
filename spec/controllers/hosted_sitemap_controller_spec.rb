@@ -66,7 +66,7 @@ describe HostedSitemapController, "#show" do
       it "should return a valid sitemap with all urls for that domain" do
         get :show, :id => @indexed_domain.id.to_s
         doc = Hpricot.XML(response.body.to_s)
-        (doc/:urlset/:url).size.should == 2
+        (doc/:urlset/:url).size.should == 3
         urls = (doc/:urlset/:url/:loc).collect(&:inner_html)
         urls.should include("http://#{@domain}/bar.html")
         urls.should include("http://#{@domain}/blat.html")
