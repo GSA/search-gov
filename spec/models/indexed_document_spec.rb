@@ -137,7 +137,7 @@ describe IndexedDocument do
     odie.errors[:description].first.should =~ /can't be blank/
   end
 
-  describe "deleting an indexed_document" do
+  describe "deleting an IndexedDocument" do
     context "when it's the last IndexedDocument associated with an IndexedDomain" do
       before do
         IndexedDocument.destroy_all
