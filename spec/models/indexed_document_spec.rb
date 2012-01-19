@@ -54,7 +54,7 @@ describe IndexedDocument do
 
   it "should assign/create an associated indexed_domain" do
     IndexedDocument.create!(@valid_attributes)
-    IndexedDomain.find_by_affiliate_id_and_domain(affiliates(:basic_affiliate).id,"something.gov").should_not be_nil
+    IndexedDomain.find_by_affiliate_id_and_domain(affiliates(:basic_affiliate).id, "something.gov").should_not be_nil
   end
 
   describe "handling file extensions for URLs" do
@@ -429,23 +429,45 @@ describe IndexedDocument do
     end
   end
 
-  describe "#discover_nested_pdfs(doc)" do
+  describe "#discover_nested_pdfs(doc, max)" do
+    before do
+      @aff = affiliates(:basic_affiliate)
+      @aff.site_domains.destroy_all
+      @aff.site_domains.create(:domain=>"agency.gov")
+      @indexed_document = IndexedDocument.new(:affiliate => @aff, :url => "http://www.agency.gov/index.html")
+    end
+
     context "when the HTML document contains PDF links" do
       before do
-        @aff = affiliates(:basic_affiliate)
-        @aff.site_domains.destroy_all
-        @aff.site_domains.create(:domain=>"agency.gov")
-        @indexed_document = IndexedDocument.new(:affiliate => @aff, :url => "http://www.agency.gov/index.html")
         @doc = Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/page_with_pdf_links.html'))
       end
 
-      it "should create new IndexedDocuments with absolute URLs for PDF docs with matching site domains" do
+      it "should create new IndexedDocuments with absolute URLs for PDFs from valid URLs with matching site domains" do
         @indexed_document.discover_nested_pdfs(@doc)
         @aff.indexed_documents.count.should == 2
         @aff.indexed_documents.find_by_url("http://www.agency.gov/relative.pdf").should_not be_nil
         @aff.indexed_documents.find_by_url("http://www.agency.gov/absolute.pdf").doctype.should == 'pdf'
       end
+
+      context "when the HTML document contains more than the threshold number of PDFs" do
+        it "should only discover up to the specified maximum number of them" do
+          @indexed_document.discover_nested_pdfs(@doc, 1)
+          @aff.indexed_documents.count.should == 1
+        end
+      end
     end
+
+    context "when the HTML document contains no PDF links" do
+      before do
+        @doc = Nokogiri::HTML(open(Rails.root.to_s + '/spec/fixtures/html/data-layers.html'))
+      end
+
+      it "shouldn't create any new IndexedDocuments" do
+        @indexed_document.discover_nested_pdfs(@doc)
+        @aff.indexed_documents.count.should == 0
+      end
+    end
+
   end
 
   describe "#index_pdf(file)" do

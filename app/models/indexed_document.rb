@@ -21,6 +21,7 @@ class IndexedDocument < ActiveRecord::Base
   TRUNCATED_TITLE_LENGTH = 60
   TRUNCATED_DESC_LENGTH = 250
   MAX_URLS_PER_FILE_UPLOAD = 100
+  MAX_PDFS_DISCOVERED_PER_HTML_PAGE = 1000
   OK_STATUS = "OK"
   EMPTY_BODY_STATUS = "No content found in document"
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
@@ -96,12 +97,13 @@ class IndexedDocument < ActiveRecord::Base
     discover_nested_pdfs(doc)
   end
 
-  def discover_nested_pdfs(doc)
+  def discover_nested_pdfs(doc, max_pdfs = MAX_PDFS_DISCOVERED_PER_HTML_PAGE)
     doc.css('a').collect { |link| link['href'] }.compact.select do |link_url|
       link_url.ends_with(".pdf")
     end.map do |relative_pdf_url|
-      URI.parse(self.url).merge(URI.parse(relative_pdf_url)).to_s
-    end.uniq.each do |pdf_url|
+      URI.parse(self.url).merge(URI.parse(relative_pdf_url)).to_s rescue nil
+    end.uniq.compact.first(max_pdfs).each do |pdf_url|
+      Rails.logger.info("[IndexedDocument] Creating PDF doc for [#{pdf_url}] from [#{self.url}]")
       IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url, :doctype => 'pdf')
     end
   end
