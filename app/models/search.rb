@@ -60,7 +60,7 @@ class Search
   end
 
   # Set @total, @startrecord, @endrecord, and do anything else based on those values here
-  def handle_response
+  def handle_response(response)
   end
 
   # If you need to query anything else, do that here

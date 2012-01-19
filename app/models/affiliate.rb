@@ -290,7 +290,11 @@ class Affiliate < ActiveRecord::Base
   def is_medline_govbox_enabled?
     is_medline_govbox_enabled
   end
-
+  
+  def uses_odie_results?
+    uses_odie_results
+  end
+  
   private
 
   def remove_boosted_contents_from_index

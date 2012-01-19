@@ -1180,6 +1180,27 @@ describe WebSearch do
         IndexedDocument.reindex
       end
     end
+    
+    context "when an affiliate is set to use ODIE results" do
+      before do
+        IndexedDocument.destroy_all
+        @affiliate = affiliates(:basic_affiliate)
+        @affiliate.stub!(:uses_odie_results?).and_return true
+        @affiliate.indexed_documents.create!(:title => 'I LOVE AMERICA', :description => 'WE LOVE AMERICA', :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
+        Sunspot.commit
+        IndexedDocument.reindex
+      end
+      
+      it "should not use Bing results, but instead use ODIE results" do
+        search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
+        search.should_not_receive(:bing_offset)
+        search.run
+        search.total.should == 1
+        search.results.first['title'].should == 'I LOVE AMERICA'
+        search.results.first['content'].should == 'WE LOVE AMERICA'
+        search.results.first['unescapedUrl'].should == "http://nps.gov/america.html"
+      end
+    end
   end
 
   describe "when new" do

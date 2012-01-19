@@ -175,23 +175,31 @@ class WebSearch < Search
     @total = hits(response)
     if @total.zero?
       if @affiliate and self.class == WebSearch
-        @indexed_results = IndexedDocument.search_for(query, affiliate, page, 10)
-        unless @indexed_results.nil?
-          @total = @indexed_results.total
-          @startrecord = ((page - 1) * @per_page) + 1
-          @results = paginate(process_indexed_results(@indexed_results))
-          @endrecord = startrecord + @results.size - 1
-        end
+        do_indexed_document_search
       end
     else
-      @startrecord = bing_offset(response) + 1
-      @results = paginate(process_results(response))
-      @endrecord = startrecord + results.size - 1
-      @spelling_suggestion = spelling_results(response)
+      if @affiliate and @affiliate.uses_odie_results?
+        do_indexed_document_search
+      else
+        @startrecord = bing_offset(response) + 1
+        @results = paginate(process_results(response))
+        @endrecord = startrecord + results.size - 1
+        @spelling_suggestion = spelling_results(response)
+      end
       @related_search = related_search_results
     end
   end
-
+  
+  def do_indexed_document_search
+    @indexed_results = IndexedDocument.search_for(query, affiliate, page, 10)
+    unless @indexed_results.nil?
+      @total = @indexed_results.total
+      @startrecord = ((page - 1) * @per_page) + 1
+      @results = paginate(process_indexed_results(@indexed_results))
+      @endrecord = startrecord + @results.size - 1
+    end
+  end
+    
   def hits(response)
     (response.web.results.blank? ? 0 : response.web.total) rescue 0
   end
