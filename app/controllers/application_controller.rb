@@ -107,7 +107,7 @@ class ApplicationController < ActionController::Base
         :site_excludes => params["siteexclude"],
         :filter => params["filter"],
         :fedstates => params["fedstates"] || nil,
-        :per_page => (params["per-page"] || Search::DEFAULT_PER_PAGE).to_i,
+        :per_page => [params["per-page"].to_i, Search::DEFAULT_PER_PAGE].max,
         :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
         :embedded => params["embedded"].present?
     }

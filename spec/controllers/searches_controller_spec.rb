@@ -101,6 +101,28 @@ describe SearchesController do
       @search.results.should_not be_nil
     end
   end
+  
+  context "when searching with parameters" do
+    it "should not blow up if per-page is blank" do
+      get :index, :query => 'white house', "per-page" => ''
+      assigns[:search_options][:per_page].should == Search::DEFAULT_PER_PAGE
+    end
+  
+    it "should not blow up if per-page is not a number" do
+      get :index, :query => 'white house', "per-page" => 'number'
+      assigns[:search_options][:per_page].should == Search::DEFAULT_PER_PAGE
+    end
+    
+    it "should not blow up if per page is set to 0" do
+      get :index, :query => 'white house', "per-page" => '0'
+      assigns[:search_options][:per_page].should == Search::DEFAULT_PER_PAGE
+    end
+    
+    it "should assign the per page if a valid number" do
+      get :index, :query => 'white house', "per-page" => '50'
+      assigns[:search_options][:per_page].should == 50
+    end
+  end  
 
   context "when handling a valid affiliate search request" do
     render_views
