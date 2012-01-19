@@ -137,6 +137,24 @@ describe IndexedDocument do
     odie.errors[:description].first.should =~ /can't be blank/
   end
 
+  describe "deleting an indexed_document" do
+    context "when it's the last IndexedDocument associated with an IndexedDomain" do
+      before do
+        IndexedDocument.destroy_all
+        @indexed_document = IndexedDocument.create!(@valid_attributes)
+        @indexed_document.update_attributes!(:title => 'bogus title', :description => 'description', :last_crawl_status => IndexedDocument::OK_STATUS,:content_hash => '92ebcfafee3260a041f9624525a45328')
+        IndexedDocument.create!(@valid_attributes.merge(:url=>"http://something.gov/second.html"))
+      end
+
+      it "should delete the associated orphaned IndexedDomain, too" do
+        IndexedDocument.last.destroy
+        IndexedDomain.find_by_domain("something.gov").should_not be_nil
+        IndexedDocument.last.destroy
+        IndexedDomain.find_by_domain("something.gov").should be_nil
+      end
+    end
+  end
+
   describe "#search_for" do
     before do
       @affiliate = affiliates(:basic_affiliate)
@@ -274,7 +292,7 @@ describe IndexedDocument do
       end
     end
 
-    context "when the URL ends in PDF" do
+    context "when the URL points at a PDF" do
       before do
         indexed_document.url = 'http://something.gov/something.pdf'
         @pdf_io = StringIO.new(File.read(Rails.root.to_s + "/spec/fixtures/pdf/test.pdf"))
@@ -296,7 +314,7 @@ describe IndexedDocument do
       end
     end
 
-    context "when the URL doesn't end in PDF" do
+    context "when the URL doesn't point at a PDF" do
       before do
         indexed_document.url = 'http://something.gov/something.html'
         @html_io = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
