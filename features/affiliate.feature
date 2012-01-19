@@ -940,6 +940,13 @@ Feature: Affiliate clients
     When I go to aff2.gov's search page
     Then I should see "aff2 site" as a header
     
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email   | contact_name | search_results_page_title           | domains        | uses_one_serp |
+      | aff3 site     | aff3.gov  | aff2@bar.gov    | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov | false         |
+    When I go to aff2.gov's search page
+    Then I should not see "aff3 site" as a header
+    
+    
   Scenario: Enabling/Disabling popular urls
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains        | header     | footer     | staged_header | staged_footer | is_popular_links_enabled |

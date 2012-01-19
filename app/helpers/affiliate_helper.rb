@@ -66,8 +66,12 @@ module AffiliateHelper
   end
   
   def render_default_affiliate_header(affiliate)
-    style = "font-family: #{affiliate.css_property_hash[:font_family]}; padding: 10px 0px 0px 10px; font-size: 32px; color: #{affiliate.css_property_hash[:left_tab_text_color]};"
-    content_tag :div, affiliate.display_name, :id => 'default-header', :style => style
+    if affiliate.uses_one_serp?
+      style = "font-family: #{affiliate.css_property_hash[:font_family]}; padding: 10px 0px 0px 10px; font-size: 32px; color: #{affiliate.css_property_hash[:left_tab_text_color]};"
+      content_tag :div, affiliate.display_name, :id => 'default-header', :style => style
+    else
+      ""
+    end
   end
   
   def render_affiliate_stylesheet(affiliate)

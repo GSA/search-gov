@@ -283,3 +283,7 @@ end
 Then /^I should see "([^"]*)" as a header$/ do |header|
   page.should have_selector("#default-header", :text => header)
 end
+
+Then /^I should not see "([^"]*)" as a header$/ do |header|
+  page.should_not have_selector("#default-header", :text => header)
+end
