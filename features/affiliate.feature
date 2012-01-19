@@ -166,6 +166,8 @@ Feature: Affiliate clients
     Then the "Site name" field should contain "My awesome agency"
     When I follow "Look and feel"
     Then the "Gettysburg" theme should be selected
+    And the "Search button text color" field should contain "#FFFFFF"
+    And the "Search button background color" field should contain "#336699"
     And the "Left tab text color" field should contain "#C71D2E"
     And the "Left tab text color" field should be disabled
     And the "Title link color" field should contain "#336699"
@@ -440,6 +442,8 @@ Feature: Affiliate clients
     And the "Font family" field should contain "Arial, sans-serif"
     And the "Liberty Bell" theme should be selected
     And the "Custom" theme should not be visible
+    And the "Search button text color" field should contain "#FFFFFF"
+    And the "Search button background color" field should contain "#00396F"
     And the "Left tab text color" field should contain "#9E3030"
     And the "Title link color" field should contain "#2200CC"
     And the "Visited title link color" field should contain "#800080"
@@ -495,8 +499,8 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel and saving it for preview on a site with one serp
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css            | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme  |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #009000        | .current h1 { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | custom |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css            | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme  |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | .current h1 { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | custom |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -504,14 +508,18 @@ Feature: Affiliate clients
     Then the "Font family" field should contain "Verdana, sans-serif"
     And the "Custom" theme should be selected
     And the "Custom" theme should be visible
+    And the "Search button text color" field should contain "#111111"
+    And the "Search button background color" field should contain "#0000EE"
     And the "Left tab text color" field should contain "#BBBBBB"
-    And the "Title link color" field should contain "#33ff33"
-    And the "Visited title link color" field should contain "#0000ff"
+    And the "Title link color" field should contain "#33FF33"
+    And the "Visited title link color" field should contain "#0000FF"
     And the "Description text color" field should contain "#CCCCCC"
     And the "URL link color" field should contain "#009000"
     When I fill in the following:
       | Search results page title                                              | {SiteName} : {Query}              |
       | Favicon URL                                                            | cdn.agency.gov/staged_favicon.ico |
+      | Search button text color                                               | #222222                           |
+      | Search button background color                                         | #00DD00                           |
       | Left tab text color                                                    | #AAAAAA                           |
       | Title link color                                                       | #888888                           |
       | Visited title link color                                               | #0000f0                           |
@@ -556,6 +564,8 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Font family" field should contain "Helvetica, sans-serif"
+    And the "Search button text color" field should contain "#222222"
+    And the "Search button background color" field should contain "#00DD00"
     And the "Left tab text color" field should contain "#AAAAAA"
     And the "Title link color" field should contain "#888888"
     And the "Visited title link color" field should contain "#0000f0"
@@ -581,6 +591,8 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Font family" field should contain "Helvetica, sans-serif"
+    And the "Search button text color" field should contain "#222222"
+    And the "Search button background color" field should contain "#00DD00"
     And the "Left tab text color" field should contain "#AAAAAA"
     And the "Title link color" field should contain "#888888"
     And the "Visited title link color" field should contain "#0000f0"
@@ -589,8 +601,8 @@ Feature: Affiliate clients
 
   Scenario: Updating theme and saving it for preview
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -677,8 +689,8 @@ Feature: Affiliate clients
 
   Scenario: Editing look and feel and make it live on a site with one serp
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And no emails have been sent
     When I go to the affiliate admin page
@@ -687,6 +699,8 @@ Feature: Affiliate clients
     And I fill in the following:
       | Search results page title                                              | {SiteName} : {Query}              |
       | Favicon URL                                                            | cdn.agency.gov/staged_favicon.ico |
+      | Search button text color                                               | #222222                           |
+      | Search button background color                                         | #00DD00                           |
       | Left tab text color                                                    | #AAAAAA                           |
       | Title link color                                                       | #888888                           |
       | Visited title link color                                               | #0000f0                           |
@@ -724,6 +738,8 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     Then the "Font family" field should contain "Helvetica, sans-serif"
+    And the "Search button text color" field should contain "#222222"
+    And the "Search button background color" field should contain "#00DD00"
     And the "Left tab text color" field should contain "#AAAAAA"
     And the "Title link color" field should contain "#888888"
     And the "Visited title link color" field should contain "#0000f0"
@@ -732,8 +748,8 @@ Feature: Affiliate clients
 
   Scenario: Updating theme and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp | theme   | staged_theme |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          | natural | gray         |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp | theme   | staged_theme |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          | natural | gray         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -829,15 +845,19 @@ Feature: Affiliate clients
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
     And I fill in the following:
-      | Search results page title |                       |
-      | Left tab text color       | invalid color         |
-      | Title link color          | invalid color         |
-      | Visited title link color  | invalid visited color |
-      | Description text color    | invalid color         |
-      | URL link color            | invalid color         |
+      | Search results page title      |                       |
+      | Search button text color       | invalid color         |
+      | Search button background color | invalid color         |
+      | Left tab text color            | invalid color         |
+      | Title link color               | invalid color         |
+      | Visited title link color       | invalid visited color |
+      | Description text color         | invalid color         |
+      | URL link color                 | invalid color         |
     And I press "Make Live"
     Then I should see "Look and Feel of the Search Results Page" within "title"
     And I should see "Search results page title can't be blank"
+    And I should see "Search button text color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Search button background color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Left tab text color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Title link color should consist of a # character followed by 3 or 6 hexadecimal digits"
     And I should see "Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits"
@@ -899,54 +919,59 @@ Feature: Affiliate clients
 
   Scenario: Resetting style on a site with one serp
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #007000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #007000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
-    Then the "Left tab text color" field should contain "#BBBBBB"
+    Then the "Search button text color" field should contain "#111111"
+    And the "Search button background color" field should contain "#0000EE"
+    And the "Left tab text color" field should contain "#BBBBBB"
     And the "Title link color" field should contain "#33ff33"
     And the "Visited title link color" field should contain "#0000ff"
     And the "Description text color" field should contain "#CCCCCC"
     And the "URL link color" field should contain "#007000"
     When I fill in the following:
-      | Left tab text color      |  |
-      | Title link color         |  |
-      | Visited title link color |  |
-      | Description text color   |  |
-      | URL link color           |  |
+      | Search button text color       |  |
+      | Search button background color |  |
+      | Left tab text color            |  |
+      | Title link color               |  |
+      | Visited title link color       |  |
+      | Description text color         |  |
+      | URL link color                 |  |
     And I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes to your site successfully"
 
     When I follow "Look and feel"
-    Then the "Left tab text color" field should contain "#9E3030"
+    Then the "Search button text color" field should contain "#FFFFFF"
+    And the "Search button background color" field should contain "#00396F"
+    And the "Left tab text color" field should contain "#9E3030"
     And the "Title link color" field should contain "#2200CC"
     And the "Visited title link color" field should contain "#800080"
     And the "Description text color" field should contain "#000000"
     And the "URL link color" field should contain "#008000"
-    
+
   Scenario: Visiting an affiliate SERP without a header
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains        |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov |
     When I go to aff.gov's search page
     Then I should see "aff site" as a header
-    
+
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | search_results_page_title           | domains        | header  |
       | aff2 site     | aff2.gov  | aff2@bar.gov    | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov |         |
     When I go to aff2.gov's search page
     Then I should see "aff2 site" as a header
-    
+
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | search_results_page_title           | domains        | uses_one_serp |
       | aff3 site     | aff3.gov  | aff2@bar.gov    | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov | false         |
     When I go to aff2.gov's search page
     Then I should not see "aff3 site" as a header
-    
-    
+
   Scenario: Enabling/Disabling popular urls
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains        | header     | footer     | staged_header | staged_footer | is_popular_links_enabled |

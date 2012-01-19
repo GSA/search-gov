@@ -65,7 +65,6 @@ img
       display: none
     em
       @include border-radius(3px)
-      background-color: #DDD
       font-style: normal
       padding: 3px 6px
     a, a:visited
@@ -73,7 +72,6 @@ img
       text-decoration: none
       &:hover
         @include border-radius(3px)
-        background-color: #DDD
 
 #summary
   padding-left: 10px
@@ -110,16 +108,48 @@ img
       span
         font-weight: bold
 
-.advancedsearch
-  display: inline
-  padding: 0 0 0 5px
-
 #search
   @include clearfix
   h1
     color: Transparent
     font-size: 0
     padding: 10px
+
+#search_form
+  @include clearfix
+  margin: 0
+  height: 60px
+  width: 496px
+  #search_query
+    @include border-radius
+    float: left
+    background-color: #FFF
+    border: 1px solid #CACACA
+    font:
+      size: 13px
+      weight: normal
+    height: 20px
+    letter-spacing: 1px
+    outline: 0
+    padding: 4px 0 4px $results-padding-left-size - 1
+    width: 380px
+
+  #search_button
+    @include border-radius
+    float: right
+    font:
+      size: 13px
+      weight: bold
+    margin: 0
+    padding: 0
+    text-transform: uppercase
+    width: 90px
+    height: 30px
+  .advancedsearch
+    display: inline
+    padding: 0 0 0 5px
+    float: right
+    margin-top: 5px
 
 .searchresult
   margin-bottom: 1em
@@ -142,8 +172,6 @@ img
 .searchresult h4
   color: #595959
   margin: 3px 0
-
-
 
 .bing-logo
   float: right
@@ -283,33 +311,7 @@ img
     li.left
       clear: left
 
-#search_form
-  ul.navigation
-    list-style: none
-    margin: 0
-    padding: 0
-    margin-bottom: 5px
-    li
-      font-weight: bold
-      color: #990000
-      display: inline
-      border-left: 2px solid #CCC
-      padding: 0 5px 0 8px
-      a
-        text-decoration: none
-        font-weight: bold
-      a:hover
-        text-decoration: underline
-    li.first
-      padding-left: 0
-      border-left: 0
 
-#search_query
-  border: 1px solid #AAAAAA
-  font-size: 11px
-  outline: 0
-  padding: 2px 5px
-  width: 335px
 
 .page-not-found
   :margin 50px auto

@@ -50,30 +50,40 @@ class Affiliate < ActiveRecord::Base
 
   THEMES = ActiveSupport::OrderedHash.new
   THEMES[:default] = { :display_name => 'Liberty Bell',
+                       :search_button_text_color => '#FFFFFF',
+                       :search_button_background_color => '#00396F',
                        :left_tab_text_color => '#9E3030',
                        :title_link_color => '#2200CC',
                        :visited_title_link_color => '#800080',
                        :description_text_color => '#000000',
                        :url_link_color => '#008000' }
   THEMES[:elegant] = { :display_name => 'Gettysburg',
+                       :search_button_text_color => '#FFFFFF',
+                       :search_button_background_color => '#336699',
                        :left_tab_text_color => '#C71D2E',
                        :title_link_color => '#336699',
                        :visited_title_link_color => '#8F5576',
                        :description_text_color => '#595959',
                        :url_link_color => '#007F00' }
   THEMES[:fun_blue] = { :display_name => 'Virgin Islands',
+                        :search_button_text_color => '#FFFFFF',
+                        :search_button_background_color => '#0CA5D8',
                         :left_tab_text_color => '#87CB00',
                         :title_link_color => '#0CA5D8',
                        :visited_title_link_color => '#A972AB',
                        :description_text_color => '#444444',
                        :url_link_color => '#3DB7E0' }
   THEMES[:gray] = { :display_name => 'Mount Rushmore',
+                    :search_button_text_color => '#FFFFFF',
+                    :search_button_background_color => '#555555',
                     :left_tab_text_color => '#A10000',
                     :title_link_color => '#555555',
                     :visited_title_link_color => '#854268',
                     :description_text_color => '#595959',
                     :url_link_color => '#2C5D80' }
   THEMES[:natural] = { :display_name => 'Grand Canyon',
+                       :search_button_text_color => '#FFFFFF',
+                       :search_button_background_color => '#B58100',
                        :left_tab_text_color => '#B58100',
                        :title_link_color => '#B58100',
                        :visited_title_link_color => '#008EB5',
@@ -290,11 +300,11 @@ class Affiliate < ActiveRecord::Base
   def is_medline_govbox_enabled?
     is_medline_govbox_enabled
   end
-  
+
   def uses_odie_results?
     uses_odie_results
   end
-  
+
   private
 
   def remove_boosted_contents_from_index

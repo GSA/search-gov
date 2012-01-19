@@ -21,6 +21,13 @@
       = render_site_themes @affiliate
     %li.css-overrides
       %div
+        = label_tag 'affiliate[staged_css_property_hash][search_button_text_color]', 'Search button text color'
+        = render_staged_color_text_field_tag @affiliate, :search_button_text_color
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][search_button_background_color]', 'Search button background color'
+        = render_staged_color_text_field_tag @affiliate, :search_button_background_color
+    %li.css-overrides
+      %div
         = label_tag 'affiliate[staged_css_property_hash][left_tab_text_color]', 'Left tab text color'
         = render_staged_color_text_field_tag @affiliate, :left_tab_text_color
     %li.css-overrides
