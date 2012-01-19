@@ -138,6 +138,17 @@ describe IndexedDocument do
   end
 
   describe "deleting an IndexedDocument" do
+    context "when it doesn't have an IndexedDomain associated with it" do
+      before do
+        @indexed_document = IndexedDocument.create(@min_valid_attributes)
+      end
+
+      it "should still work" do
+        @indexed_document.indexed_domain.should be_nil
+        @indexed_document.destroy
+      end
+    end
+
     context "when it's the last IndexedDocument associated with an IndexedDomain" do
       before do
         IndexedDocument.destroy_all

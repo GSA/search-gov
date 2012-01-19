@@ -5,6 +5,7 @@ class IndexedDocumentObserver < ActiveRecord::Observer
   end
 
   def after_destroy(indexed_document)
-    indexed_document.indexed_domain.delete if indexed_document.indexed_domain.indexed_documents.empty?
+    indexed_domains = indexed_document.indexed_domain
+    indexed_domains.delete if indexed_domains and indexed_domains.indexed_documents.empty?
   end
 end
