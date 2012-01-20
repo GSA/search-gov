@@ -24,7 +24,7 @@ describe UsaController do
 
         it "should assign the @search instance" do
           get :show, :url_slug=>"Some/Topic", :m => "true"
-          assigns[:search].should be_instance_of(Search)
+          assigns[:search].should be_instance_of(WebSearch)
         end
 
         it "should assign the @site_page instance" do
