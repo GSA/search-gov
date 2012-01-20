@@ -4,7 +4,7 @@
 - search_params.merge!(:tbs => params[:tbs]) if params[:tbs]
 %ul.rss-feeds
   %li
-    = link_to_if(@search.instance_of?(Search) == false, t(:everything), params[:tbs] ? news_search_path(search_params.remove(:channel)) : search_path(search_params.remove(:channel))) do |everything|
+    = link_to_if(@search.instance_of?(WebSearch) == false, t(:everything), params[:tbs] ? news_search_path(search_params.remove(:channel)) : search_path(search_params.remove(:channel))) do |everything|
       = content_tag :span, everything
   - if @affiliate.is_image_search_enabled?
     %li
