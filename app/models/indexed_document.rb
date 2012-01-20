@@ -101,11 +101,11 @@ class IndexedDocument < ActiveRecord::Base
 
   def discover_nested_pdfs(doc, max_pdfs = MAX_PDFS_DISCOVERED_PER_HTML_PAGE)
     doc.css('a').collect { |link| link['href'] }.compact.select do |link_url|
-      link_url.ends_with(".pdf")
+      URI::parse(link_url).path.split('.').last == "pdf" rescue false
     end.map do |relative_pdf_url|
       URI.parse(self.url).merge(URI.parse(relative_pdf_url)).to_s rescue nil
     end.uniq.compact.first(max_pdfs).each do |pdf_url|
-      Rails.logger.info("[IndexedDocument] Creating PDF doc for [#{pdf_url}] from [#{self.url}]")
+      puts "[IndexedDocument] Creating PDF doc for [#{pdf_url}] from [#{self.url}]"
       IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url, :doctype => 'pdf')
     end
   end
