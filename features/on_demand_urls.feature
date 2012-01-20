@@ -153,3 +153,21 @@ Feature: Affiliate On-Demand Url Indexing Interface
     When I press "Delete"
     Then I should see the browser page titled "Previously Crawled URLs"
     And I should see "Removed http://removeme2.mil"
+    
+  Scenario: Exporting crawled urls to CSV
+    Given the following Affiliates exist:
+      | display_name     | name             | contact_email         | contact_name        |
+      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+    And the following IndexedDocuments exist:
+      | url                   | title   | description       |affiliate | last_crawled_at | last_crawl_status |
+      | http://aff.gov/1.html | No. 1   | Number 1          | aff.gov   | 2012-01-19      | OK                |
+      | http://aff.gov/2.html | No. 2   | Number 2          | aff.gov   | 2012-01-19      | OK                |
+      | http://aff.gov/3.html | No. 3   | Number 3          | aff.gov   |                 |                   |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "aff.gov" selected
+    And I follow "URLs & Sitemaps"
+    And I follow "Export to CSV"
+    Then I should see "url,title,description,body,doctype,last_crawled_at,last_crawl_status"
+    And I should see "http://aff.gov/1.html,No. 1,Number 1,,html,2012-01-19 00:00:00 UTC,OK"
+    And I should see "http://aff.gov/2.html,No. 2,Number 2,,html,2012-01-19 00:00:00 UTC,OK"
+    And I should not see "http://aff.gov/3.html"
