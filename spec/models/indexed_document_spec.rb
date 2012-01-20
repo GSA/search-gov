@@ -125,6 +125,12 @@ describe IndexedDocument do
     duplicate.should be_valid
   end
 
+  it "should validate URL against URI.parse to catch things that aren't caught in the regexp" do
+    odie = IndexedDocument.new(:affiliate_id => affiliates(:basic_affiliate).id, :url => "http://www.gov.gov/pipesare||bad")
+    odie.valid?.should be_false
+    odie.errors.full_messages.first.should == IndexedDocument::UNPARSEABLE_URL_STATUS
+  end
+
   it "should not allow setting last_crawl_status to OK if the title is blank" do
     odie = IndexedDocument.create!(@min_valid_attributes)
     odie.update_attributes(:title => nil, :description => 'bogus description', :last_crawl_status => IndexedDocument::OK_STATUS).should be_false

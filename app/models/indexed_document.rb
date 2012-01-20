@@ -14,6 +14,7 @@ class IndexedDocument < ActiveRecord::Base
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
   validates_uniqueness_of :content_hash, :message => "is not unique: Identical content (title and body) already indexed", :scope => :affiliate_id, :allow_nil => true
   validates_format_of :url, :with => /^http:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
+  validate :url_is_parseable
   validates_exclusion_of :url_extension, :in => %w(json xml rss csv css js png gif jpg jpeg txt ico wsdl htc swf), :message => "'%{value}' is not a supported file type"
   validates_inclusion_of :doctype, :in => %w(html pdf), :message => "must be either 'html' or 'pdf.'"
   validate :site_domain_matches
@@ -25,6 +26,7 @@ class IndexedDocument < ActiveRecord::Base
   OK_STATUS = "OK"
   EMPTY_BODY_STATUS = "No content found in document"
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
+  UNPARSEABLE_URL_STATUS = "URL format can't be parsed by USASearch software"
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
 
   searchable do
@@ -157,15 +159,15 @@ class IndexedDocument < ActiveRecord::Base
 
     def process_file(file, affiliate, max_urls = MAX_URLS_PER_FILE_UPLOAD)
       if file.blank? or !VALID_BULK_UPLOAD_CONTENT_TYPES.include?(file.content_type)
-        return { :success => false, :error_message => 'Invalid file format; please upload a plain text file (.txt).'}
+        return {:success => false, :error_message => 'Invalid file format; please upload a plain text file (.txt).'}
       end
 
       counter = 0
       if file.tempfile.lines.count <= max_urls and file.tempfile.open
         file.tempfile.each { |line| counter += 1 if create(:url => line.chomp.strip, :affiliate => affiliate).errors.empty? }
-        counter > 0 ?  { :success => true, :count => counter } : { :success => false, :error_message => 'No URLs uploaded; please check your file and try again.' }
+        counter > 0 ? {:success => true, :count => counter} : {:success => false, :error_message => 'No URLs uploaded; please check your file and try again.'}
       else
-        { :success => false, :error_message => "Too many URLs in your file.  Please limit your file to #{max_urls} URLs." }
+        {:success => false, :error_message => "Too many URLs in your file.  Please limit your file to #{max_urls} URLs."}
       end
     end
 
@@ -223,6 +225,10 @@ class IndexedDocument < ActiveRecord::Base
     return if self.affiliate.nil? or self.affiliate.site_domains.empty? or uri.nil?
     host_path = (uri.host + uri.path).downcase
     errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? { |sd| host_path.include?(sd.domain) }
+  end
+
+  def url_is_parseable
+    URI.parse(self.url) rescue errors.add(:base, UNPARSEABLE_URL_STATUS)
   end
 
   def last_crawl_status_ok?
