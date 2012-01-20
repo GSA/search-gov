@@ -198,7 +198,7 @@ class IndexedDocument < ActiveRecord::Base
 
   def generate_pdf_title(pdf_file_path, pdf_text)
     pdf = PDF::Toolkit.open(pdf_file_path) rescue nil
-    return pdf.title unless pdf.nil? or pdf.title.blank?
+    return pdf.title.to_s unless pdf.nil? or pdf.title.blank?
     pdf_text.split(/[\n.]/).first
   end
 

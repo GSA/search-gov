@@ -575,6 +575,19 @@ describe IndexedDocument do
   end
 
   describe "#generate_pdf_title(pdf_file_path, body)" do
+    context "when title is an integer" do
+      before do
+        pdf = mock("pdf")
+        PDF::Toolkit.stub!(:open).and_return pdf
+        pdf.stub!(:title).and_return 1578
+      end
+
+      it "should coerce the title into a string" do
+        title = IndexedDocument.new.send(:generate_pdf_title, nil, "whatever")
+        title.should == "1578"
+      end
+    end
+
     context "when PDF document has no title" do
       context "when body text contains no periods or newlines" do
         it "should return the cleaned body text" do
