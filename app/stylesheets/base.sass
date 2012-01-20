@@ -12,8 +12,7 @@ $green: #008000
 $link-visited-color: #595959
 $serp-link-visited-color: #551a8b
 $results-padding-size: 15px
-
-@import "govbox"
+$results-padding-left-size: 15px
 
 body
   :background-color #F7F7F7
@@ -660,3 +659,20 @@ ul#related_gov_forms
   :float none
   :margin 8px auto 0
   :padding-right 10px
+
+@import "govbox"
+#results .govbox
+  :color black
+  &.agency, &.medline
+    h3
+      color: #C51432
+    .official-tag
+      color: #C51432
+    .description
+      color: #222222
+      p, ul
+        color: #222222
+    .popular-pages
+      li
+        background: url('/images/govbox/star.gif') left 1px no-repeat
+        padding-left: 15px

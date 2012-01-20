@@ -7,9 +7,10 @@
     = (javascript_include_tag "jquery/jquery.min.js").html_safe
     = stylesheet_link_tag 'compiled/advanced.css'
     = render_affiliate_stylesheet @affiliate
-    /[if lt IE 8]
-      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
-    = stylesheet_link_tag "clearfix"
+    - unless @affiliate.uses_one_serp?
+      /[if lt IE 8]
+        = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
+      = stylesheet_link_tag "clearfix"
     - if @affiliate.is_sayt_enabled?
       = stylesheet_link_tag 'jquery-ui/jquery-ui.custom.css'
       = stylesheet_link_tag 'compiled/sayt.css'

@@ -13,18 +13,24 @@
     #search, #search_query
       font-family: #{render_affiliate_css_property_value(css_property_hash, :font_family)}
     #search
+      color: #{render_affiliate_css_property_value(css_property_hash, :description_text_color)}
       a
         color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
         &:visited
           color: #{render_affiliate_css_property_value(css_property_hash, :visited_title_link_color)}
-    #results .searchresult h3
-      color: #{render_affiliate_css_property_value(css_property_hash, :description_text_color)}
-      a
-        color: #{render_affiliate_css_property_value(css_property_hash, :url_link_color)}
+    #results .searchresult
+      .govbox.agency, .govbox.medline
+        h3, .official-tag
+          color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
+    #results
+      #boosted h3.alt, .featured-collection h2, .related-searches-wrapper-middle h3
+        color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}
     #results .pagination
       a, a:visited
         color: #{render_affiliate_css_property_value(css_property_hash, :title_link_color)}
       a:hover, em
         background-color: #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}
         color: #{render_affiliate_css_property_value(css_property_hash, :search_button_text_color)}
-
+    #search .page-not-found
+      h3.message
+        color: #{render_affiliate_css_property_value(css_property_hash, :left_tab_text_color)}

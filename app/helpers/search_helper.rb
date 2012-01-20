@@ -172,12 +172,12 @@ module SearchHelper
 
   def display_medline_topic_with_click_tracking(med_topic, query, locale = "en")
     onmousedown = onmousedown_for_click(query, 0, nil, 'MEDL', Time.now.to_i, :web)
-    raw "<a style=\"text-decoration: none;\" href=\"#{h search_path(:query => med_topic.medline_title, :locale => locale)}\" #{onmousedown}>#{med_topic.medline_title}</a>"
+    raw "<a href=\"#{h search_path(:query => med_topic.medline_title, :locale => locale)}\" #{onmousedown}>#{med_topic.medline_title}</a>"
   end
 
   def display_medline_clinical_trail_with_click_tracking(mesh_title, query, locale = "en")
     onmousedown = onmousedown_for_click(query, 0, nil, 'MEDL', Time.now.to_i, :web)
-    raw "<a style=\"text-decoration: none;\" href=\"http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h(mesh_title) + "\"")}\" #{onmousedown}>#{mesh_title}</a>"
+    raw "<a href=\"http://clinicaltrials.gov/search/open/condition=#{URI.escape("\"" + h(mesh_title) + "\"")}\" #{onmousedown}>#{mesh_title}</a>"
   end
 
   def highlight_string(s)
@@ -564,8 +564,12 @@ module SearchHelper
   end
 
   def related_topics_header(affiliate, query)
-    related_topics_suffix = content_tag :span, "#{I18n.t :related_topics_suffix}", :class => 'by-usa-gov'
-    affiliate ? I18n.t(:related_searches) : "#{I18n.t :related_topics_prefix} #{h query} #{related_topics_suffix}".html_safe
+    if affiliate
+      related_topics_suffix = content_tag :span, "#{I18n.t :by} #{affiliate.display_name}", :class => 'recommended-by'
+    else
+      related_topics_suffix = content_tag :span, "#{I18n.t :related_topics_suffix}", :class => 'by-usa-gov'
+    end
+    "#{I18n.t :related_topics_prefix} #{h query} #{related_topics_suffix}".html_safe
   end
 
   def related_faqs_header(query)

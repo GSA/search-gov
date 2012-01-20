@@ -1134,16 +1134,31 @@ Feature: Affiliate clients
 
   Scenario: Related Topics on English SERPs for given affiliate search
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            |
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
     And the following SAYT Suggestions exist for aff.gov:
-    | phrase                 |
-    | Some Unique Obama Term |
-    | el paso term           |
+      | phrase                 |
+      | Some Unique Obama Term |
+      | el paso term           |
     When I go to aff.gov's search page
     And I fill in "query" with "obama"
     And I press "Search"
-    Then I should see "Related Searches" in the search results section
+    Then I should see "Related Searches for obama by aff site" in the search results section
+    And I should see "some unique obama term"
+    And I should not see "aff.gov"
+
+  Scenario: Related Topics on Spanish SERPs for given affiliate search
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | locale |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | es     |
+    And the following SAYT Suggestions exist for aff.gov:
+      | phrase                 |
+      | Some Unique Obama Term |
+      | el paso term           |
+    When I go to aff.gov's search page
+    And I fill in "query" with "obama"
+    And I press "Buscar"
+    Then I should see "Búsquedas relacionadas a obama de aff site" in the search results section
     And I should see "some unique obama term"
     And I should not see "aff.gov"
 

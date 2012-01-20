@@ -235,7 +235,7 @@ describe "searches/index.html.haml" do
         it "should format the first result as a special agency result" do
           render
           rendered.should have_selector "div[class='govbox agency']"
-          rendered.should contain("www.irs.gov Official Site")
+          rendered.should contain("www.irs.gov")
           rendered.should contain(/888-555-1040 \(Contact\)/)
           rendered.should_not contain(/Toll-free:/)
           rendered.should_not contain(/TTY:/)
@@ -413,7 +413,7 @@ describe "searches/index.html.haml" do
         rendered.should_not contain(/Esta tema en español/)
         rendered.should_not contain(/ClinicalTrials.gov/)
       end
-      
+
       it "should not display a regular result with the same Medline URL/information" do
         render
         rendered.should_not =~ /Ulcerative colitis is a disease.*Ulcerative colitis is a disease/

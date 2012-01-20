@@ -1,60 +1,67 @@
 =topfade
   :background #fff url(/images/bg.png) repeat-x scroll 0 -153px
 
-.govbox
+#results .govbox
   @include clearfix
-  :color black
   :margin 0
   +topfade
   :border 1px solid #ddd
-  :padding $results-padding-size
+  :padding $results-padding-size $results-padding-left-size
   @include border-radius
   h3
     :font-size 1.5em
-    :color rgb(23, 69, 120)
     :margin 0 0 1em 0
   ul
     :margin 0 0 0 1em
     :padding-left 0.5em
-    :list-style-type disc
-    :color gray
   p
     :margin-top 0
     :margin-bottom .2em
-  &.agency
+  &.agency, &.medline
     :line-height 1
     h2
-      :line-height 1.5
+      margin-bottom: 3px
     h3
-      :color #C51432
-      :font
-        :size 13px
-        :weight bold
+      font:
+        size: 1.1em
+        weight: bold
+      &.result-url
+        margin: 0
     a.link-to-full-url
-      :border-right 1px solid #222222
+      font:
+        weight: normal
       :line-height 1.1
       :padding-right 8px
       :margin-right 3px
     .official-tag
-      :color #C51432
       :float right
       :font
-        :size 13px
-        :weight normal
+        :size 1.1em
+        :weight bold
     .description
-      :color #222222
       :font-size 1.1em
-      :line-height 1
+      :line-height 1.1
       :margin 0.5em 0 0.3em
+      ul
+        list-style: none
+        margin: 0
+        padding: 0 0 0 8px
     table.deep-links
       :padding 0
       :margin 0
+      table-layout: fixed
       :width 100%
+      td
+        line-height: 1.1em
+        padding: 0
     .section
       :float left
       :margin
         :top 0.4em
       :width 50%
+      h3
+        margin: 0
+  &.agency
     .stay-connected
       @extend .section
       .phone-wrapper
@@ -102,11 +109,9 @@
         :margin 0.3em 0 0
         :padding 0
         li
-          :background url('/images/govbox/star.gif') left 1px no-repeat
           :display block
           :line-height 1.2
           :list-style none
-          :padding-left 15px
           a:hover
             :text-decoration none
     .search-within
@@ -115,8 +120,24 @@
         :margin 0.4em 0 0
         #query
           :width 230px
+  &.medline
+    .official-tag
+      padding-right: 20px
+    .related-medline-topics, .clinical-trials, .lang-mapped-topic
+      @extend .section
+      ul
+        list-style: none
+        margin: 0.3em 0 0
+        padding: 0
+        li
+          line-height: 1.2
 
-.recalls-govbox, .recalls
+.en #results .medline .official-tag
+  background: url(/images/medline.en.png) no-repeat right center
+.es #results .medline .official-tag
+  background: url(/images/medline.es.png) no-repeat right center
+
+#results .recalls-govbox, #results .recalls
   h3
     :font-size 1.3em
     :line-height 19px
@@ -164,7 +185,7 @@
         a
           :color $green
 
-.recalls-govbox
+#results .recalls-govbox
   :margin-bottom 20px
   :padding-left $results-padding-size
   .recall

@@ -5,24 +5,26 @@ $results-padding-left-size: 11px
 $red: #990000
 $green: #008000
 
-@import "govbox"
-
 body
   background-color: white
-  font-size: small
   margin: 0
   padding: 0
 
-img
-  border: 0px
-
-.hide
-  display: none
-
-#container
-  width: 960px
+#search
+  @include clearfix
+  font-size: 0.75em
   margin: auto
   text-align: left
+  width: 960px
+  img
+    border: 0
+  h1
+    line-height: 1px
+    margin: 0
+    padding: 0
+    visibility: hidden
+  .hide
+    display: none
 
 #results
   float: left
@@ -47,13 +49,13 @@ img
     a
       font-size: 0.8em
   .did-you-mean, .search-all-sites-suggestion
-    padding-left: 10px
+    padding-left: $results-padding-left-size
 
   .pagination-and-logo
     border-top: 1px solid #CACACA
     clear: both
     height: 35px
-    margin: 1.5em 0
+    margin: 1.5em 0 0
     padding: 14px 0 14px $results-padding-left-size - 6px
 
   .pagination
@@ -74,7 +76,7 @@ img
         @include border-radius(3px)
 
 #summary
-  padding-left: 10px
+  padding-left: $results-padding-left-size
 
 #left_column
   float: left
@@ -98,22 +100,14 @@ img
           font-weight: normal
   ul.rss-feeds, ul.time-filters
     margin: 0
-    padding: 0 0 20px 18px
-    list-style-type: disc
+    padding: 0 0 20px 0
+    list-style: none
     li
-      color: #aaa
       margin: 7px 0
       a
         font-weight: normal
       span
         font-weight: bold
-
-#search
-  @include clearfix
-  h1
-    color: Transparent
-    font-size: 0
-    padding: 10px
 
 #search_form
   @include clearfix
@@ -151,175 +145,177 @@ img
     float: right
     margin-top: 5px
 
-.searchresult
-  margin-bottom: 1em
-  padding-left: $results-padding-left-size
-
-.searchresult  h2
-  font-size: 125%
-  font-weight: normal
-  margin: 0
-  span.uext_type
-    font-size: 0.7em
-
-.searchresult  h3
-  font-size: 1.0em
-  font-weight: normal
-  margin: 0
-  a
-    text-decoration: none
-
-.searchresult h4
-  color: #595959
-  margin: 3px 0
-
-.bing-logo
-  float: right
-
-.disabled
-  color: white
-  display: none
-
-.related-searches-wrapper-middle
-  @include clearfix
-  border: 1px solid #D3D3D3
-  margin:
-    top: 1em
-    bottom: 1em
-  padding: 1em $results-padding-left-size
-  background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
-  h3
-    color: #333
-    font-size: 15px
-    margin: 0
-  ul
-    color: #AAA
-    float: left
-    margin: 0
-    padding: 0
-    width: 630px
-    li
-      float: left
-      line-height: 1.2
-      margin: 0 0 0 15px
-      padding: 0
-      width: 300px
-
-#footer
-  margin-top: 2em
-
-.results
-  display: block
-  overflow: hidden
-  padding-left: 20em
-  padding-right: 5em
-  padding-top:   1em
-
-#boosted, #indexed_documents
-  border: 1px lightgray solid
-  margin:
-    top: 1em
-    bottom: 1em
-  padding: 1em 0.5em 0 $results-padding-left-size
-  background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
-  h3.alt
-    margin-top: 0
-    span.recommended-by
-      color: gray
-      font:
-        size: 0.9em
-        weight: normal
+#results
   .searchresult
-    padding-left: 0
-  .see-more-documents
-    margin-bottom: 10px
+    margin-bottom: 1em
+    padding-left: $results-padding-left-size
+    &.blended
+      :padding 0
 
-.featured-collection
-  @include clearfix
-  border: 1px solid #D3D3D3
-  margin:
-    top: 1em
-    bottom: 1em
-  padding: 1em $results-padding-left-size
-  background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
-  h2
-    color: #C51432
-    margin: 0 0 10px
-    span.recommended-by
-      color: gray
-      font:
-        size: 0.8em
-        style: italic
-        weight: normal
-  .image
-    float: left
-    img
-      display: block
-      margin-bottom: 5px
-    span
-      font-weight: normal
-      width: auto
-      word-wrap: break-word
-      &.attribution
-        font-weight: normal
-    a
-      display: inline
-      word-wrap: break-word
-  ul
-    color: #AAA
-    float: left
+  .searchresult  h2
+    font-size: 1.4em
+    font-weight: normal
     margin: 0
-    padding: 0
-    li
+    span.uext_type
+      font-size: 0.7em
+
+  .searchresult  h3
+    font-size: 1.1em
+    font-weight: normal
+    margin: 0
+    a
+      text-decoration: none
+
+  .searchresult h4
+    color: #595959
+    margin: 3px 0
+
+  .bing-logo
+    float: right
+
+  .disabled
+    color: white
+    display: none
+
+  .related-searches-wrapper-middle
+    @include border-radius
+    @include clearfix
+    border: 1px solid #DDD
+    margin:
+      top: 1em
+      bottom: 1em
+    padding: $results-padding-size $results-padding-left-size
+    background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
+    h3
+      font-size: 1.2em
+      margin-top: 0
+      span.recommended-by
+        color: gray
+        font:
+          size: 0.9em
+          style: italic
+          weight: normal
+    ul
       float: left
-      line-height: 1.2
+      list-style: none
       margin: 0
       padding: 0
-  &.one-column-with-image
-    .image
-      width: 125px
-    ul
-      margin: 0 0 0 10px
-      width: 500px
-    li
-      clear: left
-      margin: 0 0 0 15px
-  &.one-column-without-image
-    ul
-      margin: 0
-    li
-      clear: left
-      margin: 0 0 0 15px
-  &.two-column-with-image
-    .image
-      width: 100px
-    ul
-      margin: 0 0 0 10px
-      width: 520px
-    li
-      margin: 0 0 0 15px
-      width: 245px
-    li.left
-      clear: left
-  &.two-column-without-image
-    ul
-      margin: 0
       width: 630px
-    li
-      margin: 0 0 0 15px
-      width: 300px
-    li.left
-      clear: left
+      li
+        float: left
+        line-height: 1.2
+        margin: 0
+        padding: 0
+        width: 312px
 
+  .results
+    display: block
+    overflow: hidden
+    padding-left: 20em
+    padding-right: 5em
+    padding-top:   1em
 
+  #boosted, #indexed_documents
+    @include border-radius
+    border: 1px #ddd solid
+    margin:
+      top: 1em
+      bottom: 1em
+    padding: $results-padding-size $results-padding-left-size 0 $results-padding-left-size
+    background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
+    h3.alt
+      font-size: 1.2em
+      margin-top: 0
+      span.recommended-by
+        color: gray
+        font:
+          size: 0.9em
+          style: italic
+          weight: normal
+    .searchresult
+      padding-left: 0
+    .see-more-documents
+      margin-bottom: 10px
 
-.page-not-found
+  .featured-collection
+    @include border-radius
+    @include clearfix
+    border: 1px solid #DDD
+    margin:
+      top: 1em
+      bottom: 1em
+    padding: 1em $results-padding-left-size
+    background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
+    h2
+      margin: 0 0 0.5em
+      span.recommended-by
+        color: gray
+        font:
+          size: 0.8em
+          style: italic
+          weight: normal
+    .image
+      float: left
+      img
+        display: block
+        margin-bottom: 5px
+      span
+        font-weight: normal
+        width: auto
+        word-wrap: break-word
+        &.attribution
+          font-weight: normal
+      a
+        display: inline
+        word-wrap: break-word
+    ul
+      float: left
+      list-style: none
+      margin: 0
+      padding: 0
+      li
+        float: left
+        line-height: 1.2
+        margin: 0
+        padding: 0
+    &.one-column-with-image
+      .image
+        width: 125px
+      ul
+        margin: 0 0 0 10px
+        width: 500px
+      li
+        clear: left
+        margin: 0
+    &.one-column-without-image
+      li
+        clear: left
+    &.two-column-with-image
+      .image
+        width: 100px
+      ul
+        margin: 0 0 0 10px
+        width: 520px
+      li
+        width: 50%
+      li.left
+        clear: left
+    &.two-column-without-image
+      ul
+        width: 630px
+      li
+        width: 50%
+      li.left
+        clear: left
+
+@import "govbox"
+
+#search .page-not-found
   :margin 50px auto
   :text-align center
   :width 100%
   $element-width: 754px
   h3
-    :color #C30E2C
     :line-height 26px
     :font
       :size 20px
@@ -332,12 +328,10 @@ img
     :background url(/images/footer_line.gif) no-repeat center bottom
     :padding-bottom 15px
   .what-to-do-wrapper
-    :color #222
     :margin 0 auto 35px
     :text-align left
     :width $element-width
     h3
-      :color #787677
       :margin 10px 0
     span
       :font-size 15px
@@ -354,6 +348,6 @@ img
     :margin 10px auto 0
     .advancedsearch
       :display none
-.es .page-not-found
+.es #search .page-not-found
   .message, .what-to-do-wrapper
     :width 765px

@@ -1,14 +1,12 @@
 .searchresult.blended{:id => "searchresult#{index+1}"}
   .govbox.agency
     %span.official-tag
-      = t :agency_feature_by
-    %h2= display_bing_result_title(result, search, affiliate, index, @search_vertical)
-    %div
-      = display_agency_link(result, search, affiliate, index, @search_vertical)
       = t :agency_official_site
+    %h2= display_bing_result_title(result, search, affiliate, index, @search_vertical)
+    %h3.result-url= display_agency_link(result, search, affiliate, index, @search_vertical)
     %p.description
       = display_result_description(result)
-    - if affiliate.nil? && index == 0 && search.first_page?
+    - if index == 0 && search.first_page?
       %div
         = display_deep_links_for(result, search, affiliate, @search_vertical)
     .stay-connected
