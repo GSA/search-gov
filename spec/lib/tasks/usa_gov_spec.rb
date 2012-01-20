@@ -50,7 +50,7 @@ describe "USA.gov rake tasks" do
     context "when always filtered search terms do not generate search results on adult-enabled SERPs" do
       before do
         SaytFilter.create!(:phrase => "bad_term", :always_filtered => true)
-        Search.stub!(:results_present_for?).and_return false
+        WebSearch.stub!(:results_present_for?).and_return false
       end
 
       it "should not send an alert email" do
@@ -65,7 +65,7 @@ describe "USA.gov rake tasks" do
         bad_term = "really bad phrase"
         SaytFilter.create!(:phrase => good_term, :always_filtered => false)
         SaytFilter.create!(:phrase => bad_term, :always_filtered => true)
-        Search.stub!(:results_present_for?).and_return true
+        WebSearch.stub!(:results_present_for?).and_return true
         @array = [bad_term]
       end
 

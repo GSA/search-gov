@@ -85,8 +85,8 @@ describe SaytSuggestion do
       SaytSuggestion.delete_all
       one = SaytSuggestion.create!(:phrase => "yosemite", :affiliate_id => affiliates(:basic_affiliate).id)
       two = SaytSuggestion.create!(:phrase => "prune me")
-      Search.should_receive(:results_present_for?).with(one.phrase, affiliates(:basic_affiliate)).and_return true
-      Search.should_receive(:results_present_for?).with(two.phrase, nil).and_return false
+      WebSearch.should_receive(:results_present_for?).with(one.phrase, affiliates(:basic_affiliate)).and_return true
+      WebSearch.should_receive(:results_present_for?).with(two.phrase, nil).and_return false
     end
 
     it "should delete suggestions that yield no search results" do
@@ -130,7 +130,7 @@ describe SaytSuggestion do
         DailyQueryStat.create!(:day => Date.yesterday, :query => "yesterday term1", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         DailyQueryStat.create!(:day => Date.current, :query => "today term1", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
         DailyQueryStat.create!(:day => Date.current, :query => "today term2", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME)
-        Search.stub!(:results_present_for?).and_return true
+        WebSearch.stub!(:results_present_for?).and_return true
       end
 
       it "should create unprotected suggestions" do
@@ -166,8 +166,8 @@ describe SaytSuggestion do
       before do
         @one = DailyQueryStat.create!(:day => Date.current, :query => "no results for this query, or got a spelling correction", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
         @two = DailyQueryStat.create!(:day => Date.current, :query => "got results with no spelling suggestion for this query", :times => 2, :affiliate => affiliates(:basic_affiliate).name)
-        Search.should_receive(:results_present_for?).with(@one.query, affiliates(:basic_affiliate), false).and_return false
-        Search.should_receive(:results_present_for?).with(@two.query, affiliates(:basic_affiliate), false).and_return true
+        WebSearch.should_receive(:results_present_for?).with(@one.query, affiliates(:basic_affiliate), false).and_return false
+        WebSearch.should_receive(:results_present_for?).with(@two.query, affiliates(:basic_affiliate), false).and_return true
       end
 
       it "should only create SaytSuggestions for the ones with results" do
@@ -181,7 +181,7 @@ describe SaytSuggestion do
       before do
         DailyQueryStat.create!(:day => Date.current, :query => "el paso", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'es')
         DailyQueryStat.create!(:day => Date.current, :query => "el paso", :times => 4, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'en')
-        Search.stub!(:results_present_for?).and_return true
+        WebSearch.stub!(:results_present_for?).and_return true
       end
 
       it "should combine data from all locales to populate SaytSuggestions" do
@@ -196,7 +196,7 @@ describe SaytSuggestion do
         DailyQueryStat.create!(:day => Date.current, :query => "today term1", :times => 2, :affiliate => @affiliate.name)
         DailyQueryStat.create!(:day => Date.current, :query => "today term2", :times => 2, :affiliate => @affiliate.name)
         SaytFilter.create!(:phrase => "term2")
-        Search.stub!(:results_present_for?).and_return true
+        WebSearch.stub!(:results_present_for?).and_return true
       end
 
       it "should apply SaytFilters to each eligible DailyQueryStat word" do
@@ -210,7 +210,7 @@ describe SaytSuggestion do
         @affiliate = affiliates(:power_affiliate)
         SaytSuggestion.create!(:phrase => "already here", :popularity => 10, :affiliate_id => @affiliate.id)
         DailyQueryStat.create!(:day => Date.current, :query => "already here", :times => 2, :affiliate => @affiliate.name)
-        Search.stub!(:results_present_for?).and_return true
+        WebSearch.stub!(:results_present_for?).and_return true
       end
 
       it "should update the popularity field with the new count" do
