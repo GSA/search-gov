@@ -69,7 +69,7 @@ class IndexedDocument < ActiveRecord::Base
       index_document(file, content_type)
       update_content_hash
     rescue Exception => e
-      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => e.message, :content_hash => nil)
+      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => e.message, :content_hash => nil) rescue destroy
     ensure
       File.delete(file) unless file.nil?
     end

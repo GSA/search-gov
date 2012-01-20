@@ -159,7 +159,7 @@ describe IndexedDocument do
       before do
         IndexedDocument.destroy_all
         @indexed_document = IndexedDocument.create!(@valid_attributes)
-        @indexed_document.update_attributes!(:title => 'bogus title', :description => 'description', :last_crawl_status => IndexedDocument::OK_STATUS,:content_hash => '92ebcfafee3260a041f9624525a45328')
+        @indexed_document.update_attributes!(:title => 'bogus title', :description => 'description', :last_crawl_status => IndexedDocument::OK_STATUS, :content_hash => '92ebcfafee3260a041f9624525a45328')
         IndexedDocument.create!(@valid_attributes.merge(:url=>"http://something.gov/second.html"))
       end
 
@@ -306,6 +306,18 @@ describe IndexedDocument do
       it "should not attempt to clean up the nil file descriptor" do
         File.should_not_receive(:delete)
         indexed_document.fetch
+      end
+    end
+
+    context "when there is a problem updating the attributes after catching an exception during indexing" do
+      before do
+        indexed_document.stub!(:open).and_raise Exception.new("some problem during indexing")
+        indexed_document.stub!(:update_attributes!).and_raise StandardError
+      end
+
+      it "should handle the exception and delete the record" do
+        indexed_document.fetch
+        IndexedDocument.find_by_id(indexed_document.id).should be_nil
       end
     end
 
