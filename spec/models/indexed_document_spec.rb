@@ -368,6 +368,18 @@ describe IndexedDocument do
         lambda { @dupe.update_content_hash }.should raise_error(IndexedDocument::IndexedDocumentError, "Content hash is not unique: Identical content (title and body) already indexed")
       end
     end
+
+    context "when Rails validation misses that it's a duplicate and MySQL throws an exception" do
+      before do
+        indexed_document.stub!(:build_content_hash).and_return("foo")
+        indexed_document.stub!(:save!).and_raise(Mysql2::Error.new("oops"))
+      end
+
+      it "should catch the exception and delete the record" do
+        indexed_document.update_content_hash
+        IndexedDocument.find_by_id(indexed_document.id).should be_nil
+      end
+    end
   end
 
   describe "#index_document(file)" do

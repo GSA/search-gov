@@ -124,6 +124,8 @@ class IndexedDocument < ActiveRecord::Base
     begin
       self.content_hash = build_content_hash
       save!
+    rescue Mysql2::Error
+      destroy
     rescue ActiveRecord::RecordInvalid
       raise IndexedDocumentError.new(errors.full_messages.to_s)
     end
