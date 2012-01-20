@@ -196,17 +196,14 @@ class IndexedDocument < ActiveRecord::Base
     URI::parse(url).path.split('.').last rescue nil
   end
 
-  def generate_pdf_title(pdf_file_path, body)
+  def generate_pdf_title(pdf_file_path, pdf_text)
     pdf = PDF::Toolkit.open(pdf_file_path) rescue nil
     return pdf.title unless pdf.nil? or pdf.title.blank?
-    first_linebreak_index = body.strip.index("\n") || body.size
-    first_sentence_index = body.strip.index(".")
-    end_index = [first_linebreak_index, first_sentence_index].min - 1
-    body[0..end_index].strip
+    pdf_text.split(/[\n.]/).first
   end
 
   def generate_pdf_description(pdf_text)
-    pdf_text.squish.gsub(/[^\w_ ]/, "").gsub(/[“’‘”]/, "").gsub(/ /, "").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => " ")
+    pdf_text.gsub(/[^\w_ ]/, "").gsub(/[“’‘”]/, "").gsub(/ /, "").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => " ")
   end
 
   def normalize_url

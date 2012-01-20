@@ -574,6 +574,17 @@ describe IndexedDocument do
     end
   end
 
+  describe "#generate_pdf_title(pdf_file_path, body)" do
+    context "when PDF document has no title" do
+      context "when body text contains no periods or newlines" do
+        it "should return the cleaned body text" do
+          title = IndexedDocument.new.send(:generate_pdf_title, nil, "CORRECTION: Obstructions listed for RUNWAY 30 represent an AV Obstruction Identification Surface")
+          title.should == "CORRECTION: Obstructions listed for RUNWAY 30 represent an AV Obstruction Identification Surface"
+        end
+      end
+    end
+  end
+
   describe "#uncrawled_urls" do
     before do
       IndexedDocument.destroy_all
