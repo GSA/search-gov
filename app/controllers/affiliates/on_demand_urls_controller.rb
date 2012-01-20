@@ -47,9 +47,9 @@ class Affiliates::OnDemandUrlsController < Affiliates::AffiliatesController
       format.html {}
       format.csv {
         csv_data = FasterCSV.generate do |csv|
-          csv << ['url', 'title', 'description', 'body', 'doctype', 'last_crawled_at', 'last_crawl_status']
+          csv << ['url', 'title', 'description', 'doctype', 'last_crawled_at', 'last_crawl_status']
           @crawled_urls.each do |doc|
-            csv << [doc.url, doc.title, doc.description, doc.body, doc.doctype, doc.last_crawled_at, doc.last_crawl_status]
+            csv << [doc.url, doc.title, doc.description, doc.doctype, doc.last_crawled_at, doc.last_crawl_status]
           end
         end
         send_data csv_data, :type => 'text/plain', :filename => "#{@affiliate.name}-docs.csv", :disposition => 'attachment'

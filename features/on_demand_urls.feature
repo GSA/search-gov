@@ -167,7 +167,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
     And I follow "Export to CSV"
-    Then I should see "url,title,description,body,doctype,last_crawled_at,last_crawl_status"
-    And I should see "http://aff.gov/1.html,No. 1,Number 1,,html,2012-01-19 00:00:00 UTC,OK"
-    And I should see "http://aff.gov/2.html,No. 2,Number 2,,html,2012-01-19 00:00:00 UTC,OK"
+    Then I should see "url,title,description,doctype,last_crawled_at,last_crawl_status"
+    And I should see "http://aff.gov/1.html,No. 1,Number 1,html,2012-01-19 00:00:00 UTC,OK"
+    And I should see "http://aff.gov/2.html,No. 2,Number 2,html,2012-01-19 00:00:00 UTC,OK"
     And I should not see "http://aff.gov/3.html"
