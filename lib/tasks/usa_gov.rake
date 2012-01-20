@@ -3,7 +3,7 @@ namespace :usasearch do
   task :crawl_usa_gov => :environment do
     SitePage.crawl_usa_gov
   end
-  
+
   desc "Crawls answers.usa.gov and creates local mobile version of the site, erasing any prior answers"
   task :crawl_answers_usa_gov => :environment do
     SitePage.crawl_answers_usa_gov
@@ -13,7 +13,7 @@ namespace :usasearch do
   task :detect_objectionable_content, :email, :needs => :environment do |t, args|
     args.with_defaults(:email => "amy.farrajfeijoo@gsa.gov")
     results = SaytFilter.find_all_by_always_filtered(true).find_all do |sf|
-      Search.results_present_for?(sf.phrase, nil, true, "off")
+      WebSearch.results_present_for?(sf.phrase, nil, true, "off")
     end
     Emailer.deliver_objectionable_content_alert(args.email, results.collect(&:phrase)) if results.present?
   end
