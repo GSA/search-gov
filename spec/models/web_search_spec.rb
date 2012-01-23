@@ -13,6 +13,7 @@ describe WebSearch do
     it "should instrument the call to Bing with the proper action.service namespace and query param hash" do
       BoostedContent.stub!(:search_for).and_return nil
       Faq.stub!(:search_for).and_return nil
+      SaytSuggestion.stub!(:search_for).and_return nil
       ActiveSupport::Notifications.should_receive(:instrument).
         with("bing_search.usasearch", hash_including(:query => hash_including(:term => an_instance_of(String))))
       WebSearch.new(@valid_options).run
@@ -117,6 +118,7 @@ describe WebSearch do
         before do
           @search = WebSearch.new(@valid_options)
           @search.stub!(:populate_additional_results).and_return true
+          SaytSuggestion.stub!(:search_for).and_return nil
           Net::HTTP::Get.stub!(:new).and_raise Timeout::Error
         end
 
@@ -1109,7 +1111,7 @@ describe WebSearch do
       end
     end
 
-    context "when the affiliate has no Bing results, and has indexed documents" do
+    context "when the affiliate has no Bing results, but has indexed documents" do
       before do
         @non_affiliate = affiliates(:non_existant_affiliate)
         @non_affiliate.site_domains.create(:domain=>"nonsense.com")
@@ -1189,16 +1191,36 @@ describe WebSearch do
         @affiliate.indexed_documents.create!(:title => 'I LOVE AMERICA', :description => 'WE LOVE AMERICA', :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
         Sunspot.commit
         IndexedDocument.reindex
+        @search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
+        @search.should_not_receive(:perform_bing_search)
+        @search.run
       end
       
       it "should not use Bing results, but instead use ODIE results" do
-        search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
-        search.should_not_receive(:bing_offset)
-        search.run
-        search.total.should == 1
-        search.results.first['title'].should == 'I LOVE AMERICA'
-        search.results.first['content'].should == 'WE LOVE AMERICA'
-        search.results.first['unescapedUrl'].should == "http://nps.gov/america.html"
+        @search.total.should == 1
+        @search.results.first['title'].should == 'I LOVE AMERICA'
+        @search.results.first['content'].should == 'WE LOVE AMERICA'
+        @search.results.first['unescapedUrl'].should == "http://nps.gov/america.html"
+      end
+    end
+    
+    context "when an affiliate is set to use Bing+Odie results" do
+      before do
+        IndexedDocument.destroy_all
+        @affiliate = affiliates(:basic_affiliate)
+        @affiliate.stub!(:uses_bing_odie_results?).and_return false
+        @affiliate.indexed_documents.create(:title => 'I LOVE AMERICA', :description => 'WE LOVE AMERICA', :url => 'http://nps.gov/america.html', :last_crawl_status => IndexedDocument::OK_STATUS)
+        Sunspot.commit
+        IndexedDocument.reindex
+        @search = WebSearch.new(:query => 'america', :affiliate => @affiliate)
+        @search.should_receive(:bing_offset).and_return 0
+        @search.run
+      end
+      
+      it "should use Bing results and populate the indexed_documents field with the Indexed Document results" do
+        @search.indexed_documents.should_not be_nil
+        @search.indexed_documents.should_not be_empty
+        @search.indexed_documents.first.instance.should == @affiliate.indexed_documents.first
       end
     end
   end
@@ -1349,19 +1371,19 @@ describe WebSearch do
 
     it "should attempt to get the results from the Redis cache" do
       @redis.should_receive(:get).with(@cache_key)
-      @search.send(:perform)
+      @search.send(:perform_bing_search)
     end
 
     it "should use the Spell+Image source for image searches" do
       @redis.should_receive(:get).with("(foo) (scopeid:usagovall OR site:gov OR site:mil):Spell+Image:75:25:true:moderate")
       image_search = ImageSearch.new(:query => "foo", :per_page => 25, :page => 4)
-      image_search.send(:perform)
+      image_search.send(:perform_bing_search)
     end
 
     context "when no results in cache" do
       it "should store newly fetched results in cache with appropriate expiry" do
         @redis.should_receive(:setex).with(@cache_key, WebSearch::BING_CACHE_DURATION_IN_SECONDS, an_instance_of(String))
-        @search.send(:perform)
+        @search.send(:perform_bing_search)
       end
     end
   end

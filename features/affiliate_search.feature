@@ -272,3 +272,53 @@ Feature: Affiliate Search
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
     And I press "Search"
     Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
+    
+  Scenario: When an affiliate uses ODIE results
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | domains | results_source |
+      | agency site  | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | odie           |
+    And the following IndexedDocuments exist:
+      | url                       | affiliate | title       | description     |
+      | http://nih.gov/1.html     | nih.gov   | NIH Page 1  | This is page 1  |
+      | http://nih.gov/2.html     | nih.gov   | NIH Page 2  | This is page 2  |
+    And the url "http://nih.gov/1.html" has been crawled
+    And the url "http://nih.gov/2.html" has been crawled
+    And I am on nih.gov's search page
+    And I fill in "query" with "NIH"
+    And I press "Search"
+    Then I should not see the indexed documents section
+    And I should see "NIH Page 1"
+    And I should see "NIH Page 2"
+  
+  Scenario: Searcher does not see indexed documents when using Bing-only results
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | domains | results_source |
+      | agency site  | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | bing           |
+    And the following IndexedDocuments exist:
+      | url                       | affiliate | title       | description     |
+      | http://nih.gov/1.html     | nih.gov   | NIH Page 1  | This is page 1  |
+      | http://nih.gov/2.html     | nih.gov   | NIH Page 2  | This is page 2  |
+    And the url "http://nih.gov/1.html" has been crawled
+    And the url "http://nih.gov/2.html" has been crawled
+    And I am on nih.gov's search page
+    And I fill in "query" with "NIH"
+    And I press "Search"
+    Then I should not see the indexed documents section
+    And I should not see "NIH Page 1"
+    And I should not see "NIH Page 2"  
+    
+  Scenario: When an affiliate uses Bing+Odie results
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | domains | results_source |
+      | agency site  | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | bing+odie      |
+    And the following IndexedDocuments exist:
+      | url                       | affiliate | title       | description     |
+      | http://nih.gov/1.html     | nih.gov   | NIH Page 1  | This is page 1  |
+      | http://nih.gov/2.html     | nih.gov   | NIH Page 2  | This is page 2  |
+    And the url "http://nih.gov/1.html" has been crawled
+    And the url "http://nih.gov/2.html" has been crawled
+    And I am on nih.gov's search page
+    And I fill in "query" with "NIH"
+    And I press "Search"
+    Then I should see "NIH Page 1" in the indexed documents section
+    And I should see "NIH Page 2" in the indexed documents section

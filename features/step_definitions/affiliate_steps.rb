@@ -69,7 +69,8 @@ Given /^the following Affiliates exist:$/ do |table|
       :top_searches_label => hash["top_searches_label"] || 'Search Trends',
       :locale => hash["locale"] || 'en',
       :is_agency_govbox_enabled => hash["is_agency_govbox_enabled"] || false,
-      :is_medline_govbox_enabled => hash["is_medline_govbox_enabled"] || false
+      :is_medline_govbox_enabled => hash["is_medline_govbox_enabled"] || false,
+      :results_source => hash["results_source"] || "bing"
     )
     affiliate.uses_one_serp = uses_one_serp
     affiliate.save!

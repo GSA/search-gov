@@ -15,7 +15,7 @@ class OdieSearch < Search
     if response 
       @total = response.total
       @startrecord = ((@page - 1) * 10) + 1
-      @results = process_results(response)
+      @results = paginate(process_results(response))
       @endrecord = @startrecord + @results.size - 1
     end
   end
@@ -49,7 +49,7 @@ class OdieSearch < Search
   protected
 
   def process_results(results)
-    processed = results.hits.collect do |hit|
+    processed = results.hits(:verify => true).collect do |hit|
       {
         'title' => highlight_solr_hit_like_bing(hit, :title),
         'unescapedUrl' => hit.instance.url,

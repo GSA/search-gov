@@ -24,6 +24,7 @@ class Search
               :queried_at_seconds
 
   def initialize(options = {})
+    @options = options
     @query = build_query(options)
     @affiliate = options[:affiliate]
     @page = (options[:page] || 1)
@@ -78,5 +79,9 @@ class Search
   def highlight_solr_hit_like_bing(hit, field_symbol)
     return hit.highlights(field_symbol).first.format { |phrase| "\xEE\x80\x80#{phrase}\xEE\x80\x81" } unless hit.highlights(field_symbol).first.nil?
     hit.instance.send(field_symbol)
+  end
+  
+  def paginate(items)
+    WillPaginate::Collection.create(@page, @per_page, [@per_page * 100, @total].min) { |pager| pager.replace(items) }
   end
 end

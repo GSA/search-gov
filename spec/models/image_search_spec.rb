@@ -18,7 +18,7 @@ describe ImageSearch do
   subject do
     search = ImageSearch.new(:query => "White House")
     body = File.read(Rails.root.to_s + "/spec/fixtures/json/bing_image_results_for_white_house.json")
-    search.stub!(:perform).and_return(body)
+    search.stub!(:perform_bing_search).and_return(body)
     search.run
     search
   end

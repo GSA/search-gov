@@ -1,7 +1,7 @@
 require 'sass/css'
 
 class Affiliate < ActiveRecord::Base
-  validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale
+  validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale, :results_source
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within=> (2..33)
   validates_format_of :name, :with=> /^[a-z0-9._-]+$/
@@ -92,6 +92,7 @@ class Affiliate < ActiveRecord::Base
   THEMES[:custom] = { :display_name => 'Custom' }
 
   DEFAULT_CSS_PROPERTIES = { :font_family => FONT_FAMILIES[0] }.merge(THEMES[:default])
+  RESULTS_SOURCES = %w(bing odie bing+odie)
 
   def self.define_json_columns_accessors(args)
     column_name_method = args[:column_name_method]
@@ -302,7 +303,15 @@ class Affiliate < ActiveRecord::Base
   end
 
   def uses_odie_results?
-    uses_odie_results
+    self.results_source == 'odie'
+  end
+  
+  def uses_bing_results?
+    self.results_source == 'bing'
+  end
+  
+  def uses_bing_odie_results?
+    self.results_source == 'bing+odie'
   end
 
   private

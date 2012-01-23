@@ -145,14 +145,24 @@ class WebSearch < Search
 
   def search
     begin
-      parse(perform)
+      if @affiliate and @affiliate.uses_odie_results?
+        perform_odie_search
+      else
+        parse_bing_response(perform_bing_search)
+      end
     rescue BingSearch::BingSearchError => error
       Rails.logger.warn "Error getting search results from Bing server: #{error}"
       false
     end
   end
   
-  def perform
+  def perform_odie_search
+    odie_search = OdieSearch.new(@options)
+    odie_search.run
+    @indexed_results = odie_search
+  end
+  
+  def perform_bing_search
     response_body = @@redis.get(cache_key) rescue nil
     return response_body unless response_body.nil?
     ActiveSupport::Notifications.instrument("bing_search.usasearch", :query => {:term => @formatted_query}) do
@@ -162,7 +172,7 @@ class WebSearch < Search
     end
   end
   
-  def parse(response_body)
+  def parse_bing_response(response_body)
     begin
       json = JSON.parse(response_body)
       json.nil? ? nil : ResponseData.new(json['SearchResponse'])
@@ -172,34 +182,37 @@ class WebSearch < Search
   end
 
   def handle_response(response)
-    @total = hits(response)
-    if @total.zero?
-      if @affiliate and self.class == WebSearch
-        do_indexed_document_search
-      end
+    if @affiliate and @affiliate.uses_odie_results?
+      handle_odie_response(response)
     else
-      if @affiliate and @affiliate.uses_odie_results?
-        do_indexed_document_search
-      else
-        @startrecord = bing_offset(response) + 1
-        @results = paginate(process_results(response))
-        @endrecord = startrecord + results.size - 1
-        @spelling_suggestion = spelling_results(response)
-      end
-      @related_search = related_search_results
+      handle_bing_response(response)
     end
   end
   
-  def do_indexed_document_search
-    @indexed_results = IndexedDocument.search_for(query, affiliate, page, 10)
-    unless @indexed_results.nil?
-      @total = @indexed_results.total
-      @startrecord = ((page - 1) * @per_page) + 1
-      @results = paginate(process_indexed_results(@indexed_results))
-      @endrecord = startrecord + @results.size - 1
+  def handle_odie_response(response)
+    unless response.nil? and response.total > 0
+      @total = response.total
+      @startrecord = response.startrecord
+      @results = response.results
+      @endrecord = response.endrecord
     end
   end
-    
+  
+  def handle_bing_response(response)
+    @total = hits(response)
+    if @total.zero?
+      if @affiliate and self.class == WebSearch
+        handle_odie_response(perform_odie_search)
+      end
+    else
+      @startrecord = bing_offset(response) + 1
+      @results = paginate(process_results(response))
+      @endrecord = startrecord + results.size - 1
+      @spelling_suggestion = spelling_results(response)
+    end
+    @related_search = related_search_results
+  end
+  
   def hits(response)
     (response.web.results.blank? ? 0 : response.web.total) rescue 0
   end
@@ -266,10 +279,6 @@ class WebSearch < Search
     processed.compact
   end
   
-  def paginate(items)
-    WillPaginate::Collection.create(@page, @per_page, [@per_page * 100, @total].min) { |pager| pager.replace(items) }
-  end
-
   def spelling_results(response)
     did_you_mean_suggestion = response.spell.results.first.value rescue nil
     cleaned_suggestion_without_bing_highlights = strip_extra_chars_from(did_you_mean_suggestion)
@@ -298,7 +307,7 @@ class WebSearch < Search
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.nil? or (affiliate and affiliate.is_medline_govbox_enabled?)
       @recalls = Recall.recent(query) unless affiliate
     end
-    if response && response.has?(:image) && response.image.total > 0
+    if response && response.is_a?(Hash) && response.has?(:image) && response.image.total > 0
       @extra_image_results = process_image_results(response)
     end
   end

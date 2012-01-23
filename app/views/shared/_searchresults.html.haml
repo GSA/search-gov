@@ -16,6 +16,7 @@
     = render "shared/popular_images", :search => search
   - elsif @search.med_topic.present?
     = render 'shared/med_topic_gov_box', :search => @search, :affiliate => @affiliate
+  = render "/shared/indexed_documents", :search => @search, :affiliate => @affiliate if @affiliate and @affiliate.uses_bing_odie_results?
 - if search.results.present?
   - search.results.each_with_index do |result, index|
     - unless search.med_topic.present? and search.med_topic.medline_url == result['unescapedUrl']
