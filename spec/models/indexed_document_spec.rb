@@ -555,6 +555,13 @@ describe IndexedDocument do
       end
     end
 
+    context "when the target URL can't be parsed" do
+      let(:target_url) { "http://bad.url/ foo.pdf" }
+      it "should return nil" do
+        indexed_document.merge_url_unless_recursion_with(target_url).should be_nil
+      end
+    end
+
   end
 
   describe "#index_pdf(file)" do
