@@ -48,6 +48,13 @@ describe IndexedDocument do
     end
   end
 
+  it "should cap URL length at 2000 characters" do
+    too_long = "http://www.foo.gov/#{'waytoolong'*200}/some.pdf"
+    idoc = IndexedDocument.new(@valid_attributes.merge(:url=> too_long))
+    idoc.should_not be_valid
+    idoc.errors[:url].first.should =~ /too long/
+  end
+
   it "should create a new instance given valid attributes" do
     IndexedDocument.create!(@valid_attributes)
   end
