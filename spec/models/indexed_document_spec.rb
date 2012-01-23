@@ -526,6 +526,17 @@ describe IndexedDocument do
         @aff.indexed_documents.count.should == 0
       end
     end
+  end
+
+  describe "#merge_url_unless_recursion_with(target_url)" do
+    let(:indexed_document) { IndexedDocument.new(:affiliate_id => affiliates(:basic_affiliate).id, :url => "http://healthvermont.gov/family/wic/documents/foo.pdf") }
+
+    context "when the target URL contains a relative URL that is a subset of the indexed document's URL" do
+      let(:target_url) { "documents/foo.pdf" }
+      it "should return nil" do
+        indexed_document.merge_url_unless_recursion_with(target_url).should be_nil
+      end
+    end
 
   end
 

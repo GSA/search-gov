@@ -103,10 +103,18 @@ class IndexedDocument < ActiveRecord::Base
     doc.css('a').collect { |link| link['href'] }.compact.select do |link_url|
       URI::parse(link_url).path.split('.').last == "pdf" rescue false
     end.map do |relative_pdf_url|
-      URI.parse(self.url).merge(URI.parse(relative_pdf_url)).to_s rescue nil
+      merge_url_unless_recursion_with(relative_pdf_url)
     end.uniq.compact.first(max_pdfs).each do |pdf_url|
-      puts "[IndexedDocument] Creating PDF doc for [#{pdf_url}] from [#{self.url}]"
       IndexedDocument.create(:affiliate_id => self.affiliate.id, :url => pdf_url, :doctype => 'pdf')
+    end
+  end
+
+  def merge_url_unless_recursion_with(target_url)
+    begin
+      link_url = URI.parse(target_url)
+      self_url.path.end_with?(link_url.path) ? nil : self_url.merge(link_url).to_s
+    rescue
+      nil
     end
   end
 
@@ -186,10 +194,14 @@ class IndexedDocument < ActiveRecord::Base
 
   end
 
+  def self_url
+    @self_url ||= URI.parse(self.url) rescue nil
+  end
+
   private
 
   def set_indexed_domain
-    self.indexed_domain = IndexedDomain.find_or_create_by_affiliate_id_and_domain(self.affiliate.id, URI.parse(self.url).host) if last_crawl_status_ok?
+    self.indexed_domain = IndexedDomain.find_or_create_by_affiliate_id_and_domain(self.affiliate.id, self_url.host) if last_crawl_status_ok?
   end
 
   def url_extension
@@ -220,7 +232,7 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   def site_domain_matches
-    uri = URI.parse(self.url) rescue nil
+    uri = self_url rescue nil
     return if self.affiliate.nil? or self.affiliate.site_domains.empty? or uri.nil?
     host_path = (uri.host + uri.path).downcase
     errors.add(:base, DOMAIN_MISMATCH_STATUS) unless self.affiliate.site_domains.any? { |sd| host_path.include?(sd.domain) }
