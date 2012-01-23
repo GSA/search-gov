@@ -458,6 +458,16 @@ describe IndexedDocument do
           indexed_document.index_html(file)
           indexed_document.description.should == "New display building for the original Fire Island Lighthouse Fresnel lens opens"
         end
+
+        context "when the description is an empty string" do
+          before do
+            indexed_document.index_html open(Rails.root.to_s + '/spec/fixtures/html/data-layers-empty-description.html')
+          end
+          it "should use the initial subset of non-HTML words of the web page as the description" do
+            indexed_document.title.should == "Carribean Sea Regional Atlas - Map Service and Layer..."
+            indexed_document.description.should == "Carribean Sea Regional Atlas. -. Map Service and Layer Descriptions. Ocean Exploration and Research (OER) Digital Atlases. Caribbean Sea. Description. This map aids the public in locating surveys carried out by NOAA's Office of Exploration and..."
+          end
+        end
       end
 
       context "when the page has a differently capitalized DeScriPtioN meta tag" do

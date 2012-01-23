@@ -91,6 +91,7 @@ class IndexedDocument < ActiveRecord::Base
     doc = Nokogiri::HTML(file)
     title = doc.xpath("//title").first.content.squish.truncate(TRUNCATED_TITLE_LENGTH, :separator => " ") rescue nil
     description = doc.xpath("//meta[translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz') = 'description' ] ").first.attributes["content"].value.squish rescue nil
+    description = nil if description.blank?
     doc.xpath('//script').each { |x| x.remove }
     doc.xpath('//style').each { |x| x.remove }
     body = scrub_inner_text(doc.inner_text)
