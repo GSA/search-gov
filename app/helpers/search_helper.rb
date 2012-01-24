@@ -157,9 +157,11 @@ module SearchHelper
   end
 
   def excluded_highlight_terms(affiliate, query)
-    excluded = affiliate.present? ? affiliate.domains_as_array : []
-    excluded.reject!{|domain| query =~ /#{domain}/ } if query.present?
-    excluded
+    excluded_domains = affiliate.present? ? affiliate.domains_as_array : []
+    excluded_domains.reject!{|domain| query =~ /#{domain}/ } if query.present?
+    excluded_keywords = affiliate.present? ? affiliate.scope_keywords_as_array : []
+    excluded_keywords.reject!{|keyword| query =~ /#{keyword}/i} if query.present?
+    excluded_domains + excluded_keywords
   end
 
   def display_bing_result_title(result, search, affiliate, position, vertical)

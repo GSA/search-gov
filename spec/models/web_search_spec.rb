@@ -195,7 +195,7 @@ describe WebSearch do
       end
     end
 
-    context "when affiliate is not nil" do
+    context "when affiliate is not nil" do      
       it "should not search for FAQs" do
         search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
         Faq.should_not_receive(:search_for)
@@ -236,6 +236,38 @@ describe WebSearch do
             search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
             URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass%20OR%20site%3Abar.com%20OR%20site%3Afoo.com\)$/).and_return(@uriresult)
             search.run
+          end
+        end
+        
+        context "when scope keywords are specified" do
+          before do
+            @bing_search = BingSearch.new(Search::USER_AGENT)
+            BingSearch.stub!(:new).and_return @bing_search
+          end
+
+          context "when scope keywords are set on the affiliate" do
+            before do
+              @affiliate.scope_keywords = "patents,america,flying inventions"
+            end
+          
+            it "should limit the query with those keywords" do
+              search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
+              @bing_search.should_receive(:query).with('(government) (site:bar.com OR site:foo.com) ("patents" OR "america" OR "flying inventions")', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING)
+              search.run
+            end
+          end
+        
+          context "when scope keywords and scope ids are set on the affiliate" do
+            before do
+              @affiliate.scope_ids = "PatentClass"
+              @affiliate.scope_keywords = "patents,america,flying inventions"
+            end
+          
+            it "should limit the query with the scope ids and keywords" do
+              search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
+              @bing_search.should_receive(:query).with('(government) (scopeid:PatentClass OR site:bar.com OR site:foo.com) ("patents" OR "america" OR "flying inventions")', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING)
+              search.run
+            end
           end
         end
       end

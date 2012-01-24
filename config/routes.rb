@@ -136,7 +136,7 @@ UsasearchRails3::Application.routes.draw do
     resources :search_modules do as_routes end
     resources :excluded_domains do as_routes end
     resources :featured_collections
-    resources :affiliate_scope_ids do as_routes end
+    resources :affiliate_scopes do as_routes end
     resources :site_domains do as_routes end
   end
 

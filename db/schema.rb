@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120123150805) do
+ActiveRecord::Schema.define(:version => 20120124175734) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20120123150805) do
     t.text     "live_fields_json"
     t.text     "staged_fields_json"
     t.string   "results_source",                                 :default => "bing"
+    t.text     "scope_keywords"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

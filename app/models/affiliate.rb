@@ -124,6 +124,10 @@ class Affiliate < ActiveRecord::Base
   def scope_ids_as_array
     @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each{|scope| scope.strip!})
   end
+  
+  def scope_keywords_as_array
+    @scope_keywords_as_array ||= (self.scope_keywords.nil? ? [] : self.scope_keywords.split(',').each{|keyword| keyword.strip!})
+  end
 
   def has_multiple_domains?
     site_domains.count > 1
