@@ -404,7 +404,6 @@ describe "searches/index.html.haml" do
       it "should format the result as a Medline Govbox" do
         render
         rendered.should contain(/Official result from MedlinePlus/)
-        rendered.should have_selector "img[src^='/images/medline.en.png']"
         rendered.should contain(/Ulcerative colitis/)
         rendered.should contain(/Ulcerative colitis is a disease that causes/)
         rendered.should contain(/Ulcerative colitis can happen at any age, but.../)
