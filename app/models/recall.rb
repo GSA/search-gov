@@ -110,7 +110,7 @@ class Recall < ActiveRecord::Base
     def search_for(query, options = {}, page = 1, per_page = 10)
       stripped_query = query ? query.gsub(RECALL_RE_EN, '').gsub(RECALL_RE_ES, '').strip : nil
       do_search(stripped_query, options, page, per_page)
-    rescue RSolr::RequestError => error
+    rescue RSolr::Error::Http => error
       Rails.logger.warn "Error in searching for Recalls: #{error.to_s}"
       nil
     end
@@ -304,7 +304,7 @@ class Recall < ActiveRecord::Base
       nil
     end
   end
-  
+
   def recalled_on_est
     self.recalled_on + 5.hours
   end

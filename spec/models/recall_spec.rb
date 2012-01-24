@@ -67,12 +67,12 @@ describe Recall do
         Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146", "food")
       end
     end
-    
+
     context "when the url returns an invalid response" do
       before do
         Net::HTTP.stub!(:get_response).and_raise "Some Exception"
       end
-      
+
       it "should log the error" do
         Rails.logger.should_receive(:error).with("Some Exception")
         Recall.load_cdc_data_from_rss_feed("http://www2c.cdc.gov/podcasts/createrss.asp?c=146", "food")
@@ -108,24 +108,24 @@ describe Recall do
         Recall.load_cpsc_data_from_xml_feed("foo")
       end
     end
-    
+
     context "when the URL returns an error" do
       before do
         Net::HTTP.stub!(:get_response).and_raise "Some Exception"
       end
-      
+
       it "should log an error" do
         Rails.logger.should_receive(:error).with("Some Exception")
         Recall.load_cpsc_data_from_xml_feed("foo")
       end
     end
-    
+
     context "when Sunspot returns an error" do
       before do
         Net::HTTP.stub!(:get_response).and_return mock("response", :body => File.read(Rails.root.to_s + "/spec/fixtures/xml/cpsc.xml"))
         Sunspot.stub!(:commit).and_raise "Some Exception"
       end
-      
+
       it "should log an error" do
         Rails.logger.should_receive(:error).with("Some Exception")
         Recall.load_cpsc_data_from_xml_feed("foo")
@@ -149,12 +149,12 @@ describe Recall do
         Recall.load_nhtsa_data_from_tab_delimited_feed("foo")
       end
     end
-    
+
     context "when the url raises some kind of exception" do
       before do
         Net::HTTP.stub!(:get_response).and_raise "Some Exception"
       end
-      
+
       it "should log the error" do
         Rails.logger.should_receive(:error).with("Some Exception")
         Recall.load_nhtsa_data_from_tab_delimited_feed("foo")
@@ -470,14 +470,13 @@ describe Recall do
 
     describe "when SOLR raises an error" do
       before do
-        Recall.should_receive(:do_search).with('sheetrock OR', {}, 1, 10).and_raise(RSolr::RequestError)
+        Recall.should_receive(:do_search).with('sheetrock OR', {}, 1, 10).and_raise(RSolr::Error::Http.new("request","response"))
       end
 
       it "should return nil" do
         Recall.search_for("sheetrock OR")
       end
     end
-
 
     context "CPSC-related searches" do
       it "should filter search results by organization" do
@@ -935,16 +934,16 @@ describe Recall do
           @recall.industry.should == :drug
         end
       end
-      
+
       context "when for some reason a food recall is not present" do
         before do
           @recall.food_recall = nil
         end
-        
+
         it "should output a generic summary" do
           @recall.summary.should == "Click here to see food recall"
         end
-        
+
         it "should return an nil url" do
           @recall.recall_url.should be_nil
         end
