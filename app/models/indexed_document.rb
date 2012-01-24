@@ -80,7 +80,11 @@ class IndexedDocument < ActiveRecord::Base
     if content_type =~ /pdf/
       index_pdf(file.path)
     elsif content_type =~ /html/
-      index_html(file)
+      if url_extension == 'pdf'
+        raise IndexedDocumentError.new "PDF resource redirects to HTML page"
+      else
+        index_html(file)
+      end
     else
       raise IndexedDocumentError.new "Unsupported document type: #{file.content_type}"
     end
@@ -103,7 +107,7 @@ class IndexedDocument < ActiveRecord::Base
 
   def discover_nested_pdfs(doc, max_pdfs = MAX_PDFS_DISCOVERED_PER_HTML_PAGE)
     doc.css('a').collect { |link| link['href'] }.compact.select do |link_url|
-      URI::parse(link_url).path.split('.').last == "pdf" rescue false
+      URI::parse(link_url).path.split('.').last.downcase == "pdf" rescue false
     end.map do |relative_pdf_url|
       merge_url_unless_recursion_with(relative_pdf_url)
     end.uniq.compact.first(max_pdfs).each do |pdf_url|
@@ -200,14 +204,14 @@ class IndexedDocument < ActiveRecord::Base
     @self_url ||= URI.parse(self.url) rescue nil
   end
 
+  def url_extension
+    self_url.path.split('.').last.downcase rescue nil
+  end
+
   private
 
   def set_indexed_domain
     self.indexed_domain = IndexedDomain.find_or_create_by_affiliate_id_and_domain(self.affiliate.id, self_url.host) if last_crawl_status_ok?
-  end
-
-  def url_extension
-    self_url.path.split('.').last rescue nil
   end
 
   def generate_pdf_title(pdf_file_path, pdf_text)

@@ -401,7 +401,7 @@ describe IndexedDocument do
     end
   end
 
-  describe "#index_document(file)" do
+  describe "#index_document(file, content_type)" do
     before do
       @indexed_document = IndexedDocument.create!(@min_valid_attributes)
       @file = open(Rails.root.to_s + '/spec/fixtures/html/fresnel-lens-building-opens-july-23.htm')
@@ -412,25 +412,31 @@ describe IndexedDocument do
         @file.stub!(:content_type).and_return 'application/pdf'
       end
 
-      it "should call index_pdf if the content type contains 'pdf'" do
+      it "should call index_pdf" do
         @indexed_document.should_receive(:index_pdf).with(@file.path).and_return true
         @indexed_document.index_document(@file, @file.content_type)
       end
     end
 
     context "when the content type of the fetched document contains 'html'" do
-      before do
-        @file.stub!(:content_type).and_return 'text/html'
-        @indexed_document.stub!(:update_attribute)
+
+      context "when the URL path extension looks like it's for a HTML page" do
+        it "should call index_html" do
+          @indexed_document.should_receive(:index_html).with(@file).and_return true
+          @indexed_document.index_document(@file, 'text/html')
+        end
       end
 
-      it "should call index_html if the content type contains 'pdf'" do
-        @indexed_document.should_receive(:index_html).with(@file).and_return true
-        @indexed_document.index_document(@file, @file.content_type)
+      context "when the URL path extension actually indicates a PDF document" do
+        let(:bogus_pdf_document) { IndexedDocument.create!(@min_valid_attributes.merge(:url=>"http://www.gov.gov/some/lostdocument.PDF")) }
+
+        it "should raise an IndexedDocumentError error indicating that we don't index PDF documents that are just redirects to HTML pages" do
+          lambda { bogus_pdf_document.index_document(@file, 'text/html') }.should raise_error(IndexedDocument::IndexedDocumentError, "PDF resource redirects to HTML page")
+        end
       end
     end
 
-    context "when the content type of the fetched document contains neither 'pdf' or 'html'" do
+    context "when the content type of the fetched document contains neither 'pdf' nor 'html'" do
       before do
         @file.stub!(:content_type).and_return 'application/msword'
       end
