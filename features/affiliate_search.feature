@@ -178,7 +178,8 @@ Feature: Affiliate Search
 
     When I fill in "query" with "whitehouse.gov"
     And I press "Search"
-    Then I should see "WhiteHouse.gov" in bold font
+    And show me the page
+    Then I should see "whitehouse.gov" in bold font
 
   Scenario: Filtering indexed documents when they are duplicated in Bing search results
     Given the following Affiliates exist:
@@ -246,33 +247,73 @@ Feature: Affiliate Search
     Then I should not see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
     And I should not see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
 
-  Scenario: Searchers see Medline Govbox
+  Scenario: Searchers see English Medline Govbox
     Given the following Affiliates exist:
-      | display_name | name       | contact_email | contact_name | domains | is_medline_govbox_enabled  |
-      | agency site  | nih.gov    | aff@bar.gov   | John Bar     | nih.gov | true                      |
-    And I am on nih.gov's search page
-    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
-    Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
-
-    Given I am logged in with email "aff@bar.gov" and password "random_string"
+      | display_name | name        | contact_email | contact_name | domains | is_medline_govbox_enabled |
+      | english site | english-nih | aff@bar.gov   | John Bar     | nih.gov | true                      |
     And the following Medline Topics exist:
-      | medline_title                        | medline_tid | locale  | summary_html                                                     |
-      | Hippopotomonstrosesquippedaliophobia | 12345       | en      | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
-    When I am on nih.gov's search page
+      | medline_title                        | medline_tid | locale | summary_html                                                     |
+      | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
+    When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
     And I press "Search"
-    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
+    Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
 
-    When I go to the affiliate admin page with "nih.gov" selected
+    Given the following Medline Topics exist:
+      | medline_title                        | medline_tid | locale | summary_html                                                     |
+      | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
+    And the following Related Medline Topics for "Hippopotomonstrosesquippedaliophobia" in English exist:
+      | medline_title | medline_tid | summary_html   |
+      | Hippo1        | 24680       | Hippo1 summary |
+    When I am on english-nih's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Search"
+    Then I should see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears" in the medline govbox
+    When I follow "Hippo1" in the medline govbox
+    Then I should see "Hippo1 - english site Search Results"
+
+    Given I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "english-nih" selected
     And I follow "Look and feel"
     And I uncheck "Show Medline Govbox?"
     And I press "Update"
 
-    When I am on nih.gov's search page
+    When I am on english-nih's search page
     And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
     And I press "Search"
     Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
-    
+
+  Scenario: Searchers see Spanish Medline Govbox
+    Given the following Affiliates exist:
+      | display_name | name        | contact_email | contact_name | domains | is_medline_govbox_enabled | locale |
+      | spanish site | spanish-nih | aff@bar.gov   | John Bar     | nih.gov | true                      | es     |
+    And the following Medline Topics exist:
+      | medline_title                        | medline_tid | locale | summary_html                                                     |
+      | Hippopotomonstrosesquippedaliophobia | 12345       | en     | Hippopotomonstrosesquippedaliophobia and Other Irrational Fears  |
+    When I am on spanish-nih's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Buscar"
+    Then I should not see "Hippopotomonstrosesquippedaliophobia and Other Irrational Fears"
+
+    Given the following Medline Topics exist:
+      | medline_title                        | medline_tid | locale | summary_html                                                     |
+      | Hippopotomonstrosesquippedaliophobia | 67890       | es     | Hippopotomonstrosesquippedaliophobia y otros miedos irracionales |
+    When I am on spanish-nih's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Buscar"
+    Then I should see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales" in the medline govbox
+
+    Given I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page with "spanish-nih" selected
+    And I follow "Look and feel"
+    And I uncheck "Show Medline Govbox?"
+    And I press "Update"
+
+    When I am on spanish-nih's search page
+    And I fill in "query" with "hippopotomonstrosesquippedaliophobia"
+    And I press "Buscar"
+    Then I should not see "Hippopotomonstrosesquippedaliophobia y otros miedos irracionales"
+
   Scenario: When an affiliate uses ODIE results
     Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains | results_source |
@@ -289,7 +330,7 @@ Feature: Affiliate Search
     Then I should not see the indexed documents section
     And I should see "NIH Page 1"
     And I should see "NIH Page 2"
-  
+
   Scenario: Searcher does not see indexed documents when using Bing-only results
     Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains | results_source |
@@ -305,8 +346,8 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should not see the indexed documents section
     And I should not see "NIH Page 1"
-    And I should not see "NIH Page 2"  
-    
+    And I should not see "NIH Page 2"
+
   Scenario: When an affiliate uses Bing+Odie results
     Given the following Affiliates exist:
       | display_name | name       | contact_email | contact_name | domains | results_source |
@@ -322,7 +363,7 @@ Feature: Affiliate Search
     And I press "Search"
     Then I should see "NIH Page 1" in the indexed documents section
     And I should see "NIH Page 2" in the indexed documents section
-    
+
   Scenario: When an affiliate has scope keywords
     Given the following Affiliates exist:
       | display_name | name           | contact_email | contact_name | domains | scope_keywords |
@@ -331,7 +372,7 @@ Feature: Affiliate Search
     And I fill in "query" with "obama"
     And I press "Search"
     Then I should not see "Green Button" in bold font
-    
+
   Scenario: When an affiliate has scope keywords, and searches for those keywords
     Given the following Affiliates exist:
       | display_name | name           | contact_email | contact_name | domains | scope_keywords |

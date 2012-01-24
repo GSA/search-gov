@@ -40,3 +40,12 @@ Given /^the following Medline Topics exist:$/ do |table|
     MedTopic.create!(:medline_title => hash['medline_title'], :medline_tid => hash['medline_tid'].to_i, :locale => hash['locale'], :summary_html => hash['summary_html'])
   end
 end
+
+Given /^the following Related Medline Topics for "([^"]*)" in (English|Spanish) exist:$/ do |medline_title, language, table|
+  locale = language == 'English' ? 'en' : 'es'
+  topic = MedTopic.where(:medline_title => medline_title, :locale => locale).first
+  table.hashes.each do |hash|
+    related_topic = MedTopic.create!(:medline_title => hash[:medline_title], :medline_tid => hash[:medline_tid], :locale => locale)
+    topic.topic_relatees.create!(:related_topic => related_topic)
+  end
+end

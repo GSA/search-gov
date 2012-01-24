@@ -395,29 +395,29 @@ describe MedTopic do
       MedTopic.stub!(:saturday_on_or_before).and_return Date.parse("2011-04-16")
       MedTopic.xml_base_name_for_date(nil).should eql "mplus_vocab_2011-04-16"
     end
-    
+
     it "should create a filename based on the date" do
       date = Date.parse("2011-04-21")
       MedTopic.xml_base_name_for_date(date).should eql "mplus_vocab_2011-04-21"
     end
   end
-  
+
   describe "#saturday_on_or_before(date)" do
     context "when the date is a Saturday" do
       before do
         @date = Date.parse("2011-12-03")
       end
-      
+
       it "should return that day" do
         MedTopic.saturday_on_or_before(@date).to_s.should == "2011-12-03"
       end
     end
-    
+
     context "when the date is a Saturday" do
       before do
         @date = Date.parse("2011-12-07")
       end
-      
+
       it "should return the previous Saturday" do
         MedTopic.saturday_on_or_before(@date).to_s.should == "2011-12-03"
       end
@@ -492,7 +492,7 @@ describe MedTopic do
     it "should return topics matching the actual number of topics" do
       MedTopic.dump_db_vocab[:topics].size.should == MedTopic.count
     end
-    
+
     it "should return groups matching the actual number of groups" do
       MedTopic.dump_db_vocab[:groups].size.should == MedGroup.count
     end
@@ -657,25 +657,23 @@ describe MedTopic do
       }
     end
 
-    it "should find right topic even if only match is in another locale" do
-      ["a", "b", "c", "g"].each { |l|
-
+    it "should find right topic with the matching locale" do
+      ["a", "b", "c", "g"].each do |l|
         en_match = MedTopic.search_for("te#{l}", "en")
-        en_match.should_not be_nil
         en_match.medline_title.should eql "te#{l}"
         en_match.locale.should eql "en"
 
-        es_match = MedTopic.search_for("ts#{l}", "en")
-        es_match.should_not be_nil
+        en_no_match = MedTopic.search_for("ts#{l}", "en")
+        en_no_match.should be_blank
+
+        es_match = MedTopic.search_for("ts#{l}", "es")
         es_match.medline_title.should eql "ts#{l}"
         es_match.locale.should eql "es"
-
-      }
+      end
     end
 
     it "should give you the right groups and synonyms" do
       tee = MedTopic.search_for("tee")
-      tee.should_not be_nil
       tee.medline_title.should eql "tee"
       tee.locale.should eql "en"
       tee.related_groups.collect { |group| group.medline_gid }.sort.should eql [2, 3]
@@ -685,22 +683,13 @@ describe MedTopic do
     it "should give you the right topic by synonyms" do
       @small_sample_vocab[:topics].each { |medline_tid, topic_atts|
         topic_atts[:synonyms].each { |syn|
-          topic = MedTopic.search_for(syn)
+          topic = MedTopic.search_for(syn, topic_atts[:locale])
           topic.should_not be_nil
           unless syn == "teg"
             topic.medline_tid.should eql medline_tid
           end
         }
       }
-    end
-
-    it "should return strongest match for nil locale search" do
-      MedTopic.search_for("teg", "en").medline_tid.should eql 9
-      MedTopic.search_for("teg", "es").medline_tid.should eql 19
-      MedTopic.search_for("teg", nil).medline_tid.should eql 9
-      MedTopic.search_for("tsg", nil).medline_tid.should eql 19
-      MedTopic.search_for("tsg", "en").medline_tid.should eql 19
-      MedTopic.search_for("tsg", "es").medline_tid.should eql 19
     end
 
     it "should not find invisible topics" do
@@ -732,22 +721,22 @@ describe MedTopic do
       })
 
       en_armageddon = MedTopic.search_for("Armageddon")
-      en_armageddon.should_not be_nil
+      en_armageddon.medline_title.should == 'Armageddon'
       en_apocolypse = MedTopic.search_for("Apocolypse")
       en_apocolypse.should eql en_armageddon
       MedTopic.search_for("los cuatro jinetes").should_not eql en_armageddon
       en_armageddon.should_not be_nil
-      en_armageddon.locale.should eql "en"
+      en_armageddon.locale.should == "en"
       en_armageddon.visible = false
       en_armageddon.save!
 
-      es_armageddon = MedTopic.search_for("Armageddon")
+      es_armageddon = MedTopic.search_for("Armageddon", "es")
       es_armageddon.should_not be_nil
-      es_apocolypse = MedTopic.search_for("Apocolypse")
+      es_apocolypse = MedTopic.search_for("Apocolypse", "es")
       es_apocolypse.should eql es_armageddon
-      MedTopic.search_for("los cuatro jinetes").should eql es_armageddon
+      MedTopic.search_for("los cuatro jinetes", "es").should eql es_armageddon
       es_armageddon.should_not be_nil
-      es_armageddon.locale.should eql "es"
+      es_armageddon.locale.should == "es"
       es_armageddon.visible = false
       es_armageddon.save!
 
