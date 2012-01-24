@@ -265,19 +265,6 @@ class WebSearch < Search
       }
     end
   end
-
-  def process_indexed_results(indexed_results)
-    processed = indexed_results.hits(:verify => true).collect do |hit|      
-      {
-        'title' => highlight_solr_hit_like_bing(hit, :title),
-        'unescapedUrl' => hit.instance.url,
-        'content' => highlight_solr_hit_like_bing(hit, :description),
-        'cacheUrl' => nil,
-        'deepLinks' => nil
-      }
-    end
-    processed.compact
-  end
   
   def spelling_results(response)
     did_you_mean_suggestion = response.spell.results.first.value rescue nil

@@ -842,4 +842,30 @@ describe Affiliate do
       end
     end
   end
+  
+  describe "#uses_bing_results?" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+    end
+    
+    context "when affiliate has results_source=='bing'" do
+      before do
+        @affiliate.results_source = 'bing'
+      end
+      
+      it "should return true" do
+        @affiliate.uses_bing_results?.should be_true
+      end
+    end
+    
+    context "when affiliate has results_source not equal to 'bing'" do
+      before do
+        @affiliate.results_source = 'odie'
+      end
+      
+      it "should return false" do
+        @affiliate.uses_bing_results?.should be_false
+      end
+    end
+  end
 end
