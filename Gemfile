@@ -46,7 +46,6 @@ gem 'backports'
 gem 'mechanize'
 gem 'pdf-toolkit'
 gem 'googlecharts'
-gem 'progress_bar'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
@@ -69,6 +68,7 @@ group :development, :test, :cucumber do
 #  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
   gem 'no_peeping_toms', :git => 'git://github.com/alindeman/no_peeping_toms.git'
   gem 'sunspot_solr'
+  gem 'progress_bar'
 end
 
 group :test do
