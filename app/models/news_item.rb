@@ -11,7 +11,7 @@ class NewsItem < ActiveRecord::Base
 
   searchable do
     integer :rss_feed_id
-    time :published_at
+    time :published_at, :trie => true
     text :title, :description
     string :link
   end
