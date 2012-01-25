@@ -7,12 +7,14 @@ class RssFeed < ActiveRecord::Base
   ATOM_ELEMENTS = { "item" => "xmlns:entry", "pubDate" => "xmlns:published", "link" => "xmlns:link/@href", "title" => "xmlns:title", "guid" => "xmlns:id", "description" => "xmlns:content" }
   FEED_ELEMENTS = { :rss => RSS_ELEMENTS, :atom => ATOM_ELEMENTS }
 
-  def freshen
+  def freshen(ignore_older_items = true)
     begin
+      most_recently = news_items.present? ? news_items.first.published_at : nil
       rss_document = Nokogiri::XML(open(url))
       feed_type = detect_feed_type(rss_document)
       rss_document.xpath("//#{FEED_ELEMENTS[feed_type]["item"]}").each do |item|
         published_at = DateTime.parse(item.xpath(FEED_ELEMENTS[feed_type]["pubDate"]).inner_text)
+        break if most_recently and published_at < most_recently and ignore_older_items
         link = item.xpath(FEED_ELEMENTS[feed_type]["link"]).inner_text
         title = item.xpath(FEED_ELEMENTS[feed_type]["title"]).inner_text
         guid = item.xpath(FEED_ELEMENTS[feed_type]["guid"]).inner_text
