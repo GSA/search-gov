@@ -112,18 +112,9 @@ describe RssFeed do
           )
         end
 
-        context "when ignore_older_items set to true (default)" do
-          it "should populate news items with only the new ones from the RSS feed source based on the pubDate" do
-            @feed.freshen
-            @feed.news_items.count.should == 3
-          end
-        end
-
-        context "when ignore_older_items set to false" do
-          it "should populate news items with both the new and old ones from the RSS feed source based on the pubDate" do
-            @feed.freshen(false)
-            @feed.news_items.count.should == 4
-          end
+        it "should populate news items with both the new and old ones from the RSS feed source" do
+          @feed.freshen
+          @feed.news_items.count.should == 4
         end
       end
 
