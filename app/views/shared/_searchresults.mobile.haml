@@ -31,7 +31,7 @@
 
   - if (search && search.has_related_searches?)
     #relatedsearch
-      %p= t :searches_related_to, :query=> search.query
+      %h3= t :searches_related_to, :query=> search.query
       %ul
         - search.related_search.each_with_index do |related_term, index|
           %li= tracked_click_link(search_path({:query=>strip_tags(related_term), :affiliate=> @affiliate, :m => true }),related_term.html_safe.downcase, search, @affiliate, index, 'SREL')

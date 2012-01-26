@@ -20,7 +20,7 @@ Given /^the following Affiliates exist:$/ do |table|
 
     default_affiliate_template = AffiliateTemplate.find_by_stylesheet("default")
 
-    uses_one_serp = hash[:uses_one_serp].blank? ? true : hash[:uses_one_serp] == 'true' ? true : false
+    uses_one_serp = (hash[:uses_one_serp].blank? or hash[:uses_one_serp] == 'true') ? true : false
     if uses_one_serp
       affiliate_template = nil
       staged_affiliate_template = nil
