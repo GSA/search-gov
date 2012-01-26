@@ -178,7 +178,6 @@ Feature: Affiliate Search
 
     When I fill in "query" with "whitehouse.gov"
     And I press "Search"
-    And show me the page
     Then I should see "whitehouse.gov" in bold font
 
   Scenario: Filtering indexed documents when they are duplicated in Bing search results
