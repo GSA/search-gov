@@ -14,43 +14,32 @@
             %span Basic Settings
           %ul
             %li= link_to "Site information", edit_site_information_affiliate_path(@affiliate)
-            %li= link_to "Look and feel", edit_look_and_feel_affiliate_path(@affiliate)
-            %li= link_to "Preview", preview_affiliate_path(@affiliate)
-            %li.last= link_to "Get code", embed_code_affiliate_path(@affiliate)
+            %li= link_to "Get code", embed_code_affiliate_path(@affiliate)
+            %li.last= link_to "Preview", preview_affiliate_path(@affiliate)
         .side-block
           %h3
             %span Content Sources
           %ul
-            %li
-              = link_to "Domains", affiliate_site_domains_path(@affiliate)
-              = image_tag 'new.png', :class => 'new'
-            %li
-              = link_to "URLs & Sitemaps", urls_and_sitemaps_affiliate_path(@affiliate)
-              = image_tag 'new.png', :class => 'new'
-            %li
-              = link_to "Hosted Sitemaps", hosted_sitemaps_affiliate_path(@affiliate)
-              = image_tag 'new.png', :class => 'new'
+            %li= link_to "Domains", affiliate_site_domains_path(@affiliate)
+            %li= link_to "URLs & Sitemaps", urls_and_sitemaps_affiliate_path(@affiliate)
             %li
               = link_to "RSS", affiliate_rss_feeds_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
-            %li.last
-              = link_to "Social Media", edit_social_media_affiliate_path(@affiliate), :class => 'new'
-              = image_tag 'new.png', :class => 'new'
+            %li.last= link_to "Social Media", edit_social_media_affiliate_path(@affiliate)
+        .side-block
+          %h3
+            %span User Interface
+          %ul
+            %li.last= link_to "Look and feel", edit_look_and_feel_affiliate_path(@affiliate)
         .side-block
           %h3
             %span Editorial Features
           %ul
-            %li
-              = link_to "Best bets", best_bets_affiliate_path(@affiliate), :class => 'new'
-            %li= link_to "Related topics", affiliate_related_topics_path(@affiliate)
-            %li
-              = link_to "Search API", affiliate_api_index_path(@affiliate), :class => 'new'
+            %li= link_to "Best bets", best_bets_affiliate_path(@affiliate)
             %li= link_to "Type-ahead search", affiliate_type_ahead_search_index_path(@affiliate)
-            %li
-              = link_to "Popular Links", affiliate_popular_links_path(@affiliate), :class => 'new'
-            %li
-              = link_to "Top Searches", affiliate_top_searches_path(@affiliate), :class => 'new'
-              = image_tag 'new.png', :class => 'new'
+            %li= link_to "Related topics", affiliate_related_topics_path(@affiliate)
+            %li= link_to "Popular Links", affiliate_popular_links_path(@affiliate)
+            %li.last= link_to "Top Searches", affiliate_top_searches_path(@affiliate)
         .side-block
           %h3
             %span Site Analytics
@@ -62,6 +51,10 @@
             %span Account Settings
           %ul
             %li= link_to "Add new site", new_affiliate_path
+            %li= link_to "Search API", affiliate_api_index_path(@affiliate)
+            %li
+              = link_to "Hosted Sitemaps", hosted_sitemaps_affiliate_path(@affiliate), :class => 'new'
+              = image_tag 'new.png', :class => 'new'
             %li= link_to "My account", account_path
             %li.last= link_to "Manage users", affiliate_users_path(@affiliate)
   .side-bottom &nbsp;
