@@ -168,17 +168,17 @@ Feature: Affiliate Search
 
   Scenario: Highlighting query terms
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | domains         |
-      | bar site     | bar.gov | aff@bar.gov   | John Bar     | whitehouse.gov  |
+      | display_name | name    | contact_email | contact_name | domains        |
+      | bar site     | bar.gov | aff@bar.gov   | John Bar     | search.usa.gov |
     When I am on bar.gov's search page
-    And I fill in "query" with "change has come"
+    And I fill in "query" with "U.S. Government's Official Search Engine"
     And I press "Search"
-    Then I should see "WhiteHouse.gov"
-    And I should not see "WhiteHouse.gov" in bold font
+    Then I should see "Search.USA.gov"
+    And I should not see "Search.USA.gov" in bold font
 
-    When I fill in "query" with "whitehouse.gov"
+    When I fill in "query" with "search.usa.gov"
     And I press "Search"
-    Then I should see "whitehouse.gov" in bold font
+    Then I should see "Search.USA.gov" in bold font
 
   Scenario: Filtering indexed documents when they are duplicated in Bing search results
     Given the following Affiliates exist:
