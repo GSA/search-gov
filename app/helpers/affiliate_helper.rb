@@ -70,7 +70,7 @@ module AffiliateHelper
       font_family = render_affiliate_css_property_value(affiliate.css_property_hash, :font_family)
       color = render_affiliate_css_property_value(affiliate.css_property_hash, :search_button_text_color)
       background_color = render_affiliate_css_property_value(affiliate.css_property_hash, :search_button_background_color)
-      style = "font-family: #{font_family}; font-size: 32px; color: #{color}; background-color: #{background_color}; margin: 0 auto 1em; padding: 10px; width: 960px;"
+      style = "font-family: #{font_family}; font-size: 32px; color: #{color}; background-color: #{background_color}; margin: 0 auto 1em; padding: 10px; width: 940px;"
       content_tag :div, affiliate.display_name, :id => 'default-header', :style => style
     else
       ""
@@ -83,7 +83,15 @@ module AffiliateHelper
   end
 
   def render_affiliate_body_class(affiliate)
-    affiliate.uses_one_serp? ? "default #{I18n.locale}" : "#{@affiliate.affiliate_template.stylesheet} #{I18n.locale}"
+    classes = ''
+    if affiliate.uses_one_serp?
+      classes << "default #{I18n.locale} "
+      classes << 'with-content-border ' if affiliate.show_content_border?
+      classes << 'with-content-box-shadow ' if affiliate.show_content_box_shadow?
+    else
+      classes << "#{@affiliate.affiliate_template.stylesheet} #{I18n.locale}"
+    end
+    classes
   end
 
   def render_staged_color_text_field_tag(affiliate, field_name_symbol)
@@ -93,6 +101,12 @@ module AffiliateHelper
     text_field_tag "affiliate[staged_css_property_hash][#{field_name_symbol}]",
                    render_affiliate_css_property_value(staged_css_property_hash, field_name_symbol),
                    { :disabled => disabled, :class => 'color { hash:true, adjust:false }' }
+  end
+
+  def render_staged_check_box_tag(affiliate, field_name_symbol)
+    check_box_tag "affiliate[staged_css_property_hash][#{field_name_symbol}]",
+                  '1',
+                  affiliate.staged_css_property_hash[field_name_symbol] == '1'
   end
 
   def render_new_site_themes(affiliate)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131091617) do
+ActiveRecord::Schema.define(:version => 20120131070052) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"

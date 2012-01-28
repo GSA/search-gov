@@ -16,9 +16,30 @@
       %div
         = label_tag 'affiliate[staged_css_property_hash][font_family]', 'Font family'
         = select_tag 'affiliate[staged_css_property_hash][font_family]', options_for_select(Affiliate::FONT_FAMILIES, render_affiliate_css_property_value(@affiliate.staged_css_property_hash, :font_family))
+    %li.css-overrides
+      %div
+        = render_staged_check_box_tag @affiliate, :show_content_border
+        = label_tag 'affiliate[staged_css_property_hash][show_content_border]', 'Show content border'
+      %div
+        = render_staged_check_box_tag @affiliate, :show_content_box_shadow
+        = label_tag 'affiliate[staged_css_property_hash][show_content_box_shadow]', 'Show content box shadow'
     %li.use-colors-from-theme
       %span Use colors from a theme
       = render_site_themes @affiliate
+    %li.css-overrides
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][page_background_color]', 'Page background color'
+        = render_staged_color_text_field_tag @affiliate, :page_background_color
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][content_background_color]', 'Content background color'
+        = render_staged_color_text_field_tag @affiliate, :content_background_color
+    %li.css-overrides
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][content_border_color]', 'Content border color'
+        = render_staged_color_text_field_tag @affiliate, :content_border_color
+      %div
+        = label_tag 'affiliate[staged_css_property_hash][content_box_shadow_color]', 'Content box shadow color'
+        = render_staged_color_text_field_tag @affiliate, :content_box_shadow_color
     %li.css-overrides
       %div
         = label_tag 'affiliate[staged_css_property_hash][search_button_text_color]', 'Search button text color'

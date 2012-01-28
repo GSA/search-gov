@@ -1,5 +1,7 @@
 @import "compass/utilities/general/clearfix"
 @import "compass/css3/border-radius"
+@import "compass/css3/inline-block"
+@import "compass/typography/text/replacement"
 $results-padding-size: 15px
 $results-padding-left-size: 11px
 $red: #990000
@@ -9,6 +11,20 @@ body
   background-color: white
   margin: 0
   padding: 0
+  text-align: center
+
+#container
+  +inline-block
+  text-align: left
+
+.with-content-border, .with-content-box-shadow
+  #container
+    min-width: 960px
+    margin: 20px auto
+    padding: 20px 0px
+
+.with-content-border #container
+  +border-radius(8px)
 
 #search
   @include clearfix
@@ -19,10 +35,10 @@ body
   img
     border: 0
   h1
-    line-height: 1px
+    +hide-text
+    line-height: 0
     margin: 0
     padding: 0
-    visibility: hidden
   .hide
     display: none
 

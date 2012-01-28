@@ -35,8 +35,15 @@ Given /^the following Affiliates exist:$/ do |table|
 
     css_properties = ActiveSupport::OrderedHash.new
     Affiliate::DEFAULT_CSS_PROPERTIES.keys.each do |css_property|
-      css_properties[css_property] = hash[css_property] unless hash[css_property].blank?
-    end
+      case css_property
+        when :show_content_border
+          css_properties[css_property] = hash.has_key?('show_content_border') ? (hash[:show_content_border] == 'true' ? '1' : '0') : '1'
+        when :show_content_box_shadow
+          css_properties[css_property] = hash.has_key?('show_content_box_shadow') ? (hash[:show_content_box_shadow] == 'true' ? '1' : '0') : '1'
+        else
+          css_properties[css_property] = hash[css_property] unless hash[css_property].blank?
+      end
+    end if uses_one_serp
 
     affiliate = Affiliate.new(
       :display_name => hash["display_name"],
@@ -65,7 +72,7 @@ Given /^the following Affiliates exist:$/ do |table|
       :youtube_handle => hash["youtube_handle"],
       :theme => theme,
       :staged_theme => staged_theme,
-      :css_properties => css_properties.to_json,
+      :css_property_hash => css_properties,
       :top_searches_label => hash["top_searches_label"] || 'Search Trends',
       :locale => hash["locale"] || 'en',
       :is_agency_govbox_enabled => hash["is_agency_govbox_enabled"] || false,
@@ -288,3 +295,20 @@ end
 Then /^I should not see "([^"]*)" as a header$/ do |header|
   page.should_not have_selector("#default-header", :text => header)
 end
+
+Then /^I should see the page with content border$/ do
+  page.should have_selector('body.with-content-border')
+end
+
+Then /^I should not see the page with content border$/ do
+  page.should_not have_selector('body.with-content-border')
+end
+
+Then /^I should see the page with content box shadow$/ do
+  page.should have_selector('body.with-content-box-shadow')
+end
+
+Then /^I should not see the page with content box shadow$/ do
+  page.should_not have_selector('body.with-content-box-shadow')
+end
+

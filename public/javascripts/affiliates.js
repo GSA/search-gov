@@ -6,6 +6,8 @@ function enableOrDisableColorFields(theme) {
 }
 
 function updateColorFields(cssProperties) {
+  document.getElementById('affiliate_staged_css_property_hash_page_background_color').color.fromString(cssProperties.page_background_color);
+  document.getElementById('affiliate_staged_css_property_hash_content_background_color').color.fromString(cssProperties.content_background_color);
   document.getElementById('affiliate_staged_css_property_hash_search_button_text_color').color.fromString(cssProperties.search_button_text_color);
   document.getElementById('affiliate_staged_css_property_hash_search_button_background_color').color.fromString(cssProperties.search_button_background_color);
   document.getElementById('affiliate_staged_css_property_hash_left_tab_text_color').color.fromString(cssProperties.left_tab_text_color);

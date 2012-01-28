@@ -13,6 +13,8 @@ describe "layouts/affiliate" do
                            :external_css_url => 'http://cdn.agency.gov/custom.css',
                            :css_property_hash => {},
                            :uses_one_serp? => true,
+                           :show_content_border? => true,
+                           :show_content_box_shadow? => true,
                            :locale => 'en')
     assign(:affiliate, affiliate)
   end
@@ -38,6 +40,8 @@ describe "layouts/affiliate" do
                              :external_css_url => 'http://cdn.agency.gov/custom.css',
                              :css_property_hash => {},
                              :uses_one_serp? => true,
+                             :show_content_border? => true,
+                             :show_content_box_shadow? => true,
                              :locale => 'en')
       assign(:affiliate, affiliate)
     end

@@ -50,6 +50,10 @@ class Affiliate < ActiveRecord::Base
 
   THEMES = ActiveSupport::OrderedHash.new
   THEMES[:default] = { :display_name => 'Liberty Bell',
+                       :page_background_color => '#FFFFFF',
+                       :content_background_color => '#F7F7F7',
+                       :content_border_color => '#CACACA',
+                       :content_box_shadow_color => '#555555',
                        :search_button_text_color => '#FFFFFF',
                        :search_button_background_color => '#00396F',
                        :left_tab_text_color => '#9E3030',
@@ -58,6 +62,10 @@ class Affiliate < ActiveRecord::Base
                        :description_text_color => '#000000',
                        :url_link_color => '#008000' }
   THEMES[:elegant] = { :display_name => 'Gettysburg',
+                       :page_background_color => '#FFFFFF',
+                       :content_background_color => '#F7F7F7',
+                       :content_border_color => '#CACACA',
+                       :content_box_shadow_color => '#555555',
                        :search_button_text_color => '#FFFFFF',
                        :search_button_background_color => '#336699',
                        :left_tab_text_color => '#C71D2E',
@@ -66,6 +74,10 @@ class Affiliate < ActiveRecord::Base
                        :description_text_color => '#595959',
                        :url_link_color => '#007F00' }
   THEMES[:fun_blue] = { :display_name => 'Virgin Islands',
+                        :page_background_color => '#FFFFFF',
+                        :content_background_color => '#F7F7F7',
+                        :content_border_color => '#CACACA',
+                        :content_box_shadow_color => '#555555',
                         :search_button_text_color => '#FFFFFF',
                         :search_button_background_color => '#0CA5D8',
                         :left_tab_text_color => '#87CB00',
@@ -74,6 +86,10 @@ class Affiliate < ActiveRecord::Base
                        :description_text_color => '#444444',
                        :url_link_color => '#3DB7E0' }
   THEMES[:gray] = { :display_name => 'Mount Rushmore',
+                    :page_background_color => '#FFFFFF',
+                    :content_background_color => '#F7F7F7',
+                    :content_border_color => '#CACACA',
+                    :content_box_shadow_color => '#555555',
                     :search_button_text_color => '#FFFFFF',
                     :search_button_background_color => '#555555',
                     :left_tab_text_color => '#A10000',
@@ -82,6 +98,10 @@ class Affiliate < ActiveRecord::Base
                     :description_text_color => '#595959',
                     :url_link_color => '#2C5D80' }
   THEMES[:natural] = { :display_name => 'Grand Canyon',
+                       :page_background_color => '#FFFFFF',
+                       :content_background_color => '#F7F7F7',
+                       :content_border_color => '#CACACA',
+                       :content_box_shadow_color => '#555555',
                        :search_button_text_color => '#FFFFFF',
                        :search_button_background_color => '#B58100',
                        :left_tab_text_color => '#B58100',
@@ -91,7 +111,11 @@ class Affiliate < ActiveRecord::Base
                        :url_link_color => '#B58100' }
   THEMES[:custom] = { :display_name => 'Custom' }
 
-  DEFAULT_CSS_PROPERTIES = { :font_family => FONT_FAMILIES[0] }.merge(THEMES[:default])
+  DEFAULT_CSS_PROPERTIES = { :font_family => FONT_FAMILIES[0],
+                             :show_content_border => '0',
+                             :show_content_box_shadow => '0' }.merge(THEMES[:default])
+  NEW_AFFILIATE_CSS_PROPERTIES = { :show_content_border => '1',
+                                   :show_content_box_shadow => '1' }
   RESULTS_SOURCES = %w(bing odie bing+odie)
 
   def self.define_json_columns_accessors(args)
@@ -124,7 +148,7 @@ class Affiliate < ActiveRecord::Base
   def scope_ids_as_array
     @scope_ids_as_array ||= (self.scope_ids.nil? ? [] : self.scope_ids.split(',').each{|scope| scope.strip!})
   end
-  
+
   def scope_keywords_as_array
     @scope_keywords_as_array ||= (self.scope_keywords.nil? ? [] : self.scope_keywords.split(',').each{|keyword| keyword.strip!})
   end
@@ -160,7 +184,7 @@ class Affiliate < ActiveRecord::Base
 
   def update_attributes_for_current(attributes)
     attributes.merge!(:previous_header => self.header, :previous_footer => self.footer)
-    %w{ header_footer_css header footer affiliate_template_id search_results_page_title favicon_url external_css_url theme css_properties css_property_hash }.each do |field|
+    %w{ header_footer_css header footer affiliate_template_id search_results_page_title favicon_url external_css_url theme css_property_hash }.each do |field|
       attributes[field.to_sym] = attributes["staged_#{field}".to_sym] if attributes.include?("staged_#{field}".to_sym)
     end
     attributes[:has_staged_content] = false
@@ -191,7 +215,7 @@ class Affiliate < ActiveRecord::Base
       :staged_favicon_url => self.staged_favicon_url,
       :staged_external_css_url => self.staged_external_css_url,
       :staged_theme => self.staged_theme,
-      :staged_css_properties => self.staged_css_properties
+      :staged_css_property_hash => self.staged_css_property_hash
     }
   end
 
@@ -209,7 +233,7 @@ class Affiliate < ActiveRecord::Base
       :staged_favicon_url => self.favicon_url,
       :staged_external_css_url => self.external_css_url,
       :staged_theme => self.theme,
-      :staged_css_properties => self.css_properties,
+      :staged_css_property_hash => self.css_property_hash,
       :has_staged_content => false
     })
   end
@@ -240,16 +264,20 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  def css_property_hash
-    if self.theme.to_sym == :custom
+  def css_property_hash(reload = false)
+    return nil if theme.blank?
+    @css_property_hash = nil if reload
+    if theme.to_sym == :custom
       @css_property_hash ||= (css_properties.blank? ? {} : JSON.parse(css_properties, :symbolize_keys => true))
     else
       @css_property_hash ||= css_properties.blank? ? THEMES[self.theme.to_sym] : THEMES[self.theme.to_sym].merge(JSON.parse(css_properties, :symbolize_keys => true))
     end
   end
 
-  def staged_css_property_hash
-    if self.staged_theme.to_sym == :custom
+  def staged_css_property_hash(reload = true)
+    return nil if staged_theme.blank?
+    @staged_css_property_hash = nil if reload
+    if staged_theme.to_sym == :custom
       @staged_css_property_hash ||= (staged_css_properties.blank? ? {} : JSON.parse(staged_css_properties, :symbolize_keys => true))
     else
       @staged_css_property_hash ||= staged_css_properties.blank? ? THEMES[self.staged_theme.to_sym] : THEMES[self.staged_theme.to_sym].merge(JSON.parse(staged_css_properties, :symbolize_keys => true))
@@ -309,13 +337,21 @@ class Affiliate < ActiveRecord::Base
   def uses_odie_results?
     self.results_source == 'odie'
   end
-  
+
   def uses_bing_results?
     self.results_source == 'bing'
   end
-  
+
   def uses_bing_odie_results?
     self.results_source == 'bing+odie'
+  end
+
+  def show_content_border?
+    css_property_hash[:show_content_border] == '1'
+  end
+
+  def show_content_box_shadow?
+    css_property_hash[:show_content_box_shadow] == '1'
   end
 
   private
@@ -381,6 +417,12 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_css_properties
+    if self.new_record?
+      @staged_css_property_hash = ActiveSupport::OrderedHash.new if @staged_css_property_hash.nil?
+      @staged_css_property_hash.reverse_merge!(NEW_AFFILIATE_CSS_PROPERTIES)
+      @css_property_hash = ActiveSupport::OrderedHash.new if @css_property_hash.nil?
+      @css_property_hash.reverse_merge!(NEW_AFFILIATE_CSS_PROPERTIES)
+    end
     self.css_properties = @css_property_hash.to_json unless @css_property_hash.blank?
     self.staged_css_properties = @staged_css_property_hash.to_json unless @staged_css_property_hash.blank?
   end

@@ -528,11 +528,6 @@ describe Affiliates::HomeController do
           @emailer.stub!(:deliver).and_return true
         end
 
-        it "should push staged changes to current" do
-          post :create, :affiliate => {:display_name => 'new_affiliate', :staged_css_property_hash => { 'link_color' => '#ffffff', 'visited_link_color' => '#888888' } }
-          JSON.parse(assigns[:affiliate].css_properties).should == { 'link_color' => '#ffffff', 'visited_link_color' => '#888888' }
-        end
-
         it "should assign @current_step to :get_code" do
           post :create, :affiliate => {:display_name => 'new_affiliate'}
           assigns[:current_step].should == :get_the_code

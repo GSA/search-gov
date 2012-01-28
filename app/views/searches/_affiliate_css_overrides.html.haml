@@ -1,5 +1,17 @@
 %style{ :type => 'text/css' }
   :sass
+    body
+      background-color: #{render_affiliate_css_property_value(css_property_hash, :page_background_color)}
+    #container
+      background-color: #{render_affiliate_css_property_value(css_property_hash, :content_background_color)}
+    body
+      &.with-content-border #container
+        border: 1px solid #{render_affiliate_css_property_value(css_property_hash, :content_border_color)}
+      &.with-content-box-shadow #container
+        -moz-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
+        -webkit-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
+        -o-box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
+        box-shadow: #{render_affiliate_css_property_value(css_property_hash, :content_box_shadow_color)} 0 0 5px
     #search_button
       background-color: #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}
       border: 1px solid #{render_affiliate_css_property_value(css_property_hash, :search_button_background_color)}
