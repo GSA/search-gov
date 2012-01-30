@@ -65,40 +65,43 @@ class BoostedContent < ActiveRecord::Base
       :url => "URL"
   }
 
-  def self.search_for(query, affiliate = nil, locale = I18n.default_locale.to_s, page = 1, per_page = 3)
-    affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
-    ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate_name, :locale => locale}) do
-      search do
-        fulltext query do
-          highlight :title, :description, :title_es, :description_es, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
-        end
-        with(:affiliate_name, affiliate_name)
-        with(:locale, locale)
-        with(:status, 'active')
-        with(:publish_start_on).less_than(Time.current)
-        any_of do
-          with(:publish_end_on).greater_than(Time.current)
-          with :publish_end_on, nil
-        end
-        paginate :page => page, :per_page => per_page
-      end rescue nil
+  class << self
+    include QueryPreprocessor
+    
+    def search_for(query, affiliate = nil, locale = I18n.default_locale.to_s, page = 1, per_page = 3)
+      affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate_name, :locale => locale}) do
+        search do
+          fulltext preprocess(query) do
+            highlight :title, :description, :title_es, :description_es, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
+          end
+          with(:affiliate_name, affiliate_name)
+          with(:locale, locale)
+          with(:status, 'active')
+          with(:publish_start_on).less_than(Time.current)
+          any_of do
+            with(:publish_end_on).greater_than(Time.current)
+            with :publish_end_on, nil
+          end
+          paginate :page => page, :per_page => per_page
+        end rescue nil
+      end
+    end
+
+    def process_boosted_content_bulk_upload_for(affiliate, bulk_upload_file)
+      filename = bulk_upload_file.original_filename.downcase unless bulk_upload_file.blank?
+      return { :success => false, :error_message => "Your filename should have .xml or .csv extension."} unless filename =~ /\.(xml|csv)$/
+      if filename =~ /xml$/
+        BoostedContent.process_boosted_content_xml_upload_for affiliate,  bulk_upload_file
+      else
+        BoostedContent.process_boosted_content_csv_upload_for affiliate,  bulk_upload_file
+      end
+    end
+
+    def human_attribute_name(attribute_key_name, options = {})
+      HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
     end
   end
-
-  def self.process_boosted_content_bulk_upload_for(affiliate, bulk_upload_file)
-    filename = bulk_upload_file.original_filename.downcase unless bulk_upload_file.blank?
-    return { :success => false, :error_message => "Your filename should have .xml or .csv extension."} unless filename =~ /\.(xml|csv)$/
-    if filename =~ /xml$/
-      BoostedContent.process_boosted_content_xml_upload_for affiliate,  bulk_upload_file
-    else
-      BoostedContent.process_boosted_content_csv_upload_for affiliate,  bulk_upload_file
-    end
-  end
-
-  def self.human_attribute_name(attribute_key_name, options = {})
-    HUMAN_ATTRIBUTE_NAME_HASH[attribute_key_name.to_sym] || super
-  end
-
   def as_json(options = {})
     {:title => title, :url => url, :description => description}
   end

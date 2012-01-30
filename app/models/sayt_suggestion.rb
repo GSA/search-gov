@@ -21,12 +21,14 @@ class SaytSuggestion < ActiveRecord::Base
   end
 
   class << self
+    include QueryPreprocessor
+    
     def search_for(query_str, affiliate_id = nil)
       query = query_str.downcase
       instrument_hash = {:model=> self.name, :term => query_str, :affiliate_id => affiliate_id}
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do
         search do
-          fulltext query do
+          fulltext preprocess(query) do
             highlight :phrase
           end
           with(:affiliate_id, affiliate_id)

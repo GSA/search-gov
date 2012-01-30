@@ -93,6 +93,7 @@ class Recall < ActiveRecord::Base
   end
 
   class << self
+    include QueryPreprocessor
     RECALL_RE_EN = /\brecalls?\b/i
     RECALL_RE_ES = /\bretirad[oa]s?\b/i
 
@@ -118,7 +119,7 @@ class Recall < ActiveRecord::Base
     def do_search(query, options, page, per_page)
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query}.merge(options)) do
         search do
-          fulltext query do
+          fulltext preprocess(query) do
             highlight :fragment_size => 0
           end
 

@@ -9,11 +9,12 @@ class Faq < ActiveRecord::Base
   end
 
   class << self
-
+    include QueryPreprocessor
+    
     def search_for(query, locale = I18n.default_locale.to_s, per_page = 3)
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :locale => locale}) do
         search do
-          fulltext query do
+          fulltext preprocess(query) do
             highlight :question, {:fragment_size => 255, :max_snippets => 1, :merge_continuous_fragments => true}
           end
           with(:locale).equal_to(locale)

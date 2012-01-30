@@ -17,12 +17,14 @@ class NewsItem < ActiveRecord::Base
   end
 
   class << self
+    include QueryPreprocessor
+    
     def search_for(query, rss_feeds, since = nil, page = 1, excluded_urls = [])
       instrument_hash = {:model=> self.name, :term => query, :rss_feeds => rss_feeds.collect(&:name).join(',')}
       instrument_hash.merge!(:since => since) if since
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do
         search do
-          fulltext query do
+          fulltext preprocess(query) do
             highlight :title, :description, :fragment_size => 255, :merge_continuous_fragments => true
           end
           with(:rss_feed_id, rss_feeds.collect(&:id))

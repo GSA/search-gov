@@ -3,12 +3,23 @@
   <types>
     <!-- *** This fieldtype is used by Sunspot! *** -->
     <fieldtype class="solr.TextField" positionIncrementGap="100" name="text">
-      <analyzer>
+      <analyzer type="index">
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StandardFilterFactory"/>
         <filter class="solr.LowerCaseFilterFactory"/>
         <filter class="solr.ASCIIFoldingFilterFactory"/>
-        <filter class="solr.StopFilterFactory" words="stopwords_en.txt" ignoreCase="true"/>
+        <filter class="solr.CommonGramsFilterFactory" words="stopwords_en.txt" ignoreCase="true"/>
+        <filter class="solr.StopFilterFactory" words="stopwords_en.txt" ignoreCase="true"/>        
+        <filter class="solr.SynonymFilterFactory" synonyms="syn.txt" ignoreCase="true" expand="false"/>
+        <filter class="solr.EnglishPorterFilterFactory" protected="protwords.txt"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.StandardFilterFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.ASCIIFoldingFilterFactory"/>
+        <filter class="solr.CommonGramsQueryFilterFactory" words="stopwords_en.txt" ignoreCase="true"/>
+        <filter class="solr.StopFilterFactory" words="stopwords_en.txt" ignoreCase="true"/>        
         <filter class="solr.SynonymFilterFactory" synonyms="syn.txt" ignoreCase="true" expand="false"/>
         <filter class="solr.EnglishPorterFilterFactory" protected="protwords.txt"/>
       </analyzer>

@@ -150,11 +150,13 @@ class IndexedDocument < ActiveRecord::Base
   end
 
   class << self
+    include QueryPreprocessor
+    
     def search_for(query, affiliate, page = 1, per_page = 3)
       return if affiliate.nil? or query.blank?
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate.name}) do
         search do
-          fulltext query do
+          fulltext preprocess(query) do
             highlight :title, :description, :title_es, :description_es, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
           end
           with(:affiliate_id, affiliate.id)
