@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120124175734) do
+ActiveRecord::Schema.define(:version => 20120131091617) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -338,6 +338,7 @@ ActiveRecord::Schema.define(:version => 20120124175734) do
   end
 
   add_index "indexed_domains", ["affiliate_id", "domain"], :name => "index_indexed_domains_on_affiliate_id_and_domain", :unique => true
+  add_index "indexed_domains", ["domain"], :name => "index_indexed_domains_on_domain"
 
   create_table "logfile_blocked_class_cs", :force => true do |t|
     t.string   "classc",     :null => false
