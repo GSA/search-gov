@@ -408,14 +408,14 @@ Feature: Featured Collections
     And the following featured collections exist for the affiliate "site.gov":
       | title                                                | locale | status | publish_start_on | publish_end_on |
       | featured collection with publish_start_date          | en     | active | yesterday        |                |
-      | featured collection with publish_start_and_end_dates | en     | active | prev_month       | next_month     |
+      | featured collection with publish_start_end_dates     | en     | active | prev_month       | next_month     |
     When I go to site.gov's search page
     And I fill in "query" with "publish_start_date"
     And I press "Search"
     Then I should see "featured collection with publish_start_date"
-    When I fill in "query" with "publish_start_and_end_dates"
+    When I fill in "query" with "publish_start_end_dates"
     And I press "Search"
-    Then I should see "featured collection with publish_start_and_end_dates"
+    Then I should see "featured collection with publish_start_end_dates"
     When I fill in "query" with "past_publish_start_date"
     And I press "Search"
     Then I should not see "featured collection with past_publish_dates"

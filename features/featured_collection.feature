@@ -361,14 +361,14 @@ Feature: Featured Collections
     Given the following featured collections exist:
       | title                                                | locale | status | publish_start_on | publish_end_on |
       | featured collection with publish_start_date          | en     | active | yesterday        |                |
-      | featured collection with publish_start_and_end_dates | en     | active | yesterday        | next_month     |
+      | featured collection with publish_start_end_dates     | en     | active | yesterday        | next_month     |
     When I go to the homepage
     And I fill in "query" with "publish_start_date"
     And I press "Search"
     Then I should see "featured collection with publish_start_date"
-    When I fill in "query" with "publish_start_and_end_dates"
+    When I fill in "query" with "publish_start_end_dates"
     And I press "Search"
-    Then I should see "featured collection with publish_start_and_end_dates"
+    Then I should see "featured collection with publish_start_end_dates"
 
   Scenario: Search.USA.gov user should see only active featured collection within publish date range
     Given the following featured collections exist:
