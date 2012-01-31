@@ -63,8 +63,8 @@ class FeaturedCollection < ActiveRecord::Base
     string :status
     date :publish_start_on
     date :publish_end_on
-    text :title, :boost => 10.0
-    text :link_titles, :boost => 4.0 do
+    text :title, :stored => true, :boost => 10.0
+    text :link_titles, :stored => true, :boost => 4.0 do
       featured_collection_links.map { |link| link.title }.join(LINK_TITLE_SEPARATOR)
     end
     text :keyword_values do

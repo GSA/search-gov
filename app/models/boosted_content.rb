@@ -20,19 +20,19 @@ class BoostedContent < ActiveRecord::Base
   scope :recent, { :order => 'updated_at DESC, id DESC', :limit => 5 }
 
   searchable :auto_index => false do
-    text :title, :boost => 10.0 do |boosted_content|
+    text :title, :stored => true, :boost => 10.0 do |boosted_content|
       boosted_content.title if boosted_content.locale == "en"
     end
-    text :description, :boost => 4.0 do |boosted_content|
+    text :description, :stored => true, :boost => 4.0 do |boosted_content|
       boosted_content.description if boosted_content.locale == "en"
     end
     text :keywords do |boosted_content|
       boosted_content.keywords.split(',') unless boosted_content.keywords.nil? or boosted_content.locale != "en"
     end
-    text :title_es, :boost => 10.0, :as => "title_text_es" do |boosted_content|
+    text :title_es, :stored => true, :boost => 10.0, :as => "title_text_es" do |boosted_content|
       boosted_content.title if boosted_content.locale == "es"
     end
-    text :description_es, :boost => 4.0, :as => "description_text_es" do |boosted_content|
+    text :description_es, :stored => true, :boost => 4.0, :as => "description_text_es" do |boosted_content|
       boosted_content.description if boosted_content.locale == "es"
     end
     text :keywords_es, :as => "keywords_text_es" do |boosted_content|

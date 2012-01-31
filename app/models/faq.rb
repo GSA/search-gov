@@ -3,7 +3,7 @@ class Faq < ActiveRecord::Base
   validates_numericality_of :ranking, :only_integer => true
 
   searchable do
-    text :question
+    text :question, :stored => true
     integer :ranking
     string :locale
   end

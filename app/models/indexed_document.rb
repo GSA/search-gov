@@ -31,16 +31,16 @@ class IndexedDocument < ActiveRecord::Base
   VALID_BULK_UPLOAD_CONTENT_TYPES = %w{text/plain txt}
 
   searchable do
-    text :title, :boost => 10.0 do |idoc|
+    text :title, :stored => true, :boost => 10.0 do |idoc|
       idoc.title if idoc.affiliate.locale == "en"
     end
-    text :title_es, :boost => 10.0, :as => "title_text_es" do |idoc|
+    text :title_es, :stored => true, :boost => 10.0, :as => "title_text_es" do |idoc|
       idoc.title if idoc.affiliate.locale == "es"
     end
-    text :description, :boost => 4.0 do |idoc|
+    text :description, :stored => true, :boost => 4.0 do |idoc|
       idoc.description if idoc.affiliate.locale == "en"
     end
-    text :description_es, :boost => 4.0, :as => "description_text_es" do |idoc|
+    text :description_es, :stored => true, :boost => 4.0, :as => "description_text_es" do |idoc|
       idoc.description if idoc.affiliate.locale == "es"
     end
     text :body do |idoc|

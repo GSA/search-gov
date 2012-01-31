@@ -38,7 +38,7 @@ class Recall < ActiveRecord::Base
 
     # full-text search fields
     CPSC_FULL_TEXT_SEARCH_FIELDS.each_key do |detail_type|
-      text detail_type.underscore.to_sym do |recall|
+      text detail_type.underscore.to_sym, :stored => true do |recall|
         recall.recall_details.map {|detail| detail.detail_value if detail.detail_type == detail_type}.compact if recall.organization == 'CPSC'
       end
     end
@@ -71,7 +71,7 @@ class Recall < ActiveRecord::Base
     end
 
     NHTSA_FULL_TEXT_SEARCH_FIELDS.each_key do |detail_type|
-      text detail_type.underscore.to_sym do |recall|
+      text detail_type.underscore.to_sym, :stored => true do |recall|
         if recall.organization == 'NHTSA'
           recall_detail = recall.recall_details.find_by_detail_type(detail_type)
           recall_detail.detail_value if recall_detail
@@ -79,11 +79,11 @@ class Recall < ActiveRecord::Base
       end
     end
 
-    text :food_recall_summary do
+    text :food_recall_summary, :stored => true do
       food_recall.summary unless organization != 'CDC' or food_recall.nil?
     end
 
-    text :food_recall_description do
+    text :food_recall_description, :stored => true do
       food_recall.description unless organization != 'CDC' or food_recall.nil?
     end
 

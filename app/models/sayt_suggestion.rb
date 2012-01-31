@@ -14,7 +14,7 @@ class SaytSuggestion < ActiveRecord::Base
 
   searchable do
     integer :affiliate_id
-    text :phrase
+    text :phrase, :stored => true
     string :phrase
     integer :popularity
     time :deleted_at
