@@ -1,5 +1,6 @@
 @import "blueprint"
 @import "compass/css3/border-radius"
+@import "compass/css3/inline-block"
 @import "compass/utilities/general/clearfix"
 a
   +link-colors(#21548B, #C81B2A, #21548B, #21548B, #21548B)
@@ -588,8 +589,7 @@ a
 
 /*** content ***/
 .content
-  margin-left: 280px
-  width: 70%
+  margin: 0 0 0 250px
   padding: 10px 0 0 5px
   .container
     min-width: 790px
@@ -801,8 +801,7 @@ a
 /*** sidebar ***/
 .affiliate-sidebar
   float: left
-  width: 280px
-  background: url(/images/menu-sep.png) no-repeat right 0
+  width: 250px
   behavior: url(/javascripts/iepngfix.htc)
   min-height: 730px
   height: auto !important
@@ -1040,7 +1039,7 @@ table.generic-table
 .site-specific
   float: left
   overflow: hidden
-  width: 680px
+  width: 710px
   p
     margin: 0 0 8px
     font-size: 14px
@@ -1311,10 +1310,10 @@ h3.api-item
 .column-1
   float: left
   margin-right: 10px
-  width: 65%
+  width: 68%
 .column-2
   float: left
-  width: 32%
+  width: 240px
   .side-note-image
     margin-bottom: 25px
   .side-note
@@ -1781,3 +1780,6 @@ h3.api-item
 
 #new_affiliate #add_domain
   float: right
+
+#urls_and_sitemaps
+  +clearfix

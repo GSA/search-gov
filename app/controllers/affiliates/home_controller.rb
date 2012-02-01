@@ -1,9 +1,9 @@
 class Affiliates::HomeController < Affiliates::AffiliatesController
-  before_filter :require_affiliate_or_admin, :except=> [:index, :edit_site_information, :edit_look_and_feel, :how_it_works, :demo, :best_bets, :edit_social_media, :update_social_media]
-  before_filter :require_affiliate, :only => [:edit_site_information, :edit_look_and_feel, :preview, :best_bets, :content_types, :edit_social_media, :update_social_media]
+  before_filter :require_affiliate_or_admin, :only => [:home, :urls_and_sitemaps]
+  before_filter :require_affiliate, :except => [:index, :how_it_works, :demo, :home, :urls_and_sitemaps]
   before_filter :require_approved_user, :except => [:index, :how_it_works, :demo, :home, :update_contact_information, :update_content_types]
   before_filter :setup_affiliate, :except => [:index, :how_it_works, :demo, :new, :create, :update_contact_information, :home, :new_site_domain_fields]
-  before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel]
+  before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel, :edit_header_footer]
 
   AFFILIATE_ADS = [
     {:display_name => "BROWARD.org",
@@ -72,6 +72,8 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     :update_look_and_feel => {
       :title => "Look and Feel of the Search Results Page - ",
       :edit_action => :edit_look_and_feel },
+    :update_header_footer => {
+        :edit_action => :edit_header_footer },
     :update_social_media => {
       :title => "Social Media - ",
       :edit_action => :edit_social_media }
@@ -87,6 +89,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def edit_look_and_feel
     @title = "Look and Feel of the Search Results Page - "
+  end
+
+  def edit_header_footer
   end
 
   def how_it_works
@@ -131,6 +136,10 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def update_look_and_feel
+    update
+  end
+
+  def update_header_footer
     update
   end
 

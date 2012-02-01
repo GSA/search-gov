@@ -13,6 +13,8 @@ UsasearchRails3::Application.routes.draw do
       put :update_site_information
       get :edit_look_and_feel
       put :update_look_and_feel
+      get :edit_header_footer
+      put :update_header_footer
       get :preview
       post :cancel_staged_changes_for
       get :best_bets

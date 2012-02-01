@@ -435,44 +435,6 @@ Feature: Affiliate clients
     Then I should see "Site Information" within "title"
     And I should see "Site name can't be blank"
 
-  Scenario: Visiting the look and feel page on a site with one serp
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header_footer_css                                          | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme   |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | #current_header {color:blue;} #current_footer {color:red;} | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | default |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    And I follow "Look and feel"
-    Then I should see "Look and Feel of the Search Results Page" within "title"
-    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page
-    And I should see "Look and Feel of the Search Results Page" within ".main"
-    And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
-    And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
-    And the "Font family" field should contain "Arial, sans-serif"
-    And the "Liberty Bell" theme should be selected
-    And the "Custom" theme should not be visible
-    And the "Page background color" field should contain "#FFFFFF"
-    And the "Content background color" field should contain "#F7F7F7"
-    And the "Show content border" checkbox should be checked
-    And the "Content border color" field should contain "#CACACA"
-    And the "Content border color" field should be disabled
-    And the "Show content box shadow" checkbox should be checked
-    And the "Content box shadow color" field should be disabled
-    And the "Search button text color" field should contain "#FFFFFF"
-    And the "Search button background color" field should contain "#00396F"
-    And the "Left tab text color" field should contain "#9E3030"
-    And the "Title link color" field should contain "#2200CC"
-    And the "Visited title link color" field should contain "#800080"
-    And the "Description text color" field should contain "#000000"
-    And the "URL link color" field should contain "#008000"
-    And the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
-    And the "Enter CSS to customize the top and bottom of your search results page." field should contain "#current_header \{color:blue;\} #current_footer \{color:red;\}"
-    And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
-    And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
-    And I should not see "Template"
-    And I should see "Cancel"
-    When I follow "Cancel"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
-
   Scenario: Visiting the look and feel page on a site with legacy template
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          | uses_one_serp |
@@ -486,40 +448,22 @@ Feature: Affiliate clients
     And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the "Default" template should be selected
     And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
-    And the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
-    And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
-    And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
-    And I should not see "Title link color"
-    And I should not see "Visited title link color"
     When I follow "Cancel"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
 
-  Scenario: Visiting the look and feel page for affiliate without external_css_url
+  Scenario: Editing user interface and saving it for preview on a site with one serp
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    And I follow "Look and feel"
-    Then I should not see a field labeled "External CSS URL"
-
-  Scenario: Visiting the look and feel page for affiliate with staged_external_css_url
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | staged_external_css_url          | has_staged_content |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | cdn.agency.gov/staged_custom.css | true               |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to the "aff site" affiliate page
-    And I follow "Look and feel"
-    Then the "External CSS URL" field should contain "http://cdn.agency.gov/staged_custom.css"
-
-  Scenario: Editing look and feel and saving it for preview on a site with one serp
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css            | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme  | show_content_border | show_content_box_shadow |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | .current h1 { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | custom | false               | false                   |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme  | show_content_border | show_content_box_shadow |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | custom | false               | false                   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
+    Then I should see the browser page titled "Look and Feel of the Search Results Page"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page
+    And I should see "Look and Feel of the Search Results Page" in the page header
+    And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
+    And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
     Then the "Font family" field should contain "Verdana, sans-serif"
     And the "Custom" theme should be selected
     And the "Custom" theme should be visible
@@ -550,10 +494,6 @@ Feature: Affiliate clients
       | Visited title link color                                               | #0000f0                           |
       | Description text color                                                 | #DDDDDD                           |
       | URL link color                                                         | #007000                           |
-      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css  |
-      | Enter CSS to customize the top and bottom of your search results page. | .staged h1 { color: green; }      |
-      | Enter HTML to customize the top of your search results page.           | New header                        |
-      | Enter HTML to customize the bottom of your search results page.        | New footer                        |
     And I select "Helvetica, sans-serif" from "Font family"
     And I check "Show content border"
     And I check "Show content box shadow"
@@ -561,13 +501,55 @@ Feature: Affiliate clients
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes to your site successfully"
 
-    When I follow "View Current"
+    When I follow "Look and feel"
+    Then the "Search results page title" field should contain "\{SiteName\} : \{Query\}"
+    And the "Favicon URL" field should contain "http://cdn.agency.gov/staged_favicon.ico"
+    Then the "Font family" field should contain "Helvetica, sans-serif"
+    And the "Page background color" field should contain "#EEEEEE"
+    And the "Content background color" field should contain "#D6D6D6"
+    And the "Show content border" checkbox should be checked
+    And the "Content border color" field should contain "#D8D8D8"
+    And the "Show content box shadow" checkbox should be checked
+    And the "Content box shadow color" field should contain "#777777"
+    And the "Search button text color" field should contain "#222222"
+    And the "Search button background color" field should contain "#00DD00"
+    And the "Left tab text color" field should contain "#AAAAAA"
+    And the "Title link color" field should contain "#888888"
+    And the "Visited title link color" field should contain "#0000f0"
+    And the "Description text color" field should contain "#DDDDDD"
+    And the "URL link color" field should contain "#007000"
+
+    When I follow "Header and footer"
+    Then I should see the browser page titled "Header and Footer of the Search Results Page"
+    And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Header and Footer of the Search Results Page
+    And I should see "Header and Footer of the Search Results Page" in the page header
+    Then the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
+    And the "Enter CSS to customize the top and bottom of your search results page." field should contain ".current \{ color: blue; \}"
+    And the "Enter HTML to customize the top of your search results page." field should contain "Old header"
+    And the "Enter HTML to customize the bottom of your search results page." field should contain "Old footer"
+    When I fill in the following:
+      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: green; }        |
+      | Enter HTML to customize the top of your search results page.           | New header                       |
+      | Enter HTML to customize the bottom of your search results page.        | New footer                       |
+    And I press "Save for Preview"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Staged changes to your site successfully"
+
+    When I follow "Header and footer"
+    Then the "External CSS URL" field should contain "http://cdn.agency.gov/staged_custom.css"
+    And the "Enter CSS to customize the top and bottom of your search results page." field should contain ".staged \{ color: green; \}"
+    And the "Enter HTML to customize the top of your search results page." field should contain "New header"
+    And the "Enter HTML to customize the bottom of your search results page." field should contain "New footer"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
     Then I should see "gov - aff site Search Results"
     And I should see "Old header"
     And I should see "Old footer"
     And I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should see the page with affiliate stylesheet "one_serp"
-    And I should see the page with internal CSS ".header-footer .current h1\{color:blue\}"
+    And I should see the page with internal CSS ".header-footer .current\{color:blue\}"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
     And I should not see the page with content border
     And I should not see the page with content box shadow
@@ -583,7 +565,7 @@ Feature: Affiliate clients
     And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "one_serp"
-    And I should see the page with internal CSS ".header-footer .staged h1\{color:green\}"
+    And I should see the page with internal CSS ".header-footer .staged\{color:green\}"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should see the page with content border
     And I should see the page with content box shadow
@@ -591,6 +573,10 @@ Feature: Affiliate clients
     And I should not see the page with affiliate stylesheet "default"
     And I should not see the page with affiliate stylesheet "basic_gray"
     And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
+
+    When I go to the "aff site" affiliate page
+    And I press "Push Changes"
+    Then I should see "Staged content is now visible"
 
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -608,10 +594,13 @@ Feature: Affiliate clients
     And the "Visited title link color" field should contain "#0000f0"
     And the "Description text color" field should contain "#DDDDDD"
     And the "URL link color" field should contain "#007000"
+    When I follow "Header and footer"
+    Then the "External CSS URL" field should contain "http://cdn.agency.gov/staged_custom.css"
+    And the "Enter CSS to customize the top and bottom of your search results page." field should contain ".staged \{ color: green; \}"
+    And the "Enter HTML to customize the top of your search results page." field should contain "New header"
+    And the "Enter HTML to customize the bottom of your search results page." field should contain "New footer"
 
     When I go to the "aff site" affiliate page
-    And I press "Push Changes"
-    And I go to the "aff site" affiliate page
     And I follow "View Current"
     Then I should see "aff site : gov"
     And I should see "New header"
@@ -619,30 +608,13 @@ Feature: Affiliate clients
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "one_serp"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
-    And I should see the page with internal CSS ".header-footer .staged h1\{color:green\}"
+    And I should see the page with internal CSS ".header-footer .staged\{color:green\}"
     And I should see the page with content border
     And I should see the page with content box shadow
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
     And I should not see the page with affiliate stylesheet "basic_gray"
     And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
-
-    When I go to the "aff site" affiliate page
-    And I follow "Look and feel"
-    Then the "Font family" field should contain "Helvetica, sans-serif"
-    And the "Page background color" field should contain "#EEEEEE"
-    And the "Content background color" field should contain "#D6D6D6"
-    And the "Show content border" checkbox should be checked
-    And the "Content border color" field should contain "#D8D8D8"
-    And the "Show content box shadow" checkbox should be checked
-    And the "Content box shadow color" field should contain "#777777"
-    And the "Search button text color" field should contain "#222222"
-    And the "Search button background color" field should contain "#00DD00"
-    And the "Left tab text color" field should contain "#AAAAAA"
-    And the "Title link color" field should contain "#888888"
-    And the "Visited title link color" field should contain "#0000f0"
-    And the "Description text color" field should contain "#DDDDDD"
-    And the "URL link color" field should contain "#007000"
 
   Scenario: Updating theme and saving it for preview
     Given the following Affiliates exist:
@@ -670,9 +642,6 @@ Feature: Affiliate clients
     And I fill in the following:
       | Search results page title                                       | {SiteName} : {Query}              |
       | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
-      | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
-      | Enter HTML to customize the top of your search results page.    | New header                        |
-      | Enter HTML to customize the bottom of your search results page. | New footer                        |
     And I choose "Basic Gray"
     And I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
@@ -680,40 +649,28 @@ Feature: Affiliate clients
 
     When I follow "View Current"
     Then I should see "gov - aff site Search Results"
-    And I should see "Old header"
-    And I should see "Old footer"
     And I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should see the page with affiliate stylesheet "default"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
     And I should not see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should not see the page with affiliate stylesheet "basic_gray"
-    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
 
     When I go to the "aff site" affiliate page
     And I follow "View Staged"
     Then I should see "aff site : gov"
-    And I should see "New header"
-    And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "basic_gray"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
-    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
     When I go to the "aff site" affiliate page
     And I press "Push Changes"
     And I go to the "aff site" affiliate page
     And I follow "View Current"
     Then I should see "aff site : gov"
-    And I should see "New header"
-    And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "basic_gray"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
-    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
   Scenario: Editing look and feel with problem and saving it for preview
     Given the following Affiliates exist:
@@ -737,7 +694,6 @@ Feature: Affiliate clients
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp | show_content_border | show_content_box_shadow |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #111111                  | #0000EE                        | #BBBBBB             | #33ff33          | #0000ff                  | #CCCCCC                | #008000        | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | true          | false               | false                   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    And no emails have been sent
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
@@ -755,10 +711,6 @@ Feature: Affiliate clients
       | Visited title link color                                               | #0000f0                           |
       | Description text color                                                 | #DDDDDD                           |
       | URL link color                                                         | #007000                           |
-      | Enter CSS to customize the top and bottom of your search results page. | .staged h1 { color: green; }      |
-      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css  |
-      | Enter HTML to customize the top of your search results page.           | New header                        |
-      | Enter HTML to customize the bottom of your search results page.        | New footer                        |
     And I select "Helvetica, sans-serif" from "Font family"
     And I check "Show content border"
     And I check "Show content box shadow"
@@ -766,25 +718,14 @@ Feature: Affiliate clients
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Updated changes to your live site successfully"
     And I should not see "View Staged"
-    When "aff@bar.gov" opens the email
-    And I should see "The header and/or footer for aff site have been updated" in the email body
-    And I should see "Old header" in the email body
-    And I should see "Old footer" in the email body
-    And I should see "New header" in the email body
-    And I should see "New footer" in the email body
 
     When I follow "View Current"
     Then I should see "aff site : gov"
-    And I should see "New header"
-    And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "one_serp"
-    And I should see the page with internal CSS ".header-footer .staged h1\{color:green\}"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
     And I should not see the page with affiliate stylesheet "basic_gray"
-    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
@@ -824,75 +765,48 @@ Feature: Affiliate clients
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | header     | footer     | staged_header | staged_footer | uses_one_serp |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header | Old footer | Old header    | Old footer    | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    And no emails have been sent
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
     And I fill in the following:
       | Search results page title                                              | {SiteName} : {Query}              |
       | Favicon URL                                                            | cdn.agency.gov/staged_favicon.ico |
-      | Enter CSS to customize the top and bottom of your search results page. | .staged h1 { color: green; }      |
-      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css  |
-      | Enter HTML to customize the top of your search results page.           | <b>New header</b>                 |
-      | Enter HTML to customize the bottom of your search results page.        | New footer                        |
     And I choose "Basic Gray"
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Updated changes to your live site successfully"
     And I should not see "View Staged"
-    When "aff@bar.gov" opens the email
-    And I should see "The header and/or footer for aff site have been updated" in the email body
-    And I should see "Old header" in the email body
-    And I should see "Old footer" in the email body
-    And I should see "<b>New header</b>" in the email body
-    And I should see "New footer" in the email body
 
     When I follow "View Current"
     Then I should see "aff site : gov"
-    And I should see "New header"
-    And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "basic_gray"
-    And I should see the page with internal CSS ".header-footer .staged h1\{color:green\}"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
-    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
     Scenario: Editing look and feel and make it live on a site with legacy template without existing header/footer
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | favicon_url                       | external_css_url                 | staged_header | staged_footer | uses_one_serp |
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | http://cdn.agency.gov/favicon.ico | http://cdn.agency.gov/custom.css | Old header    | Old footer    | false         |
     And I am logged in with email "aff@bar.gov" and password "random_string"
-    And no emails have been sent
     When I go to the affiliate admin page
     And I follow "aff site"
     And I follow "Look and feel"
     And I fill in the following:
       | Search results page title                                       | {SiteName} : {Query}              |
       | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
-      | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
-      | Enter HTML to customize the top of your search results page.    | New header                        |
-      | Enter HTML to customize the bottom of your search results page. | <b>New footer</b>                 |
     And I choose "Basic Gray"
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Updated changes to your live site successfully"
     And I should not see "View Staged"
-    When "aff@bar.gov" opens the email
-    And I should see "The header and/or footer for aff site have been updated" in the email body
-    And I should see "<b>New footer</b>" in the email body
 
     When I follow "View Current"
     Then I should see "aff site : gov"
-    And I should see "New header"
-    And I should see "New footer"
     And I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "basic_gray"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should not see the page with affiliate stylesheet "default"
-    And I should not see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
 
   Scenario: Editing look and feel with problem and make it live
     Given the following Affiliates exist:
@@ -931,22 +845,15 @@ Feature: Affiliate clients
     Then the "Search results page title" field should contain "Live Search Results"
     And the "Default" template should be selected
     And the "Favicon URL" field should contain "http://cdn.agency.gov/favicon.ico"
-    And the "Enter CSS to customize the top and bottom of your search results page." field should contain "\.current h1 \{ color: blue; \}"
-    And the "External CSS URL" field should contain "http://cdn.agency.gov/custom.css"
-    And the "Enter HTML to customize the top of your search results page." field should contain "Live header"
-    And the "Enter HTML to customize the bottom of your search results page." field should contain "Live footer"
     When I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
     Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should see the page with affiliate stylesheet "default"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
     And I should not see the page with affiliate stylesheet "basic_gray"
     And I should see "Live Search Results"
     And I should see 10 search results
-    And I should see "Live header"
-    And I should see "Live footer"
 
   Scenario: Editing look and feel where staged and live sites are out sync and has_staged_content is true
     Given the following Affiliates exist:
@@ -958,21 +865,14 @@ Feature: Affiliate clients
     Then the "Search results page title" field should contain "Staged Search Results"
     And the "Basic Gray" template should be selected
     And the "Favicon URL" field should contain "http://cdn.agency.gov/staged_favicon.ico"
-    And the "Enter CSS to customize the top and bottom of your search results page." field should contain "\.staged h1 \{ color: green; \}"
-    And the "External CSS URL" field should contain "http://cdn.agency.gov/staged_custom.css"
-    And the "Enter HTML to customize the top of your search results page." field should contain "Staged header"
-    And the "Enter HTML to customize the bottom of your search results page." field should contain "Staged footer"
     When I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes to your site successfully"
     When I follow "View Staged"
     Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "basic_gray"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should not see the page with affiliate stylesheet "default"
     And I should see "Staged Search Results"
-    And I should see "Staged header"
-    And I should see "Staged footer"
 
   Scenario: Resetting style on a site with one serp
     Given the following Affiliates exist:
@@ -1009,6 +909,106 @@ Feature: Affiliate clients
     And the "Visited title link color" field should contain "#800080"
     And the "Description text color" field should contain "#000000"
     And the "URL link color" field should contain "#008000"
+
+  Scenario: Editing header/footer and make it live
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme  | show_content_border | show_content_box_shadow |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | custom | false               | false                   |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    And no emails have been sent
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Header and footer"
+    And I fill in the following:
+      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: green; }        |
+      | Enter HTML to customize the top of your search results page.           | New header                       |
+      | Enter HTML to customize the bottom of your search results page.        | New footer                       |
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+    When "aff@bar.gov" opens the email
+    And I should see "The header and/or footer for aff site have been updated" in the email body
+    And I should see "Old header" in the email body
+    And I should see "Old footer" in the email body
+    And I should see "New header" in the email body
+    And I should see "New footer" in the email body
+
+    When I follow "Header and footer"
+    Then the "External CSS URL" field should contain "http://cdn.agency.gov/staged_custom.css"
+    And the "Enter CSS to customize the top and bottom of your search results page." field should contain ".staged \{ color: green; \}"
+    And the "Enter HTML to customize the top of your search results page." field should contain "New header"
+    And the "Enter HTML to customize the bottom of your search results page." field should contain "New footer"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see "New header"
+    And I should see "New footer"
+    And I should see the page with internal CSS ".header-footer .staged\{color:green\}"
+    And I should see the page with affiliate stylesheet "one_serp"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
+
+  Scenario: Editing header/footer with problem and save for preview
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme   |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | default |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Header and footer"
+    And I fill in the following:
+      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css }          |
+      | Enter HTML to customize the top of your search results page.           | New header                       |
+      | Enter HTML to customize the bottom of your search results page.        | New footer                       |
+    And I press "Save for Preview"
+    Then I should see "Invalid CSS"
+    And I should see "Header and Footer of the Search Results Page" in the page header
+    When I fill in the following:
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: blue } |
+    And I press "Save for Preview"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Staged changes to your site successfully"
+
+  Scenario: Editing header/footer with problem and make it live
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme   |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | default |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the affiliate admin page
+    And I follow "aff site"
+    And I follow "Header and footer"
+    And I fill in the following:
+      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css }          |
+      | Enter HTML to customize the top of your search results page.           | New header                       |
+      | Enter HTML to customize the bottom of your search results page.        | New footer                       |
+    And I press "Make Live"
+    Then I should see "Invalid CSS"
+    And I should see "Header and Footer of the Search Results Page" in the page header
+    When I fill in the following:
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: blue } |
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+
+  Scenario: Visiting the header and footer page for affiliate without external_css_url
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    Then I should not see a field labeled "External CSS URL"
+
+  Scenario: Visiting the header and footer page for affiliate with staged_external_css_url
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | staged_external_css_url          | has_staged_content |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | cdn.agency.gov/staged_custom.css | true               |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then the "External CSS URL" field should contain "http://cdn.agency.gov/staged_custom.css"
 
   Scenario: Visiting an affiliate SERP without a header
     Given the following Affiliates exist:
@@ -1089,10 +1089,7 @@ Feature: Affiliate clients
     And I follow "Look and feel"
     And I fill in the following:
       | Favicon URL                                                     | cdn.agency.gov/staged_favicon.ico |
-      | External CSS URL                                                | cdn.agency.gov/staged_custom.css  |
       | Search results page title                                       | updated SERP title                |
-      | Enter HTML to customize the top of your search results page.    | New header                        |
-      | Enter HTML to customize the bottom of your search results page. | New footer                        |
     And I choose "Basic Gray"
     And I press "Save for Preview"
     And I should see "Staged changes to your site successfully"
@@ -1100,10 +1097,7 @@ Feature: Affiliate clients
     When I follow "View Staged"
     Then I should see the page with favicon "http://cdn.agency.gov/staged_favicon.ico"
     And I should see the page with affiliate stylesheet "basic_gray"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
     And I should see "updated SERP title"
-    And I should see "New header"
-    And I should see "New footer"
 
     When I go to the "bar site" affiliate page
     And I press "Cancel Changes"
@@ -1115,10 +1109,7 @@ Feature: Affiliate clients
     When I follow "View Current"
     Then I should see the page with favicon "http://cdn.agency.gov/favicon.ico"
     And I should see the page with affiliate stylesheet "default"
-    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/custom.css"
     And I should see "gov - bar site Search Results"
-    And I should see "Old header"
-    And I should see "Old footer"
     And I should see 10 search results
 
   Scenario: Cancelling staged changes from the Preview page

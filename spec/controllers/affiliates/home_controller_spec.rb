@@ -37,6 +37,43 @@ describe Affiliates::HomeController do
     end
   end
 
+  describe "#home" do
+    context "when user is not logged in" do
+      before do
+        get :home
+      end
+
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:non_affiliate_admin))
+        get :home
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate admin" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+        get :home
+      end
+
+      it { should respond_with(:success) }
+    end
+
+    context "when logged in as an affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :home
+      end
+
+      it { should respond_with(:success) }
+    end
+  end
+
   describe "do GET on #new" do
     it "should require affiliate login for new" do
       get :new
@@ -378,6 +415,127 @@ describe Affiliates::HomeController do
         end
       end
 
+    end
+  end
+
+  describe "do GET on #edit_header_footer" do
+    context "when user is not logged in" do
+      before do
+        get :edit_header_footer, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in but not an affiliate manager" do
+      before do
+        UserSession.create(users(:affiliate_admin))
+        get :edit_header_footer, :id => affiliates(:power_affiliate).id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as an affiliate manager who doesn't own the affiliate being edited" do
+      before do
+        UserSession.create(users(:affiliate_manager))
+        get :edit_header_footer, :id => affiliates(:another_affiliate).id
+      end
+
+      it { should redirect_to(home_page_path) }
+    end
+
+    context "when logged in as the affiliate manager" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_receive(:sync_staged_attributes)
+
+        get :edit_header_footer, :id => affiliate.id
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+    end
+  end
+
+  describe "do PUT on #update_header_footer" do
+    context "when user is not logged in" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      before do
+        put :update_header_footer, :id => affiliate.id, :affiliate=> {}
+      end
+
+      it { should redirect_to(login_path) }
+    end
+
+    context "when logged in as an affiliate manager and successfully save for preview" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_receive(:update_attributes_for_staging).and_return(true)
+        put :update_header_footer, :id => affiliate.id, :affiliate=> {:header => "staged header"}, :commit => "Save for Preview"
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should set_the_flash.to(/Staged changes to your site successfully/) }
+      it { should redirect_to(affiliate_path(affiliate)) }
+    end
+
+    context "when logged in as an affiliate manager and failed to save for preview" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_receive(:update_attributes_for_staging).and_return(false)
+        put :update_header_footer, :id => affiliate.id, :affiliate=> {:staged_header => "staged header"}, :commit => "Save for Preview"
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should render_template(:edit_header_footer) }
+    end
+
+    context "when logged in as an affiliate manager and successfully Make Live" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_receive(:update_attributes_for_current).and_return(true)
+        put :update_header_footer, :id => affiliate.id, :affiliate=> {:staged_header => "staged header"}, :commit => "Make Live"
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should set_the_flash.to(/Updated changes to your live site successfully/) }
+      it { should redirect_to(affiliate_path(affiliate)) }
+    end
+
+    context "when logged in as an affiliate manager and failed to Make Live" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:current_user) { users(:affiliate_manager) }
+
+      before do
+        UserSession.create(current_user)
+        User.should_receive(:find_by_id).and_return(current_user)
+        current_user.stub_chain(:affiliates, :find).and_return(affiliate)
+        affiliate.should_receive(:update_attributes_for_current).and_return(false)
+        put :update_header_footer, :id => affiliate.id, :affiliate=> {:staged_header => "staged header"}, :commit => "Make Live"
+      end
+
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should render_template(:edit_header_footer) }
     end
   end
 
