@@ -3,7 +3,6 @@
 @import "compass/css3/inline-block"
 @import "compass/typography/text/replacement"
 $results-padding-size: 15px
-$results-padding-left-size: 11px
 $red: #990000
 $green: #008000
 
@@ -27,7 +26,7 @@ body
   +border-radius(8px)
 
 #search
-  @include clearfix
+  +clearfix
   font-size: 0.75em
   margin: auto
   text-align: left
@@ -65,34 +64,35 @@ body
     a
       font-size: 0.8em
   .did-you-mean, .search-all-sites-suggestion
-    padding-left: $results-padding-left-size
+    padding-left: $results-padding-size
 
   .pagination-and-logo
     border-top: 1px solid #CACACA
     clear: both
     height: 35px
     margin: 1.5em 0 0
-    padding: 14px 0 14px $results-padding-left-size - 6px
+    padding: 14px 0 14px $results-padding-size - 6px
 
   .pagination
     float: left
     font-size: 1em
+    line-height: 1.5
     margin: 0
     padding: 0
     .disabled
       display: none
     em
-      @include border-radius(3px)
+      +border-radius(3px)
       font-style: normal
-      padding: 3px 6px
+      padding: 2px 7px
     a, a:visited
-      padding: 3px 6px
+      padding: 2px 7px
       text-decoration: none
       &:hover
-        @include border-radius(3px)
+        +border-radius(3px)
 
 #summary
-  padding-left: $results-padding-left-size
+  padding-left: $results-padding-size
 
 #left_column
   float: left
@@ -125,12 +125,12 @@ body
         font-weight: bold
 
 #search_form
-  @include clearfix
+  +clearfix
   margin: 0
   height: 60px
   width: 496px
   #search_query
-    @include border-radius
+    +border-radius
     float: left
     background-color: #FFF
     border: 1px solid #CACACA
@@ -140,11 +140,11 @@ body
     height: 20px
     letter-spacing: 1px
     outline: 0
-    padding: 4px 0 4px $results-padding-left-size - 1
+    padding: 4px 0 4px $results-padding-size - 1
     width: 380px
 
   #search_button
-    @include border-radius
+    +border-radius
     float: right
     font:
       size: 13px
@@ -163,7 +163,7 @@ body
 #results
   .searchresult
     margin-bottom: 1em
-    padding-left: $results-padding-left-size
+    padding-left: $results-padding-size
     &.blended
       :padding 0
 
@@ -192,18 +192,29 @@ body
     color: white
     display: none
 
-  .related-searches-wrapper-middle
-    @include border-radius
-    @include clearfix
-    border: 1px solid #DDD
-    margin:
-      top: 1em
-      bottom: 1em
-    padding: $results-padding-size $results-padding-left-size
-    background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
-    h3
-      font-size: 1.2em
+  .related-searches-wrapper-top, .indexed-documents-wrapper-top
+    :background url(/images/backgrounds/related_topics_top.png) no-repeat 2px 0
+    :behavior url(/javascripts/iepngfix.htc)
+    :height 8px
+    :line-height 8px
+    :margin-top 0.75em
+
+  .related-searches-wrapper-bottom, .indexed-documents-wrapper-bottom
+    :background url(/images/backgrounds/related_topics_bottom.png) no-repeat 0 0
+    :behavior url(/javascripts/iepngfix.htc)
+    :height 8px
+
+  .related-searches-wrapper-middle, .indexed-documents-wrapper-middle
+    +clearfix
+    :background url(/images/backgrounds/related_topics_middle.png) repeat-y 0 0
+    :behavior url(/javascripts/iepngfix.htc)
+    margin: 0
+    padding: 0.8em $results-padding-size 0.8em 0
+    h3.alt
+      font-size: 1.15em
       margin-top: 0
+      margin-bottom: 0.5em
+      margin-left: $results-padding-size
       span.recommended-by
         color: gray
         font:
@@ -211,9 +222,8 @@ body
           style: italic
           weight: normal
     ul
-      float: left
       list-style: none
-      margin: 0
+      margin: 0 0 0 $results-padding-size
       padding: 0
       width: 630px
       li
@@ -223,6 +233,9 @@ body
         padding: 0
         width: 312px
 
+    .see-more-documents
+      padding-left: $results-padding-size
+
   .results
     display: block
     overflow: hidden
@@ -230,16 +243,16 @@ body
     padding-right: 5em
     padding-top:   1em
 
-  #boosted, #indexed_documents
-    @include border-radius
+  #boosted
+    +border-radius
     border: 1px #ddd solid
     margin:
       top: 1em
       bottom: 1em
-    padding: $results-padding-size $results-padding-left-size 0 $results-padding-left-size
+    padding: $results-padding-size $results-padding-size 0 $results-padding-size
     background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
     h3.alt
-      font-size: 1.2em
+      font-size: 1.15em
       margin-top: 0
       span.recommended-by
         color: gray
@@ -253,13 +266,13 @@ body
       margin-bottom: 10px
 
   .featured-collection
-    @include border-radius
-    @include clearfix
+    +border-radius
+    +clearfix
     border: 1px solid #DDD
     margin:
       top: 1em
       bottom: 1em
-    padding: 1em $results-padding-left-size
+    padding: 1em $results-padding-size
     background: #FFFFFF url(/images/bg.png) repeat-x scroll 0 -153px
     h2
       margin: 0 0 0.5em

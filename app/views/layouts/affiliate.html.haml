@@ -25,6 +25,8 @@
     = render(:partial => 'searches/affiliate_nested_css', :locals => { :affiliate => @affiliate })
     = render(:partial => 'searches/affiliate_css_overrides', :locals => { :css_property_hash => @affiliate.css_property_hash }) if @affiliate.uses_one_serp?
     = stylesheet_link_tag "#{@affiliate.external_css_url}" unless @affiliate.external_css_url.blank?
+    /[if IE]
+      = (javascript_include_tag "iepngfix_tilebg.js").html_safe
 
     %title= @page_title
   %body{ :class => render_affiliate_body_class(@affiliate) }
