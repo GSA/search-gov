@@ -27,7 +27,7 @@ gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select
 gem 'bcrypt-ruby', '>= 2.1.1', :require => 'bcrypt'
 gem 'authlogic', '>=3.0.2'
 gem 'multi_db', :git => 'git://github.com/GSA-OCSIT/multi_db.git'
-gem 'sunspot_rails', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "a4b7aceb930f17b4873fbf7200927b315b190fe2"
+gem 'sunspot_rails', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "8ac0d00dabb481b66d793c00f4d84c81ba516604"
 gem 'airbrake'
 gem 'fastercsv'
 gem 'yajl-ruby', :require => 'yajl'
@@ -67,7 +67,7 @@ group :development, :test, :cucumber do
   gem 'webster'
 #  gem 'rack-perftools_profiler', :require => 'rack/perftools_profiler'
   gem 'no_peeping_toms', :git => 'git://github.com/alindeman/no_peeping_toms.git'
-  gem 'sunspot_solr', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "a4b7aceb930f17b4873fbf7200927b315b190fe2"
+  gem 'sunspot_solr', :git => 'git://github.com/GSA-OCSIT/sunspot.git', :ref => "8ac0d00dabb481b66d793c00f4d84c81ba516604"
   gem 'progress_bar'
 end
 

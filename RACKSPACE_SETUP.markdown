@@ -240,9 +240,10 @@ Make sure a recent java 1.6 runtime is installed
 As user 'search', get the version of Solr you need
 
     cd ~/downloads
-    wget http://apache.opensourceresources.org/lucene/solr/1.4.1/apache-solr-1.4.1.tgz
-    tar xvfz apache-solr-1.4.1.tgz
-    mv apache-solr-1.4.1/example ~search/solr
+    wget http://ftp.wayne.edu/apache//lucene/solr/3.5.0/apache-solr-3.5.0.tgz
+    tar xvfz apache-solr-3.5.0.tgz
+    sudo rm -rf ~search/solr
+    mv apache-solr-3.5.0/example ~search/solr
 
 Copy these three files (retaining their permissions) from a working solr machine
 
