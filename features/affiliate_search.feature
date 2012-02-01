@@ -10,7 +10,7 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I press "Search"
     Then I should see "Please enter search term(s)"
-
+    
   Scenario: Searching with active RSS feeds
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -40,14 +40,15 @@ Feature: Affiliate Search
     And I should see "Press"
     And I should see "Photo Gallery"
     And I should not see "Hide Me"
-    And I should see "All Time"
-    And I should see "Last hour"
-    And I should see "Last day"
-    And I should see "Last week"
-    And I should see "Last month"
-    And I should see "Last year"
+    And I should not see "All Time"
+    And I should not see "Last hour"
+    And I should not see "Last day"
+    And I should not see "Last week"
+    And I should not see "Last month"
+    And I should not see "Last year"
 
-    When I follow "Last week"
+    When I follow "Press"
+    And I follow "Last week"
     Then I should see "First news item for the feed"
     And I should see "Next news item for the feed"
     And I should not see "More news items for the feed"
@@ -78,8 +79,11 @@ Feature: Affiliate Search
     And I should see "Imágenes"
     And I should not see "Images"
     And I should not see "Search this site"
-    And I should see "Cualquier fecha"
+    And I should not see "Cualquier fecha"
     And I should not see "All Time"
+    
+    When I follow "Press"
+    Then I should see "Cualquier fecha"
 
   Scenario: No results when searching with active RSS feeds
     Given the following Affiliates exist:
