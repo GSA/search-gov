@@ -13,7 +13,7 @@ Feature: Mobile Search
     And I should see a link to "Text/SMS Services" with url for "http://search.usa.gov/usa/sms"
     And I should see a link to "Español" with url for "http://m.gobiernousa.gov"
     And I should see a link to "USA.gov Full Site" with url for "http://www.usa.gov/?mobile-opt-out=true"
-    
+
   Scenario: Visiting the home page with a tablet (e.g. iPad) device
     Given I am using a tablet device
     And I am on the homepage
@@ -57,16 +57,17 @@ Feature: Mobile Search
     Then I should see a link to "Móvil" with url for "http://m.gobiernousa.gov"
 
   Scenario: A search on the mobile home page
-    Given I am on the homepage
+    Given the following Affiliates exist:
+      | display_name | name   | contact_email | contact_name |
+      | USA.gov      | usagov | aff@usa.gov   | John Bar     |
+    And I am on the homepage
     When I fill in "query" with "social security"
     And I submit the search form
-    Then I should be on the search page
-    And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
+    And I should see "USA.gov Mobile"
     And I should see "Social Security"
     And I should see 3 search results
-    When I follow "USASearch Home"
-    Then I should be on the homepage
-    
+
   Scenario: A search on the home page from a tablet
     Given I am using a tablet device
     And I am on the homepage
