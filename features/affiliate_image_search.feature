@@ -63,9 +63,4 @@ Feature: Affiliate Search
     And I fill in "query" with "camels"
     And I press "Search"
     Then I should see "Images"
-    And I should see "Last hour"
-    
-    When I follow "Images"
-    Then I should see "Press"
     And I should not see "Last hour"
-    
