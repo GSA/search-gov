@@ -11,6 +11,7 @@
       %thead
         %tr
           %th{ :colspan => 4 }
+            = link_to("Export to CSV", crawled_affiliate_on_demand_urls_path(@affiliate, :format => 'csv'), :class => 'header-link last') unless @crawled_urls.empty?
             - unless @crawled_urls.blank?
               %span= page_entries_info @crawled_urls, :entry_name => 'Previously crawled URL', :html => false
       = render :partial => 'crawled_urls', :locals => { :shorten_url_length => 30 }
