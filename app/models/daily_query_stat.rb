@@ -1,11 +1,10 @@
 class DailyQueryStat < ActiveRecord::Base
-  @queue = :high
+  @queue = :low
   validates_presence_of :day, :query, :times, :affiliate, :locale
   validates_uniqueness_of :query, :scope => [:day, :affiliate, :locale]
   before_save :squish_query
   RESULTS_SIZE = 10
   INSUFFICIENT_DATA = "Not enough historic data to compute most popular"
-  MAX_ORPHANS_PER_PASS = 250000
 
   searchable do
     text :query
