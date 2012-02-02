@@ -95,6 +95,13 @@ describe IndexedDocument do
         IndexedDocument.create!(@valid_attributes.merge(:url=>url)).url.should == "http://www.foo.gov/sdfsdf"
       end
     end
+
+    context "when URL is mixed case" do
+      let(:url) { "HTTP://Www.foo.GOV/UsaGovLovesToCapitalize?x=1#anchorme" }
+      it "should downcase the scheme and host only" do
+        IndexedDocument.create!(@valid_attributes.merge(:url=>url)).url.should == "http://www.foo.gov/UsaGovLovesToCapitalize?x=1"
+      end
+    end
   end
 
   it "should enqueue the creation of a IndexedDocument entry via Resque" do

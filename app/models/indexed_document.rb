@@ -151,7 +151,7 @@ class IndexedDocument < ActiveRecord::Base
 
   class << self
     include QueryPreprocessor
-    
+
     def search_for(query, affiliate, page = 1, per_page = 3)
       return if affiliate.nil? or query.blank?
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate.name}) do
@@ -228,15 +228,22 @@ class IndexedDocument < ActiveRecord::Base
 
   def normalize_url
     ensure_http_prefix_on_url
-    remove_anchor_tags_from_url
+    downcase_scheme_and_host_and_remove_anchor_tags
   end
 
   def ensure_http_prefix_on_url
     self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^http://}i
+    @self_url = nil
   end
 
-  def remove_anchor_tags_from_url
-    self.url.sub!(/#.*$/, '') unless self.url.blank?
+  def downcase_scheme_and_host_and_remove_anchor_tags
+    if self_url
+      scheme = self_url.scheme.downcase
+      host = self_url.host.downcase
+      request = self_url.request_uri
+      self.url = "#{scheme}://#{host}#{request}"
+      @self_url = nil
+    end
   end
 
   def site_domain_matches
