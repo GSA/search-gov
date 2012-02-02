@@ -22,7 +22,7 @@ class SaytSuggestion < ActiveRecord::Base
 
   class << self
     include QueryPreprocessor
-    
+
     def search_for(query_str, affiliate_id = nil)
       query = query_str.downcase
       instrument_hash = {:model=> self.name, :term => query_str, :affiliate_id => affiliate_id}
@@ -65,7 +65,7 @@ class SaytSuggestion < ActiveRecord::Base
       all.each do |ss|
         unless WebSearch.results_present_for?(ss.phrase, ss.affiliate)
           Rails.logger.info "Deleting #{ss.phrase} for affiliate #{ss.affiliate.name rescue Affiliate::USAGOV_AFFILIATE_NAME}"
-          ss.delete
+          ss.destroy
         end
       end
     end
@@ -113,7 +113,7 @@ class SaytSuggestion < ActiveRecord::Base
     end
 
     def expire(days_back)
-      delete_all(["updated_at < ? AND is_protected = ?", days_back.days.ago.beginning_of_day.to_s(:db), false])
+      destroy_all(["updated_at < ? AND is_protected = ?", days_back.days.ago.beginning_of_day.to_s(:db), false])
     end
   end
 

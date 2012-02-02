@@ -3,6 +3,6 @@ class FilterSaytSuggestions
 
   def self.perform(phrase)
     sayt_filter = SaytFilter.find_by_phrase(phrase)
-    SaytSuggestion.all.each { |suggestion| suggestion.delete if sayt_filter.match?(suggestion.phrase) } if sayt_filter
+    SaytSuggestion.all.each { |suggestion| suggestion.destroy if sayt_filter.match?(suggestion.phrase) } if sayt_filter
   end
 end

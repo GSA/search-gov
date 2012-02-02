@@ -74,8 +74,8 @@ describe SaytSuggestion do
   end
 
   describe "#expire(days_back)" do
-    it "should delete suggestions that have not been updated in X days, and that are unproteced" do
-      SaytSuggestion.should_receive(:delete_all).with(["updated_at < ? AND is_protected = ?", 30.days.ago.beginning_of_day.to_s(:db), false])
+    it "should destroy suggestions that have not been updated in X days, and that are unproteced" do
+      SaytSuggestion.should_receive(:destroy_all).with(["updated_at < ? AND is_protected = ?", 30.days.ago.beginning_of_day.to_s(:db), false])
       SaytSuggestion.expire(30)
     end
   end
@@ -351,7 +351,7 @@ describe SaytSuggestion do
     before do
       @affiliate = affiliates(:basic_affiliate)
     end
-    
+
     context "for normal queries" do
       before do
         SaytSuggestion.destroy_all
@@ -377,7 +377,7 @@ describe SaytSuggestion do
         SaytSuggestion.search_for("suggestion", @affiliate.id).results.first.popularity.should == 30
       end
     end
-    
+
     context "when a user's query contains a stop word" do
       before do
         SaytSuggestion.destroy_all
@@ -385,21 +385,21 @@ describe SaytSuggestion do
         SaytSuggestion.create!(:phrase => 'health care for america', :popularity => 1, :affiliate => @affiliate)
         SaytSuggestion.reindex
       end
-      
+
       it "should return nothing if the user's query is only a stopword" do
         SaytSuggestion.search_for("it", @affiliate.id).total.should == 0
       end
-      
+
       it "should return all matching suggestions if the user's query contains a non-stopword term" do
         SaytSuggestion.search_for("health", @affiliate.id).total.should == 2
       end
-      
+
       it "should return only suggestions that match a phrase if the user's query contains a valid term and a stopword" do
         suggestions = SaytSuggestion.search_for("health it", @affiliate.id)
         suggestions.total.should == 1
         suggestions.results.first.phrase.should == "health it for america"
       end
-    end    
+    end
   end
 
   describe "#related_search" do
