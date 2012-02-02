@@ -21,7 +21,7 @@ describe IndexedDocument do
   it { should validate_presence_of :url }
   it { should validate_presence_of :affiliate_id }
   it { should allow_value("http://some.site.gov/url").for(:url) }
-  it { should allow_value("http://some.site.mil/url").for(:url) }
+  it { should allow_value("http://some.site.mil/").for(:url) }
   it { should allow_value("http://some.govsite.com/url").for(:url) }
   it { should allow_value("http://some.govsite.us/url").for(:url) }
   it { should allow_value("http://some.govsite.info/url").for(:url) }
@@ -100,6 +100,13 @@ describe IndexedDocument do
       let(:url) { "HTTP://Www.foo.GOV/UsaGovLovesToCapitalize?x=1#anchorme" }
       it "should downcase the scheme and host only" do
         IndexedDocument.create!(@valid_attributes.merge(:url=>url)).url.should == "http://www.foo.gov/UsaGovLovesToCapitalize?x=1"
+      end
+    end
+
+    context "when URL is missing trailing slash for a scheme+host URL" do
+      let(:url) { "http://www.foo.gov" }
+      it "should append a /" do
+        IndexedDocument.create!(@valid_attributes.merge(:url=>url)).url.should == "http://www.foo.gov/"
       end
     end
   end
@@ -728,7 +735,7 @@ describe IndexedDocument do
 
     context "when a file is passed in with 100 or fewer URLs" do
       before do
-        @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
+        @urls = ['http://search.usa.gov/', 'http://usa.gov/', 'http://data.gov/']
         tempfile = Tempfile.new('urls.txt')
         @urls.each do |url|
           tempfile.write(url + "\n")
@@ -792,7 +799,7 @@ describe IndexedDocument do
       IndexedDocument.delete_all
       @file = Tempfile.new('aid_urls.txt')
       @aff = affiliates(:power_affiliate)
-      2.times { @file.puts([@aff.id, 'http://www.usa.gov'].join("\t")) }
+      2.times { @file.puts([@aff.id, 'http://www.usa.gov/'].join("\t")) }
       @file.puts([@aff.id, 'http://www.usa.z/invalid'].join("\t"))
       @file.close
     end
@@ -800,7 +807,7 @@ describe IndexedDocument do
     it "should create new, valid IndexedDocument entries" do
       IndexedDocument.bulk_load_urls(@file.path)
       IndexedDocument.count.should == 1
-      IndexedDocument.find_by_url("http://www.usa.gov", @aff.id).should_not be_nil
+      IndexedDocument.find_by_url("http://www.usa.gov/", @aff.id).should_not be_nil
     end
 
   end
