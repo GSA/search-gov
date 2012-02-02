@@ -49,19 +49,19 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Then I should see the browser page titled "Add a new URL"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs and Sitemaps > Add a new URL
     And I should see "Add a new URL" in the page header
-    When I fill in "URL" with "http://new.url.gov"
+    When I fill in "URL" with "http://new.url.gov/page.html"
     And I press "Add"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs and Sitemaps > Uncrawled URLs
-    And I should see "Successfully added http://new.url.gov."
+    And I should see "Successfully added http://new.url.gov/page.html."
 
-    When the url "http://new.url.gov" has been crawled
+    When the url "http://new.url.gov/page.html" has been crawled
     And I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
     Then I should see "Uncrawled URLs (0)"
-    And I should see "http://new.url.gov" in the previously crawled URL list
+    And I should see "new.url.gov/page.html" in the previously crawled URL list
 
     When I follow "View all" in the previously crawled URL list
-    Then I should see "http://new.url.gov"
+    Then I should see "new.url.gov/page.html"
 
   Scenario: Remove a URL to be crawled
     Given the following Affiliates exist:
@@ -78,7 +78,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Then I should see "Removed http://removeme2.mil"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs & Sitemaps
     When I follow "View all"
-    And I should see "http://removeme.mil"
+    And I should see "removeme.mil"
     When I press "Delete"
     Then I should see "Removed http://removeme.mil"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > URLs and Sitemaps > Uncrawled URLs
@@ -149,11 +149,11 @@ Feature: Affiliate On-Demand Url Indexing Interface
     Then I should see the browser page titled "URLs & Sitemaps"
     And I should see "Removed http://removeme.mil"
     When I follow "View all"
-    Then I should see "http://removeme2.mil"
+    Then I should see "removeme2.mil"
     When I press "Delete"
     Then I should see the browser page titled "Previously Crawled URLs"
     And I should see "Removed http://removeme2.mil"
-    
+
   Scenario: Exporting crawled urls to CSV
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -171,7 +171,7 @@ Feature: Affiliate On-Demand Url Indexing Interface
     And I should see "http://aff.gov/1.html,No. 1,Number 1,html,2012-01-19 00:00:00 UTC,OK"
     And I should see "http://aff.gov/2.html,No. 2,Number 2,html,2012-01-19 00:00:00 UTC,OK"
     And I should not see "http://aff.gov/3.html"
-    
+
     When I go to the affiliate admin page with "aff.gov" selected
     And I follow "URLs & Sitemaps"
     And I follow "View all" within ".crawled-url-list"
