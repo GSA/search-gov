@@ -848,4 +848,11 @@ describe SearchHelper do
       end
     end
   end
+
+  describe "#translate_bing_highlights" do
+    let(:excluded_terms) { %w(.mil .gov) }
+    let(:body_with_regex_special_character) { "\xEE\x80\x80[Mil\xEE\x80\x81 \xEE\x80\x80.Mil\xEE\x80\x81 .gov" }
+
+    specify { helper.translate_bing_highlights(body_with_regex_special_character, excluded_terms).should == "<strong>[Mil</strong> .Mil .gov" }
+  end
 end

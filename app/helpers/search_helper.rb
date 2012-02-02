@@ -243,8 +243,8 @@ module SearchHelper
 
   def translate_bing_highlights(body, excluded_terms = [])
     excluded_terms.each do |term|
-      body.scan(/#{term}/i).each do |term_variant|
-        body.gsub!(/\xEE\x80\x80#{term_variant}\xEE\x80\x81/, term_variant)
+      body.scan(/#{Regexp.escape(term)}/i).each do |term_variant|
+        body.gsub!(/\xEE\x80\x80#{Regexp.escape(term_variant)}\xEE\x80\x81/, term_variant)
       end
     end
     body.gsub(/\xEE\x80\x80/, '<strong>').gsub(/\xEE\x80\x81/, '</strong>')
