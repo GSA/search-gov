@@ -85,7 +85,7 @@ module AffiliateHelper
   def render_affiliate_body_class(affiliate)
     classes = ''
     if affiliate.uses_one_serp?
-      classes << "default #{I18n.locale} "
+      classes << "one-serp default #{I18n.locale} "
       classes << 'with-content-border ' if affiliate.show_content_border?
       classes << 'with-content-box-shadow ' if affiliate.show_content_box_shadow?
     else

@@ -137,7 +137,6 @@ body
       size: 13px
       weight: normal
     height: 20px
-    letter-spacing: 1px
     outline: 0
     padding: 4px 0 4px $results-padding-size - 1
     width: 545px
@@ -303,37 +302,40 @@ body
       li
         float: left
         line-height: 1.2
-        margin: 0
+        margin: 0 0 3px 0
         padding: 0
     &.one-column-with-image
       .image
         width: 125px
       ul
         margin: 0 0 0 10px
-        width: 500px
+        width: 490px
       li
         clear: left
-        margin: 0
+        width: 100%
     &.one-column-without-image
       li
         clear: left
+        width: 100%
     &.two-column-with-image
       .image
         width: 100px
       ul
         margin: 0 0 0 10px
-        width: 520px
+        width: 515px
       li
-        width: 50%
+        width: 49%
       li.left
         clear: left
+        margin-right: 5px
     &.two-column-without-image
       ul
-        width: 630px
+        width: 100%
       li
-        width: 50%
+        width: 49%
       li.left
         clear: left
+        margin-right: 5px
 
 @import "govbox"
 
