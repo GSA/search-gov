@@ -24,6 +24,7 @@ class IndexedDocument < ActiveRecord::Base
   TRUNCATED_DESC_LENGTH = 250
   MAX_URLS_PER_FILE_UPLOAD = 100
   MAX_PDFS_DISCOVERED_PER_HTML_PAGE = 1000
+  DOWNLOAD_TIMEOUT_SECS = 15
   OK_STATUS = "OK"
   EMPTY_BODY_STATUS = "No content found in document"
   DOMAIN_MISMATCH_STATUS = "URL doesn't match affiliate's site domains"
@@ -58,22 +59,25 @@ class IndexedDocument < ActiveRecord::Base
   def fetch
     site_domain_matches
     destroy and return unless errors.empty?
+    file = nil
     begin
-      file = open(url)
-      content_type = file.content_type
-      if file.is_a?(StringIO)
-        tempfile = Tempfile.new(Time.now.to_i)
-        tempfile.write(file.string)
-        tempfile.close
-        file = tempfile
+      timeout(DOWNLOAD_TIMEOUT_SECS) do
+        file = open(url)
+        content_type = file.content_type
+        if file.is_a?(StringIO)
+          tempfile = Tempfile.new(Time.now.to_i)
+          tempfile.write(file.string)
+          tempfile.close
+          file = tempfile
+        end
+        index_document(file, content_type)
+        update_content_hash
       end
-      index_document(file, content_type)
-      update_content_hash
     rescue Exception => e
       message = e.message.starts_with?("redirection forbidden") ? "Redirection forbidden from HTTP to HTTPS" : e.message
       update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => message, :content_hash => nil) rescue destroy
     ensure
-      File.delete(file) unless file.nil?
+      File.delete(file) rescue nil
     end
   end
 
@@ -191,7 +195,7 @@ class IndexedDocument < ActiveRecord::Base
     end
 
     def refresh_all
-      all(:select=>:id).each { |indexed_document_fragment| Resque.enqueue(IndexedDocumentFetcher, indexed_document_fragment.id) }
+      all(:select => :id).each { |indexed_document_fragment| Resque.enqueue(IndexedDocumentFetcher, indexed_document_fragment.id) }
     end
 
     def bulk_load_urls(file_path)

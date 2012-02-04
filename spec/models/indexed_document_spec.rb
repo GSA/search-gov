@@ -323,11 +323,6 @@ describe IndexedDocument do
         indexed_document.last_crawl_status.should == "404 Document Not Found"
         indexed_document.content_hash.should be_nil
       end
-
-      it "should not attempt to clean up the nil file descriptor" do
-        File.should_not_receive(:delete)
-        indexed_document.fetch
-      end
     end
 
     context "when there is a problem following a redirect from HTTP to HTTPS" do
@@ -335,7 +330,7 @@ describe IndexedDocument do
         indexed_document.stub!(:open).and_raise Exception.new("redirection forbidden: http://www.ncjrs.gov/pdffiles1/nij/grants/215340.pdf -> https://www.ncjrs.gov/pdffiles1/nij/grants/215340.pdf")
       end
 
-      it "should update the url with last crawled date and error message and set the hash to nil" do
+      it "should update the last_crawl_status accordingly" do
         indexed_document.fetch
         indexed_document.last_crawl_status.should == "Redirection forbidden from HTTP to HTTPS"
       end
