@@ -149,13 +149,13 @@ describe SaytSuggestion do
 
       it "should create unprotected suggestions" do
         SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current)
-        SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term1", 2).is_protected.should be_false
+        SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "today term1").is_protected.should be_false
       end
 
       it "should populate SaytSuggestions based on each DailyQueryStat for the given day" do
         SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current)
-        SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term1", 2).should_not be_nil
-        SaytSuggestion.find_by_affiliate_id_and_phrase_and_popularity(nil, "today term2", 2).should_not be_nil
+        SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "today term1").should_not be_nil
+        SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "today term2").should_not be_nil
         SaytSuggestion.find_by_phrase("yesterday term1").should be_nil
       end
 
@@ -223,12 +223,12 @@ describe SaytSuggestion do
       before do
         @affiliate = affiliates(:power_affiliate)
         SaytSuggestion.create!(:phrase => "already here", :popularity => 10, :affiliate_id => @affiliate.id)
-        DailyQueryStat.create!(:day => Date.current, :query => "already here", :times => 2, :affiliate => @affiliate.name)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "already here", :times => 2, :affiliate => @affiliate.name)
         WebSearch.stub!(:results_present_for?).and_return true
       end
 
       it "should update the popularity field with the new count" do
-        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.current)
+        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.yesterday)
         SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "already here").popularity.should == 2
       end
     end
