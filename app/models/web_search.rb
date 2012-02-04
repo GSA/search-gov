@@ -23,7 +23,7 @@ class WebSearch < Search
               :indexed_results,
               :matching_site_limit
 
-  class << self    
+  class << self
     def suggestions(affiliate_id, sanitized_query, num_suggestions = 15)
       corrected_query = Misspelling.correct(sanitized_query)
       suggestions = SaytSuggestion.like(affiliate_id, corrected_query, num_suggestions) || []
@@ -34,24 +34,24 @@ class WebSearch < Search
       search = new(:query => query, :affiliate => affiliate, :filter_setting => filter_setting)
       search.run
       spelling_ok = is_misspelling_allowed ? true : (search.spelling_suggestion.nil? or search.spelling_suggestion.fuzzily_matches?(query))
-      return (search.results.present? && spelling_ok)
+      search.results.present? && spelling_ok
     end
   end
-  
+
   def initialize(options = {})
     super(options)
     @offset = (@page - 1) * @per_page
     @fedstates = options[:fedstates] || nil
-    
+
     @bing_search = BingSearch.new(USER_AGENT)
     @filter_setting = BingSearch::VALID_FILTER_VALUES.include?(options[:filter] || "invalid adult filter") ? options[:filter] : BingSearch::DEFAULT_FILTER_SETTING
     @enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
     @sources = bing_sources
     @formatted_query = generate_formatted_query
-    
+
     @related_search = []
   end
-  
+
   def cache_key
     [@formatted_query, @sources, @offset, @per_page, @enable_highlighting, @filter_setting].join(':')
   end
@@ -99,13 +99,13 @@ class WebSearch < Search
   def are_results_by_bing?
     self.indexed_results.nil? ? true : false
   end
-  
+
   protected
-  
+
   def build_query(options)
     query = ''
     if options[:query].present?
-      options[:query].downcase! if options[:query][-3, options[:query].size] == " OR"
+      options[:query].downcase! if options[:query].ends_with? " OR"
       query += options[:query].split.collect { |term| limit_field(options[:query_limit], term) }.join(' ')
     end
 
@@ -129,7 +129,7 @@ class WebSearch < Search
     query += " #{options[:site_excludes].split.collect { |site| '-site:' + site }.join(' ')}" unless options[:site_excludes].blank?
     query.strip
   end
-  
+
   def limit_field(field_name, term)
     if field_name.blank?
       term
@@ -155,13 +155,13 @@ class WebSearch < Search
       false
     end
   end
-  
+
   def perform_odie_search
     odie_search = OdieSearch.new(@options)
     odie_search.run
     @indexed_results = odie_search
   end
-  
+
   def perform_bing_search
     response_body = @@redis.get(cache_key) rescue nil
     return response_body unless response_body.nil?
@@ -171,7 +171,7 @@ class WebSearch < Search
       response
     end
   end
-  
+
   def parse_bing_response(response_body)
     begin
       json = JSON.parse(response_body)
@@ -188,7 +188,7 @@ class WebSearch < Search
       handle_bing_response(response)
     end
   end
-  
+
   def handle_odie_response(response)
     unless response.nil? and response.total > 0
       @total = response.total
@@ -197,7 +197,7 @@ class WebSearch < Search
       @endrecord = response.endrecord
     end
   end
-  
+
   def handle_bing_response(response)
     @total = hits(response)
     if @total.zero?
@@ -212,7 +212,7 @@ class WebSearch < Search
     end
     @related_search = related_search_results
   end
-  
+
   def hits(response)
     (response.web.results.blank? ? 0 : response.web.total) rescue 0
   end
@@ -220,7 +220,7 @@ class WebSearch < Search
   def bing_offset(response)
     (response.web.results.blank? ? 0 : response.web.offset) rescue 0
   end
-  
+
   def process_results(response)
     process_web_results(response)
   end
@@ -265,14 +265,14 @@ class WebSearch < Search
       }
     end
   end
-  
+
   def spelling_results(response)
     did_you_mean_suggestion = response.spell.results.first.value rescue nil
     cleaned_suggestion_without_bing_highlights = strip_extra_chars_from(did_you_mean_suggestion)
     cleaned_query = strip_extra_chars_from(@query)
     cleaned_suggestion_without_bing_highlights == cleaned_query ? nil : cleaned_suggestion_without_bing_highlights
   end
-  
+
   def related_search_results
     SaytSuggestion.related_search(@query, @affiliate)
   end
@@ -298,7 +298,7 @@ class WebSearch < Search
       @extra_image_results = process_image_results(response)
     end
   end
-  
+
   def log_serp_impressions
     modules = []
     modules << (self.class.to_s == "ImageSearch" ? "IMAG" : "BWEB") unless self.total.zero?
@@ -320,7 +320,7 @@ class WebSearch < Search
       end
     QueryImpression.log(vertical, affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : affiliate.name, self.query, modules)
   end
-  
+
   def english_locale?
     I18n.locale.to_s == 'en'
   end
@@ -333,7 +333,7 @@ class WebSearch < Search
   def generate_formatted_query
     [query_plus_locale, scope].join(' ').strip
   end
-  
+
   def query_plus_locale
     "(#{query}) #{locale}".strip.squeeze(' ')
   end
@@ -355,7 +355,7 @@ class WebSearch < Search
   end
 
   def generate_affiliate_scope
-    domains = fill_domains_to_remainder unless @query =~ /site:/
+    domains = (@query =~ /site:/) ? nil : fill_domains_to_remainder
     scope_ids = affiliate.scope_ids_as_array.collect { |scope| "scopeid:" + scope }.join(" OR ")
     affiliate_scope = ""
     affiliate_scope = "(" unless scope_ids.blank? and domains.blank?
@@ -379,7 +379,7 @@ class WebSearch < Search
     end unless affiliate.domains_as_array.blank?
     "#{domains.join(delimiter)}"
   end
-  
+
   def url_is_excluded(url)
     parsed_url = URI::parse(url) rescue nil
     return true if parsed_url and ExcludedDomain.all.any? { |excluded_domain| parsed_url.host.ends_with(excluded_domain.domain) }

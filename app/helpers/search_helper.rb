@@ -116,7 +116,7 @@ module SearchHelper
       end
       popular_links << content_tag(:li, display_agency_popular_url(title, popular_url.url, search, affiliate, index, vertical))
     end
-    html = content_tag(:ul, raw(popular_links))
+    content_tag(:ul, raw(popular_links))
   end
 
   def display_agency_popular_url(title, url, search, affiliate, position, vertical)
@@ -174,7 +174,7 @@ module SearchHelper
 
   def display_medline_topic_with_click_tracking(med_topic, query, locale, affiliate)
     onmousedown = onmousedown_for_click(query, 0, nil, 'MEDL', Time.now.to_i, :web)
-    affiliate_name = affiliate.name if affiliate
+    affiliate_name = affiliate.nil? ? nil : affiliate.name
     raw "<a href=\"#{h search_path(:affiliate => affiliate_name, :query => med_topic.medline_title, :locale => locale)}\" #{onmousedown}>#{med_topic.medline_title}</a>"
   end
 
@@ -301,7 +301,7 @@ module SearchHelper
     content << content_tag(:li, "#{agency.phone} (#{t :agency_phone_label})") if agency.phone.present?
     content << content_tag(:li, "#{agency.toll_free_phone} (#{t :agency_toll_free_phone_label})") if agency.toll_free_phone.present?
     content << content_tag(:li, "#{agency.tty_phone} (#{t :agency_tty_phone_label})") if agency.tty_phone.present?
-    return content_tag :ul, content.html_safe
+    content_tag :ul, content.html_safe
   end
 
   def display_agency_social_media_links(agency)

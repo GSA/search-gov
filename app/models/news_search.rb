@@ -18,9 +18,9 @@ class NewsSearch < Search
   def search
     rss_feeds = @rss_feed ? [@rss_feed] : @affiliate.active_rss_feeds
     excluded_urls = @affiliate.nil? ? [] : @affiliate.excluded_urls.collect{|url| url.url}
-    news_search = NewsItem.search_for(@query, rss_feeds, @since, @page, excluded_urls)
+    NewsItem.search_for(@query, rss_feeds, @since, @page, excluded_urls)
   end
-  
+
   def handle_response(response)
     if response
       @results = response.results

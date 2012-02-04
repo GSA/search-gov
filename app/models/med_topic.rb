@@ -1,10 +1,10 @@
 class MedTopic < ActiveRecord::Base
-  MEDLINE_BASE_URL                = "http://www.nlm.nih.gov/medlineplus/"
-  MEDLINE_BASE_VOCAB_URL          = MEDLINE_BASE_URL + "xml/vocabulary/"
+  MEDLINE_BASE_URL = "http://www.nlm.nih.gov/medlineplus/"
+  MEDLINE_BASE_VOCAB_URL = MEDLINE_BASE_URL + "xml/vocabulary/"
   ACCEPTABLE_SYMMARY_URL_PREFIXES = [MEDLINE_BASE_URL]
-  SATURDAY                        = 6
-  DAYS_PER_WEEK                   = 7
-  SUPPORTED_LOCALES               = ["en", "es"]
+  SATURDAY = 6
+  DAYS_PER_WEEK = 7
+  SUPPORTED_LOCALES = ["en", "es"]
   MESH_TITLE_SEPARATOR = ":"
 
   validates_presence_of :medline_tid, :medline_title, :locale
@@ -36,32 +36,32 @@ class MedTopic < ActiveRecord::Base
     def tmp_dir
       dir_path = ::Rails.root.join('tmp', 'medline')
       FileUtils.mkdir_p(dir_path) unless File.exist? dir_path
-      return dir_path
+      dir_path
     end
 
     def saturday_on_or_before(date)
       day_of_week = date.wday
       most_recent_saturday = if day_of_week >= SATURDAY
-                               date - day_of_week + SATURDAY
-                             else
-                               date - day_of_week - DAYS_PER_WEEK + SATURDAY
-                             end
-      return most_recent_saturday
+        date - day_of_week + SATURDAY
+      else
+        date - day_of_week - DAYS_PER_WEEK + SATURDAY
+      end
+      most_recent_saturday
     end
 
     def xml_base_name_for_date(date = nil)
       effective_date = date.nil? ? saturday_on_or_before(Date.current) : date
-      return "mplus_vocab_#{effective_date.strftime("%Y-%m-%d")}"
+      "mplus_vocab_#{effective_date.strftime("%Y-%m-%d")}"
     end
 
     def medline_xml_for_date(date = nil)
-      vocab_xml_fns             = "#{xml_base_name_for_date(date)}.xml"
+      vocab_xml_fns = "#{xml_base_name_for_date(date)}.xml"
       cached_data_path_incoming = cached_file_path("#{vocab_xml_fns}-incoming")
-      cached_data_path          = cached_file_path(vocab_xml_fns)
+      cached_data_path = cached_file_path(vocab_xml_fns)
       return File.read(cached_data_path) if File.exist?(cached_data_path)
 
       vocab_xml_url = "#{MEDLINE_BASE_VOCAB_URL}#{vocab_xml_fns}"
-      remote_data   = Net::HTTP.get_response(URI.parse(vocab_xml_url)).body
+      remote_data = Net::HTTP.get_response(URI.parse(vocab_xml_url)).body
       @@fetch_count += 1
       File.open(cached_data_path_incoming, "w") { |cached_data_file| cached_data_file.write(remote_data) }
       File.rename(cached_data_path_incoming, cached_data_path)
@@ -73,30 +73,30 @@ class MedTopic < ActiveRecord::Base
     end
 
     def dump_db_vocab
-      topics = { }
-      groups = { }
+      topics = {}
+      groups = {}
       all.each { |topic|
         lm_topic = topic.lang_mapped_topic
         topics[topic.medline_tid] = {
-            :medline_title  => topic.medline_title,
-            :medline_url    => topic.medline_url,
-            :mesh_titles    => topic.mesh_titles,
-            :summary_html   => topic.summary_html,
-            :locale         => topic.locale,
-            :synonyms       => [],
-            :related_topics => [],
-            :related_groups => [],
-            :lang_map       => if lm_topic.nil?
-                                 nil
-                               else
-                                 lm_topic.medline_tid
-                               end
+          :medline_title => topic.medline_title,
+          :medline_url => topic.medline_url,
+          :mesh_titles => topic.mesh_titles,
+          :summary_html => topic.summary_html,
+          :locale => topic.locale,
+          :synonyms => [],
+          :related_topics => [],
+          :related_groups => [],
+          :lang_map => if lm_topic.nil?
+            nil
+          else
+            lm_topic.medline_tid
+          end
         }
       }
       MedSynonym.all.each { |synonym|
         topics[synonym.topic.medline_tid][:synonyms] << synonym.medline_title unless synonym.topic.nil?
       }
-      MedTopicRelated.find(:all).each { |r|
+      MedTopicRelated.all.each { |r|
         relator_medline_tid = r.topic.medline_tid
         related_medline_tid = r.related_topic.medline_tid
         if topics.key? relator_medline_tid
@@ -104,12 +104,12 @@ class MedTopic < ActiveRecord::Base
         end
       }
 
-      MedGroup.find(:all).each { |group|
-        groups[group.medline_gid] = { } unless groups.key? group.medline_gid
-        groups[group.medline_gid][group.locale] = { :medline_title => group.medline_title, :medline_url => group.medline_url }
+      MedGroup.all.each { |group|
+        groups[group.medline_gid] = {} unless groups.key? group.medline_gid
+        groups[group.medline_gid][group.locale] = {:medline_title => group.medline_title, :medline_url => group.medline_url}
       }
 
-      MedTopicGroup.find(:all).each { |vg|
+      MedTopicGroup.all.each { |vg|
         topic_medline_tid = vg.topic.medline_tid
         group_medline_gid = vg.group.medline_gid
         if topics.key? topic_medline_tid
@@ -117,28 +117,28 @@ class MedTopic < ActiveRecord::Base
         end
       }
 
-      { :topics => topics, :groups => groups }
+      {:topics => topics, :groups => groups}
     end
 
     def delta_medline_vocab(have, want)
 
-      have ||= { :topics => { }, :groups => { } }
-      want ||= { :topics => { }, :groups => { } }
+      have ||= {:topics => {}, :groups => {}}
+      want ||= {:topics => {}, :groups => {}}
 
-      wanted_topic_tids = (want[:topics]||{ }).keys.sort
-      wanted_group_tids = (want[:groups]||{ }).keys.sort
-      have_topic_tids   = (have[:topics]||{ }).keys.sort
-      have_group_tids   = (have[:groups]||{ }).keys.sort
+      wanted_topic_tids = (want[:topics]||{}).keys.sort
+      wanted_group_tids = (want[:groups]||{}).keys.sort
+      have_topic_tids = (have[:topics]||{}).keys.sort
+      have_group_tids = (have[:groups]||{}).keys.sort
 
-      todo = { }
+      todo = {}
 
       wanted_topic_tids.each { |topic_tid|
         wanted_topic_atts = want[:topics][topic_tid]
-        have_topic_atts   = have[:topics][topic_tid]
+        have_topic_atts = have[:topics][topic_tid]
         if have_topic_atts.nil?
-          (todo[:create_topic] ||= { })[{ :medline_tid => topic_tid }] = wanted_topic_atts
+          (todo[:create_topic] ||= {})[{:medline_tid => topic_tid}] = wanted_topic_atts
         else
-          changed_atts = { }
+          changed_atts = {}
           wanted_topic_atts.each { |att_name, want_att_value|
             have_att_value = have_topic_atts[att_name]
             unless want_att_value === have_att_value
@@ -146,42 +146,41 @@ class MedTopic < ActiveRecord::Base
             end
           }
           unless changed_atts.empty?
-            (todo[:update_topic] ||= { })[{ :medline_tid => topic_tid }] = changed_atts
+            (todo[:update_topic] ||= {})[{:medline_tid => topic_tid}] = changed_atts
           end
         end
       }
 
       have_topic_tids.each { |topic_tid|
-        have_topic_atts = have[:topics][topic_tid]
         unless want[:topics].key? topic_tid
-          (todo[:delete_topic] ||= []) << { :medline_tid => topic_tid }
+          (todo[:delete_topic] ||= []) << {:medline_tid => topic_tid}
         end
       }
 
       wanted_group_tids.each { |group_gid|
 
         wanted_group_locale_map = want[:groups][group_gid]
-        have_group_locale_map   = have[:groups][group_gid]
+        have_group_locale_map = have[:groups][group_gid]
 
         SUPPORTED_LOCALES.each { |locale|
 
           have_group_atts = if have_group_locale_map.nil?
-                              nil
-                            else
-                              have_group_locale_map[locale]
-                            end
+            nil
+          else
+            have_group_locale_map[locale]
+          end
 
           wanted_group_atts = wanted_group_locale_map[locale]
 
           if have_group_atts.nil?
             unless wanted_group_atts.nil?
-              (todo[:create_group] ||= { })[{ :medline_gid => group_gid, :locale => locale }] = wanted_group_atts
+              (todo[:create_group] ||= {})[{:medline_gid => group_gid, :locale => locale}] = wanted_group_atts
             end
           else
             if wanted_group_atts.nil?
-              (todo[:delete_group] ||= []) << { :medline_gid => group_gid, :locale => locale }
+              (todo[:delete_group] ||= []) << {:medline_gid => group_gid, :locale => locale}
             else
-              changed_atts = { }
+              changed_atts = {}
               wanted_group_atts.each { |att_name, want_att_value|
                 have_att_value = have_group_atts[att_name]
                 unless want_att_value === have_att_value
@@ -189,7 +188,7 @@ class MedTopic < ActiveRecord::Base
                 end
               }
               unless changed_atts.empty?
-                (todo[:update_group] ||= { })[{ :medline_gid => group_gid, :locale => locale }] = changed_atts
+                (todo[:update_group] ||= {})[{:medline_gid => group_gid, :locale => locale}] = changed_atts
               end
             end
 
@@ -204,13 +203,13 @@ class MedTopic < ActiveRecord::Base
           have_group_locale_map = have[:groups][group_gid]
           SUPPORTED_LOCALES.each { |locale|
             if have_group_locale_map.key? locale
-              (todo[:delete_group] ||= []) << { :medline_gid => group_gid, :locale => locale }
+              (todo[:delete_group] ||= []) << {:medline_gid => group_gid, :locale => locale}
             end
           }
         end
       }
 
-      return todo
+      todo
     end
 
     def parse_medline_xml_meshheads(root)
@@ -223,30 +222,30 @@ class MedTopic < ActiveRecord::Base
           end
         end
       end
-      return mesh_heads
+      mesh_heads
     end
 
     def parse_medline_xml_vocab(xml)
       xml_doc = Nokogiri::XML(xml)
-      topics = { }
-      groups = { }
+      topics = {}
+      groups = {}
       xml_doc.xpath("//MedicalTopic").each { |topic_node|
         tid = topic_node.at_xpath('ID').text.to_i rescue nil
         lang = topic_node["langcode"] rescue "English"
-        locale = { "Spanish" => 'es', "English" => 'en' }[lang] || 'en'
+        locale = {"Spanish" => 'es', "English" => 'en'}[lang] || 'en'
         medline_title = topic_node.at_xpath("MedicalTopicName").text rescue nil
         medline_url = topic_node.at_xpath("URL").text rescue nil
         lmtid = topic_node.at_xpath('LanguageMappedTopicID').text.to_i rescue nil
         summary = topic_node.at_xpath("FullSummary")
         linted_summary = if summary.nil?
-                           nil
-                         else
-                           lint_medline_topic_summary_html(summary.text) { |msg|
-                             yield(tid, msg) if block_given?
-                           }
-                         end
+          nil
+        else
+          lint_medline_topic_summary_html(summary.text) { |msg|
+            yield(tid, msg) if block_given?
+          }
+        end
         syns_node = topic_node.at_xpath("Synonyms")
-        synonyms  = []
+        synonyms = []
         unless syns_node.nil?
           syns_node.xpath("Synonym").each { |syn| synonyms << syn.text.strip }
           synonyms
@@ -257,23 +256,23 @@ class MedTopic < ActiveRecord::Base
           groups_node.xpath("Group").each { |group_node|
             gid = group_node.at_xpath("GroupID").text.to_i rescue nil
             group_name = group_node.at_xpath("GroupName").text.strip
-            group_url  = group_node.at_xpath("GroupURL").text.strip
-            groups[gid] = { } unless groups.key? gid
-            groups[gid][locale] = { :medline_title => group_name, :medline_url => group_url }
+            group_url = group_node.at_xpath("GroupURL").text.strip
+            groups[gid] = {} unless groups.key? gid
+            groups[gid][locale] = {:medline_title => group_name, :medline_url => group_url}
             related_gids << gid
           }
         end
         related_topics_node = topic_node.at_xpath("RelatedTopics")
         related_tids = if related_topics_node.nil?
-                         []
-                       else
-                         rtids = []
-                         related_topics_node.xpath("RelatedTopic").each { |related_topic_node|
-                           rtid = related_topic_node['IDREF'][1..-1].to_i rescue nil
-                           rtids << rtid unless rtid.nil?
-                         }
-                         rtids
-                       end
+          []
+        else
+          rtids = []
+          related_topics_node.xpath("RelatedTopic").each { |related_topic_node|
+            rtid = related_topic_node['IDREF'][1..-1].to_i rescue nil
+            rtids << rtid unless rtid.nil?
+          }
+          rtids
+        end
         mesh_heads = parse_medline_xml_meshheads(topic_node)
         if mesh_heads.empty?
           # note: only go after first SeeReference
@@ -281,42 +280,32 @@ class MedTopic < ActiveRecord::Base
         end
         mesh_titles = mesh_heads.join(MESH_TITLE_SEPARATOR)
         topics[tid] = {
-            :medline_title  => medline_title,
-            :locale         => locale,
-            :lang_map       => lmtid,
-            :synonyms       => synonyms.sort,
-            :summary_html   => linted_summary,
-            :medline_url    => medline_url,
-            :mesh_titles    => mesh_titles,
-            :related_groups => related_gids.sort,
-            :related_topics => related_tids.sort
+          :medline_title => medline_title,
+          :locale => locale,
+          :lang_map => lmtid,
+          :synonyms => synonyms.sort,
+          :summary_html => linted_summary,
+          :medline_url => medline_url,
+          :mesh_titles => mesh_titles,
+          :related_groups => related_gids.sort,
+          :related_topics => related_tids.sort
         }
       }
-      return { :topics => topics, :groups => groups }
+      {:topics => topics, :groups => groups}
     end
 
     def ensym_string_keys(o)
       if o.is_a? Hash
-        new_hash = { }
+        new_hash = {}
         o.each { |key, value|
-
-          key = if key =~ /\d+/
-                  key.to_i
-                else
-                  key.to_sym
-                end
-
-          new_hash[key] = if value.kind_of? Hash
-                            ensym_string_keys(value)
-                          else
-                            value
-                          end
+          key = (key =~ /\d+/) ? key.to_i : key.to_sym
+          new_hash[key] = (value.kind_of? Hash) ? ensym_string_keys(value) : value
         }
         o = new_hash
       elsif o.is_a? Array
         o = o.collect { |entry| ensym_string_keys(entry) }
       end
-      return o
+      o
     end
 
 
@@ -334,18 +323,18 @@ class MedTopic < ActiveRecord::Base
           yield("only text allowed here: #{child.to_s}") if block_given?
         end
       }
-      return linted_xml
+      linted_xml
     end
 
 
     def acceptable_summary_url?(url)
       begin
         URI::parse(url)
-      rescue Exception => e
+      rescue Exception
         return false
       end
       ACCEPTABLE_SYMMARY_URL_PREFIXES.each { |prefix| return true if url.start_with? prefix }
-      return false
+      false
     end
 
 
@@ -355,7 +344,6 @@ class MedTopic < ActiveRecord::Base
         if [Nokogiri::XML::Node::TEXT_NODE, Nokogiri::XML::Node::ENTITY_REF_NODE].include? child.node_type
           linted_xml << child.to_xml.gsub(/\s+/, " ")
         elsif child.elem?
-          tag_name = child.name
           if child.name == "a"
             if child.attributes.size == 1 && child['href']
               href_url = child['href']
@@ -387,7 +375,7 @@ class MedTopic < ActiveRecord::Base
           end
         end
       }
-      return linted_xml.strip
+      linted_xml.strip
     end
 
 
@@ -449,15 +437,13 @@ class MedTopic < ActiveRecord::Base
         end
       }
 
-      return linted_xml
+      linted_xml
     end
 
 
     def lint_medline_topic_summary_html(unlinted_xml)
 
       return nil if unlinted_xml.nil?
-
-      xml_root = nil
 
       begin
         xml_root = Nokogiri::XML.fragment(unlinted_xml)
@@ -473,13 +459,13 @@ class MedTopic < ActiveRecord::Base
 
     def apply_vocab_delta(deltas)
 
-      synonyms           = { }
-      related_topics     = { }
-      related_groups     = { }
-      lang_mapped_topics = { }
+      synonyms = {}
+      related_topics = {}
+      related_groups = {}
+      lang_mapped_topics = {}
 
       (deltas[:delete_group] || []).each { |group_key|
-        group = MedGroup.find(:first, :conditions => group_key)
+        group = MedGroup.first(:conditions => group_key)
         unless group.nil?
           group.topic_relaters.delete_all
           group.delete
@@ -487,7 +473,7 @@ class MedTopic < ActiveRecord::Base
       }
 
       (deltas[:delete_topic] || []).each { |topic_key|
-        topic = find(:first, :conditions => topic_key)
+        topic = first(:conditions => topic_key)
         unless topic.nil?
           topic.synonyms.delete_all
           topic.group_relatees.delete_all
@@ -497,34 +483,34 @@ class MedTopic < ActiveRecord::Base
         end
       }
 
-      (deltas[:create_group] || { }).each { |group_key, group_atts|
+      (deltas[:create_group] || {}).each { |group_key, group_atts|
         new_group_atts = group_key.clone
         group_atts.each { |name, value| new_group_atts[name] = value }
         MedGroup.create(new_group_atts)
       }
 
-      (deltas[:create_topic] || { }).each { |topic_key, topic_atts|
-        new_atts           = topic_key.clone
-        new_synonyms       = []
+      (deltas[:create_topic] || {}).each { |topic_key, topic_atts|
+        new_atts = topic_key.clone
+        new_synonyms = []
         new_related_topics = []
         new_related_groups = []
-        new_lmtid          = nil
+        new_lmtid = nil
         topic_atts.each { |name, value|
           case name
-          when :synonyms :
-            new_synonyms = value
-          when :related_topics :
-            new_related_topics = value
-          when :related_groups :
-            new_related_groups = value
-          when :lang_map :
-            new_lmtid = value unless value.nil?
-          else
-            new_atts[name] = value
+            when :synonyms :
+              new_synonyms = value
+            when :related_topics :
+              new_related_topics = value
+            when :related_groups :
+              new_related_groups = value
+            when :lang_map :
+              new_lmtid = value unless value.nil?
+            else
+              new_atts[name] = value
           end
         }
 
-        new_topic                     = create!(new_atts)
+        new_topic = create!(new_atts)
         lang_mapped_topics[new_topic] = new_lmtid
 
         # only need to patch these in if there are any
@@ -533,9 +519,9 @@ class MedTopic < ActiveRecord::Base
         related_groups[new_topic] = new_related_groups unless new_related_groups.empty?
       }
 
-      (deltas[:update_group] || { }).each { |group_key, changed_group_atts|
+      (deltas[:update_group] || {}).each { |group_key, changed_group_atts|
         unless changed_group_atts.empty?
-          group = MedGroup.find(:first, :conditions => group_key)
+          group = MedGroup.first(:conditions => group_key)
           unless group.nil?
             group.attributes = changed_group_atts
             group.save
@@ -543,24 +529,24 @@ class MedTopic < ActiveRecord::Base
         end
       }
 
-      (deltas[:update_topic] || { }).each { |topic_key, topic_atts|
+      (deltas[:update_topic] || {}).each { |topic_key, topic_atts|
         unless topic_atts.empty?
           topic = find(:first, :conditions => topic_key)
           unless topic.nil?
-            changed_topic_atts = { }
+            changed_topic_atts = {}
             topic_atts.each { |name, value|
               case name
-              when :synonyms :
-                synonyms[topic] = value
-              when :related_topics :
-                related_topics[topic] = value
-              when :related_groups :
-                related_groups[topic] = value
-              when :lang_map :
-                lang_mapped_topics[topic] = value unless (value.nil? && topic.lang_mapped_topic.nil?)
-              when :medline_tid :
-              else
-                changed_topic_atts[name] = value
+                when :synonyms :
+                  synonyms[topic] = value
+                when :related_topics :
+                  related_topics[topic] = value
+                when :related_groups :
+                  related_groups[topic] = value
+                when :lang_map :
+                  lang_mapped_topics[topic] = value unless (value.nil? && topic.lang_mapped_topic.nil?)
+                when :medline_tid :
+                else
+                  changed_topic_atts[name] = value
               end
             }
             unless changed_topic_atts.empty?
@@ -576,7 +562,7 @@ class MedTopic < ActiveRecord::Base
 
       synonyms.each { |topic, syns|
         topic.synonyms.delete_all
-        syns.each { |syn| topic.synonyms.create({ :medline_title => syn }) }
+        syns.each { |syn| topic.synonyms.create({:medline_title => syn}) }
       }
 
 
@@ -585,8 +571,8 @@ class MedTopic < ActiveRecord::Base
       related_topics.each { |topic, related_tids|
         topic.topic_relatees.delete_all
         related_tids.each { |related_tid|
-          related_topic = MedTopic.find(:first, :conditions => { :medline_tid => related_tid })
-          topic.topic_relatees.create({ :related_topic => related_topic }) unless related_topic.nil?
+          related_topic = MedTopic.first(:conditions => {:medline_tid => related_tid})
+          topic.topic_relatees.create({:related_topic => related_topic}) unless related_topic.nil?
         }
       }
 
@@ -596,7 +582,7 @@ class MedTopic < ActiveRecord::Base
       related_groups.each { |topic, related_gids|
         topic.group_relatees.delete_all
         related_gids.each { |related_gid|
-          related_group = MedGroup.find(:first, :conditions => { :medline_gid => related_gid, :locale => topic.locale })
+          related_group = MedGroup.first(:conditions => { :medline_gid => related_gid, :locale => topic.locale })
           topic.group_relatees.create({ :group => related_group }) unless related_group.nil?
         }
       }
@@ -604,7 +590,7 @@ class MedTopic < ActiveRecord::Base
       # patch up lang mapped topics
 
       lang_mapped_topics.each { |topic, lang_map_tid|
-        topic.lang_mapped_topic = MedTopic.find(:first, :conditions => { :medline_tid => lang_map_tid })
+        topic.lang_mapped_topic = MedTopic.first(:conditions => {:medline_tid => lang_map_tid})
         topic.save!
       }
 
@@ -628,12 +614,12 @@ class MedTopic < ActiveRecord::Base
 
     def lint_medline_xml_for_date(effective_date)
 
-      xml   = MedTopic.medline_xml_for_date(effective_date)
+      xml = MedTopic.medline_xml_for_date(effective_date)
       vocab = MedTopic.parse_medline_xml_vocab(xml) { |where, what| yield("#{where}: #{what}") }
 
       yield "found #{vocab[:topics].size} topics / #{vocab[:groups].size} groups"
-      topics_wo_langmap = { }
-      topics_wo_groups  = []
+      topics_wo_langmap = {}
+      topics_wo_groups = []
       vocab[:topics].each { |tid, topic_atts|
         topics_wo_groups << [tid, topic_atts[:medline_title]] if topic_atts[:related_groups].nil? || topic_atts[:related_groups].empty?
         (topics_wo_langmap[topic_atts[:locale]] ||= []) << [tid, topic_atts[:medline_title]] if topic_atts[:lang_map].nil? || topic_atts[:lang_map] == 0
