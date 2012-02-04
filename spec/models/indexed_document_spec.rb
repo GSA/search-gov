@@ -330,6 +330,17 @@ describe IndexedDocument do
       end
     end
 
+    context "when there is a problem following a redirect from HTTP to HTTPS" do
+      before do
+        indexed_document.stub!(:open).and_raise Exception.new("redirection forbidden: http://www.ncjrs.gov/pdffiles1/nij/grants/215340.pdf -> https://www.ncjrs.gov/pdffiles1/nij/grants/215340.pdf")
+      end
+
+      it "should update the url with last crawled date and error message and set the hash to nil" do
+        indexed_document.fetch
+        indexed_document.last_crawl_status.should == "Redirection forbidden from HTTP to HTTPS"
+      end
+    end
+
     context "when there is a problem updating the attributes after catching an exception during indexing" do
       before do
         indexed_document.stub!(:open).and_raise Exception.new("some problem during indexing")

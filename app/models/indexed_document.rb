@@ -70,7 +70,8 @@ class IndexedDocument < ActiveRecord::Base
       index_document(file, content_type)
       update_content_hash
     rescue Exception => e
-      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => e.message, :content_hash => nil) rescue destroy
+      message = e.message.starts_with?("redirection forbidden") ? "Redirection forbidden from HTTP to HTTPS" : e.message
+      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => message, :content_hash => nil) rescue destroy
     ensure
       File.delete(file) unless file.nil?
     end
