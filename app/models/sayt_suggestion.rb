@@ -49,7 +49,7 @@ class SaytSuggestion < ActiveRecord::Base
           solr = search_for(query, affiliate.id)
         end
       else
-         solr = search_for(query)
+        solr = search_for(query)
       end
       solr.hits.collect { |hit| hit.highlight(:phrase).format { |phrase| "<strong>#{phrase}</strong>" } } if solr and solr.results
     end
@@ -70,28 +70,29 @@ class SaytSuggestion < ActiveRecord::Base
       end
     end
 
-    def populate_for(day)
+    def populate_for(day, limit = nil)
       name_id_list = Affiliate.all.collect { |aff| {:name => aff.name, :id => aff.id} }
       name_id_list << {:name => Affiliate::USAGOV_AFFILIATE_NAME, :id => nil}
-      name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day) }
+      name_id_list.each { |element| populate_for_affiliate_on(element[:name], element[:id], day, limit) }
     end
 
-    def populate_for_affiliate_on(affiliate_name, affiliate_id, day)
-      Resque.enqueue(SaytSuggestion, affiliate_name, affiliate_id, day)
+    def populate_for_affiliate_on(affiliate_name, affiliate_id, day, limit = nil)
+      Resque.enqueue(SaytSuggestion, affiliate_name, affiliate_id, day, limit)
     end
 
-    def perform(affiliate_name, affiliate_id, day)
+    def perform(affiliate_name, affiliate_id, day, limit = nil)
+      run_rate_factor = Date.current == day ? compute_run_rate_factor : 1.0
       affiliate = Affiliate.find_by_id affiliate_id
-      ordered_hash = DailyQueryStat.sum(:times, :group=> "query", :conditions=>["day = ? and affiliate = ?", day, affiliate_name])
+      ordered_hash = DailyQueryStat.sum(:times, :group => "query", :conditions => ["day = ? and affiliate = ?", day, affiliate_name],
+                                        :order => "sum_times DESC", :limit => limit)
       daily_query_stats = ordered_hash.map { |entry| DailyQueryStat.new(:query=> entry[0], :times=> entry[1]) }
       filtered_daily_query_stats = SaytFilter.filter(daily_query_stats, "query")
       filtered_daily_query_stats.each do |dqs|
         if WebSearch.results_present_for?(dqs.query, affiliate, false) then
           temp_ss = new(:phrase => dqs.query)
           temp_ss.squish_whitespace_and_downcase_and_spellcheck
-          sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase_and_deleted_at(affiliate_id, temp_ss.phrase, nil)
-          if sayt_suggestion
-            sayt_suggestion.popularity = dqs.times
+          if (sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase_and_deleted_at(affiliate_id, temp_ss.phrase, nil))
+            sayt_suggestion.popularity = dqs.times * run_rate_factor
             sayt_suggestion.save
           end
         end
@@ -108,12 +109,17 @@ class SaytSuggestion < ActiveRecord::Base
             create(:phrase => entry, :affiliate => affiliate, :is_protected => true, :popularity => MAX_POPULARITY).id.nil? ? (ignored += 1) : (created += 1)
           end
         end
-        return {:created => created, :ignored => ignored}
+        {:created => created, :ignored => ignored}
       end
     end
 
     def expire(days_back)
       destroy_all(["updated_at < ? AND is_protected = ?", days_back.days.ago.beginning_of_day.to_s(:db), false])
+    end
+
+    def compute_run_rate_factor
+      t = Time.now
+      1 / Date.time_to_day_fraction(t.hour,t.min,t.sec).to_f
     end
   end
 

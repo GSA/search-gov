@@ -96,29 +96,43 @@ describe SaytSuggestion do
     end
   end
 
-  describe "#populate_for(day)" do
+  describe "#populate_for(day, limit = nil)" do
     it "should populate SAYT suggestions for the default affiliate and all affiliates in affiliate table" do
-      SaytSuggestion.should_receive(:populate_for_affiliate_on).with(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current)
+      SaytSuggestion.should_receive(:populate_for_affiliate_on).with(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current, nil)
       Affiliate.all.each do |aff|
-        SaytSuggestion.should_receive(:populate_for_affiliate_on).with(aff.name, aff.id, Date.current)
+        SaytSuggestion.should_receive(:populate_for_affiliate_on).with(aff.name, aff.id, Date.current, nil)
       end
       SaytSuggestion.populate_for(Date.current)
     end
+
+    context "when limit is set" do
+      it "should pass that param to #populate_for_affiliate_on" do
+        SaytSuggestion.should_receive(:populate_for_affiliate_on).any_number_of_times.with(anything(), anything(), Date.current, 20)
+        SaytSuggestion.populate_for(Date.current, 20)
+      end
+    end
   end
 
-  describe "#populate_for_affiliate_on(affiliate_name, affiliate_id, day)" do
+  describe "#populate_for_affiliate_on(affiliate_name, affiliate_id, day, limit = nil)" do
     before do
       ResqueSpec.reset!
     end
+    let(:aff) { affiliates(:basic_affiliate) }
 
     it "should enqueue the affiliate for processing" do
-      aff = affiliates(:basic_affiliate)
       SaytSuggestion.populate_for_affiliate_on(aff.name, aff.id, Date.current)
-      SaytSuggestion.should have_queued(aff.name, aff.id, Date.current)
+      SaytSuggestion.should have_queued(aff.name, aff.id, Date.current, nil)
+    end
+
+    context "when limit is set" do
+      it "should pass that param to enqueueing call" do
+        SaytSuggestion.populate_for_affiliate_on(aff.name, aff.id, Date.current, 20)
+        SaytSuggestion.should have_queued(aff.name, aff.id, Date.current, 20)
+      end
     end
   end
 
-  describe "#perform(affiliate_name, affiliate_id, day)" do
+  describe "#perform(affiliate_name, affiliate_id, day, limit = nil)" do
     context "when no DailyQueryStats exist for the given day for an affiliate" do
       it "should return nil" do
         SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current).should be_nil
@@ -179,13 +193,13 @@ describe SaytSuggestion do
 
     context "when DailyQueryStats exist for multiple locales for an affiliate" do
       before do
-        DailyQueryStat.create!(:day => Date.current, :query => "el paso", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'es')
-        DailyQueryStat.create!(:day => Date.current, :query => "el paso", :times => 4, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'en')
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "el paso", :times => 2, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'es')
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "el paso", :times => 4, :affiliate => Affiliate::USAGOV_AFFILIATE_NAME, :locale=>'en')
         WebSearch.stub!(:results_present_for?).and_return true
       end
 
       it "should combine data from all locales to populate SaytSuggestions" do
-        SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.current)
+        SaytSuggestion.perform(Affiliate::USAGOV_AFFILIATE_NAME, nil, Date.yesterday)
         SaytSuggestion.find_by_affiliate_id_and_phrase(nil, "el paso").popularity.should == 6
       end
     end
@@ -216,6 +230,38 @@ describe SaytSuggestion do
       it "should update the popularity field with the new count" do
         SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.current)
         SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "already here").popularity.should == 2
+      end
+    end
+
+    context "when limit param is set" do
+      before do
+        @affiliate = affiliates(:power_affiliate)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "compute me", :times => 20, :affiliate => @affiliate.name)
+        DailyQueryStat.create!(:day => Date.yesterday, :query => "ignore me", :times => 19, :affiliate => @affiliate.name)
+        WebSearch.stub!(:results_present_for?).and_return true
+      end
+
+      it "should only process the top X most popular queries for that affiliate on the given day" do
+        SaytSuggestion.delete_all
+        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.yesterday, 1)
+        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "compute me").popularity.should == 20
+        SaytSuggestion.count.should == 1
+      end
+    end
+
+    context "when computing for the current day" do
+      before do
+        @affiliate = affiliates(:power_affiliate)
+        d = Date.current
+        DailyQueryStat.create!(:day => d, :query => "run rate", :times => 20, :affiliate => @affiliate.name)
+        WebSearch.stub!(:results_present_for?).and_return true
+        @time = Time.utc(d.year,d.month,d.day,8,2,1)
+        Time.stub!(:now).and_return @time
+      end
+
+      it "should factor in the time of day to compute a projected run rate for the term's popularity that day" do
+        SaytSuggestion.perform(@affiliate.name, @affiliate.id, Date.current)
+        SaytSuggestion.find_by_affiliate_id_and_phrase(@affiliate.id, "run rate").popularity.should == 59
       end
     end
   end

@@ -1,11 +1,12 @@
 namespace :usasearch do
   namespace :sayt_suggestions do
 
-    desc "generate SAYT suggestions from DailyQueryStats table for given YYYYMMDD date (defaults to yesterday)"
-    task :compute, :day, :needs => :environment do |t, args|
+    desc "generate top X SAYT suggestions from DailyQueryStats table for given YYYYMMDD date (defaults to an unlimited number for yesterday)"
+    task :compute, :day, :limit, :needs => :environment do |t, args|
       args.with_defaults(:day => Date.yesterday.to_s(:number))
       yyyymmdd = args.day.to_i
-      SaytSuggestion.populate_for(yyyymmdd)
+      limit = args.limit.nil? ? nil : args.limit.to_i
+      SaytSuggestion.populate_for(yyyymmdd, limit)
     end
 
     desc "expire SAYT suggestions that have not been updated in X days (defaults to 30)"
