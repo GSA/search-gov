@@ -129,39 +129,6 @@ Feature: Homepage
     Then I should see the browser page titled "Búsqueda avanzada"
     And I should see "Use las siguientes opciones para hacer una búsqueda específica."
 
-  Scenario: Visiting homepage and clicking on trending searches
-    Given the following Top Searches exist:
-    | position  | query                     |
-    | 1         | <i>Trending</i> Search 1  |
-    | 2         | Trending Search 2         |
-    | 3         | Trending Search 3         |
-    | 4         |                           |
-    | 5         | Trending Search 5         |
-    And I am on the homepage
-    Then I should see "Search Trends"
-    And I should see 4 trending searches
-    And I should see "<i>Trending</i> Search 1"
-    And I should see "Trending Search 2"
-    And I should see "Trending Search 3"
-    And I should see "Trending Search 5"
-
-  Scenario: Visiting the homepage as a Spanish speaker should not show trending searches
-    Given the following Top Searches exist:
-    | position  | query              |
-    | 1         | Trending Search 1  |
-    | 2         | Trending Search 2  |
-    | 3         | Trending Search 3  |
-    | 4         | Trending Search 4  |
-    | 5         | Trending Search 5  |
-    And I am on the homepage
-    And I follow "Busque en español"
-    Then I should not see "Search Trends"
-    And I should not see "Trending Search 1"
-    And I should not see "Trending Search 2"
-    And I should not see "Trending Search 3"
-    And I should not see "Trending Search 4"
-    And I should not see "Trending Search 5"
-
   Scenario: Visiting ABOUT USASearch links
     Given I am on the homepage
     When I follow "USASearch Program" in the homepage about section
