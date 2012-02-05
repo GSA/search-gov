@@ -2,17 +2,19 @@ require 'spec/spec_helper'
 
 describe WidgetsController do
   fixtures :affiliates
-  let(:active_top_searches) { mock('active top searches') }
   before do
-    @affiliate = affiliates(:basic_affiliate)
   end
 
   describe "#trending_searches" do
-    context "when no affiliate id is specified do" do
+    context "when affiliate id is not specified do" do
+      let(:affiliate) { mock_model(Affiliate, :name => 'usagov', :top_searches_label => 'USA.gov Search Trends')}
+      let(:active_top_searches) { mock('active top searches') }
+
       before do
-        TopSearch.should_receive(:find_active_entries).and_return(active_top_searches)
+        Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
+        affiliate.should_receive(:active_top_searches).and_return(active_top_searches)
       end
-      
+
       context "when format=html" do
         before do
           get :trending_searches, :widget_source => 'usa.gov'
@@ -54,18 +56,53 @@ describe WidgetsController do
         it { should respond_with :not_acceptable }
       end
     end
-    
+
     context "when an affiliate id is specified" do
-      before do
-        Affiliate.stub!(:find_by_id).and_return @affiliate
-        @affiliate.should_receive(:active_top_searches).and_return []
-        get :trending_searches, :aid => @affiliate.id
+      context "the affiliate exists" do
+        let(:affiliate) { affiliates(:basic_affiliate) }
+        let(:active_top_searches) { mock('active top searches') }
+
+        before do
+          Affiliate.should_receive(:find_by_id).with(affiliate.id).and_return(affiliate)
+          affiliate.should_receive(:active_top_searches).and_return active_top_searches
+          get :trending_searches, :aid => affiliate.id
+        end
+
+        it { should assign_to(:active_top_searches).with(active_top_searches) }
       end
-      
-      it "should show the top searches for the specified affiliate" do
-        assigns[:active_top_searches].should == []
+
+      context "the affiliate does not exist" do
+        context "format=html" do
+          before do
+            Affiliate.should_receive(:find_by_id).with('101').and_return nil
+            get :trending_searches, :aid => '101'
+          end
+
+          it { should respond_with(:not_found) }
+          it { should respond_with_content_type :html }
+          its(:response_body) { should == 'affiliate not found' }
+        end
+
+        context "format=xml" do
+          before do
+            Affiliate.should_receive(:find_by_id).with('101').and_return nil
+            get :trending_searches, :aid => '101', :format => 'xml'
+          end
+
+          it { should respond_with(:not_found) }
+          it { should respond_with_content_type :xml }
+          its(:response_body) { should =~ /affiliate not found/ }
+        end
+
+        context "when format=json" do
+          before do
+            Affiliate.should_receive(:find_by_id).with('101').and_return nil
+            get :trending_searches, :aid => '101', :format => 'json'
+          end
+
+          it { should respond_with :not_acceptable }
+        end
       end
     end
   end
 end
-
