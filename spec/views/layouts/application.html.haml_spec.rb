@@ -1,7 +1,9 @@
 require 'spec/spec_helper'
 describe "layouts/application.html.haml" do
+  fixtures :affiliates
+
   before do
-    assign(:active_top_searches, [])
+    assign(:affiliate, affiliates(:basic_affiliate))
     controller.stub!(:controller_name).and_return "home"
     controller.stub!(:action_name).and_return "index"
     assign(:rails_server_location_in_html_comment_for_opsview, "")

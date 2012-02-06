@@ -256,10 +256,10 @@ Feature: Boosted Content
       | FAQ Emergency Page | http://www.aff.gov/mysuperduperawesomelongurl/faq | More information on the emergency    |                  |
       | Our Tourism Page   | http://www.aff.gov/mysuperduperawesomelongurl/tou | Tourism information                  |                  |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
-      | title               | url                     | description                               |                   |
-      | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |                   |
-      | Pelosi misspelling  | http://www.bar.gov/pel  | Synonyms file test works                  |                   |
-      | all about agencies  | http://www.bar.gov/pe2  | Stemming works                            |                   |
+      | title              | url                    | description                        |
+      | Bar Emergency Page | http://www.bar.gov/911 | This should not show up in results |
+      | Pelosi misspelling | http://www.bar.gov/pel | Synonyms file test works           |
+      | all about agencies | http://www.bar.gov/pe2 | Stemming works                     |
     When I go to aff.gov's search page
     And I fill in "query" with "emergency"
     And I submit the search form

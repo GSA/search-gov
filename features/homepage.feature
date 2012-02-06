@@ -9,6 +9,7 @@ Feature: Homepage
       | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
     When I am on the homepage
     Then I should not see "ROBOTS" meta tag
+    And affiliate SAYT suggestions for "usagov" should be enabled
     And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage header
     And I should see a link to "FAQs" with url for "http://answers.usa.gov/"
     And I should see a link to "E-mail USA.gov" with url for "http://answers.usa.gov/cgi-bin/gsa_ict.cfg/php/enduser/ask.php"
@@ -60,7 +61,9 @@ Feature: Homepage
       | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
       | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
     When I am on the Spanish homepage
-    Then I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml" in the homepage header
+    Then I should not see "ROBOTS" meta tag
+    And affiliate SAYT suggestions for "gobiernousa" should be enabled
+    And I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml" in the homepage header
     And I should see a link to "Respuestas" with url for "http://respuestas.gobiernousa.gov/"
     And I should see a link to "Contactos" with url for "http://www.usa.gov/gobiernousa/Contactenos.shtml"
     And I should see "GOBIERNO" in the search navigation

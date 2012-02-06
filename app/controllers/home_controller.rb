@@ -5,6 +5,9 @@ class HomeController < ApplicationController
     @search = WebSearch.new
     @title = "Home - "
     @affiliate = I18n.locale == :es ? Affiliate.find_by_name('gobiernousa') : Affiliate.find_by_name('usagov')
+    respond_to do |format|
+      format.any(:html, :mobile)
+    end
   end
 
   def contact_form

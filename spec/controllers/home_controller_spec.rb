@@ -69,6 +69,15 @@ describe HomeController do
         end
       end
     end
+
+    context "when format is xml" do
+      before do
+        Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
+        get :index, :locale=> "en", :format => 'xml'
+      end
+
+      it { should respond_with :not_acceptable }
+    end
   end
 
   describe "#contact_form" do
