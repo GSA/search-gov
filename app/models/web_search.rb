@@ -416,9 +416,10 @@ class WebSearch < Search
   
   def parse_synonyms(query, title, content)
     matches = title.scan(/\xEE\x80\x80.*?\xEE\x80\x81/) + content.scan(/\xEE\x80\x80.*?\xEE\x80\x81/)
-    matches.collect do |alias_phrase|
+    synonyms = matches.collect do |alias_phrase|
       alias_phrase.gsub!(/\xEE\x80\x80/, '').gsub!(/\xEE\x80\x81/, '').downcase!
       alias_phrase unless query.downcase == alias_phrase
-    end.compact
+    end
+    synonyms.compact
   end
 end
