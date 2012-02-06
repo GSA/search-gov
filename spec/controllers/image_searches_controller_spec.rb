@@ -4,35 +4,25 @@ describe ImageSearchesController do
 
   describe "#index" do
     context "when searching as an affiliate" do
-      fixtures :affiliates, :affiliate_templates
-      render_views
+      let(:affiliate) { mock_model(Affiliate, :name => 'agency100', :display_name => 'Agency Site') }
+      let(:image_search) { mock(ImageSearch, :query => 'weather') }
 
       before do
-        @affiliate = affiliates(:power_affiliate)
-        get :index, :affiliate => @affiliate.name, :query => "weather"
-        @search = assigns[:search]
-        @page_title = assigns[:page_title]
+        Affiliate.should_receive(:find_by_name).with('agency100').and_return(affiliate)
+        ImageSearch.should_receive(:new).with(hash_including(:affiliate => affiliate, :query => 'weather')).and_return(image_search)
+        image_search.should_receive(:run)
+        get :index, :affiliate => "agency100", :query => "weather"
       end
 
 
+      it { should assign_to(:search).with(image_search) }
       it { should assign_to :affiliate }
-      it { should assign_to :page_title }
+      it { should assign_to(:page_title).with("Image search results for Agency Site: weather") }
+      it { should render_template 'image_searches/affiliate_index' }
 
       it "should render the template" do
         response.should render_template 'image_searches/affiliate_index'
         response.should render_template 'layouts/affiliate'
-      end
-
-      it "should set an affiliate page title" do
-        @page_title.should == "Image search results for #{@affiliate.name}: #{@search.query}"
-      end
-
-      it "should render the header in the response" do
-        response.body.should match(/#{@affiliate.header}/)
-      end
-
-      it "should render the footer in the response" do
-        response.body.should match(/#{@affiliate.footer}/)
       end
     end
 

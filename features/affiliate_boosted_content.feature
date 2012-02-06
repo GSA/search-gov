@@ -251,10 +251,10 @@ Feature: Boosted Content
       | aff site         | aff.gov               | aff@bar.gov           | John Bar            |
       | bar site         | bar.gov               | aff@bar.gov           | John Bar            |
     And the following Boosted Content entries exist for the affiliate "aff.gov"
-      | title               | url                     | description                               | keywords          |
-      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      | unrelated, terms  |
-      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |                   |
-      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |                   |
+      | title              | url                                               | description                          | keywords         |
+      | Our Emergency Page | http://www.aff.gov/mysuperduperawesomelongurl/911 | Updated information on the emergency | unrelated, terms |
+      | FAQ Emergency Page | http://www.aff.gov/mysuperduperawesomelongurl/faq | More information on the emergency    |                  |
+      | Our Tourism Page   | http://www.aff.gov/mysuperduperawesomelongurl/tou | Tourism information                  |                  |
     And the following Boosted Content entries exist for the affiliate "bar.gov"
       | title               | url                     | description                               |                   |
       | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |                   |
@@ -264,10 +264,14 @@ Feature: Boosted Content
     And I fill in "query" with "emergency"
     And I submit the search form
     Then I should see "Recommended by aff site"
-    And I should see "Our Emergency Page" within "#boosted"
-    And I should see "FAQ Emergency Page" within "#boosted"
-    And I should not see "Our Tourism Page" within "#boosted"
-    And I should not see "Bar Emergency Page" within "#boosted"
+    And I should see "Our Emergency Page" in the boosted contents section
+    And I should see "www.aff.gov/.../911" in the boosted contents section
+    And I should see "Updated information on the emergency" in the boosted contents section
+    And I should see "FAQ Emergency Page" in the boosted contents section
+    And I should see "www.aff.gov/.../faq" in the boosted contents section
+    And I should see "More information on the emergency" in the boosted contents section
+    And I should not see "Our Tourism Page" in the boosted contents section
+    And I should not see "Bar Emergency Page" in the boosted contents section
 
     When I go to bar.gov's search page
     And I fill in "query" with "Peloci"
@@ -316,6 +320,25 @@ Feature: Boosted Content
     And I fill in "query" with "unrelated"
     And I press "Buscar"
     Then I should see "Nuestra página de Emergencia" within "#boosted"
+
+  Scenario: Searching for a Spanish word without diacritics
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And the following Boosted Content entries exist for the affiliate "aff.gov"
+      | title              | url                                                            | description                               |
+      | Día de los Muertos | http://www.latino.si.edu/education/LVMDayoftheDeadFestival.htm | The Smithsonian Latino Center presents... |
+    When I go to aff.gov's search page
+    And I fill in "query" with "dia"
+    And I press "Search"
+    Then I should see "Día de los Muertos"
+    And I should see "The Smithsonian Latino Center presents"
+
+    When I go to aff.gov's search page
+    And I fill in "query" with "Día"
+    And I press "Search"
+    Then I should see "Día de los Muertos"
+    And I should see "The Smithsonian Latino Center presents"
 
   Scenario: Uploading valid booster XML document as a logged in affiliate
     Given the following Affiliates exist:

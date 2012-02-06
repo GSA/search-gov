@@ -4,8 +4,7 @@ class HomeController < ApplicationController
   def index
     @search = WebSearch.new
     @title = "Home - "
-    @active_top_searches = TopSearch.find_active_entries
-    @widget_source = request.host
+    @affiliate = I18n.locale == :es ? Affiliate.find_by_name('gobiernousa') : Affiliate.find_by_name('usagov')
   end
 
   def contact_form

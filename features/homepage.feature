@@ -4,7 +4,10 @@ Feature: Homepage
   I want to be able to search for information
 
   Scenario: Visiting the home page
-    Given I am on the homepage
+    Given the following Affiliates exist:
+      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+    When I am on the homepage
     Then I should not see "ROBOTS" meta tag
     And I should see a link to "USA.gov" with url for "http://www.usa.gov/index.shtml" in the homepage header
     And I should see a link to "FAQs" with url for "http://answers.usa.gov/"
@@ -27,45 +30,20 @@ Feature: Homepage
     And I should see "Search.USA.gov" in the homepage tagline
 
   Scenario: A typical popular search from the home page
-    Given I am on the homepage
-    When I fill in "query" with "visa lottery"
+    Given the following Affiliates exist:
+      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+    When I am on the homepage
+    And I fill in "query" with "president"
     And I submit the search form
-    Then I should be on the search page
-    And I should see "Results 1-10"
-    And I should see "visa lottery"
-    And I should see 10 search results
-    And I should see "Next"
-    And I should see "Connect with USASearch" in the connect section
-    And I should see a link to "Twitter" with url for "http://twitter.com/usasearch" in the connect section
-    And I should see a link to "Mobile" with url for "http://m.usa.gov" in the connect section
-    And I should see a link to "Our Blog" with url for "http://searchblog.usa.gov" in the connect section
-    And I should see a link to "Share" with url for "http://www.addthis.com/bookmark.php" in the connect section
-
-  Scenario: A nonsense search from the home page
-    Given I am on the homepage
-    When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
-    And I press "Search"
-    Then I should see "Oops! We can't find results for your search: kjdfgkljdhfgkldjshfglkjdsfhg"
-    And I should see a link to "USA.gov" with url for "http://USA.gov" in the no results section
-    And I should see a link to "Contact USA.gov" with url for "http://www.usa.gov/Contact_Us.shtml" in the no results section
-    And I should see "Source:" in the no results section
-
-  Scenario: A nonsense search from the Spanish home page
-    Given I am on the homepage
-    And I follow "Busque en español"
-    When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
-    And I press "Buscar"
-    Then I should see "No hemos podido encontrar resultados que contengan: kjdfgkljdhfgkldjshfglkjdsfhg"
-    And I should see a link to "GobiernoUSA.gov" with url for "http://GobiernoUSA.gov" in the no results section
-    And I should see a link to "Comuníquese con nosotros" with url for "http://www.usa.gov/gobiernousa/Contactenos.shtml" in the no results section
-    And I should see "Fuente:" in the no results section
-
-  Scenario: Doing a blank search from the home page
-    Given I am on the homepage
-    When I submit the search form
-    Then I should be on the homepage
+    Then I should see the browser page titled "president - USA.gov Search Results"
+    And I should see "USA.gov Header"
+    And I should not see "<strong>president</strong>"
 
   Scenario: Entering a blank advanced search
+    Given the following Affiliates exist:
+      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
     When I am on the advanced search page
     And I press "Search"
     Then I should be on the search page
@@ -78,8 +56,10 @@ Feature: Homepage
     Then I should see "البيت الأبيض"
 
   Scenario: Visiting the homepage as a Spanish speaker
-    Given I am on the homepage
-    And I follow "Busque en español"
+    Given the following Affiliates exist:
+      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
+    When I am on the Spanish homepage
     Then I should see a link to "GobiernoUSA.gov" with url for "http://www.usa.gov/gobiernousa/index.shtml" in the homepage header
     And I should see a link to "Respuestas" with url for "http://respuestas.gobiernousa.gov/"
     And I should see a link to "Contactos" with url for "http://www.usa.gov/gobiernousa/Contactenos.shtml"
@@ -91,70 +71,77 @@ Feature: Homepage
     And I should see a link to "Privacidad" with url for "http://www.usa.gov/gobiernousa/Privacidad_Seguridad.shtml"
     And I should see "Móvil"
     And I should see "Buscador.USA.gov" in the homepage tagline
-    When I follow "Search in English"
-    Then I should be on the homepage
+
+  Scenario: a typical search from the Spanish homepage
+    Given the following Affiliates exist:
+      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
+    When I am on the Spanish homepage
+    Then I should see the browser page titled "Buscador.USA.gov: el buscador oficial del Gobierno de los Estados Unidos en español"
+    When I fill in "query" with "president"
+    And I press "Buscar"
+    Then I should see the browser page titled "president - GobiernoUSA.gov resultados de la búsqueda"
+    And I should not see "<strong>President</strong>"
 
   Scenario: Clicking on the red Buscador.USA.gov button
-    Given I am on the homepage
-    When I follow "Buscador.USA.gov" in the search navigation
-    Then I should be on the homepage
-    And I should see "Search in English"
+    Given the following Affiliates exist:
+      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
+      | USA.gov         | usagov      | aff@bar.gov   | John Bar     | USA.gov Header          | {Query} - {SiteName} Search Results            | en     |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
+    When I am on the homepage
+    And I follow "Buscador.USA.gov" in the search navigation
+    Then I should see the browser page titled "Buscador.USA.gov: el buscador oficial del Gobierno de los Estados Unidos en español"
 
   Scenario: Clicking on the red Search.USA.gov button
-    Given I am on the homepage
-    When I follow "Buscador.USA.gov" in the search navigation
-    When I follow "Search.USA.gov" in the search navigation
-    Then I should be on the homepage
-    And I should see "Busque en español"
-
-  Scenario: Switching to image search
-    Given I am on the search page
-    When I fill in "query" with "White House"
-    And I press "Search"
-    Then I should be on the search page
-    When I follow "Images" in the search navigation
-    Then I should be on the image search page
-    And I should see 30 image results
+    Given the following Affiliates exist:
+      | display_name    | name        | contact_email | contact_name | header                  | search_results_page_title                      | locale |
+      | USA.gov         | usagov      | aff@bar.gov   | John Bar     | USA.gov Header          | {Query} - {SiteName} Search Results            | en     |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | Gobierno.USA.gov Header | {Query} - {SiteName} resultados de la búsqueda | es     |
+    When I am on the Spanish homepage
+    And I follow "Search.USA.gov" in the search navigation
+    Then I should see the browser page titled "Search.USA.gov: The U.S. Government's Official Search Engine"
 
   Scenario: Clicking on Advanced Search on the homepage
-    Given I am on the homepage
+    Given the following Affiliates exist:
+      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+    When I am on the homepage
     And I follow "Advanced Search"
     Then I should see the browser page titled "Advanced Search"
     And I should see "Use the options on this page to create a very specific search."
 
-  Scenario: Clicking on Advanced Search on the Spanish homepage
-    Given I am on the homepage
-    And I follow "Busque en español"
-    And I follow "Búsqueda avanzada"
-    Then I should see the browser page titled "Búsqueda avanzada"
-    And I should see "Use las siguientes opciones para hacer una búsqueda específica."
-
   Scenario: Visiting ABOUT USASearch links
-    Given I am on the homepage
-    When I follow "USASearch Program" in the homepage about section
+    Given the following Affiliates exist:
+      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+    When I am on the homepage
+    And I follow "USASearch Program" in the homepage about section
     Then I should be on the program welcome page
 
-    Given I am on the homepage
-    When I follow "Affiliate Program" in the homepage about section
+    When I am on the homepage
+    And I follow "Affiliate Program" in the homepage about section
     Then I should be on the affiliates page
 
-    Given I am on the homepage
-    When I follow "APIs and Web Services" in the homepage about section
+    When I am on the homepage
+    And I follow "APIs and Web Services" in the homepage about section
     Then I should be on the api page
 
-    Given I am on the homepage
-    When I follow "Search.USA.gov" in the homepage about section
+    When I am on the homepage
+    And I follow "Search.USA.gov" in the homepage about section
     Then I should be on the searchusagov page
 
   Scenario: Visiting other verticals from the homepage
-    Given I am on the homepage
-    When I follow "Images" in the search navigation
+    Given the following Affiliates exist:
+      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+    When I am on the homepage
+    And I follow "Images" in the search navigation
     Then I should be on the images page
 
-    Given I am on the homepage
-    When I follow "Recalls" in the search navigation
+    When I am on the homepage
+    And I follow "Recalls" in the search navigation
     Then I should be on the recalls page
 
-    Given I am on the homepage
-    When I follow "Forms" in the search navigation
+    When I am on the homepage
+    And I follow "Forms" in the search navigation
     Then I should be on the forms page

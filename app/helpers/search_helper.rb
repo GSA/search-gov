@@ -532,7 +532,6 @@ module SearchHelper
   end
 
   def path_to_search_in_other_locale_for(query)
-    path = ''
     if query.blank?
       path = web_search? ? home_page_path(:locale => other_locale_str) : images_path(:locale => other_locale_str)
     else

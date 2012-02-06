@@ -46,9 +46,6 @@
                 - search_params = {:query => params[:query], :locale => params[:locale]}
                 = link_to_unless web_search?, content_tag(:span, 'Web'), path_to_search(search_params, home_page_path(search_params), search_path(search_params))
                 = link_to_unless image_search?, content_tag(:span, t(:images)), path_to_search(search_params, images_path(search_params), image_search_path(search_params))
-                - if english_locale?
-                  = link_to_unless recalls_search?, content_tag(:span, t(:recalls)), recalls_search_path(search_params)
-                  = link_to_unless forms_search?, content_tag(:span, t(:forms)), forms_search_path(search_params)
           = yield
         .footer-wrap
           .center-wrapper

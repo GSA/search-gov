@@ -10,7 +10,7 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I press "Search"
     Then I should see "Please enter search term(s)"
-    
+
   Scenario: Searching with active RSS feeds
     Given the following Affiliates exist:
       | display_name     | name             | contact_email         | contact_name        |
@@ -81,7 +81,7 @@ Feature: Affiliate Search
     And I should not see "Search this site"
     And I should not see "Cualquier fecha"
     And I should not see "All Time"
-    
+
     When I follow "Press"
     Then I should see "Cualquier fecha"
 
@@ -248,6 +248,31 @@ Feature: Affiliate Search
     And I fill in "query" with "ssa"
     And I press "Search"
     Then I should not see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
+    And I should not see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
+
+  Scenario: Searchers see agency popular pages in Spanish
+    Given the following Affiliates exist:
+      | display_name    | name        | contact_email | contact_name | locale | is_agency_govbox_enabled |
+      | GobiernoUSA.gov | gobiernousa | aff@bar.gov   | John Bar     | es     | true                     |
+    And the following Agency entries exist:
+      | name | domain  |
+      | SSA  | ssa.gov |
+    And the following Agency Urls exist:
+      | name | locale | url                         |
+      | SSA  | en     | http://www.ssa.gov/         |
+      | SSA  | es     | http://www.ssa.gov/espanol/ |
+    And the following Agency Popular Urls exist:
+      | name | locale | rank | title                                 | url                                                |
+      | SSA  | en     | 20   | Get or replace a Social Security card | http://www.ssa.gov/ssnumber/                       |
+      | SSA  | en     | 10   | Apply online for retirement benefits  | http://www.ssa.gov/planners/about.htm              |
+      | SSA  | es     | 20   | Solicite beneficios de jubilación     | http://www.ssa.gov/espanol/plan/sobreelplan.htm    |
+      | SSA  | es     | 10   | Solicite beneficios de incapacidad    | http://www.ssa.gov/espanol/soliciteporincapacidad/ |
+    When I am on gobiernousa's search page
+    And I fill in "query" with "ssa"
+    And I press "Buscar"
+    Then I should see a link to "Solicite beneficios de jubilación" with url for "http://www.ssa.gov/espanol/plan/sobreelplan.htm" on the popular pages list
+    And I should see a link to "Solicite beneficios de incapacidad" with url for "http://www.ssa.gov/espanol/soliciteporincapacidad/" on the popular pages list
+    And I should not see a link to "Get or replace a Social Security card" with url for "http://www.ssa.gov/ssnumber/" on the popular pages list
     And I should not see a link to "Apply online for retirement benefits" with url for "http://www.ssa.gov/planners/about.htm" on the popular pages list
 
   Scenario: Searchers see English Medline Govbox

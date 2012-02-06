@@ -2,67 +2,71 @@ require 'spec/spec_helper'
 
 describe HomeController do
 
-  it "should assign a search object" do
-    get :index
-    assigns[:search].should_not be_nil
-  end
+  describe "#index" do
+    let(:affiliate) { mock_model(Affiliate) }
 
-  it "should assign a local server hash indicating which datacenter served the request" do
-    get :index
-    assigns[:rails_server_location_in_html_comment_for_opsview].should be_instance_of(String)
-  end
-
-  context "when no locale is specified" do
-    it "should use default locale" do
-      get :index
-      I18n.locale.should == I18n.default_locale
-    end
-  end
-
-  it "should assign a top_searches object" do
-    top_searches = []
-    TopSearch.should_receive(:find_active_entries).and_return(top_searches)
-    get :index
-    assigns[:active_top_searches].should == top_searches
-  end
-
-  it "should assign widget_source" do
-    get :index
-    assigns[:widget_source].should == 'test.host'
-  end
-
-  context "when valid locale is specified" do
-    it "should assign a locale" do
-      get :index, :locale=> "es"
-      I18n.locale.should == :es
-    end
-  end
-
-  context "when locale is specified" do
-    context "that is invalid" do
+    context "when no locale is specified" do
       before do
-        get :index, :locale=> "hp:webinspect..file*test"
+        Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
+        get :index
       end
-      it "should set locale to :en" do
-        I18n.locale.should == :en
+
+      it { should assign_to(:search).with_kind_of(WebSearch) }
+      it { should assign_to(:affiliate).with(affiliate) }
+      it { should respond_with(:success) }
+
+      specify { I18n.locale.should == I18n.default_locale }
+
+      it "should assign a local server hash indicating which datacenter served the request" do
+        assigns[:rails_server_location_in_html_comment_for_opsview].should be_instance_of(String)
       end
     end
 
-    context "that is malicious" do
-      before do
-        get :index, :locale=> "\0"
+    context "when locale is specified" do
+      context "locale=en" do
+        it "should set locale to :en" do
+          Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
+          get :index, :locale=> "en"
+          I18n.locale.should == :en
+        end
       end
-      it "should set locale to :en" do
-        I18n.locale.should == :en
-      end
-    end
 
-    context "that is erroneous" do
-      before do
-        get :index, :locale=> "fr"
+      context "locale=es" do
+        it "should set locale to :es" do
+          Affiliate.should_receive(:find_by_name).with('gobiernousa').and_return(affiliate)
+          get :index, :locale=> "es"
+          I18n.locale.should == :es
+        end
       end
-      it "should set locale to :en" do
-        I18n.locale.should == :en
+
+      context "that is invalid" do
+        before do
+          Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
+          get :index, :locale=> "hp:webinspect..file*test"
+        end
+        it "should set locale to :en" do
+          I18n.locale.should == :en
+        end
+      end
+
+      context "that is malicious" do
+        before do
+          Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
+          get :index, :locale=> "\0"
+        end
+        it "should set locale to :en" do
+          I18n.locale.should == :en
+        end
+      end
+
+      context "that is erroneous" do
+        before do
+          Affiliate.should_receive(:find_by_name).with('usagov').and_return(affiliate)
+          get :index, :locale=> "fr"
+        end
+        it "should set locale to :en" do
+          I18n.locale.should == :en
+        end
       end
     end
   end

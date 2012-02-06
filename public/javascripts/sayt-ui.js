@@ -46,8 +46,9 @@ jQuery(document).ready(function() {
   var isProgram = (jQuery('.program').length > 0);
   var isSearchForm = (jQuery('#search_form').length > 0);
   var isAffiliate = (jQuery('#affiliate').length > 0);
+  var isSearchUsaLandingPage = (jQuery('.homepage #landing_page_logo').length > 0);
   var isAffiliateDesktop = isAffiliate && !isMobile;
-  var isSearchUsaDesktop = isSearchForm && !isAffiliate && !isMobile && !isProgram;
+  var isSearchUsaDesktop = isSearchUsaLandingPage && isSearchForm && !isMobile && !isProgram;
 
   var position = { my: "left top", at: "left bottom", collision: "none" };
   if (isSearchUsaDesktop) {
