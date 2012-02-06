@@ -65,11 +65,3 @@ Feature: Image search
     When I am on the images page
     And I follow "Web" in the search navigation
     Then I should be on the homepage
-
-    When I am on the images page
-    And I follow "Recalls" in the search navigation
-    Then I should be on the recalls page
-
-    When I am on the images page
-    And I follow "Forms" in the search navigation
-    Then I should be on the forms page

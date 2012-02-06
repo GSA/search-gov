@@ -137,11 +137,3 @@ Feature: Homepage
     When I am on the homepage
     And I follow "Images" in the search navigation
     Then I should be on the images page
-
-    When I am on the homepage
-    And I follow "Recalls" in the search navigation
-    Then I should be on the recalls page
-
-    When I am on the homepage
-    And I follow "Forms" in the search navigation
-    Then I should be on the forms page
