@@ -810,6 +810,27 @@ describe WebSearch do
       end
     end
 
+    context "when the results contain synonyms" do
+      before do
+        Synonym.destroy_all
+        bing_search = BingSearch.new(Search::USER_AGENT)
+        bing_search.stub(:query).and_return File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_result_for_ira.json")
+        BingSearch.stub!(:new).and_return bing_search
+        @search = WebSearch.new(:query => 'ira')
+        @search.run
+      end
+      
+      it "should create downcased synonyms for highlighted terms that are not the same as the query" do
+        Synonym.count.should == 3
+        Synonym.all[0].phrase.should == 'ira'
+        Synonym.all[0].alias.should == 'iras'
+        Synonym.all[1].phrase.should == 'ira'
+        Synonym.all[1].alias.should == 'individual retirement annuity'
+        Synonym.all[2].phrase.should == 'ira'
+        Synonym.all[2].alias.should == 'individual retirement arrangement'        
+      end
+    end
+      
     context "recent recalls" do
       before :each do
         @options_with_recall = {:query => "foo bar recall"}
