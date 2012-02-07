@@ -1029,38 +1029,6 @@ Feature: Affiliate clients
     When I go to aff2.gov's search page
     Then I should not see "aff3 site" as a header
 
-  Scenario: Enabling/Disabling popular urls
-    Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains        | header     | footer     | staged_header | staged_footer | is_popular_links_enabled |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov | Old header | Old footer | Old header    | Old footer    | true                     |
-    And the following popular URLs exist:
-      | affiliate_name  | title         | url                 | rank  |
-      | aff.gov         | popurl title  | http://popurl.gov/  | 1     |
-    And I am logged in with email "aff@bar.gov" and password "random_string"
-    When I go to aff.gov's search page
-    And I fill in "query" with "obama"
-    And I press "Search"
-    Then I should see "Popular Links"
-
-    When I go to the affiliate admin page
-    And I follow "aff site"
-    And I follow "Popular Links"
-    And I uncheck "Enable Popular Links?"
-    And I press "Set Preferences"
-    Then I should see "Popular Links DISABLED"
-
-    When I go to aff.gov's search page
-    And I fill in "query" with "obama"
-    And I press "Search"
-    Then I should not see "Popular Links"
-
-    When I go to the affiliate admin page
-    And I follow "aff site"
-    And I follow "Popular Links"
-    And I check "Enable Popular Links?"
-    And I press "Set Preferences"
-    Then I should see "Popular Links ENABLED"
-
   Scenario: Cancelling staged changes from the Affiliate Center page
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | affiliate_template_name | search_results_page_title | domains  | header      | footer      | favicon_url                | external_css_url          | staged_affiliate_template_name | staged_search_results_page_title | staged_header | staged_footer | staged_favicon_url                | staged_external_css_url          | has_staged_content | uses_one_serp |
@@ -1638,28 +1606,6 @@ Feature: Affiliate clients
     When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
     And I press "Search"
     Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
-
-  Scenario: Visiting the affiliate search page with popular urls
-    Given the following Affiliates exist:
-      | display_name | name      | contact_email | contact_name | affiliate_template_name |
-      | aff site     | aff.gov   | aff@bar.gov   | John Bar     | Default                 |
-      | another site | other.gov | aff@other.gov | Jane Doe     | Default                 |
-    And the following popular URLs exist:
-      | affiliate_name | title                                                                                                 | url                       | rank |
-      | aff.gov        | Space, NASA Information & News, Outer Space Flight Videos & Pictures - Astronomy, Solar System Images | http://awesome.gov/blog/7 | 7    |
-      | aff.gov        | Awesome sixth blog post                                                                               | http://awesome.gov/blog/6 | 6    |
-      | aff.gov        | Awesome fourth blog post                                                                              | http://awesome.gov/blog/4 | 4    |
-      | aff.gov        | Awesome fifth blog post                                                                               | http://awesome.gov/blog/5 | 5    |
-      | aff.gov        | Awesome third blog post                                                                               | http://awesome.gov/blog/3 | 3    |
-      | aff.gov        | Awesome second blog post                                                                              | http://awesome.gov/blog/2 | 2    |
-    When I go to aff.gov's search page
-    Then I should see 3 popular URLs
-    And I should see a link to "Space, NASA Information & News, Outer Space Flight Videos & Pictures -..." with url for "http://awesome.gov/blog/7" in the popular urls section
-    And I should see a link to "Awesome sixth blog post" with url for "http://awesome.gov/blog/6" in the popular urls section
-    And I should see a link to "Awesome fifth blog post" with url for "http://awesome.gov/blog/5" in the popular urls section
-    And I should not see a link to "Awesome fourth blog post"
-    And I should not see a link to "Awesome second blog post"
-    And I should not see a link to "Awesome third blog post"
 
   Scenario: Embedded affiliate search
     Given the following Affiliates exist:

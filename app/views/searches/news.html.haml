@@ -1,7 +1,5 @@
 #left_column
   = render "shared/affiliate_news_vertical_navigation"
-  - if @affiliate.is_popular_links_enabled
-    = render "/shared/popular_urls", :popular_urls => @affiliate.popular_urls.top_urls
 
 #results
   = form_tag(@form_path, :method => :get, :id => "search_form") do

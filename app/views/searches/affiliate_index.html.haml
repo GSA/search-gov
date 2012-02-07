@@ -1,8 +1,6 @@
 #left_column
   - if @affiliate.has_active_rss_feeds? or @affiliate.is_image_search_enabled?
     = render "shared/affiliate_news_vertical_navigation"
-  - if @affiliate.is_popular_links_enabled
-    = render "/shared/popular_urls", :popular_urls => @affiliate.popular_urls.top_urls
   &nbsp;
 #results
   = render "shared/search", :path => search_path
