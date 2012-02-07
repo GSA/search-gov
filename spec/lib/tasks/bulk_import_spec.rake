@@ -9,42 +9,38 @@ describe "Bulk Import rake tasks" do
     Rake::Task.define_task(:environment)
   end
 
-  describe "usasearch:bulk_import" do
-    describe "usasearch:bulk_import:affiliate_csv" do
+  describe "usasearch:bulk_import" do  
+    describe "usasearch:bulk_import:google_xml" do
       before do
-        @task_name = "usasearch:bulk_import:affiliate_csv"
+        @task_name = "usasearch:bulk_import:google_xml"
       end
 
       it "should have 'environment' as a prereq" do
         @rake[@task_name].prerequisites.should include("environment")
       end
       
-      context "when no file path is specified as a paramter" do
-        it "should log an error with usage information" do
-          Rails.logger.should_receive(:error).with("usage: rake usasearch:bulk_import:affiliate_csv[/path/to/affiliate/csv]")
-          @rake[@task_name].invoke
-        end
-      end
-      
-      context "when a file is specified" do
+      context "when a file and default user email is specified" do
         before do
+          @user = users(:affiliate_manager)
           Affiliate.all(:conditions => ["name LIKE ?", "test%"]).each{|aff| aff.destroy }
-          @csv_file_path = File.join(Rails.root.to_s, "spec", "fixtures", "csv", "affiliate_bulk_import_sample.csv")
+          @existing_affiliate = Affiliate.create(:name => 'test1', :display_name => 'Test 1')
+          @existing_affiliate.users << @user
+          @existing_affiliate.site_domains << SiteDomain.new(:domain => 'domain1.gov')
+          @xml_file_path = File.join(Rails.root.to_s, "spec", "fixtures", "xml", "google_bulk.xml")
         end
         
         it "should create affiliates corresponding to the information in the csv, and log errors if there is a problem creating an affiliate" do
-          Rails.logger.should_receive(:error).with("Unable to create affiliate with name: test3.")
-          Rails.logger.should_receive(:error).with("Additional information: Site name can't be blank")
-          @rake[@task_name].invoke(@csv_file_path)
+          @rake[@task_name].invoke(@xml_file_path, @user.email)
           Affiliate.all(:conditions => ["name LIKE ?", "test%"]).size.should == 2
           (first_affiliate = Affiliate.find_by_name('test1')).should_not be_nil
           first_affiliate.users.count.should == 1
           first_affiliate.display_name.should == "Test 1"
-          first_affiliate.domains.should == "domain1.gov\ndomain2.gov"
+          first_affiliate.site_domains.collect{|site_domain| site_domain.domain }.should == ['domain1.gov', 'domain2.gov']
           (second_affiliate = Affiliate.find_by_name('test2')).should_not be_nil
-          second_affiliate.users.count.should == 2
+          second_affiliate.users.count.should == 1
           second_affiliate.users.include?(users(:affiliate_manager)).should be_true
-          second_affiliate.users.include?(users(:another_affiliate_manager)).should be_true
+          second_affiliate.display_name.should == "test2"
+          second_affiliate.site_domains.collect{|site_domain| site_domain.domain }.include?('domain3.gov').should be_true
         end
       end
     end

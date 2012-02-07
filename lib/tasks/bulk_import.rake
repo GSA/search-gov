@@ -1,30 +1,19 @@
 namespace :usasearch do
   namespace :bulk_import do
-      
-    desc "Bulk Import Affiliates via CSV"
-    task :affiliate_csv, :csv_file, :needs => :environment do |t, args|
-      unless args.csv_file
-        Rails.logger.error("usage: rake usasearch:bulk_import:affiliate_csv[/path/to/affiliate/csv]")
-      else
-        FasterCSV.parse(File.open(args.csv_file).read, :skip_blanks => true, :headers => true) do |row|
-          begin
-            affiliate_attributes = {
-                :display_name => row[1],
-                :name => row[0].downcase,
-                :domains => row[2].gsub(/,/, "\n").gsub(/http\:\/\/www\./, "").gsub(/\//, ""),
-                :header => row[3],
-                :footer => row[4],
-                :website => row[5]
-            }
-            affiliate = Affiliate.new(affiliate_attributes)
-            users = row[6].split(",").collect{|email| User.find_by_email(email)}
-            affiliate.users << users
-            affiliate.save!
-          rescue Exception => e
-            Rails.logger.error("Unable to create affiliate with name: #{affiliate_attributes[:name]}.")
-            Rails.logger.error("Additional information: #{affiliate.errors.full_messages.to_sentence}") if affiliate and affiliate.errors.empty? == false
-          end
+  
+    desc "Bulk Import from Google Search Appliance XML"
+    task :google_xml, :xml_file, :default_email, :needs => :environment do |t, args|
+      default_user = User.find_by_email(args.default_email)
+      xml_doc = Nokogiri::XML(File.read(args.xml_file))
+      xml_doc.xpath("//collection").each do |collection|
+        site_handle = collection.attributes["Name"].value
+        affiliate = Affiliate.find_or_initialize_by_name(site_handle.downcase)
+        affiliate.display_name = site_handle if affiliate.display_name.blank?
+        affiliate.users << default_user unless affiliate.users.include?(default_user)
+        collection.xpath("good_urls").inner_text.split.each do |site_domain|
+          affiliate.site_domains << SiteDomain.new(:domain => site_domain)
         end
+        affiliate.save
       end
     end
   end
