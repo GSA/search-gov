@@ -22,7 +22,7 @@ class WebSearch < Search
               :indexed_documents,
               :indexed_results,
               :matching_site_limit
-
+              
   class << self
     def suggestions(affiliate_id, sanitized_query, num_suggestions = 15)
       corrected_query = Misspelling.correct(sanitized_query)
@@ -226,12 +226,12 @@ class WebSearch < Search
   end
 
   def process_web_results(response)
-    synonyms = []
+    @synonyms = []
     processed = response.web.results.collect do |result|
       title = result.title rescue nil
       content = result.description rescue ''
       if title.present? and not url_is_excluded(result.url)
-        synonyms = synonyms + parse_synonyms(@query, title, content)
+        @synonyms = @synonyms + parse_synonyms(@query, title, content)
         {
           'title' => title,
           'unescapedUrl' => result.url,
@@ -243,7 +243,7 @@ class WebSearch < Search
         nil
       end
     end
-    synonyms.uniq.each{|synonym| Synonym.create(:phrase => @query.downcase, :alias => synonym, :source => 'bing')}
+    @synonyms.uniq!
     processed.compact
   end
 
@@ -321,7 +321,8 @@ class WebSearch < Search
         when "WebSearch"
           :web
       end
-    QueryImpression.log(vertical, affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : affiliate.name, self.query, modules)
+    synonyms = (vertical == :web) ? (@synonyms || []) : []
+    QueryImpression.log(vertical, affiliate.nil? ? Affiliate::USAGOV_AFFILIATE_NAME : affiliate.name, self.query, modules, synonyms)
   end
 
   def english_locale?
