@@ -114,9 +114,9 @@ describe Affiliate do
         affiliate.uses_one_serp?.should be_true
       end
 
-      it "should set default one serp fields to '1'" do
+      it "should set default one serp fields" do
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_theme => 'elegant'))
-        affiliate.staged_css_property_hash[:show_content_border].should == '1'
+        affiliate.staged_css_property_hash[:show_content_border].should == '0'
         affiliate.staged_css_property_hash[:show_content_box_shadow].should == '1'
       end
 
@@ -190,8 +190,7 @@ describe Affiliate do
 
     describe "on update_attributes_for_staging" do
       let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
-      let(:staged_css_property_hash) { { 'font_family' => 'Verdana, sans-serif',
-                                         'title_link_color' => '#111',
+      let(:staged_css_property_hash) { { 'title_link_color' => '#111',
                                          'visited_title_link_color' => '#222',
                                          'description_text_color' => '#444',
                                          'url_link_color' => '#555' } }
@@ -202,7 +201,7 @@ describe Affiliate do
                            :staged_footer => "<span>footer</span>",
                            :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
                            :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
-                           :staged_theme => Affiliate::THEMES.keys.first.to_s,
+                           :staged_theme => "custom",
                            :staged_css_property_hash =>  staged_css_property_hash }
       end
 
@@ -270,6 +269,11 @@ describe Affiliate do
         affiliate.update_attributes_for_staging(:staged_header_footer_css => '')
         affiliate.staged_header_footer_sass.should be_blank
       end
+
+      it "should not override non custom theme attributes" do
+        affiliate.update_attributes_for_staging(@update_params.merge(:staged_theme => 'default')).should be_true
+        affiliate.staged_css_property_hash(true).should == Affiliate::THEMES[:default]
+      end
     end
 
     describe "on update_attributes_for_current" do
@@ -281,7 +285,7 @@ describe Affiliate do
                           :staged_footer => "<span>footer</span>",
                           :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
                           :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
-                          :staged_theme => Affiliate::THEMES.keys.first,
+                          :staged_theme => "custom",
                           :staged_css_property_hash => { 'title_link_color' => '#ffffff', 'visited_title_link_color' => '#00ff00' } }
       end
 
@@ -368,6 +372,12 @@ describe Affiliate do
         affiliate.header_footer_sass.should =~ /blue/
         affiliate.update_attributes_for_current(:staged_header_footer_css => '')
         affiliate.header_footer_sass.should be_blank
+      end
+
+      it "should not override non custom theme attributes" do
+        affiliate.update_attributes_for_current(@update_params.merge(:staged_theme => 'default')).should be_true
+        affiliate.staged_css_property_hash(true).should == Affiliate::THEMES[:default]
+        affiliate.css_property_hash(true).should == Affiliate::THEMES[:default]
       end
     end
 

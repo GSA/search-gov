@@ -16,11 +16,18 @@ body
   +inline-block
   text-align: left
 
-.with-content-border, .with-content-box-shadow
+.with-content-box-shadow
+  #container
+    min-width: 960px
+    margin: 0 auto
+
+.with-content-border, .with-content-border.with-content-box-shadow
   #container
     min-width: 960px
     margin: 20px auto
-    padding: 20px 0px
+    #default-header
+      +border-top-right-radius(8px)
+      +border-top-left-radius(8px)
 
 .with-content-border #container
   +border-radius(8px)
@@ -96,7 +103,7 @@ body
 
 #left_column
   float: left
-  width: 200px
+  width: 130px
   overflow: hidden
   display: inline
   padding: 47px 20px 0 10px

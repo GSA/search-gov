@@ -166,9 +166,9 @@ Feature: Affiliate clients
     Then the "Site name" field should contain "My awesome agency"
     When I follow "Look and feel"
     Then the "Gettysburg" theme should be selected
-    And the "Page background color" field should contain "#FFFFFF"
-    And the "Content background color" field should contain "#F7F7F7"
-    And the "Show content border" checkbox should be checked
+    And the "Page background color" field should contain "#F7F7F7"
+    And the "Content background color" field should contain "#FFFFFF"
+    And the "Show content border" checkbox should not be checked
     And the "Content border color" field should contain "#CACACA"
     And the "Content border color" field should be disabled
     And the "Show content box shadow" checkbox should be checked

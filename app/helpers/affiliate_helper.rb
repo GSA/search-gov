@@ -70,7 +70,7 @@ module AffiliateHelper
       font_family = render_affiliate_css_property_value(affiliate.css_property_hash, :font_family)
       color = render_affiliate_css_property_value(affiliate.css_property_hash, :search_button_text_color)
       background_color = render_affiliate_css_property_value(affiliate.css_property_hash, :search_button_background_color)
-      style = "font-family: #{font_family}; font-size: 32px; color: #{color}; background-color: #{background_color}; margin: 0 auto 1em; padding: 10px; width: 940px;"
+      style = "font-family: Georgia, serif; font-size: 50px; color: #{color}; background-color: #{background_color}; margin: 0 auto 30px; padding: 10px; width: 940px;"
       content_tag :div, affiliate.display_name, :id => 'default-header', :style => style
     else
       ""
