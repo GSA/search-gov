@@ -817,7 +817,7 @@ Feature: Affiliate clients
     And I follow "Look and feel"
     And I fill in the following:
       | Search results page title      |                       |
-      | Search button text color       | invalid color         |
+      | Search button text color       | #DDDD                 |
       | Search button background color | invalid color         |
       | Left tab text color            | invalid color         |
       | Title link color               | invalid color         |
@@ -958,17 +958,16 @@ Feature: Affiliate clients
     And I follow "Header and footer"
     And I fill in the following:
       | External CSS URL                                                       | cdn.agency.gov/staged_custom.css |
-      | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css }          |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css-syntax }   |
       | Enter HTML to customize the top of your search results page.           | New header                       |
       | Enter HTML to customize the bottom of your search results page.        | New footer                       |
     And I press "Save for Preview"
-    Then I should see "Invalid CSS"
-    And I should see "Header and Footer of the Search Results Page" in the page header
+    Then I should see "Header and Footer of the Search Results Page" in the page header
+    And I should see "Invalid CSS"
     When I fill in the following:
-      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: blue } |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: #DDDD } |
     And I press "Save for Preview"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
-    And I should see "Staged changes to your site successfully"
+    Then I should see "Colors must have either three or six digits"
 
   Scenario: Editing header/footer with problem and make it live
     Given the following Affiliates exist:
@@ -980,17 +979,16 @@ Feature: Affiliate clients
     And I follow "Header and footer"
     And I fill in the following:
       | External CSS URL                                                       | cdn.agency.gov/staged_custom.css |
-      | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css }          |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { invalid-css-syntax }   |
       | Enter HTML to customize the top of your search results page.           | New header                       |
       | Enter HTML to customize the bottom of your search results page.        | New footer                       |
     And I press "Make Live"
-    Then I should see "Invalid CSS"
-    And I should see "Header and Footer of the Search Results Page" in the page header
+    Then I should see "Header and Footer of the Search Results Page" in the page header
+    And I should see "Invalid CSS"
     When I fill in the following:
-      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: blue } |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: #DDDD } |
     And I press "Make Live"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
-    And I should see "Updated changes to your live site successfully"
+    Then I should see "Colors must have either three or six digits"
 
   Scenario: Visiting the header and footer page for affiliate without external_css_url
     Given the following Affiliates exist:

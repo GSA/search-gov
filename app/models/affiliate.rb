@@ -447,8 +447,9 @@ class Affiliate < ActiveRecord::Base
 
   def parse_css(css)
     return if css.blank?
-    sass_values = Sass::CSS.new(css).render(:sass).split("\n")
-    sass_values.collect { |sass_value| "  #{sass_value}" }.join("\n")
+    sass_values = Sass::CSS.new(css).render
+    Sass::Engine.new(sass_values).render
+    sass_values.split("\n").collect { |sass_value| "  #{sass_value}" }.join("\n")
   end
 
   def existing_site_domain_hash

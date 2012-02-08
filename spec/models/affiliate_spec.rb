@@ -165,11 +165,23 @@ describe Affiliate do
       end
 
       it "should validate header_footer_css" do
-        { :header_footer_css => "h1 { invalid: }", :staged_header_footer_css => "h1 { invalid: }" }.each do |key, value|
-        affiliate = Affiliate.new(@valid_create_attributes.merge(key => value))
+        affiliate = Affiliate.new(@valid_create_attributes.merge(:header_footer_css => "h1 { invalid-css-syntax }"))
         affiliate.save.should be_false
-        affiliate.errors[:base].first.should match(/CSS for the top and bottom of your search results page: Invalid CSS/)
-        end
+        affiliate.errors[:base].first.should match(/Invalid CSS/)
+
+        affiliate = Affiliate.new(@valid_create_attributes.merge(:header_footer_css => "h1 { color: #DDDD }"))
+        affiliate.save.should be_false
+        affiliate.errors[:base].first.should match(/Colors must have either three or six digits/)
+      end
+
+      it "should validate staged_header_footer_css for invalid css property value" do
+        affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_header_footer_css => "h1 { invalid-css-syntax }"))
+        affiliate.save.should be_false
+        affiliate.errors[:base].first.should match(/Invalid CSS/)
+
+        affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_header_footer_css => "h1 { color: #DDDD }"))
+        affiliate.save.should be_false
+        affiliate.errors[:base].first.should match(/Colors must have either three or six digits/)
       end
 
       it "should normalize site domains" do
