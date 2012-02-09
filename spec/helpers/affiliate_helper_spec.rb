@@ -90,4 +90,22 @@ describe AffiliateHelper do
       it { should have_selector "input", :disabled => 'disabled', :value => '#B58100' }
     end
   end
+
+  describe "#render_managed_header" do
+    context "when the affiliate has a header image and an exception occurs when trying to retrieve the image" do
+      let(:header_image) { mock('header image') }
+      let(:affiliate) { mock_model(Affiliate,
+                                   :header_image_file_name => 'logo.gif',
+                                   :header_image => header_image,
+                                   :managed_header_text => nil,
+                                   :managed_header_home_url => nil,
+                                   :managed_header_css_properties => Affiliate::DEFAULT_MANAGED_HEADER_CSS_PROPERTIES) }
+
+      before do
+        header_image.should_receive(:url).and_raise
+      end
+
+      specify { helper.render_managed_header(affiliate).should_not have_select(:img) }
+    end
+  end
 end

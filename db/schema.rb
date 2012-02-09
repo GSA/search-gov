@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120214020545) do
+ActiveRecord::Schema.define(:version => 20120217081247) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -21,20 +21,20 @@ ActiveRecord::Schema.define(:version => 20120214020545) do
   end
 
   create_table "affiliates", :force => true do |t|
-    t.string   "name",                                                                            :null => false
+    t.string   "name",                                                                             :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "has_staged_content",                             :default => false,               :null => false
+    t.boolean  "has_staged_content",                              :default => false,               :null => false
     t.string   "website"
     t.integer  "affiliate_template_id"
-    t.boolean  "is_sayt_enabled",                                :default => true
-    t.string   "related_topics_setting",           :limit => 30, :default => "affiliate_enabled"
+    t.boolean  "is_sayt_enabled",                                 :default => true
+    t.string   "related_topics_setting",            :limit => 30, :default => "affiliate_enabled"
     t.integer  "staged_affiliate_template_id"
-    t.string   "display_name",                                                                    :null => false
-    t.string   "search_results_page_title",                                                       :null => false
-    t.string   "staged_search_results_page_title",                                                :null => false
-    t.boolean  "exclude_webtrends",                              :default => false,               :null => false
-    t.boolean  "is_popular_links_enabled",                       :default => true
+    t.string   "display_name",                                                                     :null => false
+    t.string   "search_results_page_title",                                                        :null => false
+    t.string   "staged_search_results_page_title",                                                 :null => false
+    t.boolean  "exclude_webtrends",                               :default => false,               :null => false
+    t.boolean  "is_popular_links_enabled",                        :default => true
     t.string   "external_css_url"
     t.string   "staged_external_css_url"
     t.string   "favicon_url"
@@ -43,22 +43,32 @@ ActiveRecord::Schema.define(:version => 20120214020545) do
     t.string   "flickr_url"
     t.string   "twitter_handle"
     t.string   "youtube_handle"
-    t.boolean  "is_image_search_enabled",                        :default => true
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"
-    t.string   "top_searches_label",                             :default => "Search Trends"
+    t.boolean  "is_image_search_enabled",                         :default => true
+    t.string   "top_searches_label",                              :default => "Search Trends"
     t.string   "theme"
     t.string   "staged_theme"
-    t.string   "locale",                                         :default => "en",                :null => false
+    t.string   "locale",                                          :default => "en",                :null => false
     t.text     "scope_ids"
-    t.boolean  "is_agency_govbox_enabled",                       :default => false
-    t.boolean  "is_medline_govbox_enabled",                      :default => false
+    t.boolean  "is_agency_govbox_enabled",                        :default => false
+    t.boolean  "is_medline_govbox_enabled",                       :default => false
     t.text     "previous_fields_json"
     t.text     "live_fields_json"
     t.text     "staged_fields_json"
-    t.string   "results_source",                                 :default => "bing"
+    t.string   "results_source",                                  :default => "bing"
     t.text     "scope_keywords"
+    t.boolean  "uses_managed_header_footer"
+    t.boolean  "staged_uses_managed_header_footer"
+    t.string   "header_image_file_name"
+    t.string   "header_image_content_type"
+    t.integer  "header_image_file_size"
+    t.datetime "header_image_updated_at"
+    t.string   "staged_header_image_file_name"
+    t.string   "staged_header_image_content_type"
+    t.integer  "staged_header_image_file_size"
+    t.datetime "staged_header_image_updated_at"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"
@@ -140,13 +150,13 @@ ActiveRecord::Schema.define(:version => 20120214020545) do
     t.string   "url",                                              :null => false
     t.string   "description",                                      :null => false
     t.datetime "created_at"
+    t.string   "locale",           :limit => 6,                    :null => false
     t.datetime "updated_at"
     t.text     "keywords"
     t.boolean  "auto_generated",                :default => false, :null => false
     t.string   "status",                                           :null => false
     t.date     "publish_start_on",                                 :null => false
     t.date     "publish_end_on"
-    t.string   "locale",           :limit => 6,                    :null => false
   end
 
   add_index "boosted_contents", ["affiliate_id"], :name => "index_boosted_sites_on_affiliate_id"
@@ -163,9 +173,9 @@ ActiveRecord::Schema.define(:version => 20120214020545) do
   create_table "daily_query_noresults_stats", :force => true do |t|
     t.date    "day",       :null => false
     t.string  "affiliate", :null => false
+    t.string  "locale",    :null => false
     t.string  "query",     :null => false
     t.integer "times",     :null => false
-    t.string  "locale",    :null => false
   end
 
   add_index "daily_query_noresults_stats", ["affiliate", "day"], :name => "index_daily_query_noresults_stats_on_affiliate_and_day"
@@ -187,9 +197,9 @@ ActiveRecord::Schema.define(:version => 20120214020545) do
     t.string  "affiliate_name", :null => false
     t.string  "module_tag",     :null => false
     t.string  "vertical",       :null => false
+    t.string  "locale",         :null => false
     t.integer "impressions",    :null => false
     t.integer "clicks",         :null => false
-    t.string  "locale",         :null => false
   end
 
   add_index "daily_search_module_stats", ["module_tag", "day"], :name => "index_daily_search_module_stats_on_module_tag_and_day"
@@ -257,6 +267,7 @@ ActiveRecord::Schema.define(:version => 20120214020545) do
     t.integer  "affiliate_id"
     t.string   "title",                 :null => false
     t.string   "title_url"
+    t.string   "locale",                :null => false
     t.string   "status",                :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -270,7 +281,6 @@ ActiveRecord::Schema.define(:version => 20120214020545) do
     t.string   "image_attribution"
     t.string   "image_attribution_url"
     t.string   "layout",                :null => false
-    t.string   "locale",                :null => false
   end
 
   add_index "featured_collections", ["affiliate_id"], :name => "index_featured_collections_on_affiliate_id"

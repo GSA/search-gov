@@ -266,11 +266,16 @@ Feature:  Administration
 
   Scenario: Viewing affiliate edit page from the Admin Center
     Given the following Affiliates exist:
-      | display_name | name       | contact_email                | contact_name | header_footer_css     | staged_header_footer_css | header          | staged_header          | footer          | staged_footer          |
-      | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     | #live { color: blue } | #staged { color: green } | <h1>header</h1> | <h1>staged header</h1> | <h1>footer</h1> | <h1>staged footer</h1> |
+      | display_name | name       | contact_email                | contact_name | managed_header_home_url | staged_managed_header_home_url | managed_header_text  | staged_managed_header_text  | header_footer_css     | staged_header_footer_css | header          | staged_header          | footer          | staged_footer          |
+      | agency site  | agency.gov | affiliate_manager@agency.gov | John Bar     | web.agency.gov          | staged.agency.gov              | this is my SERP page | this is my staged SERP page | #live { color: blue } | #staged { color: green } | <h1>header</h1> | <h1>staged header</h1> | <h1>footer</h1> | <h1>staged footer</h1> |
     And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the agency.gov's admin edit affiliate page
-    Then the textarea labeled "Header footer css" should contain "#live { color: blue }"
+    Then the "Uses one serp" checkbox should be checked
+    And the "Uses managed header footer" checkbox should be checked
+    And the "Managed header home url" field should contain "http://web.agency.gov"
+    And the "Staged managed header home url" field should contain "http://staged.agency.gov"
+    And the "Managed header text" field should contain "this is my SERP page"
+    And the textarea labeled "Header footer css" should contain "#live { color: blue }"
     And the textarea labeled "Staged header footer css" should contain "#staged { color: green }"
     And the textarea labeled "Header" should contain "<h1>header</h1>"
     And the textarea labeled "Staged header" should contain "<h1>staged header</h1>"

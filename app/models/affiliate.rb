@@ -1,6 +1,9 @@
 require 'sass/css'
 
 class Affiliate < ActiveRecord::Base
+  CLOUD_FILES_CONTAINER = 'affiliate images'
+  MAXIMUM_IMAGE_SIZE_IN_KB = 512
+
   validates_presence_of :display_name, :name, :search_results_page_title, :staged_search_results_page_title, :locale, :results_source
   validates_uniqueness_of :name, :case_sensitive => false
   validates_length_of :name, :within=> (2..33)
@@ -21,22 +24,41 @@ class Affiliate < ActiveRecord::Base
   has_many :top_searches, :dependent => :destroy, :order => 'position ASC', :limit => 5
   has_many :site_domains, :dependent => :destroy
   has_many :indexed_domains, :dependent => :destroy
+  has_attached_file :header_image,
+                    :styles => { :large => "300x150>" },
+                    :storage => :cloud_files,
+                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
+                    :container => CLOUD_FILES_CONTAINER,
+                    :path => "#{Rails.env}/:id/managed_header_image/:updated_at/:style/:basename.:extension",
+                    :ssl => true
+  has_attached_file :staged_header_image,
+                    :styles => { :large => "300x150>" },
+                    :storage => :cloud_files,
+                    :cloudfiles_credentials => "#{Rails.root}/config/rackspace_cloudfiles.yml",
+                    :container => CLOUD_FILES_CONTAINER,
+                    :path => "#{Rails.env}/:id/managed_header_image/:updated_at/:style/:basename.:extension",
+                    :ssl => true
+
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
-  validate :validate_css_property_hash, :validate_header_footer_css
-  before_create :set_uses_one_serp
-  before_save :set_default_theme, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :set_json_fields
+  validate :validate_css_property_hash, :validate_header_footer_css, :validate_managed_header_css_properties
+  validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
+  validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
+  validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
+  before_save :set_default_one_serp_fields, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :set_json_fields
+  before_update :clear_existing_staged_header_image
   before_validation :set_default_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   after_validation :update_error_keys
   after_create :normalize_site_domains
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json
+  attr_accessor :mark_staged_header_image_for_deletion
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
   accepts_nested_attributes_for :rss_feeds, :reject_if => :all_blank
-  
+
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
@@ -114,9 +136,15 @@ class Affiliate < ActiveRecord::Base
                        :url_link_color => '#B58100' }
   THEMES[:custom] = { :display_name => 'Custom' }
 
-  DEFAULT_CSS_PROPERTIES = { :font_family => FONT_FAMILIES[0],
-                             :show_content_border => '0',
-                             :show_content_box_shadow => '0' }.merge(THEMES[:default])
+  DEFAULT_CSS_PROPERTIES = {
+      :font_family => FONT_FAMILIES[0],
+      :show_content_border => '0',
+      :show_content_box_shadow => '0' }.merge(THEMES[:default])
+
+  DEFAULT_MANAGED_HEADER_CSS_PROPERTIES = {
+      :header_background_color => THEMES[:default][:search_button_background_color],
+      :header_text_color => THEMES[:default][:search_button_text_color] }
+
   NEW_AFFILIATE_CSS_PROPERTIES = { :show_content_border => '0',
                                    :show_content_box_shadow => '1' }
   RESULTS_SOURCES = %w(bing odie bing+odie)
@@ -137,8 +165,14 @@ class Affiliate < ActiveRecord::Base
   end
 
   define_json_columns_accessors :column_name_method => :previous_fields, :fields => [:previous_header, :previous_footer]
-  define_json_columns_accessors :column_name_method => :live_fields, :fields => [:header, :footer, :header_footer_sass, :header_footer_css]
-  define_json_columns_accessors :column_name_method => :staged_fields, :fields => [:staged_header, :staged_footer, :staged_header_footer_sass, :staged_header_footer_css]
+  define_json_columns_accessors :column_name_method => :live_fields,
+                                :fields => [:header, :footer,
+                                            :header_footer_sass, :header_footer_css,
+                                            :managed_header_css_properties, :managed_header_home_url, :managed_header_text]
+  define_json_columns_accessors :column_name_method => :staged_fields,
+                                :fields => [:staged_header, :staged_footer,
+                                            :staged_header_footer_sass, :staged_header_footer_css,
+                                            :staged_managed_header_css_properties, :staged_managed_header_home_url, :staged_managed_header_text]
 
   def name=(name)
     new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
@@ -185,13 +219,31 @@ class Affiliate < ActiveRecord::Base
     self.update_attributes(attributes)
   end
 
-  def update_attributes_for_current(attributes)
-    attributes.merge!(:previous_header => self.header, :previous_footer => self.footer)
-    %w{ header_footer_css header footer affiliate_template_id search_results_page_title favicon_url external_css_url theme css_property_hash }.each do |field|
-      attributes[field.to_sym] = attributes["staged_#{field}".to_sym] if attributes.include?("staged_#{field}".to_sym)
+  def update_attributes_for_live(attributes)
+    transaction do
+      if self.update_attributes(attributes)
+        self.previous_header = header
+        self.previous_footer = footer
+        %w{ header footer header_footer_css
+            affiliate_template_id search_results_page_title favicon_url external_css_url
+            uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text theme css_property_hash }.each do |field|
+          if attributes.include?("staged_#{field}".to_sym)
+            self.send("#{field}=", attributes["staged_#{field}".to_sym])
+          else
+            self.send("#{field}=", self.send("staged_#{field}"))
+          end
+        end
+        self.header_image = staged_header_image_file_name.blank? ? nil : staged_header_image
+        self.has_staged_content = false
+        self.save!
+        true
+      else
+        false
+      end
     end
-    attributes[:has_staged_content] = false
-    self.update_attributes(attributes)
+  end
+
+  def copy_attributes_from_staged_to_live
   end
 
   def build_search_results_page_title(query)
@@ -217,13 +269,17 @@ class Affiliate < ActiveRecord::Base
       :staged_search_results_page_title => self.staged_search_results_page_title,
       :staged_favicon_url => self.staged_favicon_url,
       :staged_external_css_url => self.staged_external_css_url,
+      :staged_uses_managed_header_footer => self.staged_uses_managed_header_footer,
+      :staged_managed_header_css_properties => staged_managed_header_css_properties,
+      :staged_managed_header_home_url => staged_managed_header_home_url,
+      :staged_managed_header_text => self.staged_managed_header_text,
       :staged_theme => self.staged_theme,
       :staged_css_property_hash => self.staged_css_property_hash
     }
   end
 
   def push_staged_changes
-    self.update_attributes_for_current(self.staging_attributes)
+    self.update_attributes_for_live(self.staging_attributes)
   end
 
   def cancel_staged_changes
@@ -235,10 +291,16 @@ class Affiliate < ActiveRecord::Base
       :staged_search_results_page_title => self.search_results_page_title,
       :staged_favicon_url => self.favicon_url,
       :staged_external_css_url => self.external_css_url,
+      :staged_uses_managed_header_footer => self.uses_managed_header_footer,
+      :staged_managed_header_css_properties => managed_header_css_properties,
+      :staged_managed_header_text => self.managed_header_text,
       :staged_theme => self.theme,
       :staged_css_property_hash => self.css_property_hash,
       :has_staged_content => false
     })
+  end
+
+  def copy_attributes_from_live_to_staged
   end
 
   def sync_staged_attributes
@@ -268,7 +330,7 @@ class Affiliate < ActiveRecord::Base
   end
 
   def css_property_hash(reload = false)
-    return nil if theme.blank?
+    return nil if !uses_one_serp? or theme.blank?
     @css_property_hash = nil if reload
     if theme.to_sym == :custom
       @css_property_hash ||= (css_properties.blank? ? {} : JSON.parse(css_properties, :symbolize_keys => true))
@@ -277,8 +339,8 @@ class Affiliate < ActiveRecord::Base
     end
   end
 
-  def staged_css_property_hash(reload = true)
-    return nil if staged_theme.blank?
+  def staged_css_property_hash(reload = false)
+    return nil if !uses_one_serp? or staged_theme.blank?
     @staged_css_property_hash = nil if reload
     if staged_theme.to_sym == :custom
       @staged_css_property_hash ||= (staged_css_properties.blank? ? {} : JSON.parse(staged_css_properties, :symbolize_keys => true))
@@ -391,6 +453,8 @@ class Affiliate < ActiveRecord::Base
     self.staged_favicon_url = "http://#{self.staged_favicon_url}" unless self.staged_favicon_url.blank? or self.staged_favicon_url =~ %r{^http(s?)://}i
     self.external_css_url = "http://#{self.external_css_url}" unless self.external_css_url.blank? or self.external_css_url =~ %r{^http(s?)://}i
     self.staged_external_css_url = "http://#{self.staged_external_css_url}" unless self.staged_external_css_url.blank? or self.staged_external_css_url =~ %r{^http(s?)://}i
+    self.managed_header_home_url = "http://#{managed_header_home_url}" unless managed_header_home_url.blank? or managed_header_home_url =~ %r{^http(s?)://}i
+    self.staged_managed_header_home_url = "http://#{staged_managed_header_home_url}" unless staged_managed_header_home_url.blank? or staged_managed_header_home_url =~ %r{^http(s?)://}i
   end
 
   def validate_css_property_hash
@@ -411,27 +475,74 @@ class Affiliate < ActiveRecord::Base
   def validate_color_in_css_property_hash(hash)
     unless hash.blank?
       DEFAULT_CSS_PROPERTIES.keys.each do |key|
-        next unless key.to_s =~ /color$/
-        value = hash[key.to_s]
-        next if value.blank?
-        errors.add(:base, "#{key.to_s.humanize} should consist of a # character followed by 3 or 6 hexadecimal digits") unless value =~ /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+        validate_color_property(key, hash[key])
       end
     end
   end
 
-  def set_css_properties
-    if self.new_record?
-      @staged_css_property_hash = ActiveSupport::OrderedHash.new if @staged_css_property_hash.nil?
-      @staged_css_property_hash.reverse_merge!(NEW_AFFILIATE_CSS_PROPERTIES)
-      @css_property_hash = ActiveSupport::OrderedHash.new if @css_property_hash.nil?
-      @css_property_hash.reverse_merge!(NEW_AFFILIATE_CSS_PROPERTIES)
-    end
-    self.css_properties = @css_property_hash.to_json unless @css_property_hash.blank?
-    self.staged_css_properties = @staged_css_property_hash.to_json unless @staged_css_property_hash.blank?
+  def validate_managed_header_css_properties
+    validates_color_in_managed_header_css_properties staged_managed_header_css_properties unless staged_managed_header_css_properties.blank?
+    validates_color_in_managed_header_css_properties managed_header_css_properties unless managed_header_css_properties.blank?
   end
 
-  def set_uses_one_serp
-    self.uses_one_serp = true if self.uses_one_serp.nil?
+  def validates_color_in_managed_header_css_properties(css_properties)
+    DEFAULT_MANAGED_HEADER_CSS_PROPERTIES.keys.each do |key|
+      validate_color_property(key, css_properties[key])
+    end
+  end
+
+  def validate_color_property(key, value)
+    return unless key.to_s =~ /color$/ and value.present?
+    errors.add(:base, "#{key.to_s.humanize} should consist of a # character followed by 3 or 6 hexadecimal digits") unless value =~ /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
+  end
+
+
+  def set_default_one_serp_fields
+    if new_record?
+      self.uses_one_serp = true if uses_one_serp.nil?
+    end
+
+    if uses_one_serp?
+      self.theme = THEMES.keys.first.to_s if theme.blank?
+      self.staged_theme = THEMES.keys.first.to_s if staged_theme.blank?
+      self.managed_header_text = display_name if managed_header_text.nil?
+      self.staged_managed_header_text = display_name if staged_managed_header_text.nil?
+    else
+      self.theme = nil
+      self.staged_theme = nil
+      self.uses_managed_header_footer = nil
+      self.staged_uses_managed_header_footer = nil
+    end
+
+    if new_record? and uses_one_serp?
+      self.uses_managed_header_footer = true if uses_managed_header_footer.nil?
+      self.staged_uses_managed_header_footer = true if staged_uses_managed_header_footer.nil?
+      @css_property_hash = ActiveSupport::OrderedHash.new if @css_property_hash.nil?
+      @css_property_hash.reverse_merge!(NEW_AFFILIATE_CSS_PROPERTIES)
+      @staged_css_property_hash = ActiveSupport::OrderedHash.new if @staged_css_property_hash.nil?
+      @staged_css_property_hash.reverse_merge!(NEW_AFFILIATE_CSS_PROPERTIES)
+    end
+
+    if uses_managed_header_footer?
+      self.managed_header_css_properties = ActiveSupport::OrderedHash.new if managed_header_css_properties.nil?
+      current_css_property_hash = theme.to_sym == :custom ? css_property_hash : THEMES[theme.to_sym]
+      self.managed_header_css_properties[:header_background_color] = current_css_property_hash[:search_button_background_color] if managed_header_css_properties[:header_background_color].nil?
+      self.managed_header_css_properties[:header_text_color] = current_css_property_hash[:search_button_text_color] if managed_header_css_properties[:header_text_color].nil?
+    end
+
+    if staged_uses_managed_header_footer?
+      self.staged_managed_header_css_properties = ActiveSupport::OrderedHash.new if staged_managed_header_css_properties.nil?
+      current_staged_css_property_hash = staged_theme.to_sym == :custom ? staged_css_property_hash : THEMES[staged_theme.to_sym]
+      self.staged_managed_header_css_properties[:header_background_color] = current_staged_css_property_hash[:search_button_background_color] if staged_managed_header_css_properties[:header_background_color].nil?
+      self.staged_managed_header_css_properties[:header_text_color] = current_staged_css_property_hash[:search_button_text_color] if staged_managed_header_css_properties[:header_text_color].nil?
+    end
+  end
+
+  def set_css_properties
+    if uses_one_serp?
+      self.css_properties = @css_property_hash.to_json unless @css_property_hash.blank?
+      self.staged_css_properties = @staged_css_property_hash.to_json unless @staged_css_property_hash.blank?
+    end
   end
 
   def set_header_footer_sass
@@ -464,12 +575,8 @@ class Affiliate < ActiveRecord::Base
       error_value = self.errors.delete(:"site_domains.domain")
       self.errors.add(:domain, error_value)
     end
-  end
-
-  def set_default_theme
-    if uses_one_serp?
-      self.theme = THEMES.keys.first.to_s if theme.blank?
-      self.staged_theme = THEMES.keys.first.to_s if staged_theme.blank?
+    if errors.include?(:staged_header_image_file_size)
+      errors.add(:header_image_file_size, errors.delete(:staged_header_image_file_size))
     end
   end
 
@@ -486,8 +593,15 @@ class Affiliate < ActiveRecord::Base
   end
 
   def set_json_fields
-    self.previous_fields_json = previous_fields.to_json
-    self.live_fields_json = live_fields.to_json
-    self.staged_fields_json = staged_fields.to_json
+    self.previous_fields_json = ActiveSupport::OrderedHash[previous_fields.sort].to_json
+    self.live_fields_json = ActiveSupport::OrderedHash[live_fields.sort].to_json
+    self.staged_fields_json = ActiveSupport::OrderedHash[staged_fields.sort].to_json
   end
+
+  def clear_existing_staged_header_image
+    if staged_header_image? and !staged_header_image.dirty? and mark_staged_header_image_for_deletion == '1'
+      staged_header_image.clear
+    end
+  end
+
 end

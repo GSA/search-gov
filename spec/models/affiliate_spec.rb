@@ -44,6 +44,10 @@ describe Affiliate do
     it { should_not allow_mass_assignment_of(:previous_fields_json) }
     it { should_not allow_mass_assignment_of(:live_fields_json) }
     it { should_not allow_mass_assignment_of(:staged_fields_json) }
+    it { should have_attached_file :header_image }
+    it { should have_attached_file :staged_header_image }
+    it { should validate_attachment_content_type(:header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
+    it { should validate_attachment_content_type(:staged_header_image).allowing(%w{ image/gif image/jpeg image/pjpeg image/png image/x-png }).rejecting(nil) }
 
     it "should create a new instance given valid attributes" do
       Affiliate.create!(@valid_create_attributes)
@@ -109,15 +113,36 @@ describe Affiliate do
         JSON.parse(affiliate.staged_css_properties, :symbolize_keys => true)[:visited_title_link_color].should == '#0000ff'
       end
 
-      it "should set one_serp field to true" do
-        affiliate = Affiliate.create!(@valid_create_attributes)
-        affiliate.uses_one_serp?.should be_true
-      end
-
       it "should set default one serp fields" do
         affiliate = Affiliate.create!(@valid_create_attributes.merge(:staged_theme => 'elegant'))
+        affiliate.uses_one_serp?.should be_true
+        affiliate.uses_managed_header_footer?.should be_true
+        affiliate.staged_uses_managed_header_footer?.should be_true
+        affiliate.managed_header_css_properties.should_not be_blank
+        affiliate.staged_managed_header_css_properties.should_not be_blank
+        affiliate.managed_header_text.should == 'My Awesome Site'
+        affiliate.staged_managed_header_text.should == 'My Awesome Site'
+        affiliate.css_property_hash[:show_content_border].should == '0'
         affiliate.staged_css_property_hash[:show_content_border].should == '0'
+        affiliate.css_property_hash[:show_content_box_shadow].should == '1'
         affiliate.staged_css_property_hash[:show_content_box_shadow].should == '1'
+      end
+
+      it "should not set default one serp fields when not using one serp" do
+        affiliate = Affiliate.new(@valid_create_attributes)
+        affiliate.uses_one_serp = false
+        affiliate.save!
+        affiliate.uses_one_serp?.should be_false
+        affiliate.uses_managed_header_footer?.should be_false
+        affiliate.staged_uses_managed_header_footer?.should be_false
+        affiliate.managed_header_css_properties.should be_blank
+        affiliate.staged_managed_header_css_properties.should be_blank
+        affiliate.managed_header_text.should be_nil
+        affiliate.staged_managed_header_text.should be_nil
+        affiliate.theme.should be_nil
+        affiliate.staged_theme.should be_nil
+        affiliate.css_property_hash.should be_blank
+        affiliate.staged_css_property_hash.should be_blank
       end
 
       it "should be valid when FONT_FAMILIES includes font_family in css property hash" do
@@ -132,23 +157,23 @@ describe Affiliate do
 
       it "should be valid when color property in css property hash consists of a # character followed by 3 or 6 hexadecimal digits " do
         %w{ #333 #FFF #fff #12F #666666 #666FFF #FFFfff #ffffff }.each do |valid_color|
-          Affiliate.new(@valid_create_attributes.merge(
-                            :css_property_hash => { 'left_tab_text_color' => "#{valid_color}",
+          css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({ 'left_tab_text_color' => "#{valid_color}",
                                                     'title_link_color' => "#{valid_color}",
                                                     'visited_title_link_color' => "#{valid_color}",
                                                     'description_text_color' => "#{valid_color}",
-                                                    'url_link_color' => "#{valid_color}" })).should be_valid
+                                                    'url_link_color' => "#{valid_color}" })
+          Affiliate.new(@valid_create_attributes.merge(:css_property_hash => css_property_hash)).should be_valid
         end
       end
 
       it "should be invalid when color property in css property hash does not consist of a # character followed by 3 or 6 hexadecimal digits " do
         %w{ 333 invalid #err #1 #22 #4444 #55555 ffffff 1 22 4444 55555 666666 }.each do |invalid_color|
-          affiliate = Affiliate.new(@valid_create_attributes.merge(
-                                        :css_property_hash => { 'left_tab_text_color' => "#{invalid_color}",
+          css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({ 'left_tab_text_color' => "#{invalid_color}",
                                                                 'title_link_color' => "#{invalid_color}",
                                                                 'visited_title_link_color' => "#{invalid_color}",
                                                                 'description_text_color' => "#{invalid_color}",
-                                                                'url_link_color' => "#{invalid_color}" }))
+                                                                'url_link_color' => "#{invalid_color}" })
+          affiliate = Affiliate.new(@valid_create_attributes.merge(:css_property_hash => css_property_hash))
           affiliate.should_not be_valid
           affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
           affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
@@ -158,7 +183,8 @@ describe Affiliate do
       end
 
       it "should validate color property in staged css property hash" do
-        affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_css_property_hash => { 'title_link_color' => 'invalid', 'visited_title_link_color' => '#err' }))
+        staged_css_property_hash = ActiveSupport::HashWithIndifferentAccess.new({ 'title_link_color' => 'invalid', 'visited_title_link_color' => '#DDDD' })
+        affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_css_property_hash => staged_css_property_hash))
         affiliate.save.should be_false
         affiliate.errors[:base].should include("Title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
         affiliate.errors[:base].should include("Visited title link color should consist of a # character followed by 3 or 6 hexadecimal digits")
@@ -286,110 +312,170 @@ describe Affiliate do
         affiliate.update_attributes_for_staging(@update_params.merge(:staged_theme => 'default')).should be_true
         affiliate.staged_css_property_hash(true).should == Affiliate::THEMES[:default]
       end
+
+      context "when there is an existing image" do
+        let(:staged_header_image) { mock('staged header image') }
+
+        before do
+          affiliate.should_receive(:staged_header_image?).and_return(true)
+          affiliate.should_receive(:staged_header_image).at_least(:once).and_return(staged_header_image)
+        end
+
+        context "when marking an existing staged header image for deletion" do
+          it "should clear existing image" do
+            staged_header_image.should_receive(:dirty?).and_return(false)
+            staged_header_image.should_receive(:clear)
+            affiliate.update_attributes_for_staging(@update_params.merge(:mark_staged_header_image_for_deletion => '1')).should be_true
+          end
+        end
+
+        context "when uploading a new image" do
+          it "should not clear the existing image" do
+            staged_header_image.should_receive(:dirty?).and_return(true)
+            staged_header_image.should_not_receive(:clear)
+            affiliate.update_attributes_for_staging(@update_params).should be_true
+          end
+        end
+      end
     end
 
-    describe "on update_attributes_for_current" do
-      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+    describe "on update_attributes_for_live" do
+      context "when staged_uses_managed_header_footer is true" do
+        let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+        let(:staged_managed_header_css_properties) { { 'header_background_color' => '#0000ff', 'header_text_color' => '#ffffff' } }
+        let(:update_params) {
+          { :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
+            :staged_uses_managed_header_footer => true,
+            :staged_managed_header_css_properties => staged_managed_header_css_properties,
+            :staged_managed_header_home_url => 'www.agency.gov',
+            :staged_managed_header_text => "updated staged header",
+            :staged_theme => 'custom',
+            :staged_css_property_hash => { 'title_link_color' => '#ffffff', 'visited_title_link_color' => '#00ff00' } }
+        }
 
-      before do
-        @update_params = {:staged_header_footer_css => ".staged h1 { color: blue; }",
-                          :staged_header => "<span>header</span>",
-                          :staged_footer => "<span>footer</span>",
-                          :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
-                          :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
-                          :staged_theme => "custom",
-                          :staged_css_property_hash => { 'title_link_color' => '#ffffff', 'visited_title_link_color' => '#00ff00' } }
-      end
+        before do
+          affiliate.should_receive(:header_image=)
+          affiliate.update_attributes_for_live(update_params).should be_true
+        end
 
-      it "should store a copy of the previous version of the header and footer" do
-        original_header, original_footer = affiliate.header, affiliate.footer
-        affiliate.update_attributes_for_current(@update_params).should be_true
-        affiliate.previous_header.should == original_header
-        affiliate.previous_footer.should == original_footer
-      end
+        subject { affiliate }
+        its(:search_results_page_title) { should == 'updated - {query} - {sitename} Search Results' }
+        its(:uses_managed_header_footer) { should be_true }
+        its(:managed_header_home_url) { should == 'http://www.agency.gov' }
+        its(:managed_header_text) { should == 'updated staged header' }
+        its(:theme) { should == 'custom' }
+        its(:managed_header_css_properties) { should == staged_managed_header_css_properties }
 
-      it "should set has_staged_content to false" do
-        affiliate.has_staged_content.should be_false
-        affiliate.update_attributes_for_current(@update_params).should be_true
-        affiliate.has_staged_content.should be_false
-      end
-
-      it "should update current attributes" do
-        affiliate.update_attributes_for_current(@update_params).should be_true
-        affiliate.header_footer_css.should == @update_params[:staged_header_footer_css]
-        affiliate.header.should == @update_params[:staged_header]
-        affiliate.footer.should == @update_params[:staged_footer]
-        affiliate.affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
-        affiliate.search_results_page_title.should == @update_params[:staged_search_results_page_title]
-        affiliate.theme.should == @update_params[:staged_theme]
-        affiliate.css_property_hash(true)[:title_link_color].should == '#ffffff'
-        affiliate.css_property_hash[:visited_title_link_color].should == '#00ff00'
-        affiliate.staged_header_footer_css.should == @update_params[:staged_header_footer_css]
-        affiliate.staged_header.should == @update_params[:staged_header]
-        affiliate.staged_footer.should == @update_params[:staged_footer]
-        affiliate.staged_affiliate_template_id.should == @update_params[:staged_affiliate_template_id]
-        affiliate.staged_search_results_page_title.should == @update_params[:staged_search_results_page_title]
-        affiliate.staged_theme.should == @update_params[:staged_theme]
-        affiliate.staged_css_property_hash(true)[:title_link_color].should == '#ffffff'
-        affiliate.staged_css_property_hash[:visited_title_link_color].should == '#00ff00'
-      end
-
-      it "should save favicon URL with http:// prefix when it does not start with http(s)://" do
-        url = 'cdn.agency.gov/favicon.ico'
-        prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
-        prefixes.each do |prefix|
-          affiliate.update_attributes_for_current(@update_params.merge(:staged_favicon_url => "#{prefix}#{url}")).should be_true
-          affiliate.staged_favicon_url.should == "http://#{prefix}#{url}"
-          affiliate.favicon_url.should == "http://#{prefix}#{url}"
+        it "should copy staged_css_property_hash to css_property_hash" do
+          affiliate.css_property_hash(true)[:title_link_color].should == '#ffffff'
+          affiliate.css_property_hash(true)[:visited_title_link_color].should == '#00ff00'
         end
       end
 
-      it "should save favicon URL as is when it starts with http(s)://" do
-        url = 'cdn.agency.gov/favicon.ico'
-        prefixes = %w( http:// https:// HTTP:// HTTPS:// )
-        prefixes.each do |prefix|
-          affiliate.update_attributes_for_current(@update_params.merge(:staged_favicon_url => "#{prefix}#{url}")).should be_true
-          affiliate.staged_favicon_url.should == "#{prefix}#{url}"
-          affiliate.favicon_url.should == "#{prefix}#{url}"
+      context "when staged_uses_managed_header_footer is false" do
+        let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+        let(:update_params) {
+          { :staged_uses_managed_header_footer => false,
+            :staged_header_footer_css => ".staged h1 { color: blue; }",
+            :staged_header => "<span>header</span>",
+            :staged_footer => "<span>footer</span>",
+            :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
+            :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
+            :staged_theme => "custom",
+            :staged_css_property_hash => { 'title_link_color' => '#ffffff', 'visited_title_link_color' => '#00ff00' } }
+        }
+
+        it "should store a copy of the previous version of the header and footer" do
+          original_header, original_footer = affiliate.header, affiliate.footer
+          affiliate.update_attributes_for_live(update_params).should be_true
+          affiliate.previous_header.should == original_header
+          affiliate.previous_footer.should == original_footer
         end
-      end
 
-      it "should save external CSS URL with http:// prefix when it does not start with http(s)://" do
-        url = 'cdn.agency.gov/custom.css'
-        prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
-        prefixes.each do |prefix|
-          affiliate.update_attributes_for_current(@update_params.merge(:staged_external_css_url => "#{prefix}#{url}")).should be_true
-          affiliate.staged_external_css_url.should == "http://#{prefix}#{url}"
-          affiliate.external_css_url.should == "http://#{prefix}#{url}"
+        it "should set has_staged_content to false" do
+          affiliate.has_staged_content.should be_false
+          affiliate.update_attributes_for_live(update_params).should be_true
+          affiliate.has_staged_content.should be_false
         end
-      end
 
-      it "should save external CSS URL as is when it starts with http(s)://" do
-        url = 'cdn.agency.gov/custom.css'
-        prefixes = %w( http:// https:// HTTP:// HTTPS:// )
-        prefixes.each do |prefix|
-          affiliate.update_attributes_for_current(@update_params.merge(:staged_external_css_url => "#{prefix}#{url}")).should be_true
-          affiliate.staged_external_css_url.should == "#{prefix}#{url}"
-          affiliate.external_css_url.should == "#{prefix}#{url}"
+        it "should update current attributes" do
+          affiliate.update_attributes_for_live(update_params).should be_true
+          affiliate.uses_managed_header_footer.should be_false
+          affiliate.header_footer_css.should == update_params[:staged_header_footer_css]
+          affiliate.header.should == update_params[:staged_header]
+          affiliate.footer.should == update_params[:staged_footer]
+          affiliate.affiliate_template_id.should == update_params[:staged_affiliate_template_id]
+          affiliate.search_results_page_title.should == update_params[:staged_search_results_page_title]
+          affiliate.theme.should == update_params[:staged_theme]
+          affiliate.css_property_hash(true)[:title_link_color].should == '#ffffff'
+          affiliate.css_property_hash[:visited_title_link_color].should == '#00ff00'
+          affiliate.staged_header_footer_css.should == update_params[:staged_header_footer_css]
+          affiliate.staged_header.should == update_params[:staged_header]
+          affiliate.staged_footer.should == update_params[:staged_footer]
+          affiliate.staged_affiliate_template_id.should == update_params[:staged_affiliate_template_id]
+          affiliate.staged_search_results_page_title.should == update_params[:staged_search_results_page_title]
+          affiliate.staged_theme.should == update_params[:staged_theme]
+          affiliate.staged_css_property_hash(true)[:title_link_color].should == '#ffffff'
+          affiliate.staged_css_property_hash[:visited_title_link_color].should == '#00ff00'
         end
-      end
 
-      it "should set header footer sass" do
-        affiliate.update_attributes_for_current(@update_params)
-        affiliate.header_footer_sass.should == "  .staged h1\n    color: blue"
-      end
+        it "should save favicon URL with http:// prefix when it does not start with http(s)://" do
+          url = 'cdn.agency.gov/favicon.ico'
+          prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
+          prefixes.each do |prefix|
+            affiliate.update_attributes_for_live(update_params.merge(:staged_favicon_url => "#{prefix}#{url}")).should be_true
+            affiliate.staged_favicon_url.should == "http://#{prefix}#{url}"
+            affiliate.favicon_url.should == "http://#{prefix}#{url}"
+          end
+        end
 
-      it "should set blank staged header and footer sass" do
-        affiliate.update_attributes_for_current(@update_params)
-        affiliate.header_footer_sass.should =~ /blue/
-        affiliate.update_attributes_for_current(:staged_header_footer_css => '')
-        affiliate.header_footer_sass.should be_blank
-      end
+        it "should save favicon URL as is when it starts with http(s)://" do
+          url = 'cdn.agency.gov/favicon.ico'
+          prefixes = %w( http:// https:// HTTP:// HTTPS:// )
+          prefixes.each do |prefix|
+            affiliate.update_attributes_for_live(update_params.merge(:staged_favicon_url => "#{prefix}#{url}")).should be_true
+            affiliate.staged_favicon_url.should == "#{prefix}#{url}"
+            affiliate.favicon_url.should == "#{prefix}#{url}"
+          end
+        end
 
-      it "should not override non custom theme attributes" do
-        affiliate.update_attributes_for_current(@update_params.merge(:staged_theme => 'default')).should be_true
-        affiliate.staged_css_property_hash(true).should == Affiliate::THEMES[:default]
-        affiliate.css_property_hash(true).should == Affiliate::THEMES[:default]
+        it "should save external CSS URL with http:// prefix when it does not start with http(s)://" do
+          url = 'cdn.agency.gov/custom.css'
+          prefixes = %w( http https HTTP HTTPS invalidhttp:// invalidHtTp:// invalidhttps:// invalidHTtPs:// invalidHttPsS://)
+          prefixes.each do |prefix|
+            affiliate.update_attributes_for_live(update_params.merge(:staged_external_css_url => "#{prefix}#{url}")).should be_true
+            affiliate.staged_external_css_url.should == "http://#{prefix}#{url}"
+            affiliate.external_css_url.should == "http://#{prefix}#{url}"
+          end
+        end
+
+        it "should save external CSS URL as is when it starts with http(s)://" do
+          url = 'cdn.agency.gov/custom.css'
+          prefixes = %w( http:// https:// HTTP:// HTTPS:// )
+          prefixes.each do |prefix|
+            affiliate.update_attributes_for_live(update_params.merge(:staged_external_css_url => "#{prefix}#{url}")).should be_true
+            affiliate.staged_external_css_url.should == "#{prefix}#{url}"
+            affiliate.external_css_url.should == "#{prefix}#{url}"
+          end
+        end
+
+        it "should set header footer sass" do
+          affiliate.update_attributes_for_live(update_params)
+          affiliate.header_footer_sass.should == "  .staged h1\n    color: blue"
+        end
+
+        it "should set blank staged header and footer sass" do
+          affiliate.update_attributes_for_live(update_params)
+          affiliate.header_footer_sass.should =~ /blue/
+          affiliate.update_attributes_for_live(:staged_header_footer_css => '')
+          affiliate.header_footer_sass.should be_blank
+        end
+
+        it "should not override non custom theme attributes" do
+          affiliate.update_attributes_for_live(update_params.merge(:staged_theme => 'default')).should be_true
+          affiliate.staged_css_property_hash(true).should == Affiliate::THEMES[:default]
+          affiliate.css_property_hash(true).should == Affiliate::THEMES[:default]
+        end
       end
     end
 
@@ -420,25 +506,33 @@ describe Affiliate do
     end
 
     it "should set the affiliate_template_id to the default affiliate_template_id" do
-      affiliate = Affiliate.create!(@valid_create_attributes)
+      affiliate = Affiliate.new(@valid_create_attributes)
+      affiliate.uses_one_serp = false
+      affiliate.save!
       affiliate.affiliate_template.should == affiliate_templates(:default)
     end
 
     it "should set the affiliate_template_id to the default affiliate_template_id" do
-      affiliate = Affiliate.create!(@valid_create_attributes.merge(:affiliate_template => affiliate_templates(:basic_gray)))
+      affiliate = Affiliate.new(@valid_create_attributes.merge(:affiliate_template => affiliate_templates(:basic_gray)))
+      affiliate.uses_one_serp = false
+      affiliate.save!
       affiliate.affiliate_template.should == affiliate_templates(:basic_gray)
     end
   end
 
   describe "#template" do
     it "should return the affiliate template if present" do
-      affiliate = Affiliate.create!(@valid_create_attributes.merge(:affiliate_template => affiliate_templates(:basic_gray)))
+      affiliate = Affiliate.new(@valid_create_attributes.merge(:affiliate_template => affiliate_templates(:basic_gray)))
+      affiliate.uses_one_serp = false
+      affiliate.save!
       affiliate.affiliate_template.should == affiliate_templates(:basic_gray)
       affiliate.template.should == affiliate.affiliate_template
     end
 
     it "should return the default affiliate template if no affiliate template" do
-      affiliate = Affiliate.create!(@valid_create_attributes.merge(:affiliate_template_id => -1))
+      affiliate = Affiliate.new(@valid_create_attributes.merge(:affiliate_template_id => -1))
+      affiliate.uses_one_serp = false
+      affiliate.save!
       affiliate.affiliate_template.should be_nil
       affiliate.template.should == AffiliateTemplate.default_template
     end
@@ -554,6 +648,10 @@ describe Affiliate do
         :staged_search_results_page_title => 'custom serp title',
         :staged_favicon_url => 'http://cdn.agency.gov/favicon.ico',
         :staged_external_css_url => 'http://cdn.agency.gov/custom.css',
+        :staged_uses_managed_header_footer => false,
+        :staged_managed_header_css_properties => { 'header_background_color' => '#0000ff', 'header_text_color' => '#ffffff' },
+        :staged_managed_header_home_url => 'http://www.agency.gov',
+        :staged_managed_header_text => 'staged header text',
         :staged_theme => Affiliate::THEMES.keys.first.to_s,
         :staged_css_property_hash => Affiliate::DEFAULT_CSS_PROPERTIES } }
 
@@ -565,11 +663,13 @@ describe Affiliate do
 
     context "when initialized" do
       it "should return all staging attributes" do
-        [:staged_header_footer_css, :staged_header, :staged_footer,
-         :staged_affiliate_template_id, :staged_search_results_page_title,
-         :staged_favicon_url, :staged_external_css_url, :staged_theme, :staged_css_property_hash].each do |key|
-          affiliate.staging_attributes.should include(key)
-        end
+        keys =  [:staged_header_footer_css, :staged_header, :staged_footer,
+                 :staged_affiliate_template_id, :staged_search_results_page_title,
+                 :staged_favicon_url, :staged_external_css_url,
+                 :staged_uses_managed_header_footer, :staged_managed_header_css_properties,
+                 :staged_managed_header_home_url, :staged_managed_header_text,
+                 :staged_theme, :staged_css_property_hash]
+        affiliate.staging_attributes.keys.sort.should == keys.sort
       end
 
       specify { affiliate.staging_attributes.should == staged_attributes }
@@ -583,31 +683,39 @@ describe Affiliate do
                                        'visited_title_link_color' => '#222',
                                        'description_text_color' => '#444',
                                        'url_link_color' => '#555' } }
+    let(:update_params) {
+      { :staged_header_footer_css => ".staged h1 { color: blue; }",
+        :staged_header => "<span>header</span>",
+        :staged_footer => "<span>footer</span>",
+        :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
+        :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
+        :staged_favicon_url => 'http://cdn.agency.gov/staged_favicon.ico',
+        :staged_external_css_url => "http://cdn.agency.gov/staged_custom.css",
+        :staged_uses_managed_header_footer => false,
+        :staged_managed_header_css_properties => { 'header_background_color' => '#0000ff', 'header_text_color' => '#ffffff' },
+        :staged_managed_header_text => 'Updated header text',
+        :staged_theme => 'custom',
+        :staged_css_property_hash => staged_css_property_hash }
+    }
 
     before do
-      @update_params = { :staged_header_footer_css => ".staged h1 { color: blue; }",
-                         :staged_header => "<span>header</span>",
-                         :staged_footer => "<span>footer</span>",
-                         :staged_affiliate_template_id => affiliate_templates(:basic_gray).id,
-                         :staged_search_results_page_title => "updated - {query} - {sitename} Search Results",
-                         :staged_favicon_url => 'http://cdn.agency.gov/staged_favicon.ico',
-                         :staged_external_css_url => "http://cdn.agency.gov/staged_custom.css",
-                         :staged_theme => Affiliate::THEMES.keys.first.to_s,
-                         :staged_css_property_hash => staged_css_property_hash }
-      affiliate.update_attributes_for_staging(@update_params).should be_true
+      affiliate.update_attributes_for_staging(update_params).should be_true
     end
 
     it "should overwrite all staged attributes with non staged attributes" do
       affiliate.cancel_staged_changes
-      affiliate.staged_header_footer_css.should_not == @update_params[:staged_header_footer_css]
+      affiliate.staged_header_footer_css.should_not == update_params[:staged_header_footer_css]
       affiliate.staged_header.should == "<table><tr><td>html layout from 1998</td></tr></table>"
       affiliate.staged_footer.should == "<center>gasp</center>"
-      affiliate.staged_affiliate_template_id.should_not == @update_params[:staged_affiliate_template_id]
-      affiliate.staged_search_results_page_title.should_not == @update_params[:staged_search_results_page_title]
-      affiliate.staged_favicon_url.should_not == @update_params[:staged_favicon_url]
-      affiliate.staged_external_css_url.should_not == @update_params[:staged_external_css_url]
-      affiliate.staged_theme.should_not == @update_params[:staged_theme]
-      affiliate.staged_css_property_hash.should_not == @update_params[:staged_css_property_hash]
+      affiliate.staged_affiliate_template_id.should_not == update_params[:staged_affiliate_template_id]
+      affiliate.staged_search_results_page_title.should_not == update_params[:staged_search_results_page_title]
+      affiliate.staged_favicon_url.should_not == update_params[:staged_favicon_url]
+      affiliate.staged_external_css_url.should_not == update_params[:staged_external_css_url]
+      affiliate.staged_uses_managed_header_footer.should be_true
+      affiliate.staged_managed_header_css_properties.should == { :header_background_color => '#336699', :header_text_color => '#FFFFFF' }
+      affiliate.staged_managed_header_text.should == 'My Awesome Site'
+      affiliate.staged_theme.should_not == update_params[:staged_theme]
+      affiliate.staged_css_property_hash.should_not == update_params[:staged_css_property_hash]
     end
 
     it "should not have staged content" do

@@ -55,26 +55,42 @@ module AffiliateHelper
     css_property_hash[property].blank? ? Affiliate::DEFAULT_CSS_PROPERTIES[property] : css_property_hash[property]
   end
 
+  def render_managed_header_css_property_value(managed_header_css_properties, property)
+    managed_header_css_properties[property].nil? ? Affiliate::DEFAULT_MANAGED_HEADER_CSS_PROPERTIES[property] : managed_header_css_properties[property]
+  end
+
   def render_affiliate_header(affiliate, search_options)
     if affiliate and (search_options.nil? or !search_options[:embedded])
-      if affiliate.header.blank?
-        return render_default_affiliate_header(affiliate)
-      else
+      if affiliate.uses_managed_header_footer?
+        return render_managed_header(affiliate)
+      elsif affiliate.header.present?
         return affiliate.header.html_safe
       end
     end
   end
 
-  def render_default_affiliate_header(affiliate)
-    if affiliate.uses_one_serp?
-      font_family = render_affiliate_css_property_value(affiliate.css_property_hash, :font_family)
-      color = render_affiliate_css_property_value(affiliate.css_property_hash, :search_button_text_color)
-      background_color = render_affiliate_css_property_value(affiliate.css_property_hash, :search_button_background_color)
-      style = "font-family: Georgia, serif; font-size: 50px; color: #{color}; background-color: #{background_color}; margin: 0 auto 30px; padding: 10px; width: 940px;"
-      content_tag :div, affiliate.display_name, :id => 'default-header', :style => style
-    else
-      ""
+  def render_managed_header(affiliate)
+    content = ''
+    unless affiliate.header_image_file_name.blank?
+      begin
+        image_style = "display: inline-block;#{affiliate.managed_header_text.blank? ? '' : ' float: right;'}"
+        content << link_to_unless(affiliate.managed_header_home_url.blank?, image_tag(affiliate.header_image.url, :alt => 'logo', :style => "#{image_style}"), affiliate.managed_header_home_url)
+      rescue Exception
+        nil
+      end
     end
+
+    unless affiliate.managed_header_text.blank?
+      color = render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_text_color)
+      style = "color: #{color}; font-family: Georgia, serif; font-size: 50px; display: inline-block; margin: 0 auto;"
+      content << link_to_unless(affiliate.managed_header_home_url.blank?, content_tag(:div, affiliate.managed_header_text, :style => style), affiliate.managed_header_home_url)
+    end
+
+    background_color = render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_background_color)
+    alignment = affiliate.managed_header_text.blank? ? 'center' : 'left';
+    header_style = "margin: 0 auto 30px; padding: 10px; min-width:940px; text-align: #{alignment};"
+    header_style << " background-color: #{background_color};" unless background_color.blank?
+    content_tag(:div, content.html_safe, :id => 'default-header', :style => "#{header_style}").html_safe
   end
 
   def render_affiliate_stylesheet(affiliate)
@@ -101,6 +117,14 @@ module AffiliateHelper
     text_field_tag "affiliate[staged_css_property_hash][#{field_name_symbol}]",
                    render_affiliate_css_property_value(staged_css_property_hash, field_name_symbol),
                    { :disabled => disabled, :class => 'color { hash:true, adjust:false }' }
+  end
+
+  def render_staged_managed_header_color_text_field_tag(affiliate, field_name_symbol)
+    staged_managed_header_css_properties = affiliate.staged_managed_header_css_properties
+    staged_managed_header_css_properties = {} if staged_managed_header_css_properties.nil?
+    text_field_tag "affiliate[staged_managed_header_css_properties][#{field_name_symbol}]",
+                   render_managed_header_css_property_value(staged_managed_header_css_properties, field_name_symbol),
+                   { :class => 'color { hash:true, adjust:false }' }
   end
 
   def render_staged_check_box_tag(affiliate, field_name_symbol)

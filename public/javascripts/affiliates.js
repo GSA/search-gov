@@ -17,6 +17,20 @@ function updateColorFields(cssProperties) {
   document.getElementById('affiliate_staged_css_property_hash_url_link_color').color.fromString(cssProperties.url_link_color);
 }
 
+function enableHeaderFooterForm(option) {
+  if (option == 'managed') {
+    jQuery('.header-footer-form.custom input, .header-footer-form.custom textarea').attr('disabled', 'disabled');
+    jQuery('.header-footer-form.custom').hide();
+    jQuery('.header-footer-form.managed').show();
+    jQuery('.header-footer-form.managed input, .header-footer-form.managed textarea').removeAttr('disabled');
+  } else {
+    jQuery('.header-footer-form.managed input, .header-footer-form.managed textarea').attr('disabled', 'disabled');
+    jQuery('.header-footer-form.managed').hide();
+    jQuery('.header-footer-form.custom').show();
+    jQuery('.header-footer-form.custom input, .header-footer-form.custom textarea').removeAttr('disabled');
+  }
+}
+
 jQuery(document).ready(function() {
   jQuery('#affiliate_id').change(function(event) {
     window.location.replace("/affiliates/" + jQuery('#affiliate_id').val());
@@ -54,6 +68,19 @@ jQuery(document).ready(function() {
     var customRadioButton =  jQuery("input.update-css-properties-trigger[value='custom']");
     customRadioButton.attr('checked', 'checked');
     customRadioButton.focus();
+  });
+
+  jQuery(".managed-header-footer-option:checked").each(function() {
+    enableHeaderFooterForm('managed');
+  });
+  jQuery(".custom-header-footer-option:checked").each(function() {
+    enableHeaderFooterForm('custom');
+  });
+  jQuery(".managed-header-footer-option").click(function() {
+    enableHeaderFooterForm('managed');
+  });
+  jQuery(".custom-header-footer-option").click(function() {
+    enableHeaderFooterForm('custom');
   });
 });
 

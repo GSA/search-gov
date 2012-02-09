@@ -23,10 +23,10 @@ Feature: Errors
     And I press "Buscar"
     Then I should see "Resultados 1-10"
 
-  Scenario: Going to an affiliate 404 page
+  Scenario: Going to an affiliate 404 page in English
      Given the following Affiliates exist:
-       | display_name     | name             | contact_email         | contact_name     | affiliate_template_name | search_results_page_title     | header      | footer      | staged_affiliate_template_name | staged_search_results_page_title   |  staged_header    | staged_footer  | has_staged_content |
-       | aff site         | aff.gov          | aff@bar.gov           | John Bar         | Default                 | Live Search Results           | Live header | Live footer | Basic Gray                     | Staged Search Results              |  Staged header    | Staged footer  | false              |
+       | display_name | name    | contact_email | contact_name | header      | footer      | staged_header | staged_footer | uses_managed_header_footer |
+       | aff site     | aff.gov | aff@bar.gov   | John Bar     | Live header | Live footer | Staged header | Staged footer | false                      |
     When I go to the aff.gov's 404 page
     Then I should see the browser page titled "Oops! We can't find the file - aff site"
     And I should see "Live header"
@@ -51,8 +51,8 @@ Feature: Errors
 
   Scenario: Going to an affiliate 404 page in Spanish
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name     | affiliate_template_name | search_results_page_title     | header      | footer      | staged_affiliate_template_name | staged_search_results_page_title   |  staged_header    | staged_footer  | has_staged_content |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar         | Default                 | Live Search Results           | Live header | Live footer | Basic Gray                     | Staged Search Results              |  Staged header    | Staged footer  | false              |
+      | display_name | name    | contact_email | contact_name | header      | footer      | staged_header | staged_footer | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Live header | Live footer | Staged header | Staged footer | false                      |
     When I go to the aff.gov's Spanish 404 page
     Then I should see the browser page titled "La página que busca no está disponible - aff site"
     And I should see "Live header"

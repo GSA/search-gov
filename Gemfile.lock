@@ -178,11 +178,6 @@ GEM
     nokogiri (1.5.0)
     options (2.3.0)
       fattr
-    paperclip (2.3.16)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
-      cocaine (>= 0.0.2)
-      mime-types
     paperclip-cloudfiles (2.3.10.1)
       activerecord
       activesupport
@@ -307,6 +302,7 @@ DEPENDENCIES
   capistrano-ext
   capybara
   cloudfiles
+  cocaine
   compass
   cucumber
   cucumber-rails
@@ -324,7 +320,6 @@ DEPENDENCIES
   mysql2 (< 0.3)
   no_peeping_toms!
   nokogiri (>= 1.4.4)
-  paperclip
   paperclip-cloudfiles
   parallel
   pdf-toolkit

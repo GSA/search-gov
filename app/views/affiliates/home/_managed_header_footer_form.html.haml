@@ -1,0 +1,33 @@
+%ul{ :class => "header-footer-form managed" }
+  %li.css-overrides
+    %div
+      = label_tag 'affiliate[staged_managed_header_css_properties][header_background_color]', 'Header background color'
+      = render_staged_managed_header_color_text_field_tag @affiliate, :header_background_color
+    %div
+      = label_tag 'affiliate[staged_managed_header_css_properties][header_text_color]', 'Header text color'
+      = render_staged_managed_header_color_text_field_tag @affiliate, :header_text_color
+  %li
+    = managed_header_footer_form.label :staged_managed_header_home_url, "Header home URL"
+    = managed_header_footer_form.text_field :staged_managed_header_home_url, :maxlength => 128, :class => 'txt'
+  %li
+    = managed_header_footer_form.label :staged_managed_header_text, "Header text"
+    = managed_header_footer_form.text_field :staged_managed_header_text, :maxlength => 64, :class => 'txt'
+  %li
+    %div
+      = managed_header_footer_form.label :staged_header_image, "Header image"
+      .header-image
+        - if managed_header_footer_form.object.staged_header_image.present?
+          = image_tag(managed_header_footer_form.object.staged_header_image.url(:large))
+          = managed_header_footer_form.check_box :mark_staged_header_image_for_deletion, { :class => 'checkbox mark-header-image-for-deletion' }
+          = managed_header_footer_form.label :mark_staged_header_image_for_deletion, 'Mark header image for deletion'
+      .header-image-file-field-wrapper
+        = managed_header_footer_form.file_field :staged_header_image, { :class => 'file' }
+      %span GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_IMAGE_SIZE_IN_KB} KB
+  %li
+    = link_to "+ Managed header/footer tips", "#managed_header_footer_tips_content", :id => "managed_header_footer_tips", :class => "sliding_trigger"
+    %div#managed_header_footer_tips_content.sliding_content
+      %p
+        Add a link to your header text or header image by setting the header home URL.
+      %p
+        Set the header background color to blank if you do not wish to use background color on your header.
+

@@ -78,3 +78,11 @@ Then /^the textarea labeled "([^"]*)" should contain "([^"]*)"$/ do |label, valu
   field.tag_name.should == 'textarea'
   field.text.should == value
 end
+
+Then /^the "([^"]*)" radio button should be checked$/ do |label|
+  field_labeled(label)['checked'].should be_true
+end
+
+Then /^the "([^"]*)" radio button should not be checked$/ do |label|
+  field_labeled(label)['checked'].should_not be_true
+end

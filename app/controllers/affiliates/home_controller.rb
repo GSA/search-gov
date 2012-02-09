@@ -112,7 +112,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
     @current_step = :basic_settings
     @affiliate = Affiliate.new
   end
-  
+
   def create
     @affiliate = Affiliate.new(params[:affiliate])
     @affiliate.users << @current_user
@@ -127,7 +127,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
       render :action => :new
     end
   end
-  
+
   def content_sources
     @title = "Add a New Site - "
     @current_step = :content_sources
@@ -141,7 +141,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
       render :action => :content_sources
     end
   end
-  
+
   def get_the_code
     @title = "Add a New Site - "
     @current_step = :get_the_code
@@ -172,7 +172,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
         set_title_and_render_with_action
       end
     elsif params[:commit] == "Make Live"
-      if @affiliate.update_attributes_for_current(params[:affiliate])
+      if @affiliate.update_attributes_for_live(params[:affiliate])
         Emailer.affiliate_header_footer_change(@affiliate).deliver if @affiliate.has_changed_header_or_footer
         redirect_to @affiliate, :flash => { :success => "Updated changes to your live site successfully." }
       else
@@ -286,10 +286,10 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def new_site_domain_fields
   end
-  
+
   def new_sitemap_fields
   end
-  
+
   def new_rss_feed_fields
   end
 

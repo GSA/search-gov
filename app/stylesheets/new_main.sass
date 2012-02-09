@@ -1075,6 +1075,9 @@ table.generic-table
       margin: 0 0 5px 0
       text-align: left
       width: 100%
+      &.radio-label
+        float: none
+        width: auto
     input.txt
       background: url(/images/long_text_box.png) no-repeat 0 0
       clear: both
@@ -1147,6 +1150,23 @@ table.generic-table
         margin: 0 0 0 5px
         padding: 0
         width: auto
+    .header-image
+      display: inline-block
+      img
+        float: left
+      label
+        margin: 0 0 0 5px
+        padding: 0
+        width: auto
+      .mark-header-image-for-deletion
+        clear: none
+        float: left
+        margin: 0 0 0 15px
+        padding: 0
+        width: auto
+    .header-image-file-field-wrapper
+      clear: both
+      margin-top: 10px
   .get-the-code
     ul
       margin: 0 8px 8px
@@ -1776,7 +1796,7 @@ h3.api-item
     clear: both
     float: left
     margin-bottom: 10px
-    
+
 .add-domain-wrapper .add-sitemap-wrapper .add-rss-feed-wrapper
   clear: both
   float: right

@@ -32,8 +32,8 @@ Feature: Homepage
 
   Scenario: A typical popular search from the home page
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | header         | search_results_page_title           |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | USA.gov Header | {Query} - {SiteName} Search Results |
+      | display_name | name   | contact_email | contact_name | uses_managed_header_footer | header         | search_results_page_title           |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | false                      | USA.gov Header | {Query} - {SiteName} Search Results |
     When I am on the homepage
     And I fill in "query" with "president"
     And I submit the search form

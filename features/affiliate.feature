@@ -136,7 +136,7 @@ Feature: Affiliate clients
     And I press "Next"
     Then I should see "Add a New Site" within "title"
     And I should see "Step 2. Set up site" in the site wizards header
-    And I should see "Content Sources"    
+    And I should see "Content Sources"
     When I fill in the following:
       | Enter the domain or url | agency.gov                                                                    |
       | Sitemap URL             | http://www.dol.gov/TMP/Decisions.xml                                          |
@@ -148,6 +148,7 @@ Feature: Affiliate clients
     When I go to the "My awesome agency" affiliate page
     And I follow "Site information"
     Then the "Site name" field should contain "My awesome agency"
+
     When I follow "Look and feel"
     Then the "Gettysburg" theme should be selected
     And the "Page background color" field should contain "#F7F7F7"
@@ -170,13 +171,21 @@ Feature: Affiliate clients
     And the "Description text color" field should be disabled
     And the "URL link color" field should contain "#007F00"
     And the "URL link color" field should be disabled
+
+    When I follow "Header and footer"
+    Then the "Option 1. Use a managed header/footer" radio button should be checked
+    And the "Header text" field should contain "My awesome agency"
+    And the "Header text color" field should contain "#FFFFFF"
+    And the "Header background color" field should contain "#336699"
+
     When I follow "Domains"
     Then I should see the following table rows:
       | Site Name       | Domain         |
       | agency.gov      | agency.gov     |
-      
+
     When I go to agencygov's search page
     Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see "My awesome agency" as a header
     And I should see the affiliate custom css
 
   Scenario: Adding a new Spanish affiliate
@@ -227,7 +236,7 @@ Feature: Affiliate clients
     When I fill in the following:
       | Site name (Required)                          | My awesome agency |
       | Site Handle (visible to searchers in the URL) | agencygov         |
-    And I press "Next"    
+    And I press "Next"
     And I fill in "Enter the domain or url" with "notavaliddomain"
     And I press "Next"
     Then I should see "Domain is invalid"
@@ -353,8 +362,8 @@ Feature: Affiliate clients
 
   Scenario: Editing user interface and saving it for preview on a site with one serp
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme  | show_content_border | show_content_box_shadow |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | custom | false               | false                   |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme  | show_content_border | show_content_box_shadow | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | custom | false               | false                   | false                      |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -810,10 +819,239 @@ Feature: Affiliate clients
     And the "Description text color" field should contain "#000000"
     And the "URL link color" field should contain "#008000"
 
-  Scenario: Editing header/footer and make it live
+  Scenario: Editing managed header/footer and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme  | show_content_border | show_content_box_shadow |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | custom | false               | false                   |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | uses_one_serp | theme   |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | true          | default |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then the "Option 1. Use a managed header/footer" radio button should be checked
+    And the "Header text" field should contain "aff site"
+    And I fill in the following:
+      | Header text     | updated header without image |
+      | Header home URL | www.agency.gov               |
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+
+    When I follow "Header and footer"
+    Then the "Option 1. Use a managed header/footer" radio button should be checked
+    And the "Header text" field should contain "updated header without image"
+    And the "Header home URL" field should contain "http://www.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see a link to "updated header without image" with url for "http://www.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    And I fill in the following:
+      | Header text | updated header with image |
+    And I attach the file "features/support/small.jpg" to "Header image"
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see a link to "updated header with image" with url for "http://www.agency.gov"
+    And I should see an image link to "logo" with url for "http://www.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    And I fill in the following:
+      | Header text | |
+    And I attach the file "features/support/small.jpg" to "Header image"
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should not see "updated header with image" as a header
+    And I should see an image link to "logo" with url for "http://www.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    And I check "Mark header image for deletion"
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should not see an image with alt text "logo"
+
+  Scenario: Editing managed header/footer with invalid input and make it live
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | domains       | theme   |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | oldagency.gov | elegant |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    And I fill in the following:
+      | Header background color | #DDDD  |
+      | Header text color       | #XXXXX |
+    And I attach the file "features/support/very_large.jpg" to "Header image"
+    And I press "Make Live"
+    Then I should see "Header and Footer of the Search Results Page" in the page header
+    And I should see "Header background color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Header text color should consist of a # character followed by 3 or 6 hexadecimal digits"
+    And I should see "Header image file size must be under 512 KB"
+
+  Scenario: Editing managed header/footer and save it for preview
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | uses_one_serp | theme   |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | true          | default |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then the "Option 1. Use a managed header/footer" radio button should be checked
+    And the "Header text" field should contain "aff site"
+    And I fill in the following:
+      | Header text     | live header with image |
+      | Header home URL | live.agency.gov        |
+    And I attach the file "features/support/searchlogo.gif" to "Header image"
+    And I press "Make Live"
+    Then I should see "Updated changes to your live site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see a link to "live header with image" with url for "http://live.agency.gov"
+    And I should see an image link to "logo" with url for "http://live.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    When I follow "Header and footer"
+    Then the "Option 1. Use a managed header/footer" radio button should be checked
+    And the "Header text" field should contain "live header with image"
+    And the "Header home URL" field should contain "http://live.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    And I fill in the following:
+      | Header text     | updated header with existing image |
+      | Header home URL | staged.agency.gov            |
+    And I press "Save for Preview"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Staged changes to your site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see a link to "updated header with existing image" with url for "http://staged.agency.gov"
+    And I should see an image link to "logo" with url for "http://staged.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    And I fill in the following:
+      | Header text | |
+    And I attach the file "features/support/small.jpg" to "Header image"
+    And I press "Save for Preview"
+    Then I should see "Staged changes to your site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    And I should not see "updated header without image" as a header
+    And I should see an image link to "logo" with url for "http://staged.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    And I fill in the following:
+      | Header text     | updated header without image |
+    And I check "Mark header image for deletion"
+    And I press "Save for Preview"
+    Then I should see "Staged changes to your site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    Then I should see a link to "updated header without image" with url for "http://staged.agency.gov"
+    And I should not see an image with alt text "logo"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see a link to "live header with image" with url for "http://live.agency.gov"
+    And I should see an image link to "logo" with url for "http://live.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I press "Push Changes"
+    Then I should see "Staged content is now visible"
+
+    When I follow "View Current"
+    And I should see a link to "updated header without image" with url for "http://staged.agency.gov"
+    And I should not see an image with alt text "logo"
+
+  Scenario: Updating header/footer option from managed to custom and make it live
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then the "Option 1. Use a managed header/footer" radio button should be checked
+    When I choose "Option 2. Use CSS/HTML code to create a custom header/footer"
+    And I fill in the following:
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: green; } |
+      | Enter HTML to customize the top of your search results page.           | New header                |
+      | Enter HTML to customize the bottom of your search results page.        | New footer                |
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then the "Option 2. Use CSS/HTML code to create a custom header/footer" radio button should be checked
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    And I should see the page with internal CSS ".header-footer .staged\{color:green\}"
+    And I should see the page with affiliate stylesheet "one_serp"
+    Then I should see "New header"
+    And I should see "New footer"
+
+  Scenario: Updating header/footer option from managed to custom and save it for preview
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then the "Option 1. Use a managed header/footer" radio button should be checked
+    When I choose "Option 2. Use CSS/HTML code to create a custom header/footer"
+    And I fill in the following:
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: green; } |
+      | Enter HTML to customize the top of your search results page.           | New header                |
+      | Enter HTML to customize the bottom of your search results page.        | New footer                |
+    And I press "Save for Preview"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Staged changes to your site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    Then I should see the page with internal CSS ".header-footer .staged\{color:green\}"
+    And I should see the page with affiliate stylesheet "one_serp"
+    And I should see "New header"
+    And I should see "New footer"
+
+    When I go to the "aff site" affiliate page
+    And I press "Push Changes"
+    Then I should see "Staged content is now visible"
+
+    When I follow "View Current"
+    Then I should see the page with internal CSS ".header-footer .staged\{color:green\}"
+    And I should see the page with affiliate stylesheet "one_serp"
+    And I should see "New header"
+    And I should see "New footer"
+
+  Scenario: Editing custom header/footer and make it live
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | page_background_color | content_background_color | search_button_text_color | search_button_background_color | left_tab_text_color | title_link_color | visited_title_link_color | description_text_color | url_link_color | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | uses_managed_header_footer | theme  | show_content_border | show_content_box_shadow |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | #FFFFFF               | #F2F2F2                  | #111111                  | #0000EE                        | #BBBBBB             | #33FF33          | #0000FF                  | #CCCCCC                | #009000        | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | false                      | custom | false               | false                   |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     And no emails have been sent
     When I go to the affiliate admin page
@@ -848,10 +1086,10 @@ Feature: Affiliate clients
     And I should see the page with affiliate stylesheet "one_serp"
     And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
 
-  Scenario: Editing header/footer with problem and save for preview
+  Scenario: Editing custom header/footer with problem and save for preview
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme   |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | default |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme   | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | default | false                      |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -869,10 +1107,10 @@ Feature: Affiliate clients
     And I press "Save for Preview"
     Then I should see "Colors must have either three or six digits"
 
-  Scenario: Editing header/footer with problem and make it live
+  Scenario: Editing custom header/footer with problem and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme   |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | default |
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | font_family         | header_footer_css         | header     | footer     | favicon_url                | external_css_url          | uses_one_serp | theme   | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Verdana, sans-serif | .current { color: blue; } | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | true          | default | false                      |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the affiliate admin page
     And I follow "aff site"
@@ -889,6 +1127,66 @@ Feature: Affiliate clients
       | Enter CSS to customize the top and bottom of your search results page. | .staged { color: #DDDD } |
     And I press "Make Live"
     Then I should see "Colors must have either three or six digits"
+
+  Scenario: Updating header/footer option from custom to managed and make it live
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then the "Option 2. Use CSS/HTML code to create a custom header/footer" radio button should be checked
+    When I choose "Option 1. Use a managed header/footer"
+    And I fill in the following:
+      | Header text     | updated header without image |
+      | Header home URL | www.agency.gov               |
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see a link to "updated header without image" with url for "http://www.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then the "Option 1. Use a managed header/footer" radio button should be checked
+    And the "Header text" field should contain "updated header without image"
+    And the "Header home URL" field should contain "http://www.agency.gov"
+
+  Scenario: Updating header/footer option from custom to managed and save it for preview
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    And I choose "Option 1. Use a managed header/footer"
+    And I fill in the following:
+      | Header text     | updated header without image |
+      | Header home URL | www.agency.gov               |
+    And I press "Save for Preview"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Staged changes to your site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see a link to "updated header without image" with url for "http://www.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I press "Push Changes"
+    Then I should see "Staged content is now visible"
+
+    When I follow "View Current"
+    Then I should see a link to "updated header without image" with url for "http://www.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then the "Option 1. Use a managed header/footer" radio button should be checked
+    And the "Header text" field should contain "updated header without image"
+    And the "Header home URL" field should contain "http://www.agency.gov"
 
   Scenario: Visiting the header and footer page for affiliate without external_css_url
     Given the following Affiliates exist:
@@ -908,6 +1206,30 @@ Feature: Affiliate clients
     And I follow "Header and footer"
     Then the "External CSS URL" field should contain "http://cdn.agency.gov/staged_custom.css"
 
+  Scenario: Visiting the header and footer page for affiliate with legacy templates
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | uses_one_serp | uses_managed_header_footer | external_css_url          |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false         | false                      | cdn.agency.gov/custom.css |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then I should not see a field labeled "Header text"
+    When I fill in the following:
+      | External CSS URL                                                       | cdn.agency.gov/staged_custom.css |
+      | Enter CSS to customize the top and bottom of your search results page. | .staged { color: green; }        |
+      | Enter HTML to customize the top of your search results page.           | New header                       |
+      | Enter HTML to customize the bottom of your search results page.        | New footer                       |
+    And I press "Make Live"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+
+    When I go to aff.gov's search page
+    Then I should see the page with internal CSS ".header-footer .staged\{color:green\}"
+    And I should not see the page with affiliate stylesheet "one_serp"
+    And I should see the page with external affiliate stylesheet "http://cdn.agency.gov/staged_custom.css"
+    And I should see "New header"
+    And I should see "New footer"
+
   Scenario: Visiting an affiliate SERP without a header
     Given the following Affiliates exist:
       | display_name | name    | contact_email | contact_name | search_results_page_title           | domains        |
@@ -924,7 +1246,7 @@ Feature: Affiliate clients
     Given the following Affiliates exist:
       | display_name | name       | contact_email   | contact_name | search_results_page_title           | domains        | uses_one_serp |
       | aff3 site     | aff3.gov  | aff2@bar.gov    | John Bar     | {Query} - {SiteName} Search Results | whitehouse.gov | false         |
-    When I go to aff2.gov's search page
+    When I go to aff3.gov's search page
     Then I should not see "aff3 site" as a header
 
   Scenario: Cancelling staged changes from the Affiliate Center page
@@ -1132,8 +1454,8 @@ Feature: Affiliate clients
 
   Scenario: Doing an advanced affiliate search
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        | domains        | header                | footer                |
-      | aff site         | aff.gov          | aff@bar.gov           | John Bar            | usa.gov        | Affiliate Header      | Affiliate Footer      |
+      | display_name | name    | contact_email | contact_name | domains | header           | footer           | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | usa.gov | Affiliate Header | Affiliate Footer | false                      |
     When I go to aff.gov's search page
     And I follow "Advanced Search"
     Then I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag

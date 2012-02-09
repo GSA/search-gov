@@ -26,11 +26,13 @@ Given /^the following Affiliates exist:$/ do |table|
       staged_affiliate_template = nil
       theme = hash[:theme] || 'custom'
       staged_theme = hash[:theme] || 'custom'
+      uses_managed_header_footer = (hash[:uses_managed_header_footer].blank? or hash[:uses_managed_header_footer] == 'true') ? true : false
     else
       affiliate_template = hash["affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["affiliate_template_name"])
       staged_affiliate_template = hash["staged_affiliate_template_name"].blank? ? default_affiliate_template : AffiliateTemplate.find_by_name(hash["staged_affiliate_template_name"])
       theme = nil
       staged_theme = nil
+      uses_managed_header_footer = nil
     end
 
     css_properties = ActiveSupport::OrderedHash.new
@@ -73,6 +75,11 @@ Given /^the following Affiliates exist:$/ do |table|
       :theme => theme,
       :staged_theme => staged_theme,
       :css_property_hash => css_properties,
+      :uses_managed_header_footer => uses_managed_header_footer,
+      :managed_header_home_url => hash["managed_header_home_url"],
+      :staged_managed_header_home_url => hash["staged_managed_header_home_url"],
+      :managed_header_text => hash["managed_header_text"],
+      :staged_managed_header_text => hash["staged_managed_header_text"],
       :top_searches_label => hash["top_searches_label"] || 'Search Trends',
       :locale => hash["locale"] || 'en',
       :is_agency_govbox_enabled => hash["is_agency_govbox_enabled"] || false,

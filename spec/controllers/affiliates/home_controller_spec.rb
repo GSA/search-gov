@@ -93,7 +93,7 @@ describe Affiliates::HomeController do
       it "should assign @current_step to :basic_settings" do
         assigns[:current_step].should == :basic_settings
       end
-      
+
       it "should assign a new affiliate" do
         assigns[:affiliate].should_not be_nil
       end
@@ -172,14 +172,14 @@ describe Affiliates::HomeController do
       end
     end
   end
-  
+
   describe "do GET on content_sources" do
     before do
       @user = users(:affiliate_manager_with_no_affiliates)
       @user.affiliates << Affiliate.new(:name => 'new_aff', :display_name => 'new_aff', :theme => 'default', :locale => 'en')
       @user.affiliates.first.id.should_not be_nil
     end
-    
+
     it "should require login" do
       get :content_sources, :id => @user.affiliates.first.id
       response.should redirect_to(login_path)
@@ -194,60 +194,60 @@ describe Affiliates::HomeController do
       it "should assign @title" do
         assigns[:title].should_not be_blank
       end
-      
+
       it "should assing the current step to 'content_sources'" do
         assigns[:current_step].should == :content_sources
       end
-      
+
       it "should render the content sources page" do
         response.should render_template("content_sources")
       end
     end
   end
-  
+
   describe "do PUT on create_content_sources" do
     before do
       @user = users(:affiliate_manager_with_no_affiliates)
       @user.affiliates << Affiliate.new(:name => 'new_aff', :display_name => 'new_aff', :theme => 'default', :locale => 'en')
       @user.affiliates.first.id.should_not be_nil
     end
-    
+
     it "should require login" do
       put :create_content_sources, :id => @user.affiliates.first.id
       response.should redirect_to(login_path)
     end
-      
+
     context "when logged in" do
       before do
         UserSession.create(@user)
         Kernel.stub!(:open).and_return(File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml'), File.open(Rails.root.to_s + '/spec/fixtures/xml/sitemap.xml'))
       end
-      
+
       context "for a valid request" do
         before do
-          put :create_content_sources, :id => @user.affiliates.first.id, :affiliate => { 
-            :site_domains_attributes => { 
-              "0".to_sym => {:domain => 'aff.gov'}, 
+          put :create_content_sources, :id => @user.affiliates.first.id, :affiliate => {
+            :site_domains_attributes => {
+              "0".to_sym => {:domain => 'aff.gov'},
               "1".to_sym => {:domain => 'aff2.gov'}
-            }, 
+            },
             :sitemaps_attributes => {
-              "0".to_sym => {:url => 'http://aff.gov/sitemap.xml'}            
-            }, 
+              "0".to_sym => {:url => 'http://aff.gov/sitemap.xml'}
+            },
             :rss_feeds_attributes => {
               "0".to_sym => {:url => 'http://aff.gov/feed.xml', :name => 'Feed 1'}
             }
           }
         end
-      
+
         it "should assign the affiliate" do
           assigns[:affiliate].should_not be_nil
           assigns[:affiliate].should == @user.affiliates.first
         end
-      
+
         it "should redirect to :get_the_code, assuming there are no errors" do
           response.should redirect_to get_the_code_affiliate_path(@user.affiliates.first)
         end
-      
+
         it "should create SiteDomains, Sitemaps and RSS feeds if provided" do
           @affiliate = assigns[:affiliate]
           @affiliate.errors.should be_empty
@@ -268,32 +268,32 @@ describe Affiliates::HomeController do
           @affiliate.rss_feeds.first.name.should == "Feed 1"
         end
       end
-      
+
       context "for an invalid request" do
         before do
-          put :create_content_sources, :id => @user.affiliates.first.id, :affiliate => { 
-            :site_domains_attributes => { 
-              "0".to_sym => {:domain => 'aff.gov'}, 
+          put :create_content_sources, :id => @user.affiliates.first.id, :affiliate => {
+            :site_domains_attributes => {
+              "0".to_sym => {:domain => 'aff.gov'},
               "1".to_sym => {:domain => 'aff2.gov'}
-            }, 
+            },
             :sitemaps_attributes => {
-              "0".to_sym => {:url => 'http://aff.gov/sitemap.xml'}, 
+              "0".to_sym => {:url => 'http://aff.gov/sitemap.xml'},
               "1".to_sym => {:url => 'http://aff2.gov/sitemap.xml'}
-            }, 
+            },
             :rss_feeds_attributes => {
               "0".to_sym => {:url => 'http://aff.gov/feed.xml' },
               "1".to_sym => {:url => 'http://aff2.gov/feed.xml', :name => 'Feed 2'}
             }
-          }          
+          }
         end
-        
+
         it "should re-render the template with errors" do
           response.should render_template("content_sources")
         end
       end
     end
   end
-  
+
   describe "do GET on #edit_site_information" do
     it "should require affiliate login for edit_site_information" do
       get :edit_site_information, :id => affiliates(:power_affiliate).id
@@ -689,7 +689,7 @@ describe Affiliates::HomeController do
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.should_receive(:update_attributes_for_current).and_return(true)
+        affiliate.should_receive(:update_attributes_for_live).and_return(true)
         put :update_header_footer, :id => affiliate.id, :affiliate=> {:staged_header => "staged header"}, :commit => "Make Live"
       end
 
@@ -706,7 +706,7 @@ describe Affiliates::HomeController do
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.should_receive(:update_attributes_for_current).and_return(false)
+        affiliate.should_receive(:update_attributes_for_live).and_return(false)
         put :update_header_footer, :id => affiliate.id, :affiliate=> {:staged_header => "staged header"}, :commit => "Make Live"
       end
 
@@ -1088,7 +1088,7 @@ describe Affiliates::HomeController do
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.should_not_receive(:update_attributes_for_current)
+        affiliate.should_not_receive(:update_attributes_for_live)
         affiliate.should_not_receive(:update_attributes_for_staging)
         affiliate.should_receive(:update_attributes).with(hash_including(:facebook_handle => 'FBAgency')).and_return(true)
 
@@ -1108,7 +1108,7 @@ describe Affiliates::HomeController do
         UserSession.create(current_user)
         User.should_receive(:find_by_id).and_return(current_user)
         current_user.stub_chain(:affiliates, :find).and_return(affiliate)
-        affiliate.should_not_receive(:update_attributes_for_current)
+        affiliate.should_not_receive(:update_attributes_for_live)
         affiliate.should_not_receive(:update_attributes_for_staging)
         affiliate.should_receive(:update_attributes).with(hash_including(:facebook_handle => 'FBAgency')).and_return(false)
 

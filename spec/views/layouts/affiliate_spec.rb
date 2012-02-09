@@ -13,6 +13,7 @@ describe "layouts/affiliate" do
                            :external_css_url => 'http://cdn.agency.gov/custom.css',
                            :css_property_hash => {},
                            :uses_one_serp? => true,
+                           :uses_managed_header_footer? => false,
                            :show_content_border? => true,
                            :show_content_box_shadow? => true,
                            :locale => 'en')
@@ -40,6 +41,7 @@ describe "layouts/affiliate" do
                              :external_css_url => 'http://cdn.agency.gov/custom.css',
                              :css_property_hash => {},
                              :uses_one_serp? => true,
+                             :uses_managed_header_footer? => false,
                              :show_content_border? => true,
                              :show_content_box_shadow? => true,
                              :locale => 'en')

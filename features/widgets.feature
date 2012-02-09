@@ -2,8 +2,8 @@ Feature: Widgets
 
   Scenario: Visiting trending searches widget page
     Given the following Affiliates exist:
-      | display_name | name   | contact_email | contact_name | top_searches_label | header         |
-      | USA.gov      | usagov | aff@bar.gov   | John Bar     | Top Searches       | USA.gov Header |
+      | display_name | name   | contact_email | contact_name | top_searches_label | header         | uses_managed_header_footer |
+      | USA.gov      | usagov | aff@bar.gov   | John Bar     | Top Searches       | USA.gov Header | false                      |
     Given the following Top Searches exist:
       | position | query             | affiliate_name |
       | 1        | White House       | usagov         |
@@ -24,8 +24,8 @@ Feature: Widgets
 
   Scenario: Visiting trending searches widget for an affiliate
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | top_searches_label  | header          |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Top Searches        | Bar.gov Header  |
+      | display_name | name    | contact_email | contact_name | top_searches_label | header         | uses_managed_header_footer |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | Top Searches       | Bar.gov Header | false                      |
     And the following Top Searches exist:
       | position  | query         | url                 | affiliate_name  |
       | 1         | Top Search 1  |                     | aff.gov         |

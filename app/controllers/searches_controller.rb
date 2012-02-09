@@ -118,6 +118,14 @@ class SearchesController < ApplicationController
       @affiliate.external_css_url = @affiliate.staged_external_css_url
       @affiliate.theme = @affiliate.staged_theme
       @affiliate.css_properties = @affiliate.staged_css_properties
+      @affiliate.uses_managed_header_footer = @affiliate.staged_uses_managed_header_footer
+      @affiliate.managed_header_css_properties =  @affiliate.staged_managed_header_css_properties
+      @affiliate.managed_header_home_url = @affiliate.staged_managed_header_home_url
+      @affiliate.managed_header_text = @affiliate.staged_managed_header_text
+      @affiliate.header_image_file_name = @affiliate.staged_header_image_file_name
+      @affiliate.header_image_content_type = @affiliate.staged_header_image_content_type
+      @affiliate.header_image_file_size = @affiliate.staged_header_image_file_size
+      @affiliate.header_image_updated_at = @affiliate.staged_header_image_updated_at
     end
     I18n.locale = 'es' if @affiliate && @affiliate.locale == 'es'
   end
