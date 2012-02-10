@@ -147,18 +147,13 @@ describe RssFeed do
 
       context "when an exception is raised somewhere along the way" do
         before do
-          Sunspot.stub!(:commit).and_raise Exception
+          DateTime.stub!(:parse).and_raise Exception
         end
 
         it "should log it and move on" do
           Rails.logger.should_receive(:warn).once.with(an_instance_of(Exception))
           @feed.freshen
         end
-      end
-
-      it "should commit the news items to Solr" do
-        Sunspot.should_receive(:commit).once
-        @feed.freshen
       end
     end
 

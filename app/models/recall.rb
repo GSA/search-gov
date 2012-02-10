@@ -151,7 +151,6 @@ class Recall < ActiveRecord::Base
 
     def load_cpsc_data_from_file(file_path)
       FasterCSV.foreach(file_path, :headers => true) { |row| process_cpsc_row(row) }
-      Sunspot.commit
     end
 
     def load_cpsc_data_from_xml_feed(url)
@@ -171,7 +170,6 @@ class Recall < ActiveRecord::Base
                              element.attributes["recDate"]
                            ])
         end
-        Sunspot.commit
       rescue Exception => e
         Rails.logger.error(e.message)
       end
@@ -183,7 +181,6 @@ class Recall < ActiveRecord::Base
         line.split("\t").each { |field| row << field.chomp }
         process_nhtsa_row(row)
       end
-      Sunspot.commit
     end
 
     def load_nhtsa_data_from_tab_delimited_feed(url)
@@ -208,7 +205,6 @@ class Recall < ActiveRecord::Base
                                                                          :description => item.description,
                                                                          :food_type => food_type))
         end
-        Sunspot.commit
       rescue Exception => e
         Rails.logger.error(e.message)
       end

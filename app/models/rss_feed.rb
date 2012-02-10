@@ -22,7 +22,6 @@ class RssFeed < ActiveRecord::Base
         description = Nokogiri::HTML(raw_description).inner_text.gsub(/[\t\n\r]/, ' ').squish
         NewsItem.create!(:rss_feed => self, :link => link, :title => title, :description => description, :published_at => published_at, :guid => guid) unless news_items.exists?(:guid => guid)
       end unless feed_type.nil?
-      Sunspot.commit
     rescue Exception => e
       Rails.logger.warn(e)
     end

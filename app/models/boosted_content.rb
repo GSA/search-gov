@@ -67,7 +67,7 @@ class BoostedContent < ActiveRecord::Base
 
   class << self
     include QueryPreprocessor
-    
+
     def search_for(query, affiliate = nil, locale = I18n.default_locale.to_s, page = 1, per_page = 3)
       affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate_name, :locale => locale}) do
@@ -115,7 +115,7 @@ class BoostedContent < ActiveRecord::Base
   end
 
   protected
-  
+
   def self.process_boosted_content_xml_upload_for(affiliate, xml_file)
     results = { :created => 0, :updated => 0, :success => false }
     boosted_contents = []
@@ -134,7 +134,6 @@ class BoostedContent < ActiveRecord::Base
         end
       end
       Sunspot.index(boosted_contents)
-      Sunspot.commit
       results[:success] = true
     rescue
       results[:error_message] = "Your XML document could not be processed. Please check the format and try again."
@@ -160,7 +159,6 @@ class BoostedContent < ActiveRecord::Base
         end
       end
       Sunspot.index(boosted_contents)
-      Sunspot.commit
       results[:success] = true
     rescue
       results[:error_message] = "Your CSV document could not be processed. Please check the format and try again."
@@ -185,11 +183,11 @@ class BoostedContent < ActiveRecord::Base
   end
 
   private
-  
+
   def set_locale
     self.locale = self.affiliate.locale if self.affiliate and self.locale.nil?
   end
-  
+
   def publish_start_and_end_dates
     start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?
     end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?
@@ -199,6 +197,6 @@ class BoostedContent < ActiveRecord::Base
   end
 
   def ensure_http_prefix_on_url
-    self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^http(s?)://}i
+    self.url = "http://#{self.url}" unless self.url.blank? or self.url =~ %r{^https?://}i
   end
 end
