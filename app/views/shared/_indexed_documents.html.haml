@@ -4,7 +4,5 @@
     .indexed-documents-wrapper-middle
       .related_indexeddocs
         - search.indexed_documents.each_with_index do |hit, index|
-          = render 'shared/indexed_document', :hit => hit, :index => index
-      .see-more-documents
-        = link_to t(:more_results_for_query, :query => @search.query), docs_search_path(:query => @search.query, :affiliate => @affiliate.name)
+          = render 'shared/indexed_document', :hit => hit, :index => index, :show_full_listing => false
     .indexed-documents-wrapper-bottom

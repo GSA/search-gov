@@ -39,6 +39,7 @@ class Affiliate < ActiveRecord::Base
                     :path => "#{Rails.env}/:id/managed_header_image/:updated_at/:style/:basename.:extension",
                     :ssl => true
 
+  has_many :document_collections, :dependent => :destroy
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
   validate :validate_css_property_hash, :validate_header_footer_css, :validate_managed_header_css_properties
@@ -247,11 +248,11 @@ class Affiliate < ActiveRecord::Base
   end
 
   def build_search_results_page_title(query)
-    build_page_title self.search_results_page_title, query
+    build_page_title(self.search_results_page_title, query)
   end
 
   def build_staged_search_results_page_title(query)
-    build_page_title self.staged_search_results_page_title, query
+    build_page_title(self.staged_search_results_page_title, query)
   end
 
   def build_page_title(page_title, query)
@@ -312,7 +313,15 @@ class Affiliate < ActiveRecord::Base
   end
 
   def has_active_rss_feeds?
-    active_rss_feeds.count > 0
+    active_rss_feeds.present?
+  end
+
+  def active_document_collections
+    document_collections.joins(:url_prefixes).select("distinct document_collections.*")
+  end
+
+  def has_active_document_collections?
+    active_document_collections.present?
   end
 
   def is_image_search_enabled?

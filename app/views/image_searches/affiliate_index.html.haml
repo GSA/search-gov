@@ -1,5 +1,5 @@
 #left_column
-  = render "shared/affiliate_news_vertical_navigation"
+  = render "shared/affiliate_vertical_navigation"
 #results
   = render "/shared/search", :path => image_search_path(:affiliate => @affiliate)
   = render :partial => "/shared/searchresults", :locals => { :search => @search }

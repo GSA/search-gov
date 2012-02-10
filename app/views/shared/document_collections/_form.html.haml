@@ -1,0 +1,25 @@
+= form.error_messages(:header_message => nil, :class => "error")
+.basic-information
+  %ul
+    %li
+      = form.label :name, "Name*"
+      = form.text_field :name, { :class => 'text', :maxlength => 255, :size => nil }
+.url-prefixes-section
+  %h2#url_prefixes_header URL prefixes
+  .url-prefixes
+    %table
+      %colgroup
+        %col{ :class => 'value' }
+      %tbody
+        - index = 0
+        = form.fields_for :url_prefixes do |url_prefix_form|
+          %tr.row-item
+            %td
+              = url_prefix_form.label :prefix, "URL Prefix #{index}", { :class => 'hide' }
+              - index += 1
+              = url_prefix_form.text_field :prefix, { :maxlength => 255, :size => nil }
+    %p.tips
+      Please provide the URL prefixes that make up this collection.
+      Each URL prefix should start with "http://" and end in a trailing slash "/" to avoid unintended matches.
+      (e.g., "http://agency.gov/", "http://www.xyz.gov/folder/")
+    = link_to 'Add another URL prefix', '#', :id => 'add_another_url_prefix'

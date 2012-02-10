@@ -200,13 +200,13 @@ describe IndexedDocument do
 
     context "when the affiliate is not specified" do
       it "should return nil" do
-        IndexedDocument.search_for('foo', nil).should be_nil
+        IndexedDocument.search_for('foo', nil, nil).should be_nil
       end
     end
 
     context "when the query is blank" do
       it "should return nil" do
-        IndexedDocument.search_for('', @affiliate).should be_nil
+        IndexedDocument.search_for('', @affiliate, nil).should be_nil
       end
     end
 
@@ -214,7 +214,7 @@ describe IndexedDocument do
       it "should instrument the call to Solr with the proper action.service namespace, affiliate, and query param hash" do
         ActiveSupport::Notifications.should_receive(:instrument).
           with("solr_search.usasearch", hash_including(:query => hash_including(:affiliate => @affiliate.name, :model=>"IndexedDocument", :term => "foo")))
-        IndexedDocument.search_for('foo', @affiliate)
+        IndexedDocument.search_for('foo', @affiliate, nil)
       end
     end
 
@@ -228,7 +228,7 @@ describe IndexedDocument do
       end
 
       it "should only return the OK ones" do
-        search = IndexedDocument.search_for('document', affiliates(:basic_affiliate))
+        search = IndexedDocument.search_for('document', affiliates(:basic_affiliate), nil)
         search.total.should == 1
         search.results.first.last_crawl_status.should == IndexedDocument::OK_STATUS
       end
@@ -244,13 +244,13 @@ describe IndexedDocument do
       end
 
       it "should find by title, description, and body for that affiliate, and highlight only the terms in the title and description" do
-        title_search = IndexedDocument.search_for('swim pollutant', @affiliate)
+        title_search = IndexedDocument.search_for('swim pollutant', @affiliate, nil)
         title_search.total.should == 1
         title_search.hits.first.highlight(:title).should_not be_nil
-        description_search = IndexedDocument.search_for('speak', @affiliate)
+        description_search = IndexedDocument.search_for('speak', @affiliate, nil)
         description_search.total.should == 1
         description_search.hits.first.highlight(:description).should_not be_nil
-        body_search = IndexedDocument.search_for('swim', @affiliate)
+        body_search = IndexedDocument.search_for('swim', @affiliate, nil)
         body_search.total.should == 1
         body_search.hits.first.highlight(:body).should be_nil
       end
@@ -268,15 +268,33 @@ describe IndexedDocument do
       end
 
       it "should find by title, description, and body for that affiliate, and highlight only the terms in the title and description" do
-        title_search = IndexedDocument.search_for('jugando', @affiliate)
+        title_search = IndexedDocument.search_for('jugando', @affiliate, nil)
         title_search.total.should == 1
         title_search.hits.first.highlight(:title_text).should_not be_nil
-        description_search = IndexedDocument.search_for('hablando', @affiliate)
+        description_search = IndexedDocument.search_for('hablando', @affiliate, nil)
         description_search.total.should == 1
         description_search.hits.first.highlight(:description_text).should_not be_nil
-        body_search = IndexedDocument.search_for('Declaraciones', @affiliate)
+        body_search = IndexedDocument.search_for('Declaraciones', @affiliate, nil)
         body_search.total.should == 1
         body_search.hits.first.highlight(:body_text).should be_nil
+      end
+    end
+
+    context "when document collection is specified" do
+      before do
+        IndexedDocument.delete_all
+        @affiliate = affiliates(:basic_affiliate)
+        @coll = @affiliate.document_collections.create!(:name=>"test")
+        @coll.url_prefixes.create!(:prefix=>"http://www.export.gov/")
+        IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'Title 1', :description => 'This is a HTML document.', :url => 'http://www.export.gov/html.html', :affiliate_id => @affiliate.id)
+        IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'Title 2', :description => 'This is another HTML document.', :url => 'http://www.ignoreme.gov/html.html', :affiliate_id => @affiliate.id)
+        Sunspot.commit
+      end
+
+      it "should only return results from URLs matching prefixes from that collection" do
+        search = IndexedDocument.search_for('document', @affiliate, @coll)
+        search.total.should == 1
+        search.results.first.title.should == "Title 1"
       end
     end
 

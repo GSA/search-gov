@@ -218,6 +218,15 @@ ActiveRecord::Schema.define(:version => 20120217081247) do
   add_index "daily_usage_stats", ["affiliate", "profile", "day"], :name => "apd", :unique => true
   add_index "daily_usage_stats", ["day", "profile", "affiliate"], :name => "index_daily_usage_stats_on_day_and_profile_and_affiliate", :unique => true
 
+  create_table "document_collections", :force => true do |t|
+    t.integer  "affiliate_id", :null => false
+    t.string   "name",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "document_collections", ["affiliate_id", "name"], :name => "index_document_collections_on_affiliate_id_and_name", :unique => true
+
   create_table "excluded_domains", :force => true do |t|
     t.string   "domain"
     t.datetime "created_at"
@@ -660,6 +669,15 @@ ActiveRecord::Schema.define(:version => 20120217081247) do
 
   add_index "top_searches", ["affiliate_id"], :name => "index_top_searches_on_affiliate_id"
   add_index "top_searches", ["position", "affiliate_id"], :name => "index_top_searches_on_position_and_affiliate_id", :unique => true
+
+  create_table "url_prefixes", :force => true do |t|
+    t.integer  "document_collection_id", :null => false
+    t.string   "prefix",                 :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "url_prefixes", ["document_collection_id", "prefix"], :name => "index_url_prefixes_on_document_collection_id_and_prefix", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                                                                            :null => false

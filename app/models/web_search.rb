@@ -22,7 +22,7 @@ class WebSearch < Search
               :indexed_documents,
               :indexed_results,
               :matching_site_limit
-              
+
   class << self
     def suggestions(affiliate_id, sanitized_query, num_suggestions = 15)
       corrected_query = Misspelling.correct(sanitized_query)
@@ -48,7 +48,6 @@ class WebSearch < Search
     @enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
     @sources = bing_sources
     @formatted_query = generate_formatted_query
-
     @related_search = []
   end
 
@@ -78,7 +77,7 @@ class WebSearch < Search
        :startrecord => @startrecord,
        :endrecord => @endrecord,
        :spelling_suggestions => @spelling_suggestion,
-       :related_searches => @related_search,
+       :related_searches => remove_strong(@related_search),
        :results => @results,
        :boosted_results => @boosted_contents.try(:results)}.to_xml(options)
     end
@@ -282,7 +281,7 @@ class WebSearch < Search
     @faqs = Faq.search_for(query, I18n.locale.to_s) unless affiliate
     if first_page?
       @featured_collections = FeaturedCollection.search_for(query, affiliate, I18n.locale)
-      documents = (affiliate and @indexed_results.nil?) ? IndexedDocument.search_for(query, affiliate) : nil
+      documents = (affiliate and @indexed_results.nil?) ? IndexedDocument.search_for(query, affiliate, nil) : nil
       if documents
         @indexed_documents = documents.hits(:verify => true)
         remove_bing_matches_from_indexed_documents
@@ -305,6 +304,7 @@ class WebSearch < Search
     modules << "IMAG" unless self.class.to_s == "ImageSearch" or self.extra_image_results.nil?
     modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
     modules << "SREL" unless self.related_search.nil? or self.related_search.empty?
+    modules << "AIDOC" unless self.indexed_documents.nil? or self.indexed_documents.empty?
     modules << "FAQS" unless self.faqs.nil? or self.faqs.total.zero?
     modules << "RECALL" unless self.recalls.nil?
     modules << "BOOS" unless self.boosted_contents.nil? or self.boosted_contents.total.zero?
@@ -409,5 +409,5 @@ class WebSearch < Search
 
   def remove_strong(string_array)
     string_array.map { |entry| entry.gsub(/<\/?strong>/, '') } if string_array.kind_of?(Array)
-  end  
+  end
 end

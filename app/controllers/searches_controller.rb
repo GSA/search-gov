@@ -48,7 +48,8 @@ class SearchesController < ApplicationController
 
   def docs
     unless @search_options[:query].blank?
-      @search = IndexedDocument.search_for(@search_options[:query], @search_options[:affiliate], @search_options[:page], 10)
+      @search = OdieSearch.new(@search_options)
+      @search.run
       @form_path = docs_search_path
       @page_title = @search_options[:query]
       @search_vertical = :docs
@@ -68,7 +69,7 @@ class SearchesController < ApplicationController
 
   def auto_complete_for_search_query
     query = params["mode"] == "jquery" ? params["q"] : params["query"]
-    sanitized_query = query.nil? ? "" : query.squish.strip.gsub('\\', '')
+    sanitized_query = query.nil? ? "" : query.squish.gsub('\\', '')
     render :inline => "" and return if sanitized_query.empty?
     @auto_complete_options = WebSearch.suggestions(nil, sanitized_query, is_mobile_device? ? SAYT_SUGGESTION_SIZE_FOR_MOBILE : SAYT_SUGGESTION_SIZE)
     if params["mode"] == "jquery"
@@ -146,13 +147,7 @@ class SearchesController < ApplicationController
   end
 
   def set_docs_search_options
-    @search_options = {
-      :page => [(params[:page] || "1").to_i, 1].max,
-      :query => params["query"],
-      :per_page => (params["per-page"] || Search::DEFAULT_PER_PAGE).to_i,
-      :enable_highlighting => params["hl"].present? && params["hl"] == "false" ? false : true,
-      :affiliate => @affiliate
-    }
+    @search_options = set_form_search_options.merge(:affiliate => @affiliate, :dc => params["dc"])
   end
 
   def check_for_blank_query

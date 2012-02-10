@@ -1,7 +1,6 @@
 class NewsSearch < Search
   attr_reader :rss_feed,
               :related_search,
-              :related_search_class,
               :hits,
               :since,
               :spelling_suggestion

@@ -80,6 +80,7 @@ UsasearchRails3::Application.routes.draw do
     resources :api, :controller => "affiliates/api"
     resources :featured_collections, :controller => "affiliates/featured_collections"
     resources :rss_feeds, :controller => "affiliates/rss_feeds"
+    resources :document_collections, :controller => "affiliates/document_collections"
     resources :excluded_urls, :controller => "affiliates/excluded_urls", :only => [:index, :create, :destroy]
     resources :sitemaps, :controller => "affiliates/sitemaps", :only => [:index, :new, :create, :destroy]
     resources :top_searches, :controller => "affiliates/top_searches", :only => [:index, :create]
@@ -119,6 +120,8 @@ UsasearchRails3::Application.routes.draw do
     end
     resources :affiliate_boosted_contents do as_routes end
     resources :faqs do as_routes end
+    resources :collections do as_routes end
+    resources :url_prefixes do as_routes end
     resources :gov_forms do as_routes end
     resources :top_searches, :only => [:index, :create, :new]
     resources :top_forms, :only => [:index, :create, :update, :destroy]

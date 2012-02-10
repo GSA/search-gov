@@ -101,28 +101,28 @@ describe SearchesController do
       @search.results.should_not be_nil
     end
   end
-  
+
   context "when searching with parameters" do
     it "should not blow up if per-page is blank" do
       get :index, :query => 'white house', "per-page" => ''
       assigns[:search_options][:per_page].should == Search::DEFAULT_PER_PAGE
     end
-  
+
     it "should not blow up if per-page is not a number" do
       get :index, :query => 'white house', "per-page" => 'number'
       assigns[:search_options][:per_page].should == Search::DEFAULT_PER_PAGE
     end
-    
+
     it "should not blow up if per page is set to 0" do
       get :index, :query => 'white house', "per-page" => '0'
       assigns[:search_options][:per_page].should == Search::DEFAULT_PER_PAGE
     end
-    
+
     it "should assign the per page if a valid number" do
       get :index, :query => 'white house', "per-page" => '50'
       assigns[:search_options][:per_page].should == 50
     end
-  end  
+  end
 
   context "when handling a valid affiliate search request" do
     render_views
@@ -297,7 +297,7 @@ describe SearchesController do
       Faq.reindex
       Sunspot.commit
       Faq.search_for('uspto').total.should == 0
-      @faq = Faq.create(:question => 'What is the USPTO?', :answer => 'The USPTO is a government agency', :url => 'http://uspto.gov', :ranking => 1)
+      @faq = Faq.create!(:question => 'What is the USPTO?', :answer => 'The USPTO is a government agency', :url => 'http://uspto.gov', :ranking => 1)
       Sunspot.commit
       Faq.search_for('uspto').total.should == 1
       Faq.delete_all
@@ -499,8 +499,8 @@ describe SearchesController do
     it "should find PDF files that match the query for the affiliate" do
       get :docs, :query => "pdf", :affiliate => @affiliate.name
       assigns[:search].total.should == 2
-      assigns[:search].results.first.url.should_not == "http://otheraffiliate.gov/1.pdf"
-      assigns[:search].results.last.url.should_not == "http://otheraffiliate.gov/1.pdf"
+      assigns[:search].hits.first.instance.url.should_not == "http://otheraffiliate.gov/1.pdf"
+      assigns[:search].hits.last.instance.url.should_not == "http://otheraffiliate.gov/1.pdf"
     end
 
     it "should output a page that summarizes the results and links back to the affiliate results page" do

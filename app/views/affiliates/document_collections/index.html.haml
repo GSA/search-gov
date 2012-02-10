@@ -1,0 +1,22 @@
+.document-collections
+  = affiliate_center_breadcrumbs([link_to(@affiliate.display_name, affiliate_path(@affiliate)), "Collections"])
+  .column-1
+    %h1 Collections
+    %p
+      Collections allow you to create named groups for your indexed pages across subdomains or subfolders. For instance,
+      you might have helpful content on publications.agency.gov/docs, answers.agency.gov, and www.agency.gov. You could create a collection
+      called "FAQs" that contains http://publications.agency.gov/docs and http://answers.agency.gov. A link to "FAQs" then appears
+      in your search results page sidebar, and when searchers click on it, their search results are restricted to just those locations (i.e.,
+      the user won't see anything from www.agency.gov).
+    .document-collection-list
+      %table
+        %colgroup
+          %col{ :class => 'name' }
+          %col{ :class => 'actions' }
+        %thead
+          %tr
+            %th{ :colspan => 2 }
+              = link_to "Add new collection", new_affiliate_document_collection_path(@affiliate), :class => 'add-link'
+        = render 'shared/document_collections/affiliate_document_collection_rows'
+  .column-2
+    .side-note-image= image_tag "side_notes/best_bets.png"

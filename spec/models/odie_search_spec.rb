@@ -15,7 +15,7 @@ describe OdieSearch do
       @odie_search = OdieSearch.new(:query => '   element   OR', :affiliate => affiliate)
       puts @odie_search.class.name
     end
-    
+
     it "should downcase a query ending in OR and strip extra whitespace" do
       @odie_search.query.should == "element or"
     end
@@ -30,7 +30,7 @@ describe OdieSearch do
   describe "#run" do
     it "should log info about the query and module impressions" do
       search = OdieSearch.new(:query => 'element', :affiliate => affiliate)
-      QueryImpression.should_receive(:log).with(:odie, affiliate.name, 'element', ["ODIE"])
+      QueryImpression.should_receive(:log).with(:odie, affiliate.name, 'element', ["AIDOC"])
       search.run
     end
 

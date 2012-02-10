@@ -12,16 +12,17 @@
     = render('shared/featured_collections', :search => search) if search.has_featured_collections?
   - elsif (search.recalls && search.recalls.total > 0)
     = render "shared/recall_gov_box", :search => search
-  - elsif @search.extra_image_results.present?
+  - elsif search.extra_image_results.present?
     = render "shared/popular_images", :search => search
-  - elsif @search.med_topic.present?
+  - elsif search.med_topic.present?
     = render 'shared/med_topic_gov_box', :search => @search, :affiliate => @affiliate
-  = render "/shared/indexed_documents", :search => @search, :affiliate => @affiliate if @affiliate and @affiliate.uses_bing_odie_results?
 - if search.results.present?
   - search.results.each_with_index do |result, index|
     - unless search.med_topic.present? and search.med_topic.medline_url == result['unescapedUrl']
       = render result_partial, :result => result, :affiliate => @affiliate, :search => search, :index => (search.startrecord + index - 1)
     = render "/shared/related_faqs" if index == 2 and search.first_page?
+    - if @affiliate and @affiliate.uses_bing_odie_results? and index == 4 and search.first_page?
+      = render "/shared/indexed_documents", :search => @search, :affiliate => @affiliate
   = render "/shared/related_topics_wrapper"
   .pagination-and-logo
     = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))

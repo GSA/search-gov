@@ -1,6 +1,6 @@
 #left_column
-  - if @affiliate.has_active_rss_feeds? or @affiliate.is_image_search_enabled?
-    = render "shared/affiliate_news_vertical_navigation"
+  - if @affiliate.has_active_rss_feeds? or @affiliate.is_image_search_enabled? or @affiliate.has_active_document_collections?
+    = render "shared/affiliate_vertical_navigation"
   &nbsp;
 #results
   = render "shared/search", :path => search_path

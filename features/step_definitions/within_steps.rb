@@ -23,6 +23,7 @@
   'in the search results section' => '#results',
   'in the no results section' => '.no-results',
   'in the featured collections section' => '.featured-collections',
+  'in the document collections section' => '.document-collections',
   'in the pagination' => '.pagination',
   'in the affiliate boosted contents section' => '.boosted-contents',
   'in the boosted contents section' => '#boosted',

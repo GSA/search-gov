@@ -42,6 +42,19 @@ jQuery(document).ready(function() {
     return false;
   });
 
+  jQuery('#add_another_url_prefix').click(function() {
+    var inputTagFormat =
+        "<tr class='row-item'>\
+          <td>\
+            <input id='document_collection_url_prefixes_attributes_#_prefix' name='document_collection[url_prefixes_attributes][#][prefix]' maxlength='255' type='text' />\
+          </td>\
+        </tr>";
+    var inputTag = inputTagFormat.replace(/#/g, new Date().getTime());
+    jQuery('.url-prefixes table tbody').append(inputTag);
+    jQuery('.url-prefixes input').last().focus();
+    return false;
+  });
+
   jQuery('#add_another_link').click(function() {
     position = parseInt(jQuery('.links .position').last().attr('value')) + 1;
     var inputTagFormat =

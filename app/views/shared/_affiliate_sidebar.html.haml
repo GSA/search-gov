@@ -25,6 +25,10 @@
             %li
               = link_to "RSS", affiliate_rss_feeds_path(@affiliate), :class => 'new'
               = image_tag 'new.png', :class => 'new'
+            - unless @affiliate.results_source=='bing'
+              %li
+                = link_to "Collections", affiliate_document_collections_path(@affiliate)
+                = image_tag 'new.png', :class => 'new'
             %li.last= link_to "Social Media", edit_social_media_affiliate_path(@affiliate)
         .side-block
           %h3

@@ -1358,7 +1358,7 @@ h3.api-item
       margin: 0.5em 0 0
       padding: 0 0 0 1em
 
-.featured-collection-list, .boosted-content-list, .rss-feed-list, .excluded-url-list, .sitemap-list, .crawled-url-list, .uncrawled-url-list, .entry-list
+.featured-collection-list, .document-collection-list, .boosted-content-list, .rss-feed-list, .excluded-url-list, .sitemap-list, .crawled-url-list, .uncrawled-url-list, .entry-list
   clear: both
   table
     border: 1px solid #BDBDBD
@@ -1475,7 +1475,7 @@ h3.api-item
     @extend .crawled-url-list
     @extend .uncrawled-url-list
 
-.add-featured-collection, .edit-featured-collection, .add-boosted-content, .edit-boosted-content, .add-rss-feed, .edit-rss-feed, .add-excluded-url, .add-sitemap, .add-url, .add-new-entry, .edit-entry
+.add-featured-collection, .edit-featured-collection, .add-document-collection, .edit-document-collection, .add-boosted-content, .edit-boosted-content, .add-rss-feed, .edit-rss-feed, .add-excluded-url, .add-sitemap, .add-url, .add-new-entry, .edit-entry
   @include border-radius
   border: 1px solid #BDBDBD
   overflow: hidden
@@ -1563,15 +1563,18 @@ h3.api-item
     @include clearfix
     padding: 10px 0
     border-top: 1px solid #DDD
+  .url-prefixes-section
+    @include clearfix
+    padding: 10px 0
   .tips
     color: #909090
     font-size: 12px
     margin-bottom: 0.5em
     margin-left: 155px
-  #keywords_header
+  #keywords_header, #url_prefixes_header
     float: left
     width: 155px
-  .keywords
+  .keywords, .url-prefixes
     @include clearfix
     float: left
     width: 315px
@@ -1582,6 +1585,9 @@ h3.api-item
         width: 300px
     td
       :padding 0
+    .tips
+      margin-left: 0px
+
   .image-section
     @include clearfix
     border-top: 1px solid #DDD
@@ -1623,7 +1629,7 @@ h3.api-item
           width: 96%
         &.url
           width: 97%
-  #add_another_keyword, #add_another_link
+  #add_another_keyword, #add_another_link, #add_another_url_prefix
     float: right
     font:
       weight: normal
@@ -1632,7 +1638,7 @@ h3.api-item
   .submit
     margin-left: 155px
 
-.show-featured-collection, .show-boosted-content, .show-rss-feed
+.show-featured-collection, .show-document-collection, .show-boosted-content, .show-rss-feed
   overflow: hidden
   table
     border: 1px solid #BDBDBD
@@ -1660,6 +1666,12 @@ h3.api-item
       a
         display: block
   .keywords
+    span
+      @include border-radius
+      background-color: #EEE
+      border: 1px solid #BDBDBD
+      padding: 2px 4px
+  .url-prefixes
     span
       @include border-radius
       background-color: #EEE

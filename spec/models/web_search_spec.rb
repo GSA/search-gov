@@ -195,7 +195,7 @@ describe WebSearch do
       end
     end
 
-    context "when affiliate is not nil" do      
+    context "when affiliate is not nil" do
       it "should not search for FAQs" do
         search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
         Faq.should_not_receive(:search_for)
@@ -209,6 +209,8 @@ describe WebSearch do
 
         it "should use affiliate domains in query to Bing without passing ScopeID" do
           search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
+          search.stub!(:handle_bing_response)
+          search.stub!(:log_serp_impressions)
           URI.should_receive(:parse).with(/query=\(government\)%20\(site%3Abar\.com%20OR%20site%3Afoo\.com\)$/).and_return(@uriresult)
           search.run
         end
@@ -222,6 +224,8 @@ describe WebSearch do
 
           it "should use a subset of the affiliate's domains (order is unimportant) up to the predetermined limit, accounting for URI encoding" do
             search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
+            search.stub!(:handle_bing_response)
+            search.stub!(:log_serp_impressions)
             URI.should_receive(:parse).with(/a10071.gov\)$/).and_return(@uriresult)
             search.run
           end
@@ -234,11 +238,13 @@ describe WebSearch do
 
           it "should use the scope id and any domains associated with the affiliate" do
             search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
+            search.stub!(:handle_bing_response)
+            search.stub!(:log_serp_impressions)
             URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass%20OR%20site%3Abar.com%20OR%20site%3Afoo.com\)$/).and_return(@uriresult)
             search.run
           end
         end
-        
+
         context "when scope keywords are specified" do
           before do
             @bing_search = BingSearch.new(Search::USER_AGENT)
@@ -249,20 +255,20 @@ describe WebSearch do
             before do
               @affiliate.scope_keywords = "patents,america,flying inventions"
             end
-          
+
             it "should limit the query with those keywords" do
               search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
               @bing_search.should_receive(:query).with('(government) (site:bar.com OR site:foo.com) ("patents" OR "america" OR "flying inventions")', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING)
               search.run
             end
           end
-        
+
           context "when scope keywords and scope ids are set on the affiliate" do
             before do
               @affiliate.scope_ids = "PatentClass"
               @affiliate.scope_keywords = "patents,america,flying inventions"
             end
-          
+
             it "should limit the query with the scope ids and keywords" do
               search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate))
               @bing_search.should_receive(:query).with('(government) (scopeid:PatentClass OR site:bar.com OR site:foo.com) ("patents" OR "america" OR "flying inventions")', 'Spell+Web', 20, 10, true, BingSearch::DEFAULT_FILTER_SETTING)
@@ -275,10 +281,12 @@ describe WebSearch do
       context "when affiliate has domains specified but user specifies site: in search" do
         before do
           @affiliate.add_site_domains('foo.com' => nil, 'bar.com' => nil)
-                  end
+        end
 
         it "should override affiliate domains in query to Bing" do
           search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov"))
+          search.stub!(:handle_bing_response)
+          search.stub!(:log_serp_impressions)
           URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)$/).and_return(@uriresult)
           search.run
         end
@@ -290,6 +298,8 @@ describe WebSearch do
 
           it "should use the query along with the scope id" do
             search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov"))
+            search.stub!(:handle_bing_response)
+            search.stub!(:log_serp_impressions)
             URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3APatentClass\)$/).and_return @uriresult
             search.run
           end
@@ -302,6 +312,8 @@ describe WebSearch do
           @affiliate.add_site_domains("foo.com" => nil)
           URI.should_receive(:parse).with(/#{Regexp.escape("(government%20site%3Awww.foo.com)")}/).and_return(@uriresult)
           @search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :site_limits => 'www.foo.com'))
+          @search.stub!(:handle_bing_response)
+          @search.stub!(:log_serp_impressions)
           @search.run
         end
 
@@ -331,6 +343,8 @@ describe WebSearch do
       context "when affiliate has no domains specified" do
         it "should use just query string and ScopeID/gov/mil combo" do
           search = WebSearch.new(@valid_options.merge(:affiliate => Affiliate.new))
+          search.stub!(:handle_bing_response)
+          search.stub!(:log_serp_impressions)
           URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
           search.run
         end
@@ -338,6 +352,8 @@ describe WebSearch do
         context "when a scope id is provided" do
           it "should use the query with the scope provided" do
             search = WebSearch.new(@valid_options.merge(:affiliate => Affiliate.new(:scope_ids => 'PatentClass')))
+            search.stub!(:handle_bing_response)
+            search.stub!(:log_serp_impressions)
             URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3APatentClass\)$/).and_return(@uriresult)
             search.run
           end
@@ -351,7 +367,7 @@ describe WebSearch do
       end
 
       it "should use just query string and ScopeID/gov/mil combo" do
-                URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
+        URI.should_receive(:parse).with(/query=\(government\)%20\(scopeid%3Ausagovall%20OR%20site%3Agov%20OR%20site%3Amil\)$/).and_return(@uriresult)
         @search.run
       end
 
@@ -609,15 +625,15 @@ describe WebSearch do
       context "when multiple or all of the advanced query parameters are specified" do
         it "should construct a query string that incorporates all of them with the proper spacing" do
           search = WebSearch.new(@valid_options.merge(:query_limit => 'intitle:',
-                                                   :query_quote => 'barack obama',
-                                                   :query_quote_limit => '',
-                                                   :query_or => 'cars stimulus',
-                                                   :query_or_limit => '',
-                                                   :query_not => 'clunkers',
-                                                   :query_not_limit => 'intitle:',
-                                                   :file_type => 'pdf',
-                                                   :site_limits => 'whitehouse.gov omb.gov',
-                                                   :site_excludes => 'nasa.gov noaa.gov'))
+                                                      :query_quote => 'barack obama',
+                                                      :query_quote_limit => '',
+                                                      :query_or => 'cars stimulus',
+                                                      :query_or_limit => '',
+                                                      :query_not => 'clunkers',
+                                                      :query_not_limit => 'intitle:',
+                                                      :file_type => 'pdf',
+                                                      :site_limits => 'whitehouse.gov omb.gov',
+                                                      :site_excludes => 'nasa.gov noaa.gov'))
           URI.should_receive(:parse).with(/query=\(intitle%3Agovernment%20%22barack%20obama%22%20cars%20OR%20stimulus%20-intitle%3Aclunkers%20filetype%3Apdf%20site%3Awhitehouse.gov%20OR%20site%3Aomb.gov%20-site%3Anasa.gov%20-site%3Anoaa.gov\)/).and_return(@uriresult)
           search.run
         end
@@ -748,7 +764,7 @@ describe WebSearch do
       end
 
       it "should filter out the excluded URLs" do
-        @search.results.any? {|result| result['unescapedUrl'] == @url1 or result['unescapedUrl'] == @url2 }.should be_false
+        @search.results.any? { |result| result['unescapedUrl'] == @url1 or result['unescapedUrl'] == @url2 }.should be_false
         @search.results.size.should == 4
       end
 
@@ -809,7 +825,7 @@ describe WebSearch do
         @search.spelling_suggestion.should be_nil
       end
     end
-      
+
     context "recent recalls" do
       before :each do
         @options_with_recall = {:query => "foo bar recall"}
@@ -1154,7 +1170,7 @@ describe WebSearch do
         IndexedDocument.reindex
         Sunspot.commit
         @non_affiliate.indexed_documents.size.should == 15
-        IndexedDocument.search_for('indexed', @non_affiliate).total.should == 15
+        IndexedDocument.search_for('indexed', @non_affiliate, nil).total.should == 15
       end
 
       it "should fill the results with paged boosted results" do
@@ -1214,7 +1230,7 @@ describe WebSearch do
         IndexedDocument.reindex
       end
     end
-    
+
     context "when an affiliate is set to use ODIE results" do
       before do
         IndexedDocument.destroy_all
@@ -1227,7 +1243,7 @@ describe WebSearch do
         @search.should_not_receive(:perform_bing_search)
         @search.run
       end
-      
+
       it "should not use Bing results, but instead use ODIE results" do
         @search.total.should == 1
         @search.results.first['title'].should == 'I LOVE AMERICA'
@@ -1235,7 +1251,7 @@ describe WebSearch do
         @search.results.first['unescapedUrl'].should == "http://nps.gov/america.html"
       end
     end
-    
+
     context "when an affiliate is set to use Bing+Odie results" do
       before do
         IndexedDocument.destroy_all
@@ -1248,7 +1264,7 @@ describe WebSearch do
         @search.should_receive(:bing_offset).and_return 0
         @search.run
       end
-      
+
       it "should use Bing results and populate the indexed_documents field with the Indexed Document results" do
         @search.indexed_documents.should_not be_nil
         @search.indexed_documents.should_not be_empty
@@ -1580,7 +1596,7 @@ describe WebSearch do
 
       it "should not fail, and not exclude the url" do
         search = WebSearch.new(:query => 'bold', :affiliate => @affiliate)
-        search.send(:url_is_excluded,url).should be_false
+        search.send(:url_is_excluded, url).should be_false
       end
     end
   end
