@@ -146,7 +146,6 @@ UsasearchRails3::Application.routes.draw do
     resources :affiliate_scopes do as_routes end
     resources :site_domains do as_routes end
     resources :sitemaps do as_routes end
-    resources :synonyms do as_routes end
   end
 
   match '/admin/affiliates/:id/analytics' => 'admin/affiliates#analytics', :as => :affiliate_analytics_redirect
