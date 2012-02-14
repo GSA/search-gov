@@ -1,6 +1,7 @@
 class Admin::AffiliatesController < Admin::AdminController
 
   active_scaffold :affiliate do |config|
+    config.actions.exclude :delete
     config.columns = [:display_name, :name, :site_domains, :affiliate_template, :boosted_contents, :is_sayt_enabled, :created_at, :updated_at]
     config.list.sorting = { :display_name => :asc }
     config.columns << [:header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer]

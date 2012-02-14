@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120207192617) do
+ActiveRecord::Schema.define(:version => 20120214020545) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -683,6 +683,7 @@ ActiveRecord::Schema.define(:version => 20120207192617) do
     t.string   "email_verification_token"
     t.boolean  "welcome_email_sent",                     :default => false,                        :null => false
     t.boolean  "requires_manual_approval",               :default => false
+    t.text     "notes"
   end
 
   add_index "users", ["api_key"], :name => "index_users_on_api_key", :unique => true
