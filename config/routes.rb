@@ -24,6 +24,9 @@ UsasearchRails3::Application.routes.draw do
       put :update_social_media
       get :urls_and_sitemaps
       get :hosted_sitemaps
+      get :content_sources
+      put :create_content_sources
+      get :get_the_code
     end
     collection do
       get :home
@@ -31,6 +34,8 @@ UsasearchRails3::Application.routes.draw do
       get :demo
       put :update_contact_information
       get :new_site_domain_fields
+      get :new_sitemap_fields
+      get :new_rss_feed_fields
     end
     resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy]
     resources :boosted_contents, :controller => "affiliates/boosted_contents" do

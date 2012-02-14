@@ -83,21 +83,19 @@ describe Affiliates::HomeController do
     context "when logged in with approved user" do
       before do
         UserSession.create(users(:affiliate_manager_with_no_affiliates))
+        get :new
       end
 
       it "should assign @title" do
-        get :new
         assigns[:title].should_not be_blank
       end
 
-      it "should assign @user" do
-        get :new
-        assigns[:user].should == users(:affiliate_manager_with_no_affiliates)
+      it "should assign @current_step to :basic_settings" do
+        assigns[:current_step].should == :basic_settings
       end
-
-      it "should assign @current_step to :edit_contact_information" do
-        get :new
-        assigns[:current_step].should == :edit_contact_information
+      
+      it "should assign a new affiliate" do
+        assigns[:affiliate].should_not be_nil
       end
     end
 
@@ -118,6 +116,184 @@ describe Affiliates::HomeController do
     end
   end
 
+  describe "do POST on #create" do
+    it "should require login for create" do
+      post :create
+      response.should redirect_to(login_path)
+    end
+
+    context "when logged in" do
+      before do
+        UserSession.create(users(:affiliate_manager_with_no_affiliates))
+      end
+
+      it "should assign @affiliate" do
+        post :create, :affiliate => {:display_name => 'new_affiliate'}
+        assigns[:affiliate].should_not be_nil
+      end
+
+      it "should save the affiliate" do
+        post :create, :affiliate => {:display_name => 'new_affiliate'}
+        assigns[:affiliate].id.should_not be_nil
+      end
+
+      context "when the affiliate saves successfully" do
+        before do
+          @emailer = mock(Emailer)
+          @emailer.stub!(:deliver).and_return true
+        end
+
+        it "should email the affiliate a confirmation email" do
+          Emailer.should_receive(:new_affiliate_site).and_return @emailer
+          post :create, :affiliate => {:display_name => 'new_affiliate'}
+        end
+
+        it "should redirect to content_sources" do
+          post :create, :affiliate => {:display_name => 'new_affiliate'}
+          response.should redirect_to(content_sources_affiliate_path(assigns[:affiliate]))
+        end
+      end
+
+      context "when the affiliate fails to save" do
+        it "should assign @current_step to :new_site_information" do
+          post :create
+          assigns[:current_step].should == :basic_settings
+        end
+
+        it "should not send an email" do
+          Emailer.should_not_receive(:new_affiliate_site)
+          post :create
+        end
+
+        it "should render the new template" do
+          post :create
+          response.should render_template("new")
+        end
+      end
+    end
+  end
+  
+  describe "do GET on content_sources" do
+    before do
+      @user = users(:affiliate_manager_with_no_affiliates)
+      @user.affiliates << Affiliate.new(:name => 'new_aff', :display_name => 'new_aff', :theme => 'default', :locale => 'en')
+      @user.affiliates.first.id.should_not be_nil
+    end
+    
+    it "should require login" do
+      get :content_sources, :id => @user.affiliates.first.id
+      response.should redirect_to(login_path)
+    end
+
+    context "when logged in" do
+      before do
+        UserSession.create(@user)
+        get :content_sources, :id => @user.affiliates.first.id
+      end
+
+      it "should assign @title" do
+        assigns[:title].should_not be_blank
+      end
+      
+      it "should assing the current step to 'content_sources'" do
+        assigns[:current_step].should == :content_sources
+      end
+      
+      it "should render the content sources page" do
+        response.should render_template("content_sources")
+      end
+    end
+  end
+  
+  describe "do PUT on create_content_sources" do
+    before do
+      @user = users(:affiliate_manager_with_no_affiliates)
+      @user.affiliates << Affiliate.new(:name => 'new_aff', :display_name => 'new_aff', :theme => 'default', :locale => 'en')
+      @user.affiliates.first.id.should_not be_nil
+    end
+    
+    it "should require login" do
+      put :create_content_sources, :id => @user.affiliates.first.id
+      response.should redirect_to(login_path)
+    end
+      
+    context "when logged in" do
+      before do
+        UserSession.create(@user)
+        Kernel.stub!(:open).and_return(File.open(Rails.root.to_s + '/spec/fixtures/rss/wh_blog.xml'), File.open(Rails.root.to_s + '/spec/fixtures/xml/sitemap.xml'))
+      end
+      
+      context "for a valid request" do
+        before do
+          put :create_content_sources, :id => @user.affiliates.first.id, :affiliate => { 
+            :site_domains_attributes => { 
+              "0".to_sym => {:domain => 'aff.gov'}, 
+              "1".to_sym => {:domain => 'aff2.gov'}
+            }, 
+            :sitemaps_attributes => {
+              "0".to_sym => {:url => 'http://aff.gov/sitemap.xml'}            
+            }, 
+            :rss_feeds_attributes => {
+              "0".to_sym => {:url => 'http://aff.gov/feed.xml', :name => 'Feed 1'}
+            }
+          }
+        end
+      
+        it "should assign the affiliate" do
+          assigns[:affiliate].should_not be_nil
+          assigns[:affiliate].should == @user.affiliates.first
+        end
+      
+        it "should redirect to :get_the_code, assuming there are no errors" do
+          response.should redirect_to get_the_code_affiliate_path(@user.affiliates.first)
+        end
+      
+        it "should create SiteDomains, Sitemaps and RSS feeds if provided" do
+          @affiliate = assigns[:affiliate]
+          @affiliate.errors.should be_empty
+          @affiliate.site_domains.should_not be_empty
+          @affiliate.site_domains.size.should == 2
+          @affiliate.site_domains.first.errors.should be_empty
+          @affiliate.site_domains.first.domain.should == 'aff.gov'
+          @affiliate.site_domains.last.errors.should be_empty
+          @affiliate.site_domains.last.domain.should == 'aff2.gov'
+          @affiliate.sitemaps.should_not be_empty
+          @affiliate.sitemaps.size.should == 1
+          @affiliate.sitemaps.first.errors.should be_empty
+          @affiliate.sitemaps.first.url.should == "http://aff.gov/sitemap.xml"
+          @affiliate.rss_feeds.should_not be_empty
+          @affiliate.rss_feeds.size.should == 1
+          @affiliate.rss_feeds.first.errors.should be_empty
+          @affiliate.rss_feeds.first.url.should == "http://aff.gov/feed.xml"
+          @affiliate.rss_feeds.first.name.should == "Feed 1"
+        end
+      end
+      
+      context "for an invalid request" do
+        before do
+          put :create_content_sources, :id => @user.affiliates.first.id, :affiliate => { 
+            :site_domains_attributes => { 
+              "0".to_sym => {:domain => 'aff.gov'}, 
+              "1".to_sym => {:domain => 'aff2.gov'}
+            }, 
+            :sitemaps_attributes => {
+              "0".to_sym => {:url => 'http://aff.gov/sitemap.xml'}, 
+              "1".to_sym => {:url => 'http://aff2.gov/sitemap.xml'}
+            }, 
+            :rss_feeds_attributes => {
+              "0".to_sym => {:url => 'http://aff.gov/feed.xml' },
+              "1".to_sym => {:url => 'http://aff2.gov/feed.xml', :name => 'Feed 2'}
+            }
+          }          
+        end
+        
+        it "should re-render the template with errors" do
+          response.should render_template("content_sources")
+        end
+      end
+    end
+  end
+  
   describe "do GET on #edit_site_information" do
     it "should require affiliate login for edit_site_information" do
       get :edit_site_information, :id => affiliates(:power_affiliate).id
@@ -649,73 +825,6 @@ describe Affiliates::HomeController do
 
         it "renders the affiliates home page" do
           response.should render_template("home")
-        end
-      end
-    end
-  end
-
-  describe "do POST on #create" do
-    it "should require login for create" do
-      post :create
-      response.should redirect_to(login_path)
-    end
-
-    context "when logged in" do
-      before do
-        UserSession.create(users(:affiliate_manager_with_no_affiliates))
-      end
-
-      it "should assign @title" do
-        post :create, :affiliate => {:display_name => 'new_affiliate'}
-        assigns[:title].should_not be_blank
-      end
-
-      it "should assign @affiliate" do
-        post :create, :affiliate => {:display_name => 'new_affiliate'}
-        assigns[:affiliate].should_not be_nil
-      end
-
-      it "should save the affiliate" do
-        post :create, :affiliate => {:display_name => 'new_affiliate'}
-        assigns[:affiliate].id.should_not be_nil
-      end
-
-      context "when the affiliate saves successfully" do
-        before do
-          @emailer = mock(Emailer)
-          @emailer.stub!(:deliver).and_return true
-        end
-
-        it "should assign @current_step to :get_code" do
-          post :create, :affiliate => {:display_name => 'new_affiliate'}
-          assigns[:current_step].should == :get_the_code
-        end
-
-        it "should email the affiliate a confirmation email" do
-          Emailer.should_receive(:new_affiliate_site).and_return @emailer
-          post :create, :affiliate => {:display_name => 'new_affiliate'}
-        end
-
-        it "should render the new template" do
-          post :create, :affiliate => {:display_name => 'new_affiliate'}
-          response.should render_template("new")
-        end
-      end
-
-      context "when the affiliate fails to save" do
-        it "should assign @current_step to :new_site_information" do
-          post :create
-          assigns[:current_step].should == :new_site_information
-        end
-
-        it "should not send an email" do
-          Emailer.should_not_receive(:new_affiliate_site)
-          post :create
-        end
-
-        it "should render the new template" do
-          post :create
-          response.should render_template("new")
         end
       end
     end

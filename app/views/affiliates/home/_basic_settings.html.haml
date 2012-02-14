@@ -1,0 +1,25 @@
+%h2.sub-title
+  Basic Settings
+= form_for @affiliate, affiliates_path do |f|
+  = f.error_messages(:header_message => nil, :class => "error")
+  %ul{:style => 'list-style-type: none;'}
+    %li
+      = f.label :display_name, "Site name (Required)"
+      %br
+      = f.text_field :display_name, :class => 'txt'
+    %li
+      = f.label :name, "Site Handle (visible to searchers in the URL)"
+      %br
+      = f.text_field :name, :class => 'txt'
+    %li
+      = f.label :locale, "Site Language"
+      %br
+      - radio_button_options = @affiliate.new_record? ? {} : { :disabled => true }
+      = f.radio_button :locale, "en", radio_button_options
+      = f.label :locale, 'English', :value => 'en', :style => 'float: none;'
+      = f.radio_button :locale, "es", radio_button_options
+      = f.label :locale, 'Spanish', :value => 'es', :style => 'float: none;'
+    %li
+      = f.label :theme, "Theme"
+      = render_new_site_themes @affiliate
+  = f.submit "Next", :class => 'form-submit-button next-button'

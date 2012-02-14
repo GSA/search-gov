@@ -34,6 +34,9 @@ class Affiliate < ActiveRecord::Base
   attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
+  accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
+  accepts_nested_attributes_for :rss_feeds, :reject_if => :all_blank
+  
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }

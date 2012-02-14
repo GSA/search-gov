@@ -2,7 +2,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :only => [:home, :urls_and_sitemaps]
   before_filter :require_affiliate, :except => [:index, :how_it_works, :demo, :home, :urls_and_sitemaps]
   before_filter :require_approved_user, :except => [:index, :how_it_works, :demo, :home, :update_contact_information, :update_content_types]
-  before_filter :setup_affiliate, :except => [:index, :how_it_works, :demo, :new, :create, :update_contact_information, :home, :new_site_domain_fields]
+  before_filter :setup_affiliate, :except => [:index, :how_it_works, :demo, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel, :edit_header_footer]
 
   AFFILIATE_ADS = [
@@ -109,25 +109,42 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
 
   def new
     @title = "Add a New Site - "
-    @user = @current_user
-    @current_step = :edit_contact_information
+    @current_step = :basic_settings
+    @affiliate = Affiliate.new
   end
-
+  
   def create
-    @title = "Add a New Site - "
     @affiliate = Affiliate.new(params[:affiliate])
     @affiliate.users << @current_user
     if @affiliate.save
       @affiliate.push_staged_changes
-      @current_step = :get_the_code
       @affiliate.users.each do |user|
         Emailer.new_affiliate_site(@affiliate, user).deliver
       end
-      flash.now[:success] = "Site successfully created"
+      redirect_to content_sources_affiliate_path(@affiliate)
     else
-      @affiliate.site_domains.build
-      @current_step = :new_site_information
+      @current_step = :basic_settings
+      render :action => :new
     end
+  end
+  
+  def content_sources
+    @title = "Add a New Site - "
+    @current_step = :content_sources
+  end
+
+  def create_content_sources
+    if @affiliate.update_attributes(params[:affiliate])
+      redirect_to get_the_code_affiliate_path(@affiliate)
+    else
+      @current_step = :content_sources
+      render :action => :content_sources
+    end
+  end
+  
+  def get_the_code
+    @title = "Add a New Site - "
+    @current_step = :get_the_code
     render :action => :new
   end
 
@@ -268,6 +285,12 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def new_site_domain_fields
+  end
+  
+  def new_sitemap_fields
+  end
+  
+  def new_rss_feed_fields
   end
 
   protected

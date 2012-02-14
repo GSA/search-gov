@@ -6,9 +6,9 @@ module AffiliateHelper
   end
 
   def site_wizard_header(current_step)
-    steps = {:edit_contact_information => 0, :new_site_information => 1, :get_the_code => 2}
-    step_contents = ["Step 1. Enter contact information", "Step 2. Set up site", "Step 3. Get the code"]
-    image_tag("site_wizard_step_#{steps[current_step] + 1}.png", :alt => "#{step_contents[steps[current_step]]}")
+    steps = {:basic_settings => 0, :content_sources => 1, :get_the_code => 2}
+    step_contents = ["Step 1. Basic Settings", "Step 2. Set up site", "Step 3. Get the code"]
+    image_tag("site_wizard_step_#{steps[current_step] + 1}.png", :alt => "#{step_contents[steps[current_step]]}", :style => 'width: 680px;')
   end
 
   def render_choose_site_templates(affiliate)

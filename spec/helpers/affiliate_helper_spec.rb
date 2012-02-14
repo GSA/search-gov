@@ -17,10 +17,10 @@ describe AffiliateHelper do
 
   describe "#site_wizard_header" do
     it "should add current_step class based on the current_step parameter" do
-      content = helper.site_wizard_header :edit_contact_information
-      content.should have_selector("img[alt='Step 1. Enter contact information']")
+      content = helper.site_wizard_header :basic_settings
+      content.should have_selector("img[alt='Step 1. Basic Settings']")
 
-      content = helper.site_wizard_header :new_site_information
+      content = helper.site_wizard_header :content_sources
       content.should have_selector("img[alt='Step 2. Set up site']")
 
       content = helper.site_wizard_header :get_the_code

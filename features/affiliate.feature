@@ -127,40 +127,24 @@ Feature: Affiliate clients
     Then I should see "Add a New Site" within "title"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Add New Site
     And I should see "Add a New Site" within ".main"
-    And I should see "Step 1. Enter contact information" in the site wizards header
-    And I should see "Contact information"
-    And the "Name*" field should contain "A New Affiliate"
-    And the "Email*" field should contain "affiliate_with_no_contact_info@fixtures.org"
-    And I fill in the following:
-      | Government organization                    | Awesome Agency             |
-      | Phone                                      | 202-123-4567               |
-      | Organization address                       | 123 Penn Avenue            |
-      | Address 2                                  | Ste 456                    |
-      | City                                       | Reston                     |
-      | Zip                                        | 20022                      |
-    And I select "Virginia" from "State"
-    And I press "Next"
-    Then I should see "Add a New Site" within "title"
-    And I should see "Step 2. Set up site" in the site wizards header
-    And I should see "Site information"
-    And I should not see "Custom"
+    And I should see "Step 1. Basic Settings" in the site wizards header
+    And I should see "Basic Settings"
     When I fill in the following:
-      | Site name         | My awesome agency                    |
-      | Domain 0          | agency.gov                           |
-      | Facebook handle   | FBAgency                             |
-      | Flickr URL        | http://www.flickr.com/groups/usagov/ |
-      | Twitter handle    | TwitterAgency                        |
-      | YouTube handle    | YouTubeAgency                        |
+      | Site name (Required)                          | My awesome agency |
+      | Site Handle (visible to searchers in the URL) | agencygov         |
     And I choose "Gettysburg"
     And I press "Next"
     Then I should see "Add a New Site" within "title"
-    And I should see "Site successfully created"
-    And I should see "Step 3. Get the code" in the site wizards header
+    And I should see "Step 2. Set up site" in the site wizards header
+    And I should see "Content Sources"    
+    When I fill in the following:
+      | Enter the domain or url | agency.gov                                                                    |
+      | Sitemap URL             | http://www.dol.gov/TMP/Decisions.xml                                          |
+      | RSS Feed URL            | http://www.fda.gov/AboutFDA/ContactFDA/StayInformed/RSSFeeds/Recalls/rss.xml  |
+      | RSS Feed Name           | Recalls Feed                                                                  |
+    And I press "Next"
+    Then I should see "Step 3. Get the code" in the site wizards header
     And I should see the code for English language sites
-    And I should see "View search results page"
-    When I fill in "query" with "White House"
-    And I press "Search"
-    Then I should see "White House - My awesome agency Search Results"
     When I go to the "My awesome agency" affiliate page
     And I follow "Site information"
     Then the "Site name" field should contain "My awesome agency"
@@ -190,13 +174,8 @@ Feature: Affiliate clients
     Then I should see the following table rows:
       | Site Name       | Domain         |
       | agency.gov      | agency.gov     |
-    When I follow "Social Media"
-    Then the "Facebook handle" field should contain "FBAgency"
-    And the "Flickr URL" field should contain "http://www.flickr.com/groups/usagov/"
-    And the "Twitter handle" field should contain "TwitterAgency"
-    And the "YouTube handle" field should contain "YouTubeAgency"
-
-    When I go to myawesomeagency's search page
+      
+    When I go to agencygov's search page
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should see the affiliate custom css
 
@@ -204,56 +183,30 @@ Feature: Affiliate clients
     Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "Add New Site"
-    And I fill in the following:
-      | Government organization                    | Awesome Agency             |
-      | Phone                                      | 202-123-4567               |
-      | Organization address                       | 123 Penn Avenue            |
-      | Address 2                                  | Ste 456                    |
-      | City                                       | Reston                     |
-      | Zip                                        | 20022                      |
-    And I select "Virginia" from "State"
-    And I press "Next"
     When I fill in the following:
-      | Site name         | My awesome agency                    |
+      | Site name (Required)                          | My awesome agency |
+      | Site Handle (visible to searchers in the URL) | agencygov         |
     And I choose "Spanish"
     And I press "Next"
+    And I press "Next"
     Then I should see the code for Spanish language sites
-    And I should see "View search results page"
-    When I fill in "query" with "White House"
-    And I press "Search"
+    When I go to agencygov's search page
+    And I fill in "query" with "White House"
+    And I press "Buscar"
     Then I should see "White House - My awesome agency Search Results"
     And I should see "Búsqueda avanzada"
     When I go to the "My awesome agency" affiliate page
     And I follow "Site information"
     Then the "Spanish" checkbox should be checked
 
-  Scenario: Affiliate user who filled out contact information should not have to fill out the form again
-    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
-    When I go to the affiliate admin page
-    And I follow "Add New Site"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Add New Site
-    And I should see "Add a New Site"
-    And I should see "Step 1. Enter contact information" in the site wizards header
-    And I should see "Contact information"
-    And the "Name*" field should contain "A New Manager"
-    And the "Email*" field should contain "affiliate_manager_with_no_affiliates@fixtures.org"
-    And the "Government organization*" field should contain "Agency"
-    And the "Phone*" field should contain "301-123-4567"
-    And the "Organization address*" field should contain "123 Penn Ave"
-    And the "Address 2" field should contain "Ste 100"
-    And the "City*" field should contain "Reston"
-    And the "State*" field should contain "VA"
-    And the "Zip*" field should contain "20022"
-    And I press "Next"
-    Then I should see "Step 2. Set up site" in the site wizards header
-
   Scenario: Affiliates receive confirmation email when creating a new affiliate
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "Add New Site"
-    And I press "Next"
     And I fill in the following:
-      | Site name                 | My awesome agency                |
+      | Site name (Required)                          | My awesome agency |
+      | Site Handle (visible to searchers in the URL) | agencygov         |
+    And I press "Next"
     And I press "Next"
     Then "affiliate_manager_with_no_affiliates@fixtures.org" should receive an email
     When I open the email
@@ -262,80 +215,27 @@ Feature: Affiliate clients
     And I should see "Site name: My awesome agency" in the email body
     And I should see "affiliate_manager_with_no_affiliates@fixtures.org" in the email body
 
-  Scenario: Clicking on Adding additional sites in Step 3. Get the code
-    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
-    When I go to the affiliate admin page
-    And I follow "Add New Site"
-    And I press "Next"
-    And I fill in the following:
-      | Site name                 | My awesome agency                |
-    And I press "Next"
-    And I follow "Adding additional sites"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > Add New Site
-
-  Scenario: Clicking on Customizing the look and feel in Step 3. Get the code
-    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
-    When I go to the affiliate admin page
-    And I follow "Add New Site"
-    And I press "Next"
-    And I fill in the following:
-      | Site name                 | My awesome agency                |
-    And I press "Next"
-    And I follow "Customizing the look and feel"
-    Then I should see "Look and Feel of the Search Results Page" within "title"
-
-  Scenario: Clicking on Setting up the type-ahead search in Step 3. Get the code
-    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
-    When I go to the affiliate admin page
-    And I follow "Add New Site"
-    And I press "Next"
-    And I fill in the following:
-      | Site name                 | My awesome agency                |
-    And I press "Next"
-    And I follow "Setting up the type-ahead search"
-    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > My awesome agency > Type-ahead Search
-
-  Scenario: Clicking on Go to Affiliate Center in Step 3. Get the code
-    Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
-    When I go to the affiliate admin page
-    And I follow "Add New Site"
-    And I press "Next"
-    And I fill in the following:
-      | Site name                 | My awesome agency                |
-    And I press "Next"
-    And I follow "Go to Affiliate Center"
-    Then I should be on the affiliate admin page
-
-   Scenario: Adding an affiliate without filling out contact information should fail
-    Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
-    When I go to the affiliate admin page
-    And I follow "Add New Site"
-    And I press "Next"
-    Then I should see "Organization name can't be blank"
-    Then I should see "Phone can't be blank"
-    Then I should see "Address can't be blank"
-    Then I should see "City can't be blank"
-    Then I should see "Zip can't be blank"
-
   Scenario: Adding an affiliate without valid site information should fail
     Given I am logged in with email "affiliate_manager_with_no_affiliates@fixtures.org" and password "admin"
     When I go to the affiliate admin page
     And I follow "Add New Site"
     And I press "Next"
-    And I fill in "Domain 0" with "notavaliddomain"
-    And I press "Next"
     Then I should see "Site name can't be blank"
-    And I should see "Domain is invalid"
     And I should not see "Site Handle (visible to searchers in the URL) can't be blank"
     And I should not see "Site Handle (visible to searchers in the URL) is too short"
     And I should not see "Site Handle (visible to searchers in the URL) is invalid"
+    When I fill in the following:
+      | Site name (Required)                          | My awesome agency |
+      | Site Handle (visible to searchers in the URL) | agencygov         |
+    And I press "Next"    
+    And I fill in "Enter the domain or url" with "notavaliddomain"
+    And I press "Next"
+    Then I should see "Domain is invalid"
 
     When I fill in the following:
-      | Site name | My awesome agency |
-      | Domain 0  | www1.mydomain.gov |
-      | Domain 1  | www2.mydomain.gov |
+      | Enter the domain or url | www1.mydomain.gov |
     And I press "Next"
-    And I should see "Site successfully created"
+    And I should see "Get the code"
 
   Scenario: Adding a new site as an affiliate user with pending_contact_information status
     Given I am on the login page

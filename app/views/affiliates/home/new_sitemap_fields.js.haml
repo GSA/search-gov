@@ -1,0 +1,4 @@
+- now = Time.now.to_i
+= fields_for "affiliate[sitemaps_attributes][#{now}]", Sitemap.new do |f|
+  :plain
+    jQuery('.sitemaps').append("#{escape_javascript(render('sitemap_fields', :f => f, :index => now))}");

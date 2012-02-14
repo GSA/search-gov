@@ -1,6 +1,6 @@
 class RssFeed < ActiveRecord::Base
   validates_presence_of :url, :name, :affiliate_id
-  validate :is_valid_rss_feed?
+  validate :is_valid_rss_feed?, :on => :create
   belongs_to :affiliate
   has_many :news_items, :dependent => :destroy, :order => "published_at DESC"
   RSS_ELEMENTS = { "item" => "item", "pubDate" => "pubDate", "link" => "link", "title" => "title", "guid" => "guid", "description" => "description" }
