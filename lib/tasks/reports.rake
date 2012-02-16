@@ -24,11 +24,13 @@ namespace :usasearch do
           group, query, total = line.chomp.split(/\001/)
           if last_group.nil? || last_group != group
             AWS::S3::S3Object.store(generate_report_filename(last_group, day, format), output, AWS_BUCKET_NAME) unless output.nil?
-            output = "Query,Count\n"
+            output = "Query,Raw Count,IP-Deduped Count\n"
             cnt = 0;
           end
           if cnt < max_entries_per_group
-            output << "#{query},#{total}\n"
+            query_start_date = args.period == "monthly" ? day.beginning_of_month : day
+            daily_query_stats_total = DailyQueryStat.sum(:times, :conditions => ['affiliate=? AND query=? AND day BETWEEN ? AND ?', group, query, query_start_date, day])
+            output << "#{query},#{total},#{daily_query_stats_total}\n"
             cnt += 1
           end
           last_group = group

@@ -23,8 +23,11 @@ describe "Report generation rake tasks" do
           file.puts(%w{affiliate1 query2 10}.join("\001"))
           file.puts(%w{affiliate2 query2 22}.join("\001"))
         end
-        @affiliate1_csv_output = ["Query,Count","query1,11","query2,10",""].join("\n")
-        @affiliate2_csv_output = ["Query,Count","query2,22",""].join("\n")
+        DailyQueryStat.create!(:affiliate => 'affiliate1', :query => 'query1', :times => 5, :day => Date.yesterday, :locale => 'en')
+        DailyQueryStat.create!(:affiliate => 'affiliate1', :query => 'query2', :times => 7, :day => Date.yesterday, :locale => 'en')
+        DailyQueryStat.create!(:affiliate => 'affiliate2', :query => 'query2', :times => 9, :day => Date.yesterday, :locale => 'en')
+        @affiliate1_csv_output = ["Query,Raw Count,IP-Deduped Count","query1,11,5","query2,10,7",""].join("\n")
+        @affiliate2_csv_output = ["Query,Raw Count,IP-Deduped Count","query2,22,9",""].join("\n")
       end
 
       context "when file_name or period or max entries for each group is not set" do
@@ -86,7 +89,7 @@ describe "Report generation rake tasks" do
 
       context "when a group has more than max entries per group" do
         it "should truncate the output" do
-          truncated_affiliate1_csv_output = ["Query,Count","query1,11",""].join("\n")
+          truncated_affiliate1_csv_output = ["Query,Raw Count,IP-Deduped Count","query1,11,5",""].join("\n")
           AWS::S3::S3Object.should_receive(:store).with(anything(), truncated_affiliate1_csv_output, AWS_BUCKET_NAME).once
           @rake[@task_name].invoke(@input_file_name, "daily", "1")
         end
