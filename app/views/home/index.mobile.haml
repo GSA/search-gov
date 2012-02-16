@@ -1,5 +1,5 @@
 #logoHome.center
-  = link_to image_tag("/m/i/logo_mobile.png", :alt =>"USASearch Home"), url_for_mobile_home_page
+  = link_to image_tag("/m/i/logo_mobile_#{I18n.locale.to_s}.png", :alt =>"USASearch Home"), url_for_mobile_home_page
 
 #searchHome.dvCenter
   %a{:id => "search_box", :name => "search_box"}

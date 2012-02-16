@@ -39,7 +39,7 @@ describe SitePage do
         third.main_content.should match(/^<h1 id.*dead ends on the breadcrumb.*<\/script>$/)
         fourth = SitePage.find_by_url_slug "gobiernousa/Indice/A"
         fourth.title.should == "Índice del sitio"
-        fourth.breadcrumb.should == "<a href=\"/?locale=es\">Página principal</a> &gt; <a href=\"/usa/gobiernousa/Indice/A\">Índice del sitio</a> &gt; Índice del sitio"
+        fourth.breadcrumb.should == "<a href=\"http://m.gobiernousa.gov/\">Página principal</a> &gt; <a href=\"/usa/gobiernousa/Indice/A\">Índice del sitio</a> &gt; Índice del sitio"
         fourth.main_content.should match(/^<h1 id.*Just here to show that we're crawling Spanish pages, too.*$/)
       end
 

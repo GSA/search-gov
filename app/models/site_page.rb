@@ -155,7 +155,7 @@ class SitePage < ActiveRecord::Base
 
   def self.searchify_usagov_urls(str)
     str.gsub(".shtml", "").gsub("href=\"http://www.usa.gov/", "href=\"/").gsub("href=\"/", "href=\"/usa/").
-      gsub("\"/usa/index\"", "\"/\"").gsub("\"/usa/gobiernousa/index\"", "\"/?locale=es\"")
+      gsub("\"/usa/index\"", "\"/\"").gsub("\"/usa/gobiernousa/index\"", "\"http://m.gobiernousa.gov/\"")
   end
 
   def self.get_cookies(url, host)
