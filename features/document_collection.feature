@@ -31,6 +31,13 @@ Feature: Document Collections
 
     When I follow "Add new collection"
     And I fill in the following:
+      | Name*                 |                                  |
+      | URL Prefix 0          | http://www.gov.gov/              |
+      | URL Prefix 1          | www.zzz.gov                      |
+    And I press "Add"
+    Then I should see "Name can't be blank"
+
+    When I fill in the following:
       | Name*                 | My Collection                    |
       | URL Prefix 0          | http://www.gov.gov/              |
       | URL Prefix 1          | www.zzz.gov                      |
