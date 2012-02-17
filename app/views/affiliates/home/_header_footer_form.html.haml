@@ -1,4 +1,4 @@
-- if @affiliate.uses_one_serp?
+- if @affiliate.staged_uses_one_serp?
   %h2 Choose how to customize your header and footer
   %ul
     %li
@@ -8,12 +8,6 @@
       = header_footer_form.radio_button :staged_uses_managed_header_footer, '0', :checked => !@affiliate.staged_uses_managed_header_footer?, :class => 'custom-header-footer-option'
       = header_footer_form.label "staged_uses_managed_header_footer_0", "Option 2. Use CSS/HTML code to create a custom header/footer", :class => 'radio-label'
   %h2 Customize your header and footer
-  = render :partial => 'managed_header_footer_form',
-           :object => header_footer_form,
-           :locals => { :disabled => @affiliate.staged_uses_managed_header_footer? ? '' : 'disabled' }
-  = render :partial => 'custom_header_footer_form',
-           :object => header_footer_form,
-           :locals => { :disabled => !@affiliate.staged_uses_managed_header_footer? ? '' : 'disabled' }
-- else
-  = render :partial => 'custom_header_footer_form', :object => header_footer_form, :locals => { :disabled => nil }
+  = render :partial => 'managed_header_footer_form', :object => header_footer_form
+= render :partial => 'custom_header_footer_form', :object => header_footer_form
 

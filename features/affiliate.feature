@@ -186,7 +186,6 @@ Feature: Affiliate clients
     When I go to agencygov's search page
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should see "My awesome agency" as a header
-    And I should see the affiliate custom css
 
   Scenario: Adding a new Spanish affiliate
     Given I am logged in with email "affiliate_with_no_contact_info@fixtures.org" and password "admin"
@@ -351,14 +350,94 @@ Feature: Affiliate clients
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Look and feel"
-    Then I should see "Look and Feel of the Search Results Page" within "title"
+    Then I should see the browser page titled "Look and Feel of the Search Results Page"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page
-    And I should see "Look and Feel of the Search Results Page" within ".main"
+    And I should see "Look and Feel of the Search Results Page" in the page header
+    And the "Continue using legacy template" radio button should be checked
     And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the "Default" template should be selected
     And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
     When I follow "Cancel"
+    Then I should see the browser page titled "Site: aff site"
+
+  Scenario: Updating the look and feel from legacy template to one serp and make it live
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | false         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    Then the "Font family" field should contain "Arial, sans-serif"
+    And the "Show content border" checkbox should not be checked
+    And the "Show content box shadow" checkbox should not be checked
+    And the "Liberty Bell" theme should be selected
+
+    When I choose "Start using One SERP theme"
+    And I choose "Virgin Islands"
+    And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Updated changes to your live site successfully"
+
+    When I follow "View Current"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see "Old header"
+    And I should see "Old footer"
+
+    When I go to the "aff site" affiliate page
+    When I follow "Look and feel"
+    Then the "Virgin Islands" theme should be selected
+    And I should not see "Start using One SERP theme"
+    And I should not see "Template"
+
+    When I follow "Header and footer"
+    Then I should see "Use a managed header/footer"
+
+  Scenario: Updating the look and feel from legacy template to one serp and save it for preview
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | search_results_page_title           | domains       | header     | footer     | favicon_url                | external_css_url          | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | {Query} - {SiteName} Search Results | oldagency.gov | Old header | Old footer | cdn.agency.gov/favicon.ico | cdn.agency.gov/custom.css | false         |
+    And I am logged in with email "aff@bar.gov" and password "random_string"
+    When I go to the "aff site" affiliate page
+    And I follow "Look and feel"
+    And I choose "Start using One SERP theme"
+    And I select "Times, serif" from "Font family"
+    And I check "Show content border"
+    And I check "Show content box shadow"
+    And I choose "Virgin Islands"
+    And I press "Save for Preview"
+    Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
+    And I should see "Staged changes to your site successfully"
+
+    When I follow "View Current"
+    Then I should not see the page with affiliate stylesheet "one_serp"
+    And I should see "Old header"
+    And I should see "Old footer"
+
+    When I go to the "aff site" affiliate page
+    And I follow "Header and footer"
+    Then the "Option 2. Use CSS/HTML code to create a custom header/footer" radio button should be checked
+    When I choose "Option 1. Use a managed header/footer"
+    And I fill in the following:
+      | Header text     | updated header text without image |
+      | Header home URL | www.agency.gov                    |
+    And I press "Save for Preview"
+    Then I should see "Staged changes to your site successfully"
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Staged"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see the page with content border
+    And I should see the page with content box shadow
+    And I should see a link to "updated header text without image" with url for "http://www.agency.gov"
+
+    When I go to the "aff site" affiliate page
+    And I press "Push Changes"
+    Then I should see "Staged content is now visible"
+    When I follow "View Current"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see the page with content border
+    And I should see the page with content box shadow
+    And I should see a link to "updated header text without image" with url for "http://www.agency.gov"
 
   Scenario: Editing user interface and saving it for preview on a site with one serp
     Given the following Affiliates exist:
@@ -371,9 +450,11 @@ Feature: Affiliate clients
     Then I should see the browser page titled "Look and Feel of the Search Results Page"
     And I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site > Look and Feel of the Search Results Page
     And I should see "Look and Feel of the Search Results Page" in the page header
+    And I should not see "Start using One SERP theme"
     And the "Search results page title" field should contain "\{Query\} - \{SiteName\} Search Results"
     And the "Favicon URL" field should contain "cdn.agency.gov/favicon.ico"
-    Then the "Font family" field should contain "Verdana, sans-serif"
+    And I should not see "Template"
+    And the "Font family" field should contain "Verdana, sans-serif"
     And the "Custom" theme should be selected
     And the "Custom" theme should be visible
     And the "Page background color" field should contain "#FFFFFF"
@@ -1130,8 +1211,8 @@ Feature: Affiliate clients
 
   Scenario: Updating header/footer option from custom to managed and make it live
     Given the following Affiliates exist:
-      | display_name | name    | contact_email | contact_name | uses_managed_header_footer |
-      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      |
+      | display_name | name    | contact_email | contact_name | uses_managed_header_footer | header        | footer        |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false                      | custom header | custom footer |
     And I am logged in with email "aff@bar.gov" and password "random_string"
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
@@ -1148,6 +1229,8 @@ Feature: Affiliate clients
     And I follow "View Current"
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should see a link to "updated header without image" with url for "http://www.agency.gov"
+    And I should not see "custom header"
+    And I should not see "custom footer"
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
@@ -2026,3 +2109,11 @@ Feature: Affiliate clients
     And I follow "URLs & Sitemaps"
     Then I should see "Uncrawled URLs (8)"
     And I should see "Crawled URLs (10)"
+
+  Scenario: Visiting legacy affiliate with oneserp parameter
+    Given the following Affiliates exist:
+      | display_name | name    | contact_email | contact_name | uses_one_serp |
+      | aff site     | aff.gov | aff@bar.gov   | John Bar     | false         |
+    When I go to aff.gov's oneserp search page
+    Then I should see the page with affiliate stylesheet "one_serp"
+

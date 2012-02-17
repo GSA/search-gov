@@ -201,6 +201,22 @@ describe SearchesController do
     it { should render_template 'searches/affiliate_index' }
   end
 
+  context "when handling a valid affiliate search request with oneserp=1" do
+    let(:affiliate) { affiliates(:basic_affiliate) }
+
+    before do
+      Affiliate.should_receive(:find_by_name).with(affiliate.name).and_return(affiliate)
+      css_property_hash = mock('css property hash')
+      affiliate.should_receive(:css_property_hash).and_return(css_property_hash)
+      css_property_hash.should_receive(:[]=).with(:show_content_box_shadow, '1')
+      affiliate.should_receive(:uses_one_serp=).with(true)
+    end
+
+    it "should set uses_one_serp" do
+      get :index, :affiliate => affiliate.name, :query => "weather", :oneserp => 1
+    end
+  end
+
   context "when searching via the API" do
     render_views
 

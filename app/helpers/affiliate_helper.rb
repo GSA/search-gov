@@ -61,7 +61,7 @@ module AffiliateHelper
 
   def render_affiliate_header(affiliate, search_options)
     if affiliate and (search_options.nil? or !search_options[:embedded])
-      if affiliate.uses_managed_header_footer?
+      if affiliate.uses_one_serp? and affiliate.uses_managed_header_footer?
         return render_managed_header(affiliate)
       elsif affiliate.header.present?
         return affiliate.header.html_safe
@@ -91,6 +91,12 @@ module AffiliateHelper
     header_style = "margin: 0 auto 30px; padding: 10px; min-width:940px; text-align: #{alignment};"
     header_style << " background-color: #{background_color};" unless background_color.blank?
     content_tag(:div, content.html_safe, :id => 'default-header', :style => "#{header_style}").html_safe
+  end
+
+  def render_affiliate_footer(affiliate, search_options)
+    affiliate.footer.html_safe if affiliate and affiliate.footer.present? and
+        (!affiliate.uses_one_serp? or !affiliate.uses_managed_header_footer?) and
+        (search_options.nil? or !search_options[:embedded])
   end
 
   def render_affiliate_stylesheet(affiliate)

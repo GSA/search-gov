@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120217081247) do
+ActiveRecord::Schema.define(:version => 20120217192947) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20120217081247) do
     t.string   "staged_header_image_content_type"
     t.integer  "staged_header_image_file_size"
     t.datetime "staged_header_image_updated_at"
+    t.boolean  "staged_uses_one_serp"
   end
 
   add_index "affiliates", ["affiliate_template_id"], :name => "index_affiliates_on_affiliate_template_id"

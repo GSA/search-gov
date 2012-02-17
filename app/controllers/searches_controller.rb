@@ -110,7 +110,12 @@ class SearchesController < ApplicationController
 
   def set_affiliate_options
     @affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
+    if @affiliate and params[:oneserp]
+      @affiliate.uses_one_serp = true
+      @affiliate.css_property_hash[:show_content_box_shadow] = '1'
+    end
     if @affiliate && params["staged"]
+      @affiliate.uses_one_serp = @affiliate.staged_uses_one_serp
       @affiliate.header_footer_sass = @affiliate.staged_header_footer_sass
       @affiliate.header = @affiliate.staged_header
       @affiliate.footer = @affiliate.staged_footer

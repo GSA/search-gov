@@ -3,6 +3,8 @@ power_affiliate:
   name: noaa.gov
   website: http://www.noaa.gov
   users: [:affiliate_manager]
+  theme: elegant
+  staged_theme: fun_blue
   affiliate_template: :basic_gray
   staged_affiliate_template: [:basic_gray]
   search_results_page_title: Current {Query} - {SiteName} Search Results
@@ -12,6 +14,8 @@ basic_affiliate:
   display_name: NPS Site
   name: nps.gov
   users: [:affiliate_manager]
+  theme: elegant
+  staged_theme: fun_blue
   affiliate_template: :default
   is_sayt_enabled: false
   search_results_page_title: Current {Query} - {SiteName} Search Results
@@ -21,6 +25,8 @@ another_affiliate:
   display_name: Another Gov Site
   name: another.gov
   users: [:another_affiliate_manager]
+  theme: elegant
+  staged_theme: fun_blue
   affiliate_template: :default
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
@@ -29,6 +35,8 @@ admin_affiliate:
   display_name: Affiliate Gov Site
   name: affiliate.gov
   users: [:admin_affiliate]
+  theme: elegant
+  staged_theme: fun_blue
   affiliate_template: :default
   search_results_page_title: Current {Query} - {SiteName} Search Results
   staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
@@ -37,6 +45,8 @@ non_existant_affiliate:
   display_name: Nonsense Domain
   name: laksjdflkjasldkjfalskdjf.gov
   users: [:another_affiliate_manager]
+  theme: elegant
+  staged_theme: fun_blue
   affiliate_template: :default
   is_sayt_enabled: false
   search_results_page_title: Current {Query} - {SiteName} Search Results
@@ -46,6 +56,8 @@ spanish_affiliate:
   display_name: NPEspanol Site
   name: nps.es
   users: [:affiliate_manager]
+  theme: elegant
+  staged_theme: fun_blue
   affiliate_template: :default
   is_sayt_enabled: false
   search_results_page_title: Current {Query} - {SiteName} Search Results

@@ -1,82 +1,95 @@
+- unless @affiliate.uses_one_serp?
+  %h2 Choose how to customize your look and feel
+  %ul
+    %li
+      = look_and_feel_form.radio_button :staged_uses_one_serp, '0', :checked => !@affiliate.staged_uses_one_serp?, :class => 'legacy-look-and-feel-option'
+      = look_and_feel_form.label "staged_uses_one_serp_0", "Continue using legacy template", :class => 'radio-label'
+    %li
+      = look_and_feel_form.radio_button :staged_uses_one_serp, '1', :checked => @affiliate.staged_uses_one_serp?, :class => 'one-serp-look-and-feel-option'
+      = look_and_feel_form.label "staged_uses_one_serp_1", "Start using One SERP theme", :class => 'radio-label'
+
+%h2 Customize your look and feel
 %ul
   %li
     = look_and_feel_form.label :staged_search_results_page_title, "Search results page title"
     = look_and_feel_form.text_field :staged_search_results_page_title, :class => "txt"
-  - unless @affiliate.uses_one_serp?
-    %li
-      = look_and_feel_form.label :template
-      .affiliate-template-wrapper
-        = (render_choose_site_templates @affiliate).html_safe
   %li
     = look_and_feel_form.label :staged_favicon_url, "Favicon URL"
     = look_and_feel_form.text_field :staged_favicon_url, :class => "txt", :maxlength => 255
 
-  - if @affiliate.uses_one_serp?
-    %li.css-overrides
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][font_family]', 'Font family'
-        = select_tag 'affiliate[staged_css_property_hash][font_family]', options_for_select(Affiliate::FONT_FAMILIES, render_affiliate_css_property_value(@affiliate.staged_css_property_hash, :font_family))
-    %li.css-overrides
-      %div
-        = render_staged_check_box_tag @affiliate, :show_content_border
-        = label_tag 'affiliate[staged_css_property_hash][show_content_border]', 'Show content border'
-      %div
-        = render_staged_check_box_tag @affiliate, :show_content_box_shadow
-        = label_tag 'affiliate[staged_css_property_hash][show_content_box_shadow]', 'Show content box shadow'
-    %li.use-colors-from-theme
-      %span Use colors from a theme
-      = render_site_themes @affiliate
-    %li.css-overrides
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][page_background_color]', 'Page background color'
-        = render_staged_color_text_field_tag @affiliate, :page_background_color
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][content_background_color]', 'Content background color'
-        = render_staged_color_text_field_tag @affiliate, :content_background_color
-    %li.css-overrides
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][content_border_color]', 'Content border color'
-        = render_staged_color_text_field_tag @affiliate, :content_border_color
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][content_box_shadow_color]', 'Content box shadow color'
-        = render_staged_color_text_field_tag @affiliate, :content_box_shadow_color
-    %li.css-overrides
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][search_button_text_color]', 'Search button text color'
-        = render_staged_color_text_field_tag @affiliate, :search_button_text_color
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][search_button_background_color]', 'Search button background color'
-        = render_staged_color_text_field_tag @affiliate, :search_button_background_color
-    %li.css-overrides
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][left_tab_text_color]', 'Left tab text color'
-        = render_staged_color_text_field_tag @affiliate, :left_tab_text_color
-    %li.css-overrides
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][title_link_color]', 'Title link color'
-        = render_staged_color_text_field_tag @affiliate, :title_link_color
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][visited_title_link_color]', 'Visited title link color'
-        = render_staged_color_text_field_tag @affiliate, :visited_title_link_color
-    %li.css-overrides
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][description_text_color]', 'Description text color'
-        = render_staged_color_text_field_tag @affiliate, :description_text_color
-    %li.css-overrides
-      %div
-        = label_tag 'affiliate[staged_css_property_hash][url_link_color]', 'URL link color'
-        = render_staged_color_text_field_tag @affiliate, :url_link_color
+- unless @affiliate.uses_one_serp?
+  %ul.look-and-feel-form.legacy
     %li
-      %div
-        %h2 Custom color tips
-        %p
-          To customize a predefined theme, click on one of the 'Customize' buttons.
-        %p
-          Customize color by clicking on the color picker text field and drag the crosshair icon
-          = image_tag '/javascripts/jscolor/cross.gif', :alt => 'crosshair icon'
-          inside the color picker window.
-          %br/
-          Drag the triangle icon
-          = image_tag '/javascripts/jscolor/arrow.gif', :alt => 'arrow icon'
-          to control the color saturation.
-          When you are done, click anywhere outside the color picker window.
+      = look_and_feel_form.label :template
+      .affiliate-template-wrapper
+        = (render_choose_site_templates @affiliate).html_safe
+
+%ul.look-and-feel-form.one-serp
+  %li.css-overrides
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][font_family]', 'Font family'
+      = select_tag 'affiliate[staged_css_property_hash][font_family]', options_for_select(Affiliate::FONT_FAMILIES, render_affiliate_css_property_value(@affiliate.staged_css_property_hash, :font_family))
+  %li.css-overrides
+    %div
+      = render_staged_check_box_tag @affiliate, :show_content_border
+      = label_tag 'affiliate[staged_css_property_hash][show_content_border]', 'Show content border'
+    %div
+      = render_staged_check_box_tag @affiliate, :show_content_box_shadow
+      = label_tag 'affiliate[staged_css_property_hash][show_content_box_shadow]', 'Show content box shadow'
+  %li.use-colors-from-theme
+    %span Use colors from a theme
+    = render_site_themes @affiliate
+  %li.css-overrides
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][page_background_color]', 'Page background color'
+      = render_staged_color_text_field_tag @affiliate, :page_background_color
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][content_background_color]', 'Content background color'
+      = render_staged_color_text_field_tag @affiliate, :content_background_color
+  %li.css-overrides
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][content_border_color]', 'Content border color'
+      = render_staged_color_text_field_tag @affiliate, :content_border_color
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][content_box_shadow_color]', 'Content box shadow color'
+      = render_staged_color_text_field_tag @affiliate, :content_box_shadow_color
+  %li.css-overrides
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][search_button_text_color]', 'Search button text color'
+      = render_staged_color_text_field_tag @affiliate, :search_button_text_color
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][search_button_background_color]', 'Search button background color'
+      = render_staged_color_text_field_tag @affiliate, :search_button_background_color
+  %li.css-overrides
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][left_tab_text_color]', 'Left tab text color'
+      = render_staged_color_text_field_tag @affiliate, :left_tab_text_color
+  %li.css-overrides
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][title_link_color]', 'Title link color'
+      = render_staged_color_text_field_tag @affiliate, :title_link_color
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][visited_title_link_color]', 'Visited title link color'
+      = render_staged_color_text_field_tag @affiliate, :visited_title_link_color
+  %li.css-overrides
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][description_text_color]', 'Description text color'
+      = render_staged_color_text_field_tag @affiliate, :description_text_color
+  %li.css-overrides
+    %div
+      = label_tag 'affiliate[staged_css_property_hash][url_link_color]', 'URL link color'
+      = render_staged_color_text_field_tag @affiliate, :url_link_color
+  %li
+    %div
+      %h2 Custom color tips
+      %p
+        To customize a predefined theme, click on one of the 'Customize' buttons.
+      %p
+        Customize color by clicking on the color picker text field and drag the crosshair icon
+        = image_tag '/javascripts/jscolor/cross.gif', :alt => 'crosshair icon'
+        inside the color picker window.
+        %br/
+        Drag the triangle icon
+        = image_tag '/javascripts/jscolor/arrow.gif', :alt => 'arrow icon'
+        to control the color saturation.
+        When you are done, click anywhere outside the color picker window.

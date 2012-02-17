@@ -5,7 +5,7 @@
     = form_for @affiliate, :url => {:action => :update_look_and_feel}, :html => {:class=>"generic-form"} do |f|
       = f.error_messages(:header_message => nil, :class => "error")
       = render :partial => "look_and_feel_form", :object => f
-      %p
+      %p.important
         Important note: You must click the Make Live button below to make any changes appear on your live website.
       .button-wrapper
         = f.submit "Save for Preview", :id => "save_for_preview", :class => 'form-submit-button save-for-preview-button'
