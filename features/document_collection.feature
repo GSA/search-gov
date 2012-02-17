@@ -79,5 +79,3 @@ Feature: Document Collections
     And I press "Delete"
     Then I should see "Collections entry successfully deleted."
     And I should see "Site Noaa Site has no Collections"
-
-  Scenario: A user searching on the affiliate site with document collections in place
