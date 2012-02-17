@@ -19,7 +19,7 @@ describe FormSearch do
     end
 
     it "should log info about the query" do
-      QueryImpression.should_receive(:log).with(:form, Affiliate::USAGOV_AFFILIATE_NAME, 'taxes', ["BWEB"], [])
+      QueryImpression.should_receive(:log).with(:form, Affiliate::USAGOV_AFFILIATE_NAME, 'taxes', ["BWEB"])
       @search.run
     end
 

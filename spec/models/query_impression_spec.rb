@@ -13,16 +13,8 @@ describe QueryImpression do
         str.should include('"vertical":"recall"')
         str.should include('"locale":"en"')
         str.should include('"time":"2000-01-01 20:15:01"')
-        str.should include('"another query|yet another query"')
-      end
-      QueryImpression.log(:recall, Affiliate::USAGOV_AFFILIATE_NAME, "my query", %w{BWEB BSPEL}, ["another query", "yet another query"])
-    end
-    
-    it "should not output any synonym key if no synonyms provided" do
-      Rails.logger.should_receive(:info) do |str|
-        str.should_not include(':synonyms')
       end
       QueryImpression.log(:recall, Affiliate::USAGOV_AFFILIATE_NAME, "my query", %w{BWEB BSPEL})
-    end
+    end    
   end
 end

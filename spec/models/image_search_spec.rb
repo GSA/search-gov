@@ -9,7 +9,7 @@ describe ImageSearch do
     end
 
     it "should log info about the query" do
-      QueryImpression.should_receive(:log).with(:image, Affiliate::USAGOV_AFFILIATE_NAME, 'shuttle', ["IMAG"], [])
+      QueryImpression.should_receive(:log).with(:image, Affiliate::USAGOV_AFFILIATE_NAME, 'shuttle', ["IMAG"])
       @search.run
     end
 

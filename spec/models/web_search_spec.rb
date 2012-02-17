@@ -809,20 +809,6 @@ describe WebSearch do
         @search.spelling_suggestion.should be_nil
       end
     end
-
-    context "when the results contain synonyms" do
-      before do
-        bing_search = BingSearch.new(Search::USER_AGENT)
-        bing_search.stub(:query).and_return File.read(Rails.root.to_s + "/spec/fixtures/json/bing_search_result_for_ira.json")
-        BingSearch.stub!(:new).and_return bing_search
-        @search = WebSearch.new(:query => 'ira')
-      end
-      
-      it "should log the synonyms as part of the query impression" do
-        QueryImpression.should_receive(:log).with(:web, "usasearch.gov", "ira", ["BWEB"], ["iras", "individual retirement annuity", "individual retirement arrangement"])
-        @search.run
-      end
-    end
       
     context "recent recalls" do
       before :each do
@@ -1092,7 +1078,7 @@ describe WebSearch do
       end
 
       it "should log info about the query" do
-        QueryImpression.should_receive(:log).with(:web, @affiliate.name, 'logme', %w{BWEB OVER BSPEL}, ['electrocoagulation'])
+        QueryImpression.should_receive(:log).with(:web, @affiliate.name, 'logme', %w{BWEB OVER BSPEL})
         @search.run
       end
     end
