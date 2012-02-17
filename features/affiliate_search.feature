@@ -56,15 +56,15 @@ Feature: Affiliate Search
     And I should see "Related Searches" in the search results section
     And I should see "Search" button
 
-    When I follow "Last hour"
-    Then I should see "no results found for 'item'"
-
     When I follow "Photo Gallery"
     Then I should see "no results found for 'item'"
 
     When I follow "All Time"
     Then I should see "More news items for the feed"
     And I should see "Last news item for the feed"
+
+    When I follow "Last hour"
+    Then I should see "no results found for 'item'"
 
     When I follow "Everything"
     Then I should see "Advanced Search"
