@@ -26,7 +26,7 @@
   = render "/shared/related_topics_wrapper"
   .pagination-and-logo
     = will_paginate(search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
-    = image_tag("binglogo_#{I18n.locale}.gif", :class => 'bing-logo') if search.are_results_by_bing?
+    = search_results_by_logo(search.are_results_by_bing?)
 - elsif search.error_message
   %p.noresults #{search.error_message}
 - else

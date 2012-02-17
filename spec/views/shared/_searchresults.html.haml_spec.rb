@@ -63,10 +63,13 @@ describe "shared/_searchresults.html.haml" do
       render
       rendered.should contain('Cache')
     end
-
+    
+    it "should show the Bing logo" do
+      render
+      rendered.should have_selector("img[src^='/images/binglogo_en.gif']")
+    end
 
     context "when search is for an affiliate" do
-
       before do
         @affiliate = Affiliate.create!(
           :display_name => "My Awesome Site",
@@ -94,6 +97,30 @@ describe "shared/_searchresults.html.haml" do
       it "should show featured collection" do
         render
         rendered.should contain('featured collections')
+      end
+    end
+    
+    context "when results are not by bing" do
+      before do
+        @search.stub!(:are_results_by_bing?).and_return false
+        view.stub!(:search).and_return @search
+      end
+      
+      it "should show the USASearch results by logo" do
+        render
+        rendered.should have_selector("img[src^='/images/results_by_usasearch.png']")
+      end
+      
+      context "when the locale is Spanish" do
+        before do
+          I18n.stub!(:locale).and_return :es
+        end
+        
+        it "should not show a results-by logo" do
+          render
+          rendered.should_not have_selector("img[src^='/images/results_by_usasearch.png']")
+          rendered.should_not have_selector("img[src^='/images/binglogo_en.gif']")
+        end
       end
     end
 
