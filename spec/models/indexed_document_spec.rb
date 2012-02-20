@@ -728,7 +728,7 @@ describe IndexedDocument do
 
     context "when file format is not text/plain or txt" do
       before do
-        @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
+        @urls = %w(http://search.usa.gov http://usa.gov http://data.gov)
         tempfile = Tempfile.new('urls.xml')
         @urls.each do |url|
           tempfile.write(url + "\n")
@@ -745,7 +745,7 @@ describe IndexedDocument do
 
     context "when a file is passed in without any URLs" do
       before do
-        @urls = ['http://search.usa.gov', 'http://usa.gov', 'http://data.gov']
+        @urls = %w(http://search.usa.gov http://usa.gov http://data.gov)
         tempfile = Tempfile.new('urls.txt')
         @file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :type => 'text/plain')
       end
@@ -759,7 +759,7 @@ describe IndexedDocument do
 
     context "when a file is passed in with 100 or fewer URLs" do
       before do
-        @urls = ['http://search.usa.gov/', 'http://usa.gov/', 'http://data.gov/']
+        @urls = %w(http://search.usa.gov/ http://usa.gov/ http://data.gov/)
         tempfile = Tempfile.new('urls.txt')
         @urls.each do |url|
           tempfile.write(url + "\n")
@@ -831,7 +831,7 @@ describe IndexedDocument do
     it "should create new, valid IndexedDocument entries" do
       IndexedDocument.bulk_load_urls(@file.path)
       IndexedDocument.count.should == 1
-      IndexedDocument.find_by_url("http://www.usa.gov/", @aff.id).should_not be_nil
+      IndexedDocument.find_by_url_and_affiliate_id("http://www.usa.gov/", @aff.id).should_not be_nil
     end
 
   end
@@ -844,6 +844,32 @@ describe IndexedDocument do
     context "when title is empty" do
       it "should just use the body" do
         IndexedDocument.new(@valid_attributes.merge(:title => nil)).build_content_hash.should == '0a56786098d4b95f93ebff6070b0a24f'
+      end
+    end
+  end
+
+  describe "#normalize_error_message(e)" do
+    context "when it's a timeout-related error" do
+      it "should return 'Document took too long to fetch'" do
+        indexed_document = IndexedDocument.new
+        e = Exception.new('this is because execution expired')
+        indexed_document.send(:normalize_error_message, e).should == 'Document took too long to fetch'
+      end
+    end
+
+    context "when it's a protocol redirection-related error" do
+      it "should return 'Redirection forbidden from HTTP to HTTPS'" do
+        indexed_document = IndexedDocument.new
+        e = Exception.new('redirection forbidden from this to that')
+        indexed_document.send(:normalize_error_message, e).should == 'Redirection forbidden from HTTP to HTTPS'
+      end
+    end
+
+    context "when it's a generic error" do
+      it "should return the error message" do
+        indexed_document = IndexedDocument.new
+        e = Exception.new('something awful happened')
+        indexed_document.send(:normalize_error_message, e).should == 'something awful happened'
       end
     end
   end

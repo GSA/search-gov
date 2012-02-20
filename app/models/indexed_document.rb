@@ -13,7 +13,7 @@ class IndexedDocument < ActiveRecord::Base
   validates_presence_of :title, :description, :if => :last_crawl_status_ok?
   validates_uniqueness_of :url, :message => "has already been added", :scope => :affiliate_id
   validates_uniqueness_of :content_hash, :message => "is not unique: Identical content (title and body) already indexed", :scope => :affiliate_id, :allow_nil => true
-  validates_format_of :url, :with => /^http:\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
+  validates_format_of :url, :with => /^http:\/\/[a-z0-9]+([\-\.][a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?([\/]\S*)?$/ix
   validates_length_of :url, :maximum => 2000
   validate :url_is_parseable
   validates_exclusion_of :url_extension, :in => %w(json xml rss csv css js png gif jpg jpeg txt ico wsdl htc swf), :message => "'%{value}' is not a supported file type"
@@ -74,8 +74,7 @@ class IndexedDocument < ActiveRecord::Base
         update_content_hash
       end
     rescue Exception => e
-      message = e.message.starts_with?("redirection forbidden") ? "Redirection forbidden from HTTP to HTTPS" : e.message
-      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => message, :content_hash => nil) rescue destroy
+      update_attributes!(:last_crawled_at => Time.now, :last_crawl_status => normalize_error_message(e), :content_hash => nil) rescue destroy
     ensure
       File.delete(file) rescue nil
     end
@@ -106,7 +105,7 @@ class IndexedDocument < ActiveRecord::Base
     body = scrub_inner_text(doc.inner_text)
     raise IndexedDocumentError.new(EMPTY_BODY_STATUS) if body.blank?
     description ||= body.gsub(/ /, "").gsub(/\.{2,}/, ".").squish.truncate(TRUNCATED_DESC_LENGTH, :separator => ' ')
-    update_attributes!(:title=> title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
+    update_attributes!(:title => title, :description => description, :body => body, :doctype => 'html', :last_crawled_at => Time.now, :last_crawl_status => OK_STATUS)
     discover_nested_pdfs(doc)
   end
 
@@ -159,14 +158,14 @@ class IndexedDocument < ActiveRecord::Base
 
     def search_for(query, affiliate, document_collection, page = 1, per_page = 3)
       return if affiliate.nil? or query.blank?
-      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate.name, :collection => (document_collection.name if document_collection.present?)}) do
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model => self.name, :term => query, :affiliate => affiliate.name, :collection => (document_collection.name if document_collection.present?)}) do
         search do
           fulltext preprocess(query) do
             highlight :title, :description, :title_es, :description_es, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
           end
           with(:affiliate_id, affiliate.id)
           any_of do
-            document_collection.url_prefixes.each {|url_prefix| with(:url).starting_with(url_prefix.prefix)}
+            document_collection.url_prefixes.each { |url_prefix| with(:url).starting_with(url_prefix.prefix) }
           end unless document_collection.nil?
           without(:url).any_of affiliate.excluded_urls.collect { |excluded_url| excluded_url.url } unless affiliate.excluded_urls.empty?
           with(:last_crawl_status, OK_STATUS)
@@ -267,5 +266,16 @@ class IndexedDocument < ActiveRecord::Base
 
   def last_crawl_status_ok?
     last_crawl_status == OK_STATUS
+  end
+
+  def normalize_error_message(e)
+    case
+      when e.message.starts_with?('redirection forbidden')
+        'Redirection forbidden from HTTP to HTTPS'
+      when e.message.include?('execution expired')
+        'Document took too long to fetch'
+      else
+        e.message
+    end
   end
 end
