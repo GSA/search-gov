@@ -149,10 +149,8 @@ class Affiliate < ActiveRecord::Base
   NEW_AFFILIATE_CSS_PROPERTIES = { :show_content_border => '0',
                                    :show_content_box_shadow => '1' }
   RESULTS_SOURCES = %w(bing odie bing+odie)
-  ATTRIBUTES_WITH_STAGED_AND_LIVE =
-      %w{ header footer header_footer_css
-          affiliate_template_id search_results_page_title favicon_url external_css_url uses_one_serp
-          uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text theme css_property_hash }
+  ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(
+      header footer header_footer_css affiliate_template_id search_results_page_title favicon_url external_css_url uses_one_serp uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text theme css_property_hash)
 
   def self.define_json_columns_accessors(args)
     column_name_method = args[:column_name_method]
