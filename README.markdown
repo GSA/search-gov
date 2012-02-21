@@ -182,8 +182,11 @@ action on your local machine, assuming you have installed the Redis server.
 At this point, you should see the queue empty in Resque web, and the suggestion "delete me" should be gone from the sayt_suggestions table.
 
 ### Queue names & priorities
-Each Resque job runs in the context of a named queue. We have queues named :low, :medium, :high, and :urgent. When creating a new
-background job model, consider the priorities of the existing jobs to determine where your jobs should go. When in doubt, use :medium.
+Each Resque job runs in the context of a queue named 'primary' with priorities assigned at job creation time using the resque-priority Gem.
+We have queues named :primary_low, :primary, and :primary_high. When creating a new
+background job model, consider the priorities of the existing jobs to determine where your jobs should go. Things like fetching and indexing all
+Odie documents will take days, and should run as low priority. But fetching and indexing a single URL uploaded by an affiliate should be high priority.
+When in doubt, just use Resque.enqueue() instead of Resque.enqueue_with_priority() to put it on the normal priority queue.
 
 # Working on Stories
 

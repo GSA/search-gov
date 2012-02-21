@@ -1,5 +1,6 @@
 class SitemapFetcher
-  @queue = :medium
+  extend Resque::Plugins::Priority
+  @queue = :primary
 
   def self.perform(sitemap_id)
     return unless (sitemap = Sitemap.find_by_id(sitemap_id))

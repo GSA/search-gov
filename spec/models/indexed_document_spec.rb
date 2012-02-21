@@ -111,10 +111,10 @@ describe IndexedDocument do
     end
   end
 
-  it "should enqueue the creation of a IndexedDocument entry via Resque" do
+  it "should enqueue the high-priority indexing of the IndexedDocument via Resque" do
     ResqueSpec.reset!
-    indexed_document = IndexedDocument.create!(@min_valid_attributes)
-    IndexedDocumentFetcher.should have_queued(indexed_document.id)
+    Resque.should_receive(:enqueue_with_priority).with(:high, IndexedDocumentFetcher, an_instance_of(Fixnum))
+    IndexedDocument.create!(@min_valid_attributes)
   end
 
   it "should create a SuperfreshUrl entry for the affiliate" do
@@ -805,16 +805,16 @@ describe IndexedDocument do
 
   describe "#refresh_all" do
     before do
-      ResqueSpec.reset!
       IndexedDocument.delete_all
       @first = IndexedDocument.create!(:url => 'http://some.mil/', :affiliate => affiliates(:power_affiliate))
       @last = IndexedDocument.create!(:url => 'http://another.mil', :affiliate => affiliates(:power_affiliate))
+      ResqueSpec.reset!
     end
 
-    it "should enqueue a fetch call for all available indexed docs" do
+    it "should enqueue a low priority fetch call for all available indexed docs" do
+      Resque.should_receive(:enqueue_with_priority).with(:low, IndexedDocumentFetcher, @first.id)
+      Resque.should_receive(:enqueue_with_priority).with(:low, IndexedDocumentFetcher, @last.id)
       IndexedDocument.refresh_all
-      IndexedDocumentFetcher.should have_queued(@first.id)
-      IndexedDocumentFetcher.should have_queued(@last.id)
     end
   end
 

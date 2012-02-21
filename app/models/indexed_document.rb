@@ -197,7 +197,7 @@ class IndexedDocument < ActiveRecord::Base
     end
 
     def refresh_all
-      all(:select => :id).each { |indexed_document_fragment| Resque.enqueue(IndexedDocumentFetcher, indexed_document_fragment.id) }
+      all(:select => :id).each { |indexed_document_fragment| Resque.enqueue_with_priority(:low, IndexedDocumentFetcher, indexed_document_fragment.id) }
     end
 
     def bulk_load_urls(file_path)

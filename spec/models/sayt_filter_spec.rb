@@ -33,8 +33,8 @@ describe SaytFilter do
 
     it "should enqueue the filtering of existing SaytSuggestions via Resque" do
       ResqueSpec.reset!
+      Resque.should_receive(:enqueue_with_priority).with(:high, FilterSaytSuggestions, "some valid filter phrase")
       SaytFilter.create!(:phrase => "some valid filter phrase")
-      FilterSaytSuggestions.should have_queued("some valid filter phrase")
     end
 
   end

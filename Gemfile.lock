@@ -51,6 +51,12 @@ GIT
       activesupport (>= 3.0.0)
 
 GIT
+  remote: git://github.com/kbaum/resque-priority
+  revision: 135b9d3343e33a0b37e953aeb28d4a3e28d7ba3e
+  specs:
+    resque-priority (0.1)
+
+GIT
   remote: git://github.com/paneq/calendar_date_select.git
   revision: 977048211b94599fe0f08eb37a481f3d69df48f6
   specs:
@@ -331,6 +337,7 @@ DEPENDENCIES
   redis-namespace
   remarkable_activerecord
   resque
+  resque-priority!
   resque_spec
   rspec
   rspec-core

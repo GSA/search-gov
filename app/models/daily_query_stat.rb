@@ -1,5 +1,6 @@
 class DailyQueryStat < ActiveRecord::Base
-  @queue = :low
+  extend Resque::Plugins::Priority
+  @queue = :primary
   validates_presence_of :day, :query, :times, :affiliate, :locale
   validates_uniqueness_of :query, :scope => [:day, :affiliate, :locale]
   before_save :squish_query
@@ -15,7 +16,7 @@ class DailyQueryStat < ActiveRecord::Base
 
   class << self
     def reindex_day(day)
-      sum(:times, :group=> :affiliate, :conditions=> ["day = ?", day], :order => "sum_times desc").each do | dqs |
+      sum(:times, :group => :affiliate, :conditions=> ["day = ?", day], :order => "sum_times desc").each do | dqs |
         Resque.enqueue(DailyQueryStat, day, dqs[0])
       end
     end
@@ -52,7 +53,7 @@ class DailyQueryStat < ActiveRecord::Base
                    :conditions => "id in (#{solr_search_result_ids.join(',')})",
                    :order => "sum_times desc") unless solr_search_result_ids.empty?
       end
-      return []
+      []
     end
 
     def reversed_backfilled_series_since_2009_for(query, up_to_day = Date.yesterday.to_date)

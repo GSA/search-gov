@@ -1,5 +1,6 @@
 class FilterSaytSuggestions
-  @queue = :high
+  extend Resque::Plugins::Priority
+  @queue = :primary
 
   def self.perform(phrase)
     sayt_filter = SaytFilter.find_by_phrase(phrase)

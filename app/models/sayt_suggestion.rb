@@ -1,14 +1,15 @@
 class SaytSuggestion < ActiveRecord::Base
   LETTERS_WITH_DIACRITIC = "áéíóúÁÉÍÓÚüÜñÑ¿¡"
-  @queue = :medium
+  extend Resque::Plugins::Priority
+  @queue = :primary
+
   before_validation :squish_whitespace_and_downcase
   before_validation :spellcheck, :unless => :affiliate
-  belongs_to :affiliate
-
   validates_presence_of :phrase
   validates_uniqueness_of :phrase, :scope => :affiliate_id
   validates_length_of :phrase, :within=> (3..80)
   validates_format_of :phrase, :with=> /^[a-zA-Z0-9#{LETTERS_WITH_DIACRITIC}][\s\w\.'-]+[a-zA-Z0-9#{LETTERS_WITH_DIACRITIC}]$/iu
+  belongs_to :affiliate
 
   MAX_POPULARITY = 2**30
 
@@ -58,7 +59,7 @@ class SaytSuggestion < ActiveRecord::Base
       return [] if affiliate_id.present? and Affiliate.find_by_id_and_is_sayt_enabled(affiliate_id, false)
       equals_is = affiliate_id.nil? ? 'is' : '='
       clause = "phrase LIKE ? AND affiliate_id #{equals_is} ? AND ISNULL(deleted_at)"
-      where([clause, query + '%', affiliate_id]).order('popularity DESC, phrase ASC').limit(num_suggestions).select("phrase")
+      where([clause, query + '%', affiliate_id]).order('popularity DESC, phrase ASC').limit(num_suggestions).select(:phrase)
     end
 
     def prune_dead_ends
@@ -88,7 +89,7 @@ class SaytSuggestion < ActiveRecord::Base
       daily_query_stats = ordered_hash.map { |entry| DailyQueryStat.new(:query=> entry[0], :times=> entry[1]) }
       filtered_daily_query_stats = SaytFilter.filter(daily_query_stats, "query")
       filtered_daily_query_stats.each do |dqs|
-        if WebSearch.results_present_for?(dqs.query, affiliate, false) then
+        if WebSearch.results_present_for?(dqs.query, affiliate, false)
           temp_ss = new(:phrase => dqs.query)
           temp_ss.squish_whitespace_and_downcase_and_spellcheck
           if (sayt_suggestion = find_or_initialize_by_affiliate_id_and_phrase_and_deleted_at(affiliate_id, temp_ss.phrase, nil))
@@ -100,7 +101,7 @@ class SaytSuggestion < ActiveRecord::Base
     end
 
     def process_sayt_suggestion_txt_upload(txtfile, affiliate = nil)
-      valid_content_types = ['application/octet-stream', 'text/plain', 'txt']
+      valid_content_types = %w(application/octet-stream text/plain txt)
       if valid_content_types.include? txtfile.content_type
         created, ignored = 0, 0
         txtfile.tempfile.readlines.each do |phrase|

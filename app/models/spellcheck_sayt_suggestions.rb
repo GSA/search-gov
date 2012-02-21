@@ -1,5 +1,6 @@
 class SpellcheckSaytSuggestions
-  @queue = :high
+  extend Resque::Plugins::Priority
+  @queue = :primary
 
   def self.perform(wrong, rite)
     SaytSuggestion.all.each do |s|

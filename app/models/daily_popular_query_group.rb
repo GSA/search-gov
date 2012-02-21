@@ -1,5 +1,6 @@
 class DailyPopularQueryGroup < ActiveRecord::Base
-  @queue = :medium
+  extend Resque::Plugins::Priority
+  @queue = :primary
 
   validates_presence_of :query_group_name, :day, :times, :time_frame
   validates_uniqueness_of :query_group_name, :scope => [:day, :time_frame]

@@ -10,7 +10,7 @@ describe Misspelling do
     it { should validate_uniqueness_of :wrong }
     it { should ensure_length_of(:wrong).is_at_least(3).is_at_most(80) }
     it { should_not allow_value("two words").for(:wrong) }
-    ["wwwgsa.gov", "español"].each do |value|
+    %w(wwwgsa.gov español).each do |value|
       it { should allow_value(value).for(:wrong) }
     end
 
@@ -42,8 +42,8 @@ describe Misspelling do
 
     it "should enqueue the spellchecking of SaytSuggestions via Resque" do
       ResqueSpec.reset!
+      Resque.should_receive(:enqueue_with_priority).with(:high, SpellcheckSaytSuggestions, "valueforwrong", "value for rite")
       Misspelling.create!(:wrong => "valueforwrong", :rite => "value for rite")
-      SpellcheckSaytSuggestions.should have_queued("valueforwrong", "value for rite")
     end
 
   end
