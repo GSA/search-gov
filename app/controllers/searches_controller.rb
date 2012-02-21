@@ -94,7 +94,7 @@ class SearchesController < ApplicationController
 
   def handle_affiliate_search
     if @affiliate
-      @page_title = params[:staged] ? @affiliate.build_staged_search_results_page_title(params[:query]) : @affiliate.build_search_results_page_title(params[:query])
+      @page_title = params[:staged] ? @affiliate.build_staged_search_results_page_title(@page_title) : @affiliate.build_search_results_page_title(@page_title)
     end
   end
 

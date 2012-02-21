@@ -28,5 +28,6 @@
       = form_tag search_path, :method => :get do
         = hidden_field_tag 'sitelimit', search.agency.domain
         = hidden_field_tag 'locale', I18n.locale.to_s
+        = hidden_field_tag :affiliate, spanish_locale? ? 'gobiernousa' : 'usagov'
         = text_field_tag 'query', ''
         = submit_tag t :search

@@ -31,7 +31,8 @@
   'in the uncrawled URL list' => '.uncrawled-url-list',
   'in the previously crawled URL list' => '.crawled-url-list',
   'in the indexed documents section' => '#indexed_documents',
-  'in the medline govbox' => '.medline'
+  'in the medline govbox' => '.medline',
+  'in the agency govbox' => '.agency'
 }.
   each do |within, selector|
     Then /^(.+) #{within}$/ do |step|

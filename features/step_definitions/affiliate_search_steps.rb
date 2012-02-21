@@ -27,6 +27,10 @@ Then /^I should not see the indexed documents section$/ do
   page.should_not have_selector("#indexed_documents")
 end
 
+Then /^I should see the agency govbox$/ do
+  page.should have_selector(".agency")
+end
+
 Then /^I should see agency govbox deep links$/ do
   page.should have_selector(".agency .deep-links")
 end
