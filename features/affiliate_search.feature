@@ -48,8 +48,11 @@ Feature: Affiliate Search
     And I should not see "Last year"
 
     When I follow "Press"
-    And I follow "Last week"
-    Then I should see "First news item for the feed"
+    Then I should see the browser page titled "item - bar site Search Results"
+
+    When I follow "Last week"
+    Then I should see the browser page titled "item - bar site Search Results"
+    And I should see "First news item for the feed"
     And I should see "Next news item for the feed"
     And I should not see "More news items for the feed"
     And I should not see "Last news item for the feed"

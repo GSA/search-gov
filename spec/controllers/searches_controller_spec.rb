@@ -549,7 +549,7 @@ describe SearchesController do
 
     it "should assign page title, vertical, form_path, and search members" do
       get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
-      assigns[:page_title].should == "element"
+      assigns[:page_title].should == "Current element - #{affiliate.display_name} Search Results"
       assigns[:search_vertical].should == :news
       assigns[:form_path].should == news_search_path
       assigns[:search].should be_an_instance_of(NewsSearch)

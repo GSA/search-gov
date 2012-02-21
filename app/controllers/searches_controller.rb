@@ -63,6 +63,7 @@ class SearchesController < ApplicationController
     @search.run
     @form_path = news_search_path
     @page_title = params[:query]
+    handle_affiliate_search
     @search_vertical = :news
     render :action => :news, :layout => "affiliate"
   end
@@ -92,8 +93,7 @@ class SearchesController < ApplicationController
   private
 
   def handle_affiliate_search
-    if @search_options[:affiliate]
-      @affiliate = @search_options[:affiliate]
+    if @affiliate
       @page_title = params[:staged] ? @affiliate.build_staged_search_results_page_title(params[:query]) : @affiliate.build_search_results_page_title(params[:query])
     end
   end
