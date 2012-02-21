@@ -55,16 +55,28 @@ module AffiliateHelper
     css_property_hash[property].blank? ? Affiliate::DEFAULT_CSS_PROPERTIES[property] : css_property_hash[property]
   end
 
-  def render_managed_header_css_property_value(managed_header_css_properties, property)
-    managed_header_css_properties[property].nil? ? Affiliate::DEFAULT_MANAGED_HEADER_CSS_PROPERTIES[property] : managed_header_css_properties[property]
+  def render_managed_header_css_property_value(managed_header_css_properties, property, check_for_nil = true)
+    if check_for_nil and managed_header_css_properties.nil? || managed_header_css_properties[property].nil?
+      Affiliate::DEFAULT_MANAGED_HEADER_CSS_PROPERTIES[property]
+    elsif !check_for_nil and managed_header_css_properties.blank? || managed_header_css_properties[property].blank?
+      Affiliate::DEFAULT_MANAGED_HEADER_CSS_PROPERTIES[property]
+    else
+      managed_header_css_properties[property]
+    end
   end
 
   def render_affiliate_header(affiliate, search_options)
     if affiliate and (search_options.nil? or !search_options[:embedded])
       if affiliate.uses_one_serp? and affiliate.uses_managed_header_footer?
-        return render_managed_header(affiliate)
-      elsif affiliate.header.present?
-        return affiliate.header.html_safe
+        html = render_managed_header(affiliate)
+        if affiliate.managed_header_links.present?
+          background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
+          style = background_color.blank? ? nil : "background-color: #{background_color};"
+          html << content_tag(:div, render_managed_links(affiliate.managed_header_links).html_safe, :class => 'managed-header-footer-links-wrapper', :style => style)
+        end
+        content_tag(:div, html.html_safe, :id => 'header', :class => 'managed') unless html.blank?
+      elsif !affiliate.uses_managed_header_footer? and affiliate.header.present?
+        content_tag(:div, affiliate.header.html_safe, :id => 'header', :class => 'header-footer')
       end
     end
   end
@@ -88,15 +100,31 @@ module AffiliateHelper
 
     background_color = render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_background_color)
     alignment = affiliate.managed_header_text.blank? ? 'center' : 'left';
-    header_style = "margin: 0 auto 30px; padding: 10px; min-width:940px; text-align: #{alignment};"
+    header_style = "margin: 0 auto; padding: 10px; min-width:940px; text-align: #{alignment};"
     header_style << " background-color: #{background_color};" unless background_color.blank?
-    content_tag(:div, content.html_safe, :id => 'default-header', :style => "#{header_style}").html_safe
+    content.blank? ? content : content_tag(:div, content.html_safe, :id => 'managed_header', :style => "#{header_style}").html_safe
+  end
+
+  def render_managed_links(links)
+    content = ''
+    links.each_with_index do |link, index|
+      options = { :class => 'first' } if index == 0
+      content << content_tag(:li, link_to(link[:title], link[:url], options).html_safe) << "\n"
+    end
+    content_tag(:ul, content.html_safe, :class => 'managed-header-footer-links')
   end
 
   def render_affiliate_footer(affiliate, search_options)
-    affiliate.footer.html_safe if affiliate and affiliate.footer.present? and
-        (!affiliate.uses_one_serp? or !affiliate.uses_managed_header_footer?) and
-        (search_options.nil? or !search_options[:embedded])
+    if affiliate and (search_options.nil? or !search_options[:embedded])
+      if affiliate.uses_one_serp? and affiliate.uses_managed_header_footer? and affiliate.managed_footer_links.present?
+        background_color = "#{render_managed_header_css_property_value(affiliate.managed_header_css_properties, :header_footer_link_background_color)}"
+        style = background_color.blank? ? nil : "background-color: #{background_color};"
+        html = content_tag(:div, render_managed_links(affiliate.managed_footer_links).html_safe, :class => 'managed-header-footer-links-wrapper', :style => style)
+        content_tag(:div, html.html_safe, :id => 'footer', :class => 'managed')
+      elsif !affiliate.uses_managed_header_footer? and affiliate.footer.present?
+        content_tag(:div, affiliate.footer.html_safe, :id => 'footer', :class => 'header-footer')
+      end
+    end
   end
 
   def render_affiliate_stylesheet(affiliate)

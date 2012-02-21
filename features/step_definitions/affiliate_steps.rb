@@ -296,14 +296,6 @@ Then /^I should see the page with internal CSS "([^"]*)"$/ do |css|
   page.body.should match(css)
 end
 
-Then /^I should see "([^"]*)" as a header$/ do |header|
-  page.should have_selector("#default-header", :text => header)
-end
-
-Then /^I should not see "([^"]*)" as a header$/ do |header|
-  page.should_not have_selector("#default-header", :text => header)
-end
-
 Then /^I should see the page with content border$/ do
   page.should have_selector('body.with-content-border')
 end
@@ -324,3 +316,6 @@ Then /^I should see "([^"]*)" image$/ do |image_file_name|
   page.should have_selector("img[src*='#{image_file_name}']")
 end
 
+Then /^I should not see the SERP header$/ do
+  page.should_not have_selector('#header')
+end

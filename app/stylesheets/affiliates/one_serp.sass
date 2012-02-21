@@ -32,8 +32,44 @@ body
 .with-content-border #container
   +border-radius(8px)
 
-#default-header
+#header.managed
+  margin-bottom: 30px
+
+#managed_header
   +clearfix
+  font-family: Georgia, serif
+
+.managed-header-footer-links-wrapper
+  border-top: 1px solid #CACACA
+  border-bottom: 1px solid #CACACA
+  text-align: center
+
+.managed ul.managed-header-footer-links
+  +clearfix
+  +inline-block
+  font:
+    family: Georgia, serif
+    weight: bold
+  margin: 0 auto
+  padding: 10px 0
+  list-style: none
+  li
+    display: inline
+    float: left
+    a
+      border-left:
+        style: solid
+        width: 1px
+      padding: 0 10px
+      text-decoration: none
+      &.first
+        border: 0
+
+#header.managed ul.managed-header-footer-links
+  font-size: 1em
+
+#footer.managed ul.managed-header-footer-links
+  font-size: 0.8em
 
 #search
   +clearfix

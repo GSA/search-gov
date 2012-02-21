@@ -14,6 +14,7 @@ describe "layouts/affiliate" do
                            :css_property_hash => {},
                            :uses_one_serp? => true,
                            :uses_managed_header_footer? => false,
+                           :managed_header_css_properties => nil,
                            :show_content_border? => true,
                            :show_content_box_shadow? => true,
                            :locale => 'en')
@@ -44,6 +45,7 @@ describe "layouts/affiliate" do
                              :css_property_hash => {},
                              :uses_one_serp? => true,
                              :uses_managed_header_footer? => false,
+                             :managed_header_css_properties => nil,
                              :show_content_border? => true,
                              :show_content_box_shadow? => true,
                              :locale => 'en')

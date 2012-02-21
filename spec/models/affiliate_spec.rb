@@ -57,7 +57,7 @@ describe Affiliate do
       affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "Affiliate site"))
       affiliate.name.should == "affiliatesite"
     end
-    
+
     it "should downcase the name if it's uppercase" do
       affiliate = Affiliate.create!(@valid_create_attributes.merge(:name => 'AffiliateSite'))
       affiliate.name.should == "affiliatesite"
@@ -210,10 +210,32 @@ describe Affiliate do
       affiliate.staged_managed_header_css_properties = nil
 
       affiliate.save!
+
       affiliate.managed_header_css_properties[:header_background_color].should == Affiliate::THEMES[:elegant][:search_button_background_color]
       affiliate.managed_header_css_properties[:header_text_color].should == Affiliate::THEMES[:elegant][:search_button_text_color]
+      affiliate.managed_header_css_properties[:header_footer_link_color].should == Affiliate::THEMES[:elegant][:search_button_background_color]
+      affiliate.managed_header_css_properties[:header_footer_link_background_color].should == Affiliate::THEMES[:elegant][:search_button_text_color]
       affiliate.staged_managed_header_css_properties[:header_background_color].should == Affiliate::THEMES[:fun_blue][:search_button_background_color]
       affiliate.staged_managed_header_css_properties[:header_text_color].should == Affiliate::THEMES[:fun_blue][:search_button_text_color]
+      affiliate.staged_managed_header_css_properties[:header_footer_link_color].should == Affiliate::THEMES[:fun_blue][:search_button_background_color]
+      affiliate.staged_managed_header_css_properties[:header_footer_link_background_color].should == Affiliate::THEMES[:fun_blue][:search_button_text_color]
+    end
+
+    it "should set default header_footer_link_color and header_footer_link_background_color" do
+      affiliate.theme = 'elegant'
+      affiliate.uses_managed_header_footer = true
+      affiliate.staged_theme = 'fun_blue'
+      affiliate.staged_uses_managed_header_footer = true
+      affiliate.managed_header_css_properties[:header_footer_link_color] = ''
+      affiliate.managed_header_css_properties[:header_footer_link_background_color] = ''
+      affiliate.staged_managed_header_css_properties[:header_footer_link_color] = ''
+      affiliate.staged_managed_header_css_properties[:header_footer_link_background_color] = ''
+      affiliate.save!
+
+      affiliate.managed_header_css_properties[:header_footer_link_color].should == Affiliate::THEMES[:elegant][:search_button_background_color]
+      affiliate.managed_header_css_properties[:header_footer_link_background_color].should == Affiliate::THEMES[:elegant][:search_button_text_color]
+      affiliate.staged_managed_header_css_properties[:header_footer_link_color].should == Affiliate::THEMES[:fun_blue][:search_button_background_color]
+      affiliate.staged_managed_header_css_properties[:header_footer_link_background_color].should == Affiliate::THEMES[:fun_blue][:search_button_text_color]
     end
 
     it "should not override non custom theme attributes" do
@@ -305,6 +327,26 @@ describe Affiliate do
       Affiliate.find(affiliate.id).footer.should == 'live footer'
       Affiliate.find(affiliate.id).staged_header.should == 'staged header'
       Affiliate.find(affiliate.id).staged_footer.should == 'staged footer'
+    end
+
+    it "should set staged_managed_header_links" do
+      staged_managed_header_links_attributes = { "0" => { :position => '1', :title => 'Blog', :url => 'http://blog.agency.gov' },
+                                                 "1" => { :position => '0', :title => 'News', :url => 'http://news.agency.gov' },
+                                                 "2" => { :position => '2', :title => 'Services', :url => 'http://services.agency.gov' } }
+      affiliate.update_attributes!(:staged_managed_header_links_attributes => staged_managed_header_links_attributes)
+      affiliate.staged_managed_header_links.should == [{ :position => 0, :title => 'News', :url => 'http://news.agency.gov' },
+                                                       { :position => 1, :title => 'Blog', :url => 'http://blog.agency.gov'},
+                                                       { :position => 2, :title => 'Services', :url => 'http://services.agency.gov'}]
+    end
+
+    it "should set staged_managed_footer_links" do
+      staged_managed_footer_links_attributes = { "0" => { :position => '1', :title => 'About Us', :url => 'http://about.agency.gov' },
+                                                 "1" => { :position => '0', :title => 'Home', :url => 'http://www.agency.gov' },
+                                                 "2" => { :position => '2', :title => 'Contact Us', :url => 'http://contact.agency.gov' } }
+      affiliate.update_attributes!(:staged_managed_footer_links_attributes => staged_managed_footer_links_attributes)
+      affiliate.staged_managed_footer_links.should == [{ :position => 0, :title => 'Home', :url => 'http://www.agency.gov' },
+                                                       { :position => 1, :title => 'About Us', :url => 'http://about.agency.gov'},
+                                                       { :position => 2, :title => 'Contact Us', :url => 'http://contact.agency.gov'}]
     end
 
     context "when there is an existing image" do
@@ -413,6 +455,42 @@ describe Affiliate do
       affiliate = Affiliate.new(@valid_create_attributes.merge(:staged_header_footer_css => "h1 { color: #DDDD }"))
       affiliate.save.should be_false
       affiliate.errors[:base].first.should match(/Colors must have either three or six digits/)
+    end
+
+    it "should validate staged_managed_header_links title" do
+      affiliate = Affiliate.create!(@valid_create_attributes)
+      staged_managed_header_links_attributes = { "0" => { :position => '1', :title => '', :url => 'blog.agency.gov' },
+                                                 "1" => { :position => '0', :title => 'News', :url => 'http://news.agency.gov' } }
+      affiliate.update_attributes(:staged_managed_header_links_attributes => staged_managed_header_links_attributes).should be_false
+      affiliate.errors.count.should == 1
+      affiliate.errors[:base].first.should match(/Header link title can't be blank/)
+    end
+
+    it "should validate staged_managed_header_links URL" do
+      affiliate = Affiliate.create!(@valid_create_attributes)
+      staged_managed_header_links_attributes = { "0" => { :position => '1', :title => 'Blog', :url => 'blog' },
+                                                 "1" => { :position => '0', :title => 'News', :url => '' } }
+      affiliate.update_attributes(:staged_managed_header_links_attributes => staged_managed_header_links_attributes).should be_false
+      affiliate.errors.count.should == 1
+      affiliate.errors[:base].last.should match(/Header link URL can't be blank/)
+    end
+
+    it "should validate staged_managed_footer_links title" do
+      affiliate = Affiliate.create!(@valid_create_attributes)
+      staged_managed_footer_links_attributes = { "0" => { :position => '1', :title => '', :url => 'about.agency.gov' },
+                                                 "1" => { :position => '0', :title => 'Home', :url => 'http://www.agency.gov' } }
+      affiliate.update_attributes(:staged_managed_footer_links_attributes => staged_managed_footer_links_attributes).should be_false
+      affiliate.errors.count.should == 1
+      affiliate.errors[:base].first.should match(/Footer link title can't be blank/)
+    end
+
+    it "should validate staged_managed_footer_links URL" do
+      affiliate = Affiliate.create!(@valid_create_attributes)
+      staged_managed_footer_links_attributes = { "0" => { :position => '1', :title => 'About Us', :url => 'http://about.agency.gov' },
+                                                 "1" => { :position => '0', :title => 'Home', :url => '' } }
+      affiliate.update_attributes(:staged_managed_footer_links_attributes => staged_managed_footer_links_attributes).should be_false
+      affiliate.errors.count.should == 1
+      affiliate.errors[:base].last.should match(/Footer link URL can't be blank/)
     end
   end
 
@@ -1161,7 +1239,7 @@ describe Affiliate do
       end
     end
   end
-  
+
   describe "#check_domains_for_live_code" do
     before do
       @affiliate = affiliates(:basic_affiliate)
@@ -1175,11 +1253,11 @@ describe Affiliate do
       page_without_code = File.read(Rails.root.to_s + '/spec/fixtures/html/page_without_search_code.html')
       Kernel.stub!(:open).and_return(page_with_code, page_with_code, page_without_code, page_with_code)
     end
-    
+
     it "should output a list of domains separated by semi-colons of all domains that have our search code, ignoring any TLDs" do
       @affiliate.check_domains_for_live_code.should == 'hasthecode.usa.gov;alsohasthecode.usa.gov;hasthecodetoo.usa.gov'
     end
-    
+
     context "when some kind of error occurs fetching a page" do
       before do
         Kernel.stub!(:open).and_raise OpenURI::HTTPError.new("400 Bad Request", nil)
@@ -1189,5 +1267,5 @@ describe Affiliate do
         @affiliate.check_domains_for_live_code.should == ''
       end
     end
-  end 
+  end
 end

@@ -126,6 +126,8 @@ class SearchesController < ApplicationController
       @affiliate.header_image_content_type = @affiliate.staged_header_image_content_type
       @affiliate.header_image_file_size = @affiliate.staged_header_image_file_size
       @affiliate.header_image_updated_at = @affiliate.staged_header_image_updated_at
+      @affiliate.managed_header_links = @affiliate.staged_managed_header_links
+      @affiliate.managed_footer_links = @affiliate.staged_managed_footer_links
     end
     I18n.locale = 'es' if @affiliate && @affiliate.locale == 'es'
   end

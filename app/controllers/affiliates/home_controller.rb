@@ -2,7 +2,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   before_filter :require_affiliate_or_admin, :only => [:home, :urls_and_sitemaps]
   before_filter :require_affiliate, :except => [:index, :how_it_works, :demo, :home, :urls_and_sitemaps]
   before_filter :require_approved_user, :except => [:index, :how_it_works, :demo, :home, :update_contact_information, :update_content_types]
-  before_filter :setup_affiliate, :except => [:index, :how_it_works, :demo, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields]
+  before_filter :setup_affiliate, :except => [:index, :how_it_works, :demo, :new, :create, :update_contact_information, :home, :new_site_domain_fields, :new_sitemap_fields, :new_rss_feed_fields, :new_managed_header_link_fields, :new_managed_footer_link_fields]
   before_filter :sync_affiliate_staged_attributes, :only => [:edit_site_information, :edit_look_and_feel, :edit_header_footer]
 
   AFFILIATE_ADS = [
@@ -92,6 +92,7 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   end
 
   def edit_header_footer
+    setup_affiliate_for_editing
   end
 
   def how_it_works
@@ -176,12 +177,14 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
         Emailer.affiliate_header_footer_change(@affiliate).deliver if @affiliate.has_changed_header_or_footer
         redirect_to @affiliate, :flash => { :success => "Updated changes to your live site successfully." }
       else
+        setup_affiliate_for_editing
         set_title_and_render_with_action
       end
     else
       if @affiliate.update_attributes_for_staging(params[:affiliate])
         redirect_to @affiliate, :flash => { :success => "Staged changes to your site successfully." }
       else
+        setup_affiliate_for_editing
         set_title_and_render_with_action
       end
     end
@@ -293,6 +296,9 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   def new_rss_feed_fields
   end
 
+  def new_managed_header_link_fields
+  end
+
   protected
 
   def sync_affiliate_staged_attributes
@@ -302,5 +308,12 @@ class Affiliates::HomeController < Affiliates::AffiliatesController
   def set_title_and_render_with_action
     @title = UPDATE_ACTION_HASH[params[:action].to_sym][:title]
     render :action => UPDATE_ACTION_HASH[params[:action].to_sym][:edit_action]
+  end
+
+  def setup_affiliate_for_editing
+    @affiliate.staged_managed_header_links = [] if @affiliate.staged_managed_header_links.nil?
+    @affiliate.staged_managed_header_links = [{ "0" => {} }, { "1" => {} }] if @affiliate.staged_managed_header_links.blank?
+    @affiliate.staged_managed_footer_links = [] if @affiliate.staged_managed_footer_links.nil?
+    @affiliate.staged_managed_footer_links = [{ "0" => {} }, { "1" => {} }] if @affiliate.staged_managed_footer_links.blank?
   end
 end

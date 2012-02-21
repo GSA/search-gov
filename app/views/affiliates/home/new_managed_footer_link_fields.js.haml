@@ -1,0 +1,4 @@
+:plain
+  jQuery('.footer-links tbody').append("#{escape_javascript(render('managed_header_link_fields', :link => Hash.new, :index => Time.now.to_i))}");
+  jQuery('.footer-links table').tableDnD({ onDragClass: 'ondrag' });
+

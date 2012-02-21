@@ -17,17 +17,17 @@ function updateColorFields(cssProperties) {
   document.getElementById('affiliate_staged_css_property_hash_url_link_color').color.fromString(cssProperties.url_link_color);
 }
 
-function enableHeaderFooterForm(option) {
+function enableHeaderFooterFields(option) {
   if (option == 'managed') {
-    jQuery('.header-footer-form.custom input, .header-footer-form.custom textarea').attr('disabled', 'disabled');
-    jQuery('.header-footer-form.custom').hide();
-    jQuery('.header-footer-form.managed').show();
-    jQuery('.header-footer-form.managed input, .header-footer-form.managed textarea').removeAttr('disabled');
+    jQuery('.header-footer-fields.custom input, .header-footer-fields.custom textarea').attr('disabled', 'disabled');
+    jQuery('.header-footer-fields.custom').hide();
+    jQuery('.header-footer-fields.managed').show();
+    jQuery('.header-footer-fields.managed input, .header-footer-fields.managed textarea').removeAttr('disabled');
   } else {
-    jQuery('.header-footer-form.managed input, .header-footer-form.managed textarea').attr('disabled', 'disabled');
-    jQuery('.header-footer-form.managed').hide();
-    jQuery('.header-footer-form.custom').show();
-    jQuery('.header-footer-form.custom input, .header-footer-form.custom textarea').removeAttr('disabled');
+    jQuery('.header-footer-fields.managed input, .header-footer-fields.managed textarea').attr('disabled', 'disabled');
+    jQuery('.header-footer-fields.managed').hide();
+    jQuery('.header-footer-fields.custom').show();
+    jQuery('.header-footer-fields.custom input, .header-footer-fields.custom textarea').removeAttr('disabled');
   }
 }
 
@@ -84,16 +84,16 @@ jQuery(document).ready(function() {
   });
 
   jQuery(".managed-header-footer-option:checked").each(function() {
-    enableHeaderFooterForm('managed');
+    enableHeaderFooterFields('managed');
   });
   jQuery(".custom-header-footer-option:checked").each(function() {
-    enableHeaderFooterForm('custom');
+    enableHeaderFooterFields('custom');
   });
   jQuery(".managed-header-footer-option").click(function() {
-    enableHeaderFooterForm('managed');
+    enableHeaderFooterFields('managed');
   });
   jQuery(".custom-header-footer-option").click(function() {
-    enableHeaderFooterForm('custom');
+    enableHeaderFooterFields('custom');
   });
 
   jQuery(".one-serp-look-and-feel-option:checked").each(function() {
@@ -107,6 +107,13 @@ jQuery(document).ready(function() {
   });
   jQuery(".legacy-look-and-feel-option").click(function() {
     enableLookAndFeelForm('legacy');
+  });
+  jQuery(".header-footer-form .links table").tableDnD({ onDragClass: 'ondrag' });
+
+  jQuery('.header-footer-form').submit(function() {
+    jQuery('.links .position').each(function(index) {
+      jQuery(this).val(index);
+    });
   });
 });
 

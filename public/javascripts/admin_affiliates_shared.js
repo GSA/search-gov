@@ -55,7 +55,7 @@ jQuery(document).ready(function() {
     return false;
   });
 
-  jQuery('#add_another_link').click(function() {
+  jQuery('.add-featured-collection #add_another_link, .edit-featured-collection #add_another_link').click(function() {
     position = parseInt(jQuery('.links .position').last().attr('value')) + 1;
     var inputTagFormat =
       "<tr class='row-item'>\

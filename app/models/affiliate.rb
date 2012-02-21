@@ -42,19 +42,20 @@ class Affiliate < ActiveRecord::Base
   has_many :document_collections, :dependent => :destroy
   validates_associated :popular_urls
   after_destroy :remove_boosted_contents_from_index
-  validate :validate_css_property_hash, :validate_header_footer_css, :validate_managed_header_css_properties
+  validate :validate_css_property_hash, :validate_header_footer_css, :validate_managed_header_css_properties, :validate_staged_managed_header_links, :validate_staged_managed_footer_links
   validates_attachment_content_type :header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_content_type :staged_header_image, :content_type => %w{ image/gif image/jpeg image/pjpeg image/png image/x-png }, :message => "must be GIF, JPG, or PNG"
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   before_save :set_default_one_serp_fields, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :set_json_fields
   before_update :clear_existing_staged_header_image
+  before_validation :set_staged_managed_header_links, :set_staged_managed_footer_links
   before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   after_validation :update_error_keys
   after_create :normalize_site_domains
   scope :ordered, {:order => 'display_name ASC'}
   attr_writer :css_property_hash, :staged_css_property_hash
   attr_protected :uses_one_serp, :previous_fields_json, :live_fields_json, :staged_fields_json
-  attr_accessor :mark_staged_header_image_for_deletion
+  attr_accessor :mark_staged_header_image_for_deletion, :staged_managed_header_links_attributes, :staged_managed_footer_links_attributes
 
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
@@ -143,13 +144,15 @@ class Affiliate < ActiveRecord::Base
 
   DEFAULT_MANAGED_HEADER_CSS_PROPERTIES = {
       :header_background_color => THEMES[:default][:search_button_background_color],
-      :header_text_color => THEMES[:default][:search_button_text_color] }
+      :header_text_color => THEMES[:default][:search_button_text_color],
+      :header_footer_link_background_color => THEMES[:default][:search_button_text_color],
+      :header_footer_link_color => THEMES[:default][:search_button_background_color] }
 
   NEW_AFFILIATE_CSS_PROPERTIES = { :show_content_border => '0',
                                    :show_content_box_shadow => '1' }
   RESULTS_SOURCES = %w(bing odie bing+odie)
   ATTRIBUTES_WITH_STAGED_AND_LIVE = %w(
-      header footer header_footer_css affiliate_template_id search_results_page_title favicon_url external_css_url uses_one_serp uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text theme css_property_hash)
+      header footer header_footer_css affiliate_template_id search_results_page_title favicon_url external_css_url uses_one_serp uses_managed_header_footer managed_header_css_properties managed_header_home_url managed_header_text managed_header_links managed_footer_links theme css_property_hash)
 
   def self.define_json_columns_accessors(args)
     column_name_method = args[:column_name_method]
@@ -170,11 +173,13 @@ class Affiliate < ActiveRecord::Base
   define_json_columns_accessors :column_name_method => :live_fields,
                                 :fields => [:header, :footer,
                                             :header_footer_sass, :header_footer_css,
-                                            :managed_header_css_properties, :managed_header_home_url, :managed_header_text]
+                                            :managed_header_css_properties, :managed_header_home_url, :managed_header_text,
+                                            :managed_header_links, :managed_footer_links]
   define_json_columns_accessors :column_name_method => :staged_fields,
                                 :fields => [:staged_header, :staged_footer,
                                             :staged_header_footer_sass, :staged_header_footer_css,
-                                            :staged_managed_header_css_properties, :staged_managed_header_home_url, :staged_managed_header_text]
+                                            :staged_managed_header_css_properties, :staged_managed_header_home_url, :staged_managed_header_text,
+                                            :staged_managed_header_links, :staged_managed_footer_links]
 
   def name=(name)
     new_record? ? (write_attribute(:name, name)) : (raise "This field cannot be changed.")
@@ -418,7 +423,7 @@ class Affiliate < ActiveRecord::Base
       self.header_image_updated_at = staged_header_image_updated_at
     end
   end
-  
+
   def check_domains_for_live_code
     live_domains_list = []
     domains = self.site_domains.collect{|site_domain| site_domain.domain }
@@ -510,6 +515,46 @@ class Affiliate < ActiveRecord::Base
     errors.add(:base, "#{key.to_s.humanize} should consist of a # character followed by 3 or 6 hexadecimal digits") unless value =~ /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/
   end
 
+  def set_staged_managed_header_links
+    return if @staged_managed_header_links_attributes.nil?
+    self.staged_managed_header_links = []
+    set_managed_links(@staged_managed_header_links_attributes, staged_managed_header_links)
+  end
+
+  def set_staged_managed_footer_links
+    return if @staged_managed_footer_links_attributes.nil?
+    self.staged_managed_footer_links = []
+    set_managed_links(@staged_managed_footer_links_attributes, staged_managed_footer_links)
+  end
+
+  def set_managed_links(managed_links_attributes, managed_links)
+     managed_links_attributes.values.sort_by { |link| link[:position].to_i }.each do |link|
+      next if link[:title].blank? and link[:url].blank?
+      url = link[:url]
+      url = "http://#{url}" if url.present? and url !~ %r{^http(s?)://}i
+      managed_links << { :position => link[:position].to_i, :title => link[:title], :url => url }
+    end
+  end
+
+  def validate_staged_managed_header_links
+    validate_managed_links(staged_managed_header_links, :header)
+  end
+
+  def validate_staged_managed_footer_links
+    validate_managed_links(staged_managed_footer_links, :footer)
+  end
+
+  def validate_managed_links(links, link_type)
+    return if links.blank?
+    add_blank_link_title_error = false
+    add_blank_link_url_error = false
+    links.each do |link|
+      add_blank_link_title_error = true if link[:title].blank? and link[:url].present?
+      add_blank_link_url_error = true if link[:title].present? and link[:url].blank?
+    end
+    errors.add(:base, "#{link_type.to_s.humanize} link title can't be blank") if add_blank_link_title_error
+    errors.add(:base, "#{link_type.to_s.humanize} link URL can't be blank") if add_blank_link_url_error
+  end
 
   def set_default_one_serp_fields
     self.uses_one_serp = true if new_record? and uses_one_serp.nil?
@@ -534,6 +579,8 @@ class Affiliate < ActiveRecord::Base
       current_css_property_hash = theme.to_sym == :custom ? css_property_hash : THEMES[theme.to_sym]
       self.managed_header_css_properties[:header_background_color] = current_css_property_hash[:search_button_background_color] if managed_header_css_properties[:header_background_color].nil?
       self.managed_header_css_properties[:header_text_color] = current_css_property_hash[:search_button_text_color] if managed_header_css_properties[:header_text_color].nil?
+      self.managed_header_css_properties[:header_footer_link_color] = current_css_property_hash[:search_button_background_color] if managed_header_css_properties[:header_footer_link_color].blank?
+      self.managed_header_css_properties[:header_footer_link_background_color] = current_css_property_hash[:search_button_text_color] if managed_header_css_properties[:header_footer_link_background_color].blank?
     end
 
     if staged_uses_managed_header_footer?
@@ -541,6 +588,8 @@ class Affiliate < ActiveRecord::Base
       current_staged_css_property_hash = staged_theme.to_sym == :custom ? staged_css_property_hash : THEMES[staged_theme.to_sym]
       self.staged_managed_header_css_properties[:header_background_color] = current_staged_css_property_hash[:search_button_background_color] if staged_managed_header_css_properties[:header_background_color].nil?
       self.staged_managed_header_css_properties[:header_text_color] = current_staged_css_property_hash[:search_button_text_color] if staged_managed_header_css_properties[:header_text_color].nil?
+      self.staged_managed_header_css_properties[:header_footer_link_color] = current_staged_css_property_hash[:search_button_background_color] if staged_managed_header_css_properties[:header_footer_link_color].blank?
+      self.staged_managed_header_css_properties[:header_footer_link_background_color] = current_staged_css_property_hash[:search_button_text_color] if staged_managed_header_css_properties[:header_footer_link_background_color].blank?
     end
   end
 

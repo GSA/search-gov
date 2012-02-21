@@ -3,7 +3,7 @@
   = affiliate_center_breadcrumbs([ link_to(@affiliate.display_name, affiliate_path(@affiliate)), 'Header and Footer of the Search Results Page'] )
   %h1 Header and Footer of the Search Results Page
   .site-info
-    = form_for @affiliate, :url => { :action => :update_header_footer }, :html => { :multipart => true, :class=>"generic-form" } do |f|
+    = form_for @affiliate, :url => { :action => :update_header_footer }, :html => { :multipart => true, :class=>"generic-form header-footer-form" } do |f|
       = f.error_messages(:header_message => nil, :class => "error")
       = render :partial => "header_footer_form", :object => f
       %p

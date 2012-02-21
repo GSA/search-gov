@@ -36,6 +36,8 @@ UsasearchRails3::Application.routes.draw do
       get :new_site_domain_fields
       get :new_sitemap_fields
       get :new_rss_feed_fields
+      get :new_managed_header_link_fields
+      get :new_managed_footer_link_fields
     end
     resources :users, :controller => 'affiliates/users', :only => [:index, :new, :create, :destroy]
     resources :boosted_contents, :controller => "affiliates/boosted_contents" do

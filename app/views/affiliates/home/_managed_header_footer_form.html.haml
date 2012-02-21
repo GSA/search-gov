@@ -1,4 +1,4 @@
-%ul{ :class => "header-footer-form managed" }
+%ul{ :class => "header-footer-fields managed" }
   %li.css-overrides
     %div
       = label_tag 'affiliate[staged_managed_header_css_properties][header_background_color]', 'Header background color'
@@ -23,9 +23,44 @@
       .header-image-file-field-wrapper
         = managed_header_footer_form.file_field :staged_header_image, { :class => 'file' }
       %span GIF, JPG or PNG with maximum size of #{Affiliate::MAXIMUM_IMAGE_SIZE_IN_KB} KB
+  %li.css-overrides
+    %div
+      = label_tag 'affiliate[staged_managed_header_css_properties][header_footer_link_background_color]', 'Header/footer link background color'
+      = render_staged_managed_header_color_text_field_tag @affiliate, :header_footer_link_background_color
+    %div
+      = label_tag 'affiliate[staged_managed_header_css_properties][header_footer_link_color]', 'Header/footer link color'
+      = render_staged_managed_header_color_text_field_tag @affiliate, :header_footer_link_color
   %li
-    = link_to "+ Managed header/footer tips", "#managed_header_footer_tips_content", :id => "managed_header_footer_tips", :class => "sliding_trigger"
-    %div#managed_header_footer_tips_content.sliding_content
+    %h3 Header Links
+    .header-links
+      %table
+        %colgroup
+          %col{ :class => 'title' }
+          %col{ :class => 'url' }
+        %tbody
+          %tr.column-header.nodrag
+            %th Title
+            %th URL
+          - managed_header_footer_form.object.staged_managed_header_links.each_with_index do |link, index|
+            = render :partial => 'managed_header_link_fields', :locals => { :link => link, :index => index }
+      = link_to 'Add header link', new_managed_header_link_fields_affiliates_path, :remote => true, :id => 'add_header_link'
+  %li
+    %h3 Footer Links
+    .footer-links
+      %table
+        %colgroup
+          %col{ :class => 'title' }
+          %col{ :class => 'url' }
+        %tbody
+          %tr.column-header.nodrag
+            %th Title
+            %th URL
+          - managed_header_footer_form.object.staged_managed_footer_links.each_with_index do |link, index|
+            = render :partial => 'managed_footer_link_fields', :locals => { :link => link, :index => index }
+      = link_to 'Add footer link', new_managed_footer_link_fields_affiliates_path, :remote => true, :id => 'add_footer_link'
+  %li
+    = link_to "+ Managed header tips", "#managed_header_tips_content", :id => "managed_header_tips", :class => "sliding_trigger"
+    %div#managed_header_tips_content.sliding_content
       %p
         Add a link to your header text or header image by setting the header home URL.
       %p

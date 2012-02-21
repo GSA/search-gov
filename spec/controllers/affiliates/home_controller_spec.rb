@@ -635,6 +635,8 @@ describe Affiliates::HomeController do
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
+      specify { affiliate.staged_managed_header_links.should_not be_empty }
+      specify { affiliate.staged_managed_footer_links.should_not be_empty }
     end
   end
 
@@ -678,6 +680,8 @@ describe Affiliates::HomeController do
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
+      specify { affiliate.staged_managed_header_links.should_not be_empty }
+      specify { affiliate.staged_managed_footer_links.should_not be_empty }
       it { should render_template(:edit_header_footer) }
     end
 
@@ -711,6 +715,8 @@ describe Affiliates::HomeController do
       end
 
       it { should assign_to(:affiliate).with(affiliate) }
+      specify { affiliate.staged_managed_header_links.should_not be_empty }
+      specify { affiliate.staged_managed_footer_links.should_not be_empty }
       it { should render_template(:edit_header_footer) }
     end
   end
