@@ -17,8 +17,3 @@
         %ul
           - search.med_topic.mesh_title_list[0..1].each do |mesh_title|
             %li= display_medline_clinical_trail_with_click_tracking(mesh_title, search.query)
-    - if search.med_topic.lang_mapped_topic.present?
-      .lang-mapped-topic
-        %h3= t :medline_term_for_locale, :locale => search.med_topic.locale.to_sym
-        %ul
-          %li= display_medline_topic_with_click_tracking(search.med_topic.lang_mapped_topic, search.query, other_locale_str, @affiliate)

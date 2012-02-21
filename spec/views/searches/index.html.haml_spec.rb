@@ -430,18 +430,6 @@ describe "searches/index.html.haml" do
         end
       end
 
-      context "when the MedTopic has an alternate language version" do
-        before do
-          @med_topic.lang_mapped_topic = med_topics(:ulcerative_colitis_es)
-        end
-
-        it "should include a link to the other language version" do
-          render
-          rendered.should contain(/Esta tema en español/)
-          rendered.should have_selector "a", :href => "/search?locale=es&query=Colitis+ulcerativa", :content => 'Colitis ulcerativa'
-        end
-      end
-
       context "when the MedTopic has mesh titles" do
         before do
           @med_topic.mesh_titles = "Ulcerative Colitis:Crohn's Disease:Irritable Bowel Syndrome"
