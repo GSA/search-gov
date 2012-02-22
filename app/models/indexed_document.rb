@@ -272,6 +272,8 @@ class IndexedDocument < ActiveRecord::Base
     case
       when e.message.starts_with?('redirection forbidden')
         'Redirection forbidden from HTTP to HTTPS'
+      when e.message.starts_with?('Mysql2::Error: Duplicate entry')
+        'Content hash is not unique: Identical content (title and body) already indexed'
       when e.message.include?('execution expired')
         'Document took too long to fetch'
       else

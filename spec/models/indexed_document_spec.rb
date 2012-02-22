@@ -865,6 +865,14 @@ describe IndexedDocument do
       end
     end
 
+    context "when it's an uncaught Mysql-related duplicate content error" do
+      it "should return 'Content hash is not unique: Identical content (title and body) already indexed'" do
+        indexed_document = IndexedDocument.new
+        e = Exception.new('Mysql2::Error: Duplicate entry blah blah blah')
+        indexed_document.send(:normalize_error_message, e).should == 'Content hash is not unique: Identical content (title and body) already indexed'
+      end
+    end
+
     context "when it's a generic error" do
       it "should return the error message" do
         indexed_document = IndexedDocument.new
