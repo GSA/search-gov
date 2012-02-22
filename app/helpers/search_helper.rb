@@ -719,6 +719,6 @@ module SearchHelper
   end
   
   def search_results_by_logo(results_by_bing)
-    results_by_bing ? image_tag("binglogo_#{I18n.locale}.gif", :class => 'bing-logo') : I18n.locale == I18n.default_locale ? image_tag("results_by_usasearch.png", :class => 'bing-logo') : ""
+    results_by_bing ? image_tag("binglogo_#{I18n.locale.to_s}.gif", :class => 'bing-logo') : image_tag("results_by_usasearch_#{I18n.locale.to_s}.png", :class => 'bing-logo')
   end
 end

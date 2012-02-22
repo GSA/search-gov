@@ -19,6 +19,7 @@
       = render 'shared/news_item', :hit => hit, :index => index
     = render "/shared/related_topics_wrapper"
     = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+    = search_results_by_logo(false)
   - elsif @search.error_message
     %p.noresults #{@search.error_message}
   - else

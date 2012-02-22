@@ -108,7 +108,7 @@ describe "shared/_searchresults.html.haml" do
       
       it "should show the USASearch results by logo" do
         render
-        rendered.should have_selector("img[src^='/images/results_by_usasearch.png']")
+        rendered.should have_selector("img[src^='/images/results_by_usasearch_en.png']")
       end
       
       context "when the locale is Spanish" do
@@ -118,8 +118,7 @@ describe "shared/_searchresults.html.haml" do
         
         it "should not show a results-by logo" do
           render
-          rendered.should_not have_selector("img[src^='/images/results_by_usasearch.png']")
-          rendered.should_not have_selector("img[src^='/images/binglogo_en.gif']")
+          rendered.should have_selector("img[src^='/images/results_by_usasearch_es.png']")
         end
       end
     end

@@ -15,6 +15,7 @@
     - @search.hits.each_with_index do |hit, index|
       = render 'shared/indexed_document', :hit => hit, :index => index, :show_full_listing => true
     = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
+    = search_results_by_logo(false)
   - elsif @error_message
     %p.noresults #{@search.error_message}
   - else
