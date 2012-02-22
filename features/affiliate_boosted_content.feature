@@ -459,9 +459,9 @@ Feature: Boosted Content
     And I follow "Best bets"
     And I follow "Text"
     And I follow "Bulk upload"
-    And I attach the file "features/support/not_image.txt" to "bulk_upload_file"
+    And I attach the file "features/support/cant_read_this.doc" to "bulk_upload_file"
     And I press "Upload"
-    Then I should see "Your filename should have .xml or .csv extension"
+    Then I should see "Your filename should have .xml, .csv or .txt extension"
 
   Scenario: Affiliate search user should see only active boosted contents within publish date range
     Given the following Affiliates exist:
