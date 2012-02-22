@@ -90,7 +90,7 @@ class BoostedContent < ActiveRecord::Base
 
     def process_boosted_content_bulk_upload_for(affiliate, bulk_upload_file)
       filename = bulk_upload_file.original_filename.downcase unless bulk_upload_file.blank?
-      return { :success => false, :error_message => "Your filename should have .xml or .csv extension."} unless filename =~ /\.(xml|csv)$/
+      return { :success => false, :error_message => "Your filename should have .xml or .csv extension."} unless filename =~ /\.(xml|csv|txt)$/
       if filename =~ /xml$/
         process_boosted_content_xml_upload_for affiliate,  bulk_upload_file
       else

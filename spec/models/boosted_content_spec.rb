@@ -192,7 +192,22 @@ describe BoostedContent do
       let(:txt_file) { mock('txt_file', { :original_filename => "boosted_content.txt" }) }
 
       before do
+        BoostedContent.should_receive(:process_boosted_content_csv_upload_for).with(affiliate, txt_file).and_return({ :success => true, :created => 1, :updated => 0 })
         @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, txt_file)
+      end
+
+      subject { @results }
+      specify { @results[:success].should be_true }
+      specify { @results[:created].should == 1 }
+      specify { @results[:updated].should == 0 }
+    end
+
+    context "when the uploaded file has .png extension" do
+      let(:affiliate) { affiliates(:basic_affiliate) }
+      let(:png_file) { mock('png_file', { :original_filename => "boosted_content.png" }) }
+
+      before do
+        @results = BoostedContent.process_boosted_content_bulk_upload_for(affiliate, png_file)
       end
 
       subject { @results }
