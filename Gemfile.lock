@@ -27,6 +27,12 @@ GIT
       tlattr_accessors (>= 0.0.3)
 
 GIT
+  remote: git://github.com/GSA-OCSIT/resque-priority.git
+  revision: bc5dca990d6370ad7eaa01d0b986c90f541a4d18
+  specs:
+    resque-priority (0.1)
+
+GIT
   remote: git://github.com/GSA-OCSIT/sunspot.git
   revision: f9e6f6aedaa102870540d4e556c7b66c3d0fb443
   ref: f9e6f6aedaa102870540d4e556c7b66c3d0fb443
@@ -49,12 +55,6 @@ GIT
     no_peeping_toms (2.1.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-
-GIT
-  remote: git://github.com/kbaum/resque-priority
-  revision: 135b9d3343e33a0b37e953aeb28d4a3e28d7ba3e
-  specs:
-    resque-priority (0.1)
 
 GIT
   remote: git://github.com/paneq/calendar_date_select.git
