@@ -519,17 +519,16 @@ describe SearchesController do
       assigns[:search].hits.last.instance.url.should_not == "http://otheraffiliate.gov/1.pdf"
     end
 
-    it "should output a page that summarizes the results and links back to the affiliate results page" do
+    it "should output a page that summarizes the results" do
       get :docs, :query => "pdf", :affiliate => @affiliate.name
       response.body.should contain("Results 1-2 of about 2 for 'pdf'")
-      response.should have_selector("a", :href=> '/search?affiliate=nps.gov&locale=en&m=false&query=pdf', :content => 'Back to all NPS Site results >>')
     end
-    
+
     it "should have a 'Results by USASearch' logo" do
       get :docs, :query => "pdf", :affiliate => @affiliate.name
       response.should have_selector("img[src^='/images/results_by_usasearch_en.png']")
     end
-    
+
     context "when locale is spanish" do
       it "should have a 'Results by USASearch' logo" do
         get :docs, :query => "pdf", :affiliate => @affiliate.name, :locale => 'es'
@@ -593,12 +592,12 @@ describe SearchesController do
         get :news, :query => "element", :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
         response.body.should contain("Results 1-1 of about 1 for 'element'")
       end
-      
+
       it "should have a 'Results by USASearch' logo" do
         get :news, :query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
         response.should have_selector("img[src^='/images/results_by_usasearch_en.png']")
       end
-      
+
       context "when the locale is spanish" do
         it "should show a spanish results-by logo" do
           get :news, :query => 'element', :affiliate => affiliate.name, :channel => rss_feeds(:white_house_blog).id, :tbs => "w", :locale => 'es'

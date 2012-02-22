@@ -282,10 +282,8 @@ module SearchHelper
     content_tag(:div, raw(p_sum), :id => "summary")
   end
 
-  def indexed_docs_results_summary(a, b, total, query, affiliate)
-    p_sum = make_summary_p(a, b, total, query)
-    p_back = content_tag(:p, link_to(t(:back_to_all_affiliate_results, :affiliate_name => affiliate.display_name), search_path(:query => query, :affiliate => affiliate.name)))
-    content_tag(:div, raw(p_sum + p_back), :id => "summary")
+  def indexed_docs_results_summary(a, b, total, query)
+    content_tag(:div, raw(make_summary_p(a, b, total, query)), :id => "summary")
   end
 
   def make_summary_p(a, b, total, query)
@@ -717,7 +715,7 @@ module SearchHelper
       url[0, length] + "..."
     end
   end
-  
+
   def search_results_by_logo(results_by_bing)
     results_by_bing ? image_tag("binglogo_#{I18n.locale.to_s}.gif", :class => 'bing-logo') : image_tag("results_by_usasearch_#{I18n.locale.to_s}.png", :class => 'bing-logo')
   end

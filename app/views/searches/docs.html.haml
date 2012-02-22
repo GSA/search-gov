@@ -11,7 +11,7 @@
     = submit_tag(t(:search), :id => "search_button")
   %a{:name => "content"}
   - if @search.results.present?
-    = indexed_docs_results_summary start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search_options[:query], @affiliate
+    = indexed_docs_results_summary start = ((@search.hits.current_page - 1) * @search.hits.per_page) + 1, start + @search.hits.length - 1, @search.total, @search_options[:query]
     - @search.hits.each_with_index do |hit, index|
       = render 'shared/indexed_document', :hit => hit, :index => index, :show_full_listing => true
     = will_paginate(@search.results, :previous_label => (t :prev_label), :next_label => (t :next_label))
