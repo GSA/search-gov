@@ -42,6 +42,12 @@ describe UrlPrefix do
         UrlPrefix.create!(@valid_attributes.merge(:prefix=> "http://www.foo.gov")).prefix.should == "http://www.foo.gov/"
       end
     end
+
+    context "when submitted URL prefix has leading/trailing whitespace" do
+      it "should trim it" do
+        UrlPrefix.create!(@valid_attributes.merge(:prefix=> "    www.foo.gov   ")).prefix.should == "http://www.foo.gov/"
+      end
+    end
   end
 
   describe "#label" do

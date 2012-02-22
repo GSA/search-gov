@@ -18,6 +18,7 @@ class UrlPrefix < ActiveRecord::Base
 
   def ensure_protocol_and_trailing_slash_on_prefix
     unless self.prefix.blank?
+      self.prefix.strip!
       self.prefix = "http://#{self.prefix}" unless self.prefix =~ %r{^https?://}i
       self.prefix = "#{self.prefix}/" unless self.prefix.ends_with?("/")
     end
