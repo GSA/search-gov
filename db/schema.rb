@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120217192947) do
+ActiveRecord::Schema.define(:version => 20120222190534) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20120217192947) do
     t.text     "previous_fields_json"
     t.text     "live_fields_json"
     t.text     "staged_fields_json"
-    t.string   "results_source",                                  :default => "bing"
+    t.string   "results_source",                    :limit => 15, :default => "bing+odie"
     t.text     "scope_keywords"
     t.boolean  "uses_managed_header_footer"
     t.boolean  "staged_uses_managed_header_footer"
