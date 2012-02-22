@@ -356,10 +356,10 @@ class WebSearch < Search
 
   def generate_affiliate_scope
     domains = (@query =~ /site:/) ? nil : fill_domains_to_remainder
-    scope_ids = affiliate.scope_ids_as_array.collect { |scope| "scopeid:" + scope }.join(" OR ")
+    scope_ids = (@query =~ /site:/) ? nil : affiliate.scope_ids_as_array.collect { |scope| "scopeid:" + scope }.join(" OR ")
     affiliate_scope = ""
     affiliate_scope = "(" unless scope_ids.blank? and domains.blank?
-    affiliate_scope += scope_ids
+    affiliate_scope += scope_ids unless scope_ids.blank?
     affiliate_scope += " OR " if affiliate_scope.length > 1 and domains.present?
     affiliate_scope += domains unless domains.blank?
     affiliate_scope += ")" unless scope_ids.blank? and domains.blank?

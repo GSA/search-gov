@@ -300,7 +300,7 @@ describe WebSearch do
             search = WebSearch.new(@valid_options.merge(:affiliate => @affiliate, :query=>"government site:blat.gov"))
             search.stub!(:handle_bing_response)
             search.stub!(:log_serp_impressions)
-            URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)%20\(scopeid%3APatentClass\)$/).and_return @uriresult
+            URI.should_receive(:parse).with(/query=\(government%20site%3Ablat\.gov\)$/).and_return @uriresult
             search.run
           end
         end
