@@ -4,14 +4,14 @@ describe BoostedContent do
   fixtures :affiliates
   before(:each) do
     @valid_attributes = {
+      :affiliate => affiliates(:power_affiliate),
       :url => "http://www.someaffiliate.gov/foobar",
       :title => "The foobar page",
       :description => "All about foobar, boosted to the top",
-      :affiliate => affiliates(:power_affiliate),
       :keywords => 'unrelated, terms',
       :auto_generated => false,
       :status => 'active',
-      :publish_start_on => Date.current
+      :publish_start_on => Date.yesterday
     }
   end
 
@@ -23,7 +23,7 @@ describe BoostedContent do
     SUPPORTED_LOCALES.each do |locale|
       it { should allow_value(locale).for(:locale) }
     end
-    ["tz", "ps"].each do |locale|
+    %w(tz ps).each do |locale|
       it { should_not allow_value(locale).for(:locale) }
     end
     it { should validate_presence_of :publish_start_on }
@@ -412,6 +412,7 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
         @boosted_content = BoostedContent.create!(@valid_attributes)
         Sunspot.commit
         BoostedContent.reindex
+        pp @boosted_content
       end
 
       it "should find a boosted content by keyword" do

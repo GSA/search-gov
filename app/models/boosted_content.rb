@@ -49,8 +49,8 @@ class BoostedContent < ActiveRecord::Base
     end
     string :locale
     string :status
-    date :publish_start_on
-    date :publish_end_on
+    time :publish_start_on, :trie => true
+    time :publish_end_on, :trie => true
   end
 
   STATUSES.each do |status|
@@ -92,9 +92,9 @@ class BoostedContent < ActiveRecord::Base
       filename = bulk_upload_file.original_filename.downcase unless bulk_upload_file.blank?
       return { :success => false, :error_message => "Your filename should have .xml or .csv extension."} unless filename =~ /\.(xml|csv)$/
       if filename =~ /xml$/
-        BoostedContent.process_boosted_content_xml_upload_for affiliate,  bulk_upload_file
+        process_boosted_content_xml_upload_for affiliate,  bulk_upload_file
       else
-        BoostedContent.process_boosted_content_csv_upload_for affiliate,  bulk_upload_file
+        process_boosted_content_csv_upload_for affiliate,  bulk_upload_file
       end
     end
 
@@ -171,7 +171,7 @@ class BoostedContent < ActiveRecord::Base
 
     boosted_content_attributes = attributes.merge({ :status => 'active',
                                                     :publish_start_on => Date.current })
-    boosted_content = BoostedContent.find_or_initialize_by_url(boosted_content_attributes)
+    boosted_content = find_or_initialize_by_url(boosted_content_attributes)
     if boosted_content.new_record?
       boosted_content.save!
       results[:created] += 1
