@@ -15,6 +15,10 @@ class ImageSearch < WebSearch
 
   protected
   
+  def handle_response(response)
+    handle_bing_response(response)
+  end
+  
   def hits(response)
     response.image.total rescue 0
   end

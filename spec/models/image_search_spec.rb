@@ -13,6 +13,10 @@ describe ImageSearch do
       @search.run
     end
 
+    it "should handle the response as a Bing response" do
+      @search.should_not_receive(:handle_odie_response)
+      @search.run
+    end
   end
 
   subject do
