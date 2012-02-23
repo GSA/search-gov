@@ -21,7 +21,7 @@ Feature: Image search
 
     When I fill in "query" with "White House"
     And I press "Search"
-    Then I should see the browser page titled "Image search results for USA.gov: White House"
+    Then I should see the browser page titled "White House - USA.gov Search Results"
 
     When I am on the homepage
     And I follow "Images" in the search navigation
@@ -41,7 +41,7 @@ Feature: Image search
 
     When I fill in "query" with "White House"
     And I press "Buscar"
-    And I should see the browser page titled "Resultados de Imágenes de GobiernoUSA.gov: White House"
+    And I should see the browser page titled "White House - GobiernoUSA.gov resultados de la búsqueda"
 
     When I am on the Spanish homepage
     And I follow "Imágenes" in the search navigation
