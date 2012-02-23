@@ -1,28 +1,40 @@
 require 'spec/spec_helper'
 
 describe ImageSearchesController do
-
+  fixtures :affiliates
   describe "#index" do
     context "when searching as an affiliate" do
-      let(:affiliate) { mock_model(Affiliate, :name => 'agency100', :display_name => 'Agency Site') }
       let(:image_search) { mock(ImageSearch, :query => 'weather') }
 
       before do
-        Affiliate.should_receive(:find_by_name).with('agency100').and_return(affiliate)
-        ImageSearch.should_receive(:new).with(hash_including(:affiliate => affiliate, :query => 'weather')).and_return(image_search)
+        @affiliate = affiliates(:basic_affiliate)
+        Affiliate.should_receive(:find_by_name).with('agency100').and_return(@affiliate)
+        ImageSearch.should_receive(:new).with(hash_including(:affiliate => @affiliate, :query => 'weather')).and_return(image_search)
         image_search.should_receive(:run)
-        get :index, :affiliate => "agency100", :query => "weather"
       end
 
+      context "for a live search" do
+        before do
+          get :index, :affiliate => "agency100", :query => "weather"
+        end
 
-      it { should assign_to(:search).with(image_search) }
-      it { should assign_to :affiliate }
-      it { should assign_to(:page_title).with("Image search results for Agency Site: weather") }
-      it { should render_template 'image_searches/affiliate_index' }
+        it { should assign_to(:search).with(image_search) }
+        it { should assign_to :affiliate }
+        it { should assign_to(:page_title).with("Current weather - NPS Site Search Results") }
+        it { should render_template 'image_searches/affiliate_index' }
 
-      it "should render the template" do
-        response.should render_template 'image_searches/affiliate_index'
-        response.should render_template 'layouts/affiliate'
+        it "should render the template" do
+          response.should render_template 'image_searches/affiliate_index'
+          response.should render_template 'layouts/affiliate'
+        end
+      end
+      
+      context "for a staged search" do
+        before do
+          get :index, :affiliate => "agency100", :query => "weather", :staged => "true"
+        end
+        
+        it { should assign_to(:page_title).with("Staged weather - NPS Site Search Results") }
       end
     end
 

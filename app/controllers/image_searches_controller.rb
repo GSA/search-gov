@@ -7,6 +7,7 @@ class ImageSearchesController < ApplicationController
     redirect_to images_path and return if @search_options[:query].blank? and !in_mobile_view?
     @search = ImageSearch.new(@search_options)
     @search.run
+    puts @search.class.name
     @page_title = @search.query
     handle_affiliate_search
     @search_vertical = :image
@@ -27,7 +28,7 @@ class ImageSearchesController < ApplicationController
     if @search_options[:affiliate]
       @affiliate = @search_options[:affiliate]
       @scope_id = @search_options[:scope_id]
-      @page_title = "#{t :image_search_results_for} #{@affiliate.display_name}: #{@search.query}"
+      @page_title = params[:staged] ? @affiliate.build_staged_search_results_page_title(params[:query]) : @affiliate.build_search_results_page_title(params[:query])
     end
   end
 
