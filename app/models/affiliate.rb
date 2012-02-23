@@ -217,6 +217,13 @@ class Affiliate < ActiveRecord::Base
   end
 
   def update_attributes_for_staging(attributes)
+    if staged_header_image_updated_at == header_image_updated_at and
+        attributes[:staged_header_image].present? || attributes[:mark_staged_header_image_for_deletion] == '1'
+      self.staged_header_image_file_name = nil
+      self.staged_header_image_content_type = nil
+      self.staged_header_image_file_size = nil
+      self.staged_header_image_updated_at = nil
+    end
     attributes[:has_staged_content] = true
     self.update_attributes(attributes)
   end
@@ -388,14 +395,28 @@ class Affiliate < ActiveRecord::Base
     ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |field|
       self.send("staged_#{field}=", self.send("#{field}"))
     end
-    self.staged_header_image = header_image_file_name.blank? ? nil : header_image
+
+    if staged_header_image_updated_at != header_image_updated_at
+      staged_header_image.destroy if staged_header_image_updated_at?
+      self.staged_header_image_file_name = header_image_file_name
+      self.staged_header_image_content_type = header_image_content_type
+      self.staged_header_image_file_size = header_image_file_size
+      self.staged_header_image_updated_at = header_image_updated_at
+    end
   end
 
   def set_attributes_from_staged_to_live
     ATTRIBUTES_WITH_STAGED_AND_LIVE.each do |field|
       self.send("#{field}=", self.send("staged_#{field}"))
     end
-    self.header_image = staged_header_image_file_name.blank? ? nil : staged_header_image
+
+    if staged_header_image_updated_at != header_image_updated_at
+      header_image.destroy if header_image_updated_at?
+      self.header_image_file_name = staged_header_image_file_name
+      self.header_image_content_type = staged_header_image_content_type
+      self.header_image_file_size = staged_header_image_file_size
+      self.header_image_updated_at = staged_header_image_updated_at
+    end
   end
 
   private

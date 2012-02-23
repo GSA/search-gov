@@ -940,12 +940,13 @@ Feature: Affiliate clients
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should see a link to "updated header with image" with url for "http://www.agency.gov"
     And I should see an image link to "logo" with url for "http://www.agency.gov"
+    And I should see "small.jpg" image
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
     And I fill in the following:
       | Header text | |
-    And I attach the file "features/support/small.jpg" to "Header image"
+    And I attach the file "features/support/searchlogo.gif" to "Header image"
     And I press "Make Live"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Updated changes to your live site successfully"
@@ -955,6 +956,7 @@ Feature: Affiliate clients
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should not see "updated header with image" as a header
     And I should see an image link to "logo" with url for "http://www.agency.gov"
+    And I should see "searchlogo.gif" image
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
@@ -1006,6 +1008,7 @@ Feature: Affiliate clients
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should see a link to "live header with image" with url for "http://live.agency.gov"
     And I should see an image link to "logo" with url for "http://live.agency.gov"
+    And I should see "searchlogo.gif" image
 
     When I go to the "aff site" affiliate page
     When I follow "Header and footer"
@@ -1017,7 +1020,7 @@ Feature: Affiliate clients
     And I follow "Header and footer"
     And I fill in the following:
       | Header text     | updated header with existing image |
-      | Header home URL | staged.agency.gov            |
+      | Header home URL | staged.agency.gov                  |
     And I press "Save for Preview"
     Then I should see the following breadcrumbs: USASearch > Affiliate Program > Affiliate Center > aff site
     And I should see "Staged changes to your site successfully"
@@ -1027,6 +1030,7 @@ Feature: Affiliate clients
     Then I should see the page with affiliate stylesheet "one_serp"
     And I should see a link to "updated header with existing image" with url for "http://staged.agency.gov"
     And I should see an image link to "logo" with url for "http://staged.agency.gov"
+    And I should see "searchlogo.gif" image
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
@@ -1040,6 +1044,14 @@ Feature: Affiliate clients
     And I follow "View Staged"
     And I should not see "updated header without image" as a header
     And I should see an image link to "logo" with url for "http://staged.agency.gov"
+    And I should see "small.jpg" image
+
+    When I go to the "aff site" affiliate page
+    And I follow "View Current"
+    Then I should see the page with affiliate stylesheet "one_serp"
+    And I should see a link to "live header with image" with url for "http://live.agency.gov"
+    And I should see an image link to "logo" with url for "http://live.agency.gov"
+    And I should see "searchlogo.gif" image
 
     When I go to the "aff site" affiliate page
     And I follow "Header and footer"
@@ -1058,6 +1070,7 @@ Feature: Affiliate clients
     And I follow "View Current"
     Then I should see a link to "live header with image" with url for "http://live.agency.gov"
     And I should see an image link to "logo" with url for "http://live.agency.gov"
+    And I should see "searchlogo.gif" image
 
     When I go to the "aff site" affiliate page
     And I press "Push Changes"
@@ -2116,4 +2129,3 @@ Feature: Affiliate clients
       | aff site     | aff.gov | aff@bar.gov   | John Bar     | false         |
     When I go to aff.gov's oneserp search page
     Then I should see the page with affiliate stylesheet "one_serp"
-

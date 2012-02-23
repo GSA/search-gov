@@ -420,10 +420,110 @@ describe Affiliate do
     it "should set has_staged_content to true and update attributes" do
       affiliate = Affiliate.create!(@valid_create_attributes)
       attributes = mock('attributes')
+      attributes.should_receive(:[]).with(:staged_header_image).and_return(nil)
+      attributes.should_receive(:[]).with(:mark_staged_header_image_for_deletion).and_return(nil)
       attributes.should_receive(:[]=).with(:has_staged_content, true)
       return_value = mock('return value')
       affiliate.should_receive(:update_attributes).with(attributes).and_return(return_value)
       affiliate.update_attributes_for_staging(attributes).should == return_value
+    end
+
+    context "when existing staged_header_image and header_image are the same" do
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+      let(:staged_header_image) { mock('staged header image') }
+
+      before do
+        yesterday = Date.current.yesterday
+        affiliate.staged_header_image_file_name = 'live.gif'
+        affiliate.staged_header_image_content_type = 'image/gif'
+        affiliate.staged_header_image_file_size = 800
+        affiliate.staged_header_image_updated_at = yesterday
+        affiliate.header_image_file_name = 'live.gif'
+        affiliate.header_image_content_type = 'image/gif'
+        affiliate.header_image_file_size = 800
+        affiliate.header_image_updated_at = yesterday
+        affiliate.save!
+      end
+
+      context "and update attributes contain new staged_header_image" do
+        it "should destroy existing staged_header_image" do
+          affiliate.should_receive(:staged_header_image_file_name=).with(nil)
+          affiliate.should_receive(:staged_header_image_content_type=).with(nil)
+          affiliate.should_receive(:staged_header_image_file_size=).with(nil)
+          affiliate.should_receive(:staged_header_image_updated_at=).with(nil)
+          attributes = { :staged_header_image => mock('new staged header image') }
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+
+      context "and update attributes contain blank staged_header_image" do
+        it "should not set staged_header attributes to nil" do
+          affiliate.should_not_receive(:staged_header_image_file_name=)
+          affiliate.should_not_receive(:staged_header_image_content_type=)
+          affiliate.should_not_receive(:staged_header_image_file_size=)
+          affiliate.should_not_receive(:staged_header_image_updated_at=)
+          attributes = { :staged_header_image => '' }
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+
+      context "and update attributes contain mark_staged_header_image_for_deletion == '1'" do
+        it "should set staged_header attributes to nil" do
+          affiliate.should_receive(:staged_header_image_file_name=).with(nil)
+          affiliate.should_receive(:staged_header_image_content_type=).with(nil)
+          affiliate.should_receive(:staged_header_image_file_size=).with(nil)
+          affiliate.should_receive(:staged_header_image_updated_at=).with(nil)
+          attributes = { :mark_staged_header_image_for_deletion => '1' }
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+
+      context "and update attributes contain mark_staged_header_image_for_deletion == '0'" do
+        it "should not set staged_header attributes to nil" do
+          affiliate.should_not_receive(:staged_header_image_file_name=)
+          affiliate.should_not_receive(:staged_header_image_content_type=)
+          affiliate.should_not_receive(:staged_header_image_file_size=)
+          affiliate.should_not_receive(:staged_header_image_updated_at=)
+          attributes = { :mark_staged_header_image_for_deletion => '0' }
+          affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+          affiliate.update_attributes_for_staging(attributes).should be_true
+        end
+      end
+    end
+
+    context "when update_attributes contain new staged_header_image and existing staged_header_image and header_image are different" do
+      let(:affiliate) { Affiliate.create!(@valid_create_attributes) }
+      let(:staged_header_image) { mock('staged header image') }
+
+      before do
+        affiliate.staged_header_image_file_name = 'staged.jpg'
+        affiliate.staged_header_image_content_type = 'image/jpeg'
+        affiliate.staged_header_image_file_size = 700
+        affiliate.staged_header_image_updated_at = Time.current
+        affiliate.header_image_file_name = 'live.gif'
+        affiliate.header_image_content_type = 'image/gif'
+        affiliate.header_image_file_size = 800
+        affiliate.header_image_updated_at = Time.current.yesterday
+        affiliate.save!
+      end
+
+      it "should not set staged_header_image attributes to nil" do
+        affiliate.should_not_receive(:staged_header_image_file_name=)
+        affiliate.should_not_receive(:staged_header_image_content_type=)
+        affiliate.should_not_receive(:staged_header_image_file_size=)
+        affiliate.should_not_receive(:staged_header_image_updated_at=)
+        attributes = { :staged_header_image => mock('new staged header image') }
+        affiliate.should_receive(:update_attributes).with(attributes).and_return(true)
+
+        affiliate.update_attributes_for_staging(attributes).should be_true
+      end
     end
   end
 
@@ -481,25 +581,101 @@ describe Affiliate do
       affiliate.set_attributes_from_staged_to_live
     end
 
-    context "when staged_header_image_file_name is blank" do
-      it "should set header_image to nil" do
-        affiliate.should_receive(:staged_header_image_file_name).and_return(staged_header_image_file_name)
-        staged_header_image_file_name.should_receive(:blank?).and_return(true)
-        affiliate.should_receive(:header_image=).with(nil)
+    context "when staged_header_image and header_image are different" do
+      let(:header_image) { mock('header image') }
 
+      before do
+        affiliate.staged_header_image_file_name = 'staged.gif'
+        affiliate.staged_header_image_content_type = 'image/gif'
+        affiliate.staged_header_image_file_size = 700
+        affiliate.staged_header_image_updated_at = Date.current
+        affiliate.header_image_file_name = 'live.gif'
+        affiliate.header_image_content_type = 'image/gif'
+        affiliate.header_image_file_size = 800
+        affiliate.header_image_updated_at = Date.current.yesterday
+        affiliate.save!
+      end
+
+      it "should destroy header_image and set values from staged_header_image columns to header_image columns" do
+        affiliate.should_receive(:header_image).and_return(header_image)
+        header_image.should_receive(:destroy)
+        affiliate.should_receive(:header_image_file_name=).with(affiliate.staged_header_image_file_name).ordered
+        affiliate.should_receive(:header_image_content_type=).with(affiliate.staged_header_image_content_type)
+        affiliate.should_receive(:header_image_file_size=).with(affiliate.staged_header_image_file_size)
+        affiliate.should_receive(:header_image_updated_at=).with(affiliate.staged_header_image_updated_at)
         affiliate.set_attributes_from_staged_to_live
       end
     end
 
-    context "when staged_header_image_file_name is not blank" do
-      it "should set header_image with staged_header_image" do
-        affiliate.should_receive(:staged_header_image_file_name).and_return(staged_header_image_file_name)
-        staged_header_image_file_name.should_receive(:blank?).and_return(false)
-        staged_header_image = mock('staged header image')
-        affiliate.should_receive(:staged_header_image).and_return(staged_header_image)
-        affiliate.should_receive(:header_image=).with(staged_header_image)
+    context "when staged_header_image and header_image are the same" do
+      before do
+        header_image_updated_at = Date.current
+        affiliate.staged_header_image_file_name = 'live.gif'
+        affiliate.staged_header_image_content_type = 'image/gif'
+        affiliate.staged_header_image_file_size = 800
+        affiliate.staged_header_image_updated_at = header_image_updated_at
+        affiliate.header_image_file_name = 'live.gif'
+        affiliate.header_image_content_type = 'image/gif'
+        affiliate.header_image_file_size = 800
+        affiliate.header_image_updated_at = header_image_updated_at
+        affiliate.save!
+      end
 
+      it "should set values from staged_header_image columns to header_image columns" do
+        affiliate.should_not_receive(:header_image_file_name=)
+        affiliate.should_not_receive(:header_image_content_type=)
+        affiliate.should_not_receive(:header_image_file_size=)
+        affiliate.should_not_receive(:header_image_updated_at=)
         affiliate.set_attributes_from_staged_to_live
+      end
+    end
+
+    context "when staged_header_image exists and header_image does not exist" do
+      before do
+        affiliate.staged_header_image_file_name = 'staged.gif'
+        affiliate.staged_header_image_content_type = 'image/gif'
+        affiliate.staged_header_image_file_size = 700
+        affiliate.staged_header_image_updated_at = Date.current
+        affiliate.header_image_file_name = nil
+        affiliate.header_image_content_type = nil
+        affiliate.header_image_file_size = nil
+        affiliate.header_image_updated_at = nil
+        affiliate.save!
+      end
+
+      it "should set values from staged_header_image columns to header_image columns" do
+        affiliate.should_not_receive(:header_image)
+        affiliate.set_attributes_from_staged_to_live
+        affiliate.header_image_file_name.should == 'staged.gif'
+        affiliate.header_image_content_type.should == 'image/gif'
+        affiliate.header_image_file_size.should == 700
+        affiliate.header_image_updated_at.should == affiliate.staged_header_image_updated_at
+      end
+    end
+
+    context "when staged_header_image does not exist and header_image exists" do
+      let(:header_image) { mock('header image') }
+
+      before do
+        affiliate.staged_header_image_file_name = nil
+        affiliate.staged_header_image_content_type = nil
+        affiliate.staged_header_image_file_size = nil
+        affiliate.staged_header_image_updated_at = nil
+        affiliate.header_image_file_name = 'live.gif'
+        affiliate.header_image_content_type = 'image/gif'
+        affiliate.header_image_file_size = 800
+        affiliate.header_image_updated_at = Date.current
+        affiliate.save!
+      end
+
+      it "should set values from staged_header_image columns to header_image columns" do
+        affiliate.should_receive(:header_image).and_return(header_image)
+        header_image.should_receive(:destroy)
+        affiliate.set_attributes_from_staged_to_live
+        affiliate.header_image_file_name.should be_nil
+        affiliate.header_image_content_type.should be_nil
+        affiliate.header_image_file_size.should be_nil
+        affiliate.header_image_updated_at.should be_nil
       end
     end
   end
@@ -517,25 +693,78 @@ describe Affiliate do
       affiliate.set_attributes_from_live_to_staged
     end
 
-    context "when header_image_file_name is blank" do
-      it "should set staged_header_image to nil" do
-        affiliate.should_receive(:header_image_file_name).and_return(header_image_file_name)
-        header_image_file_name.should_receive(:blank?).and_return(true)
-        affiliate.should_receive(:staged_header_image=).with(nil)
+    context "when existing staged_header_image and header_image are different" do
+      let(:staged_header_image) { mock('staged header image') }
 
+      before do
+        affiliate.staged_header_image_file_name = 'staged.jpg'
+        affiliate.staged_header_image_content_type = 'image/jpeg'
+        affiliate.staged_header_image_file_size = 700
+        affiliate.staged_header_image_updated_at = Date.current
+        affiliate.header_image_file_name = 'live.gif'
+        affiliate.header_image_content_type = 'image/gif'
+        affiliate.header_image_file_size = 800
+        affiliate.header_image_updated_at = Date.current.yesterday
+        affiliate.save!
+      end
+
+      it "should destroy existing staged_header_image" do
+        affiliate.should_receive(:staged_header_image).and_return(staged_header_image)
+        staged_header_image.should_receive(:destroy)
         affiliate.set_attributes_from_live_to_staged
+        affiliate.staged_header_image_file_name.should == 'live.gif'
+        affiliate.staged_header_image_content_type.should == 'image/gif'
+        affiliate.staged_header_image_file_size.should == 800
+        affiliate.staged_header_image_updated_at.should == affiliate.header_image_updated_at
       end
     end
 
-    context "when header_image_file_name is not blank" do
-      it "should set staged_header_image with staged_header_image" do
-        affiliate.should_receive(:header_image_file_name).and_return(header_image_file_name)
-        header_image_file_name.should_receive(:blank?).and_return(false)
-        header_image = mock('header image')
-        affiliate.should_receive(:header_image).and_return(header_image)
-        affiliate.should_receive(:staged_header_image=).with(header_image)
+    context "when staged_header_image does not exist and header_image exists" do
+      before do
+        affiliate.staged_header_image_file_name = nil
+        affiliate.staged_header_image_content_type = nil
+        affiliate.staged_header_image_file_size = nil
+        affiliate.staged_header_image_updated_at = nil
+        affiliate.header_image_file_name = 'live.gif'
+        affiliate.header_image_content_type = 'image/gif'
+        affiliate.header_image_file_size = 800
+        affiliate.header_image_updated_at = Date.current
+        affiliate.save!
+      end
 
+      it "should set values from header_image columns to staged_header_image columns" do
+        affiliate.should_not_receive(:staged_header_image)
         affiliate.set_attributes_from_live_to_staged
+        affiliate.staged_header_image_file_name.should == 'live.gif'
+        affiliate.staged_header_image_content_type.should == 'image/gif'
+        affiliate.staged_header_image_file_size.should == 800
+        affiliate.staged_header_image_updated_at.should == affiliate.header_image_updated_at
+      end
+    end
+
+    context "when staged_header_image exists and header_image does not exist" do
+      let(:staged_header_image) { mock('staged header image') }
+
+      before do
+        affiliate.staged_header_image_file_name = 'staged.jpg'
+        affiliate.staged_header_image_content_type = 'image/jpeg'
+        affiliate.staged_header_image_file_size = 700
+        affiliate.staged_header_image_updated_at = Date.current
+        affiliate.header_image_file_name = nil
+        affiliate.header_image_content_type = nil
+        affiliate.header_image_file_size = nil
+        affiliate.header_image_updated_at = nil
+        affiliate.save!
+      end
+
+      it "should destroy existing staged_header_image" do
+        affiliate.should_receive(:staged_header_image).and_return(staged_header_image)
+        staged_header_image.should_receive(:destroy)
+        affiliate.set_attributes_from_live_to_staged
+        affiliate.staged_header_image_file_name.should be_nil
+        affiliate.staged_header_image_content_type.should be_nil
+        affiliate.staged_header_image_file_size.should be_nil
+        affiliate.staged_header_image_updated_at.should be_nil
       end
     end
   end
