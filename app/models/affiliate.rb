@@ -48,7 +48,7 @@ class Affiliate < ActiveRecord::Base
   validates_attachment_size :staged_header_image, :in => (1..MAXIMUM_IMAGE_SIZE_IN_KB.kilobytes), :message => "must be under #{MAXIMUM_IMAGE_SIZE_IN_KB} KB"
   before_save :set_default_one_serp_fields, :set_default_affiliate_template, :ensure_http_prefix, :set_css_properties, :set_header_footer_sass, :set_json_fields
   before_update :clear_existing_staged_header_image
-  before_validation :set_default_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
+  before_validation :set_name, :set_default_search_results_page_title, :set_default_staged_search_results_page_title, :on => :create
   after_validation :update_error_keys
   after_create :normalize_site_domains
   scope :ordered, {:order => 'display_name ASC'}
@@ -59,7 +59,6 @@ class Affiliate < ActiveRecord::Base
   accepts_nested_attributes_for :site_domains, :reject_if => :all_blank
   accepts_nested_attributes_for :sitemaps, :reject_if => :all_blank
   accepts_nested_attributes_for :rss_feeds, :reject_if => :all_blank
-
 
   USAGOV_AFFILIATE_NAME = 'usasearch.gov'
   VALID_RELATED_TOPICS_SETTINGS = %w{ affiliate_enabled global_enabled disabled }
@@ -410,12 +409,14 @@ class Affiliate < ActiveRecord::Base
     self.affiliate_template_id = AffiliateTemplate.default_id if affiliate_template_id.blank?
   end
 
-  def set_default_name
+  def set_name
     if self.name.blank?
       self.name = self.display_name.downcase.gsub(/[^a-z0-9._-]/, '')[0, 33] unless self.display_name.blank?
       self.name = nil if !self.name.blank? and self.name.length < 3
       self.name = nil if !self.name.blank? and Affiliate.find_by_name(self.name)
       self.name = Digest::MD5.hexdigest("#{Time.now.to_s}")[0..8] if self.name.blank?
+    else
+      self.name = self.name.downcase
     end
   end
 

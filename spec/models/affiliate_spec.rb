@@ -24,10 +24,10 @@ describe Affiliate do
     it { should validate_presence_of :locale }
     it { should validate_uniqueness_of(:name) }
     it { should ensure_length_of(:name).is_at_least(2).is_at_most(33) }
-    ["<IMG SRC=", "259771935505'", "spacey name", "NewAff"].each do |value|
+    ["<IMG SRC=", "259771935505'", "spacey name"].each do |value|
       it { should_not allow_value(value).for(:name) }
     end
-    ["data.gov", "ct-new", "some_aff", "123"].each do |value|
+    ["data.gov", "ct-new", "some_aff", "123", "NewAff"].each do |value|
       it { should allow_value(value).for(:name) }
     end
     it { should have_and_belong_to_many :users }
@@ -55,6 +55,11 @@ describe Affiliate do
 
     it "should generate Site Handle based on display name" do
       affiliate = Affiliate.create!(@valid_create_attributes.merge(:display_name => "Affiliate site"))
+      affiliate.name.should == "affiliatesite"
+    end
+    
+    it "should downcase the name if it's uppercase" do
+      affiliate = Affiliate.create!(@valid_create_attributes.merge(:name => 'AffiliateSite'))
       affiliate.name.should == "affiliatesite"
     end
 
