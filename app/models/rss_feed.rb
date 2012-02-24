@@ -8,21 +8,28 @@ class RssFeed < ActiveRecord::Base
   FEED_ELEMENTS = { :rss => RSS_ELEMENTS, :atom => ATOM_ELEMENTS }
 
   def freshen(ignore_older_items = true)
+    self.update_attributes(:last_crawled_at => Time.now)
     begin
       most_recently = news_items.present? ? news_items.first.published_at : nil
       rss_document = Nokogiri::XML(open(url))
       feed_type = detect_feed_type(rss_document)
-      rss_document.xpath("//#{FEED_ELEMENTS[feed_type]["item"]}").each do |item|
-        published_at = DateTime.parse(item.xpath(FEED_ELEMENTS[feed_type]["pubDate"]).inner_text)
-        break if most_recently and published_at < most_recently and ignore_older_items
-        link = item.xpath(FEED_ELEMENTS[feed_type]["link"]).inner_text
-        title = item.xpath(FEED_ELEMENTS[feed_type]["title"]).inner_text
-        guid = item.xpath(FEED_ELEMENTS[feed_type]["guid"]).inner_text
-        raw_description = item.xpath(FEED_ELEMENTS[feed_type]["description"]).inner_text
-        description = Nokogiri::HTML(raw_description).inner_text.gsub(/[\t\n\r]/, ' ').squish
-        NewsItem.create!(:rss_feed => self, :link => link, :title => title, :description => description, :published_at => published_at, :guid => guid) unless news_items.exists?(:guid => guid)
-      end unless feed_type.nil?
+      if feed_type.nil?
+        self.update_attributes(:last_crawl_status => "Unkown feed type.")
+      else
+        rss_document.xpath("//#{FEED_ELEMENTS[feed_type]["item"]}").each do |item|
+          published_at = DateTime.parse(item.xpath(FEED_ELEMENTS[feed_type]["pubDate"]).inner_text)
+          break if most_recently and published_at < most_recently and ignore_older_items
+          link = item.xpath(FEED_ELEMENTS[feed_type]["link"]).inner_text
+          title = item.xpath(FEED_ELEMENTS[feed_type]["title"]).inner_text
+          guid = item.xpath(FEED_ELEMENTS[feed_type]["guid"]).inner_text
+          raw_description = item.xpath(FEED_ELEMENTS[feed_type]["description"]).inner_text
+          description = Nokogiri::HTML(raw_description).inner_text.gsub(/[\t\n\r]/, ' ').squish
+          NewsItem.create!(:rss_feed => self, :link => link, :title => title, :description => description, :published_at => published_at, :guid => guid) unless news_items.exists?(:guid => guid)
+        end
+        self.update_attributes(:last_crawl_status => "OK")
+      end
     rescue Exception => e
+      self.update_attributes(:last_crawl_status => e.message)
       Rails.logger.warn(e)
     end
   end

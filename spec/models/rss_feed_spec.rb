@@ -90,6 +90,7 @@ describe RssFeed do
         it "should populate news items from the RSS feed source with HTML stripped from the description" do
           @feed.freshen
           @feed.reload
+          @feed.last_crawl_status.should == "OK"
           @feed.news_items.count.should == 3
           newest = @feed.news_items.first
           newest.guid.should == "80731 at http://www.whitehouse.gov"
@@ -147,12 +148,13 @@ describe RssFeed do
 
       context "when an exception is raised somewhere along the way" do
         before do
-          DateTime.stub!(:parse).and_raise Exception
+          DateTime.stub!(:parse).and_raise Exception.new("Error Message!")
         end
 
         it "should log it and move on" do
           Rails.logger.should_receive(:warn).once.with(an_instance_of(Exception))
           @feed.freshen
+          @feed.last_crawl_status.should == "Error Message!"
         end
       end
     end
@@ -186,15 +188,15 @@ describe RssFeed do
     context "when the RSS feed format can not be determined" do
       before do
         @feed = rss_feeds(:atom_feed)
-        doc = Nokogiri::XML(open(Rails.root.to_s + '/spec/fixtures/html/usa_gov/site_index.html'))
-        Nokogiri::XML::Document.should_receive(:parse).and_return(doc)
         @feed.news_items.destroy_all
+        @feed.stub!(:detect_feed_type).and_return nil
       end
 
-      it "should not change the number of news items" do
+      it "should not change the number of news items, and update the crawl status" do
         @feed.freshen
         @feed.reload
         @feed.news_items.count.should == 0
+        @feed.last_crawl_status.should == "Unkown feed type."
       end
     end
   end
