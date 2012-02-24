@@ -121,7 +121,7 @@ namespace :usasearch do
       # affiliate report
       affiliate_report_sql = "SELECT DISTINCT affiliate, total_queries FROM daily_usage_stats WHERE NOT ISNULL(affiliate) AND day BETWEEN ? AND ? GROUP BY affiliate ORDER BY 2 DESC"
       affiliate_report = Affiliate.find_by_sql [affiliate_report_sql, start_date, end_date]
-      output_to_zipfile(zip_filename, "affiliate_report.txt", "Name,TotalQueries", affiliate_report.collect { |result| "#{result.affiliate},#{result.total_queries}" })
+      output_to_zipfile(zip_filename, "affiliate_report.txt", "Name,TotalQueries,LiveDomains", affiliate_report.collect { |result| "#{result.affiliate},#{result.total_queries},#{Affiliate.find_by_name(result.affiliate).check_domains_for_live_code}" })
 
       # total queries by profile
       monthly_totals = DailyUsageStat.monthly_totals(start_date.year, start_date.month)

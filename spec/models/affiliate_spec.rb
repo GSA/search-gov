@@ -1161,4 +1161,23 @@ describe Affiliate do
       end
     end
   end
+  
+  describe "#check_domains_for_live_code" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      @affiliate.site_domains.destroy_all
+      @affiliate.site_domains << SiteDomain.new(:domain => '.gov')
+      @affiliate.site_domains << SiteDomain.new(:domain => 'hasthecode.usa.gov')
+      @affiliate.site_domains << SiteDomain.new(:domain => 'alsohasthecode.usa.gov')
+      @affiliate.site_domains << SiteDomain.new(:domain => 'doesnothavethecode.usa.gov')
+      @affiliate.live_fields_json = "{\"managed_header_text\":\"hasthecodetoo.usa.gov\"}"
+      page_with_code = File.read(Rails.root.to_s + '/spec/fixtures/html/page_with_search_code.html')
+      page_without_code = File.read(Rails.root.to_s + '/spec/fixtures/html/page_without_search_code.html')
+      Kernel.stub!(:open).and_return(page_with_code, page_with_code, page_without_code, page_with_code)
+    end
+    
+    it "should output a list of domains separated by semi-colons of all domains that have our search code, ignoring any TLDs" do
+      @affiliate.check_domains_for_live_code.should == 'hasthecode.usa.gov;alsohasthecode.usa.gov;hasthecodetoo.usa.gov'
+    end
+  end 
 end

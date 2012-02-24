@@ -418,6 +418,19 @@ class Affiliate < ActiveRecord::Base
       self.header_image_updated_at = staged_header_image_updated_at
     end
   end
+  
+  def check_domains_for_live_code
+    live_domains_list = []
+    domains = self.site_domains.collect{|site_domain| site_domain.domain }
+    domains << (JSON.parse(self.live_fields_json)["managed_header_text"] rescue nil) if self.live_fields_json
+    domains.compact.each do |domain|
+      domain_url = (domain =~ /^http:\/\/.*|^https:\/\/.*/).nil? ? "http://#{domain}" : domain
+      URI.parse(domain_url) rescue next
+      doc = Nokogiri::HTML(Kernel.open(domain_url))
+      live_domains_list << domain if doc.xpath("//form[@action='http://search.usa.gov/search']").any?
+    end
+    live_domains_list.join(';')
+  end
 
   private
 
