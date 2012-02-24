@@ -22,6 +22,17 @@ describe ImageSearch do
       @search.should_not_receive(:handle_odie_response)
       @search.run
     end
+    
+    context "when a Bing error occurs" do
+      before do
+        @search.stub!(:perform_bing_search).and_raise BingSearch::BingSearchError.new
+      end
+      
+      it "should log the error" do
+        Rails.logger.should_receive(:warn)
+        @search.run
+      end
+    end 
   end
 
   subject do
