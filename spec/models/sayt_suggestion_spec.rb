@@ -471,6 +471,16 @@ describe SaytSuggestion do
         SaytSuggestion.related_search("suggest", @affiliate).should == []
       end
     end
+
+    context "when query contains invalid characters" do
+      ['"   ', '   "       ', '++', '+-', '-+'].each do |query|
+        specify { SaytSuggestion.related_search(query, @affiliate).should be_nil }
+      end
+
+      [' +++suggest', ' ---suggest -+suggest'].each do |query|
+        specify { SaytSuggestion.related_search(query, @affiliate).count.should == 1 }
+      end
+    end
   end
 
 

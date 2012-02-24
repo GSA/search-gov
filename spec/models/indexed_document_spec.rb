@@ -220,7 +220,7 @@ describe IndexedDocument do
 
     context "when some documents have non-OK statuses" do
       before do
-        IndexedDocument.delete_all
+        IndexedDocument.destroy_all
         IndexedDocument.create!(:last_crawl_status => IndexedDocument::OK_STATUS, :title => 'HTML Title', :description => 'This is a HTML document.', :url => 'http://something.gov/html.html', :affiliate_id => affiliates(:basic_affiliate).id)
         IndexedDocument.create!(:last_crawl_status => "Broken", :title => 'PDF Title', :description => 'This is a PDF document.', :url => 'http://something.gov/pdf.pdf', :affiliate_id => affiliates(:basic_affiliate).id)
         IndexedDocument.reindex
@@ -282,7 +282,7 @@ describe IndexedDocument do
 
     context "when document collection is specified" do
       before do
-        IndexedDocument.delete_all
+        IndexedDocument.destroy_all
         @affiliate = affiliates(:basic_affiliate)
         @coll = @affiliate.document_collections.create!(:name=>"test")
         @coll.url_prefixes.create!(:prefix=>"http://www.export.gov/")
@@ -298,6 +298,22 @@ describe IndexedDocument do
       end
     end
 
+    context "when the query contains special characters" do
+      before do
+        IndexedDocument.destroy_all
+        IndexedDocument.create!(@valid_attributes)
+        IndexedDocument.reindex
+        Sunspot.commit
+      end
+
+      [ '"   ', '   "       ', '++', '+-', '-+'].each do |query|
+        specify { IndexedDocument.search_for(query, affiliates(:basic_affiliate), nil).should be_nil }
+      end
+
+      %w(++PDF --title -+PDF).each do |query|
+        specify { IndexedDocument.search_for(query, affiliates(:basic_affiliate), nil).total.should == 1 }
+      end
+    end
   end
 
   describe "#fetch" do
@@ -805,7 +821,7 @@ describe IndexedDocument do
 
   describe "#refresh_all" do
     before do
-      IndexedDocument.delete_all
+      IndexedDocument.destroy_all
       @first = IndexedDocument.create!(:url => 'http://some.mil/', :affiliate => affiliates(:power_affiliate))
       @last = IndexedDocument.create!(:url => 'http://another.mil', :affiliate => affiliates(:power_affiliate))
       ResqueSpec.reset!
@@ -820,7 +836,7 @@ describe IndexedDocument do
 
   describe "#bulk_load_urls" do
     before do
-      IndexedDocument.delete_all
+      IndexedDocument.destroy_all
       @file = Tempfile.new('aid_urls.txt')
       @aff = affiliates(:power_affiliate)
       2.times { @file.puts([@aff.id, 'http://www.usa.gov/'].join("\t")) }

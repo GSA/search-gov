@@ -1,11 +1,12 @@
 module QueryPreprocessor
-  
+
   def preprocess(query)
     if query =~ /health it/ and !(query =~ /^\".*health it.*\"$/)
-      query.gsub(/health it/, '"health it"')
+      sanitized_query = query.gsub(/health it/, '"health it"')
     else
-      query
+      sanitized_query = query
     end
+    sanitized_query.strip.gsub(/^"\s*$/, '').gsub(/^(\+|\-)(\+|\-)+/, '') unless sanitized_query.blank?
   end
   module_function :preprocess
 end

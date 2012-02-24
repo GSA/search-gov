@@ -457,3 +457,13 @@ Feature: Affiliate Search
     And I fill in "query" with "green button"
     And I press "Search"
     Then I should see "green button" in bold font
+
+  Scenario: When a searcher enter query with invalid solr character
+    Given the following Affiliates exist:
+      | display_name | name       | contact_email | contact_name | domains |
+      | agency site  | agency.gov | aff@bar.gov   | John Bar     | .gov    |
+    And I am on agency.gov's search page
+    And I fill in "query" with "++health it"
+    And I press "Search"
+    Then I should see the browser page titled "++health it - agency site Search Results"
+

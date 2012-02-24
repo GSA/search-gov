@@ -25,16 +25,17 @@ class SaytSuggestion < ActiveRecord::Base
     include QueryPreprocessor
 
     def search_for(query_str, affiliate_id = nil)
-      query = query_str.downcase
-      instrument_hash = {:model=> self.name, :term => query_str, :affiliate_id => affiliate_id}
+      sanitized_query = preprocess(query_str.downcase)
+      return nil if sanitized_query.blank?
+      instrument_hash = {:model=> self.name, :term => sanitized_query, :affiliate_id => affiliate_id}
       ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => instrument_hash) do
         search do
-          fulltext preprocess(query) do
+          fulltext sanitized_query do
             highlight :phrase
           end
           with(:affiliate_id, affiliate_id)
           with(:deleted_at, nil)
-          without(:phrase, query)
+          without(:phrase, sanitized_query)
           order_by :popularity, :desc
           paginate :page => 1, :per_page => 5
         end rescue nil

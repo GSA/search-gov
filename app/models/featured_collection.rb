@@ -28,7 +28,7 @@ class FeaturedCollection < ActiveRecord::Base
                     :container => CLOUD_FILES_CONTAINER,
                     :path => "#{Rails.env}/:attachment/:updated_at/:id/:style/:basename.:extension",
                     :ssl => true
-  
+
   before_validation :set_locale
   after_validation :update_errors_keys
   before_save :ensure_http_prefix_on_title_url
@@ -72,33 +72,39 @@ class FeaturedCollection < ActiveRecord::Base
     end
   end
 
-  def self.search_for(query, affiliate, locale)
-    affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
-    ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate_name, :locale => locale}) do
-      begin
-        search do
-          if affiliate.nil?
-            with :affiliate_id, nil
-          else
-            with :affiliate_id, affiliate.id
+  class << self
+    include QueryPreprocessor
+
+    def search_for(query, affiliate, locale)
+      sanitized_query = preprocess(query)
+      return nil if sanitized_query.blank?
+      affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => { :model => self.name, :term => sanitized_query, :affiliate => affiliate_name, :locale => locale }) do
+        begin
+          search do
+            if affiliate.nil?
+              with :affiliate_id, nil
+            else
+              with :affiliate_id, affiliate.id
+            end
+            with :locale, locale
+            with :status, "active"
+            any_of do
+              with(:publish_start_on).less_than(Time.current)
+            end
+            any_of do
+              with(:publish_end_on).greater_than(Time.current)
+              with :publish_end_on, nil
+            end
+            keywords sanitized_query do
+              highlight :title, :link_titles, :fragment_size => 0
+            end
+            paginate :page => 1, :per_page => 1
           end
-          with :locale, locale
-          with :status, "active"
-          any_of do
-            with(:publish_start_on).less_than(Time.current)
-          end
-          any_of do
-            with(:publish_end_on).greater_than(Time.current)
-            with :publish_end_on, nil
-          end
-          keywords query do
-            highlight :title, :link_titles, :fragment_size => 0
-          end
-          paginate :page => 1, :per_page => 1
+        rescue => e
+          Rails.logger.error "#{e.message}\n#{e.backtrace.join("\n")}" if Rails.env.development?
+          nil
         end
-      rescue => e
-        Rails.logger.error "#{e.message}\n#{e.backtrace.join("\n")}" if Rails.env.development?
-        nil
       end
     end
   end
@@ -124,11 +130,11 @@ class FeaturedCollection < ActiveRecord::Base
   end
 
   private
-  
+
   def set_locale
     self.locale = self.affiliate.locale if self.affiliate and self.locale.nil?
   end
-  
+
   def publish_start_and_end_dates
     start_date = publish_start_on.to_s.to_date unless publish_start_on.blank?
     end_date = publish_end_on.to_s.to_date unless publish_end_on.blank?

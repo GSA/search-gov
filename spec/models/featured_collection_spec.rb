@@ -34,11 +34,11 @@ describe FeaturedCollection do
   it { should belong_to :affiliate }
   it { should have_many(:featured_collection_keywords).dependent(:destroy) }
   it { should have_many(:featured_collection_links).dependent(:destroy) }
-  
+
   it "should default the locale to the locale of the affiliate" do
     FeaturedCollection.create!(:title => 'Title', :publish_start_on => Date.current, :affiliate => affiliates(:spanish_affiliate), :status => 'active', :layout => 'one column').locale.should == "es"
   end
-  
+
   it "should fail to create if no affiliate is specified and no locale is specified" do
     FeaturedCollection.create(:title => 'Title', :publish_start_on => Date.current, :status => 'active', :layout => 'one column').errors.should_not be_empty
   end
@@ -450,6 +450,16 @@ describe FeaturedCollection do
 
         it "should return featured_collections within publish date range" do
           FeaturedCollection.search_for('within_publish_date_range', affiliate, :en).results.first.should_not be_blank
+        end
+
+        context "when query contains special characters" do
+          [ '"   ', '   "       ', '+++', '+-', '-+'].each do |query|
+            specify { FeaturedCollection.search_for(query, affiliate, :en).should be_nil }
+          end
+
+          %w(+++today --today +-today).each do |query|
+            specify { FeaturedCollection.search_for(query, affiliate, :en).total.should == 1 }
+          end
         end
       end
 

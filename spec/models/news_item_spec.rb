@@ -76,7 +76,14 @@ describe NewsItem do
       end
     end
 
+    context "when query contains special characters" do
+      ['"   ', '   "       ', '+++', '+-', '-+'].each do |query|
+        specify { NewsItem.search_for(query, [@blog, @gallery]).should be_nil }
+      end
+
+      %w(+++science --science -+science).each do |query|
+        specify { NewsItem.search_for(query, [@blog, @gallery]).total.should == 1 }
+      end
+    end
   end
-
-
 end

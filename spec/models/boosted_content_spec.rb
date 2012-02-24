@@ -488,6 +488,22 @@ Some other listing about hurricanes,http://some.other.url,Another description fo
         BoostedContent.search_for('caminando', @affiliate, "es").total.should == 1
       end
     end
+
+    context "when query contains special characters" do
+      before do
+        BoostedContent.create!(@valid_attributes.merge(:title => 'jugar', :description => 'hablar', :keywords => 'caminar', :locale => 'en'))
+        Sunspot.commit
+        BoostedContent.reindex
+      end
+
+      [ '"   ', '   "       ', '+++', '+-', '-+'].each do |query|
+        specify { BoostedContent.search_for(query, @affiliate).should be_nil }
+      end
+
+      %w(+++jugar --hablar -+caminar).each do |query|
+        specify { BoostedContent.search_for(query, @affiliate).total.should == 1 }
+      end
+    end
   end
 
   describe "#display_status" do

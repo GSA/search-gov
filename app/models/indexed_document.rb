@@ -157,10 +157,11 @@ class IndexedDocument < ActiveRecord::Base
     include QueryPreprocessor
 
     def search_for(query, affiliate, document_collection, page = 1, per_page = 3)
-      return if affiliate.nil? or query.blank?
-      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model => self.name, :term => query, :affiliate => affiliate.name, :collection => (document_collection.name if document_collection.present?)}) do
+      sanitized_query = preprocess(query)
+      return if affiliate.nil? or sanitized_query.blank?
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model => self.name, :term => sanitized_query, :affiliate => affiliate.name, :collection => (document_collection.name if document_collection.present?)}) do
         search do
-          fulltext preprocess(query) do
+          fulltext sanitized_query do
             highlight :title, :description, :title_es, :description_es, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
           end
           with(:affiliate_id, affiliate.id)

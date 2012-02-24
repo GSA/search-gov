@@ -69,10 +69,12 @@ class BoostedContent < ActiveRecord::Base
     include QueryPreprocessor
 
     def search_for(query, affiliate = nil, locale = I18n.default_locale.to_s, page = 1, per_page = 3)
+      sanitized_query = preprocess(query)
+      return nil if sanitized_query.blank?
       affiliate_name = (affiliate ? affiliate.name : Affiliate::USAGOV_AFFILIATE_NAME)
-      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => query, :affiliate => affiliate_name, :locale => locale}) do
+      ActiveSupport::Notifications.instrument("solr_search.usasearch", :query => {:model=> self.name, :term => sanitized_query, :affiliate => affiliate_name, :locale => locale}) do
         search do
-          fulltext preprocess(query) do
+          fulltext sanitized_query do
             highlight :title, :description, :title_es, :description_es, :max_snippets => 1, :fragment_size => 255, :merge_continuous_fragments => true
           end
           with(:affiliate_name, affiliate_name)
