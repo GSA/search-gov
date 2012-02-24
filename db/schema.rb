@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120222190534) do
+ActiveRecord::Schema.define(:version => 20120224042646) do
 
   create_table "affiliate_templates", :force => true do |t|
     t.string   "name"
@@ -21,20 +21,20 @@ ActiveRecord::Schema.define(:version => 20120222190534) do
   end
 
   create_table "affiliates", :force => true do |t|
-    t.string   "name",                                                                             :null => false
+    t.string   "name",                                                                                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "has_staged_content",                              :default => false,               :null => false
+    t.boolean  "has_staged_content",                                      :default => false,               :null => false
     t.string   "website"
     t.integer  "affiliate_template_id"
-    t.boolean  "is_sayt_enabled",                                 :default => true
-    t.string   "related_topics_setting",            :limit => 30, :default => "affiliate_enabled"
+    t.boolean  "is_sayt_enabled",                                         :default => true
+    t.string   "related_topics_setting",            :limit => 30,         :default => "affiliate_enabled"
     t.integer  "staged_affiliate_template_id"
-    t.string   "display_name",                                                                     :null => false
-    t.string   "search_results_page_title",                                                        :null => false
-    t.string   "staged_search_results_page_title",                                                 :null => false
-    t.boolean  "exclude_webtrends",                               :default => false,               :null => false
-    t.boolean  "is_popular_links_enabled",                        :default => true
+    t.string   "display_name",                                                                             :null => false
+    t.string   "search_results_page_title",                                                                :null => false
+    t.string   "staged_search_results_page_title",                                                         :null => false
+    t.boolean  "exclude_webtrends",                                       :default => false,               :null => false
+    t.boolean  "is_popular_links_enabled",                                :default => true
     t.string   "external_css_url"
     t.string   "staged_external_css_url"
     t.string   "favicon_url"
@@ -46,18 +46,18 @@ ActiveRecord::Schema.define(:version => 20120222190534) do
     t.text     "css_properties"
     t.text     "staged_css_properties"
     t.boolean  "uses_one_serp"
-    t.boolean  "is_image_search_enabled",                         :default => true
-    t.string   "top_searches_label",                              :default => "Search Trends"
+    t.boolean  "is_image_search_enabled",                                 :default => true
+    t.string   "top_searches_label",                                      :default => "Search Trends"
     t.string   "theme"
     t.string   "staged_theme"
-    t.string   "locale",                                          :default => "en",                :null => false
+    t.string   "locale",                                                  :default => "en",                :null => false
     t.text     "scope_ids"
-    t.boolean  "is_agency_govbox_enabled",                        :default => false
-    t.boolean  "is_medline_govbox_enabled",                       :default => false
-    t.text     "previous_fields_json"
-    t.text     "live_fields_json"
-    t.text     "staged_fields_json"
-    t.string   "results_source",                    :limit => 15, :default => "bing+odie"
+    t.boolean  "is_agency_govbox_enabled",                                :default => false
+    t.boolean  "is_medline_govbox_enabled",                               :default => false
+    t.text     "previous_fields_json",              :limit => 2147483647
+    t.text     "live_fields_json",                  :limit => 2147483647
+    t.text     "staged_fields_json",                :limit => 2147483647
+    t.string   "results_source",                    :limit => 15,         :default => "bing+odie"
     t.text     "scope_keywords"
     t.boolean  "uses_managed_header_footer"
     t.boolean  "staged_uses_managed_header_footer"
