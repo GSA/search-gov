@@ -12,6 +12,11 @@ describe ImageSearch do
       QueryImpression.should_receive(:log).with(:image, Affiliate::USAGOV_AFFILIATE_NAME, 'shuttle', ["IMAG"])
       @search.run
     end
+    
+    it "should perform a bing search" do
+      @search.should_not_receive(:perform_odie_search)
+      @search.run
+    end
 
     it "should handle the response as a Bing response" do
       @search.should_not_receive(:handle_odie_response)

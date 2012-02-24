@@ -15,6 +15,15 @@ class ImageSearch < WebSearch
 
   protected
   
+  def search
+    begin
+      parse_bing_response(perform_bing_search)
+    rescue BingSearch::BingSearchError => error
+      Rails.logger.warn "Error getting search results from Bing server: #{error}"
+      false
+    end    
+  end
+  
   def handle_response(response)
     handle_bing_response(response)
   end
