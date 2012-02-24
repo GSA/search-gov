@@ -426,8 +426,8 @@ class Affiliate < ActiveRecord::Base
     domains.compact.each do |domain|
       domain_url = (domain =~ /^http:\/\/.*|^https:\/\/.*/).nil? ? "http://#{domain}" : domain
       URI.parse(domain_url) rescue next
-      doc = Nokogiri::HTML(Kernel.open(domain_url))
-      live_domains_list << domain if doc.xpath("//form[@action='http://search.usa.gov/search']").any?
+      doc = Nokogiri::HTML(Kernel.open(domain_url)) rescue nil
+      live_domains_list << domain if doc and doc.xpath("//form[@action='http://search.usa.gov/search']").any?
     end
     live_domains_list.join(';')
   end

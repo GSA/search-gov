@@ -1179,5 +1179,15 @@ describe Affiliate do
     it "should output a list of domains separated by semi-colons of all domains that have our search code, ignoring any TLDs" do
       @affiliate.check_domains_for_live_code.should == 'hasthecode.usa.gov;alsohasthecode.usa.gov;hasthecodetoo.usa.gov'
     end
+    
+    context "when some kind of error occurs fetching a page" do
+      before do
+        Kernel.stub!(:open).and_raise OpenURI::HTTPError.new("400 Bad Request", nil)
+      end
+
+      it "should return an empty result" do
+        @affiliate.check_domains_for_live_code.should == ''
+      end
+    end
   end 
 end
