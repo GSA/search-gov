@@ -422,7 +422,7 @@ describe Recall do
         recall.auto_recalls << AutoRecall.new(:make => @row[2], :model => @row[3], :year => @row[4])
         recall.save!
       end
-      Sunspot.commit
+      Recall.reindex
     end
 
     describe "stripping recall terms before sending to Solr" do
