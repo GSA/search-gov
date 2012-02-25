@@ -210,7 +210,7 @@
          when adding documents. http://wiki.apache.org/solr/UpdateXmlMessages
     -->
     <autoCommit>
-      <maxDocs>10000</maxDocs>
+      <maxDocs>100000</maxDocs>
       <maxTime>60000</maxTime>
     </autoCommit>
     <!-- The RunExecutableListener executes an external command from a
@@ -348,25 +348,205 @@
     <!-- QuerySenderListener takes an array of NamedList and executes a
          local query request for each NamedList in sequence. -->
     <listener event="newSearcher" class="solr.QuerySenderListener">
-      <arr name="queries">
-        <lst> <str name="q">obama</str> <str name="start">0</str> <str name="rows">10</str> </lst>
-        <!--
-        <lst> <str name="q">rocks</str> <str name="start">0</str> <str name="rows">10</str> </lst>
-        <lst><str name="q">static newSearcher warming query from solrconfig.xml</str></lst>
-        -->
-      </arr>
+      <lst>
+        <str name="fq">type:FeaturedCollection</str>
+        <str name="fq">affiliate_id_i:277</str>
+        <str name="fq">locale_s:en</str>
+        <str name="qf">keyword_values_text title_texts link_titles_texts</str>
+        <str name="hl.simple.pre">@@@hl@@@</str>
+        <str name="hl.simple.post">@@@endhl@@@</str>
+        <str name="hl.fl">title_texts</str>
+        <str name="hl.fl">link_titles_texts</str>
+        <str name="f.title_texts.hl.fragsize">0</str>
+        <str name="f.link_titles_texts.hl.fragsize">0</str>
+        <str name="fq">status_s:active</str>
+        <str name="fq">publish_start_on_dt:[* TO 2012-02-24T01:44:49Z]</str>
+        <str name="fq">publish_end_on_dt:[* TO *]</str>
+        <str name="wt">ruby</str>
+        <str name="hl">on</str>
+        <str name="q">yosemite</str>
+        <str name="start">0</str>
+        <str name="rows">10</str>
+        <str name="fl">* score</str>
+        <str name="deftype">dismax</str>
+      </lst>
+      <lst>
+        <str name="fq">type:BoostedContent</str>
+        <str name="qf">keywords_text_es description_text_es title_texts title_text_es description_texts keywords_text</str>
+        <str name="f.title_text_es.hl.fragsize">255</str>
+        <str name="f.title_texts.hl.fragsize">255</str>
+        <str name="f.title_texts.hl.snippets">1</str>
+        <str name="f.title_text_es.hl.snippets">1</str>
+        <str name="f.description_text_es.hl.fragsize">255</str>
+        <str name="f.description_texts.hl.fragsize">255</str>
+        <str name="f.description_texts.hl.snippets">1</str>
+        <str name="f.description_text_es.hl.snippets">1</str>
+        <str name="hl.simple.pre">@@@hl@@@</str>
+        <str name="hl.simple.post">@@@endhl@@@</str>
+        <str name="fq">affiliate_name_s:nps</str>
+        <str name="fq">locale_s:en</str>
+        <str name="fq">status_s:active</str>
+        <str name="fq">publish_start_on_dt:[* TO 2012-02-24T01:44:49Z]</str>
+        <str name="fq">publish_end_on_dt:[* TO *]</str>
+        <str name="wt">ruby</str>
+        <str name="hl">on</str>
+        <str name="hl.fl">title_texts</str>
+        <str name="hl.fl">description_texts</str>
+        <str name="hl.fl">description_text_es</str>
+        <str name="hl.fl">title_text_es</str>
+        <str name="q">yosemite</str>
+        <str name="start">0</str>
+        <str name="rows">10</str>
+        <str name="fl">* score</str>
+        <str name="deftype">dismax</str>
+      </lst>
+      <lst>
+        <str name="fq">type:IndexedDocument</str>
+        <str name="qf">description_text_es title_texts title_text_es description_texts body_text_es body_text</str>
+        <str name="f.title_text_es.hl.fragsize">255</str>
+        <str name="f.title_texts.hl.fragsize">255</str>
+        <str name="f.title_texts.hl.snippets">1</str>
+        <str name="f.title_text_es.hl.snippets">1</str>
+        <str name="f.description_text_es.hl.fragsize">255</str>
+        <str name="f.description_texts.hl.fragsize">255</str>
+        <str name="f.description_texts.hl.snippets">1</str>
+        <str name="f.description_text_es.hl.snippets">1</str>
+        <str name="hl.simple.pre">@@@hl@@@</str>
+        <str name="hl.simple.post">@@@endhl@@@</str>
+        <str name="fq">affiliate_id_i:277</str>
+        <str name="fq">last_crawl_status_s:OK</str>
+        <str name="wt">ruby</str>
+        <str name="hl">on</str>
+        <str name="hl.fl">title_texts</str>
+        <str name="hl.fl">description_texts</str>
+        <str name="hl.fl">description_text_es</str>
+        <str name="hl.fl">title_text_es</str>
+        <str name="q">yosemite</str>
+        <str name="start">0</str>
+        <str name="rows">10</str>
+        <str name="fl">* score</str>
+        <str name="deftype">dismax</str>
+      </lst>
+      <lst>
+        <str name="fq">type:SaytSuggestion</str>
+        <str name="sort">popularity_i desc</str>
+        <str name="qf">phrase_texts</str>
+        <str name="fq">affiliate_id_i:277</str>
+        <str name="fq">-deleted_at_d:[* TO *]</str>
+        <str name="fq">-phrase_s:yosemite</str>
+        <str name="wt">ruby</str>
+        <str name="hl">on</str>
+        <str name="hl.fl">phrase_texts</str>
+        <str name="hl.simple.pre">@@@hl@@@</str>
+        <str name="hl.simple.post">@@@endhl@@@</str>
+        <str name="q">yosemite</str>
+        <str name="start">0</str>
+        <str name="rows">10</str>
+        <str name="fl">* score</str>
+        <str name="deftype">dismax</str>
+      </lst>
     </listener>
     <!-- a firstSearcher event is fired whenever a new searcher is being
          prepared but there is no current registered searcher to handle
          requests or to gain autowarming data from. -->
     <listener event="firstSearcher" class="solr.QuerySenderListener">
-      <arr name="queries">
-        <lst>
-          <str name="q">white house</str>
-          <str name="start">0</str>
-          <str name="rows">10</str>
-        </lst>
-      </arr>
+      <lst>
+        <str name="fq">type:FeaturedCollection</str>
+        <str name="fq">affiliate_id_i:277</str>
+        <str name="fq">locale_s:en</str>
+        <str name="qf">keyword_values_text title_texts link_titles_texts</str>
+        <str name="hl.simple.pre">@@@hl@@@</str>
+        <str name="hl.simple.post">@@@endhl@@@</str>
+        <str name="hl.fl">title_texts</str>
+        <str name="hl.fl">link_titles_texts</str>
+        <str name="f.title_texts.hl.fragsize">0</str>
+        <str name="f.link_titles_texts.hl.fragsize">0</str>
+        <str name="fq">status_s:active</str>
+        <str name="fq">publish_start_on_dt:[* TO 2012-02-24T01:44:49Z]</str>
+        <str name="fq">publish_end_on_dt:[* TO *]</str>
+        <str name="wt">ruby</str>
+        <str name="hl">on</str>
+        <str name="q">yosemite</str>
+        <str name="start">0</str>
+        <str name="rows">10</str>
+        <str name="fl">* score</str>
+        <str name="deftype">dismax</str>
+      </lst>
+      <lst>
+        <str name="fq">type:BoostedContent</str>
+        <str name="qf">keywords_text_es description_text_es title_texts title_text_es description_texts keywords_text</str>
+        <str name="f.title_text_es.hl.fragsize">255</str>
+        <str name="f.title_texts.hl.fragsize">255</str>
+        <str name="f.title_texts.hl.snippets">1</str>
+        <str name="f.title_text_es.hl.snippets">1</str>
+        <str name="f.description_text_es.hl.fragsize">255</str>
+        <str name="f.description_texts.hl.fragsize">255</str>
+        <str name="f.description_texts.hl.snippets">1</str>
+        <str name="f.description_text_es.hl.snippets">1</str>
+        <str name="hl.simple.pre">@@@hl@@@</str>
+        <str name="hl.simple.post">@@@endhl@@@</str>
+        <str name="fq">affiliate_name_s:nps</str>
+        <str name="fq">locale_s:en</str>
+        <str name="fq">status_s:active</str>
+        <str name="fq">publish_start_on_dt:[* TO 2012-02-24T01:44:49Z]</str>
+        <str name="fq">publish_end_on_dt:[* TO *]</str>
+        <str name="wt">ruby</str>
+        <str name="hl">on</str>
+        <str name="hl.fl">title_texts</str>
+        <str name="hl.fl">description_texts</str>
+        <str name="hl.fl">description_text_es</str>
+        <str name="hl.fl">title_text_es</str>
+        <str name="q">yosemite</str>
+        <str name="start">0</str>
+        <str name="rows">10</str>
+        <str name="fl">* score</str>
+        <str name="deftype">dismax</str>
+      </lst>
+      <lst>
+        <str name="fq">type:IndexedDocument</str>
+        <str name="qf">description_text_es title_texts title_text_es description_texts body_text_es body_text</str>
+        <str name="f.title_text_es.hl.fragsize">255</str>
+        <str name="f.title_texts.hl.fragsize">255</str>
+        <str name="f.title_texts.hl.snippets">1</str>
+        <str name="f.title_text_es.hl.snippets">1</str>
+        <str name="f.description_text_es.hl.fragsize">255</str>
+        <str name="f.description_texts.hl.fragsize">255</str>
+        <str name="f.description_texts.hl.snippets">1</str>
+        <str name="f.description_text_es.hl.snippets">1</str>
+        <str name="hl.simple.pre">@@@hl@@@</str>
+        <str name="hl.simple.post">@@@endhl@@@</str>
+        <str name="fq">affiliate_id_i:277</str>
+        <str name="fq">last_crawl_status_s:OK</str>
+        <str name="wt">ruby</str>
+        <str name="hl">on</str>
+        <str name="hl.fl">title_texts</str>
+        <str name="hl.fl">description_texts</str>
+        <str name="hl.fl">description_text_es</str>
+        <str name="hl.fl">title_text_es</str>
+        <str name="q">yosemite</str>
+        <str name="start">0</str>
+        <str name="rows">10</str>
+        <str name="fl">* score</str>
+        <str name="deftype">dismax</str>
+      </lst>
+      <lst>
+        <str name="fq">type:SaytSuggestion</str>
+        <str name="sort">popularity_i desc</str>
+        <str name="qf">phrase_texts</str>
+        <str name="fq">affiliate_id_i:277</str>
+        <str name="fq">-deleted_at_d:[* TO *]</str>
+        <str name="fq">-phrase_s:yosemite</str>
+        <str name="wt">ruby</str>
+        <str name="hl">on</str>
+        <str name="hl.fl">phrase_texts</str>
+        <str name="hl.simple.pre">@@@hl@@@</str>
+        <str name="hl.simple.post">@@@endhl@@@</str>
+        <str name="q">yosemite</str>
+        <str name="start">0</str>
+        <str name="rows">10</str>
+        <str name="fl">* score</str>
+        <str name="deftype">dismax</str>
+      </lst>
     </listener>
     <!-- If a search request comes in and there is no current registered searcher,
          then immediately register the still warming searcher and use it.  If
@@ -376,7 +556,7 @@
     <!-- Maximum number of searchers that may be warming in the background
       concurrently.  An error is returned if this limit is exceeded. Recommend
       1-2 for read-only slaves, higher for masters w/o cache warming. -->
-    <maxWarmingSearchers>4</maxWarmingSearchers>
+    <maxWarmingSearchers>1</maxWarmingSearchers>
   </query>
   <!--
     Let the dispatch filter handler /select?qt=XXX
