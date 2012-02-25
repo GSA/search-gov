@@ -400,7 +400,6 @@ describe Recall do
   describe "#search_for" do
     before do
       Recall.destroy_all
-      Recall.remove_all_from_index!
       @start_date = Date.parse('2010-02-01')
       @number_of_cpsc_recalls = 3
       (@number_of_cpsc_recalls - 1).downto(0) do |index|
