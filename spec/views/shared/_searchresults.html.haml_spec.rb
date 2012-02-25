@@ -63,7 +63,7 @@ describe "shared/_searchresults.html.haml" do
       render
       rendered.should contain('Cache')
     end
-    
+
     it "should show the Bing logo" do
       render
       rendered.should have_selector("img[src^='/images/binglogo_en.gif']")
@@ -99,24 +99,24 @@ describe "shared/_searchresults.html.haml" do
         rendered.should contain('featured collections')
       end
     end
-    
+
     context "when results are not by bing" do
       before do
         @search.stub!(:are_results_by_bing?).and_return false
         view.stub!(:search).and_return @search
       end
-      
+
       it "should show the USASearch results by logo" do
         render
         rendered.should have_selector("img[src^='/images/results_by_usasearch_en.png']")
         rendered.should have_selector("a", :href => 'http://searchblog.usa.gov/')
       end
-      
+
       context "when the locale is Spanish" do
         before do
           I18n.stub!(:locale).and_return :es
         end
-        
+
         it "should not show a results-by logo" do
           render
           rendered.should have_selector("img[src^='/images/results_by_usasearch_es.png']")
@@ -184,7 +184,7 @@ describe "shared/_searchresults.html.haml" do
 
     context "when a boosted Content is returned as a hit, but that boosted Content is not in the database" do
       before do
-        boosted_content = BoostedContent.create(:title => 'test', :url => 'http://test.gov', :description => 'test', :locale => 'en', :status => 'active', :publish_start_on => Date.current)
+        boosted_content = BoostedContent.create(:title => 'test', :url => 'http://test.gov', :description => 'test', :locale => 'en', :status => 'active', :publish_start_on => Date.yesterday)
         BoostedContent.reindex
         boosted_content.delete
         boosted_contents_results = BoostedContent.search_for("test")

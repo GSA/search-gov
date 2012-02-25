@@ -134,7 +134,7 @@ describe ApiController do
                                            :description => "description",
                                            :locale => 'en',
                                            :status => 'active',
-                                           :publish_start_on => Date.current)
+                                           :publish_start_on => Date.yesterday)
         BoostedContent.reindex
 
         get :search, :affiliate => affiliate.name, :api_key => users(:affiliate_manager).api_key, :query => "title", :format => 'json'

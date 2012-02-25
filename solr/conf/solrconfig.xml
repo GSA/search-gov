@@ -285,7 +285,7 @@
          autowarmCount - the number of entries to prepopulate from
            and old cache.
          -->
-    <filterCache class="solr.FastLRUCache" size="16384" initialSize="16384" autowarmCount="16384"/>
+    <filterCache class="solr.FastLRUCache" size="16384" initialSize="16384" autowarmCount="1024"/>
     <!-- Cache used to hold field values that are quickly accessible
          by document id.  The fieldValueCache is created by default
          even if not configured here.
@@ -299,7 +299,7 @@
     <!-- queryResultCache caches results of searches - ordered lists of
          document ids (DocList) based on a query, a sort, and the range
          of documents requested.  -->
-    <queryResultCache class="solr.FastLRUCache" size="16384" initialSize="16384" autowarmCount="16384"/>
+    <queryResultCache class="solr.FastLRUCache" size="16384" initialSize="16384" autowarmCount="0"/>
     <!-- documentCache caches Lucene Document objects (the stored fields for each document).
        Since Lucene internal document ids are transient, this cache will not be autowarmed.  -->
     <documentCache class="solr.FastLRUCache" size="16384" initialSize="16384" autowarmCount="0"/>
