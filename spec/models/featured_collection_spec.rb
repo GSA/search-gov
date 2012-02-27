@@ -347,7 +347,7 @@ describe FeaturedCollection do
 
       context "when .search raise an exception" do
         it "should return nil" do
-          FeaturedCollection.should_receive(:search).and_raise("exception")
+          FeaturedCollection.should_receive(:search).and_raise(RSolr::Error::Http.new('request', 'response'))
           FeaturedCollection.search_for('tropicales', nil, :en).should be_nil
         end
       end
@@ -559,7 +559,7 @@ describe FeaturedCollection do
 
       context "when .search raise an exception" do
         it "should return nil" do
-          FeaturedCollection.should_receive(:search).and_raise("exception")
+          FeaturedCollection.should_receive(:search).and_raise(RSolr::Error::Http.new('request', 'response'))
           FeaturedCollection.search_for('tropicales', affiliate, :en).should be_nil
         end
       end

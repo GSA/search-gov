@@ -104,7 +104,6 @@ class WebSearch < Search
   def build_query(options)
     query = ''
     if options[:query].present?
-      options[:query].downcase! if options[:query].ends_with? " OR"
       query += options[:query].split.collect { |term| limit_field(options[:query_limit], term) }.join(' ')
     end
 

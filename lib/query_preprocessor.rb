@@ -6,7 +6,7 @@ module QueryPreprocessor
     else
       sanitized_query = query
     end
-    sanitized_query.strip.gsub(/^"\s*$/, '').gsub(/^(\+|\-)(\+|\-)+/, '') unless sanitized_query.blank?
+    sanitized_query.strip.gsub(/^"$/, '').gsub(/^[\+\-&\|]+/, '').gsub(/(AND|OR|NOT)\b/, '\\\\\1') unless sanitized_query.blank?
   end
   module_function :preprocess
 end

@@ -101,8 +101,8 @@ class FeaturedCollection < ActiveRecord::Base
             end
             paginate :page => 1, :per_page => 1
           end
-        rescue => e
-          Rails.logger.error "#{e.message}\n#{e.backtrace.join("\n")}" if Rails.env.development?
+        rescue RSolr::Error::Http => e
+          Rails.logger.warn "Error FeaturedCollection#search_for: #{e.to_s}"
           nil
         end
       end

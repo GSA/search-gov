@@ -173,6 +173,9 @@ class IndexedDocument < ActiveRecord::Base
           paginate :page => page, :per_page => per_page
         end
       end
+    rescue RSolr::Error::Http => e
+      Rails.logger.warn "Error IndexedDocument#search_for: #{e.to_s}"
+      nil
     end
 
     def uncrawled_urls(affiliate, page = 1, per_page = 30)

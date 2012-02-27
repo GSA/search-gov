@@ -298,20 +298,35 @@ describe IndexedDocument do
       end
     end
 
-    context "when the query contains special characters" do
+    context "when the query only special characters" do
+      before do
+        IndexedDocument.should_not_receive(:search)
+      end
+
+      [' " ', ' + ', '-', '++', '-+', '&&'].each do |query|
+        specify { IndexedDocument.search_for(query, affiliates(:basic_affiliate), nil).should be_nil }
+      end
+    end
+
+    context "when the query contains boolean operators" do
       before do
         IndexedDocument.destroy_all
-        IndexedDocument.create!(@valid_attributes)
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'boolean operator', :url => 'http://www.agency.gov/boolean.pdf', :content_hash => nil))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'OR US97', :url => 'http://www.agency.gov/or_97.pdf', :content_hash => nil))
+        IndexedDocument.create!(@valid_attributes.merge(:title => 'Newport city OR', :url => 'http://www.agency.gov/newport.pdf', :content_hash => nil))
         IndexedDocument.reindex
         Sunspot.commit
       end
 
-      [ '"   ', '   "       ', '++', '+-', '-+'].each do |query|
-        specify { IndexedDocument.search_for(query, affiliates(:basic_affiliate), nil).should be_nil }
-      end
+      specify { IndexedDocument.search_for('++boolean ', affiliates(:basic_affiliate), nil).should_not be_nil }
+      specify { IndexedDocument.search_for('OR US97', affiliates(:basic_affiliate), nil).should_not be_nil }
+      specify { IndexedDocument.search_for('Newport OR', affiliates(:basic_affiliate), nil).should_not be_nil }
+    end
 
-      %w(++PDF --title -+PDF).each do |query|
-        specify { IndexedDocument.search_for(query, affiliates(:basic_affiliate), nil).total.should == 1 }
+    context "when .search raise an exception" do
+      it "should return nil" do
+        IndexedDocument.should_receive(:search).and_raise(RSolr::Error::Http.new('request', 'response'))
+        IndexedDocument.search_for('tropicales', @affiliate, nil).should be_nil
       end
     end
   end

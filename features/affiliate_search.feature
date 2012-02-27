@@ -488,4 +488,9 @@ Feature: Affiliate Search
     And I fill in "query" with "++health it"
     And I press "Search"
     Then I should see the browser page titled "++health it - agency site Search Results"
+    And I should see some Bing search results
+    When I fill in "query" with "OR US97 central"
+    And I press "Search"
+    Then I should see the browser page titled "OR US97 central - agency site Search Results"
+    And I should see some Bing search results
 
