@@ -18,6 +18,8 @@ describe "layouts/affiliate" do
                            :show_content_box_shadow? => true,
                            :locale => 'en')
     assign(:affiliate, affiliate)
+    search = mock(WebSearch, :query => 'america')
+    assign(:search, search)
   end
 
   context "when page is displayed" do

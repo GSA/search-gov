@@ -152,6 +152,10 @@ describe SearchesController do
     it "should render the footer in the response" do
       response.body.should match(/#{@affiliate.footer}/)
     end
+    
+    it "should set the query in Javascript" do
+      response.body.should match(/var original_query = \"weather\"/)
+    end
 
     it "should not search for FAQs" do
       @search.faqs.should be_nil

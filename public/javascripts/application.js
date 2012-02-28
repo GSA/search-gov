@@ -51,3 +51,17 @@ jQuery(document).ready(function () {
 		}
 	);
 });
+
+jQuery(document).ready(function () {
+    jQuery('#search_query').change(function() {
+        update_vertical_navigation_links(jQuery(this).attr('value'));
+    });
+});
+
+function update_vertical_navigation_links(new_text) {
+    jQuery('.updatable').each(function(){
+        var re = new RegExp("query=" + original_query, "");
+        jQuery(this).attr('href', jQuery(this).attr('href').replace(re, "query=" + new_text));
+    });
+    original_query = new_text;
+}

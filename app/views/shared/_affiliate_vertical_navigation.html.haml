@@ -3,30 +3,31 @@
 - search_params = {:query => params[:query], :affiliate => @affiliate.name}
 - search_params.merge!(:channel => rss_feed.id) if rss_feed
 - search_params.merge!(:tbs => params[:tbs]) if params[:tbs]
+= javascript_tag "var original_query = \"#{@search.query}\";"
 %ul.rss-feeds
   %li
-    = link_to_unless(@search.instance_of?(WebSearch) || (@search.instance_of?(NewsSearch) && params[:channel].nil?), t(:everything), params[:tbs] ? news_search_path(search_params.remove(:channel, :dc)) : search_path(search_params.remove(:channel))) do |everything|
+    = link_to_unless(@search.instance_of?(WebSearch) || (@search.instance_of?(NewsSearch) && params[:channel].nil?), t(:everything), params[:tbs] ? news_search_path(search_params.remove(:channel, :dc)) : search_path(search_params.remove(:channel)), :class => 'updatable') do |everything|
       = content_tag :span, everything
   - if @affiliate.is_image_search_enabled?
     %li
-      = link_to_if(@search.instance_of?(ImageSearch) == false, t(:images), image_search_path(search_params.remove(:channel, :tbs))) do |images|
+      = link_to_if(@search.instance_of?(ImageSearch) == false, t(:images), image_search_path(search_params.remove(:channel, :tbs)), :class => 'updatable') do |images|
         = content_tag :span, images
   - @affiliate.active_rss_feeds.each do |feed|
     %li{ :class => (feed == @affiliate.active_rss_feeds.last ? 'last' : nil) }
-      = link_to_unless((rss_feed && rss_feed.id == feed.id), feed.name, news_search_path(search_params.merge(:channel => feed.id))) do |channel_name|
+      = link_to_unless((rss_feed && rss_feed.id == feed.id), feed.name, news_search_path(search_params.merge(:channel => feed.id)), :class => 'updatable') do |channel_name|
         = content_tag :span, channel_name
 
   - @affiliate.active_document_collections.each do |coll|
     %li{ :class => (coll == @affiliate.active_document_collections.last ? 'last' : nil) }
-      = link_to_unless((document_collection && document_collection.id == coll.id), coll.name, docs_search_path(search_params.merge(:dc => coll.id).remove(:channel, :tbs))) do |collection_name|
+      = link_to_unless((document_collection && document_collection.id == coll.id), coll.name, docs_search_path(search_params.merge(:dc => coll.id).remove(:channel, :tbs)), :class => 'updatable') do |collection_name|
         = content_tag :span, collection_name
 
 - if @search.instance_of?(NewsSearch)
   %ul.time-filters
     %li
-      = link_to_if(params[:tbs], t(:all_time), rss_feed ? news_search_path(search_params.remove(:tbs)) : search_path(search_params.remove(:tbs))) do |everything|
+      = link_to_if(params[:tbs], t(:all_time), rss_feed ? news_search_path(search_params.remove(:tbs)) : search_path(search_params.remove(:tbs)), :class => 'updatable') do |everything|
         = content_tag :span, everything
     - NewsItem::TIME_BASED_SEARCH_OPTIONS.each_pair do |tbs, extent|
       %li{ :class => (extent == :year ? 'last' : nil) }
-        = link_to_unless((params[:tbs] == tbs), t("last_#{extent}".to_sym), news_search_path(search_params.merge(:tbs => tbs))) do |last_time|
+        = link_to_unless((params[:tbs] == tbs), t("last_#{extent}".to_sym), news_search_path(search_params.merge(:tbs => tbs)), :class => 'updatable') do |last_time|
           = content_tag :span, last_time
