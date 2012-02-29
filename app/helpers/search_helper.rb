@@ -722,7 +722,7 @@ module SearchHelper
 
   def render_video(news_item)
     video_id = CGI.parse(URI.parse(news_item.link).query)['v']
-    options = { :width => 640, :height => 360, :src => "http://www.youtube.com/embed/#{video_id}", :frameborder => 0, :allowfullscreen => '', :rel => 0 }
+    options = { :width => 320, :height => 192, :src => "http://www.youtube.com/embed/#{video_id}", :frameborder => 0, :allowfullscreen => '', :rel => 0 }
     content_tag(:iframe, nil, options)
   end
 end
