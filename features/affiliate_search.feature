@@ -21,9 +21,10 @@ Feature: Affiliate Search
       | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true      |
       | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery | false     |
     And feed "Press" has the following news items:
-    | link                             | title       | guid  | published_ago | description                  |
-    | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | First news item for the feed |
-    | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | Next news item for the feed  |
+      | link                                       | title       | guid  | published_ago | description                  |
+      | http://www.whitehouse.gov/news/1           | First item  | uuid1 | day           | First news item for the feed |
+      | http://www.whitehouse.gov/news/2           | Second item | uuid2 | day           | Next news item for the feed  |
+      | http://www.youtube.com/watch?v=evewynJN6n8 | Third item  | uuid3 | day           | Video news item for the feed |
     And feed "Photo Gallery" has the following news items:
     | link                             | title       | guid  | published_ago | description                  |
     | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
@@ -49,6 +50,8 @@ Feature: Affiliate Search
 
     When I follow "Press"
     Then I should see the browser page titled "item - bar site Search Results"
+    And I should see 1 youtube video
+    And I should see embedded youtube video for evewynJN6n8
 
     When I follow "Last week"
     Then I should see the browser page titled "item - bar site Search Results"

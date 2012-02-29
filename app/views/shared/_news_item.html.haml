@@ -1,4 +1,5 @@
 .newsitem.searchresult.clearfix{:id => "newsitem#{index+1}"}
+  = render_video(hit.instance) if hit.instance.is_video?
   %h2= link_with_click_tracking(highlight_hit(hit, :title).html_safe, hit.instance.link, @affiliate, @search.query, index, 'NEWS', @search_vertical)
   %h4= time_ago_in_words(hit.instance.published_at)
   %h3= news_description(hit)

@@ -39,4 +39,8 @@ class NewsItem < ActiveRecord::Base
       end
     end
   end
+
+  def is_video?
+    link =~ /^http:\/\/www.youtube.com\/watch\?v=.+$/i
+  end
 end

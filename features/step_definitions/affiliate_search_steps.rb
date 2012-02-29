@@ -53,3 +53,11 @@ Given /^the following Related Medline Topics for "([^"]*)" in (English|Spanish) 
     topic.topic_relatees.create!(:related_topic => related_topic)
   end
 end
+
+Then /^I should see (\d+) youtube videos?$/ do |count|
+  page.should have_selector("iframe[src^='http://www.youtube.com/embed/']", :count => count)
+end
+
+Then /^I should see embedded youtube video for (.+)$/ do |video_id|
+  page.should have_selector("iframe[src='http://www.youtube.com/embed/#{video_id}']")
+end
