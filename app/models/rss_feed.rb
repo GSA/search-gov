@@ -39,7 +39,7 @@ class RssFeed < ActiveRecord::Base
   end
 
   def is_video?
-    @is_video ||= (url =~ /^http:\/\/gdata\.youtube.com\/feeds\/base\/videos.+$/) and CGI.parse(URI.parse(url).query)['author'].present?
+    @is_video ||= (url =~ /^http:\/\/gdata\.youtube.com\/feeds\/.+$/i)
   end
 
   private

@@ -203,10 +203,10 @@ describe RssFeed do
 
   describe "#is_video?" do
     context "when url starts with http://gdata.youtube.com/feeds/base/videos?alt=rss&author=" do
-      specify { RssFeed.new(:url => 'http://gdata.youtube.com/feeds/base/videos?author=noaa').should be_is_video }
+      specify { RssFeed.new(:url => 'http://GDATA.youtube.com/feeds/base/videos?AUTHOR=noaa').should be_is_video }
     end
 
-    context "when url does not start with http://gdata.youtube.com/feeds/base/videos?alt=rss&author=" do
+    context "when url does not start with http://gdata.youtube.com/feeds/" do
       specify { RssFeed.new(:url => 'http://www.rss.noaa.gov/noaarss.xml').should_not be_is_video }
     end
   end
