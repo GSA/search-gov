@@ -1,3 +1,28 @@
+usagov_affiliate:
+  display_name: USA.gov
+  name: usagov
+  website: http://www.usa.gov
+  users: [:affiliate_manager]
+  theme: elegant
+  staged_theme: fun_blue
+  affiliate_template: :basic_gray
+  staged_affiliate_template: [:basic_gray]
+  search_results_page_title: Current {Query} - {SiteName} Search Results
+  staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
+
+gobiernousa_affiliate:
+  display_name: Gobierno.USA.gov
+  name: gobiernousa
+  website: http://www.gobiernousa.gov
+  users: [:affiliate_manager]
+  theme: elegant
+  staged_theme: fun_blue
+  affiliate_template: :basic_gray
+  staged_affiliate_template: [:basic_gray]
+  search_results_page_title: Current {Query} - {SiteName} Search Results
+  staged_search_results_page_title: Staged {Query} - {SiteName} Search Results
+  locale: es
+
 power_affiliate:
   display_name: Noaa Site
   name: noaa.gov

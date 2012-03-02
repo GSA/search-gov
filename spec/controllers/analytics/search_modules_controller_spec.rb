@@ -102,7 +102,7 @@ describe Analytics::SearchModulesController do
           get :index
           assigns[:affiliate_picklist].size.should == Affiliate.count + 1
           assigns[:affiliate_picklist].first.should == ["usasearch.gov","usasearch.gov"]
-          assigns[:affiliate_picklist].last.should == ["nps.gov","nps.gov"]
+          assigns[:affiliate_picklist].last.should == ["usagov","usagov"]
         end
       end
 

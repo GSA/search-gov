@@ -20,16 +20,9 @@ class SearchesController < ApplicationController
     @page_title = @search.query
     handle_affiliate_search
     @search_vertical = :web
-    if @search_options[:affiliate]
-      respond_to do |format|
-        format.any(:html, :mobile) { render :action => "affiliate_index", :layout => "affiliate" }
-      end
-    else
-      respond_to do |format|
-        format.html
-        format.mobile
-        format.json { render :json => @search }
-      end
+    respond_to do |format|
+      format.any(:html, :mobile) { render :action => "affiliate_index", :layout => "affiliate" }
+      format.json { render :json => @search }
     end
   end
 
@@ -110,6 +103,7 @@ class SearchesController < ApplicationController
 
   def set_affiliate_options
     @affiliate = params["affiliate"] ? Affiliate.find_by_name(params["affiliate"]) : nil
+    @affiliate = (I18n.locale == :en ? Affiliate.find_by_name("usagov") : Affiliate.find_by_name('gobiernousa')) if @affiliate.nil?
     if @affiliate and params[:oneserp]
       @affiliate.uses_one_serp = true
       @affiliate.css_property_hash[:show_content_box_shadow] = '1'
@@ -161,7 +155,7 @@ class SearchesController < ApplicationController
 
   def adjust_mobile_mode
     request.format = :html if is_advanced_search? or is_forms_search?
-    request.format = :json if @original_format == 'application/json' and @search_options[:affiliate].blank?
+    request.format = :json if @original_format == 'application/json'
   end
 
   def is_advanced_search?

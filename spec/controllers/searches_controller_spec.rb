@@ -69,36 +69,52 @@ describe SearchesController do
 
   context "when showing a new search" do
     render_views
-    before do
-      get :index, :query => "social security", :page => 4
-      @search = assigns[:search]
-      @page_title = assigns[:page_title]
-    end
+    context "when searching in English" do
+      before do
+        get :index, :query => "social security", :page => 4
+        @search = assigns[:search]
+        @page_title = assigns[:page_title]
+      end
 
-    it "should render the template" do
-      response.should render_template 'index'
-      response.should render_template 'layouts/application'
-    end
+      it "should assign the USA.gov affiliate as the default affiliate" do
+        assigns[:affiliate].should == affiliates(:usagov_affiliate)
+      end
+    
+      it "should render the template" do
+        response.should render_template 'affiliate_index'
+        response.should render_template 'layouts/affiliate'
+      end
 
-    it "should assign the query as the page title" do
-      @page_title.should == "social security"
-    end
+      it "should assign the query as the page title" do
+        @page_title.should == "Current social security - USA.gov Search Results"
+      end
 
-    it "should show a custom title for the results page" do
-      response.body.should contain("social security - Search.USA.gov")
-    end
+      it "should show a custom title for the results page" do
+        response.body.should contain("Current social security - USA.gov Search Results")
+      end
 
-    it "should set the query in the Search model" do
-      @search.query.should == "social security"
-    end
+      it "should set the query in the Search model" do
+        @search.query.should == "social security"
+      end
 
-    it "should set the page" do
-      @search.page.should == 4
-    end
+      it "should set the page" do
+        @search.page.should == 4
+      end
 
-    it "should load results for a keyword query" do
-      @search.should_not be_nil
-      @search.results.should_not be_nil
+      it "should load results for a keyword query" do
+        @search.should_not be_nil
+        @search.results.should_not be_nil
+      end
+    end
+    
+    context "when searching in Spanish" do
+      before do
+        get :index, :query => "social security", :page => 4, :locale => 'es'
+      end
+      
+      it "should assign the GobiernoUSA affiliate" do
+        assigns[:affiliate].should == affiliates(:gobiernousa_affiliate)
+      end
     end
   end
 
@@ -128,7 +144,7 @@ describe SearchesController do
     render_views
     before do
       @affiliate = affiliates(:power_affiliate)
-      get :index, :affiliate=>@affiliate.name, :query => "weather"
+      get :index, :affiliate => @affiliate.name, :query => "weather"
       @search = assigns[:search]
       @page_title = assigns[:page_title]
     end
@@ -273,9 +289,13 @@ describe SearchesController do
       @search = assigns[:search]
     end
 
+    it "should assign the USA.gov affiliate" do
+      assigns[:affiliate].should == affiliates(:usagov_affiliate)
+    end
+    
     it "should render the template" do
-      response.should render_template 'index'
-      response.should render_template 'layouts/application'
+      response.should render_template 'affiliate_index'
+      response.should render_template 'layouts/affiliate'
     end
   end
 
@@ -285,7 +305,15 @@ describe SearchesController do
       get :index, :affiliate => affiliates(:power_affiliate).name, :query => "weather", :format => "json"
     end
 
-    it { should respond_with :not_acceptable }
+    it "should set the format to json" do
+      assigns[:original_format].to_s.should == "application/json"
+    end
+
+    it "should serialize the results into JSON" do
+      response.body.should =~ /total/
+      response.body.should =~ /startrecord/
+      response.body.should =~ /endrecord/
+    end
   end
 
   context "when handling embedded affiliate search request" do
@@ -295,38 +323,6 @@ describe SearchesController do
 
     it "should set embedded search options to true" do
       assigns[:search_options][:embedded].should be_true
-    end
-  end
-
-  context "when handling a request that has FAQ results" do
-    before do
-      get :index, :query => 'uspto'
-      @search = assigns[:search]
-    end
-
-    it "should search for FAQ results" do
-      @search.should_not be_nil
-      @search.faqs.should_not be_nil
-    end
-  end
-
-  context "when handling a request that has FAQ results, but the FAQ records have been deleted from the database" do
-    render_views
-    before do
-      Faq.destroy_all
-      Faq.reindex
-      Sunspot.commit
-      Faq.search_for('uspto').total.should == 0
-      @faq = Faq.create!(:question => 'What is the USPTO?', :answer => 'The USPTO is a government agency', :url => 'http://uspto.gov', :ranking => 1)
-      Sunspot.commit
-      Faq.search_for('uspto').total.should == 1
-      Faq.delete_all
-      Faq.search_for('uspto').total.should == 1
-      get :index, :query => 'uspto'
-    end
-
-    it "should display search results without Faq results" do
-      response.should be_success
     end
   end
 
@@ -582,7 +578,15 @@ describe SearchesController do
       before do
         get :news, :query => "element", :affiliate => "donotexist", :channel => rss_feeds(:white_house_blog).id, :tbs => "w"
       end
-      it { should redirect_to root_path }
+      
+      it "should assign the USA.gov affiliate" do
+        assigns[:affiliate].should == affiliates(:usagov_affiliate)
+      end
+    
+      it "should render the news template" do
+        response.should render_template 'news'
+        response.should render_template 'layouts/affiliate'
+      end
     end
 
     describe "rendering the view" do
