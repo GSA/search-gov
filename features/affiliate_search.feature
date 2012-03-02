@@ -128,12 +128,12 @@ Feature: Affiliate Search
     When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Search"
-    Then I should see "Results 1-10"
+    Then I should see "Results 1-"
 
     When I follow "Press"
     Then I should see "Sorry, no results found for 'item'. Remove all filters or try entering fewer or broader query terms."
     When I follow "Remove all filters"
-    Then I should see "Results 1-10"
+    Then I should see "Results 1-"
 
     When I fill in "query" with "item"
     And I press "Search"
@@ -142,7 +142,7 @@ Feature: Affiliate Search
     When I follow "Last day"
     Then I should see "Sorry, no results found for 'item' in the last day. Remove all filters or try entering fewer or broader query terms."
     When I follow "Remove all filters"
-    Then I should see "Results 1-10"
+    Then I should see "Results 1-"
 
   Scenario: No results when searching with active RSS feeds in Spanish
     Given the following Affiliates exist:

@@ -209,26 +209,6 @@ Feature: Search.USA.gov Best Bets: Text
     Then I should see "New results about Texas"
     And I should see "New results about hurricanes"
 
-  Scenario: Uploading invalid XML document
-    Given the following Boosted Content entries exist:
-      | title               | url                     | description                               |
-      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
-      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
-      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
-    And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the boosted contents admin page
-    And I follow "Bulk upload"
-    And I attach the file "features/support/missing_title_boosted_content.xml" to "bulk_upload_file"
-    And I press "Upload"
-    Then I should see the following breadcrumbs: USASearch > Search.USA.gov > Admin Center > Search.USA.gov Best Bets: Text > Bulk Upload Best Bets: Text
-    And I should see "Bulk Upload Best Bets: Text" in the page header
-    And I should see "Your XML document could not be processed. Please check the format and try again."
-
-    When I go to the homepage
-    And I fill in "query" with "tourism"
-    And I submit the search form
-    Then I should see "Our Tourism Page" within "#boosted"
-
   Scenario: Uploading valid boosted CSV document
     Given I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
     When I go to the boosted contents admin page
@@ -250,24 +230,6 @@ Feature: Search.USA.gov Best Bets: Text
     And I should see "New results about Texas"
     And I should see "New results about hurricanes"
 
-  Scenario: Uploading invalid booster CSV document
-    Given the following Boosted Content entries exist:
-      | title               | url                     | description                               |
-      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
-      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
-      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
-    And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the boosted contents admin page
-    And I follow "Bulk upload"
-    And I attach the file "features/support/missing_title_boosted_content.csv" to "bulk_upload_file"
-    And I press "Upload"
-    Then I should see "Your CSV document could not be processed. Please check the format and try again."
-
-    When I go to the homepage
-    And I fill in "query" with "tourism"
-    And I submit the search form
-    Then I should see "Our Tourism Page" within "#boosted"
-
    Scenario: Uploading unsupported boosted content document
     Given the following Boosted Content entries exist:
       | title               | url                     | description                               |
@@ -280,61 +242,3 @@ Feature: Search.USA.gov Best Bets: Text
     And I attach the file "features/support/cant_read_this.doc" to "bulk_upload_file"
     And I press "Upload"
     Then I should see "Your filename should have .xml, .csv or .txt extension"
-
-  Scenario: Search user should see only active boosted contents within publish date range
-    Given the following Boosted Content entries exist:
-      | title                                | url                         | description                      | status   | publish_start_on | publish_end_on |
-      | expired boosted content              | http://www.aff.gov/expired  | expired description              | active   | prev_month       | yesterday      |
-      | future1 boosted content              | http://www.aff.gov/future1  | future1 description              | active   | tomorrow         | next_month     |
-      | future2 boosted content              | http://www.aff.gov/future2  | future2 description              | active   | tomorrow         |                |
-      | current boosted content              | http://www.aff.gov/current  | current description              | active   | today            | next_month     |
-      | current but inactive boosted content | http://www.aff.gov/inactive | current but inactive description | inactive | today            |                |
-    And I am logged in with email "affiliate_admin@fixtures.org" and password "admin"
-    When I go to the homepage
-    And I fill in "query" with "boosted"
-    And I press "Search"
-    Then I should see "current boosted content"
-    And I should not see "current but inactive"
-    When I fill in "query" with "expired"
-    And I press "Search"
-    Then I should not see "expired boosted content"
-    When I fill in "query" with "future1"
-    And I press "Search"
-    Then I should not see "future1 boosted content"
-    When I fill in "query" with "future2"
-    And I press "Search"
-    Then I should not see "future2 boosted content"
-
-  Scenario: Search user should see boosted contents with higher relevancy on title
-    Given the following Boosted Content entries exist:
-      | title                     | url                         | description           | status | publish_start_on |
-      | boosted content 1         | http://www.aff.gov/current1 | current description 1 | active | today            |
-      | boosted content 2         | http://www.aff.gov/current2 | current description 2 | active | today            |
-      | current boosted content 3 | http://www.aff.gov/current3 | description 3         | active | today            |
-      | current boosted content 4 | http://www.aff.gov/current4 | description 4         | active | today            |
-      | current boosted content 5 | http://www.aff.gov/current5 | description 5         | active | today            |
-    When I go to the homepage
-    And I fill in "query" with "current"
-    And I press "Search"
-    Then I should see "current boosted content 3" in the boosted contents section
-    And I should see "current boosted content 4" in the boosted contents section
-    And I should see "current boosted content 5" in the boosted contents section
-    And I should not see "boosted content 1" in the boosted contents section
-    And I should not see "boosted content 2" in the boosted contents section
-
-  Scenario: Search user should see boosted contents with medium relevancy on description
-    Given the following Boosted Content entries exist:
-      | title             | url                         | description           | keywords | status | publish_start_on |
-      | boosted content 1 | http://www.aff.gov/current1 | description 1         | current  | active | today            |
-      | boosted content 2 | http://www.aff.gov/current2 | description 2         | current  | active | today            |
-      | boosted content 3 | http://www.aff.gov/current3 | current description 3 | boosted  | active | today            |
-      | boosted content 4 | http://www.aff.gov/current4 | current description 4 | boosted  | active | today            |
-      | boosted content 5 | http://www.aff.gov/current5 | current description 5 | boosted  | active | today            |
-    When I go to the homepage
-    And I fill in "query" with "current"
-    And I press "Search"
-    Then I should see "boosted content 3" in the boosted contents section
-    And I should see "boosted content 4" in the boosted contents section
-    And I should see "boosted content 5" in the boosted contents section
-    And I should not see "boosted content 1" in the boosted contents section
-    And I should not see "boosted content 2" in the boosted contents section

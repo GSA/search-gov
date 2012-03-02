@@ -1,4 +1,5 @@
 Given /^the following Affiliates exist:$/ do |table|
+  Affiliate.destroy_all
   table.hashes.each do |hash|
     valid_options = {
       :email => hash["contact_email"],

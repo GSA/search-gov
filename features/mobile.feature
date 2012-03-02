@@ -31,14 +31,7 @@ Feature: Mobile Search
   Scenario: Toggling full mode
     Given I am on the search page
     When I follow "Classic"
-    Then I should be on the homepage
-
-  Scenario: Toggling back to mobile mode
-    Given I am on the search page
-    When I follow "Classic"
-    And I follow "Mobile"
-    Then I should be on the homepage page
-    And I should see "USA.gov Full Site"
+    Then I should be on the search page
 
   Scenario: Going to mobile mode from Spanish web homepage
     Given I am using a desktop device
@@ -71,119 +64,10 @@ Feature: Mobile Search
     And I submit the search form
     Then I should be on the search page
     And I should see "educación"
-    And I should see an image link to "USASearch Home" with url for "http://m.gobiernousa.gov"
 
   Scenario: An advanced search on the mobile home page
     When I am on the advanced search page
     Then I should see "Use the options on this page to create a very specific search"
-
-  Scenario: Boosted contents on the mobile site
-    Given the following Boosted Content entries exist:
-      | title               | url                     | description                               |
-      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      |
-      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         |
-      | Our Tourism Page    | http://www.aff.gov/tou  | Tourism information                       |
-    And the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
-    And the following Boosted Content entries exist for the affiliate "bar.gov"
-      | title               | url                     | description                               |
-      | Bar Emergency Page  | http://www.bar.gov/911  | This should not show up in results        |
-      | Pelosi misspelling  | http://www.bar.gov/pel  | Synonyms file test works                  |
-      | all about agencies  | http://www.bar.gov/pe2  | Stemming works                            |
-    And I am on the homepage
-    And I fill in "query" with "emergency"
-    And I press "Search"
-    Then I should be on the search page
-    And I should see "Our Emergency Page"
-    And I should see "FAQ Emergency Page"
-    And I should not see "Our Tourism Page"
-    And I should not see "Bar Emergency Page"
-
-  Scenario: Boosted contents on the Spanish mobile site
-    Given the following Boosted Content entries exist:
-      | title               | url                     | description                               | locale  |
-      | Our Emergency Page  | http://www.aff.gov/911  | Updated information on the emergency      | es      |
-      | FAQ Emergency Page  | http://www.aff.gov/faq  | More information on the emergency         | es      |
-      | Tour Emergency Page | http://www.aff.gov/tou  | Emergency tourism information             | en      |
-    And I am on the Spanish homepage
-    And I fill in "query" with "emergency"
-    And I press "Search"
-    And I should see "Our Emergency Page"
-    And I should see "FAQ Emergency Page"
-    And I should not see "Tour Emergency Page"
-
-  Scenario: A search with results containing recalls on multiple days
-    Given the following Product Recalls exist:
-    |recall_number|manufacturer                   |type    |product                                                     |hazard        |country             |recalled_days_ago|
-    |10155        |Graco                          |Stroller|Graco E-Z Roller baby strollers, Graco Hard-to-Roll stroller|Entrapment    |Canada              |15               |
-    |10157        |Hasbro                         |Stroller|Hasbro Window Stroller                                      |Defenestration|USA                 |18               |
-    |10156        |Graco, Walmart, Martha Stewart |Bed     |Graco Cozy Glow-in-the-Dark Classic Toddler Beds            |Vomiting      |USA, Vietnam, China |25               |
-    |10150        |Graco                          |Stroller|Graco Neck Restraint                                        |Decapitation  |Canada              |35               |
-    And I am on the homepage
-    When I fill in "query" with "graco recall"
-    And I submit the search form
-    Then I should be on the search page
-    And I should see "Graco E-Z Roller baby strollers, Graco Hard-to-Roll stroller"
-    And I should see "Graco Cozy Glow-in-the-Dark Classic Toddler Beds"
-    And I should not see "Hasbro Window Stroller"
-    And I should not see "Graco Neck Restraint"
-
-  Scenario: A search with auto results containing recent recalls
-    Given the following Auto Recalls exist:
-    |recall_number|manufacturer              |component_description                                   |recalled_days_ago|
-    |10155        |TOYOTA, TOYOTA            |FRONT BRAKE PADS, STEERING WHEEL                        |15               |
-    |10157        |TOYOTA                    |REAR-VIEW MIRROR                                        |18               |
-    |10156        |HONDA, INFINITI, PORSCHE  |BRAKE PAD ASSEMBLY,BRAKE PAD ASSEMBLY,BRAKE PAD ASSEMBLY|25               |
-    |10150        |TOYOTA                    |OLD BRAKE PADS                                          |35               |
-    And I am on the homepage
-    When I fill in "query" with "brake pad recall"
-    And I submit the search form
-    Then I should be on the search page
-    And I should see "FRONT BRAKE PADS, STEERING WHEEL FROM TOYOTA"
-    And I should see "BRAKE PAD ASSEMBLY FROM HONDA, INFINITI, PORSCHE"
-    And I should not see "REAR-VIEW MIRROR"
-    And I should not see "OLD BRAKE PADS"
-
-  Scenario: A search with results containing food recalls
-    Given the following Food Recalls exist:
-    |recalled_days_ago  | summary                                       | description                                               | url                                                                     |
-    |1                  | Stay Puft recalls marshmallows                | These are just too creepy for kids                        | http://www.fda.gov/Safety/Recalls/ucm207251.htm                         |
-    |18                 | The Fizz recalls Screw-on Ice Cream Float Cup | The cup is reusable, but not dishwasher safe.             | http://www.fda.gov/Safety/Recalls/ucm207252.htm                         |
-    |25                 | Curry recalled due to unlisted allergens      | It contains the ghost curry as well as raw marshmallows   | http://www.fsis.usda.gov/News_&_Events/Recall_061_2009_Release/index.asp|
-    |35                 | Old Marshmallow Recall news                   | These were recalled a very long time ago due to staleness | http://www.fsis.usda.gov/News_&_Events/Recall_062_2009_Release/index.asp|
-    And I am on the homepage
-    When I fill in "query" with "recall of marshmallows"
-    And I submit the search form
-    Then I should be on the search page
-    And I should see "Stay Puft recalls marshmallows"
-    And I should see "Curry recalled due to unlisted allergens"
-    And I should not see "The Fizz recalls Screw-on Ice Cream Float Cup"
-    And I should not see "Old Marshmallow Recall news"
-
-  Scenario: A search with results containing English FAQs
-    Given the following FAQs exist:
-    | url                   | question                                      | answer        | ranking | locale  |
-    | http://localhost:3000 | Who is the president of the United States?    | Barack Obama  | 1       | en      |
-    | http://localhost:3000 | Who is the president of the Estados Unidos?   | Barack Obama  | 1       | es      |
-    And I am on the homepage
-    When I fill in "query" with "president"
-    And I submit the search form
-    Then I should be on the search page
-    And I should see "Who is the president of the United States"
-    And I should not see "Who is the president of the Estados Unidos"
-
-  Scenario: A search with results containing English FAQs
-    Given the following FAQs exist:
-    | url                   | question                                      | answer        | ranking | locale  |
-    | http://localhost:3000 | Who is the president of the United States?    | Barack Obama  | 1       | en      |
-    | http://localhost:3000 | Who is the president of the Estados Unidos?   | Barack Obama  | 1       | es      |
-    And I am on the Spanish homepage
-    When I fill in "query" with "president"
-    And I submit the search form
-    Then I should be on the search page
-    And I should not see "Who is the president of the United States"
-    And I should see "Who is the president of the Estados Unidos"
 
   Scenario: Emailing from the home page
     Given I am on the homepage
@@ -262,29 +146,3 @@ Feature: Mobile Search
     And I should see "Este e-mail no es válido"
     And the "Tu e-mail" field should contain "invalid email"
     And the "Mensaje" field should contain "I love your site"
-
-  Scenario: A mobile image search
-    Given I am on the homepage
-    When I fill in "query" with "social security"
-    And I submit the search form
-    Then I should be on the search page
-    When I follow "Images"
-    Then I should be on the image search page
-    And I should see "NOINDEX, NOFOLLOW" in "ROBOTS" meta tag
-    And I should see 30 image results
-    And I should see "Next"
-
-    Given I am on the homepage
-    When I fill in "query" with "kjdfgkljdhfgkldjshfglkjdsfhg"
-    And I submit the search form
-    Then I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
-    When I follow "Images"
-    Then I should be on the image search page
-    And I should see "Sorry, no results found for 'kjdfgkljdhfgkldjshfglkjdsfhg'. Try entering fewer or broader query terms."
-
-    Given I am on the homepage
-    When I submit the search form
-    Then I should be on the search page
-    When I follow "Images"
-    Then I should be on the image search page
-    And I should see "Please enter search term(s)"
