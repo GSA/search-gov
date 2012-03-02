@@ -3,7 +3,7 @@ Given /^affiliate "([^"]*)" has the following RSS feeds:$/ do |affiliate_name, t
   table.hashes.each do |hash|
     RssFeed.create!(:name => hash["name"], :url => hash["url"], :is_active => hash["is_active"], :affiliate => affiliate)
   end
-  NewsItem.delete_all
+  NewsItem.destroy_all
 end
 
 Given /^feed "([^"]*)" has the following news items:$/ do |feed_name, table|
@@ -54,10 +54,18 @@ Given /^the following Related Medline Topics for "([^"]*)" in (English|Spanish) 
   end
 end
 
-Then /^I should see (\d+) youtube videos?$/ do |count|
-  page.should have_selector("iframe[src^='http://www.youtube.com/embed/']", :count => count)
+Then /^I should see (\d+) youtube thumbnails?$/ do |count|
+  page.should have_selector("img[src^='http://i.ytimg.com/vi/']", :count => count)
 end
 
-Then /^I should see embedded youtube video for (.+)$/ do |video_id|
-  page.should have_selector("iframe[src='http://www.youtube.com/embed/#{video_id}']")
+Then /^I should see youtube thumbnail for "([^"]*)"$/ do |news_item_title|
+  news_item = NewsItem.find_by_title(news_item_title)
+  video_id = CGI.parse(URI.parse(news_item.link).query)['v']
+  page.should have_selector("img[src='http://i.ytimg.com/vi/#{video_id}/2.jpg']")
+end
+
+Then /^I should see (.+)'s date in the (English|Spanish) search results$/ do |duration, locale|
+  date = Date.current.send(duration.to_sym)
+  date_string = locale == 'Spanish' ? date.strftime("%d/%m/%Y") : date.strftime("%m/%d/%Y")
+  page.should have_content(date_string)
 end

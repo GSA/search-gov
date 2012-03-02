@@ -720,9 +720,8 @@ module SearchHelper
     link_to((results_by_bing ? image_tag("binglogo_#{I18n.locale.to_s}.gif", :class => 'bing-logo') : image_tag("results_by_usasearch_#{I18n.locale.to_s}.png", :class => 'bing-logo')), 'http://searchblog.usa.gov/')
   end
 
-  def render_video(news_item)
+  def render_news_item_video_thumbnail_link_with_click_tracking(affiliate, search, search_vertical, news_item, index)
     video_id = CGI.parse(URI.parse(news_item.link).query)['v']
-    options = { :width => 320, :height => 192, :src => "http://www.youtube.com/embed/#{video_id}", :frameborder => 0, :allowfullscreen => '', :rel => 0 }
-    content_tag(:iframe, nil, options)
+    link_with_click_tracking(image_tag("http://i.ytimg.com/vi/#{video_id}/2.jpg", :alt => 'thumbnail').html_safe, news_item.link, affiliate, search.query, index, 'NEWS', search_vertical)
   end
 end

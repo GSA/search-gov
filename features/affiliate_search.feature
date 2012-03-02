@@ -13,26 +13,38 @@ Feature: Affiliate Search
 
   Scenario: Searching with active RSS feeds
     Given the following Affiliates exist:
-      | display_name     | name             | contact_email         | contact_name        |
-      | bar site         | bar.gov          | aff@bar.gov           | John Bar            |
+      | display_name     | name       | contact_email | contact_name | locale |
+      | bar site         | bar.gov    | aff@bar.gov   | John Bar     | en     |
+      | Spanish bar site | es.bar.gov | aff@bar.gov   | John Bar     | es     |
     And affiliate "bar.gov" has the following RSS feeds:
-      | name          | url                                                | is_active |
-      | Press         | http://www.whitehouse.gov/feed/press               | true      |
-      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery | true      |
-      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery | false     |
+      | name          | url                                                                  | is_active |
+      | Press         | http://www.whitehouse.gov/feed/press                                 | true      |
+      | Photo Gallery | http://www.whitehouse.gov/feed/media/photo-gallery                   | true      |
+      | Videos        | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=whitehouse | true      |
+      | Hide Me       | http://www.whitehouse.gov/feed/media/photo-gallery                   | false     |
+    And affiliate "es.bar.gov" has the following RSS feeds:
+      | name           | url                                                                    | is_active |
+      | Spanish Videos | http://gdata.youtube.com/feeds/base/videos?alt=rss&author=eswhitehouse | true      |
     And feed "Press" has the following news items:
-      | link                                       | title       | guid  | published_ago | description                  |
-      | http://www.whitehouse.gov/news/1           | First item  | uuid1 | day           | First news item for the feed |
-      | http://www.whitehouse.gov/news/2           | Second item | uuid2 | day           | Next news item for the feed  |
-      | http://www.youtube.com/watch?v=evewynJN6n8 | Third item  | uuid3 | day           | Video news item for the feed |
+      | link                             | title       | guid  | published_ago | description                  |
+      | http://www.whitehouse.gov/news/1 | First item  | uuid1 | day           | First news item for the feed |
+      | http://www.whitehouse.gov/news/2 | Second item | uuid2 | day           | Next news item for the feed  |
     And feed "Photo Gallery" has the following news items:
-    | link                             | title       | guid  | published_ago | description                  |
-    | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
-    | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
+      | link                             | title       | guid  | published_ago | description                  |
+      | http://www.whitehouse.gov/news/3 | Third item  | uuid3 | week          | More news items for the feed |
+      | http://www.whitehouse.gov/news/4 | Fourth item | uuid4 | week          | Last news item for the feed  |
+    And feed "Videos" has the following news items:
+      | link                                       | title      | guid  | published_ago | description                  |
+      | http://www.youtube.com/watch?v=0hLMc-6ocRk | Fifth item | uuid5 | day           | Video news item for the feed |
+      | http://www.youtube.com/watch?v=R2RWscJM97U | Sixth item | uuid6 | day           | Video news item for the feed |
+    And feed "Spanish Videos" has the following news items:
+      | link                                       | title        | guid  | published_ago | description                           |
+      | http://www.youtube.com/watch?v=EqExXXahb0s | Seventh item | uuid7 | day           | Gobierno video news item for the feed |
+      | http://www.youtube.com/watch?v=C5WWyZ0cTcM | Eight item   | uuid8 | day           | Gobierno video news item for the feed |
     And the following SAYT Suggestions exist for bar.gov:
-    | phrase                 |
-    | Some Unique item |
-    | el paso term           |
+      | phrase           |
+      | Some Unique item |
+      | el paso term     |
     When I am on bar.gov's search page
     And I fill in "query" with "item"
     And I press "Search"
@@ -40,6 +52,7 @@ Feature: Affiliate Search
     And I should see "Images"
     And I should see "Press"
     And I should see "Photo Gallery"
+    And I should see "Videos"
     And I should not see "Hide Me"
     And I should not see "All Time"
     And I should not see "Last hour"
@@ -48,12 +61,14 @@ Feature: Affiliate Search
     And I should not see "Last month"
     And I should not see "Last year"
 
-    When I follow "Press"
+    When I follow "Videos"
     Then I should see the browser page titled "item - bar site Search Results"
-    And I should see 1 youtube video
-    And I should see embedded youtube video for evewynJN6n8
+    And I should see 2 youtube thumbnails
+    And I should see youtube thumbnail for "Sixth item"
+    And I should see yesterday's date in the English search results
 
-    When I follow "Last week"
+    When I follow "Press"
+    And I follow "Last week"
     Then I should see the browser page titled "item - bar site Search Results"
     And I should see "First news item for the feed"
     And I should see "Next news item for the feed"
@@ -79,20 +94,24 @@ Feature: Affiliate Search
     Then I should see "Advanced Search"
     And I should see "Search" button
 
-    When I am on bar.gov's Spanish search page
-    And I fill in "query" with "president"
+    When I am on es.bar.gov's search page
+    And I fill in "query" with "gobierno"
     And I press "Buscar"
     Then I should see "Resultados 1-10"
     And I should see "Todo"
     And I should not see "Everything"
     And I should see "Imágenes"
+    And I should see "Spanish Videos"
     And I should not see "Images"
     And I should not see "Search this site"
     And I should not see "Cualquier fecha"
     And I should not see "All Time"
 
-    When I follow "Press"
+    When I follow "Spanish Videos"
     Then I should see "Cualquier fecha"
+    And I should see 2 youtube thumbnails
+    And I should see youtube thumbnail for "Seventh item"
+    And I should see yesterday's date in the Spanish search results
 
   Scenario: No results when searching with active RSS feeds
     Given the following Affiliates exist:

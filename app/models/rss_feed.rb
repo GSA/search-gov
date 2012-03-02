@@ -38,6 +38,10 @@ class RssFeed < ActiveRecord::Base
     all.each(&:freshen)
   end
 
+  def is_video?
+    @is_video ||= (url =~ /^http:\/\/gdata\.youtube.com\/feeds\/base\/videos.+$/) and CGI.parse(URI.parse(url).query)['author'].present?
+  end
+
   private
 
   def is_valid_rss_feed?

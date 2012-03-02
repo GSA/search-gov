@@ -246,8 +246,10 @@ module ApplicationHelper
     tags.join("\n").html_safe
   end
 
-  def render_date(date)
-    date.strftime("%m/%d/%Y") unless date.nil?
+  def render_date(date, locale = I18n.locale)
+    unless date.nil?
+      locale.to_sym == :es ? date.strftime("%d/%m/%Y") : date.strftime("%m/%d/%Y")
+    end
   end
 
   def attribution
