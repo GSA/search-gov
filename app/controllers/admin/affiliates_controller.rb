@@ -20,7 +20,8 @@ class Admin::AffiliatesController < Admin::AdminController
                              :header_footer_css, :staged_header_footer_css,
                              :header, :staged_header, :footer, :staged_footer,
                              :favicon_url, :staged_favicon_url, :external_css_url, :staged_external_css_url,
-                             :affiliate_template, :staged_affiliate_template, :is_sayt_enabled, :has_staged_content, :exclude_webtrends, :popular_urls, :locale, :results_source, :sitemaps]
+                             :affiliate_template, :staged_affiliate_template, :is_sayt_enabled, :fetch_concurrency,
+                             :has_staged_content, :exclude_webtrends, :popular_urls, :locale, :results_source, :sitemaps]
     config.list.columns.exclude [:header_footer_css, :staged_header_footer_css, :header, :staged_header, :footer, :staged_footer]
     config.create.columns = [:display_name, :name, :search_results_page_title, :header_footer_css, :header, :footer, :affiliate_template, :locale]
     config.columns[:staged_search_results_page_title].label = "Staged search results page title"

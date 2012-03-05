@@ -437,7 +437,17 @@ class Affiliate < ActiveRecord::Base
     live_domains_list.join(';')
   end
 
+  def refresh_indexed_documents
+    indexed_documents.select(:id).find_in_batches(:batch_size => batch_size) do |batch|
+      Resque.enqueue_with_priority(:low, AffiliateIndexedDocumentFetcher, id, batch.first.id, batch.last.id)
+    end
+  end
+
   private
+
+  def batch_size
+    (indexed_documents.size / fetch_concurrency.to_f).ceil
+  end
 
   def remove_boosted_contents_from_index
     boosted_contents.each { |bs| bs.remove_from_index }

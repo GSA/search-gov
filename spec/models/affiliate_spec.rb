@@ -1268,4 +1268,21 @@ describe Affiliate do
       end
     end
   end
+
+  describe "#refresh_indexed_documents" do
+    before do
+      @affiliate = affiliates(:basic_affiliate)
+      @affiliate.fetch_concurrency = 2
+      @first = @affiliate.indexed_documents.build(:url => 'http://some.mil/')
+      @second = @affiliate.indexed_documents.build(:url => 'http://some.mil/foo')
+      @third = @affiliate.indexed_documents.build(:url => 'http://some.mil/bar')
+      @affiliate.save!
+    end
+
+    it "should enqueue in batches" do
+      Resque.should_receive(:enqueue_with_priority).with(:low, AffiliateIndexedDocumentFetcher, @affiliate.id, @first.id, @second.id)
+      Resque.should_receive(:enqueue_with_priority).with(:low, AffiliateIndexedDocumentFetcher, @affiliate.id, @third.id, @third.id)
+      @affiliate.refresh_indexed_documents
+    end
+  end
 end
