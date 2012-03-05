@@ -5,7 +5,6 @@ class WebSearch < Search
 
   attr_reader :offset,
               :sources,
-              :extra_image_results,
               :images,
               :related_search,
               :spelling_suggestion,
@@ -47,7 +46,7 @@ class WebSearch < Search
     @bing_search = BingSearch.new(USER_AGENT)
     @filter_setting = BingSearch::VALID_FILTER_VALUES.include?(options[:filter] || "invalid adult filter") ? options[:filter] : BingSearch::DEFAULT_FILTER_SETTING
     @enable_highlighting = options[:enable_highlighting].nil? ? true : options[:enable_highlighting]
-    @sources = bing_sources
+    @sources = "Spell+Web"
     @formatted_query = generate_formatted_query
     @related_search = []
   end
@@ -135,11 +134,6 @@ class WebSearch < Search
     else
       "#{field_name}#{term}"
     end
-  end
-
-  def bing_sources
-    query_for_images = first_page? && affiliate.nil? && PopularImageQuery.find_by_query(query).present?
-    query_for_images ? "Spell+Web+Image" : "Spell+Web"
   end
 
   def search
@@ -294,15 +288,11 @@ class WebSearch < Search
       @med_topic = MedTopic.search_for(query, I18n.locale.to_s) if affiliate.nil? or (affiliate and affiliate.is_medline_govbox_enabled?)
       @recalls = Recall.recent(query) unless affiliate
     end
-    if response && response.is_a?(Hash) && response.has?(:image) && response.image.total > 0
-      @extra_image_results = process_image_results(response)
-    end
   end
 
   def log_serp_impressions
     modules = []
     modules << (self.class.to_s == "ImageSearch" ? "IMAG" : "BWEB") unless self.total.zero?
-    modules << "IMAG" unless self.class.to_s == "ImageSearch" or self.extra_image_results.nil?
     modules << "OVER" << "BSPEL" unless self.spelling_suggestion.nil?
     modules << "SREL" unless self.related_search.nil? or self.related_search.empty?
     modules << "NEWS" unless self.news_items.nil? or self.news_items.total.zero?

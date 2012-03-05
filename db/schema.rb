@@ -525,14 +525,6 @@ ActiveRecord::Schema.define(:version => 20120321220026) do
 
   add_index "news_items", ["rss_feed_id", "guid"], :name => "index_news_items_on_rss_feed_id_and_guid"
 
-  create_table "popular_image_queries", :force => true do |t|
-    t.string   "query"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "popular_image_queries", ["query"], :name => "index_popular_image_queries_on_query", :unique => true
-
   create_table "popular_urls", :force => true do |t|
     t.integer  "affiliate_id", :null => false
     t.string   "title",        :null => false

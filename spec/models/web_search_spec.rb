@@ -1,7 +1,7 @@
 require 'spec/spec_helper'
 
 describe WebSearch do
-  fixtures :affiliates, :misspellings, :popular_image_queries, :site_domains
+  fixtures :affiliates, :misspellings, :site_domains
 
   before do
     @affiliate = affiliates(:basic_affiliate)
@@ -868,49 +868,6 @@ describe WebSearch do
       end
     end
 
-    context "popular image searches" do
-      it "should try to find images when searching for a popular image" do
-        search = WebSearch.new(:query => popular_image_queries(:snowflake).query)
-        search.run
-        search.extra_image_results.should_not be_nil
-      end
-
-      it "should try to find images when searching for a popular image when no page param is passed in as an HTTP param" do
-        search = WebSearch.new(:query => popular_image_queries(:snowflake).query)
-        search.run
-        search.extra_image_results.should_not be_nil
-      end
-
-      it "should never show extra image results on any page but the first" do
-        search = WebSearch.new(:query => popular_image_queries(:snowflake).query, :page => 2)
-        search.run
-        search.extra_image_results.should be_nil
-      end
-
-      it "should never show extra image results if it is not a popular image query" do
-        search = WebSearch.new(:query => "non popular image query", :page => 0)
-        search.run
-        search.extra_image_results.should be_nil
-      end
-
-      context "when non-English locale is specified" do
-        before do
-          I18n.locale = :es
-        end
-
-        it "should not show image results if none are returned" do
-          popular_query_with_no_results = PopularImageQuery.create(:query => ".416 barret round")
-          search = WebSearch.new(@valid_options.merge(:query => popular_query_with_no_results.query, :page => 1))
-          search.run
-          search.extra_image_results.should be_nil
-        end
-
-        after do
-          I18n.locale = I18n.default_locale
-        end
-      end
-    end
-
     context "when paginating" do
       default_page = 1
 
@@ -1340,17 +1297,7 @@ describe WebSearch do
   end
 
   describe "#sources" do
-    it "should default to 'Spell+Web'" do
-      search = WebSearch.new(:query => 'non-popular image')
-      search.sources.should == "Spell+Web"
-    end
-
-    it "should be 'Spell+Web+Image' when query is a PopularImageQuery and first page of results and not affiliate scoped" do
-      search = WebSearch.new(:query => 'snowflake')
-      search.sources.should == "Spell+Web+Image"
-    end
-
-    it "should be 'Spell+Web' for affilitate searches, even when the query is a PopularImageQuery and on first page of results" do
+    it "should be 'Spell+Web' for affilitate searches" do
       search = WebSearch.new(:query => 'snowflake', :affiliate => @affiliate)
       search.sources.should == "Spell+Web"
     end

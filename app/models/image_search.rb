@@ -3,6 +3,7 @@ class ImageSearch < WebSearch
   def initialize(options = {})
     super(options)
     @bing_search = BingImageSearch.new(USER_AGENT)
+    @sources = "Spell+Image"
   end
 
   def as_json(options = {})
@@ -38,10 +39,6 @@ class ImageSearch < WebSearch
 
   def process_results(response)
     process_image_results(response)
-  end
-
-  def bing_sources
-    "Spell+Image"
   end
   
   def populate_additional_results(response)

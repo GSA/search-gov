@@ -21,7 +21,6 @@ describe "shared/_searchresults.html.haml" do
     @search.stub!(:fedstates)
     @search.stub!(:recalls)
     @search.stub!(:agency)
-    @search.stub!(:extra_image_results)
     @search.stub!(:med_topic)
     @search.stub!(:has_featured_collections?)
     @search.stub!(:indexed_documents)
@@ -165,17 +164,6 @@ describe "shared/_searchresults.html.haml" do
         end
 
         it "should not show a recalls govbox" do
-          render
-          rendered.should_not have_selector('govbox')
-        end
-      end
-
-      context "when extra image results are present" do
-        before do
-          @search.stub!(:extra_image_results).and_return "ExtraImageResults"
-        end
-
-        it "should not show a popular image govbox" do
           render
           rendered.should_not have_selector('govbox')
         end

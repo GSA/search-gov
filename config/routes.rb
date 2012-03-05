@@ -112,7 +112,6 @@ UsasearchRails3::Application.routes.draw do
     resources :affiliates do as_routes end
     resources :affiliate_templates do as_routes end
     resources :users do as_routes end
-    resources :popular_image_queries do as_routes end
     resources :sayt_filters do as_routes end
     resources :sayt_suggestions do as_routes end
     resources :misspellings do as_routes end

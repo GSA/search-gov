@@ -5,12 +5,6 @@ Given /^the following FAQs exist:$/ do |table|
   Sunspot.commit
 end
 
-Given /^the following Popular Image Query entries exist:$/ do |table|
-  table.hashes.each do |hash|
-    PopularImageQuery.create!(:query => hash[:query])
-  end
-end
-
 Then /^I should see "([^"]*)" after the (\d+)th search result$/ do |value, position|
   page.should have_selector("#results div:nth-of-type(#{position.to_i + 2})", :text => value)
 end

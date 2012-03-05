@@ -12,8 +12,6 @@
     = render('shared/featured_collections', :search => search) if search.has_featured_collections?
   - elsif search.recalls && search.recalls.total > 0
     = render "shared/recall_gov_box", :search => search
-  - elsif search.extra_image_results.present?
-    = render "shared/popular_images", :search => search
   - elsif search.med_topic.present?
     = render 'shared/med_topic_gov_box', :search => @search, :affiliate => @affiliate
 - if search.results.present?
