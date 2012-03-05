@@ -44,6 +44,19 @@ function enableLookAndFeelForm(option) {
     jQuery('.look-and-feel-form.legacy input').removeAttr('disabled');
   }
 }
+
+function setupDragAndDropOnManagedLinks(option) {
+  if (option == 'header') {
+    jQuery('.header-links table').each(function() {
+      jQuery(this).tableDnD({ onDragClass: 'ondrag' });
+    });
+  } else {
+    jQuery('.footer-links table').each(function() {
+      jQuery(this).tableDnD({ onDragClass: 'ondrag' });
+    });
+  }
+}
+
 jQuery(document).ready(function() {
   jQuery('#affiliate_id').change(function(event) {
     window.location.replace("/affiliates/" + jQuery('#affiliate_id').val());
@@ -108,12 +121,15 @@ jQuery(document).ready(function() {
   jQuery(".legacy-look-and-feel-option").click(function() {
     enableLookAndFeelForm('legacy');
   });
-  jQuery(".header-footer-form .links table").tableDnD({ onDragClass: 'ondrag' });
 
-  jQuery('.header-footer-form').submit(function() {
-    jQuery('.links .position').each(function(index) {
+  jQuery(".header-footer-form").submit(function() {
+    jQuery(".header-links .position").each(function(index) {
+      jQuery(this).val(index);
+    });
+    jQuery(".footer-links .position").each(function(index) {
       jQuery(this).val(index);
     });
   });
+  setupDragAndDropOnManagedLinks('header');
+  setupDragAndDropOnManagedLinks('footer');
 });
-

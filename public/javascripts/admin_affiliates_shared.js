@@ -59,11 +59,11 @@ jQuery(document).ready(function() {
     position = parseInt(jQuery('.links .position').last().attr('value')) + 1;
     var inputTagFormat =
       "<tr class='row-item'>\
-        <td class='link-title'>\
+        <td class='title'>\
           <input class='position' id='featured_collection_featured_collection_links_attributes_#_position' name='featured_collection[featured_collection_links_attributes][#][position]' type='hidden' value='{pos}' />\
           <input class='title' id='featured_collection_featured_collection_links_attributes_#_title' maxlength='255' name='featured_collection[featured_collection_links_attributes][#][title]' type='text' />\
         </td>\
-        <td>\
+        <td class='url'>\
           <input class='url' id='featured_collection_featured_collection_links_attributes_#_url' maxlength='255' name='featured_collection[featured_collection_links_attributes][#][url]' type='text' />\
         </td>\
       </tr>";
