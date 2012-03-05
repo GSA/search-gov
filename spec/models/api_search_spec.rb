@@ -125,7 +125,7 @@ describe ApiSearch do
       let(:api_redis) { ApiSearch.redis }
       let(:format) { 'json' }
       let(:index) { 'odie' }
-      let(:params) { { :query => "foobar", :page => 0, :per_page => 10, :affiliate => affiliate, :format => format, :index => index } }
+      let(:params) { { :query => "foobar", :page => 1, :per_page => 10, :affiliate => affiliate, :format => format, :index => index } }
       let(:search) { mock(OdieSearch) }
       let(:search_result_in_json) { mock('search_result_in_json') }
       
