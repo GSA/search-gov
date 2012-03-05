@@ -20,11 +20,6 @@
     = hidden_field_tag :fedstates, @search.fedstates unless @search.nil? || @search.fedstates.nil?
     = hidden_field_tag :scope_id, @scope_id if @affiliate and @scope_id
   = submit_tag((forms_search? ? t(:forms_search) : (recalls_search? ? t(:recalls_search) : t(:search))), :id => "search_button")
-  - if @affiliate.nil?
-    - if web_search? || image_search?
-      = path_to_search_in_other_locale_for(params[:query])
-    - if web_search?
-      = advanced_search_link(@search_options)
-  - elsif web_search?
+  - if web_search?
     .advancedsearch
       = advanced_search_link(@search_options, @affiliate)
